@@ -165,12 +165,6 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.information">
             <Header />
           </Section>
-          <Section title="product.sections.fulfillment">
-            <FulfillmentSelector
-              productId={variantId || productId}
-              conditioner={this.baseContextValue.conditioner}
-            />
-          </Section>
           {/*
             This feature is currently in BETA testing.
             It should only be used for approved BETA Client Projects
@@ -179,6 +173,12 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.options">
             <Characteristics productId={productId} variantId={variantId} />
             <Options />
+          </Section>
+          <Section title="product.sections.fulfillment">
+            <FulfillmentSelector
+              productId={variantId || productId}
+              conditioner={this.baseContextValue.conditioner}
+            />
           </Section>
           <Section title="product.sections.description">
             <Description productId={productId} variantId={variantId} />
