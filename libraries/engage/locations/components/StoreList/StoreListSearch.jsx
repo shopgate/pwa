@@ -4,16 +4,18 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import {
-  ProgressBar, MagnifierIcon, LocatorIcon, MessageBar,
+  ProgressBar, MagnifierIcon, LocatorIcon, MessageBar, InfoIcon,
 } from '@shopgate/engage/components';
 import { FulfillmentContext } from '../../locations.context';
 import connect from './StoreListSearch.connector';
 import {
-  container, search, input, icon, progressBar,
+  container, search, input, icon, progressBar, messageClass, iconClass,
 } from './StoreListSearch.style';
 
 /**
  * @param {Function} getProductLocations getProductLocations.
+ * @param {Function} storeSearchQuery .
+ * @param {string} searchQuery .
  * @returns {JSX}
  */
 function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery }) {
@@ -118,10 +120,16 @@ function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery })
         <ProgressBar isVisible={loading} />
       </div>
       {message &&
-        <MessageBar messages={[{
-          type: 'error',
-          message,
-        }]}
+        <MessageBar
+          messages={[{
+            type: 'error',
+            message,
+            icon: InfoIcon,
+          }]}
+          classNames={{
+            icon: iconClass,
+            message: messageClass,
+          }}
         />
       }
     </Fragment>

@@ -31,6 +31,7 @@ module.exports = {
       backdropFilter: 'blur(20px)',
     },
     gap: {
+      xsmall: 4,
       small: 8,
       big: 16,
       bigger: 20,

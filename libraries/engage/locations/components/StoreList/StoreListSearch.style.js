@@ -38,3 +38,10 @@ export const progressBar = css({
   position: 'relative',
 });
 
+export const iconClass = css({
+  fontSize: '1.25rem !important',
+});
+
+export const messageClass = css({
+  textAlign: 'center',
+});
