@@ -1,7 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { variables, shadows } = themeConfig;
+import { themeVariables, themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const { style } = document.documentElement;
 
@@ -10,7 +8,7 @@ const { style } = document.documentElement;
  * @param {boolean} isVisible The current visibility state
  */
 export const updateHeightCSSProperty = (isVisible) => {
-  const value = `${isVisible ? variables.tabBar.height : 0}px`;
+  const value = `${isVisible ? themeVariables.tabBar.height : 0}px`;
   /**
    * Update the css property with the correct value. Glamor can't be used here,
    * since it's not capable to update variables within the global scope.
@@ -26,8 +24,8 @@ export default css({
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
-  boxShadow: shadows.tabBar,
-  background: '#fafafa',
+  boxShadow: themeShadows.tabBar,
+  background: themeColors.lightOverlay,
   ':before': {
     position: 'absolute',
     top: 0,
