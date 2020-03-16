@@ -19,7 +19,7 @@ export const storeCard = css({
   ':last-of-type': {
     marginBottom: 0,
   },
-  border: '1px solid #EBEBEB',
+  border: `1px solid ${themeColors.shade7}`,
   boxSizing: 'border-box',
   boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)',
   borderRadius: '0px 0px 3px 3px',

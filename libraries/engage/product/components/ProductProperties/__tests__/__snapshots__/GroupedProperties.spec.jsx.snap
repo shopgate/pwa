@@ -12,6 +12,7 @@ Array [
   >
     <Accordion
       className={null}
+      contentClassName={null}
       handleLabel={null}
       renderLabel={[Function]}
       testId="product-properties-group-Group 1"
@@ -48,6 +49,7 @@ Array [
   >
     <Accordion
       className={null}
+      contentClassName={null}
       handleLabel={null}
       renderLabel={[Function]}
       testId="product-properties-group-Group 2"
