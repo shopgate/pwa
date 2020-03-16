@@ -11,7 +11,7 @@ export type FulfillmentSelectorContextProps = {
   location: Location | null,
   disabled: boolean,
   productId: ProductId,
-  handleChange: (element: Selection, changeOnly: boolean) => Promise<void>,
+  handleChange: (element: Selection, changeOnly: boolean) => void,
   conditioner: any,
   fulfillmentPaths: string[],
   userFulfillmentMethod: string | null,

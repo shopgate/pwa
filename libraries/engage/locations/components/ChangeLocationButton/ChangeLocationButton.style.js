@@ -3,7 +3,7 @@ import { css } from 'glamor';
 
 export const button = css({
   fontSize: '0.75rem !important',
-  textAlign: 'right',
+  // textAlign: 'right',
   padding: '4px 0 !important',
 }).toString();
 

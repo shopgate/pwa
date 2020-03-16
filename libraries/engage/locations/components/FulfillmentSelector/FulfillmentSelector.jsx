@@ -68,31 +68,34 @@ function FulfillmentSelector(props: Props) {
    * Whenever the pick-up selection is made, open the
    * store selector sheet and use the new location.
    */
-  const handleChange = React.useCallback(async (element, changeOnly = false) => {
-    const passed = await conditioner.without('fulfillment-inventory').check();
+  const handleChange = React.useCallback((element, changeOnly = false) => {
+    conditioner.without('fulfillment-inventory').check().then((passed) => {
+      if (!passed) {
+        return;
+      }
 
-    if (!passed) {
-      return;
-    }
+      const method = (element === IN_STORE_PICKUP) ? IN_STORE_PICKUP : DIRECT_SHIP;
 
-    const method = (element === IN_STORE_PICKUP) ? IN_STORE_PICKUP : DIRECT_SHIP;
+      setSelection(element);
+      storeFulfillmentMethod(method);
 
-    setSelection(element);
-    storeFulfillmentMethod(method);
+      if (
+        !changeOnly
+        && (isOpen || ((method === IN_STORE_PICKUP) && (!!location && !!location.code)))
+      ) {
+        return;
+      }
 
-    if (isOpen || (method === IN_STORE_PICKUP && (location && location.code))) {
-      return;
-    }
+      if (method === DIRECT_SHIP) {
+        setSelectedLocation(null);
+        return;
+      }
 
-    if (method === DIRECT_SHIP) {
-      setSelectedLocation(null);
-      return;
-    }
-
-    setIsOpen(true);
-    FulfillmentSheet.open({
-      callback: handleClose,
-      changeOnly,
+      setIsOpen(true);
+      FulfillmentSheet.open({
+        callback: handleClose,
+        changeOnly,
+      });
     });
   }, [conditioner, storeFulfillmentMethod, isOpen, location, handleClose]);
 
@@ -128,4 +131,4 @@ function FulfillmentSelector(props: Props) {
   );
 }
 
-export default hot(connect(FulfillmentSelector));
+export default hot(connect(React.memo<Props>(FulfillmentSelector)));

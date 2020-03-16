@@ -17,7 +17,7 @@ import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 type Props = {
   name: Selection,
   children: React.Node,
-  onChange: (name: Selection) => Promise<void>,
+  onChange: (name: Selection) => void,
   disabled?: boolean,
 }
 
@@ -26,7 +26,7 @@ type Props = {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function FulfillmentSelectorItem(props: Props) {
+function FulfillmentSelectorItemUnwrapped(props: Props) {
   const {
     name, children, onChange, disabled,
   } = props;
@@ -63,6 +63,8 @@ export function FulfillmentSelectorItem(props: Props) {
   );
 }
 
-FulfillmentSelectorItem.defaultProps = {
+FulfillmentSelectorItemUnwrapped.defaultProps = {
   disabled: false,
 };
+
+export const FulfillmentSelectorItem = React.memo<Props>(FulfillmentSelectorItemUnwrapped);

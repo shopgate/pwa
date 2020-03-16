@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { getThemeSettings } from '../../../../core';
 import { getAvailabilitySettings } from '../../../helpers';
-import StockInfo from '../StockInfo';
+import { StockInfo } from '../StockInfo';
 
 jest.mock('../../../../core', () => ({
   ...jest.requireActual('../../../../core'),

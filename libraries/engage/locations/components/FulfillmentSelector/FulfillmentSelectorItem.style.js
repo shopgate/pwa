@@ -51,6 +51,7 @@ export const itemRow = css({
 export const itemColumn = css({
   flexGrow: 1,
   flexShrink: 0,
+  display: 'block',
   width: '50%',
   '&:first-of-type': {
     paddingRight: variables.gap.small,

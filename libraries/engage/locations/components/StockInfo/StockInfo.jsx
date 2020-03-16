@@ -9,13 +9,11 @@ import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
 import { getAvailabilitySettings } from '../../helpers';
 import defaultSettings from './StockInfo.defaultSettings';
 import { StockInfoInventory } from './StockInfoInventory';
-import StoreName from './StockInfoStoreName';
 import { type Location } from '../../locations.types';
 
 type Props = {
   location: Location,
   className?: string | {} | null,
-  showStoreName?: boolean,
 }
 
 /**
@@ -23,7 +21,7 @@ type Props = {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-export function StockInfo({ location, className, showStoreName }: Props) {
+export function StockInfo({ location, className }: Props) {
   const { locationStockInfo } = getThemeSettings('product') || {};
   const settings = defaultsDeep(locationStockInfo, defaultSettings);
 
@@ -32,13 +30,9 @@ export function StockInfo({ location, className, showStoreName }: Props) {
 
   const defaultClassName = css({
     color: availabilityTextColor,
-    fontSize: '0.875rem',
+    fontSize: '0.75rem',
     margin: 0,
   }).toString();
-
-  const displayCapitalized = React.useMemo(() => (
-    location.productInventory && location.productInventory.visible === null
-  ) || !availabilityText, [availabilityText, location.productInventory]);
 
   const portalProps = React.useMemo(() => ({
     location,
@@ -56,10 +50,6 @@ export function StockInfo({ location, className, showStoreName }: Props) {
           maxNumberVisible={settings.maxNumberOfVisibleInventory}
           aboveMaxExtension={settings.aboveMaxExtension}
         />
-        <StoreName
-          name={showStoreName ? location.name : null}
-          displayCapitalized={displayCapitalized}
-        />
       </span>
     </SurroundPortals>
   );
@@ -67,5 +57,4 @@ export function StockInfo({ location, className, showStoreName }: Props) {
 
 StockInfo.defaultProps = {
   className: null,
-  showStoreName: true,
 };

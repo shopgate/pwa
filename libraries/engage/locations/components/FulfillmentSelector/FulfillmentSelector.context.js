@@ -9,7 +9,7 @@ export const FulfillmentSelectorContext = createContext<FulfillmentSelectorConte
   location: null,
   disabled: true,
   productId: null,
-  handleChange: async () => { },
+  handleChange: () => { },
   conditioner: {},
   fulfillmentPaths: [],
   userFulfillmentMethod: null,
