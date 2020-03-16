@@ -48,7 +48,9 @@ function FulfillmentProvider(props: Props) {
   const {
     children,
     locations,
+    baseProduct: propsBaseProduct,
     product: propsProduct,
+    location: productLocation,
     userInput,
     fulfillmentPaths,
     selectLocation,
@@ -88,9 +90,9 @@ function FulfillmentProvider(props: Props) {
     }
   }, [props.title, stage]);
 
-  React.useEffect(() => {
-    setIsOpen(open);
-  }, [open]);
+  /** Effects for updating a state based on new props */
+  React.useEffect(() => setIsOpen(open), [open]);
+  React.useEffect(() => setProduct(propsProduct), [propsProduct]);
 
   /**
    * Checks whether the given stage is currently set.
@@ -299,7 +301,9 @@ function FulfillmentProvider(props: Props) {
     handleOpen,
     handleClose,
     locations,
+    baseProduct: propsBaseProduct,
     product,
+    location: productLocation,
     userInput,
     fulfillmentPaths,
     selectLocation: handleSelectLocation,
