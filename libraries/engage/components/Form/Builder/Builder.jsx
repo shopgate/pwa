@@ -267,10 +267,6 @@ class Builder extends Component {
     const elementValue = this.state.formData[element.id];
     const elementVisible = this.state.elementVisibility[element.id] || false;
 
-    if (!elementVisible) {
-      return null;
-    }
-
     // Take a dynamic REACT element based on its type
     const Element = this.getFormElementComponent(element.type);
     if (!Element) {

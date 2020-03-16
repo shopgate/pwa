@@ -268,7 +268,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
 </Builder>
 `;
 
-exports[`<Builder /> should hide element if setVisibilty rule applies 1`] = `
+exports[`<Builder /> should modify the element visibility if setVisibilty rule applies 1`] = `
 <Builder
   className={null}
   config={
@@ -741,7 +741,7 @@ exports[`<Builder /> should hide element if setVisibilty rule applies 1`] = `
 </Builder>
 `;
 
-exports[`<Builder /> should hide element if setVisibilty rule applies 2`] = `
+exports[`<Builder /> should modify the element visibility if setVisibilty rule applies 2`] = `
 <Builder
   className={null}
   config={
@@ -1008,7 +1008,37 @@ exports[`<Builder /> should hide element if setVisibilty rule applies 2`] = `
         <Portal
           name="foo.bar"
           props={null}
-        />
+        >
+          <ElementText
+            element={
+              Object {
+                "actions": Array [
+                  Object {
+                    "rules": Array [
+                      Object {
+                        "context": "foo",
+                        "data": Array [
+                          "abc",
+                        ],
+                        "type": "notIn",
+                      },
+                    ],
+                    "type": "setVisibility",
+                  },
+                ],
+                "custom": false,
+                "handleChange": [Function],
+                "id": "bar",
+                "label": "bar",
+                "type": "text",
+              }
+            }
+            errorText=""
+            name="foo_bar"
+            value=""
+            visible={false}
+          />
+        </Portal>
         <Portal
           name="foo.bar.after"
           props={null}
@@ -1019,7 +1049,54 @@ exports[`<Builder /> should hide element if setVisibilty rule applies 2`] = `
 </Builder>
 `;
 
-exports[`<Builder /> should not render invisible field 1`] = `
+exports[`<Builder /> should render empty form 1`] = `
+<Builder
+  className={null}
+  config={
+    Object {
+      "fields": Object {},
+    }
+  }
+  defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+  validationErrors={Array []}
+>
+  <Form
+    className="foo"
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      className="foo form"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className={null}
+      />
+    </form>
+  </Form>
+</Builder>
+`;
+
+exports[`<Builder /> should render invisible field with visibility prop set to false 1`] = `
 <Builder
   className={null}
   config={
@@ -1074,59 +1151,29 @@ exports[`<Builder /> should not render invisible field 1`] = `
         <Portal
           name="foo.firstName"
           props={null}
-        />
+        >
+          <ElementText
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "firstName",
+                "label": "foo",
+                "type": "text",
+                "visible": false,
+              }
+            }
+            errorText=""
+            name="foo_firstName"
+            value=""
+            visible={false}
+          />
+        </Portal>
         <Portal
           name="foo.firstName.after"
           props={null}
         />
       </div>
-    </form>
-  </Form>
-</Builder>
-`;
-
-exports[`<Builder /> should render empty form 1`] = `
-<Builder
-  className={null}
-  config={
-    Object {
-      "fields": Object {},
-    }
-  }
-  defaults={Object {}}
-  elements={
-    Object {
-      "checkbox": [Function],
-      "country": [Function],
-      "date": [Function],
-      "email": [Function],
-      "number": [Function],
-      "password": [Function],
-      "phone": [Function],
-      "province": [Function],
-      "radio": [Function],
-      "select": [Function],
-      "text": [Function],
-    }
-  }
-  handleUpdate={[Function]}
-  name="foo"
-  onSubmit={[Function]}
-  validationErrors={Array []}
->
-  <Form
-    className="foo"
-    onSubmit={[Function]}
-  >
-    <form
-      action="#"
-      className="foo form"
-      onKeyPress={[Function]}
-      onSubmit={[Function]}
-    >
-      <div
-        className={null}
-      />
     </form>
   </Form>
 </Builder>

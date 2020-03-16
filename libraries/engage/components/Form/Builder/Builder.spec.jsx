@@ -45,7 +45,7 @@ describe('<Builder />', () => {
     expect(wrapper.find('TextField').length).toEqual(2);
   });
 
-  it('should not render invisible field', () => {
+  it('should render invisible field with visibility prop set to false', () => {
     const wrapper = mount((
       <Builder
         config={{
@@ -62,11 +62,12 @@ describe('<Builder />', () => {
       />
     ));
 
+    // The TextField component is hidden by the ElementText component
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TextField').length).toEqual(0);
   });
 
-  it('should hide element if setVisibilty rule applies', () => {
+  it('should modify the element visibility if setVisibilty rule applies', () => {
     const wrapper = mount((
       <Builder
         config={{
@@ -95,14 +96,15 @@ describe('<Builder />', () => {
       />
     ));
 
-    // Both should be visible at the beginning.
+    // Both should be marked visible at the beginning.
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TextField').length).toEqual(2);
 
     // Simulate user input to the text field.
     wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
 
-    // Second field should be hidden now.
+    // Second field should be marked as hidden but be still rendered.
+    // The TextField component is only rendered when the ElementText is visible.
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TextField').length).toEqual(1);
   });

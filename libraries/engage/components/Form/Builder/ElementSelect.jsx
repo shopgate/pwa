@@ -15,7 +15,12 @@ const ElementSelect = (props) => {
     errorText,
     name,
     value,
+    visible,
   } = props;
+
+  if (!visible) {
+    return null;
+  }
 
   return (
     <div className={camelCase(name)}>
@@ -43,10 +48,12 @@ ElementSelect.propTypes = {
     PropTypes.bool.isRequired,
     PropTypes.number.isRequired,
   ]),
+  visible: PropTypes.bool,
 };
 
 ElementSelect.defaultProps = {
   value: '',
+  visible: true,
 };
 
 export default memo(ElementSelect);
