@@ -13,7 +13,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       alt={null}
       animating={true}
       aria-hidden={null}
-      backgroundColor="#f2f2f2"
+      backgroundColor="#fff"
       className="css-3hjqnz"
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
@@ -61,7 +61,7 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
       data-test-id="placeHolder"
     >
       <Placeholder
-        className="css-19rc2oq"
+        className="css-1g8mrwn"
       />
     </div>
   </div>
@@ -81,7 +81,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       alt={null}
       animating={true}
       aria-hidden={null}
-      backgroundColor="#f2f2f2"
+      backgroundColor="#fff"
       className=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
@@ -162,7 +162,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
       data-test-id="placeHolder"
     >
       <Placeholder
-        className="css-19rc2oq"
+        className="css-1g8mrwn"
       />
     </div>
   </div>
@@ -183,7 +183,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
       data-test-id="placeHolder"
     >
       <Placeholder
-        className="css-19rc2oq"
+        className="css-1g8mrwn"
       />
     </div>
   </div>
@@ -197,14 +197,14 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
 >
   <div
     aria-hidden={null}
-    className="css-y5kkpq css-3hjqnz"
+    className="css-y5kkpq"
   >
     <div
       className="css-1vq3byi"
       data-test-id="placeHolder"
     >
       <Placeholder
-        className="css-19rc2oq"
+        className="css-1g8mrwn"
       />
     </div>
   </div>
@@ -224,8 +224,8 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       alt={null}
       animating={true}
       aria-hidden={null}
-      backgroundColor="#f2f2f2"
-      className="css-3hjqnz"
+      backgroundColor="#fff"
+      className=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
       noBackground={false}

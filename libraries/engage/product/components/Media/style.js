@@ -1,7 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { shadows } = themeConfig;
+import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 export const placeholderContainer = css({
   position: 'relative',
@@ -30,7 +28,7 @@ export const placeholderIcon = css({
   height: `${placeholderIconScale * 100}% !important`,
   top: `${(1.0 - placeholderIconScale) * 50}%`,
   left: `${(1.0 - placeholderIconScale) * 50}%`,
-  color: 'rgba(0, 0, 0, .05)',
+  color: themeColors.placeholder,
 }).toString();
 
 export const innerShadow = css({
@@ -42,7 +40,7 @@ export const innerShadow = css({
     right: 0,
     bottom: 0,
     left: 0,
-    boxShadow: shadows.productImage,
+    boxShadow: themeShadows.productImage,
     pointerEvents: 'none',
   },
 }).toString();

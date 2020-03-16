@@ -1,8 +1,18 @@
-import React, { memo } from 'react';
+// @flow
+import * as React from 'react';
 import { css } from 'glamor';
-import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
-import styles from './style';
+import * as styles from './MessageBar.style';
+import { type ClassNames, type Message } from './MessageBar.types';
+
+type DefaultProps = {
+  classNames: ClassNames,
+};
+
+type Props = DefaultProps & {
+  messages: Message[],
+  classNames?: ClassNames
+};
 
 /**
  * The MessageBar component.
@@ -11,7 +21,7 @@ import styles from './style';
  * @param {Object} props.classNames Styling.
  * @return {JSX}
  */
-const MessageBar = memo(({ messages, classNames }) => (
+const MessageBar = ({ messages, classNames }: Props) => (
   <div
     className={css(styles.container, classNames.container)}
     role={messages.length > 0 ? 'alert' : null}
@@ -21,7 +31,8 @@ const MessageBar = memo(({ messages, classNames }) => (
         type = 'info',
         message,
         messageParams = null,
-        translated,
+        translated = false,
+        icon: Icon = null,
       } = item;
 
       const messageOutput = !translated ? i18n.text(message, messageParams) : message;
@@ -29,36 +40,31 @@ const MessageBar = memo(({ messages, classNames }) => (
       return (
         <div
           key={`${type}-${message}`}
-          className={css(classNames.message, styles[type])}
+          className={css(
+            classNames.message,
+            styles[type],
+            Icon ? styles.withIcon : null
+          )}
         >
+          {Icon && <Icon className={css(classNames.icon, styles.icon).toString()} /> }
           <span className={styles.srOnly}>
             {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
           </span>
-          <span aria-hidden>
+          <span aria-hidden className={Icon ? styles.messageToIcon : null}>
             {messageOutput}
           </span>
         </div>
       );
     })}
   </div>
-));
-
-MessageBar.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.shape({
-    message: PropTypes.string,
-    type: PropTypes.string,
-  })).isRequired,
-  classNames: PropTypes.shape({
-    container: PropTypes.shape(),
-    message: PropTypes.shape(),
-  }),
-};
+);
 
 MessageBar.defaultProps = {
   classNames: {
     container: null,
     message: null,
+    icon: null,
   },
 };
 
-export default MessageBar;
+export default React.memo<Props>(MessageBar);

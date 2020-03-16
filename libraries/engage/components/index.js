@@ -81,7 +81,6 @@ export { default as Glow } from '@shopgate/pwa-ui-shared/Glow';
 export { default as IndicatorCircle } from '@shopgate/pwa-ui-shared/IndicatorCircle';
 export { default as LoadingIndicator } from '@shopgate/pwa-ui-shared/LoadingIndicator';
 export { default as Manufacturer } from '@shopgate/pwa-ui-shared/Manufacturer';
-export { default as MessageBar } from './MessageBar';
 export { default as NoResults } from '@shopgate/pwa-ui-shared/NoResults';
 export { default as Placeholder } from '@shopgate/pwa-ui-shared/Placeholder';
 export { default as PlaceholderLabel } from '@shopgate/pwa-ui-shared/PlaceholderLabel';
@@ -163,6 +162,7 @@ export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/Visibil
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 
 // LOCAL
+export { MessageBar } from './MessageBar';
 export { default as NavigationHandler } from './NavigationHandler';
 export { default as TimeBoundary } from './TimeBoundary';
 export { default as IntersectionVisibility } from './IntersectionVisibility';

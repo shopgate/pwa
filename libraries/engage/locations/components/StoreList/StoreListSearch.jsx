@@ -1,25 +1,27 @@
 import React, {
-  Fragment, useState, useRef, useCallback, useContext, useLayoutEffect,
+  Fragment, useState, useRef, useCallback, useContext, useLayoutEffect, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import {
-  ProgressBar, MagnifierIcon, LocatorIcon, MessageBar,
+  ProgressBar, MagnifierIcon, LocatorIcon, MessageBar, InfoIcon,
 } from '@shopgate/engage/components';
 import { FulfillmentContext } from '../../locations.context';
 import connect from './StoreListSearch.connector';
 import {
-  container, search, input, icon, progressBar,
+  container, search, input, icon, progressBar, messageClass, iconClass,
 } from './StoreListSearch.style';
 
 /**
  * @param {Function} getProductLocations getProductLocations.
+ * @param {Function} storeSearchQuery .
+ * @param {string} searchQuery .
  * @returns {JSX}
  */
-function StoreListSearch({ getProductLocations }) {
+function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery }) {
   const { product, locations } = useContext(FulfillmentContext);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(searchQuery);
   const [message, setMessage] = useState('');
   const inputEl = useRef(null);
 
@@ -29,6 +31,10 @@ function StoreListSearch({ getProductLocations }) {
       setMessage('locations.error_no_store_found');
     }
   }, [locations]);
+
+  useEffect(() => {
+    storeSearchQuery(query);
+  }, [query, storeSearchQuery]);
 
   /**
    * Triggers a location update.
@@ -42,12 +48,22 @@ function StoreListSearch({ getProductLocations }) {
     const error = await getProductLocations(product.id, postalCode);
 
     if (error) {
-      // Show a message when the locations request failed.
       setMessage(error);
     }
 
     setLoading(false);
   }, [getProductLocations, product]);
+
+  useLayoutEffect(() => {
+    if (!product) {
+      return;
+    }
+
+    setTimeout(() => { // wait for the sheet to be opened.
+      updateProductLocations(query !== '' ? query : null);
+    }, 300);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * Updates the query state of the component when the input changes.
@@ -104,10 +120,16 @@ function StoreListSearch({ getProductLocations }) {
         <ProgressBar isVisible={loading} />
       </div>
       {message &&
-        <MessageBar messages={[{
-          type: 'error',
-          message,
-        }]}
+        <MessageBar
+          messages={[{
+            type: 'error',
+            message,
+            icon: InfoIcon,
+          }]}
+          classNames={{
+            icon: iconClass,
+            message: messageClass,
+          }}
         />
       }
     </Fragment>
@@ -116,6 +138,8 @@ function StoreListSearch({ getProductLocations }) {
 
 StoreListSearch.propTypes = {
   getProductLocations: PropTypes.func.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  storeSearchQuery: PropTypes.func.isRequired,
 };
 
 export default connect(StoreListSearch);

@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const fadeDuration = 150;
 const slideDuration = 150;
@@ -54,7 +55,7 @@ const container = {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'white',
+    backgroundColor: themeColors.light,
     animation: `${slideInPickerModal} ${slideDuration}ms 1 both ${easing}`,
   }).toString(),
   inactive: css({

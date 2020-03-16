@@ -41,14 +41,12 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasNoScanner() { return mockHasNoScanner; },
   get scanner() { return { showSearchFieldIcon: mockShowSearchFieldIcon }; },
   themeConfig: {
-    colors: {
-      accent: '',
-    },
-    variables: {
-      gap: {},
-    },
+    colors: mockThemeConfig.colors,
+    variables: mockThemeConfig.variables,
     icons: mockThemeConfig.icons,
   },
+  themeColors: mockThemeConfig.colors,
+  themeVariables: mockThemeConfig.variables,
 }));
 
 const store = createMockStore();

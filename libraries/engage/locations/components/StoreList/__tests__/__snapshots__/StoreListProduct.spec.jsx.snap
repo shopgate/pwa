@@ -4,13 +4,13 @@ exports[`<StoreListProduct /> should not render if not product is supplied 1`] =
 
 exports[`<StoreListProduct /> should render a product without selected variants. 1`] = `
 <div
-  className="css-g4i9nv"
+  className="css-73f55n"
 >
   <div
     className="css-1f7wp8g"
   >
     <div
-      className="css-19shpyr"
+      className="css-15aij0t"
     >
       <WithWidgetSettings(ProductImage)
         src="http://www.some.com"
@@ -20,7 +20,7 @@ exports[`<StoreListProduct /> should render a product without selected variants.
       className="css-yp5sfk"
     >
       <StoreListProductName />
-      <Connect(StoreListProductVariants) />
+      <StoreListProductInfo />
     </div>
   </div>
 </div>

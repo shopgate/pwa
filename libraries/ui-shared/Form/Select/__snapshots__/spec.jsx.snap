@@ -68,7 +68,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
             className="css-1tpmuef"
             style={
               Object {
-                "borderBottomColor": undefined,
+                "borderBottomColor": "#fa5400",
                 "transform": "scale3d(0,1,1)",
               }
             }
@@ -148,7 +148,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
             className="css-1tpmuef"
             style={
               Object {
-                "borderBottomColor": undefined,
+                "borderBottomColor": "#fa5400",
                 "transform": "scale3d(0,1,1)",
               }
             }
@@ -208,7 +208,7 @@ exports[`<Select /> should render select with no options 1`] = `
             className="css-1tpmuef"
             style={
               Object {
-                "borderBottomColor": undefined,
+                "borderBottomColor": "#fa5400",
                 "transform": "scale3d(0,1,1)",
               }
             }

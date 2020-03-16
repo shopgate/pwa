@@ -1,11 +1,12 @@
 import { css } from 'glamor';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const magnifier = css({
   fill: 'currentColor',
 }).toString();
 
 const background = css({
-  fill: '#fff',
+  fill: themeColors.light,
 }).toString();
 
 const circle = css({

@@ -1,55 +1,21 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeVariables, themeColors, themeShadows } from '@shopgate/pwa-common/helpers/config';
 
-const { variables, colors } = themeConfig;
-const contentPadding = `${variables.gap.small * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.big}px`;
-const contentBoxShadow = 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px';
-
-export const productContainer = css({
-  padding: variables.gap.big,
-  fontSize: '0.875rem',
-  boxShadow: `inset 0 1px 0 ${colors.shade7}`,
-}).toString();
-
-export const productContainerInner = css({
-  display: 'flex',
-  flexFlow: 'row nowrap',
-}).toString();
-
-export const productImage = css({
-  flex: '0 0 auto',
-  width: '2.5rem',
-  height: '2.5rem',
-  background: colors.placeholder,
-  marginRight: variables.gap.big,
-}).toString();
-
-export const productContent = css({
-  flexGrow: 1,
-  display: 'block',
-}).toString();
-
-export const productName = css({
-  fontWeight: 600,
-  marginBottom: variables.gap.small,
-}).toString();
-
-export const variants = css({
-  color: colors.shade3,
-  marginBottom: variables.gap.small,
-}).toString();
+const contentPadding = `${themeVariables.gap.small * 1.5}px ${themeVariables.gap.small * 1.5}px ${themeVariables.gap.big}px`;
+const contentBoxShadow = `inset ${themeShadows.material}`;
 
 export const stores = css({
-  background: colors.background,
+  overflowY: 'auto',
+  background: themeColors.background,
   padding: contentPadding,
   fontSize: '0.875rem',
   boxShadow: contentBoxShadow,
 }).toString();
 
 export const store = css({
-  background: colors.light,
+  background: themeColors.light,
   boxShadow: '0 1px 2px rgba(0, 0, 0, .117647)',
-  marginBottom: variables.gap.big,
+  marginBottom: themeVariables.gap.big,
   ':last-of-type': {
     marginBottom: 0,
   },
@@ -58,8 +24,8 @@ export const store = css({
 export const storeMain = css({
   display: 'flex',
   flexFlow: 'row nowrap',
-  padding: `${variables.gap.small * 1.5}px ${variables.gap.big}px`,
-  boxShadow: `inset 0 -1px 0 ${colors.shade7}`,
+  padding: `${themeVariables.gap.small * 1.5}px ${themeVariables.gap.big}px`,
+  boxShadow: `inset 0 -1px 0 ${themeColors.shade7}`,
 }).toString();
 
 export const storeInfo = css({
@@ -72,7 +38,7 @@ export const storeInfo = css({
 export const storeHeading = css({
   display: 'flex',
   justifyContent: 'space-between',
-  paddingBottom: variables.gap.small,
+  paddingBottom: themeVariables.gap.small,
 }).toString();
 
 export const storeName = css({
@@ -82,11 +48,11 @@ export const storeName = css({
 
 export const storeDistance = css({
   whiteSpace: 'nowrap',
-  color: colors.shade3,
+  color: themeColors.shade3,
 }).toString();
 
 export const storeHoursToday = css({
-  color: colors.shade3,
+  color: themeColors.shade3,
 }).toString();
 
 export const storeDetails = css({
@@ -95,7 +61,7 @@ export const storeDetails = css({
 }).toString();
 
 export const storeDetailsOperationHours = css({
-  padding: `0 ${variables.gap.big}px ${variables.gap.big}px 0`,
+  padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.big}px 0`,
   flexShrink: 0,
 }).toString();
 
@@ -106,7 +72,7 @@ export const address = css({
 
 export const addressIcon = css({
   fontSize: '1.25rem',
-  padding: `2px ${variables.gap.small}px 0 0`,
+  padding: `2px ${themeVariables.gap.small}px 0 0`,
 }).toString();
 
 export const openingHours = css({
@@ -119,16 +85,16 @@ export const openingHoursRow = css({
 
 export const openingHoursDay = css({
   display: 'table-cell',
-  paddingRight: variables.gap.big,
+  paddingRight: themeVariables.gap.big,
 }).toString();
 
 export const phone = css({
-  paddingTop: variables.gap.small,
+  paddingTop: themeVariables.gap.small,
   display: 'flex',
   flexFlow: 'row nowrap',
 }).toString();
 
 export const phoneIcon = css({
   fontSize: '1.25rem',
-  paddingRight: variables.gap.small,
+  paddingRight: themeVariables.gap.small,
 }).toString();
