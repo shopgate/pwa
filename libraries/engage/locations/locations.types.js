@@ -1,13 +1,13 @@
 // @flow
 import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+  DIRECT_SHIP,
+  IN_STORE_PICKUP,
   STAGE_SELECT_STORE,
   STAGE_RESERVE_FORM,
   STAGE_RESPONSE_SUCCESS,
   STAGE_RESPONSE_ERROR,
-  FULFILLMENT_PATH_QUICK_RESERVE,
-  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  QUICK_RESERVE,
+  MULTI_LINE_RESERVE,
 } from './constants';
 
 type LocationType = {
@@ -89,8 +89,8 @@ export type LocationsByProductIdState = {
   [productId: string]: ProductLocations
 }
 
-export type FulfillmentPath = typeof FULFILLMENT_PATH_QUICK_RESERVE
-  | typeof FULFILLMENT_PATH_MULTI_LINE_RESERVE;
+export type FulfillmentPath = typeof QUICK_RESERVE
+  | typeof MULTI_LINE_RESERVE;
 
 export type UserLocationState = {
   code: string | null;
@@ -98,8 +98,8 @@ export type UserLocationState = {
   productCode: string | null;
   visibleInventory: number | null;
   addressCode: string | null;
-  fulfillmentMethod: typeof PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
-  | typeof PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
+  fulfillmentMethod: typeof DIRECT_SHIP
+  | typeof IN_STORE_PICKUP;
 }
 
 export type ReservationFormValues = {
@@ -113,8 +113,8 @@ export type ReservationFormValues = {
   email2?: string;
 }
 
-export type UserLocationFulfillmentMethod = typeof PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
-  | typeof PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
+export type UserLocationFulfillmentMethod = typeof DIRECT_SHIP
+  | typeof IN_STORE_PICKUP;
 
 export type UserLocationLocationCode = string | null;
 

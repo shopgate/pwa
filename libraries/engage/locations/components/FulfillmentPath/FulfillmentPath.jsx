@@ -4,16 +4,15 @@ import { Availability } from '@shopgate/engage/product';
 import { RadioGroup } from '../../../components';
 import { useFulfillmentState } from '../../locations.hooks';
 import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
-  PRODUCT_FULFILLMENT_METHOD_ROPIS,
+  DIRECT_SHIP,
+  DIRECT_SHIP_LABEL,
+  IN_STORE_PICKUP,
+  IN_STORE_PICKUP_LABEL,
+  ROPIS,
 } from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { container, pickUpContainer, radioGroup } from './FulfillmentPath.style';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
-
-const directShip = 'product.fulfillment_selector.direct_ship';
-const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
 /**
  * Renders the fulfillment path selector stage.
@@ -25,7 +24,9 @@ export function FulfillmentPath() {
   } = useFulfillmentState();
   const { fulfillment } = cartItem || {};
   const isPickUp = !!(cartItem && (fulfillment !== null && fulfillment.method !== 'DIRECT_SHIP'));
-  const [selection, setSelection] = React.useState(isPickUp ? pickUp : directShip);
+  const [selection, setSelection] = React.useState(
+    isPickUp ? IN_STORE_PICKUP_LABEL : DIRECT_SHIP_LABEL
+  );
 
   if (!product || !cartItem) {
     return null;
@@ -35,16 +36,14 @@ export function FulfillmentPath() {
  * @param {string} elementName The name of the selected element.
  */
   function handleChange(elementName) {
-    const method = elementName === pickUp
-      ? PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
-      : PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP;
+    const method = (elementName === IN_STORE_PICKUP_LABEL) ? IN_STORE_PICKUP : DIRECT_SHIP;
 
     setSelection(elementName);
     changeFulfillment(method, cartItem);
   }
 
   const reserveDisabled = !fulfillmentMethods
-    || !fulfillmentMethods.includes(PRODUCT_FULFILLMENT_METHOD_ROPIS);
+    || !fulfillmentMethods.includes(ROPIS);
 
   return (
     <div className={container}>
@@ -56,14 +55,11 @@ export function FulfillmentPath() {
         isControlled
         direction="column"
       >
-        <FulfillmentPathItem name={directShip}>
-          <Availability
-            productId={product.id}
-            fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
-          />
+        <FulfillmentPathItem name={DIRECT_SHIP_LABEL}>
+          <Availability productId={product.id} fulfillmentSelection={DIRECT_SHIP} />
         </FulfillmentPathItem>
         <FulfillmentPathItem
-          name={pickUp}
+          name={IN_STORE_PICKUP_LABEL}
           attributes={{
             disabled: reserveDisabled,
           }}

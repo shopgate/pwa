@@ -58,7 +58,7 @@ export { default as ProductImage } from './components/ProductImage';
 export { default as MediaSlider } from './components/MediaSlider';
 export { default as QuantityPicker } from './components/QuantityPicker';
 export { default as EffectivityDates } from './components/EffectivityDates';
-export { default as Availability } from './components/Availability';
+export { Availability } from './components/Availability';
 export { default as PriceDifference } from './components/PriceDifference';
 export { FeaturedMedia, MediaImage } from './components/Media';
 export { VariantSwatch } from './components/Swatch';

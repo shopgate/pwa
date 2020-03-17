@@ -84,22 +84,6 @@
       "not": "Derzeit nicht verfügbar",
       "not_search_similar": "{name} nicht verfügbar. Nach ähnlichen Produkten suchen?"
     },
-    "fulfillment_selector": {
-      "heading": "Verfügbarkeit",
-      "direct_ship": "Online bestellen",
-      "pick_up_in_store": "Abholen in Filiale",
-      "error": {
-        "direct_ship_not_orderable": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
-        "reserve_not_orderable": "This combination is not available at your chosen location, select a different location or other variants."
-      }
-    },
-    "location_stock_info": {
-      "pick_up_at": "bei {storeName}",
-      "available": "{visibleInventory} auf Lager",
-      "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
-      "notAvailable": "Verfügbar in 2-3 Tagen",
-      "customAvailability": "In dieser Filiale nicht verfügbar"
-    },
     "relations": {
       "showMore": "Mehr"
     },
@@ -160,7 +144,24 @@
     "choose_reservation_type": "Reservierungs-Art wählen",
     "quick_reserve": "Sofort reservieren",
     "reserve_to_cart": "In den Warenkorb reservieren",
-    "change_fulfillment_method": "Liefermethode ändern"
+    "change_fulfillment_method": "Liefermethode ändern",
+    "fulfillment": {
+      "heading": "Verfügbarkeit",
+      "direct_ship": "Online bestellen",
+      "pick_up_in_store": "Abholen in Filiale",
+      "error": {
+        "direct_ship": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
+        "reserve": "This combination is not available at your chosen location, select a different location or other variants."
+      }
+    },
+    "stock_info": {
+      "pick_up_at": "bei {storeName}",
+      "available": "{visibleInventory} auf Lager",
+      "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
+      "notAvailable": "Verfügbar in 2-3 Tagen",
+      "customAvailability": "In dieser Filiale nicht verfügbar"
+    },
+    "no_available": "nicht verfügbar"
   },
   "category": {
     "error": {

@@ -2,13 +2,12 @@
 
 exports[`<StockInfo /> should render with the visible inventory and with the store name 1`] = `
 <StockInfo
-  className=""
+  className={null}
   location={
     Object {
       "name": "Test Store",
     }
   }
-  showStoreName={true}
 >
   <SurroundPortals
     portalName="product.location-stock-info"
@@ -16,7 +15,7 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
       Object {
         "availabilityText": "demo_availability_text",
         "availabilityTextColor": "green",
-        "className": "",
+        "className": null,
         "location": Object {
           "name": "Test Store",
         },
@@ -29,7 +28,7 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -42,7 +41,7 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -50,9 +49,9 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
       }
     >
       <span
-        className="css-d3hu7n"
+        className="css-1604zsc css-nil"
       >
-        <Inventory
+        <StockInfoInventory
           aboveMaxExtension="++"
           availabilityText="demo_availability_text"
           location={
@@ -62,29 +61,6 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
           }
           maxNumberVisible={100}
         />
-        <StoreName
-          displayCapitalized={false}
-          name="Test Store"
-        >
-          <Translate
-            className={null}
-            params={
-              Object {
-                "storeName": "Test Store",
-              }
-            }
-            role={null}
-            string="product.location_stock_info.pick_up_at"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              product.location_stock_info.pick_up_at
-            </span>
-          </Translate>
-        </StoreName>
       </span>
     </Portal>
     <Portal
@@ -93,7 +69,7 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -106,7 +82,7 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
 
 exports[`<StockInfo /> should render without store name 1`] = `
 <StockInfo
-  className=""
+  className={null}
   location={
     Object {
       "name": "Test Store",
@@ -120,7 +96,7 @@ exports[`<StockInfo /> should render without store name 1`] = `
       Object {
         "availabilityText": "demo_availability_text",
         "availabilityTextColor": "green",
-        "className": "",
+        "className": null,
         "location": Object {
           "name": "Test Store",
         },
@@ -133,7 +109,7 @@ exports[`<StockInfo /> should render without store name 1`] = `
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -146,7 +122,7 @@ exports[`<StockInfo /> should render without store name 1`] = `
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -154,9 +130,9 @@ exports[`<StockInfo /> should render without store name 1`] = `
       }
     >
       <span
-        className="css-d3hu7n"
+        className="css-1604zsc css-nil"
       >
-        <Inventory
+        <StockInfoInventory
           aboveMaxExtension="++"
           availabilityText="demo_availability_text"
           location={
@@ -166,10 +142,6 @@ exports[`<StockInfo /> should render without store name 1`] = `
           }
           maxNumberVisible={100}
         />
-        <StoreName
-          displayCapitalized={false}
-          name=""
-        />
       </span>
     </Portal>
     <Portal
@@ -178,7 +150,7 @@ exports[`<StockInfo /> should render without store name 1`] = `
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -191,13 +163,12 @@ exports[`<StockInfo /> should render without store name 1`] = `
 
 exports[`<StockInfo /> should render without the visible inventory 1`] = `
 <StockInfo
-  className=""
+  className={null}
   location={
     Object {
       "name": "Test Store",
     }
   }
-  showStoreName={true}
 >
   <SurroundPortals
     portalName="product.location-stock-info"
@@ -205,7 +176,7 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
       Object {
         "availabilityText": "demo_availability_text",
         "availabilityTextColor": "green",
-        "className": "",
+        "className": null,
         "location": Object {
           "name": "Test Store",
         },
@@ -218,7 +189,7 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -231,7 +202,7 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },
@@ -239,9 +210,9 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
       }
     >
       <span
-        className="css-d3hu7n"
+        className="css-1604zsc css-nil"
       >
-        <Inventory
+        <StockInfoInventory
           aboveMaxExtension="++"
           availabilityText="demo_availability_text"
           location={
@@ -251,29 +222,6 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
           }
           maxNumberVisible={100}
         />
-        <StoreName
-          displayCapitalized={false}
-          name="Test Store"
-        >
-          <Translate
-            className={null}
-            params={
-              Object {
-                "storeName": "Test Store",
-              }
-            }
-            role={null}
-            string="product.location_stock_info.pick_up_at"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              product.location_stock_info.pick_up_at
-            </span>
-          </Translate>
-        </StoreName>
       </span>
     </Portal>
     <Portal
@@ -282,7 +230,7 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
         Object {
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
-          "className": "",
+          "className": null,
           "location": Object {
             "name": "Test Store",
           },

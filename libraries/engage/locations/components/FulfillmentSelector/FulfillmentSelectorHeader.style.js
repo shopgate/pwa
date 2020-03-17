@@ -5,5 +5,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { variables } = themeConfig;
 
 export const container = css({
-  padding: `${variables.gap.small}px ${variables.gap.big}px`,
+  fontWeight: 500,
+  marginBottom: variables.gap.xsmall,
 });

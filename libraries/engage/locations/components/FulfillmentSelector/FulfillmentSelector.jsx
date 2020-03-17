@@ -1,103 +1,95 @@
 // @flow
 import { hot } from 'react-hot-loader/root';
-import React, { useCallback, useState } from 'react';
-import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
-import { Availability } from '@shopgate/engage/product';
+import * as React from 'react';
+import { DIRECT_SHIP, IN_STORE_PICKUP } from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
-import { StockInfo } from '../StockInfo';
 import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
-  PRODUCT_FULFILLMENT_SELECTOR,
-} from '../../constants';
-import FulfillmentSelectorItem from './FulfillmentSelectorItem';
-import FulfillmentSelectorItemDirectShip from './FulfillmentSelectorItemDirectShip';
-import FulfillmentSelectorItemReserve from './FulfillmentSelectorItemReserve';
-import FulfillmentSelectorAddToCart from './FulfillmentSelectorAddToCart';
-import { ChangeLocationButton } from '../ChangeLocationButton';
+  type OwnProps,
+  type StateProps,
+  type DispatchProps,
+  type Selection,
+  type FulfillmentSelectorContextProps,
+} from './FulfillmentSelector.types';
+import { FulfillmentSelectorContext } from './FulfillmentSelector.context';
+import { FulfillmentSelectorHeader } from './FulfillmentSelectorHeader';
+import { FulfillmentSelectorItem } from './FulfillmentSelectorItem';
+import { FulfillmentSelectorDirectShip } from './FulfillmentSelectorDirectShip';
+import { FulfillmentSelectorReserve } from './FulfillmentSelectorReserve';
+import { FulfillmentSelectorAddToCart } from './FulfillmentSelectorAddToCart';
+import { container } from './FulfillmentSelector.style';
 import connect from './FulfillmentSelector.connector';
-import * as styles from './FulfillmentSelector.style';
-import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
 
 type Props = OwnProps & StateProps & DispatchProps;
 
 /**
- * Renders a fulfillment selector box for fulfillment methods direct ship and pick up in store,
- * when fulfillment methods are set up for the product and pick up in store is one of them.
+ * Renders the fulfillment selector radio button group.
  * @param {Object} props The component props.
- * @param {string} props.productCode Code to the product or a variant.
- * @param {string[]} props.fulfillmentMethods All fulfillment methods provided for the product.
- * @param {Object} props.location Last location that was selected for the previous product/variant.
  * @returns {JSX}
  */
-export const FulfillmentSelector = (props: Props) => {
+function FulfillmentSelector(props: Props) {
   const {
-    productId: productCode,
+    productId,
     shopFulfillmentMethods,
+    productFulfillmentMethods,
     location,
     conditioner,
     disabled,
     storeFulfillmentMethod,
     userFulfillmentMethod,
+    fulfillmentPaths,
+    isOrderable,
   } = props;
-  const directShip = 'product.fulfillment_selector.direct_ship';
-  const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
-  const [selection, setSelection] = useState(
-    (
-      userFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
-      && !disabled
-    )
-      ? pickUp
-      : directShip
+  const isInStoreAndActive = userFulfillmentMethod === IN_STORE_PICKUP && !disabled;
+
+  const [selection, setSelection] = React.useState<Selection>(
+    isInStoreAndActive ? IN_STORE_PICKUP : DIRECT_SHIP
   );
-  const [selectedLocation, setSelectedLocation] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectedLocation, setSelectedLocation] = React.useState(null);
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  // Update selected location for sheet close
-  const handleClose = useCallback((newLocationData) => {
+  /**
+   * Updates the selected location when the sheet closes.
+   */
+  const handleClose = React.useCallback((newLocationData) => {
     setIsOpen(false);
-    if (!newLocationData) {
+
+    if (!newLocationData && selectedLocation === null) {
       // Reset the UI back to directShip if there was no location selected already
-      if (selectedLocation === null) {
-        setSelection(directShip);
-      }
-    } else if (newLocationData.productCode === productCode) {
+      setSelection(DIRECT_SHIP);
+      return;
+    }
+
+    if (newLocationData && newLocationData.productCode === productId) {
       // Update the selected location only when the selection was done for the same product.
       setSelectedLocation(newLocationData.location);
     }
-  }, [selectedLocation, productCode]);
+  }, [productId, selectedLocation]);
 
   /**
    * Whenever the pick-up selection is made, open the
    * store selector sheet and use the new location.
    */
-  const handleChange = useCallback((elementName, changeOnly = false) => {
-    // Run only external conditions
+  const handleChange = React.useCallback((element, changeOnly = false) => {
     conditioner.without('fulfillment-inventory').check().then((passed) => {
       if (!passed) {
         return;
       }
 
-      let method = PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP;
+      const method = (element === IN_STORE_PICKUP) ? IN_STORE_PICKUP : DIRECT_SHIP;
 
-      if (elementName === pickUp) {
-        method = PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
-      }
-
-      setSelection(elementName);
+      setSelection(element);
       storeFulfillmentMethod(method);
 
-      if (isOpen) {
+      if (
+        !changeOnly
+        && (isOpen || ((method === IN_STORE_PICKUP) && (!!location && !!location.code)))
+      ) {
         return;
       }
 
-      if (elementName === directShip) {
+      if (method === DIRECT_SHIP) {
         setSelectedLocation(null);
-        return;
-      }
-
-      if (elementName === pickUp && location.code) {
         return;
       }
 
@@ -113,75 +105,35 @@ export const FulfillmentSelector = (props: Props) => {
     return null;
   }
 
-  /**
-   * Click handler for pick up in store.
-   */
-  function handleChangePickup() {
-    handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP, true);
-  }
+  const context: FulfillmentSelectorContextProps = {
+    selection,
+    selectedLocation,
+    location: location || null,
+    disabled,
+    productId,
+    handleChange,
+    conditioner,
+    fulfillmentPaths,
+    userFulfillmentMethod,
+    isOrderable,
+    shopFulfillmentMethods,
+    productFulfillmentMethods,
+  };
 
   return (
-    <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR} portalProps={{ productCode }}>
-      <div
-        className={styles.container}
-        data-test-id="product-fulfillment-selector"
-      >
-        <div role="heading" aria-hidden className={styles.title}>
-          <I18n.Text string="product.fulfillment_selector.heading" />
-        </div>
-        <RadioGroup
-          name="product.fulfillment_selector"
-          value={selection}
-          className={disabled ? styles.radioGroupDisabled : styles.radioGroup}
-          onChange={handleChange}
-          isControlled
-          direction="column"
-        >
-          <FulfillmentSelectorItem name={directShip}>
-            <FulfillmentSelectorItemDirectShip
-              selected={selection === directShip}
-              productId={productCode}
-            >
-              <Availability
-                productId={productCode}
-                fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
-              />
-            </FulfillmentSelectorItemDirectShip>
-          </FulfillmentSelectorItem>
-          <FulfillmentSelectorItem name={pickUp}>
-            {!disabled && (
-              <FulfillmentSelectorItemReserve
-                location={selectedLocation || location}
-                selected={selection === pickUp}
-              >
-                {location && (
-                  <div className={styles.pickUpGroupContainer}>
-                    <StockInfo location={selectedLocation || location} />
-                    {(selection === pickUp) && (
-                      <ChangeLocationButton onClick={handleChangePickup} />
-                    )}
-                  </div>
-                )}
-              </FulfillmentSelectorItemReserve>
-            )}
-          </FulfillmentSelectorItem>
-        </RadioGroup>
+    <FulfillmentSelectorContext.Provider value={context}>
+      <div className={container}>
+        <FulfillmentSelectorHeader />
+        <FulfillmentSelectorItem name={DIRECT_SHIP} onChange={handleChange}>
+          <FulfillmentSelectorDirectShip />
+        </FulfillmentSelectorItem>
+        <FulfillmentSelectorItem name={IN_STORE_PICKUP} onChange={handleChange} disabled={disabled}>
+          <FulfillmentSelectorReserve />
+        </FulfillmentSelectorItem>
       </div>
-      {!disabled && (
-        <FulfillmentSelectorAddToCart
-          conditioner={conditioner}
-          location={selectedLocation || location}
-        />
-      )}
-    </SurroundPortals>
+      <FulfillmentSelectorAddToCart />
+    </FulfillmentSelectorContext.Provider>
   );
-};
+}
 
-FulfillmentSelector.defaultProps = {
-  disabled: true,
-  fulfillmentMethods: null,
-  location: null,
-  storeFulfillmentMethod() { },
-};
-
-export default hot(connect(FulfillmentSelector));
+export default hot(connect(React.memo<Props>(FulfillmentSelector)));

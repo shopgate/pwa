@@ -1,4 +1,4 @@
-import { PRODUCT_FULFILLMENT_METHOD_ROPIS } from '../locations';
+import { ROPIS } from '../locations';
 
 /**
  * Group cart items for view
@@ -11,13 +11,13 @@ export function groupCartItems(cartItems) {
     const { method, location: { code } = {} } = fulfillment || {};
 
     let groupType = cartItem.type;
-    if (code && method === PRODUCT_FULFILLMENT_METHOD_ROPIS) {
+    if (code && method === ROPIS) {
       groupType = code;
     }
 
     if (!acc[groupType]) {
       acc[groupType] = {
-        fulfillmentLocationId: method === PRODUCT_FULFILLMENT_METHOD_ROPIS ? code : null,
+        fulfillmentLocationId: method === ROPIS ? code : null,
         items: [],
       };
     }

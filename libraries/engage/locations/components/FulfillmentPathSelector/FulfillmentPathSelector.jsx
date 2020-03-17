@@ -3,14 +3,10 @@ import * as React from 'react';
 import { UIEvents, i18n } from '@shopgate/engage/core';
 import { SheetList } from '@shopgate/engage/components';
 import SheetDrawer from '../../../components/SheetDrawer';
-import {
-  FULFILLMENT_PATH_QUICK_RESERVE,
-  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
-} from '../../constants';
+import { QUICK_RESERVE, MULTI_LINE_RESERVE } from '../../constants';
 import { sheetDrawer } from './FulfillmentPathSelector.style';
 
 let callback = null;
-
 const EVENT_SET_OPEN = 'FulfillmentPathSelector.setOpen';
 
 /**
@@ -50,7 +46,7 @@ function FulfillmentPathSelector() {
    */
   function handleQuickReserve(event) {
     event.preventDefault();
-    handleSelect(FULFILLMENT_PATH_QUICK_RESERVE);
+    handleSelect(QUICK_RESERVE);
   }
 
   /**
@@ -58,7 +54,7 @@ function FulfillmentPathSelector() {
    */
   function handleReserveToCart(event) {
     event.preventDefault();
-    handleSelect(FULFILLMENT_PATH_MULTI_LINE_RESERVE);
+    handleSelect(MULTI_LINE_RESERVE);
   }
 
   /**

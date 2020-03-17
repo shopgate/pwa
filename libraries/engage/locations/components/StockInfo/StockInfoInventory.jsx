@@ -1,6 +1,14 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import { I18n } from '../../../components';
+import { type Location } from '../../locations.types';
+
+type Props = {
+  availabilityText: string,
+  location: Location,
+  maxNumberVisible: number,
+  aboveMaxExtension: string,
+}
 
 /**
  * Renders the inventory given by the location into a given translation string.
@@ -11,51 +19,30 @@ import { I18n } from '../../../components';
  * @param {string} props.aboveMaxExtension The component props.
  * @return {JSX}
  */
-function Inventory(props) {
+export function StockInfoInventory(props: Props) {
   const {
     availabilityText, location, maxNumberVisible, aboveMaxExtension,
   } = props;
+
+  const visibleInventory = React.useMemo(() => {
+    if (!location || !location.productInventory) {
+      return null;
+    }
+
+    if (
+      location.productInventory.visible !== null
+      && location.productInventory.visible > maxNumberVisible
+    ) {
+      return `${maxNumberVisible}${aboveMaxExtension}`;
+    }
+    return location.productInventory.visible;
+  }, [aboveMaxExtension, location, maxNumberVisible]);
 
   if (!location || !availabilityText || !location.productInventory) {
     return null;
   }
 
   return (
-    <Fragment>
-      <I18n.Text
-        string={availabilityText}
-        params={{
-          // Limit stock to max visible stock if it is set
-          visibleInventory: (
-            maxNumberVisible &&
-              location.productInventory.visible > maxNumberVisible
-              ? `${maxNumberVisible}${aboveMaxExtension}`
-              : location.productInventory.visible
-          ),
-        }}
-      />
-      &nbsp;
-    </Fragment>
+    <I18n.Text string={availabilityText} params={{ visibleInventory }} />
   );
 }
-
-Inventory.propTypes = {
-  aboveMaxExtension: PropTypes.string,
-  availabilityText: PropTypes.string,
-  location: PropTypes.shape({
-    name: PropTypes.string,
-    productInventory: PropTypes.shape({
-      visible: PropTypes.number,
-    }),
-  }),
-  maxNumberVisible: PropTypes.number,
-};
-
-Inventory.defaultProps = {
-  aboveMaxExtension: '',
-  availabilityText: '',
-  location: null,
-  maxNumberVisible: null,
-};
-
-export default Inventory;

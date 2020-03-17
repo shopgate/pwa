@@ -3,10 +3,7 @@ import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
 import { getUserData } from '@shopgate/engage/user';
 import { isProductAvailable } from '../helpers/productInventory';
-import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_ROPIS,
-} from '../constants';
+import { DIRECT_SHIP, ROPIS } from '../constants';
 import { type State } from '../../types';
 import {
   type LocationsState,
@@ -93,7 +90,7 @@ export function makeGetUserLocationFulfillmentMethod():
   return createSelector(
     getUserLocation,
     (userLocation) => {
-      const { fulfillmentMethod = PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } = userLocation || {};
+      const { fulfillmentMethod = DIRECT_SHIP } = userLocation || {};
       return fulfillmentMethod;
     }
   );
@@ -299,7 +296,7 @@ export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
     (locations, methods) => {
       if (
         !methods
-        || !methods.includes(PRODUCT_FULFILLMENT_METHOD_ROPIS)
+        || !methods.includes(ROPIS)
         || !locations
         || !locations.length === 0
       ) {
@@ -363,7 +360,7 @@ export function makeIsRopeProductOrderable(
     getProductLocation,
     (userLocationFulfillmentMethod, productLocation) => {
       if (
-        userLocationFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+        userLocationFulfillmentMethod === DIRECT_SHIP
       ) {
         return null;
       }

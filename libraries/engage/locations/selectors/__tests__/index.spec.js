@@ -3,8 +3,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import set from 'lodash/set';
 import { getUserData } from '@shopgate/engage/user';
 import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+  DIRECT_SHIP,
+  IN_STORE_PICKUP,
 } from '../../constants';
 import {
   makeGetUserLocation,
@@ -34,7 +34,7 @@ describe('engage > locations > selectors', () => {
       userLocation: {
         code: 'code 1',
         name: 'ACME Store',
-        fulfillmentMethod: PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+        fulfillmentMethod: IN_STORE_PICKUP,
       },
       locationsById: {
         code1: {
@@ -85,12 +85,12 @@ describe('engage > locations > selectors', () => {
     });
 
     it('should return "direct ship" when the state is empty', () => {
-      expect(getUserLocationFulfillmentMethod({})).toEqual(PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP);
+      expect(getUserLocationFulfillmentMethod({})).toEqual(DIRECT_SHIP);
     });
 
     it('should return "pickup in store" when it is set within the state', () => {
       expect(getUserLocationFulfillmentMethod(mockedState))
-        .toEqual(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP);
+        .toEqual(IN_STORE_PICKUP);
     });
   });
 
@@ -191,7 +191,7 @@ describe('engage > locations > selectors', () => {
 
       it('should return true when "direct ship" is selected as user fulfillment method', () => {
         const localState = cloneDeep(mockedState);
-        set(localState, 'locations.userLocation.fulfillmentMethod', PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP);
+        set(localState, 'locations.userLocation.fulfillmentMethod', DIRECT_SHIP);
         expect(isRopeProductOrderable(localState, { locationId: 'SG1', productId: 'sg1' })).toBe(null);
       });
 
@@ -218,7 +218,7 @@ describe('engage > locations > selectors', () => {
 
       it('should return true when "direct ship" is selected as user fulfillment method', () => {
         const localState = cloneDeep(mockedState);
-        set(localState, 'locations.userLocation.fulfillmentMethod', PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP);
+        set(localState, 'locations.userLocation.fulfillmentMethod', DIRECT_SHIP);
         expect(isRopeProductOrderable(localState, { locationId: 'SG2', productId: 'sg2' })).toBe(null);
       });
 

@@ -11,7 +11,7 @@ import {
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
-import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '@shopgate/engage/locations';
+import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -152,7 +152,7 @@ class AddToCartBar extends Component {
       // Add the user location for ROPIS if it is set.
       if (
         userLocation !== null
-        && userLocation.fulfillmentMethod !== PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+        && userLocation.fulfillmentMethod !== DIRECT_SHIP
         && hasFulfillmentMethods
       ) {
         addToCartData.fulfillment = {

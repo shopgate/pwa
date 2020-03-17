@@ -11,7 +11,7 @@ type Props = {
  * @param {Function} onClick callback.
  * @returns {JSX}
  */
-export const ChangeLocationButton = ({ onClick }: Props) => (
+export const ChangeLocationButton = React.memo<Props>(({ onClick }: Props) => (
   <RippleButton
     onClick={onClick}
     className={button}
@@ -21,4 +21,4 @@ export const ChangeLocationButton = ({ onClick }: Props) => (
   >
     <I18n.Text string="locations.change_location" />
   </RippleButton>
-);
+));

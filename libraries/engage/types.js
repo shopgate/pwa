@@ -17,3 +17,5 @@ export type SubscribeHandler = (
   stream$: Observable<Action>,
   callback: (params: ObservableAction) => void
 ) => void;
+
+export type ClassName = { [string]: any } | string | null;
