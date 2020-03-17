@@ -21,8 +21,8 @@ export function FulfillmentSelectorImpossibleError() {
   }
 
   const label = isDirectShip
-    ? i18n.text('locations.fulfillment.errro.direct_ship')
-    : i18n.text('locations.fulfillment.errro.reserve');
+    ? i18n.text('locations.fulfillment.error.direct_ship')
+    : i18n.text('locations.fulfillment.error.reserve');
 
   return (
     <Availability
