@@ -3,12 +3,12 @@ import React from 'react';
 import classNames from 'classnames';
 import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
-import { IN_STORE_PICKUP_LABEL, IN_STORE_PICKUP } from '../../constants';
+import { IN_STORE_PICKUP_LABEL, IN_STORE_PICKUP, ROPIS } from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { ChangeLocationButton } from '../ChangeLocationButton';
 import { itemRow, itemColumn } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
-import { container } from './FulfillmentSelectorReserve.style';
+import { container, unavailable } from './FulfillmentSelectorReserve.style';
 
 /**
  * Renders the reservation item label.
@@ -19,8 +19,10 @@ export function FulfillmentSelectorReserve() {
     location,
     selectedLocation,
     handleChange,
+    productFulfillmentMethods,
   } = useFulfillmentSelectorState();
   const usedLocation = selectedLocation || location;
+  const enabled = productFulfillmentMethods && productFulfillmentMethods.includes(ROPIS);
 
   const handleChangeLocation = React.useCallback(() => {
     handleChange(IN_STORE_PICKUP, true);
@@ -31,7 +33,7 @@ export function FulfillmentSelectorReserve() {
       <div>
         {i18n.text(IN_STORE_PICKUP_LABEL)}
       </div>
-      {usedLocation && (
+      {(enabled && usedLocation) && (
         <Grid className={classNames(itemRow, container.toString())} component="div">
           <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
             <div>{usedLocation.name}</div>
@@ -41,6 +43,11 @@ export function FulfillmentSelectorReserve() {
             <StockInfo location={usedLocation} />
           </Grid.Item>
         </Grid>
+      )}
+      {!enabled && (
+        <div className={unavailable}>
+          {i18n.text('locations.no_available')}
+        </div>
       )}
     </React.Fragment>
   );

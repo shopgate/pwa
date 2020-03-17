@@ -154,7 +154,8 @@
       "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
       "notAvailable": "Verfügbar in 2-3 Tagen",
       "customAvailability": "In dieser Filiale nicht verfügbar"
-    }
+    },
+    "no_available": "nicht verfügbar"
   },
   "category": {
     "error": {

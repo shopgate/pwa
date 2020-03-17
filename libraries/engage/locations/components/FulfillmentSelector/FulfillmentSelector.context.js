@@ -14,4 +14,6 @@ export const FulfillmentSelectorContext = createContext<FulfillmentSelectorConte
   fulfillmentPaths: [],
   userFulfillmentMethod: null,
   isOrderable: false,
+  shopFulfillmentMethods: null,
+  productFulfillmentMethods: null,
 });

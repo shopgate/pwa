@@ -16,6 +16,8 @@ export type FulfillmentSelectorContextProps = {
   fulfillmentPaths: string[],
   userFulfillmentMethod: string | null,
   isOrderable: boolean,
+  shopFulfillmentMethods?: string[] | null,
+  productFulfillmentMethods: string[] | null,
 }
 
 export type OwnProps = {
@@ -25,6 +27,7 @@ export type OwnProps = {
 
 export type StateProps = {
   shopFulfillmentMethods?: string[] | null,
+  productFulfillmentMethods: string[] | null,
   disabled: boolean,
   location: Location | null,
   userFulfillmentMethod: string | null,

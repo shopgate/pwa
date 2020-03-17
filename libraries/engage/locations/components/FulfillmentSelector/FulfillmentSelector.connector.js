@@ -10,6 +10,7 @@ import {
   makeGetUserLocation,
   makeGetProductLocation,
   makeGetUserLocationFulfillmentMethod,
+  makeGetFulfillmentMethods,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
@@ -26,6 +27,7 @@ function makeMapStateToProps() {
   const getProductLocation = makeGetProductLocation(true);
   const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+  const getFulfillmentMethods = makeGetFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.
@@ -35,6 +37,7 @@ function makeMapStateToProps() {
   return (state, props) => ({
     fulfillmentPaths: getFulfillmentPaths(state),
     shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
+    productFulfillmentMethods: getFulfillmentMethods(state, props),
     userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
     location: getProductLocation(state, props) || getUserLocation(state),
     disabled: isFulfillmentSelectorDisabled(state, props),

@@ -30,6 +30,7 @@ function FulfillmentSelector(props: Props) {
   const {
     productId,
     shopFulfillmentMethods,
+    productFulfillmentMethods,
     location,
     conditioner,
     disabled,
@@ -115,6 +116,8 @@ function FulfillmentSelector(props: Props) {
     fulfillmentPaths,
     userFulfillmentMethod,
     isOrderable,
+    shopFulfillmentMethods,
+    productFulfillmentMethods,
   };
 
   return (

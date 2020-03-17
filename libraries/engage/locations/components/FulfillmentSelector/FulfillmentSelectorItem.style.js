@@ -21,7 +21,7 @@ const icon = {
 export const inactiveIcon = css(icon).toString();
 
 export const inactiveIconDisabled = css(icon, {
-  opacity: 0.5,
+  opacity: 0.3,
 }).toString();
 
 export const activeIcon = css(icon, {
@@ -30,7 +30,7 @@ export const activeIcon = css(icon, {
 
 export const activeIconDisabled = css(icon, {
   color: colors.primary,
-  opacity: 0.5,
+  opacity: 0.3,
 }).toString();
 
 export const radio = css({
