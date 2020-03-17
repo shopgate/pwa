@@ -153,7 +153,8 @@
       "limitedAvailability": "Only {visibleInventory} left in stock",
       "notAvailable": "Pick up within 2-3 days",
       "customAvailability": "Not available in this store"
-    }
+    },
+    "no_available": "not available"
   },
   "category": {
     "error": {
