@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
 import { Availability } from '../../../product';
@@ -16,6 +16,17 @@ export function FulfillmentSelectorDirectShip() {
   const { productId, selection, isOrderable } = useFulfillmentSelectorState();
   const selected = (selection === DIRECT_SHIP);
 
+  if (selected && !isOrderable) {
+    return (
+      <React.Fragment>
+        <div>
+          {i18n.text(DIRECT_SHIP_LABEL)}
+        </div>
+        <FulfillmentSelectorImpossibleError />
+      </React.Fragment>
+    );
+  }
+
   return (
     <Grid className={itemRow} component="div">
       <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
@@ -24,9 +35,6 @@ export function FulfillmentSelectorDirectShip() {
       <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
         {isOrderable && (
           <Availability productId={productId} fulfillmentSelection={DIRECT_SHIP} />
-        )}
-        {(selected && !isOrderable) && (
-          <FulfillmentSelectorImpossibleError />
         )}
       </Grid.Item>
     </Grid>

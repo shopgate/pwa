@@ -3,9 +3,11 @@ import React from 'react';
 import classNames from 'classnames';
 import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
+import { isProductAvailable } from '../../helpers';
 import { IN_STORE_PICKUP_LABEL, IN_STORE_PICKUP, ROPIS } from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { ChangeLocationButton } from '../ChangeLocationButton';
+import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossibleError';
 import { itemRow, itemColumn } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { container, unavailable } from './FulfillmentSelectorReserve.style';
@@ -16,6 +18,7 @@ import { container, unavailable } from './FulfillmentSelectorReserve.style';
  */
 export function FulfillmentSelectorReserve() {
   const {
+    selection,
     location,
     selectedLocation,
     handleChange,
@@ -23,6 +26,8 @@ export function FulfillmentSelectorReserve() {
   } = useFulfillmentSelectorState();
   const usedLocation = selectedLocation || location;
   const enabled = productFulfillmentMethods && productFulfillmentMethods.includes(ROPIS);
+  const selected = (selection === IN_STORE_PICKUP);
+  const isOrderable = isProductAvailable(location || undefined);
 
   const handleChangeLocation = React.useCallback(() => {
     handleChange(IN_STORE_PICKUP, true);
@@ -33,7 +38,7 @@ export function FulfillmentSelectorReserve() {
       <div>
         {i18n.text(IN_STORE_PICKUP_LABEL)}
       </div>
-      {(enabled && usedLocation) && (
+      {(isOrderable && enabled && usedLocation) && (
         <Grid className={classNames(itemRow, container.toString())} component="div">
           <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
             <div>{usedLocation.name}</div>
@@ -43,6 +48,9 @@ export function FulfillmentSelectorReserve() {
             <StockInfo location={usedLocation} />
           </Grid.Item>
         </Grid>
+      )}
+      {(enabled && selected && !isOrderable) && (
+        <FulfillmentSelectorImpossibleError />
       )}
       {!enabled && (
         <div className={unavailable}>
