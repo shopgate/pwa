@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import classNames from 'classnames';
+import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
 import { IN_STORE_PICKUP_LABEL, IN_STORE_PICKUP } from '../../constants';
 import { StockInfo } from '../StockInfo';
@@ -27,15 +28,15 @@ export function FulfillmentSelectorReserve() {
         {i18n.text(IN_STORE_PICKUP_LABEL)}
       </div>
       {usedLocation && (
-        <div className={classNames(itemRow.toString(), container.toString())}>
-          <div className={itemColumn}>
+        <Grid className={classNames(itemRow, container.toString())} component="div">
+          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
             <div>{usedLocation.name}</div>
             <ChangeLocationButton onClick={handleChangeLocation} />
-          </div>
-          <div className={itemColumn}>
+          </Grid.Item>
+          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
             <StockInfo location={usedLocation} />
-          </div>
-        </div>
+          </Grid.Item>
+        </Grid>
       )}
     </React.Fragment>
   );
