@@ -15,7 +15,7 @@ type LocationType = {
   name: string;
 }
 
-type LocationOperationHours = {
+export type LocationOperationHours = {
   sun: string;
   mon: string;
   tue: string;
@@ -63,6 +63,7 @@ export type Location = {
   address?: LocationAddress;
   addresses?: LocationAddress[];
   productInventory?: LocationProductInventory;
+  distance?: number;
   unitSystem?: string;
 }
 

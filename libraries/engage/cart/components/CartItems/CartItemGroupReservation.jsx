@@ -3,7 +3,7 @@ import React from 'react';
 import { every, isEmpty } from 'lodash';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { Accordion } from '@shopgate/engage/components';
-import { StoreAddressOpeningHours, StoreAddressPhoneNumber } from '@shopgate/engage/locations';
+import { StoreOpeningHours, StorePhoneNumber } from '@shopgate/engage/locations';
 import { type OptionalLocationAware } from '@shopgate/engage/locations/locations.types';
 import { CartItemGroupReservationLabel } from './CartItemGroupReservationLabel';
 import connect from './CartItemGroupReservation.connector';
@@ -37,8 +37,8 @@ function CartItemGroupReservation({ location }: Props) {
         className={accordionToggle}
       >
         <div className={addressDetails}>
-          <StoreAddressOpeningHours hours={operationHours} />
-          <StoreAddressPhoneNumber phone={phoneNumber} />
+          <StoreOpeningHours hours={operationHours} />
+          <StorePhoneNumber phone={phoneNumber} />
         </div>
       </Accordion>
     </CardListItem>

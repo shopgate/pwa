@@ -2,7 +2,7 @@
 export { FulfillmentSelector } from './FulfillmentSelector';
 export { FulfillmentSheet } from './FulfillmentSheet';
 export { FulfillmentPathSelector } from './FulfillmentPathSelector';
-export { StoreList, StoreAddressOpeningHours, StoreAddressPhoneNumber } from './StoreList';
+export { StoreList, StoreOpeningHours, StorePhoneNumber } from './StoreList';
 export {
   CartItemProductChangeLocation,
   CartChangeFulfillmentMethod,

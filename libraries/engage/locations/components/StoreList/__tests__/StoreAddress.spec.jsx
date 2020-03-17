@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { FulfillmentContext } from '../../../locations.context';
 import StoreContext from '../Store.context';
-import StoreAddress from '../StoreAddress';
+import StoreDetails from '../StoreAddress';
 
 const addresses = [
   {
@@ -32,7 +32,7 @@ describe.skip('<StoreAddress />', () => {
     const wrapper = mount((
       <FulfillmentContext.Provider value={context}>
         <StoreContext.Provider value={store}>
-          <StoreAddress address={addresses} />
+          <StoreDetails address={addresses} />
         </StoreContext.Provider>
       </FulfillmentContext.Provider>
     ));
@@ -44,7 +44,7 @@ describe.skip('<StoreAddress />', () => {
     const wrapper = mount((
       <FulfillmentContext.Provider value={context}>
         <StoreContext.Provider value={store}>
-          <StoreAddress address={addresses} />
+          <StoreDetails address={addresses} />
         </StoreContext.Provider>
       </FulfillmentContext.Provider>
     ));
@@ -60,7 +60,7 @@ describe.skip('<StoreAddress />', () => {
     const wrapper = mount((
       <FulfillmentContext.Provider value={context}>
         <StoreContext.Provider value={store}>
-          <StoreAddress address={addresses} />
+          <StoreDetails address={addresses} />
         </StoreContext.Provider>
       </FulfillmentContext.Provider>
     ));

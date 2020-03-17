@@ -102,8 +102,11 @@
   "locations": {
     "headline": "Negozi vicino a te",
     "details": "Dettagli del negozio",
+    "hours_details": "Store opening details",
     "today_hours": "Oggi: {hours}",
     "address": "{postalCode} {city}",
+    "map_open": "Open in maps",
+    "phone": "Phone",
     "mon": "Lunedì",
     "tue": "Martedì",
     "wed": "Mercoledì",

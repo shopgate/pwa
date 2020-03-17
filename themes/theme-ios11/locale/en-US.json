@@ -106,8 +106,11 @@
   "locations": {
     "headline": "Stores near you",
     "details": "Store Details",
+    "hours_details": "Store opening details",
     "today_hours": "Today: {hours}",
     "address": "{city}, {postalCode}, {region}",
+    "map_open": "Open in maps",
+    "phone": "Phone",
     "mon": "Monday",
     "tue": "Tuesday",
     "wed": "Wednesday",

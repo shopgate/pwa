@@ -102,9 +102,12 @@
   "locations": {
     "headline": "Lojas perto de você",
     "details": "Detalhes da loja",
+    "hours_details": "Store opening details",
     "today_hours": "Hoje: {hours}",
     "address": "{postalCode} {city}",
     "mon": "Segunda-feira",
+    "phone": "Phone",
+    "mon": "Monday",
     "tue": "Terça-feira",
     "wed": "Quarta-feira",
     "thu": "Quinta-Feira",
