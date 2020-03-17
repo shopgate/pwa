@@ -8,7 +8,7 @@ import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { container } from './FulfillmentSelectorImpossibleError.style';
 
 /**
- * Redners the "not possible" error for each item.
+ * Renders the "not possible" error for each item.
  * @returns {JSX}
  */
 export function FulfillmentSelectorImpossibleError() {
