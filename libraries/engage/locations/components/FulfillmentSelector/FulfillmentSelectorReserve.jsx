@@ -50,7 +50,11 @@ export function FulfillmentSelectorReserve() {
         </Grid>
       )}
       {(enabled && selected && !isOrderable) && (
-        <FulfillmentSelectorImpossibleError />
+        <React.Fragment>
+          <FulfillmentSelectorImpossibleError />
+          <ChangeLocationButton onClick={handleChangeLocation} />
+        </React.Fragment>
+
       )}
       {!enabled && (
         <div className={unavailable}>
