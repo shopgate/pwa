@@ -16,11 +16,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
   }
 >
   <div
-    className={
-      Object {
-        "data-css-yh2lvw": "",
-      }
-    }
+    className="css-yh2lvw"
   >
     <div
       id="test"
@@ -47,11 +43,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
   }
 >
   <div
-    className={
-      Object {
-        "data-css-yh2lvw": "",
-      }
-    }
+    className="css-yh2lvw"
   >
     <div
       id="test"

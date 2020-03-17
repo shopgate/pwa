@@ -1,54 +1,54 @@
-import React, { useContext, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { FulfillmentContext } from '../../locations.context';
-import { StockInfo } from '../StockInfo';
-import StoreContext from './Store.context';
-import StoreAddressHeading from './StoreAddressHeading';
-import StoreAddressHoursToday from './StoreAddressHoursToday';
-import StoreAddressStoreDetails from './StoreAddressStoreDetails';
+// @flow
+import React from 'react';
+import { type LocationAddress } from '../../locations.types';
+import { LocationIcon } from '../../../components';
+import { i18n } from '../../../core';
+import { address as container, addressIcon } from './Store.style';
 
-import {
-  store as storeStyles, storeMain, storeInfo,
-} from './style';
+type Props = {
+  address?: LocationAddress,
+};
 
 /**
- * Renders a single store address.
+ * Renders the pickup location's address information.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function StoreAddress({ address }) {
-  const store = useContext(StoreContext);
-  const { selectLocation } = useContext(FulfillmentContext);
-
-  const handleClick = useCallback(() => {
-    selectLocation(store);
-  }, [selectLocation, store]);
+export function StoreAddress({ address }: Props) {
+  if (!address) {
+    return null;
+  }
 
   return (
-    <div className={storeStyles} key={address.code}>
-      <div className={storeMain}>
-        <div
-          className={storeInfo}
-          onClick={handleClick}
-          onKeyDown={handleClick}
-          role="button"
-          tabIndex={0}
-        >
-          <StoreAddressHeading store={store} />
-          <StoreAddressHoursToday hours={store.operationHours} />
-          <StockInfo
-            location={store}
-            showStoreName={false}
-          />
-        </div>
+    <div className={container}>
+      <div className={addressIcon}>
+        <LocationIcon />
       </div>
-      <StoreAddressStoreDetails store={store} address={address} />
+      <div>
+        <div data-test-id="street">
+          {address.street}
+        </div>
+        {(address.street2 && address.street2 !== '') && (
+          <div data-test-id="street2">
+            {address.street2}
+          </div>
+        )}
+        {(address.street3 && address.street3 !== '') && (
+          <div data-test-id="street3">
+            {address.street3}
+          </div>
+        )}
+        {(address.street4 && address.street4 !== '') && (
+          <div data-test-id="street4">
+            {address.street4}
+          </div>
+        )}
+        {i18n.text('locations.address', address)}
+      </div>
     </div>
   );
 }
 
-StoreAddress.propTypes = {
-  address: PropTypes.shape().isRequired,
+StoreAddress.defaultProps = {
+  address: null,
 };
-
-export default StoreAddress;

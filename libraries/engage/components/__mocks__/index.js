@@ -36,7 +36,6 @@ export { default as InfoIcon } from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 export { default as InfoOutlineIcon } from '@shopgate/pwa-ui-shared/icons/InfoOutlineIcon';
 export { default as ListIcon } from '@shopgate/pwa-ui-shared/icons/ListIcon';
 export { default as LocalShippingIcon } from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
-export { default as LocationIcon } from '@shopgate/pwa-ui-shared/icons/LocationIcon';
 export { default as LockIcon } from '@shopgate/pwa-ui-shared/icons/LockIcon';
 export { default as LogoutIcon } from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
 export { default as MagnifierIcon } from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
@@ -57,9 +56,21 @@ export { default as UncheckedIcon } from '@shopgate/pwa-ui-shared/icons/Unchecke
 export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
+export const LocationIcon = () => 'LocationIcon';
+export const PhoneIcon = () => 'PhoneIcon';
+export const TimeIcon = () => 'TimeIcon';
 
-export const SurroundPortals = () => 'SurroundPortals';
-export const Accordion = () => 'Accordion';
+export const Link = ({ children }) => children;
+export const Ellipsis = ({ children }) => children;
+export const SurroundPortals = ({ children }) => children;
+export const Accordion = ({ children }) => children;
+export const Grid = ({ children }) => children;
+Grid.Item = ({ children }) => children;
+Grid.Item.displayName = 'Grid.Item';
+
+export const I18n = {
+  Text: () => 'I18n.Text',
+};
 
 export { default as View, ViewContext } from '../View/__mocks__/index';
 
