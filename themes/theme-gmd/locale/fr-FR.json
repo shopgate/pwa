@@ -118,8 +118,11 @@
   "locations": {
     "headline": "Magasins près de chez vous",
     "details": "Détails",
+    "hours_details": "Store opening details",
     "today_hours": "Aujourd'hui: {hours}",
     "address": "{postalCode} {city}",
+    "map_open": "Open in maps",
+    "phone": "Phone",
     "mon": "Lundi",
     "tue": "Mardi",
     "wed": "Mercredi",

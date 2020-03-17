@@ -121,8 +121,11 @@
   "locations": {
     "headline": "Tiendas cercanas",
     "details": "Detalles de la tienda",
+    "hours_details": "Store opening details",
     "today_hours": "Hoy: {hours}",
     "address": "{postalCode} {city}",
+    "map_open": "Open in maps",
+    "phone": "Phone",
     "mon": "Lunes",
     "tue": "Martes",
     "wed": "Miércoles",

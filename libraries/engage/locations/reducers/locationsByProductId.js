@@ -32,7 +32,10 @@ export default function locationsByProductId(
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          locations: action.locations,
+          locations: action.locations.map(location => ({
+            ...location,
+            address: location.addresses.find(a => a.isPrimary) || location.addresses[0],
+          })),
           isFetching: false,
         },
       };

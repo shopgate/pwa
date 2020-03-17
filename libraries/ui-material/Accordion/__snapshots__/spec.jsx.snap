@@ -3,6 +3,7 @@
 exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 <Accordion
   className={null}
+  contentClassName={null}
   handleLabel={null}
   testId="Some Thing"
 />
@@ -11,6 +12,7 @@ exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
   className={null}
+  contentClassName={null}
   handleLabel={null}
   renderLabel={[Function]}
   testId="Some Thing"
@@ -20,6 +22,7 @@ exports[`<Accordion /> should not render without children 1`] = `
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
   className={null}
+  contentClassName={null}
   handleLabel={null}
   renderLabel={[Function]}
   testId="Some Thing"
@@ -76,6 +79,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       </div>
     </div>
     <AccordionContent
+      className={null}
       id="Some-Thing-content"
       key="Some-Thing-content"
       open={false}
@@ -95,11 +99,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
         }
       >
         <div
-          className={
-            Object {
-              "data-css-yh2lvw": "",
-            }
-          }
+          className="css-yh2lvw"
         >
           Some content.
         </div>

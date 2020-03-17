@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > StoreList > StoreDetails should render as expected 1`] = `
+<StoreDetails>
+  <Accordion
+    contentClassName="css-kxm41v"
+    renderLabel={[Function]}
+  >
+    <StoreOpeningHours
+      hours={
+        Object {
+          "mon": "09:00 - 17:00",
+          "sun": "09:00 - 17:00",
+        }
+      }
+    >
+      <StoreDetailsLine
+        icon={[Function]}
+      >
+        <Grid
+          className="css-kmhio2"
+        >
+          <Grid.Item
+            className="css-5vu8pw"
+            shrink={0}
+          >
+            <TimeIcon>
+              TimeIcon
+            </TimeIcon>
+          </Grid.Item>
+          <Grid.Item
+            className="css-1s3c85m"
+            grow={1}
+          >
+            <Text
+              className="css-1tlpxzg"
+              string="locations.hours_details"
+            >
+              I18n.Text
+            </Text>
+            <div
+              className="css-1xm8nj0"
+            >
+              <StoreOpeningHoursLine
+                day="mon"
+                hours="09:00 - 17:00"
+                key="mon"
+              >
+                <div
+                  className="css-9shxm7"
+                >
+                  <div
+                    className="css-1ppc7ry"
+                  >
+                    locations.mon
+                  </div>
+                  <div>
+                    09:00 - 17:00
+                  </div>
+                </div>
+              </StoreOpeningHoursLine>
+              <StoreOpeningHoursLine
+                day="tue"
+                hours={null}
+                key="tue"
+              />
+              <StoreOpeningHoursLine
+                day="wed"
+                hours={null}
+                key="wed"
+              />
+              <StoreOpeningHoursLine
+                day="thu"
+                hours={null}
+                key="thu"
+              />
+              <StoreOpeningHoursLine
+                day="fri"
+                hours={null}
+                key="fri"
+              />
+              <StoreOpeningHoursLine
+                day="sat"
+                hours={null}
+                key="sat"
+              />
+              <StoreOpeningHoursLine
+                day="sun"
+                hours="09:00 - 17:00"
+                key="sun"
+              >
+                <div
+                  className="css-9shxm7"
+                >
+                  <div
+                    className="css-1ppc7ry"
+                  >
+                    locations.sun
+                  </div>
+                  <div>
+                    09:00 - 17:00
+                  </div>
+                </div>
+              </StoreOpeningHoursLine>
+            </div>
+          </Grid.Item>
+        </Grid>
+      </StoreDetailsLine>
+    </StoreOpeningHours>
+    <StorePhoneNumber
+      phone="06033123"
+    >
+      <a
+        href="tel:06033123"
+      >
+        <StoreDetailsLine
+          icon={[Function]}
+        >
+          <Grid
+            className="css-kmhio2"
+          >
+            <Grid.Item
+              className="css-5vu8pw"
+              shrink={0}
+            >
+              <PhoneIcon>
+                PhoneIcon
+              </PhoneIcon>
+            </Grid.Item>
+            <Grid.Item
+              className="css-1s3c85m"
+              grow={1}
+            >
+              <div
+                className="css-9d4lq5"
+              >
+                06033123
+              </div>
+              <Text
+                className="css-1tlpxzg"
+                string="locations.phone"
+              >
+                I18n.Text
+              </Text>
+            </Grid.Item>
+          </Grid>
+        </StoreDetailsLine>
+      </a>
+    </StorePhoneNumber>
+    <StoreAddressShort
+      address={
+        Object {
+          "city": "Butzbach",
+          "code": "code",
+          "country": "DE",
+          "phoneNumber": "06033123",
+          "postalCode": "35510",
+          "region": "HE",
+          "street": "Marktplatz 12",
+          "street2": null,
+          "street3": null,
+          "street4": null,
+        }
+      }
+    >
+      <Link
+        href="https://www.google.com/maps/dir/?api=1&destination=Marktplatz%2012%2C%20Butzbach%2035510"
+        target="_blank"
+      >
+        <StoreDetailsLine
+          icon={[Function]}
+        >
+          <Grid
+            className="css-kmhio2"
+          >
+            <Grid.Item
+              className="css-5vu8pw"
+              shrink={0}
+            >
+              <LocationIcon>
+                LocationIcon
+              </LocationIcon>
+            </Grid.Item>
+            <Grid.Item
+              className="css-1s3c85m"
+              grow={1}
+            >
+              <Ellipsis
+                className="css-9d4lq5"
+                rows={1}
+              >
+                locations.address
+              </Ellipsis>
+              <Text
+                className="css-1tlpxzg"
+                string="locations.map_open"
+              >
+                I18n.Text
+              </Text>
+            </Grid.Item>
+          </Grid>
+        </StoreDetailsLine>
+      </Link>
+    </StoreAddressShort>
+  </Accordion>
+</StoreDetails>
+`;
