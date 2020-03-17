@@ -1,7 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './style';
+
+export type Props = {
+  children: React.Node,
+  id: string,
+  open?: boolean,
+  className?: string,
+}
 
 /**
  * The accordion content component.
@@ -10,7 +17,7 @@ import * as styles from './style';
  */
 function AccordionContent({
   children, open, id, className,
-}) {
+}: Props) {
   const style = {
     height: !open ? 0 : 'auto',
   };
@@ -23,13 +30,6 @@ function AccordionContent({
     </div>
   );
 }
-
-AccordionContent.propTypes = {
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  open: PropTypes.bool,
-};
 
 AccordionContent.defaultProps = {
   open: false,
