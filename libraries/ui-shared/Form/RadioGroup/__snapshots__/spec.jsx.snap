@@ -31,6 +31,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         className="css-1t62idy radioGroup"
       >
         <RadioItem
+          attributes={null}
           checked={false}
           className=""
           key="radio_foo/.0"
@@ -129,6 +130,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         className="css-1t62idy radioGroup"
       >
         <RadioItem
+          attributes={null}
           checked={false}
           className=""
           key="radio_foo/.0"
@@ -191,6 +193,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           </label>
         </RadioItem>
         <RadioItem
+          attributes={null}
           checked={false}
           className=""
           key="radio_bar/.1"
@@ -289,6 +292,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         className="css-1t62idy radioGroup"
       >
         <RadioItem
+          attributes={null}
           checked={false}
           className=""
           key="radio_foo/.0"
@@ -422,6 +426,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         className="css-1gehsfr radioGroup"
       >
         <RadioItem
+          attributes={null}
           checked={false}
           className=""
           key="radio_foo/.0"
@@ -520,6 +525,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
         className="css-1t62idy radioGroup"
       >
         <RadioItem
+          attributes={null}
           checked={true}
           className=""
           key="radio_foo/.0"

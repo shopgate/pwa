@@ -32,6 +32,7 @@ export const logger = {
   info: (...args) => csl.info(...convertLogArgs(args)),
   log: (...args) => csl.log(...convertLogArgs(args)),
   warn: (...args) => csl.warn(...convertLogArgs(args)),
+  assert: (...args) => csl.assert(...convertLogArgs(args)),
 };
 
 /**
