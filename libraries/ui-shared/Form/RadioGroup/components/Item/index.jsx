@@ -17,6 +17,7 @@ class RadioItem extends PureComponent {
       PropTypes.node,
     ]).isRequired,
     name: PropTypes.string.isRequired,
+    attributes: PropTypes.shape(),
     checked: PropTypes.bool,
     className: PropTypes.oneOfType([
       PropTypes.string,
@@ -26,6 +27,7 @@ class RadioItem extends PureComponent {
   }
 
   static defaultProps = {
+    attributes: null,
     checked: false,
     className: '',
     onChange: () => { },
@@ -37,23 +39,35 @@ class RadioItem extends PureComponent {
    */
   render() {
     const {
-      label: ItemLabel, name, onChange, checked, className,
+      label: ItemLabel, name, onChange, checked, className, attributes,
     } = this.props;
+
+    const { disabled } = attributes || {};
 
     return (
       <label
-        className={classNames(style.container, className, camelCase(name), 'radioItem')}
+        className={classNames(
+          style.container, className, { [style.disabled]: !!disabled }, camelCase(name), 'radioItem'
+        )}
         htmlFor={this.key}
       >
-        {checked && <CheckedIcon className={classNames(style.active, style.icon, 'checkedIcon')} />}
-        {!checked && <UncheckedIcon className={classNames(style.icon, 'uncheckedIcon')} />}
-
+        {checked && (
+          <CheckedIcon
+            className={classNames(style.active, style.icon, 'checkedIcon')}
+          />
+        )}
+        {!checked && (
+          <UncheckedIcon
+            className={classNames(style.icon, 'uncheckedIcon')}
+          />
+        )}
         <input
           className={classNames(style.input, 'input')}
           checked={checked}
           type="radio"
           name={name}
           onChange={onChange}
+          {...attributes}
         />
         <I18n.Text className={classNames(style.label, 'label')} string={ItemLabel} />
       </label>

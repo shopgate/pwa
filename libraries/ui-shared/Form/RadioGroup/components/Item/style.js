@@ -16,6 +16,11 @@ const icon = css({
   flexShrink: 0,
 }).toString();
 
+const disabled = css({
+  opacity: 0.25,
+  pointerEvents: 'none',
+}).toString();
+
 const label = css({
   flex: 1,
   fontSize: '1rem',
@@ -31,6 +36,7 @@ const active = css({
 export default {
   input,
   icon,
+  disabled,
   container,
   label,
   active,
