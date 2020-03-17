@@ -1,11 +1,11 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { Grid } from '@shopgate/engage/components';
 import { detailsLine, detailsIcon, details } from './Store.style';
 
 type Props = {
   icon: any,
-  children: any,
+  children: React.Node,
 }
 
 /**
