@@ -23,6 +23,7 @@ export type StateProps = {
   locations: Location[] | null,
   userInput: ReservationFormValues | null,
   fulfillmentPaths: string[],
+  fulfillmentMethods?: string[],
 } & ProductAware & BaseProductAware
 
 export type DispatchProps = {

@@ -6,6 +6,7 @@ import { useFulfillmentState } from '../../locations.hooks';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+  PRODUCT_FULFILLMENT_METHOD_ROPIS,
 } from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { container, pickUpContainer, radioGroup } from './FulfillmentPath.style';
@@ -19,7 +20,9 @@ const pickUp = 'product.fulfillment_selector.pick_up_in_store';
  * @returns {JSX}
  */
 export function FulfillmentPath() {
-  const { product, meta: { cartItem = undefined } = {}, changeFulfillment } = useFulfillmentState();
+  const {
+    product, fulfillmentMethods, meta: { cartItem = undefined } = {}, changeFulfillment,
+  } = useFulfillmentState();
   const { fulfillment } = cartItem || {};
   const isPickUp = !!(cartItem && (fulfillment !== null && fulfillment.method !== 'DIRECT_SHIP'));
   const [selection, setSelection] = React.useState(isPickUp ? pickUp : directShip);
@@ -40,6 +43,9 @@ export function FulfillmentPath() {
     changeFulfillment(method, cartItem);
   }
 
+  const reserveDisabled = !fulfillmentMethods
+    || !fulfillmentMethods.includes(PRODUCT_FULFILLMENT_METHOD_ROPIS);
+
   return (
     <div className={container}>
       <RadioGroup
@@ -56,9 +62,14 @@ export function FulfillmentPath() {
             fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
           />
         </FulfillmentPathItem>
-        <FulfillmentPathItem name={pickUp}>
+        <FulfillmentPathItem
+          name={pickUp}
+          attributes={{
+            disabled: reserveDisabled,
+          }}
+        >
           <div className={pickUpContainer}>
-            {fulfillment && (
+            {fulfillment && !reserveDisabled && (
               <StockInfo location={fulfillment.location} />
             )}
           </div>
