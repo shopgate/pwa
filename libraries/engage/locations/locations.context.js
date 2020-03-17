@@ -27,6 +27,7 @@ export type FulfillmentContextProps = {
   stage: SheetStage,
   title: string | null,
   fulfillmentPath: FulfillmentPath | null,
+  fulfillmentMethods: string[] | null,
   isOpen: boolean,
   errors: string[] | null,
   meta?: { [string]: any },
@@ -48,6 +49,7 @@ export const FulfillmentContext = React.createContext<FulfillmentContextProps>({
   stage: STAGE_SELECT_STORE,
   title: null,
   fulfillmentPath: null,
+  fulfillmentMethods: null,
   isOpen: false,
   errors: null,
 });

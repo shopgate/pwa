@@ -53,6 +53,7 @@ function FulfillmentProvider(props: Props) {
     location: productLocation,
     userInput,
     fulfillmentPaths,
+    fulfillmentMethods,
     selectLocation,
     submitReservation,
     storeFormInput,
@@ -268,8 +269,9 @@ function FulfillmentProvider(props: Props) {
    * @param {Object} item The cart item to change.
    */
   function handleChangeFulfillmentMethod(method, item) {
+    logger.assert(item.product.id === product.id, 'Change fulfillment method is called with unexpected product id');
+
     setIsChangeFulfillment(true);
-    setProduct(item.product);
     setCartItem(item);
 
     if (
@@ -306,6 +308,7 @@ function FulfillmentProvider(props: Props) {
     location: productLocation,
     userInput,
     fulfillmentPaths,
+    fulfillmentMethods,
     selectLocation: handleSelectLocation,
     changeFulfillment: handleChangeFulfillmentMethod,
     sendReservation,
@@ -324,6 +327,7 @@ function FulfillmentProvider(props: Props) {
 FulfillmentProvider.defaultProps = {
   open: false,
   changeOnly: false,
+  fulfillmentMethods: null,
   title: null,
 };
 

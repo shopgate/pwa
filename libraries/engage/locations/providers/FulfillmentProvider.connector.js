@@ -5,7 +5,9 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 import { makeGetFulfillmentPaths } from '@shopgate/engage/core/config';
 import { selectLocation, storeFormInput } from '../action-creators';
-import { makeGetProductLocation, makeGetProductLocations, makeGetUserFormInput } from '../selectors';
+import {
+  makeGetProductLocation, makeGetProductLocations, makeGetUserFormInput, makeGetFulfillmentMethods,
+} from '../selectors';
 import { submitReservation } from '../actions';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentProvider.types';
 
@@ -17,6 +19,7 @@ function makeMapStateToProps() {
   const getUserFormInput = makeGetUserFormInput();
   const getFulfillmentPaths = makeGetFulfillmentPaths();
   const getProductLocation = makeGetProductLocation(true);
+  const getFulfillmentMethods = makeGetFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.
@@ -30,6 +33,7 @@ function makeMapStateToProps() {
     location: getProductLocation(state, props),
     userInput: getUserFormInput(state),
     fulfillmentPaths: getFulfillmentPaths(state),
+    fulfillmentMethods: getFulfillmentMethods(state, props),
   });
 }
 

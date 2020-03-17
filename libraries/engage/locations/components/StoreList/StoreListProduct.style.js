@@ -44,4 +44,7 @@ export const priceInfo = css({
   flexGrow: 0,
   textAlign: 'right',
   wordBreak: 'break-word',
+  ' > ul ': {
+    flexDirection: 'column-reverse',
+  },
 }).toString();

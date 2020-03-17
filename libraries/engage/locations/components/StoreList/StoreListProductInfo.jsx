@@ -19,11 +19,9 @@ function StoreListProductInfo() {
 
   return (
     <Grid className={productInfo}>
-      {characteristics &&
-        <Grid.Item grow={1} className={productInfoLeft}>
-          <ProductProperties properties={characteristics} />
-        </Grid.Item>
-      }
+      <Grid.Item grow={1} className={productInfoLeft}>
+        {characteristics && <ProductProperties properties={characteristics} />}
+      </Grid.Item>
       <Grid.Item shrink={0} className={priceInfo}>
         <ProductGridPrice price={price} />
       </Grid.Item>
