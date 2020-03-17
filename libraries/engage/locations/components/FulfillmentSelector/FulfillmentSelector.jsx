@@ -124,7 +124,7 @@ function FulfillmentSelector(props: Props) {
         <FulfillmentSelectorItem name={DIRECT_SHIP} onChange={handleChange}>
           <FulfillmentSelectorDirectShip />
         </FulfillmentSelectorItem>
-        <FulfillmentSelectorItem name={IN_STORE_PICKUP} onChange={handleChange} disbaled={disabled}>
+        <FulfillmentSelectorItem name={IN_STORE_PICKUP} onChange={handleChange} disabled={disabled}>
           <FulfillmentSelectorReserve />
         </FulfillmentSelectorItem>
       </div>
