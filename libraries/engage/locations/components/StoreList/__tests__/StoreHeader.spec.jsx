@@ -18,6 +18,12 @@ describe('engage > locations > StoreList > StoreHeader', () => {
     unitSystem: 'metric',
     operationHours: {
       mon: '8:00am - 4:00pm',
+      tue: '8:00am - 4:00pm',
+      wed: '8:00am - 4:00pm',
+      thu: '8:00am - 4:00pm',
+      fri: '8:00am - 4:00pm',
+      sat: '8:00am - 4:00pm',
+      sun: '8:00am - 4:00pm',
     },
   };
 

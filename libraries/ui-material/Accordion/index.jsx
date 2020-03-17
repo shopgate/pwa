@@ -1,15 +1,24 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import classnames from 'classnames';
 import { AccordionContainer, ChevronIcon } from '@shopgate/pwa-ui-shared';
 import AccordionContent from './components/AccordionContent';
 import * as styles from './style';
 
+type Props = {
+  renderLabel: ({ open: boolean }) => void,
+  children: React.Node,
+  handleLabel?: string,
+  testId?: string,
+  className?: string,
+  contentClassName?: string,
+}
+
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Accordion = (props) => {
+function Accordion(props: Props) {
   const {
     renderLabel, handleLabel, children, testId, className, contentClassName,
   } = props;
@@ -18,12 +27,12 @@ const Accordion = (props) => {
     return null;
   }
 
-  const controlsId = `${testId}-content`.replace(/[^\w\s]/gi, '-').replace(' ', '-');
+  const controlsId = testId ? `${testId}-content`.replace(/[^\w\s]/gi, '-').replace(' ', '-') : 'accordion-content';
 
   return (
     <AccordionContainer>
       {({ handleOpen, handleClose, open }) => (
-        <Fragment>
+        <React.Fragment>
           <div
             onClick={open ? handleClose : handleOpen}
             onKeyDown={open ? handleClose : handleOpen}
@@ -49,20 +58,11 @@ const Accordion = (props) => {
           >
             {children}
           </AccordionContent>
-        </Fragment>
+        </React.Fragment>
       )}
     </AccordionContainer>
   );
-};
-
-Accordion.propTypes = {
-  children: PropTypes.node.isRequired,
-  renderLabel: PropTypes.func.isRequired,
-  className: PropTypes.string,
-  contentClassName: PropTypes.string,
-  handleLabel: PropTypes.string,
-  testId: PropTypes.string,
-};
+}
 
 Accordion.defaultProps = {
   className: null,
