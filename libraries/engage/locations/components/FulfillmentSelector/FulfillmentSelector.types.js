@@ -15,6 +15,7 @@ export type FulfillmentSelectorContextProps = {
   conditioner: any,
   fulfillmentPaths: string[],
   userFulfillmentMethod: string | null,
+  isOrderable: boolean,
 }
 
 export type OwnProps = {
@@ -28,6 +29,7 @@ export type StateProps = {
   location: Location | null,
   userFulfillmentMethod: string | null,
   fulfillmentPaths: string[],
+  isOrderable: boolean,
 }
 
 export type DispatchProps = {

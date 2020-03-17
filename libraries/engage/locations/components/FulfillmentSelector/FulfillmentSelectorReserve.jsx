@@ -15,7 +15,11 @@ import { container } from './FulfillmentSelectorReserve.style';
  * @returns {JSX}
  */
 export function FulfillmentSelectorReserve() {
-  const { location, selectedLocation, handleChange } = useFulfillmentSelectorState();
+  const {
+    location,
+    selectedLocation,
+    handleChange,
+  } = useFulfillmentSelectorState();
   const usedLocation = selectedLocation || location;
 
   const handleChangeLocation = React.useCallback(() => {

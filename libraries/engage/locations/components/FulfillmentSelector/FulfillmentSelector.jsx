@@ -36,6 +36,7 @@ function FulfillmentSelector(props: Props) {
     storeFulfillmentMethod,
     userFulfillmentMethod,
     fulfillmentPaths,
+    isOrderable,
   } = props;
 
   const isInStoreAndActive = userFulfillmentMethod === IN_STORE_PICKUP && !disabled;
@@ -113,6 +114,7 @@ function FulfillmentSelector(props: Props) {
     conditioner,
     fulfillmentPaths,
     userFulfillmentMethod,
+    isOrderable,
   };
 
   return (

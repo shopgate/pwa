@@ -13,4 +13,5 @@ export const FulfillmentSelectorContext = createContext<FulfillmentSelectorConte
   conditioner: {},
   fulfillmentPaths: [],
   userFulfillmentMethod: null,
+  isOrderable: false,
 });

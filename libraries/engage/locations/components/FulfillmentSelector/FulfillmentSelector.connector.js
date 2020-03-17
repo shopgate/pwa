@@ -1,5 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
+import { hasProductVariants, isProductOrderable } from '@shopgate/engage/product';
 import {
   makeGetEnabledFulfillmentMethods,
   makeGetFulfillmentPaths,
@@ -37,6 +38,7 @@ function makeMapStateToProps() {
     userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
     location: getProductLocation(state, props) || getUserLocation(state),
     disabled: isFulfillmentSelectorDisabled(state, props),
+    isOrderable: isProductOrderable(state, props) || hasProductVariants(state, props),
   });
 }
 
