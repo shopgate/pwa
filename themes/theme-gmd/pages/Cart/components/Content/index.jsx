@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
   getCartConfig,
-  groupCartItems,
+  sortCartItems,
   CART_PATH,
   CART_ITEM_LIST,
   CART_COUPON_FIELD,
@@ -11,10 +11,12 @@ import {
   CartContext,
   FLAG_MULTI_LINE_RESERVE,
   CartItemGroup,
+  CartItems,
 } from '@shopgate/engage/cart';
 import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
+import { getPageSettings } from '@shopgate/engage/core/config';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
@@ -75,7 +77,8 @@ class CartContentContainer extends PureComponent {
     const { isPaymentBarVisible } = this.state;
     const hasItems = (cartItems.length > 0);
     const hasMessages = (messages.length > 0);
-    const cartItemGroups = groupCartItems(cartItems);
+    const cartItemsSorted = sortCartItems(cartItems);
+    const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
 
     const contextValue = {
       currency,
@@ -83,6 +86,7 @@ class CartContentContainer extends PureComponent {
       isUserLoggedIn,
       isLoading,
       flags,
+      display: cartItemsDisplay,
     };
 
     return (
@@ -94,26 +98,40 @@ class CartContentContainer extends PureComponent {
             {hasItems && (
               <Fragment>
                 <SurroundPortals portalName={CART_ITEM_LIST}>
-                  <CardList className={styles}>
-                    {Object.keys(cartItemGroups).map(groupKey => (
-                      <CartItemGroup
-                        key={groupKey}
-                        fulfillmentLocationId={cartItemGroups[groupKey].fulfillmentLocationId}
-                        multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
-                      >
-                        {cartItemGroups[groupKey].items.map(cartItem => (
+                  {(cartItemsDisplay === 'line') && (
+                    <CardList className={styles}>
+                      {cartItemsSorted.map(cartItem => (
+                        <CartItemGroup
+                          key={cartItem.id}
+                          fulfillmentLocationId={cartItem.fulfillmentLocationId}
+                          multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
+                        >
                           <Item
                             item={cartItem}
                             key={cartItem.id}
                             onFocus={this.togglePaymentBar}
                           />
-                        ))}
-                      </CartItemGroup>
-                    ))}
-                    <SurroundPortals portalName={CART_COUPON_FIELD}>
-                      <CouponField onFocus={this.togglePaymentBar} />
-                    </SurroundPortals>
-                  </CardList>
+                        </CartItemGroup>
+                      ))}
+                      <SurroundPortals portalName={CART_COUPON_FIELD}>
+                        <CouponField onFocus={this.togglePaymentBar} />
+                      </SurroundPortals>
+                    </CardList>
+                  )}
+                  {(cartItemsDisplay === 'card') && (
+                    <CartItems
+                      cartItems={cartItemsSorted}
+                      multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
+                    >
+                      {item => (
+                        <Item
+                          item={item}
+                          key={item.id}
+                          onFocus={this.togglePaymentBar}
+                        />
+                      )}
+                    </CartItems>
+                  )}
                 </SurroundPortals>
                 <PaymentBar visible={isPaymentBarVisible} />
               </Fragment>

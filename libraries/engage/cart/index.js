@@ -22,7 +22,10 @@ export * from '@shopgate/pwa-common-commerce/cart/helpers/config';
 export { default as createPipelineErrorList } from '@shopgate/pwa-common-commerce/cart/helpers/createPipelineErrorList';
 export * from '@shopgate/pwa-common-commerce/cart/helpers/shipping';
 export * from '@shopgate/pwa-common-commerce/cart/helpers/tax';
-export * from './cart.helpers';
+export {
+  sortCartItems,
+  groupCartItems,
+} from './cart.helpers';
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/cart/selectors';
@@ -35,8 +38,15 @@ export { CartContext } from './cart.context';
 
 // COMPONENTS
 export { PaymentBar } from './components/PaymentBar';
-// COMPONENTS / CART ITEMS
-export * from './components/CartItems';
+export {
+  CartItemGroup,
+  CartItems,
+} from './components/CartItems';
+
+// HOOKS
+export {
+  useCartContext,
+} from './cart.hooks';
 
 // TYPES
 export type {

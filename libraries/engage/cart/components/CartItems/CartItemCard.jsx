@@ -1,7 +1,7 @@
 // @flow
-import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import CartItemGroupReservation from './CartItemGroupReservation';
+import CartItemCardReservation from './CartItemCardReservation';
+import { withBorder } from './CartItemCard.style';
 
 type Props = {
   children: React.Node,
@@ -10,11 +10,11 @@ type Props = {
 }
 
 /**
- * Renders the product group.
+ * Renders the cart items.
  * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @returns {JSX}
  */
-function CartItemGroup(props: Props) {
+export function CartItemCard(props: Props) {
   const { multiLineReservation, fulfillmentLocationId, children } = props;
 
   if (!multiLineReservation) {
@@ -23,17 +23,17 @@ function CartItemGroup(props: Props) {
 
   return (
     <React.Fragment>
-      {!!fulfillmentLocationId && (
-        <CartItemGroupReservation locationId={fulfillmentLocationId} />
+      <ul className={fulfillmentLocationId && withBorder}>
+        {children}
+      </ul>
+      {fulfillmentLocationId && (
+        <CartItemCardReservation locationId={fulfillmentLocationId} />
       )}
-      {children}
     </React.Fragment>
   );
 }
 
-CartItemGroup.defaultProps = {
+CartItemCard.defaultProps = {
   fulfillmentLocationId: null,
   multiLineReservation: false,
 };
-
-export default hot(CartItemGroup);

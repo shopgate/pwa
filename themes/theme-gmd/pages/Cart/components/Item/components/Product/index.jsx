@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
+import { CART_ITEM_TYPE_PRODUCT, CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { MessageBar } from '@shopgate/engage/components';
+import { getPageSettings } from '@shopgate/engage/core/config';
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../../../constants';
+import { noGap } from './style';
 
 const { variables } = themeConfig;
 
@@ -166,9 +168,10 @@ class CartProduct extends Component {
       quantity,
     } = this.props;
     const { editMode } = this.state;
+    const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
 
     return (
-      <CardListItem>
+      <CardListItem className={cartItemsDisplay === 'card' && noGap}>
         <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
           {messages.length > 0 && (
             <MessageBar messages={messages} classNames={messageStyles} />

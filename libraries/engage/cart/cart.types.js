@@ -14,13 +14,16 @@ export type AddToCartProduct = {
 }
 
 export type CartItem = {
-  cartItemId: string,
+  cartItemId?: string,
+  id?: string,
   quantity: number,
+  type: string,
   fulfillment?: {
     method: string;
     location: {
       code: string;
       name: string;
     }
-  }
+  },
+  fulfillmentLocationId?: string,
 }

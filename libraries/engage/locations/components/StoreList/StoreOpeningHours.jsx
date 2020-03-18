@@ -10,6 +10,7 @@ import { openingHours, detailsSecondary } from './Store.style';
 
 type Props = {
   hours?: LocationOperationHours,
+  pure?: boolean
 }
 
 /**
@@ -17,9 +18,19 @@ type Props = {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function StoreOpeningHours({ hours }: Props) {
+export function StoreOpeningHours({ hours, pure }: Props) {
   if (!hours || every(hours, isEmpty)) {
     return null;
+  }
+
+  if (pure) {
+    return (
+      <div className={openingHours}>
+        {getWeekDaysOrder().map(weekDay => (
+          <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
+        ))}
+      </div>
+    );
   }
 
   return (
@@ -36,4 +47,5 @@ export function StoreOpeningHours({ hours }: Props) {
 
 StoreOpeningHours.defaultProps = {
   hours: null,
+  pure: false,
 };
