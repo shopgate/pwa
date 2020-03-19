@@ -7,8 +7,6 @@ const { gap } = themeVariables;
 export const items = css({
   background: themeColors.background,
   padding: `${gap.small * 1.5}px ${gap.small * 1.5}px ${gap.big}px`,
-  fontSize: '0.875rem',
-  boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
 });
 
 export const card = css({
