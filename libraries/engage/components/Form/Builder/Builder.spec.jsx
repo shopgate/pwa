@@ -183,14 +183,14 @@ describe('<Builder />', () => {
 
     // Should call with initial state.
     expect(wrapper).toMatchSnapshot();
-    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'default' }, false);
+    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'default' }, false, []);
     handleUpdate.mockClear();
 
     // Update input
     wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
 
     // Should call with updated state.
-    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false);
+    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false, []);
   });
 
   describe('Builder::elementChangeHandler', () => {
@@ -215,7 +215,7 @@ describe('<Builder />', () => {
         formData: {
           foo: 'bar',
         },
-        errors: {},
+        validationErrors: {},
         elementVisibility: {
           foo: true,
         },
@@ -225,16 +225,14 @@ describe('<Builder />', () => {
       builder.elementChangeHandler('foo', 'bar');
 
       // Test
-      expect(handleUpdate).toHaveBeenCalledWith({
-        foo: 'bar',
-      }, false);
+      expect(handleUpdate).toHaveBeenCalledWith({ foo: 'bar' }, false, []);
     });
 
-    it('should consider backend validations', () => {
+    it('should forward validation errors from form actions', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
       const builder = new Builder({
-        validationErrors: [{}],
+        validationErrors: [],
         config: {
           fields: {
             foo: {
@@ -247,11 +245,15 @@ describe('<Builder />', () => {
         },
         handleUpdate,
       });
+
+      // This mock handler adds a validation error for the field 'foo'
       builder.actionListener.notify = () => ({
         formData: {
           foo: 'bar',
         },
-        errors: {},
+        validationErrors: {
+          foo: 'bar baz!',
+        },
         elementVisibility: {
           foo: true,
         },
@@ -261,15 +263,20 @@ describe('<Builder />', () => {
       builder.elementChangeHandler('foo', 'bar');
 
       // Test
-      expect(handleUpdate).toHaveBeenCalledWith({
-        foo: 'bar',
-      }, true);
+      expect(handleUpdate).toHaveBeenCalledWith(
+        { foo: 'bar' },
+        true,
+        [{
+          path: 'foo',
+          message: 'bar baz!',
+        }]
+      );
     });
   });
 
   describe('Builder::elementSortFunc', () => {
     const builder = new Builder({
-      validationErrors: [{}],
+      validationErrors: [],
       config: { fields: {} },
       handleUpdate: jest.fn(),
     });

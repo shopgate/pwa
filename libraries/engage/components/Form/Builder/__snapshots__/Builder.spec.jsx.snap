@@ -39,6 +39,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
             "foo": "default",
           },
           false,
+          Array [],
         ],
       ],
       "results": Array [
