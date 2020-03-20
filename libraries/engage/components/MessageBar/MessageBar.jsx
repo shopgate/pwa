@@ -1,4 +1,5 @@
 // @flow
+import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
@@ -11,19 +12,20 @@ type DefaultProps = {
 
 type Props = DefaultProps & {
   messages: Message[],
-  classNames?: ClassNames
+  classNames?: ClassNames,
+  raised?: boolean,
 };
 
 /**
  * The MessageBar component.
  * @param {Object} props The component props.
- * @param {Array} props.messages The message content.
- * @param {Object} props.classNames Styling.
+ * @property {Array} props.messages The message content.
+ * @property {Object} props.classNames Styling.
  * @return {JSX}
  */
-const MessageBar = ({ messages, classNames }: Props) => (
+const MessageBar = ({ messages, classNames, raised }: Props) => (
   <div
-    className={css(styles.container, classNames.container)}
+    className={css(raised ? styles.containerRaised : styles.container, classNames.container)}
     role={messages.length > 0 ? 'alert' : null}
   >
     {messages.map((item) => {
@@ -41,12 +43,14 @@ const MessageBar = ({ messages, classNames }: Props) => (
         <div
           key={`${type}-${message}`}
           className={css(
-            classNames.message,
             styles[type],
+            classNames.message,
             Icon ? styles.withIcon : null
           )}
         >
-          {Icon && <Icon className={css(classNames.icon, styles.icon).toString()} /> }
+          {Icon && (
+            <Icon className={css(classNames.icon, styles.icon).toString()} />
+          )}
           <span className={styles.srOnly}>
             {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
           </span>
@@ -65,6 +69,7 @@ MessageBar.defaultProps = {
     message: null,
     icon: null,
   },
+  raised: false,
 };
 
-export default React.memo<Props>(MessageBar);
+export default hot(React.memo<Props>(MessageBar));

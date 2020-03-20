@@ -14,4 +14,5 @@ export const inputStyle = css({
   padding: `${variables.gap.small * 0.75}px ${variables.gap.small}px`,
   outline: 0,
   width: '100%',
+  borderRadius: 4,
 });

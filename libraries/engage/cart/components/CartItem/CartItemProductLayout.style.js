@@ -54,6 +54,9 @@ const price = css({
 const properties = css({
   wordBreak: 'break-word',
   alignSelf: 'flex-start',
+  fontSize: '0.875rem',
+  color: colors.shade9,
+  lineHeight: 1.3,
   /**
    * When the properties column has content, apply a max width to the price column
    * to avoid issues with long availability texts.

@@ -10,11 +10,12 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
     }
   }
   messages={Array []}
+  raised={false}
 >
   <div
     className={
       Object {
-        "data-css-1gmese": "",
+        "data-css-ia405z": "",
       }
     }
     role={null}
@@ -38,11 +39,12 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
       },
     ]
   }
+  raised={false}
 >
   <div
     className={
       Object {
-        "data-css-1gmese": "",
+        "data-css-ia405z": "",
       }
     }
     role="alert"
@@ -50,7 +52,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
     <div
       className={
         Object {
-          "data-css-1kmpcvg": "",
+          "data-css-6glin7": "",
         }
       }
       key="info-something"
@@ -108,11 +110,12 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       },
     ]
   }
+  raised={false}
 >
   <div
     className={
       Object {
-        "data-css-1gmese": "",
+        "data-css-ia405z": "",
       }
     }
     role="alert"
@@ -120,7 +123,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-1kmpcvg": "",
+          "data-css-6glin7": "",
         }
       }
       key="info-This is some information"
@@ -144,7 +147,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-1t4ceri": "",
+          "data-css-bfe3ok": "",
         }
       }
       key="error-This is an error that happened here."
@@ -168,7 +171,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-y06bhm": "",
+          "data-css-7mi6qz": "",
         }
       }
       key="warning-This is just a warning. Nothing to freak out about."
@@ -192,7 +195,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-1kmpcvg": "",
+          "data-css-6glin7": "",
         }
       }
       key="info-Normal pre-translated message."
@@ -216,7 +219,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-1kmpcvg": "",
+          "data-css-6glin7": "",
         }
       }
       key="info-Normal pre-translated message."
@@ -266,11 +269,12 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       },
     ]
   }
+  raised={false}
 >
   <div
     className={
       Object {
-        "data-css-1gmese": "",
+        "data-css-ia405z": "",
       }
     }
     role="alert"
@@ -278,7 +282,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     <div
       className={
         Object {
-          "data-css-1kmpcvg": "",
+          "data-css-6glin7": "",
         }
       }
       key="info-some.translation.string"
@@ -302,7 +306,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     <div
       className={
         Object {
-          "data-css-1kmpcvg": "",
+          "data-css-6glin7": "",
         }
       }
       key="info-Message with messageParams"

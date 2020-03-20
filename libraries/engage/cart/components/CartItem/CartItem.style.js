@@ -6,13 +6,12 @@ const { colors, variables } = themeConfig;
 
 export const messagesContainer = css({
   background: colors.light,
-  padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+  padding: `0 0 ${variables.gap.big}px 0`,
 });
 
 export const messages = css({
-  borderRadius: 4,
-  padding: `${variables.gap.small / 2}px ${variables.gap.small}px`,
-  lineHeight: 1.125,
+  borderRadius: '5px 5px 0 0',
+  padding: `${variables.gap.small}px ${variables.gap.big * 0.875}px`,
 });
 
 export const cartItemTransitionDuration = 300;

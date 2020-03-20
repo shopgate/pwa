@@ -67,7 +67,7 @@ function CartContent(props) {
       {(hasItems || hasMessages) && (
         <Fragment>
           {hasMessages && (
-            <MessageBar messages={messages} />
+            <MessageBar messages={messages} raised={cartItemsDisplay === 'card'} />
           )}
           {hasItems && (
             <Fragment>

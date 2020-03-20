@@ -1,4 +1,5 @@
 // @flow
+import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -22,7 +23,7 @@ type Props = {
  * @property {Function} props.onFocus A function to indicate when the item has been focussed.
  * @return {JSX.Element}
  */
-export const CartItem = React.memo<Props>(({ item, onFocus }: Props) => {
+function CartItem({ item, onFocus }: Props) {
   if (item.type !== CART_ITEM_TYPE_PRODUCT && item.type !== CART_ITEM_TYPE_COUPON) {
     return null;
   }
@@ -56,4 +57,6 @@ export const CartItem = React.memo<Props>(({ item, onFocus }: Props) => {
       />
     </SurroundPortals>
   );
-});
+}
+
+export default hot(React.memo<Props>(CartItem));

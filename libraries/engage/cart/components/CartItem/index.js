@@ -1,2 +1,2 @@
 // @flow
-export { CartItem } from './CartItem';
+export { default as CartItem } from './CartItem';
