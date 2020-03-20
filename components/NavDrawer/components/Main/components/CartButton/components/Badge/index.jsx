@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
+import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import connect from './connector';
 import styles from './style';
 
