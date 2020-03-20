@@ -32,7 +32,7 @@ describe('engage > locations > components > StoreListSearch', () => {
   const context = {
     product: { id: productId },
     locations: [{ code: 'LOCCODE' }],
-    shopSettings: { supportedCountries: [countryCode] },
+    shopSettings: { supportedCountries: [countryCode, countryCode] },
   };
 
   beforeEach(() => {
