@@ -1,3 +1,4 @@
+// @flow
 import { useMemo } from 'react';
 import { i18n } from '../core';
 
@@ -6,7 +7,7 @@ import { i18n } from '../core';
  * @param {string[]} [countryCodes=[]] .
  * @returns {Object|null}
  */
-export function useCountriesNames(countryCodes = []) {
+export function useCountriesNames(countryCodes: string[] = []): { [string]: string } {
   return useMemo(() => {
     const localeCountries = i18n.getPath('countries') || {};
     if (!countryCodes.length) {

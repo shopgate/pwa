@@ -1,7 +1,7 @@
 // @flow
-import * as Redux from 'redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { STORE_SEARCH } from '../constants';
+import type { StoreSearchActionType } from '../action-creators/storeSearch';
 
 export type UserSearchStateType = {
   postalCode: string,
@@ -19,7 +19,10 @@ const defState: UserSearchStateType = {
  * @param {Object} action The action Object
  * @returns {Object} The new state.
  */
-export default function search(state: UserSearchStateType = defState, action: Redux.Action<>) {
+export default function search(
+  state: UserSearchStateType = defState,
+  action: StoreSearchActionType
+) {
   switch (action.type) {
     case STORE_SEARCH:
       return action.search;
