@@ -4,6 +4,7 @@ import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import CartButtonBadge from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
+  ...jest.requireActual('@shopgate/engage/core'),
   useWidgetSettings: jest.fn().mockReturnValue({}),
 }));
 

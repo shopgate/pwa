@@ -138,7 +138,7 @@
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "method": {
-      "ropis": "Reserve online, pick up in store",
+      "ropis": "Reserve online, pickup in store",
       "direct_ship": "Ship to address"
     },
     "choose_reservation_type": "Reservierungs-Art wählen",
