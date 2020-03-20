@@ -23,12 +23,15 @@ function fetchProductLocations(productId, params = {}) {
 
     dispatch(requestProductLocations(productId));
 
-    const { postalCode, longitude, latitude } = params;
+    const {
+      postalCode, countryCode, longitude, latitude,
+    } = params;
 
     const request = new PipelineRequest(SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS)
       .setInput({
         productCode: productId,
         postalCode,
+        countryCode,
         longitude,
         latitude,
       })

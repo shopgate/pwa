@@ -8,6 +8,7 @@ export {
   makeGetMerchantSettings,
   makeGetFulfillmentPaths,
   makeGetEnabledFulfillmentMethods,
+  makeGetShopSettings,
 } from './config.selectors';
 export * from './config.streams';
 export * from './config.types';

@@ -10,6 +10,7 @@ import {
   type SheetCallbackFn,
 } from './locations.types';
 import { STAGE_SELECT_STORE } from './constants';
+import { type ShopSettings } from '../core/config';
 
 export type FulfillmentContextProps = {
   selectLocation: (location: Location) => void,
@@ -28,6 +29,7 @@ export type FulfillmentContextProps = {
   title: string | null,
   fulfillmentPath: FulfillmentPath | null,
   fulfillmentMethods: string[] | null,
+  shopSettings: ShopSettings | null,
   isOpen: boolean,
   errors: string[] | null,
   meta?: { [string]: any },
@@ -50,6 +52,7 @@ export const FulfillmentContext = React.createContext<FulfillmentContextProps>({
   title: null,
   fulfillmentPath: null,
   fulfillmentMethods: null,
+  shopSettings: null,
   isOpen: false,
   errors: null,
 });

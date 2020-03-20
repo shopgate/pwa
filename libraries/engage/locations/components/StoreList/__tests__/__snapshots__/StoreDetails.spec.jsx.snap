@@ -24,9 +24,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             className="css-5vu8pw"
             shrink={0}
           >
-            <TimeIcon>
-              TimeIcon
-            </TimeIcon>
+            <TimeIcon />
           </Grid.Item>
           <Grid.Item
             className="css-1s3c85m"
@@ -35,9 +33,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             <Text
               className="css-1tlpxzg"
               string="locations.hours_details"
-            >
-              I18n.Text
-            </Text>
+            />
             <div
               className="css-1xm8nj0"
             >
@@ -123,9 +119,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               className="css-5vu8pw"
               shrink={0}
             >
-              <PhoneIcon>
-                PhoneIcon
-              </PhoneIcon>
+              <PhoneIcon />
             </Grid.Item>
             <Grid.Item
               className="css-1s3c85m"
@@ -139,9 +133,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               <Text
                 className="css-1tlpxzg"
                 string="locations.phone"
-              >
-                I18n.Text
-              </Text>
+              />
             </Grid.Item>
           </Grid>
         </StoreDetailsLine>
@@ -177,9 +169,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               className="css-5vu8pw"
               shrink={0}
             >
-              <LocationIcon>
-                LocationIcon
-              </LocationIcon>
+              <LocationIcon />
             </Grid.Item>
             <Grid.Item
               className="css-1s3c85m"
@@ -194,9 +184,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               <Text
                 className="css-1tlpxzg"
                 string="locations.map_open"
-              >
-                I18n.Text
-              </Text>
+              />
             </Grid.Item>
           </Grid>
         </StoreDetailsLine>

@@ -4,24 +4,29 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import {
-  ProgressBar, MagnifierIcon, LocatorIcon, MessageBar, InfoIcon,
+  ProgressBar, MagnifierIcon, LocatorIcon, MessageBar, InfoIcon, Grid,
 } from '@shopgate/engage/components';
+import { useCountriesNames } from '@shopgate/engage/i18n/countries.hooks';
 import { FulfillmentContext } from '../../locations.context';
 import connect from './StoreListSearch.connector';
 import {
-  container, search, input, icon, progressBar, messageClass, iconClass,
+  container, queryLine, input, icon, progressBar, messageClass, iconClass, select, country,
 } from './StoreListSearch.style';
 
 /**
  * @param {Function} getProductLocations getProductLocations.
- * @param {Function} storeSearchQuery .
- * @param {string} searchQuery .
+ * @param {Function} storeSearch .
+ * @param {Object} search .
  * @returns {JSX}
  */
-function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery }) {
-  const { product, locations } = useContext(FulfillmentContext);
+function StoreListSearch({ getProductLocations, storeSearch, search }) {
+  const {
+    product,
+    locations,
+    shopSettings: { supportedCountries } = {},
+  } = useContext(FulfillmentContext);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState(searchQuery);
+  const [searchData, setSearchData] = useState(search);
   const [message, setMessage] = useState('');
   const inputEl = useRef(null);
 
@@ -33,19 +38,19 @@ function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery })
   }, [locations]);
 
   useEffect(() => {
-    storeSearchQuery(query);
-  }, [query, storeSearchQuery]);
+    storeSearch(searchData);
+  }, [searchData, storeSearch]);
 
   /**
    * Triggers a location update.
    * @param {string} [postalCode=null] An optional postal code.
    */
-  const updateProductLocations = useCallback(async (postalCode = null) => {
+  const updateProductLocations = useCallback(async (searchParams = null) => {
     // Clear old error messages.
     setMessage('');
     setLoading(true);
     // Request new locations.
-    const error = await getProductLocations(product.id, postalCode);
+    const error = await getProductLocations(product.id, searchParams);
 
     if (error) {
       setMessage(error);
@@ -60,18 +65,23 @@ function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery })
     }
 
     setTimeout(() => { // wait for the sheet to be opened.
-      updateProductLocations(query !== '' ? query : null);
+      updateProductLocations(searchData);
     }, 300);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /**
-   * Updates the query state of the component when the input changes.
-   * @param {Object} event A React event object.
-   */
+  /** @param {Object} event A React event object */
   const handleOnChange = useCallback((event) => {
-    setQuery(event.target.value);
-  }, []);
+    const { target } = event;
+    const data = {
+      ...searchData,
+      [target.name]: target.value,
+    };
+    setSearchData(data);
+    if (target.name === 'countryCode') {
+      updateProductLocations(data);
+    }
+  }, [searchData, updateProductLocations]);
 
   /**
    * Triggers a locations update by postal codes when the Enter key is pressed.
@@ -80,41 +90,64 @@ function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery })
   const handleOnKeyDown = useCallback((event) => {
     if (event.keyCode === 13) {
       inputEl.current.blur();
-      updateProductLocations(query);
+      updateProductLocations(searchData);
     }
-  }, [query, updateProductLocations]);
+  }, [searchData, updateProductLocations]);
 
   /**
    * Triggers a locations update by geolocation.
    */
   const handleLocateMeButton = useCallback(() => {
-    setQuery('');
+    setSearchData({});
     updateProductLocations();
   }, [updateProductLocations]);
+
+  const countries = useCountriesNames(supportedCountries);
+
+  const { postalCode = '', countryCode = '' } = searchData;
 
   return (
     <Fragment>
       <div className={container}>
-        <div className={search}>
-          <span className={icon} aria-hidden>
-            <MagnifierIcon />
-          </span>
-          <input
-            ref={inputEl}
-            className={input}
-            value={query}
-            onChange={handleOnChange}
-            onKeyDown={handleOnKeyDown}
-            disabled={loading}
-            type="search"
-            autoComplete="off"
-            autoCorrect="off"
-            placeholder={i18n.text('locations.search_placeholder')}
-          />
-          <button onClick={handleLocateMeButton} type="button" className={icon}>
-            <LocatorIcon />
-          </button>
-        </div>
+        <Grid>
+          <Grid.Item grow={1} className={queryLine.toString()}>
+            <span className={icon} aria-hidden>
+              <MagnifierIcon />
+            </span>
+            <input
+              ref={inputEl}
+              name="postalCode"
+              className={input}
+              value={postalCode}
+              onChange={handleOnChange}
+              onKeyDown={handleOnKeyDown}
+              disabled={loading}
+              type="search"
+              autoComplete="off"
+              autoCorrect="off"
+              placeholder={i18n.text('locations.search_placeholder')}
+            />
+            <button onClick={handleLocateMeButton} type="button" className={icon}>
+              <LocatorIcon />
+            </button>
+          </Grid.Item>
+          {supportedCountries && supportedCountries.length > 1 &&
+            <Grid.Item shrink={0} className={country.toString()}>
+              <select
+                name="countryCode"
+                value={countryCode}
+                onChange={handleOnChange}
+                className={select}
+              >
+                {
+                  Object.keys(countries).map(key => (
+                    <option className="option" value={key} key={key}>{countries[key]}</option>
+                  ))
+                }
+              </select>
+            </Grid.Item>
+          }
+        </Grid>
       </div>
       <div className={progressBar}>
         <ProgressBar isVisible={loading} />
@@ -138,8 +171,8 @@ function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery })
 
 StoreListSearch.propTypes = {
   getProductLocations: PropTypes.func.isRequired,
-  searchQuery: PropTypes.string.isRequired,
-  storeSearchQuery: PropTypes.func.isRequired,
+  search: PropTypes.shape().isRequired,
+  storeSearch: PropTypes.func.isRequired,
 };
 
 export default connect(StoreListSearch);

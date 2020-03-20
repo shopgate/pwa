@@ -1,13 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StoreListSearch /> should call getProductLocations after clicking the locate button 1`] = `
+exports[`engage > locations > components > StoreListSearch should call getProductLocations with a postal code after filling the input and pressing enter 1`] = `
 <StoreListSearch
   getProductLocations={
     [MockFunction] {
       "calls": Array [
         Array [
           "ABC123",
-          null,
+          Object {
+            "countryCode": "DE",
+            "postalCode": "ACME",
+          },
         ],
       ],
       "results": Array [
@@ -18,130 +21,24 @@ exports[`<StoreListSearch /> should call getProductLocations after clicking the 
       ],
     }
   }
-  searchQuery=""
-  storeSearchQuery={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          "",
-        ],
-        Array [
-          "ACME",
-        ],
-        Array [
-          "",
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
+  search={
+    Object {
+      "countryCode": "DE",
     }
   }
->
-  <div
-    className={
-      Object {
-        "data-css-z3aef1": "",
-      }
-    }
-  >
-    <div
-      className={
-        Object {
-          "data-css-bpbkyq": "",
-        }
-      }
-    >
-      <span
-        aria-hidden={true}
-        className={
-          Object {
-            "data-css-gy1p1e": "",
-          }
-        }
-      >
-        <MagnifierIcon />
-      </span>
-      <input
-        autoComplete="off"
-        autoCorrect="off"
-        className={
-          Object {
-            "data-css-2h0g54": "",
-          }
-        }
-        disabled={false}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="locations.search_placeholder"
-        type="search"
-        value=""
-      />
-      <button
-        className={
-          Object {
-            "data-css-gy1p1e": "",
-          }
-        }
-        onClick={[Function]}
-        type="button"
-      >
-        <LocatorIcon />
-      </button>
-    </div>
-  </div>
-  <div
-    className={
-      Object {
-        "data-css-13azwyo": "",
-      }
-    }
-  >
-    <ProgressBar
-      isVisible={false}
-    />
-  </div>
-</StoreListSearch>
-`;
-
-exports[`<StoreListSearch /> should call getProductLocations with a postal code after filling the input and pressing enter 1`] = `
-<StoreListSearch
-  getProductLocations={
+  storeSearch={
     [MockFunction] {
       "calls": Array [
         Array [
-          "ABC123",
-          "ACME",
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
-  searchQuery=""
-  storeSearchQuery={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          "",
+          Object {
+            "countryCode": "DE",
+          },
         ],
         Array [
-          "ACME",
+          Object {
+            "countryCode": "DE",
+            "postalCode": "ACME",
+          },
         ],
       ],
       "results": Array [
@@ -164,50 +61,80 @@ exports[`<StoreListSearch /> should call getProductLocations with a postal code 
       }
     }
   >
-    <div
-      className={
-        Object {
-          "data-css-bpbkyq": "",
-        }
-      }
-    >
-      <span
-        aria-hidden={true}
-        className={
-          Object {
-            "data-css-gy1p1e": "",
-          }
-        }
+    <Grid>
+      <Grid.Item
+        className="css-bpbkyq"
+        grow={1}
       >
-        <MagnifierIcon />
-      </span>
-      <input
-        autoComplete="off"
-        autoCorrect="off"
-        className={
-          Object {
-            "data-css-2h0g54": "",
+        <span
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-gy1p1e": "",
+            }
           }
-        }
-        disabled={true}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="locations.search_placeholder"
-        type="search"
-        value="ACME"
-      />
-      <button
-        className={
-          Object {
-            "data-css-gy1p1e": "",
+        >
+          <MagnifierIcon />
+        </span>
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className={
+            Object {
+              "data-css-2h0g54": "",
+            }
           }
-        }
-        onClick={[Function]}
-        type="button"
+          disabled={true}
+          name="postalCode"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="locations.search_placeholder"
+          type="search"
+          value="ACME"
+        />
+        <button
+          className={
+            Object {
+              "data-css-gy1p1e": "",
+            }
+          }
+          onClick={[Function]}
+          type="button"
+        >
+          <LocatorIcon />
+        </button>
+      </Grid.Item>
+      <Grid.Item
+        className="css-1iwpfwo"
+        shrink={0}
       >
-        <LocatorIcon />
-      </button>
-    </div>
+        <select
+          className={
+            Object {
+              "data-css-hk5ocf": "",
+            }
+          }
+          name="countryCode"
+          onChange={[Function]}
+          value="DE"
+        >
+          <option
+            className="option"
+            key="DE"
+            value="DE"
+          >
+            Germany
+          </option>
+          <option
+            className="option"
+            key="US"
+            value="US"
+          >
+            United States
+          </option>
+        </select>
+      </Grid.Item>
+    </Grid>
   </div>
   <div
     className={
@@ -223,7 +150,7 @@ exports[`<StoreListSearch /> should call getProductLocations with a postal code 
 </StoreListSearch>
 `;
 
-exports[`<StoreListSearch /> should render as expected 1`] = `
+exports[`engage > locations > components > StoreListSearch should render as expected 1`] = `
 <Fragment>
   <div
     className={
@@ -232,50 +159,80 @@ exports[`<StoreListSearch /> should render as expected 1`] = `
       }
     }
   >
-    <div
-      className={
-        Object {
-          "data-css-bpbkyq": "",
-        }
-      }
-    >
-      <span
-        aria-hidden={true}
-        className={
-          Object {
-            "data-css-gy1p1e": "",
-          }
-        }
+    <Grid>
+      <Grid.Item
+        className="css-bpbkyq"
+        grow={1}
       >
-        <MagnifierIcon />
-      </span>
-      <input
-        autoComplete="off"
-        autoCorrect="off"
-        className={
-          Object {
-            "data-css-2h0g54": "",
+        <span
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-gy1p1e": "",
+            }
           }
-        }
-        disabled={false}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="locations.search_placeholder"
-        type="search"
-        value=""
-      />
-      <button
-        className={
-          Object {
-            "data-css-gy1p1e": "",
+        >
+          <MagnifierIcon />
+        </span>
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className={
+            Object {
+              "data-css-2h0g54": "",
+            }
           }
-        }
-        onClick={[Function]}
-        type="button"
+          disabled={false}
+          name="postalCode"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="locations.search_placeholder"
+          type="search"
+          value=""
+        />
+        <button
+          className={
+            Object {
+              "data-css-gy1p1e": "",
+            }
+          }
+          onClick={[Function]}
+          type="button"
+        >
+          <LocatorIcon />
+        </button>
+      </Grid.Item>
+      <Grid.Item
+        className="css-1iwpfwo"
+        shrink={0}
       >
-        <LocatorIcon />
-      </button>
-    </div>
+        <select
+          className={
+            Object {
+              "data-css-hk5ocf": "",
+            }
+          }
+          name="countryCode"
+          onChange={[Function]}
+          value="DE"
+        >
+          <option
+            className="option"
+            key="DE"
+            value="DE"
+          >
+            Germany
+          </option>
+          <option
+            className="option"
+            key="US"
+            value="US"
+          >
+            United States
+          </option>
+        </select>
+      </Grid.Item>
+    </Grid>
   </div>
   <div
     className={

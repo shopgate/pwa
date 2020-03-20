@@ -1,3 +1,4 @@
+import get from 'lodash/get';
 import {
   getTranslator,
   getPriceFormatter,
@@ -15,6 +16,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
  * @property {Function} date - Date translator.
  * @property {Function} time - Time translator.
  * @property {Function} getSupplementalData - Get Supplemental Data
+ * @property {Function} getPath - Get locale data by path
  */
 
 /**
@@ -44,6 +46,7 @@ const I18n = () => {
       this.time = getTimeFormatter(lang);
       this.number = getNumberFormatter(lang);
       this.getSupplementalData = () => locales.supplementalData || {};
+      this.getPath = path => get(locales, path);
       // If component decides to act accordingly this information should be exposed.
       this.ready = true;
     },
@@ -53,6 +56,7 @@ const I18n = () => {
     time: notReadyCb,
     number: notReadyCb,
     getSupplementalData: notReadyCb,
+    getPath: notReadyCb,
     ready: false,
   };
 };

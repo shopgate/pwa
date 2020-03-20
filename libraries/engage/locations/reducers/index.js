@@ -4,7 +4,7 @@ import locationsById from './locationsById';
 import locationsByProductId from './locationsByProductId';
 import userLocation from './userLocation';
 import userFormInput from './userFormInput';
-import userSearchQuery from './userSearchQuery';
+import userSearch from './userSearch';
 import { type LocationsState } from '../locations.types';
 
 export default combineReducers<LocationsState>({
@@ -12,5 +12,5 @@ export default combineReducers<LocationsState>({
   locationsByProductId,
   userLocation,
   userFormInput,
-  userSearchQuery,
+  userSearch,
 });
