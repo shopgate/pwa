@@ -1,0 +1,131 @@
+// @flow
+import * as React from 'react';
+import PT from 'prop-types';
+import Transition from 'react-transition-group/Transition';
+import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart';
+import { MessageBar, CardList } from '@shopgate/engage/components';
+import styles from './CartItemCoupon.style';
+import {
+  messagesContainer,
+  messages,
+  cartItemTransitionDuration as duration,
+  getCartItemTransitionStyle as getTransitionStyle,
+} from './CartItem.style';
+import connect from './CartItemCoupon.connector';
+import { CartItemCouponLayout } from './CartItemCouponLayout';
+import { type OwnProps, type StateProps, type DispatchProps } from './CartItemCoupon.types';
+
+type Props = OwnProps & StateProps & DispatchProps;
+
+type State = {
+  visible: boolean,
+}
+
+const messageStyles = {
+  container: messagesContainer,
+  message: messages,
+};
+
+/**
+ * The Coupon component.
+ */
+class CartItemCoupon extends React.Component<Props, State> {
+  static childContextTypes = {
+    cartItemId: PT.string,
+    type: PT.string,
+  };
+
+  static defaultProps = {
+    deleteCoupon: () => { },
+  };
+
+  /**
+   * Constructor.
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: true,
+    };
+  }
+
+  /**
+   * Expose props to the descendant components to use them for the portals.
+   * @return {Object}
+   */
+  getChildContext() {
+    return {
+      cartItemId: this.props.id,
+      type: CART_ITEM_TYPE_COUPON,
+    };
+  }
+
+  /**
+   * We need to set the element height explicitly so that we can animate it later.
+   */
+  componentDidMount() {
+    this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement)}px`;
+  }
+
+  /**
+   * We need to set the element height explicitly so that we can animate it later.
+   */
+  componentDidUpdate() {
+    this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement)}px`;
+  }
+
+  transitionElement: HTMLElement;
+
+  cardElement: HTMLElement;
+
+  /**
+   * Sets this coupon to be invisible via its state.
+   */
+  transitionOut = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
+  /**
+   * Deletes the coupon from the cart.
+   */
+  deleteCoupon = () => {
+    this.props.deleteCoupon(this.props.id);
+  };
+
+  /**
+   * Render Function.
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <Transition in={this.state.visible} timeout={duration} onExited={this.deleteCoupon}>
+        {state => (
+          <div
+            ref={(element) => { if (element) this.transitionElement = element; }}
+            key={this.props.id}
+            style={getTransitionStyle(state)}
+          >
+            <div className={styles} ref={(element) => { if (element) this.cardElement = element; }}>
+              <CardList.Item>
+                {this.props.messages.length > 0 &&
+                  <MessageBar messages={this.props.messages} classNames={messageStyles} />}
+                <CartItemCouponLayout
+                  handleDelete={this.transitionOut}
+                  coupon={this.props.coupon}
+                  currency={this.props.currency}
+                />
+              </CardList.Item>
+            </div>
+          </div>
+        )}
+      </Transition>
+    );
+  }
+}
+
+export default connect(CartItemCoupon);

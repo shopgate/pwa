@@ -2,14 +2,15 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import { CardList } from '@shopgate/engage/components';
-import { type CartItem } from '../../cart.types';
+import { type Item } from '../../cart.types';
+import { CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
 import { items, card } from './CartItems.style';
 
 type Props = {
-  cartItems: CartItem[],
-  children: (item: CartItem) => React.Element<any>,
+  cartItems?: Item[],
   multiLineReservation?: boolean,
+  onFocus: (hidden: boolean) => void,
 }
 
 /**
@@ -17,7 +18,11 @@ type Props = {
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-function CartItems({ cartItems, children, multiLineReservation }: Props) {
+function CartItems({ cartItems, onFocus, multiLineReservation }: Props) {
+  if (!cartItems || cartItems.length === 0) {
+    return null;
+  }
+
   return (
     <CardList className={items}>
       {cartItems.map(item => (
@@ -26,7 +31,7 @@ function CartItems({ cartItems, children, multiLineReservation }: Props) {
             multiLineReservation={multiLineReservation}
             fulfillmentLocationId={item.fulfillmentLocationId}
           >
-            {children(item)}
+            <CartItem item={item} onFocus={onFocus} />
           </CartItemCard>
         </CardList.Item>
       ))}
@@ -35,6 +40,7 @@ function CartItems({ cartItems, children, multiLineReservation }: Props) {
 }
 
 CartItems.defaultProps = {
+  cartItems: null,
   multiLineReservation: null,
 };
 

@@ -12,6 +12,7 @@ import {
   FLAG_MULTI_LINE_RESERVE,
   CartItemGroup,
   CartItems,
+  CartItem,
 } from '@shopgate/engage/cart';
 import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { FulfillmentSheet } from '@shopgate/engage/locations';
@@ -20,7 +21,6 @@ import { getPageSettings } from '@shopgate/engage/core/config';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
-import Item from '../Item';
 import connect from './connector';
 import styles from './style';
 
@@ -80,7 +80,7 @@ function CartContent(props) {
                         fulfillmentLocationId={cartItem.fulfillmentLocationId}
                         multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
                       >
-                        <Item
+                        <CartItem
                           item={cartItem}
                           key={cartItem.id}
                           onFocus={togglePaymentBar}
@@ -96,15 +96,8 @@ function CartContent(props) {
                   <CartItems
                     cartItems={cartItemsSorted}
                     multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
-                  >
-                    {item => (
-                      <Item
-                        item={item}
-                        key={item.id}
-                        onFocus={togglePaymentBar}
-                      />
-                    )}
-                  </CartItems>
+                    onFocus={togglePaymentBar}
+                  />
                 )}
               </SurroundPortals>
               <PaymentBar visible={isPaymentBarVisible} />

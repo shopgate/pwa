@@ -1,40 +1,13 @@
 // @flow
 import groupBy from 'lodash/groupBy';
 import { ROPIS } from '../locations';
-import { type CartItem } from './cart.types';
-
-/**
- * Group cart items for view
- * @param {Object[]} cartItems cartItems
- * @returns {Object} The grouped cart items.
- */
-export function groupCartItems(cartItems: CartItem[]) {
-  return cartItems.reduce((acc, cartItem) => {
-    const { fulfillment = null } = cartItem;
-    const { method, location } = fulfillment || {};
-
-    let groupType = cartItem.type;
-    if (location.code && method === ROPIS) {
-      groupType = location.code;
-    }
-
-    if (!acc[groupType]) {
-      acc[groupType] = {
-        fulfillmentLocationId: method === ROPIS ? location.code : null,
-        items: [],
-      };
-    }
-
-    acc[groupType].items.push(cartItem);
-    return acc;
-  }, {});
-}
+import { type Item } from './cart.types';
 
 /**
  * @param {Array} cartItems The cart items to sort.
  * @returns {Array}
  */
-export function sortCartItems(cartItems: CartItem[]) {
+export function sortCartItems(cartItems: Item[]) {
   const grouped = groupBy(cartItems, 'type');
   const sorted = Object.keys(grouped).reduce((acc, key) => ([
     ...acc,

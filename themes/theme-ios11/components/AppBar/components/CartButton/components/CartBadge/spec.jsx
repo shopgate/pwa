@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
+import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import CartButtonBadge from './index';
 
 jest.mock('@shopgate/engage/core', () => ({

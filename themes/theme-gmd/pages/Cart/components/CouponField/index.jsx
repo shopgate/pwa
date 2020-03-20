@@ -4,9 +4,9 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { CART_INPUT_AUTO_SCROLL_DELAY } from '@shopgate/engage/cart';
 import connect from './connector';
 import Layout from './components/Layout';
-import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
 
 const defaultState = {
   value: '',

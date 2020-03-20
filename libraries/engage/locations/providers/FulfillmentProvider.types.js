@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { type AddToCartProduct, type CartItem } from '../../cart';
+import { type AddToCartProduct, type Item } from '../../cart';
 import { type Product, type BaseProductAware, type ProductAware } from '../../product';
 import {
   type Location,
@@ -34,5 +34,5 @@ export type DispatchProps = {
   ) => Promise<ReservationResponse>,
   storeFormInput: (values: ReservationFormValues) => void,
   addProductsToCart: (data: AddToCartProduct[]) => void,
-  updateProductsInCart: (data: CartItem[]) => void,
+  updateProductsInCart: (data: Item[]) => void,
 }
