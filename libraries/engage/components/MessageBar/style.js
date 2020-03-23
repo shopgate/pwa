@@ -7,7 +7,7 @@ const container = css({
   display: 'flex',
   flexDirection: 'column',
   flexShrink: 0,
-});
+}).toString();
 
 const messageBase = {
   padding: `${themeConfig.variables.gap.small}px ${themeConfig.variables.gap.big}px`,
@@ -21,17 +21,17 @@ const messageBase = {
 const info = css(messageBase, {
   background: themeConfig.colors.accent,
   color: themeConfig.colors.accentContrast,
-});
+}).toString();
 
 const error = css(messageBase, {
   background: themeConfig.colors.error,
   color: themeConfig.colors.light,
-});
+}).toString();
 
 const warning = css(messageBase, {
   background: themeConfig.colors.warning,
   color: themeConfig.colors.light,
-});
+}).toString();
 
 const srOnly = css({
   position: 'absolute',
