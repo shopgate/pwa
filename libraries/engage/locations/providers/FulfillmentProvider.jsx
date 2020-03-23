@@ -128,6 +128,10 @@ function FulfillmentProvider(props: Props) {
       orderSuccess = errors === null;
     }
 
+    if (isStage(STAGE_RESERVE_FORM)) {
+      orderSuccess = null;
+    }
+
     if (props.onClose) {
       props.onClose(location, productId, orderSuccess);
     } else if (callback) {
