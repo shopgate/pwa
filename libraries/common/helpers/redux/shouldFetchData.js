@@ -26,20 +26,20 @@ export function shouldFetchData(item, itemKey = null, requiredCount = null) {
       return true;
     }
 
-    // Check for parameters that enable sub item counting
-    const checkSubItems = typeof item.totalResultCount !== 'undefined' || requiredCount !== null;
-
     // Check for a specific key inside items and fetch it if it's not found.
-    if (checkSubItems && itemKey && Array.isArray(item[itemKey])) {
-      let maxItems = requiredCount || item.totalResultCount;
+    if (itemKey && Array.isArray(item[itemKey])) {
+      // 1. Fetch by requiredCount.
+      if (requiredCount) {
+        const assertCount = Math.min(requiredCount, item.totalResultCount);
 
-      // Check if we are requesting more items that there is available.
-      if (maxItems > item.totalResultCount) {
-        maxItems = item.totalResultCount;
+        // Fetch is needed to assert N of items in store.
+        if (item[itemKey].length !== assertCount) {
+          return true;
+        }
       }
 
-      // Check if we have enough items in the store.
-      if (item[itemKey].length !== maxItems) {
+      // 2. Sync items when totalResultCount is less
+      if (!requiredCount && item[itemKey].length > item.totalResultCount) {
         return true;
       }
     }
