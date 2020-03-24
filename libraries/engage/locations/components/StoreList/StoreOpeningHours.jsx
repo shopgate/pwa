@@ -23,24 +23,22 @@ export function StoreOpeningHours({ hours, pure }: Props) {
     return null;
   }
 
+  const storeHours = (
+    <div className={openingHours}>
+      {getWeekDaysOrder().map(weekDay => (
+        <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
+      ))}
+    </div>
+  );
+
   if (pure) {
-    return (
-      <div className={openingHours}>
-        {getWeekDaysOrder().map(weekDay => (
-          <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
-        ))}
-      </div>
-    );
+    return storeHours;
   }
 
   return (
     <StoreDetailsLine icon={TimeIcon}>
       <I18n.Text string="locations.hours_details" className={detailsSecondary} />
-      <div className={openingHours}>
-        {getWeekDaysOrder().map(weekDay => (
-          <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
-        ))}
-      </div>
+      {storeHours}
     </StoreDetailsLine>
   );
 }

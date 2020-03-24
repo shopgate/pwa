@@ -20,30 +20,32 @@ export function StoreAddress({ address, pure }: Props) {
     return null;
   }
 
-  if (pure) {
-    return (
-      <React.Fragment>
-        <div data-test-id="street">
-          {address.street}
+  const adressContent = (
+    <React.Fragment>
+      <div data-test-id="street">
+        {address.street}
+      </div>
+      {(address.street2 && address.street2 !== '') && (
+        <div data-test-id="street2">
+          {address.street2}
         </div>
-        {(address.street2 && address.street2 !== '') && (
-          <div data-test-id="street2">
-            {address.street2}
-          </div>
-        )}
-        {(address.street3 && address.street3 !== '') && (
-          <div data-test-id="street3">
-            {address.street3}
-          </div>
-        )}
-        {(address.street4 && address.street4 !== '') && (
-          <div data-test-id="street4">
-            {address.street4}
-          </div>
-        )}
-        {i18n.text('locations.address', address)}
-      </React.Fragment>
-    );
+      )}
+      {(address.street3 && address.street3 !== '') && (
+        <div data-test-id="street3">
+          {address.street3}
+        </div>
+      )}
+      {(address.street4 && address.street4 !== '') && (
+        <div data-test-id="street4">
+          {address.street4}
+        </div>
+      )}
+      {i18n.text('locations.address', address)}
+    </React.Fragment>
+  );
+
+  if (pure) {
+    return adressContent;
   }
 
   return (
@@ -52,25 +54,7 @@ export function StoreAddress({ address, pure }: Props) {
         <LocationIcon />
       </div>
       <div>
-        <div data-test-id="street">
-          {address.street}
-        </div>
-        {(address.street2 && address.street2 !== '') && (
-          <div data-test-id="street2">
-            {address.street2}
-          </div>
-        )}
-        {(address.street3 && address.street3 !== '') && (
-          <div data-test-id="street3">
-            {address.street3}
-          </div>
-        )}
-        {(address.street4 && address.street4 !== '') && (
-          <div data-test-id="street4">
-            {address.street4}
-          </div>
-        )}
-        {i18n.text('locations.address', address)}
+        {adressContent}
       </div>
     </div>
   );
