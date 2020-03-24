@@ -28,9 +28,13 @@ export function shouldFetchData(item, itemKey = null, requiredCount = null) {
 
     // Check for a specific key inside items and fetch it if it's not found.
     if (itemKey && Array.isArray(item[itemKey])) {
+      const {
+        totalResultCount = item[itemKey].length, // fallback to original items length
+      } = item;
+
       // 1. Fetch by requiredCount.
       if (requiredCount) {
-        const assertCount = Math.min(requiredCount, item.totalResultCount);
+        const assertCount = Math.min(requiredCount, totalResultCount);
 
         // Fetch is needed to assert N of items in store.
         if (item[itemKey].length !== assertCount) {
@@ -39,7 +43,7 @@ export function shouldFetchData(item, itemKey = null, requiredCount = null) {
       }
 
       // 2. Sync items when totalResultCount is less
-      if (!requiredCount && item[itemKey].length > item.totalResultCount) {
+      if (!requiredCount && item[itemKey].length > totalResultCount) {
         return true;
       }
     }
