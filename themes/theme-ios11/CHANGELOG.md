@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.12.1](https://github.com/shopgate/pwa/compare/v6.12.0...v6.12.1) (2020-03-24)
+
+#### :rocket: Enhancement
+* [#943](https://github.com/shopgate/pwa/pull/943) Making hardcoded colors configurable ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#973](https://github.com/shopgate/pwa/pull/973) Fix cart item messages with custom styles ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
