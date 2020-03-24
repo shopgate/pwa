@@ -178,7 +178,7 @@ class CartItemProduct extends React.Component<Props, State> {
     const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
 
     return (
-      <CardListItem className={cartItemsDisplay === 'card' && noGap}>
+      <CardListItem className={cartItemsDisplay === 'card' ? noGap : null}>
         <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
           {messages.length > 0 && (
             <MessageBar messages={messages} classNames={messageStyles} />
