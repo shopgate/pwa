@@ -5,12 +5,14 @@ import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart';
 import { MessageBar, CardList } from '@shopgate/engage/components';
-import styles from './CartItemCoupon.style';
+import {
+  container,
+  cartItemTransitionDuration as duration,
+  getCartItemTransitionStyle as getTransitionStyle,
+} from './CartItemCoupon.style';
 import {
   messagesContainer,
   messages,
-  cartItemTransitionDuration as duration,
-  getCartItemTransitionStyle as getTransitionStyle,
 } from './CartItem.style';
 import connect from './CartItemCoupon.connector';
 import { CartItemCouponLayout } from './CartItemCouponLayout';
@@ -110,7 +112,10 @@ class CartItemCoupon extends React.Component<Props, State> {
             key={this.props.id}
             style={getTransitionStyle(state)}
           >
-            <div className={styles} ref={(element) => { if (element) this.cardElement = element; }}>
+            <div
+              className={container}
+              ref={(element) => { if (element) this.cardElement = element; }}
+            >
               <CardList.Item>
                 {this.props.messages.length > 0 &&
                   <MessageBar messages={this.props.messages} classNames={messageStyles} />}
