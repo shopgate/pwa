@@ -23,6 +23,7 @@ export {
 export type {
   MerchantSettings,
   ConfigState,
+  ShopSettings,
 } from './config.types';
 
 export { getPageConfig } from './getPageConfig';
