@@ -33,16 +33,37 @@ export const icon = css({
 });
 
 export const country = css({
-  width: '25%',
+  maxWidth: '40%',
   paddingLeft: themeVariables.gap.small,
 });
 
+export const selectContainer = css({
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'stretch',
+  height: '100%',
+  '&:after': {
+    zIndex: 2,
+    content: '""',
+    position: 'absolute',
+    display: 'block',
+    top: '50%',
+    right: themeVariables.gap.small * 1.5,
+    transform: 'translate3d(0, -25%, 0)',
+    width: 5,
+    height: 5,
+    border: '5px solid transparent',
+    borderTopColor: themeColors.shade6,
+  },
+});
+
 export const select = css({
+  appearance: 'none',
   border: `1px solid ${themeColors.shade7}`,
+  padding: `0 ${themeVariables.gap.bigger + themeVariables.gap.small * 1.5}px 0 ${themeVariables.gap.big * 0.75}px`,
   color: themeColors.shade3,
   fontSize: '0.725rem',
   borderRadius: 5,
-  height: '100%',
   width: '100%',
   outline: 0,
 });

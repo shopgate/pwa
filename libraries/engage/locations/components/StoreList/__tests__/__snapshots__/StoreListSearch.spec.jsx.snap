@@ -105,34 +105,42 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
         </button>
       </Grid.Item>
       <Grid.Item
-        className="css-1iwpfwo"
+        className="css-1o3o127"
         shrink={0}
       >
-        <select
+        <div
           className={
             Object {
-              "data-css-hk5ocf": "",
+              "data-css-1hrnuet": "",
             }
           }
-          name="countryCode"
-          onChange={[Function]}
-          value="DE"
         >
-          <option
-            className="option"
-            key="DE"
+          <select
+            className={
+              Object {
+                "data-css-92k9yt": "",
+              }
+            }
+            name="countryCode"
+            onChange={[Function]}
             value="DE"
           >
-            Germany
-          </option>
-          <option
-            className="option"
-            key="US"
-            value="US"
-          >
-            United States
-          </option>
-        </select>
+            <option
+              className="option"
+              key="DE"
+              value="DE"
+            >
+              Germany
+            </option>
+            <option
+              className="option"
+              key="US"
+              value="US"
+            >
+              United States
+            </option>
+          </select>
+        </div>
       </Grid.Item>
     </Grid>
   </div>
@@ -203,34 +211,42 @@ exports[`engage > locations > components > StoreListSearch should render as expe
         </button>
       </Grid.Item>
       <Grid.Item
-        className="css-1iwpfwo"
+        className="css-1o3o127"
         shrink={0}
       >
-        <select
+        <div
           className={
             Object {
-              "data-css-hk5ocf": "",
+              "data-css-1hrnuet": "",
             }
           }
-          name="countryCode"
-          onChange={[Function]}
-          value="DE"
         >
-          <option
-            className="option"
-            key="DE"
+          <select
+            className={
+              Object {
+                "data-css-92k9yt": "",
+              }
+            }
+            name="countryCode"
+            onChange={[Function]}
             value="DE"
           >
-            Germany
-          </option>
-          <option
-            className="option"
-            key="US"
-            value="US"
-          >
-            United States
-          </option>
-        </select>
+            <option
+              className="option"
+              key="DE"
+              value="DE"
+            >
+              Germany
+            </option>
+            <option
+              className="option"
+              key="US"
+              value="US"
+            >
+              United States
+            </option>
+          </select>
+        </div>
       </Grid.Item>
     </Grid>
   </div>

@@ -11,6 +11,7 @@ import { FulfillmentContext } from '../../locations.context';
 import connect from './StoreListSearch.connector';
 import {
   container, queryLine, input, icon, progressBar, messageClass, iconClass, select, country,
+  selectContainer,
 } from './StoreListSearch.style';
 
 /**
@@ -133,18 +134,20 @@ function StoreListSearch({ getProductLocations, storeSearch, search }) {
           </Grid.Item>
           {supportedCountries && supportedCountries.length > 1 &&
             <Grid.Item shrink={0} className={country.toString()}>
-              <select
-                name="countryCode"
-                value={countryCode}
-                onChange={handleOnChange}
-                className={select}
-              >
-                {
-                  Object.keys(countries).map(key => (
-                    <option className="option" value={key} key={key}>{countries[key]}</option>
-                  ))
-                }
-              </select>
+              <div className={selectContainer}>
+                <select
+                  name="countryCode"
+                  value={countryCode}
+                  onChange={handleOnChange}
+                  className={select}
+                >
+                  {
+                    Object.keys(countries).map(key => (
+                      <option className="option" value={key} key={key}>{countries[key]}</option>
+                    ))
+                  }
+                </select>
+              </div>
             </Grid.Item>
           }
         </Grid>
