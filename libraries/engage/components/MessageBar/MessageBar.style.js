@@ -9,7 +9,9 @@ const containerBase = {
   overflow: 'hidden',
 };
 
-export const container = css(containerBase);
+export const container = css(containerBase, {
+  padding: `${themeVariables.gap.big}px ${themeVariables.gap.big}px 0`,
+});
 
 export const containerRaised = css(containerBase, {
   borderRadius: '0 0 5px 5px',
