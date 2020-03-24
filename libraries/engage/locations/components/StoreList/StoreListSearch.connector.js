@@ -2,9 +2,9 @@
 import { connect } from 'react-redux';
 import {
   makeGetIsFetchingProductLocations,
-  makeGetUserSearchQuery,
+  makeGetUserSearch,
 } from '../../selectors';
-import { storeSearchQuery } from '../../action-creators';
+import { storeSearch } from '../../action-creators';
 import { getProductLocations } from './StoreListSearch.actions';
 
 /**
@@ -12,7 +12,7 @@ import { getProductLocations } from './StoreListSearch.actions';
  */
 function makeMapStateToProps() {
   const getIsFetchingProductLocations = makeGetIsFetchingProductLocations();
-  const getUserSearchQuery = makeGetUserSearchQuery();
+  const getUserSearch = makeGetUserSearch();
 
   /**
    * @param {Object} state The application state.
@@ -21,13 +21,13 @@ function makeMapStateToProps() {
    */
   return (state, props) => ({
     loading: getIsFetchingProductLocations(state, props),
-    searchQuery: getUserSearchQuery(state),
+    search: getUserSearch(state),
   });
 }
 
 const mapDispatchToProps = {
   getProductLocations,
-  storeSearchQuery,
+  storeSearch,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

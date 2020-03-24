@@ -10,9 +10,13 @@ jest.mock('../../../actions', () => ({
 }));
 
 describe('StoreListSearch actions', () => {
-  const dispatch = jest.fn(input => input);
+  const dispatch = jest.fn(input => Promise.resolve(input));
+
   const productId = 'ABC123';
-  const postalCode = 'ACME';
+  const search = {
+    countryCode: 'DE',
+    postalCode: 'ACME',
+  };
   const coordinates = {
     longitude: '123456',
     latitude: '654321',
@@ -43,32 +47,31 @@ describe('StoreListSearch actions', () => {
       expect(fetchProductLocations).not.toHaveBeenCalled();
     });
 
-    it('should fetch product locations when called with a productId and a postalCode', async () => {
-      await expect(getProductLocations(productId, postalCode)(dispatch)).resolves.toBe(undefined);
+    it('should fetch product locations when called with a productId and search params', async () => {
+      await expect(getProductLocations(productId, search)(dispatch)).resolves.toBe(undefined);
       expect(getGeolocation).not.toHaveBeenCalled();
       expect(fetchProductLocations).toHaveBeenCalledTimes(1);
-      expect(fetchProductLocations).toHaveBeenCalledWith(productId, { postalCode });
+      expect(fetchProductLocations).toHaveBeenCalledWith(productId, { ...search });
     });
 
-    it('should fetch product locations when called with a productId and an empty postalCode', async () => {
-      await expect(getProductLocations(productId, '')(dispatch)).resolves.toBe(undefined);
+    it('should fetch product locations when called with a productId and an empty search', async () => {
+      await expect(getProductLocations(productId, {
+        ...search,
+        postalCode: '',
+      })(dispatch)).resolves.toBe(undefined);
       expect(getGeolocation).not.toHaveBeenCalled();
       expect(fetchProductLocations).toHaveBeenCalledTimes(1);
       expect(fetchProductLocations).toHaveBeenCalledWith(productId, {});
-    });
-
-    it('should fetch product locations when called with a productId and 0 as postalCode', async () => {
-      await expect(getProductLocations(productId, '0')(dispatch)).resolves.toBe(undefined);
-      expect(getGeolocation).not.toHaveBeenCalled();
-      expect(fetchProductLocations).toHaveBeenCalledTimes(1);
-      expect(fetchProductLocations).toHaveBeenCalledWith(productId, { postalCode: '0' });
     });
 
     it('should resolve with a translation placeholder when no stores where found for the zip code', async () => {
       const error = new Error();
       error.code = 'ENOTFOUND';
       fetchProductLocations.mockRejectedValueOnce(error);
-      await expect(getProductLocations(productId, '')(dispatch)).resolves.toBe('locations.error_invalid_zip_code');
+      await expect(getProductLocations(productId, {
+        ...search,
+        postalCode: '',
+      })(dispatch)).resolves.toBe('locations.error_invalid_zip_code');
       expect(fetchProductLocations).toHaveBeenCalledTimes(1);
       expect(fetchProductLocations).toHaveBeenCalledWith(productId, {});
     });

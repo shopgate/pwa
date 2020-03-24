@@ -11,6 +11,7 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useContext: jest.fn(),
 }));
+jest.mock('../../../locations.context', () => 'FulfillmentContext');
 
 describe('<StoreListProduct />', () => {
   it('should not render if not product is supplied', () => {

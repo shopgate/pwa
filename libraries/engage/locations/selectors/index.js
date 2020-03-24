@@ -15,6 +15,7 @@ import {
   type UserLocationFulfillmentMethod,
   type UserLocationLocationCode,
 } from '../locations.types';
+import { type UserSearchStateType } from '../reducers/userSearch';
 
 /**
  * Retrieves the locations state from the store.
@@ -334,13 +335,13 @@ export function makeGetUserFormInput(): Selector<State, ReservationFormValues> {
 }
 
 /**
- * Create a selector that retrieves the user's search query input.
+ * Create a selector that retrieves the user's search.
  * @returns {Function}
  */
-export function makeGetUserSearchQuery(): Selector<State, string> {
+export function makeGetUserSearch(): Selector<State, UserSearchStateType> {
   return createSelector(
     getLocationsState,
-    locations => locations.userSearchQuery
+    locations => locations.userSearch || {}
   );
 }
 
