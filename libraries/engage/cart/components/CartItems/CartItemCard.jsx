@@ -23,10 +23,10 @@ export function CartItemCard(props: Props) {
 
   return (
     <React.Fragment>
-      <ul className={fulfillmentLocationId && withBorder}>
+      <ul className={fulfillmentLocationId ? withBorder : null}>
         {children}
       </ul>
-      {fulfillmentLocationId && (
+      {!!fulfillmentLocationId && (
         <CartItemCardReservation locationId={fulfillmentLocationId} />
       )}
     </React.Fragment>
