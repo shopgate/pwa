@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { css } from 'glamor';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
@@ -14,7 +14,7 @@ import styles from './style';
  */
 const MessageBar = memo(({ messages, classNames }) => (
   <div
-    className={css(styles.container, classNames.container)}
+    className={classnames(styles.container, classNames.container)}
     role={messages.length > 0 ? 'alert' : null}
   >
     {messages.map((item) => {
@@ -30,7 +30,7 @@ const MessageBar = memo(({ messages, classNames }) => (
       return (
         <div
           key={`${type}-${message}`}
-          className={css(classNames.message, styles[type])}
+          className={classnames(classNames.message, styles[type])}
         >
           <span aria-hidden>
             {messageOutput}
