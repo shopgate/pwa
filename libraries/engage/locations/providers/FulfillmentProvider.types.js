@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { type AddToCartProduct, type Item } from '../../cart';
+import { type ShopSettings } from '../../core/config';
 import { type Product, type BaseProductAware, type ProductAware } from '../../product';
 import {
   type Location,
@@ -24,6 +25,7 @@ export type StateProps = {
   userInput: ReservationFormValues | null,
   fulfillmentPaths: string[],
   fulfillmentMethods?: string[],
+  shopSettings?: ShopSettings,
 } & ProductAware & BaseProductAware
 
 export type DispatchProps = {

@@ -54,6 +54,7 @@ function FulfillmentProvider(props: Props) {
     userInput,
     fulfillmentPaths,
     fulfillmentMethods,
+    shopSettings,
     selectLocation,
     submitReservation,
     storeFormInput,
@@ -128,6 +129,10 @@ function FulfillmentProvider(props: Props) {
       orderSuccess = errors === null;
     }
 
+    if (isStage(STAGE_RESERVE_FORM)) {
+      orderSuccess = null;
+    }
+
     if (props.onClose) {
       props.onClose(location, productId, orderSuccess);
     } else if (callback) {
@@ -196,7 +201,7 @@ function FulfillmentProvider(props: Props) {
 
     if (isChangeFulfillment && cartItem) {
       updateProductsInCart([{
-        quantity: 1,
+        quantity: cartItem.quantity,
         cartItemId: cartItem.id,
         fulfillment,
       }]);
@@ -285,8 +290,9 @@ function FulfillmentProvider(props: Props) {
 
     if (method === DIRECT_SHIP) {
       updateProductsInCart([{
-        quantity: 1,
+        quantity: item.quantity,
         cartItemId: item.id,
+        fulfillment: { method: DIRECT_SHIP },
       }]);
 
       handleClose(null, item.product.id);
@@ -309,6 +315,7 @@ function FulfillmentProvider(props: Props) {
     userInput,
     fulfillmentPaths,
     fulfillmentMethods,
+    shopSettings,
     selectLocation: handleSelectLocation,
     changeFulfillment: handleChangeFulfillmentMethod,
     sendReservation,

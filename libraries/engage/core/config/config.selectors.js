@@ -1,6 +1,6 @@
 // @flow
 import { createSelector, type Selector } from 'reselect';
-import { type ConfigState, type MerchantSettings } from './config.types';
+import { type ConfigState, type MerchantSettings, type ShopSettings } from './config.types';
 
 /**
  * Retrieves the config state from the store.
@@ -38,6 +38,21 @@ export function makeGetMerchantSettings(): Selector<any, MerchantSettings> {
   return createSelector(
     getState,
     state => state.merchantSettings || {}
+  );
+}
+
+/**
+ * Creates the selector that retrieves the merchant settings.
+ * @returns {Function}
+ */
+export function makeGetShopSettings(): Selector<any, ShopSettings> {
+  /**
+   * @param {Object} state The application state.
+   * @returns {Object}
+   */
+  return createSelector(
+    getState,
+    state => state.shopSettings || {}
   );
 }
 
