@@ -6,7 +6,7 @@ jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/core');
 jest.mock('@shopgate/engage/locations');
 jest.mock('@shopgate/pwa-ui-shared/CardList/components/Item', () => 'CardListItem');
-jest.mock('../CartItemGroupReservation.connector', () => cmp => cmp);
+jest.mock('../CartItem.connector', () => cmp => cmp);
 
 describe('engage > cart > components > CartItemGroupReservation', () => {
   const location = {
