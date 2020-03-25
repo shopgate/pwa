@@ -6,7 +6,15 @@ const { colors, variables } = themeConfig;
 const wrapper = css({
   background: colors.light,
   padding: variables.gap.big,
-}).toString();
+});
+
+const wrapperCard = css(wrapper, {
+  margin: `${variables.gap.small * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.big}px`,
+  border: `1px solid ${colors.shade7}`,
+  boxSizing: 'border-box',
+  boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
+  borderRadius: 5,
+});
 
 const container = css({
   position: 'relative',
@@ -66,6 +74,7 @@ const underlineBlurred = css({
 
 export default {
   wrapper,
+  wrapperCard,
   container,
   label,
   input,

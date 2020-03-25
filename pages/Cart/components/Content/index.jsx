@@ -93,11 +93,16 @@ function CartContent(props) {
                   </CardList>
                 )}
                 {(cartItemsDisplay === 'card') && (
-                  <CartItems
-                    cartItems={cartItemsSorted}
-                    multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
-                    onFocus={togglePaymentBar}
-                  />
+                  <Fragment>
+                    <CartItems
+                      cartItems={cartItemsSorted}
+                      multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
+                      onFocus={togglePaymentBar}
+                    />
+                    <SurroundPortals portalName={CART_COUPON_FIELD}>
+                      <CouponField onFocus={togglePaymentBar} />
+                    </SurroundPortals>
+                  </Fragment>
                 )}
               </SurroundPortals>
               <PaymentBar visible={isPaymentBarVisible} />
