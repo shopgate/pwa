@@ -149,9 +149,10 @@
     },
     "stock_info": {
       "pick_up_at": "at {storeName}",
-      "available": "{visibleInventory} in stock",
+      "availableInventory": "{visibleInventory} in stock",
+      "available": "Available",
       "limitedAvailability": "Only {visibleInventory} left in stock",
-      "notAvailable": "Pick up within 2-3 days",
+      "notAvailable": "Out of stock",
       "customAvailability": "Not available in this store"
     },
     "no_available": "not available"
