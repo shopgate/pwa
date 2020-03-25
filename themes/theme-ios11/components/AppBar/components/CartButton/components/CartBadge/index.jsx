@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
-import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
+import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import styles from './style';
 
 /**

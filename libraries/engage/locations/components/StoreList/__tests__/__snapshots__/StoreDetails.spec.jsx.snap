@@ -13,6 +13,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           "sun": "09:00 - 17:00",
         }
       }
+      pure={false}
     >
       <StoreDetailsLine
         icon={[Function]}
