@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { Input, I18n } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
-import { getPageSettings } from '@shopgate/engage/core/config';
+import { i18n, usePageSettings } from '@shopgate/engage/core';
 import CouponFieldIcon from './components/CouponFieldIcon';
 import styles from './style';
 
@@ -13,7 +11,8 @@ import styles from './style';
  * @returns {JSX}
  */
 const Layout = (props) => {
-  const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
+  const { cartItemsDisplay = 'line' } = usePageSettings();
+
   return (
     <div className={cartItemsDisplay === 'line' ? styles.wrapper : styles.wrapperCard}>
       <form className={styles.container} onSubmit={props.handleAddCoupon} data-test-id="couponField">
