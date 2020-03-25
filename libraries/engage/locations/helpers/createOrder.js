@@ -1,6 +1,6 @@
 // @flow
 import snakeCase from 'lodash/snakeCase';
-import { makeGetMerchantSettings } from '@shopgate/engage/core';
+import { makeGetMerchantSettings, i18n } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
@@ -144,15 +144,11 @@ function createCartLineItems(getState) {
  * @returns {Object}
  */
 function createOrder(formValues: { [string]: string }, product: any, getState: () => any) {
-  const {
-    defaultLocale: localeCode = appConfig.language,
-  } = makeGetMerchantSettings()(getState());
-
   // If no individual product was submitted, we handle the cart.
   if (product === null) {
     const grandTotal = getGrandTotal(getState());
     return {
-      localeCode,
+      localeCode: i18n.getLang().toLowerCase(),
       currencyCode: getCurrency(getState()),
       addressSequences: createAddressSequence(formValues, getState),
       primaryBillToAddressSequenceIndex: 0,
@@ -163,7 +159,7 @@ function createOrder(formValues: { [string]: string }, product: any, getState: (
   }
 
   return {
-    localeCode,
+    localeCode: i18n.getLang().toLowerCase(),
     currencyCode: product.price.currency,
     addressSequences: createAddressSequence(formValues, getState),
     primaryBillToAddressSequenceIndex: 0,

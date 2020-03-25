@@ -6,6 +6,7 @@ export const i18n = {
   number: () => 'n',
   date: () => 'd',
   time: () => 't',
+  getLang: () => 'de-DE',
 };
 
 /** @returns {string[]} */
