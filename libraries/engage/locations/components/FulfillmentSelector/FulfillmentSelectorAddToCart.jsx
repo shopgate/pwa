@@ -26,17 +26,11 @@ function promisifiedFulfillmentPathSelector(): Promise<FulfillmentPath> {
 
 /**
  * Interject add to cart flow.
- * @param {Object} props The component props.
- * @property {Object} props.location The selected location.
- * @property {Conditioner} props.conditioner conditioner.
- * @property {string[]} props.fulfillmentPaths fulfillmentPaths
- * @property {string} props.userFulfillmentMethod The currenly selected fulfillment
- * method of the user.
  * @returns {JSX}
  */
 export function FulfillmentSelectorAddToCart() {
   const {
-    location, selectedLocation, disabled, conditioner, fulfillmentPaths, userFulfillmentMethod,
+    location, selectedLocation, disabled, conditioner, fulfillmentPaths, selection,
   } = useFulfillmentSelectorState();
 
   const usedLocation = selectedLocation || location;
@@ -45,13 +39,13 @@ export function FulfillmentSelectorAddToCart() {
   useEffect(() => {
     // Add most late conditioner
     conditioner.addConditioner('fulfillment-inventory', async () => {
-      if (disabled || !usedLocation) {
-        return false;
+      // Allow direct ship item
+      if (selection === DIRECT_SHIP) {
+        return true;
       }
 
-      // Allow direct ship item
-      if (userFulfillmentMethod === DIRECT_SHIP) {
-        return true;
+      if (disabled || !usedLocation) {
+        return false;
       }
 
       if (!isProductAvailable(usedLocation)) {
@@ -92,7 +86,7 @@ export function FulfillmentSelectorAddToCart() {
     }, 100);
 
     return () => conditioner.removeConditioner('fulfillment-inventory');
-  }, [conditioner, fulfillmentPaths, userFulfillmentMethod, disabled, usedLocation]);
+  }, [conditioner, fulfillmentPaths, selection, disabled, usedLocation]);
 
   return null;
 }
