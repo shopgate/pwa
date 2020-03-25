@@ -58,9 +58,12 @@ Object {
     },
   ],
   "localeCode": "de-de",
+  "os": "android",
+  "platform": "engage",
   "primaryBillToAddressSequenceIndex": 0,
   "subTotal": 200,
   "total": 200,
+  "userAgent": "Mozilla/5.0 (Linux; Android 8.0.0; Pixel 2 XL Build/OPD1.170816.004) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36",
 }
 `;
 
@@ -99,7 +102,7 @@ Object {
         "name": "no_description",
         "options": Array [
           Object {
-            "code": 1,
+            "code": "1",
             "name": "Color",
             "value": Object {
               "code": "black",
@@ -107,7 +110,7 @@ Object {
             },
           },
           Object {
-            "code": 2,
+            "code": "2",
             "name": "Shoe size",
             "value": Object {
               "code": "5",
@@ -122,8 +125,11 @@ Object {
     },
   ],
   "localeCode": "de-de",
+  "os": "android",
+  "platform": "engage",
   "primaryBillToAddressSequenceIndex": 0,
   "subTotal": 100,
   "total": 100,
+  "userAgent": "Mozilla/5.0 (Linux; Android 8.0.0; Pixel 2 XL Build/OPD1.170816.004) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36",
 }
 `;

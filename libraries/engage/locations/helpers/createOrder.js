@@ -1,6 +1,6 @@
 // @flow
 import snakeCase from 'lodash/snakeCase';
-import { makeGetMerchantSettings } from '@shopgate/engage/core';
+import { makeGetMerchantSettings, getPlatform, getUserAgent } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
@@ -86,7 +86,7 @@ function createSingleProductItems(product, getState) {
         currencyCode: product.price.currency,
         ...product.characteristics && {
           options: product.characteristics.map(characteristic => ({
-            code: characteristic.id,
+            code: String(characteristic.id),
             name: characteristic.label,
             value: {
               code: snakeCase(characteristic.value),
@@ -144,21 +144,30 @@ function createCartLineItems(getState) {
  * @returns {Object}
  */
 function createOrder(formValues: { [string]: string }, product: any, getState: () => any) {
+  const state = getState();
+
   const {
     defaultLocale: localeCode = appConfig.language,
-  } = makeGetMerchantSettings()(getState());
+  } = makeGetMerchantSettings()(state);
+
+  const userAgent = getUserAgent();
+  const platform = 'engage';
+  const os = getPlatform(state);
 
   // If no individual product was submitted, we handle the cart.
   if (product === null) {
-    const grandTotal = getGrandTotal(getState());
+    const grandTotal = getGrandTotal(state);
     return {
       localeCode,
-      currencyCode: getCurrency(getState()),
+      currencyCode: getCurrency(state),
       addressSequences: createAddressSequence(formValues, getState),
       primaryBillToAddressSequenceIndex: 0,
       lineItems: createCartLineItems(getState),
-      subTotal: getSubTotal(getState()) || grandTotal,
+      subTotal: getSubTotal(state) || grandTotal,
       total: grandTotal,
+      userAgent,
+      platform,
+      os,
     };
   }
 
@@ -170,6 +179,9 @@ function createOrder(formValues: { [string]: string }, product: any, getState: (
     lineItems: createSingleProductItems(product, getState),
     subTotal: product.price.unitPrice,
     total: product.price.unitPrice,
+    userAgent,
+    platform,
+    os,
   };
 }
 
