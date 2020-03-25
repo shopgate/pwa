@@ -13,11 +13,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   raised={false}
 >
   <div
-    className={
-      Object {
-        "data-css-ia405z": "",
-      }
-    }
+    className="css-ia405z"
     role={null}
   />
 </MessageBar>
@@ -42,11 +38,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   raised={false}
 >
   <div
-    className={
-      Object {
-        "data-css-ia405z": "",
-      }
-    }
+    className="css-ia405z"
     role="alert"
   >
     <div
@@ -113,11 +105,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   raised={false}
 >
   <div
-    className={
-      Object {
-        "data-css-ia405z": "",
-      }
-    }
+    className="css-ia405z"
     role="alert"
   >
     <div
@@ -272,11 +260,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   raised={false}
 >
   <div
-    className={
-      Object {
-        "data-css-ia405z": "",
-      }
-    }
+    className="css-ia405z"
     role="alert"
   >
     <div
