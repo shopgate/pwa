@@ -1,18 +1,17 @@
 // @flow
 import React, {
-  useState, useContext, useMemo, useRef, useLayoutEffect,
+  useState, useContext, useMemo, useRef, useLayoutEffect, useCallback, Fragment,
 } from 'react';
-import TextField from '@shopgate/pwa-ui-shared/TextField';
-import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
-import RadioGroupItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import {
+  TextField, RippleButton, RadioGroup, RadioGroupItem, ProgressBar,
+} from '@shopgate/engage/components';
 import { useFormState } from '../../../core/hooks/useFormState';
 import { i18n } from '../../../core/helpers/i18n';
 import { FulfillmentContext } from '../../locations.context';
 import { type ReservationFormValues } from '../../locations.types';
 import { constraints } from './ReserveForm.constraints';
 import {
-  form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button,
+  form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button, progressBar,
 } from './ReserveForm.style';
 
 /**
@@ -52,7 +51,7 @@ export function ReserveForm() {
   /**
    * @param {Object} values The form values.
    */
-  const complete = (values: ReservationFormValues) => {
+  const complete = useCallback(async (values: ReservationFormValues) => {
     const response = values;
 
     response.firstName2 = response.firstName2 || response.firstName;
@@ -60,11 +59,11 @@ export function ReserveForm() {
     response.cellPhone2 = response.cellPhone2 || response.cellPhone;
     response.email2 = response.email2 || response.email;
 
-    sendReservation(response);
-  };
+    await sendReservation(response);
+  }, [sendReservation]);
 
   const {
-    values, handleChange, handleSubmit, changed, valid, validationErrors = {},
+    values, handleChange, handleSubmit, changed, valid, validationErrors = {}, isSubmitting,
   } = useFormState(initialState, complete, validationConstraints);
 
   const someoneElseRef = useRef(null);
@@ -75,59 +74,64 @@ export function ReserveForm() {
   }, [picker, someoneElseRef]);
 
   return (
-    <form onSubmit={handleSubmit} className={form}>
-      <fieldset className={fieldset}>
-        <TextField
-          name="firstName"
-          value={values.firstName}
-          onChange={handleChange}
-          label={i18n.text('locations.firstName')}
-          className={formField}
-          errorText={i18n.text(validationErrors.firstName)}
-        />
-        <TextField
-          name="lastName"
-          value={values.lastName}
-          onChange={handleChange}
-          label={i18n.text('locations.lastName')}
-          className={formField}
-          errorText={i18n.text(validationErrors.lastName)}
-        />
-        <TextField
-          name="cellPhone"
-          value={values.cellPhone}
-          onChange={handleChange}
-          label={i18n.text('locations.cellPhone')}
-          className={formField}
-          errorText={i18n.text(validationErrors.cellPhone)}
-        />
-        <TextField
-          name="email"
-          value={values.email}
-          onChange={handleChange}
-          label={i18n.text('locations.emailAddress')}
-          className={formField}
-          errorText={i18n.text(validationErrors.email)}
-        />
-      </fieldset>
-      <p className={formHeading}>
-        {i18n.text('locations.who_will_pickup')}
-      </p>
-      <div className={pickerSwitch}>
-        <RadioGroup name="picker" direction="row" value="me" onChange={setPicker}>
-          <RadioGroupItem
-            label={i18n.text('locations.me')}
-            name="me"
-            className={pickerItem}
-          />
-          <RadioGroupItem
-            label={i18n.text('locations.someone_else')}
-            name="someoneelse"
-            className={pickerItem}
-          />
-        </RadioGroup>
+    <Fragment>
+      <div className={progressBar}>
+        <ProgressBar isVisible={isSubmitting} />
       </div>
-      {(picker === 'someoneelse') && (
+      <form onSubmit={handleSubmit} className={form}>
+        <fieldset className={fieldset}>
+          <TextField
+            name="firstName"
+            value={values.firstName}
+            onChange={handleChange}
+            label={i18n.text('locations.firstName')}
+            className={formField}
+            errorText={i18n.text(validationErrors.firstName)}
+          />
+          <TextField
+            name="lastName"
+            value={values.lastName}
+            onChange={handleChange}
+            label={i18n.text('locations.lastName')}
+            className={formField}
+            errorText={i18n.text(validationErrors.lastName)}
+          />
+          <TextField
+            name="cellPhone"
+            type="tel"
+            value={values.cellPhone}
+            onChange={handleChange}
+            label={i18n.text('locations.cellPhone')}
+            className={formField}
+            errorText={i18n.text(validationErrors.cellPhone)}
+          />
+          <TextField
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            label={i18n.text('locations.emailAddress')}
+            className={formField}
+            errorText={i18n.text(validationErrors.email)}
+          />
+        </fieldset>
+        <p className={formHeading}>
+          {i18n.text('locations.who_will_pickup')}
+        </p>
+        <div className={pickerSwitch}>
+          <RadioGroup name="picker" direction="row" value="me" onChange={setPicker}>
+            <RadioGroupItem
+              label={i18n.text('locations.me')}
+              name="me"
+              className={pickerItem}
+            />
+            <RadioGroupItem
+              label={i18n.text('locations.someone_else')}
+              name="someoneelse"
+              className={pickerItem}
+            />
+          </RadioGroup>
+        </div>
+        {(picker === 'someoneelse') && (
         <fieldset className={fieldset} ref={someoneElseRef}>
           <TextField
             name="firstName2"
@@ -147,6 +151,7 @@ export function ReserveForm() {
           />
           <TextField
             name="cellPhone2"
+            type="tel"
             value={values.cellPhone2}
             onChange={handleChange}
             label={i18n.text('locations.cellPhone')}
@@ -162,14 +167,15 @@ export function ReserveForm() {
             errorText={i18n.text(validationErrors.email2)}
           />
         </fieldset>
-      )}
-      <RippleButton
-        type="secondary"
-        disabled={changed || valid === false}
-        className={button}
-      >
-        {i18n.text('locations.place_reservation')}
-      </RippleButton>
-    </form>
+        )}
+        <RippleButton
+          type="secondary"
+          disabled={changed || valid === false || isSubmitting}
+          className={button}
+        >
+          {i18n.text('locations.place_reservation')}
+        </RippleButton>
+      </form>
+    </Fragment>
   );
 }
