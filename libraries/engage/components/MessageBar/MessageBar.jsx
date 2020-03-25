@@ -26,10 +26,10 @@ type Props = DefaultProps & {
 const MessageBar = ({ messages, classNames, raised }: Props) => {
   const containerClass = React.useMemo<string>(() => {
     if (raised) {
-      return css(styles.containerRaised, classNames.containerRaised);
+      return css(styles.containerRaised, classNames.containerRaised).toString();
     }
 
-    return css(styles.container, classNames.container);
+    return css(styles.container, classNames.container).toString();
   }, [classNames.container, classNames.containerRaised, raised]);
 
   return (
