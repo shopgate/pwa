@@ -1,0 +1,380 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly should blur the input, if the editMode is disabled via prop 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={1}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly should focus the input, if the editMode is enabled via prop 1`] = `
+<CartItemQuantityPicker
+  editMode={true}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={1}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correctly should not trigger the callback when the input didn't change 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[MockFunction]}
+  onToggleEditMode={[Function]}
+  quantity={2}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={2}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correctly should trigger the callback when the input changed 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          123,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  onToggleEditMode={[Function]}
+  quantity={2}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={123}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered correctly should trigger the callback when the input was blurred 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          true,
+        ],
+        Array [
+          false,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  quantity={1}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered correctly should trigger the callback when the input was focused 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          true,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  quantity={1}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> should fall back to its default of 1, if 0 is supplied 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={0}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> should fall back to the previous value when the last value was invalid 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={124}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={124}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={1}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={3}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={3}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> should reset the amount to 1 if set to lower than 0 1`] = `
+<CartItemQuantityPicker
+  editMode={false}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={-1}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="product.quantity"
+      className={
+        Object {
+          "data-css-1bncmx2": "",
+        }
+      }
+      data-test-id="quantityPicker"
+      min={0}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
+</CartItemQuantityPicker>
+`;

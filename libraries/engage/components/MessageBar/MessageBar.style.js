@@ -1,16 +1,26 @@
 import { css } from 'glamor';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
-export const container = css({
+const containerBase = {
   background: themeColors.background,
   display: 'flex',
   flexDirection: 'column',
   flexShrink: 0,
+  overflow: 'hidden',
+};
+
+export const container = css(containerBase);
+
+export const containerRaised = css(containerBase, {
+  borderRadius: '0 0 5px 5px',
+  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+  zIndex: 10,
 });
 
-export const messageBase = {
-  padding: `${themeVariables.gap.small}px ${themeVariables.gap.big}px`,
+const messageBase = {
+  padding: `${themeVariables.gap.big}px ${themeVariables.gap.big}px`,
   fontSize: '0.875rem',
+  lineHeight: 1.3,
   fontWeight: 500,
   ':not(:last-child)': {
     marginBottom: themeVariables.gap.small * 0.5,
