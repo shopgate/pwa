@@ -65,7 +65,7 @@ function FulfillmentProvider(props: Props) {
   const [fulfillmentPath, setFulfillmentPath] = React.useState<FulfillmentPath | null>(null);
   const [changeOnly, setChangeOnly] = React.useState(props.changeOnly);
   const [isOpen, setIsOpen] = React.useState(open);
-  const [stage, setStage] = React.useState<SheetStage>(props.stage || STAGE_SELECT_STORE);
+  const [stage, setStage] = React.useState<SheetStage | null>(props.stage || null);
   const [orderNumbers, setOrderNumbers] = React.useState<string[] | null>(null);
   const [errors, setErrors] = React.useState<string[] | null>(null);
   const [product, setProduct] = React.useState(propsProduct);

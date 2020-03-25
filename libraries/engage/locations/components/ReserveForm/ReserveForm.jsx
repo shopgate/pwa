@@ -1,4 +1,6 @@
 // @flow
+import { hot } from 'react-hot-loader/root';
+import 'react-phone-number-input/style.css';
 import React, {
   useState, useContext, useMemo, useRef, useLayoutEffect,
 } from 'react';
@@ -10,6 +12,7 @@ import { useFormState } from '../../../core/hooks/useFormState';
 import { i18n } from '../../../core/helpers/i18n';
 import { FulfillmentContext } from '../../locations.context';
 import { type ReservationFormValues } from '../../locations.types';
+import { ReserveFormPhone } from './ReserveFormPhone';
 import { constraints } from './ReserveForm.constraints';
 import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button,
@@ -19,7 +22,7 @@ import {
  * Renders the quick reservation form.
  * @returns {JSX}
  */
-export function ReserveForm() {
+function ReserveFormUnwrapped() {
   const { sendReservation, userInput } = useContext(FulfillmentContext);
   const [picker, setPicker] = useState('me');
 
@@ -93,12 +96,11 @@ export function ReserveForm() {
           className={formField}
           errorText={i18n.text(validationErrors.lastName)}
         />
-        <TextField
+        <ReserveFormPhone
           name="cellPhone"
           value={values.cellPhone}
           onChange={handleChange}
           label={i18n.text('locations.cellPhone')}
-          className={formField}
           errorText={i18n.text(validationErrors.cellPhone)}
         />
         <TextField
@@ -173,3 +175,5 @@ export function ReserveForm() {
     </form>
   );
 }
+
+export const ReserveForm = hot(ReserveFormUnwrapped);

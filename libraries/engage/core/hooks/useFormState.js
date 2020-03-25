@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useValidation } from '../validation';
 
 /**
@@ -54,7 +54,7 @@ export function useFormState(initialState, complete, validationConstraints = {})
    * @param {string} sanitized The sanitized field value.
    * @param {Object} event The change event object.
    */
-  function handleChange(sanitized, event) {
+  const handleChange = useCallback((sanitized, event) => {
     if (!event) {
       return;
     }
@@ -63,15 +63,15 @@ export function useFormState(initialState, complete, validationConstraints = {})
       ...values,
       [event.target.name]: sanitized,
     });
-  }
+  }, [values]);
 
   /**
    * @param {Object} event The submit event object.
    */
-  function handleSubmit(event) {
+  const handleSubmit = useCallback((event) => {
     event.preventDefault();
     setSubmitting(true);
-  }
+  }, []);
 
   return {
     handleChange,

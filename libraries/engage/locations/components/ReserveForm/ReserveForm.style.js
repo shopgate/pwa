@@ -27,6 +27,44 @@ export const formField = css({
   paddingBottom: variables.gap.small,
 });
 
+export const phoneField = css({
+  position: 'relative',
+  width: '100%',
+  paddingTop: variables.gap.big * 0.75,
+  paddingBottom: variables.gap.big * 1.25,
+  marginBottom: variables.gap.small,
+  ' input.PhoneInputInput': {
+    outline: 'none',
+    fontSize: '1rem',
+    lineHeight: '1.1875rem',
+    paddingBottom: variables.gap.xsmall * 1.5,
+    borderBottom: `1px solid ${colors.shade12}`,
+    '&:focus': {
+      borderBottom: `2px solid ${colors.primary}`,
+      paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+    },
+  },
+});
+
+export const phoneFieldError = css({
+  ' input.PhoneInputInput': {
+    borderBottom: `2px solid ${colors.error} !important`,
+    paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+  },
+});
+
+export const phoneFieldErrorText = css({
+  position: 'absolute',
+  width: '100%',
+  bottom: 2,
+  fontSize: '0.75rem',
+  lineHeight: 0.875,
+  color: colors.error,
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+});
+
 export const pickerSwitch = css({
   marginTop: '-1rem',
 });
