@@ -7,7 +7,12 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { MessageBar } from '@shopgate/engage/components';
 import { getPageSettings } from '@shopgate/engage/core/config';
-import { messagesContainer, messages as messagesStyle } from './CartItem.style';
+import {
+  messagesContainerCard,
+  messagesCard,
+  messagesContainerLine,
+  messagesLine,
+} from './CartItem.style';
 import connect from './CartItemProduct.connector';
 import { CartItemProductLayout } from './CartItemProductLayout';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../cart.constants';
@@ -23,8 +28,14 @@ type State = {
 const { variables } = themeConfig;
 
 const messageStyles = {
-  container: messagesContainer,
-  message: messagesStyle,
+  card: {
+    container: messagesContainerCard,
+    message: messagesCard,
+  },
+  line: {
+    container: messagesContainerLine,
+    message: messagesLine,
+  },
 };
 
 /**
@@ -181,7 +192,7 @@ class CartItemProduct extends React.Component<Props, State> {
       <CardListItem className={cartItemsDisplay === 'card' ? noGap : null}>
         <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
           {messages.length > 0 && (
-            <MessageBar messages={messages} classNames={messageStyles} />
+            <MessageBar messages={messages} classNames={messageStyles[cartItemsDisplay]} />
           )}
           <CartItemProductLayout
             handleDelete={this.deleteProduct}

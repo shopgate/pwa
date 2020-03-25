@@ -3,7 +3,9 @@ import * as React from 'react';
 import PT from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart';
+import { getPageSettings } from '@shopgate/engage/core/config';
 import { MessageBar, CardList } from '@shopgate/engage/components';
 import {
   container,
@@ -11,8 +13,10 @@ import {
   getCartItemTransitionStyle as getTransitionStyle,
 } from './CartItemCoupon.style';
 import {
-  messagesContainer,
-  messages,
+  messagesContainerCard,
+  messagesCard,
+  messagesContainerLine,
+  messagesLine,
 } from './CartItem.style';
 import connect from './CartItemCoupon.connector';
 import { CartItemCouponLayout } from './CartItemCouponLayout';
@@ -25,8 +29,14 @@ type State = {
 }
 
 const messageStyles = {
-  container: messagesContainer,
-  message: messages,
+  card: {
+    container: messagesContainerCard,
+    message: messagesCard,
+  },
+  line: {
+    container: messagesContainerLine,
+    message: messagesLine,
+  },
 };
 
 /**
@@ -104,6 +114,8 @@ class CartItemCoupon extends React.Component<Props, State> {
    * @returns {JSX}
    */
   render() {
+    const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
+
     return (
       <Transition in={this.state.visible} timeout={duration} onExited={this.deleteCoupon}>
         {state => (
@@ -118,7 +130,10 @@ class CartItemCoupon extends React.Component<Props, State> {
             >
               <CardList.Item>
                 {this.props.messages.length > 0 &&
-                  <MessageBar messages={this.props.messages} classNames={messageStyles} />}
+                  <MessageBar
+                    messages={this.props.messages}
+                    classNames={messageStyles[cartItemsDisplay]}
+                  />}
                 <CartItemCouponLayout
                   handleDelete={this.transitionOut}
                   coupon={this.props.coupon}

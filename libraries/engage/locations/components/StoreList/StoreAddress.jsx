@@ -20,7 +20,7 @@ export function StoreAddress({ address, pure }: Props) {
     return null;
   }
 
-  const adressContent = (
+  const addressContent = (
     <React.Fragment>
       <div data-test-id="street">
         {address.street}
@@ -45,7 +45,7 @@ export function StoreAddress({ address, pure }: Props) {
   );
 
   if (pure) {
-    return adressContent;
+    return addressContent;
   }
 
   return (
@@ -54,7 +54,7 @@ export function StoreAddress({ address, pure }: Props) {
         <LocationIcon />
       </div>
       <div>
-        {adressContent}
+        {addressContent}
       </div>
     </div>
   );

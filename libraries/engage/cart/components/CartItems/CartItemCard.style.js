@@ -12,7 +12,7 @@ export const accordionToggle = css({
   padding: `${gap.big * 1.25}px ${gap.big}px`,
 }).toString();
 
-export const accordianContent = css({
+export const accordionContent = css({
   paddingLeft: gap.xbig * 1.25,
 });
 
@@ -25,6 +25,7 @@ export const addressIcon = css({
   fontSize: '1.25rem',
   marginRight: gap.big * 1.25,
   flexShrink: 0,
+  color: themeColors.shade9,
 });
 
 export const titles = css({
@@ -42,7 +43,7 @@ export const method = css({
   color: themeColors.shade3,
 });
 
-export const locationAdress = css({
+export const locationAddress = css({
   color: themeColors.shade3,
   fontSize: '0.85rem',
 });

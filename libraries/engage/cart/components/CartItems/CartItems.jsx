@@ -27,12 +27,14 @@ function CartItems({ cartItems, onFocus, multiLineReservation }: Props) {
     <CardList className={items}>
       {cartItems.map(item => (
         <CardList.Item className={card} key={item.id}>
-          <CartItemCard
-            multiLineReservation={multiLineReservation}
-            fulfillmentLocationId={item.fulfillmentLocationId}
-          >
-            <CartItem item={item} onFocus={onFocus} />
-          </CartItemCard>
+          <ul>
+            <CartItemCard
+              multiLineReservation={multiLineReservation}
+              fulfillmentLocationId={item.fulfillmentLocationId}
+            >
+              <CartItem item={item} onFocus={onFocus} />
+            </CartItemCard>
+          </ul>
         </CardList.Item>
       ))}
     </CardList>

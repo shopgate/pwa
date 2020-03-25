@@ -6,7 +6,7 @@ import { type OptionalLocationAware, StoreAddress, StoreOpeningHours } from '@sh
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 import connect from './CartItem.connector';
 import {
-  accordionToggle, accordianContent, locationAdress, locationHours,
+  accordionToggle, accordionContent, locationAddress, locationHours,
 } from './CartItemCard.style';
 
 type Props = OptionalLocationAware;
@@ -23,7 +23,11 @@ function CartItemCardReservation({ location }: Props) {
 
   const { operationHours, address: { phoneNumber } = {} } = location;
   if ((!operationHours || every(operationHours, isEmpty)) && !phoneNumber) {
-    return <CartItemCardReservationLabel location={location} />;
+    return (
+      <div className={accordionToggle}>
+        <CartItemCardReservationLabel location={location} />
+      </div>
+    );
   }
 
   return (
@@ -31,8 +35,8 @@ function CartItemCardReservation({ location }: Props) {
       className={accordionToggle}
       renderLabel={() => <CartItemCardReservationLabel location={location} />}
     >
-      <div className={accordianContent}>
-        <div className={locationAdress}>
+      <div className={accordionContent}>
+        <div className={locationAddress}>
           <StoreAddress address={location.address} pure />
         </div>
         {operationHours && (
