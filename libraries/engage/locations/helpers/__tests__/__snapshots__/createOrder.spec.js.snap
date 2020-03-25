@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`libraries > engage > locations > helpers > createOrder should create order for cart items 1`] = `
+Object {
+  "addressSequences": Array [
+    Object {
+      "country": "DE",
+      "emailAddress": "email",
+      "firstName": "firstName",
+      "lastName": "lastName",
+      "phone": "cellPhone",
+      "type": "billing",
+    },
+    Object {
+      "country": "DE",
+      "emailAddress": "email2",
+      "firstName": "firstName2",
+      "lastName": "lastName2",
+      "phone": "cellPhone2",
+      "type": "pickup",
+    },
+  ],
+  "currencyCode": "EUR",
+  "lineItems": Array [
+    Object {
+      "code": "106051878",
+      "currencyCode": "EUR",
+      "fulfillmentLocationCode": "LOCATION_CODE",
+      "fulfillmentMethod": "ROPIS",
+      "price": 200,
+      "product": Object {
+        "code": "2016",
+        "currencyCode": "EUR",
+        "image": "https://picsum.photos/440/440",
+        "name": "Honda Accord 2016 Sedan",
+        "options": Array [
+          Object {
+            "code": "color",
+            "name": "Color",
+            "value": Object {
+              "code": "black",
+              "name": "Black",
+            },
+          },
+          Object {
+            "code": "shoe_size",
+            "name": "Shoe size",
+            "value": Object {
+              "code": "5",
+              "name": "5",
+            },
+          },
+        ],
+        "price": 100,
+      },
+      "quantity": 2,
+      "shipToAddressSequenceIndex": 1,
+    },
+  ],
+  "localeCode": "de-de",
+  "primaryBillToAddressSequenceIndex": 0,
+  "subTotal": 200,
+  "total": 200,
+}
+`;
+
+exports[`libraries > engage > locations > helpers > createOrder should create order for single product 1`] = `
+Object {
+  "addressSequences": Array [
+    Object {
+      "country": "DE",
+      "emailAddress": "email",
+      "firstName": "firstName",
+      "lastName": "lastName",
+      "phone": "cellPhone",
+      "type": "billing",
+    },
+    Object {
+      "country": "DE",
+      "emailAddress": "email2",
+      "firstName": "firstName2",
+      "lastName": "lastName2",
+      "phone": "cellPhone2",
+      "type": "pickup",
+    },
+  ],
+  "currencyCode": "EUR",
+  "lineItems": Array [
+    Object {
+      "code": "SG117",
+      "currencyCode": "EUR",
+      "fulfillmentLocationCode": "LOCATION_CODE",
+      "fulfillmentMethod": "ROPIS",
+      "price": 100,
+      "product": Object {
+        "code": "SG117",
+        "currencyCode": "EUR",
+        "image": null,
+        "name": "no_description",
+        "options": Array [
+          Object {
+            "code": 1,
+            "name": "Color",
+            "value": Object {
+              "code": "black",
+              "name": "Black",
+            },
+          },
+          Object {
+            "code": 2,
+            "name": "Shoe size",
+            "value": Object {
+              "code": "5",
+              "name": "5",
+            },
+          },
+        ],
+        "price": 100,
+      },
+      "quantity": 1,
+      "shipToAddressSequenceIndex": 1,
+    },
+  ],
+  "localeCode": "de-de",
+  "primaryBillToAddressSequenceIndex": 0,
+  "subTotal": 100,
+  "total": 100,
+}
+`;

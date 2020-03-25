@@ -9,6 +9,8 @@ export const themeIcons = themeConfig.icons;
 const appConfig = {
   get hideProductImageShadow() { return true; },
   get hasFavorites() { return true; },
+  get language() { return 'de-de'; },
+  get marketId() { return 'DE'; },
 };
 
 export default appConfig;
