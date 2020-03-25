@@ -9,6 +9,7 @@ export {
   FulfillmentSheet,
   FulfillmentPathSelector,
   StoreList,
+  StoreAddress,
   StoreOpeningHours,
   StorePhoneNumber,
   CartItemProductChangeLocation,
@@ -72,4 +73,7 @@ export type {
   SheetCallbackFn,
   SheetOpenParams,
   ReservationResponse,
+  LocationOperationHours,
+  LocationAware,
+  OptionalLocationAware,
 } from './locations.types';

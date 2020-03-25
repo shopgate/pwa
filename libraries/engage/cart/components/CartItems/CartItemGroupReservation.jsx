@@ -6,7 +6,7 @@ import { Accordion } from '@shopgate/engage/components';
 import { StoreOpeningHours, StorePhoneNumber } from '@shopgate/engage/locations';
 import { type OptionalLocationAware } from '@shopgate/engage/locations/locations.types';
 import { CartItemGroupReservationLabel } from './CartItemGroupReservationLabel';
-import connect from './CartItemGroupReservation.connector';
+import connect from './CartItem.connector';
 import { accordionToggle, addressDetails, simpleLabel } from './CartItemGroup.style';
 
 type Props = OptionalLocationAware;
