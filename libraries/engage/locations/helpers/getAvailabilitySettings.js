@@ -25,7 +25,10 @@ export default (settings: MerchantSettings, location: Location = {}) => {
   }
 
   if (visible === null) {
-    return settings[AVAILABILITY_TYPE_AVAILABLE];
+    return {
+      ...settings[AVAILABILITY_TYPE_AVAILABLE],
+      availabilityText: 'locations.stock_info.available',
+    };
   }
 
   // Filter by inventory blind and visible inventory (must match both).

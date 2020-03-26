@@ -9,7 +9,8 @@ export const chevronContainer = css({
   fontSize: '1.5rem',
   position: 'absolute',
   right: '1rem',
-  top: '.6875rem',
+  top: '50%',
+  transform: 'translate3d(0, -50%, 0)',
 });
 
 export const chevron = css({

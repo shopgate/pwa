@@ -44,7 +44,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       <div
         className={
           Object {
-            "data-css-1j1ou1w": "",
+            "data-css-182xsil": "",
           }
         }
       >

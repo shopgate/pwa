@@ -1,16 +1,26 @@
 // @flow
+import snakeCase from 'lodash/snakeCase';
+import {
+  makeGetMerchantSettings, i18n, getPlatform, getUserAgent,
+} from '@shopgate/engage/core';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
-} from '@shopgate/pwa-common-commerce/cart/selectors';
-import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
+} from '@shopgate/engage/cart';
+import { getProductDataById } from '@shopgate/engage/product';
 import { makeGetUserLocation } from '../selectors';
 
 /**
  * Creates the address sequence.
  * @param {Object} formValues The reserve form values.
+ * @param {Function} getState The redux getState function.
  * @returns {Array}
  */
-function createAddressSequence(formValues) {
+function createAddressSequence(formValues, getState) {
+  const {
+    country = appConfig.marketId,
+  } = makeGetMerchantSettings()(getState());
+
   return [
     {
       type: 'billing',
@@ -18,6 +28,7 @@ function createAddressSequence(formValues) {
       lastName: formValues.lastName,
       phone: formValues.cellPhone,
       emailAddress: formValues.email,
+      country,
     },
     {
       type: 'pickup',
@@ -25,6 +36,7 @@ function createAddressSequence(formValues) {
       lastName: formValues.lastName2,
       phone: formValues.cellPhone2,
       emailAddress: formValues.email2,
+      country,
     },
   ];
 }
@@ -33,7 +45,7 @@ function createAddressSequence(formValues) {
  * Retrieves the featured image for a product. If the product doesn't have a featured image
  * and is a child product, the featured image of the base product is retrieved.
  * @param {Object} product The current product.
- * @param {FUnction} getState The redux getState function.
+ * @param {Function} getState The redux getState function.
  * @returns {string}
  */
 function getProductImage(product, getState) {
@@ -66,7 +78,7 @@ function createSingleProductItems(product, getState) {
       fulfillmentMethod: 'ROPIS', // TODO: Change based on the selected method.
       fulfillmentLocationCode: location.code,
       price: product.price.unitPrice,
-      shipToAddressSequenceIndex: 0,
+      shipToAddressSequenceIndex: 1,
       currencyCode: product.price.currency,
       product: {
         code: product.id,
@@ -74,6 +86,16 @@ function createSingleProductItems(product, getState) {
         image: getProductImage(product, getState),
         price: product.price.unitPrice,
         currencyCode: product.price.currency,
+        ...product.characteristics && {
+          options: product.characteristics.map(characteristic => ({
+            code: String(characteristic.id),
+            name: characteristic.label,
+            value: {
+              code: snakeCase(characteristic.value),
+              name: characteristic.value,
+            },
+          })),
+        },
       },
     },
   ];
@@ -82,7 +104,7 @@ function createSingleProductItems(product, getState) {
 /**
  * Creates the order line items.
  * @param {Function} getState The redux getState function.
- * @returns {Array}
+ * @returns {Object[]}
  */
 function createCartLineItems(getState) {
   const items = getCartItems(getState());
@@ -93,8 +115,8 @@ function createCartLineItems(getState) {
     quantity: item.quantity,
     fulfillmentMethod: item.fulfillment.method,
     fulfillmentLocationCode: item.fulfillment.location.code,
-    price: item.product.price.unit,
-    shipToAddressSequenceIndex: 0,
+    price: item.product.price.default,
+    shipToAddressSequenceIndex: 1,
     currencyCode,
     product: {
       code: item.product.id,
@@ -102,6 +124,16 @@ function createCartLineItems(getState) {
       image: item.product.featuredImageUrl,
       price: item.product.price.unit,
       currencyCode,
+      ...item.product.properties && {
+        options: item.product.properties.map(prop => ({
+          code: snakeCase(prop.label),
+          name: prop.label,
+          value: {
+            code: snakeCase(prop.value),
+            name: prop.value,
+          },
+        })),
+      },
     },
   }));
 }
@@ -114,29 +146,40 @@ function createCartLineItems(getState) {
  * @returns {Object}
  */
 function createOrder(formValues: { [string]: string }, product: any, getState: () => any) {
+  const state = getState();
+
+  const userAgent = getUserAgent();
+  const platform = 'engage';
+  const os = getPlatform(state);
+
   // If no individual product was submitted, we handle the cart.
   if (product === null) {
+    const grandTotal = getGrandTotal(state);
     return {
-      // localeCode: process.env.LOCALE_FILE.replace('-', '_'),
-      localeCode: 'de_DE',
-      currencyCode: getCurrency(getState()),
-      addressSequences: createAddressSequence(formValues),
+      localeCode: i18n.getLang().toLowerCase(),
+      currencyCode: getCurrency(state),
+      addressSequences: createAddressSequence(formValues, getState),
       primaryBillToAddressSequenceIndex: 0,
       lineItems: createCartLineItems(getState),
-      subTotal: getSubTotal(getState()),
-      total: getGrandTotal(getState()),
+      subTotal: getSubTotal(state) || grandTotal,
+      total: grandTotal,
+      userAgent,
+      platform,
+      os,
     };
   }
 
   return {
-    // localeCode: process.env.LOCALE_FILE.replace('-', '_'),
-    localeCode: 'de_DE',
+    localeCode: i18n.getLang().toLowerCase(),
     currencyCode: product.price.currency,
-    addressSequences: createAddressSequence(formValues),
+    addressSequences: createAddressSequence(formValues, getState),
     primaryBillToAddressSequenceIndex: 0,
     lineItems: createSingleProductItems(product, getState),
     subTotal: product.price.unitPrice,
     total: product.price.unitPrice,
+    userAgent,
+    platform,
+    os,
   };
 }
 

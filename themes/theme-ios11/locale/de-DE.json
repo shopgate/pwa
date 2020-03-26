@@ -138,7 +138,7 @@
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "method": {
-      "ropis": "Reserve online, pick up in store",
+      "ropis": "Reserve online, pickup in store",
       "direct_ship": "Ship to address"
     },
     "choose_reservation_type": "Reservierungs-Art wählen",
@@ -156,9 +156,10 @@
     },
     "stock_info": {
       "pick_up_at": "bei {storeName}",
-      "available": "{visibleInventory} auf Lager",
+      "availableInventory": "{visibleInventory} auf Lager",
+      "available": "Verfügbar",
       "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
-      "notAvailable": "Verfügbar in 2-3 Tagen",
+      "notAvailable": "Nicht verfügbar",
       "customAvailability": "In dieser Filiale nicht verfügbar"
     },
     "no_available": "nicht verfügbar"
