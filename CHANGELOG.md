@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.9.3](https://github.com/shopgate/pwa/compare/v6.9.2...v6.9.3) (2020-03-26)
+
+#### :bug: Bug Fix
+* [#975](https://github.com/shopgate/pwa/pull/975) Improve shouldFetchData redux helper ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.9.2](https://github.com/shopgate/pwa/compare/v6.9.1...v6.9.2) (2020-02-10)
 
 #### :bug: Bug Fix
