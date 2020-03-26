@@ -352,13 +352,6 @@ define normalize-build
 
 endef
 
-# tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-define purge-dist
-	@echo Purging ./$(strip $(1))/$(strip $(2))/dist
-	@rm -Rf ./$(strip $(1))/$(strip $(2))/dist || true
-endef
-
-
 define publish-npm-package
 		@echo "> Publishing './$(strip $(1))/$(strip $(2))' npm package"
 		@if [ "$(STABLE)" != "true" ]; \
