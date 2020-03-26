@@ -22,6 +22,7 @@ const priceContainer = css({
   justifyContent: 'flex-end',
   flexDirection: 'column',
   fontSize: 14,
+  textAlign: 'right',
 }).toString();
 
 const detailsRow = css({
