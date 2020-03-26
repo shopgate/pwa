@@ -102,9 +102,8 @@
     "hours_details": "Store opening details",
     "today_hours": "Hoje: {hours}",
     "address": "{postalCode} {city}",
-    "mon": "Segunda-feira",
     "phone": "Phone",
-    "mon": "Monday",
+    "mon": "Segunda-feira",
     "tue": "Terça-feira",
     "wed": "Quarta-feira",
     "thu": "Quinta-Feira",
@@ -131,7 +130,7 @@
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
     "method": {
-      "ropis": "Reserve online, pick up in store",
+      "ropis": "Reserve online, pickup in store",
       "direct_ship": "Ship to address"
     },
     "choose_reservation_type": "Choose Reservation Type",
