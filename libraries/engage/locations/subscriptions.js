@@ -5,15 +5,17 @@ import {
   getCartProducts,
   SHOPGATE_CART_GET_CART,
   SHOPGATE_CART_UPDATE_PRODUCTS,
+  fetchCart,
+  cartDidEnter$,
 } from '@shopgate/engage/cart';
 import { configuration, PIPELINES, receiveCoreConfig$ } from '@shopgate/engage/core';
-import { fetchCart } from '../cart';
 import {
   MULTI_LINE_RESERVE,
   SHOPGATE_STOREFRONT_GET_CART,
   SHOPGATE_STOREFRONT_UPDATE_CART,
 } from './constants';
 import { fetchLocationsById, fetchProductLocations } from './actions';
+import { submitReservationSuccess$ } from './locations.streams';
 
 /**
  * Locations subscriptions.
@@ -76,6 +78,12 @@ function locations(subscribe) {
         dispatch(fetchCart());
       });
     }
+  });
+
+  // Core config and cart subscriptions
+  const fetchCart$ = cartDidEnter$.switchMap(() => submitReservationSuccess$.first()).delay(500);
+  subscribe(fetchCart$, ({ dispatch }) => {
+    dispatch(fetchCart());
   });
 }
 
