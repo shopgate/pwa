@@ -48,7 +48,7 @@ exports[`<Password> should render a password field 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv css-1klwfzq formElement"
+        className="css-1vjh8yv formElement"
       >
         <Grid
           className=""

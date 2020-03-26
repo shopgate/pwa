@@ -30,13 +30,20 @@ export function useFormState(initialState, complete, validationConstraints = {})
     if (!isSubmitting) {
       return;
     }
+    let mounted = true;
     if (valid === true) {
       (async () => {
         await complete(values);
-        setSubmitting(false);
-        setChanged(false);
+        if (mounted) {
+          setSubmitting(false);
+          setChanged(false);
+        }
       })();
     }
+    // eslint-disable-next-line consistent-return
+    return () => {
+      mounted = false;
+    };
   }, [complete, isSubmitting, values, valid]);
 
   // -- VALIDATION ON SUBMIT ---------
