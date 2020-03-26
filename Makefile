@@ -344,11 +344,11 @@ endef
 
 # tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
 define normalize-build
-	@find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*tests*' -exec rm -Rf {} \;
-	@find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*mocks*' -exec rm -Rf {} \;
-	@find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*snapshots*' -exec rm -Rf {} \;
-	@find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*.spec.*' -delete
-	@find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*mock.*' -delete
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*tests*' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*mocks*' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*snapshots*' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*.spec.*' -delete
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*mock.*' -delete
 
 endef
 
