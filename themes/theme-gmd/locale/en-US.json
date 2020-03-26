@@ -135,7 +135,7 @@
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
     "method": {
-      "ropis": "Reserve online, pick up in store",
+      "ropis": "Reserve online, pickup in store",
       "direct_ship": "Ship to address"
     },
     "choose_reservation_type": "Choose Reservation Type",

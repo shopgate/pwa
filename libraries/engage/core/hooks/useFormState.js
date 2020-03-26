@@ -39,7 +39,7 @@ export function useFormState(initialState, complete, validationConstraints = {})
   // -- VALIDATION ON SUBMIT ---------
   useEffect(() => {
     // Yest no validation on submit
-    if (changed) {
+    if (changed && valid !== null) {
       validate(values);
     }
     if (isSubmitting && valid === null) {
