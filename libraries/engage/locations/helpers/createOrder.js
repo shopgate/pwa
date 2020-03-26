@@ -1,6 +1,8 @@
 // @flow
 import snakeCase from 'lodash/snakeCase';
-import { makeGetMerchantSettings, getPlatform, getUserAgent } from '@shopgate/engage/core';
+import {
+  makeGetMerchantSettings, i18n, getPlatform, getUserAgent,
+} from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
@@ -146,10 +148,6 @@ function createCartLineItems(getState) {
 function createOrder(formValues: { [string]: string }, product: any, getState: () => any) {
   const state = getState();
 
-  const {
-    defaultLocale: localeCode = appConfig.language,
-  } = makeGetMerchantSettings()(state);
-
   const userAgent = getUserAgent();
   const platform = 'engage';
   const os = getPlatform(state);
@@ -158,7 +156,7 @@ function createOrder(formValues: { [string]: string }, product: any, getState: (
   if (product === null) {
     const grandTotal = getGrandTotal(state);
     return {
-      localeCode,
+      localeCode: i18n.getLang().toLowerCase(),
       currencyCode: getCurrency(state),
       addressSequences: createAddressSequence(formValues, getState),
       primaryBillToAddressSequenceIndex: 0,
@@ -172,7 +170,7 @@ function createOrder(formValues: { [string]: string }, product: any, getState: (
   }
 
   return {
-    localeCode,
+    localeCode: i18n.getLang().toLowerCase(),
     currencyCode: product.price.currency,
     addressSequences: createAddressSequence(formValues, getState),
     primaryBillToAddressSequenceIndex: 0,
