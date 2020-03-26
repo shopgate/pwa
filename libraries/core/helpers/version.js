@@ -122,6 +122,9 @@ const check = (mode, requiredVersion = '', currentVersion = '') => {
   return (currentMicro <= requiredMicro);
 };
 
+/** @returns {string} */
+export const getUserAgent = () => navigator.userAgent;
+
 /**
  * Checks if a version string is valid.
  * @param {string} input The string to check - 17[|17.0|17.0.0].
