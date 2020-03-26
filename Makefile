@@ -348,7 +348,6 @@ define normalize-build
 	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*mocks*' -exec rm -Rf {} \;
 	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*snapshots*' -exec rm -Rf {} \;
 	@-find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*.spec.*' -delete
-	@-find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*mock.*' -delete
 
 endef
 
