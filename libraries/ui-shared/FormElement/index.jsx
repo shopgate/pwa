@@ -74,7 +74,6 @@ class FormElement extends Component {
     return (
       <div className={classNames(
         style.formElement,
-        style.labelReservedSpace,
         className,
         'formElement'
       )}
