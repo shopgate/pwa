@@ -1,5 +1,4 @@
 import { PipelineRequest, logger } from '@shopgate/engage/core';
-import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
 import {
   submitReservationRequest,
   submitReservationSuccess,
@@ -29,10 +28,6 @@ function submitReservation(values, product) {
           logger.error(result.errors);
           dispatch(submitReservationError(result.errors));
           return result;
-        }
-
-        if (product === null) {
-          dispatch(fetchCart());
         }
 
         dispatch(submitReservationSuccess(result.orderNumbers));
