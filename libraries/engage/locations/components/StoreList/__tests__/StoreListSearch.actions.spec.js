@@ -47,6 +47,14 @@ describe('StoreListSearch actions', () => {
       expect(fetchProductLocations).not.toHaveBeenCalled();
     });
 
+    it('should dispatch getGeolocation with useSettingsModal: false', async () => {
+      getGeolocation.mockRejectedValueOnce(new Error());
+      await expect(getProductLocations(productId, null, true)(dispatch)).resolves.toBe(undefined);
+      expect(getGeolocation).toHaveBeenCalledTimes(1);
+      expect(getGeolocation).toHaveBeenCalledWith({ useSettingsModal: false });
+      expect(fetchProductLocations).not.toHaveBeenCalled();
+    });
+
     it('should fetch product locations when called with a productId and search params', async () => {
       await expect(getProductLocations(productId, search)(dispatch)).resolves.toBe(undefined);
       expect(getGeolocation).not.toHaveBeenCalled();
