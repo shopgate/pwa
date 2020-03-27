@@ -45,7 +45,7 @@ function FulfillmentSelector(props: Props) {
   const [selection, setSelection] = React.useState<Selection>(
     isInStoreAndActive ? IN_STORE_PICKUP : DIRECT_SHIP
   );
-  const [selectedLocation, setSelectedLocation] = React.useState(null);
+  const [selectedLocation, setSelectedLocation] = React.useState(location);
   const [isOpen, setIsOpen] = React.useState(false);
 
   /**
@@ -54,17 +54,17 @@ function FulfillmentSelector(props: Props) {
   const handleClose = React.useCallback((newLocationData) => {
     setIsOpen(false);
 
-    if (!newLocationData && selectedLocation === null) {
+    if (!newLocationData && (selectedLocation === null || selectedLocation.code === null)) {
       // Reset the UI back to directShip if there was no location selected already
       setSelection(DIRECT_SHIP);
       return;
     }
 
-    if (newLocationData && newLocationData.productCode === productId) {
+    if (newLocationData) {
       // Update the selected location only when the selection was done for the same product.
       setSelectedLocation(newLocationData.location);
     }
-  }, [productId, selectedLocation]);
+  }, [selectedLocation]);
 
   /**
    * Whenever the pick-up selection is made, open the
