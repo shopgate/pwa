@@ -4,7 +4,7 @@ import event from '../Event';
 import requestBuffer from '../RequestBuffer';
 import { logger, hasSGJavaScriptBridge } from '../../helpers';
 import logGroup from '../../helpers/logGroup';
-import { STATUS_GRANTED } from '../../constants/AppPermissions';
+import createMockedPermissions from './helpers/createMockedPermissions';
 
 /**
  * The AppPermissionsRequest class is be base class for app permission related request.
@@ -131,20 +131,8 @@ class AppPermissionsRequest extends Request {
    */
   dispatch() {
     if (!hasSGJavaScriptBridge()) {
-      // Mock the response in browser environments, so that the permissions are always granted.
-      let { permissionIds } = this.commandParams;
-      const { permissions } = this.commandParams;
-
-      if (permissions) {
-        permissionIds = permissions.map(permission => permission.permissionId);
-      }
-
-      const result = permissionIds.map(permissionId => ({
-        permissionId,
-        status: STATUS_GRANTED,
-      }));
-
-      return Promise.resolve(result);
+      // Use mocked permission in browser environments.
+      return createMockedPermissions(this.commandName, this.commandParams);
     }
 
     return super.dispatch();

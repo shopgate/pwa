@@ -1,4 +1,8 @@
 import EventEmitter from 'events';
+import {
+  APP_EVENT_GET_APP_PERMISSIONS_RESPONSE,
+  APP_EVENT_REQUEST_APP_PERMISSIONS_RESPONSE,
+} from '../../constants/AppEvents';
 import { logger } from '../../helpers';
 
 const HANDLER_ADD = 'add';
@@ -109,8 +113,8 @@ class Event extends EventEmitter {
     } else if ([
       'dataResponse',
       'webStorageResponse',
-      'getAppPermissionsResponse',
-      'requestAppPermissionsResponse',
+      APP_EVENT_GET_APP_PERMISSIONS_RESPONSE,
+      APP_EVENT_REQUEST_APP_PERMISSIONS_RESPONSE,
     ].includes(event)) {
       eventName += `:${parameters[0]}`;
     }

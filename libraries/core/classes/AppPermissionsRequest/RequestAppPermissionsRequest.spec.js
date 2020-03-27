@@ -3,9 +3,8 @@ import {
   PERMISSION_ID_LOCATION,
   USAGE_WHEN_IN_USE,
 } from '../../constants/AppPermissions';
-
-const REQUEST_PERMISSIONS_COMMAND_NAME = 'requestAppPermissions';
-const REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME = 'requestAppPermissionsResponse';
+import { COMMAND_REQUEST_APP_PERMISSIONS } from '../../constants/AppCommands';
+import { APP_EVENT_REQUEST_APP_PERMISSIONS_RESPONSE } from '../../constants/AppEvents';
 
 jest.mock('../Event', () => ({}));
 
@@ -27,8 +26,8 @@ describe('AppPermissionsRequest', () => {
 
   describe('.constructor()', () => {
     it('should work as expected', () => {
-      expect(instance.commandName).toEqual(REQUEST_PERMISSIONS_COMMAND_NAME);
-      expect(instance.eventName).toEqual(REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME);
+      expect(instance.commandName).toEqual(COMMAND_REQUEST_APP_PERMISSIONS);
+      expect(instance.eventName).toEqual(APP_EVENT_REQUEST_APP_PERMISSIONS_RESPONSE);
     });
   });
 
