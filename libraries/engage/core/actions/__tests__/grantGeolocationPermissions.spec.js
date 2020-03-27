@@ -24,6 +24,7 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
         title: null,
         message: 'permissions.access_denied.geolocation_message',
         confirm: 'permissions.access_denied.settings_button',
+        dismiss: 'modal.dismiss',
       },
     });
   });
