@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/tracking-ga-native",
-  "version": "6.11.0",
+  "version": "6.13.0-beta.13",
   "description": "Shopgate Connect Google Analytics native tracker extension.",
   "main": "frontend/index.js",
   "repository": "shopgate/tracking-ga-native",
@@ -8,10 +8,10 @@
   "homepage": "https://github.com/shopgate/tracking-ga-native",
   "license": "Apache-2.0",
   "dependencies": {
-    "@shopgate/tracking-core": "6.11.0"
+    "@shopgate/tracking-core": "6.13.0-beta.13"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "6.11.0",
-    "@shopgate/pwa-core": "6.11.0"
+    "@shopgate/pwa-common": "6.13.0-beta.13",
+    "@shopgate/pwa-core": "6.13.0-beta.13"
   }
 }
