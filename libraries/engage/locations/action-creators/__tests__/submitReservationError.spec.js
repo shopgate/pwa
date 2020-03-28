@@ -1,3 +1,4 @@
+import '../__mocks__';
 import { SUBMIT_RESERVATION_ERROR } from '../../constants';
 import submitReservationError from '../submitReservationError';
 

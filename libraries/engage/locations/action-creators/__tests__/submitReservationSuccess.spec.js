@@ -1,3 +1,4 @@
+import '../__mocks__';
 import { SUBMIT_RESERVATION_SUCCESS } from '../../constants';
 import submitReservationSuccess from '../submitReservationSuccess';
 

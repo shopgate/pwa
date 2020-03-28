@@ -1,3 +1,4 @@
+import '../__mocks__';
 import errorLocations from '../errorLocations';
 
 describe('engage > locations > actions-creators', () => {
