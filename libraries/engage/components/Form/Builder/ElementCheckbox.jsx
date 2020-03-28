@@ -15,7 +15,12 @@ const ElementCheckbox = (props) => {
     errorText,
     value,
     name,
+    visible,
   } = props;
+
+  if (!visible) {
+    return null;
+  }
 
   return (
     <div className={camelCase(name)}>
@@ -40,10 +45,12 @@ ElementCheckbox.propTypes = {
     PropTypes.bool.isRequired,
     PropTypes.number.isRequired,
   ]),
+  visible: PropTypes.bool,
 };
 
 ElementCheckbox.defaultProps = {
   value: false,
+  visible: true,
 };
 
 export default memo(ElementCheckbox);

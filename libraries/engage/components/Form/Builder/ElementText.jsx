@@ -33,7 +33,12 @@ const ElementText = (props) => {
     errorText,
     name,
     value,
+    visible,
   } = props;
+
+  if (!visible) {
+    return null;
+  }
 
   const type = mapping[element.type];
 
@@ -62,10 +67,12 @@ ElementText.propTypes = {
     PropTypes.bool.isRequired,
     PropTypes.number.isRequired,
   ]),
+  visible: PropTypes.bool,
 };
 
 ElementText.defaultProps = {
   value: '',
+  visible: true,
 };
 
 export default memo(ElementText);
