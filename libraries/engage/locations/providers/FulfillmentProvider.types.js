@@ -15,10 +15,14 @@ export type OwnProps = {
   open?: boolean,
   title?: string,
   changeOnly?: boolean,
-  onClose?: (location: Location | null, productId: string | null, orderSuccess?: boolean) => void,
+  onClose?: (
+    location: Location | null,
+    productId: string | null,
+    orderSuccess?: boolean | null
+  ) => void,
   meta?: { [string]: any },
   stage?: SheetStage,
-}
+};
 
 export type StateProps = {
   locations: Location[] | null,
