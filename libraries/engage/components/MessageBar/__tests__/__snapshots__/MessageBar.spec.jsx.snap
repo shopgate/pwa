@@ -5,6 +5,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   classNames={
     Object {
       "container": null,
+      "containerRaised": null,
       "icon": null,
       "message": null,
     }
@@ -24,6 +25,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   classNames={
     Object {
       "container": null,
+      "containerRaised": null,
       "icon": null,
       "message": null,
     }
@@ -42,11 +44,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
     role="alert"
   >
     <div
-      className={
-        Object {
-          "data-css-6glin7": "",
-        }
-      }
+      className="css-6glin7"
       key="info-something"
     >
       <span
@@ -74,6 +72,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   classNames={
     Object {
       "container": null,
+      "containerRaised": null,
       "icon": null,
       "message": null,
     }
@@ -109,11 +108,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     role="alert"
   >
     <div
-      className={
-        Object {
-          "data-css-6glin7": "",
-        }
-      }
+      className="css-6glin7"
       key="info-This is some information"
     >
       <span
@@ -133,11 +128,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-bfe3ok": "",
-        }
-      }
+      className="css-bfe3ok"
       key="error-This is an error that happened here."
     >
       <span
@@ -157,11 +148,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-7mi6qz": "",
-        }
-      }
+      className="css-7mi6qz"
       key="warning-This is just a warning. Nothing to freak out about."
     >
       <span
@@ -181,11 +168,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-6glin7": "",
-        }
-      }
+      className="css-6glin7"
       key="info-Normal pre-translated message."
     >
       <span
@@ -205,11 +188,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-6glin7": "",
-        }
-      }
+      className="css-6glin7"
       key="info-Normal pre-translated message."
     >
       <span
@@ -237,6 +216,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   classNames={
     Object {
       "container": null,
+      "containerRaised": null,
       "icon": null,
       "message": null,
     }
@@ -264,11 +244,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     role="alert"
   >
     <div
-      className={
-        Object {
-          "data-css-6glin7": "",
-        }
-      }
+      className="css-6glin7"
       key="info-some.translation.string"
     >
       <span
@@ -288,11 +264,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-6glin7": "",
-        }
-      }
+      className="css-6glin7"
       key="info-Message with messageParams"
     >
       <span
@@ -333,15 +305,11 @@ exports[`<MessageBar /> should render with custom classNames 1`] = `
   raised={false}
 >
   <div
-    className="css-30lzs3"
+    className="css-ia405z cls-container"
     role="alert"
   >
     <div
-      className={
-        Object {
-          "data-css-dp8k0s": "",
-        }
-      }
+      className="css-6glin7 cls-message"
       key="info-This is some information"
     >
       <span
