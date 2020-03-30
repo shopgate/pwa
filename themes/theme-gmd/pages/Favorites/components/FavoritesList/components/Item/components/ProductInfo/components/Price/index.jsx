@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ProductPrice from '@shopgate/pwa-ui-shared/Price';
 import ProductPriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
+import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import styles from './style';
 /**
  * Price component made for Favorites.
@@ -13,6 +14,7 @@ class Price extends Component {
       unitPrice: PropTypes.number.isRequired,
       unitPriceStriked: PropTypes.number,
       discount: PropTypes.number,
+      info: PropTypes.string,
     }).isRequired,
   };
 
@@ -35,25 +37,28 @@ class Price extends Component {
    */
   render() {
     const {
-      unitPrice, discount, currency, unitPriceStriked,
+      unitPrice, discount, currency, unitPriceStriked, info,
     } = this.props.price;
 
     return (
       <Fragment>
-        {
-          !!unitPriceStriked && unitPriceStriked > 0
-          && <ProductPriceStriked
+        {(!!unitPriceStriked && unitPriceStriked > 0) && (
+          <ProductPriceStriked
             className={styles.strikedPrice}
             value={unitPriceStriked}
             currency={currency}
           />
-        }
+        )}
         <ProductPrice
           currency={currency}
           unitPrice={unitPrice}
           discounted={discount > 0}
           smallStriked
+          className={styles.price}
         />
+        {info !== '' && (
+          <PriceInfo text={info} className={styles.basePrice} />
+        )}
       </Fragment>
     );
   }
