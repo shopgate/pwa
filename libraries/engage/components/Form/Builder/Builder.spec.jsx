@@ -45,7 +45,7 @@ describe('<Builder />', () => {
     expect(wrapper.find('TextField').length).toEqual(2);
   });
 
-  it('should not render invisible field', () => {
+  it('should render invisible field with visibility prop set to false', () => {
     const wrapper = mount((
       <Builder
         config={{
@@ -62,11 +62,12 @@ describe('<Builder />', () => {
       />
     ));
 
+    // The TextField component is hidden by the ElementText component
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TextField').length).toEqual(0);
   });
 
-  it('should hide element if setVisibilty rule applies', () => {
+  it('should modify the element visibility if setVisibilty rule applies', () => {
     const wrapper = mount((
       <Builder
         config={{
@@ -95,14 +96,15 @@ describe('<Builder />', () => {
       />
     ));
 
-    // Both should be visible at the beginning.
+    // Both should be marked visible at the beginning.
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TextField').length).toEqual(2);
 
     // Simulate user input to the text field.
     wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
 
-    // Second field should be hidden now.
+    // Second field should be marked as hidden but be still rendered.
+    // The TextField component is only rendered when the ElementText is visible.
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TextField').length).toEqual(1);
   });
@@ -181,14 +183,14 @@ describe('<Builder />', () => {
 
     // Should call with initial state.
     expect(wrapper).toMatchSnapshot();
-    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'default' }, false);
+    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'default' }, false, []);
     handleUpdate.mockClear();
 
     // Update input
     wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
 
     // Should call with updated state.
-    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false);
+    expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false, []);
   });
 
   describe('Builder::elementChangeHandler', () => {
@@ -213,7 +215,7 @@ describe('<Builder />', () => {
         formData: {
           foo: 'bar',
         },
-        errors: {},
+        validationErrors: {},
         elementVisibility: {
           foo: true,
         },
@@ -223,16 +225,14 @@ describe('<Builder />', () => {
       builder.elementChangeHandler('foo', 'bar');
 
       // Test
-      expect(handleUpdate).toHaveBeenCalledWith({
-        foo: 'bar',
-      }, false);
+      expect(handleUpdate).toHaveBeenCalledWith({ foo: 'bar' }, false, []);
     });
 
-    it('should consider backend validations', () => {
+    it('should forward validation errors from form actions', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
       const builder = new Builder({
-        validationErrors: [{}],
+        validationErrors: [],
         config: {
           fields: {
             foo: {
@@ -245,11 +245,15 @@ describe('<Builder />', () => {
         },
         handleUpdate,
       });
+
+      // This mock handler adds a validation error for the field 'foo'
       builder.actionListener.notify = () => ({
         formData: {
           foo: 'bar',
         },
-        errors: {},
+        validationErrors: {
+          foo: 'bar baz!',
+        },
         elementVisibility: {
           foo: true,
         },
@@ -259,15 +263,20 @@ describe('<Builder />', () => {
       builder.elementChangeHandler('foo', 'bar');
 
       // Test
-      expect(handleUpdate).toHaveBeenCalledWith({
-        foo: 'bar',
-      }, true);
+      expect(handleUpdate).toHaveBeenCalledWith(
+        { foo: 'bar' },
+        true,
+        [{
+          path: 'foo',
+          message: 'bar baz!',
+        }]
+      );
     });
   });
 
   describe('Builder::elementSortFunc', () => {
     const builder = new Builder({
-      validationErrors: [{}],
+      validationErrors: [],
       config: { fields: {} },
       handleUpdate: jest.fn(),
     });

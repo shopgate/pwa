@@ -159,9 +159,6 @@ function FulfillmentProvider(props: Props) {
    * @param {Object} values The form values.
    */
   async function sendReservation(values: ReservationFormValues) {
-    // Store the user's form in the user data.
-    storeFormInput(values);
-
     try {
       const response = await submitReservation(values, product);
 
@@ -180,6 +177,9 @@ function FulfillmentProvider(props: Props) {
       setOrderNumbers(null);
       setErrors([error.message]);
     }
+
+    // Store the user's form in the user data.
+    storeFormInput(values);
   }
 
   /**

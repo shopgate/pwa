@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isEqual, camelCase } from 'lodash';
+import { camelCase } from 'lodash';
 import { logger } from '@shopgate/pwa-core/helpers';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -103,8 +103,6 @@ class Builder extends Component {
     this.state = {
       elementVisibility: {},
       formData: {},
-      // Convert errors structure to direct access errors
-      errors: buildValidationErrorList(props.validationErrors),
     };
 
     // Reorganize form elements into a structure that can be easily rendered
@@ -152,18 +150,6 @@ class Builder extends Component {
   }
 
   /**
-   * Handles response of validation errors
-   * @param {Object} nextProps The new props object with changed data
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const oldValidationErrors = buildValidationErrorList(this.props.validationErrors);
-    const newValidationErrors = buildValidationErrorList(nextProps.validationErrors);
-    if (!isEqual(oldValidationErrors, newValidationErrors)) {
-      this.setState({ errors: newValidationErrors });
-    }
-  }
-
-  /**
    * Retrieves a form element REACT component by the given type or null if the type is unknown.
    * @param {string} type The type value of the element to return.
    * @returns {*|ElementText|ElementSelect|ElementCheckbox|ElementRadio|null}
@@ -192,12 +178,13 @@ class Builder extends Component {
   };
 
   /**
-   * Element change handler based on it's type,
+   * Element change handler based on it's type. It takes a state change and performs form actions on
+   * in to allow customization. The final result is then written to the component state.
    * @param {string} elementId Element to create the handler for
    * @param {string} value Element value
    */
   elementChangeHandler = (elementId, value) => {
-    // Apply value change to new state
+    // "newState" is the state changes before any form actions have been applied
     const newState = {
       ...this.state,
       formData: {
@@ -206,37 +193,29 @@ class Builder extends Component {
       },
     };
 
-    // Remove validation error message on first change of the element
-    Object.keys(newState.errors).forEach((key) => {
-      // Action listeners might add some again
-      if (this.state.formData[key] !== newState.formData[key]) {
-        delete newState.errors[key];
-      }
-    });
-    const hasBackendValidationErrors = Object.keys(newState.errors).length > 0;
-
     // Handle context sensitive functionality by via "action" listener and use the "new" state
-    const updatedState = this.actionListener.notify(elementId, this.state, newState);
+    const updatedNewState = this.actionListener.notify(elementId, this.state, newState);
 
-    // TODO: handle frontend validation errors and set "hasErrors" accordingly
-    let hasErrors = false;
+    // Form actions can append validation errors by adding that field to the new state
+    // Split out validation errors from final state and
+    const { validationErrors = {}, ...finalState } = updatedNewState;
+
+    // "hasErrors" is true, when a visible + required field is empty or validation errors appeared!
+    let hasErrors = Object.keys(validationErrors).length > 0;
 
     // Check "required" fields for all visible elements and enable rendering on changes
     this.formElements.forEach((formElement) => {
-      if (!updatedState.elementVisibility[formElement.id] || !formElement.required) {
+      if (!finalState.elementVisibility[formElement.id] || !formElement.required) {
         return;
       }
 
-      const tmpVal = updatedState.formData[formElement.id];
+      const tmpVal = finalState.formData[formElement.id];
       const tmpResult = tmpVal === null || tmpVal === undefined || tmpVal === '' || tmpVal === false;
       hasErrors = hasErrors || tmpResult;
     });
 
-    const hasFrontendValidationErrors = Object.keys(updatedState.errors).length <= 0;
-    const hasValidationErrors = hasBackendValidationErrors && hasFrontendValidationErrors;
-
     // Handle state internally and send an "onChange" event to parent if this finished
-    this.setState(updatedState);
+    this.setState(finalState);
 
     // Transform to external structure (unavailable ones will be set undefined)
     const updateData = {};
@@ -245,31 +224,37 @@ class Builder extends Component {
         if (updateData.customAttributes === undefined) {
           updateData.customAttributes = {};
         }
-        updateData.customAttributes[el.id] = updatedState.formData[el.id];
+        updateData.customAttributes[el.id] = finalState.formData[el.id];
       } else {
-        updateData[el.id] = updatedState.formData[el.id];
+        updateData[el.id] = finalState.formData[el.id];
       }
     });
 
-    // Trigger the given update action
-    this.props.handleUpdate(updateData, hasErrors || hasValidationErrors);
+    // Trigger the given update action of the parent and provide all new validation errors to it
+    this.props.handleUpdate(
+      updateData,
+      hasErrors,
+      // Output validation errors in the same structure (array) as the component takes them
+      hasErrors
+        ? Object.keys(validationErrors).map(k => ({
+          path: k,
+          message: validationErrors[k],
+        }))
+        : []
+    );
   };
 
   /**
    * Takes an element of any type and renders it depending on type.
    * Also puts portals around the element.
    * @param {Object} element The data of the element to be rendered
+   * @param {string} elementErrorText The error text to be shown for this specific element
    * @returns {JSX}
    */
-  renderElement = (element) => {
+  renderElement = (element, elementErrorText) => {
     const elementName = `${this.props.name}_${element.id}`;
-    const elementErrorText = this.state.errors[element.id] || '';
     const elementValue = this.state.formData[element.id];
     const elementVisible = this.state.elementVisibility[element.id] || false;
-
-    if (!elementVisible) {
-      return null;
-    }
 
     // Take a dynamic REACT element based on its type
     const Element = this.getFormElementComponent(element.type);
@@ -318,6 +303,9 @@ class Builder extends Component {
    * @return {JSX}
    */
   render() {
+    // Convert validation errors for easier handling
+    const validationErrors = buildValidationErrorList(this.props.validationErrors);
+
     return (
       <Form className={camelCase(this.props.name)} onSubmit={this.props.onSubmit}>
         <div className={this.props.className}>
@@ -327,7 +315,7 @@ class Builder extends Component {
                 name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
               />
               <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
-                { this.renderElement(element) }
+                { this.renderElement(element, validationErrors[element.id] || '') }
               </Portal>
               <Portal
                 name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}

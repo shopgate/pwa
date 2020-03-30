@@ -33,34 +33,39 @@ export function FulfillmentSelectorReserve() {
     handleChange(IN_STORE_PICKUP, true);
   }, [handleChange]);
 
+  const showDetails = usedLocation.code !== null;
+
   return (
     <React.Fragment>
       <div>
         {i18n.text(IN_STORE_PICKUP_LABEL)}
       </div>
-      {(isOrderable && enabled && usedLocation) && (
-        <Grid className={classNames(itemRow, container.toString())} component="div">
-          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-            <div>{usedLocation.name}</div>
-            <ChangeLocationButton onClick={handleChangeLocation} />
-          </Grid.Item>
-          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-            <StockInfo location={usedLocation} />
-          </Grid.Item>
-        </Grid>
-      )}
-      {(enabled && selected && !isOrderable) && (
+      {showDetails &&
         <React.Fragment>
-          <FulfillmentSelectorImpossibleError />
-          <ChangeLocationButton onClick={handleChangeLocation} />
+          {(isOrderable && enabled && usedLocation) && (
+            <Grid className={classNames(itemRow, container.toString())} component="div">
+              <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+                <div>{usedLocation.name}</div>
+                <ChangeLocationButton onClick={handleChangeLocation} />
+              </Grid.Item>
+              <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+                <StockInfo location={usedLocation} />
+              </Grid.Item>
+            </Grid>
+          )}
+          {(enabled && selected && !isOrderable) && (
+            <React.Fragment>
+              <FulfillmentSelectorImpossibleError />
+              <ChangeLocationButton onClick={handleChangeLocation} />
+            </React.Fragment>
+          )}
+          {!enabled && (
+            <div className={unavailable}>
+              {i18n.text('locations.no_available')}
+            </div>
+          )}
         </React.Fragment>
-
-      )}
-      {!enabled && (
-        <div className={unavailable}>
-          {i18n.text('locations.no_available')}
-        </div>
-      )}
+      }
     </React.Fragment>
   );
 }
