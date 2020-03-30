@@ -37,6 +37,7 @@ export const phoneField = css({
     outline: 'none',
     fontSize: '1rem',
     lineHeight: '1.1875rem',
+    borderRadius: 0,
     paddingBottom: variables.gap.xsmall * 1.5,
     borderBottom: `1px solid ${colors.shade12}`,
     '&:focus': {

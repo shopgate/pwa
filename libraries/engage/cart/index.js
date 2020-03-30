@@ -34,7 +34,30 @@ export {
 } from './cart.helpers';
 
 // SELECTORS
-export * from '@shopgate/pwa-common-commerce/cart/selectors';
+export {
+  getCartItems,
+  getCartItemById,
+  getCartProducts,
+  getCartCoupons,
+  getCartProductCount,
+  getProductPendingCount,
+  getCartProductDisplayCount,
+  getOrderableStatus,
+  getCurrency,
+  getSubTotal,
+  getGrandTotal,
+  getShippingCost,
+  getShippingCosts,
+  getTax,
+  getDiscounts,
+  getDiscountsAmount,
+  getCartMessages,
+  getFlags,
+  getAddToCartOptions,
+  getAddToCartMetadata,
+  hasCouponSupport,
+  getIsFetching,
+} from '@shopgate/pwa-common-commerce/cart/selectors';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/cart/streams';

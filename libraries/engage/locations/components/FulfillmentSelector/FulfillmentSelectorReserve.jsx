@@ -33,7 +33,7 @@ export function FulfillmentSelectorReserve() {
     handleChange(IN_STORE_PICKUP, true);
   }, [handleChange]);
 
-  const showDetails = usedLocation.code !== null;
+  const showDetails = usedLocation !== null ? usedLocation.code !== null : false;
 
   return (
     <React.Fragment>

@@ -2,6 +2,12 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import PhoneInput from 'react-phone-number-input/mobile';
+import { getCountries } from 'react-phone-number-input/input';
+import en from 'react-phone-number-input/locale/en';
+import de from 'react-phone-number-input/locale/de';
+import es from 'react-phone-number-input/locale/es';
+import fr from 'react-phone-number-input/locale/fr';
+import pt from 'react-phone-number-input/locale/pt';
 import flags from 'react-phone-number-input/flags';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
@@ -18,6 +24,15 @@ type Props = {
   onChange: (value: string, event: any) => void;
 }
 
+const builtInCountries = getCountries();
+const locales = {
+  en,
+  de,
+  es,
+  fr,
+  pt,
+};
+
 /**
  * Renders the reserve form phone input maybe with country selection.
  * @param {Object} props The component props.
@@ -31,44 +46,52 @@ export const ReserveFormPhone = React.memo<Props>((props: Props) => {
     label,
     errorText,
   } = props;
-
   const { shopSettings } = React.useContext(FulfillmentContext);
 
-  const supportedCountries = React.useMemo(() => {
-    if (!shopSettings) {
-      return [];
-    }
-
-    return shopSettings.supportedCountries;
-  }, [shopSettings]);
+  const supportedCountries = React.useMemo(() => (
+    shopSettings ? shopSettings.supportedCountries : []
+  ), [shopSettings]);
 
   const countries = React.useMemo(() => {
     if (!supportedCountries) {
-      return [];
+      return builtInCountries;
     }
 
-    return supportedCountries.map((country) => {
+    const sortedCountries = [
+      ...builtInCountries,
+    ];
+
+    const sanitizedSupportedCountries = supportedCountries.map((country) => {
       const pieces = country.split('_');
       return pieces[0];
     });
+
+    sanitizedSupportedCountries.forEach((country) => {
+      sortedCountries.splice(sortedCountries.indexOf(country), 1);
+    });
+
+    return [
+      ...sanitizedSupportedCountries,
+      ...sortedCountries,
+    ];
   }, [supportedCountries]);
 
-  const countriesNames = useCountriesNames(supportedCountries);
+  const countriesNames = useCountriesNames(supportedCountries, locales);
 
   const labels = React.useMemo(() => {
     const output = {};
 
-    if (!supportedCountries) {
+    if (!countries) {
       return output;
     }
 
-    supportedCountries.forEach((key) => {
+    countries.forEach((key) => {
       const pieces = key.split('_');
       output[pieces[0]] = countriesNames[key];
     });
 
     return output;
-  }, [countriesNames, supportedCountries]);
+  }, [countries, countriesNames]);
 
   const handleChange = React.useCallback((phoneValue) => {
     onChange(phoneValue, { target: { name } });
