@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_ITEM_IMAGE,
@@ -69,4 +70,9 @@ export function CartItemCouponLayout(props: Props, context: ContextProps) {
 
 CartItemCouponLayout.defaultProps = {
   handleDelete: () => { },
+};
+
+CartItemCouponLayout.contextTypes = {
+  cartItemId: PropTypes.string,
+  type: PropTypes.string,
 };
