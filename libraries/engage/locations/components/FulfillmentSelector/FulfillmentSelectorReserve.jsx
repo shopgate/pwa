@@ -23,6 +23,7 @@ export function FulfillmentSelectorReserve() {
     selectedLocation,
     handleChange,
     productFulfillmentMethods,
+    disabled,
   } = useFulfillmentSelectorState();
   const usedLocation = selectedLocation || location;
   const enabled = productFulfillmentMethods && productFulfillmentMethods.includes(ROPIS);
@@ -33,7 +34,10 @@ export function FulfillmentSelectorReserve() {
     handleChange(IN_STORE_PICKUP, true);
   }, [handleChange]);
 
-  const showDetails = usedLocation !== null ? usedLocation.code !== null : false;
+  let showDetails = !disabled;
+  if (usedLocation) {
+    showDetails = showDetails && usedLocation.code !== null;
+  }
 
   return (
     <React.Fragment>

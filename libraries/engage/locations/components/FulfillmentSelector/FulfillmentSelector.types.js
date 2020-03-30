@@ -33,6 +33,7 @@ export type StateProps = {
   userFulfillmentMethod: string | null,
   fulfillmentPaths: string[],
   isOrderable: boolean,
+  isReady: boolean,
 }
 
 export type DispatchProps = {
