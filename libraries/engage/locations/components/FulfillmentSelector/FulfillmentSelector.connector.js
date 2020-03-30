@@ -16,9 +16,7 @@ import { storeFulfillmentMethod } from '../../action-creators';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
 
 /**
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {Object} The extended component props.
+ * @return {Function} The extended component props.
  */
 function makeMapStateToProps() {
   const getFulfillmentPaths = makeGetFulfillmentPaths();
@@ -34,15 +32,19 @@ function makeMapStateToProps() {
    * @param {Object} props The component props.
    * @returns {Object}
    */
-  return (state, props) => ({
-    fulfillmentPaths: getFulfillmentPaths(state),
-    shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
-    productFulfillmentMethods: getFulfillmentMethods(state, props),
-    userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
-    location: getProductLocation(state, props) || getUserLocation(state),
-    disabled: isFulfillmentSelectorDisabled(state, props),
-    isOrderable: isProductOrderable(state, props) || hasProductVariants(state, props),
-  });
+  return (state, props) => {
+    const hasVariants = hasProductVariants(state, props);
+    return {
+      fulfillmentPaths: getFulfillmentPaths(state),
+      shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
+      productFulfillmentMethods: getFulfillmentMethods(state, props),
+      userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
+      location: getProductLocation(state, props) || getUserLocation(state),
+      disabled: isFulfillmentSelectorDisabled(state, props),
+      isOrderable: isProductOrderable(state, props) || hasVariants,
+      isReady: !hasVariants,
+    };
+  };
 }
 
 const mapDispatchToProps = {

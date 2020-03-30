@@ -13,7 +13,9 @@ import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossi
  * @returns {JSX}
  */
 export function FulfillmentSelectorDirectShip() {
-  const { productId, selection, isOrderable } = useFulfillmentSelectorState();
+  const {
+    productId, selection, isOrderable, disabled,
+  } = useFulfillmentSelectorState();
   const selected = (selection === DIRECT_SHIP);
 
   if (selected && !isOrderable) {
@@ -33,7 +35,7 @@ export function FulfillmentSelectorDirectShip() {
         {i18n.text(DIRECT_SHIP_LABEL)}
       </Grid.Item>
       <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-        {isOrderable && (
+        {!disabled && isOrderable && (
           <Availability productId={productId} fulfillmentSelection={DIRECT_SHIP} />
         )}
       </Grid.Item>
