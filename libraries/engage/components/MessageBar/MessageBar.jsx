@@ -1,7 +1,7 @@
 // @flow
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import { css } from 'glamor';
+import classnames from 'classnames';
 import { i18n } from '@shopgate/engage/core';
 import * as styles from './MessageBar.style';
 import { type ClassNames, type Message } from './MessageBar.types';
@@ -26,10 +26,10 @@ type Props = DefaultProps & {
 const MessageBar = ({ messages, classNames, raised }: Props) => {
   const containerClass = React.useMemo<string>(() => {
     if (raised) {
-      return css(styles.containerRaised, classNames.containerRaised).toString();
+      return classnames(styles.containerRaised, classNames.containerRaised);
     }
 
-    return css(styles.container, classNames.container).toString();
+    return classnames(styles.container, classNames.container);
   }, [classNames.container, classNames.containerRaised, raised]);
 
   return (
@@ -51,14 +51,14 @@ const MessageBar = ({ messages, classNames, raised }: Props) => {
         return (
           <div
             key={`${type}-${message}`}
-            className={css(
+            className={classnames(
               styles[type],
               classNames.message,
               Icon ? styles.withIcon : null
             )}
           >
             {Icon && (
-              <Icon className={css(classNames.icon, styles.icon).toString()} />
+              <Icon className={classnames(classNames.icon, styles.icon)} />
             )}
             <span className={styles.srOnly}>
               {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
@@ -76,6 +76,7 @@ const MessageBar = ({ messages, classNames, raised }: Props) => {
 MessageBar.defaultProps = {
   classNames: {
     container: null,
+    containerRaised: null,
     message: null,
     icon: null,
   },
