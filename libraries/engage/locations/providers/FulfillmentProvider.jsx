@@ -141,7 +141,7 @@ function FulfillmentProvider(props: Props) {
     }
 
     setIsOpen(false);
-    setStage(STAGE_SELECT_STORE);
+    setStage(null);
     setOrderNumbers(null);
     setErrors(null);
     setIsChangeFulfillment(false);
