@@ -14,6 +14,8 @@ import {
   makeGetProductLocation,
   makeIsRopeProductOrderable,
   makeGetUserFormInput,
+  makeGetUserSearchPostalCode,
+  makeGetUserSearchCountryCode,
 } from '../index';
 import { isProductAvailable } from '../../helpers/productInventory';
 
@@ -53,6 +55,10 @@ describe('engage > locations > selectors', () => {
           isFetching: false,
           expires: 5,
         },
+      },
+      userSearch: {
+        postalCode: '35510',
+        countryCode: 'DE',
       },
     },
   };
@@ -195,7 +201,7 @@ describe('engage > locations > selectors', () => {
         expect(isRopeProductOrderable(localState, { locationId: 'SG1', productId: 'sg1' })).toBe(null);
       });
 
-      it('should return false when no maching location was found at the product', () => {
+      it('should return false when no matching location was found at the product', () => {
         const localState = cloneDeep(mockedState);
         set(localState, 'locations.locationsByProductId.sg1.locations', []);
         expect(isRopeProductOrderable(localState, { locationId: 'SG1', productId: 'sg1' })).toBe(false);
@@ -222,7 +228,7 @@ describe('engage > locations > selectors', () => {
         expect(isRopeProductOrderable(localState, { locationId: 'SG2', productId: 'sg2' })).toBe(null);
       });
 
-      it('should return false when no maching location was found at the product', () => {
+      it('should return false when no matching location was found at the product', () => {
         const localState = cloneDeep(mockedState);
         set(localState, 'locations.locationsByProductId.sg2.locations', []);
         expect(isRopeProductOrderable(localState, { locationId: 'SG2', productId: 'sg2' })).toBe(false);
@@ -278,6 +284,40 @@ describe('engage > locations > selectors', () => {
         mail: 'E - mail',
       });
       expect(getUserFormInput({ locations: { userFormInput: { ...user } } })).toEqual({ ...user });
+    });
+  });
+
+  describe('makeGetUserSearchPostalCode', () => {
+    let getUserPostalCode;
+    beforeEach(() => {
+      getUserPostalCode = makeGetUserSearchPostalCode();
+    });
+
+    it('should return the expected postal code', () => {
+      expect(getUserPostalCode(mockedState)).toBe(mockedState.locations.userSearch.postalCode);
+    });
+
+    it('should return null when the postal code is null', () => {
+      const localState = cloneDeep(mockedState);
+      set(localState, 'locations.userSearch.postalCode', null);
+      expect(getUserPostalCode(localState)).toBeNull();
+    });
+  });
+
+  describe('makeGetUserSearchCountryCode', () => {
+    let getUserCountryCode;
+    beforeEach(() => {
+      getUserCountryCode = makeGetUserSearchCountryCode();
+    });
+
+    it('should return the expected country code', () => {
+      expect(getUserCountryCode(mockedState)).toBe(mockedState.locations.userSearch.countryCode);
+    });
+
+    it('should return "" when the country code is null', () => {
+      const localState = cloneDeep(mockedState);
+      set(localState, 'locations.userSearch.countryCode', null);
+      expect(getUserCountryCode(localState)).toBe('');
     });
   });
 });

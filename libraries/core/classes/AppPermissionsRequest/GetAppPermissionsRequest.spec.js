@@ -4,8 +4,8 @@ import {
   PERMISSION_ID_CAMERA,
 } from '../../constants/AppPermissions';
 
-const GET_PERMISSIONS_COMMAND_NAME = 'getAppPermissions';
-const GET_PERMISSIONS_RESPONSE_EVENT_NAME = 'getAppPermissionsResponse';
+import { COMMAND_GET_APP_PERMISSIONS } from '../../constants/AppCommands';
+import { APP_EVENT_GET_APP_PERMISSIONS_RESPONSE } from '../../constants/AppEvents';
 
 jest.mock('../Event', () => ({}));
 
@@ -22,8 +22,8 @@ describe('AppPermissionsRequest', () => {
 
   describe('.constructor()', () => {
     it('should work as expected', () => {
-      expect(instance.commandName).toEqual(GET_PERMISSIONS_COMMAND_NAME);
-      expect(instance.eventName).toEqual(GET_PERMISSIONS_RESPONSE_EVENT_NAME);
+      expect(instance.commandName).toEqual(COMMAND_GET_APP_PERMISSIONS);
+      expect(instance.eventName).toEqual(APP_EVENT_GET_APP_PERMISSIONS_RESPONSE);
     });
   });
 

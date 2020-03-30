@@ -1,3 +1,4 @@
+import '../__mocks__';
 import * as actionCreators from '../index';
 
 describe('engage > locations > action-creators', () => {

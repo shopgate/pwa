@@ -1,3 +1,4 @@
+import '../__mocks__';
 import { ERROR_PRODUCT_LOCATIONS } from '../../constants';
 import errorProductLocations from '../errorProductLocations';
 

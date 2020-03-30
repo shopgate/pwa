@@ -10,3 +10,6 @@ export const APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND = 'applicationWillEnter
 export const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
 export const APP_EVENT_SCANNER_DID_APPEAR = 'scannerDidAppear';
 export const APP_EVENT_SCANNER_DID_DISAPPEAR = 'scannerDidDisappear';
+
+export const APP_EVENT_GET_APP_PERMISSIONS_RESPONSE = 'getAppPermissionsResponse';
+export const APP_EVENT_REQUEST_APP_PERMISSIONS_RESPONSE = 'requestAppPermissionsResponse';
