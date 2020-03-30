@@ -30,7 +30,7 @@ exports[`<TextField> should focus the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""
@@ -153,7 +153,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""
@@ -276,7 +276,7 @@ exports[`<TextField> should render a simple text field 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""
@@ -400,7 +400,7 @@ exports[`<TextField> should render the text field as password 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""
@@ -524,7 +524,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""
@@ -648,7 +648,7 @@ exports[`<TextField> should sanitize the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""
@@ -772,7 +772,7 @@ exports[`<TextField> should show the error message 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""
@@ -918,7 +918,7 @@ exports[`<TextField> should show the label 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
@@ -1093,7 +1093,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
@@ -1257,7 +1257,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <Grid
         className=""

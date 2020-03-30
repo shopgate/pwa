@@ -74,4 +74,17 @@ describe('<MessageBar />', () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
+
+  it('should render with custom classNames', () => {
+    const wrapper = mount((
+      <MessageBar
+        messages={[{ message: MESSAGE1 }]}
+        classNames={{
+          container: 'cls-container',
+          message: 'cls-message',
+        }}
+      />
+    ));
+    expect(wrapper).toMatchSnapshot();
+  });
 });

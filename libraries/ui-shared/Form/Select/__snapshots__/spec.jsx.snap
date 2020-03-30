@@ -31,7 +31,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <select
         className="css-zao20y select"
@@ -111,7 +111,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <select
         className="css-zao20y select"
@@ -186,7 +186,7 @@ exports[`<Select /> should render select with no options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv formElement"
     >
       <select
         className="css-zao20y select"

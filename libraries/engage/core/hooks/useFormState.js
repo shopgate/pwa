@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
+import { debounce } from 'lodash';
 import { useValidation } from '../validation';
 
 /**
  * @param {Object} initialState The initial form state.
  * @param {Function} complete The completion callback.
  * @param {Object} validationConstraints validationConstraints
- * @returns {{ handleChange, handleSubmit, values, valid, validationErrors: ?Object }}
+ * @returns {{ handleChange, handleSubmit, values, valid, validationErrors: ?Object, isSubmitting }}
  */
 export function useFormState(initialState, complete, validationConstraints = {}) {
   const [values, setValues] = useState(initialState);
@@ -29,11 +30,20 @@ export function useFormState(initialState, complete, validationConstraints = {})
     if (!isSubmitting) {
       return;
     }
+    let mounted = true;
     if (valid === true) {
-      complete(values);
-      setChanged(false);
-      setSubmitting(false);
+      (async () => {
+        await complete(values);
+        if (mounted) {
+          setSubmitting(false);
+          setChanged(false);
+        }
+      })();
     }
+    // eslint-disable-next-line consistent-return
+    return () => {
+      mounted = false;
+    };
   }, [complete, isSubmitting, values, valid]);
 
   // -- VALIDATION ON SUBMIT ---------
@@ -66,12 +76,16 @@ export function useFormState(initialState, complete, validationConstraints = {})
   }, [values]);
 
   /**
+   * Debounced (dbl-click) submit handler
    * @param {Object} event The submit event object.
    */
-  const handleSubmit = useCallback((event) => {
+  const handleSubmit = debounce((event) => {
     event.preventDefault();
     setSubmitting(true);
-  }, []);
+  }, 300, {
+    leading: true,
+    trailing: false,
+  });
 
   return {
     handleChange,
@@ -79,5 +93,6 @@ export function useFormState(initialState, complete, validationConstraints = {})
     values,
     valid,
     validationErrors,
+    isSubmitting,
   };
 }
