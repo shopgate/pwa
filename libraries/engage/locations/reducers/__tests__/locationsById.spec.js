@@ -1,3 +1,4 @@
+import '../../action-creators/__mocks__';
 import { receiveLocations } from '../../action-creators';
 import reducer from '../locationsById';
 

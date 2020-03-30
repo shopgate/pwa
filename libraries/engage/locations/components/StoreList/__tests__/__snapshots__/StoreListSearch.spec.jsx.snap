@@ -2,15 +2,22 @@
 
 exports[`engage > locations > components > StoreListSearch should call getProductLocations with a postal code after filling the input and pressing enter 1`] = `
 <StoreListSearch
+  countryCode="DE"
   getProductLocations={
     [MockFunction] {
       "calls": Array [
+        Array [
+          "ABC123",
+          null,
+          true,
+        ],
         Array [
           "ABC123",
           Object {
             "countryCode": "DE",
             "postalCode": "ACME",
           },
+          false,
         ],
       ],
       "results": Array [
@@ -18,34 +25,23 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
           "type": "return",
           "value": undefined,
         },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
       ],
     }
   }
-  search={
-    Object {
-      "countryCode": "DE",
-    }
-  }
-  storeSearch={
+  postalCode="ACME"
+  setCountryCode={[MockFunction]}
+  setPostalCode={
     [MockFunction] {
       "calls": Array [
         Array [
-          Object {
-            "countryCode": "DE",
-          },
-        ],
-        Array [
-          Object {
-            "countryCode": "DE",
-            "postalCode": "ACME",
-          },
+          "ACME",
         ],
       ],
       "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
         Object {
           "type": "return",
           "value": undefined,
@@ -63,49 +59,7 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
   >
     <Grid>
       <Grid.Item
-        className="css-bpbkyq"
-        grow={1}
-      >
-        <span
-          aria-hidden={true}
-          className={
-            Object {
-              "data-css-gy1p1e": "",
-            }
-          }
-        >
-          <MagnifierIcon />
-        </span>
-        <input
-          autoComplete="off"
-          autoCorrect="off"
-          className={
-            Object {
-              "data-css-2h0g54": "",
-            }
-          }
-          disabled={true}
-          name="postalCode"
-          onChange={[Function]}
-          onKeyDown={[Function]}
-          placeholder="locations.search_placeholder"
-          type="search"
-          value="ACME"
-        />
-        <button
-          className={
-            Object {
-              "data-css-gy1p1e": "",
-            }
-          }
-          onClick={[Function]}
-          type="button"
-        >
-          <LocatorIcon />
-        </button>
-      </Grid.Item>
-      <Grid.Item
-        className="css-1o3o127"
+        className="css-cclcsc"
         shrink={0}
       >
         <div
@@ -141,6 +95,49 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
             </option>
           </select>
         </div>
+      </Grid.Item>
+      <Grid.Item
+        className="css-bpbkyq"
+        grow={1}
+      >
+        <span
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-1lgdfwm": "",
+            }
+          }
+        >
+          <MagnifierIcon />
+        </span>
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className={
+            Object {
+              "data-css-2h0g54": "",
+            }
+          }
+          disabled={true}
+          name="postalCode"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="locations.search_placeholder"
+          type="search"
+          value="ACME"
+        />
+        <button
+          className={
+            Object {
+              "data-css-1lgdfwm": "",
+            }
+          }
+          onClick={[Function]}
+          type="button"
+        >
+          <LocatorIcon />
+        </button>
       </Grid.Item>
     </Grid>
   </div>
@@ -169,49 +166,7 @@ exports[`engage > locations > components > StoreListSearch should render as expe
   >
     <Grid>
       <Grid.Item
-        className="css-bpbkyq"
-        grow={1}
-      >
-        <span
-          aria-hidden={true}
-          className={
-            Object {
-              "data-css-gy1p1e": "",
-            }
-          }
-        >
-          <MagnifierIcon />
-        </span>
-        <input
-          autoComplete="off"
-          autoCorrect="off"
-          className={
-            Object {
-              "data-css-2h0g54": "",
-            }
-          }
-          disabled={false}
-          name="postalCode"
-          onChange={[Function]}
-          onKeyDown={[Function]}
-          placeholder="locations.search_placeholder"
-          type="search"
-          value=""
-        />
-        <button
-          className={
-            Object {
-              "data-css-gy1p1e": "",
-            }
-          }
-          onClick={[Function]}
-          type="button"
-        >
-          <LocatorIcon />
-        </button>
-      </Grid.Item>
-      <Grid.Item
-        className="css-1o3o127"
+        className="css-cclcsc"
         shrink={0}
       >
         <div
@@ -247,6 +202,49 @@ exports[`engage > locations > components > StoreListSearch should render as expe
             </option>
           </select>
         </div>
+      </Grid.Item>
+      <Grid.Item
+        className="css-bpbkyq"
+        grow={1}
+      >
+        <span
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-1lgdfwm": "",
+            }
+          }
+        >
+          <MagnifierIcon />
+        </span>
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className={
+            Object {
+              "data-css-2h0g54": "",
+            }
+          }
+          disabled={false}
+          name="postalCode"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          placeholder="locations.search_placeholder"
+          type="search"
+          value=""
+        />
+        <button
+          className={
+            Object {
+              "data-css-1lgdfwm": "",
+            }
+          }
+          onClick={[Function]}
+          type="button"
+        >
+          <LocatorIcon />
+        </button>
       </Grid.Item>
     </Grid>
   </div>

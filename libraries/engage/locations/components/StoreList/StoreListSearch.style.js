@@ -23,10 +23,10 @@ export const input = css({
   WebkitAppearance: 'none',
 });
 
-export const icon = css({
+export const inputIcon = css({
   padding: 0,
   margin: '0 8px',
-  color: '#8a8a8f',
+  color: themeColors.shade9,
   fontSize: '1.23rem',
   flexShrink: 0,
   outline: 0,
@@ -34,7 +34,7 @@ export const icon = css({
 
 export const country = css({
   maxWidth: '40%',
-  paddingLeft: themeVariables.gap.small,
+  paddingRight: themeVariables.gap.small,
 });
 
 export const selectContainer = css({

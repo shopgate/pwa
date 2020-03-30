@@ -44,6 +44,8 @@ export {
   makeGetLocation,
   makeGetProductLocation,
   makeIsRopeProductOrderable,
+  makeGetUserSearchCountryCode,
+  makeGetUserSearchPostalCode,
 } from './selectors';
 
 // STREAMS
