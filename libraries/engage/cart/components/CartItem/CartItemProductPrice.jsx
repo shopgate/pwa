@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_ITEM_PRICE_STRIKED,
@@ -57,4 +58,9 @@ export function CartItemProductPrice(props: Props, context: ContextProps) {
 
 CartItemProductPrice.defaultProps = {
   specialPrice: null,
+};
+
+CartItemProductPrice.contextTypes = {
+  cartItemId: PropTypes.string,
+  type: PropTypes.string,
 };
