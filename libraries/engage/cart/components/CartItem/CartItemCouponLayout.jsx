@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_ITEM_IMAGE,
@@ -73,6 +73,6 @@ CartItemCouponLayout.defaultProps = {
 };
 
 CartItemCouponLayout.contextTypes = {
-  cartItemId: PropTypes.string,
-  type: PropTypes.string,
+  cartItemId: PT.string,
+  type: PT.string,
 };
