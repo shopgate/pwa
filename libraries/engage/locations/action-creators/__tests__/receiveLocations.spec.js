@@ -1,3 +1,4 @@
+import '../__mocks__';
 import receiveLocations from '../receiveLocations';
 
 describe('engage > locations > actions-creators', () => {

@@ -22,7 +22,7 @@ export type OwnProps = {
   ) => void,
   meta?: { [string]: any },
   stage?: SheetStage,
-}
+};
 
 export type StateProps = {
   locations: Location[] | null,

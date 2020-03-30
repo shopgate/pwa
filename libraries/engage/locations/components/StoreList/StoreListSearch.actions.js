@@ -5,15 +5,17 @@ import { fetchProductLocations } from '../../actions';
 /**
  * @param {string} productId The product ID to fetch locations for.
  * @param {string} [searchParams=null] postalCode and CountryCode. If omitted, the user geolocation.
+ * @param {boolean} [silent=false] Whether in case of declined geolocation permissions a modal
+ * shall be presented, which redirects to the app settings.
  * @returns {string}
  */
-export function getProductLocations(productId, searchParams = null) {
+export function getProductLocations(productId, searchParams = null, silent = false) {
   return async (dispatch) => {
     let params = searchParams;
 
     if (searchParams === null) {
       try {
-        params = await dispatch(getGeolocation({ useSettingsModal: true }));
+        params = await dispatch(getGeolocation({ useSettingsModal: !silent }));
       } catch (e) {
         return;
       }

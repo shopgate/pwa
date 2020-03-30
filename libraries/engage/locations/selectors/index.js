@@ -346,6 +346,44 @@ export function makeGetUserSearch(): Selector<State, UserSearchStateType> {
 }
 
 /**
+ * Create a selector that retrieves the postal code from the user's search.
+ * @returns {Function}
+ */
+export function makeGetUserSearchPostalCode(): Selector<State, string | null> {
+  const getUserSearch = makeGetUserSearch();
+
+  /**
+  * Retrieves the postal code from the user's search.
+  * @param {Object} state The application state.
+  * @param {Object} props The component props.
+  * @returns {string|null}
+  */
+  return createSelector(
+    getUserSearch,
+    userSearch => userSearch.postalCode
+  );
+}
+
+/**
+ * Create a selector that retrieves the country code from the user's search.
+ * @returns {Function}
+ */
+export function makeGetUserSearchCountryCode(): Selector<State, string> {
+  const getUserSearch = makeGetUserSearch();
+
+  /**
+  * Retrieves the country code from the user's search.
+  * @param {Object} state The application state.
+  * @param {Object} props The component props.
+  * @returns {string}
+  */
+  return createSelector(
+    getUserSearch,
+    userSearch => userSearch.countryCode || ''
+  );
+}
+
+/**
  * Creates a selector
  * @param {boolean} useUserLocation Whether the location code is taken from the userLocation state.
  * @returns {Function}

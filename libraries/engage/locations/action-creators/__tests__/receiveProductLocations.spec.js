@@ -1,3 +1,4 @@
+import '../__mocks__';
 import { RECEIVE_PRODUCT_LOCATIONS } from '../../constants';
 import receiveProductLocations from '../receiveProductLocations';
 

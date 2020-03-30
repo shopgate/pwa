@@ -15,6 +15,7 @@ type ClassName = {
 
 export type ClassNames = {
   container: ClassName | null,
+  containerRaised: ClassName | null,
   message: ClassName | null,
   icon: ClassName | null,
 }

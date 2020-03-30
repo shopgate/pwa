@@ -1,33 +1,37 @@
 // @flow
 import { connect } from 'react-redux';
 import {
-  makeGetIsFetchingProductLocations,
-  makeGetUserSearch,
+  makeGetUserSearchPostalCode,
+  makeGetUserSearchCountryCode,
 } from '../../selectors';
-import { storeSearch } from '../../action-creators';
+import {
+  setUserSearchPostalCode,
+  setUserSearchCountryCode,
+} from '../../action-creators';
 import { getProductLocations } from './StoreListSearch.actions';
 
 /**
  * @returns {Function}
  */
 function makeMapStateToProps() {
-  const getIsFetchingProductLocations = makeGetIsFetchingProductLocations();
-  const getUserSearch = makeGetUserSearch();
+  const getUserSearchPostalCode = makeGetUserSearchPostalCode();
+  const getUserSearchCountryCode = makeGetUserSearchCountryCode();
 
   /**
    * @param {Object} state The application state.
    * @param {Object} props The component props.
    * @returns {Object}
    */
-  return (state, props) => ({
-    loading: getIsFetchingProductLocations(state, props),
-    search: getUserSearch(state),
+  return state => ({
+    postalCode: getUserSearchPostalCode(state),
+    countryCode: getUserSearchCountryCode(state),
   });
 }
 
 const mapDispatchToProps = {
   getProductLocations,
-  storeSearch,
+  setPostalCode: setUserSearchPostalCode,
+  setCountryCode: setUserSearchCountryCode,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

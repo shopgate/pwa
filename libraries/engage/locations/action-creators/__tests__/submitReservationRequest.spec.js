@@ -1,3 +1,4 @@
+import '../__mocks__';
 import { SUBMIT_RESERVATION_REQUEST } from '../../constants';
 import submitReservationRequest from '../submitReservationRequest';
 
