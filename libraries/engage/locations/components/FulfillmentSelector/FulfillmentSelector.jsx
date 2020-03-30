@@ -1,7 +1,7 @@
 // @flow
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import { DIRECT_SHIP, IN_STORE_PICKUP } from '../../constants';
+import { DIRECT_SHIP, IN_STORE_PICKUP, STAGE_SELECT_STORE } from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import {
   type OwnProps,
@@ -98,6 +98,7 @@ function FulfillmentSelector(props: Props) {
 
       setIsOpen(true);
       FulfillmentSheet.open({
+        stage: STAGE_SELECT_STORE,
         callback: handleClose,
         changeOnly,
       });

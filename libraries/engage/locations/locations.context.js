@@ -25,7 +25,7 @@ export type FulfillmentContextProps = {
   baseProduct: Product | null,
   product: Product | null,
   userInput: ReservationFormValues | null,
-  stage: SheetStage,
+  stage: SheetStage | null,
   title: string | null,
   fulfillmentPath: FulfillmentPath | null,
   fulfillmentMethods: string[] | null,

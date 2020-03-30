@@ -1,4 +1,6 @@
 // @flow
+import { hot } from 'react-hot-loader/root';
+import 'react-phone-number-input/style.css';
 import React, {
   useState, useContext, useMemo, useRef, useLayoutEffect, useCallback, Fragment,
 } from 'react';
@@ -9,6 +11,7 @@ import { useFormState } from '../../../core/hooks/useFormState';
 import { i18n } from '../../../core/helpers/i18n';
 import { FulfillmentContext } from '../../locations.context';
 import { type ReservationFormValues } from '../../locations.types';
+import { ReserveFormPhone } from './ReserveFormPhone';
 import { constraints } from './ReserveForm.constraints';
 import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button, progressBar,
@@ -18,7 +21,7 @@ import {
  * Renders the quick reservation form.
  * @returns {JSX}
  */
-export function ReserveForm() {
+function ReserveFormUnwrapped() {
   const { sendReservation, userInput } = useContext(FulfillmentContext);
   const [picker, setPicker] = useState('me');
 
@@ -96,13 +99,11 @@ export function ReserveForm() {
             className={formField}
             errorText={i18n.text(validationErrors.lastName)}
           />
-          <TextField
+          <ReserveFormPhone
             name="cellPhone"
-            type="tel"
             value={values.cellPhone}
             onChange={handleChange}
             label={i18n.text('locations.cellPhone')}
-            className={formField}
             errorText={i18n.text(validationErrors.cellPhone)}
           />
           <TextField
@@ -132,41 +133,39 @@ export function ReserveForm() {
           </RadioGroup>
         </div>
         {(picker === 'someoneelse') && (
-        <fieldset className={fieldset} ref={someoneElseRef}>
-          <TextField
-            name="firstName2"
-            value={values.firstName2}
-            onChange={handleChange}
-            label={i18n.text('locations.firstName')}
-            className={formField}
-            errorText={i18n.text(validationErrors.firstName2)}
-          />
-          <TextField
-            name="lastName2"
-            value={values.lastName2}
-            onChange={handleChange}
-            label={i18n.text('locations.lastName')}
-            className={formField}
-            errorText={i18n.text(validationErrors.lastName2)}
-          />
-          <TextField
-            name="cellPhone2"
-            type="tel"
-            value={values.cellPhone2}
-            onChange={handleChange}
-            label={i18n.text('locations.cellPhone')}
-            className={formField}
-            errorText={i18n.text(validationErrors.cellPhone2)}
-          />
-          <TextField
-            name="email2"
-            value={values.email2}
-            onChange={handleChange}
-            label={i18n.text('locations.emailAddress')}
-            className={formField}
-            errorText={i18n.text(validationErrors.email2)}
-          />
-        </fieldset>
+          <fieldset className={fieldset} ref={someoneElseRef}>
+            <TextField
+              name="firstName2"
+              value={values.firstName2}
+              onChange={handleChange}
+              label={i18n.text('locations.firstName')}
+              className={formField}
+              errorText={i18n.text(validationErrors.firstName2)}
+            />
+            <TextField
+              name="lastName2"
+              value={values.lastName2}
+              onChange={handleChange}
+              label={i18n.text('locations.lastName')}
+              className={formField}
+              errorText={i18n.text(validationErrors.lastName2)}
+            />
+            <ReserveFormPhone
+              name="cellPhone2"
+              value={values.cellPhone2}
+              onChange={handleChange}
+              label={i18n.text('locations.cellPhone')}
+              errorText={i18n.text(validationErrors.cellPhone2)}
+            />
+            <TextField
+              name="email2"
+              value={values.email2}
+              onChange={handleChange}
+              label={i18n.text('locations.emailAddress')}
+              className={formField}
+              errorText={i18n.text(validationErrors.email2)}
+            />
+          </fieldset>
         )}
         <RippleButton
           type="secondary"
@@ -179,3 +178,5 @@ export function ReserveForm() {
     </Fragment>
   );
 }
+
+export const ReserveForm = hot(ReserveFormUnwrapped);
