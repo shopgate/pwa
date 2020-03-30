@@ -16,6 +16,14 @@ const label = css({
   color: themeConfig.colors.shade12,
 }).toString();
 
+/**
+ * Adds an additional gap at the top for floating labels.
+ * @type {string}
+ */
+export const formElement = css({
+  paddingTop: themeConfig.variables.gap.big * 1.5,
+}).toString();
+
 export default {
   container,
   label,

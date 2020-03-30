@@ -9,8 +9,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @param {Array} props.messages The message content.
  * @param {Object} props.classNames Styling.
- * @returns {JSX}
- * @deprecated Please import from `@shopgate/engage/components` instead.
+ * @return {JSX}
  */
 const MessageBar = memo(({ messages, classNames }) => (
   <div
@@ -32,6 +31,9 @@ const MessageBar = memo(({ messages, classNames }) => (
           key={`${type}-${message}`}
           className={classnames(classNames.message, styles[type])}
         >
+          <span className={styles.srOnly}>
+            {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
+          </span>
           <span aria-hidden>
             {messageOutput}
           </span>

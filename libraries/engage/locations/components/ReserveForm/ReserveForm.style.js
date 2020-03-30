@@ -41,3 +41,8 @@ export const pickerItem = css({
 export const button = css({
   width: '100%',
 }).toString();
+
+export const progressBar = css({
+  height: '4px',
+  position: 'relative',
+});

@@ -49,13 +49,15 @@ function FulfillmentSelector(props: Props) {
   const [selectedLocation, setSelectedLocation] = React.useState(location);
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const usedLocation = selectedLocation || location;
+
   /**
    * Updates the selected location when the sheet closes.
    */
   const handleClose = React.useCallback((newLocationData) => {
     setIsOpen(false);
 
-    if (!newLocationData && (selectedLocation === null || selectedLocation.code === null)) {
+    if (!newLocationData && (!usedLocation || !usedLocation.code)) {
       // Reset the UI back to directShip if there was no location selected already
       setSelection(DIRECT_SHIP);
       return;
@@ -65,7 +67,7 @@ function FulfillmentSelector(props: Props) {
       // Update the selected location only when the selection was done for the same product.
       setSelectedLocation(newLocationData.location);
     }
-  }, [selectedLocation]);
+  }, [usedLocation]);
 
   /**
    * Whenever the pick-up selection is made, open the

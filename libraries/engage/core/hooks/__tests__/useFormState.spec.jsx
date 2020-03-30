@@ -3,6 +3,10 @@ import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { useFormState } from '../useFormState';
 
+jest.mock('lodash', () => ({
+  debounce: fn => fn,
+}));
+
 describe('engage > core > hooks -> useFormState', () => {
   const mockValidationConstraints = {
     email: {

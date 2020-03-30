@@ -14,7 +14,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv css-1klwfzq formElement"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
@@ -104,7 +104,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv css-1klwfzq formElement"
+    className="css-1vjh8yv formElement"
   >
     <Underline
       hasErrorMessage={false}
@@ -141,7 +141,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv css-1klwfzq formElement"
+    className="css-1vjh8yv formElement"
   >
     <input
       key="test-key"
@@ -182,7 +182,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv css-1klwfzq formElement"
+    className="css-1vjh8yv formElement"
   >
     <Underline
       hasErrorMessage={false}
@@ -220,7 +220,7 @@ exports[`<FormElement /> should show the error message 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv css-1klwfzq formElement"
+    className="css-1vjh8yv formElement"
   >
     <Underline
       hasErrorMessage={true}
@@ -281,7 +281,7 @@ exports[`<FormElement /> should show the label 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv css-1klwfzq formElement"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
@@ -371,7 +371,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv css-1klwfzq formElement"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
