@@ -154,7 +154,7 @@ function ReserveFormUnwrapped() {
               name="cellPhone2"
               value={values.cellPhone2}
               onChange={handleChange}
-              label={i18n.text('locations.cellPhone2')}
+              label={i18n.text('locations.cellPhone')}
               errorText={i18n.text(validationErrors.cellPhone2)}
             />
             <TextField
