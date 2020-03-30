@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import {
   Grid, I18n, SurroundPortals, ContextMenu,
 } from '@shopgate/engage/components';
@@ -96,8 +96,8 @@ CartItemProductTitle.defaultProps = {
 };
 
 CartItemProductTitle.contextTypes = {
-  cartItem: PropTypes.shape(),
-  invokeAction: PropTypes.func,
-  cartItemId: PropTypes.string,
-  type: PropTypes.string,
+  cartItem: PT.shape(),
+  invokeAction: PT.func,
+  cartItemId: PT.string,
+  type: PT.string,
 };

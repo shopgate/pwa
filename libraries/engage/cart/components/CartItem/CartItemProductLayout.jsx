@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import {
   Grid, Link, ProductProperties, PriceInfo, SurroundPortals,
 } from '@shopgate/engage/components';
@@ -106,8 +106,8 @@ CartItemProductLayout.defaultProps = {
 };
 
 CartItemProductLayout.contextTypes = {
-  registerAction: PropTypes.func,
-  cartItem: PropTypes.shape(),
-  cartItemId: PropTypes.string,
-  type: PropTypes.string,
+  registerAction: PT.func,
+  cartItem: PT.shape(),
+  cartItemId: PT.string,
+  type: PT.string,
 };
