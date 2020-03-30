@@ -136,7 +136,7 @@ export type SheetStage = typeof STAGE_SELECT_STORE
 export type SheetCallbackFn = (
   location: Location | null,
   productId: string | null,
-  orderSuccess: boolean | null
+  orderSuccess: boolean | null,
 ) => void;
 
 export type SheetOpenParams = {

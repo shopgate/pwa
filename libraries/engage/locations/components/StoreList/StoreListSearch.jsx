@@ -18,7 +18,7 @@ import {
   MessageBar,
   ProgressBar,
 } from '@shopgate/engage/components';
-import { useCountriesNames } from '@shopgate/engage/i18n/countries.hooks';
+import { useCountriesNames } from '@shopgate/engage/i18n';
 import { FulfillmentContext } from '../../locations.context';
 import connect from './StoreListSearch.connector';
 import {
