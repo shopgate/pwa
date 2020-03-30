@@ -42,7 +42,7 @@ function makeMapStateToProps() {
       location: getProductLocation(state, props) || getUserLocation(state),
       disabled: isFulfillmentSelectorDisabled(state, props),
       isOrderable: isProductOrderable(state, props) || hasVariants,
-      isReady: !hasVariants,
+      isReady: hasVariants !== null && !hasVariants,
     };
   };
 }

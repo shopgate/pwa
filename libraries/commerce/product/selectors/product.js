@@ -380,7 +380,7 @@ export const hasProductVariants = createSelector(
   getProductFlags,
   (flags) => {
     if (!flags) {
-      return false;
+      return null;
     }
 
     return flags.hasVariants;

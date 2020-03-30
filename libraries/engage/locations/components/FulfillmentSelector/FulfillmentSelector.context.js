@@ -8,6 +8,7 @@ export const FulfillmentSelectorContext = createContext<FulfillmentSelectorConte
   selectedLocation: null,
   location: null,
   disabled: true,
+  isReady: false,
   productId: null,
   handleChange: () => { },
   conditioner: {},

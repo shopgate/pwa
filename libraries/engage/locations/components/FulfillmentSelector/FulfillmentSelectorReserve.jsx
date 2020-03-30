@@ -23,7 +23,7 @@ export function FulfillmentSelectorReserve() {
     selectedLocation,
     handleChange,
     productFulfillmentMethods,
-    disabled,
+    isReady,
   } = useFulfillmentSelectorState();
   const usedLocation = selectedLocation || location;
   const enabled = productFulfillmentMethods && productFulfillmentMethods.includes(ROPIS);
@@ -34,19 +34,14 @@ export function FulfillmentSelectorReserve() {
     handleChange(IN_STORE_PICKUP, true);
   }, [handleChange]);
 
-  let showDetails = !disabled;
-  if (usedLocation) {
-    showDetails = showDetails && usedLocation.code !== null;
-  }
-
   return (
     <React.Fragment>
       <div>
         {i18n.text(IN_STORE_PICKUP_LABEL)}
       </div>
-      {showDetails &&
+      {isReady &&
         <React.Fragment>
-          {(isOrderable && enabled && usedLocation) && (
+          {(enabled && isOrderable && usedLocation) && (
             <Grid className={classNames(itemRow, container.toString())} component="div">
               <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
                 <div>{usedLocation.name}</div>
