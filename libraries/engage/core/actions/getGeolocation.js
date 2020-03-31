@@ -1,3 +1,4 @@
+import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import grantGeolocationPermissions from './grantGeolocationPermissions';
 import GeolocationRequest from '../classes/GeolocationRequest';
 import { GEOLOCATION_ERROR_DENIED } from '../constants/geolocationRequest';
@@ -25,7 +26,7 @@ const getGeolocation = (options = {}) => async (dispatch) => {
     throw error;
   }
 
-  return new GeolocationRequest().dispatch();
+  return new GeolocationRequest(!hasSGJavaScriptBridge()).dispatch();
 };
 
 export default getGeolocation;

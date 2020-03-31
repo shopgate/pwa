@@ -1,25 +1,23 @@
-import {
-  GEOLOCATION_ERROR_UNKNOWN,
-  GEOLOCATION_ERROR_DENIED,
-  GEOLOCATION_ERROR_UNAVAILABLE,
-  GEOLOCATION_ERROR_TIMEOUT,
-} from '../constants/geolocationRequest';
-
-const errorMapping = [
-  GEOLOCATION_ERROR_UNKNOWN,
-  GEOLOCATION_ERROR_DENIED,
-  GEOLOCATION_ERROR_UNAVAILABLE,
-  GEOLOCATION_ERROR_TIMEOUT,
-];
-
-export const GEOLOCATION_DEFAULT_TIMEOUT = 10000;
+import geolocationRequestBrowser from './GeolocationRequestBrowser';
+import geolocationRequestApp from './GeolocationRequestApp';
+import { GEOLOCATION_DEFAULT_TIMEOUT } from '../constants/geolocationRequest';
 
 /**
  * The GeolocationRequest class enables to retrieve the current geolocation of the device.
+ * @deprecated
  */
 class GeolocationRequest {
-  options = {
-    timeout: 10000,
+  /**
+   * Constructor
+   * @param {boolean} [useBrowserAPI=true] Wether the browser API or app commands a supposed to
+   * be used to determine the geolocation.
+   */
+  constructor(useBrowserAPI = true) {
+    this.useBrowserAPI = useBrowserAPI;
+
+    this.options = {
+      timeout: GEOLOCATION_DEFAULT_TIMEOUT,
+    };
   }
 
   /**
@@ -38,21 +36,8 @@ class GeolocationRequest {
    * @returns {Promise}
    */
   dispatch() {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { coords } = position;
-        resolve({
-          accuracy: coords.accuracy,
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
-      }, ({ code, message }) => {
-        const error = new Error(message);
-        error.code = errorMapping[code];
-
-        reject(error);
-      }, this.options);
-    });
+    const instance = this.useBrowserAPI ? geolocationRequestBrowser : geolocationRequestApp;
+    return instance.dispatch(this.options.timeout);
   }
 }
 
