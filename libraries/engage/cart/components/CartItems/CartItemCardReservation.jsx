@@ -22,7 +22,11 @@ function CartItemCardReservation({ location }: Props) {
   }
 
   const { operationHours, address: { phoneNumber } = {} } = location;
-  if ((!operationHours || every(operationHours, isEmpty)) && !phoneNumber) {
+  if (
+    (!operationHours || every(operationHours, isEmpty))
+    && !phoneNumber
+    && (!location.address || !location.address.street)
+  ) {
     return (
       <div className={accordionToggle}>
         <CartItemCardReservationLabel location={location} />
