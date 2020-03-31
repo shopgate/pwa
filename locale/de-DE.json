@@ -148,7 +148,7 @@
       "pick_up_in_store": "Abholen in Filiale",
       "error": {
         "direct_ship": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
-        "reserve": "This combination is not available at your chosen location, select a different location or other variants."
+        "reserve": "This product is not available at your chosen location. Please select a different location."
       }
     },
     "stock_info": {
