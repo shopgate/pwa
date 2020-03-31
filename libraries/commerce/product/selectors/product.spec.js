@@ -675,7 +675,7 @@ describe('Product selectors', () => {
   describe('hasProductVariants()', () => {
     it('should return false when the product is not available', () => {
       const productId = 'unavailable';
-      expect(hasProductVariants(mockedState, { productId })).toBe(false);
+      expect(hasProductVariants(mockedState, { productId })).toBeNull();
     });
 
     it('should return false when the product does not have variants', () => {
