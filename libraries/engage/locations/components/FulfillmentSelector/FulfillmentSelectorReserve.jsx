@@ -59,6 +59,7 @@ export function FulfillmentSelectorReserve() {
           )}
           {(enabled && selected && !isOrderable) && (
             <React.Fragment>
+              <div>{usedLocation.name}</div>
               <FulfillmentSelectorImpossibleError />
               <ChangeLocationButton onClick={handleChangeLocation} />
             </React.Fragment>
