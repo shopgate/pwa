@@ -9,13 +9,9 @@ export type Message = {
   icon?: any | null,
 }
 
-type ClassName = {
-  [string]: any,
-}
-
 export type ClassNames = {
-  container: ClassName | null,
-  containerRaised: ClassName | null,
-  message: ClassName | null,
-  icon: ClassName | null,
+  container: string | null,
+  containerRaised: string | null,
+  message: string | null,
+  icon: string | null,
 }

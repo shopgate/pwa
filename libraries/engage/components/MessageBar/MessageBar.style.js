@@ -9,13 +9,13 @@ const containerBase = {
   overflow: 'hidden',
 };
 
-export const container = css(containerBase);
+export const container = css(containerBase).toString();
 
 export const containerRaised = css(containerBase, {
   borderRadius: '0 0 5px 5px',
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
   zIndex: 10,
-});
+}).toString();
 
 const messageBase = {
   padding: `${themeVariables.gap.big}px ${themeVariables.gap.big}px`,
@@ -30,17 +30,17 @@ const messageBase = {
 export const info = css(messageBase, {
   background: themeColors.accent,
   color: themeColors.accentContrast,
-});
+}).toString();
 
 export const error = css(messageBase, {
   background: themeColors.error,
   color: themeColors.light,
-});
+}).toString();
 
 export const warning = css(messageBase, {
   background: themeColors.warning,
   color: themeColors.light,
-});
+}).toString();
 
 export const srOnly = css({
   position: 'absolute',
@@ -58,12 +58,13 @@ export const withIcon = css({
   display: 'flex',
   minWidth: '100%',
   alignItems: 'center',
-});
+}).toString();
 
 export const icon = css({
   flexGrow: 0,
   flexShrink: 0,
-});
+}).toString();
+
 export const messageToIcon = css({
   flexGrow: 1,
 });
