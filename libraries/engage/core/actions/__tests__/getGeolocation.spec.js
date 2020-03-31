@@ -1,3 +1,4 @@
+import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import grantGeolocationPermissions from '../grantGeolocationPermissions';
 import getGeolocation from '../getGeolocation';
 import { GEOLOCATION_ERROR_DENIED } from '../../constants/geolocationRequest';
@@ -11,13 +12,22 @@ const mockedPosition = {
   timestamp: 1563873516224,
 };
 
-const mockedGeolocationRequest = jest.fn().mockResolvedValue(mockedPosition);
+const mockedGeolocationRequestConstructor = jest.fn().mockResolvedValue(mockedPosition);
+const mockedGeolocationRequestDispatch = jest.fn().mockResolvedValue(mockedPosition);
 
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+}));
 jest.mock('../grantGeolocationPermissions', () => jest.fn().mockResolvedValue(true));
 jest.mock('../../classes/GeolocationRequest', () => class Foo {
+  // eslint-disable-next-line require-jsdoc, extra-rules/potential-point-free
+  constructor(...args) {
+    mockedGeolocationRequestConstructor(...args);
+  }
+
   // eslint-disable-next-line require-jsdoc, class-methods-use-this
   dispatch() {
-    return mockedGeolocationRequest();
+    return mockedGeolocationRequestDispatch();
   }
 });
 
@@ -34,7 +44,8 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(grantGeolocationPermissions).toHaveBeenCalledTimes(1);
     expect(grantGeolocationPermissions).toHaveBeenCalledWith({});
-    expect(mockedGeolocationRequest).toHaveBeenCalledTimes(1);
+    expect(mockedGeolocationRequestDispatch).toHaveBeenCalledTimes(1);
+    expect(mockedGeolocationRequestConstructor).toHaveBeenCalledWith(!hasSGJavaScriptBridge());
   });
 
   it('should pass through the options to the grantGeolocationPermissions action call', async () => {
@@ -52,7 +63,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
 
   it('should reject with an error when permissions are not granted', async () => {
     grantGeolocationPermissions.mockResolvedValueOnce(false);
-    expect.assertions(4);
+    expect.assertions(5);
 
     try {
       await getGeolocation()(dispatch);
@@ -60,20 +71,23 @@ describe('engage > core > actions > grantCameraPermissions', () => {
       expect(error).toBeInstanceOf(Error);
       expect(error.code).toBe(GEOLOCATION_ERROR_DENIED);
       expect(grantGeolocationPermissions).toHaveBeenCalledTimes(1);
-      expect(mockedGeolocationRequest).not.toHaveBeenCalled();
+      expect(mockedGeolocationRequestDispatch).not.toHaveBeenCalled();
+      expect(mockedGeolocationRequestConstructor).not.toHaveBeenCalled();
     }
   });
 
   it('should reject with an error when permissions are not granted', async () => {
-    mockedGeolocationRequest.mockRejectedValueOnce(new Error());
-    expect.assertions(3);
+    hasSGJavaScriptBridge.mockResolvedValueOnce(false);
+    mockedGeolocationRequestDispatch.mockRejectedValueOnce(new Error());
+    expect.assertions(4);
 
     try {
       await getGeolocation()(dispatch);
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(grantGeolocationPermissions).toHaveBeenCalledTimes(1);
-      expect(mockedGeolocationRequest).toHaveBeenCalledTimes(1);
+      expect(mockedGeolocationRequestDispatch).toHaveBeenCalledTimes(1);
+      expect(mockedGeolocationRequestConstructor).toHaveBeenCalledWith(!hasSGJavaScriptBridge());
     }
   });
 });

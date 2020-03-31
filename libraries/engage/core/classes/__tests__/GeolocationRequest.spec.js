@@ -1,48 +1,21 @@
-import GeolocationRequest, { GEOLOCATION_DEFAULT_TIMEOUT } from '../GeolocationRequest';
-import {
-  GEOLOCATION_ERROR_UNKNOWN,
-  GEOLOCATION_ERROR_DENIED,
-  GEOLOCATION_ERROR_UNAVAILABLE,
-  GEOLOCATION_ERROR_TIMEOUT,
-} from '../../constants/geolocationRequest';
+import geolocationRequestBrowser from '../GeolocationRequestBrowser';
+import geolocationRequestApp from '../GeolocationRequestApp';
+import GeolocationRequest from '../GeolocationRequest';
+import { GEOLOCATION_DEFAULT_TIMEOUT } from '../../constants/geolocationRequest';
 
-let successPayload;
-let errorPayload;
+jest.mock('../GeolocationRequestBrowser', () => ({
+  dispatch: jest.fn(),
+}));
 
-const getCurrentPosition = jest.fn().mockImplementation((successCb, errorCb) => {
-  if (errorPayload) {
-    errorCb(errorPayload);
-    return;
-  }
-
-  successCb(successPayload);
-});
-
-global.navigator.geolocation = {
-  getCurrentPosition,
-};
-
-const mockSuccessPayload = {
-  coords: {
-    accuracy: 25,
-    latitude: 50.4330,
-    longitude: 8.67447,
-  },
-  timestamp: 1563873516224,
-};
+jest.mock('../GeolocationRequestApp', () => ({
+  dispatch: jest.fn(),
+}));
 
 describe('GeolocationRequest', () => {
   let instance;
 
   beforeEach(() => {
     jest.clearAllMocks();
-
-    successPayload = {
-      ...mockSuccessPayload,
-    };
-
-    errorPayload = null;
-
     instance = new GeolocationRequest();
   });
 
@@ -70,47 +43,22 @@ describe('GeolocationRequest', () => {
   });
 
   describe('.dispatch()', () => {
-    it('should invoke getCurrentPosition() as expected', async () => {
-      await instance.dispatch();
-
-      expect(getCurrentPosition).toHaveBeenCalledTimes(1);
-      expect(getCurrentPosition).toHaveBeenCalledWith(
-        expect.any(Function),
-        expect.any(Function),
-        instance.options
-      );
+    it('should use the browser request by default', async () => {
+      const customTimeout = 1000;
+      await instance.setTimeout(customTimeout).dispatch();
+      expect(geolocationRequestBrowser.dispatch).toHaveBeenCalledTimes(1);
+      expect(geolocationRequestBrowser.dispatch).toHaveBeenCalledWith(customTimeout);
+      expect(geolocationRequestApp.dispatch).not.toHaveBeenCalled();
     });
 
-    it('should resolve as expected', async () => {
-      const { coords } = mockSuccessPayload;
-      await expect(instance.dispatch()).resolves.toEqual({
-        accuracy: coords.accuracy,
-        latitude: coords.latitude,
-        longitude: coords.longitude,
-      });
-    });
-
-    it('should reject with the expected errors', async () => {
-      /**
-       * @param {string} code Error code.
-       * @param {string} message Error message.
-       * @returns {Error}
-       */
-      const mockError = (code, message) => {
-        const error = new Error(message);
-        error.code = code;
-        return error;
-      };
-      /* eslint-disable extra-rules/no-single-line-objects */
-      errorPayload = { code: 0, message: 'One' };
-      await expect(instance.dispatch()).rejects.toEqual(mockError(GEOLOCATION_ERROR_UNKNOWN, 'One'));
-      errorPayload = { code: 1, message: 'Two' };
-      await expect(instance.dispatch()).rejects.toEqual(mockError(GEOLOCATION_ERROR_DENIED, 'Two'));
-      errorPayload = { code: 2, message: 'Three' };
-      await expect(instance.dispatch()).rejects.toEqual(mockError(GEOLOCATION_ERROR_UNAVAILABLE, 'Three'));
-      errorPayload = { code: 3, message: 'Four' };
-      await expect(instance.dispatch()).rejects.toEqual(mockError(GEOLOCATION_ERROR_TIMEOUT, 'Four'));
-    /* eslint-enable extra-rules/no-single-line-objects */
+    it('should use the app request when set', async () => {
+      const customTimeout = 500;
+      instance = new GeolocationRequest(false);
+      expect(instance.useBrowserAPI).toBe(false);
+      await instance.setTimeout(customTimeout).dispatch();
+      expect(geolocationRequestApp.dispatch).toHaveBeenCalledTimes(1);
+      expect(geolocationRequestApp.dispatch).toHaveBeenCalledWith(customTimeout);
+      expect(geolocationRequestBrowser.dispatch).not.toHaveBeenCalled();
     });
   });
 });
