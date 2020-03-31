@@ -18,6 +18,7 @@ export { REGISTER_PATH, LOGIN_PATH };
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/user';
 export * from './selectors/login';
+export * from './selectors/data';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/user';

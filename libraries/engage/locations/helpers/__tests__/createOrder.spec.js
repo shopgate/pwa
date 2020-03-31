@@ -27,10 +27,18 @@ describe('libraries > engage > locations > helpers > createOrder', () => {
     makeGetUserLocation.mockImplementation(() => jest.fn().mockReturnValue({
       code: 'LOCATION_CODE',
     }));
+    getState.mockReturnValueOnce({ user: { data: {} } });
+    expect(createOrder(formValues, mockedProducts.products[0], getState)).toMatchSnapshot();
+
+    getState.mockReturnValueOnce({ user: { data: { id: 123456 } } });
     expect(createOrder(formValues, mockedProducts.products[0], getState)).toMatchSnapshot();
   });
 
   it('should create order for cart items', () => {
+    getState.mockReturnValueOnce({ user: { data: {} } });
+    expect(createOrder(formValues, null, getState)).toMatchSnapshot();
+
+    getState.mockReturnValueOnce({ user: { data: { id: 123456 } } });
     expect(createOrder(formValues, null, getState)).toMatchSnapshot();
   });
 });
