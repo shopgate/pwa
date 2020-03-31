@@ -42,7 +42,7 @@ export function FulfillmentSelectorReserve() {
       {isReady &&
         <React.Fragment>
           {(enabled && isOrderable && usedLocation) && (
-            <Grid className={classNames(itemRow, container.toString())} component="div">
+            <Grid className={classNames(itemRow, container)} component="div">
               <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
                 <div>{usedLocation.name}</div>
                 <ChangeLocationButton onClick={handleChangeLocation} />
@@ -53,11 +53,11 @@ export function FulfillmentSelectorReserve() {
             </Grid>
           )}
           {(enabled && selected && !isOrderable) && (
-            <React.Fragment>
+            <div className={container}>
               <div>{usedLocation.name}</div>
               <FulfillmentSelectorImpossibleError />
               <ChangeLocationButton onClick={handleChangeLocation} />
-            </React.Fragment>
+            </div>
           )}
           {!enabled && (
             <div className={unavailable}>

@@ -5,7 +5,7 @@ import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config
 export const container = css({
   fontSize: '0.75rem',
   paddingTop: themeVariables.gap.xsmall * 0.5,
-});
+}).toString();
 
 export const unavailable = css({
   color: themeColors.dark,
