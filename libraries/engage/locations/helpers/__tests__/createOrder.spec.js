@@ -1,5 +1,5 @@
 import { mockedProducts } from '@shopgate/pwa-common-commerce/product/mock';
-import { makeGetUserLocation } from '../../selectors';
+import { makeGetUserLocation, getExternalCustomerNumberForOrder } from '../../selectors';
 import createOrder from '../createOrder';
 
 jest.mock('@shopgate/engage/core');
@@ -8,6 +8,7 @@ jest.mock('@shopgate/engage/product');
 jest.mock('@shopgate/pwa-common/helpers/config');
 jest.mock('../../selectors', () => ({
   makeGetUserLocation: jest.fn(),
+  getExternalCustomerNumberForOrder: jest.fn(),
 }));
 
 describe('libraries > engage > locations > helpers > createOrder', () => {
@@ -27,18 +28,12 @@ describe('libraries > engage > locations > helpers > createOrder', () => {
     makeGetUserLocation.mockImplementation(() => jest.fn().mockReturnValue({
       code: 'LOCATION_CODE',
     }));
-    getState.mockReturnValueOnce({ user: { data: {} } });
-    expect(createOrder(formValues, mockedProducts.products[0], getState)).toMatchSnapshot();
-
-    getState.mockReturnValueOnce({ user: { data: { id: 123456 } } });
+    getExternalCustomerNumberForOrder.mockReturnValueOnce('123456');
     expect(createOrder(formValues, mockedProducts.products[0], getState)).toMatchSnapshot();
   });
 
   it('should create order for cart items', () => {
-    getState.mockReturnValueOnce({ user: { data: {} } });
-    expect(createOrder(formValues, null, getState)).toMatchSnapshot();
-
-    getState.mockReturnValueOnce({ user: { data: { id: 123456 } } });
+    getExternalCustomerNumberForOrder.mockReturnValueOnce('123456');
     expect(createOrder(formValues, null, getState)).toMatchSnapshot();
   });
 });

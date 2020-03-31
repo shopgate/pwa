@@ -8,8 +8,7 @@ import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
 } from '@shopgate/engage/cart';
 import { getProductDataById } from '@shopgate/engage/product';
-import { getUserId } from '@shopgate/engage/user';
-import { makeGetUserLocation } from '../selectors';
+import { makeGetUserLocation, getExternalCustomerNumberForOrder } from '../selectors';
 
 /**
  * Creates the address sequence.
@@ -152,8 +151,7 @@ function createOrder(formValues: { [string]: string }, product: any, getState: (
   const userAgent = getUserAgent();
   const platform = 'engage';
   const os = getPlatform(state);
-  const userId = getUserId(state);
-  const externalCustomerNumber = userId ? userId.toString() : undefined;
+  const externalCustomerNumber = getExternalCustomerNumberForOrder(state);
 
   // If no individual product was submitted, we handle the cart.
   if (product === null) {
