@@ -3,6 +3,7 @@ import * as React from 'react';
 import noop from 'lodash/noop';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import { isProductAvailable } from '../../helpers';
+import { STAGE_SELECT_STORE } from '../../constants';
 import connect from './CartItemProductChangeLocation.connector';
 import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
 import { type Location } from '../../locations.types';
@@ -55,6 +56,7 @@ const CartItemProductChangeLocation = (props: Props) => {
 
   return (
     <FulfillmentSheet
+      stage={STAGE_SELECT_STORE}
       open
       title="locations.headline"
       changeOnly
