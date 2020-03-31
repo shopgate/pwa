@@ -113,6 +113,27 @@ export function makeGetUserLocationCode(): Selector<State, UserLocationLocationC
 }
 
 /**
+ * Creates the selector that retrieves the user location adddess,
+ * @returns {Function}
+ */
+export function makeGetUserLocationAddress() {
+  const getUserLocationCode = makeGetUserLocationCode();
+  const getLocationsById = makeGetLocationsState();
+
+  return createSelector(
+    getLocationsById,
+    getUserLocationCode,
+    (locationsState, code) => {
+      if (!locationsState || !code) {
+        return null;
+      }
+
+      return locationsState[code].address || null;
+    }
+  );
+}
+
+/**
  * Creates the selector that retrieves the product locations state.
  * @returns {Function}
  */

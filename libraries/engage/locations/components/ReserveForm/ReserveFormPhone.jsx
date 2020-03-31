@@ -17,14 +17,10 @@ import { FulfillmentContext } from '../../locations.context';
 import {
   formField, phoneField, phoneFieldError, phoneFieldErrorText,
 } from './ReserveForm.style';
+import { type OwnProps, type StateProps } from './ReserveFormPhone.types';
+import connect from './ReserveFormPhone.connector';
 
-type Props = {
-  name: string,
-  value: string,
-  label: string,
-  errorText: string,
-  onChange: (value: string, event: any) => void;
-}
+type Props = OwnProps & StateProps;
 
 const builtInCountries = getCountries();
 const locales = {
@@ -40,13 +36,14 @@ const locales = {
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-export const ReserveFormPhone = React.memo<Props>((props: Props) => {
+const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
   const {
     name,
     value,
     onChange,
     label,
     errorText,
+    userLocation,
   } = props;
   const { shopSettings } = React.useContext(FulfillmentContext);
 
@@ -102,8 +99,12 @@ export const ReserveFormPhone = React.memo<Props>((props: Props) => {
       return phoneNumber.country;
     }
 
+    if (userLocation) {
+      return userLocation.country;
+    }
+
     return i18n.getLang().split('-')[1];
-  }, [value]);
+  }, [userLocation, value]);
 
   const handleChange = React.useCallback((phoneValue) => {
     onChange(phoneValue, { target: { name } });
@@ -130,7 +131,7 @@ export const ReserveFormPhone = React.memo<Props>((props: Props) => {
   return (
     <div className={phoneClasses}>
       <PhoneInput
-        country={country}
+        defaultCountry={country}
         addInternationalOption={false}
         flags={flags}
         name="cellPhone"
@@ -148,3 +149,5 @@ export const ReserveFormPhone = React.memo<Props>((props: Props) => {
     </div>
   );
 });
+
+export const ReserveFormPhone = connect(ReserveFormPhoneUnwrapped);
