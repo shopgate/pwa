@@ -1,55 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AccordionContent /> should render as closed 1`] = `
-<div
-  aria-hidden={true}
-  className={
-    Object {
-      "data-css-apm51k": "",
-    }
-  }
+<AccordionContent
+  className={null}
   id="some-id"
-  style={
-    Object {
-      "height": 0,
-    }
-  }
+  open={false}
 >
-  <div
-    className="css-yh2lvw"
+  <ForwardRef
+    aria-hidden={true}
+    className={
+      Object {
+        "data-css-apm51k": "",
+      }
+    }
+    id="some-id"
+    style={
+      Object {
+        "hook": "useSpring return value",
+      }
+    }
   >
     <div
-      id="test"
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-apm51k": "",
+        }
+      }
+      id="some-id"
+      style={
+        Object {
+          "hook": "useSpring return value",
+        }
+      }
     >
-      Some Child
+      <div>
+        <div
+          className="css-yh2lvw"
+        >
+          <div
+            id="test"
+          >
+            Some Child
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </ForwardRef>
+</AccordionContent>
 `;
 
 exports[`<AccordionContent /> should render as open 1`] = `
-<div
-  aria-hidden={false}
-  className={
-    Object {
-      "data-css-apm51k": "",
-    }
-  }
+<AccordionContent
+  className={null}
   id="some-id"
-  style={
-    Object {
-      "height": "auto",
-    }
-  }
+  open={true}
 >
-  <div
-    className="css-yh2lvw"
+  <ForwardRef
+    aria-hidden={false}
+    className={
+      Object {
+        "data-css-apm51k": "",
+      }
+    }
+    id="some-id"
+    style={
+      Object {
+        "hook": "useSpring return value",
+      }
+    }
   >
     <div
-      id="test"
+      aria-hidden={false}
+      className={
+        Object {
+          "data-css-apm51k": "",
+        }
+      }
+      id="some-id"
+      style={
+        Object {
+          "hook": "useSpring return value",
+        }
+      }
     >
-      Some Child
+      <div>
+        <div
+          className="css-yh2lvw"
+        >
+          <div
+            id="test"
+          >
+            Some Child
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </ForwardRef>
+</AccordionContent>
 `;
