@@ -1,6 +1,8 @@
 // @flow
 import * as React from 'react';
 import classnames from 'classnames';
+import { i18n } from '@shopgate/engage/core';
+import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInput from 'react-phone-number-input/mobile';
 import { getCountries } from 'react-phone-number-input/input';
 import en from 'react-phone-number-input/locale/en';
@@ -93,6 +95,16 @@ export const ReserveFormPhone = React.memo<Props>((props: Props) => {
     return output;
   }, [countries, countriesNames]);
 
+  const country = React.useMemo(() => {
+    const phoneNumber = parsePhoneNumber(value || '');
+
+    if (phoneNumber) {
+      return phoneNumber.country;
+    }
+
+    return i18n.getLang().split('-')[1];
+  }, [value]);
+
   const handleChange = React.useCallback((phoneValue) => {
     onChange(phoneValue, { target: { name } });
   }, [name, onChange]);
@@ -118,6 +130,7 @@ export const ReserveFormPhone = React.memo<Props>((props: Props) => {
   return (
     <div className={phoneClasses}>
       <PhoneInput
+        country={country}
         addInternationalOption={false}
         flags={flags}
         name="cellPhone"
