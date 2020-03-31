@@ -2,6 +2,11 @@ import React from 'react';
 import { mount } from 'enzyme';
 import AccordionContent from './index';
 
+jest.mock('react-spring', () => ({
+  ...jest.requireActual('react-spring'),
+  useSpring: jest.fn().mockReturnValue({ hook: 'useSpring return value' }),
+}));
+
 describe('<AccordionContent />', () => {
   it('should render as closed', () => {
     const wrapper = mount((

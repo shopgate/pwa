@@ -16,52 +16,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
     id="some-id"
     style={
       Object {
-        "height": AnimatedValue {
-          "animatedStyles": Set {},
-          "children": Array [
-            AnimatedStyle {
-              "attach": [Function],
-              "children": Array [
-                AnimatedProps {
-                  "attach": [Function],
-                  "children": Array [],
-                  "detach": [Function],
-                  "payload": Object {
-                    "aria-hidden": true,
-                    "children": <div>
-                      <div
-                        className="css-yh2lvw"
-                      >
-                        <div
-                          id="test"
-                        >
-                          Some Child
-                        </div>
-                      </div>
-                    </div>,
-                    "className": Object {
-                      "data-css-apm51k": "",
-                    },
-                    "id": "some-id",
-                    "style": [Circular],
-                  },
-                  "update": [Function],
-                },
-              ],
-              "detach": [Function],
-              "payload": [Circular],
-            },
-          ],
-          "done": false,
-          "lastPosition": 0,
-          "lastTime": undefined,
-          "lastVelocity": undefined,
-          "payload": undefined,
-          "setValue": [Function],
-          "startPosition": 0,
-          "startTime": 1585655980989,
-          "value": 0,
-        },
+        "hook": "useSpring return value",
       }
     }
   >
@@ -75,7 +30,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
       id="some-id"
       style={
         Object {
-          "height": 0,
+          "hook": "useSpring return value",
         }
       }
     >
@@ -111,52 +66,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
     id="some-id"
     style={
       Object {
-        "height": AnimatedValue {
-          "animatedStyles": Set {},
-          "children": Array [
-            AnimatedStyle {
-              "attach": [Function],
-              "children": Array [
-                AnimatedProps {
-                  "attach": [Function],
-                  "children": Array [],
-                  "detach": [Function],
-                  "payload": Object {
-                    "aria-hidden": false,
-                    "children": <div>
-                      <div
-                        className="css-yh2lvw"
-                      >
-                        <div
-                          id="test"
-                        >
-                          Some Child
-                        </div>
-                      </div>
-                    </div>,
-                    "className": Object {
-                      "data-css-apm51k": "",
-                    },
-                    "id": "some-id",
-                    "style": [Circular],
-                  },
-                  "update": [Function],
-                },
-              ],
-              "detach": [Function],
-              "payload": [Circular],
-            },
-          ],
-          "done": false,
-          "lastPosition": 0,
-          "lastTime": undefined,
-          "lastVelocity": undefined,
-          "payload": undefined,
-          "setValue": [Function],
-          "startPosition": 0,
-          "startTime": 1585655981008,
-          "value": 0,
-        },
+        "hook": "useSpring return value",
       }
     }
   >
@@ -170,7 +80,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
       id="some-id"
       style={
         Object {
-          "height": 0,
+          "hook": "useSpring return value",
         }
       }
     >
