@@ -10,6 +10,7 @@ export type FulfillmentSelectorContextProps = {
   selectedLocation: Location | null,
   location: Location | null,
   disabled: boolean,
+  isReady: boolean,
   productId: ProductId,
   handleChange: (element: Selection, changeOnly: boolean) => void,
   conditioner: any,

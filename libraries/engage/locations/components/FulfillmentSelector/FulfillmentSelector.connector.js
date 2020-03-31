@@ -41,8 +41,8 @@ function makeMapStateToProps() {
       userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
       location: getProductLocation(state, props) || getUserLocation(state),
       disabled: isFulfillmentSelectorDisabled(state, props),
-      isOrderable: isProductOrderable(state, props) || hasVariants,
-      isReady: !hasVariants,
+      isOrderable: isProductOrderable(state, props) || !!hasVariants,
+      isReady: hasVariants !== null && !hasVariants,
     };
   };
 }
