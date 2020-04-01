@@ -84,7 +84,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       key="Some-Thing-content"
       open={false}
     >
-      <div
+      <ForwardRef
         aria-hidden={true}
         className={
           Object {
@@ -94,16 +94,33 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
         id="Some-Thing-content"
         style={
           Object {
-            "height": 0,
+            "hook": "useSpring return value",
           }
         }
       >
         <div
-          className="css-yh2lvw"
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-apm51k": "",
+            }
+          }
+          id="Some-Thing-content"
+          style={
+            Object {
+              "hook": "useSpring return value",
+            }
+          }
         >
-          Some content.
+          <div>
+            <div
+              className="css-yh2lvw"
+            >
+              Some content.
+            </div>
+          </div>
         </div>
-      </div>
+      </ForwardRef>
     </AccordionContent>
   </AccordionContainer>
 </Accordion>

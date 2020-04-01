@@ -31,6 +31,7 @@ export const addressIcon = css({
 export const titles = css({
   marginTop: -3,
   marginBottom: -2,
+  paddingRight: themeVariables.gap.big * 2,
 });
 
 export const name = css({

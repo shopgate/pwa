@@ -81,9 +81,11 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
         {/** DOM reversed for a11y navigation */}
         <Grid.Item className={styles.leftColumn}>
           <div className={styles.image} aria-hidden>
-            <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
-              <ProductImage src={props.product.featuredImageUrl} />
-            </SurroundPortals>
+            <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
+              <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
+                <ProductImage src={props.product.featuredImageUrl} />
+              </SurroundPortals>
+            </Link>
           </div>
           <CartItemQuantityPicker
             quantity={props.quantity}
