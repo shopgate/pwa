@@ -21,6 +21,7 @@ Object {
     },
   ],
   "currencyCode": "EUR",
+  "externalCustomerNumber": "123456",
   "lineItems": Array [
     Object {
       "code": "106051878",
@@ -88,6 +89,7 @@ Object {
     },
   ],
   "currencyCode": "EUR",
+  "externalCustomerNumber": "123456",
   "lineItems": Array [
     Object {
       "code": "SG117",

@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import cloneDeep from 'lodash/cloneDeep';
 import set from 'lodash/set';
-import { getUserData } from '@shopgate/engage/user';
+import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
 import {
   DIRECT_SHIP,
   IN_STORE_PICKUP,
@@ -16,6 +16,7 @@ import {
   makeGetUserFormInput,
   makeGetUserSearchPostalCode,
   makeGetUserSearchCountryCode,
+  getExternalCustomerNumberForOrder,
 } from '../index';
 import { isProductAvailable } from '../../helpers/productInventory';
 
@@ -24,6 +25,8 @@ jest.mock('@shopgate/engage/product', () => ({
 }));
 jest.mock('@shopgate/engage/user', () => ({
   getUserData: jest.fn(),
+  getUserId: jest.fn(),
+  getExternalCustomerNumber: jest.fn(),
 }));
 
 jest.mock('../../helpers/productInventory', () => ({
@@ -318,6 +321,25 @@ describe('engage > locations > selectors', () => {
       const localState = cloneDeep(mockedState);
       set(localState, 'locations.userSearch.countryCode', null);
       expect(getUserCountryCode(localState)).toBe('');
+    });
+  });
+
+  describe('getExternalCustomerNumberForOrder', () => {
+    it('should return the external customer number', () => {
+      const expected = '1234';
+      getExternalCustomerNumber.mockReturnValueOnce(1234);
+      const actual = getExternalCustomerNumberForOrder({});
+      expect(actual).toBe(expected);
+    });
+    it('should return the id if no external customer number available', () => {
+      const expected = '5678';
+      getUserId.mockReturnValueOnce(5678);
+      const actual = getExternalCustomerNumberForOrder({});
+      expect(actual).toBe(expected);
+    });
+    it('should return undefined if not logged in', () => {
+      const actual = getExternalCustomerNumberForOrder({});
+      expect(actual).toBeUndefined();
     });
   });
 });

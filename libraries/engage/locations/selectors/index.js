@@ -1,7 +1,7 @@
 // @flow
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
-import { getUserData } from '@shopgate/engage/user';
+import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
 import { isProductAvailable } from '../helpers/productInventory';
 import { DIRECT_SHIP, ROPIS } from '../constants';
 import { type State } from '../../types';
@@ -433,3 +433,22 @@ export function makeIsRopeProductOrderable(
     }
   );
 }
+
+/**
+ * Returns the externalCustomerNumber that is used to create a new order.
+ */
+export const getExternalCustomerNumberForOrder = createSelector(
+  getUserId,
+  getExternalCustomerNumber,
+  (id, externalCustomerNumber) => {
+    if (externalCustomerNumber) {
+      return externalCustomerNumber.toString();
+    }
+
+    if (id) {
+      return id.toString();
+    }
+
+    return undefined;
+  }
+);
