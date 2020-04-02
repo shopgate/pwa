@@ -17,13 +17,42 @@ import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button, progressBar,
 } from './ReserveForm.style';
 
+const PICKUP_PERSON_ME = 'me';
+const PICKUP_PERSON_OTHER = 'someoneelse';
+
+/**
+ * Determines the pick up person.
+ * @param {Object} userInput The current user input
+ * @return {string}
+ */
+const determinePickupPerson = (userInput: ReservationFormValues | null) => {
+  if (!userInput) {
+    return PICKUP_PERSON_ME;
+  }
+
+  const meFields = ['firstName', 'lastName', 'email', 'cellPhone'];
+  const otherFields = ['firstName2', 'lastName2', 'email2', 'cellPhone2'];
+  const hasMeFields = meFields.every(field => typeof userInput[field] !== 'undefined');
+  const hasOtherFields = otherFields.every(field => typeof userInput[field] !== 'undefined');
+
+  if (!hasOtherFields || !hasMeFields) {
+    return PICKUP_PERSON_ME;
+  }
+
+  const valuesEqual = meFields.every(
+    (field, index) => userInput[field] === userInput[otherFields[index]]
+  );
+
+  return valuesEqual ? PICKUP_PERSON_ME : PICKUP_PERSON_OTHER;
+};
+
 /**
  * Renders the quick reservation form.
  * @returns {JSX}
  */
 function ReserveFormUnwrapped() {
   const { sendReservation, userInput } = useContext(FulfillmentContext);
-  const [picker, setPicker] = useState('me');
+  const [picker, setPicker] = useState(determinePickupPerson(userInput));
 
   const defaultState: ReservationFormValues = {
     firstName: '',
@@ -38,7 +67,7 @@ function ReserveFormUnwrapped() {
 
   const validationConstraints = useMemo(() => ({
     ...constraints,
-    ...picker === 'someoneelse' && {
+    ...picker === PICKUP_PERSON_OTHER && {
       firstName2: constraints.firstName,
       lastName2: constraints.lastName,
       cellPhone2: constraints.cellPhone,
@@ -57,13 +86,20 @@ function ReserveFormUnwrapped() {
   const complete = useCallback(async (values: ReservationFormValues) => {
     const response = values;
 
-    response.firstName2 = response.firstName2 || response.firstName;
-    response.lastName2 = response.lastName2 || response.lastName;
-    response.cellPhone2 = response.cellPhone2 || response.cellPhone;
-    response.email2 = response.email2 || response.email;
+    if (picker === PICKUP_PERSON_ME) {
+      response.firstName2 = response.firstName;
+      response.lastName2 = response.lastName;
+      response.cellPhone2 = response.cellPhone;
+      response.email2 = response.email;
+    } else {
+      response.firstName2 = response.firstName2 || response.firstName;
+      response.lastName2 = response.lastName2 || response.lastName;
+      response.cellPhone2 = response.cellPhone2 || response.cellPhone;
+      response.email2 = response.email2 || response.email;
+    }
 
     await sendReservation(response);
-  }, [sendReservation]);
+  }, [picker, sendReservation]);
 
   const {
     values, handleChange, handleSubmit, changed, valid, validationErrors = {}, isSubmitting,
@@ -71,7 +107,7 @@ function ReserveFormUnwrapped() {
 
   const someoneElseRef = useRef(null);
   useLayoutEffect(() => {
-    if (someoneElseRef.current && picker === 'someoneelse') {
+    if (someoneElseRef.current && picker === PICKUP_PERSON_OTHER) {
       someoneElseRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [picker, someoneElseRef]);
@@ -119,20 +155,20 @@ function ReserveFormUnwrapped() {
           {i18n.text('locations.who_will_pickup')}
         </p>
         <div className={pickerSwitch}>
-          <RadioGroup name="picker" direction="row" value="me" onChange={setPicker}>
+          <RadioGroup name="picker" direction="row" value={picker} onChange={setPicker}>
             <RadioGroupItem
               label={i18n.text('locations.me')}
-              name="me"
+              name={PICKUP_PERSON_ME}
               className={pickerItem}
             />
             <RadioGroupItem
               label={i18n.text('locations.someone_else')}
-              name="someoneelse"
+              name={PICKUP_PERSON_OTHER}
               className={pickerItem}
             />
           </RadioGroup>
         </div>
-        {(picker === 'someoneelse') && (
+        {(picker === PICKUP_PERSON_OTHER) && (
           <fieldset className={fieldset} ref={someoneElseRef}>
             <TextField
               name="firstName2"

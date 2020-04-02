@@ -45,7 +45,11 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
     errorText,
     userLocation,
   } = props;
-  const { shopSettings } = React.useContext(FulfillmentContext);
+  const { shopSettings, userInput } = React.useContext(FulfillmentContext);
+
+  const initialValue = React.useMemo(() => (
+    userInput && userInput[name] ? userInput[name] : ''
+  ), [name, userInput]);
 
   const supportedCountries = React.useMemo(() => (
     shopSettings ? shopSettings.supportedCountries : []
@@ -92,10 +96,14 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
     return output;
   }, [countries, countriesNames]);
 
-  const country = React.useMemo(() => {
+  const defaultCountry = React.useMemo(() => {
+    if (!initialValue && !value && userLocation) {
+      return userLocation.country;
+    }
+
     const phoneNumber = parsePhoneNumber(value || '');
 
-    if (phoneNumber) {
+    if (phoneNumber && phoneNumber.country) {
       return phoneNumber.country;
     }
 
@@ -104,7 +112,7 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
     }
 
     return i18n.getLang().split('-')[1];
-  }, [userLocation, value]);
+  }, [initialValue, userLocation, value]);
 
   const handleChange = React.useCallback((phoneValue) => {
     onChange(phoneValue, { target: { name } });
@@ -131,11 +139,11 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
   return (
     <div className={phoneClasses}>
       <PhoneInput
-        defaultCountry={country}
+        defaultCountry={defaultCountry}
         addInternationalOption={false}
         flags={flags}
-        name="cellPhone"
-        value={value}
+        name={name}
+        value={value || ''}
         onChange={handleChange}
         placeholder={label}
         countries={countries}

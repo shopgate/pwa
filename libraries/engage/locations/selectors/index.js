@@ -113,7 +113,7 @@ export function makeGetUserLocationCode(): Selector<State, UserLocationLocationC
 }
 
 /**
- * Creates the selector that retrieves the user location adddess,
+ * Creates the selector that retrieves the user location address,
  * @returns {Function}
  */
 export function makeGetUserLocationAddress() {
