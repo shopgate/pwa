@@ -15,7 +15,7 @@ import {
   SHOPGATE_STOREFRONT_UPDATE_CART,
 } from './constants';
 import { fetchLocationsById, fetchProductLocations } from './actions';
-import { submitReservationSuccess$ } from './locations.streams';
+import { submitReservationSuccess$, receiveProductLocations$ } from './locations.streams';
 
 /**
  * Locations subscriptions.
@@ -77,6 +77,15 @@ function locations(subscribe) {
       subscribe(cartRefresh$, ({ dispatch }) => {
         dispatch(fetchCart());
       });
+    }
+  });
+
+  subscribe(receiveProductLocations$, ({ dispatch, action }) => {
+    const { locations: productLocations } = action;
+    const locationIds = productLocations.map(({ code }) => code);
+
+    if (locationIds.length) {
+      dispatch(fetchLocationsById(locationIds));
     }
   });
 
