@@ -51,6 +51,12 @@ function FulfillmentSelector(props: Props) {
 
   const usedLocation = selectedLocation || location;
 
+  React.useEffect(() => {
+    if (JSON.stringify(location) !== JSON.stringify(selectedLocation)) {
+      setSelectedLocation(location);
+    }
+  }, [location, selectedLocation]);
+
   /**
    * Updates the selected location when the sheet closes.
    */

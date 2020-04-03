@@ -238,21 +238,39 @@ function FulfillmentProvider(props: Props) {
       return;
     }
 
+    /**
+     * Select the reservation method strategy.
+     * @param {string} method The reservation method.
+     * @param {Object} storeLocation A store location
+     */
+    const handleReservationMethod = (method, storeLocation) => {
+      if (!method) {
+        return;
+      }
+
+      if (method === QUICK_RESERVE) {
+        handleQuickReservation();
+      }
+
+      if (method === MULTI_LINE_RESERVE) {
+        handleMultilineReservation(storeLocation);
+      }
+    };
+
     // No fulfillment path selected yet.
-    if (fulfillmentPath === null && fulfillmentPaths.length > 1) {
-      FulfillmentPathSelector.open((method: FulfillmentPath) => {
-        if (!method) {
-          return;
-        }
+    if (fulfillmentPath === null) {
+      if (fulfillmentPaths.length > 1) {
+        FulfillmentPathSelector.open((method: FulfillmentPath) => {
+          if (!method) {
+            return;
+          }
 
-        if (method === QUICK_RESERVE) {
-          handleQuickReservation();
-        }
+          handleReservationMethod(method, location);
+        });
+      } else if (fulfillmentPaths.length === 1) {
+        handleReservationMethod(fulfillmentPaths[0], location);
+      }
 
-        if (method === MULTI_LINE_RESERVE) {
-          handleMultilineReservation(location);
-        }
-      });
       return;
     }
 
