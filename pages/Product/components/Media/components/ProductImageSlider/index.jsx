@@ -120,7 +120,7 @@ class ProductImageSlider extends Component {
     if (!content) {
       content = (
         <ProductImage
-          src={product ? product.featuredImageUrl : null}
+          src={product ? product.featuredImageBaseUrl : null}
           forcePlaceholder={!product}
           resolutions={fallbackResolutions}
         />
@@ -130,7 +130,7 @@ class ProductImageSlider extends Component {
     }
 
     const imageStyle = product ? {
-      background: `url(${getActualImageSource(product.featuredImageUrl, fallbackResolutions[0])})`,
+      background: `url(${getActualImageSource(product.featuredImageBaseUrl, fallbackResolutions[0])})`,
       backgroundSize: 'contain',
       transform: 'translate3d(0, 0, 0)',
     } : null;

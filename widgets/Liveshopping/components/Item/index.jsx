@@ -25,7 +25,7 @@ function LiveshoppingItem({ productId }) {
           style={styles.card}
           render={({ product, url }) => {
             const {
-              featuredImageUrl,
+              featuredImageBaseUrl,
               liveshoppings,
               name,
               price,
@@ -36,7 +36,7 @@ function LiveshoppingItem({ productId }) {
               <Link href={url} state={{ title: name }}>
                 <Grid>
                   <Grid.Item className={styles.image}>
-                    <ProductImage src={featuredImageUrl} alt={name} />
+                    <ProductImage src={featuredImageBaseUrl} alt={name} />
                   </Grid.Item>
                   <Grid.Item className={styles.infoPane}>
                     <div data-test-id={name}>
