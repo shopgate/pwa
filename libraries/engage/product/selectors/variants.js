@@ -36,11 +36,11 @@ export function makeGetCharacteristicsFeaturedImage() {
   return createSelector(
     getProductByCharacteristics,
     (product) => {
-      if (!product || !product.featuredImageUrl) {
+      if (!product || !product.featuredImageBaseUrl) {
         return null;
       }
 
-      return product.featuredImageUrl;
+      return product.featuredImageBaseUrl;
     }
   );
 }

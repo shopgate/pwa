@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getActualImageSource } from '../../helpers/data';
+import { getActualImageSource, getActualImageSourceFromBase } from '../../helpers/data';
 import Transition from '../Transition';
 import styles from './style';
 
@@ -156,11 +156,8 @@ class Image extends Component {
         this.props.onError();
       }
     };
-    if (!this.props.srcmap) {
-      image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
-    } else {
-      image.src = src;
-    }
+
+    image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
 
     return image.complete;
   }
@@ -203,10 +200,7 @@ class Image extends Component {
       );
     }
 
-    let containerStyle = styles.container(this.props.backgroundColor, '100%');
-    if (!this.props.srcmap) {
-      containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);
-    }
+    const containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);
 
     if (!this.props.animating || !this.props.transition) {
       return <div className={`${containerStyle} ${this.props.className}`}>{innerImage}</div>;

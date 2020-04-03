@@ -599,42 +599,8 @@ export const getProductDescription = createSelector(
 );
 
 /**
- * Checks if the format properties of a format match an image including a format
- * @param {Object} item the item including the format to compare
- * @param {Object} format The  format object to compare.
- * @returns {boolean}
- */
-const doesImageMatchFormat = (item, format) => {
-  const props = Object.keys(format);
-  const { length } = props;
-  for (let i = 0; i < length; i += 1) {
-    const prop = props[i];
-    if (format[prop] !== item[prop]) return false;
-  }
-  return true;
-};
-
-/**
- * Filters a product images cache entry by formats.
- * @param {Array} productImages All cached product images of a product.
- * @param {Array} formats A list of format objects to filter.
- * @returns {Object}
- */
-const filterProductImagesByFormats = (productImages, formats) => {
-  const filtered = productImages.filter(item =>
-    formats.find(format => doesImageMatchFormat(item, format)));
-
-  const hasSources = !!filtered[0] && filtered[0].sources.length > 0;
-
-  return {
-    filtered,
-    hasSources,
-  };
-};
-
-/**
  * Retrieves the images for the given product. If the props contain a variantId, and the related
- * product does not have images, the selector tries to pick images from its base product.
+ * product does not have images, the selector tries to pick images from it's base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Array|null}
@@ -643,42 +609,21 @@ export const getProductImages = createSelector(
   getProductImagesState,
   getProductId,
   getBaseProductId,
-  (state, props = {}) => props.formats || [],
-  (images, productId, baseProductId, formats) => {
+  (images, productId, baseProductId) => {
     const { images: productImages } = images[productId] || {};
-    const { images: baseProductImages } =
-      (!!baseProductId && baseProductId !== productId && images[baseProductId]) ||
-      {};
+    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
 
-    let filteredProductImages;
-    let filteredBaseProductImages;
+    // If the product doesn't have images...
+    if (!Array.isArray(productImages) || !productImages.length) {
+      // ...check the base product.
+      if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
+        return null;
+      }
 
-    if (Array.isArray(productImages)) {
-      filteredProductImages = filterProductImagesByFormats(productImages, formats);
+      return baseProductImages;
     }
 
-    if (Array.isArray(baseProductImages)) {
-      filteredBaseProductImages = filterProductImagesByFormats(baseProductImages, formats);
-    }
-
-    if (!filteredProductImages) {
-      return null;
-    }
-
-    if (!filteredBaseProductImages) {
-      // No further decisions are necessary, since no base product was determined.
-      return filteredProductImages.filtered;
-    }
-
-    const { hasSources: productHasSources } = filteredProductImages;
-
-    if (productHasSources) {
-      // The product has own images which can be used as a return value.
-      return filteredProductImages.filtered;
-    }
-
-    // The product doesn't have own images, so the images of the base product are returned.
-    return filteredBaseProductImages.filtered;
+    return productImages;
   }
 );
 

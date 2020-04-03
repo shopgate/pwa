@@ -23,7 +23,7 @@ const Image = ({ product }) => (
         title: product.name,
       }}
     >
-      <ProductImage src={product.featuredImageUrl} />
+      <ProductImage src={product.featuredImageBaseUrl} />
     </Link>
   </div>
 );

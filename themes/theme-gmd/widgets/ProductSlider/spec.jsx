@@ -65,6 +65,7 @@ describe('<ProductSlider />', () => {
       id: '1234',
       name: 'First product',
       featuredImageUrl: 'http://placekitten.com/300/300',
+      featuredImageBaseUrl: 'http://placekitten.com',
       rating: {
         count: 100,
         average: 0.5,

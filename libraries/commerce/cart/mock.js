@@ -78,6 +78,8 @@ const products = [
     product: {
       id: 'test_product',
       name: 'Test Product',
+      // TODO:
+      featuredImageBaseUrl: '',
       featuredImageUrl: 'https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa',
       price: {
         unit: 20,

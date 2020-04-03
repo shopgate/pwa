@@ -3,6 +3,7 @@ export const mockProduct = {
   id: mockProductId,
   name: 'Product Name',
   featuredImageUrl: null,
+  featuredImageBaseUrl: null,
   price: {
     currency: 'EUR',
     unitPrice: 5,

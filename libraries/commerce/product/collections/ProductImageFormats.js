@@ -1,3 +1,5 @@
+// TODO: remove or mark as deprecated
+
 /**
  * Class to maintain the image formats
  */

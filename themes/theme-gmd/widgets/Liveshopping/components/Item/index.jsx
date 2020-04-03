@@ -9,6 +9,7 @@ import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
 import styles from './style';
+import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 
 /**
  * The LiveShoppingItem component.
@@ -25,18 +26,23 @@ function LiveshoppingItem({ productId }) {
           style={styles.card}
           render={({ product, url }) => {
             const {
-              featuredImageUrl,
+              featuredImageBaseUrl,
               liveshoppings,
               name,
               price,
             } = product;
             const timeout = getLiveshoppingTimeout(liveshoppings);
+            const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
 
             return (
               <Link href={url} state={{ title: name }}>
                 <Grid>
                   <Grid.Item className={styles.image}>
-                    <ProductImage src={featuredImageUrl} alt={name} />
+                    <ProductImage
+                      src={featuredImageBaseUrl}
+                      resolutions={gridResolutions}
+                      alt={name}
+                    />
                   </Grid.Item>
                   <Grid.Item className={styles.infoPane}>
                     <div data-test-id={name}>

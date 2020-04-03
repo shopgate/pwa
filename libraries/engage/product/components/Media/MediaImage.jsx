@@ -24,6 +24,8 @@ const MediaImage = ({
     showInnerShadow = !appConfig.hideProductImageShadow,
   } = useWidgetSettings('@shopgate/engage/product/MediaImage');
 
+  // TODO: use new setting here to get resolutions
+
   useEffect(() => setPlaceholderEnabled(!url), [url]);
 
   const classes = classnames(className, {

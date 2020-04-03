@@ -1,4 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
+import { isAndroid } from '@shopgate/pwa-core';
+import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 import { isObject, isArray } from '../validation';
 
 /**
@@ -50,9 +52,17 @@ export const isExternal = url =>
  * @returns {string}
  */
 export const getActualImageSource = (src, { width, height }) => {
+  if (src && src.includes('images.shopgate.services/v2/images')) {
+    const { fillColor = 'FFFFFF' } = getThemeSettings('AppImages') || {};
+    const format = isAndroid ? 'webp' : 'jpeg';
+
+    return `${src}&format=${format}&width=${width}&height=${height}&quality=75&fill=${fillColor.replace('#', '')}`;
+  }
+
   if (src && src.startsWith('https://img-cdn.shopgate.com') && !src.includes('?')) {
     return `${src}?w=${width}&h=${height}&q=70&zc=resize&fillc=FFFFFF`;
   }
+
   return src;
 };
 

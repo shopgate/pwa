@@ -16,3 +16,4 @@ export const PRODUCT_SLIDER_IMAGE_FORMATS = [
     height: 1024,
   },
 ];
+// TODO: make it configurable

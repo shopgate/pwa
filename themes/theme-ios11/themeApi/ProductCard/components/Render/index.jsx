@@ -30,7 +30,7 @@ function ProductCardRender({
   titleRows,
 }) {
   const {
-    featuredImageUrl,
+    featuredImageBaseUrl,
     featuredMedia,
     id,
     name,
@@ -47,7 +47,7 @@ function ProductCardRender({
           url={featuredMedia.url}
           altText={featuredMedia.altText}
         />
-        : <ProductImage itemProp="image" src={featuredImageUrl} alt={name} />
+        : <ProductImage itemProp="image" src={featuredImageBaseUrl} alt={name} />
       }
 
       {(!hidePrice && price.discount > 0) && <Badge productId={id} value={-price.discount} />}

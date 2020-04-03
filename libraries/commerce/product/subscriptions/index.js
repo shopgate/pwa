@@ -47,7 +47,7 @@ function product(subscribe) {
     dispatch(fetchProduct(id));
     dispatch(fetchProductDescription(id));
     dispatch(fetchProductProperties(id));
-    dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
+    dispatch(fetchProductImages(id));
     dispatch(fetchProductShipping(id));
     /**
      * This feature is currently in BETA testing.
@@ -58,6 +58,7 @@ function product(subscribe) {
 
   subscribe(galleryWillEnter$, ({ action, dispatch }) => {
     const { productId } = action.route.params;
+    // TODO: remove format
     dispatch(fetchProductImages(hex2bin(productId), productImageFormats.getAllUniqueFormats()));
   });
 
@@ -73,7 +74,7 @@ function product(subscribe) {
 
     if (baseProductId) {
       dispatch(fetchProduct(baseProductId));
-      dispatch(fetchProductImages(baseProductId, productImageFormats.getAllUniqueFormats()));
+      dispatch(fetchProductImages(baseProductId));
     }
 
     if (flags.hasVariants) {

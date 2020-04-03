@@ -3,14 +3,14 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { shadows } = themeConfig;
 
-const placeholderContainer = css({
+const placeholderContainer = (imageRatio) => css({
   position: 'relative',
   width: '100%',
   ':before': {
     display: 'block',
     content: '""',
     width: '100%',
-    paddingTop: '100%',
+    paddingTop: `${100 * imageRatio}%`,
   },
 }).toString();
 

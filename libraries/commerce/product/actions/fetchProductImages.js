@@ -9,30 +9,21 @@ import errorProductImages from '../action-creators/errorProductImages';
 /**
  * Maybe requests images for a product from server.
  * @param {string} productId The product ID.
- * @param {Array} [formats] The requested formats.
  * @return {Function} The dispatched action.
  */
-function fetchProductImages(productId, formats) {
+function fetchProductImages(productId) {
   return (dispatch, getState) => {
+    // TODO: use selector for imagesByProductId here!!
     const productImages = getState().product.imagesByProductId[productId];
 
     if (!shouldFetchData(productImages)) {
       return Promise.resolve(null);
     }
-
-    let version = 1;
-    const input = { productId };
-
-    if (formats) {
-      input.formats = formats;
-      version = 2;
-    }
-
-    dispatch(requestProductImages(productId, formats));
+    dispatch(requestProductImages(productId));
 
     const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
-      .setInput(input)
-      .setVersion(version)
+      .setInput({ productId })
+      .setVersion(3)
       .dispatch();
 
     request

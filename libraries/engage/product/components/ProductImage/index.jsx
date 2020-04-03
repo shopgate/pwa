@@ -9,6 +9,7 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import styles from './style';
+import { getThemeSettings } from '../../../core';
 
 const { colors } = themeConfig;
 
@@ -50,6 +51,7 @@ class ProductImage extends Component {
     highestResolutionLoaded: () => { },
     noBackground: false,
     ratio: null,
+    // TODO: should the default here come from the config?
     resolutions: [
       {
         width: 50,
@@ -111,6 +113,20 @@ class ProductImage extends Component {
   };
 
   /**
+   * Sets the image ratio based on width and height.
+   * @return {number} The image ratio.
+   */
+  getImageRatio = () => {
+    if (this.props.ratio) {
+      const [x, y] = this.props.ratio;
+      return ((y / x)).toFixed(3);
+    }
+
+    const { width, height } = this.props.resolutions[this.props.resolutions.length - 1];
+    return ((height / width)).toFixed(3);
+  };
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -127,7 +143,7 @@ class ProductImage extends Component {
       return (
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
           <div
-            className={classnames(styles.placeholderContainer, {
+            className={classnames(styles.placeholderContainer(this.getImageRatio()), {
               [styles.innerShadow]: showInnerShadow,
             })}
             aria-hidden={this.props['aria-hidden']}
