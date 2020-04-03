@@ -40,7 +40,7 @@ const Item = ({ display, product }) => (
         {/* IMAGE */}
         <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={{ productId: product.id }} />
         <Portal name={portals.PRODUCT_ITEM_IMAGE} props={{ productId: product.id }}>
-          <Image itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+          <Image itemProp="image" src={product.featuredImageBaseUrl} alt={product.name} />
         </Portal>
         <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
 
@@ -168,7 +168,6 @@ const Item = ({ display, product }) => (
           />
         </Fragment>
       )}
-
       <Grid.Item shrink={0} className={styles.favouriteContainer} />
     </Grid>
   </Link>

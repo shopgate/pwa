@@ -254,6 +254,7 @@ export { usePageSettings } from './hooks/usePageSettings';
 export { useWidgetConfig } from './hooks/useWidgetConfig';
 export { useWidgetSettings } from './hooks/useWidgetSettings';
 export { useWidgetStyles } from './hooks/useWidgetStyles';
+export * from './hooks/html';
 export { useScroll } from './hooks/useScroll';
 
 // --------------- HOCs --------------- //
@@ -284,6 +285,7 @@ export { i18n, getWeekDaysOrder } from './helpers/i18n';
 export { default as nl2br } from './helpers/nl2br';
 export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
+export { getFullImageSource } from './helpers/getFullImageSource';
 export { isIOSTheme } from './helpers/isIOSTheme';
 export { isTouchDevice } from './helpers/isTouchDevice';
 export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';

@@ -2,41 +2,18 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
-import { getActualImageSource } from '@shopgate/engage/core';
-import { Swiper, Portal } from '@shopgate/pwa-common/components';
+import { withNavigation, bin2hex } from '@shopgate/engage/core';
+import { Swiper, Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_IMAGE,
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/product';
-import { ProductImage } from '@shopgate/engage/product';
+  loadProductImage,
+  ITEM_PATH,
+  ProductImage,
+  getProductImageSettings,
+} from '@shopgate/engage/product';
 import connect from './connector';
-
-const fallbackResolutions = [
-  {
-    width: 440,
-    height: 440,
-  },
-];
-
-/**
- * reformats the images array to group pictures by index, not by format
- * @param {Array} images array of format images
- * @returns {Array}
- */
-const getImagesByIndex = (images) => {
-  const imagesByIndex = [];
-
-  images.forEach((format) => {
-    if (!format.sources || !format.sources.length) return;
-    format.sources.forEach((src, index) => {
-      if (!imagesByIndex[index]) imagesByIndex[index] = [];
-      imagesByIndex[index].push(src);
-    });
-  });
-
-  return imagesByIndex;
-};
 
 /**
  * The product image slider component.
@@ -47,39 +24,95 @@ class ProductImageSlider extends Component {
   static propTypes = {
     'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
-    images: PropTypes.arrayOf(PropTypes.shape()),
-    navigate: PropTypes.func,
+    historyPush: PropTypes.func,
+    images: PropTypes.arrayOf(PropTypes.string),
     product: PropTypes.shape(),
+    productId: PropTypes.string,
+    variantId: PropTypes.string,
   };
 
   static defaultProps = {
     'aria-hidden': null,
     className: null,
+    historyPush: noop,
     images: null,
     product: null,
-    navigate: () => { },
+    productId: null,
+    variantId: null,
   };
+
+  /**
+  /**
+   *
+   * @inheritDoc
+   */
+  constructor(props, context) {
+    super(props, context);
+    this.mediaRef = React.createRef(null);
+  }
+
+  /**
+   * @inheritDoc
+   */
+  componentDidMount() {
+    this.mounted = true;
+  }
 
   /**
    * @param {Object} nextProps the next props
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) {
-      return true;
-    }
+    let depImage = null;
 
-    if (this.props.images && nextProps.images) {
-      if (this.props.images.length !== nextProps.images.length) return true;
+    if (!nextProps.images) {
+      // Is loading, blur media
+      if (this.mediaRef.current) {
+        this.mediaRef.current.style.filter = 'blur(3px)';
+      }
     }
-
-    return !isEqual(this.props.images, nextProps.images);
+    if (nextProps.images) {
+      if (!nextProps.images.length && nextProps.product) {
+        depImage = nextProps.product.featuredImageBaseUrl;
+      } else if (!isEqual(this.props.images, nextProps.images)) {
+        [depImage] = nextProps.images;
+      }
+    }
+    if (depImage) {
+      // Blur for image load
+      if (this.mediaRef.current) {
+        this.mediaRef.current.style.filter = 'blur(3px)';
+      }
+      loadProductImage(depImage)
+        .then(() => {
+          if (this.mounted) {
+            if (this.mediaRef.current) {
+              this.mediaRef.current.style.filter = 'none';
+            }
+            this.forceUpdate();
+          }
+        }).catch(() => {
+          if (this.mounted) {
+            if (this.mediaRef.current) {
+              this.mediaRef.current.style.filter = 'none';
+            }
+          }
+        });
+    }
+    return false;
   }
 
-  currentSlide = 0;
+  /**
+   * @inheritDoc
+   */
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   handleOpenGallery = () => {
-    this.props.navigate(this.currentSlide);
+    this.props.historyPush({
+      pathname: `${ITEM_PATH}/${bin2hex(this.props.variantId || this.props.productId)}/gallery/${this.currentSlide}`,
+    });
   };
 
   handleSlideChange = (currentSlide) => {
@@ -94,54 +127,52 @@ class ProductImageSlider extends Component {
    */
   render() {
     const {
-      product, images, 'aria-hidden': ariaHidden, className,
+      product, productId, images, 'aria-hidden': ariaHidden, className,
     } = this.props;
+    const { HeroImage: pdpResolutions } = getProductImageSettings();
     let content;
-    let imagesByIndex = [];
 
-    let onClick = this.handleOpenGallery;
-    let onKeyDown = this.handleOpenGallery;
-
-    if (product && Array.isArray(images) && images.length > 1) {
-      imagesByIndex = getImagesByIndex(images);
-
-      if (imagesByIndex.length) {
-        content = (
-          <Swiper
-            loop={imagesByIndex.length > 1}
-            indicators
-            onSlideChange={this.handleSlideChange}
-            disabled={imagesByIndex.length === 1}
-            className={className}
-          >
-            {imagesByIndex.map(imagesInIndex => (
-              <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
-                <ProductImage srcmap={imagesInIndex} animating={false} noBackground />
-              </Swiper.Item>
-            ))}
-          </Swiper>
-        );
-      }
+    if (images && images.length > 1) {
+      content = (
+        <Swiper
+          loop
+          indicators
+          onSlideChange={this.handleSlideChange}
+          className={className}
+        >
+          {images.map(image => (
+            <Swiper.Item key={`${productId}-${image}`}>
+              <ProductImage
+                src={image}
+                animating={false}
+                resolutions={pdpResolutions}
+                noBackground
+              />
+            </Swiper.Item>
+          ))}
+        </Swiper>
+      );
     }
 
+    let onClick = this.handleOpenGallery;
     if (!content) {
       content = (
         <ProductImage
-          src={product ? product.featuredImageUrl : null}
+          src={product ? product.featuredImageBaseUrl : null}
           className={className}
           forcePlaceholder={!product}
-          resolutions={fallbackResolutions}
+          resolutions={pdpResolutions}
+          noBackground
         />
       );
-      onClick = noop;
-      onKeyDown = noop;
+      if (!product || !product.featuredImageBaseUrl) {
+        onClick = noop;
+      }
     }
 
-    const imageStyle = product ? {
-      background: `url(${getActualImageSource(product.featuredImageUrl, fallbackResolutions[0])})`,
-      backgroundSize: 'contain',
-      transform: 'translate3d(0, 0, 0)',
-    } : null;
+    const wrapperStyles = {
+      transition: '0.5s filter ease-out', // blur filter
+    };
 
     return (
       <Fragment>
@@ -150,11 +181,12 @@ class ProductImageSlider extends Component {
           <div
             data-test-id={`product: ${product ? product.name : ''}`}
             onClick={onClick}
-            onKeyDown={onKeyDown}
+            onKeyDown={onClick}
             role="button"
             tabIndex="0"
             aria-hidden={ariaHidden}
-            style={imageStyle}
+            style={wrapperStyles}
+            ref={this.mediaRef}
           >
             {content}
           </div>
@@ -165,4 +197,4 @@ class ProductImageSlider extends Component {
   }
 }
 
-export default connect(ProductImageSlider);
+export default withNavigation(connect(ProductImageSlider));

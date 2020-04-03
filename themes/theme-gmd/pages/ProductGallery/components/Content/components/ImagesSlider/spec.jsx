@@ -13,8 +13,33 @@ import Content from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
   useWidgetSettings: jest.fn(),
+  useLoadImage: jest.fn().mockReturnValue(true),
+  getThemeSettings: () => ({
+    fillColor: 'FFFFFF',
+    HeroImage: [
+      {
+        width: 1024,
+        height: 1024,
+      },
+    ],
+    GalleryImage: [
+      {
+        width: 2048,
+        height: 2048,
+      },
+    ],
+    ListImage: [
+      {
+        width: 440,
+        height: 880,
+      },
+    ],
+  }),
+  getFullImageSource: orig => orig,
 }));
+
 jest.mock('@shopgate/engage/components', () => ({
+  Image: () => 'Image',
   Swiper: MockSwiper,
 }));
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
@@ -27,16 +52,7 @@ const mockedStore = configureStore();
 describe('<ProductGallery.Content> page', () => {
   beforeEach(() => {
     getProductImages.mockReturnValue([
-      {
-        width: 1024,
-        height: 1024,
-        sources: ['foo1024', 'bar1024'],
-      },
-      {
-        width: 2048,
-        height: 2048,
-        sources: ['foo2048', 'bar2048'],
-      },
+      'foo', 'bar',
     ]);
     getCurrentBaseProduct.mockReturnValue({ id: 123 });
   });
@@ -53,15 +69,15 @@ describe('<ProductGallery.Content> page', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockSwiper).length).toEqual(1);
-    expect(wrapper.find('img').length).toEqual(2);
+    expect(wrapper.find('Image').length).toEqual(2);
     expect(wrapper
-      .find('img')
+      .find('Image')
       .at(0)
-      .prop('src')).toEqual('foo2048');
+      .prop('src')).toEqual('foo');
     expect(wrapper
-      .find('img')
+      .find('Image')
       .at(1)
-      .prop('src')).toEqual('bar2048');
+      .prop('src')).toEqual('bar');
   });
 
   it('should pass initialSlide prop', () => {

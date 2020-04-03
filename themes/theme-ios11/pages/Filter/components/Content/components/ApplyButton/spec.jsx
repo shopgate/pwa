@@ -11,6 +11,12 @@ jest.mock('@shopgate/engage/core', () => ({
     return props => (<Comp widgetSettings={{}} {...props} />);
   },
 }));
+jest.mock('@shopgate/engage/components', () => ({
+  I18n: {
+    Text: () => 'I18n.Text',
+  },
+  Button: () => 'Button',
+}));
 
 describe('Filter: <ApplyButton />', () => {
   it('should render as activated', () => {

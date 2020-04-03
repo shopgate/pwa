@@ -1,10 +1,12 @@
 /**
  * key in the product image collection
+ * @deprecated use AppImages settings from theme config instead
  */
 export const GALLERY_SLIDER_IMAGE_COLLECTION_KEY = 'GALLERY_SLIDER_IMAGES';
 
 /**
  * themes value for the product slider image formats
+ * @deprecated use AppImages settings from theme config instead
  */
 export const GALLERY_SLIDER_IMAGE_FORMATS = [
   {
