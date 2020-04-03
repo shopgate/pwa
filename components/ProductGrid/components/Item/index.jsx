@@ -28,10 +28,15 @@ const Item = ({ product, display }) => (
           url={product.featuredMedia.url}
           altText={product.featuredMedia.altText}
         />
+
+
+        // TODO: einfach die url die rein kommt ändern. kein fallback
+
+
         : <ItemImage
           productId={product.id}
           name={product.name}
-          imageUrl={product.featuredImageUrl}
+          imageUrl={product.featuredImageBaseUrl}
         />
       }
     </Link>

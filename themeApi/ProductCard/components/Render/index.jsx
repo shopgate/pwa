@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
+import { getThemeSettings, isBeta } from '@shopgate/engage/core';
 import {
   FeaturedMedia, MapPriceHint, OrderQuantityHint, ProductImage,
 } from '@shopgate/engage/product';
@@ -30,13 +30,15 @@ function ProductCardRender({
   titleRows,
 }) {
   const {
-    featuredImageUrl,
+    featuredImageBaseUrl,
     featuredMedia,
     id,
     name,
     price,
     rating,
   } = product;
+
+  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
 
   return (
     <Link tagName="a" href={url}>
@@ -47,7 +49,12 @@ function ProductCardRender({
           url={featuredMedia.url}
           altText={featuredMedia.altText}
         />
-        : <ProductImage itemProp="image" src={featuredImageUrl} alt={name} />
+        : <ProductImage
+          itemProp="image"
+          src={featuredImageBaseUrl}
+          resolutions={gridResolutions}
+          alt={name}
+        />
       }
 
       {(!hidePrice && price.discount > 0) && <Badge productId={id} value={-price.discount} />}

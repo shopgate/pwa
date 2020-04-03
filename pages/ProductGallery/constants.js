@@ -16,6 +16,7 @@ export const GALLERY_SLIDER_IMAGE_FORMATS = [
     height: 2048,
   },
 ];
+// TODO: make it configurable
 
 export const GALLERY_SLIDER_ZOOM = {
   enabled: true,
