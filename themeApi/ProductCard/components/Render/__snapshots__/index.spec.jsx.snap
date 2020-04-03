@@ -19,6 +19,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
     hideRating={false}
     product={
       Object {
+        "featuredImageBaseUrl": null,
         "featuredImageUrl": null,
         "id": "PR0DUCTID",
         "name": "Product Name",
@@ -58,23 +59,113 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
         tabIndex={null}
         tag="div"
         tagName="a"
-        target={null}
       >
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-9auwkz "
+          className="css-c6ki83 "
           data-test-id="link: /some/url"
-          href={null}
           onClick={[Function]}
           role="link"
           tabIndex={null}
         >
-          <ProductImage
+          <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
-          />
+          >
+            <ProductImage
+              alt="Product Name"
+              animating={true}
+              aria-hidden={null}
+              className={null}
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              itemProp="image"
+              noBackground={false}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                ]
+              }
+              src={null}
+              srcmap={null}
+              widgetSettings={
+                Object {
+                  "mocked": "widgetSetting",
+                }
+              }
+            >
+              <SurroundPortals
+                portalName="component.product-image"
+                portalProps={null}
+              >
+                <Portal
+                  name="component.product-image.before"
+                  props={null}
+                />
+                <Portal
+                  name="component.product-image"
+                  props={null}
+                >
+                  <div
+                    aria-hidden={null}
+                    className="css-y5kkpq css-3hjqnz"
+                  >
+                    <div
+                      className="css-1vq3byi"
+                      data-test-id="placeHolder"
+                    >
+                      <Placeholder
+                        className="css-19rc2oq"
+                      >
+                        <Icon
+                          className="css-19rc2oq"
+                          color={null}
+                          content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                          size="inherit"
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb css-19rc2oq"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": "inherit",
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Placeholder>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="component.product-image.after"
+                  props={null}
+                />
+              </SurroundPortals>
+            </ProductImage>
+          </Component>
           <div
             className={
               Object {
@@ -96,7 +187,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                 role="text"
               >
                 <div
-                  className="css-5lxuz4"
+                  className="css-4s85e9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -280,7 +371,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                   </div>
                 </div>
                 <div
-                  className="css-13xh6j9"
+                  className="css-16y9zin"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -434,15 +525,36 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
               style={Object {}}
               title="Product Name"
             >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
+              <div
+                className={
+                  Object {
+                    "data-css-by38mh": "",
+                  }
+                }
+                data-test-id="Productname: Product Name"
                 style={Object {}}
-                testId="Productname: Product Name"
               >
-                Product Name
-              </ProductName>
+                <Ellipsis
+                  className=""
+                  ellipsis="..."
+                  rows={3}
+                >
+                  <Dotdotdot
+                    clamp={3}
+                    className=""
+                    ellipsis="..."
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
+                  >
+                    <div
+                      className=""
+                    >
+                      Product Name
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -451,32 +563,23 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              product={
+              price={
                 Object {
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 0,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "currency": "EUR",
+                  "discount": 0,
+                  "info": "Price Info",
+                  "unitPrice": 5,
+                  "unitPriceStriked": 10,
                 }
               }
+              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
                 style={Object {}}
               >
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
+                  name="product-item.price.before"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -484,37 +587,159 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                   }
                 />
                 <Portal
-                  name="PRODUCT_ITEM_PRICE"
+                  name="product-item.price"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
                     }
                   }
                 >
-                  <ProductGridPrice
-                    product={
+                  <Component
+                    price={
                       Object {
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
+                        "currency": "EUR",
+                        "discount": 0,
+                        "info": "Price Info",
+                        "unitPrice": 5,
+                        "unitPriceStriked": 10,
+                      }
+                    }
+                  >
+                    <ProductGridPrice
+                      price={
+                        Object {
                           "currency": "EUR",
                           "discount": 0,
                           "info": "Price Info",
                           "unitPrice": 5,
                           "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
+                        }
                       }
-                    }
-                  />
+                    >
+                      <Grid
+                        className="css-1glzrmu"
+                        component="ul"
+                        wrap={true}
+                      >
+                        <ul
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <Price
+                                className=""
+                                currency="EUR"
+                                discounted={false}
+                                fractions={true}
+                                taxDisclaimer={false}
+                                unitPrice={5}
+                                unitPriceMin={0}
+                              >
+                                <div
+                                  className="css-izofhs"
+                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                >
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </Price>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceStriked
+                                className="css-nil"
+                                currency="EUR"
+                                value={10}
+                              >
+                                <div
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
+                                >
+                                  <span
+                                    aria-label="price.label_old_price"
+                                    data-test-id="strikedPrice: 10"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={10}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </PriceStriked>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                      <Grid
+                        className=""
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className=" css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceInfo
+                                className="css-1gftye4"
+                                text="Price Info"
+                              >
+                                <div
+                                  className="css-1kqiarg css-1gftye4"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "Price Info",
+                                    }
+                                  }
+                                  data-test-id="priceInfo: Price Info"
+                                />
+                              </PriceInfo>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </ProductGridPrice>
+                  </Component>
                 </Portal>
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
+                  name="product-item.price.after"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -550,6 +775,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
     hideRating={false}
     product={
       Object {
+        "featuredImageBaseUrl": null,
         "featuredImageUrl": null,
         "id": "PR0DUCTID",
         "name": "Product Name",
@@ -589,23 +815,113 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
         tabIndex={null}
         tag="div"
         tagName="a"
-        target={null}
       >
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-9auwkz "
+          className="css-c6ki83 "
           data-test-id="link: /some/url"
-          href={null}
           onClick={[Function]}
           role="link"
           tabIndex={null}
         >
-          <ProductImage
+          <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
-          />
+          >
+            <ProductImage
+              alt="Product Name"
+              animating={true}
+              aria-hidden={null}
+              className={null}
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              itemProp="image"
+              noBackground={false}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                ]
+              }
+              src={null}
+              srcmap={null}
+              widgetSettings={
+                Object {
+                  "mocked": "widgetSetting",
+                }
+              }
+            >
+              <SurroundPortals
+                portalName="component.product-image"
+                portalProps={null}
+              >
+                <Portal
+                  name="component.product-image.before"
+                  props={null}
+                />
+                <Portal
+                  name="component.product-image"
+                  props={null}
+                >
+                  <div
+                    aria-hidden={null}
+                    className="css-y5kkpq css-3hjqnz"
+                  >
+                    <div
+                      className="css-1vq3byi"
+                      data-test-id="placeHolder"
+                    >
+                      <Placeholder
+                        className="css-19rc2oq"
+                      >
+                        <Icon
+                          className="css-19rc2oq"
+                          color={null}
+                          content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                          size="inherit"
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb css-19rc2oq"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": "inherit",
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Placeholder>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="component.product-image.after"
+                  props={null}
+                />
+              </SurroundPortals>
+            </ProductImage>
+          </Component>
           <ProductCardBadge
             productId="PR0DUCTID"
             style={Object {}}
@@ -645,7 +961,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-t5udo1 "
+                      className="css-pzju2o "
                       params={
                         Array [
                           null,
@@ -653,10 +969,9 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                       }
                       role={null}
                       string="-50%"
-                      transform={null}
                     >
                       <span
-                        className="css-t5udo1 "
+                        className="css-pzju2o "
                         role={null}
                       >
                         -50%
@@ -687,15 +1002,36 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
               style={Object {}}
               title="Product Name"
             >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
+              <div
+                className={
+                  Object {
+                    "data-css-by38mh": "",
+                  }
+                }
+                data-test-id="Productname: Product Name"
                 style={Object {}}
-                testId="Productname: Product Name"
               >
-                Product Name
-              </ProductName>
+                <Ellipsis
+                  className=""
+                  ellipsis="..."
+                  rows={3}
+                >
+                  <Dotdotdot
+                    clamp={3}
+                    className=""
+                    ellipsis="..."
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
+                  >
+                    <div
+                      className=""
+                    >
+                      Product Name
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -704,32 +1040,23 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              product={
+              price={
                 Object {
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 0,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "currency": "EUR",
+                  "discount": 50,
+                  "info": "Price Info",
+                  "unitPrice": 5,
+                  "unitPriceStriked": 10,
                 }
               }
+              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
                 style={Object {}}
               >
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
+                  name="product-item.price.before"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -737,37 +1064,159 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                   }
                 />
                 <Portal
-                  name="PRODUCT_ITEM_PRICE"
+                  name="product-item.price"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
                     }
                   }
                 >
-                  <ProductGridPrice
-                    product={
+                  <Component
+                    price={
                       Object {
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
+                        "currency": "EUR",
+                        "discount": 50,
+                        "info": "Price Info",
+                        "unitPrice": 5,
+                        "unitPriceStriked": 10,
+                      }
+                    }
+                  >
+                    <ProductGridPrice
+                      price={
+                        Object {
                           "currency": "EUR",
                           "discount": 50,
                           "info": "Price Info",
                           "unitPrice": 5,
                           "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 0,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
+                        }
                       }
-                    }
-                  />
+                    >
+                      <Grid
+                        className="css-1glzrmu"
+                        component="ul"
+                        wrap={true}
+                      >
+                        <ul
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <Price
+                                className=""
+                                currency="EUR"
+                                discounted={true}
+                                fractions={true}
+                                taxDisclaimer={false}
+                                unitPrice={5}
+                                unitPriceMin={0}
+                              >
+                                <div
+                                  className="css-izofhs css-1ncyhu"
+                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                >
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </Price>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceStriked
+                                className="css-nil"
+                                currency="EUR"
+                                value={10}
+                              >
+                                <div
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
+                                >
+                                  <span
+                                    aria-label="price.label_old_price"
+                                    data-test-id="strikedPrice: 10"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={10}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </PriceStriked>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                      <Grid
+                        className=""
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className=" css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceInfo
+                                className="css-1gftye4"
+                                text="Price Info"
+                              >
+                                <div
+                                  className="css-1kqiarg css-1gftye4"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "Price Info",
+                                    }
+                                  }
+                                  data-test-id="priceInfo: Price Info"
+                                />
+                              </PriceInfo>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </ProductGridPrice>
+                  </Component>
                 </Portal>
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
+                  name="product-item.price.after"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -803,6 +1252,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
     hideRating={false}
     product={
       Object {
+        "featuredImageBaseUrl": null,
         "featuredImageUrl": null,
         "id": "PR0DUCTID",
         "name": "Product Name",
@@ -842,23 +1292,113 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
         tabIndex={null}
         tag="div"
         tagName="a"
-        target={null}
       >
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-9auwkz "
+          className="css-c6ki83 "
           data-test-id="link: /some/url"
-          href={null}
           onClick={[Function]}
           role="link"
           tabIndex={null}
         >
-          <ProductImage
+          <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
-          />
+          >
+            <ProductImage
+              alt="Product Name"
+              animating={true}
+              aria-hidden={null}
+              className={null}
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              itemProp="image"
+              noBackground={false}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                ]
+              }
+              src={null}
+              srcmap={null}
+              widgetSettings={
+                Object {
+                  "mocked": "widgetSetting",
+                }
+              }
+            >
+              <SurroundPortals
+                portalName="component.product-image"
+                portalProps={null}
+              >
+                <Portal
+                  name="component.product-image.before"
+                  props={null}
+                />
+                <Portal
+                  name="component.product-image"
+                  props={null}
+                >
+                  <div
+                    aria-hidden={null}
+                    className="css-y5kkpq css-3hjqnz"
+                  >
+                    <div
+                      className="css-1vq3byi"
+                      data-test-id="placeHolder"
+                    >
+                      <Placeholder
+                        className="css-19rc2oq"
+                      >
+                        <Icon
+                          className="css-19rc2oq"
+                          color={null}
+                          content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                          size="inherit"
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb css-19rc2oq"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": "inherit",
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Placeholder>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="component.product-image.after"
+                  props={null}
+                />
+              </SurroundPortals>
+            </ProductImage>
+          </Component>
           <ProductCardBadge
             productId="PR0DUCTID"
             style={Object {}}
@@ -898,7 +1438,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-t5udo1 "
+                      className="css-pzju2o "
                       params={
                         Array [
                           null,
@@ -906,10 +1446,9 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                       }
                       role={null}
                       string="-50%"
-                      transform={null}
                     >
                       <span
-                        className="css-t5udo1 "
+                        className="css-pzju2o "
                         role={null}
                       >
                         -50%
@@ -949,7 +1488,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 role="text"
               >
                 <div
-                  className="css-5lxuz4"
+                  className="css-4s85e9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -1133,7 +1672,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-13xh6j9"
+                  className="css-16y9zin"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -1287,15 +1826,36 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
               style={Object {}}
               title="Product Name"
             >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
+              <div
+                className={
+                  Object {
+                    "data-css-by38mh": "",
+                  }
+                }
+                data-test-id="Productname: Product Name"
                 style={Object {}}
-                testId="Productname: Product Name"
               >
-                Product Name
-              </ProductName>
+                <Ellipsis
+                  className=""
+                  ellipsis="..."
+                  rows={3}
+                >
+                  <Dotdotdot
+                    clamp={3}
+                    className=""
+                    ellipsis="..."
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
+                  >
+                    <div
+                      className=""
+                    >
+                      Product Name
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -1304,32 +1864,23 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              product={
+              price={
                 Object {
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "currency": "EUR",
+                  "discount": 50,
+                  "info": "Price Info",
+                  "unitPrice": 5,
+                  "unitPriceStriked": 10,
                 }
               }
+              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
                 style={Object {}}
               >
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
+                  name="product-item.price.before"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -1337,37 +1888,159 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                   }
                 />
                 <Portal
-                  name="PRODUCT_ITEM_PRICE"
+                  name="product-item.price"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
                     }
                   }
                 >
-                  <ProductGridPrice
-                    product={
+                  <Component
+                    price={
                       Object {
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
+                        "currency": "EUR",
+                        "discount": 50,
+                        "info": "Price Info",
+                        "unitPrice": 5,
+                        "unitPriceStriked": 10,
+                      }
+                    }
+                  >
+                    <ProductGridPrice
+                      price={
+                        Object {
                           "currency": "EUR",
                           "discount": 50,
                           "info": "Price Info",
                           "unitPrice": 5,
                           "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
+                        }
                       }
-                    }
-                  />
+                    >
+                      <Grid
+                        className="css-1glzrmu"
+                        component="ul"
+                        wrap={true}
+                      >
+                        <ul
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <Price
+                                className=""
+                                currency="EUR"
+                                discounted={true}
+                                fractions={true}
+                                taxDisclaimer={false}
+                                unitPrice={5}
+                                unitPriceMin={0}
+                              >
+                                <div
+                                  className="css-izofhs css-1ncyhu"
+                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                >
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </Price>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceStriked
+                                className="css-nil"
+                                currency="EUR"
+                                value={10}
+                              >
+                                <div
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
+                                >
+                                  <span
+                                    aria-label="price.label_old_price"
+                                    data-test-id="strikedPrice: 10"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={10}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </PriceStriked>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                      <Grid
+                        className=""
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className=" css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceInfo
+                                className="css-1gftye4"
+                                text="Price Info"
+                              >
+                                <div
+                                  className="css-1kqiarg css-1gftye4"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "Price Info",
+                                    }
+                                  }
+                                  data-test-id="priceInfo: Price Info"
+                                />
+                              </PriceInfo>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </ProductGridPrice>
+                  </Component>
                 </Portal>
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
+                  name="product-item.price.after"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -1403,6 +2076,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
     hideRating={false}
     product={
       Object {
+        "featuredImageBaseUrl": null,
         "featuredImageUrl": null,
         "id": "PR0DUCTID",
         "name": "Product Name",
@@ -1442,23 +2116,113 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
         tabIndex={null}
         tag="div"
         tagName="a"
-        target={null}
       >
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-9auwkz "
+          className="css-c6ki83 "
           data-test-id="link: /some/url"
-          href={null}
           onClick={[Function]}
           role="link"
           tabIndex={null}
         >
-          <ProductImage
+          <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
-          />
+          >
+            <ProductImage
+              alt="Product Name"
+              animating={true}
+              aria-hidden={null}
+              className={null}
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              itemProp="image"
+              noBackground={false}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                ]
+              }
+              src={null}
+              srcmap={null}
+              widgetSettings={
+                Object {
+                  "mocked": "widgetSetting",
+                }
+              }
+            >
+              <SurroundPortals
+                portalName="component.product-image"
+                portalProps={null}
+              >
+                <Portal
+                  name="component.product-image.before"
+                  props={null}
+                />
+                <Portal
+                  name="component.product-image"
+                  props={null}
+                >
+                  <div
+                    aria-hidden={null}
+                    className="css-y5kkpq css-3hjqnz"
+                  >
+                    <div
+                      className="css-1vq3byi"
+                      data-test-id="placeHolder"
+                    >
+                      <Placeholder
+                        className="css-19rc2oq"
+                      >
+                        <Icon
+                          className="css-19rc2oq"
+                          color={null}
+                          content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                          size="inherit"
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb css-19rc2oq"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": "inherit",
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Placeholder>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="component.product-image.after"
+                  props={null}
+                />
+              </SurroundPortals>
+            </ProductImage>
+          </Component>
           <ProductCardBadge
             productId="PR0DUCTID"
             style={Object {}}
@@ -1498,7 +2262,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-t5udo1 "
+                      className="css-pzju2o "
                       params={
                         Array [
                           null,
@@ -1506,10 +2270,9 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                       }
                       role={null}
                       string="-50%"
-                      transform={null}
                     >
                       <span
-                        className="css-t5udo1 "
+                        className="css-pzju2o "
                         role={null}
                       >
                         -50%
@@ -1549,7 +2312,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 role="text"
               >
                 <div
-                  className="css-5lxuz4"
+                  className="css-4s85e9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -1733,7 +2496,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                   </div>
                 </div>
                 <div
-                  className="css-13xh6j9"
+                  className="css-16y9zin"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -1887,15 +2650,36 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
               style={Object {}}
               title="Product Name"
             >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={1}
+              <div
+                className={
+                  Object {
+                    "data-css-by38mh": "",
+                  }
+                }
+                data-test-id="Productname: Product Name"
                 style={Object {}}
-                testId="Productname: Product Name"
               >
-                Product Name
-              </ProductName>
+                <Ellipsis
+                  className=""
+                  ellipsis="..."
+                  rows={1}
+                >
+                  <Dotdotdot
+                    clamp={1}
+                    className=""
+                    ellipsis="..."
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
+                  >
+                    <div
+                      className=""
+                    >
+                      Product Name
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -1904,32 +2688,23 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              product={
+              price={
                 Object {
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "currency": "EUR",
+                  "discount": 50,
+                  "info": "Price Info",
+                  "unitPrice": 5,
+                  "unitPriceStriked": 10,
                 }
               }
+              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
                 style={Object {}}
               >
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
+                  name="product-item.price.before"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -1937,37 +2712,159 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                   }
                 />
                 <Portal
-                  name="PRODUCT_ITEM_PRICE"
+                  name="product-item.price"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
                     }
                   }
                 >
-                  <ProductGridPrice
-                    product={
+                  <Component
+                    price={
                       Object {
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
+                        "currency": "EUR",
+                        "discount": 50,
+                        "info": "Price Info",
+                        "unitPrice": 5,
+                        "unitPriceStriked": 10,
+                      }
+                    }
+                  >
+                    <ProductGridPrice
+                      price={
+                        Object {
                           "currency": "EUR",
                           "discount": 50,
                           "info": "Price Info",
                           "unitPrice": 5,
                           "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
+                        }
                       }
-                    }
-                  />
+                    >
+                      <Grid
+                        className="css-1glzrmu"
+                        component="ul"
+                        wrap={true}
+                      >
+                        <ul
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <Price
+                                className=""
+                                currency="EUR"
+                                discounted={true}
+                                fractions={true}
+                                taxDisclaimer={false}
+                                unitPrice={5}
+                                unitPriceMin={0}
+                              >
+                                <div
+                                  className="css-izofhs css-1ncyhu"
+                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                >
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </Price>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceStriked
+                                className="css-nil"
+                                currency="EUR"
+                                value={10}
+                              >
+                                <div
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
+                                >
+                                  <span
+                                    aria-label="price.label_old_price"
+                                    data-test-id="strikedPrice: 10"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={10}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </PriceStriked>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                      <Grid
+                        className=""
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className=" css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceInfo
+                                className="css-1gftye4"
+                                text="Price Info"
+                              >
+                                <div
+                                  className="css-1kqiarg css-1gftye4"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "Price Info",
+                                    }
+                                  }
+                                  data-test-id="priceInfo: Price Info"
+                                />
+                              </PriceInfo>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </ProductGridPrice>
+                  </Component>
                 </Portal>
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
+                  name="product-item.price.after"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -2003,6 +2900,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
     hideRating={false}
     product={
       Object {
+        "featuredImageBaseUrl": null,
         "featuredImageUrl": null,
         "id": "PR0DUCTID",
         "name": "Product Name",
@@ -2042,23 +2940,113 @@ exports[`<ProductCardRender /> should render without name 1`] = `
         tabIndex={null}
         tag="div"
         tagName="a"
-        target={null}
       >
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-9auwkz "
+          className="css-c6ki83 "
           data-test-id="link: /some/url"
-          href={null}
           onClick={[Function]}
           role="link"
           tabIndex={null}
         >
-          <ProductImage
+          <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
-          />
+          >
+            <ProductImage
+              alt="Product Name"
+              animating={true}
+              aria-hidden={null}
+              className={null}
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              itemProp="image"
+              noBackground={false}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                ]
+              }
+              src={null}
+              srcmap={null}
+              widgetSettings={
+                Object {
+                  "mocked": "widgetSetting",
+                }
+              }
+            >
+              <SurroundPortals
+                portalName="component.product-image"
+                portalProps={null}
+              >
+                <Portal
+                  name="component.product-image.before"
+                  props={null}
+                />
+                <Portal
+                  name="component.product-image"
+                  props={null}
+                >
+                  <div
+                    aria-hidden={null}
+                    className="css-y5kkpq css-3hjqnz"
+                  >
+                    <div
+                      className="css-1vq3byi"
+                      data-test-id="placeHolder"
+                    >
+                      <Placeholder
+                        className="css-19rc2oq"
+                      >
+                        <Icon
+                          className="css-19rc2oq"
+                          color={null}
+                          content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                          size="inherit"
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb css-19rc2oq"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": "inherit",
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Placeholder>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="component.product-image.after"
+                  props={null}
+                />
+              </SurroundPortals>
+            </ProductImage>
+          </Component>
           <ProductCardBadge
             productId="PR0DUCTID"
             style={Object {}}
@@ -2098,7 +3086,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-t5udo1 "
+                      className="css-pzju2o "
                       params={
                         Array [
                           null,
@@ -2106,10 +3094,9 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                       }
                       role={null}
                       string="-50%"
-                      transform={null}
                     >
                       <span
-                        className="css-t5udo1 "
+                        className="css-pzju2o "
                         role={null}
                       >
                         -50%
@@ -2149,7 +3136,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 role="text"
               >
                 <div
-                  className="css-5lxuz4"
+                  className="css-4s85e9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -2333,7 +3320,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-13xh6j9"
+                  className="css-16y9zin"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -2489,32 +3476,23 @@ exports[`<ProductCardRender /> should render without name 1`] = `
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              product={
+              price={
                 Object {
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "currency": "EUR",
+                  "discount": 50,
+                  "info": "Price Info",
+                  "unitPrice": 5,
+                  "unitPriceStriked": 10,
                 }
               }
+              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
                 style={Object {}}
               >
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
+                  name="product-item.price.before"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -2522,37 +3500,159 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                   }
                 />
                 <Portal
-                  name="PRODUCT_ITEM_PRICE"
+                  name="product-item.price"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
                     }
                   }
                 >
-                  <ProductGridPrice
-                    product={
+                  <Component
+                    price={
                       Object {
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
+                        "currency": "EUR",
+                        "discount": 50,
+                        "info": "Price Info",
+                        "unitPrice": 5,
+                        "unitPriceStriked": 10,
+                      }
+                    }
+                  >
+                    <ProductGridPrice
+                      price={
+                        Object {
                           "currency": "EUR",
                           "discount": 50,
                           "info": "Price Info",
                           "unitPrice": 5,
                           "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
+                        }
                       }
-                    }
-                  />
+                    >
+                      <Grid
+                        className="css-1glzrmu"
+                        component="ul"
+                        wrap={true}
+                      >
+                        <ul
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <Price
+                                className=""
+                                currency="EUR"
+                                discounted={true}
+                                fractions={true}
+                                taxDisclaimer={false}
+                                unitPrice={5}
+                                unitPriceMin={0}
+                              >
+                                <div
+                                  className="css-izofhs css-1ncyhu"
+                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                >
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </Price>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceStriked
+                                className="css-nil"
+                                currency="EUR"
+                                value={10}
+                              >
+                                <div
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
+                                >
+                                  <span
+                                    aria-label="price.label_old_price"
+                                    data-test-id="strikedPrice: 10"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={10}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </PriceStriked>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                      <Grid
+                        className=""
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className=" css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceInfo
+                                className="css-1gftye4"
+                                text="Price Info"
+                              >
+                                <div
+                                  className="css-1kqiarg css-1gftye4"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "Price Info",
+                                    }
+                                  }
+                                  data-test-id="priceInfo: Price Info"
+                                />
+                              </PriceInfo>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </ProductGridPrice>
+                  </Component>
                 </Portal>
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
+                  name="product-item.price.after"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -2588,6 +3688,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
     hideRating={false}
     product={
       Object {
+        "featuredImageBaseUrl": null,
         "featuredImageUrl": null,
         "id": "PR0DUCTID",
         "name": "Product Name",
@@ -2627,23 +3728,113 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
         tabIndex={null}
         tag="div"
         tagName="a"
-        target={null}
       >
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-9auwkz "
+          className="css-c6ki83 "
           data-test-id="link: /some/url"
-          href={null}
           onClick={[Function]}
           role="link"
           tabIndex={null}
         >
-          <ProductImage
+          <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
-          />
+          >
+            <ProductImage
+              alt="Product Name"
+              animating={true}
+              aria-hidden={null}
+              className={null}
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              itemProp="image"
+              noBackground={false}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                ]
+              }
+              src={null}
+              srcmap={null}
+              widgetSettings={
+                Object {
+                  "mocked": "widgetSetting",
+                }
+              }
+            >
+              <SurroundPortals
+                portalName="component.product-image"
+                portalProps={null}
+              >
+                <Portal
+                  name="component.product-image.before"
+                  props={null}
+                />
+                <Portal
+                  name="component.product-image"
+                  props={null}
+                >
+                  <div
+                    aria-hidden={null}
+                    className="css-y5kkpq css-3hjqnz"
+                  >
+                    <div
+                      className="css-1vq3byi"
+                      data-test-id="placeHolder"
+                    >
+                      <Placeholder
+                        className="css-19rc2oq"
+                      >
+                        <Icon
+                          className="css-19rc2oq"
+                          color={null}
+                          content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                          size="inherit"
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb css-19rc2oq"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": "inherit",
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Placeholder>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="component.product-image.after"
+                  props={null}
+                />
+              </SurroundPortals>
+            </ProductImage>
+          </Component>
           <div
             className={
               Object {
@@ -2665,7 +3856,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                 role="text"
               >
                 <div
-                  className="css-5lxuz4"
+                  className="css-4s85e9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -2849,7 +4040,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-13xh6j9"
+                  className="css-16y9zin"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -3003,15 +4194,36 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
               style={Object {}}
               title="Product Name"
             >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
+              <div
+                className={
+                  Object {
+                    "data-css-by38mh": "",
+                  }
+                }
+                data-test-id="Productname: Product Name"
                 style={Object {}}
-                testId="Productname: Product Name"
               >
-                Product Name
-              </ProductName>
+                <Ellipsis
+                  className=""
+                  ellipsis="..."
+                  rows={3}
+                >
+                  <Dotdotdot
+                    clamp={3}
+                    className=""
+                    ellipsis="..."
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
+                  >
+                    <div
+                      className=""
+                    >
+                      Product Name
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -3046,6 +4258,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
     hideRating={true}
     product={
       Object {
+        "featuredImageBaseUrl": null,
         "featuredImageUrl": null,
         "id": "PR0DUCTID",
         "name": "Product Name",
@@ -3085,23 +4298,113 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
         tabIndex={null}
         tag="div"
         tagName="a"
-        target={null}
       >
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-9auwkz "
+          className="css-c6ki83 "
           data-test-id="link: /some/url"
-          href={null}
           onClick={[Function]}
           role="link"
           tabIndex={null}
         >
-          <ProductImage
+          <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
-          />
+          >
+            <ProductImage
+              alt="Product Name"
+              animating={true}
+              aria-hidden={null}
+              className={null}
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              itemProp="image"
+              noBackground={false}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                ]
+              }
+              src={null}
+              srcmap={null}
+              widgetSettings={
+                Object {
+                  "mocked": "widgetSetting",
+                }
+              }
+            >
+              <SurroundPortals
+                portalName="component.product-image"
+                portalProps={null}
+              >
+                <Portal
+                  name="component.product-image.before"
+                  props={null}
+                />
+                <Portal
+                  name="component.product-image"
+                  props={null}
+                >
+                  <div
+                    aria-hidden={null}
+                    className="css-y5kkpq css-3hjqnz"
+                  >
+                    <div
+                      className="css-1vq3byi"
+                      data-test-id="placeHolder"
+                    >
+                      <Placeholder
+                        className="css-19rc2oq"
+                      >
+                        <Icon
+                          className="css-19rc2oq"
+                          color={null}
+                          content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                          size="inherit"
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb css-19rc2oq"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": "inherit",
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Placeholder>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="component.product-image.after"
+                  props={null}
+                />
+              </SurroundPortals>
+            </ProductImage>
+          </Component>
           <ProductCardBadge
             productId="PR0DUCTID"
             style={Object {}}
@@ -3141,7 +4444,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-t5udo1 "
+                      className="css-pzju2o "
                       params={
                         Array [
                           null,
@@ -3149,10 +4452,9 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                       }
                       role={null}
                       string="-50%"
-                      transform={null}
                     >
                       <span
-                        className="css-t5udo1 "
+                        className="css-pzju2o "
                         role={null}
                       >
                         -50%
@@ -3183,15 +4485,36 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
               style={Object {}}
               title="Product Name"
             >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
+              <div
+                className={
+                  Object {
+                    "data-css-by38mh": "",
+                  }
+                }
+                data-test-id="Productname: Product Name"
                 style={Object {}}
-                testId="Productname: Product Name"
               >
-                Product Name
-              </ProductName>
+                <Ellipsis
+                  className=""
+                  ellipsis="..."
+                  rows={3}
+                >
+                  <Dotdotdot
+                    clamp={3}
+                    className=""
+                    ellipsis="..."
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
+                  >
+                    <div
+                      className=""
+                    >
+                      Product Name
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -3200,32 +4523,23 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              product={
+              price={
                 Object {
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "currency": "EUR",
+                  "discount": 50,
+                  "info": "Price Info",
+                  "unitPrice": 5,
+                  "unitPriceStriked": 10,
                 }
               }
+              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
                 style={Object {}}
               >
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
+                  name="product-item.price.before"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
@@ -3233,37 +4547,159 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                   }
                 />
                 <Portal
-                  name="PRODUCT_ITEM_PRICE"
+                  name="product-item.price"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
                     }
                   }
                 >
-                  <ProductGridPrice
-                    product={
+                  <Component
+                    price={
                       Object {
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
+                        "currency": "EUR",
+                        "discount": 50,
+                        "info": "Price Info",
+                        "unitPrice": 5,
+                        "unitPriceStriked": 10,
+                      }
+                    }
+                  >
+                    <ProductGridPrice
+                      price={
+                        Object {
                           "currency": "EUR",
                           "discount": 50,
                           "info": "Price Info",
                           "unitPrice": 5,
                           "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
+                        }
                       }
-                    }
-                  />
+                    >
+                      <Grid
+                        className="css-1glzrmu"
+                        component="ul"
+                        wrap={true}
+                      >
+                        <ul
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <Price
+                                className=""
+                                currency="EUR"
+                                discounted={true}
+                                fractions={true}
+                                taxDisclaimer={false}
+                                unitPrice={5}
+                                unitPriceMin={0}
+                              >
+                                <div
+                                  className="css-izofhs css-1ncyhu"
+                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                >
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </Price>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceStriked
+                                className="css-nil"
+                                currency="EUR"
+                                value={10}
+                              >
+                                <div
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
+                                >
+                                  <span
+                                    aria-label="price.label_old_price"
+                                    data-test-id="strikedPrice: 10"
+                                  >
+                                    <FormatPrice
+                                      className={null}
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={10}
+                                    >
+                                      p
+                                    </FormatPrice>
+                                  </span>
+                                </div>
+                              </PriceStriked>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                      <Grid
+                        className=""
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className=" css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <PriceInfo
+                                className="css-1gftye4"
+                                text="Price Info"
+                              >
+                                <div
+                                  className="css-1kqiarg css-1gftye4"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "Price Info",
+                                    }
+                                  }
+                                  data-test-id="priceInfo: Price Info"
+                                />
+                              </PriceInfo>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </ProductGridPrice>
+                  </Component>
                 </Portal>
                 <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
+                  name="product-item.price.after"
                   props={
                     Object {
                       "productId": "PR0DUCTID",
