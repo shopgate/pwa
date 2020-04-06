@@ -1,5 +1,5 @@
 {
-  "version": "6.10.0",
+  "version": "6.12.0-rc.1",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -213,6 +213,12 @@
             "buttonCartBadgeShadow": "0 1px 1px rgba(0, 0, 0, 0.25)",
             "buttonTextColor": "$.colors.accent",
             "buttonTextColorDisabled": "$.colors.shade4"
+          },
+          "@shopgate/engage/product/ProductGrid": {
+            "columns": 2
+          },
+          "@shopgate/engage/product/ProductSlider": {
+            "slidesPerView": 2.3
           }
         },
         "typography": {
@@ -223,14 +229,21 @@
         "colors": {
           "background": "#f8f8f8",
           "light": "#fff",
+          "lightTransparent": "rgba(255, 255, 255, 0.82)",
           "dark": "#000",
+          "darkTransparent": "rgba(0,0,0, 0.4)",
+          "lightDark": "#323232",
           "placeholder": "#f2f2f2",
+          "overlay": "#f7f7f7",
+          "lightOverlay": "#fafafa",
+          "darkOverlay": "#f0f0f0",
           "primary": "#fa5400",
           "primaryContrast": "#fff",
           "accent": "#5ccee3",
           "accentContrast": "#fff",
           "cta": "#fa5400",
           "ctaContrast": "#fff",
+          "gray": "#747474",
           "darkGray": "#eaeaea",
           "focus": "#fa5400",
           "shade3": "#9a9a9a",

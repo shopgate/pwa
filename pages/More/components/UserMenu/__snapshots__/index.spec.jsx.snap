@@ -538,19 +538,19 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="css-187rja2 css-6f03lb"
+                              className="css-19m2k92 css-6f03lb"
                               disabled={false}
                               onClick={null}
                               testId="UserMenuLogin"
                             >
                               <button
-                                className="css-187rja2 css-6f03lb css-1rn65c0"
+                                className="css-19m2k92 css-6f03lb css-1rn65c0"
                                 data-test-id="UserMenuLogin"
                                 disabled={false}
                                 onClick={null}
                               >
                                 <div
-                                  className="css-1fscwua"
+                                  className="css-mocsp5"
                                 >
                                   <Translate
                                     className={null}
@@ -620,19 +620,19 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="css-187rja2 css-6f03lb"
+                              className="css-19m2k92 css-6f03lb"
                               disabled={false}
                               onClick={null}
                               testId="UserMenuRegister"
                             >
                               <button
-                                className="css-187rja2 css-6f03lb css-1rn65c0"
+                                className="css-19m2k92 css-6f03lb css-1rn65c0"
                                 data-test-id="UserMenuRegister"
                                 disabled={false}
                                 onClick={null}
                               >
                                 <div
-                                  className="css-1fscwua"
+                                  className="css-mocsp5"
                                 >
                                   <Translate
                                     className={null}

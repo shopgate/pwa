@@ -1,7 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { variables, colors, shadows } = themeConfig;
+import { themeShadows, themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const button = css({
   color: 'inherit',
@@ -30,8 +28,8 @@ const iconOpen = css({
 }).toString();
 
 const dropdown = css({
-  background: '#fff',
-  boxShadow: shadows.filter.sort,
+  background: themeColors.light,
+  boxShadow: themeShadows.filter.sort,
   left: 0,
   position: 'absolute',
   top: '100%',
@@ -45,12 +43,12 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
-  color: colors.dark,
+  color: themeColors.dark,
   ':first-child': {
-    marginTop: variables.gap.big / 2,
+    marginTop: themeVariables.gap.big / 2,
   },
   ':last-child': {
-    marginBottom: variables.gap.big / 2,
+    marginBottom: themeVariables.gap.big / 2,
   },
 }).toString();
 

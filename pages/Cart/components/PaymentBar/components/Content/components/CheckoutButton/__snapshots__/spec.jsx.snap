@@ -76,7 +76,7 @@ exports[`<CheckoutButton /> should render enabled button 1`] = `
       href="/checkout"
     >
       <RippleButton
-        className="css-1mlc9hd"
+        className="css-4uvyh3"
         disabled={false}
         flat={false}
         onClick={null}
