@@ -512,10 +512,10 @@ describe('Product selectors', () => {
       expect(getProductImages(mockedState, { productId })).toBeNull();
     });
 
-    it('should return an empty array when a product does not have images', () => {
+    it('should return null when a product does not have images', () => {
       const productId = 'product_1';
       mockedState.product.imagesByProductId[productId].images = [];
-      expect(getProductImages(mockedState, { productId })).toEqual([]);
+      expect(getProductImages(mockedState, { productId })).toEqual(null);
     });
 
     it('should return null when no props are passed', () => {
