@@ -20,6 +20,7 @@ module.exports = (api) => {
       ['@babel/plugin-transform-spread', {
         loose: true,
       }],
+      '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-export-namespace-from',
       '@babel/plugin-proposal-export-default-from',
       'transform-export-extensions',
