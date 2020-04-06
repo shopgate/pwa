@@ -26,7 +26,7 @@ const styles = {
   }).toString(),
   form: css({
     ' .textField': {
-      paddingBottom: 4,
+      paddingBottom: 8,
     },
     ' .pickupFormPickupPerson': {
       marginTop: variables.gap.small,
@@ -44,8 +44,7 @@ const styles = {
       flexDirection: 'row',
     },
     ' .phonePicker': {
-      paddingBottom: 2,
-      paddingTop: 2,
+      paddingTop: variables.gap.big,
     },
   }).toString(),
 };

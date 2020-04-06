@@ -25,6 +25,15 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
       type: 'text',
       label: i18n.text('checkout.pickup_contact.form.lastName'),
     },
+    emailAddress: {
+      type: 'text',
+      label: i18n.text('checkout.pickup_contact.form.emailAddress'),
+    },
+    instructions: {
+      type: 'text',
+      label: i18n.text('checkout.pickup_contact.form.instructions'),
+      placeholder: i18n.text('checkout.pickup_contact.form.instructionsPlaceholder'),
+    },
     cellPhone: {
       type: 'phone_picker',
       label: i18n.text('checkout.pickup_contact.form.cellPhone'),
@@ -32,10 +41,6 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
         supportedCountries,
         userLocation,
       },
-    },
-    emailAddress: {
-      type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.emailAddress'),
     },
     pickupPerson: {
       type: 'radio',

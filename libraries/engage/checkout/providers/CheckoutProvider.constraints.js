@@ -1,5 +1,5 @@
 export const pickupConstraints = {
-  email: {
+  emailAddress: {
     presence: {
       message: 'validation.required',
       allowEmpty: false,
@@ -28,6 +28,12 @@ export const pickupConstraints = {
     format: {
       pattern: '^[+0-9]+',
       message: 'validation.mobileNumber',
+    },
+  },
+  instructions: {
+    presence: {
+      message: 'validation.required',
+      allowEmpty: false,
     },
   },
 };
