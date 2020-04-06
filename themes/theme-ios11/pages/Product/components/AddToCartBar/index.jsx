@@ -11,7 +11,7 @@ import {
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
-import { DIRECT_SHIP } from '@shopgate/engage/locations';
+import { DIRECT_SHIP, getDefaultRopeFulfillmentMethod } from '@shopgate/engage/locations';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -136,8 +136,8 @@ class AddToCartBar extends Component {
       return;
     }
 
-    conditioner.check().then((fullfilled) => {
-      if (!fullfilled) {
+    conditioner.check().then((fulfilled) => {
+      if (!fulfilled) {
         return;
       }
 
@@ -156,7 +156,7 @@ class AddToCartBar extends Component {
         && hasFulfillmentMethods
       ) {
         addToCartData.fulfillment = {
-          method: 'ROPIS',
+          method: getDefaultRopeFulfillmentMethod(),
           location: {
             code: userLocation.code,
             name: userLocation.name,

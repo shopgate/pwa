@@ -57,7 +57,7 @@ export function CartItemCouponLayout(props: Props, context: ContextProps) {
       </Grid.Item>
       <Grid.Item className={`${content} ${contentLast}`} grow={1} shrink={0}>
         <CartItemCouponDelete handleDelete={handleDelete} />
-        <CartItemCouponFreeShipping freeShipping={coupon.freeShipping} />
+        <CartItemCouponFreeShipping freeShipping={!!coupon.freeShipping} />
         {(coupon.savedPrice && coupon.savedPrice.value > 0) && (
           <SurroundPortals portalName={CART_ITEM_PRICE} portalProps={context}>
             <CartItemCouponPrice currency={currency} savedPrice={coupon.savedPrice} />

@@ -75,7 +75,3 @@ export const progressBar = css({
 export const iconClass = css({
   fontSize: '1.25rem !important',
 }).toString();
-
-export const messageClass = css({
-  textAlign: 'center',
-}).toString();

@@ -16,8 +16,8 @@ import {
   MULTI_LINE_RESERVE,
   IN_STORE_PICKUP,
   DIRECT_SHIP,
-  ROPIS,
 } from '../constants';
+import { getDefaultRopeFulfillmentMethod } from '../helpers';
 import {
   type Location,
   type SheetOpenParams,
@@ -192,7 +192,7 @@ function FulfillmentProvider(props: Props) {
     }
 
     const fulfillment = {
-      method: ROPIS, // TODO: make this dynamic.
+      method: getDefaultRopeFulfillmentMethod(),
       location: {
         code: location.code,
         name: location.name || '',

@@ -22,8 +22,6 @@ export {
   SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS,
   SHOPGATE_STOREFRONT_CREATE_ORDER,
   SHOPGATE_STOREFRONT_GET_LOCATIONS,
-  SHOPGATE_STOREFRONT_GET_CART,
-  SHOPGATE_STOREFRONT_UPDATE_CART,
 } from './Pipelines';
 
 // PORTALS
@@ -32,13 +30,16 @@ export {
   PRODUCT_LOCATION_STOCK_INFO,
 } from './Portals';
 
-export const DIRECT_SHIP = 'DIRECT_SHIP';
+export const DIRECT_SHIP = 'directShip';
 export const DIRECT_SHIP_LABEL = 'locations.fulfillment.direct_ship';
 export const IN_STORE_PICKUP = 'inStorePickup';
 export const IN_STORE_PICKUP_LABEL = 'locations.fulfillment.pick_up_in_store';
 export const ROPIS = 'ROPIS';
+export const BOPIS = 'BOPIS';
 export const QUICK_RESERVE = 'quickReserve';
 export const MULTI_LINE_RESERVE = 'multiLineReserve';
+
+export const DEFAULT_ROPE_FULFILLMENT_METHOD = 'defaultRopeFulfillmentMethod';
 
 export {
   STAGE_SELECT_STORE,

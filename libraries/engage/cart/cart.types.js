@@ -21,7 +21,7 @@ export type ItemFulfillment = {
   method: string;
   location: {
     code: string;
-    name: string;
+    name?: string;
   }
 }
 
