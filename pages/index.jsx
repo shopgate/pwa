@@ -41,6 +41,9 @@ import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from '@shopgate/engage/checkout/constants';
+import CheckoutPage from './Checkout/Checkout';
+import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
@@ -115,6 +118,14 @@ const Pages = ({ store }) => (
                     pattern={SEARCH_FILTER_PATTERN}
                     component={routes.Filter}
                     transform={routesTransforms[SEARCH_FILTER_PATTERN]}
+                  />
+                  <Route
+                    pattern={CHECKOUT_PATTERN}
+                    component={CheckoutPage}
+                  />
+                  <Route
+                    pattern={CHECKOUT_CONFIRMATION_PATTERN}
+                    component={CheckoutConfirmationPage}
                   />
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>

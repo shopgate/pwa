@@ -19,7 +19,9 @@
     "shipping": "Shipping",
     "reviews": "Reviews",
     "favorites": "Favorites",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "checkout": "Checkout",
+    "checkout_confirmation": "Order Successful"
   },
   "favorites": {
     "add": "Add to favorites",
