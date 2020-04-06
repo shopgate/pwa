@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckoutProvider from '../providers/CheckoutProvider';
+import StripeProvider from '../providers/StripeProvider';
 import PickupContactForm from './PickupContactForm';
 import Billing from './Billing';
 import CreditCard from './CreditCard';
@@ -11,13 +12,15 @@ import Actions from './Actions';
  * @returns {JSX}
  */
 const Checkout = () => (
-  <CheckoutProvider>
-    <PickupContactForm />
-    <Billing />
-    <CreditCard />
-    <Summary />
-    <Actions />
-  </CheckoutProvider>
+  <StripeProvider>
+    <CheckoutProvider>
+      <PickupContactForm />
+      <Billing />
+      <CreditCard />
+      <Summary />
+      <Actions />
+    </CheckoutProvider>
+  </StripeProvider>
 );
 
 export default Checkout;

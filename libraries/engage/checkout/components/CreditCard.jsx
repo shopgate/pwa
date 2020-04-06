@@ -1,10 +1,14 @@
 import React from 'react';
 import { css } from 'glamor';
+import { Card } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/engage';
+import {
+  CardElement,
+} from '@stripe/react-stripe-js';
 import { useCheckoutContext } from '../hooks/common';
 
-const { colors } = themeConfig;
+const { colors, variables } = themeConfig;
 
 const styles = {
   root: css({
@@ -17,6 +21,9 @@ const styles = {
     fontSize: 24,
     color: colors.dark,
     marginBottom: 4,
+  }).toString(),
+  card: css({
+    padding: variables.gap.small,
   }).toString(),
 };
 
@@ -32,6 +39,9 @@ const Billing = () => {
       <span className={styles.h1}>
         {i18n.text('checkout.creditCard.headline')}
       </span>
+      <Card className={styles.card}>
+        <CardElement />
+      </Card>
     </div>
   );
 };
