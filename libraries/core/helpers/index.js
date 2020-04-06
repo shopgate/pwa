@@ -1,3 +1,6 @@
+import { emitter } from '../classes/ErrorManager';
+import { SOURCE_CONSOLE } from '../constants/ErrorManager';
+
 const csl = console;
 
 /**
@@ -22,7 +25,10 @@ export const logger = {
   debug: (...args) => csl.debug(...convertLogArgs(args)),
   dir: (...args) => csl.dir(...convertLogArgs(args)),
   dirxml: (...args) => csl.dirxml(...convertLogArgs(args)),
-  error: (...args) => csl.error(...convertLogArgs(args)),
+  error: (...args) => {
+    emitter.emit(SOURCE_CONSOLE, args);
+    csl.error(...convertLogArgs(args));
+  },
   info: (...args) => csl.info(...convertLogArgs(args)),
   log: (...args) => csl.log(...convertLogArgs(args)),
   warn: (...args) => csl.warn(...convertLogArgs(args)),
@@ -57,4 +63,13 @@ export function useBrowserConnector() {
   }
 
   return true;
+}
+
+/**
+ * Logs a deprecation warning.
+ * @param {string} element The deperecated element.
+ * @param {string} [version='v7.0.0'] The engage version of removal.
+ */
+export function logDeprecationMessage(element, version = 'v7.0.0') {
+  logger.warn(`DEPRECATED: ${element} is deprecated. It will be removed in Engage ${version}`);
 }

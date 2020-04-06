@@ -20,6 +20,7 @@ import connect from './connector';
 class ProductImageSlider extends Component {
   static propTypes = {
     'aria-hidden': PropTypes.bool,
+    className: PropTypes.string,
     images: PropTypes.arrayOf(PropTypes.string),
     navigate: PropTypes.func,
     product: PropTypes.shape(),
@@ -27,6 +28,7 @@ class ProductImageSlider extends Component {
 
   static defaultProps = {
     'aria-hidden': null,
+    className: null,
     images: null,
     product: null,
     navigate: () => { },
@@ -58,12 +60,16 @@ class ProductImageSlider extends Component {
     this.currentSlide = currentSlide;
   };
 
+  currentSlide = 0;
+
   /**
    * Renders the product image slider component.
    * @returns {JSX}
    */
   render() {
-    const { product, images, 'aria-hidden': ariaHidden } = this.props;
+    const {
+      product, images, 'aria-hidden': ariaHidden, className,
+    } = this.props;
     const { HeroImage: pdpResolutions } = getThemeSettings('AppImages') || {};
     let content;
     let onClick = this.handleOpenGallery;
@@ -75,6 +81,7 @@ class ProductImageSlider extends Component {
           loop
           indicators
           onSlideChange={this.handleSlideChange}
+          className={className}
         >
           {images.map(image => (
             <Swiper.Item key={`${product.id}-${image}`}>
@@ -94,6 +101,7 @@ class ProductImageSlider extends Component {
       content = (
         <ProductImage
           src={product ? product.featuredImageBaseUrl : null}
+          className={className}
           forcePlaceholder={!product}
           resolutions={pdpResolutions}
         />

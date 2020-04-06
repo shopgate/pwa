@@ -69,8 +69,7 @@ class FormElement extends Component {
     } = this.props;
 
     return (
-      <div className={classNames(style.formElement, className)}>
-
+      <div className={classNames(style.formElement, className, 'formElement')}>
         {hasPlaceholder &&
           <Placeholder
             visible={this.isPlaceholderVisible}

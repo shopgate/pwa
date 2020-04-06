@@ -50,6 +50,16 @@ export function stop(arg) {
 }
 
 /**
+ * Public api export
+ * @type {{next: Function, stop: Function, skipRest: Function}}
+ */
+export const mutableActions = {
+  next,
+  skipRest,
+  stop,
+};
+
+/**
  * Takes a function and makes it mutable.
  * @param {Function} func Original function to convert to a mutable
  * @returns {Function}

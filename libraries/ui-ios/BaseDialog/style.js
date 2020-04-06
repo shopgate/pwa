@@ -1,8 +1,8 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const outerGap = 40;
-const border = 'rgb(63,63,63)';
+const border = themeColors.lightDark;
 
 const container = css({
   position: 'relative',
@@ -12,7 +12,7 @@ const container = css({
   width: 270,
   maxHeight: `calc(100vh - ${outerGap * 2}px)`,
   borderRadius: 14,
-  background: 'rgba(255, 255, 255, 0.82)',
+  background: themeColors.lightTransparent,
   backdropFilter: 'blur(20px)',
 }).toString();
 
@@ -26,7 +26,7 @@ const title = css({
 }).toString();
 
 const body = css({
-  color: '#000',
+  color: themeColors.dark,
   flexGrow: 1,
   fontSize: '.765rem',
   textAlign: 'center',
@@ -40,7 +40,7 @@ const actions = css({
 }).toString();
 
 const button = css({
-  // Increases specifity to allow button customization.
+  // Increases specificity to allow button customization.
   '&&': {
     fontWeight: 600,
     minWidth: '50%',
@@ -51,7 +51,7 @@ const button = css({
    * not visible in vertical button mode.
    */
   marginBottom: -1,
-  marginRight: `-${themeConfig.variables.gap.small / 2}px`,
+  marginRight: `-${themeVariables.gap.small / 2}px`,
   '&:not(:last-child)': {
     borderRadius: 0,
     borderRight: `0.5px solid ${border}`,

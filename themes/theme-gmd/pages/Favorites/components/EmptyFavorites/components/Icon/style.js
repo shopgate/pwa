@@ -1,10 +1,8 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors, variables } = themeConfig;
+import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const outerCircle = css({
-  fill: '#fff',
+  fill: themeColors.light,
 }).toString();
 
 const innerCircle = css({
@@ -13,14 +11,14 @@ const innerCircle = css({
 }).toString();
 
 const heart = css({
-  fill: '#fff',
+  fill: themeColors.light,
   stroke: 'currentColor',
   strokeWidth: '4px',
 }).toString();
 
 const viewBox = css({
-  width: variables.emptyPage.icon,
-  color: colors.primary,
+  width: themeVariables.emptyPage.icon,
+  color: themeColors.primary,
 }).toString();
 
 export default {

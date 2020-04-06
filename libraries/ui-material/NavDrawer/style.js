@@ -1,7 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { shadows } = themeConfig;
+import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 export const contentStyle = css({
   fontSize: 14,
@@ -12,9 +10,9 @@ export const contentStyle = css({
 });
 
 export const drawerStyle = css({
-  background: '#fff',
-  boxShadow: shadows.navDrawer,
-  color: '#000',
+  background: themeColors.light,
+  boxShadow: themeShadows.navDrawer,
+  color: themeColors.dark,
   height: '100vh',
   left: 0,
   maxWidth: '67vw',

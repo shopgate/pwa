@@ -31,7 +31,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
@@ -40,7 +40,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -58,7 +58,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="test-name"
         >
           <Translate
@@ -70,7 +70,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         </label>
       </Label>
       <select
-        className="css-zao20y"
+        className="css-zao20y select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -79,12 +79,14 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         value="DE"
       >
         <option
+          className="option"
           key="test-name_DE"
           value="DE"
         >
           Germany
         </option>
         <option
+          className="option"
           key="test-name_US"
           value="US"
         >
@@ -96,13 +98,13 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
             style={
               Object {
-                "borderBottomColor": undefined,
+                "borderBottomColor": "#fa5400",
                 "transform": "scale3d(0,1,1)",
               }
             }
@@ -115,7 +117,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -161,7 +163,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
@@ -170,7 +172,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -188,7 +190,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-name"
         >
           <Translate
@@ -200,7 +202,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         </label>
       </Label>
       <select
-        className="css-zao20y"
+        className="css-zao20y select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -209,12 +211,14 @@ exports[`<Select /> should render select with 2 options 1`] = `
         value=""
       >
         <option
+          className="option"
           key="test-name_DE"
           value="DE"
         >
           Germany
         </option>
         <option
+          className="option"
           key="test-name_US"
           value="US"
         >
@@ -226,13 +230,13 @@ exports[`<Select /> should render select with 2 options 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
             style={
               Object {
-                "borderBottomColor": undefined,
+                "borderBottomColor": "#fa5400",
                 "transform": "scale3d(0,1,1)",
               }
             }
@@ -245,7 +249,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -286,7 +290,7 @@ exports[`<Select /> should render select with no options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
@@ -295,7 +299,7 @@ exports[`<Select /> should render select with no options 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -313,7 +317,7 @@ exports[`<Select /> should render select with no options 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-name"
         >
           <Translate
@@ -325,7 +329,7 @@ exports[`<Select /> should render select with no options 1`] = `
         </label>
       </Label>
       <select
-        className="css-zao20y"
+        className="css-zao20y select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -338,13 +342,13 @@ exports[`<Select /> should render select with no options 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
             style={
               Object {
-                "borderBottomColor": undefined,
+                "borderBottomColor": "#fa5400",
                 "transform": "scale3d(0,1,1)",
               }
             }
@@ -357,7 +361,7 @@ exports[`<Select /> should render select with no options 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}

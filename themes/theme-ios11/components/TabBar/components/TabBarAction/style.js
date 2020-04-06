@@ -1,9 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
-
-const regularColor = '#a1a1a1';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
   display: 'flex',
@@ -24,11 +20,11 @@ const container = css({
 }).toString();
 
 const regular = css({
-  color: regularColor,
+  color: themeColors.shade3,
 }).toString();
 
 const highlighted = css({
-  color: colors.accent,
+  color: themeColors.accent,
 }).toString();
 
 const label = css({

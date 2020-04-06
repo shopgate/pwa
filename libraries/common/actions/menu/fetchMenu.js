@@ -1,4 +1,4 @@
-import { PipelineRequest, logger } from '@shopgate/pwa-core';
+import { PipelineRequest } from '@shopgate/pwa-core';
 import { SHOPGATE_CMS_GET_MENU } from '../../constants/Pipelines';
 import {
   requestMenu,
@@ -23,8 +23,7 @@ function fetchMenu(id) {
       .then(({ entries }) => {
         dispatch(receiveMenu(id, entries));
       })
-      .catch((error) => {
-        logger.error(error);
+      .catch(() => {
         dispatch(errorMenu(id));
       });
 

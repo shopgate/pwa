@@ -66,13 +66,13 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="css-cimv5k "
+      className="css-3939p1 "
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="css-cimv5k  css-1rn65c0"
+        className="css-3939p1  css-1rn65c0"
         data-test-id="Button"
         disabled={false}
         onClick={null}
@@ -207,13 +207,13 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="css-187rja2 "
+      className="css-19m2k92 "
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="css-187rja2  css-1rn65c0"
+        className="css-19m2k92  css-1rn65c0"
         data-test-id="Button"
         disabled={false}
         onClick={null}

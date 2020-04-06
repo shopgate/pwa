@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import { logger } from '@shopgate/pwa-core/helpers';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import {
   APP_FOOTER_CONTENT_BEFORE,
@@ -20,6 +21,7 @@ const DATA_IGNORED = 'data-footer-inset-update-ignore';
 
 /**
  * The Footer Component
+ * @deprecated
  */
 class Footer extends Component {
   static propTypes = {
@@ -30,13 +32,12 @@ class Footer extends Component {
     children: null,
   }
 
-  ref = React.createRef();
-
   /**
    * Sets up the DOM Mutation Observer to take care that the footer inset always has the correct
    * background color, which matches the background color of the last element within the footer.
    */
   componentDidMount() {
+    logger.warn('DEPRECATED: @shopgate/pwa-ui-shared/Footer is deprecated. Please use: import { Footer } from \'@shopgate/engage/components.\'');
     this.performFooterUpdate();
 
     const observer = new MutationObserver((mutations) => {
@@ -62,6 +63,8 @@ class Footer extends Component {
     UIEvents.removeListener(SHEET_EVENTS.OPEN, this.hide);
     UIEvents.removeListener(SHEET_EVENTS.CLOSE, this.show);
   }
+
+  ref = React.createRef();
 
   /**
    * Retrieves the background color for the footer inset.

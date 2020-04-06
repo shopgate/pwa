@@ -11,11 +11,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   messages={Array []}
 >
   <div
-    className={
-      Object {
-        "data-css-1gmese": "",
-      }
-    }
+    className="css-1gmese"
     role={null}
   />
 </Component>
@@ -38,19 +34,11 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   }
 >
   <div
-    className={
-      Object {
-        "data-css-1gmese": "",
-      }
-    }
+    className="css-1gmese"
     role="alert"
   >
     <div
-      className={
-        Object {
-          "data-css-1psau2c": "",
-        }
-      }
+      className="css-1kmpcvg"
       key="info-something"
     >
       <span
@@ -97,19 +85,11 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   }
 >
   <div
-    className={
-      Object {
-        "data-css-1gmese": "",
-      }
-    }
+    className="css-1gmese"
     role="alert"
   >
     <div
-      className={
-        Object {
-          "data-css-1psau2c": "",
-        }
-      }
+      className="css-1kmpcvg"
       key="info-This is some information"
     >
       <span
@@ -119,11 +99,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-1t4ceri": "",
-        }
-      }
+      className="css-1t4ceri"
       key="error-This is an error that happened here."
     >
       <span
@@ -133,11 +109,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-y06bhm": "",
-        }
-      }
+      className="css-y06bhm"
       key="warning-This is just a warning. Nothing to freak out about."
     >
       <span
@@ -147,11 +119,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-1psau2c": "",
-        }
-      }
+      className="css-1kmpcvg"
       key="info-Normal pre-translated message."
     >
       <span
@@ -161,17 +129,47 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-1psau2c": "",
-        }
-      }
+      className="css-1kmpcvg"
       key="info-Normal pre-translated message."
     >
       <span
         aria-hidden={true}
       >
         Normal pre-translated message.
+      </span>
+    </div>
+  </div>
+</Component>
+`;
+
+exports[`<MessageBar /> Multiple messages rendering should render with custom classNames 1`] = `
+<Component
+  classNames={
+    Object {
+      "container": "cls-container",
+      "message": "cls-message",
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "This is some information",
+      },
+    ]
+  }
+>
+  <div
+    className="css-1gmese cls-container"
+    role="alert"
+  >
+    <div
+      className="cls-message css-1kmpcvg"
+      key="info-This is some information"
+    >
+      <span
+        aria-hidden={true}
+      >
+        This is some information
       </span>
     </div>
   </div>
@@ -204,19 +202,11 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   }
 >
   <div
-    className={
-      Object {
-        "data-css-1gmese": "",
-      }
-    }
+    className="css-1gmese"
     role="alert"
   >
     <div
-      className={
-        Object {
-          "data-css-1psau2c": "",
-        }
-      }
+      className="css-1kmpcvg"
       key="info-some.translation.string"
     >
       <span
@@ -226,11 +216,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
     </div>
     <div
-      className={
-        Object {
-          "data-css-1psau2c": "",
-        }
-      }
+      className="css-1kmpcvg"
       key="info-Message with messageParams"
     >
       <span

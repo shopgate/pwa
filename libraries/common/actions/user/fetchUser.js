@@ -1,4 +1,4 @@
-import { PipelineRequest, logger, EACCESS } from '@shopgate/pwa-core';
+import { PipelineRequest, EACCESS } from '@shopgate/pwa-core';
 import {
   requestUser,
   receiveUser,
@@ -32,10 +32,6 @@ function fetchUser() {
         }
       })
       .catch((error) => {
-        if (error.code !== EACCESS) {
-          logger.error(error);
-        }
-
         dispatch(toggleLoggedIn(false));
         dispatch(errorUser(error));
       });

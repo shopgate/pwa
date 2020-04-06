@@ -1,4 +1,4 @@
-import { PipelineRequest, logger } from '@shopgate/pwa-core';
+import { PipelineRequest } from '@shopgate/pwa-core';
 import {
   requestUrl,
   receiveUrl,
@@ -34,8 +34,7 @@ function fetchRegisterUrl() {
           dispatch(receiveUrl(URL_TYPE_REGISTER, url, expires));
           resolve(url);
         })
-        .catch((error) => {
-          logger.error(error);
+        .catch(() => {
           dispatch(errorUrl(URL_TYPE_REGISTER));
           reject();
         });

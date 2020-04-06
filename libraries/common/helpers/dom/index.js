@@ -28,6 +28,10 @@ export const getOffset = element => element.getBoundingClientRect();
  * @returns {number} The absolute height of the element.
  */
 export const getAbsoluteHeight = (element) => {
+  if (!element) {
+    return 0;
+  }
+
   // Get the styles of the element.
   const styles = window.getComputedStyle(element);
   // Isolate the y-axis margins.

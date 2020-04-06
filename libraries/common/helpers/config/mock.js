@@ -1,33 +1,25 @@
 /**
- * @typedef {Object} ThemeColors
- * @property background
- * @property light
- * @property dark
- * @property accent
- * @property placeholder
- * @property primary
- * @property darkGray
- * @property shade3
- * @property shade4
- * @property shade5
- * @property shade6
- * @property shade7
- * @property shade8
- * @property shade9
- * @property shade10
- * @property shade11
- * @property shade12
- * @property success
- * @property warning
- * @property error
+ * @mixin ThemeColors
  */
 const colors = {
   background: '#f8f8f8',
   light: '#fff',
+  lightTransparent: 'rgba(255, 255, 255, 0.82)',
   dark: '#000',
+  darkTransparent: 'rgba(0,0,0, 0.4)',
+  lightDark: '#323232',
   accent: '#5ccee3',
   placeholder: '#f2f2f2',
+  lightOverlay: '#fafafa',
+  overlay: '#f7f7f7',
+  darkOverlay: '#f0f0f0',
   primary: '#fa5400',
+  primaryContrast: '#fff',
+  accentContrast: '#fff',
+  cta: '#fa5400',
+  ctaContrast: '#fff',
+  focus: '#fa5400',
+  gray: '#747474',
   darkGray: '#eaeaea',
   shade3: '#9a9a9a',
   shade4: '#b5b5b5',
@@ -45,7 +37,7 @@ const colors = {
 };
 
 /**
- * @typedef {Object} ThemeShadows
+ * @mixin ThemeShadows
  */
 const shadows = {
   material: '0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647)',
@@ -74,7 +66,7 @@ const shadows = {
 
 /**
  *
- * @typedef {Object} ThemeVariables
+ * @mixin ThemeVariables
  */
 const variables = {
   materialShadow: shadows.material,
@@ -122,9 +114,6 @@ const variables = {
     borderRadius: 2,
     fontSize: '0.75rem',
   },
-  priceStrikedBase: {
-    color: colors.shade3,
-  },
   productSliderWidget: {
     borderRadius: 11,
     boxShadow: shadows.widget,
@@ -133,59 +122,13 @@ const variables = {
     borderRadius: 11,
     boxShadow: shadows.widget,
   },
+  tabBar: {
+    height: 0,
+  },
 };
 
 /**
- * @typedef {Object} ThemeIcons
- * @property {string} accountBox
- * @property {string} addMore
- * @property {string} arrowDrop
- * @property {string} arrow
- * @property {string} arrowShadowed
- * @property {string} barcodeScanner
- * @property {string} box
- * @property {string} browse
- * @property {string} burger
- * @property {string} cart
- * @property {string} cartPlus
- * @property {string} checked
- * @property {string} check
- * @property {string} chevron
- * @property {string} creditCard
- * @property {string} cross
- * @property {string} description
- * @property {string} filter
- * @property {string} flashDisabled
- * @property {string} flashEnabled
- * @property {string} grid
- * @property {string} heart
- * @property {string} heartOutline
- * @property {string} home
- * @property {string} info
- * @property {string} infoOutline
- * @property {string} list
- * @property {string} localShipping
- * @property {string} lock
- * @property {string} logout
- * @property {string} magnifier
- * @property {string} more
- * @property {string} moreVert
- * @property {string} placeholder
- * @property {string} radioChecked
- * @property {string} radioUnchecked
- * @property {string} security
- * @property {string} shoppingCart
- * @property {string} sort
- * @property {string} starHalf
- * @property {string} star
- * @property {string} starOutline
- * @property {string} tick
- * @property {string} trash
- * @property {string} unchecked
- * @property {string} viewList
- * @property {string} visibility
- * @property {string} visibilityOff
- * @property {string} share
+ * @mixin ThemeIcons
  */
 const icons = {
   // ui-shared icons
@@ -248,6 +191,8 @@ const icons = {
  * @property {ThemeVariables} variables
  * @property {ThemeIcons} icons
  */
+
+/** @type {ThemeConfig} */
 export const themeConfig = {
   typography: {
     family: 'Roboto, Arial, sans-serif',

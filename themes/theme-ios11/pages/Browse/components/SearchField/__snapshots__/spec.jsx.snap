@@ -39,11 +39,11 @@ exports[`<Content /> Check search field should render with initial search query 
               onSubmit={[Function]}
             >
               <label
-                className="css-y5wpat"
+                className="css-19t1ju7"
                 htmlFor="search"
               >
                 <div
-                  className="css-tzdtea"
+                  className="css-tfmeke"
                 >
                   <Magnifier>
                     <Icon
@@ -75,7 +75,7 @@ exports[`<Content /> Check search field should render with initial search query 
               </label>
               <_default
                 autoComplete={false}
-                className="css-1yoassp css-1qnjb83"
+                className="css-11ngaym css-1qnjb83"
                 onChange={[Function]}
                 onFocusChange={[Function]}
                 onSubmit={[Function]}
@@ -87,7 +87,7 @@ exports[`<Content /> Check search field should render with initial search query 
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-1yoassp css-1qnjb83"
+                  className="css-11ngaym css-1qnjb83"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -107,7 +107,7 @@ exports[`<Content /> Check search field should render with initial search query 
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-1yoassp css-1qnjb83"
+                    className="css-11ngaym css-1qnjb83 simpleInput"
                     disabled={false}
                     id={null}
                     name={null}
@@ -130,7 +130,7 @@ exports[`<Content /> Check search field should render with initial search query 
               >
                 <button
                   aria-hidden={true}
-                  className="css-10ml0si"
+                  className="css-y68ulq"
                   onClick={[Function]}
                   type="button"
                 >
@@ -170,7 +170,7 @@ exports[`<Content /> Check search field should render with initial search query 
           </div>
           <div>
             <button
-              className="css-jd9rhj css-gyrv08"
+              className="css-cmi6wl css-gyrv08"
               onClick={[Function]}
               type="button"
             >
@@ -239,11 +239,11 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
               onSubmit={[Function]}
             >
               <label
-                className="css-y5wpat"
+                className="css-19t1ju7"
                 htmlFor="search"
               >
                 <div
-                  className="css-tzdtea"
+                  className="css-tfmeke"
                 >
                   <Magnifier>
                     <Icon
@@ -275,7 +275,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
               </label>
               <_default
                 autoComplete={false}
-                className="css-1yoassp"
+                className="css-11ngaym"
                 onChange={[Function]}
                 onFocusChange={[Function]}
                 onSubmit={[Function]}
@@ -287,7 +287,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-1yoassp"
+                  className="css-11ngaym"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -307,7 +307,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-1yoassp"
+                    className="css-11ngaym simpleInput"
                     disabled={false}
                     id={null}
                     name={null}
@@ -324,7 +324,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
           </div>
           <div>
             <button
-              className="css-jd9rhj"
+              className="css-cmi6wl"
               onClick={[Function]}
               type="button"
             >
