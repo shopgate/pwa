@@ -1,0 +1,1 @@
+export { CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from './routes';

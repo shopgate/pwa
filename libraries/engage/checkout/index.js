@@ -7,6 +7,7 @@ export { default as fetchCheckoutUrl } from '@shopgate/pwa-common-commerce/check
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/checkout/constants/index';
 export * from '@shopgate/pwa-common-commerce/checkout/constants/Pipelines';
+export * from './constants';
 export { CHECKOUT_PATH };
 
 // SELECTORS
@@ -14,3 +15,6 @@ export * from '@shopgate/pwa-common-commerce/checkout/selectors';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/checkout/streams';
+
+// Components
+export { default as Checkout } from './components/Checkout';

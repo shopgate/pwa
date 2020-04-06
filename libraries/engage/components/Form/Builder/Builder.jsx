@@ -21,11 +21,13 @@ import {
   ELEMENT_TYPE_RADIO,
   ELEMENT_TYPE_DATE,
   ELEMENT_TYPE_PHONE,
+  ELEMENT_TYPE_PHONE_PICKER,
 } from './Builder.constants';
 import ElementText from './ElementText';
 import ElementSelect from './ElementSelect';
 import ElementRadio from './ElementRadio';
 import ElementCheckbox from './ElementCheckbox';
+import ElementPhoneNumber from './ElementPhoneNumber';
 import buildFormElements from './helpers/buildFormElements';
 import buildFormDefaults from './helpers/buildFormDefaults';
 import buildCountryList from './helpers/buildCountryList';
@@ -65,6 +67,7 @@ class Builder extends Component {
     [ELEMENT_TYPE_RADIO]: ElementRadio,
     [ELEMENT_TYPE_DATE]: ElementText,
     [ELEMENT_TYPE_PHONE]: ElementText,
+    [ELEMENT_TYPE_PHONE_PICKER]: ElementPhoneNumber,
   }
 
   static propTypes = {

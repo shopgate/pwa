@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getBaseProduct, getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
-import { makeGetFulfillmentPaths, makeGetShopSettings } from '@shopgate/engage/core/config';
+import { makeGetFulfillmentPaths, getShopSettings } from '@shopgate/engage/core/config';
 import { selectLocation, storeFormInput } from '../action-creators';
 import {
   makeGetProductLocation, makeGetProductLocations, makeGetUserFormInput, makeGetFulfillmentMethods,
@@ -20,7 +20,6 @@ function makeMapStateToProps() {
   const getFulfillmentPaths = makeGetFulfillmentPaths();
   const getProductLocation = makeGetProductLocation(true);
   const getFulfillmentMethods = makeGetFulfillmentMethods();
-  const getShopSettings = makeGetShopSettings();
 
   /**
    * @param {Object} state The application state.

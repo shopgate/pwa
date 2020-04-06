@@ -9,3 +9,4 @@ export const ELEMENT_TYPE_CHECKBOX = 'checkbox';
 export const ELEMENT_TYPE_RADIO = 'radio';
 export const ELEMENT_TYPE_DATE = 'date';
 export const ELEMENT_TYPE_PHONE = 'phone';
+export const ELEMENT_TYPE_PHONE_PICKER = 'phone_picker';

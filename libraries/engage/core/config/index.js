@@ -11,7 +11,8 @@ export {
   makeGetMerchantSettings,
   makeGetFulfillmentPaths,
   makeGetEnabledFulfillmentMethods,
-  makeGetShopSettings,
+  getShopSettings,
+  getConfigFetching,
 } from './config.selectors';
 
 export {

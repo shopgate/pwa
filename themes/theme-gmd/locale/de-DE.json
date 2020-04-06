@@ -19,7 +19,9 @@
     "shipping": "Versand",
     "reviews": "Bewertungen",
     "favorites": "Merkliste",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "checkout": "Checkout",
+    "checkout_confirmation": "Order Successful"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -299,6 +301,21 @@
       "settings_button": "Zu den Einstellungen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
+    }
+  },
+  "checkout": {
+    "pickup_contact": {
+      "headline": "Pickup Contact Info",
+      "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions or to provide you SMS updates on your pickup",
+      "form": {
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "cellPhone": "Mobilnummer für SMS Benachrichtigungen",
+        "emailAddress": "E-Mail Adresse",
+        "who_will_pickup": "Wer wird diese Bestellung abholen?",
+        "me": "Ich selbst",
+        "someone_else": "Jemand anderes"
+      }
     }
   },
   "error": {

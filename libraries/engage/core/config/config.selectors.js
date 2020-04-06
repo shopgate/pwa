@@ -1,6 +1,6 @@
 // @flow
 import { createSelector, type Selector } from 'reselect';
-import { type ConfigState, type MerchantSettings, type ShopSettings } from './config.types';
+import { type ConfigState, type MerchantSettings } from './config.types';
 
 /**
  * Retrieves the config state from the store.
@@ -42,19 +42,18 @@ export function makeGetMerchantSettings(): Selector<any, MerchantSettings> {
 }
 
 /**
- * Creates the selector that retrieves the merchant settings.
- * @returns {Function}
+ * Selector that retrieves the shop settings.
+ * @param {Object} state The application state.
+ * @returns {Object}
  */
-export function makeGetShopSettings(): Selector<any, ShopSettings> {
-  /**
-   * @param {Object} state The application state.
-   * @returns {Object}
-   */
-  return createSelector(
-    getState,
-    state => state.shopSettings || {}
-  );
-}
+export const getShopSettings = (state: any) => state.config?.shopSettings || {};
+
+/**
+ * Selector that retrieves whether the config is still fetching.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getConfigFetching = (state: any) => state.config?.isFetching || false;
 
 /**
  * Creates a selector that retrieves the enabled fulfillment paths from the merchant settings.
