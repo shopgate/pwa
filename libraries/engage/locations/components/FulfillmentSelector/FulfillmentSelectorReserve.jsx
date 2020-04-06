@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
-import { isProductAvailable } from '../../helpers';
-import { IN_STORE_PICKUP_LABEL, IN_STORE_PICKUP, ROPIS } from '../../constants';
+import { isProductAvailable, checkRopeFulfillmentMethodsSupport } from '../../helpers';
+import { IN_STORE_PICKUP_LABEL, IN_STORE_PICKUP } from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { ChangeLocationButton } from '../ChangeLocationButton';
 import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossibleError';
@@ -25,7 +25,10 @@ export function FulfillmentSelectorReserve() {
     isReady,
   } = useFulfillmentSelectorState();
   const usedLocation = selectedLocation || location;
-  const enabled = productFulfillmentMethods && productFulfillmentMethods.includes(ROPIS);
+  const enabled =
+    productFulfillmentMethods &&
+    checkRopeFulfillmentMethodsSupport(productFulfillmentMethods);
+
   const selected = (selection === IN_STORE_PICKUP);
   const isOrderable = isProductAvailable(location || undefined);
 

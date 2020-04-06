@@ -27,7 +27,6 @@ import {
   inputIcon,
   iconClass,
   input,
-  messageClass,
   progressBar,
   queryLine,
   select,
@@ -56,8 +55,16 @@ function StoreListSearch({
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [inputPostalCode, setInputPostalCode] = useState(postalCode || '');
+  const isMounted = useRef(false);
 
   const inputEl = useRef(null);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return function cleanup() {
+      isMounted.current = false;
+    };
+  });
 
   useLayoutEffect(() => {
     if (!locations || locations.length === 0) {
@@ -79,6 +86,10 @@ function StoreListSearch({
 
     // Request new locations.
     const error = await getProductLocations(product.id, searchParams, silent);
+
+    if (isMounted.current === false) {
+      return;
+    }
 
     if (error) {
       setMessage(error);
@@ -242,7 +253,6 @@ function StoreListSearch({
           }]}
           classNames={{
             icon: iconClass,
-            message: messageClass,
           }}
         />
       }

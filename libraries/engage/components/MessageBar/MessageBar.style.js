@@ -67,4 +67,5 @@ export const icon = css({
 
 export const messageToIcon = css({
   flexGrow: 1,
+  paddingLeft: themeVariables.gap.big,
 });

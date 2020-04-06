@@ -2,6 +2,7 @@
 import * as React from 'react';
 import noop from 'lodash/noop';
 import { I18n, ContextMenu } from '@shopgate/engage/components';
+import { DIRECT_SHIP } from '../../constants';
 
 type Props = {
   cartItem: Object;
@@ -19,7 +20,7 @@ type Props = {
 export const CartContextMenuItemChangeLocation = (props: Props) => {
   const { cartItem, onClick, closeMenu } = props;
 
-  if (!cartItem.fulfillment || cartItem.fulfillment.method === 'DIRECT_SHIP') {
+  if (!cartItem.fulfillment || cartItem.fulfillment.method === DIRECT_SHIP) {
     return null;
   }
 

@@ -3,7 +3,8 @@ import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
 import { isProductAvailable } from '../helpers/productInventory';
-import { DIRECT_SHIP, ROPIS } from '../constants';
+import checkRopeFulfillmentMethodsSupport from '../helpers/checkRopeFulfillmentMethodsSupport';
+import { DIRECT_SHIP } from '../constants';
 import { type State } from '../../types';
 import {
   type LocationsState,
@@ -318,7 +319,7 @@ export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
     (locations, methods) => {
       if (
         !methods
-        || !methods.includes(ROPIS)
+        || !checkRopeFulfillmentMethodsSupport(methods)
         || !locations
         || !locations.length === 0
       ) {

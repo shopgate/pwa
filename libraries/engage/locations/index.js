@@ -27,6 +27,8 @@ export {
   IN_STORE_PICKUP,
   IN_STORE_PICKUP_LABEL,
   ROPIS,
+  BOPIS,
+  DEFAULT_ROPE_FULFILLMENT_METHOD,
   QUICK_RESERVE,
   MULTI_LINE_RESERVE,
   STAGE_SELECT_STORE,
@@ -57,6 +59,10 @@ export {
 export {
   useFulfillmentState,
 } from './locations.hooks';
+
+export {
+  default as getDefaultRopeFulfillmentMethod,
+} from './helpers/getDefaultRopeFulfillmentMethod';
 
 // TYPES
 export type {
