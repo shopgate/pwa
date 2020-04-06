@@ -20,7 +20,7 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
 
   const { GalleryImage: galleryResolutions } = getThemeSettings('AppImages') || {};
 
-  const resolution = galleryResolutions[galleryResolutions.length - 1]
+  const resolution = galleryResolutions[galleryResolutions.length - 1];
 
   const imagesWithResolutions = images.map(src => getActualImageSource(src, resolution));
 
