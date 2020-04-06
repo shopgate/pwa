@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { SurroundPortals, View } from '@shopgate/engage/components';
+import { CATEGORY_LIST } from '@shopgate/engage/category';
 import CategoryList from 'Components/CategoryList';
-import View from 'Components/View';
 import { DefaultBar } from 'Components/AppBar/presets';
 import connect from './connector';
 
@@ -21,15 +22,16 @@ class RootCategory extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const { categories } = this.props;
     return (
       <View aria-hidden={false}>
         <DefaultBar title="titles.categories" />
-        <CategoryList categories={this.props.categories} prerender={8} />
+        <SurroundPortals portalName={CATEGORY_LIST} portalProps={{ categories }}>
+          <CategoryList categories={categories} prerender={8} />
+        </SurroundPortals>
       </View>
     );
   }
 }
 
 export default connect(RootCategory);
-
-export { RootCategory as UnwrappedRootCategory };

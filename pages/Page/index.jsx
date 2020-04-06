@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import PageContent from './components/Content';
 
