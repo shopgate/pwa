@@ -2,7 +2,9 @@
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
+import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core';
 import { isProductAvailable } from '../helpers/productInventory';
+import getDefaultRopeFulfillmentMethod from '../helpers/getDefaultRopeFulfillmentMethod';
 import checkRopeFulfillmentMethodsSupport from '../helpers/checkRopeFulfillmentMethodsSupport';
 import { DIRECT_SHIP } from '../constants';
 import { type State } from '../../types';
@@ -89,10 +91,17 @@ export function makeGetUserLocation(): Selector<State, UserLocationState> {
 export function makeGetUserLocationFulfillmentMethod():
   Selector<State, UserLocationFulfillmentMethod> {
   const getUserLocation = makeGetUserLocation();
+  const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
   return createSelector(
     getUserLocation,
-    (userLocation) => {
-      const { fulfillmentMethod = DIRECT_SHIP } = userLocation || {};
+    getEnabledFulfillmentMethods,
+    (userLocation, enabledFulfillmentMethods) => {
+      let fallback = getDefaultRopeFulfillmentMethod();
+      if (enabledFulfillmentMethods.includes(DIRECT_SHIP)) {
+        fallback = DIRECT_SHIP;
+      }
+
+      const { fulfillmentMethod = fallback } = userLocation || {};
       return fulfillmentMethod;
     }
   );

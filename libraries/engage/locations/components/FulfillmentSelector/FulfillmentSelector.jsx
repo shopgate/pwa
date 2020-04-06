@@ -41,10 +41,14 @@ function FulfillmentSelector(props: Props) {
     isReady,
   } = props;
 
-  const isInStoreAndActive = userFulfillmentMethod === IN_STORE_PICKUP && !disabled;
+  const supportsDirectShip = React.useMemo(
+    () => shopFulfillmentMethods && shopFulfillmentMethods.includes(DIRECT_SHIP),
+    [shopFulfillmentMethods]
+  );
 
+  const isInStoreAndActive = userFulfillmentMethod === IN_STORE_PICKUP && !disabled;
   const [selection, setSelection] = React.useState<Selection>(
-    isInStoreAndActive ? IN_STORE_PICKUP : DIRECT_SHIP
+    isInStoreAndActive || !supportsDirectShip ? IN_STORE_PICKUP : DIRECT_SHIP
   );
   const [selectedLocation, setSelectedLocation] = React.useState(location);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -55,7 +59,7 @@ function FulfillmentSelector(props: Props) {
     if (JSON.stringify(location) !== JSON.stringify(selectedLocation)) {
       setSelectedLocation(location);
     }
-  }, [location, selectedLocation]);
+  }, [location, selectedLocation, shopFulfillmentMethods]);
 
   /**
    * Updates the selected location when the sheet closes.
@@ -135,7 +139,11 @@ function FulfillmentSelector(props: Props) {
     <FulfillmentSelectorContext.Provider value={context}>
       <div className={container}>
         <FulfillmentSelectorHeader />
-        <FulfillmentSelectorItem name={DIRECT_SHIP} onChange={handleChange}>
+        <FulfillmentSelectorItem
+          name={DIRECT_SHIP}
+          onChange={handleChange}
+          disabled={!supportsDirectShip}
+        >
           <FulfillmentSelectorDirectShip />
         </FulfillmentSelectorItem>
         <FulfillmentSelectorItem name={IN_STORE_PICKUP} onChange={handleChange} disabled={disabled}>

@@ -48,6 +48,7 @@ export {
   makeIsRopeProductOrderable,
   makeGetUserSearchCountryCode,
   makeGetUserSearchPostalCode,
+  makeGetUserLocationFulfillmentMethod,
 } from './selectors';
 
 // STREAMS
