@@ -51,7 +51,6 @@ class ProductImage extends Component {
     highestResolutionLoaded: () => { },
     noBackground: false,
     ratio: null,
-    // TODO: should the default here come from the config?
     resolutions: [
       {
         width: 50,

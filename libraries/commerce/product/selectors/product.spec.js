@@ -497,8 +497,6 @@ describe('Product selectors', () => {
   });
 
   describe('getProductImages()', () => {
-    const formats = [{ width: 440, height: 440 }, { width: 1024, height: 1024 }];
-
     it('should return null when no data can be selected for the passed productId', () => {
       const productId = 'unavailable';
       expect(getProductImages({}, { productId })).toBeNull();
@@ -514,11 +512,6 @@ describe('Product selectors', () => {
       expect(getProductImages(mockedState, { productId })).toBeNull();
     });
 
-    it('should return an empty array when no formats where passed for a product with images', () => {
-      const productId = 'product_1';
-      expect(getProductImages(mockedState, { productId })).toEqual([]);
-    });
-
     it('should return an empty array when a product does not have images', () => {
       const productId = 'product_1';
       mockedState.product.imagesByProductId[productId].images = [];
@@ -531,77 +524,47 @@ describe('Product selectors', () => {
 
     it('should return images when available', () => {
       const productId = 'product_1';
-      expect(getProductImages(mockedState, { productId, formats }))
-        .toEqual(mockedProductImagesBase);
-    });
-
-    it('should only return images in the desired formats when less formats are requested than available', () => {
-      const productId = 'product_1';
-      const customFormats = [formats[0]];
-      expect(getProductImages(mockedState, { productId, formats: customFormats }))
-        .toEqual([mockedProductImagesBase[0]]);
-    });
-
-    it('should only return images in the desired formats when more formats are requested than available', () => {
-      const productId = 'product_1';
-      const customFormats = [
-        ...formats,
-        { width: 50, height: 50, sources: [] },
-      ];
-      expect(getProductImages(mockedState, { productId, formats: customFormats }))
+      expect(getProductImages(mockedState, { productId }))
         .toEqual(mockedProductImagesBase);
     });
 
     it('should return images for a variant when productId and variantId are passed', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
-      expect(getProductImages(mockedState, { productId, variantId, formats }))
+      expect(getProductImages(mockedState, { productId, variantId }))
         .toEqual(mockedProductImagesVariant);
     });
 
     it('should return images for a variant when only the variantId is passed', () => {
       const variantId = 'product_2';
-      expect(getProductImages(mockedState, { variantId, formats }))
+      expect(getProductImages(mockedState, { variantId }))
         .toEqual(mockedProductImagesVariant);
     });
 
     it('should return images for a variant when the id of a variant is passed as a productId', () => {
       const productId = 'product_2';
-      expect(getProductImages(mockedState, { productId, formats }))
+      expect(getProductImages(mockedState, { productId }))
         .toEqual(mockedProductImagesVariant);
-    });
-
-    it('should return images of the base product when a variant has no image format with sources', () => {
-      const productId = 'product_1';
-      const variantId = 'product_3';
-      expect(getProductImages(mockedState, { productId, variantId, formats }))
-        .toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when a variant has no images', () => {
       const productId = 'product_1';
       const variantId = 'product_3';
       mockedState.product.imagesByProductId[variantId].images = [];
-      expect(getProductImages(mockedState, { productId, variantId, formats }))
-        .toEqual(mockedProductImagesBase);
-    });
-
-    it('should return images of the base product when a variant has no image format with sources and only the variantId is passed', () => {
-      const variantId = 'product_3';
-      expect(getProductImages(mockedState, { variantId, formats }))
+      expect(getProductImages(mockedState, { productId, variantId }))
         .toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when a variant has no images and only the variantId is passed', () => {
       const variantId = 'product_3';
       mockedState.product.imagesByProductId[variantId].images = [];
-      expect(getProductImages(mockedState, { variantId, formats }))
+      expect(getProductImages(mockedState, { variantId }))
         .toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when the id of a variant is passed as a productId', () => {
       const productId = 'product_3';
-      expect(getProductImages(mockedState, { productId, formats }))
+      expect(getProductImages(mockedState, { productId }))
         .toEqual(mockedProductImagesBase);
     });
   });

@@ -13,7 +13,6 @@ import fetchProductShipping from '../actions/fetchProductShipping';
 import fetchProductVariants from '../actions/fetchProductVariants';
 import fetchProductOptions from '../actions/fetchProductOptions';
 import fetchProductMedia from '../actions/fetchProductMedia';
-import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
   galleryWillEnter$,
@@ -58,8 +57,7 @@ function product(subscribe) {
 
   subscribe(galleryWillEnter$, ({ action, dispatch }) => {
     const { productId } = action.route.params;
-    // TODO: remove format
-    dispatch(fetchProductImages(hex2bin(productId), productImageFormats.getAllUniqueFormats()));
+    dispatch(fetchProductImages(hex2bin(productId)));
   });
 
   subscribe(processProduct$, ({ action, dispatch }) => {

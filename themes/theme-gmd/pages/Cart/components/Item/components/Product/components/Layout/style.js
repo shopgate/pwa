@@ -18,7 +18,6 @@ const leftColumn = css({
 const image = css({
   background: colors.placeholder,
   marginBottom: variables.gap.small * 1.25,
-  // TODO: use resolutions from config here later
   height: leftColumnWidth,
   width: leftColumnWidth,
 }).toString();

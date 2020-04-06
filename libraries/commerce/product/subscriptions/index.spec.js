@@ -38,8 +38,6 @@ describe('Product subscription', () => {
     });
 
     it('should dispatch fetchProductImages when called', () => {
-      const formats = [{ height: 1024, width: 1024 }];
-      productImageFormats.set('GROUP', formats);
       const [stream, callback] = galleryWillEnter$Subscription;
       expect(stream === galleryWillEnter$).toBe(true);
 
@@ -56,7 +54,7 @@ describe('Product subscription', () => {
         action,
       });
 
-      expect(fetchProductImages).toHaveBeenCalledWith('1337', formats);
+      expect(fetchProductImages).toHaveBeenCalledWith('1337');
     });
   });
 

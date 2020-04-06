@@ -1,10 +1,12 @@
 /**
  * key in the product image collection
+ * @deprecated use AppImages settings from theme config instead
  */
 export const PRODUCT_SLIDER_IMAGE_COLLECTION_KEY = 'PRODUCT_SLIDER_IMAGES';
 
 /**
  * themes value for the product slider image formats
+ * @deprecated use AppImages settings from theme config instead
  */
 export const PRODUCT_SLIDER_IMAGE_FORMATS = [
   {
@@ -16,4 +18,3 @@ export const PRODUCT_SLIDER_IMAGE_FORMATS = [
     height: 1024,
   },
 ];
-// TODO: make it configurable
