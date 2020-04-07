@@ -4,8 +4,8 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Link from '@shopgate/pwa-common/components/Link';
 import { ProductImage } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import styles from './style';
 import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
+import styles from './style';
 
 /**
  *

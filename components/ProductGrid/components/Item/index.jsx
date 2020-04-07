@@ -33,7 +33,7 @@ const Item = ({ product, display }) => (
           name={product.name}
           imageUrl={product.featuredImageBaseUrl}
         />
-      }
+    }
     </Link>
 
     <ItemDiscount
@@ -54,7 +54,6 @@ const Item = ({ product, display }) => (
           display={display}
         />
       </Link>
-
       <ItemFavoritesButton productId={product.id} />
     </div>
   </div>

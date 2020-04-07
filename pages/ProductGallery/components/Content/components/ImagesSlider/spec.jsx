@@ -14,25 +14,25 @@ import Content from './index';
 jest.mock('@shopgate/engage/core', () => ({
   useWidgetSettings: jest.fn(),
   getThemeSettings: () => ({
-      fillColor: 'FFFFFF',
-      HeroImage: [
-        {
-          width: 1024,
-          height: 1024,
-        },
-      ],
-      GalleryImage: [
-        {
-          width: 2048,
-          height: 2048,
-        },
-      ],
-      ListImage: [
-        {
-          width: 440,
-          height: 880,
-        },
-      ],
+    fillColor: 'FFFFFF',
+    HeroImage: [
+      {
+        width: 1024,
+        height: 1024,
+      },
+    ],
+    GalleryImage: [
+      {
+        width: 2048,
+        height: 2048,
+      },
+    ],
+    ListImage: [
+      {
+        width: 440,
+        height: 880,
+      },
+    ],
   }),
   getActualImageSource: orig => orig,
 }));

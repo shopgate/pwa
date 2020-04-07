@@ -157,7 +157,6 @@ const Item = ({ display, product }) => (
           />
         </Fragment>
       )}
-
       <Grid.Item shrink={0} className={styles.favouriteContainer} />
     </Grid>
   </Link>
