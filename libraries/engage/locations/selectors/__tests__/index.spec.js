@@ -2,6 +2,7 @@
 import cloneDeep from 'lodash/cloneDeep';
 import set from 'lodash/set';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
+import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core';
 import {
   DIRECT_SHIP,
   IN_STORE_PICKUP,
@@ -28,12 +29,16 @@ jest.mock('@shopgate/engage/user', () => ({
   getUserId: jest.fn(),
   getExternalCustomerNumber: jest.fn(),
 }));
+jest.mock('@shopgate/engage/core', () => ({
+  makeGetEnabledFulfillmentMethods: jest.fn(),
+}));
 
 jest.mock('../../helpers/productInventory', () => ({
   isProductAvailable: jest.fn().mockReturnValue(true),
 }));
 
 describe('engage > locations > selectors', () => {
+  makeGetEnabledFulfillmentMethods.mockReturnValue(() => DIRECT_SHIP);
   const mockedState = {
     locations: {
       userLocation: {
