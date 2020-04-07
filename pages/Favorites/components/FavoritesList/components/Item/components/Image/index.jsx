@@ -4,6 +4,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Link from '@shopgate/pwa-common/components/Link';
 import { ProductImage } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 import styles from './style';
 
 /**
@@ -11,22 +12,26 @@ import styles from './style';
  * @param {Object} product Product data
  * @constructor
  */
-const Image = ({ product }) => (
-  <div className={styles.image} aria-hidden>
-    <Link
-      tagName="a"
-      href={`${ITEM_PATH}/${bin2hex(product.id)}`}
-      itemProp="item"
-      itemScope
-      itemType="http://schema.org/Product"
-      state={{
-        title: product.name,
-      }}
-    >
-      <ProductImage src={product.featuredImageBaseUrl} />
-    </Link>
-  </div>
-);
+const Image = ({ product }) => {
+  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
+
+  return (
+    <div className={styles.image} aria-hidden>
+      <Link
+        tagName="a"
+        href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+        itemProp="item"
+        itemScope
+        itemType="http://schema.org/Product"
+        state={{
+          title: product.name,
+        }}
+      >
+        <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+      </Link>
+    </div>
+  );
+}
 
 Image.propTypes = {
   product: PropTypes.shape().isRequired,

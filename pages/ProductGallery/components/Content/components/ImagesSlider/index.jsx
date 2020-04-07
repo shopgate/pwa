@@ -1,28 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useWidgetSettings } from '@shopgate/engage/core';
+import { getActualImageSource, getThemeSettings, useWidgetSettings } from '@shopgate/engage/core';
 import { Swiper } from '@shopgate/engage/components';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
-
-/**
- * @param {Array} images array of format images
- * @returns {Array} array of indexed images
- */
-const getImagesByIndex = (images) => {
-  const imagesByIndex = [];
-
-  images.forEach((format) => {
-    if (!format.sources || !format.sources.length) return;
-    format.sources.forEach((src, index) => {
-      if (!imagesByIndex[index]) imagesByIndex[index] = [];
-      imagesByIndex[index].push(src);
-    });
-  });
-
-  return imagesByIndex;
-};
 
 /**
  * The Product Gallery content component.
@@ -34,9 +16,13 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
     return <div className={styles.container} />;
   }
 
-  const imagesByIndex = getImagesByIndex(images);
-
   const { zoom = {} } = useWidgetSettings('@shopgate/engage/product/Gallery') || {};
+
+  const { GalleryImage: galleryResolutions } = getThemeSettings('AppImages') || {};
+
+  const resolution = galleryResolutions[galleryResolutions.length - 1];
+
+  const imagesWithResolutions = images.map(src => getActualImageSource(src, resolution));
 
   return (
     <div className={styles.container}>
@@ -45,19 +31,19 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
         className={styles.slider}
         initialSlide={initialSlide}
         indicators
-        loop={imagesByIndex.length > 1}
-        disabled={imagesByIndex.length === 1}
+        loop={imagesWithResolutions.length > 1}
+        disabled={imagesWithResolutions.length === 1}
         zoom={{
           ...GALLERY_SLIDER_ZOOM,
           ...zoom,
         }}
       >
-        {imagesByIndex.map(imagesInIndex => (
-          <Swiper.Item key={imagesInIndex[0]}>
+        {imagesWithResolutions.map(image => (
+          <Swiper.Item key={image}>
             <div className="swiper-zoom-container">
               <img
-                src={imagesInIndex[imagesInIndex.length - 1]}
-                alt={imagesInIndex[imagesInIndex.length - 1]}
+                src={image}
+                alt=""
                 className={styles.slide}
               />
             </div>
@@ -69,7 +55,7 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
 };
 
 ProductGalleryImages.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
   initialSlide: PropTypes.number.isRequired,
 };
 

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
-import { getActualImageSource } from '@shopgate/engage/core';
+import { getActualImageSource, getThemeSettings } from '@shopgate/engage/core';
 import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
@@ -11,32 +11,6 @@ import {
 } from '@shopgate/pwa-common-commerce/product';
 import { ProductImage } from '@shopgate/engage/product';
 import connect from './connector';
-
-const fallbackResolutions = [
-  {
-    width: 440,
-    height: 440,
-  },
-];
-
-/**
- * reformats the images array to group pictures by index, not by format
- * @param {Array} images array of format images
- * @returns {Array}
- */
-const getImagesByIndex = (images) => {
-  const imagesByIndex = [];
-
-  images.forEach((format) => {
-    if (!format.sources || !format.sources.length) return;
-    format.sources.forEach((src, index) => {
-      if (!imagesByIndex[index]) imagesByIndex[index] = [];
-      imagesByIndex[index].push(src);
-    });
-  });
-
-  return imagesByIndex;
-};
 
 /**
  * The product image slider component.
@@ -47,7 +21,7 @@ class ProductImageSlider extends Component {
   static propTypes = {
     'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
-    images: PropTypes.arrayOf(PropTypes.shape()),
+    images: PropTypes.arrayOf(PropTypes.string),
     navigate: PropTypes.func,
     product: PropTypes.shape(),
   };
@@ -76,6 +50,8 @@ class ProductImageSlider extends Component {
     return !isEqual(this.props.images, nextProps.images);
   }
 
+  currentSlide = 0;
+
   handleOpenGallery = () => {
     this.props.navigate(this.currentSlide);
   };
@@ -94,32 +70,31 @@ class ProductImageSlider extends Component {
     const {
       product, images, 'aria-hidden': ariaHidden, className,
     } = this.props;
+    const { HeroImage: pdpResolutions } = getThemeSettings('AppImages') || {};
     let content;
-    let imagesByIndex = [];
-
     let onClick = this.handleOpenGallery;
     let onKeyDown = this.handleOpenGallery;
 
     if (product && Array.isArray(images) && images.length > 1) {
-      imagesByIndex = getImagesByIndex(images);
-
-      if (imagesByIndex.length) {
-        content = (
-          <Swiper
-            loop={imagesByIndex.length > 1}
-            indicators
-            onSlideChange={this.handleSlideChange}
-            disabled={imagesByIndex.length === 1}
-            className={className}
-          >
-            {imagesByIndex.map(imagesInIndex => (
-              <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
-                <ProductImage srcmap={imagesInIndex} animating={false} noBackground />
-              </Swiper.Item>
-            ))}
-          </Swiper>
-        );
-      }
+      content = (
+        <Swiper
+          loop
+          indicators
+          onSlideChange={this.handleSlideChange}
+          className={className}
+        >
+          {images.map(image => (
+            <Swiper.Item key={`${product.id}-${image}`}>
+              <ProductImage
+                src={image}
+                animating={false}
+                resolutions={pdpResolutions}
+                noBackground
+              />
+            </Swiper.Item>
+          ))}
+        </Swiper>
+      );
     }
 
     if (!content) {
@@ -128,7 +103,7 @@ class ProductImageSlider extends Component {
           src={product ? product.featuredImageBaseUrl : null}
           className={className}
           forcePlaceholder={!product}
-          resolutions={fallbackResolutions}
+          resolutions={pdpResolutions}
         />
       );
       onClick = noop;
@@ -136,7 +111,7 @@ class ProductImageSlider extends Component {
     }
 
     const imageStyle = product ? {
-      background: `url(${getActualImageSource(product.featuredImageBaseUrl, fallbackResolutions[0])})`,
+      background: `url(${getActualImageSource(product.featuredImageBaseUrl, pdpResolutions[0])})`,
       backgroundSize: 'contain',
       transform: 'translate3d(0, 0, 0)',
     } : null;
