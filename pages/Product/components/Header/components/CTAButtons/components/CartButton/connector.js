@@ -8,6 +8,8 @@ import {
   makeGetUserLocation,
   makeIsFulfillmentSelectorDisabled,
   makeIsRopeProductOrderable,
+  makeGetUserLocationFulfillmentMethod,
+  DIRECT_SHIP,
 } from '@shopgate/engage/locations';
 import { addProductToCart as addToCart } from './actions';
 
@@ -18,24 +20,33 @@ function makeMapStateToProps() {
   const getUserLocation = makeGetUserLocation();
   const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
   const isRopeProductOrderable = makeIsRopeProductOrderable(true);
+  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
 
   /**
    * @param {Object} state The current application state.
    * @param {Object} props The component props.
    * @return {Object} The extended component props.
    */
-  return (state, props) => ({
-    /**
-     * 1. Product has no variants and not orderable
-     * 2. Parent product can be not orderable but having orderable variants
-     * 3. A ROPE fulfillment method is selected and the product is orderable at the location
-     */
-    disabled: (!isProductOrderable(state, props) && !hasProductVariants(state, props)) &&
-      isRopeProductOrderable(state, props) === false,
-    loading: isProductPageLoading(state, props),
-    userLocation: getUserLocation(state),
-    hasFulfillmentMethods: !isFulfillmentSelectorDisabled(state, props),
-  });
+  return (state, props) => {
+    const userLocationFulfillmentMethods = getUserLocationFulfillmentMethod(state);
+    const isDirectShipSelected = userLocationFulfillmentMethods === DIRECT_SHIP;
+
+    return {
+      /**
+       * 1. Product has no variants and not orderable
+       * 2. Parent product can be not orderable but having orderable variants
+       * 3. A ROPE fulfillment method is selected and the product is orderable at the location
+       */
+      disabled:
+        (isDirectShipSelected &&
+          !isProductOrderable(state, props) &&
+          !hasProductVariants(state, props)) ||
+        isRopeProductOrderable(state, props) === false,
+      loading: isProductPageLoading(state, props),
+      userLocation: getUserLocation(state),
+      hasFulfillmentMethods: !isFulfillmentSelectorDisabled(state, props),
+    };
+  };
 }
 
 /**
