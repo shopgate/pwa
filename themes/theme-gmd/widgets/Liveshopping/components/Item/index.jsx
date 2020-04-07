@@ -5,11 +5,11 @@ import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { ProductImage } from '@shopgate/engage/product';
+import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
 import styles from './style';
-import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 
 /**
  * The LiveShoppingItem component.

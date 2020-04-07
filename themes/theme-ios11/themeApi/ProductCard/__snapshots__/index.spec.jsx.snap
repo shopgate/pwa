@@ -45,6 +45,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
       dispatch={[Function]}
       product={
         Object {
+          "featuredImageBaseUrl": null,
           "featuredImageUrl": null,
           "id": "PR0DUCTID",
           "name": "Product Name",
@@ -86,6 +87,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": null,
               "featuredImageUrl": null,
               "id": "PR0DUCTID",
               "name": "Product Name",
@@ -931,6 +933,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       dispatch={[Function]}
       product={
         Object {
+          "featuredImageBaseUrl": null,
           "featuredImageUrl": null,
           "id": "PR0DUCTID",
           "name": "Product Name",
