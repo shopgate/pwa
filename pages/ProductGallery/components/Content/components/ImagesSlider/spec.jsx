@@ -13,7 +13,30 @@ import Content from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
   useWidgetSettings: jest.fn(),
+  getThemeSettings: () => ({
+      fillColor: 'FFFFFF',
+      HeroImage: [
+        {
+          width: 1024,
+          height: 1024,
+        },
+      ],
+      GalleryImage: [
+        {
+          width: 2048,
+          height: 2048,
+        },
+      ],
+      ListImage: [
+        {
+          width: 440,
+          height: 880,
+        },
+      ],
+  }),
+  getActualImageSource: orig => orig,
 }));
+
 jest.mock('@shopgate/engage/components', () => ({
   Swiper: MockSwiper,
 }));
@@ -27,16 +50,7 @@ const mockedStore = configureStore();
 describe('<ProductGallery.Content> page', () => {
   beforeEach(() => {
     getProductImages.mockReturnValue([
-      {
-        width: 1024,
-        height: 1024,
-        sources: ['foo1024', 'bar1024'],
-      },
-      {
-        width: 2048,
-        height: 2048,
-        sources: ['foo2048', 'bar2048'],
-      },
+      'foo', 'bar',
     ]);
     getCurrentBaseProduct.mockReturnValue({ id: 123 });
   });
@@ -57,11 +71,11 @@ describe('<ProductGallery.Content> page', () => {
     expect(wrapper
       .find('img')
       .at(0)
-      .prop('src')).toEqual('foo2048');
+      .prop('src')).toEqual('foo');
     expect(wrapper
       .find('img')
       .at(1)
-      .prop('src')).toEqual('bar2048');
+      .prop('src')).toEqual('bar');
   });
 
   it('should pass initialSlide prop', () => {
