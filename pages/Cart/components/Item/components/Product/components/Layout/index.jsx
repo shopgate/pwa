@@ -55,7 +55,7 @@ const Layout = (props, context) => (
     <Grid.Item className={styles.leftColumn}>
       <div className={styles.image} aria-hidden>
         <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
-          <ProductImage src={props.product.featuredImageBaseUrl} />
+          <ProductImage src={props.product.featuredImageUrl} />
         </SurroundPortals>
       </div>
       <QuantityPicker
