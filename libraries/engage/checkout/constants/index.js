@@ -1,1 +1,2 @@
 export { CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from './routes';
+export { ENTER_CHECKOUT, ENTER_CHECKOUT_SUCCESS } from './actionTypes';

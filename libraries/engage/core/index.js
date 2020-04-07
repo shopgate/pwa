@@ -242,6 +242,7 @@ export * from '@shopgate/pwa-common/selectors/modal';
 
 // --------------- HOOKS --------------- //
 
+export { useAsyncMemo } from './hooks/useAsyncMemo';
 export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
 export { useCurrentProduct } from './hooks/useCurrentProduct';

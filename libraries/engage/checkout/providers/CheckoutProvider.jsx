@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, useAsyncMemo } from '@shopgate/engage/core';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints } from './CheckoutProvider.constraints';
@@ -9,7 +9,10 @@ type Props = {
   children: any,
   shopSettings: any,
   userLocation: any,
-  isReady: bool,
+  isDataReady: bool,
+  initializeCheckout: () => Promise<any>,
+  fetchCheckoutOrder: () => Promise<any>,
+  fetchPaymentMethods: () => Promise<any>,
 };
 
 const defaultPickupPersonState = {
@@ -41,10 +44,13 @@ const convertValidationErrors = validationErrors => Object
  * @returns {JSX}
  */
 const CheckoutProvider = ({
+  initializeCheckout,
+  fetchCheckoutOrder,
+  fetchPaymentMethods,
   children,
   shopSettings,
   userLocation,
-  isReady,
+  isDataReady,
 }: Props) => {
   // Hold form states.
   const formState = useFormState(
@@ -52,6 +58,16 @@ const CheckoutProvider = ({
     () => {},
     pickupConstraints
   );
+
+  // Initialize checkout process.
+  const [isCheckoutInitialized] = useAsyncMemo(async () => {
+    await initializeCheckout();
+    await Promise.all([
+      fetchCheckoutOrder(),
+      fetchPaymentMethods(),
+    ]);
+    return true;
+  }, [], false);
 
   // Create memoized context value.
   const value = React.useMemo(() => ({
@@ -69,7 +85,7 @@ const CheckoutProvider = ({
     userLocation,
   ]);
 
-  if (!isReady) {
+  if (!isDataReady || !isCheckoutInitialized) {
     return null;
   }
 
