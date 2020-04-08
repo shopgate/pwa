@@ -1,12 +1,13 @@
 import React from 'react';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
-  i18n, useAsyncMemo, getUserAgent,
+  i18n, useAsyncMemo, getUserAgent, LoadingProvider,
 } from '@shopgate/engage/core';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
-import { pickupConstraints } from './CheckoutProvider.constraints';
+import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
 import { useStripeContext } from '../hooks/common';
+import { CHECKOUT_PATTERN } from '../constants/routes';
 
 type Props = {
   children: any,
@@ -66,6 +67,7 @@ const CheckoutProvider = ({
   isDataReady,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
+  const [validationRules, setValidationRules] = React.useState(selfPickupConstraints);
 
   // Get payment method api
   const activePaymentMethod = useStripeContext();
@@ -97,7 +99,12 @@ const CheckoutProvider = ({
       await updateCheckoutOrder({
         addressSequences: [
           billingAddress,
-          {
+          // When the customer is picking up himself we just take the
+          // billing address as pickup address.
+          values.pickupPerson === 'me' ? {
+            ...billingAddress,
+            type: 'pickup',
+          } : {
             type: 'pickup',
             firstName: values.firstName,
             lastName: values.lastName,
@@ -136,12 +143,30 @@ const CheckoutProvider = ({
     updateCheckoutOrder,
   ]);
 
+  // Whenever the order is locked we also want to show to loading bar.
+  React.useEffect(() => {
+    if (isLocked) {
+      LoadingProvider.setLoading(CHECKOUT_PATTERN);
+      return;
+    }
+    LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
+  }, [isLocked]);
+
   // Hold form states.
   const formState = useFormState(
     defaultPickupPersonState,
     handleSubmitOrder,
-    pickupConstraints
+    validationRules
   );
+
+  // When "someone-else" is picked for pickup the validation rules need to change.
+  React.useEffect(() => {
+    setValidationRules(
+      formState.values.pickupPerson === 'me'
+        ? selfPickupConstraints
+        : pickupConstraints
+    );
+  }, [formState.values.pickupPerson]);
 
   // Create memoized context value.
   const value = React.useMemo(() => ({

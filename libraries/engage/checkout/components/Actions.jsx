@@ -10,6 +10,7 @@ const styles = {
     paddingTop: 0,
     display: 'flex',
     flexDirection: 'column',
+    flex: '0 0 auto',
   }).toString(),
 };
 

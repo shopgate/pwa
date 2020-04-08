@@ -10,9 +10,9 @@ const { colors, variables } = themeConfig;
 const styles = {
   root: css({
     padding: variables.gap.big,
-    paddingTop: 0,
     display: 'flex',
     flexDirection: 'column',
+    flex: '0 0 auto',
   }).toString(),
   h1: css({
     fontSize: 24,

@@ -12,7 +12,9 @@ const { colors, variables } = themeConfig;
 const styles = {
   root: css({
     padding: 16,
+    paddingTop: 0,
     display: 'flex',
+    flex: '0 0 auto',
     flexDirection: 'column',
   }).toString(),
   h1: css({
@@ -84,7 +86,7 @@ const PickupContactForm = () => {
       .querySelector(
         `.pickupForm${firstError.charAt(0).toUpperCase()}${firstError.slice(1)} input`
       );
-    formElement.focus();
+    formElement.scrollIntoView({ behavior: 'smooth' });
   }, [formValidationErrors]);
 
   return (
@@ -92,9 +94,11 @@ const PickupContactForm = () => {
       <span className={styles.h1}>
         {i18n.text('checkout.pickup_contact.headline')}
       </span>
+      {/*
       <span className={styles.h2}>
         {i18n.text('checkout.pickup_contact.subheadline')}
       </span>
+      */}
       <FormBuilder
         className={styles.form}
         name="PickupForm"

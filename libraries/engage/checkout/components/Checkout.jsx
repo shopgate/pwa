@@ -14,8 +14,8 @@ import Actions from './Actions';
 const Checkout = () => (
   <StripeProvider>
     <CheckoutProvider>
-      <PickupContactForm />
       <Billing />
+      <PickupContactForm />
       <CreditCard />
       <Summary />
       <Actions />

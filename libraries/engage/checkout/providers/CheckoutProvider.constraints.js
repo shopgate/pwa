@@ -20,12 +20,6 @@ export const pickupConstraints = {
       message: 'validation.email',
     },
   },
-  instructions: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
-    },
-  },
   cellPhone: {
     presence: {
       message: 'validation.required',
@@ -36,4 +30,7 @@ export const pickupConstraints = {
       message: 'validation.mobileNumber',
     },
   },
+};
+
+export const selfPickupConstraints = {
 };

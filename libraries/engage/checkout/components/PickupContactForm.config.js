@@ -17,30 +17,10 @@ const pickupFieldActions = [{
  */
 const generateFormConfig = (supportedCountries, userLocation) => ({
   fields: {
-    firstName: {
-      type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.firstName'),
-    },
-    lastName: {
-      type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.lastName'),
-    },
-    emailAddress: {
-      type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.emailAddress'),
-    },
     instructions: {
       type: 'text',
       label: i18n.text('checkout.pickup_contact.form.instructions'),
       placeholder: i18n.text('checkout.pickup_contact.form.instructionsPlaceholder'),
-    },
-    cellPhone: {
-      type: 'phone_picker',
-      label: i18n.text('checkout.pickup_contact.form.cellPhone'),
-      config: {
-        supportedCountries,
-        userLocation,
-      },
     },
     pickupPerson: {
       type: 'radio',
@@ -50,29 +30,29 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
         someoneElse: i18n.text('checkout.pickup_contact.form.someone_else'),
       },
     },
-    pickupFirstName: {
+    firstName: {
       type: 'text',
+      actions: pickupFieldActions,
       label: i18n.text('checkout.pickup_contact.form.firstName'),
-      visible: false,
-      actions: pickupFieldActions,
     },
-    pickupLastName: {
+    lastName: {
       type: 'text',
+      actions: pickupFieldActions,
       label: i18n.text('checkout.pickup_contact.form.lastName'),
-      visible: false,
-      actions: pickupFieldActions,
     },
-    pickupCellPhone: {
+    emailAddress: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.cellPhone'),
-      visible: false,
       actions: pickupFieldActions,
-    },
-    pickupEmailAddress: {
-      type: 'text',
       label: i18n.text('checkout.pickup_contact.form.emailAddress'),
-      visible: false,
+    },
+    cellPhone: {
+      type: 'phone_picker',
+      label: i18n.text('checkout.pickup_contact.form.cellPhone'),
       actions: pickupFieldActions,
+      config: {
+        supportedCountries,
+        userLocation,
+      },
     },
   },
 });

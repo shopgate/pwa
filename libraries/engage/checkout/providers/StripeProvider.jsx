@@ -32,6 +32,12 @@ const StripeProvider = ({ children }: Props) => {
     setError,
     fulfillTransaction: async ({ paymentTransactions }) => {
       const activeTransaction = paymentTransactions[0];
+      // TODO: remove me once API fixed it.
+      if (!activeTransaction?.checkoutParams?.paymentIntent) {
+        setError('DEBUG: Missing payment intent and/or checkoutParams');
+        return false;
+      }
+
       const {
         error: incomingError,
         paymentIntent,
