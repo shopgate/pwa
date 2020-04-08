@@ -7,7 +7,7 @@ import Context from './StripeProvider.context';
 import connect from './StripeProvider.connector';
 
 type PropsWrapper = {
-  publishableKey: string,
+  publishableKey?: string,
   children: any,
 }
 
@@ -23,14 +23,17 @@ let stripeObject = null;
  * @returns {JSX}
  */
 const StripeProvider = ({ children }: Props) => {
+  const [error, setError] = React.useState(null);
   const stripe = useStripe();
   const elements = useElements();
 
   const contextApi = React.useMemo(() => ({
+    error,
+    setError,
     fulfillTransaction: async ({ paymentTransactions }) => {
       const activeTransaction = paymentTransactions[0];
       const {
-        errors,
+        error: incomingError,
         paymentIntent,
       } = await stripe.confirmCardPayment(activeTransaction.checkoutParams.paymentIntent, {
         /* eslint-disable-next-line camelcase */
@@ -39,9 +42,8 @@ const StripeProvider = ({ children }: Props) => {
         },
       });
 
-      if (errors) {
-        /* eslint-disable-next-line no-console */
-        console.warn('Stripe error: ', errors);
+      if (incomingError) {
+        setError(incomingError.message);
         return false;
       }
 
@@ -52,7 +54,7 @@ const StripeProvider = ({ children }: Props) => {
         },
       }];
     },
-  }), [elements, stripe]);
+  }), [elements, error, stripe]);
 
   return (
     <Context.Provider value={contextApi}>
@@ -97,6 +99,10 @@ const StripeProviderWrapper = ({ publishableKey, children }: PropsWrapper) => {
       </StripeProvider>
     </Elements>
   );
+};
+
+StripeProviderWrapper.defaultProps = {
+  publishableKey: null,
 };
 
 export default connect(StripeProviderWrapper);

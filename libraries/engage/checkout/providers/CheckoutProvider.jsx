@@ -65,6 +65,8 @@ const CheckoutProvider = ({
   userLocation,
   isDataReady,
 }: Props) => {
+  const [isLocked, setLocked] = React.useState(false);
+
   // Get payment method api
   const activePaymentMethod = useStripeContext();
 
@@ -89,6 +91,8 @@ const CheckoutProvider = ({
   const handleSubmitOrder = React.useCallback((values) => {
     /** Async wrapper for useCallback */
     const fn = async () => {
+      setLocked(true);
+
       // Update order to set pickup contact.
       await updateCheckoutOrder({
         addressSequences: [
@@ -99,6 +103,7 @@ const CheckoutProvider = ({
             lastName: values.lastName,
             mobile: values.cellPhone,
             emailAddress: values.emailAddress,
+            notes: values.instructions,
           },
         ],
         primaryBillToAddressSequenceIndex: 0,
@@ -109,13 +114,18 @@ const CheckoutProvider = ({
       const fulfilledPaymentTransactions = await activePaymentMethod.fulfillTransaction({
         paymentTransactions,
       });
+      if (!fulfilledPaymentTransactions) {
+        setLocked(false);
+        return;
+      }
 
       // Submit fulfilled payment transaction to complete order.
-      submitCheckoutOrder({
+      await submitCheckoutOrder({
         paymentTransactions: fulfilledPaymentTransactions,
         userAgent: getUserAgent(),
         platform: 'engage',
       });
+      setLocked(false);
     };
     fn();
   }, [
@@ -135,6 +145,7 @@ const CheckoutProvider = ({
 
   // Create memoized context value.
   const value = React.useMemo(() => ({
+    isLocked,
     supportedCountries: shopSettings.supportedCountries,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,
@@ -144,6 +155,7 @@ const CheckoutProvider = ({
     billingAddress,
     taxLines,
   }), [
+    isLocked,
     formState.setValues,
     formState.validationErrors,
     formState.handleSubmit,

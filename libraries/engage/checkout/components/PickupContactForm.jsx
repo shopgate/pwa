@@ -71,6 +71,22 @@ const PickupContactForm = () => {
     formSetValues(values);
   }, [formSetValues]);
 
+  // Whenever form validations come in we need to scroll to the right field.
+  React.useEffect(() => {
+    if (!formValidationErrors.length) {
+      return;
+    }
+
+    const firstError = formValidationErrors[0].path;
+
+    // TODO: FormBuilder should have that out of the box.
+    const formElement = document
+      .querySelector(
+        `.pickupForm${firstError.charAt(0).toUpperCase()}${firstError.slice(1)} input`
+      );
+    formElement.focus();
+  }, [formValidationErrors]);
+
   return (
     <div className={styles.root}>
       <span className={styles.h1}>
