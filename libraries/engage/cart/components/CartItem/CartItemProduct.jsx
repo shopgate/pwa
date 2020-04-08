@@ -46,6 +46,7 @@ class CartItemProduct extends React.Component<Props, State> {
     cartItem: PT.shape(),
     cartItemId: PT.string,
     type: PT.string,
+    editable: PT.bool,
     product: PT.shape(),
     registerAction: PT.func,
     invokeAction: PT.func,
@@ -54,6 +55,7 @@ class CartItemProduct extends React.Component<Props, State> {
   static defaultProps = {
     isIos: false,
     fulfillment: null,
+    editable: true,
     deleteProduct: () => { },
     onToggleFocus: () => { },
     updateProduct: () => { },
@@ -87,6 +89,7 @@ class CartItemProduct extends React.Component<Props, State> {
       },
       cartItemId: this.props.id,
       type: CART_ITEM_TYPE_PRODUCT,
+      editable: this.props.editable,
       product: this.props.product,
       registerAction: this.registerAction,
       invokeAction: this.invokeAction,

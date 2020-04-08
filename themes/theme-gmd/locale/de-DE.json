@@ -138,6 +138,7 @@
     "change_location": "Filiale ändern",
     "method": {
       "ropis": "Reserve online, pickup in store",
+      "bopis": "Buy online, pickup in store",
       "direct_ship": "Ship to address"
     },
     "choose_reservation_type": "Reservierungs-Art wählen",
@@ -332,6 +333,24 @@
       "tax": "Tax",
       "subTotal": "Subtotal",
       "total": "Total"
+    },
+    "success": {
+      "title": "Thank you for your order",
+      "copy": "We will send you an push/text message shortly when your order is ready for pickup.",
+      "order_number": "Order number: {orderNumber}",
+      "order_date": "Order Date: {date}",
+      "your_items": "Your item(s)",
+      "pick_up_contact": "Pick up contact",
+      "pickup_notes": "Pickup notes",
+      "billed_to": "Billed to",
+      "order_summary": "Order summary",
+      "name": "Name",
+      "phone_number": "Phone Number",
+      "email_address": "Email Address",
+      "card_holder": "Card Holder",
+      "address": "Address",
+      "payment_method": "Payment Method",
+      "continue": "Continue shopping"
     }
   },
   "error": {

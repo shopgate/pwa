@@ -2,7 +2,11 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core';
 import { LocationIcon } from '@shopgate/engage/components';
-import { type LocationAware } from '@shopgate/engage/locations/locations.types';
+import {
+  type LocationAware,
+  BOPIS,
+  getDefaultRopeFulfillmentMethod,
+} from '@shopgate/engage/locations';
 import { address, addressIcon, title } from './CartItemGroup.style';
 
 type Props = LocationAware;
@@ -17,6 +21,8 @@ export function CartItemGroupReservationLabel({ location }: Props) {
     return null;
   }
 
+  const suffix = getDefaultRopeFulfillmentMethod() === BOPIS ? 'bopis' : 'ropis';
+
   return (
     <div className={address}>
       <div className={addressIcon}>
@@ -24,7 +30,7 @@ export function CartItemGroupReservationLabel({ location }: Props) {
       </div>
       <div>
         <div className={title}>
-          {i18n.text('locations.method.ropis')}
+          {i18n.text(`locations.method.${suffix}`)}
         </div>
         {location.name}
       </div>

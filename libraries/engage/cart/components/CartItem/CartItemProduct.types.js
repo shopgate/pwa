@@ -10,6 +10,7 @@ export type OwnProps = {
   product: Product,
   quantity: number,
   updateProduct?: (id: string, quantity: number) => void,
+  editable?: boolean
 }
 
 export type StateProps = {

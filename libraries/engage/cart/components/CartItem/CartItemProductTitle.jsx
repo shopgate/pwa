@@ -33,6 +33,7 @@ type ContextProps = {
   invokeAction: (action: string) => void,
   cartItemId?: string,
   type?: string,
+  editable?: boolean
 }
 
 /**
@@ -42,7 +43,9 @@ type ContextProps = {
  * @returns {JSX}
  */
 export function CartItemProductTitle(props: Props, context: ContextProps) {
-  const { value, handleRemove, toggleEditMode } = props;
+  const {
+    value, handleRemove, toggleEditMode,
+  } = props;
   const { invokeAction } = context;
 
   const handleToggleEditMode = React.useCallback(() => {
@@ -68,24 +71,26 @@ export function CartItemProductTitle(props: Props, context: ContextProps) {
           </div>
         </SurroundPortals>
       </Grid.Item>
-      <Grid.Item className={menuContainer} shrink={0}>
-        <ContextMenu classes={contextMenuClasses}>
-          <ContextMenu.Item onClick={handleRemove}>
-            <I18n.Text string="cart.remove" />
-          </ContextMenu.Item>
-          <ContextMenu.Item onClick={handleToggleEditMode}>
-            <I18n.Text string="cart.edit" />
-          </ContextMenu.Item>
-          <CartContextMenuItemChangeLocation
-            cartItem={context.cartItem}
-            onClick={handleChangeLocationClick}
-          />
-          <CartContextMenuItemChangeFulfillment
-            cartItem={context.cartItem}
-            onClick={handleChangeFulfillmentClick}
-          />
-        </ContextMenu>
-      </Grid.Item>
+      {context.editable && (
+        <Grid.Item className={menuContainer} shrink={0}>
+          <ContextMenu classes={contextMenuClasses}>
+            <ContextMenu.Item onClick={handleRemove}>
+              <I18n.Text string="cart.remove" />
+            </ContextMenu.Item>
+            <ContextMenu.Item onClick={handleToggleEditMode}>
+              <I18n.Text string="cart.edit" />
+            </ContextMenu.Item>
+            <CartContextMenuItemChangeLocation
+              cartItem={context.cartItem}
+              onClick={handleChangeLocationClick}
+            />
+            <CartContextMenuItemChangeFulfillment
+              cartItem={context.cartItem}
+              onClick={handleChangeFulfillmentClick}
+            />
+          </ContextMenu>
+        </Grid.Item>
+      )}
     </Grid>
   );
 }
@@ -100,4 +105,5 @@ CartItemProductTitle.contextTypes = {
   invokeAction: PT.func,
   cartItemId: PT.string,
   type: PT.string,
+  editable: PT.bool,
 };

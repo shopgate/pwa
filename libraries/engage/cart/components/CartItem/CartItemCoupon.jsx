@@ -46,6 +46,7 @@ class CartItemCoupon extends React.Component<Props, State> {
   static childContextTypes = {
     cartItemId: PT.string,
     type: PT.string,
+    editable: PT.bool,
   };
 
   static defaultProps = {
@@ -72,6 +73,7 @@ class CartItemCoupon extends React.Component<Props, State> {
     return {
       cartItemId: this.props.id,
       type: CART_ITEM_TYPE_COUPON,
+      editable: this.props.editable,
     };
   }
 
@@ -147,5 +149,9 @@ class CartItemCoupon extends React.Component<Props, State> {
     );
   }
 }
+
+CartItemCoupon.defaultProps = {
+  editable: true,
+};
 
 export default connect(CartItemCoupon);

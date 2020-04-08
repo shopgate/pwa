@@ -14,6 +14,7 @@ import { type Item } from '../../cart.types';
 type Props = {
   item: Item,
   onFocus: (isEnabled: boolean) => void,
+  editable?: boolean,
 }
 
 /**
@@ -23,7 +24,7 @@ type Props = {
  * @property {Function} props.onFocus A function to indicate when the item has been focussed.
  * @return {JSX.Element}
  */
-function CartItem({ item, onFocus }: Props) {
+function CartItem({ item, onFocus, editable }: Props) {
   if (item.type !== CART_ITEM_TYPE_PRODUCT && item.type !== CART_ITEM_TYPE_COUPON) {
     return null;
   }
@@ -42,6 +43,7 @@ function CartItem({ item, onFocus }: Props) {
           messages={item.messages}
           fulfillment={item.fulfillment}
           onToggleFocus={onFocus}
+          editable={editable}
         />
       </SurroundPortals>
     );
@@ -54,9 +56,14 @@ function CartItem({ item, onFocus }: Props) {
         key={item.id}
         coupon={item.coupon}
         messages={item.messages}
+        editable={editable}
       />
     </SurroundPortals>
   );
 }
+
+CartItem.defaultProps = {
+  editable: true,
+};
 
 export default hot(React.memo<Props>(CartItem));

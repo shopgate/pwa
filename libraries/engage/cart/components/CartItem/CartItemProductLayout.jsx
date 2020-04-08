@@ -33,6 +33,7 @@ type ContextProps = {
   cartItem?: Item,
   cartItemId?: string,
   type?: string,
+  editable?: boolean
 }
 
 /**
@@ -87,12 +88,15 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
               </SurroundPortals>
             </Link>
           </div>
-          <CartItemQuantityPicker
-            quantity={props.quantity}
-            editMode={props.editMode}
-            onChange={props.handleUpdate}
-            onToggleEditMode={props.toggleEditMode}
-          />
+          {context.editable && (
+            <CartItemQuantityPicker
+              quantity={props.quantity}
+              editMode={props.editMode}
+              onChange={props.handleUpdate}
+              onToggleEditMode={props.toggleEditMode}
+            />
+          )}
+
         </Grid.Item>
       </Grid>
       <CartItemProductChangeLocation cartItem={cartItem} registerAction={registerAction} />
@@ -112,4 +116,5 @@ CartItemProductLayout.contextTypes = {
   cartItem: PT.shape(),
   cartItemId: PT.string,
   type: PT.string,
+  editable: PT.bool,
 };
