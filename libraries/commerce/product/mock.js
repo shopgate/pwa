@@ -143,8 +143,8 @@ const basicProductState = {
             hasVariants: false,
             hasOptions: false,
           },
-          // TODO:
-          featuredImageBaseUrl: '',
+          featuredImageBaseUrl:
+            'https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b',
           featuredImageUrl:
             'https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b',
           price: {
@@ -567,8 +567,8 @@ const productWithVariantsAndOptions = {
             hasVariants: true,
             hasOptions: false,
           },
-          // TODO
-          featuredImageBaseUrl: '',
+          featuredImageBaseUrl:
+            'https://img-cdn.shopgate.com/30187/1/0b63a9a326f1a87ee8e8abf5da5cf72c47a9cbfd4e80c1d53e289a79a86ed29f',
           featuredImageUrl:
             'https://img-cdn.shopgate.com/30187/1/0b63a9a326f1a87ee8e8abf5da5cf72c47a9cbfd4e80c1d53e289a79a86ed29f',
           price: {
@@ -623,7 +623,8 @@ const productWithVariantsAndOptions = {
             hasVariants: false,
             hasOptions: true,
           },
-          featuredImageBaseUrl: '',
+          featuredImageBaseUrl:
+            'https://img-cdn.shopgate.com/30187/1/418315732cd28ab495acd3861f2d4a0d406b07c997d28b17d5a38446ae9122c3',
           featuredImageUrl:
             'https://img-cdn.shopgate.com/30187/1/418315732cd28ab495acd3861f2d4a0d406b07c997d28b17d5a38446ae9122c3',
           price: {
@@ -678,7 +679,8 @@ const productWithVariantsAndOptions = {
             hasVariants: false,
             hasOptions: true,
           },
-          featuredImageBaseUrl: '',
+          featuredImageBaseUrl:
+            'https://img-cdn.shopgate.com/30187/1/5470e69c84493a2e1eb9360fef3b0b1e545a69d7ebf67d86d8f245c130ed5994',
           featuredImageUrl:
             'https://img-cdn.shopgate.com/30187/1/5470e69c84493a2e1eb9360fef3b0b1e545a69d7ebf67d86d8f245c130ed5994',
           price: {
@@ -733,7 +735,8 @@ const productWithVariantsAndOptions = {
             hasVariants: false,
             hasOptions: true,
           },
-          featuredImageBaseUrl: '',
+          featuredImageBaseUrl:
+            'https://img-cdn.shopgate.com/30187/1/fa8f6a39cafe657d578ebe45a0dbbfbfe4884df834adf718db84fd256fbdcf79',
           featuredImageUrl:
             'https://img-cdn.shopgate.com/30187/1/fa8f6a39cafe657d578ebe45a0dbbfbfe4884df834adf718db84fd256fbdcf79',
           price: {
@@ -788,7 +791,8 @@ const productWithVariantsAndOptions = {
             hasVariants: false,
             hasOptions: true,
           },
-          featuredImageBaseUrl: '',
+          featuredImageBaseUrl:
+            'https://img-cdn.shopgate.com/30187/1/4720d364278292d92451f615c8350bbc26bdb5ea8b06e5cc9b9bb8ef3a964b0d',
           featuredImageUrl:
             'https://img-cdn.shopgate.com/30187/1/4720d364278292d92451f615c8350bbc26bdb5ea8b06e5cc9b9bb8ef3a964b0d',
           price: {
