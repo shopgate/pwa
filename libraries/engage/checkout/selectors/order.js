@@ -8,6 +8,14 @@ import { createSelector } from 'reselect';
 export const getCheckoutOrder = state => state.checkout.checkoutOrder.data || null;
 
 /**
+ * Returns the current orders payment transaction created in the checkout process.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getCheckoutPaymentTransactions = state =>
+  getCheckoutOrder(state)?.paymentTransactions || [];
+
+/**
  * Returns the billing address of the order.
  * @param {Object} state The application state.
  * @returns {Object}

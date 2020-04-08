@@ -1,13 +1,17 @@
 import React from 'react';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
-import { i18n, useAsyncMemo } from '@shopgate/engage/core';
+import {
+  i18n, useAsyncMemo, getUserAgent,
+} from '@shopgate/engage/core';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints } from './CheckoutProvider.constraints';
+import { useStripeContext } from '../hooks/common';
 
 type Props = {
   children: any,
   shopSettings: any,
+  paymentTransactions: any,
   billingAddress: any,
   taxLines: any,
   userLocation: any,
@@ -16,6 +20,7 @@ type Props = {
   fetchCheckoutOrder: () => Promise<any>,
   fetchPaymentMethods: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
+  submitCheckoutOrder: () => Promise<any>,
 };
 
 const defaultPickupPersonState = {
@@ -51,19 +56,17 @@ const CheckoutProvider = ({
   fetchCheckoutOrder,
   fetchPaymentMethods,
   updateCheckoutOrder,
+  submitCheckoutOrder,
   children,
   shopSettings,
   billingAddress,
+  paymentTransactions,
   taxLines,
   userLocation,
   isDataReady,
 }: Props) => {
-  // Hold form states.
-  const formState = useFormState(
-    defaultPickupPersonState,
-    () => {},
-    pickupConstraints
-  );
+  // Get payment method api
+  const activePaymentMethod = useStripeContext();
 
   // Initialize checkout process.
   const [isCheckoutInitialized] = useAsyncMemo(async () => {
@@ -81,6 +84,54 @@ const CheckoutProvider = ({
     ]);
     return true;
   }, [], false);
+
+  // Handles submit of the checkout form.
+  const handleSubmitOrder = React.useCallback((values) => {
+    /** Async wrapper for useCallback */
+    const fn = async () => {
+      // Update order to set pickup contact.
+      await updateCheckoutOrder({
+        addressSequences: [
+          billingAddress,
+          {
+            type: 'pickup',
+            firstName: values.firstName,
+            lastName: values.lastName,
+            mobile: values.cellPhone,
+            emailAddress: values.emailAddress,
+          },
+        ],
+        primaryBillToAddressSequenceIndex: 0,
+        primaryShipToAddressSequenceIndex: 1,
+      });
+
+      // Fulfill using selected payment method.
+      const fulfilledPaymentTransactions = await activePaymentMethod.fulfillTransaction({
+        paymentTransactions,
+      });
+
+      // Submit fulfilled payment transaction to complete order.
+      submitCheckoutOrder({
+        paymentTransactions: fulfilledPaymentTransactions,
+        userAgent: getUserAgent(),
+        platform: 'engage',
+      });
+    };
+    fn();
+  }, [
+    activePaymentMethod,
+    billingAddress,
+    paymentTransactions,
+    submitCheckoutOrder,
+    updateCheckoutOrder,
+  ]);
+
+  // Hold form states.
+  const formState = useFormState(
+    defaultPickupPersonState,
+    handleSubmitOrder,
+    pickupConstraints
+  );
 
   // Create memoized context value.
   const value = React.useMemo(() => ({

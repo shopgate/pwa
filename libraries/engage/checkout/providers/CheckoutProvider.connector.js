@@ -4,12 +4,14 @@ import { makeGetUserLocationAddress } from '@shopgate/engage/locations/selectors
 import {
   getCheckoutBillingAddress,
   getCheckoutTaxLines,
+  getCheckoutPaymentTransactions,
 } from '@shopgate/engage/checkout/selectors/order';
 import {
   initializeCheckout,
   fetchCheckoutOrder,
   fetchPaymentMethods,
   updateCheckoutOrder,
+  submitCheckoutOrder,
 } from '@shopgate/engage/checkout';
 
 /**
@@ -24,6 +26,7 @@ function makeMapStateToProps() {
    */
   return state => ({
     isDataReady: !getConfigFetching(state),
+    paymentTransactions: getCheckoutPaymentTransactions(state),
     shopSettings: getShopSettings(state),
     userLocation: getUserLocationAddress(state),
     billingAddress: getCheckoutBillingAddress(state),
@@ -36,6 +39,7 @@ const mapDispatchToProps = {
   fetchCheckoutOrder,
   updateCheckoutOrder,
   fetchPaymentMethods,
+  submitCheckoutOrder,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);
