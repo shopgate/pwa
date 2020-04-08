@@ -1,6 +1,10 @@
 import { LoadingProvider, PipelineRequest } from '@shopgate/engage/core';
 import { CHECKOUT_PATTERN } from '../constants/routes';
-import { ENTER_CHECKOUT, ENTER_CHECKOUT_SUCCESS } from '../constants/actionTypes';
+import {
+  FETCH_CHECKOUT_ORDER,
+  FETCH_CHECKOUT_ORDER_SUCCESS,
+  FETCH_CHECKOUT_ORDER_ERROR,
+} from '../constants/actionTypes';
 
 /**
  * Starts entering the checkout process for the customer.
@@ -8,12 +12,24 @@ import { ENTER_CHECKOUT, ENTER_CHECKOUT_SUCCESS } from '../constants/actionTypes
  */
 export const fetchCheckoutOrder = () => async (dispatch) => {
   LoadingProvider.setLoading(CHECKOUT_PATTERN);
-  // dispatch({ type: ENTER_CHECKOUT });
+  dispatch({ type: FETCH_CHECKOUT_ORDER });
 
-  // TODO: order creation here (if omnichannel checkout is enabled)
-  await (new PipelineRequest('shopgate.checkout.getOrder').dispatch());
+  const pipelineRequest = new PipelineRequest('shopgate.checkout.getOrder');
+  const { order, errors } = await pipelineRequest.dispatch();
 
-  // dispatch({ type: ENTER_CHECKOUT_SUCCESS });
+  if (errors?.length) {
+    dispatch({
+      type: FETCH_CHECKOUT_ORDER_ERROR,
+      errors,
+    });
+    LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
+    return;
+  }
+
+  dispatch({
+    type: FETCH_CHECKOUT_ORDER_SUCCESS,
+    order,
+  });
   LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
 };
 

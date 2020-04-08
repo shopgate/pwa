@@ -8,11 +8,14 @@ import { pickupConstraints } from './CheckoutProvider.constraints';
 type Props = {
   children: any,
   shopSettings: any,
+  billingAddress: any,
+  taxLines: any,
   userLocation: any,
   isDataReady: bool,
   initializeCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
   fetchPaymentMethods: () => Promise<any>,
+  updateCheckoutOrder: () => Promise<any>,
 };
 
 const defaultPickupPersonState = {
@@ -47,8 +50,11 @@ const CheckoutProvider = ({
   initializeCheckout,
   fetchCheckoutOrder,
   fetchPaymentMethods,
+  updateCheckoutOrder,
   children,
   shopSettings,
+  billingAddress,
+  taxLines,
   userLocation,
   isDataReady,
 }: Props) => {
@@ -62,6 +68,13 @@ const CheckoutProvider = ({
   // Initialize checkout process.
   const [isCheckoutInitialized] = useAsyncMemo(async () => {
     await initializeCheckout();
+    await updateCheckoutOrder({
+      paymentTransactions: [{
+        paymentMethod: {
+          code: 'stripe',
+        },
+      }],
+    });
     await Promise.all([
       fetchCheckoutOrder(),
       fetchPaymentMethods(),
@@ -77,12 +90,16 @@ const CheckoutProvider = ({
     handleSubmitOrder: formState.handleSubmit,
     defaultPickupPersonState,
     userLocation,
+    billingAddress,
+    taxLines,
   }), [
     formState.setValues,
     formState.validationErrors,
     formState.handleSubmit,
     shopSettings.supportedCountries,
     userLocation,
+    billingAddress,
+    taxLines,
   ]);
 
   if (!isDataReady || !isCheckoutInitialized) {

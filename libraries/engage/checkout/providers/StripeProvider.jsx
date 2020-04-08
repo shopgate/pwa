@@ -1,10 +1,10 @@
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { useAsyncMemo } from '@shopgate/engage/core';
+import connect from './StripeProvider.connector';
 
 type Props = {
-  publicKey?: string,
+  publishableKey: string,
   children: any,
 }
 
@@ -15,7 +15,7 @@ let stripeObject = null;
  * @param {Object} props The components props.
  * @returns {JSX}
  */
-const StripeProvider = ({ publicKey = 'pk_test_Qlu5uyMuFNRyAH70DTpCBPlv', children }: Props) => {
+const StripeProvider = ({ publishableKey, children }: Props) => {
   // Every stripe promise starts with a new Promise that is resolved later.
   const [stripePromise, resolve] = React.useMemo(() => {
     let resolver = null;
@@ -25,15 +25,19 @@ const StripeProvider = ({ publicKey = 'pk_test_Qlu5uyMuFNRyAH70DTpCBPlv', childr
 
   // Resolve promise by loading stripe sdk (once, or just resolve immediately)
   React.useEffect(() => {
+    if (!publishableKey) {
+      return;
+    }
+
     /** Async wrapper */
     const fn = async () => {
       if (!stripeObject) {
-        stripeObject = await loadStripe(publicKey);
+        stripeObject = await loadStripe(publishableKey);
       }
       resolve(stripeObject);
     };
     fn();
-  }, [publicKey, resolve]);
+  }, [publishableKey, resolve]);
 
   return (
     <Elements stripe={stripePromise}>
@@ -42,4 +46,4 @@ const StripeProvider = ({ publicKey = 'pk_test_Qlu5uyMuFNRyAH70DTpCBPlv', childr
   );
 };
 
-export default StripeProvider;
+export default connect(StripeProvider);

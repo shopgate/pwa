@@ -40,8 +40,12 @@ function PaymentBarContent() {
         </Grid>
         <div className={checkoutButtonContainer}>
           <div className={checkoutButton}>
+            <PaymentBarCheckoutButton />
+            {/*
+            TODO:
             {!flags[FLAG_MULTI_LINE_RESERVE] && <PaymentBarCheckoutButton />}
             {flags[FLAG_MULTI_LINE_RESERVE] && <PaymentBarReserveButton />}
+            */}
           </div>
         </div>
       </SurroundPortals>

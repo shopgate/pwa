@@ -1,6 +1,6 @@
-import { LoadingProvider } from '@shopgate/engage/core';
+import { LoadingProvider, PipelineRequest } from '@shopgate/engage/core';
 import { CHECKOUT_PATTERN } from '../constants/routes';
-import { ENTER_CHECKOUT, ENTER_CHECKOUT_SUCCESS } from '../constants/actionTypes';
+import { FETCH_PAYMENT_METHODS, FETCH_PAYMENT_METHODS_SUCCESS } from '../constants/actionTypes';
 
 /**
  * Starts entering the checkout process for the customer.
@@ -8,12 +8,15 @@ import { ENTER_CHECKOUT, ENTER_CHECKOUT_SUCCESS } from '../constants/actionTypes
  */
 export const fetchPaymentMethods = () => async (dispatch) => {
   LoadingProvider.setLoading(CHECKOUT_PATTERN);
-  // dispatch({ type: ENTER_CHECKOUT });
+  dispatch({ type: FETCH_PAYMENT_METHODS });
 
-  // TODO: order creation here (if omnichannel checkout is enabled)
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  const pipelineRequest = new PipelineRequest('shopgate.checkout.getPaymentMethods');
+  const { paymentMethods } = await pipelineRequest.dispatch();
 
-  // dispatch({ type: ENTER_CHECKOUT_SUCCESS });
+  dispatch({
+    type: FETCH_PAYMENT_METHODS_SUCCESS,
+    paymentMethods,
+  });
   LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
 };
 

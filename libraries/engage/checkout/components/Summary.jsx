@@ -62,7 +62,7 @@ const styles = {
  * @returns {JSX}
  */
 const Billing = () => {
-  useCheckoutContext();
+  const { taxLines } = useCheckoutContext();
 
   return (
     <div className={styles.root}>
@@ -71,14 +71,32 @@ const Billing = () => {
       </span>
       <div className={styles.card}>
         <div className={styles.columnLabel}>
-          <span className={styles.line}>Line 1</span>
-          <span className={styles.line}>Line 2</span>
-          <span className={styles.lineBold}>Line 3</span>
+          {taxLines.filter(t => t.visible).map((taxLine, i) => (
+            <span
+              key={taxLine.type}
+              className={
+                i === (taxLines.length - 1)
+                  ? styles.lineBold
+                  : styles.line
+              }
+            >
+              {i18n.text(`checkout.summary.${taxLine.type}`)}
+            </span>
+          ))}
         </div>
         <div className={styles.columnPrice}>
-          <span className={styles.priceLine}>$123.12</span>
-          <span className={styles.priceLine}>$123.12</span>
-          <span className={styles.priceLineBold}>$123.12</span>
+          {taxLines.filter(t => t.visible).map((taxLine, i) => (
+            <span
+              key={taxLine.type}
+              className={
+                i === (taxLines.length - 1)
+                  ? styles.priceLineBold
+                  : styles.priceLine
+              }
+            >
+              {i18n.price(taxLine.value, taxLine.currencyCode, true)}
+            </span>
+          ))}
         </div>
       </div>
     </div>

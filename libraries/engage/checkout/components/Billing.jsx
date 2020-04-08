@@ -33,7 +33,7 @@ const styles = {
  * @returns {JSX}
  */
 const Billing = () => {
-  useCheckoutContext();
+  const { billingAddress } = useCheckoutContext();
 
   return (
     <div className={styles.root}>
@@ -41,9 +41,23 @@ const Billing = () => {
         {i18n.text('checkout.billing.headline')}
       </span>
       <Card className={styles.card}>
-        <span>Rene Eichhorn</span>
-        <span>13373 Something</span>
-        <span>Austin TX 78912</span>
+        <span>
+          {billingAddress.middleName?.length
+            ? `${billingAddress.firstName} ${billingAddress.middleName} ${billingAddress.lastName}`
+            : `${billingAddress.firstName} ${billingAddress.lastName}`
+          }
+        </span>
+        <span>{billingAddress.address1}</span>
+        {billingAddress.address2?.length ? (
+          <span>{billingAddress.address2}</span>
+        ) : null}
+        {billingAddress.address3?.length ? (
+          <span>{billingAddress.address3}</span>
+        ) : null}
+        {billingAddress.address4?.length ? (
+          <span>{billingAddress.address4}</span>
+        ) : null}
+        <span>{i18n.text('checkout.billing.address', billingAddress)}</span>
       </Card>
     </div>
   );

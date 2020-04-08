@@ -1,19 +1,21 @@
-import { LoadingProvider } from '@shopgate/engage/core';
+import { PipelineRequest, LoadingProvider } from '@shopgate/engage/core';
 import { CHECKOUT_PATTERN } from '../constants/routes';
-import { ENTER_CHECKOUT, ENTER_CHECKOUT_SUCCESS } from '../constants/actionTypes';
+import { UPDATE_CHECKOUT_ORDER, UPDATE_CHECKOUT_ORDER_SUCCESS } from '../constants/actionTypes';
 
 /**
  * Starts entering the checkout process for the customer.
+ * @param {Object} payload Order payload.
  * @returns {Function}
  */
-export const updateCheckoutOrder = () => async (dispatch) => {
+export const updateCheckoutOrder = payload => async (dispatch) => {
   LoadingProvider.setLoading(CHECKOUT_PATTERN);
-  // dispatch({ type: ENTER_CHECKOUT });
+  dispatch({ type: UPDATE_CHECKOUT_ORDER });
 
-  // TODO: order creation here (if omnichannel checkout is enabled)
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  await (new PipelineRequest('shopgate.checkout.updateOrder')
+    .setInput(payload)
+    .dispatch());
 
-  // dispatch({ type: ENTER_CHECKOUT_SUCCESS });
+  dispatch({ type: UPDATE_CHECKOUT_ORDER_SUCCESS });
   LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
 };
 

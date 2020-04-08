@@ -321,13 +321,17 @@
       }
     },
     "billing": {
-      "headline": "Billing Address"
+      "headline": "Billing Address",
+      "address": "{postalCode} {city}"
     },
     "creditCard": {
       "headline": "Credit Card"
     },
     "summary": {
-      "headline": "Order Summary"
+      "headline": "Order Summary",
+      "tax": "Tax",
+      "subTotal": "Subtotal",
+      "total": "Total"
     }
   },
   "error": {
