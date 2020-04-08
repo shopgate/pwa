@@ -5,6 +5,7 @@ export type OwnProps = {
   coupon: Coupon,
   id: string,
   messages: any[],
+  editable?: boolean
 }
 
 export type StateProps = {

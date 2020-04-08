@@ -29,6 +29,7 @@ type Props = {
 type ContextProps = {
   cartItemId: string,
   type: string,
+  editable?: boolean
 }
 
 /**
@@ -56,7 +57,10 @@ export function CartItemCouponLayout(props: Props, context: ContextProps) {
         </SurroundPortals>
       </Grid.Item>
       <Grid.Item className={`${content} ${contentLast}`} grow={1} shrink={0}>
-        <CartItemCouponDelete handleDelete={handleDelete} />
+        {context.editable && (
+          <CartItemCouponDelete handleDelete={handleDelete} />
+        )}
+
         <CartItemCouponFreeShipping freeShipping={!!coupon.freeShipping} />
         {(coupon.savedPrice && coupon.savedPrice.value > 0) && (
           <SurroundPortals portalName={CART_ITEM_PRICE} portalProps={context}>
@@ -75,4 +79,5 @@ CartItemCouponLayout.defaultProps = {
 CartItemCouponLayout.contextTypes = {
   cartItemId: PT.string,
   type: PT.string,
+  editable: PT.bool,
 };

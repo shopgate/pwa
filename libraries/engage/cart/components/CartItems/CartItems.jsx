@@ -11,6 +11,7 @@ type Props = {
   cartItems?: Item[],
   multiLineReservation?: boolean,
   onFocus: (hidden: boolean) => void,
+  editable?: boolean
 }
 
 /**
@@ -18,7 +19,9 @@ type Props = {
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-function CartItems({ cartItems, onFocus, multiLineReservation }: Props) {
+function CartItems({
+  cartItems, onFocus, multiLineReservation, editable,
+}: Props) {
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
@@ -32,7 +35,7 @@ function CartItems({ cartItems, onFocus, multiLineReservation }: Props) {
               multiLineReservation={multiLineReservation}
               fulfillmentLocationId={item.fulfillmentLocationId}
             >
-              <CartItem item={item} onFocus={onFocus} />
+              <CartItem item={item} onFocus={onFocus} editable={editable} />
             </CartItemCard>
           </ul>
         </CardList.Item>
@@ -44,6 +47,7 @@ function CartItems({ cartItems, onFocus, multiLineReservation }: Props) {
 CartItems.defaultProps = {
   cartItems: null,
   multiLineReservation: null,
+  editable: true,
 };
 
 export default hot(CartItems);
