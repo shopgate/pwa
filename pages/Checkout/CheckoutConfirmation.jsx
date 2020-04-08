@@ -3,6 +3,7 @@ import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar } from 'Components/AppBar/presets';
+import { CheckoutConfirmation } from '@shopgate/engage/checkout';
 import { i18n } from '@shopgate/engage/core';
 
 const { colors } = themeConfig;
@@ -18,6 +19,7 @@ const Checkout = () => (
         <AppBar.Title title={i18n.text('titles.checkout_confirmation')} />
       }
     />
+    <CheckoutConfirmation />
   </View>
 );
 
