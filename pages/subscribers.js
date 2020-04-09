@@ -16,6 +16,8 @@ import { subscriptions as coreConfig } from '@shopgate/engage/core/config';
 import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions';
+// Engage
+import engageCheckout from '@shopgate/engage/checkout/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
@@ -74,6 +76,8 @@ const subscriptions = [
   commerceReviews,
   commerceSearch,
   commerceScanner,
+  // Engage subscribers
+  engageCheckout,
   // Theme subscribers.
   app,
   viewport,
