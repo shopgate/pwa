@@ -86,7 +86,13 @@ const PickupContactForm = () => {
       .querySelector(
         `.pickupForm${firstError.charAt(0).toUpperCase()}${firstError.slice(1)} input`
       );
-    formElement.scrollIntoView({ behavior: 'smooth' });
+
+    // After switching the form fields are no longer rendered
+    // due to the visible flag being manipulated.
+    // Validations are triggered after that by the form builder.
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [formValidationErrors]);
 
   return (
