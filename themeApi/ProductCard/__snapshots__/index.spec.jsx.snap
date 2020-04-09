@@ -139,6 +139,14 @@ exports[`<ProductCard /> should render as expected 1`] = `
                 <Component
                   alt="Product Name"
                   itemProp="image"
+                  resolutions={
+                    Array [
+                      Object {
+                        "height": 440,
+                        "width": 440,
+                      },
+                    ]
+                  }
                   src={null}
                 >
                   <ProductImage
@@ -153,11 +161,6 @@ exports[`<ProductCard /> should render as expected 1`] = `
                     ratio={null}
                     resolutions={
                       Array [
-                        Object {
-                          "blur": 2,
-                          "height": 50,
-                          "width": 50,
-                        },
                         Object {
                           "height": 440,
                           "width": 440,
