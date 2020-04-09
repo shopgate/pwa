@@ -39,7 +39,7 @@ const style = {
     border: 0,
   }),
   button: css({
-    margin: `${variables.gap.big}px ${variables.gap.small * 1.5}px ${variables.gap.xbig}px ${variables.gap.small * 1.5}px`,
+    margin: `${variables.gap.big * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.xbig}px ${variables.gap.small * 1.5}px`,
     borderRadius: 2,
   }),
 };
