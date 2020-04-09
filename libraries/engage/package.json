@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/engage",
-  "version": "6.12.0-rc.1",
+  "version": "6.14.0-beta.3",
   "description": "Shopgate's ENGAGE library.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -15,12 +15,12 @@
     "connect"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "6.12.0-rc.1",
-    "@shopgate/pwa-common-commerce": "6.12.0-rc.1",
-    "@shopgate/pwa-core": "6.12.0-rc.1",
-    "@shopgate/pwa-ui-ios": "6.12.0-rc.1",
-    "@shopgate/pwa-ui-material": "6.12.0-rc.1",
-    "@shopgate/pwa-ui-shared": "6.12.0-rc.1",
+    "@shopgate/pwa-common": "6.14.0-beta.3",
+    "@shopgate/pwa-common-commerce": "6.14.0-beta.3",
+    "@shopgate/pwa-core": "6.14.0-beta.3",
+    "@shopgate/pwa-ui-ios": "6.14.0-beta.3",
+    "@shopgate/pwa-ui-material": "6.14.0-beta.3",
+    "@shopgate/pwa-ui-shared": "6.14.0-beta.3",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.3.1",
     "@virtuous/conductor": "~2.4.0",
