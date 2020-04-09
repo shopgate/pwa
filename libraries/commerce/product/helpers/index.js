@@ -82,19 +82,3 @@ export const transformRoute = (route) => {
     },
   };
 };
-
-export const getImageUrl = (route) => {
-  if (!route.params.productId || route.state.productId) {
-    return route;
-  }
-
-  return {
-    ...route,
-    state: {
-      ...route.state,
-      productId: hex2bin(route.params.productId),
-    },
-  };
-};
-
-

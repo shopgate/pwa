@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getActualImageSource, getThemeSettings, useWidgetSettings } from '@shopgate/engage/core';
+import { getFullImageSource, useWidgetSettings } from '@shopgate/engage/core';
 import { Swiper } from '@shopgate/engage/components';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
@@ -18,11 +19,11 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
 
   const { zoom = {} } = useWidgetSettings('@shopgate/engage/product/Gallery') || {};
 
-  const { GalleryImage: galleryResolutions } = getThemeSettings('AppImages') || {};
+  const { GalleryImage: galleryResolutions } = getProductImageSettings();
 
   const resolution = galleryResolutions[galleryResolutions.length - 1];
 
-  const imagesWithResolutions = images.map(src => getActualImageSource(src, resolution));
+  const imagesWithResolutions = images.map(src => getFullImageSource(src, resolution));
 
   return (
     <div className={styles.container}>

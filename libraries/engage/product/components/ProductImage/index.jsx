@@ -9,7 +9,6 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import styles from './style';
-import { getThemeSettings } from '../../../core';
 
 const { colors } = themeConfig;
 

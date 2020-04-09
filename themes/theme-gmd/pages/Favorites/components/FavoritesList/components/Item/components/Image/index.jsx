@@ -4,7 +4,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Link from '@shopgate/pwa-common/components/Link';
 import { ProductImage } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import styles from './style';
 
 /**
@@ -13,7 +13,7 @@ import styles from './style';
  * @constructor
  */
 const Image = ({ product }) => {
-  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
+  const { ListImage: gridResolutions } = getProductImageSettings();
 
   return (
     <div className={styles.image} aria-hidden>
@@ -31,7 +31,7 @@ const Image = ({ product }) => {
       </Link>
     </div>
   );
-}
+};
 
 Image.propTypes = {
   product: PropTypes.shape().isRequired,

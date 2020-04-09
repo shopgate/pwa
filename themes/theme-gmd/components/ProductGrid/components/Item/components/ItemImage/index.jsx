@@ -7,9 +7,9 @@ import {
   PRODUCT_ITEM_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { ProductImage } from '@shopgate/engage/product';
-import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 
-const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
+const { ListImage: gridResolutions } = getProductImageSettings();
 
 /**
  * The item image component.

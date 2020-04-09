@@ -34,7 +34,7 @@ jest.mock('@shopgate/engage/core', () => ({
       },
     ],
   }),
-  getActualImageSource: orig => orig,
+  getFullImageSource: orig => orig,
 }));
 
 jest.mock('@shopgate/engage/components', () => ({

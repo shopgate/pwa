@@ -18,7 +18,8 @@ import {
   enableRedirectHandler,
   setDefaultProductFetchParams,
 } from '@shopgate/engage/product';
-import { grantCameraPermissions, getThemeSettings } from '@shopgate/engage/core';
+import { grantCameraPermissions } from '@shopgate/engage/core';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import {
@@ -64,7 +65,7 @@ export default function app(subscribe) {
     }));
 
     // set formats for product images
-    let { HeroImage: pdpResolutions, GalleryImage: galleryResolutions } = getThemeSettings('AppImages') || {};
+    let { HeroImage: pdpResolutions, GalleryImage: galleryResolutions } = getProductImageSettings();
 
     if (!(pdpResolutions && pdpResolutions.length)) {
       pdpResolutions = PRODUCT_SLIDER_IMAGE_FORMATS;

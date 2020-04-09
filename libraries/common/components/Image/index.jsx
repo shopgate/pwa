@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
-import { getActualImageSource } from '../../helpers/data';
+import { getFullImageSource } from '@shopgate/engage/core';
 import Transition from '../Transition';
 import styles from './style';
 
@@ -158,7 +158,7 @@ class Image extends Component {
       }
     };
 
-    image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
+    image.src = getFullImageSource(src, this.props.resolutions[resolutionIndex]);
 
     return image.complete;
   }
@@ -173,7 +173,7 @@ class Image extends Component {
 
     if (index > -1) {
       src = !this.props.srcmap
-        ? getActualImageSource(this.props.src, this.props.resolutions[index])
+        ? getFullImageSource(this.props.src, this.props.resolutions[index])
         : this.props.srcmap[index];
     }
 

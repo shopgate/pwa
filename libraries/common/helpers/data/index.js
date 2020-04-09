@@ -1,6 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import { isAndroidOs } from '@shopgate/pwa-core';
-import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 import { isObject, isArray } from '../validation';
 
 /**
@@ -49,11 +48,12 @@ export const isExternal = url =>
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.
  * @param {number} dimension.height Height in pixels.
+ * @deprecated use @engage/core/helpers/getFullImageSource instead
  * @returns {string}
  */
 export const getActualImageSource = (src, { width, height }) => {
   if (src && src.includes('images.shopgate.services/v2/images')) {
-    const { fillColor = 'FFFFFF' } = getThemeSettings('AppImages') || {};
+    const fillColor = 'FFFFFF';
     const format = isAndroidOs ? 'webp' : 'jpeg';
 
     return `${src}&format=${format}&width=${width}&height=${height}&quality=75&fill=${fillColor.replace('#', '')}`;

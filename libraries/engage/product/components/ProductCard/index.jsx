@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { getThemeSettings, isBeta } from '@shopgate/engage/core';
+import { isBeta } from '@shopgate/engage/core';
 import {
   Link, Ellipsis, Portal, RatingStars, DiscountBadge,
 } from '@shopgate/engage/components';
@@ -14,6 +14,7 @@ import {
 } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
 import ProductGridPrice from '../ProductGridPrice';
+import { getProductImageSettings } from '../../helpers';
 import styles from './style';
 
 const location = 'productCard';
@@ -33,7 +34,7 @@ function ProductCard(props) {
     product, hidePrice, hideRating, hideName, titleRows,
   } = props;
 
-  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
+  const { ListImage: gridResolutions } = getProductImageSettings();
 
   return (
     <Link
