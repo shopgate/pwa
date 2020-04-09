@@ -180,37 +180,6 @@
       "products": "Produkte"
     }
   },
-  "checkout": {
-    "submit_order": "Buy Now",
-    "pickup_contact": {
-      "headline": "Pickup Contact Info",
-      "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
-      "form": {
-        "firstName": "Vorname *",
-        "lastName": "Nachname *",
-        "cellPhone": "Mobilnummer *",
-        "emailAddress": "E-Mail Adresse *",
-        "who_will_pickup": "Wer wird diese Bestellung abholen?",
-        "me": "Ich selbst",
-        "someone_else": "Jemand anderes",
-        "instructions": "Pickup Instructions",
-        "instructionsPlaceholder": "Please include information about your vehicle. Example: White Honda Accord/License Plate #"
-      }
-    },
-    "billing": {
-      "headline": "Billing Address",
-      "address": "{postalCode} {city}"
-    },
-    "creditCard": {
-      "headline": "Credit Card"
-    },
-    "summary": {
-      "headline": "Order Summary",
-      "tax": "Tax",
-      "subTotal": "Subtotal",
-      "total": "Total"
-    }
-  },
   "search": {
     "label": "Suche",
     "cancel": "Abbrechen",
@@ -347,6 +316,29 @@
       "tax": "Tax",
       "subTotal": "Subtotal",
       "total": "Total"
+    },
+    "submit_order": "Buy Now",
+    "pickup_contact": {
+      "headline": "Pickup Contact Info",
+      "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
+      "form": {
+        "firstName": "Vorname *",
+        "lastName": "Nachname *",
+        "cellPhone": "Mobilnummer *",
+        "emailAddress": "E-Mail Adresse *",
+        "who_will_pickup": "Wer wird diese Bestellung abholen?",
+        "me": "Ich selbst",
+        "someone_else": "Jemand anderes",
+        "instructions": "Pickup Instructions",
+        "instructionsPlaceholder": "Please include information about your vehicle. Example: White Honda Accord/License Plate #"
+      }
+    },
+    "billing": {
+      "headline": "Billing Address",
+      "address": "{postalCode} {city}"
+    },
+    "creditCard": {
+      "headline": "Credit Card"
     },
     "success": {
       "title": "Thank you for your order",
