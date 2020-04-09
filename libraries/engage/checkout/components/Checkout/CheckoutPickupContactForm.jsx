@@ -1,11 +1,11 @@
 import React from 'react';
 import { css } from 'glamor';
-import { i18n } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
 
-import generateFormConfig from './PickupContactForm.config';
-import { useCheckoutContext } from '../hooks/common';
+import generateFormConfig from './CheckoutPickupContactForm.config';
+import Section from './CheckoutSection';
+import { useCheckoutContext } from '../../hooks/common';
 
 const { colors, variables } = themeConfig;
 
@@ -91,22 +91,16 @@ const PickupContactForm = () => {
 
   return (
     <div className={styles.root}>
-      <span className={styles.h1}>
-        {i18n.text('checkout.pickup_contact.headline')}
-      </span>
-      {/*
-      <span className={styles.h2}>
-        {i18n.text('checkout.pickup_contact.subheadline')}
-      </span>
-      */}
-      <FormBuilder
-        className={styles.form}
-        name="PickupForm"
-        config={formConfig}
-        defaults={defaultPickupPersonState}
-        validationErrors={formValidationErrors}
-        handleUpdate={handleUpdate}
-      />
+      <Section title="checkout.pickup_contact.headline">
+        <FormBuilder
+          className={styles.form}
+          name="PickupForm"
+          config={formConfig}
+          defaults={defaultPickupPersonState}
+          validationErrors={formValidationErrors}
+          handleUpdate={handleUpdate}
+        />
+      </Section>
     </div>
   );
 };

@@ -22,6 +22,6 @@ export * from '@shopgate/pwa-common-commerce/checkout/selectors';
 export * from '@shopgate/pwa-common-commerce/checkout/streams';
 
 // Components
-export { default as Checkout } from './components/Checkout';
+export { default as Checkout } from './components/Checkout/Checkout';
 export { default as CheckoutConfirmation } from './components/CheckoutConfirmation/CheckoutConfirmation';
 

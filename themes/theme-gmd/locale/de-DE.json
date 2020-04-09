@@ -305,7 +305,7 @@
     }
   },
   "checkout": {
-    "submit_order": "Buy Now",
+    "submit_order": "Jetzt Bestellen",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",

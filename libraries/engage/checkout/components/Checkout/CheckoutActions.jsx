@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { RippleButton } from '@shopgate/engage/components';
-import { useCheckoutContext } from '../hooks/common';
+import { useCheckoutContext } from '../../hooks/common';
 
 const styles = {
   root: css({

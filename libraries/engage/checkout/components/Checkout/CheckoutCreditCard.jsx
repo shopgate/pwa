@@ -1,12 +1,11 @@
 import React from 'react';
 import { css } from 'glamor';
-import { Card } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/engage';
 import {
   CardElement,
 } from '@stripe/react-stripe-js';
-import { useStripeContext } from '../hooks/common';
+import Section from './CheckoutSection';
+import { useStripeContext } from '../../hooks/common';
 
 const { colors, variables } = themeConfig;
 
@@ -18,11 +17,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
-  }).toString(),
-  h1: css({
-    fontSize: 24,
-    color: colors.dark,
-    marginBottom: 4,
   }).toString(),
   card: css({
     padding: variables.gap.small,
@@ -52,12 +46,9 @@ const Billing = () => {
 
   return (
     <div className={styles.root}>
-      <span ref={cardRef} className={styles.h1}>
-        {i18n.text('checkout.creditCard.headline')}
-      </span>
-      <Card className={styles.card}>
+      <Section className={styles.card} title="checkout.creditCard.headline">
         <CardElement onChange={() => error && setError(null)} />
-      </Card>
+      </Section>
       {error ? (
         <span className={styles.error}>
           {error}

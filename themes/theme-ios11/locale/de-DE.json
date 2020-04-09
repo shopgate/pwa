@@ -21,7 +21,8 @@
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "checkout_confirmation": "Order Successful"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
