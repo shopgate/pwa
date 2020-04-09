@@ -45,7 +45,7 @@ const Billing = () => {
   }, [error]);
 
   return (
-    <div className={styles.root}>
+    <div ref={cardRef} className={styles.root}>
       <Section className={styles.card} title="checkout.creditCard.headline">
         <CardElement onChange={() => error && setError(null)} />
       </Section>
