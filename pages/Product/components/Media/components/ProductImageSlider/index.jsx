@@ -70,7 +70,12 @@ class ProductImageSlider extends Component {
     const {
       product, images, 'aria-hidden': ariaHidden, className,
     } = this.props;
-    const { HeroImage: pdpResolutions } = getThemeSettings('AppImages') || {};
+    const {
+      HeroImage: pdpResolutions = [{
+        width: 1024,
+        height: 1024,
+      }],
+    } = getThemeSettings('AppImages') || {};
     let content;
     let onClick = this.handleOpenGallery;
     let onKeyDown = this.handleOpenGallery;
