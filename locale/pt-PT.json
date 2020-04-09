@@ -20,7 +20,9 @@
     "reviews": "Avaliações",
     "browse": "Navegar",
     "favorites": "Favoritos",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "checkout": "Checkout",
+    "checkout_confirmation": "Order Successful"
   },
   "favorites": {
     "add": "Adicionar aos favoritos",

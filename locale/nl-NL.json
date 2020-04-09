@@ -20,7 +20,9 @@
     "reviews": "Reviews",
     "browse": "Bladeren",
     "favorites": "Favorieten",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "checkout": "Checkout",
+    "checkout_confirmation": "Order Successful"
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
