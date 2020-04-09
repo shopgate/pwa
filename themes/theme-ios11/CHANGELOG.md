@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.13.0](https://github.com/shopgate/pwa/compare/v6.12.1...v6.13.0) (2020-04-09)
+
+#### :bug: Bug Fix
+* [#983](https://github.com/shopgate/pwa/pull/983) FIXED: The FavoritesList items now show the base price. ([@devbucket](https://github.com/devbucket))
+* [#974](https://github.com/shopgate/pwa/pull/974) Improve shouldFetchData redux helper ([@alexbridge](https://github.com/alexbridge))
+* [#968](https://github.com/shopgate/pwa/pull/968) Removed semi-automated and incorrect validation error handling in the From Builder. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#964](https://github.com/shopgate/pwa/pull/964) Fixed Form Builder element visibility ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
 ## [v6.12.1](https://github.com/shopgate/pwa/compare/v6.12.0...v6.12.1) (2020-03-24)
 
 #### :rocket: Enhancement
