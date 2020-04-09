@@ -7,7 +7,7 @@ import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
 import { useStripeContext } from '../hooks/common';
-import { CHECKOUT_PATTERN } from '../constants/routes';
+import { CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
 
 type Props = {
   children: any,
@@ -17,11 +17,13 @@ type Props = {
   taxLines: any,
   userLocation: any,
   isDataReady: bool,
+  fetchCart: () => Promise<any>,
   initializeCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
   fetchPaymentMethods: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
   submitCheckoutOrder: () => Promise<any>,
+  historyReplace: (any) => void,
 };
 
 const defaultPickupPersonState = {
@@ -53,6 +55,7 @@ const convertValidationErrors = validationErrors => Object
  * @returns {JSX}
  */
 const CheckoutProvider = ({
+  historyReplace,
   initializeCheckout,
   fetchCheckoutOrder,
   fetchPaymentMethods,
@@ -62,6 +65,7 @@ const CheckoutProvider = ({
   shopSettings,
   billingAddress,
   paymentTransactions,
+  fetchCart,
   taxLines,
   userLocation,
   isDataReady,
@@ -133,14 +137,24 @@ const CheckoutProvider = ({
         platform: 'engage',
       });
       setLocked(false);
+
+      // Order is done, fetch again to retrieve infos for success page
+      await Promise.all([
+        fetchCheckoutOrder(),
+        fetchCart(),
+      ]);
+      historyReplace({ pathname: CHECKOUT_CONFIRMATION_PATTERN });
     };
     fn();
   }, [
+    historyReplace,
+    fetchCart,
     activePaymentMethod,
     billingAddress,
     paymentTransactions,
     submitCheckoutOrder,
     updateCheckoutOrder,
+    fetchCheckoutOrder,
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.

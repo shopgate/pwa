@@ -6,6 +6,7 @@ import {
   getCheckoutTaxLines,
   getCheckoutPaymentTransactions,
 } from '@shopgate/engage/checkout/selectors/order';
+import { fetchCart } from '@shopgate/engage/cart';
 import {
   initializeCheckout,
   fetchCheckoutOrder,
@@ -13,6 +14,7 @@ import {
   updateCheckoutOrder,
   submitCheckoutOrder,
 } from '@shopgate/engage/checkout';
+import { historyReplace } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
@@ -35,6 +37,8 @@ function makeMapStateToProps() {
 }
 
 const mapDispatchToProps = {
+  historyReplace,
+  fetchCart,
   initializeCheckout,
   fetchCheckoutOrder,
   updateCheckoutOrder,
