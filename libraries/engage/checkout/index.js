@@ -9,6 +9,8 @@ export { submitCheckoutOrder } from '@shopgate/engage/checkout/actions/submitChe
 export { initializeCheckout } from '@shopgate/engage/checkout/actions/initializeCheckout';
 export { fetchPaymentMethods } from '@shopgate/engage/checkout/actions/fetchPaymentMethods';
 
+export { clearCheckoutOrder } from '@shopgate/engage/checkout/action-creators/clearCheckoutOrder';
+
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/checkout/constants/index';
 export * from '@shopgate/pwa-common-commerce/checkout/constants/Pipelines';
