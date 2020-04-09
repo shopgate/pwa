@@ -3,6 +3,7 @@ import {
   FETCH_CHECKOUT_ORDER,
   FETCH_CHECKOUT_ORDER_SUCCESS,
   FETCH_CHECKOUT_ORDER_ERROR,
+  CLEAR_CHECKOUT_ORDER,
   FETCH_PAYMENT_METHODS,
   FETCH_PAYMENT_METHODS_SUCCESS,
   FETCH_PAYMENT_METHODS_ERROR,
@@ -48,6 +49,13 @@ export default function checkoutReducer(state = initialState, action) {
       case FETCH_CHECKOUT_ORDER_ERROR: {
         draft.checkoutOrder.isFetching = false;
         draft.checkoutOrder.errors = action.errors;
+        break;
+      }
+
+      case CLEAR_CHECKOUT_ORDER: {
+        draft.checkoutOrder.isFetching = false;
+        draft.checkoutOrder.errors = [];
+        draft.checkoutOrder.data = null;
         break;
       }
 

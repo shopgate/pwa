@@ -48,8 +48,8 @@ const style = {
  * CheckoutConfirmation component
  * @returns {JSX}
  */
-const CheckoutConfirmation = ({ order, cartItems }) => {
-  if (!order) {
+const CheckoutConfirmation = ({ order, cartItems, onContinueShopping }) => {
+  if (!order || !cartItems) {
     return null;
   }
 
@@ -87,7 +87,8 @@ const CheckoutConfirmation = ({ order, cartItems }) => {
       <RippleButton
         type="secondary"
         disabled={false}
-        className={style.button}
+        className={style.button.toString()}
+        onClick={onContinueShopping}
       >
         {i18n.text('checkout.success.continue')}
       </RippleButton>
@@ -96,9 +97,15 @@ const CheckoutConfirmation = ({ order, cartItems }) => {
   );
 };
 
+CheckoutConfirmation.defaultProps = {
+  cartItems: null,
+  order: null,
+};
+
 CheckoutConfirmation.propTypes = {
-  cartItems: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  order: PropTypes.shape().isRequired,
+  onContinueShopping: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(PropTypes.shape()),
+  order: PropTypes.shape(),
 };
 
 export default connect(CheckoutConfirmation);

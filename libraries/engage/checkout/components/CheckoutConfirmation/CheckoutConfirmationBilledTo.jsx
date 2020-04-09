@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import startCase from 'lodash/startCase';
 import { i18n } from '../../../core/helpers/i18n';
 import CheckoutConfirmationSection from './CheckoutConfirmationSection';
 
@@ -28,7 +29,7 @@ const CheckoutConfirmationBilledTo = ({ order }) => {
       },
       {
         label: i18n.text('checkout.success.payment_method'),
-        text: `${type} ****${last4}`,
+        text: `${startCase(type)} ****${last4}`,
       },
     ];
   }, [order]);
