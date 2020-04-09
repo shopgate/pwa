@@ -19,7 +19,9 @@
     "shipping": "Spedizione",
     "reviews": "Recensioni",
     "favorites": "Favoriti",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "checkout": "Checkout",
+    "checkout_confirmation": "Order Successful"
   },
   "favorites": {
     "add": "Aggiungi ai favoriti",
@@ -297,6 +299,29 @@
     }
   },
   "checkout": {
+    "submit_order": "Buy Now",
+    "pickup_contact": {
+      "headline": "Pickup Contact Info",
+      "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
+      "form": {
+        "firstName": "First Name *",
+        "lastName": "Last Name *",
+        "cellPhone": "Mobile Number *",
+        "emailAddress": "E-Mail Address *",
+        "who_will_pickup": "Who will pick up this order?",
+        "me": "Me",
+        "someone_else": "Someone else",
+        "instructions": "Pickup Instructions",
+        "instructionsPlaceholder": "Please include information about your vehicle. Example: White Honda Accord/License Plate #"
+      }
+    },
+    "billing": {
+      "headline": "Billing Address",
+      "address": "{postalCode} {city}"
+    },
+    "creditCard": {
+      "headline": "Credit Card"
+    },
     "summary": {
       "headline": "Order Summary",
       "tax": "Tax",
