@@ -22,6 +22,14 @@ exports[`<ItemImage /> should render 1`] = `
       alt="FooBar"
       aria-hidden={true}
       itemProp="image"
+      resolutions={
+        Array [
+          Object {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
       src="http://www.google.com"
     />
   </Portal>
