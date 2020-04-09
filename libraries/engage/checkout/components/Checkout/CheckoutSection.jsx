@@ -19,6 +19,7 @@ const styles = {
     margin: 0,
     padding: variables.gap.big,
     display: 'table',
+    width: '100%',
   }),
   table: css({
     ' td:last-child': {

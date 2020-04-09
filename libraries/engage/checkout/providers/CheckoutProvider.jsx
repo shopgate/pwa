@@ -101,6 +101,7 @@ const CheckoutProvider = ({
 
       // Update order to set pickup contact.
       await updateCheckoutOrder({
+        notes: values.instructions,
         addressSequences: [
           billingAddress,
           // When the customer is picking up himself we just take the
@@ -114,7 +115,6 @@ const CheckoutProvider = ({
             lastName: values.lastName,
             mobile: values.cellPhone,
             emailAddress: values.emailAddress,
-            notes: values.instructions,
           },
         ],
         primaryBillToAddressSequenceIndex: 0,

@@ -39,6 +39,7 @@ const style = {
     border: 0,
   }),
   button: css({
+    flex: '0 0 auto',
     margin: `${variables.gap.big * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.xbig}px ${variables.gap.small * 1.5}px`,
     borderRadius: 2,
   }),
