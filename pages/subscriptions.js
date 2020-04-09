@@ -16,8 +16,9 @@ import {
   productImageFormats,
   enableRedirectHandler,
   setDefaultProductFetchParams,
+  getProductImageSettings,
 } from '@shopgate/engage/product';
-import { grantCameraPermissions, getThemeSettings } from '@shopgate/engage/core';
+import { grantCameraPermissions } from '@shopgate/engage/core';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import {
   PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,
@@ -62,7 +63,7 @@ export default function app(subscribe) {
     }));
 
     // set formats for product images
-    let { HeroImage: pdpResolutions, GalleryImage: galleryResolutions } = getThemeSettings('AppImages') || {};
+    let { HeroImage: pdpResolutions, GalleryImage: galleryResolutions } = getProductImageSettings();
 
     if (!(pdpResolutions && pdpResolutions.length)) {
       pdpResolutions = PRODUCT_SLIDER_IMAGE_FORMATS;

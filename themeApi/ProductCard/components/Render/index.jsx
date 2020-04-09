@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getThemeSettings, isBeta } from '@shopgate/engage/core';
+import { isBeta } from '@shopgate/engage/core';
 import {
-  FeaturedMedia, MapPriceHint, OrderQuantityHint, ProductImage,
+  FeaturedMedia, getProductImageSettings, MapPriceHint, OrderQuantityHint, ProductImage,
 } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
@@ -38,7 +38,7 @@ function ProductCardRender({
     rating,
   } = product;
 
-  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
+  const { ListImage: gridResolutions } = getProductImageSettings();
 
   return (
     <Link tagName="a" href={url}>

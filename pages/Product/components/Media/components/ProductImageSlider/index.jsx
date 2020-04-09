@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
-import { getActualImageSource, getThemeSettings } from '@shopgate/engage/core';
+import { getFullImageSource } from '@shopgate/engage/core';
 import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
@@ -10,6 +10,7 @@ import {
   PRODUCT_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/product';
 import { ProductImage } from '@shopgate/engage/product';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import connect from './connector';
 
 /**
@@ -50,8 +51,6 @@ class ProductImageSlider extends Component {
     return !isEqual(this.props.images, nextProps.images);
   }
 
-  currentSlide = 0;
-
   handleOpenGallery = () => {
     this.props.navigate(this.currentSlide);
   };
@@ -70,12 +69,7 @@ class ProductImageSlider extends Component {
     const {
       product, images, 'aria-hidden': ariaHidden, className,
     } = this.props;
-    const {
-      HeroImage: pdpResolutions = [{
-        width: 1024,
-        height: 1024,
-      }],
-    } = getThemeSettings('AppImages') || {};
+    const { HeroImage: pdpResolutions } = getProductImageSettings();
     let content;
     let onClick = this.handleOpenGallery;
     let onKeyDown = this.handleOpenGallery;
@@ -116,7 +110,7 @@ class ProductImageSlider extends Component {
     }
 
     const imageStyle = product ? {
-      background: `url(${getActualImageSource(product.featuredImageBaseUrl, pdpResolutions[0])})`,
+      background: `url(${getFullImageSource(product.featuredImageBaseUrl, pdpResolutions[pdpResolutions.length - 1])})`,
       backgroundSize: 'contain',
       transform: 'translate3d(0, 0, 0)',
     } : null;
