@@ -19,11 +19,13 @@ export { CHECKOUT_PATH };
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/checkout/selectors';
+export * from './selectors/guestCheckout';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/checkout/streams';
 
 // Components
 export { default as Checkout } from './components/Checkout/Checkout';
+export { default as GuestCheckout } from './components/GuestCheckout/GuestCheckout';
 export { default as CheckoutConfirmation } from './components/CheckoutConfirmation/CheckoutConfirmation';
 
