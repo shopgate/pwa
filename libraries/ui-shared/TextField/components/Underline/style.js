@@ -37,7 +37,7 @@ const underline = css({
  * @return {Object} style
  */
 const underlineStyle = (focused, hasError) => ({
-  borderBottomColor: hasError ? themeConfig.colors.error : themeConfig.colors.focus,
+  borderBottomColor: hasError ? themeConfig.colors.error : `var(--color-primary, ${themeConfig.colors.focus})`,
   ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
 });
 

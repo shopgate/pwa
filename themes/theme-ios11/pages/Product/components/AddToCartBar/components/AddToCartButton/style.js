@@ -9,8 +9,8 @@ const button = css({
   top: 0,
   display: 'block',
   flexGrow: 1,
-  background: colors.cta,
-  color: colors.ctaContrast,
+  background: `var(--color-primary, ${colors.cta})`,
+  color: `var(--color-primary-contrast, ${colors.ctaContrast})`,
   fontSize: 16,
   fontWeight: 700,
   borderRadius: 5,
@@ -22,6 +22,7 @@ const button = css({
 
 const disabled = css(button, {
   background: colors.shade5,
+  color: colors.light,
 });
 
 export default {

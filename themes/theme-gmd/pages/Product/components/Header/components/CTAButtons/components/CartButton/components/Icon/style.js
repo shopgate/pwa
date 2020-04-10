@@ -14,8 +14,12 @@ const icon = css({
 });
 
 const iconCart = css(icon, {
-  fill: colors.light,
+  fill: `var(--color-primary-contrast, ${colors.light})`,
 }).toString();
+
+const iconCartDisabled = css(icon, {
+  fill: colors.light,
+});
 
 const iconTick = css(icon, {
   fill: `var(--color-primary, ${colors.primary})`,
@@ -24,5 +28,6 @@ const iconTick = css(icon, {
 export default {
   container,
   iconCart,
+  iconCartDisabled,
   iconTick,
 };

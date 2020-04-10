@@ -40,7 +40,7 @@ export const productInfoLeft = css({
 }).toString();
 
 export const priceInfo = css({
-  color: themeColors.primary,
+  color: `var(--color-primary, ${themeColors.primary})`,
   flexGrow: 0,
   textAlign: 'right',
   wordBreak: 'break-word',
