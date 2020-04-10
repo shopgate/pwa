@@ -8,7 +8,7 @@ exports[`RadioButton should render selected RadioButton 1`] = `
     checked={true}
     checkedIcon={
       <RadioChecked
-        className="css-17u2540"
+        className="css-7tg3d8"
       />
     }
     disabled={false}
@@ -27,17 +27,17 @@ exports[`RadioButton should render selected RadioButton 1`] = `
       onClick={[Function]}
     >
       <RadioChecked
-        className="css-17u2540"
+        className="css-7tg3d8"
       >
         <Icon
-          className="css-17u2540"
+          className="css-7tg3d8"
           color={null}
           content="<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
           size="inherit"
           viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb css-17u2540"
+            className="css-yys9hb css-7tg3d8"
             dangerouslySetInnerHTML={
               Object {
                 "__html": "<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -64,7 +64,7 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
   <Checkbox
     checkedIcon={
       <RadioChecked
-        className="css-17u2540"
+        className="css-7tg3d8"
       />
     }
     disabled={false}

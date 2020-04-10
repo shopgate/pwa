@@ -5,7 +5,7 @@ exports[`TabBar favorites action - lifecycle should update when number exceeds m
   favoritesCount={9999}
 >
   <div
-    className="css-p6tvz"
+    className="css-2xnaag"
   >
     999+
   </div>
@@ -17,7 +17,7 @@ exports[`TabBar favorites action - lifecycle should update when number is change
   favoritesCount={99}
 >
   <div
-    className="css-p6tvz"
+    className="css-2xnaag"
   >
     99
   </div>
@@ -43,7 +43,7 @@ exports[`TabBar favorites action should render exact number 1`] = `
       favoritesCount={1}
     >
       <div
-        className="css-p6tvz"
+        className="css-2xnaag"
       >
         1
       </div>

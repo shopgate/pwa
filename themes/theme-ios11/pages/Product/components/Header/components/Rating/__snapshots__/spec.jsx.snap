@@ -238,7 +238,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                 </div>
               </div>
               <div
-                className="css-16y9zin"
+                className="css-1m683rn"
               >
                 <div
                   className="css-1xicacy css-q4owmg"
@@ -356,7 +356,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
             prominent={true}
           >
             <Translate
-              className="css-a7xi3l css-oixusm"
+              className="css-a7xi3l css-760a0s"
               params={
                 Object {
                   "count": 4,
@@ -368,7 +368,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
               transform={null}
             >
               <span
-                className="css-a7xi3l css-oixusm"
+                className="css-a7xi3l css-760a0s"
                 role={null}
               >
                 reviews.review_count

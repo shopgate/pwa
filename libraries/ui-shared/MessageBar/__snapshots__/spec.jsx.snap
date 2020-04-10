@@ -38,7 +38,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
     role="alert"
   >
     <div
-      className="css-1kmpcvg"
+      className="css-1eb86rn"
       key="info-something"
     >
       <span
@@ -89,7 +89,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     role="alert"
   >
     <div
-      className="css-1kmpcvg"
+      className="css-1eb86rn"
       key="info-This is some information"
     >
       <span
@@ -119,7 +119,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-1kmpcvg"
+      className="css-1eb86rn"
       key="info-Normal pre-translated message."
     >
       <span
@@ -129,7 +129,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-1kmpcvg"
+      className="css-1eb86rn"
       key="info-Normal pre-translated message."
     >
       <span
@@ -163,7 +163,7 @@ exports[`<MessageBar /> Multiple messages rendering should render with custom cl
     role="alert"
   >
     <div
-      className="cls-message css-1kmpcvg"
+      className="cls-message css-1eb86rn"
       key="info-This is some information"
     >
       <span
@@ -206,7 +206,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     role="alert"
   >
     <div
-      className="css-1kmpcvg"
+      className="css-1eb86rn"
       key="info-some.translation.string"
     >
       <span
@@ -216,7 +216,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
     </div>
     <div
-      className="css-1kmpcvg"
+      className="css-1eb86rn"
       key="info-Message with messageParams"
     >
       <span

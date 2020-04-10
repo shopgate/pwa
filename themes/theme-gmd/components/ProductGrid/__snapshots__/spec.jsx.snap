@@ -69,7 +69,7 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
         </div>
         <LoadingIndicator>
           <div
-            className="css-1aid7je"
+            className="css-h0xg2o"
           >
             <IndicatorCircle
               color="#5ccee3"
