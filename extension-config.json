@@ -215,12 +215,12 @@
             "background": "#fff",
             "color": "#000",
             "buttonColor": "inherit",
-            "buttonCartColor": "$.colors.primaryContrast",
-            "buttonCartBackground": "$.colors.primary",
-            "buttonCartBadgeColor": "$.colors.primary",
-            "buttonCartBadgeBackground": "$.colors.primaryContrast",
+            "buttonCartColor": "var(--color-primary-contrast, $.colors.primaryContrast)",
+            "buttonCartBackground": "var(--color-primary, $.colors.primary)",
+            "buttonCartBadgeColor": "var(--color-primary, $.colors.primary)",
+            "buttonCartBadgeBackground": "var(--color-primary-contrast, $.colors.primaryContrast)",
             "buttonCartBadgeShadow": "0 1px 1px rgba(0, 0, 0, 0.25)",
-            "buttonTextColor": "$.colors.accent",
+            "buttonTextColor": "var(--color-secondary, $.colors.accent)",
             "buttonTextColorDisabled": "$.colors.shade4"
           },
           "@shopgate/engage/product/ProductGrid": {

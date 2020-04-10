@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors } = themeConfig;
 
 const iconCircleEnabled = css({
-  fill: colors.primary,
+  fill: `var(--color-primary, ${colors.primary})`,
 }).toString();
 
 const iconArrowEnabled = css({

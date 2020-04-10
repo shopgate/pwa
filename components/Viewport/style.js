@@ -11,6 +11,10 @@ css.global('html, body', {
 
 css.global('html', {
   '--page-background-color': defaultBackgroundColor,
+  '--color-primary': colors.primary,
+  '--color-primary-contrast': colors.primaryContrast,
+  '--color-secondary': colors.accent,
+  '--color-secondary-contrast': colors.accentContrast,
 });
 
 css.global('body', {
