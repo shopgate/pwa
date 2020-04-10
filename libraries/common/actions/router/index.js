@@ -2,6 +2,7 @@ export * from './historyPush';
 export * from './historyPop';
 export * from './historyReplace';
 export * from './historyReset';
+export * from './historyResetTo';
 export * from './historyRedirect';
 export * from './routeDidPop';
 export * from './routeDidPush';

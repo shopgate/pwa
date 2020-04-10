@@ -7,6 +7,7 @@ import {
   ACTION_RESET,
 } from '@virtuous/conductor';
 import Route from '@virtuous/conductor/Route';
+import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core';
 import { LoadingProvider } from '../providers';
@@ -44,6 +45,8 @@ export default function routerSubscriptions(subscribe) {
     const {
       params: {
         silent,
+        steps,
+        pathname: resetToPathname,
         action: historyAction,
         state: routeState,
       },
@@ -51,11 +54,17 @@ export default function routerSubscriptions(subscribe) {
 
     switch (historyAction) {
       case ACTION_POP: {
-        router.pop();
+        router.pop({
+          ...(typeof steps === 'number' && { steps }),
+        });
         return;
       }
       case ACTION_RESET: {
         router.reset();
+        return;
+      }
+      case HISTORY_RESET_TO: {
+        router.resetTo(resetToPathname);
         return;
       }
       default:
