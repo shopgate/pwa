@@ -50,7 +50,7 @@ const noAccount = css({
 
 const signup = css({
   display: 'inline-block',
-  color: colors.primary,
+  color: `var(--color-primary, ${colors.primary})`,
   width: 'auto',
   margin: '-.35em 0 -.35em -.35em',
   padding: '.35em',

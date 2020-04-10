@@ -7,7 +7,7 @@ const icon = css({
 }).toString();
 
 const checkedIcon = css({
-  color: themeConfig.colors.accent,
+  color: `var(--color-secondary, ${themeConfig.colors.accent})`,
 }).toString();
 
 const uncheckedIcon = css({

@@ -18,7 +18,7 @@ const iconCart = css(icon, {
 }).toString();
 
 const iconTick = css(icon, {
-  fill: colors.primary,
+  fill: `var(--color-primary, ${colors.primary})`,
 }).toString();
 
 export default {

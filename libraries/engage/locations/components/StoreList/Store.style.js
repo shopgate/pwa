@@ -90,7 +90,7 @@ export const openingHoursDay = css({
 }).toString();
 
 export const detailsPrimary = css({
-  color: themeColors.primary,
+  color: `var(--color-primary, ${themeColors.primary})`,
   lineHeight: '0.825rem',
 }).toString();
 

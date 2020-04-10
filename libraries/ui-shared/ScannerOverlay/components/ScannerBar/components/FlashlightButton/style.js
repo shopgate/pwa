@@ -22,7 +22,7 @@ const iconWrapper = css({
 
 const icon = css({
   boxSizing: 'content-box',
-  color: themeConfig.colors.accent,
+  color: `var(--color-secondary, ${themeConfig.colors.accent})`,
 }).toString();
 
 export default {

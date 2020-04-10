@@ -30,7 +30,7 @@ export const content = css({
     paddingLeft: '1.2em',
   },
   ' a': {
-    color: colors.primary,
+    color: `var(--color-primary, ${colors.primary})`,
     margin: '-.35em',
     padding: '.35em',
     position: 'relative',

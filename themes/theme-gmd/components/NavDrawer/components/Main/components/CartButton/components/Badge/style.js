@@ -6,9 +6,9 @@ const { colors, variables } = themeConfig;
 const size = variables.gap.big * 1.125;
 
 export default css({
-  backgroundColor: colors.primary,
+  backgroundColor: `var(--color-primary, ${colors.primary})`,
   borderRadius: size,
-  color: colors.primaryContrast,
+  color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
   fontSize: 12,
   fontWeight: 700,
   height: size,

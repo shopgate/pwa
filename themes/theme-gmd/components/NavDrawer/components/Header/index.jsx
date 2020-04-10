@@ -20,12 +20,12 @@ const NavDrawerHeader = ({
   if (!isLoggedIn) {
     return (
       <NavDrawer.Item
-        icon={props => <AccountBoxIcon color={colors.light} {...props} />}
+        icon={props => <AccountBoxIcon color={`var(--color-primary-contrast, ${colors.primaryContrast})`} {...props} />}
         label="navigation.login_register"
         onClick={openLogin}
         style={{
-          background: colors.primary,
-          color: colors.light,
+          background: `var(--color-primary, ${colors.primary})`,
+          color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
         }}
         testId="navDrawerLoginButton"
       />

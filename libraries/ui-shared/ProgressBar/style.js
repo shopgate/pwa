@@ -2,8 +2,10 @@ import { css } from 'glamor';
 import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
+const { colors } = themeConfig;
+
 const progressBarHeight = 4;
-const progressBarBackground = Color(themeConfig.colors.accent).fade(0.6);
+const progressBarBackground = Color(colors.accent).fade(0.6);
 
 const wrapper = css({
   position: 'absolute',
@@ -20,7 +22,7 @@ const innerElement = css({
   ':before': {
     content: '""',
     position: 'absolute',
-    background: themeConfig.colors.accent,
+    background: `var(--color-secondary, ${colors.accent})`,
     top: 0,
     left: 0,
     bottom: 0,
@@ -29,7 +31,7 @@ const innerElement = css({
   ':after': {
     content: '""',
     position: 'absolute',
-    background: themeConfig.colors.accent,
+    background: `var(--color-secondary, ${colors.accent})`,
     top: 0,
     left: 0,
     bottom: 0,

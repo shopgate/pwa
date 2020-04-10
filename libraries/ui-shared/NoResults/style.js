@@ -14,7 +14,7 @@ const wrapper = css({
 
 const icon = css({
   width: 216,
-  color: themeConfig.colors.primary,
+  color: `var(--color-primary, ${themeConfig.colors.primary})`,
 }).toString();
 
 const headline = css({
