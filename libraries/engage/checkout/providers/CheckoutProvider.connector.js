@@ -6,7 +6,7 @@ import {
   getCheckoutTaxLines,
   getCheckoutPaymentTransactions,
 } from '@shopgate/engage/checkout/selectors/order';
-import { fetchCart } from '@shopgate/engage/cart';
+import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
 import {
   initializeCheckout,
   fetchCheckoutOrder,

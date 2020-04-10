@@ -73,28 +73,6 @@ const PickupContactForm = () => {
     formSetValues(values);
   }, [formSetValues]);
 
-  // Whenever form validations come in we need to scroll to the right field.
-  React.useEffect(() => {
-    if (!formValidationErrors.length) {
-      return;
-    }
-
-    const firstError = formValidationErrors[0].path;
-
-    // TODO: FormBuilder should have that out of the box.
-    const formElement = document
-      .querySelector(
-        `.pickupForm${firstError.charAt(0).toUpperCase()}${firstError.slice(1)} input`
-      );
-
-    // After switching the form fields are no longer rendered
-    // due to the visible flag being manipulated.
-    // Validations are triggered after that by the form builder.
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [formValidationErrors]);
-
   return (
     <div className={styles.root}>
       <Section title="checkout.pickup_contact.headline">
