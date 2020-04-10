@@ -29,7 +29,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
   <g
     className={
       Object {
-        "data-css-1wsj2pd": "",
+        "data-css-15i6kln": "",
       }
     }
   >
@@ -55,7 +55,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
   <g
     className={
       Object {
-        "data-css-itadob": "",
+        "data-css-rmsnpj": "",
       }
     }
   >
