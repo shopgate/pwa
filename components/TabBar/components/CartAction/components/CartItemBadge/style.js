@@ -6,7 +6,7 @@ const { colors, variables } = themeConfig;
 export default css({
   position: 'absolute',
   background: `var(--color-secondary, ${colors.accent})`,
-  color: `var(--color-secondary-contrast, ${colors.accentContrast})`,
+  color: `var(--color-secondary-contrast, ${colors.light})`,
   fontSize: '0.7rem',
   lineHeight: 1.5,
   fontWeight: 'bold',
