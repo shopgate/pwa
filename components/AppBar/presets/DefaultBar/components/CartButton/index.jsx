@@ -49,8 +49,8 @@ class CartButton extends PureComponent {
 
     return {
       icon: {
-        background: buttonCartBackground || colors.primary,
-        color: buttonCartColor || colors.primaryContrast,
+        background: buttonCartBackground || `var(--color-primary, ${colors.primary})`,
+        color: buttonCartColor || `var(--color-primary-contrast, ${colors.primaryContrast})`,
       },
       badge: {
         background: buttonCartBadgeBackground,

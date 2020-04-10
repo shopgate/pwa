@@ -59,7 +59,7 @@ class CartButton extends Component {
    */
   get color() {
     if (this.state.clicked) {
-      return colors.light;
+      return `var(--color-primary-contrast, ${colors.light})`;
     }
 
     return (this.props.disabled && !this.props.loading) ? colors.shade5 : `var(--color-primary, ${colors.primary})`;
@@ -79,7 +79,11 @@ class CartButton extends Component {
       );
     }
 
-    return <Icon success={this.state.clicked} onSuccess={this.resetClicked} />;
+    return <Icon
+      disabled={this.props.disabled}
+      success={this.state.clicked}
+      onSuccess={this.resetClicked}
+    />;
   }
 
   /**
