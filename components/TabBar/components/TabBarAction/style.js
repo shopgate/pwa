@@ -24,7 +24,7 @@ const regular = css({
 }).toString();
 
 const highlighted = css({
-  color: themeColors.accent,
+  color: `var(--color-secondary, ${themeColors.accent})`,
 }).toString();
 
 const label = css({
