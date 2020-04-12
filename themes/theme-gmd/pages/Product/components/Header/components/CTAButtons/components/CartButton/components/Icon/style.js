@@ -19,7 +19,7 @@ const iconCart = css(icon, {
 
 const iconCartDisabled = css(icon, {
   fill: colors.light,
-});
+}).toString();
 
 const iconTick = css(icon, {
   fill: `var(--color-primary, ${colors.primary})`,
