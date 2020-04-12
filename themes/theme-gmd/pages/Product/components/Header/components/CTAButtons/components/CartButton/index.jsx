@@ -156,6 +156,7 @@ class CartButton extends Component {
         background={this.color}
         className={button}
         onClick={this.handleClick}
+        disabled={this.props.disabled}
         testId="addToCartButton"
       >
         <I18n.Text string="product.add_to_cart" className={hidden} />

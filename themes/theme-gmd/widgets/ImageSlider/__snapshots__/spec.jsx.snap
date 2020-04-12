@@ -238,7 +238,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       <div
                         aria-hidden={null}
                         aria-label={null}
-                        className="css-c6ki83 css-63oe3q"
+                        className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
                         role="link"
@@ -288,7 +288,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       <div
                         aria-hidden={null}
                         aria-label={null}
-                        className="css-c6ki83 css-63oe3q"
+                        className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
@@ -377,7 +377,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           <div
             aria-hidden={null}
             aria-label={null}
-            className="css-c6ki83 css-63oe3q"
+            className="css-9auwkz css-63oe3q"
             data-test-id="link: http://example.com"
             onClick={[Function]}
             role="link"
@@ -704,7 +704,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       <div
                         aria-hidden={null}
                         aria-label={null}
-                        className="css-c6ki83 css-63oe3q"
+                        className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
@@ -974,7 +974,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       <div
                         aria-hidden={null}
                         aria-label={null}
-                        className="css-c6ki83 css-63oe3q"
+                        className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
                         role="link"
@@ -1024,7 +1024,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       <div
                         aria-hidden={null}
                         aria-label={null}
-                        className="css-c6ki83 css-63oe3q"
+                        className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"

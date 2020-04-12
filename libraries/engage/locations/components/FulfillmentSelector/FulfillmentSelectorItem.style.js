@@ -10,6 +10,10 @@ export const radioContainer = css({
   padding: `${variables.gap.xsmall}px 0`,
 });
 
+export const disabled = css({
+  cursor: 'not-allowed',
+});
+
 const icon = {
   width: 24,
   height: 24,

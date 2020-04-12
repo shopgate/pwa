@@ -18,6 +18,9 @@ const button = (text, background) => ({
   color: text,
   backgroundColor: background,
   minWidth: 64,
+  ':disabled': {
+    cursor: 'not-allowed',
+  },
   ...themeConfig.variables.buttonBase,
 });
 
