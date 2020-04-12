@@ -245,13 +245,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={true}
                   >
                     <Button
-                      className="css-ot1d6i css-63oe3q"
+                      className="css-172ttat css-63oe3q"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-ot1d6i css-63oe3q css-1rn65c0"
+                        className="css-172ttat css-63oe3q css-1rn65c0"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -776,13 +776,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1568bjq css-63oe3q"
+                      className="css-1k9vl9z css-63oe3q"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1568bjq css-63oe3q css-1rn65c0"
+                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1375,13 +1375,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1568bjq css-63oe3q"
+                      className="css-1k9vl9z css-63oe3q"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1568bjq css-63oe3q css-1rn65c0"
+                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -2086,13 +2086,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={true}
                   >
                     <Button
-                      className="css-ot1d6i css-63oe3q"
+                      className="css-172ttat css-63oe3q"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-ot1d6i css-63oe3q css-1rn65c0"
+                        className="css-172ttat css-63oe3q css-1rn65c0"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -3026,13 +3026,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1568bjq css-63oe3q"
+                      className="css-1k9vl9z css-63oe3q"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1568bjq css-63oe3q css-1rn65c0"
+                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3322,13 +3322,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={true}
                   >
                     <Button
-                      className="css-ot1d6i css-63oe3q"
+                      className="css-172ttat css-63oe3q"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-ot1d6i css-63oe3q css-1rn65c0"
+                        className="css-172ttat css-63oe3q css-1rn65c0"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -3847,13 +3847,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1568bjq css-63oe3q"
+                      className="css-1k9vl9z css-63oe3q"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1568bjq css-63oe3q css-1rn65c0"
+                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
