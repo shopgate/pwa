@@ -72,7 +72,7 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
             className="css-h0xg2o"
           >
             <IndicatorCircle
-              color="#5ccee3"
+              color="var(--color-secondary, #5ccee3)"
               paused={false}
               size={32}
               strokeWidth={3}
@@ -86,7 +86,7 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <circle
-                  className="css-1ei1yr2"
+                  className="css-1u0o3o9"
                   cx="50"
                   cy="50"
                   r="20"
