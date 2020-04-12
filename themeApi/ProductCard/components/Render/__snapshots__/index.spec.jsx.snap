@@ -63,7 +63,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-9auwkz "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -816,7 +816,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-9auwkz "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -1291,7 +1291,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-9auwkz "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -2113,7 +2113,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-9auwkz "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -2935,7 +2935,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-9auwkz "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -3721,7 +3721,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-9auwkz "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -4288,7 +4288,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-9auwkz "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"

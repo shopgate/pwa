@@ -18,6 +18,9 @@ const button = css({
   outline: 0,
   transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   padding: `${(variables.gap.big * 0.75) - 1}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75) + 1}px`,
+  ':disabled': {
+    cursor: 'not-allowed',
+  },
 });
 
 const disabled = css(button, {

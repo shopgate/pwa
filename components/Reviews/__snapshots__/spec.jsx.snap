@@ -2046,13 +2046,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               wrapContent={false}
                             >
                               <Button
-                                className="css-y26h3z "
+                                className="css-4imzno "
                                 disabled={false}
                                 onClick={[Function]}
                                 testId="Button"
                               >
                                 <button
-                                  className="css-y26h3z  css-1rn65c0"
+                                  className="css-4imzno  css-1rn65c0"
                                   data-test-id="Button"
                                   disabled={false}
                                   onClick={[Function]}

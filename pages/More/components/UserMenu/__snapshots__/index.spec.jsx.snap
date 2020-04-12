@@ -281,7 +281,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         <div
                           aria-hidden={null}
                           aria-label={null}
-                          className="css-c6ki83 "
+                          className="css-9auwkz "
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
@@ -297,13 +297,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="css-ot1d6i css-6f03lb"
+                              className="css-172ttat css-6f03lb"
                               disabled={true}
                               onClick={null}
                               testId="UserMenuLogin"
                             >
                               <button
-                                className="css-ot1d6i css-6f03lb css-1rn65c0"
+                                className="css-172ttat css-6f03lb css-1rn65c0"
                                 data-test-id="UserMenuLogin"
                                 disabled={true}
                                 onClick={null}
@@ -365,7 +365,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         <div
                           aria-hidden={null}
                           aria-label={null}
-                          className="css-c6ki83 "
+                          className="css-9auwkz "
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
@@ -381,13 +381,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="css-ot1d6i css-6f03lb"
+                              className="css-172ttat css-6f03lb"
                               disabled={true}
                               onClick={null}
                               testId="UserMenuRegister"
                             >
                               <button
-                                className="css-ot1d6i css-6f03lb css-1rn65c0"
+                                className="css-172ttat css-6f03lb css-1rn65c0"
                                 data-test-id="UserMenuRegister"
                                 disabled={true}
                                 onClick={null}
@@ -529,7 +529,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         <div
                           aria-hidden={null}
                           aria-label={null}
-                          className="css-c6ki83 "
+                          className="css-9auwkz "
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
@@ -545,13 +545,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="css-1568bjq css-6f03lb"
+                              className="css-1k9vl9z css-6f03lb"
                               disabled={false}
                               onClick={null}
                               testId="UserMenuLogin"
                             >
                               <button
-                                className="css-1568bjq css-6f03lb css-1rn65c0"
+                                className="css-1k9vl9z css-6f03lb css-1rn65c0"
                                 data-test-id="UserMenuLogin"
                                 disabled={false}
                                 onClick={null}
@@ -613,7 +613,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         <div
                           aria-hidden={null}
                           aria-label={null}
-                          className="css-c6ki83 "
+                          className="css-9auwkz "
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
@@ -629,13 +629,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="css-1568bjq css-6f03lb"
+                              className="css-1k9vl9z css-6f03lb"
                               disabled={false}
                               onClick={null}
                               testId="UserMenuRegister"
                             >
                               <button
-                                className="css-1568bjq css-6f03lb css-1rn65c0"
+                                className="css-1k9vl9z css-6f03lb css-1rn65c0"
                                 data-test-id="UserMenuRegister"
                                 disabled={false}
                                 onClick={null}

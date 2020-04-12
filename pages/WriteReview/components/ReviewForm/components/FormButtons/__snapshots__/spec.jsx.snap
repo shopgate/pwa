@@ -28,7 +28,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             className="css-1v7qljm"
           >
             <button
-              className="css-kevfw8 css-1vphhlq"
+              className="css-1mcj1qh css-1vphhlq"
               data-test-id="reviewCancelButton"
               onClick={[Function]}
               type="button"
@@ -69,13 +69,13 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 wrapContent={false}
               >
                 <Button
-                  className="css-1568bjq "
+                  className="css-1k9vl9z "
                   disabled={false}
                   onClick={null}
                   testId="sendReviewButton"
                 >
                   <button
-                    className="css-1568bjq  css-1rn65c0"
+                    className="css-1k9vl9z  css-1rn65c0"
                     data-test-id="sendReviewButton"
                     disabled={false}
                     onClick={null}
