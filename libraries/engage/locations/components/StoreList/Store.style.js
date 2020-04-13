@@ -98,3 +98,14 @@ export const detailsSecondary = css({
   color: themeColors.shade3,
   fontSize: '0.75rem',
 }).toString();
+
+export const selectLocationButtonWrapper = css({
+  padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
+});
+
+export const selectLocationButton = css({
+  width: '100%',
+  fontSize: '.875rem !important',
+  background: `var(--color-primary, ${themeColors.primary})!important`,
+  color: `var(--color-primary-contrast, ${themeColors.primaryContrast})!important`,
+});

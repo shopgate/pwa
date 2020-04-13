@@ -139,13 +139,15 @@ function FulfillmentSelector(props: Props) {
     <FulfillmentSelectorContext.Provider value={context}>
       <div className={container}>
         <FulfillmentSelectorHeader />
-        <FulfillmentSelectorItem
-          name={DIRECT_SHIP}
-          onChange={handleChange}
-          disabled={!supportsDirectShip}
-        >
-          <FulfillmentSelectorDirectShip disabled={!supportsDirectShip || disabled} />
-        </FulfillmentSelectorItem>
+        {supportsDirectShip && (
+          <FulfillmentSelectorItem
+            name={DIRECT_SHIP}
+            onChange={handleChange}
+            disabled={!supportsDirectShip}
+          >
+            <FulfillmentSelectorDirectShip disabled={!supportsDirectShip || disabled} />
+          </FulfillmentSelectorItem>
+        )}
         <FulfillmentSelectorItem name={IN_STORE_PICKUP} onChange={handleChange} disabled={disabled}>
           <FulfillmentSelectorReserve />
         </FulfillmentSelectorItem>

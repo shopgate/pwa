@@ -2,6 +2,7 @@ import React, { useContext, Fragment } from 'react';
 import { StoreContext } from './Store.context';
 import { StoreHeader } from './StoreHeader';
 import { StoreDetails } from './StoreDetails';
+import { StoreSelectLocationButton } from './StoreSelectLocationButton';
 
 /**
  * Renders the store's card.
@@ -17,6 +18,7 @@ export function StoreCard() {
     <Fragment>
       <StoreHeader />
       <StoreDetails />
+      <StoreSelectLocationButton />
     </Fragment>
   );
 }
