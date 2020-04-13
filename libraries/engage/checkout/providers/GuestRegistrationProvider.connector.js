@@ -4,18 +4,14 @@ import { makeGetUserLocationAddress } from '@shopgate/engage/locations/selectors
 import {
   getCheckoutBillingAddress,
   getCheckoutPickupAddress,
-  getCheckoutTaxLines,
-  getCheckoutPaymentTransactions,
+  isPickupAndBillingEquals,
 } from '@shopgate/engage/checkout/selectors/order';
-import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
 import {
   initializeCheckout,
   fetchCheckoutOrder,
-  fetchPaymentMethods,
   updateCheckoutOrder,
-  submitCheckoutOrder,
 } from '@shopgate/engage/checkout';
-import { historyReplace } from '@shopgate/engage/core';
+import { historyPush } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
@@ -29,23 +25,19 @@ function makeMapStateToProps() {
    */
   return state => ({
     isDataReady: !getConfigFetching(state),
-    paymentTransactions: getCheckoutPaymentTransactions(state),
     shopSettings: getShopSettings(state),
     userLocation: getUserLocationAddress(state),
     billingAddress: getCheckoutBillingAddress(state),
     pickupAddress: getCheckoutPickupAddress(state),
-    taxLines: getCheckoutTaxLines(state),
+    billingPickupEquals: isPickupAndBillingEquals(state),
   });
 }
 
 const mapDispatchToProps = {
-  historyReplace,
-  fetchCart,
-  initializeCheckout,
+  historyPush,
   fetchCheckoutOrder,
+  initializeCheckout,
   updateCheckoutOrder,
-  fetchPaymentMethods,
-  submitCheckoutOrder,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

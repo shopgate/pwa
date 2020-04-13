@@ -10,10 +10,13 @@ import { useStripeContext } from '../hooks/common';
 import { CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
 
 type Props = {
+  orderInitialized?: bool,
+  orderReadOnly?: bool,
   children: any,
   shopSettings: any,
   paymentTransactions: any,
   billingAddress: any,
+  pickupAddress: any,
   taxLines: any,
   userLocation: any,
   isDataReady: bool,
@@ -55,6 +58,8 @@ const convertValidationErrors = validationErrors => Object
  * @returns {JSX}
  */
 const CheckoutProvider = ({
+  orderInitialized,
+  orderReadOnly,
   historyReplace,
   initializeCheckout,
   fetchCheckoutOrder,
@@ -64,6 +69,7 @@ const CheckoutProvider = ({
   children,
   shopSettings,
   billingAddress,
+  pickupAddress,
   paymentTransactions,
   fetchCart,
   taxLines,
@@ -78,7 +84,10 @@ const CheckoutProvider = ({
 
   // Initialize checkout process.
   const [isCheckoutInitialized] = useAsyncMemo(async () => {
-    await initializeCheckout();
+    if (!orderInitialized) {
+      await initializeCheckout();
+    }
+
     await updateCheckoutOrder({
       paymentTransactions: [{
         paymentMethod: {
@@ -86,6 +95,7 @@ const CheckoutProvider = ({
         },
       }],
     });
+
     await Promise.all([
       fetchCheckoutOrder(),
       fetchPaymentMethods(),
@@ -100,26 +110,28 @@ const CheckoutProvider = ({
       setLocked(true);
 
       // Update order to set pickup contact.
-      await updateCheckoutOrder({
-        notes: values.instructions,
-        addressSequences: [
-          billingAddress,
-          // When the customer is picking up himself we just take the
-          // billing address as pickup address.
-          values.pickupPerson === 'me' ? {
-            ...billingAddress,
-            type: 'pickup',
-          } : {
-            type: 'pickup',
-            firstName: values.firstName,
-            lastName: values.lastName,
-            mobile: values.cellPhone,
-            emailAddress: values.emailAddress,
-          },
-        ],
-        primaryBillToAddressSequenceIndex: 0,
-        primaryShipToAddressSequenceIndex: 1,
-      });
+      if (!orderReadOnly) {
+        await updateCheckoutOrder({
+          notes: values.instructions,
+          addressSequences: [
+            billingAddress,
+            // When the customer is picking up himself we just take the
+            // billing address as pickup address.
+            values.pickupPerson === 'me' ? {
+              ...billingAddress,
+              type: 'pickup',
+            } : {
+              type: 'pickup',
+              firstName: values.firstName,
+              lastName: values.lastName,
+              mobile: values.cellPhone,
+              emailAddress: values.emailAddress,
+            },
+          ],
+          primaryBillToAddressSequenceIndex: 0,
+          primaryShipToAddressSequenceIndex: 1,
+        });
+      }
 
       // Fulfill using selected payment method.
       const fulfilledPaymentTransactions = await activePaymentMethod.fulfillTransaction({
@@ -153,6 +165,7 @@ const CheckoutProvider = ({
     fetchCart,
     activePaymentMethod,
     billingAddress,
+    orderReadOnly,
     paymentTransactions,
     submitCheckoutOrder,
     updateCheckoutOrder,
@@ -194,6 +207,7 @@ const CheckoutProvider = ({
     defaultPickupPersonState,
     userLocation,
     billingAddress,
+    pickupAddress,
     taxLines,
   }), [
     isLocked,
@@ -203,6 +217,7 @@ const CheckoutProvider = ({
     shopSettings.supportedCountries,
     userLocation,
     billingAddress,
+    pickupAddress,
     taxLines,
   ]);
 
@@ -215,6 +230,11 @@ const CheckoutProvider = ({
       {children}
     </Context.Provider>
   );
+};
+
+CheckoutProvider.defaultProps = {
+  orderInitialized: false,
+  orderReadOnly: false,
 };
 
 export default connect(CheckoutProvider);

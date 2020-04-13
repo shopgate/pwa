@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/engage';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { BackBar } from 'Components/AppBar/presets';
 import { i18n } from '@shopgate/engage/core';
-import { GuestCheckout } from '@shopgate/engage/checkout';
+import { GuestRegistration } from '@shopgate/engage/checkout';
 
 const { colors } = themeConfig;
 
@@ -20,7 +20,7 @@ const GuestCheckoutPage = () => (
         <AppBar.Title title={i18n.text('titles.checkout')} />
       }
     />
-    <GuestCheckout />
+    <GuestRegistration />
   </View>
 );
 

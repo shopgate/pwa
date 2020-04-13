@@ -22,6 +22,8 @@ const ElementSelect = (props) => {
     return null;
   }
 
+  console.warn('foo', element.options);
+
   return (
     <div className={camelCase(name)}>
       <Select

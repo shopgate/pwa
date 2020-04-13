@@ -32,6 +32,41 @@ export const getCheckoutBillingAddress = createSelector(
 );
 
 /**
+ * Returns the pickup address of the order.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getCheckoutPickupAddress = createSelector(
+  getCheckoutOrder,
+  (order) => {
+    if (!order) return null;
+
+    const addresses = order.addressSequences || [];
+    return addresses[order.primaryShipToAddressSequenceIndex];
+  }
+);
+
+/**
+ * Returns whether the billing and pickup address are the same.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const isPickupAndBillingEquals = createSelector(
+  getCheckoutBillingAddress,
+  getCheckoutPickupAddress,
+  (billing, pickup) => {
+    if (!billing || !pickup) return true;
+
+    if (billing.mobile !== pickup.mobile) return false;
+    if (billing.emailAddress !== pickup.emailAddress) return false;
+    if (billing.firstName !== pickup.firstName) return false;
+    if (billing.lastName !== pickup.lastName) return false;
+
+    return true;
+  }
+);
+
+/**
  * Returns the number of the order.
  * @param {Object} state The application state.
  * @returns {Object}

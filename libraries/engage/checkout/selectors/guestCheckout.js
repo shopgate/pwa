@@ -5,6 +5,5 @@ import { getCheckoutOrder } from './order';
 export const isGuestCheckoutActive = createSelector(
   isUserLoggedIn,
   getCheckoutOrder,
-  // eslint-disable-next-line no-unused-vars
-  (userLoggedIn, checkoutOrder) => false
+  (userLoggedIn, checkoutOrder) => !userLoggedIn && checkoutOrder
 );
