@@ -4,12 +4,12 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors, variables } = themeConfig;
 
 const container = css({
-  color: colors.accentContrast,
+  color: `var(--color-secondary-contrast, ${colors.accentContrast})`,
   marginBottom: 4,
 }).toString();
 
 const loggedIn = css({
-  background: colors.accent,
+  background: `var(--color-secondary, ${colors.accent})`,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',

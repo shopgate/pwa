@@ -51,7 +51,7 @@ const priceStriked = css({
 
 const price = css({
   ...priceBase,
-  color: themeColors.primary,
+  color: `var(--color-primary, ${themeColors.primary})`,
   fontSize: '1rem',
 }).toString();
 

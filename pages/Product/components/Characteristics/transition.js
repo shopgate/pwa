@@ -4,11 +4,11 @@ const { colors } = themeConfig;
 
 export default {
   entering: {
-    background: colors.primary,
-    color: colors.primaryContrast,
+    background: `var(--color-primary, ${colors.primary})`,
+    color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
   },
   entered: {
-    background: colors.primary,
-    color: colors.primaryContrast,
+    background: `var(--color-primary, ${colors.primary})`,
+    color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
   },
 };
