@@ -6,8 +6,8 @@ const { colors } = themeConfig;
 
 export const button = css({
   width: '100%',
-  background: colors.cta,
-  color: `${colors.ctaContrast}!important`,
+  background: `var(--color-primary, ${colors.cta})`,
+  color: `var(--color-primary-contrast, ${colors.ctaContrast})!important`,
 
 }).toString();
 

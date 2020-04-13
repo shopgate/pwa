@@ -70,13 +70,13 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                   wrapContent={false}
                 >
                   <Button
-                    className="css-dh0pju "
+                    className="css-4imzno "
                     disabled={false}
                     onClick={[Function]}
                     testId="Button"
                   >
                     <button
-                      className="css-dh0pju  css-1rn65c0"
+                      className="css-4imzno  css-1rn65c0"
                       data-test-id="Button"
                       disabled={false}
                       onClick={[Function]}

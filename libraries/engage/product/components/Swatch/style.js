@@ -25,5 +25,5 @@ export const itemClass = css({
 }).toString();
 
 export const itemSelectedClass = css({
-  borderColor: colors.accent,
+  borderColor: `var(--color-secondary, ${colors.accent})`,
 }).toString();

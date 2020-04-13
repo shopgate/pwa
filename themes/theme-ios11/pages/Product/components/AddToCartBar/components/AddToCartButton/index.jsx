@@ -75,16 +75,17 @@ class AddToCartButton extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { itemCount } = this.props;
+    const { itemCount, disabled } = this.props;
     const { __ } = this.context.i18n();
     const style = this.state.opened ? { width: '40%' } : null;
-    const className = this.props.disabled ? styles.disabled : styles.button;
+    const className = disabled ? styles.disabled : styles.button;
 
     return (
       <button
         className={className}
         style={style}
         onClick={this.handleClick}
+        disabled={disabled}
         data-test-id="addToCartBarButton"
         aria-label={__(!itemCount ? 'product.add_to_cart' : 'product.go_to_cart')}
         type="button"

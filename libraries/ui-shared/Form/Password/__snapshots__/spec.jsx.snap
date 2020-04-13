@@ -191,7 +191,7 @@ exports[`<Password> should render a password field 1`] = `
               className="css-1tpmuef"
               style={
                 Object {
-                  "borderBottomColor": "#fa5400",
+                  "borderBottomColor": "var(--color-primary, #fa5400)",
                   "transform": "scale3d(0,1,1)",
                 }
               }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { loadCustomStyles } from '@shopgate/engage/styles';
 import ErrorBoundary from './components/ErrorBoundary';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
@@ -22,6 +23,7 @@ class App extends Component {
    */
   componentDidMount() {
     this.props.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
+    loadCustomStyles();
   }
 
   /**

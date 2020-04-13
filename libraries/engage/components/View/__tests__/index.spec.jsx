@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
-import { setBackgroundColor } from '../style';
+import { setPageBackgroundColor } from '../../../styles';
 import View from '../index';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
@@ -14,10 +14,8 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 }));
 jest.mock('../provider', () => ({ children }) => children);
 jest.mock('../context');
-jest.mock('../style', () => ({
-  __esModule: true,
-  default: jest.requireActual('../style').default,
-  setBackgroundColor: jest.fn(),
+jest.mock('../../../styles', () => ({
+  setPageBackgroundColor: jest.fn(),
 }));
 
 describe('engage > components > view > index', () => {
@@ -47,6 +45,6 @@ describe('engage > components > view > index', () => {
       </View>
     )).dive().dive();
 
-    expect(setBackgroundColor).toBeCalledWith('#990000');
+    expect(setPageBackgroundColor).toBeCalledWith('#990000');
   });
 });

@@ -194,7 +194,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
@@ -280,7 +280,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
@@ -366,7 +366,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
@@ -452,7 +452,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
@@ -560,7 +560,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"
@@ -959,7 +959,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 <div
                                   aria-hidden={null}
                                   aria-label={null}
-                                  className="css-c6ki83 "
+                                  className="css-9auwkz "
                                   data-test-id="link: /login"
                                   onClick={[Function]}
                                   role="link"
@@ -975,19 +975,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                     wrapContent={true}
                                   >
                                     <Button
-                                      className="css-19m2k92 css-6f03lb"
+                                      className="css-1k9vl9z css-6f03lb"
                                       disabled={false}
                                       onClick={null}
                                       testId="UserMenuLogin"
                                     >
                                       <button
-                                        className="css-19m2k92 css-6f03lb css-1rn65c0"
+                                        className="css-1k9vl9z css-6f03lb css-1rn65c0"
                                         data-test-id="UserMenuLogin"
                                         disabled={false}
                                         onClick={null}
                                       >
                                         <div
-                                          className="css-mocsp5"
+                                          className="css-a1u7zd"
                                         >
                                           <Translate
                                             className={null}
@@ -1043,7 +1043,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 <div
                                   aria-hidden={null}
                                   aria-label={null}
-                                  className="css-c6ki83 "
+                                  className="css-9auwkz "
                                   data-test-id="link: /register"
                                   onClick={[Function]}
                                   role="link"
@@ -1059,19 +1059,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                     wrapContent={true}
                                   >
                                     <Button
-                                      className="css-19m2k92 css-6f03lb"
+                                      className="css-1k9vl9z css-6f03lb"
                                       disabled={false}
                                       onClick={null}
                                       testId="UserMenuRegister"
                                     >
                                       <button
-                                        className="css-19m2k92 css-6f03lb css-1rn65c0"
+                                        className="css-1k9vl9z css-6f03lb css-1rn65c0"
                                         data-test-id="UserMenuRegister"
                                         disabled={false}
                                         onClick={null}
                                       >
                                         <div
-                                          className="css-mocsp5"
+                                          className="css-a1u7zd"
                                         >
                                           <Translate
                                             className={null}
@@ -1243,7 +1243,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
@@ -1329,7 +1329,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
@@ -1415,7 +1415,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
@@ -1501,7 +1501,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
@@ -1609,7 +1609,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"

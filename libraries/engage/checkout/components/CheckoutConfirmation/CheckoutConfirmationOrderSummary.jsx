@@ -2,32 +2,19 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '../../../core/helpers/i18n';
 import CheckoutConfirmationSection from './CheckoutConfirmationSection';
+import connect from './CheckoutConfirmationOrderSummary.connector';
 
 /**
  * CheckoutConfirmationOrderSummary component
  * @returns {JSX}
  */
-const CheckoutConfirmationOrderSummary = ({ order }) => {
-  const content = useMemo(() => {
-    const { total, subTotal, currencyCode } = order;
-
-    const entries = [];
-
-    if (subTotal) {
-      entries.push({
-        label: i18n.text('checkout.summary.subTotal'),
-        text: i18n.price(subTotal, currencyCode, 2),
-      });
-    }
-    if (total) {
-      entries.push({
-        label: i18n.text('checkout.summary.total'),
-        text: i18n.price(total, currencyCode, 2),
-      });
-    }
-
-    return entries;
-  }, [order]);
+const CheckoutConfirmationOrderSummary = ({ taxLines }) => {
+  const content = useMemo(() => taxLines
+    .filter(t => t.visible)
+    .map(t => ({
+      label: i18n.text(`checkout.summary.${t.type}`),
+      text: i18n.price(t.value, t.currencyCode, 2),
+    })), [taxLines]);
 
   return (
     <CheckoutConfirmationSection title="checkout.success.order_summary" content={content} />
@@ -35,7 +22,7 @@ const CheckoutConfirmationOrderSummary = ({ order }) => {
 };
 
 CheckoutConfirmationOrderSummary.propTypes = {
-  order: PropTypes.shape().isRequired,
+  taxLines: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
-export default CheckoutConfirmationOrderSummary;
+export default connect(CheckoutConfirmationOrderSummary);

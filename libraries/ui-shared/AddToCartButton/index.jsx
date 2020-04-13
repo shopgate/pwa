@@ -33,7 +33,7 @@ class AddToCartButton extends Component {
     forwardedRef: null,
     iconSize: styles.iconSize,
     noShadow: false,
-    onReset: () => {},
+    onReset: () => { },
   };
 
   /**
@@ -189,13 +189,13 @@ class AddToCartButton extends Component {
            */
         }
         {this.props.isLoading &&
-        <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
-          <IndicatorCircle
-            color={themeConfig.colors.primaryContrast}
-            strokeWidth={5}
-            paused={!this.props.isLoading}
-          />
-        </div>
+          <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
+            <IndicatorCircle
+              color={themeConfig.colors.primaryContrast}
+              strokeWidth={5}
+              paused={!this.props.isLoading}
+            />
+          </div>
         }
         <div className={tickIconStyle} style={tickInlineStyle}>
           <TickIcon />

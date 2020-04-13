@@ -1,6 +1,8 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
+const { colors } = themeConfig;
+
 const buttonPadding = `0 ${themeConfig.variables.gap.big}px 0`;
 
 /**
@@ -16,6 +18,9 @@ const button = (text, background) => ({
   color: text,
   backgroundColor: background,
   minWidth: 64,
+  ':disabled': {
+    cursor: 'not-allowed',
+  },
   ...themeConfig.variables.buttonBase,
 });
 
@@ -73,11 +78,11 @@ const plain = () => ({
 const regular = (disabled) => {
   if (disabled) {
     // Flat disabled button style.
-    return createButtonStyles(themeConfig.colors.shade4, null);
+    return createButtonStyles(colors.shade4, null);
   }
 
   // Flat enabled button style.
-  return createButtonStyles(themeConfig.colors.dark, null);
+  return createButtonStyles(colors.dark, null);
 };
 
 /**
@@ -90,20 +95,20 @@ const primary = (disabled, flat) => {
   if (!flat) {
     if (disabled) {
       // Regular disabled button style.
-      return createButtonStyles(themeConfig.colors.shade4, themeConfig.colors.shade7);
+      return createButtonStyles(colors.shade4, colors.shade7);
     }
 
     // Regular enabled button style.
-    return createButtonStyles(themeConfig.colors.accentContrast, themeConfig.colors.accent);
+    return createButtonStyles(`var(--color-secondary-contrast, ${colors.accentContrast})`, `var(--color-secondary, ${colors.accent})`);
   }
 
   if (disabled) {
     // Flat disabled button style.
-    return createButtonStyles(themeConfig.colors.shade4, null);
+    return createButtonStyles(colors.shade4, null);
   }
 
   // Flat enabled button style.
-  return createButtonStyles(themeConfig.colors.accent, null);
+  return createButtonStyles(`var(--color-secondary, ${colors.accent})`, null);
 };
 
 /**
@@ -116,20 +121,20 @@ const secondary = (disabled, flat) => {
   if (!flat) {
     if (disabled) {
       // Regular disabled button style.
-      return createButtonStyles(themeConfig.colors.shade4, themeConfig.colors.shade7);
+      return createButtonStyles(colors.shade4, colors.shade7);
     }
 
     // Regular enabled button style.
-    return createButtonStyles(themeConfig.colors.primaryContrast, themeConfig.colors.primary);
+    return createButtonStyles(`var(--color-primary-contrast, ${colors.primaryContrast})`, `var(--color-primary, ${colors.primary})`);
   }
 
   if (disabled) {
     // Flat disabled button style.
-    return createButtonStyles(themeConfig.colors.shade4, null);
+    return createButtonStyles(colors.shade4, null);
   }
 
   // Flat enabled button style.
-  return createButtonStyles(themeConfig.colors.primary, null);
+  return createButtonStyles(`var(--color-primary, ${colors.primary})`, null);
 };
 
 export default {

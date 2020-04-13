@@ -10,6 +10,9 @@ const button = css({
   padding: 0,
   position: 'relative',
   zIndex: 1,
+  ':disabled': {
+    cursor: 'not-allowed',
+  },
 }).toString();
 
 const buttonSmall = css({

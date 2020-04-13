@@ -29,7 +29,7 @@ exports[`<ValueButton /> should handle click event 1`] = `
 exports[`<ValueButton /> should render as active 1`] = `
 <button
   aria-checked={true}
-  className="css-rjrlum"
+  className="css-bt0sh7"
   data-test-id="someid"
   onClick={[Function]}
   role="checkbox"

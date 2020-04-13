@@ -69,10 +69,10 @@ FloatingActionButton.propTypes = {
 };
 
 FloatingActionButton.defaultProps = {
-  background: colors.primary,
+  background: `var(--color-primary, ${colors.primary})`,
   className: null,
   disabled: false,
-  onClick: () => {},
+  onClick: () => { },
   raised: true,
   ref: null,
   size: SIZE_BIG,

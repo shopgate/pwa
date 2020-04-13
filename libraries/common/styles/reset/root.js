@@ -1,3 +1,7 @@
+/**
+ * @deprecated used @shopgate/engage/styles instead
+ */
+
 import { css } from 'glamor';
 import { themeConfig } from '../../helpers/config';
 

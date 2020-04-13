@@ -21,8 +21,8 @@ function FilterBar({ filters }) {
   }, [filters]);
 
   const style = useMemo(() => ({
-    background: active ? colors.accent : colors.background,
-    color: active ? colors.accentContrast : colors.dark,
+    background: active ? `var(--color-secondary, ${colors.accent})` : colors.background,
+    color: active ? `var(--color-secondary-contrast, ${colors.accentContrast})` : colors.dark,
   }), [active]);
 
   return (

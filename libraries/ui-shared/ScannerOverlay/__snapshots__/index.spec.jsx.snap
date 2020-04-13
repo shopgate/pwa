@@ -105,13 +105,13 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                           <ToggleIcon
                             offIcon={
                               <FlashDisabled
-                                className="css-k6n0ls"
+                                className="css-2rq5n9"
                               />
                             }
                             on={false}
                             onIcon={
                               <FlashEnabled
-                                className="css-k6n0ls"
+                                className="css-2rq5n9"
                               />
                             }
                             toggleHandler={[Function]}
@@ -121,17 +121,17 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                               onClick={[Function]}
                             >
                               <FlashDisabled
-                                className="css-k6n0ls"
+                                className="css-2rq5n9"
                               >
                                 <Icon
-                                  className="css-k6n0ls"
+                                  className="css-2rq5n9"
                                   color={null}
                                   content="<path d=\\"M15.22,3.1,12,9.51l-.8,1.59h3.86l-4,6.83v-6h-3V3.1h7.12M17,2h0Zm0,0H7V13h3v9l7-12H13l4-8Z\\" />"
                                   size="inherit"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb css-k6n0ls"
+                                    className="css-yys9hb css-2rq5n9"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M15.22,3.1,12,9.51l-.8,1.59h3.86l-4,6.83v-6h-3V3.1h7.12M17,2h0Zm0,0H7V13h3v9l7-12H13l4-8Z\\" />",

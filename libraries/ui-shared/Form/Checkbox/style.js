@@ -17,7 +17,7 @@ const labelWrapper = css({
 }).toString();
 
 const checked = css({
-  color: themeConfig.colors.primary,
+  color: `var(--color-primary, ${themeConfig.colors.primary})`,
 }).toString();
 
 export default {

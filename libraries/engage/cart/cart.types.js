@@ -20,7 +20,7 @@ export type AddToCartProduct = {
 export type ItemFulfillment = {
   method: string;
   location: {
-    code: string;
+    code?: string;
     name?: string;
   }
 }

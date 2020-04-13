@@ -117,7 +117,7 @@ class ProgressBar extends Component {
       >
         {state => (
           <div
-            className={styles.wrapper}
+            className={styles.wrapper()}
             style={transitionStyles[state]}
           >
             <div className={animationClasses.join(' ')} />

@@ -537,17 +537,17 @@ exports[`<RadioGroup /> should use default value 1`] = `
             className="css-15broj4 foo radioItem"
           >
             <RadioChecked
-              className="css-1ncyhu css-pljilv checkedIcon"
+              className="css-nihp8 css-pljilv checkedIcon"
             >
               <Icon
-                className="css-1ncyhu css-pljilv checkedIcon"
+                className="css-nihp8 css-pljilv checkedIcon"
                 color={null}
                 content="<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-1ncyhu css-pljilv checkedIcon"
+                  className="css-yys9hb css-nihp8 css-pljilv checkedIcon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",

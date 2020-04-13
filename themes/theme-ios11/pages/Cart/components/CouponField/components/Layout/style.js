@@ -43,7 +43,7 @@ const input = css({
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
 const icon = css({
-  color: colors.primary,
+  color: `var(--color-primary, ${colors.primary})`,
   fontSize: '1.875rem',
   position: 'relative',
   float: 'right',
@@ -65,7 +65,7 @@ const underline = css({
   height: 2,
   willChange: 'transform',
   transition: `transform ${easing}`,
-  background: colors.primary,
+  background: `var(--color-primary, ${colors.primary})`,
 }).toString();
 
 const underlineBlurred = css({

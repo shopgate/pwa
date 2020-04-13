@@ -11,7 +11,7 @@ exports[`<Chip /> should render a tag 1`] = `
   removeLabel={null}
 >
   <div
-    className="css-100k0w4"
+    className="css-1v7cunp"
     data-test-id="some-id"
   >
     <Button
@@ -91,7 +91,7 @@ exports[`<Chip /> should render a without removable icon 1`] = `
   removeLabel={null}
 >
   <div
-    className="css-1lzi1lo"
+    className="css-hm912x"
     data-test-id="some-id"
   >
     <Button

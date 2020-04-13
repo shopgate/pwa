@@ -1,14 +1,20 @@
 import { css } from 'glamor';
 import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { getCSSCustomProp } from '@shopgate/engage/styles';
+
+const { colors } = themeConfig;
 
 const progressBarHeight = 4;
-const progressBarBackground = Color(themeConfig.colors.accent).fade(0.6);
 
-const wrapper = css({
+/**
+ * Dynamically creates the class for the ProgressBar wrapper
+ * @returns {string}
+ */
+const wrapper = () => css({
   position: 'absolute',
   bottom: 0,
-  background: progressBarBackground,
+  background: Color(getCSSCustomProp('--color-secondary') || colors.accent).fade(0.6),
   width: '100%',
   height: progressBarHeight,
   overflow: 'hidden',
@@ -20,7 +26,7 @@ const innerElement = css({
   ':before': {
     content: '""',
     position: 'absolute',
-    background: themeConfig.colors.accent,
+    background: `var(--color-secondary, ${colors.accent})`,
     top: 0,
     left: 0,
     bottom: 0,
@@ -29,7 +35,7 @@ const innerElement = css({
   ':after': {
     content: '""',
     position: 'absolute',
-    background: themeConfig.colors.accent,
+    background: `var(--color-secondary, ${colors.accent})`,
     top: 0,
     left: 0,
     bottom: 0,
