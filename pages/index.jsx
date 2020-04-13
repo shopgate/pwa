@@ -23,7 +23,12 @@ import {
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
-import { CHECKOUT_PATTERN, GUEST_CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from '@shopgate/engage/checkout/constants';
+import {
+  CHECKOUT_PATTERN,
+  GUEST_CHECKOUT_PATTERN,
+  CHECKOUT_CONFIRMATION_PATTERN,
+  GUEST_CHECKOUT_PAYMENT_PATTERN,
+} from '@shopgate/engage/checkout/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -41,6 +46,7 @@ import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
+import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import themeApi from '../themeApi';
 import * as routes from './routes';
@@ -126,6 +132,10 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={GUEST_CHECKOUT_PATTERN}
                     component={GuestCheckoutPage}
+                  />
+                  <Route
+                    pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
+                    component={GuestCheckoutPaymentPage}
                   />
                   <Route
                     pattern={CHECKOUT_CONFIRMATION_PATTERN}

@@ -5,7 +5,11 @@ import {
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
-import { CHECKOUT_CONFIRMATION_PATTERN } from '@shopgate/engage/checkout';
+import {
+  CHECKOUT_CONFIRMATION_PATTERN,
+  GUEST_CHECKOUT_PATTERN,
+  GUEST_CHECKOUT_PAYMENT_PATTERN,
+} from '@shopgate/engage/checkout';
 import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
@@ -31,6 +35,8 @@ const blacklist = [
   SEARCH_FILTER_PATTERN,
   LOGIN_PATH,
   CHECKOUT_PATH,
+  GUEST_CHECKOUT_PATTERN,
+  GUEST_CHECKOUT_PAYMENT_PATTERN,
   SCANNER_PATH,
   CHECKOUT_CONFIRMATION_PATTERN,
 ];
