@@ -11,7 +11,7 @@ const CheckoutConfirmationPickUpContact = ({ order }) => {
   const content = useMemo(() => {
     const pickup = order.addressSequences.find(address => address.type === 'pickup');
     const {
-      firstName, lastName, phone, emailAddress,
+      firstName, lastName, phone, mobile, emailAddress,
     } = pickup;
 
     const entries = [{
@@ -19,7 +19,12 @@ const CheckoutConfirmationPickUpContact = ({ order }) => {
       text: `${firstName} ${lastName}`,
     }];
 
-    if (phone) {
+    if (mobile) {
+      entries.push({
+        label: i18n.text('checkout.success.phone_number'),
+        text: mobile,
+      });
+    } else if (phone) {
       entries.push({
         label: i18n.text('checkout.success.phone_number'),
         text: phone,
