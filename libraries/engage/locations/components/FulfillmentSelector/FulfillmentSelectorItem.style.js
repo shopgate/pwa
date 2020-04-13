@@ -50,6 +50,10 @@ export const itemRow = css({
   alignItems: 'baseline',
 }).toString();
 
+export const itemRowDisabled = css({
+  opacity: 0.3,
+});
+
 export const itemColumn = css({
   display: 'block',
   width: '50%',

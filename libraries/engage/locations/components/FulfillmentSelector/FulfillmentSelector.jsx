@@ -144,7 +144,7 @@ function FulfillmentSelector(props: Props) {
           onChange={handleChange}
           disabled={!supportsDirectShip}
         >
-          <FulfillmentSelectorDirectShip />
+          <FulfillmentSelectorDirectShip disabled={!supportsDirectShip || disabled} />
         </FulfillmentSelectorItem>
         <FulfillmentSelectorItem name={IN_STORE_PICKUP} onChange={handleChange} disabled={disabled}>
           <FulfillmentSelectorReserve />

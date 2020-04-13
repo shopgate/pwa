@@ -7,7 +7,7 @@ import { IN_STORE_PICKUP_LABEL, IN_STORE_PICKUP } from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { ChangeLocationButton } from '../ChangeLocationButton';
 import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossibleError';
-import { itemRow, itemColumn } from './FulfillmentSelectorItem.style';
+import { itemRow, itemColumn, itemRowDisabled } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { container, unavailable } from './FulfillmentSelectorReserve.style';
 
@@ -23,6 +23,7 @@ export function FulfillmentSelectorReserve() {
     handleChange,
     productFulfillmentMethods,
     isReady,
+    disabled,
   } = useFulfillmentSelectorState();
   const usedLocation = selectedLocation || location;
   const enabled =
@@ -38,7 +39,10 @@ export function FulfillmentSelectorReserve() {
 
   return (
     <React.Fragment>
-      <div>
+      <div className={classNames({
+        [itemRowDisabled.toString()]: disabled,
+      })}
+      >
         {i18n.text(IN_STORE_PICKUP_LABEL)}
       </div>
       {isReady &&
