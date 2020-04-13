@@ -127,7 +127,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               grow={1}
             >
               <div
-                className="css-9d4lq5"
+                className="css-15lh08p"
               >
                 06033123
               </div>
@@ -177,7 +177,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               grow={1}
             >
               <Ellipsis
-                className="css-9d4lq5"
+                className="css-15lh08p"
                 rows={1}
               >
                 locations.address

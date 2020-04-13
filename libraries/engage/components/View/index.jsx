@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RouteContext } from '@shopgate/pwa-common/context';
+import { setPageBackgroundColor } from '../../styles';
 import Content from './components/Content';
 import ViewProvider from './provider';
 import { ViewContext } from './context';
-import styles, { setBackgroundColor } from './style';
+import styles from './style';
 
 const { colors } = themeConfig;
 
@@ -25,7 +26,7 @@ function ViewContainer({
   'aria-hidden': ariaHidden,
 }) {
   if (visible) {
-    setBackgroundColor(background);
+    setPageBackgroundColor(background);
   }
 
   const style = {

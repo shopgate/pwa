@@ -10,6 +10,10 @@ export const radioContainer = css({
   padding: `${variables.gap.xsmall}px 0`,
 });
 
+export const disabled = css({
+  cursor: 'not-allowed',
+});
+
 const icon = {
   width: 24,
   height: 24,
@@ -25,11 +29,11 @@ export const inactiveIconDisabled = css(icon, {
 }).toString();
 
 export const activeIcon = css(icon, {
-  color: colors.primary,
+  color: `var(--color-primary, ${colors.primary})`,
 }).toString();
 
 export const activeIconDisabled = css(icon, {
-  color: colors.primary,
+  color: `var(--color-primary, ${colors.primary})`,
   opacity: 0.3,
 }).toString();
 

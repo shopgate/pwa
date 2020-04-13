@@ -80,7 +80,7 @@ export default {
       },
       '@shopgate/engage/product/RelationsSlider': {
         type: 'upselling', // upselling, crossSelling, bonus, boughtWith, custom.
-        position: 'header', // header, description.
+        position: 'description', // header, description.
         headline: 'Wird oft zusammen gekauft',
         titleRows: 2,
         hidePrice: false,

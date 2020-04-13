@@ -7,4 +7,5 @@ export default css({
   textAlign: 'left',
   alignItems: 'stretch',
   width: '100%',
+  cursor: 'pointer',
 }).toString();

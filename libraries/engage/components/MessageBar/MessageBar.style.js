@@ -28,8 +28,8 @@ const messageBase = {
 };
 
 export const info = css(messageBase, {
-  background: themeColors.accent,
-  color: themeColors.accentContrast,
+  background: `var(--color-secondary, ${themeColors.accent})`,
+  color: `var(--color-secondary-contrast, ${themeColors.accentContrast})`,
 }).toString();
 
 export const error = css(messageBase, {

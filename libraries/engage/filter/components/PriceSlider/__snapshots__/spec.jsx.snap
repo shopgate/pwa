@@ -20,7 +20,7 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
           "handleInner": "css-1aks6z8",
           "handleOuter": "css-nil",
           "outerRange": "css-19d9uwb",
-          "range": "css-1o5lmug",
+          "range": "css-3o0w91",
         }
       }
       easing="exponential"
@@ -60,7 +60,7 @@ exports[`Filter: <PriceSlider /> should render with default props 1`] = `
           "handleInner": "css-1aks6z8",
           "handleOuter": "css-nil",
           "outerRange": "css-19d9uwb",
-          "range": "css-1o5lmug",
+          "range": "css-3o0w91",
         }
       }
       easing="exponential"

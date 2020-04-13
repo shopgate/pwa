@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors } = themeConfig;
 
 const leaf = css({
-  fill: colors.primary,
+  fill: `var(--color-primary, ${colors.primary})`,
 });
 
 const background = css({
@@ -16,7 +16,7 @@ const shadow = css({
 });
 
 const basket = css({
-  fill: colors.accent,
+  fill: `var(--color-secondary, ${colors.accent})`,
 });
 
 export default {

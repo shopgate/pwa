@@ -16,7 +16,7 @@ const disclaimer = css({
 }).toString();
 
 const discounted = css({
-  color: themeConfig.colors.primary,
+  color: `var(--color-primary, ${themeConfig.colors.primary})`,
 }).toString();
 
 export default {

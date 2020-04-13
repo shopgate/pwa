@@ -47,7 +47,7 @@ const moreButton = css({
 
 const moreButtonInverted = css({
   ...moreButtonBase,
-  color: colors.accent,
+  color: `var(--color-secondary, ${colors.accent})`,
 }).toString();
 
 export default {

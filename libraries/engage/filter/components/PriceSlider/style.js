@@ -8,7 +8,7 @@ const wrapper = css({
 }).toString();
 
 const price = css({
-  color: colors.accent,
+  color: `var(--color-secondary, ${colors.accent})`,
   display: 'inline-block',
   fontWeight: 500,
   textAlign: 'center',
@@ -52,7 +52,7 @@ const rangeSlider = {
   }).toString(),
 
   range: css({
-    background: colors.accent,
+    background: `var(--color-secondary, ${colors.accent})`,
     position: 'absolute',
     height: '100%',
     marginLeft: variables.gap.small,

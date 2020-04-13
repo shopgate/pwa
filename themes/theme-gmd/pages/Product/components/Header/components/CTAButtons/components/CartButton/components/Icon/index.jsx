@@ -11,6 +11,7 @@ import transition from './transition';
  */
 class CartButtonIcon extends PureComponent {
   static propTypes = {
+    disabled: PropTypes.bool.isRequired,
     onSuccess: PropTypes.func.isRequired,
     // eslint-disable-next-line react/no-unused-prop-types
     success: PropTypes.bool.isRequired,
@@ -21,7 +22,7 @@ class CartButtonIcon extends PureComponent {
   }
 
   /**
-   * Set the success state when it is recieved as true.
+   * Set the success state when it is received as true.
    * @param {Object} nextProps The next component props.
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -43,6 +44,7 @@ class CartButtonIcon extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const iconClass = this.props.disabled ? styles.iconCartDisabled : styles.iconCart;
     return (
       <Transition
         in={this.state.success}
@@ -51,7 +53,7 @@ class CartButtonIcon extends PureComponent {
       >
         {state => (
           <div className={styles.container} style={transition[state]}>
-            <CartPlusIcon className={styles.iconCart} size={24} />
+            <CartPlusIcon className={iconClass} size={24} />
             <TickIcon className={styles.iconTick} size={24} />
           </div>
         )}

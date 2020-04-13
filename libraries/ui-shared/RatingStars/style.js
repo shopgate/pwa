@@ -1,6 +1,8 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
+const { colors } = themeConfig;
+
 const container = css({
   position: 'relative',
 }).toString();
@@ -17,7 +19,7 @@ const emptyStars = css({
 
 const filledStars = css({
   position: 'absolute',
-  color: themeConfig.colors.primary,
+  color: `var(--color-primary, ${colors.primary})`,
   top: 0,
 }).toString();
 

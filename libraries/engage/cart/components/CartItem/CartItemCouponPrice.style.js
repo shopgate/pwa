@@ -7,5 +7,5 @@ const { colors } = themeConfig;
 export default css({
   fontSize: '1rem',
   fontWeight: 500,
-  color: colors.primary,
+  color: `var(--color-primary, ${colors.primary})`,
 }).toString();

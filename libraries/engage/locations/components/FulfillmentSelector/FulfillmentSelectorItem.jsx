@@ -1,10 +1,12 @@
 // @flow
 import * as React from 'react';
+import classNames from 'classnames';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
 import { type Selection } from './FulfillmentSelector.types';
 import {
   radioContainer,
+  disabled as radioContainerDisabled,
   activeIcon,
   activeIconDisabled,
   inactiveIcon,
@@ -49,8 +51,12 @@ function FulfillmentSelectorItemUnwrapped(props: Props) {
     onChange(name);
   }
 
+  const containerClasses = classNames(radioContainer.toString(), {
+    [radioContainerDisabled.toString()]: disabled,
+  });
+
   return (
-    <label htmlFor={name} className={radioContainer} onClick={handleChange}>
+    <label htmlFor={name} className={containerClasses} onClick={handleChange}>
       {checked
         ? <CheckedIcon className={disabled ? activeIconDisabled : activeIcon} />
         : <UncheckedIcon className={disabled ? inactiveIconDisabled : inactiveIcon} />

@@ -11,7 +11,7 @@ const positive = css({
 }).toString();
 
 const negative = css({
-  color: colors.primary,
+  color: `var(--color-primary, ${colors.primary})`,
 }).toString();
 
 export default {

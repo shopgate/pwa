@@ -1,3 +1,7 @@
+/**
+ * @deprecated used @shopgate/engage/styles/reset instead
+ */
+
 import { css } from 'glamor';
 
 css.global('audio:not([controls])', {

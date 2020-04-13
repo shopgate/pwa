@@ -29,7 +29,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="fromPrice"
     >
       <span
-        className="css-1l1d8mt"
+        className="css-1iqaz6v"
         style={
           Object {
             "minWidth": "5",
@@ -48,7 +48,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="toPrice"
     >
       <span
-        className="css-1l1d8mt"
+        className="css-1iqaz6v"
         style={
           Object {
             "minWidth": "5",

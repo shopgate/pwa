@@ -1,36 +1,37 @@
 import { css } from 'glamor';
-// TODO: Remove the usage of themeConfig here
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
+const { colors, variables } = themeConfig;
+
 const container = css({
-  background: themeConfig.colors.background,
+  background: colors.background,
   display: 'flex',
   flexDirection: 'column',
   flexShrink: 0,
 }).toString();
 
 const messageBase = {
-  padding: `${themeConfig.variables.gap.small}px ${themeConfig.variables.gap.big}px`,
+  padding: `${variables.gap.small}px ${variables.gap.big}px`,
   fontSize: '0.875rem',
   fontWeight: 500,
   ':not(:last-child)': {
-    marginBottom: themeConfig.variables.gap.small * 0.5,
+    marginBottom: variables.gap.small * 0.5,
   },
 };
 
 const info = css(messageBase, {
-  background: themeConfig.colors.accent,
-  color: themeConfig.colors.accentContrast,
+  background: `var(--color-secondary, ${colors.accent})`,
+  color: `var(--color-secondary-contrast, ${colors.accentContrast})`,
 }).toString();
 
 const error = css(messageBase, {
-  background: themeConfig.colors.error,
-  color: themeConfig.colors.light,
+  background: colors.error,
+  color: colors.light,
 }).toString();
 
 const warning = css(messageBase, {
-  background: themeConfig.colors.warning,
-  color: themeConfig.colors.light,
+  background: colors.warning,
+  color: colors.light,
 }).toString();
 
 const srOnly = css({

@@ -83,7 +83,7 @@ exports[`<Header /> should render empty 1`] = `
                 <div
                   aria-hidden={null}
                   aria-label={null}
-                  className="css-c6ki83 css-1us3hnd"
+                  className="css-9auwkz css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
                   role="text"
@@ -287,7 +287,7 @@ exports[`<Header /> should render empty 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-16y9zin"
+                        className="css-1m683rn"
                       />
                     </div>
                   </RatingStars>
@@ -377,13 +377,13 @@ exports[`<Header /> should render empty 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="css-dh0pju "
+                              className="css-4imzno "
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="css-dh0pju  css-1rn65c0"
+                                className="css-4imzno  css-1rn65c0"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
@@ -520,7 +520,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 <div
                   aria-hidden={null}
                   aria-label={null}
-                  className="css-c6ki83 css-1us3hnd"
+                  className="css-9auwkz css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
                   role="text"
@@ -724,7 +724,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-16y9zin"
+                        className="css-1m683rn"
                       >
                         <div
                           className="css-ntfpo9 css-q4owmg"
@@ -886,17 +886,17 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 reviews.rating
                 <RatingNumber
-                  className="css-shoywj"
+                  className="css-1lvzoef"
                   key=".0"
                   rating={50}
                 >
                   <FormatNumber
-                    className="css-shoywj"
+                    className="css-1lvzoef"
                     fractions={2}
                     number={2.5}
                   >
                     <span
-                      className="css-shoywj"
+                      className="css-1lvzoef"
                     >
                       n
                     </span>
@@ -961,13 +961,13 @@ exports[`<Header /> should render rating summary 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="css-dh0pju "
+                              className="css-4imzno "
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="css-dh0pju  css-1rn65c0"
+                                className="css-4imzno  css-1rn65c0"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}

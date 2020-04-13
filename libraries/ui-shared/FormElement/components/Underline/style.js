@@ -1,5 +1,9 @@
 import { css } from 'glamor';
+import color from 'color';
+import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
@@ -9,7 +13,7 @@ const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 const underlineWrapper = css({
   position: 'relative',
   width: '100%',
-  borderBottom: `1px solid ${themeConfig.colors.shade12}`,
+  borderBottom: `1px solid ${colors.shade12}`,
   marginTop: 2,
   marginBottom: 7,
 }).toString();
@@ -36,10 +40,19 @@ const underline = css({
  * @param {boolean} hasError Has error set or not.
  * @return {Object} style
  */
-const underlineStyle = (focused, hasError) => ({
-  borderBottomColor: hasError ? themeConfig.colors.error : themeConfig.colors.focus,
-  ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
-});
+const underlineStyle = (focused, hasError) => {
+  const primaryColor = getCSSCustomProp('--color-primary') || colors.primary;
+  let focusColor = '--color-primary';
+
+  if (color(primaryColor).luminosity() >= 0.8) {
+    focusColor = '--color-secondary';
+  }
+
+  return {
+    borderBottomColor: hasError ? colors.error : `var(${focusColor}, ${colors.focus})`,
+    ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
+  };
+};
 
 export default {
   underline,
