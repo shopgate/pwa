@@ -41,9 +41,15 @@ import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import { CHECKOUT_PATTERN, GUEST_CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from '@shopgate/engage/checkout/constants';
+import {
+  CHECKOUT_PATTERN,
+  GUEST_CHECKOUT_PATTERN,
+  GUEST_CHECKOUT_PAYMENT_PATTERN,
+  CHECKOUT_CONFIRMATION_PATTERN,
+} from '@shopgate/engage/checkout/constants';
 import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
+import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -127,6 +133,10 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={GUEST_CHECKOUT_PATTERN}
                     component={GuestCheckoutPage}
+                  />
+                  <Route
+                    pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
+                    component={GuestCheckoutPaymentPage}
                   />
                   <Route
                     pattern={CHECKOUT_CONFIRMATION_PATTERN}
