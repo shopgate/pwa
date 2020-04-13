@@ -9,7 +9,11 @@ const { colors } = themeConfig;
  * @param {string} color A color
  * @returns {string}
  */
-const getContrastColor = color => (Color(color).isDark() ? '#fff' : '#000');
+const getContrastColor = (color) => {
+  const perceivedLuminosity = Color(color).luminosity();
+
+  return perceivedLuminosity >= 0.74 ? colors.dark : colors.light;
+};
 
 /**
  * Initializes the CSS custom properties after they where loaded from a CSS file.
