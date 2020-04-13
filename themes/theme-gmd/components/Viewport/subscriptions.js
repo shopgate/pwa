@@ -1,7 +1,8 @@
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { getPageInsets } from '@shopgate/pwa-common/selectors/client';
 import { clientInformationDidUpdate$ } from '@shopgate/pwa-common/streams/client';
-import { updatePageInsets } from './style';
+import { updatePageInsets } from '@shopgate/engage/styles';
+
 /**
  * App subscriptions.
  * @param {Function} subscribe The subscribe function.

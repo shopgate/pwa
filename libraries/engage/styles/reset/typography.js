@@ -1,9 +1,5 @@
-/**
- * @deprecated used @shopgate/engage/styles instead
- */
-
 import { css } from 'glamor';
-import { rem } from '../../helpers/style';
+import { rem } from '@shopgate/pwa-common/helpers/style';
 
 css.global('a', {
   color: 'inherit',

@@ -1,6 +1,6 @@
 import { css } from 'glamor';
 import color from 'color';
-import { getCSSCustomProp } from '@shopgate/engage/core';
+import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;

@@ -37,7 +37,7 @@ export const getCSSCustomProp = (key, element = document.documentElement, castAs
  * @param {HTMLElement} [element=document.documentElement] The target HTML element
  */
 export const setCSSCustomProp = (key, value, element = document.documentElement) => {
-  const style = getComputedStyle(element);
+  const { style } = element;
 
   if (style.getPropertyValue(key) !== value) {
     style.setProperty(key, value);

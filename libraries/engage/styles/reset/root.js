@@ -1,9 +1,5 @@
-/**
- * @deprecated used @shopgate/engage/styles instead
- */
-
 import { css } from 'glamor';
-import { themeConfig } from '../../helpers/config';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { typography } = themeConfig;
 
@@ -32,8 +28,14 @@ css.global('body', {
   margin: 0,
   WebkitOverflowScrolling: 'touch',
   WebkitUserSelect: 'none',
+  userSelect: 'none',
 });
 
 css.global('[data-pattern]', {
   height: '100% !important',
 });
+
+css.global('html, body', {
+  background: 'var(--page-background-color)',
+});
+

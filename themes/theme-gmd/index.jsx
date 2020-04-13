@@ -5,7 +5,7 @@
  * Your changes may break the react application!
  * -------------------------------------------------------------------------
  */
-import '@shopgate/pwa-common/styles/reset';
+import '@shopgate/engage/styles/reset';
 import React from 'react';
 import { render } from 'react-dom';
 import { configureStore } from '@shopgate/pwa-common/store';

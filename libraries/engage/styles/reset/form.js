@@ -1,7 +1,3 @@
-/**
- * @deprecated used @shopgate/engage/styles instead
- */
-
 import { css } from 'glamor';
 
 /**
