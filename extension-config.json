@@ -208,10 +208,10 @@
             "buttonColor": "inherit",
             "buttonCartColor": "inherit",
             "buttonCartBackground": "inherit",
-            "buttonCartBadgeColor": "$.colors.primaryContrast",
-            "buttonCartBadgeBackground": "$.colors.primary",
+            "buttonCartBadgeColor": "var(--color-primary-contrast, $.colors.primaryContrast)",
+            "buttonCartBadgeBackground": "var(--color-primary, $.colors.primary)",
             "buttonCartBadgeShadow": "0 1px 1px rgba(0, 0, 0, 0.25)",
-            "buttonTextColor": "$.colors.accent",
+            "buttonTextColor": "var(--color-secondary, $.colors.accent)",
             "buttonTextColorDisabled": "$.colors.shade4"
           },
           "@shopgate/engage/product/ProductGrid": {
@@ -493,6 +493,15 @@
       "params": {
         "type": "json",
         "label": "Tracking settings: webTrackingEngage, etc"
+      }
+    },
+    "customStyleUrl": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "json",
+        "label": "A url to fetch a css file for Engage."
       }
     }
   }
