@@ -53,6 +53,11 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
       label: i18n.text('checkout.pickup_contact.form.country'),
       countries: supportedCountries,
     },
+    region: {
+      type: 'province',
+      label: i18n.text('checkout.pickup_contact.form.region'),
+      required: true,
+    },
   },
 });
 

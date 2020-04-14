@@ -46,7 +46,7 @@ const initialBillingAddressState = {
   address2: '',
   city: '',
   zipcode: '',
-  country: '',
+  country: null,
 };
 
 /**
@@ -84,8 +84,10 @@ const GuestRegistrationProvider = ({
 
   // Initialize checkout process.
   const [isInitialized] = useAsyncMemo(async () => {
+    LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
     await initializeCheckout();
     await fetchCheckoutOrder();
+    LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
     return true;
   }, [], false);
 
@@ -120,6 +122,7 @@ const GuestRegistrationProvider = ({
         country: values.country,
         postalCode: values.postalCode,
         city: values.city,
+        region: values.region,
       };
 
       // Update order to set pickup contact.
@@ -144,6 +147,7 @@ const GuestRegistrationProvider = ({
         primaryShipToAddressSequenceIndex: 1,
       });
 
+      LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
       historyPush({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
 
       // We don't set locked to false to avoid unnecessary UI changes right before

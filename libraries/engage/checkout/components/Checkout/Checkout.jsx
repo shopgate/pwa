@@ -1,4 +1,5 @@
 import React from 'react';
+import { CHECKOUT_PATTERN } from '../../constants/routes';
 import CheckoutProvider from '../../providers/CheckoutProvider';
 import StripeProvider from '../../providers/StripeProvider';
 import PickupContactForm from './CheckoutPickupContactForm';
@@ -13,7 +14,7 @@ import Actions from './CheckoutActions';
  */
 const Checkout = () => (
   <StripeProvider>
-    <CheckoutProvider>
+    <CheckoutProvider pathPattern={CHECKOUT_PATTERN}>
       <Billing />
       <PickupContactForm />
       <CreditCard />

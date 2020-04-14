@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
 import { makeGetUserLocationAddress } from '@shopgate/engage/locations/selectors';
 import {
+  getCheckoutOrder,
   getCheckoutBillingAddress,
   getCheckoutPickupAddress,
   getCheckoutTaxLines,
@@ -28,7 +29,7 @@ function makeMapStateToProps() {
    * @returns {Object}
    */
   return state => ({
-    isDataReady: !getConfigFetching(state),
+    isDataReady: !getConfigFetching(state) && !!getCheckoutOrder(state),
     paymentTransactions: getCheckoutPaymentTransactions(state),
     shopSettings: getShopSettings(state),
     userLocation: getUserLocationAddress(state),

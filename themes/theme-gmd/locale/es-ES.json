@@ -301,6 +301,9 @@
   },
   "checkout": {
     "submit_order": "Buy Now",
+    "errors": {
+      "initFailed": "Failed to open checkout process."
+    },
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
@@ -315,6 +318,7 @@
         "zipcode": "ZIP Code *",
         "city": "City *",
         "country": "Country *",
+        "region": "Region *",
         "who_will_pickup": "Who will pick up this order?",
         "me": "Me",
         "someone_else": "Someone else",
@@ -323,8 +327,8 @@
       }
     },
     "billing": {
-      "headline": "Billing Address",
-      "address": "{postalCode} {city}"
+      "headline": "Billed to",
+      "address": "{postalCode} {city} {region}"
     },
     "creditCard": {
       "headline": "Credit Card"

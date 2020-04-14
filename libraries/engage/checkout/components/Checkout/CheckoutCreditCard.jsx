@@ -12,7 +12,6 @@ const { colors, variables } = themeConfig;
 const styles = {
   root: css({
     padding: 16,
-    position: 'relative',
     paddingTop: 0,
     display: 'flex',
     flexDirection: 'column',
@@ -25,8 +24,7 @@ const styles = {
   error: css({
     color: colors.error,
     fontSize: 12,
-    position: 'absolute',
-    bottom: 6,
+    marginTop: 4,
   }),
 };
 

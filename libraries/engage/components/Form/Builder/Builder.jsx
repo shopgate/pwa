@@ -276,7 +276,7 @@ class Builder extends Component {
       case ELEMENT_TYPE_PROVINCE: {
         // Province selection only makes sense with a country being selected, or from custom options
         const countryElement = this.formElements.find(el => el.type === ELEMENT_TYPE_COUNTRY);
-        elementData.options = element.options ||
+        elementData.options =
           (countryElement && this.state.formData[countryElement.id]
             ? buildProvinceList(
               this.state.formData[countryElement.id],
