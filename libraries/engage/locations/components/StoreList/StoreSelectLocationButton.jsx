@@ -21,7 +21,7 @@ export const StoreSelectLocationButton = () => {
     <div className={selectLocationButtonWrapper}>
       <RippleButton
         onClick={handleClick}
-        className={selectLocationButton}
+        className={selectLocationButton.toString()}
       >
         {i18n.text('locations.select_location')}
       </RippleButton>
