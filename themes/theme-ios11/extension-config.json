@@ -86,13 +86,12 @@
       }
     },
     "logo": {
-      "type": "bigApi",
+      "type": "admin",
       "destination": "frontend",
+      "default": null,
       "params": {
-        "method": "GET",
-        "service": "shop",
-        "path": "/v1/%(shopId)s",
-        "key": "imageUrl"
+        "type": "json",
+        "label": "An url to fetch a shop logo from"
       }
     },
     "marketId": {
