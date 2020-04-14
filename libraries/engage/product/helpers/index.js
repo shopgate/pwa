@@ -51,6 +51,7 @@ export const getProductImageSettings = () => {
   const appImages = getThemeSettings('AppImages');
 
   return {
+    quality: 75,
     fillColor: 'FFFFFF',
     HeroImage: [
       {

@@ -203,6 +203,7 @@
       "default": {
         "settings": {
           "AppImages": {
+            "quality": 75,
             "fillColor": "FFFFFF",
             "HeroImage": [
                 {

@@ -11,10 +11,10 @@ import { getProductImageSettings } from '../../product/helpers';
  */
 export const getFullImageSource = (src, { width, height }) => {
   if (src && src.includes('images.shopgate.services/v2/images')) {
-    const { fillColor } = getProductImageSettings();
+    const { fillColor, quality } = getProductImageSettings();
     const format = isAndroidOs ? 'webp' : 'jpeg';
 
-    return `${src}&format=${format}&width=${width}&height=${height}&quality=75&fill=${fillColor.replace('#', '')}`;
+    return `${src}&format=${format}&width=${width}&height=${height}&quality=${quality}&fill=${fillColor.replace('#', '')}`;
   }
 
   if (src && src.startsWith('https://img-cdn.shopgate.com') && !src.includes('?')) {

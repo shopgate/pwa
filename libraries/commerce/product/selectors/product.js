@@ -600,7 +600,7 @@ export const getProductDescription = createSelector(
 
 /**
  * Retrieves the images for the given product. If the props contain a variantId, and the related
- * product does not have images, the selector tries to pick images from it's base product.
+ * product does not have images, the selector tries to pick images from its base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Array|null}
