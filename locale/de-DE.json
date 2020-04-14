@@ -319,6 +319,9 @@
       "subTotal": "Subtotal",
       "total": "Total"
     },
+    "errors": {
+      "initFailed": "Failed to open checkout process."
+    },
     "submit_order": "Buy Now",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
@@ -333,6 +336,7 @@
         "address2": "Address 2",
         "zipcode": "ZIP Code *",
         "city": "City *",
+        "region": "Region *",
         "country": "Country *",
         "who_will_pickup": "Wer wird diese Bestellung abholen?",
         "me": "Ich selbst",
@@ -342,8 +346,8 @@
       }
     },
     "billing": {
-      "headline": "Billing Address",
-      "address": "{postalCode} {city}"
+      "headline": "Billed to",
+      "address": "{postalCode} {city} {region}"
     },
     "creditCard": {
       "headline": "Credit Card"
