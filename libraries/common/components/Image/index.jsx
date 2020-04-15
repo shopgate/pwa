@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
-import { getFullImageSource } from '@shopgate/engage/core';
+import { getFullImageSource, logger } from '@shopgate/engage/core';
 import Transition from '../Transition';
 import styles from './style';
 
@@ -25,6 +25,7 @@ class Image extends Component {
       blur: PropTypes.number,
     })),
     src: PropTypes.string,
+    // @deprecated use resolutions instead. kept for backwards compatibility
     srcmap: PropTypes.arrayOf(PropTypes.string),
     transition: PropTypes.shape(),
   };
@@ -61,6 +62,8 @@ class Image extends Component {
    */
   constructor(props) {
     super(props);
+    logger.assert(props.srcmap, 'Use of srcmap prop is deprecated. Use resolutions instead');
+
     /**
      * The initial component state.
      * Pre-loads all resolutions if already cached will
@@ -158,7 +161,11 @@ class Image extends Component {
       }
     };
 
-    image.src = getFullImageSource(src, this.props.resolutions[resolutionIndex]);
+    if (!this.props.srcmap) {
+      image.src = getFullImageSource(src, this.props.resolutions[resolutionIndex]);
+    } else {
+      image.src = src;
+    }
 
     return image.complete;
   }

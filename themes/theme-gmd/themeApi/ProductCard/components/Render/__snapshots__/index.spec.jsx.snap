@@ -72,6 +72,14 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
           <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
           >
             <ProductImage
@@ -86,11 +94,6 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
               ratio={null}
               resolutions={
                 Array [
-                  Object {
-                    "blur": 2,
-                    "height": 50,
-                    "width": 50,
-                  },
                   Object {
                     "height": 440,
                     "width": 440,
@@ -825,6 +828,14 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
           <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
           >
             <ProductImage
@@ -839,11 +850,6 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
               ratio={null}
               resolutions={
                 Array [
-                  Object {
-                    "blur": 2,
-                    "height": 50,
-                    "width": 50,
-                  },
                   Object {
                     "height": 440,
                     "width": 440,
@@ -1299,6 +1305,14 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
           <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
           >
             <ProductImage
@@ -1313,11 +1327,6 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
               ratio={null}
               resolutions={
                 Array [
-                  Object {
-                    "blur": 2,
-                    "height": 50,
-                    "width": 50,
-                  },
                   Object {
                     "height": 440,
                     "width": 440,
@@ -2120,6 +2129,14 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
           <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
           >
             <ProductImage
@@ -2134,11 +2151,6 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
               ratio={null}
               resolutions={
                 Array [
-                  Object {
-                    "blur": 2,
-                    "height": 50,
-                    "width": 50,
-                  },
                   Object {
                     "height": 440,
                     "width": 440,
@@ -2941,6 +2953,14 @@ exports[`<ProductCardRender /> should render without name 1`] = `
           <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
           >
             <ProductImage
@@ -2955,11 +2975,6 @@ exports[`<ProductCardRender /> should render without name 1`] = `
               ratio={null}
               resolutions={
                 Array [
-                  Object {
-                    "blur": 2,
-                    "height": 50,
-                    "width": 50,
-                  },
                   Object {
                     "height": 440,
                     "width": 440,
@@ -3726,6 +3741,14 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
           <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
           >
             <ProductImage
@@ -3740,11 +3763,6 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
               ratio={null}
               resolutions={
                 Array [
-                  Object {
-                    "blur": 2,
-                    "height": 50,
-                    "width": 50,
-                  },
                   Object {
                     "height": 440,
                     "width": 440,
@@ -4293,6 +4311,14 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
           <Component
             alt="Product Name"
             itemProp="image"
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+              ]
+            }
             src={null}
           >
             <ProductImage
@@ -4307,11 +4333,6 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
               ratio={null}
               resolutions={
                 Array [
-                  Object {
-                    "blur": 2,
-                    "height": 50,
-                    "width": 50,
-                  },
                   Object {
                     "height": 440,
                     "width": 440,
