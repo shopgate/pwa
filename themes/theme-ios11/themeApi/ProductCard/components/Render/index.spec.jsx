@@ -2,9 +2,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { getProductImageSettings as mockGetProductImageSettings } from '@shopgate/engage/product/helpers';
 import MockProductImage from '@shopgate/engage/product/components/ProductImage';
 import MockProductGridPrice from '@shopgate/engage/product/components/ProductGridPrice';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
@@ -16,6 +17,7 @@ jest.mock('@shopgate/engage/product', () => ({
   OrderQuantityHint: () => null,
   ProductImage: MockProductImage,
   ProductGridPrice: MockProductGridPrice,
+  getProductImageSettings: mockGetProductImageSettings,
 }));
 
 const defaultProps = {
