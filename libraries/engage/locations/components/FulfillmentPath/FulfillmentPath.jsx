@@ -1,17 +1,16 @@
-// @flow
-import * as React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Availability } from '@shopgate/engage/product';
 import { RadioGroup } from '../../../components';
 import { useFulfillmentState } from '../../locations.hooks';
 import {
-  DIRECT_SHIP,
+  IN_STORE_PICKUP_BOPIS_LABEL,
+  IN_STORE_PICKUP_ROPIS_LABEL,
   DIRECT_SHIP_LABEL,
-  IN_STORE_PICKUP,
-  IN_STORE_PICKUP_LABEL,
+  DIRECT_SHIP,
   ROPIS,
+  BOPIS,
 } from '../../constants';
-import { StockInfo } from '../StockInfo';
-import { container, pickUpContainer, radioGroup } from './FulfillmentPath.style';
+import { container, radioGroup } from './FulfillmentPath.style';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
 
 /**
@@ -19,31 +18,31 @@ import { FulfillmentPathItem } from './FulfillmentPathItem';
  * @returns {JSX}
  */
 export function FulfillmentPath() {
+  const labelMapping = {
+    [DIRECT_SHIP]: DIRECT_SHIP_LABEL,
+    [ROPIS]: IN_STORE_PICKUP_ROPIS_LABEL,
+    [BOPIS]: IN_STORE_PICKUP_BOPIS_LABEL,
+  };
+
   const {
-    product, fulfillmentMethods, meta: { cartItem = undefined } = {}, changeFulfillment,
+    product,
+    enabledFulfillmentMethods,
+    meta: { cartItem = undefined } = {},
+    changeFulfillment,
   } = useFulfillmentState();
-  const { fulfillment } = cartItem || {};
-  const isPickUp = !!(cartItem && (fulfillment !== null && fulfillment.method !== 'DIRECT_SHIP'));
-  const [selection, setSelection] = React.useState(
-    isPickUp ? IN_STORE_PICKUP_LABEL : DIRECT_SHIP_LABEL
-  );
+  const {
+    fulfillment = {},
+    product: { fulfillmentMethods: cartItemFulfillmentMethods = [] } = {},
+  } = cartItem || {};
 
-  if (!product || !cartItem) {
-    return null;
-  }
+  const { method: activeCartItemFulfillmentMethod = DIRECT_SHIP } = fulfillment || {};
+  const [selection, setSelection] = useState(labelMapping[activeCartItemFulfillmentMethod]);
 
-  /**
- * @param {string} elementName The name of the selected element.
- */
-  function handleChange(elementName) {
-    const method = (elementName === IN_STORE_PICKUP_LABEL) ? IN_STORE_PICKUP : DIRECT_SHIP;
-
-    setSelection(elementName);
+  const handleChange = useCallback((elementName) => {
+    const method = Object.keys(labelMapping).find(key => labelMapping[key] === elementName);
+    setSelection(method);
     changeFulfillment(method, cartItem);
-  }
-
-  const reserveDisabled = !fulfillmentMethods
-    || !fulfillmentMethods.includes(ROPIS);
+  }, [cartItem, changeFulfillment, labelMapping]);
 
   return (
     <div className={container}>
@@ -55,21 +54,27 @@ export function FulfillmentPath() {
         isControlled
         direction="column"
       >
-        <FulfillmentPathItem name={DIRECT_SHIP_LABEL}>
-          <Availability productId={product.id} fulfillmentSelection={DIRECT_SHIP} />
-        </FulfillmentPathItem>
-        <FulfillmentPathItem
-          name={IN_STORE_PICKUP_LABEL}
-          attributes={{
-            disabled: reserveDisabled,
-          }}
-        >
-          <div className={pickUpContainer}>
-            {fulfillment && !reserveDisabled && (
-              <StockInfo location={fulfillment.location} />
-            )}
-          </div>
-        </FulfillmentPathItem>
+        {enabledFulfillmentMethods.includes(DIRECT_SHIP) && (
+          <FulfillmentPathItem
+            name={DIRECT_SHIP_LABEL}
+            attributes={{ disabled: !cartItemFulfillmentMethods.includes(DIRECT_SHIP) }}
+          >
+            <Availability productId={product.id} fulfillmentSelection={DIRECT_SHIP} />
+          </FulfillmentPathItem>
+        )}
+        {enabledFulfillmentMethods.includes(BOPIS) && (
+          <FulfillmentPathItem
+            name={IN_STORE_PICKUP_BOPIS_LABEL}
+            attributes={{ disabled: !cartItemFulfillmentMethods.includes(BOPIS) }}
+          />
+        )}
+        {enabledFulfillmentMethods.includes(ROPIS) && (
+          <FulfillmentPathItem
+            name={IN_STORE_PICKUP_ROPIS_LABEL}
+            attributes={{ disabled: !cartItemFulfillmentMethods.includes(ROPIS) }}
+          />
+        )}
+
       </RadioGroup>
     </div>
   );

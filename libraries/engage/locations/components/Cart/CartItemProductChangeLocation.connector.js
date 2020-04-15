@@ -2,7 +2,6 @@
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import { updateProductsInCart } from '@shopgate/engage/cart';
-import { getDefaultRopeFulfillmentMethod } from '../../helpers';
 import { fetchProductLocations } from '../../actions';
 import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
 
@@ -13,19 +12,19 @@ import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocati
  */
 const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): DispatchProps => ({
   fetchProductLocations,
-  updateProductInCart: (cartItemId, quantity, location) => (
+  updateProductInCart: (cartItemId, quantity, location, fulfillmentMethod) => {
     dispatch(updateProductsInCart([{
       cartItemId,
       quantity,
       fulfillment: {
-        method: getDefaultRopeFulfillmentMethod(),
+        method: fulfillmentMethod,
         location: {
           code: location.code,
           name: location.name,
         },
       },
-    }]))
-  ),
+    }]));
+  },
 });
 
 export default connect<null, DispatchProps, OwnProps>(null, mapDispatchToProps);

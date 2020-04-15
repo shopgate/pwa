@@ -32,8 +32,10 @@ export {
 
 export const DIRECT_SHIP = 'directShip';
 export const DIRECT_SHIP_LABEL = 'locations.fulfillment.direct_ship';
-export const IN_STORE_PICKUP = 'inStorePickup';
-export const IN_STORE_PICKUP_LABEL = 'locations.fulfillment.pick_up_in_store';
+export const IN_STORE_PICKUP_BOPIS = 'inStorePickupBOPIS';
+export const IN_STORE_PICKUP_BOPIS_LABEL = 'locations.fulfillment.bopis';
+export const IN_STORE_PICKUP_ROPIS = 'inStorePickupROPIS';
+export const IN_STORE_PICKUP_ROPIS_LABEL = 'locations.fulfillment.ropis';
 export const ROPIS = 'ROPIS';
 export const BOPIS = 'BOPIS';
 export const QUICK_RESERVE = 'quickReserve';

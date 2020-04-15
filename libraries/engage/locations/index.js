@@ -24,8 +24,8 @@ export {
   PRODUCT_LOCATION_STOCK_INFO,
   DIRECT_SHIP,
   DIRECT_SHIP_LABEL,
-  IN_STORE_PICKUP,
-  IN_STORE_PICKUP_LABEL,
+  IN_STORE_PICKUP_BOPIS_LABEL,
+  IN_STORE_PICKUP_ROPIS_LABEL,
   ROPIS,
   BOPIS,
   DEFAULT_ROPE_FULFILLMENT_METHOD,
@@ -40,8 +40,8 @@ export {
 
 // SELECTORS
 export {
-  makeGetFulfillmentMethods,
-  makeIsFulfillmentSelectorDisabled,
+  makeGetProductFulfillmentMethods,
+  makeIsFulfillmentSelectorMethodEnabled,
   makeGetUserLocation,
   makeGetLocation,
   makeGetProductLocation,
@@ -60,10 +60,6 @@ export {
 export {
   useFulfillmentState,
 } from './locations.hooks';
-
-export {
-  default as getDefaultRopeFulfillmentMethod,
-} from './helpers/getDefaultRopeFulfillmentMethod';
 
 // TYPES
 export type {

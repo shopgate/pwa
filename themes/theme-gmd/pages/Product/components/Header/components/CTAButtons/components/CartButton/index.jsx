@@ -6,7 +6,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { I18n } from '@shopgate/engage/components';
 import { ProductContext } from '@shopgate/engage/product';
-import { DIRECT_SHIP, getDefaultRopeFulfillmentMethod } from '@shopgate/engage/locations';
+import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import Icon from './components/Icon';
 import connect from './connector';
 import inject from './injector';
@@ -27,12 +27,12 @@ class CartButton extends Component {
     loading: PropTypes.bool.isRequired,
     options: PropTypes.shape().isRequired,
     productId: PropTypes.string.isRequired,
-    hasFulfillmentMethods: PropTypes.bool,
+    isRopeFulfillmentMethodAllowed: PropTypes.bool,
     userLocation: PropTypes.shape(),
   }
 
   static defaultProps = {
-    hasFulfillmentMethods: false,
+    isRopeFulfillmentMethodAllowed: false,
     userLocation: null,
   }
 
@@ -93,9 +93,14 @@ class CartButton extends Component {
    */
   handleClick = () => {
     const {
-      disabled, conditioner, addToCart, productId, options, userLocation, hasFulfillmentMethods,
+      disabled,
+      conditioner,
+      addToCart,
+      productId,
+      options,
+      userLocation,
+      isRopeFulfillmentMethodAllowed,
     } = this.props;
-
     if (this.state.clicked) {
       return;
     }
@@ -121,10 +126,10 @@ class CartButton extends Component {
       if (
         userLocation !== null
         && userLocation.fulfillmentMethod !== DIRECT_SHIP
-        && hasFulfillmentMethods
+        && isRopeFulfillmentMethodAllowed
       ) {
         addToCartData.fulfillment = {
-          method: getDefaultRopeFulfillmentMethod(),
+          method: userLocation.fulfillmentMethod,
           location: {
             code: userLocation.code,
             name: userLocation.name,

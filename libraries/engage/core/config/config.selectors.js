@@ -65,8 +65,8 @@ export function makeGetEnabledFulfillmentMethods(): Selector<any, string[]> {
   return createSelector(
     getMerchantSettings,
     (settings) => {
-      if (!settings.enabledFulfillmentMethods) {
-        return [];
+      if (!Array.isArray(settings.enabledFulfillmentMethods)) {
+        return null;
       }
 
       return settings.enabledFulfillmentMethods;

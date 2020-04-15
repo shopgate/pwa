@@ -16,7 +16,7 @@ type Props = OptionalLocationAware;
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-function CartItemGroupReservation({ location }: Props) {
+function CartItemGroupReservation({ location, fulfillmentMethod }: Props) {
   if (!location) {
     return null;
   }
@@ -25,7 +25,7 @@ function CartItemGroupReservation({ location }: Props) {
   if ((!operationHours || every(operationHours, isEmpty)) && !phoneNumber) {
     return (
       <CardListItem className={simpleLabel.toString()}>
-        <CartItemGroupReservationLabel location={location} />
+        <CartItemGroupReservationLabel location={location} fulfillmentMethod={fulfillmentMethod} />
       </CardListItem>
     );
   }
@@ -33,7 +33,12 @@ function CartItemGroupReservation({ location }: Props) {
   return (
     <CardListItem>
       <Accordion
-        renderLabel={() => <CartItemGroupReservationLabel location={location} />}
+        renderLabel={() =>
+          <CartItemGroupReservationLabel
+            location={location}
+            fulfillmentMethod={fulfillmentMethod}
+          />
+        }
         className={accordionToggle}
       >
         <div className={addressDetails}>
@@ -47,6 +52,7 @@ function CartItemGroupReservation({ location }: Props) {
 
 CartItemGroupReservation.defaultProps = {
   location: null,
+  fulfillmentMethod: null,
 };
 
 export default connect<Props>(CartItemGroupReservation);

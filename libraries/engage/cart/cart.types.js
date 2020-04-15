@@ -32,6 +32,7 @@ export type Item = {
   type?: string,
   fulfillment?: ItemFulfillment,
   fulfillmentLocationId?: string,
+  fulfillmentMethod?: string,
   product?: { [string]: any },
   coupon?: any,
   messages?: any[],

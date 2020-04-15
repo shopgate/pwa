@@ -9,6 +9,9 @@ export const button = css({
   // textAlign: 'right',
   letterSpacing: '0.05em',
   padding: `${variables.gap.xsmall * 0.75}px 0 !important`,
+  ' *': {
+    padding: '0 !important',
+  },
 }).toString();
 
 export const ripple = css({

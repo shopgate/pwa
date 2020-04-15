@@ -1,9 +1,9 @@
 // @flow
-import * as React from 'react';
+import React, { useMemo, useContext } from 'react';
 import { Availability } from '@shopgate/engage/components';
 import { i18n, LoadingContext, useRoute } from '@shopgate/engage/core';
 import { AVAILABILITY_STATE_ALERT } from '@shopgate/engage/product';
-import { DIRECT_SHIP, IN_STORE_PICKUP } from '../../constants';
+import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { container } from './FulfillmentSelectorImpossibleError.style';
 
@@ -14,9 +14,9 @@ import { container } from './FulfillmentSelectorImpossibleError.style';
 export function FulfillmentSelectorImpossibleError() {
   const { selection } = useFulfillmentSelectorState();
   const { pathname } = useRoute();
-  const { isLoading } = React.useContext(LoadingContext);
-  const isDirectShip = React.useMemo(() => selection === DIRECT_SHIP, [selection]);
-  const isInStorePickup = React.useMemo(() => selection === IN_STORE_PICKUP, [selection]);
+  const { isLoading } = useContext(LoadingContext);
+  const isDirectShip = useMemo(() => selection === DIRECT_SHIP, [selection]);
+  const isInStorePickup = useMemo(() => [ROPIS, BOPIS].includes(selection), [selection]);
 
   if ((!isDirectShip && !isInStorePickup) || isLoading(pathname)) {
     return null;

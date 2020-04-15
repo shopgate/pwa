@@ -4,7 +4,7 @@ import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config
 
 export const container = css({
   fontSize: '0.75rem',
-  paddingTop: themeVariables.gap.xsmall * 0.5,
+  padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.small}px ${themeVariables.gap.big * 3}px`,
 }).toString();
 
 export const unavailable = css({
@@ -13,4 +13,4 @@ export const unavailable = css({
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   opacity: 0.5,
-});
+}).toString();

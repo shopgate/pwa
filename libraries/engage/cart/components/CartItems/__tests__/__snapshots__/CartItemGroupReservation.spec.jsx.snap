@@ -24,6 +24,7 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
 
 exports[`engage > cart > components > CartItemGroupReservation should render accordion 2`] = `
 <CartItemGroupReservationLabel
+  fulfillmentMethod={null}
   location={
     Object {
       "address": Object {
@@ -40,6 +41,7 @@ exports[`engage > cart > components > CartItemGroupReservation should render onl
   className="css-u4u0p5"
 >
   <CartItemGroupReservationLabel
+    fulfillmentMethod={null}
     location={
       Object {
         "name": "Location name",
