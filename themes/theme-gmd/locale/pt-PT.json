@@ -300,6 +300,7 @@
   },
   "checkout": {
     "submit_order": "Buy Now",
+    "continue_payment": "Continue to Payment",
     "errors": {
       "initFailed": "Failed to open checkout process."
     },
@@ -327,7 +328,7 @@
     },
     "billing": {
       "headline": "Billed to",
-      "address": "{postalCode} {city} {region}"
+      "address": "{postalCode} {city}, {region}"
     },
     "creditCard": {
       "headline": "Credit Card"

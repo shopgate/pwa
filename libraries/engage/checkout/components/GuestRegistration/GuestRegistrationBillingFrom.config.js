@@ -17,7 +17,7 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
       label: i18n.text('checkout.pickup_contact.form.lastName'),
     },
     emailAddress: {
-      type: 'text',
+      type: 'email',
       label: i18n.text('checkout.pickup_contact.form.emailAddress'),
     },
     mobile: {
