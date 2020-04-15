@@ -41,18 +41,13 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
   }
 >
   <Button
-    className=""
     disabled={false}
     flat={true}
     onClick={[Function]}
     testId="applyFilterButton"
     type="primary"
-    wrapContent={true}
   >
-    <Translate
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="filter.apply"
       style={
         Object {
