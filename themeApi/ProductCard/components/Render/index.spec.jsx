@@ -18,8 +18,6 @@ jest.mock('@shopgate/engage/product', () => ({
   ProductImage: MockProductImage,
   ProductGridPrice: MockProductGridPrice,
   getProductImageSettings: mockGetProductImageSettings,
-
-  // FeaturedMedia, getProductImageSettings, MapPriceHint, OrderQuantityHint, ProductImage,
 }));
 
 const defaultProps = {
