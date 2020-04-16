@@ -5,7 +5,7 @@ import {
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/engage/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
-import { bin2hex, getThemeSettings } from '@shopgate/engage/core';
+import { bin2hex } from '@shopgate/engage/core';
 import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
@@ -82,7 +82,7 @@ const Layout = (props, context) => {
       </Grid.Item>
     </Grid>
   );
-}
+};
 
 Layout.propTypes = {
   currency: PropTypes.string.isRequired,
