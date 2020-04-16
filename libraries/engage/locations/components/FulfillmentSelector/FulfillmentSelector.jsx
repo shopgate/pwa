@@ -75,7 +75,16 @@ function FulfillmentSelector(props: Props) {
    * Determine and set a default fulfillment method when none was set before.
    */
   useEffect(() => {
-    if (userFulfillmentMethod) {
+    if (!shopFulfillmentMethods) {
+      return;
+    }
+
+    /**
+     * The user has already set a fulfillment method which is supported by the shop, so we don't
+     * need to apply the fallback. We don't check against the product fulfillment methods to
+     * avoid too much auto magic when navigating through catalogs with different set up products.
+     */
+    if (userFulfillmentMethod && shopFulfillmentMethods.includes(userFulfillmentMethod)) {
       return;
     }
 
