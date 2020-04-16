@@ -15,12 +15,8 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
     onClick={[MockFunction]}
     testId="applyFilterButton"
     type="primary"
-    wrapContent={true}
   >
-    <Translate
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="filter.apply"
       style={
         Object {
@@ -47,12 +43,8 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
     onClick={[Function]}
     testId="applyFilterButton"
     type="primary"
-    wrapContent={true}
   >
-    <Translate
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="filter.apply"
       style={
         Object {
@@ -79,12 +71,8 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
     onClick={[Function]}
     testId="applyFilterButton"
     type="primary"
-    wrapContent={true}
   >
-    <Translate
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="filter.apply"
       style={
         Object {
