@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import Bar from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
-  ...jest.requireActual('@shopgate/engage/core'),
   useRoute: () => ({
     state: {
       filters: {},
@@ -12,6 +11,16 @@ jest.mock('@shopgate/engage/core', () => ({
       categoryId: 123,
     },
   }),
+}));
+
+jest.mock('@shopgate/engage/components', () => ({
+  View: {
+    ViewContext: () => {},
+  },
+  Grid: () => 'Grid',
+  I18n: () => 'I18n',
+  Ripple: () => 'Ripple',
+  FilterIcon: () => 'FilterIcon',
 }));
 
 jest.mock('react', () => ({
