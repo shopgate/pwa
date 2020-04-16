@@ -1,11 +1,13 @@
 // @flow
 import React, { useCallback, useContext } from 'react';
+import classNames from 'classnames';
 import { Grid } from '@shopgate/engage/components';
+import { isProductAvailable } from '../../helpers';
 import { FulfillmentContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
 import { StoreDistance } from './StoreDistance';
 import { StoreHoursToday } from './StoreHoursToday';
-import { storeHeader, storeName } from './Store.style';
+import { storeHeader, storeName, disabled } from './Store.style';
 
 /**
  * Renders a single store headline.
@@ -14,16 +16,19 @@ import { storeHeader, storeName } from './Store.style';
 export function StoreHeader() {
   const store = useContext(StoreContext);
   const { selectLocation } = useContext(FulfillmentContext);
+  const isAvailable = isProductAvailable(store);
 
   const handleClick = useCallback(() => {
-    selectLocation(store);
-  }, [selectLocation, store]);
+    if (isAvailable) {
+      selectLocation(store);
+    }
+  }, [isAvailable, selectLocation, store]);
 
   const { name, distance, unitSystem } = store;
 
   return (
     <div
-      className={storeHeader}
+      className={classNames(storeHeader, { [disabled]: !isAvailable })}
       onClick={handleClick}
       onKeyDown={handleClick}
       role="button"

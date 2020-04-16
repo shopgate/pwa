@@ -30,6 +30,10 @@ export const storeHeader = css({
   padding: `${baseCardPadding} ${gap.xsmall}px`,
 }).toString();
 
+export const disabled = css({
+  cursor: 'not-allowed',
+}).toString();
+
 export const storeName = css({
   fontSize: '1rem',
   fontWeight: 500,
@@ -106,6 +110,8 @@ export const selectLocationButtonWrapper = css({
 export const selectLocationButton = css({
   width: '100%',
   fontSize: '.875rem !important',
-  background: `var(--color-primary, ${themeColors.primary})!important`,
-  color: `var(--color-primary-contrast, ${themeColors.primaryContrast})!important`,
+  ':not(:disabled)': {
+    background: `var(--color-primary, ${themeColors.primary})!important`,
+    color: `var(--color-primary-contrast, ${themeColors.primaryContrast})!important`,
+  },
 });
