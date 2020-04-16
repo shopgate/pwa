@@ -1,4 +1,5 @@
 import React from 'react';
+import { GUEST_CHECKOUT_PAYMENT_PATTERN } from '../../constants/routes';
 import CheckoutProvider from '../../providers/CheckoutProvider';
 import StripeProvider from '../../providers/StripeProvider';
 import Billing from '../Checkout/CheckoutBilling';
@@ -13,7 +14,11 @@ import Pickup from './GuestRegistrationPickup';
  */
 const GuestCheckoutPayment = () => (
   <StripeProvider>
-    <CheckoutProvider orderInitialized orderReadOnly>
+    <CheckoutProvider
+      pathPattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
+      orderInitialized
+      orderReadOnly
+    >
       <Pickup />
       <Billing />
       <CreditCard />

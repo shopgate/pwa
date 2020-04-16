@@ -7,11 +7,12 @@ import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
 import { useStripeContext } from '../hooks/common';
-import { CHECKOUT_PATTERN, CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
+import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
 
 type Props = {
   orderInitialized?: bool,
   orderReadOnly?: bool,
+  pathPattern: string,
   children: any,
   shopSettings: any,
   paymentTransactions: any,
@@ -58,6 +59,7 @@ const convertValidationErrors = validationErrors => Object
  * @returns {JSX}
  */
 const CheckoutProvider = ({
+  pathPattern,
   orderInitialized,
   orderReadOnly,
   historyReplace,
@@ -84,6 +86,8 @@ const CheckoutProvider = ({
 
   // Initialize checkout process.
   const [isCheckoutInitialized] = useAsyncMemo(async () => {
+    LoadingProvider.setLoading(pathPattern);
+
     if (!orderInitialized) {
       await initializeCheckout();
     }
@@ -100,6 +104,8 @@ const CheckoutProvider = ({
       fetchCheckoutOrder(),
       fetchPaymentMethods(),
     ]);
+
+    LoadingProvider.resetLoading(pathPattern);
     return true;
   }, [], false);
 
@@ -175,11 +181,11 @@ const CheckoutProvider = ({
   // Whenever the order is locked we also want to show to loading bar.
   React.useEffect(() => {
     if (isLocked) {
-      LoadingProvider.setLoading(CHECKOUT_PATTERN);
+      LoadingProvider.setLoading(pathPattern);
       return;
     }
-    LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
-  }, [isLocked]);
+    LoadingProvider.unsetLoading(pathPattern);
+  }, [isLocked, pathPattern]);
 
   // Hold form states.
   const formState = useFormState(

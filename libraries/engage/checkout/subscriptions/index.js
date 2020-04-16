@@ -1,5 +1,9 @@
-import { routeDidLeave$ } from '@shopgate/pwa-common/streams/router';
+import {
+  main$, routeDidLeave$, historyPop, showModal,
+} from '@shopgate/engage/core';
+
 import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants';
+import { FETCH_CHECKOUT_ORDER_ERROR } from '../constants/actionTypes';
 import { clearCheckoutOrder } from '../index';
 
 /**
@@ -11,5 +15,18 @@ export default function checkout(subscribe) {
 
   subscribe(checkoutConfirmationDidLeave$, ({ dispatch }) => {
     dispatch(clearCheckoutOrder());
+  });
+
+  const failedToFetchOrder$ = main$
+    .filter(({ action }) => action.type === FETCH_CHECKOUT_ORDER_ERROR);
+
+  subscribe(failedToFetchOrder$, ({ dispatch }) => {
+    dispatch(historyPop());
+    dispatch(showModal({
+      title: null,
+      confirm: null,
+      dismiss: 'modal.ok',
+      message: 'checkout.errors.initFailed',
+    }));
   });
 }

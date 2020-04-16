@@ -30,7 +30,7 @@ const Actions = () => {
         onClick={handleSubmit}
         disabled={isLocked}
       >
-        {i18n.text('checkout.submit_order')}
+        {i18n.text('checkout.continue_payment')}
       </RippleButton>
     </div>
   );
