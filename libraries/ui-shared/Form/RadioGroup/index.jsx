@@ -87,11 +87,17 @@ class RadioGroup extends Component {
         hasValue
       >
         <div className={classNames(style.container(direction), 'radioGroup')}>
-          {Children.map(children, child => cloneElement(child, {
-            key: `${name}_${child.props.name}`,
-            checked: this.state.value === child.props.name,
-            onChange: this.handleChange,
-          }))
+          {Children.map(children, (child) => {
+            if (!child) {
+              return null;
+            }
+
+            return cloneElement(child, {
+              key: `${name}_${child.props.name}`,
+              checked: this.state.value === child.props.name,
+              onChange: this.handleChange,
+            });
+          })
           }
         </div>
       </FormElement>

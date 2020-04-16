@@ -14,10 +14,10 @@ import {
   STAGE_FULFILLMENT_METHOD,
   QUICK_RESERVE,
   MULTI_LINE_RESERVE,
-  IN_STORE_PICKUP,
   DIRECT_SHIP,
+  ROPIS,
+  BOPIS,
 } from '../constants';
-import { getDefaultRopeFulfillmentMethod } from '../helpers';
 import {
   type Location,
   type SheetOpenParams,
@@ -54,6 +54,7 @@ function FulfillmentProvider(props: Props) {
     userInput,
     fulfillmentPaths,
     fulfillmentMethods,
+    enabledFulfillmentMethods,
     shopSettings,
     selectLocation,
     submitReservation,
@@ -66,6 +67,7 @@ function FulfillmentProvider(props: Props) {
   const [changeOnly, setChangeOnly] = React.useState(props.changeOnly);
   const [isOpen, setIsOpen] = React.useState(open);
   const [stage, setStage] = React.useState<SheetStage | null>(props.stage || null);
+  const [fulfillmentMethod, setFulfillmentMethod] = React.useState(null);
   const [orderNumbers, setOrderNumbers] = React.useState<string[] | null>(null);
   const [errors, setErrors] = React.useState<string[] | null>(null);
   const [product, setProduct] = React.useState(propsProduct);
@@ -145,6 +147,7 @@ function FulfillmentProvider(props: Props) {
     setOrderNumbers(null);
     setErrors(null);
     setIsChangeFulfillment(false);
+    setFulfillmentMethod(null);
   }
 
   React.useEffect(() => {
@@ -192,7 +195,7 @@ function FulfillmentProvider(props: Props) {
     }
 
     const fulfillment = {
-      method: getDefaultRopeFulfillmentMethod(),
+      method: fulfillmentMethod,
       location: {
         code: location.code,
         name: location.name || '',
@@ -298,19 +301,24 @@ function FulfillmentProvider(props: Props) {
     setCartItem(item);
 
     if (
-      method === IN_STORE_PICKUP
-      && (item.fulfillment === null || item.fulfillment.method === 'DIRECT_SHIP')
+      [ROPIS, BOPIS].includes(method)
+      && (item.fulfillment === null || item.fulfillment.method === DIRECT_SHIP)
     ) {
+      /**
+       * When the fulfillment method of the current cart item was DIRECT_SHIP before, and is
+       * switched to a ROPE method, the customer needs to pick a store for the item.
+       */
       setFulfillmentPath(MULTI_LINE_RESERVE);
       setStage(STAGE_SELECT_STORE);
+      setFulfillmentMethod(method);
       return;
     }
 
-    if (method === DIRECT_SHIP) {
+    if ([DIRECT_SHIP, ROPIS, BOPIS].includes(method)) {
       updateProductsInCart([{
         quantity: item.quantity,
         cartItemId: item.id,
-        fulfillment: { method: DIRECT_SHIP },
+        fulfillment: { method },
       }]);
 
       handleClose(null, item.product.id);
@@ -333,6 +341,7 @@ function FulfillmentProvider(props: Props) {
     userInput,
     fulfillmentPaths,
     fulfillmentMethods,
+    enabledFulfillmentMethods,
     shopSettings,
     selectLocation: handleSelectLocation,
     changeFulfillment: handleChangeFulfillmentMethod,

@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { getBaseProduct, getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
-import { makeGetFulfillmentPaths, getShopSettings } from '@shopgate/engage/core/config';
+import { makeGetFulfillmentPaths, makeGetEnabledFulfillmentMethods, getShopSettings } from '@shopgate/engage/core/config';
 import { selectLocation, storeFormInput } from '../action-creators';
 import {
-  makeGetProductLocation, makeGetProductLocations, makeGetUserFormInput, makeGetFulfillmentMethods,
+  makeGetProductLocation,
+  makeGetProductLocations,
+  makeGetUserFormInput,
+  makeGetProductFulfillmentMethods,
 } from '../selectors';
 import { submitReservation } from '../actions';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentProvider.types';
@@ -19,7 +22,8 @@ function makeMapStateToProps() {
   const getUserFormInput = makeGetUserFormInput();
   const getFulfillmentPaths = makeGetFulfillmentPaths();
   const getProductLocation = makeGetProductLocation(true);
-  const getFulfillmentMethods = makeGetFulfillmentMethods();
+  const getFulfillmentMethods = makeGetProductFulfillmentMethods();
+  const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.
@@ -34,6 +38,7 @@ function makeMapStateToProps() {
     userInput: getUserFormInput(state),
     fulfillmentPaths: getFulfillmentPaths(state),
     fulfillmentMethods: getFulfillmentMethods(state, props),
+    enabledFulfillmentMethods: getEnabledFulfillmentMethods(state, props),
     shopSettings: getShopSettings(state),
   });
 }

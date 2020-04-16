@@ -30,7 +30,7 @@ type Props = {
 
 type ContextProps = {
   cartItem?: Item,
-  invokeAction: (action: string) => void,
+  invokeAction: (action: string, method?: string) => void,
   cartItemId?: string,
   type?: string,
   editable?: boolean
@@ -46,7 +46,7 @@ export function CartItemProductTitle(props: Props, context: ContextProps) {
   const {
     value, handleRemove, toggleEditMode,
   } = props;
-  const { invokeAction } = context;
+  const { invokeAction, cartItem } = context;
 
   const handleToggleEditMode = React.useCallback(() => {
     if (toggleEditMode) {
@@ -55,8 +55,14 @@ export function CartItemProductTitle(props: Props, context: ContextProps) {
   }, [toggleEditMode]);
 
   const handleChangeLocationClick = React.useCallback(() => {
-    invokeAction('changeLocation');
-  }, [invokeAction]);
+    if (!cartItem || !cartItem.fulfillment || !cartItem.fulfillment.method) {
+      return;
+    }
+
+    const { fulfillment: { method } } = cartItem;
+
+    invokeAction('changeLocation', method);
+  }, [cartItem, invokeAction]);
 
   const handleChangeFulfillmentClick = React.useCallback(() => {
     invokeAction('changeFulfillment');
@@ -66,9 +72,7 @@ export function CartItemProductTitle(props: Props, context: ContextProps) {
     <Grid>
       <Grid.Item grow={1}>
         <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
-          <div className={title} data-test-id={value}>
-            {value}
-          </div>
+          <div className={title} data-test-id={value} dangerouslySetInnerHTML={{ __html: value }} />
         </SurroundPortals>
       </Grid.Item>
       {context.editable && (

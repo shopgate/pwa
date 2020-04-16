@@ -1,8 +1,18 @@
 // @flow
 import { hot } from 'react-hot-loader/root';
-import * as React from 'react';
-import { DIRECT_SHIP, IN_STORE_PICKUP, STAGE_SELECT_STORE } from '../../constants';
+import React, {
+  useState, useEffect, useCallback, useMemo,
+} from 'react';
+import {
+  DIRECT_SHIP,
+  ROPIS,
+  BOPIS,
+  STAGE_SELECT_STORE,
+} from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
+import {
+  type UserLocationFulfillmentMethod,
+} from '../../locations.types';
 import {
   type OwnProps,
   type StateProps,
@@ -14,8 +24,10 @@ import { FulfillmentSelectorContext } from './FulfillmentSelector.context';
 import { FulfillmentSelectorHeader } from './FulfillmentSelectorHeader';
 import { FulfillmentSelectorItem } from './FulfillmentSelectorItem';
 import { FulfillmentSelectorDirectShip } from './FulfillmentSelectorDirectShip';
-import { FulfillmentSelectorReserve } from './FulfillmentSelectorReserve';
+import { FulfillmentSelectorBOPIS } from './FulfillmentSelectorBOPIS';
+import { FulfillmentSelectorROPIS } from './FulfillmentSelectorROPIS';
 import { FulfillmentSelectorAddToCart } from './FulfillmentSelectorAddToCart';
+import { FulfillmentSelectorLocation } from './FulfillmentSelectorLocation';
 import { container } from './FulfillmentSelector.style';
 import connect from './FulfillmentSelector.connector';
 
@@ -33,7 +45,9 @@ function FulfillmentSelector(props: Props) {
     productFulfillmentMethods,
     location,
     conditioner,
-    disabled,
+    isDirectShipEnabled,
+    isROPISEnabled,
+    isBOPISEnabled,
     storeFulfillmentMethod,
     userFulfillmentMethod,
     fulfillmentPaths,
@@ -41,21 +55,54 @@ function FulfillmentSelector(props: Props) {
     isReady,
   } = props;
 
-  const supportsDirectShip = React.useMemo(
-    () => shopFulfillmentMethods && shopFulfillmentMethods.includes(DIRECT_SHIP),
-    [shopFulfillmentMethods]
-  );
-
-  const isInStoreAndActive = userFulfillmentMethod === IN_STORE_PICKUP && !disabled;
-  const [selection, setSelection] = React.useState<Selection>(
-    isInStoreAndActive || !supportsDirectShip ? IN_STORE_PICKUP : DIRECT_SHIP
-  );
-  const [selectedLocation, setSelectedLocation] = React.useState(location);
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [selection, setSelection] = useState<Selection>(userFulfillmentMethod);
+  const [selectedLocation, setSelectedLocation] = useState(location);
+  const [isOpen, setIsOpen] = useState(false);
 
   const usedLocation = selectedLocation || location;
 
-  React.useEffect(() => {
+  const fulfillmentMethodFallback = useMemo<UserLocationFulfillmentMethod>(() => {
+    if (!shopFulfillmentMethods) {
+      return null;
+    }
+    const states = [isDirectShipEnabled, isBOPISEnabled, isROPISEnabled];
+    return [DIRECT_SHIP, BOPIS, ROPIS].find(
+      (method, index) => states[index] && shopFulfillmentMethods.includes(method)
+    ) || null;
+  }, [isBOPISEnabled, isDirectShipEnabled, isROPISEnabled, shopFulfillmentMethods]);
+
+  /**
+   * Determine and set a default fulfillment method when none was set before.
+   */
+  useEffect(() => {
+    if (!shopFulfillmentMethods) {
+      return;
+    }
+
+    /**
+     * The user has already set a fulfillment method which is supported by the shop, so we don't
+     * need to apply the fallback. We don't check against the product fulfillment methods to
+     * avoid too much auto magic when navigating through catalogs with different set up products.
+     */
+    if (userFulfillmentMethod && shopFulfillmentMethods.includes(userFulfillmentMethod)) {
+      return;
+    }
+
+    if (fulfillmentMethodFallback !== userFulfillmentMethod) {
+      setSelection(fulfillmentMethodFallback);
+      storeFulfillmentMethod(fulfillmentMethodFallback);
+    }
+  }, [
+    fulfillmentMethodFallback,
+    isBOPISEnabled,
+    isDirectShipEnabled,
+    isROPISEnabled,
+    shopFulfillmentMethods,
+    storeFulfillmentMethod,
+    userFulfillmentMethod,
+  ]);
+
+  useEffect(() => {
     if (JSON.stringify(location) !== JSON.stringify(selectedLocation)) {
       setSelectedLocation(location);
     }
@@ -64,12 +111,12 @@ function FulfillmentSelector(props: Props) {
   /**
    * Updates the selected location when the sheet closes.
    */
-  const handleClose = React.useCallback((newLocationData) => {
+  const handleClose = useCallback((newLocationData) => {
     setIsOpen(false);
 
     if (!newLocationData && (!usedLocation || !usedLocation.code)) {
       // Reset the UI back to directShip if there was no location selected already
-      setSelection(DIRECT_SHIP);
+      setSelection(fulfillmentMethodFallback);
       return;
     }
 
@@ -77,27 +124,25 @@ function FulfillmentSelector(props: Props) {
       // Update the selected location only when the selection was done for the same product.
       setSelectedLocation(newLocationData.location);
     }
-  }, [usedLocation]);
+  }, [fulfillmentMethodFallback, usedLocation]);
 
   /**
    * Whenever the pick-up selection is made, open the
    * store selector sheet and use the new location.
    */
-  const handleChange = React.useCallback((element, changeOnly = false) => {
+  const handleChange = useCallback((method, changeOnly = false) => {
     conditioner.without('fulfillment-inventory').check().then((passed) => {
       if (!passed) {
         return;
       }
 
-      const method = (element === IN_STORE_PICKUP) ? IN_STORE_PICKUP : DIRECT_SHIP;
-
-      setSelection(element);
+      setSelection(method);
       storeFulfillmentMethod(method);
 
-      if (
-        !changeOnly
-        && (isOpen || ((method === IN_STORE_PICKUP) && (!!location && !!location.code)))
-      ) {
+      const isValidRopeSelection =
+        [ROPIS, BOPIS].includes(method) && !!location && !!location.code;
+
+      if (!changeOnly && (isOpen || isValidRopeSelection)) {
         return;
       }
 
@@ -113,9 +158,9 @@ function FulfillmentSelector(props: Props) {
         changeOnly,
       });
     });
-  }, [conditioner, storeFulfillmentMethod, isOpen, location, handleClose]);
+  }, [conditioner, handleClose, isOpen, location, storeFulfillmentMethod]);
 
-  if (!shopFulfillmentMethods || shopFulfillmentMethods.length === 0) {
+  if (!Array.isArray(shopFulfillmentMethods) || shopFulfillmentMethods.length === 0) {
     return null;
   }
 
@@ -123,7 +168,9 @@ function FulfillmentSelector(props: Props) {
     selection,
     selectedLocation,
     location: location || null,
-    disabled,
+    isDirectShipEnabled,
+    isBOPISEnabled,
+    isROPISEnabled,
     isReady,
     productId,
     handleChange,
@@ -139,19 +186,37 @@ function FulfillmentSelector(props: Props) {
     <FulfillmentSelectorContext.Provider value={context}>
       <div className={container}>
         <FulfillmentSelectorHeader />
-        {supportsDirectShip && (
+        {shopFulfillmentMethods.includes(DIRECT_SHIP) && (
           <FulfillmentSelectorItem
             name={DIRECT_SHIP}
             onChange={handleChange}
-            disabled={!supportsDirectShip}
+            disabled={!isReady || !isDirectShipEnabled}
           >
-            <FulfillmentSelectorDirectShip disabled={!supportsDirectShip || disabled} />
+            <FulfillmentSelectorDirectShip />
           </FulfillmentSelectorItem>
         )}
-        <FulfillmentSelectorItem name={IN_STORE_PICKUP} onChange={handleChange} disabled={disabled}>
-          <FulfillmentSelectorReserve />
-        </FulfillmentSelectorItem>
+
+        {shopFulfillmentMethods.includes(BOPIS) && (
+          <FulfillmentSelectorItem
+            name={BOPIS}
+            onChange={handleChange}
+            disabled={!isReady || !isBOPISEnabled}
+          >
+            <FulfillmentSelectorBOPIS />
+          </FulfillmentSelectorItem>
+        )}
+
+        {shopFulfillmentMethods.includes(ROPIS) && (
+          <FulfillmentSelectorItem
+            name={ROPIS}
+            onChange={handleChange}
+            disabled={!isReady || !isROPISEnabled}
+          >
+            <FulfillmentSelectorROPIS />
+          </FulfillmentSelectorItem>
+        )}
       </div>
+      <FulfillmentSelectorLocation />
       <FulfillmentSelectorAddToCart />
     </FulfillmentSelectorContext.Provider>
   );

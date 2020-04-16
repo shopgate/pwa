@@ -1,16 +1,17 @@
 // @flow
 import { connect } from 'react-redux';
 import { hasProductVariants, isProductOrderable } from '@shopgate/engage/product';
+import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import {
   makeGetEnabledFulfillmentMethods,
   makeGetFulfillmentPaths,
 } from '../../../core/config';
 import {
-  makeIsFulfillmentSelectorDisabled,
+  makeIsFulfillmentSelectorMethodEnabled,
   makeGetUserLocation,
   makeGetProductLocation,
   makeGetUserLocationFulfillmentMethod,
-  makeGetFulfillmentMethods,
+  makeGetProductFulfillmentMethods,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
@@ -21,11 +22,13 @@ import { type OwnProps, type StateProps, type DispatchProps } from './Fulfillmen
 function makeMapStateToProps() {
   const getFulfillmentPaths = makeGetFulfillmentPaths();
   const getUserLocation = makeGetUserLocation();
-  const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
+  const isDirectShipEnabled = makeIsFulfillmentSelectorMethodEnabled(DIRECT_SHIP);
+  const isROPISEnabled = makeIsFulfillmentSelectorMethodEnabled(ROPIS);
+  const isBOPISEnabled = makeIsFulfillmentSelectorMethodEnabled(BOPIS);
   const getProductLocation = makeGetProductLocation(true);
   const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
-  const getFulfillmentMethods = makeGetFulfillmentMethods();
+  const getFulfillmentMethods = makeGetProductFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.
@@ -40,7 +43,9 @@ function makeMapStateToProps() {
       productFulfillmentMethods: getFulfillmentMethods(state, props),
       userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
       location: getProductLocation(state, props) || getUserLocation(state),
-      disabled: isFulfillmentSelectorDisabled(state, props),
+      isDirectShipEnabled: isDirectShipEnabled(state, props),
+      isROPISEnabled: isROPISEnabled(state, props),
+      isBOPISEnabled: isBOPISEnabled(state, props),
       isOrderable: isProductOrderable(state, props) || !!hasVariants,
       isReady: hasVariants !== null && !hasVariants,
     };

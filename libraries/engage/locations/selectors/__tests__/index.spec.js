@@ -5,7 +5,7 @@ import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/eng
 import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core';
 import {
   DIRECT_SHIP,
-  IN_STORE_PICKUP,
+  ROPIS,
 } from '../../constants';
 import {
   makeGetUserLocation,
@@ -44,7 +44,7 @@ describe('engage > locations > selectors', () => {
       userLocation: {
         code: 'code 1',
         name: 'ACME Store',
-        fulfillmentMethod: IN_STORE_PICKUP,
+        fulfillmentMethod: ROPIS,
       },
       locationsById: {
         code1: {
@@ -99,12 +99,12 @@ describe('engage > locations > selectors', () => {
     });
 
     it('should return "direct ship" when the state is empty', () => {
-      expect(getUserLocationFulfillmentMethod({})).toEqual(DIRECT_SHIP);
+      expect(getUserLocationFulfillmentMethod({})).toEqual(null);
     });
 
     it('should return "pickup in store" when it is set within the state', () => {
       expect(getUserLocationFulfillmentMethod(mockedState))
-        .toEqual(IN_STORE_PICKUP);
+        .toEqual(ROPIS);
     });
   });
 

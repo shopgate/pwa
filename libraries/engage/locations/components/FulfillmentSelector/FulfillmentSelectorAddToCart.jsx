@@ -5,6 +5,8 @@ import {
   MULTI_LINE_RESERVE,
   QUICK_RESERVE,
   DIRECT_SHIP,
+  ROPIS,
+  BOPIS,
   STAGE_RESERVE_FORM,
 } from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
@@ -30,7 +32,14 @@ function promisifiedFulfillmentPathSelector(): Promise<FulfillmentPath> {
  */
 export function FulfillmentSelectorAddToCart() {
   const {
-    location, selectedLocation, disabled, conditioner, fulfillmentPaths, selection,
+    location,
+    selectedLocation,
+    conditioner,
+    fulfillmentPaths,
+    selection,
+    isDirectShipEnabled,
+    isROPISEnabled,
+    isBOPISEnabled,
   } = useFulfillmentSelectorState();
 
   const usedLocation = selectedLocation || location;
@@ -40,11 +49,17 @@ export function FulfillmentSelectorAddToCart() {
     // Add most late conditioner
     conditioner.addConditioner('fulfillment-inventory', async () => {
       // Allow direct ship item
-      if (selection === DIRECT_SHIP) {
+      if (isDirectShipEnabled && selection === DIRECT_SHIP) {
         return true;
       }
 
-      if (disabled || !usedLocation) {
+      const mapping = {
+        [DIRECT_SHIP]: isDirectShipEnabled,
+        [ROPIS]: isROPISEnabled,
+        [BOPIS]: isBOPISEnabled,
+      };
+
+      if (!selection || !mapping[selection] || !usedLocation) {
         return false;
       }
 
@@ -86,7 +101,15 @@ export function FulfillmentSelectorAddToCart() {
     }, 100);
 
     return () => conditioner.removeConditioner('fulfillment-inventory');
-  }, [conditioner, fulfillmentPaths, selection, disabled, usedLocation]);
+  }, [
+    conditioner,
+    fulfillmentPaths,
+    selection,
+    usedLocation,
+    isDirectShipEnabled,
+    isROPISEnabled,
+    isBOPISEnabled,
+  ]);
 
   return null;
 }

@@ -5,13 +5,13 @@ import {
   getProductCurrency,
 } from '@shopgate/pwa-common-commerce/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { makeGetFulfillmentMethods } from '@shopgate/engage/locations';
+import { makeGetProductFulfillmentMethods } from '@shopgate/engage/locations';
 
 /**
  * @return {Function} The connect function.
  */
 function makeMapStateToProps() {
-  const getFulfillmentMethods = makeGetFulfillmentMethods();
+  const getFulfillmentMethods = makeGetProductFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.

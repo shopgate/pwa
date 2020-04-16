@@ -16,7 +16,7 @@ type Props = OptionalLocationAware;
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-function CartItemCardReservation({ location }: Props) {
+function CartItemCardReservation({ location, fulfillmentMethod }: Props) {
   if (!location) {
     return null;
   }
@@ -29,7 +29,7 @@ function CartItemCardReservation({ location }: Props) {
   ) {
     return (
       <div className={accordionToggle}>
-        <CartItemCardReservationLabel location={location} />
+        <CartItemCardReservationLabel location={location} fulfillmentMethod={fulfillmentMethod} />
       </div>
     );
   }
@@ -37,7 +37,9 @@ function CartItemCardReservation({ location }: Props) {
   return (
     <Accordion
       className={accordionToggle}
-      renderLabel={() => <CartItemCardReservationLabel location={location} />}
+      renderLabel={() =>
+        <CartItemCardReservationLabel location={location} fulfillmentMethod={fulfillmentMethod} />
+      }
     >
       <div className={accordionContent}>
         <div className={locationAddress}>

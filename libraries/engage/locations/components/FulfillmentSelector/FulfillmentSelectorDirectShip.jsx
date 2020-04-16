@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
 import { Availability } from '../../../product';
@@ -14,10 +13,15 @@ import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossi
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function FulfillmentSelectorDirectShip({ disabled }) {
+export function FulfillmentSelectorDirectShip() {
   const {
-    productId, selection, isOrderable, disabled: fulfillmentSelectionDisabled,
+    productId, selection, isOrderable, isDirectShipEnabled, isReady,
   } = useFulfillmentSelectorState();
+
+  const rowClasses = React.useMemo(() => classNames(itemRow, {
+    [itemRowDisabled.toString()]: !isReady || !isDirectShipEnabled,
+  }), [isDirectShipEnabled, isReady]);
+
   const selected = (selection === DIRECT_SHIP);
 
   if (selected && !isOrderable) {
@@ -31,17 +35,13 @@ export function FulfillmentSelectorDirectShip({ disabled }) {
     );
   }
 
-  const rowClasses = React.useMemo(() => classNames(itemRow, {
-    [itemRowDisabled.toString()]: disabled,
-  }), [disabled]);
-
   return (
     <Grid className={rowClasses} component="div">
       <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
         {i18n.text(DIRECT_SHIP_LABEL)}
       </Grid.Item>
       <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-        {!fulfillmentSelectionDisabled && isOrderable && (
+        {isReady && isDirectShipEnabled && isOrderable && (
           <Availability productId={productId} fulfillmentSelection={DIRECT_SHIP} />
         )}
       </Grid.Item>
@@ -49,10 +49,3 @@ export function FulfillmentSelectorDirectShip({ disabled }) {
   );
 }
 
-FulfillmentSelectorDirectShip.defaultProps = {
-  disabled: false,
-};
-
-FulfillmentSelectorDirectShip.propTypes = {
-  disabled: PropTypes.bool,
-};

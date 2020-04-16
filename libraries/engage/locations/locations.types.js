@@ -1,7 +1,8 @@
 // @flow
 import {
   DIRECT_SHIP,
-  IN_STORE_PICKUP,
+  ROPIS,
+  BOPIS,
   STAGE_SELECT_STORE,
   STAGE_RESERVE_FORM,
   STAGE_RESPONSE_SUCCESS,
@@ -68,11 +69,13 @@ export type Location = {
 }
 
 export type LocationAware = {
-  location: Location
+  location: Location,
+  fulfillmentMethod?: string | null,
 }
 
 export type OptionalLocationAware = {
-  location?: Location | null
+  location?: Location | null,
+  fulfillmentMethod?: string | null
 }
 
 type ProductLocations = {
@@ -98,8 +101,7 @@ export type UserLocationState = {
   productCode: string | null;
   visibleInventory: number | null;
   addressCode: string | null;
-  fulfillmentMethod: typeof DIRECT_SHIP
-  | typeof IN_STORE_PICKUP;
+  fulfillmentMethod: typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
 }
 
 export type ReservationFormValues = {
@@ -113,8 +115,7 @@ export type ReservationFormValues = {
   email2?: string;
 }
 
-export type UserLocationFulfillmentMethod = typeof DIRECT_SHIP
-  | typeof IN_STORE_PICKUP;
+export type UserLocationFulfillmentMethod = typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
 
 export type UserLocationLocationCode = string | null;
 

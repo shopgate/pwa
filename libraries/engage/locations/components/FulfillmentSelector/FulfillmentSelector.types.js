@@ -1,15 +1,17 @@
 // @flow
 import { type ProductId } from '../../../product';
-import { DIRECT_SHIP, IN_STORE_PICKUP } from '../../constants';
+import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import { type Location, type UserLocationFulfillmentMethod } from '../../locations.types';
 
-export type Selection = typeof DIRECT_SHIP | typeof IN_STORE_PICKUP;
+export type Selection = typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
 
 export type FulfillmentSelectorContextProps = {
   selection: Selection,
   selectedLocation: Location | null,
   location: Location | null,
-  disabled: boolean,
+  isDirectShipEnabled: boolean,
+  isROPISEnabled: boolean,
+  isBOPISEnabled: boolean,
   isReady: boolean,
   productId: ProductId,
   handleChange: (element: Selection, changeOnly: boolean) => void,
@@ -29,7 +31,9 @@ export type OwnProps = {
 export type StateProps = {
   shopFulfillmentMethods?: string[] | null,
   productFulfillmentMethods: string[] | null,
-  disabled: boolean,
+  isDirectShipEnabled: boolean,
+  isROPISEnabled: boolean,
+  isBOPISEnabled: boolean,
   location: Location | null,
   userFulfillmentMethod: string | null,
   fulfillmentPaths: string[],

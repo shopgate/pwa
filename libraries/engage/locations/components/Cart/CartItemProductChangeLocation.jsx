@@ -22,6 +22,7 @@ const CartItemProductChangeLocation = (props: Props) => {
     cartItem, updateProductInCart, fetchProductLocations, registerAction,
   } = props;
   const [opened, setOpened] = React.useState(false);
+  const [fulfillmentMethod, setFulfillmentMethod] = React.useState(null);
 
   /**
    * Register cart item action
@@ -31,9 +32,10 @@ const CartItemProductChangeLocation = (props: Props) => {
       return;
     }
 
-    registerAction('changeLocation', () => {
+    registerAction('changeLocation', (currentFulfillmentMethod) => {
       fetchProductLocations(cartItem.product.id);
       setOpened(true);
+      setFulfillmentMethod(currentFulfillmentMethod);
     });
   }, [cartItem, fetchProductLocations, registerAction]);
 
@@ -45,8 +47,9 @@ const CartItemProductChangeLocation = (props: Props) => {
     if (!location || !isProductAvailable(location)) {
       return;
     }
-    updateProductInCart(cartItem.id, cartItem.quantity, location);
-  }, [cartItem.id, cartItem.quantity, updateProductInCart]);
+    updateProductInCart(cartItem.id, cartItem.quantity, location, fulfillmentMethod);
+    setFulfillmentMethod(fulfillmentMethod);
+  }, [cartItem.id, cartItem.quantity, fulfillmentMethod, updateProductInCart]);
 
   const { fulfillment } = cartItem;
 
