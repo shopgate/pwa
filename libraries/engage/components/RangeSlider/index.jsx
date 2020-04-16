@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cxs from 'classnames';
 import styles from './style';
 import Handle from './components/Handle';
+import { isTouchDevice } from '../../core';
 import {
   generateLinearEasingCallback,
   generateExponentialEasingCallback,
@@ -59,14 +60,8 @@ class RangeSlider extends PureComponent {
     this.draggedHandlePixelOffset = 0; // The absolute pixel delta of the last handle move event.
 
     this.state = this.getRange(props);
-  }
 
-  /**
-   * Sets the global event listeners when component mounts.
-   */
-  componentDidMount() {
-    document.addEventListener('touchend', this.handleTouchEnd);
-    document.addEventListener('touchmove', this.handleTouchMove);
+    this.useMouseEvents = !isTouchDevice();
   }
 
   /**
@@ -75,14 +70,6 @@ class RangeSlider extends PureComponent {
    */
   UNSAFE_componentWillReceiveProps(newProps) {
     this.setState(this.getRange(newProps));
-  }
-
-  /**
-   * Removes the global event listeners when component unmounts.
-   */
-  componentWillUnmount() {
-    document.removeEventListener('touchend', this.handleTouchEnd);
-    document.removeEventListener('touchmove', this.handleTouchMove);
   }
 
   /**
@@ -110,6 +97,32 @@ class RangeSlider extends PureComponent {
   }
 
   /**
+   * Adds event listeners
+   */
+  addEventListeners() {
+    if (this.useMouseEvents) {
+      document.addEventListener('mouseup', this.handleTouchEnd);
+      document.addEventListener('mousemove', this.handleTouchMove);
+    } else {
+      document.addEventListener('touchend', this.handleTouchEnd);
+      document.addEventListener('touchmove', this.handleTouchMove);
+    }
+  }
+
+  /**
+   * Removes event listeners
+   */
+  removeEventListeners() {
+    if (this.useMouseEvents) {
+      document.removeEventListener('mouseup', this.handleTouchEnd);
+      document.removeEventListener('mousemove', this.handleTouchMove);
+    } else {
+      document.removeEventListener('touchend', this.handleTouchEnd);
+      document.removeEventListener('touchmove', this.handleTouchMove);
+    }
+  }
+
+  /**
    * Get range min and max from props.
    * @param {Object} props The component props.
    * @returns {Object} The new state
@@ -129,6 +142,8 @@ class RangeSlider extends PureComponent {
    * @param {number} index The index of the touched handle.
    */
   handleTouchStart = (event, index) => {
+    this.addEventListeners();
+
     this.draggedHandle = index;
 
     // Calculate the relative offset to the handles center
@@ -199,6 +214,7 @@ class RangeSlider extends PureComponent {
    * @param {Object} e The touch event
    */
   handleTouchEnd = () => {
+    this.removeEventListeners();
     this.touchOffset = 0;
     this.draggedHandle = null;
   }
@@ -271,7 +287,7 @@ class RangeSlider extends PureComponent {
     );
 
     return (
-      <div className={cxs(classNames.container)} onTouchStart={this.handleRangeTouch} aria-hidden>
+      <div className={cxs(classNames.container)} onMouseDown={this.handleRangeTouch} aria-hidden>
         <div className={cxs(classNames.outerRange, styles.outerRange)} ref={this.domElement}>
           <div className={cxs(classNames.range, styles.range)} style={rangeStyle}>
             <Handle
@@ -279,12 +295,14 @@ class RangeSlider extends PureComponent {
               onTouchStart={this.handleTouchStart}
               active={this.draggedHandle === 0}
               classNames={classNames}
+              useMouseEvents={this.useMouseEvents}
             />
             <Handle
               index={1}
               onTouchStart={this.handleTouchStart}
               active={this.draggedHandle === 1}
               classNames={classNames}
+              useMouseEvents={this.useMouseEvents}
             />
           </div>
         </div>

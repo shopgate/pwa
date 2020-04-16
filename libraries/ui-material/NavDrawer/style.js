@@ -15,11 +15,14 @@ export const drawerStyle = css({
   color: themeColors.dark,
   height: '100vh',
   left: 0,
-  maxWidth: '67vw',
+  maxWidth: '300px',
   position: 'fixed',
   top: 0,
   transition: 'transform 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   width: '100%',
   willChange: 'transform',
   zIndex: 50,
+  '@media(max-width: 480px)': {
+    maxWidth: '67vw',
+  },
 });

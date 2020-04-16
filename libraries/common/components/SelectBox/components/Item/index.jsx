@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import I18n from '../../../I18n';
+import { item } from './style';
 
 /**
  * The SelectBoxItem component.
@@ -39,8 +41,8 @@ class SelectBoxItem extends Component {
 
     return (
       <li
-        className={this.props.className}
-        onKeyUp={() => {}}
+        className={classNames(this.props.className, item)}
+        onKeyUp={() => { }}
         onClick={this.handleSelectionUpdate}
         data-test-id={this.props.label}
         role="menuitem"
