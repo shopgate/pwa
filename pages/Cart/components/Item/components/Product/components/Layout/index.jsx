@@ -18,71 +18,55 @@ import styles from './style';
  * @param {Object} context The component context.
  * @returns {JSX}
  */
-const Layout = (props, context) => {
-  // TODO: use ListImage from AppImages theme config here later as soon as cartItems
-  // support new image url
-  const imageResolutions = [
-    {
-      width: 50,
-      height: 50,
-      blur: 2,
-    },
-    {
-      width: 440,
-      height: 440,
-    },
-  ];
-
-  return (
-    <Grid className={styles.item}>
-      <Grid.Item className={styles.content} grow={1}>
-        <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
-          <Title
-            handleRemove={props.handleDelete}
-            toggleEditMode={props.toggleEditMode}
-            value={props.product.name}
-          />
-        </Link>
-        <Grid className={styles.info}>
-          <Grid.Item grow={1} className={styles.properties}>
-            <ProductProperties properties={props.product.properties} lineClamp={2} />
-          </Grid.Item>
-          <Grid.Item grow={1} className={styles.price}>
-            <ProductPrice
-              currency={props.currency}
-              defaultPrice={props.product.price.default}
-              specialPrice={props.product.price.special}
-            />
-            {props.product.price.info && (
-              <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
-            )}
-          </Grid.Item>
-          {showTaxDisclaimer && (
-            <Grid.Item
-              className={styles.disclaimerSpacer}
-              grow={0}
-              shrink={0}
-            />
-          )}
-        </Grid>
-      </Grid.Item>
-      {/** DOM reversed for a11y navigation */}
-      <Grid.Item className={styles.leftColumn}>
-        <div className={styles.image} aria-hidden>
-          <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
-            <ProductImage src={props.product.featuredImageUrl} resolutions={imageResolutions} />
-          </SurroundPortals>
-        </div>
-        <QuantityPicker
-          quantity={props.quantity}
-          editMode={props.editMode}
-          onChange={props.handleUpdate}
-          onToggleEditMode={props.toggleEditMode}
+const Layout = (props, context) => (
+  <Grid className={styles.item}>
+    <Grid.Item className={styles.content} grow={1}>
+      <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
+        <Title
+          handleRemove={props.handleDelete}
+          toggleEditMode={props.toggleEditMode}
+          value={props.product.name}
         />
-      </Grid.Item>
-    </Grid>
-  );
-};
+      </Link>
+      <Grid className={styles.info}>
+        <Grid.Item grow={1} className={styles.properties}>
+          <ProductProperties properties={props.product.properties} lineClamp={2} />
+        </Grid.Item>
+        <Grid.Item grow={1} className={styles.price}>
+          <ProductPrice
+            currency={props.currency}
+            defaultPrice={props.product.price.default}
+            specialPrice={props.product.price.special}
+          />
+          {props.product.price.info && (
+          <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
+          )}
+        </Grid.Item>
+        {showTaxDisclaimer && (
+        <Grid.Item
+          className={styles.disclaimerSpacer}
+          grow={0}
+          shrink={0}
+        />
+        )}
+      </Grid>
+    </Grid.Item>
+    {/** DOM reversed for a11y navigation */}
+    <Grid.Item className={styles.leftColumn}>
+      <div className={styles.image} aria-hidden>
+        <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
+          <ProductImage src={props.product.featuredImageUrl} />
+        </SurroundPortals>
+      </div>
+      <QuantityPicker
+        quantity={props.quantity}
+        editMode={props.editMode}
+        onChange={props.handleUpdate}
+        onToggleEditMode={props.toggleEditMode}
+      />
+    </Grid.Item>
+  </Grid>
+);
 
 Layout.propTypes = {
   currency: PropTypes.string.isRequired,
