@@ -7,6 +7,7 @@ type Props = {
   children: React.Node,
   fulfillmentLocationId?: string | null,
   multiLineReservation?: boolean,
+  fulfillmentMethod?: string | null,
 }
 
 /**
@@ -15,7 +16,9 @@ type Props = {
  * @returns {JSX}
  */
 export function CartItemCard(props: Props) {
-  const { multiLineReservation, fulfillmentLocationId, children } = props;
+  const {
+    multiLineReservation, fulfillmentLocationId, children, fulfillmentMethod,
+  } = props;
 
   if (!multiLineReservation) {
     return children;
@@ -27,7 +30,10 @@ export function CartItemCard(props: Props) {
         {children}
       </ul>
       {!!fulfillmentLocationId && (
-        <CartItemCardReservation locationId={fulfillmentLocationId} />
+        <CartItemCardReservation
+          locationId={fulfillmentLocationId}
+          fulfillmentMethod={fulfillmentMethod}
+        />
       )}
     </React.Fragment>
   );
@@ -36,4 +42,5 @@ export function CartItemCard(props: Props) {
 CartItemCard.defaultProps = {
   fulfillmentLocationId: null,
   multiLineReservation: false,
+  fulfillmentMethod: null,
 };

@@ -34,6 +34,7 @@ function CartItems({
             <CartItemCard
               multiLineReservation={multiLineReservation}
               fulfillmentLocationId={item.fulfillmentLocationId}
+              fulfillmentMethod={item.fulfillmentMethod}
             >
               <CartItem item={item} onFocus={onFocus} editable={editable} />
             </CartItemCard>

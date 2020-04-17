@@ -8,8 +8,11 @@ import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
 } from '@shopgate/engage/cart';
 import { getProductDataById } from '@shopgate/engage/product';
-import { makeGetUserLocation, getExternalCustomerNumberForOrder } from '../selectors';
-import getDefaultRopeFulfillmentMethod from './getDefaultRopeFulfillmentMethod';
+import {
+  makeGetUserLocation,
+  getExternalCustomerNumberForOrder,
+} from '../selectors';
+import { ROPIS } from '../constants';
 
 /**
  * Creates the address sequence.
@@ -76,7 +79,7 @@ function createSingleProductItems(product, getState) {
     {
       code: product.id,
       quantity: 1,
-      fulfillmentMethod: getDefaultRopeFulfillmentMethod(),
+      fulfillmentMethod: ROPIS,
       fulfillmentLocationCode: location.code,
       price: product.price.unitPrice,
       shipToAddressSequenceIndex: 1,

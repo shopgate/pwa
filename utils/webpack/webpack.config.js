@@ -104,6 +104,7 @@ const config = {
       title: appConfig.shopName || process.env.theme,
       filename: path.resolve(themePath, PUBLIC_FOLDER, 'index.html'),
       template: path.resolve(__dirname, 'templates', 'default.ejs'),
+      appId: appConfig.appId,
       inject: false,
       cache: !isDev,
       minify: !isDev ? {

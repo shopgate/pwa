@@ -1,14 +1,11 @@
 import { mockedProducts } from '@shopgate/pwa-common-commerce/product/mock';
 import { makeGetUserLocation, getExternalCustomerNumberForOrder } from '../../selectors';
-import { getDefaultRopeFulfillmentMethod } from '..';
-import { ROPIS } from '../../constants';
 import createOrder from '../createOrder';
 
 jest.mock('@shopgate/engage/core');
 jest.mock('@shopgate/engage/cart');
 jest.mock('@shopgate/engage/product');
 jest.mock('@shopgate/pwa-common/helpers/config');
-jest.mock('../getDefaultRopeFulfillmentMethod', () => jest.fn());
 jest.mock('../../selectors', () => ({
   makeGetUserLocation: jest.fn(),
   getExternalCustomerNumberForOrder: jest.fn(),
@@ -16,7 +13,7 @@ jest.mock('../../selectors', () => ({
 
 describe('libraries > engage > locations > helpers > createOrder', () => {
   const getState = jest.fn();
-  getDefaultRopeFulfillmentMethod.mockReturnValue(ROPIS);
+
   const formValues = {
     firstName: 'firstName',
     lastName: 'lastName',

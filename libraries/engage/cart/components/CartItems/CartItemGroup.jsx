@@ -7,6 +7,7 @@ type Props = {
   children: React.Node,
   fulfillmentLocationId?: string | null,
   multiLineReservation?: boolean,
+  fulfillmentMethod?: string | null,
 }
 
 /**
@@ -15,7 +16,9 @@ type Props = {
  * @returns {JSX.Element}
  */
 function CartItemGroup(props: Props) {
-  const { multiLineReservation, fulfillmentLocationId, children } = props;
+  const {
+    multiLineReservation, fulfillmentLocationId, children, fulfillmentMethod,
+  } = props;
 
   if (!multiLineReservation) {
     return children;
@@ -24,7 +27,10 @@ function CartItemGroup(props: Props) {
   return (
     <React.Fragment>
       {!!fulfillmentLocationId && (
-        <CartItemGroupReservation locationId={fulfillmentLocationId} />
+        <CartItemGroupReservation
+          locationId={fulfillmentLocationId}
+          fulfillmentMethod={fulfillmentMethod}
+        />
       )}
       {children}
     </React.Fragment>
@@ -34,6 +40,7 @@ function CartItemGroup(props: Props) {
 CartItemGroup.defaultProps = {
   fulfillmentLocationId: null,
   multiLineReservation: false,
+  fulfillmentMethod: null,
 };
 
 export default hot(CartItemGroup);

@@ -5,7 +5,6 @@ import { LocationIcon } from '@shopgate/engage/components';
 import {
   type LocationAware,
   BOPIS,
-  getDefaultRopeFulfillmentMethod,
 } from '@shopgate/engage/locations';
 import {
   address, addressIcon, titles, name, method,
@@ -18,12 +17,12 @@ type Props = LocationAware;
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function CartItemCardReservationLabel({ location }: Props) {
+export function CartItemCardReservationLabel({ location, fulfillmentMethod }: Props) {
   if (!location) {
     return null;
   }
 
-  const suffix = getDefaultRopeFulfillmentMethod() === BOPIS ? 'bopis' : 'ropis';
+  const suffix = fulfillmentMethod === BOPIS ? 'bopis' : 'ropis';
 
   return (
     <div className={address}>

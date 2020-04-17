@@ -1,7 +1,6 @@
 import * as React from 'react';
 import noop from 'lodash/noop';
 import { I18n, ContextMenu } from '@shopgate/engage/components';
-import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import connect from './CartContextMenuItemChangeFulfillment.connector';
 
 /**
@@ -12,10 +11,10 @@ import connect from './CartContextMenuItemChangeFulfillment.connector';
  */
 export const CartContextMenuItemChangeFulfillment = connect((props) => {
   const {
-    onClick, closeMenu, enabledFulfillmentMethods, cartItem,
+    onClick, closeMenu, enabledFulfillmentMethods,
   } = props;
 
-  if (!cartItem.fulfillment || !enabledFulfillmentMethods.includes(DIRECT_SHIP)) {
+  if (!Array.isArray(enabledFulfillmentMethods) || enabledFulfillmentMethods.length <= 1) {
     return null;
   }
 

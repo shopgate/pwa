@@ -3,14 +3,13 @@ import * as Redux from 'redux';
 import {
   SELECT_LOCATION,
   STORE_FULFILLMENT_METHOD,
-  DIRECT_SHIP,
 } from '../constants';
 import { type UserLocationState } from '../locations.types';
 
 const defaultState: UserLocationState = {
   code: null,
   name: null,
-  fulfillmentMethod: DIRECT_SHIP,
+  fulfillmentMethod: null,
   productCode: null,
   visibleInventory: null,
   addressCode: null,

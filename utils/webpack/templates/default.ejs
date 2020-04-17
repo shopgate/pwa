@@ -10,6 +10,12 @@
     <%= htmlWebpackPlugin.options.title %>
   </title>
   <script src="<%= htmlWebpackPlugin.files.chunks.common.entry %>"></script>
+  <% debugger; %>
+  <script>
+    var SGConnect = {
+      appId: "<%- htmlWebpackPlugin.options.appId %>"
+    };
+  </script>
 </head>
 
 <body>

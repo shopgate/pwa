@@ -14,15 +14,19 @@ import styles from './style';
  */
 const RangeSliderHandle = (props) => {
   const {
-    active, index, onTouchStart, classNames,
+    active, index, onTouchStart, classNames, useMouseEvents,
   } = props;
+
   const style = { zIndex: Number(active) || 0 };
+  const eventHandler = {
+    [useMouseEvents ? 'onMouseDown' : 'onTouchStart']: event => onTouchStart(event, index),
+  };
 
   return (
     <div
       className={cxs(classNames.handleOuter, styles)}
       style={style}
-      onTouchStart={event => onTouchStart(event, index)}
+      {...eventHandler}
     >
       <div className={classNames.handleInner} />
     </div>
@@ -32,6 +36,7 @@ const RangeSliderHandle = (props) => {
 RangeSliderHandle.propTypes = {
   index: PropTypes.number.isRequired,
   onTouchStart: PropTypes.func.isRequired,
+  useMouseEvents: PropTypes.bool.isRequired,
   active: PropTypes.bool,
   classNames: PropTypes.shape({
     handleOuter: PropTypes.string,

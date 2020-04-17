@@ -52,11 +52,16 @@ export const getRangeStyle = (min, max, transitionDuration) => ({
 });
 
 /**
- * Shortcut for retrieving x position of a touch event.
- * @param {TouchEvent} event The TouchEvent
+ * Shortcut for retrieving x position of a touch or mouse event.
+ * @param {Event} event The event
  * @returns {number} The x position
  */
-export const getTouchPositionX = event => event.touches[0].pageX;
+export const getTouchPositionX = (event) => {
+  if (event.touches) {
+    return event.touches[0].pageX;
+  }
+  return event.pageX;
+};
 
 /**
  * Converts a relative slider value into an absolute value.

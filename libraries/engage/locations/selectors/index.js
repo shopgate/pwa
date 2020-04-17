@@ -2,10 +2,8 @@
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
-import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core';
+import { makeGetEnabledFulfillmentMethods } from '../../core';
 import { isProductAvailable } from '../helpers/productInventory';
-import getDefaultRopeFulfillmentMethod from '../helpers/getDefaultRopeFulfillmentMethod';
-import checkRopeFulfillmentMethodsSupport from '../helpers/checkRopeFulfillmentMethodsSupport';
 import { DIRECT_SHIP } from '../constants';
 import { type State } from '../../types';
 import {
@@ -91,17 +89,10 @@ export function makeGetUserLocation(): Selector<State, UserLocationState> {
 export function makeGetUserLocationFulfillmentMethod():
   Selector<State, UserLocationFulfillmentMethod> {
   const getUserLocation = makeGetUserLocation();
-  const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
   return createSelector(
     getUserLocation,
-    getEnabledFulfillmentMethods,
-    (userLocation, enabledFulfillmentMethods) => {
-      let fallback = getDefaultRopeFulfillmentMethod();
-      if (enabledFulfillmentMethods.includes(DIRECT_SHIP)) {
-        fallback = DIRECT_SHIP;
-      }
-
-      const { fulfillmentMethod = fallback } = userLocation || {};
+    (userLocation) => {
+      const { fulfillmentMethod = null } = userLocation || {};
       return fulfillmentMethod;
     }
   );
@@ -287,7 +278,7 @@ export function makeGetIsFetchingProductLocations(): Selector<State, boolean | n
  * Creates a selector to retrieve a product's fulfillment methods.
  * @returns {Function}
  */
-export function makeGetFulfillmentMethods(): Selector<State, string[] | null> {
+export function makeGetProductFulfillmentMethods(): Selector<State, string[] | null> {
   /**
    * Retrieves a product's fulfillment methods.
    * @param {Object} state The application state.
@@ -309,14 +300,16 @@ export function makeGetFulfillmentMethods(): Selector<State, string[] | null> {
 
 /**
  * Creates a selector that checks if the Fulfillment Selector should be disabled.
+ * @param {string} fulfillmentMethod The fulfillment method to check.
  * @returns {Function}
  */
-export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
+export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string) {
   const getProductLocations = makeGetProductLocations();
-  const getFulfillmentMethods = makeGetFulfillmentMethods();
+  const getProductFulfillmentMethods = makeGetProductFulfillmentMethods();
+  const getMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
 
   /**
-   * Retrieves whether the Fulfillment Selector should be disabled.
+   * Retrieves whether the Fulfillment Selector for a specific method should be disabled.
    * @param {Object} state The application state.
    * @param {Object} props The component props.
    * @param {string} props.productId The ID of the product to look for.
@@ -324,18 +317,25 @@ export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
    */
   return createSelector(
     getProductLocations,
-    getFulfillmentMethods,
-    (locations, methods) => {
-      if (
-        !methods
-        || !checkRopeFulfillmentMethodsSupport(methods)
-        || !locations
-        || !locations.length === 0
-      ) {
+    getMerchantFulfillmentMethods,
+    getProductFulfillmentMethods,
+    (locations, merchantMethods, productMethods) => {
+      const hasLocations = Array.isArray(locations) && locations.length > 0;
+      const methodSupported =
+        Array.isArray(merchantMethods) &&
+        merchantMethods.includes(fulfillmentMethod) &&
+        Array.isArray(productMethods) &&
+        productMethods.includes(fulfillmentMethod);
+
+      if (fulfillmentMethod === DIRECT_SHIP && methodSupported) {
         return true;
       }
 
-      return false;
+      if (!hasLocations || !methodSupported) {
+        return false;
+      }
+
+      return true;
     }
   );
 }

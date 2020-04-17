@@ -10,7 +10,7 @@ import {
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
-import { DIRECT_SHIP, getDefaultRopeFulfillmentMethod } from '@shopgate/engage/locations';
+import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -32,7 +32,7 @@ class AddToCartBar extends Component {
     visible: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     disabled: PropTypes.bool,
-    hasFulfillmentMethods: PropTypes.bool,
+    isRopeFulfillmentMethodAllowed: PropTypes.bool,
     loading: PropTypes.bool,
     userLocation: PropTypes.shape(),
   };
@@ -41,7 +41,7 @@ class AddToCartBar extends Component {
     addToCart: () => { },
     disabled: false,
     loading: false,
-    hasFulfillmentMethods: false,
+    isRopeFulfillmentMethodAllowed: false,
     userLocation: null,
   };
 
@@ -123,7 +123,7 @@ class AddToCartBar extends Component {
       productId,
       options,
       userLocation,
-      hasFulfillmentMethods,
+      isRopeFulfillmentMethodAllowed,
     } = this.props;
 
     if (this.state.clicked) {
@@ -151,10 +151,10 @@ class AddToCartBar extends Component {
       if (
         userLocation !== null
         && userLocation.fulfillmentMethod !== DIRECT_SHIP
-        && hasFulfillmentMethods
+        && isRopeFulfillmentMethodAllowed
       ) {
         addToCartData.fulfillment = {
-          method: getDefaultRopeFulfillmentMethod(),
+          method: userLocation.fulfillmentMethod,
           location: {
             code: userLocation.code,
             name: userLocation.name,

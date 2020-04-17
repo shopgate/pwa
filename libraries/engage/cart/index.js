@@ -59,6 +59,8 @@ export {
   getIsFetching,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
 
+export { makeIsAddToCartButtonDisabled } from './cart.selectors';
+
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/cart/streams';
 

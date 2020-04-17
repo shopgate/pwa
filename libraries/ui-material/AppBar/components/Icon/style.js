@@ -7,6 +7,7 @@ export default css({
   fontSize: 24,
   height: 56,
   justifyContent: 'center',
+  alignItems: 'center',
   outline: 0,
   padding: 0,
   position: 'relative',

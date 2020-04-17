@@ -78,6 +78,7 @@ function CartContent(props) {
                       <CartItemGroup
                         key={cartItem.id}
                         fulfillmentLocationId={cartItem.fulfillmentLocationId}
+                        fulfillmentMethod={cartItem.fulfillmentMethod}
                         multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
                       >
                         <CartItem
