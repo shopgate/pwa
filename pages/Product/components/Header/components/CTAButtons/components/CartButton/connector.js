@@ -1,16 +1,11 @@
 import { connect } from 'react-redux';
-import {
-  hasProductVariants,
-  isProductOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
 import {
   makeGetUserLocation,
-  makeIsFulfillmentSelectorDisabled,
-  makeIsRopeProductOrderable,
+  makeIsFulfillmentSelectorMethodEnabled,
   makeGetUserLocationFulfillmentMethod,
-  DIRECT_SHIP,
 } from '@shopgate/engage/locations';
+import { makeIsAddToCartButtonDisabled } from '@shopgate/engage/cart';
 import { addProductToCart as addToCart } from './actions';
 
 /**
@@ -18,9 +13,8 @@ import { addProductToCart as addToCart } from './actions';
  */
 function makeMapStateToProps() {
   const getUserLocation = makeGetUserLocation();
-  const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
-  const isRopeProductOrderable = makeIsRopeProductOrderable(true);
   const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
+  const isAddToCartButtonDisabled = makeIsAddToCartButtonDisabled();
 
   /**
    * @param {Object} state The current application state.
@@ -28,23 +22,21 @@ function makeMapStateToProps() {
    * @return {Object} The extended component props.
    */
   return (state, props) => {
-    const userLocationFulfillmentMethods = getUserLocationFulfillmentMethod(state);
-    const isDirectShipSelected = userLocationFulfillmentMethods === DIRECT_SHIP;
+    const userLocationFulfillmentMethod = getUserLocationFulfillmentMethod(state);
+
+    let isUserFulfillmentMethodAllowed = false;
+
+    if (userLocationFulfillmentMethod) {
+      isUserFulfillmentMethodAllowed = makeIsFulfillmentSelectorMethodEnabled(
+        userLocationFulfillmentMethod
+      )(state, props);
+    }
 
     return {
-      /**
-       * 1. Product has no variants and not orderable
-       * 2. Parent product can be not orderable but having orderable variants
-       * 3. A ROPE fulfillment method is selected and the product is orderable at the location
-       */
-      disabled:
-        (isDirectShipSelected &&
-          !isProductOrderable(state, props) &&
-          !hasProductVariants(state, props)) ||
-        isRopeProductOrderable(state, props) === false,
+      disabled: isAddToCartButtonDisabled(state, props),
       loading: isProductPageLoading(state, props),
       userLocation: getUserLocation(state),
-      hasFulfillmentMethods: !isFulfillmentSelectorDisabled(state, props),
+      isRopeFulfillmentMethodAllowed: isUserFulfillmentMethodAllowed,
     };
   };
 }
@@ -72,7 +64,7 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
-  if (prev.hasFulfillmentMethods !== next.hasFulfillmentMethods) {
+  if (prev.isRopeFulfillmentMethodAllowed !== next.isRopeFulfillmentMethodAllowed) {
     return false;
   }
 
