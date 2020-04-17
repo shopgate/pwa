@@ -62,7 +62,7 @@ class Image extends Component {
    */
   constructor(props) {
     super(props);
-    logger.assert(props.srcmap, 'Use of srcmap prop is deprecated. Use resolutions instead');
+    logger.assert(!props.srcmap, 'Use of srcmap prop is deprecated. Use resolutions instead');
 
     /**
      * The initial component state.

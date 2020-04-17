@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
+import { logger } from '@shopgate/pwa-core';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
@@ -72,6 +73,7 @@ class ProductImage extends Component {
    */
   constructor(props) {
     super(props);
+    logger.assert(!props.srcmap, 'Use of srcmap prop is deprecated. Use resolutions instead');
 
     const showPlaceholder = !props.src && (props.srcmap === null || props.srcmap.length === 0);
     this.state = {
