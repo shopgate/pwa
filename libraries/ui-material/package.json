@@ -1,11 +1,11 @@
 {
   "name": "@shopgate/pwa-ui-material",
-  "version": "6.12.0-rc.1",
+  "version": "6.14.0-beta.12",
   "description": "Shopgate's material design UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@shopgate/pwa-common": "6.12.0-rc.1",
+    "@shopgate/pwa-common": "6.14.0-beta.12",
     "react": "~16.12.0",
     "react-dom": "~16.12.0",
     "redux": "^4.0.1"
