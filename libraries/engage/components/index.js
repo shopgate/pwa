@@ -172,6 +172,7 @@ export { default as SheetDrawer } from './SheetDrawer';
 export { default as SheetList } from './SheetList';
 export { default as NullComponent } from './NullComponent';
 export { default as View, ViewContext } from './View';
+export { default as QuantityInput } from './QuantityInput';
 export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';

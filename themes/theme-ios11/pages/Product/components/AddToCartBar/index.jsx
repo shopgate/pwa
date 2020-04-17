@@ -1,7 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -16,7 +15,6 @@ import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
 import CartItemsCount from './components/CartItemsCount';
-import QuantityPicker from './components/QuantityPicker';
 import { ProductContext } from '../../context';
 import connect from './connector';
 import styles from './style';
@@ -206,7 +204,10 @@ class AddToCartBar extends Component {
                 <div className={styles.innerContainer} ref={this.ref}>
                   <div className={styles.base}>
                     <div className={styles.statusBar}>
-                      <CartItemsCount itemCount={added} />
+                      <CartItemsCount
+                        productId={this.props.productId}
+                        itemCount={added}
+                      />
                       <AddMoreButton
                         handleAddToCart={this.handleAddToCart}
                         disabled={this.props.disabled}
@@ -222,9 +223,6 @@ class AddToCartBar extends Component {
                       handleAddToCart={this.handleAddToCart}
                       onReset={this.resetClicked}
                     />
-                    {/* This feature is currently in BETA testing.
-                    It should only be used for approved BETA Client Projects */}
-                    {isBeta() && <QuantityPicker productId={this.props.productId} />}
                   </div>
                 </div>
               </div>

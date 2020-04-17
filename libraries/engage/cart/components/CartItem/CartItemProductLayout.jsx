@@ -90,6 +90,7 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
           </div>
           {context.editable && (
             <CartItemQuantityPicker
+              unit={props.product.unit}
               quantity={props.quantity}
               editMode={props.editMode}
               onChange={props.handleUpdate}

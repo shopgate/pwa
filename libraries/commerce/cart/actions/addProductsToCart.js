@@ -8,9 +8,11 @@ import addProductsToCart from '../action-creators/addProductsToCart';
 import successAddProductsToCart from '../action-creators/successAddProductsToCart';
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
-import { getProductPendingCount, getAddToCartMetadata } from '../selectors';
+import { getProductPendingCount, getAddToCartMetadata, getCartItems } from '../selectors';
 import { getProduct } from '../../product/selectors/product';
+
 import { messagesHaveErrors } from '../helpers';
+import { getDisplayedProductQuantity } from '../helpers/quantity';
 
 /**
  * Adds products to the cart.
@@ -20,14 +22,22 @@ import { messagesHaveErrors } from '../helpers';
 function addToCart(data) {
   return (dispatch, getState) => {
     const state = getState();
+    const preCartItems = getCartItems(state);
 
     const pendingProductCount = getProductPendingCount(state);
     let quantity = 0;
 
     const products = data.map((product) => {
-      quantity += product.quantity;
-
       const productData = getProduct(state, { productId: product.productId }) || {};
+
+      // Count quantity for pending count.
+      quantity += getDisplayedProductQuantity(
+        {
+          ...product,
+          product: productData,
+        },
+        preCartItems
+      );
 
       // Restructure into a productId and a variantId (only productId if not adding a variant)
       const productId = productData.baseProductId || product.productId;

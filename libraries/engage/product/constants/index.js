@@ -13,3 +13,6 @@ export const availabilityTypes = [
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_CUSTOM_AVAILABILITY,
 ];
+
+// PRODUCT UNITS
+export const PRODUCT_UNIT_EACH = 'each';

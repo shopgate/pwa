@@ -1,6 +1,5 @@
 import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -15,7 +14,6 @@ import {
   PRODUCT_CTAS_ADD_TO_CART_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import CartButton from './components/CartButton';
-import QuantityPicker from './components/QuantityPicker';
 import styles from './style';
 import connect from './connector';
 
@@ -42,9 +40,6 @@ const CTAButtons = ({ isFavorite, productId }) => (
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_BEFORE} />
         <Portal name={PRODUCT_CTAS_ADD_TO_CART}>
           <CartButton />
-          {/* This feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects */}
-          {isBeta() && <QuantityPicker productId={productId} /> }
         </Portal>
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_AFTER} />
       </div>

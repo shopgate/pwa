@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import sumBy from 'lodash/sumBy';
 import { getBaseProductMetadata } from '../../product/selectors/product';
 import { getSelectedVariantMetadata } from '../../product/selectors/variants';
 import {
@@ -16,6 +15,7 @@ import {
   CART_TOTALS_TYPE_SHIPPING,
   CART_TOTALS_TYPE_TAX,
 } from '../constants';
+import { getDisplayedProductQuantity } from '../helpers/quantity';
 
 /**
  * Selects the cart data from the store.
@@ -90,10 +90,14 @@ export const getCartCoupons = createSelector(
  */
 export const getCartProductCount = createSelector(
   cartItemsSelector,
-  cartItems => sumBy(
-    cartItems,
-    cartItem => (cartItem.type === CART_ITEM_TYPE_PRODUCT ? cartItem.quantity : 0)
-  ) || 0
+  cartItems => cartItems?.reduce((count, cartItem) => {
+    // We don't count coupons etc.
+    if (cartItem.type !== CART_ITEM_TYPE_PRODUCT) {
+      return count;
+    }
+
+    return count + getDisplayedProductQuantity(cartItem);
+  }, 0) || 0
 );
 
 /**

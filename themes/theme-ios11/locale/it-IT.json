@@ -71,6 +71,7 @@
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
     "item_added": "{count, plural, =0 {# non ci sono elementi aggiunti} =1 {{count} elemento aggiunto} other {{count} elementi aggiunti}}",
+    "item_added_unit": "{count} {unit} added",
     "adding_item": "{count, plural, =1 {Aggiungendo {count} articolo} other {Aggiungendo {count} di articoli}}",
     "pick_option_first": "Prima scegli un'opzione. {option}",
     "fill_out_required_input_first": "Prima inserisci i dati richiesti.",

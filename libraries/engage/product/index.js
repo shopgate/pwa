@@ -69,6 +69,7 @@ export { default as ProductGridPrice } from './components/ProductGridPrice';
 export { default as ProductCharacteristics } from './components/ProductCharacteristics';
 export { default as Description } from './components/Description';
 export { VariantAvailability } from './components/ProductVariants';
+export { ProductUnitQuantityPicker, UnitQuantityPicker } from './components/UnitQuantityPicker';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';

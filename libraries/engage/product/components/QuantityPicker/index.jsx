@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { useWidgetStyles } from '../../../core';
+import { useWidgetStyles, logger } from '../../../core';
 import { I18n, SheetDrawer, SheetList } from '../../../components';
 import { getQuantityRange } from './helpers';
 
+let deprecationWarning =
+  'QuantityPicker is deprecated in favor of the UnitQuantityPicker component.\nUnitQuantityPicker now additionally supports units and floating point values.';
+
+/** */
+function triggerDeprecation() {
+  if (deprecationWarning) {
+    logger.warn(deprecationWarning);
+    deprecationWarning = null;
+  }
+}
+
 /**
  * The QuantityPicker component.
+ * @deprecated Use UnitQuantityPicker to also support different units for quantity.
  * @returns {JSX}
  */
 const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
-  if (!stock) {
-    return null;
-  }
+  triggerDeprecation();
 
   const [opened, setOpened] = useState(false);
   const [resolveValue, setResolveValue] = useState(null);
@@ -58,7 +68,7 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
   useEffect(() => {
     // Add most late conditioner
     conditioner.addConditioner('product-quantity', checkQuantity, 100);
-  }, []);
+  }, [conditioner]);
 
   // Update resolveValue effect
   useEffect(() => {
@@ -70,15 +80,19 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
       promiseResolve(resolveValue);
     }
     setResolveValue(null);
-  }, [resolveValue]);
+  }, [promiseResolve, resolveValue]);
+
+  const styles = useWidgetStyles('@shopgate/engage/product/QuantityPicker');
+
+  if (!stock) {
+    return null;
+  }
 
   const { min, max } = getQuantityRange(stock);
 
   const items = Array((max - min) + 1)
     .fill(min)
     .map((v, index) => String(v + index));
-
-  const styles = useWidgetStyles('@shopgate/engage/product/QuantityPicker');
 
   return (
     <SheetDrawer

@@ -92,7 +92,8 @@
       "description": "Omschrijving",
       "properties": "Eigenschappen",
       "ratings": "Ratings",
-      "purchase": "Aankoopitem"
+      "purchase": "Aankoopitem",
+      "quantity": "Quantity"
     },
     "displayGroups": {
       "general": "Algemeen",
