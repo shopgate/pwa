@@ -7,6 +7,7 @@ import {
   ProductProperties,
   RelationsSlider,
   Description,
+  ProductUnitQuantityPicker,
 } from '@shopgate/engage/product';
 import {
   FulfillmentSelector,
@@ -170,6 +171,9 @@ class ProductContent extends PureComponent {
             It should only be used for approved BETA Client Projects
           */}
           <RelationsSlider desiredPosition="header" />
+          <Section title="product.sections.quantity">
+            <ProductUnitQuantityPicker />
+          </Section>
           <Section title="product.sections.options">
             <Characteristics productId={productId} variantId={variantId} />
             <Options />

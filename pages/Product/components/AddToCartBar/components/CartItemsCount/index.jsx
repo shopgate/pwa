@@ -4,6 +4,7 @@ import Transition from 'react-transition-group/Transition';
 import CheckIcon from '@shopgate/pwa-ui-shared/icons/CheckIcon';
 import Count from './components/Count';
 import styles, { duration, durationShort, transition } from './style';
+import connect from './connector';
 
 /**
  * The cart items count component.
@@ -12,6 +13,11 @@ import styles, { duration, durationShort, transition } from './style';
 class CartItemsCount extends Component {
   static propTypes = {
     itemCount: PropTypes.number.isRequired,
+    unit: PropTypes.string,
+  };
+
+  static defaultProps = {
+    unit: null,
   };
 
   /**
@@ -85,7 +91,7 @@ class CartItemsCount extends Component {
             <div className={styles.check}>
               <CheckIcon />
             </div>
-            <Count count={this.state.numItems} />
+            <Count unit={this.props.unit} count={this.state.numItems} />
           </div>
         )}
       </Transition>
@@ -93,4 +99,4 @@ class CartItemsCount extends Component {
   }
 }
 
-export default CartItemsCount;
+export default connect(CartItemsCount);
