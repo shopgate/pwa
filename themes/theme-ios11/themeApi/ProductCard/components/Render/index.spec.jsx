@@ -9,6 +9,7 @@ import MockProductGridPrice from '@shopgate/engage/product/components/ProductGri
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
 
 jest.mock('@shopgate/engage/product', () => ({
