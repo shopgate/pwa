@@ -97,7 +97,8 @@
       "description": "Description",
       "properties": "Properties",
       "ratings": "Ratings",
-      "purchase": "Purchase Item"
+      "purchase": "Purchase Item",
+      "quantity": "Quantity"
     },
     "displayGroups": {
       "general": "General",
@@ -316,6 +317,7 @@
   "checkout": {
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
+    "continue": "Continue",
     "errors": {
       "initFailed": "Failed to open checkout process."
     },
@@ -342,7 +344,7 @@
       }
     },
     "billing": {
-      "headline": "Billed to",
+      "headline": "Billing Address",
       "address": "{postalCode} {city}, {region}"
     },
     "creditCard": {

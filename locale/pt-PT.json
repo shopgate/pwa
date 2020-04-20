@@ -96,7 +96,8 @@
       "description": "Descrição",
       "properties": "Propriedades",
       "ratings": "Avaliações",
-      "purchase": "Comprar Item"
+      "purchase": "Comprar Item",
+      "quantity": "Quantity"
     }
   },
   "locations": {
@@ -309,6 +310,7 @@
   "checkout": {
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
+    "continue": "Continue",
     "errors": {
       "initFailed": "Failed to open checkout process."
     },
@@ -335,7 +337,7 @@
       }
     },
     "billing": {
-      "headline": "Billed to",
+      "headline": "Billing Address",
       "address": "{postalCode} {city}, {region}"
     },
     "creditCard": {
