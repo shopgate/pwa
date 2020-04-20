@@ -1,4 +1,6 @@
 import { createSelector } from 'reselect';
+import { ROPIS } from '../../locations';
+import { getCheckoutOrder } from './order';
 
 /**
  * Returns all available payment methods.
@@ -27,5 +29,19 @@ export const getStripePublishableKey = createSelector(
   (paymentMethod) => {
     if (!paymentMethod) return null;
     return paymentMethod.settings?.publishableKey;
+  }
+);
+
+export const getNeedsPaymentForOrder = createSelector(
+  getCheckoutOrder,
+  (order) => {
+    if (!order) return null;
+
+    const nonReserveItem = order.lineItems.find(
+      lineItem => lineItem.fulfillmentMethod !== ROPIS
+    );
+
+    // Payment is only required if at least one non-reserve item is in order.
+    return !!nonReserveItem;
   }
 );

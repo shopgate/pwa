@@ -8,9 +8,10 @@ import {
   getCheckoutTaxLines,
   getCheckoutPaymentTransactions,
 } from '@shopgate/engage/checkout/selectors/order';
+import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
 import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
 import {
-  initializeCheckout,
+  prepareCheckout,
   fetchCheckoutOrder,
   fetchPaymentMethods,
   updateCheckoutOrder,
@@ -30,6 +31,7 @@ function makeMapStateToProps() {
    */
   return state => ({
     isDataReady: !getConfigFetching(state) && !!getCheckoutOrder(state),
+    needsPayment: getNeedsPaymentForOrder(state) || false,
     paymentTransactions: getCheckoutPaymentTransactions(state),
     shopSettings: getShopSettings(state),
     userLocation: getUserLocationAddress(state),
@@ -42,7 +44,7 @@ function makeMapStateToProps() {
 const mapDispatchToProps = {
   historyReplace,
   fetchCart,
-  initializeCheckout,
+  prepareCheckout,
   fetchCheckoutOrder,
   updateCheckoutOrder,
   fetchPaymentMethods,

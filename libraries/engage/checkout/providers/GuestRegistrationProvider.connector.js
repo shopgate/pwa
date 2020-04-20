@@ -7,6 +7,7 @@ import {
   getCheckoutPickupAddress,
   isPickupAndBillingEquals,
 } from '@shopgate/engage/checkout/selectors/order';
+import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
 import {
   initializeCheckout,
   fetchCheckoutOrder,
@@ -26,6 +27,7 @@ function makeMapStateToProps() {
    */
   return state => ({
     isDataReady: !getConfigFetching(state) && !!getCheckoutOrder(state),
+    needsPayment: getNeedsPaymentForOrder(state) || false,
     shopSettings: getShopSettings(state),
     userLocation: getUserLocationAddress(state),
     billingAddress: getCheckoutBillingAddress(state),

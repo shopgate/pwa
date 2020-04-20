@@ -96,7 +96,8 @@
       "description": "Descrizione",
       "properties": "Caratteristiche",
       "ratings": "Valutazioni",
-      "purchase": "Acquista articolo"
+      "purchase": "Acquista articolo",
+      "quantity": "Quantity"
     },
     "displayGroups": {
       "general": "Generali",
@@ -310,6 +311,7 @@
   "checkout": {
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
+    "continue": "Continue",
     "errors": {
       "initFailed": "Failed to open checkout process."
     },
@@ -336,7 +338,7 @@
       }
     },
     "billing": {
-      "headline": "Billed to",
+      "headline": "Billing Address",
       "address": "{postalCode} {city}, {region}"
     },
     "creditCard": {

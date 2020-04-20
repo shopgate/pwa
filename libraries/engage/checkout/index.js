@@ -8,6 +8,7 @@ export { updateCheckoutOrder } from '@shopgate/engage/checkout/actions/updateChe
 export { submitCheckoutOrder } from '@shopgate/engage/checkout/actions/submitCheckoutOrder';
 export { initializeCheckout } from '@shopgate/engage/checkout/actions/initializeCheckout';
 export { fetchPaymentMethods } from '@shopgate/engage/checkout/actions/fetchPaymentMethods';
+export { prepareCheckout } from '@shopgate/engage/checkout/actions/prepareCheckout';
 
 export { clearCheckoutOrder } from '@shopgate/engage/checkout/action-creators/clearCheckoutOrder';
 

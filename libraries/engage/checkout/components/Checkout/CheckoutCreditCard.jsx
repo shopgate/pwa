@@ -5,7 +5,7 @@ import {
   CardElement,
 } from '@stripe/react-stripe-js';
 import Section from './CheckoutSection';
-import { useStripeContext } from '../../hooks/common';
+import { useStripeContext, useCheckoutContext } from '../../hooks/common';
 
 const { colors, variables } = themeConfig;
 
@@ -35,12 +35,17 @@ const styles = {
 const Billing = () => {
   const cardRef = React.useRef();
   const { error, setError } = useStripeContext();
+  const { needsPayment } = useCheckoutContext();
 
   // Scrolls to stripe config when error is set.
   React.useEffect(() => {
     if (!error) return;
     cardRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [error]);
+
+  if (!needsPayment) {
+    return null;
+  }
 
   return (
     <div ref={cardRef} className={styles.root}>

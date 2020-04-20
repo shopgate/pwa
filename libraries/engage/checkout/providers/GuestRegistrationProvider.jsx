@@ -23,6 +23,7 @@ type Props = {
   userLocation: any,
   isDataReady: bool,
   billingPickupEquals: bool,
+  needsPayment: bool,
   initializeCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
@@ -77,6 +78,7 @@ const GuestRegistrationProvider = ({
   pickupAddress,
   userLocation,
   isDataReady,
+  needsPayment,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
   const pickupFormSubmitValues = React.useRef({});
@@ -104,56 +106,53 @@ const GuestRegistrationProvider = ({
   }), [billingAddress]);
 
   // Handles submit of the checkout form.
-  const handleSubmit = React.useCallback((values) => {
+  const handleSubmit = React.useCallback(async (values) => {
     /** Async wrapper for useCallback */
-    const fn = async () => {
-      setLocked(true);
+    setLocked(true);
 
-      const pickupFormValues = pickupFormSubmitValues.current;
-      const newBillingAddress = {
-        type: 'billing',
-        firstName: values.firstName,
-        lastName: values.lastName,
-        mobile: values.mobile,
-        emailAddress: values.emailAddress,
-        company: values.company || undefined,
-        address1: values.address1,
-        address2: values.address2 || undefined,
-        country: values.country,
-        postalCode: values.postalCode,
-        city: values.city,
-        region: values.region,
-      };
-
-      // Update order to set pickup contact.
-      await updateCheckoutOrder({
-        notes: values.instructions,
-        addressSequences: [
-          newBillingAddress,
-          // When the customer is picking up himself we just take the
-          // billing address as pickup address.
-          pickupFormValues.pickupPerson === 'me' ? {
-            ...newBillingAddress,
-            type: 'pickup',
-          } : {
-            type: 'pickup',
-            firstName: pickupFormValues.firstName,
-            lastName: pickupFormValues.lastName,
-            mobile: pickupFormValues.mobile,
-            emailAddress: pickupFormValues.emailAddress,
-          },
-        ],
-        primaryBillToAddressSequenceIndex: 0,
-        primaryShipToAddressSequenceIndex: 1,
-      });
-
-      LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
-      historyPush({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
-
-      // We don't set locked to false to avoid unnecessary UI changes right before
-      // going to checkout page.
+    const pickupFormValues = pickupFormSubmitValues.current;
+    const newBillingAddress = {
+      type: 'billing',
+      firstName: values.firstName,
+      lastName: values.lastName,
+      mobile: values.mobile,
+      emailAddress: values.emailAddress,
+      company: values.company || undefined,
+      address1: values.address1,
+      address2: values.address2 || undefined,
+      country: values.country,
+      postalCode: values.postalCode,
+      city: values.city,
+      region: values.region,
     };
-    fn();
+
+    // Update order to set pickup contact.
+    await updateCheckoutOrder({
+      notes: values.instructions,
+      addressSequences: [
+        newBillingAddress,
+        // When the customer is picking up himself we just take the
+        // billing address as pickup address.
+        pickupFormValues.pickupPerson === 'me' ? {
+          ...newBillingAddress,
+          type: 'pickup',
+        } : {
+          type: 'pickup',
+          firstName: pickupFormValues.firstName,
+          lastName: pickupFormValues.lastName,
+          mobile: pickupFormValues.mobile,
+          emailAddress: pickupFormValues.emailAddress,
+        },
+      ],
+      primaryBillToAddressSequenceIndex: 0,
+      primaryShipToAddressSequenceIndex: 1,
+    });
+
+    LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
+    historyPush({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
+
+    // We don't set locked to false to avoid unnecessary UI changes right before
+    // going to checkout page.
   }, [historyPush, updateCheckoutOrder]);
 
   // Whenever the order is locked we also want to show to loading bar.
@@ -206,6 +205,7 @@ const GuestRegistrationProvider = ({
     defaultBillingAddressState,
     userLocation,
     billingAddress,
+    needsPayment,
   }), [
     isLocked,
     shopSettings.supportedCountries,
@@ -219,6 +219,7 @@ const GuestRegistrationProvider = ({
     defaultBillingAddressState,
     userLocation,
     billingAddress,
+    needsPayment,
   ]);
 
   if (!isDataReady || !isInitialized) {

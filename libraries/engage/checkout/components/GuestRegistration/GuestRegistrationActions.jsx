@@ -21,6 +21,7 @@ const Actions = () => {
   const {
     handleSubmit,
     isLocked,
+    needsPayment,
   } = useGuestRegistration();
 
   return (
@@ -30,7 +31,9 @@ const Actions = () => {
         onClick={handleSubmit}
         disabled={isLocked}
       >
-        {i18n.text('checkout.continue_payment')}
+        {needsPayment
+          ? i18n.text('checkout.continue_payment')
+          : i18n.text('checkout.continue')}
       </RippleButton>
     </div>
   );

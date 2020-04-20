@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import {
+  useRef, useState, useEffect, useCallback,
+} from 'react';
 import { debounce } from 'lodash';
 import { useValidation } from '../validation';
 
@@ -9,6 +11,9 @@ import { useValidation } from '../validation';
  * @returns {{ handleChange, handleSubmit, values, valid, validationErrors: ?Object, isSubmitting }}
  */
 export function useFormState(initialState, complete, validationConstraints = {}) {
+  // Submit lock prevents the form from being submitted multiple times
+  const submitLock = useRef(false);
+
   const [values, setValues] = useState(initialState);
   const [isSubmitting, setSubmitting] = useState(false);
   const [changed, setChanged] = useState(false);
@@ -31,12 +36,14 @@ export function useFormState(initialState, complete, validationConstraints = {})
       return;
     }
     let mounted = true;
-    if (valid === true) {
+    if (valid === true && !submitLock.current) {
       (async () => {
+        submitLock.current = true;
         await complete(values);
         if (mounted) {
           setSubmitting(false);
           setChanged(false);
+          submitLock.current = false;
         }
       })();
     }

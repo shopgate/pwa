@@ -22,7 +22,7 @@ type Props = {
   userLocation: any,
   isDataReady: bool,
   fetchCart: () => Promise<any>,
-  initializeCheckout: () => Promise<any>,
+  prepareCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
   fetchPaymentMethods: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
@@ -63,7 +63,7 @@ const CheckoutProvider = ({
   orderInitialized,
   orderReadOnly,
   historyReplace,
-  initializeCheckout,
+  prepareCheckout,
   fetchCheckoutOrder,
   fetchPaymentMethods,
   updateCheckoutOrder,
@@ -85,97 +85,92 @@ const CheckoutProvider = ({
   const activePaymentMethod = useStripeContext();
 
   // Initialize checkout process.
-  const [isCheckoutInitialized] = useAsyncMemo(async () => {
+  const [{ isCheckoutInitialized, needsPayment }] = useAsyncMemo(async () => {
     LoadingProvider.setLoading(pathPattern);
 
-    if (!orderInitialized) {
-      await initializeCheckout();
-    }
-
-    await updateCheckoutOrder({
-      paymentTransactions: [{
-        paymentMethod: {
-          code: 'stripe',
-        },
-      }],
+    const { needsPayment: needsPaymentCheckout } = await prepareCheckout({
+      initializeOrder: !orderInitialized,
     });
 
     await Promise.all([
+      needsPaymentCheckout && fetchPaymentMethods(),
       fetchCheckoutOrder(),
-      fetchPaymentMethods(),
     ]);
 
     LoadingProvider.resetLoading(pathPattern);
-    return true;
+    return {
+      isCheckoutInitialized: true,
+      needsPayment: needsPaymentCheckout,
+    };
   }, [], false);
 
   // Handles submit of the checkout form.
-  const handleSubmitOrder = React.useCallback((values) => {
-    /** Async wrapper for useCallback */
-    const fn = async () => {
-      setLocked(true);
+  const handleSubmitOrder = React.useCallback(async (values) => {
+    setLocked(true);
 
-      // Update order to set pickup contact.
-      if (!orderReadOnly) {
-        await updateCheckoutOrder({
-          notes: values.instructions,
-          addressSequences: [
-            billingAddress,
-            // When the customer is picking up himself we just take the
-            // billing address as pickup address.
-            values.pickupPerson === 'me' ? {
-              ...billingAddress,
-              type: 'pickup',
-            } : {
-              type: 'pickup',
-              firstName: values.firstName,
-              lastName: values.lastName,
-              mobile: values.cellPhone,
-              emailAddress: values.emailAddress,
-            },
-          ],
-          primaryBillToAddressSequenceIndex: 0,
-          primaryShipToAddressSequenceIndex: 1,
-        });
-      }
+    // Update order to set pickup contact.
+    if (!orderReadOnly) {
+      await updateCheckoutOrder({
+        notes: values.instructions,
+        addressSequences: [
+          billingAddress,
+          // When the customer is picking up himself we just take the
+          // billing address as pickup address.
+          values.pickupPerson === 'me' ? {
+            ...billingAddress,
+            type: 'pickup',
+          } : {
+            type: 'pickup',
+            firstName: values.firstName,
+            lastName: values.lastName,
+            mobile: values.cellPhone,
+            emailAddress: values.emailAddress,
+          },
+        ],
+        primaryBillToAddressSequenceIndex: 0,
+        primaryShipToAddressSequenceIndex: 1,
+      });
+    }
 
-      // Fulfill using selected payment method.
-      const fulfilledPaymentTransactions = await activePaymentMethod.fulfillTransaction({
+    // Fulfill using selected payment method.
+    let fulfilledPaymentTransactions = [];
+    if (needsPayment) {
+      fulfilledPaymentTransactions = await activePaymentMethod.fulfillTransaction({
         paymentTransactions,
       });
       if (!fulfilledPaymentTransactions) {
         setLocked(false);
         return;
       }
+    }
 
-      // Submit fulfilled payment transaction to complete order.
-      await submitCheckoutOrder({
-        paymentTransactions: fulfilledPaymentTransactions,
-        userAgent: getUserAgent(),
-        platform: 'engage',
-      });
+    // Submit fulfilled payment transaction to complete order.
+    await submitCheckoutOrder({
+      paymentTransactions: fulfilledPaymentTransactions,
+      userAgent: getUserAgent(),
+      platform: 'engage',
+    });
 
-      // Order is done, fetch again to retrieve infos for success page
-      await Promise.all([
-        fetchCheckoutOrder(),
-        fetchCart(),
-      ]);
-      historyReplace({ pathname: CHECKOUT_CONFIRMATION_PATTERN });
+    // Order is done, fetch again to retrieve infos for success page
+    await Promise.all([
+      fetchCheckoutOrder(),
+      fetchCart(),
+    ]);
+    historyReplace({ pathname: CHECKOUT_CONFIRMATION_PATTERN });
 
-      // We don't set locked to false to avoid unnecessary UI changes right before
-      // going to confirmation page.
-    };
-    fn();
+    // We don't set locked to false to avoid unnecessary UI changes right before
+    // going to confirmation page.
   }, [
-    historyReplace,
-    fetchCart,
-    activePaymentMethod,
-    billingAddress,
     orderReadOnly,
-    paymentTransactions,
+    needsPayment,
     submitCheckoutOrder,
-    updateCheckoutOrder,
     fetchCheckoutOrder,
+    fetchCart,
+    historyReplace,
+    updateCheckoutOrder,
+    billingAddress,
+    activePaymentMethod,
+    paymentTransactions,
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.
@@ -215,6 +210,7 @@ const CheckoutProvider = ({
     billingAddress,
     pickupAddress,
     taxLines,
+    needsPayment,
   }), [
     isLocked,
     formState.setValues,
@@ -225,6 +221,7 @@ const CheckoutProvider = ({
     billingAddress,
     pickupAddress,
     taxLines,
+    needsPayment,
   ]);
 
   if (!isDataReady || !isCheckoutInitialized) {

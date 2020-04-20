@@ -15,22 +15,28 @@ const CheckoutConfirmationBilledTo = ({ order }) => {
       firstName, lastName, address1, city, region, postalCode,
     } = billing;
 
-    const [payment] = order.paymentTransactions;
+    const [payment = {}] = order.paymentTransactions || [{}];
     const { paymentInfo: { card: { type, last4 } = {} } = {} } = payment;
 
+    const hasPayment = order.paymentTransactions && order.paymentTransactions[0];
+
     return [
-      {
-        label: i18n.text('checkout.success.card_holder'),
-        text: `${firstName} ${lastName}`,
-      },
+      ...(hasPayment ? [
+        {
+          label: i18n.text('checkout.success.card_holder'),
+          text: `${firstName} ${lastName}`,
+        },
+      ] : []),
       {
         label: i18n.text('checkout.success.address'),
         text: [`${address1 || ''}`, `${city || ''}, ${region || ''}, ${postalCode || ''}`].join('\n\r'),
       },
-      {
-        label: i18n.text('checkout.success.payment_method'),
-        text: `${startCase(type)} ****${last4}`,
-      },
+      ...(hasPayment ? [
+        {
+          label: i18n.text('checkout.success.payment_method'),
+          text: `${startCase(type)} ****${last4}`,
+        },
+      ] : []),
     ];
   }, [order]);
 

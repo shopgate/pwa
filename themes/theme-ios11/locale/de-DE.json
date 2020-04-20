@@ -327,6 +327,7 @@
     },
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
+    "continue": "Continue",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
@@ -350,7 +351,7 @@
       }
     },
     "billing": {
-      "headline": "Billed to",
+      "headline": "Billing Address",
       "address": "{postalCode} {city}, {region}"
     },
     "creditCard": {
