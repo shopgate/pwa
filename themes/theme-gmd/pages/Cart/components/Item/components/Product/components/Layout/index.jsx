@@ -39,15 +39,15 @@ const Layout = (props, context) => (
             specialPrice={props.product.price.special}
           />
           {props.product.price.info && (
-            <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
+          <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
           )}
         </Grid.Item>
         {showTaxDisclaimer && (
-          <Grid.Item
-            className={styles.disclaimerSpacer}
-            grow={0}
-            shrink={0}
-          />
+        <Grid.Item
+          className={styles.disclaimerSpacer}
+          grow={0}
+          shrink={0}
+        />
         )}
       </Grid>
     </Grid.Item>

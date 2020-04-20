@@ -4,34 +4,25 @@ import requestProductImages from '../action-creators/requestProductImages';
 import { SHOPGATE_CATALOG_GET_PRODUCT_IMAGES } from '../constants/Pipelines';
 import receiveProductImages from '../action-creators/receiveProductImages';
 import errorProductImages from '../action-creators/errorProductImages';
+import { getProductImagesState } from '..';
 
 /**
  * Maybe requests images for a product from server.
  * @param {string} productId The product ID.
- * @param {Array} [formats] The requested formats.
  * @return {Function} The dispatched action.
  */
-function fetchProductImages(productId, formats) {
+function fetchProductImages(productId) {
   return (dispatch, getState) => {
-    const productImages = getState().product.imagesByProductId[productId];
+    const productImages = getProductImagesState(getState())[productId];
 
     if (!shouldFetchData(productImages)) {
       return Promise.resolve(null);
     }
-
-    let version = 1;
-    const input = { productId };
-
-    if (formats) {
-      input.formats = formats;
-      version = 2;
-    }
-
-    dispatch(requestProductImages(productId, formats));
+    dispatch(requestProductImages(productId));
 
     const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
-      .setInput(input)
-      .setVersion(version)
+      .setInput({ productId })
+      .setVersion(3)
       .dispatch();
 
     request

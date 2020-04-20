@@ -13,7 +13,6 @@ import fetchProductShipping from '../actions/fetchProductShipping';
 import fetchProductVariants from '../actions/fetchProductVariants';
 import fetchProductOptions from '../actions/fetchProductOptions';
 import fetchProductMedia from '../actions/fetchProductMedia';
-import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
   galleryWillEnter$,
@@ -47,7 +46,7 @@ function product(subscribe) {
     dispatch(fetchProduct(id));
     dispatch(fetchProductDescription(id));
     dispatch(fetchProductProperties(id));
-    dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
+    dispatch(fetchProductImages(id));
     dispatch(fetchProductShipping(id));
     /**
      * This feature is currently in BETA testing.
@@ -58,7 +57,7 @@ function product(subscribe) {
 
   subscribe(galleryWillEnter$, ({ action, dispatch }) => {
     const { productId } = action.route.params;
-    dispatch(fetchProductImages(hex2bin(productId), productImageFormats.getAllUniqueFormats()));
+    dispatch(fetchProductImages(hex2bin(productId)));
   });
 
   subscribe(processProduct$, ({ action, dispatch }) => {
@@ -73,7 +72,7 @@ function product(subscribe) {
 
     if (baseProductId) {
       dispatch(fetchProduct(baseProductId));
-      dispatch(fetchProductImages(baseProductId, productImageFormats.getAllUniqueFormats()));
+      dispatch(fetchProductImages(baseProductId));
     }
 
     if (flags.hasVariants) {

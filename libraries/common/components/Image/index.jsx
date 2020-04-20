@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
-import { getActualImageSource } from '../../helpers/data';
+import { getFullImageSource, logger } from '@shopgate/engage/core';
 import Transition from '../Transition';
 import styles from './style';
 
@@ -25,6 +25,7 @@ class Image extends Component {
       blur: PropTypes.number,
     })),
     src: PropTypes.string,
+    // @deprecated use resolutions instead. kept for backwards compatibility
     srcmap: PropTypes.arrayOf(PropTypes.string),
     transition: PropTypes.shape(),
   };
@@ -61,6 +62,8 @@ class Image extends Component {
    */
   constructor(props) {
     super(props);
+    logger.assert(!props.srcmap, 'Use of srcmap prop is deprecated. Use resolutions instead');
+
     /**
      * The initial component state.
      * Pre-loads all resolutions if already cached will
@@ -157,8 +160,9 @@ class Image extends Component {
         this.props.onError();
       }
     };
+
     if (!this.props.srcmap) {
-      image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
+      image.src = getFullImageSource(src, this.props.resolutions[resolutionIndex]);
     } else {
       image.src = src;
     }
@@ -176,7 +180,7 @@ class Image extends Component {
 
     if (index > -1) {
       src = !this.props.srcmap
-        ? getActualImageSource(this.props.src, this.props.resolutions[index])
+        ? getFullImageSource(this.props.src, this.props.resolutions[index])
         : this.props.srcmap[index];
     }
 
@@ -204,10 +208,7 @@ class Image extends Component {
       );
     }
 
-    let containerStyle = styles.container(this.props.backgroundColor, '100%');
-    if (!this.props.srcmap) {
-      containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);
-    }
+    const containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);
 
     if (!this.props.animating || !this.props.transition) {
       return <div className={`${containerStyle} ${this.props.className}`}>{innerImage}</div>;

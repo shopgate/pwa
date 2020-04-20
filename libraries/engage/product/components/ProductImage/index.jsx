@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
+import { logger } from '@shopgate/pwa-core';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
@@ -72,6 +73,7 @@ class ProductImage extends Component {
    */
   constructor(props) {
     super(props);
+    logger.assert(!props.srcmap, 'Use of srcmap prop is deprecated. Use resolutions instead');
 
     const showPlaceholder = !props.src && (props.srcmap === null || props.srcmap.length === 0);
     this.state = {
@@ -111,6 +113,20 @@ class ProductImage extends Component {
   };
 
   /**
+   * Sets the image ratio based on width and height.
+   * @return {number} The image ratio.
+   */
+  getImageRatio = () => {
+    if (this.props.ratio) {
+      const [x, y] = this.props.ratio;
+      return ((y / x)).toFixed(3);
+    }
+
+    const { width, height } = this.props.resolutions[this.props.resolutions.length - 1];
+    return ((height / width)).toFixed(3);
+  };
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -127,7 +143,7 @@ class ProductImage extends Component {
       return (
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
           <div
-            className={classnames(styles.placeholderContainer, {
+            className={classnames(styles.placeholderContainer(this.getImageRatio()), {
               [styles.innerShadow]: showInnerShadow,
               [className]: !!className,
             })}

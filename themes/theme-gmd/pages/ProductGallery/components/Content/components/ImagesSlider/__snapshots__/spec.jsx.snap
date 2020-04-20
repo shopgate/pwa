@@ -20,22 +20,8 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
       dispatch={[Function]}
       images={
         Array [
-          Object {
-            "height": 1024,
-            "sources": Array [
-              "foo1024",
-              "bar1024",
-            ],
-            "width": 1024,
-          },
-          Object {
-            "height": 2048,
-            "sources": Array [
-              "foo2048",
-              "bar2048",
-            ],
-            "width": 2048,
-          },
+          "foo",
+          "bar",
         ]
       }
       initialSlide={3}
@@ -241,7 +227,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                 >
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$foo1024"
+                    key=".$foo"
                   >
                     <div
                       className="swiper-slide"
@@ -251,16 +237,16 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                         className="swiper-zoom-container"
                       >
                         <img
-                          alt="foo2048"
+                          alt=""
                           className="css-4kgshc"
-                          src="foo2048"
+                          src="foo"
                         />
                       </div>
                     </div>
                   </SwiperItem>
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$bar1024"
+                    key=".$bar"
                   >
                     <div
                       className="swiper-slide"
@@ -270,9 +256,9 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                         className="swiper-zoom-container"
                       >
                         <img
-                          alt="bar2048"
+                          alt=""
                           className="css-4kgshc"
-                          src="bar2048"
+                          src="bar"
                         />
                       </div>
                     </div>
@@ -311,22 +297,8 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
       dispatch={[Function]}
       images={
         Array [
-          Object {
-            "height": 1024,
-            "sources": Array [
-              "foo1024",
-              "bar1024",
-            ],
-            "width": 1024,
-          },
-          Object {
-            "height": 2048,
-            "sources": Array [
-              "foo2048",
-              "bar2048",
-            ],
-            "width": 2048,
-          },
+          "foo",
+          "bar",
         ]
       }
       initialSlide={0}
@@ -532,7 +504,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                 >
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$foo1024"
+                    key=".$foo"
                   >
                     <div
                       className="swiper-slide"
@@ -542,16 +514,16 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                         className="swiper-zoom-container"
                       >
                         <img
-                          alt="foo2048"
+                          alt=""
                           className="css-4kgshc"
-                          src="foo2048"
+                          src="foo"
                         />
                       </div>
                     </div>
                   </SwiperItem>
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$bar1024"
+                    key=".$bar"
                   >
                     <div
                       className="swiper-slide"
@@ -561,9 +533,9 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                         className="swiper-zoom-container"
                       >
                         <img
-                          alt="bar2048"
+                          alt=""
                           className="css-4kgshc"
-                          src="bar2048"
+                          src="bar"
                         />
                       </div>
                     </div>

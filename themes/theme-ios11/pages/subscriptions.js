@@ -16,9 +16,10 @@ import {
   productImageFormats,
   enableRedirectHandler,
   setDefaultProductFetchParams,
+  getProductImageSettings,
 } from '@shopgate/engage/product';
-import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { grantCameraPermissions } from '@shopgate/engage/core';
+import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import {
   PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,
   PRODUCT_SLIDER_IMAGE_FORMATS,
@@ -61,8 +62,19 @@ export default function app(subscribe) {
       return true;
     }));
 
-    productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, PRODUCT_SLIDER_IMAGE_FORMATS);
-    productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, GALLERY_SLIDER_IMAGE_FORMATS);
+    // set formats for product images
+    let { HeroImage: pdpResolutions, GalleryImage: galleryResolutions } = getProductImageSettings();
+
+    if (!(pdpResolutions && pdpResolutions.length)) {
+      pdpResolutions = PRODUCT_SLIDER_IMAGE_FORMATS;
+    }
+
+    if (!(galleryResolutions && galleryResolutions.length)) {
+      galleryResolutions = GALLERY_SLIDER_IMAGE_FORMATS;
+    }
+
+    productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, pdpResolutions);
+    productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, galleryResolutions);
 
     /**
      * This feature is currently in BETA testing.

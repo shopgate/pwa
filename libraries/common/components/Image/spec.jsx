@@ -2,7 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Image from './index';
 
-window.requestAnimationFrame = () => {};
+window.requestAnimationFrame = () => { };
+jest.unmock('@shopgate/pwa-core');
 
 describe('<Image />', () => {
   const loadedImages = [];

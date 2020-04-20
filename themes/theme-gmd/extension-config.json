@@ -211,6 +211,36 @@
       },
       "default": {
         "settings": {
+          "AppImages": {
+            "quality": 75,
+            "fillColor": "FFFFFF",
+            "HeroImage": [
+              {
+                "width": 440,
+                "height": 440
+              },
+              {
+                "width": 1024,
+                "height": 1024
+              }
+            ],
+            "GalleryImage": [
+              {
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "width": 2048,
+                "height": 2048
+              }
+            ],
+            "ListImage": [
+              {
+                "width": 440,
+                "height": 440
+              }
+            ]
+          },
           "@shopgate/engage/components/AppBar": {
             "background": "#fff",
             "color": "#000",

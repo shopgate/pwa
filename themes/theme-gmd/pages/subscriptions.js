@@ -19,6 +19,7 @@ import {
   setDefaultProductFetchParams,
 } from '@shopgate/engage/product';
 import { grantCameraPermissions } from '@shopgate/engage/core';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import {
@@ -64,8 +65,18 @@ export default function app(subscribe) {
     }));
 
     // set formats for product images
-    productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, PRODUCT_SLIDER_IMAGE_FORMATS);
-    productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, GALLERY_SLIDER_IMAGE_FORMATS);
+    let { HeroImage: pdpResolutions, GalleryImage: galleryResolutions } = getProductImageSettings();
+
+    if (!(pdpResolutions && pdpResolutions.length)) {
+      pdpResolutions = PRODUCT_SLIDER_IMAGE_FORMATS;
+    }
+
+    if (!(galleryResolutions && galleryResolutions.length)) {
+      galleryResolutions = GALLERY_SLIDER_IMAGE_FORMATS;
+    }
+
+    productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, pdpResolutions);
+    productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, galleryResolutions);
 
     onWillPop(NavDrawer.close);
 
