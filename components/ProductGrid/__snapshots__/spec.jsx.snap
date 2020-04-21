@@ -11,13 +11,13 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 >
   <Layout>
     <Grid
-      className="css-a9oap6"
+      className="css-exsswj"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-a9oap6 css-h7r55a css-u7q1iu"
+        className="css-exsswj css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
       />
     </Grid>
@@ -25,7 +25,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 </ProductGrid>
 `;
 
-exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
+exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
 <ProductGrid
   flags={null}
   handleGetProducts={[Function]}
@@ -56,13 +56,13 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
       <div>
         <div>
           <Grid
-            className="css-a9oap6"
+            className="css-exsswj"
             component="ul"
             data-test-id="productGrid"
             wrap={true}
           >
             <ul
-              className="css-a9oap6 css-h7r55a css-u7q1iu"
+              className="css-exsswj css-h7r55a css-u7q1iu"
               data-test-id="productGrid"
             />
           </Grid>
