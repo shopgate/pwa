@@ -6,14 +6,8 @@ import { css } from 'glamor';
  * @return {string}
  */
 const item = columns => css({
-  [`:nth-child(${columns}n)`]: {
-    paddingRight: 0,
-  },
-  [`:nth-child(${columns}n+1)`]: {
-    paddingLeft: 0,
-  },
-  padding: '0px 8px',
-  width: `${100 / columns}%`,
+  // Flex will add whitespace between items, no padding is needed
+  width: `calc(${100 / columns}% - 8px)`,
 }).toString();
 
 export default {
