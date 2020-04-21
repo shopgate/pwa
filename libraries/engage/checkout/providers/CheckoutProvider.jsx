@@ -24,7 +24,6 @@ type Props = {
   fetchCart: () => Promise<any>,
   prepareCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
-  fetchPaymentMethods: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
   submitCheckoutOrder: () => Promise<any>,
   historyReplace: (any) => void,
@@ -65,7 +64,6 @@ const CheckoutProvider = ({
   historyReplace,
   prepareCheckout,
   fetchCheckoutOrder,
-  fetchPaymentMethods,
   updateCheckoutOrder,
   submitCheckoutOrder,
   children,
@@ -88,18 +86,13 @@ const CheckoutProvider = ({
   const [{ isCheckoutInitialized, needsPayment }] = useAsyncMemo(async () => {
     LoadingProvider.setLoading(pathPattern);
 
-    const { needsPayment: needsPaymentCheckout } = await prepareCheckout({
+    const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
       initializeOrder: !orderInitialized,
     });
 
-    await Promise.all([
-      needsPaymentCheckout && fetchPaymentMethods(),
-      fetchCheckoutOrder(),
-    ]);
-
     LoadingProvider.resetLoading(pathPattern);
     return {
-      isCheckoutInitialized: true,
+      isCheckoutInitialized: success,
       needsPayment: needsPaymentCheckout,
     };
   }, [], false);

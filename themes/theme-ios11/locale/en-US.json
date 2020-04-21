@@ -319,7 +319,8 @@
     "continue_payment": "Continue to Payment",
     "continue": "Continue",
     "errors": {
-      "initFailed": "Failed to open checkout process."
+      "initFailed": "Failed to open checkout process.",
+      "missingPaymentMethod": "No payment method configured"
     },
     "pickup_contact": {
       "headline": "Pickup Contact Info",
