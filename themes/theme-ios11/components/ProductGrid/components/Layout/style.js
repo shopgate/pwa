@@ -9,4 +9,5 @@ export default css({
   ':not(:empty)': {
     marginTop: 16,
   },
+  justifyContent: 'space-between',
 }).toString();
