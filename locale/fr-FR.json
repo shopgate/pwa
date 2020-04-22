@@ -21,7 +21,8 @@
     "favorites": "Favorits",
     "scanner": "Scanner",
     "checkout": "Checkout",
-    "checkout_confirmation": "Order Successful"
+    "checkout_confirmation": "Order Successful",
+    "register": "Register"
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
@@ -317,6 +318,8 @@
         "lastName": "Last Name *",
         "cellPhone": "Mobile Number *",
         "emailAddress": "E-Mail Address *",
+        "password": "Password *",
+        "passwordConfirm": "Confirm password *",
         "company": "Company",
         "address1": "Street & No. *",
         "address2": "Address 2",
@@ -363,7 +366,14 @@
       "continue": "Continue shopping"
     }
   },
-  "error": {
+  "registration": {
+    "create_account": "Create account",
+    "headlines": {
+      "create_new_account": "Create new account",
+      "shipping_address": "Shipping Address",
+      "billing_address": "Billing Address"
+    }
+  },"error": {
     "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
   "validation": {
