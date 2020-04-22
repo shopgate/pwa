@@ -16,6 +16,9 @@
       appId: "<%- htmlWebpackPlugin.options.appId %>"
     };
   </script>
+  <% if (htmlWebpackPlugin.options.webBridge) { %>
+    <script src="<%= htmlWebpackPlugin.options.webBridge %>"></script>
+  <% } %>
 </head>
 
 <body>

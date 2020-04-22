@@ -9,9 +9,7 @@ import { mutable } from '../../helpers/redux';
  */
 export const historyResetTo = mutable(pathname => (dispatch) => {
   dispatch(navigate({
-    params: {
-      pathname,
-    },
+    pathname,
     action: HISTORY_RESET_TO,
   }));
 });

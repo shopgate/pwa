@@ -104,6 +104,7 @@ const config = {
       title: appConfig.shopName || process.env.theme,
       filename: path.resolve(themePath, PUBLIC_FOLDER, 'index.html'),
       template: path.resolve(__dirname, 'templates', 'default.ejs'),
+      webBridge: process.env.WEB_BRIDGE && 'https://sandbox.cdn.connect.shopgate.com/deviceBridge.js',
       appId: appConfig.appId,
       inject: false,
       cache: !isDev,
@@ -188,6 +189,18 @@ const config = {
     stats: {
       colors: true,
     },
+    proxy: process.env.WEB_BRIDGE ? {
+      '/api': {
+        target: `http://${ip}:${apiPort}`,
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+        debug: true,
+        secure: false,
+        cookieDomainRewrite: {
+          '*': '',
+        },
+      },
+    } : undefined,
   },
   optimization: {
     usedExports: true,

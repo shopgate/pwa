@@ -183,6 +183,7 @@ export { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
 export { historyRedirect } from '@shopgate/pwa-common/actions/router/historyRedirect';
 export { historyReplace } from '@shopgate/pwa-common/actions/router/historyReplace';
 export { historyReset } from '@shopgate/pwa-common/actions/router/historyReset';
+export { historyResetTo } from '@shopgate/pwa-common/actions/router/historyResetTo';
 
 // HELPERS
 export {
