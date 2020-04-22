@@ -10,6 +10,13 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   shopCNAME: 'm.example.com',
 }));
 
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    warn: jest.fn(),
+  },
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+}));
+
 describe('handleLinks helpers', () => {
   describe('isShopLink()', () => {
     const positives = [

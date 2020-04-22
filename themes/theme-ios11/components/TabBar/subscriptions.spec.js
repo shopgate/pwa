@@ -60,7 +60,7 @@ describe('TabBar subscriptions', () => {
   it('should set configuration tab bar blacklist on app start', () => {
     appWillStartCallback();
     expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toBeInstanceOf(Array);
-    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toHaveLength(12);
+    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toHaveLength(13);
   });
 
   it('should be initialized as expected', () => {

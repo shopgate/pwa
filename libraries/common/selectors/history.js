@@ -8,6 +8,10 @@ import { parseObjectToQueryString } from '../helpers/router';
 import { DEFAULT_SORT } from '../constants/DisplayOptions';
 
 /**
+ * @deprecated
+ */
+
+/**
  * Selects the history state.
  * @param {Object} state The global state.
  * @deprecated

@@ -88,16 +88,14 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
               </SurroundPortals>
             </Link>
           </div>
-          {context.editable && (
-            <CartItemQuantityPicker
-              unit={props.product.unit}
-              quantity={props.quantity}
-              editMode={props.editMode}
-              onChange={props.handleUpdate}
-              onToggleEditMode={props.toggleEditMode}
-            />
-          )}
-
+          <CartItemQuantityPicker
+            unit={props.product.unit}
+            quantity={props.quantity}
+            editMode={props.editMode}
+            onChange={props.handleUpdate}
+            onToggleEditMode={props.toggleEditMode}
+            disabled={!context.editable}
+          />
         </Grid.Item>
       </Grid>
       <CartItemProductChangeLocation cartItem={cartItem} registerAction={registerAction} />

@@ -197,6 +197,7 @@ export const openExternalLink = (location, historyAction, state, locationState =
     openPageExtern({
       src: location,
     });
+    return;
   }
 
   showTab({

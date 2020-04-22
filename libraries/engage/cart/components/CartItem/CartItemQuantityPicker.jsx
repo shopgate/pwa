@@ -11,6 +11,7 @@ type Props = {
   onToggleEditMode?: (editMode: boolean) => void,
   quantity?: number,
   unit?: string,
+  disabled?: boolean
 }
 
 /**
@@ -23,6 +24,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
     unit: null,
     quantity: 1,
     onToggleEditMode: () => { },
+    disabled: false,
   };
 
   /**
@@ -183,6 +185,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
           unit={hasCustomUnit ? unit : null}
           maxDecimals={hasCustomUnit ? 2 : 0}
           data-test-id="quantityPicker"
+          disabled={this.props.disabled}
           aria-label={i18n.text('product.quantity')}
         />
       </form>

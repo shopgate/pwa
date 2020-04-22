@@ -1,7 +1,7 @@
 import {
   main$, routeDidLeave$, historyPop, showModal,
 } from '@shopgate/engage/core';
-
+import { userDidLogout$ } from '@shopgate/engage/user';
 import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants';
 import { FETCH_CHECKOUT_ORDER_ERROR } from '../constants/actionTypes';
 import { clearCheckoutOrder } from '../index';
@@ -14,6 +14,10 @@ export default function checkout(subscribe) {
     .filter(({ action }) => action.route.pattern === CHECKOUT_CONFIRMATION_PATTERN);
 
   subscribe(checkoutConfirmationDidLeave$, ({ dispatch }) => {
+    dispatch(clearCheckoutOrder());
+  });
+
+  subscribe(userDidLogout$, ({ dispatch }) => {
     dispatch(clearCheckoutOrder());
   });
 
