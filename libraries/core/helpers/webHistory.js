@@ -47,8 +47,6 @@ class WebHistory {
    * @param {string} action Action that caused the event.
    */
   handleEvent = (route, action) => {
-    console.warn('[a-b-c] handle native event', route, action);
-
     // Fill stack
     if (action === 'PUSH') {
       this.stack.push(route);
