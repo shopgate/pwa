@@ -1,0 +1,10 @@
+export {
+  SHOPGATE_USER_REGISTER,
+} from './pipelines';
+
+export {
+  REQUEST_REGISTRATION,
+  SUCCESS_REGISTRATION,
+  ERROR_REGISTRATION,
+  VALIDATION_ERRORS_REGISTRATION,
+} from './actionTypes';

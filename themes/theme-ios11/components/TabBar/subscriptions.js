@@ -1,4 +1,4 @@
-import { LOGIN_PATH, CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { LOGIN_PATH, CHECKOUT_PATH, REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -39,6 +39,7 @@ const blacklist = [
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   SCANNER_PATH,
   CHECKOUT_CONFIRMATION_PATTERN,
+  REGISTER_PATH,
 ];
 
 /**

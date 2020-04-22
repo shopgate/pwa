@@ -55,13 +55,14 @@ const styles = {
   phoneFieldErrorText: css({
     position: 'absolute',
     width: '100%',
-    bottom: 2,
+    bottom: '-10px',
     fontSize: '0.75rem',
     lineHeight: 0.875,
     color: colors.error,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
+    marginLeft: '38px',
   }),
 };
 

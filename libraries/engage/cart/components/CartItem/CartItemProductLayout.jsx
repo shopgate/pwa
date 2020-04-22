@@ -6,7 +6,7 @@ import {
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
-import { bin2hex } from '@shopgate/engage/core';
+import { bin2hex, i18n } from '@shopgate/engage/core';
 import { ProductImage, ITEM_PATH, type Product } from '@shopgate/engage/product';
 import {
   CartItemProductChangeLocation,
@@ -55,6 +55,14 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
               toggleEditMode={props.toggleEditMode}
               value={props.product.name}
             />
+            {context.editable === false && (
+              <div className={styles.staticQuantity}>
+                {i18n.text('product.quantity')}
+:
+                {' '}
+                {props.quantity}
+              </div>
+            )}
           </Link>
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
@@ -97,7 +105,6 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
               onToggleEditMode={props.toggleEditMode}
             />
           )}
-
         </Grid.Item>
       </Grid>
       <CartItemProductChangeLocation cartItem={cartItem} registerAction={registerAction} />

@@ -5,7 +5,7 @@ import Actions from './GuestRegistrationActions';
 import GuestRegistrationProvider from '../../providers/GuestRegistrationProvider';
 
 /**
- * The Cart component.
+ * The GuestRegistration component.
  * @returns {JSX}
  */
 const GuestRegistration = () => (

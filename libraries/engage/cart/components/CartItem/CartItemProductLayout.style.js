@@ -66,6 +66,10 @@ const properties = css({
   },
 }).toString();
 
+const staticQuantity = css({
+  fontSize: '0.875rem',
+}).toString();
+
 export default {
   item,
   leftColumn,
@@ -76,4 +80,5 @@ export default {
   priceInfo,
   price,
   properties,
+  staticQuantity,
 };
