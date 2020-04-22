@@ -22,7 +22,8 @@
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
     "scanner": "Scanner",
-    "checkout_confirmation": "Order Successful"
+    "checkout_confirmation": "Order Successful",
+    "register": "Register"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -127,6 +128,8 @@
     "lastName": "Nachname",
     "cellPhone": "Mobilnummer für SMS Benachrichtigungen",
     "emailAddress": "E-Mail Adresse",
+    "password": "Passwort *",
+    "passwordConfirm": "Passwort wiederholen *",
     "who_will_pickup": "Wer wird diese Bestellung abholen?",
     "me": "Ich selbst",
     "someone_else": "Jemand anderes",
@@ -377,7 +380,14 @@
       "continue": "Continue shopping"
     }
   },
-  "error": {
+  "registration": {
+    "create_account": "Create account",
+    "headlines": {
+      "create_new_account": "Create new account",
+      "shipping_address": "Shipping Address",
+      "billing_address": "Billing Address"
+    }
+  },"error": {
     "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
   },
   "validation": {
