@@ -50,6 +50,7 @@ export function useFormState(initialState, complete, validationConstraints = {})
     // eslint-disable-next-line consistent-return
     return () => {
       mounted = false;
+      submitLock.current = false;
     };
   }, [complete, isSubmitting, values, valid]);
 
