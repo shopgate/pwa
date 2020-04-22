@@ -2,7 +2,7 @@ import React from 'react';
 import { i18n } from '@shopgate/engage/core';
 import { RippleButton } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
-import { submitButton } from './Registration.style';
+import { submitButton, submitButtonContainer } from './Registration.style';
 
 /**
  * PickupContactForm
@@ -15,14 +15,16 @@ const RegisterFormActions = () => {
   } = useRegistration();
 
   return (
-    <RippleButton
-      type="secondary"
-      onClick={handleSubmit}
-      disabled={isLocked}
-      className={submitButton}
-    >
-      {i18n.text('registration.create_account')}
-    </RippleButton>
+    <div className={submitButtonContainer}>
+      <RippleButton
+        type="secondary"
+        onClick={handleSubmit}
+        disabled={isLocked}
+        className={submitButton}
+      >
+        {i18n.text('registration.create_account')}
+      </RippleButton>
+    </div>
   );
 };
 

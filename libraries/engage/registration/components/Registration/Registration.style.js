@@ -38,6 +38,10 @@ export const section = css({
   marginBottom: variables.gap.big * 1.5,
 }).toString();
 
+export const submitButtonContainer = css({
+  margin: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+});
+
 export const submitButton = css({
-  margin: `0 ${variables.gap.big}px max(${variables.gap.big}px, var(--safe-area-inset-bottom)) ${variables.gap.big}px`,
+  width: '100%',
 }).toString();
