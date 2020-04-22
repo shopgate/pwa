@@ -18,21 +18,21 @@ type Props = {
 };
 
 const initialBaseFormState = {
-  emailAddress: 'kloes+test21042050@shopgate.com',
-  password: 'q12werq12',
-  passwordConfirm: 'q12werq12wer',
+  emailAddress: '',
+  password: '',
+  passwordConfirm: '',
 };
 
 const initialShippingFormState = {
-  firstName: 'fsfsdf',
-  lastName: 'fsdffs',
+  firstName: '',
+  lastName: '',
   company: '',
-  address1: 'fsdffds 4',
+  address1: '',
   address2: '',
-  city: 'fsfsfds',
-  country: 'DE',
-  postalCode: '12345',
-  mobile: '4234234',
+  city: '',
+  country: '',
+  postalCode: '',
+  mobile: '',
 };
 
 /**

@@ -39,5 +39,5 @@ export const section = css({
 }).toString();
 
 export const submitButton = css({
-  margin: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+  margin: `0 ${variables.gap.big}px max(${variables.gap.big}px, var(--safe-area-inset-bottom)) ${variables.gap.big}px`,
 }).toString();
