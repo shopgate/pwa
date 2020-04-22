@@ -6,7 +6,7 @@ import {
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
-import { bin2hex, i18n } from '@shopgate/engage/core';
+import { bin2hex } from '@shopgate/engage/core';
 import { ProductImage, ITEM_PATH, type Product } from '@shopgate/engage/product';
 import {
   CartItemProductChangeLocation,
@@ -55,14 +55,6 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
               toggleEditMode={props.toggleEditMode}
               value={props.product.name}
             />
-            {context.editable === false && (
-              <div className={styles.staticQuantity}>
-                {i18n.text('product.quantity')}
-:
-                {' '}
-                {props.quantity}
-              </div>
-            )}
           </Link>
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
@@ -96,15 +88,14 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
               </SurroundPortals>
             </Link>
           </div>
-          {context.editable && (
-            <CartItemQuantityPicker
-              unit={props.product.unit}
-              quantity={props.quantity}
-              editMode={props.editMode}
-              onChange={props.handleUpdate}
-              onToggleEditMode={props.toggleEditMode}
-            />
-          )}
+          <CartItemQuantityPicker
+            unit={props.product.unit}
+            quantity={props.quantity}
+            editMode={props.editMode}
+            onChange={props.handleUpdate}
+            onToggleEditMode={props.toggleEditMode}
+            disabled={!context.editable}
+          />
         </Grid.Item>
       </Grid>
       <CartItemProductChangeLocation cartItem={cartItem} registerAction={registerAction} />

@@ -113,7 +113,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #1"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -151,7 +151,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #2"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -189,7 +189,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #3"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -337,7 +337,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #1"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -375,7 +375,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #2"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -413,7 +413,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #3"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -561,7 +561,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #1"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -599,7 +599,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #2"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -637,7 +637,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               wrapper={[Function]}
             >
               <li
-                className=""
+                className="css-dw3c54"
                 data-test-id="My item #3"
                 onClick={[Function]}
                 onKeyUp={[Function]}
