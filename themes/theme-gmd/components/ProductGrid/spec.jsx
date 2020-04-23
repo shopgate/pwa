@@ -7,7 +7,7 @@ global.console.error = jest.fn();
 jest.mock('@shopgate/engage/components/View');
 
 describe('<ProductGrid />', () => {
-  it('should render with the InfineteContainer', () => {
+  it('should render with the InfiniteContainer', () => {
     const wrapper = mount((
       <ProductGrid products={[]} />
     ));
