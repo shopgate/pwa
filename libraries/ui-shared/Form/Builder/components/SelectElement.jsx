@@ -1,5 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Chevron from '../../../icons/CheckIcon';
 import Select from '../../Select';
 
 /**
@@ -37,18 +38,21 @@ class SelectElement extends PureComponent {
     } = this.props;
 
     return (
-      <Select
-        name={name}
-        className={style.fields}
-        label={element.label}
-        placeholder={element.placeholder}
-        value={value}
-        options={element.options}
-        onChange={element.handleChange}
-        errorText={errorText}
-        isControlled
-        translateErrorText={false}
-      />
+      <Fragment>
+        <Select
+          name={name}
+          className={style.fields}
+          label={element.label}
+          placeholder={element.placeholder}
+          value={value}
+          options={element.options}
+          onChange={element.handleChange}
+          errorText={errorText}
+          isControlled
+          translateErrorText={false}
+        />
+        <Chevron />
+      </Fragment>
     );
   }
 }

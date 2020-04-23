@@ -34,7 +34,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       className="css-1vjh8yv formElement"
     >
       <select
-        className="css-zao20y select"
+        className="css-1ayo3zo select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -57,6 +57,34 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           United states
         </option>
       </select>
+      <Chevron
+        className="css-1h5rpg9"
+      >
+        <Icon
+          className="css-1h5rpg9"
+          color={null}
+          content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+          size="inherit"
+          viewBox="0 0 24 24"
+        >
+          <svg
+            className="css-yys9hb css-1h5rpg9"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+              }
+            }
+            style={
+              Object {
+                "fill": null,
+                "fontSize": "inherit",
+              }
+            }
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+        </Icon>
+      </Chevron>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -114,7 +142,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
       className="css-1vjh8yv formElement"
     >
       <select
-        className="css-zao20y select"
+        className="css-1ayo3zo select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -137,6 +165,34 @@ exports[`<Select /> should render select with 2 options 1`] = `
           United states
         </option>
       </select>
+      <Chevron
+        className="css-1h5rpg9"
+      >
+        <Icon
+          className="css-1h5rpg9"
+          color={null}
+          content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+          size="inherit"
+          viewBox="0 0 24 24"
+        >
+          <svg
+            className="css-yys9hb css-1h5rpg9"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+              }
+            }
+            style={
+              Object {
+                "fill": null,
+                "fontSize": "inherit",
+              }
+            }
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+        </Icon>
+      </Chevron>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -189,7 +245,7 @@ exports[`<Select /> should render select with no options 1`] = `
       className="css-1vjh8yv formElement"
     >
       <select
-        className="css-zao20y select"
+        className="css-1ayo3zo select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -197,6 +253,34 @@ exports[`<Select /> should render select with no options 1`] = `
         onFocus={[Function]}
         value=""
       />
+      <Chevron
+        className="css-1h5rpg9"
+      >
+        <Icon
+          className="css-1h5rpg9"
+          color={null}
+          content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+          size="inherit"
+          viewBox="0 0 24 24"
+        >
+          <svg
+            className="css-yys9hb css-1h5rpg9"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+              }
+            }
+            style={
+              Object {
+                "fill": null,
+                "fontSize": "inherit",
+              }
+            }
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+        </Icon>
+      </Chevron>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
