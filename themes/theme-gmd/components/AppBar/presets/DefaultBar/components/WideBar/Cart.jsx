@@ -98,7 +98,11 @@ Cart.propTypes = {
   count: PropTypes.number.isRequired,
   currency: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
-  total: PropTypes.shape().isRequired,
+  total: PropTypes.shape(),
+};
+
+Cart.defaultProps = {
+  total: null,
 };
 
 export default connect(Cart);
