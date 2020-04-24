@@ -16,6 +16,7 @@ import {
   INDEX_PATH,
   LOGIN_PATH,
   PAGE_PATTERN,
+  REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   ROOT_CATEGORY_PATTERN,
@@ -51,6 +52,7 @@ import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
+import Register from './Register';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
@@ -141,6 +143,10 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={CHECKOUT_CONFIRMATION_PATTERN}
                     component={CheckoutConfirmationPage}
+                  />
+                  <Route
+                    pattern={REGISTER_PATH}
+                    component={Register}
                   />
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>
