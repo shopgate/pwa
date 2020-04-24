@@ -22,7 +22,8 @@
     "favorites": "Favorieten",
     "scanner": "Scanner",
     "checkout": "Checkout",
-    "checkout_confirmation": "Order Successful"
+    "checkout_confirmation": "Order Successful",
+    "register": "Register"
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
@@ -324,6 +325,8 @@
         "lastName": "Last Name *",
         "cellPhone": "Mobile Number *",
         "emailAddress": "E-Mail Address *",
+        "password": "Password *",
+        "passwordConfirm": "Confirm password *",
         "company": "Company",
         "address1": "Street & No. *",
         "address2": "Address 2",
@@ -370,7 +373,14 @@
       "continue": "Continue shopping"
     }
   },
-  "error": {
+  "registration": {
+    "create_account": "Create account",
+    "headlines": {
+      "create_new_account": "Create new account",
+      "shipping_address": "Shipping Address",
+      "billing_address": "Billing Address"
+    }
+  },"error": {
     "general": "Onmogelijk de se connecter. Controleer je internetverbinding en probeer opnieuw."
   },
   "validation": {

@@ -7,6 +7,7 @@ export function transformGeneralPipelineError(error) {
 
   const generalPipelineErrors = [
     'An internal error occured',
+    'An internal error occurred',
     '502 Bad Gateway',
     'error from bigApi',
     'BigApi request',

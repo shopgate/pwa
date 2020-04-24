@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Chevron from '../../icons/ChevronIcon';
 import FormElement from '../../FormElement';
 import styles from './style';
 
@@ -104,6 +105,7 @@ class Select extends Component {
             ))
           }
         </select>
+        <Chevron className={styles.chevron} />
       </FormElement>
     );
   }

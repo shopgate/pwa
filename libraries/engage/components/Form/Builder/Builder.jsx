@@ -91,7 +91,7 @@ class Builder extends Component {
     className: null,
     defaults: {},
     elements: Builder.defaultElements,
-    onSubmit: () => {},
+    onSubmit: () => { },
     validationErrors: [],
   }
 
@@ -137,7 +137,7 @@ class Builder extends Component {
         && !!formDefaults[countryElement.id]
         && !formDefaults[provinceElement.id]) {
         // Set default for province field for given country
-        const [first] = Object.values(buildProvinceList(formDefaults[countryElement.id]));
+        const [first] = Object.keys(buildProvinceList(formDefaults[countryElement.id]));
         if (first) {
           this.state.formData[provinceElement.id] = first;
         }
@@ -318,7 +318,7 @@ class Builder extends Component {
                 name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
               />
               <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
-                { this.renderElement(element, validationErrors[element.id] || '') }
+                {this.renderElement(element, validationErrors[element.id] || '')}
               </Portal>
               <Portal
                 name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}

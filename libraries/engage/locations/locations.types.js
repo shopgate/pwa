@@ -42,9 +42,9 @@ export type LocationAddress = {
   city: string;
   region: string;
   country: string;
-  phoneNumber: string;
-  faxNumber: string;
-  emailAddress: string;
+  phoneNumber?: string;
+  faxNumber?: string;
+  emailAddress?: string;
   isPrimary: boolean;
 }
 
