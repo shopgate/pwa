@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.12.2](https://github.com/shopgate/pwa/compare/v6.12.1...v6.12.2) (2020-04-24)
+
+#### :bug: Bug Fix
+* [#1002](https://github.com/shopgate/pwa/pull/1002) Fix products grid card dimensions ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.12.1](https://github.com/shopgate/pwa/compare/v6.12.0...v6.12.1) (2020-03-24)
 
 #### :rocket: Enhancement
