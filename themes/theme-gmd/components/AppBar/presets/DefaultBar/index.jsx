@@ -12,12 +12,15 @@ import {
 import {
   withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
 } from '@shopgate/engage/core';
-
-import { ViewContext } from '@shopgate/engage/components/View';
+import {
+  ViewContext,
+  ResponsiveContainer,
+} from '@shopgate/engage/components';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
+import WideBar from './components/WideBar';
 import connect from './connector';
 
 /**
@@ -197,20 +200,37 @@ class AppBarDefault extends PureComponent {
       </Fragment>
     );
 
+    const appBar = (
+      <AppBar
+        backgroundColor={background}
+        textColor={color}
+        left={left}
+        center={center}
+        right={right}
+        {...this.props}
+        below={below}
+        aria-hidden={this.props['aria-hidden']}
+      />
+    );
+
     return ReactDOM.createPortal(
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
-          <AppBar
-            backgroundColor={background}
-            textColor={color}
-            left={left}
-            center={center}
-            right={right}
-            {...this.props}
-            below={below}
-            aria-hidden={this.props['aria-hidden']}
-          />
+          <ResponsiveContainer appOnly>
+            {appBar}
+          </ResponsiveContainer>
+          <ResponsiveContainer webOnly breakpoint="<=xs">
+            {appBar}
+          </ResponsiveContainer>
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            <WideBar
+              backgroundColor={background}
+              textColor={color}
+              below={below}
+              {...this.props}
+            />
+          </ResponsiveContainer>
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,

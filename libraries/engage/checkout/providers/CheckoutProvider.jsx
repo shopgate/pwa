@@ -172,7 +172,7 @@ const CheckoutProvider = ({
       LoadingProvider.setLoading(pathPattern);
       return;
     }
-    LoadingProvider.unsetLoading(pathPattern);
+    LoadingProvider.resetLoading(pathPattern);
   }, [isLocked, pathPattern]);
 
   // Hold form states.

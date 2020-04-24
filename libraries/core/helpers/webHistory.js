@@ -1,6 +1,6 @@
 import { createBrowserHistory } from 'history';
 import { router } from '@virtuous/conductor';
-import { hasWebBridge } from '.';
+import { hasWebBridge } from '@shopgate/engage/core';
 
 /**
  * Web History

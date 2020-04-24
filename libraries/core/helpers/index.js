@@ -1,4 +1,3 @@
-/* global SGJavascriptBridge */
 import { emitter } from '../classes/ErrorManager';
 import { SOURCE_CONSOLE } from '../constants/ErrorManager';
 
@@ -49,17 +48,6 @@ export const ajaxUrl = action => (action ? `sgapi:${action}` : '');
  */
 export function hasSGJavaScriptBridge() {
   return (typeof SGJavascriptBridge !== 'undefined');
-}
-
-/**
- * Checks whether the web bridge is active.
- * @returns {boolean}
- */
-export function hasWebBridge() {
-  if (!hasSGJavaScriptBridge()) {
-    return false;
-  }
-  return SGJavascriptBridge?.type === 'web';
 }
 
 /**

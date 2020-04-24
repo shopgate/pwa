@@ -12,8 +12,8 @@ const CartButtonBadge = ({ count, style }) => {
   const settings = useWidgetSettings('@shopgate/engage/components/AppBar');
 
   const badgeStyle = {
-    ...style,
     boxShadow: settings.buttonCartBadgeShadow,
+    ...style,
   };
 
   const productCount = count > CART_MAX_ITEMS ? `${CART_MAX_ITEMS}+` : count;

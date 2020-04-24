@@ -168,6 +168,19 @@ export const getGrandTotal = createSelector(
 );
 
 /**
+ * Selects the grand total data.
+ * @param {Object} state The current application state.
+ * @returns {number}
+ */
+export const getGrandTotalData = createSelector(
+  getTotals,
+  (totals) => {
+    const totalData = totals.find(total => total.type === CART_TOTALS_TYPE_GRAND) || null;
+    return totalData;
+  }
+);
+
+/**
  * Selects the shipping costs.
  * @returns {Object|null}
  */

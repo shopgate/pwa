@@ -284,6 +284,7 @@ export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
 export { isIOSTheme } from './helpers/isIOSTheme';
 export { isTouchDevice } from './helpers/isTouchDevice';
 export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';
+export { hasWebBridge } from './helpers/bridge';
 
 // -------------- CONFIG -------------- //
 export * from './config/config.actions';
