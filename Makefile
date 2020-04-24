@@ -394,7 +394,7 @@ endef
 
 define update-subtree-remotes
 		-git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
-		git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		time git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
 
 endef
 
