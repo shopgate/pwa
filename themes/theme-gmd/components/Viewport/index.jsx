@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
 import { Footer } from '@shopgate/engage/components';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth } from '@shopgate/engage/styles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import NavDrawer from 'Components/NavDrawer';
@@ -9,12 +11,25 @@ import { a11yNavEntries } from './constants';
 import styles from './style';
 import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_WIDTH } from '../../constants';
 
-// Sets the inner content width (web only).
-const availableSpace = window.innerWidth > MAX_DESKTOP_WIDTH
-  ? MAX_DESKTOP_WIDTH
-  : window.innerWidth;
-const pageContentWidth = availableSpace - DESKTOP_MENU_BAR_WIDTH;
-setPageContentWidth(pageContentWidth);
+/**
+ * Updates the page content width css variable
+ */
+const updatePageContent = () => {
+  if (!hasWebBridge()) {
+    setPageContentWidth(window.innerWidth);
+    return;
+  }
+
+  const availableSpace = window.innerWidth > MAX_DESKTOP_WIDTH
+    ? MAX_DESKTOP_WIDTH
+    : window.innerWidth;
+  const pageContentWidth = availableSpace - DESKTOP_MENU_BAR_WIDTH;
+  setPageContentWidth(pageContentWidth);
+};
+window.onresize = debounce(() => {
+  updatePageContent();
+}, 500);
+updatePageContent();
 
 /**
  * The Viewport component.

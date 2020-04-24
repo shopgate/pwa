@@ -14,5 +14,6 @@ export default css({
     transform: 'translateX(-50%)',
     left: '50%',
     width: 'var(--page-content-width)',
+    backgroundColor: 'var(--page-background-color)',
   },
 });
