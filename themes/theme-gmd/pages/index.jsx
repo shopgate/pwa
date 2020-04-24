@@ -41,6 +41,7 @@ import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
+import BrandingColorBanner from 'Components/BrandingColorBanner';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import {
   CHECKOUT_PATTERN,
@@ -77,6 +78,7 @@ const Pages = ({ store }) => (
             <ToastProvider>
               <Portal name={APP_GLOBALS} />
               <Viewport>
+                <BrandingColorBanner />
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBar {...props} />} />
                 <Router history={history}>
