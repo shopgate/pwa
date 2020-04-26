@@ -4,6 +4,8 @@ import {
   getCurrentPathname,
   getCurrentParams,
 } from '@shopgate/pwa-common/selectors/router';
+import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import logout from '@shopgate/pwa-common/actions/user/logout';
 
 /**
  * Creates the mapStateToProps connector function.
@@ -13,6 +15,16 @@ const makeMapStateToProps = () => state => ({
   currentParams: getCurrentParams(state),
   currentPathname: getCurrentPathname(state),
   currentRoute: getCurrentRoute(state),
+  isLoggedIn: isUserLoggedIn(state),
 });
 
-export default connect(makeMapStateToProps);
+/**
+ * Maps the contents of the state to the component props.
+ * @param {Function} dispatch The dispatch method from the store.
+ * @return {Object}
+ */
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
+});
+
+export default connect(makeMapStateToProps, mapDispatchToProps);

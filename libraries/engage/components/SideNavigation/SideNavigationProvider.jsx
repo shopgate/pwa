@@ -18,6 +18,8 @@ type Props = {
   currentParams?: Object,
   currentPathname?: string,
   currentRoute?: Object,
+  isLoggedIn: boolean,
+  logout: () => any,
   children: any
 }
 
@@ -38,6 +40,8 @@ const SideNavigationProvider = ({
   currentParams,
   currentPathname,
   currentRoute,
+  isLoggedIn,
+  logout,
   children,
 }:Props) => {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
@@ -56,14 +60,26 @@ const SideNavigationProvider = ({
       setActiveCategoryId(null);
     }
   });
-
-  const value = useMemo(() => ({
-    maxCategoryNesting,
-    currentParams,
-    currentPathname,
-    currentRoute,
-    activeCategoryId,
-  }), [activeCategoryId, currentParams, currentPathname, currentRoute, maxCategoryNesting]);
+  const value = useMemo(
+    () => ({
+      maxCategoryNesting,
+      currentParams,
+      currentPathname,
+      currentRoute,
+      isLoggedIn,
+      logout,
+      activeCategoryId,
+    }),
+    [
+      activeCategoryId,
+      currentParams,
+      currentPathname,
+      currentRoute,
+      isLoggedIn,
+      logout,
+      maxCategoryNesting,
+    ]
+  );
 
   return (
     <Context.Provider value={value}>

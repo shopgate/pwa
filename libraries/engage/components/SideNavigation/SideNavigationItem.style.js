@@ -38,5 +38,6 @@ export const getItemActive = () => css({
 export const link = css({
   flexGrow: 1,
   textAlign: 'left',
+  outline: 0,
 }).toString();
 

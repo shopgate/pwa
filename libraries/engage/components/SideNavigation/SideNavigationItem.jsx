@@ -13,6 +13,7 @@ type Props = {
   buttonRight?: any,
   forceActive?: boolean,
   className?: string,
+  onClick?: () => any,
   href: string,
   label: string
 }
@@ -22,7 +23,7 @@ type Props = {
  * @returns {JSX}
  */
 const SideNavigationItem = ({
-  level, href, label, buttonRight, children, forceActive, className,
+  level, href, label, buttonRight, children, forceActive, className, onClick,
 }: Props) => {
   const { currentPathname } = useSideNavigation();
   const isActive = useMemo(() => currentPathname === href || forceActive, [
@@ -49,6 +50,7 @@ const SideNavigationItem = ({
           <button
             type="button"
             className={classNames(link, getIndentation(level))}
+            onClick={onClick}
           >
             {i18n.text(label)}
           </button>
@@ -66,6 +68,7 @@ SideNavigationItem.defaultProps = {
   forceActive: false,
   level: 0,
   className: null,
+  onClick: () => {},
 };
 
 export default SideNavigationItem;
