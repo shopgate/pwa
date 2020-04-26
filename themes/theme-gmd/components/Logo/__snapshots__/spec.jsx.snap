@@ -2,17 +2,14 @@
 
 exports[`<Logo /> should render an image 1`] = `
 <div
-  className={
-    Object {
-      "data-css-ivdtm0": "",
-    }
-  }
+  className="css-ivdtm0 "
+  onClick={[Function]}
 >
   <img
     alt="Shopgate Connect"
     className={
       Object {
-        "data-css-1yo7ngy": "",
+        "data-css-e59s49": "",
       }
     }
     src="https://example.com/logo"
