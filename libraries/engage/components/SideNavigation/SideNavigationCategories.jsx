@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import SideNavigationCategoriesItem from './SideNavigationCategoriesItem';
+import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
+import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItemChildren';
 import connect from './SideNavigationCategories.connector';
-import { list } from './SideNavigationCategories.style';
+import { list, loadingIndicator } from './SideNavigationCategories.style';
+import { item } from './SideNavigationItem.style';
 
 type Props = {
   categoryId?: string,
@@ -21,19 +23,16 @@ const SideNavigationCategories = ({ categoryId, subcategories, fetchCategory }: 
   }, [categoryId, fetchCategory, subcategories]);
 
   if (!subcategories) {
-    return null;
+    return (
+      <li className={item}>
+        <LoadingIndicator className={loadingIndicator} />
+      </li>
+    );
   }
 
   return (
     <li className={list}>
-      <ul>
-        { subcategories.map(category => (
-          <SideNavigationCategoriesItem
-            key={category.id}
-            categoryId={category.id}
-          />
-        ))}
-      </ul>
+      <SideNavigationCategoriesItemChildren level={0} subcategories={subcategories} />
     </li>
   );
 };

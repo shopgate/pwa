@@ -10,7 +10,7 @@ const { colors, variables } = themeConfig;
  * @returns {string}
  */
 export const getIndentation = (level = 0) => css({
-  paddingLeft: (level * variables.gap.small) + variables.gap.big,
+  paddingLeft: (level * variables.gap.big),
 }).toString();
 
 export const item = css({
@@ -18,9 +18,10 @@ export const item = css({
   display: 'flex',
   textAlign: 'left',
   outline: 0,
-  padding: `0 ${variables.gap.big}px 0 0`,
+  padding: variables.gap.big,
   position: 'relative',
   width: '100%',
+  lineHeight: '1.45em',
   ':hover': {
     color: `var(--color-primary, ${colors.primary})`,
   },
@@ -37,6 +38,5 @@ export const getItemActive = () => css({
 export const link = css({
   flexGrow: 1,
   textAlign: 'left',
-  padding: `${variables.gap.big}px 0`,
 }).toString();
 

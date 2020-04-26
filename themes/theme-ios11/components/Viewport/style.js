@@ -7,6 +7,7 @@ const defaultBackgroundColor = colors.light;
 css.global('html', {
   '--page-background-color': defaultBackgroundColor,
   '--tabbar-height': '0px',
+  '--app-bar-height': '0px',
 });
 
 const viewport = css({

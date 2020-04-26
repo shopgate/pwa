@@ -1,5 +1,6 @@
 import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { getCSSCustomProp, setCSSCustomProp } from './cssCustomProperties';
 
 const { colors } = themeConfig;
@@ -32,6 +33,10 @@ export const initCSSCustomProps = () => {
   if (secondary && !secondaryContrast) {
     setCSSCustomProp('--color-secondary-contrast', getContrastColor(secondary));
   }
+
+  if (hasWebBridge() && !getCSSCustomProp('--page-background-color')) {
+    setCSSCustomProp('--page-background-color', '#fff');
+  }
 };
 
 /**
@@ -42,4 +47,8 @@ export const initCSSCustomPropsFallback = () => {
   setCSSCustomProp('--color-primary-contrast', getContrastColor(colors.primary));
   setCSSCustomProp('--color-secondary', colors.accent);
   setCSSCustomProp('--color-secondary-contrast', getContrastColor(colors.accent));
+
+  if (hasWebBridge()) {
+    setCSSCustomProp('--page-background-color', '#fff');
+  }
 };

@@ -10,7 +10,7 @@ import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItem
 import SideNavigationItem from './SideNavigationItem';
 import connect from './SideNavigationCategoriesItem.connector';
 import {
-  chevronButton, chevronUp, chevronDown, progressBar,
+  chevronButton, chevronUp, chevronDown, progressBar, open,
 } from './SideNavigationCategoriesItem.style';
 import { useSideNavigation } from './SideNavigation.hooks';
 
@@ -83,6 +83,7 @@ const SideNavigationCategoriesItem = ({
       level={level}
       buttonRight={buttonRight}
       forceActive={activeCategoryId === categoryId}
+      className={level === 0 && isOpen ? open : null}
     >
       { isLoading && (
         <div className={progressBar}>

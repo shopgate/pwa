@@ -6,7 +6,7 @@ const { colors, variables } = themeConfig;
 const wrapper = css({
   display: 'flex',
   flexDirection: 'column',
-  background: colors.shade8,
+  background: `var(--page-background-color, ${colors.shade8})`,
   textAlign: 'center',
   height: '100%',
 }).toString();

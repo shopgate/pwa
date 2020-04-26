@@ -12,6 +12,7 @@ type Props = {
   level?: number,
   buttonRight?: any,
   forceActive?: boolean,
+  className?: string,
   href: string,
   label: string
 }
@@ -21,7 +22,7 @@ type Props = {
  * @returns {JSX}
  */
 const SideNavigationItem = ({
-  level, href, label, buttonRight, children, forceActive,
+  level, href, label, buttonRight, children, forceActive, className,
 }: Props) => {
   const { currentPathname } = useSideNavigation();
   const isActive = useMemo(() => currentPathname === href || forceActive, [
@@ -31,7 +32,7 @@ const SideNavigationItem = ({
   ]);
 
   return (
-    <li>
+    <li className={className}>
       <div className={classNames(item.toString(), {
         [getItemActive()]: isActive,
       })}
@@ -64,6 +65,7 @@ SideNavigationItem.defaultProps = {
   children: null,
   forceActive: false,
   level: 0,
+  className: null,
 };
 
 export default SideNavigationItem;

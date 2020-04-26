@@ -36,6 +36,8 @@ export const updatePageInsets = (pageInsets) => {
       :root {
         --safe-area-inset-top: ${safeAreaInsetTop}px;
         --safe-area-inset-bottom: ${safeAreaInsetBottom}px;
+        --safe-area-inset-left: 0px;
+        --safe-area-inset-right: 0px;
       }
     }
 
@@ -43,6 +45,8 @@ export const updatePageInsets = (pageInsets) => {
       :root {
         --safe-area-inset-top: max(${safeAreaInsetTop}px, env(safe-area-inset-top));
         --safe-area-inset-bottom: max(${safeAreaInsetBottom}px, env(safe-area-inset-bottom));
+        --safe-area-inset-left: max(0px, env(safe-area-inset-left));
+        --safe-area-inset-right: max(0px, env(safe-area-inset-right));
       }
     }
   `;
