@@ -8,7 +8,7 @@ const container = css({
 }).toString();
 
 const widgetWrapper = css({
-  background: colors.shade8,
+  background: `var(--page-background-color, ${colors.shade8})`,
 }).toString();
 
 export default {

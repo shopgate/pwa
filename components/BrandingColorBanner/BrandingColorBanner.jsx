@@ -3,7 +3,7 @@ import { ResponsiveContainer } from '@shopgate/engage/components';
 import { css } from 'glamor';
 
 const brandingColorBanner = css({
-  position: 'absolute',
+  position: 'fixed',
   backgroundColor: 'var(--color-primary)',
   left: 0,
   right: 0,
