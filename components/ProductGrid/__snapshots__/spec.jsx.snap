@@ -47,7 +47,11 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
       iterator={[Function]}
       limit={32}
       loader={[Function]}
-      loadingIndicator={<LoadingIndicator />}
+      loadingIndicator={
+        <LoadingIndicator
+          className={null}
+        />
+      }
       preloadMultiplier={2}
       requestHash={null}
       totalItems={null}
@@ -67,7 +71,9 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
             />
           </Grid>
         </div>
-        <LoadingIndicator>
+        <LoadingIndicator
+          className={null}
+        >
           <div
             className="css-h0xg2o"
           >

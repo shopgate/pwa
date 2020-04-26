@@ -1873,7 +1873,9 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
         review={Object {}}
         submit={[Function]}
       >
-        <LoadingIndicator>
+        <LoadingIndicator
+          className={null}
+        >
           <div
             className="css-h0xg2o"
           >
