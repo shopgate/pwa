@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { AppBar } from '@shopgate/pwa-ui-material';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import Logo from 'Components/Logo';
 import { MAX_DESKTOP_WIDTH } from '../../../../../../constants';
 import Search from './Search';
@@ -69,7 +70,16 @@ const WideBar = ({
       </div>
       )}
     right={null}
-    below={<div id="PageProgressBar" />}
+    below={
+      <Fragment>
+        <ResponsiveContainer breakpoint="xs" appAlways>
+          <div id="PageHeaderBelow" />
+        </ResponsiveContainer>
+        <ResponsiveContainer breakpoint=">xs" webOnly>
+          <div id="PageHeaderProgress" />
+        </ResponsiveContainer>
+      </Fragment>
+    }
   />
 );
 
