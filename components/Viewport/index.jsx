@@ -24,7 +24,9 @@ const updatePageContent = () => {
   const availableSpace = window.innerWidth > MAX_DESKTOP_WIDTH
     ? MAX_DESKTOP_WIDTH
     : window.innerWidth;
-  const pageContentWidth = availableSpace - DESKTOP_MENU_BAR_WIDTH;
+
+  const hasMenuBar = window.innerWidth > 600;
+  const pageContentWidth = availableSpace - (hasMenuBar ? DESKTOP_MENU_BAR_WIDTH : 0);
   setPageContentWidth(pageContentWidth);
 };
 window.onresize = debounce(() => {
