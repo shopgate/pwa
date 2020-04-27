@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { useScrollContainer } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { typography } = themeConfig;
@@ -14,7 +15,7 @@ css.global('html, body', {
 });
 
 css.global('html', {
-  overflow: 'hidden',
+  overflow: useScrollContainer() ? 'hidden' : 'inherit',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
   MsTextSizeAdjust: '100%',

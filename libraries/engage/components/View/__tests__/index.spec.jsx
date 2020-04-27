@@ -12,10 +12,12 @@ jest.mock('@shopgate/pwa-common/context', () => ({
     Consumer: jest.fn(({ children }) => children({ visible: true })),
   },
 }));
+
 jest.mock('../provider', () => ({ children }) => children);
 jest.mock('../context');
 jest.mock('../../../styles', () => ({
   setPageBackgroundColor: jest.fn(),
+  responsiveMediaQuery: jest.fn(),
 }));
 
 describe('engage > components > view > index', () => {

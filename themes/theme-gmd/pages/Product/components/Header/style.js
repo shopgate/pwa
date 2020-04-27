@@ -3,7 +3,6 @@ import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config
 
 const content = css({
   position: 'relative',
-  backgroundColor: themeColors.light,
   padding: themeVariables.gap.big,
   borderTop: `${themeColors.placeholder} 2px solid`,
 }).toString();

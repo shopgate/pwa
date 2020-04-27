@@ -94,6 +94,16 @@
         "label": "An url to fetch a shop logo from"
       }
     },
+    "logoFallback": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "imageUrl"
+      }
+    },
     "marketId": {
       "type": "bigApi",
       "destination": "frontend",

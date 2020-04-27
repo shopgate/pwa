@@ -285,6 +285,7 @@ export { isIOSTheme } from './helpers/isIOSTheme';
 export { isTouchDevice } from './helpers/isTouchDevice';
 export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';
 export { hasWebBridge } from './helpers/bridge';
+export { useScrollContainer } from './helpers/scrollContainer';
 
 // -------------- CONFIG -------------- //
 export * from './config/config.actions';

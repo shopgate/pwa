@@ -11,13 +11,13 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 >
   <Layout>
     <Grid
-      className="css-pfqjus"
+      className="css-101teyj"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-pfqjus css-h7r55a css-u7q1iu"
+        className="css-101teyj css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
       />
     </Grid>
@@ -47,7 +47,11 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
       iterator={[Function]}
       limit={32}
       loader={[Function]}
-      loadingIndicator={<LoadingIndicator />}
+      loadingIndicator={
+        <LoadingIndicator
+          className={null}
+        />
+      }
       preloadMultiplier={2}
       requestHash={null}
       totalItems={null}
@@ -56,18 +60,20 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
       <div>
         <div>
           <Grid
-            className="css-pfqjus"
+            className="css-101teyj"
             component="ul"
             data-test-id="productGrid"
             wrap={true}
           >
             <ul
-              className="css-pfqjus css-h7r55a css-u7q1iu"
+              className="css-101teyj css-h7r55a css-u7q1iu"
               data-test-id="productGrid"
             />
           </Grid>
         </div>
-        <LoadingIndicator>
+        <LoadingIndicator
+          className={null}
+        >
           <div
             className="css-h0xg2o"
           >

@@ -4,8 +4,13 @@ import ApplyButton from './index';
 
 const clickMock = jest.fn();
 
+jest.mock('@shopgate/engage/components', () => ({
+  I18n: function I18n() { },
+  Button: function Button() { },
+}));
+
 jest.mock('@shopgate/engage/core', () => ({
-  ...jest.requireActual('@shopgate/engage/core'),
+  withForwardedRef: jest.fn(),
   withWidgetSettings: function withWidgetSettings(Comp) {
     return props => (<Comp widgetSettings={{}} {...props} />);
   },

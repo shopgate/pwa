@@ -1,4 +1,5 @@
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { setCSSCustomProp } from './cssCustomProperties';
 
 const { colors: { light: defaultBackgroundColor } } = themeConfig;
@@ -8,5 +9,7 @@ const { colors: { light: defaultBackgroundColor } } = themeConfig;
  * @param {string} color The new background color.
  */
 export const setPageBackgroundColor = (color = defaultBackgroundColor) => {
-  setCSSCustomProp('--page-background-color', color);
+  if (!hasWebBridge()) {
+    setCSSCustomProp('--page-background-color', color);
+  }
 };

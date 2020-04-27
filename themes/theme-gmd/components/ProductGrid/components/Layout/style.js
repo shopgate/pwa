@@ -7,5 +7,5 @@ export default css({
   ':not(:empty)': {
     paddingBottom: 2,
   },
-  background: colors.background,
+  background: `var(--page-background-color, '${colors.background}')`,
 }).toString();

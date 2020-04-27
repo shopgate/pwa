@@ -4,7 +4,6 @@ import { themeColors } from '@shopgate/pwa-common/helpers/config';
 export const container = css({
   position: 'relative',
   maxHeight: '100%',
-  width: 'var(--page-content-width)',
 }).toString();
 
 export const innerContainer = css({

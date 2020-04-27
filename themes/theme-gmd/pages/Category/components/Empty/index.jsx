@@ -4,6 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import connect from './connector';
+import { wrapper } from './style';
 
 /**
  * The Empty component for the Category.
@@ -19,7 +20,7 @@ const Empty = ({ isVisible, ...props }) => {
     <Fragment>
       <Portal name={portals.NO_RESULTS_CONTENT_BEFORE} />
       <Portal name={portals.NO_RESULTS_CONTENT}>
-        <NoResults {...props} />
+        <NoResults {...props} className={wrapper} />
       </Portal>
       <Portal name={portals.NO_RESULTS_CONTENT_AFTER} />
     </Fragment>
