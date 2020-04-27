@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { hasWebBridge } from '@shopgate/engage/core';
 import PropTypes from 'prop-types';
+import { addListener } from './listener';
 import breakpoints from './breakpoints';
 
 const comparators = {
@@ -19,6 +20,11 @@ const comparators = {
 const ResponsiveContainer = ({
   breakpoint, webOnly, webAlways, appOnly, appAlways, children,
 }) => {
+  // Active breakpoint used for triggering rerenders on resize.
+  const [activeBreakpoint, setActiveBreakpoint] = useState(null);
+
+  // Calculate if should render due to visibility.
+  /* eslint-disable react-hooks/exhaustive-deps */
   const breakpointSafe = useMemo(() => {
     // Parse breakpoint prop into the comparator and the breakpoint name.
     const breakpointStart = breakpoint.search(/[a-zA-Z]/);
@@ -30,7 +36,13 @@ const ResponsiveContainer = ({
     const config = breakpoints.find(b => b.name === breakpointString);
 
     return comparator(config.from, config.to, window.innerWidth);
-  }, [breakpoint]);
+  }, [activeBreakpoint, breakpoint]);
+  /* eslint-enable react-hooks/exhaustive-deps */
+
+  // Watch for resize changes.
+  useEffect(() => addListener((newBreakpoint) => {
+    setActiveBreakpoint(newBreakpoint);
+  }), []);
 
   const isWeb = hasWebBridge();
 
