@@ -1,6 +1,4 @@
 import { css } from 'glamor';
-import Color from 'color';
-import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors, variables } = themeConfig;
@@ -23,7 +21,7 @@ export const item = css({
   width: '100%',
   lineHeight: '1.45em',
   ':hover': {
-    color: `var(--color-primary, ${colors.primary})`,
+    color: 'var(--color-primary)',
   },
 });
 
@@ -31,8 +29,8 @@ export const item = css({
  * @returns {string}
  */
 export const getItemActive = () => css({
-  background: Color(getCSSCustomProp('--color-primary') || colors.primary).fade(0.9),
-  color: `var(--color-primary, ${colors.primary})`,
+  background: 'var(--color-side-navigation-active-background)',
+  color: 'var(--color-primary)',
 });
 
 export const link = css({

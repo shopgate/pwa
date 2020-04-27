@@ -34,9 +34,12 @@ export const initCSSCustomProps = () => {
     setCSSCustomProp('--color-secondary-contrast', getContrastColor(secondary));
   }
 
-  if (hasWebBridge() && !getCSSCustomProp('--page-background-color')) {
+  if (hasWebBridge()) {
     setCSSCustomProp('--page-background-color', '#fff');
   }
+
+  const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).fade(0.9);
+  setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
 };
 
 /**
@@ -47,6 +50,8 @@ export const initCSSCustomPropsFallback = () => {
   setCSSCustomProp('--color-primary-contrast', getContrastColor(colors.primary));
   setCSSCustomProp('--color-secondary', colors.accent);
   setCSSCustomProp('--color-secondary-contrast', getContrastColor(colors.accent));
+  const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).fade(0.9);
+  setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
 
   if (hasWebBridge()) {
     setCSSCustomProp('--page-background-color', '#fff');
