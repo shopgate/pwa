@@ -20,7 +20,6 @@ import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
-import WideBar from './components/WideBar';
 import connect from './connector';
 
 /**
@@ -213,28 +212,32 @@ class AppBarDefault extends PureComponent {
       />
     );
 
-    return ReactDOM.createPortal(
+    const appBarPortal = ReactDOM.createPortal(
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
-          <ResponsiveContainer appOnly>
-            {appBar}
-          </ResponsiveContainer>
-          <ResponsiveContainer webOnly breakpoint="<=xs">
-            {appBar}
-          </ResponsiveContainer>
-          <ResponsiveContainer webOnly breakpoint=">xs">
-            <WideBar
-              backgroundColor={background}
-              textColor={color}
-              below={below}
-              {...this.props}
-            />
-          </ResponsiveContainer>
+          {appBar}
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,
       this.state.target
+    );
+
+    return (
+      <Fragment>
+        <ResponsiveContainer appOnly>
+          {appBarPortal}
+        </ResponsiveContainer>
+        <ResponsiveContainer webOnly breakpoint="<=xs">
+          {appBarPortal}
+        </ResponsiveContainer>
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          {ReactDOM.createPortal(
+            below,
+            document.getElementById('PageProgressBar')
+          )}
+        </ResponsiveContainer>
+      </Fragment>
     );
   }
 }
