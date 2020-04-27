@@ -17,7 +17,7 @@ const comparators = {
  * @returns {React.Node}
  */
 const ResponsiveContainer = ({
-  breakpoint, webOnly, appOnly, children,
+  breakpoint, webOnly, webAlways, appOnly, appAlways, children,
 }) => {
   const breakpointSafe = useMemo(() => {
     // Parse breakpoint prop into the comparator and the breakpoint name.
@@ -34,6 +34,12 @@ const ResponsiveContainer = ({
 
   const isWeb = hasWebBridge();
 
+  // Always mode.
+  if ((webAlways && isWeb) || (appAlways && !isWeb)) {
+    return children;
+  }
+
+  // Ignore rendering if one of given condition applies.
   if (!breakpointSafe || (appOnly && isWeb) || (webOnly && !isWeb)) {
     return null;
   }
@@ -42,13 +48,17 @@ const ResponsiveContainer = ({
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.element.isRequired,
+  appAlways: PropTypes.bool,
   appOnly: PropTypes.bool,
   breakpoint: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.any,
+  webAlways: PropTypes.bool,
   webOnly: PropTypes.bool,
 };
 
 ResponsiveContainer.defaultProps = {
+  children: null,
   breakpoint: '>=xs',
   webOnly: false,
   appOnly: false,

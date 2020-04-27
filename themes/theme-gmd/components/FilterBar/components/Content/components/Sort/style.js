@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { shadows, colors, variables } = themeConfig;
@@ -39,6 +40,10 @@ const dropdown = css({
   left: 0,
   background: colors.background,
   boxShadow: shadows.filter.sort,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    position: 'static',
+    boxShadow: 'none',
+  },
 }).toString();
 
 const selectItem = css({

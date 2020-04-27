@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { router } from '@virtuous/conductor';
@@ -164,6 +165,11 @@ class ViewContent extends Component {
         <article className={styles} ref={this.scrollContainer ? this.ref : null} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            {this.props.visible ? (
+              <div id="PageHeaderBelow" />
+            ) : null}
+          </ResponsiveContainer>
           <SurroundPortals portalName={VIEW_CONTENT}>
             {this.props.children}
           </SurroundPortals>
