@@ -1,14 +1,14 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables, colors } = themeConfig;
+const { variables } = themeConfig;
 
 export const chevronButton = css({
   flexShrink: 0,
   outline: 0,
   margin: `0 -${variables.gap.xsmall * 3}px 0 ${variables.gap.small}px`,
-  fontSize: '1.5em',
-  color: colors.shade3,
+  fontSize: '1.6em',
+  color: '#373D41',
   position: 'relative',
 
 });
@@ -19,11 +19,11 @@ export const chevron = css({
 });
 
 export const chevronDown = css(chevron, {
-  transform: 'rotateZ(-90deg)',
+  transform: 'rotateZ(0deg)',
 });
 
 export const chevronUp = css(chevron, {
-  transform: 'rotateZ(90deg)',
+  transform: 'rotateZ(180deg)',
 });
 
 export const progressBar = css({
