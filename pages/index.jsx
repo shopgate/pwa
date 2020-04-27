@@ -34,14 +34,17 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
-import { NavigationHandler, SideNavigation } from '@shopgate/engage/components';
+import {
+  NavigationHandler,
+  BrandingColorBanner,
+  SideNavigation,
+} from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
-import BrandingColorBanner from 'Components/BrandingColorBanner';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import {
   CHECKOUT_PATTERN,
@@ -116,13 +119,13 @@ const Pages = ({ store }) => (
                     />
                     <Route pattern={SCANNER_PATH} component={routes.Scanner} />
                     {
-                  appConfig.hasFavorites
-                  && <Route
-                    pattern={FAVORITES_PATH}
-                    component={routes.Favorites}
-                    transform={routesTransforms[FAVORITES_PATH]}
-                  />
-                }
+                      appConfig.hasFavorites
+                      && <Route
+                        pattern={FAVORITES_PATH}
+                        component={routes.Favorites}
+                        transform={routesTransforms[FAVORITES_PATH]}
+                      />
+                    }
                     <Route pattern={LOGIN_PATH} component={routes.Login} />
                     <Route
                       pattern={SEARCH_PATTERN}

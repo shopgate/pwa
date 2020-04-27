@@ -1,6 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { MagnifierIcon } from '@shopgate/engage/components';
+import connect from './Search.connector';
 
 const styles = {
   root: css({
@@ -35,7 +37,8 @@ const styles = {
  * Search component
  * @returns {JSX}
  */
-const Search = () => {
+const Search = ({ search, routeSearchPhrase }) => {
+  // Focus state.
   const [focus, setFocus] = useState(false);
   const handleOnFocus = useCallback(() => {
     setFocus(true);
@@ -44,19 +47,47 @@ const Search = () => {
     setFocus(false);
   }, []);
 
+  // Search state.
+  const [searchPhrase, setSearchPhrase] = useState('');
+  const handleSetSearch = useCallback((event) => {
+    setSearchPhrase(event.target.value);
+  }, []);
+  const handleSubmit = useCallback((event) => {
+    event.preventDefault();
+    search(searchPhrase);
+  }, [search, searchPhrase]);
+  useEffect(() => {
+    if (routeSearchPhrase !== null) {
+      setSearchPhrase(routeSearchPhrase);
+    }
+  }, [routeSearchPhrase]);
+
   return (
-    <div className={`${styles.root} ${focus && styles.rootFocused}`}>
-      <input
-        onFocus={handleOnFocus}
-        onBlur={handleOnBlur}
-        className={styles.input}
-        placeholder="Search"
-      />
-      <div className={styles.icon}>
-        <MagnifierIcon />
+    <form onSubmit={handleSubmit}>
+      <div className={`${styles.root} ${focus && styles.rootFocused}`}>
+        <input
+          value={searchPhrase}
+          onChange={handleSetSearch}
+          onFocus={handleOnFocus}
+          onBlur={handleOnBlur}
+          className={styles.input}
+          placeholder="Search"
+        />
+        <div className={styles.icon}>
+          <MagnifierIcon />
+        </div>
       </div>
-    </div>
+    </form>
   );
 };
 
-export default Search;
+Search.propTypes = {
+  search: PropTypes.func.isRequired,
+  routeSearchPhrase: PropTypes.string,
+};
+
+Search.defaultProps = {
+  routeSearchPhrase: '',
+};
+
+export default connect(Search);

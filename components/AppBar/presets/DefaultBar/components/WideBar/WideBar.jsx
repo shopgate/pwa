@@ -49,7 +49,6 @@ const styles = {
 const WideBar = ({
   backgroundColor,
   textColor,
-  below,
   navigate,
   ...props
 }) => (
@@ -70,7 +69,7 @@ const WideBar = ({
       </div>
       )}
     right={null}
-    below={below}
+    below={<div id="PageProgressBar" />}
   />
 );
 
@@ -78,11 +77,9 @@ WideBar.propTypes = {
   backgroundColor: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
   textColor: PropTypes.string.isRequired,
-  below: PropTypes.element,
 };
 
 WideBar.defaultProps = {
-  below: null,
 };
 
 export default connect(WideBar);
