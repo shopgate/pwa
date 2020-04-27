@@ -1,10 +1,11 @@
 import { css } from 'glamor';
+import { useScrollContainer } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors, variables } = themeConfig;
 
 const container = css({
-  background: colors.background,
+  background: `var(--page-background-color, ${colors.background})`,
   flexGrow: 1,
   padding: variables.gap.big,
   paddingBottom: variables.emptyPage.buttonVerticalGap,
@@ -12,6 +13,7 @@ const container = css({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'space-between',
+  ...(useScrollContainer() ? {} : { paddingTop: 100 }),
 }).toString();
 
 const iconContainer = css({

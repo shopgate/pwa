@@ -9,6 +9,7 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import { useScrollContainer } from '@shopgate/engage/core';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -42,6 +43,12 @@ class ViewContent extends Component {
       keyboardHeight: 0,
     };
 
+    this.scrollContainer = useScrollContainer();
+
+    if (!this.scrollContainer) {
+      this.ref.current = window;
+    }
+
     this.props.setContentRef(this.ref);
 
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
@@ -64,15 +71,29 @@ class ViewContent extends Component {
    * Restore the scroll position of the page.
    */
   componentDidMount() {
-    this.ref.current.scrollTop = this.context.state.scrollTop;
+    const { scrollTop } = this.context.state;
+
+    if (this.ref.current === window) {
+      window.scrollTo(0, scrollTop);
+    } else {
+      this.ref.current.scrollTop = scrollTop;
+    }
   }
 
   /**
    * Removes the keyboardWillChange listener.
    */
   componentWillUnmount() {
+    let scrollTop;
+
+    if (this.ref.current === window) {
+      scrollTop = window.scrollY;
+    } else {
+      (scrollTop = this.ref.current);
+    }
+
     router.update(this.context.id, {
-      scrollTop: this.ref.current.scrollTop,
+      scrollTop,
     }, false);
 
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
@@ -85,8 +106,14 @@ class ViewContent extends Component {
     const { noScrollOnKeyboard } = this.props;
     const { keyboardHeight } = this.state;
 
+    let overflow = 'inherit';
+
+    if (this.scrollContainer) {
+      overflow = (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto';
+    }
+
     return {
-      overflow: (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto',
+      overflow,
       paddingBottom: keyboardHeight,
     };
   }
@@ -134,7 +161,7 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article className={styles} ref={this.ref} style={this.style}>
+        <article className={styles} ref={this.scrollContainer ? this.ref : null} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
           <SurroundPortals portalName={VIEW_CONTENT}>

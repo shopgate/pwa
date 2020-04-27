@@ -96,7 +96,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
         "translated": null,
       },
       Object {
-        "message": "Normal pre-translated message.",
+        "message": "Normal pre-translated message two.",
         "translated": true,
       },
     ]
@@ -189,7 +189,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     </div>
     <div
       className="css-qega23"
-      key="info-Normal pre-translated message."
+      key="info-Normal pre-translated message two."
     >
       <span
         className={
@@ -198,13 +198,13 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
           }
         }
       >
-        cart.message_type_info: Normal pre-translated message.
+        cart.message_type_info: Normal pre-translated message two.
       </span>
       <span
         aria-hidden={true}
         className={null}
       >
-        Normal pre-translated message.
+        Normal pre-translated message two.
       </span>
     </div>
   </div>

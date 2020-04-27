@@ -8,7 +8,11 @@ import styles from './style';
  */
 const Logo = () => (
   <div className={styles.container}>
-    <img className={styles.image} src={appConfig.logo} alt={appConfig.shopName} />
+    <img
+      className={styles.image}
+      src={appConfig.logo || appConfig.logoFallback}
+      alt={appConfig.shopName}
+    />
   </div>
 );
 

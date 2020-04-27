@@ -4,6 +4,7 @@ import Content from '../index';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   shopName: 'Test Shop',
+  themeConfig: { colors: {} },
 }));
 jest.mock('@shopgate/pwa-common/context', () => ({
   RouteContext: {
@@ -11,6 +12,9 @@ jest.mock('@shopgate/pwa-common/context', () => ({
       visible: true,
     })),
   },
+}));
+jest.mock('@shopgate/pwa-common/selectors/history', () => ({
+  getSortOrder: jest.fn(),
 }));
 
 describe('engage > components > view > components > content', () => {

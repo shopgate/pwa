@@ -178,3 +178,4 @@ export { default as BrandingColorBanner } from './BrandingColorBanner';
 export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';
+export { SideNavigation } from './SideNavigation';

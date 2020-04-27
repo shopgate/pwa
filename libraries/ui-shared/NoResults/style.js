@@ -9,7 +9,7 @@ const wrapper = css({
   width: '100%',
   justifyContent: 'center',
   textAlign: 'center',
-  background: themeConfig.colors.shade8,
+  background: `var(--page-background-color, ${themeConfig.colors.shade8})`,
 }).toString();
 
 const icon = css({

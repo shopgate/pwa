@@ -285,7 +285,18 @@ class InfiniteContainer extends Component {
       return true;
     }
 
-    const { scrollTop, scrollHeight, clientHeight } = this.domScrollContainer;
+    let scrollTop;
+    let scrollHeight;
+    let clientHeight;
+
+    if (this.domScrollContainer === window) {
+      const body = document.querySelector('body');
+      scrollTop = window.scrollY;
+      ({ scrollHeight, clientHeight } = body);
+    } else {
+      ({ scrollTop, scrollHeight, clientHeight } = this.domScrollContainer);
+    }
+
     const { preloadMultiplier } = this.props;
     const scrollPosition = scrollTop + clientHeight;
     const scrollThreshold = scrollHeight - (clientHeight * preloadMultiplier);

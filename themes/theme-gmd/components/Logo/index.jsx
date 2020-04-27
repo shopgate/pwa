@@ -14,7 +14,11 @@ const Logo = ({ className, onClick }) => (
     onClick={onClick}
     className={`${styles.container} ${className}`}
   >
-    <img className={styles.image} src={appConfig.logo} alt={appConfig.shopName} />
+    <img
+      className={styles.image}
+      src={appConfig.logo || appConfig.logoFallback}
+      alt={appConfig.shopName}
+    />
   </div>
   /* eslint-enable jsx-a11y/no-static-element-interactions */
   /* eslint-enable jsx-a11y/click-events-have-key-events */

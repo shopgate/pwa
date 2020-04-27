@@ -4,3 +4,7 @@ export const UIEvents = {
   addListener: jest.fn(),
   removeListener: jest.fn(),
 };
+
+/* eslint-disable require-jsdoc */
+export const hasSGJavaScriptBridge = () => false;
+/* eslint-enable require-jsdoc */
