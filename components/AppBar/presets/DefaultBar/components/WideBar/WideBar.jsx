@@ -49,7 +49,6 @@ const styles = {
 const WideBar = ({
   backgroundColor,
   textColor,
-  below,
   navigate,
   ...props
 }) => (
