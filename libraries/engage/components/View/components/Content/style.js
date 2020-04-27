@@ -13,9 +13,9 @@ export default css({
     position: 'absolute',
     WebkitOverflowScrolling: 'touch',
   } : {
+    backgroundColor: 'var(--page-background-color)',
   }),
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     width: 'var(--page-content-width)',
-    backgroundColor: 'var(--page-background-color)',
   },
 });
