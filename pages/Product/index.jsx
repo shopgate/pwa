@@ -3,7 +3,10 @@ import { View } from '@shopgate/engage/components';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@shopgate/pwa-common/context';
+import { themeConfig } from '@shopgate/engage';
 import ProductContent from './components/Content';
+
+const { colors } = themeConfig;
 
 const props = {
   open: 'open',
@@ -34,7 +37,7 @@ class Product extends PureComponent {
    */
   render() {
     return (
-      <View aria-hidden={false}>
+      <View aria-hidden={false} background={colors.light}>
         <Consume context={RouteContext} props={props}>
           {this.consumeRenderer}
         </Consume>

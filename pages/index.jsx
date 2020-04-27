@@ -34,7 +34,11 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
-import { NavigationHandler, BrandingColorBanner } from '@shopgate/engage/components';
+import {
+  NavigationHandler,
+  BrandingColorBanner,
+  SideNavigation,
+} from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
@@ -56,6 +60,7 @@ import Register from './Register';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
+import { navigation, content } from './index.style';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
 
@@ -80,77 +85,83 @@ const Pages = ({ store }) => (
                 <BrandingColorBanner />
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBar {...props} />} />
-                <Router history={history}>
-                  <Route
-                    pattern={INDEX_PATH}
-                    component={routes.StartPage}
-                    transform={routesTransforms[INDEX_PATH]}
-                  />
-                  <Route pattern={PAGE_PATTERN} component={routes.Page} />
-                  <Route
-                    pattern={ROOT_CATEGORY_PATTERN}
-                    component={routes.RootCategory}
-                    cache
-                    transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
-                  />
-                  <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
-                  <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                  <Route
-                    pattern={ITEM_PATTERN}
-                    component={routes.Product}
-                    transform={transformItemRoute}
-                  />
-                  <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
-                  <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
-                  <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
-                  <Route
-                    pattern={CART_PATH}
-                    component={routes.Cart}
-                    transform={routesTransforms[CART_PATH]}
-                  />
-                  <Route pattern={SCANNER_PATH} component={routes.Scanner} />
-                  {
-                    appConfig.hasFavorites
-                    && <Route
-                      pattern={FAVORITES_PATH}
-                      component={routes.Favorites}
-                      transform={routesTransforms[FAVORITES_PATH]}
+                <div className={navigation}>
+                  <SideNavigation />
+                </div>
+                <div className={content}>
+                  <Router history={history}>
+                    <Route
+                      pattern={INDEX_PATH}
+                      component={routes.StartPage}
+                      transform={routesTransforms[INDEX_PATH]}
                     />
-                  }
-                  <Route pattern={LOGIN_PATH} component={routes.Login} />
-                  <Route
-                    pattern={SEARCH_PATTERN}
-                    component={routes.Search}
-                    cache
-                    transform={routesTransforms[SEARCH_PATTERN]}
-                  />
-                  <Route
-                    pattern={SEARCH_FILTER_PATTERN}
-                    component={routes.Filter}
-                    transform={routesTransforms[SEARCH_FILTER_PATTERN]}
-                  />
-                  <Route
-                    pattern={CHECKOUT_PATTERN}
-                    component={CheckoutPage}
-                  />
-                  <Route
-                    pattern={GUEST_CHECKOUT_PATTERN}
-                    component={GuestCheckoutPage}
-                  />
-                  <Route
-                    pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
-                    component={GuestCheckoutPaymentPage}
-                  />
-                  <Route
-                    pattern={CHECKOUT_CONFIRMATION_PATTERN}
-                    component={CheckoutConfirmationPage}
-                  />
-                  <Route
-                    pattern={REGISTER_PATH}
-                    component={Register}
-                  />
-                  {React.Children.map(routePortals, Component => Component)}
-                </Router>
+                    <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                    <Route
+                      pattern={ROOT_CATEGORY_PATTERN}
+                      component={routes.RootCategory}
+                      cache
+                      transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
+                    />
+                    <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
+                    <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                    <Route
+                      pattern={ITEM_PATTERN}
+                      component={routes.Product}
+                      transform={transformItemRoute}
+                    />
+                    <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
+                    <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
+                    <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
+                    <Route
+                      pattern={CART_PATH}
+                      component={routes.Cart}
+                      transform={routesTransforms[CART_PATH]}
+                    />
+                    <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                    {
+                      appConfig.hasFavorites
+                      && <Route
+                        pattern={FAVORITES_PATH}
+                        component={routes.Favorites}
+                        transform={routesTransforms[FAVORITES_PATH]}
+                      />
+                    }
+                    <Route pattern={LOGIN_PATH} component={routes.Login} />
+                    <Route
+                      pattern={SEARCH_PATTERN}
+                      component={routes.Search}
+                      cache
+                      transform={routesTransforms[SEARCH_PATTERN]}
+                    />
+                    <Route
+                      pattern={SEARCH_FILTER_PATTERN}
+                      component={routes.Filter}
+                      transform={routesTransforms[SEARCH_FILTER_PATTERN]}
+                    />
+                    <Route
+                      pattern={CHECKOUT_PATTERN}
+                      component={CheckoutPage}
+                    />
+                    <Route
+                      pattern={GUEST_CHECKOUT_PATTERN}
+                      component={GuestCheckoutPage}
+                    />
+                    <Route
+                      pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
+                      component={GuestCheckoutPaymentPage}
+                    />
+                    <Route
+                      pattern={CHECKOUT_CONFIRMATION_PATTERN}
+                      component={CheckoutConfirmationPage}
+                    />
+                    <Route
+                      pattern={REGISTER_PATH}
+                      component={Register}
+                    />
+                    {React.Children.map(routePortals, Component => Component)}
+                  </Router>
+                </div>
+
                 {isDev && (
                   <Helmet>
                     <link href={devFontsUrl} rel="stylesheet" />

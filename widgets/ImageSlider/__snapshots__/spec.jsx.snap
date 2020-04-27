@@ -55,7 +55,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
     >
       <div
         aria-hidden={null}
-        className="css-u3lnhr"
+        className="css-1hlki0z"
       >
         <ReactIdSwiper
           ContainerEl="div"
@@ -502,7 +502,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
     >
       <div
         aria-hidden={null}
-        className="css-u3lnhr"
+        className="css-1hlki0z"
       >
         <ReactIdSwiper
           ContainerEl="div"
@@ -791,7 +791,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
     >
       <div
         aria-hidden={null}
-        className="css-u3lnhr"
+        className="css-1hlki0z"
       >
         <ReactIdSwiper
           ContainerEl="div"

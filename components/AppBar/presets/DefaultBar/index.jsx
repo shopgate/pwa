@@ -60,18 +60,27 @@ class AppBarDefault extends PureComponent {
 
   state = {
     target: document.getElementById('AppHeader'),
+    pageHeaderTarget: document.getElementById('PageHeaderBelow'),
+    pageHeaderProgressTarget: document.getElementById('PageHeaderProgress'),
   }
 
   /**
    * Sets the target if it hasn't been set before.
    */
   componentDidMount() {
-    let { target } = this.state;
+    let { target, pageHeaderTarget } = this.state;
 
     if (!target) {
       target = document.getElementById('AppHeader');
       this.setState({ target: target || null });
     }
+
+    const pageHeaderProgressTarget = document.getElementById('PageHeaderProgress') || null;
+    pageHeaderTarget = document.getElementById('PageHeaderBelow') || null;
+    this.setState({
+      pageHeaderTarget,
+      pageHeaderProgressTarget,
+    });
 
     if (this.props.setFocus) {
       this.setFocus();
@@ -95,6 +104,12 @@ class AppBarDefault extends PureComponent {
     if (!this.props.route.visible) {
       // Only visible app bars trigger color syncing.
       return;
+    }
+
+    const pageHeaderTarget = document.getElementById('PageHeaderBelow') || null;
+    if (this.state.pageHeaderTarget !== pageHeaderTarget) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({ pageHeaderTarget });
     }
 
     const routeDidEnter =
@@ -225,17 +240,20 @@ class AppBarDefault extends PureComponent {
 
     return (
       <Fragment>
-        <ResponsiveContainer appOnly>
-          {appBarPortal}
-        </ResponsiveContainer>
-        <ResponsiveContainer webOnly breakpoint="<=xs">
+        <ResponsiveContainer appAlways breakpoint="<=xs">
           {appBarPortal}
         </ResponsiveContainer>
         <ResponsiveContainer webOnly breakpoint=">xs">
-          {ReactDOM.createPortal(
-            below,
-            document.getElementById('PageProgressBar')
-          )}
+          {/* Render custom below content to a portal */}
+          {this.state.pageHeaderTarget ? ReactDOM.createPortal(
+            this.props.below,
+            this.state.pageHeaderTarget
+          ) : null}
+          {/* Render progress bar to a portal */}
+          {this.state.pageHeaderProgressTarget ? ReactDOM.createPortal(
+            <ProgressBar />,
+            this.state.pageHeaderProgressTarget
+          ) : null}
         </ResponsiveContainer>
       </Fragment>
     );
