@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import { Section } from '@shopgate/engage/a11y';
 import {
   ProductProperties,
@@ -20,6 +21,7 @@ import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
 import AppBar from '../AppBar';
+import ContentWide from '../ContentWide';
 import connect from './connector';
 import { ProductContext } from '../../context';
 
@@ -160,46 +162,51 @@ class ProductContent extends PureComponent {
       <div data-test-id={productId}>
         <AppBar productId={productId} />
         <ProductContext.Provider value={contextValue}>
-          <Media aria-hidden />
-          <Header />
-          {/*
-            This feature is currently in BETA testing.
-            It should only be used for approved BETA Client Projects
-          */}
-          <RelationsSlider desiredPosition="header" />
-          <Section title="product.sections.quantity">
-            <ProductUnitQuantityPicker />
-          </Section>
-          <Section title="product.sections.options">
-            <Characteristics productId={productId} variantId={variantId} />
-            <Options />
-          </Section>
-          <Section title="product.sections.fulfillment">
-            <FulfillmentSelector
-              productId={variantId || productId}
-              conditioner={this.baseContextValue.conditioner}
-            />
-          </Section>
-          <Section title="product.sections.description">
-            <Description productId={productId} variantId={variantId} />
-          </Section>
-          {/*
-            This feature is currently in BETA testing.
-            It should only be used for approved BETA Client Projects
-          */}
-          <RelationsSlider desiredPosition="description" />
-          <Section title="product.sections.properties">
-            <ProductProperties
+          <ResponsiveContainer breakpoint="xs" appAlways>
+            <Media aria-hidden />
+            <Header />
+            <RelationsSlider desiredPosition="header" />
+            <Section title="product.sections.quantity">
+              <ProductUnitQuantityPicker />
+            </Section>
+            <Section title="product.sections.options">
+              <Characteristics productId={productId} variantId={variantId} />
+              <Options />
+            </Section>
+            <Section title="product.sections.fulfillment">
+              <FulfillmentSelector
+                productId={variantId || productId}
+                conditioner={this.baseContextValue.conditioner}
+              />
+            </Section>
+            <Section title="product.sections.description">
+              <Description productId={productId} variantId={variantId} />
+            </Section>
+            {/*
+              This feature is currently in BETA testing.
+              It should only be used for approved BETA Client Projects
+            */}
+            <RelationsSlider desiredPosition="description" />
+            <Section title="product.sections.properties">
+              <ProductProperties
+                productId={productId}
+                variantId={variantId}
+              />
+            </Section>
+            <Section title="product.sections.ratings">
+              <Reviews productId={productId} />
+            </Section>
+            <TaxDisclaimer />
+            <FulfillmentSheet />
+            <FulfillmentPathSelector />
+          </ResponsiveContainer>
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            <ContentWide
               productId={productId}
               variantId={variantId}
+              conditioner={this.baseContextValue.conditioner}
             />
-          </Section>
-          <Section title="product.sections.ratings">
-            <Reviews productId={productId} />
-          </Section>
-          <TaxDisclaimer />
-          <FulfillmentSheet />
-          <FulfillmentPathSelector />
+          </ResponsiveContainer>
         </ProductContext.Provider>
       </div>
     );
