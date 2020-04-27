@@ -9,15 +9,17 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   requestHash={null}
   totalProductCount={null}
 >
-  <Layout>
+  <Layout
+    columns={2}
+  >
     <Grid
-      className="css-nmgel5"
+      className="css-1cyi2l3"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-nmgel5 css-h7r55a css-u7q1iu"
+        className="css-1cyi2l3 css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
       />
     </Grid>
@@ -55,17 +57,21 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
     >
       <div>
         <div>
-          <Grid
-            className="css-nmgel5"
-            component="ul"
-            data-test-id="productGrid"
-            wrap={true}
+          <Layout
+            columns={2}
           >
-            <ul
-              className="css-nmgel5 css-h7r55a css-u7q1iu"
+            <Grid
+              className="css-1cyi2l3"
+              component="ul"
               data-test-id="productGrid"
-            />
-          </Grid>
+              wrap={true}
+            >
+              <ul
+                className="css-1cyi2l3 css-h7r55a css-u7q1iu"
+                data-test-id="productGrid"
+              />
+            </Grid>
+          </Layout>
         </div>
         <LoadingIndicator>
           <div
