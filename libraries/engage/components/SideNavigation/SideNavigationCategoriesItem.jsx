@@ -1,7 +1,7 @@
 import React, {
   useState, useCallback, useMemo, useEffect,
 } from 'react';
-import Chevron from '@shopgate/pwa-ui-shared/icons/ChevronIcon';
+import ArrowDrop from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
@@ -64,7 +64,7 @@ const SideNavigationCategoriesItem = ({
     if (!maxNestingReached && hasSubcategories) {
       return (
         <button type="button" onClick={handleClick} className={chevronButton}>
-          <Chevron className={(isOpen ? chevronUp : chevronDown).toString()} />
+          <ArrowDrop className={(isOpen ? chevronUp : chevronDown).toString()} />
         </button>
       );
     }
