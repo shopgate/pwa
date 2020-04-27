@@ -69,10 +69,8 @@ const Cart = ({
   currency,
   count,
 }) => (
-  /* eslint-disable jsx-a11y/click-events-have-key-events */
-  /* eslint-disable jsx-a11y/no-static-element-interactions */
-  <div onClick={navigate} className={styles.root}>
-    <Ripple className={styles.ripple} color="var(--color-primary)" fill>
+  <div className={styles.root}>
+    <Ripple onClick={navigate} className={styles.ripple} color="var(--color-primary)" fill>
       <div className={styles.priceContainer}>
         <span className={styles.priceHeader}>Current Total</span>
         <span className={styles.price}>
@@ -90,8 +88,6 @@ const Cart = ({
       </div>
     </Ripple>
   </div>
-  /* eslint-enable jsx-a11y/click-events-have-key-events */
-  /* eslint-enable jsx-a11y/no-static-element-interactions */
 );
 
 Cart.propTypes = {

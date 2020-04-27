@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { Footer } from '@shopgate/engage/components';
+import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth } from '@shopgate/engage/styles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
+import WideBar from 'Components/AppBar/presets/DefaultBar/components/WideBar';
 import { a11yNavEntries } from './constants';
 import styles from './style';
 import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_WIDTH } from '../../constants';
@@ -43,7 +44,14 @@ const Viewport = (props) => {
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
       <div className={styles.viewport} aria-hidden={hidden} tabIndex="-1">
         <LiveMessenger />
-        <header className={styles.header} id="AppHeader" />
+        <header className={styles.header} id="AppHeader">
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            <WideBar
+              backgroundColor="#fff"
+              textColor="#000"
+            />
+          </ResponsiveContainer>
+        </header>
         <section className={styles.content}>
           {props.children}
         </section>
