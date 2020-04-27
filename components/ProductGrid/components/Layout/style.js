@@ -3,11 +3,18 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 
-export default css({
+/**
+ * Generate css grid
+ * @param {number} columns .
+ * @returns {string}
+ */
+export const grid = columns => css({
   background: colors.light,
   padding: '0 16px',
   ':not(:empty)': {
     marginTop: 16,
   },
-  justifyContent: 'space-between',
+  display: 'grid',
+  gridGap: '0 8px',
+  gridTemplateColumns: `repeat(${columns}, 1fr)`,
 }).toString();
