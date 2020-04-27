@@ -13,8 +13,6 @@ describe('<ProductGrid />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('InfiniteContainer').exists()).toBe(true);
-    expect(wrapper.find('Layout').exists()).toBe(false);
   });
 
   it('should render the original layout', () => {
@@ -23,7 +21,5 @@ describe('<ProductGrid />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('InfiniteContainer').exists()).toBe(false);
-    expect(wrapper.find('Layout').exists()).toBe(true);
   });
 });

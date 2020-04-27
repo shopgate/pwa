@@ -9,15 +9,17 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   requestHash={null}
   totalProductCount={null}
 >
-  <Layout>
+  <Layout
+    columns={2}
+  >
     <Grid
-      className="css-exsswj"
+      className="css-utojpd"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-exsswj css-h7r55a css-u7q1iu"
+        className="css-utojpd css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
       />
     </Grid>
@@ -36,7 +38,6 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
 >
   <Consumer>
     <InfiniteContainer
-      columns={2}
       containerRef={
         Object {
           "current": null,
@@ -55,17 +56,21 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
     >
       <div>
         <div>
-          <Grid
-            className="css-exsswj"
-            component="ul"
-            data-test-id="productGrid"
-            wrap={true}
+          <Layout
+            columns={2}
           >
-            <ul
-              className="css-exsswj css-h7r55a css-u7q1iu"
+            <Grid
+              className="css-utojpd"
+              component="ul"
               data-test-id="productGrid"
-            />
-          </Grid>
+              wrap={true}
+            >
+              <ul
+                className="css-utojpd css-h7r55a css-u7q1iu"
+                data-test-id="productGrid"
+              />
+            </Grid>
+          </Layout>
         </div>
         <LoadingIndicator>
           <div
