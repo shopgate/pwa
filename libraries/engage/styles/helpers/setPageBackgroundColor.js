@@ -9,7 +9,7 @@ const { colors: { light: defaultBackgroundColor } } = themeConfig;
  * @param {string} color The new background color.
  */
 export const setPageBackgroundColor = (color = defaultBackgroundColor) => {
-  if (!hasWebBridge) {
+  if (!hasWebBridge()) {
     setCSSCustomProp('--page-background-color', color);
   }
 };

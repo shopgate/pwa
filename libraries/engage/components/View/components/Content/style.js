@@ -13,7 +13,6 @@ export default css({
     position: 'absolute',
     WebkitOverflowScrolling: 'touch',
   } : {
-    minHeight: 'calc(100vh - var(--app-bar-height))',
   }),
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     width: 'var(--page-content-width)',

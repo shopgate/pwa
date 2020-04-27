@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Icon from './components/Icon';
 import styles from './style';
@@ -10,7 +11,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const NoResults = props => (
-  <div className={styles.wrapper} data-test-id="noResults">
+  <div className={classNames(styles.wrapper, props.className)} data-test-id="noResults">
     <div className={styles.icon}>
       <Icon />
     </div>
@@ -23,9 +24,14 @@ const NoResults = props => (
   </div>
 );
 
+NoResults.defaultProps = {
+  className: null,
+};
+
 NoResults.propTypes = {
   bodyText: PropTypes.string.isRequired,
   headlineText: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default NoResults;

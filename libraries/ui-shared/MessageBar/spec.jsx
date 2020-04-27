@@ -6,7 +6,7 @@ const MESSAGE1 = 'This is some information';
 const MESSAGE2 = 'This is an error that happened here.';
 const MESSAGE3 = 'This is just a warning. Nothing to freak out about.';
 const MESSAGE4 = 'Normal pre-translated message.';
-const MESSAGE5 = 'Normal pre-translated message.';
+const MESSAGE5 = 'Normal pre-translated message two.';
 const MESSAGE6 = 'some.translation.string';
 const MESSAGE7 = 'Message with messageParams';
 
