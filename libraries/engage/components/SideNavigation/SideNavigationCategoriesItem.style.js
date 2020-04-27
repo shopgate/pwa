@@ -27,8 +27,10 @@ export const chevronUp = css(chevron, {
 });
 
 export const progressBar = css({
-  position: 'relative',
+  position: 'absolute',
   overflow: 'hidden',
+  width: '100%',
+  bottom: 0,
   height: 3,
 });
 

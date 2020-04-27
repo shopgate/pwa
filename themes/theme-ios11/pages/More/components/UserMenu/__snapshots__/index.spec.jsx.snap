@@ -283,6 +283,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           aria-label={null}
                           className="css-9auwkz "
                           data-test-id="link: /login"
+                          href={null}
                           onClick={[Function]}
                           role="link"
                           tabIndex={null}
@@ -367,6 +368,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           aria-label={null}
                           className="css-9auwkz "
                           data-test-id="link: /register"
+                          href={null}
                           onClick={[Function]}
                           role="link"
                           tabIndex={null}
@@ -531,6 +533,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           aria-label={null}
                           className="css-9auwkz "
                           data-test-id="link: /login"
+                          href={null}
                           onClick={[Function]}
                           role="link"
                           tabIndex={null}
@@ -615,6 +618,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           aria-label={null}
                           className="css-9auwkz "
                           data-test-id="link: /register"
+                          href={null}
                           onClick={[Function]}
                           role="link"
                           tabIndex={null}

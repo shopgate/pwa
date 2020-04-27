@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 /**
  * @param {number} level The indentation level
@@ -9,6 +9,10 @@ const { colors, variables } = themeConfig;
  */
 export const getIndentation = (level = 0) => css({
   paddingLeft: (level * variables.gap.big),
+}).toString();
+
+export const list = css({
+  position: 'relative',
 }).toString();
 
 export const item = css({
@@ -23,7 +27,7 @@ export const item = css({
   ':hover': {
     color: 'var(--color-primary)',
   },
-});
+}).toString();
 
 /**
  * @returns {string}

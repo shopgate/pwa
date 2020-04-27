@@ -179,3 +179,4 @@ export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';
 export { SideNavigation } from './SideNavigation';
+export { default as TextLink } from './TextLink/TextLink';

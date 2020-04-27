@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
@@ -32,6 +33,12 @@ const iconStyles = {
     iconSize: '1em',
     iconStyle: css({
       marginRight: '0.1em',
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        fontSize: '1.125rem',
+      },
+      [responsiveMediaQuery('>sm', { webOnly: true })]: {
+        fontSize: '1.25rem',
+      },
     }).toString(),
   },
   big: {
