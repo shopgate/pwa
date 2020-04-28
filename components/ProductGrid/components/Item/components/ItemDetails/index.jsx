@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import {
   MapPriceHint, OrderQuantityHint, EffectivityDates, Swatches, getProductRoute,
 } from '@shopgate/engage/product';
-import Link from '@shopgate/pwa-common/components/Link';
-import { TextLink } from '@shopgate/engage/components';
+import { TextLink, Link } from '@shopgate/engage/components';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';
