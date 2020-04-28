@@ -23,11 +23,11 @@ const ProductGrid = ({
   totalProductCount,
   requestHash,
 }) => {
-  const { columns = 2, type = 'flex' } = useWidgetSettings(WIDGET_ID) || {};
+  const { columns = 2 } = useWidgetSettings(WIDGET_ID) || {};
 
   if (!infiniteLoad) {
     return (
-      <Layout columns={columns} type={type}>
+      <Layout columns={columns}>
         {products.map(product => (
           <Iterator
             display={flags}
@@ -48,7 +48,6 @@ const ProductGrid = ({
           wrapper={props => (
             <Layout
               columns={columns}
-              type={type}
               {...props}
             />
           )}
