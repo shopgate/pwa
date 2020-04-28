@@ -5,16 +5,15 @@ const { colors } = themeConfig;
 
 /**
  * Generate css for grid view
- * @param {string} type flex or grid type
  * @param {number} columns .
  * @returns {string}
  */
-export const styles = (type, columns) => css({
+export const styles = columns => css({
   ':not(:empty)': {
     paddingBottom: 2,
   },
   background: colors.background,
-  ...type === 'flex' && {
+  ...columns <= 2 && {
     ' > *': {
       [`:nth-child(${columns}n)`]: {
         paddingRight: 0,
@@ -29,7 +28,7 @@ export const styles = (type, columns) => css({
       width: `${100 / columns}%`,
     },
   },
-  ...type === 'grid' && {
+  ...columns > 2 && {
     display: 'grid',
     gridGap: '4px',
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
