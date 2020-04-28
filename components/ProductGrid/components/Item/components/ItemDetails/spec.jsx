@@ -7,6 +7,7 @@ jest.mock('@shopgate/engage/product', () => ({
   OrderQuantityHint: () => null,
   EffectivityDates: () => null,
   Swatches: () => null,
+  getProductRoute: () => '',
 }));
 jest.mock('../ItemName');
 jest.mock('../ItemPrice');
