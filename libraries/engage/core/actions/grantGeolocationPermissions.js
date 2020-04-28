@@ -1,4 +1,5 @@
 import { PERMISSION_ID_LOCATION } from '@shopgate/pwa-core/constants/AppPermissions';
+import { hasWebBridge } from '@shopgate/engage/core';
 import grantPermissions from './grantPermissions';
 
 /**
@@ -25,7 +26,7 @@ const grantGeolocationPermissions = (options = {}) => (dispatch) => {
     modal: {
       title: null,
       message: 'permissions.access_denied.geolocation_message',
-      confirm: 'permissions.access_denied.settings_button',
+      confirm: !hasWebBridge() ? 'permissions.access_denied.settings_button' : null,
       dismiss: 'modal.dismiss',
       ...modal,
     },

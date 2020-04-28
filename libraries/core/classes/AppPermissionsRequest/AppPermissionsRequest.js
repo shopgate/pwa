@@ -2,7 +2,7 @@ import Request from '../Request';
 import AppCommand from '../AppCommand';
 import event from '../Event';
 import requestBuffer from '../RequestBuffer';
-import { logger, hasSGJavaScriptBridge } from '../../helpers';
+import { logger, hasSGJavaScriptBridge, hasWebBridgeCore } from '../../helpers';
 import logGroup from '../../helpers/logGroup';
 import createMockedPermissions from './helpers/createMockedPermissions';
 
@@ -130,7 +130,7 @@ class AppPermissionsRequest extends Request {
    * @return {Promise} A promise that is fulfilled when a response is received for this request.
    */
   dispatch() {
-    if (!hasSGJavaScriptBridge()) {
+    if (!hasSGJavaScriptBridge() || hasWebBridgeCore()) {
       // Use mocked permission in browser environments.
       return createMockedPermissions(this.commandName, this.commandParams);
     }

@@ -11,6 +11,7 @@ import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from '../Bar';
 import Products from '../Products';
+import { emptyWrapper } from './style';
 import connect from './connector';
 
 /**
@@ -53,7 +54,7 @@ class SearchContent extends Component {
           <Fragment>
             <DefaultBar
               center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
-              {...showFilterBar && { below: <Bar /> }}
+              below={<Bar showFilterBar={showFilterBar} />}
             />
             <Products
               searchPhrase={searchPhrase}
@@ -67,6 +68,7 @@ class SearchContent extends Component {
                   headlineText="search.no_result.heading"
                   bodyText="search.no_result.body"
                   searchPhrase={searchPhrase}
+                  className={emptyWrapper}
                 />
               </SurroundPortals>
             )}

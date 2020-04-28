@@ -1,4 +1,5 @@
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import { hasWebBridge } from '@shopgate/engage/core';
 import grantGeolocationPermissions from './grantGeolocationPermissions';
 import GeolocationRequest from '../classes/GeolocationRequest';
 import { GEOLOCATION_ERROR_DENIED } from '../constants/geolocationRequest';
@@ -26,7 +27,7 @@ const getGeolocation = (options = {}) => async (dispatch) => {
     throw error;
   }
 
-  return new GeolocationRequest(!hasSGJavaScriptBridge()).dispatch();
+  return new GeolocationRequest(!hasSGJavaScriptBridge() || hasWebBridge()).dispatch();
 };
 
 export default getGeolocation;
