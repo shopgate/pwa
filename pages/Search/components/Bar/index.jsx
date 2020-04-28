@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { ViewContext } from '@shopgate/engage/components/View';
 import FilterBar from 'Components/FilterBar';
+import PageTitleBar from 'Components/PageTitleBar';
 
 const routeMap = {
   filters: 'state.filters',
@@ -14,20 +15,30 @@ const viewMap = {
   setTop: 'setTop',
 };
 
+type Props = {
+  showFilterBar: boolean,
+}
+
 /**
  * @returns {JSX}
  */
-const SearchBar = () => (
+const SearchBar = ({ showFilterBar }: Props) => (
   <Consume context={RouteContext} props={routeMap}>
     {({ searchPhrase, filters }) => (
       <Consume context={ViewContext} props={viewMap}>
         {({ ref, setTop }) => (
-          <FilterBar
-            searchPhrase={searchPhrase}
-            filters={filters}
-            setTop={setTop}
-            viewRef={ref}
-          />
+          <Fragment>
+            <PageTitleBar />
+            { showFilterBar && (
+              <FilterBar
+                searchPhrase={searchPhrase}
+                filters={filters}
+                setTop={setTop}
+                viewRef={ref}
+              />
+            )}
+          </Fragment>
+
         )}
       </Consume>
     )}

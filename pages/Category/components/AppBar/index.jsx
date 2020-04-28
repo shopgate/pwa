@@ -12,7 +12,7 @@ function CategoryAppBar({ hasChildren, hasProducts, title }) {
   return (
     <DefaultBar
       title={title}
-      {...(!hasChildren && hasProducts) && { below: <Bar /> }}
+      below={<Bar hasChildren={hasChildren} hasProducts={hasProducts} />}
     />
   );
 }
