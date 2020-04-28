@@ -39,6 +39,14 @@ export const itemNameLink = css({
   },
 }).toString();
 
+export const propertiesLink = css({
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    ' > *:not([style*="display:none"])': {
+      paddingTop: 8,
+    },
+  },
+}).toString();
+
 export const itemPriceLink = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     paddingTop: variables.gap.small,

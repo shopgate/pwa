@@ -39,6 +39,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     />
   </TextLink>
   <Connect(Link)
+    className="css-kw00im"
     href=""
     state={
       Object {
@@ -46,6 +47,9 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       }
     }
   >
+    <ShortDescription
+      shortDescription={null}
+    />
     <MapPriceHint
       productId="1234"
     />
