@@ -100,7 +100,6 @@ class AddToCartButton extends PureComponent {
       loading,
     } = this.props;
 
-    console.warn('foo', this.locked, disabled, loading);
     if (this.locked || disabled || loading) {
       return;
     }
@@ -120,7 +119,7 @@ class AddToCartButton extends PureComponent {
     const { disabled } = this.props;
     const { __ } = this.context.i18n();
     const style = this.state.opened ? { width: '40%' } : null;
-    const className = disabled ? styles.disabled : styles.button;
+    const className = disabled ? styles.disabled.toString() : styles.button.toString();
 
     return (
       <Ripple

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { responsiveCondition } from '@shopgate/engage/styles';
 import connect from './connector';
 import VariantsContext from './context';
 import {
@@ -114,7 +115,14 @@ class ProductCharacteristics extends Component {
           params: { option },
         });
 
-        ref.current.scrollIntoView({ behavior: 'smooth' });
+        if (responsiveCondition('>xs', { webOnly: true })) {
+          ref.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        } else {
+          ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
         this.setState({ highlight: firstUnselected.id });
       }
     }

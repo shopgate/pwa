@@ -1,8 +1,7 @@
 import { useMemo, useEffect, useState } from 'react';
-import { hasWebBridge } from '@shopgate/engage/core';
 import PropTypes from 'prop-types';
 import { addListener } from './listener';
-import breakpoints from './breakpoints';
+import { parser } from './breakpoints';
 
 const comparators = {
   '>=': (from, to, width) => width >= from,
@@ -26,16 +25,15 @@ const ResponsiveContainer = ({
   // Calculate if should render due to visibility.
   /* eslint-disable react-hooks/exhaustive-deps */
   const breakpointSafe = useMemo(() => {
-    // Parse breakpoint prop into the comparator and the breakpoint name.
-    const breakpointStart = breakpoint.search(/[a-zA-Z]/);
-    const comparatorString = breakpoint.substring(0, breakpointStart === -1 ? 0 : breakpointStart);
-    const breakpointString = breakpoint.substring(breakpointStart === -1 ? 0 : breakpointStart);
+    const parsed = parser(comparators, breakpoint, {
+      breakpoint,
+      webOnly,
+      webAlways,
+      appOnly,
+      appAlways,
+    });
 
-    // Get configuration.
-    const comparator = comparators[comparatorString];
-    const config = breakpoints.find(b => b.name === breakpointString);
-
-    return comparator(config.from, config.to, window.innerWidth);
+    return parsed;
   }, [activeBreakpoint, breakpoint]);
   /* eslint-enable react-hooks/exhaustive-deps */
 
@@ -44,15 +42,8 @@ const ResponsiveContainer = ({
     setActiveBreakpoint(newBreakpoint);
   }), []);
 
-  const isWeb = hasWebBridge();
-
-  // Always mode.
-  if ((webAlways && isWeb) || (appAlways && !isWeb)) {
-    return children;
-  }
-
   // Ignore rendering if one of given condition applies.
-  if (!breakpointSafe || (appOnly && isWeb) || (webOnly && !isWeb)) {
+  if (!breakpointSafe) {
     return null;
   }
 

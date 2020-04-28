@@ -10,3 +10,4 @@ export { initCSSCustomProps, initCSSCustomPropsFallback } from './helpers/initCS
 export { loadCustomStyles } from './helpers/loadCustomStyles';
 
 export { responsiveMediaQuery } from '../components/ResponsiveContainer/mediaQuery';
+export { responsiveCondition } from '../components/ResponsiveContainer/condition';

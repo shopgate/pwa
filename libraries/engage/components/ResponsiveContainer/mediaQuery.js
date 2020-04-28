@@ -1,5 +1,4 @@
-import { hasWebBridge } from '@shopgate/engage/core';
-import breakpoints from './breakpoints';
+import { parser } from './breakpoints';
 
 const comparators = {
   '>=': from => `@media (min-width: ${from}px)`,
@@ -15,23 +14,13 @@ const comparators = {
  * @param {Object} params Parameters needed to generation.
  * @returns {string}
  */
-export const responsiveMediaQuery = (breakpoint, { appOnly = false, webOnly = false } = {}) => {
-  // Parse breakpoint prop into the comparator and the breakpoint name.
-  const breakpointStart = breakpoint.search(/[a-zA-Z]/);
-  const comparatorString = breakpoint.substring(0, breakpointStart === -1 ? 0 : breakpointStart);
-  const breakpointString = breakpoint.substring(breakpointStart === -1 ? 0 : breakpointStart);
-
-  // Get configuration.
-  const comparator = comparators[comparatorString];
-  const config = breakpoints.find(b => b.name === breakpointString);
-
-  // Web / App config.
-  const isWeb = hasWebBridge();
+export const responsiveMediaQuery = (breakpoint, params = {}) => {
+  const parsed = parser(comparators, breakpoint, params);
 
   // Return media query that never evaluates for now.
-  if ((appOnly && isWeb) || (webOnly && !isWeb)) {
+  if (!parsed) {
     return '@media (height = 0)';
   }
 
-  return comparator(config.from, config.to);
+  return parsed;
 };
