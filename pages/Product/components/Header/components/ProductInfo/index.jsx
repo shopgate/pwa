@@ -7,6 +7,7 @@ import {
   Availability,
   ProductContext,
 } from '@shopgate/engage/product';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -72,22 +73,24 @@ const ProductInfo = ({ productId, options }) => {
               }
             </Portal>
           </Grid.Item>
-          <Grid.Item component="div" className={styles.priceContainer}>
-            <Portal name={PRODUCT_INFO_ROW2}>
-              <div>
-                <PriceStriked productId={productId} options={options} />
-              </div>
-              <div>
-                <Price productId={productId} options={options} />
-              </div>
-              <div>
-                <PriceInfo productId={productId} options={options} />
-              </div>
-              <div>
-                <Tiers productId={productId} options={options} />
-              </div>
-            </Portal>
-          </Grid.Item>
+          <ResponsiveContainer breakpoint="xs" appAlways>
+            <Grid.Item component="div" className={styles.priceContainer}>
+              <Portal name={PRODUCT_INFO_ROW2}>
+                <div>
+                  <PriceStriked productId={productId} options={options} />
+                </div>
+                <div>
+                  <Price productId={productId} options={options} />
+                </div>
+                <div>
+                  <PriceInfo productId={productId} options={options} />
+                </div>
+                <div>
+                  <Tiers productId={productId} options={options} />
+                </div>
+              </Portal>
+            </Grid.Item>
+          </ResponsiveContainer>
           <TaxDisclaimer />
         </Grid>
       </Portal>

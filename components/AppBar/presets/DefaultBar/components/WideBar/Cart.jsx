@@ -69,25 +69,27 @@ const Cart = ({
   currency,
   count,
 }) => (
-  <div className={styles.root}>
-    <Ripple onClick={navigate} className={styles.ripple} color="var(--color-primary)" fill>
-      <div className={styles.priceContainer}>
-        <span className={styles.priceHeader}>Current Total</span>
-        <span className={styles.price}>
-          {i18n.price(total?.amount || 0, currency, true)}
-        </span>
-      </div>
-      <div className={styles.icon}>
-        <CartIcon />
-        {count > 0 ? (
-          <CartBadge
-            style={badgeStyles}
-            count={count}
-          />
-        ) : null}
-      </div>
-    </Ripple>
-  </div>
+  currency ? (
+    <div className={styles.root}>
+      <Ripple onClick={navigate} className={styles.ripple} color="var(--color-primary)" fill>
+        <div className={styles.priceContainer}>
+          <span className={styles.priceHeader}>Current Total</span>
+          <span className={styles.price}>
+            {i18n.price(total?.amount || 0, currency, true)}
+          </span>
+        </div>
+        <div className={styles.icon}>
+          <CartIcon />
+          {count > 0 ? (
+            <CartBadge
+              style={badgeStyles}
+              count={count}
+            />
+          ) : null}
+        </div>
+      </Ripple>
+    </div>
+  ) : null
 );
 
 Cart.propTypes = {

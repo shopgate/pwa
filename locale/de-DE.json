@@ -95,7 +95,8 @@
       "properties": "Eingeschaften",
       "ratings": "Bewertungen",
       "purchase": "Produkt kaufen",
-      "quantity": "Quantity"
+      "quantity": "Quantity",
+      "price": "Price"
     },
     "displayGroups": {
       "general": "Allgemein",

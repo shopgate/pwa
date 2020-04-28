@@ -35,7 +35,7 @@ const getTotalPrice = (price, additions) => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Price = ({ price, hasProductVariants }) => (
+const Price = ({ price, hasProductVariants, showTaxDisclaimer }) => (
   <Fragment>
     <Portal name={PRODUCT_PRICE_BEFORE} />
     <Portal name={PRODUCT_PRICE} props={{ price }}>
@@ -47,7 +47,7 @@ const Price = ({ price, hasProductVariants }) => (
                 className={styles.price}
                 currency={price.currency}
                 discounted={!!price.discount}
-                taxDisclaimer
+                taxDisclaimer={showTaxDisclaimer}
                 unitPrice={getTotalPrice(price.unitPrice, optionsPrices)}
                 unitPriceMin={hasProductVariants ? price.unitPriceMin : 0}
               />
@@ -63,9 +63,11 @@ const Price = ({ price, hasProductVariants }) => (
 Price.propTypes = {
   hasProductVariants: PropTypes.bool,
   price: PropTypes.shape(),
+  showTaxDisclaimer: PropTypes.bool,
 };
 
 Price.defaultProps = {
+  showTaxDisclaimer: true,
   hasProductVariants: false,
   price: null,
 };
