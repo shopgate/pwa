@@ -13,6 +13,12 @@ export const details = css({
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
+      ' > *:empty': {
+        display: 'none',
+      },
+      ' > *:first-child[style*="display:none"] + *:not([style*="display:none"])': {
+        paddingTop: 8,
+      },
     },
   },
 });
@@ -24,6 +30,14 @@ export const title = css({
   wordBreak: ['keep-all', 'break-word'],
   hyphens: 'auto',
 });
+
+export const itemNameLink = css({
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    ' > *:not(:first-child) ': {
+      paddingTop: 8,
+    },
+  },
+}).toString();
 
 export const itemPriceLink = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {

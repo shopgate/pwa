@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
 import { link } from './TextLink.style';
 
@@ -8,7 +10,15 @@ import { link } from './TextLink.style';
  * @returns {JSX}
  */
 const TextLink = props => (
-  <Link {...props} className={link} tag="a" />
+  <Link {...props} className={classNames(props.className, link)} tag="a" />
 );
+
+TextLink.propTypes = {
+  className: PropTypes.string,
+};
+
+TextLink.defaultProps = {
+  className: null,
+};
 
 export default TextLink;

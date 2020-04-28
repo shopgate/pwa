@@ -64,13 +64,13 @@ const SideNavigationCategoriesItem = ({
     if (!maxNestingReached && hasSubcategories) {
       return (
         <button type="button" onClick={handleClick} className={chevronButton}>
-          <ArrowDrop className={(isOpen ? chevronUp : chevronDown).toString()} />
+          <ArrowDrop className={(isOpen && subcategories ? chevronUp : chevronDown).toString()} />
         </button>
       );
     }
 
     return null;
-  }, [handleClick, hasSubcategories, isOpen, maxNestingReached]);
+  }, [handleClick, hasSubcategories, isOpen, maxNestingReached, subcategories]);
 
   if (!category) {
     return null;

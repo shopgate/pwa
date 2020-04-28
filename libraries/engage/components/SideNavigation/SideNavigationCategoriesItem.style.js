@@ -6,7 +6,7 @@ const { variables } = themeConfig;
 export const chevronButton = css({
   flexShrink: 0,
   outline: 0,
-  margin: `0 -${variables.gap.xsmall * 3}px 0 ${variables.gap.small}px`,
+  margin: `0 -${variables.gap.big}px 0 ${variables.gap.small}px`,
   fontSize: '1.6em',
   color: '#373D41',
   position: 'relative',
