@@ -41,8 +41,7 @@ const dropdown = css({
   background: colors.background,
   boxShadow: shadows.filter.sort,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
-    position: 'static',
-    boxShadow: 'none',
+    top: 'inherit',
   },
 }).toString();
 
