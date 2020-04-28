@@ -30,7 +30,6 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
         "title": "Foo",
       }
     }
-    tagName="a"
   >
     <ItemName
       display={null}
@@ -39,13 +38,14 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     />
   </TextLink>
   <Connect(Link)
-    className="css-kw00im"
+    className="css-1q7eikj"
     href=""
     state={
       Object {
         "title": "Foo",
       }
     }
+    tag="a"
   >
     <ShortDescription
       shortDescription={null}
@@ -59,21 +59,15 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     <EffectivityDates
       productId="1234"
     />
-  </Connect(Link)>
-  <Connect(Link)
-    className="css-1u6qqnd"
-    href=""
-    state={
-      Object {
-        "title": "Foo",
-      }
-    }
-  >
-    <ItemPrice
-      display={null}
-      price={Object {}}
-      productId="1234"
-    />
+    <div
+      className="css-1w39nq8"
+    >
+      <ItemPrice
+        display={null}
+        price={Object {}}
+        productId="1234"
+      />
+    </div>
   </Connect(Link)>
 </div>
 `;

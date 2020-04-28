@@ -17,7 +17,7 @@ import styles, { itemDetails, itemImage } from './style';
 const Item = ({ product, display }) => (
   <div className={styles}>
     <Link
-      tagName="a"
+      tag="a"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
       aria-hidden

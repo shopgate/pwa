@@ -53,7 +53,6 @@ class ItemDetails extends PureComponent {
           <Swatches productId={productId} />
         </Link>
         <TextLink
-          tagName="a"
           href={getProductRoute(productId)}
           state={{ title: name }}
           className={styles.itemNameLink}
@@ -62,6 +61,7 @@ class ItemDetails extends PureComponent {
         </TextLink>
 
         <Link
+          tag="a"
           href={getProductRoute(productId)}
           state={{ title: name }}
           className={styles.propertiesLink}
@@ -84,14 +84,9 @@ class ItemDetails extends PureComponent {
             It should only be used for approved BETA Client Projects
           */}
           <EffectivityDates productId={productId} />
-        </Link>
-
-        <Link
-          href={getProductRoute(productId)}
-          state={{ title: name }}
-          className={styles.itemPriceLink}
-        >
-          <ItemPrice display={display} productId={productId} price={price} />
+          <div className={styles.itemPrice}>
+            <ItemPrice display={display} productId={productId} price={price} />
+          </div>
         </Link>
       </div>
     );

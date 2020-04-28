@@ -7,7 +7,9 @@ const { colors } = themeConfig;
 export const itemDetails = css({
   position: 'relative',
   flexGrow: 2,
-  width: '66%',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    width: '66%',
+  },
 });
 
 export const itemImage = css({

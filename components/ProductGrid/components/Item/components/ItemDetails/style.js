@@ -41,19 +41,23 @@ export const itemNameLink = css({
 
 export const propertiesLink = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
     ' > *:not([style*="display:none"])': {
       paddingTop: 8,
     },
   },
 }).toString();
 
-export const itemPriceLink = css({
+export const itemPrice = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     paddingTop: variables.gap.small,
-    fontSize: '1.125rem',
     marginTop: 'auto',
+    fontSize: '1.125rem',
     ' ul > li': {
       flexGrow: 'inherit',
+      lineHeight: '1.5rem',
       ':first-child': {
         marginRight: variables.gap.big,
       },
