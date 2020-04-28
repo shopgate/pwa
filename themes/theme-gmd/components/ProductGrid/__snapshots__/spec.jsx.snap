@@ -11,15 +11,16 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 >
   <Layout
     columns={2}
+    type="flex"
   >
     <Grid
-      className="css-1cyi2l3"
+      className="css-tt6vuv"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-1cyi2l3 css-h7r55a css-u7q1iu"
+        className="css-tt6vuv css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
       />
     </Grid>
@@ -38,7 +39,6 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
 >
   <Consumer>
     <InfiniteContainer
-      columns={2}
       containerRef={
         Object {
           "current": null,
@@ -59,15 +59,16 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
         <div>
           <Layout
             columns={2}
+            type="flex"
           >
             <Grid
-              className="css-1cyi2l3"
+              className="css-tt6vuv"
               component="ul"
               data-test-id="productGrid"
               wrap={true}
             >
               <ul
-                className="css-1cyi2l3 css-h7r55a css-u7q1iu"
+                className="css-tt6vuv css-h7r55a css-u7q1iu"
                 data-test-id="productGrid"
               />
             </Grid>

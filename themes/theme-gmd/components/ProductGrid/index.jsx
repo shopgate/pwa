@@ -23,11 +23,11 @@ const ProductGrid = ({
   totalProductCount,
   requestHash,
 }) => {
-  const { columns = 2 } = useWidgetSettings(WIDGET_ID) || {};
+  const { columns = 2, type = 'flex' } = useWidgetSettings(WIDGET_ID) || {};
 
   if (!infiniteLoad) {
     return (
-      <Layout columns={columns}>
+      <Layout columns={columns} type={type}>
         {products.map(product => (
           <Iterator
             display={flags}
@@ -45,9 +45,14 @@ const ProductGrid = ({
       {({ getContentRef }) => (
         <InfiniteContainer
           containerRef={getContentRef()}
-          wrapper={props => (<Layout columns={columns} {...props} />)}
+          wrapper={props => (
+            <Layout
+              columns={columns}
+              type={type}
+              {...props}
+            />
+          )}
           iterator={Iterator}
-          columns={columns}
           loader={handleGetProducts}
           items={products}
           loadingIndicator={<LoadingIndicator />}
