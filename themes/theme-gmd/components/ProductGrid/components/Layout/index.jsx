@@ -8,15 +8,14 @@ import { styles } from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Layout = ({ children, columns, type }) => (
-  <Grid wrap className={styles(type, columns)} data-test-id="productGrid">
+const Layout = ({ children, columns }) => (
+  <Grid wrap className={styles(columns)} data-test-id="productGrid">
     {children}
   </Grid>
 );
 
 Layout.propTypes = {
   columns: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
   children: PropTypes.node,
 };
 
