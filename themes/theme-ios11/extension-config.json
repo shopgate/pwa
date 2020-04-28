@@ -215,6 +215,7 @@
             "buttonTextColorDisabled": "$.colors.shade4"
           },
           "@shopgate/engage/product/ProductGrid": {
+            "type": "flex",
             "columns": 2
           },
           "@shopgate/engage/product/ProductSlider": {
