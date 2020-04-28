@@ -50,6 +50,7 @@ export const propertiesLink = css({
 export const itemPriceLink = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     paddingTop: variables.gap.small,
+    fontSize: '1.125rem',
     marginTop: 'auto',
     ' ul > li': {
       flexGrow: 'inherit',
@@ -57,5 +58,8 @@ export const itemPriceLink = css({
         marginRight: variables.gap.big,
       },
     },
+  },
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    fontSize: '1.25rem',
   },
 }).toString();
