@@ -95,7 +95,8 @@
       "properties": "Properties",
       "ratings": "Ratings",
       "purchase": "Purchase Item",
-      "quantity": "Quantity"
+      "quantity": "Quantity",
+      "price": "Price"
     },
     "displayGroups": {
       "general": "General",

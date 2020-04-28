@@ -197,8 +197,6 @@ class ProductContent extends PureComponent {
               <Reviews productId={productId} />
             </Section>
             <TaxDisclaimer />
-            <FulfillmentSheet />
-            <FulfillmentPathSelector />
           </ResponsiveContainer>
           <ResponsiveContainer breakpoint=">xs" webOnly>
             <ContentWide
@@ -207,6 +205,8 @@ class ProductContent extends PureComponent {
               conditioner={this.baseContextValue.conditioner}
             />
           </ResponsiveContainer>
+          <FulfillmentSheet />
+          <FulfillmentPathSelector />
         </ProductContext.Provider>
       </div>
     );

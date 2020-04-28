@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSelector } from '@shopgate/engage/locations';
 import { Section } from '@shopgate/engage/a11y';
 import {
@@ -8,12 +10,20 @@ import {
   Description,
   ProductUnitQuantityPicker,
 } from '@shopgate/engage/product';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import Reviews from 'Components/Reviews';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
 import Header from '../Header';
+import Price from './Price';
+import Media from './Media';
+import AddToCartButton from './AddToCartButton';
+
+const { colors } = themeConfig;
 
 const styles = {
   root: css({
+    padding: '32px 16px 32px 32px',
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -24,14 +34,25 @@ const styles = {
   contentRow: css({
     display: 'flex',
     flexDirection: 'column',
-    flex: 2.5,
+    flex: 2.2,
+    [responsiveMediaQuery('>md')]: {
+      paddingRight: 16,
+    },
   }).toString(),
   extraRow: css({
-    flex: 0.5,
+    flex: 0.8,
+    display: 'flex',
+    flexDirection: 'column',
+    borderLeft: `1px solid ${colors.shade7}`,
+  }).toString(),
+  extraPrice: css({
+    padding: 16,
   }).toString(),
   priceContainer: css({
     display: 'flex',
+    width: '100%',
     flexDirection: 'row',
+    padding: 16,
   }).toString(),
   priceColumn: css({
     flex: 1,
@@ -49,7 +70,9 @@ const ContentWide = ({
   conditioner,
 }) => (
   <div className={styles.root}>
-    <div className={styles.mediaRow} />
+    <div className={styles.mediaRow}>
+      <Media productId={productId} variantId={variantId} />
+    </div>
     <div className={styles.contentRow}>
       <Header />
       <Section title="product.sections.fulfillment">
@@ -62,13 +85,19 @@ const ContentWide = ({
         <Characteristics productId={productId} variantId={variantId} />
         <Options />
       </Section>
-      <div className={styles.priceContainer}>
-        <div className={styles.priceColumn}>
-          <Section title="product.sections.quantity">
-            <ProductUnitQuantityPicker />
-          </Section>
+      <ResponsiveContainer breakpoint="<=md">
+        <div className={styles.priceContainer}>
+          <div className={styles.priceColumn}>
+            <Price />
+          </div>
+          <div className={styles.priceColumn}>
+            <Section title="product.sections.quantity">
+              <ProductUnitQuantityPicker />
+            </Section>
+          </div>
         </div>
-      </div>
+        <AddToCartButton />
+      </ResponsiveContainer>
       <Section title="product.sections.description">
         <Description
           productId={productId}
@@ -81,12 +110,32 @@ const ContentWide = ({
           variantId={variantId}
         />
       </Section>
+      <Section title="product.sections.ratings">
+        <Reviews productId={productId} />
+      </Section>
     </div>
-    {/*
-    <div className={styles.extraRow}>
-    </div>
-    */}
+    <ResponsiveContainer breakpoint=">md">
+      <div className={styles.extraRow}>
+        <div className={styles.extraPrice}>
+          <Price />
+        </div>
+        <Section title="product.sections.quantity">
+          <ProductUnitQuantityPicker />
+        </Section>
+        <AddToCartButton />
+      </div>
+    </ResponsiveContainer>
   </div>
 );
+
+ContentWide.propTypes = {
+  conditioner: PropTypes.shape().isRequired,
+  productId: PropTypes.string.isRequired,
+  variantId: PropTypes.string,
+};
+
+ContentWide.defaultProps = {
+  variantId: null,
+};
 
 export default ContentWide;

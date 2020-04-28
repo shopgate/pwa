@@ -15,7 +15,7 @@ const comparators = {
  * @param {Object} params Parameters needed to generation.
  * @returns {string}
  */
-export const responsiveMediaQuery = (breakpoint, { appOnly = false, webOnly = false }) => {
+export const responsiveMediaQuery = (breakpoint, { appOnly = false, webOnly = false } = {}) => {
   // Parse breakpoint prop into the comparator and the breakpoint name.
   const breakpointStart = breakpoint.search(/[a-zA-Z]/);
   const comparatorString = breakpoint.substring(0, breakpointStart === -1 ? 0 : breakpointStart);

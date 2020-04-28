@@ -54,6 +54,10 @@ export const itemRowDisabled = css({
   opacity: 0.3,
 });
 
+export const itemSpacer = css({
+  marginLeft: 16,
+});
+
 export const itemColumn = css({
   display: 'block',
   width: '50%',

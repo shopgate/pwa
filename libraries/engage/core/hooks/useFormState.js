@@ -31,14 +31,15 @@ export function useFormState(initialState, complete, validationConstraints = {})
   }, [changed, initialState, values]);
 
   // -- IS_SUBMITTING ---------
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (!isSubmitting) {
       return;
     }
     let mounted = true;
     if (valid === true && !submitLock.current) {
+      submitLock.current = true;
       (async () => {
-        submitLock.current = true;
         await complete(values);
         if (mounted) {
           setSubmitting(false);
@@ -50,9 +51,13 @@ export function useFormState(initialState, complete, validationConstraints = {})
     // eslint-disable-next-line consistent-return
     return () => {
       mounted = false;
-      submitLock.current = false;
     };
-  }, [complete, isSubmitting, values, valid]);
+  }, [isSubmitting, valid]);
+  /* eslint-enable react-hooks/exhaustive-deps */
+
+  useEffect(() => () => {
+    submitLock.current = false;
+  }, []);
 
   // -- VALIDATION ON SUBMIT ---------
   useEffect(() => {
