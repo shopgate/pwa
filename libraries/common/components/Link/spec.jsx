@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Disconnected as Link } from './index';
 
 describe('<Link />', () => {
@@ -28,7 +28,7 @@ describe('<Link />', () => {
   });
 
   it('handles a push', () => {
-    const wrapper = shallow((
+    const wrapper = mount((
       <Link
         href={pathname}
         state={state}
@@ -48,7 +48,7 @@ describe('<Link />', () => {
   });
 
   it('handles a replace', () => {
-    const wrapper = shallow((
+    const wrapper = mount((
       <Link
         href={pathname}
         historyPush={historyPush}

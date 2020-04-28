@@ -42,6 +42,7 @@ const renderComponent = (props = {}, state = mockedState) => {
 };
 
 const id = 'widget-id';
+/* eslint-disable camelcase */
 const settings = {
   categoryNumber: '',
   limit: '4',
@@ -51,6 +52,7 @@ const settings = {
   label_3: '',
   label_4: '',
 };
+/* eslint-enable camelcase */
 
 const props = {
   id,

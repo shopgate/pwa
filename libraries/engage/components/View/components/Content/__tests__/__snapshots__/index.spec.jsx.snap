@@ -30,6 +30,14 @@ exports[`engage > components > view > components > content should render content
       title="Test Shop"
     />
     <ViewAbove />
+    <Component
+      breakpoint=">xs"
+      webOnly={true}
+    >
+      <div
+        id="PageHeaderBelow"
+      />
+    </Component>
     <SurroundPortals
       portalName="view.content"
       portalProps={null}
