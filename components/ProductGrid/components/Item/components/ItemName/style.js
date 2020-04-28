@@ -9,10 +9,9 @@ export default css({
   hyphens: 'auto',
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     fontSize: '1.125rem',
-    marginTop: 8,
+    marginTop: 0,
   },
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     fontSize: '1.25rem',
-    marginTop: 8,
   },
 });

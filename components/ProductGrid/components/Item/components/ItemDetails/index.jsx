@@ -54,6 +54,7 @@ class ItemDetails extends PureComponent {
           tagName="a"
           href={getProductRoute(productId)}
           state={{ title: name }}
+          className={styles.itemNameLink}
         >
           <ItemName display={display} productId={productId} name={name} />
         </TextLink>
