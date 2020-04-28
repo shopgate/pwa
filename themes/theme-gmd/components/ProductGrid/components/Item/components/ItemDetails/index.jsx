@@ -6,6 +6,7 @@ import {
 import { TextLink, Link } from '@shopgate/engage/components';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
+import ShortDescription from '../ShortDescription';
 import * as styles from './style';
 
 /**
@@ -17,12 +18,14 @@ class ItemDetails extends PureComponent {
     display: PropTypes.shape(),
     name: PropTypes.string,
     price: PropTypes.shape(),
+    shortDescription: PropTypes.string,
   };
 
   static defaultProps = {
     display: null,
     name: null,
     price: null,
+    shortDescription: null,
   };
 
   /**
@@ -30,7 +33,7 @@ class ItemDetails extends PureComponent {
    */
   render() {
     const {
-      display, productId, name, price,
+      display, productId, name, price, shortDescription,
     } = this.props;
 
     if (display && !display.name && !display.price && !display.reviews) {
@@ -61,7 +64,9 @@ class ItemDetails extends PureComponent {
         <Link
           href={getProductRoute(productId)}
           state={{ title: name }}
+          className={styles.propertiesLink}
         >
+          <ShortDescription shortDescription={shortDescription} />
 
           {/*
             This feature is currently in BETA testing.
