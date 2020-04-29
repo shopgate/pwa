@@ -7,6 +7,7 @@ import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from '../Bar';
@@ -41,21 +42,36 @@ class SearchContent extends Component {
   }
 
   /**
+   * @returns {JSX}
+   */
+  getAppBar = () => {
+    const { searchPhrase, showFilterBar } = this.props;
+    return (
+      <DefaultBar
+        center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
+        below={<Bar showFilterBar={showFilterBar} />}
+      />
+    );
+  }
+
+  /**
    * @return {JSX}
    */
   render() {
     const {
-      searchPhrase, showFilterBar, showNoResults,
+      searchPhrase, showNoResults,
     } = this.props;
 
     return (
       <RouteContext.Consumer>
         {({ state, query, id: routeId }) => (
           <Fragment>
-            <DefaultBar
-              center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
-              below={<Bar showFilterBar={showFilterBar} />}
-            />
+            <ResponsiveContainer appAlways breakpoint="<=xs">
+              { this.getAppBar() }
+            </ResponsiveContainer>
+            <ResponsiveContainer webOnly breakpoint=">xs">
+              { this.getAppBar() }
+            </ResponsiveContainer>
             <Products
               searchPhrase={searchPhrase}
               filters={state.filters}
