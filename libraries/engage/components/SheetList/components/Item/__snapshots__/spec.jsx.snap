@@ -7,11 +7,13 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
 >
   <Item
     className={null}
+    description={null}
     forwardedRef={null}
     image={null}
     isDisabled={false}
     isSelected={false}
     link="url/to/somewhere"
+    linkComponent={[Function]}
     linkState={null}
     onClick={null}
     rightComponent={null}
@@ -74,11 +76,13 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
 >
   <Item
     className={null}
+    description={null}
     forwardedRef={null}
     image={null}
     isDisabled={false}
     isSelected={false}
     link={null}
+    linkComponent={[Function]}
     linkState={null}
     onClick={null}
     rightComponent={
@@ -93,23 +97,25 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1qcr7hz"
+        className="css-1n351uw"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1n351uw css-h7r55a"
         >
           <GridItem
-            className="css-rx1nvy"
+            className="css-13u8drl"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-rx1nvy css-1gs0ko2"
+              className="css-13u8drl css-1gs0ko2"
             >
-              My Title
+              <div>
+                My Title
+              </div>
             </div>
           </GridItem>
           <GridItem
@@ -139,11 +145,13 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
 >
   <Item
     className={null}
+    description={null}
     forwardedRef={null}
     image={null}
     isDisabled={false}
     isSelected={false}
     link={null}
+    linkComponent={[Function]}
     linkState={null}
     onClick={null}
     rightComponent={null}
@@ -154,23 +162,25 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1qcr7hz"
+        className="css-1n351uw"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1n351uw css-h7r55a"
         >
           <GridItem
-            className="css-rx1nvy"
+            className="css-13u8drl"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-rx1nvy css-1gs0ko2"
+              className="css-13u8drl css-1gs0ko2"
             >
-              My Title
+              <div>
+                My Title
+              </div>
             </div>
           </GridItem>
         </div>
@@ -192,6 +202,7 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
 >
   <Item
     className={null}
+    description={null}
     forwardedRef={null}
     image={
       <img
@@ -202,6 +213,7 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
     isDisabled={false}
     isSelected={false}
     link={null}
+    linkComponent={[Function]}
     linkState={null}
     onClick={null}
     rightComponent={null}
@@ -212,12 +224,12 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1qcr7hz"
+        className="css-1n351uw"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1n351uw css-h7r55a"
         >
           <div
             className="css-1mhrjzj"
@@ -228,15 +240,17 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
             />
           </div>
           <GridItem
-            className="css-rx1nvy"
+            className="css-13u8drl"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-rx1nvy css-1gs0ko2"
+              className="css-13u8drl css-1gs0ko2"
             >
-              My Title
+              <div>
+                My Title
+              </div>
             </div>
           </GridItem>
         </div>
@@ -253,11 +267,13 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
 >
   <Item
     className={null}
+    description={null}
     forwardedRef={null}
     image={null}
     isDisabled={false}
     isSelected={false}
     link={null}
+    linkComponent={[Function]}
     linkState={null}
     onClick={[Function]}
     rightComponent={null}
@@ -306,23 +322,25 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
               data-test-id={null}
             >
               <Grid
-                className="css-1qcr7hz"
+                className="css-1n351uw"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="css-1qcr7hz css-h7r55a"
+                  className="css-1n351uw css-h7r55a"
                 >
                   <GridItem
-                    className="css-rx1nvy"
+                    className="css-13u8drl"
                     component="div"
                     grow={1}
                     shrink={1}
                   >
                     <div
-                      className="css-rx1nvy css-1gs0ko2"
+                      className="css-13u8drl css-1gs0ko2"
                     >
-                      My Title
+                      <div>
+                        My Title
+                      </div>
                     </div>
                   </GridItem>
                 </div>
@@ -343,11 +361,13 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
 >
   <Item
     className={null}
+    description={null}
     forwardedRef={null}
     image={null}
     isDisabled={true}
     isSelected={false}
     link={null}
+    linkComponent={[Function]}
     linkState={null}
     onClick={null}
     rightComponent={null}
@@ -358,23 +378,25 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1qcr7hz"
+        className="css-1n351uw"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1n351uw css-h7r55a"
         >
           <GridItem
-            className="css-rx1nvy css-19uk9mv"
+            className="css-13u8drl css-19uk9mv"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-rx1nvy css-19uk9mv css-1gs0ko2"
+              className="css-13u8drl css-19uk9mv css-1gs0ko2"
             >
-              My Title
+              <div>
+                My Title
+              </div>
             </div>
           </GridItem>
         </div>
@@ -391,11 +413,13 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
 >
   <Item
     className={null}
+    description={null}
     forwardedRef={null}
     image={null}
     isDisabled={false}
     isSelected={true}
     link={null}
+    linkComponent={[Function]}
     linkState={null}
     onClick={null}
     rightComponent={null}
@@ -406,23 +430,25 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1qcr7hz css-7q9yf9"
+        className="css-1n351uw css-7q9yf9"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-7q9yf9 css-h7r55a"
+          className="css-1n351uw css-7q9yf9 css-h7r55a"
         >
           <GridItem
-            className="css-rx1nvy"
+            className="css-13u8drl"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-rx1nvy css-1gs0ko2"
+              className="css-13u8drl css-1gs0ko2"
             >
-              My Title
+              <div>
+                My Title
+              </div>
             </div>
           </GridItem>
         </div>

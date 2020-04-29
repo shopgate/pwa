@@ -14,11 +14,13 @@ class Item extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     className: PropTypes.string,
+    description: PropTypes.string,
     forwardedRef: PropTypes.shape(),
     image: PropTypes.element,
     isDisabled: PropTypes.bool,
     isSelected: PropTypes.bool,
     link: PropTypes.string,
+    linkComponent: PropTypes.func,
     linkState: PropTypes.shape(),
     onClick: PropTypes.func,
     rightComponent: PropTypes.element,
@@ -27,6 +29,7 @@ class Item extends Component {
 
   static defaultProps = {
     className: null,
+    description: null,
     forwardedRef: null,
     image: null,
     isDisabled: false,
@@ -35,6 +38,7 @@ class Item extends Component {
     linkState: null,
     onClick: null,
     rightComponent: null,
+    linkComponent: Link,
     testId: null,
   };
 
@@ -57,7 +61,7 @@ class Item extends Component {
    */
   renderContent(isNested = true) {
     const {
-      isDisabled, isSelected, title, image, rightComponent, forwardedRef,
+      isDisabled, isSelected, title, image, rightComponent, forwardedRef, description,
     } = this.props;
 
     const gridStyles = {
@@ -80,7 +84,14 @@ class Item extends Component {
             </div>
           )}
           <Grid.Item className={classNames(titleStyles)} component="div" grow={1}>
-            {title}
+            <div>
+              {title}
+            </div>
+            { description && (
+            <div className={styles.description}>
+              {description}
+            </div>
+            )}
           </Grid.Item>
           {(rightComponent !== null) && (
             <Grid.Item component="div" grow={1}>
@@ -97,7 +108,15 @@ class Item extends Component {
    */
   render() {
     const {
-      link, linkState, onClick, className, isDisabled, testId, forwardedRef, isSelected,
+      link,
+      linkState,
+      linkComponent: LinkComponent,
+      onClick,
+      className,
+      isDisabled,
+      testId,
+      forwardedRef,
+      isSelected,
     } = this.props;
 
     /**
@@ -116,9 +135,9 @@ class Item extends Component {
           className={className}
           styles={{ hover: styles.glowHover }}
         >
-          <Link href={link} onClick={onClick} state={linkState} tabIndex={0}>
+          <LinkComponent href={link} onClick={onClick} state={linkState} tabIndex={0}>
             {this.renderContent()}
-          </Link>
+          </LinkComponent>
         </Glow>
       );
     }

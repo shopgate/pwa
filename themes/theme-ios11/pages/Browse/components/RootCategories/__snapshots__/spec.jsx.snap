@@ -147,19 +147,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                   role="listbox"
                 >
                   <ListItem
-                    className="css-10041rq css-171mywc"
+                    className="css-809xlb css-171mywc"
                     isSelected={false}
                     key="child-0/.$123-123"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1ckzvk7"
+                        className="css-1fj91zt"
                         data-test-id={null}
                       >
                         <Portal
@@ -184,11 +184,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                           >
                             <Item
                               className={null}
+                              description={null}
                               forwardedRef={null}
                               image={null}
                               isDisabled={false}
                               isSelected={false}
                               link="/category/3132332d313233"
+                              linkComponent={[Function]}
                               linkState={
                                 Object {
                                   "categoryId": "123-123",
@@ -276,23 +278,25 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="foo"
                                           >
                                             <Grid
-                                              className="css-1qcr7hz"
+                                              className="css-1n351uw"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1n351uw css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-rx1nvy"
+                                                  className="css-13u8drl"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                    className="css-13u8drl css-1gs0ko2"
                                                   >
-                                                    foo
+                                                    <div>
+                                                      foo
+                                                    </div>
                                                   </div>
                                                 </GridItem>
                                               </div>
@@ -311,19 +315,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-10041rq css-171mywc"
+                    className="css-809xlb css-171mywc"
                     isSelected={false}
                     key="child-1/.$456-123"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1ckzvk7"
+                        className="css-1fj91zt"
                         data-test-id={null}
                       >
                         <Portal
@@ -348,11 +352,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                           >
                             <Item
                               className={null}
+                              description={null}
                               forwardedRef={null}
                               image={null}
                               isDisabled={false}
                               isSelected={false}
                               link="/category/3435362d313233"
+                              linkComponent={[Function]}
                               linkState={
                                 Object {
                                   "categoryId": "456-123",
@@ -440,23 +446,25 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="bar"
                                           >
                                             <Grid
-                                              className="css-1qcr7hz"
+                                              className="css-1n351uw"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1n351uw css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-rx1nvy"
+                                                  className="css-13u8drl"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                    className="css-13u8drl css-1gs0ko2"
                                                   >
-                                                    bar
+                                                    <div>
+                                                      bar
+                                                    </div>
                                                   </div>
                                                 </GridItem>
                                               </div>
@@ -475,19 +483,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-10041rq css-171mywc"
+                    className="css-809xlb css-171mywc"
                     isSelected={false}
                     key="child-2/.$789-123"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1ckzvk7"
+                        className="css-1fj91zt"
                         data-test-id={null}
                       >
                         <Portal
@@ -512,11 +520,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                           >
                             <Item
                               className={null}
+                              description={null}
                               forwardedRef={null}
                               image={null}
                               isDisabled={false}
                               isSelected={false}
                               link="/category/3738392d313233"
+                              linkComponent={[Function]}
                               linkState={
                                 Object {
                                   "categoryId": "789-123",
@@ -604,23 +614,25 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="baz"
                                           >
                                             <Grid
-                                              className="css-1qcr7hz"
+                                              className="css-1n351uw"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1n351uw css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-rx1nvy"
+                                                  className="css-13u8drl"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                    className="css-13u8drl css-1gs0ko2"
                                                   >
-                                                    baz
+                                                    <div>
+                                                      baz
+                                                    </div>
                                                   </div>
                                                 </GridItem>
                                               </div>
@@ -639,19 +651,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-10041rq css-171mywc"
+                    className="css-809xlb css-171mywc"
                     isSelected={false}
                     key="child-3/.$789-456"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1ckzvk7"
+                        className="css-1fj91zt"
                         data-test-id={null}
                       >
                         <Portal
@@ -676,11 +688,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                           >
                             <Item
                               className={null}
+                              description={null}
                               forwardedRef={null}
                               image={null}
                               isDisabled={false}
                               isSelected={false}
                               link="/category/3738392d343536"
+                              linkComponent={[Function]}
                               linkState={
                                 Object {
                                   "categoryId": "789-456",
@@ -768,23 +782,25 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="qux"
                                           >
                                             <Grid
-                                              className="css-1qcr7hz"
+                                              className="css-1n351uw"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1n351uw css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-rx1nvy"
+                                                  className="css-13u8drl"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                    className="css-13u8drl css-1gs0ko2"
                                                   >
-                                                    qux
+                                                    <div>
+                                                      qux
+                                                    </div>
                                                   </div>
                                                 </GridItem>
                                               </div>

@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { variables, colors } = themeConfig;
@@ -7,6 +8,16 @@ export const IMAGE_SPACE = 72;
 
 const item = css({
   margin: `0 ${variables.gap.big}px`,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    boxShadow: 'none !important',
+    padding: `${variables.gap.small}px 0`,
+    '&:first-child': {
+      paddingTop: 0,
+    },
+    '&:last-child': {
+      paddingBottom: 0,
+    },
+  },
 }).toString();
 
 const itemNotLast = css({
@@ -29,6 +40,9 @@ const itemWithImage = css({
 const innerContainer = css({
   minHeight: 56,
   position: 'relative',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    border: `1px solid ${colors.shade7}`,
+  },
 }).toString();
 
 export default {

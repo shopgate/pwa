@@ -1,5 +1,6 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { IMAGE_SPACE } from '../../style';
 
 const { colors, variables } = themeConfig;
@@ -16,11 +17,31 @@ const selected = css({
 const title = css({
   width: '100%',
   marginTop: variables.gap.xsmall,
-  paddingRight: 16,
+  paddingRight: variables.gap.big,
   hyphens: 'auto',
   overflowWrap: 'break-word',
   wordBreak: 'break-word',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    padding: variables.gap.big,
+    margin: 0,
+    fontSize: '1.25rem',
+    lineHeight: '1.5rem',
+    fontWeight: 500,
+  },
 }).toString();
+
+const description = css({
+  display: 'none',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    display: 'block',
+    color: colors.shade6,
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
+    fontWeight: 'initial',
+    paddingTop: variables.gap.small,
+  },
+
+});
 
 const grid = css({
   alignItems: 'center',
@@ -28,6 +49,9 @@ const grid = css({
   padding: `${variables.gap.small}px 0`,
   position: 'relative',
   zIndex: 2,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    padding: 0,
+  },
 }).toString();
 
 const image = css({
@@ -45,6 +69,7 @@ export default {
   disabled,
   selected,
   title,
+  description,
   grid,
   image,
   glowHover,
