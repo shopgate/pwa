@@ -81,19 +81,19 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         role="listbox"
       >
         <ListItem
-          className="css-10041rq css-171mywc"
+          className="css-809xlb css-171mywc"
           isSelected={false}
           key="child-0/.$1"
           role={null}
           tabIndex={0}
         >
           <li
-            className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+            className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
             data-test-id="listItem"
             role={null}
           >
             <div
-              className="css-1ckzvk7"
+              className="css-1fj91zt"
               data-test-id={null}
             >
               <ForwardRef(WithForwardedRef(Item))
@@ -105,11 +105,13 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               >
                 <Item
                   className={null}
+                  description={null}
                   forwardedRef={null}
                   image={null}
                   isDisabled={false}
                   isSelected={false}
                   link="/category/31"
+                  linkComponent={[Function]}
                   linkState={null}
                   onClick={null}
                   rightComponent={null}
@@ -163,19 +165,19 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           </li>
         </ListItem>
         <ListItem
-          className="css-10041rq css-171mywc"
+          className="css-809xlb css-171mywc"
           isSelected={false}
           key="child-1/.$2"
           role={null}
           tabIndex={0}
         >
           <li
-            className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+            className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
             data-test-id="listItem"
             role={null}
           >
             <div
-              className="css-1ckzvk7"
+              className="css-1fj91zt"
               data-test-id={null}
             >
               <ForwardRef(WithForwardedRef(Item))
@@ -187,11 +189,13 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               >
                 <Item
                   className={null}
+                  description={null}
                   forwardedRef={null}
                   image={null}
                   isDisabled={false}
                   isSelected={false}
                   link="/category/32"
+                  linkComponent={[Function]}
                   linkState={null}
                   onClick={null}
                   rightComponent={null}
