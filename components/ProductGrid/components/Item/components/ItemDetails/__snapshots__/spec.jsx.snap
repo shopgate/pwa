@@ -4,33 +4,70 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
 <div
   className={
     Object {
-      "data-css-16e7pt1": "",
+      "data-css-dashvd": "",
     }
   }
   role="button"
   tabIndex={-1}
 >
-  <Swatches
-    productId="1234"
-  />
-  <ItemName
-    display={null}
-    name="Foo"
-    productId="1234"
-  />
-  <MapPriceHint
-    productId="1234"
-  />
-  <OrderQuantityHint
-    productId="1234"
-  />
-  <EffectivityDates
-    productId="1234"
-  />
-  <ItemPrice
-    display={null}
-    price={Object {}}
-    productId="1234"
-  />
+  <Connect(Link)
+    href=""
+    state={
+      Object {
+        "title": "Foo",
+      }
+    }
+  >
+    <Swatches
+      productId="1234"
+    />
+  </Connect(Link)>
+  <TextLink
+    className="css-15teqdq"
+    href=""
+    state={
+      Object {
+        "title": "Foo",
+      }
+    }
+  >
+    <ItemName
+      display={null}
+      name="Foo"
+      productId="1234"
+    />
+  </TextLink>
+  <Connect(Link)
+    className="css-1q7eikj"
+    href=""
+    state={
+      Object {
+        "title": "Foo",
+      }
+    }
+    tag="a"
+  >
+    <ShortDescription
+      shortDescription={null}
+    />
+    <MapPriceHint
+      productId="1234"
+    />
+    <OrderQuantityHint
+      productId="1234"
+    />
+    <EffectivityDates
+      productId="1234"
+    />
+    <div
+      className="css-1w39nq8"
+    >
+      <ItemPrice
+        display={null}
+        price={Object {}}
+        productId="1234"
+      />
+    </div>
+  </Connect(Link)>
 </div>
 `;

@@ -21,11 +21,27 @@ export const showNoResults = createSelector(
   }
 );
 
+export const areResultsFetching = createSelector(
+  getResultByHash,
+  (results) => {
+    if (!results || results.isFetching) {
+      return true;
+    }
+
+    return false;
+  }
+);
+
 export const showFilterBar = createSelector(
   hasActiveFilters,
+  areResultsFetching,
   showNoResults,
-  (hasFilters, hasNoResults) => {
-    if (!hasFilters && hasNoResults) {
+  (hasFilters, isFetching, hasResults) => {
+    if (isFetching) {
+      return false;
+    }
+
+    if (!hasFilters && hasResults) {
       return false;
     }
 

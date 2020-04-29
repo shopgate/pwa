@@ -4,6 +4,7 @@ import Bar from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
   withForwardedRef: jest.fn(),
+  hasWebBridge: () => false,
   useRoute: () => ({
     state: {
       filters: {},

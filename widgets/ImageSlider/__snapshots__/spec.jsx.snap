@@ -240,6 +240,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                         aria-label={null}
                         className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://example.com"
+                        href={null}
                         onClick={[Function]}
                         role="link"
                         tabIndex={null}
@@ -290,6 +291,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                         aria-label={null}
                         className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://other.example.com"
+                        href={null}
                         onClick={[Function]}
                         role="link"
                         tabIndex={null}
@@ -379,6 +381,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
             aria-label={null}
             className="css-9auwkz css-63oe3q"
             data-test-id="link: http://example.com"
+            href={null}
             onClick={[Function]}
             role="link"
             tabIndex={null}
@@ -706,6 +709,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                         aria-label={null}
                         className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://other.example.com"
+                        href={null}
                         onClick={[Function]}
                         role="link"
                         tabIndex={null}
@@ -976,6 +980,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                         aria-label={null}
                         className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://example.com"
+                        href={null}
                         onClick={[Function]}
                         role="link"
                         tabIndex={null}
@@ -1026,6 +1031,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                         aria-label={null}
                         className="css-9auwkz css-63oe3q"
                         data-test-id="link: http://other.example.com"
+                        href={null}
                         onClick={[Function]}
                         role="link"
                         tabIndex={null}

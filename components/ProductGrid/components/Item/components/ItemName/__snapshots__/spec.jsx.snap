@@ -22,7 +22,7 @@ exports[`<ItemName /> should render with minimal props 1`] = `
       aria-label="Foo."
       className={
         Object {
-          "data-css-1xzic9e": "",
+          "data-css-1sejop": "",
         }
       }
       data-test-id="Productname: Foo"
