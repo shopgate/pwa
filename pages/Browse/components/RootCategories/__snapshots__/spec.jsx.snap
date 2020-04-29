@@ -147,19 +147,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                   role="listbox"
                 >
                   <ListItem
-                    className="css-809xlb css-171mywc"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-0/.$123-123"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1fj91zt"
+                        className="css-1ckzvk7"
                         data-test-id={null}
                       >
                         <Portal
@@ -315,19 +315,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-809xlb css-171mywc"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-1/.$456-123"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1fj91zt"
+                        className="css-1ckzvk7"
                         data-test-id={null}
                       >
                         <Portal
@@ -483,19 +483,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-809xlb css-171mywc"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-2/.$789-123"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1fj91zt"
+                        className="css-1ckzvk7"
                         data-test-id={null}
                       >
                         <Portal
@@ -651,19 +651,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-809xlb css-171mywc"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-3/.$789-456"
                     role={null}
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
                       <div
-                        className="css-1fj91zt"
+                        className="css-1ckzvk7"
                         data-test-id={null}
                       >
                         <Portal
