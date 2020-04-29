@@ -19,7 +19,11 @@ export const responsiveMediaQuery = (breakpoint, params = {}) => {
 
   // Return media query that never evaluates for now.
   if (!parsed) {
-    return '@media (height = 0)';
+    return '@media (height: 0)';
+  }
+  // Return media query that evaluates always.
+  if (parsed === true) {
+    return '@media (min-height: 0)';
   }
 
   return parsed;
