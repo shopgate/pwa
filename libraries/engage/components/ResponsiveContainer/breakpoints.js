@@ -37,7 +37,7 @@ export const parser = (comparators, breakpoint, {
 
   // Always mode.
   if ((webAlways && isWeb) || (appAlways && !isWeb)) {
-    return false;
+    return true;
   }
 
   // Return media query that never evaluates for now.
