@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.12.3](https://github.com/shopgate/pwa/compare/v6.12.1...v6.12.3) (2020-04-29)
+
+#### :bug: Bug Fix
+* [#1006](https://github.com/shopgate/pwa/pull/1006) Use css grid for themes Product Grid ([@alexbridge](https://github.com/alexbridge))
+* [#1002](https://github.com/shopgate/pwa/pull/1002) Fix products grid card dimensions ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.12.2](https://github.com/shopgate/pwa/compare/v6.12.1...v6.12.2) (2020-04-24)
 
 #### :bug: Bug Fix
