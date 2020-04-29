@@ -15,19 +15,19 @@ exports[`<SheetList /> should not render invalid children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="css-809xlb css-171mywc"
+        className="css-10041rq css-171mywc"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1fj91zt"
+            className="css-1ckzvk7"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))
@@ -109,19 +109,19 @@ exports[`<SheetList /> should render a child and add styles for list items with 
       role="listbox"
     >
       <ListItem
-        className="css-809xlb css-1brrprg css-171mywc"
+        className="css-10041rq css-1brrprg css-171mywc"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-809xlb css-1brrprg css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-1brrprg css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1fj91zt"
+            className="css-1ckzvk7"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))
@@ -195,19 +195,19 @@ exports[`<SheetList /> should render with two children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="css-809xlb css-171mywc"
+        className="css-10041rq css-171mywc"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1fj91zt"
+            className="css-1ckzvk7"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))
@@ -262,19 +262,19 @@ exports[`<SheetList /> should render with two children 1`] = `
         </li>
       </ListItem>
       <ListItem
-        className="css-809xlb css-171mywc"
+        className="css-10041rq css-171mywc"
         isSelected={false}
         key="child-1/.1"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-809xlb css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1fj91zt"
+            className="css-1ckzvk7"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))

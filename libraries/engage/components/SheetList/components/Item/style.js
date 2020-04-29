@@ -40,7 +40,6 @@ const description = css({
     fontWeight: 'initial',
     paddingTop: variables.gap.small,
   },
-
 });
 
 const grid = css({

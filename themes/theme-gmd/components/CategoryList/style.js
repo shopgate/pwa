@@ -6,6 +6,21 @@ const { colors, variables } = themeConfig;
 
 export default css({
   background: colors.light,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    ' > li': {
+      boxShadow: 'none !important',
+      padding: `${variables.gap.small}px 0`,
+      '&:first-child': {
+        paddingTop: 0,
+      },
+      '&:last-child': {
+        paddingBottom: 0,
+      },
+      '> :first-child': {
+        border: `1px solid ${colors.shade7}`,
+      },
+    },
+  },
 });
 
 export const image = css({
