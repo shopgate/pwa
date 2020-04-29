@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
+import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
 import Sheet from './components/Sheet';
 import styles from './style';
 import transition from '../transition';
@@ -124,6 +125,11 @@ class Characteristic extends PureComponent {
       >
         {selected && <div className={styles.label}>{label}</div>}
         <div className={styles.selection}>{buttonLabel}</div>
+        <ResponsiveContainer breakpoint=">xs" webOnly>
+          <div className={styles.arrow}>
+            <ArrowDropIcon />
+          </div>
+        </ResponsiveContainer>
       </div>
     );
   }

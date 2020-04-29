@@ -2,6 +2,8 @@ import { css } from 'glamor';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const button = css({
+  position: 'relative',
+  cursor: 'pointer',
   background: themeColors.overlay,
   display: 'flex',
   flexDirection: 'column',
@@ -28,7 +30,14 @@ const selection = css({
   lineHeight: 1.125,
 }).toString();
 
+const arrow = css({
+  position: 'absolute',
+  right: 32,
+  fontSize: 20,
+}).toString();
+
 export default {
+  arrow,
   button,
   buttonDisabled,
   label,
