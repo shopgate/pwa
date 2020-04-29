@@ -5,6 +5,7 @@ const { colors, variables } = themeConfig;
 
 const button = css({
   display: 'block',
+  cursor: 'pointer',
   background: `var(--color-primary, ${colors.cta})`,
   color: `var(--color-primary-contrast, ${colors.ctaContrast})`,
   fontSize: 16,
