@@ -16,6 +16,7 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 jest.mock('@shopgate/pwa-common/selectors/history', () => ({
   getSortOrder: jest.fn(),
 }));
+jest.mock('@shopgate/engage/components');
 
 describe('engage > components > view > components > content', () => {
   beforeEach(jest.clearAllMocks);

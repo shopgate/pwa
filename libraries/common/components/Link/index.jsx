@@ -41,8 +41,10 @@ class Link extends Component {
 
   /**
    * Opens the link.
+   * @param {Event} e An event object.
    */
-  handleOpenLink = () => {
+  handleOpenLink = (e) => {
+    e.preventDefault();
     if (this.props.disabled) {
       return;
     }
@@ -79,6 +81,7 @@ class Link extends Component {
         aria-label={ariaLabel}
         tabIndex={tabIndex}
         aria-hidden={ariaHidden}
+        href={href && Tag === 'a' ? href : null}
       >
         {children}
       </Tag>

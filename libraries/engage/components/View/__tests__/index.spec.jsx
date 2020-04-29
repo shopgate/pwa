@@ -19,6 +19,7 @@ jest.mock('../../../styles', () => ({
   setPageBackgroundColor: jest.fn(),
   responsiveMediaQuery: jest.fn(),
 }));
+jest.mock('@shopgate/engage/components');
 
 describe('engage > components > view > index', () => {
   beforeEach(jest.clearAllMocks);

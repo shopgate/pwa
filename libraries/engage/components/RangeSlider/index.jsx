@@ -169,7 +169,11 @@ class RangeSlider extends PureComponent {
       return;
     }
 
-    const { offsetWidth, offsetLeft } = this.domElement.current;
+    const {
+      width: offsetWidth,
+      left: offsetLeft,
+    } = this.domElement.current.getBoundingClientRect();
+
     // Calculate the absolute offset where the element was touched...
     let deltaX = (getTouchPositionX(event) - offsetLeft) - this.touchOffset;
 
@@ -204,7 +208,7 @@ class RangeSlider extends PureComponent {
       }
     }
 
-    this.draggedHandlePixelOffset *= this.domElement.current.offsetWidth;
+    this.draggedHandlePixelOffset *= offsetWidth;
 
     this.setState(stateUpdate, this.triggerChangeCallback);
   }
@@ -224,7 +228,11 @@ class RangeSlider extends PureComponent {
    * @param {Object} event The touch event
    */
   handleRangeTouch = (event) => {
-    const { offsetWidth, offsetLeft } = this.domElement.current;
+    const {
+      width: offsetWidth,
+      left: offsetLeft,
+    } = this.domElement.current.getBoundingClientRect();
+
     const dx = (getTouchPositionX(event) - offsetLeft) / offsetWidth;
     const d0 = Math.abs(this.state.rangeMin - dx);
     const d1 = Math.abs(this.state.rangeMax - dx);

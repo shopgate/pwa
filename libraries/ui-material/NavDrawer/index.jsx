@@ -76,6 +76,14 @@ class NavDrawer extends Component {
     return this.state.open !== nextState.open;
   }
 
+  /**
+   * The unmount lifecycle hook
+   */
+  componentWillUnmount() {
+    UIEvents.removeListener(OPEN, this.open);
+    UIEvents.removeListener(CLOSE, this.close);
+  }
+
   onEntering = () => {
     this.props.onOpen();
   }

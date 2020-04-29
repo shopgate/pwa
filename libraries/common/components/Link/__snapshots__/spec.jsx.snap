@@ -6,6 +6,7 @@ exports[`<Link /> renders with children 1`] = `
   aria-label={null}
   className="css-9auwkz "
   data-test-id="link: /"
+  href={null}
   onClick={[Function]}
   role="link"
   tabIndex={null}

@@ -51,6 +51,17 @@ export function hasSGJavaScriptBridge() {
 }
 
 /**
+ * Checks whether the web bridge is active.
+ * @returns {boolean}
+ */
+export function hasWebBridgeCore() {
+  if (!hasSGJavaScriptBridge()) {
+    return false;
+  }
+  return window.SGJavascriptBridge?.type === 'web' || window.SGJavascriptBridge?.type === 'desktop';
+}
+
+/**
  * Checks whether the browser connector should be used.
  * @return {boolean}
  */

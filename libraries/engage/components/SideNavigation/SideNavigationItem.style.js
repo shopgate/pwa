@@ -11,6 +11,10 @@ export const getIndentation = (level = 0) => css({
   paddingLeft: (level * variables.gap.big),
 }).toString();
 
+export const list = css({
+  position: 'relative',
+}).toString();
+
 export const item = css({
   alignItems: 'center',
   display: 'flex',
@@ -23,7 +27,7 @@ export const item = css({
   ':hover': {
     color: 'var(--color-primary)',
   },
-});
+}).toString();
 
 /**
  * @returns {string}

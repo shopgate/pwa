@@ -7,7 +7,7 @@ import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
-import styles, { itemDetails } from './style';
+import styles, { itemDetails, itemImage } from './style';
 
 /**
  * The Product Grid Item component.
@@ -17,10 +17,11 @@ import styles, { itemDetails } from './style';
 const Item = ({ product, display }) => (
   <div className={styles}>
     <Link
-      tagName="a"
+      tag="a"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
       aria-hidden
+      className={itemImage}
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
@@ -42,19 +43,13 @@ const Item = ({ product, display }) => (
     />
 
     <div className={itemDetails}>
-      <Link
-        tagName="a"
-        href={getProductRoute(product.id)}
-        state={{ title: product.name }}
-      >
-        <ItemDetails
-          productId={product.id}
-          name={product.name}
-          price={product.price}
-          display={display}
-        />
-      </Link>
-
+      <ItemDetails
+        productId={product.id}
+        name={product.name}
+        price={product.price}
+        shortDescription={product.shortDescription}
+        display={display}
+      />
       <ItemFavoritesButton productId={product.id} />
     </div>
   </div>

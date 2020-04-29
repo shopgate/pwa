@@ -50,6 +50,7 @@ jest.mock('../../helpers', () => ({
     },
   },
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+  hasWebBridgeCore: jest.fn().mockReturnValue(false),
 }));
 
 const mockedLogGroup = jest.fn();

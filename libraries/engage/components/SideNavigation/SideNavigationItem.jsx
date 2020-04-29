@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
 import { i18n } from '@shopgate/engage/core';
 import {
-  getIndentation, getItemActive, item, link,
+  getIndentation, getItemActive, item, link, list,
 } from './SideNavigationItem.style';
 import { useSideNavigation } from './SideNavigation.hooks';
 
@@ -33,8 +33,8 @@ const SideNavigationItem = ({
   ]);
 
   return (
-    <li className={className}>
-      <div className={classNames(item.toString(), {
+    <li className={classNames(list, className)}>
+      <div className={classNames(item, {
         [getItemActive()]: isActive,
       })}
       >

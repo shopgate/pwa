@@ -131,6 +131,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                 aria-label={null}
                 className="css-9auwkz "
                 data-test-id="link: /item/505230445543544944"
+                href={null}
                 onClick={[Function]}
                 role="link"
                 tabIndex={null}
