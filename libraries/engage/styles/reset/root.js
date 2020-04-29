@@ -1,5 +1,5 @@
 import { css } from 'glamor';
-import { useScrollContainer } from '@shopgate/engage/core';
+import { useScrollContainer, hasWebBridge } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { typography } = themeConfig;
@@ -28,8 +28,8 @@ css.global('body', {
   overflow: 'auto',
   margin: 0,
   WebkitOverflowScrolling: 'touch',
-  WebkitUserSelect: 'none',
-  userSelect: 'none',
+  WebkitUserSelect: hasWebBridge() ? 'inherit' : 'none',
+  userSelect: hasWebBridge() ? 'inherit' : 'none',
 });
 
 css.global('[data-pattern]', {
