@@ -1,5 +1,6 @@
 // @flow
 import React, { useContext, Fragment } from 'react';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import { Accordion } from '../../../components';
 import { StoreContext } from './Store.context';
 import { StockInfo } from '../StockInfo';
@@ -24,7 +25,9 @@ export function StoreDetails() {
       renderLabel={() => (
         <Fragment>
           <StoreAddress address={store.address} />
-          <StockInfo location={store} showStoreName={false} />
+          <ResponsiveContainer breakpoint="<=sm" appAlways>
+            <StockInfo location={store} showStoreName={false} />
+          </ResponsiveContainer>
         </Fragment>
       )}
       contentClassName={storeDetailsBody}

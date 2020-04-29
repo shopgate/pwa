@@ -1,4 +1,5 @@
 import React, { useContext, Fragment } from 'react';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import { StoreContext } from './Store.context';
 import { StoreHeader } from './StoreHeader';
 import { StoreDetails } from './StoreDetails';
@@ -18,7 +19,9 @@ export function StoreCard() {
     <Fragment>
       <StoreHeader />
       <StoreDetails />
-      <StoreSelectLocationButton />
+      <ResponsiveContainer breakpoint="<=sm" appAlways>
+        <StoreSelectLocationButton />
+      </ResponsiveContainer>
     </Fragment>
   );
 }

@@ -11,11 +11,13 @@ const container = css({
   width: '100vw',
   color: themeConfig.colors.dark,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
-    height: '90%',
     width: '80%',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
+    height: 'max-content',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    margin: 'auto',
   },
   [responsiveMediaQuery('>md', { webOnly: true })]: {
     width: '60%',
@@ -33,8 +35,8 @@ const content = css({
   ],
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     maxHeight: [
-      `calc(100% - ${themeConfig.variables.navigator.height}px)`,
-      `calc(100% - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+      `calc(80vh - ${themeConfig.variables.navigator.height}px)`,
+      `calc(80vh - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
     ],
   },
   paddingBottom: [

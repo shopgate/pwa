@@ -1,12 +1,14 @@
 // @flow
 import React, { useCallback, useContext } from 'react';
 import classNames from 'classnames';
-import { Grid } from '@shopgate/engage/components';
+import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
 import { isProductAvailable } from '../../helpers';
 import { FulfillmentContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
 import { StoreDistance } from './StoreDistance';
 import { StoreHoursToday } from './StoreHoursToday';
+import { StoreSelectLocationButton } from './StoreSelectLocationButton';
+import { StockInfo } from '../StockInfo';
 import { storeHeader, storeName, disabled } from './Store.style';
 
 /**
@@ -37,10 +39,23 @@ export function StoreHeader() {
       <Grid>
         <Grid.Item grow={1} className={storeName}>
           {name}
+          <ResponsiveContainer breakpoint=">=sm" webOnly>
+            <Grid.Item shrink={0}>
+              <StockInfo location={store} showStoreName={false} />
+              <StoreDistance distance={distance} unitSystem={unitSystem} />
+            </Grid.Item>
+          </ResponsiveContainer>
         </Grid.Item>
-        <Grid.Item shrink={0}>
-          <StoreDistance distance={distance} unitSystem={unitSystem} />
-        </Grid.Item>
+        <ResponsiveContainer breakpoint="<sm" appAlways>
+          <Grid.Item shrink={0}>
+            <StoreDistance distance={distance} unitSystem={unitSystem} />
+          </Grid.Item>
+        </ResponsiveContainer>
+        <ResponsiveContainer breakpoint=">=sm" webOnly>
+          <Grid.Item shrink={0}>
+            <StoreSelectLocationButton />
+          </Grid.Item>
+        </ResponsiveContainer>
       </Grid>
       <StoreHoursToday hours={store.operationHours} />
     </div>

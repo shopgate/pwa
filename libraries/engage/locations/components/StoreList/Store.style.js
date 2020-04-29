@@ -1,5 +1,6 @@
 import { css } from 'glamor';
 import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const { gap } = themeVariables;
 
@@ -42,6 +43,10 @@ export const storeName = css({
 export const storeDistance = css({
   whiteSpace: 'nowrap',
   color: themeColors.gray,
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    marginLeft: 14,
+    fontSize: '0.875rem',
+  },
 }).toString();
 
 export const storeDetailsBody = css({
@@ -105,6 +110,9 @@ export const detailsSecondary = css({
 
 export const selectLocationButtonWrapper = css({
   padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    padding: `0 0 ${gap.small}px 0`,
+  },
 });
 
 export const selectLocationButton = css({

@@ -7,8 +7,9 @@ export const container = css({
 });
 
 export const queryLine = css({
-  background: themeColors.shade7,
-  borderRadius: 10,
+  background: themeColors.light,
+  border: `1px solid ${themeColors.shade7}`,
+  borderRadius: 4,
   display: 'flex',
   alignItems: 'center',
   width: '100%',
@@ -62,8 +63,8 @@ export const select = css({
   border: `1px solid ${themeColors.shade7}`,
   padding: `0 ${themeVariables.gap.bigger + themeVariables.gap.small * 1.5}px 0 ${themeVariables.gap.big * 0.75}px`,
   color: themeColors.shade3,
-  fontSize: '0.725rem',
-  borderRadius: 5,
+  fontSize: '1rem',
+  borderRadius: 4,
   width: '100%',
   outline: 0,
 });
