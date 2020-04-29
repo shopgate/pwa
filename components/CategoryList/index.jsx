@@ -5,8 +5,8 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { Placeholder } from '@shopgate/pwa-ui-shared';
 import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { SheetList } from '@shopgate/engage/components';
-import styles from './style';
+import { SheetList, Image, TextLink } from '@shopgate/engage/components';
+import styles, { image } from './style';
 
 /**
  * The CategoryList component.
@@ -38,11 +38,14 @@ const CategoryList = ({ categories, prerender }) => {
           <SheetList.Item
             link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
             title={category.name}
+            description={category.description}
             linkState={{
               categoryId: category.id,
               title: category.name,
             }}
             testId={category.name}
+            rightComponent={<Image className={image} src={category.imageUrl} />}
+            linkComponent={TextLink}
           />
         </Portal>
       ))}
