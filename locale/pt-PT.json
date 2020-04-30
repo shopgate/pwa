@@ -210,6 +210,11 @@
     "body_error": "Ocorreu um erro inesperado. Por favor, tente novamente."
   },
   "cart": {
+    "grand_total": "Grand Total",
+    "items": "Items",
+    "price": "Price",
+    "quantity": "Qty",
+    "remove_item": "Remove item",
     "subtotal": "Subtotal",
     "total": "Total do carrinho",
     "discount": "Desconto",
@@ -226,7 +231,7 @@
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
     "free_shipping": "Envio Grátis",
-    "reservation_hint": "*Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
+    "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
       "mixed_cart": "We currently do not support Ship to Address and Reserve to Cart within the same transaction. Please update your delivery options and continue shopping or proceed to checkout.",
       "direct_ship_item": "Check if this item is available for reserve at a store near you.",
