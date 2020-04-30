@@ -5,7 +5,7 @@ import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { CART_ITEM_TYPE_PRODUCT, CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import { MessageBar } from '@shopgate/engage/components';
+import { MessageBar, ResponsiveContainer } from '@shopgate/engage/components';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import {
   messagesContainerCard,
@@ -15,6 +15,7 @@ import {
 } from './CartItem.style';
 import connect from './CartItemProduct.connector';
 import { CartItemProductLayout } from './CartItemProductLayout';
+import { CartItemProductLayoutWide } from './CartItemProductLayoutWide';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../cart.constants';
 import { noGap } from './CartItemProduct.style';
 import { type OwnProps, type StateProps, type DispatchProps } from './CartItemProduct.types';
@@ -197,15 +198,28 @@ class CartItemProduct extends React.Component<Props, State> {
           {messages.length > 0 && (
             <MessageBar messages={messages} classNames={messageStyles[cartItemsDisplay]} />
           )}
-          <CartItemProductLayout
-            handleDelete={this.deleteProduct}
-            handleUpdate={this.updateProduct}
-            toggleEditMode={this.toggleEditMode}
-            editMode={editMode}
-            product={product}
-            currency={currency}
-            quantity={quantity}
-          />
+          <ResponsiveContainer breakpoint="<=xs" appAlways>
+            <CartItemProductLayout
+              handleDelete={this.deleteProduct}
+              handleUpdate={this.updateProduct}
+              toggleEditMode={this.toggleEditMode}
+              editMode={editMode}
+              product={product}
+              currency={currency}
+              quantity={quantity}
+            />
+          </ResponsiveContainer>
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            <CartItemProductLayoutWide
+              handleDelete={this.deleteProduct}
+              handleUpdate={this.updateProduct}
+              toggleEditMode={this.toggleEditMode}
+              editMode={editMode}
+              product={product}
+              currency={currency}
+              quantity={quantity}
+            />
+          </ResponsiveContainer>
         </div>
       </CardListItem>
     );

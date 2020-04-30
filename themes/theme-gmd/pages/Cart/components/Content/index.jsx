@@ -13,8 +13,15 @@ import {
   CartItemGroup,
   CartItems,
   CartItem,
+  CartHeaderWide,
+  CartSummaryWide,
 } from '@shopgate/engage/cart';
-import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
+import {
+  MessageBar,
+  CardList,
+  SurroundPortals,
+  ResponsiveContainer,
+} from '@shopgate/engage/components';
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
@@ -64,6 +71,11 @@ function CartContent(props) {
   return (
     <CartContext.Provider value={contextValue}>
       <SimpleBar title="titles.cart" />
+      { hasItems && (
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          <CartHeaderWide />
+        </ResponsiveContainer>
+      )}
       {(hasItems || hasMessages) && (
         <Fragment>
           {hasMessages && (
@@ -106,10 +118,17 @@ function CartContent(props) {
                   </Fragment>
                 )}
               </SurroundPortals>
-              <PaymentBar visible={isPaymentBarVisible} />
+              <ResponsiveContainer webOnly breakpoint="<=xs">
+                <PaymentBar visible={isPaymentBarVisible} />
+              </ResponsiveContainer>
+              <ResponsiveContainer webOnly breakpoint=">xs">
+                <CartSummaryWide />
+              </ResponsiveContainer>
             </Fragment>
           )}
-          <Footer />
+          <ResponsiveContainer webOnly breakpoint="<=xs">
+            <Footer />
+          </ResponsiveContainer>
         </Fragment>
       )}
       {(!isLoading && !hasItems) && (

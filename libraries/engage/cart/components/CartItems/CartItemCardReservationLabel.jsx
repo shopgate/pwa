@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { i18n } from '@shopgate/engage/core';
-import { LocationIcon } from '@shopgate/engage/components';
+import { LocationIcon, ResponsiveContainer } from '@shopgate/engage/components';
 import {
   type LocationAware,
   BOPIS,
@@ -33,9 +33,11 @@ export function CartItemCardReservationLabel({ location, fulfillmentMethod }: Pr
         <div className={name}>
           {location.name}
         </div>
-        <div className={method}>
-          {i18n.text(`locations.method.${suffix}`)}
-        </div>
+        <ResponsiveContainer webOnly breakpoint="<=xs">
+          <div className={method}>
+            {i18n.text(`locations.method.${suffix}`)}
+          </div>
+        </ResponsiveContainer>
       </div>
     </div>
   );

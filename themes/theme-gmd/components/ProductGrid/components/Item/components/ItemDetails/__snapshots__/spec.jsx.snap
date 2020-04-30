@@ -4,7 +4,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
 <div
   className={
     Object {
-      "data-css-dashvd": "",
+      "data-css-sr2jsa": "",
     }
   }
   role="button"
@@ -23,7 +23,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     />
   </Connect(Link)>
   <TextLink
-    className="css-15teqdq"
+    className="css-nfstwl"
     href=""
     state={
       Object {
@@ -38,7 +38,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     />
   </TextLink>
   <Connect(Link)
-    className="css-1q7eikj"
+    className="css-1mm725o"
     href=""
     state={
       Object {
@@ -60,7 +60,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       productId="1234"
     />
     <div
-      className="css-1w39nq8"
+      className="css-193sdzn"
     >
       <ItemPrice
         display={null}

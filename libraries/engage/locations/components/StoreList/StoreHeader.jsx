@@ -40,10 +40,12 @@ export function StoreHeader() {
         <Grid.Item grow={1} className={storeName}>
           {name}
           <ResponsiveContainer breakpoint=">=sm" webOnly>
-            <Grid.Item shrink={0}>
-              <StockInfo location={store} showStoreName={false} />
-              <StoreDistance distance={distance} unitSystem={unitSystem} />
-            </Grid.Item>
+            <ul>
+              <Grid.Item shrink={0}>
+                <StockInfo location={store} showStoreName={false} />
+                <StoreDistance distance={distance} unitSystem={unitSystem} />
+              </Grid.Item>
+            </ul>
           </ResponsiveContainer>
         </Grid.Item>
         <ResponsiveContainer breakpoint="<sm" appAlways>

@@ -97,9 +97,15 @@ class ContextMenu extends Component {
             <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
             <Position offset={this.offset}>
               <div className={styles.menu}>
-                {Children.map(children, child => (
-                  React.cloneElement(child, { closeMenu: this.handleMenuToggle })
-                ))}
+                {Children.map(children, (child) => {
+                  if (!child) {
+                    return null;
+                  }
+
+                  return (
+                    React.cloneElement(child, { closeMenu: this.handleMenuToggle })
+                  );
+                })}
               </div>
             </Position>
           </div>

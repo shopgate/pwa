@@ -1,8 +1,9 @@
 // @flow
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import { CardList } from '@shopgate/engage/components';
+import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { type Item } from '../../cart.types';
+import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
 import { items, card } from './CartItems.style';
@@ -27,21 +28,26 @@ function CartItems({
   }
 
   return (
-    <CardList className={items}>
-      {cartItems.map(item => (
-        <CardList.Item className={card} key={item.id}>
-          <ul>
-            <CartItemCard
-              multiLineReservation={multiLineReservation}
-              fulfillmentLocationId={item.fulfillmentLocationId}
-              fulfillmentMethod={item.fulfillmentMethod}
-            >
-              <CartItem item={item} onFocus={onFocus} editable={editable} />
-            </CartItemCard>
-          </ul>
-        </CardList.Item>
-      ))}
-    </CardList>
+    <React.Fragment>
+      <ResponsiveContainer breakpoint=">xs" webOnly>
+        <CartItemsHeaderWide editable={editable} />
+      </ResponsiveContainer>
+      <CardList className={items}>
+        {cartItems.map(item => (
+          <CardList.Item className={card} key={item.id}>
+            <ul>
+              <CartItemCard
+                multiLineReservation={multiLineReservation}
+                fulfillmentLocationId={item.fulfillmentLocationId}
+                fulfillmentMethod={item.fulfillmentMethod}
+              >
+                <CartItem item={item} onFocus={onFocus} editable={editable} />
+              </CartItemCard>
+            </ul>
+          </CardList.Item>
+        ))}
+      </CardList>
+    </React.Fragment>
   );
 }
 

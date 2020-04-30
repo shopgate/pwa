@@ -20,11 +20,11 @@ exports[`<Sheet /> should open 1`] = `
       animation={
         Object {
           "duration": 300,
-          "in": "css-32zjx4",
-          "out": "css-15ct02m",
+          "in": "css-1ldjh2f",
+          "out": "css-171mdnt",
         }
       }
-      className="css-ruonn8"
+      className="css-1sp6e1"
       isOpen={true}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -32,7 +32,7 @@ exports[`<Sheet /> should open 1`] = `
       onOpen={[Function]}
     >
       <div
-        className="css-ruonn8 css-1rg7udn css-32zjx4"
+        className="css-1sp6e1 css-1rg7udn css-1ldjh2f"
         onAnimationEnd={[Function]}
         style={
           Object {
@@ -124,7 +124,7 @@ exports[`<Sheet /> should open 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l"
+          className="css-qubcgc"
           onScroll={[Function]}
         >
           <div
@@ -226,11 +226,11 @@ exports[`<Sheet /> should render closed without content 1`] = `
     animation={
       Object {
         "duration": 300,
-        "in": "css-32zjx4",
-        "out": "css-15ct02m",
+        "in": "css-1ldjh2f",
+        "out": "css-171mdnt",
       }
     }
-    className="css-ruonn8"
+    className="css-1sp6e1"
     isOpen={false}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -238,7 +238,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l"
+      className="css-qubcgc"
       onScroll={[Function]}
     />
   </Drawer>
@@ -261,11 +261,11 @@ exports[`<Sheet /> should render opened without content 1`] = `
     animation={
       Object {
         "duration": 300,
-        "in": "css-32zjx4",
-        "out": "css-15ct02m",
+        "in": "css-1ldjh2f",
+        "out": "css-171mdnt",
       }
     }
-    className="css-ruonn8"
+    className="css-1sp6e1"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -273,7 +273,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l"
+      className="css-qubcgc"
       onScroll={[Function]}
     />
   </Drawer>
@@ -296,11 +296,11 @@ exports[`<Sheet /> should render with content and title 1`] = `
     animation={
       Object {
         "duration": 300,
-        "in": "css-32zjx4",
-        "out": "css-15ct02m",
+        "in": "css-1ldjh2f",
+        "out": "css-171mdnt",
       }
     }
-    className="css-ruonn8"
+    className="css-1sp6e1"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -313,7 +313,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
       title="Test-Title"
     />
     <div
-      className="css-1aon90l"
+      className="css-qubcgc"
       onScroll={[Function]}
     >
       <div
@@ -372,11 +372,11 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       animation={
         Object {
           "duration": 300,
-          "in": "css-32zjx4",
-          "out": "css-15ct02m",
+          "in": "css-1ldjh2f",
+          "out": "css-171mdnt",
         }
       }
-      className="css-ruonn8"
+      className="css-1sp6e1"
       isOpen={false}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -384,7 +384,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       onOpen={[Function]}
     >
       <div
-        className="css-ruonn8 css-1rg7udn css-15ct02m"
+        className="css-1sp6e1 css-1rg7udn css-171mdnt"
         onAnimationEnd={[Function]}
         style={
           Object {
@@ -476,7 +476,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l"
+          className="css-qubcgc"
           onScroll={[Function]}
         >
           <div

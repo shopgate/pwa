@@ -52,21 +52,21 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1n351uw"
+                    className="css-1ojce65"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1n351uw css-h7r55a"
+                      className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-13u8drl"
+                        className="css-1ifl01s"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-13u8drl css-1gs0ko2"
+                          className="css-1ifl01s css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -146,21 +146,21 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1n351uw"
+                    className="css-1ojce65"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1n351uw css-h7r55a"
+                      className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-13u8drl"
+                        className="css-1ifl01s"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-13u8drl css-1gs0ko2"
+                          className="css-1ifl01s css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -232,21 +232,21 @@ exports[`<SheetList /> should render with two children 1`] = `
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1n351uw"
+                    className="css-1ojce65"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1n351uw css-h7r55a"
+                      className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-13u8drl"
+                        className="css-1ifl01s"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-13u8drl css-1gs0ko2"
+                          className="css-1ifl01s css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -299,21 +299,21 @@ exports[`<SheetList /> should render with two children 1`] = `
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1n351uw"
+                    className="css-1ojce65"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1n351uw css-h7r55a"
+                      className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-13u8drl"
+                        className="css-1ifl01s"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-13u8drl css-1gs0ko2"
+                          className="css-1ifl01s css-1gs0ko2"
                         >
                           <div>
                             List Item
