@@ -10,7 +10,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     className="css-4s85e9"
   >
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="1"
     >
       <Star
@@ -21,7 +21,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="2"
     >
       <Star
@@ -32,7 +32,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="3"
     >
       <Star
@@ -43,7 +43,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="4"
     >
       <Star
@@ -54,7 +54,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="5"
     >
       <Star
@@ -81,7 +81,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     className="css-4s85e9"
   >
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="1"
     >
       <Star
@@ -92,7 +92,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="2"
     >
       <Star
@@ -103,7 +103,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="3"
     >
       <Star
@@ -114,7 +114,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="4"
     >
       <Star
@@ -125,7 +125,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="5"
     >
       <Star
@@ -140,7 +140,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     className="css-1m683rn"
   >
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="6"
     >
       <Star
@@ -151,7 +151,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="7"
     >
       <Star
@@ -162,7 +162,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="2"
     >
       <StarHalfIcon
@@ -186,7 +186,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     className="css-4s85e9"
   >
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="1"
     >
       <Star
@@ -197,7 +197,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="2"
     >
       <Star
@@ -208,7 +208,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="3"
     >
       <Star
@@ -219,7 +219,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="4"
     >
       <Star
@@ -230,7 +230,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="5"
     >
       <Star
@@ -245,7 +245,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     className="css-1m683rn"
   >
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="6"
     >
       <Star
@@ -256,7 +256,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="7"
     >
       <Star
@@ -267,7 +267,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="8"
     >
       <Star
@@ -278,7 +278,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="9"
     >
       <Star
@@ -289,7 +289,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="10"
     >
       <Star
@@ -314,7 +314,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="1"
       onClick={[Function]}
       role="button"
@@ -328,7 +328,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="2"
       onClick={[Function]}
       role="button"
@@ -342,7 +342,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="3"
       onClick={[Function]}
       role="button"
@@ -356,7 +356,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="4"
       onClick={[Function]}
       role="button"
@@ -370,7 +370,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="5"
       onClick={[Function]}
       role="button"
@@ -388,7 +388,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   >
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="6"
       onClick={[Function]}
       role="button"
@@ -402,7 +402,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="7"
       onClick={[Function]}
       role="button"
@@ -416,7 +416,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="8"
       onClick={[Function]}
       role="button"
@@ -430,7 +430,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="9"
       onClick={[Function]}
       role="button"
@@ -444,7 +444,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="10"
       onClick={[Function]}
       role="button"
@@ -471,7 +471,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="1"
       onClick={[Function]}
       role="button"
@@ -485,7 +485,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="2"
       onClick={[Function]}
       role="button"
@@ -499,7 +499,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="3"
       onClick={[Function]}
       role="button"
@@ -513,7 +513,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="4"
       onClick={[Function]}
       role="button"
@@ -527,7 +527,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="5"
       onClick={[Function]}
       role="button"
@@ -545,7 +545,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   >
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="6"
       onClick={[Function]}
       role="button"
@@ -559,7 +559,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="7"
       onClick={[Function]}
       role="button"
@@ -573,7 +573,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="8"
       onClick={[Function]}
       role="button"
@@ -586,7 +586,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       />
     </div>
     <div
-      className="css-8u66fh css-q4owmg"
+      className="css-1uwa32v css-q4owmg"
       key="3"
     >
       <StarHalfIcon

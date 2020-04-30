@@ -8,6 +8,7 @@ import { withCurrentProduct } from '@shopgate/engage/core';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
 import { PRODUCT_UNIT_EACH } from '../../constants';
+import { small, big } from './styles';
 
 const { variables } = themeConfig;
 
@@ -19,12 +20,6 @@ const styles = {
     fontSize: '1rem',
     fontWeight: 500,
     marginBottom: '0.5rem',
-  }).toString(),
-  small: css({
-    width: 120,
-  }).toString(),
-  big: css({
-    width: 170,
   }).toString(),
 };
 
@@ -49,7 +44,7 @@ const ProductUnitQuantityPicker = ({ product }) => {
         <I18n.Text string="product.sections.quantity" />
       </div>
       <UnitQuantityPicker
-        className={hasUnitWithDecimals ? styles.big : styles.small}
+        className={hasUnitWithDecimals ? big : small}
         unit={hasUnitWithDecimals ? unit : null}
         maxDecimals={hasUnitWithDecimals ? 2 : 0}
         incrementStep={hasUnitWithDecimals ? 0.25 : 1}

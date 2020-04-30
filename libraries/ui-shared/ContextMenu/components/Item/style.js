@@ -7,6 +7,7 @@ const item = css({
   padding: `${themeConfig.variables.gap.big * 0.875}px ${themeConfig.variables.gap.big * 1.375}px`,
   lineHeight: 1,
   zIndex: 1,
+  cursor: 'pointer',
 }).toString();
 
 export default { item };

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import PT from 'prop-types';
 import {
-  Grid, Link, ProductProperties, PriceInfo, SurroundPortals,
+  Grid, Link, TextLink, ProductProperties, PriceInfo, SurroundPortals,
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
@@ -49,13 +49,13 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
     <React.Fragment>
       <Grid className={styles.item}>
         <Grid.Item className={styles.content} grow={1}>
-          <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
+          <TextLink href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
             <CartItemProductTitle
               handleRemove={props.handleDelete}
               toggleEditMode={props.toggleEditMode}
               value={props.product.name}
             />
-          </Link>
+          </TextLink>
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
               <ProductProperties properties={props.product.properties} lineClamp={2} />

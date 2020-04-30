@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import PT from 'prop-types';
+import classNamesMod from 'classnames';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_ITEM_PRICE_STRIKED,
@@ -14,6 +15,10 @@ type Props = {
   currency: string,
   defaultPrice: number,
   specialPrice?: number | null,
+  classNames?: {
+    price?: string,
+    priceStriked?: string,
+  }
 }
 
 type ContextProps = {
@@ -28,7 +33,9 @@ type ContextProps = {
  * @returns {JSX}
  */
 export function CartItemProductPrice(props: Props, context: ContextProps) {
-  const { currency, defaultPrice, specialPrice } = props;
+  const {
+    currency, defaultPrice, specialPrice, classNames,
+  } = props;
   const hasStrikePrice = typeof specialPrice === 'number';
   const price = hasStrikePrice ? specialPrice : defaultPrice;
 
@@ -37,7 +44,7 @@ export function CartItemProductPrice(props: Props, context: ContextProps) {
       {hasStrikePrice && (
         <SurroundPortals portalName={CART_ITEM_PRICE_STRIKED} portalProps={context}>
           <PriceStriked
-            className={priceStriked}
+            className={classNamesMod(priceStriked, classNames.priceStriked)}
             value={defaultPrice}
             currency={currency}
           />
@@ -45,7 +52,7 @@ export function CartItemProductPrice(props: Props, context: ContextProps) {
       )}
       <SurroundPortals portalName={CART_ITEM_PRICE} portalProps={context}>
         <Price
-          className={priceStyle}
+          className={classNamesMod(priceStyle, classNames.price)}
           currency={currency}
           discounted={hasStrikePrice}
           taxDisclaimer
@@ -58,6 +65,10 @@ export function CartItemProductPrice(props: Props, context: ContextProps) {
 
 CartItemProductPrice.defaultProps = {
   specialPrice: null,
+  classNames: {
+    price: null,
+    priceStriked: null,
+  },
 };
 
 CartItemProductPrice.contextTypes = {

@@ -53,7 +53,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     <SheetList
       className={
         Object {
-          "data-css-awmwgm": "",
+          "data-css-tgxhyl": "",
         }
       }
       hasImages={false}
@@ -62,7 +62,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       <List
         className={
           Object {
-            "data-css-awmwgm": "",
+            "data-css-tgxhyl": "",
           }
         }
         role="listbox"
@@ -70,7 +70,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         <ul
           className={
             Object {
-              "data-css-awmwgm": "",
+              "data-css-tgxhyl": "",
             }
           }
           role="listbox"
@@ -101,7 +101,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       alt={null}
                       animating={true}
                       backgroundColor="#f2f2f2"
-                      className="css-15sx16s"
+                      className="css-j7qxnf"
                       forcePlaceholder={false}
                       highestResolutionLoaded={[Function]}
                       onError={null}
@@ -144,7 +144,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         alt={null}
                         animating={true}
                         backgroundColor="#f2f2f2"
-                        className="css-15sx16s"
+                        className="css-j7qxnf"
                         forcePlaceholder={false}
                         highestResolutionLoaded={[Function]}
                         onError={null}
@@ -253,7 +253,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       alt={null}
                       animating={true}
                       backgroundColor="#f2f2f2"
-                      className="css-15sx16s"
+                      className="css-j7qxnf"
                       forcePlaceholder={false}
                       highestResolutionLoaded={[Function]}
                       onError={null}
@@ -296,7 +296,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         alt={null}
                         animating={true}
                         backgroundColor="#f2f2f2"
-                        className="css-15sx16s"
+                        className="css-j7qxnf"
                         forcePlaceholder={false}
                         highestResolutionLoaded={[Function]}
                         onError={null}

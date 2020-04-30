@@ -2,6 +2,7 @@
 
 exports[`<ProductProperties /> should not render when an empty list of properties is passed 1`] = `
 <Properties
+  className={null}
   lineClamp={null}
   properties={Array []}
 />
@@ -9,6 +10,7 @@ exports[`<ProductProperties /> should not render when an empty list of propertie
 
 exports[`<ProductProperties /> should not render when no properties are passed 1`] = `
 <Properties
+  className={null}
   lineClamp={null}
   properties={Array []}
 />
@@ -16,6 +18,7 @@ exports[`<ProductProperties /> should not render when no properties are passed 1
 
 exports[`<ProductProperties /> should render as expected when properties are passed 1`] = `
 <Properties
+  className={null}
   lineClamp={null}
   properties={
     Array [
@@ -30,7 +33,9 @@ exports[`<ProductProperties /> should render as expected when properties are pas
     ]
   }
 >
-  <ul>
+  <ul
+    className={null}
+  >
     <li
       key="Label One-Value One"
     >
@@ -47,6 +52,7 @@ exports[`<ProductProperties /> should render as expected when properties are pas
 
 exports[`<ProductProperties /> should use the ellipsis component when the lineClamp prop is passed  1`] = `
 <Properties
+  className={null}
   lineClamp={2}
   properties={
     Array [
@@ -61,7 +67,9 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
     ]
   }
 >
-  <ul>
+  <ul
+    className={null}
+  >
     <li
       key="Label One-Value One"
     >

@@ -72,7 +72,7 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
           <select
             className={
               Object {
-                "data-css-92k9yt": "",
+                "data-css-nyfw00": "",
               }
             }
             name="countryCode"
@@ -97,7 +97,7 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
         </div>
       </Grid.Item>
       <Grid.Item
-        className="css-bpbkyq"
+        className="css-retj1m"
         grow={1}
       >
         <span
@@ -179,7 +179,7 @@ exports[`engage > locations > components > StoreListSearch should render as expe
           <select
             className={
               Object {
-                "data-css-92k9yt": "",
+                "data-css-nyfw00": "",
               }
             }
             name="countryCode"
@@ -204,7 +204,7 @@ exports[`engage > locations > components > StoreListSearch should render as expe
         </div>
       </Grid.Item>
       <Grid.Item
-        className="css-bpbkyq"
+        className="css-retj1m"
         grow={1}
       >
         <span
