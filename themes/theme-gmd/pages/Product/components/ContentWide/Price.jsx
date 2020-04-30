@@ -21,29 +21,32 @@ const styles = {
  */
 const PriceWrapper = () => (
   <ProductContext.Consumer>
-    {({ productId, options }) => (
-      <div>
-        <div className={styles.headline}>
-          {i18n.text('product.sections.price')}
-        </div>
+    {({ productId, variantId, options }) => {
+      const id = variantId || productId;
+      return (
         <div>
-          <PriceStriked productId={productId} options={options} />
+          <div className={styles.headline}>
+            {i18n.text('product.sections.price')}
+          </div>
+          <div>
+            <PriceStriked productId={id} options={options} />
+          </div>
+          <div>
+            <Price
+              showTaxDisclaimer={false}
+              productId={id}
+              options={options}
+            />
+          </div>
+          <div>
+            <PriceInfo productId={id} options={options} />
+          </div>
+          <div>
+            <Tiers productId={id} options={options} />
+          </div>
         </div>
-        <div>
-          <Price
-            showTaxDisclaimer={false}
-            productId={productId}
-            options={options}
-          />
-        </div>
-        <div>
-          <PriceInfo productId={productId} options={options} />
-        </div>
-        <div>
-          <Tiers productId={productId} options={options} />
-        </div>
-      </div>
-    )}
+      );
+    }}
   </ProductContext.Consumer>
 );
 
