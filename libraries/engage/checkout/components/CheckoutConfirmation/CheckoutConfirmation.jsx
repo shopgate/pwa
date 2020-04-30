@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+import { ResponsiveContainer, RippleButton } from '@shopgate/engage/components';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartItems } from '@shopgate/engage/cart';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { RippleButton } from '@shopgate/engage/components';
+
 import { i18n } from '../../../core/helpers/i18n';
 import CheckoutConfirmationPickUpContact from './CheckoutConfirmationPickUpContact';
 import CheckoutConfirmationPickupNotes from './CheckoutConfirmationPickupNotes';
@@ -14,6 +16,22 @@ import connect from './CheckoutConfirmation.connector';
 const { variables } = themeConfig;
 
 const style = {
+  root: css({
+    display: 'flex',
+    flexDirection: 'row',
+  }),
+  main: css({
+    flex: 1,
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      paddingRight: 16,
+    },
+  }),
+  side: css({
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      marginTop: 16,
+      flex: 0.6,
+    },
+  }),
   container: css({
     padding: `${variables.gap.big}px ${variables.gap.small * 1.5}px 0 ${variables.gap.small * 1.5}px`,
   }),
@@ -57,44 +75,55 @@ const CheckoutConfirmation = ({ order, cartItems, onContinueShopping }) => {
   const { orderNumber, date } = order;
 
   return (
-    <Fragment>
-      <div className={style.container}>
-        <h2 className={style.heading}>
-          {i18n.text('checkout.success.title')}
-        </h2>
-        <p className={style.body}>
-          {i18n.text('checkout.success.copy')}
-        </p>
-        <p className={style.orderNum}>
-          {i18n.text('checkout.success.order_date', { date: i18n.date(new Date(date).getTime(), 'short') })}
-          <br />
-          {i18n.text('checkout.success.order_number', { orderNumber })}
-        </p>
-        <h3 className={style.yourItemsHeading}>{i18n.text('checkout.success.your_items')}</h3>
+    <div className={style.root}>
+      <div className={style.main}>
+        <div className={style.container}>
+          <h2 className={style.heading}>
+            {i18n.text('checkout.success.title')}
+          </h2>
+          <p className={style.body}>
+            {i18n.text('checkout.success.copy')}
+          </p>
+          <p className={style.orderNum}>
+            {i18n.text('checkout.success.order_date', { date: i18n.date(new Date(date).getTime(), 'short') })}
+            <br />
+            {i18n.text('checkout.success.order_number', { orderNumber })}
+          </p>
+          <h3 className={style.yourItemsHeading}>{i18n.text('checkout.success.your_items')}</h3>
+        </div>
+
+        <CartItems
+          cartItems={cartItems}
+          onFocus={() => { }}
+          multiLineReservation
+          editable={false}
+        />
+
+        <CheckoutConfirmationPickupNotes order={order} />
+
+        <ResponsiveContainer breakpoint="<md" appAlways>
+          <CheckoutConfirmationPickUpContact order={order} />
+          <CheckoutConfirmationBilledTo order={order} />
+          <CheckoutConfirmationOrderSummary order={order} />
+        </ResponsiveContainer>
+
+        <RippleButton
+          type="secondary"
+          disabled={false}
+          className={style.button.toString()}
+          onClick={onContinueShopping}
+        >
+          {i18n.text('checkout.success.continue')}
+        </RippleButton>
       </div>
-
-      <CartItems
-        cartItems={cartItems}
-        onFocus={() => { }}
-        multiLineReservation
-        editable={false}
-      />
-
-      <CheckoutConfirmationPickUpContact order={order} />
-      <CheckoutConfirmationPickupNotes order={order} />
-      <CheckoutConfirmationBilledTo order={order} />
-      <CheckoutConfirmationOrderSummary order={order} />
-
-      <RippleButton
-        type="secondary"
-        disabled={false}
-        className={style.button.toString()}
-        onClick={onContinueShopping}
-      >
-        {i18n.text('checkout.success.continue')}
-      </RippleButton>
-
-    </Fragment>
+      <div className={style.side}>
+        <ResponsiveContainer breakpoint=">=md" webOnly>
+          <CheckoutConfirmationPickUpContact order={order} />
+          <CheckoutConfirmationBilledTo order={order} />
+          <CheckoutConfirmationOrderSummary order={order} />
+        </ResponsiveContainer>
+      </div>
+    </div>
   );
 };
 

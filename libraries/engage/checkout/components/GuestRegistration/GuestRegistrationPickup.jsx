@@ -19,7 +19,6 @@ const styles = {
     flexDirection: 'column',
     fontSize: 15,
     margin: '8px 0 12px 0',
-    padding: variables.gap.small,
   }).toString(),
 };
 

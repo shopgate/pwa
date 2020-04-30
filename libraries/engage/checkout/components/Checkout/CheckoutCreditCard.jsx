@@ -1,13 +1,17 @@
 import React from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
+import { isIOSTheme, i18n } from '@shopgate/engage/core';
+import { TextField } from '@shopgate/engage/components';
 import {
-  CardElement,
+  CardNumberElement,
+  CardCvcElement,
+  CardExpiryElement,
 } from '@stripe/react-stripe-js';
 import Section from './CheckoutSection';
 import { useStripeContext, useCheckoutContext } from '../../hooks/common';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
 const styles = {
   root: css({
@@ -16,17 +20,74 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
+    ' .formElement': {
+      ...(!isIOSTheme() ? {
+        background: colors.shade8,
+        padding: 0,
+        marginBottom: 38,
+        borderTopLeftRadius: 4,
+        borderTopRightRadius: 4,
+        borderBottom: `1px solid ${colors.shade12}`,
+      } : {}),
+    },
+    ' .formElement label': {
+      ...(!isIOSTheme() ? {
+        paddingLeft: 24,
+      } : {}),
+    },
+    ' .underline': {
+      ...(!isIOSTheme() ? {
+        marginBottom: 0,
+        borderBottom: 'none',
+      } : {}),
+    },
+    ' .errorText': {
+      ...(!isIOSTheme() ? {
+        bottom: -20,
+        left: 18,
+      } : {}),
+    },
+    ' .StripeElement': {
+      ...(!isIOSTheme() ? {
+        paddingLeft: 16,
+      } : {}),
+    },
   }).toString(),
-  card: css({
-    padding: variables.gap.small,
-    margin: '5px 0 12px 0',
+  secondRow: css({
+    display: 'flex',
+    flexDirection: 'row',
   }).toString(),
-  error: css({
-    color: colors.error,
-    fontSize: 12,
-    marginTop: 4,
-  }),
+  cvc: css({
+    flex: 1.5,
+    marginRight: 16,
+  }).toString(),
+  expiry: css({
+    flex: 1,
+  }).toString(),
 };
+
+/* eslint-disable react/prop-types */
+/**
+ * Wrapper
+ * @param {Object} Element element
+ * @returns {Object}
+ */
+const wrapStripeElement = Element => class extends React.Component {
+  onChange = () => {
+    this.props.onChange({ target: { value: ' ' } });
+  }
+
+  /** Render
+   * @returns {JSX} */
+  render() {
+    return <Element {...this.props} onChange={this.onChange} />;
+  }
+};
+/* eslint-enable react/prop-types */
+
+const StripeCardNumberElement = wrapStripeElement(CardNumberElement);
+const StripeCardCvcElement = wrapStripeElement(CardCvcElement);
+const StripeCardExpiryElement = wrapStripeElement(CardExpiryElement);
 
 /**
  * PickupContactForm
@@ -49,14 +110,43 @@ const Billing = () => {
 
   return (
     <div ref={cardRef} className={styles.root}>
-      <Section className={styles.card} title="checkout.creditCard.headline">
-        <CardElement onChange={() => error && setError(null)} />
+      <Section title="checkout.creditCard.headline" hasForm>
+        <TextField
+          label={i18n.text('checkout.creditCard.card')}
+          name="creditCard"
+          inputComponent={StripeCardNumberElement}
+          isControlled={false}
+          value=" "
+          errorText={error || undefined}
+          onChange={() => error && setError(null)}
+          variables
+          attributes={{
+            options: {
+              showIcon: true,
+            },
+          }}
+        />
+        <div className={styles.secondRow}>
+          <TextField
+            className={styles.cvc}
+            label={i18n.text('checkout.creditCard.cvc')}
+            name="creditCard"
+            inputComponent={StripeCardCvcElement}
+            isControlled={false}
+            onChange={() => error && setError(null)}
+            value=" "
+          />
+          <TextField
+            className={styles.expiry}
+            label={i18n.text('checkout.creditCard.expiry')}
+            name="creditCard"
+            inputComponent={StripeCardExpiryElement}
+            isControlled={false}
+            onChange={() => error && setError(null)}
+            value=" "
+          />
+        </div>
       </Section>
-      {error ? (
-        <span className={styles.error}>
-          {error}
-        </span>
-      ) : null}
     </div>
   );
 };

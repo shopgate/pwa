@@ -1,7 +1,7 @@
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import {
-  Elements, CardElement, useStripe, useElements,
+  Elements, CardNumberElement, useStripe, useElements,
 } from '@stripe/react-stripe-js';
 import Context from './StripeProvider.context';
 import connect from './StripeProvider.connector';
@@ -44,7 +44,7 @@ const StripeProvider = ({ children }: Props) => {
       } = await stripe.confirmCardPayment(activeTransaction.checkoutParams.paymentIntent, {
         /* eslint-disable-next-line camelcase */
         payment_method: {
-          card: elements.getElement(CardElement),
+          card: elements.getElement(CardNumberElement),
         },
       });
 

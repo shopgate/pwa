@@ -6,6 +6,7 @@ import { FormBuilder } from '@shopgate/engage/components';
 import generateFormConfig from './CheckoutPickupContactForm.config';
 import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
+import { styles as formStyles } from '../Form';
 
 const { colors, variables } = themeConfig;
 
@@ -27,9 +28,6 @@ const styles = {
     color: '#494949',
   }).toString(),
   form: css({
-    ' .textField': {
-      paddingBottom: 8,
-    },
     ' .pickupFormPickupPerson': {
       marginTop: variables.gap.small,
     },
@@ -45,9 +43,7 @@ const styles = {
       marginTop: variables.gap.small,
       flexDirection: 'row',
     },
-    ' .phonePicker': {
-      paddingTop: variables.gap.big,
-    },
+    ...formStyles,
   }).toString(),
 };
 
@@ -75,7 +71,7 @@ const PickupContactForm = () => {
 
   return (
     <div className={styles.root}>
-      <Section title="checkout.pickup_contact.headline">
+      <Section title="checkout.pickup_contact.headline" hasForm>
         <FormBuilder
           className={styles.form}
           name="PickupForm"

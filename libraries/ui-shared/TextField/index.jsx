@@ -21,6 +21,8 @@ class TextField extends Component {
     ]),
     errorText: PropTypes.node,
     hintText: PropTypes.node,
+    /* eslint-disable-next-line react/forbid-prop-types */
+    inputComponent: PropTypes.any,
     isControlled: PropTypes.bool,
     label: PropTypes.node,
     multiLine: PropTypes.bool,
@@ -51,6 +53,7 @@ class TextField extends Component {
     translateErrorText: true,
     type: 'text',
     value: '',
+    inputComponent: 'input',
   };
 
   /**
@@ -174,6 +177,7 @@ class TextField extends Component {
           type={this.props.type}
           value={this.props.value}
           isControlled={this.props.isControlled}
+          inputComponent={this.props.inputComponent}
         />
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
         <ErrorText

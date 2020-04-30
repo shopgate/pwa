@@ -19,6 +19,8 @@ class SimpleInput extends Component {
     ]),
     disabled: PropTypes.bool,
     id: PropTypes.string,
+    /* eslint-disable-next-line react/forbid-prop-types */
+    inputComponent: PropTypes.any,
     isControlled: PropTypes.bool,
     name: PropTypes.string,
     onChange: PropTypes.func,
@@ -52,6 +54,7 @@ class SimpleInput extends Component {
     type: 'text',
     validateOnBlur: true,
     value: '',
+    inputComponent: 'input',
   };
 
   /**
@@ -204,8 +207,10 @@ class SimpleInput extends Component {
     const autoComplete = this.props.autoComplete ? 'on' : 'off';
     const autoCorrect = this.props.autoCorrect ? 'on' : 'off';
 
+    const InputComponent = this.props.inputComponent;
+
     return (
-      <input
+      <InputComponent
         id={this.props.id}
         name={this.props.name}
         ref={ref => this.handleRef(ref)}

@@ -47,7 +47,7 @@ const styles = {
 
   phoneFieldError: css({
     ' input.PhoneInputInput': {
-      borderBottom: `2px solid ${colors.error} !important`,
+      borderBottom: `2px solid ${colors.error}`,
       paddingBottom: (variables.gap.xsmall * 1.5) - 1,
     },
   }).toString(),
@@ -113,6 +113,8 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
       userLocation = {},
     } = {},
   } = element;
+
+  const [isFocused, setIsFocused] = React.useState(false);
 
   // Maps available countries to correct format.
   const countries = React.useMemo(() => {
@@ -183,6 +185,8 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
   const phoneClasses = classnames({
     [camelCase(name)]: true,
     phonePicker: true,
+    phonePickerError: !!errorText,
+    phonePickerFocused: isFocused,
     [styles.phoneField]: true,
     [styles.phoneFieldError]: !!errorText,
   });
@@ -197,6 +201,8 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
         name={name}
         value={value}
         onChange={handleChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         label={label}
         className={styles.formField}
         errorText={errorText}
@@ -213,12 +219,14 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
         name={name}
         value={value || ''}
         onChange={handleChangeWrapped}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         placeholder={label}
         countries={countries}
         labels={labels}
       />
       {!!errorText && (
-        <div className={styles.phoneFieldErrorText}>
+        <div className={`errorText ${styles.phoneFieldErrorText}`}>
           {errorText}
         </div>
       )}

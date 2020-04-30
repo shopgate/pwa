@@ -332,6 +332,7 @@
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
     "continue": "Continue",
+    "steps": "Step {from} of {to}",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
@@ -359,7 +360,10 @@
       "address": "{postalCode} {city}, {region}"
     },
     "creditCard": {
-      "headline": "Credit Card"
+      "headline": "Payment",
+      "card": "Credit Card Number *",
+      "cvc": "Security Code *",
+      "expiry": "Valid Until *"
     },
     "success": {
       "title": "Thank you for your order",

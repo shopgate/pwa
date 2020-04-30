@@ -12,6 +12,9 @@ const styles = {
     flexDirection: 'column',
     flex: '0 0 auto',
   }).toString(),
+  card: css({
+    marginTop: 8,
+  }).toString(),
 };
 
 /**
@@ -30,7 +33,7 @@ const Billing = () => {
 
   return (
     <div className={styles.root}>
-      <Section title="checkout.summary.headline" content={content} />
+      <Section className={styles.card} title="checkout.summary.headline" content={content} />
     </div>
   );
 };

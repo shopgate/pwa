@@ -78,7 +78,7 @@ class RadioGroup extends Component {
 
     return (
       <FormElement
-        className={classNames(formElement, className)}
+        className={classNames(formElement, className, 'radioGroup')}
         label={label}
         errorText={errorText}
         translateErrorText={translateErrorText}

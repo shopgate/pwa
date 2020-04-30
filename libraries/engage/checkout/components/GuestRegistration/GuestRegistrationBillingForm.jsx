@@ -6,6 +6,7 @@ import { FormBuilder } from '@shopgate/engage/components';
 import generateFormConfig from './GuestRegistrationBillingFrom.config';
 import Section from '../Checkout/CheckoutSection';
 import { useGuestRegistration } from '../../hooks/common';
+import { styles as formStyles } from '../Form';
 
 const { colors, variables } = themeConfig;
 
@@ -17,9 +18,6 @@ const styles = {
     flexDirection: 'column',
   }).toString(),
   form: css({
-    ' .textField': {
-      paddingBottom: 8,
-    },
     ' .guestFormPickupPerson': {
       marginTop: variables.gap.small,
     },
@@ -35,13 +33,7 @@ const styles = {
       marginTop: variables.gap.small,
       flexDirection: 'row',
     },
-    ' .phonePicker': {
-      paddingTop: variables.gap.big,
-      paddingBottom: 2,
-    },
-    ' .placeholder': {
-      color: colors.shade12,
-    },
+    ...formStyles,
   }).toString(),
 };
 
@@ -69,7 +61,7 @@ const GuestRegistrationForm = () => {
 
   return (
     <div className={styles.root}>
-      <Section title="checkout.billing.headline">
+      <Section title="checkout.billing.headline" hasForm>
         <FormBuilder
           className={styles.form}
           name="GuestForm"

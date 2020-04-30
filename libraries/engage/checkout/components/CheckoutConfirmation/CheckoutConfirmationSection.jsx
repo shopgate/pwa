@@ -3,6 +3,7 @@ import { css } from 'glamor';
 import PropTypes from 'prop-types';
 import { Card } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
 const { colors, variables } = themeConfig;
@@ -13,6 +14,11 @@ const styles = {
     fontWeight: 'normal',
     textTransform: 'uppercase',
     margin: `${variables.gap.big * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.small}px ${variables.gap.small * 1.5}px`,
+    ...(!isIOSTheme() ? {
+      fontSize: '1.25rem',
+      color: colors.dark,
+      textTransform: 'none',
+    } : {}),
   }),
   card: css({
     fontSize: 15,
@@ -20,7 +26,19 @@ const styles = {
     padding: variables.gap.big,
     display: 'table',
     width: 'calc(100% - 24px)',
+    ...(!isIOSTheme() ? {
+      background: colors.shade8,
+      boxShadow: 'none',
+      padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    } : {}),
   }),
+  cardWithForm: css({
+    ...(!isIOSTheme() ? {
+      background: 'inherit',
+      boxShadow: 'none',
+      padding: 0,
+    } : {}),
+  }).toString(),
   table: css({
     ' td:last-child': {
       textAlign: 'right',
@@ -33,7 +51,7 @@ const styles = {
  * CheckoutConfirmationSegment component
  * @returns {JSX}
  */
-const CheckoutConfirmationSegment = ({ title, content }) => {
+const CheckoutConfirmationSegment = ({ title, content, hasForm }) => {
   if (!content) {
     return null;
   }
@@ -43,7 +61,7 @@ const CheckoutConfirmationSegment = ({ title, content }) => {
   return (
     <Fragment>
       <h3 className={styles.headline}>{i18n.text(title)}</h3>
-      <Card className={styles.card.toString()}>
+      <Card className={`${hasForm && styles.cardWithForm.toString()} ${styles.card.toString()}`}>
         {isString && (<span>{content}</span>)}
         {!isString && (
           <table className={styles.table}>
@@ -69,10 +87,12 @@ CheckoutConfirmationSegment.propTypes = {
     PropTypes.arrayOf(PropTypes.shape()),
     PropTypes.string,
   ]),
+  hasForm: PropTypes.bool,
 };
 
 CheckoutConfirmationSegment.defaultProps = {
   content: null,
+  hasForm: false,
 };
 
 export default CheckoutConfirmationSegment;
