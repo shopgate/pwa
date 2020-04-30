@@ -27,7 +27,7 @@ const RegistrationFormBase = () => {
 
   return (
     <div className={containerItem}>
-      <Section title="registration.headlines.create_new_account" className={section}>
+      <Section title="registration.headlines.create_new_account" className={section} hasForm>
         <FormBuilder
           className={form}
           name="RegistrationBase"

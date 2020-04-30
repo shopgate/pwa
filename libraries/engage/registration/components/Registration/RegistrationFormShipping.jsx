@@ -29,7 +29,7 @@ const RegistrationFormShipping = () => {
 
   return (
     <div className={containerItem}>
-      <Section title="registration.headlines.shipping_address" className={section}>
+      <Section title="registration.headlines.shipping_address" className={section} hasForm>
         <FormBuilder
           className={form}
           name="RegistrationShipping"

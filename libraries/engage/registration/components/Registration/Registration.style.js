@@ -1,7 +1,8 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { styles as formStyles } from '../../../checkout/components/Form';
 
-const { variables, colors } = themeConfig;
+const { variables } = themeConfig;
 
 export const container = css({
   padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
@@ -9,8 +10,8 @@ export const container = css({
   flex: '0 0 auto',
   flexDirection: 'column',
   '@media(min-width: 768px)': {
-    flexDirection: 'row',
-    '> :not(:last-child)': {
+    flexDirection: 'row-reverse',
+    '> :not(:first-child)': {
       marginRight: variables.gap.big,
     },
   },
@@ -22,16 +23,7 @@ export const containerItem = css({
 });
 
 export const form = css({
-  ' .textField': {
-    // paddingBottom: variables.gap.small,
-  },
-  ' .phonePicker': {
-    paddingTop: variables.gap.big,
-    paddingBottom: variables.gap.small,
-  },
-  ' .placeholder': {
-    color: colors.shade12,
-  },
+  ...formStyles,
 });
 
 export const section = css({
@@ -40,6 +32,9 @@ export const section = css({
 
 export const submitButtonContainer = css({
   margin: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+  '@media(min-width: 768px)': {
+    maxWidth: '60%',
+  },
 });
 
 export const submitButton = css({
