@@ -22,6 +22,7 @@ const makeMapStateToProps = () => {
       featuredImage: childFeatured || featured,
       images: getProductImages(state, {
         ...props,
+        productId: props.variantId || props.productId,
         formats: productImageFormats.get(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY),
       }) || [],
     };
