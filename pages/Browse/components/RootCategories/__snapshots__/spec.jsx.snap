@@ -278,21 +278,21 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="foo"
                                           >
                                             <Grid
-                                              className="css-1n351uw"
+                                              className="css-1ojce65"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1n351uw css-h7r55a"
+                                                className="css-1ojce65 css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-13u8drl"
+                                                  className="css-1ifl01s"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-13u8drl css-1gs0ko2"
+                                                    className="css-1ifl01s css-1gs0ko2"
                                                   >
                                                     <div>
                                                       foo
@@ -446,21 +446,21 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="bar"
                                           >
                                             <Grid
-                                              className="css-1n351uw"
+                                              className="css-1ojce65"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1n351uw css-h7r55a"
+                                                className="css-1ojce65 css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-13u8drl"
+                                                  className="css-1ifl01s"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-13u8drl css-1gs0ko2"
+                                                    className="css-1ifl01s css-1gs0ko2"
                                                   >
                                                     <div>
                                                       bar
@@ -614,21 +614,21 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="baz"
                                           >
                                             <Grid
-                                              className="css-1n351uw"
+                                              className="css-1ojce65"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1n351uw css-h7r55a"
+                                                className="css-1ojce65 css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-13u8drl"
+                                                  className="css-1ifl01s"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-13u8drl css-1gs0ko2"
+                                                    className="css-1ifl01s css-1gs0ko2"
                                                   >
                                                     <div>
                                                       baz
@@ -782,21 +782,21 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             data-test-id="qux"
                                           >
                                             <Grid
-                                              className="css-1n351uw"
+                                              className="css-1ojce65"
                                               component="div"
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1n351uw css-h7r55a"
+                                                className="css-1ojce65 css-h7r55a"
                                               >
                                                 <GridItem
-                                                  className="css-13u8drl"
+                                                  className="css-1ifl01s"
                                                   component="div"
                                                   grow={1}
                                                   shrink={1}
                                                 >
                                                   <div
-                                                    className="css-13u8drl css-1gs0ko2"
+                                                    className="css-1ifl01s css-1gs0ko2"
                                                   >
                                                     <div>
                                                       qux
