@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { hasWebBridge } from '@shopgate/engage/core';
 import connect from './connector';
 import styles from './style';
 
@@ -70,8 +71,26 @@ class Link extends Component {
    */
   render() {
     const {
-      tag: Tag, className, href, children, role, 'aria-label': ariaLabel, 'aria-hidden': ariaHidden, tabIndex,
+      tag,
+      className,
+      href,
+      children,
+      role,
+      'aria-label': ariaLabel,
+      'aria-hidden': ariaHidden,
+      tabIndex,
     } = this.props;
+
+    let Tag = tag;
+
+    if (!hasWebBridge() && tag === 'a') {
+      /**
+       * Don't use link tags on apps. Sometimes links are really opened since the preventDefault
+       * doesn't work as expected which results in white pages.
+       */
+      Tag = 'div';
+    }
+
     return (
       <Tag
         className={`${styles} ${className}`}
