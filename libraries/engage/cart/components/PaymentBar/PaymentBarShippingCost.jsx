@@ -10,18 +10,20 @@ import { CartContext } from '../../cart.context';
 import connect from './PaymentBarShippingCost.connector';
 
 type ShippingCostProp = {
-  label: string;
-  amount: number;
+  label: string,
+  amount: number,
 }
 
 type Props = {
-  shippingCost?: ShippingCostProp;
+  shippingCost?: ShippingCostProp,
+  showSeparator?: boolean,
+  className?: string,
 }
 
 /**
  * @returns {JSX}
  */
-function PaymentBarShippingCost({ shippingCost }: Props) {
+function PaymentBarShippingCost({ shippingCost, showSeparator, className }: Props) {
   const {
     currency, isLoading, isUserLoggedIn, config,
   } = React.useContext(CartContext);
@@ -33,10 +35,10 @@ function PaymentBarShippingCost({ shippingCost }: Props) {
   return (
     <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS_SHIPPING}>
       {shippingLine && (
-        <CartTotalLine isDisabled={isLoading} type="shipping">
+        <CartTotalLine isDisabled={isLoading} type="shipping" className={className}>
           <CartTotalLine.Label
             label={shippingLine.label}
-            showSeparator={!!shippingLine.amount}
+            showSeparator={showSeparator !== null ? showSeparator : !!shippingLine.amount}
           />
           <CartTotalLine.Amount
             amount={shippingLine.amount}
@@ -50,6 +52,8 @@ function PaymentBarShippingCost({ shippingCost }: Props) {
 }
 
 PaymentBarShippingCost.defaultProps = {
+  className: null,
+  showSeparator: true,
   shippingCost: null,
 };
 

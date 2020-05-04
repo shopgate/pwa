@@ -26,6 +26,9 @@ export const column = css({
   flexGrow: 1,
   flexBasis: 0,
   padding: `0 ${variables.gap.small}px`,
+  ':last-child': {
+    paddingRight: 0,
+  },
 });
 
 export const detailsColumn = css(column, {
@@ -63,5 +66,10 @@ export const quantityPickerDisabled = css({
 
 export const price = css({
   fontSize: '1.25rem',
-  lineHeight: '1.5rem',
+  lineHeight: '1.625rem',
+}).toString();
+
+export const contextMenu = css({
+  marginTop: `-${variables.gap.xsmall * 3}px`,
+  marginRight: `-${variables.gap.big}px`,
 }).toString();

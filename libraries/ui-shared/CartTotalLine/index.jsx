@@ -9,14 +9,16 @@ import styles from './style';
 /**
  * @returns {JSX}
  */
-const CartTotalLine = ({ children, type, isDisabled }) => {
+const CartTotalLine = ({
+  children, type, isDisabled, className,
+}) => {
   if (!children) {
     return null;
   }
 
   return (
     <div
-      className={classNames(styles.line, {
+      className={classNames(className, styles.line, {
         [styles.disabled]: isDisabled,
         [styles[type] || styles.base]: true,
       })}
@@ -29,12 +31,14 @@ const CartTotalLine = ({ children, type, isDisabled }) => {
 
 CartTotalLine.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   isDisabled: PropTypes.bool,
   type: PropTypes.string,
 };
 
 CartTotalLine.defaultProps = {
   children: null,
+  className: null,
   isDisabled: false,
   type: null,
 };

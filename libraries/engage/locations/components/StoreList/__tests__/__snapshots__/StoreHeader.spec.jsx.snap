@@ -9,27 +9,70 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
     role="button"
     tabIndex={0}
   >
-    <Grid>
-      <Grid.Item
-        className="css-1qlb3ci"
-        grow={1}
+    <Grid
+      className=""
+      component="ul"
+      wrap={false}
+    >
+      <ul
+        className=" css-h7r55a"
       >
-        SomeStore
-      </Grid.Item>
-      <Grid.Item
-        shrink={0}
-      >
-        <StoreDistance
-          distance={0.02}
-          unitSystem="metric"
+        <GridItem
+          className="css-1qlb3ci"
+          component="li"
+          grow={1}
+          shrink={1}
         >
-          <span
-            className="css-12obfh7"
+          <li
+            className="css-1qlb3ci css-1gs0ko2"
           >
-            formats.distance.pattern
-          </span>
-        </StoreDistance>
-      </Grid.Item>
+            SomeStore
+            <ResponsiveContainer
+              appAlways={false}
+              appOnly={false}
+              breakpoint=">=sm"
+              webAlways={false}
+              webOnly={true}
+            />
+          </li>
+        </GridItem>
+        <ResponsiveContainer
+          appAlways={true}
+          appOnly={false}
+          breakpoint="<sm"
+          webAlways={false}
+          webOnly={false}
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={0}
+            shrink={0}
+          >
+            <li
+              className=" css-1l9a57c"
+            >
+              <StoreDistance
+                distance={0.02}
+                unitSystem="metric"
+              >
+                <span
+                  className="css-1bi17mx"
+                >
+                  formats.distance.pattern
+                </span>
+              </StoreDistance>
+            </li>
+          </GridItem>
+        </ResponsiveContainer>
+        <ResponsiveContainer
+          appAlways={false}
+          appOnly={false}
+          breakpoint=">=sm"
+          webAlways={false}
+          webOnly={true}
+        />
+      </ul>
     </Grid>
     <StoreHoursToday
       hours={

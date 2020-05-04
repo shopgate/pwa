@@ -1,5 +1,6 @@
 // @flow
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const { gap } = themeVariables;
@@ -37,6 +38,10 @@ export const titles = css({
 export const name = css({
   fontSize: '0.85rem',
   fontWeight: 500,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    fontSize: '1.25rem',
+    lineHeight: '1.5rem',
+  },
 });
 
 export const method = css({

@@ -10,19 +10,21 @@ import { CartContext } from '../../cart.context';
 import connect from './PaymentBarTax.connector';
 
 type TaxData = {
-  label: string;
-  amount: number;
+  label: string,
+  amount: number,
 }
 
 type Props = {
-  taxData?: TaxData;
+  taxData?: TaxData,
+  showSeparator?: boolean,
+  className?: string,
 }
 
 /**
  * The Tax component.
  * @returns {JSX}
  */
-function PaymentBarTax({ taxData }: Props) {
+function PaymentBarTax({ taxData, showSeparator, className }: Props) {
   const { currency, isLoading, config } = React.useContext(CartContext);
 
   if (!taxData) {
@@ -37,8 +39,8 @@ function PaymentBarTax({ taxData }: Props) {
 
   return (
     <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS_TAX}>
-      <CartTotalLine isDisabled={isLoading} type="tax">
-        <CartTotalLine.Label label={taxLine.label} />
+      <CartTotalLine isDisabled={isLoading} type="tax" className={className}>
+        <CartTotalLine.Label label={taxLine.label} showSeparator={showSeparator} />
         <CartTotalLine.Amount amount={taxLine.amount} currency={currency} />
         <CartTotalLine.Hint hint={taxLine.hint} />
       </CartTotalLine>
@@ -48,6 +50,8 @@ function PaymentBarTax({ taxData }: Props) {
 
 PaymentBarTax.defaultProps = {
   taxData: null,
+  className: null,
+  showSeparator: true,
 };
 
 export default connect(PaymentBarTax);

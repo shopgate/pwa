@@ -13,4 +13,5 @@ export {
   CartChangeFulfillmentMethod,
   CartContextMenuItemChangeLocation,
   CartContextMenuItemChangeFulfillment,
+  CartContextMenuChangeFulfillment,
 } from './Cart';

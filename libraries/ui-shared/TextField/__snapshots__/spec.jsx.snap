@@ -5,6 +5,7 @@ exports[`<TextField /> should focus the input 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -60,6 +61,7 @@ exports[`<TextField /> should focus the input 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -75,6 +77,7 @@ exports[`<TextField /> should focus the input 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -95,6 +98,7 @@ exports[`<TextField /> should focus the input 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -171,6 +175,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -226,6 +231,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -241,6 +247,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -261,6 +268,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -337,6 +345,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -392,6 +401,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -407,6 +417,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -427,6 +438,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -503,6 +515,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -558,6 +571,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -573,6 +587,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -593,6 +608,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -669,6 +685,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -724,6 +741,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -739,6 +757,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -759,6 +778,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -835,6 +855,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -890,6 +911,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -905,6 +927,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -925,6 +948,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -1007,6 +1031,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -1062,6 +1087,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -1077,6 +1103,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -1097,6 +1124,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -1173,6 +1201,7 @@ exports[`<TextField /> should show the error message 1`] = `
   className=""
   errorText="This is an error here"
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -1228,6 +1257,7 @@ exports[`<TextField /> should show the error message 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -1243,6 +1273,7 @@ exports[`<TextField /> should show the error message 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -1263,6 +1294,7 @@ exports[`<TextField /> should show the error message 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -1345,6 +1377,7 @@ exports[`<TextField /> should show the hint text 1`] = `
   className=""
   errorText=""
   hintText="This is the hint text"
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -1407,6 +1440,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -1422,6 +1456,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -1442,6 +1477,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -1518,6 +1554,7 @@ exports[`<TextField /> should show the label 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label="This is the label"
   multiLine={false}
@@ -1580,6 +1617,7 @@ exports[`<TextField /> should show the label 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -1595,6 +1633,7 @@ exports[`<TextField /> should show the label 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -1615,6 +1654,7 @@ exports[`<TextField /> should show the label 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"
@@ -1691,6 +1731,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   className=""
   errorText=""
   hintText=""
+  inputComponent="input"
   isControlled={false}
   label=""
   multiLine={false}
@@ -1760,6 +1801,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      inputComponent="input"
       isControlled={false}
       multiLine={false}
       name="test-input"
@@ -1775,6 +1817,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       <_default
         className="css-keangt"
         id="test-input"
+        inputComponent="input"
         isControlled={false}
         multiLine={false}
         name="test-input"
@@ -1795,6 +1838,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          inputComponent="input"
           isControlled={false}
           multiLine={false}
           name="test-input"

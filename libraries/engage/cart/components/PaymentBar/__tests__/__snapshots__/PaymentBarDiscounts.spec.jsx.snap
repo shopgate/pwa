@@ -11,6 +11,7 @@ exports[`<PaymentBarDiscounts /> should render and match snapshot 1`] = `
     props={null}
   >
     <CartTotalLine
+      className={null}
       isDisabled={false}
       key="discount-Coupon-10"
       type="discount"
@@ -30,6 +31,7 @@ exports[`<PaymentBarDiscounts /> should render and match snapshot 1`] = `
       />
     </CartTotalLine>
     <CartTotalLine
+      className={null}
       isDisabled={false}
       key="discount--2"
       type="discount"

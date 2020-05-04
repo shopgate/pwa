@@ -7,14 +7,16 @@ import { CartContext } from '../../cart.context';
 import connect from './PaymentBarDiscounts.connector';
 
 type Props = {
-  discounts?: Object[];
+  discounts?: Object[],
+  showSeparator?: boolean,
+  className?: string,
 }
 
 /**
  * The Discounts component.
  * @returns {JSX}
  */
-function PaymentBarDiscounts({ discounts }: Props) {
+function PaymentBarDiscounts({ discounts, showSeparator, className }: Props) {
   const { currency, isLoading } = React.useContext(CartContext);
 
   if (!discounts) {
@@ -24,10 +26,16 @@ function PaymentBarDiscounts({ discounts }: Props) {
   return (
     <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS_DISCOUNTS}>
       {discounts.map(({ label, amount }) => (
-        <CartTotalLine key={`discount-${label}-${amount}`} type="discount" isDisabled={isLoading}>
+        <CartTotalLine
+          key={`discount-${label}-${amount}`}
+          type="discount"
+          isDisabled={isLoading}
+          className={className}
+        >
           <CartTotalLine.Label
             label={label ? 'cart.discount_with_label' : 'cart.discount'}
             labelParams={{ label }}
+            showSeparator={showSeparator}
           />
           <CartTotalLine.Amount amount={-amount} currency={currency} />
         </CartTotalLine>
@@ -38,6 +46,8 @@ function PaymentBarDiscounts({ discounts }: Props) {
 
 PaymentBarDiscounts.defaultProps = {
   discounts: null,
+  className: null,
+  showSeparator: true,
 };
 
 export default connect(PaymentBarDiscounts);

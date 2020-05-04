@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import PT from 'prop-types';
 import classNamesMod from 'classnames';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -9,33 +8,32 @@ import {
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
+import { useCartItemProduct } from './CartItem.hooks';
 import { priceStriked, price as priceStyle } from './CartItemProductPrice.style';
 
-type Props = {
-  currency: string,
-  defaultPrice: number,
-  specialPrice?: number | null,
-  classNames?: {
-    price?: string,
-    priceStriked?: string,
-  }
+type ClassNames = {
+  price?: string | null,
+  priceStriked?: string | null,
 }
 
-type ContextProps = {
-  cartItemId: string,
-  type: string,
+type Props = {
+  defaultPrice: number,
+  specialPrice?: number | null,
+  classNames?: ClassNames
 }
 
 /**
  * The Cart Product Price component.
  * @param {Object} props The component props.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-export function CartItemProductPrice(props: Props, context: ContextProps) {
+export function CartItemProductPrice(props: Props) {
   const {
-    currency, defaultPrice, specialPrice, classNames,
+    defaultPrice, specialPrice, classNames,
   } = props;
+  const context = useCartItemProduct();
+  const { currency } = context;
+
   const hasStrikePrice = typeof specialPrice === 'number';
   const price = hasStrikePrice ? specialPrice : defaultPrice;
 
@@ -44,7 +42,7 @@ export function CartItemProductPrice(props: Props, context: ContextProps) {
       {hasStrikePrice && (
         <SurroundPortals portalName={CART_ITEM_PRICE_STRIKED} portalProps={context}>
           <PriceStriked
-            className={classNamesMod(priceStriked, classNames.priceStriked)}
+            className={classNamesMod(priceStriked, classNames?.priceStriked)}
             value={defaultPrice}
             currency={currency}
           />
@@ -52,7 +50,7 @@ export function CartItemProductPrice(props: Props, context: ContextProps) {
       )}
       <SurroundPortals portalName={CART_ITEM_PRICE} portalProps={context}>
         <Price
-          className={classNamesMod(priceStyle, classNames.price)}
+          className={classNamesMod(priceStyle, classNames?.price)}
           currency={currency}
           discounted={hasStrikePrice}
           taxDisclaimer
@@ -69,9 +67,4 @@ CartItemProductPrice.defaultProps = {
     price: null,
     priceStriked: null,
   },
-};
-
-CartItemProductPrice.contextTypes = {
-  cartItemId: PT.string,
-  type: PT.string,
 };

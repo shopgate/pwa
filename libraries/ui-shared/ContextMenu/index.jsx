@@ -17,11 +17,13 @@ class ContextMenu extends Component {
   static propTypes = {
     children: PropTypes.node,
     classes: PropTypes.shape(),
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
     children: null,
     classes: { container: '', button: '' },
+    disabled: false,
   };
 
   /**
@@ -74,7 +76,7 @@ class ContextMenu extends Component {
    * @returns {JSX}
    */
   render() {
-    const { children, classes } = this.props;
+    const { children, classes, disabled } = this.props;
     const { active } = this.state;
 
     return (
@@ -85,8 +87,11 @@ class ContextMenu extends Component {
         aria-hidden
       >
         <button
-          className={classNames(styles.button, classes.button)}
+          className={classNames(styles.button, classes.button, {
+            [styles.disabled]: disabled,
+          })}
           onClick={this.handleMenuToggle}
+          disabled={disabled}
           type="button"
           aria-hidden
         >

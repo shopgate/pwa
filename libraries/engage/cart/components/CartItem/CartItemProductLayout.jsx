@@ -1,73 +1,58 @@
 // @flow
-import * as React from 'react';
-import PT from 'prop-types';
+import React from 'react';
 import {
   Grid, Link, TextLink, ProductProperties, PriceInfo, SurroundPortals,
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex } from '@shopgate/engage/core';
-import { ProductImage, ITEM_PATH, type Product } from '@shopgate/engage/product';
+import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
 import {
   CartItemProductChangeLocation,
   CartChangeFulfillmentMethod,
 } from '@shopgate/engage/locations';
-import { type Item } from '../../cart.types';
 import { CartItemQuantityPicker } from './CartItemQuantityPicker';
 import { CartItemProductTitle } from './CartItemProductTitle';
 import { CartItemProductPrice } from './CartItemProductPrice';
+import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import styles from './CartItemProductLayout.style';
-
-type Props = {
-  currency: string,
-  editMode: boolean,
-  product: Product,
-  quantity: number,
-  handleDelete?: () => void,
-  handleUpdate?: (quantity: number) => void,
-  toggleEditMode?: () => void,
-}
-
-type ContextProps = {
-  registerAction: () => void,
-  cartItem?: Item,
-  cartItemId?: string,
-  type?: string,
-  editable?: boolean
-}
 
 /**
  * The Cart Product Layout component.
- * @param {Object} props The component properties.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-export function CartItemProductLayout(props: Props, context: ContextProps) {
-  const { cartItem, registerAction } = context;
+export function CartItemProductLayout() {
+  const { registerFulfillmentAction } = useCartItem();
+  const context = useCartItemProduct();
+  const {
+    cartItem,
+    product,
+    currency,
+    editMode,
+    handleUpdate,
+    toggleEditMode,
+    isEditable,
+  } = context;
 
   return (
     <React.Fragment>
       <Grid className={styles.item}>
         <Grid.Item className={styles.content} grow={1}>
-          <TextLink href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
-            <CartItemProductTitle
-              handleRemove={props.handleDelete}
-              toggleEditMode={props.toggleEditMode}
-              value={props.product.name}
-            />
+          <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
+            <CartItemProductTitle value={product.name} />
           </TextLink>
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
-              <ProductProperties properties={props.product.properties} lineClamp={2} />
+              <ProductProperties properties={product.properties} lineClamp={2} />
             </Grid.Item>
             <Grid.Item grow={1} className={styles.price}>
               <CartItemProductPrice
-                currency={props.currency}
-                defaultPrice={props.product.price.default}
-                specialPrice={props.product.price.special}
+                currency={currency}
+                defaultPrice={product.price.default}
+                specialPrice={product.price.special}
               />
-              {props.product.price.info && (
-                <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
+              {product.price.info && (
+                <PriceInfo className={styles.priceInfo} text={product.price.info} />
               )}
             </Grid.Item>
             {showTaxDisclaimer && (
@@ -82,38 +67,30 @@ export function CartItemProductLayout(props: Props, context: ContextProps) {
         {/** DOM reversed for a11y navigation */}
         <Grid.Item className={styles.leftColumn}>
           <div className={styles.image} aria-hidden>
-            <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
+            <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
               <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
-                <ProductImage src={props.product.featuredImageUrl} />
+                <ProductImage src={product.featuredImageUrl} />
               </SurroundPortals>
             </Link>
           </div>
           <CartItemQuantityPicker
-            unit={props.product.unit}
-            quantity={props.quantity}
-            editMode={props.editMode}
-            onChange={props.handleUpdate}
-            onToggleEditMode={props.toggleEditMode}
-            disabled={!context.editable}
+            unit={product.unit}
+            quantity={cartItem.quantity}
+            editMode={editMode}
+            onChange={handleUpdate}
+            onToggleEditMode={toggleEditMode}
+            disabled={!isEditable}
           />
         </Grid.Item>
       </Grid>
-      <CartItemProductChangeLocation cartItem={cartItem} registerAction={registerAction} />
-      <CartChangeFulfillmentMethod cartItem={cartItem} registerAction={registerAction} />
+      <CartItemProductChangeLocation
+        cartItem={cartItem}
+        registerAction={registerFulfillmentAction}
+      />
+      <CartChangeFulfillmentMethod
+        cartItem={cartItem}
+        registerAction={registerFulfillmentAction}
+      />
     </React.Fragment>
   );
 }
-
-CartItemProductLayout.defaultProps = {
-  handleDelete: () => { },
-  handleUpdate: () => { },
-  toggleEditMode: () => { },
-};
-
-CartItemProductLayout.contextTypes = {
-  registerAction: PT.func,
-  cartItem: PT.shape(),
-  cartItemId: PT.string,
-  type: PT.string,
-  editable: PT.bool,
-};

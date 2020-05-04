@@ -8,7 +8,7 @@ import {
   type OwnProps,
   type StateProps,
   type DispatchProps,
-} from './CartItemProduct.types';
+} from './CartItemProductProvider.types';
 
 /**
  * Maps the contents of the state to the component props.

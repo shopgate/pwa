@@ -9,25 +9,36 @@ import { CartContext } from '../../cart.context';
 import connect from './PaymentBarSubTotal.connector';
 
 type Props = {
-  amount: number;
+  amount: number,
+  label?: string,
+  showSeparator?: boolean,
+  className?: string,
 }
 
 /**
  * @returns {JSX}
  */
-function PaymentBarSubTotal({ amount }: Props) {
+function PaymentBarSubTotal({
+  amount, label, showSeparator, className,
+}: Props) {
   const { currency, isLoading } = React.useContext(CartContext);
 
   return (
     <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS_SUB_TOTAL}>
       {amount &&
-        <CartTotalLine isDisabled={isLoading} type="subTotal">
-          <CartTotalLine.Label label="cart.subtotal" />
+        <CartTotalLine isDisabled={isLoading} type="subTotal" className={className}>
+          <CartTotalLine.Label label={label} showSeparator={showSeparator} />
           <CartTotalLine.Amount amount={amount} currency={currency} />
         </CartTotalLine>
       }
     </SurroundPortals>
   );
 }
+
+PaymentBarSubTotal.defaultProps = {
+  className: null,
+  showSeparator: true,
+  label: 'cart.subtotal',
+};
 
 export default connect(PaymentBarSubTotal);

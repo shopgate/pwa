@@ -1,12 +1,13 @@
 // @flow
 import * as React from 'react';
 import { every, isEmpty } from 'lodash';
-import { Accordion } from '@shopgate/engage/components';
-import { type OptionalLocationAware, StoreAddress, StoreOpeningHours } from '@shopgate/engage/locations';
+import { ResponsiveContainer } from '@shopgate/engage/components';
+import { type OptionalLocationAware } from '@shopgate/engage/locations';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 import connect from './CartItem.connector';
+import { CartItemCardReservationAccordion } from './CartItemCardReservationAccordion';
 import {
-  accordionToggle, accordionContent, locationAddress, locationHours,
+  accordionToggle,
 } from './CartItemCard.style';
 
 type Props = OptionalLocationAware;
@@ -35,23 +36,25 @@ function CartItemCardReservation({ location, fulfillmentMethod }: Props) {
   }
 
   return (
-    <Accordion
-      className={accordionToggle}
-      renderLabel={() =>
-        <CartItemCardReservationLabel location={location} fulfillmentMethod={fulfillmentMethod} />
-      }
-    >
-      <div className={accordionContent}>
-        <div className={locationAddress}>
-          <StoreAddress address={location.address} pure />
-        </div>
-        {operationHours && (
-          <div className={locationHours}>
-            <StoreOpeningHours hours={operationHours} pure />
-          </div>
-        )}
-      </div>
-    </Accordion>
+    <React.Fragment>
+      <ResponsiveContainer webOnly breakpoint=">xs">
+        <CartItemCardReservationAccordion
+          openWithChevron
+          location={location}
+          fulfillmentMethod={fulfillmentMethod}
+          operationHours={operationHours}
+        />
+      </ResponsiveContainer>
+      <ResponsiveContainer appAlways breakpoint="<=xs">
+        <CartItemCardReservationAccordion
+          location={location}
+          fulfillmentMethod={fulfillmentMethod}
+          operationHours={operationHours}
+        />
+      </ResponsiveContainer>
+
+    </React.Fragment>
+
   );
 }
 

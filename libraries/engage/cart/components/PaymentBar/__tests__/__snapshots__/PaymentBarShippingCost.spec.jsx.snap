@@ -28,6 +28,7 @@ exports[`<PaymentBarShippingCost> should render shipping line 1`] = `
     props={null}
   >
     <CartTotalLine
+      className={null}
       isDisabled={false}
       type="shipping"
     >

@@ -16,6 +16,7 @@ export {
   CartChangeFulfillmentMethod,
   CartContextMenuItemChangeLocation,
   CartContextMenuItemChangeFulfillment,
+  CartContextMenuChangeFulfillment,
 } from './components';
 
 // CONSTANTS

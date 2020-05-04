@@ -8,6 +8,9 @@ const item = css({
   lineHeight: 1,
   zIndex: 1,
   cursor: 'pointer',
+  ':hover': {
+    background: themeConfig.colors.shade8,
+  },
 }).toString();
 
 export default { item };

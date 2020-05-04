@@ -1,16 +1,21 @@
 // @flow
+import * as React from 'react';
 import { type Product } from '@shopgate/engage/product';
 import { type ItemFulfillment } from '../../cart.types';
 
-export type OwnProps = {
+export type CartItemProduct = {
   id: string,
-  fulfillment?: ItemFulfillment,
-  onToggleFocus?: (isEnabled: boolean) => void,
-  messages: any[],
   product: Product,
   quantity: number,
-  updateProduct?: (id: string, quantity: number) => void,
-  editable?: boolean
+  messages: any[],
+  fulfillment?: ItemFulfillment,
+}
+
+export type OwnProps = {
+  cartItem: CartItemProduct,
+  onToggleFocus?: (isEnabled: boolean) => void,
+  isEditable?: boolean,
+  children?: React.Node
 }
 
 export type StateProps = {

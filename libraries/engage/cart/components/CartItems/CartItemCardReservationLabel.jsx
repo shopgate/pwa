@@ -5,7 +5,10 @@ import { LocationIcon, ResponsiveContainer } from '@shopgate/engage/components';
 import {
   type LocationAware,
   BOPIS,
+  CartItemProductChangeLocation,
 } from '@shopgate/engage/locations';
+import { useCartItem } from '../CartItem';
+import CartItemCardReservationLabelChangeStore from './CartItemCardReservationLabelChangeStore';
 import {
   address, addressIcon, titles, name, method,
 } from './CartItemCard.style';
@@ -18,6 +21,8 @@ type Props = LocationAware;
  * @returns {JSX}
  */
 export function CartItemCardReservationLabel({ location, fulfillmentMethod }: Props) {
+  const { cartItem, registerFulfillmentAction } = useCartItem();
+
   if (!location) {
     return null;
   }
@@ -33,7 +38,14 @@ export function CartItemCardReservationLabel({ location, fulfillmentMethod }: Pr
         <div className={name}>
           {location.name}
         </div>
-        <ResponsiveContainer webOnly breakpoint="<=xs">
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          <CartItemCardReservationLabelChangeStore />
+          <CartItemProductChangeLocation
+            cartItem={cartItem}
+            registerAction={registerFulfillmentAction}
+          />
+        </ResponsiveContainer>
+        <ResponsiveContainer appAlways breakpoint="<=xs">
           <div className={method}>
             {i18n.text(`locations.method.${suffix}`)}
           </div>

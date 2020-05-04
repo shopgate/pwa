@@ -101,6 +101,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="foo"
                 multiLine={false}
@@ -163,6 +164,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   </Label>
                   <FormElement
                     id="foo_foo"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_foo"
@@ -178,6 +180,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     <_default
                       className="css-keangt"
                       id="foo_foo"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_foo"
@@ -198,6 +201,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         className="css-keangt"
                         disabled={false}
                         id="foo_foo"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_foo"
@@ -370,6 +374,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="foo"
                 multiLine={false}
@@ -432,6 +437,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   </Label>
                   <FormElement
                     id="foo_foo"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_foo"
@@ -447,6 +453,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     <_default
                       className="css-keangt"
                       id="foo_foo"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_foo"
@@ -467,6 +474,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         className="css-keangt"
                         disabled={false}
                         id="foo_foo"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_foo"
@@ -579,6 +587,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="bar"
                 multiLine={false}
@@ -641,6 +650,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   </Label>
                   <FormElement
                     id="foo_bar"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_bar"
@@ -656,6 +666,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     <_default
                       className="css-keangt"
                       id="foo_bar"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_bar"
@@ -676,6 +687,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         className="css-keangt"
                         disabled={false}
                         id="foo_bar"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_bar"
@@ -848,6 +860,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="foo"
                 multiLine={false}
@@ -910,6 +923,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   </Label>
                   <FormElement
                     id="foo_foo"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_foo"
@@ -925,6 +939,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     <_default
                       className="css-keangt"
                       id="foo_foo"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_foo"
@@ -945,6 +960,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         className="css-keangt"
                         disabled={false}
                         id="foo_foo"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_foo"
@@ -1278,6 +1294,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="foo"
                 multiLine={false}
@@ -1340,6 +1357,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   </Label>
                   <FormElement
                     id="foo_firstName"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_firstName"
@@ -1355,6 +1373,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     <_default
                       className="css-keangt"
                       id="foo_firstName"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_firstName"
@@ -1375,6 +1394,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         className="css-keangt"
                         disabled={false}
                         id="foo_firstName"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_firstName"
@@ -1474,6 +1494,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="bar"
                 multiLine={false}
@@ -1536,6 +1557,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   </Label>
                   <FormElement
                     id="foo_lastName"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_lastName"
@@ -1551,6 +1573,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     <_default
                       className="css-keangt"
                       id="foo_lastName"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_lastName"
@@ -1571,6 +1594,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         className="css-keangt"
                         disabled={false}
                         id="foo_lastName"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_lastName"
@@ -1750,6 +1774,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="foo"
                 multiLine={false}
@@ -1812,6 +1837,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   </Label>
                   <FormElement
                     id="foo_foo"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_foo"
@@ -1827,6 +1853,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     <_default
                       className="css-keangt"
                       id="foo_foo"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_foo"
@@ -1847,6 +1874,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         className="css-keangt"
                         disabled={false}
                         id="foo_foo"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_foo"
@@ -1964,6 +1992,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="bar"
                 multiLine={false}
@@ -2026,6 +2055,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   </Label>
                   <FormElement
                     id="foo_bar"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_bar"
@@ -2041,6 +2071,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     <_default
                       className="css-keangt"
                       id="foo_bar"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_bar"
@@ -2061,6 +2092,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         className="css-keangt"
                         disabled={false}
                         id="foo_bar"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_bar"
@@ -2240,6 +2272,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="foo"
                 multiLine={false}
@@ -2302,6 +2335,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   </Label>
                   <FormElement
                     id="foo_foo"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_foo"
@@ -2317,6 +2351,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     <_default
                       className="css-keangt"
                       id="foo_foo"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_foo"
@@ -2337,6 +2372,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         className="css-keangt"
                         disabled={false}
                         id="foo_foo"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_foo"
@@ -2454,6 +2490,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 className=""
                 errorText=""
                 hintText=""
+                inputComponent="input"
                 isControlled={true}
                 label="bar"
                 multiLine={false}
@@ -2516,6 +2553,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   </Label>
                   <FormElement
                     id="foo_bar"
+                    inputComponent="input"
                     isControlled={true}
                     multiLine={false}
                     name="foo_bar"
@@ -2531,6 +2569,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     <_default
                       className="css-keangt"
                       id="foo_bar"
+                      inputComponent="input"
                       isControlled={true}
                       multiLine={false}
                       name="foo_bar"
@@ -2551,6 +2590,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         className="css-keangt"
                         disabled={false}
                         id="foo_bar"
+                        inputComponent="input"
                         isControlled={true}
                         multiLine={false}
                         name="foo_bar"

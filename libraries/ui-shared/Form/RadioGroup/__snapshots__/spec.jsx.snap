@@ -13,7 +13,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq"
+    className="css-1klwfzq radioGroup"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -25,7 +25,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -112,7 +112,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq"
+    className="css-1klwfzq radioGroup"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -124,7 +124,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -274,7 +274,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq"
+    className="css-1klwfzq radioGroup"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -286,7 +286,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -373,7 +373,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq"
+    className="css-1klwfzq radioGroup"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -385,7 +385,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -408,7 +408,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq"
+    className="css-1klwfzq radioGroup"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -420,7 +420,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
     >
       <div
         className="css-1gehsfr radioGroup"
@@ -507,7 +507,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
   value="foo"
 >
   <FormElement
-    className="css-1klwfzq"
+    className="css-1klwfzq radioGroup"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -519,7 +519,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq formElement"
+      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"

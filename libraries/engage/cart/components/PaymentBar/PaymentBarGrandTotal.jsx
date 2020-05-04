@@ -9,14 +9,19 @@ import { CartContext } from '../../cart.context';
 import connect from './PaymentBarGrandTotal.connector';
 
 type Props = {
-  amount: number;
+  amount: number,
+  showSeparator?: boolean,
+  label?: string,
+  className?: string,
 }
 
 /**
  * The GrandTotal component.
  * @returns {JSX}
  */
-function PaymentBarGrandTotal({ amount }: Props) {
+function PaymentBarGrandTotal({
+  amount, label, showSeparator, className,
+}: Props) {
   const { config: { hideTotal }, isLoading, currency } = React.useContext(CartContext);
 
   if (hideTotal) {
@@ -25,12 +30,18 @@ function PaymentBarGrandTotal({ amount }: Props) {
 
   return (
     <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS_GRAND_TOTAL}>
-      <CartTotalLine isDisabled={isLoading} type="grandTotal">
-        <CartTotalLine.Label label="cart.total" />
+      <CartTotalLine isDisabled={isLoading} type="grandTotal" className={className}>
+        <CartTotalLine.Label label={label} showSeparator={showSeparator} />
         <CartTotalLine.Amount amount={amount} currency={currency} />
       </CartTotalLine>
     </SurroundPortals>
   );
 }
+
+PaymentBarGrandTotal.defaultProps = {
+  className: null,
+  showSeparator: true,
+  label: 'cart.total',
+};
 
 export default connect(PaymentBarGrandTotal);

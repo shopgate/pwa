@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PT from 'prop-types';
 import {
   TextLink,
   SurroundPortals,
@@ -15,14 +14,12 @@ import {
 } from '@shopgate/engage/product';
 import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
 import { bin2hex } from '@shopgate/engage/core';
-import {
-  CartItemProductChangeLocation,
-  CartChangeFulfillmentMethod,
-} from '@shopgate/engage/locations';
+import { CartContextMenuChangeFulfillment } from '@shopgate/engage/locations';
 import { CartItemProductPrice } from './CartItemProductPrice';
-import { CartItemProductContextMenu } from './CartItemProductContextMenu';
 import { CartItemProductLayoutWideRemoveItem } from './CartItemProductLayoutWideRemoveItem';
 import { CartItemProductLayoutWideFulfillmentLabel } from './CartItemProductLayoutWideFulfillmentLabel';
+import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
+import { useCartItemProduct } from './CartItem.hooks';
 import {
   container,
   imageColumn,
@@ -33,36 +30,22 @@ import {
   quantityPicker,
   quantityPickerDisabled,
   price,
+  contextMenu,
 } from './CartItemProductLayoutWide.style';
-
-type Props = {
-  currency: string,
-  product: Product,
-  quantity: number,
-  handleDelete?: () => void,
-  handleUpdate?: (quantity: number) => void,
-  toggleEditMode?: () => void,
-}
-
-type ContextProps = {
-  registerAction: () => void,
-  cartItem?: Item,
-  cartItemId?: string,
-  type?: string,
-  editable?: boolean
-}
 
 /**
  * @param {Object} props The component properties.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-const CartItemProductLayoutWide = (props: Props, context: ContextProps) => {
+const CartItemProductLayoutWide = () => {
+  const context = useCartItemProduct();
   const {
-    product, currency, handleDelete, toggleEditMode, quantity, handleUpdate,
-  } = props;
-  const { cartItem, registerAction, editable } = context;
-  const fulfillmentMethod = cartItem?.fulfillment?.method || null;
+    cartItem,
+    product,
+    currency,
+    handleUpdate,
+    isEditable,
+  } = context;
 
   return (
     <Fragment>
@@ -87,23 +70,24 @@ const CartItemProductLayoutWide = (props: Props, context: ContextProps) => {
             properties={product.properties}
             lineClamp={2}
           />
-          <CartItemProductLayoutWideFulfillmentLabel fulfillmentMethod={fulfillmentMethod} />
+          <CartItemProductLayoutWideFulfillmentLabel />
         </div>
         <div className={column}>
           <CartItemProductPrice
-            currency={currency}
             defaultPrice={product.price.unit}
+            specialPrice={product.price.unitSpecial}
             classNames={{
               price,
               priceStriked: price,
             }}
           />
+          <CartItemProductPriceCaption />
         </div>
         <div className={column}>
-          { editable ? (
+          { isEditable ? (
             <CartUnitQuantityPicker
               productId={product.id}
-              value={quantity}
+              value={cartItem.quantity}
               unit={product.unit}
               onChange={handleUpdate}
               classNames={{
@@ -115,55 +99,33 @@ const CartItemProductLayoutWide = (props: Props, context: ContextProps) => {
             <QuantityInput
               disabled
               className={quantityPickerDisabled}
-              value={quantity}
+              value={cartItem.quantity}
               unit={product.unit && product.unit !== PRODUCT_UNIT_EACH ? product.unit : null}
             />
           )}
-
-          { editable && (
-            <CartItemProductLayoutWideRemoveItem handleDelete={handleDelete} />
+          { isEditable && (
+            <CartItemProductLayoutWideRemoveItem />
           )}
         </div>
         <div className={column}>
           <CartItemProductPrice
             currency={currency}
-            defaultPrice={product.price.default}
-            specialPrice={product.price.special}
+            defaultPrice={product.price.special || product.price.default}
             classNames={{
               price,
               priceStriked: price,
             }}
           />
+          <CartItemProductPriceCaption />
         </div>
-        { editable && (
-          <ul>
-            <CartItemProductContextMenu
-              handleRemove={handleDelete}
-              toggleEditMode={toggleEditMode}
-              showEdit={false}
-              showRemove={false}
-            />
-          </ul>
+        { isEditable && (
+          <div className={contextMenu}>
+            <CartContextMenuChangeFulfillment cartItem={cartItem} />
+          </div>
         )}
       </div>
-      <CartItemProductChangeLocation cartItem={cartItem} registerAction={registerAction} />
-      <CartChangeFulfillmentMethod cartItem={cartItem} registerAction={registerAction} />
     </Fragment>
   );
-};
-
-CartItemProductLayoutWide.defaultProps = {
-  handleDelete: () => { },
-  handleUpdate: () => { },
-  toggleEditMode: () => { },
-};
-
-CartItemProductLayoutWide.contextTypes = {
-  registerAction: PT.func,
-  cartItem: PT.shape(),
-  cartItemId: PT.string,
-  type: PT.string,
-  editable: PT.bool,
 };
 
 export { CartItemProductLayoutWide };

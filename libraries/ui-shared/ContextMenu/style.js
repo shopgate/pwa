@@ -12,6 +12,10 @@ const button = css({
   padding: 0,
 }).toString();
 
+const disabled = css({
+  cursor: 'none',
+}).toString();
+
 const overlay = css({
   position: 'fixed',
   top: 0,
@@ -37,4 +41,5 @@ export default {
   button,
   menu,
   overlay,
+  disabled,
 };

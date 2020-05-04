@@ -311,6 +311,7 @@ function FulfillmentProvider(props: Props) {
       setFulfillmentPath(MULTI_LINE_RESERVE);
       setStage(STAGE_SELECT_STORE);
       setFulfillmentMethod(method);
+      setIsOpen(true);
       return;
     }
 

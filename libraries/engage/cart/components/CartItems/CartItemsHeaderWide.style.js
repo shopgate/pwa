@@ -20,6 +20,9 @@ export const column = css({
   flexGrow: 1,
   flexBasis: 0,
   padding: `0 ${variables.gap.small}px`,
+  ':last-child': {
+    paddingRight: variables.gap.small,
+  },
 });
 
 export const imageColumn = css({

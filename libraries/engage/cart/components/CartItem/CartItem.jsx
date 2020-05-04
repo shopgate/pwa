@@ -9,6 +9,7 @@ import {
 } from '@shopgate/pwa-common-commerce/cart';
 import CartItemProduct from './CartItemProduct';
 import CartItemCoupon from './CartItemCoupon';
+import CartItemProductProvider from './CartItemProductProvider';
 import { type Item } from '../../cart.types';
 
 type Props = {
@@ -35,16 +36,9 @@ function CartItem({ item, onFocus, editable }: Props) {
   if (isProduct) {
     return (
       <SurroundPortals portalName={CART_ITEM} portalProps={props}>
-        <CartItemProduct
-          key={item.id}
-          id={item.id}
-          product={item.product}
-          quantity={item.quantity}
-          messages={item.messages}
-          fulfillment={item.fulfillment}
-          onToggleFocus={onFocus}
-          editable={editable}
-        />
+        <CartItemProductProvider cartItem={item} onFocus={onFocus} isEditable={editable}>
+          <CartItemProduct />
+        </CartItemProductProvider>
       </SurroundPortals>
     );
   }

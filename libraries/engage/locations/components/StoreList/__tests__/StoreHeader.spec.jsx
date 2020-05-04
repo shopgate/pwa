@@ -9,7 +9,6 @@ const context = {
   selectLocation: jest.fn(),
 };
 
-jest.mock('@shopgate/engage/components');
 jest.mock('../../../helpers', () => ({
   isProductAvailable: jest.fn().mockReturnValue(true),
 }));

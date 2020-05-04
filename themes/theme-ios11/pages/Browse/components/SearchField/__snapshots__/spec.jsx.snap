@@ -90,6 +90,7 @@ exports[`<Content /> Check search field should render with initial search query 
                   className="css-11ngaym css-1qnjb83"
                   disabled={false}
                   id={null}
+                  inputComponent="input"
                   isControlled={false}
                   name={null}
                   onChange={[Function]}
@@ -291,6 +292,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                   className="css-11ngaym"
                   disabled={false}
                   id={null}
+                  inputComponent="input"
                   isControlled={false}
                   name={null}
                   onChange={[Function]}

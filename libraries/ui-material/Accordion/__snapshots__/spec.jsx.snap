@@ -5,6 +5,7 @@ exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
   className={null}
   contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   testId="Some Thing"
 />
 `;
@@ -14,6 +15,7 @@ exports[`<Accordion /> should not render without children 1`] = `
   className={null}
   contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
   testId="Some Thing"
 />
@@ -24,6 +26,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
   className={null}
   contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
   testId="Some Thing"
 >

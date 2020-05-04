@@ -240,6 +240,15 @@
       "ropis_item_inventory": "This item is not available for reservation at the selected location. Check for availability at a different location.",
       "ropis_item_inventory_exceed": "This item is not available in the desired quantity at {storeName}. {inventory} will be reserved.",
       "mixed_cart_coupon_removed": "The coupon \"{code}\" is not valid for in store reservations. Once you have placed the reservation it will be available for direct ship orders again."
+    },
+    "change_fulfillment": {
+      "direct_ship": "Change to Delivery",
+      "bopis": "Change to Pay in Store",
+      "ropis": "Change to Reservation"
+    },
+    "price_caption": {
+      "reservation": "Reservation",
+      "pay_in_store": "Pay in Store"
     }
   },
   "login": {

@@ -85,6 +85,7 @@ exports[`<Password> should render a password field 1`] = `
                     className="css-keangt"
                     disabled={false}
                     id={null}
+                    inputComponent="input"
                     isControlled={false}
                     multiLine={false}
                     name="test-input"

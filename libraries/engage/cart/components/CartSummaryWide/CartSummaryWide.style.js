@@ -21,8 +21,17 @@ export const summary = css({
   padding: variables.gap.big,
 });
 
-export const grandTotalContainer = css({
-  fontSize: '1.25rem',
+export const total = css({
+  fontSize: '1rem',
+  padding: `${variables.gap.small}px 0`,
+}).toString();
+
+export const grandTotal = css({
+  fontSize: '1.25rem !important',
   fontWeight: 500,
   borderTop: `1px solid ${colors.shade4}`,
+  padding: `${variables.gap.small}px 0`,
+  '&:last-child': {
+    paddingBottom: 0,
+  },
 }).toString();

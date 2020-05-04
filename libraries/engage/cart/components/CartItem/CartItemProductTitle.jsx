@@ -1,26 +1,28 @@
 // @flow
-import * as React from 'react';
-import PT from 'prop-types';
-import { Grid, SurroundPortals } from '@shopgate/engage/components';
-import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
-import { CartItemProductContextMenu } from './CartItemProductContextMenu';
-import { type Item } from '../../cart.types';
+import React, { useCallback } from 'react';
 import {
+  Grid, I18n, SurroundPortals, ContextMenu,
+} from '@shopgate/engage/components';
+import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
+import {
+  CartContextMenuItemChangeLocation,
+  CartContextMenuItemChangeFulfillment,
+} from '@shopgate/engage/locations';
+import { useCartItem, useCartItemProduct } from './CartItem.hooks';
+import {
+  menuToggleButton,
+  menuToggleContainer,
   title,
+  menuContainer,
 } from './CartItemProductTitle.style';
+
+const contextMenuClasses = {
+  button: menuToggleButton,
+  container: menuToggleContainer,
+};
 
 type Props = {
   value: string,
-  handleRemove?: () => void,
-  toggleEditMode?: (editMode: boolean) => void,
-}
-
-type ContextProps = {
-  cartItem?: Item,
-  invokeAction: (action: string, method?: string) => void,
-  cartItemId?: string,
-  type?: string,
-  editable?: boolean
 }
 
 /**
@@ -29,32 +31,61 @@ type ContextProps = {
  * @param {Object} context The component context.
  * @returns {JSX}
  */
-export const CartItemProductTitle = ({
-  value,
-  handleRemove,
-  toggleEditMode,
-}: Props, context: ContextProps) => (
-  <Grid>
-    <Grid.Item grow={1}>
-      <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
-        <div className={title} data-test-id={value} dangerouslySetInnerHTML={{ __html: value }} />
-      </SurroundPortals>
-    </Grid.Item>
-    {context.editable && (
-      <CartItemProductContextMenu handleRemove={handleRemove} toggleEditMode={toggleEditMode} />
-    )}
-  </Grid>
-);
+export function CartItemProductTitle(props: Props) {
+  const { value } = props;
+  const { invokeFulfillmentAction } = useCartItem();
+  const context = useCartItemProduct();
+  const {
+    handleRemove, toggleEditMode, cartItem,
+  } = context;
 
-CartItemProductTitle.defaultProps = {
-  handleRemove: () => { },
-  toggleEditMode: () => { },
-};
+  const handleToggleEditMode = useCallback(() => {
+    if (toggleEditMode) {
+      toggleEditMode(true);
+    }
+  }, [toggleEditMode]);
 
-CartItemProductTitle.contextTypes = {
-  cartItem: PT.shape(),
-  invokeAction: PT.func,
-  cartItemId: PT.string,
-  type: PT.string,
-  editable: PT.bool,
-};
+  const handleChangeLocationClick = useCallback(() => {
+    if (!cartItem || !cartItem.fulfillment || !cartItem.fulfillment.method) {
+      return;
+    }
+
+    const { fulfillment: { method } } = cartItem;
+
+    invokeFulfillmentAction('changeLocation', method);
+  }, [cartItem, invokeFulfillmentAction]);
+
+  const handleChangeFulfillmentClick = useCallback(() => {
+    invokeFulfillmentAction('changeFulfillment');
+  }, [invokeFulfillmentAction]);
+
+  return (
+    <Grid>
+      <Grid.Item grow={1}>
+        <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
+          <div className={title} data-test-id={value}>
+            {value}
+          </div>
+        </SurroundPortals>
+      </Grid.Item>
+      <Grid.Item className={menuContainer} shrink={0}>
+        <ContextMenu classes={contextMenuClasses}>
+          <ContextMenu.Item onClick={handleRemove}>
+            <I18n.Text string="cart.remove" />
+          </ContextMenu.Item>
+          <ContextMenu.Item onClick={handleToggleEditMode}>
+            <I18n.Text string="cart.edit" />
+          </ContextMenu.Item>
+          <CartContextMenuItemChangeLocation
+            cartItem={context.cartItem}
+            onClick={handleChangeLocationClick}
+          />
+          <CartContextMenuItemChangeFulfillment
+            cartItem={context.cartItem}
+            onClick={handleChangeFulfillmentClick}
+          />
+        </ContextMenu>
+      </Grid.Item>
+    </Grid>
+  );
+}
