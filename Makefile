@@ -362,7 +362,7 @@ endef
 
 define clean-npm-package
 		@echo "> Cleaning './$(strip $(1))/$(strip $(2))/dist' npm package"
-		@rm -rf -f ./$(strip $(1))/$(strip $(2))/dist;
+		@rm -rvf ./$(strip $(1))/$(strip $(2))/dist;
 
 endef
 
