@@ -118,7 +118,7 @@ function CartContent(props) {
                   </Fragment>
                 )}
               </SurroundPortals>
-              <ResponsiveContainer webOnly breakpoint="<=xs">
+              <ResponsiveContainer appAlways breakpoint="<=xs">
                 <PaymentBar visible={isPaymentBarVisible} />
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
@@ -126,7 +126,7 @@ function CartContent(props) {
               </ResponsiveContainer>
             </Fragment>
           )}
-          <ResponsiveContainer webOnly breakpoint="<=xs">
+          <ResponsiveContainer breakpoint="<=xs">
             <Footer />
           </ResponsiveContainer>
         </Fragment>
