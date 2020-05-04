@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { getCurrentPathname } from '@shopgate/engage/core';
 import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
-import openFilterRoute from '../../actions/openFilterRoute';
 
 /**
  * Maps the contents of the state to the component props.
@@ -18,7 +17,6 @@ const mapStateToProps = state => ({
  * @return {Object}
  */
 const mapDispatchToProps = {
-  openFilters: () => openFilterRoute(),
   updateFilters,
 };
 

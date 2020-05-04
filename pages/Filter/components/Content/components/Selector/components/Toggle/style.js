@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 export const toggle = css({
   display: 'flex',
@@ -24,6 +25,9 @@ export const selected = css({
   justifyContent: 'flex-end',
   minWidth: '50%',
   maxWidth: '65%',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    marginRight: 16,
+  },
 });
 
 export const closed = css({

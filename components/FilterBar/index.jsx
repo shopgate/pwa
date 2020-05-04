@@ -2,8 +2,11 @@ import React, {
   useState, useEffect, useMemo, memo,
 } from 'react';
 import PropTypes from 'prop-types';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import Provider from './FilterBarProvider';
 import Content from './components/Content';
+import Modal from './components/FilterModal';
 import styles from './style';
 
 const { colors } = themeConfig;
@@ -27,7 +30,12 @@ function FilterBar({ filters }) {
 
   return (
     <div className={styles} data-test-id="filterBar" style={style}>
-      <Content />
+      <Provider>
+        <Content />
+        <ResponsiveContainer breakpoint=">xs" webOnly>
+          <Modal />
+        </ResponsiveContainer>
+      </Provider>
     </div>
   );
 }
