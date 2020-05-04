@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { router } from '@shopgate/engage/core';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { SurroundPortals, ResponsiveContainer } from '@shopgate/engage/components';
 import {
   FILTER_PRICE_RANGE,
   FILTER_TYPE_RANGE,
@@ -24,13 +24,17 @@ class FilterContent extends PureComponent {
   static propTypes = {
     activeFilters: PropTypes.shape(),
     filters: PropTypes.arrayOf(PropTypes.shape()),
+    onChange: PropTypes.func,
     parentId: PropTypes.string,
+    showAppBar: PropTypes.bool,
   }
 
   static defaultProps = {
     activeFilters: null,
     filters: null,
     parentId: null,
+    showAppBar: true,
+    onChange: () => {},
   }
 
   /**
@@ -44,6 +48,7 @@ class FilterContent extends PureComponent {
       currentFilters: props.activeFilters || {},
       filters: {},
     };
+    this.props.onChange(this.state);
   }
 
   /**
@@ -153,7 +158,9 @@ class FilterContent extends PureComponent {
         ...filters,
         [id]: value,
       },
-    }));
+    }), () => {
+      this.props.onChange(this.state);
+    });
   }
 
   /**
@@ -164,6 +171,8 @@ class FilterContent extends PureComponent {
       // Separate the given id from the other set filters.
       const { [id]: removed, ...activeFilters } = prevState.filters;
       return { filters: activeFilters };
+    }, () => {
+      this.props.onChange(this.state);
     });
   }
 
@@ -172,6 +181,8 @@ class FilterContent extends PureComponent {
     this.setState({
       currentFilters: {},
       filters: {},
+    }, () => {
+      this.props.onChange(this.state);
     });
   }
 
@@ -182,6 +193,7 @@ class FilterContent extends PureComponent {
       this.props.parentId,
       { filters: buildUpdatedFilters(currentFilters, filters) }
     );
+    router.replace();
     setTimeout(router.pop, 250);
   }
 
@@ -190,6 +202,10 @@ class FilterContent extends PureComponent {
    * @returns {JSX}
    */
   renderCloseBar = () => {
+    if (!this.props.showAppBar) {
+      return null;
+    }
+
     const right = <ApplyButton active={this.hasChanged} onClick={this.save} />;
     return <CloseBar title="titles.filter" right={right} />;
   }
@@ -240,7 +256,9 @@ class FilterContent extends PureComponent {
             />
           );
         })}
-        <ResetButton active={this.canReset} onClick={this.reset} />
+        <ResponsiveContainer breakpoint=">xs" webAlways>
+          <ResetButton active={this.canReset} onClick={this.reset} />
+        </ResponsiveContainer>
       </Fragment>
     );
   }
