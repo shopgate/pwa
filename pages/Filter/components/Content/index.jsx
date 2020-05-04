@@ -256,7 +256,7 @@ class FilterContent extends PureComponent {
             />
           );
         })}
-        <ResponsiveContainer breakpoint=">xs" webAlways>
+        <ResponsiveContainer breakpoint="<sm" appAlways>
           <ResetButton active={this.canReset} onClick={this.reset} />
         </ResponsiveContainer>
       </Fragment>

@@ -74,6 +74,10 @@ const FilterModal = () => {
     resetFilters(id);
   }, [id, resetFilters]);
 
+  const handleClose = useCallback(() => {
+    setFilterModalOpen(false);
+  }, [setFilterModalOpen]);
+
   if (!filterModalOpen) {
     return null;
   }
@@ -88,7 +92,11 @@ const FilterModal = () => {
           onClick={() => setFilterModalOpen(false)}
         />
         <div className={styles.content}>
-          <Title apply={handleApply} reset={handleReset} />
+          <Title
+            apply={handleApply}
+            reset={handleReset}
+            close={handleClose}
+          />
           <div className={styles.scrollable}>
             <FilterContent
               parentId="0"

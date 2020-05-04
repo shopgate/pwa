@@ -44,9 +44,9 @@ const styles = {
  * @param {Object} props Props.
  * @returns {JSX}
  */
-const FilterModalTitle = ({ apply, reset }) => (
+const FilterModalTitle = ({ apply, reset, close }) => (
   <div className={styles.root}>
-    <Ripple className={styles.closeButton}>
+    <Ripple onClick={close} className={styles.closeButton}>
       <CrossIcon />
     </Ripple>
     <span className={styles.title}>
@@ -63,6 +63,7 @@ const FilterModalTitle = ({ apply, reset }) => (
 
 FilterModalTitle.propTypes = {
   apply: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
 };
 
