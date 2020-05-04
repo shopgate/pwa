@@ -3,7 +3,7 @@ import 'Extensions/portals';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
+import { ThemeConfigResolver, AppProvider, hasWebBridge } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { history } from '@shopgate/pwa-common/helpers/router';
@@ -162,7 +162,7 @@ const Pages = ({ store }) => (
                   </Router>
                 </div>
 
-                {isDev && (
+                {(isDev || hasWebBridge()) && (
                   <Helmet>
                     <link href={devFontsUrl} rel="stylesheet" />
                   </Helmet>
