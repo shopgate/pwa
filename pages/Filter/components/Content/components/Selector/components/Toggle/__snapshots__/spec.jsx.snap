@@ -10,7 +10,7 @@ exports[`<Toggle /> should render with selected 1`] = `
     somelabel
   </span>
   <span
-    class="css-amc1m9"
+    class="css-1u4wghh"
   >
     Some, Thing, Selected
   </span>
@@ -27,7 +27,7 @@ exports[`<Toggle /> should render with selected as open 1`] = `
     somelabel
   </span>
   <span
-    class="css-amc1m9"
+    class="css-1u4wghh"
   >
     Some, Thing, Selected
   </span>

@@ -3,6 +3,7 @@ import {
   persistedReducers,
   configuration,
   RESET_APP_REDUCERS,
+  hasWebBridge,
 } from '@shopgate/engage/core';
 import checkout from '@shopgate/engage/checkout/reducers';
 import client from '@shopgate/pwa-common/reducers/client';
@@ -30,6 +31,7 @@ persistedReducers.set([
   'locations',
   'url',
   'user',
+  ...(hasWebBridge() ? 'menu' : []),
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
