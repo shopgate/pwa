@@ -50,6 +50,7 @@ const styles = {
     flexWrap: 'wrap',
   }).toString(),
   modalPreview: css({
+    cursor: 'pointer',
     width: 'calc(12.5% - 14px)',
     [responsiveMediaQuery('<=sm')]: {
       width: 'calc(20% - 14px)',
@@ -71,6 +72,7 @@ const styles = {
     alignItems: 'center',
     color: '#fff',
     fontSize: 28,
+    cursor: 'pointer',
   }).toString(),
   rightArrow: css({
     zIndex: 10,
@@ -85,6 +87,7 @@ const styles = {
     color: '#fff',
     fontSize: 28,
     transform: 'scaleX(-1)',
+    cursor: 'pointer',
   }).toString(),
 };
 
