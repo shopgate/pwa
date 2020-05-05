@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
 import {
   NAV_MENU_STORE_INFORMATION,
   NAV_MENU_STORE_INFORMATION_AFTER,
@@ -15,10 +14,7 @@ import {
 import NavDrawerSection from '../Section';
 import ShippingButton from './components/ShippingButton';
 import PaymentButton from './components/PaymentButton';
-import TermsButton from './components/TermsButton';
-import PrivacyButton from './components/PrivacyButton';
-import ReturnsButton from './components/ReturnsButton';
-import ImprintButton from './components/ImprintButton';
+import LegalButtons from './components/LegalButtons';
 import portalProps from '../../portalProps';
 
 /**
@@ -40,10 +36,7 @@ const StoreInfo = () => (
       <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE} props={portalProps} />
       <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT} props={portalProps}>
         <NavDrawerSection title="navigation.menuSubHeader.about">
-          <TermsButton />
-          <PrivacyButton />
-          {showReturnPolicy && <ReturnsButton />}
-          <ImprintButton />
+          <LegalButtons />
         </NavDrawerSection>
       </Portal>
       <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT_AFTER} props={portalProps} />

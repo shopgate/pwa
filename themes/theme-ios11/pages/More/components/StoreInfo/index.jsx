@@ -9,10 +9,7 @@ import portalProps from '../../portalProps';
 import Section from '../Section';
 import Shipping from './components/Shipping';
 import Payment from './components/Payment';
-import Terms from './components/Terms';
-import Privacy from './components/Privacy';
-import ReturnPolicy from './components/ReturnPolicy';
-import Imprint from './components/Imprint';
+import LegalPages from './components/LegalPages';
 
 /**
  * The StoreInfoComponent.
@@ -25,10 +22,7 @@ const StoreInfo = () => (
       <Section title="navigation.store_information">
         <Shipping />
         <Payment />
-        <Terms />
-        <Privacy />
-        <ReturnPolicy />
-        <Imprint />
+        <LegalPages />
       </Section>
     </Portal>
     <Portal name={NAV_MENU_STORE_INFORMATION_AFTER} props={portalProps} />

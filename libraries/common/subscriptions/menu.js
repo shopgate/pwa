@@ -1,6 +1,6 @@
 import { appDidStart$ } from '../streams';
 import fetchMenu from '../actions/menu/fetchMenu';
-import { QUICKLINKS_MENU } from '../constants/MenuIDs';
+import { QUICKLINKS_MENU, LEGAL_MENU } from '../constants/MenuIDs';
 
 /**
  * Menu subscriptions.
@@ -12,5 +12,6 @@ export default function menu(subscribe) {
    */
   subscribe(appDidStart$, ({ dispatch }) => {
     dispatch(fetchMenu(QUICKLINKS_MENU));
+    dispatch(fetchMenu(LEGAL_MENU));
   });
 }

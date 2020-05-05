@@ -41,3 +41,23 @@ export const getMenuById = createSelector(
     return menus[id].entries;
   }
 );
+
+/**
+ * Creates a selector that retrieves a list of entries for a specified menu id.
+ * @param {string} menuId The menu id.
+ * @returns {Function}
+ */
+export const makeGetMenu = menuId => createSelector(
+  getMenus,
+  menus => menus?.[menuId]?.entries || null
+);
+
+/**
+ * Creates a selector that determines if a menu is fetching.
+ * @param {string} menuId The menu id.
+ * @returns {Function}
+ */
+export const makeGetIsFetchingMenu = menuId => createSelector(
+  getMenus,
+  menus => menus?.[menuId]?.isFetching || false
+);
