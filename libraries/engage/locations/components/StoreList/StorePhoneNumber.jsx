@@ -20,7 +20,7 @@ export function StorePhoneNumber({ phone }: Props) {
 
   return (
     <a href={`tel:${phone}`}>
-      <StoreDetailsLine icon={PhoneIcon}>
+      <StoreDetailsLine icon={PhoneIcon} linked>
         <div className={detailsPrimary}>{phone}</div>
         <I18n.Text string="locations.phone" className={detailsSecondary} />
       </StoreDetailsLine>

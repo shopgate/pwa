@@ -3,6 +3,7 @@ import Context from './CartItemProvider.context';
 
 type Props = {
   cartItem: Object,
+  isEditable?: boolean,
   children?: React.Node
 }
 
@@ -11,7 +12,7 @@ type Props = {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const CartItemProvider = ({ cartItem, children }: Props) => {
+const CartItemProvider = ({ cartItem, isEditable, children }: Props) => {
   const actions = useMemo(() => new Map(), []);
 
   const registerFulfillmentAction = useCallback((action, callback) => {
@@ -30,7 +31,8 @@ const CartItemProvider = ({ cartItem, children }: Props) => {
     registerFulfillmentAction,
     invokeFulfillmentAction,
     cartItem,
-  }), [cartItem, invokeFulfillmentAction, registerFulfillmentAction]);
+    isEditable,
+  }), [cartItem, invokeFulfillmentAction, isEditable, registerFulfillmentAction]);
 
   return (
     <Context.Provider value={value}>
@@ -41,6 +43,7 @@ const CartItemProvider = ({ cartItem, children }: Props) => {
 
 CartItemProvider.defaultProps = {
   children: null,
+  isEditable: true,
 };
 
 export default CartItemProvider;

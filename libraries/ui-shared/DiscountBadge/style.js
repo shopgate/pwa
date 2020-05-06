@@ -3,9 +3,10 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 const badge = {
-  background: `var(--color-primary, ${colors.primary})`,
+  // Before the custom properties the primary color was used for the rating stars.
+  background: `var(--color-secondary, ${colors.primary})`,
   borderRadius: 2,
-  color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
+  color: `var(--color-secondary-contrast, ${colors.primaryContrast})`,
   paddingTop: 5,
   paddingBottom: 5,
   width: '100%',

@@ -20,6 +20,7 @@ const icon = {
   flexShrink: 0,
   marginTop: '-1px',
   marginRight: variables.gap.small,
+  color: 'var(--color-text-medium-emphasis)',
 };
 
 export const inactiveIcon = css(icon).toString();
@@ -43,6 +44,7 @@ export const radio = css({
 
 export const content = css({
   flexGrow: 1,
+  color: 'var(--color-text-high-emphasis)',
 });
 
 export const itemRow = css({

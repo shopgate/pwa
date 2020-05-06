@@ -20,6 +20,9 @@ export const container = css({
 export const containerItem = css({
   flexGrow: 1,
   flexShrink: 0,
+  '@media(min-width: 768px)': {
+    width: `calc(50% - ${variables.gap.big}px)`,
+  },
 });
 
 export const form = css({
@@ -33,7 +36,7 @@ export const section = css({
 export const submitButtonContainer = css({
   margin: `0 ${variables.gap.big}px ${variables.gap.big}px`,
   '@media(min-width: 768px)': {
-    maxWidth: '60%',
+    width: `calc(50% - ${variables.gap.big}px)`,
   },
 });
 

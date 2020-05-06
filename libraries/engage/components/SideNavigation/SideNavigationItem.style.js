@@ -41,5 +41,6 @@ export const link = css({
   flexGrow: 1,
   textAlign: 'left',
   outline: 0,
+  color: 'var(--color-text-high-emphasis)',
 }).toString();
 

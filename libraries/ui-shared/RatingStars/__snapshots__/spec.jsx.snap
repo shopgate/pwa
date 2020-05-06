@@ -8,7 +8,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   role="text"
 >
   <div
-    className="css-4s85e9"
+    className="css-5lxuz4"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -67,7 +67,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn"
+    className="css-13xh6j9"
   />
 </div>
 `;
@@ -80,7 +80,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   role="text"
 >
   <div
-    className="css-4s85e9"
+    className="css-5lxuz4"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -139,7 +139,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn"
+    className="css-13xh6j9"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -186,7 +186,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   role="text"
 >
   <div
-    className="css-4s85e9"
+    className="css-5lxuz4"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -245,7 +245,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn"
+    className="css-13xh6j9"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -314,7 +314,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   role="text"
 >
   <div
-    className="css-4s85e9"
+    className="css-5lxuz4"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -388,7 +388,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn"
+    className="css-13xh6j9"
   >
     <div
       aria-hidden={true}
@@ -472,7 +472,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   role="text"
 >
   <div
-    className="css-4s85e9"
+    className="css-5lxuz4"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -546,7 +546,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn"
+    className="css-13xh6j9"
   >
     <div
       aria-hidden={true}

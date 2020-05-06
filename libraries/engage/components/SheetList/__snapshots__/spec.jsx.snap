@@ -15,14 +15,14 @@ exports[`<SheetList /> should not render invalid children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="css-10041rq css-171mywc"
+        className="css-id5jvr css-171mywc"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -60,13 +60,13 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-1ifl01s"
+                        className="css-m6wt83"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1ifl01s css-1gs0ko2"
+                          className="css-m6wt83 css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -109,14 +109,14 @@ exports[`<SheetList /> should render a child and add styles for list items with 
       role="listbox"
     >
       <ListItem
-        className="css-10041rq css-1brrprg css-171mywc"
+        className="css-id5jvr css-1brrprg css-171mywc"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-1brrprg css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-1brrprg css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -154,13 +154,13 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-1ifl01s"
+                        className="css-m6wt83"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1ifl01s css-1gs0ko2"
+                          className="css-m6wt83 css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -195,14 +195,14 @@ exports[`<SheetList /> should render with two children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="css-10041rq css-171mywc"
+        className="css-id5jvr css-171mywc"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -240,13 +240,13 @@ exports[`<SheetList /> should render with two children 1`] = `
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-1ifl01s"
+                        className="css-m6wt83"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1ifl01s css-1gs0ko2"
+                          className="css-m6wt83 css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -262,14 +262,14 @@ exports[`<SheetList /> should render with two children 1`] = `
         </li>
       </ListItem>
       <ListItem
-        className="css-10041rq css-171mywc"
+        className="css-id5jvr css-171mywc"
         isSelected={false}
         key="child-1/.1"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -307,13 +307,13 @@ exports[`<SheetList /> should render with two children 1`] = `
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-1ifl01s"
+                        className="css-m6wt83"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1ifl01s css-1gs0ko2"
+                          className="css-m6wt83 css-1gs0ko2"
                         >
                           <div>
                             List Item

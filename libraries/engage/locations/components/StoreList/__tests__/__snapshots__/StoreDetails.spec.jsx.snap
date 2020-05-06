@@ -17,6 +17,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
     >
       <StoreDetailsLine
         icon={[Function]}
+        linked={false}
       >
         <Grid
           className="css-kmhio2"
@@ -32,11 +33,11 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             grow={1}
           >
             <Text
-              className="css-1tlpxzg"
+              className="css-1lr3f02"
               string="locations.hours_details"
             />
             <div
-              className="css-1xm8nj0"
+              className="css-1btxmah"
             >
               <StoreOpeningHoursLine
                 day="mon"
@@ -112,12 +113,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
       >
         <StoreDetailsLine
           icon={[Function]}
+          linked={true}
         >
           <Grid
             className="css-kmhio2"
           >
             <Grid.Item
-              className="css-5vu8pw"
+              className="css-5vu8pw css-1ynyzke"
               shrink={0}
             >
               <PhoneIcon />
@@ -132,7 +134,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                 06033123
               </div>
               <Text
-                className="css-1tlpxzg"
+                className="css-1lr3f02"
                 string="locations.phone"
               />
             </Grid.Item>
@@ -162,12 +164,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
       >
         <StoreDetailsLine
           icon={[Function]}
+          linked={true}
         >
           <Grid
             className="css-kmhio2"
           >
             <Grid.Item
-              className="css-5vu8pw"
+              className="css-5vu8pw css-1ynyzke"
               shrink={0}
             >
               <LocationIcon />
@@ -183,7 +186,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                 locations.address
               </Ellipsis>
               <Text
-                className="css-1tlpxzg"
+                className="css-1lr3f02"
                 string="locations.map_open"
               />
             </Grid.Item>

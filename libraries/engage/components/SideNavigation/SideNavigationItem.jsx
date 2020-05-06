@@ -14,7 +14,7 @@ type Props = {
   forceActive?: boolean,
   className?: string,
   onClick?: () => any,
-  href: string,
+  href?: string,
   label: string
 }
 
@@ -67,6 +67,7 @@ SideNavigationItem.defaultProps = {
   children: null,
   forceActive: false,
   level: 0,
+  href: null,
   className: null,
   onClick: () => {},
 };

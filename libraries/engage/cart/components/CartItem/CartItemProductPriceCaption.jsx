@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import {
   ROPIS,
-  BOPIS,
+//  BOPIS,
 } from '@shopgate/engage/locations';
 import { I18n } from '@shopgate/engage/components';
 import { useCartItemProduct } from './CartItem.hooks';
@@ -16,7 +16,7 @@ const CartItemProductPriceCaption = () => {
   const label = useMemo(() => {
     const labels = {
       [ROPIS]: 'cart.price_caption.reservation',
-      [BOPIS]: 'cart.price_caption.pay_in_store',
+    //  [BOPIS]: 'cart.price_caption.pay_in_store',
     };
 
     const fulfillmentMethod = cartItem?.fulfillment?.method || null;

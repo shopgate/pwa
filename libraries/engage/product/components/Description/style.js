@@ -12,12 +12,14 @@ export const title = css({
   fontSize: '1rem',
   fontWeight: 500,
   marginBottom: '0.5rem',
+  color: 'var(--color-text-high-emphasis)',
 });
 
 export const content = css({
   lineHeight: 1.7,
   overflow: 'hidden',
   wordBreak: ['break-all', 'break-word'],
+  color: 'var(--color-text-high-emphasis)',
   hyphens: 'auto',
   ' ul': {
     listStyle: 'disc',

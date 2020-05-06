@@ -2,5 +2,6 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 export default css({
-  color: `var(--color-primary, ${themeConfig.colors.primary})`,
+  // Before the custom properties the primary color was used for the rating stars.
+  color: `var(--color-secondary, ${themeConfig.colors.primary})`,
 }).toString();

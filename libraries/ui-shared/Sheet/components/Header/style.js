@@ -14,6 +14,7 @@ const closeButton = css({
   height: themeConfig.variables.navigator.height,
   position: 'relative',
   zIndex: 2,
+  color: 'var(--color-text-high-emphasis)',
 }).toString();
 
 const closeIcon = css({

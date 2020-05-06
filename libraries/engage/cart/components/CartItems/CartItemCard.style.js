@@ -26,7 +26,7 @@ export const addressIcon = css({
   fontSize: '1.25rem',
   marginRight: gap.big * 1.25,
   flexShrink: 0,
-  color: themeColors.shade9,
+  color: 'var(--color-text-heigh-emphasis)',
 });
 
 export const titles = css({
@@ -50,8 +50,8 @@ export const method = css({
 });
 
 export const locationAddress = css({
-  color: themeColors.shade3,
   fontSize: '0.85rem',
+  color: 'var(--color-text-low-emphasis)',
 });
 
 export const locationHours = css({

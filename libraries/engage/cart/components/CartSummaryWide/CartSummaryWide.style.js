@@ -17,13 +17,14 @@ export const headline = css({
 });
 
 export const summary = css({
-  background: colors.shade8,
+  background: 'var(--color-background-accent)',
   padding: variables.gap.big,
 });
 
 export const total = css({
   fontSize: '1rem',
   padding: `${variables.gap.small}px 0`,
+  color: 'var(--color-text-high-emphasis)',
 }).toString();
 
 export const grandTotal = css({
@@ -31,6 +32,7 @@ export const grandTotal = css({
   fontWeight: 500,
   borderTop: `1px solid ${colors.shade4}`,
   padding: `${variables.gap.small}px 0`,
+  color: 'var(--color-text-high-emphasis)',
   '&:last-child': {
     paddingBottom: 0,
   },

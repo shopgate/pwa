@@ -32,6 +32,7 @@ export const productName = css({
 
 export const productInfo = css({
   alignItems: 'flex-end',
+  color: 'var(--color-text-high-emphasis)',
 }).toString();
 
 export const productInfoLeft = css({

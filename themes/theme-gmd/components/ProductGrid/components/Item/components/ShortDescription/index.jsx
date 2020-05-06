@@ -15,9 +15,7 @@ const ShortDescription = ({ shortDescription }: Props) => {
   }
 
   return (
-    <div className={wrapper}>
-      {shortDescription}
-    </div>
+    <div className={wrapper} dangerouslySetInnerHTML={{ __html: shortDescription }} />
   );
 };
 

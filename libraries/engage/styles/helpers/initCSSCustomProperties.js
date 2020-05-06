@@ -38,7 +38,7 @@ export const initCSSCustomProps = () => {
     setCSSCustomProp('--page-background-color', '#fff');
   }
 
-  const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).fade(0.9);
+  const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).alpha(0.08);
   setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
 };
 

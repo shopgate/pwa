@@ -15,3 +15,7 @@ export const unavailable = css({
   letterSpacing: '0.05em',
   opacity: 0.5,
 }).toString();
+
+export const locationName = css({
+  color: 'var(--color-text-medium-emphasis)',
+});

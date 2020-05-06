@@ -47,7 +47,7 @@ export const productName = css({
 
 export const productProperties = css({
   paddingTop: variables.gap.small,
-  color: colors.shade6,
+  color: 'var(--color-text-low-emphasis)',
   fontSize: '1rem',
 }).toString();
 

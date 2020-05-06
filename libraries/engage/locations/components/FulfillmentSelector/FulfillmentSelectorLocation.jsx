@@ -11,8 +11,10 @@ import { ChangeLocationButton } from '../ChangeLocationButton';
 import { StockInfo } from '../StockInfo';
 import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossibleError';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
-import { container, unavailable } from './FulfillmentSelectorLocation.style';
-import { itemRow, itemColumn, itemSpacer } from './FulfillmentSelectorItem.style';
+import { container, unavailable, locationName } from './FulfillmentSelectorLocation.style';
+import {
+  itemRow, itemColumn, itemSpacer,
+} from './FulfillmentSelectorItem.style';
 
 /**
  * The FulfillmentSelectorLocation component
@@ -52,7 +54,7 @@ export function FulfillmentSelectorLocation() {
         <Grid className={classNames(itemRow, container)} component="div">
           <ResponsiveContainer appAlways breakpoint="xs">
             <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-              <div>{usedLocation.name}</div>
+              <div className={locationName}>{usedLocation.name}</div>
               <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
             </Grid.Item>
             <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
@@ -61,7 +63,7 @@ export function FulfillmentSelectorLocation() {
           </ResponsiveContainer>
           <ResponsiveContainer webOnly breakpoint=">xs">
             <div>
-              <div>{usedLocation.name}</div>
+              <div className={locationName}>{usedLocation.name}</div>
               <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
             </div>
             <div className={itemSpacer}>
@@ -72,7 +74,7 @@ export function FulfillmentSelectorLocation() {
       )}
       {(isRopeMethodEnabled && selected && !isOrderable) && (
         <div className={container}>
-          <div>{usedLocation.name}</div>
+          <div className={locationName}>{usedLocation.name}</div>
           <FulfillmentSelectorImpossibleError />
           <ChangeLocationButton onClick={handleChangeLocation} />
         </div>

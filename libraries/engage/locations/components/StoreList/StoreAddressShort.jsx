@@ -26,7 +26,7 @@ export function StoreAddressShort({ address }: Props) {
 
   return (
     <Link target="_blank" href={mapsUrl}>
-      <StoreDetailsLine icon={LocationIcon}>
+      <StoreDetailsLine icon={LocationIcon} linked>
         <Ellipsis rows={1} className={detailsPrimary}>
           {i18n.text('locations.address', address)}
         </Ellipsis>

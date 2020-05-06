@@ -21,12 +21,12 @@ type Props = LocationAware;
  * @returns {JSX}
  */
 export function CartItemCardReservationLabel({ location, fulfillmentMethod }: Props) {
-  const { cartItem, registerFulfillmentAction } = useCartItem();
+  const { cartItem, isEditable, registerFulfillmentAction } = useCartItem();
 
   if (!location) {
     return null;
   }
-
+  console.warn(isEditable);
   const suffix = fulfillmentMethod === BOPIS ? 'bopis' : 'ropis';
 
   return (
@@ -38,13 +38,16 @@ export function CartItemCardReservationLabel({ location, fulfillmentMethod }: Pr
         <div className={name}>
           {location.name}
         </div>
-        <ResponsiveContainer webOnly breakpoint=">xs">
-          <CartItemCardReservationLabelChangeStore />
-          <CartItemProductChangeLocation
-            cartItem={cartItem}
-            registerAction={registerFulfillmentAction}
-          />
-        </ResponsiveContainer>
+        { isEditable && (
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            <CartItemCardReservationLabelChangeStore />
+            <CartItemProductChangeLocation
+              cartItem={cartItem}
+              registerAction={registerFulfillmentAction}
+            />
+          </ResponsiveContainer>
+        )}
+
         <ResponsiveContainer appAlways breakpoint="<=xs">
           <div className={method}>
             {i18n.text(`locations.method.${suffix}`)}

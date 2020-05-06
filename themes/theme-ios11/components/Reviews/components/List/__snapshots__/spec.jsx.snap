@@ -78,7 +78,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-5lxuz4"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -262,7 +262,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-1m683rn"
+                className="css-13xh6j9"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -471,7 +471,7 @@ exports[`<List /> should render list with reviews 1`] = `
         }
       >
         <div
-          className="css-1dhkxb0"
+          className="css-focklv"
           role="text"
         >
           <ReviewDate
@@ -525,7 +525,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-5lxuz4"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -709,7 +709,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-1m683rn"
+                className="css-13xh6j9"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -810,7 +810,7 @@ exports[`<List /> should render list with reviews 1`] = `
         }
       >
         <div
-          className="css-1dhkxb0"
+          className="css-focklv"
           role="text"
         >
           <ReviewDate
@@ -881,7 +881,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-5lxuz4"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -1065,7 +1065,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-1m683rn"
+                className="css-13xh6j9"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -1202,7 +1202,7 @@ exports[`<List /> should render list with reviews 1`] = `
         }
       >
         <div
-          className="css-1dhkxb0"
+          className="css-focklv"
           role="text"
         >
           <ReviewDate
@@ -1273,7 +1273,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-5lxuz4"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -1457,7 +1457,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-1m683rn"
+                className="css-13xh6j9"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -1516,7 +1516,7 @@ exports[`<List /> should render list with reviews 1`] = `
         }
       >
         <div
-          className="css-1dhkxb0"
+          className="css-focklv"
           role="text"
         >
           <ReviewDate

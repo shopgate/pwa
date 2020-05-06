@@ -30,6 +30,7 @@ css.global('body', {
   WebkitOverflowScrolling: 'touch',
   WebkitUserSelect: hasWebBridge() ? 'inherit' : 'none',
   userSelect: hasWebBridge() ? 'inherit' : 'none',
+  color: 'var(--color-text-high-emphasis)',
 });
 
 css.global('[data-pattern]', {

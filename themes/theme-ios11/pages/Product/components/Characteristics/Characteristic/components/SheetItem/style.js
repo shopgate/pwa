@@ -8,6 +8,7 @@ const button = css({
   padding: '16px 16px 16px 0',
   textAlign: 'left',
   width: '100%',
+  color: 'var(--color-text-high-emphasis)',
 });
 
 const buttonDisabled = css(button, {
@@ -18,8 +19,8 @@ const bgColor = colors.darkGray;
 const boxShadowOffset = variables.gap.bigger;
 
 const buttonSelected = css(button, {
-  background: bgColor,
-  boxShadow: `-${boxShadowOffset}px 0 0 ${bgColor}, ${boxShadowOffset}px 0 0 ${bgColor}`,
+  background: `var(--color-background-accent, ${bgColor})`,
+  boxShadow: `-${boxShadowOffset}px 0 0 var(--color-background-accent, ${bgColor}), ${boxShadowOffset}px 0 0 $var(--color-background-accent, ${bgColor})`,
   margin: '-1px 0',
   paddingTop: 17,
   paddingBottom: 17,

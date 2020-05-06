@@ -8,7 +8,7 @@ import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import { styles as formStyles } from '../Form';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const styles = {
   root: css({
@@ -20,12 +20,12 @@ const styles = {
   }).toString(),
   h1: css({
     fontSize: 24,
-    color: colors.dark,
     marginBottom: 4,
+    color: 'var(--color-text-high-emphasis)',
   }).toString(),
   h2: css({
     fontSize: 16,
-    color: '#494949',
+
   }).toString(),
   form: css({
     ' .pickupFormPickupPerson': {
@@ -35,13 +35,16 @@ const styles = {
       marginRight: variables.gap.big,
     },
     ' .pickupFormPickupPerson .label span': {
-      color: colors.dark,
+      color: 'var(--color-text-high-emphasis)',
       fontSize: 20,
       fontWeight: 'bold',
     },
     ' .pickupFormPickupPerson .radioGroup': {
       marginTop: variables.gap.small,
       flexDirection: 'row',
+      ' .uncheckedIcon': {
+        color: 'var(--color-text-medium-emphasis)',
+      },
     },
     ...formStyles,
   }).toString(),
