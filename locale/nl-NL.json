@@ -243,12 +243,12 @@
     },
     "change_fulfillment": {
       "direct_ship": "Change to Delivery",
-      "bopis": "Change to Pay in Store",
+      "bopis": "Change to BOPIS",
       "ropis": "Change to Reservation"
     },
     "price_caption": {
       "reservation": "Reservation",
-      "pay_in_store": "Pay in Store"
+      "pay_in_store": ""
     }
   },
   "login": {

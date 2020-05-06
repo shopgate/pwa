@@ -35,7 +35,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
 >
   <GridItem
     aria-hidden={true}
-    className="css-cr41pz"
+    className="css-72p31p"
     component="li"
     grow={0}
     shrink={1}

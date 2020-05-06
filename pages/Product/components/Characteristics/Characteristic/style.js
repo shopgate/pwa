@@ -2,7 +2,8 @@ import { css } from 'glamor';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const button = css({
-  background: themeColors.overlay,
+  background: `var(--color-background-accent, ${themeColors.overlay})`,
+  color: 'var(--color-text-high-emphasis)',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
