@@ -8,7 +8,7 @@ const row = css({
 }).toString();
 
 const wrapper = css({
-  backgroundColor: colors.shade8,
+  backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
   padding: `${variables.gap.small}px ${variables.gap.big}px`,
   minHeight: 56,
 }).toString();
@@ -17,10 +17,14 @@ const element = css({
   paddingBottom: 0,
   '& label': {
     fontWeight: 400,
-    color: 'inherit',
+    color: 'var(--color-text-low-emphasis, inherit)',
   },
   '& input': {
     fontWeight: 500,
+    color: 'var(--color-text-high-emphasis)',
+  },
+  '& .placeholder': {
+    color: 'var(--color-text-low-emphasis)',
   },
 }).toString();
 
