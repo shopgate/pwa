@@ -45,7 +45,7 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
       actions: pickupFieldActions,
       label: `${i18n.text('checkout.pickup_contact.form.emailAddress')} *`,
     },
-    cellPhone: {
+    mobile: {
       type: 'phone_picker',
       label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
       actions: pickupFieldActions,

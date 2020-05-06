@@ -33,11 +33,11 @@ const defaultPickupPersonState = {
   pickupPerson: 'me',
   firstName: '',
   lastName: '',
-  cellPhone: '',
+  mobile: '',
   email: '',
   firstName2: '',
   lastName2: '',
-  cellPhone2: '',
+  mobile2: '',
   email2: '',
 };
 
@@ -123,7 +123,7 @@ const CheckoutProvider = ({
               type: 'pickup',
               firstName: values.firstName,
               lastName: values.lastName,
-              mobile: values.cellPhone,
+              mobile: values.mobile,
               emailAddress: values.emailAddress,
             },
           ],
