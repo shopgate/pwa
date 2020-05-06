@@ -85,16 +85,6 @@ const wrapStripeElement = Element => class extends React.Component {
     return <Element
       {...this.props}
       onChange={this.onChange}
-      options={{
-        style: {
-          base: {
-            color: getCSSCustomProp('--color-text-high-emphasis'),
-            '::placeholder': {
-              color: getCSSCustomProp('--color-text-high-emphasis'),
-            },
-          },
-        },
-      }}
     />;
   }
 };
@@ -123,6 +113,17 @@ const Billing = () => {
     return null;
   }
 
+  const textFieldStyles = {
+    style: {
+      base: {
+        color: getCSSCustomProp('--color-text-high-emphasis'),
+        '::placeholder': {
+          color: getCSSCustomProp('--color-text-low-emphasis'),
+        },
+      },
+    },
+  };
+
   return (
     <div ref={cardRef} className={styles.root}>
       <Section title="checkout.creditCard.headline" hasForm>
@@ -138,6 +139,7 @@ const Billing = () => {
           attributes={{
             options: {
               showIcon: true,
+              ...textFieldStyles,
             },
           }}
         />
@@ -150,6 +152,11 @@ const Billing = () => {
             isControlled={false}
             onChange={() => error && setError(null)}
             value=" "
+            attributes={{
+              options: {
+                ...textFieldStyles,
+              },
+            }}
           />
           <TextField
             className={styles.expiry}
@@ -159,6 +166,11 @@ const Billing = () => {
             isControlled={false}
             onChange={() => error && setError(null)}
             value=" "
+            attributes={{
+              options: {
+                ...textFieldStyles,
+              },
+            }}
           />
         </div>
       </Section>
