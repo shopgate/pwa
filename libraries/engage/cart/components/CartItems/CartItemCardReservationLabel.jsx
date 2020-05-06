@@ -26,7 +26,7 @@ export function CartItemCardReservationLabel({ location, fulfillmentMethod }: Pr
   if (!location) {
     return null;
   }
-  console.warn(isEditable);
+
   const suffix = fulfillmentMethod === BOPIS ? 'bopis' : 'ropis';
 
   return (
