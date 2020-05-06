@@ -1,4 +1,5 @@
 import React from 'react';
+import { i18n } from '@shopgate/engage/core';
 import { loadStripe } from '@stripe/stripe-js';
 import {
   Elements, CardNumberElement, useStripe, useElements,
@@ -32,9 +33,8 @@ const StripeProvider = ({ children }: Props) => {
     setError,
     fulfillTransaction: async ({ paymentTransactions }) => {
       const activeTransaction = paymentTransactions[0];
-      // TODO: remove me once API fixed it.
       if (!activeTransaction?.checkoutParams?.paymentIntent) {
-        setError('DEBUG: Missing payment intent and/or checkoutParams');
+        setError(i18n.text('checkout.errors.noPaymentTransaction'));
         return false;
       }
 

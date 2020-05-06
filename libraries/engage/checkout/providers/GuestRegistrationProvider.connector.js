@@ -8,8 +8,9 @@ import {
   isPickupAndBillingEquals,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
+import { getRequiredGuestCheckoutFields } from '@shopgate/engage/checkout/selectors/guestCheckout';
 import {
-  initializeCheckout,
+  prepareCheckout,
   fetchCheckoutOrder,
   updateCheckoutOrder,
 } from '@shopgate/engage/checkout';
@@ -33,13 +34,14 @@ function makeMapStateToProps() {
     billingAddress: getCheckoutBillingAddress(state),
     pickupAddress: getCheckoutPickupAddress(state),
     billingPickupEquals: isPickupAndBillingEquals(state),
+    requiredFields: getRequiredGuestCheckoutFields(state),
   });
 }
 
 const mapDispatchToProps = {
   historyReplace,
   fetchCheckoutOrder,
-  initializeCheckout,
+  prepareCheckout,
   updateCheckoutOrder,
 };
 

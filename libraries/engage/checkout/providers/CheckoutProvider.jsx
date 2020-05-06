@@ -33,11 +33,11 @@ const defaultPickupPersonState = {
   pickupPerson: 'me',
   firstName: '',
   lastName: '',
-  cellPhone: '',
+  mobile: '',
   email: '',
   firstName2: '',
   lastName2: '',
-  cellPhone2: '',
+  mobile2: '',
   email2: '',
 };
 
@@ -84,17 +84,23 @@ const CheckoutProvider = ({
 
   // Initialize checkout process.
   const [{ isCheckoutInitialized, needsPayment }] = useAsyncMemo(async () => {
-    LoadingProvider.setLoading(pathPattern);
+    try {
+      LoadingProvider.setLoading(pathPattern);
+      const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
+        initializeOrder: !orderInitialized,
+      });
+      LoadingProvider.resetLoading(pathPattern);
 
-    const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
-      initializeOrder: !orderInitialized,
-    });
-
-    LoadingProvider.resetLoading(pathPattern);
-    return {
-      isCheckoutInitialized: success,
-      needsPayment: needsPaymentCheckout,
-    };
+      return {
+        isCheckoutInitialized: success,
+        needsPayment: needsPaymentCheckout,
+      };
+    } catch (error) {
+      return {
+        isCheckoutInitialized: false,
+        needsPayment: false,
+      };
+    }
   }, [], false);
 
   // Handles submit of the checkout form.
@@ -103,26 +109,31 @@ const CheckoutProvider = ({
 
     // Update order to set pickup contact.
     if (!orderReadOnly) {
-      await updateCheckoutOrder({
-        notes: values.instructions,
-        addressSequences: [
-          billingAddress,
-          // When the customer is picking up himself we just take the
-          // billing address as pickup address.
-          values.pickupPerson === 'me' ? {
-            ...billingAddress,
-            type: 'pickup',
-          } : {
-            type: 'pickup',
-            firstName: values.firstName,
-            lastName: values.lastName,
-            mobile: values.cellPhone,
-            emailAddress: values.emailAddress,
-          },
-        ],
-        primaryBillToAddressSequenceIndex: 0,
-        primaryShipToAddressSequenceIndex: 1,
-      });
+      try {
+        await updateCheckoutOrder({
+          notes: values.instructions,
+          addressSequences: [
+            billingAddress,
+            // When the customer is picking up himself we just take the
+            // billing address as pickup address.
+            values.pickupPerson === 'me' ? {
+              ...billingAddress,
+              type: 'pickup',
+            } : {
+              type: 'pickup',
+              firstName: values.firstName,
+              lastName: values.lastName,
+              mobile: values.mobile,
+              emailAddress: values.emailAddress,
+            },
+          ],
+          primaryBillToAddressSequenceIndex: 0,
+          primaryShipToAddressSequenceIndex: 1,
+        });
+      } catch (error) {
+        setLocked(false);
+        return;
+      }
     }
 
     // Fulfill using selected payment method.
@@ -138,11 +149,16 @@ const CheckoutProvider = ({
     }
 
     // Submit fulfilled payment transaction to complete order.
-    await submitCheckoutOrder({
-      paymentTransactions: fulfilledPaymentTransactions,
-      userAgent: getUserAgent(),
-      platform: 'engage',
-    });
+    try {
+      await submitCheckoutOrder({
+        paymentTransactions: fulfilledPaymentTransactions,
+        userAgent: getUserAgent(),
+        platform: 'engage',
+      });
+    } catch (error) {
+      setLocked(false);
+      return;
+    }
 
     // Order is done, fetch again to retrieve infos for success page
     await Promise.all([
@@ -156,7 +172,6 @@ const CheckoutProvider = ({
   }, [
     orderReadOnly,
     needsPayment,
-    submitCheckoutOrder,
     fetchCheckoutOrder,
     fetchCart,
     historyReplace,
@@ -164,6 +179,7 @@ const CheckoutProvider = ({
     billingAddress,
     activePaymentMethod,
     paymentTransactions,
+    submitCheckoutOrder,
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.

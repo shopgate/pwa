@@ -1,5 +1,6 @@
 import React from 'react';
 import pickBy from 'lodash/pickBy';
+import mapValues from 'lodash/mapValues';
 import identity from 'lodash/identity';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
@@ -23,9 +24,9 @@ type Props = {
   userLocation: any,
   isDataReady: bool,
   billingPickupEquals: bool,
+  requiredFields: any,
   needsPayment: bool,
-  initializeCheckout: () => Promise<any>,
-  fetchCheckoutOrder: () => Promise<any>,
+  prepareCheckout: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
   historyReplace: (any) => void,
 };
@@ -67,11 +68,11 @@ const convertValidationErrors = validationErrors => Object
  * @returns {JSX}
  */
 const GuestRegistrationProvider = ({
+  prepareCheckout,
   historyReplace,
-  initializeCheckout,
-  fetchCheckoutOrder,
   updateCheckoutOrder,
   billingPickupEquals,
+  requiredFields,
   children,
   shopSettings,
   billingAddress,
@@ -86,11 +87,16 @@ const GuestRegistrationProvider = ({
 
   // Initialize checkout process.
   const [isInitialized] = useAsyncMemo(async () => {
-    LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
-    await initializeCheckout();
-    await fetchCheckoutOrder();
-    LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
-    return true;
+    try {
+      LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
+      await prepareCheckout({
+        initializePayment: false,
+      });
+      LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
+      return true;
+    } catch (error) {
+      return false;
+    }
   }, [], false);
 
   // Create initial values for billing and pickup forms.
@@ -127,26 +133,30 @@ const GuestRegistrationProvider = ({
     };
 
     // Update order to set pickup contact.
-    await updateCheckoutOrder({
-      notes: values.instructions,
-      addressSequences: [
-        newBillingAddress,
-        // When the customer is picking up himself we just take the
-        // billing address as pickup address.
-        pickupFormValues.pickupPerson === 'me' ? {
-          ...newBillingAddress,
-          type: 'pickup',
-        } : {
-          type: 'pickup',
-          firstName: pickupFormValues.firstName,
-          lastName: pickupFormValues.lastName,
-          mobile: pickupFormValues.mobile,
-          emailAddress: pickupFormValues.emailAddress,
-        },
-      ],
-      primaryBillToAddressSequenceIndex: 0,
-      primaryShipToAddressSequenceIndex: 1,
-    });
+    try {
+      await updateCheckoutOrder({
+        notes: values.instructions,
+        addressSequences: [
+          newBillingAddress,
+          // When the customer is picking up himself we just take the
+          // billing address as pickup address.
+          pickupFormValues.pickupPerson === 'me' ? {
+            ...newBillingAddress,
+            type: 'pickup',
+          } : {
+            type: 'pickup',
+            firstName: pickupFormValues.firstName,
+            lastName: pickupFormValues.lastName,
+            mobile: pickupFormValues.mobile,
+            emailAddress: pickupFormValues.emailAddress,
+          },
+        ],
+        primaryBillToAddressSequenceIndex: 0,
+        primaryShipToAddressSequenceIndex: 1,
+      });
+    } catch (error) {
+      return;
+    }
 
     LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
     historyReplace({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
@@ -164,11 +174,22 @@ const GuestRegistrationProvider = ({
     LoadingProvider.unsetLoading(GUEST_CHECKOUT_PATTERN);
   }, [isLocked]);
 
+  // Create validation rules based on required fields.
+  const billingValidationRules = React.useMemo(
+    () => mapValues(billingConstraints, (constraint, field) => {
+      const isRequired = requiredFields.includes(field);
+      return {
+        ...constraint,
+        presence: isRequired ? constraint.presence : undefined,
+      };
+    }), [requiredFields]
+  );
+
   // Hold form states.
   const formBillingState = useFormState(
     defaultBillingAddressState,
     handleSubmit,
-    billingConstraints
+    billingValidationRules
   );
 
   const handlePickupSubmit = React.useCallback((values) => {
@@ -205,6 +226,7 @@ const GuestRegistrationProvider = ({
     defaultBillingAddressState,
     userLocation,
     billingAddress,
+    requiredFields,
     needsPayment,
   }), [
     isLocked,
@@ -219,6 +241,7 @@ const GuestRegistrationProvider = ({
     defaultBillingAddressState,
     userLocation,
     billingAddress,
+    requiredFields,
     needsPayment,
   ]);
 

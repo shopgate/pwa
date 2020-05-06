@@ -48,11 +48,12 @@ const GuestRegistrationForm = () => {
     defaultBillingAddressState,
     formBillingValidationErrors,
     formBillingSetValues,
+    requiredFields,
   } = useGuestRegistration();
 
   const formConfig = React.useMemo(
-    () => generateFormConfig(supportedCountries, userLocation),
-    [supportedCountries, userLocation]
+    () => generateFormConfig(supportedCountries, userLocation, requiredFields),
+    [supportedCountries, userLocation, requiredFields]
   );
 
   const handleUpdate = React.useCallback((values) => {

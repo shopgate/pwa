@@ -8,7 +8,7 @@ const generateFormConfig = () => ({
   fields: {
     emailAddress: {
       type: 'email',
-      label: i18n.text('checkout.pickup_contact.form.emailAddress'),
+      label: `${i18n.text('checkout.pickup_contact.form.emailAddress')} *`,
     },
     password: {
       type: 'password',

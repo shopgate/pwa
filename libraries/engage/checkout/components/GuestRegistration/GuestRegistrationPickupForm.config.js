@@ -28,21 +28,21 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
     firstName: {
       type: 'text',
       actions: pickupFieldActions,
-      label: i18n.text('checkout.pickup_contact.form.firstName'),
+      label: `${i18n.text('checkout.pickup_contact.form.firstName')} *`,
     },
     lastName: {
       type: 'text',
       actions: pickupFieldActions,
-      label: i18n.text('checkout.pickup_contact.form.lastName'),
+      label: `${i18n.text('checkout.pickup_contact.form.lastName')} *`,
     },
     emailAddress: {
       type: 'email',
       actions: pickupFieldActions,
-      label: i18n.text('checkout.pickup_contact.form.emailAddress'),
+      label: `${i18n.text('checkout.pickup_contact.form.emailAddress')} *`,
     },
     mobile: {
       type: 'phone_picker',
-      label: i18n.text('checkout.pickup_contact.form.cellPhone'),
+      label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
       actions: pickupFieldActions,
       config: {
         supportedCountries,

@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const outerGap = 40;
@@ -12,6 +13,14 @@ const container = css({
   borderRadius: 2,
   boxShadow: themeConfig.shadows.dialog,
   background: themeConfig.colors.light,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    width: `calc(80vh - ${outerGap * 2}px)`,
+    maxHeight: `calc(80vh - ${outerGap * 2}px)`,
+  },
+  [responsiveMediaQuery('>md', { webOnly: true })]: {
+    width: `calc(var(--page-content-width) * 0.5 - ${outerGap * 2}px)`,
+    maxHeight: `calc(var(--page-content-width) * 0.5 - ${outerGap * 2}px)`,
+  },
 }).toString();
 
 const content = css({
