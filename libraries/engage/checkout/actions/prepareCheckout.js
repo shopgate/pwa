@@ -67,8 +67,8 @@ export const prepareCheckout = ({
       ));
     }
 
-    // Add payment transaction for stripe.
     try {
+      // Add payment transaction for stripe.
       await dispatch(updateCheckoutOrder({
         paymentTransactions: [{
           paymentMethod: {
@@ -76,16 +76,15 @@ export const prepareCheckout = ({
           },
         }],
       }));
-    } catch (error) {
-      return dispatch(errorCheckout(
-        'checkout.errors.genericUpdate',
-        'shopgate.checkout.updateOrder',
-        error
-      ));
-    }
 
-    // Fetch updated order with new transaction config.
-    await dispatch(fetchCheckoutOrder());
+      // Fetch updated order with new transaction config.
+      await dispatch(fetchCheckoutOrder());
+    } catch (error) {
+      return {
+        success: false,
+        needsPayment: false,
+      };
+    }
   }
 
   return {

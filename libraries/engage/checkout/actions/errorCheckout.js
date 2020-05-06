@@ -7,16 +7,20 @@ import * as Sentry from '@sentry/browser';
  * @param {string} message Message shown to the user.
  * @param {string} pipeline Pipeline name.
  * @param {Object} error Error.
+ * @param {boolean} redirect Whether it should redirect.
  * @return {Object}
  */
-export const errorCheckout = (message, pipeline, error) => (dispatch) => {
+export const errorCheckout = (message, pipeline, error, redirect) => (dispatch) => {
   const errorObject = {
     code: error.code || 'NOT SET',
     message: error.toString(),
   };
 
   // Go back to homepage and inform shopper.
-  dispatch(historyResetTo(INDEX_PATH));
+  if (redirect) {
+    dispatch(historyResetTo(INDEX_PATH));
+  }
+
   dispatch(showModal({
     type: MODAL_PIPELINE_ERROR,
     title: null,

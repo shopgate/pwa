@@ -5,6 +5,7 @@ import {
   SUBMIT_CHECKOUT_ORDER_SUCCESS,
   SUBMIT_CHECKOUT_ORDER_ERROR,
 } from '../constants/actionTypes';
+import { ERROR_CODE_CHECKOUT_GENERIC } from '../constants/errorCodes';
 import { errorCheckout } from './errorCheckout';
 
 /**
@@ -23,6 +24,7 @@ export const submitCheckoutOrder = payload => async (dispatch) => {
   try {
     await (new PipelineRequest('shopgate.checkout.submit')
       .setInput(payload)
+      .setErrorBlacklist([ERROR_CODE_CHECKOUT_GENERIC])
       .dispatch());
 
     dispatch({ type: SUBMIT_CHECKOUT_ORDER_SUCCESS });
@@ -31,7 +33,8 @@ export const submitCheckoutOrder = payload => async (dispatch) => {
     dispatch(errorCheckout(
       'checkout.errors.genericSubmit',
       'shopgate.checkout.submit',
-      error
+      error,
+      false
     ));
     dispatch({ type: SUBMIT_CHECKOUT_ORDER_ERROR });
   }

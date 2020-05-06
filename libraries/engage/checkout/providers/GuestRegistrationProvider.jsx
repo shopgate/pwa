@@ -133,26 +133,30 @@ const GuestRegistrationProvider = ({
     };
 
     // Update order to set pickup contact.
-    await updateCheckoutOrder({
-      notes: values.instructions,
-      addressSequences: [
-        newBillingAddress,
-        // When the customer is picking up himself we just take the
-        // billing address as pickup address.
-        pickupFormValues.pickupPerson === 'me' ? {
-          ...newBillingAddress,
-          type: 'pickup',
-        } : {
-          type: 'pickup',
-          firstName: pickupFormValues.firstName,
-          lastName: pickupFormValues.lastName,
-          mobile: pickupFormValues.mobile,
-          emailAddress: pickupFormValues.emailAddress,
-        },
-      ],
-      primaryBillToAddressSequenceIndex: 0,
-      primaryShipToAddressSequenceIndex: 1,
-    });
+    try {
+      await updateCheckoutOrder({
+        notes: values.instructions,
+        addressSequences: [
+          newBillingAddress,
+          // When the customer is picking up himself we just take the
+          // billing address as pickup address.
+          pickupFormValues.pickupPerson === 'me' ? {
+            ...newBillingAddress,
+            type: 'pickup',
+          } : {
+            type: 'pickup',
+            firstName: pickupFormValues.firstName,
+            lastName: pickupFormValues.lastName,
+            mobile: pickupFormValues.mobile,
+            emailAddress: pickupFormValues.emailAddress,
+          },
+        ],
+        primaryBillToAddressSequenceIndex: 0,
+        primaryShipToAddressSequenceIndex: 1,
+      });
+    } catch (error) {
+      return;
+    }
 
     LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
     historyReplace({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });

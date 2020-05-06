@@ -109,26 +109,31 @@ const CheckoutProvider = ({
 
     // Update order to set pickup contact.
     if (!orderReadOnly) {
-      await updateCheckoutOrder({
-        notes: values.instructions,
-        addressSequences: [
-          billingAddress,
-          // When the customer is picking up himself we just take the
-          // billing address as pickup address.
-          values.pickupPerson === 'me' ? {
-            ...billingAddress,
-            type: 'pickup',
-          } : {
-            type: 'pickup',
-            firstName: values.firstName,
-            lastName: values.lastName,
-            mobile: values.cellPhone,
-            emailAddress: values.emailAddress,
-          },
-        ],
-        primaryBillToAddressSequenceIndex: 0,
-        primaryShipToAddressSequenceIndex: 1,
-      });
+      try {
+        await updateCheckoutOrder({
+          notes: values.instructions,
+          addressSequences: [
+            billingAddress,
+            // When the customer is picking up himself we just take the
+            // billing address as pickup address.
+            values.pickupPerson === 'me' ? {
+              ...billingAddress,
+              type: 'pickup',
+            } : {
+              type: 'pickup',
+              firstName: values.firstName,
+              lastName: values.lastName,
+              mobile: values.cellPhone,
+              emailAddress: values.emailAddress,
+            },
+          ],
+          primaryBillToAddressSequenceIndex: 0,
+          primaryShipToAddressSequenceIndex: 1,
+        });
+      } catch (error) {
+        setLocked(false);
+        return;
+      }
     }
 
     // Fulfill using selected payment method.
@@ -151,6 +156,7 @@ const CheckoutProvider = ({
         platform: 'engage',
       });
     } catch (error) {
+      setLocked(false);
       return;
     }
 
@@ -166,7 +172,6 @@ const CheckoutProvider = ({
   }, [
     orderReadOnly,
     needsPayment,
-    submitCheckoutOrder,
     fetchCheckoutOrder,
     fetchCart,
     historyReplace,
@@ -174,6 +179,7 @@ const CheckoutProvider = ({
     billingAddress,
     activePaymentMethod,
     paymentTransactions,
+    submitCheckoutOrder,
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.

@@ -5,6 +5,7 @@ import {
   FETCH_CHECKOUT_ORDER_SUCCESS,
   FETCH_CHECKOUT_ORDER_ERROR,
 } from '../constants/actionTypes';
+import { ERROR_CODE_CHECKOUT_GENERIC } from '../constants/errorCodes';
 
 /**
  * Starts entering the checkout process for the customer.
@@ -15,7 +16,9 @@ export const fetchCheckoutOrder = () => async (dispatch) => {
   dispatch({ type: FETCH_CHECKOUT_ORDER });
 
   const pipelineRequest = new PipelineRequest('shopgate.checkout.getOrder');
-  const { order, errors } = await pipelineRequest.dispatch();
+  const { order, errors } = await pipelineRequest
+    .setErrorBlacklist([ERROR_CODE_CHECKOUT_GENERIC])
+    .dispatch();
 
   if (errors?.length) {
     dispatch({
