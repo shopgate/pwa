@@ -75,6 +75,24 @@ export function makeGetEnabledFulfillmentMethods(): Selector<any, string[]> {
 }
 
 /**
+ * Creates a selector that counts the enabled fulfillment paths from the merchant settings.
+ * @returns {Function}
+ */
+export function makeGetEnabledFulfillmentMethodsCount() {
+  const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+  return createSelector(
+    getEnabledFulfillmentMethods,
+    (methods) => {
+      if (methods === null) {
+        return 0;
+      }
+
+      return methods.length;
+    }
+  );
+}
+
+/**
  * Creates a selector that retrieves the enabled fulfillment paths.
  * @returns {Function}
  */

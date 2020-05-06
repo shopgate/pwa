@@ -19,7 +19,7 @@ import { CartItemProductPrice } from './CartItemProductPrice';
 import { CartItemProductLayoutWideRemoveItem } from './CartItemProductLayoutWideRemoveItem';
 import { CartItemProductLayoutWideFulfillmentLabel } from './CartItemProductLayoutWideFulfillmentLabel';
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
-import { useCartItemProduct } from './CartItem.hooks';
+import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import {
   container,
   imageColumn,
@@ -38,6 +38,7 @@ import {
  * @returns {JSX}
  */
 const CartItemProductLayoutWide = () => {
+  const { merchantFulfillmentMethodsCount } = useCartItem();
   const context = useCartItemProduct();
   const {
     cartItem,
@@ -118,7 +119,7 @@ const CartItemProductLayoutWide = () => {
           />
           <CartItemProductPriceCaption />
         </div>
-        { isEditable && (
+        { isEditable && merchantFulfillmentMethodsCount > 1 && (
           <div className={contextMenu}>
             <CartContextMenuChangeFulfillment cartItem={cartItem} />
           </div>

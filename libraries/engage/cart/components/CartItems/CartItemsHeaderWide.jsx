@@ -9,15 +9,17 @@ import {
   contextMenuColumn,
   quantityPickerColumn,
 } from './CartItemsHeaderWide.style';
+import connect from './CartItemsHeaderWide.connector';
 
 type Props = {
   editable?: boolean,
+  enabledFulfillmentMethodsCount: number,
 }
 
 /**
  * @returns {JSX}
  */
-const CartItemsHeaderWide = ({ editable }: Props) => (
+const CartItemsHeaderWide = ({ editable, enabledFulfillmentMethodsCount }: Props) => (
   <div className={header}>
     <div className={imageColumn}>
       <I18n.Text string="cart.items" />
@@ -32,7 +34,7 @@ const CartItemsHeaderWide = ({ editable }: Props) => (
     <div className={column}>
       <I18n.Text string="cart.subtotal" />
     </div>
-    { editable && (
+    { editable && enabledFulfillmentMethodsCount > 1 && (
       <div className={contextMenuColumn} />
     )}
   </div>
@@ -42,4 +44,4 @@ CartItemsHeaderWide.defaultProps = {
   editable: true,
 };
 
-export default hot(CartItemsHeaderWide);
+export default hot(connect(CartItemsHeaderWide));
