@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { convertLineItemsToCartItems } from '../helpers';
+import { ROPIS } from '../../locations';
 
 /**
  * Returns the current order created in the checkout process.
@@ -143,5 +144,21 @@ export const getCheckoutTaxLines = createSelector(
         currencyCode: order.currencyCode,
       },
     ];
+  }
+);
+
+/**
+ * Returns whether the active order is a pure reservation.
+ */
+export const getIsReserveOnly = createSelector(
+  getCheckoutOrder,
+  (order) => {
+    if (!order) return null;
+
+    const nonReserveItem = order.lineItems.find(
+      lineItem => lineItem.fulfillmentMethod !== ROPIS
+    );
+
+    return !nonReserveItem;
   }
 );

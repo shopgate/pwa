@@ -10,10 +10,12 @@ export const initializeCheckout = () => async (dispatch) => {
   LoadingProvider.setLoading(CHECKOUT_PATTERN);
   dispatch({ type: INITIALIZE_CHECKOUT });
 
+  let pipelineError;
   try {
     await (new PipelineRequest('shopgate.checkout.initialize').dispatch());
     dispatch({ type: INITIALIZE_CHECKOUT_SUCCESS });
   } catch (error) {
+    pipelineError = error;
     dispatch({
       type: INITIALIZE_CHECKOUT_ERROR,
       error,
@@ -21,4 +23,7 @@ export const initializeCheckout = () => async (dispatch) => {
   }
 
   LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
+  if (pipelineError) {
+    throw pipelineError;
+  }
 };

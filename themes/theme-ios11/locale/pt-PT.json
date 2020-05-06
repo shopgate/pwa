@@ -328,8 +328,11 @@
     "continue": "Continue",
     "steps": "Step {from} of {to}",
     "errors": {
-      "initFailed": "Failed to open checkout process.",
-      "missingPaymentMethod": "No payment method configured"
+      "genericInitialize": "Checkout is currently unavailable, please try again later.",
+      "genericUpdate": "Failed to process order, please try again later.",
+      "genericSubmit": "Failed to complete order, please try again later.",
+      "missingPaymentMethod": "No payment method configured.",
+      "noPaymentTransaction": "No payment transaction available."
     },
     "pickup_contact": {
       "headline": "Pickup Contact Info",

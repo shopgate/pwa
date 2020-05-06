@@ -1,28 +1,40 @@
 import { i18n } from '@shopgate/engage/core';
 
 /**
+ * Returns the field label.
+ * @param {string} fieldName The name of the field.
+ * @param {Array} requiredFields Array of all required fields.
+ * @returns {string}
+ */
+const getFieldLabel = (fieldName, requiredFields) => {
+  const isRequired = requiredFields.includes(fieldName);
+  return `${i18n.text(`checkout.pickup_contact.form.${fieldName}`)}${isRequired ? ' *' : ''}`;
+};
+
+/**
  * Generates form configuration.
  * @param {Array} supportedCountries A list of supported countries.
  * @param {Object} userLocation User location for better phone picker defaults.
+ * @param {Array} requiredFields Array of all required fields.
  * @returns {Object}
  */
-const generateFormConfig = (supportedCountries, userLocation) => ({
+const generateFormConfig = (supportedCountries, userLocation, requiredFields) => ({
   fields: {
     firstName: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.firstName'),
+      label: getFieldLabel('firstName', requiredFields),
     },
     lastName: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.lastName'),
+      label: getFieldLabel('lastName', requiredFields),
     },
     emailAddress: {
       type: 'email',
-      label: i18n.text('checkout.pickup_contact.form.emailAddress'),
+      label: getFieldLabel('emailAddress', requiredFields),
     },
     mobile: {
       type: 'phone_picker',
-      label: i18n.text('checkout.pickup_contact.form.cellPhone'),
+      label: getFieldLabel('mobile', requiredFields),
       config: {
         supportedCountries,
         userLocation,
@@ -30,32 +42,32 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
     },
     company: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.company'),
+      label: getFieldLabel('company', requiredFields),
     },
     address1: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.address1'),
+      label: getFieldLabel('address1', requiredFields),
     },
     address2: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.address2'),
+      label: getFieldLabel('address2', requiredFields),
     },
     postalCode: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.zipcode'),
+      label: getFieldLabel('postalCode', requiredFields),
     },
     city: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.city'),
+      label: getFieldLabel('city', requiredFields),
     },
     country: {
       type: 'country',
-      label: i18n.text('checkout.pickup_contact.form.country'),
+      label: getFieldLabel('country', requiredFields),
       countries: supportedCountries,
     },
     region: {
       type: 'province',
-      label: i18n.text('checkout.pickup_contact.form.region'),
+      label: getFieldLabel('region', requiredFields),
       required: true,
     },
   },

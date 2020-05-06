@@ -48,14 +48,19 @@ const Billing = () => {
         {billingAddress.address4?.length ? (
           <span>{billingAddress.address4}</span>
         ) : null}
-        <span>
-          {i18n.text('checkout.billing.address', {
-            postalCode: billingAddress.postalCode || '',
-            region: billingAddress.region || '',
-            city: billingAddress.city || '',
-            country: billingAddress.country || '',
-          })}
-        </span>
+        {billingAddress.postalCode ||
+          billingAddress.region ||
+          billingAddress.city ||
+          billingAddress.country ? (
+            <span>
+              {i18n.text('checkout.billing.address', {
+                postalCode: billingAddress.postalCode || '',
+                region: billingAddress.region || '',
+                city: billingAddress.city || '',
+                country: billingAddress.country || '',
+              })}
+            </span>
+          ) : null}
       </Section>
     </div>
   );

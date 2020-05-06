@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
-import { ROPIS } from '../../locations';
-import { getCheckoutOrder } from './order';
+import { getIsReserveOnly } from './order';
 
 /**
  * Returns all available payment methods.
@@ -32,16 +31,8 @@ export const getStripePublishableKey = createSelector(
   }
 );
 
-export const getNeedsPaymentForOrder = createSelector(
-  getCheckoutOrder,
-  (order) => {
-    if (!order) return null;
-
-    const nonReserveItem = order.lineItems.find(
-      lineItem => lineItem.fulfillmentMethod !== ROPIS
-    );
-
-    // Payment is only required if at least one non-reserve item is in order.
-    return !!nonReserveItem;
-  }
-);
+/**
+ * @param {Object} state App state
+ * @returns {boolean}
+ */
+export const getNeedsPaymentForOrder = state => !getIsReserveOnly(state);

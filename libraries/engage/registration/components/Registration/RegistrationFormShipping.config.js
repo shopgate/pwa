@@ -10,11 +10,11 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
   fields: {
     firstName: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.firstName'),
+      label: `${i18n.text('checkout.pickup_contact.form.firstName')} *`,
     },
     lastName: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.lastName'),
+      label: `${i18n.text('checkout.pickup_contact.form.lastName')} *`,
     },
     companyName: {
       type: 'text',
@@ -22,7 +22,7 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
     },
     address1: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.address1'),
+      label: `${i18n.text('checkout.pickup_contact.form.address1')} *`,
     },
     address2: {
       type: 'text',
@@ -30,25 +30,25 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
     },
     city: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.city'),
+      label: `${i18n.text('checkout.pickup_contact.form.city')} *`,
     },
     region: {
       type: 'province',
-      label: i18n.text('checkout.pickup_contact.form.region'),
+      label: `${i18n.text('checkout.pickup_contact.form.region')} *`,
       required: true,
     },
     country: {
       type: 'country',
-      label: i18n.text('checkout.pickup_contact.form.country'),
+      label: `${i18n.text('checkout.pickup_contact.form.country')} *`,
       countries: supportedCountries,
     },
     postalCode: {
       type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.zipcode'),
+      label: `${i18n.text('checkout.pickup_contact.form.postalCode')} *`,
     },
     mobile: {
       type: 'phone_picker',
-      label: i18n.text('checkout.pickup_contact.form.cellPhone'),
+      label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
       config: {
         supportedCountries,
         userLocation,

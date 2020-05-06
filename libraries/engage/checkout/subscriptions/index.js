@@ -1,9 +1,6 @@
-import {
-  main$, routeDidLeave$, historyPop, showModal,
-} from '@shopgate/engage/core';
+import { routeDidLeave$ } from '@shopgate/engage/core';
 import { userDidLogout$ } from '@shopgate/engage/user';
 import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants';
-import { FETCH_CHECKOUT_ORDER_ERROR } from '../constants/actionTypes';
 import { clearCheckoutOrder } from '../index';
 
 /**
@@ -19,18 +16,5 @@ export default function checkout(subscribe) {
 
   subscribe(userDidLogout$, ({ dispatch }) => {
     dispatch(clearCheckoutOrder());
-  });
-
-  const failedToFetchOrder$ = main$
-    .filter(({ action }) => action.type === FETCH_CHECKOUT_ORDER_ERROR);
-
-  subscribe(failedToFetchOrder$, ({ dispatch }) => {
-    dispatch(historyPop());
-    dispatch(showModal({
-      title: null,
-      confirm: null,
-      dismiss: 'modal.ok',
-      message: 'checkout.errors.initFailed',
-    }));
   });
 }

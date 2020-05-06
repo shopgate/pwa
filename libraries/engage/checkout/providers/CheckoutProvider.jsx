@@ -84,17 +84,23 @@ const CheckoutProvider = ({
 
   // Initialize checkout process.
   const [{ isCheckoutInitialized, needsPayment }] = useAsyncMemo(async () => {
-    LoadingProvider.setLoading(pathPattern);
+    try {
+      LoadingProvider.setLoading(pathPattern);
+      const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
+        initializeOrder: !orderInitialized,
+      });
+      LoadingProvider.resetLoading(pathPattern);
 
-    const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
-      initializeOrder: !orderInitialized,
-    });
-
-    LoadingProvider.resetLoading(pathPattern);
-    return {
-      isCheckoutInitialized: success,
-      needsPayment: needsPaymentCheckout,
-    };
+      return {
+        isCheckoutInitialized: success,
+        needsPayment: needsPaymentCheckout,
+      };
+    } catch (error) {
+      return {
+        isCheckoutInitialized: false,
+        needsPayment: false,
+      };
+    }
   }, [], false);
 
   // Handles submit of the checkout form.
@@ -138,11 +144,15 @@ const CheckoutProvider = ({
     }
 
     // Submit fulfilled payment transaction to complete order.
-    await submitCheckoutOrder({
-      paymentTransactions: fulfilledPaymentTransactions,
-      userAgent: getUserAgent(),
-      platform: 'engage',
-    });
+    try {
+      await submitCheckoutOrder({
+        paymentTransactions: fulfilledPaymentTransactions,
+        userAgent: getUserAgent(),
+        platform: 'engage',
+      });
+    } catch (error) {
+      return;
+    }
 
     // Order is done, fetch again to retrieve infos for success page
     await Promise.all([
