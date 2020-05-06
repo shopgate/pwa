@@ -17,7 +17,8 @@ const greyStyle = css({
 
 const prominentStyle = css({
   ...main,
-  color: `var(--color-primary, ${colors.primary})`,
+  // Before the custom properties the primary color was used for the rating stars.
+  color: `var(--color-secondary, ${colors.primary})`,
 }).toString();
 
 export {

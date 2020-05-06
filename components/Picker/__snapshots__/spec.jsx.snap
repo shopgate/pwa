@@ -41,7 +41,7 @@ exports[`<Picker /> should render the picker 1`] = `
                 tabindex="0"
               >
                 <button
-                  class="css-164ggb6"
+                  class="css-2zickb"
                   type="button"
                 >
                   <span
@@ -79,7 +79,7 @@ exports[`<Picker /> should render the picker 1`] = `
               value=""
             >
               <button
-                className="css-164ggb6"
+                className="css-2zickb"
                 onClick={[Function]}
                 type="button"
               >
