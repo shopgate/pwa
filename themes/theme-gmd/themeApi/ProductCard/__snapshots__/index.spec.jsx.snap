@@ -269,7 +269,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                           data-test-id="-50%"
                         >
                           <Translate
-                            className="css-160c5eh "
+                            className="css-t5udo1 "
                             params={
                               Array [
                                 null,
@@ -280,7 +280,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                             transform={null}
                           >
                             <span
-                              className="css-160c5eh "
+                              className="css-t5udo1 "
                               role={null}
                             >
                               -50%
@@ -320,7 +320,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                       role="text"
                     >
                       <div
-                        className="css-4s85e9"
+                        className="css-5lxuz4"
                       >
                         <div
                           className="css-kdb68h css-q4owmg"
@@ -504,7 +504,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-1m683rn"
+                        className="css-13xh6j9"
                       >
                         <div
                           className="css-kdb68h css-q4owmg"

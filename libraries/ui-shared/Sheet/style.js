@@ -9,7 +9,7 @@ const container = css({
   bottom: 0,
   background: themeConfig.colors.light,
   width: '100vw',
-  color: themeConfig.colors.dark,
+  color: `var(--color-text-high-emphasis, ${themeConfig.colors.dark})`,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     width: '80%',
     height: 'max-content',

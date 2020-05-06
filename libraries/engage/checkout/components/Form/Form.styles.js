@@ -7,7 +7,7 @@ const formStyles = {
   ' .textField, .formElement:not(.radioGroup), .phonePicker': {
     paddingBottom: 8,
     ...(!isIOSTheme() ? {
-      background: colors.shade8,
+      background: `var(--color-background-accent, ${colors.shade8})`,
       padding: 0,
       marginBottom: 38,
       borderTopLeftRadius: 4,
@@ -28,16 +28,19 @@ const formStyles = {
   ' .formElement:not(.radioGroup) label': {
     ...(!isIOSTheme() ? {
       paddingLeft: 24,
+      color: 'var(--color-text-low-emphasis)',
     } : {}),
   },
   ' .textField label': {
     ...(!isIOSTheme() ? {
       paddingLeft: 24,
+      color: 'var(--color-text-low-emphasis)',
     } : {}),
   },
   ' .formElement:not(.radioGroup) select': {
     ...(!isIOSTheme() ? {
       paddingLeft: 16,
+      color: 'var(--color-text-high-emphasis)',
     } : {}),
   },
   ' .formElement:not(.radioGroup) svg': {
@@ -49,11 +52,13 @@ const formStyles = {
   ' .formElement:not(.radioGroup) .placeholder': {
     ...(!isIOSTheme() ? {
       paddingLeft: 24,
+      color: 'var(--color-text-low-emphasis)',
     } : {}),
   },
   ' .textField input': {
     ...(!isIOSTheme() ? {
       paddingLeft: 16,
+      color: 'var(--color-text-high-emphasis)',
     } : {}),
   },
   ' .underline': {
@@ -80,8 +85,12 @@ const formStyles = {
   ' .phonePicker .PhoneInputInput': {
     ...(!isIOSTheme() ? {
       borderBottom: 'none',
+      color: 'var(--color-text-high-emphasis)',
       '&:focus': {
         borderBottom: 'none',
+      },
+      '::placeholder': {
+        color: 'var(--color-text-low-emphasis)',
       },
     } : {}),
   },

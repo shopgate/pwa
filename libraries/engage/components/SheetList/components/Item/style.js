@@ -7,11 +7,12 @@ const { colors, variables } = themeConfig;
 
 const disabled = css({
   color: colors.shade5,
+  cursor: 'not-allowed',
 }).toString();
 
 const selected = css({
-  background: colors.shade7,
-  boxShadow: `-16px 0 0 0 ${colors.shade7} !important`,
+  background: `var(--color-background-accent, ${colors.shade7})`,
+  boxShadow: `-16px 0 0 0 var(--color-background-accent, ${colors.shade7}) !important`,
 }).toString();
 
 const title = css({
@@ -21,6 +22,7 @@ const title = css({
   hyphens: 'auto',
   overflowWrap: 'break-word',
   wordBreak: 'break-word',
+  color: 'var(--color-text-high-emphasis)',
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     padding: variables.gap.big,
     margin: 0,
@@ -34,7 +36,7 @@ const description = css({
   display: 'none',
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     display: 'block',
-    color: colors.shade6,
+    color: 'var(--color-text-medium-emphasis)',
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
     fontWeight: 'initial',
@@ -61,7 +63,7 @@ const image = css({
 }).toString();
 
 const glowHover = {
-  boxShadow: `-${variables.gap.bigger}px 0 0 ${colors.shade8}, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
+  boxShadow: `-${variables.gap.bigger}px 0 0 red, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
 };
 
 export default {

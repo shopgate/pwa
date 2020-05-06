@@ -9,7 +9,7 @@ const info = css({
 }).toString();
 
 const required = css({
-  color: colors.shade9,
+  color: `var(--color-text-medium-emphasis, ${colors.shade9})`,
   fontSize: '0.825rem',
 }).toString();
 

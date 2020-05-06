@@ -24,7 +24,7 @@ exports[`<Sheet /> should open 1`] = `
           "out": "css-171mdnt",
         }
       }
-      className="css-1sp6e1"
+      className="css-1d4fqwq"
       isOpen={true}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -32,7 +32,7 @@ exports[`<Sheet /> should open 1`] = `
       onOpen={[Function]}
     >
       <div
-        className="css-1sp6e1 css-1rg7udn css-1ldjh2f"
+        className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
         onAnimationEnd={[Function]}
         style={
           Object {
@@ -55,7 +55,7 @@ exports[`<Sheet /> should open 1`] = `
             >
               <button
                 aria-label="common.close"
-                className="css-b3dcfs"
+                className="css-r4gt00"
                 onClick={[Function]}
                 type="button"
               >
@@ -230,7 +230,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1sp6e1"
+    className="css-1d4fqwq"
     isOpen={false}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -265,7 +265,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1sp6e1"
+    className="css-1d4fqwq"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -300,7 +300,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1sp6e1"
+    className="css-1d4fqwq"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -376,7 +376,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           "out": "css-171mdnt",
         }
       }
-      className="css-1sp6e1"
+      className="css-1d4fqwq"
       isOpen={false}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -384,7 +384,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       onOpen={[Function]}
     >
       <div
-        className="css-1sp6e1 css-1rg7udn css-171mdnt"
+        className="css-1d4fqwq css-1rg7udn css-171mdnt"
         onAnimationEnd={[Function]}
         style={
           Object {
@@ -407,7 +407,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             >
               <button
                 aria-label="common.close"
-                className="css-b3dcfs"
+                className="css-r4gt00"
                 onClick={[Function]}
                 type="button"
               >

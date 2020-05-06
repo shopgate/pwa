@@ -104,7 +104,7 @@ exports[`<Header /> should render empty 1`] = `
                       role="text"
                     >
                       <div
-                        className="css-4s85e9"
+                        className="css-5lxuz4"
                       >
                         <div
                           className="css-ntfpo9 css-q4owmg"
@@ -288,7 +288,7 @@ exports[`<Header /> should render empty 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-1m683rn"
+                        className="css-13xh6j9"
                       />
                     </div>
                   </RatingStars>
@@ -542,7 +542,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       role="text"
                     >
                       <div
-                        className="css-4s85e9"
+                        className="css-5lxuz4"
                       >
                         <div
                           className="css-ntfpo9 css-q4owmg"
@@ -726,7 +726,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-1m683rn"
+                        className="css-13xh6j9"
                       >
                         <div
                           className="css-ntfpo9 css-q4owmg"
@@ -888,17 +888,17 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 reviews.rating
                 <RatingNumber
-                  className="css-1lvzoef"
+                  className="css-1k1ak38"
                   key=".0"
                   rating={50}
                 >
                   <FormatNumber
-                    className="css-1lvzoef"
+                    className="css-1k1ak38"
                     fractions={2}
                     number={2.5}
                   >
                     <span
-                      className="css-1lvzoef"
+                      className="css-1k1ak38"
                     >
                       n
                     </span>

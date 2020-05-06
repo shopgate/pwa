@@ -167,7 +167,7 @@ const RegistrationProvider = ({
 
   const value = useMemo(
     () => ({
-      supportedCountries: shopSettings.supportedCountries,
+      supportedCountries: shopSettings.supportedCountries || [],
       userLocation,
       defaultBaseFormState,
       defaultShippingFormState,

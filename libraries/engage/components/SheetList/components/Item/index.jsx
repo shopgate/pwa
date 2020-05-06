@@ -88,9 +88,10 @@ class Item extends Component {
               {title}
             </div>
             { description && (
-            <div className={styles.description}>
-              {description}
-            </div>
+              <div
+                className={styles.description}
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
             )}
           </Grid.Item>
           {(rightComponent !== null) && (

@@ -16,7 +16,7 @@ const styles = {
     textTransform: 'uppercase',
     margin: `0 0 ${variables.gap.small}px 0`,
     ...(!isIOSTheme() ? {
-      color: colors.dark,
+      color: 'var(--color-text-high-emphasis)',
       textTransform: 'none',
     } : {}),
   }),
@@ -27,7 +27,7 @@ const styles = {
     display: 'table',
     width: '100%',
     ...(!isIOSTheme() ? {
-      background: colors.shade8,
+      background: 'var(--color-background-accent)',
       boxShadow: 'none',
       padding: `${variables.gap.small}px ${variables.gap.big}px`,
     } : {}),

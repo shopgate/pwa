@@ -18,7 +18,7 @@ const styles = {
     fontSize: 15,
     height: 28,
     width: '100%',
-    backgroundColor: colors.shade8,
+    backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
   }).toString(),
   button: css({
     width: 28,

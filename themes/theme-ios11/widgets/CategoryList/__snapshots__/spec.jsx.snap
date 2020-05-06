@@ -81,14 +81,14 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         role="listbox"
       >
         <ListItem
-          className="css-10041rq css-171mywc"
+          className="css-id5jvr css-171mywc"
           isSelected={false}
           key="child-0/.$1"
           role={null}
           tabIndex={0}
         >
           <li
-            className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+            className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
             data-test-id="listItem"
             role={null}
           >
@@ -123,7 +123,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     styles={
                       Object {
                         "hover": Object {
-                          "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                          "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
                         },
                       }
                     }
@@ -135,7 +135,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       styles={
                         Object {
                           "hover": Object {
-                            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                            "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
                           },
                         }
                       }
@@ -165,14 +165,14 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           </li>
         </ListItem>
         <ListItem
-          className="css-10041rq css-171mywc"
+          className="css-id5jvr css-171mywc"
           isSelected={false}
           key="child-1/.$2"
           role={null}
           tabIndex={0}
         >
           <li
-            className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+            className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
             data-test-id="listItem"
             role={null}
           >
@@ -207,7 +207,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     styles={
                       Object {
                         "hover": Object {
-                          "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                          "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
                         },
                       }
                     }
@@ -219,7 +219,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       styles={
                         Object {
                           "hover": Object {
-                            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                            "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
                           },
                         }
                       }

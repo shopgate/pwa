@@ -180,3 +180,4 @@ export { FormBuilder } from './Form';
 export { Footer } from './Footer';
 export { SideNavigation } from './SideNavigation';
 export { default as TextLink } from './TextLink/TextLink';
+export { ConditionalWrapper } from './ConditionalWrapper';

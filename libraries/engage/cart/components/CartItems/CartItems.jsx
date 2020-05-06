@@ -35,7 +35,7 @@ function CartItems({
       <CardList className={items}>
         {cartItems.map(item => (
           <CardList.Item className={card} key={item.id}>
-            <CartItemProvider cartItem={item}>
+            <CartItemProvider cartItem={item} isEditable={editable}>
               <ul>
                 <CartItemCard
                   multiLineReservation={multiLineReservation}

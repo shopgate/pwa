@@ -25,7 +25,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       styles={
         Object {
           "hover": Object {
-            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+            "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
           },
         }
       }
@@ -37,7 +37,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         styles={
           Object {
             "hover": Object {
-              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+              "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
             },
           }
         }
@@ -105,13 +105,13 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
           className="css-1ojce65 css-h7r55a"
         >
           <GridItem
-            className="css-1ifl01s"
+            className="css-m6wt83"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1ifl01s css-1gs0ko2"
+              className="css-m6wt83 css-1gs0ko2"
             >
               <div>
                 My Title
@@ -170,13 +170,13 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
           className="css-1ojce65 css-h7r55a"
         >
           <GridItem
-            className="css-1ifl01s"
+            className="css-m6wt83"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1ifl01s css-1gs0ko2"
+              className="css-m6wt83 css-1gs0ko2"
             >
               <div>
                 My Title
@@ -240,13 +240,13 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
             />
           </div>
           <GridItem
-            className="css-1ifl01s"
+            className="css-m6wt83"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1ifl01s css-1gs0ko2"
+              className="css-m6wt83 css-1gs0ko2"
             >
               <div>
                 My Title
@@ -293,7 +293,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         styles={
           Object {
             "hover": Object {
-              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+              "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
             },
           }
         }
@@ -305,7 +305,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           styles={
             Object {
               "hover": Object {
-                "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
               },
             }
           }
@@ -330,13 +330,13 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
                   className="css-1ojce65 css-h7r55a"
                 >
                   <GridItem
-                    className="css-1ifl01s"
+                    className="css-m6wt83"
                     component="div"
                     grow={1}
                     shrink={1}
                   >
                     <div
-                      className="css-1ifl01s css-1gs0ko2"
+                      className="css-m6wt83 css-1gs0ko2"
                     >
                       <div>
                         My Title
@@ -386,13 +386,13 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
           className="css-1ojce65 css-h7r55a"
         >
           <GridItem
-            className="css-1ifl01s css-19uk9mv"
+            className="css-m6wt83 css-4va972"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1ifl01s css-19uk9mv css-1gs0ko2"
+              className="css-m6wt83 css-4va972 css-1gs0ko2"
             >
               <div>
                 My Title
@@ -430,21 +430,21 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1ojce65 css-7q9yf9"
+        className="css-1ojce65 css-600b0d"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1ojce65 css-7q9yf9 css-h7r55a"
+          className="css-1ojce65 css-600b0d css-h7r55a"
         >
           <GridItem
-            className="css-1ifl01s"
+            className="css-m6wt83"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1ifl01s css-1gs0ko2"
+              className="css-m6wt83 css-1gs0ko2"
             >
               <div>
                 My Title

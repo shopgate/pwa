@@ -2,10 +2,7 @@ import React, { Fragment } from 'react';
 import { css } from 'glamor';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '../../../core/helpers/i18n';
-
-const { colors } = themeConfig;
 
 const styles = {
   title: css({
@@ -18,7 +15,6 @@ const styles = {
   headline: css({
     fontSize: '2rem',
     margin: 0,
-    color: colors.dark,
     lineHeight: 1,
   }),
   step: css({
@@ -28,6 +24,7 @@ const styles = {
     paddingLeft: 16,
     margin: 0,
     fontWeight: '400',
+    paddingBottom: 2,
   }),
 };
 

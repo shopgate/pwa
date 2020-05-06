@@ -15,12 +15,13 @@ const icon = css({
 }).toString();
 
 const emptyStars = css({
-  color: colors.shade7,
+  color: `var(--color-background-accent, ${colors.shade7})`,
 }).toString();
 
 const filledStars = css({
   position: 'absolute',
-  color: `var(--color-primary, ${colors.primary})`,
+  // Before the custom properties the primary color was used for the rating stars.
+  color: `var(--color-secondary, ${colors.primary})`,
   top: 0,
 }).toString();
 

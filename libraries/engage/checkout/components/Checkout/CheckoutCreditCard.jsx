@@ -3,6 +3,7 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { isIOSTheme, i18n } from '@shopgate/engage/core';
 import { TextField } from '@shopgate/engage/components';
+import { getCSSCustomProp } from '@shopgate/engage/styles';
 import {
   CardNumberElement,
   CardCvcElement,
@@ -22,7 +23,7 @@ const styles = {
     flex: '0 0 auto',
     ' .formElement': {
       ...(!isIOSTheme() ? {
-        background: colors.shade8,
+        background: `var(--color-background-accent, ${colors.shade8})`,
         padding: 0,
         marginBottom: 38,
         borderTopLeftRadius: 4,
@@ -32,6 +33,7 @@ const styles = {
     },
     ' .formElement label': {
       ...(!isIOSTheme() ? {
+        color: 'var(--color-text-low-emphasis)',
         paddingLeft: 24,
       } : {}),
     },
@@ -80,7 +82,10 @@ const wrapStripeElement = Element => class extends React.Component {
   /** Render
    * @returns {JSX} */
   render() {
-    return <Element {...this.props} onChange={this.onChange} />;
+    return <Element
+      {...this.props}
+      onChange={this.onChange}
+    />;
   }
 };
 /* eslint-enable react/prop-types */
@@ -108,6 +113,17 @@ const Billing = () => {
     return null;
   }
 
+  const textFieldStyles = {
+    style: {
+      base: {
+        color: getCSSCustomProp('--color-text-high-emphasis'),
+        '::placeholder': {
+          color: getCSSCustomProp('--color-text-low-emphasis'),
+        },
+      },
+    },
+  };
+
   return (
     <div ref={cardRef} className={styles.root}>
       <Section title="checkout.creditCard.headline" hasForm>
@@ -123,6 +139,7 @@ const Billing = () => {
           attributes={{
             options: {
               showIcon: true,
+              ...textFieldStyles,
             },
           }}
         />
@@ -135,6 +152,11 @@ const Billing = () => {
             isControlled={false}
             onChange={() => error && setError(null)}
             value=" "
+            attributes={{
+              options: {
+                ...textFieldStyles,
+              },
+            }}
           />
           <TextField
             className={styles.expiry}
@@ -144,6 +166,11 @@ const Billing = () => {
             isControlled={false}
             onChange={() => error && setError(null)}
             value=" "
+            attributes={{
+              options: {
+                ...textFieldStyles,
+              },
+            }}
           />
         </div>
       </Section>

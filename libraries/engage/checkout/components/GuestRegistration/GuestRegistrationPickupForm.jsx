@@ -8,7 +8,7 @@ import Section from '../Checkout/CheckoutSection';
 import { useGuestRegistration } from '../../hooks/common';
 import { styles as formStyles } from '../Form';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const styles = {
   root: css({
@@ -25,13 +25,16 @@ const styles = {
       marginRight: variables.gap.big,
     },
     ' .guestFormPickupPerson .label span': {
-      color: colors.dark,
+      color: 'var(--color-text-high-emphasis)',
       fontSize: 20,
       fontWeight: 'bold',
     },
     ' .guestFormPickupPerson .radioGroup': {
       marginTop: variables.gap.small,
       flexDirection: 'row',
+      ' .uncheckedIcon': {
+        color: 'var(--color-text-medium-emphasis)',
+      },
     },
     ...formStyles,
   }).toString(),

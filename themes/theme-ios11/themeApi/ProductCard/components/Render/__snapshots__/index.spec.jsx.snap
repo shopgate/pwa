@@ -185,7 +185,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-5lxuz4"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -369,7 +369,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn"
+                  className="css-13xh6j9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -957,7 +957,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-160c5eh "
+                      className="css-t5udo1 "
                       params={
                         Array [
                           null,
@@ -968,7 +968,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                       transform={null}
                     >
                       <span
-                        className="css-160c5eh "
+                        className="css-t5udo1 "
                         role={null}
                       >
                         -50%
@@ -1433,7 +1433,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-160c5eh "
+                      className="css-t5udo1 "
                       params={
                         Array [
                           null,
@@ -1444,7 +1444,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                       transform={null}
                     >
                       <span
-                        className="css-160c5eh "
+                        className="css-t5udo1 "
                         role={null}
                       >
                         -50%
@@ -1484,7 +1484,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-5lxuz4"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -1668,7 +1668,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn"
+                  className="css-13xh6j9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -2256,7 +2256,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-160c5eh "
+                      className="css-t5udo1 "
                       params={
                         Array [
                           null,
@@ -2267,7 +2267,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                       transform={null}
                     >
                       <span
-                        className="css-160c5eh "
+                        className="css-t5udo1 "
                         role={null}
                       >
                         -50%
@@ -2307,7 +2307,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-5lxuz4"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -2491,7 +2491,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn"
+                  className="css-13xh6j9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -3079,7 +3079,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-160c5eh "
+                      className="css-t5udo1 "
                       params={
                         Array [
                           null,
@@ -3090,7 +3090,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                       transform={null}
                     >
                       <span
-                        className="css-160c5eh "
+                        className="css-t5udo1 "
                         role={null}
                       >
                         -50%
@@ -3130,7 +3130,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-5lxuz4"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -3314,7 +3314,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn"
+                  className="css-13xh6j9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -3848,7 +3848,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-5lxuz4"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -4032,7 +4032,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn"
+                  className="css-13xh6j9"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -4434,7 +4434,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                     data-test-id="-50%"
                   >
                     <Translate
-                      className="css-160c5eh "
+                      className="css-t5udo1 "
                       params={
                         Array [
                           null,
@@ -4445,7 +4445,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                       transform={null}
                     >
                       <span
-                        className="css-160c5eh "
+                        className="css-t5udo1 "
                         role={null}
                       >
                         -50%

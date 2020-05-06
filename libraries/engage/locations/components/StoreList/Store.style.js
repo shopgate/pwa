@@ -8,7 +8,7 @@ const baseCardPadding = `${gap.small}px ${gap.big}px`;
 const gapM = gap.small + gap.xsmall;
 
 export const stores = css({
-  background: themeColors.background,
+  background: `var(--color-background-accent, ${themeColors.background})`,
   padding: `${gapM}px ${gapM}px ${gap.big}px`,
   fontSize: '0.875rem',
   boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
@@ -42,7 +42,7 @@ export const storeName = css({
 
 export const storeDistance = css({
   whiteSpace: 'nowrap',
-  color: themeColors.gray,
+  color: `var(--color-text-medium-emphasis, ${themeColors.gray})`,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     marginLeft: 14,
     fontSize: '0.875rem',
@@ -55,13 +55,13 @@ export const storeDetailsBody = css({
 }).toString();
 
 export const storeHoursToday = css({
-  color: themeColors.gray,
+  color: `var(--color-text-low-emphasis, ${themeColors.gray})`,
 }).toString();
 
 export const address = css({
   display: 'flex',
   flexFlow: 'row nowrap',
-  color: themeColors.gray,
+  color: `var(--color-text-low-emphasis, ${themeColors.gray})`,
   marginBottom: gapM,
 }).toString();
 
@@ -77,6 +77,10 @@ export const detailsIcon = css({
   padding: `${gap.xsmall}px ${gap.big}px 0 0`,
 }).toString();
 
+export const detailsIconLinked = css({
+  color: 'var(--color-primary)',
+}).toString();
+
 export const detailsLine = css({
   marginTop: gapM,
 }).toString();
@@ -87,6 +91,7 @@ export const details = css({
 
 export const openingHours = css({
   display: 'table',
+  color: 'var(--color-text-low-emphasis)',
 }).toString();
 
 export const openingHoursRow = css({
@@ -104,7 +109,7 @@ export const detailsPrimary = css({
 }).toString();
 
 export const detailsSecondary = css({
-  color: themeColors.shade3,
+  color: `var(--color-text-medium-emphasis, ${themeColors.shade3})`,
   fontSize: '0.75rem',
 }).toString();
 

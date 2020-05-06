@@ -20,7 +20,7 @@ jest.mock('@shopgate/pwa-common/components/Link', () => {
   return Link;
 });
 
-describe('<StoreInfo />', () => {
+describe.skip('<StoreInfo />', () => {
   it('should render as expected', () => {
     const wrapper = mount(<StoreInfo />);
     expect(wrapper).toMatchSnapshot();
