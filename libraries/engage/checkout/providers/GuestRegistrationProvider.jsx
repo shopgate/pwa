@@ -28,7 +28,7 @@ type Props = {
   needsPayment: bool,
   prepareCheckout: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
-  historyPush: (any) => void,
+  historyReplace: (any) => void,
 };
 
 const initialPickupPersonState = {
@@ -68,8 +68,8 @@ const convertValidationErrors = validationErrors => Object
  * @returns {JSX}
  */
 const GuestRegistrationProvider = ({
-  historyPush,
   prepareCheckout,
+  historyReplace,
   updateCheckoutOrder,
   billingPickupEquals,
   requiredFields,
@@ -155,11 +155,11 @@ const GuestRegistrationProvider = ({
     });
 
     LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
-    historyPush({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
+    historyReplace({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
 
     // We don't set locked to false to avoid unnecessary UI changes right before
     // going to checkout page.
-  }, [historyPush, updateCheckoutOrder]);
+  }, [historyReplace, updateCheckoutOrder]);
 
   // Whenever the order is locked we also want to show to loading bar.
   React.useEffect(() => {
