@@ -13,7 +13,7 @@ import {
   fetchCheckoutOrder,
   updateCheckoutOrder,
 } from '@shopgate/engage/checkout';
-import { historyPush } from '@shopgate/engage/core';
+import { historyReplace } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
@@ -37,7 +37,7 @@ function makeMapStateToProps() {
 }
 
 const mapDispatchToProps = {
-  historyPush,
+  historyReplace,
   fetchCheckoutOrder,
   initializeCheckout,
   updateCheckoutOrder,
