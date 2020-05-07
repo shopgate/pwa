@@ -26,7 +26,7 @@ const updatePageContent = () => {
     ? MAX_DESKTOP_WIDTH
     : clientWidth;
 
-  const hasMenuBar = clientWidth > 600;
+  const hasMenuBar = clientWidth >= 600;
   const pageContentWidth = availableSpace - (hasMenuBar ? DESKTOP_MENU_BAR_WIDTH : 0);
   setPageContentWidth(pageContentWidth);
 };
