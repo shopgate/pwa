@@ -3,9 +3,9 @@ import { parser } from './breakpoints';
 const comparators = {
   '>=': (from, to, width) => width >= from,
   '>': (from, to, width) => width >= to,
-  '<': (from, to, width) => width <= from,
-  '<=': (from, to, width) => width <= to,
-  '': (from, to, width) => width >= from && width <= to,
+  '<': (from, to, width) => width < from,
+  '<=': (from, to, width) => width < to,
+  '': (from, to, width) => width >= from && width < to,
 };
 
 /**

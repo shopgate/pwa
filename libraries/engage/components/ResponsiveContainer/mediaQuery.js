@@ -3,8 +3,8 @@ import { parser } from './breakpoints';
 const comparators = {
   '>=': from => `@media (min-width: ${from}px)`,
   '>': (from, to) => `@media (min-width: ${to}px)`,
-  '<': from => `@media (max-width: ${from}px)`,
-  '<=': (from, to) => `@media (max-width: ${to}px)`,
+  '<': from => `@media (max-width: ${from + 1}px)`,
+  '<=': (from, to) => `@media (max-width: ${to - 1}px)`,
   '': (from, to) => `@media (min-width: ${from}px) and (max-width: ${to}px)`,
 };
 
