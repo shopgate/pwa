@@ -12,7 +12,7 @@ import { container } from './FulfillmentSelectorImpossibleError.style';
  * @returns {JSX}
  */
 export function FulfillmentSelectorImpossibleError() {
-  const { selection } = useFulfillmentSelectorState();
+  const { selection, selectedLocation } = useFulfillmentSelectorState();
   const { pathname } = useRoute();
   const { isLoading } = useContext(LoadingContext);
   const isDirectShip = useMemo(() => selection === DIRECT_SHIP, [selection]);
@@ -22,9 +22,13 @@ export function FulfillmentSelectorImpossibleError() {
     return null;
   }
 
-  const label = isDirectShip
-    ? i18n.text('locations.fulfillment.error.direct_ship')
-    : i18n.text('locations.fulfillment.error.reserve');
+  let label = i18n.text('locations.fulfillment.error.reserve');
+  if (isDirectShip) {
+    label = i18n.text('locations.fulfillment.error.direct_ship');
+  }
+  if (!isDirectShip && !selectedLocation?.code) {
+    label = i18n.text('locations.fulfillment.error.not_ready');
+  }
 
   return (
     <Availability

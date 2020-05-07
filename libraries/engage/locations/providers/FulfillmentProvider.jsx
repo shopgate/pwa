@@ -73,6 +73,7 @@ function FulfillmentProvider(props: Props) {
   const [product, setProduct] = React.useState(propsProduct);
   const [isChangeFulfillment, setIsChangeFulfillment] = React.useState(false);
   const [cartItem, setCartItem] = React.useState(null);
+  const isInitialized = React.useRef(false);
 
   const title = React.useMemo<string>(() => {
     if (props.title !== null) {
@@ -97,6 +98,12 @@ function FulfillmentProvider(props: Props) {
   /** Effects for updating a state based on new props */
   React.useEffect(() => setIsOpen(open), [open]);
   React.useEffect(() => setProduct(propsProduct), [propsProduct]);
+  React.useEffect(() => {
+    if (productLocation && !isInitialized.current) {
+      isInitialized.current = true;
+      selectLocation(productLocation);
+    }
+  }, [productLocation, selectLocation]);
 
   /**
    * Checks whether the given stage is currently set.

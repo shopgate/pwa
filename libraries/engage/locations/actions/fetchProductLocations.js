@@ -39,7 +39,7 @@ function fetchProductLocations(productId, params = {}) {
 
     request
       .then((result) => {
-        dispatch(receiveProductLocations(productId, result.locations));
+        dispatch(receiveProductLocations(productId, result.locations, params));
       })
       .catch((error) => {
         logger.error(error);

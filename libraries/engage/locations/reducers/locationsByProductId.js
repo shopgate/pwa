@@ -1,11 +1,8 @@
-// @flow
-import * as Redux from 'redux';
 import {
   REQUEST_PRODUCT_LOCATIONS,
   RECEIVE_PRODUCT_LOCATIONS,
   ERROR_PRODUCT_LOCATIONS,
 } from '../constants';
-import { type LocationsByProductIdState } from '../locations.types';
 
 /**
  * Stores the product locations by the ID of the product.
@@ -14,9 +11,9 @@ import { type LocationsByProductIdState } from '../locations.types';
  * @return {Object} The new state.
  */
 export default function locationsByProductId(
-  state: LocationsByProductIdState = {},
-  action: Redux.Action
-): LocationsByProductIdState {
+  state = {},
+  action
+) {
   switch (action.type) {
     case REQUEST_PRODUCT_LOCATIONS:
       return {
@@ -32,6 +29,10 @@ export default function locationsByProductId(
         ...state,
         [action.productId]: {
           ...state[action.productId],
+          allLocations:
+            !Object.keys(action.params).length
+              ? action.locations
+              : state[action.productId].allLocations,
           locations: action.locations.map(location => ({
             ...location,
             address: location.addresses.find(a => a.isPrimary) || location.addresses[0],

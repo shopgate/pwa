@@ -206,6 +206,35 @@ export function makeGetProductLocations(): Selector<State, Location[] | null> {
 }
 
 /**
+ * Creates the selector that returns the locations for a specific product.
+ * @returns {Function}
+ */
+export function makeGetProductAllLocations() {
+  const getProductLocationsState = makeGetProductLocationsState();
+
+  /**
+   * Retrieves the locations for a specific product.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @param {string} props.productId The ID of the product to look for.
+   * @returns {Array|null}
+   */
+  return createSelector(
+    getProductLocationsState,
+    getProductId,
+    (locationsState, productId) => {
+      if (!productId || !locationsState[productId]) {
+        return null;
+      }
+
+      const { allLocations = [] } = locationsState[productId];
+
+      return allLocations;
+    }
+  );
+}
+
+/**
  * Creates the selector that returns the single product location.
  * @param {boolean} useUserLocation Whether the location code is taken from the userLocation state.
  * @returns {Function}
@@ -213,6 +242,7 @@ export function makeGetProductLocations(): Selector<State, Location[] | null> {
 export function makeGetProductLocation(
   useUserLocation: boolean = false
 ): Selector<State, Location | null> {
+  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
   const getProductLocationsState = makeGetProductLocationsState();
   const getLocationCodeSelector = useUserLocation
     ? makeGetUserLocationCode()
@@ -229,18 +259,32 @@ export function makeGetProductLocation(
     getProductLocationsState,
     getLocationCodeSelector,
     getProductId,
-    (locationsState, locationId, productId) => {
+    getUserLocationFulfillmentMethod,
+    (locationsState, locationId, productId, fulfillmentMethod) => {
       if (
         !productId ||
         !locationId ||
         !locationsState[productId] ||
         !Array.isArray(locationsState[productId].locations)
       ) {
+        // Try to set a feasible default location.
+        const product = locationsState[productId];
+        if (!locationId && product && fulfillmentMethod) {
+          // Find first location that has current select fulfillment method.
+          const location = product.allLocations?.find(
+            loc => loc.supportedFulfillmentMethods?.find(
+              method => method === fulfillmentMethod
+            ) && loc.productInventory?.isAvailable
+          );
+          return location || null;
+        }
         return null;
       }
 
-      const { locations = [] } = locationsState[productId];
-      return locations.find(l => l.code === locationId) || null;
+      const { locations = [], allLocations = [] } = locationsState[productId];
+      return locations?.find(l => l.code === locationId) ||
+        allLocations?.find(l => l.code === locationId) ||
+        null;
     }
   );
 }
@@ -305,6 +349,7 @@ export function makeGetProductFulfillmentMethods(): Selector<State, string[] | n
  */
 export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string) {
   const getProductLocations = makeGetProductLocations();
+  const getProductAllLocations = makeGetProductAllLocations();
   const getProductFulfillmentMethods = makeGetProductFulfillmentMethods();
   const getMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
 
@@ -317,10 +362,14 @@ export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string
    */
   return createSelector(
     getProductLocations,
+    getProductAllLocations,
     getMerchantFulfillmentMethods,
     getProductFulfillmentMethods,
-    (locations, merchantMethods, productMethods) => {
-      const hasLocations = Array.isArray(locations) && locations.length > 0;
+    (locations, allLocations, merchantMethods, productMethods) => {
+      const hasLocations =
+        (Array.isArray(locations) && locations.length > 0) ||
+        (Array.isArray(allLocations) && allLocations.length > 0);
+
       const methodSupported =
         Array.isArray(merchantMethods) &&
         merchantMethods.includes(fulfillmentMethod) &&
