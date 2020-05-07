@@ -9,7 +9,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
   const {
     code: id,
     quantity,
-    discountAmount,
+    salePrice,
     price: lineItemPrice,
     product,
     fulfillmentMethod,
@@ -17,17 +17,29 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
   } = lineItem;
 
   const {
-    code: productCode, price: productPrice, name, image,
+    code: productCode,
+    price: productPrice,
+    salePrice: productSalePrice,
+    name,
+    image,
+    unit,
+    options,
   } = product;
 
-  // TODO convert line item options to cart item properties
-  const properties = [];
+  let properties = [];
   const appliedDiscounts = [];
   const additionalInfo = [];
   const coupon = null;
   const messages = [];
   let fulfillmentMethods;
   let fulfillment;
+
+  if (Array.isArray(options)) {
+    properties = options.map(option => ({
+      label: option.name,
+      value: option.values[0].name,
+    }));
+  }
 
   if (fulfillmentMethod !== DIRECT_SHIP) {
     fulfillmentMethods = [fulfillmentMethod];
@@ -48,20 +60,21 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     type: 'product',
     product: {
       id: productCode,
-      featuredImageUrl: image ? `${image}&width=440&height=440&format=jpeg` : null,
+      featuredImageUrl: image ? `${image}&width=440&height=440&format=jpeg&fill=fff` : null,
       name,
       properties,
       appliedDiscounts,
       additionalInfo,
+      unit,
       price: {
         unit: productPrice,
+        unitSpecial: productSalePrice,
         default: lineItemPrice,
-        special: discountAmount || null,
+        special: salePrice || null,
         info: '',
       },
       fulfillmentMethods,
     },
     fulfillment,
-    fulfillmentLocationId: fulfillmentLocationCode,
   };
 });

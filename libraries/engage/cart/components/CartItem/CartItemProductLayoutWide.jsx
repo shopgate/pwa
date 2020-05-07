@@ -5,6 +5,7 @@ import {
   ProductProperties,
   Ellipsis,
   QuantityInput,
+  ConditionalWrapper,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
@@ -48,6 +49,8 @@ const CartItemProductLayoutWide = () => {
     isEditable,
   } = context;
 
+  const hasUnitWithDecimals = product.unit && product.unit !== PRODUCT_UNIT_EACH;
+
   return (
     <Fragment>
       <div className={container}>
@@ -55,7 +58,14 @@ const CartItemProductLayoutWide = () => {
           <ProductImage src={product.featuredImageUrl} />
         </div>
         <div className={detailsColumn}>
-          <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
+          <ConditionalWrapper
+            condition={isEditable}
+            wrapper={children =>
+              <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
+                {children}
+              </TextLink>
+            }
+          >
             <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
               <Ellipsis>
                 <div
@@ -65,7 +75,8 @@ const CartItemProductLayoutWide = () => {
                 />
               </Ellipsis>
             </SurroundPortals>
-          </TextLink>
+          </ConditionalWrapper>
+
           <ProductProperties
             className={productProperties}
             properties={product.properties}
@@ -101,7 +112,8 @@ const CartItemProductLayoutWide = () => {
               disabled
               className={quantityPickerDisabled}
               value={cartItem.quantity}
-              unit={product.unit && product.unit !== PRODUCT_UNIT_EACH ? product.unit : null}
+              unit={hasUnitWithDecimals ? product.unit : null}
+              maxDecimals={hasUnitWithDecimals ? 2 : 0}
             />
           )}
           { isEditable && (
