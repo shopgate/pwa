@@ -34,6 +34,22 @@ export const prepareCheckout = ({
     dispatch(fetchPaymentMethods()),
   ]);
 
+  let stripe;
+
+  // If payment is needed we create a new payment transaction.
+  const needsPayment = getNeedsPaymentForOrder(getState());
+  if (needsPayment) {
+    // Pick payment method.
+    stripe = getPaymentMethodForStripe(getState());
+    if (!stripe) {
+      return dispatch(errorCheckout(
+        'checkout.errors.missingPaymentMethod',
+        'shopgate.checkout.getPaymentMethods',
+        { message: 'No stripe payment methods found in configuration.' }
+      ));
+    }
+  }
+
   // Test if order is available in store.
   const order = getCheckoutOrder(getState());
   if (!order) {
@@ -54,19 +70,7 @@ export const prepareCheckout = ({
     });
   });
 
-  // If payment is needed we create a new payment transaction.
-  const needsPayment = getNeedsPaymentForOrder(getState());
   if (needsPayment && initializePayment) {
-    // Pick payment method.
-    const stripe = getPaymentMethodForStripe(getState());
-    if (!stripe) {
-      return dispatch(errorCheckout(
-        'checkout.errors.genericUpdate',
-        'shopgate.checkout.getPaymentMethods',
-        { message: 'No stripe payment methods found in configuration.' }
-      ));
-    }
-
     try {
       // Add payment transaction for stripe.
       await dispatch(updateCheckoutOrder({

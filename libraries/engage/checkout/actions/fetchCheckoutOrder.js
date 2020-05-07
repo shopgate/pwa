@@ -16,23 +16,22 @@ export const fetchCheckoutOrder = () => async (dispatch) => {
   dispatch({ type: FETCH_CHECKOUT_ORDER });
 
   const pipelineRequest = new PipelineRequest('shopgate.checkout.getOrder');
-  const { order, errors } = await pipelineRequest
-    .setErrorBlacklist([ERROR_CODE_CHECKOUT_GENERIC])
-    .dispatch();
 
-  if (errors?.length) {
+  try {
+    const { order } = await pipelineRequest
+      .setErrorBlacklist([ERROR_CODE_CHECKOUT_GENERIC])
+      .dispatch();
+
+    dispatch({
+      type: FETCH_CHECKOUT_ORDER_SUCCESS,
+      order,
+    });
+  } catch (error) {
     dispatch({
       type: FETCH_CHECKOUT_ORDER_ERROR,
-      errors,
+      error,
     });
     LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
-    return;
   }
-
-  dispatch({
-    type: FETCH_CHECKOUT_ORDER_SUCCESS,
-    order,
-  });
-  LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
 };
 

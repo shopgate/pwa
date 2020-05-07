@@ -73,7 +73,7 @@ const Cart = ({
     <div className={styles.root}>
       <Ripple onClick={navigate} className={styles.ripple} color="var(--color-primary)" fill>
         <div className={styles.priceContainer}>
-          <span className={styles.priceHeader}>Current Total</span>
+          <span className={styles.priceHeader}>{i18n.text('cart.current_total')}</span>
           <span className={styles.price}>
             {i18n.price(total?.amount || 0, currency, true)}
           </span>
@@ -94,12 +94,13 @@ const Cart = ({
 
 Cart.propTypes = {
   count: PropTypes.number.isRequired,
-  currency: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
+  currency: PropTypes.string,
   total: PropTypes.shape(),
 };
 
 Cart.defaultProps = {
+  currency: null,
   total: null,
 };
 

@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
 import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
+import { hasWebBridge } from '@shopgate/engage/core';
 import {
   OS_ANDROID,
   OS_IOS,
@@ -83,7 +84,9 @@ export function makeSupportsIdentityService(service) {
  */
 export const hasScannerSupport = createSelector(
   getClientInformation,
-  clientInformation => isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion)
+  clientInformation =>
+    !hasWebBridge() &&
+    isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion)
 );
 
 /**

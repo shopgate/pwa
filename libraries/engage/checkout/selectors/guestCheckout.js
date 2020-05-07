@@ -8,7 +8,7 @@ import { getCheckoutOrder, getIsReserveOnly } from './order';
 export const isGuestCheckoutActive = createSelector(
   isUserLoggedIn,
   getCheckoutOrder,
-  (userLoggedIn, checkoutOrder) => !userLoggedIn && checkoutOrder
+  (userLoggedIn, checkoutOrder) => !userLoggedIn && !!checkoutOrder
 );
 
 /**
