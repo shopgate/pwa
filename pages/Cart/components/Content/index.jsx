@@ -120,14 +120,15 @@ function CartContent(props) {
 }
 
 CartContent.propTypes = {
-  currency: PropTypes.string.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   cartItems: PropTypes.arrayOf(PropTypes.shape()),
+  currency: PropTypes.string,
   flags: PropTypes.shape(),
   messages: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 CartContent.defaultProps = {
+  currency: null,
   cartItems: [],
   flags: {},
   messages: [],

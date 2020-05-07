@@ -20,10 +20,17 @@ function FilterBar({ filters }) {
     setActive(filters !== null && Object.keys(filters).length > 0);
   }, [filters]);
 
-  const style = useMemo(() => ({
-    background: active ? `var(--color-secondary, ${colors.accent})` : colors.background,
-    color: active ? `var(--color-secondary-contrast, ${colors.accentContrast})` : colors.dark,
-  }), [active]);
+  const style = useMemo(
+    () => ({
+      background: active
+        ? `var(--color-secondary, ${colors.accent})`
+        : `var(--color-background-accent, ${colors.background})`,
+      color: active
+        ? `var(--color-secondary-contrast, ${colors.accentContrast})`
+        : `var(--color-text-high-emphasis, ${colors.dark})`,
+    }),
+    [active]
+  );
 
   return (
     <div className={styles} data-test-id="filterBar" style={style}>
