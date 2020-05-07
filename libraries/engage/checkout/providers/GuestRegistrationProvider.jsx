@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import pickBy from 'lodash/pickBy';
 import mapValues from 'lodash/mapValues';
 import identity from 'lodash/identity';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
   i18n,
@@ -99,6 +100,14 @@ const GuestRegistrationProvider = ({
     }
   }, [], false);
 
+  // Determine values to prefill some form fields
+  const userCountry = useMemo(
+    () => userLocation?.country || appConfig?.marketId || null,
+    [userLocation]
+  );
+
+  const userRegion = useMemo(() => userLocation?.region || null, [userLocation]);
+
   // Create initial values for billing and pickup forms.
   const defaultPickupPersonState = React.useMemo(() => ({
     ...initialPickupPersonState,
@@ -108,8 +117,10 @@ const GuestRegistrationProvider = ({
 
   const defaultBillingAddressState = React.useMemo(() => ({
     ...initialBillingAddressState,
+    country: userCountry,
+    region: userRegion,
     ...(pickBy(billingAddress || {}, identity)),
-  }), [billingAddress]);
+  }), [billingAddress, userCountry, userRegion]);
 
   // Handles submit of the checkout form.
   const handleSubmit = React.useCallback(async (values) => {
