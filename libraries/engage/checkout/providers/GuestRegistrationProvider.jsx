@@ -48,7 +48,7 @@ const initialBillingAddressState = {
   address2: '',
   city: '',
   postalCode: '',
-  country: null,
+  country: '',
 };
 
 /**
