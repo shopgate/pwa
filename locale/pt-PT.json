@@ -207,6 +207,7 @@
   },
   "cart": {
     "grand_total": "Grand Total",
+    "current_total": "Current Total",
     "items": "Items",
     "price": "Price",
     "quantity": "Qty",
