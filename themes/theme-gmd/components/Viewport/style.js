@@ -17,7 +17,9 @@ const viewport = css({
   minHeight: '100vh',
   overflow: useScrollContainer() ? 'hidden' : 'inherit',
   position: 'relative',
-  width: '100vw',
+  [responsiveMediaQuery('<=xs', { appAlways: true })]: {
+    width: '100vw',
+  },
 });
 
 const content = css({

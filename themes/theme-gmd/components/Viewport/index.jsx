@@ -16,16 +16,17 @@ import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_WIDTH } from '../../constants';
  * Updates the page content width css variable
  */
 const updatePageContent = () => {
+  const { clientWidth } = document.querySelector('body');
   if (!hasWebBridge()) {
-    setPageContentWidth(window.innerWidth);
+    setPageContentWidth(clientWidth);
     return;
   }
 
-  const availableSpace = window.innerWidth > MAX_DESKTOP_WIDTH
+  const availableSpace = clientWidth > MAX_DESKTOP_WIDTH
     ? MAX_DESKTOP_WIDTH
-    : window.innerWidth;
+    : clientWidth;
 
-  const hasMenuBar = window.innerWidth > 600;
+  const hasMenuBar = clientWidth > 600;
   const pageContentWidth = availableSpace - (hasMenuBar ? DESKTOP_MENU_BAR_WIDTH : 0);
   setPageContentWidth(pageContentWidth);
 };
