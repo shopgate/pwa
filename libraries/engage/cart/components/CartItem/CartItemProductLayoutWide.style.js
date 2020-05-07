@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables, colors } = themeConfig;
+const { variables } = themeConfig;
 
 export const container = css({
   display: 'flex',
@@ -58,10 +58,12 @@ export const quantityPicker = css({
 export const quantityPickerDisabled = css({
   padding: `0 ${variables.gap.small}px`,
   textAlign: 'center',
-  fontSize: 15,
+  fontSize: '1.25rem',
+  lineHeight: '1.625rem',
   height: 28,
   width: '100%',
-  backgroundColor: colors.shade8,
+  fontWeight: 500,
+  color: 'var(--color-text-high-emphasis)',
 }).toString();
 
 export const price = css({
