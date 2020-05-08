@@ -46,6 +46,12 @@ export const quantityPickerColumn = css(column, {
   },
 });
 
+export const quantityPickerColumnNotEditable = css(column, {
+  ' > *': {
+    textAlign: 'center',
+  },
+});
+
 export const contextMenuColumn = css({
   width: variables.gap.xbig + variables.gap.small,
 });

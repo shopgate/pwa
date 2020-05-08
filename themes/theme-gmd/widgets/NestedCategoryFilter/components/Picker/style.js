@@ -12,10 +12,12 @@ const button = css({
   padding: '12px 16px',
   marginBottom: 8,
   transition: 'background 250ms ease-in, color 250ms ease-in',
+  cursor: 'pointer',
 }).toString();
 
 const buttonDisabled = css({
   color: themeColors.shade4,
+  cursor: 'not-allowed',
 }).toString();
 
 const label = css({

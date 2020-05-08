@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import PickupForm from './GuestRegistrationPickupForm';
 import BillingForm from './GuestRegistrationBillingForm';
 import Actions from './GuestRegistrationActions';
@@ -39,7 +40,9 @@ const GuestRegistration = () => (
         <PickupForm />
         <Actions />
       </div>
-      <div className={styles.main} />
+      <ResponsiveContainer breakpoint=">xs">
+        <div className={styles.main} />
+      </ResponsiveContainer>
     </div>
   </GuestRegistrationProvider>
 );

@@ -11,7 +11,9 @@ export const stores = css({
   background: `var(--color-background-accent, ${themeColors.background})`,
   padding: `${gapM}px ${gapM}px ${gap.big}px`,
   fontSize: '0.875rem',
-  boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
+  [responsiveMediaQuery('<=sm')]: {
+    boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
+  },
 }).toString();
 
 export const storeCard = css({
