@@ -8,6 +8,7 @@ import {
   detailsColumn,
   contextMenuColumn,
   quantityPickerColumn,
+  quantityPickerColumnNotEditable,
 } from './CartItemsHeaderWide.style';
 import connect from './CartItemsHeaderWide.connector';
 
@@ -28,7 +29,7 @@ const CartItemsHeaderWide = ({ editable, enabledFulfillmentMethodsCount }: Props
     <div className={column}>
       <I18n.Text string="cart.price" />
     </div>
-    <div className={quantityPickerColumn}>
+    <div className={editable ? quantityPickerColumn : quantityPickerColumnNotEditable}>
       <I18n.Text string="cart.quantity" />
     </div>
     <div className={column}>
