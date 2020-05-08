@@ -4,7 +4,6 @@ exports[`LoadingProvider should not render the child component when the current 
 <LoadingProvider>
   <MockComponent
     isLoading={[Function]}
-    loading={Map {}}
     path="/"
     setLoading={[Function]}
     unsetLoading={[Function]}
@@ -16,7 +15,6 @@ exports[`LoadingProvider should populate internal methods its children 1`] = `
 <LoadingProvider>
   <MockComponent
     isLoading={[Function]}
-    loading={Map {}}
     path="/"
     setLoading={[Function]}
     unsetLoading={[Function]}
@@ -28,7 +26,6 @@ exports[`LoadingProvider should render the child component when the current path
 <LoadingProvider>
   <MockComponent
     isLoading={[Function]}
-    loading={Map {}}
     path="some/path"
     setLoading={[Function]}
     unsetLoading={[Function]}

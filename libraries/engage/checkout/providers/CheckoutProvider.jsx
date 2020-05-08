@@ -76,7 +76,7 @@ const CheckoutProvider = ({
   userLocation,
   isDataReady,
 }: Props) => {
-  const [isLocked, setLocked] = React.useState(false);
+  const [isLocked, setLocked] = React.useState(true);
   const [validationRules, setValidationRules] = React.useState(selfPickupConstraints);
 
   // Get payment method api
@@ -89,6 +89,8 @@ const CheckoutProvider = ({
       const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
         initializeOrder: !orderInitialized,
       });
+
+      setLocked(false);
       LoadingProvider.resetLoading(pathPattern);
 
       return {

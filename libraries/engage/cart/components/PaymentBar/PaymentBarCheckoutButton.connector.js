@@ -1,7 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
 import { getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors';
-import { isGuestCheckoutActive } from '@shopgate/engage/checkout';
 
 /**
  * Maps the contents of the state to the component props.
@@ -10,7 +9,6 @@ import { isGuestCheckoutActive } from '@shopgate/engage/checkout';
  */
 const mapStateToProps = state => ({
   isOrderable: getOrderableStatus(state),
-  isGuestCheckoutActive: isGuestCheckoutActive(state),
 });
 
 export default connect(mapStateToProps);

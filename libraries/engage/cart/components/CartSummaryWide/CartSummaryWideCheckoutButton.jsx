@@ -6,27 +6,21 @@ import { SurroundPortals } from '@shopgate/engage/components';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { GUEST_CHECKOUT_PATTERN } from '@shopgate/engage/checkout';
 import { CartContext } from '../../cart.context';
 import { button, disabledButton } from './CartSummaryWideCheckoutButton.style';
 import connect from './CartSummaryWideCheckoutButton.connector';
 
 type Props = {
   isOrderable?: boolean;
-  isGuestCheckoutActive?: boolean;
 }
 
 /**
  * @param {Object} props The component props
  * @returns {JSX}
  */
-const CartSummaryWideCheckoutButton = ({ isOrderable, isGuestCheckoutActive }:Props) => {
+const CartSummaryWideCheckoutButton = ({ isOrderable }:Props) => {
   const { isLoading } = useContext(CartContext);
   const isActive = useMemo(() => (isOrderable && !isLoading), [isLoading, isOrderable]);
-  const checkoutPath = useMemo(
-    () => (!isGuestCheckoutActive ? CHECKOUT_PATH : GUEST_CHECKOUT_PATTERN),
-    [isGuestCheckoutActive]
-  );
 
   const classes = classNames(button, {
     [disabledButton]: !isActive,
@@ -34,7 +28,7 @@ const CartSummaryWideCheckoutButton = ({ isOrderable, isGuestCheckoutActive }:Pr
 
   return (
     <SurroundPortals portalName={CART_CHECKOUT_BUTTON} props={{ isActive }}>
-      <Link href={checkoutPath} disabled={!isActive}>
+      <Link href={CHECKOUT_PATH} disabled={!isActive}>
         <RippleButton
           disabled={!isActive}
           type="regular"
@@ -49,7 +43,6 @@ const CartSummaryWideCheckoutButton = ({ isOrderable, isGuestCheckoutActive }:Pr
 
 CartSummaryWideCheckoutButton.defaultProps = {
   isOrderable: true,
-  isGuestCheckoutActive: false,
 };
 
 export default connect(CartSummaryWideCheckoutButton);

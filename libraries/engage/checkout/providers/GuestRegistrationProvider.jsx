@@ -125,6 +125,7 @@ const GuestRegistrationProvider = ({
   // Handles submit of the checkout form.
   const handleSubmit = React.useCallback(async (values) => {
     /** Async wrapper for useCallback */
+    LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
     setLocked(true);
 
     const pickupFormValues = pickupFormSubmitValues.current;
@@ -166,24 +167,17 @@ const GuestRegistrationProvider = ({
         primaryShipToAddressSequenceIndex: 1,
       });
     } catch (error) {
+      LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
       return;
     }
 
+    LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
     LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
     historyReplace({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
 
     // We don't set locked to false to avoid unnecessary UI changes right before
     // going to checkout page.
   }, [historyReplace, updateCheckoutOrder]);
-
-  // Whenever the order is locked we also want to show to loading bar.
-  React.useEffect(() => {
-    if (isLocked) {
-      LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
-      return;
-    }
-    LoadingProvider.unsetLoading(GUEST_CHECKOUT_PATTERN);
-  }, [isLocked]);
 
   // Create validation rules based on required fields.
   const billingValidationRules = React.useMemo(
