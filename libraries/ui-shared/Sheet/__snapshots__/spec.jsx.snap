@@ -14,7 +14,9 @@ exports[`<Sheet /> should open 1`] = `
   onOpen={[Function]}
   title="Test-Title"
 >
-  <section>
+  <section
+    className="css-1owavz5"
+  >
     <Drawer
       alwaysActive={false}
       animation={
@@ -220,7 +222,9 @@ exports[`<Sheet /> should open 1`] = `
 `;
 
 exports[`<Sheet /> should render closed without content 1`] = `
-<section>
+<section
+  className={null}
+>
   <Drawer
     alwaysActive={false}
     animation={
@@ -255,7 +259,9 @@ exports[`<Sheet /> should render closed without content 1`] = `
 `;
 
 exports[`<Sheet /> should render opened without content 1`] = `
-<section>
+<section
+  className="css-1owavz5"
+>
   <Drawer
     alwaysActive={false}
     animation={
@@ -290,7 +296,9 @@ exports[`<Sheet /> should render opened without content 1`] = `
 `;
 
 exports[`<Sheet /> should render with content and title 1`] = `
-<section>
+<section
+  className="css-1owavz5"
+>
   <Drawer
     alwaysActive={false}
     animation={
@@ -366,7 +374,9 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   onOpen={[Function]}
   title="Test-Title"
 >
-  <section>
+  <section
+    className={null}
+  >
     <Drawer
       alwaysActive={false}
       animation={

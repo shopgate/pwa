@@ -159,7 +159,7 @@ class Sheet extends Component {
     );
 
     return (
-      <section>
+      <section className={this.state.isOpen ? styles.section : null}>
         <Drawer
           className={drawerClassNames}
           isOpen={this.state.isOpen}

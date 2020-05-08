@@ -5,19 +5,29 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 const duration = 300;
 const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
 
+const section = css({
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    position: 'fixed',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    margin: 'auto',
+    zIndex: 100,
+  },
+}).toString();
+
 const container = css({
   bottom: 0,
   background: themeConfig.colors.light,
   width: '100vw',
   color: `var(--color-text-high-emphasis, ${themeConfig.colors.dark})`,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
-    width: '80%',
-    height: 'max-content',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    margin: 'auto',
+    position: 'initial',
   },
   [responsiveMediaQuery('>md', { webOnly: true })]: {
     width: '60%',
@@ -84,6 +94,7 @@ const drawerAnimation = {
 };
 
 export default {
+  section,
   container,
   shadow,
   content,
