@@ -8,6 +8,10 @@ css.global('*, *:before, *:after', {
   boxSizing: 'border-box',
 });
 
+css.global('::-moz-focus-inner', {
+  border: 0,
+});
+
 css.global('html, body', {
   WebkitTapHighlightColor: 'transparent',
   width: '100%',
