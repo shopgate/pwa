@@ -20,6 +20,9 @@ const styles = {
     width: '100%',
     backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
   }).toString(),
+  inputWrapper: css({
+    width: '100%',
+  }),
   button: css({
     width: 28,
     ' &&': {
@@ -85,13 +88,16 @@ const UnitQuantityPicker = ({
       >
         -
       </RippleButton>
-      <QuantityInput
-        className={styles.input}
-        value={value}
-        onChange={onChange}
-        maxDecimals={maxDecimals}
-        unit={unit}
-      />
+      <span>
+        <QuantityInput
+          className={styles.input}
+          value={value}
+          onChange={onChange}
+          maxDecimals={maxDecimals}
+          unit={unit}
+        />
+      </span>
+
       <RippleButton
         type="secondary"
         disabled={!allowIncrement}
