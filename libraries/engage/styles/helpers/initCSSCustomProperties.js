@@ -50,6 +50,12 @@ export const initCSSCustomPropsFallback = () => {
   setCSSCustomProp('--color-primary-contrast', getContrastColor(colors.primary));
   setCSSCustomProp('--color-secondary', colors.accent);
   setCSSCustomProp('--color-secondary-contrast', getContrastColor(colors.accent));
+
+  setCSSCustomProp('--color-text-high-emphasis', '#212121');
+  setCSSCustomProp('--color-text-medium-emphasis', '#666666');
+  setCSSCustomProp('--color-text-low-emphasis', '#9e9e9e');
+  setCSSCustomProp('--color-background-accent', '#f7f7f7');
+
   const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).fade(0.9);
   setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
 

@@ -29,59 +29,74 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         >
           <Button
             aria-label={null}
-            className="css-hazg82"
+            className="css-39vnpz"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="css-hazg82 css-1rn65c0"
+              className="css-39vnpz css-1rn65c0"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
             >
-              <Cross
-                color="#5ccee3"
-                size={16}
+              <ResponsiveContainer
+                appAlways={true}
+                appOnly={false}
+                breakpoint="<=xs"
+                webAlways={false}
+                webOnly={false}
               >
-                <Icon
-                  className=""
+                <Cross
                   color="#5ccee3"
-                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                   size={16}
-                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="css-yys9hb "
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                      }
-                    }
-                    style={
-                      Object {
-                        "fill": "#5ccee3",
-                        "fontSize": 16,
-                      }
-                    }
+                  <Icon
+                    className=""
+                    color="#5ccee3"
+                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                    size={16}
                     viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  />
-                </Icon>
-              </Cross>
+                  >
+                    <svg
+                      className="css-yys9hb "
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                        }
+                      }
+                      style={
+                        Object {
+                          "fill": "#5ccee3",
+                          "fontSize": 16,
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </Icon>
+                </Cross>
+              </ResponsiveContainer>
+              <ResponsiveContainer
+                appAlways={false}
+                appOnly={false}
+                breakpoint=">xs"
+                webAlways={false}
+                webOnly={true}
+              />
             </button>
           </Button>
           <Button
             aria-label={null}
-            className="css-1al9zi1"
+            className="css-hb5pev"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="css-1al9zi1 css-1rn65c0"
+              className="css-hb5pev css-1rn65c0"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -96,7 +111,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       className="css-1sunnf0"
     >
       <RippleButton
-        className="css-rz4b27"
+        className="css-1lr4lw"
         disabled={false}
         fill={true}
         flat={false}
@@ -108,7 +123,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         wrapContent={true}
       >
         <Button
-          className="css-rz4b27"
+          className="css-1lr4lw"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -117,13 +132,13 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           wrapContent={false}
         >
           <Button
-            className="css-1xxwysr css-rz4b27"
+            className="css-1xxwysr css-1lr4lw"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
-              className="css-1xxwysr css-rz4b27 css-1rn65c0"
+              className="css-1xxwysr css-1lr4lw css-1rn65c0"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -198,59 +213,74 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         >
           <Button
             aria-label={null}
-            className="css-hazg82"
+            className="css-39vnpz"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="css-hazg82 css-1rn65c0"
+              className="css-39vnpz css-1rn65c0"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
             >
-              <Cross
-                color="#5ccee3"
-                size={16}
+              <ResponsiveContainer
+                appAlways={true}
+                appOnly={false}
+                breakpoint="<=xs"
+                webAlways={false}
+                webOnly={false}
               >
-                <Icon
-                  className=""
+                <Cross
                   color="#5ccee3"
-                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                   size={16}
-                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="css-yys9hb "
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                      }
-                    }
-                    style={
-                      Object {
-                        "fill": "#5ccee3",
-                        "fontSize": 16,
-                      }
-                    }
+                  <Icon
+                    className=""
+                    color="#5ccee3"
+                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                    size={16}
                     viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  />
-                </Icon>
-              </Cross>
+                  >
+                    <svg
+                      className="css-yys9hb "
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                        }
+                      }
+                      style={
+                        Object {
+                          "fill": "#5ccee3",
+                          "fontSize": 16,
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </Icon>
+                </Cross>
+              </ResponsiveContainer>
+              <ResponsiveContainer
+                appAlways={false}
+                appOnly={false}
+                breakpoint=">xs"
+                webAlways={false}
+                webOnly={true}
+              />
             </button>
           </Button>
           <Button
             aria-label={null}
-            className="css-1al9zi1"
+            className="css-hb5pev"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="css-1al9zi1 css-1rn65c0"
+              className="css-hb5pev css-1rn65c0"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -275,59 +305,74 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         >
           <Button
             aria-label={null}
-            className="css-hazg82"
+            className="css-39vnpz"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="css-hazg82 css-1rn65c0"
+              className="css-39vnpz css-1rn65c0"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
             >
-              <Cross
-                color="#5ccee3"
-                size={16}
+              <ResponsiveContainer
+                appAlways={true}
+                appOnly={false}
+                breakpoint="<=xs"
+                webAlways={false}
+                webOnly={false}
               >
-                <Icon
-                  className=""
+                <Cross
                   color="#5ccee3"
-                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                   size={16}
-                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="css-yys9hb "
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                      }
-                    }
-                    style={
-                      Object {
-                        "fill": "#5ccee3",
-                        "fontSize": 16,
-                      }
-                    }
+                  <Icon
+                    className=""
+                    color="#5ccee3"
+                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                    size={16}
                     viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  />
-                </Icon>
-              </Cross>
+                  >
+                    <svg
+                      className="css-yys9hb "
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                        }
+                      }
+                      style={
+                        Object {
+                          "fill": "#5ccee3",
+                          "fontSize": 16,
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </Icon>
+                </Cross>
+              </ResponsiveContainer>
+              <ResponsiveContainer
+                appAlways={false}
+                appOnly={false}
+                breakpoint=">xs"
+                webAlways={false}
+                webOnly={true}
+              />
             </button>
           </Button>
           <Button
             aria-label={null}
-            className="css-1al9zi1"
+            className="css-hb5pev"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="css-1al9zi1 css-1rn65c0"
+              className="css-hb5pev css-1rn65c0"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -342,7 +387,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       className="css-1sunnf0"
     >
       <RippleButton
-        className="css-rz4b27"
+        className="css-1lr4lw"
         disabled={false}
         fill={true}
         flat={false}
@@ -354,7 +399,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         wrapContent={true}
       >
         <Button
-          className="css-rz4b27"
+          className="css-1lr4lw"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -363,13 +408,13 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           wrapContent={false}
         >
           <Button
-            className="css-1xxwysr css-rz4b27"
+            className="css-1xxwysr css-1lr4lw"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
-              className="css-1xxwysr css-rz4b27 css-1rn65c0"
+              className="css-1xxwysr css-1lr4lw css-1rn65c0"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}

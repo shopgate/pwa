@@ -28,7 +28,7 @@ const iconOpen = css({
 }).toString();
 
 const dropdown = css({
-  background: themeColors.light,
+  background: `var(--color-background-accent, ${themeColors.light})`,
   boxShadow: themeShadows.filter.sort,
   left: 0,
   position: 'absolute',
@@ -43,7 +43,7 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
-  color: themeColors.dark,
+  color: `var(--color-text-high-emphasis, ${themeColors.dark})`,
   ':first-child': {
     marginTop: themeVariables.gap.big / 2,
   },
