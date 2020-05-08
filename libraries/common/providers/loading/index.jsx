@@ -47,24 +47,12 @@ class LoadingProvider extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      lastUpdate: Date.now(),
-      loading: new Map(),
-    };
+    this.loading = {};
+    this.state = { loading: {} };
 
     UIEvents.addListener(this.constructor.SET, this.setLoading);
     UIEvents.addListener(this.constructor.RESET, this.resetLoading);
     UIEvents.addListener(this.constructor.UNSET, this.unsetLoading);
-  }
-
-  /**
-   * Let the component only update when the state changed.
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.lastUpdate !== nextState.lastUpdate;
   }
 
   /**
@@ -77,35 +65,21 @@ class LoadingProvider extends Component {
   }
 
   /**
-   * Returns the context value to be passed to consumers.
-   * @returns {Object}
-   */
-  get provided() {
-    return {
-      setLoading: this.setLoading,
-      unsetLoading: this.unsetLoading,
-      isLoading: this.isLoading,
-      loading: this.state.loading,
-    };
-  }
-
-  /**
    * Adds or increases the loading counter for a path.
    * @param {string} path The path which loads.
    */
   setLoading = (path) => {
-    const { loading } = this.state;
+    const { loading } = this;
 
-    if (!loading.has(path)) {
-      loading.set(path, 1);
-    } else {
-      const current = loading.get(path);
-      loading.set(path, current + 1);
-    }
+    const newLoading = {
+      ...loading,
+      [path]: loading[path] ? loading[path] + 1 : 1,
+    };
 
+    // Immediately updates state due to multiple sets before actual rerender.
+    this.loading = newLoading;
     this.setState({
-      lastUpdate: Date.now(),
-      loading,
+      loading: newLoading,
     });
   }
 
@@ -114,15 +88,12 @@ class LoadingProvider extends Component {
    * @param {string} path The path which loads.
    */
   resetLoading = (path) => {
-    const { loading } = this.state;
+    const { [path]: removedPath, ...remaining } = this.loading;
 
-    if (loading.has(path)) {
-      loading.delete(path);
-    }
-
+    // Immediately updates state due to multiple sets before actual rerender.
+    this.loading = remaining;
     this.setState({
-      lastUpdate: Date.now(),
-      loading,
+      loading: remaining,
     });
   }
 
@@ -131,21 +102,27 @@ class LoadingProvider extends Component {
    * @param {string} path The path which loads.
    */
   unsetLoading = (path) => {
-    const { loading } = this.state;
+    const { loading } = this;
 
-    if (loading.has(path)) {
-      const current = loading.get(path);
-      if (current > 1) {
-        loading.set(path, current - 1);
-      } else {
-        loading.delete(path);
-      }
-
-      this.setState({
-        lastUpdate: Date.now(),
-        loading,
-      });
+    if (typeof loading[path] === 'undefined') {
+      return;
     }
+
+    if (loading[path] <= 1) {
+      this.resetLoading(path);
+      return;
+    }
+
+    const newLoading = {
+      ...loading,
+      [path]: loading[path] - 1,
+    };
+
+    // Immediately updates state due to multiple sets before actual rerender.
+    this.loading = newLoading;
+    this.setState({
+      loading: newLoading,
+    });
   }
 
   /**
@@ -155,15 +132,22 @@ class LoadingProvider extends Component {
    */
   isLoading = (path) => {
     const { loading } = this.state;
-    return loading.has(path);
+    return !!loading[path];
   }
 
   /**
    * @return {JSX}
    */
   render() {
+    const value = {
+      loading: this.state.loading,
+      setLoading: this.setLoading,
+      unsetLoading: this.unsetLoading,
+      isLoading: this.isLoading,
+    };
+
     return (
-      <LoadingContext.Provider value={this.provided}>
+      <LoadingContext.Provider value={value}>
         {this.props.children}
       </LoadingContext.Provider>
     );
