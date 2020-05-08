@@ -9,6 +9,7 @@ const button = css({
   textAlign: 'left',
   width: '100%',
   color: 'var(--color-text-high-emphasis)',
+  cursor: 'pointer',
 });
 
 const bgColor = colors.darkGray;
@@ -16,10 +17,11 @@ const boxShadowOffset = variables.gap.bigger;
 
 const buttonSelected = css(button, {
   background: `var(--color-background-accent, ${bgColor})`,
-  boxShadow: `-${boxShadowOffset}px 0 0 var(--color-background-accent, ${bgColor}), ${boxShadowOffset}px 0 0 $var(--color-background-accent, ${bgColor})`,
+  boxShadow: `-${boxShadowOffset}px 0px 0px var(--color-background-accent, ${bgColor}), ${boxShadowOffset}px 0px 0px var(--color-background-accent,${bgColor})`,
   margin: '-1px 0',
   paddingTop: 17,
   paddingBottom: 17,
+  cursor: 'not-allowed',
 });
 
 export default {
