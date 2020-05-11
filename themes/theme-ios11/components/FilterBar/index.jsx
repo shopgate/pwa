@@ -26,7 +26,7 @@ function FilterBar({ filters }) {
         ? `var(--color-background-accent, ${colors.accent})`
         : `var(--color-background-accent, ${colors.background})`,
       color: active
-        ? `var(--color-secondary, ${colors.accentContrast})`
+        ? `var(--color-primary, ${colors.accentContrast})`
         : `var(--color-text-high-emphasis, ${colors.dark})`,
     }),
     [active]
