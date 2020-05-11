@@ -20,7 +20,7 @@ const emptyStars = css({
 
 const filledStars = css({
   position: 'absolute',
-  // Before the custom properties the primary color was used for the rating stars.
+  // Before the custom properties the primary color was used for this class.
   color: `var(--color-secondary, ${colors.primary})`,
   top: 0,
 }).toString();
