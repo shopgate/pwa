@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { css } from 'glamor';
 import PropTypes from 'prop-types';
-import { Card } from '@shopgate/engage/components';
+import { Card, Link } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
@@ -21,10 +21,11 @@ const styles = {
     } : {}),
   }),
   card: css({
+    display: 'flex',
+    flexDirection: 'row',
     fontSize: 15,
     margin: 0,
     padding: variables.gap.big,
-    display: 'table',
     width: '100%',
     ...(!isIOSTheme() ? {
       background: 'var(--color-background-accent)',
@@ -53,6 +54,19 @@ const styles = {
       fontWeight: '600',
     },
   }),
+  actionsContainer: css({
+    flex: 1,
+    display: 'table',
+    width: '100%',
+  }).toString(),
+  link: css({
+    fontSize: '0.875rem',
+    color: 'var(--color-primary)',
+    textTransform: 'uppercase',
+  }).toString(),
+  actions: css({
+    paddingTop: 8,
+  }).toString(),
 };
 
 /**
@@ -65,25 +79,44 @@ const CheckoutSection = ({
   content,
   children,
   hasForm,
+  editLink,
+  editLabel,
+  editReplace,
 }) => (
   <Fragment>
     <h3 className={styles.headline}>{i18n.text(title)}</h3>
     <Card
-      className={`${hasForm && styles.cardWithForm.toString()} ${styles.card.toString()} ${className}`}
+      className={
+        `${hasForm && styles.cardWithForm.toString()} ${styles.card.toString()}`
+      }
     >
-      {children || null}
-      {!children && (
-        <table className={styles.table}>
-          <tbody>
-            {content.map(({ label, text }) => (
-              <tr key={label}>
-                <td>{label}</td>
-                <td>{text}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className={`${styles.actionsContainer} ${className}`}>
+        {children || null}
+        {!children && (
+          <table className={styles.table}>
+            <tbody>
+              {content.map(({ label, text }) => (
+                <tr key={label}>
+                  <td>{label}</td>
+                  <td>{text}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+      {editLink ? (
+        <div className={styles.actions}>
+          <Link
+            tag="a"
+            className={styles.link}
+            href={editLink}
+            replace={editReplace}
+          >
+            {i18n.text(editLabel)}
+          </Link>
+        </div>
+      ) : null}
     </Card>
   </Fragment>
 );
@@ -93,6 +126,9 @@ CheckoutSection.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   content: PropTypes.arrayOf(PropTypes.shape()),
+  editLabel: PropTypes.string,
+  editLink: PropTypes.string,
+  editReplace: PropTypes.bool,
   hasForm: PropTypes.bool,
 };
 
@@ -101,6 +137,9 @@ CheckoutSection.defaultProps = {
   children: null,
   content: null,
   hasForm: false,
+  editLink: null,
+  editLabel: 'checkout.billing.edit',
+  editReplace: false,
 };
 
 export default CheckoutSection;

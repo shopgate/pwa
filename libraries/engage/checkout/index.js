@@ -27,6 +27,7 @@ export * from '@shopgate/pwa-common-commerce/checkout/streams';
 
 // Components
 export { default as Checkout } from './components/Checkout/Checkout';
+export { default as CheckoutBillingChange } from './components/CheckoutAddresses/CheckoutBillingChange';
 export { default as GuestRegistration } from './components/GuestRegistration/GuestRegistration';
 export { default as GuestCheckoutPayment } from './components/GuestRegistration/GuestCheckoutPayment';
 export { default as CheckoutConfirmation } from './components/CheckoutConfirmation/CheckoutConfirmation';
