@@ -48,8 +48,12 @@ describe('engage > locations > selectors', () => {
       },
       locationsById: {
         code1: {
-          code: 'code1',
-          name: 'Code 1',
+          isFetching: false,
+          expires: 10,
+          location: {
+            code: 'code1',
+            name: 'Code 1',
+          },
         },
       },
       locationsByProductId: {
@@ -138,7 +142,7 @@ describe('engage > locations > selectors', () => {
 
     it('should return location', () => {
       expect(getLocation(mockedState, { locationId: 'code1' })).toEqual({
-        ...mockedState.locations.locationsById.code1,
+        ...mockedState.locations.locationsById.code1.location,
       });
     });
   });

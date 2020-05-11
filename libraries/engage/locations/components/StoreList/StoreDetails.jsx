@@ -34,7 +34,7 @@ export function StoreDetails() {
     >
       <StoreOpeningHours hours={store.operationHours} />
       {store.address && <StorePhoneNumber phone={store.address.phoneNumber} />}
-      <StoreAddressShort address={store.address} />
+      <StoreAddressShort showFull address={store.address} />
     </Accordion>
   );
 }

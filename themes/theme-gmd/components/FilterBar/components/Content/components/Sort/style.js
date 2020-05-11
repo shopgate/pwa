@@ -38,7 +38,7 @@ const dropdown = css({
   zIndex: 2,
   top: '100%',
   left: 0,
-  background: colors.background,
+  background: `var(--color-background-accent, ${colors.background})`,
   boxShadow: shadows.filter.sort,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     top: 'inherit',
@@ -51,7 +51,7 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
-  color: colors.dark,
+  color: `var(--color-text-high-emphasis, ${colors.dark})`,
   ':first-child': {
     marginTop: variables.gap.big / 2,
   },

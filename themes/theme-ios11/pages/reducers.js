@@ -28,7 +28,9 @@ persistedReducers.set([
   'cart',
   'client.info',
   'page',
-  'locations',
+  'locations.userLocation',
+  'locations.userSearch',
+  'locations.userFormInput',
   'url',
   'user',
 ]);

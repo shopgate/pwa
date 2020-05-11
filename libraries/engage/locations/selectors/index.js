@@ -129,7 +129,7 @@ export function makeGetUserLocationAddress() {
         return null;
       }
 
-      return locationsState[code].address || null;
+      return locationsState[code]?.location?.address || null;
     }
   );
 }
@@ -171,7 +171,7 @@ export function makeGetLocation(): Selector<State, Location | null> {
       if (!locationId) {
         return null;
       }
-      return locationsState[locationId] || null;
+      return locationsState[locationId]?.location || null;
     }
   );
 }

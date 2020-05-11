@@ -7,7 +7,7 @@ import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/engage/fil
 import { i18n } from '@shopgate/engage/core';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
-import styles from './style';
+import { container, label } from './style';
 
 /**
  * The FilterChips component.
@@ -109,7 +109,9 @@ class FilterChips extends Component {
               removeLabel={removeLabel}
               editLabel={editLabel}
             >
-              {pricesFormatted}
+              <span className={label}>
+                {pricesFormatted}
+              </span>
             </Chip>
           ));
 
@@ -130,7 +132,9 @@ class FilterChips extends Component {
                 removeLabel={removeLabel}
                 editLabel={editLabel}
               >
-                {filterFormatted}
+                <span className={label}>
+                  {filterFormatted}
+                </span>
               </Chip>
             ));
           });
@@ -140,7 +144,7 @@ class FilterChips extends Component {
     });
 
     return (
-      <div className={styles}>
+      <div className={container}>
         <ChipLayout
           moreLabel="filter.more"
           handleMoreButton={openFilters}

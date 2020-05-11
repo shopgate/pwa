@@ -42,7 +42,7 @@ const moreButtonBase = {
 
 const moreButton = css({
   ...moreButtonBase,
-  color: colors.light,
+  color: `var(--color-secondary, ${colors.light})`,
 }).toString();
 
 const moreButtonInverted = css({

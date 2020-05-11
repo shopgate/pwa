@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
@@ -35,6 +36,10 @@ const chip = (hasRemoveButton = true, inverted = false) => css({
 const removeButton = css({
   flexShrink: 0,
   padding: 0,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    padding: '0 5px',
+    fontSize: '1.125rem',
+  },
 }).toString();
 
 const name = css({
@@ -51,6 +56,11 @@ const name = css({
   display: 'block',
   lineHeight: '1',
   color: 'inherit',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
+    padding: '6px 8px 6px 0',
+  },
 }).toString();
 
 export default {

@@ -2,6 +2,7 @@ import React, { useRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import CrossIcon from '../icons/CrossIcon';
 import styles from './style';
 
@@ -33,10 +34,19 @@ function Chip(props) {
           testId="removeFilter"
           aria-label={removeLabel}
         >
-          <CrossIcon
-            size={16}
-            color={invert ? themeConfig.colors.light : themeConfig.colors.accent}
-          />
+          <ResponsiveContainer breakpoint="<=xs" appAlways>
+            <CrossIcon
+              size={16}
+              color={invert ? themeConfig.colors.light : themeConfig.colors.accent}
+            />
+          </ResponsiveContainer>
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            <CrossIcon
+              size={18}
+              color={invert ? themeConfig.colors.light : 'var(--color-secondary)'}
+            />
+          </ResponsiveContainer>
+
         </Button>
       )}
       <Button className={styles.name} onClick={onClick} aria-label={editLabel}>
