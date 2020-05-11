@@ -113,7 +113,7 @@
     "details": "Store Details",
     "hours_details": "Store opening details",
     "today_hours": "Today: {hours}",
-    "address": "{city}, {postalCode}, {region}",
+    "address": "{city}, {region}, {postalCode}",
     "map_open": "Open in maps",
     "phone": "Phone",
     "mon": "Monday",
