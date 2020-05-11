@@ -19,6 +19,7 @@ type Props = {
   level?: number,
   category: Object,
   subcategories?: Array,
+  subcategoriesFetching?:boolean,
   fetchCategory: () => any,
 }
 
@@ -30,6 +31,7 @@ const SideNavigationCategoriesItem = ({
   categoryId,
   category,
   subcategories,
+  subcategoriesFetching,
   fetchCategory,
   level,
 }: Props) => {
@@ -55,10 +57,10 @@ const SideNavigationCategoriesItem = ({
   }, [categoryId, fetchCategory, hasSubcategories, isOpen, subcategories]);
 
   useEffect(() => {
-    if (isLoading && subcategories) {
+    if (isLoading && (subcategories || !subcategoriesFetching)) {
       setIsLoading(false);
     }
-  }, [isLoading, subcategories]);
+  }, [isLoading, subcategories, subcategoriesFetching]);
 
   const buttonRight = useMemo(() => {
     if (!maxNestingReached && hasSubcategories) {
@@ -99,6 +101,7 @@ const SideNavigationCategoriesItem = ({
 
 SideNavigationCategoriesItem.defaultProps = {
   subcategories: null,
+  subcategoriesFetching: false,
   categoryId: null,
   level: 0,
 };

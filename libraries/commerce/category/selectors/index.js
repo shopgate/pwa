@@ -37,7 +37,7 @@ const getChildrenByCategoryIdState = createSelector(
  * @param {Object} state The application state.
  * @returns {Object}
  */
-const getRootCategoriesState = createSelector(
+export const getRootCategoriesState = createSelector(
   getCategoryState,
   (state = {}) => state.rootCategories || {}
 );
@@ -70,7 +70,7 @@ export const getCategoryId = createSelector(
  * @param {Object} props The component props.
  * @returns {Object}
  */
-const getChildCategoriesForCategory = createSelector(
+export const getChildCategoriesForCategory = createSelector(
   getCategoryId,
   getChildrenByCategoryIdState,
   (categoryId, childCategories) => childCategories[categoryId]

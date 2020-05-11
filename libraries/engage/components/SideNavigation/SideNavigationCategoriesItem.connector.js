@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
 import { getCategory } from '@shopgate/pwa-common-commerce/category/selectors';
-import { makeGetSubcategoriesByCategoryId } from './selectors';
+import {
+  makeGetSubcategoriesByCategoryId,
+  makeGetAreChildCategoriesFetching,
+} from './selectors';
 
 /**
  * Creates the mapStateToProps connector function.
@@ -9,10 +12,12 @@ import { makeGetSubcategoriesByCategoryId } from './selectors';
  */
 const makeMapStateToProps = () => {
   const getSubcategoriesByCategoryId = makeGetSubcategoriesByCategoryId();
+  const getAreChildCategoriesFetching = makeGetAreChildCategoriesFetching();
 
   return (state, { categoryId }) => ({
     category: getCategory(state, { categoryId }),
     subcategories: getSubcategoriesByCategoryId(state, { categoryId }),
+    subcategoriesFetching: getAreChildCategoriesFetching(state, { categoryId }),
   });
 };
 

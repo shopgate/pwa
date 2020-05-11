@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 import {
   getCategoryChildren,
   getRootCategories,
+  getRootCategoriesState,
+  getChildCategoriesForCategory,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
@@ -30,3 +32,20 @@ export const makeGetSubcategoriesByCategoryId = () =>
     }
   );
 
+/**
+ * Creates a getAreRootCategoriesFetching selector
+ * @returns {Function}
+ */
+export const makeGetAreRootCategoriesFetching = () => createSelector(
+  getRootCategoriesState,
+  rootCategories => rootCategories?.isFetching || false
+);
+
+/**
+ * Creates a getIsCategoryFetching selector
+ * @returns {Function}
+ */
+export const makeGetAreChildCategoriesFetching = () => createSelector(
+  getChildCategoriesForCategory,
+  category => category?.isFetching || false
+);

@@ -7,6 +7,7 @@ import { item } from './SideNavigationItem.style';
 
 type Props = {
   categoryId?: string,
+  rootCategoriesFetching?: boolean,
   subcategories?: Array,
   fetchCategory: () => any
 }
@@ -15,19 +16,28 @@ type Props = {
  * The SideNavigationCategories component
  * @returns {JSX}
  */
-const SideNavigationCategories = ({ categoryId, subcategories, fetchCategory }: Props) => {
+const SideNavigationCategories = ({
+  categoryId,
+  subcategories,
+  fetchCategory,
+  rootCategoriesFetching,
+}: Props) => {
   useEffect(() => {
     if (!subcategories) {
       fetchCategory(categoryId);
     }
   }, [categoryId, fetchCategory, subcategories]);
 
-  if (!subcategories) {
+  if (!subcategories && rootCategoriesFetching) {
     return (
       <li className={item}>
         <LoadingIndicator className={loadingIndicator} />
       </li>
     );
+  }
+
+  if (!subcategories || (Array.isArray(subcategories) && subcategories.length === 0)) {
+    return null;
   }
 
   return (
@@ -40,6 +50,7 @@ const SideNavigationCategories = ({ categoryId, subcategories, fetchCategory }: 
 SideNavigationCategories.defaultProps = {
   subcategories: null,
   categoryId: null,
+  rootCategoriesFetching: false,
 };
 
 export default connect(SideNavigationCategories);
