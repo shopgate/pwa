@@ -1,4 +1,5 @@
 import { PipelineRequest } from '@shopgate/pwa-core';
+import { getDeviceType } from '@shopgate/engage/core';
 import { SHOPGATE_CMS_GET_PAGE_CONFIG } from '../../constants/Pipelines';
 import {
   requestPageConfig,
@@ -22,10 +23,15 @@ function fetchPageConfig(pageId) {
       return Promise.resolve(null);
     }
 
+    const deviceType = getDeviceType();
+
     dispatch(requestPageConfig(pageId));
 
     const request = new PipelineRequest(SHOPGATE_CMS_GET_PAGE_CONFIG)
-      .setInput({ pageId })
+      .setInput({
+        pageId,
+        deviceType,
+      })
       .dispatch();
 
     request

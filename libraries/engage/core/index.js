@@ -286,6 +286,7 @@ export { isTouchDevice } from './helpers/isTouchDevice';
 export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';
 export { hasWebBridge } from './helpers/bridge';
 export { useScrollContainer } from './helpers/scrollContainer';
+export { getDeviceType } from './helpers/deviceType';
 
 // -------------- CONFIG -------------- //
 export * from './config/config.actions';
