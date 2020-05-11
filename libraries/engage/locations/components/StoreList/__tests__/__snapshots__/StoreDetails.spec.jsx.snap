@@ -129,7 +129,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               grow={1}
             >
               <div
-                className="css-15lh08p"
+                className="css-vatcax"
               >
                 06033123
               </div>
@@ -157,6 +157,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           "street4": null,
         }
       }
+      showFull={true}
     >
       <Link
         href="https://www.google.com/maps/dir/?api=1&destination=Marktplatz%2012%2C%20Butzbach%2035510"
@@ -179,8 +180,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               className="css-1s3c85m"
               grow={1}
             >
+              <div
+                className="css-vatcax"
+              >
+                Marktplatz 12
+              </div>
               <Ellipsis
-                className="css-15lh08p"
+                className="css-vatcax"
                 rows={1}
               >
                 locations.address
