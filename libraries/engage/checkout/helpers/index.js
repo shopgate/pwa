@@ -76,5 +76,6 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
       fulfillmentMethods,
     },
     fulfillment,
+    fulfillmentLocationId: fulfillmentLocationCode,
   };
 });

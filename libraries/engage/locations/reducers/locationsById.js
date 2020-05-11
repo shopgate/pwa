@@ -45,7 +45,10 @@ export default function locationsById(state = {}, action) {
           draft[location.code] = {
             isFetching: false,
             expires: Date.now() + CACHE_TIME,
-            location,
+            location: {
+              ...location,
+              address: location.addresses.find(a => a.isPrimary) || location.addresses[0],
+            },
           };
         });
 

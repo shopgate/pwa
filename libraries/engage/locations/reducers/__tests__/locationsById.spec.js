@@ -39,6 +39,10 @@ describe('engage > locations > reducers > locationsById', () => {
             street: 'Street',
             isPrimary: true,
           }],
+          address: {
+            street: 'Street',
+            isPrimary: true,
+          },
         },
       },
     });
