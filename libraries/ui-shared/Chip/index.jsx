@@ -43,7 +43,7 @@ function Chip(props) {
           <ResponsiveContainer breakpoint=">xs" webOnly>
             <CrossIcon
               size={18}
-              color={invert ? themeConfig.colors.light : 'var(--color-secondary)'}
+              color={invert ? themeConfig.colors.light : 'var(--color-primary)'}
             />
           </ResponsiveContainer>
 
