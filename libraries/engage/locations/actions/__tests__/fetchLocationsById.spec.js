@@ -11,10 +11,14 @@ describe('engage > locations > actions > fetchLocationsById', () => {
   const dispatch = jest.fn(arg => arg);
   const getState = jest.fn();
 
-  test('fetchLocationsById', () => {
-    expect.assertions(2);
+  test('fetchLocationsById', async () => {
+    expect.assertions(1);
     const getLocationsState = jest.fn().mockReturnValue({
-      code1: { code: 'code1' },
+      code1: {
+        isFetching: false,
+        expires: 10,
+        location: { code: 'code1' },
+      },
     });
     makeGetLocationsState.mockReturnValue(getLocationsState);
 
@@ -22,14 +26,10 @@ describe('engage > locations > actions > fetchLocationsById', () => {
       locations: [{ code: 'code2' }],
     }));
 
-    const result = fetchLocationsById(['code1', 'code2'])(dispatch, getState);
+    await fetchLocationsById(['code1', 'code2'])(dispatch, getState);
 
     expect(fetchLocations).toBeCalledWith({
       codes: ['code2'],
     });
-    expect(result).resolves.toEqual([
-      { code: 'code1' },
-      { code: 'code2' },
-    ]);
   });
 });

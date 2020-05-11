@@ -1,7 +1,11 @@
-// @flow
-import * as Redux from 'redux';
-import { RECEIVE_LOCATIONS } from '../constants';
-import { type LocationsByIdState } from '../locations.types';
+import { produce } from 'immer';
+import {
+  REQUEST_LOCATIONS,
+  RECEIVE_LOCATIONS,
+  ERROR_LOCATIONS,
+} from '../constants';
+
+export const CACHE_TIME = 10e5; // 10 minutes in milliseconds
 
 /**
  * Stores the product locations by the location code.
@@ -9,22 +13,50 @@ import { type LocationsByIdState } from '../locations.types';
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function locationsById(
-  state: LocationsByIdState = {},
-  action: Redux.Action
-): LocationsByIdState {
-  switch (action.type) {
-    case RECEIVE_LOCATIONS:
-      return action.locations.reduce((accumulator, location) => {
-        accumulator[location.code] = {
-          ...accumulator[location.code],
-          ...location,
-          address: location.addresses.find(a => a.isPrimary) || location.addresses[0],
-        };
-        return accumulator;
-      }, { ...state });
+export default function locationsById(state = {}, action) {
+  /* eslint-disable no-param-reassign */
+  const producer = produce((draft) => {
+    switch (action.type) {
+      case REQUEST_LOCATIONS: {
+        action.params.codes.forEach((code) => {
+          draft[code] = {
+            ...draft[code],
+            isFetching: true,
+            expires: 0,
+          };
+        });
 
-    default:
-      return state;
-  }
+        break;
+      }
+
+      case ERROR_LOCATIONS: {
+        action.params.codes.forEach((code) => {
+          draft[code] = {
+            isFetching: false,
+            expires: 0,
+          };
+        });
+
+        break;
+      }
+
+      case RECEIVE_LOCATIONS: {
+        action.locations.forEach((location) => {
+          draft[location.code] = {
+            isFetching: false,
+            expires: Date.now() + CACHE_TIME,
+            location,
+          };
+        });
+
+        break;
+      }
+
+      default:
+        break;
+    }
+  });
+
+  /* eslint-enable no-param-reassign */
+  return producer(state);
 }

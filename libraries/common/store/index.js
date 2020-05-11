@@ -19,7 +19,7 @@ const STATE_VERSION = 'v2';
 const storeKey = `shopgate-connect_${shopNumber}-${themeName}_${STATE_VERSION}`;
 
 /**
- * Returns a normalised initialState from the localstorage.
+ * Returns a normalized initialState from the localstorage.
  * @returns {Object}
  */
 function getInitialState() {
@@ -33,8 +33,8 @@ function getInitialState() {
     return undefined;
   }
 
-  const normalisedState = storedState.replace(new RegExp('"isFetching":true', 'g'), '"isFetching":false');
-  return JSON.parse(normalisedState);
+  const normalizedState = storedState.replace(new RegExp('"isFetching":true', 'g'), '"isFetching":false');
+  return JSON.parse(normalizedState);
 }
 
 /**

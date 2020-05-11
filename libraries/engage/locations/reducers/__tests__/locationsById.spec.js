@@ -1,6 +1,15 @@
 import '../../action-creators/__mocks__';
 import { receiveLocations } from '../../action-creators';
-import reducer from '../locationsById';
+import reducer, { CACHE_TIME } from '../locationsById';
+
+const getTimeResult = 0;
+/* eslint-disable require-jsdoc */
+global.Date = class {
+  static now() {
+    return getTimeResult;
+  }
+};
+/* eslint-enable require-jsdoc */
 
 describe('engage > locations > reducers > locationsById', () => {
   let state;
@@ -21,15 +30,15 @@ describe('engage > locations > reducers > locationsById', () => {
     }]));
     expect(state).toEqual({
       code1: {
-        code: 'code1',
-        name: 'Code 1',
-        addresses: [{
-          street: 'Street',
-          isPrimary: true,
-        }],
-        address: {
-          street: 'Street',
-          isPrimary: true,
+        expires: CACHE_TIME,
+        isFetching: false,
+        location: {
+          code: 'code1',
+          name: 'Code 1',
+          addresses: [{
+            street: 'Street',
+            isPrimary: true,
+          }],
         },
       },
     });
