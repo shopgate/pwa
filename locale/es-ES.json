@@ -22,6 +22,7 @@
     "scanner": "Escáner",
     "checkout": "Checkout",
     "checkout_confirmation": "Order Successful",
+    "checkout_change_billing": "Change Billing Address",
     "register": "Register"
   },
   "favorites": {
@@ -356,7 +357,9 @@
     },
     "billing": {
       "headline": "Billing Address",
-      "address": "{postalCode} {city}, {region}"
+      "save": "Save",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Edit"
     },
     "creditCard": {
       "headline": "Payment",
