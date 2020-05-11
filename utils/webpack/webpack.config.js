@@ -73,7 +73,7 @@ const config = {
     new ShopgateIndexerPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+        NODE_ENV: JSON.stringify(ENV),
         APP_CONFIG: JSON.stringify(appConfig),
         COMPONENTS_CONFIG: JSON.stringify(getComponentsSettings(themePath)),
         THEME_CONFIG: JSON.stringify(themeConfig),
