@@ -12,7 +12,7 @@ export const getItemClass = () => {
   const customPropColor = getCSSCustomProp('--color-primary');
 
   if (customPropColor) {
-    background = Color(customPropColor).alpha(0.05);
+    background = Color(customPropColor).alpha(0.04);
   }
 
   return css({
