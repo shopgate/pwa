@@ -7,7 +7,9 @@ import {
   CATEGORY_LIST_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { Section } from '@shopgate/engage/a11y';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import CategoryList from 'Components/CategoryList';
+import CategoryGrid from 'Components/CategoryGrid';
 import connect from './connector';
 
 /**
@@ -41,7 +43,12 @@ class CategoryListContent extends PureComponent {
         <Portal name={CATEGORY_LIST} props={{ categoryId }}>
           {hasChildren && (
             <Section title="category.sections.categories">
-              <CategoryList categories={categories} prerender={childrenCount} />
+              <ResponsiveContainer appAlways breakpoint="<=xs">
+                <CategoryList categories={categories} prerender={childrenCount} />
+              </ResponsiveContainer>
+              <ResponsiveContainer webOnly breakpoint=">xs">
+                <CategoryGrid categories={categories} prerender={childrenCount} />
+              </ResponsiveContainer>
             </Section>
           )}
         </Portal>
