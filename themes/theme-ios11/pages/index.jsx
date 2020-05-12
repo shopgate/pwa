@@ -29,6 +29,7 @@ import {
   GUEST_CHECKOUT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
+  CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
@@ -49,6 +50,7 @@ import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
+import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import Register from './Register';
 import themeApi from '../themeApi';
 import * as routes from './routes';
@@ -142,6 +144,10 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={CHECKOUT_CONFIRMATION_PATTERN}
                     component={CheckoutConfirmationPage}
+                  />
+                  <Route
+                    pattern={CHECKOUT_BILLING_PATTERN}
+                    component={CheckoutBillingChange}
                   />
                   <Route
                     pattern={REGISTER_PATH}

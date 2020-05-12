@@ -46,7 +46,7 @@ const GuestCheckoutPayment = () => (
       <div className={styles.root}>
         <div className={styles.main}>
           <Pickup />
-          <Billing />
+          <Billing guestCheckout />
           <CreditCard />
           <ResponsiveContainer breakpoint="<md" appAlways>
             <Summary />

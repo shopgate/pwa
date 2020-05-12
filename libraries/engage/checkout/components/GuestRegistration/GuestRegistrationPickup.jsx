@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
+import { GUEST_CHECKOUT_PATTERN } from '../../constants/routes';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 
@@ -31,7 +32,12 @@ const Billing = () => {
 
   return (
     <div className={styles.root}>
-      <Section className={styles.card} title="checkout.pickup_contact.headline">
+      <Section
+        className={styles.card}
+        title="checkout.pickup_contact.headline"
+        editLink={GUEST_CHECKOUT_PATTERN}
+        editReplace
+      >
         <span>
           {pickupAddress.middleName?.length
             ? `${pickupAddress.firstName} ${pickupAddress.middleName} ${pickupAddress.lastName}`

@@ -115,11 +115,15 @@ const CheckoutProvider = ({
         await updateCheckoutOrder({
           notes: values.instructions,
           addressSequences: [
-            billingAddress,
+            {
+              ...billingAddress,
+              customerContactId: billingAddress.customerContactId || undefined,
+            },
             // When the customer is picking up himself we just take the
             // billing address as pickup address.
             values.pickupPerson === 'me' ? {
               ...billingAddress,
+              customerContactId: billingAddress.customerContactId || undefined,
               type: 'pickup',
             } : {
               type: 'pickup',

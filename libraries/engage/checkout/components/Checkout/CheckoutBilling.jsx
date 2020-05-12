@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/engage';
 import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
+import { CHECKOUT_BILLING_PATTERN, GUEST_CHECKOUT_PATTERN } from '../../constants/routes';
 
 const { variables } = themeConfig;
 
@@ -26,12 +28,17 @@ const styles = {
  * PickupContactForm
  * @returns {JSX}
  */
-const Billing = () => {
+const Billing = ({ guestCheckout }) => {
   const { billingAddress } = useCheckoutContext();
 
   return (
     <div className={styles.root}>
-      <Section className={styles.card} title="checkout.billing.headline">
+      <Section
+        className={styles.card}
+        title="checkout.billing.headline"
+        editLink={guestCheckout ? GUEST_CHECKOUT_PATTERN : CHECKOUT_BILLING_PATTERN}
+        editReplace={guestCheckout}
+      >
         <span>
           {billingAddress.middleName?.length
             ? `${billingAddress.firstName} ${billingAddress.middleName} ${billingAddress.lastName}`
@@ -64,6 +71,14 @@ const Billing = () => {
       </Section>
     </div>
   );
+};
+
+Billing.propTypes = {
+  guestCheckout: PropTypes.bool,
+};
+
+Billing.defaultProps = {
+  guestCheckout: false,
 };
 
 export default Billing;

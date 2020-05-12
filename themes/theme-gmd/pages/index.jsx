@@ -51,11 +51,13 @@ import {
   GUEST_CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
+  CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
+import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import Register from './Register';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -153,6 +155,10 @@ const Pages = ({ store }) => (
                     <Route
                       pattern={CHECKOUT_CONFIRMATION_PATTERN}
                       component={CheckoutConfirmationPage}
+                    />
+                    <Route
+                      pattern={CHECKOUT_BILLING_PATTERN}
+                      component={CheckoutBillingChange}
                     />
                     <Route
                       pattern={REGISTER_PATH}
