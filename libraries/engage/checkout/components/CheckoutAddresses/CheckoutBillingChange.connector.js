@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
 import { makeGetUserLocationAddress } from '@shopgate/engage/locations/selectors';
-import { getCheckoutOrder, getCheckoutBillingAddress } from '@shopgate/engage/checkout/selectors/order';
+import { getCheckoutBillingAddress } from '@shopgate/engage/checkout/selectors/order';
 import { getRequiredGuestCheckoutFields } from '@shopgate/engage/checkout/selectors/guestCheckout';
-import { updateCheckoutOrder } from '@shopgate/engage/checkout';
+import { updateDefaultBillingContact } from '@shopgate/engage/checkout';
 import { historyPop } from '@shopgate/engage/core';
 
 /**
@@ -18,7 +18,6 @@ function makeMapStateToProps() {
    */
   return state => ({
     isDataReady: !getConfigFetching(state),
-    order: getCheckoutOrder(state),
     shopSettings: getShopSettings(state),
     userLocation: getUserLocationAddress(state),
     billingAddress: getCheckoutBillingAddress(state),
@@ -28,7 +27,7 @@ function makeMapStateToProps() {
 
 const mapDispatchToProps = {
   historyPop,
-  updateCheckoutOrder,
+  updateBilling: updateDefaultBillingContact,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

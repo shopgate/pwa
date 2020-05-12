@@ -9,6 +9,9 @@ export { submitCheckoutOrder } from '@shopgate/engage/checkout/actions/submitChe
 export { initializeCheckout } from '@shopgate/engage/checkout/actions/initializeCheckout';
 export { fetchPaymentMethods } from '@shopgate/engage/checkout/actions/fetchPaymentMethods';
 export { prepareCheckout } from '@shopgate/engage/checkout/actions/prepareCheckout';
+export { fetchCustomerContacts } from '@shopgate/engage/checkout/actions/fetchContacts';
+export { updateCustomerContact } from '@shopgate/engage/checkout/actions/updateContact';
+export { updateDefaultBillingContact } from '@shopgate/engage/checkout/actions/updateDefaultBillingContact';
 
 export { clearCheckoutOrder } from '@shopgate/engage/checkout/action-creators/clearCheckoutOrder';
 

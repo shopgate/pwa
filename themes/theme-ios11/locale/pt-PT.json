@@ -335,7 +335,8 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "genericSubmit": "Failed to complete order, please try again later.",
       "missingPaymentMethod": "No payment method configured.",
-      "noPaymentTransaction": "No payment transaction available."
+      "noPaymentTransaction": "No payment transaction available.",
+      "genericUpdateBilling": "Failed to update billing address."
     },
     "pickup_contact": {
       "headline": "Pickup Contact Info",
