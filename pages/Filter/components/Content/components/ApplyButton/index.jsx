@@ -16,7 +16,7 @@ const FilterApplyButton = ({ active, onClick, widgetSettings }) => {
     <div className={styles}>
       <Button
         flat
-        type="primary"
+        type="secondary"
         onClick={onClick}
         disabled={!active}
         testId="applyFilterButton"

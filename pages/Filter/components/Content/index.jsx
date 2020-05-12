@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { router } from '@shopgate/engage/core';
+import { router, hasWebBridge } from '@shopgate/engage/core';
 import { SurroundPortals, ResponsiveContainer } from '@shopgate/engage/components';
 import {
   FILTER_PRICE_RANGE,
@@ -55,6 +55,11 @@ class FilterContent extends PureComponent {
    * @param {Object} nextProps The next component props.
    */
   UNSAFE_componentWillReceiveProps({ activeFilters, filters }) {
+    if (Object.keys(activeFilters).length === 0 && this.canReset) {
+      this.reset();
+      return;
+    }
+
     if (Object.keys(this.initialFilters).length > 0) {
       return;
     }
@@ -193,7 +198,7 @@ class FilterContent extends PureComponent {
       this.props.parentId,
       { filters: buildUpdatedFilters(currentFilters, filters) }
     );
-    router.replace();
+
     setTimeout(router.pop, 250);
   }
 
@@ -238,6 +243,7 @@ class FilterContent extends PureComponent {
                     max={filter.maximum}
                     onChange={this.updateDebounced}
                     value={value}
+                    useLinearEasing={hasWebBridge()}
                   />
                 </SurroundPortals>
               </Fragment>
