@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import compose from 'lodash/fp/compose';
 import Glow from '../../../Glow';
-import styles from './style';
+import { getItemClass } from './style';
 
 /**
  * A delay in ms after that the closeMenu callback gets triggered.
@@ -23,7 +23,7 @@ const Item = ({ children, closeMenu, onClick }) => {
 
   return (
     <Glow>
-      <div className={styles.item} onClick={handleClick} aria-hidden data-test-id="contextMenuButton">
+      <div className={getItemClass()} onClick={handleClick} aria-hidden data-test-id="contextMenuButton">
         {children}
       </div>
     </Glow>
