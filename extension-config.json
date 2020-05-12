@@ -220,7 +220,7 @@
             "buttonCartBadgeColor": "var(--color-primary-contrast, $.colors.primaryContrast)",
             "buttonCartBadgeBackground": "var(--color-primary, $.colors.primary)",
             "buttonCartBadgeShadow": "0 1px 1px rgba(0, 0, 0, 0.25)",
-            "buttonTextColor": "var(--color-secondary, $.colors.accent)",
+            "buttonTextColor": "var(--color-primary, $.colors.accent)",
             "buttonTextColorDisabled": "$.colors.shade4"
           },
           "@shopgate/engage/product/ProductGrid": {
