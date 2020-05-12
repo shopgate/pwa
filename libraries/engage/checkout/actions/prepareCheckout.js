@@ -70,7 +70,8 @@ export const prepareCheckout = ({
     });
   });
 
-  if (needsPayment && initializePayment) {
+  const paymentAlreadyInitialized = !!order?.paymentTransactions?.[0]?.paymentMethod;
+  if (needsPayment && initializePayment && !paymentAlreadyInitialized) {
     try {
       // Add payment transaction for stripe.
       await dispatch(updateCheckoutOrder({

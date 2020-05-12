@@ -23,6 +23,7 @@
     "favorites": "Merkliste",
     "scanner": "Scanner",
     "checkout_confirmation": "Order Successful",
+    "checkout_change_billing": "Change Billing Address",
     "register": "Register"
   },
   "favorites": {
@@ -346,7 +347,8 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "genericSubmit": "Failed to complete order, please try again later.",
       "missingPaymentMethod": "No payment method configured.",
-      "noPaymentTransaction": "No payment transaction available."
+      "noPaymentTransaction": "No payment transaction available.",
+      "genericUpdateBilling": "Failed to update billing address."
     },
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
@@ -376,7 +378,9 @@
     },
     "billing": {
       "headline": "Billing Address",
-      "address": "{postalCode} {city}, {region}"
+      "save": "Save",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Edit"
     },
     "creditCard": {
       "headline": "Payment",
