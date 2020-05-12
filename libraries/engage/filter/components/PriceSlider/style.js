@@ -1,5 +1,6 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { responsiveMediaQuery } from '../../../styles';
 
 const { shadows, colors, variables } = themeConfig;
 
@@ -8,7 +9,8 @@ const wrapper = css({
 }).toString();
 
 const price = css({
-  color: `var(--color-secondary, ${colors.accent})`,
+  // Before the custom properties the accent color was used for this class.
+  color: `var(--color-primary, ${colors.accent})`,
   display: 'inline-block',
   fontWeight: 500,
   textAlign: 'center',
@@ -37,6 +39,14 @@ const editableField = css({
     textIndent: 0,
     borderColor: colors.shade5,
   },
+  [responsiveMediaQuery('>=xs', { webOnly: true })]: {
+    borderColor: 'var(--color-primary)',
+    padding: '4px 0',
+    top: -4,
+    ':focus': {
+      borderColor: 'var(--color-primary)',
+    },
+  },
 });
 
 const rangeSlider = {
@@ -52,7 +62,8 @@ const rangeSlider = {
   }).toString(),
 
   range: css({
-    background: `var(--color-secondary, ${colors.accent})`,
+    // Before the custom properties the accent color was used for this class.
+    background: `var(--color-primary, ${colors.accent})`,
     position: 'absolute',
     height: '100%',
     marginLeft: variables.gap.small,

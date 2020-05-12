@@ -29,7 +29,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="fromPrice"
     >
       <span
-        className="css-1iqaz6v"
+        className="css-55vup2"
         style={
           Object {
             "minWidth": "5",
@@ -48,7 +48,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="toPrice"
     >
       <span
-        className="css-1iqaz6v"
+        className="css-55vup2"
         style={
           Object {
             "minWidth": "5",
@@ -76,7 +76,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     aria-label="price.range_from"
     className={
       Object {
-        "data-css-1ssfuq5": "",
+        "data-css-11c61cw": "",
       }
     }
     id="priceMin"
@@ -97,7 +97,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     aria-label="price.range_to"
     className={
       Object {
-        "data-css-1ssfuq5": "",
+        "data-css-11c61cw": "",
       }
     }
     id="priceMax"

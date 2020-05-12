@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@shopgate/engage/core';
 import { responsiveCondition } from '@shopgate/engage/styles';
@@ -18,6 +18,11 @@ const FilterBarProvider = ({
   updateFilters,
 }) => {
   const [filterModalOpen, setFilterModalOpen] = useState(false);
+  const [activeFilters, setActiveFilters] = useState(routeFilterState);
+
+  useEffect(() => {
+    setActiveFilters(routeFilterState);
+  }, [routeFilterState]);
 
   const contextValue = useMemo(() => ({
     /**
@@ -48,15 +53,14 @@ const FilterBarProvider = ({
      * @param {string} id Route id.
      * @returns {Object}
      */
-    resetFilters: (id) => {
-      setFilterModalOpen(false);
-      router.update(id, { filters: {} });
+    resetFilters: () => {
+      setActiveFilters({});
       return updateFilters({});
     },
-    filters: routeFilterState,
+    filters: activeFilters,
     filterModalOpen,
     setFilterModalOpen,
-  }), [filterModalOpen, navigate, routeFilterState, updateFilters]);
+  }), [activeFilters, filterModalOpen, navigate, updateFilters]);
 
   return (
     <Context.Provider value={contextValue}>

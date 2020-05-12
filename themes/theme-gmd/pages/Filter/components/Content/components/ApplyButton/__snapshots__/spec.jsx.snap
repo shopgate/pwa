@@ -13,7 +13,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
     flat={true}
     onClick={[MockFunction]}
     testId="applyFilterButton"
-    type="primary"
+    type="secondary"
   >
     <Component
       string="filter.apply"
@@ -40,7 +40,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
     flat={true}
     onClick={[Function]}
     testId="applyFilterButton"
-    type="primary"
+    type="secondary"
   >
     <Component
       string="filter.apply"
@@ -67,7 +67,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
     flat={true}
     onClick={[Function]}
     testId="applyFilterButton"
-    type="primary"
+    type="secondary"
   >
     <Component
       string="filter.apply"

@@ -12,7 +12,7 @@ const FilterResetButton = ({ active, onClick }) => (
   <div className={styles}>
     <Button
       flat
-      type="primary"
+      type="secondary"
       onClick={onClick}
       disabled={!active}
       testId="clearAllButton"

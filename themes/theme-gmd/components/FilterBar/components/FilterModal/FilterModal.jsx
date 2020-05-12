@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, {
+  useState, useCallback, useContext,
+} from 'react';
 import { css } from 'glamor';
 import { Modal, Backdrop } from '@shopgate/engage/components';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';

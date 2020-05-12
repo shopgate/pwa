@@ -15,10 +15,12 @@ class PriceSlider extends PureComponent {
     max: PropTypes.number,
     min: PropTypes.number,
     onChange: PropTypes.func,
+    useLinearEasing: PropTypes.bool,
     value: PropTypes.arrayOf(PropTypes.number),
   };
 
   static defaultProps = {
+    useLinearEasing: false,
     max: 100,
     min: 0,
     onChange: () => { },
@@ -95,7 +97,7 @@ class PriceSlider extends PureComponent {
           />
           <RangeSlider
             classNames={styles.rangeSlider}
-            easing="exponential"
+            easing={this.props.useLinearEasing ? 'linear' : 'exponential'}
             factor={3}
             max={max}
             min={min}
