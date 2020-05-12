@@ -14,6 +14,7 @@ export const container = css({
 export const headline = css({
   fontSize: '1.25rem',
   fontWeight: 500,
+  lineHeight: '1.5rem',
 });
 
 export const summary = css({

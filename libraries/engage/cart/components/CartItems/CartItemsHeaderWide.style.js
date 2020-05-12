@@ -8,7 +8,8 @@ export const header = css({
   flexDirection: 'row',
   justifyContent: 'space-between',
   fontWeight: 500,
-  fontSize: '1.25rem',
+  fontSize: '1rem',
+  lineHeight: '1.5rem',
   padding: `0 ${variables.gap.big}px ${variables.gap.small}px ${variables.gap.big}px`,
 });
 

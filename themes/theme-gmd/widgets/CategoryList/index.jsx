@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { SheetList, TextLink, Image } from '@shopgate/engage/components';
 import isEqual from 'lodash/isEqual';
+import { ResponsiveContainer } from '@shopgate/engage/components';
+import CategoryGrid from 'Components/CategoryGrid';
 import connect from './connector';
+import CategoryListDefault from './CategoryListDefault';
 import styles from './style';
 
 /**
@@ -38,7 +39,11 @@ class CategoryListWidget extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return (nextProps.items && !isEqual(this.props.items, nextProps.items));
+    return (
+      nextProps.items &&
+      (!isEqual(this.props.items, nextProps.items) ||
+        !isEqual(this.props.settings, nextProps.settings))
+    );
   }
 
   /**
@@ -55,29 +60,12 @@ class CategoryListWidget extends Component {
     return (
       <div className={styles.container} data-test-id="categoryList">
         {(settings.headline) ? <h3 className={styles.headline}>{settings.headline}</h3> : null}
-        <SheetList hasImages={settings.showImages} className={styles.sheetList}>
-          {items.map((item) => {
-            // We have to decode the link before using it.
-            const link = `/category/${bin2hex(item.id)}`;
-
-            // Only show an avatar if the setting `showImages` is true.
-            const Avatar = settings.showImages && item.imageUrl ? (
-              <Image src={item.imageUrl} />
-            ) : null;
-
-            return (
-              <SheetList.Item
-                image={Avatar}
-                link={link}
-                key={item.id}
-                title={item.name}
-                testId={item.name}
-                rightComponent={<Image className={styles.image} src={item.imageUrl} />}
-                linkComponent={TextLink}
-              />
-            );
-          })}
-        </SheetList>
+        <ResponsiveContainer appAlways breakpoint="<=xs">
+          <CategoryListDefault categories={items} settings={settings} />
+        </ResponsiveContainer>
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          <CategoryGrid categories={items} showImages={settings.showImages} />
+        </ResponsiveContainer>
       </div>
     );
   }

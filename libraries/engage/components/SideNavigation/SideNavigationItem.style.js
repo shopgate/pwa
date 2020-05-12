@@ -24,23 +24,23 @@ export const item = css({
   position: 'relative',
   width: '100%',
   lineHeight: '1.45em',
-  ':hover': {
-    color: 'var(--color-primary)',
-  },
 }).toString();
 
-/**
- * @returns {string}
- */
-export const getItemActive = () => css({
+export const itemActive = css({
   background: 'var(--color-side-navigation-active-background)',
-  color: 'var(--color-primary)',
-});
+}).toString();
 
 export const link = css({
   flexGrow: 1,
   textAlign: 'left',
   outline: 0,
   color: 'var(--color-text-high-emphasis)',
+  ':hover': {
+    color: 'var(--color-primary)',
+  },
+}).toString();
+
+export const linkActive = css({
+  color: 'var(--color-primary) !important',
 }).toString();
 

@@ -14,6 +14,7 @@ const styles = {
   }),
   headline: css({
     fontSize: '2rem',
+    fontWeight: 'normal',
     margin: 0,
     lineHeight: 1,
   }),

@@ -39,7 +39,11 @@ class CategoryListWidget extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return (nextProps.items && !isEqual(this.props.items, nextProps.items));
+    return (
+      nextProps.items &&
+      (!isEqual(this.props.items, nextProps.items) ||
+        !isEqual(this.props.settings, nextProps.settings))
+    );
   }
 
   /**

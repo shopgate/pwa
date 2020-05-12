@@ -4,6 +4,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { variables } = themeConfig;
 
 export const header = css({
-  fontSize: '3rem',
-  padding: `${variables.gap.big}px ${variables.gap.xbig}px`,
+  fontSize: '2.125rem',
+  lineHeight: '2.25rem',
+  padding: `${variables.gap.big}px ${variables.gap.xbig}px ${variables.gap.xbig}px ${variables.gap.xbig}px`,
 });

@@ -38,7 +38,7 @@ export const detailsColumn = css(column, {
 });
 
 export const productName = css({
-  fontSize: '1.5rem',
+  fontSize: '1.25rem',
   lineHeight: '1.5rem',
   fontWeight: 500,
   wordBreak: ['keep-all', 'break-word'],
