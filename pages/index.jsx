@@ -31,6 +31,7 @@ import {
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
+import { RESET_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -51,6 +52,7 @@ import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
+import ResetPassword from './ResetPassword';
 import Register from './Register';
 import themeApi from '../themeApi';
 import * as routes from './routes';
@@ -152,6 +154,10 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={REGISTER_PATH}
                     component={Register}
+                  />
+                  <Route
+                    pattern={RESET_PASSWORD_PATTERN}
+                    component={ResetPassword}
                   />
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>

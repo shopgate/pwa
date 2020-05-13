@@ -265,7 +265,13 @@
     "no_account": "Non hai un account?",
     "signup": "Registrati",
     "logout_message": "Sei uscito dall'account.",
-    "error": "I tuoi nome utente e password non corrispondono ad alcun account"
+    "error": "I tuoi nome utente e password non corrispondono ad alcun account",
+    "reset_password": {
+      "subline": "Please enter your Email to initiate the password reset process.",
+      "reset_instructions": "Reset instructions have been sent to {email}",
+      "back_to_login": "Back to Login",
+      "customer_not_found": "We couldn't find an account for this email address"
+    }
   },
   "navigation": {
     "login_register": "Accedi / Registrati",
