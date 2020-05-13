@@ -21,6 +21,7 @@ import {
  * @returns {JSX}
  */
 const CategoryGridItem = ({ category, showImages }) => (
+  /* eslint-disable react/no-danger */
   <Portal key={category.id} name={CATEGORY_ITEM} props={{ categoryId: category.id }}>
     <li className={gridItem}>
       <Link
@@ -40,11 +41,12 @@ const CategoryGridItem = ({ category, showImages }) => (
               title: category.name,
             }}
           >
-            {category.name}
+            <span dangerouslySetInnerHTML={{ __html: category.name }} />
           </TextLink>
-          <div className={categoryDescription}>
-            {category.description}
-          </div>
+          <div
+            className={categoryDescription}
+            dangerouslySetInnerHTML={{ __html: category.description }}
+          />
         </div>
         { showImages && (
           <div className={gridItemColumnRight}>
@@ -54,6 +56,7 @@ const CategoryGridItem = ({ category, showImages }) => (
       </Link>
     </li>
   </Portal>
+  /* eslint-enable react/no-danger */
 );
 
 CategoryGridItem.propTypes = {
