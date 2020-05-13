@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { buildFetchCategoryProductsParams } from '@shopgate/engage/product';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { hasCategoryChildren } from '@shopgate/pwa-common-commerce/category/selectors';
 import getProducts from './actions/getProducts';
 
 /**
@@ -14,6 +15,7 @@ const mapStateToProps = (state, props) => ({
     ...props,
     params: buildFetchCategoryProductsParams().params,
   }),
+  categoryHasChildren: hasCategoryChildren(state, props),
 });
 
 /**

@@ -1,7 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/config/isBeta';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import ProductGrid from 'Components/ProductGrid';
+import { separator } from './style';
 import connect from './connector';
 
 /**
@@ -10,6 +12,7 @@ import connect from './connector';
 class CategoryProducts extends PureComponent {
   static propTypes = {
     sort: PropTypes.string.isRequired,
+    categoryHasChildren: PropTypes.bool,
     categoryId: PropTypes.string,
     getProducts: PropTypes.func,
     hash: PropTypes.string,
@@ -19,6 +22,7 @@ class CategoryProducts extends PureComponent {
 
   static defaultProps = {
     categoryId: null,
+    categoryHasChildren: false,
     getProducts() { },
     hash: null,
     products: null,
@@ -43,13 +47,27 @@ class CategoryProducts extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const {
+      products, categoryHasChildren, totalProductCount, hash,
+    } = this.props;
+
+    const hasProducts = Array.isArray(products) && products.length > 0;
+
     return (
-      <ProductGrid
-        handleGetProducts={this.fetchProducts}
-        products={this.props.products}
-        totalProductCount={this.props.totalProductCount}
-        requestHash={this.props.hash}
-      />
+      <Fragment>
+        { (categoryHasChildren && hasProducts) && (
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            <hr className={separator} />
+          </ResponsiveContainer>
+        )}
+        <ProductGrid
+          handleGetProducts={this.fetchProducts}
+          products={products}
+          totalProductCount={totalProductCount}
+          requestHash={hash}
+        />
+      </Fragment>
+
     );
   }
 }
