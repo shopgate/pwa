@@ -265,7 +265,13 @@
     "no_account": "¿Aún no tiene una cuenta?",
     "signup": "Registro",
     "logout_message": "Ha sido desconectado.",
-    "error": "Su usuario y contraseña no corresponden a ninguna cuenta"
+    "error": "Su usuario y contraseña no corresponden a ninguna cuenta",
+    "reset_password": {
+      "subline": "Please enter your Email to initiate the password reset process.",
+      "reset_instructions": "Reset instructions have been sent to {email}",
+      "back_to_login": "Back to Login",
+      "customer_not_found": "We couldn't find an account for this email address"
+    }
   },
   "navigation": {
     "login_register": "Iniciar sesión / Registro",

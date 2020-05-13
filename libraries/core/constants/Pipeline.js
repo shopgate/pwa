@@ -54,3 +54,5 @@ export const EVALIDATION = 'EVALIDATION';
 
 // Limits or quotas
 export const ELIMIT = 'ELIMIT';
+
+export const EUSERNOTFOUND = 'EUSERNOTFOUND';

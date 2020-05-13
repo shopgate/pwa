@@ -1,17 +1,27 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { formStyles } from '@shopgate/engage/checkout';
 
 const { colors, variables } = themeConfig;
 
 const container = css({
   flexGrow: 1,
   padding: `${variables.gap.small * 3}px ${variables.gap.big}px`,
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    width: '50%',
+  },
 }).toString();
 
 const headline = css({
   fontSize: '2.1875rem',
   lineHeight: 1,
   fontWeight: 500,
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    fontSize: '2rem',
+    fontWeight: 'normal',
+    paddingBottom: variables.gap.big,
+  },
 }).toString();
 
 const subline = css({
@@ -23,6 +33,12 @@ const subline = css({
 
 const form = css({
   paddingTop: variables.gap.big * 1.5,
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    ...formStyles,
+    ' .simpleInput': {
+      paddingLeft: variables.gap.big,
+    },
+  },
 });
 
 const input = css({
@@ -57,7 +73,7 @@ const noAccount = css({
 
 const signup = css({
   display: 'inline-block',
-  color: `var(--color-primary, ${colors.primary})`,
+  color: `var(--color-primary, ${colors.primary}) !important`,
   width: 'auto',
   margin: '-.35em 0 -.35em -.35em',
   padding: '.35em',

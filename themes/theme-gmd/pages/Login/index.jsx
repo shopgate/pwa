@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Link';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import { REGISTER_PATH, LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
-import { View } from '@shopgate/engage/components';
+import { View, TextLink } from '@shopgate/engage/components';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -178,13 +177,13 @@ class Login extends Component {
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
               <Portal name={PAGE_LOGIN_REGISTER_LINK}>
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
-                <Link
+                <TextLink
                   href={REGISTER_PATH}
                   className={styles.signup}
                   disabled={this.props.isLoading || this.props.isDisabled}
                 >
                   <I18n.Text string="login.register" />
-                </Link>
+                </TextLink>
               </Portal>
               <Portal name={PAGE_LOGIN_REGISTER_LINK_AFTER} />
             </div>

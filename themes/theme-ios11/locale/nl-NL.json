@@ -265,7 +265,13 @@
     "no_account": "Heeft u geen account?",
     "signup": "Registreer",
     "logout_message": "U bent uitgelogd.",
-    "error": "Uw gebruikersnaam en wachtwoord matchen geen account."
+    "error": "Uw gebruikersnaam en wachtwoord matchen geen account.",
+    "reset_password": {
+      "subline": "Please enter your Email to initiate the password reset process.",
+      "reset_instructions": "Reset instructions have been sent to {email}",
+      "back_to_login": "Back to Login",
+      "customer_not_found": "We couldn't find an account for this email address"
+    }
   },
   "navigation": {
     "login_register": "Log in / Registreer",

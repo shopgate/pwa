@@ -19,6 +19,7 @@ import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { appWillStart$ } from '@shopgate/pwa-common/streams';
 import { configuration } from '@shopgate/pwa-common/collections';
 import { TAB_BAR_PATTERNS_BLACK_LIST } from '@shopgate/pwa-common/constants/Configuration';
+import { RESET_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import {
   enableTabBar,
   disableTabBar,
@@ -40,6 +41,7 @@ const blacklist = [
   SCANNER_PATH,
   CHECKOUT_CONFIRMATION_PATTERN,
   REGISTER_PATH,
+  RESET_PASSWORD_PATTERN,
 ];
 
 /**

@@ -35,3 +35,4 @@ export { default as GuestRegistration } from './components/GuestRegistration/Gue
 export { default as GuestCheckoutPayment } from './components/GuestRegistration/GuestCheckoutPayment';
 export { default as CheckoutConfirmation } from './components/CheckoutConfirmation/CheckoutConfirmation';
 
+export { styles as formStyles } from './components/Form';
