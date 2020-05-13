@@ -78,7 +78,6 @@ export const categoryImage = css({
   display: 'flex',
   width: '100%',
   ' img': {
-    position: 'inherit',
     width: 'inherit !important',
     maxWidth: 'inherit !important',
   },
