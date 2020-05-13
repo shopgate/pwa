@@ -1,22 +1,22 @@
-import { RESET_PASSWORD, ERROR_RESET_PASSWORD, SUCCESS_RESET_PASSWORD } from '../constants';
+import { REQUEST_RESET_PASSWORD, ERROR_RESET_PASSWORD, RECEIVE_RESET_PASSWORD } from '../constants';
 
 /**
- * Creates the dispatched RESET_PASSWORD action object.
+ * Creates the dispatched REQUEST_RESET_PASSWORD action object.
  * @param {string} email The email address for the reset password request.
  * @returns {Object} The dispatched action object.
  */
-export const resetPassword = email => ({
-  type: RESET_PASSWORD,
+export const requestResetPassword = email => ({
+  type: REQUEST_RESET_PASSWORD,
   email,
 });
 
 /**
- * Creates the dispatched SUCCESS_RESET_PASSWORD action object.
+ * Creates the dispatched RECEIVE_RESET_PASSWORD action object.
  * @param {string} email The email address for the reset password request.
  * @returns {Object} The dispatched action object.
  */
-export const successResetPassword = email => ({
-  type: SUCCESS_RESET_PASSWORD,
+export const receiveResetPassword = email => ({
+  type: RECEIVE_RESET_PASSWORD,
   email,
 });
 

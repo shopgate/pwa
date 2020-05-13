@@ -18,15 +18,15 @@ import {
   goBackButtonContainer,
   goBackButton,
   goBackButtonIcon,
-} from './ResetPassword.style';
-import connect from './ResetPassword.connector';
+} from './ForgotPassword.style';
+import connect from './ForgotPassword.connector';
 
 /**
- * The ResetPassword component.
+ * The ForgotPassword component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ResetPassword = ({ resetPassword, goBack }) => {
+const ForgotPassword = ({ resetPassword, goBack }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [email, setEmail] = useState('');
   const [validationError, setValidationError] = useState('');
@@ -120,9 +120,9 @@ const ResetPassword = ({ resetPassword, goBack }) => {
   );
 };
 
-ResetPassword.propTypes = {
+ForgotPassword.propTypes = {
   goBack: PropTypes.func.isRequired,
   resetPassword: PropTypes.func.isRequired,
 };
 
-export default hot(connect(ResetPassword));
+export default hot(connect(ForgotPassword));

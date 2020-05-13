@@ -1,13 +1,13 @@
 import React from 'react';
 import { View } from '@shopgate/engage/components';
 import { AppBar } from '@shopgate/pwa-ui-material';
-import { ResetPassword as Content } from '@shopgate/engage/login';
+import { ForgotPassword as Content } from '@shopgate/engage/login';
 import { BackBar } from 'Components/AppBar/presets';
 
 /**
  * @returns {JSX}
  */
-const ResetPassword = () => (
+const ForgotPassword = () => (
   <View aria-hidden={false}>
     <BackBar
       right={null}
@@ -17,4 +17,4 @@ const ResetPassword = () => (
   </View>
 );
 
-export default ResetPassword;
+export default ForgotPassword;

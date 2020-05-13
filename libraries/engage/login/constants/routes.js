@@ -1,1 +1,1 @@
-export const RESET_PASSWORD_PATTERN = '/reset-password';
+export const FORGOT_PASSWORD_PATTERN = '/reset-password';

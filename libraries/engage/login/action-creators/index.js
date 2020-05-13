@@ -1,5 +1,5 @@
 export {
-  resetPassword,
-  successResetPassword,
+  requestResetPassword,
+  receiveResetPassword,
   errorResetPassword,
 } from './resetPassword';

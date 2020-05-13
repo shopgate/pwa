@@ -53,13 +53,13 @@ import {
   CHECKOUT_CONFIRMATION_PATTERN,
   CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
-import { RESET_PASSWORD_PATTERN } from '@shopgate/engage/login';
+import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
-import ResetPassword from './ResetPassword';
+import ForgotPassword from './ForgotPassword';
 import Register from './Register';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -167,8 +167,8 @@ const Pages = ({ store }) => (
                       component={Register}
                     />
                     <Route
-                      pattern={RESET_PASSWORD_PATTERN}
-                      component={ResetPassword}
+                      pattern={FORGOT_PASSWORD_PATTERN}
+                      component={ForgotPassword}
                     />
                     {React.Children.map(routePortals, Component => Component)}
                   </Router>

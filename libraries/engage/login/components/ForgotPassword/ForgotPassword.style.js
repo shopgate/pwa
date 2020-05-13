@@ -92,4 +92,5 @@ export const goBackButtonIcon = css({
   alignSelf: 'center',
   marginRight: variables.gap.xsmall,
   marginLeft: -3,
+  marginTop: -2,
 }).toString();
