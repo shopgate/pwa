@@ -114,7 +114,7 @@
     "details": "Store Details",
     "hours_details": "Store opening details",
     "today_hours": "Today: {hours}",
-    "address": "{city}, {region}, {postalCode}",
+    "address": "{city}, {region} {postalCode}",
     "map_open": "Open in maps",
     "phone": "Phone",
     "mon": "Monday",
@@ -378,7 +378,7 @@
     "billing": {
       "headline": "Billing Address",
       "save": "Save",
-      "address": "{postalCode} {city}, {region}",
+      "address": "{city}, {region} {postalCode}",
       "edit": "Edit"
     },
     "creditCard": {

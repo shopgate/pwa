@@ -29,7 +29,7 @@ const CheckoutConfirmationBilledTo = ({ order }) => {
       ] : []),
       {
         label: i18n.text('checkout.success.address'),
-        text: [`${address1 || ''}`, `${city || ''}, ${region || ''}, ${postalCode || ''}`].join('\n\r'),
+        text: [`${address1 || ''}`, `${city || ''}, ${region || ''} ${postalCode || ''}`].join('\n\r'),
       },
       ...(hasPayment ? [
         {
