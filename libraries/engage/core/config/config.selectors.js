@@ -8,7 +8,7 @@ import { type ConfigState, type MerchantSettings } from './config.types';
  * @return {Object} The locations state.
  */
 function getState(state): ConfigState {
-  return state.config || {};
+  return state?.settings?.config || {};
 }
 
 /**
@@ -46,14 +46,14 @@ export function makeGetMerchantSettings(): Selector<any, MerchantSettings> {
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getShopSettings = (state: any) => state.config?.shopSettings || {};
+export const getShopSettings = (state: any) => state?.settings?.config?.shopSettings || {};
 
 /**
  * Selector that retrieves whether the config is still fetching.
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getConfigFetching = (state: any) => state.config?.isFetching || false;
+export const getConfigFetching = (state: any) => state?.settings?.config?.isFetching || false;
 
 /**
  * Creates a selector that retrieves the enabled fulfillment paths from the merchant settings.

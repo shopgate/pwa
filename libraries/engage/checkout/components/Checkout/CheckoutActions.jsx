@@ -3,6 +3,7 @@ import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { RippleButton } from '@shopgate/engage/components';
 import { useCheckoutContext } from '../../hooks/common';
+import { SupplementalContent } from '../SupplementalContent';
 
 const styles = {
   root: css({
@@ -33,6 +34,7 @@ const Actions = () => {
       >
         {i18n.text('checkout.submit_order')}
       </RippleButton>
+      <SupplementalContent />
     </div>
   );
 };

@@ -11,6 +11,7 @@ import CheckoutConfirmationPickUpContact from './CheckoutConfirmationPickUpConta
 import CheckoutConfirmationPickupNotes from './CheckoutConfirmationPickupNotes';
 import CheckoutConfirmationBilledTo from './CheckoutConfirmationBilledTo';
 import CheckoutConfirmationOrderSummary from './CheckoutConfirmationOrderSummary';
+import { SupplementalContent } from '../SupplementalContent';
 import connect from './CheckoutConfirmation.connector';
 
 const { variables } = themeConfig;
@@ -61,6 +62,9 @@ const style = {
     margin: `${variables.gap.big * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.xbig}px ${variables.gap.small * 1.5}px`,
     borderRadius: 2,
   }),
+  supplementalWrapper: css({
+    padding: `${variables.gap.xbig}px ${variables.gap.big}px`,
+  }).toString(),
 };
 
 /**
@@ -105,6 +109,7 @@ const CheckoutConfirmation = ({ order, cartItems, onContinueShopping }) => {
           <CheckoutConfirmationPickUpContact order={order} />
           <CheckoutConfirmationBilledTo order={order} />
           <CheckoutConfirmationOrderSummary order={order} />
+          <SupplementalContent className={style.supplementalWrapper} />
         </ResponsiveContainer>
 
         <RippleButton
@@ -121,6 +126,7 @@ const CheckoutConfirmation = ({ order, cartItems, onContinueShopping }) => {
           <CheckoutConfirmationPickUpContact order={order} />
           <CheckoutConfirmationBilledTo order={order} />
           <CheckoutConfirmationOrderSummary order={order} />
+          <SupplementalContent className={style.supplementalWrapper} />
         </ResponsiveContainer>
       </div>
     </div>

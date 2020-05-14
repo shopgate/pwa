@@ -76,6 +76,7 @@ export {
 export { CartItem } from './components/CartItem';
 export { CartHeaderWide } from './components/CartHeaderWide';
 export { default as CartSummaryWide } from './components/CartSummaryWide/CartSummaryWide';
+export { SupplementalContent } from './components/SupplementalContent';
 
 // HOOKS
 export {

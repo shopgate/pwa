@@ -18,8 +18,10 @@ jest.mock('../config.action-creators', () => ({
 describe('engage > core > config > actions', () => {
   const dispatch = jest.fn();
   const getState = jest.fn().mockReturnValue({
-    config: {
-      foo: 'bar',
+    settings: {
+      config: {
+        foo: 'bar',
+      },
     },
   });
 

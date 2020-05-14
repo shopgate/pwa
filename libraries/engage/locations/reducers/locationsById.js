@@ -5,7 +5,7 @@ import {
   ERROR_LOCATIONS,
 } from '../constants';
 
-export const CACHE_TIME = 10e5; // 10 minutes in milliseconds
+export const CACHE_TIME = 10 * 60 * 1000; // 10 minutes in milliseconds
 
 /**
  * Stores the product locations by the location code.

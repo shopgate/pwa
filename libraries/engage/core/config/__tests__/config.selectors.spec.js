@@ -2,9 +2,11 @@ import { makeGetMerchantSettings } from '../config.selectors';
 
 describe('engage > core > config > selectors', () => {
   const mockedState = {
-    config: {
-      merchantSettings: {
-        foo: 'bar',
+    settings: {
+      config: {
+        merchantSettings: {
+          foo: 'bar',
+        },
       },
     },
   };
@@ -22,7 +24,7 @@ describe('engage > core > config > selectors', () => {
 
     it('should return two products', () => {
       expect(getMerchantSettings(mockedState)).toEqual({
-        ...mockedState.config.merchantSettings,
+        ...mockedState.settings.config.merchantSettings,
       });
     });
   });
