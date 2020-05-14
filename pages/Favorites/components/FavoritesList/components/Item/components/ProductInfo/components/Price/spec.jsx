@@ -9,6 +9,7 @@ describe('Favorites price component', () => {
         unitPriceStriked: 0,
         currency: 'EUR',
         unitPrice: 1,
+        info: '',
       },
     };
     it('should return false when price is the same', () => {

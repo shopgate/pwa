@@ -13,12 +13,14 @@ jest.mock('@shopgate/engage/components');
 jest.mock('Components/AppBar/presets', () => ({
   BackBar: () => <div />,
 }));
-
 jest.mock('@shopgate/pwa-common/selectors/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),
   isUserLoggedIn: jest.fn().mockReturnValue(false),
   getUserData: jest.fn().mockReturnValue({}),
 }));
+jest.mock('./components/StoreInfo/components/LegalPages', () => function LegalPages() {
+  return null;
+});
 
 /* eslint-disable require-jsdoc */
 jest.mock('@shopgate/pwa-ui-shared/ClientInformation', () => {

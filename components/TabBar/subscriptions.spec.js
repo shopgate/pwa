@@ -24,6 +24,10 @@ jest.mock('@shopgate/engage/checkout', () => ({
   GUEST_CHECKOUT_PAYMENT_PATTERN: 'GUEST_CHECKOUT_PAYMENT_PATTERN',
 }));
 
+jest.mock('@shopgate/engage/login', () => ({
+  FORGOT_PASSWORD_PATTERN: 'FORGOT_PASSWORD_PATTERN',
+}));
+
 jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: jest.fn(),
 }));
@@ -60,7 +64,7 @@ describe('TabBar subscriptions', () => {
   it('should set configuration tab bar blacklist on app start', () => {
     appWillStartCallback();
     expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toBeInstanceOf(Array);
-    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toHaveLength(13);
+    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toHaveLength(14);
   });
 
   it('should be initialized as expected', () => {
@@ -70,7 +74,7 @@ describe('TabBar subscriptions', () => {
     expect(cartUpdateCallback).toBeInstanceOf(Function);
   });
 
-  it('should enable the tabbar on a not blacklisted route', () => {
+  it('should enable the tab bar on a not blacklisted route', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCurrentRoute.mockReturnValue({ pattern: '/something' });
 
@@ -84,7 +88,7 @@ describe('TabBar subscriptions', () => {
     expect(actions[0]).toEqual(enableTabBar());
   });
 
-  it('should disable the tabbar on a blacklisted route', () => {
+  it('should disable the tab bar on a blacklisted route', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCurrentRoute.mockReturnValue({ pattern: LOGIN_PATH });
 
@@ -98,7 +102,7 @@ describe('TabBar subscriptions', () => {
     expect(actions[0]).toEqual(disableTabBar());
   });
 
-  it('should enable tabbar when cart is empty', () => {
+  it('should enable tab bar when cart is empty', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCartItems.mockReturnValue([]);
 
@@ -112,7 +116,7 @@ describe('TabBar subscriptions', () => {
     expect(actions[0]).toEqual(enableTabBar());
   });
 
-  it('should disable tabbar when cart is not empty', () => {
+  it('should disable tab bar when cart is not empty', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCartItems.mockReturnValue([{ id: '123' }]);
 
