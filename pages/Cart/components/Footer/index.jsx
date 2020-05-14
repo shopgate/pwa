@@ -1,9 +1,9 @@
 import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { FLAG_MULTI_LINE_RESERVE, CartContext } from '@shopgate/engage/cart';
+import { FLAG_MULTI_LINE_RESERVE, CartContext, SupplementalContent } from '@shopgate/engage/cart';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import CouponsHint from './components/CouponsHint';
-import ReservationHint from './components/ReservationHint';
+import { supplementalContent } from './style';
 import connect from './connector';
 
 /**
@@ -17,7 +17,7 @@ const Footer = ({ showTaxDisclaimer, showCouponsHint }) => {
   return (
     <Fragment>
       {!flags[FLAG_MULTI_LINE_RESERVE] && showCouponsHint && <CouponsHint />}
-      {flags[FLAG_MULTI_LINE_RESERVE] && <ReservationHint />}
+      {flags[FLAG_MULTI_LINE_RESERVE] && <SupplementalContent className={supplementalContent} />}
       {showTaxDisclaimer && <TaxDisclaimer />}
     </Fragment>
   );
