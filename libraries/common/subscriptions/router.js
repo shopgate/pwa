@@ -18,9 +18,11 @@ import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import { getIsConnected } from '../selectors/client';
+import { INDEX_PATH } from '../constants/RoutePaths';
 import appConfig from '../helpers/config';
 import authRoutes from '../collections/AuthRoutes';
 import ToastProvider from '../providers/toast';
+import { getHistoryLength } from '../selectors/history';
 
 /**
  * Router subscriptions.
@@ -52,6 +54,23 @@ export default function routerSubscriptions(subscribe) {
       },
     } = action;
 
+    const state = getState();
+    const historyEmpty = getHistoryLength(getState()) === 1;
+
+    if (historyEmpty && [ACTION_POP, ACTION_RESET, HISTORY_RESET_TO].includes(historyAction)) {
+      /**
+       * Replace the current route with the index, when a history action is supposed to be
+       * dispatched which reduces the router stack, but the route which triggered the action
+       * is the only one within the stack.
+       */
+      router.replace({
+        pathname: INDEX_PATH,
+        emitBefore: silent,
+        emitAfter: silent,
+      });
+      return;
+    }
+
     switch (historyAction) {
       case ACTION_POP: {
         router.pop({
@@ -71,7 +90,6 @@ export default function routerSubscriptions(subscribe) {
         break;
     }
 
-    const state = getState();
     let { pathname: location } = action.params;
 
     /**
