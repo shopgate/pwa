@@ -276,7 +276,7 @@
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",
-      "reset_instructions": "Reset instructions have been sent to {email}",
+      "reset_instructions": "Password Reset instructions have been sent to {email}",
       "back_to_login": "Back to Login",
       "customer_not_found": "We couldn't find an account for this email address"
     }

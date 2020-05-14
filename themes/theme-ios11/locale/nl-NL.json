@@ -239,7 +239,7 @@
     "errors": {
       "mixed_cart": "We currently do not support Ship to Address and Reserve to Cart within the same transaction. Please update your delivery options and continue shopping or proceed to checkout.",
       "direct_ship_item": "Check if this item is available for reserve at a store near you.",
-      "ropis_cart_inventory": "Not all of your items can be reserved. Please check the products in cart and change fulfilment options.",
+      "ropis_cart_inventory": "Not all of your items can be reserved. Please check the products in cart and change fulfillment options.",
       "ropis_item_inventory": "This item is not available for reservation at the selected location. Check for availability at a different location.",
       "ropis_item_inventory_exceed": "This item is not available in the desired quantity at {storeName}. {inventory} will be reserved.",
       "mixed_cart_coupon_removed": "The coupon \"{code}\" is not valid for in store reservations. Once you have placed the reservation it will be available for direct ship orders again."
@@ -268,7 +268,7 @@
     "error": "Uw gebruikersnaam en wachtwoord matchen geen account.",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",
-      "reset_instructions": "Reset instructions have been sent to {email}",
+      "reset_instructions": "Password Reset instructions have been sent to {email}",
       "back_to_login": "Back to Login",
       "customer_not_found": "We couldn't find an account for this email address"
     }
