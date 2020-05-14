@@ -7,9 +7,10 @@ export const wrapper = css({
   display: 'block',
   color: 'var(--color-text-low-emphasis)',
   fontSize: 12,
+  lineHeight: '1rem',
   padding: `${variables.gap.big}px 0`,
   '> *:first-child': {
-    margin: 0,
+    marginTop: 0,
   },
   ' ol, ul': {
     margin: `${variables.gap.small}px 0`,
