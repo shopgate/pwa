@@ -3,6 +3,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { useSideNavigation } from './SideNavigation.hooks';
 import SideNavigationItem from './SideNavigationItem';
+import SideNavigationLinksQuicklinks from './SideNavigationLinksQuicklinks';
 import SideNavigationLinksLegal from './SideNavigationLinksLegal';
 /**
  * SideNavigationLinks component
@@ -14,6 +15,7 @@ const SideNavigationLinks = () => {
   return (
     <Fragment>
       <SideNavigationItem href={CART_PATH} label="navigation.cart" />
+      <SideNavigationLinksQuicklinks />
       <SideNavigationLinksLegal />
       {isLoggedIn ? (
         <SideNavigationItem onClick={logout} label="navigation.logout" />
