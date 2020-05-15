@@ -22,9 +22,9 @@
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
     "scanner": "Scanner",
-    "checkout_confirmation": "Order Successful",
-    "checkout_change_billing": "Change Billing Address",
-    "register": "Register"
+    "checkout_confirmation": "Bestellung erfolgreich",
+    "checkout_change_billing": "Rechnungsadresse ändern",
+    "register": "Registrieren"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -100,7 +100,7 @@
       "properties": "Eingeschaften",
       "ratings": "Bewertungen",
       "purchase": "Produkt kaufen",
-      "quantity": "Quantity"
+      "quantity": "Menge"
     },
     "displayGroups": {
       "general": "Allgemein",
@@ -147,9 +147,9 @@
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
     "method": {
-      "ropis": "Reserve online pickup in store / curbside",
-      "bopis": "Buy online pickup in store / curbside",
-      "direct_ship": "Ship to address"
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "direct_ship": "Versand"
     },
     "choose_reservation_type": "Reservierungs-Art wählen",
     "quick_reserve": "Sofort reservieren",
@@ -158,12 +158,12 @@
     "fulfillment": {
       "heading": "Verfügbarkeit",
       "direct_ship": "Online bestellen",
-      "ropis": "Reserve online pickup in store / curbside",
-      "bopis": "Buy online pickup in store / curbside",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
       "error": {
-        "direct_ship": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
-        "reserve": "This product is not available at your chosen location. Please select a different location.",
-        "not_ready": "Please choose a preferred location you want to order to."
+        "direct_ship": "Dieses Produkt steht nicht für den Versand zur Verfügung. Bitte wählen Sie eine andere Option oder prüfen Sie die Verfügbarkeit in einer Filiale in Ihrer Nähe.",
+        "reserve": "Dieses Produkt ist nicht in der gewählten Filiale verfügrbar. Bitte wählen Sie eine andere Filiale.",
+        "not_ready": "Bitte wählen Sie eine Filiale."
       }
     },
     "stock_info": {
@@ -216,12 +216,12 @@
     "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   },
   "cart": {
-    "grand_total": "Grand Total",
-    "current_total": "Current Total",
-    "items": "Items",
-    "price": "Price",
-    "quantity": "Qty",
-    "remove_item": "Remove item",
+    "grand_total": "Summe",
+    "current_total": "Summe",
+    "items": "Produkte",
+    "price": "Preis",
+    "quantity": "Menge",
+    "remove_item": "Produkt entfernen",
     "subtotal": "Zwischensumme",
     "total": "Summe Warenkorb",
     "discount": "Rabatt",
@@ -253,13 +253,13 @@
       "mixed_cart_coupon_removed": "The coupon \"{code}\" is not valid for in store reservations. Once you have placed the reservation it will be available for direct ship orders again."
     },
     "change_fulfillment": {
-      "direct_ship": "Change to Delivery",
-      "bopis": "Change to BOPIS",
-      "ropis": "Change to Reservation"
+      "direct_ship": "Ändern zu Versand",
+      "bopis": "Ändern zu Click & Collect",
+      "ropis": "Ändern zu Click & Reserve"
     },
     "price_caption": {
-      "reservation": "Reservation",
-      "pay_in_store": ""
+      "reservation": "Reservierung",
+      "pay_in_store": "In der Filiale bezahlen"
     }
   },
   "login": {
@@ -275,10 +275,10 @@
     "logout_message": "Sie wurden ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
-      "subline": "Please enter your Email to initiate the password reset process.",
-      "reset_instructions": "Password Reset instructions have been sent to {email}",
-      "back_to_login": "Back to Login",
-      "customer_not_found": "We couldn't find an account for this email address"
+      "subline": "Bitte geben Sie Ihre Email-Adresse ein.",
+      "reset_instructions": "Sie erhalten eine Email zum Zurücksetzen Ihres Passworts an {email}",
+      "back_to_login": "Zurück zur Anmeldung",
+      "customer_not_found": "Zu dieser Email Adresse liegt und kein Account vor."
     }
   },
   "navigation": {
@@ -343,38 +343,38 @@
   },
   "checkout": {
     "summary": {
-      "headline": "Order Summary",
-      "tax": "Tax",
-      "subTotal": "Subtotal",
-      "total": "Total"
+      "headline": "Zusammenfassung",
+      "tax": "Steuern",
+      "subTotal": "Zwischensumme",
+      "total": "Summe"
     },
     "errors": {
       "genericInitialize": "Checkout is currently unavailable, please try again later.",
       "genericUpdate": "Failed to process order, please try again later.",
       "genericSubmit": "Failed to complete order, please try again later.",
-      "missingPaymentMethod": "No payment method configured.",
+      "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
       "noPaymentTransaction": "No payment transaction available.",
-      "genericUpdateBilling": "Failed to update billing address."
+      "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse"
     },
-    "submit_order": "Buy Now",
-    "continue_payment": "Continue to Payment",
-    "continue": "Continue",
-    "steps": "Step {from} of {to}",
+    "submit_order": "Jetzt kaufen",
+    "continue_payment": "Weiter zur Zahlung",
+    "continue": "Weiter",
+    "steps": "Schritt {from} von {to}",
     "pickup_contact": {
-      "headline": "Pickup Contact Info",
+      "headline": "Kontakt zur Abholung",
       "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
       "form": {
         "firstName": "Vorname *",
         "lastName": "Nachname *",
         "cellPhone": "Mobilnummer *",
         "emailAddress": "E-Mail Adresse *",
-        "company": "Company",
-        "address1": "Street & No. *",
-        "address2": "Address 2",
-        "zipcode": "ZIP Code *",
-        "city": "City *",
-        "region": "Region *",
-        "country": "Country *",
+        "company": "Firma",
+        "address1": "Straße und Hausnummer *",
+        "address2": "Addresszusatz",
+        "zipcode": "Postleitzahl *",
+        "city": "Stadt *",
+        "region": "Bundesland *",
+        "country": "Land *",
         "who_will_pickup": "Wer wird diese Bestellung abholen?",
         "me": "Ich selbst",
         "someone_else": "Jemand anderes",
@@ -383,42 +383,42 @@
       }
     },
     "billing": {
-      "headline": "Billing Address",
-      "save": "Save",
+      "headline": "Rechnungsadresse",
+      "save": "Sichern",
       "address": "{postalCode} {city}, {region}",
-      "edit": "Edit"
+      "edit": "Ändern"
     },
     "creditCard": {
-      "headline": "Payment",
-      "card": "Credit Card Number *",
-      "cvc": "Security Code *",
-      "expiry": "Valid Until *"
+      "headline": "Zahlungsart",
+      "card": "Kreditkartennummer *",
+      "cvc": "Sicherheitscode *",
+      "expiry": "Gültig bis *"
     },
     "success": {
-      "title": "Thank you for your order",
+      "title": "Vielen Dank für Ihre Bestellung",
       "copy": "We will send you an push/text message shortly when your order is ready for pickup.",
-      "order_number": "Order number: {orderNumber}",
-      "order_date": "Order Date: {date}",
-      "your_items": "Your item(s)",
-      "pick_up_contact": "Pick up contact",
-      "pickup_notes": "Pickup notes",
+      "order_number": "Bestellnummer: {orderNumber}",
+      "order_date": "Bestelldatum: {date}",
+      "your_items": "Produkte:",
+      "pick_up_contact": "Kontakt zur Abholung",
+      "pickup_notes": "Notizen zur Abholung",
       "billed_to": "Billed to",
-      "order_summary": "Order summary",
+      "order_summary": "Zusammenfassung der Bestellung",
       "name": "Name",
-      "phone_number": "Phone Number",
-      "email_address": "Email Address",
-      "card_holder": "Card Holder",
-      "address": "Address",
-      "payment_method": "Payment Method",
-      "continue": "Continue shopping"
+      "phone_number": "Telefonummer",
+      "email_address": "Email Adresse",
+      "card_holder": "Kartenhalter",
+      "address": "Addresse",
+      "payment_method": "Zahlungsart",
+      "continue": "Weiter einkaufen"
     }
   },
   "registration": {
-    "create_account": "Create account",
+    "create_account": "Account erstellen",
     "headlines": {
-      "create_new_account": "Create new account",
-      "shipping_address": "Shipping Address",
-      "billing_address": "Billing Address"
+      "create_new_account": "Neuen Account erstellen",
+      "shipping_address": "Lieferadresse",
+      "billing_address": "Rechnungsadresse"
     }
   },"error": {
     "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
