@@ -167,11 +167,15 @@ const CheckoutProvider = ({
     }
 
     // Order is done, fetch again to retrieve infos for success page
-    await Promise.all([
+    const [order] = await Promise.all([
       fetchCheckoutOrder(),
       fetchCart(),
     ]);
-    historyReplace({ pathname: CHECKOUT_CONFIRMATION_PATTERN });
+
+    historyReplace({
+      pathname: CHECKOUT_CONFIRMATION_PATTERN,
+      state: { order },
+    });
 
     // We don't set locked to false to avoid unnecessary UI changes right before
     // going to confirmation page.

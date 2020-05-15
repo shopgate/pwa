@@ -79,3 +79,29 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     fulfillmentLocationId: fulfillmentLocationCode,
   };
 });
+
+/**
+ * Generates checkout tax lines from an order object.
+ * @param {Object} order An order object
+ * @returns {Array}
+ */
+export const getCheckoutTaxLinesFromOrder = (order = {}) => [
+  {
+    visible: true,
+    type: 'subTotal',
+    value: order.subTotal,
+    currencyCode: order.currencyCode,
+  },
+  {
+    visible: order.taxAmount > 0,
+    type: 'tax',
+    value: order.taxAmount,
+    currencyCode: order.currencyCode,
+  },
+  {
+    visible: true,
+    type: 'total',
+    value: order.total,
+    currencyCode: order.currencyCode,
+  },
+];

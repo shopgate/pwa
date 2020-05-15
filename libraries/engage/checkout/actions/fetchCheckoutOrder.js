@@ -26,12 +26,15 @@ export const fetchCheckoutOrder = () => async (dispatch) => {
       type: FETCH_CHECKOUT_ORDER_SUCCESS,
       order,
     });
+
+    return order;
   } catch (error) {
     dispatch({
       type: FETCH_CHECKOUT_ORDER_ERROR,
       error,
     });
     LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
+    return null;
   }
 };
 

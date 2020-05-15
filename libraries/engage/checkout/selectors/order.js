@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { convertLineItemsToCartItems } from '../helpers';
+import { convertLineItemsToCartItems, getCheckoutTaxLinesFromOrder } from '../helpers';
 import { ROPIS } from '../../locations';
 
 /**
@@ -124,26 +124,7 @@ export const getCheckoutTaxLines = createSelector(
   getCheckoutOrder,
   (order) => {
     if (!order) return [];
-    return [
-      {
-        visible: true,
-        type: 'subTotal',
-        value: order.subTotal,
-        currencyCode: order.currencyCode,
-      },
-      {
-        visible: order.taxAmount > 0,
-        type: 'tax',
-        value: order.taxAmount,
-        currencyCode: order.currencyCode,
-      },
-      {
-        visible: true,
-        type: 'total',
-        value: order.total,
-        currencyCode: order.currencyCode,
-      },
-    ];
+    return getCheckoutTaxLinesFromOrder(order);
   }
 );
 

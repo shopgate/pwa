@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { ResponsiveContainer, RippleButton } from '@shopgate/engage/components';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartItems } from '@shopgate/engage/cart';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
+import { useRoute } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
+import { convertLineItemsToCartItems } from '../../helpers';
 import CheckoutConfirmationPickUpContact from './CheckoutConfirmationPickUpContact';
 import CheckoutConfirmationPickupNotes from './CheckoutConfirmationPickupNotes';
 import CheckoutConfirmationBilledTo from './CheckoutConfirmationBilledTo';
 import CheckoutConfirmationOrderSummary from './CheckoutConfirmationOrderSummary';
 import { SupplementalContent } from '../SupplementalContent';
-import connect from './CheckoutConfirmation.connector';
 
 const { variables } = themeConfig;
 
@@ -71,12 +71,24 @@ const style = {
  * CheckoutConfirmation component
  * @returns {JSX}
  */
-const CheckoutConfirmation = ({ order, cartItems, onContinueShopping }) => {
+const CheckoutConfirmation = ({ onContinueShopping }) => {
+  const { state: { order } } = useRoute();
+
+  const { orderNumber, date, cartItems } = useMemo(() => {
+    if (!order) {
+      return {};
+    }
+
+    return {
+      orderNumber: order.orderNumber,
+      date: order.date,
+      cartItems: convertLineItemsToCartItems(order.lineItems),
+    };
+  }, [order]);
+
   if (!order || !cartItems) {
     return null;
   }
-
-  const { orderNumber, date } = order;
 
   return (
     <div className={style.root}>
@@ -133,15 +145,8 @@ const CheckoutConfirmation = ({ order, cartItems, onContinueShopping }) => {
   );
 };
 
-CheckoutConfirmation.defaultProps = {
-  cartItems: null,
-  order: null,
-};
-
 CheckoutConfirmation.propTypes = {
   onContinueShopping: PropTypes.func.isRequired,
-  cartItems: PropTypes.arrayOf(PropTypes.shape()),
-  order: PropTypes.shape(),
 };
 
-export default connect(CheckoutConfirmation);
+export default CheckoutConfirmation;
