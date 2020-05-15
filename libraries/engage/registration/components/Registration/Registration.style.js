@@ -30,7 +30,7 @@ export const form = css({
 });
 
 export const section = css({
-  marginBottom: variables.gap.big * 1.5,
+//  marginBottom: variables.gap.big * 1.5,
 }).toString();
 
 export const submitButtonContainer = css({

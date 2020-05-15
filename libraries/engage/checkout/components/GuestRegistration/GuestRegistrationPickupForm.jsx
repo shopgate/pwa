@@ -12,7 +12,7 @@ const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    padding: 16,
+    padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',

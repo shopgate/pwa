@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { css } from 'glamor';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, Link } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -24,13 +25,14 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     fontSize: 15,
-    margin: 0,
+    margin: `0 0 ${variables.gap.xbig}px`,
     padding: variables.gap.big,
     width: '100%',
     ...(!isIOSTheme() ? {
       background: 'var(--color-background-accent)',
       boxShadow: 'none',
       padding: `${variables.gap.small}px ${variables.gap.big}px`,
+      margin: 0,
     } : {}),
   }),
   cardWithForm: css({
@@ -86,8 +88,9 @@ const CheckoutSection = ({
   <Fragment>
     <h3 className={styles.headline}>{i18n.text(title)}</h3>
     <Card
-      className={
-        `${hasForm && styles.cardWithForm.toString()} ${styles.card.toString()}`
+      className={classNames(styles.card.toString(), {
+        [styles.cardWithForm.toString()]: hasForm,
+      })
       }
     >
       <div className={`${styles.actionsContainer} ${className}`}>

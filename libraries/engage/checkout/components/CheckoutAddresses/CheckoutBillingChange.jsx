@@ -18,10 +18,10 @@ import billingConstraints from './CheckoutBillingChange.constraints';
 
 const styles = {
   headline: css({
-    marginTop: 16,
     padding: 16,
+    margin: '16px 0 0 0',
     fontSize: '2rem',
-    margin: 0,
+    fontWeight: 'normal',
     lineHeight: 1,
   }),
   form: css({
@@ -43,6 +43,11 @@ const styles = {
       marginTop: 16,
       flex: 0.6,
     },
+  }),
+  buttonWrapper: css({
+    display: 'flex',
+    flexDirection: 'column',
+    flex: '0 0 auto',
   }),
 };
 /**
@@ -146,13 +151,16 @@ const CheckoutBillingChange = ({
             validationErrors={validationState}
             handleUpdate={formState.setValues}
           />
-          <RippleButton
-            type="secondary"
-            onClick={formState.handleSubmit}
-            disabled={isLocked}
-          >
-            {i18n.text('checkout.billing.save')}
-          </RippleButton>
+          <div className={styles.buttonWrapper}>
+            <RippleButton
+              type="secondary"
+              onClick={formState.handleSubmit}
+              disabled={isLocked}
+            >
+              {i18n.text('checkout.billing.save')}
+            </RippleButton>
+          </div>
+
         </div>
         <div className={styles.right} />
       </div>
