@@ -63,10 +63,13 @@ const style = {
     fontWeight: 'bold',
     margin: `${variables.gap.bigger}px 0 0`,
   }),
+  instructions: css({
+    marginBottom: variables.gap.xbig,
+  }),
   body: css({
-    padding: `${variables.gap.big}px 0 0`,
-    margin: `0 0 ${variables.gap.bigger}px`,
     border: 0,
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
   }),
   orderNum: css({
     padding: 0,
@@ -130,9 +133,15 @@ const CheckoutConfirmation = ({ onContinueShopping }) => {
             {' | '}
             {i18n.text('checkout.success.order_number', { orderNumber })}
           </p>
-          <p className={style.body}>
-            {i18n.text('checkout.success.copy')}
-          </p>
+
+          <div className={style.instructions}>
+            <p className={style.body}>
+              {i18n.text('checkout.success.instructions_1')}
+            </p>
+            <p className={style.body}>
+              {i18n.text('checkout.success.instructions_2')}
+            </p>
+          </div>
 
         </div>
 
