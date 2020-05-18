@@ -119,7 +119,7 @@ const CheckoutConfirmation = ({ onContinueShopping }) => {
     <div className={style.root}>
       <div className={style.main}>
         <div className={style.backButtonContainer}>
-          <ResponsiveBackButton label="checkout.success.continue" />
+          <ResponsiveBackButton label="checkout.success.continue" onClick={onContinueShopping} />
         </div>
         <div className={style.container}>
           <h2 className={style.heading}>

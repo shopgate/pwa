@@ -8,12 +8,17 @@ import { container, button, buttonIcon } from './ResponsiveBackButton.style';
  * A back button  for the desktop checkout pages.
  * @returns {JSX}
  */
-const ResponsiveBackButton = ({ label }) => {
+const ResponsiveBackButton = ({ label, onClick }) => {
   const { pop } = useNavigation();
 
   const handleClick = useCallback(() => {
+    if (onClick) {
+      onClick();
+      return;
+    }
+
     pop();
-  }, [pop]);
+  }, [onClick, pop]);
 
   return (
     <div className={container}>
@@ -32,10 +37,12 @@ const ResponsiveBackButton = ({ label }) => {
 
 ResponsiveBackButton.propTypes = {
   label: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 ResponsiveBackButton.defaultProps = {
   label: 'common.back',
+  onClick: null,
 };
 
 export default ResponsiveBackButton;
