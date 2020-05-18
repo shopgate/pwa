@@ -12,6 +12,7 @@ import { ResponsiveContainer, FormBuilder, RippleButton } from '@shopgate/engage
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { styles as formStyles } from '../Form';
+import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import generateFormConfig from './CheckoutBillingChange.config';
 import connect from './CheckoutBillingChange.connector';
 import billingConstraints from './CheckoutBillingChange.constraints';
@@ -19,10 +20,10 @@ import billingConstraints from './CheckoutBillingChange.constraints';
 const styles = {
   headline: css({
     padding: 16,
-    margin: '16px 0 0 0',
-    fontSize: '2rem',
+    fontSize: '2.125rem',
     fontWeight: 'normal',
-    lineHeight: 1,
+    margin: 0,
+    lineHeight: '2.25rem',
   }),
   form: css({
     ...formStyles,
@@ -137,6 +138,7 @@ const CheckoutBillingChange = ({
   return (
     <Fragment>
       <ResponsiveContainer webOnly breakpoint=">xs">
+        <ResponsiveBackButton />
         <h1 className={styles.headline}>
           {i18n.text('titles.checkout_change_billing')}
         </h1>
@@ -173,7 +175,7 @@ CheckoutBillingChange.propTypes = {
   updateBilling: PropTypes.func.isRequired,
   billingAddress: PropTypes.shape(),
   isDataReady: PropTypes.bool,
-  requiredFields: PropTypes.arrayOf(PropTypes.shape()),
+  requiredFields: PropTypes.arrayOf(PropTypes.string),
   shopSettings: PropTypes.shape(),
   userLocation: PropTypes.shape(),
 };

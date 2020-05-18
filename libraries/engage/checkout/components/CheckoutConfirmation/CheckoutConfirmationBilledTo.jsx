@@ -24,17 +24,18 @@ const CheckoutConfirmationBilledTo = ({ order }) => {
       ...(hasPayment ? [
         {
           label: i18n.text('checkout.success.card_holder'),
-          text: `${firstName} ${lastName}`,
+          text: [`${firstName} ${lastName}`, `${address1 || ''}`, `${city || ''}, ${region || ''} ${postalCode || ''}`].join('\n\r'),
         },
-      ] : []),
-      {
-        label: i18n.text('checkout.success.address'),
-        text: [`${address1 || ''}`, `${city || ''}, ${region || ''} ${postalCode || ''}`].join('\n\r'),
-      },
+      ] : [
+        {
+          label: i18n.text('checkout.success.address'),
+          text: [`${address1 || ''}`, `${city || ''}, ${region || ''} ${postalCode || ''}`].join('\n\r'),
+        },
+      ]),
       ...(hasPayment ? [
         {
           label: i18n.text('checkout.success.payment_method'),
-          text: `${startCase(type)} ****${last4}`,
+          text: `${startCase(type)} **** **** ${last4}`,
         },
       ] : []),
     ];

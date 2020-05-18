@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { hot } from 'react-hot-loader/root';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { ResponsiveContainer, RippleButton } from '@shopgate/engage/components';
@@ -8,6 +9,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 import { convertLineItemsToCartItems } from '../../helpers';
+import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import CheckoutConfirmationPickUpContact from './CheckoutConfirmationPickUpContact';
 import CheckoutConfirmationPickupNotes from './CheckoutConfirmationPickupNotes';
 import CheckoutConfirmationBilledTo from './CheckoutConfirmationBilledTo';
@@ -29,16 +31,32 @@ const style = {
   }),
   side: css({
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
-      marginTop: 16,
-      flex: 0.6,
+      marginTop: 134,
+      marginLeft: variables.gap.big * -1,
+      flex: 0.42,
     },
   }),
+  cartItems: css({
+    marginBottom: 32,
+  }),
   container: css({
-    padding: `${variables.gap.big}px ${variables.gap.small * 1.5}px 0 ${variables.gap.small * 1.5}px`,
+    padding: `${variables.gap.big}px ${variables.gap.small * 1.5}px 0 ${variables.gap.xbig}px`,
+    [responsiveMediaQuery('<sm')]: {
+      paddingLeft: variables.gap.big,
+    },
+  }),
+  backButtonContainer: css({
+    paddingLeft: variables.gap.big,
+    [responsiveMediaQuery('<sm')]: {
+      display: 'none',
+    },
   }),
   heading: css({
-    fontSize: '1.125rem',
-    fontWeight: 'bold',
+    fontSize: '2.125rem',
+    fontWeight: 'normal',
+    margin: 0,
+    lineHeight: '2.25rem',
+    paddingBottom: variables.gap.xbig,
   }),
   yourItemsHeading: css({
     fontSize: '1.25rem',
@@ -52,15 +70,22 @@ const style = {
   }),
   orderNum: css({
     padding: 0,
-    fontSize: '1rem',
-    fontWeight: 'bold',
+    fontSize: '1.25rem',
+    fontWeight: 500,
+    lineHeight: '1.5rem',
     margin: `0 0 ${variables.gap.big}px`,
     border: 0,
   }),
   button: css({
     flex: '0 0 auto',
-    margin: `${variables.gap.big * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.xbig}px ${variables.gap.small * 1.5}px`,
     borderRadius: 2,
+    minWidth: '50%',
+    [responsiveMediaQuery('<md')]: {
+      width: '100%',
+    },
+  }),
+  buttonWrapper: css({
+    padding: variables.gap.big,
   }),
   supplementalWrapper: css({
     padding: `${variables.gap.xbig}px ${variables.gap.big}px`,
@@ -93,49 +118,56 @@ const CheckoutConfirmation = ({ onContinueShopping }) => {
   return (
     <div className={style.root}>
       <div className={style.main}>
+        <div className={style.backButtonContainer}>
+          <ResponsiveBackButton label="checkout.success.continue" />
+        </div>
         <div className={style.container}>
           <h2 className={style.heading}>
             {i18n.text('checkout.success.title')}
           </h2>
+          <p className={style.orderNum}>
+            {i18n.text('checkout.success.order_date', { date: i18n.date(new Date(date).getTime(), 'short') })}
+            {' | '}
+            {i18n.text('checkout.success.order_number', { orderNumber })}
+          </p>
           <p className={style.body}>
             {i18n.text('checkout.success.copy')}
           </p>
-          <p className={style.orderNum}>
-            {i18n.text('checkout.success.order_date', { date: i18n.date(new Date(date).getTime(), 'short') })}
-            <br />
-            {i18n.text('checkout.success.order_number', { orderNumber })}
-          </p>
-          <h3 className={style.yourItemsHeading}>{i18n.text('checkout.success.your_items')}</h3>
+
         </div>
 
-        <CartItems
-          cartItems={cartItems}
-          onFocus={() => { }}
-          multiLineReservation
-          editable={false}
-        />
-
-        <CheckoutConfirmationPickupNotes order={order} />
+        <div className={style.cartItems}>
+          <CartItems
+            cartItems={cartItems}
+            onFocus={() => { }}
+            multiLineReservation
+            editable={false}
+          />
+        </div>
 
         <ResponsiveContainer breakpoint="<md" appAlways>
           <CheckoutConfirmationPickUpContact order={order} />
+          <CheckoutConfirmationPickupNotes order={order} />
           <CheckoutConfirmationBilledTo order={order} />
           <CheckoutConfirmationOrderSummary order={order} />
           <SupplementalContent className={style.supplementalWrapper} />
         </ResponsiveContainer>
+        <div className={style.buttonWrapper}>
+          <RippleButton
+            type="secondary"
+            disabled={false}
+            className={style.button.toString()}
+            onClick={onContinueShopping}
+          >
+            {i18n.text('checkout.success.continue')}
+          </RippleButton>
+        </div>
 
-        <RippleButton
-          type="secondary"
-          disabled={false}
-          className={style.button.toString()}
-          onClick={onContinueShopping}
-        >
-          {i18n.text('checkout.success.continue')}
-        </RippleButton>
       </div>
       <div className={style.side}>
         <ResponsiveContainer breakpoint=">=md" webOnly>
           <CheckoutConfirmationPickUpContact order={order} />
+          <CheckoutConfirmationPickupNotes order={order} />
           <CheckoutConfirmationBilledTo order={order} />
           <CheckoutConfirmationOrderSummary order={order} />
           <SupplementalContent className={style.supplementalWrapper} />
@@ -149,4 +181,4 @@ CheckoutConfirmation.propTypes = {
   onContinueShopping: PropTypes.func.isRequired,
 };
 
-export default CheckoutConfirmation;
+export default hot(CheckoutConfirmation);

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import {
-  Grid, Link, TextLink, ProductProperties, PriceInfo, SurroundPortals,
+  Grid, Link, TextLink, ProductProperties, PriceInfo, SurroundPortals, ConditionalWrapper,
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
@@ -38,9 +38,16 @@ export function CartItemProductLayout() {
     <React.Fragment>
       <Grid className={styles.item}>
         <Grid.Item className={styles.content} grow={1}>
-          <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
+          <ConditionalWrapper
+            condition={isEditable}
+            wrapper={children =>
+              <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
+                {children}
+              </TextLink>
+            }
+          >
             <CartItemProductTitle value={product.name} />
-          </TextLink>
+          </ConditionalWrapper>
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
               <ProductProperties properties={product.properties} lineClamp={2} />
@@ -67,11 +74,18 @@ export function CartItemProductLayout() {
         {/** DOM reversed for a11y navigation */}
         <Grid.Item className={styles.leftColumn}>
           <div className={styles.image} aria-hidden>
-            <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
+            <ConditionalWrapper
+              condition={isEditable}
+              wrapper={children =>
+                <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
+                  {children}
+                </Link>
+              }
+            >
               <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
                 <ProductImage src={product.featuredImageUrl} />
               </SurroundPortals>
-            </Link>
+            </ConditionalWrapper>
           </div>
           <CartItemQuantityPicker
             unit={product.unit}

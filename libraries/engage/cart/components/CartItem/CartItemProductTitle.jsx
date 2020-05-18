@@ -36,7 +36,7 @@ export function CartItemProductTitle(props: Props) {
   const { invokeFulfillmentAction } = useCartItem();
   const context = useCartItemProduct();
   const {
-    handleRemove, toggleEditMode, cartItem,
+    handleRemove, toggleEditMode, cartItem, isEditable,
   } = context;
 
   const handleToggleEditMode = useCallback(() => {
@@ -68,24 +68,27 @@ export function CartItemProductTitle(props: Props) {
           </div>
         </SurroundPortals>
       </Grid.Item>
-      <Grid.Item className={menuContainer} shrink={0}>
-        <ContextMenu classes={contextMenuClasses}>
-          <ContextMenu.Item onClick={handleRemove}>
-            <I18n.Text string="cart.remove" />
-          </ContextMenu.Item>
-          <ContextMenu.Item onClick={handleToggleEditMode}>
-            <I18n.Text string="cart.edit" />
-          </ContextMenu.Item>
-          <CartContextMenuItemChangeLocation
-            cartItem={context.cartItem}
-            onClick={handleChangeLocationClick}
-          />
-          <CartContextMenuItemChangeFulfillment
-            cartItem={context.cartItem}
-            onClick={handleChangeFulfillmentClick}
-          />
-        </ContextMenu>
-      </Grid.Item>
+      { isEditable && (
+        <Grid.Item className={menuContainer} shrink={0}>
+          <ContextMenu classes={contextMenuClasses}>
+            <ContextMenu.Item onClick={handleRemove}>
+              <I18n.Text string="cart.remove" />
+            </ContextMenu.Item>
+            <ContextMenu.Item onClick={handleToggleEditMode}>
+              <I18n.Text string="cart.edit" />
+            </ContextMenu.Item>
+            <CartContextMenuItemChangeLocation
+              cartItem={context.cartItem}
+              onClick={handleChangeLocationClick}
+            />
+            <CartContextMenuItemChangeFulfillment
+              cartItem={context.cartItem}
+              onClick={handleChangeFulfillmentClick}
+            />
+          </ContextMenu>
+        </Grid.Item>
+      )}
+
     </Grid>
   );
 }

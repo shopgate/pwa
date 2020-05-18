@@ -15,6 +15,7 @@ import connect from './SideNavigationProvider.connector';
 
 type Props = {
   maxCategoryNesting: number,
+  routePatternBlacklist?: Array,
   currentParams?: Object,
   currentPathname?: string,
   currentRoute?: Object,
@@ -37,6 +38,7 @@ const itemPatterns = [
  */
 const SideNavigationProvider = ({
   maxCategoryNesting,
+  routePatternBlacklist,
   currentParams,
   currentPathname,
   currentRoute,
@@ -45,6 +47,7 @@ const SideNavigationProvider = ({
   children,
 }:Props) => {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     if (!currentRoute) {
@@ -59,6 +62,8 @@ const SideNavigationProvider = ({
     } else if (!itemPatterns.includes(pattern)) {
       setActiveCategoryId(null);
     }
+
+    setIsVisible(!routePatternBlacklist.includes(pattern));
   });
   const value = useMemo(
     () => ({
@@ -69,6 +74,7 @@ const SideNavigationProvider = ({
       isLoggedIn,
       logout,
       activeCategoryId,
+      isVisible,
     }),
     [
       activeCategoryId,
@@ -76,6 +82,7 @@ const SideNavigationProvider = ({
       currentPathname,
       currentRoute,
       isLoggedIn,
+      isVisible,
       logout,
       maxCategoryNesting,
     ]
@@ -91,6 +98,7 @@ const SideNavigationProvider = ({
 SideNavigationProvider.defaultProps = {
   currentParams: null,
   currentPathname: '',
+  routePatternBlacklist: [],
   currentRoute: null,
 };
 

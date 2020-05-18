@@ -19,6 +19,13 @@ const CheckoutConfirmationPickUpContact = ({ order }) => {
       text: `${firstName} ${lastName}`,
     }];
 
+    if (emailAddress) {
+      entries.push({
+        label: i18n.text('checkout.success.email_address'),
+        text: emailAddress,
+      });
+    }
+
     if (mobile) {
       entries.push({
         label: i18n.text('checkout.success.phone_number'),
@@ -28,13 +35,6 @@ const CheckoutConfirmationPickUpContact = ({ order }) => {
       entries.push({
         label: i18n.text('checkout.success.phone_number'),
         text: phone,
-      });
-    }
-
-    if (emailAddress) {
-      entries.push({
-        label: i18n.text('checkout.success.email_address'),
-        text: emailAddress,
       });
     }
 

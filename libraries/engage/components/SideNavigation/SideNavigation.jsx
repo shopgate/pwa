@@ -1,36 +1,35 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
-import {
-  INDEX_PATH,
-} from '@shopgate/pwa-common/constants/RoutePaths';
-import SideNavigationCategories from './SideNavigationCategories';
-import SideNavigationLinks from './SideNavigationLinks';
+import { hot } from 'react-hot-loader/root';
 import SideNavigationProvider from './SideNavigationProvider';
-import SideNavigationItem from './SideNavigationItem';
-import { container } from './SideNavigation.style';
+import SideNavigationContent from './SideNavigationContent';
 
 type Props = {
-  maxCategoryNesting?: number
+  classNames?: Object,
+  maxCategoryNesting?: number,
+  routePatternBlacklist?: Array
 }
 
 /**
  * The SideNavigation component
  * @returns {JSX}
  */
-const SideNavigation = ({ maxCategoryNesting }: Props) => (
-  <SideNavigationProvider maxCategoryNesting={maxCategoryNesting}>
-    <nav className={container}>
-      <ul>
-        <SideNavigationItem href={INDEX_PATH} label="navigation.home" />
-        <SideNavigationCategories />
-        <SideNavigationLinks />
-      </ul>
-    </nav>
+const SideNavigation = ({
+  maxCategoryNesting,
+  routePatternBlacklist,
+  classNames,
+}: Props) => (
+  <SideNavigationProvider
+    maxCategoryNesting={maxCategoryNesting}
+    routePatternBlacklist={routePatternBlacklist}
+  >
+    <SideNavigationContent classNames={classNames} />
   </SideNavigationProvider>
 );
 
 SideNavigation.defaultProps = {
   maxCategoryNesting: 3,
+  routePatternBlacklist: [],
+  classNames: null,
 };
 
 export default hot(SideNavigation);

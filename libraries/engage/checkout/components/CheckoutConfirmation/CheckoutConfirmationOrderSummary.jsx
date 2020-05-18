@@ -17,7 +17,7 @@ const CheckoutConfirmationOrderSummary = ({ order }) => {
     })), [order]);
 
   return (
-    <CheckoutConfirmationSection title="checkout.success.order_summary" content={content} />
+    <CheckoutConfirmationSection title="checkout.success.order_summary" content={content} isSummary />
   );
 };
 

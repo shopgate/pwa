@@ -13,23 +13,24 @@ const styles = {
     fontSize: '1rem',
     fontWeight: 'normal',
     textTransform: 'uppercase',
-    margin: `${variables.gap.big * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.small}px ${variables.gap.small * 1.5}px`,
+    margin: `${variables.gap.bigger}px ${variables.gap.big}px ${variables.gap.small}px ${variables.gap.big}px`,
     ...(!isIOSTheme() ? {
       fontSize: '1.25rem',
-      color: colors.dark,
+      lineHeight: '1.5rem',
+      fontWeight: 500,
+      color: 'var(--color-text-high-emphasis)',
       textTransform: 'none',
     } : {}),
   }),
   card: css({
-    fontSize: 15,
-    margin: `0 ${variables.gap.small * 1.5}px`,
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
+    margin: `0 ${variables.gap.big}px 0 ${variables.gap.big}px`,
     padding: variables.gap.big,
-    display: 'table',
-    width: 'calc(100% - 24px)',
+    color: 'var(--color-text-medium-emphasis)',
     ...(!isIOSTheme() ? {
-      background: colors.shade8,
+      background: 'var(--color-background-accent)',
       boxShadow: 'none',
-      padding: `${variables.gap.small}px ${variables.gap.big}px`,
     } : {}),
   }),
   cardWithForm: css({
@@ -39,10 +40,44 @@ const styles = {
       padding: 0,
     } : {}),
   }).toString(),
+  list: css({
+    margin: 0,
+  }),
+  listTitle: css({
+    fontSize: '0.625rem',
+    lineHeight: '1rem',
+    fontWeight: 'bold',
+    letterSpacing: '1.5px',
+    textTransform: 'uppercase',
+    color: 'var(--color-text-high-emphasis)',
+    ':not(:first-child)': {
+      paddingTop: variables.gap.xsmall * 3,
+    },
+  }),
+  listEntry: css({
+    fontSize: '0.875rem',
+    lineHeight: '1.5rem',
+    marginLeft: 0,
+    whiteSpace: 'pre-line',
+    wordBreak: 'break-all',
+    color: 'var(--color-text-medium-emphasis)',
+  }),
   table: css({
+    lineHeight: '1.75rem',
+    color: 'var(--color-text-high-emphasis)',
     ' td:last-child': {
       textAlign: 'right',
-      whiteSpace: 'pre-wrap',
+      whiteSpace: 'pre-line',
+      wordBreak: 'break-all',
+    },
+    ' tr:nth-last-child(2) td': {
+      paddingBottom: 8,
+    },
+    ' tr:last-child td': {
+      fontSize: '1rem',
+      paddingTop: 8,
+      borderTop: '1px solid #979797',
+      fontWeight: 'bold',
     },
   }),
 };
@@ -51,7 +86,9 @@ const styles = {
  * CheckoutConfirmationSegment component
  * @returns {JSX}
  */
-const CheckoutConfirmationSegment = ({ title, content, hasForm }) => {
+const CheckoutConfirmationSegment = ({
+  title, content, hasForm, isSummary,
+}) => {
   if (!content) {
     return null;
   }
@@ -63,7 +100,17 @@ const CheckoutConfirmationSegment = ({ title, content, hasForm }) => {
       <h3 className={styles.headline}>{i18n.text(title)}</h3>
       <Card className={`${hasForm && styles.cardWithForm.toString()} ${styles.card.toString()}`}>
         {isString && (<span>{content}</span>)}
-        {!isString && (
+        {!isString && !isSummary && (
+          <dl className={styles.list}>
+            {content.map(({ label, text }) => (
+              <Fragment key={label}>
+                <dt className={styles.listTitle}>{label}</dt>
+                <dd className={styles.listEntry}>{text}</dd>
+              </Fragment>
+            ))}
+          </dl>
+        )}
+        {isSummary && (
           <table className={styles.table}>
             <tbody>
               {content.map(({ label, text }) => (
@@ -75,7 +122,6 @@ const CheckoutConfirmationSegment = ({ title, content, hasForm }) => {
             </tbody>
           </table>
         )}
-
       </Card>
     </Fragment>
   );
@@ -88,11 +134,13 @@ CheckoutConfirmationSegment.propTypes = {
     PropTypes.string,
   ]),
   hasForm: PropTypes.bool,
+  isSummary: PropTypes.bool,
 };
 
 CheckoutConfirmationSegment.defaultProps = {
   content: null,
   hasForm: false,
+  isSummary: false,
 };
 
 export default CheckoutConfirmationSegment;

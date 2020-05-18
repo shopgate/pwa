@@ -17,6 +17,12 @@ export const navigation = css({
   },
 });
 
+export const navigationHidden = css(navigation, {
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    border: 'none',
+  },
+});
+
 export const content = css({
   zIndex: 1,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {

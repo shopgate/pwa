@@ -64,11 +64,19 @@ import Register from './Register';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
-import { navigation, content } from './index.style';
+import { navigation, navigationHidden, content } from './index.style';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
 
 new ThemeConfigResolver().resolveAll();
+
+const sideNavigationBlacklist = [
+  CHECKOUT_PATTERN,
+  GUEST_CHECKOUT_PATTERN,
+  GUEST_CHECKOUT_PAYMENT_PATTERN,
+  CHECKOUT_CONFIRMATION_PATTERN,
+  CHECKOUT_BILLING_PATTERN,
+];
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -89,9 +97,13 @@ const Pages = ({ store }) => (
                 <BrandingColorBanner />
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBar {...props} />} />
-                <div className={navigation}>
-                  <SideNavigation />
-                </div>
+                <SideNavigation
+                  classNames={{
+                    visible: navigation,
+                    hidden: navigationHidden,
+                  }}
+                  routePatternBlacklist={sideNavigationBlacklist}
+                />
                 <div className={content}>
                   <Router history={history}>
                     <Route

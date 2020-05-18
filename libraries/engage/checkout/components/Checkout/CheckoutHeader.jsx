@@ -3,20 +3,20 @@ import { css } from 'glamor';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { i18n } from '../../../core/helpers/i18n';
+import { ResponsiveBackButton } from '../ResponsiveBackButton';
 
 const styles = {
   title: css({
-    marginTop: 16,
     padding: 16,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-end',
   }),
   headline: css({
-    fontSize: '2rem',
+    fontSize: '2.125rem',
     fontWeight: 'normal',
     margin: 0,
-    lineHeight: 1,
+    lineHeight: '2.25rem',
   }),
   step: css({
     fontSize: '1rem',
@@ -38,6 +38,7 @@ const CheckoutTitle = ({
 }) => (
   <Fragment>
     <ResponsiveContainer webOnly breakpoint=">xs">
+      <ResponsiveBackButton />
       <div className={styles.title}>
         <h1 className={styles.headline}>
           {i18n.text('titles.checkout')}
