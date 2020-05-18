@@ -71,6 +71,14 @@ export const price = css({
   lineHeight: '1.625rem',
 }).toString();
 
+export const priceInfo = css({
+  wordBreak: 'break-word',
+  fontSize: '0.75rem',
+  lineHeight: '0.875rem',
+  color: 'var(--color-text-low-emphasis)',
+  padding: `${variables.gap.xsmall}px 0`,
+}).toString();
+
 export const contextMenu = css({
   marginTop: `-${variables.gap.xsmall * 3}px`,
   marginRight: `-${variables.gap.big}px`,

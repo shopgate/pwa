@@ -6,6 +6,7 @@ import {
   Ellipsis,
   QuantityInput,
   ConditionalWrapper,
+  PriceInfo,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
@@ -31,6 +32,7 @@ import {
   quantityPicker,
   quantityPickerDisabled,
   price,
+  priceInfo,
   contextMenu,
 } from './CartItemProductLayoutWide.style';
 
@@ -93,6 +95,9 @@ const CartItemProductLayoutWide = () => {
               priceStriked: price,
             }}
           />
+          {product.price.info && (
+            <PriceInfo className={priceInfo} text={product.price.info} />
+          )}
           <CartItemProductPriceCaption />
         </div>
         <div className={column}>
