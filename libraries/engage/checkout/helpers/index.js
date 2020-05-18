@@ -33,6 +33,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
   const messages = [];
   let fulfillmentMethods;
   let fulfillment;
+  let featuredImageUrl = null;
 
   if (Array.isArray(options)) {
     properties = options.map(option => ({
@@ -52,6 +53,14 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     };
   }
 
+  if (image) {
+    if (image.includes('?')) {
+      featuredImageUrl = `${image}&width=440&height=440&format=jpeg&fill=fff`;
+    } else {
+      featuredImageUrl = `${image}?width=440&height=440&format=jpeg&fill=fff`;
+    }
+  }
+
   return {
     id,
     quantity,
@@ -60,7 +69,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     type: 'product',
     product: {
       id: productCode,
-      featuredImageUrl: image ? `${image}&width=440&height=440&format=jpeg&fill=fff` : null,
+      featuredImageUrl,
       name,
       properties,
       appliedDiscounts,
