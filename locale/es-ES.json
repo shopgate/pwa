@@ -389,7 +389,8 @@
     },
     "success": {
       "title": "Thank you!",
-      "copy": "We will send you an push/text message shortly when your order is ready for pickup.",
+      "instructions_1": "Below you will find your order details. For questions regarding your order, contact the store that received your reservation.",
+      "instructions_2": "Please note pickup dates may vary because of holidays and weekends. Check your store's hours below for the most accurate pickup time.",
       "order_number": "Order number: {orderNumber}",
       "order_date": "Order Date: {date}",
       "your_items": "Your item(s)",
