@@ -33,7 +33,7 @@ const style = {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       marginTop: 134,
       marginLeft: variables.gap.big * -1,
-      flex: 0.42,
+      flex: 0.45,
     },
   }),
   cartItems: css({
