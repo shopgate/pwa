@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { RippleButton } from '@shopgate/engage/components';
@@ -25,7 +25,18 @@ const Actions = () => {
     handleSubmit,
     isLocked,
     needsPayment,
+    isGuestCheckoutEditMode,
   } = useGuestRegistration();
+
+  const label = useMemo(() => {
+    if (isGuestCheckoutEditMode) {
+      return 'checkout.billing.save';
+    }
+
+    return needsPayment
+      ? 'checkout.continue_payment'
+      : 'checkout.continue';
+  }, [isGuestCheckoutEditMode, needsPayment]);
 
   return (
     <div className={styles.root}>
@@ -34,9 +45,7 @@ const Actions = () => {
         onClick={handleSubmit}
         disabled={isLocked}
       >
-        {needsPayment
-          ? i18n.text('checkout.continue_payment')
-          : i18n.text('checkout.continue')}
+        { i18n.text(label) }
       </RippleButton>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { css } from 'glamor';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from '@shopgate/engage/components';
@@ -34,26 +34,25 @@ const styles = {
  * @returns {JSX}
  */
 const CheckoutTitle = ({
-  stepFrom, stepTo,
+  stepFrom, stepTo, headline,
 }) => (
-  <Fragment>
-    <ResponsiveContainer webOnly breakpoint=">xs">
-      <ResponsiveBackButton />
-      <div className={styles.title}>
-        <h1 className={styles.headline}>
-          {i18n.text('titles.checkout')}
-        </h1>
-        {stepFrom !== null ? (
-          <h2 className={styles.step}>
-            {i18n.text('checkout.steps', { from: stepFrom, to: stepTo })}
-          </h2>
-        ) : null}
-      </div>
-    </ResponsiveContainer>
-  </Fragment>
+  <ResponsiveContainer webOnly breakpoint=">xs">
+    <ResponsiveBackButton />
+    <div className={styles.title}>
+      <h1 className={styles.headline}>
+        {i18n.text(headline)}
+      </h1>
+      {stepFrom !== null ? (
+        <h2 className={styles.step}>
+          {i18n.text('checkout.steps', { from: stepFrom, to: stepTo })}
+        </h2>
+      ) : null}
+    </div>
+  </ResponsiveContainer>
 );
 
 CheckoutTitle.propTypes = {
+  headline: PropTypes.string,
   stepFrom: PropTypes.number,
   stepTo: PropTypes.number,
 };
@@ -61,6 +60,7 @@ CheckoutTitle.propTypes = {
 CheckoutTitle.defaultProps = {
   stepFrom: null,
   stepTo: null,
+  headline: 'titles.checkout',
 };
 
 export default CheckoutTitle;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
@@ -29,15 +29,22 @@ const styles = {
  * @returns {JSX}
  */
 const Billing = ({ guestCheckout }) => {
-  const { billingAddress } = useCheckoutContext();
+  const { billingAddress, orderReserveOnly } = useCheckoutContext();
+
+  const headline = useMemo(() => {
+    if (guestCheckout && orderReserveOnly) {
+      return 'checkout.billing.headline_reserve';
+    }
+
+    return 'checkout.billing.headline';
+  }, [guestCheckout, orderReserveOnly]);
 
   return (
     <div className={styles.root}>
       <Section
         className={styles.card}
-        title="checkout.billing.headline"
-        editLink={guestCheckout ? GUEST_CHECKOUT_PATTERN : CHECKOUT_BILLING_PATTERN}
-        editReplace={guestCheckout}
+        title={headline}
+        editLink={guestCheckout ? `${GUEST_CHECKOUT_PATTERN}?edit=1` : CHECKOUT_BILLING_PATTERN}
       >
         <span>
           {billingAddress.middleName?.length
@@ -45,6 +52,12 @@ const Billing = ({ guestCheckout }) => {
             : `${billingAddress.firstName} ${billingAddress.lastName}`
           }
         </span>
+        { (guestCheckout && orderReserveOnly) && (
+          <Fragment>
+            <span>{billingAddress.emailAddress}</span>
+            <span>{billingAddress.mobile}</span>
+          </Fragment>
+        )}
         <span>{billingAddress.address1}</span>
         {billingAddress.address2?.length ? (
           <span>{billingAddress.address2}</span>

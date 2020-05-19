@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { GUEST_CHECKOUT_PATTERN } from '../../constants/routes';
@@ -28,15 +28,21 @@ const styles = {
  * @returns {JSX}
  */
 const Billing = () => {
-  const { pickupAddress } = useCheckoutContext();
+  const { pickupAddress, orderReserveOnly } = useCheckoutContext();
+  const headline = useMemo(
+    () =>
+      (orderReserveOnly
+        ? 'checkout.pickup_contact.headline_reserve'
+        : 'checkout.pickup_contact.headline'),
+    [orderReserveOnly]
+  );
 
   return (
     <div className={styles.root}>
       <Section
         className={styles.card}
-        title="checkout.pickup_contact.headline"
-        editLink={GUEST_CHECKOUT_PATTERN}
-        editReplace
+        title={headline}
+        editLink={`${GUEST_CHECKOUT_PATTERN}?edit=1`}
       >
         <span>
           {pickupAddress.middleName?.length

@@ -190,3 +190,22 @@ export const makeGetRouteParam = (name = '') =>
       return params[name] || null;
     }
   );
+
+/**
+ * Creates a selector that retrieves the index of the current or a specific route when passed
+ * within the props.
+ * @returns {number|null}
+ */
+export const getRouterStackIndex = createSelector(
+  getRouterStack,
+  getCurrentRoute,
+  (routerStack, currentRoute) => {
+    if (!currentRoute) {
+      return null;
+    }
+
+    const { id: currentId } = currentRoute;
+    const index = routerStack.findIndex(({ id }) => currentId === id);
+    return index >= 0 ? index : null;
+  }
+);

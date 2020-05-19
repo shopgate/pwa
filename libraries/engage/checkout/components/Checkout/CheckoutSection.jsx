@@ -83,7 +83,6 @@ const CheckoutSection = ({
   hasForm,
   editLink,
   editLabel,
-  editReplace,
 }) => (
   <Fragment>
     <h3 className={styles.headline}>{i18n.text(title)}</h3>
@@ -114,7 +113,6 @@ const CheckoutSection = ({
             tag="a"
             className={styles.link}
             href={editLink}
-            replace={editReplace}
           >
             {i18n.text(editLabel)}
           </Link>
@@ -131,7 +129,6 @@ CheckoutSection.propTypes = {
   content: PropTypes.arrayOf(PropTypes.shape()),
   editLabel: PropTypes.string,
   editLink: PropTypes.string,
-  editReplace: PropTypes.bool,
   hasForm: PropTypes.bool,
 };
 
@@ -142,7 +139,6 @@ CheckoutSection.defaultProps = {
   hasForm: false,
   editLink: null,
   editLabel: 'checkout.billing.edit',
-  editReplace: false,
 };
 
 export default CheckoutSection;

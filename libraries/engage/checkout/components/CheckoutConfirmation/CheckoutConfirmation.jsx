@@ -8,13 +8,15 @@ import { CartItems } from '@shopgate/engage/cart';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
-import { convertLineItemsToCartItems } from '../../helpers';
+import { convertLineItemsToCartItems, isReserveOnlyOrder } from '../../helpers';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import CheckoutConfirmationPickUpContact from './CheckoutConfirmationPickUpContact';
+import CheckoutConfirmationOrderContact from './CheckoutConfirmationOrderContact';
 import CheckoutConfirmationPickupNotes from './CheckoutConfirmationPickupNotes';
 import CheckoutConfirmationBilledTo from './CheckoutConfirmationBilledTo';
 import CheckoutConfirmationOrderSummary from './CheckoutConfirmationOrderSummary';
 import { SupplementalContent } from '../SupplementalContent';
+import connect from './CheckoutConfirmation.connector';
 
 const { variables } = themeConfig;
 
@@ -80,9 +82,9 @@ const style = {
     border: 0,
   }),
   button: css({
-    flex: '0 0 auto',
-    borderRadius: 2,
-    minWidth: '50%',
+    flex: '0 0 auto !important',
+    borderRadius: '2px !important',
+    minWidth: '50% !important',
     [responsiveMediaQuery('<md')]: {
       width: '100%',
     },
@@ -99,10 +101,12 @@ const style = {
  * CheckoutConfirmation component
  * @returns {JSX}
  */
-const CheckoutConfirmation = ({ onContinueShopping }) => {
+const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
   const { state: { order } } = useRoute();
 
-  const { orderNumber, date, cartItems } = useMemo(() => {
+  const {
+    orderNumber, date, cartItems, isReserveOnly,
+  } = useMemo(() => {
     if (!order) {
       return {};
     }
@@ -111,6 +115,7 @@ const CheckoutConfirmation = ({ onContinueShopping }) => {
       orderNumber: order.orderNumber,
       date: order.date,
       cartItems: convertLineItemsToCartItems(order.lineItems),
+      isReserveOnly: isReserveOnlyOrder(order),
     };
   }, [order]);
 
@@ -157,7 +162,11 @@ const CheckoutConfirmation = ({ onContinueShopping }) => {
         <ResponsiveContainer breakpoint="<md" appAlways>
           <CheckoutConfirmationPickUpContact order={order} />
           <CheckoutConfirmationPickupNotes order={order} />
-          <CheckoutConfirmationBilledTo order={order} />
+          { (!isUserLoggedIn && isReserveOnly) ? (
+            <CheckoutConfirmationOrderContact order={order} />
+          ) : (
+            <CheckoutConfirmationBilledTo order={order} />
+          ) }
           <CheckoutConfirmationOrderSummary order={order} />
           <SupplementalContent className={style.supplementalWrapper} />
         </ResponsiveContainer>
@@ -177,7 +186,11 @@ const CheckoutConfirmation = ({ onContinueShopping }) => {
         <ResponsiveContainer breakpoint=">=md" webOnly>
           <CheckoutConfirmationPickUpContact order={order} />
           <CheckoutConfirmationPickupNotes order={order} />
-          <CheckoutConfirmationBilledTo order={order} />
+          { (!isUserLoggedIn && isReserveOnly) ? (
+            <CheckoutConfirmationOrderContact order={order} />
+          ) : (
+            <CheckoutConfirmationBilledTo order={order} />
+          ) }
           <CheckoutConfirmationOrderSummary order={order} />
           <SupplementalContent className={style.supplementalWrapper} />
         </ResponsiveContainer>
@@ -187,7 +200,8 @@ const CheckoutConfirmation = ({ onContinueShopping }) => {
 };
 
 CheckoutConfirmation.propTypes = {
+  isUserLoggedIn: PropTypes.bool.isRequired,
   onContinueShopping: PropTypes.func.isRequired,
 };
 
-export default hot(CheckoutConfirmation);
+export default hot(connect(CheckoutConfirmation));

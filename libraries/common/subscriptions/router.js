@@ -8,8 +8,8 @@ import {
 } from '@virtuous/conductor';
 import Route from '@virtuous/conductor/Route';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core';
+import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
@@ -22,7 +22,6 @@ import { INDEX_PATH } from '../constants/RoutePaths';
 import appConfig from '../helpers/config';
 import authRoutes from '../collections/AuthRoutes';
 import ToastProvider from '../providers/toast';
-import { getHistoryLength } from '../selectors/history';
 
 /**
  * Router subscriptions.
@@ -53,11 +52,16 @@ export default function routerSubscriptions(subscribe) {
         state: routeState,
       },
     } = action;
-
+    let { pathname: location } = action.params;
     const state = getState();
-    const historyEmpty = getHistoryLength(getState()) === 1;
+    const historyLength = getRouterStackIndex(state) + 1;
+    const historyEmpty = historyLength === 1;
 
     if (historyEmpty && [ACTION_POP, ACTION_RESET, HISTORY_RESET_TO].includes(historyAction)) {
+      if (location && location === INDEX_PATH) {
+        return;
+      }
+
       /**
        * Replace the current route with the index, when a history action is supposed to be
        * dispatched which reduces the router stack, but the route which triggered the action
@@ -65,8 +69,8 @@ export default function routerSubscriptions(subscribe) {
        */
       router.replace({
         pathname: INDEX_PATH,
-        emitBefore: silent,
-        emitAfter: silent,
+        emitBefore: false,
+        emitAfter: false,
       });
       return;
     }
@@ -79,18 +83,33 @@ export default function routerSubscriptions(subscribe) {
         return;
       }
       case ACTION_RESET: {
-        router.reset();
+        /**
+         * We don't use the native reset function here, since it contains a bug that causes
+         * a history pop right after the reset. That can cause side effects when the previous
+         * route briefly renders - same for HISTORY_RESET_TO
+         */
+        router.pop({
+          steps: historyLength - 1,
+        });
+
         return;
       }
       case HISTORY_RESET_TO: {
-        router.resetTo(resetToPathname);
+        await router.pop({
+          steps: historyLength - 1,
+        });
+
+        router.replace({
+          pathname: resetToPathname,
+          emitBefore: false,
+          emitAfter: false,
+        });
+
         return;
       }
       default:
         break;
     }
-
-    let { pathname: location } = action.params;
 
     /**
      * Further on we will only use the sanitized location except when link is external.

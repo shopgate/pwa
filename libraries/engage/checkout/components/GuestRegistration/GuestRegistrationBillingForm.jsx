@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
@@ -49,20 +49,29 @@ const GuestRegistrationForm = () => {
     formBillingValidationErrors,
     formBillingSetValues,
     requiredFields,
+    orderReserveOnly,
   } = useGuestRegistration();
 
   const formConfig = React.useMemo(
-    () => generateFormConfig(supportedCountries, userLocation, requiredFields),
-    [supportedCountries, userLocation, requiredFields]
+    () => generateFormConfig(supportedCountries, userLocation, requiredFields, orderReserveOnly),
+    [supportedCountries, userLocation, requiredFields, orderReserveOnly]
   );
 
   const handleUpdate = React.useCallback((values) => {
     formBillingSetValues(values);
   }, [formBillingSetValues]);
 
+  const headline = useMemo(
+    () =>
+      (orderReserveOnly
+        ? 'checkout.billing.headline_reserve'
+        : 'checkout.billing.headline'),
+    [orderReserveOnly]
+  );
+
   return (
     <div className={styles.root}>
-      <Section title="checkout.billing.headline" hasForm>
+      <Section title={headline} hasForm>
         <FormBuilder
           className={styles.form}
           name="GuestForm"

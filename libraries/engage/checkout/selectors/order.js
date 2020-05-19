@@ -1,6 +1,9 @@
 import { createSelector } from 'reselect';
-import { convertLineItemsToCartItems, getCheckoutTaxLinesFromOrder } from '../helpers';
-import { ROPIS } from '../../locations';
+import {
+  convertLineItemsToCartItems,
+  getCheckoutTaxLinesFromOrder,
+  isReserveOnlyOrder,
+} from '../helpers';
 
 /**
  * Returns the current order created in the checkout process.
@@ -136,10 +139,6 @@ export const getIsReserveOnly = createSelector(
   (order) => {
     if (!order) return null;
 
-    const nonReserveItem = order.lineItems.find(
-      lineItem => lineItem.fulfillmentMethod !== ROPIS
-    );
-
-    return !nonReserveItem;
+    return isReserveOnlyOrder(order);
   }
 );

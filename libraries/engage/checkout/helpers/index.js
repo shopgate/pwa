@@ -1,4 +1,4 @@
-import { DIRECT_SHIP } from '../../locations';
+import { DIRECT_SHIP, ROPIS } from '../../locations';
 
 /**
  * Converts order line items to cart items
@@ -114,3 +114,16 @@ export const getCheckoutTaxLinesFromOrder = (order = {}) => [
     currencyCode: order.currencyCode,
   },
 ];
+
+/**
+ * Checks if an order is a reserve only order
+ * @param {Object} order An order object
+ * @returns {boolean}
+ */
+export const isReserveOnlyOrder = (order = {}) => {
+  const nonReserveItem = order.lineItems.find(
+    lineItem => lineItem.fulfillmentMethod !== ROPIS
+  );
+
+  return !nonReserveItem;
+};

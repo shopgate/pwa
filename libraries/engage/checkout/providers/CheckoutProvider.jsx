@@ -21,6 +21,7 @@ type Props = {
   taxLines: any,
   userLocation: any,
   isDataReady: bool,
+  orderReserveOnly?: bool,
   fetchCart: () => Promise<any>,
   prepareCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
@@ -75,6 +76,7 @@ const CheckoutProvider = ({
   taxLines,
   userLocation,
   isDataReady,
+  orderReserveOnly,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(true);
   const [validationRules, setValidationRules] = React.useState(selfPickupConstraints);
@@ -230,6 +232,7 @@ const CheckoutProvider = ({
     pickupAddress,
     taxLines,
     needsPayment,
+    orderReserveOnly,
   }), [
     isLocked,
     formState.setValues,
@@ -241,6 +244,7 @@ const CheckoutProvider = ({
     pickupAddress,
     taxLines,
     needsPayment,
+    orderReserveOnly,
   ]);
 
   if (!isDataReady || !isCheckoutInitialized) {
@@ -257,6 +261,7 @@ const CheckoutProvider = ({
 CheckoutProvider.defaultProps = {
   orderInitialized: false,
   orderReadOnly: false,
+  orderReserveOnly: false,
 };
 
 export default connect(CheckoutProvider);

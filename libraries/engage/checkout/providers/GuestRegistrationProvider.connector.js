@@ -5,6 +5,7 @@ import {
   getCheckoutOrder,
   getCheckoutBillingAddress,
   getCheckoutPickupAddress,
+  getIsReserveOnly,
   isPickupAndBillingEquals,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
@@ -14,7 +15,7 @@ import {
   fetchCheckoutOrder,
   updateCheckoutOrder,
 } from '@shopgate/engage/checkout';
-import { historyReplace } from '@shopgate/engage/core';
+import { historyPush, historyPop } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
@@ -35,11 +36,13 @@ function makeMapStateToProps() {
     pickupAddress: getCheckoutPickupAddress(state),
     billingPickupEquals: isPickupAndBillingEquals(state),
     requiredFields: getRequiredGuestCheckoutFields(state),
+    orderReserveOnly: getIsReserveOnly(state),
   });
 }
 
 const mapDispatchToProps = {
-  historyReplace,
+  historyPush,
+  historyPop,
   fetchCheckoutOrder,
   prepareCheckout,
   updateCheckoutOrder,

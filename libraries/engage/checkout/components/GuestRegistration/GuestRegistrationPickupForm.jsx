@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
@@ -51,6 +51,7 @@ const GuestRegistrationForm = () => {
     defaultPickupPersonState,
     formPickupValidationErrors,
     formPickupSetValues,
+    orderReserveOnly,
   } = useGuestRegistration();
 
   const formConfig = React.useMemo(
@@ -62,9 +63,17 @@ const GuestRegistrationForm = () => {
     formPickupSetValues(values);
   }, [formPickupSetValues]);
 
+  const headline = useMemo(
+    () =>
+      (orderReserveOnly
+        ? 'checkout.pickup_contact.headline_reserve'
+        : 'checkout.pickup_contact.headline'),
+    [orderReserveOnly]
+  );
+
   return (
     <div className={styles.root}>
-      <Section title="checkout.pickup_contact.headline" hasForm>
+      <Section title={headline} hasForm>
         <FormBuilder
           className={styles.form}
           name="GuestForm"

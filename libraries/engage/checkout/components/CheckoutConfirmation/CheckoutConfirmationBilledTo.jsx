@@ -20,16 +20,22 @@ const CheckoutConfirmationBilledTo = ({ order }) => {
 
     const hasPayment = order.paymentTransactions && order.paymentTransactions[0];
 
+    const address = [
+      `${firstName} ${lastName}`,
+      `${address1 || ''}`,
+      `${city ? `${city},` : ''} ${city && region ? region : ''} ${postalCode || ''}`,
+    ].filter(Boolean).join('\n\r');
+
     return [
       ...(hasPayment ? [
         {
           label: i18n.text('checkout.success.card_holder'),
-          text: [`${firstName} ${lastName}`, `${address1 || ''}`, `${city || ''}, ${region || ''} ${postalCode || ''}`].join('\n\r'),
+          text: address,
         },
       ] : [
         {
           label: i18n.text('checkout.success.address'),
-          text: [`${address1 || ''}`, `${city || ''}, ${region || ''} ${postalCode || ''}`].join('\n\r'),
+          text: address,
         },
       ]),
       ...(hasPayment ? [

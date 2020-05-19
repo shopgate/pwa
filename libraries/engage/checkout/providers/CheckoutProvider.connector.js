@@ -7,6 +7,7 @@ import {
   getCheckoutPickupAddress,
   getCheckoutTaxLines,
   getCheckoutPaymentTransactions,
+  getIsReserveOnly,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
 import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
@@ -38,6 +39,7 @@ function makeMapStateToProps() {
     billingAddress: getCheckoutBillingAddress(state),
     pickupAddress: getCheckoutPickupAddress(state),
     taxLines: getCheckoutTaxLines(state),
+    orderReserveOnly: getIsReserveOnly(state),
   });
 }
 

@@ -8,6 +8,7 @@ import {
   i18n,
   useAsyncMemo,
   LoadingProvider,
+  useRoute,
 } from '@shopgate/engage/core';
 import Context from './GuestRegistrationProvider.context';
 import connect from './GuestRegistrationProvider.connector';
@@ -27,9 +28,11 @@ type Props = {
   billingPickupEquals: bool,
   requiredFields: any,
   needsPayment: bool,
+  orderReserveOnly?: bool,
   prepareCheckout: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
-  historyReplace: (any) => void,
+  historyPush: (any) => void,
+  historyPop: (any) => void,
 };
 
 const initialPickupPersonState = {
@@ -70,7 +73,8 @@ const convertValidationErrors = validationErrors => Object
  */
 const GuestRegistrationProvider = ({
   prepareCheckout,
-  historyReplace,
+  historyPush,
+  historyPop,
   updateCheckoutOrder,
   billingPickupEquals,
   requiredFields,
@@ -81,6 +85,7 @@ const GuestRegistrationProvider = ({
   userLocation,
   isDataReady,
   needsPayment,
+  orderReserveOnly,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
   const pickupFormSubmitValues = React.useRef({});
@@ -100,6 +105,8 @@ const GuestRegistrationProvider = ({
     }
   }, [], false);
 
+  const { query: { edit: isGuestCheckoutEditMode = null } } = useRoute();
+
   // Determine values to prefill some form fields
   const userCountry = useMemo(
     () => userLocation?.country || appConfig?.marketId || null,
@@ -111,8 +118,8 @@ const GuestRegistrationProvider = ({
   // Create initial values for billing and pickup forms.
   const defaultPickupPersonState = React.useMemo(() => ({
     ...initialPickupPersonState,
-    ...(pickBy(pickupAddress || {}, identity)),
-    pickupPerson: billingPickupEquals ? 'me' : 'someone_else',
+    ...(!billingPickupEquals ? pickBy(pickupAddress || {}, identity) : {}),
+    pickupPerson: billingPickupEquals ? 'me' : 'someoneElse',
   }), [billingPickupEquals, pickupAddress]);
 
   const defaultBillingAddressState = React.useMemo(() => ({
@@ -173,11 +180,16 @@ const GuestRegistrationProvider = ({
 
     LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
     LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
-    historyReplace({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
+
+    if (isGuestCheckoutEditMode) {
+      historyPop();
+    } else {
+      historyPush({ pathname: GUEST_CHECKOUT_PAYMENT_PATTERN });
+    }
 
     // We don't set locked to false to avoid unnecessary UI changes right before
     // going to checkout page.
-  }, [historyReplace, updateCheckoutOrder]);
+  }, [historyPop, historyPush, isGuestCheckoutEditMode, updateCheckoutOrder]);
 
   // Create validation rules based on required fields.
   const billingValidationRules = React.useMemo(
@@ -218,37 +230,48 @@ const GuestRegistrationProvider = ({
   }, [formPickupState.values.pickupPerson]);
 
   // Create memoized context value.
-  const value = React.useMemo(() => ({
-    isLocked,
-    supportedCountries: shopSettings.supportedCountries,
-    formPickupValidationErrors: convertValidationErrors(formPickupState.validationErrors || {}),
-    formPickupSetValues: formPickupState.setValues,
-    handleSubmit: formPickupState.handleSubmit,
-    formBillingValidationErrors: convertValidationErrors(formBillingState.validationErrors || {}),
-    formBillingSetValues: formBillingState.setValues,
-    handleSubmitBilling: formBillingState.handleSubmit,
-    defaultPickupPersonState,
-    defaultBillingAddressState,
-    userLocation,
-    billingAddress,
-    requiredFields,
-    needsPayment,
-  }), [
-    isLocked,
-    shopSettings.supportedCountries,
-    formPickupState.validationErrors,
-    formPickupState.setValues,
-    formPickupState.handleSubmit,
-    formBillingState.validationErrors,
-    formBillingState.setValues,
-    formBillingState.handleSubmit,
-    defaultPickupPersonState,
-    defaultBillingAddressState,
-    userLocation,
-    billingAddress,
-    requiredFields,
-    needsPayment,
-  ]);
+  const value = React.useMemo(
+    () => ({
+      isLocked,
+      supportedCountries: shopSettings.supportedCountries,
+      formPickupValidationErrors: convertValidationErrors(
+        formPickupState.validationErrors || {}
+      ),
+      formPickupSetValues: formPickupState.setValues,
+      handleSubmit: formPickupState.handleSubmit,
+      formBillingValidationErrors: convertValidationErrors(
+        formBillingState.validationErrors || {}
+      ),
+      formBillingSetValues: formBillingState.setValues,
+      handleSubmitBilling: formBillingState.handleSubmit,
+      defaultPickupPersonState,
+      defaultBillingAddressState,
+      userLocation,
+      billingAddress,
+      requiredFields,
+      needsPayment,
+      orderReserveOnly,
+      isGuestCheckoutEditMode,
+    }),
+    [
+      isLocked,
+      shopSettings.supportedCountries,
+      formPickupState.validationErrors,
+      formPickupState.setValues,
+      formPickupState.handleSubmit,
+      formBillingState.validationErrors,
+      formBillingState.setValues,
+      formBillingState.handleSubmit,
+      defaultPickupPersonState,
+      defaultBillingAddressState,
+      userLocation,
+      billingAddress,
+      requiredFields,
+      needsPayment,
+      orderReserveOnly,
+      isGuestCheckoutEditMode,
+    ]
+  );
 
   if (!isDataReady || !isInitialized) {
     return null;
@@ -259,6 +282,10 @@ const GuestRegistrationProvider = ({
       {children}
     </Context.Provider>
   );
+};
+
+GuestRegistrationProvider.defaultProps = {
+  orderReserveOnly: null,
 };
 
 export default connect(GuestRegistrationProvider);
