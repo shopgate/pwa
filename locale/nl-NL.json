@@ -337,6 +337,8 @@
     "continue_payment": "Continue to Payment",
     "continue": "Continue",
     "steps": "Step {from} of {to}",
+    "change_contacts": "Change Contacts",
+    "change_addresses": "Change Addresses",
     "errors": {
       "genericInitialize": "Checkout is currently unavailable, please try again later.",
       "genericUpdate": "Failed to process order, please try again later.",
@@ -347,6 +349,7 @@
     },
     "pickup_contact": {
       "headline": "Pickup Contact Info",
+      "headline_reserve": "Pickup Contact",
       "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
       "form": {
         "firstName": "First Name",
@@ -371,6 +374,7 @@
     },
     "billing": {
       "headline": "Billing Address",
+      "headline_reserve": "Order Contact",
       "save": "Save",
       "address": "{postalCode} {city}, {region}",
       "edit": "Edit"
@@ -395,6 +399,7 @@
       "order_date": "Order Date: {date}",
       "your_items": "Your item(s)",
       "pick_up_contact": "Pickup Contact",
+      "order_contact": "Order Contact",
       "pickup_notes": "Pickup Notes",
       "billed_to": "Billed To",
       "order_summary": "Order Summary",
