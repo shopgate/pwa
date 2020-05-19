@@ -49,3 +49,4 @@ public/
 extensions/
 !e2e/extensions/
 .nyc_output
+report*.*
