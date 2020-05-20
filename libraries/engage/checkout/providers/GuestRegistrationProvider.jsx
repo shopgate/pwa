@@ -90,9 +90,14 @@ const GuestRegistrationProvider = ({
   const [isLocked, setLocked] = React.useState(false);
   const pickupFormSubmitValues = React.useRef({});
   const [pickupValidationRules, setPickupValidationRules] = React.useState(selfPickupConstraints);
+  const { query: { edit: isGuestCheckoutEditMode = null } } = useRoute();
 
   // Initialize checkout process.
   const [isInitialized] = useAsyncMemo(async () => {
+    if (isGuestCheckoutEditMode) {
+      return true;
+    }
+
     try {
       LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
       await prepareCheckout({
@@ -104,8 +109,6 @@ const GuestRegistrationProvider = ({
       return false;
     }
   }, [], false);
-
-  const { query: { edit: isGuestCheckoutEditMode = null } } = useRoute();
 
   // Determine values to prefill some form fields
   const userCountry = useMemo(
