@@ -7,6 +7,7 @@ import {
   QuantityInput,
   ConditionalWrapper,
   PriceInfo,
+  MessageBar,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
@@ -34,6 +35,8 @@ import {
   price,
   priceInfo,
   contextMenu,
+  messageContainer,
+  messageContainerRope,
 } from './CartItemProductLayoutWide.style';
 
 /**
@@ -49,6 +52,7 @@ const CartItemProductLayoutWide = () => {
     currency,
     handleUpdate,
     isEditable,
+    messages,
   } = context;
 
   const hasUnitWithDecimals = product.unit && product.unit !== PRODUCT_UNIT_EACH;
@@ -142,6 +146,15 @@ const CartItemProductLayoutWide = () => {
           </div>
         )}
       </div>
+      {messages.length > 0 && (
+        <MessageBar
+          messages={messages}
+          showIcons
+          classNames={{
+            container: cartItem.fulfillment ? messageContainerRope : messageContainer,
+          }}
+        />
+      )}
     </Fragment>
   );
 };

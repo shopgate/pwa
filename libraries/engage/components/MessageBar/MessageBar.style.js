@@ -1,4 +1,6 @@
 import { css } from 'glamor';
+import Color from 'color';
+import { responsiveMediaQuery, getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const containerBase = {
@@ -7,6 +9,14 @@ const containerBase = {
   flexDirection: 'column',
   flexShrink: 0,
   overflow: 'hidden',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    fontWeight: 'normal',
+    border: 'none',
+    borderRadius: 'inherit',
+    margin: themeVariables.gap.big,
+    boxShadow: 'none',
+    background: 'none',
+  },
 };
 
 export const container = css(containerBase).toString();
@@ -25,21 +35,77 @@ const messageBase = {
   ':not(:last-child)': {
     marginBottom: themeVariables.gap.small * 0.5,
   },
+  ' > svg': {
+    fontSize: '1.5rem !important',
+  },
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    padding: `${themeVariables.gap.small * 1.5}px ${themeVariables.gap.big}px`,
+    fontWeight: 'normal',
+    border: '1px solid',
+    borderRadius: 4,
+    ':not(:last-child)': {
+      marginBottom: themeVariables.gap.small,
+    },
+  },
 };
 
-export const info = css(messageBase, {
+/**
+ * @param {string|Object} sourceColor The source color.
+ * @param {string} [textColor] AN optional text color.
+ * @returns {Object}
+ */
+const getMessageColors = (sourceColor, textColor) => {
+  const background = Color(sourceColor).fade(0.9);
+  const color = textColor || 'var(--color-text-height-emphasis)';
+  const borderColor = sourceColor;
+
+  return {
+    background,
+    color,
+    borderColor,
+  };
+};
+
+/**
+ * @returns {string}
+ */
+export const info = () => css(messageBase, {
   background: `var(--color-secondary, ${themeColors.accent})`,
   color: `var(--color-secondary-contrast, ${themeColors.accentContrast})`,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    ...getMessageColors(getCSSCustomProp('--color-secondary')),
+    ' > svg': {
+      color: 'var(--color-secondary)',
+    },
+  },
 }).toString();
 
-export const error = css(messageBase, {
+/**
+ * @returns {string}
+ */
+export const error = () => css(messageBase, {
   background: themeColors.error,
   color: themeColors.light,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    ...getMessageColors(themeColors.error),
+    ' > svg': {
+      color: themeColors.error,
+    },
+  },
 }).toString();
 
-export const warning = css(messageBase, {
+/**
+ * @returns {string}
+ */
+export const warning = () => css(messageBase, {
   background: themeColors.warning,
   color: themeColors.light,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    ...getMessageColors(themeColors.warning),
+    ' > svg': {
+      color: themeColors.warning,
+    },
+  },
 }).toString();
 
 export const srOnly = css({

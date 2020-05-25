@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { Fragment } from 'react';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { MessageBar, ResponsiveContainer } from '@shopgate/engage/components';
@@ -38,11 +38,13 @@ const CartItemProduct = () => {
   return (
     <CardListItem className={cartItemsDisplay === 'card' ? noGap : null}>
       <div ref={cartItemRef} data-test-id="cartItem">
-        {messages.length > 0 && (
-          <MessageBar messages={messages} classNames={messageStyles[cartItemsDisplay]} />
-        )}
         <ResponsiveContainer appAlways breakpoint="<=xs">
-          <CartItemProductLayout />
+          <Fragment>
+            {messages.length > 0 && (
+              <MessageBar messages={messages} classNames={messageStyles[cartItemsDisplay]} />
+            )}
+            <CartItemProductLayout />
+          </Fragment>
         </ResponsiveContainer>
         <ResponsiveContainer webOnly breakpoint=">xs">
           <CartItemProductLayoutWide />

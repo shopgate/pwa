@@ -3,6 +3,10 @@ import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import classnames from 'classnames';
 import { i18n } from '@shopgate/engage/core';
+import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
+import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
+import WarningIcon from '@shopgate/pwa-ui-shared/icons/WarningIcon';
+
 import * as styles from './MessageBar.style';
 import { type ClassNames, type Message } from './MessageBar.types';
 
@@ -14,6 +18,13 @@ type Props = DefaultProps & {
   messages: Message[],
   classNames?: ClassNames,
   raised?: boolean,
+  showIcons?: boolean
+};
+
+const iconMapping = {
+  info: InfoIcon,
+  warning: WarningIcon,
+  error: StopIcon,
 };
 
 /**
@@ -23,7 +34,9 @@ type Props = DefaultProps & {
  * @property {Object} props.classNames Styling.
  * @return {JSX}
  */
-const MessageBar = ({ messages, classNames, raised }: Props) => {
+const MessageBar = ({
+  messages, classNames, raised, showIcons,
+}: Props) => {
   const containerClass = React.useMemo<string>(() => {
     if (raised) {
       return classnames(styles.containerRaised, classNames.containerRaised);
@@ -43,8 +56,13 @@ const MessageBar = ({ messages, classNames, raised }: Props) => {
           message,
           messageParams = null,
           translated = false,
-          icon: Icon = null,
         } = item;
+
+        let { icon: Icon = null } = item;
+
+        if (Icon === null && showIcons) {
+          Icon = iconMapping[type];
+        }
 
         const messageOutput = !translated ? i18n.text(message, messageParams) : message;
 
@@ -52,7 +70,7 @@ const MessageBar = ({ messages, classNames, raised }: Props) => {
           <div
             key={`${type}-${message}`}
             className={classnames(
-              styles[type],
+              styles[type](),
               classNames.message,
               Icon ? styles.withIcon : null
             )}
@@ -81,6 +99,7 @@ MessageBar.defaultProps = {
     icon: null,
   },
   raised: false,
+  showIcons: false,
 };
 
 export default hot(React.memo<Props>(MessageBar));

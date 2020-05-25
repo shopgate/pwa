@@ -41,6 +41,7 @@ function CartItems({
                   multiLineReservation={multiLineReservation}
                   fulfillmentLocationId={item.fulfillmentLocationId}
                   fulfillmentMethod={item.fulfillmentMethod}
+                  hasMessages={Array.isArray(item.messages) && item.messages.length > 0}
                 >
                   <CartItem item={item} onFocus={onFocus} editable={editable} />
                 </CartItemCard>

@@ -8,6 +8,7 @@ type Props = {
   fulfillmentLocationId?: string | null,
   multiLineReservation?: boolean,
   fulfillmentMethod?: string | null,
+  hasMessages?: boolean,
 }
 
 /**
@@ -17,7 +18,7 @@ type Props = {
  */
 export function CartItemCard(props: Props) {
   const {
-    multiLineReservation, fulfillmentLocationId, children, fulfillmentMethod,
+    multiLineReservation, fulfillmentLocationId, children, fulfillmentMethod, hasMessages,
   } = props;
 
   if (!multiLineReservation) {
@@ -26,7 +27,7 @@ export function CartItemCard(props: Props) {
 
   return (
     <React.Fragment>
-      <ul className={fulfillmentLocationId ? withBorder : null}>
+      <ul className={fulfillmentLocationId && !hasMessages ? withBorder : null}>
         {children}
       </ul>
       {!!fulfillmentLocationId && (
@@ -41,6 +42,7 @@ export function CartItemCard(props: Props) {
 
 CartItemCard.defaultProps = {
   fulfillmentLocationId: null,
-  multiLineReservation: false,
   fulfillmentMethod: null,
+  multiLineReservation: false,
+  hasMessages: false,
 };

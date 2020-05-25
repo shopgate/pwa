@@ -83,3 +83,12 @@ export const contextMenu = css({
   marginTop: `-${variables.gap.xsmall * 3}px`,
   marginRight: `-${variables.gap.big}px`,
 }).toString();
+
+export const messageContainer = css({
+  marginTop: 0,
+}).toString();
+
+export const messageContainerRope = css({
+  marginTop: 0,
+  marginBottom: 0,
+}).toString();
