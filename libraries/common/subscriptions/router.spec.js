@@ -14,6 +14,8 @@ import * as handler from './helpers/handleLinks';
 import { navigate$ } from '../streams';
 import { navigate } from '../action-creators';
 import { getIsConnected } from '../selectors/client';
+import { getRouterStackIndex } from '../selectors/router';
+
 import ToastProvider from '../providers/toast';
 import subscriptions from './router';
 
@@ -43,10 +45,18 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get webCheckoutShopify() { return mockedWebCheckoutConfig; },
   themeConfig: {},
 }));
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  ...require.requireActual('@shopgate/pwa-core/helpers'),
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+}));
 
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
 jest.mock('../actions/router', () => ({
   historyRedirect: jest.fn(),
+}));
+jest.mock('../selectors/router', () => ({
+  ...require.requireActual('../selectors//router'),
+  getRouterStackIndex: jest.fn().mockReturnValue(0),
 }));
 jest.mock('../selectors/client', () => ({
   getIsConnected: jest.fn().mockReturnValue(true),
@@ -162,14 +172,26 @@ describe('Router subscriptions', () => {
       testExpectedCall();
     });
 
+    it('should handle the ACTION_POP history action as expected when the stack is empty', async () => {
+      await callback(createCallbackPayload({ params: { action: ACTION_POP } }));
+      expect(router.pop).not.toHaveBeenCalled();
+    });
+
     it('should handle the ACTION_POP history action as expected', async () => {
+      getRouterStackIndex.mockReturnValueOnce(1);
       await callback(createCallbackPayload({ params: { action: ACTION_POP } }));
       expect(router.pop).toHaveBeenCalled();
     });
 
-    it('should handle the ACTION_RESET history action as expected', async () => {
+    it('should handle the ACTION_RESET history action as expected when the stack is empty', async () => {
       await callback(createCallbackPayload({ params: { action: ACTION_RESET } }));
-      testExpectedCall(router.reset);
+      expect(router.pop).not.toHaveBeenCalled();
+    });
+
+    it('should handle the ACTION_RESET history action as expected', async () => {
+      getRouterStackIndex.mockReturnValueOnce(1);
+      await callback(createCallbackPayload({ params: { action: ACTION_RESET } }));
+      testExpectedCall(router.pop);
     });
 
     it('should handle the ACTION_PUSH history action as expected', async () => {
