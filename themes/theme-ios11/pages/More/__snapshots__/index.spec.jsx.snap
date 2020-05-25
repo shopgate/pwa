@@ -318,7 +318,289 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       }
                     />
                   </Payment>
-                  <LegalPages />
+                  <Terms>
+                    <Portal
+                      name="nav-menu.terms.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.terms"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    >
+                      <MoreMenuItem
+                        className={null}
+                        href="/page/terms"
+                        label="navigation.terms"
+                        onClick={null}
+                        testId={null}
+                      >
+                        <Connect(Link)
+                          className="css-1hj8a57"
+                          href="/page/terms"
+                        >
+                          <Link
+                            aria-hidden={null}
+                            aria-label={null}
+                            className="css-1hj8a57"
+                            disabled={false}
+                            historyPush={[Function]}
+                            historyReplace={[Function]}
+                            href="/page/terms"
+                            replace={false}
+                            role="link"
+                            state={Object {}}
+                            tabIndex={null}
+                            tag="div"
+                            target={null}
+                          >
+                            <div
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-9auwkz css-1hj8a57"
+                              data-test-id="link: /page/terms"
+                              href={null}
+                              onClick={[Function]}
+                              role="link"
+                              tabIndex={null}
+                            >
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="navigation.terms"
+                                transform={null}
+                              >
+                                <span
+                                  className={null}
+                                  role={null}
+                                >
+                                  navigation.terms
+                                </span>
+                              </Translate>
+                            </div>
+                          </Link>
+                        </Connect(Link)>
+                      </MoreMenuItem>
+                    </Portal>
+                    <Portal
+                      name="nav-menu.terms.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </Terms>
+                  <Privacy>
+                    <Portal
+                      name="nav-menu.privacy.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.privacy"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    >
+                      <MoreMenuItem
+                        className={null}
+                        href="/page/privacy"
+                        label="navigation.privacy"
+                        onClick={null}
+                        testId={null}
+                      >
+                        <Connect(Link)
+                          className="css-1hj8a57"
+                          href="/page/privacy"
+                        >
+                          <Link
+                            aria-hidden={null}
+                            aria-label={null}
+                            className="css-1hj8a57"
+                            disabled={false}
+                            historyPush={[Function]}
+                            historyReplace={[Function]}
+                            href="/page/privacy"
+                            replace={false}
+                            role="link"
+                            state={Object {}}
+                            tabIndex={null}
+                            tag="div"
+                            target={null}
+                          >
+                            <div
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-9auwkz css-1hj8a57"
+                              data-test-id="link: /page/privacy"
+                              href={null}
+                              onClick={[Function]}
+                              role="link"
+                              tabIndex={null}
+                            >
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="navigation.privacy"
+                                transform={null}
+                              >
+                                <span
+                                  className={null}
+                                  role={null}
+                                >
+                                  navigation.privacy
+                                </span>
+                              </Translate>
+                            </div>
+                          </Link>
+                        </Connect(Link)>
+                      </MoreMenuItem>
+                    </Portal>
+                    <Portal
+                      name="nav-menu.privacy.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </Privacy>
+                  <ReturnPolicy>
+                    <Portal
+                      name="nav-menu.return-policy.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.return-policy.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </ReturnPolicy>
+                  <Imprint>
+                    <Portal
+                      name="nav-menu.imprint.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.imprint"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    >
+                      <MoreMenuItem
+                        className={null}
+                        href="/page/imprint"
+                        label="navigation.about"
+                        onClick={null}
+                        testId={null}
+                      >
+                        <Connect(Link)
+                          className="css-1hj8a57"
+                          href="/page/imprint"
+                        >
+                          <Link
+                            aria-hidden={null}
+                            aria-label={null}
+                            className="css-1hj8a57"
+                            disabled={false}
+                            historyPush={[Function]}
+                            historyReplace={[Function]}
+                            href="/page/imprint"
+                            replace={false}
+                            role="link"
+                            state={Object {}}
+                            tabIndex={null}
+                            tag="div"
+                            target={null}
+                          >
+                            <div
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-9auwkz css-1hj8a57"
+                              data-test-id="link: /page/imprint"
+                              href={null}
+                              onClick={[Function]}
+                              role="link"
+                              tabIndex={null}
+                            >
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="navigation.about"
+                                transform={null}
+                              >
+                                <span
+                                  className={null}
+                                  role={null}
+                                >
+                                  navigation.about
+                                </span>
+                              </Translate>
+                            </div>
+                          </Link>
+                        </Connect(Link)>
+                      </MoreMenuItem>
+                    </Portal>
+                    <Portal
+                      name="nav-menu.imprint.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </Imprint>
                 </div>
               </Section>
             </Portal>
@@ -1092,7 +1374,289 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       }
                     />
                   </Payment>
-                  <LegalPages />
+                  <Terms>
+                    <Portal
+                      name="nav-menu.terms.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.terms"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    >
+                      <MoreMenuItem
+                        className={null}
+                        href="/page/terms"
+                        label="navigation.terms"
+                        onClick={null}
+                        testId={null}
+                      >
+                        <Connect(Link)
+                          className="css-1hj8a57"
+                          href="/page/terms"
+                        >
+                          <Link
+                            aria-hidden={null}
+                            aria-label={null}
+                            className="css-1hj8a57"
+                            disabled={false}
+                            historyPush={[Function]}
+                            historyReplace={[Function]}
+                            href="/page/terms"
+                            replace={false}
+                            role="link"
+                            state={Object {}}
+                            tabIndex={null}
+                            tag="div"
+                            target={null}
+                          >
+                            <div
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-9auwkz css-1hj8a57"
+                              data-test-id="link: /page/terms"
+                              href={null}
+                              onClick={[Function]}
+                              role="link"
+                              tabIndex={null}
+                            >
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="navigation.terms"
+                                transform={null}
+                              >
+                                <span
+                                  className={null}
+                                  role={null}
+                                >
+                                  navigation.terms
+                                </span>
+                              </Translate>
+                            </div>
+                          </Link>
+                        </Connect(Link)>
+                      </MoreMenuItem>
+                    </Portal>
+                    <Portal
+                      name="nav-menu.terms.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </Terms>
+                  <Privacy>
+                    <Portal
+                      name="nav-menu.privacy.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.privacy"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    >
+                      <MoreMenuItem
+                        className={null}
+                        href="/page/privacy"
+                        label="navigation.privacy"
+                        onClick={null}
+                        testId={null}
+                      >
+                        <Connect(Link)
+                          className="css-1hj8a57"
+                          href="/page/privacy"
+                        >
+                          <Link
+                            aria-hidden={null}
+                            aria-label={null}
+                            className="css-1hj8a57"
+                            disabled={false}
+                            historyPush={[Function]}
+                            historyReplace={[Function]}
+                            href="/page/privacy"
+                            replace={false}
+                            role="link"
+                            state={Object {}}
+                            tabIndex={null}
+                            tag="div"
+                            target={null}
+                          >
+                            <div
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-9auwkz css-1hj8a57"
+                              data-test-id="link: /page/privacy"
+                              href={null}
+                              onClick={[Function]}
+                              role="link"
+                              tabIndex={null}
+                            >
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="navigation.privacy"
+                                transform={null}
+                              >
+                                <span
+                                  className={null}
+                                  role={null}
+                                >
+                                  navigation.privacy
+                                </span>
+                              </Translate>
+                            </div>
+                          </Link>
+                        </Connect(Link)>
+                      </MoreMenuItem>
+                    </Portal>
+                    <Portal
+                      name="nav-menu.privacy.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </Privacy>
+                  <ReturnPolicy>
+                    <Portal
+                      name="nav-menu.return-policy.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.return-policy.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </ReturnPolicy>
+                  <Imprint>
+                    <Portal
+                      name="nav-menu.imprint.before"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                    <Portal
+                      name="nav-menu.imprint"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    >
+                      <MoreMenuItem
+                        className={null}
+                        href="/page/imprint"
+                        label="navigation.about"
+                        onClick={null}
+                        testId={null}
+                      >
+                        <Connect(Link)
+                          className="css-1hj8a57"
+                          href="/page/imprint"
+                        >
+                          <Link
+                            aria-hidden={null}
+                            aria-label={null}
+                            className="css-1hj8a57"
+                            disabled={false}
+                            historyPush={[Function]}
+                            historyReplace={[Function]}
+                            href="/page/imprint"
+                            replace={false}
+                            role="link"
+                            state={Object {}}
+                            tabIndex={null}
+                            tag="div"
+                            target={null}
+                          >
+                            <div
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-9auwkz css-1hj8a57"
+                              data-test-id="link: /page/imprint"
+                              href={null}
+                              onClick={[Function]}
+                              role="link"
+                              tabIndex={null}
+                            >
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="navigation.about"
+                                transform={null}
+                              >
+                                <span
+                                  className={null}
+                                  role={null}
+                                >
+                                  navigation.about
+                                </span>
+                              </Translate>
+                            </div>
+                          </Link>
+                        </Connect(Link)>
+                      </MoreMenuItem>
+                    </Portal>
+                    <Portal
+                      name="nav-menu.imprint.after"
+                      props={
+                        Object {
+                          "Headline": [Function],
+                          "Item": [Function],
+                          "Section": [Function],
+                        }
+                      }
+                    />
+                  </Imprint>
                 </div>
               </Section>
             </Portal>
