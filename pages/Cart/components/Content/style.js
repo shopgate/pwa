@@ -1,4 +1,7 @@
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
 
 export default css({
   marginTop: 4,
@@ -7,3 +10,7 @@ export default css({
 export const wideHeader = css({
   frontSize: ' 3rem',
 });
+
+export const wideHeaderMessages = css({
+  marginTop: variables.gap.big * -1,
+}).toString();

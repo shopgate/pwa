@@ -29,7 +29,7 @@ import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import connect from './connector';
-import styles from './style';
+import styles, { wideHeaderMessages } from './style';
 
 const config = getCartConfig();
 
@@ -79,7 +79,22 @@ function CartContent(props) {
       {(hasItems || hasMessages) && (
         <Fragment>
           {hasMessages && (
-            <MessageBar messages={messages} raised={cartItemsDisplay === 'card'} />
+            <Fragment>
+              <ResponsiveContainer webOnly breakpoint=">xs">
+                <MessageBar
+                  messages={messages}
+                  raised={cartItemsDisplay === 'card'}
+                  showIcons
+                  classNames={{
+                    container: wideHeaderMessages,
+                    containerRaised: wideHeaderMessages,
+                  }}
+                />
+              </ResponsiveContainer>
+              <ResponsiveContainer appAlways breakpoint="<=xs">
+                <MessageBar messages={messages} raised={cartItemsDisplay === 'card'} />
+              </ResponsiveContainer>
+            </Fragment>
           )}
           {hasItems && (
             <Fragment>
