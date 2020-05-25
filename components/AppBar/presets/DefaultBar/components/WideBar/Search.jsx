@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { MagnifierIcon } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
 import connect from './Search.connector';
 
 const styles = {
@@ -71,7 +72,7 @@ const Search = ({ search, routeSearchPhrase }) => {
           onFocus={handleOnFocus}
           onBlur={handleOnBlur}
           className={styles.input}
-          placeholder="Search"
+          placeholder={i18n.text('search.placeholder')}
         />
         <div className={styles.icon}>
           <MagnifierIcon />
