@@ -6,6 +6,20 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
   },
 }));
 
+jest.mock('../../../../i18n/countries.helpers', () => ({
+  getCountryNames: (keys) => {
+    const countries = {
+      DE: 'Germany',
+      US: 'United States',
+    };
+
+    return keys.reduce((current, key) => ({
+      ...current,
+      [key]: countries[key],
+    }), {});
+  },
+}));
+
 const countryElement = {
   countries: ['DE', 'US'],
 };

@@ -1,5 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import iso3166 from './iso-3166-2';
+import { getCountryNames } from '../../../../i18n/countries.helpers';
 
 /**
  * Get country list for
@@ -24,17 +25,8 @@ export default (countryElement, optional = null) => {
   } else {
     countryKeys = Object.keys(iso3166);
   }
-  const countryList = countryKeys.reduce((reducer, countryCode) => {
-    if (!iso3166[countryCode]) {
-      logger.error(`Error: unknown country code [${countryCode}]`);
-      return reducer;
-    }
-    return ({
-      ...reducer,
-      [countryCode]: iso3166[countryCode].name,
-    });
-  }, {});
 
+  const countryList = getCountryNames(countryKeys);
   // Add a "no selection" element
   if (countryElement.required) {
     return countryList;
