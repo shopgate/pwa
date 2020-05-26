@@ -173,6 +173,7 @@ export { default as SheetList } from './SheetList';
 export { default as NullComponent } from './NullComponent';
 export { default as View, ViewContext } from './View';
 export { default as QuantityInput } from './QuantityInput';
+export { default as QuantityLabel } from './QuantityLabel';
 export { default as ResponsiveContainer } from './ResponsiveContainer';
 export { default as BrandingColorBanner } from './BrandingColorBanner';
 export { Form } from './Form';

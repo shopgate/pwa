@@ -4,7 +4,7 @@ import {
   SurroundPortals,
   ProductProperties,
   Ellipsis,
-  QuantityInput,
+  QuantityLabel,
   ConditionalWrapper,
   PriceInfo,
   MessageBar,
@@ -117,8 +117,7 @@ const CartItemProductLayoutWide = () => {
               }}
             />
           ) : (
-            <QuantityInput
-              disabled
+            <QuantityLabel
               className={quantityPickerDisabled}
               value={cartItem.quantity}
               unit={hasUnitWithDecimals ? product.unit : null}

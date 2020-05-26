@@ -64,6 +64,7 @@ export const quantityPickerDisabled = css({
   width: '100%',
   fontWeight: 500,
   color: 'var(--color-text-high-emphasis)',
+  whiteSpace: 'nowrap',
 }).toString();
 
 export const price = css({
