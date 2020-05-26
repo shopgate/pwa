@@ -12,7 +12,7 @@ const styles = {
     flexDirection: 'row',
     borderRadius: 4,
     border: '1px solid #DADADA',
-    height: 36,
+    height: 42,
     padding: '8px 15px',
   }).toString(),
   rootFocused: css({

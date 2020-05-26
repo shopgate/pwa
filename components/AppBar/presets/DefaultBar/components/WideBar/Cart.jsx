@@ -26,6 +26,8 @@ const styles = {
   priceHeader: css({
     textAlign: 'right',
     fontSize: 10,
+    fontWeight: '500',
+    paddingBottom: 4,
     color: 'var(--color-primary)',
     textTransform: 'uppercase',
   }).toString(),
@@ -37,10 +39,10 @@ const styles = {
   icon: css({
     display: 'flex',
     flexShrink: 0,
-    fontSize: 28,
+    fontSize: 35,
     marginLeft: 18,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     outline: 0,
     color: 'var(--color-primary)',
     padding: 0,
@@ -51,8 +53,8 @@ const styles = {
 const badgeStyles = {
   background: 'var(--color-primary)',
   color: 'var(--color-primary-contrast)',
-  top: -4,
-  right: 1,
+  top: -2,
+  right: 2,
   boxShadow: 'none',
   display: 'flex',
   justifyContent: 'center',
