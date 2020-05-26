@@ -11,7 +11,7 @@ import connect from './WideBar.connector';
 
 const styles = {
   root: css({
-    height: 56,
+    height: 64,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -20,7 +20,7 @@ const styles = {
   }).toString(),
   letterBox: css({
     flex: 1,
-    padding: '0 12px',
+    padding: '0 12px 0 0',
     maxWidth: MAX_DESKTOP_WIDTH,
     display: 'flex',
     flexDirection: 'row',
@@ -30,7 +30,7 @@ const styles = {
     cursor: 'pointer',
     flex: 0,
     ' img': {
-      maxHeight: 56 - 24,
+      maxHeight: 42,
     },
   }).toString(),
   right: css({
