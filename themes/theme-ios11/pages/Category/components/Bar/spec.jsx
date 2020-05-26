@@ -4,6 +4,11 @@ import Bar from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
   withForwardedRef: jest.fn(),
+  withWidgetSettings: component => component,
+  withCurrentProduct: component => component,
+  withRoute: component => component,
+  withApp: component => component,
+  isIOSTheme: () => false,
   hasWebBridge: () => false,
   useRoute: () => ({
     state: {

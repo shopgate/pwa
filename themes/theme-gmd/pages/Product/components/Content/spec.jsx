@@ -7,6 +7,7 @@ jest.mock('@shopgate/engage/product');
 jest.mock('@shopgate/engage/locations');
 jest.mock('@shopgate/pwa-core', () => ({
   Conditioner: jest.fn(),
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(false),
 }));
 
 jest.mock('@shopgate/pwa-ui-shared/TaxDisclaimer', () => () => null);
@@ -16,6 +17,7 @@ jest.mock('../Header', () => () => null);
 jest.mock('../Characteristics', () => () => null);
 jest.mock('../Options', () => () => null);
 jest.mock('../AppBar', () => () => null);
+jest.mock('../ContentWide', () => () => null);
 jest.mock('Components/Reviews', () => () => null);
 jest.mock('./connector', () => Component => Component);
 

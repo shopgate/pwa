@@ -12,9 +12,10 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   }
   messages={Array []}
   raised={false}
+  showIcons={false}
 >
   <div
-    className="css-ia405z"
+    className="css-2snd57"
     role={null}
   />
 </MessageBar>
@@ -38,13 +39,14 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
     ]
   }
   raised={false}
+  showIcons={false}
 >
   <div
-    className="css-ia405z"
+    className="css-2snd57"
     role="alert"
   >
     <div
-      className="css-qega23"
+      className="css-v3axxa"
       key="info-something"
     >
       <span
@@ -102,13 +104,14 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     ]
   }
   raised={false}
+  showIcons={false}
 >
   <div
-    className="css-ia405z"
+    className="css-2snd57"
     role="alert"
   >
     <div
-      className="css-qega23"
+      className="css-v3axxa"
       key="info-This is some information"
     >
       <span
@@ -128,7 +131,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-bfe3ok"
+      className="css-4nzmrl"
       key="error-This is an error that happened here."
     >
       <span
@@ -148,7 +151,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-7mi6qz"
+      className="css-y8hi5f"
       key="warning-This is just a warning. Nothing to freak out about."
     >
       <span
@@ -168,7 +171,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-qega23"
+      className="css-v3axxa"
       key="info-Normal pre-translated message."
     >
       <span
@@ -188,7 +191,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-qega23"
+      className="css-v3axxa"
       key="info-Normal pre-translated message two."
     >
       <span
@@ -238,13 +241,14 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     ]
   }
   raised={false}
+  showIcons={false}
 >
   <div
-    className="css-ia405z"
+    className="css-2snd57"
     role="alert"
   >
     <div
-      className="css-qega23"
+      className="css-v3axxa"
       key="info-some.translation.string"
     >
       <span
@@ -264,7 +268,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
     </div>
     <div
-      className="css-qega23"
+      className="css-v3axxa"
       key="info-Message with messageParams"
     >
       <span
@@ -303,13 +307,14 @@ exports[`<MessageBar /> should render with custom classNames 1`] = `
     ]
   }
   raised={false}
+  showIcons={false}
 >
   <div
-    className="css-ia405z cls-container"
+    className="css-2snd57 cls-container"
     role="alert"
   >
     <div
-      className="css-qega23 cls-message"
+      className="css-v3axxa cls-message"
       key="info-This is some information"
     >
       <span
