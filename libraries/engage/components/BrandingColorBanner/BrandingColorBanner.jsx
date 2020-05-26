@@ -4,7 +4,7 @@ import { css } from 'glamor';
 
 const brandingColorBanner = css({
   position: 'fixed',
-  backgroundColor: 'var(--color-primary)',
+  backgroundColor: 'var(--color-background-gutter-header, var(--color-primary))',
   left: 0,
   right: 0,
   height: 220,

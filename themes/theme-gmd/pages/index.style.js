@@ -25,9 +25,9 @@ export const navigationHidden = css(navigation, {
 
 export const content = css({
   zIndex: 1,
+  backgroundColor: 'var(--page-background-color)',
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     position: 'relative',
-    backgroundColor: 'var(--page-background-color)',
     width: 'var(--page-content-width)',
   },
 });

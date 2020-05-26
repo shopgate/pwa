@@ -42,6 +42,13 @@ css.global('[data-pattern]', {
 });
 
 css.global('html, body', {
-  background: 'var(--page-background-color)',
+  backgroundColor: 'var(--page-background-color)',
 });
 
+if (hasWebBridge()) {
+  css.insert(`@media(min-width: 600px) {
+    html, body {
+      background-color: var(--color-background-gutter-body, var(--page-background-color))
+    }
+  }`);
+}
