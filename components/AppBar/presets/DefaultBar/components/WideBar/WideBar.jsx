@@ -20,7 +20,7 @@ const styles = {
   }).toString(),
   letterBox: css({
     flex: 1,
-    padding: '0 12px 0 0',
+    padding: '0 12px',
     maxWidth: MAX_DESKTOP_WIDTH,
     display: 'flex',
     flexDirection: 'row',
