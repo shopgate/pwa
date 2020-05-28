@@ -17,7 +17,6 @@ import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions';
 // Engage
-import engageCore from '@shopgate/engage/core/subscriptions';
 import engageCheckout from '@shopgate/engage/checkout/subscriptions';
 import engageRegistration from '@shopgate/engage/registration/subscriptions';
 // PWA Tracking
@@ -79,7 +78,6 @@ const subscriptions = [
   commerceSearch,
   commerceScanner,
   // Engage subscribers
-  engageCore,
   engageCheckout,
   engageRegistration,
   // Theme subscribers.
