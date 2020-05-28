@@ -16,6 +16,7 @@ import {
   PRODUCT_INFO_ROW1,
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { ROPIS, BOPIS } from '@shopgate/engage/locations';
 import Manufacturer from '../Manufacturer';
 import Shipping from '../Shipping';
 import PriceStriked from '../PriceStriked';
@@ -32,6 +33,9 @@ import * as styles from './style';
  */
 const ProductInfo = ({ productId, options }) => {
   const { fulfillmentMethods } = useContext(ProductContext);
+  const hasROPE =
+    fulfillmentMethods &&
+    (fulfillmentMethods.includes(ROPIS) || fulfillmentMethods.includes(BOPIS));
 
   return (
     <Fragment>
@@ -49,7 +53,9 @@ const ProductInfo = ({ productId, options }) => {
                 <Manufacturer productId={productId} />
               </div>
               <div className={styles.productInfo}>
-                <Shipping productId={productId} />
+                {!hasROPE && (
+                  <Shipping productId={productId} />
+                )}
               </div>
               <div className={styles.productInfo}>
                 {/* This feature is currently in BETA testing.
@@ -59,13 +65,13 @@ const ProductInfo = ({ productId, options }) => {
               <div className={styles.productInfo}>
                 {/* This feature is currently in BETA testing.
                 It should only be used for approved BETA Client Projects */}
-                {!fulfillmentMethods && (
+                {!hasROPE && (
                   <EffectivityDates productId={productId}>
                     <Availability productId={productId} />
                   </EffectivityDates>
                 )}
               </div>
-              {!fulfillmentMethods &&
+              {!hasROPE &&
                 <div className={styles.productInfo}>
                   <StockInfo productId={productId} />
                 </div>
