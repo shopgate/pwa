@@ -13,7 +13,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: 'locations.stock_info.availableInventory',
-    availabilityTextColor: themeColors.success,
+    availabilityTextColor: `var(--color-state-ok, ${themeColors.success})`,
   },
   [AVAILABILITY_TYPE_LIMITED_AVAILABILITY]: {
     visibleInventoryFrom: 1,
@@ -21,7 +21,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_LIMITED_AVAILABILITY}`,
-    availabilityTextColor: themeColors.warning,
+    availabilityTextColor: `var(--color-state-warning, ${themeColors.warning})`,
   },
   [AVAILABILITY_TYPE_NOT_AVAILABLE]: {
     visibleInventoryFrom: 0,
@@ -29,7 +29,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_NOT_AVAILABLE}`,
-    availabilityTextColor: themeColors.error,
+    availabilityTextColor: `var(--color-state-alert, ${themeColors.error})`,
     allowOrderingToStore: true,
   },
   [AVAILABILITY_TYPE_CUSTOM_AVAILABILITY]: {
@@ -38,7 +38,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: true,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_CUSTOM_AVAILABILITY}`,
-    availabilityTextColor: themeColors.error,
+    availabilityTextColor: `var(--color-state-alert, ${themeColors.error})`,
     allowOrderingToStore: true,
   },
   maxNumberOfVisibleInventory: 100,

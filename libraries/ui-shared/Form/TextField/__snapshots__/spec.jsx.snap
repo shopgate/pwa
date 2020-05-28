@@ -861,7 +861,7 @@ exports[`<TextField> should show the error message 1`] = `
             className="css-1tpmuef"
             style={
               Object {
-                "borderBottomColor": "#ff0000",
+                "borderBottomColor": "var(--color-state-alert, #ff0000)",
               }
             }
           />
@@ -873,7 +873,7 @@ exports[`<TextField> should show the error message 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8 errorText"
+          className="css-1tzi51f errorText"
         >
           <Translate
             className={null}

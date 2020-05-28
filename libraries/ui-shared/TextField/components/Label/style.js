@@ -18,7 +18,7 @@ const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
  * The styles for the error label.
  */
 const labelError = css({
-  color: themeConfig.colors.error,
+  color: `var(--color-state-alert, ${themeConfig.colors.error})`,
 }).toString();
 
 /**

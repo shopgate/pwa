@@ -47,7 +47,7 @@ const styles = {
 
   phoneFieldError: css({
     ' input.PhoneInputInput': {
-      borderBottom: `2px solid ${colors.error}`,
+      borderBottom: `2px solid var(--color-state-alert, ${colors.error})`,
       paddingBottom: (variables.gap.xsmall * 1.5) - 1,
     },
   }).toString(),
@@ -58,7 +58,7 @@ const styles = {
     bottom: '-10px',
     fontSize: '0.75rem',
     lineHeight: 0.875,
-    color: colors.error,
+    color: `var(--color-state-alert, ${colors.error})`,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',

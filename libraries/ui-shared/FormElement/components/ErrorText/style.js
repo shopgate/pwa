@@ -3,7 +3,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 export default css({
   bottom: 2,
-  color: themeConfig.colors.error,
+  color: `var(--color-state-alert, ${themeConfig.colors.error})`,
   fontSize: 12,
   lineHeight: '14px',
   overflow: 'hidden',

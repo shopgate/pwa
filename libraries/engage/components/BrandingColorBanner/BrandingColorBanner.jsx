@@ -7,7 +7,7 @@ const brandingColorBanner = css({
   backgroundColor: 'var(--color-background-gutter-header, var(--color-primary))',
   left: 0,
   right: 0,
-  height: 220,
+  height: 288,
 });
 
 /**

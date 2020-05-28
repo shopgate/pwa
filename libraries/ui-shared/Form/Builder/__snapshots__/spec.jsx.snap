@@ -241,7 +241,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -497,7 +497,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -711,7 +711,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -967,7 +967,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -1301,7 +1301,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -1502,7 +1502,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -1765,7 +1765,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -1984,7 +1984,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -2247,7 +2247,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
@@ -2466,7 +2466,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   validationError={null}
                 >
                   <div
-                    className="css-hmgfge errorText"
+                    className="css-of8bei errorText"
                   />
                 </ErrorText>
               </div>
