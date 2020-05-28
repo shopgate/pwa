@@ -92,14 +92,14 @@ export const initialize = async (locales, reducers, subscribers) => {
 
   const store = configureStore(reducers, subscribers);
 
-  store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
-  store.dispatch(fetchClientInformation());
-
   try {
     await fetchShopSettings(store);
   } catch (e) {
     // Nothing to see here.
   }
+
+  store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
+  store.dispatch(fetchClientInformation());
 
   return {
     store,
