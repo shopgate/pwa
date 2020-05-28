@@ -1,8 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { SheetDrawer, SheetList } from '@shopgate/engage/components';
+import {
+  SheetDrawer,
+  SheetList,
+  Menu,
+  ResponsiveContainer,
+} from '@shopgate/engage/components';
 import { VariantContext, VariantAvailability, ProductContext } from '@shopgate/engage/product';
 import { ViewContext } from '@shopgate/engage/components/View';
+
 import Item from '../SheetItem';
 
 /**
@@ -15,6 +21,7 @@ class CharacteristicSheet extends PureComponent {
     label: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     setViewAriaHidden: PropTypes.func.isRequired,
+    contextRef: PropTypes.shape(),
     fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
     onClose: PropTypes.func,
     onSelect: PropTypes.func,
@@ -29,6 +36,7 @@ class CharacteristicSheet extends PureComponent {
     onSelect() { },
     productId: null,
     selectedValue: null,
+    contextRef: null,
     selection: null,
   };
 
@@ -86,7 +94,7 @@ class CharacteristicSheet extends PureComponent {
    */
   render() {
     const {
-      items, label, open, selectedValue,
+      items, label, open, selectedValue, contextRef,
     } = this.props;
 
     let selectedIndex;
@@ -98,20 +106,46 @@ class CharacteristicSheet extends PureComponent {
     }
 
     return (
-      <SheetDrawer title={label} isOpen={open} onClose={this.onClose} onDidOpen={this.onDidOpen}>
-        <SheetList>
-          {items.map((item, index) => (
-            <Item
-              item={item}
-              key={item.id}
-              onClick={this.handleItemClick}
-              rightComponent={() => this.renderAvailability(item.id)}
-              selected={item.id === selectedValue}
-              ref={index === selectedIndex ? this.firstSelectableItemRef : null}
-            />
-          ))}
-        </SheetList>
-      </SheetDrawer>
+      <Fragment>
+        <ResponsiveContainer appAlways breakpoint="xs">
+          <SheetDrawer
+            title={label}
+            isOpen={open}
+            onClose={this.onClose}
+            onDidOpen={this.onDidOpen}
+          >
+            <SheetList>
+              {items.map((item, index) => (
+                <Item
+                  item={item}
+                  key={item.id}
+                  onClick={this.handleItemClick}
+                  rightComponent={() => this.renderAvailability(item.id)}
+                  selected={item.id === selectedValue}
+                  ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+                />
+              ))}
+            </SheetList>
+          </SheetDrawer>
+        </ResponsiveContainer>
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          <Menu
+            isOpen={open}
+            onClose={this.onClose}
+            contextRef={contextRef}
+          >
+            {items.map((item, index) => (
+              <Item
+                item={item}
+                onClick={this.handleItemClick}
+                rightComponent={() => this.renderAvailability(item.id)}
+                selected={item.id === selectedValue}
+                ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+              />
+            ))}
+          </Menu>
+        </ResponsiveContainer>
+      </Fragment>
     );
   }
 }

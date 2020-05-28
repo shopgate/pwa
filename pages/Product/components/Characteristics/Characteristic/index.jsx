@@ -140,7 +140,7 @@ class Characteristic extends PureComponent {
   render() {
     const { __ } = this.context.i18n();
     const {
-      id, selected, values,
+      id, selected, values, charRef,
     } = this.props;
     const displayLabel = this.props.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
@@ -152,6 +152,7 @@ class Characteristic extends PureComponent {
         </Transition>
         <Sheet
           charId={id}
+          contextRef={charRef}
           items={values}
           label={translatedLabel}
           onClose={this.closeSheet}
