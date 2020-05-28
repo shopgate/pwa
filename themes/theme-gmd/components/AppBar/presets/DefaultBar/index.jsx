@@ -21,6 +21,7 @@ import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
+import { buttons } from './styles';
 
 /**
  * The AppBarDefault component.
@@ -202,8 +203,10 @@ class AppBarDefault extends PureComponent {
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const right = (
       <Fragment>
-        <SearchButton onToggle={this.toggleSearch} />
-        <CartButton />
+        <div className={buttons}>
+          <SearchButton onToggle={this.toggleSearch} />
+          <CartButton />
+        </div>
       </Fragment>
     );
 

@@ -13,6 +13,7 @@ const outer = css({
 const inner = css({
   background: 'inherit',
   display: 'flex',
+  justifyContent: 'space-between',
   position: 'relative',
   zIndex: 14,
 });

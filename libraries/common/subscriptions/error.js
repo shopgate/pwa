@@ -18,6 +18,7 @@ import {
   ENETUNREACH,
   EUNKNOWN,
 } from '@shopgate/pwa-core';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
   // eslint-disable-next-line import/no-named-default
@@ -166,6 +167,7 @@ export default (subscribe) => {
       scope.setTag('pwaVersion', pckVersion);
       scope.setTag('theme', themeName);
       scope.setTag('language', appConfig.language);
+      scope.setTag('isWebsite', hasWebBridge());
     });
 
     if (window) {

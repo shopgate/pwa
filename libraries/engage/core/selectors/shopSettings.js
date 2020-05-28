@@ -10,11 +10,12 @@ export const getState = state => state?.settings?.shopSettings || {};
 /**
  * Creates a selector to retrieve a single shop setting.
  * @param {string} key The key of the shop setting
+ * @param {*} [fallback=null] The fallback value when no value can be determined.
  * @returns {Function}
  */
-export const makeGetShopSettingByKey = key => createSelector(
+export const makeGetShopSettingByKey = (key, fallback = null) => createSelector(
   getState,
-  state => state?.[key]?.data || null
+  state => state?.[key] || fallback
 );
 
 /**
@@ -31,9 +32,9 @@ export const makeGetShopSettings = (keys = []) => createSelector(
       }
 
       return true;
-    }).reduce(({ acc, key }) => {
-      if (state?.[key]?.data) {
-        acc[key] = state[key].data;
+    }).reduce((acc, key) => {
+      if (state?.[key]) {
+        acc[key] = state[key];
       }
 
       return acc;
