@@ -48,7 +48,7 @@ const underlineStyle = (focused, hasError) => {
   }
 
   return {
-    borderBottomColor: hasError ? colors.error : `var(${focusColor}, ${colors.focus})`,
+    borderBottomColor: hasError ? `var(--color-state-alert, ${colors.error})` : `var(${focusColor}, ${colors.focus})`,
     ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
   };
 };

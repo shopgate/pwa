@@ -37,7 +37,6 @@ function locations(subscribe) {
         merchantSettings: { enabledFulfillmentMethodSelectionForEngage = [] } = {},
       },
     } = action;
-
     if (enabledFulfillmentMethodSelectionForEngage.includes(MULTI_LINE_RESERVE)) {
       // Cart with ropis products
       const cartReceivedWithRopis$ = cartReceived$.filter(
@@ -54,6 +53,7 @@ function locations(subscribe) {
         const locationIds = cartItems.map(item => (
           item.fulfillment && item.fulfillment.location && item.fulfillment.location.code
         )).filter(Boolean);
+
         if (locationIds) {
           dispatch(fetchLocationsById(locationIds));
         }

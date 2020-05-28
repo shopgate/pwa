@@ -26,7 +26,7 @@ exports[`<Availability /> should render if state is "ok" when "showWhenAvailable
   text="Available"
 >
   <div
-    className=" css-1ixzglu"
+    className=" css-v27ase"
     data-test-id="availabilityText: Available"
   >
     Available
@@ -42,7 +42,7 @@ exports[`<Availability /> should render if state is "warning" 1`] = `
   text="Only 5 left"
 >
   <div
-    className=" css-14jedxl"
+    className=" css-rsbzs4"
     data-test-id="availabilityText: Only 5 left"
   >
     Only 5 left
@@ -58,7 +58,7 @@ exports[`<Availability /> should render if state is "warning" 2`] = `
   text="Out of stock"
 >
   <div
-    className=" css-qsvazi"
+    className=" css-1lzzago"
     data-test-id="availabilityText: Out of stock"
   >
     Out of stock

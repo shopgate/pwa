@@ -130,7 +130,6 @@ export { default as grantPermissions } from './actions/grantPermissions';
 export { default as grantCameraPermissions } from './actions/grantCameraPermissions';
 export { default as grantGeolocationPermissions } from './actions/grantGeolocationPermissions';
 export { default as getGeolocation } from './actions/getGeolocation';
-export * from './actions';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/app';
@@ -294,6 +293,8 @@ export * from './config/config.actions';
 export * from './config/config.selectors';
 export * from './config/config.streams';
 
+export * from './initialization';
+
 // -------------- VALIDATION -------------- //
 export * from './validation';
 
@@ -305,4 +306,6 @@ export {
 export {
   SHOP_SETTING_CART_SUPPLEMENTAL_CONTENT,
   SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT,
+  SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP,
+  SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB,
 } from './constants';

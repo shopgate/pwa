@@ -19,7 +19,7 @@ const error = css({
   bottom: 2,
   fontSize: 12,
   lineHeight: '14px',
-  color: themeConfig.colors.error,
+  color: `var(--color-state-alert, ${themeConfig.colors.error})`,
   ...ellipsisLine,
 }).toString();
 

@@ -93,8 +93,8 @@ const Pages = ({ store }) => (
           <LoadingProvider>
             <ToastProvider>
               <Portal name={APP_GLOBALS} />
+              <BrandingColorBanner />
               <Viewport>
-                <BrandingColorBanner />
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBar {...props} />} />
                 <SideNavigation

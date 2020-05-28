@@ -17,7 +17,7 @@ const formStyles = {
   },
   ' .phonePickerError': {
     ...(!isIOSTheme() ? {
-      borderBottom: `2px solid ${colors.error}`,
+      borderBottom: `2px solid var(--color-state-alert, ${colors.error})`,
     } : {}),
   },
   ' .phonePickerFocused:not(.phonePickerError)': {
