@@ -45,7 +45,7 @@ exports[`Shipping label should render free shipping 1`] = `
             price={0}
           >
             <div
-              className="css-117ocmm css-1ixzglu"
+              className="css-117ocmm css-v27ase"
               role="text"
             >
               <Translate
@@ -120,7 +120,7 @@ exports[`Shipping label should render shipping price 1`] = `
             price={1}
           >
             <div
-              className="css-117ocmm css-1ixzglu"
+              className="css-117ocmm css-v27ase"
               role="text"
             >
               <Translate
