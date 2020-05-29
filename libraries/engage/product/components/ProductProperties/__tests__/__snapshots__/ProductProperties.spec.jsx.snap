@@ -218,7 +218,15 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                               "data-css-fl9ufm": "",
                             }
                           }
-                        />
+                        >
+                          <span
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": undefined,
+                              }
+                            }
+                          />
+                        </td>
                         <td
                           className={
                             Object {
@@ -226,7 +234,15 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                             }
                           }
                           data-test-id="property: undefined"
-                        />
+                        >
+                          <span
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": undefined,
+                              }
+                            }
+                          />
+                        </td>
                       </tr>
                     </Row>
                   </Rows>

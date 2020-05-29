@@ -136,6 +136,7 @@ class CharacteristicSheet extends PureComponent {
           >
             {items.map((item, index) => (
               <Item
+                key={item.id}
                 item={item}
                 onClick={this.handleItemClick}
                 rightComponent={() => this.renderAvailability(item.id)}

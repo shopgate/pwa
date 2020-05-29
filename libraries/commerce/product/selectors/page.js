@@ -28,8 +28,10 @@ export const isProductPageLoading = createSelector(
       return true;
     }
 
+    const baseProductActive = !!baseProduct?.active;
+
     // Check if the base product has variants.
-    if (hasVariants) {
+    if (hasVariants && baseProductActive) {
       const variantsFetching = !variants;
 
       // Check if the variant list is currently fetching.
@@ -66,6 +68,12 @@ export const isProductPageOrderable = createSelector(
     logDeprecationMessage('The selector isProductPageOrderable()');
     // Check if the base product is already present.
     if (!baseProduct) {
+      return false;
+    }
+
+    const baseProductActive = !!baseProduct?.active;
+
+    if (!baseProductActive) {
       return false;
     }
 

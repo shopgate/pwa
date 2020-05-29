@@ -1,16 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Group /> should render a group title row 1`] = `
-<tr>
-  <td
-    className={
-      Object {
-        "data-css-1o9kcbq": "",
+<Group
+  group="Test"
+>
+  <tr>
+    <td
+      className={
+        Object {
+          "data-css-1o9kcbq": "",
+        }
       }
-    }
-    colSpan="2"
-  >
-    Test
-  </td>
-</tr>
+      colSpan="2"
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Test",
+          }
+        }
+      />
+    </td>
+  </tr>
+</Group>
 `;

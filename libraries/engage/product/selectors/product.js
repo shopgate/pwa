@@ -4,6 +4,7 @@ import {
   getProductId,
   getProduct,
   getProductDataById,
+  getBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { filterProperties } from './helpers';
 
@@ -76,3 +77,33 @@ export function makeGetProductFeaturedMedia() {
     }
   );
 }
+
+/**
+ * Creates a selector to indicate if a product is active.
+ * @returns {Function}
+ */
+export const makeIsProductActive = () => createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return false;
+    }
+
+    return product?.active || false;
+  }
+);
+
+/**
+ * Creates a selector to indicate if the base product is active.
+ * @returns {Function}
+ */
+export const makeIsBaseProductActive = () => createSelector(
+  getBaseProduct,
+  (baseProduct) => {
+    if (!baseProduct) {
+      return false;
+    }
+
+    return baseProduct?.active || false;
+  }
+);

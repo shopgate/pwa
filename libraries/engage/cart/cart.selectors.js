@@ -3,6 +3,7 @@ import {
   hasProductVariants,
   isProductOrderable,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product';
 import {
   makeIsRopeProductOrderable,
   makeGetUserLocationFulfillmentMethod,
@@ -15,6 +16,8 @@ import { makeGetEnabledFulfillmentMethods } from '../core';
  * @returns {Function}
  */
 export function makeIsAddToCartButtonDisabled() {
+  const isProductActive = makeIsProductActive();
+  const isBaseProductActive = makeIsBaseProductActive();
   const isRopeProductOrderable = makeIsRopeProductOrderable(true);
   const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
   const getEnabledMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
@@ -23,22 +26,30 @@ export function makeIsAddToCartButtonDisabled() {
     getEnabledMerchantFulfillmentMethods,
     getUserLocationFulfillmentMethod,
     hasProductVariants,
+    isProductActive,
+    isBaseProductActive,
     isProductOrderable,
     isRopeProductOrderable,
     (
       merchantFulfillmentMethods,
       userLocationFulfillmentMethod,
       productHasVariants,
-      regularProductOrderable,
+      productActive,
+      baseProductActive,
+      productOrderable,
       ropeProductOrderable
     ) => {
+      if (!productActive || !baseProductActive) {
+        return true;
+      }
+
       const isDirectShipSelected =
         !merchantFulfillmentMethods ||
         !userLocationFulfillmentMethod ||
         userLocationFulfillmentMethod === DIRECT_SHIP;
 
       if (isDirectShipSelected) {
-        return !regularProductOrderable && !productHasVariants;
+        return !productOrderable && !productHasVariants;
       }
 
       return ropeProductOrderable === false && !productHasVariants;

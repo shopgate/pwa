@@ -1,6 +1,10 @@
 // @flow
 import { connect } from 'react-redux';
-import { hasProductVariants, isProductOrderable } from '@shopgate/engage/product';
+import {
+  hasProductVariants,
+  isProductOrderable,
+  makeIsBaseProductActive,
+} from '@shopgate/engage/product';
 import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import {
   makeGetEnabledFulfillmentMethods,
@@ -29,6 +33,7 @@ function makeMapStateToProps() {
   const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
   const getFulfillmentMethods = makeGetProductFulfillmentMethods();
+  const isBaseProductActive = makeIsBaseProductActive();
 
   /**
    * @param {Object} state The application state.
@@ -37,6 +42,8 @@ function makeMapStateToProps() {
    */
   return (state, props) => {
     const hasVariants = hasProductVariants(state, props);
+    const baseProductActive = isBaseProductActive(state, props);
+
     return {
       fulfillmentPaths: getFulfillmentPaths(state),
       shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
@@ -47,7 +54,7 @@ function makeMapStateToProps() {
       isROPISEnabled: isROPISEnabled(state, props),
       isBOPISEnabled: isBOPISEnabled(state, props),
       isOrderable: isProductOrderable(state, props) || !!hasVariants,
-      isReady: hasVariants !== null && !hasVariants,
+      isReady: hasVariants !== null && (!hasVariants || !baseProductActive),
     };
   };
 }

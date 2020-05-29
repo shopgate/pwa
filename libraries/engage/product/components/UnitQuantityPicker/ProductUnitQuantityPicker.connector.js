@@ -1,10 +1,17 @@
 import { connect } from 'react-redux';
-import { getProduct } from '@shopgate/engage/product';
+import {
+  getProduct,
+  makeIsProductActive,
+  makeIsBaseProductActive,
+} from '@shopgate/engage/product';
 
 /**
  * @returns {Function}
  */
 function makeMapStateToProps() {
+  const isProductActive = makeIsProductActive();
+  const isBaseProductActive = makeIsBaseProductActive();
+
   /**
    * @param {Object} state The application state.
    * @param {Object} props The component props.
@@ -12,6 +19,7 @@ function makeMapStateToProps() {
    */
   return (state, props) => ({
     product: getProduct(state, props),
+    disabled: !isProductActive(state, props) || !isBaseProductActive(state, props),
   });
 }
 

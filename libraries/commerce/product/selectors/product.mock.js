@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
-
+/* eslint-disable camelcase */
 export const mockedRouterState = {
   currentRoute: null,
   stack: [],
@@ -13,6 +13,7 @@ export const mockedProductsById = {
     isFetching: false,
     productData: {
       id: 'product_1',
+      active: true,
       baseProductId: null,
       flags: {
         hasChildren: false,
@@ -35,6 +36,7 @@ export const mockedProductsById = {
     isFetching: false,
     productData: {
       id: 'product_2',
+      active: true,
       baseProductId: 'product_1',
       flags: {
         hasChildren: false,
@@ -57,6 +59,7 @@ export const mockedProductsById = {
     isFetching: false,
     productData: {
       id: 'product_3',
+      active: true,
       baseProductId: 'product_1',
       flags: {
         hasChildren: false,
@@ -83,6 +86,7 @@ export const mockedProductsById = {
     isFetching: false,
     productData: {
       id: 'product_5',
+      active: true,
       baseProductId: null,
       flags: {
         hasChildren: false,
@@ -379,3 +383,5 @@ delete mockedVariantStateVariantDataFetching.product.productsById.product_3;
 export const mockedVariantStateVariantsFetching = cloneDeep(mockedVariantStateComplete);
 delete mockedVariantStateVariantsFetching.product.productsById.product_2;
 delete mockedVariantStateVariantsFetching.product.productsById.product_3;
+
+/* eslint-enable camelcase */

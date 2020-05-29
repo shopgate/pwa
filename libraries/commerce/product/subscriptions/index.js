@@ -5,7 +5,7 @@ import {
 } from '@shopgate/engage/core';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search';
 import { LoadingProvider, ToastProvider } from '@shopgate/pwa-common/providers';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import fetchProduct from '../actions/fetchProduct';
 import fetchProductDescription from '../actions/fetchProductDescription';
 import fetchProductProperties from '../actions/fetchProductProperties';
@@ -71,6 +71,7 @@ function product(subscribe) {
         hasOptions: false,
       },
       baseProductId,
+      active,
     } = action.productData;
 
     if (baseProductId) {
@@ -78,16 +79,20 @@ function product(subscribe) {
       dispatch(fetchProductImages(baseProductId, productImageFormats.getAllUniqueFormats()));
     }
 
-    if (flags.hasVariants) {
+    if (active && flags.hasVariants) {
       dispatch(fetchProductVariants(id));
     }
 
-    if (flags.hasOptions) {
+    if (active && flags.hasOptions) {
       dispatch(fetchProductOptions(id));
     }
   });
 
   const errorProductResourcesNotFoundFirst$ = receivedVisibleProduct$
+    .filter(({ action }) => {
+      const active = action?.productData?.active;
+      return !!active;
+    })
     .switchMap(() => errorProductResourcesNotFound$.first());
 
   /** Refresh product data after some of resources has ENOTFOUND code */
@@ -179,9 +184,14 @@ function product(subscribe) {
     dispatch(expireProductById(productIds, true));
   });
 
-  subscribe(receivedVisibleProduct$.merge(variantDidChange$).merge(cachedProductReceived$), () => {
-    LoadingProvider.unsetLoading(getCurrentRoute().pathname);
-  });
+  subscribe(
+    receivedVisibleProduct$
+      .merge(variantDidChange$)
+      .merge(cachedProductReceived$),
+    ({ getState }) => {
+      LoadingProvider.unsetLoading(getCurrentPathname(getState()));
+    }
+  );
 }
 
 export default product;

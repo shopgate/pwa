@@ -1,6 +1,6 @@
 // @flow
 import { createSelector, type Selector } from 'reselect';
-import { getProduct } from '@shopgate/engage/product';
+import { getProduct, makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
 import { makeGetEnabledFulfillmentMethods } from '../../core';
 import { isProductAvailable } from '../helpers/productInventory';
@@ -352,6 +352,8 @@ export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string
   const getProductAllLocations = makeGetProductAllLocations();
   const getProductFulfillmentMethods = makeGetProductFulfillmentMethods();
   const getMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+  const isProductActive = makeIsProductActive();
+  const isBaseProductActive = makeIsBaseProductActive();
 
   /**
    * Retrieves whether the Fulfillment Selector for a specific method should be disabled.
@@ -361,11 +363,24 @@ export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string
    * @returns {boolean}
    */
   return createSelector(
+    isProductActive,
+    isBaseProductActive,
     getProductLocations,
     getProductAllLocations,
     getMerchantFulfillmentMethods,
     getProductFulfillmentMethods,
-    (locations, allLocations, merchantMethods, productMethods) => {
+    (
+      productActive,
+      baseProductActive,
+      locations,
+      allLocations,
+      merchantMethods,
+      productMethods
+    ) => {
+      if (!productActive || !baseProductActive) {
+        return false;
+      }
+
       const hasLocations =
         (Array.isArray(locations) && locations.length > 0) ||
         (Array.isArray(allLocations) && allLocations.length > 0);

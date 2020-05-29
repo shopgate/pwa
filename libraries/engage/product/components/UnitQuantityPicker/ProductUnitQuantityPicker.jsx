@@ -28,7 +28,7 @@ const styles = {
  * @param {Object} props Props
  * @returns {JSX}
  */
-const ProductUnitQuantityPicker = ({ product }) => {
+const ProductUnitQuantityPicker = ({ product, disabled }) => {
   const { quantity, setQuantity } = useContext(ProductContext);
 
   if (!product) {
@@ -51,16 +51,19 @@ const ProductUnitQuantityPicker = ({ product }) => {
         decrementStep={hasUnitWithDecimals ? 0.25 : 1}
         onChange={setQuantity}
         value={quantity}
+        disabled={disabled}
       />
     </div>
   );
 };
 
 ProductUnitQuantityPicker.propTypes = {
+  disabled: PropTypes.bool,
   product: PropTypes.shape(),
 };
 
 ProductUnitQuantityPicker.defaultProps = {
+  disabled: false,
   product: null,
 };
 

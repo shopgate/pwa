@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
 
@@ -46,6 +47,11 @@ const styles = {
       borderBottomRightRadius: 0,
     },
   }).toString(),
+  disabled: css({
+    ' > div': {
+      padding: 0,
+    },
+  }).toString(),
 };
 
 /**
@@ -63,6 +69,7 @@ const UnitQuantityPicker = ({
   incrementStep,
   maxDecimals,
   unit,
+  disabled,
 }) => {
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
@@ -81,9 +88,11 @@ const UnitQuantityPicker = ({
     <div className={`${styles.root} ${className}`}>
       <RippleButton
         rippleClassName={styles.buttonRipple}
-        className={`${styles.button} ${styles.buttonNoRadiusRight}`}
+        className={classNames(styles.button, styles.buttonNoRadiusRight, {
+          [styles.disabled]: disabled,
+        })}
         type="secondary"
-        disabled={!allowDecrement}
+        disabled={!allowDecrement || disabled}
         onClick={handleDecrement}
       >
         -
@@ -95,14 +104,17 @@ const UnitQuantityPicker = ({
           onChange={onChange}
           maxDecimals={maxDecimals}
           unit={unit}
+          disabled={disabled}
         />
       </span>
 
       <RippleButton
         type="secondary"
-        disabled={!allowIncrement}
+        disabled={!allowIncrement || disabled}
         rippleClassName={styles.buttonRipple}
-        className={`${styles.button} ${styles.buttonNoRadiusLeft}`}
+        className={classNames(styles.button, styles.buttonNoRadiusLeft, {
+          [styles.disabled]: disabled,
+        })}
         onClick={handleIncrement}
       >
         +
@@ -119,6 +131,7 @@ UnitQuantityPicker.propTypes = {
   allowZero: PropTypes.bool,
   className: PropTypes.string,
   decrementStep: PropTypes.number,
+  disabled: PropTypes.bool,
   incrementStep: PropTypes.number,
   maxDecimals: PropTypes.number,
   unit: PropTypes.string,
@@ -133,6 +146,7 @@ UnitQuantityPicker.defaultProps = {
   decrementStep: 0.25,
   maxDecimals: 2,
   unit: null,
+  disabled: false,
 };
 
 export default UnitQuantityPicker;

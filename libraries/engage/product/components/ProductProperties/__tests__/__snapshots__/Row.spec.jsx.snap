@@ -1,27 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Row /> should render as expected 1`] = `
-<tr
-  key="TestLabelTestValue"
+<Row
+  label="TestLabel"
+  value="TestValue"
 >
-  <td
-    className={
-      Object {
-        "data-css-fl9ufm": "",
-      }
-    }
+  <tr
+    key="TestLabelTestValue"
   >
-    TestLabel
-  </td>
-  <td
-    className={
-      Object {
-        "data-css-fl9ufm": "",
+    <td
+      className={
+        Object {
+          "data-css-fl9ufm": "",
+        }
       }
-    }
-    data-test-id="property: TestValue"
-  >
-    TestValue
-  </td>
-</tr>
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "TestLabel",
+          }
+        }
+      />
+    </td>
+    <td
+      className={
+        Object {
+          "data-css-fl9ufm": "",
+        }
+      }
+      data-test-id="property: TestValue"
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "TestValue",
+          }
+        }
+      />
+    </td>
+  </tr>
+</Row>
 `;
