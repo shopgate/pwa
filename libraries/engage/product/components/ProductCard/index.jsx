@@ -76,7 +76,9 @@ function ProductCard(props) {
               className={styles.title}
               data-test-id={`Productname: ${product.name}`}
             >
-              <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
+              <Ellipsis rows={titleRows || 3}>
+                <span dangerouslySetInnerHTML={{ __html: product.name }} />
+              </Ellipsis>
             </div>
           )}
 

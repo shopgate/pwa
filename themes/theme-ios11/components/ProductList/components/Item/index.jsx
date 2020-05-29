@@ -59,7 +59,7 @@ const Item = ({ display, product }) => (
           <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
           <Portal name={portals.PRODUCT_ITEM_NAME} props={{ productId: product.id }}>
             <div itemProp="name" data-test-id={`Productname: ${product.name}`}>
-              <Ellipsis>{product.name}</Ellipsis>
+              <Ellipsis><span dangerouslySetInnerHTML={{ __html: product.name }} /></Ellipsis>
             </div>
           </Portal>
           <Portal name={portals.PRODUCT_ITEM_NAME_AFTER} props={{ productId: product.id }} />

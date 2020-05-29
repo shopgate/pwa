@@ -9,8 +9,8 @@ import { tableCell } from './style';
  */
 const Row = ({ label, value }) => (
   <tr key={`${label}${value}`}>
-    <td className={tableCell}>{label}</td>
-    <td className={tableCell} data-test-id={`property: ${value}`}>{value}</td>
+    <td className={tableCell}><span dangerouslySetInnerHTML={{ __html: label }} /></td>
+    <td className={tableCell} data-test-id={`property: ${value}`}><span dangerouslySetInnerHTML={{ __html: value }} /></td>
   </tr>
 );
 

@@ -11,7 +11,7 @@ import styles from './style';
  */
 const Manufacturer = ({ className, text }) => (
   <div className={`${styles} ${className}`}>
-    {text}
+    <span dangerouslySetInnerHTML={{ __html: text }} />
   </div>
 );
 

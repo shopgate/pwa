@@ -41,7 +41,7 @@ class ItemName extends PureComponent {
         <Portal name={PRODUCT_ITEM_NAME_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_NAME} props={props}>
           <div className={styles} data-test-id={`Productname: ${name}`} aria-label={`${name}.`}>
-            <Ellipsis>{name}</Ellipsis>
+            <Ellipsis><span dangerouslySetInnerHTML={{ __html: name }} /></Ellipsis>
           </div>
         </Portal>
         <Portal name={PRODUCT_ITEM_NAME_AFTER} props={props} />
