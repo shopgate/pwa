@@ -683,7 +683,13 @@ exports[`<ProductCard /> should render as expected 1`] = `
                           <div
                             className=""
                           >
-                            Product Name
+                            <span
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "Product Name",
+                                }
+                              }
+                            />
                           </div>
                         </Dotdotdot>
                       </Ellipsis>

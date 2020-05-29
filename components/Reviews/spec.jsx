@@ -18,6 +18,10 @@ const mockedStore = configureStore();
 const Header = () => <div />;
 const mock = Header;
 jest.mock('Components/Reviews/components/Header', () => mock);
+jest.mock('@shopgate/engage/product', () => ({
+  PRODUCT_REVIEWS: 'product.reviews',
+  makeIsBaseProductActive: jest.fn(() => () => true),
+}));
 
 beforeEach(() => {
   jest.resetModules();
