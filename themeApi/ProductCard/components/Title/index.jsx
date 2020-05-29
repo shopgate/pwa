@@ -9,7 +9,7 @@ import styles from './style';
 function ProductCardTitle({ title, rows, style }) {
   return (
     <div className={styles} style={style} data-test-id={`Productname: ${title}`}>
-      <Ellipsis rows={rows}>{title}</Ellipsis>
+      <Ellipsis rows={rows}><span dangerouslySetInnerHTML={{ __html: title }} /></Ellipsis>
     </div>
   );
 }
