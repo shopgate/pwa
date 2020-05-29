@@ -15,10 +15,10 @@ import connect from './connector';
  * @param {Array} props.reviews Reviews which should be shown in the product page.
  * @returns {JSX}
  */
-function Reviews({ productId, reviews }) {
+function Reviews({ productId, productActive, reviews }) {
   return (
     <SurroundPortals portalName={PRODUCT_REVIEWS}>
-      {appConfig.hasReviews && (
+      {(appConfig.hasReviews && productActive) && (
         <div className={styles.container} data-test-id="reviewSection">
           <Header productId={productId} />
           <List productId={productId} reviews={reviews} />
@@ -30,12 +30,14 @@ function Reviews({ productId, reviews }) {
 }
 
 Reviews.propTypes = {
+  productActive: PropTypes.bool,
   productId: PropTypes.string,
   reviews: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Reviews.defaultProps = {
   productId: null,
+  productActive: true,
   reviews: null,
 };
 

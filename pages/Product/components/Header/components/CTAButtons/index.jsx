@@ -18,19 +18,21 @@ import connect from './connector';
  * @param {Object} props Props.
  * @returns {JSX}
  */
-const CTAButtons = ({ isFavorite, productId }) => (
+const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
   <Fragment>
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
       <div className={styles.buttons}>
         <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
         <Portal name={PRODUCT_CTAS_FAVORITES}>
-          <FavoritesButton
-            className={styles.favButton}
-            rippleClassName={styles.ripple}
-            active={isFavorite}
-            productId={productId}
-          />
+          { isProductActive && (
+            <FavoritesButton
+              className={styles.favButton}
+              rippleClassName={styles.ripple}
+              active={isFavorite}
+              productId={productId}
+            />
+          )}
         </Portal>
         <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
       </div>
@@ -41,10 +43,12 @@ const CTAButtons = ({ isFavorite, productId }) => (
 
 CTAButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
+  isProductActive: PropTypes.bool,
   productId: PropTypes.string,
 };
 
 CTAButtons.defaultProps = {
+  isProductActive: true,
   productId: null,
 };
 

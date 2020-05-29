@@ -32,7 +32,13 @@ exports[`<ItemName /> should render with minimal props 1`] = `
         ellipsis="..."
         rows={3}
       >
-        Foo
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Foo",
+            }
+          }
+        />
       </Ellipsis>
     </div>
   </Portal>

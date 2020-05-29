@@ -18,6 +18,7 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
   >
     <Reviews
       dispatch={[Function]}
+      productActive={true}
       productId="foo"
       reviews={
         Array [
@@ -96,6 +97,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
   >
     <Reviews
       dispatch={[Function]}
+      productActive={true}
       productId="foo"
       reviews={
         Array [
@@ -2136,6 +2138,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
   >
     <Reviews
       dispatch={[Function]}
+      productActive={true}
       productId="foo"
       reviews={
         Array [
@@ -3138,6 +3141,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
   >
     <Reviews
       dispatch={[Function]}
+      productActive={true}
       productId="foo"
       reviews={null}
     >
