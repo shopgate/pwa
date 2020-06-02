@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import CategoryGrid from 'Components/CategoryGrid';
+import Headline from 'Components/Headline';
 import connect from './connector';
 import CategoryListDefault from './CategoryListDefault';
 import styles from './style';
@@ -59,12 +60,16 @@ class CategoryListWidget extends Component {
 
     return (
       <div className={styles.container} data-test-id="categoryList">
-        {(settings.headline) ? <h3 className={styles.headline}>{settings.headline}</h3> : null}
+        {(settings.headline) ? <Headline text={settings.headline} /> : null}
         <ResponsiveContainer appAlways breakpoint="<=xs">
           <CategoryListDefault categories={items} settings={settings} />
         </ResponsiveContainer>
         <ResponsiveContainer webOnly breakpoint=">xs">
-          <CategoryGrid categories={items} showImages={settings.showImages} />
+          <CategoryGrid
+            categories={items}
+            showImages={settings.showImages}
+            className={styles.grid}
+          />
         </ResponsiveContainer>
       </div>
     );

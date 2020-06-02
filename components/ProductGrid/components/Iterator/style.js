@@ -22,15 +22,11 @@ const item = columns => css({
   padding: 2,
   width: `${100 / columns}%`,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
-    padding: variables.gap.small,
-    [`:nth-child(${columns}n)`]: {
-      paddingRight: variables.gap.big,
+    ':nth-child(even)': {
+      padding: `0 0 ${variables.gap.big}px ${variables.gap.small}px`,
     },
-    [`:nth-child(${columns}n+1)`]: {
-      paddingLeft: variables.gap.big,
-    },
-    [`:nth-child(-n+${columns})`]: {
-      paddingTop: variables.gap.big,
+    ':nth-child(odd)': {
+      padding: `0 ${variables.gap.small}px ${variables.gap.big}px 0`,
     },
   },
 }).toString();

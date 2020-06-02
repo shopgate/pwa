@@ -5,6 +5,7 @@ import { ProductCard } from '@shopgate/engage/product';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
 import { WIDGET_ID } from 'Components/ProductSlider';
+import Headline from 'Components/Headline';
 import connect from './connector';
 import styles from './style';
 
@@ -71,9 +72,7 @@ class ProductSlider extends PureComponent {
   renderHeadline = () => {
     if (this.props.settings.headline) {
       return (
-        <h3 className={styles.headline}>
-          {this.props.settings.headline}
-        </h3>
+        <Headline text={this.props.settings.headline} />
       );
     }
 
