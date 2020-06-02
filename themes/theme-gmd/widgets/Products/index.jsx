@@ -186,7 +186,7 @@ class ProductsWidget extends Component {
     const ProductComponent = isList ? ProductList : ProductGrid;
 
     return (
-      <div {...isList ? { className: styles.listView } : {}}>
+      <div {...isList ? { className: styles.listView } : { className: styles.gridView }}>
         <Headline text={headline} />
         <ProductComponent
           flags={flags}

@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const sliderContainer = css({
@@ -13,6 +14,9 @@ const slider = css({
   flex: 1,
   paddingTop: 16,
   paddingBottom: 16,
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    padding: 0,
+  },
 }).toString();
 
 const sliderItem = css({

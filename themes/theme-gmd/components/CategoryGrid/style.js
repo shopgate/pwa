@@ -13,7 +13,7 @@ export const grid = css({
   flexDirection: 'row',
   padding: `0 ${big}px`,
   marginBottom: `-${big}px`,
-});
+}).toString();
 
 export const gridItem = css({
   width: '50%',
@@ -24,7 +24,7 @@ export const gridItem = css({
   ':nth-child(odd)': {
     padding: `0 ${small}px ${big}px 0`,
   },
-});
+}).toString();
 
 export const gridItemInner = css({
   display: 'flex',
@@ -44,7 +44,7 @@ export const gridItemColumnLeft = css({
 export const gridItemColumnRight = css({
   width: '20%',
   minWidth: minImageSize,
-});
+}).toString();
 
 export const categoryTitle = css({
   fontSize: '1.5rem',
@@ -72,7 +72,7 @@ export const categoryDescription = css({
   ':empty': {
     display: 'none',
   },
-});
+}).toString();
 
 export const categoryImage = css({
   display: 'flex',

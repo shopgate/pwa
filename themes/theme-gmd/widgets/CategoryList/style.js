@@ -26,11 +26,10 @@ const sheetList = css({
   },
 });
 
-const headline = css({
-  fontSize: 18,
-  padding: `${variables.gap.big}px 0 0`,
-  marginTop: 0,
-  textAlign: 'center',
+const grid = css({
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    margin: `${variables.gap.big}px 0 -${variables.gap.big}px 0`,
+  },
 }).toString();
 
 const image = css({
@@ -49,6 +48,6 @@ const image = css({
 export default {
   container,
   sheetList,
-  headline,
   image,
+  grid,
 };
