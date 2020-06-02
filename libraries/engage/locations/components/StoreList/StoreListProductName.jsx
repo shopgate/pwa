@@ -16,7 +16,7 @@ function StoreListProductName() {
 
   return (
     <div className={productName}>
-      <Ellipsis>{baseProduct.name}</Ellipsis>
+      <Ellipsis><span dangerouslySetInnerHTML={{ __html: baseProduct.name }} /></Ellipsis>
     </div>
   );
 }
