@@ -22,16 +22,18 @@ const Name = ({ longName, name }) => (
         { isBeta()
           ? (
             <PlaceholderLabel className={styles.placeholder} ready={(longName !== null)}>
-              <span data-test-id={`name: ${longName}`}>
-                { longName }
-              </span>
+              <span
+                data-test-id={`name: ${longName}`}
+                dangerouslySetInnerHTML={{ __html: longName }}
+              />
             </PlaceholderLabel>
           )
           : (
             <PlaceholderLabel className={styles.placeholder} ready={(name !== null)}>
-              <span data-test-id={`name: ${name}`}>
-                {name}
-              </span>
+              <span
+                data-test-id={`name: ${name}`}
+                dangerouslySetInnerHTML={{ __html: name }}
+              />
             </PlaceholderLabel>
           )
         }
