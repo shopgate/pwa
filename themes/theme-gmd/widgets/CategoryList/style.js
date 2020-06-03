@@ -28,7 +28,8 @@ const sheetList = css({
 
 const grid = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
-    margin: `${variables.gap.big}px 0 -${variables.gap.big}px 0`,
+    marginTop: variables.gap.big,
+    paddingBottom: 0,
   },
 }).toString();
 
