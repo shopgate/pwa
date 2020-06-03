@@ -28,6 +28,9 @@ const item = columns => css({
     ':nth-child(odd)': {
       padding: `0 ${variables.gap.small}px ${variables.gap.big}px 0`,
     },
+    '&:nth-child(2n+1):nth-last-child(-n+2), &:nth-child(2n+1):nth-last-child(-n+2) ~ li': {
+      paddingBottom: 0,
+    },
   },
 }).toString();
 

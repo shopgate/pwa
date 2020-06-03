@@ -11,8 +11,7 @@ export const grid = css({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'row',
-  padding: `0 ${big}px`,
-  marginBottom: `-${big}px`,
+  padding: `0 ${big}px ${big}px ${big}px`,
 }).toString();
 
 export const gridItem = css({
@@ -24,6 +23,10 @@ export const gridItem = css({
   ':nth-child(odd)': {
     padding: `0 ${small}px ${big}px 0`,
   },
+  '&:nth-child(2n+1):nth-last-child(-n+2), &:nth-child(2n+1):nth-last-child(-n+2) ~ li': {
+    paddingBottom: 0,
+  },
+
 }).toString();
 
 export const gridItemInner = css({

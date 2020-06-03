@@ -2,7 +2,7 @@ import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
+const { colors, variables } = themeConfig;
 
 const listView = css({
   background: colors.light,
@@ -19,6 +19,8 @@ const gridView = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     ' > ul': {
       paddingTop: 0,
+      paddingBottom: 0,
+      marginTop: variables.gap.big,
     },
   },
 });

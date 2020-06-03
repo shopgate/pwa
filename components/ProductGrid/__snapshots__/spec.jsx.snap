@@ -11,13 +11,13 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 >
   <Layout>
     <Grid
-      className="css-1fk1p88"
+      className="css-1v5bph0"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-1fk1p88 css-h7r55a css-u7q1iu"
+        className="css-1v5bph0 css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
       />
     </Grid>
@@ -60,13 +60,13 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
       <div>
         <div>
           <Grid
-            className="css-1fk1p88"
+            className="css-1v5bph0"
             component="ul"
             data-test-id="productGrid"
             wrap={true}
           >
             <ul
-              className="css-1fk1p88 css-h7r55a css-u7q1iu"
+              className="css-1v5bph0 css-h7r55a css-u7q1iu"
               data-test-id="productGrid"
             />
           </Grid>
