@@ -8,7 +8,7 @@ import {
   setUserSearchPostalCode,
   setUserSearchCountryCode,
 } from '../../action-creators';
-import { getProductLocations } from './StoreListSearch.actions';
+import { fetchProductLocationsByUserSearch } from '../../actions';
 
 /**
  * @returns {Function}
@@ -29,7 +29,7 @@ function makeMapStateToProps() {
 }
 
 const mapDispatchToProps = {
-  getProductLocations,
+  getProductLocations: fetchProductLocationsByUserSearch,
   setPostalCode: setUserSearchPostalCode,
   setCountryCode: setUserSearchCountryCode,
 };

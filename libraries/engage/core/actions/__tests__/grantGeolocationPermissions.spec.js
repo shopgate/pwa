@@ -20,6 +20,8 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_LOCATION,
       useSettingsModal: false,
+      requestPermissions: true,
+      resolveWithData: false,
       modal: {
         title: null,
         message: 'permissions.access_denied.geolocation_message',
@@ -46,6 +48,8 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_LOCATION,
       useSettingsModal: true,
+      requestPermissions: true,
+      resolveWithData: false,
       modal: {
         title: 'Modal title',
         message: 'permissions.access_denied.geolocation_message',
@@ -77,6 +81,8 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_LOCATION,
       useSettingsModal: true,
+      requestPermissions: true,
+      resolveWithData: false,
       modal: customModalOptions,
     });
   });

@@ -4,14 +4,14 @@ import { css } from 'glamor';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import Logo from 'Components/Logo';
-import { MAX_DESKTOP_WIDTH } from '../../../../../../constants';
+import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_HEIGHT } from '../../../../../../constants';
 import Search from './Search';
 import Cart from './Cart';
 import connect from './WideBar.connector';
 
 const styles = {
   root: css({
-    height: 64,
+    height: DESKTOP_MENU_BAR_HEIGHT,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',

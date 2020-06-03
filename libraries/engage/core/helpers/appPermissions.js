@@ -1,14 +1,16 @@
 import {
   COMMAND_GET_APP_PERMISSIONS,
   COMMAND_REQUEST_APP_PERMISSIONS,
-} from '../../../constants/AppCommands';
+} from '@shopgate/pwa-core/constants/AppCommands';
 
 import {
   STATUS_NOT_DETERMINED,
   STATUS_GRANTED,
   STATUS_DENIED,
   PERMISSION_ID_LOCATION,
-} from '../../../constants/AppPermissions';
+} from '@shopgate/pwa-core/constants/AppPermissions';
+
+import geolocationRequestBrowser from '../classes/GeolocationRequestBrowser';
 
 /**
  * Mapping of states from the browser permissions API to app permissions.
@@ -33,7 +35,9 @@ const getGeolocationPermissionsFromPermissionsApi = async () => {
   } catch (e) { }
 
   // When the mapping fails we return null so that the default mocked state can be applied.
-  return permissionsApiStateMapping[state] || null;
+  return {
+    state: permissionsApiStateMapping[state] || null,
+  };
 };
 
 /**
@@ -43,27 +47,33 @@ const getGeolocationPermissionsFromPermissionsApi = async () => {
  */
 const getGeolocationPermissionsFromGeolocationApi = async () => {
   let state = STATUS_GRANTED;
-
+  let geolocation;
   try {
-    await new Promise((res, rej) => {
-      navigator.geolocation.getCurrentPosition(res, rej);
-    });
+    geolocation = await geolocationRequestBrowser.dispatch();
   } catch ({ code = null }) {
     if (code !== null) {
       state = STATUS_DENIED;
     }
   }
 
-  return state;
+  return {
+    state,
+    geolocation,
+  };
 };
 
 /**
  * Creates mocked app permissions to support development within browser environments.
  * @param {string} commandName The name of the command for which the permissions are created
  * @param {Object} [commandParams={}] The command params.
+ * @param {string} [fallbackStatus] The status that's returned when no status could be determined.
  * @returns {Array}
  */
-const createMockedPermissions = async (commandName, commandParams = {}) => {
+const mockedPermissions = async (
+  commandName,
+  commandParams = {},
+  fallbackStatus = STATUS_GRANTED
+) => {
   let { permissionIds } = commandParams;
   const { permissions } = commandParams;
 
@@ -84,19 +94,27 @@ const createMockedPermissions = async (commandName, commandParams = {}) => {
   }
 
   const result = permissionIds.map((permissionId) => {
-    let status = STATUS_GRANTED;
+    let state = fallbackStatus;
+    let geolocation;
 
-    if (permissionId === PERMISSION_ID_LOCATION && geolocationState) {
-      status = geolocationState;
+    if (permissionId === PERMISSION_ID_LOCATION && geolocationState?.state) {
+      ({ state, geolocation } = geolocationState);
     }
 
     return {
       permissionId,
-      status,
+      status: state,
+      ...(geolocation ? { data: geolocation } : {}),
     };
   });
 
   return result;
 };
 
-export default createMockedPermissions;
+/**
+ * Creates a function to mock app permissions.
+ * @param {string} [fallbackStatus] The status that's returned when no status could be determined.
+ * @returns {Function}
+ */
+export const createMockedPermissions = (fallbackStatus = STATUS_GRANTED) =>
+  (commandName, commandParams) => mockedPermissions(commandName, commandParams, fallbackStatus);

@@ -1,4 +1,3 @@
-import { hasSGJavaScriptBridge } from '../../helpers';
 import {
   PERMISSION_ID_CAMERA,
   PERMISSION_ID_LOCATION,
@@ -50,7 +49,6 @@ jest.mock('../../helpers', () => ({
     },
   },
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
-  hasWebBridgeCore: jest.fn().mockReturnValue(false),
 }));
 
 const mockedLogGroup = jest.fn();
@@ -243,17 +241,20 @@ describe('AppPermissionsRequest', () => {
     });
 
     it('should mock the response for a getAppPermissions request when no SGJavaScriptBridge is present', async () => {
-      hasSGJavaScriptBridge.mockReturnValueOnce(false);
+      const mock = jest.fn().mockResolvedValue(expected);
       const params = { permissionIds: [PERMISSION_ID_CAMERA, PERMISSION_ID_LOCATION] };
       instance.setCommandParams(params);
+      instance.setDispatchMock(mock);
 
       const response = await instance.dispatch();
       expect(response).toEqual(expected);
+      expect(mock).toHaveBeenCalledTimes(1);
+      expect(mock).toHaveBeenCalledWith(commandName, params);
       expect(parentDispatchSpy).not.toHaveBeenCalled();
     });
 
     it('should mock the response for a requestAppPermissions request when no SGJavaScriptBridge is present', async () => {
-      hasSGJavaScriptBridge.mockReturnValueOnce(false);
+      const mock = jest.fn().mockResolvedValue(expected);
       const params = {
         permissions: [{
           permissionId: PERMISSION_ID_CAMERA,
@@ -262,9 +263,12 @@ describe('AppPermissionsRequest', () => {
         }],
       };
       instance.setCommandParams(params);
+      instance.setDispatchMock(mock);
 
       const response = await instance.dispatch();
       expect(response).toEqual(expected);
+      expect(mock).toHaveBeenCalledTimes(1);
+      expect(mock).toHaveBeenCalledWith(commandName, params);
       expect(parentDispatchSpy).not.toHaveBeenCalled();
     });
   });

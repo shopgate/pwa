@@ -31,7 +31,7 @@ jest.mock('../../classes/GeolocationRequest', () => class Foo {
   }
 });
 
-describe('engage > core > actions > grantCameraPermissions', () => {
+describe('engage > core > actions > getGeolocation', () => {
   const dispatch = jest.fn(action => action);
 
   beforeEach(() => {
@@ -43,7 +43,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(position).toBe(mockedPosition);
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(grantGeolocationPermissions).toHaveBeenCalledTimes(1);
-    expect(grantGeolocationPermissions).toHaveBeenCalledWith({});
+    expect(grantGeolocationPermissions).toHaveBeenCalledWith({ resolveWithData: true });
     expect(mockedGeolocationRequestDispatch).toHaveBeenCalledTimes(1);
     expect(mockedGeolocationRequestConstructor).toHaveBeenCalledWith(!hasSGJavaScriptBridge());
   });
@@ -51,6 +51,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
   it('should pass through the options to the grantGeolocationPermissions action call', async () => {
     const options = {
       useSettingsModal: true,
+      resolveWithData: false,
       modal: {
         message: 'Modal message',
         confirm: 'Confirm label',

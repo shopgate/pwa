@@ -38,6 +38,8 @@ const mockedRequestAppPermissionsRequest = jest.fn()
       return this;
     };
 
+    this.setDispatchMock = () => this;
+
     this.dispatch = async (...args) => {
       mockedDispatch(...args);
 

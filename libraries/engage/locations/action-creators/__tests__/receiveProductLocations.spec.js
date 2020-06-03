@@ -9,6 +9,7 @@ describe('engage > locations > actions-creators', () => {
       type: RECEIVE_PRODUCT_LOCATIONS,
       productId: 'id123',
       locations: ['a', 'b', 'c'],
+      params: {},
     });
     expect(result).toMatchSnapshot();
   });

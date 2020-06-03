@@ -2,9 +2,8 @@ import Request from '../Request';
 import AppCommand from '../AppCommand';
 import event from '../Event';
 import requestBuffer from '../RequestBuffer';
-import { logger, hasSGJavaScriptBridge, hasWebBridgeCore } from '../../helpers';
+import { logger } from '../../helpers';
 import logGroup from '../../helpers/logGroup';
-import createMockedPermissions from './helpers/createMockedPermissions';
 
 /**
  * The AppPermissionsRequest class is be base class for app permission related request.
@@ -24,6 +23,7 @@ class AppPermissionsRequest extends Request {
     this.eventName = eventName;
 
     this.commandParams = null;
+    this.dispatchMock = null;
 
     this.libVersion = '18.0';
     this.createSerial(this.commandName);
@@ -38,6 +38,17 @@ class AppPermissionsRequest extends Request {
    */
   setCommandParams(commandParams) {
     this.commandParams = commandParams;
+    return this;
+  }
+
+  /**
+   * Sets a mock for the dispatch method
+   * @private
+   * @param {Function} dispatchMock The dispatch mock
+   * @returns {AppPermissionsRequest}
+   */
+  setDispatchMock(dispatchMock = null) {
+    this.dispatchMock = dispatchMock;
     return this;
   }
 
@@ -130,9 +141,8 @@ class AppPermissionsRequest extends Request {
    * @return {Promise} A promise that is fulfilled when a response is received for this request.
    */
   dispatch() {
-    if (!hasSGJavaScriptBridge() || hasWebBridgeCore()) {
-      // Use mocked permission in browser environments.
-      return createMockedPermissions(this.commandName, this.commandParams);
+    if (typeof this.dispatchMock === 'function') {
+      return this.dispatchMock(this.commandName, this.commandParams);
     }
 
     return super.dispatch();

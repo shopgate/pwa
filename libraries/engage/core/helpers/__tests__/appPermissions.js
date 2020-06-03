@@ -1,7 +1,7 @@
 import {
   COMMAND_GET_APP_PERMISSIONS,
   COMMAND_REQUEST_APP_PERMISSIONS,
-} from '../../../constants/AppCommands';
+} from '@shopgate/pwa-core/constants/AppCommands';
 
 import {
   PERMISSION_ID_CAMERA,
@@ -9,8 +9,8 @@ import {
   STATUS_GRANTED,
   STATUS_DENIED,
   STATUS_NOT_DETERMINED,
-} from '../../../constants/AppPermissions';
-import createMockedPermissions from './createMockedPermissions';
+} from '@shopgate/pwa-core/constants/AppPermissions';
+import { createMockedPermissions } from '../appPermissions';
 
 /* eslint-disable extra-rules/no-single-line-objects */
 const expectedDefault = [
@@ -20,10 +20,16 @@ const expectedDefault = [
 /* eslint-enable extra-rules/no-single-line-objects */
 
 describe('Create mocked permissions helper for App permissions', () => {
+  let instance;
+
+  beforeEach(() => {
+    instance = createMockedPermissions(STATUS_GRANTED);
+  });
+
   describe('Browser APIs not available', () => {
     it('should mock permissions for a getAppPermissions call', async () => {
       const params = { permissionIds: [PERMISSION_ID_CAMERA, PERMISSION_ID_LOCATION] };
-      const result = await createMockedPermissions(COMMAND_GET_APP_PERMISSIONS, params);
+      const result = await instance(COMMAND_GET_APP_PERMISSIONS, params);
       expect(result).toEqual(expectedDefault);
     });
 
@@ -36,7 +42,7 @@ describe('Create mocked permissions helper for App permissions', () => {
         }],
       };
 
-      const result = await createMockedPermissions(COMMAND_REQUEST_APP_PERMISSIONS, params);
+      const result = await instance(COMMAND_REQUEST_APP_PERMISSIONS, params);
       expect(result).toEqual(expectedDefault);
     });
   });
@@ -64,7 +70,7 @@ describe('Create mocked permissions helper for App permissions', () => {
         ];
         /* eslint-enable extra-rules/no-single-line-objects */
         const params = { permissionIds: [PERMISSION_ID_CAMERA] };
-        const result = await createMockedPermissions(COMMAND_GET_APP_PERMISSIONS, params);
+        const result = await instance(COMMAND_GET_APP_PERMISSIONS, params);
         expect(result).toEqual(expected);
         expect(query).not.toHaveBeenCalled();
         expect(getCurrentPosition).not.toHaveBeenCalled();
@@ -78,7 +84,7 @@ describe('Create mocked permissions helper for App permissions', () => {
         ];
         /* eslint-enable extra-rules/no-single-line-objects */
         const params = { permissionIds: [PERMISSION_ID_CAMERA, PERMISSION_ID_LOCATION] };
-        const result = await createMockedPermissions(COMMAND_GET_APP_PERMISSIONS, params);
+        const result = await instance(COMMAND_GET_APP_PERMISSIONS, params);
         expect(result).toEqual(expected);
         expect(query).toHaveBeenCalledTimes(1);
         expect(query).toHaveBeenCalledWith({ name: 'geolocation' });
@@ -98,7 +104,7 @@ describe('Create mocked permissions helper for App permissions', () => {
             permissionId: PERMISSION_ID_CAMERA,
           }],
         };
-        const result = await createMockedPermissions(COMMAND_REQUEST_APP_PERMISSIONS, params);
+        const result = await instance(COMMAND_REQUEST_APP_PERMISSIONS, params);
         expect(result).toEqual(expected);
         expect(query).not.toHaveBeenCalled();
         expect(query).not.toHaveBeenCalled();
@@ -113,7 +119,7 @@ describe('Create mocked permissions helper for App permissions', () => {
           }],
         };
 
-        const result = await createMockedPermissions(COMMAND_REQUEST_APP_PERMISSIONS, params);
+        const result = await instance(COMMAND_REQUEST_APP_PERMISSIONS, params);
         expect(result).toEqual(expectedDefault);
         expect(getCurrentPosition).toHaveBeenCalledTimes(1);
         expect(query).not.toHaveBeenCalled();
@@ -139,7 +145,7 @@ describe('Create mocked permissions helper for App permissions', () => {
           }],
         };
 
-        const result = await createMockedPermissions(COMMAND_REQUEST_APP_PERMISSIONS, params);
+        const result = await instance(COMMAND_REQUEST_APP_PERMISSIONS, params);
         expect(result).toEqual(expected);
         expect(getCurrentPosition).toHaveBeenCalledTimes(1);
         expect(query).not.toHaveBeenCalled();

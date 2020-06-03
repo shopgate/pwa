@@ -3,6 +3,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   SET_USER_SEARCH_COUNTRY_CODE,
   SET_USER_SEARCH_POSTAL_CODE,
+  SET_USER_SEARCH_SUCCESS,
 } from '../constants';
 import type { SetUserSearchCountryCodeActionType } from '../action-creators/setUserSearchCountryCode';
 import type { SetUserSearchPostalCodeActionType } from '../action-creators/setUserSearchPostalCode';
@@ -10,12 +11,14 @@ import type { SetUserSearchPostalCodeActionType } from '../action-creators/setUs
 export type UserSearchStateType = {
   postalCode: string | null,
   countryCode: string,
+  success: boolean | null
 };
 
 export const defaultState: UserSearchStateType = {
   // NULL as postalCode indicates that the store search shall use search by geolocation as strategy.
   postalCode: null,
   countryCode: appConfig.marketId,
+  success: null,
 };
 
 /**
@@ -38,6 +41,11 @@ export default function search(
       return {
         ...state,
         postalCode: action.postalCode,
+      };
+    case SET_USER_SEARCH_SUCCESS:
+      return {
+        ...state,
+        success: action.success,
       };
     default:
       return state;

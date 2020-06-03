@@ -7,7 +7,7 @@ Object {
     "b",
     "c",
   ],
-  "params": undefined,
+  "params": Object {},
   "productId": "id123",
   "type": "RECEIVE_PRODUCT_LOCATIONS",
 }

@@ -24,6 +24,7 @@ jest.mock('@shopgate/pwa-core/commands/appPermissions', () => ({
 }));
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => jest.fn());
 jest.mock('@shopgate/pwa-core/helpers', () => ({
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
   logger: {
     error: jest.fn(),
   },
@@ -71,7 +72,7 @@ describe('engage > core > actions > grantPermissions', () => {
     const granted = await grantPermissions({ permissionId })(dispatch);
 
     expect(granted).toBe(true);
-    expect(getAppPermissions).toHaveBeenCalledWith([permissionId]);
+    expect(getAppPermissions).toHaveBeenCalledWith([permissionId], undefined);
     expect(requestAppPermissions).not.toHaveBeenCalled();
     expect(dispatch).not.toHaveBeenCalled();
     expect(openAppSettings).not.toHaveBeenCalled();
@@ -94,7 +95,7 @@ describe('engage > core > actions > grantPermissions', () => {
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
-    expect(getAppPermissions).toHaveBeenCalledWith([permissionId]);
+    expect(getAppPermissions).toHaveBeenCalledWith([permissionId], undefined);
     expect(requestAppPermissions).not.toHaveBeenCalled();
     expect(dispatch).not.toHaveBeenCalled();
     expect(openAppSettings).not.toHaveBeenCalled();
@@ -107,8 +108,8 @@ describe('engage > core > actions > grantPermissions', () => {
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(true);
-    expect(getAppPermissions).toHaveBeenCalledWith([permissionId]);
-    expect(requestAppPermissions).toHaveBeenCalledWith([{ permissionId }]);
+    expect(getAppPermissions).toHaveBeenCalledWith([permissionId], undefined);
+    expect(requestAppPermissions).toHaveBeenCalledWith([{ permissionId }], undefined);
     expect(dispatch).not.toHaveBeenCalled();
     expect(openAppSettings).not.toHaveBeenCalled();
     expect(event.addCallbackSpy).not.toHaveBeenCalled();

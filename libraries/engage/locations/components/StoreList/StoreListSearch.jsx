@@ -85,7 +85,15 @@ function StoreListSearch({
     setLoading(true);
 
     // Request new locations.
-    const error = await getProductLocations(product.id, searchParams, silent);
+    let error;
+
+    try {
+      await getProductLocations(product.id, searchParams, silent);
+    } catch (e) {
+      if (e.code === 'ENOTFOUND') {
+        error = 'locations.error_invalid_zip_code';
+      }
+    }
 
     if (isMounted.current === false) {
       return;

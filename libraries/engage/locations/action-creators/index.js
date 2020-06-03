@@ -5,6 +5,7 @@ export { default as storeFormInput } from './storeFormInput';
 export { default as storeFulfillmentMethod } from './storeFulfillmentMethod';
 export { default as setUserSearchPostalCode } from './setUserSearchPostalCode';
 export { default as setUserSearchCountryCode } from './setUserSearchCountryCode';
+export { default as setUserSearchSuccess } from './setUserSearchSuccess';
 export { default as errorProductLocations } from './errorProductLocations';
 export { default as receiveLocations } from './receiveLocations';
 export { default as receiveProductLocations } from './receiveProductLocations';

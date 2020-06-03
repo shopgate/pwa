@@ -12,6 +12,7 @@ import {
 } from '@shopgate/engage/product';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Reviews from 'Components/Reviews';
+import { DESKTOP_MENU_BAR_HEIGHT } from '../../../../constants';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
 import Header from '../Header';
@@ -44,6 +45,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     borderLeft: `1px solid ${colors.shade7}`,
+    minHeight: `calc(100vh - ${DESKTOP_MENU_BAR_HEIGHT}px)`,
+    paddingTop: 16,
+    margin: '-32px 0 -32px 0',
   }).toString(),
   extraPrice: css({
     padding: 16,
