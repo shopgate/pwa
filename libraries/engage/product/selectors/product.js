@@ -3,10 +3,20 @@ import {
   getProductPropertiesState,
   getProductId,
   getProduct,
+  getProducts,
   getProductDataById,
   getBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { filterProperties } from './helpers';
+
+/**
+ * Selects the is fetching state of the active product.
+ */
+export const getProductIsFetching = createSelector(
+  getProductId,
+  getProducts,
+  (productId, products) => products[productId]?.isFetching || false
+);
 
 /**
  * Creates the selector to get a product's properties from the state.

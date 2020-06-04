@@ -23,6 +23,7 @@ class CharacteristicSheet extends PureComponent {
     setViewAriaHidden: PropTypes.func.isRequired,
     contextRef: PropTypes.shape(),
     fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+    isFetching: PropTypes.bool,
     onClose: PropTypes.func,
     onSelect: PropTypes.func,
     productId: PropTypes.string,
@@ -38,6 +39,7 @@ class CharacteristicSheet extends PureComponent {
     selectedValue: null,
     contextRef: null,
     selection: null,
+    isFetching: false,
   };
 
   firstSelectableItemRef = React.createRef();
@@ -76,8 +78,8 @@ class CharacteristicSheet extends PureComponent {
    * @return {React.Component|null}
    */
   renderAvailability = (value) => {
-    const { fulfillmentMethods } = this.props;
-    if (fulfillmentMethods) {
+    const { fulfillmentMethods, isFetching } = this.props;
+    if (fulfillmentMethods || isFetching) {
       return null;
     }
 
@@ -159,7 +161,7 @@ const SheetComponent = props => (
   <ViewContext.Consumer>
     {({ setAriaHidden }) => (
       <ProductContext.Consumer>
-        {({ productId, fulfillmentMethods }) => (
+        {({ productId, fulfillmentMethods, isFetching }) => (
           <VariantContext.Consumer>
             {({ characteristics }) => (
               <CharacteristicSheet
@@ -167,6 +169,7 @@ const SheetComponent = props => (
                 selection={characteristics}
                 setViewAriaHidden={setAriaHidden}
                 fulfillmentMethods={fulfillmentMethods}
+                isFetching={isFetching}
                 {...props}
               />
             )}
