@@ -5,6 +5,7 @@ import showTab from '@shopgate/pwa-core/commands/showTab';
 import { openPageExtern } from '@shopgate/pwa-core';
 import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import authRoutes from '../../collections/AuthRoutes';
 
@@ -186,7 +187,7 @@ export const handleAppRedirect = (historyAction, state) => {
 export const openExternalLink = (location, historyAction, state, locationState = {}) => {
   const { target } = locationState;
 
-  if (!hasSGJavaScriptBridge()) {
+  if (!hasSGJavaScriptBridge() || hasWebBridge()) {
     window.open(location, '_blank');
     handleAppRedirect(historyAction, state);
     return;

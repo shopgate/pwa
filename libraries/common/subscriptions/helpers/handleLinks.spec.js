@@ -1,4 +1,6 @@
 import { openPageExtern, openPage } from '@shopgate/pwa-core';
+import { hasWebBridge } from '@shopgate/engage/core';
+import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { isShopLink, sanitizeLink, openExternalLink } from './handleLinks';
 
 jest.mock('@shopgate/pwa-core', () => ({
@@ -14,10 +16,26 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
   logger: {
     warn: jest.fn(),
   },
-  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+  hasSGJavaScriptBridge: jest.fn(),
+}));
+jest.mock('@shopgate/engage/core', () => ({
+  hasWebBridge: jest.fn(),
 }));
 
+global.window.open = jest.fn();
+
 describe('handleLinks helpers', () => {
+  beforeAll(() => {
+    hasWebBridge.mockReturnValue(false);
+    hasSGJavaScriptBridge.mockReturnValue(true);
+    delete window.open;
+    window.open = jest.fn();
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('isShopLink()', () => {
     const positives = [
       'http://foo.shopgate.com',
@@ -77,8 +95,9 @@ describe('handleLinks helpers', () => {
   });
 
   describe('openExternalLink', () => {
+    const location = 'http://m.me/shopgate';
+
     it('should call openPageExtern', () => {
-      const location = 'http://m.me/shopgate';
       openExternalLink(
         location,
         'ACTION',
@@ -87,6 +106,34 @@ describe('handleLinks helpers', () => {
       );
       expect(openPageExtern).toBeCalledTimes(1);
       expect(openPageExtern).toBeCalledWith({ src: location });
+      expect(openPage).not.toBeCalled();
+    });
+
+    it('should call window.open when the web bridge is active', () => {
+      hasWebBridge.mockReturnValueOnce(true);
+      openExternalLink(
+        location,
+        'ACTION',
+        { router: { currentRoute: { pathname: '' } } }
+      );
+
+      expect(window.open).toBeCalledTimes(1);
+      expect(window.open).toBeCalledWith(location, '_blank');
+      expect(openPageExtern).not.toBeCalled();
+      expect(openPage).not.toBeCalled();
+    });
+
+    it('should call window.open when the SGJavascriptBridge is active', () => {
+      hasSGJavaScriptBridge.mockReturnValueOnce(false);
+      openExternalLink(
+        location,
+        'ACTION',
+        { router: { currentRoute: { pathname: '' } } }
+      );
+
+      expect(window.open).toBeCalledTimes(1);
+      expect(window.open).toBeCalledWith(location, '_blank');
+      expect(openPageExtern).not.toBeCalled();
       expect(openPage).not.toBeCalled();
     });
   });

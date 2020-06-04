@@ -51,11 +51,14 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
 }));
 
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
+jest.mock('@shopgate/engage/core', () => ({
+  hasWebBridge: jest.fn().mockReturnValue(false),
+}));
 jest.mock('../actions/router', () => ({
   historyRedirect: jest.fn(),
 }));
 jest.mock('../selectors/router', () => ({
-  ...require.requireActual('../selectors//router'),
+  ...require.requireActual('../selectors/router'),
   getRouterStackIndex: jest.fn().mockReturnValue(0),
 }));
 jest.mock('../selectors/client', () => ({
