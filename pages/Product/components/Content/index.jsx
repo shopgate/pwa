@@ -36,6 +36,7 @@ class ProductContent extends PureComponent {
     // eslint-disable-next-line react/no-unused-prop-types
     isVariant: PropTypes.bool,
     productId: PropTypes.string,
+    productIsFetching: PropTypes.bool,
     variantId: PropTypes.string,
   };
 
@@ -46,6 +47,7 @@ class ProductContent extends PureComponent {
     isVariant: false,
     productId: null,
     variantId: null,
+    productIsFetching: false,
   };
 
   /**
@@ -150,6 +152,7 @@ class ProductContent extends PureComponent {
     const contextValue = {
       ...this.state,
       ...this.baseContextValue,
+      isFetching: this.props.productIsFetching,
       setOption: this.setOption,
       quantity: this.state.quantity,
       setQuantity: this.setQuantity,
