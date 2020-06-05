@@ -245,13 +245,6 @@ class Ripple extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (this.props.disabled) {
-      this.style = this.style === null ? { cursor: 'not-allowed' } : {
-        ...this.style,
-        cursor: 'not-allowed',
-      };
-    }
-
     /* eslint-disable jsx-a11y/click-events-have-key-events,
     jsx-a11y/no-static-element-interactions */
     return (

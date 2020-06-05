@@ -16,14 +16,12 @@ const button = css({
   transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   margin: '16px 0px 16px 16px',
   padding: `${(variables.gap.big * 0.75) - 1}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75) + 1}px`,
-  ':disabled': {
-    cursor: 'not-allowed',
-  },
 });
 
 const disabled = css(button, {
   background: colors.shade5,
   color: colors.light,
+  cursor: 'not-allowed',
 });
 
 export default {
