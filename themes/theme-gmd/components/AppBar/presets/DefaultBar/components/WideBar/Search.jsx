@@ -31,6 +31,7 @@ const styles = {
     outline: 0,
     color: '#5C5C5C',
     padding: 0,
+    cursor: 'pointer',
   }).toString(),
 };
 
@@ -55,8 +56,14 @@ const Search = ({ search, routeSearchPhrase }) => {
   }, []);
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
-    search(searchPhrase);
-  }, [search, searchPhrase]);
+    const currentSearchPhrase = searchPhrase.trim();
+
+    if (currentSearchPhrase.length === 0 || currentSearchPhrase === routeSearchPhrase) {
+      return;
+    }
+
+    search(currentSearchPhrase);
+  }, [routeSearchPhrase, search, searchPhrase]);
   useEffect(() => {
     if (routeSearchPhrase !== null) {
       setSearchPhrase(routeSearchPhrase);
@@ -74,7 +81,7 @@ const Search = ({ search, routeSearchPhrase }) => {
           className={styles.input}
           placeholder={i18n.text('search.placeholder')}
         />
-        <div className={styles.icon}>
+        <div aria-hidden className={styles.icon} onClick={handleSubmit} onKeyPress={handleSubmit}>
           <MagnifierIcon />
         </div>
       </div>
