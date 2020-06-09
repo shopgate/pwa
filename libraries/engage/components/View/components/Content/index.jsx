@@ -75,7 +75,7 @@ class ViewContent extends Component {
     const { scrollTop } = this.context.state;
 
     if (this.ref.current === window) {
-      window.scrollTo(0, scrollTop);
+      window.scrollTo(0, scrollTop || 0);
     } else {
       this.ref.current.scrollTop = scrollTop;
     }
