@@ -73,6 +73,7 @@ class ProductImageSlider extends Component {
     let content;
     let onClick = this.handleOpenGallery;
     let onKeyDown = this.handleOpenGallery;
+    let { featuredImageBaseUrl: backgroundImage } = product || {};
 
     if (product && Array.isArray(images) && images.length > 1) {
       content = (
@@ -94,6 +95,7 @@ class ProductImageSlider extends Component {
           ))}
         </Swiper>
       );
+      ([backgroundImage] = images);
     }
 
     if (!content) {
@@ -109,8 +111,8 @@ class ProductImageSlider extends Component {
       onKeyDown = noop;
     }
 
-    const imageStyle = product ? {
-      background: `url(${getFullImageSource(product.featuredImageBaseUrl, pdpResolutions[pdpResolutions.length - 1])})`,
+    const imageStyle = backgroundImage ? {
+      background: `url(${getFullImageSource(backgroundImage, pdpResolutions[pdpResolutions.length - 1])})`,
       backgroundSize: 'contain',
       transform: 'translate3d(0, 0, 0)',
     } : null;
