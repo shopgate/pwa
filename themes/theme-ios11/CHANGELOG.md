@@ -1,5 +1,15 @@
 # Changelog
 
+## [v6.13.3](https://github.com/shopgate/pwa/compare/v6.13.2...v6.13.3) (2020-06-10)
+
+#### :rocket: Enhancement
+* [#1013](https://github.com/shopgate/pwa/pull/1013) AddToCart button from ui-shared checks for success before show checkmark ([@Carsten89](https://github.com/Carsten89))
+* [#1012](https://github.com/shopgate/pwa/pull/1012) Make iOS tabbar labels visibility configurable ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1014](https://github.com/shopgate/pwa/pull/1014) Set correct image for pdp background ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.13.0](https://github.com/shopgate/pwa/compare/v6.12.3...v6.13.0) (2020-04-29)
 
 #### :rocket: Enhancement
