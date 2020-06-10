@@ -1,6 +1,6 @@
 import { main$ } from '@shopgate/pwa-common/streams';
 import { Observable } from 'rxjs/Observable';
-import { cartReceived$ } from '@shopgate/engage/cart';
+import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import { SUBMIT_RESERVATION_SUCCESS, RECEIVE_PRODUCT_LOCATIONS } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 
