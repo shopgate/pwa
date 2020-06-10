@@ -54,6 +54,7 @@ import {
   CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
+import { ORDER_DETAILS_PATTERN } from '@shopgate/engage/orders';
 import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
@@ -61,6 +62,7 @@ import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import ForgotPassword from './ForgotPassword';
 import Register from './Register';
+import OrderDetails from './OrderDetails';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
@@ -76,6 +78,7 @@ const sideNavigationBlacklist = [
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
   CHECKOUT_BILLING_PATTERN,
+  ORDER_DETAILS_PATTERN,
 ];
 
 /**
@@ -181,6 +184,10 @@ const Pages = ({ store }) => (
                     <Route
                       pattern={FORGOT_PASSWORD_PATTERN}
                       component={ForgotPassword}
+                    />
+                    <Route
+                      pattern={ORDER_DETAILS_PATTERN}
+                      component={OrderDetails}
                     />
                     {React.Children.map(routePortals, Component => Component)}
                   </Router>
