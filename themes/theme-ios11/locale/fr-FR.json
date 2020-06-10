@@ -24,7 +24,8 @@
     "checkout": "Checkout",
     "checkout_confirmation": "Order Successful",
     "checkout_change_billing": "Change Billing Address",
-    "register": "Register"
+    "register": "Register",
+    "order_details": "Order Details"
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
@@ -218,6 +219,10 @@
     "items": "Items",
     "price": "Price",
     "quantity": "Qty",
+    "fulfilled_quantity": "Fulfilled Qty",
+    "ordered_quantity": "Ordered Qty",
+    "location": "Location",
+    "status": "Status",
     "remove_item": "Remove item",
     "subtotal": "Sous-total",
     "total": "Panier Total",
@@ -411,6 +416,45 @@
       "address": "Address",
       "payment_method": "Payment Method",
       "continue": "Continue shopping"
+    }
+  },
+  "order": {
+    "status": {
+      "order": {
+        "submitted": "Submitted",
+        "inProgress": "In Progress",
+        "ready": "Ready",
+        "completed": "Completed",
+        "canceled": "Canceled"
+      },
+      "line_item": {
+        "pending": "Pending",
+        "unavailable": "Unavailable",
+        "canceled": "Canceled",
+        "fulfilled": "Fulfilled",
+        "substituted": "Substituted",
+        "replaced": "Replaced"
+      }
+    }
+  },
+  "order_details": {
+    "pickup_location": {
+      "headline": "Pickup Location",
+      "address": "Address",
+      "phone_number": "Phone"
+    },
+    "subline": {
+      "order_number": "Your Order Number is: {orderNumber}",
+      "order_status": "Status: {status}"
+    },
+    "authenticate": {
+      "instructions": "Please authenticate with the e-mail address and phone number from your order.",
+      "or_login": "Or login."
+    },
+    "errors": {
+      "authenticate": "E-Mail address and phone number do not match with this order.",
+      "authorize": "This order doesn't belong to your account.",
+      "not_found": "Order not found."
     }
   },
   "registration": {

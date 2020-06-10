@@ -1,19 +1,24 @@
 import React, { Fragment } from 'react';
 import { css } from 'glamor';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Card } from '@shopgate/engage/components';
+import { Card, TextLink } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
 const { colors, variables } = themeConfig;
 const styles = {
+  wrapper: css({
+    padding: `${variables.gap.bigger}px ${variables.gap.big}px 0 ${variables.gap.big}px`,
+  }).toString(),
   headline: css({
     color: colors.shade3,
     fontSize: '1rem',
     fontWeight: 'normal',
     textTransform: 'uppercase',
-    margin: `${variables.gap.bigger}px ${variables.gap.big}px ${variables.gap.small}px ${variables.gap.big}px`,
+    paddingBottom: variables.gap.small,
+    margin: 0,
     ...(!isIOSTheme() ? {
       fontSize: '1.25rem',
       lineHeight: '1.5rem',
@@ -22,17 +27,21 @@ const styles = {
       textTransform: 'none',
     } : {}),
   }),
+  link: css({
+    color: `var(--color-primary, ${colors.primary}) !important`,
+  }).toString(),
   card: css({
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-    margin: `0 ${variables.gap.big}px 0 ${variables.gap.big}px`,
+    margin: 0,
     padding: variables.gap.big,
     color: 'var(--color-text-medium-emphasis)',
+    flex: '1 0 auto',
     ...(!isIOSTheme() ? {
       background: 'var(--color-background-accent)',
       boxShadow: 'none',
     } : {}),
-  }),
+  }).toString(),
   cardWithForm: css({
     ...(!isIOSTheme() ? {
       background: 'inherit',
@@ -87,7 +96,7 @@ const styles = {
  * @returns {JSX}
  */
 const CheckoutConfirmationSegment = ({
-  title, content, hasForm, isSummary,
+  title, content, hasForm, isSummary, className,
 }) => {
   if (!content) {
     return null;
@@ -97,38 +106,56 @@ const CheckoutConfirmationSegment = ({
 
   return (
     <Fragment>
-      <h3 className={styles.headline}>{i18n.text(title)}</h3>
-      <Card className={`${hasForm && styles.cardWithForm.toString()} ${styles.card.toString()}`}>
-        {isString && (<span>{content}</span>)}
-        {!isString && !isSummary && (
+      <div className={classNames(styles.wrapper, className)}>
+        <h3 className={styles.headline}>{i18n.text(title)}</h3>
+        <Card className={classNames(styles.card, {
+          [styles.cardWithForm]: hasForm,
+        })}
+        >
+          {isString && (<span>{content}</span>)}
+          {!isString && !isSummary && (
           <dl className={styles.list}>
-            {content.map(({ label, text }) => (
-              <Fragment key={label}>
-                <dt className={styles.listTitle}>{label}</dt>
-                <dd className={styles.listEntry}>{text}</dd>
+            {content.map(({ label, text, link }) => (
+              <Fragment key={label || text}>
+                { label && (
+                  <dt className={styles.listTitle}>{i18n.text(label)}</dt>
+                )}
+                { link ? (
+                  <dd className={styles.listEntry}>
+                    <TextLink href={link} className={styles.link}>
+                      <span dangerouslySetInnerHTML={{ __html: text }} />
+                    </TextLink>
+                  </dd>
+                ) : (
+                  <dd className={styles.listEntry} dangerouslySetInnerHTML={{ __html: text }} />
+                )}
               </Fragment>
             ))}
           </dl>
-        )}
-        {isSummary && (
-          <table className={styles.table}>
-            <tbody>
-              {content.map(({ label, text }) => (
-                <tr key={label}>
-                  <td>{label}</td>
-                  <td>{text}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </Card>
+          )}
+          {isSummary && (
+            <table className={styles.table}>
+              <tbody>
+                {content.map(({ label, text }) => (
+                  <tr key={label || text}>
+                    { label && (
+                      <td>{i18n.text(label)}</td>
+                    )}
+                    <td dangerouslySetInnerHTML={{ __html: text }} />
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </Card>
+      </div>
     </Fragment>
   );
 };
 
 CheckoutConfirmationSegment.propTypes = {
   title: PropTypes.string.isRequired,
+  className: PropTypes.string,
   content: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.shape()),
     PropTypes.string,
@@ -141,6 +168,7 @@ CheckoutConfirmationSegment.defaultProps = {
   content: null,
   hasForm: false,
   isSummary: false,
+  className: null,
 };
 
 export default CheckoutConfirmationSegment;

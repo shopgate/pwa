@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import classNames from 'classnames';
 import {
   TextLink,
   SurroundPortals,
@@ -17,14 +18,17 @@ import {
 } from '@shopgate/engage/product';
 import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
 import { bin2hex } from '@shopgate/engage/core';
+import { getLineItemActiveStatus } from '@shopgate/engage/orders';
 import { CartContextMenuChangeFulfillment } from '@shopgate/engage/locations';
 import { CartItemProductPrice } from './CartItemProductPrice';
 import { CartItemProductLayoutWideRemoveItem } from './CartItemProductLayoutWideRemoveItem';
 import { CartItemProductLayoutWideFulfillmentLabel } from './CartItemProductLayoutWideFulfillmentLabel';
+import CartItemProductLayoutWideOrderDetails from './CartItemProductLayoutWideOrderDetails';
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import {
   container,
+  containerInactive,
   imageColumn,
   detailsColumn,
   productName,
@@ -44,7 +48,9 @@ import {
  * @returns {JSX}
  */
 const CartItemProductLayoutWide = () => {
-  const { merchantFulfillmentMethodsCount } = useCartItem();
+  const {
+    merchantFulfillmentMethodsCount, isOrderDetails,
+  } = useCartItem();
   const context = useCartItemProduct();
   const {
     cartItem,
@@ -56,10 +62,16 @@ const CartItemProductLayoutWide = () => {
   } = context;
 
   const hasUnitWithDecimals = product.unit && product.unit !== PRODUCT_UNIT_EACH;
+  const isActive = !isOrderDetails
+    ? true
+    : getLineItemActiveStatus(cartItem?.status, cartItem?.subStatus);
 
   return (
     <Fragment>
-      <div className={container}>
+      <div className={classNames(container, {
+        [containerInactive]: !isActive,
+      })}
+      >
         <div className={imageColumn}>
           <ProductImage src={product.featuredImageUrl} />
         </div>
@@ -88,7 +100,9 @@ const CartItemProductLayoutWide = () => {
             properties={product.properties}
             lineClamp={2}
           />
-          <CartItemProductLayoutWideFulfillmentLabel />
+          { !isOrderDetails && (
+            <CartItemProductLayoutWideFulfillmentLabel />
+          )}
         </div>
         <div className={column}>
           <CartItemProductPrice
@@ -104,11 +118,14 @@ const CartItemProductLayoutWide = () => {
           )}
           <CartItemProductPriceCaption />
         </div>
+        { isOrderDetails && (
+          <CartItemProductLayoutWideOrderDetails />
+        )}
         <div className={column}>
           { isEditable ? (
             <CartUnitQuantityPicker
               productId={product.id}
-              value={cartItem.quantity}
+              value={isOrderDetails ? cartItem.orderedQuantity : cartItem.quantity}
               unit={product.unit}
               onChange={handleUpdate}
               classNames={{
@@ -119,7 +136,7 @@ const CartItemProductLayoutWide = () => {
           ) : (
             <QuantityLabel
               className={quantityPickerDisabled}
-              value={cartItem.quantity}
+              value={isOrderDetails ? cartItem.orderedQuantity : cartItem.quantity}
               unit={hasUnitWithDecimals ? product.unit : null}
               maxDecimals={hasUnitWithDecimals ? 2 : 0}
             />

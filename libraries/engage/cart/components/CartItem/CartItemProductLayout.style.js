@@ -55,19 +55,34 @@ const properties = css({
   wordBreak: 'break-word',
   alignSelf: 'flex-start',
   fontSize: '0.875rem',
-  color: colors.shade9,
+  color: `var(--color-text-low-emphasis, ${colors.shade9})`,
   lineHeight: 1.3,
   /**
    * When the properties column has content, apply a max width to the price column
    * to avoid issues with long availability texts.
    */
   [`:not(:empty) + .${price}`]: {
+    textAlign: 'right',
     maxWidth: '40%',
   },
 }).toString();
 
+const itemInactive = css({
+  ' *': {
+    color: 'var(--color-text-low-emphasis) !important',
+  },
+  [` .${image}`]: {
+    opacity: 0.7,
+  },
+}).toString();
+
+const orderDetailsSubtotalLabel = css({
+  color: `var(--color-text-low-emphasis, ${colors.shade9})`,
+}).toString();
+
 export default {
   item,
+  itemInactive,
   leftColumn,
   image,
   content,
@@ -76,4 +91,5 @@ export default {
   priceInfo,
   price,
   properties,
+  orderDetailsSubtotalLabel,
 };

@@ -8,7 +8,7 @@ import CheckoutConfirmationSection from './CheckoutConfirmationSection';
  * CheckoutConfirmationBilledTo component
  * @returns {JSX}
  */
-const CheckoutConfirmationBilledTo = ({ order }) => {
+const CheckoutConfirmationBilledTo = ({ order, className }) => {
   const content = useMemo(() => {
     const billing = order.addressSequences.find(address => address.type === 'billing');
     const {
@@ -24,7 +24,7 @@ const CheckoutConfirmationBilledTo = ({ order }) => {
       `${firstName} ${lastName}`,
       `${address1 || ''}`,
       `${city ? `${city},` : ''} ${city && region ? region : ''} ${postalCode || ''}`,
-    ].filter(Boolean).join('\n\r');
+    ].filter(Boolean).join('\n');
 
     return [
       ...(hasPayment ? [
@@ -48,12 +48,21 @@ const CheckoutConfirmationBilledTo = ({ order }) => {
   }, [order]);
 
   return (
-    <CheckoutConfirmationSection title="checkout.success.billed_to" content={content} />
+    <CheckoutConfirmationSection
+      title="checkout.success.billed_to"
+      content={content}
+      className={className}
+    />
   );
 };
 
 CheckoutConfirmationBilledTo.propTypes = {
   order: PropTypes.shape().isRequired,
+  className: PropTypes.string,
+};
+
+CheckoutConfirmationBilledTo.defaultProps = {
+  className: null,
 };
 
 export default CheckoutConfirmationBilledTo;

@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
+import classNames from 'classnames';
 import {
-  Grid, Link, TextLink, ProductProperties, PriceInfo, SurroundPortals, ConditionalWrapper,
+  Grid, Link, TextLink, ProductProperties, PriceInfo, SurroundPortals, ConditionalWrapper, I18n,
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
@@ -11,9 +12,11 @@ import {
   CartItemProductChangeLocation,
   CartChangeFulfillmentMethod,
 } from '@shopgate/engage/locations';
+import { getLineItemActiveStatus } from '@shopgate/engage/orders';
 import { CartItemQuantityPicker } from './CartItemQuantityPicker';
 import { CartItemProductTitle } from './CartItemProductTitle';
 import { CartItemProductPrice } from './CartItemProductPrice';
+import CartItemProductOrderDetails from './CartItemProductOrderDetails';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import styles from './CartItemProductLayout.style';
 
@@ -22,7 +25,7 @@ import styles from './CartItemProductLayout.style';
  * @returns {JSX}
  */
 export function CartItemProductLayout() {
-  const { registerFulfillmentAction } = useCartItem();
+  const { registerFulfillmentAction, isOrderDetails } = useCartItem();
   const context = useCartItemProduct();
   const {
     cartItem,
@@ -34,9 +37,16 @@ export function CartItemProductLayout() {
     isEditable,
   } = context;
 
+  const isActive = !isOrderDetails
+    ? true
+    : getLineItemActiveStatus(cartItem?.status, cartItem?.subStatus);
+
   return (
     <React.Fragment>
-      <Grid className={styles.item}>
+      <Grid className={classNames(styles.item, {
+        [styles.itemInactive]: !isActive,
+      })}
+      >
         <Grid.Item className={styles.content} grow={1}>
           <ConditionalWrapper
             condition={isEditable}
@@ -51,8 +61,14 @@ export function CartItemProductLayout() {
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
               <ProductProperties properties={product.properties} lineClamp={2} />
+              { isOrderDetails && (
+                <CartItemProductOrderDetails />
+              )}
             </Grid.Item>
             <Grid.Item grow={1} className={styles.price}>
+              { isOrderDetails && (
+                <I18n.Text string="cart.subtotal" className={styles.orderDetailsSubtotalLabel} />
+              )}
               <CartItemProductPrice
                 currency={currency}
                 defaultPrice={product.price.default}
@@ -87,14 +103,16 @@ export function CartItemProductLayout() {
               </SurroundPortals>
             </ConditionalWrapper>
           </div>
-          <CartItemQuantityPicker
-            unit={product.unit}
-            quantity={cartItem.quantity}
-            editMode={editMode}
-            onChange={handleUpdate}
-            onToggleEditMode={toggleEditMode}
-            disabled={!isEditable}
-          />
+          { !isOrderDetails && (
+            <CartItemQuantityPicker
+              unit={product.unit}
+              quantity={cartItem.quantity}
+              editMode={editMode}
+              onChange={handleUpdate}
+              onToggleEditMode={toggleEditMode}
+              disabled={!isEditable}
+            />
+          )}
         </Grid.Item>
       </Grid>
       <CartItemProductChangeLocation

@@ -9,9 +9,12 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
   const {
     code: id,
     quantity,
+    orderedQuantity = null,
     salePrice,
     price: lineItemPrice,
     product,
+    status,
+    subStatus,
     fulfillmentMethod,
     fulfillmentLocationCode,
   } = lineItem;
@@ -64,9 +67,12 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
   return {
     id,
     quantity,
+    orderedQuantity,
     coupon,
     messages,
     type: 'product',
+    status,
+    subStatus,
     product: {
       id: productCode,
       featuredImageUrl,

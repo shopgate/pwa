@@ -21,6 +21,7 @@ export const column = css({
   flexGrow: 1,
   flexBasis: 0,
   padding: `0 ${variables.gap.small}px`,
+  textAlign: 'center',
   ':last-child': {
     paddingRight: variables.gap.small,
   },
@@ -37,7 +38,11 @@ export const detailsColumn = css(column, {
   flexShrink: 1,
   flexGrow: 3,
   alignItems: 'flex-start',
-  padding: 0,
+  padding: `0 ${variables.gap.small}px`,
+});
+
+export const locationColumn = css(column, {
+  flexGrow: 2,
 });
 
 export const quantityPickerColumn = css(column, {

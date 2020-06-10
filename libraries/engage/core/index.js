@@ -6,7 +6,7 @@ import {
   parseQueryStringToObject,
   parseObjectToQueryString,
 } from '@shopgate/pwa-common/helpers/router';
-import { INDEX_PATH, INDEX_PATH_DEEPLINK } from '@shopgate/pwa-common/constants/RoutePaths';
+import { INDEX_PATH, INDEX_PATH_DEEPLINK, LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
 // --------------- CORE --------------- //
 
@@ -74,7 +74,7 @@ export * from '@shopgate/pwa-common/constants/Device';
 export * from '@shopgate/pwa-common/constants/DisplayOptions';
 export * from '@shopgate/pwa-common/constants/Pipelines';
 export * from '@shopgate/pwa-common/constants/Portals';
-export { INDEX_PATH, INDEX_PATH_DEEPLINK };
+export { INDEX_PATH, INDEX_PATH_DEEPLINK, LOGIN_PATH };
 export * from './constants/geolocationRequest';
 
 // Emitters
@@ -308,4 +308,6 @@ export {
   SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB,
+  EUNAUTHORIZED,
+  EAUTHENTICATION,
 } from './constants';

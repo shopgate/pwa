@@ -7,7 +7,7 @@ import CheckoutConfirmationSection from './CheckoutConfirmationSection';
  * CheckoutConfirmationPickUpContact component
  * @returns {JSX}
  */
-const CheckoutConfirmationPickUpContact = ({ order }) => {
+const CheckoutConfirmationPickUpContact = ({ order, className }) => {
   const content = useMemo(() => {
     const pickup = order.addressSequences.find(address => address.type === 'pickup');
     const {
@@ -42,12 +42,21 @@ const CheckoutConfirmationPickUpContact = ({ order }) => {
   }, [order]);
 
   return (
-    <CheckoutConfirmationSection title="checkout.success.pick_up_contact" content={content} />
+    <CheckoutConfirmationSection
+      title="checkout.success.pick_up_contact"
+      content={content}
+      className={className}
+    />
   );
 };
 
 CheckoutConfirmationPickUpContact.propTypes = {
   order: PropTypes.shape().isRequired,
+  className: PropTypes.string,
+};
+
+CheckoutConfirmationPickUpContact.defaultProps = {
+  className: null,
 };
 
 export default CheckoutConfirmationPickUpContact;

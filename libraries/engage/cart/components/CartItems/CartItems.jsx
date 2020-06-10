@@ -12,7 +12,8 @@ type Props = {
   cartItems?: Item[],
   multiLineReservation?: boolean,
   onFocus: (hidden: boolean) => void,
-  editable?: boolean
+  editable?: boolean,
+  isOrderDetails?: boolean
 }
 
 /**
@@ -21,7 +22,7 @@ type Props = {
  * @returns {JSX.Element}
  */
 function CartItems({
-  cartItems, onFocus, multiLineReservation, editable,
+  cartItems, onFocus, multiLineReservation, editable, isOrderDetails,
 }: Props) {
   if (!cartItems || cartItems.length === 0) {
     return null;
@@ -30,12 +31,17 @@ function CartItems({
   return (
     <React.Fragment>
       <ResponsiveContainer breakpoint=">xs" webOnly>
-        <CartItemsHeaderWide editable={editable} />
+        <CartItemsHeaderWide editable={editable} isOrderDetails={isOrderDetails} />
       </ResponsiveContainer>
       <CardList className={items}>
         {cartItems.map(item => (
           <CardList.Item className={card} key={item.id}>
-            <CartItemProvider cartItem={item} isEditable={editable}>
+            <CartItemProvider
+              cartItem={item}
+              isEditable={editable}
+              isOrderDetails={isOrderDetails}
+              locationId={item.fulfillmentLocationId}
+            >
               <ul>
                 <CartItemCard
                   multiLineReservation={multiLineReservation}
@@ -58,6 +64,7 @@ CartItems.defaultProps = {
   cartItems: null,
   multiLineReservation: null,
   editable: true,
+  isOrderDetails: false,
 };
 
 export default hot(CartItems);

@@ -8,7 +8,7 @@ export const container = css({
   flexDirection: 'row',
   justifyContent: 'space-between',
   padding: variables.gap.big,
-});
+}).toString();
 
 export const imageColumn = css({
   width: 120,
@@ -35,6 +35,18 @@ export const detailsColumn = css(column, {
   flexShrink: 1,
   flexGrow: 3,
   alignItems: 'flex-start',
+});
+
+export const locationColumn = css(column, {
+  fontSize: '1.25rem',
+  lineHeight: '1.625rem',
+  fontWeight: 500,
+  flexGrow: 2,
+});
+
+export const statusColumn = css(column, {
+  fontSize: '1.25rem',
+  lineHeight: '1.625rem',
 });
 
 export const productName = css({
@@ -65,6 +77,16 @@ export const quantityPickerDisabled = css({
   fontWeight: 500,
   color: 'var(--color-text-high-emphasis)',
   whiteSpace: 'nowrap',
+}).toString();
+
+export const containerInactive = css({
+  color: 'var(--color-text-low-emphasis)',
+  [` .${quantityPickerDisabled}`]: {
+    color: 'var(--color-text-low-emphasis)',
+  },
+  [` .${imageColumn}`]: {
+    opacity: 0.7,
+  },
 }).toString();
 
 export const price = css({

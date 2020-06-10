@@ -8,7 +8,7 @@ import { getCheckoutTaxLinesFromOrder } from '../../helpers';
  * CheckoutConfirmationOrderSummary component
  * @returns {JSX}
  */
-const CheckoutConfirmationOrderSummary = ({ order }) => {
+const CheckoutConfirmationOrderSummary = ({ order, className }) => {
   const content = useMemo(() => getCheckoutTaxLinesFromOrder(order)
     .filter(t => t.visible)
     .map(t => ({
@@ -17,12 +17,22 @@ const CheckoutConfirmationOrderSummary = ({ order }) => {
     })), [order]);
 
   return (
-    <CheckoutConfirmationSection title="checkout.success.order_summary" content={content} isSummary />
+    <CheckoutConfirmationSection
+      title="checkout.success.order_summary"
+      content={content}
+      isSummary
+      className={className}
+    />
   );
 };
 
 CheckoutConfirmationOrderSummary.propTypes = {
   order: PropTypes.shape().isRequired,
+  className: PropTypes.string,
+};
+
+CheckoutConfirmationOrderSummary.defaultProps = {
+  className: null,
 };
 
 export default CheckoutConfirmationOrderSummary;

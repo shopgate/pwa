@@ -29,7 +29,7 @@ const CartItemProductProvider = ({
   isIos,
 }: Props) => {
   const {
-    id, product, quantity, fulfillment = null, messages = [],
+    id, product, quantity, fulfillment = null, messages = [], status, subStatus, orderedQuantity,
   } = cartItem;
   const [editMode, setEditMode] = useState(false);
   const cartItemRef = useRef();
@@ -90,7 +90,10 @@ const CartItemProductProvider = ({
       cartItem: {
         id,
         product,
+        status,
+        subStatus,
         quantity,
+        orderedQuantity,
         fulfillment,
       },
     }),
@@ -104,7 +107,10 @@ const CartItemProductProvider = ({
       isEditable,
       messages,
       product,
+      status,
+      subStatus,
       quantity,
+      orderedQuantity,
       toggleEditMode,
     ]
   );

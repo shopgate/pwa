@@ -3,6 +3,7 @@ import * as React from 'react';
 import { every, isEmpty } from 'lodash';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { type OptionalLocationAware } from '@shopgate/engage/locations';
+import { useCartItem } from '../CartItem';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 import connect from './CartItem.connector';
 import { CartItemCardReservationAccordion } from './CartItemCardReservationAccordion';
@@ -18,6 +19,8 @@ type Props = OptionalLocationAware;
  * @returns {JSX.Element}
  */
 function CartItemCardReservation({ location, fulfillmentMethod }: Props) {
+  const { isOrderDetails } = useCartItem();
+
   if (!location) {
     return null;
   }
@@ -38,19 +41,23 @@ function CartItemCardReservation({ location, fulfillmentMethod }: Props) {
   return (
     <React.Fragment>
       <ResponsiveContainer webOnly breakpoint=">xs">
-        <CartItemCardReservationAccordion
-          openWithChevron
-          location={location}
-          fulfillmentMethod={fulfillmentMethod}
-          operationHours={operationHours}
-        />
+        { !isOrderDetails && (
+          <CartItemCardReservationAccordion
+            openWithChevron
+            location={location}
+            fulfillmentMethod={fulfillmentMethod}
+            operationHours={operationHours}
+          />
+        )}
       </ResponsiveContainer>
       <ResponsiveContainer appAlways breakpoint="<=xs">
-        <CartItemCardReservationAccordion
-          location={location}
-          fulfillmentMethod={fulfillmentMethod}
-          operationHours={operationHours}
-        />
+        { !isOrderDetails && (
+          <CartItemCardReservationAccordion
+            location={location}
+            fulfillmentMethod={fulfillmentMethod}
+            operationHours={operationHours}
+          />
+        )}
       </ResponsiveContainer>
 
     </React.Fragment>

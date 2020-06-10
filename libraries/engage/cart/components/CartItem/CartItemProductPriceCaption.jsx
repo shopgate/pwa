@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {
   ROPIS,
 //  BOPIS,
@@ -10,7 +12,7 @@ import { caption } from './CartItemProductPriceCaption.style';
 /**
  * @returns {JSX}
  */
-const CartItemProductPriceCaption = () => {
+const CartItemProductPriceCaption = ({ className }) => {
   const { cartItem } = useCartItemProduct();
 
   const label = useMemo(() => {
@@ -29,12 +31,20 @@ const CartItemProductPriceCaption = () => {
   }
 
   return (
-    <span className={caption}>
+    <span className={classNames(caption, className)}>
     (
       <I18n.Text string={label} />
     )
     </span>
   );
+};
+
+CartItemProductPriceCaption.propTypes = {
+  className: PropTypes.string,
+};
+
+CartItemProductPriceCaption.defaultProps = {
+  className: null,
 };
 
 export { CartItemProductPriceCaption };

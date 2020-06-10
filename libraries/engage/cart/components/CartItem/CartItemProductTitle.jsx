@@ -63,9 +63,7 @@ export function CartItemProductTitle(props: Props) {
     <Grid>
       <Grid.Item grow={1}>
         <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
-          <div className={title} data-test-id={value}>
-            {value}
-          </div>
+          <div className={title} data-test-id={value} dangerouslySetInnerHTML={{ __html: value }} />
         </SurroundPortals>
       </Grid.Item>
       { isEditable && (

@@ -7,4 +7,4 @@ export {
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB,
 } from './shopSettings';
-export { SHOPGATE_CORE_GET_SHOP_SETTINGS } from './pipelines';
+export { SHOPGATE_CORE_GET_SHOP_SETTINGS, EUNAUTHORIZED, EAUTHENTICATION } from './pipelines';
