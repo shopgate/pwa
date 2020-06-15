@@ -37,9 +37,9 @@ const styles = {
   }),
   cardWithForm: css({
     ...(!isIOSTheme() ? {
-      background: 'inherit',
-      boxShadow: 'none',
-      padding: 0,
+      background: 'inherit !important',
+      boxShadow: 'none  !important',
+      padding: '0px !important',
     } : {}),
   }).toString(),
   table: css({

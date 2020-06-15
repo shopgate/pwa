@@ -13,13 +13,14 @@ import { requestOrderDetails, receiveOrderDetails, errorOrderDetails } from '../
 const fetchOrderDetails = (orderId, params = {}) => (dispatch) => {
   dispatch(requestOrderDetails(orderId, params));
 
-  const { email, phone } = params;
+  const { email, phone, token } = params;
 
   const request = new PipelineRequest(SHOPGATE_ORDER_GET_ORDER_DETAILS)
     .setInput({
       orderId,
       email,
       phone,
+      token,
     })
     .setErrorBlacklist([EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND])
     .dispatch();

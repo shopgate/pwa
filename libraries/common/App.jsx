@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { CookiesProvider } from 'react-cookie';
 import { loadCustomStyles } from '@shopgate/engage/styles';
 import ErrorBoundary from './components/ErrorBoundary';
 import { appDidStart } from './action-creators/app';
@@ -32,15 +33,17 @@ class App extends Component {
    */
   render() {
     return (
-      <ErrorBoundary key="error.root" store={this.props.store} isRoot>
-        <Provider store={this.props.store}>
-          <I18n.Provider>
-            <div>
-              {this.props.children}
-            </div>
-          </I18n.Provider>
-        </Provider>
-      </ErrorBoundary>
+      <CookiesProvider>
+        <ErrorBoundary key="error.root" store={this.props.store} isRoot>
+          <Provider store={this.props.store}>
+            <I18n.Provider>
+              <div>
+                {this.props.children}
+              </div>
+            </I18n.Provider>
+          </Provider>
+        </ErrorBoundary>
+      </CookiesProvider>
     );
   }
 }

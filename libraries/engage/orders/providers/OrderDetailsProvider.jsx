@@ -2,6 +2,7 @@ import React, {
   useState, useMemo, useCallback, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
+import { useCookies } from 'react-cookie';
 import {
   useRoute, i18n, LoadingProvider, EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND,
 } from '@shopgate/engage/core';
@@ -44,26 +45,35 @@ const OrderDetailsProvider = ({
   const [showForm, setShowForm] = useState(!isUserLoggedIn);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const orderTokenCookie = [`shopgate_order_token_${orderId}`];
+  const [cookies, setCookie] = useCookies([orderTokenCookie]);
+  const orderToken = cookies[orderTokenCookie];
 
   // Form visibility
   useEffect(() => {
     if (isUserLoggedIn) {
       setShowForm(errorMessage);
     } else {
-      setShowForm(!order || errorMessage);
+      setShowForm((!order && !orderToken) || errorMessage);
     }
-  }, [errorMessage, isUserLoggedIn, order]);
+  }, [errorMessage, isUserLoggedIn, order, orderToken]);
 
-  const handleRequest = useCallback(async (email, phone) => {
+  const handleRequest = useCallback(async (email, phone, token) => {
     setIsLoading(true);
     let message;
 
     try {
-      await fetchOrderDetails(orderId, {
+      const response = await fetchOrderDetails(orderId, {
         email,
         phone,
+        token,
       });
 
+      if (response.token && response.tokenExpires) {
+        setCookie(orderTokenCookie, response.token, {
+          expires: new Date(response.tokenExpires),
+        });
+      }
       setErrorMessage('');
     } catch (error) {
       const { code } = error;
@@ -82,7 +92,7 @@ const OrderDetailsProvider = ({
     }
 
     setIsLoading(false);
-  }, [fetchOrderDetails, orderId]);
+  }, [fetchOrderDetails, orderTokenCookie, orderId, setCookie]);
 
   // Loading state
   useEffect(() => {
@@ -95,15 +105,16 @@ const OrderDetailsProvider = ({
   }, [isLoading, pathname]);
 
   useEffect(() => {
-    if (!isUserLoggedIn) {
+    if (!isUserLoggedIn && !orderToken) {
       return;
     }
 
     (async () => {
-      await handleRequest();
+      await handleRequest(undefined, undefined, !isUserLoggedIn ? orderToken : undefined);
     })();
-  }, [handleRequest, isUserLoggedIn]);
-
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, []);
+  /* eslint-enable react-hooks/exhaustive-deps */
   let authenticateFormState = {
     valid: false,
     values: [],
