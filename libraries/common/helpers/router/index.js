@@ -1,4 +1,4 @@
-import { createWebHistory } from '@shopgate/pwa-core/helpers/webHistory';
+import { createBrowserHistory } from 'history';
 import URLSearchParams from 'url-search-params';
 import { router } from '@virtuous/conductor';
 
@@ -14,7 +14,7 @@ export { getCurrentRoute, router };
  * Creates the router history.
  * @returns {Object}
  */
-export const history = () => createWebHistory({
+export const history = () => createBrowserHistory({
   basename: match ? match[0] : '',
 });
 

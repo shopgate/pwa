@@ -1260,10 +1260,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@virtuous/conductor@2.4.0", "@virtuous/conductor@~2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.4.0.tgz#17f88ecbdbea94a0bbe3cc6c6b3977df96ffe8ed"
-  integrity sha512-ovi021jFZnPo2RjqC1hrLHH+xjNlTrJPnBqe5aBPe8e9sNTC+LNwoxYvzk4MB1XC9ZjcIPzFCQ3PZGAS/6w3BA==
+"@virtuous/conductor@2.5.0", "@virtuous/conductor@~2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.5.0.tgz#66a78a3ba04d917af5e32a826232caca4b0d55b9"
+  integrity sha512-W85DNiJMM4a5bSeXmzs/qYpVFKQZ+A32oDzPLzp4c1JyRbjA579P2PJvhKRK76HcckzRp9YfFrltlIvsHSfGRA==
   dependencies:
     history "^4.9.0"
     path-match "^1.2.4"
@@ -1275,13 +1275,13 @@
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
   integrity sha512-Pc0qQZhl4Kk06o0AY1Zm5Vfm+f5reSGkoxlNPkmiNvQPVzPed4FHqiNNipQ8vUJF4qMRnQQIwduWd1xH/4hzTg==
 
-"@virtuous/react-conductor@~2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.4.0.tgz#fd78399c7cdd7f7bd73a698617bb97d692213160"
-  integrity sha512-+gfoVfdGRVk/DaykIIJ5fxcB0F9W7TSqICgVWoU5wS6yrH95+mB7rZ5suAwcPk2kvGs/u1KxxTw1ohiDNuJEIQ==
+"@virtuous/react-conductor@~2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.5.0.tgz#aeb0784c920dd5ba9d4657bbf0241c0ca924501e"
+  integrity sha512-XAe5L6G3gbRRG9vJKbuwHqd6TiUWuFDevcLuql6oGxdpiPEkyacn0tlNcSfLxXnCUM8i3Gqf9JngpxMIf5II0w==
   dependencies:
-    "@virtuous/conductor" "2.4.0"
-    react-spring "^8.0.15"
+    "@virtuous/conductor" "2.5.0"
+    react-spring "^8.0.19"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
   version "1.1.0-beta.7"
@@ -9843,7 +9843,7 @@ react-sizeme@^2.3.6:
     lodash.throttle "^4.1.1"
     shallowequal "^1.0.2"
 
-react-spring@^8.0.15, react-spring@^8.0.27:
+react-spring@^8.0.19, react-spring@^8.0.27:
   version "8.0.27"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.27.tgz#97d4dee677f41e0b2adcb696f3839680a3aa356a"
   integrity sha512-nDpWBe3ZVezukNRandTeLSPcwwTMjNVu1IDq9qA/AMiUqHuRN4BeSWvKr3eIxxg1vtiYiOLy4FqdfCP5IoP77g==

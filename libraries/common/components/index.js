@@ -1,5 +1,6 @@
 export { default as Ellipsis } from './Ellipsis';
-export { Router } from '@virtuous/react-conductor';
+// export { Router } from '@virtuous/react-conductor';
+export { default as Router } from './Router';
 export { default as Image } from './Image';
 export { default as Link } from './Link';
 export { default as Route } from './Route';

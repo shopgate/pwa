@@ -39,7 +39,7 @@ class Route extends React.Component {
    * TODO: Move to router
    */
   get currentRoute() {
-    const { [router.routeIndex]: [, route] } = this.context;
+    const { [router.routeIndex]: [, route] } = this.context.stack;
 
     return route;
   }
@@ -57,7 +57,7 @@ class Route extends React.Component {
     if (!cache && pattern === this.currentRoute.pattern) {
       matches = [[this.currentRoute.id, this.currentRoute]];
     } else if (cache) {
-      const subset = this.context.slice(0, router.routeIndex + 1);
+      const subset = this.context.stack.slice(0, router.routeIndex + 1);
       // Find matching patterns.
       matches = subset.filter(([, route]) => route.pattern === pattern);
     }

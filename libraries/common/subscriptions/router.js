@@ -56,9 +56,10 @@ export default function routerSubscriptions(subscribe) {
     const state = getState();
     const historyLength = getRouterStackIndex(state) + 1;
     const historyEmpty = historyLength === 1;
+    const { pathname: currentPathname } = getCurrentRoute(state);
 
     if (historyEmpty && [ACTION_POP, ACTION_RESET, HISTORY_RESET_TO].includes(historyAction)) {
-      if (location && location === INDEX_PATH) {
+      if (currentPathname && currentPathname === INDEX_PATH) {
         return;
       }
 
@@ -69,8 +70,6 @@ export default function routerSubscriptions(subscribe) {
        */
       router.replace({
         pathname: INDEX_PATH,
-        emitBefore: false,
-        emitAfter: false,
       });
       return;
     }
@@ -91,20 +90,20 @@ export default function routerSubscriptions(subscribe) {
         router.pop({
           steps: historyLength - 1,
         });
-
         return;
       }
       case HISTORY_RESET_TO: {
         await router.pop({
           steps: historyLength - 1,
-        });
-
-        router.replace({
-          pathname: resetToPathname,
+          state: routeState,
           emitBefore: false,
           emitAfter: false,
         });
 
+        await router.replace({
+          pathname: resetToPathname,
+          state: routeState,
+        });
         return;
       }
       default:
@@ -122,8 +121,6 @@ export default function routerSubscriptions(subscribe) {
     if (!location) {
       return;
     }
-
-    const { pathname: currentPathname } = getCurrentRoute(state);
 
     // Prevent the current route from being pushed again.
     if (historyAction === ACTION_PUSH && location === currentPathname) {
