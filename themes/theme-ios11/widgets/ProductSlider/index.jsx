@@ -5,6 +5,7 @@ import { ProductCard } from '@shopgate/engage/product';
 import Headline from 'Components/Headline';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { WIDGET_ID } from 'Components/ProductSlider';
 import connect from './connector';
 import styles from './style';
@@ -20,6 +21,12 @@ import styles from './style';
 const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   const key = `s${product.id}`;
 
+  let showReviewsSanitized = showReviews;
+
+  if (showReviews && !appConfig.hasReviews) {
+    showReviewsSanitized = false;
+  }
+
   return (
     <Swiper.Item key={key} className={styles.sliderItem}>
       <Card className={styles.card}>
@@ -27,7 +34,7 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
           product={product}
           hideName={!showName}
           hidePrice={!showPrice}
-          hideRating={!showReviews}
+          hideRating={!showReviewsSanitized}
           titleRows={2}
         />
       </Card>
