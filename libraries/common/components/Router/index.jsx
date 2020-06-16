@@ -128,7 +128,7 @@ class Router extends React.Component {
   update = (data) => {
     const { prev, next } = data;
 
-    if (data.constructor.name === 'Route') {
+    if (data?.id) {
       /**
        * The only change right now compared to the original component. When invoked for "onUpdate"
        * only the updated route is passed instead of an object with prev and next.
