@@ -4,6 +4,7 @@ import { Swiper, Card } from '@shopgate/engage/components';
 import { ProductCard } from '@shopgate/engage/product';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { WIDGET_ID } from 'Components/ProductSlider';
 import Headline from 'Components/Headline';
 import connect from './connector';
@@ -86,9 +87,14 @@ class ProductSlider extends PureComponent {
   render() {
     const { settings, products, widgetSettings } = this.props;
     const {
-      sliderSettings, showName, showPrice, showReviews,
+      sliderSettings, showName, showPrice,
     } = settings;
+    let { showReviews } = settings;
     const { slidesPerView = 2.3 } = widgetSettings;
+
+    if (showReviews && !appConfig.hasReviews) {
+      showReviews = false;
+    }
 
     if (!products.length) {
       return null;
