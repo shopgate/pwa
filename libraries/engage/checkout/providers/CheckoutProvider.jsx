@@ -3,6 +3,7 @@ import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
   i18n, useAsyncMemo, getUserAgent, LoadingProvider,
 } from '@shopgate/engage/core';
+import { MARKETING_OPT_IN_DEFAULT } from '@shopgate/engage/registration';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
@@ -54,6 +55,10 @@ const convertValidationErrors = validationErrors => Object
     message: i18n.text(validationErrors[key]),
   }));
 
+const initialOptInFormState = {
+  marketingOptIn: MARKETING_OPT_IN_DEFAULT,
+};
+
 /**
  * Checkout Provider
  * @returns {JSX}
@@ -83,6 +88,15 @@ const CheckoutProvider = ({
 
   // Get payment method api
   const activePaymentMethod = useStripeContext();
+
+  const defaultOptInFormState = {
+    ...initialOptInFormState,
+  };
+
+  const optInFormState = useFormState(
+    defaultOptInFormState,
+    () => {}
+  );
 
   // Initialize checkout process.
   const [{ isCheckoutInitialized, needsPayment }] = useAsyncMemo(async () => {
@@ -158,10 +172,12 @@ const CheckoutProvider = ({
 
     // Submit fulfilled payment transaction to complete order.
     try {
+      const { marketingOptIn } = optInFormState.values;
       await submitCheckoutOrder({
         paymentTransactions: fulfilledPaymentTransactions,
         userAgent: getUserAgent(),
         platform: 'engage',
+        marketingOptIn,
       });
     } catch (error) {
       setLocked(false);
@@ -182,6 +198,7 @@ const CheckoutProvider = ({
     // We don't set locked to false to avoid unnecessary UI changes right before
     // going to confirmation page.
   }, [
+    optInFormState.values,
     orderReadOnly,
     needsPayment,
     fetchCheckoutOrder,
@@ -233,11 +250,15 @@ const CheckoutProvider = ({
     taxLines,
     needsPayment,
     orderReserveOnly,
+    optInFormSetValues: optInFormState.setValues,
+    defaultOptInFormState,
   }), [
     isLocked,
     formState.setValues,
     formState.validationErrors,
     formState.handleSubmit,
+    optInFormState.setValues,
+    defaultOptInFormState,
     shopSettings.supportedCountries,
     userLocation,
     billingAddress,

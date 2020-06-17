@@ -49,8 +49,9 @@ const style = {
   }),
   backButtonContainer: css({
     paddingLeft: variables.gap.big,
-    [responsiveMediaQuery('<sm')]: {
-      display: 'none',
+    display: 'none',
+    [responsiveMediaQuery('>=sm', { webOnly: true })]: {
+      display: 'block',
     },
   }),
   heading: css({

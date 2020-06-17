@@ -85,7 +85,9 @@ const CheckoutSection = ({
   editLabel,
 }) => (
   <Fragment>
-    <h3 className={styles.headline}>{i18n.text(title)}</h3>
+    { title && (
+      <h3 className={styles.headline}>{i18n.text(title)}</h3>
+    )}
     <Card
       className={classNames(styles.card.toString(), {
         [styles.cardWithForm.toString()]: hasForm,
@@ -123,16 +125,17 @@ const CheckoutSection = ({
 );
 
 CheckoutSection.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   content: PropTypes.arrayOf(PropTypes.shape()),
   editLabel: PropTypes.string,
   editLink: PropTypes.string,
   hasForm: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 CheckoutSection.defaultProps = {
+  title: null,
   className: '',
   children: null,
   content: null,

@@ -4,12 +4,12 @@ import { themeConfig } from '@shopgate/engage';
 const { colors, variables } = themeConfig;
 
 const formStyles = {
-  ' .textField, .formElement:not(.radioGroup), .phonePicker': {
+  ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
     paddingBottom: 8,
     ...(!isIOSTheme() ? {
       background: `var(--color-background-accent, ${colors.shade8})`,
       padding: 0,
-      marginBottom: 38,
+      marginBottom: 32,
       borderTopLeftRadius: 4,
       borderTopRightRadius: 4,
       borderBottom: `1px solid ${colors.shade12}`,
@@ -43,7 +43,7 @@ const formStyles = {
       color: 'var(--color-text-high-emphasis)',
     } : {}),
   },
-  ' .formElement:not(.radioGroup) svg': {
+  ' .formElement:not(.radioGroup):not(.checkbox) svg': {
     ...(!isIOSTheme() ? {
       marginTop: 8,
       right: 8,

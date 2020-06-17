@@ -2,6 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import { FormBuilder } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
+import RegistrationFormOptIn from './RegistrationFormOptIn';
 import generateFormConfig from './RegistrationFormShipping.config';
 import { form, containerItem, section } from './Registration.style';
 
@@ -38,6 +39,9 @@ const RegistrationFormShipping = () => {
           validationErrors={shippingFormValidationErrors}
           handleUpdate={handleUpdate}
         />
+      </Section>
+      <Section className={section} hasForm>
+        <RegistrationFormOptIn />
       </Section>
     </div>
   );

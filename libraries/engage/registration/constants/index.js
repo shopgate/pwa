@@ -8,3 +8,5 @@ export {
   ERROR_REGISTRATION,
   VALIDATION_ERRORS_REGISTRATION,
 } from './actionTypes';
+
+export const MARKETING_OPT_IN_DEFAULT = true;

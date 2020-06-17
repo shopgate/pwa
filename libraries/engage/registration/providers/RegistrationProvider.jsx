@@ -8,6 +8,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import Context from './RegistrationProvider.context';
 import { baseConstraints, shippingConstraints } from './RegistrationProvider.constraints';
 import connect from './RegistrationProvider.connector';
+import { MARKETING_OPT_IN_DEFAULT } from '../constants';
 
 type Props = {
   children: any,
@@ -33,6 +34,10 @@ const initialShippingFormState = {
   country: '',
   postalCode: '',
   mobile: '',
+};
+
+const initialOptInFormState = {
+  marketingOptIn: MARKETING_OPT_IN_DEFAULT,
 };
 
 /**
@@ -83,6 +88,10 @@ const RegistrationProvider = ({
     region: userRegion,
   }), [userCountry, userRegion]);
 
+  const defaultOptInFormState = {
+    ...initialOptInFormState,
+  };
+
   // Form submit handlers
   const handleBaseFormSubmit = useCallback(() => {
     setIsBaseFormSubmitted(true);
@@ -103,6 +112,11 @@ const RegistrationProvider = ({
     defaultShippingFormState,
     handleShippingFormSubmit,
     shippingConstraints
+  );
+
+  const optInFormState = useFormState(
+    defaultOptInFormState,
+    () => {}
   );
 
   // Central submit handler
@@ -128,9 +142,12 @@ const RegistrationProvider = ({
     const fn = async () => {
       setLocked(true);
 
+      const { marketingOptIn } = optInFormState.values;
+
       const response = await submitRegistration(
         baseFormState.values,
-        shippingFormState.values
+        shippingFormState.values,
+        { marketingOptIn }
       );
 
       const { errors } = response || {};
@@ -155,6 +172,7 @@ const RegistrationProvider = ({
     isBaseFormSubmitted,
     isShippingFormSubmitted,
     submitRegistration,
+    optInFormState.values,
   ]);
 
   useEffect(() => {
@@ -171,6 +189,7 @@ const RegistrationProvider = ({
       userLocation,
       defaultBaseFormState,
       defaultShippingFormState,
+      defaultOptInFormState,
       baseFormValidationErrors: convertValidationErrors(
         baseFormState.validationErrors || baseFormRequestErrors || {}
       ),
@@ -180,19 +199,22 @@ const RegistrationProvider = ({
       handleSubmit,
       updateBaseForm: baseFormState.setValues,
       updateShippingForm: shippingFormState.setValues,
+      updateOptInForm: optInFormState.setValues,
     }),
     [
-      defaultBaseFormState,
-      defaultShippingFormState,
-      baseFormRequestErrors,
-      baseFormState.setValues,
-      baseFormState.validationErrors,
-      shippingFormRequestErrors,
-      shippingFormState.setValues,
-      shippingFormState.validationErrors,
-      handleSubmit,
       shopSettings.supportedCountries,
       userLocation,
+      defaultBaseFormState,
+      defaultShippingFormState,
+      defaultOptInFormState,
+      baseFormState.validationErrors,
+      baseFormState.setValues,
+      baseFormRequestErrors,
+      shippingFormState.validationErrors,
+      shippingFormState.setValues,
+      shippingFormRequestErrors,
+      handleSubmit,
+      optInFormState.setValues,
     ]
   );
 

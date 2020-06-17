@@ -12,16 +12,22 @@ import {
 
 /**
  * @param {Array} contacts A contacts array for the request.
+ * @param {Object} additionalData Additional data for the request.
  * @returns {Function} A redux thunk.
  */
-function submitRegistration(contacts) {
+function submitRegistration(contacts, additionalData) {
   return (dispatch) => {
-    dispatch(requestRegistration(contacts));
+    dispatch(requestRegistration(contacts, additionalData));
+
+    const { marketingOptIn } = additionalData;
 
     const request = new PipelineRequest(SHOPGATE_USER_REGISTER)
       .setTrusted()
       .setErrorBlacklist([EVALIDATION])
-      .setInput({ contacts })
+      .setInput({
+        contacts,
+        marketingOptIn,
+      })
       .dispatch();
 
     request
@@ -32,7 +38,7 @@ function submitRegistration(contacts) {
         if (error.code === EVALIDATION) {
           dispatch(validationErrorsRegistration(error.errors));
         } else {
-          dispatch(errorRegistration(error, contacts));
+          dispatch(errorRegistration(error, contacts, additionalData));
         }
       });
 

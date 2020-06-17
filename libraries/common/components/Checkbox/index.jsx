@@ -32,7 +32,7 @@ class Checkbox extends Component {
   };
 
   /**
-   * The checkbox component contructor.
+   * The checkbox component constructor.
    * It checks if the checkbox is a controlled or uncontrolled input and sets an internal state if
    * uncontrolled to keep track of th checked-state.
    * @param {Object} props The Checkbox properties.

@@ -16,8 +16,7 @@ const { colors } = themeConfig;
 
 const styles = {
   root: css({
-    padding: 16,
-    paddingTop: 0,
+    padding: '0 16px',
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',

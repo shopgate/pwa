@@ -39,7 +39,7 @@ class Checkbox extends PureComponent {
     } = this.props;
     return (
       <FormElement
-        className={`${className} ${style.root}`}
+        className={classNames(className, style.root, 'checkbox')}
         htmlFor={name}
         errorText={errorText}
         translateErrorText={translateErrorText}

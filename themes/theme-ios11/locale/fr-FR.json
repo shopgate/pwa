@@ -459,6 +459,7 @@
   },
   "registration": {
     "create_account": "Create account",
+    "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
     "headlines": {
       "create_new_account": "Create new account",
       "shipping_address": "Shipping Address",

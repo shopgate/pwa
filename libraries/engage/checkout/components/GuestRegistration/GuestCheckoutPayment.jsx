@@ -11,6 +11,7 @@ import CreditCard from '../Checkout/CheckoutCreditCard';
 import Summary from '../Checkout/CheckoutSummary';
 import Actions from '../Checkout/CheckoutActions';
 import Pickup from './GuestRegistrationPickup';
+import GuestCheckoutOptIn from './GuestCheckoutOptIn';
 
 const styles = {
   root: css({
@@ -48,6 +49,7 @@ const GuestCheckoutPayment = () => (
           <Pickup />
           <Billing guestCheckout />
           <CreditCard />
+          <GuestCheckoutOptIn />
           <ResponsiveContainer breakpoint="<md" appAlways>
             <Summary />
           </ResponsiveContainer>

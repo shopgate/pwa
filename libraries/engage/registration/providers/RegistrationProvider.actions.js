@@ -6,9 +6,14 @@ import { convertSubmitRegistrationValidationErrors } from '../helpers';
  * Submits registration form data.
  * @param {Object} baseFormData Data from the base form
  * @param {Object} shippingFormData Data from the shipping form
+ * @param {Object} additionalData Additional data for the request.
  * @returns {Function}
  */
-export const submitRegistration = (baseFormData, shippingFormData) => async (dispatch) => {
+export const submitRegistration = (
+  baseFormData,
+  shippingFormData,
+  additionalData
+) => async (dispatch) => {
   const contacts = [{
     ...baseFormData,
     ...shippingFormData,
@@ -19,7 +24,7 @@ export const submitRegistration = (baseFormData, shippingFormData) => async (dis
   let errors;
 
   try {
-    await dispatch(submit(contacts));
+    await dispatch(submit(contacts, additionalData));
   } catch ({ code, errors: validationErrors }) {
     if (code === EVALIDATION) {
       errors = validationErrors;

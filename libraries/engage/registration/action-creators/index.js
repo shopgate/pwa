@@ -8,11 +8,13 @@ import {
 /**
  * Creates the dispatched REQUEST_REGISTRATION action object.
  * @param {Array} contacts An array of contacts for the registration
+ * @param {Object} additionalData Additional data for the request.
  * @returns {Object} The dispatched action object.
  */
-export const requestRegistration = contacts => ({
+export const requestRegistration = (contacts, additionalData) => ({
   type: REQUEST_REGISTRATION,
   contacts,
+  additionalData,
 });
 
 /**
@@ -29,12 +31,14 @@ export const successRegistration = response => ({
  * Creates the dispatched ERROR_REGISTRATION action object.
  * @param {Error} error An error object
  * @param {Array} contacts An array of contacts for the registration
+ * @param {Object} additionalData Additional data for the request.
  * @returns {Object} The dispatched action object.
  */
-export const errorRegistration = (error, contacts) => ({
+export const errorRegistration = (error, contacts, additionalData) => ({
   type: ERROR_REGISTRATION,
   error,
   contacts,
+  additionalData,
 });
 
 /**

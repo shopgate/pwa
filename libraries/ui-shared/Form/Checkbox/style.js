@@ -3,6 +3,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const root = css({
   marginLeft: -2, // Removes margin caused by svg.
+  cursor: 'pointer',
   '& svg': {
     float: 'left',
   },

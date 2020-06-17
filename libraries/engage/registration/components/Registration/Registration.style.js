@@ -1,5 +1,6 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { isIOSTheme } from '@shopgate/engage/core';
 import { styles as formStyles } from '../../../checkout/components/Form';
 
 const { variables } = themeConfig;
@@ -27,6 +28,17 @@ export const containerItem = css({
 
 export const form = css({
   ...formStyles,
+  ' .registrationOptInMarketingOptIn': {
+    ' .checkbox': {
+      ...(isIOSTheme() ? {
+        paddingBottom: 0,
+      } : {}),
+    },
+    ...(!isIOSTheme() ? {
+      paddingTop: 0,
+      paddingBottom: variables.gap.big,
+    } : {}),
+  },
 });
 
 export const section = css({
