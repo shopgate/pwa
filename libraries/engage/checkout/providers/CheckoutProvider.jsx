@@ -85,6 +85,7 @@ const CheckoutProvider = ({
 }: Props) => {
   const [isLocked, setLocked] = React.useState(true);
   const [validationRules, setValidationRules] = React.useState(selfPickupConstraints);
+  const [updateOptIns, setUpdateOptIns] = React.useState(false);
 
   // Get payment method api
   const activePaymentMethod = useStripeContext();
@@ -172,7 +173,12 @@ const CheckoutProvider = ({
 
     // Submit fulfilled payment transaction to complete order.
     try {
-      const { marketingOptIn } = optInFormState.values;
+      let marketingOptIn;
+
+      if (updateOptIns) {
+        ({ marketingOptIn } = optInFormState.values);
+      }
+
       await submitCheckoutOrder({
         paymentTransactions: fulfilledPaymentTransactions,
         userAgent: getUserAgent(),
@@ -208,6 +214,7 @@ const CheckoutProvider = ({
     billingAddress,
     activePaymentMethod,
     paymentTransactions,
+    updateOptIns,
     submitCheckoutOrder,
   ]);
 
@@ -252,6 +259,7 @@ const CheckoutProvider = ({
     orderReserveOnly,
     optInFormSetValues: optInFormState.setValues,
     defaultOptInFormState,
+    setUpdateOptIns: (val = true) => { setUpdateOptIns(val); },
   }), [
     isLocked,
     formState.setValues,
@@ -266,6 +274,7 @@ const CheckoutProvider = ({
     taxLines,
     needsPayment,
     orderReserveOnly,
+    setUpdateOptIns,
   ]);
 
   if (!isDataReady || !isCheckoutInitialized) {

@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, useEffect } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
@@ -35,8 +35,14 @@ const GuestCheckoutOptIn = () => {
   const {
     defaultOptInFormState,
     optInFormSetValues,
+    setUpdateOptIns,
   } = useCheckoutContext();
 
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    setUpdateOptIns();
+  }, []);
+  /* eslint-enable react-hooks/exhaustive-deps */
   const formConfig = useMemo(
     () => generateFormConfig(),
     []
