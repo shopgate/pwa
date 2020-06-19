@@ -11,6 +11,6 @@ export const wideHeader = css({
   frontSize: ' 3rem',
 });
 
-export const wideHeaderMessages = css({
+export const wideHeaderMessagesWithItems = css({
   marginTop: variables.gap.big * -1,
 }).toString();

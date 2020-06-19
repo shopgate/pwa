@@ -29,7 +29,7 @@ import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import connect from './connector';
-import styles, { wideHeaderMessages } from './style';
+import styles, { wideHeaderMessagesWithItems } from './style';
 
 const config = getCartConfig();
 
@@ -85,10 +85,10 @@ function CartContent(props) {
                   messages={messages}
                   raised={cartItemsDisplay === 'card'}
                   showIcons
-                  classNames={{
-                    container: wideHeaderMessages,
-                    containerRaised: wideHeaderMessages,
-                  }}
+                  classNames={hasItems ? {
+                    container: wideHeaderMessagesWithItems,
+                    containerRaised: wideHeaderMessagesWithItems,
+                  } : {}}
                 />
               </ResponsiveContainer>
               <ResponsiveContainer appAlways breakpoint="<=xs">
