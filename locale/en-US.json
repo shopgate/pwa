@@ -438,7 +438,8 @@
         "canceled": "Canceled",
         "fulfilled": "Fulfilled",
         "substituted": "Substituted",
-        "replaced": "Replaced"
+         "replaced": "Replaced",
+         "itemAdded": "Added"
       }
     }
   },
