@@ -70,6 +70,9 @@
     "label_old_price": "Preço antigo {price}."
   },
   "product": {
+    "errors": {
+      "insufficientstock": "Sorry, this product is currently out of stock."
+    },
     "description_heading": "Sobre",
     "pick_an_attribute": "Escolher {0}",
     "tax_disclaimer": "* Incl. IVA mais custos de envio, se aplicável",
@@ -241,6 +244,11 @@
     "free_shipping": "Envio Grátis",
     "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
+      "item": {
+        "insufficientstock": "Currently out of stock."
+      },
+      "insufficientstock": "One or more products in the cart are out of stock. Please remove the products and try again.",
+      "productsNotFound": "One or more products has been removed from your cart due to unavailability.",
       "mixed_cart": "We currently do not support Ship to Address and Reserve to Cart within the same transaction. Please update your delivery options and continue shopping or proceed to checkout.",
       "direct_ship_item": "Check if this item is available for reserve at a store near you.",
       "ropis_cart_inventory": "Not all of your items can be reserved. Please check the products in cart and change fulfillment options.",
@@ -431,8 +439,10 @@
         "canceled": "Canceled",
         "fulfilled": "Fulfilled",
         "substituted": "Substituted",
-         "replaced": "Replaced",
-         "itemAdded": "Added"
+        "replaced": "Replaced",
+        "itemAdded": "Added",
+        "rejected": "Rejected",
+        "open": "Open"
       }
     }
   },
