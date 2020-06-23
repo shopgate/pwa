@@ -41,14 +41,6 @@ export const LINE_ITEM_STATUS_UNAVAILABLE = 'unavailable';
 export const LINE_ITEM_SUB_STATUS_SUBSTITUTED = 'substituted';
 export const LINE_ITEM_SUB_STATUS_REPLACED = 'replaced';
 
-const lineItemStatusMapping = {
-  [LINE_ITEM_STATUS_OPEN]: LINE_ITEM_STATUS_PENDING,
-  [LINE_ITEM_STATUS_IN_PROGRESS]: LINE_ITEM_STATUS_PENDING,
-  [LINE_ITEM_STATUS_REJECTED]: LINE_ITEM_STATUS_UNAVAILABLE,
-  [LINE_ITEM_STATUS_CANCELED]: LINE_ITEM_STATUS_CANCELED,
-  [LINE_ITEM_STATUS_FULFILLED]: LINE_ITEM_STATUS_FULFILLED,
-};
-
 const lineItemInactiveStatuses = [{
   status: LINE_ITEM_STATUS_CANCELED,
   subStatus: null,
@@ -69,16 +61,8 @@ export const getEngageLineItemStatus = (lineItemStatus, lineItemSubStatus) => {
       entry.status === lineItemStatus && entry.subStatus === lineItemSubStatus
   );
 
-  let status = lineItemStatusMapping[lineItemStatus] || lineItemStatus;
-
-  if (lineItemSubStatus === LINE_ITEM_SUB_STATUS_SUBSTITUTED) {
-    status = LINE_ITEM_SUB_STATUS_SUBSTITUTED;
-  } else if (lineItemSubStatus === LINE_ITEM_SUB_STATUS_REPLACED) {
-    status = LINE_ITEM_SUB_STATUS_REPLACED;
-  }
-
   return {
-    status,
+    status: lineItemStatus,
     active,
   };
 };

@@ -10,7 +10,8 @@
     "show_products": "Produkte anzeigen",
     "back": "Zurück",
     "close": "Schließen",
-    "products": "Produkte"
+    "products": "Produkte",
+    "error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   },
   "titles": {
     "categories": "Alle Kategorien",
@@ -70,6 +71,9 @@
     "label_old_price": "Alter Preis {price}."
   },
   "product": {
+    "errors": {
+      "insufficientstock": "Sorry, this product is currently out of stock."
+    },
     "description_heading": "Beschreibung",
     "pick_an_attribute": "{0} auswählen",
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
@@ -248,6 +252,11 @@
     "message_type_warning": "Warnung",
     "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
+      "item": {
+        "insufficientstock": "Currently out of stock."
+      },
+      "insufficientstock": "One or more products in the cart are out of stock. Please remove the products and try again.",
+      "productsNotFound": "One or more products has been removed from your cart due to unavailability.",
       "mixed_cart": "Reservierungen und Online Bestellungen müssen in separaten Bestellungen aufgegeben werden. Bitte aktualisieren Sie die Produkte, sodass im Warenkorb entweder nur Online Bestellungen oder Reservierungen sind.",
       "direct_ship_item": "Prüfen Sie, ob dieses Produkt in einer Filiale in Ihrer Nähe reserviert werden kann.",
       "ropis_cart_inventory": "Nicht alle Produkte können reserviert werden. Bitte überprüfen Sie die Fehler und ändern Sie die Lieferoptionen.",
@@ -439,8 +448,10 @@
         "canceled": "Canceled",
         "fulfilled": "Fulfilled",
         "substituted": "Substituted",
-         "replaced": "Replaced",
-         "itemAdded": "Added"
+        "replaced": "Replaced",
+        "itemAdded": "Added",
+        "rejected": "Rejected",
+        "open": "Open"
       }
     }
   },
