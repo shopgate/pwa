@@ -435,6 +435,7 @@
       },
       "line_item": {
         "pending": "Pending",
+        "inProgress": "In Progress",
         "unavailable": "Unavailable",
         "canceled": "Canceled",
         "fulfilled": "Fulfilled",
