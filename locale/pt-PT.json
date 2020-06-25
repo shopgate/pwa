@@ -166,7 +166,8 @@
       "available": "Available",
       "limitedAvailability": "Only {visibleInventory} left in stock",
       "notAvailable": "Out of stock",
-      "customAvailability": "Not available in this store"
+      "customAvailability": "Not available in this store",
+      "comingSoon": "Coming Soon"
     },
     "no_available": "not available"
   },
