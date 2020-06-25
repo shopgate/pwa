@@ -4,6 +4,7 @@ import {
   AVAILABILITY_TYPE_LIMITED_AVAILABILITY,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_CUSTOM_AVAILABILITY,
+  AVAILABILITY_TYPE_COMING_SOON,
 } from '@shopgate/engage/product/constants';
 
 export default {
@@ -14,6 +15,15 @@ export default {
     includeNoRecordStores: false,
     availabilityText: 'locations.stock_info.availableInventory',
     availabilityTextColor: `var(--color-state-ok, ${themeColors.success})`,
+  },
+  [AVAILABILITY_TYPE_COMING_SOON]: {
+    comingSoon: true,
+    visibleInventoryFrom: 0,
+    visibleInventoryTo: Number.MAX_VALUE,
+    includeInventoryBlind: true,
+    includeNoRecordStores: true,
+    availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_COMING_SOON}`,
+    availabilityTextColor: `var(--color-state-warning, ${themeColors.warning})`,
   },
   [AVAILABILITY_TYPE_LIMITED_AVAILABILITY]: {
     visibleInventoryFrom: 1,

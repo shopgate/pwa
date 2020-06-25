@@ -12,7 +12,12 @@ export function isProductAvailable(location: Location = {}) {
       isAvailable = false,
       visible = 0,
     } = {},
+    isComingSoon,
   } = location;
+
+  if (isComingSoon) {
+    return false;
+  }
 
   if (isAvailable === false) {
     return false;

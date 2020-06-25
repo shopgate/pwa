@@ -3,6 +3,7 @@ export const MEDIA_TYPE_IMAGE = 'image';
 export const MEDIA_TYPE_VIDEO = 'video';
 
 // AVAILABILITY TYPES
+export const AVAILABILITY_TYPE_COMING_SOON = 'comingSoon';
 export const AVAILABILITY_TYPE_AVAILABLE = 'available';
 export const AVAILABILITY_TYPE_LIMITED_AVAILABILITY = 'limitedAvailability';
 export const AVAILABILITY_TYPE_NOT_AVAILABLE = 'notAvailable';

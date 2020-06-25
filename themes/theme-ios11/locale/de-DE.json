@@ -175,7 +175,8 @@
       "available": "Verfügbar",
       "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
       "notAvailable": "Nicht verfügbar",
-      "customAvailability": "In dieser Filiale nicht verfügbar"
+      "customAvailability": "In dieser Filiale nicht verfügbar",
+      "comingSoon": "Coming Soon"
     },
     "no_available": "nicht verfügbar"
   },

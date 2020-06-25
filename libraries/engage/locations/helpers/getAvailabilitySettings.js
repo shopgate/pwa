@@ -3,6 +3,7 @@ import {
   availabilityTypes,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_AVAILABLE,
+  AVAILABILITY_TYPE_COMING_SOON,
 } from '../../product/constants';
 import { type MerchantSettings } from '../../core/config/config.types';
 import { type Location } from '../locations.types';
@@ -24,6 +25,10 @@ export default (settings: MerchantSettings, location: Location = {}) => {
     return settings[AVAILABILITY_TYPE_NOT_AVAILABLE];
   }
 
+  if (location.isComingSoon) {
+    return settings[AVAILABILITY_TYPE_COMING_SOON];
+  }
+
   if (visible === null) {
     return {
       ...settings[AVAILABILITY_TYPE_AVAILABLE],
@@ -33,6 +38,7 @@ export default (settings: MerchantSettings, location: Location = {}) => {
 
   // Filter by inventory blind and visible inventory (must match both).
   const matchingTypes = availabilityTypes
+    .filter(type => !settings[type].comingSoon)
     .filter(type => (
       // When inventory blind is set in the current availability setting, then this should also
       // account for the inventory blind from the given store. Ignore inventory blind otherwise.
