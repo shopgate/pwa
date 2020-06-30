@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.13.4](https://github.com/shopgate/pwa/compare/v6.13.3...v6.13.4) (2020-06-30)
+
+#### :nail_care: Polish
+* [#1017](https://github.com/shopgate/pwa/pull/1017) Change order of content on "Mehr" page of ios theme ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.13.3](https://github.com/shopgate/pwa/compare/v6.13.2...v6.13.3) (2020-06-18)
 
 #### :rocket: Enhancement
