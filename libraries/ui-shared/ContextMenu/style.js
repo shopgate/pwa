@@ -13,7 +13,7 @@ const button = css({
 }).toString();
 
 const disabled = css({
-  cursor: 'none',
+  cursor: 'not-allowed',
 }).toString();
 
 const overlay = css({
