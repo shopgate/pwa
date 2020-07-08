@@ -1,21 +1,25 @@
-import { DEFAULT_SORT, ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
+import { makeGetDefaultSortOrder } from '@shopgate/engage/filter/selectors';
 import fetchProducts from '../../product/actions/fetchProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
 import receiveSearchResults from '../action-creators/receiveSearchResults';
 import errorSearchResults from '../action-creators/errorSearchResults';
+
+const getDefaultSortOrder = makeGetDefaultSortOrder();
 
 /**
  * Retrieves products for a certain search query.
  * @param {number} params The params for the products to request.
  * @return {Function} The dispatched action.
  */
-const fetchSearchResults = params => (dispatch) => {
+const fetchSearchResults = params => (dispatch, getState) => {
+  const defaultSortOrder = getDefaultSortOrder(getState(), { searchPhrase: params.searchPhrase });
   const {
     offset = 0,
     searchPhrase,
     limit = ITEMS_PER_LOAD,
-    sort = DEFAULT_SORT,
+    sort = defaultSortOrder,
     filters = null,
     params: searchParams = null,
     cachedTime = null,

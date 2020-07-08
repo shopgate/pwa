@@ -1,4 +1,5 @@
 import { produce } from 'immer';
+import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import {
   RECEIVE_SHOP_SETTINGS,
   ERROR_SHOP_SETTINGS,
@@ -6,6 +7,7 @@ import {
   SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP,
+  SHOP_SETTING_PRODUCTS_SORT_ORDER,
 } from '../constants';
 
 const defaultState = {
@@ -13,6 +15,7 @@ const defaultState = {
   [SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT]: null,
   [SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB]: true,
   [SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP]: true,
+  [SHOP_SETTING_PRODUCTS_SORT_ORDER]: SORT_RELEVANCE,
 };
 
 /**

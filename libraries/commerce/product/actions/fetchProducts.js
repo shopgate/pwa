@@ -1,9 +1,10 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
+import { SORT_SCOPE_CATEGORY } from '@shopgate/engage/filter/constants';
+import { makeGetDefaultSortOrder } from '@shopgate/engage/filter/selectors';
 import {
   SHOPGATE_CATALOG_GET_PRODUCTS,
   SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS,
@@ -44,6 +45,8 @@ const processParams = (params, activeFilters, includeSort = true, includeFilters
   return newParams;
 };
 
+const getDefaultSortOrder = makeGetDefaultSortOrder();
+
 /**
  * Retrieves a product from the Redux store.
  * @param {Object} options The options for the getProducts request.
@@ -77,7 +80,8 @@ function fetchProducts(options) {
     const state = getState();
     const { offset, limit, ...hashParams } = params;
 
-    const { sort = DEFAULT_SORT } = hashParams;
+    const defaultSort = getDefaultSortOrder(state, { scope: SORT_SCOPE_CATEGORY });
+    const { sort = defaultSort } = hashParams;
 
     let getProductsRequestParams;
     if (pipeline === SHOPGATE_CATALOG_GET_PRODUCTS) {

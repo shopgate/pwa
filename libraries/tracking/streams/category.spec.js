@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
@@ -98,7 +99,8 @@ describe('Category streams', () => {
      * @param {string} categoryId A category id.
      */
     const dispatchReceiveProducts = (products, categoryId) => {
-      const hash = generateResultHash({ categoryId });
+      const sort = getSortOrder({});
+      const hash = generateResultHash({ categoryId, sort }, false);
 
       dispatch(requestProducts({ hash }));
       dispatch(receiveProducts({

@@ -2,7 +2,7 @@ import React, { useRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
 import CrossIcon from '../icons/CrossIcon';
 import styles from './style';
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { router } from '@virtuous/conductor';

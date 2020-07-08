@@ -5,3 +5,4 @@ export const SHOP_SETTING_CART_SUPPLEMENTAL_CONTENT = 'cartSupplementalContent';
 export const SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT = 'orderSupplementalContent';
 export const SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP = 'showShopLogoInApp';
 export const SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB = 'showShopLogoInWeb';
+export const SHOP_SETTING_PRODUCTS_SORT_ORDER = 'productsSortOrder';

@@ -3,8 +3,8 @@ import isEqual from 'lodash/isEqual';
 import { getCurrentState } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import { SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter/constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
 
@@ -786,7 +786,7 @@ export const getResultHash = createSelector(
   (state, props = {}) => props.categoryId,
   (state, props = {}) => props.searchPhrase,
   (state, props = {}) => props.params,
-  (state, props) => getSortOrder(state, props) || DEFAULT_SORT,
+  (state, props) => getSortOrder(state, props),
   getActiveFilters,
   (categoryId, searchPhrase, params, sort, filters) => {
     if (categoryId) {
@@ -840,7 +840,13 @@ export const getResultByHash = createSelector(
  * @return {Object} The product result.
  */
 export const getPopulatedProductsResult = (state, props, hash, result) => {
-  const sort = getSortOrder(state, props) || DEFAULT_SORT;
+  const { searchPhrase } = props;
+
+  const sort = getSortOrder(state, {
+    ...props,
+    scope: typeof searchPhrase === 'undefined' ? SORT_SCOPE_CATEGORY : SORT_SCOPE_SEARCH,
+  });
+
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 

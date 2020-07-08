@@ -1,5 +1,5 @@
 import { css } from 'glamor';
-import { useScrollContainer } from '@shopgate/engage/core';
+import { useScrollContainer } from '@shopgate/engage/core/helpers/scrollContainer';
 
 const { style } = document.documentElement;
 
