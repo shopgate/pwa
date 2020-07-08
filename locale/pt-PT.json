@@ -47,7 +47,11 @@
       "default": "Ordenar por",
       "most_popular": "Mais populares",
       "price_desc": "Preço: Mais alto para mais baixo",
-      "price_asc": "Preço: Mais baixo para mais alto"
+      "price_asc": "Preço: Mais baixo para mais alto",
+      "name_asc": "Name A - Z",
+      "name_desc": "Name Z - A",
+      "rank_asc": "Rank Low To High",
+      "rank_desc": "Rank High To Low"
     },
     "apply": "Feito",
     "more": "mais",

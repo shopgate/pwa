@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
 import Content from './components/Content';
 import styles from './style';
 
@@ -13,7 +14,7 @@ const { colors } = themeConfig;
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function FilterBar({ filters }) {
+function FilterBar({ filters, categoryId }) {
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
   useEffect(() => {
@@ -32,18 +33,27 @@ function FilterBar({ filters }) {
     [active]
   );
 
+  const sortScope = useMemo(
+    () => (categoryId ? SORT_SCOPE_CATEGORY : SORT_SCOPE_SEARCH),
+    [categoryId]
+  );
+
   return (
     <div className={styles} data-test-id="filterBar" style={style}>
-      <Content />
+      <SortProvider scope={sortScope}>
+        <Content />
+      </SortProvider>
     </div>
   );
 }
 
 FilterBar.propTypes = {
+  categoryId: PropTypes.string,
   filters: PropTypes.shape(),
 };
 
 FilterBar.defaultProps = {
+  categoryId: null,
   filters: null,
 };
 
