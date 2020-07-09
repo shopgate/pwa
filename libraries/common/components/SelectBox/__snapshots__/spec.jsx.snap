@@ -103,7 +103,12 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             tabIndex="-1"
           >
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}
@@ -141,7 +146,12 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               </li>
             </SelectBoxItem>
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}
@@ -179,7 +189,12 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               </li>
             </SelectBoxItem>
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}
@@ -327,7 +342,12 @@ exports[`<SelectBox> should render with a default text 1`] = `
             tabIndex="-1"
           >
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}
@@ -365,7 +385,12 @@ exports[`<SelectBox> should render with a default text 1`] = `
               </li>
             </SelectBoxItem>
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}
@@ -403,7 +428,12 @@ exports[`<SelectBox> should render with a default text 1`] = `
               </li>
             </SelectBoxItem>
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}
@@ -551,7 +581,12 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             tabIndex="-1"
           >
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}
@@ -589,7 +624,12 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               </li>
             </SelectBoxItem>
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={[Function]}
               handleSelectionUpdate={[Function]}
               isSelected={true}
@@ -599,7 +639,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               wrapper={[Function]}
             >
               <li
-                className="css-dw3c54"
+                className="css-dw3c54 undefined"
                 data-test-id="My item #2"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -627,7 +667,12 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               </li>
             </SelectBoxItem>
             <SelectBoxItem
-              className=""
+              classNames={
+                Object {
+                  "selectItem": undefined,
+                  "selectItemSelected": undefined,
+                }
+              }
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
               isSelected={false}

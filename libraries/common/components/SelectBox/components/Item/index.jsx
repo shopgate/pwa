@@ -16,13 +16,13 @@ class SelectBoxItem extends Component {
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     wrapper: PropTypes.func.isRequired,
-    className: PropTypes.string,
+    classNames: PropTypes.objectOf(PropTypes.string),
     forwardedRef: PropTypes.func,
   };
 
   static defaultProps = {
-    className: '',
     forwardedRef: null,
+    classNames: {},
   };
 
   /**
@@ -38,10 +38,13 @@ class SelectBoxItem extends Component {
    */
   render() {
     const Wrapper = this.props.wrapper;
+    const { selectItem, selectItemSelected } = this.props.classNames;
 
     return (
       <li
-        className={classNames(this.props.className, item)}
+        className={classNames(selectItem, item, {
+          [selectItemSelected]: this.props.isSelected,
+        })}
         onKeyUp={() => { }}
         onClick={this.handleSelectionUpdate}
         data-test-id={this.props.label}
