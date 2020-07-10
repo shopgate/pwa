@@ -1,379 +1,281 @@
-// @flow
-import { createSelector, type Selector } from 'reselect';
-import { getProduct, makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product';
+import { createSelector } from 'reselect';
+import pickBy from 'lodash/pickBy';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
+import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
+import { getProduct } from '@shopgate/pwa-common-commerce/product';
 import { makeGetEnabledFulfillmentMethods } from '../../core';
+import { makeIsProductActive, makeIsBaseProductActive } from '../../product';
 import { isProductAvailable } from '../helpers/productInventory';
 import { DIRECT_SHIP } from '../constants';
-import { type State } from '../../types';
-import {
-  type LocationsState,
-  type LocationsByIdState,
-  type LocationsByProductIdState,
-  type Location,
-  type UserLocationState,
-  type ReservationFormValues,
-  type UserLocationFulfillmentMethod,
-  type UserLocationLocationCode,
-} from '../locations.types';
-import { type UserSearchStateType } from '../reducers/userSearch';
 
 /**
- * Retrieves the locations state from the store.
- * @param {Object} state The current application state.
- * @return {Object} The locations state.
- */
-function getLocationsState(state: State): LocationsState {
-  return state.locations || {};
-}
-/**
- * Determines the currently relevant productId from the props.
- * @param {Object} state The application state.
- * @param {Object} props The component props.
- * @param {string} props.productId The ID of a product (simple product id or parent product id)
- * @param {string} props.variantId The ID of a variant.
- * @returns {string|null}
- */
-function getProductId(state, props) {
-  return props.variantId || props.productId || null;
-}
-
-/**
- * Determines the currently relevant locationId from the props.
- * @param {Object} state The application state.
- * @param {Object} props The component props.
- * @param {string} props.locationId The ID of the location
- * @returns {string|null}
- */
-function getLocationId(state, props) {
-  return props.locationId || null;
-}
-
-/**
- * Creates the selector that retrieves the locations state.
+ * Selector to retrieve a product's fulfillment methods.
  * @returns {Function}
  */
-export function makeGetLocationsState(): Selector<State, LocationsByIdState> {
-  /**
-   * Retrieves the product locations state.
-   * @param {Object} state The application state.
-   * @returns {Object}
-   */
-  return createSelector(
-    getLocationsState,
-    state => state.locationsById || {}
-  );
-}
-
-/**
- * Creates the selector that retrieves the user location state.
- * @returns {Function}
- */
-export function makeGetUserLocation(): Selector<State, UserLocationState> {
-  return createSelector(
-    getLocationsState,
-    (locations) => {
-      if (!locations || !locations.userLocation) {
-        return null;
-      }
-
-      return locations.userLocation;
+export const getProductFulfillmentMethods = createSelector(
+  getProduct,
+  (product) => {
+    if (!product || !product.fulfillmentMethods || product.fulfillmentMethods.length === 0) {
+      return null;
     }
-  );
-}
+
+    return product.fulfillmentMethods;
+  }
+);
 
 /**
- * Creates the selector that retrieves the fulfillment method from the user location state.
- * @returns {Function}
+ * Gets the location state.
+ * @param {Object} state State.
+ * @return {Object}
  */
-export function makeGetUserLocationFulfillmentMethod():
-  Selector<State, UserLocationFulfillmentMethod> {
-  const getUserLocation = makeGetUserLocation();
-  return createSelector(
-    getUserLocation,
-    (userLocation) => {
-      const { fulfillmentMethod = null } = userLocation || {};
-      return fulfillmentMethod;
-    }
-  );
-}
+const getLocationsState = state => state.locations || {};
 
 /**
- * Creates the selector that retrieves the location code from the user location state.
- * @returns {Function}
+ * Gets the location storage state.
+ * @param {Object} state State.
+ * @return {Object}
  */
-export function makeGetUserLocationCode(): Selector<State, UserLocationLocationCode> {
-  const getUserLocation = makeGetUserLocation();
-  return createSelector(
-    getUserLocation,
-    (userLocation) => {
-      const { code = null } = userLocation || {};
-      return code;
-    }
-  );
-}
+const getLocationsStorage = state => state.locations.storage;
 
 /**
- * Creates the selector that retrieves the user location address,
- * @returns {Function}
+ * Creates a selector that retrieves a filtered list of locations
+ * @param {Function} getFilters Has to retrieve the filters.
+ * @returns {Object}
  */
-export function makeGetUserLocationAddress() {
-  const getUserLocationCode = makeGetUserLocationCode();
-  const getLocationsById = makeGetLocationsState();
+export const makeGetFilteredLocations = getFilters => createSelector(
+  getLocationsStorage,
+  getFilters,
+  (storage, filters) => {
+    // Get base locations.
+    const key = generateSortedHash(filters);
+    const codes = storage.locationsByFilter[key] || [];
+    const locations = codes.map(code => storage.locationsByCode[code]);
 
-  return createSelector(
-    getLocationsById,
-    getUserLocationCode,
-    (locationsState, code) => {
-      if (!locationsState || !code) {
-        return null;
-      }
-
-      return locationsState[code]?.location?.address || null;
-    }
-  );
-}
-
-/**
- * Creates the selector that retrieves the product locations state.
- * @returns {Function}
- */
-export function makeGetProductLocationsState(): Selector<State, LocationsByProductIdState> {
-  /**
-   * Retrieves the product locations state.
-   * @param {Object} state The application state.
-   * @returns {Object}
-   */
-  return createSelector(
-    getLocationsState,
-    state => state.locationsByProductId || {}
-  );
-}
-
-/**
- * Creates the selector that returns the location.
- * @returns {Function}
- */
-export function makeGetLocation(): Selector<State, Location | null> {
-  const getLocationsStateSelector = makeGetLocationsState();
-
-  /**
-   * Retrieves the locations.
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @param {string} props.code The ID of the location.
-   * @returns {Array|null}
-   */
-  return createSelector(
-    getLocationsStateSelector,
-    getLocationId,
-    (locationsState, locationId) => {
-      if (!locationId) {
-        return null;
-      }
-      return locationsState[locationId]?.location || null;
-    }
-  );
-}
-
-/**
- * Creates the selector that returns the locations for a specific product.
- * @returns {Function}
- */
-export function makeGetProductLocations(): Selector<State, Location[] | null> {
-  const getProductLocationsState = makeGetProductLocationsState();
-
-  /**
-   * Retrieves the locations for a specific product.
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @param {string} props.productId The ID of the product to look for.
-   * @returns {Array|null}
-   */
-  return createSelector(
-    getProductLocationsState,
-    getProductId,
-    (locationsState, productId) => {
-      if (!productId || !locationsState[productId]) {
-        return null;
-      }
-
-      const { locations = [] } = locationsState[productId];
-
+    // Enhance with inventory data.
+    const { productCode } = filters;
+    if (!productCode) {
       return locations;
     }
-  );
-}
-
-/**
- * Creates the selector that returns the locations for a specific product.
- * @returns {Function}
- */
-export function makeGetProductAllLocations() {
-  const getProductLocationsState = makeGetProductLocationsState();
-
-  /**
-   * Retrieves the locations for a specific product.
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @param {string} props.productId The ID of the product to look for.
-   * @returns {Array|null}
-   */
-  return createSelector(
-    getProductLocationsState,
-    getProductId,
-    (locationsState, productId) => {
-      if (!productId || !locationsState[productId]) {
-        return null;
+    return locations.map((location) => {
+      const pair = generateSortedHash({ productCode, locationCode: location.code });
+      const inventory = storage.inventoriesByCodePair[pair] || null;
+      if (inventory) {
+        return { ...location, inventory };
       }
-
-      const { allLocations = [] } = locationsState[productId];
-
-      return allLocations;
-    }
-  );
-}
+      return location;
+    });
+  }
+);
 
 /**
- * Creates the selector that returns the single product location.
- * @param {boolean} useUserLocation Whether the location code is taken from the userLocation state.
+ * Creates a selector that retrieves all locations for a given product.
+ * @param {Function} getProductCode Has to retrieve the product code.
+ * @returns {Object}
+ */
+export const makeGetLocationsForProduct = (getProductCode) => {
+  /* eslint-disable require-jsdoc */
+  const getFilters = (state, props) => ({
+    productCode: getProductCode(state, props),
+    ...pickBy(getLocationsState(state).userSearch),
+  });
+  /* eslint-enable require-jsdoc */
+  return makeGetFilteredLocations(getFilters);
+};
+
+/**
+ * Gets the address of the users preferred location.
+ * @param {Object} state State.
+ * @return {Object}
+ */
+export const getPreferredLocationAddress = (state) => {
+  const storage = getLocationsStorage(state);
+  const locationCode = storage.preferredLocation.code;
+  return storage.locationsByCode[locationCode]?.address;
+};
+
+/**
+  Gets the users preferred location.
+ * @param {Object} state State.
+ * @param {Object} props Props.
+ * @return {Object}
+ */
+export const getPreferredLocation = (state, props) => {
+  const storage = getLocationsStorage(state);
+  const locationCode = storage.preferredLocation.code;
+
+  // Figure out default location.
+  if (!locationCode && props) {
+    const getAvailable = makeGetLocationsForProduct(
+      (_, iprops) => iprops.variantId || iprops.productId
+    );
+    const available = getAvailable(state, props);
+    return available?.[0] || null;
+  }
+
+  return storage.locationsByCode[locationCode] || null;
+};
+
+/**
+  Gets the users preferred fulfillment method.
+ * @param {Object} state State.
+ * @param {Object} props Props.
+ * @return {Object}
+ */
+export const getPreferredFulfillmentMethod = (state, props) => {
+  const storage = getLocationsStorage(state);
+  const method = storage.preferredFulfillmentMethod.type;
+
+  // Figure out a default fo method.
+  if (!method) {
+    try {
+      const available = getProductFulfillmentMethods(state, props);
+      return available?.[0] || null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  return method;
+};
+
+/**
+ * Retrieves the user's search.
+ * @param {Object} state State.
+ * @returns {Object}
+ */
+export const getUserSearch = (state) => {
+  const locationState = getLocationsState(state);
+  return locationState.userSearch;
+};
+
+/**
+ * Retrieves the country code from the user's search.
+ * @param {Object} state State.
+ * @returns {string}
+ */
+export const getUserSearchCountryCode = (state) => {
+  const userSearch = getUserSearch(state);
+  return userSearch.countryCode || '';
+};
+
+/**
+ * Retrieves the postal code from the user's search.
+ * @param {Object} state State.
+ * @returns {string}
+ */
+export const getUserSearchPostalCode = (state) => {
+  const userSearch = getUserSearch(state);
+  return userSearch.postalCode;
+};
+
+/**
+ * Creates a new selector that retrieves a location by its code.
+ * @param {Function} getLocationCode Has to retrieve the location code.
+ * @returns {Object}
+ */
+export const makeGetLocation = getLocationCode => (state, props) => {
+  const locationCode = getLocationCode(state, props);
+  return getLocationsStorage(state).locationsByCode[locationCode] || null;
+};
+
+/**
+ * Creates a selector that retrieves the inventory for a product at a location.
+ * @param {Function} getLocationCode Has to retrieve the location code.
+ * @param {Function} getProductCode Has to retrieve the product code.
+ * @returns {Object}
+ */
+export const makeGetLocationInventory = (getLocationCode, getProductCode) => (state, props) => {
+  const locationCode = getLocationCode(state, props);
+  const productCode = getProductCode(state, props);
+
+  const storage = getLocationsStorage(state);
+  const pair = generateSortedHash({ productCode, locationCode });
+  return storage.inventoriesByCodePair[pair] || null;
+};
+
+/**
+ * Selector that retrieves the user's reserve form input.
  * @returns {Function}
  */
-export function makeGetProductLocation(
-  useUserLocation: boolean = false
-): Selector<State, Location | null> {
-  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
-  const getProductLocationsState = makeGetProductLocationsState();
-  const getLocationCodeSelector = useUserLocation
-    ? makeGetUserLocationCode()
-    : getLocationId;
+export const getUserFormInput = createSelector(
+  getLocationsState,
+  getUserData,
+  (locations, userData) => {
+    if ((!locations || !locations.userFormInput) && !userData) {
+      return null;
+    }
+    const { firstName, lastName, mail: email } = userData || {};
+    const { userFormInput = {} } = locations || {};
 
-  /**
-   * Retrieves the locations for a specific product.
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @param {string} props.productId The ID of the product to look for.
-   * @returns {Array|null}
-   */
+    return {
+      firstName,
+      lastName,
+      email,
+      ...userFormInput,
+    };
+  }
+);
+
+/**
+ * Creates a selector that retrieves the flag that decides if a product is currently orderable.
+ * @param {Function} getLocationCode Has to retrieve the location code.
+ * @param {Function} getProductCode Has to retrieve the product code.
+ * @returns {Function}
+ */
+export const makeIsRopeProductOrderable = (getLocationCode, getProductCode) => {
+  const getInventory = makeGetLocationInventory(getLocationCode, getProductCode);
+  const getLocation = makeGetLocation(getLocationCode);
+
   return createSelector(
-    getProductLocationsState,
-    getLocationCodeSelector,
-    getProductId,
-    getUserLocationFulfillmentMethod,
-    (locationsState, locationId, productId, fulfillmentMethod) => {
+    getPreferredFulfillmentMethod,
+    getLocation,
+    getInventory,
+    (fulfillmentMethod, location, inventory) => {
       if (
-        !productId ||
-        !locationId ||
-        !locationsState[productId] ||
-        !Array.isArray(locationsState[productId].locations)
+        fulfillmentMethod === DIRECT_SHIP
       ) {
-        // Try to set a feasible default location.
-        const product = locationsState[productId];
-        if (!locationId && product && fulfillmentMethod) {
-          // Find first location that has current select fulfillment method.
-          const location = product.allLocations?.find(
-            loc => loc.supportedFulfillmentMethods?.find(
-              method => method === fulfillmentMethod
-            ) && loc.productInventory?.isAvailable
-          );
-          return location || null;
-        }
         return null;
       }
 
-      const { locations = [], allLocations = [] } = locationsState[productId];
-      return locations?.find(l => l.code === locationId) ||
-        allLocations?.find(l => l.code === locationId) ||
-        null;
-    }
-  );
-}
-
-/**
- * Creates the selector that determines, if products locations for a specific product are fetching.
- * @returns {Function}
- */
-export function makeGetIsFetchingProductLocations(): Selector<State, boolean | null> {
-  const getProductLocationsState = makeGetProductLocationsState();
-
-  /**
-   * Retrieves the isFetching state of locations for a specific product.
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @param {string} props.productId The ID of the product to look for.
-   * @returns {Array|null}
-   */
-  return createSelector(
-    getProductLocationsState,
-    getProductId,
-    (locationsState, productId) => {
-      if (!productId || !locationsState[productId]) {
-        return null;
+      if (location === null) {
+        return false;
       }
 
-      const { isFetching = false } = locationsState[productId];
-
-      return isFetching;
+      return isProductAvailable(location, inventory);
     }
   );
-}
-
-/**
- * Creates a selector to retrieve a product's fulfillment methods.
- * @returns {Function}
- */
-export function makeGetProductFulfillmentMethods(): Selector<State, string[] | null> {
-  /**
-   * Retrieves a product's fulfillment methods.
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @param {string} props.productId The ID of the product to look for.
-   * @returns {Array|null}
-   */
-  return createSelector(
-    getProduct,
-    (product) => {
-      if (!product || !product.fulfillmentMethods || product.fulfillmentMethods.length === 0) {
-        return null;
-      }
-
-      return product.fulfillmentMethods;
-    }
-  );
-}
+};
 
 /**
  * Creates a selector that checks if the Fulfillment Selector should be disabled.
+ * @param {Function} getLocationCode Has to retrieve the location code.
+ * @param {Function} getProductCode Has to retrieve the product code.
  * @param {string} fulfillmentMethod The fulfillment method to check.
  * @returns {Function}
  */
-export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string) {
-  const getProductLocations = makeGetProductLocations();
-  const getProductAllLocations = makeGetProductAllLocations();
-  const getProductFulfillmentMethods = makeGetProductFulfillmentMethods();
+export const makeIsFulfillmentSelectorMethodEnabled = (
+  getLocationCode,
+  getProductCode,
+  fulfillmentMethod
+) => {
+  const getLocation = makeGetLocation(getLocationCode);
+  const getInventory = makeGetLocationInventory(getLocationCode, getProductCode);
   const getMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
   const isProductActive = makeIsProductActive();
   const isBaseProductActive = makeIsBaseProductActive();
 
-  /**
-   * Retrieves whether the Fulfillment Selector for a specific method should be disabled.
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @param {string} props.productId The ID of the product to look for.
-   * @returns {boolean}
-   */
   return createSelector(
     isProductActive,
     isBaseProductActive,
-    getProductLocations,
-    getProductAllLocations,
+    getLocation,
+    getInventory,
     getMerchantFulfillmentMethods,
     getProductFulfillmentMethods,
     (
       productActive,
       baseProductActive,
-      locations,
-      allLocations,
+      location,
+      inventory,
       merchantMethods,
       productMethods
     ) => {
@@ -381,9 +283,9 @@ export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string
         return false;
       }
 
-      const hasLocations =
-        (Array.isArray(locations) && locations.length > 0) ||
-        (Array.isArray(allLocations) && allLocations.length > 0);
+      if (!location || !inventory) {
+        return false;
+      }
 
       const methodSupported =
         Array.isArray(merchantMethods) &&
@@ -395,118 +297,14 @@ export function makeIsFulfillmentSelectorMethodEnabled(fulfillmentMethod: string
         return true;
       }
 
-      if (!hasLocations || !methodSupported) {
+      if (!methodSupported) {
         return false;
       }
 
       return true;
     }
   );
-}
-
-/**
- * Creates a selector that retrieves the user's reserve form input.
- * @returns {Function}
- */
-export function makeGetUserFormInput(): Selector<State, ReservationFormValues> {
-  return createSelector(
-    getLocationsState,
-    getUserData,
-    (locations, userData) => {
-      if ((!locations || !locations.userFormInput) && !userData) {
-        return null;
-      }
-      const { firstName, lastName, mail: email } = userData || {};
-      const { userFormInput = {} } = locations || {};
-
-      return {
-        firstName,
-        lastName,
-        email,
-        ...userFormInput,
-      };
-    }
-  );
-}
-
-/**
- * Create a selector that retrieves the user's search.
- * @returns {Function}
- */
-export function makeGetUserSearch(): Selector<State, UserSearchStateType> {
-  return createSelector(
-    getLocationsState,
-    locations => locations.userSearch || {}
-  );
-}
-
-/**
- * Create a selector that retrieves the postal code from the user's search.
- * @returns {Function}
- */
-export function makeGetUserSearchPostalCode(): Selector<State, string | null> {
-  const getUserSearch = makeGetUserSearch();
-
-  /**
-  * Retrieves the postal code from the user's search.
-  * @param {Object} state The application state.
-  * @param {Object} props The component props.
-  * @returns {string|null}
-  */
-  return createSelector(
-    getUserSearch,
-    userSearch => userSearch.postalCode
-  );
-}
-
-/**
- * Create a selector that retrieves the country code from the user's search.
- * @returns {Function}
- */
-export function makeGetUserSearchCountryCode(): Selector<State, string> {
-  const getUserSearch = makeGetUserSearch();
-
-  /**
-  * Retrieves the country code from the user's search.
-  * @param {Object} state The application state.
-  * @param {Object} props The component props.
-  * @returns {string}
-  */
-  return createSelector(
-    getUserSearch,
-    userSearch => userSearch.countryCode || ''
-  );
-}
-
-/**
- * Creates a selector
- * @param {boolean} useUserLocation Whether the location code is taken from the userLocation state.
- * @returns {Function}
- */
-export function makeIsRopeProductOrderable(
-  useUserLocation: boolean = false
-): Selector<State, boolean> {
-  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
-  const getProductLocation = makeGetProductLocation(useUserLocation);
-
-  return createSelector(
-    getUserLocationFulfillmentMethod,
-    getProductLocation,
-    (userLocationFulfillmentMethod, productLocation) => {
-      if (
-        userLocationFulfillmentMethod === DIRECT_SHIP
-      ) {
-        return null;
-      }
-
-      if (productLocation === null) {
-        return false;
-      }
-
-      return isProductAvailable(productLocation);
-    }
-  );
-}
+};
 
 /**
  * Returns the externalCustomerNumber that is used to create a new order.

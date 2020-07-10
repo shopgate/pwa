@@ -32,7 +32,8 @@ function promisifiedFulfillmentPathSelector(): Promise<FulfillmentPath> {
  */
 export function FulfillmentSelectorAddToCart() {
   const {
-    location,
+    preferredLocation,
+    inventory,
     selectedLocation,
     conditioner,
     fulfillmentPaths,
@@ -42,7 +43,7 @@ export function FulfillmentSelectorAddToCart() {
     isBOPISEnabled,
   } = useFulfillmentSelectorState();
 
-  const usedLocation = selectedLocation || location;
+  const usedLocation = selectedLocation || preferredLocation;
 
   // Add to cart effect to validate inventory
   useEffect(() => {
@@ -63,7 +64,7 @@ export function FulfillmentSelectorAddToCart() {
         return false;
       }
 
-      if (!isProductAvailable(usedLocation)) {
+      if (!isProductAvailable(usedLocation, inventory)) {
         return false;
       }
 
@@ -97,7 +98,7 @@ export function FulfillmentSelectorAddToCart() {
         return false;
       }
 
-      return isProductAvailable(usedLocation);
+      return isProductAvailable(usedLocation, inventory);
     }, 100);
 
     return () => conditioner.removeConditioner('fulfillment-inventory');
@@ -109,6 +110,7 @@ export function FulfillmentSelectorAddToCart() {
     isDirectShipEnabled,
     isROPISEnabled,
     isBOPISEnabled,
+    inventory,
   ]);
 
   return null;

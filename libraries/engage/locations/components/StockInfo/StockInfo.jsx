@@ -1,8 +1,10 @@
 // @flow
 import * as React from 'react';
 import { css } from 'glamor';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import defaultsDeep from 'lodash/defaultsDeep';
+import { makeGetLocationInventory } from '../../selectors';
 import { getThemeSettings } from '../../../core';
 import { SurroundPortals } from '../../../components';
 import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
@@ -13,20 +15,35 @@ import { type Location } from '../../locations.types';
 
 type Props = {
   location: Location,
+  inventory: any,
   className?: string | {} | null,
 }
+
+/**
+ * Creates a mapper for redux.
+ * @returns {Function}
+ */
+const makeMapStateToProps = () => {
+  const getInventory = makeGetLocationInventory(
+    (_, props) => props.location?.code,
+    (_, props) => props.productId || props.product?.id
+  );
+  return (state, props) => ({
+    inventory: getInventory(state, props),
+  });
+};
 
 /**
  * Renders visible stock information based on the given location.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-export function StockInfo({ location, className }: Props) {
+const StockInfoUnwrapped = ({ location, inventory, className }: Props) => {
   const { locationStockInfo } = getThemeSettings('product') || {};
   const settings = defaultsDeep(locationStockInfo, defaultSettings);
 
   const { availabilityText = '', availabilityTextColor = 'inherit' } =
-    getAvailabilitySettings(settings, location);
+    getAvailabilitySettings(settings, location, inventory);
 
   const defaultClassName = css({
     color: availabilityTextColor,
@@ -47,14 +64,17 @@ export function StockInfo({ location, className }: Props) {
         <StockInfoInventory
           availabilityText={availabilityText}
           location={location}
+          inventory={inventory}
           maxNumberVisible={settings.maxNumberOfVisibleInventory}
           aboveMaxExtension={settings.aboveMaxExtension}
         />
       </span>
     </SurroundPortals>
   );
-}
+};
 
-StockInfo.defaultProps = {
+StockInfoUnwrapped.defaultProps = {
   className: null,
 };
+
+export const StockInfo = connect(makeMapStateToProps)(StockInfoUnwrapped);

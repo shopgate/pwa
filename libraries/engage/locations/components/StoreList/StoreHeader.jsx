@@ -17,8 +17,8 @@ import { storeHeader, storeName, disabled } from './Store.style';
  */
 export function StoreHeader() {
   const store = useContext(StoreContext);
-  const { selectLocation } = useContext(FulfillmentContext);
-  const isAvailable = isProductAvailable(store);
+  const { selectLocation, product } = useContext(FulfillmentContext);
+  const isAvailable = isProductAvailable(store, store?.inventory);
 
   const handleClick = useCallback(() => {
     if (isAvailable) {
@@ -42,7 +42,7 @@ export function StoreHeader() {
           <ResponsiveContainer breakpoint=">=sm" webOnly>
             <ul>
               <Grid.Item shrink={0}>
-                <StockInfo location={store} showStoreName={false} />
+                <StockInfo location={store} product={product} showStoreName={false} />
                 <StoreDistance distance={distance} unitSystem={unitSystem} />
               </Grid.Item>
             </ul>

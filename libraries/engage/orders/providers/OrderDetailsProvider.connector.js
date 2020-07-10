@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
-import { makeGetUserLocationAddress } from '@shopgate/engage/locations/selectors';
+import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { makeGetOrderById } from '../selectors';
 import { fetchOrderDetails } from '../actions';
@@ -9,7 +9,6 @@ import { fetchOrderDetails } from '../actions';
  * @return {Function}
  */
 const makeMapStateToProps = () => {
-  const getUserLocationAddress = makeGetUserLocationAddress();
   const getOrderById = makeGetOrderById();
 
   /**
@@ -21,7 +20,7 @@ const makeMapStateToProps = () => {
     isDataReady: !getConfigFetching(state),
     isUserLoggedIn: isUserLoggedIn(state),
     shopSettings: getShopSettings(state),
-    userLocation: getUserLocationAddress(state),
+    userLocation: getPreferredLocationAddress(state),
     order: getOrderById(state, props),
   });
 };

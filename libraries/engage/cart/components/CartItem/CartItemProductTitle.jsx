@@ -34,6 +34,7 @@ type Props = {
 export function CartItemProductTitle(props: Props) {
   const { value } = props;
   const { invokeFulfillmentAction } = useCartItem();
+
   const context = useCartItemProduct();
   const {
     handleRemove, toggleEditMode, cartItem, isEditable,

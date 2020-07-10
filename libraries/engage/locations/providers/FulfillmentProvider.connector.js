@@ -6,10 +6,11 @@ import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/upd
 import { makeGetFulfillmentPaths, makeGetEnabledFulfillmentMethods, getShopSettings } from '@shopgate/engage/core/config';
 import { selectLocation, storeFormInput } from '../action-creators';
 import {
-  makeGetProductLocation,
-  makeGetProductLocations,
-  makeGetUserFormInput,
-  makeGetProductFulfillmentMethods,
+  makeGetLocationInventory,
+  makeGetLocationsForProduct,
+  getPreferredLocation,
+  getUserFormInput,
+  getProductFulfillmentMethods,
 } from '../selectors';
 import { submitReservation } from '../actions';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentProvider.types';
@@ -18,11 +19,19 @@ import { type OwnProps, type StateProps, type DispatchProps } from './Fulfillmen
  * @returns {Function}
  */
 function makeMapStateToProps() {
-  const getProductLocations = makeGetProductLocations();
-  const getUserFormInput = makeGetUserFormInput();
+  /* eslint-disable require-jsdoc */
+  const getProductCode = (_, props) => props.variantId || props.productId || null;
+  /* eslint-enable require-jsdoc */
+
+  const getInventory = makeGetLocationInventory(
+    (state, props) => getPreferredLocation(state, props)?.code || null,
+    getProductCode
+  );
+  const getProductLocations = makeGetLocationsForProduct(
+    getProductCode
+  );
+
   const getFulfillmentPaths = makeGetFulfillmentPaths();
-  const getProductLocation = makeGetProductLocation(true);
-  const getFulfillmentMethods = makeGetProductFulfillmentMethods();
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
 
   /**
@@ -34,10 +43,11 @@ function makeMapStateToProps() {
     locations: getProductLocations(state, props),
     baseProduct: getBaseProduct(state, props),
     product: getProduct(state, props),
-    location: getProductLocation(state, props),
+    location: getPreferredLocation(state, props),
+    inventory: getInventory(state, props),
     userInput: getUserFormInput(state),
     fulfillmentPaths: getFulfillmentPaths(state),
-    fulfillmentMethods: getFulfillmentMethods(state, props),
+    fulfillmentMethods: getProductFulfillmentMethods(state, props),
     enabledFulfillmentMethods: getEnabledFulfillmentMethods(state, props),
     shopSettings: getShopSettings(state),
   });

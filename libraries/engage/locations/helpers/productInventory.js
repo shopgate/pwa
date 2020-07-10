@@ -1,19 +1,15 @@
-// @flow
-import { type Location } from '../locations.types';
-
 /**
  * Check if product inventory is orderable.
  * @param {Object} location The location to check.
+ * @param {Object} inventory The location inventory to check.
  * @returns {boolean}
  */
-export function isProductAvailable(location: Location = {}) {
+export function isProductAvailable(location = {}, inventory = {}) {
+  const { isComingSoon } = location;
   const {
-    productInventory: {
-      isAvailable = false,
-      visible = 0,
-    } = {},
-    isComingSoon,
-  } = location;
+    isAvailable = false,
+    visible = 0,
+  } = inventory;
 
   if (isComingSoon) {
     return false;

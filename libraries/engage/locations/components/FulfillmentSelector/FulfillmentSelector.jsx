@@ -43,7 +43,8 @@ function FulfillmentSelector(props: Props) {
     productId,
     shopFulfillmentMethods,
     productFulfillmentMethods,
-    location,
+    preferredLocation,
+    inventory,
     conditioner,
     isDirectShipEnabled,
     isROPISEnabled,
@@ -56,10 +57,24 @@ function FulfillmentSelector(props: Props) {
   } = props;
 
   const [selection, setSelection] = useState<Selection>(userFulfillmentMethod);
-  const [selectedLocation, setSelectedLocation] = useState(location);
+  const [selectedLocation, setSelectedLocation] = useState(preferredLocation);
   const [isOpen, setIsOpen] = useState(false);
 
-  const usedLocation = selectedLocation || location;
+  const usedLocation = selectedLocation || preferredLocation;
+
+  // Initialize fo selection once it is available.
+  useEffect(() => {
+    if (!selection && userFulfillmentMethod) {
+      setSelection(userFulfillmentMethod);
+    }
+  }, [selection, userFulfillmentMethod]);
+
+  // Initialize location selection once it is available.
+  useEffect(() => {
+    if (!selectedLocation && preferredLocation) {
+      setSelectedLocation(preferredLocation);
+    }
+  }, [preferredLocation, selectedLocation]);
 
   const fulfillmentMethodFallback = useMemo<UserLocationFulfillmentMethod>(() => {
     if (!shopFulfillmentMethods) {
@@ -103,10 +118,10 @@ function FulfillmentSelector(props: Props) {
   ]);
 
   useEffect(() => {
-    if (JSON.stringify(location) !== JSON.stringify(selectedLocation)) {
-      setSelectedLocation(location);
+    if (preferredLocation?.code !== selectedLocation?.code) {
+      setSelectedLocation(preferredLocation);
     }
-  }, [location, selectedLocation, shopFulfillmentMethods]);
+  }, [preferredLocation, selectedLocation, shopFulfillmentMethods]);
 
   /**
    * Updates the selected location when the sheet closes.
@@ -140,7 +155,7 @@ function FulfillmentSelector(props: Props) {
       storeFulfillmentMethod(method);
 
       const isValidRopeSelection =
-        [ROPIS, BOPIS].includes(method) && !!location && !!location.code;
+        [ROPIS, BOPIS].includes(method) && !!preferredLocation && !!preferredLocation.code;
 
       if (!changeOnly && (isOpen || isValidRopeSelection)) {
         return;
@@ -158,7 +173,7 @@ function FulfillmentSelector(props: Props) {
         changeOnly,
       });
     });
-  }, [conditioner, handleClose, isOpen, location, storeFulfillmentMethod]);
+  }, [conditioner, handleClose, isOpen, preferredLocation, storeFulfillmentMethod]);
 
   if (!Array.isArray(shopFulfillmentMethods) || shopFulfillmentMethods.length === 0) {
     return null;
@@ -167,7 +182,8 @@ function FulfillmentSelector(props: Props) {
   const context: FulfillmentSelectorContextProps = {
     selection,
     selectedLocation,
-    location: location || null,
+    inventory,
+    preferredLocation,
     isDirectShipEnabled,
     isBOPISEnabled,
     isROPISEnabled,

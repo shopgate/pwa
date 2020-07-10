@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
-import { makeGetUserLocationAddress } from '@shopgate/engage/locations/selectors';
+import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 import {
   getCheckoutOrder,
   getCheckoutBillingAddress,
@@ -24,8 +24,6 @@ import { historyReplace } from '@shopgate/engage/core';
  * @returns {Function}
  */
 function makeMapStateToProps() {
-  const getUserLocationAddress = makeGetUserLocationAddress();
-
   /**
    * @param {Object} state The application state.
    * @returns {Object}
@@ -35,7 +33,7 @@ function makeMapStateToProps() {
     needsPayment: getNeedsPaymentForOrder(state) || false,
     paymentTransactions: getCheckoutPaymentTransactions(state),
     shopSettings: getShopSettings(state),
-    userLocation: getUserLocationAddress(state),
+    userLocation: getPreferredLocationAddress(state),
     billingAddress: getCheckoutBillingAddress(state),
     pickupAddress: getCheckoutPickupAddress(state),
     taxLines: getCheckoutTaxLines(state),

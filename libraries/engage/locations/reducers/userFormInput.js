@@ -4,6 +4,8 @@ import { STORE_FORM_INPUT } from '../constants';
 import { type UserLocationState } from '../locations.types';
 
 /**
+ * TODO: Move to a different state / has nothing to do with locations.
+ *
  * Stores the user's reserve form input
  * @param {Object} state The current state.
  * @param {Object} action The action object.

@@ -6,7 +6,6 @@ import { isProductAvailable } from '../../helpers';
 import { STAGE_SELECT_STORE } from '../../constants';
 import connect from './CartItemProductChangeLocation.connector';
 import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
-import { type Location } from '../../locations.types';
 
 type Props = OwnProps & DispatchProps;
 
@@ -42,9 +41,9 @@ const CartItemProductChangeLocation = (props: Props) => {
   /**
    * Select location callback
    */
-  const onLocationSelect = React.useCallback((location: Location | null) => {
+  const onLocationSelect = React.useCallback((location) => {
     setTimeout(() => setOpened(false), 500);
-    if (!location || !isProductAvailable(location)) {
+    if (!location || !isProductAvailable(location, location?.inventory)) {
       return;
     }
     updateProductInCart(cartItem.id, cartItem.quantity, location, fulfillmentMethod);

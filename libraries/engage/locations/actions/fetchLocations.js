@@ -13,13 +13,23 @@ import { SHOPGATE_STOREFRONT_GET_LOCATIONS } from '../constants';
 function fetchLocations(params) {
   return (dispatch) => {
     dispatch(requestLocations(params));
+
+    const filters = { countryCode: params.countryCode };
+    if (params.geolocation) {
+      filters.longitude = params.geolocation.longitude;
+      filters.latitude = params.geolocation.latitude;
+    }
+    if (params.postalCode) {
+      filters.postalCode = params.postalCode;
+    }
+
     const request = new PipelineRequest(SHOPGATE_STOREFRONT_GET_LOCATIONS)
-      .setInput(params)
+      .setInput(filters)
       .dispatch();
 
     request
       .then((result) => {
-        dispatch(receiveLocations(result.locations));
+        dispatch(receiveLocations(filters, result.locations));
       })
       .catch((error) => {
         logger.error(error);

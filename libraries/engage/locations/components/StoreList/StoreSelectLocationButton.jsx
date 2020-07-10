@@ -13,7 +13,7 @@ import { selectLocationButton, selectLocationButtonWrapper } from './Store.style
 export const StoreSelectLocationButton = () => {
   const store = useContext(StoreContext);
   const { selectLocation } = useContext(FulfillmentContext);
-  const isAvailable = isProductAvailable(store);
+  const isAvailable = isProductAvailable(store, store?.inventory);
 
   const handleClick = useCallback(() => {
     if (isAvailable) {

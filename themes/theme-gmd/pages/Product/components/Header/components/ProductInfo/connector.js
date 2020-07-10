@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  makeGetProductFulfillmentMethods,
+  getProductFulfillmentMethods,
   ROPIS,
   BOPIS,
 } from '@shopgate/engage/locations';
@@ -11,7 +11,6 @@ import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core';
  */
 function makeMapStateToProps() {
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
-  const getFulfillmentMethods = makeGetProductFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.
@@ -20,7 +19,7 @@ function makeMapStateToProps() {
    */
   return (state, props) => {
     const enabledFulfillmentMethods = getEnabledFulfillmentMethods(state) || false;
-    const productFulfillmentMethods = getFulfillmentMethods(state, props);
+    const productFulfillmentMethods = getProductFulfillmentMethods(state, props);
 
     const merchantHasROPE =
       enabledFulfillmentMethods &&

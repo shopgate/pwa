@@ -40,19 +40,18 @@ import {
  * @returns {JSX}
  */
 function StoreListSearch({
-  getProductLocations,
   postalCode,
   countryCode,
   setPostalCode,
   setCountryCode,
+  setGeolocation,
 }) {
   const {
-    product,
     locations,
     shopSettings: { supportedCountries } = {},
   } = useContext(FulfillmentContext);
 
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [message, setMessage] = useState('');
   const [inputPostalCode, setInputPostalCode] = useState(postalCode || '');
   const isMounted = useRef(false);
@@ -74,94 +73,12 @@ function StoreListSearch({
   }, [locations]);
 
   /**
-   * Triggers a location update.
-   * @param {Object} searchParams Parameters for the getProductLocation action call.
-   * @param {string} [silent=false] If set to TRUE users will not get see any feedback popups when
-   * geolocation tracking fails.
-   */
-  const updateProductLocations = useCallback(async (searchParams, silent = false) => {
-    // Clear old error messages.
-    setMessage('');
-    setLoading(true);
-
-    // Request new locations.
-    let error;
-
-    try {
-      await getProductLocations(product.id, searchParams, silent);
-    } catch (e) {
-      if (e.code === 'ENOTFOUND') {
-        error = 'locations.error_invalid_zip_code';
-      }
-    }
-
-    if (isMounted.current === false) {
-      return;
-    }
-
-    if (error) {
-      setMessage(error);
-    }
-
-    setLoading(false);
-  }, [getProductLocations, product.id]);
-
-  /**
-   * Triggers a product locations update at the initial rendering of the component. Potential
-   * feedback popups on declined geolocation permissions will be suppressed.
-   */
-  useEffect(() => {
-    let searchParams = null;
-
-    if (postalCode !== null) {
-      searchParams = {
-        postalCode,
-        countryCode,
-      };
-    }
-
-    updateProductLocations(searchParams, true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  /**
-   * Triggers an update of Redux postalCode and countryCode and triggers fetching of new locations.
-   * @param {string|null} postalCode Postal code for the update.
-   * @param {string} [countryCode=countryCode] Country code for the update.
-   */
-  const update = useCallback((postalCodeUpdate, countryCodeUpdate = countryCode) => {
-    if (postalCodeUpdate !== postalCode) {
-      setPostalCode(postalCodeUpdate);
-    }
-
-    if (countryCodeUpdate !== countryCode) {
-      setCountryCode(countryCodeUpdate);
-
-      if (!postalCode) {
-        // Prevent location update when the country selection changed, but the postal code is empty.
-        return;
-      }
-    }
-
-    let searchParams = null;
-
-    if (postalCodeUpdate !== null) {
-      searchParams = {
-        postalCode: postalCodeUpdate,
-        countryCode: countryCodeUpdate,
-      };
-    }
-
-    updateProductLocations(searchParams);
-  }, [countryCode, postalCode, setCountryCode, setPostalCode, updateProductLocations]);
-
-  /**
    * Triggers an update when the value of the country selector changed.
    * @param {SyntheticEvent} event A React event object.
    */
   const handleCountrySelectChange = useCallback((event) => {
-    update(postalCode, event.target.value);
-  }, [update, postalCode]);
+    setCountryCode(event.target.value);
+  }, [setCountryCode]);
 
   /**
    * Blurs the postal code input to trigger an update.
@@ -177,17 +94,17 @@ function StoreListSearch({
    * Triggers an update when the input blurs.
    */
   const handlePostalCodeBlur = useCallback(() => {
-    update(inputPostalCode);
-  }, [inputPostalCode, update]);
+    setPostalCode(inputPostalCode);
+  }, [inputPostalCode, setPostalCode]);
 
   /**
    * Triggers an update when the locate me button was pressed. Also clears the local state for the
    * postal code input.
    */
   const handleLocateMeButton = useCallback(() => {
+    setGeolocation();
     setInputPostalCode('');
-    update(null);
-  }, [update]);
+  }, [setGeolocation]);
 
   /**
    * Updates the local state for the postal code input.
@@ -274,8 +191,8 @@ StoreListSearch.defaultProps = {
 
 StoreListSearch.propTypes = {
   countryCode: PropTypes.string.isRequired,
-  getProductLocations: PropTypes.func.isRequired,
   setCountryCode: PropTypes.func.isRequired,
+  setGeolocation: PropTypes.func.isRequired,
   setPostalCode: PropTypes.func.isRequired,
   postalCode: PropTypes.string,
 };

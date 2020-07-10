@@ -30,6 +30,7 @@ export type StateProps = {
   fulfillmentPaths: string[],
   fulfillmentMethods?: string[],
   shopSettings?: ShopSettings,
+  inventory: any,
 } & ProductAware & BaseProductAware
 
 export type DispatchProps = {

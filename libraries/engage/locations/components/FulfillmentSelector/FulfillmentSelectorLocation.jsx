@@ -23,18 +23,20 @@ import {
 export function FulfillmentSelectorLocation() {
   const {
     selection,
-    location,
+    preferredLocation,
     selectedLocation,
+    inventory,
     handleChange,
     isReady,
     isROPISEnabled,
     isBOPISEnabled,
     userFulfillmentMethod,
+    productId,
   } = useFulfillmentSelectorState();
 
-  const usedLocation = selectedLocation || location;
+  const usedLocation = selectedLocation || preferredLocation;
   const selected = ([ROPIS, BOPIS].includes(selection));
-  const isOrderable = isProductAvailable(location || undefined);
+  const isOrderable = isProductAvailable(usedLocation || {}, inventory || {});
 
   const handleChangeLocation = useCallback(() => {
     if (selected) {
@@ -58,7 +60,7 @@ export function FulfillmentSelectorLocation() {
               <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
             </Grid.Item>
             <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-              <StockInfo location={usedLocation} />
+              <StockInfo productId={productId} location={usedLocation} />
             </Grid.Item>
           </ResponsiveContainer>
           <ResponsiveContainer webOnly breakpoint=">xs">
@@ -67,7 +69,7 @@ export function FulfillmentSelectorLocation() {
               <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
             </div>
             <div className={itemSpacer}>
-              <StockInfo location={usedLocation} />
+              <StockInfo productId={productId} location={usedLocation} />
             </div>
           </ResponsiveContainer>
         </Grid>

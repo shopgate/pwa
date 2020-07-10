@@ -9,7 +9,7 @@ import {
 } from '@shopgate/engage/cart';
 import { getProductDataById } from '@shopgate/engage/product';
 import {
-  makeGetUserLocation,
+  getPreferredLocation,
   getExternalCustomerNumberForOrder,
 } from '../selectors';
 import { ROPIS } from '../constants';
@@ -73,7 +73,7 @@ function getProductImage(product, getState) {
  * @returns {Array}
  */
 function createSingleProductItems(product, getState) {
-  const location = makeGetUserLocation()(getState());
+  const location = getPreferredLocation(getState());
 
   return [
     {

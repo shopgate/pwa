@@ -29,11 +29,13 @@ class CartButton extends Component {
     productId: PropTypes.string.isRequired,
     isRopeFulfillmentMethodAllowed: PropTypes.bool,
     userLocation: PropTypes.shape(),
+    userMethod: PropTypes.shape(),
   }
 
   static defaultProps = {
     isRopeFulfillmentMethodAllowed: false,
     userLocation: null,
+    userMethod: null,
   }
 
   state = {
@@ -99,6 +101,7 @@ class CartButton extends Component {
       productId,
       options,
       userLocation,
+      userMethod,
       isRopeFulfillmentMethodAllowed,
     } = this.props;
     if (this.state.clicked) {
@@ -125,11 +128,11 @@ class CartButton extends Component {
       // Add the user location for ROPIS if it is set.
       if (
         userLocation !== null
-        && userLocation.fulfillmentMethod !== DIRECT_SHIP
+        && userMethod !== DIRECT_SHIP
         && isRopeFulfillmentMethodAllowed
       ) {
         addToCartData.fulfillment = {
-          method: userLocation.fulfillmentMethod,
+          method: userMethod,
           location: {
             code: userLocation.code,
             name: userLocation.name,

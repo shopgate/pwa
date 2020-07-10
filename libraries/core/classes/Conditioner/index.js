@@ -74,6 +74,7 @@ class Conditioner {
           // eslint-disable-next-line no-await-in-loop
           const conditionResult = await condition.conditioner();
           if (conditionResult === false) {
+            console.warn('conditioner failed', i, condition, this.conditions);
             return resolve(false);
           }
         }

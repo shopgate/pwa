@@ -7,7 +7,7 @@ import { makeGetLocation } from '@shopgate/engage/locations';
  */
 const makeMapStateToProps = () => {
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethodsCount();
-  const getLocation = makeGetLocation();
+  const getLocation = makeGetLocation((state, props) => props.locationId);
 
   return (state, props) => ({
     location: getLocation(state, props),

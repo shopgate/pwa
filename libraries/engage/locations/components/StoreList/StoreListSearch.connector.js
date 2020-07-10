@@ -1,22 +1,21 @@
 // @flow
 import { connect } from 'react-redux';
 import {
-  makeGetUserSearchPostalCode,
-  makeGetUserSearchCountryCode,
+  getUserSearchPostalCode,
+  getUserSearchCountryCode,
 } from '../../selectors';
 import {
   setUserSearchPostalCode,
   setUserSearchCountryCode,
 } from '../../action-creators';
-import { fetchProductLocationsByUserSearch } from '../../actions';
+import {
+  setUserSearchGeolocation,
+} from '../../actions';
 
 /**
  * @returns {Function}
  */
 function makeMapStateToProps() {
-  const getUserSearchPostalCode = makeGetUserSearchPostalCode();
-  const getUserSearchCountryCode = makeGetUserSearchCountryCode();
-
   /**
    * @param {Object} state The application state.
    * @param {Object} props The component props.
@@ -29,9 +28,9 @@ function makeMapStateToProps() {
 }
 
 const mapDispatchToProps = {
-  getProductLocations: fetchProductLocationsByUserSearch,
   setPostalCode: setUserSearchPostalCode,
   setCountryCode: setUserSearchCountryCode,
+  setGeolocation: setUserSearchGeolocation,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

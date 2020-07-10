@@ -6,7 +6,8 @@ import {
 import { makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product';
 import {
   makeIsRopeProductOrderable,
-  makeGetUserLocationFulfillmentMethod,
+  getPreferredLocation,
+  getPreferredFulfillmentMethod,
   DIRECT_SHIP,
 } from '../locations';
 import { makeGetEnabledFulfillmentMethods } from '../core';
@@ -18,13 +19,15 @@ import { makeGetEnabledFulfillmentMethods } from '../core';
 export function makeIsAddToCartButtonDisabled() {
   const isProductActive = makeIsProductActive();
   const isBaseProductActive = makeIsBaseProductActive();
-  const isRopeProductOrderable = makeIsRopeProductOrderable(true);
-  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
+  const isRopeProductOrderable = makeIsRopeProductOrderable(
+    (state, props) => getPreferredLocation(state, props)?.code,
+    (state, props) => props.variantId || props.productId || null
+  );
   const getEnabledMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
 
   return createSelector(
     getEnabledMerchantFulfillmentMethods,
-    getUserLocationFulfillmentMethod,
+    getPreferredFulfillmentMethod,
     hasProductVariants,
     isProductActive,
     isBaseProductActive,

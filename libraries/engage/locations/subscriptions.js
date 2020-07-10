@@ -4,13 +4,13 @@ import {
   fetchCart,
   cartDidEnter$,
 } from '@shopgate/engage/cart';
-import { receiveCoreConfig$ } from '@shopgate/engage/core';
+import { receiveCoreConfig$, appDidStart$ } from '@shopgate/engage/core';
 import { MULTI_LINE_RESERVE } from './constants';
-import { fetchLocationsById, fetchProductLocations } from './actions';
+import { getUserSearch } from './selectors';
+import { fetchLocations, fetchProductLocations } from './actions';
 import {
   submitReservationSuccess$,
   cartReceivedWithROPE$,
-  fulfillmentLocationsReceived$,
 } from './locations.streams';
 
 /**
@@ -18,9 +18,15 @@ import {
  * @param {Function} subscribe The subscribe function.
  */
 function locations(subscribe) {
-  subscribe(receivedVisibleProduct$, ({ action, dispatch }) => {
+  subscribe(appDidStart$, async ({ dispatch }) => {
+    // Fetch merchants locations.
+    await dispatch(fetchLocations({}));
+  });
+
+  subscribe(receivedVisibleProduct$, ({ action, dispatch, getState }) => {
     const { productData } = action;
 
+    // Skip if no fulfullment methoods are set.
     if (
       !productData
       || !productData.fulfillmentMethods
@@ -29,7 +35,9 @@ function locations(subscribe) {
       return;
     }
 
-    dispatch(fetchProductLocations(action.productData.id));
+    // Fetch locations for this specific product.
+    const userSearch = getUserSearch(getState());
+    dispatch(fetchProductLocations(action.productData.id, userSearch));
   });
 
   // Core config and cart subscriptions
@@ -40,11 +48,6 @@ function locations(subscribe) {
       },
     } = action;
     if (enabledFulfillmentMethodSelectionForEngage.includes(MULTI_LINE_RESERVE)) {
-      // Fetch missing locations
-      subscribe(fulfillmentLocationsReceived$, ({ dispatch, locationCodes }) => {
-        dispatch(fetchLocationsById(locationCodes));
-      });
-
       // Refresh ropis and mixed cart on every cart enter
       const cartRefresh$ = cartReceivedWithROPE$.switchMap(() => cartWillEnter$.first());
       subscribe(cartRefresh$, ({ dispatch }) => {
