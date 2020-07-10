@@ -22,11 +22,13 @@ class AddToCartButton extends PureComponent {
     quantity: PropTypes.number.isRequired,
     isRopeFulfillmentMethodAllowed: PropTypes.bool,
     userLocation: PropTypes.shape(),
+    userMethod: PropTypes.string,
   }
 
   static defaultProps = {
     isRopeFulfillmentMethodAllowed: false,
     userLocation: null,
+    userMethod: '',
   }
 
   static contextTypes = {
@@ -53,6 +55,7 @@ class AddToCartButton extends PureComponent {
       quantity,
       options,
       userLocation,
+      userMethod,
       isRopeFulfillmentMethodAllowed,
       addToCart,
     } = this.props;
@@ -71,11 +74,11 @@ class AddToCartButton extends PureComponent {
       // Add the user location for ROPIS if it is set.
       if (
         userLocation !== null
-        && userLocation.fulfillmentMethod !== DIRECT_SHIP
+        && userMethod !== DIRECT_SHIP
         && isRopeFulfillmentMethodAllowed
       ) {
         addToCartData.fulfillment = {
-          method: userLocation.fulfillmentMethod,
+          method: userMethod,
           location: {
             code: userLocation.code,
             name: userLocation.name,
