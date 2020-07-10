@@ -5,13 +5,12 @@ import {
   getProductCurrency,
 } from '@shopgate/pwa-common-commerce/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { makeGetProductFulfillmentMethods } from '@shopgate/engage/locations';
+import { getProductFulfillmentMethods } from '@shopgate/engage/locations';
 
 /**
  * @return {Function} The connect function.
  */
 function makeMapStateToProps() {
-  const getFulfillmentMethods = makeGetProductFulfillmentMethods();
   /**
    * @param {Object} state The application state.
  * @param {Object} props The component props.
@@ -21,7 +20,7 @@ function makeMapStateToProps() {
     baseProductId: getBaseProductId(state, props),
     variantId: getVariantId(state, props),
     currency: getProductCurrency(state, props),
-    fulfillmentMethods: getFulfillmentMethods(state, props),
+    fulfillmentMethods: getProductFulfillmentMethods(state, props),
   });
 }
 /**

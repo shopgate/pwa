@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
 import {
-  makeGetUserLocation,
+  getPreferredLocation,
   makeIsFulfillmentSelectorMethodEnabled,
-  makeGetUserLocationFulfillmentMethod,
+  getPreferredFulfillmentMethod,
 } from '@shopgate/engage/locations';
 import { makeIsAddToCartButtonDisabled } from '@shopgate/engage/cart';
 import { addProductToCart as addToCart } from './actions';
@@ -12,8 +12,6 @@ import { addProductToCart as addToCart } from './actions';
  * @returns {Function}
  */
 function makeMapStateToProps() {
-  const getUserLocation = makeGetUserLocation();
-  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
   const isAddToCartButtonDisabled = makeIsAddToCartButtonDisabled();
 
   /**
@@ -22,12 +20,14 @@ function makeMapStateToProps() {
    * @return {Object} The extended component props.
    */
   return (state, props) => {
-    const userLocationFulfillmentMethod = getUserLocationFulfillmentMethod(state);
+    const userLocationFulfillmentMethod = getPreferredFulfillmentMethod(state, props);
 
     let isUserFulfillmentMethodAllowed = false;
 
     if (userLocationFulfillmentMethod) {
       isUserFulfillmentMethodAllowed = makeIsFulfillmentSelectorMethodEnabled(
+        (istate, iprops) => getPreferredLocation(istate, iprops)?.code,
+        (_, iprops) => iprops.variantId || iprops.productId || null,
         userLocationFulfillmentMethod
       )(state, props);
     }
@@ -35,7 +35,7 @@ function makeMapStateToProps() {
     return {
       disabled: isAddToCartButtonDisabled(state, props),
       loading: isProductPageLoading(state, props),
-      userLocation: getUserLocation(state),
+      userLocation: getPreferredLocation(state, props),
       isRopeFulfillmentMethodAllowed: isUserFulfillmentMethodAllowed,
     };
   };
