@@ -1,7 +1,7 @@
 import { getGeolocation } from '@shopgate/engage/core';
 import setUserSearchGeolocation from '../action-creators/setUserSearchGeolocation';
 
-export default ({ silent = false, useFallback = false }) => async (dispatch) => {
+export default ({ silent = false, useFallback = false } = {}) => async (dispatch) => {
   try {
     const geolocation = await dispatch(getGeolocation({
       useSettingsModal: !silent,

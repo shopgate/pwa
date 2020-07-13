@@ -6,6 +6,12 @@ const wrapper = css({
   zIndex: 2,
 }).toString();
 
+const closePlaceholder = css({
+  height: themeConfig.variables.navigator.height,
+  padding: 0,
+  lineHeight: 1,
+});
+
 const closeButton = css({
   lineHeight: 1,
   outline: 0,
@@ -44,6 +50,7 @@ const shadow = css({
 export default {
   wrapper,
   closeButton,
+  closePlaceholder,
   closeIcon,
   title,
   shadow,

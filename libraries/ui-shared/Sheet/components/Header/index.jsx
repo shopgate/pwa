@@ -15,6 +15,7 @@ class Header extends Component {
       PropTypes.string,
       PropTypes.element, // ex.: I18n.Text
     ]).isRequired,
+    allowClose: PropTypes.bool,
     onToggleClose: PropTypes.func,
     shadow: PropTypes.bool,
   };
@@ -26,6 +27,7 @@ class Header extends Component {
   static defaultProps = {
     onToggleClose: () => {},
     shadow: false,
+    allowClose: true,
   };
 
   static contextTypes = {
@@ -48,6 +50,8 @@ class Header extends Component {
    * @returns {JSX}
    */
   render() {
+    const { allowClose } = this.props;
+
     const classes = classNames(
       styles.wrapper,
       { [styles.shadow]: this.props.shadow }
@@ -57,11 +61,13 @@ class Header extends Component {
 
     return (
       <Grid className={classes} component="div" wrap={false}>
-        <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
-          <Ripple className={styles.closeIcon}>
-            <CrossIcon size={24} />
-          </Ripple>
-        </button>
+        {allowClose ? (
+          <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
+            <Ripple className={styles.closeIcon}>
+              <CrossIcon size={24} />
+            </Ripple>
+          </button>
+        ) : <div className={styles.closePlaceholder} />}
         <Grid.Item className={styles.title} component="div" grow={1} role="heading">
           {this.props.title}
         </Grid.Item>

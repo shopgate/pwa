@@ -5,11 +5,11 @@
  * @returns {boolean}
  */
 export function isProductAvailable(location = {}, inventory = {}) {
-  const { isComingSoon } = location;
+  const { isComingSoon } = location || {};
   const {
     isAvailable = false,
     visible = 0,
-  } = inventory;
+  } = inventory || {};
 
   if (isComingSoon) {
     return false;

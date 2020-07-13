@@ -12,21 +12,21 @@ import { selectLocationButton, selectLocationButtonWrapper } from './Store.style
  */
 export const StoreSelectLocationButton = () => {
   const store = useContext(StoreContext);
-  const { selectLocation } = useContext(FulfillmentContext);
+  const { selectLocation, noInventory } = useContext(FulfillmentContext);
   const isAvailable = isProductAvailable(store, store?.inventory);
 
   const handleClick = useCallback(() => {
-    if (isAvailable) {
+    if (noInventory || isAvailable) {
       selectLocation(store);
     }
-  }, [isAvailable, selectLocation, store]);
+  }, [isAvailable, noInventory, selectLocation, store]);
 
   return (
     <div className={selectLocationButtonWrapper}>
       <RippleButton
         onClick={handleClick}
         className={selectLocationButton.toString()}
-        disabled={!isAvailable}
+        disabled={!noInventory && !isAvailable}
       >
         {i18n.text('locations.select_location')}
       </RippleButton>

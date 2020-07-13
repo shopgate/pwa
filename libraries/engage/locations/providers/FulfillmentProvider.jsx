@@ -53,6 +53,7 @@ function FulfillmentProvider(props: Props) {
     location: productLocation,
     inventory,
     userInput,
+    fulfillmentPath: defaultFulfillmentPath,
     fulfillmentPaths,
     fulfillmentMethods,
     enabledFulfillmentMethods,
@@ -62,9 +63,12 @@ function FulfillmentProvider(props: Props) {
     storeFormInput,
     addProductsToCart,
     updateProductsInCart,
+    isFetching,
+    noInventory = false,
     open = false,
+    isInitialized: defaultIsInitialized,
   } = props;
-  const [fulfillmentPath, setFulfillmentPath] = React.useState<FulfillmentPath | null>(null);
+  const [fulfillmentPath, setFulfillmentPath] = React.useState(defaultFulfillmentPath || null);
   const [changeOnly, setChangeOnly] = React.useState(props.changeOnly);
   const [isOpen, setIsOpen] = React.useState(open);
   const [stage, setStage] = React.useState<SheetStage | null>(props.stage || null);
@@ -74,7 +78,7 @@ function FulfillmentProvider(props: Props) {
   const [product, setProduct] = React.useState(propsProduct);
   const [isChangeFulfillment, setIsChangeFulfillment] = React.useState(false);
   const [cartItem, setCartItem] = React.useState(null);
-  const isInitialized = React.useRef(false);
+  const isInitialized = React.useRef(defaultIsInitialized);
 
   const title = React.useMemo<string>(() => {
     if (props.title !== null) {
@@ -358,6 +362,8 @@ function FulfillmentProvider(props: Props) {
     sendReservation,
     orderNumbers,
     errors,
+    noInventory,
+    isFetching,
     meta: props.meta || undefined,
   };
 

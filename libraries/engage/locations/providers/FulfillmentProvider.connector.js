@@ -6,11 +6,13 @@ import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/upd
 import { makeGetFulfillmentPaths, makeGetEnabledFulfillmentMethods, getShopSettings } from '@shopgate/engage/core/config';
 import { selectLocation, storeFormInput } from '../action-creators';
 import {
+  getFilteredLocations,
   makeGetLocationInventory,
   makeGetLocationsForProduct,
   getPreferredLocation,
   getUserFormInput,
   getProductFulfillmentMethods,
+  getIsFetching,
 } from '../selectors';
 import { submitReservation } from '../actions';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentProvider.types';
@@ -40,7 +42,9 @@ function makeMapStateToProps() {
    * @returns {Object}
    */
   return (state, props) => ({
-    locations: getProductLocations(state, props),
+    locations: props.noProduct
+      ? getFilteredLocations(state, props)
+      : getProductLocations(state, props),
     baseProduct: getBaseProduct(state, props),
     product: getProduct(state, props),
     location: getPreferredLocation(state, props),
@@ -50,6 +54,7 @@ function makeMapStateToProps() {
     fulfillmentMethods: getProductFulfillmentMethods(state, props),
     enabledFulfillmentMethods: getEnabledFulfillmentMethods(state, props),
     shopSettings: getShopSettings(state),
+    isFetching: getIsFetching(state),
   });
 }
 

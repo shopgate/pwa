@@ -17,6 +17,7 @@ export {
   CartContextMenuItemChangeLocation,
   CartContextMenuItemChangeFulfillment,
   CartContextMenuChangeFulfillment,
+  GlobalLocationSelector,
 } from './components';
 
 // CONSTANTS

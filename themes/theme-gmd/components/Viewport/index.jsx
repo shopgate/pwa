@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
+import { GlobalLocationSelector } from '@shopgate/engage/locations';
 import { setPageContentWidth } from '@shopgate/engage/styles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import NavDrawer from 'Components/NavDrawer';
@@ -55,6 +56,7 @@ const Viewport = (props) => {
             />
           </ResponsiveContainer>
         </header>
+        <GlobalLocationSelector />
         <section className={styles.content}>
           {props.children}
         </section>

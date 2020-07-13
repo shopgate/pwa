@@ -47,11 +47,12 @@ function StoreListSearch({
   setGeolocation,
 }) {
   const {
+    isFetching,
     locations,
     shopSettings: { supportedCountries } = {},
   } = useContext(FulfillmentContext);
 
-  const [loading] = useState(false);
+  const loading = isFetching;
   const [message, setMessage] = useState('');
   const [inputPostalCode, setInputPostalCode] = useState(postalCode || '');
   const isMounted = useRef(false);

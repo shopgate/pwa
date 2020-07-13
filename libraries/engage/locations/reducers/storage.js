@@ -1,17 +1,22 @@
 import { produce } from 'immer';
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
 import {
+  REQUEST_LOCATIONS,
   RECEIVE_LOCATIONS,
+  REQUEST_PRODUCT_LOCATIONS,
   RECEIVE_PRODUCT_LOCATIONS,
   STORE_FULFILLMENT_METHOD,
   SELECT_LOCATION,
 } from '../constants';
 
 const initialState = {
+  // If any data is being fetched right now.
+  isFetching: false,
   // The users preferred fulfillment location.
   preferredLocation: {
     code: null,
   },
+  // The users preferred fulfillment method.
   preferredFulfillmentMethod: {
     type: null,
   },
@@ -46,14 +51,20 @@ const storeLocationData = (draft, locations) => {
 export default (state = initialState, action) => {
   const producer = produce((draft) => {
     switch (action.type) {
+      case REQUEST_LOCATIONS:
+      case REQUEST_PRODUCT_LOCATIONS:
+        draft.isFetching = true;
+        break;
+
       case RECEIVE_LOCATIONS: {
         // Store all missing locations.
         storeLocationData(draft, action.locations);
 
         // Store filtered result set.
         const locationCodes = action.locations.map(l => l.code);
-        const filter = generateSortedHash({ ...action.filter });
+        const filter = generateSortedHash({ ...action.filters });
         draft.locationsByFilter[filter] = locationCodes;
+        draft.isFetching = false;
         break;
       }
 
@@ -77,6 +88,7 @@ export default (state = initialState, action) => {
         });
         const locationCodes = action.locations.map(l => l.code);
         draft.locationsByFilter[filter] = locationCodes;
+        draft.isFetching = false;
         break;
       }
 

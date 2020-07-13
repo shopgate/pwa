@@ -8,9 +8,9 @@ import { FulfillmentSheetContent } from './FulfillmentSheetContent';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export const FulfillmentSheet = (props: any) => (
+export const FulfillmentSheet = ({ allowClose = true, ...props }: any) => (
   <FulfillmentProvider {...props}>
-    <FulfillmentSheetContent />
+    <FulfillmentSheetContent allowClose={allowClose} />
   </FulfillmentProvider>
 );
 

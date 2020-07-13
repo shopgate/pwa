@@ -83,6 +83,27 @@ export const makeGetLocationsForProduct = (getProductCode) => {
 };
 
 /**
+ * Selector that retrieves is fetching.
+ * @param {Object} state State.
+ * @returns {Object}
+ */
+export const getIsFetching = state => getLocationsStorage(state).isFetching;
+
+/**
+ * Creates a selector that retrieves active filter.
+ * @param {Object} state State.
+ * @returns {Object}
+ */
+export const getActiveFilter = state => pickBy(getLocationsState(state).userSearch);
+
+/**
+ * Creates a selector that retrieves all locations for a given product.
+ * @param {Object} state State.
+ * @returns {Object}
+ */
+export const getFilteredLocations = makeGetFilteredLocations(getActiveFilter);
+
+/**
  * Gets the address of the users preferred location.
  * @param {Object} state State.
  * @return {Object}

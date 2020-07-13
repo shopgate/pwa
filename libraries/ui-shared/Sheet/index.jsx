@@ -24,6 +24,7 @@ class Sheet extends Component {
    * @type {Object}
    */
   static propTypes = {
+    allowClose: PropTypes.bool,
     animation: PropTypes.shape({
       in: PropTypes.string,
       out: PropTypes.string,
@@ -58,6 +59,7 @@ class Sheet extends Component {
     onDidOpen: () => { },
     onOpen: () => { },
     title: '',
+    allowClose: true,
   };
 
   /**
@@ -137,6 +139,8 @@ class Sheet extends Component {
    * @returns {JSX}
    */
   render() {
+    const { allowClose } = this.props;
+
     const children = React.Children.map(this.props.children, child => (
       React.cloneElement(
         child,
@@ -174,6 +178,7 @@ class Sheet extends Component {
               onToggleClose={this.handleClose}
               shadow={this.state.scrolled}
               title={this.props.title}
+              allowClose={allowClose}
             />
           }
           <div
@@ -188,7 +193,7 @@ class Sheet extends Component {
           <Backdrop
             isVisible={this.state.isOpen}
             level={4}
-            onClick={this.handleClose}
+            onClick={allowClose ? this.handleClose : () => {}}
             opacity={20}
           />
         }

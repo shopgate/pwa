@@ -15,3 +15,5 @@ export {
   CartContextMenuItemChangeFulfillment,
   CartContextMenuChangeFulfillment,
 } from './Cart';
+
+export { GlobalLocationSelector } from './GlobalLocationSelector';

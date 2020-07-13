@@ -89,7 +89,10 @@ function fetchProducts(options) {
     // Append additional global fulfillment parameters.
     const fulfillmentParams = {};
     const activeLocation = getPreferredLocation(state);
-    if (getIsLocationBasedShopping(state) && activeLocation) {
+    if (pipeline === SHOPGATE_CATALOG_GET_PRODUCTS
+      && getIsLocationBasedShopping(state)
+      && activeLocation
+    ) {
       fulfillmentParams.locationCodes = [activeLocation.code];
     }
 

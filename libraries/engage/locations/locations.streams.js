@@ -1,7 +1,13 @@
 import { main$ } from '@shopgate/pwa-common/streams';
 import { Observable } from 'rxjs/Observable';
 import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import { SUBMIT_RESERVATION_SUCCESS, RECEIVE_PRODUCT_LOCATIONS } from './constants';
+import {
+  SUBMIT_RESERVATION_SUCCESS,
+  RECEIVE_PRODUCT_LOCATIONS,
+  SET_USER_SEARCH_COUNTRY_CODE,
+  SET_USER_SEARCH_POSTAL_CODE,
+  SET_USER_SEARCH_GEOLOCATION,
+} from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 
 export const submitReservationSuccess$ = main$
@@ -17,6 +23,12 @@ export const cartReceivedWithROPE$ = cartReceived$
   .filter(({ action: { cart: { cartItems = [] } = {} } }) => (
     cartItems.some(item => item?.fulfillment?.location?.code)
   ));
+
+export const userSearchChanged$ = main$
+  .filter(({ action }) =>
+    action.type === SET_USER_SEARCH_COUNTRY_CODE ||
+    action.type === SET_USER_SEARCH_POSTAL_CODE ||
+    action.type === SET_USER_SEARCH_GEOLOCATION);
 
 export const fulfillmentLocationsReceivedFromProduct$ = receiveProductLocations$
   .switchMap((data) => {

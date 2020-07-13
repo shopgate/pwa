@@ -5,12 +5,14 @@ import {
   cartDidEnter$,
 } from '@shopgate/engage/cart';
 import { receiveCoreConfig$, appDidStart$ } from '@shopgate/engage/core';
+import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors';
 import { MULTI_LINE_RESERVE } from './constants';
-import { getUserSearch } from './selectors';
+import { getUserSearch, getPreferredLocation } from './selectors';
 import { fetchLocations, fetchProductLocations } from './actions';
 import {
   submitReservationSuccess$,
   cartReceivedWithROPE$,
+  userSearchChanged$,
 } from './locations.streams';
 
 /**
@@ -18,9 +20,21 @@ import {
  * @param {Function} subscribe The subscribe function.
  */
 function locations(subscribe) {
-  subscribe(appDidStart$, async ({ dispatch }) => {
+  subscribe(appDidStart$, async ({ dispatch, getState }) => {
     // Fetch merchants locations.
-    await dispatch(fetchLocations({}));
+    const userSearch = getUserSearch(getState());
+    await dispatch(fetchLocations(userSearch));
+  });
+
+  subscribe(userSearchChanged$, async ({ dispatch, getState }) => {
+    const isLocationBasedShopping = getIsLocationBasedShopping(getState());
+    const preferredLocation = getPreferredLocation(getState());
+
+    // Fetch merchants locations.
+    if (isLocationBasedShopping && !preferredLocation) {
+      const userSearch = getUserSearch(getState());
+      await dispatch(fetchLocations(userSearch));
+    }
   });
 
   subscribe(receivedVisibleProduct$, ({ action, dispatch, getState }) => {
