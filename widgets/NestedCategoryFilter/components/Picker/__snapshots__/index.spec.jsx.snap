@@ -210,7 +210,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     </Grid>
                   </Header>
                   <div
-                    className="css-qubcgc"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -324,6 +324,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 duration={200}
                 isVisible={true}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -617,7 +618,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     </Grid>
                   </Header>
                   <div
-                    className="css-qubcgc"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -731,6 +732,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 duration={200}
                 isVisible={true}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -1064,7 +1066,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     </Grid>
                   </Header>
                   <div
-                    className="css-qubcgc"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -1178,6 +1180,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -1472,7 +1475,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     </Grid>
                   </Header>
                   <div
-                    className="css-qubcgc"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -1586,6 +1589,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 duration={200}
                 isVisible={true}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -1791,6 +1795,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -1955,6 +1960,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -2114,6 +2120,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
