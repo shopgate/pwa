@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
-import { setPageContentWidth } from '@shopgate/engage/styles';
+import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
@@ -30,10 +30,17 @@ const updatePageContent = () => {
   const pageContentWidth = availableSpace - (hasMenuBar ? DESKTOP_MENU_BAR_WIDTH : 0);
   setPageContentWidth(pageContentWidth);
 };
+
 window.onresize = debounce(() => {
   updatePageContent();
 }, 500);
+
+window.onresize = debounce(() => {
+  setViewportHeight();
+}, 200);
+
 updatePageContent();
+setViewportHeight();
 
 /**
  * The Viewport component.
@@ -55,7 +62,7 @@ const Viewport = (props) => {
             />
           </ResponsiveContainer>
         </header>
-        <section className={styles.content}>
+        <section className={styles.content} id="AppContent">
           {props.children}
         </section>
         <Footer />

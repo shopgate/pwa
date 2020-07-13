@@ -40,13 +40,13 @@ const shadow = css({
 
 const content = css({
   maxHeight: [
-    `calc(100vh - ${themeConfig.variables.navigator.height}px)`,
-    `calc(100vh - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+    `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px)`,
+    `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
   ],
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     maxHeight: [
-      `calc(80vh - ${themeConfig.variables.navigator.height}px)`,
-      `calc(80vh - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+      `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px)`,
+      `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
     ],
   },
   paddingBottom: [

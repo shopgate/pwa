@@ -25,6 +25,7 @@ exports[`NavDrawer should match the snapshot 1`] = `
     duration={200}
     isVisible={false}
     level={4}
+    lockBodyScroll={true}
     onClick={[Function]}
     opacity={20}
   />

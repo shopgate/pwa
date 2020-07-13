@@ -246,6 +246,7 @@ export * from '@shopgate/pwa-common/selectors/modal';
 export { useAsyncMemo } from './hooks/useAsyncMemo';
 export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
+export { useApp } from './hooks/useApp';
 export { useCurrentProduct } from './hooks/useCurrentProduct';
 export { useNavigation } from './hooks/useNavigation';
 export { usePageConfig } from './hooks/usePageConfig';

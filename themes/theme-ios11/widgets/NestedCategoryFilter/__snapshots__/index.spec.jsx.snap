@@ -170,6 +170,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -564,7 +565,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           </Grid>
                         </Header>
                         <div
-                          className="css-qubcgc"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -678,6 +679,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1059,6 +1061,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1209,6 +1212,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1342,6 +1346,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1768,7 +1773,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           </Grid>
                         </Header>
                         <div
-                          className="css-qubcgc"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -1882,6 +1887,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -2074,6 +2080,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -2486,7 +2493,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           </Grid>
                         </Header>
                         <div
-                          className="css-qubcgc"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -2600,6 +2607,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -2879,7 +2887,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           </Grid>
                         </Header>
                         <div
-                          className="css-qubcgc"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -2993,6 +3001,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -3335,6 +3344,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -3708,7 +3718,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           </Grid>
                         </Header>
                         <div
-                          className="css-qubcgc"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -3822,6 +3832,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
