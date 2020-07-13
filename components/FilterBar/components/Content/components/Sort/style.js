@@ -15,6 +15,7 @@ const button = css({
 
 const selection = css({
   fontSize: '0.8823rem',
+  fontWeight: '500',
   lineHeight: 1,
   alignSelf: 'center',
 }).toString();
@@ -52,6 +53,10 @@ const selectItem = css({
   },
 }).toString();
 
+const selectItemSelected = css({
+  fontWeight: 500,
+}).toString();
+
 const selectBox = css({
   flexGrow: 2,
 }).toString();
@@ -63,5 +68,6 @@ export default {
   iconOpen,
   dropdown,
   selectItem,
+  selectItemSelected,
   selectBox,
 };

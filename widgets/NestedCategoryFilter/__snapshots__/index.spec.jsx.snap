@@ -90,7 +90,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -145,17 +145,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -168,6 +170,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -395,7 +398,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -450,17 +453,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -468,7 +473,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -491,7 +496,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             >
                               <button
                                 aria-label="common.close"
-                                className="css-b3dcfs"
+                                className="css-r4gt00"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -560,7 +565,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           </Grid>
                         </Header>
                         <div
-                          className="css-1aon90l"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -579,14 +584,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -608,7 +613,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                         selected={true}
                                       >
                                         <button
-                                          className="css-18zobq6"
+                                          className="css-1qqi0nj"
                                           key="1-1"
                                           onClick={[Function]}
                                           type="button"
@@ -621,14 +626,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -650,7 +655,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                         selected={false}
                                       >
                                         <button
-                                          className="css-1k50yg4"
+                                          className="css-1ibkwsv"
                                           key="1-2"
                                           onClick={[Function]}
                                           type="button"
@@ -674,6 +679,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -975,7 +981,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -1030,17 +1036,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1053,6 +1061,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1123,7 +1132,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -1178,17 +1187,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label Two"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1201,6 +1212,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1265,7 +1277,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -1309,17 +1321,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title=""
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1332,6 +1346,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1591,7 +1606,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -1646,17 +1661,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1664,7 +1681,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -1687,7 +1704,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <button
                                 aria-label="common.close"
-                                className="css-b3dcfs"
+                                className="css-r4gt00"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -1756,7 +1773,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           </Grid>
                         </Header>
                         <div
-                          className="css-1aon90l"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -1775,14 +1792,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -1804,7 +1821,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-18zobq6"
+                                          className="css-1qqi0nj"
                                           key="1"
                                           onClick={[Function]}
                                           type="button"
@@ -1817,14 +1834,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -1846,7 +1863,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={false}
                                       >
                                         <button
-                                          className="css-1k50yg4"
+                                          className="css-1ibkwsv"
                                           key="2"
                                           onClick={[Function]}
                                           type="button"
@@ -1870,6 +1887,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -1982,7 +2000,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -2037,17 +2055,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label Two"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2060,6 +2080,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -2305,7 +2326,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -2360,17 +2381,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2378,7 +2401,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -2401,7 +2424,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <button
                                 aria-label="common.close"
-                                className="css-b3dcfs"
+                                className="css-r4gt00"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -2470,7 +2493,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           </Grid>
                         </Header>
                         <div
-                          className="css-1aon90l"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -2489,14 +2512,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2518,7 +2541,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-18zobq6"
+                                          className="css-1qqi0nj"
                                           key="1"
                                           onClick={[Function]}
                                           type="button"
@@ -2531,14 +2554,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2560,7 +2583,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={false}
                                       >
                                         <button
-                                          className="css-1k50yg4"
+                                          className="css-1ibkwsv"
                                           key="2"
                                           onClick={[Function]}
                                           type="button"
@@ -2584,6 +2607,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -2696,7 +2720,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -2751,17 +2775,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label Two"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2769,7 +2795,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -2792,7 +2818,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <button
                                 aria-label="common.close"
-                                className="css-b3dcfs"
+                                className="css-r4gt00"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -2861,7 +2887,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           </Grid>
                         </Header>
                         <div
-                          className="css-1aon90l"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -2880,14 +2906,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2909,7 +2935,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-18zobq6"
+                                          className="css-1qqi0nj"
                                           key="1-1"
                                           onClick={[Function]}
                                           type="button"
@@ -2922,14 +2948,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2951,7 +2977,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={false}
                                       >
                                         <button
-                                          className="css-1k50yg4"
+                                          className="css-1ibkwsv"
                                           key="1-2"
                                           onClick={[Function]}
                                           type="button"
@@ -2975,6 +3001,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -3237,7 +3264,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -3292,17 +3319,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3315,6 +3344,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >
@@ -3521,7 +3551,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <div
               aria-hidden={true}
-              className="css-9v2ggq"
+              className="css-1qafxgk"
               onClick={[Function]}
             >
               <div
@@ -3576,17 +3606,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className={null}
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
-                          "in": "css-32zjx4",
-                          "out": "css-15ct02m",
+                          "in": "css-1ldjh2f",
+                          "out": "css-171mdnt",
                         }
                       }
-                      className="css-ruonn8"
+                      className="css-1d4fqwq"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3594,7 +3626,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -3617,7 +3649,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             >
                               <button
                                 aria-label="common.close"
-                                className="css-b3dcfs"
+                                className="css-r4gt00"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -3686,7 +3718,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           </Grid>
                         </Header>
                         <div
-                          className="css-1aon90l"
+                          className="css-1pp3d82"
                           onScroll={[Function]}
                         >
                           <SheetList
@@ -3705,14 +3737,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3734,7 +3766,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                         selected={false}
                                       >
                                         <button
-                                          className="css-1k50yg4"
+                                          className="css-1ibkwsv"
                                           key="1"
                                           onClick={[Function]}
                                           type="button"
@@ -3747,14 +3779,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-10041rq css-171mywc"
+                                  className="css-id5jvr css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3776,7 +3808,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                         selected={true}
                                       >
                                         <button
-                                          className="css-18zobq6"
+                                          className="css-1qqi0nj"
                                           key="2"
                                           onClick={[Function]}
                                           type="button"
@@ -3800,6 +3832,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       duration={200}
                       isVisible={false}
                       level={4}
+                      lockBodyScroll={true}
                       onClick={[Function]}
                       opacity={20}
                     >

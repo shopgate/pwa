@@ -47,7 +47,11 @@
       "default": "Sorteer op",
       "most_popular": "Meest populair",
       "price_desc": "Prijs: Hoog naar Laag",
-      "price_asc": "Prijs: Laag naar Hoog"
+      "price_asc": "Prijs: Laag naar Hoog",
+      "name_asc": "Name A - Z",
+      "name_desc": "Name Z - A",
+      "rank_asc": "Rank Low To High",
+      "rank_desc": "Rank High To Low"
     },
     "apply": "Klaar",
     "more": "meer",

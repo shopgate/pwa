@@ -43,7 +43,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
     >
       <div
         aria-hidden={true}
-        className="css-9v2ggq"
+        className="css-1qafxgk"
         onClick={[Function]}
       >
         <div
@@ -98,17 +98,19 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="css-1owavz5"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
                   Object {
                     "duration": 300,
-                    "in": "css-32zjx4",
-                    "out": "css-15ct02m",
+                    "in": "css-1ldjh2f",
+                    "out": "css-171mdnt",
                   }
                 }
-                className="css-ruonn8"
+                className="css-1d4fqwq"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -116,7 +118,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -139,7 +141,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       >
                         <button
                           aria-label="common.close"
-                          className="css-b3dcfs"
+                          className="css-r4gt00"
                           onClick={[Function]}
                           type="button"
                         >
@@ -208,7 +210,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     </Grid>
                   </Header>
                   <div
-                    className="css-1aon90l"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -227,14 +229,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           role="listbox"
                         >
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-0/.$1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -256,7 +258,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                   selected={false}
                                 >
                                   <button
-                                    className="css-1k50yg4"
+                                    className="css-1ibkwsv"
                                     key="1"
                                     onClick={[Function]}
                                     type="button"
@@ -269,14 +271,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-1/.$2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -298,7 +300,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                   selected={false}
                                 >
                                   <button
-                                    className="css-1k50yg4"
+                                    className="css-1ibkwsv"
                                     key="2"
                                     onClick={[Function]}
                                     type="button"
@@ -322,6 +324,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 duration={200}
                 isVisible={true}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -448,7 +451,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
     >
       <div
         aria-hidden={true}
-        className="css-9v2ggq"
+        className="css-1qafxgk"
         onClick={[Function]}
       >
         <div
@@ -503,17 +506,19 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="css-1owavz5"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
                   Object {
                     "duration": 300,
-                    "in": "css-32zjx4",
-                    "out": "css-15ct02m",
+                    "in": "css-1ldjh2f",
+                    "out": "css-171mdnt",
                   }
                 }
-                className="css-ruonn8"
+                className="css-1d4fqwq"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -521,7 +526,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -544,7 +549,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <button
                           aria-label="common.close"
-                          className="css-b3dcfs"
+                          className="css-r4gt00"
                           onClick={[Function]}
                           type="button"
                         >
@@ -613,7 +618,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     </Grid>
                   </Header>
                   <div
-                    className="css-1aon90l"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -632,14 +637,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           role="listbox"
                         >
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-0/.$1-1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -661,7 +666,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   selected={false}
                                 >
                                   <button
-                                    className="css-1k50yg4"
+                                    className="css-1ibkwsv"
                                     key="1-1"
                                     onClick={[Function]}
                                     type="button"
@@ -674,14 +679,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-1/.$1-2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -703,7 +708,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   selected={false}
                                 >
                                   <button
-                                    className="css-1k50yg4"
+                                    className="css-1ibkwsv"
                                     key="1-2"
                                     onClick={[Function]}
                                     type="button"
@@ -727,6 +732,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 duration={200}
                 isVisible={true}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -893,7 +899,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
     >
       <div
         aria-hidden={true}
-        className="css-9v2ggq"
+        className="css-1qafxgk"
         onClick={[Function]}
       >
         <div
@@ -948,17 +954,19 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className={null}
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
                   Object {
                     "duration": 300,
-                    "in": "css-32zjx4",
-                    "out": "css-15ct02m",
+                    "in": "css-1ldjh2f",
+                    "out": "css-171mdnt",
                   }
                 }
-                className="css-ruonn8"
+                className="css-1d4fqwq"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -966,7 +974,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-15ct02m"
+                  className="css-1d4fqwq css-1rg7udn css-171mdnt"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -989,7 +997,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <button
                           aria-label="common.close"
-                          className="css-b3dcfs"
+                          className="css-r4gt00"
                           onClick={[Function]}
                           type="button"
                         >
@@ -1058,7 +1066,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     </Grid>
                   </Header>
                   <div
-                    className="css-1aon90l"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -1077,14 +1085,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           role="listbox"
                         >
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-0/.$1-1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1106,7 +1114,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   selected={false}
                                 >
                                   <button
-                                    className="css-1k50yg4"
+                                    className="css-1ibkwsv"
                                     key="1-1"
                                     onClick={[Function]}
                                     type="button"
@@ -1119,14 +1127,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-1/.$1-2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1148,7 +1156,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   selected={false}
                                 >
                                   <button
-                                    className="css-1k50yg4"
+                                    className="css-1ibkwsv"
                                     key="1-2"
                                     onClick={[Function]}
                                     type="button"
@@ -1172,6 +1180,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -1299,7 +1308,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
     >
       <div
         aria-hidden={true}
-        className="css-9v2ggq"
+        className="css-1qafxgk"
         onClick={[Function]}
       >
         <div
@@ -1354,17 +1363,19 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="css-1owavz5"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
                   Object {
                     "duration": 300,
-                    "in": "css-32zjx4",
-                    "out": "css-15ct02m",
+                    "in": "css-1ldjh2f",
+                    "out": "css-171mdnt",
                   }
                 }
-                className="css-ruonn8"
+                className="css-1d4fqwq"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1372,7 +1383,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -1395,7 +1406,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       >
                         <button
                           aria-label="common.close"
-                          className="css-b3dcfs"
+                          className="css-r4gt00"
                           onClick={[Function]}
                           type="button"
                         >
@@ -1464,7 +1475,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     </Grid>
                   </Header>
                   <div
-                    className="css-1aon90l"
+                    className="css-1pp3d82"
                     onScroll={[Function]}
                   >
                     <SheetList
@@ -1483,14 +1494,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           role="listbox"
                         >
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-0/.$1-1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1512,7 +1523,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                   selected={true}
                                 >
                                   <button
-                                    className="css-18zobq6"
+                                    className="css-1qqi0nj"
                                     key="1-1"
                                     onClick={[Function]}
                                     type="button"
@@ -1525,14 +1536,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-10041rq css-171mywc"
+                            className="css-id5jvr css-171mywc"
                             isSelected={false}
                             key="child-1/.$1-2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1554,7 +1565,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                   selected={false}
                                 >
                                   <button
-                                    className="css-1k50yg4"
+                                    className="css-1ibkwsv"
                                     key="1-2"
                                     onClick={[Function]}
                                     type="button"
@@ -1578,6 +1589,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 duration={200}
                 isVisible={true}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -1703,7 +1715,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
     >
       <div
         aria-hidden={true}
-        className="css-9v2ggq css-1fekhao"
+        className="css-1qafxgk css-1fekhao"
         onClick={[Function]}
       >
         <div
@@ -1758,17 +1770,19 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className={null}
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
                   Object {
                     "duration": 300,
-                    "in": "css-32zjx4",
-                    "out": "css-15ct02m",
+                    "in": "css-1ldjh2f",
+                    "out": "css-171mdnt",
                   }
                 }
-                className="css-ruonn8"
+                className="css-1d4fqwq"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1781,6 +1795,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -1865,7 +1880,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
     >
       <div
         aria-hidden={true}
-        className="css-9v2ggq"
+        className="css-1qafxgk"
         onClick={[Function]}
       >
         <div
@@ -1920,17 +1935,19 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className={null}
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
                   Object {
                     "duration": 300,
-                    "in": "css-32zjx4",
-                    "out": "css-15ct02m",
+                    "in": "css-1ldjh2f",
+                    "out": "css-171mdnt",
                   }
                 }
-                className="css-ruonn8"
+                className="css-1d4fqwq"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1943,6 +1960,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
@@ -2027,7 +2045,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
     >
       <div
         aria-hidden={true}
-        className="css-9v2ggq"
+        className="css-1qafxgk"
         onClick={[Function]}
       >
         <div
@@ -2077,17 +2095,19 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             onOpen={[Function]}
             title=""
           >
-            <section>
+            <section
+              className={null}
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
                   Object {
                     "duration": 300,
-                    "in": "css-32zjx4",
-                    "out": "css-15ct02m",
+                    "in": "css-1ldjh2f",
+                    "out": "css-171mdnt",
                   }
                 }
-                className="css-ruonn8"
+                className="css-1d4fqwq"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -2100,6 +2120,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                 duration={200}
                 isVisible={false}
                 level={4}
+                lockBodyScroll={true}
                 onClick={[Function]}
                 opacity={20}
               >
