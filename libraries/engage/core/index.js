@@ -246,6 +246,7 @@ export * from '@shopgate/pwa-common/selectors/modal';
 export { useAsyncMemo } from './hooks/useAsyncMemo';
 export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
+export { useApp } from './hooks/useApp';
 export { useCurrentProduct } from './hooks/useCurrentProduct';
 export { useNavigation } from './hooks/useNavigation';
 export { usePageConfig } from './hooks/usePageConfig';
@@ -308,6 +309,7 @@ export {
   SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB,
+  SHOP_SETTING_PRODUCTS_SORT_ORDER,
   EUNAUTHORIZED,
   EAUTHENTICATION,
 } from './constants';

@@ -22,7 +22,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: (categoryId, sort, offset) => dispatch(getProducts(categoryId, sort, offset)),
+  getProducts: (searchPhrase, sort, offset) => dispatch(getProducts(searchPhrase, sort, offset)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

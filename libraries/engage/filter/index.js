@@ -22,3 +22,23 @@ export { default as PriceSlider } from './components/PriceSlider';
 
 export { default as buildInitialFilters } from './helpers/buildInitialFilters';
 export { default as buildUpdatedFilters } from './helpers/buildUpdatedFilters';
+
+export {
+  SORT_ORDER_RELEVANCE,
+  SORT_ORDER_PRICE_ASC,
+  SORT_ORDER_PRICE_DESC,
+  SORT_ORDER_NAME_ASC,
+  SORT_ORDER_NAME_DESC,
+  SORT_ORDER_RANK_ASC,
+  SORT_ORDER_RANK_DESC,
+  SORT_SCOPE_CATEGORY,
+  SORT_SCOPE_SEARCH,
+} from './constants';
+
+export {
+  makeExtendedSortOptionsSupported,
+  makeGetDefaultSortOrder,
+} from './selectors';
+export { SortProvider } from './providers';
+export { withSort } from './hocs';
+export { useSort } from './hooks';

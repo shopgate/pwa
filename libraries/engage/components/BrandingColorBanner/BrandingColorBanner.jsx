@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
 import { css } from 'glamor';
 
 const brandingColorBanner = css({

@@ -13,7 +13,10 @@ css.global('html', {
 const viewport = css({
   display: 'flex',
   flexDirection: 'column',
-  minHeight: '100vh',
+  minHeight: [
+    '100vh',
+    //    'var(--vh-100, 100vh)',
+  ],
   overflow: 'hidden',
   position: 'relative',
   width: '100vw',

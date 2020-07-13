@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
+import { makeGetDefaultSortOrder } from '@shopgate/engage/filter/selectors';
 import {
   getCurrentPathname,
   getCurrentQuery,
   getRouterStack,
 } from './router';
 import { parseObjectToQueryString } from '../helpers/router';
-import { DEFAULT_SORT } from '../constants/DisplayOptions';
 
 /**
  * @deprecated
@@ -37,6 +37,8 @@ export const getQueryParam = createSelector(
   }
 );
 
+const getDefaultSortOrder = makeGetDefaultSortOrder();
+
 /**
  * Retrieves the sort order from the URL query parameters.
  * @param {Object} state The global state.
@@ -44,7 +46,8 @@ export const getQueryParam = createSelector(
  */
 export const getSortOrder = createSelector(
   (state, props) => getQueryParam(state, props, 'sort'),
-  param => param || DEFAULT_SORT
+  getDefaultSortOrder,
+  (sortParam, defaultSort) => sortParam || defaultSort
 );
 
 /**

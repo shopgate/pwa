@@ -140,6 +140,7 @@ class SelectBox extends Component {
       button,
       dropdown,
       selectItem,
+      selectItemSelected,
     } = this.props.classNames;
     const buttonLabel = this.state.selected ? this.state.selected.label : this.props.defaultText;
     const iconClasses = classNames(icon, {
@@ -172,7 +173,10 @@ class SelectBox extends Component {
           <ul role="menu" id={buttonLabel} tabIndex="-1">
             {this.props.items.map(item => (
               <SelectBoxItem
-                className={selectItem}
+                classNames={{
+                  selectItem,
+                  selectItemSelected,
+                }}
                 wrapper={this.props.item}
                 key={item.value}
                 value={item.value}

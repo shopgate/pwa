@@ -5,8 +5,8 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 const { variables } = themeConfig;
 
 export const sheet = css({
-  maxHeight: `calc(100vh - ${variables.navigator.height}px)`,
+  maxHeight: `calc(var(--vh-100, 100vh) - ${variables.navigator.height}px)`,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
-    maxHeight: `calc(80vh - ${variables.navigator.height}px)`,
+    maxHeight: `calc(var(--vh-80, 80vh) - ${variables.navigator.height}px)`,
   },
 });

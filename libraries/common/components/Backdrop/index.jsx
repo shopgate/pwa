@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-inline-transition-group';
+import { toggleBodyScroll } from '@shopgate/engage/styles';
 import style from './style';
 
 /**
@@ -17,6 +18,7 @@ class Backdrop extends Component {
     duration: PropTypes.number,
     isVisible: PropTypes.bool,
     level: PropTypes.number,
+    lockBodyScroll: PropTypes.bool,
     onClick: PropTypes.func,
     opacity: PropTypes.number,
   };
@@ -33,7 +35,46 @@ class Backdrop extends Component {
     level: 2,
     onClick: () => {},
     opacity: 50,
+    lockBodyScroll: true,
   };
+
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+
+    this.bodyScrollRef =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+  }
+
+  /**
+   * Sets the initial state for the body scroll lock
+   */
+  componentDidMount() {
+    const { isVisible, lockBodyScroll } = this.props;
+
+    if (lockBodyScroll) {
+      toggleBodyScroll(isVisible, this.bodyScrollRef);
+    }
+  }
+
+  /**
+   * Toggles the body scroll lock when the visibility state changes
+   * @param {Object} nextProps The next component props
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { isVisible, lockBodyScroll } = nextProps;
+
+    if (isVisible === this.props.isVisible) {
+      return;
+    }
+
+    if (lockBodyScroll) {
+      toggleBodyScroll(isVisible, this.bodyScrollRef);
+    }
+  }
 
   /**
    * Only update when the `isVisible` prop changes.
@@ -42,6 +83,17 @@ class Backdrop extends Component {
    */
   shouldComponentUpdate(nextProps) {
     return (this.props.isVisible !== nextProps.isVisible);
+  }
+
+  /**
+   * Removes the body scroll lock when the component unmounts
+   */
+  componentWillUnmount() {
+    const { lockBodyScroll } = this.props;
+
+    if (lockBodyScroll) {
+      toggleBodyScroll(false, this.bodyScrollRef);
+    }
   }
 
   /**

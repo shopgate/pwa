@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * Wraps a single fiter page item.
+ * Wraps a single filter page item.
  * @param {Object} props The component props.
  * @returns {JSX}
  */

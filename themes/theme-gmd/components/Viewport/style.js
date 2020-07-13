@@ -14,7 +14,10 @@ css.global('html', {
 const viewport = css({
   display: 'flex',
   flexDirection: 'column',
-  minHeight: '100vh',
+  minHeight: [
+    '100vh',
+  //  'var(--vh-100, 100vh)',
+  ],
   overflow: useScrollContainer() ? 'hidden' : 'inherit',
   position: 'relative',
   [responsiveMediaQuery('<=xs', { appAlways: true })]: {

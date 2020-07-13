@@ -1,4 +1,4 @@
-import { DEFAULT_SORT } from '../../constants/DisplayOptions';
+import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../../constants/Pipelines';
 import { generateSortedHash } from './generateSortedHash';
 
@@ -7,19 +7,29 @@ import { generateSortedHash } from './generateSortedHash';
  * @param {Object} params The request parameters.
  * @param {boolean} [includeSort=true] Whether to include the sorting in the hash.
  * @param {boolean} [includeFilters=true] Whether to include the filters in the hash.
+ * @param {string} [defaultSort=null] A default value for the sort parameter
  * @return {string} The generated hash.
  */
-export function generateResultHash(params, includeSort = true, includeFilters = true) {
+export function generateResultHash(
+  params,
+  includeSort = true,
+  includeFilters = true,
+  defaultSort = null
+) {
   const defaultParams = {
     pipeline: pipelines.SHOPGATE_CATALOG_GET_PRODUCTS,
     ...includeFilters && { filters: {} },
-    ...includeSort && { sort: DEFAULT_SORT },
+    ...includeSort && defaultSort && { sort: defaultSort },
   };
 
   const mergedParams = {
     ...defaultParams,
     ...params,
   };
+
+  if (includeSort && !mergedParams.sort) {
+    logger.error('generateResultHash() needs to be called with a sort parameter when the sort is supposed to be included');
+  }
 
   const { searchPhrase } = mergedParams;
 

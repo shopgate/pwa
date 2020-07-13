@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { useScrollContainer } from '@shopgate/engage/core/helpers/scrollContainer';
 
 const { style } = document.documentElement;
 
@@ -29,6 +30,9 @@ export const footer = css({
   flexShrink: 1,
   position: 'relative',
   zIndex: 1,
+  ...(!useScrollContainer() ? {
+    position: 'sticky',
+  } : {}),
   ':after': {
     backgroundColor: 'var(--footer-inset-background-color, var(--page-background-color))',
     height: 'var(--safe-area-inset-bottom)',
