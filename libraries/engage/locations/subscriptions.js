@@ -47,7 +47,7 @@ function locations(subscribe) {
   subscribe(receivedVisibleProduct$, ({ action, dispatch, getState }) => {
     const { productData } = action;
 
-    // Skip if no fulfullment methoods are set.
+    // Skip if no fulfullment methods are set.
     if (
       !productData
       || !productData.fulfillmentMethods
@@ -59,6 +59,9 @@ function locations(subscribe) {
     // Fetch locations for this specific product.
     const userSearch = getUserSearch(getState());
     dispatch(fetchProductLocations(action.productData.id, userSearch));
+
+    // Fetch all locations for product without filters.
+    dispatch(fetchProductLocations(action.productData.id, {}));
   });
 
   // Core config and cart subscriptions
