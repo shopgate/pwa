@@ -1,10 +1,12 @@
 import { produce } from 'immer';
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
 import {
+  ERROR_LOCATIONS,
   REQUEST_LOCATIONS,
   RECEIVE_LOCATIONS,
   REQUEST_PRODUCT_LOCATIONS,
   RECEIVE_PRODUCT_LOCATIONS,
+  ERROR_PRODUCT_LOCATIONS,
   STORE_FULFILLMENT_METHOD,
   SELECT_LOCATION,
 } from '../constants';
@@ -54,6 +56,11 @@ export default (state = initialState, action) => {
       case REQUEST_LOCATIONS:
       case REQUEST_PRODUCT_LOCATIONS:
         draft.isFetching = true;
+        break;
+
+      case ERROR_LOCATIONS:
+      case ERROR_PRODUCT_LOCATIONS:
+        draft.isFetching = false;
         break;
 
       case RECEIVE_LOCATIONS: {

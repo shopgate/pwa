@@ -6,6 +6,7 @@ import {
 } from '@shopgate/engage/cart';
 import { receiveCoreConfig$, appDidStart$ } from '@shopgate/engage/core';
 import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { MULTI_LINE_RESERVE } from './constants';
 import { getUserSearch, getPreferredLocation } from './selectors';
 import { fetchLocations, fetchProductLocations } from './actions';
@@ -30,10 +31,16 @@ function locations(subscribe) {
     const isLocationBasedShopping = getIsLocationBasedShopping(getState());
     const preferredLocation = getPreferredLocation(getState());
 
-    // Fetch merchants locations.
     if (isLocationBasedShopping && !preferredLocation) {
+      // Fetch merchants locations.
       const userSearch = getUserSearch(getState());
       await dispatch(fetchLocations(userSearch));
+    } else {
+      // Fetch locations for this specific product.
+      const route = getCurrentRoute(getState());
+      const productId = route?.state?.productId || route?.params.productId;
+      const userSearch = getUserSearch(getState());
+      dispatch(fetchProductLocations(productId, userSearch));
     }
   });
 

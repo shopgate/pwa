@@ -67,11 +67,13 @@ function StoreListSearch({
   });
 
   useLayoutEffect(() => {
-    if (!locations || locations.length === 0) {
+    if ((!isFetching || message === 'locations.error_no_store_found') && (!locations || locations.length === 0)) {
       // Set a message when a location search resulted in zero locations.
       setMessage('locations.error_no_store_found');
+    } else {
+      setMessage('');
     }
-  }, [locations]);
+  }, [isFetching, locations, message]);
 
   /**
    * Triggers an update when the value of the country selector changed.
