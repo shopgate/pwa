@@ -19,7 +19,7 @@ import connect from './connector';
  * @param {string} props.pageId The page id.
  * @return {JSX}
  */
-function PageContent({ configs, pageId }) {
+function PageContent({ configs, pageId, postponeRender }) {
   if (!configs) {
     return null;
   }
@@ -37,7 +37,7 @@ function PageContent({ configs, pageId }) {
       <Bar center={center} title={configs.title || ''} />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
-        {(configs && configs.widgets) && (
+        {(!postponeRender && configs && configs.widgets) && (
           <Widgets components={widgets} widgets={configs.widgets} />
         )}
       </Portal>
@@ -49,10 +49,12 @@ function PageContent({ configs, pageId }) {
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
   configs: PropTypes.shape(),
+  postponeRender: PropTypes.bool,
 };
 
 PageContent.defaultProps = {
   configs: null,
+  postponeRender: false,
 };
 
 export default connect(PageContent);
