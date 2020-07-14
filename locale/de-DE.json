@@ -472,6 +472,14 @@
       "authenticate": "E-Mail address and phone number do not match with this order.",
       "authorize": "This order doesn't belong to your account.",
       "not_found": "Order not found."
+    },
+    "cancel": {
+      "button": "Cancel Order",
+      "modal": {
+        "title": "Cancel Order",
+        "message": "Are you sure you want to cancel your order? This can not be undone!",
+        "confirm": "Yes, Cancel my Order"
+      }
     }
   },
   "registration": {
