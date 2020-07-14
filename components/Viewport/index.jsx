@@ -34,11 +34,8 @@ const updatePageContent = () => {
 
 window.onresize = debounce(() => {
   updatePageContent();
-}, 500);
-
-window.onresize = debounce(() => {
   setViewportHeight();
-}, 200);
+}, 300);
 
 updatePageContent();
 setViewportHeight();
