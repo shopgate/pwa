@@ -116,6 +116,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                 title="Label One"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -407,6 +408,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                 title="Label One"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -448,6 +450,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         }
                       >
                         <Header
+                          allowClose={true}
                           onToggleClose={[Function]}
                           shadow={false}
                           title="Label One"
@@ -973,6 +976,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 title="Label One"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -1124,6 +1128,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 title="Label Two"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -1258,6 +1263,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 title=""
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -1581,6 +1587,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 title="Label One"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -1622,6 +1629,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         }
                       >
                         <Header
+                          allowClose={true}
                           onToggleClose={[Function]}
                           shadow={false}
                           title="Label One"
@@ -1975,6 +1983,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 title="Label Two"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -2284,6 +2293,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 title="Label One"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -2325,6 +2335,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         }
                       >
                         <Header
+                          allowClose={true}
                           onToggleClose={[Function]}
                           shadow={false}
                           title="Label One"
@@ -2678,6 +2689,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 title="Label Two"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -2719,6 +2731,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         }
                       >
                         <Header
+                          allowClose={true}
                           onToggleClose={[Function]}
                           shadow={false}
                           title="Label Two"
@@ -3220,6 +3233,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                 title="Label One"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -3505,6 +3519,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                 title="Label One"
               >
                 <Sheet
+                  allowClose={true}
                   animation={Object {}}
                   backdrop={true}
                   className={null}
@@ -3546,6 +3561,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         }
                       >
                         <Header
+                          allowClose={true}
                           onToggleClose={[Function]}
                           shadow={false}
                           title="Label One"
