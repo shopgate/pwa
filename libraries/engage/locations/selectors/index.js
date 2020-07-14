@@ -58,10 +58,16 @@ export const makeGetFilteredLocations = getFilters => createSelector(
       return locations;
     }
     return locations.map((location) => {
-      const pair = generateSortedHash({ productCode, locationCode: location.code });
+      const pair = generateSortedHash({
+        productCode,
+        locationCode: location.code,
+      });
       const inventory = storage.inventoriesByCodePair[pair] || null;
       if (inventory) {
-        return { ...location, inventory };
+        return {
+          ...location,
+          inventory,
+        };
       }
       return location;
     });
@@ -229,7 +235,10 @@ export const makeGetLocationInventory = (getLocationCode, getProductCode) => (st
   const productCode = getProductCode(state, props);
 
   const storage = getLocationsStorage(state);
-  const pair = generateSortedHash({ productCode, locationCode });
+  const pair = generateSortedHash({
+    productCode,
+    locationCode,
+  });
   return storage.inventoriesByCodePair[pair] || null;
 };
 
