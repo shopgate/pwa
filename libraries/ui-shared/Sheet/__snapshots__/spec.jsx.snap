@@ -2,6 +2,7 @@
 
 exports[`<Sheet /> should open 1`] = `
 <Sheet
+  allowClose={true}
   animation={Object {}}
   backdrop={true}
   className={null}
@@ -43,6 +44,7 @@ exports[`<Sheet /> should open 1`] = `
         }
       >
         <Header
+          allowClose={true}
           onToggleClose={[Function]}
           shadow={false}
           title="Test-Title"
@@ -319,6 +321,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
     onOpen={[Function]}
   >
     <Header
+      allowClose={true}
       onToggleClose={[Function]}
       shadow={false}
       title="Test-Title"
@@ -349,6 +352,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
 
 exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
 <Sheet
+  allowClose={true}
   animation={Object {}}
   backdrop={true}
   className={null}
@@ -407,6 +411,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         }
       >
         <Header
+          allowClose={true}
           onToggleClose={[Function]}
           shadow={false}
           title="Test-Title"

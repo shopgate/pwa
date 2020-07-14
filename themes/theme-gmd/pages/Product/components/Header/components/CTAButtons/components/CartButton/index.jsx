@@ -29,7 +29,7 @@ class CartButton extends Component {
     productId: PropTypes.string.isRequired,
     isRopeFulfillmentMethodAllowed: PropTypes.bool,
     userLocation: PropTypes.shape(),
-    userMethod: PropTypes.shape(),
+    userMethod: PropTypes.string,
   }
 
   static defaultProps = {

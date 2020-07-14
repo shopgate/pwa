@@ -2,9 +2,10 @@ import { createSelector } from 'reselect';
 import pickBy from 'lodash/pickBy';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
-import { getProduct } from '@shopgate/pwa-common-commerce/product';
-import { makeGetEnabledFulfillmentMethods } from '../../core';
-import { makeIsProductActive, makeIsBaseProductActive } from '../../product';
+import { getProduct } from '@shopgate/engage/product/selectors/product';
+
+import { makeGetEnabledFulfillmentMethods } from '../../core/config';
+import { makeIsProductActive, makeIsBaseProductActive } from '../../product/selectors/product';
 import { isProductAvailable } from '../helpers/productInventory';
 import { DIRECT_SHIP } from '../constants';
 
@@ -68,6 +69,30 @@ export const makeGetFilteredLocations = getFilters => createSelector(
 );
 
 /**
+ * Creates a selector that retrieves active filter.
+ * @param {Object} state State.
+ * @returns {Object}
+ */
+export const getActiveFilter = createSelector(
+  getLocationsState,
+  (locationsState) => {
+    const { geolocation, ...rest } = locationsState.userSearch;
+    let longitude;
+    let latitude;
+
+    if (geolocation) {
+      ({ longitude, latitude } = geolocation);
+    }
+
+    return pickBy({
+      ...rest,
+      longitude,
+      latitude,
+    });
+  }
+);
+
+/**
  * Creates a selector that retrieves all locations for a given product.
  * @param {Function} getProductCode Has to retrieve the product code.
  * @returns {Object}
@@ -76,8 +101,9 @@ export const makeGetLocationsForProduct = (getProductCode) => {
   /* eslint-disable require-jsdoc */
   const getFilters = (state, props) => ({
     productCode: getProductCode(state, props),
-    ...pickBy(getLocationsState(state).userSearch),
+    ...pickBy(getActiveFilter(state)),
   });
+
   /* eslint-enable require-jsdoc */
   return makeGetFilteredLocations(getFilters);
 };
@@ -88,13 +114,6 @@ export const makeGetLocationsForProduct = (getProductCode) => {
  * @returns {Object}
  */
 export const getIsFetching = state => getLocationsStorage(state).isFetching;
-
-/**
- * Creates a selector that retrieves active filter.
- * @param {Object} state State.
- * @returns {Object}
- */
-export const getActiveFilter = state => pickBy(getLocationsState(state).userSearch);
 
 /**
  * Creates a selector that retrieves all locations for a given product.
@@ -345,3 +364,4 @@ export const getExternalCustomerNumberForOrder = createSelector(
     return undefined;
   }
 );
+

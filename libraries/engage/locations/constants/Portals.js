@@ -1,5 +1,5 @@
 // @flow
-import { PRODUCT } from '@shopgate/engage/product';
+import { PRODUCT } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 
 // CONTENTS
 const FULFILLMENT_SELECTOR = 'fulfillment-selector';

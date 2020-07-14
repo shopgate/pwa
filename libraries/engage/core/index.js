@@ -302,6 +302,7 @@ export * from './validation';
 export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
+  getIsLocationBasedShopping,
 } from './selectors';
 
 export {

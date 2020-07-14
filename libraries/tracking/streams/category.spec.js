@@ -35,6 +35,10 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentParams: () => ({}),
 }));
 
+jest.mock('@shopgate/engage/locations/selectors', () => ({
+  getPreferredLocation: jest.fn().mockReturnValue({}),
+}));
+
 /**
  * A wrapper for the route did enter action creator. Beside returning the action object of the
  * original action creator, it also updates the pattern of the mocked current route.

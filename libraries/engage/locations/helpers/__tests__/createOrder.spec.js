@@ -1,5 +1,5 @@
 import { mockedProducts } from '@shopgate/pwa-common-commerce/product/mock';
-import { makeGetUserLocation, getExternalCustomerNumberForOrder } from '../../selectors';
+import { getPreferredLocation, getExternalCustomerNumberForOrder } from '../../selectors';
 import createOrder from '../createOrder';
 
 jest.mock('@shopgate/engage/core');
@@ -7,7 +7,7 @@ jest.mock('@shopgate/engage/cart');
 jest.mock('@shopgate/engage/product');
 jest.mock('@shopgate/pwa-common/helpers/config');
 jest.mock('../../selectors', () => ({
-  makeGetUserLocation: jest.fn(),
+  getPreferredLocation: jest.fn(),
   getExternalCustomerNumberForOrder: jest.fn(),
 }));
 
@@ -26,9 +26,9 @@ describe('libraries > engage > locations > helpers > createOrder', () => {
   };
 
   it('should create order for single product', () => {
-    makeGetUserLocation.mockImplementation(() => jest.fn().mockReturnValue({
+    getPreferredLocation.mockReturnValue({
       code: 'LOCATION_CODE',
-    }));
+    });
     getExternalCustomerNumberForOrder.mockReturnValueOnce('123456');
     expect(createOrder(formValues, mockedProducts.products[0], getState)).toMatchSnapshot();
   });

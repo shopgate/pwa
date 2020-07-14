@@ -7,6 +7,7 @@ import { generateSortedHash } from './generateSortedHash';
  * @param {Object} params The request parameters.
  * @param {boolean} [includeSort=true] Whether to include the sorting in the hash.
  * @param {boolean} [includeFilters=true] Whether to include the filters in the hash.
+ * @param {boolean} [includeFulfillment=true] Whether to include the fulfillment in the hash.
  * @param {string} [defaultSort=null] A default value for the sort parameter
  * @return {string} The generated hash.
  */
@@ -14,6 +15,7 @@ export function generateResultHash(
   params,
   includeSort = true,
   includeFilters = true,
+  includeFulfillment = true,
   defaultSort = null
 ) {
   const defaultParams = {

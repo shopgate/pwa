@@ -10,6 +10,7 @@ import {
   getCategoryChildren,
   getRootCategories,
 } from '@shopgate/pwa-common-commerce/category/selectors';
+import { getFulfillmentParams } from '@shopgate/pwa-common-commerce/product';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 
 /**
@@ -27,6 +28,7 @@ const getResultHash = (state, type, params, id) => {
   const currentSort = getSortOrder(state);
   const { value, sort = currentSort } = params;
   const transformedSort = transformDisplayOptions(sort);
+  const fulfillmentParams = getFulfillmentParams(state);
 
   // Create the hash parameters based on the query type and parameters.
   switch (type) {
@@ -48,6 +50,7 @@ const getResultHash = (state, type, params, id) => {
         id,
         searchPhrase: value,
         sort: transformedSort,
+        ...fulfillmentParams,
       };
 
       break;
@@ -59,6 +62,7 @@ const getResultHash = (state, type, params, id) => {
         id,
         productIds: value,
         sort: transformedSort,
+        ...fulfillmentParams,
       };
 
       break;
@@ -70,6 +74,7 @@ const getResultHash = (state, type, params, id) => {
         id,
         categoryId: value,
         sort: transformedSort,
+        ...fulfillmentParams,
       };
 
       break;

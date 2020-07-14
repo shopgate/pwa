@@ -4,6 +4,7 @@ import {
   getSearchPhrase,
 } from '@shopgate/pwa-common/selectors/history';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
+import { getFulfillmentParams } from '@shopgate/pwa-common-commerce/product';
 
 /**
  * Selects the container for search results.
@@ -21,10 +22,12 @@ const resultCountSelector = createSelector(
   getSearchPhrase,
   getSortOrder,
   resultsSelector,
-  (searchPhrase, sort, results) => {
+  getFulfillmentParams,
+  (searchPhrase, sort, results, fulfillmentParams) => {
     const hash = searchPhrase && generateResultHash({
       sort,
       searchPhrase,
+      ...fulfillmentParams,
     });
 
     if (!hash || !results[hash]) {

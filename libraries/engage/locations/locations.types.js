@@ -66,6 +66,7 @@ export type Location = {
   productInventory?: LocationProductInventory;
   distance?: number;
   unitSystem?: string;
+  inventory?: Object
 }
 
 export type LocationAware = {

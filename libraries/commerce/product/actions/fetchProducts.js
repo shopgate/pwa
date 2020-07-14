@@ -5,8 +5,7 @@ import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
 import { SORT_SCOPE_CATEGORY } from '@shopgate/engage/filter/constants';
 import { makeGetDefaultSortOrder } from '@shopgate/engage/filter/selectors';
-import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors';
-import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
+import { getFulfillmentParams } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   SHOPGATE_CATALOG_GET_PRODUCTS,
   SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS,
@@ -75,6 +74,7 @@ function fetchProducts(options) {
     id = null,
     includeSort = true,
     includeFilters = true,
+    includeFulfillment = true,
     onBeforeDispatch = () => { },
   } = options;
 
@@ -91,13 +91,10 @@ function fetchProducts(options) {
     }
 
     // Append additional global fulfillment parameters.
-    const fulfillmentParams = {};
-    const activeLocation = getPreferredLocation(state);
-    if (pipeline === SHOPGATE_CATALOG_GET_PRODUCTS
-      && getIsLocationBasedShopping(state)
-      && activeLocation
-    ) {
-      fulfillmentParams.locationCodes = [activeLocation.code];
+    let fulfillmentParams = {};
+
+    if (includeFulfillment && pipeline === SHOPGATE_CATALOG_GET_PRODUCTS) {
+      fulfillmentParams = getFulfillmentParams(state);
     }
 
     // We need to process the params to handle edge cases in the pipeline params.

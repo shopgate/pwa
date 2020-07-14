@@ -3,35 +3,7 @@
 exports[`engage > locations > components > StoreListSearch should call getProductLocations with a postal code after filling the input and pressing enter 1`] = `
 <StoreListSearch
   countryCode="DE"
-  getProductLocations={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          "ABC123",
-          null,
-          true,
-        ],
-        Array [
-          "ABC123",
-          Object {
-            "countryCode": "DE",
-            "postalCode": "ACME",
-          },
-          false,
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  getProductLocations={[MockFunction]}
   postalCode="ACME"
   setCountryCode={[MockFunction]}
   setPostalCode={
@@ -118,7 +90,6 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
               "data-css-2h0g54": "",
             }
           }
-          disabled={true}
           name="postalCode"
           onBlur={[Function]}
           onChange={[Function]}
@@ -148,9 +119,7 @@ exports[`engage > locations > components > StoreListSearch should call getProduc
       }
     }
   >
-    <ProgressBar
-      isVisible={true}
-    />
+    <ProgressBar />
   </div>
 </StoreListSearch>
 `;
@@ -225,7 +194,6 @@ exports[`engage > locations > components > StoreListSearch should render as expe
               "data-css-2h0g54": "",
             }
           }
-          disabled={false}
           name="postalCode"
           onBlur={[Function]}
           onChange={[Function]}
@@ -255,9 +223,7 @@ exports[`engage > locations > components > StoreListSearch should render as expe
       }
     }
   >
-    <ProgressBar
-      isVisible={false}
-    />
+    <ProgressBar />
   </div>
 </Fragment>
 `;

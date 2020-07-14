@@ -55,6 +55,7 @@ function StoreListSearch({
   const loading = isFetching;
   const [message, setMessage] = useState('');
   const [inputPostalCode, setInputPostalCode] = useState(postalCode || '');
+  const [locating, setLocating] = useState(false);
   const isMounted = useRef(false);
 
   const inputEl = useRef(null);
@@ -67,13 +68,13 @@ function StoreListSearch({
   });
 
   useLayoutEffect(() => {
-    if ((!isFetching || message === 'locations.error_no_store_found') && (!locations || locations.length === 0)) {
+    if (((!isFetching && !locating) || message === 'locations.error_no_store_found') && (!locations || locations.length === 0)) {
       // Set a message when a location search resulted in zero locations.
       setMessage('locations.error_no_store_found');
     } else {
       setMessage('');
     }
-  }, [isFetching, locations, message]);
+  }, [isFetching, locating, locations, message]);
 
   /**
    * Triggers an update when the value of the country selector changed.
@@ -104,9 +105,11 @@ function StoreListSearch({
    * Triggers an update when the locate me button was pressed. Also clears the local state for the
    * postal code input.
    */
-  const handleLocateMeButton = useCallback(() => {
-    setGeolocation();
+  const handleLocateMeButton = useCallback(async () => {
     setInputPostalCode('');
+    setLocating(true);
+    await setGeolocation();
+    setLocating(false);
   }, [setGeolocation]);
 
   /**
@@ -170,7 +173,7 @@ function StoreListSearch({
         </Grid>
       </div>
       <div className={progressBar}>
-        <ProgressBar isVisible={loading} />
+        <ProgressBar isVisible={loading || locating} />
       </div>
       {message &&
         <MessageBar

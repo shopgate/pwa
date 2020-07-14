@@ -2,13 +2,18 @@
 
 exports[`engage > locations > actions-creators receiveProductLocations 1`] = `
 Object {
+  "filters": Object {
+    "productCode": "abc123",
+  },
   "locations": Array [
-    "a",
-    "b",
-    "c",
+    Object {
+      "code": "LOC1",
+    },
+    Object {
+      "code": "LOC2",
+    },
   ],
-  "params": Object {},
-  "productId": "id123",
+  "productCode": "id123",
   "type": "RECEIVE_PRODUCT_LOCATIONS",
 }
 `;

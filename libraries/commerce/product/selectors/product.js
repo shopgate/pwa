@@ -5,11 +5,14 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter/constants';
+import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
+import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors/merchantSettings';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
 
 /**
  * Retrieves the product state from the store.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @return {Object} The product state.
  */
@@ -17,6 +20,7 @@ export const getProductState = state => state.product || {};
 
 /**
  * Selects all products from the store.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @return {Object} The collection of products.
  */
@@ -49,6 +53,7 @@ export const getProductDescriptionState = createSelector(
 
 /**
  * Selects the product properties state.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object} The product properties state.
@@ -84,6 +89,7 @@ export const getProductVariantsState = createSelector(
  * Retrieves a product by id from state. Different to getProduct() which returns the product
  * entity data if available, this selector returns the pure state entry for a given productId.
  * So the expires and the isFetching property is processable.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object|null} The dedicated product.
@@ -105,6 +111,9 @@ export const getProductById = createSelector(
   }
 );
 
+/**
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
+ */
 export const getProductDataById = createSelector(
   getProductById,
   product => (product ? product.productData : undefined)
@@ -113,6 +122,7 @@ export const getProductDataById = createSelector(
 /**
  * Retrieves the id of the current selected product from the component props. When the props
  * contain a variant id it will return this one instead of the product id.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @param {Object} [props] The component props.
  * @return {string|null} The id of the current product.
@@ -171,6 +181,7 @@ export const isVariantSelected = (state, props) => !!getVariantProductId(state, 
 
 /**
  * Retrieves the product data for the passed productId from the store.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object} The current product.
@@ -431,6 +442,7 @@ export const isBaseProduct = createSelector(
 /**
  * Determines a baseProductId for the products which are referenced within the props.
  * When a variantId is passed, the selector will return the id of the related base product.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {string|null}
@@ -457,6 +469,7 @@ export const getBaseProductId = createSelector(
 
 /**
  * Retrieves the base product data for the passed productId from the store.
+ * @deprecated Also exists within @shopgate/engage/product/selectors/product
  * @param {Object} state The current application state.
  * @returns {Object|null} The current product.
  */
@@ -777,6 +790,23 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
 );
 
 /**
+ * Creates a selector that determines fulfillment params for product requests
+ */
+export const getFulfillmentParams = createSelector(
+  getIsLocationBasedShopping,
+  getPreferredLocation,
+  (isLocationBasedShopping, location) => {
+    if (!isLocationBasedShopping || !location) {
+      return {};
+    }
+
+    return {
+      locationCodes: [location.code],
+    };
+  }
+);
+
+/**
  * Retrieves the generated result hash for a category id or search phrase.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
@@ -788,13 +818,15 @@ export const getResultHash = createSelector(
   (state, props = {}) => props.params,
   (state, props) => getSortOrder(state, props),
   getActiveFilters,
-  (categoryId, searchPhrase, params, sort, filters) => {
+  getFulfillmentParams,
+  (categoryId, searchPhrase, params, sort, filters, fulfillmentParams) => {
     if (categoryId) {
       return generateResultHash({
         categoryId,
         sort,
         ...(filters && { filters }),
         ...params,
+        ...fulfillmentParams,
       });
     }
 
@@ -804,6 +836,7 @@ export const getResultHash = createSelector(
         sort,
         ...params,
         ...(filters && { filters }),
+        ...fulfillmentParams,
       });
     }
 

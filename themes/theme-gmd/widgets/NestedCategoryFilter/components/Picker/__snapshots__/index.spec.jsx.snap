@@ -86,6 +86,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
           title="Picker Label"
         >
           <Sheet
+            allowClose={true}
             animation={Object {}}
             backdrop={true}
             className={null}
@@ -127,6 +128,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                   }
                 >
                   <Header
+                    allowClose={true}
                     onToggleClose={[Function]}
                     shadow={false}
                     title="Picker Label"
@@ -494,6 +496,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           title="Picker Label"
         >
           <Sheet
+            allowClose={true}
             animation={Object {}}
             backdrop={true}
             className={null}
@@ -535,6 +538,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   }
                 >
                   <Header
+                    allowClose={true}
                     onToggleClose={[Function]}
                     shadow={false}
                     title="Picker Label"
@@ -942,6 +946,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           title="Picker Label"
         >
           <Sheet
+            allowClose={true}
             animation={Object {}}
             backdrop={true}
             className={null}
@@ -983,6 +988,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   }
                 >
                   <Header
+                    allowClose={true}
                     onToggleClose={[Function]}
                     shadow={false}
                     title="Picker Label"
@@ -1351,6 +1357,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
           title="Picker Label"
         >
           <Sheet
+            allowClose={true}
             animation={Object {}}
             backdrop={true}
             className={null}
@@ -1392,6 +1399,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                   }
                 >
                   <Header
+                    allowClose={true}
                     onToggleClose={[Function]}
                     shadow={false}
                     title="Picker Label"
@@ -1758,6 +1766,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
           title="Picker Label"
         >
           <Sheet
+            allowClose={true}
             animation={Object {}}
             backdrop={true}
             className={null}
@@ -1923,6 +1932,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
           title="Picker Label"
         >
           <Sheet
+            allowClose={true}
             animation={Object {}}
             backdrop={true}
             className={null}
@@ -2083,6 +2093,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
           title=""
         >
           <Sheet
+            allowClose={true}
             animation={Object {}}
             backdrop={true}
             className={null}

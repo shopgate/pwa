@@ -19,7 +19,7 @@ export function StoreCard() {
     <Fragment>
       <StoreHeader />
       <StoreDetails />
-      <ResponsiveContainer breakpoint="<=sm" appAlways>
+      <ResponsiveContainer breakpoint="<sm" appAlways>
         <StoreSelectLocationButton />
       </ResponsiveContainer>
     </Fragment>

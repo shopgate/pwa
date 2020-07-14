@@ -8,7 +8,7 @@ export type Selection = typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
 export type FulfillmentSelectorContextProps = {
   selection: Selection,
   selectedLocation: Location | null,
-  location: Location | null,
+  location?: Location | null,
   isDirectShipEnabled: boolean,
   isROPISEnabled: boolean,
   isBOPISEnabled: boolean,
@@ -21,6 +21,8 @@ export type FulfillmentSelectorContextProps = {
   isOrderable: boolean,
   shopFulfillmentMethods?: string[] | null,
   productFulfillmentMethods: string[] | null,
+  inventory?: Object,
+  preferredLocation?: Object
 }
 
 export type OwnProps = {

@@ -117,7 +117,7 @@ export const detailsSecondary = css({
 
 export const selectLocationButtonWrapper = css({
   padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
-  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+  [responsiveMediaQuery('>=sm', { webOnly: true })]: {
     padding: `0 0 ${gap.small}px 0`,
   },
 });
