@@ -27,3 +27,8 @@ export const orderNum = css({
   border: 0,
 });
 
+export const subline = css({
+  display: 'flex',
+  alignItems: 'baseline',
+  justifyContent: 'space-between',
+});

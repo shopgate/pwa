@@ -4,7 +4,7 @@ export {
   ERROR_ORDER_DETAILS,
   CLEAR_ORDERS,
 } from './actionTypes';
-export { SHOPGATE_ORDER_GET_ORDER_DETAILS } from './pipelines';
+export { SHOPGATE_ORDER_GET_ORDER_DETAILS, SHOPGATE_ORDER_CANCEL_ORDER } from './pipelines';
 export { ORDER_DETAILS_PATTERN } from './routes';
 
 export {

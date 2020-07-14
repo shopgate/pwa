@@ -3,7 +3,7 @@ import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config
 import { makeGetUserLocationAddress } from '@shopgate/engage/locations/selectors';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { makeGetOrderById } from '../selectors';
-import { fetchOrderDetails } from '../actions';
+import { fetchOrderDetails, cancelOrder } from '../actions';
 
 /**
  * @return {Function}
@@ -34,6 +34,8 @@ const makeMapStateToProps = () => {
 const mapDispatchToProps = dispatch => ({
   fetchOrderDetails: (orderNumber, mail, phone) =>
     dispatch(fetchOrderDetails(orderNumber, mail, phone)),
+  cancelOrder: (orderId, token) =>
+    dispatch(cancelOrder(orderId, token)),
 });
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

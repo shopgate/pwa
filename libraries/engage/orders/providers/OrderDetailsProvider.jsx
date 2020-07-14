@@ -39,6 +39,7 @@ const OrderDetailsProvider = ({
   shopSettings,
   userLocation,
   fetchOrderDetails,
+  cancelOrder,
   children,
 }) => {
   const { pathname } = useRoute();
@@ -155,12 +156,14 @@ const OrderDetailsProvider = ({
       defaultFormState,
       userLocation,
       fetchOrderDetails,
+      cancelOrder: () => cancelOrder(orderId, orderToken),
       errorMessage,
     }),
     [
       authenticateFormState.setValues,
       authenticateFormState.validationErrors,
       fetchOrderDetails,
+      cancelOrder,
       handleSubmit,
       isUserLoggedIn,
       showForm,
@@ -169,6 +172,8 @@ const OrderDetailsProvider = ({
       shopSettings.supportedCountries,
       userLocation,
       errorMessage,
+      orderToken,
+      orderId,
     ]
   );
 
@@ -180,6 +185,7 @@ const OrderDetailsProvider = ({
 };
 
 OrderDetailsProvider.propTypes = {
+  cancelOrder: PropTypes.func.isRequired,
   fetchOrderDetails: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   children: PropTypes.node,
