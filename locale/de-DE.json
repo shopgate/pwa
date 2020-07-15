@@ -153,6 +153,10 @@
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
+    "your_current_location": {
+      "heading": "Your Current Location",
+      "change": "Change"
+    },
     "method": {
       "ropis": "Click & Reserve",
       "bopis": "Click & Collect",

@@ -10,7 +10,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import {
   categoryWillEnter$,
   categoryDidEnter$,
-  categoryFiltersDidUpdate$,
+  categoryProductsNeedUpdate$,
   errorVisibleCategory$,
 } from './streams';
 
@@ -56,7 +56,7 @@ export default function category(subscribe) {
     dispatch(historyPop());
   });
 
-  subscribe(categoryFiltersDidUpdate$, ({ action, dispatch, getState }) => {
+  subscribe(categoryProductsNeedUpdate$, ({ action, dispatch, getState }) => {
     const { params, state: { offset = 0 } } = getCurrentRoute(getState());
     const categoryId = hex2bin(params.categoryId);
     const { filters } = action;

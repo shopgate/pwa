@@ -1,9 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Bar /> should match snapshot 1`] = `
-<Component
-  categoryId={123}
-  filters={Object {}}
-  viewRef={Object {}}
-/>
+<Fragment>
+  <ResponsiveContainer
+    appAlways={true}
+    appOnly={false}
+    breakpoint="<=xs"
+    webAlways={false}
+    webOnly={false}
+  >
+    <Connect(GlobalLocationSwitcher)
+      renderBar={true}
+    />
+  </ResponsiveContainer>
+</Fragment>
 `;

@@ -8,13 +8,17 @@ import { getProductsResult } from '../selectors';
  * @param {Object} props The component properties.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = (state, props) => ({
-  products: getProductsResult(state, props.settings.queryType, {
+const mapStateToProps = (state, props) => {
+  const { products, hash } = getProductsResult(state, props.settings.queryType, {
     sort: props.settings.sortOrder,
     value: props.settings.queryParams,
-  }, props.id).products,
-});
+  }, props.id);
 
+  return {
+    products,
+    hash,
+  };
+};
 /**
  * Maps the contents of the state to the component props.
  * @param  {Function} dispatch The redux dispatch function.
