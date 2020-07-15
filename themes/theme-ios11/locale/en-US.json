@@ -152,6 +152,10 @@
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
+    "your_current_location": {
+      "heading": "Your Current Location",
+      "change": "Change"
+    },
     "method": {
       "ropis": "Reserve online pickup in store / curbside",
       "bopis": "Buy online pickup in store / curbside",

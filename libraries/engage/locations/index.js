@@ -18,6 +18,7 @@ export {
   CartContextMenuItemChangeFulfillment,
   CartContextMenuChangeFulfillment,
   GlobalLocationSelector,
+  GlobalLocationSwitcher,
 } from './components';
 
 // CONSTANTS
@@ -52,6 +53,11 @@ export {
 export {
   useFulfillmentState,
 } from './locations.hooks';
+
+// STREAMS
+export {
+  preferredLocationDidUpdate$,
+} from './streams';
 
 // TYPES
 export type {

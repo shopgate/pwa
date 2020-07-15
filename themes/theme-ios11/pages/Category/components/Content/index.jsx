@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { ResponsiveContainer } from '@shopgate/engage/components';
+import { GlobalLocationSwitcher } from '@shopgate/engage/locations';
 import ProductsContent from '../ProductsContent';
 import Empty from '../Empty';
 import CategoryListContent from '../CategoryListContent';
@@ -14,6 +16,13 @@ const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
   <Fragment>
     <AppBar hasProducts={hasProducts} hasChildren={hasChildren} />
     <CategoryListContent categoryId={categoryId} />
+
+    { (hasChildren) && (
+      <ResponsiveContainer appAlways breakpoint="<=xs">
+        <GlobalLocationSwitcher renderBar standalone />
+      </ResponsiveContainer>
+    )}
+
     <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
     <Empty
       categoryId={categoryId}

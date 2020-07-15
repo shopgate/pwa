@@ -4,6 +4,7 @@ import { CATEGORY_PATH, RECEIVE_CATEGORY, ERROR_CATEGORY } from '@shopgate/pwa-c
 import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { preferredLocationDidUpdate$ } from '@shopgate/engage/locations';
 
 export const categoryWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId`);
@@ -47,6 +48,13 @@ export const errorVisibleCategory$ = main$
   .filter(data => filterDataByType(data, ERROR_CATEGORY));
 
 export const categoryFiltersDidUpdate$ = filtersDidUpdate$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern === `${CATEGORY_PATH}/:categoryId`);
+  });
+
+export const categoryProductsNeedUpdate$ = filtersDidUpdate$
+  .merge(preferredLocationDidUpdate$)
   .filter(({ getState }) => {
     const { pattern } = getCurrentRoute(getState());
     return (pattern === `${CATEGORY_PATH}/:categoryId`);

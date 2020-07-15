@@ -1,6 +1,7 @@
 // @flow
 export { default as errorLocations } from './errorLocations';
 export { default as selectLocation } from './selectLocation';
+export { default as selectGlobalLocation } from './selectGlobalLocation';
 export { default as storeFormInput } from './storeFormInput';
 export { default as storeFulfillmentMethod } from './storeFulfillmentMethod';
 export { default as setUserSearchPostalCode } from './setUserSearchPostalCode';

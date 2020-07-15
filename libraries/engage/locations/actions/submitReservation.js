@@ -1,11 +1,12 @@
-import { PipelineRequest, logger } from '@shopgate/engage/core';
+import { logger } from '@shopgate/pwa-core/helpers';
+import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import {
   submitReservationRequest,
   submitReservationSuccess,
   submitReservationError,
 } from '../action-creators';
 import { SHOPGATE_STOREFRONT_CREATE_ORDER } from '../constants';
-import { createOrder } from '../helpers';
+import createOrder from '../helpers/createOrder';
 
 /**
  * @param {Object} values The user order.

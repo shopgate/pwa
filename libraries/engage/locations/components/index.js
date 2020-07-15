@@ -17,3 +17,4 @@ export {
 } from './Cart';
 
 export { GlobalLocationSelector } from './GlobalLocationSelector';
+export { GlobalLocationSwitcher } from './GlobalLocationSwitcher';

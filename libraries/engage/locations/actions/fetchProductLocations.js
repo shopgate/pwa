@@ -1,4 +1,5 @@
-import { PipelineRequest, logger } from '@shopgate/engage/core';
+import { logger } from '@shopgate/pwa-core/helpers';
+import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import {
   requestProductLocations,
   receiveProductLocations,

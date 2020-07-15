@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import { ViewContext } from '@shopgate/engage/components/View';
+import { ViewContext, ResponsiveContainer } from '@shopgate/engage/components';
+import { GlobalLocationSwitcher } from '@shopgate/engage/locations';
 import FilterBar from 'Components/FilterBar';
 import PageTitleBar from 'Components/PageTitleBar';
 
@@ -29,6 +30,9 @@ const SearchBar = ({ showFilterBar }: Props) => (
         {({ ref, setTop }) => (
           <Fragment>
             <PageTitleBar />
+            <ResponsiveContainer appAlways breakpoint="<=xs">
+              <GlobalLocationSwitcher renderBar />
+            </ResponsiveContainer>
             { showFilterBar && (
               <FilterBar
                 searchPhrase={searchPhrase}
@@ -38,7 +42,6 @@ const SearchBar = ({ showFilterBar }: Props) => (
               />
             )}
           </Fragment>
-
         )}
       </Consume>
     )}

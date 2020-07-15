@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
 import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
-import { hasWebBridge } from '@shopgate/engage/core';
+import { hasWebBridge } from '@shopgate/engage/core/helpers/bridge';
 import {
   OS_ANDROID,
   OS_IOS,
