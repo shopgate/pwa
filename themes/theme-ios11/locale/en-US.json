@@ -261,6 +261,7 @@
         "insufficientstock": "Currently out of stock."
       },
       "insufficientstock": "One or more products in the cart are out of stock. Please remove the products and try again.",
+      "multiplelocations": "Orders are limited to a single pickup store, please select only one fulfillment location.",
       "productsNotFound": "One or more products has been removed from your cart due to unavailability.",
       "mixed_cart": "We currently do not support Ship to Address and Reserve to Cart within the same transaction. Please update your delivery options and continue shopping or proceed to checkout.",
       "direct_ship_item": "Check if this item is available for reserve at a store near you.",
