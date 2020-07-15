@@ -38,6 +38,7 @@ class ProductSlider extends PureComponent {
         ]).isRequired,
       }).isRequired,
     }).isRequired,
+    hash: PropTypes.string,
     products: PropTypes.arrayOf(PropTypes.shape()),
     widgetSettings: PropTypes.shape({
       slidesPerView: PropTypes.number,
@@ -47,12 +48,32 @@ class ProductSlider extends PureComponent {
   static defaultProps = {
     products: [],
     widgetSettings: {},
+    hash: null,
   };
 
+  /* eslint-disable extra-rules/potential-point-free */
   /**
    * Called when the component is mounted, requests the products.
    */
   componentDidMount() {
+    this.requestProducts();
+  }
+
+  /* eslint-enable extra-rules/potential-point-free */
+  /**
+   * When we receive new products then we can adjust the state.
+   * @param {Object} nextProps The next set of component props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.hash !== this.props.hash) {
+      this.requestProducts();
+    }
+  }
+
+  /**
+   * Requests products for the widget
+   */
+  requestProducts() {
     const { getProducts, id } = this.props;
     const { queryType, queryParams } = this.props.settings;
 

@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import { useRoute } from '@shopgate/engage/core';
-import { ViewContext } from '@shopgate/engage/components';
+import { ViewContext, ResponsiveContainer } from '@shopgate/engage/components';
+import { GlobalLocationSwitcher } from '@shopgate/engage/locations';
 import FilterBar from 'Components/FilterBar';
 import PageTitleBar from 'Components/PageTitleBar';
 
@@ -19,6 +20,12 @@ function CategoryBar({ hasChildren, hasProducts }: Props) {
   return (
     <Fragment>
       <PageTitleBar />
+      {!hasChildren && (
+        <ResponsiveContainer appAlways breakpoint="<=xs">
+          <GlobalLocationSwitcher renderBar />
+        </ResponsiveContainer>
+      )}
+
       {(!hasChildren && hasProducts) && (
         <FilterBar
           categoryId={params.categoryId}

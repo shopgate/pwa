@@ -5,6 +5,7 @@ import { categoryWillEnter$, receivedVisibleCategory$, errorVisibleCategory$ } f
 
 let mockedParams = {};
 jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+  ...require.requireActual('@shopgate/pwa-common/selectors/router'),
   getCurrentRoute: () => ({
     params: mockedParams,
   }),

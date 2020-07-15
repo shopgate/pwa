@@ -17,6 +17,7 @@ class ProductsWidget extends Component {
     getProducts: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     settings: PropTypes.shape().isRequired,
+    hash: PropTypes.string,
     isFetching: PropTypes.bool,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
@@ -26,6 +27,7 @@ class ProductsWidget extends Component {
     isFetching: null,
     products: null,
     totalProductCount: null,
+    hash: null,
   };
 
   /**
@@ -69,9 +71,10 @@ class ProductsWidget extends Component {
       this.productCount = Math.min(nextProps.products.length, this.totalProductCount);
     }
     // React to case when widget settings change after component mounted
-    if (JSON.stringify(this.props.settings.queryParams)
+    if ((JSON.stringify(this.props.settings.queryParams)
       !== JSON.stringify(nextProps.settings.queryParams)
-      && (!nextProps.products || !nextProps.products.length)) {
+      && (!nextProps.products || !nextProps.products.length)) ||
+      nextProps.hash !== this.props.hash) {
       this.getProducts(nextProps.settings);
     }
   }
