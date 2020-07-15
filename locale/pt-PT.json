@@ -468,6 +468,7 @@
     },
     "errors": {
       "authenticate": "E-Mail address and phone number do not match with this order.",
+      "expired": "The session for this order expired.",
       "authorize": "This order doesn't belong to your account.",
       "not_found": "Order not found."
     },
