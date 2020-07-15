@@ -4,6 +4,7 @@ import {
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { SHOPGATE_ORDER_CANCEL_ORDER } from '../constants';
 import fetchOrderDetails from './fetchOrderDetails';
+import { errorCancelOrder } from '../action-creators/orders';
 
 /**
  * Cancel an order.
@@ -20,14 +21,19 @@ const cancelOrder = (orderId, token) => async (dispatch) => {
     confirm: i18n.text('order_details.cancel.modal.confirm'),
   }));
   if (confirmed) {
-    await new PipelineRequest(SHOPGATE_ORDER_CANCEL_ORDER)
-      .setInput({
-        orderId,
-        token,
-      })
-      .setErrorBlacklist([EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND])
-      .dispatch();
-    await dispatch(fetchOrderDetails(orderId, { token }));
+    try {
+      await new PipelineRequest(SHOPGATE_ORDER_CANCEL_ORDER)
+        .setInput({
+          orderId,
+          token,
+        })
+        .setErrorBlacklist([EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND])
+        .dispatch();
+      await dispatch(fetchOrderDetails(orderId, { token }));
+    } catch (error) {
+      dispatch(errorCancelOrder(error, orderId));
+      throw error;
+    }
   }
 };
 

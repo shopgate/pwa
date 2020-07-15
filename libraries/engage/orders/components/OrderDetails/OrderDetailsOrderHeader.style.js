@@ -31,4 +31,12 @@ export const subline = css({
   display: 'flex',
   alignItems: 'baseline',
   justifyContent: 'space-between',
+  flexWrap: 'wrap',
+});
+
+export const cancel = css({
+  flexGrow: 1,
+  flexShrink: 0,
+  display: 'flex',
+  justifyContent: 'flex-end',
 });

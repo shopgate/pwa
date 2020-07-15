@@ -5,10 +5,10 @@ import { i18n } from '@shopgate/engage/core';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { useOrderDetails } from '../../hooks';
 import {
-  wrapper, instructions, body, orderNum, subline,
+  wrapper, instructions, body, orderNum, subline, cancel,
 } from './OrderDetailsOrderHeader.style';
 import { Button } from '../../../components';
-import { ORDER_STATUS_NEW, ORDER_STATUS_OPEN } from '../../constants';
+import { ORDER_STATUS_SUBMITTED } from '../../constants';
 
 /**
  * @param {Object} props The component props
@@ -31,10 +31,12 @@ const OrderDetailsOrderHeader = ({ order }) => {
           {' | '}
           {i18n.text('order_details.subline.order_status', { status: getTranslatedOrderStatus(status) })}
         </p>
-        { [ORDER_STATUS_NEW, ORDER_STATUS_OPEN].includes(status) && (
-          <Button onClick={cancelOrder} flat>
-            {i18n.text('order_details.cancel.button')}
-          </Button>
+        { status === ORDER_STATUS_SUBMITTED && (
+          <div className={cancel}>
+            <Button onClick={cancelOrder} flat>
+              {i18n.text('order_details.cancel.button')}
+            </Button>
+          </div>
         )}
       </div>
       { statusText && (

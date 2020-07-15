@@ -3,6 +3,7 @@ import {
   REQUEST_ORDER_DETAILS,
   RECEIVE_ORDER_DETAILS,
   ERROR_ORDER_DETAILS,
+  ERROR_CANCEL_ORDER,
   CLEAR_ORDERS,
 } from '../constants';
 
@@ -44,6 +45,14 @@ const ordersById = (state = defaultState, action) => {
         draft[action.orderId] = {
           isFetching: false,
           expires: 0,
+        };
+        break;
+      }
+
+      case ERROR_CANCEL_ORDER: {
+        draft[action.orderId] = {
+          ...draft[action.orderId],
+          order: null,
         };
         break;
       }

@@ -95,6 +95,32 @@ const OrderDetailsProvider = ({
     setIsLoading(false);
   }, [fetchOrderDetails, orderTokenCookie, orderId, setCookie]);
 
+  const handleCancel = useCallback(async () => {
+    setIsLoading(true);
+    let message;
+
+    try {
+      await cancelOrder(orderId, orderToken);
+      setErrorMessage('');
+    } catch (error) {
+      const { code } = error;
+      if (code === EUNAUTHORIZED) {
+        message = 'order_details.errors.authorize';
+        setErrorMessage();
+      } else if (code === EAUTHENTICATION) {
+        message = 'order_details.errors.expired';
+      } else if (code === ENOTFOUND) {
+        message = 'order_details.errors.not_found';
+      }
+    }
+
+    if (message) {
+      setErrorMessage(i18n.text(message));
+    }
+
+    setIsLoading(false);
+  }, [cancelOrder, orderId, orderToken]);
+
   // Loading state
   useEffect(() => {
     if (isLoading) {
@@ -156,14 +182,14 @@ const OrderDetailsProvider = ({
       defaultFormState,
       userLocation,
       fetchOrderDetails,
-      cancelOrder: () => cancelOrder(orderId, orderToken),
+      cancelOrder: handleCancel,
       errorMessage,
     }),
     [
       authenticateFormState.setValues,
       authenticateFormState.validationErrors,
       fetchOrderDetails,
-      cancelOrder,
+      handleCancel,
       handleSubmit,
       isUserLoggedIn,
       showForm,
@@ -172,8 +198,6 @@ const OrderDetailsProvider = ({
       shopSettings.supportedCountries,
       userLocation,
       errorMessage,
-      orderToken,
-      orderId,
     ]
   );
 
