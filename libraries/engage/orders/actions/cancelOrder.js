@@ -1,5 +1,5 @@
 import {
-  PipelineRequest, EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND, i18n,
+  PipelineRequest, EAUTHENTICATION, ENOTFOUND, i18n,
 } from '@shopgate/engage/core';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { SHOPGATE_ORDER_CANCEL_ORDER } from '../constants';
@@ -27,12 +27,14 @@ const cancelOrder = (orderId, token) => async (dispatch) => {
           orderId,
           token,
         })
-        .setErrorBlacklist([EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND])
+        .setErrorBlacklist([EAUTHENTICATION, ENOTFOUND])
         .dispatch();
       await dispatch(fetchOrderDetails(orderId, { token }));
     } catch (error) {
-      dispatch(errorCancelOrder(error, orderId));
-      throw error;
+      if ([EAUTHENTICATION, ENOTFOUND].includes(error.code)) {
+        dispatch(errorCancelOrder(error, orderId));
+        throw error;
+      }
     }
   }
 };

@@ -80,7 +80,6 @@ const OrderDetailsProvider = ({
       const { code } = error;
       if (code === EUNAUTHORIZED) {
         message = 'order_details.errors.authorize';
-        setErrorMessage();
       } else if (code === EAUTHENTICATION) {
         message = 'order_details.errors.authenticate';
       } else if (code === ENOTFOUND) {
@@ -104,10 +103,7 @@ const OrderDetailsProvider = ({
       setErrorMessage('');
     } catch (error) {
       const { code } = error;
-      if (code === EUNAUTHORIZED) {
-        message = 'order_details.errors.authorize';
-        setErrorMessage();
-      } else if (code === EAUTHENTICATION) {
+      if (code === EAUTHENTICATION) {
         message = 'order_details.errors.expired';
       } else if (code === ENOTFOUND) {
         message = 'order_details.errors.not_found';

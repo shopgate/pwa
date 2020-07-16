@@ -32,11 +32,9 @@ const OrderDetailsOrderHeader = ({ order }) => {
           {i18n.text('order_details.subline.order_status', { status: getTranslatedOrderStatus(status) })}
         </p>
         { status === ORDER_STATUS_SUBMITTED && (
-          <div className={cancel}>
-            <Button onClick={cancelOrder} flat>
-              {i18n.text('order_details.cancel.button')}
-            </Button>
-          </div>
+          <Button className={cancel} type="secondary" onClick={cancelOrder} flat wrapContent={false}>
+            {i18n.text('order_details.cancel.button')}
+          </Button>
         )}
       </div>
       { statusText && (
