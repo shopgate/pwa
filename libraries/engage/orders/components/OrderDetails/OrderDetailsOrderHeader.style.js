@@ -37,4 +37,4 @@ export const subline = css({
 export const cancel = css({
   flexShrink: 0,
   marginRight: 8,
-});
+}).toString();
