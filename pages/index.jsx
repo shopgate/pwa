@@ -44,6 +44,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
+import { GlobalLocationSelector } from '@shopgate/engage/locations';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
@@ -61,6 +62,15 @@ import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 
 new ThemeConfigResolver().resolveAll();
+
+const globalLocationSelectorAllowList = [
+  INDEX_PATH,
+  CATEGORY_PATTERN,
+  SEARCH_PATTERN,
+  PAGE_PATTERN,
+  ITEM_PATTERN,
+  CART_PATH,
+];
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -80,6 +90,7 @@ const Pages = ({ store }) => (
               <Viewport>
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBar {...props} />} />
+                <GlobalLocationSelector routePatternAllowList={globalLocationSelectorAllowList} />
                 <Router history={history}>
                   <Route
                     pattern={INDEX_PATH}
