@@ -19,6 +19,7 @@ const CartContextMenuChangeFulfillment = ({ cartItem }: Props) => {
   const contextProps = useMemo(() => ({
     productId: cartItem.product.id,
     meta: { cartItem },
+    updatePreferredLocation: true,
   }), [cartItem]);
 
   return (

@@ -49,6 +49,7 @@ function CartChangeFulfillmentMethod(props: Props) {
       stage={STAGE_FULFILLMENT_METHOD}
       meta={{ cartItem }}
       onClose={handleClose}
+      updatePreferredLocation
     />
   );
 }

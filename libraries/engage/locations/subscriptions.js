@@ -5,10 +5,8 @@ import {
   cartDidEnter$,
 } from '@shopgate/engage/cart';
 import { receiveCoreConfig$, appDidStart$ } from '@shopgate/engage/core';
-import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { MULTI_LINE_RESERVE } from './constants';
-import { getUserSearch, getPreferredLocation } from './selectors';
+import { getUserSearch } from './selectors';
 import { fetchLocations, fetchProductLocations } from './actions';
 import {
   submitReservationSuccess$,
@@ -27,27 +25,21 @@ function locations(subscribe) {
     await dispatch(fetchLocations(userSearch));
   });
 
-  subscribe(userSearchChanged$, async ({ dispatch, getState }) => {
-    const isLocationBasedShopping = getIsLocationBasedShopping(getState());
-    const preferredLocation = getPreferredLocation(getState());
+  subscribe(userSearchChanged$, async ({ dispatch, getState, action }) => {
+    const { productId } = action;
+    const userSearch = getUserSearch(getState());
 
-    if (isLocationBasedShopping && !preferredLocation) {
-      // Fetch merchants locations.
-      const userSearch = getUserSearch(getState());
+    if (!productId) {
       await dispatch(fetchLocations(userSearch));
     } else {
-      // Fetch locations for this specific product.
-      const route = getCurrentRoute(getState());
-      const productId = route?.state?.productId || route?.params.productId;
-      const userSearch = getUserSearch(getState());
-      dispatch(fetchProductLocations(productId, userSearch));
+      await dispatch(fetchProductLocations(productId, userSearch));
     }
   });
 
-  subscribe(receivedVisibleProduct$, ({ action, dispatch, getState }) => {
+  subscribe(receivedVisibleProduct$.debounceTime(100), ({ action, dispatch, getState }) => {
     const { productData } = action;
 
-    // Skip if no fulfullment methods are set.
+    // Skip if no fulfillment methods are set.
     if (
       !productData
       || !productData.fulfillmentMethods

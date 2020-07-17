@@ -50,13 +50,14 @@ function StoreListSearch({
     isFetching,
     locations,
     shopSettings: { supportedCountries } = {},
+    product,
   } = useContext(FulfillmentContext);
-
   const loading = isFetching;
   const [message, setMessage] = useState('');
   const [inputPostalCode, setInputPostalCode] = useState(postalCode || '');
   const [locating, setLocating] = useState(false);
   const isMounted = useRef(false);
+  const productId = product?.id || null;
 
   const inputEl = useRef(null);
 
@@ -81,8 +82,8 @@ function StoreListSearch({
    * @param {SyntheticEvent} event A React event object.
    */
   const handleCountrySelectChange = useCallback((event) => {
-    setCountryCode(event.target.value);
-  }, [setCountryCode]);
+    setCountryCode(event.target.value, productId);
+  }, [productId, setCountryCode]);
 
   /**
    * Blurs the postal code input to trigger an update.
@@ -98,8 +99,8 @@ function StoreListSearch({
    * Triggers an update when the input blurs.
    */
   const handlePostalCodeBlur = useCallback(() => {
-    setPostalCode(inputPostalCode);
-  }, [inputPostalCode, setPostalCode]);
+    setPostalCode(inputPostalCode, productId);
+  }, [inputPostalCode, productId, setPostalCode]);
 
   /**
    * Triggers an update when the locate me button was pressed. Also clears the local state for the
@@ -108,9 +109,9 @@ function StoreListSearch({
   const handleLocateMeButton = useCallback(async () => {
     setInputPostalCode('');
     setLocating(true);
-    await setGeolocation();
+    await setGeolocation({ productId });
     setLocating(false);
-  }, [setGeolocation]);
+  }, [productId, setGeolocation]);
 
   /**
    * Updates the local state for the postal code input.

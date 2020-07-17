@@ -49,6 +49,9 @@ const StockInfoUnwrapped = ({ location, inventory, className }: Props) => {
     color: availabilityTextColor,
     fontSize: '0.75rem',
     margin: 0,
+    ':not(:empty) ~ *': {
+      marginLeft: 14,
+    },
   }).toString();
 
   const portalProps = React.useMemo(() => ({

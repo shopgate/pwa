@@ -150,11 +150,12 @@ export const getPreferredLocation = (state, props) => {
   const locationCode = storage.preferredLocation.code;
 
   // Figure out default location.
-  if (!locationCode && props) {
+  if (!locationCode && (props?.productId || props?.variantId)) {
     const getAvailable = makeGetLocationsForProduct(
       (_, iprops) => iprops.variantId || iprops.productId
     );
     const available = getAvailable(state, props);
+
     return available?.[0] || null;
   }
 

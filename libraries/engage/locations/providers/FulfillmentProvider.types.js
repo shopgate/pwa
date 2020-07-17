@@ -22,6 +22,7 @@ export type OwnProps = {
   ) => void,
   meta?: { [string]: any },
   stage?: SheetStage,
+  updatePreferredLocation?: boolean
 };
 
 export type StateProps = {

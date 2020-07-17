@@ -3,11 +3,13 @@ import { SET_USER_SEARCH_GEOLOCATION } from '../constants';
 /**
  * Creates the dispatched SET_USER_SEARCH_POSTAL_CODE action object.
  * @param {Object} geolocation The geolocation.
+ * @param {string} [productId=null] An optional product code.
  * @returns {Object}
  */
-const setUserSearchGeolocation = geolocation => ({
+const setUserSearchGeolocation = (geolocation, productId = null) => ({
   type: SET_USER_SEARCH_GEOLOCATION,
   geolocation,
+  productId,
 });
 
 export default setUserSearchGeolocation;
