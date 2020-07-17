@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Checkbox from '@shopgate/pwa-ui-shared/Form/Checkbox';
-import { root, checkbox } from './CartItemSubstitution.style';
+import { Toggle, I18n } from '@shopgate/engage/components';
+import {
+  root, checkbox, space, text,
+} from './CartItemSubstitution.style';
 import connect from './CartItemSubscription.connector';
 import { useCartItem } from './CartItem.hooks';
 
@@ -14,12 +16,19 @@ const CartItemCardSubstitution = ({ setSubstitutionAllowed }) => {
   const { cartItem: { id, substitutionAllowed } } = useCartItem();
   return (
     <div className={root}>
-      <Checkbox
-        className={checkbox}
-        checked={substitutionAllowed}
-        label="Allow Substitutions?"
-        onChange={() => setSubstitutionAllowed(id, !substitutionAllowed)}
+      <div className={space} />
+      <I18n.Text
+        string="cart.allow_substitution"
+        className={text}
       />
+      <div className={space}>
+        <Toggle
+          className={checkbox}
+          id={`substitution-${id}`}
+          checked={substitutionAllowed}
+          onChange={() => setSubstitutionAllowed(id, !substitutionAllowed)}
+        />
+      </div>
     </div>
   );
 };

@@ -1,18 +1,27 @@
 // @flow
 import { css } from 'glamor';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const { gap } = themeVariables;
 
 export const root = css({
   padding: gap.big,
-  borderBottom: `1px solid ${themeColors.shade7}`,
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
 }).toString();
 
 export const checkbox = css({
-  width: 'auto',
-  paddingBottom: 0,
+  marginLeft: 8,
+}).toString();
+
+export const text = css({
+  flexGrow: 0,
+}).toString();
+
+export const space = css({
+  flex: 1,
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
 }).toString();
 

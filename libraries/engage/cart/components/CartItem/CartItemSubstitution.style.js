@@ -12,7 +12,17 @@ export const root = css({
 }).toString();
 
 export const checkbox = css({
-  width: 'auto',
-  paddingBottom: 0,
+  marginLeft: 8,
+}).toString();
+
+export const text = css({
+  flexGrow: 0,
+}).toString();
+
+export const space = css({
+  flex: 1,
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
 }).toString();
 

@@ -252,6 +252,8 @@
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
     "coupons_not_supported": "Coupons non pris en charge",
     "free_shipping": "Livraison gratuite",
+    "allow_substitution_all": "Allow Substitutions on All Products?",
+    "allow_substitution": "Allow Substitutions?",
     "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
       "item": {
