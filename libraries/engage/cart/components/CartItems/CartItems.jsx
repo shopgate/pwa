@@ -7,6 +7,7 @@ import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
 import { items, card } from './CartItems.style';
+import CartItemsSubstitution from './CartItemsSubstitution';
 
 type Props = {
   cartItems?: Item[],
@@ -33,7 +34,9 @@ function CartItems({
       <ResponsiveContainer breakpoint=">xs" webOnly>
         <CartItemsHeaderWide editable={editable} isOrderDetails={isOrderDetails} />
       </ResponsiveContainer>
+
       <CardList className={items}>
+        <CartItemsSubstitution className={card} cartItems={cartItems} />
         {cartItems.map(item => (
           <CardList.Item className={card} key={item.id}>
             <CartItemProvider

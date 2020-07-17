@@ -14,6 +14,7 @@ import { CartItemProductLayout } from './CartItemProductLayout';
 import { CartItemProductLayoutWide } from './CartItemProductLayoutWide';
 import { noGap } from './CartItemProduct.style';
 import { useCartItemProduct } from './CartItem.hooks';
+import CartItemSubstitution from './CartItemSubstitution';
 
 const messageStyles = {
   card: {
@@ -49,6 +50,7 @@ const CartItemProduct = () => {
         <ResponsiveContainer webOnly breakpoint=">xs">
           <CartItemProductLayoutWide />
         </ResponsiveContainer>
+        <CartItemSubstitution />
       </div>
     </CardListItem>
   );

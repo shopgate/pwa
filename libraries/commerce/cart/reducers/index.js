@@ -47,7 +47,8 @@ export default (state = defaultState, action) => {
           // Apply the updated quantity to the cart item in the store.
           return {
             ...item,
-            ...(typeof match !== 'undefined') && { quantity: match.quantity },
+            ...(typeof match !== 'undefined' && typeof match.quantity !== 'undefined') && { quantity: match.quantity },
+            ...(typeof match !== 'undefined' && typeof match.substitutionAllowed !== 'undefined') && { substitutionAllowed: match.substitutionAllowed },
           };
         }),
       };
