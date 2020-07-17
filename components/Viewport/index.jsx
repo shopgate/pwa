@@ -4,7 +4,6 @@ import debounce from 'lodash/debounce';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
-import { GlobalLocationSelector } from '@shopgate/engage/locations';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
@@ -60,7 +59,6 @@ const Viewport = (props) => {
             />
           </ResponsiveContainer>
         </header>
-        <GlobalLocationSelector />
         <section className={styles.content} id="AppContent">
           {props.children}
         </section>
