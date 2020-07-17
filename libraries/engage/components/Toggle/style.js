@@ -4,9 +4,10 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors } = themeConfig;
 
 export const root = css({
+  verticalAlign: -20,
 }).toString();
 
-export const lbl = css({
+export const label = css({
   position: 'relative',
   display: 'block',
   height: 20,
@@ -14,6 +15,7 @@ export const lbl = css({
   background: '#898989',
   borderRadius: 100,
   cursor: 'pointer',
+  bottom: -4,
   transition: 'all .3s ease',
   ':after': {
     position: 'absolute',
@@ -24,7 +26,7 @@ export const lbl = css({
     height: 26,
     borderRadius: 100,
     background: 'white',
-    boxShadow: '0px 3px 3px rgba(0,0,0,.05)',
+    boxShadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0,0,0,.12)',
     content: ' ',
     transition: 'all .3s ease',
   },
@@ -35,7 +37,7 @@ export const lbl = css({
   },
 }).toString();
 
-export const cbx = css({
+export const checkbox = css({
   ':checked ~ label': {
     background: `var(--color-primary, ${colors.primary})`,
     filter: 'brightness(200%)',

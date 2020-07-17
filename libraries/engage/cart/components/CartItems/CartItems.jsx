@@ -36,7 +36,11 @@ function CartItems({
       </ResponsiveContainer>
 
       <CardList className={items}>
-        <CartItemsSubstitution className={card} cartItems={cartItems} />
+        <ResponsiveContainer breakpoint="<=xs" appAlways>
+          <CardList.Item className={card}>
+            <CartItemsSubstitution cartItems={cartItems} />
+          </CardList.Item>
+        </ResponsiveContainer>
         {cartItems.map(item => (
           <CardList.Item className={card} key={item.id}>
             <CartItemProvider
