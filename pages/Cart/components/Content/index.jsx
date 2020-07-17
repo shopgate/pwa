@@ -15,6 +15,7 @@ import {
   CartItem,
   CartHeaderWide,
   CartSummaryWide,
+  CartItemsSubstitution,
 } from '@shopgate/engage/cart';
 import {
   MessageBar,
@@ -29,7 +30,7 @@ import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import connect from './connector';
-import styles, { wideHeaderMessagesWithItems } from './style';
+import styles, { wideHeaderMessagesWithItems, headerContainer, subscription } from './style';
 
 const config = getCartConfig();
 
@@ -73,7 +74,10 @@ function CartContent(props) {
       <SimpleBar title="titles.cart" />
       { hasItems && (
         <ResponsiveContainer webOnly breakpoint=">xs">
-          <CartHeaderWide />
+          <div className={headerContainer}>
+            <CartHeaderWide />
+            <CartItemsSubstitution className={subscription} cartItems={cartItems} />
+          </div>
         </ResponsiveContainer>
       )}
       {(hasItems || hasMessages) && (
