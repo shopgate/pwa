@@ -256,6 +256,8 @@
     "coupon_was_added": "Coupon has been added to cart!",
     "coupons_not_supported": "Add coupons and gift certificates during checkout",
     "free_shipping": "Free Shipping",
+    "allow_substitution_all": "Allow Substitutions on All Products?",
+    "allow_substitution": "Allow Substitutions?",
     "message_type_info": "Info",
     "message_type_error": "Error",
     "message_type_warning": "Warning",
