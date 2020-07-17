@@ -4,10 +4,11 @@ import setUserSearchPostalCode from '../setUserSearchPostalCode';
 
 describe('engage > locations > actions-creators', () => {
   test('setUserSearchPostalCode with a string', () => {
-    const result = setUserSearchPostalCode('35510');
+    const result = setUserSearchPostalCode('35510', 'ABC123');
     expect(result).toEqual({
       type: SET_USER_SEARCH_POSTAL_CODE,
       postalCode: '35510',
+      productId: 'ABC123',
     });
   });
 
@@ -16,6 +17,7 @@ describe('engage > locations > actions-creators', () => {
     expect(result).toEqual({
       type: SET_USER_SEARCH_POSTAL_CODE,
       postalCode: null,
+      productId: null,
     });
   });
 });
