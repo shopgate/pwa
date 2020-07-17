@@ -36,6 +36,7 @@ function makeMapStateToProps() {
       disabled: isAddToCartButtonDisabled(state, props),
       loading: isProductPageLoading(state, props),
       userLocation: getPreferredLocation(state, props),
+      userMethod: userLocationFulfillmentMethod,
       isRopeFulfillmentMethodAllowed: isUserFulfillmentMethodAllowed,
     };
   };
