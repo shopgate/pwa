@@ -18,3 +18,4 @@ export {
 
 export { GlobalLocationSelector } from './GlobalLocationSelector';
 export { GlobalLocationSwitcher } from './GlobalLocationSwitcher';
+export { StoreLocationFinder } from './StoreLocationFinder';

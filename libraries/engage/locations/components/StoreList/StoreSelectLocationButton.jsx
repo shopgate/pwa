@@ -12,7 +12,7 @@ import { selectLocationButton, selectLocationButtonWrapper } from './Store.style
  */
 export const StoreSelectLocationButton = () => {
   const store = useContext(StoreContext);
-  const { selectLocation, noInventory } = useContext(FulfillmentContext);
+  const { selectLocation, noInventory, noLocationSelection } = useContext(FulfillmentContext);
   const isAvailable = isProductAvailable(store, store?.inventory);
 
   const handleClick = useCallback(() => {
@@ -20,6 +20,10 @@ export const StoreSelectLocationButton = () => {
       selectLocation(store);
     }
   }, [isAvailable, noInventory, selectLocation, store]);
+
+  if (noLocationSelection) {
+    return null;
+  }
 
   return (
     <div className={selectLocationButtonWrapper}>

@@ -33,6 +33,8 @@ export type FulfillmentContextProps = {
   shopSettings: ShopSettings | null,
   isOpen: boolean,
   errors: string[] | null,
+  noLocationSelection?: boolean,
+  isStoreFinder?: boolean,
   meta?: { [string]: any },
 }
 
@@ -57,4 +59,6 @@ export const FulfillmentContext = React.createContext<FulfillmentContextProps>({
   shopSettings: null,
   isOpen: false,
   errors: null,
+  noLocationSelection: false,
+  isStoreFinder: false,
 });

@@ -19,6 +19,7 @@ export {
   CartContextMenuChangeFulfillment,
   GlobalLocationSelector,
   GlobalLocationSwitcher,
+  StoreLocationFinder,
 } from './components';
 
 // CONSTANTS
@@ -39,6 +40,7 @@ export {
   STAGE_RESPONSE_SUCCESS,
   STAGE_RESPONSE_ERROR,
   STAGE_FULFILLMENT_METHOD,
+  STORE_FINDER_PATTERN,
 } from './constants';
 
 // SELECTORS

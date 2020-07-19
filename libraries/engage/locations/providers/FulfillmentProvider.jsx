@@ -66,6 +66,8 @@ function FulfillmentProvider(props: Props) {
     isFetching,
     noInventory = false,
     open = false,
+    noLocationSelection = false,
+    isStoreFinder = false,
     isInitialized: defaultIsInitialized,
     updatePreferredLocation,
   } = props;
@@ -366,6 +368,8 @@ function FulfillmentProvider(props: Props) {
     orderNumbers,
     errors,
     noInventory,
+    noLocationSelection,
+    isStoreFinder,
     isFetching,
     meta: props.meta || undefined,
   };

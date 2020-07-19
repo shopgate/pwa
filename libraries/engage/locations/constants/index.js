@@ -52,3 +52,7 @@ export {
   STAGE_RESPONSE_ERROR,
   STAGE_FULFILLMENT_METHOD,
 } from './Stages';
+
+export {
+  STORE_FINDER_PATTERN,
+} from './routes';

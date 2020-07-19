@@ -25,7 +25,8 @@
     "checkout_confirmation": "Order Successful",
     "checkout_change_billing": "Change Billing Address",
     "register": "Register",
-    "order_details": "Order Details"
+    "order_details": "Order Details",
+    "store_finder": "Store Finder"
   },
   "favorites": {
     "add": "Agregar a favoritos",

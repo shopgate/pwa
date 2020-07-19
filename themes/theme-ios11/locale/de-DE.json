@@ -26,7 +26,8 @@
     "checkout_confirmation": "Bestellung erfolgreich",
     "checkout_change_billing": "Rechnungsadresse ändern",
     "register": "Registrieren",
-    "order_details": "Order Details"
+    "order_details": "Order Details",
+    "store_finder": "Store Finder"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",

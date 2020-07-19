@@ -28,6 +28,11 @@ export const storeCard = css({
   borderRadius: '0px 0px 3px 3px',
 }).toString();
 
+export const storeCardSelected = css({
+  borderColor: 'var(--color-secondary)',
+  borderWidth: 2,
+}).toString();
+
 export const storeHeader = css({
   cursor: 'pointer',
   padding: `${baseCardPadding} ${gap.xsmall}px`,
@@ -53,6 +58,11 @@ export const storeDistance = css({
 export const storeDetailsBody = css({
   padding: baseCardPadding,
   borderTop: `1px solid ${themeColors.shade7}`,
+}).toString();
+
+export const storeDetailsStaticBody = css({
+  padding: baseCardPadding,
+  cursor: 'pointer',
 }).toString();
 
 export const storeHoursToday = css({
