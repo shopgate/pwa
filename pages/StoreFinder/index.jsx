@@ -1,20 +1,20 @@
 import React from 'react';
 import { View } from '@shopgate/engage/components';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { ForgotPassword as Content } from '@shopgate/engage/login';
+import { StoreLocationFinder as Content } from '@shopgate/engage/locations';
 import { BackBar } from 'Components/AppBar/presets';
 
 /**
  * @returns {JSX}
  */
-const ForgotPassword = () => (
+const StoreFinder = () => (
   <View aria-hidden={false}>
     <BackBar
       right={null}
-      center={<AppBar.Title title="" />}
+      center={<AppBar.Title title="titles.store_finder" />}
     />
     <Content />
   </View>
 );
 
-export default ForgotPassword;
+export default StoreFinder;

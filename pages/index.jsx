@@ -44,7 +44,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
-import { GlobalLocationSelector } from '@shopgate/engage/locations';
+import { STORE_FINDER_PATTERN, GlobalLocationSelector } from '@shopgate/engage/locations';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
@@ -57,6 +57,7 @@ import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import ForgotPassword from './ForgotPassword';
 import Register from './Register';
 import OrderDetails from './OrderDetails';
+import StoreFinder from './StoreFinder';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -175,6 +176,10 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={ORDER_DETAILS_PATTERN}
                     component={OrderDetails}
+                  />
+                  <Route
+                    pattern={STORE_FINDER_PATTERN}
+                    component={StoreFinder}
                   />
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>
