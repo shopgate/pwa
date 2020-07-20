@@ -35,6 +35,7 @@ class AddToCartBar extends Component {
     isRopeFulfillmentMethodAllowed: PropTypes.bool,
     loading: PropTypes.bool,
     userLocation: PropTypes.shape(),
+    userMethod: PropTypes.string,
   };
 
   static defaultProps = {
@@ -43,6 +44,7 @@ class AddToCartBar extends Component {
     loading: false,
     isRopeFulfillmentMethodAllowed: false,
     userLocation: null,
+    userMethod: null,
   };
 
   /**
@@ -123,6 +125,7 @@ class AddToCartBar extends Component {
       productId,
       options,
       userLocation,
+      userMethod,
       isRopeFulfillmentMethodAllowed,
     } = this.props;
 
@@ -150,11 +153,11 @@ class AddToCartBar extends Component {
       // Add the user location for ROPIS if it is set.
       if (
         userLocation !== null
-        && userLocation.fulfillmentMethod !== DIRECT_SHIP
+        && userMethod !== DIRECT_SHIP
         && isRopeFulfillmentMethodAllowed
       ) {
         addToCartData.fulfillment = {
-          method: userLocation.fulfillmentMethod,
+          method: userMethod,
           location: {
             code: userLocation.code,
             name: userLocation.name,
