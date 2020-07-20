@@ -7,6 +7,7 @@ import {
   SET_USER_SEARCH_COUNTRY_CODE,
   SET_USER_SEARCH_POSTAL_CODE,
   SET_USER_SEARCH_GEOLOCATION,
+  SELECT_GLOBAL_LOCATION,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 
@@ -72,3 +73,6 @@ export const fulfillmentLocationsReceivedFromOrder$ = receiveOrderDetails$
 export const fulfillmentLocationsReceived$ = fulfillmentLocationsReceivedFromCart$
   .merge(fulfillmentLocationsReceivedFromOrder$)
   .merge(fulfillmentLocationsReceivedFromProduct$);
+
+export const preferredLocationDidUpdate$ = main$
+  .filter(({ action }) => action.type === SELECT_GLOBAL_LOCATION);

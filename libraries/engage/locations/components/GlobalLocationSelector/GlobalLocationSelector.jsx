@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { selectGlobalLocation } from '@shopgate/engage/locations/action-creators';
 import { getPreferredLocation } from '../../selectors';
 import { getIsLocationBasedShopping } from '../../../core/selectors';
@@ -14,6 +15,7 @@ import { STAGE_SELECT_STORE, MULTI_LINE_RESERVE } from '../../constants';
  * @return {Object}
  */
 const mapStateToProps = state => ({
+  currentRoute: getCurrentRoute(state),
   isLocationBasedShopping: getIsLocationBasedShopping(state),
   preferredLocation: getPreferredLocation(state),
 });
@@ -37,6 +39,8 @@ const GlobalLocationSelector = ({
   isLocationBasedShopping,
   preferredLocation,
   selectGlobalLocation: selectLocation,
+  routePatternAllowList,
+  currentRoute,
 }) => {
   const closeSheetHandler = useCallback((location) => {
     if (location) {
@@ -44,9 +48,25 @@ const GlobalLocationSelector = ({
     }
   }, [selectLocation]);
 
-  // Either when location based shopping is disabled or the customer
-  // already chose a location we skip the dialog.
-  if (!isLocationBasedShopping || !!preferredLocation) {
+  const renderComponent = useMemo(() => {
+    if (!currentRoute) {
+      return false;
+    }
+
+    const { pattern } = currentRoute || {};
+
+    if (routePatternAllowList && !routePatternAllowList.includes(pattern)) {
+      return false;
+    }
+
+    // Either when location based shopping is disabled or the customer
+    // already chose a location we skip the dialog.
+    return isLocationBasedShopping && !preferredLocation;
+
+    // routePatternBlacklist.includes(pattern),
+  }, [currentRoute, isLocationBasedShopping, preferredLocation, routePatternAllowList]);
+
+  if (!renderComponent) {
     return null;
   }
 
@@ -67,13 +87,17 @@ const GlobalLocationSelector = ({
 
 GlobalLocationSelector.propTypes = {
   selectGlobalLocation: PropTypes.func.isRequired,
+  currentRoute: PropTypes.shape(),
   isLocationBasedShopping: PropTypes.bool,
   preferredLocation: PropTypes.shape(),
+  routePatternAllowList: PropTypes.arrayOf(PropTypes.string),
 };
 
 GlobalLocationSelector.defaultProps = {
   preferredLocation: null,
   isLocationBasedShopping: false,
+  routePatternAllowList: null,
+  currentRoute: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GlobalLocationSelector);

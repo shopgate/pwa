@@ -46,7 +46,6 @@ export const storeDistance = css({
   whiteSpace: 'nowrap',
   color: `var(--color-text-medium-emphasis, ${themeColors.gray})`,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
-    marginLeft: 14,
     fontSize: '0.875rem',
   },
 }).toString();

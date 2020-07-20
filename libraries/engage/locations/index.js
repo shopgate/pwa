@@ -47,17 +47,13 @@ export * from './selectors';
 // STREAMS
 export {
   submitReservationSuccess$,
+  preferredLocationDidUpdate$,
 } from './locations.streams';
 
 // HOOKS
 export {
   useFulfillmentState,
 } from './locations.hooks';
-
-// STREAMS
-export {
-  preferredLocationDidUpdate$,
-} from './streams';
 
 // TYPES
 export type {

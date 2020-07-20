@@ -63,6 +63,7 @@ const CartItemProductChangeLocation = (props: Props) => {
       title="locations.headline"
       changeOnly
       productId={cartItem.product.id}
+      updatePreferredLocation
       onClose={onLocationSelect}
     />
   );

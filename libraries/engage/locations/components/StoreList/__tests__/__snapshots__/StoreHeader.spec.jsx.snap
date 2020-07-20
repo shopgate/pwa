@@ -57,7 +57,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
                 unitSystem="metric"
               >
                 <span
-                  className="css-jr9m0l"
+                  className="css-t7m18c"
                 >
                   formats.distance.pattern
                 </span>

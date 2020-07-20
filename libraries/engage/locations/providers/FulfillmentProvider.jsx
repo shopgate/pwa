@@ -67,6 +67,7 @@ function FulfillmentProvider(props: Props) {
     noInventory = false,
     open = false,
     isInitialized: defaultIsInitialized,
+    updatePreferredLocation,
   } = props;
   const [fulfillmentPath, setFulfillmentPath] = React.useState(defaultFulfillmentPath || null);
   const [changeOnly, setChangeOnly] = React.useState(props.changeOnly);
@@ -104,11 +105,11 @@ function FulfillmentProvider(props: Props) {
   React.useEffect(() => setIsOpen(open), [open]);
   React.useEffect(() => setProduct(propsProduct), [propsProduct]);
   React.useEffect(() => {
-    if (productLocation && !isInitialized.current) {
+    if (updatePreferredLocation && productLocation && !isInitialized.current) {
       isInitialized.current = true;
       selectLocation(productLocation);
     }
-  }, [productLocation, selectLocation]);
+  }, [productLocation, selectLocation, updatePreferredLocation]);
 
   /**
    * Checks whether the given stage is currently set.
@@ -243,10 +244,12 @@ function FulfillmentProvider(props: Props) {
    * @param {Object} location The selected location.
    */
   function handleSelectLocation(location: Location) {
-    selectLocation({
-      code: location.code,
-      name: location.name,
-    });
+    if (updatePreferredLocation) {
+      selectLocation({
+        code: location.code,
+        name: location.name,
+      });
+    }
 
     if (changeOnly) {
       handleClose(location, product && product.id);
@@ -377,6 +380,7 @@ function FulfillmentProvider(props: Props) {
 FulfillmentProvider.defaultProps = {
   open: false,
   changeOnly: false,
+  updatePreferredLocation: true,
   fulfillmentMethods: null,
   title: null,
 };
