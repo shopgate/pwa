@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { GlobalLocationSwitcher } from '@shopgate/engage/locations';
@@ -9,6 +10,8 @@ import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_HEIGHT } from '../../../../../../co
 import Search from './Search';
 import Cart from './Cart';
 import connect from './WideBar.connector';
+
+const { variables } = themeConfig;
 
 const styles = {
   root: css({
@@ -20,27 +23,34 @@ const styles = {
     alignItems: 'center',
   }).toString(),
   letterBox: css({
-    flex: 1,
-    padding: '0 12px',
-    maxWidth: MAX_DESKTOP_WIDTH,
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    maxWidth: MAX_DESKTOP_WIDTH,
+    height: `calc(${DESKTOP_MENU_BAR_HEIGHT}px - ${variables.gap.small}px)`,
+    justifyContent: 'flex-end',
+    flexGrow: 1,
+    padding: '0 12px',
   }).toString(),
   logo: css({
+    padding: `${variables.gap.small - 1}px 0`,
     display: 'block',
     cursor: 'pointer',
     flex: 0,
+    order: 1,
     ' img': {
       maxHeight: 42,
     },
   }).toString(),
   right: css({
-    flex: 1,
+    padding: `${variables.gap.small - 1}px 0`,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-  }).toString(),
+    marginLeft: 'auto',
+  }),
 };
 
 /**
