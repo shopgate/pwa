@@ -28,7 +28,6 @@ function CartItems({
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
-
   return (
     <React.Fragment>
       <ResponsiveContainer breakpoint=">xs" webOnly>
@@ -37,9 +36,7 @@ function CartItems({
 
       <CardList className={items}>
         <ResponsiveContainer breakpoint="<=xs" appAlways>
-          <CardList.Item className={card}>
-            <CartItemsSubstitution cartItems={cartItems} />
-          </CardList.Item>
+          <CartItemsSubstitution cartItems={cartItems} wrapped className={card} />
         </ResponsiveContainer>
         {cartItems.map(item => (
           <CardList.Item className={card} key={item.id}>
