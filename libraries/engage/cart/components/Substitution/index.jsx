@@ -13,7 +13,7 @@ import connect from './connector';
  * @returns {JSX}
  */
 const Substitution = ({
-  id, onChange, checked, className, label,
+  id, onChange, checked, className, label, disabled,
 }) => (
   <div className={classNames(root, className)}>
     <div className={leftSpace} />
@@ -24,21 +24,25 @@ const Substitution = ({
         checked={checked}
         id={id}
         onChange={onChange}
+        disabled={disabled}
       />
     </div>
   </div>
 );
 
 Substitution.propTypes = {
-  checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  checked: PropTypes.bool,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Substitution.defaultProps = {
   className: undefined,
+  disabled: false,
+  checked: false,
 };
 
 /**

@@ -11,7 +11,7 @@ import { root } from './CartItemSubstitution.style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const CartItemSubstitution = ({ setSubstitutionAllowed }) => {
+const CartItemSubstitution = ({ setSubstitutionAllowed, editable }) => {
   const { cartItem: { id, substitutionAllowed } } = useCartItem();
   return (
     <SubstitutionWrapper>
@@ -21,13 +21,19 @@ const CartItemSubstitution = ({ setSubstitutionAllowed }) => {
         label={i18n.text('cart.allow_substitution')}
         checked={substitutionAllowed}
         onChange={() => setSubstitutionAllowed(id, !substitutionAllowed)}
+        disabled={!editable}
       />
     </SubstitutionWrapper>
   );
 };
 
 CartItemSubstitution.propTypes = {
-  setSubstitutionAllowed: PropTypes.bool.isRequired,
+  setSubstitutionAllowed: PropTypes.func.isRequired,
+  editable: PropTypes.bool,
+};
+
+CartItemSubstitution.defaultProps = {
+  editable: false,
 };
 
 export default connect(CartItemSubstitution);

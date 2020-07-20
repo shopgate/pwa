@@ -50,8 +50,10 @@ export const checkbox = css({
   ':disabled ~ label': {
     background: '#D5D5D5',
     pointerEvents: 'none',
+    filter: 'none',
     ':after': {
       background: '#BCBDBC',
+      filter: 'none',
     },
   },
 }).toString();

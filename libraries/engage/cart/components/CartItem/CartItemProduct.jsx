@@ -33,7 +33,7 @@ const messageStyles = {
  * @returns {JSX}
  */
 const CartItemProduct = () => {
-  const { messages, cartItemRef } = useCartItemProduct();
+  const { messages, cartItemRef, isEditable } = useCartItemProduct();
   const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
 
   return (
@@ -50,7 +50,7 @@ const CartItemProduct = () => {
         <ResponsiveContainer webOnly breakpoint=">xs">
           <CartItemProductLayoutWide />
         </ResponsiveContainer>
-        <CartItemSubstitution />
+        <CartItemSubstitution editable={isEditable} />
       </div>
     </CardListItem>
   );
