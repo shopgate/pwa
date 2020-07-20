@@ -11,14 +11,14 @@ import connect from './CartItemsSubscription.connector';
  * @returns {JSX}
  */
 const CartItemsSubstitution = ({
-  cartItems, updateProductsInCart, className, wrapped,
+  cartItems, updateProductsInCart, className, wrapCard,
 }) => {
   const allAllowed = useMemo(() => cartItems.every(item => item.substitutionAllowed), [cartItems]);
   const handleChange = useCallback(() => updateProductsInCart(cartItems.map(item => ({
     cartItemId: item.id,
     substitutionAllowed: !allAllowed,
   }))), [allAllowed, cartItems, updateProductsInCart]);
-  if (wrapped) {
+  if (wrapCard) {
     return (
       <SubstitutionWrapper>
         <CardList.Item className={className}>
@@ -49,12 +49,12 @@ CartItemsSubstitution.propTypes = {
   cartItems: PropTypes.arrayOf(PropTypes.shape).isRequired,
   updateProductsInCart: PropTypes.func.isRequired,
   className: PropTypes.string,
-  wrapped: PropTypes.bool,
+  wrapCard: PropTypes.bool,
 };
 
 CartItemsSubstitution.defaultProps = {
   className: undefined,
-  wrapped: false,
+  wrapCard: false,
 };
 
 export default connect(CartItemsSubstitution);
