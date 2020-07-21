@@ -1,5 +1,5 @@
 import React, {
-  useMemo, useState, useCallback, useRef,
+  useMemo, useState, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import { StoreFinderContext } from '../locations.context';
