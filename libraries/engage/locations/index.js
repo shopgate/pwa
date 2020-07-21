@@ -19,7 +19,7 @@ export {
   CartContextMenuChangeFulfillment,
   GlobalLocationSelector,
   GlobalLocationSwitcher,
-  StoreLocationFinder,
+  StoreFinder,
 } from './components';
 
 // CONSTANTS

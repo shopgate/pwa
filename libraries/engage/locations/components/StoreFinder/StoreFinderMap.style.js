@@ -1,6 +1,6 @@
 import { css } from 'glamor';
 
 export const container = css({
-  height: 400,
+  height: '100%',
   width: '100%',
 });

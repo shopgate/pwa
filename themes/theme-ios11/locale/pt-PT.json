@@ -116,6 +116,7 @@
     "details": "Detalhes da loja",
     "hours_details": "Store opening details",
     "today_hours": "Hoje: {hours}",
+    "today_hours_long": "Hours Today: {hours}",
     "address": "{postalCode} {city}",
     "phone": "Phone",
     "mon": "Segunda-feira",
@@ -144,6 +145,8 @@
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
+    "get_directions": "Get Directions",
+    "store_hours": "Store Hours",
     "your_current_location": {
       "heading": "Your Current Location",
       "change": "Change"

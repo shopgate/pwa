@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { variables } = themeConfig;
@@ -6,7 +7,7 @@ const { variables } = themeConfig;
 export const container = css({
   display: 'grid',
   gridTemplateColumns: '300px 1fr',
-  gridTemplateRows: '60px 200px 1fr 1fr',
+  gridTemplateRows: '60px 300px 1fr 1fr',
   gridTemplateAreas: `
     "search map"
     "store-list map"
@@ -16,6 +17,12 @@ export const container = css({
   columnGap: variables.gap.small,
   rowGap: variables.gap.small,
   height: 'calc(100vh - var(--app-bar-height))',
+  [responsiveMediaQuery('<=sm', { appAlways: true })]: {
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: '60px 200px 1fr',
+    gridTemplateAreas: '"search" "map" "store-list"',
+    rowGap: '8px',
+  },
 });
 
 export const storeSearch = css({
@@ -27,6 +34,9 @@ export const storeList = css({
   overflowY: 'scroll',
   WebkitOverflowScrolling: 'touch',
   width: 300,
+  [responsiveMediaQuery('<=sm', { appAlways: true })]: {
+    width: '100%',
+  },
 });
 
 export const storeDetailsMap = css({
@@ -35,36 +45,7 @@ export const storeDetailsMap = css({
 
 export const storeDetails = css({
   gridArea: 'store-details',
+  [responsiveMediaQuery('<=sm', { appAlways: true })]: {
+    display: 'none',
+  },
 });
-
-/*
-@media all and (max-width: 812px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 60px 150px 1fr;
-    grid-template-areas: "search" "map" "store-list";
-    row-gap: 8px;
-    height: 100%;
-  }
-
-  .store-details {
-    display: none;
-  }
-}
-@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 812px)
-  and (-webkit-min-device-pixel-ratio: 3) {
-    .container {
-      grid-template-columns: 1fr;
-      grid-template-rows: 60px 150px 1fr;
-      grid-template-areas: "search" "map" "store-list";
-      row-gap: 8px;
-      height: 100%;
-    }
-
-    .store-details {
-      display: none;
-    }
-}
-*/
