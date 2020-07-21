@@ -121,6 +121,7 @@
     "details": "Laden-Details",
     "hours_details": "Laden Öffnungsdetails",
     "today_hours": "Heute: {hours}",
+    "today_hours_long": "Hours Today: {hours}",
     "address": "{postalCode} {city}",
     "map_open": "In Karten öffnen",
     "phone": "Telefonnummer",
@@ -151,6 +152,8 @@
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
+    "get_directions": "Get Directions",
+    "store_hours": "Store Hours",
     "your_current_location": {
       "heading": "Your Current Location",
       "change": "Change"
