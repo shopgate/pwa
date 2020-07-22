@@ -86,6 +86,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
           "wed": "8:00am - 4:00pm",
         }
       }
+      longLabel={false}
     >
       <div
         className="css-17tiibl"

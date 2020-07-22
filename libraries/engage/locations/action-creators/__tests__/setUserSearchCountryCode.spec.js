@@ -9,6 +9,7 @@ describe('engage > locations > actions-creators', () => {
       type: SET_USER_SEARCH_COUNTRY_CODE,
       countryCode: 'DE',
       productId: 'ABC123',
+      isStoreFinder: false,
     });
   });
 });
