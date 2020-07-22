@@ -1,13 +1,16 @@
 import { main$ } from '@shopgate/pwa-common/streams';
 import { Observable } from 'rxjs/Observable';
 import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import {
   SUBMIT_RESERVATION_SUCCESS,
   RECEIVE_PRODUCT_LOCATIONS,
   SET_USER_SEARCH_COUNTRY_CODE,
   SET_USER_SEARCH_POSTAL_CODE,
   SET_USER_SEARCH_GEOLOCATION,
+  SET_STORE_FINDER_SEARCH_RADIUS,
   SELECT_GLOBAL_LOCATION,
+  STORE_FINDER_PATTERN,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 
@@ -29,7 +32,8 @@ export const userSearchChanged$ = main$
   .filter(({ action }) =>
     action.type === SET_USER_SEARCH_COUNTRY_CODE ||
     action.type === SET_USER_SEARCH_POSTAL_CODE ||
-    action.type === SET_USER_SEARCH_GEOLOCATION);
+    action.type === SET_USER_SEARCH_GEOLOCATION ||
+    action.type === SET_STORE_FINDER_SEARCH_RADIUS);
 
 export const fulfillmentLocationsReceivedFromProduct$ = receiveProductLocations$
   .switchMap((data) => {
@@ -76,3 +80,6 @@ export const fulfillmentLocationsReceived$ = fulfillmentLocationsReceivedFromCar
 
 export const preferredLocationDidUpdate$ = main$
   .filter(({ action }) => action.type === SELECT_GLOBAL_LOCATION);
+
+export const storeFinderWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === STORE_FINDER_PATTERN);

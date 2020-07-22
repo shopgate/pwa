@@ -13,6 +13,9 @@ const StoreFinderProvider = ({
   children,
   locations,
   preferredLocation,
+  isFetching,
+  shopSettings,
+  userSearch,
   storeListRef,
 }) => {
   const [selectedLocation, setSelectedLocation] = useState(preferredLocation);
@@ -35,7 +38,10 @@ const StoreFinderProvider = ({
     locations,
     selectedLocation,
     selectLocation,
-  }), [locations, selectLocation, selectedLocation]);
+    isFetching,
+    shopSettings,
+    userSearch,
+  }), [isFetching, locations, selectLocation, selectedLocation, shopSettings, userSearch]);
 
   return (
     <StoreFinderContext.Provider value={value}>
@@ -46,9 +52,12 @@ const StoreFinderProvider = ({
 
 StoreFinderProvider.propTypes = {
   children: PropTypes.node,
+  isFetching: PropTypes.bool,
   locations: PropTypes.arrayOf(PropTypes.shape()),
   preferredLocation: PropTypes.shape(),
+  shopSettings: PropTypes.shape(),
   storeListRef: PropTypes.shape(),
+  userSearch: PropTypes.shape(),
 };
 
 StoreFinderProvider.defaultProps = {
@@ -56,6 +65,9 @@ StoreFinderProvider.defaultProps = {
   locations: [],
   preferredLocation: null,
   storeListRef: null,
+  isFetching: false,
+  shopSettings: null,
+  userSearch: null,
 };
 
 export default connect(StoreFinderProvider);

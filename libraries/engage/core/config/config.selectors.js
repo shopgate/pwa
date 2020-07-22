@@ -111,3 +111,22 @@ export function makeGetFulfillmentPaths(): Selector<any, string[]> {
     }
   );
 }
+
+/**
+ * Creates a selector that retrieves the default unit system
+ * @returns {Function}
+ */
+export const makeGetDefaultUnitSystem = () => {
+  const getMerchantSettings = makeGetMerchantSettings();
+
+  return createSelector(
+    getMerchantSettings,
+    (settings) => {
+      if (!settings || Object.keys(settings).length === 0) {
+        return null;
+      }
+
+      return settings.defaultUnitSystem || null;
+    }
+  );
+};

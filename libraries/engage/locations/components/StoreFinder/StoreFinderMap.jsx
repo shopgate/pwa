@@ -1,14 +1,10 @@
 import React, { useContext, useMemo, useCallback } from 'react';
-import Color from 'color';
+import Leaflet from 'leaflet';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { renderToString } from 'react-dom/server';
-import { getCSSCustomProp } from '@shopgate/engage/styles/helpers/cssCustomProperties';
-import LocationFilledIcon from '@shopgate/pwa-ui-shared/icons/LocationFilledIcon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
 import { StoreFinderContext } from '../../locations.context';
-import { container } from './StoreFinderMap.style';
-
-const { colors } = themeConfig;
+import { container, marker, markerSelected } from './StoreFinderMap.style';
 
 /**
  * @param {Object} props The component props
@@ -21,30 +17,19 @@ const StoreFinderMap = () => {
     selectLocation,
   } = useContext(StoreFinderContext);
 
-  /**
-   * Creates a marker icon
-   * @param {string} [color=null] An optional color
-   * @returns {string}
-   */
-  const createIcon = (color = null) => {
-    const string = renderToString(<LocationFilledIcon color={color} />);
-    return window.L.icon({
-      iconUrl: encodeURI(`data:image/svg+xml, ${string}`).replace('#', '%23'),
-      iconSize: [38, 38],
-    });
-  };
+  const iconHTML = useMemo(() => renderToString(<MapMarkerIcon />), []);
 
-  const icon = useMemo(() => {
-    const color = Color(getCSSCustomProp('--color-text-medium-emphasis') || colors.shade9);
-    return createIcon(color.rgb().string());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locations]);
+  const makerIcon = useMemo(() => Leaflet.divIcon({
+    html: iconHTML,
+    className: marker,
+    iconSize: [40, 40],
+  }), [iconHTML]);
 
-  const iconSelected = useMemo(() => {
-    const color = Color(getCSSCustomProp('--color-primary') || colors.primary);
-    return createIcon(color.rgb().string());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locations]);
+  const markerIconSelected = useMemo(() => Leaflet.divIcon({
+    html: iconHTML,
+    className: markerSelected,
+    iconSize: [40, 40],
+  }), [iconHTML]);
 
   const positions = useMemo(() => locations.map((location) => {
     const { code, latitude, longitude } = location;
@@ -67,19 +52,23 @@ const StoreFinderMap = () => {
 
   return (
     <div className={container}>
-      <Map center={viewport} zoom={13} className={container}>
+      <Map center={viewport} zoom={14} className={container}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        { positions.map(({ position, code, location }) => (
-          <Marker
-            key={code}
-            icon={selectedLocation.code === code ? iconSelected : icon}
-            position={position}
-            onclick={(e) => { onMarkerClick(e, location); }}
-          />
-        ))}
+        { positions.map(({ position, code, location }) => {
+          const icon = selectedLocation.code === code ? markerIconSelected : makerIcon;
+
+          return (
+            <Marker
+              key={code}
+              icon={icon}
+              position={position}
+              onclick={(e) => { onMarkerClick(e, location); }}
+            />
+          );
+        })}
       </Map>
 
     </div>

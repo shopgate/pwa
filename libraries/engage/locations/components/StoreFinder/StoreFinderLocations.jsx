@@ -3,7 +3,7 @@ import { CardList } from '@shopgate/engage/components';
 import { StoreFinderContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
 import StoreFinderLocation from './StoreFinderLocation';
-import { cardList, card } from './StoreFinderLocations.style';
+import { container, cardList, card } from './StoreFinderLocations.style';
 
 /**
  * @param {Object} props The component props
@@ -18,7 +18,7 @@ const StoreFinderLocations = (props, ref) => {
   }
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={container}>
       <CardList className={cardList}>
         {locations.map(location => (
           <CardList.Item className={card} key={location.code}>

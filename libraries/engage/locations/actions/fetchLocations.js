@@ -24,6 +24,14 @@ function fetchLocations(params) {
       filters.postalCode = params.postalCode;
     }
 
+    if (params.enableInLocationFinder) {
+      filters.enableInLocationFinder = params.enableInLocationFinder;
+    }
+
+    if (params.radius) {
+      filters.radius = params.radius;
+    }
+
     const request = new PipelineRequest(SHOPGATE_STOREFRONT_GET_LOCATIONS)
       .setInput(filters)
       .dispatch();

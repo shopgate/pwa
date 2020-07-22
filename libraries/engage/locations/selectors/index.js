@@ -39,6 +39,26 @@ const getLocationsState = state => state.locations || {};
 const getLocationsStorage = state => state.locations.storage;
 
 /**
+ * Retrieves the store finder search.
+ * @param {Object} state State.
+ * @returns {Object}
+ */
+export const getStoreFinderSearch = (state) => {
+  const locationState = getLocationsState(state);
+  return locationState.storeFinderSearch;
+};
+
+/**
+ * Retrieves the store finder search radius.
+ * @param {Object} state State.
+ * @returns {Object}
+ */
+export const getStoreFinderSearchRadius = createSelector(
+  getStoreFinderSearch,
+  search => search.radius || null
+);
+
+/**
  * Creates a selector that retrieves a filtered list of locations
  * @param {Function} getFilters Has to retrieve the filters.
  * @returns {Object}
@@ -111,6 +131,22 @@ export const makeGetLocationsForProduct = (getProductCode) => {
   });
 
   /* eslint-enable require-jsdoc */
+  return makeGetFilteredLocations(getFilters);
+};
+
+/**
+ * Creates a selector that retrieves all locations for the store fonder.
+ * @returns {Object}
+ */
+export const makeGetLocationsForStoreFinder = () => {
+  /* eslint-disable require-jsdoc */
+  const getFilters = state => ({
+    enableInLocationFinder: true,
+    ...pickBy(getStoreFinderSearch(state)),
+    ...pickBy(getActiveFilter(state)),
+  });
+  /* eslint-enable require-jsdoc */
+
   return makeGetFilteredLocations(getFilters);
 };
 
