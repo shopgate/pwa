@@ -5,6 +5,8 @@ import showTab from '@shopgate/pwa-core/commands/showTab';
 import { openPageExtern } from '@shopgate/pwa-core';
 import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { IS_CONNECT_EXTENSION_ATTACHED } from '@shopgate/pwa-common/constants/Configuration';
+import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import authRoutes from '../../collections/AuthRoutes';
@@ -92,7 +94,15 @@ export const isLegacyPage = location => (
  * @param {string} location The location to open.
  * @return {boolean}
  */
-export const isLegacyLink = location => !!legacyLinks.find(link => location.startsWith(link));
+export const isLegacyLink = (location) => {
+  const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
+
+  if (location === LEGACY_LINK_STOREFINDER && hasConnectExtension) {
+    return false;
+  }
+
+  return !!legacyLinks.find(link => location.startsWith(link));
+};
 
 /**
  * Checks whether it is a shop link.

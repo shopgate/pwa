@@ -25,7 +25,7 @@ export const container = css({
     color: 'var(--color-primary)',
     textDecoration: 'underline',
   },
-  [responsiveMediaQuery('<=xs', { appAlways: true })]: {
+  [responsiveMediaQuery('<=sm', { appAlways: true })]: {
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
     ' > *:not(:last-child)': {
@@ -44,7 +44,7 @@ export const clickable = css({
     margin: 0,
     paddingTop: 0,
   },
-  [responsiveMediaQuery('<=xs', { appAlways: true })]: {
+  [responsiveMediaQuery('<=sm', { appAlways: true })]: {
     ' > *:not(:last-child)': {
       paddingBottom: variables.gap.xsmall,
       paddingTop: 0,
@@ -56,7 +56,7 @@ export const storeName = css({
   fontSize: '1rem',
   fontWeight: 500,
   color: 'var(--color-text-high-emphasis)',
-  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
     fontSize: '1.125rem',
     lineHeight: '1.5rem',
   },

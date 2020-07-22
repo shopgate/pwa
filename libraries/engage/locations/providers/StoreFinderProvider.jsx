@@ -24,13 +24,21 @@ const StoreFinderProvider = ({
     setSelectedLocation(location);
 
     if (scrollIntoView && storeListRef.current) {
-      storeListRef
-        .current
-        .querySelector(`[data-location-code="${location.code}"]`)
-        .scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        });
+      const container = storeListRef.current;
+      const element = container.querySelector(`[data-location-code="${location.code}"]`);
+
+      const scrollParams = {
+        top: (element.parentNode.offsetTop - container.offsetTop) - 10,
+        behavior: 'smooth',
+      };
+
+      const { overflowY } = getComputedStyle(container);
+
+      if (overflowY === 'scroll') {
+        container.scroll(scrollParams);
+      } else {
+        window.scroll(scrollParams);
+      }
     }
   }, [storeListRef]);
 

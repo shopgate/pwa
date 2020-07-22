@@ -14,6 +14,7 @@ export const container = css({
   [responsiveMediaQuery('<=sm', { appAlways: true })]: {
     paddingTop: 2,
     borderTop: 'none',
+  //  overflowY: 'initial',
   },
 });
 

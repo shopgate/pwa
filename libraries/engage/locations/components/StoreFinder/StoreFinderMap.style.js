@@ -9,6 +9,11 @@ export const container = css({
     borderRadius: 3,
     overflow: 'hidden',
   },
+  [responsiveMediaQuery('<=sm', { appAlways: true })]: {
+  //  position: 'fixed',
+    zIndex: 10,
+    maxHeight: 200,
+  },
 });
 
 export const marker = css({
@@ -28,3 +33,20 @@ export const markerSelected = css({
     color: `var(--color-primary, ${themeColors.primary})`,
   },
 }).toString();
+
+const pulseAnimation = css.keyframes({
+  '0%': { boxShadow: '0 0 0 0px rgba(0, 0, 0, 0.2)' },
+  '100%': { boxShadow: '0 0 0 10px rgba(0, 0, 0, 0)' },
+});
+
+export const userPosition = css({
+  ' div': {
+    background: 'var(--color-secondary)',
+    border: '2px solid #fff',
+    borderRadius: 25,
+    height: 20,
+    width: 20,
+    animation: `${pulseAnimation} 2s infinite`,
+  },
+}).toString();
+

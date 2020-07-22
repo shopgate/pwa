@@ -19,6 +19,7 @@ export const container = css({
     gridTemplateColumns: '1fr',
     gridTemplateRows: 'auto 200px 1fr',
     gridTemplateAreas: '"search" "map" "store-list"',
+  //  height: '100%',
   },
 });
 
@@ -36,6 +37,7 @@ export const storeList = css({
   overflow: 'hidden',
   [responsiveMediaQuery('<=sm', { appAlways: true })]: {
     width: '100%',
+  //  overflow: 'initial',
   },
 });
 
