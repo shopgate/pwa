@@ -157,6 +157,13 @@
     "select_location": "Filiale wählen",
     "get_directions": "Get Directions",
     "store_hours": "Store Hours",
+    "radius_km": "{radius} km",
+    "radius_mi": "{radius} Miles",
+    "radius": "Radius",
+    "stores_near": {
+      "zip_code": "Stores near \"{zipCode}\"",
+      "location": "Stores near your location"
+    },
     "your_current_location": {
       "heading": "Your Current Location",
       "change": "Change"
