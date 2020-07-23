@@ -7,7 +7,7 @@ const { variables } = themeConfig;
 export const container = css({
   display: 'grid',
   gridTemplateColumns: '350px 1fr',
-  gridTemplateRows: 'auto 300px 1fr 1fr',
+  gridTemplateRows: 'auto 200px 1fr 1fr',
   gridTemplateAreas: `
     "search map"
     "store-list map"
@@ -19,7 +19,7 @@ export const container = css({
     gridTemplateColumns: '1fr',
     gridTemplateRows: 'auto 200px 1fr',
     gridTemplateAreas: '"search" "map" "store-list"',
-  //  height: '100%',
+    height: '100vh',
   },
 });
 
@@ -33,7 +33,7 @@ export const storeSearch = css({
 
 export const storeList = css({
   gridArea: 'store-list',
-  width: 350,
+  width: '100%',
   overflow: 'hidden',
   [responsiveMediaQuery('<=sm', { appAlways: true })]: {
     width: '100%',
@@ -44,7 +44,7 @@ export const storeList = css({
 export const storeDetailsMap = css({
   gridArea: 'map',
   paddingBottom: variables.gap.big,
-  [responsiveMediaQuery('>sm', { appAlways: true })]: {
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
     paddingRight: variables.gap.big,
     paddingTop: variables.gap.big,
     paddingBottom: 0,

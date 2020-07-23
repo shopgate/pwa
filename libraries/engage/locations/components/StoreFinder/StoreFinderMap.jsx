@@ -1,6 +1,9 @@
 import React, { useContext, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import '../../assets/leaflet.css';
+import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 import Leaflet from 'leaflet';
+import { GestureHandling } from 'leaflet-gesture-handling';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
@@ -8,6 +11,8 @@ import { StoreFinderContext } from '../../locations.context';
 import {
   container, marker, markerSelected, userPosition as userPositionStyle,
 } from './StoreFinderMap.style';
+
+Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
 /**
  * @param {Object} props The component props
@@ -43,14 +48,15 @@ const StoreFinderMap = ({ showUserPosition }) => {
 
   const positions = useMemo(() => locations.map((location) => {
     const { code, latitude, longitude } = location;
-    const icon = selectedLocation.code === code ? markerIconSelected : makerIcon;
+    const { code: selectedCode } = selectedLocation || {};
+    const icon = selectedCode === code ? markerIconSelected : makerIcon;
     return {
       code,
       location,
       icon,
       position: [latitude, longitude],
     };
-  }), [locations, makerIcon, markerIconSelected, selectedLocation.code]);
+  }), [locations, makerIcon, markerIconSelected, selectedLocation]);
 
   const userPosition = useMemo(() => {
     const { geolocation } = userSearch;
@@ -68,10 +74,14 @@ const StoreFinderMap = ({ showUserPosition }) => {
   }, [showUserPosition, userPositionIcon, userSearch]);
 
   const viewport = useMemo(() => {
-    const { latitude, longitude } = selectedLocation || locations[0];
+    const { latitude, longitude } = selectedLocation || locations[0] || {};
+
+    if (!latitude || !longitude) {
+      return userPosition?.position || null;
+    }
 
     return [latitude, longitude];
-  }, [locations, selectedLocation]);
+  }, [locations, selectedLocation, userPosition]);
 
   const onMarkerClick = useCallback((event, location) => {
     selectLocation(location, true);
@@ -79,7 +89,13 @@ const StoreFinderMap = ({ showUserPosition }) => {
 
   return (
     <div className={container}>
-      <Map center={viewport} zoom={14} className={container}>
+      <Map
+        center={viewport}
+        zoom={15}
+        className={container}
+        gestureHandling={Leaflet.Browser.mobile}
+        touchZoom
+      >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

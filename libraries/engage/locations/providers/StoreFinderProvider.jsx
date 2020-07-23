@@ -1,5 +1,5 @@
 import React, {
-  useMemo, useState, useCallback,
+  useMemo, useState, useCallback, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { StoreFinderContext } from '../locations.context';
@@ -12,13 +12,14 @@ import connect from './StoreFinder.connector';
 const StoreFinderProvider = ({
   children,
   locations,
-  preferredLocation,
   isFetching,
   shopSettings,
   userSearch,
+  storeFinderSearch,
   storeListRef,
 }) => {
-  const [selectedLocation, setSelectedLocation] = useState(preferredLocation);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [locationsHash, setLocationsHash] = useState(null);
 
   const selectLocation = useCallback((location, scrollIntoView = false) => {
     setSelectedLocation(location);
@@ -42,6 +43,15 @@ const StoreFinderProvider = ({
     }
   }, [storeListRef]);
 
+  useEffect(() => {
+    const hash = JSON.stringify(locations.map(({ code }) => code));
+
+    if (hash !== locationsHash) {
+      setLocationsHash(hash);
+      selectLocation(locations[0]);
+    }
+  });
+
   const value = useMemo(() => ({
     locations,
     selectedLocation,
@@ -49,7 +59,16 @@ const StoreFinderProvider = ({
     isFetching,
     shopSettings,
     userSearch,
-  }), [isFetching, locations, selectLocation, selectedLocation, shopSettings, userSearch]);
+    storeFinderSearch,
+  }), [
+    isFetching,
+    locations,
+    selectLocation,
+    selectedLocation,
+    shopSettings,
+    storeFinderSearch,
+    userSearch,
+  ]);
 
   return (
     <StoreFinderContext.Provider value={value}>
@@ -62,8 +81,8 @@ StoreFinderProvider.propTypes = {
   children: PropTypes.node,
   isFetching: PropTypes.bool,
   locations: PropTypes.arrayOf(PropTypes.shape()),
-  preferredLocation: PropTypes.shape(),
   shopSettings: PropTypes.shape(),
+  storeFinderSearch: PropTypes.shape(),
   storeListRef: PropTypes.shape(),
   userSearch: PropTypes.shape(),
 };
@@ -71,11 +90,11 @@ StoreFinderProvider.propTypes = {
 StoreFinderProvider.defaultProps = {
   children: null,
   locations: [],
-  preferredLocation: null,
   storeListRef: null,
   isFetching: false,
   shopSettings: null,
   userSearch: null,
+  storeFinderSearch: null,
 };
 
 export default connect(StoreFinderProvider);

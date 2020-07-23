@@ -27,9 +27,10 @@ import {
 const StoreFinderLocationDetailsWide = () => {
   const { selectedLocation: location, locations } = useContext(StoreFinderContext);
 
-  const hasOperationHours = useMemo(() =>
-    location.operationHours && !every(location.operationHours, isEmpty),
-  [location.operationHours]);
+  const hasOperationHours = useMemo(() => {
+    const { operationHours } = location || {};
+    return operationHours && !every(operationHours, isEmpty);
+  }, [location]);
 
   if (!location || locations.length === 0) {
     return null;

@@ -42,7 +42,7 @@ const pulseAnimation = css.keyframes({
 export const userPosition = css({
   ' div': {
     background: 'var(--color-secondary)',
-    border: '2px solid #fff',
+    border: '3px solid #fff',
     borderRadius: 25,
     height: 20,
     width: 20,

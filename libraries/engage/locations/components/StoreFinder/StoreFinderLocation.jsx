@@ -15,9 +15,10 @@ const StoreFinderLocation = () => {
   const store = useContext(StoreContext);
   const { selectedLocation } = useContext(StoreFinderContext);
 
-  const isSelected = useMemo(() =>
-    store.code === selectedLocation.code,
-  [selectedLocation.code, store.code]);
+  const isSelected = useMemo(() => {
+    const { code } = selectedLocation || {};
+    return store.code === code;
+  }, [selectedLocation, store.code]);
 
   return (
     <div
