@@ -25,7 +25,8 @@
     "checkout_confirmation": "Bestellung erfolgreich",
     "checkout_change_billing": "Rechnungsadresse ändern",
     "register": "Registrieren",
-    "order_details": "Order Details"
+    "order_details": "Order Details",
+    "store_finder": "Store Finder"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -120,6 +121,7 @@
     "details": "Laden-Details",
     "hours_details": "Laden Öffnungsdetails",
     "today_hours": "Heute: {hours}",
+    "today_hours_long": "Hours Today: {hours}",
     "address": "{postalCode} {city}",
     "map_open": "In Karten öffnen",
     "phone": "Telefonnummer",
@@ -150,6 +152,15 @@
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
+    "get_directions": "Get Directions",
+    "store_hours": "Store Hours",
+    "radius_km": "{radius} km",
+    "radius_mi": "{radius} Miles",
+    "radius": "Radius",
+    "stores_near": {
+      "zip_code": "Stores near \"{zipCode}\"",
+      "location": "Stores near your location"
+    },
     "your_current_location": {
       "heading": "Your Current Location",
       "change": "Change"

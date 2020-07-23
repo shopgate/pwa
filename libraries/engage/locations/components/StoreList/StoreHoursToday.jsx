@@ -8,6 +8,7 @@ const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 type Props = {
   hours?: LocationOperationHours,
+  longLabel?: bool,
 };
 
 /**
@@ -15,7 +16,7 @@ type Props = {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function StoreHoursToday({ hours }: Props) {
+export function StoreHoursToday({ hours, longLabel }: Props) {
   if (!hours) {
     return null;
   }
@@ -27,13 +28,16 @@ export function StoreHoursToday({ hours }: Props) {
     return null;
   }
 
+  const label = longLabel ? 'locations.today_hours_long' : 'locations.today_hours';
+
   return (
     <div className={storeHoursToday}>
-      {i18n.text('locations.today_hours', { hours: hoursToday })}
+      {i18n.text(label, { hours: hoursToday })}
     </div>
   );
 }
 
 StoreHoursToday.defaultProps = {
   hours: null,
+  longLabel: false,
 };

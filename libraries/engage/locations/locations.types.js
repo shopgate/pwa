@@ -49,23 +49,23 @@ export type LocationAddress = {
 }
 
 export type Location = {
-  code: string | null;
-  name: string | null;
-  status?: string;
-  supportedFulfillmentMethods?: string[];
-  latitude?: number;
-  longitude?: number;
-  timeZone?: string;
-  localeCode?: string;
-  isComingSoon?: boolean;
-  isDefault?: boolean;
-  type?: LocationType;
-  operationHours?: LocationOperationHours;
-  address?: LocationAddress;
-  addresses?: LocationAddress[];
-  productInventory?: LocationProductInventory;
-  distance?: number;
-  unitSystem?: string;
+  code: string | null,
+  name: string | null,
+  status?: string,
+  supportedFulfillmentMethods?: string[],
+  latitude?: number,
+  longitude?: number,
+  timeZone?: string,
+  localeCode?: string,
+  isComingSoon?: boolean,
+  isDefault?: boolean,
+  type?: LocationType,
+  operationHours?: LocationOperationHours,
+  address?: LocationAddress,
+  addresses?: LocationAddress[],
+  productInventory?: LocationProductInventory,
+  distance?: number,
+  unitSystem?: string,
   inventory?: Object
 }
 

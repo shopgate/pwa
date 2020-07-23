@@ -5,13 +5,14 @@ import {
   cartDidEnter$,
 } from '@shopgate/engage/cart';
 import { receiveCoreConfig$, appDidStart$ } from '@shopgate/engage/core';
-import { MULTI_LINE_RESERVE } from './constants';
-import { getUserSearch } from './selectors';
+import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
+import { getUserSearch, getStoreFinderSearch } from './selectors';
 import { fetchLocations, fetchProductLocations } from './actions';
 import {
   submitReservationSuccess$,
   cartReceivedWithROPE$,
   userSearchChanged$,
+  storeFinderWillEnter$,
 } from './locations.streams';
 
 /**
@@ -26,10 +27,18 @@ function locations(subscribe) {
   });
 
   subscribe(userSearchChanged$, async ({ dispatch, getState, action }) => {
-    const { productId } = action;
-    const userSearch = getUserSearch(getState());
+    const { productId, isStoreFinder } = action;
+    const state = getState();
+    const userSearch = getUserSearch(state);
 
-    if (!productId) {
+    if (isStoreFinder || action.type === SET_STORE_FINDER_SEARCH_RADIUS) {
+      const storeFinderSearch = getStoreFinderSearch(state);
+      await dispatch(fetchLocations({
+        ...userSearch,
+        ...storeFinderSearch,
+        enableInLocationFinder: true,
+      }));
+    } else if (!productId) {
       await dispatch(fetchLocations(userSearch));
     } else {
       await dispatch(fetchProductLocations(productId, userSearch));
@@ -76,6 +85,18 @@ function locations(subscribe) {
   const fetchCart$ = cartDidEnter$.switchMap(() => submitReservationSuccess$.first()).delay(500);
   subscribe(fetchCart$, ({ dispatch }) => {
     dispatch(fetchCart());
+  });
+
+  subscribe(storeFinderWillEnter$, async ({ dispatch, getState }) => {
+    const state = getState();
+    // Fetch merchants locations.
+    const userSearch = getUserSearch(state);
+    const storeFinderSearch = getStoreFinderSearch(state);
+    await dispatch(fetchLocations({
+      ...userSearch,
+      ...storeFinderSearch,
+      enableInLocationFinder: true,
+    }));
   });
 }
 

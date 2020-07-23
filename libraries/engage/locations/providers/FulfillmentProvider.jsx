@@ -1,5 +1,7 @@
 // @flow
-import * as React from 'react';
+import React, {
+  useState, useMemo, useRef, useEffect, useCallback,
+} from 'react';
 import {
   logger, i18n, UIEvents,
 } from '../../core';
@@ -66,22 +68,25 @@ function FulfillmentProvider(props: Props) {
     isFetching,
     noInventory = false,
     open = false,
+    noLocationSelection = false,
+    isStoreFinder = false,
     isInitialized: defaultIsInitialized,
     updatePreferredLocation,
   } = props;
-  const [fulfillmentPath, setFulfillmentPath] = React.useState(defaultFulfillmentPath || null);
-  const [changeOnly, setChangeOnly] = React.useState(props.changeOnly);
-  const [isOpen, setIsOpen] = React.useState(open);
-  const [stage, setStage] = React.useState<SheetStage | null>(props.stage || null);
-  const [fulfillmentMethod, setFulfillmentMethod] = React.useState(null);
-  const [orderNumbers, setOrderNumbers] = React.useState<string[] | null>(null);
-  const [errors, setErrors] = React.useState<string[] | null>(null);
-  const [product, setProduct] = React.useState(propsProduct);
-  const [isChangeFulfillment, setIsChangeFulfillment] = React.useState(false);
-  const [cartItem, setCartItem] = React.useState(null);
-  const isInitialized = React.useRef(defaultIsInitialized);
+  const [fulfillmentPath, setFulfillmentPath] = useState(defaultFulfillmentPath || null);
+  const [changeOnly, setChangeOnly] = useState(props.changeOnly);
+  const [isOpen, setIsOpen] = useState(open);
+  const [stage, setStage] = useState<SheetStage | null>(props.stage || null);
+  const [fulfillmentMethod, setFulfillmentMethod] = useState(null);
+  const [orderNumbers, setOrderNumbers] = useState<string[] | null>(null);
+  const [errors, setErrors] = useState<string[] | null>(null);
+  const [product, setProduct] = useState(propsProduct);
+  const [isChangeFulfillment, setIsChangeFulfillment] = useState(false);
+  const [cartItem, setCartItem] = useState(null);
+  const [storeFinderLocation, setStoreFinderLocation] = useState(productLocation);
+  const isInitialized = useRef(defaultIsInitialized);
 
-  const title = React.useMemo<string>(() => {
+  const title = useMemo<string>(() => {
     if (props.title !== null) {
       return i18n.text(props.title);
     }
@@ -102,9 +107,9 @@ function FulfillmentProvider(props: Props) {
   }, [props.title, stage]);
 
   /** Effects for updating a state based on new props */
-  React.useEffect(() => setIsOpen(open), [open]);
-  React.useEffect(() => setProduct(propsProduct), [propsProduct]);
-  React.useEffect(() => {
+  useEffect(() => setIsOpen(open), [open]);
+  useEffect(() => setProduct(propsProduct), [propsProduct]);
+  useEffect(() => {
     if (updatePreferredLocation && productLocation && !isInitialized.current) {
       isInitialized.current = true;
       selectLocation(productLocation);
@@ -163,7 +168,7 @@ function FulfillmentProvider(props: Props) {
     setFulfillmentMethod(null);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     UIEvents.addListener(EVENT_SET_OPEN, handleOpen);
     return () => {
       UIEvents.removeListener(EVENT_SET_OPEN, handleOpen);
@@ -341,6 +346,10 @@ function FulfillmentProvider(props: Props) {
     }
   }
 
+  const handleSelectStoreFinderLocation = useCallback((location) => {
+    setStoreFinderLocation(location);
+  }, []);
+
   const context: FulfillmentContextProps = {
     stage,
     title,
@@ -355,17 +364,21 @@ function FulfillmentProvider(props: Props) {
     baseProduct: propsBaseProduct,
     product,
     location: productLocation,
+    storeFinderLocation,
     userInput,
     fulfillmentPaths,
     fulfillmentMethods,
     enabledFulfillmentMethods,
     shopSettings,
     selectLocation: handleSelectLocation,
+    selectStoreFinderLocation: handleSelectStoreFinderLocation,
     changeFulfillment: handleChangeFulfillmentMethod,
     sendReservation,
     orderNumbers,
     errors,
     noInventory,
+    noLocationSelection,
+    isStoreFinder,
     isFetching,
     meta: props.meta || undefined,
   };

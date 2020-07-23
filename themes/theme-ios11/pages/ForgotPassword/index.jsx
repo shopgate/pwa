@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from '@shopgate/engage/components';
-import { AppBar } from '@shopgate/pwa-ui-material';
+import { AppBar } from '@shopgate/pwa-ui-ios';
 import { ForgotPassword as Content } from '@shopgate/engage/login';
 import { BackBar } from 'Components/AppBar/presets';
 

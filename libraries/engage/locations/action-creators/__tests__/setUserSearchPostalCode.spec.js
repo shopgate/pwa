@@ -9,6 +9,7 @@ describe('engage > locations > actions-creators', () => {
       type: SET_USER_SEARCH_POSTAL_CODE,
       postalCode: '35510',
       productId: 'ABC123',
+      isStoreFinder: false,
     });
   });
 
@@ -18,6 +19,7 @@ describe('engage > locations > actions-creators', () => {
       type: SET_USER_SEARCH_POSTAL_CODE,
       postalCode: null,
       productId: null,
+      isStoreFinder: false,
     });
   });
 });

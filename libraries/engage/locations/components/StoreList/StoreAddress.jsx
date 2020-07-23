@@ -21,7 +21,7 @@ export function StoreAddress({ address, pure }: Props) {
   }
 
   const addressContent = (
-    <React.Fragment>
+    <div>
       <div data-test-id="street">
         {address.street}
       </div>
@@ -41,7 +41,7 @@ export function StoreAddress({ address, pure }: Props) {
         </div>
       )}
       {i18n.text('locations.address', address)}
-    </React.Fragment>
+    </div>
   );
 
   if (pure) {

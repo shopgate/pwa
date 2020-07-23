@@ -11,7 +11,6 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import {
-  Grid,
   InfoIcon,
   LocatorIcon,
   MagnifierIcon,
@@ -19,16 +18,19 @@ import {
   ProgressBar,
 } from '@shopgate/engage/components';
 import { useCountriesNames } from '@shopgate/engage/i18n';
-import { FulfillmentContext } from '../../locations.context';
+import StoreListSearchRadius from './StoreListSearchRadius';
+import { FulfillmentContext, StoreFinderContext } from '../../locations.context';
 import connect from './StoreListSearch.connector';
 import {
-  country,
   container,
+  countriesCell,
+  inputCell,
+  radiusCell,
   inputIcon,
   iconClass,
   input,
   progressBar,
-  queryLine,
+  inputContainer,
   select,
   selectContainer,
 } from './StoreListSearch.style';
@@ -45,13 +47,14 @@ function StoreListSearch({
   setPostalCode,
   setCountryCode,
   setGeolocation,
+  isStoreFinder,
 }) {
   const {
     isFetching,
     locations,
     shopSettings: { supportedCountries } = {},
     product,
-  } = useContext(FulfillmentContext);
+  } = useContext(isStoreFinder ? StoreFinderContext : FulfillmentContext);
   const loading = isFetching;
   const [message, setMessage] = useState('');
   const [inputPostalCode, setInputPostalCode] = useState(postalCode || '');
@@ -82,8 +85,8 @@ function StoreListSearch({
    * @param {SyntheticEvent} event A React event object.
    */
   const handleCountrySelectChange = useCallback((event) => {
-    setCountryCode(event.target.value, productId);
-  }, [productId, setCountryCode]);
+    setCountryCode(event.target.value, productId, isStoreFinder);
+  }, [isStoreFinder, productId, setCountryCode]);
 
   /**
    * Blurs the postal code input to trigger an update.
@@ -99,8 +102,8 @@ function StoreListSearch({
    * Triggers an update when the input blurs.
    */
   const handlePostalCodeBlur = useCallback(() => {
-    setPostalCode(inputPostalCode, productId);
-  }, [inputPostalCode, productId, setPostalCode]);
+    setPostalCode(inputPostalCode, productId, isStoreFinder);
+  }, [inputPostalCode, isStoreFinder, productId, setPostalCode]);
 
   /**
    * Triggers an update when the locate me button was pressed. Also clears the local state for the
@@ -109,9 +112,12 @@ function StoreListSearch({
   const handleLocateMeButton = useCallback(async () => {
     setInputPostalCode('');
     setLocating(true);
-    await setGeolocation({ productId });
+    await setGeolocation({
+      productId,
+      isStoreFinder,
+    });
     setLocating(false);
-  }, [productId, setGeolocation]);
+  }, [isStoreFinder, productId, setGeolocation]);
 
   /**
    * Updates the local state for the postal code input.
@@ -122,30 +128,32 @@ function StoreListSearch({
   };
 
   const countries = useCountriesNames(supportedCountries);
+  const hasSupportedCountries = supportedCountries && supportedCountries.length > 1;
 
   return (
     <Fragment>
       <div className={container}>
-        <Grid>
-          {supportedCountries && supportedCountries.length > 1 &&
-            <Grid.Item shrink={0} className={country.toString()}>
-              <div className={selectContainer}>
-                <select
-                  name="countryCode"
-                  value={countryCode}
-                  onChange={handleCountrySelectChange}
-                  className={select}
-                >
-                  {
-                    Object.keys(countries).map(key => (
-                      <option className="option" value={key} key={key}>{countries[key]}</option>
-                    ))
-                  }
-                </select>
-              </div>
-            </Grid.Item>
-          }
-          <Grid.Item grow={1} className={queryLine.toString()}>
+        {hasSupportedCountries && (
+          <div className={countriesCell}>
+            <div className={selectContainer}>
+              <select
+                name="countryCode"
+                value={countryCode}
+                onChange={handleCountrySelectChange}
+                className={select}
+              >
+                {
+                  Object.keys(countries).map(key => (
+                    <option className="option" value={key} key={key}>{countries[key]}</option>
+                  ))
+                }
+              </select>
+            </div>
+          </div>
+        )}
+
+        <div className={inputCell}>
+          <div className={inputContainer}>
             <span className={inputIcon} aria-hidden>
               <MagnifierIcon />
             </span>
@@ -170,8 +178,14 @@ function StoreListSearch({
             >
               <LocatorIcon />
             </button>
-          </Grid.Item>
-        </Grid>
+          </div>
+
+        </div>
+        <div className={radiusCell}>
+          { isStoreFinder && (
+          <StoreListSearchRadius />
+          )}
+        </div>
       </div>
       <div className={progressBar}>
         <ProgressBar isVisible={loading || locating} />
@@ -194,6 +208,7 @@ function StoreListSearch({
 
 StoreListSearch.defaultProps = {
   postalCode: null,
+  isStoreFinder: false,
 };
 
 StoreListSearch.propTypes = {
@@ -201,6 +216,7 @@ StoreListSearch.propTypes = {
   setCountryCode: PropTypes.func.isRequired,
   setGeolocation: PropTypes.func.isRequired,
   setPostalCode: PropTypes.func.isRequired,
+  isStoreFinder: PropTypes.bool,
   postalCode: PropTypes.string,
 };
 
