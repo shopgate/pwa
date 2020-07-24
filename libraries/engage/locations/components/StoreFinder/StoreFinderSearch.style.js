@@ -1,8 +1,9 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { variables } = themeConfig;
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 export const container = css({
-  paddingBottom: variables.gap.small,
+  [responsiveMediaQuery('<=sm', { appAlways: true })]: {
+    paddingBottom: themeVariables.gap.small,
+  },
 });
