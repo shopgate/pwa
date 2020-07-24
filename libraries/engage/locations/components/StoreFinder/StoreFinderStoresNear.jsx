@@ -23,7 +23,7 @@ const StoreFinderStoresNear = () => {
   }, [hasGeolocation, hasZipCode, userSearch.postalCode]);
 
   if ((!hasZipCode && !hasGeolocation) || locations.length === 0) {
-    return null;
+    return (<div className={container} />);
   }
 
   return (

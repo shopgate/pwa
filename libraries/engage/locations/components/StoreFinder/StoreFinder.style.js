@@ -25,7 +25,7 @@ export const container = css({
 
 export const storeSearch = css({
   gridArea: 'search',
-  padding: `${variables.gap.big}px 4px 4px 4px`,
+  padding: `${variables.gap.big}px 4px 0 4px`,
   ' select': {
     color: 'var(--color-text-medium-emphasis)',
   },
