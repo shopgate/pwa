@@ -5,6 +5,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase=""
   suggestions={
     Array [
       "foo",
@@ -19,13 +20,16 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "bottomHeight": 10,
         "onClick": [Function],
+        "searchPhrase": "",
         "suggestions": Array [
           "foo",
           "foo bar",
           "foo bar buz",
           "foo bar buz quz",
         ],
+        "visible": false,
       }
     }
   >
@@ -162,6 +166,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   bottomHeight={10}
   fetching={true}
   onClick={[Function]}
+  searchPhrase=""
   suggestions={
     Array [
       "foo bar buz quz",
@@ -176,13 +181,16 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "bottomHeight": 10,
         "onClick": [Function],
+        "searchPhrase": "",
         "suggestions": Array [
           "foo",
           "foo bar",
           "foo bar buz",
           "foo bar buz quz",
         ],
+        "visible": false,
       }
     }
   >
@@ -319,6 +327,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase=""
   suggestions={
     Array [
       "foo bar buz quz",
@@ -333,13 +342,16 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "bottomHeight": 10,
         "onClick": [Function],
+        "searchPhrase": "",
         "suggestions": Array [
           "foo bar buz quz",
           "foo bar buz",
           "foo bar",
           "foo",
         ],
+        "visible": false,
       }
     }
   >
@@ -492,6 +504,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       dispatch={[Function]}
       fetching={false}
       onClick={[Function]}
+      searchPhrase=""
       suggestions={
         Array [
           "foo",
@@ -506,13 +519,16 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         portalName="search.suggestions"
         portalProps={
           Object {
+            "bottomHeight": 10,
             "onClick": [Function],
+            "searchPhrase": "",
             "suggestions": Array [
               "foo",
               "foo bar",
               "foo bar buz",
               "foo bar buz quz",
             ],
+            "visible": false,
           }
         }
       >
