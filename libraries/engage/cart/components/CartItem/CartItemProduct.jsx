@@ -14,6 +14,7 @@ import { CartItemProductLayout } from './CartItemProductLayout';
 import { CartItemProductLayoutWide } from './CartItemProductLayoutWide';
 import { noGap } from './CartItemProduct.style';
 import { useCartItemProduct } from './CartItem.hooks';
+import CartItemSubstitution from './CartItemSubstitution';
 
 const messageStyles = {
   card: {
@@ -32,7 +33,7 @@ const messageStyles = {
  * @returns {JSX}
  */
 const CartItemProduct = () => {
-  const { messages, cartItemRef } = useCartItemProduct();
+  const { messages, cartItemRef, isEditable } = useCartItemProduct();
   const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
 
   return (
@@ -49,6 +50,7 @@ const CartItemProduct = () => {
         <ResponsiveContainer webOnly breakpoint=">xs">
           <CartItemProductLayoutWide />
         </ResponsiveContainer>
+        <CartItemSubstitution editable={isEditable} />
       </div>
     </CardListItem>
   );

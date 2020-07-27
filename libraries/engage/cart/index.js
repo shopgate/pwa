@@ -77,6 +77,7 @@ export { CartItem } from './components/CartItem';
 export { CartHeaderWide } from './components/CartHeaderWide';
 export { default as CartSummaryWide } from './components/CartSummaryWide/CartSummaryWide';
 export { SupplementalContent } from './components/SupplementalContent';
+export { default as CartItemsSubstitution } from './components/CartItems/CartItemsSubstitution';
 
 // HOOKS
 export {

@@ -7,6 +7,7 @@ import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
 import { items, card } from './CartItems.style';
+import CartItemsSubstitution from './CartItemsSubstitution';
 
 type Props = {
   cartItems?: Item[],
@@ -27,13 +28,18 @@ function CartItems({
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
-
   return (
     <React.Fragment>
       <ResponsiveContainer breakpoint=">xs" webOnly>
         <CartItemsHeaderWide editable={editable} isOrderDetails={isOrderDetails} />
       </ResponsiveContainer>
+
       <CardList className={items}>
+        {editable && (
+          <ResponsiveContainer breakpoint="<=xs" appAlways>
+            <CartItemsSubstitution cartItems={cartItems} wrapCard className={card} />
+          </ResponsiveContainer>
+        )}
         {cartItems.map(item => (
           <CardList.Item className={card} key={item.id}>
             <CartItemProvider

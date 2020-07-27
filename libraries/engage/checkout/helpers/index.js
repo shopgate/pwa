@@ -17,6 +17,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     subStatus,
     fulfillmentMethod,
     fulfillmentLocationCode,
+    substitutionAllowed,
   } = lineItem;
 
   const {
@@ -92,6 +93,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     },
     fulfillment,
     fulfillmentLocationId: fulfillmentLocationCode,
+    substitutionAllowed,
   };
 });
 

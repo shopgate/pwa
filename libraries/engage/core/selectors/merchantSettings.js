@@ -1,25 +1,30 @@
 import { createSelector } from 'reselect';
-import { MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED } from '../constants';
+import { MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED, MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED } from '../constants';
 
 /**
- * Retrieves the shopSettings state from the store.
+ * Retrieves the merchantSettings state from the store.
  * @param {Object} state The current application state.
  * @return {Object} The locations state.
  */
 const getState = state => state?.settings?.merchantSettings || {};
 
 /**
- * Creates a selector to retrieve a single shop setting.
- * @param {string} key The key of the shop setting
+ * Creates a selector to retrieve a single merchant setting.
+ * @param {string} key The key of the merchant setting
  * @param {*} [fallback=null] The fallback value when no value can be determined.
  * @returns {Function}
  */
-const makeGetShopSettingByKey = (key, fallback = null) => createSelector(
+const makeGetMerchantSettingByKey = (key, fallback = null) => createSelector(
   getState,
   state => state?.[key] || fallback
 );
 
-export const getIsLocationBasedShopping = makeGetShopSettingByKey(
+export const getIsLocationBasedShopping = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
+  false
+);
+
+export const getSubstitutionPreferencesEnabled = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
   false
 );

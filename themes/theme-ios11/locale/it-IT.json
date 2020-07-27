@@ -263,6 +263,8 @@
     "coupon_was_added": "Il coupon è stato aggiunto al carrello!",
     "coupons_not_supported": "Aggiungi i coupon e buoni regalo alla cassa",
     "free_shipping": "Spedizione Gratuita",
+    "allow_substitution_all": "Allow Substitutions on All Products?",
+    "allow_substitution": "Allow Substitutions?",
     "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
       "item": {

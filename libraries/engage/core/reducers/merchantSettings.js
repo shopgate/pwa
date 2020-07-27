@@ -2,19 +2,21 @@ import { produce } from 'immer';
 import {
   RECEIVE_MERCHANT_SETTINGS,
   MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
+  MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
 } from '../constants';
 
 const defaultState = {
   [MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED]: false,
+  [MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED]: false,
 };
 
 /**
- * Stores the product locations by the location code.
+ * Stores the merchant settings.
  * @param {Object} [state={}] The current state.
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function shopSettings(state = defaultState, action) {
+export default function merchantSettings(state = defaultState, action) {
   /* eslint-disable no-param-reassign */
   const producer = produce((draft) => {
     switch (action.type) {
