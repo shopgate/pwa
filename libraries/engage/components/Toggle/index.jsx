@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
-  label, checkbox, hidden, root,
+  label, checkbox, hidden, thumb, container,
 } from './style';
 
 /**
@@ -13,10 +13,13 @@ import {
 const Toggle = ({
   id, checked, className, onChange, disabled,
 }) => (
-  <div className={classNames(root, className)}>
-    <input type="checkbox" id={id} className={classNames(checkbox, hidden)} checked={checked} onChange={onChange} disabled={disabled} />
-    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-    <label htmlFor={id} className={label} />
+  <div className={className}>
+    <div className={container}>
+      <input type="checkbox" id={id} className={classNames(checkbox, hidden)} checked={checked} onChange={onChange} disabled={disabled} />
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <label htmlFor={id} className={label} />
+      <div className={thumb} />
+    </div>
   </div>
 );
 
@@ -30,8 +33,8 @@ Toggle.propTypes = {
 
 Toggle.defaultProps = {
   checked: false,
-  className: undefined,
-  onChange: undefined,
+  className: null,
+  onChange: null,
   disabled: false,
 };
 
