@@ -14,3 +14,13 @@ export const wideHeader = css({
 export const wideHeaderMessagesWithItems = css({
   marginTop: variables.gap.big * -1,
 }).toString();
+
+export const headerContainer = css({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'baseline',
+}).toString();
+
+export const subscription = css({
+  marginRight: 14,
+}).toString();
