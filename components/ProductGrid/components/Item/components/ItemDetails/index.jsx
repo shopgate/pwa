@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import {
   MapPriceHint, OrderQuantityHint, EffectivityDates, Swatches,
 } from '@shopgate/engage/product';
+import {
+  AVAILABILITY_STATE_OK,
+  AVAILABILITY_STATE_ALERT,
+} from '@shopgate/pwa-common-commerce/product/constants';
+import {
+  Availability,
+} from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';
@@ -16,12 +24,14 @@ class ItemDetails extends PureComponent {
     display: PropTypes.shape(),
     name: PropTypes.string,
     price: PropTypes.shape(),
+    stock: PropTypes.shape(),
   };
 
   static defaultProps = {
     display: null,
     name: null,
     price: null,
+    stock: null,
   };
 
   /**
@@ -29,7 +39,7 @@ class ItemDetails extends PureComponent {
    */
   render() {
     const {
-      display, productId, name, price,
+      display, productId, name, price, stock,
     } = this.props;
 
     if (display && !display.name && !display.price && !display.reviews) {
@@ -61,6 +71,15 @@ class ItemDetails extends PureComponent {
         {/* This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects */}
         <EffectivityDates productId={productId} />
+
+        <Availability
+          state={!stock || stock.orderable
+            ? AVAILABILITY_STATE_OK
+            : AVAILABILITY_STATE_ALERT
+          }
+          text={i18n.text('product.available.not')}
+          showWhenAvailable={false}
+        />
 
         <ItemPrice display={display} productId={productId} price={price} />
       </div>
