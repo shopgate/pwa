@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SurroundPortals } from '@shopgate/engage/components';
@@ -48,17 +48,25 @@ class SuggestionList extends Component {
       onClick, suggestions, bottomHeight, visible, searchPhrase,
     } = this.props;
 
+    if (!visible) {
+      return null;
+    }
+
     if (!suggestions) {
-      return (<SurroundPortals
-        portalName={SEARCH_SUGGESTIONS}
-        portalProps={{
-          onClick,
-          suggestions,
-          searchPhrase,
-          visible,
-          bottomHeight,
-        }}
-      />);
+      return (
+        <SurroundPortals
+          portalName={SEARCH_SUGGESTIONS}
+          portalProps={{
+            onClick,
+            suggestions,
+            searchPhrase,
+            visible,
+            bottomHeight,
+          }}
+        >
+          <Fragment />
+        </SurroundPortals>
+      );
     }
 
     return (
