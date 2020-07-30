@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.13.5](https://github.com/shopgate/pwa/compare/v6.13.4...v6.13.5) (2020-07-30)
+
+#### :rocket: Enhancement
+* [#1023](https://github.com/shopgate/pwa/pull/1023) Make sure SuggestionList Portal has children ([@Carsten89](https://github.com/Carsten89))
+* [#1021](https://github.com/shopgate/pwa/pull/1021) Added more props to search suggestion portals ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.13.4](https://github.com/shopgate/pwa/compare/v6.13.3...v6.13.4) (2020-06-30)
 
 #### :nail_care: Polish
