@@ -84,4 +84,11 @@ describe('<SuggestionList />', () => {
     const [[event]] = onClickMock.mock.calls;
     expect(event.target.value).toBe('foo bar buz');
   });
+
+  it('should render portal without suggestions', () => {
+    const wrapper = mount((
+      <UnwrappedSuggestionList onClick={() => { }} suggestions={null} />
+    ));
+    expect(wrapper).toMatchSnapshot();
+  });
 });

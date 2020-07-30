@@ -1809,3 +1809,54 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
   </Connect(SuggestionList)>
 </Provider>
 `;
+
+exports[`<SuggestionList /> should render portal without suggestions 1`] = `
+<SuggestionList
+  fetching={false}
+  onClick={[Function]}
+  searchPhrase={null}
+  suggestions={null}
+>
+  <SurroundPortals
+    portalName="search.suggestions"
+    portalProps={
+      Object {
+        "onClick": [Function],
+        "searchPhrase": null,
+        "suggestions": null,
+      }
+    }
+  >
+    <Portal
+      name="search.suggestions.before"
+      props={
+        Object {
+          "onClick": [Function],
+          "searchPhrase": null,
+          "suggestions": null,
+        }
+      }
+    />
+    <Portal
+      name="search.suggestions"
+      props={
+        Object {
+          "onClick": [Function],
+          "searchPhrase": null,
+          "suggestions": null,
+        }
+      }
+    />
+    <Portal
+      name="search.suggestions.after"
+      props={
+        Object {
+          "onClick": [Function],
+          "searchPhrase": null,
+          "suggestions": null,
+        }
+      }
+    />
+  </SurroundPortals>
+</SuggestionList>
+`;
