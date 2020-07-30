@@ -14,8 +14,151 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       "foo bar buz quz",
     ]
   }
-  visible={false}
-/>
+  visible={true}
+>
+  <SurroundPortals
+    portalName="search.suggestions"
+    portalProps={
+      Object {
+        "bottomHeight": 10,
+        "onClick": [Function],
+        "searchPhrase": "",
+        "suggestions": Array [
+          "foo",
+          "foo bar",
+          "foo bar buz",
+          "foo bar buz quz",
+        ],
+        "visible": true,
+      }
+    }
+  >
+    <div
+      className="css-7w6rep css-90ryaa"
+    >
+      <SurroundPortals
+        key="foo"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
+            "suggestion": "foo",
+          }
+        }
+      >
+        <button
+          className="css-crua9x"
+          data-test-id="searchSuggestion foo"
+          onClick={[Function]}
+          type="button"
+          value="foo"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo",
+              }
+            }
+          >
+            foo
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
+            "suggestion": "foo bar",
+          }
+        }
+      >
+        <button
+          className="css-crua9x"
+          data-test-id="searchSuggestion foo bar"
+          onClick={[Function]}
+          type="button"
+          value="foo bar"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar",
+              }
+            }
+          >
+            foo bar
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar buz"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
+            "suggestion": "foo bar buz",
+          }
+        }
+      >
+        <button
+          className="css-crua9x"
+          data-test-id="searchSuggestion foo bar buz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar buz",
+              }
+            }
+          >
+            foo bar buz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar buz quz"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
+            "suggestion": "foo bar buz quz",
+          }
+        }
+      >
+        <button
+          className="css-crua9x"
+          data-test-id="searchSuggestion foo bar buz quz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz quz"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar buz quz",
+              }
+            }
+          >
+            foo bar buz quz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+    </div>
+  </SurroundPortals>
+</SuggestionList>
 `;
 
 exports[`<SuggestionList /> should not update while suggestions are fetching 2`] = `
@@ -32,7 +175,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       "foo",
     ]
   }
-  visible={false}
+  visible={true}
 >
   <SurroundPortals
     portalName="search.suggestions"
@@ -47,12 +190,12 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           "foo bar buz",
           "foo bar buz quz",
         ],
-        "visible": false,
+        "visible": true,
       }
     }
   >
     <div
-      className="css-7w6rep css-90ryaa css-6zy2pv"
+      className="css-7w6rep css-90ryaa"
     >
       <SurroundPortals
         key="foo"
@@ -193,7 +336,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       "foo",
     ]
   }
-  visible={false}
+  visible={true}
 >
   <SurroundPortals
     portalName="search.suggestions"
@@ -208,12 +351,12 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           "foo bar",
           "foo",
         ],
-        "visible": false,
+        "visible": true,
       }
     }
   >
     <div
-      className="css-7w6rep css-90ryaa css-6zy2pv"
+      className="css-7w6rep css-90ryaa"
     >
       <SurroundPortals
         key="foo bar buz quz"
@@ -355,6 +498,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
   <Connect(SuggestionList)
     bottomHeight={10}
     onClick={[Function]}
+    visible={true}
   >
     <SuggestionList
       bottomHeight={10}
@@ -370,8 +514,175 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           "foo bar buz quz",
         ]
       }
-      visible={false}
-    />
+      visible={true}
+    >
+      <SurroundPortals
+        portalName="search.suggestions"
+        portalProps={
+          Object {
+            "bottomHeight": 10,
+            "onClick": [Function],
+            "searchPhrase": "",
+            "suggestions": Array [
+              "foo",
+              "foo bar",
+              "foo bar buz",
+              "foo bar buz quz",
+            ],
+            "visible": true,
+          }
+        }
+      >
+        <div
+          className="css-7w6rep css-90ryaa"
+        >
+          <SurroundPortals
+            key="foo"
+            portalName="search.suggestion-item"
+            portalProps={
+              Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
+                "suggestion": "foo",
+              }
+            }
+          >
+            <button
+              className="css-crua9x"
+              data-test-id="searchSuggestion foo"
+              onClick={[Function]}
+              type="button"
+              value="foo"
+            >
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
+                  Object {
+                    "suggestion": "foo",
+                  }
+                }
+              >
+                foo
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+          <SurroundPortals
+            key="foo bar"
+            portalName="search.suggestion-item"
+            portalProps={
+              Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
+                "suggestion": "foo bar",
+              }
+            }
+          >
+            <button
+              className="css-crua9x"
+              data-test-id="searchSuggestion foo bar"
+              onClick={[Function]}
+              type="button"
+              value="foo bar"
+            >
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
+                  Object {
+                    "suggestion": "foo bar",
+                  }
+                }
+              >
+                foo bar
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+          <SurroundPortals
+            key="foo bar buz"
+            portalName="search.suggestion-item"
+            portalProps={
+              Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
+                "suggestion": "foo bar buz",
+              }
+            }
+          >
+            <button
+              className="css-crua9x"
+              data-test-id="searchSuggestion foo bar buz"
+              onClick={[Function]}
+              type="button"
+              value="foo bar buz"
+            >
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
+                  Object {
+                    "suggestion": "foo bar buz",
+                  }
+                }
+              >
+                foo bar buz
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+          <SurroundPortals
+            key="foo bar buz quz"
+            portalName="search.suggestion-item"
+            portalProps={
+              Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
+                "suggestion": "foo bar buz quz",
+              }
+            }
+          >
+            <button
+              className="css-crua9x"
+              data-test-id="searchSuggestion foo bar buz quz"
+              onClick={[Function]}
+              type="button"
+              value="foo bar buz quz"
+            >
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
+                  Object {
+                    "suggestion": "foo bar buz quz",
+                  }
+                }
+              >
+                foo bar buz quz
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+        </div>
+      </SurroundPortals>
+    </SuggestionList>
   </Connect(SuggestionList)>
 </Provider>
+`;
+
+exports[`<SuggestionList /> should render portal without suggestions 1`] = `
+<SuggestionList
+  bottomHeight={0}
+  fetching={false}
+  onClick={[Function]}
+  searchPhrase=""
+  suggestions={null}
+  visible={true}
+>
+  <SurroundPortals
+    portalName="search.suggestions"
+    portalProps={
+      Object {
+        "bottomHeight": 0,
+        "onClick": [Function],
+        "searchPhrase": "",
+        "suggestions": null,
+        "visible": true,
+      }
+    }
+  />
+</SuggestionList>
 `;
