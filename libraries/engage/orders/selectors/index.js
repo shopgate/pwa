@@ -29,6 +29,13 @@ const getOrdersByNumberState = state => getOrdersState(state).ordersByNumber || 
 export const getOrders = state => getOrdersState(state).orders.orders;
 
 /**
+ * Retrieves total count of orders from the store.
+ * @param {Object} state The current application state.
+ * @return {Object} The orders state.
+ */
+export const getTotalOrderCount = state => getOrdersState(state).orders.totalOrderCount;
+
+/**
  * Creates the selector that retrieves an order by its number.
  * @returns {Function}
  */

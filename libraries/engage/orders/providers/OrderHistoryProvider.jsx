@@ -18,13 +18,14 @@ const OrderHistoryProvider = ({
   fetchOrderHistory,
   children,
   historyPush,
+  totalOrderCount,
 }) => {
   const { pathname } = useRoute();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleRequest = useCallback(async () => {
+  const handleOrderHistoryRequest = useCallback(async (params) => {
     setIsLoading(true);
-    await fetchOrderHistory();
+    await fetchOrderHistory(params);
     setIsLoading(false);
   }, [fetchOrderHistory]);
 
@@ -38,19 +39,17 @@ const OrderHistoryProvider = ({
     LoadingProvider.unsetLoading(pathname);
   }, [isLoading, pathname]);
 
-  useEffect(() => {
-    handleRequest();
-  }, [handleRequest]);
-
   const value = useMemo(
     () => ({
       orders,
+      totalOrderCount,
       isLoading,
+      fetchOrderHistory: handleOrderHistoryRequest,
       openDetails: orderNumber => historyPush({
         pathname: getOrderDetailsRoute(orderNumber),
       }),
     }),
-    [historyPush, isLoading, orders]
+    [handleOrderHistoryRequest, historyPush, isLoading, orders, totalOrderCount]
   );
 
   return (
@@ -65,10 +64,12 @@ OrderHistoryProvider.propTypes = {
   historyPush: PropTypes.func.isRequired,
   orders: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   children: PropTypes.node,
+  totalOrderCount: PropTypes.number,
 };
 
 OrderHistoryProvider.defaultProps = {
   children: null,
+  totalOrderCount: null,
 };
 
 export default connect(OrderHistoryProvider);

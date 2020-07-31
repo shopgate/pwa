@@ -29,7 +29,11 @@ const orders = (state = defaultState, action) => {
 
       case RECEIVE_ORDER_HISTORY: {
         draft.isFetching = false;
-        draft.orders = action.orders;
+        draft.orders = [
+          ...draft.orders.slice(0, action.offset),
+          ...action.orders,
+        ];
+        draft.totalOrderCount = action.totalOrderCount;
         break;
       }
 

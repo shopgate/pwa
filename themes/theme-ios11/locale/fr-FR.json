@@ -502,6 +502,15 @@
       }
     }
   },
+  "orders": {
+    "header": {
+      "date": "Order Date",
+      "orderNumber": "Order Number",
+      "status": "Status",
+      "lineItemCount": "Number of Items",
+      "total": "Order Total"
+    }
+  },
   "registration": {
     "create_account": "Create account",
     "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",

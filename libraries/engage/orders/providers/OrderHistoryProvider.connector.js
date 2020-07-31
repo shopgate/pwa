@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { historyPush } from '@shopgate/engage/core';
 import { fetchOrderHistory } from '../actions';
-import { getOrders } from '../selectors';
+import { getOrders, getTotalOrderCount } from '../selectors';
 
 /**
    * @param {Object} state The application state.
@@ -10,6 +10,7 @@ import { getOrders } from '../selectors';
    */
 const mapStateToProps = state => ({
   orders: getOrders(state),
+  totalOrderCount: getTotalOrderCount(state),
 });
 
 /**

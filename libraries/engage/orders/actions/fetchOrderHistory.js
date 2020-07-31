@@ -8,13 +8,13 @@ import { requestOrderHistory, receiveOrderHistory, errorOrderHistory } from '../
  * Fetches order history.
  * @returns {Function} A redux thunk.
  */
-const fetchOrderHistory = () => (dispatch) => {
+const fetchOrderHistory = ({ limit, offset }) => (dispatch) => {
   dispatch(requestOrderHistory());
 
   const request = new PipelineRequest(SHOPGATE_GET_ORDER_HISTORY)
     .setInput({
-      limit: 50,
-      offset: 0,
+      limit,
+      offset,
     })
     .setErrorBlacklist([EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND])
     .dispatch();
