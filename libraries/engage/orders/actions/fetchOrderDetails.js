@@ -6,31 +6,23 @@ import { requestOrderDetails, receiveOrderDetails, errorOrderDetails } from '../
 
 /**
  * Fetches details of an order.
- * @param {string} orderId An order number
  * @param {Object} [params={}] Optional params like email and phone number
  * @returns {Function} A redux thunk.
  */
-const fetchOrderDetails = (orderId, params = {}) => (dispatch) => {
-  dispatch(requestOrderDetails(orderId, params));
-
-  const { email, phone, token } = params;
+const fetchOrderDetails = (params = {}) => (dispatch) => {
+  dispatch(requestOrderDetails(params));
 
   const request = new PipelineRequest(SHOPGATE_ORDER_GET_ORDER_DETAILS)
-    .setInput({
-      orderId,
-      email,
-      phone,
-      token,
-    })
+    .setInput(params)
     .setErrorBlacklist([EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND])
     .dispatch();
 
   request
     .then((response) => {
-      dispatch(receiveOrderDetails(orderId, response.order));
+      dispatch(receiveOrderDetails(params, response.order));
     })
     .catch((error) => {
-      dispatch(errorOrderDetails(error, orderId, params));
+      dispatch(errorOrderDetails(error, params));
     });
 
   return request;

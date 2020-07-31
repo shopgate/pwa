@@ -27,7 +27,8 @@
     "checkout_change_billing": "Rechnungsadresse ändern",
     "register": "Registrieren",
     "order_details": "Order Details",
-    "store_finder": "Store Finder"
+    "store_finder": "Store Finder",
+    "order_history": "Order History"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",

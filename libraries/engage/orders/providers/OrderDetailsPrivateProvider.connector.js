@@ -2,14 +2,14 @@ import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import { makeGetOrderById } from '../selectors';
+import { makeGetOrderByNumber } from '../selectors';
 import { fetchOrderDetails, cancelOrder } from '../actions';
 
 /**
  * @return {Function}
  */
 const makeMapStateToProps = () => {
-  const getOrderById = makeGetOrderById();
+  const getOrderByNumber = makeGetOrderByNumber();
 
   /**
    * @param {Object} state The application state.
@@ -21,7 +21,7 @@ const makeMapStateToProps = () => {
     isUserLoggedIn: isUserLoggedIn(state),
     shopSettings: getShopSettings(state),
     userLocation: getPreferredLocationAddress(state),
-    order: getOrderById(state, props),
+    order: getOrderByNumber(state, props),
   });
 };
 
@@ -31,17 +31,10 @@ const makeMapStateToProps = () => {
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  fetchOrderDetails: (orderId, mail, phone) =>
-    dispatch(fetchOrderDetails({
-      orderId,
-      mail,
-      phone,
-    })),
-  cancelOrder: (orderId, token) =>
-    dispatch(cancelOrder({
-      orderId,
-      token,
-    })),
+  fetchOrderDetails: orderNumber =>
+    dispatch(fetchOrderDetails({ orderNumber })),
+  cancelOrder: orderNumber =>
+    dispatch(cancelOrder({ orderNumber })),
 });
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

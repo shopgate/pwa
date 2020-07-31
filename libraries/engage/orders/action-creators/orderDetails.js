@@ -6,38 +6,34 @@ import {
 
 /**
  * Creates the dispatched REQUEST_ORDER_DETAILS action object.
- * @param {string} orderId An order id
  * @param {Object} [params={}] Optional params like email and phone number
  * @returns {Object} The dispatched action object.
  */
-export const requestOrderDetails = (orderId, params) => ({
+export const requestOrderDetails = params => ({
   type: REQUEST_ORDER_DETAILS,
-  orderId,
-  params,
+  ...params,
 });
 
 /**
  * Creates the dispatched RECEIVE_ORDER_DETAILS action object.
- * @param {string} orderId An order id
+ * @param {string} params An order id
  * @param {Object} order An order object
  * @returns {Object} The dispatched action object.
  */
-export const receiveOrderDetails = (orderId, order) => ({
+export const receiveOrderDetails = (params, order) => ({
   type: RECEIVE_ORDER_DETAILS,
-  orderId,
+  ...params,
   order,
 });
 
 /**
  * Creates the dispatched ERROR_ORDER_DETAILS action object.
  * @param {Error} error An error object
- * @param {string} orderId An order id
  * @param {Object} [params={}] Optional params like email and phone number
  * @returns {Object} The dispatched action object.
  */
-export const errorOrderDetails = (error, orderId, params = {}) => ({
+export const errorOrderDetails = (error, params) => ({
   type: ERROR_ORDER_DETAILS,
   error,
-  orderId,
-  params,
+  ...params,
 });

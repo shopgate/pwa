@@ -55,7 +55,9 @@ import {
   CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
+import { ACCOUNT_PATTERN } from '@shopgate/engage/account';
 import { ORDER_DETAILS_PATTERN } from '@shopgate/engage/orders';
+import { ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders/constants';
 import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
@@ -64,6 +66,7 @@ import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import ForgotPassword from './ForgotPassword';
 import Register from './Register';
 import OrderDetails from './OrderDetails';
+import Account from './Account';
 import StoreFinder from './StoreFinder';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -198,7 +201,15 @@ const Pages = ({ store }) => (
                       component={ForgotPassword}
                     />
                     <Route
+                      pattern={ACCOUNT_PATTERN}
+                      component={Account}
+                    />
+                    <Route
                       pattern={ORDER_DETAILS_PATTERN}
+                      component={OrderDetails}
+                    />
+                    <Route
+                      pattern={ORDER_DETAILS_PRIVATE_PATTERN}
                       component={OrderDetails}
                     />
                     <Route

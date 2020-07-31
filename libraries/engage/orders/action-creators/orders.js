@@ -11,11 +11,11 @@ export const clearOrders = () => ({
 /**
  * Creates the dispatched ERROR_CANCEL_ORDER action object.
  * @param {Error} error An error object
- * @param {string} orderId An order id
+ * @param {string} params An order id
  * @returns {Object} The dispatched action object.
  */
-export const errorCancelOrder = (error, orderId) => ({
+export const errorCancelOrder = (error, params) => ({
   type: ERROR_CANCEL_ORDER,
   error,
-  orderId,
+  ...params,
 });
