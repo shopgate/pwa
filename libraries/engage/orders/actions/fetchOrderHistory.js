@@ -6,6 +6,9 @@ import { requestOrderHistory, receiveOrderHistory, errorOrderHistory } from '../
 
 /**
  * Fetches order history.
+ * @param {Object} params Params
+ * @param {number} [params.limit] Limit
+ * @param {string} [params.offset] Offset
  * @returns {Function} A redux thunk.
  */
 const fetchOrderHistory = ({ limit, offset }) => (dispatch) => {

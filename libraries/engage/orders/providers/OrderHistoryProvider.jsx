@@ -41,13 +41,15 @@ const OrderHistoryProvider = ({
 
   const value = useMemo(
     () => ({
-      orders,
+      orders: orders.map(order => ({
+        ...order,
+        openDetails: () => historyPush({
+          pathname: getOrderDetailsRoute(order.orderNumber),
+        }),
+      })),
       totalOrderCount,
       isLoading,
       fetchOrderHistory: handleOrderHistoryRequest,
-      openDetails: orderNumber => historyPush({
-        pathname: getOrderDetailsRoute(orderNumber),
-      }),
     }),
     [handleOrderHistoryRequest, historyPush, isLoading, orders, totalOrderCount]
   );

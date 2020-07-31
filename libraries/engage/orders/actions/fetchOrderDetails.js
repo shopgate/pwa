@@ -6,7 +6,12 @@ import { requestOrderDetails, receiveOrderDetails, errorOrderDetails } from '../
 
 /**
  * Fetches details of an order.
- * @param {Object} [params={}] Optional params like email and phone number
+ * @param {Object} params Params
+ * @param {number} [params.orderId] Order Id
+ * @param {string} [params.orderNumber] Order Number
+ * @param {string} [params.email] Email
+ * @param {string} [params.phone] Phone Number
+ * @param {string} [params.token] Request params
  * @returns {Function} A redux thunk.
  */
 const fetchOrderDetails = (params = {}) => (dispatch) => {

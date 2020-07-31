@@ -8,7 +8,10 @@ import { errorCancelOrder } from '../action-creators/orders';
 
 /**
  * Cancel an order.
- * @param {Object} [params={}] Optional params like email and phone number
+ * @param {Object} params Params
+ * @param {number} [params.orderId] Order Id
+ * @param {string} [params.orderNumber] Order Number
+ * @param {string} [params.token] Request params
  * @returns {Function} A redux thunk.
  */
 const cancelOrder = ({ orderId, orderNumber, token }) => async (dispatch) => {

@@ -8,11 +8,11 @@ export const table = css({
   borderWidth: 1,
   borderStyle: 'solid',
   borderColor: 'rgba(0,0,0,.12)',
-  cursor: 'pointer',
+  margin: `${variables.gap.small * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.big}px`,
 }).toString();
 
 export const tableHeader = css({
-  '& > td': {
+  '& > th': {
     padding: variables.gap.big,
     fontWeight: 500,
     textOverflow: 'ellipsis',
@@ -24,6 +24,7 @@ export const tableRow = css({
   borderTopWidth: 1,
   borderTopStyle: 'solid',
   borderTopColor: 'rgba(0, 0, 0, 0.12)',
+  cursor: 'pointer',
   '&:hover': {
     backgroundColor: 'rgba(0,0,0,.04)',
   },

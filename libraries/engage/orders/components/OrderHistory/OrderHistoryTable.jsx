@@ -13,7 +13,7 @@ import {
  * @returns {JSX}
  */
 export const TableRow = props => (
-  <tr className={tableRow} onClick={() => {}}>
+  <tr key={props.orderNumber} className={tableRow} onClick={props.openDetails}>
     <td>
       <I18n.Date
         timestamp={new Date(props.submitDate).getTime()}
@@ -45,6 +45,7 @@ export const TableRow = props => (
 TableRow.propTypes = {
   currencyCode: PropTypes.string.isRequired,
   lineItemCount: PropTypes.number.isRequired,
+  openDetails: PropTypes.func.isRequired,
   orderNumber: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   submitDate: PropTypes.string.isRequired,
@@ -59,12 +60,14 @@ TableRow.propTypes = {
 export const Table = ({ children }) => (
   <div className={table}>
     <table>
-      <thead className={tableHeader}>
-        <td>{i18n.text('orders.header.date')}</td>
-        <td>{i18n.text('orders.header.orderNumber')}</td>
-        <td>{i18n.text('orders.header.status')}</td>
-        <td align="right">{i18n.text('orders.header.lineItemCount')}</td>
-        <td align="right">{i18n.text('orders.header.total')}</td>
+      <thead>
+        <tr className={tableHeader}>
+          <th align="left">{i18n.text('orders.header.date')}</th>
+          <th align="left">{i18n.text('orders.header.orderNumber')}</th>
+          <th align="left">{i18n.text('orders.header.status')}</th>
+          <th align="right">{i18n.text('orders.header.lineItemCount')}</th>
+          <th align="right">{i18n.text('orders.header.total')}</th>
+        </tr>
       </thead>
       <tbody>
         {children}

@@ -5,8 +5,17 @@ import {
 } from '../constants';
 
 /**
+ * @typedef {Object} OrderDetailParams
+ * @property {number} [params.orderId] Order Id
+ * @property {string} [params.orderNumber] Order Number
+ * @property {string} [params.email] Email
+ * @property {string} [params.phone] Phone Number
+ * @property {string} [params.token] Request params
+ */
+
+/**
  * Creates the dispatched REQUEST_ORDER_DETAILS action object.
- * @param {Object} [params={}] Optional params like email and phone number
+ * @param {OrderDetailParams} params Request params
  * @returns {Object} The dispatched action object.
  */
 export const requestOrderDetails = params => ({
@@ -16,7 +25,7 @@ export const requestOrderDetails = params => ({
 
 /**
  * Creates the dispatched RECEIVE_ORDER_DETAILS action object.
- * @param {string} params An order id
+ * @param {OrderDetailParams} params Request params
  * @param {Object} order An order object
  * @returns {Object} The dispatched action object.
  */
@@ -29,7 +38,7 @@ export const receiveOrderDetails = (params, order) => ({
 /**
  * Creates the dispatched ERROR_ORDER_DETAILS action object.
  * @param {Error} error An error object
- * @param {Object} [params={}] Optional params like email and phone number
+ * @param {OrderDetailParams} params Request params
  * @returns {Object} The dispatched action object.
  */
 export const errorOrderDetails = (error, params) => ({
