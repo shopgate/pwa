@@ -7,13 +7,19 @@ import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
+import {
+  ITEM_PATH,
+  AVAILABILITY_STATE_OK,
+  AVAILABILITY_STATE_ALERT,
+} from '@shopgate/pwa-common-commerce/product/constants/index';
+
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import Availability from '@shopgate/pwa-ui-shared/Availability';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
 /**
@@ -101,6 +107,17 @@ const Item = ({ display, product }) => (
               props={{ productId: product.id }}
             />
           </Fragment>
+        )}
+
+        {(!product.availability || product.availability.state === AVAILABILITY_STATE_OK) && (
+          <Availability
+            state={!product.stock || product.stock.orderable
+              ? AVAILABILITY_STATE_OK
+              : AVAILABILITY_STATE_ALERT
+            }
+            text={i18n.text('product.available.not')}
+            showWhenAvailable={false}
+          />
         )}
 
       </Grid.Item>
