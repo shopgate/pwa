@@ -5,6 +5,7 @@ import { useSideNavigation } from './SideNavigation.hooks';
 import SideNavigationItem from './SideNavigationItem';
 import SideNavigationLinksQuicklinks from './SideNavigationLinksQuicklinks';
 import SideNavigationLinksLegal from './SideNavigationLinksLegal';
+import { ACCOUNT_PATH } from '../../account';
 /**
  * SideNavigationLinks component
  * @returns {JSX}
@@ -15,6 +16,7 @@ const SideNavigationLinks = () => {
   return (
     <Fragment>
       <SideNavigationItem href={CART_PATH} label="navigation.cart" />
+      {isLoggedIn && <SideNavigationItem href={ACCOUNT_PATH} label="navigation.your_account" />}
       <SideNavigationLinksQuicklinks />
       <SideNavigationLinksLegal />
       {isLoggedIn ? (

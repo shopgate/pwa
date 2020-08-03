@@ -36,8 +36,11 @@ const OrderHistoryLoader = ({ wrapper, iterator }) => {
 };
 
 OrderHistoryLoader.propTypes = {
-  iterator: PropTypes.node.isRequired,
-  wrapper: PropTypes.node.isRequired,
+  iterator: PropTypes.func.isRequired,
+  wrapper: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+  ]).isRequired,
 };
 
 export default hot(OrderHistoryLoader);

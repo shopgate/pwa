@@ -1,1 +1,1 @@
-export const ACCOUNT_PATTERN = '/account';
+export const ACCOUNT_PATH = '/account';

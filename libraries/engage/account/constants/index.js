@@ -1,5 +1,5 @@
 export {
-  ACCOUNT_PATTERN,
+  ACCOUNT_PATH,
 } from './routes';
 
 export * from './actions';

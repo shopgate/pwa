@@ -23,7 +23,6 @@ const PROTOCOL_HTTPS = 'https:';
 const PROTOCOL_TEL = 'tel:';
 const PROTOCOL_MAILTO = 'mailto:';
 
-export const LEGACY_LINK_ACCOUNT = '/account';
 export const LEGACY_LINK_STOREFINDER = '/storefinder';
 export const LEGACY_LINK_CHANNEL = '/channel';
 export const LEGACY_LINK_ORDERS = '/orders_legacy';
@@ -45,7 +44,6 @@ const legacyPages = [
 ];
 
 const legacyLinks = [
-  LEGACY_LINK_ACCOUNT,
   LEGACY_LINK_STOREFINDER,
   LEGACY_LINK_CHANNEL,
   LEGACY_LINK_ORDERS,
@@ -310,7 +308,6 @@ export const openLegacyLink = (location, historyAction, state) => {
   const route = `/${location.split(/[?/]/)[1]}`;
 
   switch (route) {
-    case LEGACY_LINK_ACCOUNT:
     case LEGACY_LINK_STOREFINDER:
     case LEGACY_LINK_CHANNEL:
       openLegacy(location, historyAction, state);
