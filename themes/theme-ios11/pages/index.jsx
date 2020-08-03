@@ -45,6 +45,7 @@ import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import { STORE_FINDER_PATTERN, GlobalLocationSelector } from '@shopgate/engage/locations';
+import FavoritesListChooser from '@shopgate/engage/favorites/components/ListChooser';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
@@ -91,6 +92,7 @@ const Pages = ({ store }) => (
               <Viewport>
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBar {...props} />} />
+                <FavoritesListChooser />
                 <GlobalLocationSelector routePatternAllowList={globalLocationSelectorAllowList} />
                 <Router history={history}>
                   <Route

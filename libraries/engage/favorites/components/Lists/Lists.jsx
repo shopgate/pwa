@@ -25,16 +25,18 @@ import ItemFulfillmentMethod from '../ItemFulfillmentMethod';
 
 /**
  * @param {Object} state State
+ * @param {Object} props Props
  * @returns {Object}
  */
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   isInitializing: isInitialLoading(state),
   lists: getFavoritesLists(state),
   isLocationBasedShopping: getIsLocationBasedShopping(state),
-  preferredLocation: getPreferredLocation(state),
-  preferredFulfillmentMethod: getPreferredFulfillmentMethod(state),
+  preferredLocation: getPreferredLocation(state, props),
+  preferredFulfillmentMethod: getPreferredFulfillmentMethod(state, props),
   wishlistMode: getWishlistMode(state),
 });
+
 /**
  * @param {Object} dispatch Dispatch
  * @returns {Object}
@@ -88,6 +90,16 @@ const FavoriteLists = ({
       return;
     }
 
+    // Direct ship.
+    if (method === 'directShip') {
+      addToCart([{
+        productId: activeProductId,
+        quantity: 1,
+      }]);
+      promiseRef.current.resolve();
+      return;
+    }
+
     // Open the sheet
     setTimeout(() => {
       openSheet({
@@ -102,7 +114,7 @@ const FavoriteLists = ({
         stage: STAGE_SELECT_STORE,
       });
     }, 10);
-  }, []);
+  }, [activeProductId, addToCart]);
   const handleAddToCart = useCallback((listId, product) => {
     // Create promise to inform add to cart button when ready.
     const promise = new Promise((resolve, reject) => {
