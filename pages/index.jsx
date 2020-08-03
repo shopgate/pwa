@@ -55,7 +55,7 @@ import {
   CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
-import { ACCOUNT_PATTERN } from '@shopgate/engage/account';
+import { ACCOUNT_PATH } from '@shopgate/engage/account';
 import { ORDER_DETAILS_PATTERN } from '@shopgate/engage/orders';
 import { ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders/constants';
 import CheckoutPage from './Checkout/Checkout';
@@ -201,7 +201,7 @@ const Pages = ({ store }) => (
                       component={ForgotPassword}
                     />
                     <Route
-                      pattern={ACCOUNT_PATTERN}
+                      pattern={ACCOUNT_PATH}
                       component={Account}
                     />
                     <Route
