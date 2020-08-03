@@ -72,6 +72,7 @@ const FavoriteList = ({
   rename,
   remove,
   removeItem,
+  addToCart,
 }) => (
   <Card>
     <Accordion
@@ -96,6 +97,11 @@ const FavoriteList = ({
         <Item
           key={product.id}
           product={product}
+          addToCart={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return addToCart(product);
+          }}
           remove={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -108,6 +114,7 @@ const FavoriteList = ({
 );
 
 FavoriteList.propTypes = {
+  addToCart: PropTypes.func.isRequired,
   code: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape()).isRequired,

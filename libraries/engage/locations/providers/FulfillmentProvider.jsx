@@ -55,6 +55,7 @@ function FulfillmentProvider(props: Props) {
     location: productLocation,
     inventory,
     userInput,
+    fulfillmentMethod: defaultFulfillmentMethod,
     fulfillmentPath: defaultFulfillmentPath,
     fulfillmentPaths,
     fulfillmentMethods,
@@ -85,6 +86,12 @@ function FulfillmentProvider(props: Props) {
   const [cartItem, setCartItem] = useState(null);
   const [storeFinderLocation, setStoreFinderLocation] = useState(productLocation);
   const isInitialized = useRef(defaultIsInitialized);
+
+  useEffect(() => {
+    if (defaultFulfillmentMethod) {
+      setFulfillmentMethod(defaultFulfillmentMethod);
+    }
+  }, [defaultFulfillmentMethod]);
 
   const title = useMemo<string>(() => {
     if (props.title !== null) {

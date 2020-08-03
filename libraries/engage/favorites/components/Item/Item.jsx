@@ -80,7 +80,7 @@ const styles = {
  * Favorite Item component
  * @return {JSX}
  */
-const FavoriteItem = ({ product, remove }) => {
+const FavoriteItem = ({ product, remove, addToCart }) => {
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
@@ -128,13 +128,14 @@ const FavoriteItem = ({ product, remove }) => {
       </div>
       <div className={styles.actions}>
         <Remove onClick={remove} />
-        <AddToCart />
+        <AddToCart onClick={addToCart} isLoading={false} isDisabled={false} />
       </div>
     </Link>
   );
 };
 
 FavoriteItem.propTypes = {
+  addToCart: PropTypes.func.isRequired,
   product: PropTypes.shape().isRequired,
   remove: PropTypes.func.isRequired,
 };

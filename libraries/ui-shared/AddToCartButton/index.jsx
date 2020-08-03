@@ -54,24 +54,41 @@ class AddToCartButton extends Component {
    * - Add to cart.
    * - Wait 900ms.
    * - Show cart icon again.
+   * @param {Event} e Event
    */
-  handleClick = () => {
+  handleClick = (e) => {
     // Ignore clicks when check mark or loading spinner is shown or the button is disabled.
     if (this.state.showCheckmark || this.props.isLoading || this.props.isDisabled) {
       return;
     }
 
-    this.props.onClick();
-
-    this.setState({
-      showCheckmark: true,
-    });
-
-    setTimeout(() => {
+    /** */
+    const handleCompletion = () => {
       this.setState({
-        showCheckmark: false,
+        showCheckmark: true,
       });
-    }, 900);
+
+      setTimeout(() => {
+        this.setState({
+          showCheckmark: false,
+        });
+      }, 900);
+    };
+
+    const result = this.props.onClick(e);
+    if (result instanceof Promise) {
+      (async () => {
+        try {
+          await result;
+          handleCompletion();
+        } catch (error) {
+          // ignore error in button.
+        }
+      })();
+      return;
+    }
+
+    handleCompletion();
   };
 
   /**
