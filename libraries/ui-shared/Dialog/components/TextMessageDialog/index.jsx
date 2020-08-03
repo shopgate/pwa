@@ -10,16 +10,19 @@ import BasicDialog from '../BasicDialog';
  * @returns {JSX} The rendered component.
  */
 const TextMessageDialog = ({
-  actions, message, title, params,
+  actions, message, title, params, children,
 }) => (
   <BasicDialog title={title} actions={actions}>
     <I18n.Text string={message} params={params} />
+    {children}
   </BasicDialog>
 );
 
 TextMessageDialog.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   message: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.any,
   params: I18n.Text.propTypes.params,
   title: BasicDialog.propTypes.title,
 };
@@ -27,6 +30,7 @@ TextMessageDialog.propTypes = {
 TextMessageDialog.defaultProps = {
   title: BasicDialog.defaultProps.title,
   params: I18n.Text.defaultProps.params,
+  children: null,
 };
 
 export default TextMessageDialog;

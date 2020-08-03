@@ -13,6 +13,8 @@ type Props = {
   className?: string,
   contentClassName?: string,
   openWithChevron?: boolean,
+  startOpened?: boolean,
+  chevronPosition?: "left"|"right",
 }
 
 /**
@@ -21,7 +23,15 @@ type Props = {
  */
 function Accordion(props: Props) {
   const {
-    renderLabel, handleLabel, children, testId, className, contentClassName, openWithChevron,
+    renderLabel,
+    handleLabel,
+    children,
+    testId,
+    className,
+    contentClassName,
+    openWithChevron,
+    startOpened,
+    chevronPosition,
   } = props;
 
   if (!renderLabel || !children) {
@@ -31,7 +41,7 @@ function Accordion(props: Props) {
   const controlsId = testId ? `${testId}-content`.replace(/[^\w\s]/gi, '-').replace(' ', '-') : 'accordion-content';
 
   return (
-    <AccordionContainer>
+    <AccordionContainer open={startOpened}>
       {({ handleOpen, handleClose, open }) => {
         const clickHandlers = {
           onClick: open ? handleClose : handleOpen,
@@ -44,17 +54,39 @@ function Accordion(props: Props) {
           <React.Fragment>
             <div
               {... (openWithChevron ? {} : clickHandlers)}
-              className={classnames(className, styles.toggle.toString())}
+              className={classnames(
+                className,
+                chevronPosition === 'right'
+                  ? styles.toggle.toString()
+                  : styles.toggleLeftAligned.toString()
+              )}
               data-test-id={testId}
               key="accordion-toggle"
               aria-expanded={open}
               aria-controls={controlsId}
               aria-label={handleLabel}
             >
+              {chevronPosition === 'left' ? (
+                <div
+                  className={styles.chevronContainerLeft}
+                  {... (openWithChevron ? clickHandlers : {})}
+                >
+                  <ChevronIcon
+                    className={open ? styles.chevronOpen : styles.chevronClosed}
+                  />
+                </div>
+              ) : null}
               {renderLabel({ open })}
-              <div className={styles.chevronContainer} {... (openWithChevron ? clickHandlers : {})}>
-                <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
-              </div>
+              {chevronPosition === 'right' ? (
+                <div
+                  className={styles.chevronContainer}
+                  {... (openWithChevron ? clickHandlers : {})}
+                >
+                  <ChevronIcon
+                    className={open ? styles.chevronOpen : styles.chevronClosed}
+                  />
+                </div>
+              ) : null}
             </div>
             <AccordionContent
               open={open}
@@ -77,6 +109,8 @@ Accordion.defaultProps = {
   handleLabel: null,
   testId: null,
   openWithChevron: false,
+  chevronPosition: 'right',
+  startOpened: false,
 };
 
 export default Accordion;

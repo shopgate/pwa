@@ -38,6 +38,28 @@
     "error_limit": "Você excedeu o número de produtos permitidos nos favoritos.",
     "remove": "Remover de favoritos",
     "removed": "Removido dos favoritos",
+    "add_list_modal": {
+      "title": "Add a new List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the name for your new favorite list",
+      "label": "Name"
+    },
+    "rename_list_modal": {
+      "title": "Renaming List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the new name for your favorite list",
+      "label": "Name"
+    },
+    "add_list": "Add New List",
+    "rename_list": "Rename",
+    "remove_list": "Remove",
+    "list_chooser": {
+      "title": "Choose a Favorite List",
+      "add": "Add",
+      "remove": "Remove"
+    },
     "modal": {
       "message": "Para adicionar este produto ao seu carrinho, por favor selecione as variantes.",
       "confirm": "Selecionar variantes"

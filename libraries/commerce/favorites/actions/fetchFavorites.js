@@ -16,27 +16,34 @@ import {
 /**
  * Fetch favorites action.
  * @param {boolean} ignoreCache Ignores cache when true
+ * @param {string} listId The id of the list that needs to be fetched.
  * @returns {Function} A redux thunk.
  */
-function fetchFavorites(ignoreCache = false) {
+function fetchFavorites(ignoreCache = false, listId = undefined) {
   return (dispatch, getState) => {
-    const data = getState().favorites.products;
+    // Fallback for deprecated calls without list id.
+    const { lists } = getState().favorites.lists;
+    const defaultList = lists?.[0] || { code: 'DEFAULT' };
+    const takenListId = listId || defaultList.code;
 
+    // Check cache.
+    const data = getState().favorites.products.byList[takenListId];
     if (!ignoreCache && !shouldFetchData(data)) {
       return Promise.resolve(null);
     }
 
     const timestamp = Date.now();
-    dispatch(requestFavorites());
+    dispatch(requestFavorites(takenListId));
 
     return new PipelineRequest(SHOPGATE_USER_GET_FAVORITES)
+      .setInput({ favoritesListId: takenListId })
       .setErrorBlacklist([EFAVORITE, EUNKNOWN, EBIGAPI, ELIMIT])
       .dispatch()
       .then((result) => {
-        dispatch(receiveFavorites(result.products, timestamp));
+        dispatch(receiveFavorites(result.products, timestamp, takenListId));
       })
       .catch((err) => {
-        dispatch(errorFetchFavorites(err));
+        dispatch(errorFetchFavorites(err, takenListId));
       });
   };
 }

@@ -7,21 +7,23 @@ import PropTypes from 'prop-types';
 class AccordionContainer extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
+    open: PropTypes.bool,
   }
 
-  state = {
+  static defaultProps = {
     open: false,
   }
 
   /**
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
+   * Init
+   * @param {Object} props Props
    */
-  // TODO: Deal with in the optimiziation ticket.
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.state.open !== nextState.open;
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: props.open,
+    };
+  }
 
   open = () => {
     this.setState({ open: true });
