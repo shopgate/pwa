@@ -146,7 +146,9 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
   onClick={
     [MockFunction] {
       "calls": Array [
-        Array [],
+        Array [
+          undefined,
+        ],
       ],
       "results": Array [
         Object {
@@ -171,7 +173,9 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
     onClick={
       [MockFunction] {
         "calls": Array [
-          Array [],
+          Array [
+            undefined,
+          ],
         ],
         "results": Array [
           Object {
@@ -277,9 +281,18 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
   onClick={
     [MockFunction] {
       "calls": Array [
-        Array [],
+        Array [
+          undefined,
+        ],
+        Array [
+          undefined,
+        ],
       ],
       "results": Array [
+        Object {
+          "type": "return",
+          "value": Promise {},
+        },
         Object {
           "type": "return",
           "value": Promise {},
@@ -302,9 +315,18 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
     onClick={
       [MockFunction] {
         "calls": Array [
-          Array [],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
         ],
         "results": Array [
+          Object {
+            "type": "return",
+            "value": Promise {},
+          },
           Object {
             "type": "return",
             "value": Promise {},
@@ -317,17 +339,17 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
     <button
       aria-hidden={false}
       aria-label={null}
-      className="null css-68omm3 css-1rxo1j2"
+      className="null css-68omm3 css-1sr59j6"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
     >
       <div
-        className="css-rukjns css-1tg5aiu"
+        className="css-rukjns"
         style={
           Object {
             "opacity": 1,
-            "transform": "translate3d(0, -50%, 0)",
+            "transform": "translate3d(0, 300%, 0)",
           }
         }
       >
@@ -359,12 +381,12 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
         </Tick>
       </div>
       <div
-        className="css-rukjns css-1kfuvpr"
+        className="css-rukjns"
         onAnimationEnd={[Function]}
         style={
           Object {
             "opacity": 1,
-            "transform": "translate3d(0, -300%, 0)",
+            "transform": "translate3d(0, -50%, 0)",
           }
         }
       >

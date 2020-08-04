@@ -2,40 +2,48 @@
 
 exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 <Accordion
+  chevronPosition="right"
   className={null}
   contentClassName={null}
   handleLabel={null}
   openWithChevron={false}
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
+  chevronPosition="right"
   className={null}
   contentClassName={null}
   handleLabel={null}
   openWithChevron={false}
   renderLabel={[Function]}
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
+  chevronPosition="right"
   className={null}
   contentClassName={null}
   handleLabel={null}
   openWithChevron={false}
   renderLabel={[Function]}
+  startOpened={false}
   testId="Some Thing"
 >
-  <AccordionContainer>
+  <AccordionContainer
+    open={false}
+  >
     <div
       aria-controls="Some-Thing-content"
       aria-expanded={false}
       aria-label={null}
-      className="css-17o6uz7"
+      className="css-1m4mdin"
       data-test-id="Some Thing"
       key="accordion-toggle"
       onClick={[Function]}
