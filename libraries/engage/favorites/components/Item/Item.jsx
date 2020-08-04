@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/engage/core';
-import { Link } from '@shopgate/engage/components';
+import { ResponsiveContainer, Link } from '@shopgate/engage/components';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
@@ -23,6 +24,10 @@ const styles = {
   imageContainer: css({
     flex: 0.4,
     marginRight: 18,
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      width: 120,
+      flex: 'none',
+    },
   }).toString(),
   infoContainer: css({
     flex: 1,
@@ -66,13 +71,22 @@ const styles = {
     textOverflow: 'ellipsis',
   }),
   actions: css({
-    position: 'absolute',
-    bottom: -24,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: 90,
+    [responsiveMediaQuery('<md', { appAlways: true })]: {
+      position: 'absolute',
+      bottom: -24,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: 90,
+    },
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      display: 'flex',
+      flexDirection: 'row',
+      width: 100,
+      justifyContent: 'space-between',
+      marginLeft: 64,
+    },
   }).toString(),
 };
 
@@ -124,12 +138,20 @@ const FavoriteItem = ({ product, remove, addToCart }) => {
               unitPrice={price}
             />
           </div>
+          <ResponsiveContainer breakpoint=">=md" webOnly>
+            <div className={styles.actions}>
+              <Remove onClick={remove} />
+              <AddToCart onClick={addToCart} isLoading={false} isDisabled={false} />
+            </div>
+          </ResponsiveContainer>
         </div>
       </div>
-      <div className={styles.actions}>
-        <Remove onClick={remove} />
-        <AddToCart onClick={addToCart} isLoading={false} isDisabled={false} />
-      </div>
+      <ResponsiveContainer breakpoint="<md" appAlways>
+        <div className={styles.actions}>
+          <Remove onClick={remove} />
+          <AddToCart onClick={addToCart} isLoading={false} isDisabled={false} />
+        </div>
+      </ResponsiveContainer>
     </Link>
   );
 };

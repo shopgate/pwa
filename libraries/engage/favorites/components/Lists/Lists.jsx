@@ -19,6 +19,7 @@ import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors/merc
 import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
 import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
 import { getPreferredLocation, getPreferredFulfillmentMethod } from '@shopgate/engage/locations/selectors';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import List from '../List';
 import ListsModal from './ListsModal';
 import ItemFulfillmentMethod from '../ItemFulfillmentMethod';
@@ -50,9 +51,20 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const styles = {
+  root: css({
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      margin: 8,
+    },
+  }),
   addButton: css({
     width: 'calc(100% - 32px)',
     margin: 16,
+    backgroundColor: 'var(--color-primary)',
+    borderRadius: 5,
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      width: 240,
+      float: 'right',
+    },
   }).toString(),
 };
 
@@ -206,7 +218,7 @@ const FavoriteLists = ({
   }
 
   return (
-    <div>
+    <div className={styles.root}>
       {lists.map(list => (
         <List
           key={list.code}
