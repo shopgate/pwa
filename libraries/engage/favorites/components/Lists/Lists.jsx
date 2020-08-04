@@ -2,8 +2,8 @@ import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
-import { RippleButton } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
+import { i18n, configuration, IS_CONNECT_EXTENSION_ATTACHED } from '@shopgate/engage/core';
 import {
   getFavoritesLists,
   isInitialLoading,
@@ -20,9 +20,14 @@ import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
 import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
 import { getPreferredLocation, getPreferredFulfillmentMethod } from '@shopgate/engage/locations/selectors';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
+
 import List from '../List';
 import ListsModal from './ListsModal';
 import ItemFulfillmentMethod from '../ItemFulfillmentMethod';
+import {
+  FAVORITES_LIST_ADD_BUTTON,
+  FAVORITES_LIST,
+} from '../../constants/Portals';
 
 /**
  * @param {Object} state State
@@ -85,6 +90,8 @@ const FavoriteLists = ({
   isInitializing,
   isLocationBasedShopping,
 }) => {
+  const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
+
   // Add to cart state.
   const promiseRef = useRef(null);
   const [activeProductId, setActiveProductId] = useState(null);
@@ -220,15 +227,16 @@ const FavoriteLists = ({
   return (
     <div className={styles.root}>
       {lists.map(list => (
-        <List
-          key={list.code}
-          code={list.code}
-          name={list.name}
-          rename={openRenameModal}
-          remove={() => removeList(list.code)}
-          removeItem={productId => removeItem(list.code, productId)}
-          addToCart={product => handleAddToCart(list.code, product)}
-        />
+        <SurroundPortals key={list.code} portalName={FAVORITES_LIST} portalProps={list}>
+          <List
+            code={list.code}
+            name={list.name}
+            rename={openRenameModal}
+            remove={() => removeList(list.code)}
+            removeItem={productId => removeItem(list.code, productId)}
+            addToCart={product => handleAddToCart(list.code, product)}
+          />
+        </SurroundPortals>
       ))}
       {modalOpen ? (
         <ListsModal
@@ -248,14 +256,18 @@ const FavoriteLists = ({
         methods={fulfillmentMethods}
         onClose={handleAddToCartWithMethod}
       />
-      <RippleButton
-        type="primary"
-        className={styles.addButton}
-        onClick={openAddModal}
-        disabled={false}
-      >
-        {i18n.text('favorites.add_list')}
-      </RippleButton>
+      <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
+        {hasConnectExtension ? (
+          <RippleButton
+            type="primary"
+            className={styles.addButton}
+            onClick={openAddModal}
+            disabled={false}
+          >
+            {i18n.text('favorites.add_list')}
+          </RippleButton>
+        ) : null}
+      </SurroundPortals>
     </div>
   );
 };

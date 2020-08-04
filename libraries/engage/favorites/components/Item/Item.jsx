@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/engage/core';
-import { ResponsiveContainer, Link } from '@shopgate/engage/components';
+import { ResponsiveContainer, Link, SurroundPortals } from '@shopgate/engage/components';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import Remove from '../RemoveButton';
+import { FAVORITES_LIST_ITEM, FAVORITES_LIST_ITEM_ACTIONS } from '../../constants/Portals';
 
 const styles = {
   root: css({
@@ -102,20 +103,21 @@ const FavoriteItem = ({ product, remove, addToCart }) => {
   const price = hasStrikePrice ? specialPrice : defaultPrice;
 
   return (
-    <Link
-      className={styles.root}
-      component="div"
-      href={`${ITEM_PATH}/${bin2hex(product.id)}`}
-    >
-      <div className={styles.imageContainer}>
-        <ProductImage src={product.featuredImageUrl} />
-      </div>
-      <div className={styles.infoContainer}>
-        <span className={styles.title}>{product.name}</span>
-        <div className={styles.innerInfoContainer}>
-          <div className={styles.infoContainerLeft}>
-            {product
-              .properties
+    <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
+      <Link
+        className={styles.root}
+        component="div"
+        href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+      >
+        <div className={styles.imageContainer}>
+          <ProductImage src={product.featuredImageUrl} />
+        </div>
+        <div className={styles.infoContainer}>
+          <span className={styles.title}>{product.name}</span>
+          <div className={styles.innerInfoContainer}>
+            <div className={styles.infoContainerLeft}>
+              {product
+                .properties
               ?.filter(property => property.type === 'attribute')
               .slice(0, 2)
               .map(property => (
@@ -123,36 +125,41 @@ const FavoriteItem = ({ product, remove, addToCart }) => {
                   {`${property.label}: ${property.value}`}
                 </span>
               ))}
-          </div>
-          <div className={styles.infoContainerRight}>
-            {hasStrikePrice ? (
-              <PriceStriked
-                value={defaultPrice}
+            </div>
+            <div className={styles.infoContainerRight}>
+              {hasStrikePrice ? (
+                <PriceStriked
+                  value={defaultPrice}
+                  currency={currency}
+                />
+              ) : null}
+              <Price
                 currency={currency}
+                discounted={hasStrikePrice}
+                taxDisclaimer
+                unitPrice={price}
               />
-            ) : null}
-            <Price
-              currency={currency}
-              discounted={hasStrikePrice}
-              taxDisclaimer
-              unitPrice={price}
-            />
+            </div>
+            <ResponsiveContainer breakpoint=">=md" webOnly>
+              <div className={styles.actions}>
+                <SurroundPortals portalName={FAVORITES_LIST_ITEM_ACTIONS}>
+                  <Remove onClick={remove} />
+                  <AddToCart onClick={addToCart} isLoading={false} isDisabled={false} />
+                </SurroundPortals>
+              </div>
+            </ResponsiveContainer>
           </div>
-          <ResponsiveContainer breakpoint=">=md" webOnly>
-            <div className={styles.actions}>
+        </div>
+        <ResponsiveContainer breakpoint="<md" appAlways>
+          <div className={styles.actions}>
+            <SurroundPortals portalName={FAVORITES_LIST_ITEM_ACTIONS}>
               <Remove onClick={remove} />
               <AddToCart onClick={addToCart} isLoading={false} isDisabled={false} />
-            </div>
-          </ResponsiveContainer>
-        </div>
-      </div>
-      <ResponsiveContainer breakpoint="<md" appAlways>
-        <div className={styles.actions}>
-          <Remove onClick={remove} />
-          <AddToCart onClick={addToCart} isLoading={false} isDisabled={false} />
-        </div>
-      </ResponsiveContainer>
-    </Link>
+            </SurroundPortals>
+          </div>
+        </ResponsiveContainer>
+      </Link>
+    </SurroundPortals>
   );
 };
 

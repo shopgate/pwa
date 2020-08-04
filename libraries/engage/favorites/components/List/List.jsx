@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
-import { Accordion, Card, ContextMenu } from '@shopgate/engage/components';
+import {
+  Accordion, Card, ContextMenu, SurroundPortals,
+} from '@shopgate/engage/components';
 import { makeGetFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 
 const styles = {
@@ -26,24 +29,27 @@ const styles = {
  * @return {JSX}
  */
 const FavoriteListLabel = ({
-  title, rename, remove,
+  code, title, rename, remove,
 }) => (
   <Fragment>
     <span className={styles.title}>
       {title}
     </span>
-    <ContextMenu>
-      <ContextMenu.Item onClick={rename}>
-        {i18n.text('favorites.rename_list')}
-      </ContextMenu.Item>
-      <ContextMenu.Item onClick={remove}>
-        {i18n.text('favorites.remove_list')}
-      </ContextMenu.Item>
-    </ContextMenu>
+    <SurroundPortals portalName={FAVORITES_LIST_CONTEXT_MENU} portalProps={{ code }}>
+      <ContextMenu>
+        <ContextMenu.Item onClick={rename}>
+          {i18n.text('favorites.rename_list')}
+        </ContextMenu.Item>
+        <ContextMenu.Item onClick={remove}>
+          {i18n.text('favorites.remove_list')}
+        </ContextMenu.Item>
+      </ContextMenu>
+    </SurroundPortals>
   </Fragment>
 );
 
 FavoriteListLabel.propTypes = {
+  code: PropTypes.string.isRequired,
   remove: PropTypes.func.isRequired,
   rename: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
