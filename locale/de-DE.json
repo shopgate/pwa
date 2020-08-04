@@ -41,6 +41,32 @@
     "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten.",
     "remove": "Von der Merkliste löschen",
     "removed": "Von Merkliste entfernt",
+    "add_list_modal": {
+      "title": "Add a new List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the name for your new favorite list",
+      "label": "Name"
+    },
+    "rename_list_modal": {
+      "title": "Renaming List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the new name for your favorite list",
+      "label": "Name"
+    },
+    "add_list": "Add New List",
+    "rename_list": "Rename",
+    "remove_list": "Remove",
+    "add_to_list": "Add to list",
+    "fo_method_chooser": {
+      "title": "Choose a Method"
+    },
+    "list_chooser": {
+      "title": "Choose a Favorite List",
+      "add": "Add",
+      "remove": "Remove"
+    },
     "modal": {
       "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.",
       "confirm": "Varianten wählen"
