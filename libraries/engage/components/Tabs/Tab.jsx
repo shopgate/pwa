@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { RippleButton } from '../index';
+import Button from '@shopgate/pwa-ui-shared/Button';
 import { root, wrapper } from './Tab.style';
 
 /**
@@ -60,9 +60,9 @@ const Tab = (props) => {
   };
 
   return (
-    <RippleButton
+    <Button
       flat
-      type="secondary"
+      type={selected ? 'secondary' : 'regular'}
       className={classNames(root, className)}
       role="tab"
       aria-selected={selected}
@@ -76,7 +76,7 @@ const Tab = (props) => {
         {label}
       </span>
       {indicator}
-    </RippleButton>
+    </Button>
   );
 };
 

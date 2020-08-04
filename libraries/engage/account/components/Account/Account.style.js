@@ -10,11 +10,8 @@ export const title = css({
 
 export const tabs = css({
   width: '100%',
-  position: 'fixed',
+  position: 'sticky',
+  top: 64,
   background: 'rgb(255, 255, 255)',
   boxShadow: 'rgba(0, 0, 0, 0.118) 0px 1px 6px, rgba(0, 0, 0, 0.118) 0px 1px 4px',
-}).toString();
-
-export const tabPanel = css({
-  marginTop: 116,
 }).toString();

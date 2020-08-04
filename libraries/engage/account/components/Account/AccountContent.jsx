@@ -8,7 +8,7 @@ import { headline } from './AccountContent.style';
 const AccountContent = () => (
   <Fragment>
     <div className={headline}>
-      <I18n.Text string="titles.account" />
+      <I18n.Text string="titles.your_account" />
     </div>
   </Fragment>
 );

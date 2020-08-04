@@ -1,8 +1,7 @@
 import { css } from 'glamor';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 export const root = css({
-  maxWidth: 264,
+  maxWidth: 200,
   minWidth: 72,
   position: 'relative',
   boxSizing: 'border-box',
@@ -13,12 +12,6 @@ export const root = css({
   overflow: 'hidden',
   whiteSpace: 'normal',
   textAlign: 'center',
-  [responsiveMediaQuery('>=sm', { webOnly: true })]: {
-    padding: '6px 24px',
-    minWidth: 160,
-    flexGrow: 0,
-  },
-  color: 'inherit',
 }).toString();
 
 export const wrapper = css({

@@ -4,7 +4,8 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import OrderHistory from '../../../orders/components/OrderHistory';
 import OrderHistoryProvider from '../../../orders/providers/OrderHistoryProvider';
 import Tabs, { Tab, TabPanel } from '../../../components/Tabs';
-import { tabs, tabPanel, title } from './Account.style';
+import { tabs, title } from './Account.style';
+import { ResponsiveContainer } from '../../../components';
 
 /**
  * The Tabs components
@@ -15,9 +16,11 @@ const Account = () => {
   return (
     <>
       <div className={tabs}>
-        <div className={title}>
-          <I18n.Text string="titles.your_account" />
-        </div>
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          <div className={title}>
+            <I18n.Text string="titles.your_account" />
+          </div>
+        </ResponsiveContainer>
         <Tabs
           value={value}
           indicatorColor="primary"
@@ -30,15 +33,15 @@ const Account = () => {
           <Tab label="Wish List" />
         </Tabs>
       </div>
-      <TabPanel className={tabPanel} value={value} index={0}>
+      <TabPanel value={value} index={0}>
       Profile
       </TabPanel>
-      <TabPanel className={tabPanel} value={value} index={1}>
+      <TabPanel value={value} index={1}>
         <OrderHistoryProvider>
           <OrderHistory />
         </OrderHistoryProvider>
       </TabPanel>
-      <TabPanel className={tabPanel} value={value} index={2}>
+      <TabPanel value={value} index={2}>
       Wish List
       </TabPanel>
     </>
