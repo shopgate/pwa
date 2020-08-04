@@ -1,4 +1,8 @@
 import { createSelector } from 'reselect';
+import {
+  WISHLIST_MODE_PERSIST_ON_ADD,
+  SHOP_SETTING_WISHLIST_MODE,
+} from '../constants/shopSettings';
 
 /**
  * Retrieves the shopSettings state from the store.
@@ -42,4 +46,10 @@ export const makeGetShopSettings = (keys = []) => createSelector(
 
     return result;
   }
+);
+
+/** Selects the current wishlist mode */
+export const getWishlistMode = makeGetShopSettingByKey(
+  SHOP_SETTING_WISHLIST_MODE,
+  WISHLIST_MODE_PERSIST_ON_ADD
 );

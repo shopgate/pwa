@@ -4,6 +4,17 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 export const toggle = css({
   padding: '12px 56px 12px 16px',
   position: 'relative',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+});
+
+export const toggleLeftAligned = css({
+  padding: '12px 16px 12px 16px',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
 });
 
 export const chevronContainer = css({
@@ -13,6 +24,17 @@ export const chevronContainer = css({
   right: '1rem',
   top: '50%',
   transform: 'translate3d(0, -50%, 0)',
+  [responsiveMediaQuery('>sm', { webOnly: true })]: {
+    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+    borderRadius: 32,
+    padding: 8,
+  },
+});
+
+export const chevronContainerLeft = css({
+  cursor: 'pointer',
+  fontSize: '1.5rem',
+  marginRight: 12,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     backgroundColor: 'rgba(0, 0, 0, 0.04)',
     borderRadius: 32,

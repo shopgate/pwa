@@ -24,6 +24,7 @@ import {
   FETCH_FAVORITES_THROTTLE,
   FAVORITE_ACTION_BUFFER_TIME,
   FAVORITE_BUTTON_DEBOUNCE_TIME,
+  SUCCESS_ADD_FAVORITES_LIST,
 } from '../constants';
 
 /**
@@ -141,6 +142,12 @@ export const receiveFavorites$ = main$.filter(({ action }) => action.type === RE
  */
 export const favoritesSyncIdle$ = main$
   .filter(({ action }) => action.type === IDLE_SYNC_FAVORITES);
+
+/**
+ * Gets triggered after an favorites list has been added.
+ */
+export const favoritesListAdded$ = main$
+  .filter(({ action }) => action.type === SUCCESS_ADD_FAVORITES_LIST);
 
 /**
  * Gets triggered when the favorites should be refreshed to maintain data consistency.

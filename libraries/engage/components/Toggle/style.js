@@ -52,6 +52,7 @@ export const thumb = css({
   content: ' ',
   transition: 'all .3s ease',
   pointerEvents: 'none',
+  zIndex: 100,
 }).toString();
 
 export const hidden = css({
