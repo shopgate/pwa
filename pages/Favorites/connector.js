@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getFavorites,
+  getFavoritesLists,
   isInitialLoading,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 
@@ -11,6 +12,7 @@ import {
  */
 const mapStateToProps = state => ({
   products: getFavorites(state),
+  lists: getFavoritesLists(state),
   initialLoading: isInitialLoading(state),
 });
 
@@ -21,6 +23,10 @@ const mapStateToProps = state => ({
  */
 const areStatePropsEqual = (next, prev) => {
   if (prev.products.length !== next.products.length) {
+    return false;
+  }
+
+  if (prev.lists.length !== next.lists.length) {
     return false;
   }
 

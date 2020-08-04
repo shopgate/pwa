@@ -1,29 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CardList from '@shopgate/pwa-ui-shared/CardList';
-import Item from './components/Item';
+import FavoriteLists from '@shopgate/engage/favorites/components/Lists';
 import styles from './style';
 
 /**
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const FavoritesList = ({ products }) => (
+const FavoritesList = () => (
   <div className={styles.container}>
-    <CardList>
-      {products.map(product => (
-        <Item key={product.id} product={product} />
-      ))}
-    </CardList>
+    <FavoriteLists />
   </div>
 );
-
-FavoritesList.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.shape),
-};
-
-FavoritesList.defaultProps = {
-  products: [],
-};
 
 export default FavoritesList;
