@@ -27,7 +27,8 @@
     "register": "Register",
     "order_details": "Order Details",
     "store_finder": "Store Finder",
-    "order_history": "Order History"
+    "order_history": "Order History",
+    "your_account": "Your Account"
   },
   "favorites": {
     "add": "Aggiungi ai favoriti",
