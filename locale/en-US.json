@@ -55,6 +55,7 @@
     "add_list": "Add New List",
     "rename_list": "Rename",
     "remove_list": "Remove",
+    "add_to_list": "Add to list",
     "fo_method_chooser": {
       "title": "Choose a Method"
     },

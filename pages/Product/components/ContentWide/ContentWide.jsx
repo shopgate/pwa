@@ -11,6 +11,7 @@ import {
   ProductUnitQuantityPicker,
 } from '@shopgate/engage/product';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import FavoriteButtonWide from '@shopgate/engage/favorites/components/FavoriteButtonWide';
 import Reviews from 'Components/Reviews';
 import { DESKTOP_MENU_BAR_HEIGHT } from '../../../../constants';
 import Characteristics from '../Characteristics';
@@ -101,6 +102,7 @@ const ContentWide = ({
           </div>
         </div>
         <AddToCartButton />
+        <FavoriteButtonWide productId={variantId || productId} />
       </ResponsiveContainer>
       <Section title="product.sections.description">
         <Description
@@ -127,6 +129,7 @@ const ContentWide = ({
           <ProductUnitQuantityPicker />
         </Section>
         <AddToCartButton />
+        <FavoriteButtonWide productId={variantId || productId} />
       </div>
     </ResponsiveContainer>
   </div>
