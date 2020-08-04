@@ -13,7 +13,7 @@ const Account = () => (
     <BackBar
       right={null}
       center={
-        <AppBar.Title title={i18n.text('titles.account')} />
+        <AppBar.Title title={i18n.text('titles.your_account')} />
       }
     />
     <Content />
