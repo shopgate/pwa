@@ -29,6 +29,8 @@
     "order_details": "Order Details",
     "store_finder": "Store Finder",
     "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
     "your_account": "Your Account"
   },
   "favorites": {
@@ -363,6 +365,7 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
+    "manage": "Manage",
     "back": "Zurück zu {title}"
   },
   "reviews": {
@@ -543,6 +546,9 @@
       "status": "Status",
       "lineItemCount": "Number of Items",
       "total": "Order Total"
+    },
+    "no_result": {
+      "body": "No Orders found."
     }
   },
   "registration": {

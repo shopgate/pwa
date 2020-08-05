@@ -19,7 +19,7 @@ const Account = () => (
         <AppBar.Title title={i18n.text('titles.your_account')} />
       }
     />
-    <Content />
+    <Content tabsStyle={{ top: 0 }} />
   </View>
 );
 
