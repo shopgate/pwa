@@ -1,5 +1,7 @@
 import uniq from 'lodash/uniq';
+import pickBy from 'lodash/pickBy';
 import { ENOTFOUND } from '@shopgate/pwa-core';
+import { SELECT_GLOBAL_LOCATION } from '@shopgate/engage/core';
 import {
   PRODUCT_LIFETIME,
   REQUEST_PRODUCTS,
@@ -101,6 +103,11 @@ export default function resultsByHash(state = {}, action) {
           isFetching: false,
         },
       };
+
+    case SELECT_GLOBAL_LOCATION:
+      // Remove all hashes that are not bound to a location
+      // because stock information may change per location
+      return pickBy(state, (value, key) => !JSON.parse(key).locationCodes);
     default:
       return state;
   }

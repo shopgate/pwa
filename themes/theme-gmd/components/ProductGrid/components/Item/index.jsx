@@ -49,6 +49,7 @@ const Item = ({ product, display }) => (
         price={product.price}
         shortDescription={product.shortDescription}
         display={display}
+        stock={product.stock}
       />
       <ItemFavoritesButton productId={product.id} />
     </div>
