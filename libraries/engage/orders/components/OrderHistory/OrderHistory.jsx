@@ -5,7 +5,7 @@ import { List, Row } from './OrderHistoryList';
 import { ResponsiveContainer, NoResults } from '../../../components';
 import OrderHistoryLoader from './OrderHistoryLoader';
 import { useOrderHistory } from '../../hooks';
-import { root } from './OrderHistory.style';
+import { root, noResult } from './OrderHistory.style';
 
 /**
  * The OrderDetails components
@@ -15,7 +15,7 @@ const OrderHistory = () => {
   const { totalOrderCount } = useOrderHistory();
   if (totalOrderCount === 0) {
     return (
-      <div className={root}>
+      <div className={noResult}>
         <NoResults
           headlineText="orders.no_result.body"
           bodyText=""

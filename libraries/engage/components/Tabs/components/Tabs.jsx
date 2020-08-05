@@ -20,7 +20,6 @@ const Tabs = (props) => {
     className,
     onChange,
     value,
-    ...other
   } = props;
 
   const start = 'left';
@@ -147,7 +146,6 @@ const Tabs = (props) => {
         root,
         className
       )}
-      {...other}
     >
       <div
         className={classNames(fixed)}
@@ -168,9 +166,13 @@ const Tabs = (props) => {
 
 Tabs.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.shape().isRequired,
+  value: PropTypes.number.isRequired,
+  className: PropTypes.string,
+};
+
+Tabs.defaultProps = {
+  className: null,
 };
 
 export default Tabs;

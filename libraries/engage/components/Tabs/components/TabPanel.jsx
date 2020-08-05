@@ -22,10 +22,15 @@ const TabPanel = (props) => {
 };
 
 TabPanel.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  children: PropTypes.node,
+  className: PropTypes.string,
+};
+
+TabPanel.defaultProps = {
+  children: null,
+  className: null,
 };
 
 export default TabPanel;

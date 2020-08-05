@@ -16,7 +16,11 @@ const TabIndicator = ({ className, ...other }) => (
 );
 
 TabIndicator.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+TabIndicator.defaultProps = {
+  className: null,
 };
 
 export default TabIndicator;

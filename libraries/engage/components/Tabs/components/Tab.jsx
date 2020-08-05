@@ -75,13 +75,22 @@ const Tab = (props) => {
 };
 
 Tab.propTypes = {
-  className: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
   label: PropTypes.node.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
-  value: PropTypes.shape().isRequired,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  value: PropTypes.number,
+};
+
+Tab.defaultProps = {
+  className: null,
+  value: undefined,
+  disabled: false,
+  onChange: null,
+  onClick: null,
+  onFocus: null,
 };
 
 export default Tab;
