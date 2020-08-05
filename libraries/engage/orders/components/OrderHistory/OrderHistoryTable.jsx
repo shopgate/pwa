@@ -4,8 +4,9 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import { i18n } from '@shopgate/engage/core';
 import { getTranslatedOrderStatus } from '../../helpers';
 import {
-  tableHeader, tableRow, table,
+  tableHeader, tableRow, root,
 } from './OrderHistoryTable.style';
+import { Card } from '../../../components';
 
 /**
  * The Order History Table Row component
@@ -58,21 +59,23 @@ TableRow.propTypes = {
  * @returns {JSX}
  */
 export const Table = ({ children }) => (
-  <div className={table}>
-    <table>
-      <thead>
-        <tr className={tableHeader}>
-          <th align="left">{i18n.text('orders.header.date')}</th>
-          <th align="left">{i18n.text('orders.header.orderNumber')}</th>
-          <th align="left">{i18n.text('orders.header.status')}</th>
-          <th align="right">{i18n.text('orders.header.lineItemCount')}</th>
-          <th align="right">{i18n.text('orders.header.total')}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {children}
-      </tbody>
-    </table>
+  <div className={root}>
+    <Card>
+      <table>
+        <thead>
+          <tr className={tableHeader}>
+            <th align="left">{i18n.text('orders.header.date')}</th>
+            <th align="left">{i18n.text('orders.header.orderNumber')}</th>
+            <th align="left">{i18n.text('orders.header.status')}</th>
+            <th align="right">{i18n.text('orders.header.lineItemCount')}</th>
+            <th align="right">{i18n.text('orders.header.total')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {children}
+        </tbody>
+      </table>
+    </Card>
   </div>
 );
 

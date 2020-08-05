@@ -11,12 +11,8 @@ import { root, wrapper } from './Tab.style';
  */
 const Tab = (props) => {
   const {
-    classes,
     className,
     disabled = false,
-    // eslint-disable-next-line react/prop-types
-    fullWidth,
-    icon,
     // eslint-disable-next-line react/prop-types
     indicator,
     label,
@@ -28,7 +24,6 @@ const Tab = (props) => {
     // eslint-disable-next-line react/prop-types
     selectionFollowsFocus,
     value,
-    ...other
   } = props;
 
   /**
@@ -70,7 +65,6 @@ const Tab = (props) => {
       onClick={handleClick}
       onFocus={handleFocus}
       tabIndex={selected ? 0 : -1}
-      {...other}
     >
       <span className={wrapper}>
         {label}
@@ -81,18 +75,13 @@ const Tab = (props) => {
 };
 
 Tab.propTypes = {
-  classes: PropTypes.shape().isRequired,
   className: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
-  disableFocusRipple: PropTypes.bool.isRequired,
-  disableRipple: PropTypes.bool.isRequired,
-  icon: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   label: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
   value: PropTypes.shape().isRequired,
-  wrapped: PropTypes.bool.isRequired,
 };
 
 export default Tab;

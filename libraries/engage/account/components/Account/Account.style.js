@@ -11,7 +11,7 @@ export const title = css({
 export const tabs = css({
   width: '100%',
   position: 'sticky',
-  top: 64,
   background: 'rgb(255, 255, 255)',
-  boxShadow: 'rgba(0, 0, 0, 0.118) 0px 1px 6px, rgba(0, 0, 0, 0.118) 0px 1px 4px',
+  boxShadow: '2px 1px 6px rgba(0, 0, 0, 0.118), 2px 1px 4px rgba(0, 0, 0, 0.118)',
+  zIndex: 100,
 }).toString();

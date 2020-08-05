@@ -1,10 +1,10 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import debounce from './debounce';
-import ownerWindow from './ownerWindow';
+import debounce from '../debounce';
+import ownerWindow from '../ownerWindow';
 import TabIndicator from './TabIndicator';
-import useEventCallback from './useEventCallback';
+import useEventCallback from '../useEventCallback';
 import {
   root, fixed, flexContainer,
 } from './Tabs.style';
@@ -16,25 +16,15 @@ import {
  */
 const Tabs = (props) => {
   const {
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledBy,
     children: childrenProp,
-    classes,
     className,
-    component: Component = 'div',
     onChange,
-    orientation = 'horizontal',
-    selectionFollowsFocus,
-    TabIndicatorProps = {},
-    textColor = 'inherit',
     value,
-    variant = 'standard',
     ...other
   } = props;
-  const vertical = orientation === 'vertical';
 
-  const start = vertical ? 'top' : 'left';
-  const size = vertical ? 'height' : 'width';
+  const start = 'left';
+  const size = 'width';
 
   const [mounted, setMounted] = React.useState(false);
   const [indicatorStyle, setIndicatorStyle] = React.useState({});
@@ -128,10 +118,7 @@ const Tabs = (props) => {
 
   const indicator = (
     <TabIndicator
-      style={{
-        ...indicatorStyle,
-        ...TabIndicatorProps.style,
-      }}
+      style={indicatorStyle}
     />
   );
 
@@ -147,64 +134,15 @@ const Tabs = (props) => {
 
     childIndex += 1;
     return React.cloneElement(child, {
-      fullWidth: variant === 'fullWidth',
       indicator: selected && !mounted && indicator,
       selected,
-      selectionFollowsFocus,
       onChange,
-      textColor,
       value: childValue,
     });
   });
 
-  /**
-   * Handle Key down
-   * @param {Object} event event
-   */
-  const handleKeyDown = (event) => {
-    const { target } = event;
-    // Keyboard navigation assumes that [role="tab"] are siblings
-    // though we might warn in the future about nested, interactive elements
-    // as a a11y violation
-    const role = target.getAttribute('role');
-    if (role !== 'tab') {
-      return;
-    }
-
-    let newFocusTarget = null;
-    let previousItemKey = orientation === 'horizontal' ? 'ArrowLeft' : 'ArrowUp';
-    let nextItemKey = orientation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';
-    if (orientation === 'horizontal' && true) {
-      // swap previousItemKey with nextItemKey
-      previousItemKey = 'ArrowRight';
-      nextItemKey = 'ArrowLeft';
-    }
-
-    switch (event.key) {
-      case previousItemKey:
-        newFocusTarget = target.previousElementSibling || tabListRef.current.lastChild;
-        break;
-      case nextItemKey:
-        newFocusTarget = target.nextElementSibling || tabListRef.current.firstChild;
-        break;
-      case 'Home':
-        newFocusTarget = tabListRef.current.firstChild;
-        break;
-      case 'End':
-        newFocusTarget = tabListRef.current.lastChild;
-        break;
-      default:
-        break;
-    }
-
-    if (newFocusTarget !== null) {
-      newFocusTarget.focus();
-      event.preventDefault();
-    }
-  };
-
   return (
-    <Component
+    <div
       className={classNames(
         root,
         className
@@ -215,13 +153,8 @@ const Tabs = (props) => {
         className={classNames(fixed)}
         ref={tabsRef}
       >
-        {/* The tablist isn't interactive but the tabs are */}
-        {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
         <div
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledBy}
           className={classNames(flexContainer)}
-          onKeyDown={handleKeyDown}
           ref={tabListRef}
           role="tablist"
         >
@@ -229,26 +162,15 @@ const Tabs = (props) => {
         </div>
         {mounted && indicator}
       </div>
-    </Component>
+    </div>
   );
 };
 
 Tabs.propTypes = {
-  'aria-label': PropTypes.string.isRequired,
-  'aria-labelledby': PropTypes.string.isRequired,
-  centered: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  classes: PropTypes.shape().isRequired,
   className: PropTypes.string.isRequired,
-  component: PropTypes.elementType.isRequired,
-  indicatorColor: PropTypes.oneOf(['primary', 'secondary']).isRequired,
   onChange: PropTypes.func.isRequired,
-  orientation: PropTypes.oneOf(['horizontal', 'vertical']).isRequired,
-  selectionFollowsFocus: PropTypes.bool.isRequired,
-  TabIndicatorProps: PropTypes.shape().isRequired,
-  textColor: PropTypes.oneOf(['inherit', 'primary', 'secondary']).isRequired,
   value: PropTypes.shape().isRequired,
-  variant: PropTypes.oneOf(['fullWidth', 'standard']).isRequired,
 };
 
 export default Tabs;
