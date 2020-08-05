@@ -5,6 +5,7 @@ import {
   userDidLogin$,
   userDidLogout$,
 } from '@shopgate/pwa-common/streams/user';
+import { ACCOUNT_PATH } from '@shopgate/engage/account/constants/routes';
 import {
   FAVORITES_PATH,
   ADD_PRODUCT_TO_FAVORITES,
@@ -36,7 +37,9 @@ import {
  * @type {Observable}
  */
 export const favoritesWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === FAVORITES_PATH);
+  .filter(({ action }) =>
+    action.route.pattern === FAVORITES_PATH ||
+    action.route.pattern === ACCOUNT_PATH);
 
 /**
  * Gets triggered when the debounce time of `addProductToFavorites` passes.

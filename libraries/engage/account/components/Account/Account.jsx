@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import OrderHistory from '../../../orders/components/OrderHistory';
 import OrderHistoryProvider from '../../../orders/providers/OrderHistoryProvider';
 import Tabs, { Tab, TabPanel } from '../../../components/Tabs';
 import { tabs, title } from './Account.style';
 import { ResponsiveContainer } from '../../../components';
+import Lists from '../../../favorites/components/Lists';
 
 /**
  * The Tabs components
@@ -30,7 +32,10 @@ const Account = () => {
         >
           <Tab label="Profile" />
           <Tab label="Order History" />
-          <Tab label="Wish List" />
+
+          {appConfig.hasFavorites ? (
+            <Tab label="Wish List" />
+          ) : null}
         </Tabs>
       </div>
       <TabPanel value={value} index={0}>
@@ -41,9 +46,11 @@ const Account = () => {
           <OrderHistory />
         </OrderHistoryProvider>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-      Wish List
-      </TabPanel>
+      {appConfig.hasFavorites ? (
+        <TabPanel value={value} index={2}>
+          <Lists />
+        </TabPanel>
+      ) : null}
     </>
   );
 };

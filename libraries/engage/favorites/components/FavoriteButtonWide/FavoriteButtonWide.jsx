@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { RippleButton } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import { toggleFavoriteWithListChooser } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
  * @param {Function} dispatch Dispatch
@@ -29,7 +30,7 @@ const styles = {
 };
 
 /** @returns {JSX} */
-const FavoriteButtonWide = ({ productId, toggle }) => (
+const FavoriteButtonWide = ({ productId, toggle }) => (appConfig.hasFavorites ? (
   <RippleButton
     className={styles.root}
     type="primary"
@@ -37,7 +38,7 @@ const FavoriteButtonWide = ({ productId, toggle }) => (
   >
     {i18n.text('favorites.add_to_list')}
   </RippleButton>
-);
+) : null);
 
 FavoriteButtonWide.propTypes = {
   productId: PropTypes.string.isRequired,
