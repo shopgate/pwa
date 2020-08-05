@@ -18,6 +18,7 @@ import {
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import { ACCOUNT_PATH } from '@shopgate/engage/account';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -32,7 +33,7 @@ import {
   CHECKOUT_BILLING_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
-import { ORDER_DETAILS_PATTERN } from '@shopgate/engage/orders';
+import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -57,6 +58,7 @@ import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import ForgotPassword from './ForgotPassword';
 import Register from './Register';
+import Account from './Account';
 import OrderDetails from './OrderDetails';
 import StoreFinder from './StoreFinder';
 import themeApi from '../themeApi';
@@ -176,7 +178,15 @@ const Pages = ({ store }) => (
                     component={ForgotPassword}
                   />
                   <Route
+                    pattern={ACCOUNT_PATH}
+                    component={Account}
+                  />
+                  <Route
                     pattern={ORDER_DETAILS_PATTERN}
+                    component={OrderDetails}
+                  />
+                  <Route
+                    pattern={ORDER_DETAILS_PRIVATE_PATTERN}
                     component={OrderDetails}
                   />
                   <Route
