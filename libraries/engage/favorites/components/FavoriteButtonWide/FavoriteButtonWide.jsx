@@ -25,7 +25,11 @@ const styles = {
       borderRadius: 5,
       fontSize: 14,
       textTransform: 'none',
+      padding: 0,
     },
+  }).toString(),
+  ripple: css({
+    padding: '8px 16px',
   }).toString(),
 };
 
@@ -33,6 +37,7 @@ const styles = {
 const FavoriteButtonWide = ({ productId, toggle }) => (appConfig.hasFavorites ? (
   <RippleButton
     className={styles.root}
+    rippleClassName={styles.ripple}
     type="primary"
     onClick={() => toggle(productId)}
   >
