@@ -57,8 +57,7 @@ import {
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ACCOUNT_PATH } from '@shopgate/engage/account';
-import { ORDER_DETAILS_PATTERN } from '@shopgate/engage/orders';
-import { ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders/constants';
+import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
 import CheckoutPage from './Checkout/Checkout';
 import GuestCheckoutPage from './Checkout/GuestCheckout';
 import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
