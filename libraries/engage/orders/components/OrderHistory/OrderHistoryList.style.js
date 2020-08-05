@@ -9,7 +9,6 @@ export const link = css({
 
 export const list = css({
   background: `var(--color-background-accent, ${themeColors.background})`,
-  padding: `${variables.gap.small * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.big}px`,
   marginBottom: `-${variables.gap.small * 1.5}px`,
 });
 
