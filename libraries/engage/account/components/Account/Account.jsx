@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, useRoute } from '@shopgate/engage/core';
 import OrderHistory from '../../../orders/components/OrderHistory';
 import OrderHistoryProvider from '../../../orders/providers/OrderHistoryProvider';
 import { Tabs, Tab, TabPanel } from '../../../components/Tabs';
@@ -11,59 +11,64 @@ import { tabs, title, tabPanel } from './Account.style';
 import { ResponsiveContainer } from '../../../components';
 import { useBoundingRect } from '../../../core/hooks/useBoundingRect';
 import Lists from '../../../favorites/components/Lists';
+import connect from './Account.connector';
+import { TabContext } from '../../../components/Tabs/TabContext';
 
 /**
  * The Tabs components
  * @returns {JSX}
  */
-const Account = ({ tabsStyle }) => {
-  const [value, setValue] = useState(0);
+const Account = ({ tabsStyle, historyReplace }) => {
   const [box, ref] = useBoundingRect();
+  const { params: { tab = 'profile' } } = useRoute();
   return (
     <div ref={ref}>
-      <div
-        className={tabs}
-        style={{
-          top: box.top,
-          ...tabsStyle,
-        }}
-      >
-        <ResponsiveContainer webOnly breakpoint=">xs">
-          <div className={title}>
-            <I18n.Text string="titles.your_account" />
-          </div>
-        </ResponsiveContainer>
-        <Tabs
-          value={value}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={(event, newValue) => setValue(newValue)}
-          aria-label="disabled tabs example"
+      <TabContext value={tab}>
+        <div
+          className={tabs}
+          style={{
+            top: box.top,
+            ...tabsStyle,
+          }}
         >
-          <Tab label={i18n.text('titles.profile')} />
-          <Tab label={i18n.text('titles.order_history')} />
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            <div className={title}>
+              <I18n.Text string="titles.your_account" />
+            </div>
+          </ResponsiveContainer>
+          <Tabs
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={(event, newValue) => historyReplace({ pathname: `/account/${newValue}` })}
+            aria-label="disabled tabs example"
+          >
+            <Tab value="profile" label={i18n.text('titles.profile')} />
+            <Tab value="orders" label={i18n.text('titles.order_history')} />
 
-          {appConfig.hasFavorites ? (
-            <Tab label={i18n.text('titles.wish_list')} />
-          ) : null}
-        </Tabs>
-      </div>
-      <TabPanel className={tabPanel} value={value} index={0} />
-      <TabPanel className={tabPanel} value={value} index={1}>
-        <OrderHistoryProvider>
-          <OrderHistory />
-        </OrderHistoryProvider>
-      </TabPanel>
-      {appConfig.hasFavorites ? (
-        <TabPanel className={tabPanel} value={value} index={2}>
-          <Lists />
+            {appConfig.hasFavorites ? (
+              <Tab value="wish-list" label={i18n.text('titles.wish_list')} />
+            ) : null}
+          </Tabs>
+        </div>
+        <TabPanel className={tabPanel} value="profile" />
+        <TabPanel className={tabPanel} value="orders">
+          <OrderHistoryProvider>
+            <OrderHistory />
+          </OrderHistoryProvider>
         </TabPanel>
-      ) : null}
+        {appConfig.hasFavorites ? (
+          <TabPanel className={tabPanel} value="wish-list">
+            <Lists />
+          </TabPanel>
+        ) : null}
+
+      </TabContext>
     </div>
   );
 };
 
 Account.propTypes = {
+  historyReplace: PropTypes.func.isRequired,
   tabsStyle: PropTypes.shape(),
 };
 
@@ -71,4 +76,4 @@ Account.defaultProps = {
   tabsStyle: null,
 };
 
-export default hot(Account);
+export default hot(connect(Account));

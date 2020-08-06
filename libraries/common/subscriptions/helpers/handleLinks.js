@@ -97,7 +97,10 @@ export const isLegacyPage = location => (
 export const isLegacyLink = (location) => {
   const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
 
-  if ([LEGACY_LINK_STOREFINDER, LEGACY_LINK_ACCOUNT].includes(location) && hasConnectExtension) {
+  if (
+    hasConnectExtension &&
+    [LEGACY_LINK_STOREFINDER, LEGACY_LINK_ACCOUNT].some(link => location.startsWith(link))
+  ) {
     return false;
   }
 

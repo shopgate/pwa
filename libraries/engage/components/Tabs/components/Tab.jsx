@@ -81,12 +81,12 @@ Tab.propTypes = {
   onChange: PropTypes.func,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Tab.defaultProps = {
   className: null,
-  value: undefined,
+  value: null,
   disabled: false,
   onChange: null,
   onClick: null,

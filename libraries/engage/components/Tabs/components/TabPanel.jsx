@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { useTabContext } from '../TabContext';
 
 /**
  * Tab panel component
@@ -8,22 +9,22 @@ import PropTypes from 'prop-types';
  */
 const TabPanel = (props) => {
   const {
-    children, className, value, index,
+    children, className, value,
   } = props;
+  const context = useTabContext();
   return (
     <div
       className={className}
-      hidden={value !== index}
+      hidden={value !== context.value}
       role="tabpanel"
     >
-      {value === index && children}
+      {value === context.value && children}
     </div>
   );
 };
 
 TabPanel.propTypes = {
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
 };

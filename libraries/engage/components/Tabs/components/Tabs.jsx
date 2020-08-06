@@ -8,6 +8,7 @@ import useEventCallback from '../useEventCallback';
 import {
   root, fixed, flexContainer,
 } from './Tabs.style';
+import { useTabContext } from '../TabContext';
 
 /**
  * C
@@ -19,9 +20,9 @@ const Tabs = (props) => {
     children: childrenProp,
     className,
     onChange,
-    value,
   } = props;
 
+  const { value } = useTabContext();
   const start = 'left';
   const size = 'width';
 
@@ -167,7 +168,6 @@ const Tabs = (props) => {
 Tabs.propTypes = {
   children: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.number.isRequired,
   className: PropTypes.string,
 };
 

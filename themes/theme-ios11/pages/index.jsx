@@ -18,7 +18,7 @@ import {
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
-import { ACCOUNT_PATH } from '@shopgate/engage/account';
+import { ACCOUNT_PATH, ACCOUNT_PATTERN } from '@shopgate/engage/account';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -179,6 +179,10 @@ const Pages = ({ store }) => (
                   />
                   <Route
                     pattern={ACCOUNT_PATH}
+                    component={Account}
+                  />
+                  <Route
+                    pattern={ACCOUNT_PATTERN}
                     component={Account}
                   />
                   <Route
