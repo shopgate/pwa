@@ -52,7 +52,7 @@ export const getProductImageSettings = () => {
 
   return {
     quality: 75,
-    fillColor: 'FFFFFF',
+    fillColor: 'FFFFFF,1',
     HeroImage: [
       {
         width: 440,
