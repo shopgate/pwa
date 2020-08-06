@@ -4,6 +4,4 @@ export {
   errorOrderDetails,
 } from './orderDetails';
 
-export {
-  clearOrders,
-} from './orders';
+export * from './orders';

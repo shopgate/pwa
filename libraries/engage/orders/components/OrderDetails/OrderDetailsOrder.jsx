@@ -45,7 +45,6 @@ const OrderDetailsOrder = () => {
       isReserveOnly: isReserveOnlyOrder(order),
     };
   }, [order]);
-
   if (!order || !cartItems) {
     return null;
   }

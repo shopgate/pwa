@@ -31,10 +31,17 @@ const makeMapStateToProps = () => {
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  fetchOrderDetails: (orderNumber, mail, phone) =>
-    dispatch(fetchOrderDetails(orderNumber, mail, phone)),
+  fetchOrderDetails: (orderId, mail, phone) =>
+    dispatch(fetchOrderDetails({
+      orderId,
+      mail,
+      phone,
+    })),
   cancelOrder: (orderId, token) =>
-    dispatch(cancelOrder(orderId, token)),
+    dispatch(cancelOrder({
+      orderId,
+      token,
+    })),
 });
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

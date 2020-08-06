@@ -5,39 +5,44 @@ import {
 } from '../constants';
 
 /**
+ * @typedef {Object} OrderDetailParams
+ * @property {number} [params.orderId] Order Id
+ * @property {string} [params.orderNumber] Order Number
+ * @property {string} [params.email] Email
+ * @property {string} [params.phone] Phone Number
+ * @property {string} [params.token] Request params
+ */
+
+/**
  * Creates the dispatched REQUEST_ORDER_DETAILS action object.
- * @param {string} orderId An order id
- * @param {Object} [params={}] Optional params like email and phone number
+ * @param {OrderDetailParams} params Request params
  * @returns {Object} The dispatched action object.
  */
-export const requestOrderDetails = (orderId, params) => ({
+export const requestOrderDetails = params => ({
   type: REQUEST_ORDER_DETAILS,
-  orderId,
-  params,
+  ...params,
 });
 
 /**
  * Creates the dispatched RECEIVE_ORDER_DETAILS action object.
- * @param {string} orderId An order id
+ * @param {OrderDetailParams} params Request params
  * @param {Object} order An order object
  * @returns {Object} The dispatched action object.
  */
-export const receiveOrderDetails = (orderId, order) => ({
+export const receiveOrderDetails = (params, order) => ({
   type: RECEIVE_ORDER_DETAILS,
-  orderId,
+  ...params,
   order,
 });
 
 /**
  * Creates the dispatched ERROR_ORDER_DETAILS action object.
  * @param {Error} error An error object
- * @param {string} orderId An order id
- * @param {Object} [params={}] Optional params like email and phone number
+ * @param {OrderDetailParams} params Request params
  * @returns {Object} The dispatched action object.
  */
-export const errorOrderDetails = (error, orderId, params = {}) => ({
+export const errorOrderDetails = (error, params) => ({
   type: ERROR_ORDER_DETAILS,
   error,
-  orderId,
-  params,
+  ...params,
 });

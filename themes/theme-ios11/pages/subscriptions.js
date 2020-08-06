@@ -9,6 +9,7 @@ import {
   CHECKOUT_PATH,
   LOGIN_PATH,
   ORDERS_PATH,
+  ACCOUNT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import {
@@ -38,6 +39,7 @@ export default function app(subscribe) {
 
     authRoutes.set(CHECKOUT_PATH, LOGIN_PATH);
     authRoutes.set(ORDERS_PATH, LOGIN_PATH);
+    authRoutes.set(ACCOUNT_PATH, LOGIN_PATH);
     authRoutes.set(`${ITEM_PATH}/:productId/write_review`, LOGIN_PATH);
 
     redirects.set(ORDERS_PATH, ORDERS_LEGACY_PATH);

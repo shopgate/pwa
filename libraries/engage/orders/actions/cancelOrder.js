@@ -8,12 +8,13 @@ import { errorCancelOrder } from '../action-creators/orders';
 
 /**
  * Cancel an order.
- * @param {string} orderId An order number
- * @param {string} token The token
- * @param {Object} [params={}] Optional params like email and phone number
+ * @param {Object} params Params
+ * @param {number} [params.orderId] Order Id
+ * @param {string} [params.orderNumber] Order Number
+ * @param {string} [params.token] Request params
  * @returns {Function} A redux thunk.
  */
-const cancelOrder = (orderId, token) => async (dispatch) => {
+const cancelOrder = ({ orderId, orderNumber, token }) => async (dispatch) => {
   // Present a modal to confirm the order cancellation.
   const confirmed = await dispatch(showModal({
     title: i18n.text('order_details.cancel.modal.title'),
@@ -25,14 +26,22 @@ const cancelOrder = (orderId, token) => async (dispatch) => {
       await new PipelineRequest(SHOPGATE_ORDER_CANCEL_ORDER)
         .setInput({
           orderId,
+          orderNumber,
           token,
         })
         .setErrorBlacklist([EAUTHENTICATION, ENOTFOUND])
         .dispatch();
-      await dispatch(fetchOrderDetails(orderId, { token }));
+      await dispatch(fetchOrderDetails({
+        orderId,
+        orderNumber,
+        token,
+      }));
     } catch (error) {
       if ([EAUTHENTICATION, ENOTFOUND].includes(error.code)) {
-        dispatch(errorCancelOrder(error, orderId));
+        dispatch(errorCancelOrder(error, {
+          orderId,
+          orderNumber,
+        }));
         throw error;
       }
     }
