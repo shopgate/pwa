@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import Link from '@shopgate/pwa-common/components/Link';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
+import { ACCOUNT_PATH } from '@shopgate/engage/account';
 import Section from '../../../Section';
 import Item from '../../../Item';
 
@@ -18,6 +20,12 @@ const LoggedIn = ({ logout }) => {
       <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT} props={props}>
         <div data-test-id="userMenu">
           <Section title="navigation.your_account">
+            <Link href={ACCOUNT_PATH}>
+              <Item
+                label="navigation.manage"
+                testId="accountButton"
+              />
+            </Link>
             <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
             <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
               <Item

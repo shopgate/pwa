@@ -27,7 +27,11 @@
     "checkout_change_billing": "Rechnungsadresse ändern",
     "register": "Registrieren",
     "order_details": "Order Details",
-    "store_finder": "Store Finder"
+    "store_finder": "Store Finder",
+    "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
+    "your_account": "Your Account"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -361,6 +365,7 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
+    "manage": "Manage",
     "back": "Zurück zu {title}"
   },
   "reviews": {
@@ -532,6 +537,18 @@
         "message": "Are you sure you want to cancel your order? This can not be undone!",
         "confirm": "Yes, Cancel my Order"
       }
+    }
+  },
+  "orders": {
+    "header": {
+      "date": "Order Date",
+      "orderNumber": "Order Number",
+      "status": "Status",
+      "lineItemCount": "Number of Items",
+      "total": "Order Total"
+    },
+    "no_result": {
+      "body": "No Orders found."
     }
   },
   "registration": {
