@@ -1,10 +1,5 @@
-import React, {
-  useState, useMemo, useCallback, useEffect,
-} from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import {
-  useRoute, LoadingProvider,
-} from '@shopgate/engage/core';
 import connect from './OrderHistoryProvider.connector';
 import Context from './OrderHistoryProvider.context';
 import { getOrderDetailsRoute } from '../helpers/orderDetails';
@@ -20,25 +15,6 @@ const OrderHistoryProvider = ({
   historyPush,
   totalOrderCount,
 }) => {
-  const { pathname } = useRoute();
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleOrderHistoryRequest = useCallback(async (params) => {
-    setIsLoading(true);
-    await fetchOrderHistory(params);
-    setIsLoading(false);
-  }, [fetchOrderHistory]);
-
-  // Loading state
-  useEffect(() => {
-    if (isLoading) {
-      LoadingProvider.setLoading(pathname);
-      return;
-    }
-
-    LoadingProvider.unsetLoading(pathname);
-  }, [isLoading, pathname]);
-
   const value = useMemo(
     () => ({
       orders: orders.map(order => ({
@@ -48,10 +24,9 @@ const OrderHistoryProvider = ({
         }),
       })),
       totalOrderCount,
-      isLoading,
-      fetchOrderHistory: handleOrderHistoryRequest,
+      fetchOrderHistory,
     }),
-    [handleOrderHistoryRequest, historyPush, isLoading, orders, totalOrderCount]
+    [fetchOrderHistory, historyPush, orders, totalOrderCount]
   );
 
   return (

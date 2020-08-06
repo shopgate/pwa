@@ -4,7 +4,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import { i18n } from '@shopgate/engage/core';
 import { getTranslatedOrderStatus } from '../../helpers';
 import {
-  tableHeader, tableRow, root,
+  tableHeader, tableRow,
 } from './OrderHistoryTable.style';
 import { Card } from '../../../components';
 
@@ -59,7 +59,7 @@ TableRow.propTypes = {
  * @returns {JSX}
  */
 export const Table = ({ children }) => (
-  <div className={root}>
+  <div>
     <Card>
       <table>
         <thead>

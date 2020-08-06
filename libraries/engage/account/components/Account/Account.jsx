@@ -7,7 +7,7 @@ import { i18n } from '@shopgate/engage/core';
 import OrderHistory from '../../../orders/components/OrderHistory';
 import OrderHistoryProvider from '../../../orders/providers/OrderHistoryProvider';
 import { Tabs, Tab, TabPanel } from '../../../components/Tabs';
-import { tabs, title } from './Account.style';
+import { tabs, title, tabPanel } from './Account.style';
 import { ResponsiveContainer } from '../../../components';
 import { useBoundingRect } from '../../../core/hooks/useBoundingRect';
 import Lists from '../../../favorites/components/Lists';
@@ -48,14 +48,14 @@ const Account = ({ tabsStyle }) => {
           ) : null}
         </Tabs>
       </div>
-      <TabPanel value={value} index={0} />
-      <TabPanel value={value} index={1}>
+      <TabPanel className={tabPanel} value={value} index={0} />
+      <TabPanel className={tabPanel} value={value} index={1}>
         <OrderHistoryProvider>
           <OrderHistory />
         </OrderHistoryProvider>
       </TabPanel>
       {appConfig.hasFavorites ? (
-        <TabPanel value={value} index={2}>
+        <TabPanel className={tabPanel} value={value} index={2}>
           <Lists />
         </TabPanel>
       ) : null}

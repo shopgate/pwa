@@ -1,14 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const { variables } = themeConfig;
-
-export const root = css({
-  [responsiveMediaQuery('>=md', { webOnly: true })]: {
-    margin: 8,
-  },
-}).toString();
 
 export const tableHeader = css({
   '& > th': {

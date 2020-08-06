@@ -15,3 +15,7 @@ export const tabs = css({
   boxShadow: '2px 1px 6px rgba(0, 0, 0, 0.118), 2px 1px 4px rgba(0, 0, 0, 0.118)',
   zIndex: 100,
 }).toString();
+
+export const tabPanel = css({
+  padding: variables.gap.small,
+}).toString();
