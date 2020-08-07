@@ -53,7 +53,7 @@ export const isExternal = url =>
  */
 export const getActualImageSource = (src, { width, height }) => {
   if (src && src.includes('images.shopgate.services/v2/images')) {
-    const fillColor = 'FFFFFF';
+    const fillColor = 'FFFFFF,1';
     const format = isAndroidOs ? 'webp' : 'jpeg';
 
     return `${src}&format=${format}&width=${width}&height=${height}&quality=75&fill=${fillColor.replace('#', '')}`;
