@@ -4,6 +4,7 @@ import {
   getCategoryChildren,
   getCategoryChildCount,
   hasCategoryChildren,
+  hasCategoryProducts,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
@@ -16,6 +17,7 @@ const mapStateToProps = (state, props) => ({
   categories: getCategoryChildren(state, props),
   hasChildren: hasCategoryChildren(state, props),
   childrenCount: getCategoryChildCount(state, props),
+  hasProducts: hasCategoryProducts(state, props),
 });
 
 /**

@@ -11,6 +11,7 @@ import { ResponsiveContainer } from '@shopgate/engage/components';
 import CategoryList from 'Components/CategoryList';
 import CategoryGrid from 'Components/CategoryGrid';
 import connect from './connector';
+import { noPaddingTop } from './style';
 
 /**
  * The category list content.
@@ -21,12 +22,14 @@ class CategoryListContent extends PureComponent {
     categories: PropTypes.arrayOf(PropTypes.shape()),
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
+    hasProducts: PropTypes.bool,
   };
 
   static defaultProps = {
     categories: null,
     childrenCount: 6,
     hasChildren: false,
+    hasProducts: false,
   }
 
   /**
@@ -34,7 +37,7 @@ class CategoryListContent extends PureComponent {
    */
   render() {
     const {
-      hasChildren, categories, categoryId, childrenCount,
+      hasProducts, hasChildren, categories, categoryId, childrenCount,
     } = this.props;
 
     return (
@@ -47,7 +50,11 @@ class CategoryListContent extends PureComponent {
                 <CategoryList categories={categories} prerender={childrenCount} />
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
-                <CategoryGrid categories={categories} prerender={childrenCount} />
+                <CategoryGrid
+                  className={!hasProducts && noPaddingTop}
+                  categories={categories}
+                  prerender={childrenCount}
+                />
               </ResponsiveContainer>
             </Section>
           )}
