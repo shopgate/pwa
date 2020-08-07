@@ -6,27 +6,24 @@ import FilterBar from 'Components/FilterBar';
 import PageTitleBar from 'Components/PageTitleBar';
 
 type Props = {
-  hasChildren: boolean,
   hasProducts: boolean,
 }
 
 /**
  * @returns {JSX}
  */
-function CategoryBar({ hasChildren, hasProducts }: Props) {
+function CategoryBar({ hasProducts }: Props) {
   const { state, params } = useRoute();
   const { ref } = useContext(ViewContext);
 
   return (
     <Fragment>
       <PageTitleBar />
-      {!hasChildren && (
-        <ResponsiveContainer appAlways breakpoint="<=xs">
-          <GlobalLocationSwitcher renderBar />
-        </ResponsiveContainer>
-      )}
+      <ResponsiveContainer appAlways breakpoint="<=xs">
+        <GlobalLocationSwitcher renderBar />
+      </ResponsiveContainer>
 
-      {(!hasChildren && hasProducts) && (
+      {hasProducts && (
         <FilterBar
           categoryId={params.categoryId}
           filters={state.filters}
