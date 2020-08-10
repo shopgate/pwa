@@ -11,7 +11,7 @@ export const grid = css({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'row',
-  padding: big,
+  padding: `0 ${big}px ${big}px ${big}px`,
 }).toString();
 
 export const gridItem = css({
