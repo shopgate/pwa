@@ -176,6 +176,7 @@ export { default as QuantityInput } from './QuantityInput';
 export { default as QuantityLabel } from './QuantityLabel';
 export { default as ResponsiveContainer } from './ResponsiveContainer';
 export { default as BrandingColorBanner } from './BrandingColorBanner';
+export { default as ScrollHeader } from './ScrollHeader';
 export { default as Menu } from './Menu';
 export { default as Toggle } from './Toggle';
 export { Form } from './Form';
