@@ -1,7 +1,6 @@
 import { css } from 'glamor';
 
 export const header = css({
-  position: 'sticky',
   top: 0,
   left: 0,
   display: 'flex',
@@ -12,5 +11,9 @@ export const header = css({
 
 export const hidden = css({
   transform: 'translateY(-110%)',
+}).toString();
+
+export const visible = css({
+  position: 'sticky',
 }).toString();
 
