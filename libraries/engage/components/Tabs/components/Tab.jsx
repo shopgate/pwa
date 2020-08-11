@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '@shopgate/pwa-ui-shared/Button';
 import { root, wrapper } from './Tab.style';
+import { ViewContext } from '../../View';
 
 /**
  * Tab component
@@ -17,14 +18,13 @@ const Tab = (props) => {
     indicator,
     label,
     onChange,
-    onClick,
     onFocus,
     // eslint-disable-next-line react/prop-types
     selected,
-    // eslint-disable-next-line react/prop-types
-    selectionFollowsFocus,
     value,
   } = props;
+
+  const { contentRef } = useContext(ViewContext);
 
   /**
    * Handle Click
@@ -33,10 +33,7 @@ const Tab = (props) => {
   const handleClick = (event) => {
     if (onChange) {
       onChange(event, value);
-    }
-
-    if (onClick) {
-      onClick(event);
+      contentRef.current.scrollTop = 0;
     }
   };
 
@@ -45,10 +42,6 @@ const Tab = (props) => {
    * @param {Object} event event
    */
   const handleFocus = (event) => {
-    if (selectionFollowsFocus && !selected && onChange) {
-      onChange(event, value);
-    }
-
     if (onFocus) {
       onFocus(event);
     }
@@ -79,7 +72,6 @@ Tab.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
-  onClick: PropTypes.func,
   onFocus: PropTypes.func,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
@@ -89,7 +81,6 @@ Tab.defaultProps = {
   value: null,
   disabled: false,
   onChange: null,
-  onClick: null,
   onFocus: null,
 };
 

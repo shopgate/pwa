@@ -9,7 +9,6 @@ import OrderHistoryProvider from '../../../orders/providers/OrderHistoryProvider
 import { Tabs, Tab, TabPanel } from '../../../components/Tabs';
 import { tabs, title, tabPanel } from './Account.style';
 import { ResponsiveContainer } from '../../../components';
-import { useBoundingRect } from '../../../core/hooks/useBoundingRect';
 import Lists from '../../../favorites/components/Lists';
 import connect from './Account.connector';
 import { TabContext } from '../../../components/Tabs/TabContext';
@@ -18,18 +17,13 @@ import { TabContext } from '../../../components/Tabs/TabContext';
  * The Tabs components
  * @returns {JSX}
  */
-const Account = ({ tabsStyle, historyReplace }) => {
-  const [box, ref] = useBoundingRect();
+const Account = ({ historyReplace }) => {
   const { params: { tab = 'orders' } } = useRoute();
   return (
-    <div ref={ref}>
+    <>
       <TabContext value={tab}>
         <div
           className={tabs}
-          style={{
-            top: box.top,
-            ...tabsStyle,
-          }}
         >
           <ResponsiveContainer webOnly breakpoint=">xs">
             <div className={title}>
@@ -61,17 +55,12 @@ const Account = ({ tabsStyle, historyReplace }) => {
         ) : null}
 
       </TabContext>
-    </div>
+    </>
   );
 };
 
 Account.propTypes = {
   historyReplace: PropTypes.func.isRequired,
-  tabsStyle: PropTypes.shape(),
-};
-
-Account.defaultProps = {
-  tabsStyle: null,
 };
 
 export default hot(connect(Account));
