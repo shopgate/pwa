@@ -1,1 +1,2 @@
 export const DEFAULT_LOGIN_STRATEGY = 'basic';
+export const EVENT_USER_INITIALIZED = 'EVENT_USER_INITIALIZED';

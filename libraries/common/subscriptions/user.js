@@ -11,11 +11,13 @@ import {
   userLoginResponse$,
   userDidLogin$,
   userDidLogout$,
+  userDidInitialize$,
   legacyConnectRegisterDidFail$,
 } from '../streams';
 import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
 import { LEGACY_URL_CONNECT_REGISTER } from '../constants/Registration';
+import { EVENT_USER_INITIALIZED } from '../constants/user';
 
 /**
  * User subscriptions.
@@ -26,6 +28,10 @@ export default function user(subscribe) {
    * Gets triggered when ever the user data need to be updated.
    */
   const userNeedsUpdate$ = appDidStart$.merge(userDidLogin$);
+
+  subscribe(userDidInitialize$, ({ events }) => {
+    events.emit(EVENT_USER_INITIALIZED);
+  });
 
   subscribe(userWillLogin$, () => {
     LoadingProvider.setLoading(LOGIN_PATH);

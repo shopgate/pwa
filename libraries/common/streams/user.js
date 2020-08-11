@@ -8,6 +8,7 @@ import {
   RECEIVE_USER,
   ERROR_USER,
 } from '../constants/ActionTypes';
+import { appDidStart$ } from './app';
 import { main$ } from './main';
 
 /**
@@ -58,6 +59,14 @@ export const userDidUpdate$ = main$
     (action.type === SUCCESS_LOGOUT) ||
     (action.type === ERROR_USER)
   ));
+
+/**
+ * Gets triggered when we have a stable login state of the user. Since user data is persisted,
+ * some parts of the code might not rely on the redux states.
+ * @type {Observable}
+ */
+export const userDidInitialize$ = appDidStart$.switchMap(() =>
+  main$.filter(({ action }) => action.type === RECEIVE_USER || action.type === ERROR_USER)).first();
 
 /**
  * Gets triggered when we received the user data.

@@ -31,6 +31,10 @@ const getTabBarState = state => state.ui.tabBar;
 export const getActiveTab = createSelector(
   getHistoryPathname,
   (pathname) => {
+    if (!pathname) {
+      return TAB_NONE;
+    }
+
     switch (true) {
       case pathname === INDEX_PATH:
         return TAB_HOME;
