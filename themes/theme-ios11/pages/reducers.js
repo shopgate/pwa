@@ -22,6 +22,7 @@ import locations from '@shopgate/engage/locations/reducers';
 import orders from '@shopgate/engage/orders/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
+import account from '@shopgate/engage/account/reducers';
 import extensions from 'Extensions/reducers';
 import tabBar from 'Components/TabBar/reducer';
 
@@ -46,6 +47,7 @@ configuration.set(RESET_APP_REDUCERS, [
 ]);
 
 const reducers = combineReducers({
+  account,
   router,
   cart,
   category,

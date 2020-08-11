@@ -2,8 +2,8 @@ import { LoadingProvider } from '@shopgate/engage/core';
 import { getCheckoutOrder } from '@shopgate/engage/checkout/selectors/order';
 import { CHECKOUT_BILLING_PATTERN } from '../constants/routes';
 import { updateCheckoutOrder } from './updateCheckoutOrder';
-import { fetchCustomerContacts } from './fetchContacts';
-import { updateCustomerContact } from './updateContact';
+import { fetchCustomerContacts } from '../../account/actions/fetchContacts';
+import { updateCustomerContact } from '../../account/actions/updateContact';
 import { errorCheckout } from './errorCheckout';
 
 /**

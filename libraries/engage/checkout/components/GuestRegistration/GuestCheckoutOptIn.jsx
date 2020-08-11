@@ -3,10 +3,10 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
 import { isIOSTheme } from '@shopgate/engage/core';
+import { StylePresets } from '@shopgate/engage/components/Form';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import generateFormConfig from './GuestCheckoutOptIn.config';
-import { styles as formStyles } from '../Form';
 
 const { variables } = themeConfig;
 
@@ -21,7 +21,7 @@ const styles = {
     ' .guestCheckoutOptInMarketingOptIn .checkbox': {
       paddingBottom: 0,
     },
-    ...formStyles,
+    ...StylePresets.OUTLINED_FORM_FIELDS,
   }).toString(),
   section: css({
     margin: variables.gap.big,

@@ -13,6 +13,7 @@ import { useBoundingRect } from '../../../core/hooks/useBoundingRect';
 import Lists from '../../../favorites/components/Lists';
 import connect from './Account.connector';
 import { TabContext } from '../../../components/Tabs/TabContext';
+import Profile from '../Profile';
 
 /**
  * The Tabs components
@@ -20,7 +21,7 @@ import { TabContext } from '../../../components/Tabs/TabContext';
  */
 const Account = ({ tabsStyle, historyReplace }) => {
   const [box, ref] = useBoundingRect();
-  const { params: { tab = 'orders' } } = useRoute();
+  const { params: { tab = 'profile' } } = useRoute();
   return (
     <div ref={ref}>
       <TabContext value={tab}>
@@ -42,6 +43,8 @@ const Account = ({ tabsStyle, historyReplace }) => {
             onChange={(event, newValue) => historyReplace({ pathname: `/account/${newValue}` })}
             aria-label="disabled tabs example"
           >
+            <Tab value="profile" label={i18n.text('titles.profile')} />
+
             <Tab value="orders" label={i18n.text('titles.order_history')} />
 
             {appConfig.hasFavorites ? (
@@ -49,6 +52,9 @@ const Account = ({ tabsStyle, historyReplace }) => {
             ) : null}
           </Tabs>
         </div>
+        <TabPanel className={tabPanel} value="profile">
+          <Profile />
+        </TabPanel>
         <TabPanel className={tabPanel} value="orders">
           <OrderHistoryProvider>
             <OrderHistory />

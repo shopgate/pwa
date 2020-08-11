@@ -3,7 +3,7 @@ import {
   UPDATE_CUSTOMER_CONTACT,
   UPDATE_CUSTOMER_CONTACT_SUCCESS,
   UPDATE_CUSTOMER_CONTACT_ERROR,
-} from '../constants/actionTypes';
+} from '../constants/actions';
 
 /**
  * Starts entering the checkout process for the customer.

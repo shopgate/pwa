@@ -3,10 +3,10 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
 
+import { StylePresets } from '@shopgate/engage/components/Form';
 import generateFormConfig from './GuestRegistrationBillingFrom.config';
 import Section from '../Checkout/CheckoutSection';
 import { useGuestRegistration } from '../../hooks/common';
-import { styles as formStyles } from '../Form';
 
 const { colors, variables } = themeConfig;
 
@@ -33,7 +33,7 @@ const styles = {
       marginTop: variables.gap.small,
       flexDirection: 'row',
     },
-    ...formStyles,
+    ...StylePresets.OUTLINED_FORM_FIELDS,
   }).toString(),
 };
 

@@ -140,7 +140,7 @@ const FavoriteLists = ({
       promiseRef.current = {
         resolve: () => {
           // Remove item from wishlist after adding to cart.
-          if (wishlistMode === WISHLIST_MODE_PERSIST_ON_ADD) {
+          if (wishlistMode !== WISHLIST_MODE_PERSIST_ON_ADD) {
             removeItem(listId, product.id);
           }
           resolve();
