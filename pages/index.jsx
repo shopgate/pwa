@@ -18,7 +18,7 @@ import {
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
-import { ACCOUNT_PATH, ACCOUNT_PATTERN } from '@shopgate/engage/account';
+import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -59,6 +59,7 @@ import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import ForgotPassword from './ForgotPassword';
 import Register from './Register';
 import Account from './Account';
+import AccountContact from './Account/Contact';
 import OrderDetails from './OrderDetails';
 import StoreFinder from './StoreFinder';
 import themeApi from '../themeApi';
@@ -184,6 +185,10 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={ACCOUNT_PATTERN}
                     component={Account}
+                  />
+                  <Route
+                    pattern={PROFILE_ADDRESS_PATH}
+                    component={AccountContact}
                   />
                   <Route
                     pattern={ORDER_DETAILS_PATTERN}

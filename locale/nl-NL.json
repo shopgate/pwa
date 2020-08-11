@@ -32,6 +32,51 @@
     "profile": "Profile",
     "your_account": "Your Account"
   },
+  "account": {
+    "profile": {
+      "customer": {
+        "number": "Customer No.: {customerNumber}"
+      },
+      "form": {
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "emailAddress": "Email Address",
+        "address1": "Address 1",
+        "address2": "Address 2",
+        "address3": "Address 3",
+        "address4": "Address 4",
+        "postalCode": "Postal Code",
+        "city": "City",
+        "country": "Country",
+        "phone": "Phone",
+        "mobile": "Mobile",
+        "region": "State",
+        "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
+        "default_billing": "Primary Bill To Address",
+        "default_shipping": "Primary Ship To Address",
+        "save": "Save",
+        "add": "Add Address"
+      },
+      "delete": "Delete Account",
+      "address_book": {
+        "title": "Address Book",
+        "default_billing": "Primary Bill To Address",
+        "default_shipping": "Primary Ship To Address",
+        "add": "Add Address",
+        "context": {
+          "edit": "Edit",
+          "remove": "Remove"
+        }
+      },
+      "confirm": {
+        "title": "Are you sure?",
+        "confirm": "Confirm",
+        "messageContact": "Are you should you want to delete this address?",
+        "messageCustomer": "Are you should you want to delete your account? This will delete all of your personal data and preferences."
+      }
+    }
+  },
   "favorites": {
     "add": "Voeg aan favorieten toe",
     "added": "Product is aan favorieten toegevoegd",
