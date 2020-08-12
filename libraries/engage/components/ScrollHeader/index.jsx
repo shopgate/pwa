@@ -22,7 +22,6 @@ function ScrollHeader({ className, children }) {
       const isScrolledDown = previousScrollTop < currentScrollTop;
       setShouldHideHeader(isScrolledDown && currentScrollTop >= box.top + 50);
       setShouldShowHeader(!isScrolledDown && currentScrollTop >= box.top - 50);
-      console.log(currentScrollTop, ref.current.offsetTop, !isScrolledDown, box.top);
     }
   }, contentRef?.current);
 
