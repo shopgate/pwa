@@ -6,8 +6,8 @@ import {
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
-} from '@shopgate/engage/cart';
-import { getProductDataById } from '@shopgate/engage/product';
+} from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getProductDataById } from '@shopgate/engage/product/selectors/product';
 import {
   getPreferredLocation,
   getExternalCustomerNumberForOrder,

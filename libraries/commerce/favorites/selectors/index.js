@@ -118,9 +118,15 @@ export const isInitialLoading = createSelector(
  */
 export const getFavoritesCount = createSelector(
   getFavoritesProducts,
-  products => Object
-    .values(products.byList)
-    .reduce((prev, list) => prev + list.ids.length, 0)
+  (products) => {
+    if (!products?.byList) {
+      return 0;
+    }
+
+    return Object
+      .values(products.byList)
+      .reduce((prev, list) => prev + list.ids.length, 0);
+  }
 );
 
 /**
