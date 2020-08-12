@@ -27,6 +27,12 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
   <EffectivityDates
     productId="1234"
   />
+  <Availability
+    className=""
+    showWhenAvailable={false}
+    state="ok"
+    text="product.available.not"
+  />
   <ItemPrice
     display={null}
     price={Object {}}
