@@ -9,27 +9,22 @@ import OrderHistoryProvider from '../../../orders/providers/OrderHistoryProvider
 import { Tabs, Tab, TabPanel } from '../../../components/Tabs';
 import { tabs, title, tabPanel } from './Account.style';
 import { ResponsiveContainer } from '../../../components';
-import { useBoundingRect } from '../../../core/hooks/useBoundingRect';
 import Lists from '../../../favorites/components/Lists';
 import connect from './Account.connector';
 import { TabContext } from '../../../components/Tabs/TabContext';
+import Profile from '../Profile';
 
 /**
  * The Tabs components
  * @returns {JSX}
  */
-const Account = ({ tabsStyle, historyReplace }) => {
-  const [box, ref] = useBoundingRect();
-  const { params: { tab = 'orders' } } = useRoute();
+const Account = ({ historyReplace }) => {
+  const { params: { tab = 'profile' } } = useRoute();
   return (
-    <div ref={ref}>
+    <>
       <TabContext value={tab}>
         <div
           className={tabs}
-          style={{
-            top: box.top,
-            ...tabsStyle,
-          }}
         >
           <ResponsiveContainer webOnly breakpoint=">xs">
             <div className={title}>
@@ -42,6 +37,8 @@ const Account = ({ tabsStyle, historyReplace }) => {
             onChange={(event, newValue) => historyReplace({ pathname: `/account/${newValue}` })}
             aria-label="disabled tabs example"
           >
+            <Tab value="profile" label={i18n.text('titles.profile')} />
+
             <Tab value="orders" label={i18n.text('titles.order_history')} />
 
             {appConfig.hasFavorites ? (
@@ -49,6 +46,9 @@ const Account = ({ tabsStyle, historyReplace }) => {
             ) : null}
           </Tabs>
         </div>
+        <TabPanel className={tabPanel} value="profile">
+          <Profile />
+        </TabPanel>
         <TabPanel className={tabPanel} value="orders">
           <OrderHistoryProvider>
             <OrderHistory />
@@ -61,17 +61,12 @@ const Account = ({ tabsStyle, historyReplace }) => {
         ) : null}
 
       </TabContext>
-    </div>
+    </>
   );
 };
 
 Account.propTypes = {
   historyReplace: PropTypes.func.isRequired,
-  tabsStyle: PropTypes.shape(),
-};
-
-Account.defaultProps = {
-  tabsStyle: null,
 };
 
 export default hot(connect(Account));

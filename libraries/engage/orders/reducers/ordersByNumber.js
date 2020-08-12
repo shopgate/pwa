@@ -2,6 +2,7 @@ import { produce } from 'immer';
 import {
   REQUEST_ORDER_DETAILS,
   RECEIVE_ORDER_DETAILS,
+  RECEIVE_ORDER_HISTORY,
   ERROR_ORDER_DETAILS,
   CLEAR_ORDERS,
 } from '../constants';
@@ -34,10 +35,26 @@ const ordersByNumber = (state = defaultState, action) => {
       case RECEIVE_ORDER_DETAILS: {
         draft[action.order.orderNumber] = {
           ...draft[action.order.orderNumber],
-          order: action.order,
+          order: {
+            ...action.order,
+            lineItemCount: action.order.lineItems.length,
+          },
           isFetching: false,
           expires: Date.now() + CACHE_TIME,
         };
+        break;
+      }
+
+      case RECEIVE_ORDER_HISTORY: {
+        action.orders.forEach((order) => {
+          draft[order.orderNumber] = {
+            ...draft[order.orderNumber],
+            order: {
+              ...draft[order.orderNumber]?.order,
+              ...order,
+            },
+          };
+        });
         break;
       }
 

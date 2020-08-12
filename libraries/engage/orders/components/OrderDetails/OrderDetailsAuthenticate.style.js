@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import { styles as formStyles } from '../../../checkout/components/Form';
+import { StylePresets } from '@shopgate/engage/components/Form';
 
 const { variables } = themeConfig;
 
@@ -16,7 +16,7 @@ export const container = css({
 });
 
 export const form = css({
-  ...formStyles,
+  ...StylePresets.OUTLINED_FORM_FIELDS,
 });
 
 export const submitButton = css({

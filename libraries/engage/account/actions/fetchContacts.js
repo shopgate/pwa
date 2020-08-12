@@ -3,7 +3,7 @@ import {
   FETCH_CUSTOMER_CONTACTS,
   FETCH_CUSTOMER_CONTACTS_SUCCESS,
   FETCH_CUSTOMER_CONTACTS_ERROR,
-} from '../constants/actionTypes';
+} from '../constants/actions';
 
 /**
  * Starts entering the checkout process for the customer.

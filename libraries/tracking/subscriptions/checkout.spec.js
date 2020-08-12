@@ -2,10 +2,6 @@ import getCart from '../selectors/cart';
 import * as helpers from '../helpers';
 import subscription from './checkout';
 
-jest.mock('@shopgate/pwa-common/streams/app', () => ({
-  appDidStart$: jest.fn(),
-}));
-
 jest.mock('../selectors/cart', () => state => state);
 
 jest.mock('@shopgate/pwa-core/commands/registerEvents', () => jest.fn());

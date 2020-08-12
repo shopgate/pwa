@@ -1,9 +1,30 @@
 import { isIOSTheme } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/engage';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const { colors, variables } = themeConfig;
 
-const formStyles = {
+export const TWO_COLUMN_LAYOUT = {
+  [responsiveMediaQuery('>=md', { webOnly: false })]: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    margin: -8,
+    marginTop: 16,
+    marginBottom: 8,
+    '>div': {
+      flex: '1 1 50%',
+      padding: '0 8px',
+    },
+    '>.phonePicker': {
+      marginLeft: 8,
+      marginRight: 8,
+      flexBasis: 'calc(50% - 16px)',
+    },
+  },
+};
+
+export const OUTLINED_FORM_FIELDS = {
   ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
     paddingBottom: 8,
     ...(!isIOSTheme() ? {
@@ -116,5 +137,3 @@ const formStyles = {
     color: colors.shade12,
   },
 };
-
-export default formStyles;

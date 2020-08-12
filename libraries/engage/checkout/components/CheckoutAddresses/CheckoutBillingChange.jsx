@@ -11,7 +11,7 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { ResponsiveContainer, FormBuilder, RippleButton } from '@shopgate/engage/components';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
-import { styles as formStyles } from '../Form';
+import { StylePresets } from '@shopgate/engage/components/Form';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import generateFormConfig from './CheckoutBillingChange.config';
 import connect from './CheckoutBillingChange.connector';
@@ -26,7 +26,7 @@ const styles = {
     lineHeight: '2.25rem',
   }),
   form: css({
-    ...formStyles,
+    ...StylePresets.OUTLINED_FORM_FIELDS,
   }).toString(),
   root: css({
     display: 'flex',

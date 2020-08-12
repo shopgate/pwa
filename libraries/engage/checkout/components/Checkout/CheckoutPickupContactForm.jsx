@@ -2,11 +2,10 @@ import React from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
-
+import { StylePresets } from '@shopgate/engage/components/Form';
 import generateFormConfig from './CheckoutPickupContactForm.config';
 import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
-import { styles as formStyles } from '../Form';
 
 const { variables } = themeConfig;
 
@@ -46,7 +45,7 @@ const styles = {
         color: 'var(--color-text-medium-emphasis)',
       },
     },
-    ...formStyles,
+    ...StylePresets.OUTLINED_FORM_FIELDS,
   }).toString(),
 };
 

@@ -34,7 +34,7 @@ const OrderDetailsOrder = () => {
   const {
     cartItems, isReserveOnly,
   } = useMemo(() => {
-    if (!order) {
+    if (!order?.lineItems) {
       return {};
     }
 

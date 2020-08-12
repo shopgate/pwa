@@ -3,7 +3,7 @@ import {
   hasProductVariants,
   isProductOrderable,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product';
+import { makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
 import {
   makeIsRopeProductOrderable,
   getPreferredLocation,
