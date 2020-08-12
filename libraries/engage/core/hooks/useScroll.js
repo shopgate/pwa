@@ -27,7 +27,7 @@ export function useScroll(callback, element) {
       previousScrollTop,
       currentScrollTop,
     });
-  }, 250), [setScrollPosition, element]);
+  }, 250), [setScrollPosition, element, callback]);
 
   useEffect(() => {
     (element || window).addEventListener('scroll', handleDocumentScroll);
