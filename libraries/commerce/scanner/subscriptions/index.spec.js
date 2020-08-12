@@ -13,9 +13,6 @@ jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
   addListener: jest.fn(),
   start: jest.fn(),
 }));
-jest.mock('@shopgate/pwa-common/streams/app', () => ({
-  appDidStart$: jest.fn(),
-}));
 jest.mock('../action-creators/scannerFinished', () => jest.fn());
 jest.mock('../actions/handleBarCode');
 jest.mock('../actions/handleQrCode');

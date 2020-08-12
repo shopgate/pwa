@@ -10,12 +10,18 @@ import {
   onUpdate,
   ACTION_POP,
 } from '@virtuous/conductor';
+import Route from '@virtuous/conductor/Route';
 import {
   RouterContext,
   Router as OrigRouter,
 } from '@virtuous/react-conductor';
+import { UIEvents } from '@shopgate/pwa-core';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { hasWebBridge } from '@shopgate/engage/core';
+import { sanitizeLink } from '../../subscriptions/helpers/handleLinks';
+import authRoutes from '../../collections/AuthRoutes';
+import { EVENT_USER_INITIALIZED } from '../../constants/user';
+import connect from './connector';
 
 /**
  * Adds additional history listeners to compensate bugs and improve the behaviour within
@@ -69,10 +75,12 @@ class Router extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     history: PropTypes.func,
+    isUserLoggedIn: PropTypes.bool,
   }
 
   static defaultProps = {
     history: null,
+    isUserLoggedIn: false,
   }
 
   static Push = OrigRouter.Push;
@@ -99,7 +107,11 @@ class Router extends React.Component {
       prev: null,
       next: null,
       updated: null,
+      userInitialized: false,
+      initialRouteProtected: !!this.getRouteProtector(),
     };
+
+    UIEvents.addListener(EVENT_USER_INITIALIZED, this.setUserInitialized);
 
     onDidPush(this.update);
     onDidPop(this.update);
@@ -118,9 +130,91 @@ class Router extends React.Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    const { updated } = this.state;
-    return updated !== nextState.updated;
+    const { isUserLoggedIn } = this.props;
+    const { updated, userInitialized } = this.state;
+    return (
+      updated !== nextState.updated ||
+      userInitialized !== nextState.userInitialized ||
+      isUserLoggedIn !== nextProps.isUserLoggedIn
+    );
   }
+
+  /**
+   * Replaces the initial route with a protector if necessary
+   * @param {Object} nextProps The next component props
+   * @param {Object} nextState The next components state
+   */
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
+    const { isUserLoggedIn } = nextProps;
+    const { userInitialized, initialRouteProtected } = nextState;
+
+    if (initialRouteProtected && userInitialized && !isUserLoggedIn) {
+      const protector = this.getRouteProtector();
+      const location = this.getHistoryLocation();
+
+      // Get the initial route from the route stack which was created by the router on init
+      const initialRoute = routeStack.getByIndex(0);
+      const { id } = initialRoute;
+
+      // Prepare the redirect state for the protector route
+      const state = {
+        redirect: {
+          location,
+        },
+      };
+
+      const routeReplacement = new Route({
+        id,
+        state,
+        pathname: protector,
+      });
+
+      // Replace the auto-generated route with the replacement
+      routeStack.update(id, routeReplacement);
+
+      // Update the browser url with the protector route
+      router.history.replace({
+        pathname: protector,
+        state: {
+          ...state,
+          route: { id },
+        },
+      });
+
+      this.setState({
+        initialRouteProtected: false,
+      });
+    }
+  }
+
+  /**
+   * Removes the listener for the EVENT_USER_INITIALIZED event
+   */
+  componentWillUnmount() {
+    UIEvents.removeListener(EVENT_USER_INITIALIZED, this.setUserInitialized);
+  }
+
+  /**
+   * Updates the user initialized component state
+   */
+  setUserInitialized = () => {
+    this.setState({ userInitialized: true });
+  };
+
+  /**
+   * Determines the current location from the browser history
+   * @returns {string}
+   */
+  getHistoryLocation = () => {
+    const { hash, pathname, search } = router.history.location;
+    return sanitizeLink(`${pathname}${search}${hash}`);
+  }
+
+  /**
+   * Determines if the current route is a protected route
+   * @returns {null|string}
+   */
+  getRouteProtector = () => authRoutes.getProtector(this.getHistoryLocation())
 
   /**
    * @param {Object} data Data for the update method
@@ -151,7 +245,18 @@ class Router extends React.Component {
    */
   render() {
     const { children } = this.props;
-    const { prev, next } = this.state;
+    const {
+      prev, next, initialRouteProtected, userInitialized,
+    } = this.state;
+
+    if (initialRouteProtected && !userInitialized) {
+      /**
+       * When the initial route is a protected route, the first rendering of the Router needs to
+       * be postponed till we know the final login state of the user.
+       */
+      return null;
+    }
+
     const stack = Array.from(routeStack.getAll());
 
     return (
@@ -162,4 +267,4 @@ class Router extends React.Component {
   }
 }
 
-export default Router;
+export default connect(Router);
