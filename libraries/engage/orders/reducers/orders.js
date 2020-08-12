@@ -31,7 +31,7 @@ const orders = (state = defaultState, action) => {
         draft.isFetching = false;
         draft.orders = [
           ...draft.orders.slice(0, action.offset),
-          ...action.orders,
+          ...action.orders.map(order => order.orderNumber),
         ];
         draft.totalOrderCount = action.totalOrderCount;
         break;
