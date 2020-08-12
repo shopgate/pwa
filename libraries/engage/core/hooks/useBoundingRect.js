@@ -13,8 +13,8 @@ export const useBoundingRect = () => {
 
   useEffect(() => {
     set();
-    window.addEventListener('scroll', set);
-    return () => window.removeEventListener('scroll', set);
+    window.addEventListener('resize', set);
+    return () => window.removeEventListener('resize', set);
   }, []);
 
   return [bbox, ref];
