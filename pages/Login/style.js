@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import { formStyles } from '@shopgate/engage/checkout';
+import { StylePresets } from '@shopgate/engage/components/Form';
 
 const { colors, variables } = themeConfig;
 
@@ -34,7 +34,7 @@ const subline = css({
 const form = css({
   paddingTop: variables.gap.big * 1.5,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
-    ...formStyles,
+    ...StylePresets.OUTLINED_FORM_FIELDS,
     ' .simpleInput': {
       paddingLeft: variables.gap.big,
     },
