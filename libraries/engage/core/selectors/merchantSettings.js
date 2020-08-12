@@ -1,5 +1,9 @@
 import { createSelector } from 'reselect';
-import { MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED, MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED } from '../constants';
+import {
+  MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
+  MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
+  MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
+} from '../constants';
 
 /**
  * Retrieves the merchantSettings state from the store.
@@ -27,4 +31,9 @@ export const getIsLocationBasedShopping = makeGetMerchantSettingByKey(
 export const getSubstitutionPreferencesEnabled = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
   false
+);
+
+export const getMerchantCustomerAttributes = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
+  []
 );

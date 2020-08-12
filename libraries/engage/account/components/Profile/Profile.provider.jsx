@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useRoute, i18n, historyPush } from '@shopgate/engage/core';
-import { useFormState as useForm } from '@shopgate/engage/core/hooks/useFormState';
+import { useFormState as useForm, convertValidationErrors } from '@shopgate/engage/core/hooks/useFormState';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { LoadingProvider, ToastProvider } from '@shopgate/pwa-common/providers';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
@@ -72,39 +72,19 @@ const ProfileProvider = ({
     marketingOptIn: customer.settings.marketingOptIn || false,
   } : null), [customer]);
 
-  // Hold profile form state.
-  const formState = useForm(
-    defaultState,
-    () => {},
-    constraints
-  );
-
-  /**
-   * Executes callback with confirmation beforehands.
-   * @param {string} message String
-   */
-  const confirmation = async (message) => {
-    const confirmed = await showDialog({
-      title: i18n.text('account.profile.confirm.title'),
-      message: i18n.text(message),
-      confirm: i18n.text('account.profile.confirm.confirm'),
-    });
-    return !!confirmed;
-  };
-
   // Saving the form.
-  const saveForm = useCallback(async () => {
+  const saveForm = useCallback(async (values) => {
     LoadingProvider.setLoading(pathname);
     try {
       await updateCustomer({
-        firstName: formState.values.firstName,
-        ...(formState.values.middleName ? {
-          middleName: formState.values.middleName,
+        firstName: values.firstName,
+        ...(values.middleName ? {
+          middleName: values.middleName,
         } : {}),
-        lastName: formState.values.lastName,
-        emailAddress: formState.values.emailAddress,
+        lastName: values.lastName,
+        emailAddress: values.emailAddress,
         settings: {
-          marketingOptIn: formState.values.marketingOptIn,
+          marketingOptIn: values.marketingOptIn,
         },
       });
       UIEvents.emit(ToastProvider.ADD, {
@@ -118,7 +98,30 @@ const ProfileProvider = ({
       });
     }
     LoadingProvider.unsetLoading(pathname);
-  }, [formState.values, pathname, updateCustomer]);
+  }, [pathname, updateCustomer]);
+
+  // Hold profile form state.
+  const formState = useForm(
+    defaultState,
+    saveForm,
+    constraints
+  );
+  const validationErrors = useMemo(() =>
+    convertValidationErrors(formState.validationErrors || {}),
+  [formState.validationErrors]);
+
+  /**
+   * Executes callback with confirmation beforehand.
+   * @param {string} message String
+   */
+  const confirmation = async (message) => {
+    const confirmed = await showDialog({
+      title: i18n.text('account.profile.confirm.title'),
+      message: i18n.text(message),
+      confirm: i18n.text('account.profile.confirm.confirm'),
+    });
+    return !!confirmed;
+  };
 
   // Deletes a contact.
   /* eslint-disable react-hooks/exhaustive-deps */
@@ -164,9 +167,10 @@ const ProfileProvider = ({
   // Store context value.
   const contextValue = useMemo(() => ({
     contacts,
+    validationErrors,
     customer: defaultState,
     formState,
-    saveForm,
+    saveForm: formState.handleSubmit,
     editContact,
     deleteContact: deleteContactWrapper,
     deleteCustomer: deleteCustomerWrapper,
@@ -177,7 +181,7 @@ const ProfileProvider = ({
     deleteCustomerWrapper,
     editContact,
     formState,
-    saveForm,
+    validationErrors,
   ]);
 
   // Fetch all required data for the profile page.

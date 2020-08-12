@@ -5,7 +5,6 @@ export default {
       allowEmpty: false,
     },
   },
-  middleName: {},
   lastName: {
     presence: {
       message: 'validation.required',

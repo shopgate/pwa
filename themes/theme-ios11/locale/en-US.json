@@ -57,7 +57,8 @@
         "default_billing": "Primary Bill To Address",
         "default_shipping": "Primary Ship To Address",
         "save": "Save",
-        "add": "Add Address"
+        "add": "Add Address",
+        "success": "Saved Profile"
       },
       "delete": "Delete Account",
       "address_book": {
@@ -65,6 +66,7 @@
         "default_billing": "Primary Bill To Address",
         "default_shipping": "Primary Ship To Address",
         "add": "Add Address",
+        "success": "Saved Profile",
         "context": {
           "edit": "Edit",
           "remove": "Remove"

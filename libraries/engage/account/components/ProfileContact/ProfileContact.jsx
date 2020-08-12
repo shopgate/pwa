@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { i18n, useRoute, historyPop } from '@shopgate/engage/core';
+import { convertValidationErrors, useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getShopSettings } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
-import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
+
 import { FormBuilder, RippleButton } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
@@ -78,18 +79,6 @@ const styles = {
 };
 
 /**
- * Converts validation errors into errors for form builder.
- * @param {Object} validationErrors The validation errors.
- * @returns {Array}
- */
-const convertValidationErrors = validationErrors => Object
-  .keys(validationErrors)
-  .map(key => ({
-    path: key,
-    message: i18n.text(validationErrors[key]),
-  }));
-
-/**
  * @param {Object} props Props.
  * @returns {JSX}
  */
@@ -124,6 +113,12 @@ const ProfileContact = ({
     convertValidationErrors(formState.validationErrors || {}),
   [formState.validationErrors]);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
+  const handleUpdate = useCallback((values) => {
+    formState.setValues(values);
+  }, [formState.setValues]);
+  /* eslint-enable react-hooks/exhaustive-deps */
+
   return (
     <div className={styles.root}>
       <FormBuilder
@@ -132,7 +127,7 @@ const ProfileContact = ({
         config={formConfig}
         defaults={contact}
         validationErrors={validationErrors}
-        handleUpdate={formState.setValues}
+        handleUpdate={handleUpdate}
       />
       <div className={styles.actions}>
         <RippleButton

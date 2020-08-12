@@ -1,8 +1,21 @@
 import {
   useRef, useState, useEffect, useCallback,
 } from 'react';
+import { i18n } from '@shopgate/engage/core';
 import { debounce } from 'lodash';
 import { useValidation } from '../validation';
+
+/**
+ * Converts validation errors into errors for form builder.
+ * @param {Object} validationErrors The validation errors.
+ * @returns {Array}
+ */
+export const convertValidationErrors = validationErrors => Object
+  .keys(validationErrors)
+  .map(key => ({
+    path: key,
+    message: i18n.text(validationErrors[key]),
+  }));
 
 /**
  * @param {Object} initialState The initial form state.

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
@@ -66,10 +66,16 @@ const styles = {
  */
 const ProfileForm = () => {
   const {
-    formState, customer, saveForm, deleteCustomer,
+    formState, customer, saveForm, deleteCustomer, validationErrors,
   } = useProfileContext();
 
   const formConfig = useMemo(() => generateFormConfig(), []);
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  const handleUpdate = useCallback((values) => {
+    formState.setValues(values);
+  }, [formState.setValues]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   if (!customer) {
     return null;
@@ -82,8 +88,8 @@ const ProfileForm = () => {
         className={styles.form}
         config={formConfig}
         defaults={customer}
-        validationErrors={[]}
-        handleUpdate={formState.setValues}
+        validationErrors={validationErrors}
+        handleUpdate={handleUpdate}
       />
       <div className={styles.actions}>
         <RippleButton
