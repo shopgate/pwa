@@ -15,6 +15,7 @@ export const TWO_COLUMN_LAYOUT = {
     '>div': {
       flex: '1 1 50%',
       padding: '0 8px',
+      maxWidth: '50%',
     },
     '>.phonePicker': {
       marginLeft: 8,
