@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PRODUCT_PROPERTIES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { SurroundPortals } from '../../../components';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import Content from './Content';
 import connect from './connector';
 

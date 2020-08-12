@@ -26,7 +26,12 @@ const getOrdersByNumberState = state => getOrdersState(state).ordersByNumber || 
  * @param {Object} state The current application state.
  * @return {Object} The orders state.
  */
-export const getOrders = state => getOrdersState(state).orders.orders;
+export const getOrders = createSelector(
+  getOrdersState,
+  getOrdersByNumberState,
+  (orders, ordersByNumber) => orders.orders.orders
+    .map(orderNumber => ordersByNumber[orderNumber]?.order)
+);
 
 /**
  * Retrieves total count of orders from the store.
