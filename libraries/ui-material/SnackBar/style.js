@@ -9,11 +9,12 @@ const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
 const safebuttonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
 
 const container = css({
-  marginTop: 'calc((var(--snack-bar-height, 80px) * -1) - var(--footer-height))',
-  position: 'relative',
+  position: 'fixed',
   height: 'var(--snack-bar-height, 80px)',
+  bottom: 'var(--footer-height)',
   overflow: 'hidden',
   zIndex: 6,
+  width: '100%',
 });
 
 const wrapper = css({
