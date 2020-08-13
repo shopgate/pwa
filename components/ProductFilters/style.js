@@ -9,8 +9,6 @@ export const filters = css({
   [responsiveMediaQuery('<=xs', { webOnly: true })]: {
     top: 56,
   },
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'stretch',
+  display: 'block',
   zIndex: 1000,
 }).toString();
