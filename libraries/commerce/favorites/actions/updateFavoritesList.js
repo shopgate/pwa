@@ -12,7 +12,7 @@ function updateFavoritesList(listId, name) {
   return async (dispatch) => {
     const request = new PipelineRequest(SHOPGATE_USER_UPDATE_FAVORITES_LIST)
       .setInput({
-        favoritesListId: listId,
+        id: listId,
         name,
       })
       .setRetries(0)
