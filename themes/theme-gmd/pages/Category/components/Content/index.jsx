@@ -16,7 +16,7 @@ const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
     <AppBar hasProducts={hasProducts} hasChildren={hasChildren} />
     <CategoryListContent categoryId={categoryId} />
 
-    <ProductFilters categoryId={categoryId} hasProducts={hasProducts} />
+    <ProductFilters categoryId={categoryId} showFilters={hasProducts} />
     <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
     <Empty
       categoryId={categoryId}
