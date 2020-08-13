@@ -39,7 +39,7 @@ const styles = {
  * Search component
  * @returns {JSX}
  */
-const Search = ({ search, routeSearchPhrase }) => {
+const Search = ({ search, routeSearchPhrase, isCheckout }) => {
   // Focus state.
   const [focus, setFocus] = useState(false);
   const handleOnFocus = useCallback(() => {
@@ -70,6 +70,10 @@ const Search = ({ search, routeSearchPhrase }) => {
     }
   }, [routeSearchPhrase]);
 
+  if (isCheckout) {
+    return null;
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={`${styles.root} ${focus && styles.rootFocused}`}>
@@ -91,11 +95,13 @@ const Search = ({ search, routeSearchPhrase }) => {
 
 Search.propTypes = {
   search: PropTypes.func.isRequired,
+  isCheckout: PropTypes.bool,
   routeSearchPhrase: PropTypes.string,
 };
 
 Search.defaultProps = {
   routeSearchPhrase: '',
+  isCheckout: false,
 };
 
 export default connect(Search);
