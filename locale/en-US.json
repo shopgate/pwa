@@ -20,7 +20,7 @@
     "shipping": "Shipping",
     "reviews": "Reviews",
     "browse": "Browse",
-    "favorites": "Favorites",
+    "favorites": "Wish List",
     "scanner": "Scanner",
     "checkout": "Checkout",
     "checkout_confirmation": "Order Successful",
@@ -81,27 +81,27 @@
     }
   },
   "favorites": {
-    "add": "Add to favorites",
-    "added": "Product has been added to favorites",
+    "add": "Add to wish list",
+    "added": "Product has been added to wish list",
     "continue": "Continue shopping",
-    "empty": "You don't have any favorites",
-    "error_add": "Product could not be added to favorites",
-    "error_remove": "Product could not be removed from favorites",
-    "error_limit": "You have exceeded the number of products allowed in the favorites.",
-    "remove": "Remove from favorites",
-    "removed": "Removed from favorites",
+    "empty": "You don't have any saved products",
+    "error_add": "Product could not be added to wish list",
+    "error_remove": "Product could not be removed from wish list",
+    "error_limit": "You have exceeded the number of products allowed in the wish list.",
+    "remove": "Remove from wish list",
+    "removed": "Removed from wish list",
     "add_list_modal": {
       "title": "Add a new List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the name for your new favorite list",
+      "message": "Enter the name for your new wish list",
       "label": "Name"
     },
     "rename_list_modal": {
       "title": "Renaming List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the new name for your favorite list",
+      "message": "Enter the new name for your wish list",
       "label": "Name"
     },
     "add_list": "Add New List",
@@ -112,7 +112,7 @@
       "title": "Choose a Method"
     },
     "list_chooser": {
-      "title": "Choose a Favorite List",
+      "title": "Choose a Wish List",
       "add": "Add",
       "remove": "Remove"
     },
@@ -437,7 +437,7 @@
     "browse": "Browse",
     "cart": "Cart",
     "more": "More",
-    "favorites": "Favorites"
+    "favorites": "Wish List"
   },
   "scanner": {
     "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
