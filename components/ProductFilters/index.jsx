@@ -10,7 +10,7 @@ import { filters } from './style';
  * @param {Object} props.categoryId The category id.
  * @returns {JSX}
  */
-const CategoryContent = ({ categoryId, hasProducts }) => {
+const ProductFilters = ({ categoryId, showFilters }) => {
   const { state } = useRoute();
   return (
     <ScrollHeader className={filters}>
@@ -18,7 +18,7 @@ const CategoryContent = ({ categoryId, hasProducts }) => {
         <GlobalLocationSwitcher renderBar />
       </ResponsiveContainer>
 
-      {hasProducts && (
+      {showFilters && (
         <FilterBar
           categoryId={categoryId}
           filters={state.filters}
@@ -28,13 +28,14 @@ const CategoryContent = ({ categoryId, hasProducts }) => {
   );
 };
 
-CategoryContent.propTypes = {
-  categoryId: PropTypes.string.isRequired,
-  hasProducts: PropTypes.bool,
+ProductFilters.propTypes = {
+  categoryId: PropTypes.string,
+  showFilters: PropTypes.bool,
 };
 
-CategoryContent.defaultProps = {
-  hasProducts: false,
+ProductFilters.defaultProps = {
+  showFilters: false,
+  categoryId: null,
 };
 
-export default CategoryContent;
+export default ProductFilters;
