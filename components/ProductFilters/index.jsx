@@ -15,7 +15,7 @@ const CategoryContent = ({ categoryId, hasProducts }) => {
   return (
     <ScrollHeader className={filters}>
       <ResponsiveContainer appAlways breakpoint="<=xs">
-        <GlobalLocationSwitcher renderBar standalone />
+        <GlobalLocationSwitcher renderBar />
       </ResponsiveContainer>
 
       {hasProducts && (
