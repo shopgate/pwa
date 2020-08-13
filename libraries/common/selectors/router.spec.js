@@ -1,8 +1,10 @@
+import cloneDeep from 'lodash/cloneDeep';
 import {
   makeIsLastStackEntry,
   makeGetRoutePattern,
   makeGetRouteParam,
   makeGetPrevRoute,
+  makeGetPrevRouteIndexByPattern,
 } from './router';
 
 const mockState = {
@@ -157,6 +159,54 @@ describe('Router selectors', () => {
       const getRouteParam = makeGetRouteParam('does-not-exist');
       const result = getRouteParam(mockState);
       expect(result).toBe(null);
+    });
+  });
+
+  describe('makeGetPrevRouteIndexByPattern()', () => {
+    let localMockState;
+
+    beforeEach(() => {
+      localMockState = cloneDeep(mockState);
+      ([,, localMockState.router.currentRoute] = localMockState.router.stack);
+    });
+
+    it('should create a fresh instance on every call', () => {
+      const instanceOne = makeGetPrevRouteIndexByPattern();
+      const instanceTwo = makeGetPrevRouteIndexByPattern();
+      expect(instanceOne).not.toBe(instanceTwo);
+    });
+
+    it('should return the expected index', () => {
+      const getPrevRouteIndexByPattern = makeGetPrevRouteIndexByPattern('/some-route');
+      const result = getPrevRouteIndexByPattern(localMockState);
+      expect(result).toBe(1);
+    });
+
+    it('should return the expected index', () => {
+      const getPrevRouteIndexByPattern = makeGetPrevRouteIndexByPattern('/');
+      const result = getPrevRouteIndexByPattern(localMockState);
+      expect(result).toBe(0);
+    });
+
+    it('should return -1 when nothing was found', () => {
+      const getPrevRouteIndexByPattern = makeGetPrevRouteIndexByPattern('/some-route2');
+      const result = getPrevRouteIndexByPattern(localMockState);
+      expect(result).toBe(-1);
+    });
+
+    it('should return the expected index when there are two routes with the same pattern within the stack', () => {
+      const [one, two, three] = localMockState.router.stack;
+      localMockState.router.stack = [
+        one,
+        one,
+        two,
+        two,
+        three,
+      ];
+
+      const getPrevRouteIndexByPattern = makeGetPrevRouteIndexByPattern('/some-route');
+      const result = getPrevRouteIndexByPattern(localMockState);
+      expect(result).toBe(3);
     });
   });
 });
