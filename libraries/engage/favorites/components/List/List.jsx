@@ -40,7 +40,7 @@ const FavoriteListLabel = ({
         <ContextMenu.Item onClick={rename}>
           {i18n.text('favorites.rename_list')}
         </ContextMenu.Item>
-        <ContextMenu.Item onClick={remove}>
+        <ContextMenu.Item onClick={remove} disabled={code === 'DEFAULT'}>
           {i18n.text('favorites.remove_list')}
         </ContextMenu.Item>
       </ContextMenu>

@@ -16,25 +16,4 @@ const mapStateToProps = state => ({
   initialLoading: isInitialLoading(state),
 });
 
-/**
- * @param {Object} next The next component props.
- * @param {Object} prev The previous component props.
- * @return {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (prev.products.length !== next.products.length) {
-    return false;
-  }
-
-  if (prev.lists.length !== next.lists.length) {
-    return false;
-  }
-
-  if (prev.initialLoading !== next.initialLoading) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps);

@@ -13,6 +13,7 @@ class Glow extends Component {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     color: PropTypes.string,
+    disabled: PropTypes.bool,
     forwardedRef: PropTypes.shape(),
     styles: PropTypes.shape({
       container: PropTypes.shape(),
@@ -25,6 +26,7 @@ class Glow extends Component {
     color: themeConfig.colors.shade8,
     className: null,
     forwardedRef: null,
+    disabled: false,
     styles: {
       container: null,
       glow: null,
@@ -53,6 +55,10 @@ class Glow extends Component {
   }
 
   handleTouchTap = () => {
+    if (this.props.disabled) {
+      return;
+    }
+
     this.setState({ hover: true });
 
     this.timeout = setTimeout(() => {
