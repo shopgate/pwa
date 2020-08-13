@@ -209,3 +209,26 @@ export const getRouterStackIndex = createSelector(
     return index >= 0 ? index : null;
   }
 );
+
+/**
+ * Creates a selector that retrieves the index of the most next previous route with
+ * the desired pattern within the stack
+ * @param {string} pattern The desired route pattern
+ * @returns {Function}
+ */
+export const makeGetPrevRouteIndexByPattern = pattern =>
+  /**
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @returns {Object} The route.
+   */
+  createSelector(
+    getRouterStack,
+    getRouterStackIndex,
+    (routerStack, routerStackIndex) => {
+      const sliced = routerStack.slice(0, routerStackIndex);
+      const reversedIndex = sliced.reverse().findIndex(route => route.pattern === pattern);
+      return reversedIndex === -1 ? reversedIndex : sliced.length - 1 - reversedIndex;
+    }
+  );
+

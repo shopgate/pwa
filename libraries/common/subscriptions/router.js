@@ -88,8 +88,9 @@ export default function routerSubscriptions(subscribe) {
          * route briefly renders - same for HISTORY_RESET_TO
          */
         router.pop({
-          steps: historyLength - 1,
+          steps: steps || historyLength - 1,
         });
+
         return;
       }
       case HISTORY_RESET_TO: {
@@ -104,6 +105,7 @@ export default function routerSubscriptions(subscribe) {
           pathname: resetToPathname,
           state: routeState,
         });
+
         return;
       }
       default:
