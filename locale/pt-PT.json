@@ -104,6 +104,9 @@
       "label": "Name"
     },
     "add_list": "Add New List",
+    "errors": {
+      "invalid_name": "Please enter a valid name for your wish list"
+    },
     "rename_list": "Rename",
     "remove_list": "Remove",
     "add_to_list": "Add to list",
