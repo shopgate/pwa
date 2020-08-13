@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useScroll } from '@shopgate/engage/core';
-import { header, hidden, visible } from './style';
+import { header, hidden } from './style';
 import { ViewContext } from '../View';
 
 /**
@@ -15,28 +15,29 @@ import { ViewContext } from '../View';
 function ScrollHeader({ className, children }) {
   const ref = useRef();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
-  const [shouldShowHeader, setShouldShowHeader] = useState(false);
   const { contentRef } = useContext(ViewContext);
+  const [offset, setOffset] = useState(0);
 
   const onScroll = useCallback((callbackData) => {
     const { previousScrollTop, currentScrollTop } = callbackData;
     if (previousScrollTop !== currentScrollTop) {
       const isScrolledDown = previousScrollTop < currentScrollTop;
       const box = ref.current.getBoundingClientRect();
-      setShouldHideHeader(isScrolledDown && box.top <= -box.height);
-      setShouldShowHeader(!isScrolledDown);
+      const stickHeader = currentScrollTop >= offset + 100;
+      if (!previousScrollTop) {
+        setOffset(currentScrollTop + box.top);
+      }
+      setShouldHideHeader(isScrolledDown && stickHeader);
     }
-  }, []);
+  }, [offset]);
 
   useScroll(onScroll, contentRef?.current);
-
   return (
     <div
       ref={ref}
       className={classNames(
         header,
         shouldHideHeader && hidden,
-        shouldShowHeader && visible,
         className
       )}
     >
