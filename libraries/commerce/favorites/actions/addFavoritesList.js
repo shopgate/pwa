@@ -15,10 +15,10 @@ function addFavoritesList(name) {
       .dispatch();
 
     try {
-      const { favoritesListId } = await request;
+      const { id } = await request;
       dispatch({
         type: SUCCESS_ADD_FAVORITES_LIST,
-        listId: favoritesListId,
+        listId: id,
         name,
       });
     } catch (_) {
