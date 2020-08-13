@@ -89,7 +89,7 @@ export const toggleFavoriteWithListChooser = mutable(
 
       // Only one list available therefore we just add/remove it the product there.
       if (lists.length <= 1) {
-        dispatch(toggleFavorite(productId, lists[0].code, withRelatives));
+        dispatch(toggleFavorite(productId, lists[0].id, withRelatives));
         return;
       }
 
