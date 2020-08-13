@@ -162,7 +162,7 @@ export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode)
   getProductCode,
   getListCode,
   getFavoritesProducts,
-  (productId, listId, products) => products.byList[listId]?.ids.includes(productId)
+  (productId, listId, products) => !!products.byList[listId]?.ids.includes(productId)
 );
 
 /**

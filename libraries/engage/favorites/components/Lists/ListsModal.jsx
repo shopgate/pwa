@@ -17,8 +17,13 @@ const styles = {
  */
 const ListsModal = ({ type, onConfirm, onDismiss }) => {
   const [input, setInput] = useState('');
+  const [error, setError] = useState(null);
 
   const onConfirmWrapped = useCallback(() => {
+    if (input.length === 0) {
+      setError(i18n.text('favorites.errors.invalid_name'));
+      return;
+    }
     onConfirm(input);
   }, [input, onConfirm]);
 
@@ -43,6 +48,7 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
           label={i18n.text(`favorites.${type}_modal.label`)}
           onChange={onChange}
           value={input}
+          errorText={error || undefined}
         />
       </div>
     </Dialog>

@@ -44,20 +44,20 @@ const lists = (state = {
 
       case SUCCESS_ADD_FAVORITES_LIST: {
         draft.lists.push({
-          code: action.listId,
+          id: action.listId,
           name: action.name,
         });
         break;
       }
 
       case SUCCESS_UPDATE_FAVORITES_LIST: {
-        const list = draft.lists.find(l => l.code === action.listId);
+        const list = draft.lists.find(l => l.id === action.listId);
         list.name = action.name;
         break;
       }
 
       case SUCCESS_REMOVE_FAVORITES_LIST: {
-        const listIndex = draft.lists.findIndex(l => l.code === action.listId);
+        const listIndex = draft.lists.findIndex(l => l.id === action.listId);
         draft.lists.splice(listIndex, 1);
         break;
       }
