@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
 import {
   getCartProductDisplayCount,
   getGrandTotalData,
   getCurrency,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { navigate } from './WideBar.actions';
 
 /**
  * Maps the contents of the state to the component props.
@@ -23,7 +23,7 @@ const mapStateToProps = state => ({
  * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: () => dispatch(historyPush({ pathname: CART_PATH })),
+  navigate: () => dispatch(navigate(CART_PATH)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
