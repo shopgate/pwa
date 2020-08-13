@@ -8,9 +8,10 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { ResponsiveContainer } from '@shopgate/engage/components';
+import ProductFilters from 'Components/ProductFilters';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
-import Bar from '../Bar';
+import Bar from 'Components/PageTitleBar';
 import Products from '../Products';
 import { emptyWrapper } from './style';
 import connect from './connector';
@@ -59,7 +60,7 @@ class SearchContent extends Component {
    */
   render() {
     const {
-      searchPhrase, showNoResults,
+      searchPhrase, showNoResults, showFilterBar,
     } = this.props;
 
     return (
@@ -72,6 +73,9 @@ class SearchContent extends Component {
             <ResponsiveContainer webOnly breakpoint=">xs">
               { this.getAppBar() }
             </ResponsiveContainer>
+            <ProductFilters
+              showFilters={showFilterBar}
+            />
             <Products
               searchPhrase={searchPhrase}
               filters={state.filters}
