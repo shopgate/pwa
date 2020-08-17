@@ -2,6 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { LiveshoppingWidget } from '.';
 
+jest.mock('@shopgate/engage/components', () => ({
+  ProductImage: () => null,
+}));
+jest.mock('@shopgate/engage/filter', () => ({
+  makeGetDefaultSortOrder: () => () => null,
+}));
+
 describe('<LiveshoppingWidget />', () => {
   /**
    * Mocks the liveshopping products pipeline request.

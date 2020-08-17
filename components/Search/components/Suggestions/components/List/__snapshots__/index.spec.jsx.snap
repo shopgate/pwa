@@ -28,417 +28,150 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       }
     }
   >
-    <Portal
-      name="search.suggestions.before"
-      props={
+    <div
+      className={
         Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo",
-            "foo bar",
-            "foo bar buz",
-            "foo bar buz quz",
-          ],
-        }
-      }
-    />
-    <Portal
-      name="search.suggestions"
-      props={
-        Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo",
-            "foo bar",
-            "foo bar buz",
-            "foo bar buz quz",
-          ],
+          "data-css-1aemm47": "",
         }
       }
     >
-      <div
-        className={
+      <SurroundPortals
+        key="foo"
+        portalName="search.suggestion-item"
+        portalProps={
           Object {
-            "data-css-1aemm47": "",
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo",
           }
         }
       >
-        <SurroundPortals
-          key="foo"
-          portalName="search.suggestion-item"
-          portalProps={
+        <button
+          className={
             Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo",
+              "data-css-xt0zkn": "",
             }
           }
+          data-test-id="searchSuggestion foo"
+          onClick={[Function]}
+          type="button"
+          value="foo"
         >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
               Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
           >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo"
-              onClick={[Function]}
-              type="button"
-              value="foo"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                >
-                  foo
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar",
-            }
+            foo
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar",
           }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar"
-              onClick={[Function]}
-              type="button"
-              value="foo bar"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                >
-                  foo bar
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar buz"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar buz",
-            }
-          }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar buz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                >
-                  foo bar buz
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar buz quz"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar buz quz",
-            }
-          }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar buz quz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz quz"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                >
-                  foo bar buz quz
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          />
-        </SurroundPortals>
-      </div>
-    </Portal>
-    <Portal
-      name="search.suggestions.after"
-      props={
-        Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo",
-            "foo bar",
-            "foo bar buz",
-            "foo bar buz quz",
-          ],
         }
-      }
-    />
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar"
+          onClick={[Function]}
+          type="button"
+          value="foo bar"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar",
+              }
+            }
+          >
+            foo bar
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar buz"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar buz",
+          }
+        }
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar buz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar buz",
+              }
+            }
+          >
+            foo bar buz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar buz quz"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar buz quz",
+          }
+        }
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar buz quz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz quz"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar buz quz",
+              }
+            }
+          >
+            foo bar buz quz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+    </div>
   </SurroundPortals>
 </SuggestionList>
 `;
@@ -471,417 +204,150 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       }
     }
   >
-    <Portal
-      name="search.suggestions.before"
-      props={
+    <div
+      className={
         Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo",
-            "foo bar",
-            "foo bar buz",
-            "foo bar buz quz",
-          ],
-        }
-      }
-    />
-    <Portal
-      name="search.suggestions"
-      props={
-        Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo",
-            "foo bar",
-            "foo bar buz",
-            "foo bar buz quz",
-          ],
+          "data-css-1aemm47": "",
         }
       }
     >
-      <div
-        className={
+      <SurroundPortals
+        key="foo"
+        portalName="search.suggestion-item"
+        portalProps={
           Object {
-            "data-css-1aemm47": "",
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo",
           }
         }
       >
-        <SurroundPortals
-          key="foo"
-          portalName="search.suggestion-item"
-          portalProps={
+        <button
+          className={
             Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo",
+              "data-css-xt0zkn": "",
             }
           }
+          data-test-id="searchSuggestion foo"
+          onClick={[Function]}
+          type="button"
+          value="foo"
         >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
               Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
           >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo"
-              onClick={[Function]}
-              type="button"
-              value="foo"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                >
-                  foo
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar",
-            }
+            foo
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar",
           }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar"
-              onClick={[Function]}
-              type="button"
-              value="foo bar"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                >
-                  foo bar
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar buz"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar buz",
-            }
-          }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar buz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                >
-                  foo bar buz
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar buz quz"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar buz quz",
-            }
-          }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar buz quz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz quz"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                >
-                  foo bar buz quz
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          />
-        </SurroundPortals>
-      </div>
-    </Portal>
-    <Portal
-      name="search.suggestions.after"
-      props={
-        Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo",
-            "foo bar",
-            "foo bar buz",
-            "foo bar buz quz",
-          ],
         }
-      }
-    />
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar"
+          onClick={[Function]}
+          type="button"
+          value="foo bar"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar",
+              }
+            }
+          >
+            foo bar
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar buz"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar buz",
+          }
+        }
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar buz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar buz",
+              }
+            }
+          >
+            foo bar buz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar buz quz"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar buz quz",
+          }
+        }
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar buz quz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz quz"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar buz quz",
+              }
+            }
+          >
+            foo bar buz quz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+    </div>
   </SurroundPortals>
 </SuggestionList>
 `;
@@ -914,417 +380,150 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       }
     }
   >
-    <Portal
-      name="search.suggestions.before"
-      props={
+    <div
+      className={
         Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo bar buz quz",
-            "foo bar buz",
-            "foo bar",
-            "foo",
-          ],
-        }
-      }
-    />
-    <Portal
-      name="search.suggestions"
-      props={
-        Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo bar buz quz",
-            "foo bar buz",
-            "foo bar",
-            "foo",
-          ],
+          "data-css-1aemm47": "",
         }
       }
     >
-      <div
-        className={
+      <SurroundPortals
+        key="foo bar buz quz"
+        portalName="search.suggestion-item"
+        portalProps={
           Object {
-            "data-css-1aemm47": "",
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar buz quz",
           }
         }
       >
-        <SurroundPortals
-          key="foo bar buz quz"
-          portalName="search.suggestion-item"
-          portalProps={
+        <button
+          className={
             Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar buz quz",
+              "data-css-xt0zkn": "",
             }
           }
+          data-test-id="searchSuggestion foo bar buz quz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz quz"
         >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
               Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
           >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar buz quz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz quz"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                >
-                  foo bar buz quz
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz quz",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar buz"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar buz",
-            }
+            foo bar buz quz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar buz"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar buz",
           }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar buz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                >
-                  foo bar buz
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar buz",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo bar"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo bar",
-            }
-          }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo bar"
-              onClick={[Function]}
-              type="button"
-              value="foo bar"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                >
-                  foo bar
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo bar",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo bar",
-              }
-            }
-          />
-        </SurroundPortals>
-        <SurroundPortals
-          key="foo"
-          portalName="search.suggestion-item"
-          portalProps={
-            Object {
-              "className": "css-xt0zkn",
-              "onClick": [Function],
-              "suggestion": "foo",
-            }
-          }
-        >
-          <Portal
-            name="search.suggestion-item.before"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
-          />
-          <Portal
-            name="search.suggestion-item"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
-          >
-            <button
-              className={
-                Object {
-                  "data-css-xt0zkn": "",
-                }
-              }
-              data-test-id="searchSuggestion foo"
-              onClick={[Function]}
-              type="button"
-              value="foo"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo",
-                  }
-                }
-              >
-                <Portal
-                  name="search.suggestion-item-content.before"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                />
-                <Portal
-                  name="search.suggestion-item-content"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                >
-                  foo
-                </Portal>
-                <Portal
-                  name="search.suggestion-item-content.after"
-                  props={
-                    Object {
-                      "suggestion": "foo",
-                    }
-                  }
-                />
-              </SurroundPortals>
-            </button>
-          </Portal>
-          <Portal
-            name="search.suggestion-item.after"
-            props={
-              Object {
-                "className": "css-xt0zkn",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
-          />
-        </SurroundPortals>
-      </div>
-    </Portal>
-    <Portal
-      name="search.suggestions.after"
-      props={
-        Object {
-          "onClick": [Function],
-          "suggestions": Array [
-            "foo bar buz quz",
-            "foo bar buz",
-            "foo bar",
-            "foo",
-          ],
         }
-      }
-    />
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar buz"
+          onClick={[Function]}
+          type="button"
+          value="foo bar buz"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar buz",
+              }
+            }
+          >
+            foo bar buz
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo bar"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo bar",
+          }
+        }
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo bar"
+          onClick={[Function]}
+          type="button"
+          value="foo bar"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo bar",
+              }
+            }
+          >
+            foo bar
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+      <SurroundPortals
+        key="foo"
+        portalName="search.suggestion-item"
+        portalProps={
+          Object {
+            "className": "css-xt0zkn",
+            "onClick": [Function],
+            "suggestion": "foo",
+          }
+        }
+      >
+        <button
+          className={
+            Object {
+              "data-css-xt0zkn": "",
+            }
+          }
+          data-test-id="searchSuggestion foo"
+          onClick={[Function]}
+          type="button"
+          value="foo"
+        >
+          <SurroundPortals
+            portalName="search.suggestion-item-content"
+            portalProps={
+              Object {
+                "suggestion": "foo",
+              }
+            }
+          >
+            foo
+          </SurroundPortals>
+        </button>
+      </SurroundPortals>
+    </div>
   </SurroundPortals>
 </SuggestionList>
 `;
@@ -1373,417 +572,150 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           }
         }
       >
-        <Portal
-          name="search.suggestions.before"
-          props={
+        <div
+          className={
             Object {
-              "onClick": [Function],
-              "suggestions": Array [
-                "foo",
-                "foo bar",
-                "foo bar buz",
-                "foo bar buz quz",
-              ],
-            }
-          }
-        />
-        <Portal
-          name="search.suggestions"
-          props={
-            Object {
-              "onClick": [Function],
-              "suggestions": Array [
-                "foo",
-                "foo bar",
-                "foo bar buz",
-                "foo bar buz quz",
-              ],
+              "data-css-1aemm47": "",
             }
           }
         >
-          <div
-            className={
+          <SurroundPortals
+            key="foo"
+            portalName="search.suggestion-item"
+            portalProps={
               Object {
-                "data-css-1aemm47": "",
+                "className": "css-xt0zkn",
+                "onClick": [Function],
+                "suggestion": "foo",
               }
             }
           >
-            <SurroundPortals
-              key="foo"
-              portalName="search.suggestion-item"
-              portalProps={
+            <button
+              className={
                 Object {
-                  "className": "css-xt0zkn",
-                  "onClick": [Function],
-                  "suggestion": "foo",
+                  "data-css-xt0zkn": "",
                 }
               }
+              data-test-id="searchSuggestion foo"
+              onClick={[Function]}
+              type="button"
+              value="foo"
             >
-              <Portal
-                name="search.suggestion-item.before"
-                props={
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
                   Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo",
-                  }
-                }
-              />
-              <Portal
-                name="search.suggestion-item"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
                     "suggestion": "foo",
                   }
                 }
               >
-                <button
-                  className={
-                    Object {
-                      "data-css-xt0zkn": "",
-                    }
-                  }
-                  data-test-id="searchSuggestion foo"
-                  onClick={[Function]}
-                  type="button"
-                  value="foo"
-                >
-                  <SurroundPortals
-                    portalName="search.suggestion-item-content"
-                    portalProps={
-                      Object {
-                        "suggestion": "foo",
-                      }
-                    }
-                  >
-                    <Portal
-                      name="search.suggestion-item-content.before"
-                      props={
-                        Object {
-                          "suggestion": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="search.suggestion-item-content"
-                      props={
-                        Object {
-                          "suggestion": "foo",
-                        }
-                      }
-                    >
-                      foo
-                    </Portal>
-                    <Portal
-                      name="search.suggestion-item-content.after"
-                      props={
-                        Object {
-                          "suggestion": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
-                </button>
-              </Portal>
-              <Portal
-                name="search.suggestion-item.after"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo",
-                  }
-                }
-              />
-            </SurroundPortals>
-            <SurroundPortals
-              key="foo bar"
-              portalName="search.suggestion-item"
-              portalProps={
-                Object {
-                  "className": "css-xt0zkn",
-                  "onClick": [Function],
-                  "suggestion": "foo bar",
-                }
+                foo
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+          <SurroundPortals
+            key="foo bar"
+            portalName="search.suggestion-item"
+            portalProps={
+              Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
+                "suggestion": "foo bar",
               }
-            >
-              <Portal
-                name="search.suggestion-item.before"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar",
-                  }
-                }
-              />
-              <Portal
-                name="search.suggestion-item"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar",
-                  }
-                }
-              >
-                <button
-                  className={
-                    Object {
-                      "data-css-xt0zkn": "",
-                    }
-                  }
-                  data-test-id="searchSuggestion foo bar"
-                  onClick={[Function]}
-                  type="button"
-                  value="foo bar"
-                >
-                  <SurroundPortals
-                    portalName="search.suggestion-item-content"
-                    portalProps={
-                      Object {
-                        "suggestion": "foo bar",
-                      }
-                    }
-                  >
-                    <Portal
-                      name="search.suggestion-item-content.before"
-                      props={
-                        Object {
-                          "suggestion": "foo bar",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="search.suggestion-item-content"
-                      props={
-                        Object {
-                          "suggestion": "foo bar",
-                        }
-                      }
-                    >
-                      foo bar
-                    </Portal>
-                    <Portal
-                      name="search.suggestion-item-content.after"
-                      props={
-                        Object {
-                          "suggestion": "foo bar",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
-                </button>
-              </Portal>
-              <Portal
-                name="search.suggestion-item.after"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar",
-                  }
-                }
-              />
-            </SurroundPortals>
-            <SurroundPortals
-              key="foo bar buz"
-              portalName="search.suggestion-item"
-              portalProps={
-                Object {
-                  "className": "css-xt0zkn",
-                  "onClick": [Function],
-                  "suggestion": "foo bar buz",
-                }
-              }
-            >
-              <Portal
-                name="search.suggestion-item.before"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar buz",
-                  }
-                }
-              />
-              <Portal
-                name="search.suggestion-item"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar buz",
-                  }
-                }
-              >
-                <button
-                  className={
-                    Object {
-                      "data-css-xt0zkn": "",
-                    }
-                  }
-                  data-test-id="searchSuggestion foo bar buz"
-                  onClick={[Function]}
-                  type="button"
-                  value="foo bar buz"
-                >
-                  <SurroundPortals
-                    portalName="search.suggestion-item-content"
-                    portalProps={
-                      Object {
-                        "suggestion": "foo bar buz",
-                      }
-                    }
-                  >
-                    <Portal
-                      name="search.suggestion-item-content.before"
-                      props={
-                        Object {
-                          "suggestion": "foo bar buz",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="search.suggestion-item-content"
-                      props={
-                        Object {
-                          "suggestion": "foo bar buz",
-                        }
-                      }
-                    >
-                      foo bar buz
-                    </Portal>
-                    <Portal
-                      name="search.suggestion-item-content.after"
-                      props={
-                        Object {
-                          "suggestion": "foo bar buz",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
-                </button>
-              </Portal>
-              <Portal
-                name="search.suggestion-item.after"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar buz",
-                  }
-                }
-              />
-            </SurroundPortals>
-            <SurroundPortals
-              key="foo bar buz quz"
-              portalName="search.suggestion-item"
-              portalProps={
-                Object {
-                  "className": "css-xt0zkn",
-                  "onClick": [Function],
-                  "suggestion": "foo bar buz quz",
-                }
-              }
-            >
-              <Portal
-                name="search.suggestion-item.before"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
-              />
-              <Portal
-                name="search.suggestion-item"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
-              >
-                <button
-                  className={
-                    Object {
-                      "data-css-xt0zkn": "",
-                    }
-                  }
-                  data-test-id="searchSuggestion foo bar buz quz"
-                  onClick={[Function]}
-                  type="button"
-                  value="foo bar buz quz"
-                >
-                  <SurroundPortals
-                    portalName="search.suggestion-item-content"
-                    portalProps={
-                      Object {
-                        "suggestion": "foo bar buz quz",
-                      }
-                    }
-                  >
-                    <Portal
-                      name="search.suggestion-item-content.before"
-                      props={
-                        Object {
-                          "suggestion": "foo bar buz quz",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="search.suggestion-item-content"
-                      props={
-                        Object {
-                          "suggestion": "foo bar buz quz",
-                        }
-                      }
-                    >
-                      foo bar buz quz
-                    </Portal>
-                    <Portal
-                      name="search.suggestion-item-content.after"
-                      props={
-                        Object {
-                          "suggestion": "foo bar buz quz",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
-                </button>
-              </Portal>
-              <Portal
-                name="search.suggestion-item.after"
-                props={
-                  Object {
-                    "className": "css-xt0zkn",
-                    "onClick": [Function],
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
-              />
-            </SurroundPortals>
-          </div>
-        </Portal>
-        <Portal
-          name="search.suggestions.after"
-          props={
-            Object {
-              "onClick": [Function],
-              "suggestions": Array [
-                "foo",
-                "foo bar",
-                "foo bar buz",
-                "foo bar buz quz",
-              ],
             }
-          }
-        />
+          >
+            <button
+              className={
+                Object {
+                  "data-css-xt0zkn": "",
+                }
+              }
+              data-test-id="searchSuggestion foo bar"
+              onClick={[Function]}
+              type="button"
+              value="foo bar"
+            >
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
+                  Object {
+                    "suggestion": "foo bar",
+                  }
+                }
+              >
+                foo bar
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+          <SurroundPortals
+            key="foo bar buz"
+            portalName="search.suggestion-item"
+            portalProps={
+              Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
+                "suggestion": "foo bar buz",
+              }
+            }
+          >
+            <button
+              className={
+                Object {
+                  "data-css-xt0zkn": "",
+                }
+              }
+              data-test-id="searchSuggestion foo bar buz"
+              onClick={[Function]}
+              type="button"
+              value="foo bar buz"
+            >
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
+                  Object {
+                    "suggestion": "foo bar buz",
+                  }
+                }
+              >
+                foo bar buz
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+          <SurroundPortals
+            key="foo bar buz quz"
+            portalName="search.suggestion-item"
+            portalProps={
+              Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
+                "suggestion": "foo bar buz quz",
+              }
+            }
+          >
+            <button
+              className={
+                Object {
+                  "data-css-xt0zkn": "",
+                }
+              }
+              data-test-id="searchSuggestion foo bar buz quz"
+              onClick={[Function]}
+              type="button"
+              value="foo bar buz quz"
+            >
+              <SurroundPortals
+                portalName="search.suggestion-item-content"
+                portalProps={
+                  Object {
+                    "suggestion": "foo bar buz quz",
+                  }
+                }
+              >
+                foo bar buz quz
+              </SurroundPortals>
+            </button>
+          </SurroundPortals>
+        </div>
       </SurroundPortals>
     </SuggestionList>
   </Connect(SuggestionList)>

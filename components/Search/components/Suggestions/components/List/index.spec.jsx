@@ -17,6 +17,7 @@ jest.mock('@shopgate/pwa-common-commerce/search/selectors', () => ({
   ]),
   getSuggestionsFetchingState: () => mockedFetchingState,
 }));
+jest.mock('@shopgate/engage/components');
 
 describe('<SuggestionList />', () => {
   beforeEach(() => {
@@ -57,7 +58,10 @@ describe('<SuggestionList />', () => {
       expect(wrapper.exists(`button[value="${suggestion}"]`)).toEqual(true);
     });
 
-    wrapper.setProps({ fetching: true, suggestions: suggestionsTwo });
+    wrapper.setProps({
+      fetching: true,
+      suggestions: suggestionsTwo,
+    });
 
     expect(wrapper).toMatchSnapshot();
     suggestionsOne.forEach((suggestion) => {

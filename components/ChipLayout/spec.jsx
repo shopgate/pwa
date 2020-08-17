@@ -3,6 +3,8 @@ import { mount } from 'enzyme';
 import Chip from '@shopgate/pwa-ui-shared/Chip';
 import ChipsLayout from './index';
 
+jest.mock('@shopgate/engage/components');
+
 /**
  * Since the component uses the <Measure> component it needs an actual
  * browser to be tested as it needs a full browser that supports styling and
