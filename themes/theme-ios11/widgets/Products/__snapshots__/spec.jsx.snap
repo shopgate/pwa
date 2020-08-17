@@ -20,15 +20,12 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
         "reviews": undefined,
       }
     }
-    handleGetProducts={[Function]}
     infiniteLoad={false}
     products={
       Array [
         Object {},
       ]
     }
-    requestHash={null}
-    totalProductCount={null}
   />
 </div>
 `;

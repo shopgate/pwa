@@ -7,6 +7,14 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useContext: jest.fn().mockReturnValue({ flags: {} }),
 }));
+const mockContext = jest.fn();
+jest.mock('@shopgate/engage/cart', () => ({
+  FLAG_MULTI_LINE_RESERVE: 'FLAG_MULTI_LINE_RESERVE',
+  CartContext: {
+    Consumer: props => props.children(mockContext),
+  },
+  SupplementalContent: () => null,
+}));
 
 describe('<Footer />', () => {
   it('should render as expected when all items are supposed to be shown', () => {

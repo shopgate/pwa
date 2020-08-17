@@ -10,6 +10,7 @@ jest.mock('@shopgate/engage/core', () => ({
   withApp: component => component,
   isIOSTheme: () => false,
   hasWebBridge: () => false,
+  useScrollContainer: () => false,
   useRoute: () => ({
     state: {
       filters: {},
@@ -20,8 +21,12 @@ jest.mock('@shopgate/engage/core', () => ({
   }),
 }));
 
-jest.mock('@shopgate/engage/components/View', () => ({
+jest.mock('@shopgate/engage/components', () => ({
   ViewContext: jest.fn(),
+  ResponsiveContainer: ({ children }) => children,
+}));
+jest.mock('@shopgate/engage/locations', () => ({
+  GlobalLocationSwitcher: () => null,
 }));
 
 jest.mock('react', () => ({

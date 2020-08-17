@@ -10,7 +10,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
   role="button"
   tabIndex={-1}
 >
-  <Connect(Link)
+  <Link
     href=""
     state={
       Object {
@@ -21,7 +21,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     <Swatches
       productId="1234"
     />
-  </Connect(Link)>
+  </Link>
   <TextLink
     className="css-nfstwl"
     href=""
@@ -37,7 +37,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       productId="1234"
     />
   </TextLink>
-  <Connect(Link)
+  <Link
     className="css-1mm725o"
     href=""
     state={
@@ -60,7 +60,6 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       productId="1234"
     />
     <Availability
-      className=""
       showWhenAvailable={false}
       state="ok"
       text="product.available.not"
@@ -74,6 +73,6 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
         productId="1234"
       />
     </div>
-  </Connect(Link)>
+  </Link>
 </div>
 `;

@@ -33,6 +33,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       <Glow
         className={null}
         color="#f7f7f7"
+        disabled={false}
         forwardedRef={null}
         styles={
           Object {
@@ -44,6 +45,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       >
         <div
           className="css-13azwyo"
+          disabled={false}
           onClick={[Function]}
         >
           <div
@@ -301,6 +303,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         <Glow
           className={null}
           color="#f7f7f7"
+          disabled={false}
           forwardedRef={null}
           styles={
             Object {
@@ -312,6 +315,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         >
           <div
             className="css-13azwyo"
+            disabled={false}
             onClick={[Function]}
           >
             <div

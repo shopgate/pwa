@@ -4,6 +4,8 @@ import ResetButton from './index';
 
 const clickMock = jest.fn();
 
+jest.mock('@shopgate/engage/components');
+
 describe('Filter: <ResetButton />', () => {
   it('should render as activated', () => {
     const wrapper = shallow(<ResetButton active onClick={() => {}} />);

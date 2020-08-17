@@ -3,7 +3,7 @@
 exports[`<ItemPrice /> should render with minimal props 1`] = `
 <Fragment>
   <Portal
-    name="product-item.price.before"
+    name="PRODUCT_ITEM_PRICE_BEFORE"
     props={
       Object {
         "location": "productGrid",
@@ -12,7 +12,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
     }
   />
   <Portal
-    name="product-item.price"
+    name="PRODUCT_ITEM_PRICE"
     props={
       Object {
         "location": "productGrid",
@@ -25,7 +25,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
     />
   </Portal>
   <Portal
-    name="product-item.price.after"
+    name="PRODUCT_ITEM_PRICE_AFTER"
     props={
       Object {
         "location": "productGrid",

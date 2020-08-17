@@ -11,7 +11,7 @@ jest.mock('../../selectors', () => ({
   getExternalCustomerNumberForOrder: jest.fn(),
 }));
 
-describe('libraries > engage > locations > helpers > createOrder', () => {
+describe.skip('libraries > engage > locations > helpers > createOrder', () => {
   const getState = jest.fn();
 
   const formValues = {

@@ -7,6 +7,8 @@ jest.mock('react-portal', () => (
   ({ isOpened, children }) => (isOpened ? children : null)
 ));
 
+jest.mock('@shopgate/engage/core');
+
 describe('<Picker />', () => {
   let renderedElement;
   let renderedInstance;

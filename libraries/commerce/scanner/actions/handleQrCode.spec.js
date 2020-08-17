@@ -41,6 +41,7 @@ jest.mock('@shopgate/pwa-common-commerce/category', () => ({
 jest.mock('../helpers', () => ({
   parse2dsQrCode: jest.fn(),
 }));
+jest.mock('@shopgate/pwa-core/commands/registerEvents', () => jest.fn());
 
 jest.mock('./handleSearch');
 jest.mock('./handleNoResults');

@@ -17,6 +17,7 @@ jest.mock('@shopgate/pwa-common-commerce/search/selectors', () => ({
   ]),
   getSuggestionsFetchingState: () => mockedFetchingState,
 }));
+jest.mock('@shopgate/engage/components');
 
 describe('<SuggestionList />', () => {
   beforeEach(() => {

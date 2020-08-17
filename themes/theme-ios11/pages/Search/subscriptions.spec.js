@@ -27,6 +27,9 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
 jest.mock('@shopgate/engage/product', () => ({
   buildFetchSearchResultsParams: jest.fn(),
 }));
+jest.mock('./streams', () => ({
+  ...require.requireActual('@shopgate/engage/locations/locations.streams'),
+}));
 
 describe('SearchPage subscriptions', () => {
   const subscribe = jest.fn();

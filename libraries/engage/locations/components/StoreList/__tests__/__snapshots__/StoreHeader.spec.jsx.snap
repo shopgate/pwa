@@ -9,49 +9,40 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
     role="button"
     tabIndex={0}
   >
-    <Grid
-      className=""
-      component="ul"
-      wrap={false}
-    >
-      <ul
-        className=" css-h7r55a"
+    <Grid>
+      <Grid.Item
+        className="css-1qlb3ci"
+        grow={1}
       >
-        <GridItem
-          className="css-1qlb3ci"
-          component="li"
-          grow={1}
-          shrink={1}
-        >
-          <li
-            className="css-1qlb3ci css-1gs0ko2"
-          >
-            SomeStore
-            <ResponsiveContainer
-              appAlways={false}
-              appOnly={false}
-              breakpoint=">=sm"
-              webAlways={false}
-              webOnly={true}
-            />
-          </li>
-        </GridItem>
+        SomeStore
         <ResponsiveContainer
-          appAlways={true}
-          appOnly={false}
-          breakpoint="<sm"
-          webAlways={false}
-          webOnly={false}
+          breakpoint=">=sm"
+          webOnly={true}
         >
-          <GridItem
-            className=""
-            component="li"
-            grow={0}
-            shrink={0}
-          >
-            <li
-              className=" css-1l9a57c"
+          <ul>
+            <Grid.Item
+              shrink={0}
             >
+              <StockInfo
+                location={
+                  Object {
+                    "code": "store",
+                    "distance": 0.02,
+                    "name": "SomeStore",
+                    "operationHours": Object {
+                      "fri": "8:00am - 4:00pm",
+                      "mon": "8:00am - 4:00pm",
+                      "sat": "8:00am - 4:00pm",
+                      "sun": "8:00am - 4:00pm",
+                      "thu": "8:00am - 4:00pm",
+                      "tue": "8:00am - 4:00pm",
+                      "wed": "8:00am - 4:00pm",
+                    },
+                    "unitSystem": "metric",
+                  }
+                }
+                showStoreName={false}
+              />
               <StoreDistance
                 distance={0.02}
                 unitSystem="metric"
@@ -62,17 +53,39 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
                   formats.distance.pattern
                 </span>
               </StoreDistance>
-            </li>
-          </GridItem>
+            </Grid.Item>
+          </ul>
         </ResponsiveContainer>
-        <ResponsiveContainer
-          appAlways={false}
-          appOnly={false}
-          breakpoint=">=sm"
-          webAlways={false}
-          webOnly={true}
-        />
-      </ul>
+      </Grid.Item>
+      <ResponsiveContainer
+        appAlways={true}
+        breakpoint="<sm"
+      >
+        <Grid.Item
+          shrink={0}
+        >
+          <StoreDistance
+            distance={0.02}
+            unitSystem="metric"
+          >
+            <span
+              className="css-t7m18c"
+            >
+              formats.distance.pattern
+            </span>
+          </StoreDistance>
+        </Grid.Item>
+      </ResponsiveContainer>
+      <ResponsiveContainer
+        breakpoint=">=sm"
+        webOnly={true}
+      >
+        <Grid.Item
+          shrink={0}
+        >
+          <StoreSelectLocationButton />
+        </Grid.Item>
+      </ResponsiveContainer>
     </Grid>
     <StoreHoursToday
       hours={

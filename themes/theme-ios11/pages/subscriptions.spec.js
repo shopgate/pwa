@@ -11,14 +11,26 @@ import {
   getScannerRoute,
   SCANNER_PATH,
 } from '@shopgate/pwa-common-commerce/scanner';
-import grantCameraPermissions from '@shopgate/engage/core/actions/grantCameraPermissions';
-
+import { grantCameraPermissions } from '@shopgate/engage/core';
 import subscriptions from './subscriptions';
 
 jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('@shopgate/engage/core/actions/grantCameraPermissions', () =>
-  jest.fn().mockResolvedValue(true));
+jest.mock('@shopgate/engage/core', () => ({
+  hasWebBridge: () => false,
+  useScrollContainer: () => false,
+  isIOSTheme: () => false,
+  isBeta: () => false,
+  withCurrentProduct: component => component,
+  withForwardedRef: jest.fn(),
+  grantCameraPermissions: jest.fn().mockResolvedValue(true),
+}));
+jest.mock('@shopgate/engage/product', () => ({
+  productImageFormats: new Map(),
+  enableRedirectHandler: jest.fn(),
+  setDefaultProductFetchParams: jest.fn(),
+  ITEM_PATH: 'ITEM_PATH',
+}));
 
 const currentPath = '/some/path';
 

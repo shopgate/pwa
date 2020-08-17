@@ -216,106 +216,55 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     onScroll={[Function]}
                   >
                     <SheetList
-                      className={null}
-                      hasImages={false}
                       key=".0"
                       onClose={[Function]}
-                      testId={null}
                     >
-                      <List
-                        className={null}
-                        role="listbox"
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 2,
+                            "id": "1",
+                            "isFetching": false,
+                            "name": "Category 1",
+                          }
+                        }
+                        key="1"
+                        onClick={[Function]}
+                        selected={false}
                       >
-                        <ul
-                          className={null}
-                          role="listbox"
+                        <button
+                          className="css-1ibkwsv"
+                          key="1"
+                          onClick={[Function]}
+                          type="button"
+                          value="1"
                         >
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-0/.$1"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 2,
-                                      "id": "1",
-                                      "isFetching": false,
-                                      "name": "Category 1",
-                                    }
-                                  }
-                                  key="1"
-                                  onClick={[Function]}
-                                  selected={false}
-                                >
-                                  <button
-                                    className="css-1ibkwsv"
-                                    key="1"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="1"
-                                  >
-                                    Category 1
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-1/.$2"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 0,
-                                      "id": "2",
-                                      "isFetching": false,
-                                      "name": "Category 2",
-                                    }
-                                  }
-                                  key="2"
-                                  onClick={[Function]}
-                                  selected={false}
-                                >
-                                  <button
-                                    className="css-1ibkwsv"
-                                    key="2"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="2"
-                                  >
-                                    Category 2
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                        </ul>
-                      </List>
+                          Category 1
+                        </button>
+                      </SheetItem>
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 0,
+                            "id": "2",
+                            "isFetching": false,
+                            "name": "Category 2",
+                          }
+                        }
+                        key="2"
+                        onClick={[Function]}
+                        selected={false}
+                      >
+                        <button
+                          className="css-1ibkwsv"
+                          key="2"
+                          onClick={[Function]}
+                          type="button"
+                          value="2"
+                        >
+                          Category 2
+                        </button>
+                      </SheetItem>
                     </SheetList>
                   </div>
                 </div>
@@ -626,106 +575,55 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     onScroll={[Function]}
                   >
                     <SheetList
-                      className={null}
-                      hasImages={false}
                       key=".0"
                       onClose={[Function]}
-                      testId={null}
                     >
-                      <List
-                        className={null}
-                        role="listbox"
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 0,
+                            "id": "1-1",
+                            "isFetching": false,
+                            "name": "Category 1-1",
+                          }
+                        }
+                        key="1-1"
+                        onClick={[Function]}
+                        selected={false}
                       >
-                        <ul
-                          className={null}
-                          role="listbox"
+                        <button
+                          className="css-1ibkwsv"
+                          key="1-1"
+                          onClick={[Function]}
+                          type="button"
+                          value="1-1"
                         >
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-0/.$1-1"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 0,
-                                      "id": "1-1",
-                                      "isFetching": false,
-                                      "name": "Category 1-1",
-                                    }
-                                  }
-                                  key="1-1"
-                                  onClick={[Function]}
-                                  selected={false}
-                                >
-                                  <button
-                                    className="css-1ibkwsv"
-                                    key="1-1"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="1-1"
-                                  >
-                                    Category 1-1
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-1/.$1-2"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 1,
-                                      "id": "1-2",
-                                      "isFetching": false,
-                                      "name": "Category 1-2",
-                                    }
-                                  }
-                                  key="1-2"
-                                  onClick={[Function]}
-                                  selected={false}
-                                >
-                                  <button
-                                    className="css-1ibkwsv"
-                                    key="1-2"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="1-2"
-                                  >
-                                    Category 1-2
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                        </ul>
-                      </List>
+                          Category 1-1
+                        </button>
+                      </SheetItem>
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 1,
+                            "id": "1-2",
+                            "isFetching": false,
+                            "name": "Category 1-2",
+                          }
+                        }
+                        key="1-2"
+                        onClick={[Function]}
+                        selected={false}
+                      >
+                        <button
+                          className="css-1ibkwsv"
+                          key="1-2"
+                          onClick={[Function]}
+                          type="button"
+                          value="1-2"
+                        >
+                          Category 1-2
+                        </button>
+                      </SheetItem>
                     </SheetList>
                   </div>
                 </div>
@@ -1076,106 +974,55 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     onScroll={[Function]}
                   >
                     <SheetList
-                      className={null}
-                      hasImages={false}
                       key=".0"
                       onClose={[Function]}
-                      testId={null}
                     >
-                      <List
-                        className={null}
-                        role="listbox"
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 0,
+                            "id": "1-1",
+                            "isFetching": false,
+                            "name": "Category 1-1",
+                          }
+                        }
+                        key="1-1"
+                        onClick={[Function]}
+                        selected={false}
                       >
-                        <ul
-                          className={null}
-                          role="listbox"
+                        <button
+                          className="css-1ibkwsv"
+                          key="1-1"
+                          onClick={[Function]}
+                          type="button"
+                          value="1-1"
                         >
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-0/.$1-1"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 0,
-                                      "id": "1-1",
-                                      "isFetching": false,
-                                      "name": "Category 1-1",
-                                    }
-                                  }
-                                  key="1-1"
-                                  onClick={[Function]}
-                                  selected={false}
-                                >
-                                  <button
-                                    className="css-1ibkwsv"
-                                    key="1-1"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="1-1"
-                                  >
-                                    Category 1-1
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-1/.$1-2"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 1,
-                                      "id": "1-2",
-                                      "isFetching": false,
-                                      "name": "Category 1-2",
-                                    }
-                                  }
-                                  key="1-2"
-                                  onClick={[Function]}
-                                  selected={false}
-                                >
-                                  <button
-                                    className="css-1ibkwsv"
-                                    key="1-2"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="1-2"
-                                  >
-                                    Category 1-2
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                        </ul>
-                      </List>
+                          Category 1-1
+                        </button>
+                      </SheetItem>
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 1,
+                            "id": "1-2",
+                            "isFetching": false,
+                            "name": "Category 1-2",
+                          }
+                        }
+                        key="1-2"
+                        onClick={[Function]}
+                        selected={false}
+                      >
+                        <button
+                          className="css-1ibkwsv"
+                          key="1-2"
+                          onClick={[Function]}
+                          type="button"
+                          value="1-2"
+                        >
+                          Category 1-2
+                        </button>
+                      </SheetItem>
                     </SheetList>
                   </div>
                 </div>
@@ -1487,106 +1334,55 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     onScroll={[Function]}
                   >
                     <SheetList
-                      className={null}
-                      hasImages={false}
                       key=".0"
                       onClose={[Function]}
-                      testId={null}
                     >
-                      <List
-                        className={null}
-                        role="listbox"
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 0,
+                            "id": "1-1",
+                            "isFetching": false,
+                            "name": "Category 1-1",
+                          }
+                        }
+                        key="1-1"
+                        onClick={[Function]}
+                        selected={true}
                       >
-                        <ul
-                          className={null}
-                          role="listbox"
+                        <button
+                          className="css-1qqi0nj"
+                          key="1-1"
+                          onClick={[Function]}
+                          type="button"
+                          value="1-1"
                         >
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-0/.$1-1"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 0,
-                                      "id": "1-1",
-                                      "isFetching": false,
-                                      "name": "Category 1-1",
-                                    }
-                                  }
-                                  key="1-1"
-                                  onClick={[Function]}
-                                  selected={true}
-                                >
-                                  <button
-                                    className="css-1qqi0nj"
-                                    key="1-1"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="1-1"
-                                  >
-                                    Category 1-1
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                          <ListItem
-                            className="css-id5jvr css-171mywc"
-                            isSelected={false}
-                            key="child-1/.$1-2"
-                            role={null}
-                            tabIndex={0}
-                          >
-                            <li
-                              className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
-                              data-test-id="listItem"
-                              role={null}
-                            >
-                              <div
-                                className="css-1ckzvk7"
-                                data-test-id={null}
-                              >
-                                <SheetItem
-                                  item={
-                                    Object {
-                                      "childrenCount": 1,
-                                      "id": "1-2",
-                                      "isFetching": false,
-                                      "name": "Category 1-2",
-                                    }
-                                  }
-                                  key="1-2"
-                                  onClick={[Function]}
-                                  selected={false}
-                                >
-                                  <button
-                                    className="css-1ibkwsv"
-                                    key="1-2"
-                                    onClick={[Function]}
-                                    type="button"
-                                    value="1-2"
-                                  >
-                                    Category 1-2
-                                  </button>
-                                </SheetItem>
-                              </div>
-                            </li>
-                          </ListItem>
-                        </ul>
-                      </List>
+                          Category 1-1
+                        </button>
+                      </SheetItem>
+                      <SheetItem
+                        item={
+                          Object {
+                            "childrenCount": 1,
+                            "id": "1-2",
+                            "isFetching": false,
+                            "name": "Category 1-2",
+                          }
+                        }
+                        key="1-2"
+                        onClick={[Function]}
+                        selected={false}
+                      >
+                        <button
+                          className="css-1ibkwsv"
+                          key="1-2"
+                          onClick={[Function]}
+                          type="button"
+                          value="1-2"
+                        >
+                          Category 1-2
+                        </button>
+                      </SheetItem>
                     </SheetList>
                   </div>
                 </div>

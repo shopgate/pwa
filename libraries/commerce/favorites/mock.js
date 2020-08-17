@@ -1,11 +1,22 @@
 import { mockedProducts as mockedList } from '../product/mock';
 
+export const mockedDefaultListId = 'DEFAULT';
+
 const mockedStateWithoutProducts = {
   favorites: {
-    products: {
-      isFetching: false,
+    byList: {
+      [mockedDefaultListId]: {
+        isFetching: false,
+        expires: 0,
+        ids: [],
+      },
+    },
+    lists: {
       expires: 0,
-      ids: [],
+      lists: [{
+        id: mockedDefaultListId,
+        name: 'Wish List',
+      }],
     },
   },
 };
@@ -34,10 +45,19 @@ const createProductsState = () => {
 const mockedStateWithProducts = {
   ...createProductsState(),
   favorites: {
-    products: {
-      isFetching: false,
+    byList: {
+      [mockedDefaultListId]: {
+        isFetching: false,
+        expires: 0,
+        ids: [mockedList.products[0].id, mockedList.products[1].id],
+      },
+    },
+    lists: {
       expires: 0,
-      ids: [mockedList.products[0].id, mockedList.products[1].id],
+      lists: [{
+        id: mockedDefaultListId,
+        name: 'Wish List',
+      }],
     },
   },
 };
@@ -51,7 +71,7 @@ const mockedStateWithProducts = {
 const getMockedState = ({ withProducts, validCache = false }) => {
   const data = withProducts ? mockedStateWithProducts : mockedStateWithoutProducts;
   if (validCache) {
-    data.favorites.products.expires = Date.now() + 999999;
+    data.favorites.byList[mockedDefaultListId].expires = Date.now() + 999999;
   }
 
   return data;

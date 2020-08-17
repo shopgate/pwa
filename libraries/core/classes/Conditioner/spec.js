@@ -1,4 +1,11 @@
 import Conditioner from './index';
+import { logger } from '../../helpers';
+
+jest.mock('../../helpers', () => ({
+  logger: {
+    warn: jest.fn(),
+  },
+}));
 
 describe('Conditioner', () => {
   let conditioner;
@@ -8,6 +15,7 @@ describe('Conditioner', () => {
   let cond3;
 
   beforeEach(() => {
+    jest.clearAllMocks();
     conditioner = new Conditioner();
     cond1 = jest.fn().mockReturnValue(true);
     cond2 = jest.fn().mockReturnValue(true);
@@ -24,10 +32,11 @@ describe('Conditioner', () => {
     expect(cond3).toBeCalledTimes(1);
     expect(cond1).toBeCalledTimes(0);
     expect(cond2).toBeCalledTimes(0);
+    expect(logger.warn).toBeCalledTimes(1);
   });
 
   it('should fail on first promisified sorted condition', async () => {
-    expect.assertions(4);
+    expect.assertions(5);
     cond3.mockResolvedValue(false);
 
     conditioner.addConditioner(1, cond1);
@@ -38,10 +47,11 @@ describe('Conditioner', () => {
     expect(cond3).toBeCalledTimes(1);
     expect(cond1).toBeCalledTimes(0);
     expect(cond2).toBeCalledTimes(0);
+    expect(logger.warn).toBeCalledTimes(1);
   });
 
   it('should fail on second promisified sorted condition', async () => {
-    expect.assertions(4);
+    expect.assertions(5);
     cond3.mockResolvedValue(false);
 
     conditioner.addConditioner(1, cond1);
@@ -52,6 +62,7 @@ describe('Conditioner', () => {
     expect(cond3).toBeCalledTimes(1);
     expect(cond1).toBeCalledTimes(0);
     expect(cond2).toBeCalledTimes(0);
+    expect(logger.warn).toBeCalledTimes(1);
   });
 
   it('should resolve true', async () => {
@@ -63,6 +74,7 @@ describe('Conditioner', () => {
     expect(cond1).toBeCalledTimes(1);
     expect(cond2).toBeCalledTimes(1);
     expect(cond3).toBeCalledTimes(1);
+    expect(logger.warn).toBeCalledTimes(0);
   });
 
   it('should return cloned conditioner', async () => {
@@ -75,5 +87,6 @@ describe('Conditioner', () => {
     expect(newConditioner.conditions).not.toBe(conditioner.conditions);
     expect(newConditioner.conditions.has('one')).toBeFalsy();
     expect(newConditioner.conditions.has('two')).toBeTruthy();
+    expect(logger.warn).toBeCalledTimes(0);
   });
 });

@@ -8,6 +8,14 @@ jest.mock('@shopgate/engage/product', () => ({
   EffectivityDates: () => null,
   Swatches: () => null,
 }));
+jest.mock('@shopgate/engage/components', () => ({
+  Availability: () => null,
+}));
+jest.mock('@shopgate/engage/core', () => ({
+  i18n: {
+    text: text => text,
+  },
+}));
 jest.mock('../ItemName');
 jest.mock('../ItemPrice');
 

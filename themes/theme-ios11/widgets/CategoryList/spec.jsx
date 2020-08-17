@@ -12,6 +12,15 @@ jest.mock('@shopgate/pwa-common/components/Link', () => {
   return Link;
 });
 
+// eslint-disable-next-line require-jsdoc
+function MockedSheetList({ children }) { return children; }
+MockedSheetList.Item = function Item() { return null; };
+
+jest.mock('@shopgate/engage/components', () => ({
+  Image: () => null,
+  SheetList: MockedSheetList,
+}));
+
 describe('<CategoryListWidget />', () => {
   it('should not render the CategoryListWidget', () => {
     const props = {

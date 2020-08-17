@@ -17,13 +17,9 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   >
     price.range
   </span>
-  <Translate
+  <Text
     aria-hidden={true}
-    className={null}
-    params={Object {}}
-    role={null}
     string="price.range"
-    transform={null}
   >
     <Placeholder
       forKey="fromPrice"
@@ -36,8 +32,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
           }
         }
       >
-        <FormatPrice
-          className={null}
+        <Price
           currency="USD"
           fractions={false}
           price={25}
@@ -55,15 +50,14 @@ exports[`PriceSlider: <Label /> should render 1`] = `
           }
         }
       >
-        <FormatPrice
-          className={null}
+        <Price
           currency="USD"
           fractions={false}
           price={999}
         />
       </span>
     </Placeholder>
-  </Translate>
+  </Text>
   <span
     aria-hidden={true}
     hidden={true}

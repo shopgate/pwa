@@ -9,6 +9,7 @@ jest.mock('react', () => ({
     isLoading: false,
   }),
 }));
+jest.mock('@shopgate/engage/components');
 jest.mock('../PaymentBarCheckoutButton.connector', () => cmp => cmp);
 
 describe('<PaymentBarCheckoutButton />', () => {

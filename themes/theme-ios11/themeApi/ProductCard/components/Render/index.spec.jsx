@@ -2,20 +2,36 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import MockProductImage from '@shopgate/engage/product/components/ProductImage';
-import MockProductGridPrice from '@shopgate/engage/product/components/ProductGridPrice';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
 jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
 
+jest.mock('@shopgate/engage/core', () => ({
+  withForwardedRef: jest.fn(),
+  useScrollContainer: () => false,
+  isIOSTheme: () => false,
+  hasWebBridge: () => false,
+  isBeta: () => false,
+  i18n: {},
+}));
+
 jest.mock('@shopgate/engage/product', () => ({
   withPriceCalculation: Component => props => <Component {...props} />,
   MapPriceHint: () => null,
   OrderQuantityHint: () => null,
-  ProductImage: MockProductImage,
-  ProductGridPrice: MockProductGridPrice,
+  ProductImage: () => null,
+  ProductGridPrice: () => null,
+  FeaturedMedia: () => null,
+}));
+jest.mock('@shopgate/engage/components', () => ({
+  Portal: ({ children }) => children || null,
+}));
+jest.mock('@shopgate/engage/category', () => ({
+  PRODUCT_ITEM_PRICE: 'PRODUCT_ITEM_PRICE',
+  PRODUCT_ITEM_PRICE_BEFORE: 'PRODUCT_ITEM_PRICE_BEFORE',
+  PRODUCT_ITEM_PRICE_AFTER: 'PRODUCT_ITEM_PRICE_AFTER',
 }));
 
 const defaultProps = {
@@ -48,7 +64,7 @@ describe('<ProductCardRender />', () => {
   it('should render as expected', () => {
     const wrapper = renderComponent();
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Portal').length).toBe(9);
+    expect(wrapper.find('Portal').length).toBe(6);
     expect(wrapper.find('Link').prop('href')).toEqual(defaultProps.url);
     expect(wrapper.find('ProductCardBadge').exists()).toBe(true);
     expect(wrapper.find('ProductCardBadge').text()).toEqual(`-${mockProduct.price.discount}%`);

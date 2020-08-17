@@ -11,7 +11,10 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useContext: jest.fn(),
 }));
+jest.mock('@shopgate/engage/components');
 jest.mock('../../../locations.context', () => 'FulfillmentContext');
+jest.mock('../StoreListProductName', () => function StoreListProductName() { return null; });
+jest.mock('../StoreListProductInfo', () => function StoreListProductInfo() { return null; });
 
 describe('<StoreListProduct />', () => {
   it('should not render if not product is supplied', () => {

@@ -2,11 +2,16 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { getFavoritesCount } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import {
   mockedState,
   mockedEmptyState,
 } from 'Pages/Favorites/mock';
 import ConnectedBadge, { FavoritesIconBadge } from './index';
+
+jest.mock('@shopgate/pwa-common-commerce/favorites/selectors', () => ({
+  getFavoritesCount: jest.fn(() => 1),
+}));
 
 const mockedStore = configureStore();
 /**
@@ -22,6 +27,7 @@ const createComponent = state => mount((
 
 describe('TabBar favorites action', () => {
   it('should render only icon when badge is 0', () => {
+    getFavoritesCount.mockReturnValueOnce(0);
     const component = createComponent(mockedEmptyState);
     expect(component.html()).toBe(null);
   });

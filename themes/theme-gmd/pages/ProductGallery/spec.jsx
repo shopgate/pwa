@@ -13,6 +13,11 @@ jest.mock('@shopgate/pwa-common/context', () => ({
   },
 }));
 
+jest.mock('@shopgate/engage/components', () => ({
+  View: ({ children }) => children,
+}));
+jest.mock('./components/Content', () => function Content() { return null; });
+
 describe('<ProductGallery> page', () => {
   it('should render content and an appbar', () => {
     const wrapper = shallow((

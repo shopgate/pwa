@@ -29,6 +29,8 @@ function removeFavorites(productId, listId) {
     } catch (error) {
       dispatch(errorRemoveFavorites(productId, error));
     }
+
+    return request;
   };
 }
 

@@ -1,7 +1,24 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Card from '@shopgate/pwa-ui-shared/Card';
 import { UnwrappedProductSlider as ProductSlider } from './index';
+
+jest.mock('@shopgate/engage/core', () => ({
+  hasWebBridge: jest.fn(() => false),
+  withWidgetSettings: component => component,
+}));
+
+jest.mock('@shopgate/engage/components', () => {
+  // eslint-disable-next-line require-jsdoc
+  function Swiper({ children }) { return children; }
+  Swiper.Item = function SwiperItem({ children }) { return children; };
+  return {
+    Swiper,
+    Card: ({ children }) => children,
+  };
+});
+jest.mock('@shopgate/engage/product', () => ({
+  ProductCard: ({ children }) => children,
+}));
 
 describe('<ProductSlider />', () => {
   /**
@@ -13,7 +30,7 @@ describe('<ProductSlider />', () => {
    * Creates some fake settings.
    * @param {boolean} withHeadline Whether the headline argument should be provided.
    * @param {boolean} withName Whether the product names should be enabled.
-   * @param {boolean} withPrice Whether the product prive should be enabled.
+   * @param {boolean} withPrice Whether the product price should be enabled.
    * @param {boolean} withReviews Whether the product reviews should be enabled.
    * @return {Object} The settings object.
    */
@@ -116,7 +133,7 @@ describe('<ProductSlider />', () => {
     />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Card).length).toBe(0);
+    expect(wrapper.find('Card').length).toBe(0);
   });
 
   it('should render the widget with data', () => {
@@ -130,7 +147,7 @@ describe('<ProductSlider />', () => {
     />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Card).length).toBe(products.length);
+    expect(wrapper.find('Card').length).toBe(products.length);
   });
 
   it('should not render an empty headline', () => {
@@ -166,6 +183,6 @@ describe('<ProductSlider />', () => {
     />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Card).length).toBe(30);
+    expect(wrapper.find('Card').length).toBe(30);
   });
 });

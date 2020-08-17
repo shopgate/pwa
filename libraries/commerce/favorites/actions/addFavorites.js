@@ -12,8 +12,8 @@ function addFavorites(productId, listId = null) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
-    const defaultList = lists?.[0] || { code: 'DEFAULT' };
-    const takenListId = listId || defaultList.code;
+    const defaultList = lists?.[0] || { id: 'DEFAULT' };
+    const takenListId = listId || defaultList.id;
 
     const request = new PipelineRequest(SHOPGATE_USER_ADD_FAVORITES)
       .setInput({

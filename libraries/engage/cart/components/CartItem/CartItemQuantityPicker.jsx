@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { i18n } from '@shopgate/engage/core';
 import { PRODUCT_UNIT_EACH } from '@shopgate/engage/product/constants';
-import { QuantityInput } from '@shopgate/engage/components';
+import QuantityInput from '@shopgate/engage/components/QuantityInput';
 import { inputStyle } from './CartItemQuantityPicker.style';
 
 type Props = {
