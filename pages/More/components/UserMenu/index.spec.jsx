@@ -10,6 +10,10 @@ jest.mock('@shopgate/pwa-common/selectors/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),
 }));
 
+jest.mock('@shopgate/engage/account', () => ({
+  ACCOUNT_PATH: 'ACCOUNT_PATH',
+}));
+
 const store = createMockStore();
 
 describe('<UserMenu />', () => {
@@ -22,8 +26,8 @@ describe('<UserMenu />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('LoggedIn').exists()).toBe(true);
-    expect(wrapper.find('MoreMenuItem').text()).toBe('navigation.logout');
-    wrapper.find('MoreMenuItem').simulate('click');
+    expect(wrapper.find('MoreMenuItem').last().text()).toBe('navigation.logout');
+    wrapper.find('MoreMenuItem').last().simulate('click');
     expect(logoutHandler).toHaveBeenCalledTimes(1);
   });
 

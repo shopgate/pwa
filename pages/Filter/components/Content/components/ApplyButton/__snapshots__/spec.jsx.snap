@@ -16,7 +16,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
     testId="applyFilterButton"
     type="primary"
   >
-    <Component
+    <Text
       string="filter.apply"
       style={
         Object {
@@ -44,7 +44,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
     testId="applyFilterButton"
     type="primary"
   >
-    <Component
+    <Text
       string="filter.apply"
       style={
         Object {
@@ -72,7 +72,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
     testId="applyFilterButton"
     type="primary"
   >
-    <Component
+    <Text
       string="filter.apply"
       style={
         Object {

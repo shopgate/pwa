@@ -2,6 +2,19 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Selector from './index';
 
+jest.mock('@shopgate/engage/core', () => ({
+  hasWebBridge: () => false,
+  i18n: {
+    text: string => string,
+  },
+}));
+jest.mock('@shopgate/engage/components', () => ({
+  Accordion: ({ children }) => children,
+}));
+jest.mock('@shopgate/engage/filter', () => ({
+  FilterItem: ({ children }) => children,
+}));
+
 const values = [
   {
     id: 'foo',

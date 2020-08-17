@@ -9,6 +9,7 @@ import { mockProductId, mockProduct } from './mock';
 import ProductCard, { ProductCardUnwrapped } from './index';
 
 jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
+jest.mock('./components/Render', () => function ProductCardRender() { return null; });
 
 /**
  * Creates a state for a mocked store.

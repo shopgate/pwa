@@ -8,9 +8,7 @@ import SuggestionList, { UnwrappedSuggestionList } from './index';
 const store = createMockStore();
 
 let mockedFetchingState;
-jest.mock('@shopgate/engage/components', () => ({
-  SurroundPortals: ({ children }) => children,
-}));
+jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/pwa-common-commerce/search/selectors', () => ({
   getSuggestions: () => ([
     'foo',

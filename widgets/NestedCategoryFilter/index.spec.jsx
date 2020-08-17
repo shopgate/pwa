@@ -1,4 +1,4 @@
-/* eslint-disable extra-rules/no-single-line-objects */
+/* eslint-disable extra-rules/no-single-line-objects, camelcase */
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -9,7 +9,6 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
-import themeApi from '../../themeApi';
 import { mockedState } from './mockData';
 import Picker from './components/Picker';
 import { UnwrappedNestedCategoryFilter as Widget } from './index';
@@ -18,8 +17,8 @@ jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
 
 jest.mock('@shopgate/engage/components', () => ({
-  ...jest.requireActual('@shopgate/engage/components'),
   SheetDrawer: props => <MockSheet {...props} />,
+  SheetList: require.requireActual('@shopgate/engage/components/SheetList').default,
 }));
 
 /**
@@ -33,7 +32,7 @@ const renderComponent = (props = {}, state = mockedState) => {
 
   return mount(
     <Provider store={store}>
-      <ThemeContext.Provider value={themeApi}>
+      <ThemeContext.Provider value={{}}>
         <Widget {...props} />
       </ThemeContext.Provider>
     </Provider>,
@@ -187,4 +186,4 @@ describe('<NestedCategoryFilterWidget />', () => {
   });
 });
 
-/* eslint-enable extra-rules/no-single-line-objects */
+/* eslint-enable extra-rules/no-single-line-objects, camelcase */

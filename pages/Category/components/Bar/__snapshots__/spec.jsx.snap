@@ -4,12 +4,9 @@ exports[`<Bar /> should match snapshot 1`] = `
 <Fragment>
   <ResponsiveContainer
     appAlways={true}
-    appOnly={false}
     breakpoint="<=xs"
-    webAlways={false}
-    webOnly={false}
   >
-    <Connect(GlobalLocationSwitcher)
+    <GlobalLocationSwitcher
       renderBar={true}
     />
   </ResponsiveContainer>

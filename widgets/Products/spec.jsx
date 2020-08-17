@@ -1,8 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductGrid from 'Components/ProductGrid';
-import ProductList from 'Components/ProductList';
 import { UnwrappedProductsWidget as ProductsWidget } from './index';
+
+jest.mock('Components/ProductGrid', () => function ProductGrid() { return null; });
+jest.mock('Components/ProductList', () => function ProductList() { return null; });
 
 describe('<ProductsWidget />', () => {
   const getProducts = jest.fn();
@@ -28,7 +29,7 @@ describe('<ProductsWidget />', () => {
     const wrapper = shallow(<ProductsWidget {...props} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ProductGrid).length).toBe(0);
+    expect(wrapper.find('ProductGrid').length).toBe(0);
 
     // Now give it a product...
     wrapper.setProps({
@@ -36,7 +37,7 @@ describe('<ProductsWidget />', () => {
       totalProductCount: 1,
     });
 
-    expect(wrapper.find(ProductGrid).length).toBe(1);
+    expect(wrapper.find('ProductGrid').length).toBe(1);
     expect(getProducts).toHaveBeenCalledTimes(1);
     expect(getProducts).toHaveBeenCalledWith(
       props.settings.queryType,
@@ -63,7 +64,7 @@ describe('<ProductsWidget />', () => {
     });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ProductList).length).toBe(1);
+    expect(wrapper.find('ProductList').length).toBe(1);
     expect(getProducts).toHaveBeenCalledTimes(1);
     expect(getProducts).toHaveBeenCalledWith(
       props.settings.queryType,
