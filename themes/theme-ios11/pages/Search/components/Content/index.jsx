@@ -6,7 +6,7 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { BackBar } from 'Components/AppBar/presets';
-import Bar from '../Bar';
+import ProductFilters from 'Components/ProductFilters';
 import Products from '../Products';
 import connect from './connector';
 
@@ -46,7 +46,9 @@ class SearchContent extends Component {
           <Fragment>
             <BackBar
               title={searchPhrase}
-              below={<Bar showFilterBar={showFilterBar} />}
+            />
+            <ProductFilters
+              showFilters={showFilterBar}
             />
             <Products
               searchPhrase={searchPhrase}
