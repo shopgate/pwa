@@ -2,21 +2,21 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { DefaultBar } from 'Components/AppBar/presets';
-import Bar from '../Bar';
+import PageTitleBar from 'Components/PageTitleBar';
 import connect from './connector';
 
 /**
  * The CategoryAppBar component.
  * @returns {JSX}
  */
-function CategoryAppBar({ hasChildren, hasProducts, title }) {
+function CategoryAppBar({ title }) {
   /**
    * @returns {JSX}
    */
   const BarComponent = () => (
     <DefaultBar
       title={title}
-      below={<Bar hasChildren={hasChildren} hasProducts={hasProducts} />}
+      below={<PageTitleBar />}
     />
   );
 
@@ -33,8 +33,6 @@ function CategoryAppBar({ hasChildren, hasProducts, title }) {
 }
 
 CategoryAppBar.propTypes = {
-  hasChildren: PropTypes.bool.isRequired,
-  hasProducts: PropTypes.bool.isRequired,
   title: PropTypes.string,
 };
 
