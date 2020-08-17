@@ -108,6 +108,60 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   }
                 }
               >
+                <MoreMenuItem
+                  className={null}
+                  href="ACCOUNT_PATH"
+                  label="navigation.manage"
+                  onClick={null}
+                  testId="accountButton"
+                >
+                  <Connect(Link)
+                    className="css-1hj8a57"
+                    href="ACCOUNT_PATH"
+                  >
+                    <Link
+                      aria-hidden={null}
+                      aria-label={null}
+                      className="css-1hj8a57"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="ACCOUNT_PATH"
+                      replace={false}
+                      role="link"
+                      state={Object {}}
+                      tabIndex={null}
+                      tag="div"
+                      target={null}
+                    >
+                      <div
+                        aria-hidden={null}
+                        aria-label={null}
+                        className="css-9auwkz css-1hj8a57"
+                        data-test-id="link: ACCOUNT_PATH"
+                        href={null}
+                        onClick={[Function]}
+                        role="link"
+                        tabIndex={null}
+                      >
+                        <Translate
+                          className={null}
+                          params={Object {}}
+                          role={null}
+                          string="navigation.manage"
+                          transform={null}
+                        >
+                          <span
+                            className={null}
+                            role={null}
+                          >
+                            navigation.manage
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
                 <Portal
                   name="nav-menu.logout.before"
                   props={

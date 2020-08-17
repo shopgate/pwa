@@ -6,6 +6,12 @@ import { OptionInfo } from './index';
 const optionInfoText = 'Some Text';
 const optionInfoId = 'some-id';
 
+jest.mock('../../../../../../context', () => ({
+  ProductContext: {
+    Consumer: ({ children }) => children({ currency: 'EUR' }),
+  },
+}));
+
 describe('<OptionInfo />', () => {
   it('should not render when not required and no price', () => {
     const wrapper = shallow(

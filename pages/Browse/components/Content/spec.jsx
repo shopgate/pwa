@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import SearchField from '../SearchField';
 import Content from './index';
 
 const store = createMockStore();
 
-jest.mock('../SearchField');
-jest.mock('../RootCategories');
+jest.mock('../SearchField', () => function SearchField() { return null; });
+jest.mock('../RootCategories', () => function RootCategories() { return null; });
+jest.mock('Components/Headline', () => function Headline() { return null; });
 jest.mock('Components/AppBar/presets', () => ({
   BackBar: () => <div />,
 }));
@@ -31,7 +31,7 @@ describe('<Content />', () => {
       </Provider>), mockContext);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(SearchField).props()).toEqual({
+    expect(wrapper.find('SearchField').props()).toEqual({
       pageId: '1234',
       query: 'foo',
     });

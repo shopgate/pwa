@@ -25,7 +25,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 </ProductGrid>
 `;
 
-exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
+exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
 <ProductGrid
   flags={null}
   handleGetProducts={[Function]}
@@ -37,11 +37,6 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
   <Consumer>
     <InfiniteContainer
       columns={2}
-      containerRef={
-        Object {
-          "current": null,
-        }
-      }
       initialLimit={32}
       items={Array []}
       iterator={[Function]}
@@ -52,57 +47,10 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
           className={null}
         />
       }
-      preloadMultiplier={2}
       requestHash={null}
       totalItems={null}
       wrapper={[Function]}
-    >
-      <div>
-        <div>
-          <Grid
-            className="css-a9oap6"
-            component="ul"
-            data-test-id="productGrid"
-            wrap={true}
-          >
-            <ul
-              className="css-a9oap6 css-h7r55a css-u7q1iu"
-              data-test-id="productGrid"
-            />
-          </Grid>
-        </div>
-        <LoadingIndicator
-          className={null}
-        >
-          <div
-            className="css-h0xg2o"
-          >
-            <IndicatorCircle
-              color="var(--color-secondary, #5ccee3)"
-              paused={false}
-              size={32}
-              strokeWidth={3}
-            >
-              <svg
-                className="css-12jxe4c"
-                data-test-id="loadingIndicator"
-                height={32}
-                viewBox="25 25 50 50"
-                width={32}
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  className="css-1u0o3o9"
-                  cx="50"
-                  cy="50"
-                  r="20"
-                />
-              </svg>
-            </IndicatorCircle>
-          </div>
-        </LoadingIndicator>
-      </div>
-    </InfiniteContainer>
+    />
   </Consumer>
 </ProductGrid>
 `;

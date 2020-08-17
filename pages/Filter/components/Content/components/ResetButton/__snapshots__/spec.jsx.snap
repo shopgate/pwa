@@ -9,20 +9,14 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
   }
 >
   <Button
-    className=""
     disabled={false}
     flat={true}
     onClick={[MockFunction]}
     testId="clearAllButton"
     type="primary"
-    wrapContent={true}
   >
-    <Translate
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="filter.reset"
-      transform={null}
     />
   </Button>
 </div>
@@ -37,20 +31,14 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
   }
 >
   <Button
-    className=""
     disabled={false}
     flat={true}
     onClick={[Function]}
     testId="clearAllButton"
     type="primary"
-    wrapContent={true}
   >
-    <Translate
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="filter.reset"
-      transform={null}
     />
   </Button>
 </div>
@@ -65,20 +53,14 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
   }
 >
   <Button
-    className=""
     disabled={true}
     flat={true}
     onClick={[Function]}
     testId="clearAllButton"
     type="primary"
-    wrapContent={true}
   >
-    <Translate
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="filter.reset"
-      transform={null}
     />
   </Button>
 </div>

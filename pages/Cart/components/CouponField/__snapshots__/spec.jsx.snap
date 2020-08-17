@@ -14,7 +14,6 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
       }
     }
     isButtonDisabled={true}
-    isFocused={false}
     isLoading={false}
     labelStyle={
       Object {
@@ -39,7 +38,6 @@ exports[`<CouponField /> should render as expected without any props 1`] = `
       }
     }
     isButtonDisabled={true}
-    isFocused={false}
     isLoading={false}
     labelStyle={
       Object {
