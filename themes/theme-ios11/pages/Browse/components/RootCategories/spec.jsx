@@ -10,10 +10,22 @@ const store = createMockStore();
 
 jest.mock('@shopgate/pwa-common-commerce/category/selectors', () => ({
   getRootCategories: () => ([
-    { id: '123-123', name: 'foo' },
-    { id: '456-123', name: 'bar' },
-    { id: '789-123', name: 'baz' },
-    { id: '789-456', name: 'qux' },
+    {
+      id: '123-123',
+      name: 'foo',
+    },
+    {
+      id: '456-123',
+      name: 'bar',
+    },
+    {
+      id: '789-123',
+      name: 'baz',
+    },
+    {
+      id: '789-456',
+      name: 'qux',
+    },
   ]),
 }));
 jest.mock('Components/Headline', () => function Headline() { return null; });
