@@ -10,7 +10,7 @@ import { SUCCESS_REMOVE_FAVORITES_LIST } from '../constants';
 function removeFavoritesList(listId) {
   return async (dispatch) => {
     const request = new PipelineRequest(SHOPGATE_USER_REMOVE_FAVORITES_LIST)
-      .setInput({ favoritesListId: listId })
+      .setInput({ id: listId })
       .setRetries(0)
       .dispatch();
 
