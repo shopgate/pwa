@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import Picker from 'Components/Picker';
 import Options from './index';
 
 jest.mock('../../../../context', () => ({
@@ -12,7 +11,16 @@ jest.mock('../../../../context', () => ({
   },
 }));
 
-jest.mock('@shopgate/engage/components/View');
+jest.mock('@shopgate/engage/components', () => ({
+  View: ({ children }) => children,
+  I18n: {
+    Text: () => null,
+  },
+}));
+jest.mock('@shopgate/engage/product', () => ({
+  PriceDifference: () => null,
+}));
+jest.mock('Components/Picker', () => function Picker() { return null; });
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => (obj) => {
@@ -71,7 +79,7 @@ describe('<Options />', () => {
 
     it('should render correct number of options', () => {
       const wrapper = mount(<Options options={mockOptions} />);
-      const picker = wrapper.find(Picker);
+      const picker = wrapper.find('Picker');
       expect(picker.length).toBe(mockOptions.length);
     });
   });

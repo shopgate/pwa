@@ -1,6 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductsContent /> should render 1`] = `
+exports[`<ProductsContent /> should render with products 1`] = `
+<ProductsContent
+  categoryId="1234"
+  hasProducts={true}
+>
+  <Portal
+    name="product.list.before"
+    props={
+      Object {
+        "categoryId": "1234",
+      }
+    }
+  />
+  <Portal
+    name="product.list"
+    props={
+      Object {
+        "categoryId": "1234",
+      }
+    }
+  >
+    <Section
+      title="category.sections.products"
+    >
+      <Products
+        categoryId="1234"
+        routeId=""
+        sort="relevance"
+      />
+    </Section>
+  </Portal>
+  <Portal
+    name="product.list.after"
+    props={
+      Object {
+        "categoryId": "1234",
+      }
+    }
+  />
+</ProductsContent>
+`;
+
+exports[`<ProductsContent /> should render without products 1`] = `
 <ProductsContent
   categoryId="1234"
   hasProducts={false}

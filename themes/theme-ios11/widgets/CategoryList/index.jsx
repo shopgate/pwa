@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Image from '@shopgate/pwa-common/components/Image';
-import { SheetList } from '@shopgate/engage/components';
+import { SheetList, Image } from '@shopgate/engage/components';
 import Headline from 'Components/Headline';
 import isEqual from 'lodash/isEqual';
 import connect from './connector';

@@ -23,7 +23,7 @@ const ElementCheckbox = (props) => {
   }
 
   return (
-    <div className={camelCase(name)}>
+    <div className={`${camelCase(name)} container-checkbox`}>
       <Checkbox
         name={name}
         errorText={errorText}

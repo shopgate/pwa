@@ -5,9 +5,10 @@ import { getCSSCustomProp } from '@shopgate/engage/styles';
 
 /**
  * Get the item class.
+ * @param {bool} disabled Disabled.
  * @returns {string}
  */
-export const getItemClass = () => {
+export const getItemClass = (disabled) => {
   let background = themeConfig.colors.shade8;
   const customPropColor = getCSSCustomProp('--color-primary');
 
@@ -21,9 +22,14 @@ export const getItemClass = () => {
     padding: `${themeConfig.variables.gap.big * 0.875}px ${themeConfig.variables.gap.big * 1.375}px`,
     lineHeight: 1,
     zIndex: 1,
-    cursor: 'pointer',
-    ':hover': {
-      background,
-    },
+    color: disabled ? 'var(--color-text-low-emphasis)' : 'inherits',
+    ...(!disabled ? ({
+      cursor: 'pointer',
+      ':hover': {
+        background,
+      },
+    }) : {
+      cursor: 'default',
+    }),
   }).toString();
 };

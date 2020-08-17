@@ -12,6 +12,14 @@ const context = {
 jest.mock('../../../helpers', () => ({
   isProductAvailable: jest.fn().mockReturnValue(true),
 }));
+jest.mock('@shopgate/engage/components');
+
+jest.mock('../../StockInfo', () => ({
+  StockInfo: () => null,
+}));
+jest.mock('../StoreSelectLocationButton', () => ({
+  StoreSelectLocationButton: () => null,
+}));
 
 describe('engage > locations > StoreList > StoreHeader', () => {
   const store = {

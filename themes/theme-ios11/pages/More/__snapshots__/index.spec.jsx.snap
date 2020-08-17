@@ -79,6 +79,251 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
           <Quicklinks>
             <div />
           </Quicklinks>
+          <UserMenu
+            entries={null}
+            isLoggedIn={true}
+            logout={[Function]}
+            user={
+              Object {
+                "firstName": "John",
+                "lastName": "Appleseed",
+              }
+            }
+          >
+            <Portal
+              name="user-menu.container.before"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": true,
+                  "logout": [Function],
+                  "user": Object {
+                    "firstName": "John",
+                    "lastName": "Appleseed",
+                  },
+                }
+              }
+            />
+            <Portal
+              name="user-menu.container"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": true,
+                  "logout": [Function],
+                  "user": Object {
+                    "firstName": "John",
+                    "lastName": "Appleseed",
+                  },
+                }
+              }
+            >
+              <LoggedIn
+                logout={[Function]}
+              >
+                <Portal
+                  name="nav-menu.my-account.before"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                />
+                <Portal
+                  name="nav-menu.my-account"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                >
+                  <div
+                    data-test-id="userMenu"
+                  >
+                    <Section
+                      title="navigation.your_account"
+                    >
+                      <Headline
+                        style={
+                          Object {
+                            "margin": "24px 20px 16px",
+                          }
+                        }
+                        tag="h2"
+                        text="navigation.your_account"
+                      >
+                        <h2
+                          className="css-18cwfw7"
+                          data-test-id="Headline"
+                          style={
+                            Object {
+                              "margin": "24px 20px 16px",
+                            }
+                          }
+                        >
+                          <Translate
+                            className={null}
+                            params={Object {}}
+                            role={null}
+                            string="navigation.your_account"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              navigation.your_account
+                            </span>
+                          </Translate>
+                        </h2>
+                      </Headline>
+                      <div
+                        className={
+                          Object {
+                            "data-css-13ch7sr": "",
+                          }
+                        }
+                      >
+                        <MoreMenuItem
+                          className={null}
+                          href="/account"
+                          label="navigation.manage"
+                          onClick={null}
+                          testId="accountButton"
+                        >
+                          <Connect(Link)
+                            className="css-1hj8a57"
+                            href="/account"
+                          >
+                            <Link
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-1hj8a57"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="/account"
+                              replace={false}
+                              role="link"
+                              state={Object {}}
+                              tabIndex={null}
+                              tag="div"
+                              target={null}
+                            >
+                              <div
+                                aria-hidden={null}
+                                aria-label={null}
+                                className="css-9auwkz css-1hj8a57"
+                                data-test-id="link: /account"
+                                href={null}
+                                onClick={[Function]}
+                                role="link"
+                                tabIndex={null}
+                              >
+                                <Translate
+                                  className={null}
+                                  params={Object {}}
+                                  role={null}
+                                  string="navigation.manage"
+                                  transform={null}
+                                >
+                                  <span
+                                    className={null}
+                                    role={null}
+                                  >
+                                    navigation.manage
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </MoreMenuItem>
+                        <Portal
+                          name="nav-menu.logout.before"
+                          props={
+                            Object {
+                              "Item": [Function],
+                            }
+                          }
+                        />
+                        <Portal
+                          name="nav-menu.logout"
+                          props={
+                            Object {
+                              "Item": [Function],
+                            }
+                          }
+                        >
+                          <MoreMenuItem
+                            className={null}
+                            href={null}
+                            label="navigation.logout"
+                            onClick={[Function]}
+                            testId="logoutButton"
+                          >
+                            <button
+                              className="css-1hj8a57"
+                              data-test-id="logoutButton"
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="navigation.logout"
+                                transform={null}
+                              >
+                                <span
+                                  className={null}
+                                  role={null}
+                                >
+                                  navigation.logout
+                                </span>
+                              </Translate>
+                            </button>
+                          </MoreMenuItem>
+                        </Portal>
+                        <Portal
+                          name="nav-menu.logout.after"
+                          props={
+                            Object {
+                              "Item": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </Section>
+                  </div>
+                </Portal>
+                <Portal
+                  name="nav-menu.my-account.after"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                />
+              </LoggedIn>
+            </Portal>
+            <Portal
+              name="user-menu.container.after"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": true,
+                  "logout": [Function],
+                  "user": Object {
+                    "firstName": "John",
+                    "lastName": "Appleseed",
+                  },
+                }
+              }
+            />
+          </UserMenu>
           <StoreInfo>
             <Portal
               name="nav-menu.store-information.before"
@@ -615,251 +860,6 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             />
           </StoreInfo>
-          <UserMenu
-            entries={null}
-            isLoggedIn={true}
-            logout={[Function]}
-            user={
-              Object {
-                "firstName": "John",
-                "lastName": "Appleseed",
-              }
-            }
-          >
-            <Portal
-              name="user-menu.container.before"
-              props={
-                Object {
-                  "entries": null,
-                  "handleLogout": [Function],
-                  "isLoggedIn": true,
-                  "logout": [Function],
-                  "user": Object {
-                    "firstName": "John",
-                    "lastName": "Appleseed",
-                  },
-                }
-              }
-            />
-            <Portal
-              name="user-menu.container"
-              props={
-                Object {
-                  "entries": null,
-                  "handleLogout": [Function],
-                  "isLoggedIn": true,
-                  "logout": [Function],
-                  "user": Object {
-                    "firstName": "John",
-                    "lastName": "Appleseed",
-                  },
-                }
-              }
-            >
-              <LoggedIn
-                logout={[Function]}
-              >
-                <Portal
-                  name="nav-menu.my-account.before"
-                  props={
-                    Object {
-                      "Item": [Function],
-                    }
-                  }
-                />
-                <Portal
-                  name="nav-menu.my-account"
-                  props={
-                    Object {
-                      "Item": [Function],
-                    }
-                  }
-                >
-                  <div
-                    data-test-id="userMenu"
-                  >
-                    <Section
-                      title="navigation.your_account"
-                    >
-                      <Headline
-                        style={
-                          Object {
-                            "margin": "24px 20px 16px",
-                          }
-                        }
-                        tag="h2"
-                        text="navigation.your_account"
-                      >
-                        <h2
-                          className="css-18cwfw7"
-                          data-test-id="Headline"
-                          style={
-                            Object {
-                              "margin": "24px 20px 16px",
-                            }
-                          }
-                        >
-                          <Translate
-                            className={null}
-                            params={Object {}}
-                            role={null}
-                            string="navigation.your_account"
-                            transform={null}
-                          >
-                            <span
-                              className={null}
-                              role={null}
-                            >
-                              navigation.your_account
-                            </span>
-                          </Translate>
-                        </h2>
-                      </Headline>
-                      <div
-                        className={
-                          Object {
-                            "data-css-13ch7sr": "",
-                          }
-                        }
-                      >
-                        <MoreMenuItem
-                          className={null}
-                          href="/account"
-                          label="navigation.manage"
-                          onClick={null}
-                          testId="accountButton"
-                        >
-                          <Connect(Link)
-                            className="css-1hj8a57"
-                            href="/account"
-                          >
-                            <Link
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-1hj8a57"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="/account"
-                              replace={false}
-                              role="link"
-                              state={Object {}}
-                              tabIndex={null}
-                              tag="div"
-                              target={null}
-                            >
-                              <div
-                                aria-hidden={null}
-                                aria-label={null}
-                                className="css-9auwkz css-1hj8a57"
-                                data-test-id="link: /account"
-                                href={null}
-                                onClick={[Function]}
-                                role="link"
-                                tabIndex={null}
-                              >
-                                <Translate
-                                  className={null}
-                                  params={Object {}}
-                                  role={null}
-                                  string="navigation.manage"
-                                  transform={null}
-                                >
-                                  <span
-                                    className={null}
-                                    role={null}
-                                  >
-                                    navigation.manage
-                                  </span>
-                                </Translate>
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </MoreMenuItem>
-                        <Portal
-                          name="nav-menu.logout.before"
-                          props={
-                            Object {
-                              "Item": [Function],
-                            }
-                          }
-                        />
-                        <Portal
-                          name="nav-menu.logout"
-                          props={
-                            Object {
-                              "Item": [Function],
-                            }
-                          }
-                        >
-                          <MoreMenuItem
-                            className={null}
-                            href={null}
-                            label="navigation.logout"
-                            onClick={[Function]}
-                            testId="logoutButton"
-                          >
-                            <button
-                              className="css-1hj8a57"
-                              data-test-id="logoutButton"
-                              onClick={[Function]}
-                              type="button"
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.logout"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.logout
-                                </span>
-                              </Translate>
-                            </button>
-                          </MoreMenuItem>
-                        </Portal>
-                        <Portal
-                          name="nav-menu.logout.after"
-                          props={
-                            Object {
-                              "Item": [Function],
-                            }
-                          }
-                        />
-                      </div>
-                    </Section>
-                  </div>
-                </Portal>
-                <Portal
-                  name="nav-menu.my-account.after"
-                  props={
-                    Object {
-                      "Item": [Function],
-                    }
-                  }
-                />
-              </LoggedIn>
-            </Portal>
-            <Portal
-              name="user-menu.container.after"
-              props={
-                Object {
-                  "entries": null,
-                  "handleLogout": [Function],
-                  "isLoggedIn": true,
-                  "logout": [Function],
-                  "user": Object {
-                    "firstName": "John",
-                    "lastName": "Appleseed",
-                  },
-                }
-              }
-            />
-          </UserMenu>
           <Portal
             name="nav-menu.content.after"
             props={

@@ -20,15 +20,14 @@ exports[`<Content /> should render 1`] = `
       <div />
     </BackBar>
     <Headline
-      style={null}
       tag="h1"
       text=""
     />
-    <Connect(SearchField)
+    <SearchField
       pageId="1234"
       query="foo"
     />
-    <Connect(RootCategories) />
+    <RootCategories />
   </BrowseContent>
 </Provider>
 `;

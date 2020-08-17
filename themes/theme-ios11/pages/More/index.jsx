@@ -64,8 +64,8 @@ class More extends Component {
         {!isLoggedIn && <UserMenu {...this.props} />}
         <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
         <Quicklinks />
-        <StoreInfo />
         {isLoggedIn && <UserMenu {...this.props} />}
+        <StoreInfo />
         <Portal name={NAV_MENU_CONTENT_AFTER} props={portalProps} />
         <ClientInformation />
       </View>

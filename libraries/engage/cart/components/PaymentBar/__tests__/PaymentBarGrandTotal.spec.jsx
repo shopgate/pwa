@@ -12,6 +12,7 @@ jest.mock('react', () => ({
 }));
 
 jest.mock('../PaymentBarGrandTotal.connector', () => cmp => cmp);
+jest.mock('@shopgate/engage/components');
 
 describe('<PaymentBarGrandTotal />', () => {
   it('should render without issues', () => {

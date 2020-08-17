@@ -29,138 +29,33 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
   >
     <Grid
       className="css-1glzrmu"
-      component="ul"
       wrap={true}
     >
-      <ul
-        className="css-1glzrmu css-h7r55a css-u7q1iu"
+      <Grid.Item
+        grow={1}
       >
-        <GridItem
-          className=""
-          component="li"
-          grow={1}
-          shrink={1}
-        >
-          <li
-            className=" css-1gs0ko2"
-          >
-            <Price
-              className=""
-              currency="EUR"
-              discounted={true}
-              fractions={true}
-              taxDisclaimer={false}
-              unitPrice={10.95}
-              unitPriceMin={10.95}
-            >
-              <div
-                className="css-izofhs css-nihp8"
-                data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
-              >
-                <span
-                  aria-label="price.label"
-                  role="text"
-                >
-                  <Translate
-                    className={null}
-                    params={Object {}}
-                    role={null}
-                    string="price.from"
-                    transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      price.from
-                      <FormatPrice
-                        className={null}
-                        currency="EUR"
-                        forKey="price"
-                        fractions={true}
-                        key=".0"
-                        price={10.95}
-                      >
-                        10.95
-                      </FormatPrice>
-                    </span>
-                  </Translate>
-                </span>
-              </div>
-            </Price>
-          </li>
-        </GridItem>
-        <GridItem
-          className=""
-          component="li"
-          grow={0}
-          shrink={1}
-        >
-          <li
-            className=""
-          >
-            <PriceStriked
-              className="css-nil"
-              currency="EUR"
-              value={22.95}
-            >
-              <div
-                className="css-1sagvrb css-nil "
-                role="text"
-              >
-                <span
-                  aria-label="price.label_old_price"
-                  data-test-id="strikedPrice: 22.95"
-                >
-                  <FormatPrice
-                    className={null}
-                    currency="EUR"
-                    fractions={true}
-                    price={22.95}
-                  >
-                    22.95
-                  </FormatPrice>
-                </span>
-              </div>
-            </PriceStriked>
-          </li>
-        </GridItem>
-      </ul>
+        <Price
+          currency="EUR"
+          discounted={true}
+          unitPrice={10.95}
+          unitPriceMin={10.95}
+        />
+      </Grid.Item>
+      <Grid.Item>
+        <PriceStriked
+          className="css-nil"
+          currency="EUR"
+          value={22.95}
+        />
+      </Grid.Item>
     </Grid>
-    <Grid
-      className=""
-      component="ul"
-      wrap={false}
-    >
-      <ul
-        className=" css-h7r55a"
-      >
-        <GridItem
-          className=""
-          component="li"
-          grow={0}
-          shrink={1}
-        >
-          <li
-            className=""
-          >
-            <PriceInfo
-              className="css-1gftye4"
-              text="PriceInfoString"
-            >
-              <div
-                className="css-1kqiarg css-1gftye4"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "PriceInfoString",
-                  }
-                }
-                data-test-id="priceInfo: PriceInfoString"
-              />
-            </PriceInfo>
-          </li>
-        </GridItem>
-      </ul>
+    <Grid>
+      <Grid.Item>
+        <PriceInfo
+          className="css-1gftye4"
+          text="PriceInfoString"
+        />
+      </Grid.Item>
     </Grid>
   </ProductGridPrice>
 </Component>
@@ -195,103 +90,25 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
   >
     <Grid
       className="css-1glzrmu"
-      component="ul"
       wrap={true}
     >
-      <ul
-        className="css-1glzrmu css-h7r55a css-u7q1iu"
+      <Grid.Item
+        grow={1}
       >
-        <GridItem
-          className=""
-          component="li"
-          grow={1}
-          shrink={1}
-        >
-          <li
-            className=" css-1gs0ko2"
-          >
-            <Price
-              className=""
-              currency="EUR"
-              discounted={true}
-              fractions={true}
-              taxDisclaimer={false}
-              unitPrice={10.95}
-              unitPriceMin={10.95}
-            >
-              <div
-                className="css-izofhs css-nihp8"
-                data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
-              >
-                <span
-                  aria-label="price.label"
-                  role="text"
-                >
-                  <Translate
-                    className={null}
-                    params={Object {}}
-                    role={null}
-                    string="price.from"
-                    transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      price.from
-                      <FormatPrice
-                        className={null}
-                        currency="EUR"
-                        forKey="price"
-                        fractions={true}
-                        key=".0"
-                        price={10.95}
-                      >
-                        10.95
-                      </FormatPrice>
-                    </span>
-                  </Translate>
-                </span>
-              </div>
-            </Price>
-          </li>
-        </GridItem>
-        <GridItem
-          className=""
-          component="li"
-          grow={0}
-          shrink={1}
-        >
-          <li
-            className=""
-          >
-            <PriceStriked
-              className="css-nil"
-              currency="EUR"
-              value={22.95}
-            >
-              <div
-                className="css-1sagvrb css-nil "
-                role="text"
-              >
-                <span
-                  aria-label="price.label_old_price"
-                  data-test-id="strikedPrice: 22.95"
-                >
-                  <FormatPrice
-                    className={null}
-                    currency="EUR"
-                    fractions={true}
-                    price={22.95}
-                  >
-                    22.95
-                  </FormatPrice>
-                </span>
-              </div>
-            </PriceStriked>
-          </li>
-        </GridItem>
-      </ul>
+        <Price
+          currency="EUR"
+          discounted={true}
+          unitPrice={10.95}
+          unitPriceMin={10.95}
+        />
+      </Grid.Item>
+      <Grid.Item>
+        <PriceStriked
+          className="css-nil"
+          currency="EUR"
+          value={22.95}
+        />
+      </Grid.Item>
     </Grid>
   </ProductGridPrice>
 </Component>
@@ -326,103 +143,26 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
   >
     <Grid
       className="css-1glzrmu"
-      component="ul"
       wrap={true}
     >
-      <ul
-        className="css-1glzrmu css-h7r55a css-u7q1iu"
+      <Grid.Item
+        grow={1}
       >
-        <GridItem
-          className=""
-          component="li"
-          grow={1}
-          shrink={1}
-        >
-          <li
-            className=" css-1gs0ko2"
-          >
-            <Price
-              className=""
-              currency="EUR"
-              discounted={false}
-              fractions={true}
-              taxDisclaimer={false}
-              unitPrice={22.95}
-              unitPriceMin={22.95}
-            >
-              <div
-                className="css-izofhs"
-                data-test-id="minPrice: 22.95 price: 22.95 currency: EUR"
-              >
-                <span
-                  aria-label="price.label"
-                  role="text"
-                >
-                  <Translate
-                    className={null}
-                    params={Object {}}
-                    role={null}
-                    string="price.from"
-                    transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      price.from
-                      <FormatPrice
-                        className={null}
-                        currency="EUR"
-                        forKey="price"
-                        fractions={true}
-                        key=".0"
-                        price={22.95}
-                      >
-                        22.95
-                      </FormatPrice>
-                    </span>
-                  </Translate>
-                </span>
-              </div>
-            </Price>
-          </li>
-        </GridItem>
-      </ul>
+        <Price
+          currency="EUR"
+          discounted={false}
+          unitPrice={22.95}
+          unitPriceMin={22.95}
+        />
+      </Grid.Item>
     </Grid>
-    <Grid
-      className=""
-      component="ul"
-      wrap={false}
-    >
-      <ul
-        className=" css-h7r55a"
-      >
-        <GridItem
-          className=""
-          component="li"
-          grow={0}
-          shrink={1}
-        >
-          <li
-            className=""
-          >
-            <PriceInfo
-              className="css-1gftye4"
-              text="PriceInfoString"
-            >
-              <div
-                className="css-1kqiarg css-1gftye4"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "PriceInfoString",
-                  }
-                }
-                data-test-id="priceInfo: PriceInfoString"
-              />
-            </PriceInfo>
-          </li>
-        </GridItem>
-      </ul>
+    <Grid>
+      <Grid.Item>
+        <PriceInfo
+          className="css-1gftye4"
+          text="PriceInfoString"
+        />
+      </Grid.Item>
     </Grid>
   </ProductGridPrice>
 </Component>

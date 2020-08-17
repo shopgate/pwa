@@ -9,6 +9,7 @@ jest.mock('react', () => ({
   }),
 }));
 jest.mock('../PaymentBarDiscounts.connector', () => cmp => cmp);
+jest.mock('@shopgate/engage/components');
 
 describe('<PaymentBarDiscounts />', () => {
   it('should render and match snapshot', () => {

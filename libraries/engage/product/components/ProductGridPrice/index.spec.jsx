@@ -11,6 +11,8 @@ jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
   },
 }));
 
+jest.mock('@shopgate/engage/components');
+
 const mockRenderOptions = {
   context: {
     i18n: () => ({

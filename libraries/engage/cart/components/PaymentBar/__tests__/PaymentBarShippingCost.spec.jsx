@@ -18,6 +18,7 @@ jest.mock('react', () => ({
   }),
 }));
 jest.mock('../PaymentBarShippingCost.connector', () => cmp => cmp);
+jest.mock('@shopgate/engage/components');
 
 describe('<PaymentBarShippingCost>', () => {
   it('should render shipping line', () => {

@@ -1,3 +1,4 @@
+import { logger } from '@shopgate/pwa-core/helpers';
 import { historyPush, historyReset } from '../router';
 import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
 import handleLink from './handleLink';
@@ -5,6 +6,12 @@ import handleLink from './handleLink';
 jest.mock('../../actions/router', () => ({
   historyPush: jest.fn(),
   historyReset: jest.fn(),
+}));
+
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    error: jest.fn(),
+  },
 }));
 
 describe('handleLink()', () => {
@@ -59,6 +66,7 @@ describe('handleLink()', () => {
     it('should dispatch historyReset() when the link is invalid URL', () => {
       handleLink({ link: 'http !@@##%$^&^*&* s://example.com/' })(dispatch);
       expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(logger.error.mock.calls[0][0]).toContain('Could not parse link');
       expect(historyReset).toHaveBeenCalledTimes(1);
     });
   });

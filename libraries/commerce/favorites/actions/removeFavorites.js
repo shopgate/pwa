@@ -12,13 +12,13 @@ function removeFavorites(productId, listId) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
-    const defaultList = lists?.[0] || { code: 'DEFAULT' };
-    const takenListId = listId || defaultList.code;
+    const defaultList = lists?.[0] || { id: 'DEFAULT' };
+    const takenListId = listId || defaultList.id;
 
     const request = new PipelineRequest(SHOPGATE_USER_DELETE_FAVORITES)
       .setInput({
         productId,
-        favoritesListId: takenListId,
+        id: takenListId,
       })
       .setRetries(0)
       .dispatch();
@@ -29,6 +29,8 @@ function removeFavorites(productId, listId) {
     } catch (error) {
       dispatch(errorRemoveFavorites(productId, error));
     }
+
+    return request;
   };
 }
 

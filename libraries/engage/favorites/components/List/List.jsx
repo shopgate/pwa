@@ -29,18 +29,18 @@ const styles = {
  * @return {JSX}
  */
 const FavoriteListLabel = ({
-  code, title, rename, remove,
+  id, title, rename, remove,
 }) => (
   <Fragment>
     <span className={styles.title}>
       {title}
     </span>
-    <SurroundPortals portalName={FAVORITES_LIST_CONTEXT_MENU} portalProps={{ code }}>
+    <SurroundPortals portalName={FAVORITES_LIST_CONTEXT_MENU} portalProps={{ id }}>
       <ContextMenu>
         <ContextMenu.Item onClick={rename}>
           {i18n.text('favorites.rename_list')}
         </ContextMenu.Item>
-        <ContextMenu.Item onClick={remove}>
+        <ContextMenu.Item onClick={remove} disabled={id === 'DEFAULT'}>
           {i18n.text('favorites.remove_list')}
         </ContextMenu.Item>
       </ContextMenu>
@@ -49,7 +49,7 @@ const FavoriteListLabel = ({
 );
 
 FavoriteListLabel.propTypes = {
-  code: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   remove: PropTypes.func.isRequired,
   rename: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
@@ -60,8 +60,8 @@ FavoriteListLabel.propTypes = {
  * @param {Object} props Props
  * @returns {Object}
  */
-const makeMapStateToProps = (_, { code }) => {
-  const getFavorites = makeGetFavorites(() => code);
+const makeMapStateToProps = (_, { id }) => {
+  const getFavorites = makeGetFavorites(() => id);
   return state => ({
     products: getFavorites(state),
   });
@@ -72,7 +72,7 @@ const makeMapStateToProps = (_, { code }) => {
  * @return {JSX}
  */
 const FavoriteList = ({
-  code,
+  id,
   name,
   products,
   rename,
@@ -86,9 +86,9 @@ const FavoriteList = ({
       openWithChevron
       renderLabel={() =>
         <FavoriteListLabel
-          code={code}
+          id={id}
           title={name}
-          rename={newName => rename(code, newName)}
+          rename={newName => rename(id, newName)}
           remove={remove}
         />
       }
@@ -121,7 +121,7 @@ const FavoriteList = ({
 
 FavoriteList.propTypes = {
   addToCart: PropTypes.func.isRequired,
-  code: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   remove: PropTypes.func.isRequired,

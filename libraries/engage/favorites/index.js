@@ -9,6 +9,7 @@ export {
   removeFavorites,
   requestSync as toggleFavorites,
   toggleFavoriteWithListChooser,
+  toggleFavorite,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 
 // CONSTANTS

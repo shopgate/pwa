@@ -49,8 +49,8 @@ const mapStateToProps = (state, props) => ({
  */
 const mapDispatchToProps = dispatch => ({
   addList: name => dispatch(addFavoritesList(name)),
-  updateList: (code, name) => dispatch(updateFavoritesList(code, name)),
-  removeList: code => dispatch(removeFavoritesList(code)),
+  updateList: (id, name) => dispatch(updateFavoritesList(id, name)),
+  removeList: id => dispatch(removeFavoritesList(id)),
   removeItem: (listId, productId) => dispatch(removeFavorites(productId, false, listId)),
   addToCart: (...params) => dispatch(addProductsToCart(...params)),
 });
@@ -227,14 +227,14 @@ const FavoriteLists = ({
   return (
     <div className={styles.root}>
       {lists.map(list => (
-        <SurroundPortals key={list.code} portalName={FAVORITES_LIST} portalProps={list}>
+        <SurroundPortals key={list.id} portalName={FAVORITES_LIST} portalProps={list}>
           <List
-            code={list.code}
+            id={list.id}
             name={list.name}
             rename={openRenameModal}
-            remove={() => removeList(list.code)}
-            removeItem={productId => removeItem(list.code, productId)}
-            addToCart={product => handleAddToCart(list.code, product)}
+            remove={() => removeList(list.id)}
+            removeItem={productId => removeItem(list.id, productId)}
+            addToCart={product => handleAddToCart(list.id, product)}
           />
         </SurroundPortals>
       ))}

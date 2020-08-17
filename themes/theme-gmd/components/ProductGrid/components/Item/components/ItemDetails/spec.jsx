@@ -9,6 +9,8 @@ jest.mock('@shopgate/engage/product', () => ({
   Swatches: () => null,
   getProductRoute: () => '',
 }));
+jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/core');
 jest.mock('../ItemName');
 jest.mock('../ItemPrice');
 

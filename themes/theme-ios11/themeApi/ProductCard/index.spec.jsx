@@ -9,6 +9,7 @@ import { mockProductId, mockProduct } from './mock';
 import ProductCard, { ProductCardUnwrapped } from './index';
 
 jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
+jest.mock('./components/Render', () => function ProductCardRender() { return null; });
 
 /**
  * Creates a state for a mocked store.
@@ -67,7 +68,10 @@ describe('<ProductCard />', () => {
       <div>{text}</div>
     );
 
-    const wrapper = renderComponent({ productId: mockProductId, render });
+    const wrapper = renderComponent({
+      productId: mockProductId,
+      render,
+    });
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.text()).toBe(text);
   });

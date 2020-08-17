@@ -49,15 +49,15 @@ const ListChooser = ({
       <SheetList>
         {lists.map(list => (
           <SheetList.Item
-            key={list.code}
+            key={list.id}
             title={list.name}
             onClick={() => {
               close();
-              toggle(productId, list.code, withRelatives);
+              toggle(productId, list.id, withRelatives);
             }}
             rightComponent={
               <ListChooserItem
-                listId={list.code}
+                listId={list.id}
                 productId={productId}
               />
             }

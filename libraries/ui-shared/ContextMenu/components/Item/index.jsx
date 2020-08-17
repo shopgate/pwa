@@ -15,15 +15,22 @@ const CLOSE_DELAY = 250;
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Item = ({ children, closeMenu, onClick }) => {
+const Item = ({
+  children, closeMenu, onClick, disabled,
+}) => {
   const handleClick = compose(
     onClick,
     () => setTimeout(closeMenu, CLOSE_DELAY)
   );
 
   return (
-    <Glow>
-      <div className={getItemClass()} onClick={handleClick} aria-hidden data-test-id="contextMenuButton">
+    <Glow disabled={disabled}>
+      <div
+        className={getItemClass(disabled)}
+        onClick={disabled ? () => {} : handleClick}
+        aria-hidden
+        data-test-id="contextMenuButton"
+      >
         {children}
       </div>
     </Glow>
@@ -33,6 +40,7 @@ const Item = ({ children, closeMenu, onClick }) => {
 Item.propTypes = {
   children: PropTypes.node,
   closeMenu: PropTypes.func,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
@@ -40,6 +48,7 @@ Item.defaultProps = {
   children: null,
   closeMenu: () => {},
   onClick: () => {},
+  disabled: false,
 };
 
 export default Item;

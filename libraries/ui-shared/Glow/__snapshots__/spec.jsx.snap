@@ -5,6 +5,7 @@ exports[`<Glow /> should render with a smile 1`] = `
   <Glow
     className={null}
     color="#f7f7f7"
+    disabled={false}
     forwardedRef={null}
     styles={
       Object {
@@ -16,6 +17,7 @@ exports[`<Glow /> should render with a smile 1`] = `
   >
     <div
       className="css-13azwyo"
+      disabled={false}
       onClick={[Function]}
       style={null}
     >

@@ -18,7 +18,7 @@ export const getFavoritesState = state => state.favorites || {};
  * @param {Object} state The global state.
  * @return {Object}
  */
-export const getFavoritesListState = state => state.favorites.lists;
+export const getFavoritesListState = state => state.favorites?.lists || {};
 
 /**
  * Returns a list of available wishlists to the user.
@@ -162,7 +162,7 @@ export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode)
   getProductCode,
   getListCode,
   getFavoritesProducts,
-  (productId, listId, products) => products.byList[listId]?.ids.includes(productId)
+  (productId, listId, products) => !!products.byList[listId]?.ids.includes(productId)
 );
 
 /**

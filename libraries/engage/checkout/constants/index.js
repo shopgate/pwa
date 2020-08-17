@@ -4,4 +4,5 @@ export {
   CHECKOUT_CONFIRMATION_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_BILLING_PATTERN,
+  checkoutRoutes,
 } from './routes';

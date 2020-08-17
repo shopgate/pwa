@@ -60,13 +60,13 @@ export default function favorites(subscribe) {
     ]);
 
     const lists = await dispatch(fetchFavoritesLists());
-    lists.forEach(list => dispatch(fetchFavorites(false, list.code)));
+    lists.forEach(list => dispatch(fetchFavorites(false, list.id)));
   });
 
   /** Favorites route enter */
   subscribe(favoritesWillEnter$, async ({ dispatch, getState }) => {
     const lists = await dispatch(fetchFavoritesLists());
-    const items = lists.map(list => dispatch(fetchFavorites(false, list.code)));
+    const items = lists.map(list => dispatch(fetchFavorites(false, list.id)));
     await Promise.all(items);
 
     const productIds = getFavoritesProductsIds(getState());
@@ -76,7 +76,7 @@ export default function favorites(subscribe) {
   /** User login / logout */
   subscribe(shouldFetchFreshFavorites$, async ({ dispatch }) => {
     const lists = await dispatch(fetchFavoritesLists(true));
-    lists.forEach(list => dispatch(fetchFavorites(true, list.code)));
+    lists.forEach(list => dispatch(fetchFavorites(true, list.id)));
   });
 
   subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {
@@ -154,7 +154,7 @@ export default function favorites(subscribe) {
     }
 
     const lists = await dispatch(fetchFavoritesLists(true));
-    lists.forEach(list => dispatch(fetchFavorites(true, list.code)));
+    lists.forEach(list => dispatch(fetchFavorites(true, list.id)));
   });
 
   /**

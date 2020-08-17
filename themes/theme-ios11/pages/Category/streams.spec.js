@@ -10,6 +10,9 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
     params: mockedParams,
   }),
 }));
+jest.mock('@shopgate/engage/locations', () => ({
+  preferredLocationDidUpdate$: jest.fn(),
+}));
 
 describe('Category streams', () => {
   const getState = jest.fn();

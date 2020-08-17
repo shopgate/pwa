@@ -20,7 +20,7 @@ import {
  */
 export const addFavorite = mutable((productId, listId) => (dispatch, getState) => {
   const defaultList = getFavoritesDefaultList(getState());
-  dispatch(addProductToFavorites(productId, listId || defaultList.code));
+  dispatch(addProductToFavorites(productId, listId || defaultList.id));
 });
 
 /**
@@ -42,7 +42,7 @@ export const addFavorites = addFavorite;
 export const removeFavorites = mutable(
   (productId, withRelatives = false, listId) => (dispatch, getState) => {
     const defaultList = getFavoritesDefaultList(getState());
-    dispatch(removeProductFromFavorites(productId, withRelatives, listId || defaultList.code));
+    dispatch(removeProductFromFavorites(productId, withRelatives, listId || defaultList.id));
   }
 );
 
@@ -89,7 +89,7 @@ export const toggleFavoriteWithListChooser = mutable(
 
       // Only one list available therefore we just add/remove it the product there.
       if (lists.length <= 1) {
-        dispatch(toggleFavorite(productId, lists[0].code, withRelatives));
+        dispatch(toggleFavorite(productId, lists[0].id, withRelatives));
         return;
       }
 

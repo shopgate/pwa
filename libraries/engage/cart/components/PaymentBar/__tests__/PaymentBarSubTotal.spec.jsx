@@ -9,6 +9,12 @@ jest.mock('react', () => ({
   }),
 }));
 jest.mock('../PaymentBarSubTotal.connector', () => cmp => cmp);
+jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    error: jest.fn(),
+  },
+}));
 
 describe('<PaymentBarSubTotal>', () => {
   it('should render line', () => {

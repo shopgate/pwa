@@ -16,6 +16,11 @@ const styles = {
   form: css({
     ...StylePresets.OUTLINED_FORM_FIELDS,
     ...StylePresets.TWO_COLUMN_LAYOUT,
+    ' .container-checkbox': {
+      [responsiveMediaQuery('>=md', { webOnly: false })]: {
+        marginRight: '50%',
+      },
+    },
   }).toString(),
   button: css({
     '&&': {
@@ -66,10 +71,18 @@ const styles = {
  */
 const ProfileForm = () => {
   const {
-    formState, customer, saveForm, deleteCustomer, validationErrors,
+    formState,
+    customer,
+    saveForm,
+    deleteCustomer,
+    validationErrors,
+    merchantCustomerAttributes,
   } = useProfileContext();
 
-  const formConfig = useMemo(() => generateFormConfig(), []);
+  const formConfig = useMemo(
+    () => generateFormConfig(merchantCustomerAttributes),
+    [merchantCustomerAttributes]
+  );
 
   /* eslint-disable react-hooks/exhaustive-deps */
   const handleUpdate = useCallback((values) => {

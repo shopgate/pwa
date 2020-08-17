@@ -7,6 +7,7 @@ import handleNoResults from './handleNoResults';
 
 jest.mock('./handleSearch');
 jest.mock('./handleNoResults');
+jest.mock('@shopgate/pwa-core/commands/registerEvents', () => jest.fn());
 
 const scope = SCANNER_SCOPE_DEFAULT;
 const format = 'EAN_13';

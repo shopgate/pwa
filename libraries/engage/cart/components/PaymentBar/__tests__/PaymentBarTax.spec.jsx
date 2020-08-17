@@ -18,6 +18,8 @@ jest.mock('react', () => ({
 
 jest.mock('../PaymentBarTax.connector', () => cmp => cmp);
 
+jest.mock('@shopgate/engage/components');
+
 describe('<PaymentBarTax />', () => {
   it('should render and match snapshot', () => {
     // eslint-disable-next-line extra-rules/no-single-line-objects

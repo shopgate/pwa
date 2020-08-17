@@ -5,6 +5,13 @@ import ItemPrice from './index';
 jest.mock('@shopgate/engage/product', () => ({
   ProductGridPrice: () => null,
 }));
+jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/category', () => ({
+  PRODUCT_ITEM_PRICE: 'PRODUCT_ITEM_PRICE',
+  PRODUCT_ITEM_PRICE_AFTER: 'PRODUCT_ITEM_PRICE_AFTER',
+  PRODUCT_ITEM_PRICE_BEFORE: 'PRODUCT_ITEM_PRICE_BEFORE',
+}));
+
 const props = {
   productId: '1234',
   price: {},

@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useRoute, i18n, historyPush } from '@shopgate/engage/core';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { useFormState as useForm, convertValidationErrors } from '@shopgate/engage/core/hooks/useFormState';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { LoadingProvider, ToastProvider } from '@shopgate/pwa-common/providers';
@@ -16,7 +17,7 @@ import { deleteCustomerContact } from '../../actions/deleteContact';
 import { deleteCustomer as deleteCustomerAction } from '../../actions/deleteCustomer';
 import { getContacts } from '../../selectors/contacts';
 import { getCustomer } from '../../selectors/customer';
-import constraints from './Profile.constraints';
+import createConstraints from './Profile.constraints';
 
 const ProfileContext = createContext();
 
@@ -32,6 +33,7 @@ export const useProfileContext = () => useContext(ProfileContext);
 const mapStateToProps = state => ({
   contacts: getContacts(state),
   customer: getCustomer(state),
+  merchantCustomerAttributes: getMerchantCustomerAttributes(state),
 });
 
 /**
@@ -61,6 +63,7 @@ const ProfileProvider = ({
   showDialog,
   contacts,
   customer,
+  merchantCustomerAttributes,
   children,
 }) => {
   // Route
@@ -70,6 +73,8 @@ const ProfileProvider = ({
   const defaultState = useMemo(() => (customer ? {
     ...customer,
     marketingOptIn: customer.settings.marketingOptIn || false,
+    ...Object.assign({}, ...customer.attributes
+      .map(attribute => ({ [`attribute_${attribute.code}`]: attribute.value?.code || attribute.value }))),
   } : null), [customer]);
 
   // Saving the form.
@@ -86,6 +91,14 @@ const ProfileProvider = ({
         settings: {
           marketingOptIn: values.marketingOptIn,
         },
+        attributes: merchantCustomerAttributes
+          .map(attribute => ({
+            code: attribute.code,
+            value: attribute.values?.length
+              ? { code: values[`attribute_${attribute.code}`] }
+              : values[`attribute_${attribute.code}`],
+          }))
+          .filter(attribute => attribute.value.length || attribute.value?.code?.length),
       });
       UIEvents.emit(ToastProvider.ADD, {
         id: 'account.profile.form.success',
@@ -98,9 +111,13 @@ const ProfileProvider = ({
       });
     }
     LoadingProvider.unsetLoading(pathname);
-  }, [pathname, updateCustomer]);
+  }, [merchantCustomerAttributes, pathname, updateCustomer]);
 
   // Hold profile form state.
+  const constraints = useMemo(
+    () => createConstraints(merchantCustomerAttributes),
+    [merchantCustomerAttributes]
+  );
   const formState = useForm(
     defaultState,
     saveForm,
@@ -168,6 +185,7 @@ const ProfileProvider = ({
   const contextValue = useMemo(() => ({
     contacts,
     validationErrors,
+    merchantCustomerAttributes,
     customer: defaultState,
     formState,
     saveForm: formState.handleSubmit,
@@ -176,6 +194,7 @@ const ProfileProvider = ({
     deleteCustomer: deleteCustomerWrapper,
   }), [
     contacts,
+    merchantCustomerAttributes,
     defaultState,
     deleteContactWrapper,
     deleteCustomerWrapper,
@@ -208,6 +227,7 @@ ProfileProvider.propTypes = {
   deleteCustomer: PropTypes.func.isRequired,
   fetchContacts: PropTypes.func.isRequired,
   fetchCustomer: PropTypes.func.isRequired,
+  merchantCustomerAttributes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   push: PropTypes.func.isRequired,
   showDialog: PropTypes.func.isRequired,
   updateCustomer: PropTypes.func.isRequired,

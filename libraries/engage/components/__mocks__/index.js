@@ -67,14 +67,32 @@ export const MessageBar = () => null;
 export const Link = ({ children }) => children;
 export const Ellipsis = ({ children }) => children;
 export const SurroundPortals = ({ children }) => children;
+export const Portal = ({ children }) => children;
 export const Accordion = ({ children }) => children;
+export const ResponsiveContainer = ({ children }) => children;
 export const Grid = ({ children }) => children;
 Grid.Item = ({ children }) => children;
 Grid.Item.displayName = 'Grid.Item';
+export const Price = () => null;
+export const PriceStriked = () => null;
+export const PriceInfo = () => null;
+export const RangeSlider = () => null;
+export const Availability = () => null;
+export const TextLink = () => null;
+export const ProductImage = ({ children }) => children;
+export const PlaceholderParagraph = ({ children }) => children;
+export const HtmlSanitizer = ({ children }) => children;
+export const RippleButton = ({ children }) => children;
+export const Button = ({ children }) => children;
+export const SheetList = ({ children }) => children;
+SheetList.Item = ({ children }) => children;
+SheetList.Item.displayName = 'SheetList.Item';
 
 // HELPERS
 export const I18n = {
   Text: () => null,
+  Placeholder: () => null,
+  Price: () => null,
 };
 
 export { default as View, ViewContext } from '../View/__mocks__/index';

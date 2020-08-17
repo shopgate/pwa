@@ -93,17 +93,20 @@
       "title": "Add a new List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the name for your new favorite list",
+      "message": "Enter the name for your new wish list",
       "label": "Name"
     },
     "rename_list_modal": {
       "title": "Renaming List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the new name for your favorite list",
+      "message": "Enter the new name for your wish list",
       "label": "Name"
     },
     "add_list": "Add New List",
+    "errors": {
+      "invalid_name": "Please enter a valid name for your wish list"
+    },
     "rename_list": "Rename",
     "remove_list": "Remove",
     "add_to_list": "Add to list",
@@ -111,7 +114,7 @@
       "title": "Choose a Method"
     },
     "list_chooser": {
-      "title": "Choose a Favorite List",
+      "title": "Choose a Wish List",
       "add": "Add",
       "remove": "Remove"
     },
