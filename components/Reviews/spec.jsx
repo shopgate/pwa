@@ -22,6 +22,7 @@ jest.mock('@shopgate/engage/product', () => ({
   PRODUCT_REVIEWS: 'product.reviews',
   makeIsBaseProductActive: jest.fn(() => () => true),
 }));
+jest.mock('@shopgate/engage/components');
 
 beforeEach(() => {
   jest.resetModules();
