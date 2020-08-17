@@ -18,7 +18,7 @@ function removeFavorites(productId, listId) {
     const request = new PipelineRequest(SHOPGATE_USER_DELETE_FAVORITES)
       .setInput({
         productId,
-        id: takenListId,
+        favoritesListId: takenListId,
       })
       .setRetries(0)
       .dispatch();
