@@ -68,7 +68,10 @@ describe('<ProductCard />', () => {
       <div>{text}</div>
     );
 
-    const wrapper = renderComponent({ productId: mockProductId, render });
+    const wrapper = renderComponent({
+      productId: mockProductId,
+      render,
+    });
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.text()).toBe(text);
   });

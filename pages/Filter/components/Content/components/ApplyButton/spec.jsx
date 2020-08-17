@@ -4,7 +4,7 @@ import ApplyButton from './index';
 
 const clickMock = jest.fn();
 
-jest.mock('@shopgate/engage/components')
+jest.mock('@shopgate/engage/components');
 
 jest.mock('@shopgate/engage/core', () => ({
   withWidgetSettings: function withWidgetSettings(Comp) {
