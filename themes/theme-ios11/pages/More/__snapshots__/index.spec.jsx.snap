@@ -76,9 +76,6 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             }
           />
-          <Quicklinks>
-            <div />
-          </Quicklinks>
           <UserMenu
             entries={null}
             isLoggedIn={true}
@@ -324,6 +321,9 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             />
           </UserMenu>
+          <Quicklinks>
+            <div />
+          </Quicklinks>
           <StoreInfo>
             <Portal
               name="nav-menu.store-information.before"
