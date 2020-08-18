@@ -59,24 +59,22 @@ TableRow.propTypes = {
  * @returns {JSX}
  */
 export const Table = ({ children }) => (
-  <div>
-    <Card>
-      <table>
-        <thead>
-          <tr className={tableHeader}>
-            <th align="left">{i18n.text('orders.header.date')}</th>
-            <th align="left">{i18n.text('orders.header.orderNumber')}</th>
-            <th align="left">{i18n.text('orders.header.status')}</th>
-            <th align="right">{i18n.text('orders.header.lineItemCount')}</th>
-            <th align="right">{i18n.text('orders.header.total')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {children}
-        </tbody>
-      </table>
-    </Card>
-  </div>
+  <Card>
+    <table>
+      <thead>
+        <tr className={tableHeader}>
+          <th align="left">{i18n.text('orders.header.date')}</th>
+          <th align="left">{i18n.text('orders.header.orderNumber')}</th>
+          <th align="left">{i18n.text('orders.header.status')}</th>
+          <th align="right">{i18n.text('orders.header.lineItemCount')}</th>
+          <th align="right">{i18n.text('orders.header.total')}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {children}
+      </tbody>
+    </table>
+  </Card>
 );
 
 Table.propTypes = {

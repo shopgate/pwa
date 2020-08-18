@@ -11,6 +11,9 @@ import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 
 const styles = {
+  root: css({
+    margin: '8px 8px 10px',
+  }).toString(),
   title: css({
     flex: 1,
   }).toString(),
@@ -80,7 +83,7 @@ const FavoriteList = ({
   removeItem,
   addToCart,
 }) => (
-  <Card>
+  <Card className={styles.root}>
     <Accordion
       className=""
       openWithChevron

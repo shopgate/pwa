@@ -1,7 +1,9 @@
 import { css } from 'glamor';
-import { themeConfig, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig, themeColors, themeName } from '@shopgate/pwa-common/helpers/config';
 
 const { variables } = themeConfig;
+
+const isIOS = themeName.includes('ios');
 
 export const orderNumber = css({
   fontWeight: 500,
@@ -35,6 +37,6 @@ export const card = css({
   },
   background: themeColors.light,
   boxSizing: 'border-box',
-  boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
-  borderRadius: 5,
+  boxShadow: themeConfig.shadows.productCard,
+  borderRadius: isIOS ? 10 : 2,
 }).toString();

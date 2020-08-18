@@ -66,7 +66,7 @@ export default function favorites(subscribe) {
   /** Favorites route enter */
   subscribe(favoritesWillEnter$, async ({ dispatch, getState }) => {
     const lists = await dispatch(fetchFavoritesLists());
-    const items = lists.map(list => dispatch(fetchFavorites(false, list.id)));
+    const items = lists.map(list => dispatch(fetchFavorites(true, list.id)));
     await Promise.all(items);
 
     const productIds = getFavoritesProductsIds(getState());

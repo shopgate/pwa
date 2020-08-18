@@ -30,7 +30,8 @@
     "order_history": "Order History",
     "wish_list": "Wish List",
     "profile": "Profile",
-    "your_account": "My Account"
+    "your_account": "My Account",
+    "your_account_contact": "Address"
   },
   "account": {
     "profile": {
@@ -396,6 +397,7 @@
   "navigation": {
     "login_register": "Login / Register",
     "your_account": "My Account",
+    "your_account_contact": "Address",
     "home": "Home",
     "categories": "Categories",
     "favorites": "Wish List",
