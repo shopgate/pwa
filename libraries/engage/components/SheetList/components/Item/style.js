@@ -28,7 +28,6 @@ const title = css({
     margin: 0,
     fontSize: '1.25rem',
     lineHeight: '1.5rem',
-    fontWeight: 500,
   },
 }).toString();
 

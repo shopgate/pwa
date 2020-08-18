@@ -47,6 +47,11 @@ export const getFavoritesDefaultList = createSelector(
   lists => lists[0]
 );
 
+export const hasMultipleFavoritesList = createSelector(
+  getFavoritesLists,
+  lists => lists.length > 1
+);
+
 /**
  * @param {Object} state The global state.
  * @returns {Array}
@@ -213,7 +218,7 @@ export const makeGetProductRelativesOnFavorites = getListCode => createSelector(
 );
 
 /**
- * Checks if product or any relative is on favorires list.
+ * Checks if product or any relative is on favorites list.
  * @param {Object} state Current state.
  * @param {string} productId Product id.
  * @return {boolean}

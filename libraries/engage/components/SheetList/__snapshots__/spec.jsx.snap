@@ -60,13 +60,13 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-m6wt83"
+                        className="css-1tp5o1f"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-m6wt83 css-1gs0ko2"
+                          className="css-1tp5o1f css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -154,13 +154,13 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-m6wt83"
+                        className="css-1tp5o1f"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-m6wt83 css-1gs0ko2"
+                          className="css-1tp5o1f css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -240,13 +240,13 @@ exports[`<SheetList /> should render with two children 1`] = `
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-m6wt83"
+                        className="css-1tp5o1f"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-m6wt83 css-1gs0ko2"
+                          className="css-1tp5o1f css-1gs0ko2"
                         >
                           <div>
                             List Item
@@ -307,13 +307,13 @@ exports[`<SheetList /> should render with two children 1`] = `
                       className="css-1ojce65 css-h7r55a"
                     >
                       <GridItem
-                        className="css-m6wt83"
+                        className="css-1tp5o1f"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-m6wt83 css-1gs0ko2"
+                          className="css-1tp5o1f css-1gs0ko2"
                         >
                           <div>
                             List Item

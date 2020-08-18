@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 export const header = css({
   position: 'sticky',
@@ -7,7 +8,9 @@ export const header = css({
   backgroundColor: '#fff',
   transform: 'translateY(0)',
   transition: 'transform 0.3s ease',
-  boxShadow: 'rgba(0, 0, 0, 0.118) 0px 1px 6px, rgba(0, 0, 0, 0.118) 0px 1px 4px',
+  [responsiveMediaQuery('<=xs', { appAlways: true })]: {
+    boxShadow: 'rgba(0, 0, 0, 0.118) 0px 1px 6px, rgba(0, 0, 0, 0.118) 0px 1px 4px',
+  },
 }).toString();
 
 export const hidden = css({
