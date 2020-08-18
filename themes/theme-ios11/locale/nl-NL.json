@@ -408,7 +408,9 @@
     "logout": "Log uit",
     "store_information": "Over ons",
     "more_menu": "Meer",
-    "manage": "Manage",
+    "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
     "back": "Terug naar {title}"
   },
   "reviews": {

@@ -409,7 +409,9 @@
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
     "more_menu": "Plus",
-    "manage": "Manage",
+    "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
     "back": "Retour à {title}"
   },
   "reviews": {
