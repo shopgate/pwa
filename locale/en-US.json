@@ -400,7 +400,6 @@
   "navigation": {
     "login_register": "Login / Register",
     "your_account": "My Account",
-    "your_account_contact": "Address",
     "home": "Home",
     "categories": "Categories",
     "my_orders": "My orders",
@@ -416,7 +415,9 @@
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More",
-    "manage": "Manage",
+    "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
     "back": "Back to {title}"
   },
   "reviews": {

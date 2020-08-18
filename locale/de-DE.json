@@ -416,7 +416,9 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
-    "manage": "Manage",
+    "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
     "back": "Zurück zu {title}"
   },
   "reviews": {

@@ -408,7 +408,9 @@
     "logout": "Esci",
     "store_information": "Informazioni del Negozio",
     "more_menu": "Di più",
-    "manage": "Manage",
+    "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
     "back": "Indietro alla {title}"
   },
   "reviews": {

@@ -407,7 +407,9 @@
     "logout": "Encerrar Sessão",
     "store_information": "Armazenar Informações",
     "more_menu": "Mais",
-    "manage": "Manage",
+    "order_history": "Order History",
+    "wish_list": "Wish List",
+    "profile": "Profile",
     "back": "Voltar para {title}"
   },
   "reviews": {
