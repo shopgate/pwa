@@ -63,7 +63,7 @@ const image = css({
 }).toString();
 
 const glowHover = {
-  boxShadow: `-${variables.gap.bigger}px 0 0 red, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
+  boxShadow: `-${variables.gap.bigger}px 0 0 ${colors.shade8}, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
 };
 
 export default {

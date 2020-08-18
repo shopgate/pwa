@@ -25,7 +25,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       styles={
         Object {
           "hover": Object {
-            "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
+            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
           },
         }
       }
@@ -38,7 +38,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         styles={
           Object {
             "hover": Object {
-              "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
+              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
             },
           }
         }
@@ -295,7 +295,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         styles={
           Object {
             "hover": Object {
-              "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
+              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
             },
           }
         }
@@ -308,7 +308,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           styles={
             Object {
               "hover": Object {
-                "boxShadow": "-20px 0 0 red, 20px 0 0 #f7f7f7",
+                "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
               },
             }
           }
