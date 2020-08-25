@@ -7,7 +7,9 @@ import { SheetList, SheetDrawer } from '@shopgate/engage/components';
  * @param {Object} props Props.
  * @returns {JSX}
  */
-const ItemFulfillmentMethod = ({ isOpen, methods, onClose }) => (
+const ItemFulfillmentMethod = ({
+  isOpen, methods, onClose, onSelect,
+}) => (
   <SheetDrawer
     isOpen={isOpen}
     title={i18n.text('favorites.fo_method_chooser.title')}
@@ -17,19 +19,19 @@ const ItemFulfillmentMethod = ({ isOpen, methods, onClose }) => (
       {methods.includes('ROPIS') ? (
         <SheetList.Item
           title={i18n.text('locations.method.ropis')}
-          onClick={() => onClose('ROPIS')}
+          onClick={() => onSelect('ROPIS')}
         />
       ) : null}
       {methods.includes('BOPIS') ? (
         <SheetList.Item
           title={i18n.text('locations.method.bopis')}
-          onClick={() => onClose('BOPIS')}
+          onClick={() => onSelect('BOPIS')}
         />
       ) : null}
       {methods.includes('directShip') ? (
         <SheetList.Item
           title={i18n.text('locations.method.direct_ship')}
-          onClick={() => onClose('directShip')}
+          onClick={() => onSelect('directShip')}
         />
       ) : null}
     </SheetList>
@@ -40,6 +42,7 @@ ItemFulfillmentMethod.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   methods: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClose: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default ItemFulfillmentMethod;

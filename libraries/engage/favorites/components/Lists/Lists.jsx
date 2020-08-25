@@ -15,11 +15,12 @@ import { removeFavorites } from '@shopgate/pwa-common-commerce/favorites/actions
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import { FulfillmentSheet, MULTI_LINE_RESERVE, STAGE_SELECT_STORE } from '@shopgate/engage/locations';
 import { openSheet } from '@shopgate/engage/locations/providers/FulfillmentProvider';
-import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors/merchantSettings';
 import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
 import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
-import { getPreferredLocation, getPreferredFulfillmentMethod } from '@shopgate/engage/locations/selectors';
+import { getPreferredLocation, getPreferredFulfillmentMethod, getUserSearch } from '@shopgate/engage/locations/selectors';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
+import { fetchProductLocations } from '@shopgate/engage/locations/actions';
 
 import List from '../List';
 import ListsModal from './ListsModal';
@@ -34,14 +35,18 @@ import {
  * @param {Object} props Props
  * @returns {Object}
  */
-const mapStateToProps = (state, props) => ({
-  isInitializing: isInitialLoading(state),
-  lists: getFavoritesLists(state),
-  isLocationBasedShopping: getIsLocationBasedShopping(state),
-  preferredLocation: getPreferredLocation(state, props),
-  preferredFulfillmentMethod: getPreferredFulfillmentMethod(state, props),
-  wishlistMode: getWishlistMode(state),
-});
+const makeMapStateToProps = () => {
+  const getFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+  return (state, props) => ({
+    isInitializing: isInitialLoading(state),
+    lists: getFavoritesLists(state),
+    preferredLocation: getPreferredLocation(state, props),
+    preferredFulfillmentMethod: getPreferredFulfillmentMethod(state, props),
+    shopFulfillmentMethods: getFulfillmentMethods(state, props),
+    wishlistMode: getWishlistMode(state),
+    userSearch: getUserSearch(state),
+  });
+};
 
 /**
  * @param {Object} dispatch Dispatch
@@ -53,6 +58,7 @@ const mapDispatchToProps = dispatch => ({
   removeList: id => dispatch(removeFavoritesList(id)),
   removeItem: (listId, productId) => dispatch(removeFavorites(productId, false, listId)),
   addToCart: (...params) => dispatch(addProductsToCart(...params)),
+  fetchLocations: (productId, params) => dispatch(fetchProductLocations(productId, params)),
 });
 
 const styles = {
@@ -88,7 +94,9 @@ const FavoriteLists = ({
   wishlistMode,
   lists,
   isInitializing,
-  isLocationBasedShopping,
+  shopFulfillmentMethods,
+  userSearch,
+  fetchLocations,
 }) => {
   const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
 
@@ -102,12 +110,13 @@ const FavoriteLists = ({
   const handleAddToCartWithMethod = useCallback((method) => {
     // Hide modal if visible.
     setFOMethodChooser(false);
-    setFulfillmentMethod(method);
 
     // Handle cancellation.
     if (!method) {
       return;
     }
+
+    setFulfillmentMethod(method);
 
     // Direct ship.
     if (method === 'directShip') {
@@ -120,6 +129,7 @@ const FavoriteLists = ({
     }
 
     // Open the sheet
+    fetchLocations(activeProductId, userSearch);
     setTimeout(() => {
       openSheet({
         callback: (state) => {
@@ -133,7 +143,8 @@ const FavoriteLists = ({
         stage: STAGE_SELECT_STORE,
       });
     }, 10);
-  }, [activeProductId, addToCart]);
+  }, [activeProductId, addToCart, fetchLocations, userSearch]);
+
   const handleAddToCart = useCallback((listId, product) => {
     // Create promise to inform add to cart button when ready.
     const promise = new Promise((resolve, reject) => {
@@ -149,16 +160,31 @@ const FavoriteLists = ({
       };
     });
 
-    // Location based shopping.
-    if (isLocationBasedShopping && preferredLocation && preferredFulfillmentMethod) {
+    // Get location.
+    let activeLocation = null;
+    if (preferredLocation) {
+      activeLocation = preferredLocation;
+    }
+
+    // Get fulfillment method that is both active for location and product.
+    let activeFulfillmentMethod = preferredFulfillmentMethod || fulfillmentMethod;
+    const availableFulfillmentMethods = shopFulfillmentMethods?.filter(
+      s => product.fulfillmentMethods.indexOf(s) !== -1
+    ) || [];
+    if (activeLocation && !activeFulfillmentMethod && availableFulfillmentMethods.length === 1) {
+      [activeFulfillmentMethod] = availableFulfillmentMethods;
+    }
+
+    // If all options are already configured immediately add it to the cart.
+    if (activeFulfillmentMethod && activeLocation) {
       addToCart([{
         productId: product.id,
         quantity: 1,
         fulfillment: {
-          method: preferredFulfillmentMethod,
+          method: activeFulfillmentMethod,
           location: {
-            code: preferredLocation.code,
-            name: preferredLocation.name || '',
+            code: activeLocation.code,
+            name: activeLocation.name || '',
           },
         },
       }]);
@@ -166,27 +192,36 @@ const FavoriteLists = ({
       return promise;
     }
 
-    // Quick path -> only one FO method available.
+    // Location not set but FO method is set.
     setActiveProductId(product.id);
-    const methods = product.fulfillmentMethods;
-    if (methods.length === 1) {
-      handleAddToCartWithMethod(methods[0]);
+    if (activeFulfillmentMethod && !activeLocation) {
+      handleAddToCartWithMethod(activeFulfillmentMethod);
+      return promise;
+    } if (!activeFulfillmentMethod && !activeFulfillmentMethod) {
+      // Long path is required <- fo method and location unset.
+      setFulfillmentMethods(shopFulfillmentMethods);
+      setFOMethodChooser(true);
       return promise;
     }
-
-    // Long path -> Select FO method first.
-    setFulfillmentMethods(methods);
+    // Short path is required <- fo method is unset.
+    setFulfillmentMethods(availableFulfillmentMethods);
     setFOMethodChooser(true);
     return promise;
   }, [
     addToCart,
+    fulfillmentMethod,
     handleAddToCartWithMethod,
-    isLocationBasedShopping,
     preferredFulfillmentMethod,
     preferredLocation,
     removeItem,
+    shopFulfillmentMethods,
     wishlistMode,
   ]);
+
+  const handleMethodClose = useCallback(() => {
+    setFOMethodChooser(false);
+    promiseRef.current.reject();
+  }, []);
 
   // Modal for renaming and adding.
   const [modalOpen, setModalOpen] = useState(false);
@@ -254,7 +289,8 @@ const FavoriteLists = ({
       <ItemFulfillmentMethod
         isOpen={foMethodChooser}
         methods={fulfillmentMethods}
-        onClose={handleAddToCartWithMethod}
+        onSelect={handleAddToCartWithMethod}
+        onClose={handleMethodClose}
       />
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
         {hasConnectExtension ? (
@@ -275,22 +311,25 @@ const FavoriteLists = ({
 FavoriteLists.propTypes = {
   addList: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
-  isLocationBasedShopping: PropTypes.bool.isRequired,
+  fetchLocations: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   removeList: PropTypes.func.isRequired,
+  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateList: PropTypes.func.isRequired,
   wishlistMode: PropTypes.string.isRequired,
   isInitializing: PropTypes.bool,
   lists: PropTypes.arrayOf(PropTypes.shape()),
   preferredFulfillmentMethod: PropTypes.string,
   preferredLocation: PropTypes.shape(),
+  userSearch: PropTypes.shape(),
 };
 
 FavoriteLists.defaultProps = {
   lists: [],
+  userSearch: {},
   preferredFulfillmentMethod: null,
   preferredLocation: null,
   isInitializing: true,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoriteLists);
+export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteLists);
