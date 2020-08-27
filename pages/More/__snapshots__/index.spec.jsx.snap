@@ -185,14 +185,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       >
                         <MoreMenuItem
                           className={null}
-                          href="/account"
-                          label="navigation.manage"
+                          href="/account/profile"
+                          label="navigation.profile"
                           onClick={null}
                           testId="accountButton"
                         >
                           <Connect(Link)
                             className="css-1hj8a57"
-                            href="/account"
+                            href="/account/profile"
                           >
                             <Link
                               aria-hidden={null}
@@ -201,7 +201,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               disabled={false}
                               historyPush={[Function]}
                               historyReplace={[Function]}
-                              href="/account"
+                              href="/account/profile"
                               replace={false}
                               role="link"
                               state={Object {}}
@@ -213,7 +213,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                                 aria-hidden={null}
                                 aria-label={null}
                                 className="css-9auwkz css-1hj8a57"
-                                data-test-id="link: /account"
+                                data-test-id="link: /account/profile"
                                 href={null}
                                 onClick={[Function]}
                                 role="link"
@@ -223,14 +223,122 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                                   className={null}
                                   params={Object {}}
                                   role={null}
-                                  string="navigation.manage"
+                                  string="navigation.profile"
                                   transform={null}
                                 >
                                   <span
                                     className={null}
                                     role={null}
                                   >
-                                    navigation.manage
+                                    navigation.profile
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </MoreMenuItem>
+                        <MoreMenuItem
+                          className={null}
+                          href="/account/orders"
+                          label="navigation.order_history"
+                          onClick={null}
+                          testId="accountButton"
+                        >
+                          <Connect(Link)
+                            className="css-1hj8a57"
+                            href="/account/orders"
+                          >
+                            <Link
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-1hj8a57"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="/account/orders"
+                              replace={false}
+                              role="link"
+                              state={Object {}}
+                              tabIndex={null}
+                              tag="div"
+                              target={null}
+                            >
+                              <div
+                                aria-hidden={null}
+                                aria-label={null}
+                                className="css-9auwkz css-1hj8a57"
+                                data-test-id="link: /account/orders"
+                                href={null}
+                                onClick={[Function]}
+                                role="link"
+                                tabIndex={null}
+                              >
+                                <Translate
+                                  className={null}
+                                  params={Object {}}
+                                  role={null}
+                                  string="navigation.order_history"
+                                  transform={null}
+                                >
+                                  <span
+                                    className={null}
+                                    role={null}
+                                  >
+                                    navigation.order_history
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </MoreMenuItem>
+                        <MoreMenuItem
+                          className={null}
+                          href="/account/wish-list"
+                          label="navigation.wish_list"
+                          onClick={null}
+                          testId="accountButton"
+                        >
+                          <Connect(Link)
+                            className="css-1hj8a57"
+                            href="/account/wish-list"
+                          >
+                            <Link
+                              aria-hidden={null}
+                              aria-label={null}
+                              className="css-1hj8a57"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="/account/wish-list"
+                              replace={false}
+                              role="link"
+                              state={Object {}}
+                              tabIndex={null}
+                              tag="div"
+                              target={null}
+                            >
+                              <div
+                                aria-hidden={null}
+                                aria-label={null}
+                                className="css-9auwkz css-1hj8a57"
+                                data-test-id="link: /account/wish-list"
+                                href={null}
+                                onClick={[Function]}
+                                role="link"
+                                tabIndex={null}
+                              >
+                                <Translate
+                                  className={null}
+                                  params={Object {}}
+                                  role={null}
+                                  string="navigation.wish_list"
+                                  transform={null}
+                                >
+                                  <span
+                                    className={null}
+                                    role={null}
+                                  >
+                                    navigation.wish_list
                                   </span>
                                 </Translate>
                               </div>
