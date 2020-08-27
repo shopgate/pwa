@@ -42,7 +42,7 @@ const StockInfoUnwrapped = ({ location, inventory, className }: Props) => {
   const { locationStockInfo } = getThemeSettings('product') || {};
   const settings = defaultsDeep(locationStockInfo, defaultSettings);
 
-  const { availabilityText = '', availabilityTextColor = 'inherit' } =
+  const { availabilityText = '', availabilityTextColor = 'inherit', comingSoon = false } =
     getAvailabilitySettings(settings, location, inventory);
 
   const defaultClassName = css({
@@ -66,6 +66,7 @@ const StockInfoUnwrapped = ({ location, inventory, className }: Props) => {
       <span className={classNames(defaultClassName, css(className).toString())}>
         <StockInfoInventory
           availabilityText={availabilityText}
+          comingSoon={comingSoon}
           location={location}
           inventory={inventory}
           maxNumberVisible={settings.maxNumberOfVisibleInventory}

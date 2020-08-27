@@ -5,6 +5,7 @@ import { type Location } from '../../locations.types';
 
 type Props = {
   availabilityText: string,
+  comingSoon: boolean,
   location: Location,
   inventory: any,
   maxNumberVisible: number,
@@ -22,7 +23,12 @@ type Props = {
  */
 export function StockInfoInventory(props: Props) {
   const {
-    availabilityText, location, inventory, maxNumberVisible, aboveMaxExtension,
+    availabilityText,
+    comingSoon,
+    location,
+    inventory,
+    maxNumberVisible,
+    aboveMaxExtension,
   } = props;
 
   const visibleInventory = React.useMemo(() => {
@@ -39,7 +45,7 @@ export function StockInfoInventory(props: Props) {
     return inventory.visible;
   }, [aboveMaxExtension, inventory, location, maxNumberVisible]);
 
-  if (!location || !availabilityText || !inventory) {
+  if ((!location || !availabilityText || !inventory) && !comingSoon) {
     return null;
   }
 

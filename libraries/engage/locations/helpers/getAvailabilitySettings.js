@@ -13,6 +13,10 @@ import {
  * @returns {Object}
  */
 export default (settings, location, productInventory) => {
+  if (location?.isComingSoon) {
+    return settings[AVAILABILITY_TYPE_COMING_SOON];
+  }
+
   if (!productInventory) {
     return {};
   }
@@ -20,10 +24,6 @@ export default (settings, location, productInventory) => {
   const { isAvailable = false, visible = 0 } = productInventory;
   if (isAvailable === false) {
     return settings[AVAILABILITY_TYPE_NOT_AVAILABLE];
-  }
-
-  if (location.isComingSoon) {
-    return settings[AVAILABILITY_TYPE_COMING_SOON];
   }
 
   if (visible === null) {

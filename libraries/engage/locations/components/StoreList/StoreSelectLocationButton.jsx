@@ -26,7 +26,7 @@ export const StoreSelectLocationButton = () => {
       <RippleButton
         onClick={handleClick}
         className={selectLocationButton.toString()}
-        disabled={!noInventory && !isAvailable}
+        disabled={store?.isComingSoon || (!noInventory && !isAvailable)}
       >
         {i18n.text('locations.select_location')}
       </RippleButton>
