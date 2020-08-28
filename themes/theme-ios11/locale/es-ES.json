@@ -609,6 +609,19 @@
   },"error": {
     "general": "No se puede conectar. Por favor, compruebe su conexión a Internet."
   },
+  "tracking": {
+    "cookieConsent": {
+      "message": "This website uses cookies to ensure you get the best experience on our website.",
+      "learnMore": "Learn more",
+      "decline": "Decline",
+      "save": "Save",
+      "allowSelected": "Allow selected",
+      "allowAll": "Allow all",
+      "preferences": "Preferences",
+      "needed": "Needed",
+      "analytics": "Analytics"
+    }
+  },
   "validation": {
     "required": "Por favor, completa este campo",
     "email": "Introduce una dirección de correo electrónico válida",

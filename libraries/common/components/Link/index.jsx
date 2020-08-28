@@ -88,7 +88,7 @@ class Link extends Component {
        * Don't use link tags on apps. Sometimes links are really opened since the preventDefault
        * doesn't work as expected which results in white pages.
        */
-      Tag = 'div';
+      Tag = 'span';
     }
 
     return (
