@@ -610,6 +610,19 @@
   },"error": {
     "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
+  "tracking": {
+    "cookieConsent": {
+      "message": "This website uses cookies to ensure you get the best experience on our website.",
+      "learnMore": "Learn more",
+      "decline": "Decline",
+      "save": "Save",
+      "allowSelected": "Allow selected",
+      "allowAll": "Allow all",
+      "preferences": "Preferences",
+      "needed": "Needed",
+      "analytics": "Analytics"
+    }
+  },
   "validation": {
     "required": "Veuillez remplir ce champ",
     "email": "Veuillez saisir une adresse e-mail valide",

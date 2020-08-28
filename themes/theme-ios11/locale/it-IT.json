@@ -609,6 +609,19 @@
   },"error": {
     "general": "Impossibile connettersi. Per favore verifica la connessione internet."
   },
+  "tracking": {
+    "cookieConsent": {
+      "message": "This website uses cookies to ensure you get the best experience on our website.",
+      "learnMore": "Learn more",
+      "decline": "Decline",
+      "save": "Save",
+      "allowSelected": "Allow selected",
+      "allowAll": "Allow all",
+      "preferences": "Preferences",
+      "needed": "Needed",
+      "analytics": "Analytics"
+    }
+  },
   "validation": {
     "required": "Per favore completa questo campo",
     "email": "Per favore inserisci un indirizzo e-mail valido",
