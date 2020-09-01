@@ -1,7 +1,6 @@
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
-import { isBeta } from '@shopgate/engage/core';
-
+import { getThemeSettings, isBeta } from '@shopgate/engage/core';
 import { buildShowScheduledParams } from '../components/EffectivityDates/helpers';
 
 /**
@@ -44,3 +43,42 @@ export const setDefaultProductFetchParams = () => {
   });
 };
 
+/**
+ * Provides the settings for ProductImages
+ * @return {Object}
+ */
+export const getProductImageSettings = () => {
+  const appImages = getThemeSettings('AppImages');
+
+  return {
+    quality: 75,
+    fillColor: 'FFFFFF',
+    HeroImage: [
+      {
+        width: 440,
+        height: 440,
+      },
+      {
+        width: 1024,
+        height: 1024,
+      },
+    ],
+    GalleryImage: [
+      {
+        width: 1024,
+        height: 1024,
+      },
+      {
+        width: 2048,
+        height: 2048,
+      },
+    ],
+    ListImage: [
+      {
+        width: 440,
+        height: 440,
+      },
+    ],
+    ...appImages,
+  };
+};

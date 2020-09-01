@@ -6,6 +6,7 @@ import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import styles from './style';
 import ProductImage from './index';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('../../../core/hocs/withWidgetSettings');
 jest.mock('@shopgate/pwa-common/helpers/config');
 

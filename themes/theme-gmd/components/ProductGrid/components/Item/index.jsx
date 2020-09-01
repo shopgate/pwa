@@ -32,9 +32,9 @@ const Item = ({ product, display }) => (
         : <ItemImage
           productId={product.id}
           name={product.name}
-          imageUrl={product.featuredImageUrl}
+          imageUrl={product.featuredImageBaseUrl}
         />
-      }
+    }
     </Link>
 
     <ItemDiscount

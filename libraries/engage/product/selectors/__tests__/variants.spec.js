@@ -22,6 +22,7 @@ const mockedState = {
         size: 'XL',
         color: 'red',
       },
+      featuredImageBaseUrl: 'http://www.abc.de',
       featuredImageUrl: 'http://www.abc.de',
       featuredMedia: {
         code: null,
@@ -39,6 +40,7 @@ const mockedState = {
         color: 'blue',
       },
       featuredImageUrl: 'http://www.xyz.de',
+      featuredImageBaseUrl: 'http://www.xyz.de',
       featuredMedia: {
         code: null,
         type: MEDIA_TYPE_IMAGE,

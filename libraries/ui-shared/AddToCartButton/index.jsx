@@ -79,7 +79,13 @@ class AddToCartButton extends Component {
     if (result instanceof Promise) {
       (async () => {
         try {
-          await result;
+          const success = await result;
+          // eslint-disable-next-line extra-rules/no-commented-out-code
+          // TODO: MERGE
+          if (success === false) {
+            return;
+          }
+
           handleCompletion();
         } catch (error) {
           // ignore error in button.

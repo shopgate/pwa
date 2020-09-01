@@ -1,5 +1,6 @@
 /**
  * Class to maintain the image formats
+ * @deprecated not used anymore. Kept for backwards compatibility.
  */
 class ProductImageFormats {
   /**

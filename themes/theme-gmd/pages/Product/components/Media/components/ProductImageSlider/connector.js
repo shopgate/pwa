@@ -2,12 +2,10 @@ import { connect } from 'react-redux';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
 import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../../../constants';
 
 /**
  * Maps the contents of the state to the component props.
@@ -16,10 +14,7 @@ import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../../../constants';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  images: getProductImages(state, {
-    ...props,
-    formats: productImageFormats.get(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY),
-  }),
+  images: getProductImages(state, props),
   product: getCurrentBaseProduct(state, props),
 });
 
@@ -32,31 +27,8 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   navigate: currentSlide =>
     dispatch(historyPush({
-      pathname: `${ITEM_PATH}/${bin2hex(props.productId)}/gallery/${currentSlide}`,
+      pathname: `${ITEM_PATH}/${bin2hex(props.variantId || props.productId)}/gallery/${currentSlide}`,
     })),
 });
 
-/**
- * Check to see if the image slider properties have arrived.
- * @param {*} next The next props.
- * @param {*} prev The previous props.
- * @returns {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.images && next.images) {
-    return false;
-  }
-
-  if (!prev.product && next.product) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  null,
-  { areStatePropsEqual }
-);
+export default connect(mapStateToProps, mapDispatchToProps);
