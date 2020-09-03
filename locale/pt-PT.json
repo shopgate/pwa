@@ -155,7 +155,8 @@
     },
     "msrp": "Preço sugerido",
     "label": "Preço {price}.",
-    "label_old_price": "Preço antigo {price}."
+    "label_old_price": "Preço antigo {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
   },
   "product": {
     "errors": {
