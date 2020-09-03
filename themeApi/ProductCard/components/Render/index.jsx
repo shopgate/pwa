@@ -70,7 +70,7 @@ function ProductCardRender({
           <OrderQuantityHint productId={product.id} />
 
           {!hidePrice && (
-            <Price price={product.price} productId={id} />
+            <Price product={product} />
           )}
         </div>
       )}

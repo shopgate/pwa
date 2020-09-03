@@ -13,8 +13,10 @@ jest.mock('@shopgate/engage/category', () => ({
 }));
 
 const props = {
-  productId: '1234',
-  price: {},
+  product: {
+    id: '1234',
+    price: {},
+  },
 };
 
 const display = {
