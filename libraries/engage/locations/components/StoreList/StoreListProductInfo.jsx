@@ -15,7 +15,7 @@ function StoreListProductInfo() {
     return null;
   }
 
-  const { characteristics, price } = product;
+  const { characteristics } = product;
 
   return (
     <Grid className={productInfo}>
@@ -23,7 +23,7 @@ function StoreListProductInfo() {
         {characteristics && <ProductProperties properties={characteristics} />}
       </Grid.Item>
       <Grid.Item shrink={0} className={priceInfo}>
-        <ProductGridPrice price={price} />
+        <ProductGridPrice product={product} />
       </Grid.Item>
     </Grid>
   );

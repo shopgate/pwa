@@ -75,7 +75,7 @@ describe('<ProductCardRender />', () => {
     expect(wrapper.find('ProductCardTitle').prop('rows')).toBe(ProductCardRender.defaultProps.titleRows);
     const productCardPrice = wrapper.find('ProductCardPrice');
     expect(productCardPrice.exists()).toBe(true);
-    expect(productCardPrice.find('ProductGridPrice').prop('price')).toEqual(mockProduct.price);
+    expect(productCardPrice.find('ProductGridPrice').prop('product')).toEqual(mockProduct);
   });
 
   it('should render without name', () => {

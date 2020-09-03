@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/engage/components';
 import {
@@ -10,44 +10,38 @@ import { ProductGridPrice } from '@shopgate/engage/product';
 
 /**
  * The item price component.
+ * @returns {JSX}
  */
-class ItemPrice extends PureComponent {
-  static propTypes = {
-    productId: PropTypes.string.isRequired,
-    display: PropTypes.shape(),
-    price: PropTypes.shape(),
-  };
+const ItemPrice = ({ display, product }) => {
+  const { id: productId } = product;
 
-  static defaultProps = {
-    display: null,
-    price: null,
-  };
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { display, productId, price } = this.props;
-
-    if (display && !display.price) {
-      return null;
-    }
-
-    const props = {
-      productId,
-      location: 'productGrid',
-    };
-
-    return (
-      <Fragment>
-        <Portal name={PRODUCT_ITEM_PRICE_BEFORE} props={props} />
-        <Portal name={PRODUCT_ITEM_PRICE} props={props}>
-          <ProductGridPrice price={price} />
-        </Portal>
-        <Portal name={PRODUCT_ITEM_PRICE_AFTER} props={props} />
-      </Fragment>
-    );
+  if (display && !display.price) {
+    return null;
   }
-}
+
+  const props = {
+    productId,
+    location: 'productGrid',
+  };
+
+  return (
+    <Fragment>
+      <Portal name={PRODUCT_ITEM_PRICE_BEFORE} props={props} />
+      <Portal name={PRODUCT_ITEM_PRICE} props={props}>
+        <ProductGridPrice product={product} />
+      </Portal>
+      <Portal name={PRODUCT_ITEM_PRICE_AFTER} props={props} />
+    </Fragment>
+  );
+};
+
+ItemPrice.propTypes = {
+  product: PropTypes.shape().isRequired,
+  display: PropTypes.shape(),
+};
+
+ItemPrice.defaultProps = {
+  display: null,
+};
 
 export default ItemPrice;

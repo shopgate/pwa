@@ -155,7 +155,8 @@
     },
     "msrp": "MSRP",
     "label": "Prijs {price}.",
-    "label_old_price": "Vorige prijs {price}."
+    "label_old_price": "Vorige prijs {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
   },
   "product": {
     "errors": {

@@ -7,12 +7,12 @@ import {
   Ellipsis,
   QuantityLabel,
   ConditionalWrapper,
-  PriceInfo,
   MessageBar,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
   CartUnitQuantityPicker,
+  PriceInfo,
   ITEM_PATH,
   PRODUCT_UNIT_EACH,
 } from '@shopgate/engage/product';
@@ -113,9 +113,7 @@ const CartItemProductLayoutWide = () => {
               priceStriked: price,
             }}
           />
-          {product.price.info && (
-            <PriceInfo className={priceInfo} text={product.price.info} />
-          )}
+          <PriceInfo product={product} currency={currency} className={priceInfo} />
           <CartItemProductPriceCaption />
         </div>
         { isOrderDetails && (

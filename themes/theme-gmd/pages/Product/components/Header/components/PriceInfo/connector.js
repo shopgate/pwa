@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductPriceData } from '@shopgate/pwa-common-commerce/product';
+import { getProduct } from '@shopgate/pwa-common-commerce/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,7 +8,7 @@ import { getProductPriceData } from '@shopgate/pwa-common-commerce/product';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  price: getProductPriceData(state, props),
+  product: getProduct(state, props),
 });
 
 /**
@@ -17,7 +17,7 @@ const mapStateToProps = (state, props) => ({
  * @return {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.price && next.price) {
+  if (!prev.product && next.product) {
     return false;
   }
 

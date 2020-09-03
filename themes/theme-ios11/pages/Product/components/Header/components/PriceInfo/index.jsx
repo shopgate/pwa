@@ -7,7 +7,7 @@ import {
   PRODUCT_PRICE_INFO_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import PriceInfoBase from '@shopgate/pwa-ui-shared/PriceInfo';
+import { PriceInfo as PriceInfoBase } from '@shopgate/engage/product';
 import connect from './connector';
 import styles from './style';
 
@@ -16,14 +16,12 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const PriceInfo = ({ price }) => (
+const PriceInfo = ({ product }) => (
   <Fragment>
     <Portal name={PRODUCT_PRICE_INFO_BEFORE} />
     <Portal name={PRODUCT_PRICE_INFO}>
-      <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
-        {(price && price.info !== '') && (
-          <PriceInfoBase className={styles.priceInfo} text={price.info} />
-        )}
+      <PlaceholderLabel ready={(product !== null)} className={styles.placeholder}>
+        <PriceInfoBase product={product} className={styles.priceInfo} />
       </PlaceholderLabel>
     </Portal>
     <Portal name={PRODUCT_PRICE_INFO_AFTER} />
@@ -31,11 +29,11 @@ const PriceInfo = ({ price }) => (
 );
 
 PriceInfo.propTypes = {
-  price: PropTypes.shape(),
+  product: PropTypes.shape(),
 };
 
 PriceInfo.defaultProps = {
-  price: '',
+  product: null,
 };
 
 export default connect(memo(PriceInfo));

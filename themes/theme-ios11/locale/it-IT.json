@@ -155,7 +155,8 @@
     },
     "msrp": "SRP",
     "label": "Prezzo {price}.",
-    "label_old_price": "Prezzo precedente {price}."
+    "label_old_price": "Prezzo precedente {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
   },
   "product": {
     "errors": {
