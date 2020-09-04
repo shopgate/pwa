@@ -50,7 +50,7 @@ class ProductsIdsWidget extends UnwrappedProductsWidget {
    * Render More button predicate
    * @inheritDoc
    */
-  hasAllProducts = () => this.productCount === this.props.products.length;
+  hasAllProducts = () => this.productCount >= this.props.products.length;
 }
 
 export default connect(ProductsIdsWidget);
