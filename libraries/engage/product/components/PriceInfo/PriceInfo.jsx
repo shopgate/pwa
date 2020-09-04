@@ -35,10 +35,17 @@ const PriceInfo = ({
       return null;
     }
 
+    const unitKey = `formats.unitOfMeasurement.${unitPriceRefUom}`;
+    let unit = i18n.text(unitKey);
+
+    if (unit === unitKey) {
+      unit = unitPriceRefUom;
+    }
+
     return i18n.text('price.pricePerMeasurementFormat', {
       price: i18n.price(pricePerMeasureUnit, currency || externalCurrency, 2),
-      refValue: unitPriceRefValue,
-      refUom: unitPriceRefUom,
+      refValue: unitPriceRefValue || '',
+      refUom: unit,
     });
   }, [
     currency,
