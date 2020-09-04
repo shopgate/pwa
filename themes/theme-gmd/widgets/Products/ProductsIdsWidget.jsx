@@ -26,8 +26,8 @@ class ProductsIdsWidget extends UnwrappedProductsWidget {
   /**
    * @inheritDoc
    */
-  componentWillReceiveProps(nextProps) {
-    super.componentWillReceiveProps(nextProps);
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    super.UNSAFE_componentWillReceiveProps(nextProps);
 
     const { productLimit } = this.props.settings;
     this.productCount = productLimit;
@@ -50,7 +50,7 @@ class ProductsIdsWidget extends UnwrappedProductsWidget {
    * Render More button predicate
    * @inheritDoc
    */
-  hasAllProducts = () => this.productCount === this.props.products.length;
+  hasAllProducts = () => this.productCount >= this.props.products.length;
 }
 
 export default connect(ProductsIdsWidget);
