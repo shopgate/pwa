@@ -655,5 +655,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "pipelineErrors": {
+    "common": {
+      "apiError": {
+        "generic": "An unexpected error occurred."
+      }
+    }
   }
 }

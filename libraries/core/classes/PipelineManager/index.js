@@ -263,6 +263,7 @@ class PipelineManager {
         },
         code,
         message,
+        behavior: request.getErrorResponseBehavior(),
       });
     }
 

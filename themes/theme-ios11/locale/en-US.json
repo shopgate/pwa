@@ -672,5 +672,12 @@
     "weekData": {
       "firstDay": "sun"
     }
+  },
+  "pipelineErrors": {
+    "common": {
+      "apiError": {
+        "generic": "An unexpected error occurred."
+      }
+    }
   }
 }

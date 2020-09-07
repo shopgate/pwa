@@ -300,6 +300,8 @@ export * from './initialization';
 // -------------- VALIDATION -------------- //
 export * from './validation';
 
+export { default as errorBehavior } from './helpers/errorBehavior';
+
 export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
