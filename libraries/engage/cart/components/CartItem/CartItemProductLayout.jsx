@@ -104,6 +104,7 @@ export function CartItemProductLayout() {
           { !isOrderDetails && (
             <CartItemQuantityPicker
               unit={product.unit}
+              hasCatchWeight={product.hasCatchWeight}
               quantity={cartItem.quantity}
               editMode={editMode}
               onChange={handleUpdate}

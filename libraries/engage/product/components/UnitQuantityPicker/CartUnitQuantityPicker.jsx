@@ -1,11 +1,11 @@
 import React from 'react';
-import { PRODUCT_UNIT_EACH } from '../../constants';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import { small, big } from './styles';
 
 type Props = {
   unit: string,
   value: number,
+  hasCatchWeight?: boolean,
   onChange: () => any,
   classNames?: {
     withDecimals: string,
@@ -18,9 +18,9 @@ type Props = {
  * @returns {JSX}
  */
 const CartUnitQuantityPicker = ({
-  unit, value, onChange, classNames,
+  unit, value, onChange, classNames, hasCatchWeight,
 }: Props) => {
-  const hasUnitWithDecimals = unit && unit !== PRODUCT_UNIT_EACH;
+  const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   const {
     withDecimals,
@@ -45,6 +45,7 @@ CartUnitQuantityPicker.defaultProps = {
     withDecimals: big,
     withoutDecimals: small,
   },
+  hasCatchWeight: false,
 };
 
 export default CartUnitQuantityPicker;

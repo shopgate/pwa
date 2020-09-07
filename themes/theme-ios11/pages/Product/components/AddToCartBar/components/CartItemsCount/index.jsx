@@ -13,11 +13,13 @@ import connect from './connector';
 class CartItemsCount extends Component {
   static propTypes = {
     itemCount: PropTypes.number.isRequired,
+    hasCatchWeight: PropTypes.bool,
     unit: PropTypes.string,
   };
 
   static defaultProps = {
     unit: null,
+    hasCatchWeight: false,
   };
 
   /**
@@ -91,7 +93,11 @@ class CartItemsCount extends Component {
             <div className={styles.check}>
               <CheckIcon />
             </div>
-            <Count unit={this.props.unit} count={this.state.numItems} />
+            <Count
+              unit={this.props.unit}
+              hasCatchWeight={this.props.hasCatchWeight}
+              count={this.state.numItems}
+            />
           </div>
         )}
       </Transition>

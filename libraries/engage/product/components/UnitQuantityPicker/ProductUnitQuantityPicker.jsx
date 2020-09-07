@@ -7,7 +7,6 @@ import { ProductContext } from '@shopgate/engage/product';
 import { withCurrentProduct } from '@shopgate/engage/core';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
-import { PRODUCT_UNIT_EACH } from '../../constants';
 import { small, big } from './styles';
 
 const { variables } = themeConfig;
@@ -35,8 +34,8 @@ const ProductUnitQuantityPicker = ({ product, disabled }) => {
     return null;
   }
 
-  const { unit } = product;
-  const hasUnitWithDecimals = unit && unit !== PRODUCT_UNIT_EACH;
+  const { unit, hasCatchWeight } = product;
+  const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   return (
     <div className={styles.root}>

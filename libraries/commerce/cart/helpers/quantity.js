@@ -1,5 +1,3 @@
-import { PRODUCT_UNIT_EACH } from '@shopgate/engage/product/constants';
-
 /**
  * Returns the amount of items are counted towards the
  * displayed cart quantity.
@@ -18,7 +16,7 @@ export const getDisplayedProductQuantity = (
 ) => {
   // Products with custom units like (kg, lbs, ..)
   // are counted as 1 per line item.
-  if (product.unit && product.unit !== PRODUCT_UNIT_EACH) {
+  if (product.unit && product.hasCatchWeight) {
     // If product is already existing in cart we only count them once.
     const existingCartItem = cartItems.find((cartItem) => {
       const sameProduct = productId === cartItem.product.id;

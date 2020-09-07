@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { QuantityLabel, I18n, Price } from '@shopgate/engage/components';
-import { PRODUCT_UNIT_EACH } from '@shopgate/engage/product';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
@@ -16,7 +15,7 @@ const CartItemProductOrderDetails = () => {
   const { location, cartItem } = useCartItem();
   const { product, currency } = useCartItemProduct();
 
-  const hasUnitWithDecimals = product.unit && product.unit !== PRODUCT_UNIT_EACH;
+  const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
   const unitPrice = product.price.unit;
 
   return (

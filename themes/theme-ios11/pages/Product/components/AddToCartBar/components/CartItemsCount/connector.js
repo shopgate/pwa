@@ -10,9 +10,14 @@ function makeMapStateToProps() {
    * @param {Object} props The component props.
    * @return {Object} The extended component props.
    */
-  return (state, props) => ({
-    unit: getProduct(state, props)?.unit,
-  });
+  return (state, props) => {
+    const product = getProduct(state, props);
+
+    return {
+      unit: product?.unit,
+      hasCatchWeight: product?.hasCatchWeight,
+    };
+  };
 }
 
 export default connect(makeMapStateToProps);
