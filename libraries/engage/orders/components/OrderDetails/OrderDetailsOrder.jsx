@@ -32,7 +32,7 @@ const OrderDetailsOrder = () => {
   } = useOrderDetails();
 
   const {
-    cartItems, isReserveOnly,
+    cartItems, isReserveOnly, currencyOverride,
   } = useMemo(() => {
     if (!order?.lineItems) {
       return {};
@@ -43,6 +43,7 @@ const OrderDetailsOrder = () => {
       date: order.date,
       cartItems: convertLineItemsToCartItems(order.lineItems),
       isReserveOnly: isReserveOnlyOrder(order),
+      currencyOverride: order.currencyCode,
     };
   }, [order]);
   if (!order || !cartItems) {
@@ -68,6 +69,7 @@ const OrderDetailsOrder = () => {
           editable={false}
           multiLineReservation
           isOrderDetails
+          currencyOverride={currencyOverride}
         />
       </div>
       <div className={summaryWrapper}>

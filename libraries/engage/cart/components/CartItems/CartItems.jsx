@@ -14,7 +14,8 @@ type Props = {
   multiLineReservation?: boolean,
   onFocus: (hidden: boolean) => void,
   editable?: boolean,
-  isOrderDetails?: boolean
+  isOrderDetails?: boolean,
+  currencyOverride?: string,
 }
 
 /**
@@ -23,11 +24,12 @@ type Props = {
  * @returns {JSX.Element}
  */
 function CartItems({
-  cartItems, onFocus, multiLineReservation, editable, isOrderDetails,
+  cartItems, onFocus, multiLineReservation, editable, isOrderDetails, currencyOverride,
 }: Props) {
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
+
   return (
     <React.Fragment>
       <ResponsiveContainer breakpoint=">xs" webOnly>
@@ -55,7 +57,12 @@ function CartItems({
                   fulfillmentMethod={item.fulfillmentMethod}
                   hasMessages={Array.isArray(item.messages) && item.messages.length > 0}
                 >
-                  <CartItem item={item} onFocus={onFocus} editable={editable} />
+                  <CartItem
+                    item={item}
+                    onFocus={onFocus}
+                    editable={editable}
+                    currencyOverride={currencyOverride}
+                  />
                 </CartItemCard>
               </ul>
             </CartItemProvider>
@@ -71,6 +78,7 @@ CartItems.defaultProps = {
   multiLineReservation: null,
   editable: true,
   isOrderDetails: false,
+  currencyOverride: null,
 };
 
 export default hot(CartItems);

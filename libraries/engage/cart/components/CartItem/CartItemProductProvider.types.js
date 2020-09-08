@@ -15,7 +15,8 @@ export type OwnProps = {
   cartItem: CartItemProduct,
   onToggleFocus?: (isEnabled: boolean) => void,
   isEditable?: boolean,
-  children?: React.Node
+  children?: React.Node,
+  currencyOverride?: string,
 }
 
 export type StateProps = {

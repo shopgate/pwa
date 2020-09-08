@@ -21,29 +21,37 @@ const ordersById = (state = defaultState, action) => {
   const producer = produce((draft) => {
     switch (action.type) {
       case REQUEST_ORDER_DETAILS: {
-        draft[action.orderId] = {
-          ...draft[action.orderId],
-          isFetching: true,
-          expires: 0,
-        };
+        if (action.orderId) {
+          draft[action.orderId] = {
+            ...draft[action.orderId],
+            isFetching: true,
+            expires: 0,
+          };
+        }
+
         break;
       }
 
       case RECEIVE_ORDER_DETAILS: {
-        draft[action.orderId] = {
-          ...draft[action.orderId],
-          order: action.order,
-          isFetching: false,
-          expires: Date.now() + CACHE_TIME,
-        };
+        if (action.orderId) {
+          draft[action.orderId] = {
+            ...draft[action.orderId],
+            order: action.order,
+            isFetching: false,
+            expires: Date.now() + CACHE_TIME,
+          };
+        }
         break;
       }
 
       case ERROR_ORDER_DETAILS: {
-        draft[action.orderId] = {
-          isFetching: false,
-          expires: 0,
-        };
+        if (action.orderId) {
+          draft[action.orderId] = {
+            isFetching: false,
+            expires: 0,
+          };
+        }
+
         break;
       }
 

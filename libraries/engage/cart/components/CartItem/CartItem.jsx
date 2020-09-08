@@ -16,6 +16,7 @@ type Props = {
   item: Item,
   onFocus: (isEnabled: boolean) => void,
   editable?: boolean,
+  currencyOverride?: string,
 }
 
 /**
@@ -25,7 +26,9 @@ type Props = {
  * @property {Function} props.onFocus A function to indicate when the item has been focussed.
  * @return {JSX.Element}
  */
-function CartItem({ item, onFocus, editable }: Props) {
+function CartItem({
+  item, onFocus, editable, currencyOverride,
+}: Props) {
   if (item.type !== CART_ITEM_TYPE_PRODUCT && item.type !== CART_ITEM_TYPE_COUPON) {
     return null;
   }
@@ -36,7 +39,12 @@ function CartItem({ item, onFocus, editable }: Props) {
   if (isProduct) {
     return (
       <SurroundPortals portalName={CART_ITEM} portalProps={props}>
-        <CartItemProductProvider cartItem={item} onFocus={onFocus} isEditable={editable}>
+        <CartItemProductProvider
+          cartItem={item}
+          onFocus={onFocus}
+          isEditable={editable}
+          currencyOverride={currencyOverride}
+        >
           <CartItemProduct />
         </CartItemProductProvider>
       </SurroundPortals>
@@ -58,6 +66,7 @@ function CartItem({ item, onFocus, editable }: Props) {
 
 CartItem.defaultProps = {
   editable: true,
+  currencyOverride: null,
 };
 
 export default hot(React.memo<Props>(CartItem));
