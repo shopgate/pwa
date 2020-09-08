@@ -99,7 +99,6 @@ class ErrorManager {
       source,
       meta,
       severity = DEFAULT_SEVERITY,
-      behavior = null,
     } = error;
 
     const id = `${source}-${context}-${code}`;
@@ -115,7 +114,6 @@ class ErrorManager {
       },
       source,
       severity,
-      behavior,
     });
 
     if (!this.timer) {

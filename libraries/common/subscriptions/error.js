@@ -67,8 +67,10 @@ export default (subscribe) => {
   }) => {
     const { error } = action;
     const {
-      message, code, context, meta, behavior,
+      message, code, context, meta = {},
     } = error;
+
+    const { behavior } = meta;
 
     if (behavior) {
       behavior({

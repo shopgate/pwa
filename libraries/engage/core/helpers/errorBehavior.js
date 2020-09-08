@@ -7,17 +7,24 @@ import { logger, i18n } from '@shopgate/engage/core';
  * Creates an error message for a pipeline and a code
  * @param {string} pipeline The pipeline name
  * @param {string} code The error code
+ * @param {Object} params Additional params for the message
  * @returns {string}
  */
-const getErrorMessage = (pipeline, code) => {
-  const checkKey = i18n.getPath;
-  const message =
-    checkKey(`pipelineErrors.${pipeline}.error.${code}`) ||
-    checkKey(`pipelineErrors.${pipeline}.error.generic`) ||
-    checkKey(`pipelineErrors.common.apiError.${code}`) ||
-    checkKey('pipelineErrors.common.apiError.generic');
+const getErrorMessage = (pipeline, code, params) => {
+  const keys = [
+    `pipelineErrors.${pipeline}.error.${code}`,
+    `pipelineErrors.${pipeline}.error.generic`,
+    `pipelineErrors.common.apiError.${code}`,
+    'pipelineErrors.common.apiError.generic',
+  ];
 
-  return message;
+  const match = keys.find(key => i18n.getPath(key));
+
+  try {
+    return i18n.text(match, params);
+  } catch (e) {
+    return i18n.text(keys[keys.length - 1]);
+  }
 };
 
 /**
@@ -27,14 +34,29 @@ const getErrorMessage = (pipeline, code) => {
  */
 const getErrorObject = (originalError) => {
   const { code, context: pipeline, meta } = originalError;
-  const { input: pipelineInput, message: originalMessage } = meta;
+  const {
+    input: pipelineInput,
+    message: originalMessage,
+    additionalParams,
+    translated,
+  } = meta;
+
+  const message = translated
+    ? originalMessage
+    : getErrorMessage(
+      pipeline.replace(/(.v[0-9]*)+$/, ''),
+      code,
+      additionalParams
+    );
 
   const sanitized = {
     code,
     pipeline,
     pipelineInput,
     originalMessage,
-    message: getErrorMessage(pipeline.replace(/(.v[0-9]*)+$/, ''), code),
+    message,
+    additionalParams,
+    translated,
   };
 
   return sanitized;
@@ -85,7 +107,7 @@ const modal = () => ({
   dispatch, error,
 }) => {
   const {
-    code, pipeline, message, pipelineInput, originalMessage,
+    code, pipeline, message, pipelineInput, originalMessage, additionalParams, translated,
   } = getErrorObject(error);
 
   dispatch(showModal({
@@ -99,6 +121,8 @@ const modal = () => ({
       request: pipelineInput,
       message: originalMessage,
       code,
+      translated,
+      messageParams: additionalParams,
     },
   }));
 };

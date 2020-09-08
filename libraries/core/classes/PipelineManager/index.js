@@ -234,6 +234,8 @@ class PipelineManager {
       message,
       validationErrors,
       errors,
+      additionalParams,
+      translated,
     } = request.error || {};
 
     const err = new Error(message);
@@ -260,10 +262,12 @@ class PipelineManager {
         context: pipelineName,
         meta: {
           input: request.input,
+          behavior: request.getErrorResponseBehavior(),
+          additionalParams,
+          translated,
         },
         code,
         message,
-        behavior: request.getErrorResponseBehavior(),
       });
     }
 
