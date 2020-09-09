@@ -95,7 +95,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             link="/category/31"
             linkComponent={[Function]}
             rightComponent={
-              <Image
+              <Connect(CategoryImage)
                 className="css-j7qxnf"
                 src="/some/url"
               />
@@ -109,7 +109,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             link="/category/32"
             linkComponent={[Function]}
             rightComponent={
-              <Image
+              <Connect(CategoryImage)
                 className="css-j7qxnf"
                 src="/some/url"
               />

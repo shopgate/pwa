@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/engage/core';
-import { CATEGORY_PATH, CATEGORY_ITEM } from '@shopgate/engage/category';
+import { CATEGORY_PATH, CATEGORY_ITEM, CategoryImage } from '@shopgate/engage/category';
 import {
-  Image, Link, TextLink, Portal,
+  Link, TextLink, Portal,
 } from '@shopgate/engage/components';
 import {
   gridItem,
@@ -50,7 +50,7 @@ const CategoryGridItem = ({ category, showImages }) => (
         </div>
         { showImages && (
           <div className={gridItemColumnRight}>
-            <Image className={categoryImage} src={category.imageUrl} />
+            <CategoryImage className={categoryImage} src={category.imageUrl} />
           </div>
         )}
       </Link>
