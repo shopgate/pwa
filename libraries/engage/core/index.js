@@ -306,6 +306,8 @@ export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
   getIsLocationBasedShopping,
+  getProductImagePlaceholder,
+  getCategoryImagePlaceholder,
 } from './selectors';
 
 export {

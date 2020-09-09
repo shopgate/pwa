@@ -12,7 +12,7 @@ exports[`<StoreListProduct /> should render a product without selected variants.
     <div
       className="css-15aij0t"
     >
-      <WithWidgetSettings(ProductImage)
+      <Connect(WithWidgetSettings(ProductImage))
         src="http://www.some.com"
       />
     </div>

@@ -20,3 +20,7 @@ export * from '@shopgate/pwa-common-commerce/category/streams';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/category/helpers';
+
+export {
+  CategoryImage,
+} from './components';

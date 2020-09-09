@@ -20,6 +20,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       noBackground={false}
       onError={[Function]}
       onLoad={null}
+      placeholderSrc={null}
       ratio={null}
       resolutions={
         Array [
@@ -88,6 +89,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       noBackground={false}
       onError={[Function]}
       onLoad={null}
+      placeholderSrc={null}
       ratio={null}
       resolutions={
         Array [
@@ -124,6 +126,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   forcePlaceholder={false}
   highestResolutionLoaded={[Function]}
   noBackground={false}
+  placeholderSrc={null}
   ratio={null}
   resolutions={
     Array [
@@ -231,6 +234,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       noBackground={false}
       onError={[Function]}
       onLoad={null}
+      placeholderSrc={null}
       ratio={null}
       resolutions={
         Array [

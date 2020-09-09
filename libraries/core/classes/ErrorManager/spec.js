@@ -286,7 +286,6 @@ describe('ErrorManager', () => {
       id: `${source}-${DEFAULT_CONTEXT}-${code}`,
       context: DEFAULT_CONTEXT,
       message: replacementMessage,
-      behavior: null,
       code,
       source,
       meta: {
