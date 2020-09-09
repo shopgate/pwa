@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { SheetList, Image } from '@shopgate/engage/components';
+import { SheetList } from '@shopgate/engage/components';
+import { CategoryImage } from '@shopgate/engage/category';
 import Headline from 'Components/Headline';
 import isEqual from 'lodash/isEqual';
 import connect from './connector';
@@ -66,7 +67,7 @@ class CategoryListWidget extends Component {
 
             // Only show an avatar if the setting `showImages` is true.
             const Avatar = settings.showImages && item.imageUrl ? (
-              <Image src={item.imageUrl} />
+              <CategoryImage src={item.imageUrl} />
             ) : null;
 
             return (
