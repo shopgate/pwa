@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import FulfillmentSlotSwitcherDefault from './FulfillmentSlotSwitcherDefault';
-// import FulfillmentSlotSwitcherBar from './FulfillmentSlotSwitcherBar';
+import FulfillmentSlotSwitcherBar from './FulfillmentSlotSwitcherBar';
 import connect from './FulfillmentSlotSwitcher.connector';
 import Dialog from './FulfillmentSlotDialog';
 
@@ -74,10 +74,11 @@ const FulfillmentSlotSwitcher = ({
   return (
     <Fragment>
       { renderBar ? (
-        /* <FulfillmentSlotSwitcherBar
+        <FulfillmentSlotSwitcherBar
+          fulfillmentSlot={fulfillmentSlot}
           handleChange={handleOpen}
           standalone={standalone}
-        /> */null
+        />
       ) : (
         <FulfillmentSlotSwitcherDefault
           fulfillmentSlot={fulfillmentSlot}

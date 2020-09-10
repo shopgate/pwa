@@ -96,7 +96,7 @@ const CheckoutSection = ({
     >
       <div className={`${styles.actionsContainer} ${className}`}>
         {children || null}
-        {!children && (
+        {content && (
           <table className={styles.table}>
             <tbody>
               {content.map(({ label, text }) => (

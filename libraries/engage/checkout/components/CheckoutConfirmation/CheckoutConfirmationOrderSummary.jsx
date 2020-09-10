@@ -1,8 +1,23 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'glamor';
+import TimeIcon from '@shopgate/pwa-ui-shared/icons/TimeIcon';
+import moment from 'moment';
 import { i18n } from '../../../core/helpers/i18n';
 import CheckoutConfirmationSection from './CheckoutConfirmationSection';
 import { getCheckoutTaxLinesFromOrder } from '../../helpers';
+
+const styles = {
+  time: css({
+    marginBottom: 4,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  }).toString(),
+  timeText: css({
+    marginLeft: 8,
+  }),
+};
 
 /**
  * CheckoutConfirmationOrderSummary component
@@ -15,6 +30,7 @@ const CheckoutConfirmationOrderSummary = ({ order, className }) => {
       label: i18n.text(`checkout.summary.${t.type}`),
       text: i18n.price(t.value, t.currencyCode, 2),
     })), [order]);
+  const fulfillmentSlot = order?.lineItems[0]?.fulfillmentSlot;
 
   return (
     <CheckoutConfirmationSection
@@ -22,7 +38,20 @@ const CheckoutConfirmationOrderSummary = ({ order, className }) => {
       content={content}
       isSummary
       className={className}
-    />
+    >
+      {fulfillmentSlot ? (
+        <div className={styles.time}>
+          <TimeIcon size={20} />
+          <span className={styles.timeText}>
+            {moment(fulfillmentSlot?.date, 'YYYY-MM-DD').format('ll')}
+            {' '}
+            {moment(fulfillmentSlot?.from, 'HH:mm').format('LT')}
+            {' - '}
+            {moment(fulfillmentSlot?.to, 'HH:mm').format('LT')}
+          </span>
+        </div>
+      ) : null}
+    </CheckoutConfirmationSection>
   );
 };
 

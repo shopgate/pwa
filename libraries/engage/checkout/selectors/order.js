@@ -20,6 +20,11 @@ export const getCheckoutOrder = state => state.checkout.checkoutOrder.data || nu
 export const getCheckoutPaymentTransactions = state =>
   getCheckoutOrder(state)?.paymentTransactions || [];
 
+export const getCheckoutFulfillmentSlot = createSelector(
+  getCheckoutOrder,
+  order => order?.lineItems?.[0]?.fulfillmentSlot || null
+);
+
 /**
  * Returns the billing address of the order.
  * @param {Object} state The application state.

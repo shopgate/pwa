@@ -38,3 +38,14 @@ export const cancel = css({
   flexShrink: 0,
   marginRight: 8,
 }).toString();
+
+export const time = css({
+  marginTop: 8,
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+}).toString();
+
+export const timeIcon = css({
+  marginRight: 8,
+}).toString();

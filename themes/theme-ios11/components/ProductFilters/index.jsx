@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useRoute } from '@shopgate/engage/core';
 import { ResponsiveContainer, ScrollHeader } from '@shopgate/engage/components';
-import { GlobalLocationSwitcher } from '@shopgate/engage/locations';
+import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import FilterBar from 'Components/FilterBar';
 import { filters } from './style';
 
@@ -16,6 +16,7 @@ const ProductFilters = ({ categoryId, showFilters }) => {
     <ScrollHeader className={filters}>
       <ResponsiveContainer appAlways breakpoint="<=xs">
         <GlobalLocationSwitcher renderBar />
+        <FulfillmentSlotSwitcher renderBar />
       </ResponsiveContainer>
 
       {showFilters && (

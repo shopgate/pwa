@@ -18,6 +18,7 @@ type Props = {
   shopSettings: any,
   paymentTransactions: any,
   billingAddress: any,
+  fulfillmentSlot: any,
   pickupAddress: any,
   taxLines: any,
   userLocation: any,
@@ -81,6 +82,7 @@ const CheckoutProvider = ({
   taxLines,
   userLocation,
   isDataReady,
+  fulfillmentSlot,
   orderReserveOnly,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(true);
@@ -257,6 +259,7 @@ const CheckoutProvider = ({
     taxLines,
     needsPayment,
     orderReserveOnly,
+    fulfillmentSlot,
     optInFormSetValues: optInFormState.setValues,
     defaultOptInFormState,
     setUpdateOptIns: (val = true) => { setUpdateOptIns(val); },
@@ -269,6 +272,7 @@ const CheckoutProvider = ({
     defaultOptInFormState,
     shopSettings.supportedCountries,
     userLocation,
+    fulfillmentSlot,
     billingAddress,
     pickupAddress,
     taxLines,

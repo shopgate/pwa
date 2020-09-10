@@ -37,9 +37,11 @@ const mapDispatchToProps = dispatch => ({
 
 const styles = {
   root: css({
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     padding: 16,
+    paddingBottom: 0,
   }).toString(),
   title: css({
     fontSize: 24,
@@ -103,8 +105,18 @@ const styles = {
     height: 2,
     transform: 'rotate(-5deg)',
   }).toString(),
+  buttonScheduleContainer: css({
+    position: 'sticky',
+    bottom: 0,
+    margin: -16,
+    marginTop: 8,
+    background: '#fff',
+    padding: 16,
+  }).toString(),
   buttonSchedule: css({
-    marginTop: 32,
+    '&&': {
+      width: '100%',
+    },
   }).toString(),
 };
 
@@ -277,14 +289,16 @@ const FulfillmentSlotSheet = ({
             </div>
           </Fragment>
         ))}
-        <Button
-          className={styles.buttonSchedule}
-          type="secondary"
-          onClick={handleChange}
-          disabled={!selectedDate || !selectedSlot}
-        >
-          {i18n.text('locations.your_current_timeslot.dialog.schedule')}
-        </Button>
+        <div className={styles.buttonScheduleContainer}>
+          <Button
+            className={styles.buttonSchedule}
+            type="secondary"
+            onClick={handleChange}
+            disabled={!selectedDate || !selectedSlot}
+          >
+            {i18n.text('locations.your_current_timeslot.dialog.schedule')}
+          </Button>
+        </div>
       </div>
     </SheetDrawer>
   );

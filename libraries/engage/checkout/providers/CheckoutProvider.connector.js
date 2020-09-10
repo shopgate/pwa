@@ -8,6 +8,7 @@ import {
   getCheckoutTaxLines,
   getCheckoutPaymentTransactions,
   getIsReserveOnly,
+  getCheckoutFulfillmentSlot,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
 import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
@@ -32,6 +33,7 @@ function makeMapStateToProps() {
     isDataReady: !getConfigFetching(state) && !!getCheckoutOrder(state),
     needsPayment: getNeedsPaymentForOrder(state) || false,
     paymentTransactions: getCheckoutPaymentTransactions(state),
+    fulfillmentSlot: getCheckoutFulfillmentSlot(state),
     shopSettings: getShopSettings(state),
     userLocation: getPreferredLocationAddress(state),
     billingAddress: getCheckoutBillingAddress(state),
