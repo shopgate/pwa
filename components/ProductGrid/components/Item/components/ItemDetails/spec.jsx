@@ -8,6 +8,8 @@ jest.mock('@shopgate/engage/product', () => ({
   EffectivityDates: () => null,
   Swatches: () => null,
   getProductRoute: () => '',
+  AVAILABILITY_STATE_OK: 'AVAILABILITY_STATE_OK',
+  AVAILABILITY_STATE_ALERT: 'AVAILABILITY_STATE_ALERT',
 }));
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/core');
@@ -16,9 +18,11 @@ jest.mock('../ItemPrice');
 
 describe('<ItemDetails />', () => {
   const props = {
-    productId: '1234',
-    name: 'Foo',
-    price: {},
+    product: {
+      id: '1234',
+      name: 'Foo',
+      price: {},
+    },
   };
 
   const display = {

@@ -44,12 +44,8 @@ const Item = ({ product, display }) => (
 
     <div className={itemDetails}>
       <ItemDetails
-        productId={product.id}
-        name={product.name}
-        price={product.price}
-        shortDescription={product.shortDescription}
+        product={product}
         display={display}
-        stock={product.stock}
       />
       <ItemFavoritesButton productId={product.id} />
     </div>

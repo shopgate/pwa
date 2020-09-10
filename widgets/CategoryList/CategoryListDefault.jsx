@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { SheetList, TextLink, Image } from '@shopgate/engage/components';
+import { SheetList, TextLink } from '@shopgate/engage/components';
+import { CategoryImage } from '@shopgate/engage/category';
 import styles from './style';
 
 /**
@@ -16,7 +17,7 @@ const CategoryListDefault = ({ categories, settings }) => (
 
       // Only show an avatar if the setting `showImages` is true.
       const Avatar = settings.showImages && category.imageUrl ? (
-        <Image src={category.imageUrl} />
+        <CategoryImage src={category.imageUrl} />
       ) : null;
 
       return (
@@ -26,7 +27,7 @@ const CategoryListDefault = ({ categories, settings }) => (
           key={category.id}
           title={category.name}
           testId={category.name}
-          rightComponent={<Image className={styles.image} src={category.imageUrl} />}
+          rightComponent={<CategoryImage className={styles.image} src={category.imageUrl} />}
           linkComponent={TextLink}
         />
       );
