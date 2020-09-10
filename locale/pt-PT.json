@@ -237,6 +237,21 @@
       "zip_code": "Stores near \"{zipCode}\"",
       "location": "Stores near your location"
     },
+    "your_current_timeslot": {
+      "heading": "Pickup Time",
+      "change": "Change",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "not_set": "Not set yet",
+      "dialog": {
+        "title": "Pick a Pickup Slot",
+        "date": "Date",
+        "morning": "Morning",
+        "afternoon": "Afternoon",
+        "evening": "Evening",
+        "schedule": "Schedule Pickup"
+      }
+    },
     "your_current_location": {
       "heading": "Your Current Location",
       "change": "Change"
