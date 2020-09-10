@@ -3,6 +3,7 @@ import {
   captureMessage,
   Severity as SentrySeverity,
 } from '@sentry/browser';
+import moment from 'moment';
 import { configureStore } from '@shopgate/pwa-common/store';
 import { appWillStart } from '@shopgate/pwa-common/action-creators/app';
 import { i18n } from '@shopgate/engage/core';
@@ -124,6 +125,7 @@ const fetchSettings = store => new Promise((resolve, reject) => {
  * @param {Array} subscribers The subscribers to the streams middleware.
  */
 export const initialize = async (locales, reducers, subscribers) => {
+  moment.locale(process.env.LOCALE);
   i18n.init({
     locales,
     lang: process.env.LOCALE,

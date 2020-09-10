@@ -1,6 +1,8 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
+import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/core/selectors';
+import { forceOpenFulfillmentSlotDialog } from '@shopgate/engage/locations/components/FulfillmentSlotSwitcher';
 import { SHOPGATE_CART_ADD_PRODUCTS } from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
@@ -8,7 +10,9 @@ import addProductsToCart from '../action-creators/addProductsToCart';
 import successAddProductsToCart from '../action-creators/successAddProductsToCart';
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
-import { getProductPendingCount, getAddToCartMetadata, getCartItems } from '../selectors';
+import {
+  getProductPendingCount, getAddToCartMetadata, getCartItems, getActiveFulfillmentSlot,
+} from '../selectors';
 import { getProduct } from '../../product/selectors/product';
 
 import { messagesHaveErrors } from '../helpers';
@@ -20,14 +24,15 @@ import { getDisplayedProductQuantity } from '../helpers/quantity';
  * @return {Function} A redux thunk.
  */
 function addToCart(data) {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const state = getState();
     const preCartItems = getCartItems(state);
+    const fulfillmentScheduling = getFulfillmentSchedulingEnabled(state);
 
     const pendingProductCount = getProductPendingCount(state);
     let quantity = 0;
 
-    const products = data.map((product) => {
+    let products = data.map((product) => {
       const productData = getProduct(state, { productId: product.productId }) || {};
 
       // Count quantity for pending count.
@@ -54,6 +59,26 @@ function addToCart(data) {
       };
     });
 
+    // Enrich with fulfillment scheduling data.
+    if (fulfillmentScheduling) {
+      let fulfillmentSlot = getActiveFulfillmentSlot(state);
+
+      // Make sure that a fulfillment slot has been choosen first!
+      if (!fulfillmentSlot) {
+        fulfillmentSlot = await forceOpenFulfillmentSlotDialog();
+      }
+
+      // Enrich slot id to fulfillment settings of all line items.
+      products = products.map(product => ({
+        ...product,
+        fulfillment: product.fulfillment ? {
+          ...product.fulfillment,
+          slotId: fulfillmentSlot.id,
+        } : undefined,
+      }));
+    }
+
+    // Disptch pipeline request.
     dispatch(addProductsToCart(products));
     dispatch(setCartProductPendingCount(pendingProductCount + quantity));
 
@@ -64,29 +89,28 @@ function addToCart(data) {
       .setErrorBlacklist(ECART)
       .dispatch();
 
-    request
-      .then((result) => {
-        if (result.messages && messagesHaveErrors(result.messages)) {
-          /**
-           * @deprecated: The property "messages" is not supposed to be part of the
-           * pipeline response. Specification demands errors to be returned as response
-           * object with an "error" property. This code snippet needs to be removed after
-           * fixing the `@shopgate/legacy-cart` extension.
-           */
-          dispatch(errorAddProductsToCart(products, result.messages));
-          return;
-        }
+    try {
+      const result = await request;
+      if (result.messages && messagesHaveErrors(result.messages)) {
+        /**
+         * @deprecated: The property "messages" is not supposed to be part of the
+         * pipeline response. Specification demands errors to be returned as response
+         * object with an "error" property. This code snippet needs to be removed after
+         * fixing the `@shopgate/legacy-cart` extension.
+         */
+        dispatch(errorAddProductsToCart(products, result.messages));
+        return result;
+      }
 
-        dispatch(successAddProductsToCart());
-      })
-      .catch((error) => {
-        dispatch(errorAddProductsToCart(
-          products,
-          createPipelineErrorList(SHOPGATE_CART_ADD_PRODUCTS, error)
-        ));
-      });
-
-    return request;
+      dispatch(successAddProductsToCart());
+      return result;
+    } catch (error) {
+      dispatch(errorAddProductsToCart(
+        products,
+        createPipelineErrorList(SHOPGATE_CART_ADD_PRODUCTS, error)
+      ));
+      return null;
+    }
   };
 }
 

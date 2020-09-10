@@ -316,3 +316,22 @@ export const getIsFetching = createSelector(
   getCart,
   ({ isFetching }) => isFetching || false
 );
+
+/**
+ * Returns the currently configured fulfillment slot.
+ * Takes the info from either the first cart item
+ * or from temp cart state.
+ */
+export const getActiveFulfillmentSlot = createSelector(
+  getCartItems,
+  state => getCart(state).activeFulfillmentSlot,
+  (cartItems, fulfillmentSlot) => {
+    const firstSlotConfig = cartItems[0]?.fulfillment?.fulfillmentSlot;
+
+    if (!firstSlotConfig) {
+      return fulfillmentSlot;
+    }
+
+    return firstSlotConfig;
+  }
+);

@@ -18,4 +18,5 @@ export {
 
 export { GlobalLocationSelector } from './GlobalLocationSelector';
 export { GlobalLocationSwitcher } from './GlobalLocationSwitcher';
+export { FulfillmentSlotSwitcher } from './FulfillmentSlotSwitcher';
 export { StoreFinder } from './StoreFinder';

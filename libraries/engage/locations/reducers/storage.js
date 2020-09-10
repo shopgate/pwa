@@ -9,6 +9,7 @@ import {
   ERROR_PRODUCT_LOCATIONS,
   STORE_FULFILLMENT_METHOD,
   SELECT_LOCATION,
+  FETCH_FULFILLMENT_SLOTS_SUCCESS,
 } from '../constants';
 
 const initialState = {
@@ -28,6 +29,8 @@ const initialState = {
   inventoriesByCodePair: {},
   // List of locations that based on a given filter.
   locationsByFilter: {},
+  // Available FO slots mapped by location.
+  fulfillmentSlotsByLocation: {},
 };
 
 /* eslint-disable no-param-reassign */
@@ -62,6 +65,12 @@ export default (state = initialState, action) => {
       case ERROR_PRODUCT_LOCATIONS:
         draft.isFetching = false;
         break;
+
+      case FETCH_FULFILLMENT_SLOTS_SUCCESS: {
+        draft.fulfillmentSlotsByLocation = draft.fulfillmentSlotsByLocation || {};
+        draft.fulfillmentSlotsByLocation[action.locationCode] = action.fulfillmentSlots;
+        break;
+      }
 
       case RECEIVE_LOCATIONS: {
         // Store all missing locations.

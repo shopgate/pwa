@@ -19,6 +19,7 @@ export {
   CartContextMenuChangeFulfillment,
   GlobalLocationSelector,
   GlobalLocationSwitcher,
+  FulfillmentSlotSwitcher,
   StoreFinder,
 } from './components';
 

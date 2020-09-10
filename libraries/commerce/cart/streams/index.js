@@ -36,6 +36,8 @@ import {
   SUCCESS_DELETE_COUPONS_FROM_CART,
 
   DEEPLINK_CART_ADD_PRODUCT_PATTERN,
+
+  SET_FULFILLMENT_SLOT,
 } from '../constants';
 
 /**
@@ -206,4 +208,7 @@ export const routeAddProductNavigate$ = navigate$
       },
     };
   });
+
+export const setFulfillmentSlot$ = main$
+  .filter(({ action }) => action.type === SET_FULFILLMENT_SLOT);
 

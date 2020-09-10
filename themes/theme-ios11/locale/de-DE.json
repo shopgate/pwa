@@ -248,6 +248,21 @@
       "zip_code": "Filialen nähe \"{zipCode}\"",
       "location": "filialen in deiner Nähe"
     },
+    "your_current_timeslot": {
+      "heading": "Abholzeit",
+      "change": "Ändern",
+      "today": "Heute",
+      "tomorrow": "Morgen",
+      "not_set": "Bitte wählen..",
+      "dialog": {
+        "title": "Abholzeit auswählen",
+        "date": "Datum",
+        "morning": "Morgens",
+        "afternoon": "Mittags",
+        "evening": "Abends",
+        "schedule": "Speichern"
+      }
+    },
     "your_current_location": {
       "heading": "Aktuelle Filiale",
       "change": "Ändern"

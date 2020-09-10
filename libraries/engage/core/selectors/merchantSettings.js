@@ -3,6 +3,7 @@ import {
   MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
   MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
   MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
+  MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
 } from '../constants';
 
 /**
@@ -35,5 +36,10 @@ export const getSubstitutionPreferencesEnabled = makeGetMerchantSettingByKey(
 
 export const getMerchantCustomerAttributes = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
+  []
+);
+
+export const getFulfillmentSchedulingEnabled = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
   []
 );

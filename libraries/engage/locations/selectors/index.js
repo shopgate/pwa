@@ -411,3 +411,14 @@ export const getExternalCustomerNumberForOrder = createSelector(
   }
 );
 
+/**
+ * Get fulfillment slots for a location.
+ * @param {string} getLocationCode Location code selector.
+ * @returns {Array}
+ */
+export const makeGetFulfillmentSlotsForLocation = getLocationCode => createSelector(
+  getLocationsStorage,
+  getLocationCode,
+  (storage, locationCode) => storage.fulfillmentSlotsByLocation?.[locationCode]
+);
+

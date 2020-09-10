@@ -8,6 +8,7 @@ import {
   RECEIVE_CART,
   ERROR_CART,
   SET_CART_PENDING_PRODUCT_COUNT,
+  SET_FULFILLMENT_SLOT,
 } from '../constants';
 
 const defaultState = {
@@ -15,6 +16,7 @@ const defaultState = {
   totals: [],
   productPendingCount: 0,
   flags: {},
+  activeFulfillmentSlot: null,
 };
 
 /**
@@ -81,6 +83,11 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         productPendingCount: Math.max(0, action.count),
+      };
+    case SET_FULFILLMENT_SLOT:
+      return {
+        ...state,
+        activeFulfillmentSlot: action.fulfillmentSlot,
       };
     default:
       return state;

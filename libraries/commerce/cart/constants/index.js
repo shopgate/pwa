@@ -40,3 +40,5 @@ export const ERROR_CART = 'ERROR_CART';
  * @type {string}
  */
 export const EVENT_ADD_TO_CART_MISSING_VARIANT = 'EVENT_ADD_TO_CART_MISSING_VARIANT';
+
+export const SET_FULFILLMENT_SLOT = 'SET_FULFILLMENT_SLOT';

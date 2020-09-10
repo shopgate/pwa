@@ -16,6 +16,7 @@ import { checkoutSucceeded$ } from '@shopgate/pwa-common-commerce/checkout';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import addProductsToCart from '../actions/addProductsToCart';
+import updateProductsInCart from '../actions/updateProductsInCart';
 import fetchCart from '../actions/fetchCart';
 import {
   cartDidEnter$,
@@ -32,6 +33,7 @@ import {
   remoteCartDidUpdate$,
   cartUpdateFailed$,
   routeAddProductNavigate$,
+  setFulfillmentSlot$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import {
@@ -133,6 +135,22 @@ export default function cart(subscribe) {
 
   subscribe(cartBusy$, () => {
     LoadingProvider.setLoading(CART_PATH);
+  });
+
+  subscribe(setFulfillmentSlot$, ({ dispatch, getState, action }) => {
+    // When the fulfillment slot is set we need to update all line items.
+    const cartProducts = getCartProducts(getState());
+    if (!cartProducts.length) {
+      return;
+    }
+
+    // Update the slot id.
+    dispatch(updateProductsInCart(cartProducts.map(cartItem => ({
+      cartItemId: cartItem.id,
+      fulfillment: {
+        slotId: action.fulfillmentSlot.id,
+      },
+    }))));
   });
 
   subscribe(cartIdle$, ({ dispatch, getState }) => {

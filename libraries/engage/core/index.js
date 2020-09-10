@@ -304,6 +304,7 @@ export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
   getIsLocationBasedShopping,
+  getFulfillmentSchedulingEnabled,
 } from './selectors';
 
 export {
