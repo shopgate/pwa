@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ProductGrid from 'Components/ProductGrid';
 import ProductList from 'Components/ProductList';
-import { UnwrappedProductsWidget as ProductsWidget } from './index';
+import { UnwrappedProductsWidget as ProductsWidget } from './ProductsWidget';
 
 describe('<ProductsWidget />', () => {
   const getProducts = jest.fn();
