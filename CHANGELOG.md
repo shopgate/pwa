@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.9.6](https://github.com/shopgate/pwa/compare/v6.9.5...v6.9.6) (2020-09-10)
+
+#### :bug: Bug Fix
+* [#1029](https://github.com/shopgate/pwa/pull/1029) Fix product ids widget limit and pagination ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.9.3](https://github.com/shopgate/pwa/compare/v6.9.2...v6.9.3) (2020-03-26)
 
 #### :bug: Bug Fix
