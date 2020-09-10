@@ -106,7 +106,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
   const { state: { order } } = useRoute();
 
   const {
-    orderNumber, date, cartItems, isReserveOnly,
+    orderNumber, date, cartItems, isReserveOnly, currencyOverride,
   } = useMemo(() => {
     if (!order) {
       return {};
@@ -117,6 +117,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
       date: order.date,
       cartItems: convertLineItemsToCartItems(order.lineItems),
       isReserveOnly: isReserveOnlyOrder(order),
+      currencyOverride: order.currencyCode,
     };
   }, [order]);
 
@@ -157,6 +158,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
             onFocus={() => { }}
             multiLineReservation
             editable={false}
+            currencyOverride={currencyOverride}
           />
         </div>
 

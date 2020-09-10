@@ -8,6 +8,10 @@ import ProductImage from './index';
 
 jest.mock('../../../core/hocs/withWidgetSettings');
 jest.mock('@shopgate/pwa-common/helpers/config');
+jest.mock('./connector', () => Component => Component);
+jest.mock('@shopgate/engage/components', () => ({
+  Image: () => null,
+}));
 
 describe('<ProductImage />', () => {
   it('should render a placeholder if no src prop is provided', () => {

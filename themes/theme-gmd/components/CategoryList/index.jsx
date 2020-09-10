@@ -5,7 +5,8 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { Placeholder } from '@shopgate/pwa-ui-shared';
 import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { SheetList, Image, TextLink } from '@shopgate/engage/components';
+import { SheetList, TextLink } from '@shopgate/engage/components';
+import { CategoryImage } from '@shopgate/engage/category';
 import styles, { image } from './style';
 
 /**
@@ -44,7 +45,7 @@ const CategoryList = ({ categories, prerender }) => {
               title: category.name,
             }}
             testId={category.name}
-            rightComponent={<Image className={image} src={category.imageUrl} />}
+            rightComponent={<CategoryImage className={image} src={category.imageUrl} />}
             linkComponent={TextLink}
           />
         </Portal>

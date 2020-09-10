@@ -2,82 +2,9 @@
 
 exports[`<ProductGridPrice /> should render with msrp 1`] = `
 <Component
-  price={
+  product={
     Object {
-      "currency": "EUR",
-      "discount": 52,
-      "info": "PriceInfoString",
-      "msrp": 22.95,
-      "unitPrice": 10.95,
-      "unitPriceMin": 10.95,
-      "unitPriceStriked": 0,
-    }
-  }
->
-  <ProductGridPrice
-    price={
-      Object {
-        "currency": "EUR",
-        "discount": 52,
-        "info": "PriceInfoString",
-        "msrp": 22.95,
-        "unitPrice": 10.95,
-        "unitPriceMin": 10.95,
-        "unitPriceStriked": 0,
-      }
-    }
-  >
-    <Grid
-      className="css-1glzrmu"
-      wrap={true}
-    >
-      <Grid.Item
-        grow={1}
-      >
-        <Price
-          currency="EUR"
-          discounted={true}
-          unitPrice={10.95}
-          unitPriceMin={10.95}
-        />
-      </Grid.Item>
-      <Grid.Item>
-        <PriceStriked
-          className="css-nil"
-          currency="EUR"
-          value={22.95}
-        />
-      </Grid.Item>
-    </Grid>
-    <Grid>
-      <Grid.Item>
-        <PriceInfo
-          className="css-1gftye4"
-          text="PriceInfoString"
-        />
-      </Grid.Item>
-    </Grid>
-  </ProductGridPrice>
-</Component>
-`;
-
-exports[`<ProductGridPrice /> should render with strike price 1`] = `
-<Component
-  price={
-    Object {
-      "currency": "EUR",
-      "discount": 52,
-      "info": "",
-      "msrp": 0,
-      "unitPrice": 10.95,
-      "unitPriceMin": 10.95,
-      "unitPriceStriked": 22.95,
-    }
-  }
->
-  <ProductGridPrice
-    price={
-      Object {
+      "price": Object {
         "currency": "EUR",
         "discount": 52,
         "info": "",
@@ -85,6 +12,22 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
         "unitPrice": 10.95,
         "unitPriceMin": 10.95,
         "unitPriceStriked": 22.95,
+      },
+    }
+  }
+>
+  <ProductGridPrice
+    product={
+      Object {
+        "price": Object {
+          "currency": "EUR",
+          "discount": 52,
+          "info": "",
+          "msrp": 0,
+          "unitPrice": 10.95,
+          "unitPriceMin": 10.95,
+          "unitPriceStriked": 22.95,
+        },
       }
     }
   >
@@ -110,27 +53,106 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
         />
       </Grid.Item>
     </Grid>
+    <PriceInfo
+      className="css-117ocmm"
+      product={
+        Object {
+          "price": Object {
+            "currency": "EUR",
+            "discount": 52,
+            "info": "",
+            "msrp": 0,
+            "unitPrice": 10.95,
+            "unitPriceMin": 10.95,
+            "unitPriceStriked": 22.95,
+          },
+        }
+      }
+      wrapper={[Function]}
+    />
+  </ProductGridPrice>
+</Component>
+`;
+
+exports[`<ProductGridPrice /> should render with strike price 1`] = `
+<Component
+  product={
+    Object {
+      "price": Object {
+        "currency": "EUR",
+        "discount": 52,
+        "info": "",
+        "msrp": 0,
+        "unitPrice": 10.95,
+        "unitPriceMin": 10.95,
+        "unitPriceStriked": 22.95,
+      },
+    }
+  }
+>
+  <ProductGridPrice
+    product={
+      Object {
+        "price": Object {
+          "currency": "EUR",
+          "discount": 52,
+          "info": "",
+          "msrp": 0,
+          "unitPrice": 10.95,
+          "unitPriceMin": 10.95,
+          "unitPriceStriked": 22.95,
+        },
+      }
+    }
+  >
+    <Grid
+      className="css-1glzrmu"
+      wrap={true}
+    >
+      <Grid.Item
+        grow={1}
+      >
+        <Price
+          currency="EUR"
+          discounted={true}
+          unitPrice={10.95}
+          unitPriceMin={10.95}
+        />
+      </Grid.Item>
+      <Grid.Item>
+        <PriceStriked
+          className="css-nil"
+          currency="EUR"
+          value={22.95}
+        />
+      </Grid.Item>
+    </Grid>
+    <PriceInfo
+      className="css-117ocmm"
+      product={
+        Object {
+          "price": Object {
+            "currency": "EUR",
+            "discount": 52,
+            "info": "",
+            "msrp": 0,
+            "unitPrice": 10.95,
+            "unitPriceMin": 10.95,
+            "unitPriceStriked": 22.95,
+          },
+        }
+      }
+      wrapper={[Function]}
+    />
   </ProductGridPrice>
 </Component>
 `;
 
 exports[`<ProductGridPrice /> should render without discounts 1`] = `
 <Component
-  price={
+  product={
     Object {
-      "currency": "EUR",
-      "discount": 0,
-      "info": "PriceInfoString",
-      "msrp": 0,
-      "unitPrice": 22.95,
-      "unitPriceMin": 22.95,
-      "unitPriceStriked": 0,
-    }
-  }
->
-  <ProductGridPrice
-    price={
-      Object {
+      "price": Object {
         "currency": "EUR",
         "discount": 0,
         "info": "PriceInfoString",
@@ -138,6 +160,22 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
         "unitPrice": 22.95,
         "unitPriceMin": 22.95,
         "unitPriceStriked": 0,
+      },
+    }
+  }
+>
+  <ProductGridPrice
+    product={
+      Object {
+        "price": Object {
+          "currency": "EUR",
+          "discount": 0,
+          "info": "PriceInfoString",
+          "msrp": 0,
+          "unitPrice": 22.95,
+          "unitPriceMin": 22.95,
+          "unitPriceStriked": 0,
+        },
       }
     }
   >
@@ -156,14 +194,23 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
         />
       </Grid.Item>
     </Grid>
-    <Grid>
-      <Grid.Item>
-        <PriceInfo
-          className="css-1gftye4"
-          text="PriceInfoString"
-        />
-      </Grid.Item>
-    </Grid>
+    <PriceInfo
+      className="css-117ocmm"
+      product={
+        Object {
+          "price": Object {
+            "currency": "EUR",
+            "discount": 0,
+            "info": "PriceInfoString",
+            "msrp": 0,
+            "unitPrice": 22.95,
+            "unitPriceMin": 22.95,
+            "unitPriceStriked": 0,
+          },
+        }
+      }
+      wrapper={[Function]}
+    />
   </ProductGridPrice>
 </Component>
 `;

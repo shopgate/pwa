@@ -2,12 +2,12 @@
 import React from 'react';
 import classNames from 'classnames';
 import {
-  Grid, Link, TextLink, ProductProperties, PriceInfo, SurroundPortals, ConditionalWrapper, I18n,
+  Grid, Link, TextLink, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex } from '@shopgate/engage/core';
-import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
+import { ProductImage, PriceInfo, ITEM_PATH } from '@shopgate/engage/product';
 import {
   CartItemProductChangeLocation,
   CartChangeFulfillmentMethod,
@@ -74,9 +74,7 @@ export function CartItemProductLayout() {
                 defaultPrice={product.price.default}
                 specialPrice={product.price.special}
               />
-              {product.price.info && (
-                <PriceInfo className={styles.priceInfo} text={product.price.info} />
-              )}
+              <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
             </Grid.Item>
             {showTaxDisclaimer && (
               <Grid.Item
@@ -106,6 +104,7 @@ export function CartItemProductLayout() {
           { !isOrderDetails && (
             <CartItemQuantityPicker
               unit={product.unit}
+              hasCatchWeight={product.hasCatchWeight}
               quantity={cartItem.quantity}
               editMode={editMode}
               onChange={handleUpdate}

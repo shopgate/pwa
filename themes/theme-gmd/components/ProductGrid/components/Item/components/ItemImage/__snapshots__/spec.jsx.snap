@@ -18,7 +18,7 @@ exports[`<ItemImage /> should render 1`] = `
       }
     }
   >
-    <WithWidgetSettings(ProductImage)
+    <Connect(WithWidgetSettings(ProductImage))
       alt="FooBar"
       aria-hidden={true}
       itemProp="image"

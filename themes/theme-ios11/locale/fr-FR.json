@@ -155,7 +155,8 @@
     },
     "msrp": "PDSF",
     "label": "Prix {price}.",
-    "label_old_price": "Ancien prix {price}."
+    "label_old_price": "Ancien prix {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
   },
   "product": {
     "errors": {
@@ -625,6 +626,19 @@
   },"error": {
     "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
+  "tracking": {
+    "cookieConsent": {
+      "message": "This website uses cookies to ensure you get the best experience on our website.",
+      "learnMore": "Learn more",
+      "decline": "Decline",
+      "save": "Save",
+      "allowSelected": "Allow selected",
+      "allowAll": "Allow all",
+      "preferences": "Preferences",
+      "needed": "Needed",
+      "analytics": "Analytics"
+    }
+  },
   "validation": {
     "required": "Veuillez remplir ce champ",
     "email": "Veuillez saisir une adresse e-mail valide",
@@ -649,11 +663,30 @@
         "ft": "ft",
         "mi": "mi"
       }
+    },
+    "unitOfMeasurement": {
+      "mg": "mg",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "cm": "cm",
+      "m": "m",
+      "m2": "m²",
+      "m3": "m³",
+      "piece": "count"
     }
   },
   "supplementalData": {
     "weekData": {
       "firstDay": "mon"
+    }
+  },
+  "pipelineErrors": {
+    "common": {
+      "apiError": {
+        "generic": "An unexpected error occurred."
+      }
     }
   }
 }

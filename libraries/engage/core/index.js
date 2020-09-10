@@ -300,11 +300,15 @@ export * from './initialization';
 // -------------- VALIDATION -------------- //
 export * from './validation';
 
+export { default as errorBehavior } from './helpers/errorBehavior';
+
 export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
   getIsLocationBasedShopping,
   getFulfillmentSchedulingEnabled,
+  getProductImagePlaceholder,
+  getCategoryImagePlaceholder,
 } from './selectors';
 
 export {
@@ -313,6 +317,8 @@ export {
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB,
   SHOP_SETTING_PRODUCTS_SORT_ORDER,
+  SHOP_SETTING_COOKIE_CONSENT_MODE,
+  SHOP_SETTING_DISPLAY_PRICE_PER_MEASURE_UNIT,
   EUNAUTHORIZED,
   EAUTHENTICATION,
 } from './constants';

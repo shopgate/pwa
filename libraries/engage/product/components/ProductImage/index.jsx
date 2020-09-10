@@ -8,7 +8,9 @@ import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
+import ProductImagePlaceholder from './ProductImagePlaceholder';
 import styles from './style';
+import connect from './connector';
 
 const { colors } = themeConfig;
 
@@ -30,6 +32,7 @@ class ProductImage extends Component {
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     noBackground: PropTypes.bool,
+    placeholderSrc: PropTypes.string,
     ratio: PropTypes.arrayOf(PropTypes.number),
     resolutions: PropTypes.arrayOf(PropTypes.shape({
       width: PropTypes.number.isRequired,
@@ -63,6 +66,7 @@ class ProductImage extends Component {
     ],
     src: null,
     srcmap: null,
+    placeholderSrc: null,
     widgetSettings: {},
   };
 
@@ -95,10 +99,11 @@ class ProductImage extends Component {
   /**
    * Should component update given the new props?
    * @param {Object} nextProps The next component props.
+   * @param {Object} nextState The next state.
    * @return {boolean} Update or not.
    */
-  shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props, nextProps);
+  shouldComponentUpdate(nextProps, nextState) {
+    return !isEqual(this.props, nextProps) || !isEqual(this.state, nextState);
   }
 
   /**
@@ -115,7 +120,9 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
-    const { noBackground, className } = this.props;
+    const {
+      noBackground, className, placeholderSrc, alt,
+    } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
     if (typeof showInnerShadow === 'undefined') {
@@ -133,9 +140,19 @@ class ProductImage extends Component {
             })}
             aria-hidden={this.props['aria-hidden']}
           >
-            <div className={styles.placeholderContent} data-test-id="placeHolder">
-              <PlaceholderIcon className={styles.placeholder} />
-            </div>
+            { placeholderSrc ? (
+              <ProductImagePlaceholder
+                src={placeholderSrc}
+                alt={alt}
+                showInnerShadow={showInnerShadow}
+                noBackground={noBackground}
+              />
+            ) : (
+              <div className={styles.placeholderContent} data-test-id="placeHolder">
+                <PlaceholderIcon className={styles.placeholder} />
+              </div>
+            )}
+
           </div>
         </SurroundPortals>
       );
@@ -159,4 +176,4 @@ class ProductImage extends Component {
 
 export { ProductImage as UnwrappedProductImage };
 
-export default withWidgetSettings(ProductImage, '@shopgate/engage/product/ProductImage');
+export default connect(withWidgetSettings(ProductImage, '@shopgate/engage/product/ProductImage'));

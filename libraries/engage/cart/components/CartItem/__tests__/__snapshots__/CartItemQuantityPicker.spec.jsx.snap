@@ -4,6 +4,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={[Function]}
   onToggleEditMode={[Function]}
   quantity={1}
@@ -47,6 +48,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
 <CartItemQuantityPicker
   disabled={false}
   editMode={true}
+  hasCatchWeight={false}
   onChange={[Function]}
   onToggleEditMode={[Function]}
   quantity={1}
@@ -90,6 +92,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={[MockFunction]}
   onToggleEditMode={[Function]}
   quantity={2}
@@ -133,6 +136,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={
     [MockFunction] {
       "calls": Array [
@@ -190,6 +194,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={[Function]}
   onToggleEditMode={
     [MockFunction] {
@@ -254,6 +259,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={[Function]}
   onToggleEditMode={
     [MockFunction] {
@@ -354,6 +360,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={[Function]}
   onToggleEditMode={[Function]}
   quantity={1}
@@ -397,6 +404,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={[Function]}
   onToggleEditMode={[Function]}
   quantity={3}
@@ -440,6 +448,7 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
 <CartItemQuantityPicker
   disabled={false}
   editMode={false}
+  hasCatchWeight={false}
   onChange={[Function]}
   onToggleEditMode={[Function]}
   quantity={0}

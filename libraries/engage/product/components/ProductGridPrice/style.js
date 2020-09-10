@@ -12,8 +12,7 @@ const priceWrapper = css(isIOS ? {
 }).toString();
 
 const basicPrice = css({
-  fontSize: '0.85em',
-  marginTop: -1,
+  fontSize: '0.875rem',
 }).toString();
 
 const strikedPrice = css(isIOS ? {

@@ -11,14 +11,16 @@ import {
 /**
  * @returns {JSX}
  */
-function ProductCardPrice({ productId, price, style }) {
+function ProductCardPrice({ style, product }) {
+  const { id: productId } = product;
+
   const props = { productId };
 
   return (
     <div style={style}>
       <Portal name={PRODUCT_ITEM_PRICE_BEFORE} props={props} />
       <Portal name={PRODUCT_ITEM_PRICE} props={props}>
-        <ProductGridPrice price={price} />
+        <ProductGridPrice product={product} />
       </Portal>
       <Portal name={PRODUCT_ITEM_PRICE_AFTER} props={props} />
     </div>
@@ -26,8 +28,7 @@ function ProductCardPrice({ productId, price, style }) {
 }
 
 ProductCardPrice.propTypes = {
-  price: PropTypes.shape().isRequired,
-  productId: PropTypes.string.isRequired,
+  product: PropTypes.shape().isRequired,
   style: PropTypes.shape(),
 };
 

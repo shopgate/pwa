@@ -7,14 +7,13 @@ import {
   Ellipsis,
   QuantityLabel,
   ConditionalWrapper,
-  PriceInfo,
   MessageBar,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
   CartUnitQuantityPicker,
+  PriceInfo,
   ITEM_PATH,
-  PRODUCT_UNIT_EACH,
 } from '@shopgate/engage/product';
 import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
 import { bin2hex } from '@shopgate/engage/core';
@@ -61,7 +60,7 @@ const CartItemProductLayoutWide = () => {
     messages,
   } = context;
 
-  const hasUnitWithDecimals = product.unit && product.unit !== PRODUCT_UNIT_EACH;
+  const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
   const isActive = !isOrderDetails
     ? true
     : getLineItemActiveStatus(cartItem?.status, cartItem?.subStatus);
@@ -113,9 +112,7 @@ const CartItemProductLayoutWide = () => {
               priceStriked: price,
             }}
           />
-          {product.price.info && (
-            <PriceInfo className={priceInfo} text={product.price.info} />
-          )}
+          <PriceInfo product={product} currency={currency} className={priceInfo} />
           <CartItemProductPriceCaption />
         </div>
         { isOrderDetails && (
@@ -127,6 +124,7 @@ const CartItemProductLayoutWide = () => {
               productId={product.id}
               value={isOrderDetails ? cartItem.orderedQuantity : cartItem.quantity}
               unit={product.unit}
+              hasCatchWeight={product.hasCatchWeight}
               onChange={handleUpdate}
               classNames={{
                 withDecimals: quantityPicker,

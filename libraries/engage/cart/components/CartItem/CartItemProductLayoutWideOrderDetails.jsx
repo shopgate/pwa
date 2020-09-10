@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { QuantityLabel } from '@shopgate/engage/components';
-import { PRODUCT_UNIT_EACH } from '@shopgate/engage/product';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
@@ -18,7 +17,7 @@ const CartItemProductLayoutWide = () => {
   const { location, cartItem } = useCartItem();
   const { product } = useCartItemProduct();
 
-  const hasUnitWithDecimals = product.unit && product.unit !== PRODUCT_UNIT_EACH;
+  const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
 
   return (
     <Fragment>

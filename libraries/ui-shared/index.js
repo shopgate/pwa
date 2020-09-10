@@ -10,3 +10,4 @@ export { default as Placeholder } from './Placeholder';
 export { default as ProgressBar } from './ProgressBar';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as Sheet } from './Sheet';
+export { default as Checkbox } from './Checkbox';

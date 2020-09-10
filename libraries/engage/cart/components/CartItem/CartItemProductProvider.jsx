@@ -27,6 +27,7 @@ const CartItemProductProvider = ({
   isEditable,
   children,
   isIos,
+  currencyOverride,
 }: Props) => {
   const {
     id, product, quantity, fulfillment = null, messages = [], status, subStatus, orderedQuantity,
@@ -78,7 +79,7 @@ const CartItemProductProvider = ({
   const value = useMemo(
     () => ({
       type: CART_ITEM_TYPE_PRODUCT,
-      currency,
+      currency: currencyOverride || currency,
       product,
       messages,
       handleRemove,
@@ -99,6 +100,7 @@ const CartItemProductProvider = ({
     }),
     [
       currency,
+      currencyOverride,
       editMode,
       fulfillment,
       handleRemove,
@@ -126,6 +128,7 @@ CartItemProductProvider.defaultProps = {
   children: null,
   isEditable: true,
   onFocus: () => {},
+  currencyOverride: null,
 };
 
 export default connect(CartItemProductProvider);

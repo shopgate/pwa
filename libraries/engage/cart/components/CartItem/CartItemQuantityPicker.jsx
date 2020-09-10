@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import { i18n } from '@shopgate/engage/core';
-import { PRODUCT_UNIT_EACH } from '@shopgate/engage/product/constants';
 import QuantityInput from '@shopgate/engage/components/QuantityInput';
 import { inputStyle } from './CartItemQuantityPicker.style';
 
@@ -11,7 +10,8 @@ type Props = {
   onToggleEditMode?: (editMode: boolean) => void,
   quantity?: number,
   unit?: string,
-  disabled?: boolean
+  disabled?: boolean,
+  hasCatchWeight?: boolean,
 }
 
 /**
@@ -25,6 +25,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
     quantity: 1,
     onToggleEditMode: () => { },
     disabled: false,
+    hasCatchWeight: false,
   };
 
   /**
@@ -170,8 +171,8 @@ export class CartItemQuantityPicker extends React.Component<Props> {
    * @return {JSX}
    */
   render() {
-    const { unit } = this.props;
-    const hasCustomUnit = unit && unit !== PRODUCT_UNIT_EACH;
+    const { unit, hasCatchWeight } = this.props;
+    const hasCustomUnit = (unit && hasCatchWeight) || false;
 
     return (
       <form onSubmit={this.handleSubmitForm}>

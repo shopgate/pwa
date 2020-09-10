@@ -110,7 +110,7 @@ function ProductCard(props) {
                   location,
                 }}
               >
-                <ProductGridPrice price={product.price} />
+                <ProductGridPrice product={product} />
               </Portal>
               <Portal
                 name={portals.PRODUCT_ITEM_PRICE_AFTER}

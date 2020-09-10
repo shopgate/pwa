@@ -12,6 +12,9 @@ jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
 }));
 
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/product', () => ({
+  PriceInfo: () => null,
+}));
 
 const mockRenderOptions = {
   context: {
@@ -57,7 +60,11 @@ const mockPriceMsrp = {
 
 describe('<ProductGridPrice />', () => {
   it('should render without discounts', () => {
-    const component = mount(<ProductGridPrice price={mockPrice} />, mockRenderOptions);
+    const product = {
+      price: mockPrice,
+    };
+
+    const component = mount(<ProductGridPrice product={product} />, mockRenderOptions);
     const price = component.find('Price');
     const priceStriked = component.find('PriceStriked');
     const priceInfo = component.find('PriceInfo');
@@ -73,11 +80,14 @@ describe('<ProductGridPrice />', () => {
     expect(priceStriked.exists()).toBe(false);
 
     expect(priceInfo.exists()).toBe(true);
-    expect(priceInfo.prop('text')).toBe(mockPrice.info);
+    expect(priceInfo.prop('product')).toBe(product);
   });
 
   it('should render with strike price', () => {
-    const component = mount(<ProductGridPrice price={mockPriceStriked} />, mockRenderOptions);
+    const product = {
+      price: mockPriceStriked,
+    };
+    const component = mount(<ProductGridPrice product={product} />, mockRenderOptions);
     const price = component.find('Price');
     const priceStriked = component.find('PriceStriked');
     const priceInfo = component.find('PriceInfo');
@@ -93,11 +103,16 @@ describe('<ProductGridPrice />', () => {
     expect(priceStriked.prop('currency')).toBe(mockPriceStriked.currency);
     expect(priceStriked.prop('value')).toBe(mockPriceStriked.unitPriceStriked);
 
-    expect(priceInfo.exists()).toBe(false);
+    expect(priceInfo.exists()).toBe(true);
+    expect(priceInfo.prop('product')).toBe(product);
   });
 
   it('should render with msrp', () => {
-    const component = mount(<ProductGridPrice price={mockPriceMsrp} />, mockRenderOptions);
+    const product = {
+      price: mockPriceStriked,
+    };
+
+    const component = mount(<ProductGridPrice product={product} />, mockRenderOptions);
     const price = component.find('Price');
     const priceStriked = component.find('PriceStriked');
     const priceInfo = component.find('PriceInfo');
@@ -114,6 +129,6 @@ describe('<ProductGridPrice />', () => {
     expect(priceStriked.prop('value')).toBe(mockPriceMsrp.msrp);
 
     expect(priceInfo.exists()).toBe(true);
-    expect(priceInfo.prop('text')).toBe(mockPriceMsrp.info);
+    expect(priceInfo.prop('product')).toBe(product);
   });
 });

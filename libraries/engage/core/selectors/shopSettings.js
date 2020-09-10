@@ -2,6 +2,9 @@ import { createSelector } from 'reselect';
 import {
   WISHLIST_MODE_PERSIST_ON_ADD,
   SHOP_SETTING_WISHLIST_MODE,
+  SHOP_SETTING_IMAGES,
+  SHOP_SETTING_IMAGES_PRODUCT_PLACEHOLDER,
+  SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER,
 } from '../constants/shopSettings';
 
 /**
@@ -52,4 +55,22 @@ export const makeGetShopSettings = (keys = []) => createSelector(
 export const getWishlistMode = makeGetShopSettingByKey(
   SHOP_SETTING_WISHLIST_MODE,
   WISHLIST_MODE_PERSIST_ON_ADD
+);
+
+const getShopSettingImages = makeGetShopSettingByKey(SHOP_SETTING_IMAGES, {});
+
+/**
+ * Selects the placeholder image for products
+ */
+export const getProductImagePlaceholder = createSelector(
+  getShopSettingImages,
+  images => images?.[SHOP_SETTING_IMAGES_PRODUCT_PLACEHOLDER] || null
+);
+
+/**
+ * Selects the placeholder image for products
+ */
+export const getCategoryImagePlaceholder = createSelector(
+  getShopSettingImages,
+  images => images?.[SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER] || null
 );

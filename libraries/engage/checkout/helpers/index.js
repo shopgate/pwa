@@ -27,6 +27,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     name,
     image,
     unit,
+    hasCatchWeight = false,
     options,
   } = product;
 
@@ -82,6 +83,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
       appliedDiscounts,
       additionalInfo,
       unit,
+      hasCatchWeight,
       price: {
         unit: productPrice,
         unitSpecial: productSalePrice,

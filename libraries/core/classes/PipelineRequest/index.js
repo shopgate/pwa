@@ -35,6 +35,10 @@ class PipelineRequest extends Request {
     this.process = DEFAULT_PROCESSED;
     this.handleErrors = DEFAULT_HANDLE_ERROR;
     this.errorBlacklist = [];
+    this.responseBehavior = {
+      success: null,
+      error: null,
+    };
   }
 
   /**
@@ -160,6 +164,34 @@ class PipelineRequest extends Request {
     logger.warn('Deprecated: setHandledErrors() will be removed in favor of setErrorBlacklist()!');
     this.setErrorBlacklist(errors);
     return this;
+  }
+
+  /**
+   * Allows to register callbacks to be executed in case of pipeline response error or success.
+   * @param {Object} behaviors The desired behaviors
+   * @return {PipelineRequest}
+   */
+  setResponseBehavior(behaviors = {}) {
+    this.responseBehavior = {
+      ...this.responseBehavior,
+      ...behaviors,
+    };
+
+    return this;
+  }
+
+  /**
+   * @returns {Function|null}
+   */
+  getSuccessResponseBehavior() {
+    return this.responseBehavior?.success || null;
+  }
+
+  /**
+   * @returns {Function|null}
+   */
+  getErrorResponseBehavior() {
+    return this.responseBehavior?.error || null;
   }
 
   /**

@@ -62,11 +62,25 @@ export default (subscribe) => {
   });
 
   /** Show a message to the user in case of pipeline error */
-  subscribe(pipelineError$, ({ dispatch, action, events }) => {
+  subscribe(pipelineError$, ({
+    dispatch, getState, events, action,
+  }) => {
     const { error } = action;
     const {
-      message, code, context, meta,
+      message, code, context, meta = {},
     } = error;
+
+    const { behavior } = meta;
+
+    if (behavior) {
+      behavior({
+        dispatch,
+        getState,
+        events,
+        error,
+      });
+      return;
+    }
 
     /** Show modal thunk */
     const showModalError = () => {

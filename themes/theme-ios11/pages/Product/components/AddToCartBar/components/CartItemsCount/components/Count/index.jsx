@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import { PRODUCT_UNIT_EACH } from '@shopgate/engage/product/constants';
 import styles, { duration, transition } from './style';
 
 /**
@@ -11,11 +10,13 @@ import styles, { duration, transition } from './style';
 class Count extends Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
+    hasCatchWeight: PropTypes.bool,
     unit: PropTypes.string,
   };
 
   static defaultProps = {
     unit: null,
+    hasCatchWeight: false,
   };
 
   /**
@@ -66,7 +67,7 @@ class Count extends Component {
    * @return {JSX}
    */
   render() {
-    const { unit } = this.props;
+    const { unit, hasCatchWeight } = this.props;
 
     return (
       <Transition
@@ -76,7 +77,7 @@ class Count extends Component {
       >
         {state => (
           <div className={styles.container} style={transition[state]}>
-            {unit && unit !== PRODUCT_UNIT_EACH ? (
+            {((unit && hasCatchWeight) || false) ? (
               <I18n.Text
                 string="product.item_added_unit"
                 params={{

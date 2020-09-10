@@ -83,6 +83,10 @@ jest.mock('@shopgate/pwa-common/selectors/history', () => ({
   getSortOrder: jest.fn(),
 }));
 
+jest.mock('@shopgate/engage/locations/selectors', () => ({
+  getPreferredLocation: jest.fn(),
+}));
+
 describe('Product selectors', () => {
   let mockedState;
 
