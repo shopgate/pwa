@@ -2,6 +2,7 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
+import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import { type Item } from '../../cart.types';
 import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
@@ -37,6 +38,9 @@ function CartItems({
       </ResponsiveContainer>
 
       <CardList className={items}>
+        <ResponsiveContainer appAlways breakpoint="<=xs">
+          <FulfillmentSlotSwitcher renderBar card />
+        </ResponsiveContainer>
         {editable && (
           <ResponsiveContainer breakpoint="<=xs" appAlways>
             <CartItemsSubstitution cartItems={cartItems} wrapCard className={card} />

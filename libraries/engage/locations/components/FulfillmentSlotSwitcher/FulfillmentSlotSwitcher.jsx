@@ -2,13 +2,32 @@ import React, {
   Fragment, useCallback, useState, useEffect, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'glamor';
 import { UIEvents } from '@shopgate/pwa-core';
+import { Card } from '@shopgate/engage/components';
 import FulfillmentSlotSwitcherDefault from './FulfillmentSlotSwitcherDefault';
 import FulfillmentSlotSwitcherBar from './FulfillmentSlotSwitcherBar';
 import connect from './FulfillmentSlotSwitcher.connector';
 import Dialog from './FulfillmentSlotDialog';
 
 const EVENT_FORCE_OPEN = 'FULFILLMENT_SLOT_FORCE_OPEN';
+
+const styles = {
+  card: css({
+    boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
+    marginLeft: -1,
+    marginRight: -1,
+    ' > div > div': {
+      borderBottom: 0,
+    },
+    ' > div': {
+      borderRadius: 5,
+      margin: -1,
+      background: '#fff',
+      border: '1px solid #eaeaea',
+    },
+  }).toString(),
+};
 
 /**
  * Force opens the fulfillment slot dialog and returns a promise.
@@ -26,6 +45,7 @@ const FulfillmentSlotSwitcher = ({
   renderBar,
   isFulfillmentScheduling,
   standalone,
+  card,
   setFulfillmentSlot,
 }) => {
   const promiseRef = useRef(null);
@@ -71,14 +91,18 @@ const FulfillmentSlotSwitcher = ({
     return null;
   }
 
+  const Wrapper = card ? Card : Fragment;
+
   return (
     <Fragment>
       { renderBar ? (
-        <FulfillmentSlotSwitcherBar
-          fulfillmentSlot={fulfillmentSlot}
-          handleChange={handleOpen}
-          standalone={standalone}
-        />
+        <Wrapper className={styles.card}>
+          <FulfillmentSlotSwitcherBar
+            fulfillmentSlot={fulfillmentSlot}
+            handleChange={handleOpen}
+            standalone={standalone}
+          />
+        </Wrapper>
       ) : (
         <FulfillmentSlotSwitcherDefault
           fulfillmentSlot={fulfillmentSlot}
@@ -99,6 +123,7 @@ const FulfillmentSlotSwitcher = ({
 
 FulfillmentSlotSwitcher.propTypes = {
   setFulfillmentSlot: PropTypes.func.isRequired,
+  card: PropTypes.bool,
   fulfillmentSlot: PropTypes.shape(),
   isFulfillmentScheduling: PropTypes.bool,
   renderBar: PropTypes.bool,
@@ -108,6 +133,7 @@ FulfillmentSlotSwitcher.defaultProps = {
   isFulfillmentScheduling: false,
   fulfillmentSlot: null,
   renderBar: false,
+  card: false,
   standalone: false,
 };
 
