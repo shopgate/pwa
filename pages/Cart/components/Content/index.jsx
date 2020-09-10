@@ -26,6 +26,7 @@ import {
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
+
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
