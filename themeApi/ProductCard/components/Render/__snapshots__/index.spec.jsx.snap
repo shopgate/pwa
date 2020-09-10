@@ -478,16 +478,25 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              price={
+              product={
                 Object {
-                  "currency": "EUR",
-                  "discount": 0,
-                  "info": "Price Info",
-                  "unitPrice": 5,
-                  "unitPriceStriked": 10,
+                  "featuredImageUrl": null,
+                  "id": "PR0DUCTID",
+                  "name": "Product Name",
+                  "price": Object {
+                    "currency": "EUR",
+                    "discount": 0,
+                    "info": "Price Info",
+                    "unitPrice": 5,
+                    "unitPriceStriked": 10,
+                  },
+                  "rating": Object {
+                    "average": 80,
+                    "count": 4,
+                    "reviewCount": 3,
+                  },
                 }
               }
-              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
@@ -510,13 +519,23 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                   }
                 >
                   <ProductGridPrice
-                    price={
+                    product={
                       Object {
-                        "currency": "EUR",
-                        "discount": 0,
-                        "info": "Price Info",
-                        "unitPrice": 5,
-                        "unitPriceStriked": 10,
+                        "featuredImageUrl": null,
+                        "id": "PR0DUCTID",
+                        "name": "Product Name",
+                        "price": Object {
+                          "currency": "EUR",
+                          "discount": 0,
+                          "info": "Price Info",
+                          "unitPrice": 5,
+                          "unitPriceStriked": 10,
+                        },
+                        "rating": Object {
+                          "average": 80,
+                          "count": 4,
+                          "reviewCount": 3,
+                        },
                       }
                     }
                   />
@@ -739,16 +758,25 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              price={
+              product={
                 Object {
-                  "currency": "EUR",
-                  "discount": 50,
-                  "info": "Price Info",
-                  "unitPrice": 5,
-                  "unitPriceStriked": 10,
+                  "featuredImageUrl": null,
+                  "id": "PR0DUCTID",
+                  "name": "Product Name",
+                  "price": Object {
+                    "currency": "EUR",
+                    "discount": 50,
+                    "info": "Price Info",
+                    "unitPrice": 5,
+                    "unitPriceStriked": 10,
+                  },
+                  "rating": Object {
+                    "average": 0,
+                    "count": 4,
+                    "reviewCount": 3,
+                  },
                 }
               }
-              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
@@ -771,13 +799,23 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                   }
                 >
                   <ProductGridPrice
-                    price={
+                    product={
                       Object {
-                        "currency": "EUR",
-                        "discount": 50,
-                        "info": "Price Info",
-                        "unitPrice": 5,
-                        "unitPriceStriked": 10,
+                        "featuredImageUrl": null,
+                        "id": "PR0DUCTID",
+                        "name": "Product Name",
+                        "price": Object {
+                          "currency": "EUR",
+                          "discount": 50,
+                          "info": "Price Info",
+                          "unitPrice": 5,
+                          "unitPriceStriked": 10,
+                        },
+                        "rating": Object {
+                          "average": 0,
+                          "count": 4,
+                          "reviewCount": 3,
+                        },
                       }
                     }
                   />
@@ -1347,16 +1385,25 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              price={
+              product={
                 Object {
-                  "currency": "EUR",
-                  "discount": 50,
-                  "info": "Price Info",
-                  "unitPrice": 5,
-                  "unitPriceStriked": 10,
+                  "featuredImageUrl": null,
+                  "id": "PR0DUCTID",
+                  "name": "Product Name",
+                  "price": Object {
+                    "currency": "EUR",
+                    "discount": 50,
+                    "info": "Price Info",
+                    "unitPrice": 5,
+                    "unitPriceStriked": 10,
+                  },
+                  "rating": Object {
+                    "average": 80,
+                    "count": 4,
+                    "reviewCount": 3,
+                  },
                 }
               }
-              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
@@ -1379,13 +1426,23 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                   }
                 >
                   <ProductGridPrice
-                    price={
+                    product={
                       Object {
-                        "currency": "EUR",
-                        "discount": 50,
-                        "info": "Price Info",
-                        "unitPrice": 5,
-                        "unitPriceStriked": 10,
+                        "featuredImageUrl": null,
+                        "id": "PR0DUCTID",
+                        "name": "Product Name",
+                        "price": Object {
+                          "currency": "EUR",
+                          "discount": 50,
+                          "info": "Price Info",
+                          "unitPrice": 5,
+                          "unitPriceStriked": 10,
+                        },
+                        "rating": Object {
+                          "average": 80,
+                          "count": 4,
+                          "reviewCount": 3,
+                        },
                       }
                     }
                   />
@@ -1955,16 +2012,25 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              price={
+              product={
                 Object {
-                  "currency": "EUR",
-                  "discount": 50,
-                  "info": "Price Info",
-                  "unitPrice": 5,
-                  "unitPriceStriked": 10,
+                  "featuredImageUrl": null,
+                  "id": "PR0DUCTID",
+                  "name": "Product Name",
+                  "price": Object {
+                    "currency": "EUR",
+                    "discount": 50,
+                    "info": "Price Info",
+                    "unitPrice": 5,
+                    "unitPriceStriked": 10,
+                  },
+                  "rating": Object {
+                    "average": 80,
+                    "count": 4,
+                    "reviewCount": 3,
+                  },
                 }
               }
-              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
@@ -1987,13 +2053,23 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                   }
                 >
                   <ProductGridPrice
-                    price={
+                    product={
                       Object {
-                        "currency": "EUR",
-                        "discount": 50,
-                        "info": "Price Info",
-                        "unitPrice": 5,
-                        "unitPriceStriked": 10,
+                        "featuredImageUrl": null,
+                        "id": "PR0DUCTID",
+                        "name": "Product Name",
+                        "price": Object {
+                          "currency": "EUR",
+                          "discount": 50,
+                          "info": "Price Info",
+                          "unitPrice": 5,
+                          "unitPriceStriked": 10,
+                        },
+                        "rating": Object {
+                          "average": 80,
+                          "count": 4,
+                          "reviewCount": 3,
+                        },
                       }
                     }
                   />
@@ -2521,16 +2597,25 @@ exports[`<ProductCardRender /> should render without name 1`] = `
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              price={
+              product={
                 Object {
-                  "currency": "EUR",
-                  "discount": 50,
-                  "info": "Price Info",
-                  "unitPrice": 5,
-                  "unitPriceStriked": 10,
+                  "featuredImageUrl": null,
+                  "id": "PR0DUCTID",
+                  "name": "Product Name",
+                  "price": Object {
+                    "currency": "EUR",
+                    "discount": 50,
+                    "info": "Price Info",
+                    "unitPrice": 5,
+                    "unitPriceStriked": 10,
+                  },
+                  "rating": Object {
+                    "average": 80,
+                    "count": 4,
+                    "reviewCount": 3,
+                  },
                 }
               }
-              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
@@ -2553,13 +2638,23 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                   }
                 >
                   <ProductGridPrice
-                    price={
+                    product={
                       Object {
-                        "currency": "EUR",
-                        "discount": 50,
-                        "info": "Price Info",
-                        "unitPrice": 5,
-                        "unitPriceStriked": 10,
+                        "featuredImageUrl": null,
+                        "id": "PR0DUCTID",
+                        "name": "Product Name",
+                        "price": Object {
+                          "currency": "EUR",
+                          "discount": 50,
+                          "info": "Price Info",
+                          "unitPrice": 5,
+                          "unitPriceStriked": 10,
+                        },
+                        "rating": Object {
+                          "average": 80,
+                          "count": 4,
+                          "reviewCount": 3,
+                        },
                       }
                     }
                   />
@@ -3267,16 +3362,25 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
               productId="PR0DUCTID"
             />
             <ProductCardPrice
-              price={
+              product={
                 Object {
-                  "currency": "EUR",
-                  "discount": 50,
-                  "info": "Price Info",
-                  "unitPrice": 5,
-                  "unitPriceStriked": 10,
+                  "featuredImageUrl": null,
+                  "id": "PR0DUCTID",
+                  "name": "Product Name",
+                  "price": Object {
+                    "currency": "EUR",
+                    "discount": 50,
+                    "info": "Price Info",
+                    "unitPrice": 5,
+                    "unitPriceStriked": 10,
+                  },
+                  "rating": Object {
+                    "average": 80,
+                    "count": 4,
+                    "reviewCount": 3,
+                  },
                 }
               }
-              productId="PR0DUCTID"
               style={Object {}}
             >
               <div
@@ -3299,13 +3403,23 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                   }
                 >
                   <ProductGridPrice
-                    price={
+                    product={
                       Object {
-                        "currency": "EUR",
-                        "discount": 50,
-                        "info": "Price Info",
-                        "unitPrice": 5,
-                        "unitPriceStriked": 10,
+                        "featuredImageUrl": null,
+                        "id": "PR0DUCTID",
+                        "name": "Product Name",
+                        "price": Object {
+                          "currency": "EUR",
+                          "discount": 50,
+                          "info": "Price Info",
+                          "unitPrice": 5,
+                          "unitPriceStriked": 10,
+                        },
+                        "rating": Object {
+                          "average": 80,
+                          "count": 4,
+                          "reviewCount": 3,
+                        },
                       }
                     }
                   />

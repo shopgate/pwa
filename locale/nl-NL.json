@@ -155,7 +155,8 @@
     },
     "msrp": "MSRP",
     "label": "Prijs {price}.",
-    "label_old_price": "Vorige prijs {price}."
+    "label_old_price": "Vorige prijs {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
   },
   "product": {
     "errors": {
@@ -624,6 +625,19 @@
   },"error": {
     "general": "Onmogelijk de se connecter. Controleer je internetverbinding en probeer opnieuw."
   },
+  "tracking": {
+    "cookieConsent": {
+      "message": "This website uses cookies to ensure you get the best experience on our website.",
+      "learnMore": "Learn more",
+      "decline": "Decline",
+      "save": "Save",
+      "allowSelected": "Allow selected",
+      "allowAll": "Allow all",
+      "preferences": "Preferences",
+      "needed": "Needed",
+      "analytics": "Analytics"
+    }
+  },
   "validation": {
     "required": "Gelieve het veld compleet in te vullen",
     "email": "Voer a.u.b. een geldig e-mail adres in",
@@ -648,11 +662,30 @@
         "ft": "ft",
         "mi": "mi"
       }
+    },
+    "unitOfMeasurement": {
+      "mg": "mg",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "cm": "cm",
+      "m": "m",
+      "m2": "m²",
+      "m3": "m³",
+      "piece": "count"
     }
   },
   "supplementalData": {
     "weekData": {
       "firstDay": "mon"
+    }
+  },
+  "pipelineErrors": {
+    "common": {
+      "apiError": {
+        "generic": "An unexpected error occurred."
+      }
     }
   }
 }

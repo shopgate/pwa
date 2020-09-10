@@ -16,9 +16,9 @@ import {
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import Availability from '@shopgate/pwa-ui-shared/Availability';
+import { PriceInfo } from '@shopgate/engage/product';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
@@ -159,9 +159,7 @@ const Item = ({ display, product }) => (
                   className={styles.priceStriked}
                 />
               )}
-              {product.price.info && (
-                <PriceInfo text={product.price.info} className={styles.priceInfo} />
-              )}
+              <PriceInfo product={product} className={styles.priceInfo} />
               <Portal
                 name={portals.PRODUCT_ITEM_PRICE_INSIDE_AFTER}
                 props={{ productId: product.id }}
