@@ -4,7 +4,7 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { ResponsiveContainer } from '@shopgate/engage/components';
-import { GlobalLocationSwitcher } from '@shopgate/engage/locations';
+import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import Logo from 'Components/Logo';
 import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_HEIGHT } from '../../../../../../constants';
 import Search from './Search';
@@ -75,6 +75,7 @@ const WideBar = ({
           <Logo onClick={navigate} className={styles.logo} />
           <div className={styles.right}>
             <GlobalLocationSwitcher />
+            <FulfillmentSlotSwitcher />
             <Search />
             <Cart />
           </div>
