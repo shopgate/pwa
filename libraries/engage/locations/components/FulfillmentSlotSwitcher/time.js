@@ -7,7 +7,7 @@ import { i18n } from '@shopgate/engage/core';
  * @returns {Object}
  */
 export const getTimeSlotDisplayText = (fulfillmentSlot) => {
-  if (!fulfillmentSlot) {
+  if (!fulfillmentSlot || !fulfillmentSlot?.date || !fulfillmentSlot?.from) {
     return i18n.text('locations.your_current_timeslot.not_set');
   }
 

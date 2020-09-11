@@ -9,6 +9,7 @@ import { css } from 'glamor';
 import groupBy from 'lodash/groupBy';
 import { SheetDrawer, Button } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
+import { getActiveFulfillmentSlot } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../selectors';
 import fetchFulfillmentSlots from '../../actions/fetchFulfillmentSlots';
 
@@ -21,6 +22,7 @@ const makeMapStateToProps = () => {
     state => getPreferredLocation(state)?.code || null
   );
   return state => ({
+    fulfillmentSlot: getActiveFulfillmentSlot(state),
     locationCode: getPreferredLocation(state)?.code,
     fulfillmentSlots: getFulfillmentSlotsForLocation(state),
   });
@@ -159,7 +161,14 @@ const RANGES = {
  * @returns {JSX}
  */
 const FulfillmentSlotSheet = ({
-  isOpen, onClose, onChange, fulfillmentSlots, locationCode, fetch, allowClose,
+  isOpen,
+  onClose,
+  onChange,
+  fulfillmentSlots,
+  locationCode,
+  fetch,
+  allowClose,
+  fulfillmentSlot,
 }) => {
   // Group by date.
   const groupedSlots = useMemo(
@@ -212,15 +221,29 @@ const FulfillmentSlotSheet = ({
     setSlotGroups(slotGroupsNew);
   }, [selectedDate, groupedSlots]);
   useEffect(() => {
-    if (!selectedDate || !groupedSlots) {
+    if (!selectedDate || !groupedSlots || !groupedSlots[selectedDate]) {
+      return;
+    }
+
+    // Only switch if not found.
+    if (groupedSlots[selectedDate].find(slot => slot.id === selectedSlot)) {
       return;
     }
 
     // Select first active slot.
-    setSelectedSlot(groupedSlots[selectedDate].find(slot => slot.status === 'active')?.id || null);
+    setSelectedSlot(groupedSlots[selectedDate]?.find(slot => slot.status === 'active')?.id || null);
   /* eslint-disable react-hooks/exhaustive-deps */
   }, [selectedDate]);
   /* eslint-enable react-hooks/exhaustive-deps */
+
+  // When opening the selected values are set to active selected content.
+  useEffect(() => {
+    if (!isOpen || !fulfillmentSlot || !fulfillmentSlot.date) {
+      return;
+    }
+    setSelectedDate(fulfillmentSlot.date);
+    setSelectedSlot(fulfillmentSlot.id);
+  }, [fulfillmentSlot, isOpen]);
 
   const handleChange = useCallback(() => {
     onChange(fulfillmentSlots.find(slot => slot.id === selectedSlot));
@@ -309,6 +332,7 @@ FulfillmentSlotSheet.propTypes = {
   onChange: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   allowClose: PropTypes.bool,
+  fulfillmentSlot: PropTypes.shape(),
   fulfillmentSlots: PropTypes.arrayOf(PropTypes.shape()),
   isOpen: PropTypes.bool,
   locationCode: PropTypes.string,
@@ -317,6 +341,7 @@ FulfillmentSlotSheet.defaultProps = {
   isOpen: false,
   locationCode: null,
   fulfillmentSlots: [],
+  fulfillmentSlot: null,
   allowClose: true,
 };
 
