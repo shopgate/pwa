@@ -62,15 +62,21 @@ const translate = (locales, langCode, key, args = {}) => {
   /**
    * @returns {Object}
    */
-  const sanitizeArgs = () => Object.keys(args).reduce((acc, arg) => {
-    if (moment(args[arg], moment.ISO_8601).isValid()) {
-      acc[arg] = new Date(args[arg]).getTime();
-    } else {
-      acc[arg] = args[arg];
+  const sanitizeArgs = () => {
+    if (typeof args !== 'object' || args === null) {
+      return args;
     }
 
-    return acc;
-  }, {});
+    return Object.keys(args).reduce((acc, arg) => {
+      if (moment(args[arg], moment.ISO_8601).isValid()) {
+        acc[arg] = new Date(args[arg]).getTime();
+      } else {
+        acc[arg] = args[arg];
+      }
+
+      return acc;
+    }, {});
+  };
 
   return getMessageFromCache(locales, langCode, key).format(sanitizeArgs());
 };
