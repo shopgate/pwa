@@ -2,7 +2,7 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import classnames from 'classnames';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, errorBehavior } from '@shopgate/engage/core';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import WarningIcon from '@shopgate/pwa-ui-shared/icons/WarningIcon';
@@ -55,6 +55,7 @@ const MessageBar = ({
           type = 'info',
           message,
           messageParams = null,
+          additionalParams = null,
           translated = false,
         } = item;
 
@@ -64,7 +65,9 @@ const MessageBar = ({
           Icon = iconMapping[type];
         }
 
-        const messageOutput = !translated ? i18n.text(message, messageParams) : message;
+        const messageOutput = !translated
+          ? errorBehavior.getErrorMessage(message, messageParams || additionalParams)
+          : message;
 
         return (
           <div

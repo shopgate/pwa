@@ -84,7 +84,7 @@ describe('Cart subscriptions', () => {
     let callback;
 
     beforeEach(() => {
-      [,,,,,,, [stream, callback]] = subscribe.mock.calls;
+      [,,,,,,,, [stream, callback]] = subscribe.mock.calls;
     });
 
     it('should subscribe as expected', () => {
@@ -120,7 +120,7 @@ describe('Cart subscriptions', () => {
     const action = { productId: 'prod1' };
 
     beforeEach(() => {
-      [,,,,,,,, [stream, callback]] = subscribe.mock.calls;
+      [,,,,,,,,, [stream, callback]] = subscribe.mock.calls;
     });
 
     it('should subscribe as expected', () => {

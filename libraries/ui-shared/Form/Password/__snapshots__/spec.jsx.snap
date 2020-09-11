@@ -14,6 +14,7 @@ exports[`<Password> should render a password field 1`] = `
     multiLine={false}
     name="test-input"
     onChange={[Function]}
+    onFocusChange={[Function]}
     placeholder=""
     rightElement={
       <ToggleIcon

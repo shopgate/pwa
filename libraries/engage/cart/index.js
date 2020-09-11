@@ -9,6 +9,10 @@ export { default as deleteProductsFromCart } from '@shopgate/pwa-common-commerce
 export { default as fetchCart } from '@shopgate/pwa-common-commerce/cart/actions/fetchCart';
 export { default as updateProductsInCart } from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 
+// ACTION CREATORS
+export { default as setCouponFieldError } from '@shopgate/pwa-common-commerce/cart/action-creators/setCouponFieldError';
+export { default as setCouponFieldValue } from '@shopgate/pwa-common-commerce/cart/action-creators/setCouponFieldValue';
+
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/cart/constants/index';
 export * from '@shopgate/pwa-common-commerce/cart/constants/PipelineErrors';
@@ -57,6 +61,8 @@ export {
   getAddToCartMetadata,
   hasCouponSupport,
   getIsFetching,
+  getCouponFieldError,
+  getCouponFieldValue,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 export { makeIsAddToCartButtonDisabled } from './cart.selectors';

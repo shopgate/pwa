@@ -6,6 +6,8 @@ describe('getTranslator', () => {
   const translate = getTranslator({
     common: {
       cancel: 'Cancel',
+      withDate: 'Date: {date, date, yyyyMMdd}',
+      withPlaceholder: 'Company: {placeholder}',
     },
   }, 'en-US');
 
@@ -27,5 +29,15 @@ describe('getTranslator', () => {
   it('should return original undefined key', () => {
     const result = translate(undefined);
     expect(result).toEqual(undefined);
+  });
+
+  it('should render a string with a date', () => {
+    const result = translate('common.withDate', { date: '2020-09-09T14:22:08.000Z' });
+    expect(result).toEqual('Date: 9/9/2020');
+  });
+
+  it('should render a string with a placeholder', () => {
+    const result = translate('common.withPlaceholder', { placeholder: 'ACME' });
+    expect(result).toEqual('Company: ACME');
   });
 });
