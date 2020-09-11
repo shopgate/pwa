@@ -1,50 +1,40 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { CART_INPUT_AUTO_SCROLL_DELAY } from '@shopgate/engage/cart';
+import { hasWebBridge } from '@shopgate/engage/core';
 import connect from './connector';
 import Layout from './components/Layout';
-import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
-
-const defaultState = {
-  value: '',
-};
+import { container } from './style';
 
 /**
  * The CouponField component.
  */
 class CouponField extends PureComponent {
   static propTypes = {
-    visible: PropTypes.bool.isRequired,
     addCoupon: PropTypes.func,
+    error: PropTypes.string,
     isIos: PropTypes.bool,
     isLoading: PropTypes.bool,
     isSupported: PropTypes.bool,
     onFocus: PropTypes.func,
+    setValue: PropTypes.func,
+    value: PropTypes.string,
   };
 
   static defaultProps = {
-    addCoupon: () => {},
+    addCoupon: () => { },
+    setValue: () => { },
     isIos: false,
     isLoading: false,
     isSupported: true,
-    onFocus: () => {},
+    onFocus: () => { },
+    error: '',
+    value: '',
   };
 
-  state = defaultState;
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    /**
-     * Reset the form values when the page is not visible to the user.
-     */
-    if (this.props.visible && !nextProps.visible) {
-      this.setState(defaultState);
-    }
+  state = {
+    isFocused: false,
   }
 
   /**
@@ -52,7 +42,7 @@ class CouponField extends PureComponent {
    * @returns {boolean}
    */
   get isButtonVisible() {
-    return (this.state.isFocused || this.state.value);
+    return (this.state.isFocused || this.props.value);
   }
 
   /**
@@ -60,7 +50,7 @@ class CouponField extends PureComponent {
    * @returns {boolean}
    */
   get isButtonDisabled() {
-    return (this.props.isLoading || !this.state.value.length);
+    return (this.props.isLoading || !this.props.value.length);
   }
 
   /**
@@ -86,9 +76,7 @@ class CouponField extends PureComponent {
       this.handleFocusChange(false);
     }
 
-    this.props.addCoupon(this.state.value)
-      .then(this.reset)
-      .catch(() => {});
+    this.props.addCoupon(this.props.value);
   };
 
   /**
@@ -96,9 +84,7 @@ class CouponField extends PureComponent {
    * @param {Object} value The value inside the field
    */
   handleValueChange = (value) => {
-    this.setState({
-      value,
-    });
+    this.props.setValue(value);
   };
 
   /**
@@ -106,7 +92,7 @@ class CouponField extends PureComponent {
    * @param {boolean} isFocused Whether the input component is focused.
    */
   handleFocusChange = (isFocused) => {
-    if (!this.props.isIos && isFocused) {
+    if (!hasWebBridge() && !this.props.isIos && isFocused) {
       /**
        * When the user focuses the coupon input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
@@ -136,10 +122,6 @@ class CouponField extends PureComponent {
     }, isFocused ? 0 : 150);
   };
 
-  reset = () => {
-    this.setState(defaultState);
-  }
-
   /**
    * @returns {JSX}
    */
@@ -148,40 +130,28 @@ class CouponField extends PureComponent {
       return null;
     }
 
-    const labelStyle = { display: this.state.value ? 'none' : 'block' };
     const iconStyle = {
       opacity: (this.isButtonVisible) ? 1 : 0,
     };
 
     return (
-      <div ref={(element) => { this.element = element; }}>
+      <div ref={(element) => { this.element = element; }} className={container}>
         <Layout
           handleAddCoupon={this.addCoupon}
-          isFocused={this.state.isFocused}
           isLoading={this.props.isLoading}
           isButtonDisabled={this.isButtonDisabled}
           handleFocusChange={this.handleFocusChange}
           handleValueChange={this.handleValueChange}
-          labelStyle={labelStyle}
           iconStyle={iconStyle}
-          value={this.state.value}
+          value={this.props.value}
           setInputRef={this.setInputRef}
+          error={this.props.error}
         />
       </div>
     );
   }
 }
 
-export default connect(props => (
-  <RouteContext.Consumer>
-    {({ visible }) => (
-      <LoadingContext.Consumer>
-        {({ isLoading }) => (
-          <CouponField {...props} isLoading={isLoading(CART_PATH)} visible={visible} />
-        )}
-      </LoadingContext.Consumer>
-    )}
-  </RouteContext.Consumer>
-));
+export default connect(CouponField);
 
 export { CouponField as UnwrappedCouponField };

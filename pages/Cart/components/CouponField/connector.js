@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 import { isIos } from '@shopgate/pwa-common/selectors/client';
-import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
-import { hasCouponSupport } from '@shopgate/pwa-common-commerce/cart/selectors';
+import {
+  hasCouponSupport,
+  getCouponFieldValue,
+  getCouponFieldError,
+  addCouponsToCart,
+  setCouponFieldValue,
+} from '@shopgate/engage/cart';
 
 /**
  * Connects the component with the state.
@@ -11,6 +16,8 @@ import { hasCouponSupport } from '@shopgate/pwa-common-commerce/cart/selectors';
 const mapStateToProps = state => ({
   isIos: isIos(state),
   isSupported: hasCouponSupport(state),
+  error: getCouponFieldError(state),
+  value: getCouponFieldValue(state),
 });
 
 /**
@@ -20,6 +27,7 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   addCoupon: couponId => dispatch(addCouponsToCart([couponId])),
+  setValue: value => dispatch(setCouponFieldValue(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
