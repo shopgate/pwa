@@ -10,7 +10,10 @@
     "show_products": "Mostrar produtos",
     "back": "Voltar",
     "close": "Close",
-    "products": "Produtos"
+    "products": "Produtos",
+    "errors": {
+      "generic": "An unexpected error occurred. Please try again."
+    }
   },
   "titles": {
     "categories": "Todas as Categorias",
@@ -366,8 +369,24 @@
     "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
       "item": {
+        "1001": "Currently out of stock.",
+        "generic": "An unexpected error occurred with this item.",
         "insufficientstock": "Currently out of stock."
       },
+      "coupon": {
+        "2000": "This coupon is not valid.",
+        "2001": "The coupon is not active until {startDate, date, yyyyMMdd} {startDate, time, short}.",
+        "2002": "The coupon expired at {endDate, date, yyyyMMdd} {endDate, time, short}.",
+        "2003": "This coupon is not valid for your current cart.",
+        "2004": "This coupon has already been redeemed.",
+        "404": "This was coupon was not found.",
+        "generic": "An unexpected error occurred with this coupon."
+      },
+      "1001": "One or more products in the cart are out of stock. Please remove the products and try again.",
+      "1002": "Orders are limited to a single pickup store, please select only one fulfillment location.",
+      "1003": "The selected pickup time frame is not available anymore. Please choose a different time frame.",
+      "404": "One or more products has been removed from your cart due to unavailability.",
+      "generic": "An unexpected error occurred.",
       "insufficientstock": "One or more products in the cart are out of stock. Please remove the products and try again.",
       "multiplelocations": "Orders are limited to a single pickup store, please select only one fulfillment location.",
       "productsNotFound": "One or more products has been removed from your cart due to unavailability.",
@@ -678,13 +697,6 @@
   "supplementalData": {
     "weekData": {
       "firstDay": "mon"
-    }
-  },
-  "pipelineErrors": {
-    "common": {
-      "apiError": {
-        "generic": "An unexpected error occurred."
-      }
     }
   }
 }

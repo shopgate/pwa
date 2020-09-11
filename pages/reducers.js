@@ -27,7 +27,7 @@ import extensions from 'Extensions/reducers';
 import tabBar from 'Components/TabBar/reducer';
 
 persistedReducers.set([
-  'cart',
+  'cart.data',
   'client.info',
   'page',
   'locations.storage',
