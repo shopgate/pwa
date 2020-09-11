@@ -27,7 +27,7 @@ import account from '@shopgate/engage/account/reducers';
 import extensions from 'Extensions/reducers';
 
 persistedReducers.set([
-  'cart',
+  'cart.data',
   'client.info',
   'page',
   'locations.storage',

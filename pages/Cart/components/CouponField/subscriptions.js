@@ -1,6 +1,11 @@
 import { SUCCESS_ADD_COUPONS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
 import { couponsUpdated$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import {
+  setCouponFieldValue,
+  setCouponFieldError,
+  cartDidLeave$,
+  productsUpdated$,
+} from '@shopgate/engage/cart';
 
 /**
  * Coupons subscription.
@@ -11,11 +16,13 @@ export default function coupon(subscribe) {
   const successfullyAddedCouponsToCart$ = couponsUpdated$
     .filter(({ action }) => action.type === SUCCESS_ADD_COUPONS_TO_CART);
 
-  subscribe(successfullyAddedCouponsToCart$, ({ dispatch }) => {
-    dispatch(showModal({
-      dismiss: null,
-      confirm: 'modal.ok',
-      title: 'cart.coupon_was_added',
-    }));
+  const resetCouponField$ = cartDidLeave$.merge(
+    successfullyAddedCouponsToCart$,
+    productsUpdated$
+  );
+
+  subscribe(resetCouponField$, ({ dispatch }) => {
+    dispatch(setCouponFieldValue());
+    dispatch(setCouponFieldError());
   });
 }
