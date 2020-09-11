@@ -2,6 +2,7 @@ import IntlMessageFormat from 'intl-messageformat';
 import curry from 'lodash/curry';
 // eslint-disable-next-line import/no-named-default
 import { default as getPath } from 'lodash/get';
+import moment from 'moment';
 import messageCache from './messageCache';
 
 /**
@@ -57,8 +58,21 @@ const getMessageFromCache = (locales, langCode, key) => {
  * @param {Object} [args] Arguments for the translation.
  * @returns {string}
  */
-const translate = (locales, langCode, key, args = {}) => (
-  getMessageFromCache(locales, langCode, key).format(args)
-);
+const translate = (locales, langCode, key, args = {}) => {
+  /**
+   * @returns {Object}
+   */
+  const sanitizeArgs = () => Object.keys(args).reduce((acc, arg) => {
+    if (moment(args[arg], moment.ISO_8601).isValid()) {
+      acc[arg] = new Date(args[arg]).getTime();
+    } else {
+      acc[arg] = args[arg];
+    }
+
+    return acc;
+  }, {});
+
+  return getMessageFromCache(locales, langCode, key).format(sanitizeArgs());
+};
 
 export default curry(translate);

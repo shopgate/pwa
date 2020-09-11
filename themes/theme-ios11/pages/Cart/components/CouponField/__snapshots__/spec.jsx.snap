@@ -3,8 +3,15 @@
 exports[`<CouponField /> should render a message when the cart does not support coupons 1`] = `""`;
 
 exports[`<CouponField /> should render a message when the cart supports coupons 1`] = `
-<div>
+<div
+  className={
+    Object {
+      "data-css-sia9nm": "",
+    }
+  }
+>
   <Layout
+    error=""
     handleAddCoupon={[Function]}
     handleFocusChange={[Function]}
     handleValueChange={[Function]}
@@ -15,11 +22,6 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
     }
     isButtonDisabled={true}
     isLoading={false}
-    labelStyle={
-      Object {
-        "display": "block",
-      }
-    }
     setInputRef={[Function]}
     value=""
   />
@@ -27,8 +29,15 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
 `;
 
 exports[`<CouponField /> should render as expected without any props 1`] = `
-<div>
+<div
+  className={
+    Object {
+      "data-css-sia9nm": "",
+    }
+  }
+>
   <Layout
+    error=""
     handleAddCoupon={[Function]}
     handleFocusChange={[Function]}
     handleValueChange={[Function]}
@@ -39,11 +48,6 @@ exports[`<CouponField /> should render as expected without any props 1`] = `
     }
     isButtonDisabled={true}
     isLoading={false}
-    labelStyle={
-      Object {
-        "display": "block",
-      }
-    }
     setInputRef={[Function]}
     value=""
   />

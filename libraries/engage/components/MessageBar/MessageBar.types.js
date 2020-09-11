@@ -5,6 +5,9 @@ export type Message = {
   messageParams?: {
     [string]: any,
   } | null,
+  additionalParams?: {
+    [string]: any,
+  } | null,
   translated?: boolean,
   icon?: any | null,
 }

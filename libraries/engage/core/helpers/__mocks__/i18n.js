@@ -7,6 +7,7 @@ export const i18n = {
   date: () => 'd',
   time: () => 't',
   getLang: () => 'de-DE',
+  getPath: path => path,
 };
 
 /** @returns {string[]} */

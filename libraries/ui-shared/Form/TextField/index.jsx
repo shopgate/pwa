@@ -29,6 +29,7 @@ class TextField extends Component {
     /** Is simple input or textarea */
     multiLine: PropTypes.bool,
     onChange: PropTypes.func,
+    onFocusChange: PropTypes.func,
     placeholder: PropTypes.node,
     /** Element to place right of text input (trailing icon) */
     rightElement: PropTypes.node,
@@ -45,6 +46,7 @@ class TextField extends Component {
     label: '',
     leftElement: null,
     onChange: noop,
+    onFocusChange: noop,
     placeholder: '',
     multiLine: false,
     rightElement: null,
@@ -72,6 +74,8 @@ class TextField extends Component {
     this.setState({
       isFocused,
     });
+
+    this.props.onFocusChange(isFocused);
   };
 
   /**

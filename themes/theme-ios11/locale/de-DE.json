@@ -11,7 +11,10 @@
     "back": "Zurück",
     "close": "Schließen",
     "products": "Produkte",
-    "error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    "error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "errors": {
+      "generic": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    }
   },
   "titles": {
     "categories": "Alle Kategorien",
@@ -374,8 +377,24 @@
     "message_type_warning": "Warnung",
     "errors": {
       "item": {
+        "1001": "Derzeit nicht auf Lager.",
+        "generic": "Bei diesem Produkt ist ein unerwarteter Fehler aufgetreten.",
         "insufficientstock": "Derzeit nicht auf Lager."
       },
+      "coupon": {
+        "2000": "Dieser Gutschein ist ungültig.",
+        "2001": "Der Gutschein ist erst gültig ab {startDate, date, yyyyMMdd} {startDate, time, short} Uhr.",
+        "2002": "Der Gutschein ist abgelaufen am {endDate, date, yyyyMMdd} {endDate, time, short} Uhr.",
+        "2003": "Der Gutschein ist nicht gültig für Ihren aktuellen Warenkorb.",
+        "2004": "Dieser Gutschein wurde bereits eingelöst.",
+        "404": "Dieser Gutschein existiert nicht.",
+        "generic": "Bei diesem Gutschein ist ein unerwarteter Fehler aufgetreten."
+      },
+      "1001": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
+      "1002": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
+      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wählen Sie ein anderes Zeitfenster aus.",
+      "404": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
+      "generic": "Ein unerwarteter Fehler ist aufgetreten.",
       "insufficientstock": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
       "multiplelocations": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
       "productsNotFound": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
@@ -687,13 +706,6 @@
   "supplementalData": {
     "weekData": {
       "firstDay": "mon"
-    }
-  },
-  "pipelineErrors": {
-    "common": {
-      "apiError": {
-        "generic": "Ein unerwarteter Fehler ist aufgetreten."
-      }
     }
   }
 }

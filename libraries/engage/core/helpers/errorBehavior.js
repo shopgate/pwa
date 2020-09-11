@@ -5,17 +5,35 @@ import { logger, i18n } from '@shopgate/engage/core';
 
 /**
  * Creates an error message for a pipeline and a code
- * @param {string} pipeline The pipeline name
- * @param {string} code The error code
+ * @param {string} message The pipeline message
  * @param {Object} params Additional params for the message
  * @returns {string}
  */
-const getErrorMessage = (pipeline, code, params) => {
-  const keys = [
-    `pipelineErrors.${pipeline}.error.${code}`,
-    `pipelineErrors.${pipeline}.error.generic`,
-    `pipelineErrors.common.apiError.${code}`,
-    'pipelineErrors.common.apiError.generic',
+const getErrorMessage = (message, params) => {
+  if (!/^((\w+)\.){1,}/gi.test(message)) {
+    // Stop processing when the message is no i18n key
+    return i18n.text(message, params);
+  }
+
+  const segments = message.split('.');
+  const code = segments.pop();
+
+  const codeKeys = [];
+  const genericKeys = [];
+  let keys = [];
+
+  // Generate a bunch of lookup keys from the message
+  while (segments.length) {
+    codeKeys.push(`${segments.join('.')}.${code}`);
+    genericKeys.push(`${segments.join('.')}.generic`);
+    segments.pop();
+  }
+
+  // Add common keys
+  keys = [
+    ...codeKeys,
+    ...genericKeys,
+    ...[`common.errors.${code}`, 'common.errors.generic'],
   ];
 
   const match = keys.find(key => i18n.getPath(key));
@@ -44,8 +62,7 @@ const getErrorObject = (originalError) => {
   const message = translated
     ? originalMessage
     : getErrorMessage(
-      pipeline.replace(/(.v[0-9]*)+$/, ''),
-      code,
+      originalMessage,
       additionalParams
     );
 
@@ -145,6 +162,7 @@ const toast = duration => ({
 };
 
 export default {
+  getErrorMessage,
   toast,
   modal,
   custom,

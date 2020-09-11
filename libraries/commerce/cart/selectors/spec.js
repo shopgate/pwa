@@ -27,7 +27,7 @@ import {
 describe('Cart selectors', () => {
   describe('getFlags()', () => {
     it('should return an empty object if no flags are available', () => {
-      const result = getFlags({ cart: {} });
+      const result = getFlags({ cart: { data: {} } });
       expect(result).toEqual({});
     });
 
@@ -37,7 +37,7 @@ describe('Cart selectors', () => {
         orderable: true,
       };
 
-      const result = getFlags({ cart: { flags } });
+      const result = getFlags({ cart: { data: { flags } } });
       expect(result).toEqual(flags);
     });
   });
@@ -82,39 +82,39 @@ describe('Cart selectors', () => {
 
   describe('hasCouponSupport()', () => {
     it('should return true if no flags are available', () => {
-      const result = hasCouponSupport({ cart: {} });
+      const result = hasCouponSupport({ cart: { data: {} } });
       expect(result).toEqual(true);
     });
 
     it('should return true if the coupons flag is not available', () => {
-      const result = hasCouponSupport({ cart: { flags: {} } });
+      const result = hasCouponSupport({ cart: { data: { flags: {} } } });
       expect(result).toEqual(true);
     });
 
     it('should return true if the flag is true', () => {
-      const result = hasCouponSupport({ cart: { flags: { coupons: true } } });
+      const result = hasCouponSupport({ cart: { data: { flags: { coupons: true } } } });
       expect(result).toEqual(true);
     });
 
     it('should return false if the flag is false', () => {
-      const result = hasCouponSupport({ cart: { flags: { coupons: false } } });
+      const result = hasCouponSupport({ cart: { data: { flags: { coupons: false } } } });
       expect(result).toEqual(false);
     });
   });
 
   describe('isFetching()', () => {
     it('should return true if cart is fetching', () => {
-      const result = getIsFetching({ cart: { isFetching: true } });
+      const result = getIsFetching({ cart: { data: { isFetching: true } } });
       expect(result).toEqual(true);
     });
 
     it('should return false when no store information is given', () => {
-      const result = getIsFetching({ cart: {} });
+      const result = getIsFetching({ cart: { data: {} } });
       expect(result).toEqual(false);
     });
 
     it('should return false if cart is not fetching', () => {
-      const result = getIsFetching({ cart: { isFetching: false } });
+      const result = getIsFetching({ cart: { data: { isFetching: false } } });
       expect(result).toEqual(false);
     });
   });
@@ -122,13 +122,15 @@ describe('Cart selectors', () => {
   describe('getTotals', () => {
     const mockedState = {
       cart: {
-        totals: [
-          { type: CART_TOTALS_TYPE_SUB, amount: 100 },
-          { type: CART_TOTALS_TYPE_DISCOUNT, amount: 5 },
-          { type: CART_TOTALS_TYPE_DISCOUNT, amount: 2 },
-          { type: CART_TOTALS_TYPE_TAX, label: 'inkl. 26%  MwSt.', amount: 5 },
-          { type: CART_TOTALS_TYPE_GRAND, amount: 105 },
-        ],
+        data: {
+          totals: [
+            { type: CART_TOTALS_TYPE_SUB, amount: 100 },
+            { type: CART_TOTALS_TYPE_DISCOUNT, amount: 5 },
+            { type: CART_TOTALS_TYPE_DISCOUNT, amount: 2 },
+            { type: CART_TOTALS_TYPE_TAX, label: 'inkl. 26%  MwSt.', amount: 5 },
+            { type: CART_TOTALS_TYPE_GRAND, amount: 105 },
+          ],
+        },
       },
     };
 
@@ -137,15 +139,15 @@ describe('Cart selectors', () => {
     });
     it('should return discount', () => {
       expect(getDiscounts(mockedState)).toEqual([
-        mockedState.cart.totals[1],
-        mockedState.cart.totals[2],
+        mockedState.cart.data.totals[1],
+        mockedState.cart.data.totals[2],
       ]);
     });
     it('should return discount amount', () => {
       expect(getDiscountsAmount(mockedState)).toEqual(7);
     });
     it('should return tax', () => {
-      expect(getTax(mockedState)).toEqual(mockedState.cart.totals[3]);
+      expect(getTax(mockedState)).toEqual(mockedState.cart.data.totals[3]);
     });
     it('should return grand total', () => {
       expect(getGrandTotal(mockedState)).toEqual(105);

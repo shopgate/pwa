@@ -18,18 +18,25 @@ import {
 import { getDisplayedProductQuantity } from '../helpers/quantity';
 
 /**
+ * Selects the coupon field data from the store.
+ * @param {Object} state The current state.
+ * @return {Object}
+ */
+const getCouponField = state => state.cart.couponField;
+
+/**
  * Selects the cart data from the store.
  * @param {Object} state The current state.
  * @return {Object}
  */
-const getCart = state => state.cart;
+const getCart = state => state.cart.data;
 
 /**
  * Selects the cartItems from the current cart in the state.
  * @param {Object} state The current state.
  * @return {Array} The cartItems.
  */
-const cartItemsSelector = state => state.cart.items;
+const cartItemsSelector = state => state.cart.data.items;
 
 /**
  * Selects the total amounts stack from the cart data.
@@ -315,6 +322,16 @@ export const hasCouponSupport = createSelector(
 export const getIsFetching = createSelector(
   getCart,
   ({ isFetching }) => isFetching || false
+);
+
+export const getCouponFieldError = createSelector(
+  getCouponField,
+  data => data?.error || ''
+);
+
+export const getCouponFieldValue = createSelector(
+  getCouponField,
+  data => data?.value || ''
 );
 
 /**

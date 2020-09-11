@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, I18n } from '@shopgate/engage/components';
+import { TextField } from '@shopgate/engage/components';
 import { i18n, usePageSettings } from '@shopgate/engage/core';
 import CouponFieldIcon from './components/CouponFieldIcon';
 import styles from './style';
@@ -16,51 +16,45 @@ const Layout = (props) => {
   return (
     <div className={cartItemsDisplay === 'line' ? styles.wrapper : styles.wrapperCard}>
       <form className={styles.container} onSubmit={props.handleAddCoupon} data-test-id="couponField">
-        { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label className={styles.label} htmlFor="coupon-code-field" style={props.labelStyle}>
-          <I18n.Text string="cart.redeem_coupon" />
-        </label>
-
-        <Input
-          className={styles.input}
+        <TextField
           disabled={props.isLoading}
           name="coupon-code-field"
           onFocusChange={props.handleFocusChange}
           onChange={props.handleValueChange}
           setRef={props.setInputRef}
           value={props.value}
+          label="cart.redeem_coupon"
+          errorText={props.error}
+          className={styles.input}
         />
 
         <div
           data-test-id="CouponSubmitButton"
           style={props.iconStyle}
           className={styles.icon}
-          onClick={props.handleAddCoupon}
           onKeyDown={props.handleAddCoupon}
-          aria-hidden={props.isButtonDisabled}
+          onClick={props.handleAddCoupon}
           role="button"
+          aria-hidden={props.isButtonDisabled}
           tabIndex="0"
           aria-label={i18n.text('cart.submit_coupon')}
         >
           <CouponFieldIcon disabled={props.isButtonDisabled} />
         </div>
-        <div className={styles.underlineWrapper}>
-          <div className={`${styles.underline} ${(!props.isFocused || props.isLoading) ? styles.underlineBlurred : ''}`} />
-        </div>
+
       </form>
     </div>
   );
 };
 
 Layout.propTypes = {
+  error: PropTypes.string,
   handleAddCoupon: PropTypes.func,
   handleFocusChange: PropTypes.func,
   handleValueChange: PropTypes.func,
   iconStyle: PropTypes.shape(),
   isButtonDisabled: PropTypes.bool,
-  isFocused: PropTypes.bool,
   isLoading: PropTypes.bool,
-  labelStyle: PropTypes.shape(),
   setInputRef: PropTypes.func,
   value: PropTypes.string,
 };
@@ -71,11 +65,10 @@ Layout.defaultProps = {
   handleValueChange: () => { },
   iconStyle: null,
   isButtonDisabled: false,
-  isFocused: false,
   isLoading: false,
-  labelStyle: null,
   setInputRef: () => { },
   value: '',
+  error: null,
 };
 
 export default Layout;

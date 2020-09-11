@@ -1,5 +1,6 @@
 import { PipelineRequest, PROCESS_SEQUENTIAL } from '@shopgate/pwa-core';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
+import { errorBehavior } from '@shopgate/engage/core';
 import { SHOPGATE_CART_ADD_COUPONS } from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
@@ -7,6 +8,7 @@ import addCoupons from '../action-creators/addCouponsToCart';
 import errorAddCouponsToCart from '../action-creators/errorAddCouponsToCart';
 import successAddCouponsToCart from '../action-creators/successAddCouponsToCart';
 import { messagesHaveErrors } from '../helpers';
+import setCouponFieldError from '../action-creators/setCouponFieldError';
 import { MESSAGE_TYPE_ERROR } from '../constants';
 
 /**
@@ -23,6 +25,9 @@ function addCouponsToCart(couponIds) {
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setRetries(0)
       .setErrorBlacklist(ECART)
+      .setResponseBehavior({
+        error: errorBehavior.dispatchAction(message => setCouponFieldError(message)),
+      })
       .dispatch();
 
     request

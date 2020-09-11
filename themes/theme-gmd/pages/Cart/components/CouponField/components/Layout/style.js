@@ -5,7 +5,7 @@ const { colors, variables } = themeConfig;
 
 const wrapper = css({
   background: colors.light,
-  padding: variables.gap.big,
+  padding: `${variables.gap.small}px ${variables.gap.big}px`,
 });
 
 const wrapperCard = css(wrapper, {
@@ -18,7 +18,6 @@ const wrapperCard = css(wrapper, {
 
 const container = css({
   position: 'relative',
-  height: 24,
   width: '100%',
   fontSize: '0.875rem',
 }).toString();
@@ -31,13 +30,10 @@ const label = css({
 }).toString();
 
 const input = css({
-  position: 'absolute',
-  width: 'calc(100% - 36px)',
-  top: 0,
-  outline: 0,
-  bottom: 6,
-  padding: 0,
-  left: 0,
+  ' .errorText': {
+    position: 'inherit',
+    whiteSpace: 'inherit',
+  },
 }).toString();
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
@@ -45,31 +41,11 @@ const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 const icon = css({
   color: `var(--color-primary, ${colors.primary})`,
   fontSize: '1.875rem',
-  position: 'relative',
-  float: 'right',
-  top: -10,
-  transition: `opacity ${easing}`,
-}).toString();
-
-const underlineWrapper = css({
   position: 'absolute',
-  width: '100%',
-  borderBottom: `1px solid ${colors.shade5}`,
-  top: 24,
-}).toString();
-
-const underline = css({
-  position: 'relative',
-  width: '100%',
-  top: 1,
-  height: 2,
-  willChange: 'transform',
-  transition: `transform ${easing}`,
-  background: `var(--color-primary, ${colors.primary})`,
-}).toString();
-
-const underlineBlurred = css({
-  transform: 'scale3d(0,1,1)',
+  transition: `opacity ${easing}`,
+  cursor: 'pointer',
+  top: 14,
+  right: 0,
 }).toString();
 
 export default {
@@ -79,7 +55,4 @@ export default {
   label,
   input,
   icon,
-  underline,
-  underlineWrapper,
-  underlineBlurred,
 };
