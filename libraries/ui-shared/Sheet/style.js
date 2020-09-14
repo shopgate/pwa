@@ -34,6 +34,10 @@ const container = css({
   },
 }).toString();
 
+const progressBarContainer = css({
+  position: 'relative',
+}).toString();
+
 const shadow = css({
   boxShadow: themeConfig.shadows.sheet,
 }).toString();
@@ -96,6 +100,7 @@ const drawerAnimation = {
 export default {
   section,
   container,
+  progressBarContainer,
   shadow,
   content,
   drawerAnimation,

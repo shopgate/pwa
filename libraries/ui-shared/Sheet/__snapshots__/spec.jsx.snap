@@ -8,6 +8,7 @@ exports[`<Sheet /> should open 1`] = `
   className={null}
   contentClassName={null}
   duration={300}
+  isLoading={false}
   isOpen={true}
   onClose={[Function]}
   onDidClose={[Function]}
@@ -128,6 +129,42 @@ exports[`<Sheet /> should open 1`] = `
           </Grid>
         </Header>
         <div
+          className="css-13azwyo"
+        >
+          <ProgressBar
+            isVisible={false}
+          >
+            <Transition
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={false}
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              timeout={150}
+              unmountOnExit={false}
+            >
+              <div
+                className="css-guf25f"
+                style={
+                  Object {
+                    "transform": "scale(1, 0)",
+                  }
+                }
+              >
+                <div
+                  className="css-p3pdmf"
+                />
+              </div>
+            </Transition>
+          </ProgressBar>
+        </div>
+        <div
           className="css-1pp3d82"
           onScroll={[Function]}
         >
@@ -245,6 +282,13 @@ exports[`<Sheet /> should render closed without content 1`] = `
     onOpen={[Function]}
   >
     <div
+      className="css-13azwyo"
+    >
+      <ProgressBar
+        isVisible={false}
+      />
+    </div>
+    <div
       className="css-1pp3d82"
       onScroll={[Function]}
     />
@@ -282,6 +326,13 @@ exports[`<Sheet /> should render opened without content 1`] = `
     onDidOpen={[Function]}
     onOpen={[Function]}
   >
+    <div
+      className="css-13azwyo"
+    >
+      <ProgressBar
+        isVisible={false}
+      />
+    </div>
     <div
       className="css-1pp3d82"
       onScroll={[Function]}
@@ -327,6 +378,13 @@ exports[`<Sheet /> should render with content and title 1`] = `
       title="Test-Title"
     />
     <div
+      className="css-13azwyo"
+    >
+      <ProgressBar
+        isVisible={false}
+      />
+    </div>
+    <div
       className="css-1pp3d82"
       onScroll={[Function]}
     >
@@ -358,6 +416,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   className={null}
   contentClassName={null}
   duration={300}
+  isLoading={false}
   isOpen={true}
   onClose={
     [MockFunction] {
@@ -494,6 +553,42 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             </div>
           </Grid>
         </Header>
+        <div
+          className="css-13azwyo"
+        >
+          <ProgressBar
+            isVisible={false}
+          >
+            <Transition
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={false}
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              timeout={150}
+              unmountOnExit={false}
+            >
+              <div
+                className="css-guf25f"
+                style={
+                  Object {
+                    "transform": "scale(1, 0)",
+                  }
+                }
+              >
+                <div
+                  className="css-p3pdmf"
+                />
+              </div>
+            </Transition>
+          </ProgressBar>
+        </div>
         <div
           className="css-1pp3d82"
           onScroll={[Function]}

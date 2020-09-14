@@ -71,8 +71,12 @@ function FulfillmentProvider(props: Props) {
     open = false,
     noLocationSelection = false,
     isStoreFinder = false,
+    isCart = false,
     isInitialized: defaultIsInitialized,
     updatePreferredLocation,
+    restrictMultiLocationOrders = false,
+    cartProducts = [],
+    showModal,
   } = props;
   const [fulfillmentPath, setFulfillmentPath] = useState(defaultFulfillmentPath || null);
   const [changeOnly, setChangeOnly] = useState(props.changeOnly);
@@ -85,6 +89,7 @@ function FulfillmentProvider(props: Props) {
   const [isChangeFulfillment, setIsChangeFulfillment] = useState(false);
   const [cartItem, setCartItem] = useState(null);
   const [storeFinderLocation, setStoreFinderLocation] = useState(productLocation);
+  const [isLoading, setIsLoading] = useState(!isFetching);
   const isInitialized = useRef(defaultIsInitialized);
 
   useEffect(() => {
@@ -122,6 +127,10 @@ function FulfillmentProvider(props: Props) {
       selectLocation(productLocation);
     }
   }, [productLocation, selectLocation, updatePreferredLocation]);
+
+  useEffect(() => {
+    setIsLoading(isFetching);
+  }, [isFetching]);
 
   /**
    * Checks whether the given stage is currently set.
@@ -211,6 +220,57 @@ function FulfillmentProvider(props: Props) {
   }
 
   /**
+   * @param {Object} location The selected location.
+   * @returns {boolean}
+   */
+  const confirmSelection = async (location: Location) => {
+    const { code, name } = location;
+
+    if (!restrictMultiLocationOrders || cartProducts.length === 0) {
+      return true;
+    }
+
+    if (isCart && cartProducts.length === 1) {
+      // Location changed for the one and only cart item
+      return true;
+    }
+
+    const cartHasDifferentCodes = !!cartProducts
+      .map(({ fulfillment }) => fulfillment?.location?.code)
+      .filter(Boolean)
+      .filter(cartProductCode => cartProductCode !== code).length;
+
+    if (cartProducts.length >= 1 && !cartHasDifferentCodes) {
+      return true;
+    }
+
+    const confirmed = await showModal({
+      title: 'locations.multi_location_modal.title',
+      message: 'locations.multi_location_modal.message',
+      confirm: 'locations.multi_location_modal.change_store',
+      dismiss: 'common.cancel',
+    });
+
+    if (confirmed && cartProducts.length) {
+      const updateData = cartProducts.map(({ id: cartItemId, fulfillment }) => ({
+        cartItemId,
+        fulfillment: {
+          method: fulfillment?.method,
+          location: {
+            code,
+            name: name || '',
+          },
+        },
+      }));
+      setIsLoading(true);
+      await updateProductsInCart(updateData);
+      setIsLoading(false);
+    }
+
+    return confirmed;
+  };
+
+  /**
    * Handles multiline reservation.
    * @param {Object} location The selected location.
    */
@@ -255,16 +315,28 @@ function FulfillmentProvider(props: Props) {
    * Handles the selection of a store location from the sheet.
    * @param {Object} location The selected location.
    */
-  function handleSelectLocation(location: Location) {
+  async function handleSelectLocation(location: Location) {
+    if (isLoading) {
+      return;
+    }
+
+    let selectionConfirmed;
+
     if (updatePreferredLocation) {
-      selectLocation({
-        code: location.code,
-        name: location.name,
-      });
+      selectionConfirmed = await confirmSelection(location);
+
+      if (selectionConfirmed) {
+        selectLocation({
+          code: location.code,
+          name: location.name,
+        });
+      }
     }
 
     if (changeOnly) {
-      handleClose(location, product && product.id);
+      if (selectionConfirmed) {
+        handleClose(location, product && product.id);
+      }
       return;
     }
 
@@ -387,6 +459,8 @@ function FulfillmentProvider(props: Props) {
     noLocationSelection,
     isStoreFinder,
     isFetching,
+    isLoading,
+    setIsLoading,
     meta: props.meta || undefined,
   };
 

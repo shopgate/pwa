@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
+import ProgressBar from '../ProgressBar';
 import Header from './components/Header';
 import styles from './style';
 
@@ -34,6 +35,7 @@ class Sheet extends Component {
     className: PropTypes.string,
     contentClassName: PropTypes.string,
     duration: PropTypes.number,
+    isLoading: PropTypes.bool,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
     onDidClose: PropTypes.func,
@@ -54,6 +56,7 @@ class Sheet extends Component {
     contentClassName: null,
     duration: 300,
     isOpen: false,
+    isLoading: false,
     onClose: () => { },
     onDidClose: () => { },
     onDidOpen: () => { },
@@ -181,6 +184,9 @@ class Sheet extends Component {
               allowClose={allowClose}
             />
           }
+          <div className={styles.progressBarContainer}>
+            <ProgressBar isVisible={this.props.isLoading} />
+          </div>
           <div
             ref={this.content}
             onScroll={this.handleScroll}

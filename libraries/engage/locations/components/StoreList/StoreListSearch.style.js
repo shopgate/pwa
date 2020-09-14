@@ -89,10 +89,6 @@ export const inputIcon = css({
   outline: 0,
 });
 
-export const progressBar = css({
-  position: 'relative',
-});
-
 export const iconClass = css({
   fontSize: '1.25rem !important',
 }).toString();

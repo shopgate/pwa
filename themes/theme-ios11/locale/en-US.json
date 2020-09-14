@@ -299,7 +299,12 @@
       "customAvailability": "Not available in this store",
       "comingSoon": "Coming Soon"
     },
-    "no_available": "not available"
+    "no_available": "not available",
+    "multi_location_modal": {
+      "title": "Change store",
+      "message": "You already have products from a different store in the cart. These products will be changed to the new store. Prices and availability might differ.",
+      "change_store": "Switch store"
+    }
   },
   "category": {
     "error": {

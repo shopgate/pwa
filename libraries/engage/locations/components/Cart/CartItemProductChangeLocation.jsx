@@ -65,6 +65,7 @@ const CartItemProductChangeLocation = (props: Props) => {
       productId={cartItem.product.id}
       updatePreferredLocation
       onClose={onLocationSelect}
+      isCart
     />
   );
 };

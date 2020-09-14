@@ -306,6 +306,7 @@ export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
   getIsLocationBasedShopping,
+  getRestrictMultiLocationOrders,
   getFulfillmentSchedulingEnabled,
   getProductImagePlaceholder,
   getCategoryImagePlaceholder,

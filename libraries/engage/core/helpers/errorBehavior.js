@@ -67,7 +67,7 @@ const getErrorObject = (originalError) => {
     );
 
   const sanitized = {
-    code,
+    code: code ? code.toString() : code,
     pipeline,
     pipelineInput,
     originalMessage,

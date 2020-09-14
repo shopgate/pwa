@@ -4,6 +4,7 @@ import {
   MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
   MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
   MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
+  MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
 } from '../constants';
 
 /**
@@ -41,5 +42,10 @@ export const getMerchantCustomerAttributes = makeGetMerchantSettingByKey(
 
 export const getFulfillmentSchedulingEnabled = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
+  false
+);
+
+export const getRestrictMultiLocationOrders = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
   false
 );

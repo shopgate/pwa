@@ -1,9 +1,12 @@
 // @flow
 import { connect } from 'react-redux';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getBaseProduct, getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
+import { getCartProducts } from '@shopgate/engage/cart';
 import { makeGetFulfillmentPaths, makeGetEnabledFulfillmentMethods, getShopSettings } from '@shopgate/engage/core/config';
+import { getRestrictMultiLocationOrders } from '@shopgate/engage/core';
 import { selectLocation, storeFormInput } from '../action-creators';
 import {
   getFilteredLocations,
@@ -55,6 +58,8 @@ function makeMapStateToProps() {
     enabledFulfillmentMethods: getEnabledFulfillmentMethods(state, props),
     shopSettings: getShopSettings(state),
     isFetching: getIsFetching(state),
+    restrictMultiLocationOrders: getRestrictMultiLocationOrders(state),
+    cartProducts: getCartProducts(state),
   });
 }
 
@@ -68,6 +73,7 @@ const mapDispatchToProps = dispatch => ({
   storeFormInput: (...params) => dispatch(storeFormInput(...params)),
   addProductsToCart: (...params) => dispatch(addProductsToCart(...params)),
   updateProductsInCart: (...params) => dispatch(updateProductsInCart(...params)),
+  showModal: (...params) => dispatch(showModal(...params)),
 });
 
 export default connect<StateProps, DispatchProps, OwnProps>(

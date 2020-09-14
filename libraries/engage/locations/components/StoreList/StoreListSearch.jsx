@@ -15,7 +15,6 @@ import {
   LocatorIcon,
   MagnifierIcon,
   MessageBar,
-  ProgressBar,
 } from '@shopgate/engage/components';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import StoreListSearchRadius from './StoreListSearchRadius';
@@ -29,7 +28,6 @@ import {
   inputIcon,
   iconClass,
   input,
-  progressBar,
   inputContainer,
   select,
   selectContainer,
@@ -50,15 +48,15 @@ function StoreListSearch({
   isStoreFinder,
 }) {
   const {
-    isFetching,
+    isLoading,
+    setIsLoading,
     locations,
     shopSettings: { supportedCountries } = {},
     product,
   } = useContext(isStoreFinder ? StoreFinderContext : FulfillmentContext);
-  const loading = isFetching;
+
   const [message, setMessage] = useState('');
   const [inputPostalCode, setInputPostalCode] = useState(postalCode || '');
-  const [locating, setLocating] = useState(false);
   const isMounted = useRef(false);
   const productId = product?.id || null;
 
@@ -72,13 +70,13 @@ function StoreListSearch({
   });
 
   useLayoutEffect(() => {
-    if (((!isFetching && !locating) || message === 'locations.error_no_store_found') && (!locations || locations.length === 0)) {
+    if ((!isLoading || message === 'locations.error_no_store_found') && (!locations || locations.length === 0)) {
       // Set a message when a location search resulted in zero locations.
       setMessage('locations.error_no_store_found');
     } else {
       setMessage('');
     }
-  }, [isFetching, locating, locations, message]);
+  }, [isLoading, locations, message]);
 
   /**
    * Triggers an update when the value of the country selector changed.
@@ -111,13 +109,13 @@ function StoreListSearch({
    */
   const handleLocateMeButton = useCallback(async () => {
     setInputPostalCode('');
-    setLocating(true);
+    setIsLoading(true);
     await setGeolocation({
       productId,
       isStoreFinder,
     });
-    setLocating(false);
-  }, [isStoreFinder, productId, setGeolocation]);
+    setIsLoading(false);
+  }, [isStoreFinder, productId, setGeolocation, setIsLoading]);
 
   /**
    * Updates the local state for the postal code input.
@@ -165,7 +163,7 @@ function StoreListSearch({
               onChange={handlePostalCodeChange}
               onBlur={handlePostalCodeBlur}
               onKeyDown={handlePostalCodeSubmitKeyDown}
-              disabled={loading}
+              disabled={isLoading}
               type="search"
               autoComplete="off"
               autoCorrect="off"
@@ -186,9 +184,6 @@ function StoreListSearch({
           <StoreListSearchRadius />
           )}
         </div>
-      </div>
-      <div className={progressBar}>
-        <ProgressBar isVisible={loading || locating} />
       </div>
       {message &&
         <MessageBar

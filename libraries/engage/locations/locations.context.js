@@ -13,12 +13,13 @@ import { STAGE_SELECT_STORE } from './constants';
 import { type ShopSettings } from '../core/config';
 
 export type FulfillmentContextProps = {
-  selectLocation: (location: Location) => void,
+  selectLocation: (location: Location) => Promise<void>,
   selectStoreFinderLocation: (location: Location) => void,
   changeFulfillment: (method: string, cartItem: { [string]: any }) => void,
   sendReservation: (values: ReservationFormValues) => Promise<void>,
   isStage: (stage: SheetStage) => boolean,
   handleOpen: (params: SheetOpenParams) => void,
+  setIsLoading: (params: boolean) => void,
   handleClose: SheetCallbackFn,
   location: Location | null, // current product location
   storeFinderLocation: Location | null, // current product location
@@ -37,17 +38,19 @@ export type FulfillmentContextProps = {
   errors: string[] | null,
   noLocationSelection?: boolean,
   isStoreFinder?: boolean,
+  isLoading?: boolean,
   meta?: { [string]: any },
 }
 
 export const FulfillmentContext = createContext<FulfillmentContextProps>({
-  selectLocation() { },
+  selectLocation() { return Promise.resolve(); },
   selectStoreFinderLocation() { },
   changeFulfillment() { },
   sendReservation() { return Promise.resolve(); },
   isStage() { return false; },
   handleOpen() { },
   handleClose() { },
+  setIsLoading() { },
   location: null,
   storeFinderLocation: null,
   locations: [],
@@ -65,6 +68,7 @@ export const FulfillmentContext = createContext<FulfillmentContextProps>({
   errors: null,
   noLocationSelection: false,
   isStoreFinder: false,
+  isLoading: false,
 });
 
 export const StoreFinderContext = createContext({});

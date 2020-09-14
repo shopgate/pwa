@@ -8,4 +8,5 @@ export {
 export {
   getIsLocationBasedShopping,
   getFulfillmentSchedulingEnabled,
+  getRestrictMultiLocationOrders,
 } from './merchantSettings';
