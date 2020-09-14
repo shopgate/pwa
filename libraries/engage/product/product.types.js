@@ -19,16 +19,16 @@ export type ProductPrice = {
   currency: string,
   info: string,
   unitPrice: number,
-  unitPriceStriked: number,
+  unitPriceStriked?: number,
   unitPriceMin: number,
   unitPriceMax: number,
   unitPriceNet: number,
   unitPriceWithTax: number,
   taxAmount: number,
   taxPercent: number,
-  msrp: number,
+  msrp?: number,
   tiers: ProductTierPrice[],
-  discount: number
+  discount?: number
 }
 
 export type ProductPriceAware = { price?: ProductPrice | null }

@@ -17,6 +17,7 @@ const GlobalLocationSwitcher = ({
   renderBar,
   standalone,
   selectGlobalLocation,
+  editable,
 }) => {
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -51,6 +52,7 @@ const GlobalLocationSwitcher = ({
           locationName={locationName}
           handleChange={changeLocationHandler}
           standalone={standalone}
+          editable={editable}
         />
       )
       }
@@ -75,6 +77,7 @@ const GlobalLocationSwitcher = ({
 
 GlobalLocationSwitcher.propTypes = {
   selectGlobalLocation: PropTypes.func.isRequired,
+  editable: PropTypes.bool,
   isLocationBasedShopping: PropTypes.bool,
   preferredLocation: PropTypes.shape(),
   renderBar: PropTypes.bool,
@@ -84,6 +87,7 @@ GlobalLocationSwitcher.defaultProps = {
   isLocationBasedShopping: false,
   preferredLocation: null,
   renderBar: false,
+  editable: true,
   standalone: false,
 };
 

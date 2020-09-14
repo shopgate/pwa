@@ -3,6 +3,7 @@ import pickBy from 'lodash/pickBy';
 import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
 import { getProduct } from '@shopgate/engage/product/selectors/product';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 
 import { makeGetEnabledFulfillmentMethods } from '../../core/config';
 import { makeIsProductActive, makeIsBaseProductActive } from '../../product/selectors/product';
@@ -409,6 +410,16 @@ export const getExternalCustomerNumberForOrder = createSelector(
 
     return undefined;
   }
+);
+
+/**
+ * Checks if the cart state is currently configurable
+ * During checkout the state is read only to make sure
+ * the user can't switch locations and timeslots.
+ */
+export const getIsCartStateConfigurable = createSelector(
+  getCurrentRoute,
+  route => route?.pathname?.indexOf('checkout') === -1
 );
 
 /**

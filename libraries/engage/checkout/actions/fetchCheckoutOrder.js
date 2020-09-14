@@ -27,6 +27,7 @@ export const fetchCheckoutOrder = () => async (dispatch) => {
       order,
     });
 
+    LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
     return order;
   } catch (error) {
     dispatch({

@@ -62,13 +62,13 @@ function makeMapStateToProps() {
  * @param {Function} dispatch The dispatch function.
  * @returns {Object}
  */
-const mapDispatchToProps = {
-  selectLocation,
-  submitReservation,
-  storeFormInput,
-  addProductsToCart,
-  updateProductsInCart,
-};
+const mapDispatchToProps = dispatch => ({
+  selectLocation: (...params) => dispatch(selectLocation(...params)),
+  submitReservation: (...params) => dispatch(submitReservation(...params)),
+  storeFormInput: (...params) => dispatch(storeFormInput(...params)),
+  addProductsToCart: (...params) => dispatch(addProductsToCart(...params)),
+  updateProductsInCart: (...params) => dispatch(updateProductsInCart(...params)),
+});
 
 export default connect<StateProps, DispatchProps, OwnProps>(
   makeMapStateToProps,

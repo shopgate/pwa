@@ -33,6 +33,7 @@ const FulfillmentSlotSwitcher = ({
   isFulfillmentScheduling,
   standalone,
   card,
+  editable,
 }) => {
   // Handle sheet.
   const handleOpen = useCallback(() => {
@@ -60,6 +61,7 @@ const FulfillmentSlotSwitcher = ({
           fulfillmentSlot={fulfillmentSlot}
           handleChange={handleOpen}
           standalone={standalone}
+          editable={editable}
         />
       )
       }
@@ -69,6 +71,7 @@ const FulfillmentSlotSwitcher = ({
 
 FulfillmentSlotSwitcher.propTypes = {
   card: PropTypes.bool,
+  editable: PropTypes.bool,
   fulfillmentSlot: PropTypes.shape(),
   isFulfillmentScheduling: PropTypes.bool,
   renderBar: PropTypes.bool,
@@ -78,6 +81,7 @@ FulfillmentSlotSwitcher.defaultProps = {
   isFulfillmentScheduling: false,
   fulfillmentSlot: null,
   renderBar: false,
+  editable: true,
   card: false,
   standalone: false,
 };

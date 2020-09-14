@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/core';
 import { getActiveFulfillmentSlot } from '@shopgate/pwa-common-commerce/cart/selectors';
 import setFulfillmentSlot from '@shopgate/pwa-common-commerce/cart/action-creators/setFulfillmentSlot';
+import { getIsCartStateConfigurable } from '../../selectors';
 
 /**
  * Creates the mapStateToProps connector function.
@@ -12,6 +13,7 @@ import setFulfillmentSlot from '@shopgate/pwa-common-commerce/cart/action-creato
 const makeMapStateToProps = () => state => ({
   isFulfillmentScheduling: getFulfillmentSchedulingEnabled(state),
   fulfillmentSlot: getActiveFulfillmentSlot(state),
+  editable: getIsCartStateConfigurable(state),
 });
 
 /**

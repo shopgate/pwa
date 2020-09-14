@@ -10,7 +10,7 @@ import {
 /**
  * @returns {JSX}
  */
-const GlobalLocationSwitcherDefault = ({ locationName, handleChange }) => (
+const GlobalLocationSwitcherDefault = ({ locationName, handleChange, editable }) => (
   <div className={wrapper}>
     <div className={heading}>{i18n.text('locations.your_current_location.heading')}</div>
     <div className={name}>
@@ -19,6 +19,7 @@ const GlobalLocationSwitcherDefault = ({ locationName, handleChange }) => (
         onClick={handleChange}
         type="secondary"
         className={button}
+        disabled={!editable}
         flat
       >
         <I18n.Text string="locations.your_current_location.change" />
@@ -28,6 +29,7 @@ const GlobalLocationSwitcherDefault = ({ locationName, handleChange }) => (
 );
 
 GlobalLocationSwitcherDefault.propTypes = {
+  editable: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   locationName: PropTypes.string.isRequired,
 };

@@ -41,5 +41,5 @@ export const getMerchantCustomerAttributes = makeGetMerchantSettingByKey(
 
 export const getFulfillmentSchedulingEnabled = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
-  []
+  false
 );

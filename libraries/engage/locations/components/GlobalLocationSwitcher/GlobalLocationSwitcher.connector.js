@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getIsLocationBasedShopping } from '@shopgate/engage/core';
 import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
 import { selectGlobalLocation } from '@shopgate/engage/locations/action-creators';
+import { getIsCartStateConfigurable } from '../../selectors';
 
 /**
  * Creates the mapStateToProps connector function.
@@ -12,6 +13,7 @@ import { selectGlobalLocation } from '@shopgate/engage/locations/action-creators
 const makeMapStateToProps = () => state => ({
   isLocationBasedShopping: getIsLocationBasedShopping(state),
   preferredLocation: getPreferredLocation(state),
+  editable: getIsCartStateConfigurable(state),
 });
 
 /**
