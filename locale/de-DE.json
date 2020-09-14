@@ -300,7 +300,12 @@
       "customAvailability": "In dieser Filiale nicht verfügbar",
       "comingSoon": "Bald Verfügbar"
     },
-    "no_available": "nicht verfügbar"
+    "no_available": "nicht verfügbar",
+    "multi_location_modal": {
+      "title": "Filiale wechseln",
+      "message": "Sie haben bereits Produkte von einer anderen Filiale im Warenkorb. Diese Produkte werden zur neuen Filiale geändert. Preise und Verfügbarkeit können sich unterscheiden.",
+      "change_store": "Filiale wechseln"
+    }
   },
   "category": {
     "error": {

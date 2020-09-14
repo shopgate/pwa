@@ -139,6 +139,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -448,6 +449,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -567,6 +569,42 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             </div>
                           </Grid>
                         </Header>
+                        <div
+                          className="css-13azwyo"
+                        >
+                          <ProgressBar
+                            isVisible={false}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={false}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={150}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                className="css-guf25f"
+                                style={
+                                  Object {
+                                    "transform": "scale(1, 0)",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="css-p3pdmf"
+                                />
+                              </div>
+                            </Transition>
+                          </ProgressBar>
+                        </div>
                         <div
                           className="css-1pp3d82"
                           onScroll={[Function]}
@@ -1033,6 +1071,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1185,6 +1224,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1320,6 +1360,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1661,6 +1702,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1780,6 +1822,42 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </div>
                           </Grid>
                         </Header>
+                        <div
+                          className="css-13azwyo"
+                        >
+                          <ProgressBar
+                            isVisible={false}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={false}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={150}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                className="css-guf25f"
+                                style={
+                                  Object {
+                                    "transform": "scale(1, 0)",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="css-p3pdmf"
+                                />
+                              </div>
+                            </Transition>
+                          </ProgressBar>
+                        </div>
                         <div
                           className="css-1pp3d82"
                           onScroll={[Function]}
@@ -2057,6 +2135,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2384,6 +2463,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2503,6 +2583,42 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </div>
                           </Grid>
                         </Header>
+                        <div
+                          className="css-13azwyo"
+                        >
+                          <ProgressBar
+                            isVisible={false}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={false}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={150}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                className="css-guf25f"
+                                style={
+                                  Object {
+                                    "transform": "scale(1, 0)",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="css-p3pdmf"
+                                />
+                              </div>
+                            </Transition>
+                          </ProgressBar>
+                        </div>
                         <div
                           className="css-1pp3d82"
                           onScroll={[Function]}
@@ -2780,6 +2896,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2899,6 +3016,42 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </div>
                           </Grid>
                         </Header>
+                        <div
+                          className="css-13azwyo"
+                        >
+                          <ProgressBar
+                            isVisible={false}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={false}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={150}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                className="css-guf25f"
+                                style={
+                                  Object {
+                                    "transform": "scale(1, 0)",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="css-p3pdmf"
+                                />
+                              </div>
+                            </Transition>
+                          </ProgressBar>
+                        </div>
                         <div
                           className="css-1pp3d82"
                           onScroll={[Function]}
@@ -3326,6 +3479,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -3614,6 +3768,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   className={null}
                   contentClassName={null}
                   duration={300}
+                  isLoading={false}
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -3733,6 +3888,42 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             </div>
                           </Grid>
                         </Header>
+                        <div
+                          className="css-13azwyo"
+                        >
+                          <ProgressBar
+                            isVisible={false}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={false}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={150}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                className="css-guf25f"
+                                style={
+                                  Object {
+                                    "transform": "scale(1, 0)",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="css-p3pdmf"
+                                />
+                              </div>
+                            </Transition>
+                          </ProgressBar>
+                        </div>
                         <div
                           className="css-1pp3d82"
                           onScroll={[Function]}
