@@ -68,7 +68,9 @@ const translate = (locales, langCode, key, args = {}) => {
     }
 
     return Object.keys(args).reduce((acc, arg) => {
-      if (moment(args[arg], moment.ISO_8601).isValid()) {
+      const date = moment(args[arg], moment.ISO_8601, true);
+
+      if (date.isValid() && date.toISOString() === args[arg]) {
         acc[arg] = new Date(args[arg]).getTime();
       } else {
         acc[arg] = args[arg];
