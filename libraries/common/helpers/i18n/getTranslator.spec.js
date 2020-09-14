@@ -40,4 +40,9 @@ describe('getTranslator', () => {
     const result = translate('common.withPlaceholder', { placeholder: 'ACME' });
     expect(result).toEqual('Company: ACME');
   });
+
+  it('should deal with wrong formatted dates', () => {
+    const result = translate('common.withPlaceholder', { placeholder: '1011' });
+    expect(result).toEqual('Company: 1011');
+  });
 });
