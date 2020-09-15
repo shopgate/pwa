@@ -5,6 +5,7 @@ import {
   MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
   MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
   MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
+  MERCHANT_SETTINGS_DEFAULT_CURRENCY,
 } from '../constants';
 
 /**
@@ -48,4 +49,8 @@ export const getFulfillmentSchedulingEnabled = makeGetMerchantSettingByKey(
 export const getRestrictMultiLocationOrders = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
   false
+);
+
+export const getDefaultCurrency = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_DEFAULT_CURRENCY
 );

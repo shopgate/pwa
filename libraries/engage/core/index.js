@@ -310,6 +310,7 @@ export {
   getFulfillmentSchedulingEnabled,
   getProductImagePlaceholder,
   getCategoryImagePlaceholder,
+  getDefaultCurrency,
 } from './selectors';
 
 export {

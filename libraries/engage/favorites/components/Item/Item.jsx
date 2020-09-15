@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
+import { ProductImage, ITEM_PATH, PriceInfo } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/engage/core';
 import { ResponsiveContainer, Link, SurroundPortals } from '@shopgate/engage/components';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Remove from '../RemoveButton';
+import ItemCharacteristics from './ItemCharacteristics';
 import { FAVORITES_LIST_ITEM, FAVORITES_LIST_ITEM_ACTIONS } from '../../constants/Portals';
+
+const { variables } = themeConfig;
 
 const styles = {
   root: css({
@@ -53,7 +57,15 @@ const styles = {
     flexDirection: 'column',
     minWidth: 0,
     marginLeft: 8,
+    alignItems: 'flex-end',
   }),
+  priceInfo: css({
+    wordBreak: 'break-word',
+    fontSize: '0.875rem',
+    lineHeight: '0.875rem',
+    color: 'var(--color-text-low-emphasis)',
+    padding: `${variables.gap.xsmall}px 0`,
+  }).toString(),
   title: css({
     fontSize: 17,
     color: 'var(--color-text-high-emphasis)',
@@ -62,14 +74,6 @@ const styles = {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     marginBottom: 10,
-  }),
-  property: css({
-    fontSize: 14,
-    color: 'var(--color-text-low-emphasis)',
-    fontWeight: 400,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
   }),
   actions: css({
     [responsiveMediaQuery('<md', { appAlways: true })]: {
@@ -101,6 +105,7 @@ const FavoriteItem = ({ product, remove, addToCart }) => {
   const specialPrice = product.price?.unitPriceStriked;
   const hasStrikePrice = typeof specialPrice === 'number';
   const price = hasStrikePrice ? specialPrice : defaultPrice;
+  const characteristics = product?.characteristics || [];
 
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
@@ -116,15 +121,7 @@ const FavoriteItem = ({ product, remove, addToCart }) => {
           <span className={styles.title}>{product.name}</span>
           <div className={styles.innerInfoContainer}>
             <div className={styles.infoContainerLeft}>
-              {product
-                .properties
-              ?.filter(property => property.type === 'attribute')
-              .slice(0, 2)
-              .map(property => (
-                <span key={property.code || property.label} className={styles.property}>
-                  {`${property.label}: ${property.value}`}
-                </span>
-              ))}
+              <ItemCharacteristics characteristics={characteristics} />
             </div>
             <div className={styles.infoContainerRight}>
               {hasStrikePrice ? (
@@ -139,6 +136,7 @@ const FavoriteItem = ({ product, remove, addToCart }) => {
                 taxDisclaimer
                 unitPrice={price}
               />
+              <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
             </div>
             <ResponsiveContainer breakpoint=">=md" webOnly>
               <div className={styles.actions}>
