@@ -44,18 +44,16 @@ const FulfillmentSlotSwitcher = ({
     return null;
   }
 
-  const Wrapper = card ? 'div' : Fragment;
-
   return (
     <Fragment>
       { renderBar ? (
-        <Wrapper className={styles.card}>
+        <div className={card ? styles.card : undefined}>
           <FulfillmentSlotSwitcherBar
             fulfillmentSlot={fulfillmentSlot}
             handleChange={handleOpen}
             standalone={standalone}
           />
-        </Wrapper>
+        </div>
       ) : (
         <FulfillmentSlotSwitcherDefault
           fulfillmentSlot={fulfillmentSlot}

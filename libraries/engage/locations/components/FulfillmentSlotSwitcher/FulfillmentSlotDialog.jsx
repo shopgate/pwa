@@ -109,11 +109,12 @@ const styles = {
   }).toString(),
   buttonScheduleContainer: css({
     position: 'sticky',
-    bottom: 0,
+    bottom: 'calc(-1 * env(safe-area-inset-bottom))',
     margin: -16,
     marginTop: 8,
     background: '#fff',
     padding: 16,
+    paddingBottom: 24,
   }).toString(),
   buttonSchedule: css({
     '&&': {

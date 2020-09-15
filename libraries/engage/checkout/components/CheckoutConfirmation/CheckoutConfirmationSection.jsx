@@ -96,7 +96,7 @@ const styles = {
  * @returns {JSX}
  */
 const CheckoutConfirmationSegment = ({
-  title, content, hasForm, isSummary, className,
+  title, content, children, hasForm, isSummary, className,
 }) => {
   if (!content) {
     return null;
@@ -133,6 +133,7 @@ const CheckoutConfirmationSegment = ({
             ))}
           </dl>
           )}
+          {children}
           {isSummary && (
             <table className={styles.table}>
               <tbody>
@@ -155,6 +156,7 @@ const CheckoutConfirmationSegment = ({
 
 CheckoutConfirmationSegment.propTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
   content: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.shape()),
@@ -165,6 +167,7 @@ CheckoutConfirmationSegment.propTypes = {
 };
 
 CheckoutConfirmationSegment.defaultProps = {
+  children: null,
   content: null,
   hasForm: false,
   isSummary: false,

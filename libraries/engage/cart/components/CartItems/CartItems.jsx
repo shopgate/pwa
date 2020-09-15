@@ -25,7 +25,12 @@ type Props = {
  * @returns {JSX.Element}
  */
 function CartItems({
-  cartItems, onFocus, multiLineReservation, editable, isOrderDetails, currencyOverride,
+  cartItems,
+  onFocus,
+  multiLineReservation,
+  editable,
+  isOrderDetails,
+  currencyOverride,
 }: Props) {
   if (!cartItems || cartItems.length === 0) {
     return null;
@@ -38,9 +43,11 @@ function CartItems({
       </ResponsiveContainer>
 
       <CardList className={items}>
-        <ResponsiveContainer appAlways breakpoint="<=xs">
-          <FulfillmentSlotSwitcher renderBar card />
-        </ResponsiveContainer>
+        {!isOrderDetails ? (
+          <ResponsiveContainer appAlways breakpoint="<=xs">
+            <FulfillmentSlotSwitcher renderBar card />
+          </ResponsiveContainer>
+        ) : null}
         {editable && (
           <ResponsiveContainer breakpoint="<=xs" appAlways>
             <CartItemsSubstitution cartItems={cartItems} wrapCard className={card} />
