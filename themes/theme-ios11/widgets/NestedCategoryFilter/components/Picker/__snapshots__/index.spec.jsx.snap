@@ -92,6 +92,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             className={null}
             contentClassName={null}
             duration={300}
+            isLoading={false}
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
@@ -211,6 +212,42 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       </div>
                     </Grid>
                   </Header>
+                  <div
+                    className="css-13azwyo"
+                  >
+                    <ProgressBar
+                      isVisible={false}
+                    >
+                      <Transition
+                        appear={false}
+                        enter={true}
+                        exit={true}
+                        in={false}
+                        mountOnEnter={false}
+                        onEnter={[Function]}
+                        onEntered={[Function]}
+                        onEntering={[Function]}
+                        onExit={[Function]}
+                        onExited={[Function]}
+                        onExiting={[Function]}
+                        timeout={150}
+                        unmountOnExit={false}
+                      >
+                        <div
+                          className="css-guf25f"
+                          style={
+                            Object {
+                              "transform": "scale(1, 0)",
+                            }
+                          }
+                        >
+                          <div
+                            className="css-p3pdmf"
+                          />
+                        </div>
+                      </Transition>
+                    </ProgressBar>
+                  </div>
                   <div
                     className="css-1pp3d82"
                     onScroll={[Function]}
@@ -451,6 +488,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             className={null}
             contentClassName={null}
             duration={300}
+            isLoading={false}
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
@@ -570,6 +608,42 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </div>
                     </Grid>
                   </Header>
+                  <div
+                    className="css-13azwyo"
+                  >
+                    <ProgressBar
+                      isVisible={false}
+                    >
+                      <Transition
+                        appear={false}
+                        enter={true}
+                        exit={true}
+                        in={false}
+                        mountOnEnter={false}
+                        onEnter={[Function]}
+                        onEntered={[Function]}
+                        onEntering={[Function]}
+                        onExit={[Function]}
+                        onExited={[Function]}
+                        onExiting={[Function]}
+                        timeout={150}
+                        unmountOnExit={false}
+                      >
+                        <div
+                          className="css-guf25f"
+                          style={
+                            Object {
+                              "transform": "scale(1, 0)",
+                            }
+                          }
+                        >
+                          <div
+                            className="css-p3pdmf"
+                          />
+                        </div>
+                      </Transition>
+                    </ProgressBar>
+                  </div>
                   <div
                     className="css-1pp3d82"
                     onScroll={[Function]}
@@ -850,6 +924,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             className={null}
             contentClassName={null}
             duration={300}
+            isLoading={false}
             isOpen={false}
             onClose={[Function]}
             onDidClose={[Function]}
@@ -969,6 +1044,42 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </div>
                     </Grid>
                   </Header>
+                  <div
+                    className="css-13azwyo"
+                  >
+                    <ProgressBar
+                      isVisible={false}
+                    >
+                      <Transition
+                        appear={false}
+                        enter={true}
+                        exit={true}
+                        in={false}
+                        mountOnEnter={false}
+                        onEnter={[Function]}
+                        onEntered={[Function]}
+                        onEntering={[Function]}
+                        onExit={[Function]}
+                        onExited={[Function]}
+                        onExiting={[Function]}
+                        timeout={150}
+                        unmountOnExit={false}
+                      >
+                        <div
+                          className="css-guf25f"
+                          style={
+                            Object {
+                              "transform": "scale(1, 0)",
+                            }
+                          }
+                        >
+                          <div
+                            className="css-p3pdmf"
+                          />
+                        </div>
+                      </Transition>
+                    </ProgressBar>
+                  </div>
                   <div
                     className="css-1pp3d82"
                     onScroll={[Function]}
@@ -1210,6 +1321,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             className={null}
             contentClassName={null}
             duration={300}
+            isLoading={false}
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
@@ -1329,6 +1441,42 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       </div>
                     </Grid>
                   </Header>
+                  <div
+                    className="css-13azwyo"
+                  >
+                    <ProgressBar
+                      isVisible={false}
+                    >
+                      <Transition
+                        appear={false}
+                        enter={true}
+                        exit={true}
+                        in={false}
+                        mountOnEnter={false}
+                        onEnter={[Function]}
+                        onEntered={[Function]}
+                        onEntering={[Function]}
+                        onExit={[Function]}
+                        onExited={[Function]}
+                        onExiting={[Function]}
+                        timeout={150}
+                        unmountOnExit={false}
+                      >
+                        <div
+                          className="css-guf25f"
+                          style={
+                            Object {
+                              "transform": "scale(1, 0)",
+                            }
+                          }
+                        >
+                          <div
+                            className="css-p3pdmf"
+                          />
+                        </div>
+                      </Transition>
+                    </ProgressBar>
+                  </div>
                   <div
                     className="css-1pp3d82"
                     onScroll={[Function]}
@@ -1568,6 +1716,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             className={null}
             contentClassName={null}
             duration={300}
+            isLoading={false}
             isOpen={false}
             onClose={[Function]}
             onDidClose={[Function]}
@@ -1734,6 +1883,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             className={null}
             contentClassName={null}
             duration={300}
+            isLoading={false}
             isOpen={false}
             onClose={[Function]}
             onDidClose={[Function]}
@@ -1895,6 +2045,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             className={null}
             contentClassName={null}
             duration={300}
+            isLoading={false}
             isOpen={false}
             onClose={[Function]}
             onDidClose={[Function]}

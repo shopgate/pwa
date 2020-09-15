@@ -21,11 +21,17 @@ import { sheet } from './FulfillmentSheet.style';
  */
 export function FulfillmentSheetContent({ allowClose = true }: any) {
   const {
-    isStage, title, isOpen, handleClose,
+    isStage, title, isOpen, handleClose, isLoading,
   } = React.useContext(FulfillmentContext);
 
   return (
-    <SheetDrawer isOpen={isOpen} title={title} onDidClose={handleClose} allowClose={allowClose}>
+    <SheetDrawer
+      isOpen={isOpen}
+      title={title}
+      onDidClose={handleClose}
+      allowClose={allowClose}
+      isLoading={isLoading}
+    >
       <div className={sheet}>
         {isStage(STAGE_SELECT_STORE) && (
           <StoreList />

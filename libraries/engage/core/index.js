@@ -306,9 +306,11 @@ export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
   getIsLocationBasedShopping,
+  getRestrictMultiLocationOrders,
   getFulfillmentSchedulingEnabled,
   getProductImagePlaceholder,
   getCategoryImagePlaceholder,
+  getDefaultCurrency,
 } from './selectors';
 
 export {
