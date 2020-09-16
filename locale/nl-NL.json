@@ -358,6 +358,8 @@
     "total": "Totaal winkelwagen",
     "discount": "Korting",
     "discount_with_label": "Korting ({label})",
+    "coupon_label": "Coupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Afrekenen",
     "reserve": "Reserve",
     "remove": "Verwijderen",

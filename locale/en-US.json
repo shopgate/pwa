@@ -360,6 +360,8 @@
     "total": "Cart total",
     "discount": "Discount",
     "discount_with_label": "Discount ({label})",
+    "coupon_label": "Coupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Checkout",
     "reserve": "Reserve",
     "remove": "Remove",

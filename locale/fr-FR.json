@@ -358,6 +358,8 @@
     "total": "Panier Total",
     "discount": "Remise",
     "discount_with_label": "Remise ({label})",
+    "coupon_label": "Coupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Paiement",
     "reserve": "Reserve",
     "remove": "Retirer",
