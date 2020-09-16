@@ -9,6 +9,8 @@ import PaymentBarGrandTotal from '../PaymentBar/PaymentBarGrandTotal';
 import PaymentBarShippingCost from '../PaymentBar/PaymentBarShippingCost';
 import PaymentBarDiscounts from '../PaymentBar/PaymentBarDiscounts';
 import PaymentBarTax from '../PaymentBar/PaymentBarTax';
+import PaymentBarAppliedPromotions from '../PaymentBar/PaymentBarAppliedPromotions';
+import PaymentBarPromotionCoupons from '../PaymentBar/PaymentBarPromotionCoupons';
 import CartSummaryWideCheckoutButton from './CartSummaryWideCheckoutButton';
 import CartSummaryWideFooter from './CartSummaryWideFooter';
 
@@ -23,6 +25,8 @@ const CartSummaryWide = () => (
     </h2>
     <div className={summary}>
       <PaymentBarSubTotal showSeparator={false} label="cart.subtotal" className={total} />
+      <PaymentBarPromotionCoupons showSeparator={false} className={total} />
+      <PaymentBarAppliedPromotions showSeparator={false} className={total} />
       <PaymentBarDiscounts showSeparator={false} className={total} />
       <PaymentBarShippingCost showSeparator={false} className={total} />
       <PaymentBarTax showSeparator={false} className={total} />

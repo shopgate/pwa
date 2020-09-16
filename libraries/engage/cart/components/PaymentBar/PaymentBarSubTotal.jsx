@@ -6,6 +6,7 @@ import {
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
+import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarSubTotal.connector';
 
 type Props = {
@@ -21,7 +22,7 @@ type Props = {
 function PaymentBarSubTotal({
   amount, label, showSeparator, className,
 }: Props) {
-  const { currency, isLoading } = React.useContext(CartContext);
+  const { currency, isLoading, hasPromotionCoupons } = React.useContext(CartContext);
 
   return (
     <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS_SUB_TOTAL}>
@@ -29,6 +30,9 @@ function PaymentBarSubTotal({
         <CartTotalLine isDisabled={isLoading} type="subTotal" className={className}>
           <CartTotalLine.Label label={label} showSeparator={showSeparator} />
           <CartTotalLine.Amount amount={amount} currency={currency} />
+          { hasPromotionCoupons && (
+            <CartTotalLine.Spacer className={spacer} />
+          )}
         </CartTotalLine>
       }
     </SurroundPortals>

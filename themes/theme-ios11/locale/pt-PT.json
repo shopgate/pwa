@@ -357,6 +357,8 @@
     "total": "Total do carrinho",
     "discount": "Desconto",
     "discount_with_label": "Desconto ({label})",
+    "coupon_label": "Coupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Finalizar compra agora",
     "reserve": "Reserve",
     "remove": "Remover",

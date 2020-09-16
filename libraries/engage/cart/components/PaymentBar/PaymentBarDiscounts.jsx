@@ -4,6 +4,7 @@ import { SurroundPortals } from '@shopgate/engage/components';
 import { CART_PAYMENT_BAR_TOTALS_DISCOUNTS } from '@shopgate/pwa-common-commerce/cart';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
+import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarDiscounts.connector';
 
 type Props = {
@@ -17,7 +18,7 @@ type Props = {
  * @returns {JSX}
  */
 function PaymentBarDiscounts({ discounts, showSeparator, className }: Props) {
-  const { currency, isLoading } = React.useContext(CartContext);
+  const { currency, isLoading, hasPromotionCoupons } = React.useContext(CartContext);
 
   if (!discounts) {
     return null;
@@ -38,6 +39,9 @@ function PaymentBarDiscounts({ discounts, showSeparator, className }: Props) {
             showSeparator={showSeparator}
           />
           <CartTotalLine.Amount amount={-amount} currency={currency} />
+          { hasPromotionCoupons && (
+            <CartTotalLine.Spacer className={spacer} />
+          )}
         </CartTotalLine>
       ))}
     </SurroundPortals>

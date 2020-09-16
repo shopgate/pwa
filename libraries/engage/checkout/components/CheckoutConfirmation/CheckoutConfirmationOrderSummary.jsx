@@ -27,8 +27,8 @@ const CheckoutConfirmationOrderSummary = ({ order, className }) => {
   const content = useMemo(() => getCheckoutTaxLinesFromOrder(order)
     .filter(t => t.visible)
     .map(t => ({
-      label: i18n.text(`checkout.summary.${t.type}`),
-      text: i18n.price(t.value, t.currencyCode, 2),
+      label: t.label === null ? i18n.text(`checkout.summary.${t.type}`) : t.label,
+      text: t.value !== null ? i18n.price(t.value, t.currencyCode, 2) : null,
     })), [order]);
   const fulfillmentSlot = order?.lineItems[0]?.fulfillmentSlot;
 

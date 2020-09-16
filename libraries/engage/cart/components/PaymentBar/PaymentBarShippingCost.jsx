@@ -7,6 +7,7 @@ import {
 } from '@shopgate/pwa-common-commerce/cart';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
+import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarShippingCost.connector';
 
 type ShippingCostProp = {
@@ -25,7 +26,7 @@ type Props = {
  */
 function PaymentBarShippingCost({ shippingCost, showSeparator, className }: Props) {
   const {
-    currency, isLoading, isUserLoggedIn, config,
+    currency, isLoading, isUserLoggedIn, config, hasPromotionCoupons,
   } = React.useContext(CartContext);
 
   const shippingLine = React.useMemo(() => (
@@ -45,6 +46,9 @@ function PaymentBarShippingCost({ shippingCost, showSeparator, className }: Prop
             currency={currency}
           />
           <CartTotalLine.Hint hint={shippingLine.hint} />
+          { hasPromotionCoupons && (
+            <CartTotalLine.Spacer className={spacer} />
+          )}
         </CartTotalLine>
       )}
     </SurroundPortals>

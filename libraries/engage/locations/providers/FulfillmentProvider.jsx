@@ -78,6 +78,7 @@ function FulfillmentProvider(props: Props) {
     cartProducts = [],
     showModal,
   } = props;
+
   const [fulfillmentPath, setFulfillmentPath] = useState(defaultFulfillmentPath || null);
   const [changeOnly, setChangeOnly] = useState(props.changeOnly);
   const [isOpen, setIsOpen] = useState(open);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import TimeIcon from '@shopgate/pwa-ui-shared/icons/TimeIcon';
@@ -35,11 +35,11 @@ const styles = {
 const Billing = () => {
   const { taxLines, fulfillmentSlot } = useCheckoutContext();
 
-  const content = React.useMemo(() => taxLines
+  const content = useMemo(() => taxLines
     .filter(t => t.visible)
     .map(t => ({
-      label: i18n.text(`checkout.summary.${t.type}`),
-      text: i18n.price(t.value, t.currencyCode, 2),
+      label: t.label === null ? i18n.text(`checkout.summary.${t.type}`) : t.label,
+      text: t.value !== null ? i18n.price(t.value, t.currencyCode, 2) : null,
     })), [taxLines]);
 
   return (

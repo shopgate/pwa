@@ -358,6 +358,8 @@
     "total": "Totale del carrello",
     "discount": "Sconto",
     "discount_with_label": "Sconto ({label})",
+    "coupon_label": "Coupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Cassa",
     "reserve": "Reserve",
     "remove": "Rimuovi",

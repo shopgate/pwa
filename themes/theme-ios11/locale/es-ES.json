@@ -358,6 +358,8 @@
     "total": "Total de la cesta",
     "discount": "Descuento",
     "discount_with_label": "Descuento ({label})",
+    "coupon_label": "Coupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Pagar",
     "reserve": "Reserve",
     "remove": "Quitar",
