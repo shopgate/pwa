@@ -20,14 +20,7 @@ const CategoryGrid = ({
       return null;
     }
 
-    return (
-      <ul className={classNames(grid, className)}>
-        { Array(prerender).fill('').map((val, index) => {
-          const key = `placeholder-${index}`;
-          return <CategoryGridItemPlaceholder key={key} showImages={showImages} />;
-        })}
-      </ul>
-    );
+    return null;
   }
 
   return (

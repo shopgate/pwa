@@ -157,7 +157,7 @@ class AppBarDefault extends PureComponent {
     const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 
     if (focusable) {
-      // focusable.focus();
+      focusable.focus();
     }
   }
 
