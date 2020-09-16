@@ -42,7 +42,7 @@ const config = getCartConfig();
  */
 function CartContent(props) {
   const {
-    cartItems, messages, isUserLoggedIn, currency, flags,
+    cartItems, messages, isUserLoggedIn, currency, flags, hasPromotionCoupons,
   } = props;
   const [isPaymentBarVisible, setIsPaymentBarVisible] = React.useState(true);
   const { isLoading: getIsLoading } = React.useContext(LoadingContext);
@@ -68,6 +68,7 @@ function CartContent(props) {
     isUserLoggedIn,
     isLoading,
     flags,
+    hasPromotionCoupons,
   };
 
   return (
@@ -139,7 +140,7 @@ function CartContent(props) {
                 )}
               </SurroundPortals>
               <ResponsiveContainer appAlways breakpoint="<=xs">
-                <PaymentBar visible={isPaymentBarVisible} />
+                <PaymentBar visible={isPaymentBarVisible} showSeparator={false} />
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
                 <CartSummaryWide />
@@ -164,6 +165,7 @@ CartContent.propTypes = {
   cartItems: PropTypes.arrayOf(PropTypes.shape()),
   currency: PropTypes.string,
   flags: PropTypes.shape(),
+  hasPromotionCoupons: PropTypes.bool,
   messages: PropTypes.arrayOf(PropTypes.shape()),
 };
 
@@ -172,6 +174,7 @@ CartContent.defaultProps = {
   cartItems: [],
   flags: {},
   messages: [],
+  hasPromotionCoupons: false,
 };
 
 export default connect(React.memo(CartContent));
