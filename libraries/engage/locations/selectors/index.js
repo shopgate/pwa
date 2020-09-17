@@ -223,6 +223,21 @@ export const getPreferredFulfillmentMethod = (state, props) => {
 };
 
 /**
+ * Creates a selector that checks if the preferred fulfillment method is selectable for a product
+ * @returns {Function}
+ */
+export const isPreferredFulfillmentMethodSelectableForProduct = createSelector(
+  getPreferredFulfillmentMethod,
+  getProductFulfillmentMethods,
+  (preferredMethod, productMethods) => {
+    if (!preferredMethod || !Array.isArray(productMethods)) {
+      return false;
+    }
+
+    return productMethods.includes(preferredMethod);
+  }
+);
+/**
  * Retrieves the user's search.
  * @param {Object} state State.
  * @returns {Object}
@@ -317,11 +332,16 @@ export const makeIsRopeProductOrderable = (getLocationCode, getProductCode) => {
     getPreferredFulfillmentMethod,
     getLocation,
     getInventory,
-    (fulfillmentMethod, location, inventory) => {
+    isPreferredFulfillmentMethodSelectableForProduct,
+    (fulfillmentMethod, location, inventory, fulfillmentMethodSelectable) => {
       if (
         fulfillmentMethod === DIRECT_SHIP
       ) {
         return null;
+      }
+
+      if (!fulfillmentMethodSelectable) {
+        return false;
       }
 
       if (location === null) {
