@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
-import { ProductContext } from '@shopgate/engage/product';
+import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
 import { withCurrentProduct } from '@shopgate/engage/core';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
@@ -38,21 +38,23 @@ const ProductUnitQuantityPicker = ({ product, disabled }) => {
   const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   return (
-    <div className={styles.root}>
-      <div aria-hidden className={styles.title}>
-        <I18n.Text string="product.sections.quantity" />
+    <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
+      <div className={styles.root}>
+        <div aria-hidden className={styles.title}>
+          <I18n.Text string="product.sections.quantity" />
+        </div>
+        <UnitQuantityPicker
+          className={hasUnitWithDecimals ? big : small}
+          unit={hasUnitWithDecimals ? unit : null}
+          maxDecimals={hasUnitWithDecimals ? 2 : 0}
+          incrementStep={hasUnitWithDecimals ? 0.25 : 1}
+          decrementStep={hasUnitWithDecimals ? 0.25 : 1}
+          onChange={setQuantity}
+          value={quantity}
+          disabled={disabled}
+        />
       </div>
-      <UnitQuantityPicker
-        className={hasUnitWithDecimals ? big : small}
-        unit={hasUnitWithDecimals ? unit : null}
-        maxDecimals={hasUnitWithDecimals ? 2 : 0}
-        incrementStep={hasUnitWithDecimals ? 0.25 : 1}
-        decrementStep={hasUnitWithDecimals ? 0.25 : 1}
-        onChange={setQuantity}
-        value={quantity}
-        disabled={disabled}
-      />
-    </div>
+    </SurroundPortals>
   );
 };
 
