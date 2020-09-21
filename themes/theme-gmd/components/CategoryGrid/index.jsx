@@ -22,7 +22,7 @@ const CategoryGrid = ({
 
     return (
       <ul className={classNames(grid, className)}>
-        { Array(prerender).fill('').map((val, index) => {
+        {Array(Math.min(prerender, 8)).fill('').map((val, index) => {
           const key = `placeholder-${index}`;
           return <CategoryGridItemPlaceholder key={key} showImages={showImages} />;
         })}

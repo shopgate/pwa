@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, memo } from 'react';
 import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
 import { i18n } from '@shopgate/engage/core';
@@ -79,4 +79,4 @@ SideNavigationItem.defaultProps = {
   onClick: () => {},
 };
 
-export default SideNavigationItem;
+export default memo(SideNavigationItem);

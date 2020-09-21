@@ -23,7 +23,7 @@ const CategoryList = ({ categories, prerender }) => {
 
     return (
       <SheetList className={styles}>
-        {Array(prerender).fill('').map((val, index) => {
+        {Array(Math.min(prerender, 8)).fill('').map((val, index) => {
           const key = `placeholder-${index}`;
           return <Placeholder height={20} key={key} left={0} top={18} width={220} />;
         })}
