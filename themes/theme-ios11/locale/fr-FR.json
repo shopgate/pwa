@@ -507,6 +507,7 @@
     "errors": {
       "genericInitialize": "Checkout is currently unavailable, please try again later.",
       "genericUpdate": "Failed to process order, please try again later.",
+      "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please try again later.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",

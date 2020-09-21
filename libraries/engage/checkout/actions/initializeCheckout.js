@@ -1,4 +1,4 @@
-import { LoadingProvider, PipelineRequest } from '@shopgate/engage/core';
+import { LoadingProvider, PipelineRequest, EUNKNOWN } from '@shopgate/engage/core';
 import { CHECKOUT_PATTERN } from '../constants/routes';
 import { INITIALIZE_CHECKOUT, INITIALIZE_CHECKOUT_SUCCESS, INITIALIZE_CHECKOUT_ERROR } from '../constants/actionTypes';
 
@@ -12,7 +12,10 @@ export const initializeCheckout = () => async (dispatch) => {
 
   let pipelineError;
   try {
-    await (new PipelineRequest('shopgate.checkout.initialize').dispatch());
+    await (new PipelineRequest('shopgate.checkout.initialize')
+      .setErrorBlacklist([EUNKNOWN])
+      .dispatch()
+    );
     dispatch({ type: INITIALIZE_CHECKOUT_SUCCESS });
   } catch (error) {
     pipelineError = error;

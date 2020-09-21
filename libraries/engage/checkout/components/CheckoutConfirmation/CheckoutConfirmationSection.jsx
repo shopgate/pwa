@@ -77,7 +77,6 @@ const styles = {
     ' td:last-child': {
       textAlign: 'right',
       whiteSpace: 'pre-line',
-      wordBreak: 'break-all',
     },
     ' tr:nth-last-child(2) td': {
       paddingBottom: 8,

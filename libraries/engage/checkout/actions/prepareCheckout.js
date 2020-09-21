@@ -21,7 +21,7 @@ export const prepareCheckout = ({
       await dispatch(initializeCheckout());
     } catch (error) {
       return dispatch(errorCheckout(
-        'checkout.errors.genericInitialize',
+        'checkout.errors.checkCart',
         'shopgate.checkout.initialize',
         error
       ));
