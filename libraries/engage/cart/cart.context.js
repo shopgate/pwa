@@ -9,6 +9,7 @@ export type CartContextProps = {
   isLoading: boolean,
   flags: { [string]: any },
   display: 'line' | 'card';
+  hasPromotionCoupons: boolean,
 }
 
 export const CartContext = createContext<CartContextProps>({
@@ -18,4 +19,5 @@ export const CartContext = createContext<CartContextProps>({
   isLoading: false,
   flags: {},
   display: 'card',
+  hasPromotionCoupons: false,
 });

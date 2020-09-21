@@ -358,6 +358,8 @@
     "total": "Totaal winkelwagen",
     "discount": "Korting",
     "discount_with_label": "Korting ({label})",
+    "coupon_label": "Coupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Afrekenen",
     "reserve": "Reserve",
     "remove": "Verwijderen",
@@ -504,6 +506,7 @@
     "errors": {
       "genericInitialize": "Checkout is currently unavailable, please try again later.",
       "genericUpdate": "Failed to process order, please try again later.",
+      "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please try again later.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",

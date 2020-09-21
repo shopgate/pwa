@@ -33,3 +33,9 @@ export const checkoutButtonContainer = css({
   position: 'relative',
   zIndex: 2,
 });
+
+export const spacer = css({
+  width: isIOSTheme() ? 27 : 32,
+  order: 1,
+  flexShrink: 0,
+}).toString();

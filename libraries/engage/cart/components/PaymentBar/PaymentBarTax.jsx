@@ -7,6 +7,7 @@ import {
 } from '@shopgate/pwa-common-commerce/cart';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
+import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarTax.connector';
 
 type TaxData = {
@@ -25,7 +26,9 @@ type Props = {
  * @returns {JSX}
  */
 function PaymentBarTax({ taxData, showSeparator, className }: Props) {
-  const { currency, isLoading, config } = React.useContext(CartContext);
+  const {
+    currency, isLoading, config, hasPromotionCoupons,
+  } = React.useContext(CartContext);
 
   if (!taxData) {
     return null;
@@ -43,6 +46,9 @@ function PaymentBarTax({ taxData, showSeparator, className }: Props) {
         <CartTotalLine.Label label={taxLine.label} showSeparator={showSeparator} />
         <CartTotalLine.Amount amount={taxLine.amount} currency={currency} />
         <CartTotalLine.Hint hint={taxLine.hint} />
+        { hasPromotionCoupons && (
+          <CartTotalLine.Spacer className={spacer} />
+        )}
       </CartTotalLine>
     </SurroundPortals>
   );

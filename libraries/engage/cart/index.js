@@ -65,7 +65,11 @@ export {
   getCouponFieldValue,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
 
-export { makeIsAddToCartButtonDisabled } from './cart.selectors';
+export {
+  makeIsAddToCartButtonDisabled,
+  getAppliedPromotionsWithoutCoupons,
+  getPromotionCoupons,
+} from './cart.selectors';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/cart/streams';

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Label from './components/Label';
 import Amount from './components/Amount';
 import Hint from './components/Hint';
+import Spacer from './components/Spacer';
 import styles from './style';
 
 /**
@@ -46,5 +47,6 @@ CartTotalLine.defaultProps = {
 CartTotalLine.Label = Label;
 CartTotalLine.Amount = Amount;
 CartTotalLine.Hint = Hint;
+CartTotalLine.Spacer = Spacer;
 
 export default CartTotalLine;

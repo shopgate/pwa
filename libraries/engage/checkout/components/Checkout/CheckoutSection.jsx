@@ -43,9 +43,13 @@ const styles = {
     } : {}),
   }).toString(),
   table: css({
+    ' td': {
+      padding: `${variables.gap.xsmall}px 0`,
+    },
     ' td:last-child': {
       textAlign: 'right',
       whiteSpace: 'pre-wrap',
+      paddingLeft: variables.gap.xsmall,
     },
     ' tr:nth-last-child(2) td': {
       paddingBottom: 8,

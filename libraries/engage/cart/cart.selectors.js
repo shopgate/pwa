@@ -3,6 +3,7 @@ import {
   hasProductVariants,
   isProductOrderable,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCart } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
 import {
   makeIsRopeProductOrderable,
@@ -59,3 +60,34 @@ export function makeIsAddToCartButtonDisabled() {
     }
   );
 }
+
+export const getCoupons = createSelector(
+  getCart,
+  cart => cart?.coupons || []
+);
+
+export const getAppliedPromotions = createSelector(
+  getCart,
+  cart => cart?.appliedPromotions || []
+);
+
+export const getAppliedPromotionsWithoutCoupons = createSelector(
+  getAppliedPromotions,
+  promotions => promotions.filter(({ coupon }) => coupon === null)
+);
+
+export const getPromotionCoupons = createSelector(
+  getCoupons,
+  getAppliedPromotions,
+  (coupons, promotions) => coupons.map((coupon) => {
+    const code = coupon?.promotion?.code;
+    const promotion = promotions.find(promotionEntry => promotionEntry.code === code);
+
+    return {
+      ...coupon,
+      promotion: {
+        ...promotion,
+      },
+    };
+  })
+);

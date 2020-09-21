@@ -1,4 +1,5 @@
-import { DIRECT_SHIP, ROPIS } from '../../locations';
+import { i18n } from '@shopgate/engage/core';
+import { DIRECT_SHIP, ROPIS } from '@shopgate/engage/locations';
 
 /**
  * Converts order line items to cart items
@@ -100,6 +101,65 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
 });
 
 /**
+ * Extracts the promotions without coupon from the order.
+ * @param {Object} order An order object
+ * @returns {Array}
+ */
+const getPromotionsFromOrder = (order = {}) => {
+  const { appliedPromotions = [] } = order;
+  return appliedPromotions.filter(({ coupon }) => !coupon);
+};
+
+/**
+ * Extracts the coupons from the order.
+ * @param {Object} order An order object
+ * @returns {Array}
+ */
+const getCouponsFromOrder = (order = {}) => {
+  const { appliedPromotions = [], coupons = [] } = order;
+
+  return coupons.map((coupon) => {
+    const code = coupon?.promotion?.code;
+    const promotion = appliedPromotions.find(promotionEntry => promotionEntry.code === code);
+
+    return {
+      ...coupon,
+      promotion: {
+        ...promotion,
+      },
+    };
+  });
+};
+
+/**
+ * Generates the coupon lines from an order
+ * @param {Object} order An order object
+ * @returns {Array}
+ */
+export const getCouponLinesFromOrder = (order = {}) =>
+  getCouponsFromOrder(order).map(coupon => ({
+    visible: true,
+    type: 'coupon',
+    label: coupon?.code ? i18n.text('cart.coupon_label', { label: coupon.code }) : '',
+    value: coupon?.promotion?.discount?.absoluteAmount || null,
+    currencyCode: order.currencyCode,
+  }));
+
+/**
+ * Generates the promotion lines from an order
+ * @param {Object} order An order object
+ * @returns {Array}
+ */
+export const getPromotionLinesFromOrder = (order = {}) =>
+  getPromotionsFromOrder(order).map(promotion => ({
+    visible: true,
+    type: 'promotion',
+    label: promotion?.name,
+    value: promotion?.discount?.absoluteAmount || 0,
+    currencyCode: order.currencyCode,
+  }));
+
+/**
  * Generates checkout tax lines from an order object.
  * @param {Object} order An order object
  * @returns {Array}
@@ -108,19 +168,24 @@ export const getCheckoutTaxLinesFromOrder = (order = {}) => [
   {
     visible: true,
     type: 'subTotal',
-    value: order.subTotal,
+    label: null,
+    value: order.subTotal || 0,
     currencyCode: order.currencyCode,
   },
+  ...getPromotionLinesFromOrder(order),
+  ...getCouponLinesFromOrder(order),
   {
     visible: order.taxAmount > 0,
     type: 'tax',
-    value: order.taxAmount,
+    label: null,
+    value: order.taxAmount || 0,
     currencyCode: order.currencyCode,
   },
   {
     visible: true,
     type: 'total',
-    value: order.total,
+    label: null,
+    value: order.total || 0,
     currencyCode: order.currencyCode,
   },
 ];
@@ -137,3 +202,4 @@ export const isReserveOnlyOrder = (order = {}) => {
 
   return !nonReserveItem;
 };
+

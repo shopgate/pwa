@@ -5,7 +5,8 @@ import { createPortal } from 'react-dom';
 import PaymentBarContent from './PaymentBarContent';
 
 type PaymentBarProps = {
-  visible?: boolean;
+  visible?: boolean,
+  showSeparator?: boolean
 }
 
 /**
@@ -13,18 +14,19 @@ type PaymentBarProps = {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function PaymentBar({ visible }: PaymentBarProps) {
+function PaymentBar({ visible, showSeparator }: PaymentBarProps) {
   const domElement = document.getElementById('AppFooter');
 
   if (!visible || !domElement) {
     return null;
   }
 
-  return createPortal(<PaymentBarContent />, domElement);
+  return createPortal(<PaymentBarContent showSeparator={showSeparator} />, domElement);
 }
 
 PaymentBar.defaultProps = {
   visible: true,
+  showSeparator: true,
 };
 
 export default hot(PaymentBar);

@@ -106,6 +106,8 @@ const FavoriteList = ({
         <Item
           key={product.id}
           product={product}
+          listId={id}
+          productId={product.id}
           addToCart={(e) => {
             e.preventDefault();
             e.stopPropagation();

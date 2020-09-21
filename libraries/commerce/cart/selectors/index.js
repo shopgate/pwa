@@ -29,7 +29,7 @@ const getCouponField = state => state.cart.couponField;
  * @param {Object} state The current state.
  * @return {Object}
  */
-const getCart = state => state.cart.data;
+export const getCart = state => state.cart.data;
 
 /**
  * Selects the cartItems from the current cart in the state.

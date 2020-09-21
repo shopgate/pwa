@@ -21,7 +21,7 @@ export type OwnProps = {
 
 export type StateProps = {
   isIos?: boolean,
-  currency: string,
+  currency?: string,
 }
 
 export type DispatchProps = {
