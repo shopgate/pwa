@@ -513,6 +513,7 @@
     },
     "errors": {
       "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
+      "checkCart": "Bitte überprüfen Sie Ihren Warenkorb.",
       "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
