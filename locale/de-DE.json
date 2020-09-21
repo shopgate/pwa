@@ -357,6 +357,8 @@
     "total": "Summe Warenkorb",
     "discount": "Rabatt",
     "discount_with_label": "Rabatt ({label})",
+    "coupon_label": "Gutschein: {label}",
+    "promotion_label": "{label}",
     "checkout": "Zur Kasse",
     "reserve": "Reserve",
     "remove": "Entfernen",
@@ -500,6 +502,7 @@
     "change_addresses": "Adresse ändern",
     "errors": {
       "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
+      "checkCart": "Bitte überprüfen Sie Ihren Warenkorb.",
       "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",

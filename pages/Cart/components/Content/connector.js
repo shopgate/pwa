@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  getCartItems, getCartMessages, getCurrency, getFlags,
+  getCartItems, getCartMessages, getCurrency, getFlags, getPromotionCoupons,
 } from '@shopgate/engage/cart';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 
@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
   messages: getCartMessages(state),
   currency: getCurrency(state),
   flags: getFlags(state),
+  hasPromotionCoupons: !!getPromotionCoupons(state).length,
 });
 
 export default connect(mapStateToProps);
