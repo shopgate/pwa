@@ -29,8 +29,8 @@ function PaymentBarContent({ showSeparator }) {
         <Grid className={container}>
           <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS}>
             <PaymentBarSubTotal showSeparator={showSeparator} />
-            <PaymentBarPromotionCoupons showSeparator={showSeparator} />
             <PaymentBarAppliedPromotions showSeparator={showSeparator} />
+            <PaymentBarPromotionCoupons showSeparator={showSeparator} />
             <PaymentBarDiscounts showSeparator={showSeparator} />
             <PaymentBarShippingCost showSeparator={showSeparator} />
             <PaymentBarTax showSeparator={showSeparator} />

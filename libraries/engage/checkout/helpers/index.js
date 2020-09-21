@@ -172,6 +172,8 @@ export const getCheckoutTaxLinesFromOrder = (order = {}) => [
     value: order.subTotal || 0,
     currencyCode: order.currencyCode,
   },
+  ...getPromotionLinesFromOrder(order),
+  ...getCouponLinesFromOrder(order),
   {
     visible: order.taxAmount > 0,
     type: 'tax',
@@ -179,8 +181,6 @@ export const getCheckoutTaxLinesFromOrder = (order = {}) => [
     value: order.taxAmount || 0,
     currencyCode: order.currencyCode,
   },
-  ...getCouponLinesFromOrder(order),
-  ...getPromotionLinesFromOrder(order),
   {
     visible: true,
     type: 'total',

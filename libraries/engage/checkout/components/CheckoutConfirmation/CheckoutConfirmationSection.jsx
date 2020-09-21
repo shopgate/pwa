@@ -72,11 +72,14 @@ const styles = {
     color: 'var(--color-text-medium-emphasis)',
   }),
   table: css({
-    lineHeight: '1.75rem',
     color: 'var(--color-text-high-emphasis)',
+    ' td': {
+      padding: `${variables.gap.xsmall}px 0`,
+    },
     ' td:last-child': {
       textAlign: 'right',
-      whiteSpace: 'pre-line',
+      whiteSpace: 'pre-wrap',
+      paddingLeft: variables.gap.xsmall,
     },
     ' tr:nth-last-child(2) td': {
       paddingBottom: 8,
