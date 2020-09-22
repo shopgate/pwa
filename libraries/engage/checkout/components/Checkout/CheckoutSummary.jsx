@@ -40,6 +40,8 @@ const Billing = () => {
     .map(t => ({
       label: t.label === null ? i18n.text(`checkout.summary.${t.type}`) : t.label,
       text: t.value !== null ? i18n.price(t.value, t.currencyCode, 2) : null,
+      info: t.info || null,
+      messages: t.messages || null,
     })), [taxLines]);
 
   return (

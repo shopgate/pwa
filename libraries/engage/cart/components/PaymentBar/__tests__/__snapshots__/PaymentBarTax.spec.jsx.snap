@@ -10,6 +10,7 @@ exports[`<PaymentBarTax /> should render and match snapshot 1`] = `
     label="Tax"
     labelParams={Object {}}
     showSeparator={true}
+    suffix={null}
   />
   <Amount
     amount={10}

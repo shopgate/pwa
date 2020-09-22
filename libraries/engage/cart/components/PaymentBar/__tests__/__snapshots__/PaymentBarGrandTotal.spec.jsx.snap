@@ -10,6 +10,7 @@ exports[`<PaymentBarGrandTotal /> should render without issues 1`] = `
     label="cart.total"
     labelParams={Object {}}
     showSeparator={true}
+    suffix={null}
   />
   <Amount
     amount={10}

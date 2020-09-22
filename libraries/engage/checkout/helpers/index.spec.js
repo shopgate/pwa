@@ -70,6 +70,8 @@ describe('Checkout helpers', () => {
         label: 'Promotion Name',
         value: -5,
         currencyCode: 'USD',
+        info: null,
+        messages: null,
       }]);
     });
   });
@@ -92,6 +94,8 @@ describe('Checkout helpers', () => {
         label: 'cart.coupon_label',
         value: -10,
         currencyCode: 'USD',
+        info: null,
+        messages: null,
       }]);
 
       expect(i18n.text).toHaveBeenCalledWith('cart.coupon_label', { label: 'coupon-code' });
@@ -161,11 +165,13 @@ describe('Checkout helpers', () => {
           currencyCode: 'USD',
         },
         {
-          visible: false,
-          type: 'tax',
-          label: null,
-          value: 0,
+          visible: true,
+          type: 'promotion',
+          label: 'Promotion Name',
+          value: -5,
           currencyCode: 'USD',
+          info: null,
+          messages: null,
         },
         {
           visible: true,
@@ -173,12 +179,14 @@ describe('Checkout helpers', () => {
           label: 'cart.coupon_label',
           value: -10,
           currencyCode: 'USD',
+          info: null,
+          messages: null,
         },
         {
-          visible: true,
-          type: 'promotion',
-          label: 'Promotion Name',
-          value: -5,
+          visible: false,
+          type: 'tax',
+          label: null,
+          value: 0,
           currencyCode: 'USD',
         },
         {

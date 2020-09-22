@@ -10,6 +10,7 @@ exports[`<PaymentBarSubTotal> should render line 1`] = `
     label="cart.subtotal"
     labelParams={Object {}}
     showSeparator={true}
+    suffix={null}
   />
   <Amount
     amount={10}

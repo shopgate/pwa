@@ -25,8 +25,8 @@ const CartSummaryWide = () => (
     </h2>
     <div className={summary}>
       <PaymentBarSubTotal showSeparator={false} label="cart.subtotal" className={total} />
-      <PaymentBarPromotionCoupons showSeparator={false} className={total} />
       <PaymentBarAppliedPromotions showSeparator={false} className={total} />
+      <PaymentBarPromotionCoupons showSeparator={false} className={total} />
       <PaymentBarDiscounts showSeparator={false} className={total} />
       <PaymentBarShippingCost showSeparator={false} className={total} />
       <PaymentBarTax showSeparator={false} className={total} />

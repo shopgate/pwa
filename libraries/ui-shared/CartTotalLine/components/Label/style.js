@@ -9,6 +9,11 @@ const label = css({
   order: 3,
 }).toString();
 
+const labelWithSuffix = css({
+  paddingRight: variables.gap.small,
+});
+
 export default {
   label,
+  labelWithSuffix,
 };

@@ -25,7 +25,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
       role="alertdialog"
     >
       <div
-        className="css-1sirlct"
+        className="css-1vzqftr"
       >
         <Title
           title="modal.title_error"
@@ -154,7 +154,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
       role="alertdialog"
     >
       <div
-        className="css-1sirlct"
+        className="css-1vzqftr"
       >
         <Title
           title="modal.title_error"

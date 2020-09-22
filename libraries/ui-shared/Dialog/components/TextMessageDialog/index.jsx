@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import { i18n, nl2br } from '@shopgate/engage/core';
 import BasicDialog from '../BasicDialog';
 
 /**
@@ -13,7 +14,7 @@ const TextMessageDialog = ({
   actions, message, title, params, children,
 }) => (
   <BasicDialog title={title} actions={actions}>
-    <I18n.Text string={message} params={params} />
+    <span dangerouslySetInnerHTML={{ __html: nl2br(i18n.text(message, params)) }} />
     {children}
   </BasicDialog>
 );

@@ -9,7 +9,7 @@ exports[`<BasicDialog /> should render as expected 1`] = `
   role="alertdialog"
 >
   <div
-    className="css-1sirlct"
+    className="css-1vzqftr"
   >
     <Title
       title="Hello World"
@@ -60,7 +60,7 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
   role="alertdialog"
 >
   <div
-    className="css-1sirlct"
+    className="css-1vzqftr"
   >
     <Title
       title={null}

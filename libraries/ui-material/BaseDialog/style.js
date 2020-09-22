@@ -25,6 +25,7 @@ const container = css({
 
 const content = css({
   padding: themeConfig.variables.gap.small * 3,
+  overflowY: 'auto',
 }).toString();
 
 const title = css({

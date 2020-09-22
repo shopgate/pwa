@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { i18n } from '@shopgate/engage/core';
 import { CartContext } from '../../cart.context';
+import PaymentBarPromotionalText from './PaymentBarPromotionalText';
 import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarAppliedPromotions.connector';
 
@@ -14,7 +15,7 @@ const PaymentBarAppliedPromotions = ({ promotions, className, showSeparator }) =
 
   return promotions.map((promotion) => {
     const {
-      discount, code, name,
+      discount, code, name, promotionalText,
     } = promotion;
     const { absoluteAmount: amount } = discount;
 
@@ -27,6 +28,7 @@ const PaymentBarAppliedPromotions = ({ promotions, className, showSeparator }) =
         <CartTotalLine.Label
           label={i18n.text('cart.promotion_label', { label: name })}
           showSeparator={showSeparator}
+          suffix={(<PaymentBarPromotionalText text={promotionalText} />)}
         />
         <CartTotalLine.Amount amount={amount} currency={currency} />
         { hasPromotionCoupons && (
