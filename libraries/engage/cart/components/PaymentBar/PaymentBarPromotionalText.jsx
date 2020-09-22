@@ -28,6 +28,7 @@ const styles = {
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       fontSize: '0.75rem',
       paddingBottom: 3,
+      verticalAlign: 'text-bottom',
     },
   }).toString(),
   message: css({
@@ -39,8 +40,10 @@ const styles = {
     fontSize: '1.5rem',
     display: 'inline-flex',
     verticalAlign: 'bottom',
+    paddingBottom: 1,
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       fontSize: '1.375rem',
+      paddingBottom: 0,
     },
   }).toString(),
   icon: css({
