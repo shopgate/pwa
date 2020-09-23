@@ -148,8 +148,8 @@ const getRange = (from, to) => {
 };
 
 /** Ranges for different times */
-const MORNING_RANGE = [0, 12];
-const AFTERNOON_RANGE = [13, 17];
+const MORNING_RANGE = [0, 11];
+const AFTERNOON_RANGE = [12, 17];
 const EVENING_RANGE = [18, 23];
 const RANGES = {
   morning: MORNING_RANGE,
