@@ -24,6 +24,7 @@ const line = css({
   display: 'flex',
   justifyContent: 'space-between',
   fontSize: '0.875rem',
+  alignItems: 'baseline',
 }).toString();
 
 export default {

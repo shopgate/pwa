@@ -125,6 +125,7 @@ const getCouponsFromOrder = (order = {}) => {
     return {
       ...coupon,
       promotion: {
+        ...coupon?.promotion || {},
         ...promotion,
       },
     };
@@ -143,6 +144,8 @@ export const getCouponLinesFromOrder = (order = {}) =>
     label: coupon?.code ? i18n.text('cart.coupon_label', { label: coupon.code }) : '',
     value: coupon?.promotion?.discount?.absoluteAmount || null,
     currencyCode: order.currencyCode,
+    messages: coupon?.messages || null,
+    info: coupon?.promotion?.promotionalText || null,
   }));
 
 /**
@@ -157,6 +160,8 @@ export const getPromotionLinesFromOrder = (order = {}) =>
     label: promotion?.name,
     value: promotion?.discount?.absoluteAmount || 0,
     currencyCode: order.currencyCode,
+    messages: null,
+    info: promotion?.promotionalText || null,
   }));
 
 /**

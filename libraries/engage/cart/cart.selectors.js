@@ -86,6 +86,7 @@ export const getPromotionCoupons = createSelector(
     return {
       ...coupon,
       promotion: {
+        ...coupon?.promotion || {},
         ...promotion,
       },
     };

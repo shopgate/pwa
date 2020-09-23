@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { Card, Link } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
+import CheckoutSectionInfo from './CheckoutSectionInfo';
+import CheckoutSectionMessages from './CheckoutSectionMessages';
 import { i18n } from '../../../core/helpers/i18n';
 
 const { colors, variables } = themeConfig;
@@ -73,6 +75,9 @@ const styles = {
   actions: css({
     paddingTop: 8,
   }).toString(),
+  labelWithInfoIcon: css({
+    paddingRight: variables.gap.small,
+  }).toString(),
 };
 
 /**
@@ -103,12 +108,56 @@ const CheckoutSection = ({
         {content && (
           <table className={styles.table}>
             <tbody>
-              {content.map(({ label, text }) => (
-                <tr key={label}>
-                  <td>{label}</td>
-                  <td>{text}</td>
-                </tr>
-              ))}
+              {content.map(({
+                label, text, info, messages,
+              }) => {
+                const hasMessages = Array.isArray(messages) && messages.length > 0;
+                let hasError = false;
+
+                if (hasMessages) {
+                  hasError = !!messages.find(({ type }) => type === 'error');
+                }
+
+                return (
+                  <Fragment key={label}>
+                    <tr>
+                      <td>
+                        {(
+                          <Fragment>
+                            <span className={classNames({
+                              [styles.labelWithInfoIcon]: !!info,
+                            })}
+                            >
+                              {label}
+                            </span>
+                            { !hasError && (
+                            <CheckoutSectionInfo text={info} />
+                            )}
+                          </Fragment>
+                      )}
+                      </td>
+                      <td>{text}</td>
+                    </tr>
+                    { hasMessages && (
+                      <tr>
+                        <td
+                          colSpan="2"
+                          style={{
+                            textAlign: 'left',
+                            paddingLeft: 0,
+                          }}
+                        >
+                          <CheckoutSectionMessages messages={messages} />
+                          { hasError && (
+                          <CheckoutSectionInfo text={info} renderIcon={false} />
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+
+                );
+              })}
             </tbody>
           </table>
         )}

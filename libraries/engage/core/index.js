@@ -281,6 +281,7 @@ export { getWidgetSettings } from './config/getWidgetSettings';
 
 // -------------- HELPERS -------------- //
 export { i18n, getWeekDaysOrder } from './helpers/i18n';
+export { default as nl2br } from './helpers/nl2br';
 export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
 export { isIOSTheme } from './helpers/isIOSTheme';

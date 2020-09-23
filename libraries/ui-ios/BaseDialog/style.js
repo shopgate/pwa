@@ -18,6 +18,7 @@ const container = css({
 
 const content = css({
   padding: '16px',
+  overflowY: 'auto',
 }).toString();
 
 const title = css({

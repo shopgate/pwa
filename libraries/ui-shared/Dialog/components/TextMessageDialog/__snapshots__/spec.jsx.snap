@@ -12,12 +12,12 @@ exports[`<TextMessageDialog /> should render the actions 1`] = `
   }
   title="This is the title."
 >
-  <Translate
-    className={null}
-    params={Object {}}
-    role={null}
-    string="This is the message."
-    transform={null}
+  <span
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "This is the message.",
+      }
+    }
   />
 </BasicDialog>
 `;
@@ -27,12 +27,12 @@ exports[`<TextMessageDialog /> should render with minimal props 1`] = `
   actions={Array []}
   title={null}
 >
-  <Translate
-    className={null}
-    params={Object {}}
-    role={null}
-    string="This is the message."
-    transform={null}
+  <span
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "This is the message.",
+      }
+    }
   />
 </BasicDialog>
 `;
@@ -42,12 +42,12 @@ exports[`<TextMessageDialog /> should render with title and message 1`] = `
   actions={Array []}
   title="This is the title."
 >
-  <Translate
-    className={null}
-    params={Object {}}
-    role={null}
-    string="This is the message."
-    transform={null}
+  <span
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "This is the message.",
+      }
+    }
   />
 </BasicDialog>
 `;
@@ -57,16 +57,12 @@ exports[`<TextMessageDialog /> should render with title, message and messagePara
   actions={Array []}
   title="This is the title."
 >
-  <Translate
-    className={null}
-    params={
+  <span
+    dangerouslySetInnerHTML={
       Object {
-        "name": "Placeholder",
+        "__html": "Message with {name}",
       }
     }
-    role={null}
-    string="Message with {name}"
-    transform={null}
   />
 </BasicDialog>
 `;

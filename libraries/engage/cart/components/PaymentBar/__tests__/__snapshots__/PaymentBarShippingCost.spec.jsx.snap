@@ -12,6 +12,7 @@ exports[`<PaymentBarShippingCost> should render shipping line 1`] = `
     label="My label"
     labelParams={Object {}}
     showSeparator={true}
+    suffix={null}
   />
   <Amount
     amount={10}

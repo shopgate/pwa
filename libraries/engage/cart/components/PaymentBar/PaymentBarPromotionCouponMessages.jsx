@@ -16,9 +16,17 @@ const styles = {
       paddingBottom: 3,
     },
   }).toString(),
-  error: css({
+  message: css({
     order: 2,
+  }).toString(),
+  error: css({
     color: 'var(--color-state-alert)',
+  }).toString(),
+  warning: css({
+    color: 'var(--color-state-warning)',
+  }).toString(),
+  info: css({
+    color: 'var(--color-state-ok)',
   }).toString(),
   loading: css({
     opacity: 0.4,
@@ -35,11 +43,17 @@ const PaymentBarPromotionCouponMessages = ({ messages }) => {
     return null;
   }
 
-  return messages.map(({ message, additionalParams }) => (
+  return messages.map(({ message, additionalParams, type }) => (
     <CartTotalLine className={styles.line} key={message}>
       <Fragment>
         <CartTotalLine.Spacer className={spacer} />
-        <div className={classNames(styles.error, { [styles.loading]: isLoading })}>
+        <div className={classNames(styles.message, {
+          [styles.loading]: isLoading,
+          [styles.error]: type === 'error',
+          [styles.warning]: type === 'warning',
+          [styles.info]: type === 'info',
+        })}
+        >
           {errorBehavior.getErrorMessage(message, additionalParams)}
         </div>
       </Fragment>

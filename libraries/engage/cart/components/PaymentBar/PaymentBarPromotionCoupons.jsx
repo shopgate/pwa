@@ -8,6 +8,7 @@ import { CrossIcon } from '@shopgate/engage/components';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import PaymentBarPromotionCouponMessages from './PaymentBarPromotionCouponMessages';
 import { CartContext } from '../../cart.context';
+import PaymentBarPromotionalText from './PaymentBarPromotionalText';
 import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarPromotionCoupons.connector';
 
@@ -39,8 +40,14 @@ const PaymentBarPromotionCoupons = ({
 
   return coupons.map((coupon) => {
     const { code, promotion, messages } = coupon;
-    const { discount = {} } = promotion || {};
+    const { discount = {}, promotionalText } = promotion || {};
     const { absoluteAmount: amount } = discount;
+
+    let hasError = false;
+
+    if (Array.isArray(messages) && messages.length) {
+      hasError = !!messages.find(({ type }) => type === 'error');
+    }
 
     return (
       <Fragment key={`promotion-coupon-${code}-${amount}`}>
@@ -53,6 +60,7 @@ const PaymentBarPromotionCoupons = ({
           <CartTotalLine.Label
             label={i18n.text('cart.coupon_label', { label: code })}
             showSeparator={showSeparator}
+            suffix={!hasError ? (<PaymentBarPromotionalText text={promotionalText} />) : null}
           />
           { amount && (
           <CartTotalLine.Amount amount={amount} currency={currency} />
@@ -70,6 +78,9 @@ const PaymentBarPromotionCoupons = ({
           </CartTotalLine.Spacer>
         </CartTotalLine>
         <PaymentBarPromotionCouponMessages messages={messages} />
+        { hasError && (
+          <PaymentBarPromotionalText text={promotionalText} renderIcon={false} />
+        )}
       </Fragment>
     );
   });

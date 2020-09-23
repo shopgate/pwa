@@ -16,6 +16,7 @@ Array [
         }
       }
       showSeparator={true}
+      suffix={null}
     />
     <Amount
       amount={-10}
@@ -36,6 +37,7 @@ Array [
         }
       }
       showSeparator={true}
+      suffix={null}
     />
     <Amount
       amount={-2}
