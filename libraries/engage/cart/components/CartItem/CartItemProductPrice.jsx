@@ -34,7 +34,7 @@ export function CartItemProductPrice(props: Props) {
   const context = useCartItemProduct();
   const { currency } = context;
 
-  const hasStrikePrice = typeof specialPrice === 'number';
+  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice !== defaultPrice;
   const price = hasStrikePrice ? specialPrice : defaultPrice;
 
   return (

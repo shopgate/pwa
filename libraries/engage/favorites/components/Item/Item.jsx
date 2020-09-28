@@ -161,7 +161,7 @@ const FavoriteItem = ({
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
-  const hasStrikePrice = typeof specialPrice === 'number';
+  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice !== defaultPrice;
   const price = hasStrikePrice ? specialPrice : defaultPrice;
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
