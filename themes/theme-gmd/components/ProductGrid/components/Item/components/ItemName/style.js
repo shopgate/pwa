@@ -14,4 +14,4 @@ export default css({
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     fontSize: '1.25rem',
   },
-});
+}).toString();

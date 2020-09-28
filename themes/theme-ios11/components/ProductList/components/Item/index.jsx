@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Image from '@shopgate/pwa-common/components/Image';
 import Link from '@shopgate/pwa-common/components/Link';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
@@ -18,7 +17,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import Availability from '@shopgate/pwa-ui-shared/Availability';
-import { PriceInfo } from '@shopgate/engage/product';
+import { PriceInfo, ProductName } from '@shopgate/engage/product';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
@@ -61,15 +60,13 @@ const Item = ({ display, product }) => (
       <Grid.Item grow={4} className={styles.titleContainer}>
 
         {/* NAME */}
-        <Fragment>
-          <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
-          <Portal name={portals.PRODUCT_ITEM_NAME} props={{ productId: product.id }}>
-            <div itemProp="name" data-test-id={`Productname: ${product.name}`}>
-              <Ellipsis><span dangerouslySetInnerHTML={{ __html: product.name }} /></Ellipsis>
-            </div>
-          </Portal>
-          <Portal name={portals.PRODUCT_ITEM_NAME_AFTER} props={{ productId: product.id }} />
-        </Fragment>
+        <ProductName
+          name={product.name}
+          portalName={portals.PRODUCT_ITEM_NAME}
+          portalProps={{ productId: product.id }}
+          itemProp="name"
+          testId={`Productname: ${product.name}`}
+        />
 
         {/* MANUFACTURER */}
         {(!display || (display.manufacturer && product.manufacturer)) && (

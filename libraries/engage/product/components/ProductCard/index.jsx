@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import {
-  Link, Ellipsis, Portal, RatingStars, DiscountBadge,
+  Link, Portal, RatingStars, DiscountBadge,
 } from '@shopgate/engage/components';
 import {
   getProductRoute,
@@ -11,6 +11,7 @@ import {
   OrderQuantityHint,
   FeaturedMedia,
   Swatches,
+  ProductName,
 } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
 import ProductGridPrice from '../ProductGridPrice';
@@ -71,15 +72,13 @@ function ProductCard(props) {
           <Swatches productId={product.id} />
 
           {!hideName && (
-            <div
-              itemProp="name"
+            <ProductName
+              name={product.name}
               className={styles.title}
-              data-test-id={`Productname: ${product.name}`}
-            >
-              <Ellipsis rows={titleRows || 3}>
-                <span dangerouslySetInnerHTML={{ __html: product.name }} />
-              </Ellipsis>
-            </div>
+              testId={`Productname: ${product.name}`}
+              itemProp="name"
+              rows={titleRows || 3}
+            />
           )}
 
           {/*

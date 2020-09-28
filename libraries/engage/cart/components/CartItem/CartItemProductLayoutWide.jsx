@@ -2,9 +2,7 @@ import React, { Fragment } from 'react';
 import classNames from 'classnames';
 import {
   TextLink,
-  SurroundPortals,
   ProductProperties,
-  Ellipsis,
   QuantityLabel,
   ConditionalWrapper,
   MessageBar,
@@ -13,6 +11,7 @@ import {
   ProductImage,
   CartUnitQuantityPicker,
   PriceInfo,
+  ProductName,
   ITEM_PATH,
 } from '@shopgate/engage/product';
 import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
@@ -83,15 +82,13 @@ const CartItemProductLayoutWide = () => {
               </TextLink>
             }
           >
-            <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
-              <Ellipsis>
-                <div
-                  className={productName}
-                  data-test-id={product.name}
-                  dangerouslySetInnerHTML={{ __html: product.name }}
-                />
-              </Ellipsis>
-            </SurroundPortals>
+            <ProductName
+              name={product.name}
+              className={productName}
+              portalName={CART_ITEM_NAME}
+              portalProps={context}
+              testId={product.name}
+            />
           </ConditionalWrapper>
 
           <ProductProperties

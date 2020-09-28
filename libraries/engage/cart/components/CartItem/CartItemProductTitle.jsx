@@ -1,13 +1,14 @@
 // @flow
 import React, { useCallback } from 'react';
 import {
-  Grid, I18n, SurroundPortals, ContextMenu,
+  Grid, I18n, ContextMenu,
 } from '@shopgate/engage/components';
 import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
 import {
   CartContextMenuItemChangeLocation,
   CartContextMenuItemChangeFulfillment,
 } from '@shopgate/engage/locations';
+import { ProductName } from '@shopgate/engage/product';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import {
   menuToggleButton,
@@ -63,9 +64,14 @@ export function CartItemProductTitle(props: Props) {
   return (
     <Grid>
       <Grid.Item grow={1}>
-        <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
-          <div className={title} data-test-id={value} dangerouslySetInnerHTML={{ __html: value }} />
-        </SurroundPortals>
+        <ProductName
+          name={value}
+          className={title}
+          portalName={CART_ITEM_NAME}
+          portalProps={context}
+          testId={value}
+          ellipsis={false}
+        />
       </Grid.Item>
       { isEditable && (
         <Grid.Item className={menuContainer} shrink={0}>
