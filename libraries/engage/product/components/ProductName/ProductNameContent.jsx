@@ -15,7 +15,7 @@ const ProductNameContent = ({ name, ellipsis, rows }) => (
       </Ellipsis>
       }
   >
-    <span dangerouslySetInnerHTML={{ __html: `${name} ${ellipsis ? 'xx' : 'yy'}` }} />
+    <span dangerouslySetInnerHTML={{ __html: name }} />
   </ConditionalWrapper>
 );
 
