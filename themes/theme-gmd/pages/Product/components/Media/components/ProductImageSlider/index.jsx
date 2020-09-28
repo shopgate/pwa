@@ -107,8 +107,10 @@ class ProductImageSlider extends Component {
           resolutions={pdpResolutions}
         />
       );
-      onClick = noop;
-      onKeyDown = noop;
+      if (!images || (images && !images.length)) {
+        onClick = noop;
+        onKeyDown = noop;
+      }
     }
 
     const imageStyle = backgroundImage ? {
