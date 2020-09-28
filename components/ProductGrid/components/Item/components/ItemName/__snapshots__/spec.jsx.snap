@@ -1,54 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ItemName /> should render with minimal props 1`] = `
-<Fragment>
-  <Portal
-    name="product-item.name.before"
-    props={
-      Object {
-        "productId": "1234",
-      }
+<ProductName
+  className={
+    Object {
+      "data-css-1xzic9e": "",
     }
-  />
-  <Portal
-    name="product-item.name"
-    props={
-      Object {
-        "productId": "1234",
-      }
+  }
+  ellipsis={true}
+  itemProp={null}
+  name="Foo"
+  portalName="product-item.name"
+  portalProps={
+    Object {
+      "productId": "1234",
     }
-  >
-    <div
-      aria-label="Foo."
-      className={
-        Object {
-          "data-css-1xzic9e": "",
-        }
-      }
-      data-test-id="Productname: Foo"
-    >
-      <Ellipsis
-        className=""
-        ellipsis="..."
-        rows={3}
-      >
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "Foo",
-            }
-          }
-        />
-      </Ellipsis>
-    </div>
-  </Portal>
-  <Portal
-    name="product-item.name.after"
-    props={
-      Object {
-        "productId": "1234",
-      }
-    }
-  />
-</Fragment>
+  }
+  rows={null}
+  style={null}
+  testId="Productname: Foo"
+/>
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Ellipsis } from '@shopgate/pwa-common/components';
+import { ProductName } from '@shopgate/engage/product';
 import styles from './style';
 
 /**
@@ -8,9 +8,13 @@ import styles from './style';
  */
 function ProductCardTitle({ title, rows, style }) {
   return (
-    <div className={styles} style={style} data-test-id={`Productname: ${title}`}>
-      <Ellipsis rows={rows}><span dangerouslySetInnerHTML={{ __html: title }} /></Ellipsis>
-    </div>
+    <ProductName
+      name={title}
+      className={styles}
+      style={style}
+      testId={`Productname: ${title}`}
+      rows={rows}
+    />
   );
 }
 
