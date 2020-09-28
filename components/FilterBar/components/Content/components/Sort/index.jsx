@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { FILTER_SORT_OPTIONS } from '@shopgate/engage/filter';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import {
@@ -67,16 +69,18 @@ class Sort extends PureComponent {
     return (
       <RouteContext.Consumer>
         {route => (
-          <SelectBox
-            handleSelectionUpdate={this.handleSelection}
-            items={items}
-            initialValue={route.query.sort || DEFAULT_SORT}
-            icon={ArrowDropIcon}
-            item={Item}
-            className={styles.selectBox}
-            classNames={styles}
-            testId="sorting"
-          />
+          <SurroundPortals portalName={FILTER_SORT_OPTIONS} portalProps={{ items }}>
+            <SelectBox
+              handleSelectionUpdate={this.handleSelection}
+              items={items}
+              initialValue={route.query.sort || DEFAULT_SORT}
+              icon={ArrowDropIcon}
+              item={Item}
+              className={styles.selectBox}
+              classNames={styles}
+              testId="sorting"
+            />
+          </SurroundPortals>
         )}
       </RouteContext.Consumer>
     );
