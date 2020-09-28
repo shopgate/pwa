@@ -1,5 +1,16 @@
 # Changelog
 
+## [v6.13.6](https://github.com/shopgate/pwa/compare/v6.13.5...v6.13.6) (2020-09-28)
+
+#### :rocket: Enhancement
+* [#1033](https://github.com/shopgate/pwa/pull/1033) Add portal around filter bar sort options ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1034](https://github.com/shopgate/pwa/pull/1034) Open gallery for products with one image again ([@Carsten89](https://github.com/Carsten89))
+* [#1030](https://github.com/shopgate/pwa/pull/1030) Fix product ids widget limit and pagination ([@alexbridge](https://github.com/alexbridge))
+* [#1025](https://github.com/shopgate/pwa/pull/1025) Changed default fillColor for product images ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.13.5](https://github.com/shopgate/pwa/compare/v6.13.4...v6.13.5) (2020-07-30)
 
 #### :rocket: Enhancement
