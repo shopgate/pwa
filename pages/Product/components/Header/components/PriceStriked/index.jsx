@@ -33,7 +33,11 @@ const PriceStriked = ({ price }) => (
             />
           </Fragment>
         )}
-        {(price && !price.msrp && price.unitPriceStriked > 0) && (
+        {(price &&
+          !price.msrp &&
+          price.unitPriceStriked > 0 &&
+          price.unitPrice !== price.unitPriceStriked
+        ) && (
           <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
         )}
       </PlaceholderLabel>
