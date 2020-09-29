@@ -2,6 +2,7 @@ import { redirects } from '@shopgate/pwa-common/collections';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
 import { hasProductVariety } from '@shopgate/pwa-common-commerce/product';
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
+import { DIRECT_SHIP, getPreferredFulfillmentMethod } from '@shopgate/engage/locations';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import addProductsToCart from '../actions/addProductsToCart';
 import {
@@ -15,7 +16,14 @@ import subscription from './index';
 jest.mock('@shopgate/pwa-common-commerce/product', () => ({
   getProductRoute: jest.fn(productId => productId),
   hasProductVariety: jest.fn(),
+  getProduct: jest.fn(),
 }));
+jest.mock('@shopgate/engage/locations', () => ({
+  DIRECT_SHIP: 'DIRECT_SHIP',
+  getPreferredLocation: jest.fn(),
+  getPreferredFulfillmentMethod: jest.fn(),
+}));
+
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyReplace: jest.fn(),
 }));
@@ -27,6 +35,10 @@ describe('Cart subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn().mockImplementation(action => action);
   const getState = jest.fn();
+
+  beforeAll(() => {
+    getPreferredFulfillmentMethod.mockReturnValue(DIRECT_SHIP);
+  });
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -75,7 +87,7 @@ describe('Cart subscriptions', () => {
       expect(handlerResult).toBeNull();
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(addCouponsToCart).toHaveBeenCalledTimes(1);
-      expect(addCouponsToCart).toHaveBeenCalledWith([coupon]);
+      expect(addCouponsToCart).toHaveBeenCalledWith([coupon], false);
     });
   });
 
@@ -98,7 +110,9 @@ describe('Cart subscriptions', () => {
         route: {
           query: {
             coupon,
+            some: 'param',
           },
+          pathname: '/pathname',
         },
       };
 
@@ -107,9 +121,11 @@ describe('Cart subscriptions', () => {
         action,
       });
 
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(addCouponsToCart).toHaveBeenCalledTimes(1);
-      expect(addCouponsToCart).toHaveBeenCalledWith([coupon]);
+      expect(addCouponsToCart).toHaveBeenCalledWith([coupon], false);
+      expect(historyReplace).toHaveBeenCalledTimes(1);
+      expect(historyReplace).toHaveBeenCalledWith({ pathname: '/pathname?some=param' });
     });
   });
 

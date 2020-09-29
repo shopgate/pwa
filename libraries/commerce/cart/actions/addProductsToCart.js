@@ -63,7 +63,7 @@ function addToCart(data) {
     if (fulfillmentScheduling) {
       let fulfillmentSlot = getActiveFulfillmentSlot(state);
 
-      // Make sure that a fulfillment slot has been choosen first!
+      // Make sure that a fulfillment slot has been chosen first!
       if (!fulfillmentSlot) {
         fulfillmentSlot = await forceOpenFulfillmentSlotDialog();
       }
@@ -78,7 +78,7 @@ function addToCart(data) {
       }));
     }
 
-    // Disptch pipeline request.
+    // Dispatch pipeline request.
     dispatch(addProductsToCart(products));
     dispatch(setCartProductPendingCount(pendingProductCount + quantity));
 

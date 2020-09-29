@@ -1,3 +1,4 @@
+import { ToastProvider } from '@shopgate/engage/core';
 import { SUCCESS_ADD_COUPONS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
 import { couponsUpdated$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import {
@@ -20,6 +21,17 @@ export default function coupon(subscribe) {
     successfullyAddedCouponsToCart$,
     productsUpdated$
   );
+
+  subscribe(successfullyAddedCouponsToCart$, ({ action, events }) => {
+    const { userInteracted } = action;
+
+    if (!userInteracted) {
+      events.emit(ToastProvider.ADD, {
+        id: 'coupon.added',
+        message: 'cart.coupon_was_added',
+      });
+    }
+  });
 
   subscribe(resetCouponField$, ({ dispatch }) => {
     dispatch(setCouponFieldValue());

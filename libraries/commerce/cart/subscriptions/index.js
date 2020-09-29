@@ -7,12 +7,17 @@ import { redirects } from '@shopgate/pwa-common/collections';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
-import { fetchProductsById, getProductRoute, hasProductVariety } from '@shopgate/pwa-common-commerce/product';
+import {
+  fetchProductsById, getProductRoute, hasProductVariety, getProduct,
+} from '@shopgate/pwa-common-commerce/product';
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import { checkoutSucceeded$ } from '@shopgate/pwa-common-commerce/checkout';
+import { DIRECT_SHIP, getPreferredLocation, getPreferredFulfillmentMethod } from '@shopgate/engage/locations';
+import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import addProductsToCart from '../actions/addProductsToCart';
@@ -85,7 +90,7 @@ export default function cart(subscribe) {
       const [, , coupon] = action.params.pathname.split('/');
 
       if (coupon) {
-        dispatch(addCouponsToCart([coupon.split('?')[0]]));
+        dispatch(addCouponsToCart([coupon.split('?')[0]], false));
       }
 
       return null;
@@ -203,16 +208,69 @@ export default function cart(subscribe) {
     const { coupon } = action.route.query;
 
     if (coupon) {
-      dispatch(addCouponsToCart([coupon]));
+      dispatch(addCouponsToCart([coupon], false));
+      const { query, pathname } = action.route;
+      const { coupon: c, ...rest } = query;
+
+      dispatch(historyReplace({
+        pathname: `${pathname}${parseObjectToQueryString(rest)}`,
+      }));
     }
   });
 
+  const getFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+
   /**
-   * Deeplink to add product to cart, eg /cart_add_product/123
+   * Deeplink to add product to cart, eg /cart_add_product/123s
    */
   subscribe(routeAddProductNavigate$, ({ dispatch, action, getState }) => {
+    const state = getState();
+    const product = getProduct(state, action);
+    const preferredLocation = getPreferredLocation(state);
+    const preferredFulfillmentMethod = getPreferredFulfillmentMethod(state);
+    const shopFulfillmentMethods = getFulfillmentMethods(state);
+
+    let redirectToPDP = false;
+    let fulfillment = null;
+
+    if (hasProductVariety(state, action)) {
+      // NO product or variety
+      redirectToPDP = true;
+    } else if (preferredFulfillmentMethod !== DIRECT_SHIP) {
+      let activeLocation = null;
+      if (preferredLocation) {
+        activeLocation = preferredLocation;
+      }
+
+      // Get fulfillment method that is both active for location and product.
+      let activeFulfillmentMethod = preferredFulfillmentMethod;
+      const availableFulfillmentMethods = shopFulfillmentMethods?.filter(
+        s => product?.fulfillmentMethods.indexOf(s) || [] !== -1
+      ) || [];
+
+      if (activeLocation && !activeFulfillmentMethod && availableFulfillmentMethods.length === 1) {
+        [activeFulfillmentMethod] = availableFulfillmentMethods;
+      }
+
+      if (!product?.fulfillmentMethods.includes(activeFulfillmentMethod) || false) {
+        activeFulfillmentMethod = null;
+      }
+
+      if (!activeFulfillmentMethod || !activeLocation) {
+        redirectToPDP = true;
+      } else {
+        fulfillment = {
+          method: preferredFulfillmentMethod,
+          location: {
+            code: preferredLocation.code,
+            name: preferredLocation.name || '',
+          },
+        };
+      }
+    }
+
     // NO product or variety
-    if (hasProductVariety(getState(), action)) {
+    if (redirectToPDP) {
       // Redirect to item page to select options/variant
       dispatch(historyReplace({
         pathname: getProductRoute(action.productId),
@@ -221,6 +279,7 @@ export default function cart(subscribe) {
       dispatch(addProductsToCart([{
         productId: action.productId,
         quantity: 1,
+        ...(fulfillment ? { fulfillment } : {}),
       }]));
       dispatch(historyReplace({
         pathname: CART_PATH,
@@ -255,7 +314,7 @@ export default function cart(subscribe) {
   subscribe(addCouponDeferred$, async ({ dispatch, action }) => {
     const { couponCode } = action;
     if (couponCode) {
-      dispatch(addCouponsToCart([couponCode]));
+      dispatch(addCouponsToCart([couponCode], false));
     }
   });
 }
