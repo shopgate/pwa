@@ -387,6 +387,7 @@
         "2002": "The coupon expired at {endDate, date, yyyyMMdd} {endDate, time, short}.",
         "2003": "This coupon is not valid for your current cart.",
         "2004": "This coupon has already been redeemed.",
+        "2005": "This coupon has exceeded total allowed redemptions.",
         "404": "This was coupon was not found.",
         "generic": "An unexpected error occurred with this coupon."
       },

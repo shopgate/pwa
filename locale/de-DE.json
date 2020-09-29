@@ -394,6 +394,7 @@
         "2002": "Der Gutschein ist abgelaufen am {endDate, date, yyyyMMdd} {endDate, time, short} Uhr.",
         "2003": "Der Gutschein ist nicht gültig für Ihren aktuellen Warenkorb.",
         "2004": "Dieser Gutschein wurde bereits eingelöst.",
+        "2005": "Dieser Gutschein hat das Limit der maximalen Einlösungen erreicht.",
         "404": "Dieser Gutschein existiert nicht.",
         "generic": "Bei diesem Gutschein ist ein unerwarteter Fehler aufgetreten."
       },
