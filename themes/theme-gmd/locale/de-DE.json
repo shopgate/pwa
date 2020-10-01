@@ -496,6 +496,12 @@
   "checkout": {
     "submit_order": "Jetzt kaufen",
     "continue_payment": "Weiter zur Zahlung",
+    "payment": {
+      "title": "Wie möchtest du bezahlen?",
+      "buttons": {
+        "stripe": "Kreditkarte"
+      }
+    },
     "continue": "Weiter",
     "steps": "Schritt {from} von {to}",
     "change_contacts": "Kontakt ändern",

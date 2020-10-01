@@ -4,10 +4,9 @@ import { ResponsiveContainer } from '@shopgate/engage/components';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CHECKOUT_PATTERN } from '../../constants/routes';
 import CheckoutProvider from '../../providers/CheckoutProvider';
-import StripeProvider from '../../providers/StripeProvider';
+import PaymentMethodProvider from '../../paymentMethods';
 import PickupContactForm from './CheckoutPickupContactForm';
 import Billing from './CheckoutBilling';
-import CreditCard from './CheckoutCreditCard';
 import Summary from './CheckoutSummary';
 import Actions from './CheckoutActions';
 import Header from './CheckoutHeader';
@@ -36,27 +35,25 @@ const styles = {
  * @returns {JSX}
  */
 const Checkout = () => (
-  <StripeProvider>
-    <CheckoutProvider pathPattern={CHECKOUT_PATTERN}>
-      <Header />
-      <div className={styles.root}>
-        <div className={styles.main}>
-          <Billing />
-          <PickupContactForm />
-          <CreditCard />
-          <ResponsiveContainer breakpoint="<md" appAlways>
-            <Summary />
-          </ResponsiveContainer>
-          <Actions />
-        </div>
-        <div className={styles.side}>
-          <ResponsiveContainer breakpoint=">=md" webOnly>
-            <Summary />
-          </ResponsiveContainer>
-        </div>
+  <CheckoutProvider pathPattern={CHECKOUT_PATTERN}>
+    <Header />
+    <div className={styles.root}>
+      <div className={styles.main}>
+        <Billing />
+        <PickupContactForm />
+        <PaymentMethodProvider />
+        <ResponsiveContainer breakpoint="<md" appAlways>
+          <Summary />
+        </ResponsiveContainer>
+        <Actions />
       </div>
-    </CheckoutProvider>
-  </StripeProvider>
+      <div className={styles.side}>
+        <ResponsiveContainer breakpoint=">=md" webOnly>
+          <Summary />
+        </ResponsiveContainer>
+      </div>
+    </div>
+  </CheckoutProvider>
 );
 
 export default Checkout;

@@ -498,6 +498,12 @@
   "checkout": {
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
+    "payment": {
+      "title": "How would you like to pay this order?",
+      "buttons": {
+        "stripe": "Credit Card"
+      }
+    },
     "continue": "Continue",
     "steps": "Step {from} of {to}",
     "change_contacts": "Change Contacts",

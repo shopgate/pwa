@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { isIOSTheme, i18n } from '@shopgate/engage/core';
@@ -9,8 +9,9 @@ import {
   CardCvcElement,
   CardExpiryElement,
 } from '@stripe/react-stripe-js';
-import Section from './CheckoutSection';
-import { useStripeContext, useCheckoutContext } from '../../hooks/common';
+import Section from '../../components/Checkout/CheckoutSection';
+import { useCheckoutContext } from '../../hooks/common';
+import StripeContext from './StripeProvider.context';
 
 const { colors } = themeConfig;
 
@@ -97,9 +98,9 @@ const StripeCardExpiryElement = wrapStripeElement(CardExpiryElement);
  * PickupContactForm
  * @returns {JSX}
  */
-const Billing = () => {
+const StripeCreditCard = () => {
   const cardRef = React.useRef();
-  const { error, setError } = useStripeContext();
+  const { error, setError } = useContext(StripeContext);
   const { needsPayment } = useCheckoutContext();
 
   // Scrolls to stripe config when error is set.
@@ -177,4 +178,4 @@ const Billing = () => {
   );
 };
 
-export default Billing;
+export default StripeCreditCard;

@@ -1,5 +1,7 @@
 import React from 'react';
+import { isAvailable, InAppBrowser, Linking } from '@shopgate/native-modules';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
+import { getCSSCustomProp } from '@shopgate/engage/styles';
 import {
   i18n, useAsyncMemo, getUserAgent, LoadingProvider,
 } from '@shopgate/engage/core';
@@ -7,7 +9,6 @@ import { MARKETING_OPT_IN_DEFAULT } from '@shopgate/engage/registration';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
-import { useStripeContext } from '../hooks/common';
 import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
 
 type Props = {
@@ -85,12 +86,11 @@ const CheckoutProvider = ({
   fulfillmentSlot,
   orderReserveOnly,
 }: Props) => {
+  const paymentHandlerRef = React.useRef(null);
   const [isLocked, setLocked] = React.useState(true);
+  const [isButtonLocked, setButtonLocked] = React.useState(true);
   const [validationRules, setValidationRules] = React.useState(selfPickupConstraints);
   const [updateOptIns, setUpdateOptIns] = React.useState(false);
-
-  // Get payment method api
-  const activePaymentMethod = useStripeContext();
 
   const defaultOptInFormState = {
     ...initialOptInFormState,
@@ -164,7 +164,7 @@ const CheckoutProvider = ({
     // Fulfill using selected payment method.
     let fulfilledPaymentTransactions = [];
     if (needsPayment) {
-      fulfilledPaymentTransactions = await activePaymentMethod.fulfillTransaction({
+      fulfilledPaymentTransactions = await paymentHandlerRef.current.fulfillTransaction({
         paymentTransactions,
       });
       if (!fulfilledPaymentTransactions) {
@@ -181,12 +181,33 @@ const CheckoutProvider = ({
         ({ marketingOptIn } = optInFormState.values);
       }
 
-      await submitCheckoutOrder({
+      const { paymentTransactionResults, redirectNeeded } = await submitCheckoutOrder({
         paymentTransactions: fulfilledPaymentTransactions,
         userAgent: getUserAgent(),
         platform: 'engage',
         marketingOptIn,
       });
+
+      // Check if api requested a external redirect.
+      if (redirectNeeded && paymentTransactionResults.length) {
+        const { redirectParams: { url } = {} } = paymentTransactionResults[0];
+        if (isAvailable()) {
+          // Open the link in the native webview.
+          await InAppBrowser.openLink({
+            url,
+            background: getCSSCustomProp('--color-primary'),
+            color: getCSSCustomProp('--color-text-high-emphasis'),
+            options: {
+              enableDefaultShare: false,
+            },
+          });
+          // On Close we simply unlock the checkout
+          setLocked(false);
+          return;
+        }
+        window.location.href = url;
+        return;
+      }
     } catch (error) {
       setLocked(false);
       return;
@@ -214,10 +235,10 @@ const CheckoutProvider = ({
     historyReplace,
     updateCheckoutOrder,
     billingAddress,
-    activePaymentMethod,
     paymentTransactions,
     updateOptIns,
     submitCheckoutOrder,
+    paymentHandlerRef,
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.
@@ -247,7 +268,9 @@ const CheckoutProvider = ({
 
   // Create memoized context value.
   const value = React.useMemo(() => ({
+    setPaymentHandler: (handler) => { paymentHandlerRef.current = handler; },
     isLocked,
+    isButtonLocked: isLocked || isButtonLocked,
     supportedCountries: shopSettings.supportedCountries,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,
@@ -263,23 +286,56 @@ const CheckoutProvider = ({
     optInFormSetValues: optInFormState.setValues,
     defaultOptInFormState,
     setUpdateOptIns: (val = true) => { setUpdateOptIns(val); },
+    setButtonLocked,
   }), [
     isLocked,
-    formState.setValues,
-    formState.validationErrors,
-    formState.handleSubmit,
-    optInFormState.setValues,
-    defaultOptInFormState,
+    isButtonLocked,
     shopSettings.supportedCountries,
+    formState.validationErrors,
+    formState.setValues,
+    formState.handleSubmit,
     userLocation,
-    fulfillmentSlot,
     billingAddress,
     pickupAddress,
     taxLines,
     needsPayment,
     orderReserveOnly,
-    setUpdateOptIns,
+    fulfillmentSlot,
+    optInFormState.setValues,
+    defaultOptInFormState,
   ]);
+
+  // Handle deeplinks from external payment site.
+  React.useEffect(() => {
+    if (!isAvailable()) return undefined;
+
+    /**
+     * @param {Object} event Event
+     */
+    const listener = async (event) => {
+      const { link = '' } = event?.detail || {};
+      /* eslint-disable-next-line no-unused-vars */
+      const [_, _scheme, path] = link.match(/(.*):\/\/([a-zA-Z0-9-/]*)(.*)/);
+
+      // Order is done, fetch again to retrieve infos for success page
+      if (path === 'payment/success') {
+        const [order] = await Promise.all([
+          fetchCheckoutOrder(),
+          fetchCart(),
+        ]);
+
+        historyReplace({
+          pathname: CHECKOUT_CONFIRMATION_PATTERN,
+          state: { order },
+        });
+      }
+    };
+
+    Linking.addEventListener('deepLinkOpened', listener);
+    return () => {
+      Linking.removeEventListener('deepLinkOpened', listener);
+    };
+  }, [fetchCart, fetchCheckoutOrder, historyReplace]);
 
   if (!isDataReady || !isCheckoutInitialized) {
     return null;

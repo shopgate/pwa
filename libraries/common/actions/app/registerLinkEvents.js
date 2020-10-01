@@ -22,9 +22,13 @@ export default function registerLinkEvents() {
       dispatch(handlePushNotification(payload))
     ));
 
-    event.addCallback('openDeepLink', payload => (
-      dispatch(handleDeepLink(payload))
-    ));
+    event.addCallback('openDeepLink', (payload) => {
+      // Payment links are handled using the new app event system.
+      if (payload?.link.indexOf('//payment') !== -1) {
+        return;
+      }
+      dispatch(handleDeepLink(payload));
+    });
 
     event.addCallback('openUniversalLink', payload => (
       dispatch(handleUniversalLink(payload))

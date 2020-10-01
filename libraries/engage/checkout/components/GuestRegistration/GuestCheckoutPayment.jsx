@@ -5,9 +5,8 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Header from '../Checkout/CheckoutHeader';
 import { GUEST_CHECKOUT_PAYMENT_PATTERN } from '../../constants/routes';
 import CheckoutProvider from '../../providers/CheckoutProvider';
-import StripeProvider from '../../providers/StripeProvider';
+import PaymentProvider from '../../paymentMethods';
 import Billing from '../Checkout/CheckoutBilling';
-import CreditCard from '../Checkout/CheckoutCreditCard';
 import Summary from '../Checkout/CheckoutSummary';
 import Actions from '../Checkout/CheckoutActions';
 import Pickup from './GuestRegistrationPickup';
@@ -37,32 +36,30 @@ const styles = {
  * @returns {JSX}
  */
 const GuestCheckoutPayment = () => (
-  <StripeProvider>
-    <CheckoutProvider
-      pathPattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
-      orderInitialized
-      orderReadOnly
-    >
-      <Header stepFrom={2} stepTo={2} />
-      <div className={styles.root}>
-        <div className={styles.main}>
-          <Pickup />
-          <Billing guestCheckout />
-          <CreditCard />
-          <GuestCheckoutOptIn />
-          <ResponsiveContainer breakpoint="<md" appAlways>
-            <Summary />
-          </ResponsiveContainer>
-          <Actions />
-        </div>
-        <div className={styles.side}>
-          <ResponsiveContainer breakpoint=">=md" webOnly>
-            <Summary />
-          </ResponsiveContainer>
-        </div>
+  <CheckoutProvider
+    pathPattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
+    orderInitialized
+    orderReadOnly
+  >
+    <Header stepFrom={2} stepTo={2} />
+    <div className={styles.root}>
+      <div className={styles.main}>
+        <Pickup />
+        <Billing guestCheckout />
+        <GuestCheckoutOptIn />
+        <PaymentProvider />
+        <ResponsiveContainer breakpoint="<md" appAlways>
+          <Summary />
+        </ResponsiveContainer>
+        <Actions />
       </div>
-    </CheckoutProvider>
-  </StripeProvider>
+      <div className={styles.side}>
+        <ResponsiveContainer breakpoint=">=md" webOnly>
+          <Summary />
+        </ResponsiveContainer>
+      </div>
+    </div>
+  </CheckoutProvider>
 );
 
 export default GuestCheckoutPayment;
