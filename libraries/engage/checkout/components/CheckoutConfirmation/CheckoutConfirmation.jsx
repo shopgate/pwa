@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -102,26 +102,45 @@ const style = {
  * CheckoutConfirmation component
  * @returns {JSX}
  */
-const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
-  const { state: { order } } = useRoute();
+const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchOrderDetails }) => {
+  const { state: { order }, query } = useRoute();
+  const [orderData, setOrderData] = useState(null);
 
+  // Finding the source of order data.
+  // Either from the route state or from a pipeline request.
+  useEffect(() => {
+    /** */
+    const handleFetch = async () => {
+      const data = await fetchOrderDetails({ orderNumber: query.orderNumber });
+      setOrderData(data);
+    };
+
+    if (!order && query?.orderNumber) {
+      handleFetch();
+    }
+    if (!order) return;
+
+    setOrderData(order);
+  }, [fetchOrderDetails, order, query]);
+
+  // Map order data to more UI friendly format.
   const {
     orderNumber, date, cartItems, isReserveOnly, currencyOverride,
   } = useMemo(() => {
-    if (!order) {
+    if (!orderData) {
       return {};
     }
 
     return {
-      orderNumber: order.orderNumber,
-      date: order.date,
-      cartItems: convertLineItemsToCartItems(order.lineItems),
-      isReserveOnly: isReserveOnlyOrder(order),
-      currencyOverride: order.currencyCode,
+      orderNumber: orderData.orderNumber,
+      date: orderData.date,
+      cartItems: convertLineItemsToCartItems(orderData.lineItems),
+      isReserveOnly: isReserveOnlyOrder(orderData),
+      currencyOverride: orderData.currencyCode,
     };
-  }, [order]);
+  }, [orderData]);
 
-  if (!order || !cartItems) {
+  if (!orderData || !cartItems) {
     return null;
   }
 
@@ -163,14 +182,14 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
         </div>
 
         <ResponsiveContainer breakpoint="<md" appAlways>
-          <CheckoutConfirmationPickUpContact order={order} />
-          <CheckoutConfirmationPickupNotes order={order} />
+          <CheckoutConfirmationPickUpContact order={orderData} />
+          <CheckoutConfirmationPickupNotes order={orderData} />
           { (!isUserLoggedIn && isReserveOnly) ? (
-            <CheckoutConfirmationOrderContact order={order} />
+            <CheckoutConfirmationOrderContact order={orderData} />
           ) : (
-            <CheckoutConfirmationBilledTo order={order} />
+            <CheckoutConfirmationBilledTo order={orderData} />
           ) }
-          <CheckoutConfirmationOrderSummary order={order} />
+          <CheckoutConfirmationOrderSummary order={orderData} />
           <SupplementalContent className={style.supplementalWrapper} />
         </ResponsiveContainer>
         <div className={style.buttonWrapper}>
@@ -187,14 +206,14 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
       </div>
       <div className={style.side}>
         <ResponsiveContainer breakpoint=">=md" webOnly>
-          <CheckoutConfirmationPickUpContact order={order} />
-          <CheckoutConfirmationPickupNotes order={order} />
+          <CheckoutConfirmationPickUpContact order={orderData} />
+          <CheckoutConfirmationPickupNotes order={orderData} />
           { (!isUserLoggedIn && isReserveOnly) ? (
-            <CheckoutConfirmationOrderContact order={order} />
+            <CheckoutConfirmationOrderContact order={orderData} />
           ) : (
-            <CheckoutConfirmationBilledTo order={order} />
+            <CheckoutConfirmationBilledTo order={orderData} />
           ) }
-          <CheckoutConfirmationOrderSummary order={order} />
+          <CheckoutConfirmationOrderSummary order={orderData} />
           <SupplementalContent className={style.supplementalWrapper} />
         </ResponsiveContainer>
       </div>
@@ -203,6 +222,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn }) => {
 };
 
 CheckoutConfirmation.propTypes = {
+  fetchOrderDetails: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   onContinueShopping: PropTypes.func.isRequired,
 };

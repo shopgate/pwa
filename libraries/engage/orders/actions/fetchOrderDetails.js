@@ -14,7 +14,7 @@ import { requestOrderDetails, receiveOrderDetails, errorOrderDetails } from '../
  * @param {string} [params.token] Request params
  * @returns {Function} A redux thunk.
  */
-const fetchOrderDetails = (params = {}) => (dispatch) => {
+const fetchOrderDetails = (params = {}) => async (dispatch) => {
   dispatch(requestOrderDetails(params));
 
   const request = new PipelineRequest(SHOPGATE_ORDER_GET_ORDER_DETAILS)
@@ -22,15 +22,14 @@ const fetchOrderDetails = (params = {}) => (dispatch) => {
     .setErrorBlacklist([EUNAUTHORIZED, EAUTHENTICATION, ENOTFOUND])
     .dispatch();
 
-  request
-    .then((response) => {
-      dispatch(receiveOrderDetails(params, response.order));
-    })
-    .catch((error) => {
-      dispatch(errorOrderDetails(error, params));
-    });
-
-  return request;
+  try {
+    const response = await request;
+    dispatch(receiveOrderDetails(params, response.order));
+    return response.order;
+  } catch (error) {
+    dispatch(errorOrderDetails(error, params));
+    return null;
+  }
 };
 
 export default fetchOrderDetails;

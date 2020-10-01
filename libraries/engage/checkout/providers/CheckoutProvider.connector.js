@@ -19,7 +19,7 @@ import {
   updateCheckoutOrder,
   submitCheckoutOrder,
 } from '@shopgate/engage/checkout';
-import { historyReplace } from '@shopgate/engage/core';
+import { historyReplace, showModal } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
@@ -51,6 +51,7 @@ const mapDispatchToProps = {
   updateCheckoutOrder,
   fetchPaymentMethods,
   submitCheckoutOrder,
+  showModal,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

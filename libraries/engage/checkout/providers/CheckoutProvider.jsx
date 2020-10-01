@@ -31,6 +31,7 @@ type Props = {
   updateCheckoutOrder: () => Promise<any>,
   submitCheckoutOrder: () => Promise<any>,
   historyReplace: (any) => void,
+  showModal: (any) => void,
 };
 
 const defaultPickupPersonState = {
@@ -74,6 +75,7 @@ const CheckoutProvider = ({
   fetchCheckoutOrder,
   updateCheckoutOrder,
   submitCheckoutOrder,
+  showModal,
   children,
   shopSettings,
   billingAddress,
@@ -328,6 +330,13 @@ const CheckoutProvider = ({
           pathname: CHECKOUT_CONFIRMATION_PATTERN,
           state: { order },
         });
+      } else if (path === 'payment/error') {
+        showModal({
+          title: null,
+          confirm: null,
+          dismiss: 'modal.ok',
+          message: 'checkout.errors.genericSubmit',
+        });
       }
     };
 
@@ -335,7 +344,7 @@ const CheckoutProvider = ({
     return () => {
       Linking.removeEventListener('deepLinkOpened', listener);
     };
-  }, [fetchCart, fetchCheckoutOrder, historyReplace]);
+  }, [fetchCart, fetchCheckoutOrder, historyReplace, showModal]);
 
   if (!isDataReady || !isCheckoutInitialized) {
     return null;

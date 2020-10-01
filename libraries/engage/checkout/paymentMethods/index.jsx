@@ -61,12 +61,18 @@ const styles = {
   section: css({
     marginBottom: 0,
     marginTop: 4,
+    ...(isIOSTheme() ? {
+      marginBottom: 32,
+    } : {}),
   }).toString(),
   buttons: css({
     marginLeft: 16,
     marginBottom: 16,
     display: 'flex',
     flexDirection: 'row',
+    ...(isIOSTheme() ? {
+      marginBottom: 32,
+    } : {}),
   }).toString(),
 };
 
@@ -144,25 +150,31 @@ const PaymentMethodProvider = ({
   const { provider: Provider, content: Content } = paymentImpl || {};
   return (
     <Context.Provider value={paymentMethodApi}>
-      <div className={styles.section}>
-        <h3 className={styles.headline}>
-          {i18n.text('checkout.payment.title')}
-        </h3>
-        <div className={styles.buttons}>
-          {availablePaymentMethods.map(method => (
-            <method.button
-              key={method.internalCode}
-              onChange={() => handleChangePayment(method.internalCode)}
-              active={method.internalCode === paymentMethodCode}
-            />
-          ))}
+      {availablePaymentMethods?.length > 1 ? (
+        <div className={styles.section}>
+          <h3 className={styles.headline}>
+            {i18n.text('checkout.payment.title')}
+          </h3>
+          <div className={styles.buttons}>
+            {availablePaymentMethods.map(method => (
+              <method.button
+                key={method.internalCode}
+                onChange={() => handleChangePayment(method.internalCode)}
+                active={method.internalCode === paymentMethodCode}
+              />
+            ))}
+          </div>
+          {paymentImpl ? (
+            <Provider context={Context}>
+              <Content />
+            </Provider>
+          ) : null}
         </div>
-        {paymentImpl ? (
-          <Provider context={Context}>
-            <Content />
-          </Provider>
-        ) : null}
-      </div>
+      ) : (
+        <Provider context={Context}>
+          <Content />
+        </Provider>
+      )}
     </Context.Provider>
   );
 };
