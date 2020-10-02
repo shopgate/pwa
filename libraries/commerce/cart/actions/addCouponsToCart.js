@@ -14,9 +14,10 @@ import { MESSAGE_TYPE_ERROR } from '../constants';
 /**
  * Adds coupons to the cart. Returns a Promise because a component waits for this action to finish.
  * @param {string[]} couponIds The IDs of the coupons that shall be added to the cart.
+ * @param {boolean} [userInteracted=true] Was the action dispatched due to a user interaction
  * @return {Function} A redux thunk.
  */
-function addCouponsToCart(couponIds) {
+function addCouponsToCart(couponIds, userInteracted = true) {
   return (dispatch) => {
     dispatch(addCoupons(couponIds));
 
@@ -26,7 +27,9 @@ function addCouponsToCart(couponIds) {
       .setRetries(0)
       .setErrorBlacklist(ECART)
       .setResponseBehavior({
-        error: errorBehavior.dispatchAction(message => setCouponFieldError(message)),
+        error: userInteracted
+          ? errorBehavior.dispatchAction(message => setCouponFieldError(message))
+          : errorBehavior.toast(),
       })
       .dispatch();
 
@@ -53,7 +56,7 @@ function addCouponsToCart(couponIds) {
           return;
         }
 
-        dispatch(successAddCouponsToCart(couponIds));
+        dispatch(successAddCouponsToCart(couponIds, userInteracted));
       })
       .catch((error) => {
         dispatch(errorAddCouponsToCart(

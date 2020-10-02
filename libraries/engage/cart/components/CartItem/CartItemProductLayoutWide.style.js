@@ -55,7 +55,7 @@ export const productName = css({
   fontWeight: 500,
   wordBreak: ['keep-all', 'break-word'],
   hyphens: 'auto',
-});
+}).toString();
 
 export const productProperties = css({
   paddingTop: variables.gap.small,

@@ -76,7 +76,7 @@ export function FulfillmentSelectorLocation() {
       )}
       {(isRopeMethodEnabled && selected && !isOrderable) && (
         <div className={container}>
-          <div className={locationName}>{usedLocation.name}</div>
+          <div className={locationName}>{usedLocation?.name || ''}</div>
           <FulfillmentSelectorImpossibleError />
           <ChangeLocationButton onClick={handleChangeLocation} />
         </div>

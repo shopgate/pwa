@@ -1,12 +1,13 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
-import { FormBuilder } from '@shopgate/engage/components';
+import { FormBuilder, SurroundPortals } from '@shopgate/engage/components';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import generateFormConfig from './GuestCheckoutOptIn.config';
+import { CHECKOUT_MARKETING_OPTIN } from '../../constants';
 
 const { variables } = themeConfig;
 
@@ -53,17 +54,19 @@ const GuestCheckoutOptIn = () => {
   }, [optInFormSetValues]);
 
   return (
-    <div className={styles.root}>
-      <Section hasForm>
-        <FormBuilder
-          className={styles.form}
-          name="GuestCheckoutOptIn"
-          config={formConfig}
-          defaults={defaultOptInFormState}
-          handleUpdate={handleUpdate}
-        />
-      </Section>
-    </div>
+    <SurroundPortals portalName={CHECKOUT_MARKETING_OPTIN}>
+      <div className={styles.root}>
+        <Section hasForm>
+          <FormBuilder
+            className={styles.form}
+            name="GuestCheckoutOptIn"
+            config={formConfig}
+            defaults={defaultOptInFormState}
+            handleUpdate={handleUpdate}
+          />
+        </Section>
+      </div>
+    </SurroundPortals>
   );
 };
 

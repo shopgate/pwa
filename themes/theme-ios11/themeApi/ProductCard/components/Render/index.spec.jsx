@@ -24,6 +24,7 @@ jest.mock('@shopgate/engage/product', () => ({
   ProductImage: () => null,
   ProductGridPrice: () => null,
   FeaturedMedia: () => null,
+  ProductName: ({ name }) => name,
 }));
 jest.mock('@shopgate/engage/components', () => ({
   Portal: ({ children }) => children || null,
@@ -71,8 +72,8 @@ describe('<ProductCardRender />', () => {
     expect(wrapper.find('RatingStars').exists()).toBe(true);
     expect(wrapper.find('RatingStars').prop('value')).toBe(mockProduct.rating.average);
     expect(wrapper.find('ProductCardTitle').exists()).toBe(true);
-    expect(wrapper.find('ProductCardTitle').text()).toBe(mockProduct.name);
-    expect(wrapper.find('ProductCardTitle').prop('rows')).toBe(ProductCardRender.defaultProps.titleRows);
+    expect(wrapper.find('ProductName').prop('name')).toBe(mockProduct.name);
+    expect(wrapper.find('ProductName').prop('rows')).toBe(ProductCardRender.defaultProps.titleRows);
     const productCardPrice = wrapper.find('ProductCardPrice');
     expect(productCardPrice.exists()).toBe(true);
     expect(productCardPrice.find('ProductGridPrice').prop('product')).toEqual(mockProduct);
@@ -100,7 +101,7 @@ describe('<ProductCardRender />', () => {
   it('should render with one row for the product name', () => {
     const wrapper = renderComponent({ titleRows: 1 });
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ProductCardTitle').find('Ellipsis').prop('rows')).toBe(1);
+    expect(wrapper.find('ProductName').prop('rows')).toBe(1);
   });
 
   it('should not render the discount badge when the is no discount', () => {

@@ -36,7 +36,10 @@ const ProductGridPrice = ({ product }) => {
             />
           </Grid.Item>
         )}
-        {(!price.msrp && price.unitPriceStriked > 0) && (
+        {(!price.msrp &&
+          price.unitPriceStriked > 0 &&
+          price.unitPrice !== price.unitPriceStriked
+        ) && (
           <Grid.Item>
             <PriceStriked
               className={styles.strikedPrice}
