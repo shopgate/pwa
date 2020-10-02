@@ -1,12 +1,7 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import {
-  PRODUCT_ITEM_NAME,
-  PRODUCT_ITEM_NAME_AFTER,
-  PRODUCT_ITEM_NAME_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
+import { PRODUCT_ITEM_NAME } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { ProductName } from '@shopgate/engage/product';
 import styles from './style';
 
 /**
@@ -37,15 +32,13 @@ class ItemName extends PureComponent {
     const props = { productId };
 
     return (
-      <Fragment>
-        <Portal name={PRODUCT_ITEM_NAME_BEFORE} props={props} />
-        <Portal name={PRODUCT_ITEM_NAME} props={props}>
-          <div className={styles} data-test-id={`Productname: ${name}`} aria-label={`${name}.`}>
-            <Ellipsis><span dangerouslySetInnerHTML={{ __html: name }} /></Ellipsis>
-          </div>
-        </Portal>
-        <Portal name={PRODUCT_ITEM_NAME_AFTER} props={props} />
-      </Fragment>
+      <ProductName
+        name={name}
+        className={styles}
+        portalName={PRODUCT_ITEM_NAME}
+        portalProps={props}
+        testId={`Productname: ${name}`}
+      />
     );
   }
 }

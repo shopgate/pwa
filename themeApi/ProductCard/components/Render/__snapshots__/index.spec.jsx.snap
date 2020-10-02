@@ -434,42 +434,19 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
               style={Object {}}
               title="Product Name"
             >
-              <div
+              <ProductName
                 className={
                   Object {
                     "data-css-by38mh": "",
                   }
                 }
-                data-test-id="Productname: Product Name"
+                name="Product Name"
+                rows={3}
                 style={Object {}}
+                testId="Productname: Product Name"
               >
-                <Ellipsis
-                  className=""
-                  ellipsis="..."
-                  rows={3}
-                >
-                  <Dotdotdot
-                    clamp={3}
-                    className=""
-                    ellipsis="..."
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
-                  >
-                    <div
-                      className=""
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "Product Name",
-                          }
-                        }
-                      />
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
+                Product Name
+              </ProductName>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -714,42 +691,19 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
               style={Object {}}
               title="Product Name"
             >
-              <div
+              <ProductName
                 className={
                   Object {
                     "data-css-by38mh": "",
                   }
                 }
-                data-test-id="Productname: Product Name"
+                name="Product Name"
+                rows={3}
                 style={Object {}}
+                testId="Productname: Product Name"
               >
-                <Ellipsis
-                  className=""
-                  ellipsis="..."
-                  rows={3}
-                >
-                  <Dotdotdot
-                    clamp={3}
-                    className=""
-                    ellipsis="..."
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
-                  >
-                    <div
-                      className=""
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "Product Name",
-                          }
-                        }
-                      />
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
+                Product Name
+              </ProductName>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -1341,42 +1295,19 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
               style={Object {}}
               title="Product Name"
             >
-              <div
+              <ProductName
                 className={
                   Object {
                     "data-css-by38mh": "",
                   }
                 }
-                data-test-id="Productname: Product Name"
+                name="Product Name"
+                rows={3}
                 style={Object {}}
+                testId="Productname: Product Name"
               >
-                <Ellipsis
-                  className=""
-                  ellipsis="..."
-                  rows={3}
-                >
-                  <Dotdotdot
-                    clamp={3}
-                    className=""
-                    ellipsis="..."
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
-                  >
-                    <div
-                      className=""
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "Product Name",
-                          }
-                        }
-                      />
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
+                Product Name
+              </ProductName>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -1968,42 +1899,19 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
               style={Object {}}
               title="Product Name"
             >
-              <div
+              <ProductName
                 className={
                   Object {
                     "data-css-by38mh": "",
                   }
                 }
-                data-test-id="Productname: Product Name"
+                name="Product Name"
+                rows={1}
                 style={Object {}}
+                testId="Productname: Product Name"
               >
-                <Ellipsis
-                  className=""
-                  ellipsis="..."
-                  rows={1}
-                >
-                  <Dotdotdot
-                    clamp={1}
-                    className=""
-                    ellipsis="..."
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
-                  >
-                    <div
-                      className=""
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "Product Name",
-                          }
-                        }
-                      />
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
+                Product Name
+              </ProductName>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -3111,42 +3019,19 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
               style={Object {}}
               title="Product Name"
             >
-              <div
+              <ProductName
                 className={
                   Object {
                     "data-css-by38mh": "",
                   }
                 }
-                data-test-id="Productname: Product Name"
+                name="Product Name"
+                rows={3}
                 style={Object {}}
+                testId="Productname: Product Name"
               >
-                <Ellipsis
-                  className=""
-                  ellipsis="..."
-                  rows={3}
-                >
-                  <Dotdotdot
-                    clamp={3}
-                    className=""
-                    ellipsis="..."
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
-                  >
-                    <div
-                      className=""
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "Product Name",
-                          }
-                        }
-                      />
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
+                Product Name
+              </ProductName>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"
@@ -3318,42 +3203,19 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
               style={Object {}}
               title="Product Name"
             >
-              <div
+              <ProductName
                 className={
                   Object {
                     "data-css-by38mh": "",
                   }
                 }
-                data-test-id="Productname: Product Name"
+                name="Product Name"
+                rows={3}
                 style={Object {}}
+                testId="Productname: Product Name"
               >
-                <Ellipsis
-                  className=""
-                  ellipsis="..."
-                  rows={3}
-                >
-                  <Dotdotdot
-                    clamp={3}
-                    className=""
-                    ellipsis="..."
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
-                  >
-                    <div
-                      className=""
-                    >
-                      <span
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "Product Name",
-                          }
-                        }
-                      />
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
+                Product Name
+              </ProductName>
             </ProductCardTitle>
             <MapPriceHint
               productId="PR0DUCTID"

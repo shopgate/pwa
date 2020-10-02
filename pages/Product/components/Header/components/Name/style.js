@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const name = css({
   fontWeight: 'bold',
@@ -8,6 +9,10 @@ const name = css({
   marginRight: 72,
   wordBreak: ['keep-all', 'break-word'],
   hyphens: 'auto',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    wordBreak: 'keep-all',
+    hyphens: 'none',
+  },
 }).toString();
 
 const placeholder = css({
