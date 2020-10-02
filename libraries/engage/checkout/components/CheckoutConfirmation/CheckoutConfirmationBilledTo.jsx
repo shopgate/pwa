@@ -16,7 +16,7 @@ const CheckoutConfirmationBilledTo = ({ order, className }) => {
     } = billing;
 
     const [payment = {}] = order.paymentTransactions || [{}];
-    const { paymentInfo: { card: { type, last4 } = {} } = {} } = payment;
+    const { paymentInfo: { card: { type, last4 } = {}, type: paymentType } = {} } = payment;
 
     const hasPayment = order.paymentTransactions && order.paymentTransactions[0];
 
@@ -27,7 +27,7 @@ const CheckoutConfirmationBilledTo = ({ order, className }) => {
     ].filter(Boolean).join('\n');
 
     return [
-      ...(hasPayment ? [
+      ...(hasPayment && paymentType === 'stripe' ? [
         {
           label: i18n.text('checkout.success.card_holder'),
           text: address,
@@ -38,10 +38,16 @@ const CheckoutConfirmationBilledTo = ({ order, className }) => {
           text: address,
         },
       ]),
-      ...(hasPayment ? [
+      ...(hasPayment && paymentType === 'stripe' ? [
         {
           label: i18n.text('checkout.success.payment_method'),
           text: `${startCase(type)} **** **** ${last4}`,
+        },
+      ] : []),
+      ...(hasPayment && paymentType === 'paypal' ? [
+        {
+          label: i18n.text('checkout.success.payment_method'),
+          text: 'PayPal',
         },
       ] : []),
     ];
