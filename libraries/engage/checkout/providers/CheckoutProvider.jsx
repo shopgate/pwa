@@ -272,7 +272,7 @@ const CheckoutProvider = ({
   const value = React.useMemo(() => ({
     setPaymentHandler: (handler) => { paymentHandlerRef.current = handler; },
     isLocked,
-    isButtonLocked: isLocked || isButtonLocked,
+    isButtonLocked: (isLocked || isButtonLocked) && needsPayment,
     supportedCountries: shopSettings.supportedCountries,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,

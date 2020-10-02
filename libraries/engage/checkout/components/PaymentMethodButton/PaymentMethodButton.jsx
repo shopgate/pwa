@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { css } from 'glamor';
 
 const styles = {
@@ -14,6 +15,9 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    [responsiveMediaQuery('xs')]: {
+      width: '50%',
+    },
     '&:not(:last-child)': {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,

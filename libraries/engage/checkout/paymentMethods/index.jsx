@@ -67,6 +67,7 @@ const styles = {
   }).toString(),
   buttons: css({
     marginLeft: 16,
+    marginRight: 16,
     marginBottom: 16,
     display: 'flex',
     flexDirection: 'row',
