@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import fetchOrderDetails from '../../../orders/actions/fetchOrderDetails';
+import { fetchCheckoutOrder } from '../../actions/fetchCheckoutOrder';
 
 /**
  * @return {Function}
@@ -10,7 +10,7 @@ const makeMapStateToProps = () => state => ({
 });
 
 const mapDispatchToProps = {
-  fetchOrderDetails,
+  fetchCheckoutOrder,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

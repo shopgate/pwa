@@ -102,7 +102,7 @@ const style = {
  * CheckoutConfirmation component
  * @returns {JSX}
  */
-const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchOrderDetails }) => {
+const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckoutOrder }) => {
   const { state: { order }, query } = useRoute();
   const [orderData, setOrderData] = useState(null);
 
@@ -111,17 +111,17 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchOrderDe
   useEffect(() => {
     /** */
     const handleFetch = async () => {
-      const data = await fetchOrderDetails({ orderNumber: query.orderNumber });
+      const data = await fetchCheckoutOrder();
       setOrderData(data);
     };
 
-    if (!order && query?.orderNumber) {
+    if (!order) {
       handleFetch();
+      return;
     }
-    if (!order) return;
 
     setOrderData(order);
-  }, [fetchOrderDetails, order, query]);
+  }, [fetchCheckoutOrder, order, query]);
 
   // Map order data to more UI friendly format.
   const {
@@ -222,7 +222,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchOrderDe
 };
 
 CheckoutConfirmation.propTypes = {
-  fetchOrderDetails: PropTypes.func.isRequired,
+  fetchCheckoutOrder: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   onContinueShopping: PropTypes.func.isRequired,
 };
