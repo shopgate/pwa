@@ -1,11 +1,12 @@
 import React from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
-import { FormBuilder } from '@shopgate/engage/components';
+import { FormBuilder, SurroundPortals } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import generateFormConfig from './CheckoutPickupContactForm.config';
 import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
+import { CHECKOUT_PICKUP_CONTACT_FORM } from '../../constants';
 
 const { variables } = themeConfig;
 
@@ -72,18 +73,20 @@ const PickupContactForm = () => {
   }, [formSetValues]);
 
   return (
-    <div className={styles.root}>
-      <Section title="checkout.pickup_contact.headline" hasForm>
-        <FormBuilder
-          className={styles.form}
-          name="PickupForm"
-          config={formConfig}
-          defaults={defaultPickupPersonState}
-          validationErrors={formValidationErrors}
-          handleUpdate={handleUpdate}
-        />
-      </Section>
-    </div>
+    <SurroundPortals portalName={CHECKOUT_PICKUP_CONTACT_FORM}>
+      <div className={styles.root}>
+        <Section title="checkout.pickup_contact.headline" hasForm>
+          <FormBuilder
+            className={styles.form}
+            name="PickupForm"
+            config={formConfig}
+            defaults={defaultPickupPersonState}
+            validationErrors={formValidationErrors}
+            handleUpdate={handleUpdate}
+          />
+        </Section>
+      </div>
+    </SurroundPortals>
   );
 };
 
