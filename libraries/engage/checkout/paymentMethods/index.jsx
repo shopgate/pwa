@@ -113,7 +113,7 @@ const PaymentMethodProvider = ({
     });
   }, [setButtonLocked, setPaymentHandler]);
 
-  // Map configurated payment methods
+  // Map configured payment methods
   const availablePaymentMethods = useMemo(
     () => paymentMethods.map(method => ({
       ...AVAILABLE_PAYMENT_METHOD.find(m => m.code === method.code),
@@ -124,6 +124,10 @@ const PaymentMethodProvider = ({
 
   // Change payment method.
   const handleChangePayment = useCallback(async (code) => {
+    if (paymentMethodCode === code) {
+      return;
+    }
+
     await updateOrder({
       paymentTransactions: [{
         paymentMethod: {
@@ -132,7 +136,7 @@ const PaymentMethodProvider = ({
       }],
     });
     await fetchOrder();
-  }, [fetchOrder, updateOrder]);
+  }, [fetchOrder, paymentMethodCode, updateOrder]);
 
   // API for the underlying payment methods.
   const paymentMethodApi = useMemo(() => ({

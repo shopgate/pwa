@@ -6,6 +6,10 @@ jest.mock('../../helpers/updateLegacyNavigationBar', () => ({
   updateLegacyNavigationBar: jest.fn(),
 }));
 
+jest.mock('@shopgate/native-modules', () => ({
+  isAvailable: jest.fn(() => false),
+}));
+
 jest.mock('@shopgate/pwa-common/selectors/client', () => ({
   isIos: jest.fn().mockReturnValue(true),
 }));
