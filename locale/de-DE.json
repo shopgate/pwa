@@ -205,10 +205,10 @@
   },
   "locations": {
     "headline": "Läden in Ihrer Nähe",
-    "details": "Laden-Details",
+    "details": "Details",
     "hours_details": "Laden Öffnungsdetails",
     "today_hours": "Heute: {hours}",
-    "today_hours_long": "Hours Today: {hours}",
+    "today_hours_long": "Heute geöffnet: {hours}",
     "address": "{postalCode} {city}",
     "map_open": "In Karten öffnen",
     "phone": "Telefonnummer",
