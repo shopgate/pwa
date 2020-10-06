@@ -2,6 +2,8 @@ import React, {
   useMemo, useState, useCallback, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import { STORE_FINDER_PATTERN } from '../constants';
 import { StoreFinderContext } from '../locations.context';
 import connect from './StoreFinder.connector';
 
@@ -52,6 +54,18 @@ const StoreFinderProvider = ({
     }
   });
 
+  /**
+   * @param {bool} loading
+   */
+  const setIsLoading = useCallback((loading) => {
+    if (loading) {
+      LoadingProvider.setLoading(STORE_FINDER_PATTERN);
+      return;
+    }
+
+    LoadingProvider.unsetLoading(STORE_FINDER_PATTERN);
+  }, []);
+
   const value = useMemo(() => ({
     locations,
     selectedLocation,
@@ -60,6 +74,7 @@ const StoreFinderProvider = ({
     shopSettings,
     userSearch,
     storeFinderSearch,
+    setIsLoading,
   }), [
     isFetching,
     locations,
@@ -68,6 +83,7 @@ const StoreFinderProvider = ({
     shopSettings,
     storeFinderSearch,
     userSearch,
+    setIsLoading,
   ]);
 
   return (

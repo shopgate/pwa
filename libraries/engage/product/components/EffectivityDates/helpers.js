@@ -4,7 +4,7 @@ import {
 import { ALWAYS, NEVER } from './constants';
 
 /**
- * Biuld params to fetch category products
+ * Build params to fetch category products
  * @returns {Object|{showScheduled: string}}
  */
 export const buildShowScheduledParams = () => {

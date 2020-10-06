@@ -17,9 +17,10 @@ export const container = css({
   height: 'calc(100vh - var(--app-bar-height))',
   [responsiveMediaQuery('<=sm', { appAlways: true })]: {
     gridTemplateColumns: '1fr',
-    gridTemplateRows: 'auto 200px 1fr',
-    gridTemplateAreas: '"search" "map" "store-list"',
-    height: '100vh',
+    gridTemplateRows: 'auto 1fr',
+    gridTemplateAreas: '"search" "store-list"',
+    //  height: '100vh',
+    height: 'inherit',
   },
 });
 
@@ -37,7 +38,6 @@ export const storeList = css({
   overflow: 'hidden',
   [responsiveMediaQuery('<=sm', { appAlways: true })]: {
     width: '100%',
-  //  overflow: 'initial',
   },
 });
 
