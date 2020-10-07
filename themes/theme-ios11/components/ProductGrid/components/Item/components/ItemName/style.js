@@ -6,4 +6,4 @@ export default css({
   marginTop: 1,
   wordBreak: ['keep-all', 'break-word'],
   hyphens: 'auto',
-});
+}).toString();

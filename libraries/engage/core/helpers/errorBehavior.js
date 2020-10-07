@@ -51,9 +51,9 @@ const getErrorMessage = (message, params) => {
  * @returns {Object}
  */
 const getErrorObject = (originalError) => {
-  const { code, context: pipeline, meta } = originalError;
+  const { code, context: pipeline = '', meta } = originalError;
   const {
-    input: pipelineInput,
+    input: pipelineInput = {},
     message: originalMessage,
     additionalParams,
     translated,

@@ -23,7 +23,10 @@ class PipelineErrorDialog extends Component {
     actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     params: PropTypes.shape({
       entityId: PropTypes.string,
-      code: PropTypes.string, // The error code as string.
+      code: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]), // The error code as string.
       message: PropTypes.string.isRequired, // The error message reported by the pipeline.
       messageParams: PropTypes.shape(), // A list of key/value pairs (paramName: paramValue)
       translated: PropTypes.bool,
