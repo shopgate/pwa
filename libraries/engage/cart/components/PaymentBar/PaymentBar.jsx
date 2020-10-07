@@ -26,7 +26,7 @@ function PaymentBar({ visible, showSeparator }: PaymentBarProps) {
 
 PaymentBar.defaultProps = {
   visible: true,
-  showSeparator: true,
+  showSeparator: false,
 };
 
 export default hot(PaymentBar);
