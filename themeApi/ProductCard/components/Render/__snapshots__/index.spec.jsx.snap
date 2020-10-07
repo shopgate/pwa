@@ -435,11 +435,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
               title="Product Name"
             >
               <ProductName
-                className={
-                  Object {
-                    "data-css-by38mh": "",
-                  }
-                }
+                className="css-by38mh"
                 name="Product Name"
                 rows={3}
                 style={Object {}}
@@ -692,11 +688,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
               title="Product Name"
             >
               <ProductName
-                className={
-                  Object {
-                    "data-css-by38mh": "",
-                  }
-                }
+                className="css-by38mh"
                 name="Product Name"
                 rows={3}
                 style={Object {}}
@@ -1296,11 +1288,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
               title="Product Name"
             >
               <ProductName
-                className={
-                  Object {
-                    "data-css-by38mh": "",
-                  }
-                }
+                className="css-by38mh"
                 name="Product Name"
                 rows={3}
                 style={Object {}}
@@ -1900,11 +1888,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
               title="Product Name"
             >
               <ProductName
-                className={
-                  Object {
-                    "data-css-by38mh": "",
-                  }
-                }
+                className="css-by38mh"
                 name="Product Name"
                 rows={1}
                 style={Object {}}
@@ -3020,11 +3004,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
               title="Product Name"
             >
               <ProductName
-                className={
-                  Object {
-                    "data-css-by38mh": "",
-                  }
-                }
+                className="css-by38mh"
                 name="Product Name"
                 rows={3}
                 style={Object {}}
@@ -3204,11 +3184,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
               title="Product Name"
             >
               <ProductName
-                className={
-                  Object {
-                    "data-css-by38mh": "",
-                  }
-                }
+                className="css-by38mh"
                 name="Product Name"
                 rows={3}
                 style={Object {}}
