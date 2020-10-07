@@ -1148,10 +1148,10 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
-"@shopgate/native-modules@1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@shopgate/native-modules/-/native-modules-1.0.0-beta.7.tgz#5f34d639adcbe71c0a823550038b93c509fae0a2"
-  integrity sha512-nLD0VlW3ppjfnO3pHdsM3s4mg0Dvr2DM67QwWIuGpxRY6JpR/CQmVhlWn9TJdwLmhTCnG5mf7QvntRs4WMHZYg==
+"@shopgate/native-modules@1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@shopgate/native-modules/-/native-modules-1.0.0-beta.8.tgz#8541b862da348f677622fddb837203435a8708d1"
+  integrity sha512-9qETby18uNnxJ0L+fVinochM9h0exVK7hPECOa2727yoRwihORUhmhSCqPOE/bjalsZ3Iidgi0aQEoh3QX+5LA==
   dependencies:
     event-target-shim "^5.0.1"
 

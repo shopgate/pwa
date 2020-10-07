@@ -1,7 +1,6 @@
 import React from 'react';
 import { isAvailable, InAppBrowser, Linking } from '@shopgate/native-modules';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
-import { getCSSCustomProp } from '@shopgate/engage/styles';
 import {
   i18n, useAsyncMemo, getUserAgent, LoadingProvider,
 } from '@shopgate/engage/core';
@@ -197,8 +196,6 @@ const CheckoutProvider = ({
           // Open the link in the native webview.
           await InAppBrowser.openLink({
             url,
-            background: getCSSCustomProp('--color-primary'),
-            color: getCSSCustomProp('--color-text-high-emphasis'),
             options: {
               enableDefaultShare: false,
             },
