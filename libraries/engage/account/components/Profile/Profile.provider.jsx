@@ -100,6 +100,9 @@ const ProfileProvider = ({
           }))
           .filter(attribute => attribute.value.length || attribute.value?.code?.length),
       });
+
+      await fetchCustomer();
+
       UIEvents.emit(ToastProvider.ADD, {
         id: 'account.profile.form.success',
         message: 'account.profile.form.success',
@@ -111,7 +114,7 @@ const ProfileProvider = ({
       });
     }
     LoadingProvider.unsetLoading(pathname);
-  }, [merchantCustomerAttributes, pathname, updateCustomer]);
+  }, [fetchCustomer, merchantCustomerAttributes, pathname, updateCustomer]);
 
   // Hold profile form state.
   const constraints = useMemo(
