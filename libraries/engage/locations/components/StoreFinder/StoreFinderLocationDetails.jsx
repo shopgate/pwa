@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { every, isEmpty } from 'lodash';
 import { StoreContext } from './Store.context';
 import { StoreOpeningHours } from '../StoreList/StoreOpeningHours';
 import { Accordion, I18n } from '../../../components';
@@ -10,7 +11,7 @@ import { accordionHeader, accordionContent } from './StoreFinderLocationDetails.
 const StoreFinderLocationDetails = () => {
   const { operationHours } = useContext(StoreContext);
 
-  if (!operationHours) {
+  if (!operationHours || every(operationHours, isEmpty)) {
     return null;
   }
 

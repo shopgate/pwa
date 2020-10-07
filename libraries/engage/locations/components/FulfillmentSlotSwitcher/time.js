@@ -23,9 +23,9 @@ export const getTimeSlotDisplayText = (fulfillmentSlot) => {
   });
 
   const [fromHours, fromMinutes] = fulfillmentSlot.from.split(':').map(x => parseInt(x, 10));
-  const from = moment().set({ hours: fromHours, minutes: fromMinutes });
+  const from = moment().set({ hours: fromHours, minutes: fromMinutes || 0 });
   const [toHours, toMinutes] = fulfillmentSlot.to.split(':').map(x => parseInt(x, 10));
-  const to = moment().set({ hours: toHours, minutes: toMinutes });
+  const to = moment().set({ hours: toHours, minutes: toMinutes || 0 });
 
   return `${relativeString} ${from.format('LT')} - ${to.format('LT')}`;
 };
