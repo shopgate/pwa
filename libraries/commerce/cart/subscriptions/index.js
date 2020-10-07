@@ -6,11 +6,9 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import { redirects } from '@shopgate/pwa-common/collections';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
-import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import {
   fetchProductsById, getProductRoute, hasProductVariety, getProduct,
 } from '@shopgate/pwa-common-commerce/product';
@@ -18,6 +16,7 @@ import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import { checkoutSucceeded$ } from '@shopgate/pwa-common-commerce/checkout';
 import { DIRECT_SHIP, getPreferredLocation, getPreferredFulfillmentMethod } from '@shopgate/engage/locations';
 import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
+import { errorBehavior } from '@shopgate/engage/core';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import addProductsToCart from '../actions/addProductsToCart';
@@ -181,23 +180,26 @@ export default function cart(subscribe) {
     if (Array.isArray(errors) && errors.length) {
       // Supports only one error, because none of the pipelines is ever called with multiple items.
       // Multiple errors would cause the this to overlay multiple modals on top of each other.
-      const { message, handled } = errors[0];
+      const {
+        message, handled, code, additionalParams, translated,
+      } = errors[0];
 
       // Some errors are already handled automatically before
       if (handled) {
         return;
       }
 
-      dispatch(showModal({
-        confirm: 'modal.ok',
-        dismiss: null,
-        title: 'modal.title_error',
-        message,
-        type: MODAL_PIPELINE_ERROR,
-        params: {
-          ...errors[0],
+      errorBehavior.modal()({
+        dispatch,
+        error: {
+          code,
+          meta: {
+            message,
+            additionalParams,
+            translated,
+          },
         },
-      }));
+      });
     }
   });
 
