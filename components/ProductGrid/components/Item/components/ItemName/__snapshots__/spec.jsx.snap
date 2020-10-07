@@ -2,11 +2,7 @@
 
 exports[`<ItemName /> should render with minimal props 1`] = `
 <ProductName
-  className={
-    Object {
-      "data-css-1xzic9e": "",
-    }
-  }
+  className="css-1xzic9e"
   ellipsis={true}
   itemProp={null}
   name="Foo"

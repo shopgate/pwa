@@ -11,9 +11,9 @@
     "back": "Zurück",
     "close": "Schließen",
     "products": "Produkte",
-    "error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
     "errors": {
-      "generic": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+      "generic": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut."
     }
   },
   "titles": {
@@ -77,18 +77,18 @@
         }
       },
       "confirm": {
-        "title": "Bist Du Dir sicher?",
+        "title": "Bist du dir sicher?",
         "confirm": "Bestätigen",
-        "messageContact": "Willst Du wirklich diese Adresse löschen",
-        "messageCustomer": "Willst Du wirklich deinen Account löschen. All deine persönlichen Daten und Einstellungen werden gelöscht."
+        "messageContact": "Willst du wirklich diese Adresse löschen",
+        "messageCustomer": "Willst du wirklich deinen Account löschen. All deine persönlichen Daten und Einstellungen werden gelöscht."
       }
     }
   },
   "favorites": {
     "add": "Zur Wunschliste hinzufügen",
-    "added": "Das Produkt wurde Zur Wunschliste hinzugefügt",
+    "added": "Das Produkt wurde zur Wunschliste hinzugefügt",
     "continue": "Weiter shoppen",
-    "empty": "Sie haben noch keine Artikel in der Wunschliste",
+    "empty": "Du hast noch keine Artikel auf der Wunschliste",
     "error_add": "Das Produkt konnte nicht zur Wunschliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Wunschliste entfernt werden",
     "error_limit": "Die zulässige Anzahl von Produkten auf der Wunschliste wurde überschritten.",
@@ -126,7 +126,7 @@
       "remove": "Löschen"
     },
     "modal": {
-      "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.",
+      "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wähle bitte die Varianten.",
       "confirm": "Varianten wählen"
     }
   },
@@ -172,8 +172,8 @@
     "item_added": "{count, plural, =0 {# keine Produkte} =1 {{count} Produkt hinzugefügt} other {{count} Produkte hinzugefügt}}",
     "item_added_unit": "{count} {unit} hinzugefügt",
     "adding_item": "{count, plural, =1 {{count} Produkt wird hinzugefügt} other {{count} Produkte werden hinzugefügt}}",
-    "pick_option_first": "Wählen Sie zuerst eine Option. {option}",
-    "fill_out_required_input_first": "Füllen Sie zuerst alle Pflichtfelder aus.",
+    "pick_option_first": "Wähle zuerst eine Option. {option}",
+    "fill_out_required_input_first": "Fülle zuerst alle Pflichtfelder aus.",
     "add_to_cart": "In den Warenkorb",
     "go_to_cart": "Warenkorb",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
@@ -208,11 +208,11 @@
     }
   },
   "locations": {
-    "headline": "Läden in Ihrer Nähe",
+    "headline": "Läden in deiner Nähe",
     "details": "Details",
     "hours_details": "Laden Öffnungsdetails",
-    "today_hours_long": "Heute geöffnet: {hours}",
     "today_hours": "Heute: {hours}",
+    "today_hours_long": "Heute geöffnet: {hours}",
     "address": "{postalCode} {city}",
     "map_open": "In Karten öffnen",
     "phone": "Telefonnummer",
@@ -232,14 +232,14 @@
     "me": "Ich selbst",
     "someone_else": "Jemand anderes",
     "success_heading": "Reservierungsbestätigung",
-    "success_title": "Vielen Dank für Ihre Reservierung!",
-    "success_copy": "Wir senden Ihnen in Kürze eine E-Mail/SMS Nachricht, sobald Ihre Reservierung bereit zur Abholung ist.",
+    "success_title": "Vielen Dank für deine Reservierung!",
+    "success_copy": "Wir senden dir in Kürze eine E-Mail/SMS Nachricht, sobald deine Reservierung bereit zur Abholung ist.",
     "success_order_num": "Reservierungs-Nr.",
     "error_heading": "Es ist ein Fehler aufgetreten",
-    "error_title": "Leider konnte Ihre Reservierung nicht abgeschlossen werden.",
-    "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfen Sie die Verfügbarkeit in anderen Filialen im Warenkorb.",
-    "error_invalid_zip_code": "Bitte geben Sie eine gültige Postleitzahl ein.",
-    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe.",
+    "error_title": "Leider konnte deine Reservierung nicht abgeschlossen werden.",
+    "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfe die Verfügbarkeit in anderen Filialen im Warenkorb.",
+    "error_invalid_zip_code": "Bitte gib eine gültige Postleitzahl ein.",
+    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen deine Eingabe.",
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
@@ -282,13 +282,13 @@
     "change_fulfillment_method": "Liefermethode ändern",
     "fulfillment": {
       "heading": "Verfügbarkeit",
-      "direct_ship": "Online bestellen",
       "ropis": "Click & Reserve",
       "bopis": "Click & Collect",
+      "direct_ship": "Online bestellen",
       "error": {
-        "direct_ship": "Dieses Produkt steht nicht für den Versand zur Verfügung. Bitte wählen Sie eine andere Option oder prüfen Sie die Verfügbarkeit in einer Filiale in Ihrer Nähe.",
-        "reserve": "Dieses Produkt ist nicht in der gewählten Filiale verfügrbar. Bitte wählen Sie eine andere Filiale.",
-        "not_ready": "Bitte wählen Sie eine Filiale."
+        "direct_ship": "Dieses Produkt steht nicht für den Versand zur Verfügung. Bitte wähle eine andere Option oder prüfe die Verfügbarkeit in einer Filiale in deiner Nähe.",
+        "reserve": "Dieses Produkt ist nicht in der gewählten Filiale verfügbar. Bitte wähle eine andere Filiale.",
+        "not_ready": "Bitte wähle eine Filiale."
       }
     },
     "stock_info": {
@@ -303,7 +303,7 @@
     "no_available": "nicht verfügbar",
     "multi_location_modal": {
       "title": "Filiale wechseln",
-      "message": "Sie haben bereits Produkte von einer anderen Filiale im Warenkorb. Diese Produkte werden zur neuen Filiale geändert. Preise und Verfügbarkeit können sich unterscheiden.",
+      "message": "Du hast bereits Produkte von einer anderen Filiale im Warenkorb. Diese Produkte werden zur neuen Filiale geändert. Preise und Verfügbarkeit können sich unterscheiden.",
       "change_store": "Filiale wechseln"
     }
   },
@@ -322,13 +322,13 @@
     }
   },
   "search": {
-    "label": "Suche",
-    "cancel": "Abbrechen",
     "no_result": {
       "heading": "Ups!",
-      "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
+      "body": "Deine Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
     },
-    "placeholder": "Suchen"
+    "placeholder": "Suchen",
+    "label": "Suche",
+    "cancel": "Abbrechen"
   },
   "shipping": {
     "unknown": "zzgl. Versand",
@@ -344,7 +344,7 @@
     "dismiss": "Abbrechen",
     "ok": "Okay",
     "title_error": "Ups!",
-    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut."
   },
   "cart": {
     "grand_total": "Summe",
@@ -367,7 +367,7 @@
     "reserve": "Reserve",
     "remove": "Entfernen",
     "edit": "Bearbeiten",
-    "empty": "Ihr Warenkorb ist leer",
+    "empty": "Dein Warenkorb ist leer",
     "continue": "Weiter shoppen",
     "redeem_coupon": "Gutscheincode eingeben",
     "submit_coupon": "Gutscheincode absenden",
@@ -375,7 +375,7 @@
     "coupon_code": "Code",
     "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!",
-    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein",
+    "coupons_not_supported": "Löse Gutscheine und Geschenkkarten im nächsten Schritt ein",
     "free_shipping": "Kostenloser Versand",
     "allow_substitution_all": "Ersatzartikel für alle Produkte erlauben?",
     "allow_substitution": "Ersatzartikel erlauben",
@@ -392,7 +392,7 @@
         "2000": "Dieser Gutschein ist ungültig.",
         "2001": "Der Gutschein ist erst gültig ab {startDate, date, yyyyMMdd} {startDate, time, short} Uhr.",
         "2002": "Der Gutschein ist abgelaufen am {endDate, date, yyyyMMdd} {endDate, time, short} Uhr.",
-        "2003": "Der Gutschein ist nicht gültig für Ihren aktuellen Warenkorb.",
+        "2003": "Der Gutschein ist nicht gültig für deinen aktuellen Warenkorb.",
         "2004": "Dieser Gutschein wurde bereits eingelöst.",
         "2005": "Dieser Gutschein hat das Limit der maximalen Einlösungen erreicht.",
         "404": "Dieser Gutschein existiert nicht.",
@@ -400,16 +400,16 @@
       },
       "1001": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
       "1002": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
-      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wählen Sie ein anderes Zeitfenster aus.",
+      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wähle ein anderes Zeitfenster aus.",
       "404": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
       "generic": "Ein unerwarteter Fehler ist aufgetreten.",
       "insufficientstock": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
       "multiplelocations": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
       "productsNotFound": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
-      "mixed_cart": "Reservierungen und Online Bestellungen müssen in separaten Bestellungen aufgegeben werden. Bitte aktualisieren Sie die Produkte, sodass im Warenkorb entweder nur Online Bestellungen oder Reservierungen sind.",
-      "direct_ship_item": "Prüfen Sie, ob dieses Produkt in einer Filiale in Ihrer Nähe reserviert werden kann.",
-      "ropis_cart_inventory": "Nicht alle Produkte können reserviert werden. Bitte überprüfen Sie die Fehler und ändern Sie die Lieferoptionen.",
-      "ropis_item_inventory": "Dieses Produkt kann in der gewünschten Filiale nicht reserviert werden. Prüfen Sie, ob es in einer anderen Filiale vorrätig ist.",
+      "mixed_cart": "Reservierungen und Online Bestellungen müssen in separaten Bestellungen aufgegeben werden. Bitte aktualisiere die Produkte, sodass im Warenkorb entweder nur Online Bestellungen oder Reservierungen sind.",
+      "direct_ship_item": "Prüfe, ob dieses Produkt in einer Filiale in deiner Nähe reserviert werden kann.",
+      "ropis_cart_inventory": "Nicht alle Produkte können reserviert werden. Bitte überprüfe die Fehler und ändere die Lieferoptionen.",
+      "ropis_item_inventory": "Dieses Produkt kann in der gewünschten Filiale nicht reserviert werden. Prüfe, ob es in einer anderen Filiale vorrätig ist.",
       "ropis_item_inventory_exceed": "Gewünschte Anzahl nicht verfügbar bei {storeName}. Die maximale Anzahl von {inventory} wird reserviert.",
       "mixed_cart_coupon_removed": "Der Gutschein \"{code}\" ist nicht verfügbar für Reservierungen."
     },
@@ -425,19 +425,19 @@
   },
   "login": {
     "headline": "Willkommen!",
-    "subline": "Bitte melden Sie sich an, um fortzufahren.",
+    "subline": "Bitte melde dich an, um fortzufahren",
     "email": "E-Mail",
     "password": "Passwort",
     "forgot_password": "Passwort vergessen?",
-    "forgot_password_popup": "Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.",
+    "forgot_password_popup": "Bitte benutze die Desktop-Website, um Dein Passwort zurückzusetzen.",
     "button": "Anmelden",
-    "no_account": "Sie haben noch kein Konto?",
-    "signup": "Registrieren",
-    "logout_message": "Sie wurden ausgeloggt.",
+    "no_account": "Du hast noch kein Konto?",
+    "register": "Starte hier.",
+    "logout_message": "Du wurdest ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
-      "subline": "Bitte geben Sie Ihre Email-Adresse ein.",
-      "reset_instructions": "Sie erhalten eine Email zum Zurücksetzen Ihres Passworts an {email}",
+      "subline": "Bitte gib deine Email-Adresse ein.",
+      "reset_instructions": "Du erhälst eine Email zum Zurücksetzen deines Passworts an {email}",
       "back_to_login": "Zurück zur Anmeldung",
       "customer_not_found": "Zu dieser Email Adresse liegt und kein Account vor."
     }
@@ -468,21 +468,21 @@
   },
   "reviews": {
     "rating": "Bewertung",
-    "no_reviews": "Verfassen Sie die erste Bewertung.",
+    "no_reviews": "Verfasse die erste Bewertung.",
     "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
     "button_add": "Produkt bewerten",
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
     "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}} von {maxRate}.",
-    "review_form_rate": "Bewerten Sie dieses Produkt:",
+    "review_form_rate": "Bewerte dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
-    "review_form_text": "Ihre Bewertung (optional)",
-    "review_form_error_author_empty": "Bitte geben Sie einen Namen an.",
-    "review_form_rate_error": "Wie viele Sterne vergeben Sie?",
+    "review_form_text": "Deine Bewertung (optional)",
+    "review_form_error_author_empty": "Bitte gib einen Namen an.",
+    "review_form_rate_error": "Wie viele Sterne vergibst du?",
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
-    "success_message": "Vielen Dank für Ihre Bewertung!"
+    "success_message": "Vielen Dank für deine Bewertung!"
   },
   "tab_bar": {
     "home": "Home",
@@ -492,7 +492,7 @@
     "favorites": "Wunschliste"
   },
   "scanner": {
-    "instructions": "Bitte positionieren Sie den Barcode oder QR-Code in der Mitte. Die Erkennung erfolgt automatisch.",
+    "instructions": "Bitte positioniere den Barcode oder QR-Code in der Mitte. Die Erkennung erfolgt automatisch.",
     "noResult": {
       "qrCode": "Wir konnten für diesen QR-Code kein Ergebnis finden.",
       "barCode": "Produkt nicht gefunden."
@@ -501,38 +501,32 @@
   "permissions": {
     "access_denied": {
       "settings_button": "Zu den Einstellungen",
-      "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
+      "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlaube den Zugriff in den Einstellungen.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
   },
   "checkout": {
-    "summary": {
-      "headline": "Zusammenfassung",
-      "tax": "Steuern",
-      "subTotal": "Zwischensumme",
-      "total": "Summe"
-    },
-    "errors": {
-      "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
-      "checkCart": "Bitte überprüfen Sie Ihren Warenkorb.",
-      "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
-      "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
-      "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
-      "noPaymentTransaction": "Keine Payment Transaktion verfügbar.",
-      "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse"
-    },
     "submit_order": "Jetzt kaufen",
     "continue_payment": "Weiter zur Zahlung",
+    "continue": "Weiter",
+    "steps": "Schritt {from} von {to}",
+    "change_contacts": "Kontakt ändern",
+    "change_addresses": "Adresse ändern",
     "payment": {
       "title": "Wie möchtest du bezahlen?",
       "buttons": {
         "stripe": "Kreditkarte"
       }
     },
-    "continue": "Weiter",
-    "steps": "Schritt {from} von {to}",
-    "change_contacts": "Change Contacts",
-    "change_addresses": "Change Addresses",
+    "errors": {
+      "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
+      "checkCart": "Bitte überprüfe Deinen Warenkorb.",
+      "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
+      "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
+      "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
+      "noPaymentTransaction": "Keine Payment Transaktion verfügbar.",
+      "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse"
+    },
     "pickup_contact": {
       "headline": "Kontakt zur Abholung",
       "headline_reserve": "Kontakt zur Abholung",
@@ -570,9 +564,15 @@
       "cvc": "Sicherheitscode *",
       "expiry": "Gültig bis *"
     },
+    "summary": {
+      "headline": "Zusammenfassung",
+      "tax": "Steuern",
+      "subTotal": "Zwischensumme",
+      "total": "Summe"
+    },
     "success": {
-      "title": "Vielen Dank für Ihre Bestellung",
-      "instructions_1": "Folgend findest Du Deine Bestellinformationen. Bei Fragen bzgl. der Bestellung, bitte kontaktiere deine Filiale.",
+      "title": "Vielen Dank für deine Bestellung",
+      "instructions_1": "Folgend findest du deine Bestellinformationen. Bei Fragen bzgl. der Bestellung, bitte kontaktiere deine Filiale.",
       "instructions_2": "Bitte beachte das die Abholzeiten aufgrund von Feiertagen und Wochenenden variieren können.",
       "order_number": "Bestellnummer: {orderNumber}",
       "order_date": "Bestelldatum: {date}",
@@ -625,7 +625,7 @@
       "order_status": "Status: {status}"
     },
     "authenticate": {
-      "instructions": "Bitte authentifiziere Dich mit Deiner E-Mail und Telefonnummer, die für die Bestellung verwendet wurde.",
+      "instructions": "Bitte authentifiziere Dich mit deiner E-Mail und Telefonnummer, die für die Bestellung verwendet wurde.",
       "or_login": "Oder einloggen"
     },
     "errors": {
@@ -638,7 +638,7 @@
       "button": "Bestellung stornieren",
       "modal": {
         "title": "Stornierung",
-        "message": "Willst Du wirklich die Bestellung stornieren? Dieser Vorgang kann nicht rückgängig gemacht werden!",
+        "message": "Willst du wirklich die Bestellung stornieren? Dieser Vorgang kann nicht rückgängig gemacht werden!",
         "confirm": "Ja, Bestellung stornieren"
       }
     }
@@ -665,11 +665,11 @@
     }
   },
   "error": {
-    "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
+    "general": "Verbindungsproblem. Bitte überprüfe deine Internetverbindung oder versuche es später noch einmal."
   },
   "tracking": {
     "cookieConsent": {
-      "message": "Wir verwenden Cookies, damit Sie den besten Service genießen können.",
+      "message": "Wir verwenden Cookies, damit du den besten Service genießen kannst.",
       "learnMore": "Mehr erfahren",
       "decline": "Ablehnen",
       "save": "Speichern",
@@ -681,11 +681,11 @@
     }
   },
   "validation": {
-    "required": "Bitte vervollständigen Sie dieses Feld",
-    "email": "Geben Sie bitte eine gültige E-Mail-Adresse ein",
-    "numeric": "Bitte geben Sie nur Zahlen ein",
-    "alphaNumeric": "Geben Sie bitte nur Buchstaben und Zahlen ein",
-    "mobileNumber": "Geben Sie bitte eine gültige Handynummer ein"
+    "required": "Bitte vervollständige dieses Feld",
+    "email": "Gib bitte eine gültige E-Mail-Adresse ein",
+    "numeric": "Bitte gib nur Zahlen ein",
+    "alphaNumeric": "Gib bitte nur Buchstaben und Zahlen ein",
+    "mobileNumber": "Gib bitte eine gültige Handynummer ein"
   },
   "formats": {
     "date": {
