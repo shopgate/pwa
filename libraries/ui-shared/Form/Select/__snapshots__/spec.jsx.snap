@@ -3,6 +3,7 @@
 exports[`<Select /> should render select with 1 selected option 1`] = `
 <Select
   className=""
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -20,6 +21,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -35,6 +37,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     >
       <select
         className="css-1ayo3zo select"
+        disabled={false}
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -111,6 +114,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
 exports[`<Select /> should render select with 2 options 1`] = `
 <Select
   className=""
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -128,6 +132,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -143,6 +148,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     >
       <select
         className="css-1ayo3zo select"
+        disabled={false}
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -219,6 +225,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
 exports[`<Select /> should render select with no options 1`] = `
 <Select
   className=""
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -231,6 +238,7 @@ exports[`<Select /> should render select with no options 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -246,6 +254,7 @@ exports[`<Select /> should render select with no options 1`] = `
     >
       <select
         className="css-1ayo3zo select"
+        disabled={false}
         id="test-name"
         name="test-name"
         onBlur={[Function]}

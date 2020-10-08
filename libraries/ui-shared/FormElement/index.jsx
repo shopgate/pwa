@@ -18,6 +18,7 @@ class FormElement extends Component {
       PropTypes.string,
       PropTypes.shape(),
     ]),
+    disabled: PropTypes.bool,
     errorText: PropTypes.node,
     hasPlaceholder: PropTypes.bool,
     hasUnderline: PropTypes.bool,
@@ -39,6 +40,7 @@ class FormElement extends Component {
     hasPlaceholder: true,
     hasUnderline: true,
     translateErrorText: true,
+    disabled: false,
   };
 
   /**
@@ -68,14 +70,16 @@ class FormElement extends Component {
   render() {
     const {
       isFocused, errorText, translateErrorText,
-      placeholder, hasPlaceholder, htmlFor, label, className,
+      placeholder, hasPlaceholder, htmlFor, label, className, disabled,
     } = this.props;
 
     return (
       <div className={classNames(
         style.formElement,
         className,
-        'formElement'
+        'formElement', {
+          disabled,
+        }
       )}
       >
         {hasPlaceholder && (placeholder || label) &&

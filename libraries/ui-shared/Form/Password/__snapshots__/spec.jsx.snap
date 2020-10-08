@@ -38,6 +38,7 @@ exports[`<Password> should render a password field 1`] = `
   >
     <FormElement
       className=""
+      disabled={false}
       errorText=""
       hasPlaceholder={true}
       hasUnderline={true}

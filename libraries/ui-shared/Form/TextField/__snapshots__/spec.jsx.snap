@@ -19,6 +19,7 @@ exports[`<TextField> should focus the input 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -144,6 +145,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -269,6 +271,7 @@ exports[`<TextField> should render a simple text field 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -395,6 +398,7 @@ exports[`<TextField> should render the text field as password 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -521,6 +525,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -647,6 +652,7 @@ exports[`<TextField> should sanitize the input 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -773,6 +779,7 @@ exports[`<TextField> should show the error message 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText="This is an error here"
     hasPlaceholder={true}
     hasUnderline={true}
@@ -921,6 +928,7 @@ exports[`<TextField> should show the label 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -1098,6 +1106,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -1264,6 +1273,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
 >
   <FormElement
     className=""
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}

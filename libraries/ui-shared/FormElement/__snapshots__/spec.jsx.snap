@@ -3,6 +3,7 @@
 exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
 <FormElement
   className=""
+  disabled={false}
   errorText=""
   hasPlaceholder={true}
   hasUnderline={true}
@@ -49,7 +50,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       label="testlabel"
     >
       <label
-        className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
+        className="css-1nn9zl4 css-1r91c0g css-1jyyyen label floating"
         htmlFor="test-input"
       >
         <Translate
@@ -93,6 +94,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
 exports[`<FormElement /> should render a focused form element 1`] = `
 <FormElement
   className=""
+  disabled={false}
   errorText=""
   hasPlaceholder={true}
   hasUnderline={true}
@@ -130,6 +132,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
 exports[`<FormElement /> should render a form element with 1 child 1`] = `
 <FormElement
   className=""
+  disabled={false}
   errorText=""
   hasPlaceholder={true}
   hasUnderline={true}
@@ -171,6 +174,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
 exports[`<FormElement /> should render a form element with no children 1`] = `
 <FormElement
   className=""
+  disabled={false}
   errorText=""
   hasPlaceholder={true}
   hasUnderline={true}
@@ -209,6 +213,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
 exports[`<FormElement /> should show the error message 1`] = `
 <FormElement
   className=""
+  disabled={false}
   errorText="The error text"
   hasPlaceholder={true}
   hasUnderline={true}
@@ -270,6 +275,7 @@ exports[`<FormElement /> should show the error message 1`] = `
 exports[`<FormElement /> should show the label 1`] = `
 <FormElement
   className=""
+  disabled={false}
   errorText=""
   hasPlaceholder={true}
   hasUnderline={true}
@@ -360,6 +366,7 @@ exports[`<FormElement /> should show the label 1`] = `
 exports[`<FormElement /> should show the placeholder text 1`] = `
 <FormElement
   className=""
+  disabled={false}
   errorText=""
   hasPlaceholder={true}
   hasUnderline={true}

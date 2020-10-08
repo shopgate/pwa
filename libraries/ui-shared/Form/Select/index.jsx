@@ -12,6 +12,7 @@ class Select extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
+    disabled: PropTypes.bool,
     errorText: PropTypes.node,
     isControlled: PropTypes.bool,
     label: PropTypes.node,
@@ -32,6 +33,7 @@ class Select extends Component {
     options: {},
     translateErrorText: true,
     value: '',
+    disabled: false,
   };
 
   /**
@@ -78,7 +80,9 @@ class Select extends Component {
    * @return {JSX}
    */
   render() {
-    const { name, options, translateErrorText } = this.props;
+    const {
+      name, options, translateErrorText, disabled,
+    } = this.props;
     return (
       <FormElement
         className={this.props.className}
@@ -89,6 +93,8 @@ class Select extends Component {
         translateErrorText={translateErrorText}
         isFocused={this.state.isFocused}
         hasValue={!!this.state.value}
+        hasPlaceholder={!disabled || this.state.value !== ''}
+        disabled={disabled}
       >
         <select
           id={this.props.name}
@@ -98,6 +104,7 @@ class Select extends Component {
           onBlur={() => this.handleFocusChange(false)}
           value={this.state.value}
           className={classNames(styles.select, 'select')}
+          disabled={disabled}
         >
           {
             Object.keys(options).map(key => (

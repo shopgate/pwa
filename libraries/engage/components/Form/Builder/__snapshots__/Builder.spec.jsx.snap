@@ -99,6 +99,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -143,7 +144,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     name="foo_foo"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label"
+                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -163,6 +164,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_foo"
                     inputComponent="input"
                     isControlled={true}
@@ -179,6 +181,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_foo"
                       inputComponent="input"
                       isControlled={true}
@@ -372,6 +375,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -436,6 +440,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_foo"
                     inputComponent="input"
                     isControlled={true}
@@ -452,6 +457,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_foo"
                       inputComponent="input"
                       isControlled={true}
@@ -585,6 +591,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -649,6 +656,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_bar"
                     inputComponent="input"
                     isControlled={true}
@@ -665,6 +673,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_bar"
                       inputComponent="input"
                       isControlled={true}
@@ -858,6 +867,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -902,7 +912,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     name="foo_foo"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label"
+                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -922,6 +932,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_foo"
                     inputComponent="input"
                     isControlled={true}
@@ -938,6 +949,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_foo"
                       inputComponent="input"
                       isControlled={true}
@@ -1292,6 +1304,7 @@ exports[`<Builder /> should render two text fields 1`] = `
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -1356,6 +1369,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_firstName"
                     inputComponent="input"
                     isControlled={true}
@@ -1372,6 +1386,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_firstName"
                       inputComponent="input"
                       isControlled={true}
@@ -1492,6 +1507,7 @@ exports[`<Builder /> should render two text fields 1`] = `
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -1556,6 +1572,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_lastName"
                     inputComponent="input"
                     isControlled={true}
@@ -1572,6 +1589,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_lastName"
                       inputComponent="input"
                       isControlled={true}
@@ -1772,6 +1790,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -1816,7 +1835,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     name="foo_foo"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label"
+                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -1836,6 +1855,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_foo"
                     inputComponent="input"
                     isControlled={true}
@@ -1852,6 +1872,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_foo"
                       inputComponent="input"
                       isControlled={true}
@@ -1990,6 +2011,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -2034,7 +2056,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     name="foo_bar"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label"
+                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_bar"
                     >
                       <Translate
@@ -2054,6 +2076,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_bar"
                     inputComponent="input"
                     isControlled={true}
@@ -2070,6 +2093,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_bar"
                       inputComponent="input"
                       isControlled={true}
@@ -2270,6 +2294,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -2314,7 +2339,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     name="foo_foo"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label"
+                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -2334,6 +2359,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_foo"
                     inputComponent="input"
                     isControlled={true}
@@ -2350,6 +2376,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_foo"
                       inputComponent="input"
                       isControlled={true}
@@ -2488,6 +2515,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
             >
               <TextField
                 className=""
+                disabled={false}
                 errorText=""
                 hintText=""
                 inputComponent="input"
@@ -2532,7 +2560,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     name="foo_bar"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label"
+                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_bar"
                     >
                       <Translate
@@ -2552,6 +2580,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     </label>
                   </Label>
                   <FormElement
+                    disabled={false}
                     id="foo_bar"
                     inputComponent="input"
                     isControlled={true}
@@ -2568,6 +2597,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <_default
                       className="css-keangt"
+                      disabled={false}
                       id="foo_bar"
                       inputComponent="input"
                       isControlled={true}

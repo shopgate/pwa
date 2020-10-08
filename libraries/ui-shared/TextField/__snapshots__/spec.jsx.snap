@@ -3,6 +3,7 @@
 exports[`<TextField /> should focus the input 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -60,6 +61,7 @@ exports[`<TextField /> should focus the input 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -76,6 +78,7 @@ exports[`<TextField /> should focus the input 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -173,6 +176,7 @@ exports[`<TextField /> should focus the input 1`] = `
 exports[`<TextField /> should receive the correct value while typing 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -230,6 +234,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -246,6 +251,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -343,6 +349,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
 exports[`<TextField /> should render a simple text field 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -400,6 +407,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -416,6 +424,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -513,6 +522,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
 exports[`<TextField /> should render the text field as password 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -570,6 +580,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -586,6 +597,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -683,6 +695,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
 exports[`<TextField /> should render the text field with a default value 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -727,7 +740,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-16msjt6 css-1fekhao label"
+        className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
         htmlFor="test-input"
       >
         <Translate
@@ -740,6 +753,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -756,6 +770,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -853,6 +868,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
 exports[`<TextField /> should replace the error text with custom validation error 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -910,6 +926,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -926,6 +943,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -1029,6 +1047,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
 exports[`<TextField /> should sanitize the input 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -1086,6 +1105,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -1102,6 +1122,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -1199,6 +1220,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
 exports[`<TextField /> should show the error message 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText="This is an error here"
   hintText=""
   inputComponent="input"
@@ -1256,6 +1278,7 @@ exports[`<TextField /> should show the error message 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -1272,6 +1295,7 @@ exports[`<TextField /> should show the error message 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -1375,6 +1399,7 @@ exports[`<TextField /> should show the error message 1`] = `
 exports[`<TextField /> should show the hint text 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText="This is the hint text"
   inputComponent="input"
@@ -1439,6 +1464,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -1455,6 +1481,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -1552,6 +1579,7 @@ exports[`<TextField /> should show the hint text 1`] = `
 exports[`<TextField /> should show the label 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -1616,6 +1644,7 @@ exports[`<TextField /> should show the label 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -1632,6 +1661,7 @@ exports[`<TextField /> should show the label 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}
@@ -1729,6 +1759,7 @@ exports[`<TextField /> should show the label 1`] = `
 exports[`<TextField /> should trigger the validation callback 1`] = `
 <TextField
   className=""
+  disabled={false}
   errorText=""
   hintText=""
   inputComponent="input"
@@ -1800,6 +1831,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </label>
     </Label>
     <FormElement
+      disabled={false}
       id="test-input"
       inputComponent="input"
       isControlled={false}
@@ -1816,6 +1848,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     >
       <_default
         className="css-keangt"
+        disabled={false}
         id="test-input"
         inputComponent="input"
         isControlled={false}

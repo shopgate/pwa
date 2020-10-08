@@ -51,12 +51,16 @@ export const OUTLINED_FORM_FIELDS = {
     ...(!isIOSTheme() ? {
       paddingLeft: 24,
       color: 'var(--color-text-low-emphasis)',
+      transform: 'translate3d(0, -18px, 0) scale3d(0.75, 0.75, 0.75)',
     } : {}),
   },
   ' .textField label': {
     ...(!isIOSTheme() ? {
-      paddingLeft: 24,
+      paddingLeft: 17,
       color: 'var(--color-text-low-emphasis)',
+      '.floating': {
+        transform: 'translate3d(3px, -18px, 0) scale3d(0.75, 0.75, 0.75)',
+      },
     } : {}),
   },
   ' .formElement:not(.radioGroup) select': {
@@ -73,9 +77,17 @@ export const OUTLINED_FORM_FIELDS = {
   },
   ' .formElement:not(.radioGroup) .placeholder': {
     ...(!isIOSTheme() ? {
-      paddingLeft: 24,
+      paddingLeft: 20,
       color: 'var(--color-text-low-emphasis)',
     } : {}),
+  },
+  ' .formElement.disabled, .textField.disabled': {
+    ' input, select, svg': {
+      opacity: 0.28,
+    },
+    ' .label': {
+      opacity: 0.6,
+    },
   },
   ' .textField input': {
     ...(!isIOSTheme() ? {

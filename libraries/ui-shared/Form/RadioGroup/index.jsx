@@ -18,12 +18,13 @@ class RadioGroup extends Component {
     ]),
     /* Flex direction for radio group */
     direction: PropTypes.string,
+    disabled: PropTypes.bool,
     errorText: PropTypes.string,
     isControlled: PropTypes.bool,
     label: PropTypes.string,
     onChange: PropTypes.func,
-    translateErrorText: PropTypes.bool,
     /* Radio group value */
+    translateErrorText: PropTypes.bool,
     value: PropTypes.string,
   }
 
@@ -32,6 +33,7 @@ class RadioGroup extends Component {
     children: null,
     className: '',
     direction: 'column',
+    disabled: false,
     errorText: '',
     isControlled: false,
     label: '',
@@ -61,6 +63,10 @@ class RadioGroup extends Component {
    * @param {string} event click from radio element
    */
   handleChange = ({ target: { name } }) => {
+    if (this.props.disabled) {
+      return;
+    }
+
     if (!this.props.isControlled) {
       this.setState({ value: name });
     }
@@ -73,12 +79,14 @@ class RadioGroup extends Component {
    */
   render() {
     const {
-      children, className, label, errorText, direction, name, translateErrorText,
+      children, className, label, errorText, direction, name, translateErrorText, disabled,
     } = this.props;
 
     return (
       <FormElement
-        className={classNames(formElement, className, 'radioGroup')}
+        className={classNames(formElement, className, 'radioGroup', {
+          disabled,
+        })}
         label={label}
         errorText={errorText}
         translateErrorText={translateErrorText}

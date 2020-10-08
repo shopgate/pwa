@@ -53,6 +53,7 @@ const ElementText = (props) => {
         errorText={errorText}
         isControlled
         translateErrorText={false}
+        disabled={element.disabled}
       />
     </div>
   );

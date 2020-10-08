@@ -16,7 +16,9 @@ const Label = (props) => {
     /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
     <label
       htmlFor={props.htmlFor}
-      className={classNames(labelStyles, 'label')}
+      className={classNames(labelStyles, 'label', {
+        floating: props.isFloating,
+      })}
     >
       <I18n.Text string={props.label} />
     </label>
