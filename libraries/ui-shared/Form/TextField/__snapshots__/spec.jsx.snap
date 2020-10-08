@@ -27,6 +27,7 @@ exports[`<TextField> should focus the input 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -153,6 +154,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -279,6 +281,7 @@ exports[`<TextField> should render a simple text field 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -406,6 +409,7 @@ exports[`<TextField> should render the text field as password 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -533,6 +537,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -660,6 +665,7 @@ exports[`<TextField> should sanitize the input 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -787,6 +793,7 @@ exports[`<TextField> should show the error message 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -936,6 +943,7 @@ exports[`<TextField> should show the label 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label="This is the label"
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -973,6 +981,7 @@ exports[`<TextField> should show the label 1`] = `
         isFloating={false}
         isFocused={false}
         label="This is the label"
+        labelStatic={false}
       >
         <label
           className="css-1nn9zl4 css-1jyyyen label"
@@ -1114,6 +1123,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder="This is the placeholder text"
     translateErrorText={true}
   >
@@ -1281,6 +1291,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     htmlFor="test-input"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >

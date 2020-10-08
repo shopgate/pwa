@@ -9,18 +9,20 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Label = (props) => {
-  const labelStyles = styles.labelStyles(props.isFocused, props.isFloating, props.hasErrorMessage);
+const Label = ({
+  hasErrorMessage, htmlFor, isFloating, isFocused, label, labelStatic,
+}) => {
+  const labelStyles = styles.labelStyles(isFocused, isFloating, hasErrorMessage, labelStatic);
 
   return (
     /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
     <label
-      htmlFor={props.htmlFor}
+      htmlFor={htmlFor}
       className={classNames(labelStyles, 'label', {
-        floating: props.isFloating,
+        floating: isFloating,
       })}
     >
-      <I18n.Text string={props.label} />
+      <I18n.Text string={label} />
     </label>
   );
 };
@@ -34,6 +36,7 @@ Label.propTypes = {
     PropTypes.string,
     PropTypes.node,
   ]),
+  labelStatic: PropTypes.bool,
 };
 
 Label.defaultProps = {
@@ -42,6 +45,7 @@ Label.defaultProps = {
   isFloating: false,
   hasErrorMessage: false,
   label: '',
+  labelStatic: false,
 };
 
 export default Label;

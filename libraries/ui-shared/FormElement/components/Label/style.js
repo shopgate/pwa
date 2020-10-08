@@ -62,23 +62,31 @@ const label = css({
   ...ellipsisLine,
 }).toString();
 
+const labelStatic = css({
+  opacity: 1,
+  lineHeight: '19px',
+  pointerEvents: 'none',
+  userSelect: 'none',
+  color: themeConfig.colors.shade12,
+}).toString();
+
 /**
  * Gets the style classes for the label.
  * @param {boolean} focused Whether the input field is focused.
  * @param {boolean} floating Whether the label is floating.
  * @param {boolean} error Whether the input field shows an error message.
+ * @param {boolean} isStatic Whether the label is static.
  * @return {string} The style classes.
  */
-const labelStyles = (focused = false, floating = false, error = false) => (
-  classNames(
-    label,
-    {
-      [labelFloating]: floating,
-      [labelRegular]: !focused,
-      [labelFocus]: !error && focused,
-      [labelError]: error && focused,
-    }
-  )
+const labelStyles = (focused = false, floating = false, error = false, isStatic = false) => (
+  classNames({
+    [label]: !isStatic,
+    [labelStatic]: isStatic,
+    [labelFloating]: floating,
+    [labelRegular]: !focused,
+    [labelFocus]: !error && focused,
+    [labelError]: error && focused,
+  })
 );
 
 export default {

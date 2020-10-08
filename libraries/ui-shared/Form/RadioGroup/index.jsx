@@ -3,7 +3,7 @@ import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
-import style, { formElement } from './style';
+import style from './style';
 
 /**
  * RadioGroup component.
@@ -84,10 +84,11 @@ class RadioGroup extends Component {
 
     return (
       <FormElement
-        className={classNames(formElement, className, 'radioGroup', {
+        className={classNames(className, 'radioGroup', {
           disabled,
         })}
         label={label}
+        labelStatic
         errorText={errorText}
         translateErrorText={translateErrorText}
         htmlFor="none"

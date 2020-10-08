@@ -26,7 +26,6 @@ const styles = {
     },
     ' .guestFormPickupPerson .label span': {
       color: 'var(--color-text-high-emphasis)',
-      fontSize: 20,
       fontWeight: 'bold',
     },
     ' .guestFormPickupPerson .radioGroup': {

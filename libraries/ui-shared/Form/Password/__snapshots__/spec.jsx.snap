@@ -46,6 +46,7 @@ exports[`<Password> should render a password field 1`] = `
       htmlFor="test-input"
       isFocused={false}
       label=""
+      labelStatic={false}
       placeholder=""
       translateErrorText={true}
     >

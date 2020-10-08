@@ -29,6 +29,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     htmlFor="test-name"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -140,6 +141,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     htmlFor="test-name"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
@@ -246,6 +248,7 @@ exports[`<Select /> should render select with no options 1`] = `
     htmlFor="test-name"
     isFocused={false}
     label=""
+    labelStatic={false}
     placeholder=""
     translateErrorText={true}
   >
