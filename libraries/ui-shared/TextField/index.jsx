@@ -19,6 +19,7 @@ class TextField extends Component {
       PropTypes.string,
       PropTypes.shape(),
     ]),
+    disabled: PropTypes.bool,
     errorText: PropTypes.node,
     hintText: PropTypes.node,
     /* eslint-disable-next-line react/forbid-prop-types */
@@ -54,6 +55,7 @@ class TextField extends Component {
     type: 'text',
     value: '',
     inputComponent: 'input',
+    disabled: false,
   };
 
   /**
@@ -155,7 +157,10 @@ class TextField extends Component {
     const style = styles.container[styleType];
 
     return (
-      <div className={classNames(style, this.props.className, 'textField')}>
+      <div className={classNames(style, this.props.className, 'textField', {
+        disabled: this.props.disabled,
+      })}
+      >
         <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
         <Label
           name={this.props.name}
@@ -178,6 +183,7 @@ class TextField extends Component {
           value={this.props.value}
           isControlled={this.props.isControlled}
           inputComponent={this.props.inputComponent}
+          disabled={this.props.disabled}
         />
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
         <ErrorText

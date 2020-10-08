@@ -4,6 +4,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
 <RadioGroup
   className=""
   direction="column"
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -13,7 +14,8 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq radioGroup"
+    className="radioGroup"
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -21,11 +23,12 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     htmlFor="none"
     isFocused={false}
     label=""
+    labelStatic={true}
     placeholder=""
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
+      className="css-1vjh8yv radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -103,6 +106,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
 <RadioGroup
   className=""
   direction="column"
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -112,7 +116,8 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq radioGroup"
+    className="radioGroup"
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -120,11 +125,12 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     htmlFor="none"
     isFocused={false}
     label=""
+    labelStatic={true}
     placeholder=""
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
+      className="css-1vjh8yv radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -265,6 +271,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
 <RadioGroup
   className=""
   direction="column"
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -274,7 +281,8 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq radioGroup"
+    className="radioGroup"
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -282,11 +290,12 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     htmlFor="none"
     isFocused={false}
     label=""
+    labelStatic={true}
     placeholder=""
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
+      className="css-1vjh8yv radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -364,6 +373,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
 <RadioGroup
   className=""
   direction="column"
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -373,7 +383,8 @@ exports[`<RadioGroup /> should render empty group 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq radioGroup"
+    className="radioGroup"
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -381,11 +392,12 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     htmlFor="none"
     isFocused={false}
     label=""
+    labelStatic={true}
     placeholder=""
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
+      className="css-1vjh8yv radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -399,6 +411,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
 <RadioGroup
   className=""
   direction="rows"
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -408,7 +421,8 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
   value={null}
 >
   <FormElement
-    className="css-1klwfzq radioGroup"
+    className="radioGroup"
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -416,11 +430,12 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     htmlFor="none"
     isFocused={false}
     label=""
+    labelStatic={true}
     placeholder=""
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
+      className="css-1vjh8yv radioGroup formElement"
     >
       <div
         className="css-1gehsfr radioGroup"
@@ -498,6 +513,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
 <RadioGroup
   className=""
   direction="column"
+  disabled={false}
   errorText=""
   isControlled={false}
   label=""
@@ -507,7 +523,8 @@ exports[`<RadioGroup /> should use default value 1`] = `
   value="foo"
 >
   <FormElement
-    className="css-1klwfzq radioGroup"
+    className="radioGroup"
+    disabled={false}
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -515,11 +532,12 @@ exports[`<RadioGroup /> should use default value 1`] = `
     htmlFor="none"
     isFocused={false}
     label=""
+    labelStatic={true}
     placeholder=""
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq radioGroup formElement"
+      className="css-1vjh8yv radioGroup formElement"
     >
       <div
         className="css-1t62idy radioGroup"

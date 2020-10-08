@@ -74,6 +74,7 @@ type Props = {
   element: {
     default?: string,
     label?: string,
+    disabled?: bool,
     handleChange: (string, any) => void,
     config?: {
       supportedCountries?: string[],
@@ -108,6 +109,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     label,
     handleChange,
     default: defaultValue = '',
+    disabled = false,
     config: {
       supportedCountries = [],
       userLocation = {},
@@ -206,6 +208,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
         label={label}
         className={styles.formField}
         errorText={errorText}
+        disabled={disabled}
       />
     );
   }
@@ -224,6 +227,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
         placeholder={label}
         countries={countries}
         labels={labels}
+        disabled={disabled}
       />
       {!!errorText && (
         <div className={`errorText ${styles.phoneFieldErrorText}`}>

@@ -31,6 +31,7 @@ const ElementCheckbox = (props) => {
         label={element.label}
         onChange={element.handleChange}
         translateErrorText={false}
+        disabled={element.disabled}
       />
     </div>
   );

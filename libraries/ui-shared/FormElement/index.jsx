@@ -18,12 +18,14 @@ class FormElement extends Component {
       PropTypes.string,
       PropTypes.shape(),
     ]),
+    disabled: PropTypes.bool,
     errorText: PropTypes.node,
     hasPlaceholder: PropTypes.bool,
     hasUnderline: PropTypes.bool,
     hasValue: PropTypes.bool,
     isFocused: PropTypes.bool,
     label: PropTypes.node,
+    labelStatic: PropTypes.bool,
     placeholder: PropTypes.node,
     translateErrorText: PropTypes.bool,
   };
@@ -34,18 +36,20 @@ class FormElement extends Component {
     errorText: '',
     placeholder: '',
     label: '',
+    labelStatic: false,
     isFocused: false,
     hasValue: false,
     hasPlaceholder: true,
     hasUnderline: true,
     translateErrorText: true,
+    disabled: false,
   };
 
   /**
    * @returns {boolean} Whether the label is currently floating.
    */
   get isLabelFloating() {
-    return this.props.isFocused || this.props.hasValue;
+    return !this.props.labelStatic && (this.props.isFocused || this.props.hasValue);
   }
 
   /**
@@ -68,14 +72,16 @@ class FormElement extends Component {
   render() {
     const {
       isFocused, errorText, translateErrorText,
-      placeholder, hasPlaceholder, htmlFor, label, className,
+      placeholder, hasPlaceholder, htmlFor, label, className, disabled, labelStatic,
     } = this.props;
 
     return (
       <div className={classNames(
         style.formElement,
         className,
-        'formElement'
+        'formElement', {
+          disabled,
+        }
       )}
       >
         {hasPlaceholder && (placeholder || label) &&
@@ -90,6 +96,7 @@ class FormElement extends Component {
           <Label
             htmlFor={htmlFor}
             label={label}
+            labelStatic={labelStatic}
             isFocused={isFocused}
             isFloating={this.isLabelFloating}
             hasErrorMessage={this.hasErrorMessage}

@@ -42,6 +42,7 @@ const generateFormConfig = customerAttributes => ({
     emailAddress: {
       type: 'email',
       label: `${i18n.text('account.profile.form.emailAddress')} *`,
+      disabled: true,
     },
     marketingOptIn: {
       type: 'checkbox',

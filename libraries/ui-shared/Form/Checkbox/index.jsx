@@ -15,6 +15,7 @@ class Checkbox extends PureComponent {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     defaultChecked: PropTypes.bool,
+    disabled: PropTypes.bool,
     errorText: PropTypes.node,
     label: PropTypes.node,
     onChange: PropTypes.func,
@@ -28,6 +29,7 @@ class Checkbox extends PureComponent {
     label: '',
     onChange: () => {},
     translateErrorText: true,
+    disabled: false,
   };
 
   /**
@@ -45,6 +47,7 @@ class Checkbox extends PureComponent {
         translateErrorText={translateErrorText}
         hasUnderline={false}
         hasPlaceholder={false}
+        disabled={restProps.disabled}
       >
         <UICheckbox
           {...restProps}

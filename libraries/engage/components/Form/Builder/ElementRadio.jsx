@@ -33,6 +33,7 @@ const ElementRadio = (props) => {
         errorText={errorText}
         isControlled
         translateErrorText={false}
+        disabled={element.disabled}
       >
         {Object.keys(element.options).map(itemName => (
           <RadioItem

@@ -34,6 +34,7 @@ const ElementSelect = (props) => {
         errorText={errorText}
         isControlled
         translateErrorText={false}
+        disabled={element.disabled}
       />
     </div>
   );
