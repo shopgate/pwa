@@ -98,8 +98,12 @@ const PaymentMethodProvider = ({
     return transaction.paymentMethod.code;
   }, [order]);
   const paymentImpl = useMemo(
-    () => AVAILABLE_PAYMENT_METHOD.find(method => method.code === paymentMethodCode),
-    [paymentMethodCode]
+    () => AVAILABLE_PAYMENT_METHOD.find(method =>
+      method.code === paymentMethods
+        ?.find(p => p.code === paymentMethodCode)
+        ?.paymentProvider
+        ?.code),
+    [paymentMethodCode, paymentMethods]
   );
 
   // Global transaction handler
@@ -116,7 +120,7 @@ const PaymentMethodProvider = ({
   // Map configured payment methods
   const availablePaymentMethods = useMemo(
     () => paymentMethods.map(method => ({
-      ...AVAILABLE_PAYMENT_METHOD.find(m => m.code === method.code),
+      ...AVAILABLE_PAYMENT_METHOD.find(m => m.code === method.paymentProvider.code),
       internalCode: method.code,
     })),
     [paymentMethods]
@@ -195,4 +199,6 @@ PaymentMethodProvider.defaultProps = {
   paymentMethods: null,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethodProvider);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  PaymentMethodProvider
+);
