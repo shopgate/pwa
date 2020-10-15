@@ -1,4 +1,6 @@
 import { PipelineRequest, EVALIDATION } from '@shopgate/engage/core';
+import { extractAttributes } from '@shopgate/engage/account/helper/form';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import {
   SHOPGATE_USER_REGISTER,
 } from '../constants';
@@ -16,10 +18,12 @@ import {
  * @returns {Function} A redux thunk.
  */
 function submitRegistration(contacts, additionalData) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch(requestRegistration(contacts, additionalData));
 
-    const { marketingOptIn } = additionalData;
+    const customerAttributes = getMerchantCustomerAttributes(getState());
+    const { marketingOptIn, ...attributeData } = additionalData;
+    const attributes = extractAttributes(customerAttributes, attributeData);
 
     const request = new PipelineRequest(SHOPGATE_USER_REGISTER)
       .setTrusted()
@@ -27,6 +31,7 @@ function submitRegistration(contacts, additionalData) {
       .setInput({
         contacts,
         marketingOptIn,
+        attributes,
       })
       .dispatch();
 

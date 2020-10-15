@@ -17,6 +17,7 @@ import { deleteCustomerContact } from '../../actions/deleteContact';
 import { deleteCustomer as deleteCustomerAction } from '../../actions/deleteCustomer';
 import { getContacts } from '../../selectors/contacts';
 import { getCustomer } from '../../selectors/customer';
+import { extractAttributes } from '../../helper/form';
 import createConstraints from './Profile.constraints';
 
 const ProfileContext = createContext();
@@ -91,14 +92,7 @@ const ProfileProvider = ({
         settings: {
           marketingOptIn: values.marketingOptIn,
         },
-        attributes: merchantCustomerAttributes
-          .map(attribute => ({
-            code: attribute.code,
-            value: attribute.values?.length
-              ? { code: values[`attribute_${attribute.code}`] }
-              : values[`attribute_${attribute.code}`],
-          }))
-          .filter(attribute => attribute.value.length || attribute.value?.code?.length),
+        attributes: extractAttributes(merchantCustomerAttributes, values),
       });
 
       await fetchCustomer();
