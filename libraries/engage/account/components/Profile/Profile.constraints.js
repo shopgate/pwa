@@ -1,3 +1,5 @@
+import { generateFormConstraints } from '@shopgate/engage/account/helper/form';
+
 export default customerAttributes => ({
   firstName: {
     presence: {
@@ -20,17 +22,5 @@ export default customerAttributes => ({
       message: 'validation.email',
     },
   },
-  ...Object.assign({}, ...customerAttributes.map((attribute) => {
-    if (!attribute.isRequired) {
-      return {};
-    }
-    return {
-      [`attribute_${attribute.code}`]: {
-        presence: {
-          message: 'validation.required',
-          allowEmpty: false,
-        },
-      },
-    };
-  })),
+  ...generateFormConstraints(customerAttributes),
 });

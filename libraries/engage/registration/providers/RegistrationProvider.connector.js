@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { submitRegistration } from './RegistrationProvider.actions';
 
 /**
@@ -15,6 +16,7 @@ function makeMapStateToProps() {
     isDataReady: !getConfigFetching(state),
     shopSettings: getShopSettings(state),
     userLocation: getPreferredLocationAddress(state),
+    customerAttributes: getMerchantCustomerAttributes(state),
   });
 }
 

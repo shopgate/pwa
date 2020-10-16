@@ -1,35 +1,36 @@
 import React, { useMemo, useCallback } from 'react';
 import { FormBuilder } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
-import generateFormConfig from './RegistrationFormOptIn.config';
+import generateFormConfig from './RegistrationFormExtra.config';
 import { form } from './Registration.style';
 /**
  * @returns {JSX}
  */
-const RegistrationFormOptIn = () => {
+const RegistrationFormExtra = () => {
   const {
-    defaultOptInFormState,
-    updateOptInForm,
+    defaultExtraFormState,
+    updateExtraForm,
+    customerAttributes,
   } = useRegistration();
 
   const formConfig = useMemo(
-    () => generateFormConfig(),
-    []
+    () => generateFormConfig(customerAttributes),
+    [customerAttributes]
   );
 
   const handleUpdate = useCallback((values) => {
-    updateOptInForm(values);
-  }, [updateOptInForm]);
+    updateExtraForm(values);
+  }, [updateExtraForm]);
 
   return (
     <FormBuilder
       className={form}
-      name="RegistrationOptIn"
+      name="RegistrationExtra"
       config={formConfig}
-      defaults={defaultOptInFormState}
+      defaults={defaultExtraFormState}
       handleUpdate={handleUpdate}
     />
   );
 };
 
-export default RegistrationFormOptIn;
+export default RegistrationFormExtra;

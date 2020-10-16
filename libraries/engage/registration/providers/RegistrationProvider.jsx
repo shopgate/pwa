@@ -6,7 +6,7 @@ import { LoadingProvider, i18n } from '@shopgate/engage/core';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import Context from './RegistrationProvider.context';
-import { baseConstraints, shippingConstraints } from './RegistrationProvider.constraints';
+import { baseConstraints, shippingConstraints, generateExtraConstraints } from './RegistrationProvider.constraints';
 import connect from './RegistrationProvider.connector';
 import { MARKETING_OPT_IN_DEFAULT } from '../constants';
 
@@ -14,6 +14,7 @@ type Props = {
   children: any,
   shopSettings: any,
   userLocation: any,
+  customerAttributes: any,
   isDataReady: bool,
   submitRegistration: () => Promise<any>,
 };
@@ -60,12 +61,14 @@ const RegistrationProvider = ({
   isDataReady,
   shopSettings,
   userLocation,
+  customerAttributes,
   submitRegistration,
   children,
 }: Props) => {
   const [isLocked, setLocked] = useState(false);
   const [isBaseFormSubmitted, setIsBaseFormSubmitted] = useState(false);
   const [isShippingFormSubmitted, setIsShippingFormSubmitted] = useState(false);
+  const [isExtraFormSubmitted, setIsExtraFormSubmitted] = useState(false);
   const [baseFormRequestErrors, setBaseFormRequestErrors] = useState(null);
   const [shippingFormRequestErrors, setShippingFormRequestErrors] = useState(null);
 
@@ -76,6 +79,10 @@ const RegistrationProvider = ({
   );
 
   const userRegion = useMemo(() => userLocation?.region || null, [userLocation]);
+
+  const extraConstraints = useMemo(
+    () => generateExtraConstraints(customerAttributes), [customerAttributes]
+  );
 
   // Default form states
   const defaultBaseFormState = {
@@ -88,9 +95,11 @@ const RegistrationProvider = ({
     region: userRegion,
   }), [userCountry, userRegion]);
 
-  const defaultOptInFormState = {
+  const defaultExtraFormState = useMemo(() => ({
     ...initialOptInFormState,
-  };
+    ...Object.assign({}, ...customerAttributes
+      .map(attribute => ({ [`attribute_${attribute.code}`]: attribute.value?.code || attribute.value }))),
+  }), [customerAttributes]);
 
   // Form submit handlers
   const handleBaseFormSubmit = useCallback(() => {
@@ -100,6 +109,10 @@ const RegistrationProvider = ({
   const handleShippingFormSubmit = useCallback(() => {
     setIsShippingFormSubmitted(true);
   }, [setIsShippingFormSubmitted]);
+
+  const handleExtraFormSubmit = useCallback(() => {
+    setIsExtraFormSubmitted(true);
+  }, []);
 
   // Form states
   const baseFormState = useFormState(
@@ -114,20 +127,22 @@ const RegistrationProvider = ({
     shippingConstraints
   );
 
-  const optInFormState = useFormState(
-    defaultOptInFormState,
-    () => {}
+  const extraFormState = useFormState(
+    defaultExtraFormState,
+    handleExtraFormSubmit,
+    extraConstraints
   );
 
   // Central submit handler
   const handleSubmit = useCallback(() => {
     baseFormState.handleSubmit(new Event('submit'));
     shippingFormState.handleSubmit(new Event('submit'));
-  }, [baseFormState, shippingFormState]);
+    extraFormState.handleSubmit(new Event('submit'));
+  }, [baseFormState, extraFormState, shippingFormState]);
 
   useEffect(() => {
     // Break the process when both forms are not submitted yet
-    if (!isBaseFormSubmitted || !isShippingFormSubmitted) {
+    if (!isBaseFormSubmitted || !isShippingFormSubmitted || !isExtraFormSubmitted) {
       return;
     }
 
@@ -142,12 +157,10 @@ const RegistrationProvider = ({
     const fn = async () => {
       setLocked(true);
 
-      const { marketingOptIn } = optInFormState.values;
-
       const response = await submitRegistration(
         baseFormState.values,
         shippingFormState.values,
-        { marketingOptIn }
+        extraFormState.values
       );
 
       const { errors } = response || {};
@@ -171,8 +184,9 @@ const RegistrationProvider = ({
     shippingFormState.values,
     isBaseFormSubmitted,
     isShippingFormSubmitted,
+    isExtraFormSubmitted,
     submitRegistration,
-    optInFormState.values,
+    extraFormState.values,
   ]);
 
   useEffect(() => {
@@ -186,10 +200,11 @@ const RegistrationProvider = ({
   const value = useMemo(
     () => ({
       supportedCountries: shopSettings.supportedCountries || [],
+      customerAttributes,
       userLocation,
       defaultBaseFormState,
       defaultShippingFormState,
-      defaultOptInFormState,
+      defaultExtraFormState,
       baseFormValidationErrors: convertValidationErrors(
         baseFormState.validationErrors || baseFormRequestErrors || {}
       ),
@@ -199,14 +214,14 @@ const RegistrationProvider = ({
       handleSubmit,
       updateBaseForm: baseFormState.setValues,
       updateShippingForm: shippingFormState.setValues,
-      updateOptInForm: optInFormState.setValues,
+      updateExtraForm: extraFormState.setValues,
     }),
     [
       shopSettings.supportedCountries,
+      customerAttributes,
       userLocation,
       defaultBaseFormState,
       defaultShippingFormState,
-      defaultOptInFormState,
       baseFormState.validationErrors,
       baseFormState.setValues,
       baseFormRequestErrors,
@@ -214,7 +229,8 @@ const RegistrationProvider = ({
       shippingFormState.setValues,
       shippingFormRequestErrors,
       handleSubmit,
-      optInFormState.setValues,
+      defaultExtraFormState,
+      extraFormState.setValues,
     ]
   );
 

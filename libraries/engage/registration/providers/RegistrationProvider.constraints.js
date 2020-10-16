@@ -1,3 +1,5 @@
+import { generateFormConstraints } from '@shopgate/engage/account/helper/form';
+
 export const baseConstraints = {
   emailAddress: {
     presence: {
@@ -70,3 +72,12 @@ export const shippingConstraints = {
     },
   },
 };
+
+/**
+ * Generates constraints for the "extra" form.
+ * @param {Object} customerAttributes Customer attributes.
+ * @returns {Object}
+ */
+export const generateExtraConstraints = customerAttributes => ({
+  ...generateFormConstraints(customerAttributes),
+});
