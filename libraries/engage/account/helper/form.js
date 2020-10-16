@@ -78,4 +78,9 @@ export const extractAttributes = (customerAttributes, formData) => customerAttri
       ? { code: formData[`attribute_${attribute.code}`] }
       : formData[`attribute_${attribute.code}`],
   }))
-  .filter(attribute => attribute.value.length || attribute.value?.code?.length);
+  // API does not want to have any attributes that have not yet been selected / entered.
+  .filter(attribute =>
+    attribute.value === true ||
+    attribute.value === false ||
+    attribute.value.length ||
+    attribute.value?.code?.length);
