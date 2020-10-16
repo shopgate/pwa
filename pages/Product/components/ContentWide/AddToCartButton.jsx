@@ -4,6 +4,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import { Ripple } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import Icon from '../Header/components/CTAButtons/components/CartButton/components/Icon';
 import styles from './AddToCartButton.style';
 import inject from './AddToCartButton.injector';
 import connect from './AddToCartButton.connector';
@@ -45,6 +46,7 @@ class AddToCartButton extends PureComponent {
     this.locked = false;
     this.state = {
       opened: false,
+      success: false,
     };
   }
 
@@ -97,7 +99,7 @@ class AddToCartButton extends PureComponent {
   /**
    * Adds a new product to cart or opens the cart if it already has products in it.
    */
-  handleClick = () => {
+  handleClick = async () => {
     const {
       disabled,
       loading,
@@ -108,10 +110,27 @@ class AddToCartButton extends PureComponent {
     }
 
     this.locked = true;
-    this.addToCart();
+    await this.addToCart();
     setTimeout(() => {
       this.locked = false;
     }, 0);
+    this.setState({ success: true });
+  }
+
+  /**
+   * Renders the animated tick.
+   * @returns {JSX}
+   */
+  renderIcon() {
+    return (
+      <div className={styles.icon}>
+        <Icon
+          disabled={this.props.disabled}
+          success={this.state.success}
+          onSuccess={() => { this.setState({ success: false }); }}
+        />
+      </div>
+    );
   }
 
   /**
@@ -136,6 +155,7 @@ class AddToCartButton extends PureComponent {
         type="button"
       >
         <I18n.Text string="product.add_to_cart" />
+        {this.renderIcon()}
       </Ripple>
     );
   }
