@@ -56,7 +56,7 @@ export default function routerSubscriptions(subscribe) {
     const state = getState();
     const historyLength = getRouterStackIndex(state) + 1;
     const historyEmpty = historyLength === 1;
-    const { pathname: currentPathname } = getCurrentRoute(state);
+    const { pathname: currentPathname } = getCurrentRoute(state) || {};
 
     if (historyEmpty && [ACTION_POP, ACTION_RESET, HISTORY_RESET_TO].includes(historyAction)) {
       if (currentPathname && currentPathname === INDEX_PATH) {
