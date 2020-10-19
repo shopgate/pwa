@@ -10,6 +10,7 @@ import {
   LoadingProvider,
   useRoute,
 } from '@shopgate/engage/core';
+import { generateFormConstraints, extractAttributes } from '@shopgate/engage/account/helper/form';
 import Context from './GuestRegistrationProvider.context';
 import connect from './GuestRegistrationProvider.connector';
 import { pickupConstraints, selfPickupConstraints, billingConstraints } from './GuestRegistrationProvider.constraints';
@@ -28,6 +29,7 @@ type Props = {
   billingPickupEquals: bool,
   requiredFields: any,
   needsPayment: bool,
+  customerAttributes: any,
   orderReserveOnly?: bool,
   prepareCheckout: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
@@ -86,6 +88,7 @@ const GuestRegistrationProvider = ({
   isDataReady,
   needsPayment,
   orderReserveOnly,
+  customerAttributes,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
   const pickupFormSubmitValues = React.useRef({});
@@ -130,7 +133,9 @@ const GuestRegistrationProvider = ({
     country: userCountry,
     region: userRegion,
     ...(pickBy(billingAddress || {}, identity)),
-  }), [billingAddress, userCountry, userRegion]);
+    ...Object.assign({}, ...customerAttributes
+      .map(attribute => ({ [`attribute_${attribute.code}`]: attribute.value?.code || attribute.value }))),
+  }), [billingAddress, customerAttributes, userCountry, userRegion]);
 
   // Handles submit of the checkout form.
   const handleSubmit = React.useCallback(async (values) => {
@@ -156,6 +161,7 @@ const GuestRegistrationProvider = ({
 
     // Update order to set pickup contact.
     try {
+      const attributes = extractAttributes(customerAttributes, values);
       await updateCheckoutOrder({
         notes: values.instructions,
         addressSequences: [
@@ -175,6 +181,7 @@ const GuestRegistrationProvider = ({
         ],
         primaryBillToAddressSequenceIndex: 0,
         primaryShipToAddressSequenceIndex: 1,
+        ...(attributes?.length ? { customer: { attributes } } : {}),
       });
     } catch (error) {
       LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
@@ -192,17 +199,20 @@ const GuestRegistrationProvider = ({
 
     // We don't set locked to false to avoid unnecessary UI changes right before
     // going to checkout page.
-  }, [historyPop, historyPush, isGuestCheckoutEditMode, updateCheckoutOrder]);
+  }, [customerAttributes, historyPop, historyPush, isGuestCheckoutEditMode, updateCheckoutOrder]);
 
   // Create validation rules based on required fields.
   const billingValidationRules = React.useMemo(
-    () => mapValues(billingConstraints, (constraint, field) => {
-      const isRequired = requiredFields.includes(field);
-      return {
-        ...constraint,
-        presence: isRequired ? constraint.presence : undefined,
-      };
-    }), [requiredFields]
+    () => ({
+      ...mapValues(billingConstraints, (constraint, field) => {
+        const isRequired = requiredFields.includes(field);
+        return {
+          ...constraint,
+          presence: isRequired ? constraint.presence : undefined,
+        };
+      }),
+      ...generateFormConstraints(customerAttributes),
+    }), [customerAttributes, requiredFields]
   );
 
   // Hold form states.
@@ -255,6 +265,7 @@ const GuestRegistrationProvider = ({
       needsPayment,
       orderReserveOnly,
       isGuestCheckoutEditMode,
+      customerAttributes,
     }),
     [
       isLocked,
@@ -273,6 +284,7 @@ const GuestRegistrationProvider = ({
       needsPayment,
       orderReserveOnly,
       isGuestCheckoutEditMode,
+      customerAttributes,
     ]
   );
 

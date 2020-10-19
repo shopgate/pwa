@@ -50,11 +50,18 @@ const GuestRegistrationForm = () => {
     formBillingSetValues,
     requiredFields,
     orderReserveOnly,
+    customerAttributes,
   } = useGuestRegistration();
 
   const formConfig = React.useMemo(
-    () => generateFormConfig(supportedCountries, userLocation, requiredFields, orderReserveOnly),
-    [supportedCountries, userLocation, requiredFields, orderReserveOnly]
+    () => generateFormConfig(
+      supportedCountries,
+      userLocation,
+      requiredFields,
+      orderReserveOnly,
+      customerAttributes
+    ),
+    [supportedCountries, userLocation, requiredFields, orderReserveOnly, customerAttributes]
   );
 
   const handleUpdate = React.useCallback((values) => {
