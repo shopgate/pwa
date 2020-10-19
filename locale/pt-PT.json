@@ -34,7 +34,8 @@
     "wish_list": "Wish List",
     "profile": "Profile",
     "your_account": "My Account",
-    "your_account_contact": "Address"
+    "your_account_contact": "Address",
+    "page_not_found": "Page Not Found"
   },
   "account": {
     "profile": {
@@ -646,6 +647,10 @@
     "no_result": {
       "body": "No Orders found."
     }
+  },
+  "page": {
+    "not_found": "The page you’re looking for can’t be found.",
+    "continue": "Continue shopping"
   },
   "registration": {
     "create_account": "Create account",
