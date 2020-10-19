@@ -18,7 +18,7 @@ const button = css({
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
-  padding: `${(variables.gap.big * 0.75) - 1}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75) + 1}px`,
+  padding: `${(variables.gap.big * 0.75)}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75)}px`,
 });
 
 const disabled = css(button, {
