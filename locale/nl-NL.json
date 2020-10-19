@@ -62,7 +62,8 @@
         "default_shipping": "Primary Ship To Address",
         "save": "Save",
         "add": "Add Address",
-        "success": "Saved Profile"
+        "success": "Saved Profile",
+        "error": "Saving Profile failed"
       },
       "delete": "Delete Account",
       "address_book": {
