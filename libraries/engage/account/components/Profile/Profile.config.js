@@ -29,7 +29,7 @@ const generateFormConfig = customerAttributes => ({
       type: 'checkbox',
       label: i18n.text('account.profile.form.marketing_opt_in_label'),
     },
-    ...generateFormFields(customerAttributes),
+    ...generateFormFields(customerAttributes, false),
   },
 });
 

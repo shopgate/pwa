@@ -92,7 +92,7 @@ class Select extends Component {
         errorText={this.props.errorText}
         translateErrorText={translateErrorText}
         isFocused={this.state.isFocused}
-        hasValue={!!this.state.value}
+        hasValue={!!this.state.value || options[''].length}
         hasPlaceholder={!disabled || this.state.value !== ''}
         disabled={disabled}
       >

@@ -62,7 +62,8 @@
         "default_shipping": "Standard Lieferadresse",
         "save": "Speichern",
         "add": "Adresse hinzufügen",
-        "success": "Profil gespeichert"
+        "success": "Profil gespeichert",
+        "error": "Fehler beim Speichern"
       },
       "delete": "Account löschen",
       "address_book": {
