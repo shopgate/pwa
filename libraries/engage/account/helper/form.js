@@ -66,6 +66,20 @@ export const generateFormConstraints = customerAttributes => ({
 });
 
 /**
+ * Maps the type of an attribute value.
+ * @param {Object|string|number} value Attribute value.
+ * @param {*} attribute The attribute configuration.
+ * @returns {Object|string|number}
+ */
+const mapAttributeType = (value, attribute) => {
+  if (value.code) return value;
+  if (attribute.type === 'number') {
+    return parseFloat(value || 0);
+  }
+  return value;
+};
+
+/**
  * Extracts attributes from form data as expected by the API.
  * @param {Object} customerAttributes Customer attributes.
  * @param {Object} formData  Form data.
@@ -74,12 +88,13 @@ export const generateFormConstraints = customerAttributes => ({
 export const extractAttributes = (customerAttributes, formData) => customerAttributes
   .map(attribute => ({
     code: attribute.code,
-    value: attribute.values?.length
+    value: mapAttributeType(attribute.values?.length
       ? { code: formData[`attribute_${attribute.code}`] }
-      : formData[`attribute_${attribute.code}`],
+      : formData[`attribute_${attribute.code}`], attribute),
   }))
   // API does not want to have any attributes that have not yet been selected / entered.
   .filter(attribute =>
+    typeof attribute.value === 'number' ||
     attribute.value === true ||
     attribute.value === false ||
     attribute.value.length ||

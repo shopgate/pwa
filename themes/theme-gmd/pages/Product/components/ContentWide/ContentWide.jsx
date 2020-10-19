@@ -42,7 +42,7 @@ const styles = {
     },
   }).toString(),
   extraRow: css({
-    flex: 0.8,
+    flex: 0.9,
     display: 'flex',
     flexDirection: 'column',
     borderLeft: `1px solid ${colors.shade7}`,

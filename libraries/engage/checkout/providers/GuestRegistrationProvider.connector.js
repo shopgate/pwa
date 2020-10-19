@@ -9,6 +9,7 @@ import {
   isPickupAndBillingEquals,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { getRequiredGuestCheckoutFields } from '@shopgate/engage/checkout/selectors/guestCheckout';
 import {
   prepareCheckout,
@@ -35,6 +36,7 @@ function makeMapStateToProps() {
     billingPickupEquals: isPickupAndBillingEquals(state),
     requiredFields: getRequiredGuestCheckoutFields(state),
     orderReserveOnly: getIsReserveOnly(state),
+    customerAttributes: getMerchantCustomerAttributes(state),
   });
 }
 

@@ -211,6 +211,9 @@ const RegistrationProvider = ({
       shippingFormValidationErrors: convertValidationErrors(
         shippingFormState.validationErrors || shippingFormRequestErrors || {}
       ),
+      extraFormRequestErrors: convertValidationErrors(
+        extraFormState.validationErrors || {}
+      ),
       handleSubmit,
       updateBaseForm: baseFormState.setValues,
       updateShippingForm: shippingFormState.setValues,
@@ -231,6 +234,7 @@ const RegistrationProvider = ({
       handleSubmit,
       defaultExtraFormState,
       extraFormState.setValues,
+      extraFormState.validationErrors,
     ]
   );
 

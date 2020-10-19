@@ -11,6 +11,7 @@ const RegistrationFormExtra = () => {
     defaultExtraFormState,
     updateExtraForm,
     customerAttributes,
+    extraFormRequestErrors,
   } = useRegistration();
 
   const formConfig = useMemo(
@@ -28,6 +29,7 @@ const RegistrationFormExtra = () => {
       name="RegistrationExtra"
       config={formConfig}
       defaults={defaultExtraFormState}
+      validationErrors={extraFormRequestErrors}
       handleUpdate={handleUpdate}
     />
   );

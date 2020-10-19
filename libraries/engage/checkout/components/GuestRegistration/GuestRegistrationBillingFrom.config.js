@@ -1,4 +1,5 @@
 import { i18n } from '@shopgate/engage/core';
+import { generateFormFields } from '@shopgate/engage/account/helper/form';
 
 /**
  * Returns the field label.
@@ -17,10 +18,39 @@ const getFieldLabel = (fieldName, requiredFields) => {
  * @param {Object} userLocation User location for better phone picker defaults.
  * @param {Array} requiredFields Array of all required fields.
  * @param {boolean} orderReserveOnly Tells if the current order is reserve only
+ * @param {Object} customerAttributes Configured customer attributes.
  * @returns {Object}
  */
-const generateFormConfig = (supportedCountries, userLocation, requiredFields, orderReserveOnly) => {
-  if (orderReserveOnly) {
+const generateFormConfig =
+  (supportedCountries, userLocation, requiredFields, orderReserveOnly, customerAttributes) => {
+    if (orderReserveOnly) {
+      return {
+        fields: {
+          firstName: {
+            type: 'text',
+            label: getFieldLabel('firstName', requiredFields),
+          },
+          lastName: {
+            type: 'text',
+            label: getFieldLabel('lastName', requiredFields),
+          },
+          emailAddress: {
+            type: 'email',
+            label: getFieldLabel('emailAddress', requiredFields),
+          },
+          mobile: {
+            type: 'phone_picker',
+            label: getFieldLabel('mobile', requiredFields),
+            config: {
+              supportedCountries,
+              userLocation,
+            },
+          },
+          ...generateFormFields(customerAttributes),
+        },
+      };
+    }
+
     return {
       fields: {
         firstName: {
@@ -43,64 +73,39 @@ const generateFormConfig = (supportedCountries, userLocation, requiredFields, or
             userLocation,
           },
         },
+        company: {
+          type: 'text',
+          label: getFieldLabel('company', requiredFields),
+        },
+        address1: {
+          type: 'text',
+          label: getFieldLabel('address1', requiredFields),
+        },
+        address2: {
+          type: 'text',
+          label: getFieldLabel('address2', requiredFields),
+        },
+        postalCode: {
+          type: 'text',
+          label: getFieldLabel('postalCode', requiredFields),
+        },
+        city: {
+          type: 'text',
+          label: getFieldLabel('city', requiredFields),
+        },
+        country: {
+          type: 'country',
+          label: getFieldLabel('country', requiredFields),
+          countries: supportedCountries,
+        },
+        region: {
+          type: 'province',
+          label: getFieldLabel('region', requiredFields),
+          required: true,
+        },
+        ...generateFormFields(customerAttributes),
       },
     };
-  }
-
-  return {
-    fields: {
-      firstName: {
-        type: 'text',
-        label: getFieldLabel('firstName', requiredFields),
-      },
-      lastName: {
-        type: 'text',
-        label: getFieldLabel('lastName', requiredFields),
-      },
-      emailAddress: {
-        type: 'email',
-        label: getFieldLabel('emailAddress', requiredFields),
-      },
-      mobile: {
-        type: 'phone_picker',
-        label: getFieldLabel('mobile', requiredFields),
-        config: {
-          supportedCountries,
-          userLocation,
-        },
-      },
-      company: {
-        type: 'text',
-        label: getFieldLabel('company', requiredFields),
-      },
-      address1: {
-        type: 'text',
-        label: getFieldLabel('address1', requiredFields),
-      },
-      address2: {
-        type: 'text',
-        label: getFieldLabel('address2', requiredFields),
-      },
-      postalCode: {
-        type: 'text',
-        label: getFieldLabel('postalCode', requiredFields),
-      },
-      city: {
-        type: 'text',
-        label: getFieldLabel('city', requiredFields),
-      },
-      country: {
-        type: 'country',
-        label: getFieldLabel('country', requiredFields),
-        countries: supportedCountries,
-      },
-      region: {
-        type: 'province',
-        label: getFieldLabel('region', requiredFields),
-        required: true,
-      },
-    },
   };
-};
 
 export default generateFormConfig;
