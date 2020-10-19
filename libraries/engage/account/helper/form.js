@@ -93,11 +93,12 @@ const mapAttributeType = (value, attribute) => {
 export const extractAttributes = (customerAttributes, formData) => customerAttributes
   .map(attribute => ({
     code: attribute.code,
-    value: mapAttributeType(attribute.values?.length
-      ? { code: formData[`attribute_${attribute.code}`] }
+    value: mapAttributeType(attribute.type === 'collectionOfValues' && attribute.values?.length
+      ? [{ code: formData[`attribute_${attribute.code}`] }]
       : formData[`attribute_${attribute.code}`], attribute),
   }))
   // API does not want to have any attributes that have not yet been selected / entered.
+  .filter(attribute => !Number.isNaN(attribute.value))
   .filter(attribute =>
     typeof attribute.value === 'number' ||
     attribute.value === true ||
