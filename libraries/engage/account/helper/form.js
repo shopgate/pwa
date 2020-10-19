@@ -1,11 +1,12 @@
 import sortBy from 'lodash/sortBy';
+import { i18n } from '@shopgate/engage/core';
 
 /**
  * @param {Object} attribute Customer attribute.
  * @returns {string}
  */
 const mapCustomerAttributeType = (attribute) => {
-  if (attribute.values && attribute.values.length) {
+  if (attribute.type === 'collectionOfValues' && attribute.values && attribute.values.length) {
     return 'select';
   }
 
@@ -14,6 +15,8 @@ const mapCustomerAttributeType = (attribute) => {
       return 'number';
     case 'boolean':
       return 'checkbox';
+    case 'date':
+      return 'date';
     default:
       return 'text';
   }
@@ -22,17 +25,19 @@ const mapCustomerAttributeType = (attribute) => {
 /**
  * Generates form field config
  * @param {Object} customerAttributes Customer attributes.
+ * @param {boolean} allowPleaseChoose Allows please choose option for required attributes.
  * @returns {Object}
  */
-export const generateFormFields = customerAttributes => ({
+export const generateFormFields = (customerAttributes, allowPleaseChoose = true) => ({
   ...Object.assign({}, ...sortBy(customerAttributes, ['sequenceId']).map(attribute => ({
     [`attribute_${attribute.code}`]: {
       type: mapCustomerAttributeType(attribute),
       label: `${attribute.name} ${attribute.isRequired ? '*' : ''}`,
-      ...(attribute.values ? ({
+      ...(attribute.type === 'collectionOfValues' && attribute.values ? ({
         options: {
           // For non required property allow the user to unset it.
           ...(!attribute.isRequired ? { '': '' } : {}),
+          ...(attribute.isRequired && allowPleaseChoose ? { '': i18n.text('common.please_choose') } : {}),
           // Create regular options.
           ...Object.assign({}, ...sortBy(attribute.values, ['sequenceId'])
             .map(option => ({
