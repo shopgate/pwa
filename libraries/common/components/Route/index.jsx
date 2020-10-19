@@ -4,12 +4,15 @@ import { router } from '@virtuous/conductor';
 import { RouteContext, RouterContext } from '@virtuous/react-conductor';
 import Loading from '../Loading';
 import ErrorBoundary from '../ErrorBoundary';
+import RouteNotFound from './RouteNotFound';
 
 /**
  * The Route component.
  */
 class Route extends React.Component {
   static contextType = RouterContext;
+
+  static NotFound = RouteNotFound;
 
   static propTypes = {
     component: PropTypes.oneOfType([
