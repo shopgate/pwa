@@ -10,3 +10,4 @@ export { PAGE_PATH, PAGE_PATTERN };
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/page';
+export { default as NotFound } from './NotFound';

@@ -70,6 +70,7 @@ import OrderDetails from './OrderDetails';
 import Account from './Account';
 import AccountContact from './Account/Contact';
 import StoreFinder from './StoreFinder';
+import PageNotFound from './404';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
@@ -228,6 +229,7 @@ const Pages = ({ store }) => (
                       pattern={STORE_FINDER_PATTERN}
                       component={StoreFinder}
                     />
+                    <Route.NotFound component={PageNotFound} />
                     {React.Children.map(routePortals, Component => Component)}
                   </Router>
                 </div>

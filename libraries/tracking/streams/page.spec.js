@@ -20,16 +20,10 @@ jest.mock('@shopgate/engage/core', () => {
   };
 });
 
-jest.mock('@shopgate/engage/page', () => {
-  const {
-    PAGE_PATTERN: PAGE_PATTERN_ORIGINAL,
-  } = require.requireActual('@shopgate/engage/page');
-
-  return {
-    PAGE_PATTERN: PAGE_PATTERN_ORIGINAL,
-    getPageConfigById: jest.fn(),
-  };
-});
+jest.mock('@shopgate/engage/page', () => ({
+  PAGE_PATTERN: 'PAGE_PATTERN',
+  getPageConfigById: jest.fn(),
+}));
 
 jest.mock('@shopgate/pwa-common/selectors/router', () => {
   const actual = require.requireActual('@shopgate/pwa-common/selectors/router');
