@@ -17,7 +17,7 @@ import { deleteCustomerContact } from '../../actions/deleteContact';
 import { deleteCustomer as deleteCustomerAction } from '../../actions/deleteCustomer';
 import { getContacts } from '../../selectors/contacts';
 import { getCustomer } from '../../selectors/customer';
-import { extractAttributes } from '../../helper/form';
+import { extractAttributes, extractDefaultValues } from '../../helper/form';
 import createConstraints from './Profile.constraints';
 
 const ProfileContext = createContext();
@@ -74,8 +74,7 @@ const ProfileProvider = ({
   const defaultState = useMemo(() => (customer ? {
     ...customer,
     marketingOptIn: customer.settings.marketingOptIn || false,
-    ...Object.assign({}, ...customer.attributes
-      .map(attribute => ({ [`attribute_${attribute.code}`]: attribute.value?.code || attribute.value }))),
+    ...extractDefaultValues(customer.attributes),
   } : null), [customer]);
 
   // Saving the form.

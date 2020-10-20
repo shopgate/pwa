@@ -10,7 +10,7 @@ import {
   LoadingProvider,
   useRoute,
 } from '@shopgate/engage/core';
-import { generateFormConstraints, extractAttributes } from '@shopgate/engage/account/helper/form';
+import { generateFormConstraints, extractAttributes, extractDefaultValues } from '@shopgate/engage/account/helper/form';
 import Context from './GuestRegistrationProvider.context';
 import connect from './GuestRegistrationProvider.connector';
 import { pickupConstraints, selfPickupConstraints, billingConstraints } from './GuestRegistrationProvider.constraints';
@@ -133,8 +133,7 @@ const GuestRegistrationProvider = ({
     country: userCountry,
     region: userRegion,
     ...(pickBy(billingAddress || {}, identity)),
-    ...Object.assign({}, ...customerAttributes
-      .map(attribute => ({ [`attribute_${attribute.code}`]: attribute.value?.code || attribute.value }))),
+    ...extractDefaultValues(customerAttributes),
   }), [billingAddress, customerAttributes, userCountry, userRegion]);
 
   // Handles submit of the checkout form.
