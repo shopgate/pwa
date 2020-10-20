@@ -78,9 +78,11 @@ export const generateFormConstraints = customerAttributes => ({
  */
 const mapAttributeType = (value, attribute) => {
   if (value.code) return value;
+
   if (attribute.type === 'number') {
-    return parseFloat(value || 0);
+    return value.length ? parseFloat(value || 0) : null;
   }
+
   return value;
 };
 
@@ -103,5 +105,19 @@ export const extractAttributes = (customerAttributes, formData) => customerAttri
     typeof attribute.value === 'number' ||
     attribute.value === true ||
     attribute.value === false ||
-    attribute.value.length ||
-    attribute.value?.code?.length);
+    (typeof attribute.value === 'string' && attribute.value.length) ||
+    attribute.value?.[0]?.code?.length);
+
+/**
+ * Extracts the default values for the form
+ * @param {Object} customerAttributes Customer attributes.
+ * @returns {Object}
+ */
+export const extractDefaultValues = customerAttributes => Object.assign({}, ...customerAttributes
+  .map((attribute) => {
+    let value = attribute.value?.[0]?.code || attribute.value?.code || attribute.value;
+    if (value && value !== true && value !== false) {
+      value = value.toString();
+    }
+    return { [`attribute_${attribute.code}`]: value };
+  }));

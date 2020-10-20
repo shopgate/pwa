@@ -5,6 +5,7 @@ import { REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { LoadingProvider, i18n } from '@shopgate/engage/core';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { extractDefaultValues } from '../../account/helper/form';
 import Context from './RegistrationProvider.context';
 import { baseConstraints, shippingConstraints, generateExtraConstraints } from './RegistrationProvider.constraints';
 import connect from './RegistrationProvider.connector';
@@ -97,8 +98,7 @@ const RegistrationProvider = ({
 
   const defaultExtraFormState = useMemo(() => ({
     ...initialOptInFormState,
-    ...Object.assign({}, ...customerAttributes
-      .map(attribute => ({ [`attribute_${attribute.code}`]: attribute.value?.code || attribute.value }))),
+    ...extractDefaultValues(customerAttributes),
   }), [customerAttributes]);
 
   // Form submit handlers
