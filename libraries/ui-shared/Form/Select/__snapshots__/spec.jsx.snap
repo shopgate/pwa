@@ -37,7 +37,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       className="css-1vjh8yv formElement"
     >
       <select
-        className="css-1ayo3zo select"
+        className="css-1xdqvez select"
         disabled={false}
         id="test-name"
         name="test-name"
@@ -149,7 +149,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
       className="css-1vjh8yv formElement"
     >
       <select
-        className="css-1ayo3zo select"
+        className="css-1xdqvez select"
         disabled={false}
         id="test-name"
         name="test-name"
@@ -256,7 +256,7 @@ exports[`<Select /> should render select with no options 1`] = `
       className="css-1vjh8yv formElement"
     >
       <select
-        className="css-1ayo3zo select"
+        className="css-1xdqvez select"
         disabled={false}
         id="test-name"
         name="test-name"
