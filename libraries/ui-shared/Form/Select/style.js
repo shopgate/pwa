@@ -12,6 +12,7 @@ const select = css({
   outline: 0,
   fontSize: 16,
   lineHeight: '19px',
+  zIndex: 10,
 }).toString();
 
 const chevron = css({
