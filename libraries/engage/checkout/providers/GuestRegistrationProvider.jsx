@@ -93,6 +93,7 @@ const GuestRegistrationProvider = ({
   customer,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(false);
   const pickupFormSubmitValues = React.useRef({});
   const [pickupValidationRules, setPickupValidationRules] = React.useState(selfPickupConstraints);
   const { query: { edit: isGuestCheckoutEditMode = null } } = useRoute();
@@ -104,13 +105,14 @@ const GuestRegistrationProvider = ({
     }
 
     try {
-      LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
+      setLocked(true);
       await prepareCheckout({
         initializePayment: false,
       });
-      LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
+      setLocked(false);
       return true;
     } catch (error) {
+      setLocked(false);
       return false;
     }
   }, [], false);
@@ -141,7 +143,6 @@ const GuestRegistrationProvider = ({
   // Handles submit of the checkout form.
   const handleSubmit = React.useCallback(async (values) => {
     /** Async wrapper for useCallback */
-    LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
     setLocked(true);
 
     const pickupFormValues = pickupFormSubmitValues.current;
@@ -185,11 +186,10 @@ const GuestRegistrationProvider = ({
         ...(attributes?.length ? { customer: { attributes } } : {}),
       });
     } catch (error) {
-      LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
+      setLocked(false);
       return;
     }
-
-    LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
+    setLocked(false);
     LoadingProvider.setLoading(GUEST_CHECKOUT_PAYMENT_PATTERN);
 
     if (isGuestCheckoutEditMode) {
@@ -243,10 +243,28 @@ const GuestRegistrationProvider = ({
     );
   }, [formPickupState.values.pickupPerson]);
 
+  React.useEffect(() => {
+    if (isLocked) {
+      setLoading(true);
+      return;
+    }
+    setLoading(false);
+  }, [isLocked]);
+
+  React.useEffect(() => {
+    if (isLoading) {
+      LoadingProvider.setLoading(GUEST_CHECKOUT_PATTERN);
+      return;
+    }
+    LoadingProvider.resetLoading(GUEST_CHECKOUT_PATTERN);
+  }, [isLoading]);
+
   // Create memoized context value.
   const value = React.useMemo(
     () => ({
       isLocked,
+      isLoading,
+      setLoading,
       supportedCountries: shopSettings.supportedCountries,
       formPickupValidationErrors: convertValidationErrors(
         formPickupState.validationErrors || {}
@@ -270,6 +288,8 @@ const GuestRegistrationProvider = ({
     }),
     [
       isLocked,
+      isLoading,
+      setLoading,
       shopSettings.supportedCountries,
       formPickupState.validationErrors,
       formPickupState.setValues,

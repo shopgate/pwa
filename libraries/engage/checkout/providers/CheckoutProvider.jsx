@@ -90,6 +90,7 @@ const CheckoutProvider = ({
   const paymentHandlerRef = React.useRef(null);
   const [isLocked, setLocked] = React.useState(true);
   const [isButtonLocked, setButtonLocked] = React.useState(true);
+  const [isLoading, setLoading] = React.useState(true);
   const [validationRules, setValidationRules] = React.useState(selfPickupConstraints);
   const [updateOptIns, setUpdateOptIns] = React.useState(false);
 
@@ -105,13 +106,11 @@ const CheckoutProvider = ({
   // Initialize checkout process.
   const [{ isCheckoutInitialized, needsPayment }] = useAsyncMemo(async () => {
     try {
-      LoadingProvider.setLoading(pathPattern);
       const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
         initializeOrder: !orderInitialized,
       });
 
       setLocked(false);
-      LoadingProvider.resetLoading(pathPattern);
 
       return {
         isCheckoutInitialized: success,
@@ -243,11 +242,19 @@ const CheckoutProvider = ({
   // Whenever the order is locked we also want to show to loading bar.
   React.useEffect(() => {
     if (isLocked) {
+      setLoading(true);
+      return;
+    }
+    setLoading(false);
+  }, [isLocked]);
+
+  React.useEffect(() => {
+    if (isLoading) {
       LoadingProvider.setLoading(pathPattern);
       return;
     }
     LoadingProvider.resetLoading(pathPattern);
-  }, [isLocked, pathPattern]);
+  }, [isLoading, pathPattern]);
 
   // Hold form states.
   const formState = useFormState(
@@ -270,6 +277,7 @@ const CheckoutProvider = ({
     setPaymentHandler: (handler) => { paymentHandlerRef.current = handler; },
     isLocked,
     isButtonLocked: (isLocked || isButtonLocked) && needsPayment,
+    isLoading,
     supportedCountries: shopSettings.supportedCountries,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,
@@ -286,9 +294,12 @@ const CheckoutProvider = ({
     defaultOptInFormState,
     setUpdateOptIns: (val = true) => { setUpdateOptIns(val); },
     setButtonLocked,
+    setLoading,
+    setLocked,
   }), [
     isLocked,
     isButtonLocked,
+    isLoading,
     shopSettings.supportedCountries,
     formState.validationErrors,
     formState.setValues,
@@ -302,6 +313,8 @@ const CheckoutProvider = ({
     fulfillmentSlot,
     optInFormState.setValues,
     defaultOptInFormState,
+    setLoading,
+    setLocked,
   ]);
 
   // Handle deeplinks from external payment site.

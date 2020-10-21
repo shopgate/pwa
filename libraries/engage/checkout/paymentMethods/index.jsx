@@ -88,7 +88,9 @@ const PaymentMethodProvider = ({
   fetchOrder,
   updateOrder,
 }) => {
-  const { setPaymentHandler, needsPayment, setButtonLocked } = useContext(CheckoutContext);
+  const {
+    setPaymentHandler, needsPayment, setButtonLocked, setLocked,
+  } = useContext(CheckoutContext);
   const paymentMethodRef = useRef();
 
   // Set active payment method to the orders first transaction.
@@ -131,7 +133,7 @@ const PaymentMethodProvider = ({
     if (paymentMethodCode === code) {
       return;
     }
-
+    setLocked(true);
     await updateOrder({
       paymentTransactions: [{
         paymentMethod: {
@@ -140,7 +142,8 @@ const PaymentMethodProvider = ({
       }],
     });
     await fetchOrder();
-  }, [fetchOrder, paymentMethodCode, updateOrder]);
+    setLocked(false);
+  }, [fetchOrder, paymentMethodCode, updateOrder, setLocked]);
 
   // API for the underlying payment methods.
   const paymentMethodApi = useMemo(() => ({

@@ -1,5 +1,4 @@
-import { PipelineRequest, LoadingProvider } from '@shopgate/engage/core';
-import { CHECKOUT_PATTERN } from '../constants/routes';
+import { PipelineRequest } from '@shopgate/engage/core';
 import {
   UPDATE_CHECKOUT_ORDER,
   UPDATE_CHECKOUT_ORDER_SUCCESS,
@@ -14,7 +13,6 @@ import { errorCheckout } from './errorCheckout';
  * @returns {Function}
  */
 export const updateCheckoutOrder = payload => async (dispatch) => {
-  LoadingProvider.setLoading(CHECKOUT_PATTERN);
   dispatch({ type: UPDATE_CHECKOUT_ORDER });
 
   let pipelineError;
@@ -34,8 +32,6 @@ export const updateCheckoutOrder = payload => async (dispatch) => {
     ));
     dispatch({ type: UPDATE_CHECKOUT_ORDER_ERROR });
   }
-
-  LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
 
   if (pipelineError) {
     throw pipelineError;

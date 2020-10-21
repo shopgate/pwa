@@ -1,5 +1,4 @@
-import { LoadingProvider, PipelineRequest } from '@shopgate/engage/core';
-import { CHECKOUT_PATTERN } from '../constants/routes';
+import { PipelineRequest } from '@shopgate/engage/core';
 import {
   FETCH_PAYMENT_METHODS,
   FETCH_PAYMENT_METHODS_SUCCESS,
@@ -11,7 +10,6 @@ import {
  * @returns {Function}
  */
 export const fetchPaymentMethods = () => async (dispatch) => {
-  LoadingProvider.setLoading(CHECKOUT_PATTERN);
   dispatch({ type: FETCH_PAYMENT_METHODS });
 
   const pipelineRequest = new PipelineRequest('shopgate.checkout.getPaymentMethods');
@@ -23,13 +21,11 @@ export const fetchPaymentMethods = () => async (dispatch) => {
       type: FETCH_PAYMENT_METHODS_SUCCESS,
       paymentMethods,
     });
-    LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
   } catch (error) {
     dispatch({
       type: FETCH_PAYMENT_METHODS_ERROR,
       error,
     });
-    LoadingProvider.unsetLoading(CHECKOUT_PATTERN);
   }
 };
 

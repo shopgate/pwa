@@ -15,7 +15,6 @@ import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
 import {
   prepareCheckout,
   fetchCheckoutOrder,
-  fetchPaymentMethods,
   updateCheckoutOrder,
   submitCheckoutOrder,
 } from '@shopgate/engage/checkout';
@@ -49,7 +48,6 @@ const mapDispatchToProps = {
   prepareCheckout,
   fetchCheckoutOrder,
   updateCheckoutOrder,
-  fetchPaymentMethods,
   submitCheckoutOrder,
   showModal,
 };
