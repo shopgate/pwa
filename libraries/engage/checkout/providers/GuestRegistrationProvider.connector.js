@@ -4,6 +4,7 @@ import { getPreferredLocationAddress } from '@shopgate/engage/locations/selector
 import {
   getCheckoutOrder,
   getCheckoutBillingAddress,
+  getCheckoutOrderCustomer,
   getCheckoutPickupAddress,
   getIsReserveOnly,
   isPickupAndBillingEquals,
@@ -36,6 +37,7 @@ function makeMapStateToProps() {
     billingPickupEquals: isPickupAndBillingEquals(state),
     requiredFields: getRequiredGuestCheckoutFields(state),
     orderReserveOnly: getIsReserveOnly(state),
+    customer: getCheckoutOrderCustomer(state),
     customerAttributes: getMerchantCustomerAttributes(state),
   });
 }

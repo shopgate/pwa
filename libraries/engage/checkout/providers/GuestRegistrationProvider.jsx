@@ -22,6 +22,7 @@ import {
 type Props = {
   children: any,
   shopSettings: any,
+  customer: any,
   billingAddress: any,
   pickupAddress: any,
   userLocation: any,
@@ -89,6 +90,7 @@ const GuestRegistrationProvider = ({
   needsPayment,
   orderReserveOnly,
   customerAttributes,
+  customer,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
   const pickupFormSubmitValues = React.useRef({});
@@ -133,8 +135,8 @@ const GuestRegistrationProvider = ({
     country: userCountry,
     region: userRegion,
     ...(pickBy(billingAddress || {}, identity)),
-    ...extractDefaultValues(customerAttributes),
-  }), [billingAddress, customerAttributes, userCountry, userRegion]);
+    ...extractDefaultValues(customer?.attributes || []),
+  }), [billingAddress, customer, userCountry, userRegion]);
 
   // Handles submit of the checkout form.
   const handleSubmit = React.useCallback(async (values) => {

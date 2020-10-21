@@ -13,6 +13,14 @@ import {
 export const getCheckoutOrder = state => state.checkout.checkoutOrder.data || null;
 
 /**
+ * Returns the current attached customer of the active order.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getCheckoutOrderCustomer =
+  state => state.checkout.checkoutOrder?.data?.customer || null;
+
+/**
  * Returns the current orders payment transaction created in the checkout process.
  * @param {Object} state The application state.
  * @returns {Object}
