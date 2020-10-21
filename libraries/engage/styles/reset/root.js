@@ -8,6 +8,10 @@ css.global('*, *:before, *:after', {
   boxSizing: 'border-box',
 });
 
+css.global('*', {
+  touchAction: 'manipulation',
+});
+
 css.global('::-moz-focus-inner', {
   border: 0,
 });
