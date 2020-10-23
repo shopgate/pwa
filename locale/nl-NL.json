@@ -683,7 +683,8 @@
     "email": "Voer a.u.b. een geldig e-mail adres in",
     "numeric": "Gelieve alleen cijfers in te voeren",
     "alphaNumeric": "Gelieve alleen letters en cijfers in te vullen",
-    "mobileNumber": "Voer een geldig GSM nummer in"
+    "mobileNumber": "Voer een geldig GSM nummer in",
+    "date": "Please enter a valid date"
   },
   "formats": {
     "date": {
@@ -692,7 +693,8 @@
       },
       "MMM": {
         "month": "short"
-      }
+      },
+      "pattern": "de-mm-jjjj"
     },
     "distance": {
       "pattern": "{distance} {unit}",

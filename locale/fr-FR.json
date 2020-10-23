@@ -684,7 +684,8 @@
     "email": "Veuillez saisir une adresse e-mail valide",
     "numeric": "Veuillez saisir uniquement des chiffres",
     "alphaNumeric": "Saisissez uniquement des lettres et des chiffres",
-    "mobileNumber": "Veuillez saisir un numéro de portable valide"
+    "mobileNumber": "Veuillez saisir un numéro de portable valide",
+    "date": "Please enter a valid date"
   },
   "formats": {
     "date": {
@@ -693,7 +694,8 @@
       },
       "MMM": {
         "month": "short"
-      }
+      },
+      "pattern": "jj/mm/aaaa"
     },
     "distance": {
       "pattern": "{distance} {unit}",
