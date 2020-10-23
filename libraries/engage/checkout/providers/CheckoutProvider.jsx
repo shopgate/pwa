@@ -124,6 +124,21 @@ const CheckoutProvider = ({
     }
   }, [], false);
 
+  // Handle passed errors from external checkout gateway.
+  React.useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorCode = urlParams.get('errorCode');
+    if (!errorCode) {
+      return;
+    }
+    showModal({
+      title: null,
+      confirm: null,
+      dismiss: 'modal.ok',
+      message: 'checkout.errors.payment.genericExternal',
+    });
+  }, [showModal]);
+
   // Handles submit of the checkout form.
   const handleSubmitOrder = React.useCallback(async (values) => {
     setLocked(true);
@@ -345,7 +360,7 @@ const CheckoutProvider = ({
           title: null,
           confirm: null,
           dismiss: 'modal.ok',
-          message: 'checkout.errors.genericSubmit',
+          message: 'checkout.errors.payment.genericExternal',
         });
       }
     };
