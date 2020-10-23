@@ -527,7 +527,10 @@
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
       "noPaymentTransaction": "Keine Payment Transaktion verfügbar.",
-      "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse"
+      "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse",
+      "payment": {
+        "genericExternal": "Die Bezahlung mit der ausgewählten Bezahlmethode ist leider fehlgeschlagen. Versuche es erneut mit einer anderen Bezahlmethode."
+      }
     },
     "pickup_contact": {
       "headline": "Kontakt zur Abholung",
