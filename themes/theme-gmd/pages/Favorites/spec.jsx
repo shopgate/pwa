@@ -22,6 +22,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => {
     ...originalConfig,
     get hasFavorites() { return true; },
     themeConfig: mockedConfig,
+    language: 'en-us',
   });
 });
 
