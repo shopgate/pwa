@@ -56,17 +56,27 @@ export const generateFormFields = (customerAttributes, allowPleaseChoose = true)
  */
 export const generateFormConstraints = customerAttributes => ({
   ...Object.assign({}, ...customerAttributes.map((attribute) => {
-    if (!attribute.isRequired) {
-      return {};
+    const constraint = {};
+
+    if (attribute.isRequired || attribute.type === 'date') {
+      constraint[`attribute_${attribute.code}`] = {};
     }
-    return {
-      [`attribute_${attribute.code}`]: {
-        presence: {
-          message: 'validation.required',
-          allowEmpty: false,
-        },
-      },
-    };
+
+    if (attribute.isRequired) {
+      constraint[`attribute_${attribute.code}`].presence = {
+        message: 'validation.required',
+        allowEmpty: false,
+      };
+    }
+
+    if (attribute.type === 'date') {
+      constraint[`attribute_${attribute.code}`].datetime = {
+        dateOnly: true,
+        message: 'validation.date',
+      };
+    }
+
+    return constraint;
   })),
 });
 
@@ -94,7 +104,7 @@ const mapAttributeType = (value, attribute) => {
 
   // Text types (date is just a formatted text)
   if (attribute.type === 'text' || attribute.type === 'date') {
-    return value.toString();
+    return value !== null ? value.toString() : '';
   }
 
   return value;

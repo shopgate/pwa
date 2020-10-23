@@ -683,7 +683,8 @@
     "email": "Introduce una dirección de correo electrónico válida",
     "numeric": "Por favor introduce solo números",
     "alphaNumeric": "Por favor, introduce solo letras y números",
-    "mobileNumber": "Por favor, introduce un número de móvil válido"
+    "mobileNumber": "Por favor, introduce un número de móvil válido",
+    "date": "Please enter a valid date"
   },
   "formats": {
     "date": {
@@ -692,7 +693,8 @@
       },
       "MMM": {
         "month": "short"
-      }
+      },
+      "pattern": "dd/mm/yyyy"
     },
     "distance": {
       "pattern": "{distance} {unit}",

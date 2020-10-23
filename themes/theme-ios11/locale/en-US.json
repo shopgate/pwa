@@ -690,7 +690,8 @@
     "email": "Please enter a valid e-mail address",
     "numeric": "Please enter only numbers",
     "alphaNumeric": "Please enter only letters and numbers",
-    "mobileNumber": "Please enter a valid mobile phone number"
+    "mobileNumber": "Please enter a valid mobile phone number",
+    "date": "Please enter a valid date"
   },
   "formats": {
     "date": {
@@ -699,7 +700,8 @@
       },
       "MMM": {
         "month": "short"
-      }
+      },
+      "pattern": "mm/dd/yyyy"
     },
     "distance": {
       "pattern": "{distance} {unit}",

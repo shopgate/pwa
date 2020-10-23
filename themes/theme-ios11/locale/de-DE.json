@@ -691,7 +691,8 @@
     "email": "Gib bitte eine gültige E-Mail-Adresse ein",
     "numeric": "Bitte gib nur Zahlen ein",
     "alphaNumeric": "Gib bitte nur Buchstaben und Zahlen ein",
-    "mobileNumber": "Gib bitte eine gültige Handynummer ein"
+    "mobileNumber": "Gib bitte eine gültige Handynummer ein",
+    "date": "Bitte gib ein gültiges Datum ein"
   },
   "formats": {
     "date": {
@@ -700,7 +701,8 @@
       },
       "MMM": {
         "month": "short"
-      }
+      },
+      "pattern": "tt.mm.jjjj"
     },
     "distance": {
       "pattern": "{distance} {unit}",
