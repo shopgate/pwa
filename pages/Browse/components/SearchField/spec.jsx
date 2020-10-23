@@ -47,6 +47,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   },
   themeColors: mockThemeConfig.colors,
   themeVariables: mockThemeConfig.variables,
+  language: 'en-us',
 }));
 
 const store = createMockStore();
