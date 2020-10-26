@@ -317,6 +317,9 @@
     "sections": {
       "categories": "Kategorien",
       "products": "Produkte"
+    },
+    "errors": {
+      "404": "Kategorie nicht gefunden"
     }
   },
   "search": {

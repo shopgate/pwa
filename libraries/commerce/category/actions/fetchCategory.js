@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { ERROR_HANDLE_SUPPRESS } from '@shopgate/pwa-core/constants/ErrorHandleTypes';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
+import { errorBehavior } from '@shopgate/engage/core';
 import { SHOPGATE_CATALOG_GET_CATEGORY } from '../constants/Pipelines';
 import fetchCategoryChildren from './fetchCategoryChildren';
 import requestCategory from '../action-creators/requestCategory';
@@ -38,7 +38,9 @@ function fetchCategory(categoryId) {
         categoryId,
         includeChildren: true,
       })
-      .setHandleErrors(ERROR_HANDLE_SUPPRESS)
+      .setResponseBehavior({
+        error: errorBehavior.modal(),
+      })
       .dispatch();
 
     request
