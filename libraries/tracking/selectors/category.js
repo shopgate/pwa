@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { getCategory } from '@shopgate/pwa-common-commerce/category/selectors';
 import {
   hex2bin,
   makeGetRouteParam,
@@ -8,7 +9,6 @@ import {
   CATEGORY_PATTERN,
   ROOT_CATEGORY_PATTERN,
   getRootCategories,
-  getCategory,
 } from '@shopgate/engage/category';
 import {
   createCategoryData,
