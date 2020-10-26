@@ -320,6 +320,9 @@
     "sections": {
       "categories": "Categories",
       "products": "Products"
+    },
+    "errors": {
+      "404": "Category not found"
     }
   },
   "search": {

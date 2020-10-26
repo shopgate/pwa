@@ -312,6 +312,9 @@
       "categories": "Categorias",
       "products": "Produtos"
     },
+    "errors": {
+      "404": "Categoria não encontrada."
+    },
     "displayGroups": {
       "general": "Geral",
       "features": "Características",
