@@ -318,6 +318,9 @@
     "sections": {
       "categories": "Categorieën",
       "products": "Producten"
+    },
+    "errors": {
+      "404": "Categorie niet gevonden"
     }
   },
   "search": {

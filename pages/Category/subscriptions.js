@@ -1,12 +1,10 @@
 import { buildFetchCategoryProductsParams } from '@shopgate/engage/product';
-import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import {
   categoryWillEnter$,
   categoryDidEnter$,
@@ -39,20 +37,7 @@ export default function category(subscribe) {
   /**
    * Gets triggered on pipeline category error.
    */
-  subscribe(errorVisibleCategory$, ({ action, dispatch }) => {
-    const { errorCode } = action;
-    let message = 'modal.body_error';
-
-    if (errorCode === ENOTFOUND) {
-      message = 'category.error.not_found';
-    }
-
-    dispatch(showModal({
-      confirm: 'modal.ok',
-      dismiss: null,
-      message,
-      title: 'category.error.title',
-    }));
+  subscribe(errorVisibleCategory$, ({ dispatch }) => {
     dispatch(historyPop());
   });
 
