@@ -21,7 +21,6 @@ function fetchProduct(productId, forceFetch = false) {
   return (dispatch, getState) => {
     const state = getState();
     const product = getProductById(state, { productId });
-    LoadingProvider.setLoading(getCurrentPathname(state));
 
     if (!forceFetch && !shouldFetchData(product)) {
       if (product.productData) {
@@ -30,6 +29,9 @@ function fetchProduct(productId, forceFetch = false) {
 
       return undefined;
     }
+
+    const path = getCurrentPathname(state);
+    LoadingProvider.setLoading(path);
 
     const requestParams = {
       ...configuration.get(DEFAULT_PRODUCTS_FETCH_PARAMS),
@@ -44,9 +46,11 @@ function fetchProduct(productId, forceFetch = false) {
 
     request
       .then((result) => {
+        LoadingProvider.unsetLoading(path);
         dispatch(receiveProduct(productId, result));
       })
       .catch((error) => {
+        LoadingProvider.unsetLoading(path);
         dispatch(errorProduct(productId, error.code));
       });
 

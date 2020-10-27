@@ -1,6 +1,6 @@
 import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers/i18n';
 
 /**
  * Formats a date.

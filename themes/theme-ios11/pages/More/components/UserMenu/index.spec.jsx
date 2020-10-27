@@ -10,6 +10,8 @@ jest.mock('@shopgate/pwa-common/selectors/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),
 }));
 
+jest.mock('@shopgate/pwa-common/components/Link', () => function Link({ children }) { return children; });
+
 jest.mock('@shopgate/engage/account', () => ({
   ACCOUNT_PATH: 'ACCOUNT_PATH',
 }));
