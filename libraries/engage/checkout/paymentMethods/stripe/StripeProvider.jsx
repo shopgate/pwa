@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { i18n } from '@shopgate/engage/core';
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -6,6 +6,7 @@ import {
 } from '@stripe/react-stripe-js';
 import Context from './StripeProvider.context';
 import connect from './StripeProvider.connector';
+import PaymentContext from '../context';
 
 type PropsWrapper = {
   publishableKey?: string,
@@ -49,6 +50,7 @@ const StripeProvider = ({ children }: Props) => {
       });
 
       if (incomingError) {
+        console.error(incomingError, activeTransaction.checkoutParams.paymentIntent);
         setError(incomingError.message);
         return false;
       }
@@ -61,6 +63,11 @@ const StripeProvider = ({ children }: Props) => {
       }];
     },
   }), [elements, error, stripe]);
+
+  const { registerPaymentMethod } = useContext(PaymentContext);
+  useEffect(() => {
+    registerPaymentMethod(contextApi);
+  }, [contextApi, registerPaymentMethod]);
 
   return (
     <Context.Provider value={contextApi}>

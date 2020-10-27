@@ -506,6 +506,12 @@
   "checkout": {
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
+    "payment": {
+      "title": "How would you like to pay this order?",
+      "buttons": {
+        "stripe": "Credit Card"
+      }
+    },
     "continue": "Continue",
     "steps": "Step {from} of {to}",
     "change_contacts": "Change Contacts",
@@ -517,7 +523,10 @@
       "genericSubmit": "Failed to complete order, please try again later.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",
-      "genericUpdateBilling": "Failed to update billing address."
+      "genericUpdateBilling": "Failed to update billing address.",
+      "payment": {
+        "genericExternal": "The payment with the selected payment method failed. Please try a different payment method."
+      }
     },
     "pickup_contact": {
       "headline": "Pickup Contact Info",

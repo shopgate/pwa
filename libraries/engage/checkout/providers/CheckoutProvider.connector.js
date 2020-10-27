@@ -15,11 +15,10 @@ import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
 import {
   prepareCheckout,
   fetchCheckoutOrder,
-  fetchPaymentMethods,
   updateCheckoutOrder,
   submitCheckoutOrder,
 } from '@shopgate/engage/checkout';
-import { historyReplace } from '@shopgate/engage/core';
+import { historyReplace, showModal } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
@@ -49,8 +48,8 @@ const mapDispatchToProps = {
   prepareCheckout,
   fetchCheckoutOrder,
   updateCheckoutOrder,
-  fetchPaymentMethods,
   submitCheckoutOrder,
+  showModal,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

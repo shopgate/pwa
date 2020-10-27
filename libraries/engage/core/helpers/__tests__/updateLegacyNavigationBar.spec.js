@@ -2,6 +2,9 @@ import broadcastEvent from '@shopgate/pwa-core/commands/broadcastEvent';
 import { updateLegacyNavigationBar } from '../updateLegacyNavigationBar';
 
 jest.mock('@shopgate/pwa-core/commands/broadcastEvent', () => jest.fn());
+jest.mock('@shopgate/native-modules', () => ({
+  isAvailable: jest.fn(() => false),
+}));
 
 describe('updateLegacyNavigationBar()', () => {
   it('should broadcast when called without parameters', () => {

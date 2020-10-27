@@ -21,8 +21,9 @@ export const submitCheckoutOrder = payload => async (dispatch) => {
   });
 
   let pipelineError;
+  let pipelineOutput;
   try {
-    await (new PipelineRequest('shopgate.checkout.submit')
+    pipelineOutput = await (new PipelineRequest('shopgate.checkout.submit')
       .setInput(payload)
       .setErrorBlacklist([ERROR_CODE_CHECKOUT_GENERIC])
       .dispatch());
@@ -44,5 +45,7 @@ export const submitCheckoutOrder = payload => async (dispatch) => {
   if (pipelineError) {
     throw pipelineError;
   }
+
+  return pipelineOutput;
 };
 

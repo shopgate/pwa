@@ -23,7 +23,7 @@ const styles = {
 const Actions = () => {
   const {
     handleSubmitOrder,
-    isLocked,
+    isButtonLocked,
   } = useCheckoutContext();
 
   return (
@@ -32,7 +32,7 @@ const Actions = () => {
         <RippleButton
           type="secondary"
           onClick={handleSubmitOrder}
-          disabled={isLocked}
+          disabled={isButtonLocked}
         >
           {i18n.text('checkout.submit_order')}
         </RippleButton>

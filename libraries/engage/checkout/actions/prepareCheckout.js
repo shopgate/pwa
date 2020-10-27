@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/browser';
-import { getNeedsPaymentForOrder, getPaymentMethodForStripe } from '../selectors/payment';
+import { getNeedsPaymentForOrder, getDefaultPaymentMethod, getPaymentMethods } from '../selectors/payment';
 import { getCheckoutOrder } from '../selectors/order';
 import { initializeCheckout } from './initializeCheckout';
 import { fetchCheckoutOrder } from './fetchCheckoutOrder';
@@ -34,18 +34,18 @@ export const prepareCheckout = ({
     dispatch(fetchPaymentMethods()),
   ]);
 
-  let stripe;
+  let defaultPaymentMethod;
 
   // If payment is needed we create a new payment transaction.
   const needsPayment = getNeedsPaymentForOrder(getState());
   if (needsPayment) {
     // Pick payment method.
-    stripe = getPaymentMethodForStripe(getState());
-    if (!stripe) {
+    defaultPaymentMethod = getDefaultPaymentMethod(getState());
+    if (!defaultPaymentMethod) {
       return dispatch(errorCheckout(
         'checkout.errors.missingPaymentMethod',
         'shopgate.checkout.getPaymentMethods',
-        { message: 'No stripe payment methods found in configuration.' }
+        { message: 'No payment method found.' }
       ));
     }
   }
@@ -70,14 +70,19 @@ export const prepareCheckout = ({
     });
   });
 
+  const paymentMethods = getPaymentMethods(getState());
   const paymentAlreadyInitialized = !!order?.paymentTransactions?.[0]?.paymentMethod;
-  if (needsPayment && initializePayment && !paymentAlreadyInitialized) {
+  if (needsPayment &&
+    initializePayment &&
+    !paymentAlreadyInitialized &&
+    paymentMethods.length === 1
+  ) {
     try {
       // Add payment transaction for stripe.
       await dispatch(updateCheckoutOrder({
         paymentTransactions: [{
           paymentMethod: {
-            code: stripe.code,
+            code: defaultPaymentMethod.code,
           },
         }],
       }));

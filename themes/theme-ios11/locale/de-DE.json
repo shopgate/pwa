@@ -517,6 +517,12 @@
     "steps": "Schritt {from} von {to}",
     "change_contacts": "Kontakt ändern",
     "change_addresses": "Adresse ändern",
+    "payment": {
+      "title": "Wie möchtest du bezahlen?",
+      "buttons": {
+        "stripe": "Kreditkarte"
+      }
+    },
     "errors": {
       "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
       "checkCart": "Bitte überprüfe Deinen Warenkorb.",
@@ -524,7 +530,10 @@
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
       "noPaymentTransaction": "Keine Payment Transaktion verfügbar.",
-      "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse"
+      "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse",
+      "payment": {
+        "genericExternal": "Die Bezahlung mit der ausgewählten Bezahlmethode ist leider fehlgeschlagen. Versuche es erneut mit einer anderen Bezahlmethode."
+      }
     },
     "pickup_contact": {
       "headline": "Kontakt zur Abholung",

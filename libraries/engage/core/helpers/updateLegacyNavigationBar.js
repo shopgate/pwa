@@ -1,4 +1,5 @@
 import Color from 'color';
+import { isAvailable, StatusBar } from '@shopgate/native-modules';
 import broadcastEvent from '@shopgate/pwa-core/commands/broadcastEvent';
 
 /**
@@ -26,6 +27,18 @@ export const updateLegacyNavigationBar = (options = {}) => {
     ({ statusBarStyle } = options);
   } else if (styles.statusBarBackground) {
     statusBarStyle = Color(styles.statusBarBackground).isDark() ? 'light' : 'dark';
+  }
+
+  if (isAvailable()) {
+    const style = statusBarStyle === 'dark' ? 'dark-content' : 'light-content';
+
+    StatusBar.setBarStyle({ style });
+
+    if (styles.statusBarBackground) {
+      StatusBar.setBackgroundColor({ color: styles.statusBarBackground });
+    }
+
+    return;
   }
 
   broadcastEvent({

@@ -21,8 +21,14 @@ export const makeGetPaymentMethodByProviderCode = getProviderCode => createSelec
     paymentMethods.find(methods => methods.paymentProvider?.code === providerCode)
 );
 
-export const getPaymentMethodForStripe = makeGetPaymentMethodByProviderCode(() => 'stripe');
+/**
+ * Selects the default payment method
+ * @param {Object} state App state
+ * @returns {Object}
+ */
+export const getDefaultPaymentMethod = state => getPaymentMethods(state)[0];
 
+const getPaymentMethodForStripe = makeGetPaymentMethodByProviderCode(() => 'stripe');
 export const getStripePublishableKey = createSelector(
   getPaymentMethodForStripe,
   (paymentMethod) => {
