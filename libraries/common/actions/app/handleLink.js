@@ -1,4 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
+import { DEEPLINK_CART_ADD_PRODUCT_PATTERN } from '@shopgate/pwa-common-commerce/cart/constants';
+import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
 import { historyPush, historyReset } from '../router';
 import {
   INDEX_PATH_DEEPLINK,
@@ -10,7 +12,7 @@ import {
  * @return {Function}
  */
 export default function handleLink(payload) {
-  return (dispatch) => {
+  return async (dispatch) => {
     let { link } = payload;
 
     if (!link) {
@@ -41,6 +43,11 @@ export default function handleLink(payload) {
        */
       dispatch(historyReset());
       return;
+    }
+
+    if (pathname.includes(DEEPLINK_CART_ADD_PRODUCT_PATTERN.split('/')[1])) {
+      const [, , productId] = pathname.split('/');
+      await dispatch(fetchProduct(decodeURIComponent(productId)));
     }
 
     dispatch(historyPush({

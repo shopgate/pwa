@@ -4,8 +4,7 @@ import {
   getThemeSettings, historyPop, historyPush, routeWillEnter$, routeWillLeave$,
 } from '@shopgate/engage/core';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search';
-import { LoadingProvider, ToastProvider } from '@shopgate/pwa-common/providers';
-import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
+import { ToastProvider } from '@shopgate/pwa-common/providers';
 import fetchProduct from '../actions/fetchProduct';
 import fetchProductDescription from '../actions/fetchProductDescription';
 import fetchProductProperties from '../actions/fetchProductProperties';
@@ -25,7 +24,6 @@ import {
   errorProductResourcesNotFound$,
   visibleProductNotFound$,
   productNotAvailable$,
-  variantDidChange$,
 } from '../streams';
 import fetchProductsById from '../actions/fetchProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
@@ -183,15 +181,6 @@ function product(subscribe) {
     const productIds = buffered.map(params => params.action.productId);
     dispatch(expireProductById(productIds, true));
   });
-
-  subscribe(
-    receivedVisibleProduct$
-      .merge(variantDidChange$)
-      .merge(cachedProductReceived$),
-    ({ getState }) => {
-      LoadingProvider.unsetLoading(getCurrentPathname(getState()));
-    }
-  );
 }
 
 export default product;

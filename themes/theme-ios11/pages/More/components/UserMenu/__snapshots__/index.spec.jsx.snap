@@ -115,52 +115,25 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   onClick={null}
                   testId="accountButton"
                 >
-                  <Connect(Link)
+                  <Link
                     className="css-1hj8a57"
                     href={null}
                   >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-1hj8a57"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href={null}
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
+                    <Translate
+                      className={null}
+                      params={Object {}}
+                      role={null}
+                      string="navigation.profile"
+                      transform={null}
                     >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-1hj8a57"
-                        data-test-id="link: null"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
+                      <span
+                        className={null}
+                        role={null}
                       >
-                        <Translate
-                          className={null}
-                          params={Object {}}
-                          role={null}
-                          string="navigation.profile"
-                          transform={null}
-                        >
-                          <span
-                            className={null}
-                            role={null}
-                          >
-                            navigation.profile
-                          </span>
-                        </Translate>
-                      </div>
-                    </Link>
-                  </Connect(Link)>
+                        navigation.profile
+                      </span>
+                    </Translate>
+                  </Link>
                 </MoreMenuItem>
                 <MoreMenuItem
                   className={null}
@@ -169,52 +142,25 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   onClick={null}
                   testId="accountButton"
                 >
-                  <Connect(Link)
+                  <Link
                     className="css-1hj8a57"
                     href={null}
                   >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-1hj8a57"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href={null}
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
+                    <Translate
+                      className={null}
+                      params={Object {}}
+                      role={null}
+                      string="navigation.order_history"
+                      transform={null}
                     >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-1hj8a57"
-                        data-test-id="link: null"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
+                      <span
+                        className={null}
+                        role={null}
                       >
-                        <Translate
-                          className={null}
-                          params={Object {}}
-                          role={null}
-                          string="navigation.order_history"
-                          transform={null}
-                        >
-                          <span
-                            className={null}
-                            role={null}
-                          >
-                            navigation.order_history
-                          </span>
-                        </Translate>
-                      </div>
-                    </Link>
-                  </Connect(Link)>
+                        navigation.order_history
+                      </span>
+                    </Translate>
+                  </Link>
                 </MoreMenuItem>
                 <MoreMenuItem
                   className={null}
@@ -223,52 +169,25 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   onClick={null}
                   testId="accountButton"
                 >
-                  <Connect(Link)
+                  <Link
                     className="css-1hj8a57"
                     href={null}
                   >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-1hj8a57"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href={null}
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
+                    <Translate
+                      className={null}
+                      params={Object {}}
+                      role={null}
+                      string="navigation.wish_list"
+                      transform={null}
                     >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-1hj8a57"
-                        data-test-id="link: null"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
+                      <span
+                        className={null}
+                        role={null}
                       >
-                        <Translate
-                          className={null}
-                          params={Object {}}
-                          role={null}
-                          string="navigation.wish_list"
-                          transform={null}
-                        >
-                          <span
-                            className={null}
-                            role={null}
-                          >
-                            navigation.wish_list
-                          </span>
-                        </Translate>
-                      </div>
-                    </Link>
-                  </Connect(Link)>
+                        navigation.wish_list
+                      </span>
+                    </Translate>
+                  </Link>
                 </MoreMenuItem>
                 <Portal
                   name="nav-menu.logout.before"
@@ -421,80 +340,53 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <Link
                       disabled={true}
                       href="/login"
                     >
-                      <Link
-                        aria-hidden={null}
-                        aria-label={null}
-                        className=""
+                      <Button
+                        className="css-6f03lb"
                         disabled={true}
-                        historyPush={[Function]}
-                        historyReplace={[Function]}
-                        href="/login"
-                        replace={false}
-                        role="link"
-                        state={Object {}}
-                        tabIndex={null}
-                        tag="div"
-                        target={null}
+                        flat={false}
+                        onClick={null}
+                        testId="UserMenuLogin"
+                        type="secondary"
+                        wrapContent={true}
                       >
-                        <div
-                          aria-hidden={null}
-                          aria-label={null}
-                          className="css-9auwkz "
-                          data-test-id="link: /login"
-                          href={null}
-                          onClick={[Function]}
-                          role="link"
-                          tabIndex={null}
+                        <Button
+                          className="css-172ttat css-6f03lb"
+                          disabled={true}
+                          onClick={null}
+                          testId="UserMenuLogin"
                         >
-                          <Button
-                            className="css-6f03lb"
+                          <button
+                            className="css-172ttat css-6f03lb css-1rn65c0"
+                            data-test-id="UserMenuLogin"
                             disabled={true}
-                            flat={false}
                             onClick={null}
-                            testId="UserMenuLogin"
-                            type="secondary"
-                            wrapContent={true}
                           >
-                            <Button
-                              className="css-172ttat css-6f03lb"
-                              disabled={true}
-                              onClick={null}
-                              testId="UserMenuLogin"
+                            <div
+                              className="css-kwqjom"
                             >
-                              <button
-                                className="css-172ttat css-6f03lb css-1rn65c0"
-                                data-test-id="UserMenuLogin"
-                                disabled={true}
-                                onClick={null}
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="login.button"
+                                transform={null}
                               >
-                                <div
-                                  className="css-kwqjom"
+                                <span
+                                  className={null}
+                                  role={null}
                                 >
-                                  <Translate
-                                    className={null}
-                                    params={Object {}}
-                                    role={null}
-                                    string="login.button"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      login.button
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </button>
-                            </Button>
-                          </Button>
-                        </div>
-                      </Link>
-                    </Connect(Link)>
+                                  login.button
+                                </span>
+                              </Translate>
+                            </div>
+                          </button>
+                        </Button>
+                      </Button>
+                    </Link>
                   </li>
                 </GridItem>
                 <GridItem
@@ -506,80 +398,53 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <Link
                       disabled={true}
                       href="/register"
                     >
-                      <Link
-                        aria-hidden={null}
-                        aria-label={null}
-                        className=""
+                      <Button
+                        className="css-6f03lb"
                         disabled={true}
-                        historyPush={[Function]}
-                        historyReplace={[Function]}
-                        href="/register"
-                        replace={false}
-                        role="link"
-                        state={Object {}}
-                        tabIndex={null}
-                        tag="div"
-                        target={null}
+                        flat={false}
+                        onClick={null}
+                        testId="UserMenuRegister"
+                        type="secondary"
+                        wrapContent={true}
                       >
-                        <div
-                          aria-hidden={null}
-                          aria-label={null}
-                          className="css-9auwkz "
-                          data-test-id="link: /register"
-                          href={null}
-                          onClick={[Function]}
-                          role="link"
-                          tabIndex={null}
+                        <Button
+                          className="css-172ttat css-6f03lb"
+                          disabled={true}
+                          onClick={null}
+                          testId="UserMenuRegister"
                         >
-                          <Button
-                            className="css-6f03lb"
+                          <button
+                            className="css-172ttat css-6f03lb css-1rn65c0"
+                            data-test-id="UserMenuRegister"
                             disabled={true}
-                            flat={false}
                             onClick={null}
-                            testId="UserMenuRegister"
-                            type="secondary"
-                            wrapContent={true}
                           >
-                            <Button
-                              className="css-172ttat css-6f03lb"
-                              disabled={true}
-                              onClick={null}
-                              testId="UserMenuRegister"
+                            <div
+                              className="css-kwqjom"
                             >
-                              <button
-                                className="css-172ttat css-6f03lb css-1rn65c0"
-                                data-test-id="UserMenuRegister"
-                                disabled={true}
-                                onClick={null}
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="login.signup"
+                                transform={null}
                               >
-                                <div
-                                  className="css-kwqjom"
+                                <span
+                                  className={null}
+                                  role={null}
                                 >
-                                  <Translate
-                                    className={null}
-                                    params={Object {}}
-                                    role={null}
-                                    string="login.signup"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      login.signup
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </button>
-                            </Button>
-                          </Button>
-                        </div>
-                      </Link>
-                    </Connect(Link)>
+                                  login.signup
+                                </span>
+                              </Translate>
+                            </div>
+                          </button>
+                        </Button>
+                      </Button>
+                    </Link>
                   </li>
                 </GridItem>
               </ul>
@@ -671,80 +536,53 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <Link
                       disabled={false}
                       href="/login"
                     >
-                      <Link
-                        aria-hidden={null}
-                        aria-label={null}
-                        className=""
+                      <Button
+                        className="css-6f03lb"
                         disabled={false}
-                        historyPush={[Function]}
-                        historyReplace={[Function]}
-                        href="/login"
-                        replace={false}
-                        role="link"
-                        state={Object {}}
-                        tabIndex={null}
-                        tag="div"
-                        target={null}
+                        flat={false}
+                        onClick={null}
+                        testId="UserMenuLogin"
+                        type="secondary"
+                        wrapContent={true}
                       >
-                        <div
-                          aria-hidden={null}
-                          aria-label={null}
-                          className="css-9auwkz "
-                          data-test-id="link: /login"
-                          href={null}
-                          onClick={[Function]}
-                          role="link"
-                          tabIndex={null}
+                        <Button
+                          className="css-1k9vl9z css-6f03lb"
+                          disabled={false}
+                          onClick={null}
+                          testId="UserMenuLogin"
                         >
-                          <Button
-                            className="css-6f03lb"
+                          <button
+                            className="css-1k9vl9z css-6f03lb css-1rn65c0"
+                            data-test-id="UserMenuLogin"
                             disabled={false}
-                            flat={false}
                             onClick={null}
-                            testId="UserMenuLogin"
-                            type="secondary"
-                            wrapContent={true}
                           >
-                            <Button
-                              className="css-1k9vl9z css-6f03lb"
-                              disabled={false}
-                              onClick={null}
-                              testId="UserMenuLogin"
+                            <div
+                              className="css-a1u7zd"
                             >
-                              <button
-                                className="css-1k9vl9z css-6f03lb css-1rn65c0"
-                                data-test-id="UserMenuLogin"
-                                disabled={false}
-                                onClick={null}
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="login.button"
+                                transform={null}
                               >
-                                <div
-                                  className="css-a1u7zd"
+                                <span
+                                  className={null}
+                                  role={null}
                                 >
-                                  <Translate
-                                    className={null}
-                                    params={Object {}}
-                                    role={null}
-                                    string="login.button"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      login.button
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </button>
-                            </Button>
-                          </Button>
-                        </div>
-                      </Link>
-                    </Connect(Link)>
+                                  login.button
+                                </span>
+                              </Translate>
+                            </div>
+                          </button>
+                        </Button>
+                      </Button>
+                    </Link>
                   </li>
                 </GridItem>
                 <GridItem
@@ -756,80 +594,53 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <Link
                       disabled={false}
                       href="/register"
                     >
-                      <Link
-                        aria-hidden={null}
-                        aria-label={null}
-                        className=""
+                      <Button
+                        className="css-6f03lb"
                         disabled={false}
-                        historyPush={[Function]}
-                        historyReplace={[Function]}
-                        href="/register"
-                        replace={false}
-                        role="link"
-                        state={Object {}}
-                        tabIndex={null}
-                        tag="div"
-                        target={null}
+                        flat={false}
+                        onClick={null}
+                        testId="UserMenuRegister"
+                        type="secondary"
+                        wrapContent={true}
                       >
-                        <div
-                          aria-hidden={null}
-                          aria-label={null}
-                          className="css-9auwkz "
-                          data-test-id="link: /register"
-                          href={null}
-                          onClick={[Function]}
-                          role="link"
-                          tabIndex={null}
+                        <Button
+                          className="css-1k9vl9z css-6f03lb"
+                          disabled={false}
+                          onClick={null}
+                          testId="UserMenuRegister"
                         >
-                          <Button
-                            className="css-6f03lb"
+                          <button
+                            className="css-1k9vl9z css-6f03lb css-1rn65c0"
+                            data-test-id="UserMenuRegister"
                             disabled={false}
-                            flat={false}
                             onClick={null}
-                            testId="UserMenuRegister"
-                            type="secondary"
-                            wrapContent={true}
                           >
-                            <Button
-                              className="css-1k9vl9z css-6f03lb"
-                              disabled={false}
-                              onClick={null}
-                              testId="UserMenuRegister"
+                            <div
+                              className="css-a1u7zd"
                             >
-                              <button
-                                className="css-1k9vl9z css-6f03lb css-1rn65c0"
-                                data-test-id="UserMenuRegister"
-                                disabled={false}
-                                onClick={null}
+                              <Translate
+                                className={null}
+                                params={Object {}}
+                                role={null}
+                                string="login.signup"
+                                transform={null}
                               >
-                                <div
-                                  className="css-a1u7zd"
+                                <span
+                                  className={null}
+                                  role={null}
                                 >
-                                  <Translate
-                                    className={null}
-                                    params={Object {}}
-                                    role={null}
-                                    string="login.signup"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      login.signup
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </button>
-                            </Button>
-                          </Button>
-                        </div>
-                      </Link>
-                    </Connect(Link)>
+                                  login.signup
+                                </span>
+                              </Translate>
+                            </div>
+                          </button>
+                        </Button>
+                      </Button>
+                    </Link>
                   </li>
                 </GridItem>
               </ul>

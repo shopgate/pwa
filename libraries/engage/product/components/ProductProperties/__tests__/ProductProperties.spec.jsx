@@ -12,6 +12,12 @@ jest.mock('../../../selectors/product', () => ({
   makeGetProductProperties: jest.fn(() => jest.fn()),
 }));
 
+jest.mock('../../../../core', () => ({
+  isBeta: () => false,
+  hasWebBridge: () => false,
+  withForwardedRef: jest.fn(),
+}));
+
 const properties = [
   { displayGroup: 'test' },
 ];
@@ -37,6 +43,7 @@ describe('<ProductProperties />', () => {
   it('should render if properties are passed', () => {
     makeGetProductProperties.mockReturnValueOnce(() => properties);
     const wrapper = mount(<ProductProperties key="2" store={store} />);
+
     expect(wrapper.find('Content').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { renderToString } from 'react-dom/server';
 import { logger } from '@shopgate/pwa-core';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers/i18n';
 
 /**
  * Returns a translation and replaces placeholder with children output.

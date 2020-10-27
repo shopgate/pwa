@@ -4,6 +4,7 @@ import { StoreContext } from '../Store.context';
 import { StoreDetails } from '../StoreDetails';
 
 jest.mock('@shopgate/engage/components');
+jest.mock('../../StockInfo/', () => function StockInfo() { return null; });
 
 describe('engage > locations > StoreList > StoreDetails', () => {
   const store = {
