@@ -78,7 +78,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-4s85e9 rating-stars-empty"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -262,7 +262,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-16y9zin"
+                className="css-16y9zin rating-stars-filled"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -525,7 +525,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-4s85e9 rating-stars-empty"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -709,7 +709,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-16y9zin"
+                className="css-16y9zin rating-stars-filled"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -880,7 +880,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-4s85e9 rating-stars-empty"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -1064,7 +1064,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-16y9zin"
+                className="css-16y9zin rating-stars-filled"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -1271,7 +1271,7 @@ exports[`<List /> should render list with reviews 1`] = `
               role="text"
             >
               <div
-                className="css-4s85e9"
+                className="css-4s85e9 rating-stars-empty"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
@@ -1455,7 +1455,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
               <div
-                className="css-16y9zin"
+                className="css-16y9zin rating-stars-filled"
               >
                 <div
                   className="css-kdb68h css-q4owmg"
