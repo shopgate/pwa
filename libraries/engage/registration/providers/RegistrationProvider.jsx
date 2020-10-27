@@ -147,9 +147,10 @@ const RegistrationProvider = ({
     }
 
     // Break the process when one of the forms has validation errors from the constraints
-    if (!baseFormState.valid || !shippingFormState.valid) {
+    if (!baseFormState.valid || !shippingFormState.valid || !extraFormState.valid) {
       setIsBaseFormSubmitted(false);
       setIsShippingFormSubmitted(false);
+      setIsExtraFormSubmitted(false);
       return;
     }
 
@@ -172,6 +173,7 @@ const RegistrationProvider = ({
       // Release forms for additional submits
       setIsBaseFormSubmitted(false);
       setIsShippingFormSubmitted(false);
+      setIsExtraFormSubmitted(false);
       setLocked(false);
     };
 
@@ -187,6 +189,7 @@ const RegistrationProvider = ({
     isExtraFormSubmitted,
     submitRegistration,
     extraFormState.values,
+    extraFormState.valid,
   ]);
 
   useEffect(() => {
