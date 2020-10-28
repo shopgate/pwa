@@ -22,8 +22,22 @@ validateJs.extend(validateJs.validators.datetime, {
  * @returns {{ valid: boolean, validationErrors: Object }}
  */
 export function validate(values, constraints) {
-  let errors = validateJs(values, constraints);
+  const sanitizedValues = { ...values };
 
+  /**
+   * When the presence constrain is not set, empty strings are considered as not empty and those
+   * values will be passed through other validators like datetime, where they can cause false
+   * negatives. So we'll just convert them to null for the validator.
+   */
+  Object.keys(sanitizedValues).forEach((key) => {
+    const value = sanitizedValues[key];
+
+    if (value === '') {
+      sanitizedValues[key] = null;
+    }
+  });
+
+  let errors = validateJs(sanitizedValues, constraints);
   if (errors && Object.keys(errors).length > 0) {
     errors = errors.reduce((obj, item) => {
       if (obj[item.attribute]) {
