@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { getFullImageSource, useWidgetSettings } from '@shopgate/engage/core';
-import { Swiper } from '@shopgate/engage/components';
+import { getFullImageSource, useWidgetSettings, useLoadImage } from '@shopgate/engage/core';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
+import { Swiper } from '@shopgate/engage/components';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
@@ -13,17 +13,28 @@ import connect from './connector';
  * @return {JSX}
  */
 const ProductGalleryImages = ({ initialSlide, images }) => {
+  const { zoom = {} } = useWidgetSettings('@shopgate/engage/product/Gallery') || {};
+
+  const fullImages = useMemo(() => {
+    if (!images || !images.length) {
+      return null;
+    }
+    const { GalleryImage: galleryResolutions } = getProductImageSettings();
+    const lowerResolution = galleryResolutions[0];
+    const biggerResolution = galleryResolutions[galleryResolutions.length - 1];
+    return {
+      low: images.map(src => getFullImageSource(src, lowerResolution)),
+      big: images.map(src => getFullImageSource(src, biggerResolution)),
+    };
+  }, [images]);
+
+  const loaded = useLoadImage(fullImages && fullImages.big && fullImages.big[0]);
+
   if (!Array.isArray(images) || images.length === 0) {
     return <div className={styles.container} />;
   }
 
-  const { zoom = {} } = useWidgetSettings('@shopgate/engage/product/Gallery') || {};
-
-  const { GalleryImage: galleryResolutions } = getProductImageSettings();
-
-  const resolution = galleryResolutions[galleryResolutions.length - 1];
-
-  const imagesWithResolutions = images.map(src => getFullImageSource(src, resolution));
+  const showImages = loaded ? fullImages.big : fullImages.low;
 
   return (
     <div className={styles.container}>
@@ -32,14 +43,14 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
         className={styles.slider}
         initialSlide={initialSlide}
         indicators
-        loop={imagesWithResolutions.length > 1}
-        disabled={imagesWithResolutions.length === 1}
+        loop={showImages.length > 1}
+        disabled={showImages.length === 1}
         zoom={{
           ...GALLERY_SLIDER_ZOOM,
           ...zoom,
         }}
       >
-        {imagesWithResolutions.map(image => (
+        {showImages.map(image => (
           <Swiper.Item key={image}>
             <div className="swiper-zoom-container">
               <img
