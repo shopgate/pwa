@@ -34,7 +34,7 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
     return <div className={styles.container} />;
   }
 
-  const showImages = loaded ? fullImages.big : fullImages.low;
+  const imagesToShow = loaded ? fullImages.big : fullImages.low;
 
   return (
     <div className={styles.container}>
@@ -43,14 +43,14 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
         className={styles.slider}
         initialSlide={initialSlide}
         indicators
-        loop={showImages.length > 1}
-        disabled={showImages.length === 1}
+        loop={imagesToShow.length > 1}
+        disabled={imagesToShow.length === 1}
         zoom={{
           ...GALLERY_SLIDER_ZOOM,
           ...zoom,
         }}
       >
-        {showImages.map(image => (
+        {imagesToShow.map(image => (
           <Swiper.Item key={image}>
             <div className="swiper-zoom-container">
               <img
