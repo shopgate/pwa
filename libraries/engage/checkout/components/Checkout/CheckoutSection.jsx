@@ -30,6 +30,7 @@ const styles = {
     margin: `0 0 ${variables.gap.xbig}px`,
     padding: variables.gap.big,
     width: '100%',
+    overflow: 'inherit !important',
     ...(!isIOSTheme() ? {
       background: 'var(--color-background-accent)',
       boxShadow: 'none',

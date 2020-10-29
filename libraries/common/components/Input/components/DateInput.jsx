@@ -1,4 +1,6 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, {
+  useCallback, useState, useEffect, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import MomentLocaleUtils from 'react-day-picker/moment';
@@ -85,7 +87,7 @@ const styles = {
   }).toString(),
   picker: css({
     left: 'inherit !important',
-    right: 0,
+    right: 5,
     ' .DayPicker-Day': {
       padding: '3px !important',
     },
@@ -108,6 +110,9 @@ const styles = {
     ' .DayPicker-NavButton': {
       right: '.5em !important',
     },
+  }).toString(),
+  pickerTop: css({
+    bottom: 30,
   }).toString(),
   hidden: css({
     display: 'none',
@@ -169,10 +174,11 @@ Caption.propTypes = {
 const DateInput = ({
   onFocusChange, onChange, type, value, ...rest
 }) => {
-  const [pickerVisible, setPickerVisible] = useState(false);
+  const wrapperRef = useRef(null);
   const [inputValue, setInputValue] = useState(getLocaleFormattedDate(value));
   const [pickerValue, setPickerValue] = useState(getDateFromISO(value));
   const [isFocused, setIsFocused] = useState(false);
+  const [pickerVisible, setPickerVisible] = useState(false);
 
   useEffect(() => {
     const updated = getLocaleFormattedDate(value);
@@ -182,6 +188,18 @@ const DateInput = ({
       setPickerValue(getDateFromISO(value));
     }
   }, [value]);
+
+  const needsPositionTop = useCallback(() => {
+    const element = wrapperRef.current;
+    if (!element) {
+      return false;
+    }
+
+    const { top, height } = element.getBoundingClientRect();
+    const distToBottom = document.body.offsetHeight - (top + height);
+
+    return distToBottom <= 300;
+  }, [wrapperRef]);
 
   const handleInputValueChange = useCallback((val) => {
     setInputValue(val);
@@ -217,7 +235,7 @@ const DateInput = ({
 
   return (
     <>
-      <div>
+      <div ref={wrapperRef}>
         <SimpleInput
           {...rest}
           attributes={{ placeholder: isFocused ? i18n.text('formats.date.pattern') : null }}
@@ -236,9 +254,14 @@ const DateInput = ({
           <CalendarIcon />
         </div>
       </div>
-      <div className={classNames(styles.pickerWrapper, { [styles.hidden]: !pickerVisible })}>
+      <div className={classNames(styles.pickerWrapper, {
+        [styles.hidden]: !pickerVisible,
+      })}
+      >
         <DayPicker
-          className={classNames('DayPickerInput-Overlay', styles.picker)}
+          className={classNames('DayPickerInput-Overlay', styles.picker, {
+            [styles.pickerTop]: needsPositionTop(),
+          })}
           onDayClick={handlePickerChange}
           selectedDays={pickerValue}
           localeUtils={MomentLocaleUtils}
