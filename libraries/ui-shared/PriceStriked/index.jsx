@@ -92,7 +92,7 @@ class PriceStriked extends Component {
     const angleStyle = this.angle ? styles.getAngleStyle(this.angle) : '';
     return (
       // eslint-disable-next-line jsx-a11y/aria-role
-      <div role="text" className={`${styles.basic} ${this.props.className} ${angleStyle}`}>
+      <div role="text" className={`${styles.basic} ${this.props.className} ${angleStyle} price-striked`}>
         <span
           ref={(ref) => { this.element = ref; }}
           data-test-id={`strikedPrice: ${this.props.value}`}

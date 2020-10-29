@@ -187,7 +187,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-4s85e9 rating-stars-empty"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -371,7 +371,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                   </div>
                 </div>
                 <div
-                  className="css-16y9zin"
+                  className="css-16y9zin rating-stars-filled"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -643,7 +643,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs"
+                                  className="css-izofhs price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -678,7 +678,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil "
+                                  className="css-1sagvrb css-nil  price-striked"
                                   role="text"
                                 >
                                   <span
@@ -1120,7 +1120,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -1155,7 +1155,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil "
+                                  className="css-1sagvrb css-nil  price-striked"
                                   role="text"
                                 >
                                   <span
@@ -1488,7 +1488,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-4s85e9 rating-stars-empty"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -1672,7 +1672,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-16y9zin"
+                  className="css-16y9zin rating-stars-filled"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -1944,7 +1944,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -1979,7 +1979,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil "
+                                  className="css-1sagvrb css-nil  price-striked"
                                   role="text"
                                 >
                                   <span
@@ -2312,7 +2312,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-4s85e9 rating-stars-empty"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -2496,7 +2496,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                   </div>
                 </div>
                 <div
-                  className="css-16y9zin"
+                  className="css-16y9zin rating-stars-filled"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -2768,7 +2768,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -2803,7 +2803,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil "
+                                  className="css-1sagvrb css-nil  price-striked"
                                   role="text"
                                 >
                                   <span
@@ -3136,7 +3136,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-4s85e9 rating-stars-empty"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -3320,7 +3320,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-16y9zin"
+                  className="css-16y9zin rating-stars-filled"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -3556,7 +3556,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -3591,7 +3591,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil "
+                                  className="css-1sagvrb css-nil  price-striked"
                                   role="text"
                                 >
                                   <span
@@ -3856,7 +3856,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                 role="text"
               >
                 <div
-                  className="css-4s85e9"
+                  className="css-4s85e9 rating-stars-empty"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -4040,7 +4040,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-16y9zin"
+                  className="css-16y9zin rating-stars-filled"
                 >
                   <div
                     className="css-kdb68h css-q4owmg"
@@ -4603,7 +4603,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -4638,7 +4638,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil "
+                                  className="css-1sagvrb css-nil  price-striked"
                                   role="text"
                                 >
                                   <span
