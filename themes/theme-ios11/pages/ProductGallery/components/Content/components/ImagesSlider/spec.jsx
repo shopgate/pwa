@@ -13,6 +13,7 @@ import Content from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
   useWidgetSettings: jest.fn(),
+  useLoadImage: jest.fn().mockReturnValue(true),
   getThemeSettings: () => ({
     fillColor: 'FFFFFF',
     HeroImage: [
