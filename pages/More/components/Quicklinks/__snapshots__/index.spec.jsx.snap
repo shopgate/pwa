@@ -62,7 +62,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           text="navigation.more_menu"
         >
           <h2
-            className="css-18cwfw7"
+            className="css-18cwfw7 headline"
             data-test-id="Headline"
             style={
               Object {
