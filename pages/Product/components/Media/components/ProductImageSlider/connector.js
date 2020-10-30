@@ -4,7 +4,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import {
   getProductImages,
-  getProduct,
+  getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -15,7 +15,7 @@ import {
  */
 const mapStateToProps = (state, props) => ({
   images: getProductImages(state, props),
-  product: getProduct(state, props),
+  product: getCurrentBaseProduct(state, props),
 });
 
 /**
