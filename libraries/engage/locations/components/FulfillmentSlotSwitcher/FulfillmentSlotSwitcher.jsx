@@ -52,6 +52,7 @@ const FulfillmentSlotSwitcher = ({
             fulfillmentSlot={fulfillmentSlot}
             handleChange={handleOpen}
             standalone={standalone}
+            editable={editable}
           />
         </div>
       ) : (

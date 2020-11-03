@@ -12,7 +12,9 @@ import { getTimeSlotDisplayText } from './time';
 /**
  * @returns {JSX}
  */
-const FulfillmentSlotSwitcherBar = ({ fulfillmentSlot, handleChange, standalone }) => {
+const FulfillmentSlotSwitcherBar = ({
+  fulfillmentSlot, handleChange, standalone, editable,
+}) => {
   const displayTime = useMemo(() => getTimeSlotDisplayText(fulfillmentSlot), [fulfillmentSlot]);
   return (
     <div className={wrapper}>
@@ -21,20 +23,23 @@ const FulfillmentSlotSwitcherBar = ({ fulfillmentSlot, handleChange, standalone 
           {i18n.text('locations.your_current_timeslot.heading')}
         </span>
         <span className={name}>{displayTime}</span>
-        <RippleButton
-          onClick={handleChange}
-          type="secondary"
-          className={button}
-          flat
-        >
-          <I18n.Text string="locations.your_current_location.change" />
-        </RippleButton>
+        { editable && (
+          <RippleButton
+            onClick={handleChange}
+            type="secondary"
+            className={button}
+            flat
+          >
+            <I18n.Text string="locations.your_current_location.change" />
+          </RippleButton>
+        )}
       </div>
     </div>);
 };
 
 FulfillmentSlotSwitcherBar.propTypes = {
   handleChange: PropTypes.func.isRequired,
+  editable: PropTypes.bool,
   fulfillmentSlot: PropTypes.shape(),
   standalone: PropTypes.bool,
 };
@@ -42,6 +47,7 @@ FulfillmentSlotSwitcherBar.propTypes = {
 FulfillmentSlotSwitcherBar.defaultProps = {
   fulfillmentSlot: null,
   standalone: false,
+  editable: true,
 };
 
 export default FulfillmentSlotSwitcherBar;

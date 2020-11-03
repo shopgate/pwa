@@ -45,7 +45,7 @@ function CartItems({
       <CardList className={items}>
         {!isOrderDetails ? (
           <ResponsiveContainer appAlways breakpoint="<=xs">
-            <FulfillmentSlotSwitcher renderBar card />
+            <FulfillmentSlotSwitcher renderBar card editable={editable} />
           </ResponsiveContainer>
         ) : null}
         {editable && (
