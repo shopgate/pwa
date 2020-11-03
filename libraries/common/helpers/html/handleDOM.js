@@ -1,3 +1,4 @@
+import noop from 'lodash/noop';
 import event from '@shopgate/pwa-core/classes/Event/index';
 
 /**
@@ -209,11 +210,16 @@ export const getStyles = dom => dom.querySelectorAll('style');
  * @param {string} src .
  * @returns {Promise}
  */
-export const loadImage = src => (
-  new Promise((resolve, reject) => {
+export const loadImage = (src) => {
+  const result = new Promise((resolve, reject) => {
     const image = new window.Image();
-    image.onload = resolve;
+    image.onload = () => resolve(src);
     image.onerror = reject;
     image.src = src;
-  })
-);
+  });
+
+  result.catch(noop); // Catch 404
+
+  return result;
+};
+

@@ -72,5 +72,8 @@ export { default as Description } from './components/Description';
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
 export { default as withProductStock } from './hocs/withProductStock';
 
+// HOOKs
+export { useLoadProductImage } from './hooks/useLoadProductImage';
+
 // CONTEXTS
 export { default as VariantContext } from './components/ProductCharacteristics/context';

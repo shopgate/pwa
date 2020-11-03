@@ -1,6 +1,8 @@
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
-import { getThemeSettings, isBeta } from '@shopgate/engage/core';
+import {
+  getFullImageSource, getThemeSettings, isBeta, loadImage,
+} from '@shopgate/engage/core';
 import { buildShowScheduledParams } from '../components/EffectivityDates/helpers';
 
 /**
@@ -81,4 +83,20 @@ export const getProductImageSettings = () => {
     ],
     ...appImages,
   };
+};
+
+/**
+ * Load product image with given resolution
+ * @param {string} src .
+ * @param {Object} resolution .
+ * @returns {Promise}
+ */
+export const loadProductImage = (src, resolution = null) => {
+  let res = resolution;
+  if (!res) {
+    const { HeroImage: resolutions } = getProductImageSettings();
+    res = resolutions[resolutions.length - 1];
+  }
+
+  return loadImage(getFullImageSource(src, res));
 };
