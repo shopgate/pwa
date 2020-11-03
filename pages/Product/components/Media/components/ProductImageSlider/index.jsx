@@ -2,15 +2,18 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
-import { getFullImageSource } from '@shopgate/engage/core';
-import { Swiper, Portal } from '@shopgate/pwa-common/components';
+import { withNavigation, bin2hex } from '@shopgate/engage/core';
+import { Swiper, Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_IMAGE,
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/product';
-import { ProductImage } from '@shopgate/engage/product';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
+  loadProductImage,
+  ITEM_PATH,
+  ProductImage,
+  getProductImageSettings,
+} from '@shopgate/engage/product';
+import MediaSection from '../MediaSection';
 import connect from './connector';
 
 /**
@@ -22,17 +25,17 @@ class ProductImageSlider extends Component {
   static propTypes = {
     'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
+    historyPush: PropTypes.func,
     images: PropTypes.arrayOf(PropTypes.string),
-    navigate: PropTypes.func,
     product: PropTypes.shape(),
   };
 
   static defaultProps = {
     'aria-hidden': null,
     className: null,
+    historyPush: noop,
     images: null,
     product: null,
-    navigate: () => { },
   };
 
   /**
@@ -40,19 +43,39 @@ class ProductImageSlider extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) {
-      return true;
+    let depImage = null;
+    if (this.props.product !== nextProps.product) {
+      // Update only after new product data is received, skipping null
+      if (nextProps.product && nextProps.product.featuredImageBaseUrl) {
+        depImage = nextProps.product.featuredImageBaseUrl;
+      }
     }
 
     if (this.props.images && nextProps.images) {
-      if (this.props.images.length !== nextProps.images.length) return true;
+      if (isEqual(this.props.images, nextProps.images)) {
+        return false;
+      }
+
+      if (this.props.images.length !== nextProps.images.length && !nextProps.images.length) {
+        // Product image will be shown due to no images
+        return true;
+      }
+
+      [depImage] = nextProps.images;
     }
 
-    return !isEqual(this.props.images, nextProps.images);
+    if (depImage) {
+      // We have dependency image that we need to load before re-render
+      loadProductImage(depImage).then(() => this.forceUpdate());
+    }
+
+    return false;
   }
 
   handleOpenGallery = () => {
-    this.props.navigate(this.currentSlide);
+    this.props.historyPush({
+      pathname: `${ITEM_PATH}/${bin2hex(this.props.product.id)}/gallery/${this.currentSlide}`,
+    });
   };
 
   handleSlideChange = (currentSlide) => {
@@ -72,8 +95,6 @@ class ProductImageSlider extends Component {
     const { HeroImage: pdpResolutions } = getProductImageSettings();
     let content;
     let onClick = this.handleOpenGallery;
-    let onKeyDown = this.handleOpenGallery;
-    let { featuredImageBaseUrl: backgroundImage } = product || {};
 
     if (product && Array.isArray(images) && images.length > 1) {
       content = (
@@ -95,7 +116,6 @@ class ProductImageSlider extends Component {
           ))}
         </Swiper>
       );
-      ([backgroundImage] = images);
     }
 
     if (!content) {
@@ -109,31 +129,20 @@ class ProductImageSlider extends Component {
       );
       if (!images || (images && !images.length)) {
         onClick = noop;
-        onKeyDown = noop;
       }
     }
-
-    const imageStyle = backgroundImage ? {
-      backgroundImage: `url(${getFullImageSource(backgroundImage, pdpResolutions[pdpResolutions.length - 1])})`,
-      backgroundSize: 'contain',
-      transform: 'translate3d(0, 0, 0)',
-    } : null;
 
     return (
       <Fragment>
         <Portal name={PRODUCT_IMAGE_BEFORE} />
         <Portal name={PRODUCT_IMAGE}>
-          <div
-            data-test-id={`product: ${product ? product.name : ''}`}
-            onClick={onClick}
-            onKeyDown={onKeyDown}
-            role="button"
-            tabIndex="0"
+          <MediaSection
+            product={product}
             aria-hidden={ariaHidden}
-            style={imageStyle}
+            onClick={onClick}
           >
             {content}
-          </div>
+          </MediaSection>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />
       </Fragment>
@@ -141,4 +150,4 @@ class ProductImageSlider extends Component {
   }
 }
 
-export default connect(ProductImageSlider);
+export default withNavigation(connect(ProductImageSlider));
