@@ -7,7 +7,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   data-test-id="ratedStars: 0"
 >
   <div
-    className="css-4s85e9"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -66,7 +66,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
   </div>
   <div
-    className="css-16y9zin"
+    className="css-16y9zin rating-stars-filled"
   />
 </div>
 `;
@@ -78,7 +78,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   data-test-id="ratedStars: 2.5"
 >
   <div
-    className="css-4s85e9"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -137,7 +137,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
   </div>
   <div
-    className="css-16y9zin"
+    className="css-16y9zin rating-stars-filled"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -183,7 +183,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   data-test-id="ratedStars: 5"
 >
   <div
-    className="css-4s85e9"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -242,7 +242,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
   </div>
   <div
-    className="css-16y9zin"
+    className="css-16y9zin rating-stars-filled"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -310,7 +310,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   data-test-id="ratedStars: 5"
 >
   <div
-    className="css-4s85e9"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -384,7 +384,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
   </div>
   <div
-    className="css-16y9zin"
+    className="css-16y9zin rating-stars-filled"
   >
     <div
       aria-hidden={true}
@@ -467,7 +467,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   data-test-id="ratedStars: 3.5"
 >
   <div
-    className="css-4s85e9"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -541,7 +541,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
   </div>
   <div
-    className="css-16y9zin"
+    className="css-16y9zin rating-stars-filled"
   >
     <div
       aria-hidden={true}
