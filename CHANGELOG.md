@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.13.9](https://github.com/shopgate/pwa/compare/v6.13.7...v6.13.9) (2020-11-04)
+
+#### :rocket: Enhancement
+* [#1038](https://github.com/shopgate/pwa/pull/1038) Added classnames to rating stars ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.13.7](https://github.com/shopgate/pwa/compare/v6.13.6...v6.13.7) (2020-11-04)
 
 #### :rocket: Enhancement
