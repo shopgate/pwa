@@ -7,7 +7,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
   className="css-1qazn57"
 >
   <h3
-    className="css-rsku8h"
+    className="css-rsku8h headline"
   >
     Lorem ipsum
   </h3>
@@ -1441,7 +1441,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
   className="css-1qazn57"
 >
   <h3
-    className="css-rsku8h"
+    className="css-rsku8h headline"
   >
     Lorem ipsum
   </h3>
