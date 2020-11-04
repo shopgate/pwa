@@ -71,7 +71,7 @@ class ProductSlider extends PureComponent {
   renderHeadline = () => {
     if (this.props.settings.headline) {
       return (
-        <h3 className={styles.headline}>
+        <h3 className={`${styles.headline} headline`}>
           {this.props.settings.headline}
         </h3>
       );
