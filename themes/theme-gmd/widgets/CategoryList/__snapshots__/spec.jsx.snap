@@ -46,7 +46,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     data-test-id="categoryList"
   >
     <h3
-      className="css-twewb4"
+      className="css-twewb4 headline"
     >
       Yay Categories
     </h3>
