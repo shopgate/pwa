@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.13.7](https://github.com/shopgate/pwa/compare/v6.13.6...v6.13.7) (2020-11-04)
+
+#### :rocket: Enhancement
+* [#1035](https://github.com/shopgate/pwa/pull/1035) Added classname for price and ratingstar elements ([@Carsten89](https://github.com/Carsten89))
+* [#1037](https://github.com/shopgate/pwa/pull/1037) Show variant product instead of parent if available ([@Carsten89](https://github.com/Carsten89))
+* [#1036](https://github.com/shopgate/pwa/pull/1036) Show low resolution images on product gallery page ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.13.6](https://github.com/shopgate/pwa/compare/v6.13.5...v6.13.6) (2020-09-28)
 
 #### :rocket: Enhancement
