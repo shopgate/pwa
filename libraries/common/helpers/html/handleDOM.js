@@ -203,17 +203,3 @@ export const handleYouTube = (container) => {
  * @returns {NodeList}
  */
 export const getStyles = dom => dom.querySelectorAll('style');
-
-/**
- * Load image and notify on load.
- * @param {string} src .
- * @returns {Promise}
- */
-export const loadImage = src => (
-  new Promise((resolve, reject) => {
-    const image = new window.Image();
-    image.onload = resolve;
-    image.onerror = reject;
-    image.src = src;
-  })
-);
