@@ -95,7 +95,7 @@ export const loadProductImage = (src, resolution = null) => {
   let res = resolution;
   if (!res) {
     const { HeroImage: resolutions } = getProductImageSettings();
-    res = resolutions[resolutions.length - 1];
+    ([res] = resolutions);
   }
 
   return loadImage(getFullImageSource(src, res));

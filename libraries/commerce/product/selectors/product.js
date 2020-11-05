@@ -610,12 +610,15 @@ export const getProductImages = createSelector(
   getProductId,
   getBaseProductId,
   (images, productId, baseProductId) => {
-    const { images: productImages } = images[productId] || {};
-    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
+    const { images: productImages, isFetching } = images[productId] || {};
+    if (isFetching) {
+      return null;
+    }
 
-    // If the product doesn't have images...
-    if (!Array.isArray(productImages) || !productImages.length) {
+    // If the product doesn't have images after fetching
+    if (baseProductId && (!Array.isArray(productImages) || !productImages.length)) {
       // ...check the base product.
+      const { images: baseProductImages } = images[baseProductId] || {};
       if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
         return null;
       }

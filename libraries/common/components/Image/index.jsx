@@ -10,6 +10,7 @@ import styles from './style';
  */
 class Image extends Component {
   static propTypes = {
+    src: PropTypes.string.isRequired,
     alt: PropTypes.string,
     animating: PropTypes.bool,
     backgroundColor: PropTypes.string,
@@ -24,9 +25,6 @@ class Image extends Component {
       height: PropTypes.number.isRequired,
       blur: PropTypes.number,
     })),
-    src: PropTypes.string,
-    // @deprecated use resolutions instead. kept for backwards compatibility
-    srcmap: PropTypes.arrayOf(PropTypes.string),
     transition: PropTypes.shape(),
   };
 
@@ -51,8 +49,6 @@ class Image extends Component {
         height: 440,
       },
     ],
-    src: null,
-    srcmap: null,
     transition: null,
   };
 
@@ -62,25 +58,14 @@ class Image extends Component {
    */
   constructor(props) {
     super(props);
+    // eslint-disable-next-line react/prop-types
     logger.assert(!props.srcmap, 'Use of srcmap prop is deprecated. Use resolutions instead');
 
-    /**
-     * The initial component state.
-     * Pre-loads all resolutions if already cached will
-     * set the state for the resolution to true.
-     * @type {Object}
-     */
-    if (props.srcmap) {
-      this.state = {
-        loaded: props.srcmap.map((image, index) => this.loadImage(image, index)),
-      };
-    } else {
-      this.state = {
-        loaded: props.resolutions.map((resolution, index) => this.loadImage(this.props.src, index)),
-      };
-    }
+    props.resolutions.forEach((resolution, index) => this.loadImage(this.props.src, index));
 
     this.mounted = false;
+    this.imgRef = React.createRef();
+    this.resolutionRef = React.createRef();
   }
 
   /**
@@ -116,27 +101,31 @@ class Image extends Component {
   /**
    * Image loaded event listener
    * @param {number} resolutionIndex The index of the loaded resolution
+   * @param {string} imgSrc .
    */
-  imageLoaded(resolutionIndex) {
+  imageLoaded(resolutionIndex, imgSrc) {
     if (!this.mounted) {
       return;
     }
 
-    this.setState(({ loaded }) => ({
-      loaded: loaded.map((entry, index) => {
-        if (resolutionIndex === index) {
-          return true;
-        }
+    const resolution = this.props.resolutions[resolutionIndex];
+    const updateImg = !this.resolutionRef.current
+      || this.resolutionRef.current.width < resolution.width;
 
-        return entry;
-      }),
-    }));
+    if (updateImg && this.imgRef.current) {
+      this.resolutionRef.current = resolution;
+      this.imgRef.current.src = imgSrc;
 
-    if (!this.props.srcmap && resolutionIndex === this.props.resolutions.length - 1) {
-      this.props.highestResolutionLoaded();
+      const inlineStyles = {
+        width: '100%',
+      };
+      if (resolution.blur) {
+        inlineStyles.filter = `blur(${resolution.blur}px)`;
+      }
+      this.imgRef.current.style = inlineStyles;
     }
 
-    if (this.props.srcmap && resolutionIndex === this.props.srcmap.length - 1) {
+    if (resolutionIndex === this.props.resolutions.length - 1) {
       this.props.highestResolutionLoaded();
     }
   }
@@ -150,7 +139,7 @@ class Image extends Component {
   loadImage(src, resolutionIndex) {
     const image = new window.Image();
     image.onload = () => {
-      this.imageLoaded(resolutionIndex);
+      this.imageLoaded(resolutionIndex, image.src);
       if (this.props.onLoad) {
         this.props.onLoad();
       }
@@ -161,12 +150,7 @@ class Image extends Component {
       }
     };
 
-    if (!this.props.srcmap) {
-      image.src = getFullImageSource(src, this.props.resolutions[resolutionIndex]);
-    } else {
-      image.src = src;
-    }
-
+    image.src = getFullImageSource(src, this.props.resolutions[resolutionIndex]);
     return image.complete;
   }
 
@@ -175,35 +159,18 @@ class Image extends Component {
    * @returns {JSX}
    */
   render() {
-    const index = this.state.loaded.lastIndexOf(true);
-    let src = null;
-
-    if (index > -1) {
-      src = !this.props.srcmap
-        ? getFullImageSource(this.props.src, this.props.resolutions[index])
-        : this.props.srcmap[index];
-    }
-
     let innerImage = null;
 
-    if (src && !this.props.forcePlaceholder) {
-      // Applies a blur effect to every resolution that has the blur flag set to true.
-      const inlineStyles = {
-        width: '100%',
-      };
-      if (!this.props.srcmap && this.props.resolutions[index].blur) {
-        inlineStyles.filter = `blur(${this.props.resolutions[index].blur}px)`;
-      }
-
+    if (!this.props.forcePlaceholder) {
       // Renders the actual image.
       innerImage = (
         <img
           className={styles.image}
-          src={src}
-          style={inlineStyles}
           alt={this.props.alt}
+          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
           role="presentation"
           data-test-id="image"
+          ref={this.imgRef}
         />
       );
     }
