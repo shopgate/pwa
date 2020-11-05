@@ -7,7 +7,7 @@ import { useLoadProductImage } from '@shopgate/engage/product';
  * @return {JSX}
  */
 const MediaSection = ({
-  onClick, children, 'aria-hidden': ariaHidden, product,
+  onClick, children, 'aria-hidden': ariaHidden, product, onRef,
 }) => {
   const loadedImageSrc = useLoadProductImage(product && product.featuredImageBaseUrl);
 
@@ -24,6 +24,7 @@ const MediaSection = ({
         backgroundSize: 'contain',
         transform: 'translate3d(0, 0, 0)',
       }}
+      ref={onRef}
     >
       {children}
     </div>
@@ -33,6 +34,7 @@ const MediaSection = ({
 MediaSection.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
+  onRef: PropTypes.shape().isRequired,
   'aria-hidden': PropTypes.bool,
   product: PropTypes.shape(),
 };

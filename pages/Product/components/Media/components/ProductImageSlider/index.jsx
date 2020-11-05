@@ -28,6 +28,7 @@ class ProductImageSlider extends Component {
     historyPush: PropTypes.func,
     images: PropTypes.arrayOf(PropTypes.string),
     product: PropTypes.shape(),
+    productId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -36,7 +37,24 @@ class ProductImageSlider extends Component {
     historyPush: noop,
     images: null,
     product: null,
+    productId: null,
   };
+
+  /**
+   *
+   * @inheritDoc
+   */
+  constructor(props, context) {
+    super(props, context);
+    this.mediaRef = React.createRef(null);
+  }
+
+  /**
+   * @inheritDoc
+   */
+  componentDidMount() {
+    this.mounted = true;
+  }
 
   /**
    * @param {Object} nextProps the next props
@@ -44,32 +62,49 @@ class ProductImageSlider extends Component {
    */
   shouldComponentUpdate(nextProps) {
     let depImage = null;
-    if (this.props.product !== nextProps.product) {
-      // Update only after new product data is received, skipping null
-      if (nextProps.product && nextProps.product.featuredImageBaseUrl) {
-        depImage = nextProps.product.featuredImageBaseUrl;
+
+    if (!nextProps.images) {
+      // Is loading, blur media
+      if (this.mediaRef.current) {
+        this.mediaRef.current.style.filter = 'blur(4px)';
       }
     }
 
-    if (this.props.images && nextProps.images) {
-      if (isEqual(this.props.images, nextProps.images)) {
-        return false;
+    if (nextProps.images) {
+      if (!nextProps.images.length && nextProps.product) {
+        depImage = nextProps.product.featuredImageBaseUrl;
+      } else if (!isEqual(this.props.images, nextProps.images)) {
+        [depImage] = nextProps.images;
       }
-
-      if (this.props.images.length !== nextProps.images.length && !nextProps.images.length) {
-        // Product image will be shown due to no images
-        return true;
-      }
-
-      [depImage] = nextProps.images;
     }
 
     if (depImage) {
-      // We have dependency image that we need to load before re-render
-      loadProductImage(depImage).then(() => this.forceUpdate());
+      // Blur for image load
+      if (this.mediaRef.current) {
+        this.mediaRef.current.style.filter = 'blur(4px)';
+      }
+      loadProductImage(depImage).then(() => {
+        if (this.mounted) {
+          this.forceUpdate();
+          if (this.mediaRef.current) {
+            setTimeout(() => {
+              if (this.mounted) {
+                this.mediaRef.current.style.filter = 'none';
+              }
+            }, 500);
+          }
+        }
+      });
     }
 
     return false;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   handleOpenGallery = () => {
@@ -90,13 +125,12 @@ class ProductImageSlider extends Component {
    */
   render() {
     const {
-      product, images, 'aria-hidden': ariaHidden, className,
+      product, productId, images, 'aria-hidden': ariaHidden, className,
     } = this.props;
     const { HeroImage: pdpResolutions } = getProductImageSettings();
-    let content;
-    let onClick = this.handleOpenGallery;
 
-    if (product && Array.isArray(images) && images.length > 1) {
+    let content;
+    if (images && images.length > 1) {
       content = (
         <Swiper
           loop
@@ -105,7 +139,7 @@ class ProductImageSlider extends Component {
           className={className}
         >
           {images.map(image => (
-            <Swiper.Item key={`${product.id}-${image}`}>
+            <Swiper.Item key={`${productId}-${image}`}>
               <ProductImage
                 src={image}
                 animating={false}
@@ -118,6 +152,8 @@ class ProductImageSlider extends Component {
       );
     }
 
+    let onClick = this.handleOpenGallery;
+
     if (!content) {
       content = (
         <ProductImage
@@ -125,9 +161,10 @@ class ProductImageSlider extends Component {
           className={className}
           forcePlaceholder={!product}
           resolutions={pdpResolutions}
+          noBackground
         />
       );
-      if (!images || (images && !images.length)) {
+      if (!product || !product.featuredImageBaseUrl) {
         onClick = noop;
       }
     }
@@ -140,6 +177,7 @@ class ProductImageSlider extends Component {
             product={product}
             aria-hidden={ariaHidden}
             onClick={onClick}
+            onRef={this.mediaRef}
           >
             {content}
           </MediaSection>
