@@ -626,7 +626,7 @@ export const getProductImages = createSelector(
       return baseProductImages;
     }
 
-    return productImages;
+    return productImages || null;
   }
 );
 
