@@ -28,6 +28,7 @@ class ProductImageSlider extends Component {
     images: PropTypes.arrayOf(PropTypes.string),
     product: PropTypes.shape(),
     productId: PropTypes.string,
+    variantId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ class ProductImageSlider extends Component {
     images: null,
     product: null,
     productId: null,
+    variantId: null,
   };
 
   /**
@@ -80,14 +82,21 @@ class ProductImageSlider extends Component {
       if (this.mediaRef.current) {
         this.mediaRef.current.style.filter = 'blur(3px)';
       }
-      loadProductImage(depImage).then(() => {
-        if (this.mounted) {
-          if (this.mediaRef.current) {
-            this.mediaRef.current.style.filter = 'none';
+      loadProductImage(depImage)
+        .then(() => {
+          if (this.mounted) {
+            if (this.mediaRef.current) {
+              this.mediaRef.current.style.filter = 'none';
+            }
+            this.forceUpdate();
           }
-          this.forceUpdate();
-        }
-      });
+        }).catch(() => {
+          if (this.mounted) {
+            if (this.mediaRef.current) {
+              this.mediaRef.current.style.filter = 'none';
+            }
+          }
+        });
     }
     return false;
   }
@@ -101,7 +110,7 @@ class ProductImageSlider extends Component {
 
   handleOpenGallery = () => {
     this.props.historyPush({
-      pathname: `${ITEM_PATH}/${bin2hex(this.props.product.id)}/gallery/${this.currentSlide}`,
+      pathname: `${ITEM_PATH}/${bin2hex(this.props.variantId || this.props.productId)}/gallery/${this.currentSlide}`,
     });
   };
 
