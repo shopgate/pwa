@@ -13,7 +13,6 @@ import {
   ProductImage,
   getProductImageSettings,
 } from '@shopgate/engage/product';
-import MediaSection from '../MediaSection';
 import connect from './connector';
 
 /**
@@ -66,7 +65,7 @@ class ProductImageSlider extends Component {
     if (!nextProps.images) {
       // Is loading, blur media
       if (this.mediaRef.current) {
-        this.mediaRef.current.style.filter = 'blur(4px)';
+        this.mediaRef.current.style.filter = 'blur(3px)';
       }
     }
 
@@ -81,18 +80,14 @@ class ProductImageSlider extends Component {
     if (depImage) {
       // Blur for image load
       if (this.mediaRef.current) {
-        this.mediaRef.current.style.filter = 'blur(4px)';
+        this.mediaRef.current.style.filter = 'blur(3px)';
       }
       loadProductImage(depImage).then(() => {
         if (this.mounted) {
-          this.forceUpdate();
           if (this.mediaRef.current) {
-            setTimeout(() => {
-              if (this.mounted) {
-                this.mediaRef.current.style.filter = 'none';
-              }
-            }, 500);
+            this.mediaRef.current.style.filter = 'none';
           }
+          this.forceUpdate();
         }
       });
     }
@@ -169,18 +164,26 @@ class ProductImageSlider extends Component {
       }
     }
 
+    const wrapperStyles = {
+      transition: '0.5s filter ease-out', // blur filter
+    };
+
     return (
       <Fragment>
         <Portal name={PRODUCT_IMAGE_BEFORE} />
         <Portal name={PRODUCT_IMAGE}>
-          <MediaSection
-            product={product}
-            aria-hidden={ariaHidden}
+          <div
+            data-test-id={`product: ${product ? product.name : ''}`}
             onClick={onClick}
-            onRef={this.mediaRef}
+            onKeyDown={onClick}
+            role="button"
+            tabIndex="0"
+            aria-hidden={ariaHidden}
+            style={wrapperStyles}
+            ref={this.mediaRef}
           >
             {content}
-          </MediaSection>
+          </div>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />
       </Fragment>
