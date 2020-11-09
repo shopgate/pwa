@@ -99,7 +99,7 @@ const mapAttributeType = (value, attribute) => {
 
   // Number type.
   if (attribute.type === 'number') {
-    return value.length ? parseFloat(value || 0) : null;
+    return value.length ? parseFloat(value.replace(',', '.') || 0) : null;
   }
 
   // Text types (date is just a formatted text)
