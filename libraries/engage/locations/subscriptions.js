@@ -1,13 +1,19 @@
 import { receivedVisibleProduct$ } from '@shopgate/engage/product';
 import {
+  cartReceived$,
   cartWillEnter$,
   fetchCart,
   cartDidEnter$,
+  getCartItems,
 } from '@shopgate/engage/cart';
+import { userDidLogin$ } from '@shopgate/engage/user';
 import { receiveCoreConfig$, appDidStart$ } from '@shopgate/engage/core';
 import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
-import { getUserSearch, getStoreFinderSearch } from './selectors';
+import {
+  getUserSearch, getStoreFinderSearch, getPreferredLocation,
+} from './selectors';
 import { fetchLocations, fetchProductLocations } from './actions';
+import selectLocation from './action-creators/selectLocation';
 import {
   submitReservationSuccess$,
   cartReceivedWithROPE$,
@@ -97,6 +103,35 @@ function locations(subscribe) {
       ...storeFinderSearch,
       enableInLocationFinder: true,
     }));
+  });
+
+  /**
+   * Makes sure that the active location is switched after logging in
+   * to a location that is also available in the cart.
+   * Avoids having a selected location that differs from the cart
+   */
+  const afterCartMerge$ = userDidLogin$.mergeMap(() => console.warn('yup') || cartReceived$.first());
+  subscribe(afterCartMerge$, async ({ dispatch, getState }) => {
+    const state = getState();
+    const cartItems = getCartItems(state);
+    const preferredLocation = getPreferredLocation(state, {});
+    if (!cartItems?.length) {
+      return;
+    }
+
+    const activeCartLocation = cartItems.find(item =>
+      item.fulfillment?.location?.code === preferredLocation?.code);
+
+    if (activeCartLocation) {
+      return;
+    }
+
+    const firstLocationCode = cartItems[0]?.fulfillment?.location?.code;
+    if (!firstLocationCode) {
+      return;
+    }
+
+    dispatch(selectLocation({ code: firstLocationCode }));
   });
 }
 
