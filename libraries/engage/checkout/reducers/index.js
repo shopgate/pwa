@@ -7,6 +7,8 @@ import {
   FETCH_PAYMENT_METHODS,
   FETCH_PAYMENT_METHODS_SUCCESS,
   FETCH_PAYMENT_METHODS_ERROR,
+  ADD_CHECKOUT_CAMPAIGN,
+  CLEAR_CHECKOUT_CAMPAIGN,
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -21,6 +23,14 @@ const initialState = {
   },
   checkoutSubmit: {
     errors: [],
+  },
+  checkoutCampaign: {
+    code: null,
+    sentTime: null,
+    receivedTime: null,
+    notificationId: null,
+    locale: null,
+    distributionIndex: null,
   },
 };
 
@@ -72,6 +82,16 @@ export default function checkoutReducer(state = initialState, action) {
 
       case FETCH_PAYMENT_METHODS_ERROR: {
         draft.paymentMethods.isFetching = false;
+        break;
+      }
+
+      case ADD_CHECKOUT_CAMPAIGN: {
+        draft.checkoutCampaign = action.data;
+        break;
+      }
+
+      case CLEAR_CHECKOUT_CAMPAIGN: {
+        draft.checkoutCampaign = initialState.checkoutCampaign;
         break;
       }
 

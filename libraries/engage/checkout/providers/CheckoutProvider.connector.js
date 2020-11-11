@@ -11,12 +11,14 @@ import {
   getCheckoutFulfillmentSlot,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
+import { getCampaignAttribution } from '@shopgate/engage/checkout/selectors/campaign';
 import { fetchCart } from '@shopgate/pwa-common-commerce/cart';
 import {
   prepareCheckout,
   fetchCheckoutOrder,
   updateCheckoutOrder,
   submitCheckoutOrder,
+  clearCheckoutCampaign,
 } from '@shopgate/engage/checkout';
 import { historyReplace, showModal } from '@shopgate/engage/core';
 
@@ -39,6 +41,7 @@ function makeMapStateToProps() {
     pickupAddress: getCheckoutPickupAddress(state),
     taxLines: getCheckoutTaxLines(state),
     orderReserveOnly: getIsReserveOnly(state),
+    campaignAttribution: getCampaignAttribution(state),
   });
 }
 
@@ -49,6 +52,7 @@ const mapDispatchToProps = {
   fetchCheckoutOrder,
   updateCheckoutOrder,
   submitCheckoutOrder,
+  clearCheckoutCampaign,
   showModal,
 };
 

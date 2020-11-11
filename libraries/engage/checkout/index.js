@@ -11,7 +11,10 @@ export { fetchPaymentMethods } from '@shopgate/engage/checkout/actions/fetchPaym
 export { prepareCheckout } from '@shopgate/engage/checkout/actions/prepareCheckout';
 export { updateDefaultBillingContact } from '@shopgate/engage/checkout/actions/updateDefaultBillingContact';
 
-export { clearCheckoutOrder } from '@shopgate/engage/checkout/action-creators/clearCheckoutOrder';
+export {
+  clearCheckoutOrder,
+  clearCheckoutCampaign,
+} from '@shopgate/engage/checkout/action-creators';
 
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/checkout/constants/index';

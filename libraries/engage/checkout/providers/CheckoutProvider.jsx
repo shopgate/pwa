@@ -24,6 +24,7 @@ type Props = {
   userLocation: any,
   isDataReady: bool,
   orderReserveOnly?: bool,
+  campaignAttribution: any,
   fetchCart: () => Promise<any>,
   prepareCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
@@ -31,6 +32,7 @@ type Props = {
   submitCheckoutOrder: () => Promise<any>,
   historyReplace: (any) => void,
   showModal: (any) => void,
+  clearCheckoutCampaign: (any) => void,
 };
 
 const defaultPickupPersonState = {
@@ -86,6 +88,8 @@ const CheckoutProvider = ({
   isDataReady,
   fulfillmentSlot,
   orderReserveOnly,
+  campaignAttribution,
+  clearCheckoutCampaign,
 }: Props) => {
   const paymentHandlerRef = React.useRef(null);
   const [isLocked, setLocked] = React.useState(true);
@@ -201,6 +205,7 @@ const CheckoutProvider = ({
         userAgent: getUserAgent(),
         platform: 'engage',
         marketingOptIn,
+        ...(campaignAttribution ? { campaignAttribution } : {}),
       });
 
       // Check if api requested a external redirect.
@@ -232,6 +237,8 @@ const CheckoutProvider = ({
       fetchCart(),
     ]);
 
+    clearCheckoutCampaign();
+
     historyReplace({
       pathname: CHECKOUT_CONFIRMATION_PATTERN,
       state: { order },
@@ -252,6 +259,8 @@ const CheckoutProvider = ({
     updateOptIns,
     submitCheckoutOrder,
     paymentHandlerRef,
+    campaignAttribution,
+    clearCheckoutCampaign,
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.
