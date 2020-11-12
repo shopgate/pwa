@@ -1,8 +1,9 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import analyticsSetCustomValues from '@shopgate/pwa-core/commands/analyticsSetCustomValues';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import { checkoutSuccess$ } from '@shopgate/engage/checkout/streams';
 import getCart from '../selectors/cart';
-import { track, formatPurchaseData } from '../helpers';
+import { track, formatPurchaseData, formatNativeCheckoutPurchaseData } from '../helpers';
 import { checkoutDidEnter$ } from '../streams/checkout';
 
 /**
@@ -43,5 +44,30 @@ export default function checkout(subscribe) {
 
       track('purchase', formattedData, getState());
     });
+  });
+
+  subscribe(checkoutSuccess$, ({ getState, action }) => {
+    const { order } = action;
+    if (typeof order === 'undefined') {
+      return;
+    }
+
+    const source = order?.platform === 'desktop' ? 'web_PWA' : 'app_PWA';
+
+    analyticsSetCustomValues({
+      customDimensions: [{
+        index: 4,
+        value: source,
+      }],
+    });
+
+    const formattedData = {
+      ...formatNativeCheckoutPurchaseData(order),
+      meta: {
+        source,
+      },
+    };
+
+    track('purchase', formattedData, getState());
   });
 }

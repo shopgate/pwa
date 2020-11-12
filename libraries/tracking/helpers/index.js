@@ -158,6 +158,62 @@ export const formatPurchaseData = (passedOrder) => {
 };
 
 /**
+ * Reformat order data from native checkout to the format our core expects.
+ * @param {Object} order Information about the order.
+ * @return {Object}
+ */
+export const formatNativeCheckoutPurchaseData = (order = {}) => {
+  const {
+    orderNumber,
+    total,
+    taxAmount,
+    shippingTotal,
+    currencyCode,
+    lineItems = [],
+  } = order;
+
+  const products = lineItems.map(({
+    quantity, currencyCode: itemCurrencyCode, taxAmount: itemTaxAmount, price, product = {},
+  }) => ({
+    uid: product?.code || '',
+    productNumber: product?.code || '',
+    name: product?.name || '',
+    quantity: quantity || 1,
+    amount: {
+      currency: itemCurrencyCode,
+      gross: convertPriceToString(price),
+      net: convertPriceToString(price - itemTaxAmount),
+    },
+  }));
+
+  return {
+    shop: {
+      name: '',
+    },
+    order: {
+      number: orderNumber,
+      amount: {
+        currency: currencyCode,
+        gross: convertPriceToString(total),
+        net: convertPriceToString(total - taxAmount),
+        tax: convertPriceToString(taxAmount),
+      },
+      shipping: {
+        amount: {
+          gross: convertPriceToString(shippingTotal),
+          net: convertPriceToString(shippingTotal),
+        },
+      },
+      products,
+      shippingAddress: {
+        city: '',
+        country: '',
+      },
+    },
+  };
+};
+
+/**
  * Creates data for the scanner tracking events.
  * @param {Object} params params
  * @return {Object}

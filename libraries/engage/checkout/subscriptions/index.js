@@ -1,18 +1,14 @@
 import { main$ } from '@shopgate/pwa-common/streams';
 import { OPEN_PUSH_NOTIFICATION } from '@shopgate/pwa-common/constants/ActionTypes';
-import { routeDidLeave$ } from '@shopgate/engage/core';
 import { userDidLogout$ } from '@shopgate/engage/user';
 import { addCheckoutCampaign } from '../action-creators';
-import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants';
+import { checkoutConfirmationDidLeave$ } from '../streams';
 import { clearCheckoutOrder } from '../index';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
  */
 export default function checkout(subscribe) {
-  const checkoutConfirmationDidLeave$ = routeDidLeave$
-    .filter(({ action }) => action.route.pattern === CHECKOUT_CONFIRMATION_PATTERN);
-
   const pushOpened$ = main$
     .filter(({ action }) => action.type === OPEN_PUSH_NOTIFICATION);
 
