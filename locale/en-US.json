@@ -534,6 +534,7 @@
         "genericExternal": "The payment with the selected payment method failed. Please try a different payment method."
       }
     },
+    "finalizePayment": "Finalize your Order",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "headline_reserve": "Pickup Contact",
