@@ -1,19 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import MobileDetect from 'mobile-detect';
-import { hasWebBridge } from '@shopgate/engage/core';
-
-let supportTypeNumber = true;
-
-if (hasWebBridge()) {
-  const isSafari = navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome');
-  const md = new MobileDetect(navigator.userAgent);
-
-  if (isSafari && md.mobile() !== 'iPhone') {
-    supportTypeNumber = false;
-  }
-}
 
 /**
  * A component that takes care of rendering and validation of input fields.
@@ -164,15 +151,19 @@ class SimpleInput extends Component {
    * @param {Object} event The event object.
    */
   handleChange = (event) => {
+    const { value } = this.state;
+    const { type } = this.props;
+
+    // Special handling to prevent invalid characters within number inputs on Firefox /  Safari
+    if (type === 'number' && event?.target?.validity?.badInput) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.ref.value = value;
+      return;
+    }
+
     // Sanitize the input value.
     const sanitizedValue = this.props.onSanitize(event.target.value || '');
-
-    if (this.props.type === 'number' && !supportTypeNumber) {
-      if (!/^([0-9,.]*)$/.test(event.target.value.trim())) {
-        // Abort when the value is not numeric
-        return;
-      }
-    }
 
     // Update the state.
     this.updateValue(sanitizedValue, !this.props.isControlled);
@@ -222,11 +213,7 @@ class SimpleInput extends Component {
       password,
       onKeyPress,
     } = this.props;
-    let type = password ? 'password' : this.props.type;
-
-    if (this.props.type === 'number' && !supportTypeNumber) {
-      type = 'text';
-    }
+    const type = password ? 'password' : this.props.type;
 
     const { value } = this.state;
     const autoComplete = this.props.autoComplete ? 'on' : 'off';
@@ -241,11 +228,16 @@ class SimpleInput extends Component {
         ref={ref => this.handleRef(ref)}
         className={classNames(className, 'simpleInput')}
         type={type}
-        inputmode={type === 'number' ? 'decimal' : null}
+        inputMode={type === 'number' ? 'decimal' : null}
         pattern={type === 'number' ? '[0-9]*' : null}
+        min={type === 'number' ? 0 : null}
+        step={type === 'number' ? 'any' : null}
         value={value}
         onKeyPress={onKeyPress}
-        onChange={this.handleChange}
+        // Use onInput for number fields to enable handling for invalid values
+        // (onChange might to be triggered when the input is invalid)
+        onInput={type === 'number' ? this.handleChange : null}
+        onChange={type !== 'number' ? this.handleChange : () => {}}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         disabled={this.props.disabled}
