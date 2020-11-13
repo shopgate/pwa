@@ -22,6 +22,7 @@ export function useValidation(constraints) {
 
     setValid(isValid);
     setValidationErrors(errors);
+    return isValid;
   }, [constraints]);
 
   return {

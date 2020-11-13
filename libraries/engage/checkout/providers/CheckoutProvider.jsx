@@ -91,7 +91,9 @@ const CheckoutProvider = ({
   campaignAttribution,
   clearCheckoutCampaign,
 }: Props) => {
+  const [paymentButton, setPaymentButton] = React.useState(null);
   const paymentHandlerRef = React.useRef(null);
+  const [paymentData, setPaymentData] = React.useState(null);
   const [isLocked, setLocked] = React.useState(true);
   const [isButtonLocked, setButtonLocked] = React.useState(true);
   const [isLoading, setLoading] = React.useState(true);
@@ -298,7 +300,14 @@ const CheckoutProvider = ({
 
   // Create memoized context value.
   const value = React.useMemo(() => ({
-    setPaymentHandler: (handler) => { paymentHandlerRef.current = handler; },
+    setPaymentHandler: (handler) => {
+      setPaymentButton(() => handler.getCustomPayButton());
+      paymentHandlerRef.current = handler;
+    },
+    paymentButton,
+    paymentData,
+    setPaymentData,
+    paymentTransactions,
     isLocked,
     isButtonLocked: (isLocked || isButtonLocked) && needsPayment,
     isLoading,
@@ -306,6 +315,7 @@ const CheckoutProvider = ({
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,
     handleSubmitOrder: formState.handleSubmit,
+    handleValidation: () => formState.validate(formState.values),
     defaultPickupPersonState,
     userLocation,
     billingAddress,
@@ -321,24 +331,23 @@ const CheckoutProvider = ({
     setLoading,
     setLocked,
   }), [
+    paymentButton,
+    paymentData,
+    paymentTransactions,
     isLocked,
     isButtonLocked,
+    needsPayment,
     isLoading,
     shopSettings.supportedCountries,
-    formState.validationErrors,
-    formState.setValues,
-    formState.handleSubmit,
+    formState,
     userLocation,
     billingAddress,
     pickupAddress,
     taxLines,
-    needsPayment,
     orderReserveOnly,
     fulfillmentSlot,
     optInFormState.setValues,
     defaultOptInFormState,
-    setLoading,
-    setLocked,
   ]);
 
   // Handle deeplinks from external payment site.

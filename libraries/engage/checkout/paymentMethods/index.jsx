@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -88,8 +89,9 @@ const PaymentMethodProvider = ({
   fetchOrder,
   updateOrder,
 }) => {
+  const [activePaymentMeta, setActivePaymentMeta] = useState(null);
   const {
-    setPaymentHandler, needsPayment, setButtonLocked, setLocked,
+    setPaymentHandler, setPaymentData, needsPayment, setButtonLocked, setLocked,
   } = useContext(CheckoutContext);
   const paymentMethodRef = useRef();
 
@@ -99,37 +101,46 @@ const PaymentMethodProvider = ({
     if (!transaction) return null;
     return transaction.paymentMethod.code;
   }, [order]);
+
+  const paymentData = useMemo(
+    () => paymentMethods?.find(p => p.code === paymentMethodCode),
+    [paymentMethodCode, paymentMethods]
+  );
+
   const paymentImpl = useMemo(
     () => AVAILABLE_PAYMENT_METHOD.find(method =>
-      method.code === paymentMethods
-        ?.find(p => p.code === paymentMethodCode)
+      method.code === paymentData
         ?.paymentProvider
         ?.code),
-    [paymentMethodCode, paymentMethods]
+    [paymentData]
   );
 
   // Global transaction handler
   // Currently simply redirect fulfill request to the active payment method.
   useEffect(() => {
     setPaymentHandler({
+      getCustomPayButton: () => paymentImpl?.payButton,
       fulfillTransaction: async ({ paymentTransactions }) => {
         const resolved = await paymentMethodRef.current.fulfillTransaction({ paymentTransactions });
         return resolved;
       },
     });
-  }, [setButtonLocked, setPaymentHandler]);
+  }, [paymentImpl, setButtonLocked, setPaymentHandler]);
 
   // Map configured payment methods
   const availablePaymentMethods = useMemo(
     () => paymentMethods.map(method => ({
       ...AVAILABLE_PAYMENT_METHOD.find(m => m.code === method.paymentProvider.code),
       internalCode: method.code,
+      settings: method.settings,
     })),
     [paymentMethods]
   );
 
   // Change payment method.
-  const handleChangePayment = useCallback(async (code) => {
+  const handleChangePayment = useCallback(async (code, meta) => {
+    setActivePaymentMeta(meta);
+    setPaymentData({ meta });
     if (paymentMethodCode === code) {
       return;
     }
@@ -143,7 +154,7 @@ const PaymentMethodProvider = ({
     });
     await fetchOrder();
     setLocked(false);
-  }, [fetchOrder, paymentMethodCode, updateOrder, setLocked]);
+  }, [setPaymentData, paymentMethodCode, setLocked, updateOrder, fetchOrder]);
 
   // API for the underlying payment methods.
   const paymentMethodApi = useMemo(() => ({
@@ -171,19 +182,29 @@ const PaymentMethodProvider = ({
             {availablePaymentMethods.map(method => (
               <method.button
                 key={method.internalCode}
-                onChange={() => handleChangePayment(method.internalCode)}
+                settings={method.settings}
+                onChange={meta => handleChangePayment(method.internalCode, meta)}
                 active={method.internalCode === paymentMethodCode}
+                activePaymentMeta={activePaymentMeta}
               />
             ))}
           </div>
           {paymentImpl ? (
-            <Provider context={Context}>
+            <Provider
+              context={Context}
+              data={paymentData}
+              activePaymentMeta={activePaymentMeta}
+            >
               <Content />
             </Provider>
           ) : null}
         </div>
       ) : (
-        <Provider context={Context}>
+        <Provider
+          context={Context}
+          data={paymentData}
+          activePaymentMeta={activePaymentMeta}
+        >
           <Content />
         </Provider>
       )}

@@ -535,6 +535,7 @@
         "genericExternal": "Die Bezahlung mit der ausgewählten Bezahlmethode ist leider fehlgeschlagen. Versuche es erneut mit einer anderen Bezahlmethode."
       }
     },
+    "finalizePayment": "Bestellung ab­schlie­ßen",
     "pickup_contact": {
       "headline": "Kontakt zur Abholung",
       "headline_reserve": "Kontakt zur Abholung",

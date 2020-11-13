@@ -106,7 +106,9 @@ export function useFormState(initialState, complete, validationConstraints = {})
    * @param {Object} event The submit event object.
    */
   const handleSubmit = debounce((event) => {
-    event.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     setSubmitting(true);
   }, 300, {
     leading: true,
@@ -121,5 +123,6 @@ export function useFormState(initialState, complete, validationConstraints = {})
     validationErrors,
     isSubmitting,
     setValues,
+    validate,
   };
 }
