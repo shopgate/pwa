@@ -96,6 +96,10 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
 
   if (typeof fundingSource === 'object') return null;
 
+  if (!paypal) {
+    return null;
+  }
+
   return (
     <Fragment>
       <h3 className={styles.headline}>{i18n.text('checkout.finalizePayment')}</h3>

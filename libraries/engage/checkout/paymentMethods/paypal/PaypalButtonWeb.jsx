@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+import { useCheckoutContext } from '../../hooks/common';
 import Button from '../../components/PaymentMethodButton';
 import { loadWebSdk, usePaypal } from './sdk';
 
@@ -29,13 +30,20 @@ const styles = {
 const PaypalButton = ({
   settings, onChange, activePaymentMeta: activeFundingSource, active,
 }) => {
+  const { setLocked } = useCheckoutContext();
   const paypal = usePaypal();
 
   // Intialize paypal sdk.
   useEffect(() => {
     if (!settings) return;
-    loadWebSdk(settings);
-  }, [settings]);
+    /** Async handler */
+    const handler = async () => {
+      setLocked(true);
+      await loadWebSdk(settings);
+      setLocked(false);
+    };
+    handler();
+  }, [setLocked, settings]);
 
   // Create paypal markers (just logic-less logos for each payment method).
   const marks = useMemo(() => {
