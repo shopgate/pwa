@@ -109,13 +109,16 @@ exports[`<Password> should render a password field 1`] = `
                       className="css-keangt simpleInput"
                       disabled={false}
                       id={null}
-                      inputmode={null}
+                      inputMode={null}
+                      min={null}
                       name="test-input"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
+                      onInput={null}
                       onKeyPress={[Function]}
                       pattern={null}
+                      step={null}
                       type="password"
                       value=""
                     />

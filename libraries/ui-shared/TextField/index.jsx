@@ -82,6 +82,11 @@ class TextField extends Component {
    * @returns {boolean} Whether the label is currently floating.
    */
   get isLabelFloating() {
+    // On Firefox empty date inputs always show a placeholder with date pattern
+    if (navigator.userAgent.includes('Firefox') && this.props.type === 'date') {
+      return true;
+    }
+
     return this.isFocused || !!this.props.value;
   }
 
