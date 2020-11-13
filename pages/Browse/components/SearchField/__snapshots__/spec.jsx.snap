@@ -111,13 +111,16 @@ exports[`<Content /> Check search field should render with initial search query 
                     className="css-11ngaym css-1qnjb83 simpleInput"
                     disabled={false}
                     id={null}
-                    inputmode={null}
+                    inputMode={null}
+                    min={null}
                     name={null}
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onInput={null}
                     onKeyPress={[Function]}
                     pattern={null}
+                    step={null}
                     type="search"
                     value="foo"
                   />
@@ -315,13 +318,16 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                     className="css-11ngaym simpleInput"
                     disabled={false}
                     id={null}
-                    inputmode={null}
+                    inputMode={null}
+                    min={null}
                     name={null}
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onInput={null}
                     onKeyPress={[Function]}
                     pattern={null}
+                    step={null}
                     type="search"
                     value="foo"
                   />
