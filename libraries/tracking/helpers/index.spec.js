@@ -7,7 +7,9 @@ import {
   createCategoryData,
   createRootCategoryData,
   createPageviewData,
+  formatNativeCheckoutPurchaseData,
 } from './index';
+import { checkoutOrder } from './index.spec.mock';
 
 jest.mock('@shopgate/engage/core', () => ({
   i18n: {
@@ -333,6 +335,67 @@ describe('Tracking helpers', () => {
         search: null,
         category: null,
         product: mockData.product,
+      });
+    });
+  });
+
+  describe('formatNativeCheckoutPurchaseData', () => {
+    it('should format the data as expected', () => {
+      const result = formatNativeCheckoutPurchaseData(checkoutOrder);
+      expect(result).toEqual({
+        shop: {
+          name: '',
+        },
+        order: {
+          number: '1292',
+          amount: {
+            currency: 'USD',
+            gross: '57.90',
+            net: '53.89',
+            tax: '4.01',
+          },
+          shipping: {
+            amount: {
+              gross: '2.90',
+              net: '2.90',
+            },
+          },
+          products: [{
+            uid: '24-MB04',
+            productNumber: '24-MB04',
+            name: 'Product One',
+            quantity: 1,
+            amount: {
+              currency: 'USD',
+              gross: '32.00',
+              net: '30.21',
+            },
+          }, {
+            uid: '24-UG06',
+            productNumber: '24-UG06',
+            name: 'Product Two',
+            quantity: 2,
+            amount: {
+              currency: 'USD',
+              gross: '14.00',
+              net: '13.22',
+            },
+          }, {
+            uid: 'FOOD-01',
+            productNumber: 'FOOD-01',
+            name: 'Product Three',
+            quantity: 1.25,
+            amount: {
+              currency: 'USD',
+              gross: '1.69',
+              net: '1.60',
+            },
+          }],
+          shippingAddress: {
+            city: '',
+            country: '',
+          },
+        },
       });
     });
   });

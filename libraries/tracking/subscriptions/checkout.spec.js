@@ -15,7 +15,7 @@ describe('Checkout subscriptions', () => {
   });
 
   it('should call subscribe as expected', () => {
-    expect(subscribe).toHaveBeenCalledTimes(2);
+    expect(subscribe).toHaveBeenCalledTimes(3);
   });
 
   describe('checkoutDidEnter$', () => {
