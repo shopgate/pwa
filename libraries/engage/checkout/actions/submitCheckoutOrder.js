@@ -35,7 +35,8 @@ export const submitCheckoutOrder = payload => async (dispatch) => {
       'checkout.errors.genericSubmit',
       'shopgate.checkout.submit',
       error,
-      false
+      false,
+      [1001, 1003]
     ));
     dispatch({ type: SUBMIT_CHECKOUT_ORDER_ERROR });
   }
