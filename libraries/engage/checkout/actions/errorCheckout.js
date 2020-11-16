@@ -37,18 +37,35 @@ const gotoCart = (dispatch, getState) => {
  * @param {string} pipeline Pipeline name.
  * @param {Object} error Error.
  * @param {boolean} redirect Whether it should redirect.
+ * @param {Array} gotoCartErrorCodes A list of error codes which should redirect to the cart
  * @return {Object}
  */
-export const errorCheckout = (message, pipeline, error, redirect) => (dispatch, getState) => {
+export const errorCheckout = (
+  message,
+  pipeline,
+  error,
+  redirect,
+  gotoCartErrorCodes = []
+) => (dispatch, getState) => {
+  let subCode;
+
+  if (error?.errors) {
+    const [first] = error.errors;
+    ({ code: subCode } = first);
+  }
+
   const errorObject = {
     code: error.code || 'NOT SET',
-    message: error.toString(),
+    message: JSON.stringify(error, null, 2),
   };
 
   // Go back to homepage and inform shopper.
   if (redirect) {
     dispatch(historyResetTo(INDEX_PATH));
-  } else if (['shopgate.checkout.initialize'].includes(pipeline)) {
+  } else if (
+    ['shopgate.checkout.initialize'].includes(pipeline) ||
+    gotoCartErrorCodes.includes(subCode)
+  ) {
     gotoCart(dispatch, getState);
   }
 
