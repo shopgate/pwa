@@ -1849,7 +1849,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
       >
         <LoadingIndicator>
           <div
-            className="css-1aid7je"
+            className="css-1aid7je loading-indicator"
           >
             <IndicatorCircle
               color="#5ccee3"
