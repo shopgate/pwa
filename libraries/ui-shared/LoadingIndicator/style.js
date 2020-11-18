@@ -9,4 +9,13 @@ const container = css({
   color: themeConfig.colors.accent,
 }).toString();
 
+export const imgContainer = css({
+  display: 'flex',
+  justifyContent: 'center',
+  ' img': {
+    maxWidth: '50vw',
+    maxHeight: '50vh',
+  },
+}).toString();
+
 export default container;

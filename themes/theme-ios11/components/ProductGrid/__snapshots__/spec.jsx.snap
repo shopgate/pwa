@@ -74,7 +74,7 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
         </div>
         <LoadingIndicator>
           <div
-            className="css-1aid7je"
+            className="css-1aid7je loading-indicator"
           >
             <IndicatorCircle
               color="#5ccee3"
