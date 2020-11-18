@@ -1,5 +1,15 @@
 # Changelog
 
+## [v6.13.10](https://github.com/shopgate/pwa/compare/v6.13.9...v6.13.10) (2020-11-18)
+
+#### :rocket: Enhancement
+* [#1042](https://github.com/shopgate/pwa/pull/1042) Make possible to configure the loading indicator ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1041](https://github.com/shopgate/pwa/pull/1041) Fixed slider bullets on iPhone ([@alexbridge](https://github.com/alexbridge))
+* [#1040](https://github.com/shopgate/pwa/pull/1040) Switch images on product details page correctly, use progressive gallery load ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.13.9](https://github.com/shopgate/pwa/compare/v6.13.7...v6.13.9) (2020-11-04)
 
 #### :rocket: Enhancement
