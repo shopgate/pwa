@@ -69,6 +69,7 @@ export {
   makeIsAddToCartButtonDisabled,
   getAppliedPromotionsWithoutCoupons,
   getPromotionCoupons,
+  hasLineItemPromotions,
 } from './cart.selectors';
 
 // STREAMS

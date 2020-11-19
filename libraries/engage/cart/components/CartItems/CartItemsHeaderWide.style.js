@@ -27,6 +27,11 @@ export const column = css({
   },
 });
 
+export const priceColumnWide = css({
+  flexGrow: 4,
+  alignItems: 'flex-end',
+}).toString();
+
 export const imageColumn = css({
   flexGrow: 0,
   width: 120,

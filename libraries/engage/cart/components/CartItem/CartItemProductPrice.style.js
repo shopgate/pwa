@@ -12,3 +12,9 @@ export const priceStriked = css({
   fontSize: '.875rem',
   textAlign: 'right',
 }).toString();
+
+export const priceListEntry = css({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-end',
+});

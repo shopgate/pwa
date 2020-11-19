@@ -16,6 +16,7 @@ type Props = {
   onFocus: (hidden: boolean) => void,
   editable?: boolean,
   isOrderDetails?: boolean,
+  isCheckoutConfirmation?: boolean,
   currencyOverride?: string,
 }
 
@@ -30,6 +31,7 @@ function CartItems({
   multiLineReservation,
   editable,
   isOrderDetails,
+  isCheckoutConfirmation,
   currencyOverride,
 }: Props) {
   if (!cartItems || cartItems.length === 0) {
@@ -39,7 +41,11 @@ function CartItems({
   return (
     <React.Fragment>
       <ResponsiveContainer breakpoint=">xs" webOnly>
-        <CartItemsHeaderWide editable={editable} isOrderDetails={isOrderDetails} />
+        <CartItemsHeaderWide
+          editable={editable}
+          isOrderDetails={isOrderDetails}
+          isCheckoutConfirmation={isCheckoutConfirmation}
+        />
       </ResponsiveContainer>
 
       <CardList className={items}>
@@ -59,6 +65,7 @@ function CartItems({
               cartItem={item}
               isEditable={editable}
               isOrderDetails={isOrderDetails}
+              isCheckoutConfirmation={isCheckoutConfirmation}
               locationId={item.fulfillmentLocationId}
             >
               <ul>
@@ -89,6 +96,7 @@ CartItems.defaultProps = {
   multiLineReservation: null,
   editable: true,
   isOrderDetails: false,
+  isCheckoutConfirmation: false,
   currencyOverride: null,
 };
 

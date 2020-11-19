@@ -18,7 +18,7 @@ import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
 import { bin2hex } from '@shopgate/engage/core';
 import { getLineItemActiveStatus } from '@shopgate/engage/orders';
 import { CartContextMenuChangeFulfillment } from '@shopgate/engage/locations';
-import { CartItemProductPrice } from './CartItemProductPrice';
+import CartItemProductPriceList from './CartItemProductPriceList';
 import { CartItemProductLayoutWideRemoveItem } from './CartItemProductLayoutWideRemoveItem';
 import { CartItemProductLayoutWideFulfillmentLabel } from './CartItemProductLayoutWideFulfillmentLabel';
 import CartItemProductLayoutWideOrderDetails from './CartItemProductLayoutWideOrderDetails';
@@ -29,6 +29,7 @@ import {
   containerInactive,
   imageColumn,
   detailsColumn,
+  priceColumnWide,
   productName,
   productProperties,
   column,
@@ -47,7 +48,7 @@ import {
  */
 const CartItemProductLayoutWide = () => {
   const {
-    merchantFulfillmentMethodsCount, isOrderDetails,
+    merchantFulfillmentMethodsCount, isOrderDetails, cartHasLineItemPromotions,
   } = useCartItem();
   const context = useCartItemProduct();
   const {
@@ -100,11 +101,10 @@ const CartItemProductLayoutWide = () => {
             <CartItemProductLayoutWideFulfillmentLabel />
           )}
         </div>
-        <div className={column}>
-          <CartItemProductPrice
-            defaultPrice={product.price.unit}
-            specialPrice={product.price.unitSpecial}
-            classNames={{
+        <div className={cartHasLineItemPromotions ? priceColumnWide : column}>
+          <CartItemProductPriceList
+            cartItem={cartItem}
+            classes={{
               price,
               priceStriked: price,
             }}
@@ -141,10 +141,10 @@ const CartItemProductLayoutWide = () => {
           )}
         </div>
         <div className={column}>
-          <CartItemProductPrice
-            currency={currency}
-            defaultPrice={product.price.special || product.price.default}
-            classNames={{
+          <CartItemProductPriceList
+            isSubtotal
+            cartItem={cartItem}
+            classes={{
               price,
               priceStriked: price,
             }}

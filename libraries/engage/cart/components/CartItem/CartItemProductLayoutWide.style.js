@@ -37,6 +37,11 @@ export const detailsColumn = css(column, {
   alignItems: 'flex-start',
 });
 
+export const priceColumnWide = css(column, {
+  flexGrow: 4,
+  alignItems: 'flex-end',
+});
+
 export const locationColumn = css(column, {
   fontSize: '1.25rem',
   lineHeight: '1.625rem',

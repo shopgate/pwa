@@ -3,7 +3,7 @@ import {
   hasProductVariants,
   isProductOrderable,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { getCart } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getCart, getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
 import {
   makeIsRopeProductOrderable,
@@ -61,9 +61,29 @@ export function makeIsAddToCartButtonDisabled() {
   );
 }
 
+export const hasLineItemPromotions = createSelector(
+  getCartItems,
+  cartItems => cartItems.some(({ appliedPromotions = [] }) => appliedPromotions.length > 0)
+);
+
 export const getCoupons = createSelector(
   getCart,
-  cart => cart?.coupons || []
+  getCartItems,
+  (cart, cartItems) => (cart?.coupons || []).filter((coupon) => {
+    // Filter coupons which are assigned to line items
+    const code = coupon?.code;
+    const lineItemCoupon = cartItems.find((cartItem) => {
+      const lineItemPromotions = cartItem?.appliedPromotions || [];
+      const match = lineItemPromotions.find((promotion) => {
+        const lineItemCouponCode = promotion?.coupon?.code;
+        return lineItemCouponCode === code;
+      });
+
+      return !!match;
+    });
+
+    return !lineItemCoupon;
+  })
 );
 
 export const getAppliedPromotions = createSelector(

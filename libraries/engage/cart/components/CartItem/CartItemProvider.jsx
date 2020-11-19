@@ -6,6 +6,8 @@ type Props = {
   cartItem: Object,
   isEditable?: boolean,
   isOrderDetails?:boolean,
+  isCheckoutConfirmation?:boolean,
+  cartHasLineItemPromotions?:boolean,
   location?: Object | null,
   children?: React.Node,
   enabledFulfillmentMethodsCount: number,
@@ -23,6 +25,8 @@ const CartItemProvider = ({
   children,
   enabledFulfillmentMethodsCount,
   isOrderDetails,
+  isCheckoutConfirmation,
+  cartHasLineItemPromotions,
 }: Props) => {
   const actions = useMemo(() => new Map(), []);
 
@@ -45,6 +49,8 @@ const CartItemProvider = ({
     location,
     isEditable,
     isOrderDetails,
+    isCheckoutConfirmation,
+    cartHasLineItemPromotions,
     merchantFulfillmentMethodsCount: enabledFulfillmentMethodsCount,
   }), [
     cartItem,
@@ -53,6 +59,8 @@ const CartItemProvider = ({
     invokeFulfillmentAction,
     isEditable,
     isOrderDetails,
+    isCheckoutConfirmation,
+    cartHasLineItemPromotions,
     registerFulfillmentAction,
   ]);
 
@@ -68,6 +76,8 @@ CartItemProvider.defaultProps = {
   location: null,
   isEditable: true,
   isOrderDetails: false,
+  isCheckoutConfirmation: false,
+  cartHasLineItemPromotions: false,
 };
 
 export default connect(CartItemProvider);

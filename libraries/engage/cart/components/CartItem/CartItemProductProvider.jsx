@@ -30,7 +30,21 @@ const CartItemProductProvider = ({
   currencyOverride,
 }: Props) => {
   const {
-    id, product, quantity, fulfillment = null, messages = [], status, subStatus, orderedQuantity,
+    id,
+    product,
+    quantity,
+    fulfillment = null,
+    messages = [],
+    status,
+    subStatus,
+    orderedQuantity,
+    unitPromoAmount,
+    unitDiscountAmount,
+    price,
+    promoAmount,
+    discountAmount,
+    extendedPrice,
+    appliedPromotions,
   } = cartItem;
   const [editMode, setEditMode] = useState(false);
   const cartItemRef = useRef();
@@ -96,6 +110,13 @@ const CartItemProductProvider = ({
         quantity,
         orderedQuantity,
         fulfillment,
+        unitPromoAmount,
+        unitDiscountAmount,
+        price,
+        promoAmount,
+        discountAmount,
+        extendedPrice,
+        appliedPromotions,
       },
     }),
     [
@@ -114,6 +135,13 @@ const CartItemProductProvider = ({
       quantity,
       orderedQuantity,
       toggleEditMode,
+      unitPromoAmount,
+      unitDiscountAmount,
+      price,
+      promoAmount,
+      discountAmount,
+      extendedPrice,
+      appliedPromotions,
     ]
   );
 

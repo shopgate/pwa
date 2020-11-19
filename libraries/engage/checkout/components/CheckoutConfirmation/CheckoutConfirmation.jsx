@@ -177,6 +177,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
             onFocus={() => { }}
             multiLineReservation
             editable={false}
+            isCheckoutConfirmation
             currencyOverride={currencyOverride}
           />
         </div>
