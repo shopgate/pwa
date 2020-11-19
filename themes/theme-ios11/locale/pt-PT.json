@@ -653,7 +653,8 @@
     },
     "no_result": {
       "body": "No Orders found."
-    }
+    },
+    "itemCount": "{count, plural, =1 {item} other {items}}"
   },
   "page": {
     "not_found": "The page you’re looking for can’t be found.",
