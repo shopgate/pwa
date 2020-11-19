@@ -160,7 +160,8 @@
     "msrp": "PVP",
     "label": "Precio {price}.",
     "label_old_price": "Precio anterior {price}.",
-    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Free"
   },
   "product": {
     "errors": {
