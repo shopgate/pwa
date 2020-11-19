@@ -7,6 +7,7 @@ exports[`<Price /> should not pass unitPriceMin for non variants 1`] = `
   style={null}
 >
   <Price
+    allowFree={false}
     className="css-1051jlf"
     currency="USD"
     discounted={false}
@@ -25,6 +26,7 @@ exports[`<Price /> should pass unitPriceMin for variants 1`] = `
   style={null}
 >
   <Price
+    allowFree={false}
     className="css-1051jlf"
     currency="USD"
     discounted={false}
