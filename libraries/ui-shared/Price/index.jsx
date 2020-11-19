@@ -60,11 +60,17 @@ const Price = (props, context) => {
             />
           </I18n.Text>
         ) : (
-          <I18n.Price
-            currency={props.currency}
-            fractions={props.fractions}
-            price={props.unitPrice}
-          />
+          <>
+            { props.allowFree && props.unitPrice === 0 ? (
+              <I18n.Text string="price.free" />
+            ) : (
+              <I18n.Price
+                currency={props.currency}
+                fractions={props.fractions}
+                price={props.unitPrice}
+              />
+            )}
+          </>
         )}
       </span>
       {props.taxDisclaimer && showTaxDisclaimer ? (
@@ -78,6 +84,7 @@ const Price = (props, context) => {
 Price.propTypes = {
   currency: PropTypes.string.isRequired,
   unitPrice: PropTypes.number.isRequired,
+  allowFree: PropTypes.bool,
   className: PropTypes.string,
   discounted: PropTypes.bool,
   fractions: PropTypes.bool,
@@ -91,6 +98,7 @@ Price.defaultProps = {
   discounted: false,
   fractions: true,
   taxDisclaimer: false,
+  allowFree: false,
 };
 
 Price.contextTypes = {

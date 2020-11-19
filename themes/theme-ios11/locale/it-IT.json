@@ -161,7 +161,8 @@
     "msrp": "SRP",
     "label": "Prezzo {price}.",
     "label_old_price": "Prezzo precedente {price}.",
-    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Free"
   },
   "product": {
     "errors": {

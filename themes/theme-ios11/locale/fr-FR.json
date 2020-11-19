@@ -161,7 +161,8 @@
     "msrp": "PDSF",
     "label": "Prix {price}.",
     "label_old_price": "Ancien prix {price}.",
-    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Free"
   },
   "product": {
     "errors": {

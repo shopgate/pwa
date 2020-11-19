@@ -72,6 +72,7 @@ const CartItemProductPriceList = ({ classes, isSubtotal, showLabels }) => {
                 currency={currency}
                 discounted={prices.length > 1}
                 taxDisclaimer
+                allowFree
               />
             )}
 
