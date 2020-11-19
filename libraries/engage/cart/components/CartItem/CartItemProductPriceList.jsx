@@ -1,12 +1,30 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { css } from 'glamor';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import { useCartItemProduct, useCartItem } from './CartItem.hooks';
 import { createCartItemPrices } from '../../cart.helpers';
-import { priceStriked, price as priceStyle, priceListEntry } from './CartItemProductPrice.style';
 import CartItemProductPriceListPromotion from './CartItemProductPriceListPromotion';
+
+const styles = {
+  price: css({
+    fontSize: '1rem',
+    fontWeight: 500,
+    justifyContent: 'flex-end',
+    textAlign: 'right',
+  }).toString(),
+  priceStriked: css({
+    fontSize: '.875rem',
+    textAlign: 'right',
+  }).toString(),
+  priceListEntry: css({
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  }).toString(),
+};
 
 /**
  * @param {Object} props The component props
@@ -33,25 +51,30 @@ const CartItemProductPriceList = ({ classes, isSubtotal, showLabels }) => {
         const isLast = index === prices.length - 1;
         return (
           /* eslint-disable react/no-array-index-key */
-          <li key={`total_${index}`} className={priceListEntry}>
+          <li key={`total_${index}`} className={classNames(styles.priceListEntry, classes?.entry)}>
+            { (showLabels || !isSubtotal) && (
+              <CartItemProductPriceListPromotion
+                isCoupon={isCoupon}
+                isPromo={isPromo}
+                className={classes?.promo}
+              />
+            )}
             { !isLast ? (
               <PriceStriked
-                className={classNames(priceStriked, classes?.priceStriked)}
+                className={classNames(styles.priceStriked, classes?.priceStriked)}
                 value={price}
                 currency={currency}
               />
             ) : (
               <Price
-                className={classNames(priceStyle, classes?.price)}
+                className={classNames(styles.price, classes?.price)}
                 unitPrice={price}
                 currency={currency}
                 discounted={prices.length > 1}
                 taxDisclaimer
               />
             )}
-            { (showLabels || !isSubtotal) && (
-              <CartItemProductPriceListPromotion isCoupon={isCoupon} isPromo={isPromo} />
-            )}
+
           </li>
           /* eslint-enable react/no-array-index-key */
         );

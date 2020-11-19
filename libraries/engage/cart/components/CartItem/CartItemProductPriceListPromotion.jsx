@@ -18,6 +18,7 @@ const styles = {
     flex: '0 1 auto',
     textAlign: 'right',
     color: 'var(--color-secondary)',
+    paddingRight: 8,
   }).toString(),
   deleteIcon: css({
     backgroundColor: '#898989',
@@ -107,7 +108,7 @@ PromotionalTextInfoIcon.defaultProps = {
  * @returns {JSX}
  */
 const CartItemProductPriceListPromotion = ({
-  isCoupon, isPromo, deleteCoupon, showTextModal,
+  isCoupon, isPromo, deleteCoupon, showTextModal, className,
 }) => {
   const { cartItem = {} } = useCartItem();
   const appliedPromotions = cartItem?.appliedPromotions;
@@ -136,7 +137,7 @@ const CartItemProductPriceListPromotion = ({
     const promotionalText = promo?.promotionalText;
     const name = promo?.name;
     return (
-      <div className={styles.container}>
+      <div className={classNames(styles.container, className)}>
         { name }
         <PromotionalTextInfoIcon text={promotionalText} showText={showText} />
       </div>
@@ -148,7 +149,7 @@ const CartItemProductPriceListPromotion = ({
     const code = coupon?.coupon?.code;
 
     return (
-      <div className={styles.container}>
+      <div className={classNames(styles.container, className)}>
         <div
           className={styles.deleteIcon}
           onClick={() => { deleteCoupon(code); }}
@@ -172,6 +173,7 @@ const CartItemProductPriceListPromotion = ({
 CartItemProductPriceListPromotion.propTypes = {
   deleteCoupon: PropTypes.func.isRequired,
   showTextModal: PropTypes.func.isRequired,
+  className: PropTypes.string,
   isCoupon: PropTypes.bool,
   isPromo: PropTypes.bool,
 };
@@ -179,6 +181,7 @@ CartItemProductPriceListPromotion.propTypes = {
 CartItemProductPriceListPromotion.defaultProps = {
   isCoupon: false,
   isPromo: false,
+  className: null,
 };
 
 export default connect(null, mapDispatchToProps)(CartItemProductPriceListPromotion);

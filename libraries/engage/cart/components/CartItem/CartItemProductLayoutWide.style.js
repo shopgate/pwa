@@ -99,6 +99,14 @@ export const price = css({
   lineHeight: '1.625rem',
 }).toString();
 
+export const priceListEntry = css({
+  flexDirection: 'column-reverse',
+}).toString();
+
+export const priceListPromo = css({
+  paddingRight: 0,
+}).toString();
+
 export const priceInfo = css({
   wordBreak: 'break-word',
   fontSize: '0.75rem',

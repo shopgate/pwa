@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import {
   Grid, Link, TextLink, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
@@ -15,8 +15,8 @@ import {
 import { getLineItemActiveStatus } from '@shopgate/engage/orders';
 import { CartItemQuantityPicker } from './CartItemQuantityPicker';
 import { CartItemProductTitle } from './CartItemProductTitle';
-import { CartItemProductPrice } from './CartItemProductPrice';
 import CartItemProductOrderDetails from './CartItemProductOrderDetails';
+import CartItemProductPriceList from './CartItemProductPriceList';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import styles from './CartItemProductLayout.style';
 
@@ -25,7 +25,7 @@ import styles from './CartItemProductLayout.style';
  * @returns {JSX}
  */
 export function CartItemProductLayout() {
-  const { registerFulfillmentAction, isOrderDetails } = useCartItem();
+  const { registerFulfillmentAction, isOrderDetails, isCheckoutConfirmation } = useCartItem();
   const context = useCartItemProduct();
   const {
     cartItem,
@@ -40,6 +40,14 @@ export function CartItemProductLayout() {
   const isActive = !isOrderDetails
     ? true
     : getLineItemActiveStatus(cartItem?.status, cartItem?.subStatus);
+
+  const showLineItemPromotions = useMemo(() => {
+    if (isOrderDetails || isCheckoutConfirmation) {
+      return false;
+    }
+
+    return (cartItem?.appliedPromotions || []).length > 0;
+  }, [cartItem, isCheckoutConfirmation, isOrderDetails]);
 
   return (
     <React.Fragment>
@@ -69,12 +77,12 @@ export function CartItemProductLayout() {
               { isOrderDetails && (
                 <I18n.Text string="cart.subtotal" className={styles.orderDetailsSubtotalLabel} />
               )}
-              <CartItemProductPrice
-                currency={currency}
-                defaultPrice={product.price.default}
-                specialPrice={product.price.special}
-              />
-              <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+              { !showLineItemPromotions && (
+                <>
+                  <CartItemProductPriceList isSubtotal />
+                  <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+                </>
+              )}
             </Grid.Item>
             {showTaxDisclaimer && (
               <Grid.Item
@@ -84,6 +92,15 @@ export function CartItemProductLayout() {
               />
             )}
           </Grid>
+          { showLineItemPromotions && (
+            <Grid className={classNames(styles.info, styles.infoPriceLine)}>
+              <Grid.Item />
+              <Grid.Item>
+                <CartItemProductPriceList isSubtotal showLabels />
+                <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+              </Grid.Item>
+            </Grid>
+          )}
         </Grid.Item>
         {/** DOM reversed for a11y navigation */}
         <Grid.Item className={styles.leftColumn}>

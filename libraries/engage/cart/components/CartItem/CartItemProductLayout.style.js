@@ -37,6 +37,10 @@ const info = css({
   justifyContent: 'space-between',
 }).toString();
 
+const infoPriceLine = css({
+  marginTop: 0,
+}).toString();
+
 const priceInfo = css({
   textAlign: 'right',
   wordBreak: 'break-word',
@@ -46,9 +50,15 @@ const disclaimerSpacer = css({
   width: 10,
 }).toString();
 
+export const priceLabel = css({
+  color: `var(--color-text-low-emphasis, ${colors.shade9})`,
+});
+
 const price = css({
+  display: 'flex',
   marginLeft: '1em',
-  alignSelf: 'flex-end',
+  alignItems: 'flex-end',
+  flexDirection: 'column',
 }).toString();
 
 const properties = css({
@@ -87,6 +97,7 @@ export default {
   image,
   content,
   info,
+  infoPriceLine,
   disclaimerSpacer,
   priceInfo,
   price,

@@ -61,7 +61,7 @@ export const createCartItemPrices = (cartItem = {}) => {
     subtotal: [],
   };
 
-  if (unitSale) {
+  if (unitSale && unitSale !== unit) {
     prices.price.push({ price: unitSale });
     prices.subtotal.push({ price: unit * quantity });
   }

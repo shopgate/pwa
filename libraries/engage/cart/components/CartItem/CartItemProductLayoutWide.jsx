@@ -37,6 +37,8 @@ import {
   quantityPickerDisabled,
   price,
   priceInfo,
+  priceListEntry,
+  priceListPromo,
   contextMenu,
   messageContainer,
   messageContainerRope,
@@ -107,6 +109,8 @@ const CartItemProductLayoutWide = () => {
             classes={{
               price,
               priceStriked: price,
+              entry: priceListEntry,
+              promo: priceListPromo,
             }}
           />
           <PriceInfo product={product} currency={currency} className={priceInfo} />
@@ -147,6 +151,8 @@ const CartItemProductLayoutWide = () => {
             classes={{
               price,
               priceStriked: price,
+              entry: priceListEntry,
+              promo: priceListPromo,
             }}
           />
           <CartItemProductPriceCaption />
