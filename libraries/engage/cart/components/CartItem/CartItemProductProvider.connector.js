@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import { isIos } from '@shopgate/pwa-common/selectors/client';
+import { isAndroid } from '@shopgate/pwa-common/selectors/client';
 import deleteProductsFromCart from '@shopgate/pwa-common-commerce/cart/actions/deleteProductsFromCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
@@ -16,7 +16,7 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isIos: isIos(state),
+  isAndroid: isAndroid(state),
   currency: getCurrency(state),
 });
 

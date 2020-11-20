@@ -26,7 +26,7 @@ const CartItemProductProvider = ({
   cartItem,
   isEditable,
   children,
-  isIos,
+  isAndroid,
   currencyOverride,
 }: Props) => {
   const {
@@ -58,7 +58,7 @@ const CartItemProductProvider = ({
   }, [id, updateProduct]);
 
   const toggleEditMode = useCallback((isEnabled: boolean) => {
-    if (!isIos && isEnabled) {
+    if (isAndroid && isEnabled) {
       /**
        * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
@@ -88,7 +88,7 @@ const CartItemProductProvider = ({
     }, isEnabled ? 300 : 0);
 
     setEditMode(isEnabled);
-  }, [isIos, onFocus]);
+  }, [isAndroid, onFocus]);
 
   const value = useMemo(
     () => ({

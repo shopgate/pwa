@@ -111,12 +111,6 @@ export class CartItemQuantityPicker extends React.Component<Props> {
     event.stopPropagation();
     event.preventDefault();
 
-    // ... and trigger it manually.
-    // This way we avoid the select actions (copy, paste, cut) to become visible.
-    if (this.input.current) {
-      this.input.current.blur();
-    }
-
     if (this.props.onToggleEditMode) {
       this.props.onToggleEditMode(true);
     }
@@ -126,10 +120,6 @@ export class CartItemQuantityPicker extends React.Component<Props> {
    * Event handler for the the onFocus event of the input.
    */
   handleInputFocus = () => {
-    if (this.input.current) {
-      this.input.current.select();
-    }
-
     if (this.props.onToggleEditMode) {
       this.props.onToggleEditMode(true);
     }

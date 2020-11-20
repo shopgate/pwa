@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import MobileDetect from 'mobile-detect';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
 import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
@@ -11,6 +12,8 @@ import {
   PAGE_INSETS_IOS,
   PAGE_INSETS_IPHONE_X,
 } from '../constants/Device';
+
+const md = new MobileDetect(navigator.userAgent);
 
 /**
  * Returns the client state (state.client)
@@ -134,7 +137,13 @@ export const getDeviceModel = createSelector(
  */
 export const isAndroid = createSelector(
   getPlatform,
-  platform => platform === OS_ANDROID
+  (platform) => {
+    if (hasWebBridge()) {
+      return md.os() === 'AndroidOS';
+    }
+
+    return platform === OS_ANDROID;
+  }
 );
 
 /**
