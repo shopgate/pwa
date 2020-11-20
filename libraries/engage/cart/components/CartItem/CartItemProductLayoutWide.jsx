@@ -144,7 +144,7 @@ const CartItemProductLayoutWide = () => {
             <CartItemProductLayoutWideRemoveItem />
           )}
         </div>
-        <div className={column} style={{ alignItems: 'flex-end' }}>
+        <div className={column}>
           <CartItemProductPriceList
             isSubtotal
             cartItem={cartItem}
