@@ -93,9 +93,9 @@ export function CartItemProductLayout() {
             )}
           </Grid>
           { showLineItemPromotions && (
-            <Grid className={classNames(styles.info, styles.infoPriceLine)}>
+            <Grid className={classNames(styles.info, styles.promotionLine)}>
               <Grid.Item />
-              <Grid.Item>
+              <Grid.Item className={styles.promotionLineItem}>
                 <CartItemProductPriceList isSubtotal showLabels />
                 <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
               </Grid.Item>

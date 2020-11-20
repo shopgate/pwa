@@ -12,17 +12,17 @@ const styles = {
   price: css({
     fontSize: '1rem',
     fontWeight: 500,
-    justifyContent: 'flex-end',
-    textAlign: 'right',
+    marginLeft: 'auto',
   }).toString(),
   priceStriked: css({
     fontSize: '.875rem',
-    textAlign: 'right',
+    marginLeft: 'auto',
   }).toString(),
   priceListEntry: css({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
+    alignItems: 'center',
   }).toString(),
 };
 
@@ -37,8 +37,8 @@ const CartItemProductPriceList = ({ classes, isSubtotal, showLabels }) => {
 
   const prices = useMemo(() => {
     const result = createCartItemPrices(cartItem)[isSubtotal ? 'subtotal' : 'price'];
-
-    if (isOrderDetails || isCheckoutConfirmation) {
+    // Not striked prices when the product is free or the cart is used to display an order
+    if (result[result.length - 1]?.price === 0 || isOrderDetails || isCheckoutConfirmation) {
       return result.slice(-1);
     }
 
@@ -70,7 +70,7 @@ const CartItemProductPriceList = ({ classes, isSubtotal, showLabels }) => {
                 className={classNames(styles.price, classes?.price)}
                 unitPrice={price}
                 currency={currency}
-                discounted={prices.length > 1}
+                discounted={prices.length > 1 || price === 0}
                 taxDisclaimer
                 allowFree
               />

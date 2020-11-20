@@ -37,8 +37,12 @@ const info = css({
   justifyContent: 'space-between',
 }).toString();
 
-const infoPriceLine = css({
+const promotionLine = css({
   marginTop: 0,
+}).toString();
+
+const promotionLineItem = css({
+  width: '100%',
 }).toString();
 
 const priceInfo = css({
@@ -97,7 +101,8 @@ export default {
   image,
   content,
   info,
-  infoPriceLine,
+  promotionLine,
+  promotionLineItem,
   disclaimerSpacer,
   priceInfo,
   price,

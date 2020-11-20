@@ -16,7 +16,6 @@ const { variables } = themeConfig;
 const styles = {
   container: css({
     flex: '0 1 auto',
-    textAlign: 'right',
     color: 'var(--color-secondary)',
     paddingRight: 8,
   }).toString(),
@@ -150,7 +149,7 @@ const CartItemProductPriceListPromotion = ({
 
     return (
       <div className={classNames(styles.container, className)}>
-        <div
+        <span
           className={styles.deleteIcon}
           onClick={() => { deleteCoupon(code); }}
           onKeyDown={() => { deleteCoupon(code); }}
@@ -158,7 +157,7 @@ const CartItemProductPriceListPromotion = ({
           tabIndex={0}
         >
           <CrossIcon />
-        </div>
+        </span>
         <I18n.Text string="cart.coupon_label" params={{ label: code }} />
         <PromotionalTextInfoIcon text={promotionalText} showText={showText} />
       </div>
