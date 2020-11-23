@@ -39,7 +39,12 @@ const PaypalButton = ({
     /** Async handler */
     const handler = async () => {
       setLocked(true);
-      await loadWebSdk(settings);
+      try {
+        await loadWebSdk(settings);
+      } catch (error) {
+        // error handling not needed at this point, paypal as payment method
+        // will be just not shown.
+      }
       setLocked(false);
     };
     handler();
