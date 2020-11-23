@@ -46,7 +46,7 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
     formActions.current = { onSubmit, onValidate };
   }, [onSubmit, onValidate]);
 
-  // Trigger rendering the paypal button whenver a property changes.
+  // Trigger rendering the paypal button whenever a property changes.
   useLayoutEffect(() => {
     if (!paypal) return;
     if (typeof fundingSource === 'object') return;

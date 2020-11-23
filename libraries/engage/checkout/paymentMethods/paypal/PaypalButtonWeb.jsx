@@ -33,7 +33,7 @@ const PaypalButton = ({
   const { setLocked } = useCheckoutContext();
   const paypal = usePaypal();
 
-  // Intialize paypal sdk.
+  // Initialize paypal sdk.
   useEffect(() => {
     if (!settings) return;
     /** Async handler */
@@ -41,9 +41,8 @@ const PaypalButton = ({
       setLocked(true);
       try {
         await loadWebSdk(settings);
-      } catch (error) {
-        // error handling not needed at this point, paypal as payment method
-        // will be just not shown.
+      } catch (e) {
+        //
       }
       setLocked(false);
     };
@@ -62,7 +61,7 @@ const PaypalButton = ({
     }).filter(m => !!m);
   }, [paypal]);
 
-  // Render markes to dom once ready.
+  // Render marks to dom once ready.
   useLayoutEffect(() => {
     requestAnimationFrame(() => {
       marks.forEach(([mark], index) => {

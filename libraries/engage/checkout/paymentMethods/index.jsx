@@ -138,7 +138,7 @@ const PaymentMethodProvider = ({
   );
 
   // Change payment method.
-  const handleChangePayment = useCallback(async (code, meta) => {
+  const handleChangePayment = useCallback(async (code, meta = null) => {
     setActivePaymentMeta(meta);
     setPaymentData({ meta });
     if (paymentMethodCode === code) {

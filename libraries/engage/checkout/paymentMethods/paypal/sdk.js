@@ -5,7 +5,7 @@ const SDK_ID = 'sg-paypal-sdk';
 let renderQueue = [];
 
 /**
- * Asynchronusly loads the javascript paypal sdk
+ * Asynchronously loads the javascript paypal sdk
  * @param {Object} settings Payment method settings
  * @returns {Promise}
  * */

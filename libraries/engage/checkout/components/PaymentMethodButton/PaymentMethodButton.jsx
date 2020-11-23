@@ -48,7 +48,7 @@ const PaymentMethodButton = ({ children, active, onChange }) => (
   <button
     type="button"
     className={`${styles.root} ${active && styles.active}`}
-    onClick={onChange}
+    onClick={() => onChange()}
   >
     {children}
   </button>
