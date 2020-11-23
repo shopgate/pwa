@@ -58,7 +58,7 @@ export const Row = props => (
             fractions={0}
           />
             &nbsp;
-          {props.lineItemCount !== 1 ? 'items' : 'item'}
+          {i18n.text('orders.itemCount', { count: props.lineItemCount })}
         </span>
       </div>
     </Link>

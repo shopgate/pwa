@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { hasLineItemPromotions } from '@shopgate/engage/cart';
 import { makeGetEnabledFulfillmentMethodsCount } from '@shopgate/engage/core/config';
 
 /**
@@ -7,9 +8,13 @@ import { makeGetEnabledFulfillmentMethodsCount } from '@shopgate/engage/core/con
 const makeMapStateToProps = () => {
   const getEnabledFulfillmentMethodsCount = makeGetEnabledFulfillmentMethodsCount();
 
-  return state => ({
-    enabledFulfillmentMethodsCount: getEnabledFulfillmentMethodsCount(state),
-  });
+  return (state, { isOrderDetails, isCheckoutConfirmation }) => {
+    const isCart = !isOrderDetails && !isCheckoutConfirmation;
+    return {
+      enabledFulfillmentMethodsCount: getEnabledFulfillmentMethodsCount(state),
+      hasLineItemPromotions: isCart && hasLineItemPromotions(state),
+    };
+  };
 };
 
 export default connect(makeMapStateToProps);

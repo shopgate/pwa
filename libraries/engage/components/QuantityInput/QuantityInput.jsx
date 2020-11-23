@@ -7,7 +7,10 @@ import React, {
   forwardRef,
 } from 'react';
 import PropTypes from 'prop-types';
+import MobileDetect from 'mobile-detect';
 import { parseFloatString, formatFloat } from './helper';
+
+const md = new MobileDetect(navigator.userAgent);
 
 /**
  * A Quantity Input with unit support.
@@ -51,7 +54,7 @@ const QuantityInput = forwardRef(({
 
   // Select the current input value after focus.
   useLayoutEffect(() => {
-    if (isFocused) {
+    if (isFocused && md.os() !== 'iOS') {
       inputRef.current.select();
     }
   }, [inputRef, isFocused]);

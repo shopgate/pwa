@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { QuantityLabel, I18n, Price } from '@shopgate/engage/components';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
+import { createCartItemPrices } from '../../cart.helpers';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import {
   quantityLabel, label, container, labelValue, fulfillmentLabel,
@@ -16,7 +17,10 @@ const CartItemProductOrderDetails = () => {
   const { product, currency } = useCartItemProduct();
 
   const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
-  const unitPrice = product.price.unit;
+  const unitPrice = useMemo(() => {
+    const result = createCartItemPrices(cartItem).price;
+    return result.slice(-1)[0].price;
+  }, [cartItem]);
 
   return (
     <ul className={container}>
@@ -59,8 +63,8 @@ const CartItemProductOrderDetails = () => {
           currency={currency}
           taxDisclaimer
           unitPrice={unitPrice}
+          allowFree
         />
-
       </li>
     </ul>
 

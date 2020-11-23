@@ -20,7 +20,7 @@ export type OwnProps = {
 }
 
 export type StateProps = {
-  isIos?: boolean,
+  isAndroid?: boolean,
   currency?: string,
 }
 

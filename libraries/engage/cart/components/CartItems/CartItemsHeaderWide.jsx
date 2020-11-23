@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
+import classNames from 'classnames';
 import { hot } from 'react-hot-loader/root';
 import { I18n } from '@shopgate/engage/components';
 import {
   header,
   column,
+  priceColumnWide,
   imageColumn,
   detailsColumn,
   locationColumn,
@@ -16,6 +18,7 @@ import connect from './CartItemsHeaderWide.connector';
 type Props = {
   editable?: boolean,
   isOrderDetails?: boolean,
+  hasLineItemPromotions?: boolean,
   enabledFulfillmentMethodsCount: number,
 }
 
@@ -26,13 +29,17 @@ const CartItemsHeaderWide = ({
   editable,
   isOrderDetails,
   enabledFulfillmentMethodsCount,
+  hasLineItemPromotions,
 }: Props) => (
   <div className={header}>
     <div className={imageColumn}>
       <I18n.Text string="cart.items" />
     </div>
     <div className={detailsColumn} />
-    <div className={column}>
+    <div className={classNames(column.toString(), {
+      [priceColumnWide]: hasLineItemPromotions,
+    })}
+    >
       <I18n.Text string="cart.price" />
     </div>
     {isOrderDetails && (
@@ -63,6 +70,7 @@ const CartItemsHeaderWide = ({
 CartItemsHeaderWide.defaultProps = {
   editable: true,
   isOrderDetails: false,
+  hasLineItemPromotions: false,
 };
 
 export default hot(connect(CartItemsHeaderWide));

@@ -13,6 +13,11 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     orderedQuantity = null,
     salePrice,
     price: lineItemPrice,
+    promoAmount,
+    extendedPrice,
+    discountAmount,
+    unitDiscountAmount,
+    unitPromoAmount,
     product,
     status,
     subStatus,
@@ -25,6 +30,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
     code: productCode,
     price: productPrice,
     salePrice: productSalePrice,
+    effectivePrice: productEffectivePrice,
     name,
     image,
     unit,
@@ -90,10 +96,18 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
         unitSpecial: productSalePrice,
         default: lineItemPrice,
         special: salePrice || null,
+        unitSale: productSalePrice,
+        unitEffective: productEffectivePrice,
         info: '',
       },
       fulfillmentMethods,
     },
+    unitPromoAmount,
+    unitDiscountAmount,
+    price: lineItemPrice,
+    extendedPrice,
+    promoAmount,
+    discountAmount,
     fulfillment,
     fulfillmentLocationId: fulfillmentLocationCode,
     substitutionAllowed,
@@ -116,9 +130,24 @@ const getPromotionsFromOrder = (order = {}) => {
  * @returns {Array}
  */
 const getCouponsFromOrder = (order = {}) => {
-  const { appliedPromotions = [], coupons = [] } = order;
+  const { appliedPromotions = [], coupons = [], lineItems = [] } = order;
 
-  return coupons.map((coupon) => {
+  return coupons.filter((coupon) => {
+    // Filter coupons which are assigned to line items
+    const code = coupon?.code;
+
+    const lineItemCoupon = lineItems.find((cartItem) => {
+      const lineItemPromotions = cartItem?.appliedPromotions || [];
+      const match = lineItemPromotions.find((promotion) => {
+        const lineItemCouponCode = promotion?.coupon?.code;
+        return lineItemCouponCode === code;
+      });
+
+      return !!match;
+    });
+
+    return !lineItemCoupon;
+  }).map((coupon) => {
     const code = coupon?.promotion?.code;
     const promotion = appliedPromotions.find(promotionEntry => promotionEntry.code === code);
 

@@ -161,7 +161,8 @@
     "msrp": "Preço sugerido",
     "label": "Preço {price}.",
     "label_old_price": "Preço antigo {price}.",
-    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Free"
   },
   "product": {
     "errors": {
@@ -654,7 +655,8 @@
     },
     "no_result": {
       "body": "No Orders found."
-    }
+    },
+    "itemCount": "{count, plural, =1 {item} other {items}}"
   },
   "page": {
     "not_found": "The page you’re looking for can’t be found.",

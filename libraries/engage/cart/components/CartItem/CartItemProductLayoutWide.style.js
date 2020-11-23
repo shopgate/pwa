@@ -37,6 +37,11 @@ export const detailsColumn = css(column, {
   alignItems: 'flex-start',
 });
 
+export const priceColumnWide = css(column, {
+  flexGrow: 4,
+  alignItems: 'flex-end',
+});
+
 export const locationColumn = css(column, {
   fontSize: '1.25rem',
   lineHeight: '1.625rem',
@@ -90,8 +95,17 @@ export const containerInactive = css({
 }).toString();
 
 export const price = css({
-  fontSize: '1.25rem',
-  lineHeight: '1.625rem',
+  fontSize: '1.25rem !important',
+  lineHeight: '1.625rem  !important',
+}).toString();
+
+export const priceListEntry = css({
+  flexDirection: 'column-reverse !important',
+}).toString();
+
+export const priceListPromo = css({
+  paddingRight: 0,
+  alignSelf: 'flex-end',
 }).toString();
 
 export const priceInfo = css({

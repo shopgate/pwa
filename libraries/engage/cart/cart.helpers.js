@@ -1,13 +1,11 @@
-// @flow
 import groupBy from 'lodash/groupBy';
 import { ROPIS, BOPIS } from '../locations';
-import { type Item } from './cart.types';
 
 /**
  * @param {Array} cartItems The cart items to sort.
  * @returns {Array}
  */
-export function sortCartItems(cartItems: Item[]) {
+export function sortCartItems(cartItems) {
   const grouped = groupBy(cartItems, 'type');
   const sorted = Object.keys(grouped).reduce((acc, key) => ([
     ...acc,
@@ -27,7 +25,7 @@ export function sortCartItems(cartItems: Item[]) {
 
   const merged = [...ropeItem, ...directItem];
 
-  const enhanced = merged.map<any>((item) => {
+  const enhanced = merged.map((item) => {
     if (!item.fulfillment || ![ROPIS, BOPIS].includes(item.fulfillment.method)) {
       return {
         ...item,
@@ -45,3 +43,52 @@ export function sortCartItems(cartItems: Item[]) {
 
   return enhanced;
 }
+
+/**
+ * @param {Object} cartItem A cart item
+ * @returns {Object}
+ */
+export const createCartItemPrices = (cartItem = {}) => {
+  const {
+    product = {}, quantity, price, promoAmount, extendedPrice, unitPromoAmount, unitDiscountAmount,
+  } = cartItem;
+  const {
+    unit, unitSale, unitEffective,
+  } = product?.price || {};
+
+  const prices = {
+    price: [{ price: unit }],
+    subtotal: [],
+  };
+
+  if (unitSale && unitSale !== unit) {
+    prices.price.push({ price: unitSale });
+    prices.subtotal.push({ price: unit * quantity });
+  }
+
+  prices.subtotal.push({ price });
+
+  if (unitPromoAmount) {
+    prices.price.push({
+      price: unitEffective + unitPromoAmount,
+      isPromo: true,
+    });
+    prices.subtotal.push({
+      price: price + promoAmount,
+      isPromo: true,
+    });
+  }
+
+  if (unitDiscountAmount) {
+    prices.price.push({
+      price: unitEffective + unitPromoAmount + unitDiscountAmount,
+      isCoupon: true,
+    });
+    prices.subtotal.push({
+      price: extendedPrice,
+      isCoupon: true,
+    });
+  }
+
+  return prices;
+};
