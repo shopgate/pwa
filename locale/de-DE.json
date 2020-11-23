@@ -162,7 +162,8 @@
     "msrp": "UVP",
     "label": "Preis {price}.",
     "label_old_price": "Alter Preis {price}.",
-    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}"
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Gratis"
   },
   "product": {
     "errors": {
@@ -662,7 +663,8 @@
     },
     "no_result": {
       "body": "Keine Bestellungen gefunden."
-    }
+    },
+    "itemCount": "{count, plural, =1 {Produkt} other {Produkte}}"
   },
   "page": {
     "not_found": "Leider wurde die gewünschte Seite nicht gefunden.",
