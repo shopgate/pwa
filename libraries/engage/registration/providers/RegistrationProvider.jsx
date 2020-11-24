@@ -18,6 +18,7 @@ type Props = {
   customerAttributes: any,
   isDataReady: bool,
   submitRegistration: () => Promise<any>,
+  formContainerRef?: any,
 };
 
 const initialBaseFormState = {
@@ -65,6 +66,7 @@ const RegistrationProvider = ({
   customerAttributes,
   submitRegistration,
   children,
+  formContainerRef,
 }: Props) => {
   const [isLocked, setLocked] = useState(false);
   const [isBaseFormSubmitted, setIsBaseFormSubmitted] = useState(false);
@@ -118,19 +120,22 @@ const RegistrationProvider = ({
   const baseFormState = useFormState(
     defaultBaseFormState,
     handleBaseFormSubmit,
-    baseConstraints
+    baseConstraints,
+    formContainerRef
   );
 
   const shippingFormState = useFormState(
     defaultShippingFormState,
     handleShippingFormSubmit,
-    shippingConstraints
+    shippingConstraints,
+    formContainerRef
   );
 
   const extraFormState = useFormState(
     defaultExtraFormState,
     handleExtraFormSubmit,
-    extraConstraints
+    extraConstraints,
+    formContainerRef
   );
 
   // Central submit handler
@@ -145,7 +150,6 @@ const RegistrationProvider = ({
     if (!isBaseFormSubmitted || !isShippingFormSubmitted || !isExtraFormSubmitted) {
       return;
     }
-
     // Break the process when one of the forms has validation errors from the constraints
     if (!baseFormState.valid || !shippingFormState.valid || !extraFormState.valid) {
       setIsBaseFormSubmitted(false);
@@ -191,6 +195,12 @@ const RegistrationProvider = ({
     extraFormState.values,
     extraFormState.valid,
   ]);
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    baseFormState.scrollToError();
+  }, [baseFormRequestErrors, shippingFormRequestErrors, baseFormState.scrollToError]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   useEffect(() => {
     if (isLocked) {
@@ -250,6 +260,10 @@ const RegistrationProvider = ({
       {children}
     </Context.Provider>
   );
+};
+
+RegistrationProvider.defaultProps = {
+  formContainerRef: null,
 };
 
 export default connect(RegistrationProvider);

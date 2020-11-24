@@ -104,8 +104,10 @@ export const OUTLINED_FORM_FIELDS = {
   ' .errorText': {
     ...(!isIOSTheme() ? {
       bottom: -20,
-      left: 24,
-    } : {}),
+      paddingLeft: 16,
+    } : {
+      bottom: 0,
+    }),
   },
   ' .phonePicker': {
     paddingTop: variables.gap.big,
@@ -130,8 +132,12 @@ export const OUTLINED_FORM_FIELDS = {
   },
   ' .phonePicker .errorText': {
     ...(!isIOSTheme() ? {
-      left: -16,
-    } : {}),
+      marginLeft: -8,
+    } : {
+      marginLeft: 0,
+      bottom: -11,
+      overflow: 'initial',
+    }),
   },
   ' .PhoneInputCountryIcon': {
     ...(!isIOSTheme() ? {

@@ -32,6 +32,7 @@ type Props = {
   needsPayment: bool,
   customerAttributes: any,
   orderReserveOnly?: bool,
+  formContainerRef?: any,
   prepareCheckout: () => Promise<any>,
   updateCheckoutOrder: () => Promise<any>,
   historyPush: (any) => void,
@@ -91,6 +92,7 @@ const GuestRegistrationProvider = ({
   orderReserveOnly,
   customerAttributes,
   customer,
+  formContainerRef,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
@@ -220,7 +222,8 @@ const GuestRegistrationProvider = ({
   const formBillingState = useFormState(
     defaultBillingAddressState,
     handleSubmit,
-    billingValidationRules
+    billingValidationRules,
+    formContainerRef
   );
 
   const handlePickupSubmit = React.useCallback((values) => {
@@ -231,7 +234,8 @@ const GuestRegistrationProvider = ({
   const formPickupState = useFormState(
     defaultPickupPersonState,
     handlePickupSubmit,
-    pickupValidationRules
+    pickupValidationRules,
+    formContainerRef
   );
 
   // When "someone-else" is picked for pickup the validation rules need to change.
@@ -322,6 +326,7 @@ const GuestRegistrationProvider = ({
 
 GuestRegistrationProvider.defaultProps = {
   orderReserveOnly: null,
+  formContainerRef: null,
 };
 
 export default connect(GuestRegistrationProvider);

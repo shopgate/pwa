@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
+import classNames from 'classnames';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import {
   ELEMENT_TYPE_TEXT,
@@ -43,7 +44,7 @@ const ElementText = (props) => {
   const type = mapping[element.type];
 
   return (
-    <div className={camelCase(name)}>
+    <div className={classNames(camelCase(name), { validationError: !!errorText })}>
       <TextField
         type={type}
         name={name}

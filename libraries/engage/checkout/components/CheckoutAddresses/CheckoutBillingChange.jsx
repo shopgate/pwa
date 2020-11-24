@@ -1,5 +1,5 @@
 import React, {
-  Fragment, useState, useMemo, useCallback,
+  Fragment, useState, useMemo, useCallback, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -77,6 +77,7 @@ const CheckoutBillingChange = ({
   requiredFields,
   isDataReady,
 }) => {
+  const formContainerRef = useRef(null);
   // Local state.
   const [isLocked, setLocked] = useState(false);
 
@@ -127,7 +128,8 @@ const CheckoutBillingChange = ({
   const formState = useFormState(
     defaultState,
     handleSubmit,
-    billingValidationRules
+    billingValidationRules,
+    formContainerRef
   );
   const validationState = convertValidationErrors(formState.validationErrors || {});
 
@@ -144,7 +146,7 @@ const CheckoutBillingChange = ({
         </h1>
       </ResponsiveContainer>
       <div className={styles.root}>
-        <div className={styles.left}>
+        <div className={styles.left} ref={formContainerRef}>
           <FormBuilder
             className={styles.form}
             name="BillingForm"

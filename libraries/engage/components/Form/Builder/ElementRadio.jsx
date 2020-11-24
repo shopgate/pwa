@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
+import classNames from 'classnames';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
 
@@ -24,7 +25,7 @@ const ElementRadio = (props) => {
   }
 
   return (
-    <div className={camelCase(name)}>
+    <div className={classNames(camelCase(name), { validationError: !!errorText })}>
       <RadioGroup
         name={name}
         label={element.label}
