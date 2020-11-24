@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
+import classNames from 'classnames';
 import Checkbox from '@shopgate/pwa-ui-shared/Form/Checkbox';
 
 /**
@@ -23,7 +24,7 @@ const ElementCheckbox = (props) => {
   }
 
   return (
-    <div className={`${camelCase(name)} container-checkbox`}>
+    <div className={classNames('container-checkbox', camelCase(name), { validationError: !!errorText })}>
       <Checkbox
         name={name}
         errorText={errorText}

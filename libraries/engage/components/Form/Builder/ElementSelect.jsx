@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
+import classNames from 'classnames';
 import Select from '@shopgate/pwa-ui-shared/Form/Select';
 
 /**
@@ -23,7 +24,7 @@ const ElementSelect = (props) => {
   }
 
   return (
-    <div className={camelCase(name)}>
+    <div className={classNames(camelCase(name), { validationError: !!errorText })}>
       <Select
         name={name}
         label={element.label}

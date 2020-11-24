@@ -1,8 +1,10 @@
 import {
   useRef, useState, useEffect, useCallback,
 } from 'react';
-import { i18n } from '@shopgate/engage/core';
+import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { debounce } from 'lodash';
+import { hasWebBridge } from '../helpers/bridge';
+import { i18n } from '../helpers/i18n';
 import { useValidation } from '../validation';
 
 /**
@@ -21,9 +23,15 @@ export const convertValidationErrors = validationErrors => Object
  * @param {Object} initialState The initial form state.
  * @param {Function} complete The completion callback.
  * @param {Object} validationConstraints validationConstraints
+ * @param {Object} [formContainerRef=null] A ref to a container with forms
  * @returns {{ handleChange, handleSubmit, values, valid, validationErrors: ?Object, isSubmitting }}
  */
-export function useFormState(initialState, complete, validationConstraints = {}) {
+export function useFormState(
+  initialState,
+  complete,
+  validationConstraints = {},
+  formContainerRef = null
+) {
   // Submit lock prevents the form from being submitted multiple times
   const submitLock = useRef(false);
 
@@ -31,6 +39,29 @@ export function useFormState(initialState, complete, validationConstraints = {})
   const [isSubmitting, setSubmitting] = useState(false);
   const [changed, setChanged] = useState(false);
   const { valid, validationErrors, validate } = useValidation(validationConstraints);
+
+  const scrollToError = useCallback(() => {
+    if (formContainerRef?.current) {
+      const firstError = formContainerRef.current.querySelector('.validationError');
+
+      if (firstError) {
+        if (hasWebBridge()) {
+          const offset = 10;
+          const appBarHeight = getCSSCustomProp('--app-bar-height') || 0;
+          const { top } = firstError.getBoundingClientRect();
+
+          const scrollTop = top + window.pageYOffset - parseInt(appBarHeight, 10) - offset;
+
+          window.scroll({
+            top: scrollTop,
+            behavior: 'smooth',
+          });
+        } else {
+          firstError.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  }, [formContainerRef]);
 
   // -- CHANGED ---------------
   useEffect(() => {
@@ -67,6 +98,10 @@ export function useFormState(initialState, complete, validationConstraints = {})
     };
   }, [isSubmitting, valid]);
   /* eslint-enable react-hooks/exhaustive-deps */
+
+  useEffect(() => {
+    scrollToError();
+  }, [isSubmitting, scrollToError]);
 
   useEffect(() => () => {
     submitLock.current = false;
@@ -123,6 +158,7 @@ export function useFormState(initialState, complete, validationConstraints = {})
     validationErrors,
     isSubmitting,
     setValues,
+    scrollToError,
     validate,
   };
 }

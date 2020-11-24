@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -85,6 +85,7 @@ const styles = {
 const ProfileContact = ({
   shopSettings, userLocation, addContact, updateContact, pop,
 }) => {
+  const formContainerRef = useRef(null);
   const formConfig = useMemo(() => generateFormConfig(
     shopSettings?.supportedCountries,
     userLocation
@@ -108,7 +109,7 @@ const ProfileContact = ({
     LoadingProvider.unsetLoading(pathname);
   }, [addContact, contact, pathname, pop, updateContact]);
 
-  const formState = useFormState(contact, handleSubmit, constraints);
+  const formState = useFormState(contact, handleSubmit, constraints, formContainerRef);
   const validationErrors = useMemo(() =>
     convertValidationErrors(formState.validationErrors || {}),
   [formState.validationErrors]);
@@ -120,7 +121,7 @@ const ProfileContact = ({
   /* eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} ref={formContainerRef}>
       <FormBuilder
         name="ProfileAddressForm"
         className={styles.form}

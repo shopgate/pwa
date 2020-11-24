@@ -188,6 +188,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     [camelCase(name)]: true,
     phonePicker: true,
     phonePickerError: !!errorText,
+    validationError: !!errorText,
     phonePickerFocused: isFocused,
     [styles.phoneField]: true,
     [styles.phoneFieldError]: !!errorText,
@@ -206,7 +207,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         label={label}
-        className={styles.formField}
+        className={classnames(styles.formField, { validationError: !!errorText })}
         errorText={errorText}
         disabled={disabled}
       />
