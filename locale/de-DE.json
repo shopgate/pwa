@@ -439,6 +439,7 @@
     "button": "Anmelden",
     "no_account": "Du hast noch kein Konto?",
     "register": "Starte hier.",
+    "signup": "Registrieren",
     "logout_message": "Du wurdest ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
