@@ -23,7 +23,22 @@ export function sortCartItems(cartItems) {
     item => !item.fulfillment || ![ROPIS, BOPIS].includes(item.fulfillment.method)
   );
 
-  const merged = [...ropeItem, ...directItem];
+  let merged = [...ropeItem, ...directItem];
+
+  // Group splitted line items - try to keep the original order intact as much as possible
+  const groupedByBaseLineItemId = groupBy(merged, e => e.baseLineItemId || e.id);
+  merged = merged.reduce((acc, { id }) => {
+    const group = groupedByBaseLineItemId?.[id];
+
+    if (group) {
+      return [
+        ...acc,
+        ...group,
+      ];
+    }
+
+    return acc;
+  }, []);
 
   const enhanced = merged.map((item) => {
     if (!item.fulfillment || ![ROPIS, BOPIS].includes(item.fulfillment.method)) {
