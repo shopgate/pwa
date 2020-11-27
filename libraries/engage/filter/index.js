@@ -22,3 +22,4 @@ export { default as PriceSlider } from './components/PriceSlider';
 
 export { default as buildInitialFilters } from './helpers/buildInitialFilters';
 export { default as buildUpdatedFilters } from './helpers/buildUpdatedFilters';
+export { translateFilterLabel } from './helpers/translateFilterLabel';

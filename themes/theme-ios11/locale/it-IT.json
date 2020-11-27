@@ -49,7 +49,12 @@
     "reset": "Resetta",
     "remove": "Rimuovi {filter} filtro",
     "edit": "Modifica {filter} filtro",
-    "filter_by": "Ordina per {label}"
+    "filter_by": "Ordina per {label}",
+    "label": {
+      "price": "Prezzo",
+      "category": "Categoria",
+      "manufacturer": "Marca"
+    }
   },
   "price": {
     "from": "Da {price}",
