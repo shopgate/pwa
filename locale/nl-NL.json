@@ -49,7 +49,12 @@
     "reset": "Wis alles",
     "remove": "Verwijder {filter} filter",
     "edit": "Bewerk {filter} filter",
-    "filter_by": "Filteren op {label}"
+    "filter_by": "Filteren op {label}",
+    "label": {
+      "price": "Prijs",
+      "category": "Categorie",
+      "manufacturer": "Merk"
+    }
   },
   "price": {
     "from": "Vanaf {price}",
