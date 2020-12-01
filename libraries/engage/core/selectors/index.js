@@ -10,4 +10,5 @@ export {
   getFulfillmentSchedulingEnabled,
   getRestrictMultiLocationOrders,
   getDefaultCurrency,
+  getEnableWebIndexing,
 } from './merchantSettings';

@@ -312,6 +312,7 @@ export {
   getProductImagePlaceholder,
   getCategoryImagePlaceholder,
   getDefaultCurrency,
+  getEnableWebIndexing,
 } from './selectors';
 
 export {
