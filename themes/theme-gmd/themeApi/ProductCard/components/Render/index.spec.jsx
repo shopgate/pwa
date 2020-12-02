@@ -6,6 +6,7 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
 
 jest.mock('@shopgate/engage/core');
@@ -14,8 +15,8 @@ jest.mock('@shopgate/engage/product', () => ({
   MapPriceHint: () => null,
   OrderQuantityHint: () => null,
   ProductImage: () => null,
-  ProductGridPrice: () => null,
   FeaturedMedia: () => null,
+  ProductGridPrice: () => null,
   ProductName: ({ name }) => name,
 }));
 jest.mock('@shopgate/engage/components');

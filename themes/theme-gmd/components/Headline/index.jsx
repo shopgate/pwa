@@ -8,7 +8,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Headline = ({ text }) => (
-  text.length ? <h3 className={styles.headline}>{text}</h3> : null
+  text.length ? <h3 className={`${styles.headline} headline`}>{text}</h3> : null
 );
 
 Headline.propTypes = {

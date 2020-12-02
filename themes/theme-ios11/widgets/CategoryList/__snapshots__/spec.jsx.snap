@@ -47,7 +47,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     text="Yay Categories"
   >
     <h2
-      className="css-18cwfw7"
+      className="css-18cwfw7 headline"
       data-test-id="Headline"
       style={null}
     >

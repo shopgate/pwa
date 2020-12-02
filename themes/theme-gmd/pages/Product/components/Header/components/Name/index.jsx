@@ -16,7 +16,7 @@ const Name = ({ longName, name }) => (
   <Fragment>
     <Portal name={PRODUCT_NAME_BEFORE} />
     <Portal name={PRODUCT_NAME}>
-      <div className={styles.name} role="heading">
+      <div className={`${styles.name} product-name`} role="heading">
         {/* This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects */}
         { isBeta()

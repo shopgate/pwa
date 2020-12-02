@@ -42,7 +42,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             text="navigation.welcome_message"
           >
             <h1
-              className="css-18cwfw7"
+              className="css-18cwfw7 headline"
               data-test-id="Headline"
               style={
                 Object {
@@ -152,7 +152,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         text="navigation.your_account"
                       >
                         <h2
-                          className="css-18cwfw7"
+                          className="css-18cwfw7 headline"
                           data-test-id="Headline"
                           style={
                             Object {
@@ -466,7 +466,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7"
+                    className="css-18cwfw7 headline"
                     data-test-id="Headline"
                     style={
                       Object {
@@ -1025,7 +1025,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             text="login.headline"
           >
             <h1
-              className="css-18cwfw7"
+              className="css-18cwfw7 headline"
               data-test-id="Headline"
               style={
                 Object {
@@ -1331,7 +1331,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7"
+                    className="css-18cwfw7 headline"
                     data-test-id="Headline"
                     style={
                       Object {

@@ -5,6 +5,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase=""
   suggestions={
     Array [
       "foo",
@@ -13,24 +14,27 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       "foo bar buz quz",
     ]
   }
-  visible={false}
+  visible={true}
 >
   <SurroundPortals
     portalName="search.suggestions"
     portalProps={
       Object {
+        "bottomHeight": 10,
         "onClick": [Function],
+        "searchPhrase": "",
         "suggestions": Array [
           "foo",
           "foo bar",
           "foo bar buz",
           "foo bar buz quz",
         ],
+        "visible": true,
       }
     }
   >
     <div
-      className="css-7w6rep css-90ryaa css-6zy2pv"
+      className="css-7w6rep css-90ryaa"
     >
       <SurroundPortals
         key="foo"
@@ -162,6 +166,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   bottomHeight={10}
   fetching={true}
   onClick={[Function]}
+  searchPhrase=""
   suggestions={
     Array [
       "foo bar buz quz",
@@ -170,24 +175,27 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       "foo",
     ]
   }
-  visible={false}
+  visible={true}
 >
   <SurroundPortals
     portalName="search.suggestions"
     portalProps={
       Object {
+        "bottomHeight": 10,
         "onClick": [Function],
+        "searchPhrase": "",
         "suggestions": Array [
           "foo",
           "foo bar",
           "foo bar buz",
           "foo bar buz quz",
         ],
+        "visible": true,
       }
     }
   >
     <div
-      className="css-7w6rep css-90ryaa css-6zy2pv"
+      className="css-7w6rep css-90ryaa"
     >
       <SurroundPortals
         key="foo"
@@ -319,6 +327,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase=""
   suggestions={
     Array [
       "foo bar buz quz",
@@ -327,24 +336,27 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       "foo",
     ]
   }
-  visible={false}
+  visible={true}
 >
   <SurroundPortals
     portalName="search.suggestions"
     portalProps={
       Object {
+        "bottomHeight": 10,
         "onClick": [Function],
+        "searchPhrase": "",
         "suggestions": Array [
           "foo bar buz quz",
           "foo bar buz",
           "foo bar",
           "foo",
         ],
+        "visible": true,
       }
     }
   >
     <div
-      className="css-7w6rep css-90ryaa css-6zy2pv"
+      className="css-7w6rep css-90ryaa"
     >
       <SurroundPortals
         key="foo bar buz quz"
@@ -486,12 +498,14 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
   <Connect(SuggestionList)
     bottomHeight={10}
     onClick={[Function]}
+    visible={true}
   >
     <SuggestionList
       bottomHeight={10}
       dispatch={[Function]}
       fetching={false}
       onClick={[Function]}
+      searchPhrase=""
       suggestions={
         Array [
           "foo",
@@ -500,24 +514,27 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           "foo bar buz quz",
         ]
       }
-      visible={false}
+      visible={true}
     >
       <SurroundPortals
         portalName="search.suggestions"
         portalProps={
           Object {
+            "bottomHeight": 10,
             "onClick": [Function],
+            "searchPhrase": "",
             "suggestions": Array [
               "foo",
               "foo bar",
               "foo bar buz",
               "foo bar buz quz",
             ],
+            "visible": true,
           }
         }
       >
         <div
-          className="css-7w6rep css-90ryaa css-6zy2pv"
+          className="css-7w6rep css-90ryaa"
         >
           <SurroundPortals
             key="foo"
@@ -644,4 +661,28 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
     </SuggestionList>
   </Connect(SuggestionList)>
 </Provider>
+`;
+
+exports[`<SuggestionList /> should render portal without suggestions 1`] = `
+<SuggestionList
+  bottomHeight={0}
+  fetching={false}
+  onClick={[Function]}
+  searchPhrase=""
+  suggestions={null}
+  visible={true}
+>
+  <SurroundPortals
+    portalName="search.suggestions"
+    portalProps={
+      Object {
+        "bottomHeight": 0,
+        "onClick": [Function],
+        "searchPhrase": "",
+        "suggestions": null,
+        "visible": true,
+      }
+    }
+  />
+</SuggestionList>
 `;

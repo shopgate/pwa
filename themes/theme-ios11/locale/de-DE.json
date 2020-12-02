@@ -253,7 +253,7 @@
     "radius": "Radius",
     "stores_near": {
       "zip_code": "Filialen nähe \"{zipCode}\"",
-      "location": "filialen in deiner Nähe"
+      "location": "Filialen in deiner Nähe"
     },
     "your_current_timeslot": {
       "heading": "Abholzeit",

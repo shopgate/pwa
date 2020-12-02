@@ -1,7 +1,8 @@
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
-import { isBeta } from '@shopgate/engage/core';
-
+import {
+  getFullImageSource, getThemeSettings, isBeta, loadImage,
+} from '@shopgate/engage/core';
 import { buildShowScheduledParams } from '../components/EffectivityDates/helpers';
 
 /**
@@ -44,3 +45,58 @@ export const setDefaultProductFetchParams = () => {
   });
 };
 
+/**
+ * Provides the settings for ProductImages
+ * @return {Object}
+ */
+export const getProductImageSettings = () => {
+  const appImages = getThemeSettings('AppImages');
+
+  return {
+    quality: 75,
+    fillColor: 'FFFFFF,1',
+    HeroImage: [
+      {
+        width: 440,
+        height: 440,
+      },
+      {
+        width: 1024,
+        height: 1024,
+      },
+    ],
+    GalleryImage: [
+      {
+        width: 1024,
+        height: 1024,
+      },
+      {
+        width: 2048,
+        height: 2048,
+      },
+    ],
+    ListImage: [
+      {
+        width: 440,
+        height: 440,
+      },
+    ],
+    ...appImages,
+  };
+};
+
+/**
+ * Load product image with given resolution
+ * @param {string} src .
+ * @param {Object} resolution .
+ * @returns {Promise}
+ */
+export const loadProductImage = (src, resolution = null) => {
+  let res = resolution;
+  if (!res) {
+    const { HeroImage: resolutions } = getProductImageSettings();
+    ([res] = resolutions);
+  }
+
+  return loadImage(getFullImageSource(src, res));
+};

@@ -6,6 +6,7 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
 
 jest.mock('@shopgate/engage/core', () => ({
@@ -72,8 +73,6 @@ describe('<ProductCardRender />', () => {
     expect(wrapper.find('RatingStars').exists()).toBe(true);
     expect(wrapper.find('RatingStars').prop('value')).toBe(mockProduct.rating.average);
     expect(wrapper.find('ProductCardTitle').exists()).toBe(true);
-    expect(wrapper.find('ProductName').prop('name')).toBe(mockProduct.name);
-    expect(wrapper.find('ProductName').prop('rows')).toBe(ProductCardRender.defaultProps.titleRows);
     const productCardPrice = wrapper.find('ProductCardPrice');
     expect(productCardPrice.exists()).toBe(true);
     expect(productCardPrice.find('ProductGridPrice').prop('product')).toEqual(mockProduct);

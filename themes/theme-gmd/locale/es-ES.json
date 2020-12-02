@@ -150,7 +150,7 @@
   },
   "price": {
     "from": "Desde {price}",
-    "range": "Precio desde {fromPrice} a {toPrice}",
+    "range": "Precio desde {fromPrice} hasta {toPrice}",
     "range_from": "Rango de precio desde",
     "range_to": "Rango de precio hasta",
     "tier": {
@@ -167,7 +167,7 @@
     "errors": {
       "insufficientstock": "Sorry, this product is currently out of stock."
     },
-    "description_heading": "Sobre",
+    "description_heading": "Descripción",
     "pick_an_attribute": "Elija uno {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
     "adding_item": "{count, plural, =1 {Añadiendo {count} artículo} other {Añadiendo {count} artículos}}",
@@ -366,7 +366,7 @@
     "reserve": "Reserve",
     "remove": "Quitar",
     "edit": "Editar",
-    "empty": "Su cesta está vacía",
+    "empty": "Tu cesta está vacía",
     "continue": "Continuar comprando",
     "redeem_coupon": "Ingresar código del cupón",
     "coupon_code": "Código",
@@ -419,15 +419,15 @@
     }
   },
   "login": {
-    "headline": "Bienvenido",
+    "headline": "Hola",
     "subline": "Iniciar sesión para continuar",
     "email": "Email",
     "password": "Contraseña",
-    "forgot_password": "¿Olvidó su contraseña?",
+    "forgot_password": "¿Has olvidado tu contraseña?",
     "forgot_password_popup": "Utilice el sitio web para restablecer su contraseña.",
     "button": "Iniciar sesión",
-    "no_account": "¿Aún no tiene cuenta?",
-    "register": "¡Crear una ahora!",
+    "no_account": "¿Aún no tienes una cuenta?",
+    "register": "¡Créate una ahora!",
     "logout_message": "Ha sido desconectado.",
     "error": "Su usuario y contraseña no corresponden a ninguna cuenta",
     "reset_password": {

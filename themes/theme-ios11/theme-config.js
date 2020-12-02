@@ -1,6 +1,6 @@
 const appConfig = require('./config/app.json');
 
-const { theme: { colors } = {} } = appConfig;
+const { theme: { colors, variables = {} } = {} } = appConfig;
 const {
   light, dark, primary, accent,
 } = colors;
@@ -58,6 +58,8 @@ module.exports = {
     loadingIndicator: {
       size: 32,
       strokeWidth: 3,
+      imgSrc: null, // Use remote or data image stc as loading indicator
+      ...variables.loadingIndicator,
     },
     paymentBar: {
       height: 78,

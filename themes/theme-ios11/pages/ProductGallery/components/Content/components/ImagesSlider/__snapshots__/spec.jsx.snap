@@ -20,22 +20,8 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
       dispatch={[Function]}
       images={
         Array [
-          Object {
-            "height": 1024,
-            "sources": Array [
-              "foo1024",
-              "bar1024",
-            ],
-            "width": 1024,
-          },
-          Object {
-            "height": 2048,
-            "sources": Array [
-              "foo2048",
-              "bar2048",
-            ],
-            "width": 2048,
-          },
+          "foo",
+          "bar",
         ]
       }
       initialSlide={3}
@@ -54,8 +40,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           className="css-sa13d4"
           classNames={
             Object {
-              "container": "css-sa13d4",
-              "indicator": "css-vsp2nx",
+              "container": "css-fpkw5q",
             }
           }
           controls={false}
@@ -88,7 +73,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-18n9gca css-sa13d4 css-qb469q"
+              containerClass="css-18n9gca css-fpkw5q css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={3}
@@ -234,14 +219,14 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               }
             >
               <div
-                className="css-18n9gca css-sa13d4 css-qb469q"
+                className="css-18n9gca css-fpkw5q css-qb469q"
               >
                 <div
                   className="swiper-wrapper"
                 >
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$foo1024"
+                    key=".$foo"
                   >
                     <div
                       className="swiper-slide"
@@ -250,17 +235,30 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <img
-                          alt="foo2048"
-                          className="css-4kgshc"
-                          src="foo2048"
-                        />
+                        <Image
+                          alt=""
+                          animating={false}
+                          backgroundColor="transparent"
+                          classNameImg="css-4kgshc"
+                          resolutions={
+                            Array [
+                              Object {
+                                "height": 2048,
+                                "width": 2048,
+                              },
+                            ]
+                          }
+                          src="foo"
+                          unwrapped={true}
+                        >
+                          Image
+                        </Image>
                       </div>
                     </div>
                   </SwiperItem>
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$bar1024"
+                    key=".$bar"
                   >
                     <div
                       className="swiper-slide"
@@ -269,11 +267,24 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <img
-                          alt="bar2048"
-                          className="css-4kgshc"
-                          src="bar2048"
-                        />
+                        <Image
+                          alt=""
+                          animating={false}
+                          backgroundColor="transparent"
+                          classNameImg="css-4kgshc"
+                          resolutions={
+                            Array [
+                              Object {
+                                "height": 2048,
+                                "width": 2048,
+                              },
+                            ]
+                          }
+                          src="bar"
+                          unwrapped={true}
+                        >
+                          Image
+                        </Image>
                       </div>
                     </div>
                   </SwiperItem>
@@ -311,22 +322,8 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
       dispatch={[Function]}
       images={
         Array [
-          Object {
-            "height": 1024,
-            "sources": Array [
-              "foo1024",
-              "bar1024",
-            ],
-            "width": 1024,
-          },
-          Object {
-            "height": 2048,
-            "sources": Array [
-              "foo2048",
-              "bar2048",
-            ],
-            "width": 2048,
-          },
+          "foo",
+          "bar",
         ]
       }
       initialSlide={0}
@@ -345,8 +342,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           className="css-sa13d4"
           classNames={
             Object {
-              "container": "css-sa13d4",
-              "indicator": "css-vsp2nx",
+              "container": "css-fpkw5q",
             }
           }
           controls={false}
@@ -379,7 +375,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-18n9gca css-sa13d4 css-qb469q"
+              containerClass="css-18n9gca css-fpkw5q css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={0}
@@ -525,14 +521,14 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               }
             >
               <div
-                className="css-18n9gca css-sa13d4 css-qb469q"
+                className="css-18n9gca css-fpkw5q css-qb469q"
               >
                 <div
                   className="swiper-wrapper"
                 >
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$foo1024"
+                    key=".$foo"
                   >
                     <div
                       className="swiper-slide"
@@ -541,17 +537,30 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <img
-                          alt="foo2048"
-                          className="css-4kgshc"
-                          src="foo2048"
-                        />
+                        <Image
+                          alt=""
+                          animating={false}
+                          backgroundColor="transparent"
+                          classNameImg="css-4kgshc"
+                          resolutions={
+                            Array [
+                              Object {
+                                "height": 2048,
+                                "width": 2048,
+                              },
+                            ]
+                          }
+                          src="foo"
+                          unwrapped={true}
+                        >
+                          Image
+                        </Image>
                       </div>
                     </div>
                   </SwiperItem>
                   <SwiperItem
                     className="swiper-slide"
-                    key=".$bar1024"
+                    key=".$bar"
                   >
                     <div
                       className="swiper-slide"
@@ -560,11 +569,24 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <img
-                          alt="bar2048"
-                          className="css-4kgshc"
-                          src="bar2048"
-                        />
+                        <Image
+                          alt=""
+                          animating={false}
+                          backgroundColor="transparent"
+                          classNameImg="css-4kgshc"
+                          resolutions={
+                            Array [
+                              Object {
+                                "height": 2048,
+                                "width": 2048,
+                              },
+                            ]
+                          }
+                          src="bar"
+                          unwrapped={true}
+                        >
+                          Image
+                        </Image>
                       </div>
                     </div>
                   </SwiperItem>

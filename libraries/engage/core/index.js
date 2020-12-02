@@ -255,6 +255,7 @@ export { useWidgetConfig } from './hooks/useWidgetConfig';
 export { useWidgetSettings } from './hooks/useWidgetSettings';
 export { useWidgetStyles } from './hooks/useWidgetStyles';
 export { useScroll } from './hooks/useScroll';
+export * from './hooks/html';
 
 // --------------- HOCs --------------- //
 
@@ -290,19 +291,16 @@ export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';
 export { hasWebBridge } from './helpers/bridge';
 export { useScrollContainer } from './helpers/scrollContainer';
 export { getDeviceType } from './helpers/deviceType';
+export { getFullImageSource } from './helpers/getFullImageSource';
 
 // -------------- CONFIG -------------- //
 export * from './config/config.actions';
 export * from './config/config.selectors';
 export * from './config/config.streams';
-
 export * from './initialization';
-
 // -------------- VALIDATION -------------- //
 export * from './validation';
-
 export { default as errorBehavior } from './helpers/errorBehavior';
-
 export {
   makeGetShopSettingByKey,
   makeGetShopSettings,
@@ -314,7 +312,6 @@ export {
   getDefaultCurrency,
   getEnableWebIndexing,
 } from './selectors';
-
 export {
   SHOP_SETTING_CART_SUPPLEMENTAL_CONTENT,
   SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT,

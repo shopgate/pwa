@@ -154,10 +154,10 @@ class RatingStars extends Component {
         aria-label={this.getTextualFinal(ratedStars)}
         data-test-id={`ratedStars: ${ratedStars}`}
       >
-        <div className={styles.emptyStars}>
+        <div className={`${styles.emptyStars} rating-stars-empty`}>
           {emptyStars}
         </div>
-        <div className={styles.filledStars}>
+        <div className={`${styles.filledStars} rating-stars-filled`}>
           {filledStars}
         </div>
       </div>

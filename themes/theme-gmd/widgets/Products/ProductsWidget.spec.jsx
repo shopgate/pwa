@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { UnwrappedProductsWidget as ProductsWidget } from './index';
+import { UnwrappedProductsWidget as ProductsWidget } from './ProductsWidget';
 
 jest.mock('Components/ProductGrid', () => function ProductGrid() { return null; });
 jest.mock('Components/ProductList', () => function ProductList() { return null; });
@@ -29,7 +29,6 @@ describe('<ProductsWidget />', () => {
     const wrapper = shallow(<ProductsWidget {...props} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ProductGrid').length).toBe(0);
 
     // Now give it a product...
     wrapper.setProps({

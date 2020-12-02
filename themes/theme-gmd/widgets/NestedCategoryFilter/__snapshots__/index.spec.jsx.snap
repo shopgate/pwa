@@ -35,7 +35,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h3
-          className="css-137piww"
+          className="css-137piww headline"
         >
           Widget Headline
         </h3>
@@ -328,7 +328,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h3
-          className="css-137piww"
+          className="css-137piww headline"
         >
           Widget Headline
         </h3>
@@ -933,7 +933,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h3
-          className="css-137piww"
+          className="css-137piww headline"
         >
           Widget Headline
         </h3>
@@ -1547,7 +1547,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h3
-          className="css-137piww"
+          className="css-137piww headline"
         >
           Widget Headline
         </h3>
@@ -2291,7 +2291,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h3
-          className="css-137piww"
+          className="css-137piww headline"
         >
           Widget Headline
         </h3>

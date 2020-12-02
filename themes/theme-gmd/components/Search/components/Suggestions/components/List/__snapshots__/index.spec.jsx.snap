@@ -5,6 +5,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase={null}
   suggestions={
     Array [
       "foo",
@@ -19,6 +20,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     portalProps={
       Object {
         "onClick": [Function],
+        "searchPhrase": null,
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -181,6 +183,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   bottomHeight={10}
   fetching={true}
   onClick={[Function]}
+  searchPhrase={null}
   suggestions={
     Array [
       "foo bar buz quz",
@@ -195,6 +198,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     portalProps={
       Object {
         "onClick": [Function],
+        "searchPhrase": null,
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -357,6 +361,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase={null}
   suggestions={
     Array [
       "foo bar buz quz",
@@ -371,6 +376,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     portalProps={
       Object {
         "onClick": [Function],
+        "searchPhrase": null,
         "suggestions": Array [
           "foo bar buz quz",
           "foo bar buz",
@@ -549,6 +555,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       dispatch={[Function]}
       fetching={false}
       onClick={[Function]}
+      searchPhrase={null}
       suggestions={
         Array [
           "foo",
@@ -563,6 +570,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         portalProps={
           Object {
             "onClick": [Function],
+            "searchPhrase": null,
             "suggestions": Array [
               "foo",
               "foo bar",
@@ -720,4 +728,24 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
     </SuggestionList>
   </Connect(SuggestionList)>
 </Provider>
+`;
+
+exports[`<SuggestionList /> should render portal without suggestions 1`] = `
+<SuggestionList
+  fetching={false}
+  onClick={[Function]}
+  searchPhrase={null}
+  suggestions={null}
+>
+  <SurroundPortals
+    portalName="search.suggestions"
+    portalProps={
+      Object {
+        "onClick": [Function],
+        "searchPhrase": null,
+        "suggestions": null,
+      }
+    }
+  />
+</SuggestionList>
 `;
