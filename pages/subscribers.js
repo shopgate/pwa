@@ -24,6 +24,7 @@ import trackingCheckout from '@shopgate/pwa-tracking/subscriptions/checkout';
 import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
 import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
 import trackingScanner from '@shopgate/pwa-tracking/subscriptions/scanner';
+import trackingFavlist from '@shopgate/pwa-tracking/subscriptions/favlist';
 // Theme
 import app from 'Pages/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
@@ -61,6 +62,7 @@ const subscriptions = [
   trackingSearch,
   trackingDeeplinkPush,
   trackingScanner,
+  trackingFavlist,
   // Common Commerce subscribers.
   commerceCart,
   commerceCheckout,
