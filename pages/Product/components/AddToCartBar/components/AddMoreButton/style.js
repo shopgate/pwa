@@ -2,9 +2,8 @@ import { css } from 'glamor';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
-  display: 'flex',
-  justifyContent: 'center',
-  flexGrow: 0,
+  display: 'block',
+  // its not centered on android if shrink gets removed
   flexShrink: 0,
   fontSize: '1.75rem !important',
   background: themeColors.darkOverlay,
