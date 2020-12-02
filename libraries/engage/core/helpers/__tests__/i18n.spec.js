@@ -57,4 +57,19 @@ describe('i18n', () => {
     i18n.init({});
     expect(mockedWarn).toHaveBeenCalled();
   });
+
+  it('should return default text for missing translation', () => {
+    const locales = {
+      test: {
+        string: 'Test string: {bar}',
+      },
+    };
+    i18n.init({
+      locales,
+      lang: 'en-US',
+    });
+
+    expect(i18n.textWithDefault('test.missing', 'Default text'))
+      .toBe('Default text');
+  });
 });
