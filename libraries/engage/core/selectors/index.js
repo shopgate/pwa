@@ -4,6 +4,7 @@ export {
   makeGetShopSettings,
   getProductImagePlaceholder,
   getCategoryImagePlaceholder,
+  getFavicon,
 } from './shopSettings';
 export {
   getIsLocationBasedShopping,
