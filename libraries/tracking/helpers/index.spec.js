@@ -272,6 +272,9 @@ describe('Tracking helpers', () => {
           ...mockData,
           title: '',
         },
+        favouriteList: {
+          products: null,
+        },
         category: mockData,
         product: mockData,
         search: mockData,
