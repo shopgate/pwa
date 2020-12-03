@@ -529,15 +529,6 @@
         "type": "json",
         "label": "A url to fetch a JSONP file with merchant settings for Engage."
       }
-    },
-    "favicon": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": null,
-      "params": {
-        "type": "json",
-        "label": "An url to fetch a favicon from"
-      }
     }
   }
 }

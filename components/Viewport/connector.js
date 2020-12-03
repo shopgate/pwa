@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getEnableWebIndexing } from '@shopgate/engage/core';
+import { getEnableWebIndexing, getFavicon } from '@shopgate/engage/core';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,6 +8,7 @@ import { getEnableWebIndexing } from '@shopgate/engage/core';
  */
 const mapStateToProps = state => ({
   enableWebIndexing: getEnableWebIndexing(state),
+  favicon: getFavicon(state),
 });
 
 export default connect(mapStateToProps);

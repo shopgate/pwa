@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import Helmet from 'react-helmet';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
@@ -15,8 +14,6 @@ import { a11yNavEntries } from './constants';
 import styles from './style';
 import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_WIDTH } from '../../constants';
 import connect from './connector';
-
-const { favicon } = appConfig;
 
 /**
  * Updates the page content width css variable
@@ -50,13 +47,13 @@ setViewportHeight();
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Viewport = (props) => {
+const Viewport = ({ children, enableWebIndexing, favicon }) => {
   const [hidden, setHidden] = useState(false);
   return (
     <main role="main" itemScope itemProp="http://schema.org/MobileApplication">
       { hasWebBridge() && (
         <Helmet>
-          { !props.enableWebIndexing && (
+          { !enableWebIndexing && (
             <meta name="robots" content="noindex, nofollow" />
           )}
           { favicon && (
@@ -78,7 +75,7 @@ const Viewport = (props) => {
           </ResponsiveContainer>
         </header>
         <section className={styles.content} id="AppContent">
-          {props.children}
+          {children}
         </section>
         <Footer />
         <Search />
@@ -91,10 +88,12 @@ const Viewport = (props) => {
 Viewport.propTypes = {
   children: PropTypes.node.isRequired,
   enableWebIndexing: PropTypes.bool,
+  favicon: PropTypes.string,
 };
 
 Viewport.defaultProps = {
   enableWebIndexing: false,
+  favicon: null,
 };
 
 export default connect(Viewport);
