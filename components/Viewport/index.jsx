@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import Helmet from 'react-helmet';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
@@ -14,6 +15,8 @@ import { a11yNavEntries } from './constants';
 import styles from './style';
 import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_WIDTH } from '../../constants';
 import connect from './connector';
+
+const { favicon } = appConfig;
 
 /**
  * Updates the page content width css variable
@@ -51,9 +54,14 @@ const Viewport = (props) => {
   const [hidden, setHidden] = useState(false);
   return (
     <main role="main" itemScope itemProp="http://schema.org/MobileApplication">
-      { hasWebBridge() && !props.enableWebIndexing && (
+      { hasWebBridge() && (
         <Helmet>
-          <meta name="robots" content="noindex, nofollow" />
+          { !props.enableWebIndexing && (
+            <meta name="robots" content="noindex, nofollow" />
+          )}
+          { favicon && (
+            <link rel="icon" type="image/png" sizes="32x32" href={favicon} />
+          )}
         </Helmet>
       )}
 
