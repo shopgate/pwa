@@ -7,12 +7,12 @@ import {
   getCartItems,
 } from '@shopgate/engage/cart';
 import { userDidLogin$ } from '@shopgate/engage/user';
-import { receiveCoreConfig$, appDidStart$ } from '@shopgate/engage/core';
+import { receiveCoreConfig$, appDidStart$, routeWillEnter$ } from '@shopgate/engage/core';
 import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import {
-  getUserSearch, getStoreFinderSearch, getPreferredLocation,
+  getUserSearch, getStoreFinderSearch, getPreferredLocation, getIsPending,
 } from './selectors';
-import { fetchLocations, fetchProductLocations } from './actions';
+import { fetchLocations, fetchProductLocations, setPending } from './actions';
 import selectLocation from './action-creators/selectLocation';
 import {
   submitReservationSuccess$,
@@ -20,6 +20,34 @@ import {
   userSearchChanged$,
   storeFinderWillEnter$,
 } from './locations.streams';
+
+let initialLocationsResolve;
+let initialLocationsReject;
+const initialLocationsPromise = new Promise((resolve, reject) => {
+  initialLocationsResolve = resolve;
+  initialLocationsReject = reject;
+});
+
+/**
+ * Sets a location once the location has been validated.
+ * @param {string} locationCode Location code
+ * @param {Function} dispatch Redux dispatch function
+ * @returns {Promise}
+ */
+const setLocationOnceAvailable = async (locationCode, dispatch) => {
+  try {
+    const { locations: initialLocations } = await initialLocationsPromise;
+    if (!initialLocations.some(l => l.code === locationCode)) {
+      return;
+    }
+    dispatch(selectLocation({ code: locationCode }));
+    requestAnimationFrame(() => {
+      dispatch(setPending(false));
+    });
+  } catch (error) {
+    // Location won't be set.
+  }
+};
 
 /**
  * Locations subscriptions.
@@ -29,7 +57,12 @@ function locations(subscribe) {
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
     // Fetch merchants locations.
     const userSearch = getUserSearch(getState());
-    await dispatch(fetchLocations(userSearch));
+    try {
+      const result = await dispatch(fetchLocations(userSearch));
+      initialLocationsResolve(result);
+    } catch (error) {
+      initialLocationsReject(error);
+    }
   });
 
   subscribe(userSearchChanged$, async ({ dispatch, getState, action }) => {
@@ -110,7 +143,7 @@ function locations(subscribe) {
    * to a location that is also available in the cart.
    * Avoids having a selected location that differs from the cart
    */
-  const afterCartMerge$ = userDidLogin$.mergeMap(() => console.warn('yup') || cartReceived$.first());
+  const afterCartMerge$ = userDidLogin$.mergeMap(() => cartReceived$.first());
   subscribe(afterCartMerge$, async ({ dispatch, getState }) => {
     const state = getState();
     const cartItems = getCartItems(state);
@@ -132,6 +165,20 @@ function locations(subscribe) {
     }
 
     dispatch(selectLocation({ code: firstLocationCode }));
+  });
+
+  /**
+   * Handles an added store url parameter that will set the default store location
+   */
+  subscribe(routeWillEnter$, ({ action, dispatch, getState }) => {
+    const locationCode = action.route.query.store;
+    if (!locationCode) {
+      if (!getIsPending(getState())) {
+        dispatch(setPending(false));
+      }
+      return;
+    }
+    setLocationOnceAvailable(locationCode, dispatch);
   });
 }
 

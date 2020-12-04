@@ -5,6 +5,7 @@ import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import {
   SUBMIT_RESERVATION_SUCCESS,
   RECEIVE_PRODUCT_LOCATIONS,
+  RECEIVE_LOCATIONS,
   SET_USER_SEARCH_COUNTRY_CODE,
   SET_USER_SEARCH_POSTAL_CODE,
   SET_USER_SEARCH_GEOLOCATION,
@@ -83,3 +84,6 @@ export const preferredLocationDidUpdate$ = main$
 
 export const storeFinderWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === STORE_FINDER_PATTERN);
+
+export const receiveLocations$ = main$
+  .filter(({ action }) => action.type === RECEIVE_LOCATIONS);

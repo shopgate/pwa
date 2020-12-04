@@ -436,6 +436,13 @@ export const getExternalCustomerNumberForOrder = createSelector(
 );
 
 /**
+ * Returns the pending state.
+ * @param {Object} state State
+ * @returns {boolean}
+ */
+export const getIsPending = state => getLocationsStorage(state).pending;
+
+/**
  * Checks if the cart state is currently configurable
  * During checkout the state is read only to make sure
  * the user can't switch locations and timeslots.
