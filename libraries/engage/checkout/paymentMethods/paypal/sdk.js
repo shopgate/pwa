@@ -17,13 +17,27 @@ export const loadWebSdk = settings => new Promise((resolve, reject) => {
 
   const script = document.createElement('script');
   script.id = SDK_ID;
+  script.setAttribute('data-partner-attribution-id', 'ShopgateGmbH_Cart_PPCP');
   script.onload = () => {
     resolve();
     renderQueue.forEach(cb => cb());
     renderQueue = [];
   };
   script.onerror = reject;
-  script.src = `https://www.paypal.com/sdk/js?client-id=${settings.clientId}&components=buttons,funding-eligibility,marks${settings.env === 'sandbox' ? '&debug=true' : ''}&disable-funding=credit,card&integration-date=2020-11-13&intent=authorize`;
+
+  const parameters = {
+    'client-id': settings.clientId,
+    'merchant-id': settings.merchantIdInPayPal,
+    'disable-funding': 'credit,card',
+    'integration-date': '2020-12-07',
+    intent: 'authorize',
+    components: 'buttons,funding-eligibility,marks',
+    ...(settings.env === 'sandbox' ? {
+      debug: 'true',
+    } : {}),
+  };
+  const parametersString = Object.entries(parameters).map(([key, value]) => `${key}=${value}`).join('&');
+  script.src = `https://www.paypal.com/sdk/js?${parametersString}`;
   document.head.appendChild(script);
 });
 

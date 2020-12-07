@@ -67,7 +67,7 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
       onClick: (_, actions) => {
         // Trigger manual form validation to comply to paypal standards.
         const isValid = formActions.current.onValidate();
-        if (isValid) {
+        if (isValid && !disabled) {
           return actions.resolve();
         }
         return actions.reject();
@@ -81,7 +81,7 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
       },
     });
     paypalButton.current.render(button.current);
-  }, [fundingSource, paymentTransactions, paypal]);
+  }, [disabled, fundingSource, paymentTransactions, paypal]);
 
   // Sync our internal disabled state with paypals disabled state.
   useEffect(() => {

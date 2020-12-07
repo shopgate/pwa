@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { css } from 'glamor';
+import { useCheckoutContext } from '../../hooks/common';
 
 const styles = {
   root: css({
@@ -44,15 +45,19 @@ const styles = {
  * @param {Object} props Props
  * @returns {JSX}
  */
-const PaymentMethodButton = ({ children, active, onChange }) => (
-  <button
-    type="button"
-    className={`${styles.root} ${active && styles.active}`}
-    onClick={() => onChange()}
-  >
-    {children}
-  </button>
-);
+const PaymentMethodButton = ({ children, active, onChange }) => {
+  const { isLocked } = useCheckoutContext();
+  return (
+    <button
+      type="button"
+      disabled={isLocked}
+      className={`${styles.root} ${active && styles.active}`}
+      onClick={() => onChange()}
+    >
+      {children}
+    </button>
+  );
+};
 
 PaymentMethodButton.propTypes = {
   active: PropTypes.bool.isRequired,
