@@ -258,13 +258,15 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
           }
         }
       >
-        cart.message_type_info: some.translation.string
+        cart.message_type_info: some,translation,,string
       </span>
       <span
         aria-hidden={true}
         className={null}
       >
-        some.translation.string
+        some
+        translation
+        string
       </span>
     </div>
     <div
