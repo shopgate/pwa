@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
+import Helmet from 'react-helmet';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
@@ -12,6 +13,7 @@ import WideBar from 'Components/AppBar/presets/DefaultBar/components/WideBar';
 import { a11yNavEntries } from './constants';
 import styles from './style';
 import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_WIDTH } from '../../constants';
+import connect from './connector';
 
 /**
  * Updates the page content width css variable
@@ -45,10 +47,21 @@ setViewportHeight();
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Viewport = (props) => {
+const Viewport = ({ children, enableWebIndexing, favicon }) => {
   const [hidden, setHidden] = useState(false);
   return (
     <main role="main" itemScope itemProp="http://schema.org/MobileApplication">
+      { hasWebBridge() && (
+        <Helmet>
+          { !enableWebIndexing && (
+            <meta name="robots" content="noindex, nofollow" />
+          )}
+          { favicon && (
+            <link rel="icon" type="image/png" sizes="32x32" href={favicon} />
+          )}
+        </Helmet>
+      )}
+
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
       <CookieConsent />
       <div className={styles.viewport} aria-hidden={hidden} tabIndex="-1">
@@ -62,7 +75,7 @@ const Viewport = (props) => {
           </ResponsiveContainer>
         </header>
         <section className={styles.content} id="AppContent">
-          {props.children}
+          {children}
         </section>
         <Footer />
         <Search />
@@ -74,6 +87,13 @@ const Viewport = (props) => {
 
 Viewport.propTypes = {
   children: PropTypes.node.isRequired,
+  enableWebIndexing: PropTypes.bool,
+  favicon: PropTypes.string,
 };
 
-export default Viewport;
+Viewport.defaultProps = {
+  enableWebIndexing: false,
+  favicon: null,
+};
+
+export default connect(Viewport);

@@ -5,3 +5,4 @@ export const MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES = 'customerAttributes';
 export const MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED = 'enableFulfillmentScheduling';
 export const MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS = 'restrictMultiLocationOrders';
 export const MERCHANT_SETTINGS_DEFAULT_CURRENCY = 'defaultCurrency';
+export const MERCHANT_SETTINGS_ENABLE_WEB_INDEXING = 'enableWebIndexing';

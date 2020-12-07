@@ -13,6 +13,10 @@ import {
 } from '../constants';
 
 const initialState = {
+  // If general usage of state has been finished.
+  // Currently used to identify if any change is currently pending
+  // before the store switcher is being displayed.
+  pending: true,
   // If any data is being fetched right now.
   isFetching: false,
   // The users preferred fulfillment location.
@@ -80,7 +84,9 @@ export default (state = initialState, action) => {
         const locationCodes = action.locations.map(l => l.code);
         const filter = generateSortedHash({ ...action.filters });
         draft.locationsByFilter[filter] = locationCodes;
+        draft.initialized = true;
         draft.isFetching = false;
+        draft.pending = false;
         break;
       }
 
@@ -104,6 +110,7 @@ export default (state = initialState, action) => {
         });
         const locationCodes = action.locations.map(l => l.code);
         draft.locationsByFilter[filter] = locationCodes;
+        draft.pending = false;
         draft.isFetching = false;
         break;
       }

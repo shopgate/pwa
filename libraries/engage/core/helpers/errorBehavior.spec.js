@@ -12,6 +12,12 @@ const locales = {
       coupon: {
         2002: 'cart errors coupon 2002',
         generic: 'cart errors coupon generic',
+        'shopgate.cart.updateCoupons': {
+          2002: 'pipeline cart errors coupon 2002',
+        },
+      },
+      'shopgate.cart.updateCoupons': {
+        2002: 'pipeline cart errors 2002',
       },
       2002: 'cart errors 2002',
       2003: 'cart errors 2003',
@@ -27,6 +33,8 @@ const locales = {
   },
 };
 
+const pipeline = 'shopgate.cart.updateCoupons';
+
 describe('errorBehavior', () => {
   beforeAll(() => {
     i18n.init({
@@ -40,6 +48,16 @@ describe('errorBehavior', () => {
       expect(getErrorMessage('cart.errors.coupon.2002')).toBe(get(locales, 'cart.errors.coupon.2002'));
     });
 
+    it('should return the correct message for cart.errors.coupon.2002', () => {
+      expect(getErrorMessage('cart.errors.coupon.2002', undefined, pipeline)).toBe(get(locales, [
+        'cart',
+        'errors',
+        'coupon',
+        pipeline,
+        '2002',
+      ]));
+    });
+
     it('should return the fallback for cart.errors.coupon.2004', () => {
       expect(getErrorMessage('cart.errors.coupon.2004')).toBe(get(locales, 'cart.errors.coupon.generic'));
     });
@@ -50,6 +68,15 @@ describe('errorBehavior', () => {
 
     it('should return the correct message for cart.errors.2002', () => {
       expect(getErrorMessage('cart.errors.2002')).toBe(get(locales, 'cart.errors.2002'));
+    });
+
+    it('should return the correct message for cart.errors.2002 when a pipeline was specified', () => {
+      expect(getErrorMessage('cart.errors.2002', undefined, pipeline)).toBe(get(locales, [
+        'cart',
+        'errors',
+        pipeline,
+        '2002',
+      ]));
     });
 
     it('should return the fallback cart.errors.2004', () => {

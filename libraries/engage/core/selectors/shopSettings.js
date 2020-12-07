@@ -5,6 +5,7 @@ import {
   SHOP_SETTING_IMAGES,
   SHOP_SETTING_IMAGES_PRODUCT_PLACEHOLDER,
   SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER,
+  SHOP_SETTING_IMAGES_FAVICON,
 } from '../constants/shopSettings';
 
 /**
@@ -73,4 +74,11 @@ export const getProductImagePlaceholder = createSelector(
 export const getCategoryImagePlaceholder = createSelector(
   getShopSettingImages,
   images => images?.[SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER] || null
+);
+/**
+ * Selects the placeholder image for products
+ */
+export const getFavicon = createSelector(
+  getShopSettingImages,
+  images => images?.[SHOP_SETTING_IMAGES_FAVICON] || null
 );

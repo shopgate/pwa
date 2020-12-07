@@ -15,7 +15,7 @@ import {
 } from '../selectors';
 import { getProduct } from '../../product/selectors/product';
 
-import { messagesHaveErrors } from '../helpers';
+import { messagesHaveErrors, createErrorMessageList } from '../helpers';
 import { getDisplayedProductQuantity } from '../helpers/quantity';
 
 /**
@@ -98,7 +98,10 @@ function addToCart(data) {
          * object with an "error" property. This code snippet needs to be removed after
          * fixing the `@shopgate/legacy-cart` extension.
          */
-        dispatch(errorAddProductsToCart(products, result.messages));
+        dispatch(errorAddProductsToCart(
+          products,
+          createErrorMessageList(SHOPGATE_CART_ADD_PRODUCTS, result.messages)
+        ));
         return result;
       }
 

@@ -7,7 +7,7 @@ import { ECART } from '../constants/PipelineErrors';
 import deleteProducts from '../action-creators/deleteProductsFromCart';
 import successDeleteProductsFromCart from '../action-creators/successDeleteProductsFromCart';
 import errorDeleteProductsFromCart from '../action-creators/errorDeleteProductsFromCart';
-import { messagesHaveErrors } from '../helpers';
+import { messagesHaveErrors, createErrorMessageList } from '../helpers';
 
 /**
  * Deletes products from the cart.
@@ -32,7 +32,10 @@ function deleteProductsFromCart(cartItemIds) {
          * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
          */
         if (result.messages && messagesHaveErrors(result.messages)) {
-          dispatch(errorDeleteProductsFromCart(cartItemIds, result.messages));
+          dispatch(errorDeleteProductsFromCart(
+            cartItemIds,
+            createErrorMessageList(SHOPGATE_CART_DELETE_PRODUCTS, result.messages)
+          ));
         }
 
         dispatch(successDeleteProductsFromCart());

@@ -6,6 +6,7 @@ import {
   MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
   MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
   MERCHANT_SETTINGS_DEFAULT_CURRENCY,
+  MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
 } from '../constants';
 
 /**
@@ -53,4 +54,9 @@ export const getRestrictMultiLocationOrders = makeGetMerchantSettingByKey(
 
 export const getDefaultCurrency = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_DEFAULT_CURRENCY
+);
+
+export const getEnableWebIndexing = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
+  false
 );

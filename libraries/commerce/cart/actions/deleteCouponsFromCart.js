@@ -7,7 +7,7 @@ import { ECART } from '../constants/PipelineErrors';
 import deleteCoupons from '../action-creators/deleteCouponsFromCart';
 import errorDeleteCouponsFromCart from '../action-creators/errorDeleteCouponsFromCart';
 import successDeleteCouponsFromCart from '../action-creators/successDeleteCouponsFromCart';
-import { messagesHaveErrors } from '../helpers';
+import { messagesHaveErrors, createErrorMessageList } from '../helpers';
 
 /**
  * Deletes coupons from the cart.
@@ -32,7 +32,10 @@ function deleteCouponsFromCart(couponIds) {
          * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
          */
         if (result.messages && messagesHaveErrors(result.messages)) {
-          dispatch(errorDeleteCouponsFromCart(couponIds, result.messages));
+          dispatch(errorDeleteCouponsFromCart(
+            couponIds,
+            createErrorMessageList(SHOPGATE_CART_DELETE_COUPONS, result.messages)
+          ));
           return;
         }
 

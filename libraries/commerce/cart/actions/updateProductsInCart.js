@@ -9,7 +9,7 @@ import { ECART } from '../constants/PipelineErrors';
 import updateProducts from '../action-creators/updateProductsInCart';
 import successUpdateProductsInCart from '../action-creators/successUpdateProductsInCart';
 import errorUpdateProductsInCart from '../action-creators/errorUpdateProductsInCart';
-import { messagesHaveErrors } from '../helpers';
+import { messagesHaveErrors, createErrorMessageList } from '../helpers';
 
 /**
  * Updates a product in the cart.
@@ -38,7 +38,10 @@ function updateProductsInCart(updateData) {
          * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
          */
         if (result.messages && messagesHaveErrors(result.messages)) {
-          dispatch(errorUpdateProductsInCart(updateData, result.messages));
+          dispatch(errorUpdateProductsInCart(
+            updateData,
+            createErrorMessageList(SHOPGATE_CART_UPDATE_PRODUCTS, result.messages)
+          ));
           return;
         }
 

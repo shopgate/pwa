@@ -311,7 +311,9 @@ export {
   getFulfillmentSchedulingEnabled,
   getProductImagePlaceholder,
   getCategoryImagePlaceholder,
+  getFavicon,
   getDefaultCurrency,
+  getEnableWebIndexing,
 } from './selectors';
 
 export {

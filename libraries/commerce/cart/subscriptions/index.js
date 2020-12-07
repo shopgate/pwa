@@ -179,7 +179,7 @@ export default function cart(subscribe) {
       // Supports only one error, because none of the pipelines is ever called with multiple items.
       // Multiple errors would cause the this to overlay multiple modals on top of each other.
       const {
-        message, handled, code, additionalParams, translated,
+        message, handled, code, additionalParams, translated, context,
       } = errors[0];
 
       // Some errors are already handled automatically before
@@ -191,6 +191,7 @@ export default function cart(subscribe) {
         dispatch,
         error: {
           code,
+          context,
           meta: {
             message,
             additionalParams,
