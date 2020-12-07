@@ -383,6 +383,12 @@
     "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
       "item": {
+        "shopgate.cart.updateProducts": {
+          "1001": "This product is currently out of stock."
+        },
+        "shopgate.cart.addProducts": {
+          "1001": "This product is currently out of stock."
+        },
         "1001": "Currently out of stock.",
         "generic": "An unexpected error occurred with this item.",
         "insufficientstock": "Currently out of stock."
