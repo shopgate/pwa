@@ -189,7 +189,7 @@
     "payment": "Métodos de pago",
     "terms": "Términos y Condiciones",
     "privacy": "Política de Privacidad",
-    "welcome_message": "Bienvenido {name}",
+    "welcome_message": "Hola {name}",
     "return_policy": "Política de devolución",
     "logout": "Cerrar sesión",
     "store_information": "Store Information",
