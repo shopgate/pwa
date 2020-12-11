@@ -532,6 +532,28 @@
         "type": "json",
         "label": "A url to fetch a JSONP file with merchant settings for Engage."
       }
+    },
+    "omniStage": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/omnichannel_stage?parsed=true",
+        "key": "value"
+      }
+    },
+    "omniMerchantCode": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/omnichannel_merchant_code?parsed=true",
+        "key": "value"
+      }
     }
   }
 }
