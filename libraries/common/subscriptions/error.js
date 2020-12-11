@@ -1,8 +1,10 @@
 import after from 'lodash/after';
 import before from 'lodash/before';
 import over from 'lodash/over';
+import { isAvailable } from '@shopgate/native-modules';
 import {
   init,
+  addBreadcrumb,
   configureScope,
   captureException,
   captureMessage,
@@ -20,6 +22,7 @@ import {
 } from '@shopgate/pwa-core';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
+import { main$ } from '../streams/main';
 import {
   // eslint-disable-next-line import/no-named-default
   default as appConfig,
@@ -147,6 +150,13 @@ export default (subscribe) => {
     [Severity.Debug]: SentrySeverity.Debug,
   };
 
+  const ignoredDefaultBreadcrumbs = [
+    'console',
+    'fetch',
+    'xhr',
+    'ui.click',
+  ];
+
   let trackedSeverities = Object.getOwnPropertySymbols(severityMap).map(s => severityMap[s]);
   const minSeverityIndex = trackedSeverities.indexOf(level);
   if (minSeverityIndex > -1) {
@@ -156,11 +166,17 @@ export default (subscribe) => {
   subscribe(appWillStart$, ({ getState }) => {
     init({
       dsn: 'https://1a444b262ac6405594ab33fb0102b377@sentry.io/1398210',
-      environment: env,
+      environment: appConfig.omniStage || env,
       debug: env === 'development',
       release: pckVersion,
       attachStacktrace: true,
       sampleRate,
+      beforeBreadcrumb(breadcrumb) {
+        if (ignoredDefaultBreadcrumbs.includes(breadcrumb.category)) {
+          return null;
+        }
+        return breadcrumb;
+      },
       beforeSend(event) {
         if (event.level && !trackedSeverities.includes(event.level)) {
           return null;
@@ -182,6 +198,8 @@ export default (subscribe) => {
       scope.setTag('theme', themeName);
       scope.setTag('language', appConfig.language);
       scope.setTag('isWebsite', hasWebBridge());
+      scope.setTag('isReactNativeApp', isAvailable());
+      scope.setTag('merchantCode', appConfig.omniMerchantCode);
     });
 
     if (window) {
@@ -204,6 +222,15 @@ export default (subscribe) => {
         scope.setExtra('error', args);
         captureMessage('Console error');
       });
+    });
+  });
+
+  subscribe(main$, ({ action }) => {
+    addBreadcrumb({
+      category: 'redux',
+      message: `[Redux] ${action.type}`,
+      level: SentrySeverity.Info,
+      data: { ...action },
     });
   });
 

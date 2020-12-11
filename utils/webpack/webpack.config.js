@@ -28,6 +28,9 @@ const isoLang = convertLanguageToISO(appConfig.language);
 const { sourceMap, ip, apiPort } = getDevConfig();
 const t = i18n(__filename);
 
+const devtool = isDev ? sourceMap : (process.env.SOURCE_MAPS || false);
+const fileSuffix = devtool ? '.sm' : '';
+
 const config = {
   mode: ENV,
   entry: {
@@ -49,8 +52,8 @@ const config = {
     ],
   },
   output: {
-    filename: !isDev ? '[name].[hash].js' : '[name].js',
-    chunkFilename: '[name].[chunkhash].js',
+    filename: !isDev ? `[name].[hash]${fileSuffix}.js` : `[name]${fileSuffix}.js`,
+    chunkFilename: `[name].[chunkhash]${fileSuffix}.js`,
     path: path.resolve(themePath, PUBLIC_FOLDER),
     publicPath: isDev ? '/' : (process.env.publicPath || './'),
   },
@@ -178,7 +181,7 @@ const config = {
       },
     ],
   },
-  devtool: isDev ? sourceMap : (process.env.SOURCE_MAPS || false),
+  devtool,
   stats: isDev ? 'normal' : 'errors-only',
   performance: {
     hints: isDev ? false : 'warning',
