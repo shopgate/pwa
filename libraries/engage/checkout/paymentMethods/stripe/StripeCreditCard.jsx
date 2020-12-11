@@ -101,7 +101,7 @@ const StripeCardExpiryElement = wrapStripeElement(CardExpiryElement);
 const StripeCreditCard = () => {
   const cardRef = React.useRef();
   const { error, setError } = useContext(StripeContext);
-  const { needsPayment } = useCheckoutContext();
+  const { needsPayment, paymentData } = useCheckoutContext();
 
   // Scrolls to stripe config when error is set.
   React.useEffect(() => {
@@ -110,6 +110,10 @@ const StripeCreditCard = () => {
   }, [error]);
 
   if (!needsPayment) {
+    return null;
+  }
+
+  if (!!paymentData?.meta?.stripeRequest || !!paymentData?.meta) {
     return null;
   }
 

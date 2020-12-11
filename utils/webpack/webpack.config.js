@@ -149,7 +149,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -190,6 +190,7 @@ const config = {
     hot: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
     publicPath: '/',
+    disableHostCheck: true,
     contentBase: path.resolve(themePath, PUBLIC_FOLDER),
     host: process.env.optionsHost,
     port: process.env.optionsPort,

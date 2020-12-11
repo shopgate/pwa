@@ -25,6 +25,7 @@ type Props = {
   isDataReady: bool,
   orderReserveOnly?: bool,
   campaignAttribution: any,
+  order: any,
   fetchCart: () => Promise<any>,
   prepareCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
@@ -90,6 +91,7 @@ const CheckoutProvider = ({
   orderReserveOnly,
   campaignAttribution,
   clearCheckoutCampaign,
+  order: checkoutOrder,
 }: Props) => {
   const [paymentButton, setPaymentButton] = React.useState(null);
   const paymentHandlerRef = React.useRef(null);
@@ -321,6 +323,7 @@ const CheckoutProvider = ({
     billingAddress,
     pickupAddress,
     taxLines,
+    order: checkoutOrder,
     needsPayment,
     orderReserveOnly,
     fulfillmentSlot,
@@ -334,6 +337,7 @@ const CheckoutProvider = ({
     paymentButton,
     paymentData,
     paymentTransactions,
+    checkoutOrder,
     isLocked,
     isButtonLocked,
     needsPayment,

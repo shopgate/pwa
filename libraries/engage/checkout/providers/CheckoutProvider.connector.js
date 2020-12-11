@@ -42,6 +42,7 @@ function makeMapStateToProps() {
     taxLines: getCheckoutTaxLines(state),
     orderReserveOnly: getIsReserveOnly(state),
     campaignAttribution: getCampaignAttribution(state),
+    order: getCheckoutOrder(state),
   });
 }
 

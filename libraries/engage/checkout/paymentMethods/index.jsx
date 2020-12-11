@@ -139,9 +139,9 @@ const PaymentMethodProvider = ({
 
   // Change payment method.
   const handleChangePayment = useCallback(async (code, meta = null) => {
-    setActivePaymentMeta(meta);
-    setPaymentData({ meta });
     if (paymentMethodCode === code) {
+      setActivePaymentMeta(meta);
+      setPaymentData({ meta });
       return;
     }
     setLocked(true);
@@ -153,6 +153,8 @@ const PaymentMethodProvider = ({
       }],
     });
     await fetchOrder();
+    setActivePaymentMeta(meta);
+    setPaymentData({ meta });
     setLocked(false);
   }, [setPaymentData, paymentMethodCode, setLocked, updateOrder, fetchOrder]);
 
@@ -173,41 +175,31 @@ const PaymentMethodProvider = ({
   const { provider: Provider, content: Content } = paymentImpl || {};
   return (
     <Context.Provider value={paymentMethodApi}>
-      {availablePaymentMethods?.length > 1 ? (
-        <div className={styles.section}>
-          <h3 className={styles.headline}>
-            {i18n.text('checkout.payment.title')}
-          </h3>
-          <div className={styles.buttons}>
-            {availablePaymentMethods.map(method => (
-              <method.button
-                key={method.internalCode}
-                settings={method.settings}
-                onChange={meta => handleChangePayment(method.internalCode, meta)}
-                active={method.internalCode === paymentMethodCode}
-                activePaymentMeta={activePaymentMeta}
-              />
-            ))}
-          </div>
-          {paymentImpl ? (
-            <Provider
-              context={Context}
-              data={paymentData}
+      <div className={styles.section}>
+        <h3 className={styles.headline}>
+          {i18n.text('checkout.payment.title')}
+        </h3>
+        <div className={styles.buttons}>
+          {availablePaymentMethods.map(method => (
+            <method.button
+              key={method.internalCode}
+              settings={method.settings}
+              onChange={meta => handleChangePayment(method.internalCode, meta)}
+              active={method.internalCode === paymentMethodCode}
               activePaymentMeta={activePaymentMeta}
-            >
-              <Content />
-            </Provider>
-          ) : null}
+            />
+          ))}
         </div>
-      ) : (
-        <Provider
-          context={Context}
-          data={paymentData}
-          activePaymentMeta={activePaymentMeta}
-        >
-          <Content />
-        </Provider>
-      )}
+        {paymentImpl ? (
+          <Provider
+            context={Context}
+            data={paymentData}
+            activePaymentMeta={activePaymentMeta}
+          >
+            <Content />
+          </Provider>
+        ) : null}
+      </div>
     </Context.Provider>
   );
 };
