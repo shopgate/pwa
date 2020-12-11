@@ -32,7 +32,7 @@ const triggerStripeRequest = (stripe, req, order, activeTransaction) =>
     const intent = activeTransaction?.checkoutParams?.paymentIntent;
     req.update({
       total: {
-        amount: order.total * 100,
+        amount: Math.round(order.total * 100),
         label: 'Checkout',
       },
     });

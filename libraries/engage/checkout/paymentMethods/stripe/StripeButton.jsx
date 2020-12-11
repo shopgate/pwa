@@ -46,7 +46,7 @@ const StripeButton = ({
         currency: order.currencyCode.toLowerCase(),
         total: {
           label: 'Checkout',
-          amount: order.total * 100,
+          amount: Math.round(order.total * 100),
         },
       });
       const availability = await req.canMakePayment();
