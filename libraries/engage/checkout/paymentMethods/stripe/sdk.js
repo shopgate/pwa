@@ -2,6 +2,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 let resolve;
 let reject;
+let stripe;
 export const promise = new Promise((res, rej) => {
   resolve = res;
   reject = rej;
@@ -22,6 +23,7 @@ export const loadSdk = (publishableKey) => {
   const fn = async () => {
     try {
       const stripeObject = await loadStripe(publishableKey);
+      stripe = stripeObject;
       resolve(stripeObject);
       return stripeObject;
     } catch (err) {
@@ -31,3 +33,9 @@ export const loadSdk = (publishableKey) => {
   };
   return fn();
 };
+
+/**
+ * Returns the sdk
+ * @returns {Object}
+ * */
+export const getSdk = () => stripe;

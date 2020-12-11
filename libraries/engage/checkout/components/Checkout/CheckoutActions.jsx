@@ -28,6 +28,16 @@ const Actions = () => {
     isButtonLocked,
   } = useCheckoutContext();
 
+  const originalButton = (
+    <RippleButton
+      type="secondary"
+      onClick={handleSubmitOrder}
+      disabled={isButtonLocked}
+    >
+      {i18n.text('checkout.submit_order')}
+    </RippleButton>
+  );
+
   return (
     <SurroundPortals portalName={CHECKOUT_ACTIONS}>
       <div className={styles.root}>
@@ -36,16 +46,10 @@ const Actions = () => {
             onSubmit={handleSubmitOrder}
             onValidate={handleValidation}
             disabled={isButtonLocked}
-          />
-        ) : (
-          <RippleButton
-            type="secondary"
-            onClick={handleSubmitOrder}
-            disabled={isButtonLocked}
           >
-            {i18n.text('checkout.submit_order')}
-          </RippleButton>
-        )}
+            {originalButton}
+          </PaymentButton>
+        ) : originalButton}
         <SupplementalContent />
       </div>
     </SurroundPortals>
