@@ -391,12 +391,12 @@
     "errors": {
       "item": {
         "shopgate.cart.updateProducts": {
-          "1001": "Dieses Produkt ist derzeit nicht auf Lager."
+          "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar."
         },
         "shopgate.cart.addProducts": {
-          "1001": "Dieses Produkt ist derzeit nicht auf Lager."
+          "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar."
         },
-        "1001": "Derzeit nicht auf Lager.",
+        "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar.",
         "generic": "Bei diesem Produkt ist ein unerwarteter Fehler aufgetreten.",
         "insufficientstock": "Derzeit nicht auf Lager."
       },

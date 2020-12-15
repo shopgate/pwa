@@ -384,12 +384,12 @@
     "errors": {
       "item": {
         "shopgate.cart.updateProducts": {
-          "1001": "This product is currently out of stock."
+          "1001": "The requested quantity is not available."
         },
         "shopgate.cart.addProducts": {
-          "1001": "This product is currently out of stock."
+          "1001": "The requested quantity is not available."
         },
-        "1001": "Currently out of stock.",
+        "1001": "The requested quantity is not available.",
         "generic": "An unexpected error occurred with this item.",
         "insufficientstock": "Currently out of stock."
       },
