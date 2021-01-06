@@ -7,9 +7,10 @@ let renderQueue = [];
 /**
  * Asynchronously loads the javascript paypal sdk
  * @param {Object} settings Payment method settings
+ * @param {Object} order The active order
  * @returns {Promise}
  * */
-export const loadWebSdk = settings => new Promise((resolve, reject) => {
+export const loadWebSdk = (settings, order) => new Promise((resolve, reject) => {
   if (document.querySelector(`#${SDK_ID}`)) {
     resolve();
     return;
@@ -30,6 +31,7 @@ export const loadWebSdk = settings => new Promise((resolve, reject) => {
     'merchant-id': settings.merchantIdInPayPal,
     'disable-funding': 'credit,card',
     'integration-date': '2020-12-07',
+    currency: order.currencyCode,
     intent: 'authorize',
     components: 'buttons,funding-eligibility,marks',
     ...(settings.env === 'sandbox' ? {

@@ -30,24 +30,24 @@ const styles = {
 const PaypalButton = ({
   settings, onChange, activePaymentMeta: activeFundingSource, active,
 }) => {
-  const { setLocked } = useCheckoutContext();
+  const { setLocked, order } = useCheckoutContext();
   const paypal = usePaypal();
 
   // Initialize paypal sdk.
   useEffect(() => {
-    if (!settings) return;
+    if (!settings || !order) return;
     /** Async handler */
     const handler = async () => {
       setLocked(true);
       try {
-        await loadWebSdk(settings);
+        await loadWebSdk(settings, order);
       } catch (e) {
         //
       }
       setLocked(false);
     };
     handler();
-  }, [setLocked, settings]);
+  }, [order, setLocked, settings]);
 
   // Create paypal markers (just logic-less logos for each payment method).
   const marks = useMemo(() => {
