@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withWidgetSettings } from '@shopgate/engage/core';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
-import { withWidgetSettings } from '@shopgate/engage/core/hocs/withWidgetSettings';
 import RatingScale from './components/RatingScale';
 import FormButtons from './components/FormButtons';
 import {
