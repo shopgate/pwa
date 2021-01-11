@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { SurroundPortals } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
-import { PRODUCT_REVIEWS_ENTRY } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { PRODUCT_REVIEWS_ENTRY } from '@shopgate/engage/product';
 import Title from './components/Title';
 import Rating from './components/Rating';
 import Text from './components/Text';
