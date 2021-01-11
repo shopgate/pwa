@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.13.11](https://github.com/shopgate/pwa/compare/v6.13.10...v6.13.11) (2021-01-11)
+
+#### :rocket: Enhancement
+* [#1052](https://github.com/shopgate/pwa/pull/1052) Added new portal position for each review entry (product.reviews.entry) and new theme config `@shopgate/engage/reviews.prefillAuthor` ([@Carsten89](https://github.com/Carsten89))
+* [#1049](https://github.com/shopgate/pwa/pull/1049) Added tracking of favlist ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.13.10](https://github.com/shopgate/pwa/compare/v6.13.9...v6.13.10) (2020-12-02)
 
 #### :rocket: Enhancement
