@@ -39,6 +39,7 @@ export const IN_STORE_PICKUP_LABEL = 'locations.fulfillment.pick_up_in_store';
 export const ROPIS = 'ROPIS';
 export const QUICK_RESERVE = 'quickReserve';
 export const MULTI_LINE_RESERVE = 'multiLineReserve';
+export const DEFAULT_ROPE_FULFILLMENT_METHOD = 'defaultRopeFulfillmentMethod';
 
 export {
   STAGE_SELECT_STORE,

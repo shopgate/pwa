@@ -49,6 +49,18 @@ function FulfillmentSelector(props: Props) {
   const [selectedLocation, setSelectedLocation] = React.useState(location);
   const [isOpen, setIsOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    // Extend selected location with new product data
+    if (selectedLocation.code
+      && selectedLocation.code === location.code
+      && (!selectedLocation.productInventory && location.productInventory)) {
+      setSelectedLocation({
+        ...selectedLocation,
+        productInventory: location.productInventory,
+      });
+    }
+  }, [location, selectedLocation]);
+
   const usedLocation = selectedLocation || location;
 
   /**
