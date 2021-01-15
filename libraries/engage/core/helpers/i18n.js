@@ -12,6 +12,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
  * @typedef {Object} I18nHelpers
  * @property {Function} init - Inits locales.
  * @property {Function} text - Text translator.
+ * @property {Function} textWithDefault - Text translator with default supplier.
  * @property {Function} price - Price translator.
  * @property {Function} date - Date translator.
  * @property {Function} time - Time translator.
@@ -42,6 +43,10 @@ const I18n = () => {
       didInit = true;
 
       this.text = getTranslator(locales, lang);
+      this.textWithDefault = (key, defaultText) => {
+        const text = this.text(key);
+        return text === key ? defaultText : text;
+      };
       this.price = getPriceFormatter(currencyLocale || lang);
       this.date = getDateFormatter(lang);
       this.time = getTimeFormatter(lang);
@@ -53,6 +58,7 @@ const I18n = () => {
       this.ready = true;
     },
     text: notReadyCb,
+    textWithDefault: notReadyCb,
     price: notReadyCb,
     date: notReadyCb,
     time: notReadyCb,

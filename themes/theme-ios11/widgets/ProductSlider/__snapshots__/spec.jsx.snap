@@ -47,6 +47,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -85,6 +86,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -123,6 +125,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -161,6 +164,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -199,6 +203,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -237,6 +242,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -275,6 +281,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -313,6 +320,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -351,6 +359,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -389,6 +398,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -427,6 +437,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -465,6 +476,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -503,6 +515,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -541,6 +554,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -579,6 +593,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -617,6 +632,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -655,6 +671,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -693,6 +710,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -731,6 +749,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -769,6 +788,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -807,6 +827,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -845,6 +866,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -883,6 +905,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -921,6 +944,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -959,6 +983,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -997,6 +1022,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1035,6 +1061,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1073,6 +1100,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1111,6 +1139,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1149,6 +1178,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1218,6 +1248,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1256,6 +1287,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1294,6 +1326,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1332,6 +1365,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1370,6 +1404,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1446,6 +1481,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1484,6 +1520,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1522,6 +1559,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1560,6 +1598,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1598,6 +1637,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1667,6 +1707,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1705,6 +1746,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1743,6 +1785,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1781,6 +1824,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [
@@ -1819,6 +1863,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": "http://placekitten.com",
               "featuredImageUrl": "http://placekitten.com/300/300",
               "id": "1234",
               "liveshoppings": Array [

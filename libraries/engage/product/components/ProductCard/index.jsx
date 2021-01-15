@@ -14,6 +14,7 @@ import {
 } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
 import ProductGridPrice from '../ProductGridPrice';
+import { getProductImageSettings } from '../../helpers';
 import styles from './style';
 
 const location = 'productCard';
@@ -33,6 +34,8 @@ function ProductCard(props) {
     product, hidePrice, hideRating, hideName, titleRows,
   } = props;
 
+  const { ListImage: gridResolutions } = getProductImageSettings();
+
   return (
     <Link
       tagName="a"
@@ -47,7 +50,12 @@ function ProductCard(props) {
           url={product.featuredMedia.url}
           altText={product.featuredMedia.altText}
         />
-        : <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+        : <ProductImage
+          src={product.featuredImageBaseUrl}
+          resolutions={gridResolutions}
+          alt={product.name}
+          itemProp="image"
+        />
       }
       {!!(!hidePrice && product.price.discount) && (
         <div className={styles.badgeWrapper}>

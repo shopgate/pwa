@@ -3,6 +3,7 @@ import { createPageviewData } from '../helpers';
 import getPage, { makeGetRoutePageConfig } from './page';
 import getCart from './cart';
 import getSearch from './search';
+import getFavorites from './favorites';
 import { makeGetRouteCategory } from './category';
 import { makeGetRouteProduct } from './product';
 
@@ -23,14 +24,16 @@ export const makeGetTrackingData = () => {
   return createSelector(
     getPage,
     getCart,
+    getFavorites,
     getSearch,
     getRouteCategory,
     getRouteProduct,
     getRoutePageConfig,
     (state, props = {}) => props.pattern,
-    (page, cart, search, category, product, pageConfig, pattern) => createPageviewData({
+    (page, cart, favorites, search, category, product, pageConfig, pattern) => createPageviewData({
       page,
       cart,
+      favorites,
       search,
       category,
       product,

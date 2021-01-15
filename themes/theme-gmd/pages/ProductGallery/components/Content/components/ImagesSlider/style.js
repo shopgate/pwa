@@ -31,16 +31,12 @@ const slide = css({
 const sliderStyles = {
   container: css({
     height: '100%',
-  }).toString(),
-  indicator: css({
-    position: 'absolute',
-    bottom: [
-      '2px',
-      'calc(2px + var(--safe-area-inset-bottom))',
-    ],
-    left: '50%',
-    transform: 'translateX(-50%)',
-    zIndex: 10,
+    '& .swiper-pagination': {
+      bottom: [
+        '10px',
+        'calc(10px + var(--safe-area-inset-bottom)) !important',
+      ],
+    },
   }).toString(),
 };
 

@@ -112,6 +112,7 @@ add-remotes:
 
 
 sanity-check:
+		git --version
 		npm install --no-package-lock --no-save yargs && \
 			node ./scripts/check-release-version.js -v="$(RELEASE_VERSION)";
 
@@ -416,7 +417,8 @@ endef
 
 define update-subtree-remotes
 		-git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
-		git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		git reset --hard;
+		time git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
 
 endef
 
@@ -459,6 +461,19 @@ define finalize-release
 
 endef
 
+
+####################################################################################################
+# SUBTREES FORCE UPDATE
+####################################################################################################
+subtrees-force-push:
+	echo " FORCE push subtrees"
+	$(foreach remote, $(THEMES), $(call subtree-force-push, $(remote), themes/$(remote)))
+	$(foreach remote, $(EXTENSIONS), $(call subtree-force-push, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote)))
+
+define subtree-force-push
+		git push $(strip $(1)) `git subtree split --prefix=$(strip $(2)) master`:master --force
+
+endef
 
 
 ####################################################################################################

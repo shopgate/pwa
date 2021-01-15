@@ -5,10 +5,15 @@ import ApplyButton from './index';
 const clickMock = jest.fn();
 
 jest.mock('@shopgate/engage/core', () => ({
-  ...jest.requireActual('@shopgate/engage/core'),
   withWidgetSettings: function withWidgetSettings(Comp) {
     return props => (<Comp widgetSettings={{}} {...props} />);
   },
+}));
+jest.mock('@shopgate/engage/components', () => ({
+  I18n: {
+    Text: () => 'I18n.Text',
+  },
+  Button: () => 'Button',
 }));
 
 describe('Filter: <ApplyButton />', () => {

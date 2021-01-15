@@ -5,8 +5,13 @@ import { getAvailabilitySettings } from '../../../helpers';
 import { StockInfo } from '../StockInfo';
 
 jest.mock('../../../../core', () => ({
-  ...jest.requireActual('../../../../core'),
   getThemeSettings: jest.fn(),
+}));
+jest.mock('../../../../components', () => ({
+  SurroundPortals: ({ children }) => children,
+}));
+jest.mock('../../../constants', () => ({
+  PRODUCT_LOCATION_STOCK_INFO: 'product.location-stock-info',
 }));
 jest.mock('../../../helpers', () => ({
   getAvailabilitySettings: jest.fn(),

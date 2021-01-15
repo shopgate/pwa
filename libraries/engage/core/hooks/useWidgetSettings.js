@@ -10,6 +10,6 @@ import { getWidgetSettings } from '../config/getWidgetSettings';
  * @returns {Object}
  */
 export function useWidgetSettings(widgetId, index = 0) {
-  const { pattern: pagePattern } = useRoute();
+  const { pattern: pagePattern } = useRoute() || {};
   return getWidgetSettings(pagePattern, widgetId, index);
 }

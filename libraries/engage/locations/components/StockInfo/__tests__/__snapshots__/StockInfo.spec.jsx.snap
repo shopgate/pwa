@@ -22,60 +22,20 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
       }
     }
   >
-    <Portal
-      name="product.location-stock-info.before"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
-            "name": "Test Store",
-          },
-        }
-      }
-    />
-    <Portal
-      name="product.location-stock-info"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
-            "name": "Test Store",
-          },
-        }
-      }
+    <span
+      className="css-1604zsc css-nil"
     >
-      <span
-        className="css-1604zsc css-nil"
-      >
-        <StockInfoInventory
-          aboveMaxExtension="+"
-          availabilityText="demo_availability_text"
-          location={
-            Object {
-              "name": "Test Store",
-            }
-          }
-          maxNumberVisible={100}
-        />
-      </span>
-    </Portal>
-    <Portal
-      name="product.location-stock-info.after"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
+      <StockInfoInventory
+        aboveMaxExtension="+"
+        availabilityText="demo_availability_text"
+        location={
+          Object {
             "name": "Test Store",
-          },
+          }
         }
-      }
-    />
+        maxNumberVisible={100}
+      />
+    </span>
   </SurroundPortals>
 </StockInfo>
 `;
@@ -103,60 +63,20 @@ exports[`<StockInfo /> should render without store name 1`] = `
       }
     }
   >
-    <Portal
-      name="product.location-stock-info.before"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
-            "name": "Test Store",
-          },
-        }
-      }
-    />
-    <Portal
-      name="product.location-stock-info"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
-            "name": "Test Store",
-          },
-        }
-      }
+    <span
+      className="css-1604zsc css-nil"
     >
-      <span
-        className="css-1604zsc css-nil"
-      >
-        <StockInfoInventory
-          aboveMaxExtension="+"
-          availabilityText="demo_availability_text"
-          location={
-            Object {
-              "name": "Test Store",
-            }
-          }
-          maxNumberVisible={100}
-        />
-      </span>
-    </Portal>
-    <Portal
-      name="product.location-stock-info.after"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
+      <StockInfoInventory
+        aboveMaxExtension="+"
+        availabilityText="demo_availability_text"
+        location={
+          Object {
             "name": "Test Store",
-          },
+          }
         }
-      }
-    />
+        maxNumberVisible={100}
+      />
+    </span>
   </SurroundPortals>
 </StockInfo>
 `;
@@ -183,60 +103,20 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
       }
     }
   >
-    <Portal
-      name="product.location-stock-info.before"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
-            "name": "Test Store",
-          },
-        }
-      }
-    />
-    <Portal
-      name="product.location-stock-info"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
-            "name": "Test Store",
-          },
-        }
-      }
+    <span
+      className="css-1604zsc css-nil"
     >
-      <span
-        className="css-1604zsc css-nil"
-      >
-        <StockInfoInventory
-          aboveMaxExtension="+"
-          availabilityText="demo_availability_text"
-          location={
-            Object {
-              "name": "Test Store",
-            }
-          }
-          maxNumberVisible={100}
-        />
-      </span>
-    </Portal>
-    <Portal
-      name="product.location-stock-info.after"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": null,
-          "location": Object {
+      <StockInfoInventory
+        aboveMaxExtension="+"
+        availabilityText="demo_availability_text"
+        location={
+          Object {
             "name": "Test Store",
-          },
+          }
         }
-      }
-    />
+        maxNumberVisible={100}
+      />
+    </span>
   </SurroundPortals>
 </StockInfo>
 `;

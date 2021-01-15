@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Chip } from '@shopgate/engage/components';
-import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/engage/filter';
+import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
 import { i18n } from '@shopgate/engage/core';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
@@ -117,7 +117,7 @@ class FilterChips extends Component {
         }
         default:
           filter.value.forEach((value) => {
-            const filterFormatted = `${filter.label}: ${value.label}`;
+            const filterFormatted = `${translateFilterLabel(filter.id, filter.label)}: ${value.label}`;
             const removeLabel = i18n.text('filter.remove', { filter: filterFormatted });
             const editLabel = i18n.text('filter.edit', { filter: filterFormatted });
 

@@ -45,6 +45,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
       dispatch={[Function]}
       product={
         Object {
+          "featuredImageBaseUrl": null,
           "featuredImageUrl": null,
           "id": "PR0DUCTID",
           "name": "Product Name",
@@ -86,6 +87,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
           hideRating={false}
           product={
             Object {
+              "featuredImageBaseUrl": null,
               "featuredImageUrl": null,
               "id": "PR0DUCTID",
               "name": "Product Name",
@@ -138,6 +140,14 @@ exports[`<ProductCard /> should render as expected 1`] = `
                 <Component
                   alt="Product Name"
                   itemProp="image"
+                  resolutions={
+                    Array [
+                      Object {
+                        "height": 440,
+                        "width": 440,
+                      },
+                    ]
+                  }
                   src={null}
                 >
                   <ProductImage
@@ -152,11 +162,6 @@ exports[`<ProductCard /> should render as expected 1`] = `
                     ratio={null}
                     resolutions={
                       Array [
-                        Object {
-                          "blur": 2,
-                          "height": 50,
-                          "width": 50,
-                        },
                         Object {
                           "height": 440,
                           "width": 440,
@@ -319,7 +324,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                       role="text"
                     >
                       <div
-                        className="css-4s85e9"
+                        className="css-4s85e9 rating-stars-empty"
                       >
                         <div
                           className="css-kdb68h css-q4owmg"
@@ -503,7 +508,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-16y9zin"
+                        className="css-16y9zin rating-stars-filled"
                       >
                         <div
                           className="css-kdb68h css-q4owmg"
@@ -796,7 +801,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                       unitPriceMin={0}
                                     >
                                       <div
-                                        className="css-izofhs css-1ncyhu"
+                                        className="css-izofhs css-1ncyhu price"
                                         data-test-id="minPrice: 0 price: 5 currency: EUR"
                                       >
                                         <span
@@ -831,7 +836,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                       value={10}
                                     >
                                       <div
-                                        className="css-1sagvrb css-nil "
+                                        className="css-1sagvrb css-nil  price-striked"
                                         role="text"
                                       >
                                         <span
@@ -933,6 +938,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       dispatch={[Function]}
       product={
         Object {
+          "featuredImageBaseUrl": null,
           "featuredImageUrl": null,
           "id": "PR0DUCTID",
           "name": "Product Name",

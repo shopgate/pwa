@@ -317,6 +317,7 @@ export const createRootCategoryData = (rootCategory) => {
 export const createPageviewData = ({
   page = null,
   cart = null,
+  favorites = null,
   search = null,
   category = null,
   product = null,
@@ -338,6 +339,9 @@ export const createPageviewData = ({
       title,
     } : null,
     cart,
+    favouriteList: {
+      products: favorites,
+    },
     search,
     category,
     product,

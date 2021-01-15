@@ -10,6 +10,7 @@ import {
   PriceSlider,
   buildInitialFilters,
   buildUpdatedFilters,
+  translateFilterLabel,
 } from '@shopgate/engage/filter';
 import { CloseBar } from 'Components/AppBar/presets';
 import Selector from './components/Selector';
@@ -135,7 +136,7 @@ class FilterContent extends PureComponent {
     this.add(id, {
       id,
       type: filter.type,
-      label: filter.label,
+      label: translateFilterLabel(filter.id, filter.label),
       value: stateValue,
       ...(filter.source && { source: filter.source }),
     });
@@ -232,7 +233,7 @@ class FilterContent extends PureComponent {
             <Selector
               id={filter.id}
               key={filter.id}
-              label={filter.label}
+              label={translateFilterLabel(filter.id, filter.label)}
               values={filter.values}
               multi={filter.type === FILTER_TYPE_MULTISELECT}
               onChange={this.update}

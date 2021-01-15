@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import cloneDeep from 'lodash/cloneDeep';
 
 export const mockedRouterState = {
@@ -218,54 +219,13 @@ export const mockedPropertiesByProductId = {
 };
 
 export const mockedProductImagesBase = [
-  {
-    width: 440,
-    height: 440,
-    sources: [
-      'https://img-cdn.shopgate.com/a43fac2dx440',
-      'https://img-cdn.shopgate.com/b543f421x440',
-    ],
-  },
-  {
-    width: 1024,
-    height: 1024,
-    sources: [
-      'https://img-cdn.shopgate.com/a43fac2dx1024',
-      'https://img-cdn.shopgate.com/b543f421x1024',
-    ],
-  },
+  'https://img-cdn.shopgate.com/a43fac2d',
+  'https://img-cdn.shopgate.com/b543f421',
 ];
 
 export const mockedProductImagesVariant = [
-  {
-    width: 440,
-    height: 440,
-    sources: [
-      'https://img-cdn.shopgate.com/variant-a43fac2dx440',
-      'https://img-cdn.shopgate.com/variant-b543f421x440',
-    ],
-  },
-  {
-    width: 1024,
-    height: 1024,
-    sources: [
-      'https://img-cdn.shopgate.com/variant-a43fac2dx1024',
-      'https://img-cdn.shopgate.com/variant-b543f421x1024',
-    ],
-  },
-];
-
-export const mockedProductImagesVariantWithoutSources = [
-  {
-    width: 440,
-    height: 440,
-    sources: [],
-  },
-  {
-    width: 1024,
-    height: 1024,
-    sources: [],
-  },
+  'https://img-cdn.shopgate.com/a43fac2d',
+  'https://img-cdn.shopgate.com/b543f421',
 ];
 
 export const mockedImagesByProductId = {
@@ -279,7 +239,7 @@ export const mockedImagesByProductId = {
   },
   product_3: {
     isFetching: false,
-    images: mockedProductImagesVariantWithoutSources,
+    images: [],
   },
   product_5: {
     isFetching: true,
@@ -379,3 +339,5 @@ delete mockedVariantStateVariantDataFetching.product.productsById.product_3;
 export const mockedVariantStateVariantsFetching = cloneDeep(mockedVariantStateComplete);
 delete mockedVariantStateVariantsFetching.product.productsById.product_2;
 delete mockedVariantStateVariantsFetching.product.productsById.product_3;
+
+/* eslint-enable camelcase */

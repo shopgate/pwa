@@ -9,15 +9,17 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   requestHash={null}
   totalProductCount={null}
 >
-  <Layout>
+  <Layout
+    columns={2}
+  >
     <Grid
-      className="css-a9oap6"
+      className="css-1ctgdf4"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-a9oap6 css-h7r55a css-u7q1iu"
+        className="css-1ctgdf4 css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
       />
     </Grid>
@@ -25,7 +27,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 </ProductGrid>
 `;
 
-exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
+exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
 <ProductGrid
   flags={null}
   handleGetProducts={[Function]}
@@ -36,7 +38,6 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
 >
   <Consumer>
     <InfiniteContainer
-      columns={2}
       containerRef={
         Object {
           "current": null,
@@ -55,21 +56,25 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
     >
       <div>
         <div>
-          <Grid
-            className="css-a9oap6"
-            component="ul"
-            data-test-id="productGrid"
-            wrap={true}
+          <Layout
+            columns={2}
           >
-            <ul
-              className="css-a9oap6 css-h7r55a css-u7q1iu"
+            <Grid
+              className="css-1ctgdf4"
+              component="ul"
               data-test-id="productGrid"
-            />
-          </Grid>
+              wrap={true}
+            >
+              <ul
+                className="css-1ctgdf4 css-h7r55a css-u7q1iu"
+                data-test-id="productGrid"
+              />
+            </Grid>
+          </Layout>
         </div>
         <LoadingIndicator>
           <div
-            className="css-1aid7je"
+            className="css-1aid7je loading-indicator"
           >
             <IndicatorCircle
               color="#5ccee3"

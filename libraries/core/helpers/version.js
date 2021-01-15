@@ -14,13 +14,13 @@ let versions = null;
 let requesting = false;
 
 const md = new MobileDetect(navigator.userAgent);
-const isAndroid = md.is('AndroidOS');
+export const isAndroidOs = md.is('AndroidOS');
 const fullVersion = typeof detector === 'object' && detector.os ? detector.os.fullVersion : null;
 
 // Eslint doesn't allow to use one liner here.
 let model = null;
 if (fullVersion) {
-  model = isAndroid ? 'Android' : `iPhone${fullVersion}`;
+  model = isAndroidOs ? 'Android' : `iPhone${fullVersion}`;
 }
 
 export const defaultClientInformation = {
@@ -31,7 +31,7 @@ export const defaultClientInformation = {
   device: {
     type: (!md.tablet() ? 'phone' : 'tablet'),
     os: {
-      platform: isAndroid ? PLATFORM_ANDROID : PLATFORM_IOS,
+      platform: isAndroidOs ? PLATFORM_ANDROID : PLATFORM_IOS,
       ver: fullVersion,
     },
     model,

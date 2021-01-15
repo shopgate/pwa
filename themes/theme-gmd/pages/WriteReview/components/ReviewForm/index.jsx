@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withWidgetSettings } from '@shopgate/engage/core';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import RatingScale from './components/RatingScale';
@@ -32,6 +33,8 @@ class ReviewForm extends PureComponent {
     authorName: PropTypes.string,
     productId: PropTypes.string,
     review: PropTypes.shape(),
+    // eslint-disable-next-line react/no-unused-prop-types
+    widgetSettings: PropTypes.shape(),
   };
 
   static contextTypes = {
@@ -42,6 +45,9 @@ class ReviewForm extends PureComponent {
     authorName: '',
     productId: null,
     review: {},
+    widgetSettings: {
+      prefillAuthor: true,
+    },
   };
 
   /**
@@ -62,13 +68,17 @@ class ReviewForm extends PureComponent {
    * Update state with next props.
    * @param {Object} nextProps The next props.
    */
-  UNSAFE_componentWillReceiveProps({ productId, review, authorName }) {
+  UNSAFE_componentWillReceiveProps({
+    productId, review, authorName, widgetSettings,
+  }) {
     const author = review[FIELD_NAME_AUTHOR];
+
+    const prefilledAuthor = widgetSettings.prefillAuthor !== false ? authorName : '';
 
     this.setState(prevState => ({
       productId,
       ...review,
-      ...(!prevState[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || authorName) }),
+      ...(!prevState[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || prefilledAuthor) }),
     }));
   }
 
@@ -272,4 +282,4 @@ class ReviewForm extends PureComponent {
   }
 }
 
-export default connect(ReviewForm);
+export default withWidgetSettings(connect(ReviewForm), '@shopgate/engage/reviews');

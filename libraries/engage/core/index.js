@@ -81,13 +81,7 @@ export * from './constants/geolocationRequest';
 export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
 
 // Helpers
-export {
-  logger,
-  ajaxUrl,
-  hasSGJavaScriptBridge,
-  useBrowserConnector,
-  logDeprecationMessage,
-} from '@shopgate/pwa-core/helpers';
+export * from '@shopgate/pwa-core/helpers';
 export { default as logGroup } from '@shopgate/pwa-core/helpers/logGroup';
 export * from '@shopgate/pwa-core/helpers/version';
 export * from '@shopgate/pwa-common/helpers/data';
@@ -251,6 +245,7 @@ export { usePageSettings } from './hooks/usePageSettings';
 export { useWidgetConfig } from './hooks/useWidgetConfig';
 export { useWidgetSettings } from './hooks/useWidgetSettings';
 export { useWidgetStyles } from './hooks/useWidgetStyles';
+export * from './hooks/html';
 
 // --------------- HOCs --------------- //
 
@@ -279,6 +274,7 @@ export { getWidgetSettings } from './config/getWidgetSettings';
 export { i18n, getWeekDaysOrder } from './helpers/i18n';
 export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
+export { getFullImageSource } from './helpers/getFullImageSource';
 export { isIOSTheme } from './helpers/isIOSTheme';
 export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';
 

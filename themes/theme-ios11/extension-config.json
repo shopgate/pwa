@@ -1,5 +1,5 @@
 {
-  "version": "6.12.0-rc.1",
+  "version": "6.13.11",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -198,10 +198,40 @@
       "destination": "frontend",
       "params": {
         "type": "json",
-        "label": "The theme configuration for Engage GMD theme."
+        "label": "The theme configuration for Engage IOS theme."
       },
       "default": {
         "settings": {
+          "AppImages": {
+            "quality": 75,
+            "fillColor": "FFFFFF,1",
+            "HeroImage": [
+                {
+                  "width": 440,
+                  "height": 440
+                },
+                {
+                  "width": 1024,
+                  "height": 1024
+                }
+              ],
+            "GalleryImage": [
+              {
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "width": 2048,
+                "height": 2048
+              }
+              ],
+            "ListImage": [
+              {
+                "width": 440,
+                "height": 440
+              }
+            ]
+          },
           "@shopgate/engage/components/AppBar": {
             "background": "#fff",
             "color": "#000",
@@ -214,11 +244,17 @@
             "buttonTextColor": "$.colors.accent",
             "buttonTextColorDisabled": "$.colors.shade4"
           },
+          "@shopgate/engage/components/TabBar": {
+            "showLabels": true
+          },
           "@shopgate/engage/product/ProductGrid": {
             "columns": 2
           },
           "@shopgate/engage/product/ProductSlider": {
             "slidesPerView": 2.3
+          },
+          "@shopgate/engage/reviews": {
+            "prefillAuthor": true
           }
         },
         "typography": {

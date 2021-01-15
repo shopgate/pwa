@@ -27,10 +27,9 @@ const ProductGrid = ({
 
   if (!infiniteLoad) {
     return (
-      <Layout>
+      <Layout columns={columns}>
         {products.map(product => (
           <Iterator
-            columns={columns}
             display={flags}
             id={product.id}
             key={product.id}
@@ -46,9 +45,13 @@ const ProductGrid = ({
       {({ getContentRef }) => (
         <InfiniteContainer
           containerRef={getContentRef()}
-          wrapper={Layout}
+          wrapper={props => (
+            <Layout
+              columns={columns}
+              {...props}
+            />
+          )}
           iterator={Iterator}
-          columns={columns}
           loader={handleGetProducts}
           items={products}
           loadingIndicator={<LoadingIndicator />}

@@ -1,5 +1,109 @@
 # Changelog
 
+## [v6.13.11](https://github.com/shopgate/pwa/compare/v6.13.10...v6.13.11) (2021-01-13)
+
+#### :rocket: Enhancement
+* [#1052](https://github.com/shopgate/pwa/pull/1052) Added new portal position for each review entry (product.reviews.entry) and new theme config `@shopgate/engage/reviews.prefillAuthor` ([@Carsten89](https://github.com/Carsten89))
+* [#1049](https://github.com/shopgate/pwa/pull/1049) Added tracking of favlist ([@Carsten89](https://github.com/Carsten89))
+
+
+## [v6.13.10](https://github.com/shopgate/pwa/compare/v6.13.9...v6.13.10) (2020-12-02)
+
+#### :rocket: Enhancement
+* [#1042](https://github.com/shopgate/pwa/pull/1042) Make possible to configure the loading indicator ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1048](https://github.com/shopgate/pwa/pull/1048) Fixed wrong aligned cart button in AddToCartBar ([@Carsten89](https://github.com/Carsten89))
+* [#1047](https://github.com/shopgate/pwa/pull/1047) Translate filter labels ([@alexbridge](https://github.com/alexbridge))
+* [#1041](https://github.com/shopgate/pwa/pull/1041) Fixed slider bullets on iPhone ([@alexbridge](https://github.com/alexbridge))
+* [#1040](https://github.com/shopgate/pwa/pull/1040) Switch images on product details page correctly, use progressive gallery load ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.13.9](https://github.com/shopgate/pwa/compare/v6.13.7...v6.13.9) (2020-11-04)
+
+#### :rocket: Enhancement
+* [#1038](https://github.com/shopgate/pwa/pull/1038) Added classnames to rating stars ([@Carsten89](https://github.com/Carsten89))
+
+
+## [v6.13.7](https://github.com/shopgate/pwa/compare/v6.13.6...v6.13.7) (2020-11-04)
+
+#### :rocket: Enhancement
+* [#1035](https://github.com/shopgate/pwa/pull/1035) Added classname for price and ratingstar elements ([@Carsten89](https://github.com/Carsten89))
+* [#1037](https://github.com/shopgate/pwa/pull/1037) Show variant product instead of parent if available ([@Carsten89](https://github.com/Carsten89))
+* [#1036](https://github.com/shopgate/pwa/pull/1036) Show low resolution images on product gallery page ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.13.6](https://github.com/shopgate/pwa/compare/v6.13.5...v6.13.6) (2020-09-28)
+
+#### :rocket: Enhancement
+* [#1033](https://github.com/shopgate/pwa/pull/1033) Add portal around filter bar sort options ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1034](https://github.com/shopgate/pwa/pull/1034) Open gallery for products with one image again ([@Carsten89](https://github.com/Carsten89))
+* [#1030](https://github.com/shopgate/pwa/pull/1030) Fix product ids widget limit and pagination ([@alexbridge](https://github.com/alexbridge))
+* [#1025](https://github.com/shopgate/pwa/pull/1025) Changed default fillColor for product images ([@Carsten89](https://github.com/Carsten89))
+
+
+## [v6.13.5](https://github.com/shopgate/pwa/compare/v6.13.4...v6.13.5) (2020-07-30)
+
+#### :rocket: Enhancement
+* [#1023](https://github.com/shopgate/pwa/pull/1023) Make sure SuggestionList Portal has children ([@Carsten89](https://github.com/Carsten89))
+* [#1021](https://github.com/shopgate/pwa/pull/1021) Added more props to search suggestion portals ([@Carsten89](https://github.com/Carsten89))
+
+
+## [v6.13.4](https://github.com/shopgate/pwa/compare/v6.13.3...v6.13.4) (2020-06-30)
+
+#### :nail_care: Polish
+* [#1017](https://github.com/shopgate/pwa/pull/1017) Change order of content on "Mehr" page of ios theme ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.13.3](https://github.com/shopgate/pwa/compare/v6.13.2...v6.13.3) (2020-06-18)
+
+#### :rocket: Enhancement
+* [#1015](https://github.com/shopgate/pwa/pull/1015) Add more details for intersected elements by intersection visibility component ([@alexbridge](https://github.com/alexbridge))
+* [#1013](https://github.com/shopgate/pwa/pull/1013) AddToCart button from ui-shared checks for success before show checkmark ([@Carsten89](https://github.com/Carsten89))
+* [#1012](https://github.com/shopgate/pwa/pull/1012) Make iOS tabbar labels visibility configurable ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1014](https://github.com/shopgate/pwa/pull/1014) Set correct image for pdp background ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.13.0](https://github.com/shopgate/pwa/compare/v6.12.3...v6.13.0) (2020-04-29)
+
+#### :rocket: Enhancement
+* [#1007](https://github.com/shopgate/pwa/pull/1007) Use css grid for themes Product Grid with multiple columns ([@alexbridge](https://github.com/alexbridge))
+* [#999](https://github.com/shopgate/pwa/pull/999) Make image ratio and sizes configurable ([@Carsten89](https://github.com/Carsten89))
+
+#### :bug: Bug Fix
+* [#1004](https://github.com/shopgate/pwa/pull/1004) Fix products grid card dimensions ([@alexbridge](https://github.com/alexbridge))
+* [#983](https://github.com/shopgate/pwa/pull/983) FIXED: The FavoritesList items now show the base price. ([@devbucket](https://github.com/devbucket))
+* [#974](https://github.com/shopgate/pwa/pull/974) Improve shouldFetchData redux helper ([@alexbridge](https://github.com/alexbridge))
+* [#968](https://github.com/shopgate/pwa/pull/968) Removed semi-automated and incorrect validation error handling in the From Builder. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#964](https://github.com/shopgate/pwa/pull/964) Fixed Form Builder element visibility ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
+## [v6.12.3](https://github.com/shopgate/pwa/compare/v6.12.1...v6.12.3) (2020-04-29)
+
+#### :bug: Bug Fix
+* [#1006](https://github.com/shopgate/pwa/pull/1006) Use css grid for themes Product Grid ([@alexbridge](https://github.com/alexbridge))
+* [#1002](https://github.com/shopgate/pwa/pull/1002) Fix products grid card dimensions ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.12.2](https://github.com/shopgate/pwa/compare/v6.12.1...v6.12.2) (2020-04-24)
+
+#### :bug: Bug Fix
+* [#1002](https://github.com/shopgate/pwa/pull/1002) Fix products grid card dimensions ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.12.1](https://github.com/shopgate/pwa/compare/v6.12.0...v6.12.1) (2020-03-24)
+
+#### :rocket: Enhancement
+* [#943](https://github.com/shopgate/pwa/pull/943) Making hardcoded colors configurable ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#973](https://github.com/shopgate/pwa/pull/973) Fix cart item messages with custom styles ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement

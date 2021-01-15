@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -16,11 +16,13 @@ class SuggestionList extends Component {
   static propTypes = {
     onClick: PropTypes.func.isRequired,
     fetching: PropTypes.bool,
+    searchPhrase: PropTypes.string,
     suggestions: PropTypes.arrayOf(PropTypes.string),
   };
 
   static defaultProps = {
     fetching: false,
+    searchPhrase: null,
     suggestions: [],
   };
 
@@ -29,17 +31,29 @@ class SuggestionList extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return nextProps.fetching === false && nextProps.suggestions;
+    return (nextProps.fetching === false && nextProps.suggestions) ||
+      (nextProps.searchPhrase !== this.props.searchPhrase);
   }
 
   /**
    * @return {JSX}
    */
   render() {
-    const { onClick, suggestions } = this.props;
+    const { onClick, suggestions, searchPhrase } = this.props;
 
     if (!suggestions) {
-      return null;
+      return (
+        <SurroundPortals
+          portalName={SEARCH_SUGGESTIONS}
+          portalProps={{
+            onClick,
+            suggestions,
+            searchPhrase,
+          }}
+        >
+          <Fragment />
+        </SurroundPortals>
+      );
     }
 
     return (
@@ -48,6 +62,7 @@ class SuggestionList extends Component {
         portalProps={{
           onClick,
           suggestions,
+          searchPhrase,
         }}
       >
         <div className={styles.list}>

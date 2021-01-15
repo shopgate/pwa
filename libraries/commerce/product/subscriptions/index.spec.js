@@ -7,7 +7,6 @@ import subscription from './index';
 import errorProduct from '../action-creators/errorProduct';
 import fetchProductImages from '../actions/fetchProductImages';
 import { galleryWillEnter$, productRelationsReceived$ } from '../streams';
-import { productImageFormats } from '../collections';
 
 const mockedGetProductsById = jest.fn();
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => jest.fn());
@@ -38,8 +37,6 @@ describe('Product subscription', () => {
     });
 
     it('should dispatch fetchProductImages when called', () => {
-      const formats = [{ height: 1024, width: 1024 }];
-      productImageFormats.set('GROUP', formats);
       const [stream, callback] = galleryWillEnter$Subscription;
       expect(stream === galleryWillEnter$).toBe(true);
 
@@ -56,7 +53,7 @@ describe('Product subscription', () => {
         action,
       });
 
-      expect(fetchProductImages).toHaveBeenCalledWith('1337', formats);
+      expect(fetchProductImages).toHaveBeenCalledWith('1337');
     });
   });
 

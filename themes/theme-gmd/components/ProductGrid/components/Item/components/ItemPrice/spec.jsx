@@ -5,6 +5,7 @@ import ItemPrice from './index';
 jest.mock('@shopgate/engage/product', () => ({
   ProductGridPrice: () => null,
 }));
+
 const props = {
   productId: '1234',
   price: {},

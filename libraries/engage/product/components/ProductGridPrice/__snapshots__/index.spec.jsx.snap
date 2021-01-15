@@ -54,7 +54,7 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
               unitPriceMin={10.95}
             >
               <div
-                className="css-izofhs css-1ncyhu"
+                className="css-izofhs css-1ncyhu price"
                 data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
               >
                 <span
@@ -105,7 +105,7 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
               value={22.95}
             >
               <div
-                className="css-1sagvrb css-nil "
+                className="css-1sagvrb css-nil  price-striked"
                 role="text"
               >
                 <span
@@ -220,7 +220,7 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
               unitPriceMin={10.95}
             >
               <div
-                className="css-izofhs css-1ncyhu"
+                className="css-izofhs css-1ncyhu price"
                 data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
               >
                 <span
@@ -271,7 +271,7 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
               value={22.95}
             >
               <div
-                className="css-1sagvrb css-nil "
+                className="css-1sagvrb css-nil  price-striked"
                 role="text"
               >
                 <span
@@ -351,7 +351,7 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
               unitPriceMin={22.95}
             >
               <div
-                className="css-izofhs"
+                className="css-izofhs price"
                 data-test-id="minPrice: 22.95 price: 22.95 currency: EUR"
               >
                 <span
