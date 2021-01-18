@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   MapPriceHint,
   OrderQuantityHint,
-  EffectivityDates,
   Swatches,
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_ALERT,
@@ -48,10 +47,6 @@ const ItemDetails = ({ product, display }) => {
         It should only be used for approved BETA Client Projects
       */}
       <OrderQuantityHint productId={productId} />
-
-      {/* This feature is currently in BETA testing.
-      It should only be used for approved BETA Client Projects */}
-      <EffectivityDates productId={productId} />
 
       <Availability
         state={!stock || stock.orderable

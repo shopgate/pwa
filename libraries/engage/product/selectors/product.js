@@ -190,34 +190,6 @@ export function makeGetProductProperties() {
 }
 
 /**
- * Creates the selector to get a product's effectivity dates.
- * @returns {Function}
- */
-export function makeGetProductEffectivityDates() {
-  return createSelector(
-    getProduct,
-    (product) => {
-      return null;
-
-      /* eslint-disable no-unreachable */
-      if (!product) {
-        return null;
-      }
-
-      const { startDate = null, endDate = null } = product;
-      return startDate || endDate
-        ? {
-          startDate,
-          endDate,
-        }
-        : null;
-
-      /* eslint-enable no-unreachable */
-    }
-  );
-}
-
-/**
  * Creates a selector to return product characteristics.
  * @returns {Function}
  */

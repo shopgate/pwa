@@ -27,7 +27,6 @@ jest.mock('@shopgate/engage/core', () => ({
 }));
 jest.mock('@shopgate/engage/product', () => ({
   productImageFormats: new Map(),
-  enableRedirectHandler: jest.fn(),
   setDefaultProductFetchParams: jest.fn(),
   ITEM_PATH: 'ITEM_PATH',
 }));

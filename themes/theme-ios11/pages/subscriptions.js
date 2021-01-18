@@ -16,7 +16,6 @@ import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/
 import {
   ITEM_PATH,
   productImageFormats,
-  enableRedirectHandler,
   setDefaultProductFetchParams,
 } from '@shopgate/engage/product';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
@@ -67,12 +66,6 @@ export default function app(subscribe) {
 
     productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, PRODUCT_SLIDER_IMAGE_FORMATS);
     productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, GALLERY_SLIDER_IMAGE_FORMATS);
-
-    /**
-     * This feature is currently in BETA testing.
-     * It should only be used for approved BETA Client Projects
-     */
-    enableRedirectHandler();
 
     /**
      * This feature is currently in BETA testing.
