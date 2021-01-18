@@ -2,8 +2,10 @@
 import * as React from 'react';
 import noop from 'lodash/noop';
 import { I18n, ContextMenu } from '@shopgate/engage/components';
+import connect from './CartContextMenuItemChangeFulfillment.connector';
 
 type Props = {
+  shopFulfillmentMethods?: Array;
   onClick?: Function;
   closeMenu?: Function;
 }
@@ -14,17 +16,25 @@ type Props = {
  * @property {Function} props.closeMenu closeMenu
  * @returns {JSX}
  */
-export const CartContextMenuItemChangeFulfillment = (props: Props) => {
-  const { onClick, closeMenu } = props;
+const MenuItem = connect((props: Props) => {
+  const { shopFulfillmentMethods, onClick, closeMenu } = props;
+
+  if (!shopFulfillmentMethods || !shopFulfillmentMethods.length) {
+    return null;
+  }
 
   return (
     <ContextMenu.Item onClick={onClick} closeMenu={closeMenu}>
       <I18n.Text string="locations.change_fulfillment_method" />
     </ContextMenu.Item>
   );
-};
+});
 
-CartContextMenuItemChangeFulfillment.defaultProps = {
+MenuItem.defaultProps = {
   onClick: noop,
   closeMenu: noop,
+  shopFulfillmentMethods: null,
 };
+
+export const CartContextMenuItemChangeFulfillment = connect(MenuItem);
+
