@@ -5,7 +5,6 @@ import ItemDetails from './index';
 jest.mock('@shopgate/engage/product', () => ({
   MapPriceHint: () => null,
   OrderQuantityHint: () => null,
-  EffectivityDates: () => null,
   Swatches: () => null,
   getProductRoute: () => '',
   AVAILABILITY_STATE_OK: 'AVAILABILITY_STATE_OK',
