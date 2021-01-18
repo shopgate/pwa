@@ -68,6 +68,7 @@ class InfiniteContainer extends Component {
     const { state: { offset = 0 } = {} } = context || {};
 
     this.state = {
+      itemCount: items.length,
       offset: [offset, currentOffset],
       // A state flag that will be true as long as we await more items.
       // The loading indicator will be shown accordingly.
@@ -128,7 +129,15 @@ class InfiniteContainer extends Component {
       return;
     }
 
-    finalize();
+    if (nextProps.items.length >= this.state.itemCount) {
+      this.setState({
+        itemCount: nextProps.items.length,
+      }, finalize());
+    } else {
+      this.resetComponent(() => {
+        finalize();
+      });
+    }
   }
 
   /**
@@ -252,6 +261,7 @@ class InfiniteContainer extends Component {
     this.setState({
       offset: [0, this.props.limit],
       awaitingItems: true,
+      itemCount: 0,
     }, () => {
       this.unbindEvents();
       this.bindEvents();

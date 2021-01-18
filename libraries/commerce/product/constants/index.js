@@ -4,7 +4,7 @@ export const ITEM_GALLERY_PATTERN = `${ITEM_PATH}/:productId/gallery/:slide`;
 export const ITEM_REVIEWS_PATTERN = `${ITEM_PATH}/:productId/reviews`;
 export const ITEM_WRITE_REVIEW_PATTERN = `${ITEM_PATH}/:productId/write_review`;
 
-export const PRODUCT_LIFETIME = 3600000; // 1 hour in milliseconds
+export const PRODUCT_LIFETIME = 59000; // 59 seconds in milliseconds
 
 // PRODUCT
 export const REQUEST_PRODUCT = 'REQUEST_PRODUCT';
@@ -47,6 +47,8 @@ export const ERROR_PRODUCT_MEDIA = 'ERROR_PRODUCT_MEDIA';
 export const RESET_CURRENT_PRODUCT = 'RESET_CURRENT_PRODUCT';
 
 export const EXPIRE_PRODUCT_BY_ID = 'EXPIRE_PRODUCT_BY_ID';
+export const EXPIRE_PRODUCTS_BY_HASH = 'EXPIRE_PRODUCTS_BY_HASH';
+
 export const SET_PRODUCT_ID = 'SET_PRODUCT_ID';
 export const SET_PRODUCT_VARIANT_ID = 'SET_PRODUCT_VARIANT_ID';
 export const SET_PRODUCT_QUANTITY = 'SET_PRODUCT_QUANTITY';

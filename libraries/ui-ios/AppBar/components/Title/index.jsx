@@ -17,9 +17,13 @@ class AppBarTitle extends PureComponent {
     const { title } = this.props;
 
     return (
-      <div className={styles} role="heading" aria-level="1" data-test-id={`title: ${title}`}>
-        {title}
-      </div>
+      <div
+        className={styles}
+        role="heading"
+        aria-level="1"
+        data-test-id={`title: ${title}`}
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
     );
   }
 }

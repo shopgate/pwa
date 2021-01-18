@@ -76,7 +76,7 @@ describe('engage > product > selectors', () => {
     });
   });
 
-  describe('getProductEffectivityDates()', () => {
+  describe.skip('getProductEffectivityDates()', () => {
     let getProductEffectivityDates;
     beforeEach(() => {
       getProductEffectivityDates = wrapMemoizedSelector(makeGetProductEffectivityDates());

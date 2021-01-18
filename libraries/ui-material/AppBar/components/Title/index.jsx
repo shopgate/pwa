@@ -32,9 +32,7 @@ class AppBarTitle extends PureComponent {
         data-test-id={`title: ${title}`}
         tabIndex={0}
       >
-        <span onClick={onClick} id="titleLabel">
-          {title}
-        </span>
+        <span onClick={onClick} id="titleLabel" dangerouslySetInnerHTML={{ __html: title }} />
       </div>
     );
     /* eslint-enable jsx-a11y/no-static-element-interactions,

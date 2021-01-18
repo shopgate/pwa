@@ -8,6 +8,7 @@ import {
   RECEIVE_PRODUCTS,
   ERROR_PRODUCTS,
   EXPIRE_PRODUCT_BY_ID,
+  EXPIRE_PRODUCTS_BY_HASH,
   ERROR_PRODUCT,
 } from '../constants';
 
@@ -75,6 +76,17 @@ export default function resultsByHash(state = {}, action) {
         }, { ...state });
       }
       return state;
+
+    case EXPIRE_PRODUCTS_BY_HASH: {
+      return {
+        ...state,
+        [action.hash]: {
+          ...state[action.hash],
+          products: [],
+          expires: 0,
+        },
+      };
+    }
 
     case EXPIRE_PRODUCT_BY_ID: {
       const productIds = [].concat(action.productId);

@@ -1,4 +1,5 @@
 /* eslint-disable extra-rules/no-single-line-objects */
+import { ACTION_PUSH } from '@virtuous/conductor';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
@@ -23,6 +24,7 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
 
 jest.mock('@shopgate/engage/product', () => ({
   buildFetchSearchResultsParams: jest.fn(),
+  getProductsResult: jest.fn(() => ({ })),
 }));
 jest.mock('./streams', () => ({
   ...require.requireActual('@shopgate/engage/locations/locations.streams'),
@@ -57,6 +59,7 @@ describe('SearchPage subscriptions', () => {
 
     it('should dispatch the fetchSearchResults action', () => {
       const action = {
+        historyAction: ACTION_PUSH,
         route: {
           query: {
             s: 'Some search phrase',

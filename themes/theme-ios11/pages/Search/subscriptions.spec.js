@@ -1,3 +1,4 @@
+import { ACTION_PUSH } from '@virtuous/conductor';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
@@ -26,6 +27,7 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
 
 jest.mock('@shopgate/engage/product', () => ({
   buildFetchSearchResultsParams: jest.fn(),
+  getProductsResult: jest.fn(() => ({ })),
 }));
 jest.mock('./streams', () => ({
   ...require.requireActual('@shopgate/engage/locations/locations.streams'),
@@ -60,6 +62,7 @@ describe('SearchPage subscriptions', () => {
 
     it('should dispatch the fetchSearchResults action', () => {
       const action = {
+        historyAction: ACTION_PUSH,
         route: {
           query: {
             s: 'Some search phrase',
@@ -76,6 +79,7 @@ describe('SearchPage subscriptions', () => {
       callback({
         action,
         dispatch,
+        getState: jest.fn(),
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
