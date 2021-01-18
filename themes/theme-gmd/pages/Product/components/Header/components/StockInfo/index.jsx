@@ -20,7 +20,7 @@ const StockInfo = ({ stock }) => (
         {stock && (
           <AvailableText
             className={styles.availability}
-            showWhenAvailable={false}
+            showWhenAvailable
             text={stock.text}
             state={stock.state}
           />
