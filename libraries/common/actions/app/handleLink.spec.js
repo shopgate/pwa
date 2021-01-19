@@ -70,4 +70,22 @@ describe('handleLink()', () => {
       expect(historyReset).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('handle external push message links', () => {
+    it('should dispatch historyPush for the external link', () => {
+      const link = 'http://www.google.de';
+      handleLink({ link }, true)(dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({ pathname: link });
+    });
+
+    it('should dispatch historyPush with only the pathname for the external links which are no push messages', () => {
+      const link = 'http://www.google.de/path/test';
+      handleLink({ link })(dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({ pathname: '/path/test' });
+    });
+  });
 });

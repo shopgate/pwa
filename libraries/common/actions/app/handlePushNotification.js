@@ -32,7 +32,7 @@ export default function handlePushNotification(payload = {}) {
         .dispatch();
     }
 
-    dispatch(handleLink(payload));
+    dispatch(handleLink(payload, true));
     dispatch(openPushNotification(notificationId, link));
   };
 }
