@@ -27,7 +27,11 @@ export default function category(subscribe) {
     const { filters, offset = 0 } = action.route.state;
     const categoryId = hex2bin(action.route.params.categoryId);
 
-    const { hash, expired } = getProductsResult(getState(), { categoryId });
+    const { hash, expired } = getProductsResult(getState(), {
+      categoryId,
+      routeId: action?.route?.id,
+      ...buildFetchCategoryProductsParams(),
+    });
 
     if (expired) {
       dispatch(expireProductsByHash(hash));
