@@ -23,7 +23,11 @@ export default function search(subscribe) {
     const { filters } = action.route.state;
     const { s: searchPhrase, sort } = action.route.query;
 
-    const { hash, expired } = getProductsResult(getState(), { searchPhrase });
+    const { hash, expired } = getProductsResult(getState(), {
+      searchPhrase,
+      routeId: action?.route?.id,
+      ...buildFetchSearchResultsParams(),
+    });
 
     if (expired) {
       dispatch(expireProductsByHash(hash));
