@@ -24,6 +24,9 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
   <OrderQuantityHint
     productId="1234"
   />
+  <EffectivityDates
+    productId="1234"
+  />
   <Availability
     showWhenAvailable={false}
     state="AVAILABILITY_STATE_OK"

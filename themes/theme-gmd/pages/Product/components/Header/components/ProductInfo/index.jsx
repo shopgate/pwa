@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   MapPriceHint,
   OrderQuantityHint,
+  EffectivityDates,
   Availability,
 } from '@shopgate/engage/product';
 import { ResponsiveContainer } from '@shopgate/engage/components';
@@ -59,7 +60,9 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
               {/* This feature is currently in BETA testing.
                   It should only be used for approved BETA Client Projects */}
               {!isROPEActive && (
-                <Availability productId={productId} />
+                <EffectivityDates productId={productId}>
+                  <Availability productId={productId} />
+                </EffectivityDates>
               )}
             </div>
             {!isROPEActive &&

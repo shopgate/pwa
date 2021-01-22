@@ -1,5 +1,6 @@
 import {
   makeGetProductProperties,
+  makeGetProductEffectivityDates,
   makeGetProductCharacteristics,
   makeGetProductFeaturedMedia,
 } from '../product';
@@ -72,6 +73,23 @@ describe('engage > product > selectors', () => {
         label: 'Test',
         value: '123',
       }]);
+    });
+  });
+
+  describe.skip('getProductEffectivityDates()', () => {
+    let getProductEffectivityDates;
+    beforeEach(() => {
+      getProductEffectivityDates = wrapMemoizedSelector(makeGetProductEffectivityDates());
+    });
+
+    it('should return null', () => {
+      expect(getProductEffectivityDates(mockState, { productId: '456' })).toBeNull();
+    });
+    it('should return dates', () => {
+      expect(getProductEffectivityDates(mockState, { productId: '123' })).toEqual({
+        startDate: '2019-04-01T10:00:00.000Z',
+        endDate: '2019-04-10T10:00:00.000Z',
+      });
     });
   });
 

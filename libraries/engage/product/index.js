@@ -31,6 +31,7 @@ export * from './constants';
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';
 export * from './helpers/index';
+export * from './helpers/redirects';
 export * from './components/Media/helpers';
 
 // SELECTORS
@@ -44,6 +45,7 @@ export * from './selectors/media';
 export {
   getProductIsFetching,
   makeGetProductProperties,
+  makeGetProductEffectivityDates,
   makeGetProductCharacteristics,
   makeGetProductFeaturedMedia,
   makeIsProductActive,
@@ -63,6 +65,7 @@ export { default as OrderQuantityHint } from './components/OrderQuantityHint';
 export { default as ProductImage } from './components/ProductImage';
 export { default as MediaSlider } from './components/MediaSlider';
 export { default as QuantityPicker } from './components/QuantityPicker';
+export { default as EffectivityDates } from './components/EffectivityDates';
 export { Availability } from './components/Availability';
 export { default as PriceDifference } from './components/PriceDifference';
 export { FeaturedMedia, MediaImage } from './components/Media';
