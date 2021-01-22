@@ -17,6 +17,7 @@ import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/
 import {
   ITEM_PATH,
   productImageFormats,
+  enableRedirectHandler,
   setDefaultProductFetchParams,
 } from '@shopgate/engage/product';
 import { grantCameraPermissions } from '@shopgate/engage/core';
@@ -71,6 +72,12 @@ export default function app(subscribe) {
     productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, GALLERY_SLIDER_IMAGE_FORMATS);
 
     onWillPop(NavDrawer.close);
+
+    /**
+     * This feature is currently in BETA testing.
+     * It should only be used for approved BETA Client Projects
+     */
+    enableRedirectHandler();
 
     /**
      * This feature is currently in BETA testing.
