@@ -5,7 +5,7 @@ import { css } from 'glamor';
 import { isBeta, useWidgetSettings, useWidgetStyles } from '@shopgate/engage/core';
 import { I18n, TimeBoundary } from '@shopgate/engage/components';
 import { showExpiringLabel, showScheduledLabel } from './helpers';
-import { hint } from './style';
+import { hint, notAvailable } from './style';
 import connect from './connector';
 
 /**
@@ -52,7 +52,7 @@ const EffectivityDates = ({
           productNotAvailable();
 
           return showExpiringLabel(endDate, settings)
-            ? <I18n.Text string="product.available.not" className={hintClass} />
+            ? <I18n.Text string="product.available.not" className={notAvailable} />
             : children;
         }
         return children;
@@ -65,14 +65,17 @@ EffectivityDates.propTypes = {
   productNotAvailable: PropTypes.func.isRequired,
   children: PropTypes.element,
   dates: PropTypes.shape({
-    startDate: PropTypes.string.isRequired,
-    endDate: PropTypes.string.isRequired,
+    startDate: PropTypes.string,
+    endDate: PropTypes.string,
   }),
 };
 
 EffectivityDates.defaultProps = {
   children: null,
-  dates: null,
+  dates: {
+    startDate: null,
+    endDate: null,
+  },
 };
 
 export default connect(EffectivityDates);
