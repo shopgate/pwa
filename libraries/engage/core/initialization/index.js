@@ -5,7 +5,7 @@ import {
 } from '@sentry/browser';
 import moment from 'moment';
 import { configureStore } from '@shopgate/pwa-common/store';
-import { appWillStart } from '@shopgate/pwa-common/action-creators/app';
+import { appWillInit, appWillStart } from '@shopgate/pwa-common/action-creators/app';
 import { i18n } from '@shopgate/engage/core';
 import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchClientInformation';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -133,6 +133,8 @@ export const initialize = async (locales, reducers, subscribers) => {
   });
 
   const store = configureStore(reducers, subscribers);
+
+  store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
 
   try {
     await fetchSettings(store);
