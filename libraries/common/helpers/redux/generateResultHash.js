@@ -31,6 +31,10 @@ export function generateResultHash(
     logger.error('generateResultHash() needs to be called with a sort parameter when the sort is supposed to be included');
   }
 
+  if (!includeSort && mergedParams.sort) {
+    delete mergedParams.sort;
+  }
+
   const { searchPhrase } = mergedParams;
 
   if (searchPhrase) {

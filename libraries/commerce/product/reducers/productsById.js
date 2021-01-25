@@ -7,6 +7,7 @@ import {
   ERROR_PRODUCT,
   UPDATE_METADATA,
   EXPIRE_PRODUCT_BY_ID,
+  DELETE_PRODUCTS_BY_IDS,
   RECEIVE_PRODUCT_RELATIONS,
 } from '../constants';
 import handleProductCollection from './helpers/handleProductCollection';
@@ -95,6 +96,18 @@ export default function productsById(state = {}, action) {
           expires: 0,
         },
       };
+
+    case DELETE_PRODUCTS_BY_IDS: {
+      const nextState = { ...state };
+
+      if (Array.isArray(action?.productIds)) {
+        action.productIds.forEach((productId) => {
+          delete nextState[productId];
+        });
+      }
+
+      return nextState;
+    }
 
     default:
       return state;

@@ -1,3 +1,4 @@
+import difference from 'lodash/difference';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
@@ -15,6 +16,7 @@ import buildRequestFilters from '../../filter/actions/helpers/buildRequestFilter
 import requestProducts from '../action-creators/requestProducts';
 import receiveProducts from '../action-creators/receiveProducts';
 import errorProducts from '../action-creators/errorProducts';
+import deleteProductsByIds from '../action-creators/deleteProductsByIds';
 
 /**
  * Process the pipeline params to be compatible.
@@ -180,6 +182,15 @@ function fetchProducts(options) {
           cached,
           cachedTime,
         }));
+
+        if (Array.isArray(params?.productIds)) {
+          const requestIds = params?.productIds;
+          const responseIds = response.products.map(product => product.id);
+          const missingResponseIds = difference(requestIds, responseIds);
+          if (missingResponseIds.length > 0) {
+            dispatch(deleteProductsByIds(missingResponseIds));
+          }
+        }
       })
       .catch((error) => {
         dispatch(errorProducts({
