@@ -30,6 +30,7 @@ type Props = {
   billingPickupEquals: bool,
   requiredFields: any,
   needsPayment: bool,
+  isLastStackEntry: bool,
   customerAttributes: any,
   orderReserveOnly?: bool,
   formContainerRef?: any,
@@ -93,6 +94,7 @@ const GuestRegistrationProvider = ({
   customerAttributes,
   customer,
   formContainerRef,
+  isLastStackEntry,
 }: Props) => {
   const [isLocked, setLocked] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
@@ -110,6 +112,7 @@ const GuestRegistrationProvider = ({
       setLocked(true);
       await prepareCheckout({
         initializePayment: false,
+        initializeOrder: !!isLastStackEntry,
       });
       setLocked(false);
       return true;

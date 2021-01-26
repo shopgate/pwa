@@ -17,17 +17,20 @@ import {
   fetchCheckoutOrder,
   updateCheckoutOrder,
 } from '@shopgate/engage/checkout';
-import { historyPush, historyPop } from '@shopgate/engage/core';
+import { historyPush, historyPop, makeIsLastStackEntry } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
  */
 function makeMapStateToProps() {
+  const isLastStackEntry = makeIsLastStackEntry();
+
   /**
    * @param {Object} state The application state.
+   * @param {Object} props The component props.
    * @returns {Object}
    */
-  return state => ({
+  return (state, props) => ({
     isDataReady: !getConfigFetching(state) && !!getCheckoutOrder(state),
     needsPayment: getNeedsPaymentForOrder(state) || false,
     shopSettings: getShopSettings(state),
@@ -39,6 +42,7 @@ function makeMapStateToProps() {
     orderReserveOnly: getIsReserveOnly(state),
     customer: getCheckoutOrderCustomer(state),
     customerAttributes: getMerchantCustomerAttributes(state),
+    isLastStackEntry: isLastStackEntry(state, props),
   });
 }
 
