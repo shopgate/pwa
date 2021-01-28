@@ -24,14 +24,6 @@ export function buildThemeConfig(appConfig) {
 
   const { colors = {}, theme = {} } = appConfig;
 
-  // Force cta colors
-  if (!colors.cta && colors.primary) {
-    colors.cta = colors.primary;
-  }
-  if (!colors.ctaContrast && colors.primaryContrast) {
-    colors.ctaContrast = colors.primaryContrast;
-  }
-
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
   const themeConfig = { ...theme };
@@ -49,6 +41,14 @@ export function buildThemeConfig(appConfig) {
       materialShadow: theme.shadows.material,
     },
   });
+
+  // Force cta colors
+  if (!themeConfig.colors.cta && themeConfig.colors.primary) {
+    themeConfig.colors.cta = themeConfig.colors.primary;
+  }
+  if (!themeConfig.colors.ctaContrast && themeConfig.colors.primaryContrast) {
+    themeConfig.colors.ctaContrast = themeConfig.colors.primaryContrast;
+  }
 
   return themeConfig;
 }
