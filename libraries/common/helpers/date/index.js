@@ -19,7 +19,7 @@ const durationModifiers = {
  * @param {Date} beforeDate comparison date.
  * @return {boolean}.
  */
-export const isBefore = (date, beforeDate) => date < beforeDate;
+export const isBefore = (date, beforeDate) => !!(beforeDate && date < beforeDate);
 
 /**
  * Returns true if date exclusively after (>=).
@@ -27,7 +27,7 @@ export const isBefore = (date, beforeDate) => date < beforeDate;
  * @param {Date} afterDate comparison date.
  * @return {boolean}.
  */
-export const isAfter = (date, afterDate) => date > afterDate;
+export const isAfter = (date, afterDate) => !!(afterDate && date > afterDate);
 
 /**
  * Returns true if date inclusively between (>= & <=).
@@ -36,9 +36,17 @@ export const isAfter = (date, afterDate) => date > afterDate;
  * @param {Date} rightDate right bound.
  * @return {boolean}.
  */
-export const isBetween = (date, leftDate, rightDate) => (
-  date >= leftDate && date <= rightDate
-);
+export const isBetween = (date, leftDate, rightDate) => {
+  if (!rightDate) {
+    return false;
+  }
+
+  if (!leftDate && rightDate) {
+    return isBefore(date, rightDate);
+  }
+
+  return date >= leftDate && date <= rightDate;
+};
 
 /**
  * Parse duration

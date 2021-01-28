@@ -19,9 +19,14 @@ import { second$ } from '@shopgate/pwa-common/streams/interval';
 class TimeBoundary extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
-    end: PropTypes.instanceOf(Date).isRequired,
-    start: PropTypes.instanceOf(Date).isRequired,
+    end: PropTypes.instanceOf(Date),
+    start: PropTypes.instanceOf(Date),
   };
+
+  static defaultProps = {
+    end: null,
+    start: null,
+  }
 
   /**
    * @inheritDoc
@@ -62,7 +67,7 @@ class TimeBoundary extends Component {
    * Check time boundary.
    */
   checkBoundary = () => {
-    const now = Date.now();
+    const now = new Date(Date.now());
 
     const newState = {
       before: isBefore(now, this.props.start),
