@@ -11,6 +11,15 @@ jest.mock('react-portal', () => (
     isOpened ? children : null
   )
 ));
+jest.mock('@shopgate/engage', () => ({
+  themeConfig: {},
+}));
+
+jest.mock('@shopgate/engage/components', () => ({
+  NavDrawer: jest.fn(),
+  DescriptionIcon: jest.fn(),
+  Icon: jest.fn(),
+}));
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
