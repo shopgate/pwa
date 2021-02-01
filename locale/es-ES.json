@@ -180,10 +180,10 @@
     "shipping": "Métodos de envío",
     "about": "Sobre nosotros",
     "payment": "Métodos de pago",
-    "terms": "Términos",
-    "privacy": "Política de privacidad",
+    "terms": "Condiciones generales",
+    "privacy": "Protección de datos",
     "welcome_message": "Bienvenido {name}",
-    "return_policy": "Política de devolución",
+    "return_policy": "Derecho de revocación",
     "logout": "Cerrar sesión",
     "menuSubHeader": {
       "more": "Más",
