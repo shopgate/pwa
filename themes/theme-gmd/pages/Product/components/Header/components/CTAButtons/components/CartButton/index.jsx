@@ -54,7 +54,7 @@ class CartButton extends Component {
       return colors.light;
     }
 
-    return (this.props.disabled && !this.props.loading) ? colors.shade5 : colors.primary;
+    return (this.props.disabled && !this.props.loading) ? colors.shade5 : colors.cta;
   }
 
   /**
@@ -64,7 +64,7 @@ class CartButton extends Component {
     if (this.props.loading) {
       return (
         <IndicatorCircle
-          color={colors.primaryContrast}
+          color={colors.ctaContrast}
           strokeWidth={4}
           paused={false}
         />
