@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.13.12](https://github.com/shopgate/pwa/compare/v6.13.11...v6.13.12) (2021-02-01)
+
+#### :rocket: Enhancement
+* [#1060](https://github.com/shopgate/pwa/pull/1060) Make cms icons configurable inside gmd navdrawer ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1059](https://github.com/shopgate/pwa/pull/1059) Fix cta colors from theme config ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.13.11](https://github.com/shopgate/pwa/compare/v6.13.10...v6.13.11) (2021-01-13)
 
 #### :rocket: Enhancement
