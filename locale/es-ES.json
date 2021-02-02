@@ -49,11 +49,16 @@
     "reset": "Borrar",
     "remove": "Eliminar {filter} filtro",
     "edit": "Editar {filter} filtro",
-    "filter_by": "Filtrar por {label}"
+    "filter_by": "Filtrar por {label}",
+    "label": {
+      "price": "Precio",
+      "category": "Categoría",
+      "manufacturer": "Marca"
+    }
   },
   "price": {
     "from": "Desde {price}",
-    "range": "Precio desde {fromPrice} a {toPrice}",
+    "range": "Precio desde {fromPrice} hasta {toPrice}",
     "range_from": "Rango de precio desde",
     "range_to": "Rango de precio hasta",
     "tier": {
@@ -65,7 +70,7 @@
     "label_old_price": "Precio anterior {price}."
   },
   "product": {
-    "description_heading": "Sobre",
+    "description_heading": "Descripción",
     "pick_an_attribute": "Elegir un {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
     "item_added": "{count, plural, =0 {# no se agregaron artículos} =1 {{count} artículo agregado} other {{count} artículos agregados}}",
@@ -149,7 +154,7 @@
     "checkout": "Pagar",
     "remove": "Quitar",
     "edit": "Editar",
-    "empty": "Su cesta está vacía",
+    "empty": "Tu cesta está vacía",
     "continue": "Continuar comprando",
     "redeem_coupon": "Ingresar código del cupón",
     "coupon_code": "Código",
@@ -159,14 +164,14 @@
     "free_shipping": "Envío gratis"
   },
   "login": {
-    "headline": "Bienvenido",
+    "headline": "Hola",
     "subline": "Inicie sesión para continuar",
     "email": "Email",
     "password": "Contraseña",
-    "forgot_password": "¿Olvidó su contraseña?",
+    "forgot_password": "¿Has olvidado tu contraseña?",
     "forgot_password_popup": "Utilice el sitio web para restablecer su contraseña.",
     "button": "Iniciar sesión",
-    "no_account": "¿Aún no tiene una cuenta?",
+    "no_account": "¿Aún no tienes una cuenta?",
     "signup": "Registro",
     "logout_message": "Ha sido desconectado.",
     "error": "Su usuario y contraseña no corresponden a ninguna cuenta"
@@ -184,7 +189,7 @@
     "payment": "Métodos de pago",
     "terms": "Condiciones generales",
     "privacy": "Protección de datos",
-    "welcome_message": "Bienvenido {name}",
+    "welcome_message": "Hola {name}",
     "return_policy": "Derecho de revocación",
     "logout": "Cerrar sesión",
     "store_information": "Información de la tienda",

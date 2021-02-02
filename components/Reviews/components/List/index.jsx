@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { PRODUCT_REVIEWS_ENTRY } from '@shopgate/engage/product';
 import Title from './components/Title';
 import Rating from './components/Rating';
 import Text from './components/Text';
@@ -32,10 +34,12 @@ class List extends PureComponent {
       <ul>
         { reviews.map(review => (
           <li key={review.id} className={styles} data-test-id={`reviewTitle: ${review.title}`}>
-            <Title title={review.title} />
-            <Rating rate={review.rate} />
-            <Text review={review.review} />
-            <Info review={review} />
+            <SurroundPortals portalName={PRODUCT_REVIEWS_ENTRY} portalProps={{ review }}>
+              <Title title={review.title} />
+              <Rating rate={review.rate} />
+              <Text review={review.review} />
+              <Info review={review} />
+            </SurroundPortals>
           </li>
         ))}
       </ul>

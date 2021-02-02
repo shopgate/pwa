@@ -49,7 +49,12 @@
     "reset": "Zurücksetzen",
     "remove": "{filter} Filter entfernen",
     "edit": "{filter} Filter bearbeiten",
-    "filter_by": "Filtern nach {label}"
+    "filter_by": "Filtern nach {label}",
+    "label": {
+      "price": "Preis",
+      "category": "Kategorie",
+      "manufacturer": "Marke"
+    }
   },
   "price": {
     "from": "Ab {price}",
