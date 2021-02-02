@@ -1,5 +1,38 @@
 # Changelog
 
+## [v6.13.11](https://github.com/shopgate/pwa/compare/v6.13.10...v6.13.11) (2021-01-13)
+
+#### :rocket: Enhancement
+* [#1052](https://github.com/shopgate/pwa/pull/1052) Added new portal position for each review entry (product.reviews.entry) and new theme config `@shopgate/engage/reviews.prefillAuthor` ([@Carsten89](https://github.com/Carsten89))
+* [#1049](https://github.com/shopgate/pwa/pull/1049) Added tracking of favlist ([@Carsten89](https://github.com/Carsten89))
+
+
+## [v6.13.10](https://github.com/shopgate/pwa/compare/v6.13.9...v6.13.10) (2020-12-02)
+
+#### :rocket: Enhancement
+* [#1042](https://github.com/shopgate/pwa/pull/1042) Make possible to configure the loading indicator ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1048](https://github.com/shopgate/pwa/pull/1048) Fixed wrong aligned cart button in AddToCartBar ([@Carsten89](https://github.com/Carsten89))
+* [#1047](https://github.com/shopgate/pwa/pull/1047) Translate filter labels ([@alexbridge](https://github.com/alexbridge))
+* [#1041](https://github.com/shopgate/pwa/pull/1041) Fixed slider bullets on iPhone ([@alexbridge](https://github.com/alexbridge))
+* [#1040](https://github.com/shopgate/pwa/pull/1040) Switch images on product details page correctly, use progressive gallery load ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.13.9](https://github.com/shopgate/pwa/compare/v6.13.7...v6.13.9) (2020-11-04)
+
+#### :rocket: Enhancement
+* [#1038](https://github.com/shopgate/pwa/pull/1038) Added classnames to rating stars ([@Carsten89](https://github.com/Carsten89))
+
+
+## [v6.13.7](https://github.com/shopgate/pwa/compare/v6.13.6...v6.13.7) (2020-11-04)
+
+#### :rocket: Enhancement
+* [#1035](https://github.com/shopgate/pwa/pull/1035) Added classname for price and ratingstar elements ([@Carsten89](https://github.com/Carsten89))
+* [#1037](https://github.com/shopgate/pwa/pull/1037) Show variant product instead of parent if available ([@Carsten89](https://github.com/Carsten89))
+* [#1036](https://github.com/shopgate/pwa/pull/1036) Show low resolution images on product gallery page ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.13.6](https://github.com/shopgate/pwa/compare/v6.13.5...v6.13.6) (2020-09-28)
 
 #### :rocket: Enhancement
