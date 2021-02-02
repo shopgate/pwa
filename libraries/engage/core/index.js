@@ -245,6 +245,7 @@ export { usePageSettings } from './hooks/usePageSettings';
 export { useWidgetConfig } from './hooks/useWidgetConfig';
 export { useWidgetSettings } from './hooks/useWidgetSettings';
 export { useWidgetStyles } from './hooks/useWidgetStyles';
+export * from './hooks/html';
 
 // --------------- HOCs --------------- //
 

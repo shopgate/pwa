@@ -249,6 +249,9 @@ describe('Tracking helpers', () => {
       expect(createPageviewData({})).toEqual({
         page: null,
         cart: null,
+        favouriteList: {
+          products: null,
+        },
         search: null,
         category: null,
         product: null,
@@ -268,6 +271,9 @@ describe('Tracking helpers', () => {
         page: {
           ...mockData,
           title: '',
+        },
+        favouriteList: {
+          products: null,
         },
         category: mockData,
         product: mockData,
@@ -289,6 +295,9 @@ describe('Tracking helpers', () => {
           ...mockData.page,
           title: mockData.pageConfig.title,
         },
+        favouriteList: {
+          products: null,
+        },
         cart: null,
         search: null,
         category: null,
@@ -309,6 +318,9 @@ describe('Tracking helpers', () => {
           ...mockData.page,
           title: mockData.category.name,
         },
+        favouriteList: {
+          products: null,
+        },
         cart: null,
         search: null,
         category: mockData.category,
@@ -328,6 +340,9 @@ describe('Tracking helpers', () => {
         page: {
           ...mockData.page,
           title: mockData.product.name,
+        },
+        favouriteList: {
+          products: null,
         },
         cart: null,
         search: null,

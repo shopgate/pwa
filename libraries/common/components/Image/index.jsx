@@ -14,6 +14,7 @@ class Image extends Component {
     animating: PropTypes.bool,
     backgroundColor: PropTypes.string,
     className: PropTypes.string,
+    classNameImg: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     onError: PropTypes.func,
@@ -28,6 +29,7 @@ class Image extends Component {
     // @deprecated use resolutions instead. kept for backwards compatibility
     srcmap: PropTypes.arrayOf(PropTypes.string),
     transition: PropTypes.shape(),
+    unwrapped: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -35,6 +37,7 @@ class Image extends Component {
     animating: true,
     backgroundColor: themeColors.placeholder,
     className: '',
+    classNameImg: '',
     forcePlaceholder: false,
     highestResolutionLoaded: () => {},
     onError: null,
@@ -54,6 +57,7 @@ class Image extends Component {
     src: null,
     srcmap: null,
     transition: null,
+    unwrapped: false,
   };
 
   /**
@@ -198,7 +202,7 @@ class Image extends Component {
       // Renders the actual image.
       innerImage = (
         <img
-          className={styles.image}
+          className={this.props.classNameImg || styles.image}
           src={src}
           style={inlineStyles}
           alt={this.props.alt}
@@ -206,6 +210,10 @@ class Image extends Component {
           data-test-id="image"
         />
       );
+    }
+
+    if (this.props.unwrapped) {
+      return innerImage;
     }
 
     const containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);

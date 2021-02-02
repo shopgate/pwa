@@ -256,10 +256,15 @@ export const buildScannerUtmUrl = ({
   const newPath = new URL(location, 'http://scanner.com');
 
   const utms = {
+    // eslint-disable-next-line camelcase
     utm_source: source,
+    // eslint-disable-next-line camelcase
     utm_medium: medium,
+    // eslint-disable-next-line camelcase
     utm_campaign: campaign,
+    // eslint-disable-next-line camelcase
     utm_term: term,
+    // eslint-disable-next-line camelcase
     utm_content: referer,
   };
 
@@ -316,6 +321,7 @@ export const createRootCategoryData = (rootCategory) => {
 export const createPageviewData = ({
   page = null,
   cart = null,
+  favorites = null,
   search = null,
   category = null,
   product = null,
@@ -337,6 +343,9 @@ export const createPageviewData = ({
       title,
     } : null,
     cart,
+    favouriteList: {
+      products: favorites,
+    },
     search,
     category,
     product,
