@@ -15,6 +15,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       aria-hidden={null}
       backgroundColor="#fff"
       className="css-3hjqnz"
+      classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
       noBackground={false}
@@ -37,6 +38,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       src="http://placehold.it/300x300"
       srcmap={null}
       transition={null}
+      unwrapped={false}
       widgetSettings={
         Object {
           "showInnerShadow": true,
@@ -83,6 +85,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       aria-hidden={null}
       backgroundColor="#fff"
       className=""
+      classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
       noBackground={false}
@@ -105,6 +108,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       src="http://placehold.it/300x300"
       srcmap={null}
       transition={null}
+      unwrapped={false}
       widgetSettings={
         Object {
           "mocked": "widgetSetting",
@@ -226,6 +230,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       aria-hidden={null}
       backgroundColor="#fff"
       className=""
+      classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
       noBackground={false}
@@ -248,6 +253,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       src="http://placehold.it/300x300"
       srcmap={null}
       transition={null}
+      unwrapped={false}
       widgetSettings={
         Object {
           "mocked": "widgetSetting",

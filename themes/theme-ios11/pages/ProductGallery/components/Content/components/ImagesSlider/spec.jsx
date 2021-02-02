@@ -13,6 +13,7 @@ import Content from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
   useWidgetSettings: jest.fn(),
+  useLoadImage: jest.fn().mockReturnValue(true),
   getThemeSettings: () => ({
     fillColor: 'FFFFFF',
     HeroImage: [
@@ -38,6 +39,7 @@ jest.mock('@shopgate/engage/core', () => ({
 }));
 
 jest.mock('@shopgate/engage/components', () => ({
+  Image: () => 'Image',
   Swiper: MockSwiper,
 }));
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
@@ -67,13 +69,13 @@ describe('<ProductGallery.Content> page', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockSwiper).length).toEqual(1);
-    expect(wrapper.find('img').length).toEqual(2);
+    expect(wrapper.find('Image').length).toEqual(2);
     expect(wrapper
-      .find('img')
+      .find('Image')
       .at(0)
       .prop('src')).toEqual('foo');
     expect(wrapper
-      .find('img')
+      .find('Image')
       .at(1)
       .prop('src')).toEqual('bar');
   });

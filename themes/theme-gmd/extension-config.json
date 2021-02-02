@@ -1,5 +1,5 @@
 {
-  "version": "6.13.6",
+  "version": "6.13.11",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -258,6 +258,9 @@
           },
           "@shopgate/engage/product/ProductSlider": {
             "slidesPerView": 2.3
+          },
+          "@shopgate/engage/reviews": {
+            "prefillAuthor": true
           }
         },
         "typography": {

@@ -22,7 +22,8 @@ const Price = (props, context) => {
     props.className,
     {
       [styles.discounted]: props.discounted,
-    }
+    },
+    'price'
   );
 
   const { __, _p } = context.i18n();

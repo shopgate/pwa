@@ -55,7 +55,7 @@ class CategoryListWidget extends Component {
 
     return (
       <div className={styles.container} data-test-id="categoryList">
-        {(settings.headline) ? <h3 className={styles.headline}>{settings.headline}</h3> : null}
+        {(settings.headline) ? <h3 className={`${styles.headline} headline`}>{settings.headline}</h3> : null}
         <SheetList hasImages={settings.showImages}>
           {items.map((item) => {
             // We have to decode the link before using it.
