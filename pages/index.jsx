@@ -55,6 +55,8 @@ import {
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
   CHECKOUT_BILLING_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account';
@@ -87,6 +89,8 @@ const sideNavigationBlacklist = [
   CHECKOUT_CONFIRMATION_PATTERN,
   CHECKOUT_BILLING_PATTERN,
   ORDER_DETAILS_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 ];
 
 const globalLocationSelectorAllowList = [
@@ -196,6 +200,14 @@ const Pages = ({ store }) => (
                     <Route
                       pattern={CHECKOUT_BILLING_PATTERN}
                       component={CheckoutBillingChange}
+                    />
+                    <Route
+                      pattern={CHECKOUT_ADDRESS_BOOK_PATTERN}
+                      component={routes.CheckoutAddressBook}
+                    />
+                    <Route
+                      pattern={CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}
+                      component={routes.CheckoutAddressBookContact}
                     />
                     <Route
                       pattern={REGISTER_PATH}
