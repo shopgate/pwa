@@ -36,7 +36,13 @@
     "profile": "Profil",
     "your_account": "Mein Account",
     "your_account_contact": "Adresse",
-    "page_not_found": "Seite nicht gefunden"
+    "page_not_found": "Seite nicht gefunden",
+    "checkout_addresses_shipping": "Lieferadresse wählen",
+    "checkout_addresses_billing": "Rechnungsadresse wählen",
+    "checkout_addresses_add_shipping": "Lieferadresse hinzufügen",
+    "checkout_addresses_add_billing": "Rechnungsadresse hinzufügen",
+    "checkout_addresses_edit_shipping": "Lieferadresse ändern",
+    "checkout_addresses_edit_billing": "Rechnungsadresse ändern"
   },
   "account": {
     "profile": {
@@ -48,7 +54,7 @@
         "middleName": "Mittelname",
         "lastName": "Nachname",
         "emailAddress": "Email-Adresse",
-        "address1": "Adresse 1",
+        "address1": "Straße und Hausnummer",
         "address2": "Adresse 2",
         "address3": "Adresse 3",
         "address4": "Adresse 4",
@@ -72,6 +78,8 @@
         "default_billing": "Standard Rechnungsadresse",
         "default_shipping": "Standard Lieferadresse",
         "add": "Adresse hinzufügen",
+        "select": "Wählen",
+        "selected": "Ausgewählt",
         "success": "Profil gespeichert",
         "context": {
           "edit": "Editieren",
@@ -573,7 +581,15 @@
       "headline_reserve": "Bestellkontakt",
       "save": "Sichern",
       "address": "{postalCode} {city}, {region}",
-      "edit": "Ändern"
+      "edit": "Ändern",
+      "select_address": "Wähle eine Rechnungsadresse aus"
+    },
+    "shipping": {
+      "headline": "Lieferadresse",
+      "save": "Sichern",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Ändern",
+      "select_address": "Wähle eine Lieferadresse aus"
     },
     "creditCard": {
       "headline": "Zahlungsart",
@@ -598,6 +614,7 @@
       "order_contact": "Bestellkontakt",
       "pickup_notes": "Notizen zur Abholung",
       "billed_to": "Rechnungsadresse",
+      "shipped_to": "Lieferadresse",
       "order_summary": "Zusammenfassung der Bestellung",
       "name": "Name",
       "phone_number": "Telefonnummer",

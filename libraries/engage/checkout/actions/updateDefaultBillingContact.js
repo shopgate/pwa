@@ -11,6 +11,7 @@ import { errorCheckout } from './errorCheckout';
  * @returns {JSX}
  * */
 const sanitizeContact = contact => ({
+  id: contact.id || undefined,
   firstName: contact.firstName,
   lastName: contact.lastName,
   mobile: contact.mobile,

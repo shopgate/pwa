@@ -3,7 +3,7 @@ import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 import { getCheckoutBillingAddress } from '@shopgate/engage/checkout/selectors/order';
 import { getRequiredGuestCheckoutFields } from '@shopgate/engage/checkout/selectors/guestCheckout';
-import { updateDefaultBillingContact } from '@shopgate/engage/checkout';
+import { updateDefaultBillingContact } from '@shopgate/engage/checkout/actions';
 import { historyPop } from '@shopgate/engage/core';
 
 /**

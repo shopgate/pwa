@@ -16,7 +16,7 @@ import {
   prepareCheckout,
   fetchCheckoutOrder,
   updateCheckoutOrder,
-} from '@shopgate/engage/checkout';
+} from '@shopgate/engage/checkout/actions';
 import { historyPush, historyPop, makeIsLastStackEntry } from '@shopgate/engage/core';
 
 /**

@@ -179,6 +179,7 @@ export { default as AppProvider } from './providers/AppProvider';
 
 // ACTIONS
 export { historyPop } from '@shopgate/pwa-common/actions/router/historyPop';
+export { historyPopToRoute } from '@shopgate/pwa-common/actions/router/historyPopToRoute';
 export { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
 export { historyRedirect } from '@shopgate/pwa-common/actions/router/historyRedirect';
 export { historyReplace } from '@shopgate/pwa-common/actions/router/historyReplace';

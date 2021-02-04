@@ -3,6 +3,9 @@ export const CHECKOUT_BILLING_PATTERN = '/checkout/billing';
 export const GUEST_CHECKOUT_PATTERN = '/checkout/guest';
 export const GUEST_CHECKOUT_PAYMENT_PATTERN = '/checkout/guest/payment';
 export const CHECKOUT_CONFIRMATION_PATTERN = '/checkout/success';
+export const CHECKOUT_ADDRESS_BOOK_PATH = '/checkout/addresses';
+export const CHECKOUT_ADDRESS_BOOK_PATTERN = `${CHECKOUT_ADDRESS_BOOK_PATH}/:type`;
+export const CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN = `${CHECKOUT_ADDRESS_BOOK_PATH}/:type/contact`;
 
 export const checkoutRoutes = [
   CHECKOUT_PATTERN,
@@ -10,4 +13,6 @@ export const checkoutRoutes = [
   GUEST_CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 ];

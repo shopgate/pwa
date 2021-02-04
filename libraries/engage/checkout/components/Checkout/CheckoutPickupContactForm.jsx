@@ -60,6 +60,7 @@ const PickupContactForm = () => {
     defaultPickupPersonState,
     formValidationErrors,
     formSetValues,
+    isShippingAddressSelectionEnabled,
   } = useCheckoutContext();
 
   const formConfig = React.useMemo(
@@ -70,6 +71,10 @@ const PickupContactForm = () => {
   const handleUpdate = React.useCallback((values) => {
     formSetValues(values);
   }, [formSetValues]);
+
+  if (isShippingAddressSelectionEnabled) {
+    return null;
+  }
 
   return (
     <SurroundPortals portalName={CHECKOUT_PICKUP_CONTACT_FORM}>

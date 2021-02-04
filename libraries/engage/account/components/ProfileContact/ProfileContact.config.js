@@ -1,37 +1,44 @@
 import { i18n } from '@shopgate/engage/core';
+import { ADDRESS_TYPE_SHIPPING, ADDRESS_TYPE_BILLING } from '@shopgate/engage/checkout';
 
 /**
  * Generates form configuration.
  * @param {Array} supportedCountries A list of supported countries.
  * @param {Object} userLocation User location for better phone picker defaults.
+ * @param {boolean} isCheckout Whether the form is shown within the checkout process
+ * @param {string} type An address type
  * @returns {Object}
  */
-export const generateFormConfig = (supportedCountries, userLocation) => ({
+export const generateFormConfig = (supportedCountries, userLocation, isCheckout, type) => ({
   fields: {
     firstName: {
       type: 'text',
       label: `${i18n.text('account.profile.form.firstName')} *`,
     },
-    middleName: {
-      type: 'text',
-      label: `${i18n.text('account.profile.form.middleName')}`,
-    },
+    ...(!isCheckout ? {
+      middleName: {
+        type: 'text',
+        label: `${i18n.text('account.profile.form.middleName')}`,
+      },
+    } : {}),
     lastName: {
       type: 'text',
       label: `${i18n.text('account.profile.form.lastName')} *`,
     },
-    emailAddress: {
-      type: 'email',
-      label: `${i18n.text('account.profile.form.emailAddress')} *`,
-    },
-    mobile: {
-      type: 'phone_picker',
-      label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
-      config: {
-        supportedCountries,
-        userLocation,
+    ...(!isCheckout ? {
+      emailAddress: {
+        type: 'email',
+        label: `${i18n.text('account.profile.form.emailAddress')} *`,
       },
-    },
+      mobile: {
+        type: 'phone_picker',
+        label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
+        config: {
+          supportedCountries,
+          userLocation,
+        },
+      },
+    } : {}),
     address1: {
       type: 'text',
       label: `${i18n.text('account.profile.form.address1')} *`,
@@ -40,14 +47,16 @@ export const generateFormConfig = (supportedCountries, userLocation) => ({
       type: 'text',
       label: `${i18n.text('account.profile.form.address2')}`,
     },
-    address3: {
-      type: 'text',
-      label: `${i18n.text('account.profile.form.address3')}`,
-    },
-    address4: {
-      type: 'text',
-      label: `${i18n.text('account.profile.form.address4')}`,
-    },
+    ...(!isCheckout ? {
+      address3: {
+        type: 'text',
+        label: `${i18n.text('account.profile.form.address3')}`,
+      },
+      address4: {
+        type: 'text',
+        label: `${i18n.text('account.profile.form.address4')}`,
+      },
+    } : {}),
     postalCode: {
       type: 'text',
       label: `${i18n.text('account.profile.form.postalCode')} *`,
@@ -66,14 +75,18 @@ export const generateFormConfig = (supportedCountries, userLocation) => ({
       label: `${i18n.text('account.profile.form.region')} *`,
       required: true,
     },
-    isDefaultBilling: {
-      type: 'checkbox',
-      label: i18n.text('account.profile.form.default_billing'),
-    },
-    isDefaultShipping: {
-      type: 'checkbox',
-      label: i18n.text('account.profile.form.default_shipping'),
-    },
+    ...(!isCheckout || type === ADDRESS_TYPE_BILLING ? {
+      isDefaultBilling: {
+        type: 'checkbox',
+        label: i18n.text('account.profile.form.default_billing'),
+      },
+    } : {}),
+    ...(!isCheckout || type === ADDRESS_TYPE_SHIPPING ? {
+      isDefaultShipping: {
+        type: 'checkbox',
+        label: i18n.text('account.profile.form.default_shipping'),
+      },
+    } : {}),
   },
 });
 

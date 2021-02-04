@@ -10,7 +10,6 @@ const { variables } = themeConfig;
 const styles = {
   root: css({
     padding: variables.gap.big,
-    paddingBottom: 0,
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',

@@ -31,6 +31,8 @@ import {
   CHECKOUT_CONFIRMATION_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_BILLING_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
@@ -172,6 +174,14 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={CHECKOUT_BILLING_PATTERN}
                     component={CheckoutBillingChange}
+                  />
+                  <Route
+                    pattern={CHECKOUT_ADDRESS_BOOK_PATTERN}
+                    component={routes.CheckoutAddressBook}
+                  />
+                  <Route
+                    pattern={CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}
+                    component={routes.CheckoutAddressBookContact}
                   />
                   <Route
                     pattern={REGISTER_PATH}

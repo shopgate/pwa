@@ -11,9 +11,11 @@ import { getPreferredLocationAddress } from '@shopgate/engage/locations/selector
 import { FormBuilder, RippleButton } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import { useAddressBook } from '@shopgate/engage/checkout';
 import { generateFormConfig } from './ProfileContact.config';
-import constraints from './ProfileContact.constraints';
+import { generateConstraints } from './ProfileContact.constraints';
 import { addCustomerContacts } from '../../actions/addContacts';
+import { getCustomer } from '../../selectors/customer';
 import { updateCustomerContact } from '../../actions/updateContact';
 
 /**
@@ -23,6 +25,7 @@ import { updateCustomerContact } from '../../actions/updateContact';
 const mapStateToProps = state => ({
   shopSettings: getShopSettings(state),
   userLocation: getPreferredLocationAddress(state),
+  customer: getCustomer(state),
 });
 
 /**
@@ -62,6 +65,7 @@ const styles = {
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
         width: '100%',
+        marginRight: 0,
       },
     },
   }).toString(),
@@ -83,31 +87,65 @@ const styles = {
  * @returns {JSX}
  */
 const ProfileContact = ({
-  shopSettings, userLocation, addContact, updateContact, pop,
+  shopSettings, userLocation, addContact, updateContact, pop, customer,
 }) => {
+  const { updateOrderWithContact, type, isCheckout } = useAddressBook();
+
   const formContainerRef = useRef(null);
   const formConfig = useMemo(() => generateFormConfig(
     shopSettings?.supportedCountries,
-    userLocation
-  ), [shopSettings, userLocation]);
+    userLocation,
+    isCheckout,
+    type
+  ), [isCheckout, shopSettings, type, userLocation]);
+
+  const constraints = useMemo(() => generateConstraints(isCheckout), [isCheckout]);
 
   const { pathname, state: { contact = {} } } = useRoute();
 
   const handleSubmit = useCallback(async (values) => {
     LoadingProvider.setLoading(pathname);
+    let contactId = contact.id;
+
+    const finalValues = {
+      ...values,
+      ...(isCheckout && !contact?.emailAddress ? {
+        emailAddress: customer?.emailAddress,
+      } : {}),
+    };
+
     try {
       if (contact?.id) {
-        await updateContact(contact.id, values);
+        await updateContact(contact.id, finalValues);
       } else {
-        await addContact(values);
+        ({ contactIds: [contactId] } = await addContact(finalValues));
       }
+
+      if (updateOrderWithContact) {
+        await updateOrderWithContact({
+          id: contactId,
+          ...finalValues,
+        });
+
+        return;
+      }
+
       pop();
     } catch (error) {
       // Generic error handling is used.
     }
 
     LoadingProvider.unsetLoading(pathname);
-  }, [addContact, contact, pathname, pop, updateContact]);
+  }, [
+    addContact,
+    contact,
+    customer,
+    isCheckout,
+    pathname,
+    pop,
+    updateContact,
+    updateOrderWithContact,
+  ]);
 
   const formState = useFormState(contact, handleSubmit, constraints, formContainerRef);
   const validationErrors = useMemo(() =>
@@ -150,6 +188,11 @@ ProfileContact.propTypes = {
   shopSettings: PropTypes.shape().isRequired,
   updateContact: PropTypes.func.isRequired,
   userLocation: PropTypes.shape().isRequired,
+  customer: PropTypes.shape(),
+};
+
+ProfileContact.defaultProps = {
+  customer: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContact);

@@ -6,7 +6,7 @@ import Header from '../Checkout/CheckoutHeader';
 import { GUEST_CHECKOUT_PAYMENT_PATTERN } from '../../constants/routes';
 import CheckoutProvider from '../../providers/CheckoutProvider';
 import PaymentProvider from '../../paymentMethods';
-import Billing from '../Checkout/CheckoutBilling';
+import Billing from '../Checkout/CheckoutAddress';
 import Summary from '../Checkout/CheckoutSummary';
 import Actions from '../Checkout/CheckoutActions';
 import Pickup from './GuestRegistrationPickup';
