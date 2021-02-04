@@ -14,11 +14,11 @@ const icon = css({
 });
 
 const iconCart = css(icon, {
-  fill: colors.light,
+  fill: colors.ctaContrast,
 }).toString();
 
 const iconTick = css(icon, {
-  fill: colors.primary,
+  fill: colors.cta,
 }).toString();
 
 export default {

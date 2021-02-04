@@ -51,7 +51,7 @@ class CartButton extends Component {
    */
   get color() {
     if (this.state.clicked) {
-      return colors.light;
+      return colors.ctaContrast;
     }
 
     return (this.props.disabled && !this.props.loading) ? colors.shade5 : colors.cta;
