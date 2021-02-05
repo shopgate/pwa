@@ -44,10 +44,10 @@ class SearchContent extends Component {
       <RouteContext.Consumer>
         {({ state, query, id: routeId }) => (
           <Fragment>
-            <BackBar
-              title={searchPhrase}
-              {...showFilterBar && { below: <Bar key="below" /> }}
-            />
+            <BackBar title={searchPhrase} shadow={!showFilterBar} />
+
+            {showFilterBar && <Bar key="below" /> }
+
             <Products
               searchPhrase={searchPhrase}
               filters={state.filters}

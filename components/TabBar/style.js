@@ -18,14 +18,26 @@ export const updateHeightCSSProperty = (isVisible) => {
   }
 };
 
+export const inVisible = css({
+  display: 'none',
+}).toString();
+
+export const scrollInVisible = css({
+  maxHeight: '0 !important',
+  minHeight: '0 !important',
+}).toString();
+
 export default css({
-  height: 'var(--tabbar-height)',
+  maxHeight: 'var(--tabbar-height)',
+  minHeight: 'var(--tabbar-height)',
   position: 'relative',
+  overflow: 'hidden',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
   boxShadow: themeShadows.tabBar,
   background: themeColors.lightOverlay,
+  transition: 'max-height 0.3s ease-out, min-height 0.2s ease-in',
   ':before': {
     position: 'absolute',
     top: 0,
