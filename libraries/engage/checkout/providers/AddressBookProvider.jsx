@@ -87,7 +87,7 @@ const AddressBookProvider = ({
     };
   };
 
-  const updateOrderWithContact = useCallback(async (contact, gotoCheckout = true) => {
+  const updateOrderWithContact = useCallback(async (contactId, gotoCheckout = true) => {
     setLoading(true);
 
     try {
@@ -95,24 +95,27 @@ const AddressBookProvider = ({
 
       if (type === ADDRESS_TYPE_BILLING) {
         addressSequences.push({
-          ...contact,
-          customerContactId: contact.id,
+          customerContactId: contactId,
           type: 'billing',
         });
       } else if (billingAddress) {
-        addressSequences.push(billingAddress);
+        addressSequences.push({
+          customerContactId: billingAddress.customerContactId,
+          type: 'billing',
+        });
       }
 
       if (type === ADDRESS_TYPE_SHIPPING) {
         addressSequences.push({
-          ...contact,
-          customerContactId: contact.id,
+          customerContactId: contactId,
           type: 'shipping',
         });
       } else if (shippingAddress) {
-        addressSequences.push(shippingAddress);
+        addressSequences.push({
+          customerContactId: shippingAddress.customerContactId,
+          type: 'shipping',
+        });
       }
-
       await updateCheckoutOrder({
         addressSequences,
         ...createAddressSequenceIndexes(addressSequences),
@@ -133,13 +136,19 @@ const AddressBookProvider = ({
       return;
     }
 
-    const addressSequences = order.addressSequences.reduce((acc, current) => {
-      if (current.customerContactId !== contactId) {
-        acc.push(current);
-      }
+    const addressSequences = order.addressSequences.reduce(
+      (acc, { customerContactId, type: addressType }) => {
+        if (customerContactId !== contactId) {
+          acc.push({
+            type: addressType,
+            customerContactId,
+          });
+        }
 
-      return acc;
-    }, []);
+        return acc;
+      },
+      []
+    );
 
     try {
       await updateCheckoutOrder({

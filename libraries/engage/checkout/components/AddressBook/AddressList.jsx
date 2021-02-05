@@ -129,7 +129,7 @@ const AddressList = ({
             key={contact.id}
             contact={contact}
             selected={contact.id === selectedContactId}
-            selectContact={() => updateOrderWithContact(contact)}
+            selectContact={() => updateOrderWithContact(contact.id)}
             deleteContact={() => deleteContact(contact.id)}
             editContact={(
             ) => editContact(contact)}

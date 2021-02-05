@@ -122,11 +122,7 @@ const ProfileContact = ({
       }
 
       if (updateOrderWithContact) {
-        await updateOrderWithContact({
-          id: contactId,
-          ...finalValues,
-        });
-
+        await updateOrderWithContact(contactId);
         return;
       }
 

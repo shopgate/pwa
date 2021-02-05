@@ -83,6 +83,14 @@ const CheckoutAddress = ({ type, guestCheckout }) => {
     return `${CHECKOUT_ADDRESS_BOOK_PATH}/${ADDRESS_TYPE_SHIPPING}`;
   }, [address, guestCheckout, type]);
 
+  const editLabel = useMemo(() => {
+    if (guestCheckout) {
+      return undefined;
+    }
+
+    return `checkout.${type}.change`;
+  }, [guestCheckout, type]);
+
   const selectAddressLink = useMemo(() => {
     if (!address && (!Array.isArray(contacts) || contacts.length === 0)) {
       return `${CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}`.replace(':type', type);
@@ -102,6 +110,7 @@ const CheckoutAddress = ({ type, guestCheckout }) => {
         className={styles.card}
         title={headline}
         editLink={editLink}
+        editLabel={editLabel}
       >
         { address ? (
           <Fragment>

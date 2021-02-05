@@ -570,6 +570,7 @@
       "save": "Sichern",
       "address": "{postalCode} {city}, {region}",
       "edit": "Ändern",
+      "change": "Ändern",
       "select_address": "Wähle eine Rechnungsadresse aus"
     },
     "shipping": {
@@ -577,6 +578,7 @@
       "save": "Sichern",
       "address": "{postalCode} {city}, {region}",
       "edit": "Ändern",
+      "change": "Ändern",
       "select_address": "Wähle eine Lieferadresse aus"
     },
     "creditCard": {
