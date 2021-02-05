@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import delay from 'lodash/delay';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import { MODAL_EVENTS } from '@shopgate/pwa-common/components/ModalContainer';
 import { ViewContext } from './context';
+
+export const VIEW_EVENTS = {
+  CONTENT_REF: 'View.ContentRef',
+};
 
 /**
  * The ViewProvider component.
@@ -94,6 +99,8 @@ class ViewProvider extends Component {
    */
   setContentRef = (ref) => {
     this.set('contentRef', ref);
+    // Delay to dispatch actual DOM node
+    delay(() => UIEvents.emit(VIEW_EVENTS.CONTENT_REF, ref), 250);
   }
 
   /**
