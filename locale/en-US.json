@@ -572,6 +572,7 @@
       "save": "Save",
       "address": "{city}, {region} {postalCode}",
       "edit": "Edit",
+      "change": "Change",
       "select_address": "Select a billing address"
     },
     "shipping": {
@@ -579,6 +580,7 @@
       "save": "Save",
       "address": "{city}, {region} {postalCode}",
       "edit": "Edit",
+      "change": "Change",
       "select_address": "Select a shipping address"
     },
     "creditCard": {
