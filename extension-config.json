@@ -255,6 +255,11 @@
           },
           "@shopgate/engage/reviews": {
             "prefillAuthor": true
+          },
+          "@shopgate/engage/components/TaxDisclaimer": {
+            "show": null,
+            "hint": "*",
+            "text": null
           }
         },
         "typography": {
