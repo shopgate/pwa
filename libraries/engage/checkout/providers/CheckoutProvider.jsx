@@ -4,7 +4,7 @@ import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
   i18n, useAsyncMemo, getUserAgent, LoadingProvider,
 } from '@shopgate/engage/core';
-import { MARKETING_OPT_IN_DEFAULT } from '@shopgate/engage/registration';
+import { MARKETING_OPT_IN_DEFAULT } from '@shopgate/engage/registration/constants';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';

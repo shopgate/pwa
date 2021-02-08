@@ -3,6 +3,10 @@ import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/core/selectors';
 import { forceOpenFulfillmentSlotDialog } from '@shopgate/engage/locations/components/FulfillmentSlotSwitcher/FulfillmentSlotProvider';
+import {
+  ROPIS,
+  BOPIS,
+} from '@shopgate/engage/locations/constants';
 import { SHOPGATE_CART_ADD_PRODUCTS } from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
@@ -59,8 +63,11 @@ function addToCart(data) {
       };
     });
 
+    const needsScheduling = products
+      .some(product => [ROPIS, BOPIS].includes(product?.fulfillment?.method));
+
     // Enrich with fulfillment scheduling data.
-    if (fulfillmentScheduling) {
+    if (needsScheduling && fulfillmentScheduling) {
       let fulfillmentSlot = getActiveFulfillmentSlot(state);
 
       // Make sure that a fulfillment slot has been chosen first!
@@ -69,13 +76,18 @@ function addToCart(data) {
       }
 
       // Enrich slot id to fulfillment settings of all line items.
-      products = products.map(product => ({
-        ...product,
-        fulfillment: product.fulfillment ? {
-          ...product.fulfillment,
-          slotId: fulfillmentSlot.id,
-        } : undefined,
-      }));
+      products = products.map((product) => {
+        const isRope = [ROPIS, BOPIS].includes(product?.fulfillment?.method);
+
+        return ({
+          ...product,
+          fulfillment: product.fulfillment ? {
+            ...product.fulfillment,
+            slotId: isRope ? fulfillmentSlot.id : undefined,
+            location: isRope ? product.fulfillment?.location : undefined,
+          } : undefined,
+        });
+      });
     }
 
     // Dispatch pipeline request.
