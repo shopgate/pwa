@@ -66,6 +66,8 @@
         "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
         "default_billing": "Primary Bill To Address",
         "default_shipping": "Primary Ship To Address",
+        "save_default_billing": "Save as default billing address for future orders",
+        "save_default_shipping": "Save as default shipping address for future orders",
         "save": "Save",
         "add": "Add Address",
         "success": "Saved Profile",

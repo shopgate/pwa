@@ -67,6 +67,8 @@
         "marketing_opt_in_label": "Halte mich auf dem Laufenden mit Neuigkeiten und exklusiven Angeboten.",
         "default_billing": "Standard Rechnungsadresse",
         "default_shipping": "Standard Lieferadresse",
+        "save_default_billing": "Diese Rechnungsadresse für künftige Bestellungen speichern",
+        "save_default_shipping": "Diese Lieferadresse für künftige Bestellungen speichern",
         "save": "Speichern",
         "add": "Adresse hinzufügen",
         "success": "Profil gespeichert",
