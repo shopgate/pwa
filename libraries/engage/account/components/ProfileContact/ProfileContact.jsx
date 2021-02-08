@@ -114,6 +114,10 @@ const ProfileContact = ({
       } : {}),
     };
 
+    const fieldsUpdated = Object.keys(values)
+      .filter(key => !['isDefaultBilling', 'isDefaultShipping'].includes(key))
+      .some(key => values[key] !== contact[key]);
+
     try {
       if (contact?.id) {
         await updateContact(contact.id, finalValues);
@@ -121,7 +125,7 @@ const ProfileContact = ({
         ({ contactIds: [contactId] } = await addContact(finalValues));
       }
 
-      if (updateOrderWithContact) {
+      if (updateOrderWithContact && fieldsUpdated) {
         await updateOrderWithContact(contactId);
         return;
       }

@@ -70,6 +70,9 @@ const styles = {
     paddingTop: 8,
   }).toString(),
   button: css({
+    '&&:disabled': {
+      padding: '8px 0',
+    },
     '&&': {
       marginTop: 8,
       borderRadius: 5,
@@ -163,22 +166,17 @@ const ProfileAddressCard = ({
               {i18n.text('account.profile.address_book.default_shipping')}
             </span>
           ) : null}
-
-          { selected ? (
-            <span className={styles.selectedLabel}>
-              {i18n.text('account.profile.address_book.selected')}
-            </span>
-          ) : null}
         </div>
         <div className={classNames(styles.column, styles.selectButtonColumn)}>
-          { isCheckout && !selected ? (
+          { isCheckout ? (
             <RippleButton
               className={styles.button}
               rippleClassName={styles.ripple}
               type="secondary"
+              disabled={selected}
               onClick={selectContact}
             >
-              {i18n.text('account.profile.address_book.select')}
+              {i18n.text(`account.profile.address_book.${selected ? 'selected' : 'select'}`)}
             </RippleButton>
           ) : null}
         </div>

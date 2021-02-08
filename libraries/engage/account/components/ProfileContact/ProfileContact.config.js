@@ -78,13 +78,17 @@ export const generateFormConfig = (supportedCountries, userLocation, isCheckout,
     ...(!isCheckout || type === ADDRESS_TYPE_BILLING ? {
       isDefaultBilling: {
         type: 'checkbox',
-        label: i18n.text('account.profile.form.default_billing'),
+        label: i18n.text(!isCheckout ?
+          'account.profile.form.default_billing' :
+          'account.profile.form.save_default_billing'),
       },
     } : {}),
     ...(!isCheckout || type === ADDRESS_TYPE_SHIPPING ? {
       isDefaultShipping: {
         type: 'checkbox',
-        label: i18n.text('account.profile.form.default_shipping'),
+        label: i18n.text(!isCheckout ?
+          'account.profile.form.default_shipping' :
+          'account.profile.form.save_default_shipping'),
       },
     } : {}),
   },
