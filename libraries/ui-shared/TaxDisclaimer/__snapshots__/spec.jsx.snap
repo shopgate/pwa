@@ -1,20 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TaxDisclaimer /> should display null 1`] = `
-<Fragment>
-  <Portal
-    name="product.tax-disclaimer.before"
-    props={null}
-  />
-  <Portal
-    name="product.tax-disclaimer"
-    props={null}
-  />
-  <Portal
-    name="product.tax-disclaimer.after"
-    props={null}
-  />
-</Fragment>
+<SurroundPortals
+  portalName="product.tax-disclaimer"
+  portalProps={
+    Object {
+      "showTaxDisclaimer": false,
+    }
+  }
+/>
 `;
 
 exports[`<TaxDisclaimer /> should display the component 1`] = `
