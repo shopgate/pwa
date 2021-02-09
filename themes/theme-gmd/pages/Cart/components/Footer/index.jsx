@@ -9,16 +9,16 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Footer = ({ showTaxDisclaimer, showCouponsHint }) => (
+const Footer = ({ hasCartItems, showCouponsHint }) => (
   <Fragment>
     {showCouponsHint && <CouponsHint />}
-    {showTaxDisclaimer && <TaxDisclaimer />}
+    {hasCartItems && <TaxDisclaimer />}
   </Fragment>
 );
 
 Footer.propTypes = {
+  hasCartItems: PropTypes.bool.isRequired,
   showCouponsHint: PropTypes.bool.isRequired,
-  showTaxDisclaimer: PropTypes.bool.isRequired,
 };
 
 export default connect(Footer);
