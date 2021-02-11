@@ -8,19 +8,24 @@ import { HIDE_TAB_BAR, SHOW_TAB_BAR } from './constants';
  * @returns {JSX}
  */
 function ScrollTabBar() {
-  const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/TabBar');
+  const { hideOnScroll = false } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
   const [viewContentRef, setViewContentRef] = useState({});
 
   useEffect(() => {
-    UIEvents.addListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
-
-    return () => UIEvents.removeListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
-  }, []);
+    if (hideOnScroll) {
+      UIEvents.addListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
+      return () => UIEvents.removeListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
+    }
+    return null;
+  }, [hideOnScroll]);
 
   const onScroll = useCallback((callbackData) => {
+    if (!hideOnScroll) {
+      return;
+    }
     const { scrolled, scrollOut, scrollIn } = callbackData;
-    if (scrolled && hideOnScroll) {
+    if (scrolled) {
       if (scrollOut) {
         UIEvents.emit(HIDE_TAB_BAR, { scroll: true });
       }
