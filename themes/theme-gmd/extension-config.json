@@ -253,6 +253,9 @@
             "buttonTextColor": "$.colors.accent",
             "buttonTextColorDisabled": "$.colors.shade4"
           },
+          "@shopgate/engage/components/FilterBar": {
+            "hideOnScroll": true
+          },
           "@shopgate/engage/product/ProductGrid": {
             "columns": 2
           },
