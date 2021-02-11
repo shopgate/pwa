@@ -17,7 +17,7 @@ function ScrollTabBar() {
       UIEvents.addListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
       return () => UIEvents.removeListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
     }
-    return null;
+    return undefined;
   }, [hideOnScroll]);
 
   const onScroll = useCallback((callbackData) => {

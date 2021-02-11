@@ -14,13 +14,17 @@ import { header, hidden } from './style';
  *
  * @refactor since Engage 6.14.0
  */
-function ScrollHeader({ children }) {
+function ScrollHeader({ children, hideOnScroll }) {
   const ref = useRef();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
   const { contentRef } = useContext(ViewContext);
   const [offset, setOffset] = useState(0);
 
   const onScroll = useCallback((callbackData) => {
+    if (!hideOnScroll) {
+      return;
+    }
+
     const {
       previousScrollTop, currentScrollTop, scrolled, scrollOut,
     } = callbackData;
@@ -32,7 +36,7 @@ function ScrollHeader({ children }) {
       }
       setShouldHideHeader(scrollOut && stickHeader);
     }
-  }, [offset]);
+  }, [hideOnScroll, offset]);
 
   useScroll(onScroll, contentRef.current);
 
@@ -51,6 +55,11 @@ function ScrollHeader({ children }) {
 
 ScrollHeader.propTypes = {
   children: PropTypes.node.isRequired,
+  hideOnScroll: PropTypes.bool,
+};
+
+ScrollHeader.defaultProps = {
+  hideOnScroll: true,
 };
 
 export default ScrollHeader;
