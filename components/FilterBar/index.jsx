@@ -29,16 +29,8 @@ function FilterBar({ filters }) {
     color: active ? colors.accentContrast : colors.dark,
   }), [active]);
 
-  if (!hideOnScroll) {
-    return (
-      <div className={styles} data-test-id="filterBar" style={style}>
-        <Content />
-      </div>
-    );
-  }
-
   return (
-    <ScrollHeader>
+    <ScrollHeader hideOnScroll={hideOnScroll}>
       <div className={styles} data-test-id="filterBar" style={style}>
         <Content />
       </div>
