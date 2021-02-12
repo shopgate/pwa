@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import Content from './components/Content';
-import ViewProvider, { VIEW_EVENTS } from './provider';
+import ViewProvider from './provider';
 import { ViewContext } from './context';
 import styles, { setBackgroundColor } from './style';
 
 const { colors } = themeConfig;
 
 // api: import { ViewContext } from '@shopgate/engage/components/View';
-export { ViewContext, VIEW_EVENTS };
+export { ViewContext };
 
 /**
  * The View container component.

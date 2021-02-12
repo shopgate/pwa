@@ -1,10 +1,9 @@
 import React, {
-  useState, useContext, useRef, useCallback,
+  useState, useRef, useCallback, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { ViewContext } from '../View';
-import { useScroll } from '../../core/hooks/useScroll';
+import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
 import { header, hidden } from './style';
 
 /**
@@ -14,31 +13,31 @@ import { header, hidden } from './style';
  *
  * @refactor since Engage 6.14.0
  */
-function ScrollHeader({ children, hideOnScroll }) {
+function ScrollHeader({ children, hideOnScroll, scrollOffset }) {
   const ref = useRef();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
-  const { contentRef } = useContext(ViewContext);
-  const [offset, setOffset] = useState(0);
 
-  const onScroll = useCallback((callbackData) => {
-    if (!hideOnScroll) {
-      return;
-    }
-
+  const onScroll = useCallback((scrollEvent) => {
     const {
-      previousScrollTop, currentScrollTop, scrolled, scrollOut,
-    } = callbackData;
+      scrollTop, scrolled, scrollOut, scrollIn,
+    } = scrollEvent;
     if (scrolled) {
-      const box = ref.current.getBoundingClientRect();
-      const stickHeader = currentScrollTop >= offset + 100;
-      if (!previousScrollTop) {
-        setOffset(currentScrollTop + box.top);
+      if (!shouldHideHeader && scrollOut && scrollTop >= scrollOffset) {
+        setShouldHideHeader(true);
       }
-      setShouldHideHeader(scrollOut && stickHeader);
+      if (shouldHideHeader && scrollIn) {
+        setShouldHideHeader(false);
+      }
     }
-  }, [hideOnScroll, offset]);
+  }, [scrollOffset, shouldHideHeader]);
 
-  useScroll(onScroll, contentRef.current);
+  useEffect(() => {
+    if (hideOnScroll) {
+      const subscription = viewScroll$.subscribe(onScroll);
+      return () => subscription.unsubscribe();
+    }
+    return undefined;
+  });
 
   return (
     <div
@@ -56,10 +55,12 @@ function ScrollHeader({ children, hideOnScroll }) {
 ScrollHeader.propTypes = {
   children: PropTypes.node.isRequired,
   hideOnScroll: PropTypes.bool,
+  scrollOffset: PropTypes.number,
 };
 
 ScrollHeader.defaultProps = {
   hideOnScroll: true,
+  scrollOffset: 100,
 };
 
 export default ScrollHeader;

@@ -1,32 +1,27 @@
-import { useCallback, useEffect, useState } from 'react';
-import { UIEvents, useScroll, useWidgetSettings } from '@shopgate/engage/core';
-import { VIEW_EVENTS } from '@shopgate/engage/components';
+import { useCallback, useEffect } from 'react';
+import { themeConfig } from '@shopgate/engage';
+import { UIEvents, useWidgetSettings } from '@shopgate/engage/core';
+import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
 import { HIDE_TAB_BAR, SHOW_TAB_BAR } from './constants';
+
+const { variables: { scroll: { offset = 100 } } } = themeConfig;
 
 /**
  * Scroll TabBar
  * @returns {JSX}
  */
 function ScrollTabBar() {
-  const { hideOnScroll = false } = useWidgetSettings('@shopgate/engage/components/TabBar');
+  const { hideOnScroll = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
-  const [viewContentRef, setViewContentRef] = useState({});
-
-  useEffect(() => {
-    if (hideOnScroll) {
-      UIEvents.addListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
-      return () => UIEvents.removeListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
-    }
-    return undefined;
-  }, [hideOnScroll]);
-
-  const onScroll = useCallback((callbackData) => {
+  const onScroll = useCallback((scrollEvent) => {
     if (!hideOnScroll) {
       return;
     }
-    const { scrolled, scrollOut, scrollIn } = callbackData;
+    const {
+      scrolled, scrollOut, scrollIn, scrollTop,
+    } = scrollEvent;
     if (scrolled) {
-      if (scrollOut) {
+      if (scrollOut && scrollTop >= offset) {
         UIEvents.emit(HIDE_TAB_BAR, { scroll: true });
       }
       if (scrollIn) {
@@ -35,7 +30,13 @@ function ScrollTabBar() {
     }
   }, [hideOnScroll]);
 
-  useScroll(onScroll, viewContentRef.current);
+  useEffect(() => {
+    if (hideOnScroll) {
+      const subscription = viewScroll$.subscribe(onScroll);
+      return () => subscription.unsubscribe();
+    }
+    return undefined;
+  });
 
   return null;
 }

@@ -166,7 +166,7 @@ export { default as VideoPlayer } from './VideoPlayer';
 export { default as SheetDrawer } from './SheetDrawer';
 export { default as SheetList } from './SheetList';
 export { default as NullComponent } from './NullComponent';
-export { default as View, ViewContext, VIEW_EVENTS } from './View';
+export { default as View, ViewContext } from './View';
 export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';

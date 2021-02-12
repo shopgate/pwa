@@ -308,6 +308,9 @@
         "variables": {
           "toast": {
             "duration": 5000
+          },
+          "scroll": {
+            "hideOffset": 100
           }
         },
         "shadows": {
