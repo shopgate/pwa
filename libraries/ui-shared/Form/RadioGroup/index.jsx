@@ -72,6 +72,7 @@ class RadioGroup extends Component {
 
     return (
       <FormElement
+        className="ui-shared__form__radio-group"
         label={label}
         errorText={errorText}
         translateErrorText={translateErrorText}

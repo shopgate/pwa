@@ -69,7 +69,7 @@ class FormElement extends Component {
     } = this.props;
 
     return (
-      <div className={classNames(style.formElement, className, 'formElement')}>
+      <div className={classNames(style.formElement, className, 'formElement', 'ui-shared__form-element')}>
         {hasPlaceholder &&
           <Placeholder
             visible={this.isPlaceholderVisible}

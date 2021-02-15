@@ -87,7 +87,7 @@ class Button extends Component {
     ) : this.props.children;
 
     return (
-      <BaseButton {...this.buttonProps} className={`${style.button} ${this.props.className}`} testId={this.props.testId}>
+      <BaseButton {...this.buttonProps} className={`ui-shared__button ${style.button} ${this.props.className}`} testId={this.props.testId}>
         {content}
       </BaseButton>
     );

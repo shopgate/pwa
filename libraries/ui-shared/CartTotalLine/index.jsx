@@ -16,10 +16,14 @@ const CartTotalLine = ({ children, type, isDisabled }) => {
 
   return (
     <div
-      className={classNames(styles.line, {
-        [styles.disabled]: isDisabled,
-        [styles[type] || styles.base]: true,
-      })}
+      className={classNames(
+        'ui-shared__cart-total-line',
+        styles.line,
+        {
+          [styles.disabled]: isDisabled,
+          [styles[type] || styles.base]: true,
+        }
+      )}
       data-test-id={`${type}CartTotal`}
     >
       {children}

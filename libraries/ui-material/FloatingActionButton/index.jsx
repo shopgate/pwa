@@ -29,6 +29,7 @@ const FloatingActionButton = (props) => {
   } = props;
 
   const classes = classNames(
+    'floating-action-button',
     styles.button,
     {
       [className]: className,

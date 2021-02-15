@@ -23,7 +23,8 @@ const Price = (props, context) => {
     {
       [styles.discounted]: props.discounted,
     },
-    'price'
+    'price',
+    'ui-shared__price'
   );
 
   const { __, _p } = context.i18n();

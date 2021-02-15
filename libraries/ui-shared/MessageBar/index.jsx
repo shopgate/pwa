@@ -14,7 +14,7 @@ import styles from './style';
  */
 const MessageBar = memo(({ messages, classNames }) => (
   <div
-    className={classnames(styles.container, classNames.container)}
+    className={classnames(styles.container, classNames.container, 'ui-shared__message-bar')}
     role={messages.length > 0 ? 'alert' : null}
   >
     {messages.map((item) => {

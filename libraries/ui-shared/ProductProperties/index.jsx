@@ -13,7 +13,7 @@ const Properties = ({ lineClamp, properties }) => {
   }
 
   return (
-    <ul>
+    <ul className="ui-shared__properties">
       {properties.map(({ label, value }) => (
         <li key={`${label}-${value}`}>
           {lineClamp &&

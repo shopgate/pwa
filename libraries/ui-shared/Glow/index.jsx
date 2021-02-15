@@ -86,7 +86,7 @@ class Glow extends Component {
     return (
       <div
         {...rest}
-        className={classNames(styles.container, className)}
+        className={classNames(styles.container, className, 'ui-shared__glow')}
         onClick={this.handleTouchTap}
         style={propStyles.container}
         ref={forwardedRef}
