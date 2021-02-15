@@ -11,7 +11,7 @@ const { variables: { scroll: { offset = 100 } } } = themeConfig;
  * @returns {JSX}
  */
 function ScrollTabBar() {
-  const { hideOnScroll = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
+  const { hideOnScroll = false } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
   const onScroll = useCallback((scrollEvent) => {
     if (!hideOnScroll) {
