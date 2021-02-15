@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import { DIRECT_SHIP } from '@shopgate/engage/locations';
+import { DIRECT_SHIP, ROPIS, BOPIS } from '@shopgate/engage/locations';
 import {
   convertLineItemsToCartItems,
   getCheckoutTaxLinesFromOrder,
@@ -183,7 +183,7 @@ export const getIsReserveOnly = createSelector(
 /**
  * Returns whether the current order just consists out of directShip items
  */
-export const getIsOrderDirectShipOnly = createSelector(
+export const getIsDirectShipOnly = createSelector(
   getCheckoutOrderLineItems,
   (lineItems) => {
     if (!Array.isArray(lineItems) || lineItems.length === 0) {
@@ -194,11 +194,35 @@ export const getIsOrderDirectShipOnly = createSelector(
   }
 );
 
+export const getHasDirectShipItems = createSelector(
+  getCheckoutOrderLineItems,
+  (lineItems) => {
+    if (!Array.isArray(lineItems) || lineItems.length === 0) {
+      return false;
+    }
+
+    return lineItems.some(({ fulfillmentMethod }) => fulfillmentMethod === DIRECT_SHIP);
+  }
+);
+
+export const getHasROPEItems = createSelector(
+  getCheckoutOrderLineItems,
+  (lineItems) => {
+    if (!Array.isArray(lineItems) || lineItems.length === 0) {
+      return false;
+    }
+
+    return lineItems.some(({ fulfillmentMethod }) => [ROPIS, BOPIS].includes(fulfillmentMethod));
+  }
+);
+
 /**
  * Returns whether the shipping address selection is enabled
  */
 export const getIsShippingAddressSelectionEnabled = createSelector(
-  getIsOrderDirectShipOnly,
+  getHasDirectShipItems,
   isUserLoggedIn,
   (isOrderDirectShipOnly, loggedIn) => !!loggedIn && isOrderDirectShipOnly
 );
+
+export const getIsPickupContactSelectionEnabled = getHasROPEItems;

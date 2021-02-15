@@ -10,6 +10,7 @@ import {
   getCheckoutPaymentTransactions,
   getIsReserveOnly,
   getIsShippingAddressSelectionEnabled,
+  getIsPickupContactSelectionEnabled,
   getCheckoutFulfillmentSlot,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
@@ -50,6 +51,7 @@ function makeMapStateToProps() {
     taxLines: getCheckoutTaxLines(state),
     orderReserveOnly: getIsReserveOnly(state),
     isShippingAddressSelectionEnabled: getIsShippingAddressSelectionEnabled(state),
+    isPickupContactSelectionEnabled: getIsPickupContactSelectionEnabled(state),
     campaignAttribution: getCampaignAttribution(state),
     order: getCheckoutOrder(state),
     isLastStackEntry: isLastStackEntry(state, props),

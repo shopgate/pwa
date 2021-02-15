@@ -26,9 +26,9 @@ type Props = {
   isDataReady: bool,
   orderReserveOnly?: bool,
   isShippingAddressSelectionEnabled?: bool,
+  isPickupContactSelectionEnabled?: bool,
   campaignAttribution: any,
   order: any,
-  isLastStackEntry: bool,
   fetchCart: () => Promise<any>,
   prepareCheckout: () => Promise<any>,
   fetchCheckoutOrder: () => Promise<any>,
@@ -94,10 +94,10 @@ const CheckoutProvider = ({
   fulfillmentSlot,
   orderReserveOnly,
   isShippingAddressSelectionEnabled,
+  isPickupContactSelectionEnabled,
   campaignAttribution,
   clearCheckoutCampaign,
   order: checkoutOrder,
-  isLastStackEntry,
 }: Props) => {
   const [paymentButton, setPaymentButton] = React.useState(null);
   const paymentHandlerRef = React.useRef(null);
@@ -121,7 +121,7 @@ const CheckoutProvider = ({
   const [{ isCheckoutInitialized, needsPayment }] = useAsyncMemo(async () => {
     try {
       const { needsPayment: needsPaymentCheckout, success } = await prepareCheckout({
-        initializeOrder: !orderInitialized && !!isLastStackEntry,
+        initializeOrder: !orderInitialized,
       });
 
       setLocked(false);
@@ -170,7 +170,8 @@ const CheckoutProvider = ({
             ...(isShippingAddressSelectionEnabled ? {
               ...shippingAddress,
               customerContactId: shippingAddress.customerContactId || undefined,
-            } : {
+            } : []),
+            ...(isPickupContactSelectionEnabled ? {
               // When the customer is picking up himself we just take the
               // billing address as pickup address.
               ...(values.pickupPerson === 'me' ? {
@@ -184,8 +185,7 @@ const CheckoutProvider = ({
                 mobile: values.mobile,
                 emailAddress: values.emailAddress,
               }),
-            }),
-
+            } : []),
           ],
           primaryBillToAddressSequenceIndex: 0,
           primaryShipToAddressSequenceIndex: 1,
@@ -273,6 +273,7 @@ const CheckoutProvider = ({
     billingAddress,
     isShippingAddressSelectionEnabled,
     shippingAddress,
+    isPickupContactSelectionEnabled,
     paymentTransactions,
     updateOptIns,
     submitCheckoutOrder,
@@ -341,6 +342,7 @@ const CheckoutProvider = ({
     needsPayment,
     orderReserveOnly,
     isShippingAddressSelectionEnabled,
+    isPickupContactSelectionEnabled,
     fulfillmentSlot,
     optInFormSetValues: optInFormState.setValues,
     defaultOptInFormState,
@@ -366,6 +368,7 @@ const CheckoutProvider = ({
     taxLines,
     orderReserveOnly,
     isShippingAddressSelectionEnabled,
+    isPickupContactSelectionEnabled,
     fulfillmentSlot,
     optInFormState.setValues,
     defaultOptInFormState,
@@ -426,6 +429,7 @@ CheckoutProvider.defaultProps = {
   orderReadOnly: false,
   orderReserveOnly: false,
   isShippingAddressSelectionEnabled: false,
+  isPickupContactSelectionEnabled: false,
 };
 
 export default connect(CheckoutProvider);

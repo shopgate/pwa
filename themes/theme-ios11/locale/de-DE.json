@@ -701,6 +701,7 @@
   "registration": {
     "create_account": "Account erstellen",
     "marketing_opt_in_label": "Halte mich auf dem Laufenden mit Neuigkeiten und exklusiven Angeboten.",
+    "different_shipping_address_label": "Abweichende Lieferadresse",
     "headlines": {
       "create_new_account": "Neuen Account erstellen",
       "shipping_address": "Lieferadresse",
@@ -729,7 +730,10 @@
     "numeric": "Bitte gib nur Zahlen ein",
     "alphaNumeric": "Gib bitte nur Buchstaben und Zahlen ein",
     "mobileNumber": "Gib bitte eine gültige Handynummer ein",
-    "date": "Bitte gib ein gültiges Datum ein"
+    "date": "Bitte gib ein gültiges Datum ein",
+    "checkField": "Bitte überprüfe dieses Feld",
+    "passwordMismatch": "Die Passwörter stimmen nicht überein",
+    "minPasswordLength": "Die minimale Passwortlänge beträgt %\\{count\\} Zeichen"
   },
   "formats": {
     "date": {

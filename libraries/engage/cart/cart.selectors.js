@@ -112,3 +112,8 @@ export const getPromotionCoupons = createSelector(
     };
   })
 );
+
+export const hasDirectShipItems = createSelector(
+  getCartItems,
+  cartItems => cartItems.some(item => !item?.fulfillment)
+);

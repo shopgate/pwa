@@ -1,8 +1,9 @@
 import React, { useMemo, useCallback } from 'react';
 import { FormBuilder } from '@shopgate/engage/components';
+import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { useRegistration } from '../../hooks';
 import generateFormConfig from './RegistrationFormExtra.config';
-import { form } from './Registration.style';
+import { form, section } from './Registration.style';
 /**
  * @returns {JSX}
  */
@@ -24,14 +25,16 @@ const RegistrationFormExtra = () => {
   }, [updateExtraForm]);
 
   return (
-    <FormBuilder
-      className={form}
-      name="RegistrationExtra"
-      config={formConfig}
-      defaults={defaultExtraFormState}
-      validationErrors={extraFormRequestErrors}
-      handleUpdate={handleUpdate}
-    />
+    <Section className={section} hasForm>
+      <FormBuilder
+        className={form}
+        name="RegistrationExtra"
+        config={formConfig}
+        defaults={defaultExtraFormState}
+        validationErrors={extraFormRequestErrors}
+        handleUpdate={handleUpdate}
+      />
+    </Section>
   );
 };
 

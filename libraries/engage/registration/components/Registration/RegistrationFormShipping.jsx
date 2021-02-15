@@ -1,10 +1,12 @@
 import React, { useMemo, useCallback } from 'react';
+import classNames from 'classnames';
 import { FormBuilder } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
-import RegistrationFormExtra from './RegistrationFormExtra';
 import generateFormConfig from './RegistrationFormShipping.config';
-import { form, containerItem, section } from './Registration.style';
+import {
+  form, section, shippingFormSection, hidden,
+} from './Registration.style';
 
 /**
  * The RegistrationFormShipping component.
@@ -17,6 +19,7 @@ const RegistrationFormShipping = () => {
     defaultShippingFormState,
     shippingFormValidationErrors,
     updateShippingForm,
+    isShippingFormVisible,
   } = useRegistration();
 
   const formConfig = useMemo(
@@ -29,8 +32,15 @@ const RegistrationFormShipping = () => {
   }, [updateShippingForm]);
 
   return (
-    <div className={containerItem}>
-      <Section title="registration.headlines.shipping_address" className={section} hasForm>
+    <div className={classNames({
+      [hidden]: !isShippingFormVisible,
+    })}
+    >
+      <Section
+        title="registration.headlines.shipping_address"
+        className={classNames(section, shippingFormSection)}
+        hasForm
+      >
         <FormBuilder
           className={form}
           name="RegistrationShipping"
@@ -40,10 +50,8 @@ const RegistrationFormShipping = () => {
           handleUpdate={handleUpdate}
         />
       </Section>
-      <Section className={section} hasForm>
-        <RegistrationFormExtra />
-      </Section>
     </div>
+
   );
 };
 

@@ -2,12 +2,17 @@ import React, {
   useMemo, useState, useEffect, useCallback,
 } from 'react';
 import { REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { LoadingProvider, i18n } from '@shopgate/engage/core';
+import { LoadingProvider, i18n, useRoute } from '@shopgate/engage/core';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { extractDefaultValues } from '../../account/helper/form';
 import Context from './RegistrationProvider.context';
-import { baseConstraints, shippingConstraints, generateExtraConstraints } from './RegistrationProvider.constraints';
+import {
+  generateBaseConstraints,
+  billingConstraints,
+  shippingConstraints,
+  generateExtraConstraints,
+} from './RegistrationProvider.constraints';
 import connect from './RegistrationProvider.connector';
 import { MARKETING_OPT_IN_DEFAULT } from '../constants';
 
@@ -17,6 +22,7 @@ type Props = {
   userLocation: any,
   customerAttributes: any,
   isDataReady: bool,
+  cartHasDirectShipItems?: bool,
   submitRegistration: () => Promise<any>,
   formContainerRef?: any,
 };
@@ -27,7 +33,7 @@ const initialBaseFormState = {
   passwordConfirm: '',
 };
 
-const initialShippingFormState = {
+const initialAddressFormState = {
   firstName: '',
   lastName: '',
   company: '',
@@ -37,6 +43,14 @@ const initialShippingFormState = {
   country: '',
   postalCode: '',
   mobile: '',
+};
+
+const initialBillingFormState = {
+  ...initialAddressFormState,
+};
+
+const initialShippingFormState = {
+  ...initialAddressFormState,
 };
 
 const initialOptInFormState = {
@@ -61,6 +75,7 @@ const convertValidationErrors = validationErrors => Object
  */
 const RegistrationProvider = ({
   isDataReady,
+  cartHasDirectShipItems,
   shopSettings,
   userLocation,
   customerAttributes,
@@ -70,10 +85,19 @@ const RegistrationProvider = ({
 }: Props) => {
   const [isLocked, setLocked] = useState(false);
   const [isBaseFormSubmitted, setIsBaseFormSubmitted] = useState(false);
+  const [isBillingFormSubmitted, setIsBillingFormSubmitted] = useState(false);
   const [isShippingFormSubmitted, setIsShippingFormSubmitted] = useState(false);
   const [isExtraFormSubmitted, setIsExtraFormSubmitted] = useState(false);
   const [baseFormRequestErrors, setBaseFormRequestErrors] = useState(null);
+  const [billingFormRequestErrors, setBillingFormRequestErrors] = useState(null);
   const [shippingFormRequestErrors, setShippingFormRequestErrors] = useState(null);
+  const [isShippingFormVisible, setIsShippingFormVisible] = useState(false);
+  const { query } = useRoute();
+
+  const enableShippingForm = useMemo(
+    () => query?.checkout && cartHasDirectShipItems,
+    [cartHasDirectShipItems, query]
+  );
 
   // Determine values to prefill some form fields
   const userCountry = useMemo(
@@ -83,6 +107,8 @@ const RegistrationProvider = ({
 
   const userRegion = useMemo(() => userLocation?.region || null, [userLocation]);
 
+  const baseConstraints = useMemo(() => generateBaseConstraints(), []);
+
   const extraConstraints = useMemo(
     () => generateExtraConstraints(customerAttributes), [customerAttributes]
   );
@@ -91,6 +117,12 @@ const RegistrationProvider = ({
   const defaultBaseFormState = {
     ...initialBaseFormState,
   };
+
+  const defaultBillingFormState = useMemo(() => ({
+    ...initialBillingFormState,
+    country: userCountry,
+    region: userRegion,
+  }), [userCountry, userRegion]);
 
   const defaultShippingFormState = useMemo(() => ({
     ...initialShippingFormState,
@@ -108,6 +140,10 @@ const RegistrationProvider = ({
     setIsBaseFormSubmitted(true);
   }, [setIsBaseFormSubmitted]);
 
+  const handleBillingFormSubmit = useCallback(() => {
+    setIsBillingFormSubmitted(true);
+  }, [setIsBillingFormSubmitted]);
+
   const handleShippingFormSubmit = useCallback(() => {
     setIsShippingFormSubmitted(true);
   }, [setIsShippingFormSubmitted]);
@@ -121,6 +157,13 @@ const RegistrationProvider = ({
     defaultBaseFormState,
     handleBaseFormSubmit,
     baseConstraints,
+    formContainerRef
+  );
+
+  const billingFormState = useFormState(
+    defaultBillingFormState,
+    handleBillingFormSubmit,
+    billingConstraints,
     formContainerRef
   );
 
@@ -141,18 +184,31 @@ const RegistrationProvider = ({
   // Central submit handler
   const handleSubmit = useCallback(() => {
     baseFormState.handleSubmit(new Event('submit'));
+    billingFormState.handleSubmit(new Event('submit'));
     shippingFormState.handleSubmit(new Event('submit'));
     extraFormState.handleSubmit(new Event('submit'));
-  }, [baseFormState, extraFormState, shippingFormState]);
+  }, [baseFormState, billingFormState, extraFormState, shippingFormState]);
 
   useEffect(() => {
-    // Break the process when both forms are not submitted yet
-    if (!isBaseFormSubmitted || !isShippingFormSubmitted || !isExtraFormSubmitted) {
+    // Break the process when the forms are not submitted yet
+    if (
+      !isBaseFormSubmitted ||
+      !isBillingFormSubmitted ||
+      !isShippingFormSubmitted ||
+      !isExtraFormSubmitted
+    ) {
       return;
     }
+
     // Break the process when one of the forms has validation errors from the constraints
-    if (!baseFormState.valid || !shippingFormState.valid || !extraFormState.valid) {
+    if (
+      !baseFormState.valid ||
+      !billingFormState.valid ||
+      (isShippingFormVisible && !shippingFormState.valid) ||
+      !extraFormState.valid
+    ) {
       setIsBaseFormSubmitted(false);
+      setIsBillingFormSubmitted(false);
       setIsShippingFormSubmitted(false);
       setIsExtraFormSubmitted(false);
       return;
@@ -162,44 +218,61 @@ const RegistrationProvider = ({
     const fn = async () => {
       setLocked(true);
 
-      const response = await submitRegistration(
-        baseFormState.values,
-        shippingFormState.values,
-        extraFormState.values
-      );
+      const response = await submitRegistration({
+        baseFormData: baseFormState.values,
+        billingFormData: billingFormState.values,
+        additionalFormData: extraFormState.values,
+        ...(isShippingFormVisible ? {
+          shippingFormData: shippingFormState.values,
+        } : {}),
+      });
 
       const { errors } = response || {};
 
       // Updated the request validation errors
       setBaseFormRequestErrors(errors?.baseFormData || null);
+      setBillingFormRequestErrors(errors?.billingFormData || null);
       setShippingFormRequestErrors(errors?.shippingFormData || null);
 
       // Release forms for additional submits
       setIsBaseFormSubmitted(false);
+      setIsBillingFormSubmitted(false);
       setIsShippingFormSubmitted(false);
       setIsExtraFormSubmitted(false);
       setLocked(false);
     };
 
     fn();
+  /* eslint-disable react-hooks/exhaustive-deps */
   }, [
-    baseFormState.valid,
-    baseFormState.validationErrors,
-    baseFormState.values,
-    shippingFormState.valid,
-    shippingFormState.values,
     isBaseFormSubmitted,
+    isBillingFormSubmitted,
     isShippingFormSubmitted,
     isExtraFormSubmitted,
-    submitRegistration,
-    extraFormState.values,
+    baseFormState.valid,
+    billingFormState.valid,
+    shippingFormState.valid,
     extraFormState.valid,
+    isShippingFormVisible,
+    submitRegistration,
   ]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     baseFormState.scrollToError();
-  }, [baseFormRequestErrors, shippingFormRequestErrors, baseFormState.scrollToError]);
+  }, [
+    baseFormRequestErrors,
+    billingFormRequestErrors,
+    shippingFormRequestErrors,
+    baseFormState.scrollToError,
+  ]);
+  /* eslint-enable react-hooks/exhaustive-deps */
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    shippingFormState.setIgnoreErrors(!isShippingFormVisible);
+  }, [isShippingFormVisible]);
   /* eslint-enable react-hooks/exhaustive-deps */
 
   useEffect(() => {
@@ -216,10 +289,14 @@ const RegistrationProvider = ({
       customerAttributes,
       userLocation,
       defaultBaseFormState,
+      defaultBillingFormState,
       defaultShippingFormState,
       defaultExtraFormState,
       baseFormValidationErrors: convertValidationErrors(
         baseFormState.validationErrors || baseFormRequestErrors || {}
+      ),
+      billingFormValidationErrors: convertValidationErrors(
+        billingFormState.validationErrors || billingFormRequestErrors || {}
       ),
       shippingFormValidationErrors: convertValidationErrors(
         shippingFormState.validationErrors || shippingFormRequestErrors || {}
@@ -229,18 +306,26 @@ const RegistrationProvider = ({
       ),
       handleSubmit,
       updateBaseForm: baseFormState.setValues,
+      updateBillingForm: billingFormState.setValues,
       updateShippingForm: shippingFormState.setValues,
       updateExtraForm: extraFormState.setValues,
+      enableShippingForm,
+      isShippingFormVisible,
+      setIsShippingFormVisible,
     }),
     [
       shopSettings.supportedCountries,
       customerAttributes,
       userLocation,
       defaultBaseFormState,
+      defaultBillingFormState,
       defaultShippingFormState,
       baseFormState.validationErrors,
       baseFormState.setValues,
       baseFormRequestErrors,
+      billingFormState.validationErrors,
+      billingFormState.setValues,
+      billingFormRequestErrors,
       shippingFormState.validationErrors,
       shippingFormState.setValues,
       shippingFormRequestErrors,
@@ -248,6 +333,9 @@ const RegistrationProvider = ({
       defaultExtraFormState,
       extraFormState.setValues,
       extraFormState.validationErrors,
+      enableShippingForm,
+      isShippingFormVisible,
+      setIsShippingFormVisible,
     ]
   );
 
@@ -264,6 +352,7 @@ const RegistrationProvider = ({
 
 RegistrationProvider.defaultProps = {
   formContainerRef: null,
+  cartHasDirectShipItems: false,
 };
 
 export default connect(RegistrationProvider);

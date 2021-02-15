@@ -60,7 +60,7 @@ const PickupContactForm = () => {
     defaultPickupPersonState,
     formValidationErrors,
     formSetValues,
-    isShippingAddressSelectionEnabled,
+    isPickupContactSelectionEnabled,
   } = useCheckoutContext();
 
   const formConfig = React.useMemo(
@@ -72,7 +72,7 @@ const PickupContactForm = () => {
     formSetValues(values);
   }, [formSetValues]);
 
-  if (isShippingAddressSelectionEnabled) {
+  if (!isPickupContactSelectionEnabled) {
     return null;
   }
 

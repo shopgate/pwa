@@ -1,3 +1,6 @@
+import setWith from 'lodash/setWith';
+import { i18n } from '@shopgate/engage/core';
+
 /**
  * Converts validation errors from the shopgate.user.register pipeline
  * @param {Array} errors The errors
@@ -9,15 +12,20 @@ export const convertSubmitRegistrationValidationErrors = (errors) => {
   }
 
   const converted = errors.reduce((result, error) => {
-    const { subentityPath, message } = error;
-    const [, index, field] = subentityPath;
-    /* eslint-disable no-param-reassign */
-    if (!result[index]) {
-      result[index] = {};
+    const {
+      subentityPath, path,
+    } = error;
+
+    let { message } = error;
+
+    if (path) {
+      message = i18n.text('validation.checkField');
+      setWith(result, path.slice(2).join('.'), message, Object);
+    } else if (subentityPath) {
+      message = i18n.text('validation.checkField');
+      setWith(result, subentityPath.join('.'), message, Object);
     }
 
-    result[index][field] = message;
-    /* eslint-enable no-param-reassign */
     return result;
   }, {});
 
