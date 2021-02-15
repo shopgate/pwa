@@ -22,10 +22,10 @@ function ScrollTabBar() {
     } = scrollEvent;
     if (scrolled) {
       if (scrollOut && scrollTop >= offset) {
-        UIEvents.emit(HIDE_TAB_BAR, { scroll: true });
+        UIEvents.emit(HIDE_TAB_BAR);
       }
       if (scrollIn) {
-        UIEvents.emit(SHOW_TAB_BAR, { scroll: true });
+        UIEvents.emit(SHOW_TAB_BAR);
       }
     }
   }, [hideOnScroll]);

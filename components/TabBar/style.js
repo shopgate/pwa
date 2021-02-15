@@ -18,26 +18,26 @@ export const updateHeightCSSProperty = (isVisible) => {
   }
 };
 
+/**
+ * @TODO Use Transition component
+ * @type {never}
+ */
 export const inVisible = css({
-  display: 'none',
-}).toString();
-
-export const scrollInVisible = css({
-  maxHeight: '0 !important',
-  minHeight: '0 !important',
+  '&&': {
+    display: 'none',
+  },
 }).toString();
 
 export default css({
-  maxHeight: 'var(--tabbar-height)',
-  minHeight: 'var(--tabbar-height)',
+  display: 'flex',
+  height: 'var(--tabbar-height)',
   position: 'relative',
-  overflow: 'hidden',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
   boxShadow: themeShadows.tabBar,
   background: themeColors.lightOverlay,
-  transition: 'max-height 0.3s ease-out, min-height 0.2s ease-in',
+  transition: 'display 0.5s ease-in-out',
   ':before': {
     position: 'absolute',
     top: 0,
