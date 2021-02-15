@@ -1,6 +1,4 @@
-import React, {
-  useState, useRef, useCallback, useEffect,
-} from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
@@ -11,10 +9,8 @@ import { header, hidden } from './style';
  * @param {Object} props props
  * @returns {JSX}
  *
- * @refactor since Engage 6.14.0
  */
 function ScrollHeader({ children, hideOnScroll, scrollOffset }) {
-  const ref = useRef();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
   const onScroll = useCallback((scrollEvent) => {
@@ -39,17 +35,14 @@ function ScrollHeader({ children, hideOnScroll, scrollOffset }) {
     return undefined;
   });
 
-  return (
-    <div
-      ref={ref}
-      className={classNames(
-        header,
-        shouldHideHeader && hidden
-      )}
-    >
-      {children}
-    </div>
-  );
+  const className = classNames(header, {
+    [hidden]: shouldHideHeader,
+  }).toString();
+
+  return React.cloneElement(children, {
+    ...children.props,
+    className: `${children.props.className.toString()} ${className}`,
+  });
 }
 
 ScrollHeader.propTypes = {
