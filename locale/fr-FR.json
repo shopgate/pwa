@@ -694,6 +694,7 @@
   "registration": {
     "create_account": "Create account",
     "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
+    "different_shipping_address_label": "Different Shipping Address",
     "headlines": {
       "create_new_account": "Create new account",
       "shipping_address": "Shipping Address",
@@ -721,7 +722,10 @@
     "numeric": "Veuillez saisir uniquement des chiffres",
     "alphaNumeric": "Saisissez uniquement des lettres et des chiffres",
     "mobileNumber": "Veuillez saisir un numéro de portable valide",
-    "date": "Please enter a valid date"
+    "date": "Please enter a valid date",
+    "checkField": "Please check this field",
+    "passwordMismatch": "Your passwords do not match",
+    "minPasswordLength": "The minimum password length must be %\\{count\\} characters"
   },
   "formats": {
     "date": {
