@@ -11,7 +11,7 @@ import {
   TAB_BAR_BEFORE,
   TAB_BAR_AFTER,
   SHOW_TAB_BAR,
-  HIDE_TAB_BAR, TAB_BAR_SCROLL_IN, TAB_BAR_SCROLL_OUT,
+  HIDE_TAB_BAR,
 } from './constants';
 import connect from './connector';
 import styles, {
@@ -72,9 +72,6 @@ class TabBar extends PureComponent {
     updateHeightCSSProperty(props.isVisible);
     UIEvents.addListener(SHOW_TAB_BAR, this.show);
     UIEvents.addListener(HIDE_TAB_BAR, this.hide);
-
-    UIEvents.addListener(TAB_BAR_SCROLL_IN, () => this.toogleScrollState(false));
-    UIEvents.addListener(TAB_BAR_SCROLL_OUT, () => this.toogleScrollState(true));
   }
 
   state = {
@@ -97,19 +94,25 @@ class TabBar extends PureComponent {
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
   }
 
-  toogleScrollState = (scrolledOut) => {
-    this.setState({
-      isScrolledOut: scrolledOut,
-    });
-  }
-
-  show = () => {
+  show = ({ scroll } = {}) => {
+    if (scroll === true) {
+      this.setState({
+        isScrolledOut: false,
+      });
+      return;
+    }
     this.setState({
       isVisible: true,
     });
   }
 
-  hide = () => {
+  hide = ({ scroll } = {}) => {
+    if (scroll === true) {
+      this.setState({
+        isScrolledOut: true,
+      });
+      return;
+    }
     this.setState({
       isVisible: false,
     });
