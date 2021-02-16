@@ -4,9 +4,10 @@ import { i18n } from '@shopgate/engage/core';
  * Generates form configuration.
  * @param {Array} supportedCountries A list of supported countries.
  * @param {Object} userLocation User location for better phone picker defaults.
+ * @param {number} numberOfAddressLines The number of address lines.
  * @returns {Object}
  */
-const generateFormConfig = (supportedCountries, userLocation) => ({
+const generateFormConfig = (supportedCountries, userLocation, numberOfAddressLines) => ({
   fields: {
     firstName: {
       type: 'text',
@@ -32,10 +33,24 @@ const generateFormConfig = (supportedCountries, userLocation) => ({
       type: 'text',
       label: `${i18n.text('checkout.pickup_contact.form.address1')} *`,
     },
-    address2: {
-      type: 'text',
-      label: i18n.text('checkout.pickup_contact.form.address2'),
-    },
+    ...(numberOfAddressLines >= 2 ? {
+      address2: {
+        type: 'text',
+        label: i18n.text('account.profile.form.address2'),
+      },
+    } : {}),
+    ...(numberOfAddressLines >= 3 ? {
+      address3: {
+        type: 'text',
+        label: i18n.text('account.profile.form.address3'),
+      },
+    } : {}),
+    ...(numberOfAddressLines >= 4 ? {
+      address4: {
+        type: 'text',
+        label: i18n.text('account.profile.form.address4'),
+      },
+    } : {}),
     postalCode: {
       type: 'text',
       label: `${i18n.text('checkout.pickup_contact.form.postalCode')} *`,

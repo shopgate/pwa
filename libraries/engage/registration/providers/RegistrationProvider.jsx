@@ -23,6 +23,7 @@ type Props = {
   customerAttributes: any,
   isDataReady: bool,
   cartHasDirectShipItems?: bool,
+  numberOfAddressLines?: number,
   submitRegistration: () => Promise<any>,
   formContainerRef?: any,
 };
@@ -79,6 +80,7 @@ const RegistrationProvider = ({
   shopSettings,
   userLocation,
   customerAttributes,
+  numberOfAddressLines,
   submitRegistration,
   children,
   formContainerRef,
@@ -312,6 +314,7 @@ const RegistrationProvider = ({
       enableShippingForm,
       isShippingFormVisible,
       setIsShippingFormVisible,
+      numberOfAddressLines,
     }),
     [
       shopSettings.supportedCountries,
@@ -336,6 +339,7 @@ const RegistrationProvider = ({
       enableShippingForm,
       isShippingFormVisible,
       setIsShippingFormVisible,
+      numberOfAddressLines,
     ]
   );
 
@@ -353,6 +357,7 @@ const RegistrationProvider = ({
 RegistrationProvider.defaultProps = {
   formContainerRef: null,
   cartHasDirectShipItems: false,
+  numberOfAddressLines: null,
 };
 
 export default connect(RegistrationProvider);

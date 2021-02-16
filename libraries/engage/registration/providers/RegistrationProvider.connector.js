@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
+import { getNumberOfAddressLines } from '@shopgate/engage/core';
 import { hasDirectShipItems } from '@shopgate/engage/cart';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
@@ -19,6 +20,7 @@ function makeMapStateToProps() {
     userLocation: getPreferredLocationAddress(state),
     customerAttributes: getMerchantCustomerAttributes(state),
     cartHasDirectShipItems: hasDirectShipItems(state),
+    numberOfAddressLines: getNumberOfAddressLines(state),
   });
 }
 

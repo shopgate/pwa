@@ -16,11 +16,12 @@ const RegistrationFormBilling = () => {
     defaultBillingFormState,
     billingFormValidationErrors,
     updateBillingForm,
+    numberOfAddressLines,
   } = useRegistration();
 
   const formConfig = useMemo(
-    () => generateFormConfig(supportedCountries, userLocation),
-    [supportedCountries, userLocation]
+    () => generateFormConfig(supportedCountries, userLocation, numberOfAddressLines),
+    [numberOfAddressLines, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

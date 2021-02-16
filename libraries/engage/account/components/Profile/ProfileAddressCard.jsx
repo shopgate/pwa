@@ -141,12 +141,12 @@ const ProfileAddressCard = ({
               {contact.address2}
             </span>
           ) : null}
-          {!isCheckout && contact.address3 ? (
+          {contact.address3 ? (
             <span className={styles.others}>
               {contact.address3}
             </span>
           ) : null}
-          {!isCheckout && contact.address4 ? (
+          {contact.address4 ? (
             <span className={styles.others}>
               {contact.address4}
             </span>

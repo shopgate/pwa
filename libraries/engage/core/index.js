@@ -315,6 +315,7 @@ export {
   getFavicon,
   getDefaultCurrency,
   getEnableWebIndexing,
+  getNumberOfAddressLines,
 } from './selectors';
 
 export {

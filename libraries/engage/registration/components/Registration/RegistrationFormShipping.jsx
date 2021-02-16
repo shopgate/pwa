@@ -20,11 +20,12 @@ const RegistrationFormShipping = () => {
     shippingFormValidationErrors,
     updateShippingForm,
     isShippingFormVisible,
+    numberOfAddressLines,
   } = useRegistration();
 
   const formConfig = useMemo(
-    () => generateFormConfig(supportedCountries, userLocation),
-    [supportedCountries, userLocation]
+    () => generateFormConfig(supportedCountries, userLocation, numberOfAddressLines),
+    [numberOfAddressLines, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

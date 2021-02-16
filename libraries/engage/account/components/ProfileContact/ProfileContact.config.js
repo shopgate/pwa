@@ -7,9 +7,16 @@ import { ADDRESS_TYPE_SHIPPING, ADDRESS_TYPE_BILLING } from '@shopgate/engage/ch
  * @param {Object} userLocation User location for better phone picker defaults.
  * @param {boolean} isCheckout Whether the form is shown within the checkout process
  * @param {string} type An address type
+ * @param {number} numberOfAddressLines The number of address lines
  * @returns {Object}
  */
-export const generateFormConfig = (supportedCountries, userLocation, isCheckout, type) => ({
+export const generateFormConfig = (
+  supportedCountries,
+  userLocation,
+  isCheckout,
+  type,
+  numberOfAddressLines
+) => ({
   fields: {
     firstName: {
       type: 'text',
@@ -43,18 +50,22 @@ export const generateFormConfig = (supportedCountries, userLocation, isCheckout,
       type: 'text',
       label: `${i18n.text('account.profile.form.address1')} *`,
     },
-    address2: {
-      type: 'text',
-      label: `${i18n.text('account.profile.form.address2')}`,
-    },
-    ...(!isCheckout ? {
+    ...(numberOfAddressLines >= 2 ? {
+      address2: {
+        type: 'text',
+        label: i18n.text('account.profile.form.address2'),
+      },
+    } : {}),
+    ...(numberOfAddressLines >= 3 ? {
       address3: {
         type: 'text',
-        label: `${i18n.text('account.profile.form.address3')}`,
+        label: i18n.text('account.profile.form.address3'),
       },
+    } : {}),
+    ...(numberOfAddressLines >= 4 ? {
       address4: {
         type: 'text',
-        label: `${i18n.text('account.profile.form.address4')}`,
+        label: i18n.text('account.profile.form.address4'),
       },
     } : {}),
     postalCode: {

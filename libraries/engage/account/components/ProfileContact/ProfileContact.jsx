@@ -2,7 +2,9 @@ import React, { useMemo, useCallback, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { i18n, useRoute, historyPop } from '@shopgate/engage/core';
+import {
+  i18n, useRoute, historyPop, getNumberOfAddressLines,
+} from '@shopgate/engage/core';
 import { convertValidationErrors, useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getShopSettings } from '@shopgate/engage/core/config';
@@ -26,6 +28,7 @@ const mapStateToProps = state => ({
   shopSettings: getShopSettings(state),
   userLocation: getPreferredLocationAddress(state),
   customer: getCustomer(state),
+  numberOfAddressLines: getNumberOfAddressLines(state),
 });
 
 /**
@@ -87,21 +90,37 @@ const styles = {
  * @returns {JSX}
  */
 const ProfileContact = ({
-  shopSettings, userLocation, addContact, updateContact, pop, customer,
+  shopSettings, userLocation, addContact, updateContact, pop, customer, numberOfAddressLines,
 }) => {
   const { updateOrderWithContact, type, isCheckout } = useAddressBook();
-
   const formContainerRef = useRef(null);
+  const { pathname, state: { contact = {} } } = useRoute();
+
+  const addressLines = useMemo(() => {
+    /**
+     * Determine the number of address fields with a value. Customers are supposed to edit their
+     * old addresses after the numberOfAddressLines shop setting was changed.
+     */
+    const addressLinesInContact = Object.keys(contact).reduce((acc, key) => {
+      if (key.startsWith('address') && contact[key]) {
+        return parseInt(key.charAt(key.length - 1), 10);
+      }
+
+      return acc;
+    }, 0);
+
+    return Math.max(numberOfAddressLines, addressLinesInContact);
+  }, [contact, numberOfAddressLines]);
+
   const formConfig = useMemo(() => generateFormConfig(
     shopSettings?.supportedCountries,
     userLocation,
     isCheckout,
-    type
-  ), [isCheckout, shopSettings, type, userLocation]);
+    type,
+    addressLines
+  ), [addressLines, isCheckout, shopSettings, type, userLocation]);
 
   const constraints = useMemo(() => generateConstraints(isCheckout), [isCheckout]);
-
-  const { pathname, state: { contact = {} } } = useRoute();
 
   const handleSubmit = useCallback(async (values) => {
     LoadingProvider.setLoading(pathname);
@@ -189,10 +208,12 @@ ProfileContact.propTypes = {
   updateContact: PropTypes.func.isRequired,
   userLocation: PropTypes.shape().isRequired,
   customer: PropTypes.shape(),
+  numberOfAddressLines: PropTypes.number,
 };
 
 ProfileContact.defaultProps = {
   customer: null,
+  numberOfAddressLines: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContact);
