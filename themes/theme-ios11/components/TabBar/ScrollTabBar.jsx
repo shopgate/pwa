@@ -2,7 +2,10 @@ import { useCallback, useEffect } from 'react';
 import { themeConfig } from '@shopgate/engage';
 import { UIEvents, useWidgetSettings } from '@shopgate/engage/core';
 import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
-import { HIDE_TAB_BAR, SHOW_TAB_BAR } from './constants';
+import {
+  TAB_BAR_SCROLL_IN,
+  TAB_BAR_SCROLL_OUT,
+} from './constants';
 
 const { variables: { scroll: { offset = 100 } } } = themeConfig;
 
@@ -22,10 +25,10 @@ function ScrollTabBar() {
     } = scrollEvent;
     if (scrolled) {
       if (scrollOut && scrollTop >= offset) {
-        UIEvents.emit(HIDE_TAB_BAR);
+        UIEvents.emit(TAB_BAR_SCROLL_OUT);
       }
       if (scrollIn) {
-        UIEvents.emit(SHOW_TAB_BAR);
+        UIEvents.emit(TAB_BAR_SCROLL_IN);
       }
     }
   }, [hideOnScroll]);
