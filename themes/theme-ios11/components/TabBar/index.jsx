@@ -14,7 +14,9 @@ import {
   HIDE_TAB_BAR,
 } from './constants';
 import connect from './connector';
-import styles, { updateHeightCSSProperty, inVisible, scrollInVisible } from './style';
+import styles, {
+  updateHeightCSSProperty, inVisible, scrolledIn, scrolledOut,
+} from './style';
 import visibleTabs from './tabs';
 import ScrollTabBar from './ScrollTabBar';
 
@@ -74,7 +76,7 @@ class TabBar extends PureComponent {
 
   state = {
     isVisible: this.props.isVisible,
-    isScrollVisible: null,
+    isScrolledOut: false,
   };
 
   /**
@@ -92,10 +94,10 @@ class TabBar extends PureComponent {
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
   }
 
-  show = ({ scroll }) => {
-    if (scroll) {
+  show = ({ scroll } = {}) => {
+    if (scroll === true) {
       this.setState({
-        isScrollVisible: true,
+        isScrolledOut: false,
       });
       return;
     }
@@ -104,10 +106,10 @@ class TabBar extends PureComponent {
     });
   }
 
-  hide = ({ scroll }) => {
-    if (scroll) {
+  hide = ({ scroll } = {}) => {
+    if (scroll === true) {
       this.setState({
-        isScrollVisible: false,
+        isScrolledOut: true,
       });
       return;
     }
@@ -121,7 +123,7 @@ class TabBar extends PureComponent {
    */
   render() {
     const { activeTab, path } = this.props;
-    const { isVisible, isScrollVisible } = this.state;
+    const { isVisible, isScrolledOut } = this.state;
 
     const props = {
       isVisible,
@@ -129,10 +131,11 @@ class TabBar extends PureComponent {
       path,
     };
 
-    const className = classNames(styles, {
-      [inVisible]: !isVisible,
-      [scrollInVisible]: isScrollVisible === false,
-    });
+    const className = classNames(styles,
+      isScrolledOut ? scrolledOut : scrolledIn,
+      {
+        [inVisible]: !isVisible,
+      });
 
     return (
       <Fragment>

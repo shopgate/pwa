@@ -18,26 +18,51 @@ export const updateHeightCSSProperty = (isVisible) => {
   }
 };
 
+/**
+ * @TODO Use Transition component
+ * @type {never}
+ */
 export const inVisible = css({
-  display: 'none',
+  '&&': {
+    display: 'none',
+  },
 }).toString();
 
-export const scrollInVisible = css({
-  maxHeight: '0 !important',
-  minHeight: '0 !important',
+const fadeOut = css.keyframes({
+  '0%': { opacity: 1 },
+  '99%': { opacity: 0.01, height: 'var(--tabbar-height)' },
+  '100%': { opacity: 0, height: 0 },
+});
+const fadeIn = css.keyframes({
+  '0%': { opacity: 0, height: 0 },
+  '1%': { opacity: 0.01, height: 'var(--tabbar-height)' },
+  '100%': { opacity: 1, height: 'var(--tabbar-height)' },
+});
+
+export const scrolledIn = css({
+  '&&': {
+    animation: `${fadeIn} .2s`,
+    animationFillMode: 'forwards',
+  },
+}).toString();
+
+export const scrolledOut = css({
+  '&&': {
+    animation: `${fadeOut} .2s`,
+    animationFillMode: 'forwards',
+  },
 }).toString();
 
 export default css({
-  maxHeight: 'var(--tabbar-height)',
-  minHeight: 'var(--tabbar-height)',
+  display: 'flex',
+  height: 'var(--tabbar-height)',
   position: 'relative',
-  overflow: 'hidden',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
   boxShadow: themeShadows.tabBar,
   background: themeColors.lightOverlay,
-  transition: 'max-height 0.3s ease-out, min-height 0.2s ease-in',
+  transition: 'display 0.5s ease-in-out',
   ':before': {
     position: 'absolute',
     top: 0,

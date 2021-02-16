@@ -1,14 +1,11 @@
 import { css } from 'glamor';
 
 export const header = css({
-  position: 'sticky',
-  top: 0,
-  left: 0,
-  zIndex: 2,
-  transform: 'translateY(0)',
-  transition: 'transform 0.3s ease',
+  transition: 'top 0.6s',
 }).toString();
 
 export const hidden = css({
-  transform: 'translateY(-100%)',
+  '&&': {
+    top: '-20%',
+  },
 }).toString();

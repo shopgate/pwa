@@ -8,7 +8,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
 import styles from './style';
 
-const { colors } = themeConfig;
+const { colors, variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
 /**
  * The FilterBar component.
@@ -30,7 +30,7 @@ function FilterBar({ filters }) {
   }), [active]);
 
   return (
-    <ScrollHeader hideOnScroll={hideOnScroll}>
+    <ScrollHeader hideOnScroll={hideOnScroll} scrollOffset={offset}>
       <div className={styles} data-test-id="filterBar" style={style}>
         <Content />
       </div>

@@ -1,43 +1,57 @@
-import { useCallback, useEffect, useState } from 'react';
-import { UIEvents, useScroll, useWidgetSettings } from '@shopgate/engage/core';
-import { VIEW_EVENTS } from '@shopgate/engage/components';
-import { HIDE_TAB_BAR, SHOW_TAB_BAR } from './constants';
+import { useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { themeConfig } from '@shopgate/engage';
+import { UIEvents, useWidgetSettings } from '@shopgate/engage/core';
+import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
+import {
+  HIDE_TAB_BAR,
+  SHOW_TAB_BAR,
+} from './constants';
+import connect from './connector';
+
+const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
 /**
  * Scroll TabBar
  * @returns {JSX}
  */
-function ScrollTabBar() {
+function ScrollTabBar({ isVisible }) {
   const { hideOnScroll = false } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
-  const [viewContentRef, setViewContentRef] = useState({});
-
-  useEffect(() => {
-    if (hideOnScroll) {
-      UIEvents.addListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
-      return () => UIEvents.removeListener(VIEW_EVENTS.CONTENT_REF, setViewContentRef);
-    }
-    return undefined;
-  }, [hideOnScroll]);
-
-  const onScroll = useCallback((callbackData) => {
-    if (!hideOnScroll) {
+  const onScroll = useCallback((scrollEvent) => {
+    if (!isVisible || !hideOnScroll) {
       return;
     }
-    const { scrolled, scrollOut, scrollIn } = callbackData;
+    const {
+      scrolled, scrollOut, scrollIn, scrollTop,
+    } = scrollEvent;
     if (scrolled) {
-      if (scrollOut) {
+      if (scrollOut && scrollTop >= offset) {
         UIEvents.emit(HIDE_TAB_BAR, { scroll: true });
       }
       if (scrollIn) {
         UIEvents.emit(SHOW_TAB_BAR, { scroll: true });
       }
     }
-  }, [hideOnScroll]);
+  }, [hideOnScroll, isVisible]);
 
-  useScroll(onScroll, viewContentRef.current);
+  useEffect(() => {
+    if (hideOnScroll) {
+      const subscription = viewScroll$.subscribe(onScroll);
+      return () => subscription.unsubscribe();
+    }
+    return undefined;
+  });
 
   return null;
 }
 
-export default ScrollTabBar;
+ScrollTabBar.propTypes = {
+  isVisible: PropTypes.bool,
+};
+
+ScrollTabBar.defaultProps = {
+  isVisible: null,
+};
+
+export default connect(ScrollTabBar);
