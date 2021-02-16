@@ -9,7 +9,7 @@ import {
 } from './constants';
 import connect from './connector';
 
-const { variables: { scroll: { offset = 100 } } } = themeConfig;
+const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
 /**
  * Scroll TabBar

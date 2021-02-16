@@ -8,7 +8,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
 import styles from './style';
 
-const { colors, variables: { scroll: { offset = 100 } } } = themeConfig;
+const { colors, variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
 /**
  * The FilterBar component.
