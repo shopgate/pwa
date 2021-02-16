@@ -48,6 +48,3 @@ export const DISABLE_TAB_BAR = 'DISABLE_TAB_BAR';
 
 export const SHOW_TAB_BAR = 'SHOW_TAB_BAR';
 export const HIDE_TAB_BAR = 'HIDE_TAB_BAR';
-
-export const TAB_BAR_SCROLL_IN = 'TAB_BAR_SCROLL_IN';
-export const TAB_BAR_SCROLL_OUT = 'TAB_BAR_SCROLL_OUT';

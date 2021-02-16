@@ -1,11 +1,13 @@
 import { useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/engage';
 import { UIEvents, useWidgetSettings } from '@shopgate/engage/core';
 import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
 import {
-  TAB_BAR_SCROLL_IN,
-  TAB_BAR_SCROLL_OUT,
+  HIDE_TAB_BAR,
+  SHOW_TAB_BAR,
 } from './constants';
+import connect from './connector';
 
 const { variables: { scroll: { offset = 100 } } } = themeConfig;
 
@@ -13,11 +15,11 @@ const { variables: { scroll: { offset = 100 } } } = themeConfig;
  * Scroll TabBar
  * @returns {JSX}
  */
-function ScrollTabBar() {
+function ScrollTabBar({ isVisible }) {
   const { hideOnScroll = false } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
   const onScroll = useCallback((scrollEvent) => {
-    if (!hideOnScroll) {
+    if (!isVisible || !hideOnScroll) {
       return;
     }
     const {
@@ -25,13 +27,13 @@ function ScrollTabBar() {
     } = scrollEvent;
     if (scrolled) {
       if (scrollOut && scrollTop >= offset) {
-        UIEvents.emit(TAB_BAR_SCROLL_OUT);
+        UIEvents.emit(HIDE_TAB_BAR, { scroll: true });
       }
       if (scrollIn) {
-        UIEvents.emit(TAB_BAR_SCROLL_IN);
+        UIEvents.emit(SHOW_TAB_BAR, { scroll: true });
       }
     }
-  }, [hideOnScroll]);
+  }, [hideOnScroll, isVisible]);
 
   useEffect(() => {
     if (hideOnScroll) {
@@ -44,4 +46,12 @@ function ScrollTabBar() {
   return null;
 }
 
-export default ScrollTabBar;
+ScrollTabBar.propTypes = {
+  isVisible: PropTypes.bool,
+};
+
+ScrollTabBar.defaultProps = {
+  isVisible: null,
+};
+
+export default connect(ScrollTabBar);
