@@ -47,7 +47,7 @@ const ItemDetails = ({ product, display }) => {
         This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects
       */}
-      <OrderQuantityHint productId={productId} />
+      <OrderQuantityHint productId={productId} className={styles.quantityHint} />
 
       {/* This feature is currently in BETA testing.
       It should only be used for approved BETA Client Projects */}

@@ -6,7 +6,7 @@ const { colors, variables } = themeConfig;
 const content = css({
   background: colors.light,
   position: 'relative',
-  padding: variables.gap.big,
+  padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
 }).toString();
 
 const price = css({
