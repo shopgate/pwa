@@ -12,9 +12,8 @@ export const convertSubmitRegistrationValidationErrors = (errors) => {
   }
 
   const converted = errors.reduce((result, error) => {
-    const {
-      subentityPath, path,
-    } = error;
+    const { path, code } = error;
+    let { subentityPath } = error;
 
     let { message } = error;
 
@@ -22,7 +21,13 @@ export const convertSubmitRegistrationValidationErrors = (errors) => {
       message = i18n.text('validation.checkField');
       setWith(result, path.slice(2).join('.'), message, Object);
     } else if (subentityPath) {
-      message = i18n.text('validation.checkField');
+      if (code === 409) {
+        message = i18n.text('validation.emailConflict');
+        subentityPath = ['emailAddress'];
+      } else {
+        message = i18n.text('validation.checkField');
+      }
+
       setWith(result, subentityPath.join('.'), message, Object);
     }
 

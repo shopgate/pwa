@@ -16,34 +16,43 @@ describe('Registration helpers', () => {
     it('should return converted validation errors', () => {
       const errors = [
         {
-          entityIndex: null,
-          entity: 'contact',
+          entityIndex: 0,
+          entity: 'customer',
           entityId: null,
           code: 400,
           message: 'The minimum password length must be 8 characters',
           subentityPath: ['password'],
         },
         {
-          entityIndex: null,
-          entity: 'contact',
+          entityIndex: 0,
+          entity: 'customer',
           entityId: null,
           code: 400,
           message: 'Please enter a valid street with house number',
           subentityPath: ['contacts', 1, 'address1'],
         },
         {
-          entityIndex: null,
-          entity: 'contact',
+          entityIndex: 0,
+          entity: 'customer',
           entityId: null,
           code: 400,
           message: 'This is not a valid zip code (5 digit number)',
           subentityPath: ['contacts', 1, 'postalCode'],
+        },
+        {
+          entityIndex: 0,
+          entity: 'customer',
+          entityId: null,
+          code: 409,
+          message: 'Email address is already in use',
+          subentityPath: [],
         },
       ];
 
       const result = convert(errors);
       expect(result).toEqual({
         password: 'validation.checkField',
+        emailAddress: 'validation.emailConflict',
         contacts: {
           1: {
             address1: 'validation.checkField',

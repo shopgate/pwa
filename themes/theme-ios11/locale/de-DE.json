@@ -732,6 +732,7 @@
     "mobileNumber": "Gib bitte eine gültige Handynummer ein",
     "date": "Bitte gib ein gültiges Datum ein",
     "checkField": "Bitte überprüfe dieses Feld",
+    "emailConflict": "Diese E-Mail-Adresse ist bereits registriert",
     "passwordMismatch": "Die Passwörter stimmen nicht überein",
     "minPasswordLength": "Die minimale Passwortlänge beträgt %\\{count\\} Zeichen"
   },
