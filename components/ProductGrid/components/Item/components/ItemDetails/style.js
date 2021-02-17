@@ -67,3 +67,8 @@ export const itemPrice = css({
     fontSize: '1.25rem',
   },
 }).toString();
+
+export const quantityHint = css({
+  paddingTop: 4,
+}).toString();
+

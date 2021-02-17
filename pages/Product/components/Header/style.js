@@ -4,7 +4,7 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const content = css({
   position: 'relative',
-  padding: themeVariables.gap.big,
+  padding: `${themeVariables.gap.big}px ${themeVariables.gap.big}px 0`,
   borderTop: `${themeColors.placeholder} 2px solid`,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     borderTop: 'none',

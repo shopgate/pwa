@@ -2,7 +2,6 @@ import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   MapPriceHint,
-  OrderQuantityHint,
   EffectivityDates,
   Availability,
 } from '@shopgate/engage/product';
@@ -50,11 +49,6 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
               {!isROPEActive && (
                 <Shipping productId={productId} />
               )}
-            </div>
-            <div className={styles.productInfo}>
-              {/* This feature is currently in BETA testing.
-                It should only be used for approved BETA Client Projects */}
-              <OrderQuantityHint productId={productId} />
             </div>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
