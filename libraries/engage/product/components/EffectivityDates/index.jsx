@@ -22,8 +22,8 @@ const EffectivityDates = ({
   const settings = useWidgetSettings('@shopgate/engage/product/EffectivityDates');
   const styles = useWidgetStyles('@shopgate/engage/product/EffectivityDates');
 
-  const startDate = new Date(dates.startDate);
-  const endDate = new Date(dates.endDate);
+  const startDate = dates.startDate ? new Date(dates.startDate) : null;
+  const endDate = dates.endDate ? new Date(dates.endDate) : null;
 
   const hintAddClass = styles && styles.hint ? css(styles.hint).toString() : null;
   const hintClass = classNames(hint, hintAddClass);

@@ -24,6 +24,8 @@ const QuantityInput = forwardRef(({
   value,
   maxDecimals,
   unit,
+  minValue,
+  maxValue,
   ...inputProps
 }, outerInputRef) => {
   const inputRef = outerInputRef || useRef();
@@ -34,6 +36,7 @@ const QuantityInput = forwardRef(({
     customOnFocus(event);
     setIsFocused(true);
   }, [customOnFocus]);
+
   const onBlur = useCallback((event) => {
     const newValue = parseFloatString(inputValue, maxDecimals);
     setIsFocused(false);
@@ -49,8 +52,20 @@ const QuantityInput = forwardRef(({
   }, [customOnBlur, inputValue, maxDecimals, onChange, value]);
 
   const handleChange = useCallback((event) => {
-    setInputValue(event.target.value);
-  }, []);
+    let newValue = event.target.value;
+
+    if (newValue !== '') {
+      if (minValue && newValue < minValue) {
+        newValue = `${minValue}`;
+      }
+
+      if (maxValue && newValue > maxValue) {
+        newValue = `${maxValue}`;
+      }
+    }
+
+    setInputValue(newValue);
+  }, [maxValue, minValue]);
 
   // Select the current input value after focus.
   useLayoutEffect(() => {
@@ -95,6 +110,8 @@ QuantityInput.propTypes = {
   value: PropTypes.number.isRequired,
   className: PropTypes.string,
   maxDecimals: PropTypes.number,
+  maxValue: PropTypes.number,
+  minValue: PropTypes.number,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
@@ -105,6 +122,8 @@ QuantityInput.defaultProps = {
   className: '',
   maxDecimals: 2,
   unit: null,
+  minValue: null,
+  maxValue: null,
   onFocus: () => {},
   onChange: () => {},
   onBlur: () => {},

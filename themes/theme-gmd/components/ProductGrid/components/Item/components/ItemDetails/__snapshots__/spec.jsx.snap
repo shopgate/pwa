@@ -54,6 +54,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       productId="1234"
     />
     <OrderQuantityHint
+      className="css-1s3c85m"
       productId="1234"
     />
     <EffectivityDates
