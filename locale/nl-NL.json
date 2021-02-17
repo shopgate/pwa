@@ -723,6 +723,7 @@
     "mobileNumber": "Voer een geldig GSM nummer in",
     "date": "Please enter a valid date",
     "checkField": "Please check this field",
+    "emailConflict": "This e-mail address is already registered",
     "passwordMismatch": "Your passwords do not match",
     "minPasswordLength": "The minimum password length must be %\\{count\\} characters"
   },

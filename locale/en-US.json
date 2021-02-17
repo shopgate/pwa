@@ -730,6 +730,7 @@
     "mobileNumber": "Please enter a valid mobile phone number",
     "date": "Please enter a valid date",
     "checkField": "Please check this field",
+    "emailConflict": "This e-mail address is already registered",
     "passwordMismatch": "Your passwords do not match",
     "minPasswordLength": "The minimum password length must be %\\{count\\} characters"
   },
