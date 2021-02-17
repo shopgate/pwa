@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { async as asyncScheduler } from 'rxjs/scheduler/async';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/do';
@@ -22,7 +23,10 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
   let previousScrollTop = 0;
   const scroll$ = Observable
     .fromEvent(element, 'scroll')
-    .throttleTime(throttleTime)
+    .throttleTime(throttleTime, asyncScheduler, {
+      leading: false,
+      trailing: true,
+    })
     .map((event) => {
       const scrollTop = element.scrollY || element.scrollTop;
       return {

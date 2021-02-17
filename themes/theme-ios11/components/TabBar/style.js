@@ -57,7 +57,7 @@ export default css({
   display: 'flex',
   height: 'var(--tabbar-height)',
   position: 'fixed',
-  bottom: 0,
+  bottom: 'var(--safe-area-inset-bottom)',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
