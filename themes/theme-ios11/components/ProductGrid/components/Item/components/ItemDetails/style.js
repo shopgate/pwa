@@ -6,3 +6,7 @@ export const details = css({
     padding: '12px 0 30px',
   },
 });
+
+export const quantityHint = css({
+  paddingTop: 8,
+}).toString();

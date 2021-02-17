@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
@@ -70,19 +70,38 @@ const UnitQuantityPicker = ({
   maxDecimals,
   unit,
   disabled,
+  minValue,
+  maxValue,
 }) => {
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
-    if (newValue <= 0 && !allowZero) {
+    if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
       newValue = value;
     }
     onChange(newValue);
-  }, [allowZero, decrementStep, onChange, value]);
+  }, [allowZero, decrementStep, minValue, onChange, value]);
 
   const handleIncrement = useCallback(() => {
-    const newValue = value + incrementStep;
+    let newValue = value + incrementStep;
+
+    if (maxValue && newValue > maxValue) {
+      newValue = value;
+    }
+
     onChange(newValue);
-  }, [incrementStep, onChange, value]);
+  }, [incrementStep, maxValue, onChange, value]);
+
+  useEffect(() => {
+    if (minValue && value < minValue) {
+      onChange(minValue);
+    }
+
+    if (maxValue && value > maxValue) {
+      onChange(maxValue);
+    }
+  /* eslint-disable react-hooks/exhaustive-deps */
+  }, []);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   return (
     <div className={`${styles.root} ${className}`}>
@@ -105,6 +124,8 @@ const UnitQuantityPicker = ({
           maxDecimals={maxDecimals}
           unit={unit}
           disabled={disabled}
+          minValue={minValue}
+          maxValue={maxValue}
         />
       </span>
 
@@ -134,6 +155,8 @@ UnitQuantityPicker.propTypes = {
   disabled: PropTypes.bool,
   incrementStep: PropTypes.number,
   maxDecimals: PropTypes.number,
+  maxValue: PropTypes.number,
+  minValue: PropTypes.number,
   unit: PropTypes.string,
 };
 
@@ -147,6 +170,8 @@ UnitQuantityPicker.defaultProps = {
   maxDecimals: 2,
   unit: null,
   disabled: false,
+  minValue: null,
+  maxValue: null,
 };
 
 export default UnitQuantityPicker;

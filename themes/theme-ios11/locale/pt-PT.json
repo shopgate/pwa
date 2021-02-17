@@ -180,8 +180,8 @@
     "go_to_cart": "Carrinho",
     "no_more_found": "O item: \"{name}\" não está mais disponível.",
     "quantity": "Quantidade",
-    "minOrderQuantity": "Quantidade mín. do pedido:{quantity}",
-    "maxOrderQuantity": "Quantidade máx. do pedido:{quantity}",
+    "minOrderQuantity": "Quantidade mín. do pedido: {quantity} {unit}",
+    "maxOrderQuantity": "Quantidade máx. do pedido: {quantity} {unit}",
     "available": {
       "at": "Disponível {startDate, date, DD} {startDate, date, MMM} às {startDate, time, short}",
       "until": "Disponível até {endDate, date, DD} {endDate, date, MMM} às {endDate, time, short}",

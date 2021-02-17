@@ -9,6 +9,7 @@ import {
   ProductProperties,
   Description,
   ProductUnitQuantityPicker,
+  OrderQuantityHint,
 } from '@shopgate/engage/product';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import FavoriteButtonWide from '@shopgate/engage/favorites/components/FavoriteButtonWide';
@@ -62,6 +63,19 @@ const styles = {
   priceColumn: css({
     flex: 1,
   }).toString(),
+  orderQuantityHintColumn: css({
+    display: 'flex',
+    flexDirection: 'column',
+    alignSelf: 'flex-end',
+    alignItems: 'flex-end',
+  }).toString(),
+  quantityPicker: css({
+    display: 'flex',
+    flexDirection: 'column',
+  }).toString(),
+  orderQuantityHint: css({
+    paddingTop: 8,
+  }).toString(),
 };
 
 /**
@@ -97,7 +111,9 @@ const ContentWide = ({
           </div>
           <div className={styles.priceColumn}>
             <Section title="product.sections.quantity">
-              <ProductUnitQuantityPicker />
+              <ProductUnitQuantityPicker className={styles.quantityPicker}>
+                <OrderQuantityHint productId={productId} className={styles.orderQuantityHint} />
+              </ProductUnitQuantityPicker>
             </Section>
           </div>
         </div>
@@ -126,7 +142,9 @@ const ContentWide = ({
           <Price />
         </div>
         <Section title="product.sections.quantity">
-          <ProductUnitQuantityPicker />
+          <ProductUnitQuantityPicker className={styles.quantityPicker}>
+            <OrderQuantityHint productId={productId} className={styles.orderQuantityHint} />
+          </ProductUnitQuantityPicker>
         </Section>
         <AddToCartButton />
         <FavoriteButtonWide productId={variantId || productId} />
