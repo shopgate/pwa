@@ -56,7 +56,8 @@ export const scrolledOut = css({
 export default css({
   display: 'flex',
   height: 'var(--tabbar-height)',
-  position: 'relative',
+  position: 'fixed',
+  bottom: 0,
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
