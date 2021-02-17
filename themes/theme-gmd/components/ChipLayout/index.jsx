@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
 import { I18n, RippleButton } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
@@ -46,7 +47,7 @@ class ChipLayout extends PureComponent {
    * When the component mounts we need to initially process all children.
    */
   componentDidMount() {
-    this.processHiddenElements();
+    this.processHiddenElementsDebounced();
   }
 
   /**
@@ -59,7 +60,7 @@ class ChipLayout extends PureComponent {
    * refs.clientHeight it would always be zero.
    */
   componentDidUpdate() {
-    this.processHiddenElements();
+    this.processHiddenElementsDebounced();
   }
 
   /**
@@ -144,6 +145,11 @@ class ChipLayout extends PureComponent {
       return true;
     });
   }
+
+  /**
+   * Debounced, eg. layout effect
+   */
+  processHiddenElementsDebounced = debounce(this.processHiddenElements, 50);
 
   /**
    * Renders the component.
