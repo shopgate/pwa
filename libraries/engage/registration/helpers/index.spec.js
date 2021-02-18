@@ -62,6 +62,22 @@ describe('Registration helpers', () => {
       });
     });
 
+    it('should handle 409 for the emailAddress field', () => {
+      const errors = [{
+        entityIndex: 0,
+        entity: 'customer',
+        entityId: null,
+        code: 409,
+        message: 'Email address is already in use',
+        subentityPath: ['emailAddress'],
+      }];
+
+      const result = convert(errors);
+      expect(result).toEqual({
+        emailAddress: 'validation.emailConflict',
+      });
+    });
+
     it('should return converted validation errors', () => {
       const errors = [
         {
