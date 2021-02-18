@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Header from 'Components/Reviews/components/Header';
-import List from 'Components/Reviews/components/List';
+import Header from '@shopgate/engage/reviews/components/Reviews/components/Header';
+import List from '@shopgate/engage/reviews/components/Reviews/components/List';
 import { BackBar } from 'Components/AppBar/presets';
 import LoadMoreButton from '../LoadMore';
 import connect from './connector';
