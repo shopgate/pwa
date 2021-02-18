@@ -11,7 +11,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Viewport = props => (
-  <main className={styles.viewport} role="main" itemScope itemProp="http://schema.org/MobileApplication">
+  <main className={`${styles.viewport} theme-ios11__viewport`} role="main" itemScope itemProp="http://schema.org/MobileApplication">
     <LiveMessenger />
     <header className={styles.header} id="AppHeader" />
     <section className={styles.content}>

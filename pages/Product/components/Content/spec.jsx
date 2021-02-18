@@ -24,7 +24,6 @@ jest.mock('../Characteristics', () => () => null);
 jest.mock('../Options', () => () => null);
 jest.mock('../AppBar', () => () => null);
 jest.mock('../AddToCartBar', () => () => null);
-jest.mock('Components/Reviews', () => () => null);
 jest.mock('./connector', () => Component => Component);
 
 describe('Product / Content', () => {

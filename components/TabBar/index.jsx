@@ -122,7 +122,7 @@ class TabBar extends PureComponent {
             <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
             {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
             <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-              <Grid className={styles} data-test-id="tabBar" role="tablist" component="div">
+              <Grid className={`${styles} theme-ios11__tab-bar`} data-test-id="tabBar" role="tablist" component="div">
                 {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
               </Grid>
             </Portal>

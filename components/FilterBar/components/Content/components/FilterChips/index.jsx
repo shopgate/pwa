@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { Chip } from '@shopgate/engage/components';
+import { Chip, ChipLayout } from '@shopgate/engage/components';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
 import { i18n } from '@shopgate/engage/core';
-import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
 import styles from './style';
 
@@ -140,7 +139,7 @@ class FilterChips extends Component {
     });
 
     return (
-      <div className={styles}>
+      <div className={`${styles} theme-ios11__filter-bar__filter-chips`}>
         <ChipLayout
           moreLabel="filter.more"
           handleMoreButton={openFilters}

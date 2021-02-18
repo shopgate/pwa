@@ -108,7 +108,7 @@ class Picker extends Component {
     return (
       <BasePicker
         {...restProps}
-        className={hasButton ? styles : ''}
+        className={`${hasButton ? styles : ''} theme-ios11__picker`}
         modalComponent={this.modalComponent}
         buttonProps={this.props.buttonProps}
         buttonComponent={this.props.buttonComponent || Button}
