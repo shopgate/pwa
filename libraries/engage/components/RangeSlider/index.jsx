@@ -271,7 +271,7 @@ class RangeSlider extends PureComponent {
     );
 
     return (
-      <div className={cxs(classNames.container)} onTouchStart={this.handleRangeTouch} aria-hidden>
+      <div className={cxs(classNames.container, 'engage__range-slider')} onTouchStart={this.handleRangeTouch} aria-hidden>
         <div className={cxs(classNames.outerRange, styles.outerRange)} ref={this.domElement}>
           <div className={cxs(classNames.range, styles.range)} style={rangeStyle}>
             <Handle

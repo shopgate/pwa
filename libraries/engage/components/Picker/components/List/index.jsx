@@ -8,13 +8,13 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX} The button component.
  */
-const PickerList = (props) => {
+const List = (props) => {
   const {
     items, onClose, onSelect, selectedIndex,
   } = props;
 
   return (
-    <ul>
+    <ul className="engage__picker_list">
       {items.map((item, currentIndex) => (
         <li
           key={item.value}
@@ -39,16 +39,16 @@ const PickerList = (props) => {
   );
 };
 
-PickerList.propTypes = {
+List.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onSelect: PropTypes.func.isRequired,
   onClose: PropTypes.func,
   selectedIndex: PropTypes.number,
 };
 
-PickerList.defaultProps = {
+List.defaultProps = {
   onClose: () => { },
   selectedIndex: null,
 };
 
-export default PickerList;
+export default List;

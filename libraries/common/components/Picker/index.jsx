@@ -228,7 +228,7 @@ class Picker extends Component {
     return (
       <div
         role="button"
-        className={this.props.className}
+        className={`${this.props.className} common__picker`}
         ref={this.props.forwardedRef}
         tabIndex={0}
         aria-haspopup

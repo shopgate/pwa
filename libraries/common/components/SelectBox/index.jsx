@@ -147,7 +147,7 @@ class SelectBox extends Component {
     });
 
     return (
-      <div className={this.props.className} data-test-id={this.props.testId}>
+      <div className={`${this.props.className} common__select-box`} data-test-id={this.props.testId}>
         <button
           className={button}
           onClick={this.handleOpenList}

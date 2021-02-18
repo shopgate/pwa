@@ -43,7 +43,7 @@ const ElementText = (props) => {
   const type = mapping[element.type];
 
   return (
-    <div className={camelCase(name)}>
+    <div className={`${camelCase(name)} engage__element-text`}>
       <TextField
         type={type}
         name={name}

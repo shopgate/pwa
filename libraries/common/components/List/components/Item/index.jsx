@@ -23,7 +23,7 @@ const ListItem = ({
   }
 
   // Add selected or unselected styling.
-  classes += ` ${isSelected ? styles.selected : styles.unselected}`;
+  classes += ` common__list__list-item ${isSelected ? styles.selected : styles.unselected}`;
 
   return <li className={classes} data-test-id="listItem" role={role}>{children}</li>;
 };

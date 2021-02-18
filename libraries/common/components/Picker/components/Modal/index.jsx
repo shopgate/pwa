@@ -6,7 +6,7 @@ import styles from './style';
 /**
  * The picker modal.
  */
-class PickerModal extends Component {
+class Modal extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     isOpen: PropTypes.bool.isRequired,
@@ -63,7 +63,7 @@ class PickerModal extends Component {
 
     return (this.props.isOpen) ? (
       <div
-        className={styles.wrapper}
+        className={`${styles.wrapper} common__picker__modal`}
       >
         <div
           aria-hidden
@@ -81,4 +81,4 @@ class PickerModal extends Component {
   }
 }
 
-export default PickerModal;
+export default Modal;

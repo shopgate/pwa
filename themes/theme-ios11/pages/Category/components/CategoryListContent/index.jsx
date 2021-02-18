@@ -7,7 +7,7 @@ import {
   CATEGORY_LIST_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { Section } from '@shopgate/engage/a11y';
-import CategoryList from 'Components/CategoryList';
+import { CategoryList } from '@shopgate/engage/category';
 import connect from './connector';
 
 /**

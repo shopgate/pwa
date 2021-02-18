@@ -6,7 +6,7 @@ import styles from './style';
  * The default button for the Picker component.
  * @returns {JSX} The button component.
  */
-const PickerButton = ({ value, label, openList }) => {
+const Button = ({ value, label, openList }) => {
   if (value !== null) {
     return (
       <button className={styles.button} onClick={openList} type="button">
@@ -23,14 +23,14 @@ const PickerButton = ({ value, label, openList }) => {
   );
 };
 
-PickerButton.propTypes = {
+Button.propTypes = {
   label: PropTypes.string.isRequired,
   openList: PropTypes.func.isRequired,
   value: PropTypes.string,
 };
 
-PickerButton.defaultProps = {
+Button.defaultProps = {
   value: null,
 };
 
-export default PickerButton;
+export default Button;

@@ -68,7 +68,7 @@ class AppBar extends PureComponent {
     const {
       below, center, left, right, classes, 'aria-hidden': ariaHidden,
     } = this.props;
-    const sectionClasses = classnames(styles.outer, classes.outer);
+    const sectionClasses = classnames(styles.outer, classes.outer, 'ui-ios__app-bar');
 
     return (
       <section

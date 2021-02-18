@@ -30,6 +30,7 @@ const FloatingActionButton = (props) => {
 
   const classes = classNames(
     'floating-action-button',
+    'ui-material__floating-action-button',
     styles.button,
     {
       [className]: className,

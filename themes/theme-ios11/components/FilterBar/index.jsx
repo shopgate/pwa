@@ -26,7 +26,7 @@ function FilterBar({ filters }) {
   }), [active]);
 
   return (
-    <div className={styles} data-test-id="filterBar" style={style}>
+    <div className={`${styles} theme-ios11__filter-bar`} data-test-id="filterBar" style={style}>
       <Content />
     </div>
   );

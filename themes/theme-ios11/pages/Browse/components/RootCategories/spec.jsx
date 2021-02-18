@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
-import CategoryList from 'Components/CategoryList';
+import { CategoryList } from '@shopgate/engage/category';
 import RootCategories from './index';
 
 const store = createMockStore();

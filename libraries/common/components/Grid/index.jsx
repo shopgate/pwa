@@ -27,7 +27,7 @@ class Grid extends Component {
    * @returns {Object} The composed props.
    */
   getProps() {
-    let className = `${this.props.className} ${styles}`;
+    let className = `${this.props.className} ${styles} common__grid`;
 
     if (this.props.wrap) {
       className += ` ${wrap(this.props.wrap)}`;

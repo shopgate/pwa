@@ -67,6 +67,8 @@ export { default as ProductCard } from './components/ProductCard';
 export { default as ProductGridPrice } from './components/ProductGridPrice';
 export { default as ProductCharacteristics } from './components/ProductCharacteristics';
 export { default as Description } from './components/Description';
+export { default as ProductList } from './components/ProductList';
+export { default as ProductSlider } from './components/ProductSlider';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
