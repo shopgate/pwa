@@ -45,7 +45,7 @@ describe('Registration helpers', () => {
           entityId: null,
           code: 409,
           message: 'Email address is already in use',
-          subentityPath: [],
+          subentityPath: ['emailAddress'],
         },
       ];
 
@@ -59,22 +59,6 @@ describe('Registration helpers', () => {
             postalCode: 'validation.checkField',
           },
         },
-      });
-    });
-
-    it('should handle 409 for the emailAddress field', () => {
-      const errors = [{
-        entityIndex: 0,
-        entity: 'customer',
-        entityId: null,
-        code: 409,
-        message: 'Email address is already in use',
-        subentityPath: ['emailAddress'],
-      }];
-
-      const result = convert(errors);
-      expect(result).toEqual({
-        emailAddress: 'validation.emailConflict',
       });
     });
 
