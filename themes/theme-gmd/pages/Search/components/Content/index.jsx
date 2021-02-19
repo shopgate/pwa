@@ -53,8 +53,10 @@ class SearchContent extends Component {
           <Fragment>
             <DefaultBar
               center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
-              {...showFilterBar && { below: <Bar /> }}
             />
+
+            {showFilterBar && <Bar /> }
+
             <Products
               searchPhrase={searchPhrase}
               filters={state.filters}

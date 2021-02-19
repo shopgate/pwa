@@ -89,7 +89,7 @@ class ViewContent extends Component {
 
     return {
       overflow: (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto',
-      paddingBottom: keyboardHeight,
+      paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px)`,
     };
   }
 

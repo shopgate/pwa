@@ -5,14 +5,16 @@ import Empty from '../Empty';
 import CategoryListContent from '../CategoryListContent';
 import connect from './connector';
 import AppBar from '../AppBar';
+import Bar from '../Bar';
 
 /**
- * @param {Object} props.categoryId The category id.
+ * @param {Object} props props.
  * @returns {JSX}
  */
 const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
   <Fragment>
     <AppBar hasProducts={hasProducts} hasChildren={hasChildren} />
+    {!hasChildren && hasProducts && <Bar /> }
     <CategoryListContent categoryId={categoryId} />
     <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
     <Empty

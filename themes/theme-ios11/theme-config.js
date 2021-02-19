@@ -48,6 +48,10 @@ module.exports = {
     toast: {
       duration: 5000,
     },
+    scroll: {
+      // Offset fo hiding elements when scrolling
+      hideOffset: 100,
+    },
     navigator: {
       height: 44,
     },

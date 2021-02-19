@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import delay from 'lodash/delay';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
+import { emitScrollEvents } from '@shopgate/pwa-common/streams/view';
 import { MODAL_EVENTS } from '@shopgate/pwa-common/components/ModalContainer';
 import { ViewContext } from './context';
 
@@ -94,6 +96,8 @@ class ViewProvider extends Component {
    */
   setContentRef = (ref) => {
     this.set('contentRef', ref);
+    // Delay to dispatch actual DOM node
+    delay(() => emitScrollEvents(ref.current), 250);
   }
 
   /**

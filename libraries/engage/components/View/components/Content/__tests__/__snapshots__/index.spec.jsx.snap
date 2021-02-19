@@ -16,7 +16,7 @@ exports[`engage > components > view > components > content should render content
     style={
       Object {
         "overflow": "auto",
-        "paddingBottom": 0,
+        "paddingBottom": "calc(var(--tabbar-height) + 0px)",
       }
     }
   >

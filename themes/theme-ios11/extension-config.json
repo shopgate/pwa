@@ -244,8 +244,12 @@
             "buttonTextColor": "$.colors.accent",
             "buttonTextColorDisabled": "$.colors.shade4"
           },
+          "@shopgate/engage/components/FilterBar": {
+            "hideOnScroll": true
+          },
           "@shopgate/engage/components/TabBar": {
-            "showLabels": true
+            "showLabels": true,
+            "hideOnScroll": false
           },
           "@shopgate/engage/product/ProductGrid": {
             "columns": 2
@@ -255,6 +259,11 @@
           },
           "@shopgate/engage/reviews": {
             "prefillAuthor": true
+          },
+          "@shopgate/engage/components/TaxDisclaimer": {
+            "show": null,
+            "hint": "*",
+            "text": null
           }
         },
         "typography": {
@@ -299,6 +308,9 @@
         "variables": {
           "toast": {
             "duration": 5000
+          },
+          "scroll": {
+            "hideOffset": 100
           }
         },
         "shadows": {

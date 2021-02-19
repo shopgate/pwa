@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
   return {
     showCouponsHint: hasCartItems && !hasCouponSupport(state),
-    showTaxDisclaimer: hasCartItems && showTaxDisclaimer,
+    hasCartItems,
   };
 };
 
