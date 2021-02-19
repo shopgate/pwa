@@ -97,7 +97,9 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="ui-shared__sheet"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
@@ -115,7 +117,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  className="css-ruonn8 css-1rg7udn css-32zjx4 common__drawer"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -134,7 +136,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       wrap={false}
                     >
                       <div
-                        className="css-1hncgty css-h7r55a"
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
                         <button
                           aria-label="common.close"
@@ -153,7 +155,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
@@ -169,7 +171,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -218,11 +220,11 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       testId={null}
                     >
                       <List
-                        className={null}
+                        className="null engage__sheet-list"
                         role="listbox"
                       >
                         <ul
-                          className={null}
+                          className="null engage__sheet-list common_list"
                           role="listbox"
                         >
                           <ListItem
@@ -233,7 +235,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -275,7 +277,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -378,7 +380,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -501,7 +503,9 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="ui-shared__sheet"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
@@ -519,7 +523,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  className="css-ruonn8 css-1rg7udn css-32zjx4 common__drawer"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -538,7 +542,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       wrap={false}
                     >
                       <div
-                        className="css-1hncgty css-h7r55a"
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
                         <button
                           aria-label="common.close"
@@ -557,7 +561,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
@@ -573,7 +577,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -622,11 +626,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       testId={null}
                     >
                       <List
-                        className={null}
+                        className="null engage__sheet-list"
                         role="listbox"
                       >
                         <ul
-                          className={null}
+                          className="null engage__sheet-list common_list"
                           role="listbox"
                         >
                           <ListItem
@@ -637,7 +641,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -679,7 +683,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -782,7 +786,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -945,7 +949,9 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="ui-shared__sheet"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
@@ -963,7 +969,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-15ct02m"
+                  className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -982,7 +988,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       wrap={false}
                     >
                       <div
-                        className="css-1hncgty css-h7r55a"
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
                         <button
                           aria-label="common.close"
@@ -1001,7 +1007,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
@@ -1017,7 +1023,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -1066,11 +1072,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       testId={null}
                     >
                       <List
-                        className={null}
+                        className="null engage__sheet-list"
                         role="listbox"
                       >
                         <ul
-                          className={null}
+                          className="null engage__sheet-list common_list"
                           role="listbox"
                         >
                           <ListItem
@@ -1081,7 +1087,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1123,7 +1129,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1226,7 +1232,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -1350,7 +1356,9 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="ui-shared__sheet"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
@@ -1368,7 +1376,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 onOpen={[Function]}
               >
                 <div
-                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  className="css-ruonn8 css-1rg7udn css-32zjx4 common__drawer"
                   onAnimationEnd={[Function]}
                   style={
                     Object {
@@ -1387,7 +1395,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       wrap={false}
                     >
                       <div
-                        className="css-1hncgty css-h7r55a"
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
                         <button
                           aria-label="common.close"
@@ -1406,7 +1414,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
@@ -1422,7 +1430,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -1471,11 +1479,11 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       testId={null}
                     >
                       <List
-                        className={null}
+                        className="null engage__sheet-list"
                         role="listbox"
                       >
                         <ul
-                          className={null}
+                          className="null engage__sheet-list common_list"
                           role="listbox"
                         >
                           <ListItem
@@ -1486,7 +1494,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1528,7 +1536,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1631,7 +1639,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -1753,7 +1761,9 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="ui-shared__sheet"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
@@ -1914,7 +1924,9 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             onOpen={[Function]}
             title="Picker Label"
           >
-            <section>
+            <section
+              className="ui-shared__sheet"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
@@ -2070,7 +2082,9 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             onOpen={[Function]}
             title=""
           >
-            <section>
+            <section
+              className="ui-shared__sheet"
+            >
               <Drawer
                 alwaysActive={false}
                 animation={
