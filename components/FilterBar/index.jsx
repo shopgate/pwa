@@ -2,11 +2,13 @@ import React, {
   useState, useEffect, useMemo, memo,
 } from 'react';
 import PropTypes from 'prop-types';
+import { useWidgetSettings } from '@shopgate/engage/core';
+import { ScrollHeader } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
 import styles from './style';
 
-const { colors } = themeConfig;
+const { colors, variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
 /**
  * The FilterBar component.
@@ -14,6 +16,8 @@ const { colors } = themeConfig;
  * @returns {JSX}
  */
 function FilterBar({ filters }) {
+  const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
+
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
   useEffect(() => {
@@ -26,9 +30,11 @@ function FilterBar({ filters }) {
   }), [active]);
 
   return (
-    <div className={`${styles} theme-ios11__filter-bar`} data-test-id="filterBar" style={style}>
-      <Content />
-    </div>
+    <ScrollHeader hideOnScroll={hideOnScroll} scrollOffset={offset}>
+      <div className={`${styles} theme-ios11__filter-bar`} data-test-id="filterBar" style={style}>
+        <Content />
+      </div>
+    </ScrollHeader>
   );
 }
 
