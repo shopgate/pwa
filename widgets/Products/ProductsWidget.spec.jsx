@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { ProductList } from '@shopgate/engage/product';
 import ProductGrid from 'Components/ProductGrid';
-import ProductList from 'Components/ProductList';
 import { UnwrappedProductsWidget as ProductsWidget } from './ProductsWidget';
 
 describe('<ProductsWidget />', () => {

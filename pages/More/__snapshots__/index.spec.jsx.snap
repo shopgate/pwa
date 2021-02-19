@@ -42,7 +42,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             text="navigation.welcome_message"
           >
             <h1
-              className="css-18cwfw7 headline"
+              className="css-18cwfw7 headline theme-ios11__headline"
               data-test-id="Headline"
               style={
                 Object {
@@ -151,7 +151,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         text="navigation.your_account"
                       >
                         <h2
-                          className="css-18cwfw7 headline"
+                          className="css-18cwfw7 headline theme-ios11__headline"
                           data-test-id="Headline"
                           style={
                             Object {
@@ -301,7 +301,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7 headline"
+                    className="css-18cwfw7 headline theme-ios11__headline"
                     data-test-id="Headline"
                     style={
                       Object {
@@ -380,7 +380,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
@@ -464,7 +464,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
@@ -548,7 +548,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
@@ -632,7 +632,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
@@ -738,7 +738,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"
@@ -844,7 +844,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             text="login.headline"
           >
             <h1
-              className="css-18cwfw7 headline"
+              className="css-18cwfw7 headline theme-ios11__headline"
               data-test-id="Headline"
               style={
                 Object {
@@ -911,7 +911,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       wrap={false}
                     >
                       <ul
-                        className="css-az18cj css-h7r55a"
+                        className="css-az18cj css-h7r55a common__grid"
                       >
                         <GridItem
                           className="css-mzzsxh"
@@ -943,7 +943,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 <div
                                   aria-hidden={null}
                                   aria-label={null}
-                                  className="css-c6ki83 "
+                                  className="css-c6ki83  common__link"
                                   data-test-id="link: /login"
                                   onClick={[Function]}
                                   role="link"
@@ -959,13 +959,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                     wrapContent={true}
                                   >
                                     <Button
-                                      className="css-19m2k92 css-6f03lb"
+                                      className="ui-shared__button css-19m2k92 css-6f03lb"
                                       disabled={false}
                                       onClick={null}
                                       testId="UserMenuLogin"
                                     >
                                       <button
-                                        className="css-19m2k92 css-6f03lb css-1rn65c0"
+                                        className="ui-shared__button css-19m2k92 css-6f03lb css-1rn65c0 common__button"
                                         data-test-id="UserMenuLogin"
                                         disabled={false}
                                         onClick={null}
@@ -1025,7 +1025,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 <div
                                   aria-hidden={null}
                                   aria-label={null}
-                                  className="css-c6ki83 "
+                                  className="css-c6ki83  common__link"
                                   data-test-id="link: /register"
                                   onClick={[Function]}
                                   role="link"
@@ -1041,13 +1041,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                     wrapContent={true}
                                   >
                                     <Button
-                                      className="css-19m2k92 css-6f03lb"
+                                      className="ui-shared__button css-19m2k92 css-6f03lb"
                                       disabled={false}
                                       onClick={null}
                                       testId="UserMenuRegister"
                                     >
                                       <button
-                                        className="css-19m2k92 css-6f03lb css-1rn65c0"
+                                        className="ui-shared__button css-19m2k92 css-6f03lb css-1rn65c0 common__button"
                                         data-test-id="UserMenuRegister"
                                         disabled={false}
                                         onClick={null}
@@ -1143,7 +1143,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7 headline"
+                    className="css-18cwfw7 headline theme-ios11__headline"
                     data-test-id="Headline"
                     style={
                       Object {
@@ -1222,7 +1222,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
@@ -1306,7 +1306,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
@@ -1390,7 +1390,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
@@ -1474,7 +1474,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
@@ -1580,7 +1580,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-c6ki83 css-1hj8a57"
+                              className="css-c6ki83 css-1hj8a57 common__link"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"
