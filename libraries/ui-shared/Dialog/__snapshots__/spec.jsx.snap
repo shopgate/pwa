@@ -11,7 +11,7 @@ exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
     onClick={[Function]}
     opacity={50}
   />
-  <BasicDialog
+  <BaseDialog
     actions={Array []}
     title={null}
   />

@@ -29,6 +29,7 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
   >
     <div
       aria-hidden={true}
+      className="ui-shared__tax-disclaimer"
       data-test-id="taxDisclaimer"
     >
       <Translate

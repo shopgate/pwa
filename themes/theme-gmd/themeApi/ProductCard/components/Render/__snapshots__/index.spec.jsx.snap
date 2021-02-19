@@ -63,7 +63,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-c6ki83  common__link"
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -139,7 +139,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                           viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb css-1g8mrwn"
+                            className="css-yys9hb css-1g8mrwn common__icon"
                             dangerouslySetInnerHTML={
                               Object {
                                 "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -182,7 +182,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo "
+                className="css-13azwyo  ui-shared__rating-stars"
                 data-test-id="ratedStars: 4"
                 role="text"
               >
@@ -207,7 +207,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -243,7 +243,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -279,7 +279,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -315,7 +315,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -351,7 +351,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -391,7 +391,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -427,7 +427,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -463,7 +463,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -499,7 +499,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -541,14 +541,14 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                 >
                   <Dotdotdot
                     clamp={3}
-                    className=""
+                    className=" common__ellipsis"
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
                     useNativeClamp={true}
                   >
                     <div
-                      className=""
+                      className=" common__ellipsis"
                     >
                       Product Name
                     </div>
@@ -622,7 +622,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         wrap={true}
                       >
                         <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a common__grid css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -643,7 +643,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs price"
+                                  className="css-izofhs price ui-shared__price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -678,7 +678,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil  price-striked"
+                                  className="css-1sagvrb css-nil  price-striked ui-shared__price-striked"
                                   role="text"
                                 >
                                   <span
@@ -706,7 +706,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                         wrap={false}
                       >
                         <ul
-                          className=" css-h7r55a"
+                          className=" css-h7r55a common__grid"
                         >
                           <GridItem
                             className=""
@@ -722,7 +722,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 text="Price Info"
                               >
                                 <div
-                                  className="css-1kqiarg css-1gftye4"
+                                  className="css-1kqiarg css-1gftye4 ui-shared__price-info"
                                   dangerouslySetInnerHTML={
                                     Object {
                                       "__html": "Price Info",
@@ -819,7 +819,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-c6ki83  common__link"
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -895,7 +895,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                           viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb css-1g8mrwn"
+                            className="css-yys9hb css-1g8mrwn common__icon"
                             dangerouslySetInnerHTML={
                               Object {
                                 "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -958,6 +958,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                   text="-50%"
                 >
                   <div
+                    className="ui-shared__discount-badge"
                     data-test-id="-50%"
                   >
                     <Translate
@@ -1018,14 +1019,14 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                 >
                   <Dotdotdot
                     clamp={3}
-                    className=""
+                    className=" common__ellipsis"
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
                     useNativeClamp={true}
                   >
                     <div
-                      className=""
+                      className=" common__ellipsis"
                     >
                       Product Name
                     </div>
@@ -1099,7 +1100,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                         wrap={true}
                       >
                         <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a common__grid css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -1120,7 +1121,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu price"
+                                  className="css-izofhs css-1ncyhu price ui-shared__price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -1155,7 +1156,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil  price-striked"
+                                  className="css-1sagvrb css-nil  price-striked ui-shared__price-striked"
                                   role="text"
                                 >
                                   <span
@@ -1183,7 +1184,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                         wrap={false}
                       >
                         <ul
-                          className=" css-h7r55a"
+                          className=" css-h7r55a common__grid"
                         >
                           <GridItem
                             className=""
@@ -1199,7 +1200,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                 text="Price Info"
                               >
                                 <div
-                                  className="css-1kqiarg css-1gftye4"
+                                  className="css-1kqiarg css-1gftye4 ui-shared__price-info"
                                   dangerouslySetInnerHTML={
                                     Object {
                                       "__html": "Price Info",
@@ -1296,7 +1297,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-c6ki83  common__link"
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -1372,7 +1373,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                           viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb css-1g8mrwn"
+                            className="css-yys9hb css-1g8mrwn common__icon"
                             dangerouslySetInnerHTML={
                               Object {
                                 "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -1435,6 +1436,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                   text="-50%"
                 >
                   <div
+                    className="ui-shared__discount-badge"
                     data-test-id="-50%"
                   >
                     <Translate
@@ -1483,7 +1485,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo "
+                className="css-13azwyo  ui-shared__rating-stars"
                 data-test-id="ratedStars: 4"
                 role="text"
               >
@@ -1508,7 +1510,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1544,7 +1546,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1580,7 +1582,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1616,7 +1618,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1652,7 +1654,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1692,7 +1694,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1728,7 +1730,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1764,7 +1766,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1800,7 +1802,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1842,14 +1844,14 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 >
                   <Dotdotdot
                     clamp={3}
-                    className=""
+                    className=" common__ellipsis"
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
                     useNativeClamp={true}
                   >
                     <div
-                      className=""
+                      className=" common__ellipsis"
                     >
                       Product Name
                     </div>
@@ -1923,7 +1925,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         wrap={true}
                       >
                         <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a common__grid css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -1944,7 +1946,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu price"
+                                  className="css-izofhs css-1ncyhu price ui-shared__price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -1979,7 +1981,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil  price-striked"
+                                  className="css-1sagvrb css-nil  price-striked ui-shared__price-striked"
                                   role="text"
                                 >
                                   <span
@@ -2007,7 +2009,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                         wrap={false}
                       >
                         <ul
-                          className=" css-h7r55a"
+                          className=" css-h7r55a common__grid"
                         >
                           <GridItem
                             className=""
@@ -2023,7 +2025,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                 text="Price Info"
                               >
                                 <div
-                                  className="css-1kqiarg css-1gftye4"
+                                  className="css-1kqiarg css-1gftye4 ui-shared__price-info"
                                   dangerouslySetInnerHTML={
                                     Object {
                                       "__html": "Price Info",
@@ -2120,7 +2122,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-c6ki83  common__link"
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -2196,7 +2198,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                           viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb css-1g8mrwn"
+                            className="css-yys9hb css-1g8mrwn common__icon"
                             dangerouslySetInnerHTML={
                               Object {
                                 "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -2259,6 +2261,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                   text="-50%"
                 >
                   <div
+                    className="ui-shared__discount-badge"
                     data-test-id="-50%"
                   >
                     <Translate
@@ -2307,7 +2310,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo "
+                className="css-13azwyo  ui-shared__rating-stars"
                 data-test-id="ratedStars: 4"
                 role="text"
               >
@@ -2332,7 +2335,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2368,7 +2371,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2404,7 +2407,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2440,7 +2443,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2476,7 +2479,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2516,7 +2519,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2552,7 +2555,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2588,7 +2591,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2624,7 +2627,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2666,14 +2669,14 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 >
                   <Dotdotdot
                     clamp={1}
-                    className=""
+                    className=" common__ellipsis"
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
                     useNativeClamp={true}
                   >
                     <div
-                      className=""
+                      className=" common__ellipsis"
                     >
                       Product Name
                     </div>
@@ -2747,7 +2750,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         wrap={true}
                       >
                         <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a common__grid css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -2768,7 +2771,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu price"
+                                  className="css-izofhs css-1ncyhu price ui-shared__price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -2803,7 +2806,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil  price-striked"
+                                  className="css-1sagvrb css-nil  price-striked ui-shared__price-striked"
                                   role="text"
                                 >
                                   <span
@@ -2831,7 +2834,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                         wrap={false}
                       >
                         <ul
-                          className=" css-h7r55a"
+                          className=" css-h7r55a common__grid"
                         >
                           <GridItem
                             className=""
@@ -2847,7 +2850,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                 text="Price Info"
                               >
                                 <div
-                                  className="css-1kqiarg css-1gftye4"
+                                  className="css-1kqiarg css-1gftye4 ui-shared__price-info"
                                   dangerouslySetInnerHTML={
                                     Object {
                                       "__html": "Price Info",
@@ -2944,7 +2947,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-c6ki83  common__link"
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -3020,7 +3023,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                           viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb css-1g8mrwn"
+                            className="css-yys9hb css-1g8mrwn common__icon"
                             dangerouslySetInnerHTML={
                               Object {
                                 "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -3083,6 +3086,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                   text="-50%"
                 >
                   <div
+                    className="ui-shared__discount-badge"
                     data-test-id="-50%"
                   >
                     <Translate
@@ -3131,7 +3135,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo "
+                className="css-13azwyo  ui-shared__rating-stars"
                 data-test-id="ratedStars: 4"
                 role="text"
               >
@@ -3156,7 +3160,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3192,7 +3196,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3228,7 +3232,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3264,7 +3268,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3300,7 +3304,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3340,7 +3344,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3376,7 +3380,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3412,7 +3416,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3448,7 +3452,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3535,7 +3539,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         wrap={true}
                       >
                         <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a common__grid css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -3556,7 +3560,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu price"
+                                  className="css-izofhs css-1ncyhu price ui-shared__price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -3591,7 +3595,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil  price-striked"
+                                  className="css-1sagvrb css-nil  price-striked ui-shared__price-striked"
                                   role="text"
                                 >
                                   <span
@@ -3619,7 +3623,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                         wrap={false}
                       >
                         <ul
-                          className=" css-h7r55a"
+                          className=" css-h7r55a common__grid"
                         >
                           <GridItem
                             className=""
@@ -3635,7 +3639,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                 text="Price Info"
                               >
                                 <div
-                                  className="css-1kqiarg css-1gftye4"
+                                  className="css-1kqiarg css-1gftye4 ui-shared__price-info"
                                   dangerouslySetInnerHTML={
                                     Object {
                                       "__html": "Price Info",
@@ -3732,7 +3736,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-c6ki83  common__link"
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -3808,7 +3812,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                           viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb css-1g8mrwn"
+                            className="css-yys9hb css-1g8mrwn common__icon"
                             dangerouslySetInnerHTML={
                               Object {
                                 "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -3851,7 +3855,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo "
+                className="css-13azwyo  ui-shared__rating-stars"
                 data-test-id="ratedStars: 4"
                 role="text"
               >
@@ -3876,7 +3880,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3912,7 +3916,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3948,7 +3952,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3984,7 +3988,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -4020,7 +4024,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -4060,7 +4064,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -4096,7 +4100,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -4132,7 +4136,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -4168,7 +4172,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                         viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb "
+                          className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
                             Object {
                               "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -4210,14 +4214,14 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                 >
                   <Dotdotdot
                     clamp={3}
-                    className=""
+                    className=" common__ellipsis"
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
                     useNativeClamp={true}
                   >
                     <div
-                      className=""
+                      className=" common__ellipsis"
                     >
                       Product Name
                     </div>
@@ -4302,7 +4306,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
         <div
           aria-hidden={null}
           aria-label={null}
-          className="css-c6ki83 "
+          className="css-c6ki83  common__link"
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
@@ -4378,7 +4382,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                           viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb css-1g8mrwn"
+                            className="css-yys9hb css-1g8mrwn common__icon"
                             dangerouslySetInnerHTML={
                               Object {
                                 "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -4441,6 +4445,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                   text="-50%"
                 >
                   <div
+                    className="ui-shared__discount-badge"
                     data-test-id="-50%"
                   >
                     <Translate
@@ -4501,14 +4506,14 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                 >
                   <Dotdotdot
                     clamp={3}
-                    className=""
+                    className=" common__ellipsis"
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
                     useNativeClamp={true}
                   >
                     <div
-                      className=""
+                      className=" common__ellipsis"
                     >
                       Product Name
                     </div>
@@ -4582,7 +4587,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                         wrap={true}
                       >
                         <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a common__grid css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -4603,7 +4608,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs css-1ncyhu price"
+                                  className="css-izofhs css-1ncyhu price ui-shared__price"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -4638,7 +4643,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-nil  price-striked"
+                                  className="css-1sagvrb css-nil  price-striked ui-shared__price-striked"
                                   role="text"
                                 >
                                   <span
@@ -4666,7 +4671,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                         wrap={false}
                       >
                         <ul
-                          className=" css-h7r55a"
+                          className=" css-h7r55a common__grid"
                         >
                           <GridItem
                             className=""
@@ -4682,7 +4687,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                 text="Price Info"
                               >
                                 <div
-                                  className="css-1kqiarg css-1gftye4"
+                                  className="css-1kqiarg css-1gftye4 ui-shared__price-info"
                                   dangerouslySetInnerHTML={
                                     Object {
                                       "__html": "Price Info",

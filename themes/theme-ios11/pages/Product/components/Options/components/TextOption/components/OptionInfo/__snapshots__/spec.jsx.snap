@@ -2,7 +2,7 @@
 
 exports[`<OptionInfo /> should render price element 1`] = `
 <ul
-  className="css-jy6f7q css-h7r55a"
+  className="css-jy6f7q css-h7r55a common__grid"
 >
   <GridItem
     aria-hidden={true}
@@ -31,7 +31,7 @@ exports[`<OptionInfo /> should render price element 1`] = `
 
 exports[`<OptionInfo /> should render required element 1`] = `
 <ul
-  className="css-jy6f7q css-h7r55a"
+  className="css-jy6f7q css-h7r55a common__grid"
 >
   <GridItem
     aria-hidden={true}

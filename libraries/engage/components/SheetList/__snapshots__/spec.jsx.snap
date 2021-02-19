@@ -7,11 +7,11 @@ exports[`<SheetList /> should not render invalid children 1`] = `
   testId={null}
 >
   <List
-    className={null}
+    className="null engage__sheet-list"
     role="listbox"
   >
     <ul
-      className={null}
+      className="null engage__sheet-list common_list"
       role="listbox"
     >
       <ListItem
@@ -22,7 +22,7 @@ exports[`<SheetList /> should not render invalid children 1`] = `
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -47,6 +47,7 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                 title="List Item"
               >
                 <div
+                  className="engage__sheet-list__item"
                   data-test-id={null}
                 >
                   <Grid
@@ -55,7 +56,7 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                     wrap={false}
                   >
                     <div
-                      className="css-1qcr7hz css-h7r55a"
+                      className="css-1qcr7hz css-h7r55a common__grid"
                     >
                       <GridItem
                         className="css-rx1nvy"
@@ -97,11 +98,11 @@ exports[`<SheetList /> should render a child and add styles for list items with 
   testId={null}
 >
   <List
-    className={null}
+    className="null engage__sheet-list"
     role="listbox"
   >
     <ul
-      className={null}
+      className="null engage__sheet-list common_list"
       role="listbox"
     >
       <ListItem
@@ -112,7 +113,7 @@ exports[`<SheetList /> should render a child and add styles for list items with 
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-1brrprg css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-1brrprg css-171mywc common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -137,6 +138,7 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                 title="List Item"
               >
                 <div
+                  className="engage__sheet-list__item"
                   data-test-id={null}
                 >
                   <Grid
@@ -145,7 +147,7 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                     wrap={false}
                   >
                     <div
-                      className="css-1qcr7hz css-h7r55a"
+                      className="css-1qcr7hz css-h7r55a common__grid"
                     >
                       <GridItem
                         className="css-rx1nvy"
@@ -179,11 +181,11 @@ exports[`<SheetList /> should render with two children 1`] = `
   testId={null}
 >
   <List
-    className={null}
+    className="null engage__sheet-list"
     role="listbox"
   >
     <ul
-      className={null}
+      className="null engage__sheet-list common_list"
       role="listbox"
     >
       <ListItem
@@ -194,7 +196,7 @@ exports[`<SheetList /> should render with two children 1`] = `
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -219,6 +221,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                 title="List Item"
               >
                 <div
+                  className="engage__sheet-list__item"
                   data-test-id={null}
                 >
                   <Grid
@@ -227,7 +230,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                     wrap={false}
                   >
                     <div
-                      className="css-1qcr7hz css-h7r55a"
+                      className="css-1qcr7hz css-h7r55a common__grid"
                     >
                       <GridItem
                         className="css-rx1nvy"
@@ -257,7 +260,7 @@ exports[`<SheetList /> should render with two children 1`] = `
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+          className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -282,6 +285,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                 title="List Item"
               >
                 <div
+                  className="engage__sheet-list__item"
                   data-test-id={null}
                 >
                   <Grid
@@ -290,7 +294,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                     wrap={false}
                   >
                     <div
-                      className="css-1qcr7hz css-h7r55a"
+                      className="css-1qcr7hz css-h7r55a common__grid"
                     >
                       <GridItem
                         className="css-rx1nvy"

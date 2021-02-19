@@ -47,7 +47,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     text="Yay Categories"
   >
     <h2
-      className="css-18cwfw7 headline"
+      className="css-18cwfw7 headline theme-ios11__headline"
       data-test-id="Headline"
       style={null}
     >
@@ -72,11 +72,11 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     testId={null}
   >
     <List
-      className={null}
+      className="null engage__sheet-list"
       role="listbox"
     >
       <ul
-        className={null}
+        className="null engage__sheet-list common_list"
         role="listbox"
       >
         <ListItem
@@ -87,7 +87,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           tabIndex={0}
         >
           <li
-            className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+            className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
             data-test-id="listItem"
             role={null}
           >
@@ -138,7 +138,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       }
                     >
                       <div
-                        className="css-13azwyo"
+                        className="css-13azwyo ui-shared__glow"
                         onClick={[Function]}
                       >
                         <div
@@ -169,7 +169,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           tabIndex={0}
         >
           <li
-            className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+            className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
             data-test-id="listItem"
             role={null}
           >
@@ -220,7 +220,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       }
                     >
                       <div
-                        className="css-13azwyo"
+                        className="css-13azwyo ui-shared__glow"
                         onClick={[Function]}
                       >
                         <div

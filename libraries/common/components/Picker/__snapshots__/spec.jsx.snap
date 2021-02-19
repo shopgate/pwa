@@ -48,11 +48,11 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
   >
     <div
       aria-haspopup={true}
-      className=""
+      className=" common__picker"
       role="button"
       tabIndex={0}
     >
-      <PickerButton
+      <Button
         disabled={false}
         label="Pick ..."
         openList={[Function]}
@@ -72,12 +72,12 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
             className="css-fd89ih"
           />
         </button>
-      </PickerButton>
+      </Button>
       <Component
         isOpened={true}
         onClose={[Function]}
       >
-        <PickerModal
+        <Modal
           duration={300}
           isOpen={false}
           onClose={[Function]}

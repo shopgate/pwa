@@ -61,7 +61,9 @@ exports[`<Description /> should not render if no data is available 1`] = `
           lines={3}
           ready={false}
         >
-          <div>
+          <div
+            className="ui-shared__placeholder-paragraph"
+          >
             <PlaceholderLabel
               className="css-11lvu0k"
               key="0"
@@ -73,7 +75,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
               }
             >
               <div
-                className="css-qd8qpa css-11lvu0k"
+                className="css-qd8qpa css-11lvu0k ui-shared__placeholder-label"
                 style={
                   Object {
                     "width": "95%",
@@ -88,7 +90,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
               style={null}
             >
               <div
-                className="css-qd8qpa css-11lvu0k"
+                className="css-qd8qpa css-11lvu0k ui-shared__placeholder-label"
                 style={null}
               />
             </PlaceholderLabel>
@@ -103,7 +105,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
               }
             >
               <div
-                className="css-qd8qpa css-11lvu0k"
+                className="css-qd8qpa css-11lvu0k ui-shared__placeholder-label"
                 style={
                   Object {
                     "width": "100%",
@@ -193,7 +195,7 @@ exports[`<Description /> should render description if data is available 1`] = `
             data-test-id="description"
           >
             <HtmlSanitizer
-              className={null}
+              className=""
               decode={false}
               processStyles={false}
               settings={
@@ -206,7 +208,7 @@ exports[`<Description /> should render description if data is available 1`] = `
             >
               <EmbeddedMedia>
                 <div
-                  className={null}
+                  className=" common__html-sanitizer"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<h1>foo</h1>",

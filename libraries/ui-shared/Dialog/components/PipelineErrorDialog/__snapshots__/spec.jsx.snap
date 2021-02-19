@@ -13,14 +13,14 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
     }
   }
 >
-  <BasicDialog
+  <BaseDialog
     actions={Array []}
     title="modal.title_error"
   >
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
       aria-modal={true}
-      className="css-hrxvvd"
+      className="css-hrxvvd ui-material__base-dialog"
       data-test-id="basicDialog"
       role="alertdialog"
     >
@@ -43,14 +43,14 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             >
               <Dotdotdot
                 clamp={3}
-                className=""
+                className=" common__ellipsis"
                 ellipsis="..."
                 tagName="div"
                 truncationChar="…"
                 useNativeClamp={true}
               >
                 <div
-                  className=""
+                  className=" common__ellipsis"
                 >
                   <Translate
                     className={null}
@@ -122,7 +122,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
         </div>
       </div>
     </div>
-  </BasicDialog>
+  </BaseDialog>
 </PipelineErrorDialog>
 `;
 
@@ -139,14 +139,14 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
     }
   }
 >
-  <BasicDialog
+  <BaseDialog
     actions={Array []}
     title="modal.title_error"
   >
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
       aria-modal={true}
-      className="css-hrxvvd"
+      className="css-hrxvvd ui-material__base-dialog"
       data-test-id="basicDialog"
       role="alertdialog"
     >
@@ -169,14 +169,14 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             >
               <Dotdotdot
                 clamp={3}
-                className=""
+                className=" common__ellipsis"
                 ellipsis="..."
                 tagName="div"
                 truncationChar="…"
                 useNativeClamp={true}
               >
                 <div
-                  className=""
+                  className=" common__ellipsis"
                 >
                   <Translate
                     className={null}
@@ -248,6 +248,6 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
         </div>
       </div>
     </div>
-  </BasicDialog>
+  </BaseDialog>
 </PipelineErrorDialog>
 `;

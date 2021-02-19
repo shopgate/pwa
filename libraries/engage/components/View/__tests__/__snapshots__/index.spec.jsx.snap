@@ -3,11 +3,7 @@
 exports[`engage > components > view > index should have structured content 1`] = `
 <section
   aria-hidden={true}
-  className={
-    Object {
-      "data-css-296fln": "",
-    }
-  }
+  className="css-296fln engage__view"
   style={
     Object {
       "display": "block",

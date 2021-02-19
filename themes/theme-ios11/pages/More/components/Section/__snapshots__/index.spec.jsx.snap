@@ -20,7 +20,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
     text="Headline"
   >
     <h2
-      className="css-18cwfw7 headline"
+      className="css-18cwfw7 headline theme-ios11__headline"
       data-test-id="Headline"
       style={
         Object {

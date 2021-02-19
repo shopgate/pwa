@@ -37,7 +37,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline"
+          className="css-18cwfw7 headline theme-ios11__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -143,7 +143,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -236,7 +238,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -251,7 +253,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
@@ -260,13 +262,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={true}
                   >
                     <Button
-                      className="css-ot1d6i css-63oe3q"
+                      className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-ot1d6i css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -339,7 +341,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline"
+          className="css-18cwfw7 headline theme-ios11__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -445,7 +447,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -463,7 +467,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -482,7 +486,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             wrap={false}
                           >
                             <div
-                              className="css-1hncgty css-h7r55a"
+                              className="css-1hncgty css-h7r55a common__grid"
                             >
                               <button
                                 aria-label="common.close"
@@ -501,7 +505,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -517,7 +521,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="css-yys9hb "
+                                          className="css-yys9hb  common__icon"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -566,11 +570,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -581,7 +585,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -623,7 +627,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -726,7 +730,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -781,7 +785,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -796,7 +800,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -805,13 +809,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="css-19m2k92 css-63oe3q"
+                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-19m2k92 css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -827,7 +831,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
@@ -916,7 +920,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline"
+          className="css-18cwfw7 headline theme-ios11__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -1022,7 +1026,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -1169,7 +1175,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label Two"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -1299,7 +1307,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title=""
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -1392,7 +1402,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -1407,7 +1417,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -1416,13 +1426,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="css-19m2k92 css-63oe3q"
+                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-19m2k92 css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1438,7 +1448,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
@@ -1527,7 +1537,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline"
+          className="css-18cwfw7 headline theme-ios11__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -1633,7 +1643,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -1651,7 +1663,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -1670,7 +1682,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             wrap={false}
                           >
                             <div
-                              className="css-1hncgty css-h7r55a"
+                              className="css-1hncgty css-h7r55a common__grid"
                             >
                               <button
                                 aria-label="common.close"
@@ -1689,7 +1701,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -1705,7 +1717,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="css-yys9hb "
+                                          className="css-yys9hb  common__icon"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -1754,11 +1766,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -1769,7 +1781,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -1811,7 +1823,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -1914,7 +1926,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -2023,7 +2035,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label Two"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -2116,7 +2130,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -2131,7 +2145,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
@@ -2140,13 +2154,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={true}
                   >
                     <Button
-                      className="css-ot1d6i css-63oe3q"
+                      className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-ot1d6i css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -2237,7 +2251,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline"
+          className="css-18cwfw7 headline theme-ios11__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -2343,7 +2357,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -2361,7 +2377,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -2380,7 +2396,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             wrap={false}
                           >
                             <div
-                              className="css-1hncgty css-h7r55a"
+                              className="css-1hncgty css-h7r55a common__grid"
                             >
                               <button
                                 aria-label="common.close"
@@ -2399,7 +2415,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -2415,7 +2431,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="css-yys9hb "
+                                          className="css-yys9hb  common__icon"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -2464,11 +2480,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -2479,7 +2495,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2521,7 +2537,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2624,7 +2640,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -2733,7 +2749,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onOpen={[Function]}
                   title="Label Two"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -2751,7 +2769,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -2770,7 +2788,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             wrap={false}
                           >
                             <div
-                              className="css-1hncgty css-h7r55a"
+                              className="css-1hncgty css-h7r55a common__grid"
                             >
                               <button
                                 aria-label="common.close"
@@ -2789,7 +2807,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -2805,7 +2823,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="css-yys9hb "
+                                          className="css-yys9hb  common__icon"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -2854,11 +2872,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -2869,7 +2887,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2911,7 +2929,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3014,7 +3032,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -3069,7 +3087,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -3084,7 +3102,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -3093,13 +3111,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="css-19m2k92 css-63oe3q"
+                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-19m2k92 css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3115,7 +3133,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
@@ -3272,7 +3290,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -3365,7 +3385,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -3380,7 +3400,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
@@ -3389,13 +3409,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={true}
                   >
                     <Button
-                      className="css-ot1d6i css-63oe3q"
+                      className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-ot1d6i css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -3554,7 +3574,9 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   onOpen={[Function]}
                   title="Label One"
                 >
-                  <section>
+                  <section
+                    className="ui-shared__sheet"
+                  >
                     <Drawer
                       alwaysActive={false}
                       animation={
@@ -3572,7 +3594,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       onOpen={[Function]}
                     >
                       <div
-                        className="css-ruonn8 css-1rg7udn css-15ct02m"
+                        className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
                         onAnimationEnd={[Function]}
                         style={
                           Object {
@@ -3591,7 +3613,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             wrap={false}
                           >
                             <div
-                              className="css-1hncgty css-h7r55a"
+                              className="css-1hncgty css-h7r55a common__grid"
                             >
                               <button
                                 aria-label="common.close"
@@ -3610,7 +3632,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -3626,7 +3648,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="css-yys9hb "
+                                          className="css-yys9hb  common__icon"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -3675,11 +3697,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -3690,7 +3712,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3732,7 +3754,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3835,7 +3857,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -3890,7 +3912,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -3905,7 +3927,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -3914,13 +3936,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="css-19m2k92 css-63oe3q"
+                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-19m2k92 css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3936,7 +3958,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}

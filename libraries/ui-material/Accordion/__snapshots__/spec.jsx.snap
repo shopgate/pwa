@@ -26,11 +26,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       aria-controls="Some-Thing-content"
       aria-expanded={false}
       aria-label={null}
-      className={
-        Object {
-          "data-css-17o6uz7": "",
-        }
-      }
+      className="css-17o6uz7 ui-material__accordion"
       data-test-id="Some Thing"
       key="accordion-toggle"
       onClick={[Function]}
@@ -57,7 +53,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
             viewBox="0 0 24 24"
           >
             <svg
-              className="css-yys9hb css-paji06"
+              className="css-yys9hb css-paji06 common__icon"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",

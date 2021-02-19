@@ -2,11 +2,7 @@
 
 exports[`<Logo /> should render an image 1`] = `
 <div
-  className={
-    Object {
-      "data-css-ivdtm0": "",
-    }
-  }
+  className="css-ivdtm0 engage__logo"
 >
   <img
     alt="Shopgate Connect"

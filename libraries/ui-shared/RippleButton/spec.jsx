@@ -17,21 +17,21 @@ describe('<RippleButton />', () => {
   it('should render as a regular ripple button if type is explicitly defined', () => {
     const wrapper = mount(<RippleButton type="regular">Press me</RippleButton>);
 
-    expect(trim(wrapper.find(Button).props().className)).toEqual(styles.regular(false).button);
+    expect(trim(wrapper.find(Button).props().className)).toEqual(`ui-shared__button ${styles.regular(false).button}  ui-shared__ripple-button`);
     expect(wrapper.find(Ripple).render().text()).toEqual('Press me');
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render as a primary ripple button', () => {
     const wrapper = mount(<RippleButton type="primary">Press me</RippleButton>);
-    expect(trim(wrapper.find(Button).props().className)).toEqual(styles.primary(false).button);
+    expect(trim(wrapper.find(Button).props().className)).toEqual(`ui-shared__button ${styles.primary(false).button}  ui-shared__ripple-button`);
     expect(wrapper.find(Ripple).render().text()).toEqual('Press me');
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render as a secondary ripple button', () => {
     const wrapper = mount(<RippleButton type="secondary">Press me</RippleButton>);
-    expect(trim(wrapper.find(Button).props().className)).toEqual(styles.secondary(false).button);
+    expect(trim(wrapper.find(Button).props().className)).toEqual(`ui-shared__button ${styles.secondary(false).button}  ui-shared__ripple-button`);
     expect(wrapper.find(Ripple).render().text()).toEqual('Press me');
     expect(wrapper).toMatchSnapshot();
   });

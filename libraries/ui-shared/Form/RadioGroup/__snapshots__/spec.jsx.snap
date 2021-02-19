@@ -12,7 +12,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
   value={null}
 >
   <FormElement
-    className=""
+    className="ui-shared__form__radio-group"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -24,7 +24,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -86,7 +86,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w uncheckedIcon"
+                  className="css-yys9hb css-37nc4w uncheckedIcon common__icon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -159,7 +159,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
   value={null}
 >
   <FormElement
-    className=""
+    className="ui-shared__form__radio-group"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -171,7 +171,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -233,7 +233,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w uncheckedIcon"
+                  className="css-yys9hb css-37nc4w uncheckedIcon common__icon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -293,7 +293,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w uncheckedIcon"
+                  className="css-yys9hb css-37nc4w uncheckedIcon common__icon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -366,7 +366,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
   value={null}
 >
   <FormElement
-    className=""
+    className="ui-shared__form__radio-group"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -378,7 +378,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -440,7 +440,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w uncheckedIcon"
+                  className="css-yys9hb css-37nc4w uncheckedIcon common__icon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -513,7 +513,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
   value={null}
 >
   <FormElement
-    className=""
+    className="ui-shared__form__radio-group"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -525,7 +525,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -599,7 +599,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
   value={null}
 >
   <FormElement
-    className=""
+    className="ui-shared__form__radio-group"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -611,7 +611,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -673,7 +673,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w uncheckedIcon"
+                  className="css-yys9hb css-37nc4w uncheckedIcon common__icon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -746,7 +746,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
   value="foo"
 >
   <FormElement
-    className=""
+    className="ui-shared__form__radio-group"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={false}
@@ -758,7 +758,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -820,7 +820,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-1ncyhu css-37nc4w checkedIcon"
+                  className="css-yys9hb css-1ncyhu css-37nc4w checkedIcon common__icon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",

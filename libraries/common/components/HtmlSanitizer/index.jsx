@@ -19,7 +19,7 @@ class HtmlSanitizer extends Component {
 
   static defaultProps = {
     children: '',
-    className: null,
+    className: '',
     decode: false,
     processStyles: false,
     settings: {},
@@ -111,7 +111,7 @@ class HtmlSanitizer extends Component {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={innerHTML}
           ref={this.htmlContainer}
-          className={this.props.className + 'common__html-sanitizer'}
+          className={`${this.props.className} common__html-sanitizer`}
         />
       </Wrapper>
     );

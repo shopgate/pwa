@@ -13,7 +13,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
   wrapContent={true}
 >
   <Button
-    className=""
+    className=" ui-shared__ripple-button"
     disabled={true}
     flat={false}
     onClick={null}
@@ -22,13 +22,13 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
     wrapContent={true}
   >
     <Button
-      className="css-ot1d6i "
+      className="ui-shared__button css-ot1d6i  ui-shared__ripple-button"
       disabled={true}
       onClick={null}
       testId="Button"
     >
       <button
-        className="css-ot1d6i  css-1rn65c0"
+        className="ui-shared__button css-ot1d6i  ui-shared__ripple-button css-1rn65c0 common__button"
         data-test-id="Button"
         disabled={true}
         onClick={null}
@@ -57,7 +57,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
   wrapContent={true}
 >
   <Button
-    className=""
+    className=" ui-shared__ripple-button"
     disabled={false}
     flat={false}
     onClick={null}
@@ -66,13 +66,13 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="css-3939p1 "
+      className="ui-shared__button css-3939p1  ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="css-3939p1  css-1rn65c0"
+        className="ui-shared__button css-3939p1  ui-shared__ripple-button css-1rn65c0 common__button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
@@ -88,7 +88,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
           size={null}
         >
           <div
-            className="css-1fscwua "
+            className="ui-shared__ripple css-1fscwua "
             data-test-id="Ripple"
             onClick={[Function]}
             style={null}
@@ -104,7 +104,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
 
 exports[`<RippleButton /> should render as a regular ripple button effect if type is omitted 1`] = `
 <Button
-  className=""
+  className=" ui-shared__ripple-button"
   disabled={false}
   flat={false}
   onClick={null}
@@ -140,7 +140,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
   wrapContent={true}
 >
   <Button
-    className=""
+    className=" ui-shared__ripple-button"
     disabled={false}
     flat={false}
     onClick={null}
@@ -149,13 +149,13 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
     wrapContent={false}
   >
     <Button
-      className="css-kevfw8 "
+      className="ui-shared__button css-kevfw8  ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="css-kevfw8  css-1rn65c0"
+        className="ui-shared__button css-kevfw8  ui-shared__ripple-button css-1rn65c0 common__button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
@@ -171,7 +171,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
           size={null}
         >
           <div
-            className="css-1fscwua "
+            className="ui-shared__ripple css-1fscwua "
             data-test-id="Ripple"
             onClick={[Function]}
             style={null}
@@ -198,7 +198,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
   wrapContent={true}
 >
   <Button
-    className=""
+    className=" ui-shared__ripple-button"
     disabled={false}
     flat={false}
     onClick={null}
@@ -207,13 +207,13 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="css-19m2k92 "
+      className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="css-19m2k92  css-1rn65c0"
+        className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
@@ -229,7 +229,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
           size={null}
         >
           <div
-            className="css-1fscwua "
+            className="ui-shared__ripple css-1fscwua "
             data-test-id="Ripple"
             onClick={[Function]}
             style={null}

@@ -19,7 +19,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
   value="DE"
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__select"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -31,7 +31,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -151,7 +151,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__select"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -163,7 +163,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -278,7 +278,7 @@ exports[`<Select /> should render select with no options 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__select"
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
@@ -290,7 +290,7 @@ exports[`<Select /> should render select with no options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}

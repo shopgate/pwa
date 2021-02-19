@@ -3,7 +3,7 @@
 exports[`<RatingStars /> renders with value of 0 1`] = `
 <div
   aria-label="reviews.rating_stars"
-  className="css-13azwyo "
+  className="css-13azwyo  ui-shared__rating-stars"
   data-test-id="ratedStars: 0"
   role="text"
 >
@@ -75,7 +75,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
 exports[`<RatingStars /> renders with value of 50 1`] = `
 <div
   aria-label="reviews.rating_stars"
-  className="css-13azwyo "
+  className="css-13azwyo  ui-shared__rating-stars"
   data-test-id="ratedStars: 2.5"
   role="text"
 >
@@ -181,7 +181,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
 exports[`<RatingStars /> renders with value of 100 1`] = `
 <div
   aria-label="reviews.rating_stars"
-  className="css-13azwyo "
+  className="css-13azwyo  ui-shared__rating-stars"
   data-test-id="ratedStars: 5"
   role="text"
 >
@@ -309,7 +309,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
 exports[`<RatingStars /> should change rating on click 1`] = `
 <div
   aria-label="reviews.rating_stars"
-  className="css-13azwyo "
+  className="css-13azwyo  ui-shared__rating-stars"
   data-test-id="ratedStars: 5"
   role="text"
 >
@@ -467,7 +467,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
 exports[`<RatingStars /> should change rating on click 2`] = `
 <div
   aria-label="reviews.rating_stars"
-  className="css-13azwyo "
+  className="css-13azwyo  ui-shared__rating-stars"
   data-test-id="ratedStars: 3.5"
   role="text"
 >

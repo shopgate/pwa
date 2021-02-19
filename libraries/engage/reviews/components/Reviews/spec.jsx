@@ -17,8 +17,7 @@ const mockedStore = configureStore();
  */
 const Header = () => <div />;
 const mock = Header;
-jest.mock('Components/Reviews/components/Header', () => mock);
-
+jest.mock('./components/Header', () => mock);
 beforeEach(() => {
   jest.resetModules();
 });

@@ -26,6 +26,7 @@ exports[`<Content /> Check search field should render with initial search query 
       submitSearch={[Function]}
     >
       <div
+        className="theme-ios11__browse__search-field"
         data-test-id="SearchField"
       >
         <div
@@ -54,7 +55,7 @@ exports[`<Content /> Check search field should render with initial search query 
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>",
@@ -107,7 +108,7 @@ exports[`<Content /> Check search field should render with initial search query 
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-11ngaym css-1qnjb83 simpleInput"
+                    className="css-11ngaym css-1qnjb83 simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     name={null}
@@ -143,7 +144,7 @@ exports[`<Content /> Check search field should render with initial search query 
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M4.3 6.226h1.926V17.77H4.3V6.226zm2.89 0h.965V17.77H7.19V6.226zm1.925 0H12V17.77H9.115V6.226zm3.85 0h.965V17.77h-.97l.005-11.544zm2.885 0h1.924V17.77H15.85V6.226zm2.884 0h.965V17.77h-.965V6.226zM2.376 4.3v3.85H.451V4.3a1.922 1.922 0 011.92-1.92h3.85v1.925H2.376zm19.248-1.925a1.922 1.922 0 011.92 1.92v3.85h-1.925V4.3h-3.85V2.376h3.855zM2.376 15.85v3.85h3.85v1.924h-3.85c-.254 0-.504-.048-.74-.149a1.9 1.9 0 01-.623-.417 1.952 1.952 0 01-.418-.624 1.95 1.95 0 01-.144-.74V15.85h1.925zm19.248 3.85v-3.85h1.925v3.85a1.922 1.922 0 01-1.92 1.92h-3.85v-1.926l3.845.005z\\"/>",
@@ -226,6 +227,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
       submitSearch={[Function]}
     >
       <div
+        className="theme-ios11__browse__search-field"
         data-test-id="SearchField"
       >
         <div
@@ -254,7 +256,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>",
@@ -307,7 +309,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-11ngaym simpleInput"
+                    className="css-11ngaym simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     name={null}

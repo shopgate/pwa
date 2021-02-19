@@ -56,6 +56,6 @@ describe('<TextMessageDialog />', () => {
         actions={[]}
       />
     ));
-    expect(wrapper.find('BasicDialog').prop('title')).toEqual(customTitle);
+    expect(wrapper.find('BaseDialog').prop('title')).toEqual(customTitle);
   });
 });
