@@ -407,6 +407,8 @@
           "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar."
         },
         "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar.",
+        "1005": "Die minimale Bestellmenge von {minQty} wurde noch nicht erreicht.",
+        "1006": "Die maximale Bestellmenge von {maxQty} wurde überschritten.",
         "generic": "Bei diesem Produkt ist ein unerwarteter Fehler aufgetreten.",
         "insufficientstock": "Derzeit nicht auf Lager."
       },
