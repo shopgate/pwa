@@ -389,6 +389,8 @@
           "1001": "The requested quantity is not available."
         },
         "1001": "The requested quantity is not available.",
+        "1005": "The minimum order quantity of {minQty} has not been reached.",
+        "1006": "The maximum order quantity of {maxQty} has been exceeded.",
         "generic": "An unexpected error occurred with this item.",
         "insufficientstock": "Currently out of stock."
       },
