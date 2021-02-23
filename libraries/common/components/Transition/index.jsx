@@ -2,7 +2,7 @@ import isEqual from 'lodash/isEqual';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
-import { TweenMax } from 'gsap';
+import gsap from 'gsap';
 
 /**
  * Handles a transition of an object.
@@ -79,7 +79,7 @@ class Transition extends Component {
 
     if (props.set) {
       // Sets properties to an absolute state.
-      TweenMax.set(element, props.set);
+      gsap.set(element, props.set);
     }
 
     if (this.tween) {
@@ -89,19 +89,19 @@ class Transition extends Component {
 
     if (props.from && props.to) {
       // Starts a {from} -> {to} transition.
-      this.tween = TweenMax.fromTo(element, duration, props.from, {
+      this.tween = gsap.fromTo(element, duration, props.from, {
         ...props.to,
         ...transitionSettings,
       });
     } else if (props.from) {
       // Starts a {from} only transition.
-      this.tween = TweenMax.from(element, duration, {
+      this.tween = gsap.from(element, duration, {
         ...props.from,
         ...transitionSettings,
       });
     } else if (props.to) {
       // Starts a {to} only transition.
-      this.tween = TweenMax.to(element, duration, {
+      this.tween = gsap.to(element, duration, {
         ...props.to,
         ...transitionSettings,
       });
