@@ -1,11 +1,26 @@
 import { css } from 'glamor';
 
-export const header = css({
-  transition: 'top 0.6s',
+const fadeOut = css.keyframes({
+  '0%': { opacity: 1 },
+  '99%': { opacity: 0.01, top: 0 },
+  '100%': { opacity: 0, top: '-20%' },
+});
+const fadeIn = css.keyframes({
+  '0%': { opacity: 0, top: '-20%' },
+  '1%': { opacity: 0.01, top: 0 },
+  '100%': { opacity: 1, top: 0 },
+});
+
+export const scrolledIn = css({
+  '&&': {
+    animation: `${fadeIn} .2s`,
+    animationFillMode: 'forwards',
+  },
 }).toString();
 
-export const hidden = css({
+export const scrolledOut = css({
   '&&': {
-    top: '-20%',
+    animation: `${fadeOut} .2s`,
+    animationFillMode: 'forwards',
   },
 }).toString();
