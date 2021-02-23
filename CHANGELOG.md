@@ -1,5 +1,19 @@
 # Changelog
 
+## [v6.13.12](https://github.com/shopgate/pwa/compare/v6.13.11...v6.13.12) (2021-02-23)
+
+#### :rocket: Enhancement
+* [#1070](https://github.com/shopgate/pwa/pull/1070) Change FilterBar animation to match TabBar ([@Carsten89](https://github.com/Carsten89))
+* [#1067](https://github.com/shopgate/pwa/pull/1067) Make TabBar and FilterBar scrollable ([@alexbridge](https://github.com/alexbridge))
+* [#1065](https://github.com/shopgate/pwa/pull/1065) Add auto-hide for navigation elements while scrolling ([@alexbridge](https://github.com/alexbridge))
+* [#1066](https://github.com/shopgate/pwa/pull/1066) Make TaxDisclaimer configurable ([@Carsten89](https://github.com/Carsten89))
+* [#1060](https://github.com/shopgate/pwa/pull/1060) Make cms icons configurable inside gmd navdrawer ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1064](https://github.com/shopgate/pwa/pull/1064) Use cta colors for GMD addToCart icon ([@Carsten89](https://github.com/Carsten89))
+* [#1059](https://github.com/shopgate/pwa/pull/1059) Fix cta colors from theme config ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.13.11](https://github.com/shopgate/pwa/compare/v6.13.10...v6.13.11) (2021-01-13)
 
 #### :rocket: Enhancement
