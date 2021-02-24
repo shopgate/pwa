@@ -706,7 +706,8 @@
     "headlines": {
       "create_new_account": "Create new account",
       "shipping_address": "Shipping Address",
-      "billing_address": "Billing Address"
+      "billing_address": "Billing Address",
+      "billing_address_reserve": "Order Contact"
     }
   },"error": {
     "general": "Connectivity problems. Please check your internet connection or try again later."

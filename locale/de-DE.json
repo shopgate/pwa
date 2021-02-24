@@ -707,7 +707,8 @@
     "headlines": {
       "create_new_account": "Neuen Account erstellen",
       "shipping_address": "Lieferadresse",
-      "billing_address": "Rechnungsadresse"
+      "billing_address": "Rechnungsadresse",
+      "billing_address_reserve": "Bestellkontakt"
     }
   },
   "error": {
