@@ -12,15 +12,20 @@ export const convertSubmitRegistrationValidationErrors = (errors) => {
   }
 
   const converted = errors.reduce((result, error) => {
-    const { path, code } = error;
+    const { path = [], code } = error;
     const { subentityPath = [] } = error;
 
     let { message } = error;
 
-    if (path) {
+    if (path.length === 0 && subentityPath.length === 0) {
+      result.general.push(error);
+      return result;
+    }
+
+    if (path.length > 0) {
       message = i18n.text('validation.checkField');
-      setWith(result, path.slice(2).join('.'), message, Object);
-    } else if (subentityPath) {
+      setWith(result.validation, path.slice(2).join('.'), message, Object);
+    } else if (subentityPath.length > 0) {
       const field = subentityPath[subentityPath.length - 1];
 
       if (code === 409 && field === 'emailAddress') {
@@ -29,11 +34,14 @@ export const convertSubmitRegistrationValidationErrors = (errors) => {
         message = i18n.text('validation.checkField');
       }
 
-      setWith(result, subentityPath.join('.'), message, Object);
+      setWith(result.validation, subentityPath.join('.'), message, Object);
     }
 
     return result;
-  }, {});
+  }, {
+    validation: {},
+    general: [],
+  });
 
   return converted;
 };

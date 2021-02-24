@@ -96,7 +96,7 @@ const RegistrationProvider = ({
   const [isShippingFormVisible, setIsShippingFormVisible] = useState(false);
   const { query } = useRoute();
 
-  const enableShippingForm = useMemo(
+  const isShippingAddressSelectionEnabled = useMemo(
     () => query?.checkout && cartHasDirectShipItems,
     [cartHasDirectShipItems, query]
   );
@@ -311,7 +311,7 @@ const RegistrationProvider = ({
       updateBillingForm: billingFormState.setValues,
       updateShippingForm: shippingFormState.setValues,
       updateExtraForm: extraFormState.setValues,
-      enableShippingForm,
+      isShippingAddressSelectionEnabled,
       isShippingFormVisible,
       setIsShippingFormVisible,
       numberOfAddressLines,
@@ -336,7 +336,7 @@ const RegistrationProvider = ({
       defaultExtraFormState,
       extraFormState.setValues,
       extraFormState.validationErrors,
-      enableShippingForm,
+      isShippingAddressSelectionEnabled,
       isShippingFormVisible,
       setIsShippingFormVisible,
       numberOfAddressLines,

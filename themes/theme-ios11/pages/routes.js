@@ -17,3 +17,7 @@ export const More = lazy(() => import('./More'));
 export const Scanner = lazy(() => import('./Scanner'));
 export const CheckoutAddressBook = lazy(() => import('./Checkout/CheckoutAddressBook'));
 export const CheckoutAddressBookContact = lazy(() => import('./Checkout/CheckoutAddressBookContact'));
+export const GuestCheckoutRegistration = lazy(() => import('./Checkout/GuestCheckoutRegistration'));
+export const GuestCheckoutPayment = lazy(() => import('./Checkout/GuestCheckoutPayment'));
+export const Checkout = lazy(() => import('./Checkout/Checkout'));
+export const Register = lazy(() => import('./Register'));

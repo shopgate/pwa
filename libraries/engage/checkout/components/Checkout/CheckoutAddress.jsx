@@ -44,12 +44,13 @@ export const styles = {
  * @param {Object} props The component props
  * @returns {JSX}
  */
-const CheckoutAddress = ({ type, guestCheckout }) => {
+const CheckoutAddress = ({ type }) => {
   const {
     billingAddress,
     shippingAddress,
     orderReserveOnly,
     isShippingAddressSelectionEnabled,
+    isGuestCheckout,
   } = useCheckoutContext();
 
   const { contacts = [] } = useProfileContext() || {};
@@ -60,36 +61,32 @@ const CheckoutAddress = ({ type, guestCheckout }) => {
   );
 
   const headline = useMemo(() => {
-    if (type === ADDRESS_TYPE_BILLING && guestCheckout && orderReserveOnly) {
+    if (type === ADDRESS_TYPE_BILLING && isGuestCheckout && orderReserveOnly) {
       return 'checkout.billing.headline_reserve';
     }
 
     return `checkout.${type}.headline`;
-  }, [guestCheckout, orderReserveOnly, type]);
+  }, [isGuestCheckout, orderReserveOnly, type]);
 
   const editLink = useMemo(() => {
     if (!address) {
       return null;
     }
 
-    if (type === ADDRESS_TYPE_BILLING) {
-      if (guestCheckout) {
-        return `${GUEST_CHECKOUT_PATTERN}?edit=1`;
-      }
-
-      return `${CHECKOUT_ADDRESS_BOOK_PATH}/${ADDRESS_TYPE_BILLING}`;
+    if (isGuestCheckout) {
+      return `${GUEST_CHECKOUT_PATTERN}?edit=${type}`;
     }
 
-    return `${CHECKOUT_ADDRESS_BOOK_PATH}/${ADDRESS_TYPE_SHIPPING}`;
-  }, [address, guestCheckout, type]);
+    return `${CHECKOUT_ADDRESS_BOOK_PATH}/${type}`;
+  }, [address, isGuestCheckout, type]);
 
   const editLabel = useMemo(() => {
-    if (guestCheckout) {
+    if (isGuestCheckout) {
       return undefined;
     }
 
     return `checkout.${type}.change`;
-  }, [guestCheckout, type]);
+  }, [isGuestCheckout, type]);
 
   const selectAddressLink = useMemo(() => {
     if (!address && (!Array.isArray(contacts) || contacts.length === 0)) {
@@ -99,8 +96,12 @@ const CheckoutAddress = ({ type, guestCheckout }) => {
     return `${CHECKOUT_ADDRESS_BOOK_PATH}/${type}`;
   }, [address, contacts, type]);
 
+  if (isGuestCheckout && !address) {
+    return null;
+  }
+
   // Do not try to render the shipping address when it's not a directShip order
-  if (type === ADDRESS_TYPE_SHIPPING && (guestCheckout || !isShippingAddressSelectionEnabled)) {
+  if (type === ADDRESS_TYPE_SHIPPING && !isShippingAddressSelectionEnabled) {
     return null;
   }
 
@@ -120,7 +121,7 @@ const CheckoutAddress = ({ type, guestCheckout }) => {
                 : `${address.firstName} ${address.lastName}`
               }
             </span>
-            { (type === ADDRESS_TYPE_BILLING && guestCheckout && orderReserveOnly) && (
+            { (type === ADDRESS_TYPE_BILLING && isGuestCheckout && orderReserveOnly) && (
               <Fragment>
                 <span>{address.emailAddress}</span>
                 <span>{address.mobile}</span>
@@ -160,12 +161,10 @@ const CheckoutAddress = ({ type, guestCheckout }) => {
 };
 
 CheckoutAddress.propTypes = {
-  guestCheckout: PropTypes.bool,
   type: PropTypes.string,
 };
 
 CheckoutAddress.defaultProps = {
-  guestCheckout: false,
   type: ADDRESS_TYPE_BILLING,
 };
 

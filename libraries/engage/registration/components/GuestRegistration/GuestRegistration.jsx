@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useRoute } from '@shopgate/engage/core';
 import GuestRegistrationProvider from '../../providers/GuestRegistrationProvider';
-import GuestRegistrationContent from './GuestRegistrationContent';
+import GuestCheckoutContent from './GuestRegistrationContent';
 
 /**
  * The GuestRegistration component.
@@ -14,9 +14,10 @@ const GuestRegistration = () => {
   return (
     <GuestRegistrationProvider formContainerRef={formContainerRef} routeId={id}>
       <div ref={formContainerRef}>
-        <GuestRegistrationContent />
+        <GuestCheckoutContent />
       </div>
     </GuestRegistrationProvider>
   );
 };
+
 export default GuestRegistration;

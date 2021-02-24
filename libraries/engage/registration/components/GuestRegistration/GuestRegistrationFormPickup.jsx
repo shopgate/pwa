@@ -1,18 +1,17 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
-
 import { StylePresets } from '@shopgate/engage/components/Form';
-import generateFormConfig from './GuestRegistrationBillingFrom.config';
-import Section from '../Checkout/CheckoutSection';
-import { useGuestRegistration } from '../../hooks/common';
+import { ELEMENT_ID_PICKUP_CONTACT } from '../../constants';
+import generateFormConfig from './GuestRegistrationFormPickup.config';
+import Section from '../../../checkout/components/Checkout/CheckoutSection';
+import { useRegistration } from '../../hooks';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    padding: 16,
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
@@ -25,13 +24,15 @@ const styles = {
       marginRight: variables.gap.big,
     },
     ' .guestFormPickupPerson .label span': {
-      color: colors.dark,
-      fontSize: 20,
+      color: 'var(--color-text-high-emphasis)',
       fontWeight: 'bold',
     },
     ' .guestFormPickupPerson .radioGroup': {
       marginTop: variables.gap.small,
       flexDirection: 'row',
+      ' .uncheckedIcon': {
+        color: 'var(--color-text-medium-emphasis)',
+      },
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
   }).toString(),
@@ -41,50 +42,50 @@ const styles = {
  * PickupContactForm
  * @returns {JSX}
  */
-const GuestRegistrationForm = () => {
+const GuestRegistrationFormPickup = () => {
   const {
     supportedCountries,
     userLocation,
-    defaultBillingAddressState,
-    formBillingValidationErrors,
-    formBillingSetValues,
-    requiredFields,
+    defaultPickupFormState,
+    pickupFormValidationErrors,
+    updatePickupForm,
     orderReserveOnly,
-    customerAttributes,
-  } = useGuestRegistration();
+    isPickupContactSelectionEnabled,
+  } = useRegistration(true);
 
   const formConfig = React.useMemo(
-    () => generateFormConfig(
+    () => generateFormConfig({
       supportedCountries,
       userLocation,
-      requiredFields,
-      orderReserveOnly,
-      customerAttributes
-    ),
-    [supportedCountries, userLocation, requiredFields, orderReserveOnly, customerAttributes]
+    }),
+    [supportedCountries, userLocation]
   );
 
-  const handleUpdate = React.useCallback((values) => {
-    formBillingSetValues(values);
-  }, [formBillingSetValues]);
+  const handleUpdate = useCallback((values) => {
+    updatePickupForm(values);
+  }, [updatePickupForm]);
 
   const headline = useMemo(
     () =>
       (orderReserveOnly
-        ? 'checkout.billing.headline_reserve'
-        : 'checkout.billing.headline'),
+        ? 'checkout.pickup_contact.headline_reserve'
+        : 'checkout.pickup_contact.headline'),
     [orderReserveOnly]
   );
 
+  if (!isPickupContactSelectionEnabled) {
+    return null;
+  }
+
   return (
     <div className={styles.root}>
-      <Section title={headline} hasForm>
+      <Section title={headline} hasForm id={ELEMENT_ID_PICKUP_CONTACT}>
         <FormBuilder
           className={styles.form}
           name="GuestForm"
           config={formConfig}
-          defaults={defaultBillingAddressState}
-          validationErrors={formBillingValidationErrors}
+          defaults={defaultPickupFormState}
+          validationErrors={pickupFormValidationErrors}
           handleUpdate={handleUpdate}
         />
       </Section>
@@ -92,4 +93,4 @@ const GuestRegistrationForm = () => {
   );
 };
 
-export default GuestRegistrationForm;
+export default GuestRegistrationFormPickup;

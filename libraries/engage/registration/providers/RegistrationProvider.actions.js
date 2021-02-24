@@ -55,10 +55,10 @@ export const submitRegistration = ({
 
   const converted = convertSubmitRegistrationValidationErrors(errors);
 
-  if (converted) {
-    const { emailAddress: errEmailAddress, password: errPassword } = converted;
-    const billing = converted?.contacts?.['0'] || {};
-    const shipping = converted?.contacts?.['1'] || {};
+  if (converted?.validation && Object.keys(converted.validation).length > 0) {
+    const { emailAddress: errEmailAddress, password: errPassword } = converted.validation;
+    const billing = converted?.validation?.contacts?.['0'] || {};
+    const shipping = converted?.validation?.contacts?.['1'] || {};
 
     return {
       errors: {

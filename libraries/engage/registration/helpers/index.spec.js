@@ -13,7 +13,7 @@ describe('Registration helpers', () => {
       expect(convert([])).toBe(null);
     });
 
-    it('should return converted validation errors', () => {
+    it.only('should return converted validation errors', () => {
       const errors = [
         {
           entityIndex: 0,
@@ -47,16 +47,34 @@ describe('Registration helpers', () => {
           message: 'Email address is already in use',
           subentityPath: ['emailAddress'],
         },
+        {
+          entityIndex: null,
+          entity: 'order',
+          entityId: '12345',
+          code: 500,
+          message: 'Some error occurred',
+          subentityPath: [],
+        },
       ];
 
       const result = convert(errors);
       expect(result).toEqual({
-        password: 'validation.checkField',
-        emailAddress: 'validation.emailConflict',
-        contacts: {
-          1: {
-            address1: 'validation.checkField',
-            postalCode: 'validation.checkField',
+        general: [{
+          entityIndex: null,
+          entity: 'order',
+          entityId: '12345',
+          code: 500,
+          message: 'Some error occurred',
+          subentityPath: [],
+        }],
+        validation: {
+          password: 'validation.checkField',
+          emailAddress: 'validation.emailConflict',
+          contacts: {
+            1: {
+              address1: 'validation.checkField',
+              postalCode: 'validation.checkField',
+            },
           },
         },
       });
@@ -97,10 +115,13 @@ describe('Registration helpers', () => {
 
       const result = convert(errors);
       expect(result).toEqual({
-        password: 'validation.checkField',
-        emailAddress: 'validation.checkField',
-        contacts: {
-          1: { emailAddress: 'validation.checkField' },
+        general: [],
+        validation: {
+          password: 'validation.checkField',
+          emailAddress: 'validation.checkField',
+          contacts: {
+            1: { emailAddress: 'validation.checkField' },
+          },
         },
       });
     });

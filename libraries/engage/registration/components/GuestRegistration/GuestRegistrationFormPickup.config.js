@@ -11,11 +11,10 @@ const pickupFieldActions = [{
 
 /**
  * Generates form configuration.
- * @param {Array} supportedCountries A list of supported countries.
- * @param {Object} userLocation User location for better phone picker defaults.
+ * @param {Object} params Additional parameters
  * @returns {Object}
  */
-const generateFormConfig = (supportedCountries, userLocation) => ({
+const generateFormConfig = ({ supportedCountries, userLocation }) => ({
   fields: {
     pickupPerson: {
       type: 'radio',

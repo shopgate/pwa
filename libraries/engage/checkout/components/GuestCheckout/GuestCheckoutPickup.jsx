@@ -4,12 +4,13 @@ import { themeConfig } from '@shopgate/engage';
 import { GUEST_CHECKOUT_PATTERN } from '../../constants/routes';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
+import { ADDRESS_TYPE_PICKUP } from '../../constants';
 
 const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    padding: variables.gap.big,
+    padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
@@ -23,10 +24,10 @@ const styles = {
 };
 
 /**
- * PickupContactForm
+ * GuestCheckoutPickup
  * @returns {JSX}
  */
-const Billing = () => {
+const GuestCheckoutPickup = () => {
   const { pickupAddress, orderReserveOnly } = useCheckoutContext();
   const headline = useMemo(
     () =>
@@ -36,12 +37,16 @@ const Billing = () => {
     [orderReserveOnly]
   );
 
+  if (!pickupAddress) {
+    return null;
+  }
+
   return (
     <div className={styles.root}>
       <Section
         className={styles.card}
         title={headline}
-        editLink={`${GUEST_CHECKOUT_PATTERN}?edit=1`}
+        editLink={`${GUEST_CHECKOUT_PATTERN}?edit=${ADDRESS_TYPE_PICKUP}`}
       >
         <span>
           {pickupAddress.middleName?.length
@@ -56,4 +61,4 @@ const Billing = () => {
   );
 };
 
-export default Billing;
+export default GuestCheckoutPickup;

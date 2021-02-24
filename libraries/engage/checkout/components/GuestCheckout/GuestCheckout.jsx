@@ -6,10 +6,12 @@ import Header from '../Checkout/CheckoutHeader';
 import { GUEST_CHECKOUT_PAYMENT_PATTERN } from '../../constants/routes';
 import CheckoutProvider from '../../providers/CheckoutProvider';
 import PaymentProvider from '../../paymentMethods';
-import Billing from '../Checkout/CheckoutAddress';
+import { ADDRESS_TYPE_BILLING, ADDRESS_TYPE_SHIPPING } from '../../constants';
+import Address from '../Checkout/CheckoutAddress';
 import Summary from '../Checkout/CheckoutSummary';
 import Actions from '../Checkout/CheckoutActions';
-import Pickup from './GuestRegistrationPickup';
+import Pickup from './GuestCheckoutPickup';
+import PickupNotes from './GuestCheckoutPickupNotes';
 import GuestCheckoutOptIn from './GuestCheckoutOptIn';
 
 const styles = {
@@ -35,17 +37,20 @@ const styles = {
  * The Cart component.
  * @returns {JSX}
  */
-const GuestCheckoutPayment = () => (
+const GuestCheckout = () => (
   <CheckoutProvider
     pathPattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
     orderInitialized
     orderReadOnly
+    isGuestCheckout
   >
     <Header stepFrom={2} stepTo={2} />
     <div className={styles.root}>
       <div className={styles.main}>
         <Pickup />
-        <Billing guestCheckout />
+        <PickupNotes />
+        <Address type={ADDRESS_TYPE_BILLING} />
+        <Address type={ADDRESS_TYPE_SHIPPING} />
         <GuestCheckoutOptIn />
         <PaymentProvider />
         <ResponsiveContainer breakpoint="<md" appAlways>
@@ -62,5 +67,5 @@ const GuestCheckoutPayment = () => (
   </CheckoutProvider>
 );
 
-export default GuestCheckoutPayment;
+export default GuestCheckout;
 

@@ -2,12 +2,10 @@ import { i18n } from '@shopgate/engage/core';
 
 /**
  * Generates form configuration.
- * @param {Array} supportedCountries A list of supported countries.
- * @param {Object} userLocation User location for better phone picker defaults.
- * @param {number} numberOfAddressLines The number of address lines.
+ * @param {Object} params Additional parameters
  * @returns {Object}
  */
-const generateFormConfig = (supportedCountries, userLocation, numberOfAddressLines) => ({
+const generateFormConfig = ({ supportedCountries, userLocation, numberOfAddressLines }) => ({
   fields: {
     firstName: {
       type: 'text',

@@ -1,9 +1,8 @@
 import {
   useRef, useState, useEffect, useCallback,
 } from 'react';
-import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { debounce } from 'lodash';
-import { hasWebBridge } from '../helpers/bridge';
+import { useScrollTo } from './useScrollTo';
 import { i18n } from '../helpers/i18n';
 import { useValidation } from '../validation';
 
@@ -32,6 +31,8 @@ export function useFormState(
   validationConstraints = {},
   formContainerRef = null
 ) {
+  const { scrollTo } = useScrollTo(formContainerRef);
+
   // Submit lock prevents the form from being submitted multiple times
   const submitLock = useRef(false);
 
@@ -44,27 +45,8 @@ export function useFormState(
   } = useValidation(validationConstraints);
 
   const scrollToError = useCallback(() => {
-    if (formContainerRef?.current) {
-      const firstError = formContainerRef.current.querySelector('.validationError');
-
-      if (firstError) {
-        if (hasWebBridge()) {
-          const offset = 10;
-          const appBarHeight = getCSSCustomProp('--app-bar-height') || 0;
-          const { top } = firstError.getBoundingClientRect();
-
-          const scrollTop = top + window.pageYOffset - parseInt(appBarHeight, 10) - offset;
-
-          window.scroll({
-            top: scrollTop,
-            behavior: 'smooth',
-          });
-        } else {
-          firstError.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-  }, [formContainerRef]);
+    scrollTo('.validationError');
+  }, [scrollTo]);
 
   // -- CHANGED ---------------
   useEffect(() => {

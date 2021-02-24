@@ -27,6 +27,7 @@ type Props = {
   orderReserveOnly?: bool,
   isShippingAddressSelectionEnabled?: bool,
   isPickupContactSelectionEnabled?: bool,
+  isGuestCheckout?: bool,
   campaignAttribution: any,
   order: any,
   fetchCart: () => Promise<any>,
@@ -95,6 +96,7 @@ const CheckoutProvider = ({
   orderReserveOnly,
   isShippingAddressSelectionEnabled,
   isPickupContactSelectionEnabled,
+  isGuestCheckout,
   campaignAttribution,
   clearCheckoutCampaign,
   order: checkoutOrder,
@@ -194,6 +196,15 @@ const CheckoutProvider = ({
         setLocked(false);
         return;
       }
+    } else if (isGuestCheckout && isPickupContactSelectionEnabled && values.instructions) {
+      try {
+        await updateCheckoutOrder({
+          notes: values.instructions,
+        });
+      } catch (error) {
+        setLocked(false);
+        return;
+      }
     }
 
     // Fulfill using selected payment method.
@@ -264,6 +275,8 @@ const CheckoutProvider = ({
     // going to confirmation page.
   }, [
     orderReadOnly,
+    isGuestCheckout,
+    isPickupContactSelectionEnabled,
     needsPayment,
     fetchCheckoutOrder,
     fetchCart,
@@ -273,7 +286,6 @@ const CheckoutProvider = ({
     billingAddress,
     isShippingAddressSelectionEnabled,
     shippingAddress,
-    isPickupContactSelectionEnabled,
     paymentTransactions,
     updateOptIns,
     submitCheckoutOrder,
@@ -308,11 +320,11 @@ const CheckoutProvider = ({
   // When "someone-else" is picked for pickup the validation rules need to change.
   React.useEffect(() => {
     setValidationRules(
-      formState.values.pickupPerson === 'me'
+      formState.values.pickupPerson === 'me' || isGuestCheckout
         ? selfPickupConstraints
         : pickupConstraints
     );
-  }, [formState.values.pickupPerson]);
+  }, [formState.values.pickupPerson, isGuestCheckout]);
 
   // Create memoized context value.
   const value = React.useMemo(() => ({
@@ -343,6 +355,7 @@ const CheckoutProvider = ({
     orderReserveOnly,
     isShippingAddressSelectionEnabled,
     isPickupContactSelectionEnabled,
+    isGuestCheckout,
     fulfillmentSlot,
     optInFormSetValues: optInFormState.setValues,
     defaultOptInFormState,
@@ -369,6 +382,7 @@ const CheckoutProvider = ({
     orderReserveOnly,
     isShippingAddressSelectionEnabled,
     isPickupContactSelectionEnabled,
+    isGuestCheckout,
     fulfillmentSlot,
     optInFormState.setValues,
     defaultOptInFormState,
@@ -430,6 +444,7 @@ CheckoutProvider.defaultProps = {
   orderReserveOnly: false,
   isShippingAddressSelectionEnabled: false,
   isPickupContactSelectionEnabled: false,
+  isGuestCheckout: false,
 };
 
 export default connect(CheckoutProvider);

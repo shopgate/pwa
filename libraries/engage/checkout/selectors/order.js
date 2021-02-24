@@ -108,6 +108,26 @@ export const isPickupAndBillingEquals = createSelector(
 );
 
 /**
+ * Returns whether the billing and shipping address are the same.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const isShippingBillingEquals = createSelector(
+  getCheckoutBillingAddress,
+  getCheckoutShippingAddress,
+  (billing, shipping) => {
+    if (!billing || !shipping) return true;
+
+    const positiveList = ['index', 'type', 'customerContactId'];
+
+    return Object.keys(billing).every((key) => {
+      if (positiveList.includes(key)) return true;
+      return billing[key] === shipping[key];
+    });
+  }
+);
+
+/**
  * Returns the number of the order.
  * @param {Object} state The application state.
  * @returns {Object}
@@ -222,7 +242,7 @@ export const getHasROPEItems = createSelector(
 export const getIsShippingAddressSelectionEnabled = createSelector(
   getHasDirectShipItems,
   isUserLoggedIn,
-  (isOrderDirectShipOnly, loggedIn) => !!loggedIn && isOrderDirectShipOnly
+  hasDirectShipItems => hasDirectShipItems
 );
 
 export const getIsPickupContactSelectionEnabled = getHasROPEItems;

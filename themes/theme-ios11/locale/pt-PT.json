@@ -698,7 +698,8 @@
     "headlines": {
       "create_new_account": "Create new account",
       "shipping_address": "Shipping Address",
-      "billing_address": "Billing Address"
+      "billing_address": "Billing Address",
+      "billing_address_reserve": "Order Contact"
     }
   },"error": {
     "general": "Não consigo conectar. Por favor verifique a sua ligação à internet e tente novamente."

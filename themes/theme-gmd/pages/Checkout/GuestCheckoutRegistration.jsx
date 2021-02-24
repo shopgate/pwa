@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/engage';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { BackBar } from 'Components/AppBar/presets';
 import { i18n } from '@shopgate/engage/core';
-import { CheckoutBillingChange } from '@shopgate/engage/checkout';
+import { GuestRegistration } from '@shopgate/engage/registration';
 
 const { colors } = themeConfig;
 
@@ -12,16 +12,16 @@ const { colors } = themeConfig;
  * The Cart component.
  * @returns {JSX}
  */
-const CheckoutBillingPage = () => (
+const GuestCheckoutRegistrationPage = () => (
   <View background={colors.background} aria-hidden={false}>
     <BackBar
       right={null}
       center={
-        <AppBar.Title title={i18n.text('titles.checkout_change_billing')} />
+        <AppBar.Title title={i18n.text('titles.checkout')} />
       }
     />
-    <CheckoutBillingChange />
+    <GuestRegistration />
   </View>
 );
 
-export default CheckoutBillingPage;
+export default GuestCheckoutRegistrationPage;
