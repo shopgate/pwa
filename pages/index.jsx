@@ -54,20 +54,14 @@ import {
   GUEST_CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
-  CHECKOUT_BILLING_PATTERN,
   CHECKOUT_ADDRESS_BOOK_PATTERN,
   CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account';
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
-import CheckoutPage from './Checkout/Checkout';
-import GuestCheckoutPage from './Checkout/GuestCheckout';
-import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
-import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import ForgotPassword from './ForgotPassword';
-import Register from './Register';
 import OrderDetails from './OrderDetails';
 import Account from './Account';
 import AccountContact from './Account/Contact';
@@ -87,7 +81,6 @@ const sideNavigationBlacklist = [
   GUEST_CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
-  CHECKOUT_BILLING_PATTERN,
   ORDER_DETAILS_PATTERN,
   CHECKOUT_ADDRESS_BOOK_PATTERN,
   CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
@@ -183,23 +176,19 @@ const Pages = ({ store }) => (
                     />
                     <Route
                       pattern={CHECKOUT_PATTERN}
-                      component={CheckoutPage}
+                      component={routes.Checkout}
                     />
                     <Route
                       pattern={GUEST_CHECKOUT_PATTERN}
-                      component={GuestCheckoutPage}
+                      component={routes.GuestCheckoutRegistration}
                     />
                     <Route
                       pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
-                      component={GuestCheckoutPaymentPage}
+                      component={routes.GuestCheckoutPayment}
                     />
                     <Route
                       pattern={CHECKOUT_CONFIRMATION_PATTERN}
                       component={CheckoutConfirmationPage}
-                    />
-                    <Route
-                      pattern={CHECKOUT_BILLING_PATTERN}
-                      component={CheckoutBillingChange}
                     />
                     <Route
                       pattern={CHECKOUT_ADDRESS_BOOK_PATTERN}
@@ -211,7 +200,7 @@ const Pages = ({ store }) => (
                     />
                     <Route
                       pattern={REGISTER_PATH}
-                      component={Register}
+                      component={routes.Register}
                     />
                     <Route
                       pattern={FORGOT_PASSWORD_PATTERN}
