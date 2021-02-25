@@ -68,10 +68,10 @@ const content = `
  * @param {Object} props .
  * @returns {JSX}
  */
-const CartDiscountIcon = props => <Icon
+const CartCouponIcon = props => <Icon
   content={content}
   viewBox="3548 7826 45.999 46"
   {...props}
 />;
 
-export default CartDiscountIcon;
+export default CartCouponIcon;
