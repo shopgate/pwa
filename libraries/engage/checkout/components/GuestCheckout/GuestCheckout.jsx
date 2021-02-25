@@ -21,13 +21,14 @@ const styles = {
   }),
   main: css({
     flex: 1,
+    paddingTop: 16,
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       paddingRight: 16,
+      paddingTop: 0,
     },
   }),
   side: css({
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
-      marginTop: 16,
       flex: 0.6,
     },
   }),

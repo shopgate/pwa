@@ -8,7 +8,7 @@ import { useCheckoutContext } from '../../hooks/common';
 
 const styles = {
   root: css({
-    padding: 16,
+    padding: '16px 16px 0',
     paddingTop: 0,
     display: 'flex',
     flex: '0 0 auto',

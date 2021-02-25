@@ -186,9 +186,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
         <ResponsiveContainer breakpoint="<md" appAlways>
           <CheckoutConfirmationPickUpContact order={orderData} />
           <CheckoutConfirmationPickupNotes order={orderData} />
-          { isUserLoggedIn ? (
-            <CheckoutConfirmationShippedTo order={orderData} />
-          ) : null}
+          <CheckoutConfirmationShippedTo order={orderData} />
           { (!isUserLoggedIn && isReserveOnly) ? (
             <CheckoutConfirmationOrderContact order={orderData} />
           ) : (
@@ -213,9 +211,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
         <ResponsiveContainer breakpoint=">=md" webOnly>
           <CheckoutConfirmationPickUpContact order={orderData} />
           <CheckoutConfirmationPickupNotes order={orderData} />
-          { isUserLoggedIn ? (
-            <CheckoutConfirmationShippedTo order={orderData} />
-          ) : null}
+          <CheckoutConfirmationShippedTo order={orderData} />
           { (!isUserLoggedIn && isReserveOnly) ? (
             <CheckoutConfirmationOrderContact order={orderData} />
           ) : (

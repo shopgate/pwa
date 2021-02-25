@@ -11,7 +11,6 @@ import {
   LoadingProvider, i18n, useAsyncMemo, useRoute,
 } from '@shopgate/engage/core';
 import {
-  ADDRESS_TYPE_BILLING,
   ADDRESS_TYPE_SHIPPING,
   ADDRESS_TYPE_PICKUP,
 } from '@shopgate/engage/checkout';
@@ -30,7 +29,6 @@ import {
 } from './GuestRegistrationProvider.constraints';
 import {
   MARKETING_OPT_IN_DEFAULT,
-  ELEMENT_ID_BILLING_CONTACT,
   ELEMENT_ID_SHIPPING_CONTACT,
   ELEMENT_ID_SHIPPING_CONTACT_TOGGLE,
   ELEMENT_ID_PICKUP_CONTACT,
@@ -375,9 +373,7 @@ const GuestRegistrationProvider = ({
 
       let scrollToElement;
 
-      if (guestRegistrationEditMode === ADDRESS_TYPE_BILLING) {
-        scrollToElement = ELEMENT_ID_BILLING_CONTACT;
-      } else if (guestRegistrationEditMode === ADDRESS_TYPE_SHIPPING) {
+      if (guestRegistrationEditMode === ADDRESS_TYPE_SHIPPING) {
         if (isShippingFormVisible) {
           scrollToElement = ELEMENT_ID_SHIPPING_CONTACT;
         } else {
