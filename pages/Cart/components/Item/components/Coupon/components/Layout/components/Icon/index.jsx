@@ -1,7 +1,7 @@
 import React from 'react';
 import { themeConfig } from '@shopgate/engage';
 import { useWidgetSettings } from '@shopgate/engage/core';
-import { Icon, CartDiscountIcon } from '@shopgate/engage/components';
+import { Icon, CartCouponIcon } from '@shopgate/engage/components';
 
 /**
  * Coupon icon component
@@ -12,7 +12,7 @@ const CouponIcon = () => {
   const { viewBox, color } = useWidgetSettings('@shopgate/engage/components/CartCouponIcon');
 
   if (!themeConfig.icons.cartCoupon) {
-    return <CartDiscountIcon />;
+    return <CartCouponIcon />;
   }
 
   return (
