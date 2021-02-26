@@ -3,13 +3,6 @@ import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { PIPELINES } from '@shopgate/pwa-common/constants/Configuration';
-import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/core/selectors';
-import { forceOpenFulfillmentSlotDialog } from '@shopgate/engage/locations/components/FulfillmentSlotSwitcher/FulfillmentSlotProvider';
-import {
-  ROPIS,
-  BOPIS,
-} from '@shopgate/engage/locations/constants';
-import { getActiveFulfillmentSlot } from '../selectors';
 import { SHOPGATE_CART_UPDATE_PRODUCTS } from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
@@ -24,47 +17,15 @@ import { messagesHaveErrors, createErrorMessageList } from '../helpers';
  * @return {Function} A redux thunk.
  */
 function updateProductsInCart(updateData) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const {
       [SHOPGATE_CART_UPDATE_PRODUCTS]: pipeline = SHOPGATE_CART_UPDATE_PRODUCTS,
     } = configuration.get(PIPELINES, {});
 
-    const state = getState();
-    const fulfillmentScheduling = getFulfillmentSchedulingEnabled(state);
-    let cartItems = updateData || [];
-
-    const needsScheduling = cartItems
-      .some(product => [ROPIS, BOPIS].includes(product?.fulfillment?.method) &&
-          !product?.fulfillment?.slotId);
-
-    // Enrich with fulfillment scheduling data.
-    if (needsScheduling && fulfillmentScheduling) {
-      let fulfillmentSlot = getActiveFulfillmentSlot(state);
-
-      // Make sure that a fulfillment slot has been chosen first!
-      if (!fulfillmentSlot) {
-        fulfillmentSlot = await forceOpenFulfillmentSlotDialog();
-      }
-
-      // Enrich slot id to fulfillment settings of all line items.
-      cartItems = cartItems.map((product) => {
-        const isRope = [ROPIS, BOPIS].includes(product?.fulfillment?.method);
-
-        return ({
-          ...product,
-          fulfillment: product.fulfillment ? {
-            ...product.fulfillment,
-            slotId: isRope ? fulfillmentSlot.id : undefined,
-            location: isRope ? product.fulfillment?.location : undefined,
-          } : undefined,
-        });
-      });
-    }
-
-    dispatch(updateProducts(cartItems));
+    dispatch(updateProducts(updateData));
 
     const request = new PipelineRequest(pipeline)
-      .setInput({ cartItems })
+      .setInput({ cartItems: updateData })
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setErrorBlacklist(ECART)
       .dispatch();
@@ -78,7 +39,7 @@ function updateProductsInCart(updateData) {
          */
         if (result.messages && messagesHaveErrors(result.messages)) {
           dispatch(errorUpdateProductsInCart(
-            cartItems,
+            updateData,
             createErrorMessageList(SHOPGATE_CART_UPDATE_PRODUCTS, result.messages)
           ));
           return;
@@ -88,7 +49,7 @@ function updateProductsInCart(updateData) {
       })
       .catch((error) => {
         dispatch(errorUpdateProductsInCart(
-          cartItems,
+          updateData,
           createPipelineErrorList(SHOPGATE_CART_UPDATE_PRODUCTS, error)
         ));
       });
