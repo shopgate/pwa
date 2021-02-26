@@ -71,6 +71,7 @@ export {
   getPromotionCoupons,
   hasLineItemPromotions,
   hasDirectShipItems,
+  isDirectShipOnly,
 } from './cart.selectors';
 
 // STREAMS

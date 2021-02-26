@@ -57,7 +57,7 @@ function CartItems({
             <FulfillmentSlotSwitcher renderBar card editable={editable} />
           </ResponsiveContainer>
         ) : null}
-        {editable && (
+        {editable && !isDirectShipOnly && (
           <ResponsiveContainer breakpoint="<=xs" appAlways>
             <CartItemsSubstitution cartItems={cartItems} wrapCard className={card} />
           </ResponsiveContainer>
