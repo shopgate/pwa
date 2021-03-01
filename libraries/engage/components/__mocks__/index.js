@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 // ICONS IOS
 export { default as CartIconIOS } from '@shopgate/pwa-ui-ios/icons/CartIcon';
 export { default as FilterIconIOS } from '@shopgate/pwa-ui-ios/icons/FilterIcon';
@@ -58,5 +59,12 @@ export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/Visi
 
 /** @returns {ReactElement} */
 export const SurroundPortals = ({ children }) => children;
+/** @returns {ReactElement} */
+export const HtmlSanitizer = ({ children }) => children;
+export const I18n = {
+  Text: () => 'I18n.Text',
+};
+export const PlaceholderParagraph = ({ children }) => children;
 
 export { default as View, ViewContext } from '../View/__mocks__/index';
+/* eslint-enable require-jsdoc */
