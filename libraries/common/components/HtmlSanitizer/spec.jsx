@@ -9,6 +9,7 @@ jest.mock('@shopgate/pwa-common/collections/EmbeddedMedia', () => ({
   remove: jest.fn(),
 }));
 jest.mock('../EmbeddedMedia', () => ({ children }) => children);
+jest.mock('./connector', () => Cmp => Cmp);
 
 /**
  * @param {string} html HTML markup.

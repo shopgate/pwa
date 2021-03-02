@@ -5,11 +5,12 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { PlaceholderParagraph } from '@shopgate/engage/components';
 import Description from '../index';
 
+jest.mock('@shopgate/engage/components');
+
 jest.mock('../connector', () => obj => obj);
 
 describe('<Description />', () => {
   const mockStore = configureStore();
-  const html = '<h1>foo</h1>';
 
   it('should not render if no data is available', () => {
     const store = mockStore({});
@@ -21,17 +22,5 @@ describe('<Description />', () => {
     expect(foundContent.length).toEqual(0);
     expect(wrapper.find(PlaceholderParagraph).length).toEqual(1);
     expect(wrapper.find(PlaceholderParagraph).prop('ready')).toEqual(false);
-  });
-
-  it('should render description if data is available', () => {
-    const store = mockStore({});
-    const wrapper = mount(<Description store={store} html={html} />, mockRenderOptions);
-    const foundContent = wrapper.findWhere(n =>
-      typeof n.prop('dangerouslySetInnerHTML') !== 'undefined');
-
-    expect(wrapper).toMatchSnapshot();
-    expect(foundContent.length).toEqual(1);
-    expect(wrapper.find(PlaceholderParagraph).length).toEqual(1);
-    expect(wrapper.find(PlaceholderParagraph).prop('ready')).toEqual(true);
   });
 });

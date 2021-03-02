@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
-import { header, hidden } from './style';
+import { scrolledIn, scrolledOut } from './style';
 
 /**
  * Scroll Header component
@@ -35,9 +34,7 @@ function ScrollHeader({ children, hideOnScroll, scrollOffset }) {
     return undefined;
   });
 
-  const className = classNames(header, {
-    [hidden]: shouldHideHeader,
-  }).toString();
+  const className = shouldHideHeader ? scrolledOut : scrolledIn;
 
   return React.cloneElement(children, {
     ...children.props,
