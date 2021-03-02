@@ -32,7 +32,7 @@ const Content = ({ properties }) => {
     It should only be used for approved BETA Client Projects
   */
   return (
-    <div className={groupsContainer}>
+    <div className={`${groupsContainer} engage__product__product-properties`}>
       <GroupedProperties properties={properties} groups={groups} />
     </div>
   );

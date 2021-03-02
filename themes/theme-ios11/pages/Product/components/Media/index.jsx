@@ -5,7 +5,7 @@ import { SurroundPortals } from '@shopgate/engage/components';
 import { PORTAL_PRODUCT_MEDIA_SECTION } from '@shopgate/engage/components/constants';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
-import { ProductContext } from '../../context';
+import { ProductContext } from '@shopgate/engage/product';
 
 /**
  * The product media component.

@@ -194,7 +194,9 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 ]
               }
             >
-              <ul>
+              <ul
+                className="engage__reviews__list"
+              >
                 <li
                   className="css-1yhq1gr"
                   data-test-id="reviewTitle: "
@@ -2234,11 +2236,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 productId="foo"
               >
                 <div
-                  className={
-                    Object {
-                      "data-css-1pitgg2": "",
-                    }
-                  }
+                  className="css-1pitgg2 engage__reviews__all-reviews-link"
                   data-test-id="showAllReviewsButton"
                 >
                   <Connect(ButtonLink)
@@ -2445,7 +2443,9 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 ]
               }
             >
-              <ul>
+              <ul
+                className="engage__reviews__list"
+              >
                 <li
                   className="css-1yhq1gr"
                   data-test-id="reviewTitle: "

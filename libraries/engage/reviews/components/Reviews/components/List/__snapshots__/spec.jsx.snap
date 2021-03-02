@@ -45,7 +45,9 @@ exports[`<List /> should render list with reviews 1`] = `
     ]
   }
 >
-  <ul>
+  <ul
+    className="engage__reviews__list"
+  >
     <li
       className="css-1yhq1gr"
       data-test-id="reviewTitle: "

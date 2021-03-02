@@ -18,7 +18,7 @@ const AllReviewsLink = (props) => {
   }
 
   return (
-    <div className={container} data-test-id="showAllReviewsButton">
+    <div className={`${container} engage__reviews__all-reviews-link`} data-test-id="showAllReviewsButton">
       <ButtonLink href={`${ITEM_PATH}/${bin2hex(props.productId)}/reviews`}>
         <I18n.Text string="reviews.button_all" params={props} />
       </ButtonLink>

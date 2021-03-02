@@ -139,7 +139,7 @@ class FilterChips extends Component {
     });
 
     return (
-      <div className={styles}>
+      <div className={`${styles} theme-gmd__filter-bar__filter-chips`}>
         <ChipLayout
           moreLabel="filter.more"
           handleMoreButton={openFilters}

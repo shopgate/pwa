@@ -69,6 +69,9 @@ export { default as ProductCharacteristics } from './components/ProductCharacter
 export { default as Description } from './components/Description';
 export { default as ProductList } from './components/ProductList';
 export { default as ProductSlider } from './components/ProductSlider';
+export { default as Options } from './components/Options';
+export { default as Characteristics } from './components/Characteristics';
+export { default as Rating } from './components/Rating';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
@@ -79,3 +82,4 @@ export { useLoadProductImage } from './hooks/useLoadProductImage';
 
 // CONTEXTS
 export { default as VariantContext } from './components/ProductCharacteristics/context';
+export { ProductContext } from './components/context';

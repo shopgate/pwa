@@ -31,7 +31,7 @@ class List extends PureComponent {
     }
 
     return (
-      <ul>
+      <ul className="engage__reviews__list">
         { reviews.map(review => (
           <li key={review.id} className={styles} data-test-id={`reviewTitle: ${review.title}`}>
             <SurroundPortals portalName={PRODUCT_REVIEWS_ENTRY} portalProps={{ review }}>

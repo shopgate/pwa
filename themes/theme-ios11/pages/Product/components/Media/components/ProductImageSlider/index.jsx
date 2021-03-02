@@ -178,6 +178,7 @@ class ProductImageSlider extends Component {
         <Portal name={PRODUCT_IMAGE_BEFORE} />
         <Portal name={PRODUCT_IMAGE}>
           <div
+            className="theme-ios11__product__product-image-slider"
             data-test-id={`product: ${product ? product.name : ''}`}
             onClick={onClick}
             onKeyDown={onClick}

@@ -20,7 +20,7 @@ const RatingCount = (props) => {
       className={classNames({
         [greyStyle]: true,
         [prominentStyle]: props.prominent,
-      })}
+      }, 'engage__reviews__rating-count')}
     />
   );
 };

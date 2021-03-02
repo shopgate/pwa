@@ -37,7 +37,7 @@ class ItemDetails extends PureComponent {
     }
 
     return (
-      <div className={styles.details} tabIndex={-1} role="button">
+      <div className={`${styles.details} theme-ios11__product-grid__item__item-details`} tabIndex={-1} role="button">
         {/*
           This feature is currently in BETA testing.
           It should only be used for approved BETA Client Projects

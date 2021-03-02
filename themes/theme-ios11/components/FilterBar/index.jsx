@@ -17,7 +17,6 @@ const { colors, variables: { scroll: { offset = 100 } = {} } } = themeConfig || 
  */
 function FilterBar({ filters }) {
   const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
-
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
   useEffect(() => {

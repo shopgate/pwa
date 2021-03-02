@@ -323,6 +323,7 @@ exports[`<Header /> should render empty 1`] = `
             >
               <div
                 aria-hidden={true}
+                className="engage__reviews__write-review-link"
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)
@@ -475,7 +476,7 @@ exports[`<Header /> should render rating summary 1`] = `
         withTopGap={false}
       >
         <div
-          className="css-1ppx0ok"
+          className="engage__reviews__reviews-excerpt css-1ppx0ok"
           id="reviewsExcerpt"
         >
           <AverageRating
@@ -838,7 +839,7 @@ exports[`<Header /> should render rating summary 1`] = `
                     prominent={false}
                   >
                     <Translate
-                      className="css-a7xi3l"
+                      className="css-a7xi3l engage__reviews__rating-count"
                       params={
                         Object {
                           "count": 4,
@@ -849,7 +850,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       string="reviews.review_count"
                     >
                       <span
-                        className="css-a7xi3l"
+                        className="css-a7xi3l engage__reviews__rating-count"
                         role={null}
                       >
                         reviews.review_count
@@ -903,6 +904,7 @@ exports[`<Header /> should render rating summary 1`] = `
             >
               <div
                 aria-hidden={true}
+                className="engage__reviews__write-review-link"
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)

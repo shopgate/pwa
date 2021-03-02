@@ -28,11 +28,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
       props={null}
     >
       <div
-        className={
-          Object {
-            "data-css-1gp4e0e": "",
-          }
-        }
+        className="css-1gp4e0e engage__product__description"
       >
         <div
           aria-hidden={true}
@@ -153,11 +149,7 @@ exports[`<Description /> should render description if data is available 1`] = `
       props={null}
     >
       <div
-        className={
-          Object {
-            "data-css-1gp4e0e": "",
-          }
-        }
+        className="css-1gp4e0e engage__product__description"
       >
         <div
           aria-hidden={true}

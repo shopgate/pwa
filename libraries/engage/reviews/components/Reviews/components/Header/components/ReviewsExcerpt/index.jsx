@@ -18,7 +18,7 @@ const ReviewsExcerpt = ({
   productId, average, count, withTopGap,
 }) => (
   <div
-    className={classNames({
+    className={classNames('engage__reviews__reviews-excerpt', {
       [styles.withTopGapContainer]: withTopGap,
       [styles.container]: !withTopGap,
     })}

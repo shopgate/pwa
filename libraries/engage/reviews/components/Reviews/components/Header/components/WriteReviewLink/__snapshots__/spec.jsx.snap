@@ -18,6 +18,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
   >
     <div
       aria-hidden={true}
+      className="engage__reviews__write-review-link"
       data-test-id="writeReview"
     >
       <Connect(ButtonLink)
