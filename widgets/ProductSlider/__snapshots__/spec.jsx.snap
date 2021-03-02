@@ -4,7 +4,7 @@ exports[`<ProductSlider /> should call the products callback on mount 1`] = `""`
 
 exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] = `
 <div
-  className="css-1qazn57"
+  className="css-1qazn57 theme-gmd__widgets__product-slider"
 >
   <h3
     className="css-rsku8h headline"
@@ -1210,7 +1210,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
 
 exports[`<ProductSlider /> should not render an empty headline 1`] = `
 <div
-  className="css-1qazn57"
+  className="css-1qazn57 theme-gmd__widgets__product-slider"
 >
   <Swiper
     aria-hidden={null}
@@ -1438,7 +1438,7 @@ exports[`<ProductSlider /> should not render the widget without any data 1`] = `
 
 exports[`<ProductSlider /> should render the headline 1`] = `
 <div
-  className="css-1qazn57"
+  className="css-1qazn57 theme-gmd__widgets__product-slider"
 >
   <h3
     className="css-rsku8h headline"
@@ -1669,7 +1669,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
 
 exports[`<ProductSlider /> should render the widget with data 1`] = `
 <div
-  className="css-1qazn57"
+  className="css-1qazn57 theme-gmd__widgets__product-slider"
 >
   <Swiper
     aria-hidden={null}

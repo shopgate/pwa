@@ -5,7 +5,7 @@ import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { I18n } from '@shopgate/engage/components';
-import { ProductContext } from '../../../../../../context';
+import { ProductContext } from '@shopgate/engage/product';
 import Icon from './components/Icon';
 import connect from './connector';
 import inject from './injector';
@@ -121,7 +121,7 @@ class CartButton extends Component {
     return (
       <FloatingActionButton
         background={this.color}
-        className={button}
+        className={`${button} theme-gmd__product__header__cta-buttons-cart-button`}
         onClick={this.handleClick}
         testId="addToCartButton"
       >

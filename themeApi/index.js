@@ -1,9 +1,8 @@
 import { SheetDrawer as Drawer, View } from '@shopgate/engage/components';
-import { PriceDifference, ProductSlider } from '@shopgate/engage/product';
+import { PriceDifference, ProductSlider, ProductContext } from '@shopgate/engage/product';
 import AppBar from 'Components/AppBar/presets/BackBar';
 import ProductGrid from 'Components/ProductGrid';
-import { ProductContext } from '../pages/Product/context';
-import { TextOption, SelectOption } from '../pages/Product/components/Options';
+import { TextOption, SelectOption } from '@shopgate/engage/product/components/Options';
 import ProductHeader from '../pages/Product/components/Header';
 import ProductCard from './ProductCard';
 

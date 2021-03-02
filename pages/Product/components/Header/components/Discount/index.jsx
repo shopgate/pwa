@@ -18,7 +18,7 @@ const Discount = ({ price }) => {
   return (
     <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
       {!!(price && price.discount) && (
-        <div className={styles.discount}>
+        <div className={`${styles.discount} theme-gmd__product__header__discount`}>
           <DiscountBadge text={`-${price.discount}%`} />
         </div>
       )}
