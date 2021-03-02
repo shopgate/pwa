@@ -65,7 +65,7 @@ class SuggestionList extends Component {
           searchPhrase,
         }}
       >
-        <div className={styles.list}>
+        <div className={`${styles.list} theme-gmd__search__suggestion-list`}>
           {suggestions.map(suggestion => (
             <SurroundPortals
               portalName={SEARCH_SUGGESTION_ITEM}
