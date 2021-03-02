@@ -8,7 +8,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import PriceBase from '@shopgate/pwa-ui-shared/Price';
-import { ProductContext } from '../../../../context';
+import { ProductContext } from '@shopgate/engage/product';
 import connect from './connector';
 import styles from './style';
 /**

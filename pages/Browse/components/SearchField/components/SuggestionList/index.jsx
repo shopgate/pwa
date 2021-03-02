@@ -82,6 +82,7 @@ class SuggestionList extends Component {
       >
         <div
           className={classnames(
+            'theme-ios11__browse__search-field__suggestion-list',
             styles.list,
             styles.bottom(bottomHeight),
             { [styles.hidden]: !visible }

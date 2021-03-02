@@ -5,12 +5,11 @@ import {
   PRODUCT_HEADER_AFTER,
   PRODUCT_HEADER_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { ProductContext, Rating } from '@shopgate/engage/product';
 import CTAButtons from './components/CTAButtons';
-import Rating from './components/Rating';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
 import styles from './style';
-import { ProductContext } from '../../context';
 
 /**
  * The product header component.

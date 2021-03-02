@@ -770,12 +770,12 @@ exports[`<ProductCard /> should render as expected 1`] = `
                             }
                           >
                             <Grid
-                              className="css-1glzrmu"
+                              className="css-1glzrmu engage__product__product-grid-price"
                               component="ul"
                               wrap={true}
                             >
                               <ul
-                                className="css-1glzrmu css-h7r55a common__grid css-u7q1iu"
+                                className="css-1glzrmu engage__product__product-grid-price css-h7r55a common__grid css-u7q1iu"
                               >
                                 <GridItem
                                   className=""
