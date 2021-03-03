@@ -121,7 +121,7 @@ class CartButton extends Component {
     return (
       <FloatingActionButton
         background={this.color}
-        className={`${button} theme-gmd__product__header__cta-buttons-cart-button`}
+        className={`${button} theme-gmd__product__header__cta-buttons__cart-button`}
         onClick={this.handleClick}
         testId="addToCartButton"
       >
