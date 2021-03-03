@@ -69,7 +69,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
       style={Object {}}
     >
       <section
-        className="css-5luenq theme-gmd__product-card"
+        className="css-5luenq theme__product-card"
         data-test-id="Product: Product Name"
         style={
           Object {
@@ -957,7 +957,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       style={Object {}}
     >
       <section
-        className="css-5luenq theme-gmd__product-card"
+        className="css-5luenq theme__product-card"
         data-test-id="Product: Product Name"
         style={
           Object {

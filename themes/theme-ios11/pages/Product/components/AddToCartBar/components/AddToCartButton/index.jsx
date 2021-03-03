@@ -82,7 +82,7 @@ class AddToCartButton extends PureComponent {
 
     return (
       <button
-        className={`${className} theme-ios11__product__add-to-cart-bar__add-to-cart-button`}
+        className={`${className} theme__product__add-to-cart-bar__add-to-cart-button`}
         style={style}
         onClick={this.handleClick}
         data-test-id="addToCartBarButton"

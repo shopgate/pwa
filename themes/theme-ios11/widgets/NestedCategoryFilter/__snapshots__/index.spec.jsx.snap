@@ -37,7 +37,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline theme-ios11__headline"
+          className="css-18cwfw7 headline theme__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -335,7 +335,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline theme-ios11__headline"
+          className="css-18cwfw7 headline theme__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -857,7 +857,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline theme-ios11__headline"
+          className="css-18cwfw7 headline theme__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -1456,7 +1456,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline theme-ios11__headline"
+          className="css-18cwfw7 headline theme__headline"
           data-test-id="Headline"
           style={null}
         >
@@ -2107,7 +2107,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h2
-          className="css-18cwfw7 headline theme-ios11__headline"
+          className="css-18cwfw7 headline theme__headline"
           data-test-id="Headline"
           style={null}
         >

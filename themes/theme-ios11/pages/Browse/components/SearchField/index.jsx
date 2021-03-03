@@ -255,7 +255,7 @@ class SearchField extends Component {
     const { focused } = this.state;
 
     return (
-      <div className="theme-ios11__browse__search-field" data-test-id="SearchField">
+      <div className="theme__browse__search-field" data-test-id="SearchField">
         <div className={styles.container}>
           <div className={styles.inputWrapper}>
             <form onSubmit={this.handleSubmit} action=".">

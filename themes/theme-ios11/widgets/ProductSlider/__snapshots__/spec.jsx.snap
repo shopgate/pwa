@@ -4,7 +4,7 @@ exports[`<ProductSlider /> should call the products callback on mount 1`] = `""`
 
 exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] = `
 <div
-  className="theme-ios11__widgets__product-slider css-1qazn57"
+  className="theme__widgets__product-slider css-1qazn57"
 >
   <Headline
     style={null}
@@ -1210,7 +1210,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
 
 exports[`<ProductSlider /> should not render an empty headline 1`] = `
 <div
-  className="theme-ios11__widgets__product-slider css-1qazn57"
+  className="theme__widgets__product-slider css-1qazn57"
 >
   <Swiper
     aria-hidden={null}
@@ -1438,7 +1438,7 @@ exports[`<ProductSlider /> should not render the widget without any data 1`] = `
 
 exports[`<ProductSlider /> should render the headline 1`] = `
 <div
-  className="theme-ios11__widgets__product-slider css-1qazn57"
+  className="theme__widgets__product-slider css-1qazn57"
 >
   <Headline
     style={null}
@@ -1669,7 +1669,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
 
 exports[`<ProductSlider /> should render the widget with data 1`] = `
 <div
-  className="theme-ios11__widgets__product-slider css-1qazn57"
+  className="theme__widgets__product-slider css-1qazn57"
 >
   <Swiper
     aria-hidden={null}

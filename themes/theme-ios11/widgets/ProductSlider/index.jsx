@@ -119,7 +119,7 @@ class ProductSlider extends Component {
 
     // Finally, build the slider.
     return (
-      <div className={`theme-ios11__widgets__product-slider ${styles.slider}`}>
+      <div className={`theme__widgets__product-slider ${styles.slider}`}>
         {this.headline && <Headline text={settings.headline} />}
         <Swiper
           autoPlay={sliderSettings.autostart}

@@ -77,7 +77,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 text="navigation.your_account"
               >
                 <h2
-                  className="css-18cwfw7 headline theme-ios11__headline"
+                  className="css-18cwfw7 headline theme__headline"
                   data-test-id="Headline"
                   style={
                     Object {

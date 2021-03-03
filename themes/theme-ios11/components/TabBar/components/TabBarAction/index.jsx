@@ -16,7 +16,7 @@ const TabBarAction = (props) => {
   const Icon = props.icon;
 
   const className = classNames(
-    'theme-ios11__tab-bar__tab-bar-action',
+    'theme__tab-bar__tab-bar-action',
     style.container,
     { [style.highlighted]: props.isHighlighted },
     { [style.regular]: !props.isHighlighted }
