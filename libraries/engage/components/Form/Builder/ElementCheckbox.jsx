@@ -23,7 +23,7 @@ const ElementCheckbox = (props) => {
   }
 
   return (
-    <div className={`${camelCase(name)} engage__element-checkbox`}>
+    <div className={`${camelCase(name)} engage__form-checkbox`}>
       <Checkbox
         name={name}
         errorText={errorText}
