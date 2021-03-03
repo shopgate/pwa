@@ -50,7 +50,7 @@ new ThemeConfigResolver().resolveAll();
 const Pages = ({ store }) => (
   <App store={store}>
     <Helmet>
-      <html lang={appConfig.language.substring(0, 2)} />
+      <html lang={appConfig.language.substring(0, 2)} className="theme-ios11" />
     </Helmet>
     <NavigationHandler>
       <AppProvider>

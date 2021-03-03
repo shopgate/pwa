@@ -26,7 +26,7 @@ exports[`<Content /> Check search field should render with initial search query 
       submitSearch={[Function]}
     >
       <div
-        className="theme-ios11__browse__search-field"
+        className="theme__browse__search-field"
         data-test-id="SearchField"
       >
         <div
@@ -227,7 +227,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
       submitSearch={[Function]}
     >
       <div
-        className="theme-ios11__browse__search-field"
+        className="theme__browse__search-field"
         data-test-id="SearchField"
       >
         <div
