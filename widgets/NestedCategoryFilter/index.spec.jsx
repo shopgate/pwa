@@ -17,8 +17,6 @@ import { UnwrappedNestedCategoryFilter as Widget } from './index';
 jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
 
-console.warn(jest.requireActual('@shopgate/engage/components'));
-
 jest.mock('@shopgate/engage/components', () => ({
   ...jest.requireActual('@shopgate/engage/components'),
   SheetDrawer: props => <MockSheet {...props} />,

@@ -97,7 +97,7 @@ class ProductSlider extends PureComponent {
 
     // Finally, build the slider.
     return (
-      <div className={`${styles.slider} theme-gmd__widgets__product-slider`}>
+      <div className={`${styles.slider} theme__widgets__product-slider`}>
         {this.renderHeadline()}
         <Swiper
           autoPlay={sliderSettings.autostart}
