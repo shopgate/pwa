@@ -86,7 +86,7 @@ class TextField extends Component {
 
     return (
       <FormElement
-        className={`${className} ui-shared__form__TextField`}
+        className={`${className} ui-shared__form__text-field`}
         htmlFor={props.name}
         placeholder={placeholder}
         label={label}
