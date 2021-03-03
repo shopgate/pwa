@@ -61,11 +61,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       }
     >
       <div
-        className={
-          Object {
-            "data-css-1aemm47": "",
-          }
-        }
+        className="css-1aemm47 theme-gmd__search__suggestion-list"
       >
         <SurroundPortals
           key="foo"
@@ -509,11 +505,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       }
     >
       <div
-        className={
-          Object {
-            "data-css-1aemm47": "",
-          }
-        }
+        className="css-1aemm47 theme-gmd__search__suggestion-list"
       >
         <SurroundPortals
           key="foo"
@@ -957,11 +949,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       }
     >
       <div
-        className={
-          Object {
-            "data-css-1aemm47": "",
-          }
-        }
+        className="css-1aemm47 theme-gmd__search__suggestion-list"
       >
         <SurroundPortals
           key="foo bar buz quz"
@@ -1421,11 +1409,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           }
         >
           <div
-            className={
-              Object {
-                "data-css-1aemm47": "",
-              }
-            }
+            className="css-1aemm47 theme-gmd__search__suggestion-list"
           >
             <SurroundPortals
               key="foo"

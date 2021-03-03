@@ -1,4 +1,4 @@
-/* eslint-disable extra-rules/no-single-line-objects */
+/* eslint-disable extra-rules/no-single-line-objects,camelcase */
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -8,7 +8,6 @@ import { ThemeContext } from '@shopgate/pwa-common/context';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
 import themeApi from '../../themeApi';
 import { mockedState } from './mockData';
 import Picker from './components/Picker';
@@ -16,13 +15,7 @@ import { UnwrappedNestedCategoryFilter as Widget } from './index';
 
 jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
-
-console.warn(jest.requireActual('@shopgate/engage/components'));
-
-jest.mock('@shopgate/engage/components', () => ({
-  ...jest.requireActual('@shopgate/engage/components'),
-  SheetDrawer: props => <MockSheet {...props} />,
-}));
+jest.mock('@shopgate/engage/components');
 
 /**
  * Renders the component.
@@ -108,8 +101,9 @@ describe('<NestedCategoryFilterWidget />', () => {
       { categoryId: '1-2', selectedId: '1-2-1' },
     ], '1-2-1');
 
-    wrapper.find(Picker).at(0).simulate('click');
-    wrapper.find(Picker).at(0).find('List button').at(0)
+    wrapper.find('Connect(CategoryPicker)').at(0).simulate('click');
+
+    wrapper.find('Connect(CategoryPicker)').at(0).find('SheetList button').at(0)
       .simulate('click');
 
     expect(wrapper).toMatchSnapshot();
@@ -120,7 +114,7 @@ describe('<NestedCategoryFilterWidget />', () => {
     ]);
 
     wrapper.find(Picker).at(1).simulate('click');
-    wrapper.find(Picker).at(1).find('List button').at(0)
+    wrapper.find(Picker).at(1).find('SheetList button').at(0)
       .simulate('click');
 
     expect(wrapper).toMatchSnapshot();
@@ -151,7 +145,7 @@ describe('<NestedCategoryFilterWidget />', () => {
     ]);
 
     wrapper.find(Picker).at(0).simulate('click');
-    wrapper.find(Picker).at(0).find('List button').at(1)
+    wrapper.find(Picker).at(0).find('SheetList button').at(1)
       .simulate('click');
 
     expect(wrapper).toMatchSnapshot();
@@ -178,7 +172,7 @@ describe('<NestedCategoryFilterWidget />', () => {
     ]);
 
     wrapper.find(Picker).at(0).simulate('click');
-    wrapper.find(Picker).at(0).find('List button').at(0)
+    wrapper.find(Picker).at(0).find('SheetList button').at(0)
       .simulate('click');
 
     expect(wrapper).toMatchSnapshot();
@@ -189,4 +183,4 @@ describe('<NestedCategoryFilterWidget />', () => {
   });
 });
 
-/* eslint-enable extra-rules/no-single-line-objects */
+/* eslint-enable extra-rules/no-single-line-objects,camelcase */
