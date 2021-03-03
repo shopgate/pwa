@@ -24,7 +24,7 @@ const ElementRadio = (props) => {
   }
 
   return (
-    <div className={`${camelCase(name)} engage__element-radio`}>
+    <div className={`${camelCase(name)} engage__form-radio`}>
       <RadioGroup
         name={name}
         label={element.label}
