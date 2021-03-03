@@ -17,206 +17,47 @@ exports[`<Description /> should not render if no data is available 1`] = `
 >
   <SurroundPortals
     portalName="product.description"
-    portalProps={null}
   >
-    <Portal
-      name="product.description.before"
-      props={null}
-    />
-    <Portal
-      name="product.description"
-      props={null}
+    <div
+      className="css-1gp4e0e engage__product__description"
     >
       <div
-        className="css-1gp4e0e engage__product__description"
-      >
-        <div
-          aria-hidden={true}
-          className={
-            Object {
-              "data-css-148ze83": "",
-            }
+        aria-hidden={true}
+        className={
+          Object {
+            "data-css-148ze83": "",
           }
+        }
+      >
+        <Text
+          string="product.description_heading"
         >
-          <Translate
-            className={null}
-            params={Object {}}
-            role={null}
-            string="product.description_heading"
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              product.description_heading
-            </span>
-          </Translate>
-        </div>
-        <PlaceholderParagraph
-          className="css-11lvu0k"
-          lines={3}
-          ready={false}
-        >
-          <div
-            className="ui-shared__placeholder-paragraph"
-          >
-            <PlaceholderLabel
-              className="css-11lvu0k"
-              key="0"
-              ready={false}
-              style={
-                Object {
-                  "width": "95%",
-                }
-              }
-            >
-              <div
-                className="css-qd8qpa css-11lvu0k ui-shared__placeholder-label"
-                style={
-                  Object {
-                    "width": "95%",
-                  }
-                }
-              />
-            </PlaceholderLabel>
-            <PlaceholderLabel
-              className="css-11lvu0k"
-              key="1"
-              ready={false}
-              style={null}
-            >
-              <div
-                className="css-qd8qpa css-11lvu0k ui-shared__placeholder-label"
-                style={null}
-              />
-            </PlaceholderLabel>
-            <PlaceholderLabel
-              className="css-11lvu0k"
-              key="2"
-              ready={false}
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
-            >
-              <div
-                className="css-qd8qpa css-11lvu0k ui-shared__placeholder-label"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
-              />
-            </PlaceholderLabel>
-          </div>
-        </PlaceholderParagraph>
+          I18n.Text
+        </Text>
       </div>
-    </Portal>
-    <Portal
-      name="product.description.after"
-      props={null}
-    />
-  </SurroundPortals>
-</Description>
-`;
-
-exports[`<Description /> should render description if data is available 1`] = `
-<Description
-  html="<h1>foo</h1>"
-  navigate={[Function]}
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <SurroundPortals
-    portalName="product.description"
-    portalProps={null}
-  >
-    <Portal
-      name="product.description.before"
-      props={null}
-    />
-    <Portal
-      name="product.description"
-      props={null}
-    >
-      <div
-        className="css-1gp4e0e engage__product__description"
+      <PlaceholderParagraph
+        className="css-11lvu0k"
+        ready={false}
       >
         <div
-          aria-hidden={true}
           className={
             Object {
-              "data-css-148ze83": "",
+              "data-css-jo3g31": "",
             }
           }
+          data-test-id="description"
         >
-          <Translate
-            className={null}
-            params={Object {}}
-            role={null}
-            string="product.description_heading"
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              product.description_heading
-            </span>
-          </Translate>
-        </div>
-        <PlaceholderParagraph
-          className="css-11lvu0k"
-          lines={3}
-          ready={true}
-        >
-          <div
-            className={
+          <HtmlSanitizer
+            settings={
               Object {
-                "data-css-jo3g31": "",
+                "handleClick": [Function],
+                "html": null,
               }
             }
-            data-test-id="description"
-          >
-            <HtmlSanitizer
-              className=""
-              decode={false}
-              processStyles={false}
-              settings={
-                Object {
-                  "handleClick": [Function],
-                  "html": "<h1>foo</h1>",
-                }
-              }
-              wrapper={[Function]}
-            >
-              <EmbeddedMedia>
-                <div
-                  className=" common__html-sanitizer"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<h1>foo</h1>",
-                    }
-                  }
-                />
-              </EmbeddedMedia>
-            </HtmlSanitizer>
-          </div>
-        </PlaceholderParagraph>
-      </div>
-    </Portal>
-    <Portal
-      name="product.description.after"
-      props={null}
-    />
+          />
+        </div>
+      </PlaceholderParagraph>
+    </div>
   </SurroundPortals>
 </Description>
 `;

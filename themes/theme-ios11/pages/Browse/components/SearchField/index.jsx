@@ -43,15 +43,6 @@ class SearchField extends Component {
   };
 
   /**
-   * Fetch the search suggestions, debounced to reduce the request amount.
-   */
-  fetchSuggestions = debounce((query) => {
-    if (query.length > SUGGESTIONS_MIN) {
-      this.props.fetchSuggestions(query);
-    }
-  }, 200, { maxWait: 400 });
-
-  /**
    * Creates a new search field instance.
    * @param {Object} props The component properties.
    */
@@ -83,6 +74,15 @@ class SearchField extends Component {
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
     clearTimeout(this.onBlurTimeout);
   }
+
+  /**
+   * Fetch the search suggestions, debounced to reduce the request amount.
+   */
+  fetchSuggestions = debounce((query) => {
+    if (query.length > SUGGESTIONS_MIN) {
+      this.props.fetchSuggestions(query);
+    }
+  }, 200, { maxWait: 400 });
 
   /**
    * Sets a reference to the input fields DOM element.

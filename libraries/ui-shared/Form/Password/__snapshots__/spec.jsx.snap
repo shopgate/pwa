@@ -36,7 +36,7 @@ exports[`<Password> should render a password field 1`] = `
     value=""
   >
     <FormElement
-      className="ui-shared__form__password undefined ui-shared__form__TextField"
+      className="ui-shared__form__password undefined ui-shared__form__text-field"
       errorText=""
       hasPlaceholder={true}
       hasUnderline={true}
@@ -48,7 +48,7 @@ exports[`<Password> should render a password field 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv ui-shared__form__password undefined ui-shared__form__TextField formElement ui-shared__form-element"
+        className="css-1vjh8yv ui-shared__form__password undefined ui-shared__form__text-field formElement ui-shared__form-element"
       >
         <Placeholder
           aria-hidden={true}
@@ -336,7 +336,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
     value=""
   >
     <FormElement
-      className="ui-shared__form__password undefined ui-shared__form__TextField"
+      className="ui-shared__form__password undefined ui-shared__form__text-field"
       errorText=""
       hasPlaceholder={true}
       hasUnderline={true}
@@ -348,7 +348,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv ui-shared__form__password undefined ui-shared__form__TextField formElement ui-shared__form-element"
+        className="css-1vjh8yv ui-shared__form__password undefined ui-shared__form__text-field formElement ui-shared__form-element"
       >
         <Placeholder
           aria-hidden={true}
