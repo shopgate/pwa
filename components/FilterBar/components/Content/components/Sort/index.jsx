@@ -76,7 +76,7 @@ class Sort extends PureComponent {
               initialValue={route.query.sort || DEFAULT_SORT}
               icon={ArrowDropIcon}
               item={Item}
-              className={`${styles.selectBox} theme-ios11__filter-bar__sort`}
+              className={`${styles.selectBox} theme__filter-bar__sort`}
               classNames={styles}
               testId="sorting"
             />

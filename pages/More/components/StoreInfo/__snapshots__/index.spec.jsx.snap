@@ -35,7 +35,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
         text="navigation.store_information"
       >
         <h2
-          className="css-18cwfw7 headline theme-ios11__headline"
+          className="css-18cwfw7 headline theme__headline"
           data-test-id="Headline"
           style={
             Object {
