@@ -168,7 +168,7 @@ class AddToCartBar extends Component {
         <Fragment>
           <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
           <Portal name={PRODUCT_ADD_TO_CART_BAR}>
-            <Section title="product.sections.purchase" className="theme-ios11__product__add-to-cart-bar">
+            <Section title="product.sections.purchase" className="theme__product__add-to-cart-bar">
               <div className={styles.container}>
                 <div className={styles.innerContainer} ref={this.ref}>
                   <div className={styles.base}>

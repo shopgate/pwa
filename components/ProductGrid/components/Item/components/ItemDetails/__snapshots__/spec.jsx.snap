@@ -2,7 +2,7 @@
 
 exports[`<ItemDetails /> should render with minimal props 1`] = `
 <div
-  className="css-t5ln4b theme-ios11__product-grid__item__item-details"
+  className="css-t5ln4b theme__product-grid__item__item-details"
   role="button"
   tabIndex={-1}
 >

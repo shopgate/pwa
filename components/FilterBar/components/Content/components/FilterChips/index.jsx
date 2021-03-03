@@ -139,7 +139,7 @@ class FilterChips extends Component {
     });
 
     return (
-      <div className={`${styles} theme-ios11__filter-bar__filter-chips`}>
+      <div className={`${styles} theme__filter-bar__filter-chips`}>
         <ChipLayout
           moreLabel="filter.more"
           handleMoreButton={openFilters}

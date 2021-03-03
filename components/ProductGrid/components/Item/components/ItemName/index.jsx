@@ -40,7 +40,7 @@ class ItemName extends PureComponent {
       <Fragment>
         <Portal name={PRODUCT_ITEM_NAME_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_NAME} props={props}>
-          <div className={`${styles} theme-ios11__product-grid__item__item-name`} data-test-id={`Productname: ${name}`} aria-label={`${name}.`}>
+          <div className={`${styles} theme__product-grid__item__item-name`} data-test-id={`Productname: ${name}`} aria-label={`${name}.`}>
             <Ellipsis>{name}</Ellipsis>
           </div>
         </Portal>
