@@ -23,7 +23,7 @@ const ElementSelect = (props) => {
   }
 
   return (
-    <div className={`${camelCase(name)} engage__element-select`}>
+    <div className={`${camelCase(name)} engage__form-select`}>
       <Select
         name={name}
         label={element.label}
