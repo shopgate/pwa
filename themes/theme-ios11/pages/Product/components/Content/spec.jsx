@@ -6,17 +6,15 @@ jest.mock('@shopgate/engage/a11y', () => ({
   Section: () => null,
 }));
 
-jest.mock('@shopgate/engage/product', () => {
-  const { ProductContext } = require.requireActual('@shopgate/engage/product/components/context');
-  return {
-    ProductProperties: () => null,
-    RelationsSlider: () => null,
-    Description: () => null,
-    Options: () => null,
-    Characteristics: () => null,
-    ProductContext,
-  };
-});
+jest.mock('@shopgate/engage/product', () => ({
+  ProductProperties: () => null,
+  RelationsSlider: () => null,
+  Description: () => null,
+  Options: () => null,
+  ProductContext: {
+    Provider: () => 'Provider',
+  },
+}));
 
 jest.mock('@shopgate/pwa-core', () => ({
   Conditioner: jest.fn(),
@@ -40,19 +38,19 @@ describe('Product / Content', () => {
 
   it('should provide correct context value', () => {
     const wrapper = shallow(<Content productId="SG100" />);
-    expect(wrapper.find('ContextProvider').prop('value')).toEqual(expect.objectContaining(expectedContext));
+    expect(wrapper.find('Provider').prop('value')).toEqual(expect.objectContaining(expectedContext));
   });
 
   it('should reset options on product update', () => {
     const wrapper = shallow(<Content productId="SG100" />);
     wrapper.update(wrapper.instance().setOption('op1', 'OP_V', 0));
-    expect(wrapper.find('ContextProvider').prop('value')).toEqual(expect.objectContaining({
+    expect(wrapper.find('Provider').prop('value')).toEqual(expect.objectContaining({
       ...expectedContext,
       options: { op1: 'OP_V' },
       optionsPrices: { op1: 0 },
     }));
     wrapper.update(wrapper.setProps({ productId: 'SG200' }));
-    expect(wrapper.find('ContextProvider').prop('value')).toEqual(expect.objectContaining({
+    expect(wrapper.find('Provider').prop('value')).toEqual(expect.objectContaining({
       ...expectedContext,
       productId: 'SG200',
     }));

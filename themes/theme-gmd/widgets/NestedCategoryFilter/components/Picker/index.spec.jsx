@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
-import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
 import themeApi from '../../../../themeApi';
 import { mockedState, categoriesById, emptyRootCategories } from '../../mockData';
 import Picker from './index';
@@ -14,12 +13,7 @@ import styles from './style';
 
 jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
-
-jest.mock('@shopgate/engage/components', () => ({
-  ...jest.requireActual('@shopgate/engage/components'),
-  SheetDrawer: props => <MockSheet {...props} />,
-}));
-
+jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/pwa-common-commerce/category/actions/getCategory', () => jest.fn(() => () => { }));
 
 /**
@@ -60,7 +54,8 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(`div.${label}`).text()).toEqual(props.label);
     expect(wrapper.find(`div.${selection}`).text()).toEqual('common.please_choose');
-    expect(wrapper.find('SheetDrawer').first().prop('isOpen')).toBe(false);
+
+    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
     expect(getCategory).not.toHaveBeenCalled();
   });
 
@@ -82,7 +77,7 @@ describe('<NestedCategoryFilterPicker />', () => {
 
     wrapper.find(Picker).simulate('click');
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SheetDrawer').first().prop('isOpen')).toBe(true);
+    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(true);
     expect(wrapper.find('Drawer Header').prop('title')).toBe(props.label);
 
     const subcategoryList = wrapper.find('Drawer SheetItem');
@@ -92,7 +87,7 @@ describe('<NestedCategoryFilterPicker />', () => {
 
     subcategoryList.children().at(1).find('button').simulate('click');
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SheetDrawer').first().prop('isOpen')).toBe(false);
+    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
     expect(onSelect).toHaveBeenCalledTimes(1);
     expect(onSelect).toHaveBeenCalledWith(props.categoryId, categoriesById['1-2']);
     expect(getCategory).not.toHaveBeenCalled();
@@ -108,7 +103,7 @@ describe('<NestedCategoryFilterPicker />', () => {
     wrapper.find(Picker).simulate('click');
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(`div.${label}`).parent().hasClass(buttonDisabled)).toBe(true);
-    expect(wrapper.find('SheetDrawer').first().prop('isOpen')).toBe(false);
+    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
     expect(getCategory).not.toHaveBeenCalled();
   });
 
@@ -120,7 +115,7 @@ describe('<NestedCategoryFilterPicker />', () => {
 
     wrapper.find(Picker).simulate('click');
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SheetDrawer').first().prop('isOpen')).toBe(true);
+    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(true);
     expect(getCategory).not.toHaveBeenCalled();
   });
 

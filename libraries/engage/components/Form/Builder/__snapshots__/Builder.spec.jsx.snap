@@ -94,7 +94,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
             visible={true}
           >
             <div
-              className="fooFoo engage__element-text"
+              className="fooFoo engage__form-text"
             >
               <TextField
                 className=""
@@ -360,7 +360,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             visible={true}
           >
             <div
-              className="fooFoo engage__element-text"
+              className="fooFoo engage__form-text"
             >
               <TextField
                 className=""
@@ -567,7 +567,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             visible={true}
           >
             <div
-              className="fooBar engage__element-text"
+              className="fooBar engage__form-text"
             >
               <TextField
                 className=""
@@ -833,7 +833,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             visible={true}
           >
             <div
-              className="fooFoo engage__element-text"
+              className="fooFoo engage__form-text"
             >
               <TextField
                 className=""
@@ -1258,7 +1258,7 @@ exports[`<Builder /> should render two text fields 1`] = `
             visible={true}
           >
             <div
-              className="fooFirstName engage__element-text"
+              className="fooFirstName engage__form-text"
             >
               <TextField
                 className=""
@@ -1452,7 +1452,7 @@ exports[`<Builder /> should render two text fields 1`] = `
             visible={true}
           >
             <div
-              className="fooLastName engage__element-text"
+              className="fooLastName engage__form-text"
             >
               <TextField
                 className=""
@@ -1725,7 +1725,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
             visible={true}
           >
             <div
-              className="fooFoo engage__element-text"
+              className="fooFoo engage__form-text"
             >
               <TextField
                 className=""
@@ -1937,7 +1937,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
             visible={true}
           >
             <div
-              className="fooBar engage__element-text"
+              className="fooBar engage__form-text"
             >
               <TextField
                 className=""
@@ -2210,7 +2210,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
             visible={true}
           >
             <div
-              className="fooFoo engage__element-text"
+              className="fooFoo engage__form-text"
             >
               <TextField
                 className=""
@@ -2422,7 +2422,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
             visible={true}
           >
             <div
-              className="fooBar engage__element-text"
+              className="fooBar engage__form-text"
             >
               <TextField
                 className=""
