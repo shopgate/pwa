@@ -28,7 +28,7 @@ const Accordion = (props) => {
             onKeyDown={open ? handleClose : handleOpen}
             role="button"
             tabIndex="0"
-            className={styles.toggle}
+            className={`${styles.toggle} ui-material__accordion`}
             data-test-id={testId}
             key="accordion-toggle"
             aria-expanded={open}

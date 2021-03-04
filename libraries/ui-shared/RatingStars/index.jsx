@@ -97,7 +97,7 @@ class RatingStars extends Component {
 
     const size = styles.iconStyles[this.props.display].iconSize;
 
-    const className = [styles.container, this.props.className].join(' ');
+    const className = [styles.container, this.props.className, 'ui-shared__rating-stars'].join(' ');
     const iconClassName = [styles.iconStyles[this.props.display].iconStyle, styles.icon].join(' ');
 
     const emptyStars = [

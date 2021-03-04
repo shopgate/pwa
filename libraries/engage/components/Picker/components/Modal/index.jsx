@@ -6,7 +6,7 @@ import styles from './style';
 /**
  * The picker modal.
  */
-class PickerModal extends Component {
+class Modal extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     isOpen: PropTypes.bool.isRequired,
@@ -66,7 +66,7 @@ class PickerModal extends Component {
     }
 
     return (
-      <div className={styles.wrapper}>
+      <div className={`${styles.wrapper} engage__picker_modal`}>
         <div aria-hidden className={backgroundClassName} onClick={this.closeModal} />
         <div className={containerClassName}>
           {React.cloneElement(
@@ -79,4 +79,4 @@ class PickerModal extends Component {
   }
 }
 
-export default PickerModal;
+export default Modal;

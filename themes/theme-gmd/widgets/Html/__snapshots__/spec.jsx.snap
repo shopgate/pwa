@@ -59,7 +59,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
           >
             <EmbeddedMedia>
               <div
-                className="css-7v4dr8"
+                className="css-7v4dr8 common__html-sanitizer"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<h1>Hello World!</h1>",
@@ -138,7 +138,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
           >
             <EmbeddedMedia>
               <div
-                className="css-7v4dr8"
+                className="css-7v4dr8 common__html-sanitizer"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<h1>Hello World!</h1>",

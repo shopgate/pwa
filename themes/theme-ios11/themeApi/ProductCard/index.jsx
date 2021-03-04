@@ -27,7 +27,7 @@ function ProductCard({
   const url = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
   return (
-    <section className={itemClass} style={cardStyle} data-test-id={`Product: ${product.name}`}>
+    <section className={`theme__product-card ${itemClass}`} style={cardStyle} data-test-id={`Product: ${product.name}`}>
       {render({
         product,
         url,

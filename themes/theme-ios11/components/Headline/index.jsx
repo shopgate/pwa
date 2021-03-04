@@ -9,7 +9,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Headline = ({ tag: Tag, style, text }) => (
-  text.length ? <Tag className={`${styles} headline`} style={style} data-test-id="Headline"><I18n.Text string={text} /></Tag> : null
+  text.length ? <Tag className={`${styles} headline theme__headline`} style={style} data-test-id="Headline"><I18n.Text string={text} /></Tag> : null
 );
 
 Headline.propTypes = {

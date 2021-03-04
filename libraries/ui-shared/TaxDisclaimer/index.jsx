@@ -27,7 +27,7 @@ const TaxDisclaimer = () => {
       portalProps={{ showTaxDisclaimer: showDisclaimer }}
     >
       {showDisclaimer && (
-      <div data-test-id="taxDisclaimer" aria-hidden>
+      <div data-test-id="taxDisclaimer" aria-hidden className="ui-shared__tax-disclaimer">
         <I18n.Text className={styles} string={text || 'product.tax_disclaimer'} />
       </div>
       )}

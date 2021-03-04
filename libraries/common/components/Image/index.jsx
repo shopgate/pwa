@@ -202,7 +202,7 @@ class Image extends Component {
       // Renders the actual image.
       innerImage = (
         <img
-          className={this.props.classNameImg || styles.image}
+          className={`${this.props.classNameImg || styles.image} common__image`}
           src={src}
           style={inlineStyles}
           alt={this.props.alt}

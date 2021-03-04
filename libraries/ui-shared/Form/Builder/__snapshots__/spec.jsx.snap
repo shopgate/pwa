@@ -44,6 +44,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -99,7 +100,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
               value="default"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -196,7 +197,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -295,6 +296,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -349,7 +351,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -446,7 +448,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -557,7 +559,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -654,7 +656,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         name="foo.bar"
@@ -753,6 +755,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -807,7 +810,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
               value="abc"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -904,7 +907,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -997,6 +1000,7 @@ exports[`<FormBuilder /> should not render invisible field 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1040,6 +1044,7 @@ exports[`<FormBuilder /> should render empty form 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1081,6 +1086,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1135,7 +1141,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1232,7 +1238,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.firstName"
                         name="foo.firstName"
@@ -1330,7 +1336,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1427,7 +1433,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.lastName"
                         name="foo.lastName"
@@ -1532,6 +1538,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1587,7 +1594,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1684,7 +1691,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -1800,7 +1807,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1897,7 +1904,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         name="foo.bar"
@@ -2002,6 +2009,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -2057,7 +2065,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="abc"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -2154,7 +2162,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -2270,7 +2278,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="cheat"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -2367,7 +2375,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         name="foo.bar"

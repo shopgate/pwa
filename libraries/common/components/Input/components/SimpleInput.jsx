@@ -209,7 +209,7 @@ class SimpleInput extends Component {
         id={this.props.id}
         name={this.props.name}
         ref={ref => this.handleRef(ref)}
-        className={classNames(className, 'simpleInput')}
+        className={classNames(className, 'simpleInput', 'common__simple-input')}
         type={type}
         value={value}
         onKeyPress={onKeyPress}

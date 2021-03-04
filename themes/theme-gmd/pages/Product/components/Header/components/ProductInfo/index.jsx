@@ -10,13 +10,13 @@ import {
   PRODUCT_INFO_ROW1,
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import Shipping from '@shopgate/engage/product/components/Header/Shipping';
+import Tiers from '@shopgate/engage/product/components/Header/Tiers';
 import Manufacturer from '../Manufacturer';
-import Shipping from '../Shipping';
 import Availability from '../Availability';
 import PriceStriked from '../PriceStriked';
 import Price from '../Price';
 import PriceInfo from '../PriceInfo';
-import Tiers from '../Tiers';
 import TaxDisclaimer from '../TaxDisclaimer';
 import StockInfo from '../StockInfo';
 import * as styles from './style';

@@ -10,7 +10,7 @@ import styles from './style';
  */
 const Modal = ({ children }) => (
   <Portal isOpened>
-    <div className={styles.container}>
+    <div className={`${styles.container} common__modal`}>
       <div className={styles.layout}>
         <div className={styles.content}>
           {children}

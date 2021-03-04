@@ -284,7 +284,7 @@ class RangeSlider extends Component {
 
     return (
       <div
-        className={this.props.classNames.container || ''}
+        className={`${this.props.classNames.container || ''} common__range-slider`}
         onTouchStart={this.handleRangeTouch}
       >
         <div

@@ -122,28 +122,16 @@ exports[`<RootCategories /> should render category list with root categories fro
             prerender={0}
           >
             <SheetList
-              className={
-                Object {
-                  "data-css-1tgouoh": "",
-                }
-              }
+              className="css-1tgouoh engage__category__category-list"
               hasImages={false}
               testId={null}
             >
               <List
-                className={
-                  Object {
-                    "data-css-1tgouoh": "",
-                  }
-                }
+                className="css-1tgouoh engage__category__category-list engage__sheet-list"
                 role="listbox"
               >
                 <ul
-                  className={
-                    Object {
-                      "data-css-1tgouoh": "",
-                    }
-                  }
+                  className="css-1tgouoh engage__category__category-list engage__sheet-list common_list"
                   role="listbox"
                 >
                   <ListItem
@@ -154,7 +142,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
@@ -223,7 +211,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <div
-                                    className="css-13azwyo"
+                                    className="css-13azwyo ui-shared__glow"
                                     onClick={[Function]}
                                   >
                                     <div
@@ -264,13 +252,14 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         <div
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83 "
+                                          className="css-c6ki83  common__link"
                                           data-test-id="link: /category/3132332d313233"
                                           onClick={[Function]}
                                           role="link"
                                           tabIndex={0}
                                         >
                                           <div
+                                            className="engage__sheet-list__item"
                                             data-test-id="foo"
                                           >
                                             <Grid
@@ -279,7 +268,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1qcr7hz css-h7r55a common__grid"
                                               >
                                                 <GridItem
                                                   className="css-rx1nvy"
@@ -316,7 +305,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
@@ -385,7 +374,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <div
-                                    className="css-13azwyo"
+                                    className="css-13azwyo ui-shared__glow"
                                     onClick={[Function]}
                                   >
                                     <div
@@ -426,13 +415,14 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         <div
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83 "
+                                          className="css-c6ki83  common__link"
                                           data-test-id="link: /category/3435362d313233"
                                           onClick={[Function]}
                                           role="link"
                                           tabIndex={0}
                                         >
                                           <div
+                                            className="engage__sheet-list__item"
                                             data-test-id="bar"
                                           >
                                             <Grid
@@ -441,7 +431,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1qcr7hz css-h7r55a common__grid"
                                               >
                                                 <GridItem
                                                   className="css-rx1nvy"
@@ -478,7 +468,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
@@ -547,7 +537,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <div
-                                    className="css-13azwyo"
+                                    className="css-13azwyo ui-shared__glow"
                                     onClick={[Function]}
                                   >
                                     <div
@@ -588,13 +578,14 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         <div
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83 "
+                                          className="css-c6ki83  common__link"
                                           data-test-id="link: /category/3738392d313233"
                                           onClick={[Function]}
                                           role="link"
                                           tabIndex={0}
                                         >
                                           <div
+                                            className="engage__sheet-list__item"
                                             data-test-id="baz"
                                           >
                                             <Grid
@@ -603,7 +594,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1qcr7hz css-h7r55a common__grid"
                                               >
                                                 <GridItem
                                                   className="css-rx1nvy"
@@ -640,7 +631,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     tabIndex={0}
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
                       data-test-id="listItem"
                       role={null}
                     >
@@ -709,7 +700,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <div
-                                    className="css-13azwyo"
+                                    className="css-13azwyo ui-shared__glow"
                                     onClick={[Function]}
                                   >
                                     <div
@@ -750,13 +741,14 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         <div
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83 "
+                                          className="css-c6ki83  common__link"
                                           data-test-id="link: /category/3738392d343536"
                                           onClick={[Function]}
                                           role="link"
                                           tabIndex={0}
                                         >
                                           <div
+                                            className="engage__sheet-list__item"
                                             data-test-id="qux"
                                           >
                                             <Grid
@@ -765,7 +757,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                               wrap={false}
                                             >
                                               <div
-                                                className="css-1qcr7hz css-h7r55a"
+                                                className="css-1qcr7hz css-h7r55a common__grid"
                                               >
                                                 <GridItem
                                                   className="css-rx1nvy"

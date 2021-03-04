@@ -1,6 +1,5 @@
 import React from 'react';
-import { QuantityPicker, withProductStock } from '@shopgate/engage/product';
-import { ProductContext } from '../../../../context';
+import { QuantityPicker, withProductStock, ProductContext } from '@shopgate/engage/product';
 
 export default withProductStock(props => (
   <ProductContext.Consumer>

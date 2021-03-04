@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import CategoryList from 'Components/CategoryList';
+import { CategoryList } from '@shopgate/engage/category';
 import Headline from 'Components/Headline';
 import {
   BROWSE_CATEGORY_LIST_BEFORE,

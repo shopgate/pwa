@@ -11,7 +11,7 @@ const Ellipsis = props => (
   <Dotdotdot
     clamp={props.rows}
     ellipsis={props.ellipsis}
-    className={props.className}
+    className={`${props.className} common__ellipsis`}
     useNativeClamp
   >
     {props.children}

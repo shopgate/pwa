@@ -11,7 +11,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   messages={Array []}
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese engage__message-bar"
     role={null}
   />
 </Component>
@@ -34,7 +34,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   }
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese engage__message-bar"
     role="alert"
   >
     <div
@@ -94,7 +94,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   }
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese engage__message-bar"
     role="alert"
   >
     <div
@@ -222,7 +222,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   }
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese engage__message-bar"
     role="alert"
   >
     <div
@@ -284,7 +284,7 @@ exports[`<MessageBar /> should render with custom classNames 1`] = `
   }
 >
   <div
-    className="css-1gmese cls-container"
+    className="css-1gmese cls-container engage__message-bar"
     role="alert"
   >
     <div

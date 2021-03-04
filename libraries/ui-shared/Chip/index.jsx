@@ -25,7 +25,7 @@ function Chip(props) {
   });
 
   return (
-    <div ref={ref} className={styles.chip(removable, invert)} data-test-id={id}>
+    <div ref={ref} className={`ui-shared__chip ${styles.chip(removable, invert)}`} data-test-id={id}>
       {removable && (
         <Button
           className={styles.removeButton}

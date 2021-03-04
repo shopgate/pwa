@@ -30,7 +30,9 @@ exports[`<ProductProperties /> should render as expected when properties are pas
     ]
   }
 >
-  <ul>
+  <ul
+    className="ui-shared__product-properties"
+  >
     <li
       key="Label One-Value One"
     >
@@ -61,7 +63,9 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
     ]
   }
 >
-  <ul>
+  <ul
+    className="ui-shared__product-properties"
+  >
     <li
       key="Label One-Value One"
     >
@@ -72,14 +76,14 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
       >
         <Dotdotdot
           clamp={2}
-          className=""
+          className=" common__ellipsis"
           ellipsis="..."
           tagName="div"
           truncationChar="…"
           useNativeClamp={true}
         >
           <div
-            className=""
+            className=" common__ellipsis"
           >
             Label One: Value One
           </div>
@@ -96,14 +100,14 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
       >
         <Dotdotdot
           clamp={2}
-          className=""
+          className=" common__ellipsis"
           ellipsis="..."
           tagName="div"
           truncationChar="…"
           useNativeClamp={true}
         >
           <div
-            className=""
+            className=" common__ellipsis"
           >
             Label Two: Value Two
           </div>

@@ -131,7 +131,7 @@ class TabBar extends PureComponent {
       path,
     };
 
-    const className = classNames(styles,
+    const className = classNames('theme__tab-bar', styles,
       isScrolledOut ? scrolledOut : scrolledIn,
       {
         [inVisible]: !isVisible,

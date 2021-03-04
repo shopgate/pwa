@@ -14,14 +14,14 @@ const {
 const LoadingIndicator = () => {
   if (loadingImageSrc) {
     return (
-      <div className={`${imgContainer} loading-indicator`}>
+      <div className={`${imgContainer} loading-indicator ui-shared__loading-indicator`}>
         <img src={loadingImageSrc} alt="" />
       </div>
     );
   }
 
   return (
-    <div className={`${styles} loading-indicator`}>
+    <div className={`${styles} loading-indicator ui-shared__loading-indicator`}>
       <IndicatorCircle />
     </div>
   );

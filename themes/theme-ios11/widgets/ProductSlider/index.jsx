@@ -5,7 +5,7 @@ import { ProductCard } from '@shopgate/engage/product';
 import Headline from 'Components/Headline';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
-import { WIDGET_ID } from 'Components/ProductSlider';
+import { WIDGET_ID } from '@shopgate/engage/product/components/ProductSlider';
 import connect from './connector';
 import styles from './style';
 
@@ -119,7 +119,7 @@ class ProductSlider extends Component {
 
     // Finally, build the slider.
     return (
-      <div className={styles.slider}>
+      <div className={`theme__widgets__product-slider ${styles.slider}`}>
         {this.headline && <Headline text={settings.headline} />}
         <Swiper
           autoPlay={sliderSettings.autostart}

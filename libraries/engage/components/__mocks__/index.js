@@ -1,4 +1,6 @@
 /* eslint-disable require-jsdoc */
+import Sheet from '@shopgate/pwa-ui-shared/Sheet';
+
 // ICONS IOS
 export { default as CartIconIOS } from '@shopgate/pwa-ui-ios/icons/CartIcon';
 export { default as FilterIconIOS } from '@shopgate/pwa-ui-ios/icons/FilterIcon';
@@ -56,11 +58,13 @@ export { default as UncheckedIcon } from '@shopgate/pwa-ui-shared/icons/Unchecke
 export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
-
 /** @returns {ReactElement} */
 export const SurroundPortals = ({ children }) => children;
+
 /** @returns {ReactElement} */
 export const HtmlSanitizer = ({ children }) => children;
+export const SheetDrawer = Sheet;
+export const SheetList = ({ children }) => children;
 export const I18n = {
   Text: () => 'I18n.Text',
 };

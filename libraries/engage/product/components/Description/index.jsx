@@ -18,7 +18,7 @@ function Description({ html, navigate }) {
   return (
     <SurroundPortals portalName={PRODUCT_DESCRIPTION}>
       {(html !== '') && (
-        <div className={container}>
+        <div className={`${container} engage__product__description`}>
           <div aria-hidden className={title}>
             <I18n.Text string="product.description_heading" />
           </div>

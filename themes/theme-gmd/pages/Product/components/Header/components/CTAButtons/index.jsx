@@ -28,7 +28,7 @@ const CTAButtons = ({ isFavorite, productId }) => (
   <Fragment>
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
-      <div className={styles.buttons}>
+      <div className={`${styles.buttons} theme__product__header__cta-buttons`}>
         <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
         <Portal name={PRODUCT_CTAS_FAVORITES}>
           <FavoritesButton

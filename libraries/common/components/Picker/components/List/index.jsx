@@ -7,13 +7,13 @@ import styles from './style';
  * The default button for the Picker component.
  * @returns {JSX} The button component.
  */
-const PickerList = ({
+const List = ({
   items,
   onClose,
   onSelect,
   selectedIndex,
 }) => (
-  <ul>
+  <ul className="common__picker__list">
     {items.map((item, currentIndex) => (
       <li
         key={item.value}
@@ -35,16 +35,16 @@ const PickerList = ({
   </ul>
 );
 
-PickerList.propTypes = {
+List.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onSelect: PropTypes.func.isRequired,
   onClose: PropTypes.func,
   selectedIndex: PropTypes.number,
 };
 
-PickerList.defaultProps = {
+List.defaultProps = {
   onClose: () => {},
   selectedIndex: null,
 };
 
-export default PickerList;
+export default List;
