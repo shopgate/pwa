@@ -79,3 +79,6 @@ export type {
   LocationAware,
   OptionalLocationAware,
 } from './locations.types';
+
+// CONTEXT
+export { FulfillmentContext } from './locations.context';
