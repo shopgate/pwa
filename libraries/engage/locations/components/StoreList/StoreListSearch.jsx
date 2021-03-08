@@ -1,5 +1,4 @@
 import React, {
-  Fragment,
   memo,
   useCallback,
   useContext,
@@ -15,6 +14,7 @@ import {
   LocatorIcon,
   MagnifierIcon,
   MessageBar,
+  SurroundPortals,
 } from '@shopgate/engage/components';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import StoreListSearchRadius from './StoreListSearchRadius';
@@ -32,6 +32,7 @@ import {
   select,
   selectContainer,
 } from './StoreListSearch.style';
+import { FULFILLMENT_SHEET_SEARCH } from '../../constants/Portals';
 
 /**
  * @param {Function} getProductLocations getProductLocations.
@@ -129,7 +130,10 @@ function StoreListSearch({
   const hasSupportedCountries = supportedCountries && supportedCountries.length > 1;
 
   return (
-    <Fragment>
+    <SurroundPortals
+      portalName={FULFILLMENT_SHEET_SEARCH}
+      portalProps={{ product }}
+    >
       <div className={container}>
         {hasSupportedCountries && (
           <div className={countriesCell}>
@@ -197,7 +201,7 @@ function StoreListSearch({
           }}
         />
       }
-    </Fragment>
+    </SurroundPortals>
   );
 }
 
