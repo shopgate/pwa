@@ -28,6 +28,7 @@ export const SCANNER_FORMATS_BARCODE = [
   'CODE_128',
   'PDF_417',
   'ITF',
+  'DATA_MATRIX',
 ];
 
 export const SCANNER_FORMATS_QR_CODE = ['QR_CODE'];
