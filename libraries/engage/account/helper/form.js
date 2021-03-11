@@ -7,6 +7,9 @@ import { i18n } from '@shopgate/engage/core';
  */
 const mapCustomerAttributeType = (attribute) => {
   if (attribute.values && attribute.values.length) {
+    if (attribute.type === 'collectionOfValues') {
+      return 'multiselect';
+    }
     return 'select';
   }
 
@@ -37,7 +40,7 @@ export const generateFormFields = (customerAttributes, allowPleaseChoose = true)
         options: {
           // For non required property allow the user to unset it.
           ...(!attribute.isRequired ? { '': '' } : {}),
-          ...(attribute.isRequired && allowPleaseChoose ? { '': i18n.text('common.please_choose') } : {}),
+          ...(attribute.isRequired && attribute.type !== 'collectionOfValues' && allowPleaseChoose ? { '': i18n.text('common.please_choose') } : {}),
           // Create regular options.
           ...Object.assign({}, ...sortBy(attribute.values, ['sequenceId'])
             .map(option => ({
@@ -82,14 +85,14 @@ export const generateFormConstraints = customerAttributes => ({
 
 /**
  * Maps the type of an attribute value.
- * @param {Object|string|number} value Attribute value.
+ * @param {Object|string|string[]|number} value Attribute value.
  * @param {*} attribute The attribute configuration.
  * @returns {Object|string|number}
  */
 const mapAttributeType = (value, attribute) => {
   // Multi select
   if (attribute.type === 'collectionOfValues') {
-    return [{ code: value.toString() }];
+    return value.map(v => ({ code: v }));
   }
 
   // Single select.

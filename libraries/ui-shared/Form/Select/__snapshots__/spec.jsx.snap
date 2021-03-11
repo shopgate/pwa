@@ -7,6 +7,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
   errorText=""
   isControlled={false}
   label=""
+  multiple={false}
   name="test-name"
   onChange={[Function]}
   options={
@@ -16,6 +17,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     }
   }
   placeholder=""
+  size={null}
   translateErrorText={true}
   value="DE"
 >
@@ -119,6 +121,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
   errorText=""
   isControlled={false}
   label=""
+  multiple={false}
   name="test-name"
   onChange={[Function]}
   options={
@@ -128,6 +131,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     }
   }
   placeholder=""
+  size={null}
   translateErrorText={true}
   value=""
 >
@@ -231,10 +235,12 @@ exports[`<Select /> should render select with no options 1`] = `
   errorText=""
   isControlled={false}
   label=""
+  multiple={false}
   name="test-name"
   onChange={[Function]}
   options={Object {}}
   placeholder=""
+  size={null}
   translateErrorText={true}
   value=""
 >
