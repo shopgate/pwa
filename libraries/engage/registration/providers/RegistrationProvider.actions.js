@@ -1,4 +1,6 @@
 import { EVALIDATION } from '@shopgate/engage/core';
+import { extractAttributes } from '@shopgate/engage/account/helper/form';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { submitRegistration as submit } from '../actions';
 import { convertSubmitRegistrationValidationErrors } from '../helpers';
 
@@ -9,22 +11,42 @@ import { convertSubmitRegistrationValidationErrors } from '../helpers';
  * @param {Object} additionalData Additional data for the request.
  * @returns {Function}
  */
-export const submitRegistration = (
-  baseFormData,
-  shippingFormData,
-  additionalData
-) => async (dispatch) => {
-  const contacts = [{
-    ...baseFormData,
-    ...shippingFormData,
-    isDefaultShipping: true,
+export const submitRegistration = ({
+  baseFormData, billingFormData, shippingFormData, additionalFormData,
+}) => async (dispatch, getState) => {
+  const customerAttributes = getMerchantCustomerAttributes(getState());
+  const { marketingOptIn, ...attributeData } = additionalFormData;
+  const attributes = extractAttributes(customerAttributes, attributeData);
+
+  const { emailAddress, password } = baseFormData;
+  const { firstName, lastName } = billingFormData;
+
+  const customer = {
+    firstName,
+    lastName,
+    emailAddress,
+    password,
+    attributes,
+    settings: {
+      marketingOptIn,
+    },
+  };
+  customer.contacts = [{
+    ...billingFormData,
+    emailAddress,
     isDefaultBilling: true,
-  }];
+    isDefaultShipping: !shippingFormData,
+  }, ...(shippingFormData ? [{
+    ...shippingFormData,
+    emailAddress,
+    isDefaultBilling: false,
+    isDefaultShipping: true,
+  }] : [])];
 
   let errors;
 
   try {
-    await dispatch(submit(contacts, additionalData));
+    await dispatch(submit(customer));
   } catch ({ code, errors: validationErrors }) {
     if (code === EVALIDATION) {
       errors = validationErrors;
@@ -33,20 +55,22 @@ export const submitRegistration = (
 
   const converted = convertSubmitRegistrationValidationErrors(errors);
 
-  if (converted) {
-    const {
-      emailAddress, password, passwordConfirm, ...rest
-    } = converted[0];
+  if (converted?.validation && Object.keys(converted.validation).length > 0) {
+    const { emailAddress: errEmailAddress, password: errPassword } = converted.validation;
+    const billing = converted?.validation?.contacts?.['0'] || {};
+    const shipping = converted?.validation?.contacts?.['1'] || {};
 
     return {
       errors: {
         baseFormData: {
-          ...(emailAddress ? { emailAddress } : {}),
-          ...(password ? { password } : {}),
-          ...(passwordConfirm ? { passwordConfirm } : {}),
+          ...(errEmailAddress ? { emailAddress: errEmailAddress } : {}),
+          ...(errPassword ? { password: errPassword } : {}),
+        },
+        billingFormData: {
+          ...billing,
         },
         shippingFormData: {
-          ...rest,
+          ...shipping,
         },
       },
     };

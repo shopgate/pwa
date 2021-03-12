@@ -30,7 +30,8 @@ import {
   GUEST_CHECKOUT_PATTERN,
   CHECKOUT_CONFIRMATION_PATTERN,
   GUEST_CHECKOUT_PAYMENT_PATTERN,
-  CHECKOUT_BILLING_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
@@ -52,13 +53,8 @@ import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import CheckoutPage from './Checkout/Checkout';
-import GuestCheckoutPage from './Checkout/GuestCheckout';
-import GuestCheckoutPaymentPage from './Checkout/GuestCheckoutPayment';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
-import CheckoutBillingChange from './Checkout/CheckoutBillingChange';
 import ForgotPassword from './ForgotPassword';
-import Register from './Register';
 import Account from './Account';
 import AccountContact from './Account/Contact';
 import OrderDetails from './OrderDetails';
@@ -155,27 +151,31 @@ const Pages = ({ store }) => (
                   <Route pattern={SCANNER_PATH} component={routes.Scanner} />
                   <Route
                     pattern={CHECKOUT_PATTERN}
-                    component={CheckoutPage}
+                    component={routes.Checkout}
                   />
                   <Route
                     pattern={GUEST_CHECKOUT_PATTERN}
-                    component={GuestCheckoutPage}
+                    component={routes.GuestCheckoutRegistration}
                   />
                   <Route
                     pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
-                    component={GuestCheckoutPaymentPage}
+                    component={routes.GuestCheckoutPayment}
                   />
                   <Route
                     pattern={CHECKOUT_CONFIRMATION_PATTERN}
                     component={CheckoutConfirmationPage}
                   />
                   <Route
-                    pattern={CHECKOUT_BILLING_PATTERN}
-                    component={CheckoutBillingChange}
+                    pattern={CHECKOUT_ADDRESS_BOOK_PATTERN}
+                    component={routes.CheckoutAddressBook}
+                  />
+                  <Route
+                    pattern={CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}
+                    component={routes.CheckoutAddressBookContact}
                   />
                   <Route
                     pattern={REGISTER_PATH}
-                    component={Register}
+                    component={routes.Register}
                   />
                   <Route
                     pattern={FORGOT_PASSWORD_PATTERN}

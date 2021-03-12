@@ -185,3 +185,6 @@ export { Footer } from './Footer';
 export { SideNavigation } from './SideNavigation';
 export { default as TextLink } from './TextLink/TextLink';
 export { ConditionalWrapper } from './ConditionalWrapper';
+export { default as RadioGroupV2, useRadioGroup } from './RadioGroup';
+export { default as RadioV2 } from './Radio';
+export { default as RadioCard } from './RadioCard';

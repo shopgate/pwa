@@ -227,21 +227,24 @@ function FulfillmentProvider(props: Props) {
   const confirmSelection = async (location: Location) => {
     const { code, name } = location;
 
-    if (!restrictMultiLocationOrders || cartProducts.length === 0) {
+    const ropeCartProducts = cartProducts
+      .filter(cartProduct => [ROPIS, BOPIS].includes(cartProduct?.fulfillment?.method));
+
+    if (!restrictMultiLocationOrders || ropeCartProducts.length === 0) {
       return true;
     }
 
-    if (isCart && cartProducts.length === 1) {
+    if (isCart && ropeCartProducts.length === 1) {
       // Location changed for the one and only cart item
       return true;
     }
 
-    const cartHasDifferentCodes = !!cartProducts
+    const cartHasDifferentCodes = !!ropeCartProducts
       .map(({ fulfillment }) => fulfillment?.location?.code)
       .filter(Boolean)
       .filter(cartProductCode => cartProductCode !== code).length;
 
-    if (cartProducts.length >= 1 && !cartHasDifferentCodes) {
+    if (ropeCartProducts.length >= 1 && !cartHasDifferentCodes) {
       return true;
     }
 
@@ -252,8 +255,8 @@ function FulfillmentProvider(props: Props) {
       dismiss: 'common.cancel',
     });
 
-    if (confirmed && cartProducts.length) {
-      const updateData = cartProducts.map(({ id: cartItemId, fulfillment }) => ({
+    if (confirmed && ropeCartProducts.length) {
+      const updateData = ropeCartProducts.map(({ id: cartItemId, fulfillment }) => ({
         cartItemId,
         fulfillment: {
           method: fulfillment?.method,

@@ -12,7 +12,7 @@ const { colors } = themeConfig;
  * The Cart component.
  * @returns {JSX}
  */
-const GuestCheckoutPage = () => (
+const GuestCheckoutPaymentPage = () => (
   <View background={colors.background} aria-hidden={false}>
     <BackBar
       right={null}
@@ -24,4 +24,4 @@ const GuestCheckoutPage = () => (
   </View>
 );
 
-export default GuestCheckoutPage;
+export default GuestCheckoutPaymentPage;

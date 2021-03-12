@@ -4,6 +4,7 @@ import {
   CheckoutConfirmationPickUpContact,
   CheckoutConfirmationOrderContact,
   CheckoutConfirmationBilledTo,
+  CheckoutConfirmationShippedTo,
   CheckoutConfirmationOrderSummary,
   SupplementalContent,
 } from '../../../checkout/components';
@@ -59,6 +60,7 @@ const OrderDetailsOrder = () => {
         ) : (
           <CheckoutConfirmationBilledTo order={order} className={contact} />
         ) }
+        <CheckoutConfirmationShippedTo order={order} className={contact} />
         <CheckoutConfirmationPickUpContact order={order} className={contact} />
         <OrderDetailsOrderPickupLocation order={order} className={contact} />
       </div>

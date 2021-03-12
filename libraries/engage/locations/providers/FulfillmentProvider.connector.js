@@ -4,7 +4,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getBaseProduct, getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
-import { getCartProducts } from '@shopgate/engage/cart';
+import { getCartProducts } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { makeGetFulfillmentPaths, makeGetEnabledFulfillmentMethods, getShopSettings } from '@shopgate/engage/core/config';
 import { getRestrictMultiLocationOrders } from '@shopgate/engage/core';
 import { selectLocation, storeFormInput } from '../action-creators';

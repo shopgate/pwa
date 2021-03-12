@@ -343,7 +343,8 @@ export const getActiveFulfillmentSlot = createSelector(
   getCartItems,
   state => getCart(state).activeFulfillmentSlot,
   (cartItems, fulfillmentSlot) => {
-    const firstSlotConfig = cartItems[0]?.fulfillment?.fulfillmentSlot;
+    const firstSlotConfig = cartItems
+      .find(cartItem => cartItem?.fulfillment)?.[0]?.fulfillment?.fulfillmentSlot;
 
     if (!firstSlotConfig) {
       return fulfillmentSlot;

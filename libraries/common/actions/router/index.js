@@ -1,5 +1,6 @@
 export * from './historyPush';
 export * from './historyPop';
+export * from './historyPopToRoute';
 export * from './historyReplace';
 export * from './historyReset';
 export * from './historyResetTo';

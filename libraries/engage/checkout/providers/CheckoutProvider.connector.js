@@ -4,10 +4,13 @@ import { getPreferredLocationAddress } from '@shopgate/engage/locations/selector
 import {
   getCheckoutOrder,
   getCheckoutBillingAddress,
+  getCheckoutShippingAddress,
   getCheckoutPickupAddress,
   getCheckoutTaxLines,
   getCheckoutPaymentTransactions,
   getIsReserveOnly,
+  getIsShippingAddressSelectionEnabled,
+  getIsPickupContactSelectionEnabled,
   getCheckoutFulfillmentSlot,
 } from '@shopgate/engage/checkout/selectors/order';
 import { getNeedsPaymentForOrder } from '@shopgate/engage/checkout/selectors/payment';
@@ -18,19 +21,24 @@ import {
   fetchCheckoutOrder,
   updateCheckoutOrder,
   submitCheckoutOrder,
+} from '@shopgate/engage/checkout/actions';
+import {
   clearCheckoutCampaign,
-} from '@shopgate/engage/checkout';
-import { historyReplace, showModal } from '@shopgate/engage/core';
+} from '@shopgate/engage/checkout/action-creators';
+import { historyReplace, showModal, makeIsLastStackEntry } from '@shopgate/engage/core';
 
 /**
  * @returns {Function}
  */
 function makeMapStateToProps() {
+  const isLastStackEntry = makeIsLastStackEntry();
+
   /**
    * @param {Object} state The application state.
+   * @param {Object} props The component props
    * @returns {Object}
    */
-  return state => ({
+  return (state, props) => ({
     isDataReady: !getConfigFetching(state) && !!getCheckoutOrder(state),
     needsPayment: getNeedsPaymentForOrder(state) || false,
     paymentTransactions: getCheckoutPaymentTransactions(state),
@@ -38,11 +46,15 @@ function makeMapStateToProps() {
     shopSettings: getShopSettings(state),
     userLocation: getPreferredLocationAddress(state),
     billingAddress: getCheckoutBillingAddress(state),
+    shippingAddress: getCheckoutShippingAddress(state),
     pickupAddress: getCheckoutPickupAddress(state),
     taxLines: getCheckoutTaxLines(state),
     orderReserveOnly: getIsReserveOnly(state),
+    isShippingAddressSelectionEnabled: getIsShippingAddressSelectionEnabled(state),
+    isPickupContactSelectionEnabled: getIsPickupContactSelectionEnabled(state),
     campaignAttribution: getCampaignAttribution(state),
     order: getCheckoutOrder(state),
+    isLastStackEntry: isLastStackEntry(state, props),
   });
 }
 

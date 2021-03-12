@@ -14,7 +14,7 @@ import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../
 import fetchFulfillmentSlots from '../../actions/fetchFulfillmentSlots';
 
 /**
- * Map state to propps.
+ * Map state to props.
  * @returns {Function}
  */
 const makeMapStateToProps = () => {
@@ -29,7 +29,7 @@ const makeMapStateToProps = () => {
 };
 
 /**
- * Map dispatch to propps.
+ * Map dispatch to props.
  * @param {Function} dispatch Dispatch
  * @returns {Object}
  */
@@ -204,7 +204,10 @@ const FulfillmentSlotSheet = ({
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [slotGroups, setSlotGroups] = useState(null);
   useEffect(() => {
-    if (!groupedSlots || !groupedSlots[selectedDate]) return;
+    if ((!groupedSlots || !groupedSlots[selectedDate])) {
+      setSlotGroups(null);
+      return;
+    }
 
     const slotGroupsNew = Object
       .keys(RANGES)
@@ -223,6 +226,7 @@ const FulfillmentSlotSheet = ({
   }, [selectedDate, groupedSlots]);
   useEffect(() => {
     if (!selectedDate || !groupedSlots || !groupedSlots[selectedDate]) {
+      setSelectedSlot(null);
       return;
     }
 

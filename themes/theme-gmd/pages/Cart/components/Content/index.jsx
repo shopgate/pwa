@@ -42,7 +42,7 @@ const config = getCartConfig();
  */
 function CartContent(props) {
   const {
-    cartItems, messages, isUserLoggedIn, currency, flags, hasPromotionCoupons,
+    cartItems, messages, isUserLoggedIn, currency, flags, hasPromotionCoupons, isDirectShipOnly,
   } = props;
   const [isPaymentBarVisible, setIsPaymentBarVisible] = React.useState(true);
   const { isLoading: getIsLoading } = React.useContext(LoadingContext);
@@ -69,6 +69,7 @@ function CartContent(props) {
     isLoading,
     flags,
     hasPromotionCoupons,
+    isDirectShipOnly,
   };
 
   return (
@@ -78,7 +79,9 @@ function CartContent(props) {
         <ResponsiveContainer webOnly breakpoint=">xs">
           <div className={headerContainer}>
             <CartHeaderWide />
-            <CartItemsSubstitution className={subscription} cartItems={cartItems} />
+            { !isDirectShipOnly && (
+              <CartItemsSubstitution className={subscription} cartItems={cartItems} />
+            )}
           </div>
         </ResponsiveContainer>
       )}
@@ -132,6 +135,7 @@ function CartContent(props) {
                       cartItems={cartItemsSorted}
                       multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
                       onFocus={togglePaymentBar}
+                      isDirectShipOnly={isDirectShipOnly}
                     />
                     <SurroundPortals portalName={CART_COUPON_FIELD}>
                       <CouponField onFocus={togglePaymentBar} />
@@ -166,6 +170,7 @@ CartContent.propTypes = {
   currency: PropTypes.string,
   flags: PropTypes.shape(),
   hasPromotionCoupons: PropTypes.bool,
+  isDirectShipOnly: PropTypes.bool,
   messages: PropTypes.arrayOf(PropTypes.shape()),
 };
 
@@ -175,6 +180,7 @@ CartContent.defaultProps = {
   flags: {},
   messages: [],
   hasPromotionCoupons: false,
+  isDirectShipOnly: false,
 };
 
 export default connect(React.memo(CartContent));

@@ -14,7 +14,7 @@ import {
  * @returns {JSX}
  */
 const CartItemProductLayoutWide = () => {
-  const { location, cartItem } = useCartItem();
+  const { location, cartItem, cartIsDirectShipOnly } = useCartItem();
   const { product } = useCartItemProduct();
 
   const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
@@ -22,7 +22,7 @@ const CartItemProductLayoutWide = () => {
   return (
     <Fragment>
       <div className={locationColumn}>
-        { location?.name }
+        { !cartIsDirectShipOnly ? location?.name : '' }
       </div>
       <div className={statusColumn}>
         {getTranslatedLineItemStatus(cartItem?.status, cartItem?.subStatus)}

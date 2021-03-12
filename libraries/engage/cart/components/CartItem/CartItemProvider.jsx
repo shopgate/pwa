@@ -6,6 +6,7 @@ type Props = {
   cartItem: Object,
   isEditable?: boolean,
   isOrderDetails?:boolean,
+  cartIsDirectShipOnly?:boolean,
   isCheckoutConfirmation?:boolean,
   cartHasLineItemPromotions?:boolean,
   location?: Object | null,
@@ -26,6 +27,7 @@ const CartItemProvider = ({
   enabledFulfillmentMethodsCount,
   isOrderDetails,
   isCheckoutConfirmation,
+  cartIsDirectShipOnly,
   cartHasLineItemPromotions,
 }: Props) => {
   const actions = useMemo(() => new Map(), []);
@@ -50,6 +52,7 @@ const CartItemProvider = ({
     isEditable,
     isOrderDetails,
     isCheckoutConfirmation,
+    cartIsDirectShipOnly,
     cartHasLineItemPromotions,
     merchantFulfillmentMethodsCount: enabledFulfillmentMethodsCount,
   }), [
@@ -60,6 +63,7 @@ const CartItemProvider = ({
     isEditable,
     isOrderDetails,
     isCheckoutConfirmation,
+    cartIsDirectShipOnly,
     cartHasLineItemPromotions,
     registerFulfillmentAction,
   ]);
@@ -76,6 +80,7 @@ CartItemProvider.defaultProps = {
   location: null,
   isEditable: true,
   isOrderDetails: false,
+  cartIsDirectShipOnly: false,
   isCheckoutConfirmation: false,
   cartHasLineItemPromotions: false,
 };

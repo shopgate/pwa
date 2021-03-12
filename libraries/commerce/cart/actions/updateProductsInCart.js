@@ -17,7 +17,7 @@ import { messagesHaveErrors, createErrorMessageList } from '../helpers';
  * @return {Function} A redux thunk.
  */
 function updateProductsInCart(updateData) {
-  return (dispatch) => {
+  return async (dispatch) => {
     const {
       [SHOPGATE_CART_UPDATE_PRODUCTS]: pipeline = SHOPGATE_CART_UPDATE_PRODUCTS,
     } = configuration.get(PIPELINES, {});

@@ -13,7 +13,7 @@ import {
  * @returns {JSX}
  */
 const CartItemProductOrderDetails = () => {
-  const { location, cartItem } = useCartItem();
+  const { location, cartItem, cartIsDirectShipOnly } = useCartItem();
   const { product, currency } = useCartItemProduct();
 
   const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
@@ -24,13 +24,15 @@ const CartItemProductOrderDetails = () => {
 
   return (
     <ul className={container}>
-      <li>
-        <I18n.Text string="cart.location" className={label} />
-        <span className={labelValue}>
-          {location?.name}
-        </span>
-        <CartItemProductPriceCaption className={fulfillmentLabel} />
-      </li>
+      { !cartIsDirectShipOnly && location?.name ? (
+        <li>
+          <I18n.Text string="cart.location" className={label} />
+          <span className={labelValue}>
+            {location?.name}
+          </span>
+          <CartItemProductPriceCaption className={fulfillmentLabel} />
+        </li>
+      ) : null}
       <li>
         <I18n.Text string="cart.status" className={label} />
         <span className={labelValue}>

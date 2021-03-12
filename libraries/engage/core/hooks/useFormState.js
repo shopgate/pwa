@@ -1,9 +1,8 @@
 import {
   useRef, useState, useEffect, useCallback,
 } from 'react';
-import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { debounce } from 'lodash';
-import { hasWebBridge } from '../helpers/bridge';
+import { useScrollTo } from './useScrollTo';
 import { i18n } from '../helpers/i18n';
 import { useValidation } from '../validation';
 
@@ -32,36 +31,22 @@ export function useFormState(
   validationConstraints = {},
   formContainerRef = null
 ) {
+  const { scrollTo } = useScrollTo(formContainerRef);
+
   // Submit lock prevents the form from being submitted multiple times
   const submitLock = useRef(false);
 
   const [values, setValues] = useState(initialState);
   const [isSubmitting, setSubmitting] = useState(false);
   const [changed, setChanged] = useState(false);
-  const { valid, validationErrors, validate } = useValidation(validationConstraints);
+  const [ignoreErrors, setIgnoreErrors] = useState(false);
+  const {
+    valid, validationErrors, validate, reset,
+  } = useValidation(validationConstraints);
 
   const scrollToError = useCallback(() => {
-    if (formContainerRef?.current) {
-      const firstError = formContainerRef.current.querySelector('.validationError');
-
-      if (firstError) {
-        if (hasWebBridge()) {
-          const offset = 10;
-          const appBarHeight = getCSSCustomProp('--app-bar-height') || 0;
-          const { top } = firstError.getBoundingClientRect();
-
-          const scrollTop = top + window.pageYOffset - parseInt(appBarHeight, 10) - offset;
-
-          window.scroll({
-            top: scrollTop,
-            behavior: 'smooth',
-          });
-        } else {
-          firstError.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-  }, [formContainerRef]);
+    scrollTo('.validationError');
+  }, [scrollTo]);
 
   // -- CHANGED ---------------
   useEffect(() => {
@@ -81,7 +66,7 @@ export function useFormState(
       return;
     }
     let mounted = true;
-    if (valid === true && !submitLock.current) {
+    if ((valid === true || ignoreErrors) && !submitLock.current) {
       submitLock.current = true;
       (async () => {
         await complete(values);
@@ -96,7 +81,7 @@ export function useFormState(
     return () => {
       mounted = false;
     };
-  }, [isSubmitting, valid]);
+  }, [isSubmitting, valid, ignoreErrors]);
   /* eslint-enable react-hooks/exhaustive-deps */
 
   useEffect(() => {
@@ -109,6 +94,10 @@ export function useFormState(
 
   // -- VALIDATION ON SUBMIT ---------
   useEffect(() => {
+    if (ignoreErrors) {
+      return;
+    }
+
     // Yest no validation on submit
     if (changed && valid !== null) {
       validate(values);
@@ -119,7 +108,15 @@ export function useFormState(
     if (isSubmitting && valid === false) {
       setSubmitting(false);
     }
-  }, [changed, validate, values, isSubmitting, valid]);
+  }, [changed, validate, values, isSubmitting, valid, ignoreErrors]);
+
+  const handleSetIgnoreErrors = useCallback((value) => {
+    setIgnoreErrors(value);
+
+    if (ignoreErrors === true) {
+      reset();
+    }
+  }, [ignoreErrors, reset]);
 
   /**
    * @param {string} sanitized The sanitized field value.
@@ -151,14 +148,16 @@ export function useFormState(
   });
 
   return {
+    resetValidationErrors: reset,
     handleChange,
     handleSubmit,
     values,
-    valid,
-    validationErrors,
+    valid: !ignoreErrors ? valid : true,
+    validationErrors: !ignoreErrors ? validationErrors : [],
     isSubmitting,
     setValues,
     scrollToError,
+    setIgnoreErrors: handleSetIgnoreErrors,
     validate,
   };
 }

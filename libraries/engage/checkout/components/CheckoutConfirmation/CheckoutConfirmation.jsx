@@ -14,6 +14,7 @@ import CheckoutConfirmationPickUpContact from './CheckoutConfirmationPickUpConta
 import CheckoutConfirmationOrderContact from './CheckoutConfirmationOrderContact';
 import CheckoutConfirmationPickupNotes from './CheckoutConfirmationPickupNotes';
 import CheckoutConfirmationBilledTo from './CheckoutConfirmationBilledTo';
+import CheckoutConfirmationShippedTo from './CheckoutConfirmationShippedTo';
 import CheckoutConfirmationOrderSummary from './CheckoutConfirmationOrderSummary';
 import { SupplementalContent } from '../SupplementalContent';
 import connect from './CheckoutConfirmation.connector';
@@ -185,6 +186,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
         <ResponsiveContainer breakpoint="<md" appAlways>
           <CheckoutConfirmationPickUpContact order={orderData} />
           <CheckoutConfirmationPickupNotes order={orderData} />
+          <CheckoutConfirmationShippedTo order={orderData} />
           { (!isUserLoggedIn && isReserveOnly) ? (
             <CheckoutConfirmationOrderContact order={orderData} />
           ) : (
@@ -209,6 +211,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
         <ResponsiveContainer breakpoint=">=md" webOnly>
           <CheckoutConfirmationPickUpContact order={orderData} />
           <CheckoutConfirmationPickupNotes order={orderData} />
+          <CheckoutConfirmationShippedTo order={orderData} />
           { (!isUserLoggedIn && isReserveOnly) ? (
             <CheckoutConfirmationOrderContact order={orderData} />
           ) : (

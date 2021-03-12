@@ -10,6 +10,11 @@ import CheckoutConfirmationSection from './CheckoutConfirmationSection';
 const CheckoutConfirmationPickUpContact = ({ order, className }) => {
   const content = useMemo(() => {
     const pickup = order.addressSequences.find(address => address.type === 'pickup');
+
+    if (!pickup) {
+      return null;
+    }
+
     const {
       firstName, lastName, phone, mobile, emailAddress,
     } = pickup;
@@ -40,6 +45,10 @@ const CheckoutConfirmationPickUpContact = ({ order, className }) => {
 
     return entries;
   }, [order]);
+
+  if (!content) {
+    return null;
+  }
 
   return (
     <CheckoutConfirmationSection

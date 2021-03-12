@@ -112,3 +112,13 @@ export const getPromotionCoupons = createSelector(
     };
   })
 );
+
+export const hasDirectShipItems = createSelector(
+  getCartItems,
+  cartItems => cartItems.some(item => !item?.fulfillment)
+);
+
+export const isDirectShipOnly = createSelector(
+  getCartItems,
+  cartItems => cartItems.every(item => !item?.fulfillment)
+);

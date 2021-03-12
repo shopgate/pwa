@@ -18,6 +18,7 @@ import connect from './CartItemsHeaderWide.connector';
 type Props = {
   editable?: boolean,
   isOrderDetails?: boolean,
+  isDirectShipOnly?: boolean,
   hasLineItemPromotions?: boolean,
   enabledFulfillmentMethodsCount: number,
 }
@@ -30,6 +31,7 @@ const CartItemsHeaderWide = ({
   isOrderDetails,
   enabledFulfillmentMethodsCount,
   hasLineItemPromotions,
+  isDirectShipOnly,
 }: Props) => (
   <div className={header}>
     <div className={imageColumn}>
@@ -44,9 +46,11 @@ const CartItemsHeaderWide = ({
     </div>
     {isOrderDetails && (
       <Fragment>
-        <div className={locationColumn}>
-          <I18n.Text string="cart.location" />
-        </div>
+        {!isDirectShipOnly ? (
+          <div className={locationColumn}>
+            <I18n.Text string="cart.location" />
+          </div>
+        ) : null}
         <div className={column}>
           <I18n.Text string="cart.status" />
         </div>
@@ -70,6 +74,7 @@ const CartItemsHeaderWide = ({
 CartItemsHeaderWide.defaultProps = {
   editable: true,
   isOrderDetails: false,
+  isDirectShipOnly: false,
   hasLineItemPromotions: false,
 };
 

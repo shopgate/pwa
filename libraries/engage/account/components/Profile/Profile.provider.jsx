@@ -9,6 +9,7 @@ import { useFormState as useForm, convertValidationErrors } from '@shopgate/enga
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { LoadingProvider, ToastProvider } from '@shopgate/pwa-common/providers';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
+import { CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN, useAddressBook } from '@shopgate/engage/checkout';
 import { PROFILE_ADDRESS_PATH } from '../../constants/routes';
 import { fetchCustomerContacts } from '../../actions/fetchContacts';
 import { fetchCustomerData } from '../../actions/fetchCustomer';
@@ -69,6 +70,7 @@ const ProfileProvider = ({
 }) => {
   // Route
   const { pathname } = useRoute();
+  const { isCheckout, type, deleteContactFromOrder } = useAddressBook();
 
   // Default state.
   const defaultState = useMemo(() => (customer ? {
@@ -148,6 +150,9 @@ const ProfileProvider = ({
     try {
       await deleteContact(contactId);
       await fetchContacts();
+      if (deleteContactFromOrder) {
+        await deleteContactFromOrder(contactId);
+      }
     } catch (error) {
       // taken care by regular error handling.
     }
@@ -170,13 +175,17 @@ const ProfileProvider = ({
   /* eslint-enable react-hooks/exhaustive-deps */
 
   const editContact = useCallback((contact) => {
+    const editPathname = isCheckout
+      ? `${CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}`.replace(':type', type)
+      : PROFILE_ADDRESS_PATH;
+
     push({
-      pathname: PROFILE_ADDRESS_PATH,
+      pathname: editPathname,
       state: {
         contact,
       },
     });
-  }, [push]);
+  }, [isCheckout, push, type]);
 
   // Store context value.
   const contextValue = useMemo(() => ({
@@ -184,6 +193,7 @@ const ProfileProvider = ({
     validationErrors,
     merchantCustomerAttributes,
     customer: defaultState,
+    isCheckout,
     formState,
     saveForm: formState.handleSubmit,
     editContact,
@@ -192,6 +202,7 @@ const ProfileProvider = ({
   }), [
     contacts,
     merchantCustomerAttributes,
+    isCheckout,
     defaultState,
     deleteContactWrapper,
     deleteCustomerWrapper,
