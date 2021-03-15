@@ -59,7 +59,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               wrapContent={true}
             >
               <Button
-                className=""
+                className=" ui-shared__ripple-button"
                 disabled={false}
                 flat={false}
                 onClick={null}
@@ -68,13 +68,13 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 wrapContent={false}
               >
                 <Button
-                  className="css-19m2k92 "
+                  className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
                   disabled={false}
                   onClick={null}
                   testId="sendReviewButton"
                 >
                   <button
-                    className="css-19m2k92  css-1rn65c0"
+                    className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
                     data-test-id="sendReviewButton"
                     disabled={false}
                     onClick={null}
@@ -90,7 +90,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                       size={null}
                     >
                       <div
-                        className="css-1fscwua "
+                        className="ui-shared__ripple css-1fscwua "
                         data-test-id="Ripple"
                         onClick={[Function]}
                         style={null}

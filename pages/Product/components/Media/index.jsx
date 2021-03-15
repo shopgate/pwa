@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PORTAL_PRODUCT_MEDIA_SECTION } from '@shopgate/engage/components/constants';
+import { ProductContext } from '@shopgate/engage/product';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
-import { ProductContext } from '../../context';
 
 /**
  * The product media component.

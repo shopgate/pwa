@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Price from './index';
 
-jest.mock('../../../../context', () => ({
+jest.mock('@shopgate/engage/product', () => ({
   ProductContext: {
     Consumer: ({ children }) => children({}),
   },

@@ -20,11 +20,7 @@ exports[`<ItemName /> should render with minimal props 1`] = `
   >
     <div
       aria-label="Foo."
-      className={
-        Object {
-          "data-css-1xzic9e": "",
-        }
-      }
+      className="css-1xzic9e theme__product-grid__item__item-name"
       data-test-id="Productname: Foo"
     >
       <Ellipsis

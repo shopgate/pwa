@@ -10,7 +10,7 @@ import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar } from 'Components/AppBar/presets';
-import Logo from 'Components/Logo';
+import { Logo } from '@shopgate/engage/components';
 import widgets from 'Extensions/widgets';
 import styles from './style';
 import connect from './connector';
