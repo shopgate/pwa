@@ -3,11 +3,7 @@
 exports[`<ItemDiscount /> should render with discount 1`] = `
 <div
   aria-hidden={true}
-  className={
-    Object {
-      "data-css-1mq4e16": "",
-    }
-  }
+  className="css-1mq4e16 theme__product-grid__item__item-discount"
 >
   <Portal
     name="product-item.discount.before"

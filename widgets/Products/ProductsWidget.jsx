@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
+import { ProductList } from '@shopgate/engage/product';
 import Headline from 'Components/Headline';
 import ProductGrid from 'Components/ProductGrid';
-import ProductList from 'Components/ProductList';
 import connect from './connector';
 import styles from './style';
 

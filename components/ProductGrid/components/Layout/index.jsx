@@ -9,7 +9,7 @@ import { styles } from './style';
  * @returns {JSX}
  */
 const Layout = ({ children, columns }) => (
-  <Grid wrap className={styles(columns)} data-test-id="productGrid">
+  <Grid wrap className={`${styles(columns)} theme__product-grid`} data-test-id="productGrid">
     {children}
   </Grid>
 );

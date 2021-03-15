@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
+import { ProductContext } from '@shopgate/engage/product';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -16,7 +17,6 @@ import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
 import CartItemsCount from './components/CartItemsCount';
 import QuantityPicker from './components/QuantityPicker';
-import { ProductContext } from '../../context';
 import connect from './connector';
 import styles from './style';
 
@@ -168,7 +168,7 @@ class AddToCartBar extends Component {
         <Fragment>
           <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
           <Portal name={PRODUCT_ADD_TO_CART_BAR}>
-            <Section title="product.sections.purchase">
+            <Section title="product.sections.purchase" className="theme__product__add-to-cart-bar">
               <div className={styles.container}>
                 <div className={styles.innerContainer} ref={this.ref}>
                   <div className={styles.base}>

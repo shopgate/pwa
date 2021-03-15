@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { Section } from '@shopgate/engage/a11y';
-import { ProductProperties, RelationsSlider, Description } from '@shopgate/engage/product';
-import Reviews from 'Components/Reviews';
+import {
+  ProductProperties, RelationsSlider, Description, ProductContext, Options, Characteristics,
+} from '@shopgate/engage/product';
+import { Reviews } from '@shopgate/engage/reviews';
 import Media from '../Media';
 import Header from '../Header';
-import Characteristics from '../Characteristics';
-import Options from '../Options';
 import AppBar from '../AppBar';
 import AddToCartBar from '../AddToCartBar';
 import connect from './connector';
-import { ProductContext } from '../../context';
 
 /**
  * The product content component.

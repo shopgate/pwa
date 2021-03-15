@@ -29,13 +29,12 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
-import { NavigationHandler } from '@shopgate/engage/components';
+import { NavigationHandler, SnackBarContainer } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
-import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import themeApi from '../themeApi';
@@ -51,7 +50,7 @@ new ThemeConfigResolver().resolveAll();
 const Pages = ({ store }) => (
   <App store={store}>
     <Helmet>
-      <html lang={appConfig.language.substring(0, 2)} />
+      <html lang={appConfig.language.substring(0, 2)} className="theme-ios11" />
     </Helmet>
     <NavigationHandler>
       <AppProvider>
@@ -61,7 +60,7 @@ const Pages = ({ store }) => (
               <Portal name={APP_GLOBALS} />
               <Viewport>
                 <ModalContainer component={Dialog} />
-                <Toaster render={props => <SnackBar {...props} />} />
+                <Toaster render={props => <SnackBarContainer {...props} />} />
                 <Router history={history}>
                   <Route
                     pattern={INDEX_PATH}

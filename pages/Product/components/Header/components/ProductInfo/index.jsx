@@ -10,13 +10,13 @@ import {
   PRODUCT_INFO_ROW1,
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import Shipping from '@shopgate/engage/product/components/Header/Shipping';
+import Tiers from '@shopgate/engage/product/components/Header/Tiers';
 import Manufacturer from '../Manufacturer';
-import Shipping from '../Shipping';
 import Availability from '../Availability';
 import PriceStriked from '../PriceStriked';
 import Price from '../Price';
 import PriceInfo from '../PriceInfo';
-import Tiers from '../Tiers';
 import TaxDisclaimer from '../TaxDisclaimer';
 import StockInfo from '../StockInfo';
 import * as styles from './style';
@@ -29,8 +29,8 @@ const ProductInfo = ({ productId, options }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
-      <Grid component="div">
-        <Grid.Item component="div" grow={1}>
+      <Grid component="div" className="theme__product__header__product-info">
+        <Grid.Item component="div" grow={1} className="theme__product__header__product-info__row1">
           <Portal name={PRODUCT_INFO_ROW1}>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
@@ -60,7 +60,7 @@ const ProductInfo = ({ productId, options }) => (
             </div>
           </Portal>
         </Grid.Item>
-        <Grid.Item component="div" className={styles.priceContainer}>
+        <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
           <Portal name={PRODUCT_INFO_ROW2}>
             <div>
               <PriceStriked productId={productId} options={options} />
