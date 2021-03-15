@@ -4,7 +4,7 @@ exports[`<BasicDialog /> should render as expected 1`] = `
 <div
   aria-labelledby="basicDialogTitle basicDialogDesc"
   aria-modal={true}
-  className="css-e1s1x1"
+  className="css-e1s1x1 ui-ios__base-dialog"
   data-test-id="basicDialog"
   role="alertdialog"
 >
@@ -51,7 +51,7 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
 <div
   aria-labelledby="basicDialogTitle basicDialogDesc"
   aria-modal={true}
-  className="css-e1s1x1"
+  className="css-e1s1x1 ui-ios__base-dialog"
   data-test-id="basicDialog"
   role="alertdialog"
 >

@@ -62,7 +62,7 @@ class AppBar extends PureComponent {
     } = this.props;
 
     return (
-      <header className={styles.outer} data-test-id="Navigator" role="banner" style={this.style}>
+      <header className={`${styles.outer} ui-material__app-bar`} data-test-id="Navigator" role="banner" style={this.style}>
         <div className={styles.inner}>
           <Left elements={left} />
           <Center elements={center} />

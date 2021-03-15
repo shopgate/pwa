@@ -249,7 +249,7 @@ class Ripple extends PureComponent {
     jsx-a11y/no-static-element-interactions */
     return (
       <div
-        className={this.props.className}
+        className={`ui-shared__ripple ${this.props.className}`}
         data-test-id="Ripple"
         onClick={this.handleClick}
         style={this.style}

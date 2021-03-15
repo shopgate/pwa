@@ -23,10 +23,12 @@ class ViewContent extends Component {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
+    className: PropTypes.string,
     noScrollOnKeyboard: PropTypes.bool,
   };
 
   static defaultProps = {
+    className: '',
     children: null,
     noScrollOnKeyboard: false,
   };
@@ -134,7 +136,7 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article className={styles} ref={this.ref} style={this.style}>
+        <article className={`${styles} engage__view__content ${this.props.className}`} ref={this.ref} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
           <SurroundPortals portalName={VIEW_CONTENT}>
@@ -149,6 +151,6 @@ class ViewContent extends Component {
 
 export default props => (
   <RouteContext.Consumer>
-    {({ visible }) => <ViewContent {...props} visible={visible} />}
+    {({ visible, pattern = '' }) => <ViewContent {...props} visible={visible} className={`route__${pattern.replace(/:/g, '_')}`} />}
   </RouteContext.Consumer>
 );

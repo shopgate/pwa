@@ -81,7 +81,7 @@ class ContextMenu extends Component {
       <div
         data-test-id="contextMenu"
         ref={(ref) => { this.elementRef = ref; }}
-        className={classNames(styles.container, classes.container)}
+        className={classNames(styles.container, classes.container, 'ui-shared__context-menu')}
         aria-hidden
       >
         <button

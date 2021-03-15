@@ -7,8 +7,8 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX} The button component.
  */
-const PickerButton = ({ value, label, openList }) => (
-  <button className={styles.button} onClick={openList} type="button">
+const Button = ({ value, label, openList }) => (
+  <button className={`${styles.button} engage__picker__button`} onClick={openList} type="button">
     <span className={styles.label}>{label}</span>
     {value !== null && (
       <span className={styles.value}>{value}</span>
@@ -16,14 +16,14 @@ const PickerButton = ({ value, label, openList }) => (
   </button>
 );
 
-PickerButton.propTypes = {
+Button.propTypes = {
   label: PropTypes.string.isRequired,
   openList: PropTypes.func.isRequired,
   value: PropTypes.string,
 };
 
-PickerButton.defaultProps = {
+Button.defaultProps = {
   value: null,
 };
 
-export default PickerButton;
+export default Button;

@@ -23,7 +23,7 @@ describe('<Dialog />', () => {
   it('should render BasicDialog when no message given', () => {
     const wrapper = shallow(<Dialog modal={{ message: null }} />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('BasicDialog').length).toBe(1);
+    expect(wrapper.find('BaseDialog').length).toBe(1);
   });
 
   it('should render a special dialog', () => {
@@ -74,7 +74,7 @@ describe('<Dialog />', () => {
 
     // eslint-disable-next-line extra-rules/no-single-line-objects
     const wrapper = shallow(<Dialog modal={{ title, titleParams }} />);
-    const i18n = new ReactWrapper(wrapper.find('BasicDialog').prop('title'));
+    const i18n = new ReactWrapper(wrapper.find('BaseDialog').prop('title'));
 
     expect(i18n.prop('string')).toEqual(title);
     expect(i18n.prop('params')).toEqual(titleParams);

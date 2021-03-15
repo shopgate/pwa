@@ -17,7 +17,7 @@ function ViewBelow() {
           height: `calc(${bottom}px + var(--safe-area-inset-bottom))`,
         };
 
-        return <div aria-hidden style={styles} />;
+        return <div aria-hidden style={styles} className="engage__view__below" />;
       }}
     </ViewContext.Consumer>
   );

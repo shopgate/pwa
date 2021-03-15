@@ -120,6 +120,7 @@ export { default as BrowseIcon } from '@shopgate/pwa-ui-shared/icons/BrowseIcon'
 export { default as BurgerIcon } from '@shopgate/pwa-ui-shared/icons/BurgerIcon';
 export { default as CartIcon } from '@shopgate/pwa-ui-shared/icons/CartIcon';
 export { default as CartPlusIcon } from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
+export { default as CartCouponIcon } from '@shopgate/pwa-ui-shared/icons/CartCouponIcon';
 export { default as CheckedIcon } from '@shopgate/pwa-ui-shared/icons/CheckedIcon';
 export { default as CheckIcon } from '@shopgate/pwa-ui-shared/icons/CheckIcon';
 export { default as ChevronIcon } from '@shopgate/pwa-ui-shared/icons/ChevronIcon';
@@ -171,3 +172,7 @@ export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';
 export { default as ScrollHeader } from './ScrollHeader';
+export { default as ChipLayout } from './ChipLayout';
+export { default as Logo } from './Logo';
+export { default as SnackBarContainer } from './SnackBarContainer';
+export { default as PickerUtilize } from './PickerUtilize';

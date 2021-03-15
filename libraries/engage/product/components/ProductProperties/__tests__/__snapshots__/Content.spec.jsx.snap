@@ -4,11 +4,7 @@ exports[`<Content /> should not render if no props are passed 1`] = `""`;
 
 exports[`<Content /> should render grouped properties 1`] = `
 <div
-  className={
-    Object {
-      "data-css-y50mcd": "",
-    }
-  }
+  className="css-y50mcd engage__product__product-properties"
 >
   <GroupedProperties
     groups={

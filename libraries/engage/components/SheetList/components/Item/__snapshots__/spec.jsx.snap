@@ -41,7 +41,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         }
       >
         <div
-          className="css-13azwyo"
+          className="css-13azwyo ui-shared__glow"
           onClick={[Function]}
         >
           <div
@@ -90,6 +90,7 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
     title="My Title"
   >
     <div
+      className="engage__sheet-list__item"
       data-test-id={null}
     >
       <Grid
@@ -98,7 +99,7 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1qcr7hz css-h7r55a common__grid"
         >
           <GridItem
             className="css-rx1nvy"
@@ -151,6 +152,7 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
     title="My Title"
   >
     <div
+      className="engage__sheet-list__item"
       data-test-id={null}
     >
       <Grid
@@ -159,7 +161,7 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1qcr7hz css-h7r55a common__grid"
         >
           <GridItem
             className="css-rx1nvy"
@@ -209,6 +211,7 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
     title="My Title"
   >
     <div
+      className="engage__sheet-list__item"
       data-test-id={null}
     >
       <Grid
@@ -217,7 +220,7 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1qcr7hz css-h7r55a common__grid"
         >
           <div
             className="css-1mhrjzj"
@@ -295,7 +298,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           }
         >
           <div
-            className="css-13azwyo"
+            className="css-13azwyo ui-shared__glow"
             onClick={[Function]}
           >
             <div
@@ -303,6 +306,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
               style={Object {}}
             />
             <div
+              className="engage__sheet-list__item"
               data-test-id={null}
             >
               <Grid
@@ -311,7 +315,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
                 wrap={false}
               >
                 <div
-                  className="css-1qcr7hz css-h7r55a"
+                  className="css-1qcr7hz css-h7r55a common__grid"
                 >
                   <GridItem
                     className="css-rx1nvy"
@@ -355,6 +359,7 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
     title="My Title"
   >
     <div
+      className="engage__sheet-list__item"
       data-test-id={null}
     >
       <Grid
@@ -363,7 +368,7 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-h7r55a"
+          className="css-1qcr7hz css-h7r55a common__grid"
         >
           <GridItem
             className="css-rx1nvy css-19uk9mv"
@@ -403,6 +408,7 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
     title="My Title"
   >
     <div
+      className="engage__sheet-list__item"
       data-test-id={null}
     >
       <Grid
@@ -411,7 +417,7 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
         wrap={false}
       >
         <div
-          className="css-1qcr7hz css-7q9yf9 css-h7r55a"
+          className="css-1qcr7hz css-7q9yf9 css-h7r55a common__grid"
         >
           <GridItem
             className="css-rx1nvy"

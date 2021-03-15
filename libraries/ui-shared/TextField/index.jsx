@@ -147,7 +147,7 @@ class TextField extends Component {
     const style = styles.container[styleType];
 
     return (
-      <div className={classNames(style, this.props.className, 'textField')}>
+      <div className={classNames(style, this.props.className, 'textField', 'ui-shared__text-field')}>
         <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
         <Label
           name={this.props.name}

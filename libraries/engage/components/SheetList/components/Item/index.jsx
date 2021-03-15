@@ -72,7 +72,7 @@ class Item extends Component {
     const ref = isNested ? null : forwardedRef;
 
     return (
-      <div data-test-id={this.props.testId} ref={ref}>
+      <div data-test-id={this.props.testId} ref={ref} className="engage__sheet-list__item">
         <Grid className={classNames(gridStyles)} component="div">
           {(image !== null) && (
             <div className={styles.image}>

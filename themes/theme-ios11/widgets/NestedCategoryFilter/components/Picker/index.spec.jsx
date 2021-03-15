@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
-import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
 import themeApi from '../../../../themeApi';
 import { mockedState, categoriesById, emptyRootCategories } from '../../mockData';
 import Picker from './index';
@@ -15,10 +14,7 @@ import styles from './style';
 jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
 
-jest.mock('@shopgate/engage/components', () => ({
-  ...jest.requireActual('@shopgate/engage/components'),
-  SheetDrawer: props => <MockSheet {...props} />,
-}));
+jest.mock('@shopgate/engage/components');
 
 jest.mock('@shopgate/pwa-common-commerce/category/actions/getCategory', () => jest.fn(() => () => { }));
 

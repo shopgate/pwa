@@ -156,7 +156,7 @@ class Sheet extends Component {
     );
 
     return (
-      <section>
+      <section className="ui-shared__sheet">
         <Drawer
           className={drawerClassNames}
           isOpen={this.state.isOpen}

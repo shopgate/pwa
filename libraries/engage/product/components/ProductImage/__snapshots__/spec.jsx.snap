@@ -7,7 +7,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
 >
   <div
     aria-hidden={null}
-    className={null}
+    className="null engage__product__product-image"
   >
     <Image
       alt={null}
@@ -77,7 +77,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
 >
   <div
     aria-hidden={null}
-    className={null}
+    className="null engage__product__product-image"
   >
     <Image
       alt={null}
@@ -222,7 +222,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
 >
   <div
     aria-hidden={null}
-    className={null}
+    className="null engage__product__product-image"
   >
     <Image
       alt={null}

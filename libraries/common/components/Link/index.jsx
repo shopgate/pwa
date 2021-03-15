@@ -67,7 +67,7 @@ class Link extends Component {
     } = this.props;
     return (
       <Tag
-        className={`${styles} ${className}`}
+        className={`${styles} ${className} common__link`}
         onClick={this.handleOpenLink}
         role={role}
         data-test-id={`link: ${href}`}

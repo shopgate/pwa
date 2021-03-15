@@ -17,5 +17,5 @@ export * from '@shopgate/pwa-common-commerce/reviews/selectors';
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/reviews/streams';
 
-// MOCKS
-export * from '@shopgate/pwa-common-commerce/reviews/mock';
+// COMPONENTS
+export { default as Reviews } from './components/Reviews';

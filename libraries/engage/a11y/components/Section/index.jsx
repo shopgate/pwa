@@ -38,7 +38,7 @@ const hasChildNodes = (ref, headlineId) => {
  */
 function Section(props) {
   const {
-    title, titleParams, children, className, ...rest
+    title, titleParams, children, ...rest
   } = props;
   const contentRef = useRef(null);
   const [hasContent, setHasContent] = useState(false);
@@ -84,7 +84,7 @@ Section.propTypes = {
 
 Section.defaultProps = {
   children: null,
-  className: null,
+  className: '',
   titleParams: {},
 };
 

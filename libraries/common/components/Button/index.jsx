@@ -31,7 +31,7 @@ class Button extends Component {
     } = this.props;
 
     const buttonProps = {
-      className: `${className} ${style}`,
+      className: `${className} ${style} common__button`,
       disabled,
       onClick: disabled ? null : onClick,
       ...props,

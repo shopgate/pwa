@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import EmbeddedMedia from '../EmbeddedMedia';
 import parseHTML from '../../helpers/html/parseHTML';
+import connect from './connector';
 
 /**
  * HtmlSanitizer component.
  */
 class HtmlSanitizer extends Component {
   static propTypes = {
+    navigate: PropTypes.func.isRequired,
     children: PropTypes.string,
     className: PropTypes.string,
     decode: PropTypes.bool,
@@ -19,7 +21,7 @@ class HtmlSanitizer extends Component {
 
   static defaultProps = {
     children: '',
-    className: null,
+    className: '',
     decode: false,
     processStyles: false,
     settings: {},
@@ -84,7 +86,11 @@ class HtmlSanitizer extends Component {
 
       if (href) {
         event.preventDefault();
-        this.props.settings.handleClick(href, target);
+        if (this.props.settings.handleClick) {
+          this.props.settings.handleClick(href, target);
+        } else {
+          this.props.navigate(href, target);
+        }
       }
     }
   };
@@ -111,11 +117,15 @@ class HtmlSanitizer extends Component {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={innerHTML}
           ref={this.htmlContainer}
-          className={this.props.className}
+          className={`${this.props.className} common__html-sanitizer`}
         />
       </Wrapper>
     );
   }
 }
 
-export default HtmlSanitizer;
+HtmlSanitizer.propTypes = {
+  navigate: PropTypes.func.isRequired,
+};
+
+export default connect(HtmlSanitizer);

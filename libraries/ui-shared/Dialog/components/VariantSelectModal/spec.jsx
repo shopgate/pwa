@@ -51,7 +51,7 @@ describe('<VariantSelectModal />', () => {
     const wrapper = shallow(<VariantSelectModal {...mockedProps} />);
     expect(wrapper).toMatchSnapshot();
 
-    const reordered = wrapper.find('BasicDialog').props().actions;
+    const reordered = wrapper.find('BaseDialog').props().actions;
     const last = reordered.slice(-1)[0];
     expect(last.label).toEqual(actions[0].label);
 

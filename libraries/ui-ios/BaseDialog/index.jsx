@@ -14,9 +14,9 @@ import styles from './style';
  * @param {string|ReactElement} title The title of the dialog.
  * @return {JSX} The rendered dialog.
  */
-const BasicDialog = ({ children, actions, title }) => (
+const BaseDialog = ({ children, actions, title }) => (
   <div
-    className={styles.container}
+    className={`${styles.container} ui-ios__base-dialog`}
     data-test-id="basicDialog"
     role="alertdialog"
     aria-modal
@@ -32,7 +32,7 @@ const BasicDialog = ({ children, actions, title }) => (
   </div>
 );
 
-BasicDialog.propTypes = {
+BaseDialog.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     action: PropTypes.func.isRequired,
@@ -44,10 +44,10 @@ BasicDialog.propTypes = {
   ]),
 };
 
-BasicDialog.defaultProps = {
+BaseDialog.defaultProps = {
   children: null,
   actions: [],
   title: null,
 };
 
-export default BasicDialog;
+export default BaseDialog;

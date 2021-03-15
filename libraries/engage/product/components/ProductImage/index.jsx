@@ -160,7 +160,7 @@ class ProductImage extends Component {
     // Return the actual image.
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <div aria-hidden={this.props['aria-hidden']} className={className}>
+        <div aria-hidden={this.props['aria-hidden']} className={`${className} engage__product__product-image`}>
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}

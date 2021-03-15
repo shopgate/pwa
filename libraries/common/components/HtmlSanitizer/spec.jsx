@@ -9,6 +9,7 @@ jest.mock('@shopgate/pwa-common/collections/EmbeddedMedia', () => ({
   remove: jest.fn(),
 }));
 jest.mock('../EmbeddedMedia', () => ({ children }) => children);
+jest.mock('./connector', () => Cmp => Cmp);
 
 /**
  * @param {string} html HTML markup.
@@ -37,7 +38,7 @@ describe('<HtmlSanitizer />', () => {
     const wrapper = createWrapper(html, { decode: true });
 
     // Test result of dangerouslySetInnerHTML.
-    expect(wrapper.html()).toEqual('<div><h1>Hello World!</h1></div>');
+    expect(wrapper.html()).toEqual('<div class=" common__html-sanitizer"><h1>Hello World!</h1></div>');
     expect(wrapper.render()).toMatchSnapshot();
   });
 
@@ -119,7 +120,7 @@ describe('<HtmlSanitizer />', () => {
     const wrapper = createWrapper(html, { decode: true });
 
     // Test result of dangerouslySetInnerHTML.
-    expect(wrapper.html()).toEqual('<div>  <p>Foo Bar</p> </div>');
+    expect(wrapper.html()).toEqual('<div class=" common__html-sanitizer">  <p>Foo Bar</p> </div>');
     expect(wrapper).toMatchSnapshot();
   });
 

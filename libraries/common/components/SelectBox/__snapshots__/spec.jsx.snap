@@ -29,7 +29,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
   testId={null}
 >
   <div
-    className=""
+    className=" common__select-box"
     data-test-id={null}
   >
     <button
@@ -93,7 +93,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
       >
         <div
           aria-hidden={true}
-          className="css-rdsogp "
+          className="css-rdsogp  common__dropdown"
           key=".0"
         >
           <ul
@@ -249,7 +249,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
   testId={null}
 >
   <div
-    className=""
+    className=" common__select-box"
     data-test-id={null}
   >
     <button
@@ -313,7 +313,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-rdsogp "
+          className="css-rdsogp  common__dropdown"
           key=".0"
         >
           <ul
@@ -469,7 +469,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
   testId={null}
 >
   <div
-    className=""
+    className=" common__select-box"
     data-test-id={null}
   >
     <button
@@ -533,7 +533,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-rdsogp "
+          className="css-rdsogp  common__dropdown"
           key=".0"
         >
           <ul

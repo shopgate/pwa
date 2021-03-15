@@ -18,7 +18,7 @@ exports[`<Drawer /> should add custom classes 1`] = `
   onOpen={[Function]}
 >
   <div
-    className="custom-class-name css-1rg7udn css-1dwe0qx"
+    className="custom-class-name css-1rg7udn css-1dwe0qx common__drawer"
     onAnimationEnd={[Function]}
     style={Object {}}
   />
@@ -43,7 +43,7 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
   onOpen={[Function]}
 >
   <div
-    className="custom-class-name css-1rg7udn css-1dwe0qx"
+    className="custom-class-name css-1rg7udn css-1dwe0qx common__drawer"
     onAnimationEnd={[Function]}
     style={Object {}}
   />

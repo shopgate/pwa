@@ -10,7 +10,7 @@ import { container, containerDense } from './style';
  */
 const Wrapper = ({ children, dense }) => (
   <div
-    className={cxs({
+    className={cxs('engage__product__product-properties', {
       [container]: !dense,
       [containerDense]: dense,
     })}
