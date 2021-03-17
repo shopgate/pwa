@@ -86,6 +86,9 @@ class CartProduct extends Component {
        * This should not happen on iOS devices, since their webviews behave different.
        */
       setTimeout(() => {
+        if (!this.cardElement) {
+          return;
+        }
         const yOffset = -(window.innerHeight / 2)
           + getAbsoluteHeight(this.cardElement)
           + variables.paymentBar.height;
