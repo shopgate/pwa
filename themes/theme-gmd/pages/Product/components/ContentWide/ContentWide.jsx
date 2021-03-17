@@ -112,7 +112,10 @@ const ContentWide = ({
           <div className={styles.priceColumn}>
             <Section title="product.sections.quantity">
               <ProductUnitQuantityPicker className={styles.quantityPicker}>
-                <OrderQuantityHint productId={productId} className={styles.orderQuantityHint} />
+                <OrderQuantityHint
+                  productId={variantId || productId}
+                  className={styles.orderQuantityHint}
+                />
               </ProductUnitQuantityPicker>
             </Section>
           </div>
@@ -143,7 +146,10 @@ const ContentWide = ({
         </div>
         <Section title="product.sections.quantity">
           <ProductUnitQuantityPicker className={styles.quantityPicker}>
-            <OrderQuantityHint productId={productId} className={styles.orderQuantityHint} />
+            <OrderQuantityHint
+              productId={variantId || productId}
+              className={styles.orderQuantityHint}
+            />
           </ProductUnitQuantityPicker>
         </Section>
         <AddToCartButton />

@@ -3,25 +3,37 @@
 exports[`<StoreListProduct /> should not render if not product is supplied 1`] = `""`;
 
 exports[`<StoreListProduct /> should render a product without selected variants. 1`] = `
-<div
-  className="css-73f55n"
+<SurroundPortals
+  portalName="fulfillment-sheet.product"
+  portalProps={
+    Object {
+      "product": Object {
+        "featuredImageUrl": "http://www.some.com",
+        "name": "Test Product",
+      },
+    }
+  }
 >
   <div
-    className="css-1f7wp8g"
+    className="css-73f55n"
   >
     <div
-      className="css-15aij0t"
+      className="css-1f7wp8g"
     >
-      <Connect(WithWidgetSettings(ProductImage))
-        src="http://www.some.com"
-      />
-    </div>
-    <div
-      className="css-yp5sfk"
-    >
-      <StoreListProductName />
-      <StoreListProductInfo />
+      <div
+        className="css-15aij0t"
+      >
+        <Connect(WithWidgetSettings(ProductImage))
+          src="http://www.some.com"
+        />
+      </div>
+      <div
+        className="css-yp5sfk"
+      >
+        <StoreListProductName />
+        <StoreListProductInfo />
+      </div>
     </div>
   </div>
-</div>
+</SurroundPortals>
 `;

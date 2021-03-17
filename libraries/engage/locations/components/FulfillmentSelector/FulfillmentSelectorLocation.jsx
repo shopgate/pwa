@@ -1,6 +1,6 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'classnames';
-import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
+import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import {
   ROPIS,
   BOPIS,
@@ -15,6 +15,7 @@ import { container, unavailable, locationName } from './FulfillmentSelectorLocat
 import {
   itemRow, itemColumn, itemSpacer,
 } from './FulfillmentSelectorItem.style';
+import { PRODUCT_FULFILLMENT_SELECTOR_LOCATION } from '../../constants/Portals';
 
 /**
  * The FulfillmentSelectorLocation component
@@ -51,28 +52,34 @@ export function FulfillmentSelectorLocation() {
   const isRopeMethodEnabled = (isROPISEnabled || isBOPISEnabled);
 
   return (
-    <Fragment>
+    <SurroundPortals
+      portalName={PRODUCT_FULFILLMENT_SELECTOR_LOCATION}
+      portalProps={{
+        productId,
+        location: usedLocation,
+      }}
+    >
       {(isRopeMethodEnabled && isOrderable && usedLocation) && (
-        <Grid className={classNames(itemRow, container)} component="div">
-          <ResponsiveContainer appAlways breakpoint="xs">
-            <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-              <div className={locationName}>{usedLocation.name}</div>
-              <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
-            </Grid.Item>
-            <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-              <StockInfo productId={productId} location={usedLocation} />
-            </Grid.Item>
-          </ResponsiveContainer>
-          <ResponsiveContainer webOnly breakpoint=">xs">
-            <div>
-              <div className={locationName}>{usedLocation.name}</div>
-              <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
-            </div>
-            <div className={itemSpacer}>
-              <StockInfo productId={productId} location={usedLocation} />
-            </div>
-          </ResponsiveContainer>
-        </Grid>
+      <Grid className={classNames(itemRow, container)} component="div">
+        <ResponsiveContainer appAlways breakpoint="xs">
+          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+            <div className={locationName}>{usedLocation.name}</div>
+            <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
+          </Grid.Item>
+          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+            <StockInfo productId={productId} location={usedLocation} />
+          </Grid.Item>
+        </ResponsiveContainer>
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          <div>
+            <div className={locationName}>{usedLocation.name}</div>
+            <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
+          </div>
+          <div className={itemSpacer}>
+            <StockInfo productId={productId} location={usedLocation} />
+          </div>
+        </ResponsiveContainer>
+      </Grid>
       )}
       {(isRopeMethodEnabled && selected && !isOrderable) && (
         <div className={container}>
@@ -86,6 +93,6 @@ export function FulfillmentSelectorLocation() {
           {i18n.text('locations.no_available')}
         </div>
       )}
-    </Fragment>
+    </SurroundPortals>
   );
 }

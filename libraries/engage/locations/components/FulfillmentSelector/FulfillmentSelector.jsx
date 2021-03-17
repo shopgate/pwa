@@ -3,11 +3,13 @@ import { hot } from 'react-hot-loader/root';
 import React, {
   useState, useEffect, useCallback, useMemo,
 } from 'react';
+import { SurroundPortals } from '../../../components';
 import {
   DIRECT_SHIP,
   ROPIS,
   BOPIS,
   STAGE_SELECT_STORE,
+  PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import {
@@ -200,38 +202,40 @@ function FulfillmentSelector(props: Props) {
 
   return (
     <FulfillmentSelectorContext.Provider value={context}>
-      <div className={container}>
-        <FulfillmentSelectorHeader />
-        {shopFulfillmentMethods.includes(DIRECT_SHIP) && (
-          <FulfillmentSelectorItem
-            name={DIRECT_SHIP}
-            onChange={handleChange}
-            disabled={!isReady || !isDirectShipEnabled}
-          >
-            <FulfillmentSelectorDirectShip />
-          </FulfillmentSelectorItem>
-        )}
+      <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR}>
+        <div className={container}>
+          <FulfillmentSelectorHeader />
+          {shopFulfillmentMethods.includes(DIRECT_SHIP) && (
+            <FulfillmentSelectorItem
+              name={DIRECT_SHIP}
+              onChange={handleChange}
+              disabled={!isReady || !isDirectShipEnabled}
+            >
+              <FulfillmentSelectorDirectShip />
+            </FulfillmentSelectorItem>
+          )}
 
-        {shopFulfillmentMethods.includes(BOPIS) && (
-          <FulfillmentSelectorItem
-            name={BOPIS}
-            onChange={handleChange}
-            disabled={!isReady || !isBOPISEnabled}
-          >
-            <FulfillmentSelectorBOPIS />
-          </FulfillmentSelectorItem>
-        )}
+          {shopFulfillmentMethods.includes(BOPIS) && (
+            <FulfillmentSelectorItem
+              name={BOPIS}
+              onChange={handleChange}
+              disabled={!isReady || !isBOPISEnabled}
+            >
+              <FulfillmentSelectorBOPIS />
+            </FulfillmentSelectorItem>
+          )}
 
-        {shopFulfillmentMethods.includes(ROPIS) && (
-          <FulfillmentSelectorItem
-            name={ROPIS}
-            onChange={handleChange}
-            disabled={!isReady || !isROPISEnabled}
-          >
-            <FulfillmentSelectorROPIS />
-          </FulfillmentSelectorItem>
-        )}
-      </div>
+          {shopFulfillmentMethods.includes(ROPIS) && (
+            <FulfillmentSelectorItem
+              name={ROPIS}
+              onChange={handleChange}
+              disabled={!isReady || !isROPISEnabled}
+            >
+              <FulfillmentSelectorROPIS />
+            </FulfillmentSelectorItem>
+          )}
+        </div>
+      </SurroundPortals>
       <FulfillmentSelectorLocation />
       <FulfillmentSelectorAddToCart />
     </FulfillmentSelectorContext.Provider>

@@ -187,7 +187,10 @@ class ProductContent extends PureComponent {
           <RelationsSlider desiredPosition="header" />
           <Section title="product.sections.quantity">
             <ProductUnitQuantityPicker className={styles.quantityPicker}>
-              <OrderQuantityHint productId={productId} className={styles.quantityHint} />
+              <OrderQuantityHint
+                productId={variantId || productId}
+                className={styles.quantityHint}
+              />
             </ProductUnitQuantityPicker>
           </Section>
           <Section title="product.sections.options">
