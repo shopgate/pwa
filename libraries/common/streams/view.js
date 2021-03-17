@@ -20,6 +20,12 @@ export const viewScroll$ = Observable.from(eventsSubject);
  * @returns {Observable}
  */
 export const emitScrollEvents = (element, throttleTime = 250) => {
+  // In rare situation during unmounting a react dom ref might
+  // be null due to the execution order of events in fiber nodes.
+  if (!element) {
+    return;
+  }
+
   let previousScrollTop = 0;
   const scroll$ = Observable
     .fromEvent(element, 'scroll')
