@@ -1,5 +1,16 @@
 # Changelog
 
+## [v6.13.13](https://github.com/shopgate/pwa/compare/v6.13.12...v6.13.13) (2021-03-09)
+
+#### :rocket: Enhancement
+* [#1069](https://github.com/shopgate/pwa/pull/1069) Added classnames ([@Carsten89](https://github.com/Carsten89))
+* [#1072](https://github.com/shopgate/pwa/pull/1072) Add navigation handling to HtmlSanitizer by default ([@alexbridge](https://github.com/alexbridge))
+* [#1071](https://github.com/shopgate/pwa/pull/1071) Make it possible to change icon & color of the coupon symbol in cart ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1075](https://github.com/shopgate/pwa/pull/1075) Added DATA_MATRIX support for scanner ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.13.12](https://github.com/shopgate/pwa/compare/v6.13.11...v6.13.12) (2021-02-23)
 
 #### :rocket: Enhancement
