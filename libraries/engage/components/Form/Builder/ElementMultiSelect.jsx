@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import Select from '@shopgate/pwa-ui-shared/Form/Select';
+import SelectContextChoices from '@shopgate/pwa-ui-shared/Form/SelectContextChoices';
+import ResponsiveContainer from '../../ResponsiveContainer/ResponsiveContainer';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -23,26 +25,35 @@ const ElementMultiSelect = (props) => {
     return null;
   }
 
-  const values = [].concat(value);
-  // Limit to number of options or max 3
-  const size = Math.min(3, Object.keys(element.options).length);
+  const values = [].concat(value).filter(Boolean);
 
   return (
     <div className={classNames(camelCase(name), { validationError: !!errorText })}>
-      <Select
-        name={name}
-        label={element.label}
-        placeholder={element.placeholder}
-        value={values}
-        options={element.options}
-        onChange={element.handleChange}
-        errorText={errorText}
-        isControlled
-        translateErrorText={false}
-        disabled={element.disabled}
-        multiple
-        size={size}
-      />
+      <ResponsiveContainer appOnly breakpoint="xs">
+        <Select
+          name={name}
+          label={element.label}
+          placeholder={element.placeholder}
+          value={values}
+          options={element.options}
+          onChange={element.handleChange}
+          errorText={errorText}
+          isControlled
+          translateErrorText={false}
+          disabled={element.disabled}
+          multiple
+        />
+      </ResponsiveContainer>
+      <ResponsiveContainer webOnly breakpoint=">xs">
+        <SelectContextChoices
+          label={element.label}
+          placeholder={element.placeholder}
+          value={values}
+          options={element.options}
+          onChange={element.handleChange}
+          errorText={errorText}
+        />
+      </ResponsiveContainer>
     </div>
   );
 };

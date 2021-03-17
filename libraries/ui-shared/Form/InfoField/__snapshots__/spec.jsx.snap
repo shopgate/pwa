@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InfoField> should render info field 1`] = `
+<FormElement
+  className=""
+  disabled={false}
+  errorText=""
+  hasPlaceholder={true}
+  hasUnderline={true}
+  hasValue={false}
+  htmlFor=""
+  isFocused={false}
+  label=""
+  labelStatic={false}
+  placeholder=""
+  translateErrorText={true}
+>
+  <Grid
+    className=""
+    component="ul"
+    wrap={false}
+  >
+    <GridItem
+      className="css-1klwfzq"
+      component="li"
+      grow={1}
+      shrink={1}
+    >
+      Some info text
+    </GridItem>
+  </Grid>
+</FormElement>
+`;

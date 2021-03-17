@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SelectContextChoices /> should render select with 1 selected option 1`] = `
+<Fragment>
+  <InfoField
+    className=""
+    errorText=""
+    hasUnderline={true}
+    hasValue={true}
+    label=""
+    leftElement={null}
+    rightElement={
+      <Chevron
+        className="css-1h5rpg9"
+      />
+    }
+  >
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-hcovq9": "",
+        }
+      }
+      onClick={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      Germany
+    </div>
+  </InfoField>
+  <ContextMenu
+    classes={
+      Object {
+        "button": "",
+        "container": "",
+      }
+    }
+    disabled={false}
+    isOpened={false}
+    onStateChange={[Function]}
+    scroll={true}
+    showToggle={false}
+  >
+    <Item
+      autoClose={false}
+      className="css-1w6nywo"
+      closeMenu={[Function]}
+      disabled={false}
+      key="DE"
+      onClick={[Function]}
+    >
+      Germany
+    </Item>
+    <Item
+      autoClose={false}
+      className=""
+      closeMenu={[Function]}
+      disabled={false}
+      key="US"
+      onClick={[Function]}
+    >
+      United states
+    </Item>
+  </ContextMenu>
+</Fragment>
+`;
+
+exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
+<Fragment>
+  <InfoField
+    className=""
+    errorText=""
+    hasUnderline={true}
+    hasValue={true}
+    label=""
+    leftElement={null}
+    rightElement={
+      <Chevron
+        className="css-1h5rpg9"
+      />
+    }
+  >
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-hcovq9": "",
+        }
+      }
+      onClick={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      common.please_choose
+    </div>
+  </InfoField>
+  <ContextMenu
+    classes={
+      Object {
+        "button": "",
+        "container": "",
+      }
+    }
+    disabled={false}
+    isOpened={false}
+    onStateChange={[Function]}
+    scroll={true}
+    showToggle={false}
+  >
+    <Item
+      autoClose={false}
+      className=""
+      closeMenu={[Function]}
+      disabled={false}
+      key="DE"
+      onClick={[Function]}
+    >
+      Germany
+    </Item>
+    <Item
+      autoClose={false}
+      className=""
+      closeMenu={[Function]}
+      disabled={false}
+      key="US"
+      onClick={[Function]}
+    >
+      United states
+    </Item>
+  </ContextMenu>
+</Fragment>
+`;
+
+exports[`<SelectContextChoices /> should render select with no options 1`] = `
+<Fragment>
+  <InfoField
+    className=""
+    errorText=""
+    hasUnderline={true}
+    hasValue={true}
+    label=""
+    leftElement={null}
+    rightElement={
+      <Chevron
+        className="css-1h5rpg9"
+      />
+    }
+  >
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-hcovq9": "",
+        }
+      }
+      onClick={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      common.please_choose
+    </div>
+  </InfoField>
+  <ContextMenu
+    classes={
+      Object {
+        "button": "",
+        "container": "",
+      }
+    }
+    disabled={false}
+    isOpened={false}
+    onStateChange={[Function]}
+    scroll={true}
+    showToggle={false}
+  />
+</Fragment>
+`;
