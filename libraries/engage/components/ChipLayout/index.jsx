@@ -89,6 +89,9 @@ class ChipLayout extends Component {
    * Loops through all children to make sure the more button appears if there is too much content.
    */
   processHiddenElements() {
+    if (!this.containerRef) {
+      return;
+    }
     // Find out if there are overflowing elements.
     let lastVisibleElement = 0;
     const showMoreButton = this.containerRef.scrollHeight > this.containerRef.clientHeight;

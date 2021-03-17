@@ -229,13 +229,22 @@ export default (subscribe) => {
   const allErrors$ = pipelineError$.merge(appError$);
   // Log all error messages which are presented to the user
   subscribe(allErrors$, ({ action }) => {
+    const { error = {} } = action;
+    const {
+      code,
+      message,
+      meta: {
+        message: metaMessage,
+      } = {},
+    } = error;
+
     withScope((scope) => {
       scope.setTag('error', 'E_USER');
-      scope.setTag('errorCode', action.error.code);
-      scope.setTag('errorMessage', action.error.message);
+      scope.setTag('errorCode', code);
+      scope.setTag('errorMessage', message);
       captureEvent({
-        message: action.error.meta.message,
-        extra: action.error,
+        message: metaMessage || message,
+        extra: error,
       });
     });
   });
