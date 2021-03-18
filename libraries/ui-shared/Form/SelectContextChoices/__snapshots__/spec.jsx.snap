@@ -28,41 +28,41 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
     >
       Germany
     </div>
-  </InfoField>
-  <ContextMenu
-    classes={
-      Object {
-        "button": "",
-        "container": "",
+    <ContextMenu
+      classes={
+        Object {
+          "button": "",
+          "container": "",
+        }
       }
-    }
-    disabled={false}
-    isOpened={false}
-    onStateChange={[Function]}
-    scroll={true}
-    showToggle={false}
-  >
-    <Item
-      autoClose={false}
-      className="css-1w6nywo"
-      closeMenu={[Function]}
       disabled={false}
-      key="DE"
-      onClick={[Function]}
+      isOpened={false}
+      onStateChange={[Function]}
+      scroll={true}
+      showToggle={false}
     >
-      Germany
-    </Item>
-    <Item
-      autoClose={false}
-      className=""
-      closeMenu={[Function]}
-      disabled={false}
-      key="US"
-      onClick={[Function]}
-    >
-      United states
-    </Item>
-  </ContextMenu>
+      <Item
+        autoClose={false}
+        className="css-1dw7neb"
+        closeMenu={[Function]}
+        disabled={false}
+        key="DE"
+        onClick={[Function]}
+      >
+        Germany
+      </Item>
+      <Item
+        autoClose={false}
+        className=""
+        closeMenu={[Function]}
+        disabled={false}
+        key="US"
+        onClick={[Function]}
+      >
+        United states
+      </Item>
+    </ContextMenu>
+  </InfoField>
 </Fragment>
 `;
 
@@ -94,41 +94,41 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
     >
       common.please_choose
     </div>
-  </InfoField>
-  <ContextMenu
-    classes={
-      Object {
-        "button": "",
-        "container": "",
+    <ContextMenu
+      classes={
+        Object {
+          "button": "",
+          "container": "",
+        }
       }
-    }
-    disabled={false}
-    isOpened={false}
-    onStateChange={[Function]}
-    scroll={true}
-    showToggle={false}
-  >
-    <Item
-      autoClose={false}
-      className=""
-      closeMenu={[Function]}
       disabled={false}
-      key="DE"
-      onClick={[Function]}
+      isOpened={false}
+      onStateChange={[Function]}
+      scroll={true}
+      showToggle={false}
     >
-      Germany
-    </Item>
-    <Item
-      autoClose={false}
-      className=""
-      closeMenu={[Function]}
-      disabled={false}
-      key="US"
-      onClick={[Function]}
-    >
-      United states
-    </Item>
-  </ContextMenu>
+      <Item
+        autoClose={false}
+        className=""
+        closeMenu={[Function]}
+        disabled={false}
+        key="DE"
+        onClick={[Function]}
+      >
+        Germany
+      </Item>
+      <Item
+        autoClose={false}
+        className=""
+        closeMenu={[Function]}
+        disabled={false}
+        key="US"
+        onClick={[Function]}
+      >
+        United states
+      </Item>
+    </ContextMenu>
+  </InfoField>
 </Fragment>
 `;
 
@@ -160,19 +160,19 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
     >
       common.please_choose
     </div>
-  </InfoField>
-  <ContextMenu
-    classes={
-      Object {
-        "button": "",
-        "container": "",
+    <ContextMenu
+      classes={
+        Object {
+          "button": "",
+          "container": "",
+        }
       }
-    }
-    disabled={false}
-    isOpened={false}
-    onStateChange={[Function]}
-    scroll={true}
-    showToggle={false}
-  />
+      disabled={false}
+      isOpened={false}
+      onStateChange={[Function]}
+      scroll={true}
+      showToggle={false}
+    />
+  </InfoField>
 </Fragment>
 `;

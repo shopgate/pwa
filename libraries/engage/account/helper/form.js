@@ -145,11 +145,24 @@ export const extractAttributes = (customerAttributes, formData) => customerAttri
  * @param {Object} customerAttributes Customer attributes.
  * @returns {Object}
  */
-export const extractDefaultValues = customerAttributes => Object.assign({}, ...customerAttributes
-  .map((attribute) => {
-    let value = attribute.value?.[0]?.code || attribute.value?.code || attribute.value;
-    if (value && value !== true && value !== false) {
-      value = value.toString();
-    }
-    return { [`attribute_${attribute.code}`]: value };
-  }));
+export const extractDefaultValues = customerAttributes => (
+  Object.assign(
+    {},
+    ...customerAttributes.map((attribute) => {
+      let { value } = attribute;
+
+      if (value) {
+        if (Array.isArray(value) && value[0] && typeof value[0] === 'object') {
+          // Multi select L:95
+          value = value.reduce((acc, val) => [...acc, val.code], []);
+        } else if (typeof value === 'object') {
+          // Single select L:100
+          value = value.code;
+        } else if (value !== true && value !== false) {
+          value = value.toString();
+        }
+      }
+      return { [`attribute_${attribute.code}`]: value };
+    })
+  )
+);

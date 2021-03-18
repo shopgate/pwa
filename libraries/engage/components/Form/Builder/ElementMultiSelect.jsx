@@ -29,7 +29,7 @@ const ElementMultiSelect = (props) => {
 
   return (
     <div className={classNames(camelCase(name), { validationError: !!errorText })}>
-      <ResponsiveContainer appOnly breakpoint="xs">
+      <ResponsiveContainer appAlways breakpoint="xs">
         <Select
           name={name}
           label={element.label}

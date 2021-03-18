@@ -17,6 +17,7 @@ const toggle = css({
 
 const itemSelected = css({
   backgroundColor: themeConfig.colors.shade8,
+  fontWeight: 500,
 }).toString();
 
 export default {

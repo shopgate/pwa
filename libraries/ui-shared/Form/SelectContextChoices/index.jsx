@@ -51,25 +51,26 @@ const SelectContextChoices = ({
           {!hasValue && (placeholder || i18n.text('common.please_choose'))}
           {hasValue && values.join(', ')}
         </div>
-      </InfoField>
 
-      <ContextMenu
-        isOpened={opened}
-        onStateChange={onMenuChange}
-        showToggle={false}
-        scroll
-      >
-        {Object.keys(options).map(key => (
-          <ContextMenu.Item
-            key={key}
-            autoClose={false}
-            onClick={() => onItemClick(key)}
-            className={hasValue && value.includes(key) ? styles.itemSelected : ''}
-          >
-            {options[key]}
-          </ContextMenu.Item>
-        ))}
-      </ContextMenu>
+        <ContextMenu
+          isOpened={opened}
+          onStateChange={onMenuChange}
+          showToggle={false}
+          scroll
+        >
+          {Object.keys(options).map(key => (
+            <ContextMenu.Item
+              key={key}
+              autoClose={false}
+              onClick={() => onItemClick(key)}
+              className={hasValue && value.includes(key) ? styles.itemSelected : ''}
+            >
+              {options[key]}
+            </ContextMenu.Item>
+          ))}
+        </ContextMenu>
+
+      </InfoField>
     </Fragment>
   );
 };

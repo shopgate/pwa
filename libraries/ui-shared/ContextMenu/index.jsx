@@ -32,9 +32,9 @@ class ContextMenu extends Component {
     },
     disabled: false,
     showToggle: true,
-    isOpened: false,
+    isOpened: null,
     onStateChange: null,
-    scroll: false,
+    scroll: null,
   };
 
   /**
@@ -52,7 +52,7 @@ class ContextMenu extends Component {
 
   /** @inheritDoc */
   UNSAFE_componentWillReceiveProps({ isOpened }) {
-    if (this.state.active !== isOpened) {
+    if (typeof isOpened === 'boolean' && this.state.active !== isOpened) {
       this.setState({ active: isOpened });
     }
   }
@@ -105,6 +105,8 @@ class ContextMenu extends Component {
     } = this.props;
     const { active } = this.state;
 
+    const useScroll = typeof scroll === 'boolean' && !!scroll;
+
     return (
       <div
         data-test-id="contextMenu"
@@ -129,7 +131,7 @@ class ContextMenu extends Component {
           <div className={styles.overlay}>
             <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
             <Position offset={this.offset}>
-              <div className={classNames(styles.menu, { [styles.scrollable]: scroll })}>
+              <div className={classNames(styles.menu, { [styles.scrollable]: useScroll })}>
                 {Children.map(children, (child) => {
                   if (!child) {
                     return null;

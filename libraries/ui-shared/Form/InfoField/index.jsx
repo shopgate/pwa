@@ -25,7 +25,7 @@ const InfoField = (props) => {
     >
       <Grid>
         {leftElement && <Grid.Item grow={0} className={style.element}>{leftElement}</Grid.Item>}
-        <Grid.Item grow={1} className={style.info}>
+        <Grid.Item grow={1} className={`${style.info} info-field`}>
           {children}
         </Grid.Item>
         {rightElement && <Grid.Item grow={0} className={style.element}>{rightElement}</Grid.Item>}
