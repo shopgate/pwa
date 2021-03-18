@@ -122,7 +122,7 @@ class AppBarDefault extends PureComponent {
    * Removes the event listeners when the component unmounts.
    */
   componentWillUnmount() {
-    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+    UIEvents.removeListener(NavDrawer.EVENT_CLOSE, this.setFocus);
   }
 
   /**
