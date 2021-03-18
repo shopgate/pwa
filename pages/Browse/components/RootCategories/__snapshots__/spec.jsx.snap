@@ -39,43 +39,36 @@ exports[`<RootCategories /> should render category list with root categories fro
       <div
         data-test-id="categoriesList"
       >
-        <Headline
-          style={
-            Object {
-              "marginTop": 20,
-            }
-          }
-          tag="h2"
-          text=""
-        />
-        <Portal
-          name="browse.category-list.before"
-          props={
-            Object {
-              "categories": Array [
+        <SurroundPortals
+          portalName="browse.category-list.headline"
+          portalProps={null}
+        >
+          <Portal
+            name="browse.category-list.headline.before"
+            props={null}
+          />
+          <Portal
+            name="browse.category-list.headline"
+            props={null}
+          >
+            <Headline
+              style={
                 Object {
-                  "id": "123-123",
-                  "name": "foo",
-                },
-                Object {
-                  "id": "456-123",
-                  "name": "bar",
-                },
-                Object {
-                  "id": "789-123",
-                  "name": "baz",
-                },
-                Object {
-                  "id": "789-456",
-                  "name": "qux",
-                },
-              ],
-            }
-          }
-        />
-        <Portal
-          name="browse.category-list"
-          props={
+                  "marginTop": 20,
+                }
+              }
+              tag="h2"
+              text=""
+            />
+          </Portal>
+          <Portal
+            name="browse.category-list.headline.after"
+            props={null}
+          />
+        </SurroundPortals>
+        <SurroundPortals
+          portalName="browse.category-list"
+          portalProps={
             Object {
               "categories": Array [
                 Object {
@@ -98,84 +91,118 @@ exports[`<RootCategories /> should render category list with root categories fro
             }
           }
         >
-          <CategoryList
-            categories={
-              Array [
-                Object {
-                  "id": "123-123",
-                  "name": "foo",
-                },
-                Object {
-                  "id": "456-123",
-                  "name": "bar",
-                },
-                Object {
-                  "id": "789-123",
-                  "name": "baz",
-                },
-                Object {
-                  "id": "789-456",
-                  "name": "qux",
-                },
-              ]
+          <Portal
+            name="browse.category-list.before"
+            props={
+              Object {
+                "categories": Array [
+                  Object {
+                    "id": "123-123",
+                    "name": "foo",
+                  },
+                  Object {
+                    "id": "456-123",
+                    "name": "bar",
+                  },
+                  Object {
+                    "id": "789-123",
+                    "name": "baz",
+                  },
+                  Object {
+                    "id": "789-456",
+                    "name": "qux",
+                  },
+                ],
+              }
             }
-            prerender={0}
+          />
+          <Portal
+            name="browse.category-list"
+            props={
+              Object {
+                "categories": Array [
+                  Object {
+                    "id": "123-123",
+                    "name": "foo",
+                  },
+                  Object {
+                    "id": "456-123",
+                    "name": "bar",
+                  },
+                  Object {
+                    "id": "789-123",
+                    "name": "baz",
+                  },
+                  Object {
+                    "id": "789-456",
+                    "name": "qux",
+                  },
+                ],
+              }
+            }
           >
-            <SheetList
-              className="css-1tgouoh engage__category__category-list"
-              hasImages={false}
-              testId={null}
+            <CategoryList
+              categories={
+                Array [
+                  Object {
+                    "id": "123-123",
+                    "name": "foo",
+                  },
+                  Object {
+                    "id": "456-123",
+                    "name": "bar",
+                  },
+                  Object {
+                    "id": "789-123",
+                    "name": "baz",
+                  },
+                  Object {
+                    "id": "789-456",
+                    "name": "qux",
+                  },
+                ]
+              }
+              prerender={0}
             >
-              <List
-                className="css-1tgouoh engage__category__category-list engage__sheet-list"
-                role="listbox"
+              <SheetList
+                className="css-1tgouoh engage__category__category-list"
+                hasImages={false}
+                testId={null}
               >
-                <ul
-                  className="css-1tgouoh engage__category__category-list engage__sheet-list common_list"
+                <List
+                  className="css-1tgouoh engage__category__category-list engage__sheet-list"
                   role="listbox"
                 >
-                  <ListItem
-                    className="css-10041rq css-171mywc"
-                    isSelected={false}
-                    key="child-0/.$123-123"
-                    role={null}
-                    tabIndex={0}
+                  <ul
+                    className="css-1tgouoh engage__category__category-list engage__sheet-list common_list"
+                    role="listbox"
                   >
-                    <li
-                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
-                      data-test-id="listItem"
+                    <ListItem
+                      className="css-10041rq css-171mywc"
+                      isSelected={false}
+                      key="child-0/.$123-123"
                       role={null}
+                      tabIndex={0}
                     >
-                      <div
-                        className="css-1ckzvk7"
-                        data-test-id={null}
+                      <li
+                        className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
+                        data-test-id="listItem"
+                        role={null}
                       >
-                        <Portal
-                          key="123-123"
-                          name="category.item"
-                          props={
-                            Object {
-                              "categoryId": "123-123",
-                            }
-                          }
+                        <div
+                          className="css-1ckzvk7"
+                          data-test-id={null}
                         >
-                          <ForwardRef(WithForwardedRef(Item))
-                            link="/category/3132332d313233"
-                            linkState={
+                          <Portal
+                            key="123-123"
+                            name="category.item"
+                            props={
                               Object {
                                 "categoryId": "123-123",
-                                "title": "foo",
                               }
                             }
-                            testId="foo"
-                            title="foo"
                           >
-                            <Item
-                              className={null}
-                              forwardedRef={null}
-                              image={null}
-                              isDisabled={false}
-                              isSelected={false}
+                            <ForwardRef(WithForwardedRef(Item))
                               link="/category/3132332d313233"
                               linkState={
                                 Object {
@@ -183,25 +210,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   "title": "foo",
                                 }
                               }
-                              onClick={null}
-                              rightComponent={null}
                               testId="foo"
                               title="foo"
                             >
-                              <ForwardRef(WithForwardedRef(Glow))
+                              <Item
                                 className={null}
-                                styles={
+                                forwardedRef={null}
+                                image={null}
+                                isDisabled={false}
+                                isSelected={false}
+                                link="/category/3132332d313233"
+                                linkState={
                                   Object {
-                                    "hover": Object {
-                                      "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
-                                    },
+                                    "categoryId": "123-123",
+                                    "title": "foo",
                                   }
                                 }
+                                onClick={null}
+                                rightComponent={null}
+                                testId="foo"
+                                title="foo"
                               >
-                                <Glow
+                                <ForwardRef(WithForwardedRef(Glow))
                                   className={null}
-                                  color="#f7f7f7"
-                                  forwardedRef={null}
                                   styles={
                                     Object {
                                       "hover": Object {
@@ -210,36 +241,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                     }
                                   }
                                 >
-                                  <div
-                                    className="css-13azwyo ui-shared__glow"
-                                    onClick={[Function]}
+                                  <Glow
+                                    className={null}
+                                    color="#f7f7f7"
+                                    forwardedRef={null}
+                                    styles={
+                                      Object {
+                                        "hover": Object {
+                                          "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                        },
+                                      }
+                                    }
                                   >
                                     <div
-                                      className="css-1bmd5dz"
-                                      style={Object {}}
-                                    />
-                                    <Connect(Link)
-                                      href="/category/3132332d313233"
-                                      onClick={null}
-                                      state={
-                                        Object {
-                                          "categoryId": "123-123",
-                                          "title": "foo",
-                                        }
-                                      }
-                                      tabIndex={0}
+                                      className="css-13azwyo ui-shared__glow"
+                                      onClick={[Function]}
                                     >
-                                      <Link
-                                        aria-hidden={null}
-                                        aria-label={null}
-                                        className=""
-                                        disabled={false}
-                                        historyPush={[Function]}
-                                        historyReplace={[Function]}
+                                      <div
+                                        className="css-1bmd5dz"
+                                        style={Object {}}
+                                      />
+                                      <Connect(Link)
                                         href="/category/3132332d313233"
                                         onClick={null}
-                                        replace={false}
-                                        role="link"
                                         state={
                                           Object {
                                             "categoryId": "123-123",
@@ -247,98 +271,101 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           }
                                         }
                                         tabIndex={0}
-                                        tag="div"
                                       >
-                                        <div
+                                        <Link
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83  common__link"
-                                          data-test-id="link: /category/3132332d313233"
-                                          onClick={[Function]}
+                                          className=""
+                                          disabled={false}
+                                          historyPush={[Function]}
+                                          historyReplace={[Function]}
+                                          href="/category/3132332d313233"
+                                          onClick={null}
+                                          replace={false}
                                           role="link"
+                                          state={
+                                            Object {
+                                              "categoryId": "123-123",
+                                              "title": "foo",
+                                            }
+                                          }
                                           tabIndex={0}
+                                          tag="div"
                                         >
                                           <div
-                                            className="engage__sheet-list__item"
-                                            data-test-id="foo"
+                                            aria-hidden={null}
+                                            aria-label={null}
+                                            className="css-c6ki83  common__link"
+                                            data-test-id="link: /category/3132332d313233"
+                                            onClick={[Function]}
+                                            role="link"
+                                            tabIndex={0}
                                           >
-                                            <Grid
-                                              className="css-1qcr7hz"
-                                              component="div"
-                                              wrap={false}
+                                            <div
+                                              className="engage__sheet-list__item"
+                                              data-test-id="foo"
                                             >
-                                              <div
-                                                className="css-1qcr7hz css-h7r55a common__grid"
+                                              <Grid
+                                                className="css-1qcr7hz"
+                                                component="div"
+                                                wrap={false}
                                               >
-                                                <GridItem
-                                                  className="css-rx1nvy"
-                                                  component="div"
-                                                  grow={1}
-                                                  shrink={1}
+                                                <div
+                                                  className="css-1qcr7hz css-h7r55a common__grid"
                                                 >
-                                                  <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  <GridItem
+                                                    className="css-rx1nvy"
+                                                    component="div"
+                                                    grow={1}
+                                                    shrink={1}
                                                   >
-                                                    foo
-                                                  </div>
-                                                </GridItem>
-                                              </div>
-                                            </Grid>
+                                                    <div
+                                                      className="css-rx1nvy css-1gs0ko2"
+                                                    >
+                                                      foo
+                                                    </div>
+                                                  </GridItem>
+                                                </div>
+                                              </Grid>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </Link>
-                                    </Connect(Link)>
-                                  </div>
-                                </Glow>
-                              </ForwardRef(WithForwardedRef(Glow))>
-                            </Item>
-                          </ForwardRef(WithForwardedRef(Item))>
-                        </Portal>
-                      </div>
-                    </li>
-                  </ListItem>
-                  <ListItem
-                    className="css-10041rq css-171mywc"
-                    isSelected={false}
-                    key="child-1/.$456-123"
-                    role={null}
-                    tabIndex={0}
-                  >
-                    <li
-                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
-                      data-test-id="listItem"
+                                        </Link>
+                                      </Connect(Link)>
+                                    </div>
+                                  </Glow>
+                                </ForwardRef(WithForwardedRef(Glow))>
+                              </Item>
+                            </ForwardRef(WithForwardedRef(Item))>
+                          </Portal>
+                        </div>
+                      </li>
+                    </ListItem>
+                    <ListItem
+                      className="css-10041rq css-171mywc"
+                      isSelected={false}
+                      key="child-1/.$456-123"
                       role={null}
+                      tabIndex={0}
                     >
-                      <div
-                        className="css-1ckzvk7"
-                        data-test-id={null}
+                      <li
+                        className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
+                        data-test-id="listItem"
+                        role={null}
                       >
-                        <Portal
-                          key="456-123"
-                          name="category.item"
-                          props={
-                            Object {
-                              "categoryId": "456-123",
-                            }
-                          }
+                        <div
+                          className="css-1ckzvk7"
+                          data-test-id={null}
                         >
-                          <ForwardRef(WithForwardedRef(Item))
-                            link="/category/3435362d313233"
-                            linkState={
+                          <Portal
+                            key="456-123"
+                            name="category.item"
+                            props={
                               Object {
                                 "categoryId": "456-123",
-                                "title": "bar",
                               }
                             }
-                            testId="bar"
-                            title="bar"
                           >
-                            <Item
-                              className={null}
-                              forwardedRef={null}
-                              image={null}
-                              isDisabled={false}
-                              isSelected={false}
+                            <ForwardRef(WithForwardedRef(Item))
                               link="/category/3435362d313233"
                               linkState={
                                 Object {
@@ -346,25 +373,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   "title": "bar",
                                 }
                               }
-                              onClick={null}
-                              rightComponent={null}
                               testId="bar"
                               title="bar"
                             >
-                              <ForwardRef(WithForwardedRef(Glow))
+                              <Item
                                 className={null}
-                                styles={
+                                forwardedRef={null}
+                                image={null}
+                                isDisabled={false}
+                                isSelected={false}
+                                link="/category/3435362d313233"
+                                linkState={
                                   Object {
-                                    "hover": Object {
-                                      "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
-                                    },
+                                    "categoryId": "456-123",
+                                    "title": "bar",
                                   }
                                 }
+                                onClick={null}
+                                rightComponent={null}
+                                testId="bar"
+                                title="bar"
                               >
-                                <Glow
+                                <ForwardRef(WithForwardedRef(Glow))
                                   className={null}
-                                  color="#f7f7f7"
-                                  forwardedRef={null}
                                   styles={
                                     Object {
                                       "hover": Object {
@@ -373,36 +404,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                     }
                                   }
                                 >
-                                  <div
-                                    className="css-13azwyo ui-shared__glow"
-                                    onClick={[Function]}
+                                  <Glow
+                                    className={null}
+                                    color="#f7f7f7"
+                                    forwardedRef={null}
+                                    styles={
+                                      Object {
+                                        "hover": Object {
+                                          "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                        },
+                                      }
+                                    }
                                   >
                                     <div
-                                      className="css-1bmd5dz"
-                                      style={Object {}}
-                                    />
-                                    <Connect(Link)
-                                      href="/category/3435362d313233"
-                                      onClick={null}
-                                      state={
-                                        Object {
-                                          "categoryId": "456-123",
-                                          "title": "bar",
-                                        }
-                                      }
-                                      tabIndex={0}
+                                      className="css-13azwyo ui-shared__glow"
+                                      onClick={[Function]}
                                     >
-                                      <Link
-                                        aria-hidden={null}
-                                        aria-label={null}
-                                        className=""
-                                        disabled={false}
-                                        historyPush={[Function]}
-                                        historyReplace={[Function]}
+                                      <div
+                                        className="css-1bmd5dz"
+                                        style={Object {}}
+                                      />
+                                      <Connect(Link)
                                         href="/category/3435362d313233"
                                         onClick={null}
-                                        replace={false}
-                                        role="link"
                                         state={
                                           Object {
                                             "categoryId": "456-123",
@@ -410,98 +434,101 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           }
                                         }
                                         tabIndex={0}
-                                        tag="div"
                                       >
-                                        <div
+                                        <Link
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83  common__link"
-                                          data-test-id="link: /category/3435362d313233"
-                                          onClick={[Function]}
+                                          className=""
+                                          disabled={false}
+                                          historyPush={[Function]}
+                                          historyReplace={[Function]}
+                                          href="/category/3435362d313233"
+                                          onClick={null}
+                                          replace={false}
                                           role="link"
+                                          state={
+                                            Object {
+                                              "categoryId": "456-123",
+                                              "title": "bar",
+                                            }
+                                          }
                                           tabIndex={0}
+                                          tag="div"
                                         >
                                           <div
-                                            className="engage__sheet-list__item"
-                                            data-test-id="bar"
+                                            aria-hidden={null}
+                                            aria-label={null}
+                                            className="css-c6ki83  common__link"
+                                            data-test-id="link: /category/3435362d313233"
+                                            onClick={[Function]}
+                                            role="link"
+                                            tabIndex={0}
                                           >
-                                            <Grid
-                                              className="css-1qcr7hz"
-                                              component="div"
-                                              wrap={false}
+                                            <div
+                                              className="engage__sheet-list__item"
+                                              data-test-id="bar"
                                             >
-                                              <div
-                                                className="css-1qcr7hz css-h7r55a common__grid"
+                                              <Grid
+                                                className="css-1qcr7hz"
+                                                component="div"
+                                                wrap={false}
                                               >
-                                                <GridItem
-                                                  className="css-rx1nvy"
-                                                  component="div"
-                                                  grow={1}
-                                                  shrink={1}
+                                                <div
+                                                  className="css-1qcr7hz css-h7r55a common__grid"
                                                 >
-                                                  <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  <GridItem
+                                                    className="css-rx1nvy"
+                                                    component="div"
+                                                    grow={1}
+                                                    shrink={1}
                                                   >
-                                                    bar
-                                                  </div>
-                                                </GridItem>
-                                              </div>
-                                            </Grid>
+                                                    <div
+                                                      className="css-rx1nvy css-1gs0ko2"
+                                                    >
+                                                      bar
+                                                    </div>
+                                                  </GridItem>
+                                                </div>
+                                              </Grid>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </Link>
-                                    </Connect(Link)>
-                                  </div>
-                                </Glow>
-                              </ForwardRef(WithForwardedRef(Glow))>
-                            </Item>
-                          </ForwardRef(WithForwardedRef(Item))>
-                        </Portal>
-                      </div>
-                    </li>
-                  </ListItem>
-                  <ListItem
-                    className="css-10041rq css-171mywc"
-                    isSelected={false}
-                    key="child-2/.$789-123"
-                    role={null}
-                    tabIndex={0}
-                  >
-                    <li
-                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
-                      data-test-id="listItem"
+                                        </Link>
+                                      </Connect(Link)>
+                                    </div>
+                                  </Glow>
+                                </ForwardRef(WithForwardedRef(Glow))>
+                              </Item>
+                            </ForwardRef(WithForwardedRef(Item))>
+                          </Portal>
+                        </div>
+                      </li>
+                    </ListItem>
+                    <ListItem
+                      className="css-10041rq css-171mywc"
+                      isSelected={false}
+                      key="child-2/.$789-123"
                       role={null}
+                      tabIndex={0}
                     >
-                      <div
-                        className="css-1ckzvk7"
-                        data-test-id={null}
+                      <li
+                        className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
+                        data-test-id="listItem"
+                        role={null}
                       >
-                        <Portal
-                          key="789-123"
-                          name="category.item"
-                          props={
-                            Object {
-                              "categoryId": "789-123",
-                            }
-                          }
+                        <div
+                          className="css-1ckzvk7"
+                          data-test-id={null}
                         >
-                          <ForwardRef(WithForwardedRef(Item))
-                            link="/category/3738392d313233"
-                            linkState={
+                          <Portal
+                            key="789-123"
+                            name="category.item"
+                            props={
                               Object {
                                 "categoryId": "789-123",
-                                "title": "baz",
                               }
                             }
-                            testId="baz"
-                            title="baz"
                           >
-                            <Item
-                              className={null}
-                              forwardedRef={null}
-                              image={null}
-                              isDisabled={false}
-                              isSelected={false}
+                            <ForwardRef(WithForwardedRef(Item))
                               link="/category/3738392d313233"
                               linkState={
                                 Object {
@@ -509,25 +536,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   "title": "baz",
                                 }
                               }
-                              onClick={null}
-                              rightComponent={null}
                               testId="baz"
                               title="baz"
                             >
-                              <ForwardRef(WithForwardedRef(Glow))
+                              <Item
                                 className={null}
-                                styles={
+                                forwardedRef={null}
+                                image={null}
+                                isDisabled={false}
+                                isSelected={false}
+                                link="/category/3738392d313233"
+                                linkState={
                                   Object {
-                                    "hover": Object {
-                                      "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
-                                    },
+                                    "categoryId": "789-123",
+                                    "title": "baz",
                                   }
                                 }
+                                onClick={null}
+                                rightComponent={null}
+                                testId="baz"
+                                title="baz"
                               >
-                                <Glow
+                                <ForwardRef(WithForwardedRef(Glow))
                                   className={null}
-                                  color="#f7f7f7"
-                                  forwardedRef={null}
                                   styles={
                                     Object {
                                       "hover": Object {
@@ -536,36 +567,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                     }
                                   }
                                 >
-                                  <div
-                                    className="css-13azwyo ui-shared__glow"
-                                    onClick={[Function]}
+                                  <Glow
+                                    className={null}
+                                    color="#f7f7f7"
+                                    forwardedRef={null}
+                                    styles={
+                                      Object {
+                                        "hover": Object {
+                                          "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                        },
+                                      }
+                                    }
                                   >
                                     <div
-                                      className="css-1bmd5dz"
-                                      style={Object {}}
-                                    />
-                                    <Connect(Link)
-                                      href="/category/3738392d313233"
-                                      onClick={null}
-                                      state={
-                                        Object {
-                                          "categoryId": "789-123",
-                                          "title": "baz",
-                                        }
-                                      }
-                                      tabIndex={0}
+                                      className="css-13azwyo ui-shared__glow"
+                                      onClick={[Function]}
                                     >
-                                      <Link
-                                        aria-hidden={null}
-                                        aria-label={null}
-                                        className=""
-                                        disabled={false}
-                                        historyPush={[Function]}
-                                        historyReplace={[Function]}
+                                      <div
+                                        className="css-1bmd5dz"
+                                        style={Object {}}
+                                      />
+                                      <Connect(Link)
                                         href="/category/3738392d313233"
                                         onClick={null}
-                                        replace={false}
-                                        role="link"
                                         state={
                                           Object {
                                             "categoryId": "789-123",
@@ -573,98 +597,101 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           }
                                         }
                                         tabIndex={0}
-                                        tag="div"
                                       >
-                                        <div
+                                        <Link
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83  common__link"
-                                          data-test-id="link: /category/3738392d313233"
-                                          onClick={[Function]}
+                                          className=""
+                                          disabled={false}
+                                          historyPush={[Function]}
+                                          historyReplace={[Function]}
+                                          href="/category/3738392d313233"
+                                          onClick={null}
+                                          replace={false}
                                           role="link"
+                                          state={
+                                            Object {
+                                              "categoryId": "789-123",
+                                              "title": "baz",
+                                            }
+                                          }
                                           tabIndex={0}
+                                          tag="div"
                                         >
                                           <div
-                                            className="engage__sheet-list__item"
-                                            data-test-id="baz"
+                                            aria-hidden={null}
+                                            aria-label={null}
+                                            className="css-c6ki83  common__link"
+                                            data-test-id="link: /category/3738392d313233"
+                                            onClick={[Function]}
+                                            role="link"
+                                            tabIndex={0}
                                           >
-                                            <Grid
-                                              className="css-1qcr7hz"
-                                              component="div"
-                                              wrap={false}
+                                            <div
+                                              className="engage__sheet-list__item"
+                                              data-test-id="baz"
                                             >
-                                              <div
-                                                className="css-1qcr7hz css-h7r55a common__grid"
+                                              <Grid
+                                                className="css-1qcr7hz"
+                                                component="div"
+                                                wrap={false}
                                               >
-                                                <GridItem
-                                                  className="css-rx1nvy"
-                                                  component="div"
-                                                  grow={1}
-                                                  shrink={1}
+                                                <div
+                                                  className="css-1qcr7hz css-h7r55a common__grid"
                                                 >
-                                                  <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  <GridItem
+                                                    className="css-rx1nvy"
+                                                    component="div"
+                                                    grow={1}
+                                                    shrink={1}
                                                   >
-                                                    baz
-                                                  </div>
-                                                </GridItem>
-                                              </div>
-                                            </Grid>
+                                                    <div
+                                                      className="css-rx1nvy css-1gs0ko2"
+                                                    >
+                                                      baz
+                                                    </div>
+                                                  </GridItem>
+                                                </div>
+                                              </Grid>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </Link>
-                                    </Connect(Link)>
-                                  </div>
-                                </Glow>
-                              </ForwardRef(WithForwardedRef(Glow))>
-                            </Item>
-                          </ForwardRef(WithForwardedRef(Item))>
-                        </Portal>
-                      </div>
-                    </li>
-                  </ListItem>
-                  <ListItem
-                    className="css-10041rq css-171mywc"
-                    isSelected={false}
-                    key="child-3/.$789-456"
-                    role={null}
-                    tabIndex={0}
-                  >
-                    <li
-                      className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
-                      data-test-id="listItem"
+                                        </Link>
+                                      </Connect(Link)>
+                                    </div>
+                                  </Glow>
+                                </ForwardRef(WithForwardedRef(Glow))>
+                              </Item>
+                            </ForwardRef(WithForwardedRef(Item))>
+                          </Portal>
+                        </div>
+                      </li>
+                    </ListItem>
+                    <ListItem
+                      className="css-10041rq css-171mywc"
+                      isSelected={false}
+                      key="child-3/.$789-456"
                       role={null}
+                      tabIndex={0}
                     >
-                      <div
-                        className="css-1ckzvk7"
-                        data-test-id={null}
+                      <li
+                        className="css-1p5q8vq css-10041rq css-171mywc common__list__list-item css-16gj3o1"
+                        data-test-id="listItem"
+                        role={null}
                       >
-                        <Portal
-                          key="789-456"
-                          name="category.item"
-                          props={
-                            Object {
-                              "categoryId": "789-456",
-                            }
-                          }
+                        <div
+                          className="css-1ckzvk7"
+                          data-test-id={null}
                         >
-                          <ForwardRef(WithForwardedRef(Item))
-                            link="/category/3738392d343536"
-                            linkState={
+                          <Portal
+                            key="789-456"
+                            name="category.item"
+                            props={
                               Object {
                                 "categoryId": "789-456",
-                                "title": "qux",
                               }
                             }
-                            testId="qux"
-                            title="qux"
                           >
-                            <Item
-                              className={null}
-                              forwardedRef={null}
-                              image={null}
-                              isDisabled={false}
-                              isSelected={false}
+                            <ForwardRef(WithForwardedRef(Item))
                               link="/category/3738392d343536"
                               linkState={
                                 Object {
@@ -672,25 +699,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   "title": "qux",
                                 }
                               }
-                              onClick={null}
-                              rightComponent={null}
                               testId="qux"
                               title="qux"
                             >
-                              <ForwardRef(WithForwardedRef(Glow))
+                              <Item
                                 className={null}
-                                styles={
+                                forwardedRef={null}
+                                image={null}
+                                isDisabled={false}
+                                isSelected={false}
+                                link="/category/3738392d343536"
+                                linkState={
                                   Object {
-                                    "hover": Object {
-                                      "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
-                                    },
+                                    "categoryId": "789-456",
+                                    "title": "qux",
                                   }
                                 }
+                                onClick={null}
+                                rightComponent={null}
+                                testId="qux"
+                                title="qux"
                               >
-                                <Glow
+                                <ForwardRef(WithForwardedRef(Glow))
                                   className={null}
-                                  color="#f7f7f7"
-                                  forwardedRef={null}
                                   styles={
                                     Object {
                                       "hover": Object {
@@ -699,36 +730,29 @@ exports[`<RootCategories /> should render category list with root categories fro
                                     }
                                   }
                                 >
-                                  <div
-                                    className="css-13azwyo ui-shared__glow"
-                                    onClick={[Function]}
+                                  <Glow
+                                    className={null}
+                                    color="#f7f7f7"
+                                    forwardedRef={null}
+                                    styles={
+                                      Object {
+                                        "hover": Object {
+                                          "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                        },
+                                      }
+                                    }
                                   >
                                     <div
-                                      className="css-1bmd5dz"
-                                      style={Object {}}
-                                    />
-                                    <Connect(Link)
-                                      href="/category/3738392d343536"
-                                      onClick={null}
-                                      state={
-                                        Object {
-                                          "categoryId": "789-456",
-                                          "title": "qux",
-                                        }
-                                      }
-                                      tabIndex={0}
+                                      className="css-13azwyo ui-shared__glow"
+                                      onClick={[Function]}
                                     >
-                                      <Link
-                                        aria-hidden={null}
-                                        aria-label={null}
-                                        className=""
-                                        disabled={false}
-                                        historyPush={[Function]}
-                                        historyReplace={[Function]}
+                                      <div
+                                        className="css-1bmd5dz"
+                                        style={Object {}}
+                                      />
+                                      <Connect(Link)
                                         href="/category/3738392d343536"
                                         onClick={null}
-                                        replace={false}
-                                        role="link"
                                         state={
                                           Object {
                                             "categoryId": "789-456",
@@ -736,86 +760,106 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           }
                                         }
                                         tabIndex={0}
-                                        tag="div"
                                       >
-                                        <div
+                                        <Link
                                           aria-hidden={null}
                                           aria-label={null}
-                                          className="css-c6ki83  common__link"
-                                          data-test-id="link: /category/3738392d343536"
-                                          onClick={[Function]}
+                                          className=""
+                                          disabled={false}
+                                          historyPush={[Function]}
+                                          historyReplace={[Function]}
+                                          href="/category/3738392d343536"
+                                          onClick={null}
+                                          replace={false}
                                           role="link"
+                                          state={
+                                            Object {
+                                              "categoryId": "789-456",
+                                              "title": "qux",
+                                            }
+                                          }
                                           tabIndex={0}
+                                          tag="div"
                                         >
                                           <div
-                                            className="engage__sheet-list__item"
-                                            data-test-id="qux"
+                                            aria-hidden={null}
+                                            aria-label={null}
+                                            className="css-c6ki83  common__link"
+                                            data-test-id="link: /category/3738392d343536"
+                                            onClick={[Function]}
+                                            role="link"
+                                            tabIndex={0}
                                           >
-                                            <Grid
-                                              className="css-1qcr7hz"
-                                              component="div"
-                                              wrap={false}
+                                            <div
+                                              className="engage__sheet-list__item"
+                                              data-test-id="qux"
                                             >
-                                              <div
-                                                className="css-1qcr7hz css-h7r55a common__grid"
+                                              <Grid
+                                                className="css-1qcr7hz"
+                                                component="div"
+                                                wrap={false}
                                               >
-                                                <GridItem
-                                                  className="css-rx1nvy"
-                                                  component="div"
-                                                  grow={1}
-                                                  shrink={1}
+                                                <div
+                                                  className="css-1qcr7hz css-h7r55a common__grid"
                                                 >
-                                                  <div
-                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  <GridItem
+                                                    className="css-rx1nvy"
+                                                    component="div"
+                                                    grow={1}
+                                                    shrink={1}
                                                   >
-                                                    qux
-                                                  </div>
-                                                </GridItem>
-                                              </div>
-                                            </Grid>
+                                                    <div
+                                                      className="css-rx1nvy css-1gs0ko2"
+                                                    >
+                                                      qux
+                                                    </div>
+                                                  </GridItem>
+                                                </div>
+                                              </Grid>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </Link>
-                                    </Connect(Link)>
-                                  </div>
-                                </Glow>
-                              </ForwardRef(WithForwardedRef(Glow))>
-                            </Item>
-                          </ForwardRef(WithForwardedRef(Item))>
-                        </Portal>
-                      </div>
-                    </li>
-                  </ListItem>
-                </ul>
-              </List>
-            </SheetList>
-          </CategoryList>
-        </Portal>
-        <Portal
-          name="browse.category-list.after"
-          props={
-            Object {
-              "categories": Array [
-                Object {
-                  "id": "123-123",
-                  "name": "foo",
-                },
-                Object {
-                  "id": "456-123",
-                  "name": "bar",
-                },
-                Object {
-                  "id": "789-123",
-                  "name": "baz",
-                },
-                Object {
-                  "id": "789-456",
-                  "name": "qux",
-                },
-              ],
+                                        </Link>
+                                      </Connect(Link)>
+                                    </div>
+                                  </Glow>
+                                </ForwardRef(WithForwardedRef(Glow))>
+                              </Item>
+                            </ForwardRef(WithForwardedRef(Item))>
+                          </Portal>
+                        </div>
+                      </li>
+                    </ListItem>
+                  </ul>
+                </List>
+              </SheetList>
+            </CategoryList>
+          </Portal>
+          <Portal
+            name="browse.category-list.after"
+            props={
+              Object {
+                "categories": Array [
+                  Object {
+                    "id": "123-123",
+                    "name": "foo",
+                  },
+                  Object {
+                    "id": "456-123",
+                    "name": "bar",
+                  },
+                  Object {
+                    "id": "789-123",
+                    "name": "baz",
+                  },
+                  Object {
+                    "id": "789-456",
+                    "name": "qux",
+                  },
+                ],
+              }
             }
-          }
-        />
+          />
+        </SurroundPortals>
       </div>
     </RootCategories>
   </Connect(RootCategories)>
