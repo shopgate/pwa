@@ -13,7 +13,7 @@ const { colors } = themeConfig;
  * @returns {JSX}
  */
 const CheckoutPage = () => (
-  <View background={colors.background} aria-hidden={false}>
+  <View background={colors.light} aria-hidden={false}>
     <BackBar
       right={null}
       center={
