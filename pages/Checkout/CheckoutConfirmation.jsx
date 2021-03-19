@@ -18,7 +18,7 @@ const { colors } = themeConfig;
 const CheckoutConfirmation = ({ handleClose }) => {
   const left = <DefaultBar.Icon aria-label={i18n.text('common.close')} icon={CrossIcon} onClick={handleClose} />;
   return (
-    <View background={colors.background} aria-hidden={false}>
+    <View background={colors.light} aria-hidden={false}>
       <DefaultBar
         left={left}
         center={
