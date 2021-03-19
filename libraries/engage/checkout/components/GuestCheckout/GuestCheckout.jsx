@@ -13,6 +13,7 @@ import Actions from '../Checkout/CheckoutActions';
 import Pickup from './GuestCheckoutPickup';
 import PickupNotes from './GuestCheckoutPickupNotes';
 import GuestCheckoutOptIn from './GuestCheckoutOptIn';
+import { ShippingMethods } from '../ShippingMethods';
 
 const styles = {
   root: css({
@@ -53,6 +54,7 @@ const GuestCheckout = () => (
         <Address type={ADDRESS_TYPE_BILLING} />
         <Address type={ADDRESS_TYPE_SHIPPING} />
         <GuestCheckoutOptIn />
+        <ShippingMethods />
         <PaymentProvider />
         <ResponsiveContainer breakpoint="<md" appAlways>
           <Summary />

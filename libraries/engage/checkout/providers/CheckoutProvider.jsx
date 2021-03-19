@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { isAvailable, InAppBrowser, Linking } from '@shopgate/native-modules';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
@@ -293,6 +293,48 @@ const CheckoutProvider = ({
     optInFormState.values,
   ]);
 
+  const handleUpdateShippingMethod = useCallback(async (selectedShippingMethod) => {
+    setLocked(true);
+
+    try {
+      await updateCheckoutOrder({
+        addressSequences: [
+          {
+            ...billingAddress,
+          },
+          {
+            ...shippingAddress,
+            orderSegment: {
+              selectedShippingMethod,
+            },
+          },
+          ...(isGuestCheckout && pickupAddress ? [{
+            ...pickupAddress,
+          }] : []),
+        ],
+        primaryBillToAddressSequenceIndex: 0,
+        primaryShipToAddressSequenceIndex: 1,
+      });
+    } catch (e) {
+      // Nothing to see here
+    }
+
+    try {
+      await fetchCheckoutOrder();
+    } catch (e) {
+      // Nothing to see here
+    }
+
+    setLocked(false);
+  }, [
+    billingAddress,
+    pickupAddress,
+    shippingAddress,
+    fetchCheckoutOrder,
+    isGuestCheckout,
+    updateCheckoutOrder,
+  ]);
+
   // Whenever the order is locked we also want to show to loading bar.
   React.useEffect(() => {
     if (isLocked) {
@@ -344,6 +386,7 @@ const CheckoutProvider = ({
     formSetValues: formState.setValues,
     handleSubmitOrder: formState.handleSubmit,
     handleValidation: () => formState.validate(formState.values),
+    updateShippingMethod: handleUpdateShippingMethod,
     defaultPickupPersonState,
     userLocation,
     billingAddress,
@@ -351,6 +394,7 @@ const CheckoutProvider = ({
     pickupAddress,
     taxLines,
     order: checkoutOrder,
+    currencyCode: checkoutOrder?.currencyCode,
     needsPayment,
     orderReserveOnly,
     isShippingAddressSelectionEnabled,
@@ -386,6 +430,7 @@ const CheckoutProvider = ({
     fulfillmentSlot,
     optInFormState.setValues,
     defaultOptInFormState,
+    handleUpdateShippingMethod,
   ]);
 
   // Handle deeplinks from external payment site.

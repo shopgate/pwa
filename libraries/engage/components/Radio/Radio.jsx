@@ -27,21 +27,21 @@ const styles = {
     width: '100%',
     height: '100%',
   }).toString(),
-  checkboxContainer: css({
+  radioContainer: css({
     display: 'flex',
     position: 'relative',
     width: 24,
     height: 24,
   }).toString(),
-  checkbox: css({
+  radio: css({
     height: '100%',
     width: '100%',
   }).toString(),
-  checkboxChecked: css({
+  radioChecked: css({
     color: 'var(--color-primary)',
   }).toString(),
-  checkboxDisabled: css({
-    opacity: 0.25,
+  radioDisabled: css({
+    opacity: 0.5,
     pointerEvents: 'none',
   }).toString(),
   ripple: css({
@@ -98,15 +98,24 @@ const Radio = ({
           {...attributes}
         />
         <div className={classNames(
-          styles.checkboxContainer,
-          { [styles.checkboxDisabled]: disabledProp }
+          styles.radioContainer,
+          {
+            [styles.radioDisabled]: disabledProp,
+            [classes.disabled]: disabledProp,
+          }
         )}
         >
           {checked && (
-            <CheckedIcon className={classNames(styles.checkbox, styles.checkboxChecked, 'checkedIcon')} />
+            <CheckedIcon className={classNames(
+              styles.radio,
+              styles.radioChecked,
+              classes.radioChecked,
+              'checkedIcon'
+            )}
+            />
           )}
           {!checked && (
-            <UncheckedIcon className={classNames(styles.checkbox, 'uncheckedIcon')} />
+            <UncheckedIcon className={classNames(styles.radio, classes.radioUnchecked, 'uncheckedIcon')} />
           )}
         </div>
       </Ripple>
