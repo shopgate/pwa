@@ -8,6 +8,7 @@ import ProfileProvider from '../../../account/components/Profile/Profile.provide
 import CheckoutProvider from '../../providers/CheckoutProvider';
 import PaymentMethodProvider from '../../paymentMethods';
 import { ADDRESS_TYPE_BILLING, ADDRESS_TYPE_SHIPPING } from '../../constants';
+import { ShippingMethods } from '../ShippingMethods';
 import PickupContactForm from './CheckoutPickupContactForm';
 import Address from './CheckoutAddress';
 import Summary from './CheckoutSummary';
@@ -51,6 +52,7 @@ const Checkout = () => {
             <Address type={ADDRESS_TYPE_SHIPPING} />
           </ProfileProvider>
           <PickupContactForm />
+          <ShippingMethods />
           <PaymentMethodProvider />
           <ResponsiveContainer breakpoint="<md" appAlways>
             <Summary />

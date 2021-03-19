@@ -196,9 +196,10 @@ export const getPromotionLinesFromOrder = (order = {}) =>
 /**
  * Generates checkout tax lines from an order object.
  * @param {Object} order An order object
+ * @param {boolean} hasDirectShipItems Wether the cart has direct ship items
  * @returns {Array}
  */
-export const getCheckoutTaxLinesFromOrder = (order = {}) => [
+export const getCheckoutTaxLinesFromOrder = (order = {}, hasDirectShipItems = false) => [
   {
     visible: true,
     type: 'subTotal',
@@ -208,6 +209,13 @@ export const getCheckoutTaxLinesFromOrder = (order = {}) => [
   },
   ...getPromotionLinesFromOrder(order),
   ...getCouponLinesFromOrder(order),
+  ...(hasDirectShipItems ? {
+    visible: hasDirectShipItems,
+    type: 'shippingTotal',
+    label: null,
+    value: order.shippingTotal || 0,
+    currencyCode: order.currencyCode,
+  } : []),
   {
     visible: order.taxAmount > 0,
     type: 'tax',

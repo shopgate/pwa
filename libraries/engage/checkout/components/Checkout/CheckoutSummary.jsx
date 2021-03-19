@@ -37,12 +37,24 @@ const Billing = () => {
 
   const content = useMemo(() => taxLines
     .filter(t => t.visible)
-    .map(t => ({
-      label: t.label === null ? i18n.text(`checkout.summary.${t.type}`) : t.label,
-      text: t.value !== null ? i18n.price(t.value, t.currencyCode, 2) : null,
-      info: t.info || null,
-      messages: t.messages || null,
-    })), [taxLines]);
+    .map((t) => {
+      let text = null;
+
+      if (t.value !== null) {
+        if (t.type === 'shippingTotal') {
+          text = i18n.text('shipping.free_short');
+        } else {
+          text = i18n.price(t.value, t.currencyCode, 2);
+        }
+      }
+
+      return {
+        label: t.label === null ? i18n.text(`checkout.summary.${t.type}`) : t.label,
+        text,
+        info: t.info || null,
+        messages: t.messages || null,
+      };
+    }), [taxLines]);
 
   return (
     <div className={styles.root}>

@@ -176,19 +176,6 @@ export const getCheckoutOrderLineItemsAsCartItems = createSelector(
 );
 
 /**
- * Returns a list of tax lines for the order summary.
- * @param {Object} state The application state.
- * @returns {Object}
- */
-export const getCheckoutTaxLines = createSelector(
-  getCheckoutOrder,
-  (order) => {
-    if (!order) return [];
-    return getCheckoutTaxLinesFromOrder(order);
-  }
-);
-
-/**
  * Returns whether the active order is a pure reservation.
  */
 export const getIsReserveOnly = createSelector(
@@ -246,3 +233,17 @@ export const getIsShippingAddressSelectionEnabled = createSelector(
 );
 
 export const getIsPickupContactSelectionEnabled = getHasROPEItems;
+
+/**
+ * Returns a list of tax lines for the order summary.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getCheckoutTaxLines = createSelector(
+  getCheckoutOrder,
+  getHasDirectShipItems,
+  (order, hasDirectShipItems) => {
+    if (!order) return [];
+    return getCheckoutTaxLinesFromOrder(order, hasDirectShipItems);
+  }
+);
