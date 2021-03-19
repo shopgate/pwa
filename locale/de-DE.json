@@ -543,6 +543,13 @@
         "stripe": "Kreditkarte"
       }
     },
+    "shippingMethod": {
+      "title": "Versandart",
+      "errors": {
+        "noShippingAddress": "Bitte geben Sie zuerst eine Lieferadresse an.",
+        "invalidShippingAddress": "Dieser Warenkorb kann nicht an die angegebene Lieferadresse versendet werden."
+      }
+    },
     "errors": {
       "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
       "checkCart": "Bitte überprüfe Deinen Warenkorb.",
@@ -607,6 +614,7 @@
       "headline": "Zusammenfassung",
       "tax": "Steuern",
       "subTotal": "Zwischensumme",
+      "shippingTotal": "Versandkosten",
       "total": "Summe"
     },
     "success": {

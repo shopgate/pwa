@@ -537,6 +537,13 @@
         "stripe": "Credit Card"
       }
     },
+      "shippingMethod": {
+      "title": "Shipping Method",
+      "errors": {
+        "noShippingAddress": "Please first provide a shipping address.",
+        "invalidShippingAddress": "This cart can not be shipped to this shipping address."
+      }
+    },
     "continue": "Continue",
     "steps": "Step {from} of {to}",
     "change_contacts": "Change Contacts",
@@ -606,6 +613,7 @@
       "headline": "Order Summary",
       "tax": "Tax",
       "subTotal": "Subtotal",
+      "shippingTotal": "Shipping Fee",
       "total": "Grand Total"
     },
     "success": {
