@@ -201,7 +201,7 @@ class QuantityPicker extends Component {
    */
   render() {
     return (
-      <form onSubmit={this.handleSubmitForm}>
+      <form onSubmit={this.handleSubmitForm} className="theme__cart__product__quantity-picker">
         <input
           ref={this.setRef}
           type="number"

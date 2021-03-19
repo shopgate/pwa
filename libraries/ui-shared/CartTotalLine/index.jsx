@@ -17,7 +17,7 @@ const CartTotalLine = ({ children, type, isDisabled }) => {
   return (
     <div
       className={classNames(
-        'ui-shared__cart-total-line',
+        `ui-shared__cart-total-line ui-shared__cart-${type}-line`,
         styles.line,
         {
           [styles.disabled]: isDisabled,
