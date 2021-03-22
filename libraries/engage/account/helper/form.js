@@ -92,7 +92,7 @@ export const generateFormConstraints = customerAttributes => ({
 const mapAttributeType = (value, attribute) => {
   // Multi select
   if (attribute.type === 'collectionOfValues') {
-    return value.map(v => ({ code: v }));
+    return (value || []).map(v => ({ code: v }));
   }
 
   // Single select.
