@@ -24,12 +24,28 @@ const styles = {
  * @returns {JSX}
  */
 const CheckoutConfirmationOrderSummary = ({ order, className }) => {
-  const content = useMemo(() => getCheckoutTaxLinesFromOrder(order)
-    .filter(t => t.visible)
-    .map(t => ({
-      label: t.label === null ? i18n.text(`checkout.summary.${t.type}`) : t.label,
-      text: t.value !== null ? i18n.price(t.value, t.currencyCode, 2) : null,
-    })), [order]);
+  const content = useMemo(() =>
+    getCheckoutTaxLinesFromOrder(
+      order,
+      !!order.addressSequences.find(address => address.type === 'shipping')
+    )
+      .filter(t => t.visible)
+      .map((t) => {
+        let text = null;
+
+        if (t.value !== null) {
+          if (t.type === 'shippingTotal' && t.value === 0) {
+            text = i18n.text('shipping.free_short');
+          } else {
+            text = i18n.price(t.value, t.currencyCode, 2);
+          }
+        }
+
+        return {
+          label: t.label === null ? i18n.text(`checkout.summary.${t.type}`) : t.label,
+          text,
+        };
+      }), [order]);
   const fulfillmentSlot = order?.lineItems[0]?.fulfillmentSlot;
 
   return (

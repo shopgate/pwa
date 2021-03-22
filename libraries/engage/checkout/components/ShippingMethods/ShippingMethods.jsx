@@ -6,9 +6,12 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import CryptoJs from 'crypto-js';
+import sortBy from 'lodash/sortBy';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme, i18n } from '@shopgate/engage/core';
-import { RadioGroupV2 as RadioGroup, RadioCard, MessageBar } from '@shopgate/engage/components';
+import {
+  RadioGroupV2 as RadioGroup, RadioCard, MessageBar, Card, ConditionalWrapper,
+} from '@shopgate/engage/components';
 import { useCheckoutContext } from '@shopgate/engage/checkout/hooks/common';
 import ShippingMethod from './ShippingMethod';
 import connect from './connector';
@@ -17,7 +20,7 @@ const { colors, variables } = themeConfig;
 
 const styles = {
   root: css({
-    padding: `0 ${variables.gap.big}px ${variables.gap.xbig}px`,
+    padding: `0 ${variables.gap.big}px ${variables.gap[isIOSTheme() ? 'big' : 'xbig']}px`,
   }).toString(),
   headline: css({
     color: colors.shade3,
@@ -32,20 +35,34 @@ const styles = {
     } : {}),
   }).toString(),
   container: css({
-    border: '1px solid #eaeaea',
+    ...(!isIOSTheme() ? {
+      border: '1px solid #eaeaea',
+    } : {}),
     ' li:nth-child(2n)': {
       background: 'var(--color-background-accent)',
     },
   }).toString(),
   containerSingle: css({
-    padding: variables.gap.small,
+    ...(!isIOSTheme() ? {
+      padding: variables.gap.small,
+    } : {
+      padding: variables.gap.big,
+    }),
   }).toString(),
   card: css({
     display: 'flex',
     alignItems: 'center',
+    ...(isIOSTheme() ? {
+      padding: `${variables.gap.xsmall}px ${variables.gap.small}px 0 ${variables.gap.xsmall}px`,
+    } : {}),
   }).toString(),
   errorMessage: css({
     margin: 0,
+  }).toString(),
+  iOSCard: css({
+    width: '100%',
+    overflow: 'hidden',
+    marginBottom: variables.gap.big,
   }).toString(),
 };
 
@@ -86,7 +103,9 @@ CardComponent.defaultProps = {
  * @returns {JSX}
  */
 const ShippingMethods = ({ orderHasDirectShipItems }) => {
-  const { shippingAddress, updateShippingMethod, isLoading } = useCheckoutContext();
+  const {
+    shippingAddress, updateShippingMethod, isLoading, order,
+  } = useCheckoutContext();
 
   const {
     selectedShippingMethod = null,
@@ -105,7 +124,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
    * data handling, we transform the original data structure to the shape which is required for
    * the update request.
    */
-  const shippingMethods = useMemo(() => availableShippingMethods.reduce((result, method) => {
+  const shippingMethods = useMemo(() => sortBy(availableShippingMethods.reduce((result, method) => {
     const { serviceLevels: levels, ...rest } = method;
     return result.concat(levels.map((serviceLevel) => {
       const entry = {
@@ -118,7 +137,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
         hash: hashShippingMethod(entry),
       };
     }));
-  }, []), [availableShippingMethods]);
+  }, []), ['serviceLevel.cost', 'serviceLevel.name']), [availableShippingMethods]);
 
   const onChange = useCallback(async (event, value) => {
     // Determine the selected shipping method by its hash
@@ -143,7 +162,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
     });
   }, [shippingMethods, updateShippingMethod]);
 
-  if (!orderHasDirectShipItems) {
+  if (order?.status !== 'new' || !orderHasDirectShipItems) {
     return null;
   }
 
@@ -171,30 +190,39 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
       <h3 className={styles.headline}>
         {i18n.text('checkout.shippingMethod.title')}
       </h3>
-      { shippingMethods.length === 1 ? (
-        <div className={classNames(styles.container, styles.containerSingle)}>
-          <ShippingMethod shippingMethod={shippingMethods[0]} />
-        </div>
-      ) : (
-        <RadioGroup
-          name="shipping-methods"
-          value={selectedHash}
-          onChange={onChange}
-          component="ul"
-          classes={{ root: styles.container }}
-          disabled={isLoading}
-        >
-          { shippingMethods.map(shippingMethod => (
-            <RadioCard
-              renderCard={CardComponent}
-              value={shippingMethod.hash}
-              key={shippingMethod.hash}
-            >
-              <ShippingMethod shippingMethod={shippingMethod} />
-            </RadioCard>
-          ))}
-        </RadioGroup>
-      )}
+      <ConditionalWrapper
+        condition={isIOSTheme()}
+        wrapper={children =>
+          <Card className={styles.iOSCard}>
+            {children}
+          </Card>
+          }
+      >
+        { shippingMethods.length === 1 ? (
+          <div className={classNames(styles.container, styles.containerSingle)}>
+            <ShippingMethod shippingMethod={shippingMethods[0]} />
+          </div>
+        ) : (
+          <RadioGroup
+            name="shipping-methods"
+            value={selectedHash}
+            onChange={onChange}
+            component="ul"
+            classes={{ root: styles.container }}
+            disabled={isLoading}
+          >
+            { shippingMethods.map(shippingMethod => (
+              <RadioCard
+                renderCard={CardComponent}
+                value={shippingMethod.hash}
+                key={shippingMethod.hash}
+              >
+                <ShippingMethod shippingMethod={shippingMethod} />
+              </RadioCard>
+            ))}
+          </RadioGroup>
+        )}
+      </ConditionalWrapper>
     </div>
   );
 };

@@ -636,6 +636,7 @@
       "card_holder": "Kartenhalter",
       "address": "Adresse",
       "payment_method": "Zahlungsart",
+      "shipping_method": "Versandart",
       "continue": "Weiter einkaufen"
     }
   },

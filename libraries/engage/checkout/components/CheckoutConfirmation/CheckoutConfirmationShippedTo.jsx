@@ -16,8 +16,10 @@ const CheckoutConfirmationShippedTo = ({ order, className }) => {
     }
 
     const {
-      firstName, lastName, address1, city, region, postalCode,
+      firstName, lastName, address1, city, region, postalCode, orderSegment,
     } = shipping;
+
+    const shippingMethodServiceLevel = orderSegment?.selectedShippingMethod?.serviceLevel?.name;
 
     const address = [
       `${firstName} ${lastName}`,
@@ -30,6 +32,10 @@ const CheckoutConfirmationShippedTo = ({ order, className }) => {
         label: i18n.text('checkout.success.address'),
         text: address,
       },
+      ...(shippingMethodServiceLevel ? {
+        label: i18n.text('checkout.success.shipping_method'),
+        text: shippingMethodServiceLevel,
+      } : []),
     ];
   }, [order]);
 

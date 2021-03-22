@@ -27,7 +27,7 @@ const CheckoutConfirmationBilledTo = ({ order, className }) => {
     ].filter(Boolean).join('\n');
 
     return [
-      ...(hasPayment && paymentType === 'stripe' ? [
+      ...(hasPayment && paymentType === 'cc' ? [
         {
           label: i18n.text('checkout.success.card_holder'),
           text: address,
@@ -38,7 +38,7 @@ const CheckoutConfirmationBilledTo = ({ order, className }) => {
           text: address,
         },
       ]),
-      ...(hasPayment && paymentType === 'stripe' ? [
+      ...(hasPayment && paymentType === 'cc' ? [
         {
           label: i18n.text('checkout.success.payment_method'),
           text: `${startCase(type)} **** **** ${last4}`,

@@ -41,7 +41,7 @@ const Billing = () => {
       let text = null;
 
       if (t.value !== null) {
-        if (t.type === 'shippingTotal') {
+        if (t.type === 'shippingTotal' && t.value === 0) {
           text = i18n.text('shipping.free_short');
         } else {
           text = i18n.price(t.value, t.currencyCode, 2);
