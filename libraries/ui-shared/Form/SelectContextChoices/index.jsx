@@ -21,7 +21,9 @@ const SelectContextChoices = ({
   }, []);
 
   const onItemClick = useCallback((key) => {
-    if (value.includes(key)) {
+    if (key === '') {
+      onChange([]);
+    } else if (value.includes(key)) {
       // Eliminate value
       onChange(value.filter(v => v !== key));
     } else {
