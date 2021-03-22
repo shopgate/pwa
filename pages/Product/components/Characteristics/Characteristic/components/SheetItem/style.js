@@ -24,6 +24,7 @@ const buttonSelected = css(button, {
   margin: '-1px 0',
   paddingTop: 17,
   paddingBottom: 17,
+  fontWeight: 500,
 });
 
 export default {
