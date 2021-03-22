@@ -628,6 +628,7 @@
       "card_holder": "Card Holder",
       "address": "Address",
       "payment_method": "Payment Method",
+      "shipping_method": "Shipping Method",
       "continue": "Continue shopping"
     }
   },
