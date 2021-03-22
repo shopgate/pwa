@@ -22,9 +22,11 @@ import {
   ELEMENT_TYPE_DATE,
   ELEMENT_TYPE_PHONE,
   ELEMENT_TYPE_PHONE_PICKER,
+  ELEMENT_TYPE_MULTISELECT,
 } from './Builder.constants';
 import ElementText from './ElementText';
 import ElementSelect from './ElementSelect';
+import ElementMultiSelect from './ElementMultiSelect';
 import ElementRadio from './ElementRadio';
 import ElementCheckbox from './ElementCheckbox';
 import ElementPhoneNumber from './ElementPhoneNumber';
@@ -61,6 +63,7 @@ class Builder extends Component {
     [ELEMENT_TYPE_TEXT]: ElementText,
     [ELEMENT_TYPE_NUMBER]: ElementText,
     [ELEMENT_TYPE_SELECT]: ElementSelect,
+    [ELEMENT_TYPE_MULTISELECT]: ElementMultiSelect,
     [ELEMENT_TYPE_COUNTRY]: ElementSelect,
     [ELEMENT_TYPE_PROVINCE]: ElementSelect,
     [ELEMENT_TYPE_CHECKBOX]: ElementCheckbox,

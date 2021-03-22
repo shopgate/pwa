@@ -104,7 +104,7 @@ describe('Category streams', () => {
      */
     const dispatchReceiveProducts = (products, categoryId) => {
       const sort = getSortOrder({});
-      const hash = generateResultHash({ categoryId, sort }, false);
+      const hash = generateResultHash({ categoryId, sort });
 
       dispatch(requestProducts({ hash }));
       dispatch(receiveProducts({

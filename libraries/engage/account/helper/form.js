@@ -7,6 +7,9 @@ import { i18n } from '@shopgate/engage/core';
  */
 const mapCustomerAttributeType = (attribute) => {
   if (attribute.values && attribute.values.length) {
+    if (attribute.type === 'collectionOfValues') {
+      return 'multiselect';
+    }
     return 'select';
   }
 
@@ -37,7 +40,7 @@ export const generateFormFields = (customerAttributes, allowPleaseChoose = true)
         options: {
           // For non required property allow the user to unset it.
           ...(!attribute.isRequired ? { '': '' } : {}),
-          ...(attribute.isRequired && allowPleaseChoose ? { '': i18n.text('common.please_choose') } : {}),
+          ...(attribute.isRequired && attribute.type !== 'collectionOfValues' && allowPleaseChoose ? { '': i18n.text('common.please_choose') } : {}),
           // Create regular options.
           ...Object.assign({}, ...sortBy(attribute.values, ['sequenceId'])
             .map(option => ({
@@ -82,14 +85,14 @@ export const generateFormConstraints = customerAttributes => ({
 
 /**
  * Maps the type of an attribute value.
- * @param {Object|string|number} value Attribute value.
+ * @param {Object|string|string[]|number} value Attribute value.
  * @param {*} attribute The attribute configuration.
  * @returns {Object|string|number}
  */
 const mapAttributeType = (value, attribute) => {
   // Multi select
   if (attribute.type === 'collectionOfValues') {
-    return [{ code: value.toString() }];
+    return value.map(v => ({ code: v }));
   }
 
   // Single select.
@@ -142,11 +145,24 @@ export const extractAttributes = (customerAttributes, formData) => customerAttri
  * @param {Object} customerAttributes Customer attributes.
  * @returns {Object}
  */
-export const extractDefaultValues = customerAttributes => Object.assign({}, ...customerAttributes
-  .map((attribute) => {
-    let value = attribute.value?.[0]?.code || attribute.value?.code || attribute.value;
-    if (value && value !== true && value !== false) {
-      value = value.toString();
-    }
-    return { [`attribute_${attribute.code}`]: value };
-  }));
+export const extractDefaultValues = customerAttributes => (
+  Object.assign(
+    {},
+    ...customerAttributes.map((attribute) => {
+      let { value } = attribute;
+
+      if (value) {
+        if (Array.isArray(value) && value[0] && typeof value[0] === 'object') {
+          // Multi select L:95
+          value = value.reduce((acc, val) => [...acc, val.code], []);
+        } else if (typeof value === 'object') {
+          // Single select L:100
+          value = value.code;
+        } else if (value !== true && value !== false) {
+          value = value.toString();
+        }
+      }
+      return { [`attribute_${attribute.code}`]: value };
+    })
+  )
+);
