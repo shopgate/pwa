@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.10.3](https://github.com/shopgate/pwa/compare/v6.10.2...v6.10.3) (2021-03-23)
+
+#### :bug: Bug Fix
+* [#1082](https://github.com/shopgate/pwa/pull/1082) Fix sorting by price for Product Widgets ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.10.1](https://github.com/shopgate/pwa/compare/v6.10.0...v6.10.1) (2020-02-10)
 
 #### :bug: Bug Fix
