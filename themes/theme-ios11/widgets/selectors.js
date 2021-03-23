@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { SORT_PRICE_ASC, SORT_PRICE_DESC } from '@shopgate/engage/core';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
@@ -117,8 +118,19 @@ export const getProductsResultWithHash = createSelector(
 export const getProductsResultsWithIds = (state, type, params, id) => {
   const currentSort = getSortOrder(state);
   const { value: productIds = [], sort = currentSort } = params || {};
-  const products = productIds.map(productId => getProduct(state, { productId })).filter(Boolean);
+  let products = productIds.map(productId => getProduct(state, { productId })).filter(Boolean);
   const hash = getResultHash(state, type, params, id);
+
+  const transformedSort = transformDisplayOptions(sort);
+
+  // Sort by price since fetch by id does not support sorting
+  if (transformedSort === SORT_PRICE_ASC) {
+    products = products.sort((p1, p2) => p1.price.unitPrice - p2.price.unitPrice);
+  }
+
+  if (transformedSort === SORT_PRICE_DESC) {
+    products = products.sort((p1, p2) => p2.price.unitPrice - p1.price.unitPrice);
+  }
   return {
     products,
     totalProductCount: products.length,
