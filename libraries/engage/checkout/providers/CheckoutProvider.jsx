@@ -368,6 +368,11 @@ const CheckoutProvider = ({
     );
   }, [formState.values.pickupPerson, isGuestCheckout]);
 
+  const isOrderable = React.useMemo(
+    () => (typeof checkoutOrder?.isOrderable !== 'undefined' ? checkoutOrder.isOrderable : true),
+    [checkoutOrder]
+  );
+
   // Create memoized context value.
   const value = React.useMemo(() => ({
     setPaymentHandler: (handler) => {
@@ -379,7 +384,7 @@ const CheckoutProvider = ({
     setPaymentData,
     paymentTransactions,
     isLocked,
-    isButtonLocked: (isLocked || isButtonLocked) && needsPayment,
+    isButtonLocked: ((isLocked || isButtonLocked) && needsPayment) || !isOrderable,
     isLoading,
     supportedCountries: shopSettings.supportedCountries,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
@@ -411,18 +416,20 @@ const CheckoutProvider = ({
     paymentButton,
     paymentData,
     paymentTransactions,
-    checkoutOrder,
     isLocked,
     isButtonLocked,
     needsPayment,
+    isOrderable,
     isLoading,
     shopSettings.supportedCountries,
     formState,
+    handleUpdateShippingMethod,
     userLocation,
     billingAddress,
     shippingAddress,
     pickupAddress,
     taxLines,
+    checkoutOrder,
     orderReserveOnly,
     isShippingAddressSelectionEnabled,
     isPickupContactSelectionEnabled,
@@ -430,7 +437,6 @@ const CheckoutProvider = ({
     fulfillmentSlot,
     optInFormState.setValues,
     defaultOptInFormState,
-    handleUpdateShippingMethod,
   ]);
 
   // Handle deeplinks from external payment site.
