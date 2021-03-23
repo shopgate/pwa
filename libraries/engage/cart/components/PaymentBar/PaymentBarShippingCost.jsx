@@ -11,7 +11,7 @@ import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarShippingCost.connector';
 
 type ShippingCostProp = {
-  label: string,
+  label?: string,
   amount: number,
 }
 

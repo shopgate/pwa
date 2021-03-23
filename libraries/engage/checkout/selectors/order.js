@@ -241,9 +241,8 @@ export const getIsPickupContactSelectionEnabled = getHasROPEItems;
  */
 export const getCheckoutTaxLines = createSelector(
   getCheckoutOrder,
-  getHasDirectShipItems,
-  (order, hasDirectShipItems) => {
+  (order) => {
     if (!order) return [];
-    return getCheckoutTaxLinesFromOrder(order, hasDirectShipItems);
+    return getCheckoutTaxLinesFromOrder(order);
   }
 );

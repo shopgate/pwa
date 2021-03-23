@@ -25,10 +25,7 @@ const styles = {
  */
 const CheckoutConfirmationOrderSummary = ({ order, className }) => {
   const content = useMemo(() =>
-    getCheckoutTaxLinesFromOrder(
-      order,
-      !!order.addressSequences.find(address => address.type === 'shipping')
-    )
+    getCheckoutTaxLinesFromOrder(order)
       .filter(t => t.visible)
       .map((t) => {
         let text = null;
