@@ -303,7 +303,7 @@ const RegistrationProvider = ({
       shippingFormValidationErrors: convertValidationErrors(
         shippingFormState.validationErrors || shippingFormRequestErrors || {}
       ),
-      extraFormRequestErrors: convertValidationErrors(
+      extraFormValidationErrors: convertValidationErrors(
         extraFormState.validationErrors || {}
       ),
       handleSubmit,
