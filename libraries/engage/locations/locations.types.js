@@ -12,40 +12,40 @@ import {
 } from './constants';
 
 type LocationType = {
-  code: string;
-  name: string;
+  code: string,
+  name: string,
 }
 
 export type LocationOperationHours = {
-  sun: string;
-  mon: string;
-  tue: string;
-  wed: string;
-  thu: string;
-  fri: string;
-  sat: string;
+  sun: string | null,
+  mon: string | null,
+  tue: string | null,
+  wed: string | null,
+  thu: string | null,
+  fri: string | null,
+  sat: string | null,
 }
 
 type LocationProductInventory = {
-  isAvailable: boolean;
-  visible: number | null;
+  isAvailable: boolean,
+  visible: number | null,
 }
 
 export type LocationAddress = {
-  code: string;
-  name: string;
-  street: string;
-  street2: string | null;
-  street3: string | null;
-  street4: string | null;
-  postalCode: string;
-  city: string;
-  region: string;
-  country: string;
-  phoneNumber?: string;
-  faxNumber?: string;
-  emailAddress?: string;
-  isPrimary: boolean;
+  code: string,
+  name: string,
+  street: string,
+  street2: string | null,
+  street3: string | null,
+  street4: string | null,
+  postalCode: string,
+  city: string,
+  region: string,
+  country: string,
+  phoneNumber?: string,
+  faxNumber?: string,
+  emailAddress?: string,
+  isPrimary: boolean,
 }
 
 export type Location = {
@@ -80,9 +80,9 @@ export type OptionalLocationAware = {
 }
 
 type ProductLocations = {
-  isFetching: boolean;
-  expires: number;
-  locations: Location[];
+  isFetching: boolean,
+  expires: number,
+  locations: Location[],
 }
 
 export type LocationsByIdState = {
@@ -97,12 +97,12 @@ export type FulfillmentPath = typeof QUICK_RESERVE
   | typeof MULTI_LINE_RESERVE;
 
 export type UserLocationState = {
-  code: string | null;
-  name: string | null;
-  productCode: string | null;
-  visibleInventory: number | null;
-  addressCode: string | null;
-  fulfillmentMethod: typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
+  code: string | null,
+  name: string | null,
+  productCode: string | null,
+  visibleInventory: number | null,
+  addressCode: string | null,
+  fulfillmentMethod: typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null,
 }
 
 export type ReservationFormValues = {
@@ -121,15 +121,15 @@ export type UserLocationFulfillmentMethod = typeof DIRECT_SHIP | typeof ROPIS | 
 export type UserLocationLocationCode = string | null;
 
 export type UserFormInputState = {
-  [string]: string | null;
+  [string]: string | null,
 }
 
 export type LocationsState = {
-  locationsById: LocationsByIdState | {};
-  locationsByProductId: LocationsByProductIdState | {};
-  userLocation: UserLocationState | {};
-  userFormInput: ReservationFormValues;
-  userSearchQuery: string;
+  locationsById: LocationsByIdState | {},
+  locationsByProductId: LocationsByProductIdState | {},
+  userLocation: UserLocationState | {},
+  userFormInput: ReservationFormValues,
+  userSearchQuery: string,
 }
 
 export type SheetStage = typeof STAGE_SELECT_STORE
@@ -142,13 +142,13 @@ export type SheetCallbackFn = (
 ) => void;
 
 export type SheetOpenParams = {
-  callback?: SheetCallbackFn;
-  stage?: SheetStage;
-  fulfillmentPath?: FulfillmentPath;
-  changeOnly?: boolean;
+  callback?: SheetCallbackFn,
+  stage?: SheetStage,
+  fulfillmentPath?: FulfillmentPath,
+  changeOnly?: boolean,
 }
 
 export type ReservationResponse = {
-  orderNumbers: string[] | null;
-  errors: string[] | null;
+  orderNumbers: string[] | null,
+  errors: string[] | null,
 }

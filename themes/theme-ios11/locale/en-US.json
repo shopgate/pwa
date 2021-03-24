@@ -407,8 +407,10 @@
           "1001": "The requested quantity is not available."
         },
         "1001": "The requested quantity is not available.",
+        "1004": "No pickup time frame is set. Please choose a pickup time frame.",
         "1005": "The minimum order quantity of {minQty} has not been reached.",
         "1006": "The maximum order quantity of {maxQty} has been exceeded.",
+        "1007": "No pickup store is set. Please choose a pickup store.",
         "generic": "An unexpected error occurred with this item.",
         "insufficientstock": "Currently out of stock."
       },

@@ -9,7 +9,7 @@ import { css } from 'glamor';
 import groupBy from 'lodash/groupBy';
 import { SheetDrawer, Button } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import { getActiveFulfillmentSlot } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getActiveFulfillmentSlot } from '@shopgate/engage/cart/cart.selectors';
 import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../selectors';
 import fetchFulfillmentSlots from '../../actions/fetchFulfillmentSlots';
 

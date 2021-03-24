@@ -407,8 +407,10 @@
           "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar."
         },
         "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar.",
+        "1004": "Für dieses Produkt wurde kein Zeitfenster für die Abholung ausgewählt. Bitte wähle ein Zeitfenster aus.",
         "1005": "Die minimale Bestellmenge von {minQty} wurde noch nicht erreicht.",
         "1006": "Die maximale Bestellmenge von {maxQty} wurde überschritten.",
+        "1007": "Für dieses Produkt wurde keine Abholfiliale ausgewählt. Bitte wähle eine Abholfiliale aus.",
         "generic": "Bei diesem Produkt ist ein unerwarteter Fehler aufgetreten.",
         "insufficientstock": "Derzeit nicht auf Lager."
       },

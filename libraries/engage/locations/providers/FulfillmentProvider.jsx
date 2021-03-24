@@ -77,6 +77,9 @@ function FulfillmentProvider(props: Props) {
     restrictMultiLocationOrders = false,
     cartProducts = [],
     showModal,
+    fulfillmentSchedulingEnabled = null,
+    activeFulfillmentSlot = null,
+    activeFulfillmentSlotLocationCode = null,
   } = props;
 
   const [fulfillmentPath, setFulfillmentPath] = useState(defaultFulfillmentPath || null);
@@ -289,6 +292,12 @@ function FulfillmentProvider(props: Props) {
         code: location.code,
         name: location.name || '',
       },
+      ...(
+        fulfillmentSchedulingEnabled &&
+        activeFulfillmentSlotLocationCode === location.code &&
+        activeFulfillmentSlot?.id ? {
+            slotId: activeFulfillmentSlot.id,
+          } : null),
     };
 
     if (isChangeFulfillment && cartItem) {
