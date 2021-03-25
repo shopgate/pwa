@@ -397,8 +397,10 @@
           "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar."
         },
         "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar.",
+        "1004": "Bitte wählen Sie eine Abholzeit aus.",
         "1005": "Die minimale Bestellmenge von {minQty} wurde noch nicht erreicht.",
         "1006": "Die maximale Bestellmenge von {maxQty} wurde überschritten.",
+        "1007": "Bitte wählen Sie eine Abholfiliale aus.",
         "generic": "Bei diesem Produkt ist ein unerwarteter Fehler aufgetreten.",
         "insufficientstock": "Derzeit nicht auf Lager."
       },
@@ -414,7 +416,7 @@
       },
       "1001": "Eins oder mehrere Produkte in Deinem Warenkorb sind derzeit nicht auf Lager. Bitte entferne diese.",
       "1002": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
-      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wähle ein anderes Zeitfenster aus.",
+      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wähle eine andere Abholzeit aus.",
       "404": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
       "generic": "Ein unerwarteter Fehler ist aufgetreten.",
       "insufficientstock": "Eins oder mehrere Produkte in Deinem Warenkorb sind derzeit nicht auf Lager. Bitte entferne diese.",
