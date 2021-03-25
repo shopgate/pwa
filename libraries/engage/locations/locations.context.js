@@ -71,4 +71,6 @@ export const FulfillmentContext = createContext<FulfillmentContextProps>({
   isLoading: false,
 });
 
-export const StoreFinderContext = createContext({});
+export type StoreFinderContextProps = {};
+
+export const StoreFinderContext = createContext<StoreFinderContextProps>({});

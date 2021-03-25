@@ -204,7 +204,10 @@ const FulfillmentSlotSheet = ({
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [slotGroups, setSlotGroups] = useState(null);
   useEffect(() => {
-    if (!groupedSlots || !groupedSlots[selectedDate]) return;
+    if ((!groupedSlots || !groupedSlots[selectedDate])) {
+      setSlotGroups(null);
+      return;
+    }
 
     const slotGroupsNew = Object
       .keys(RANGES)
