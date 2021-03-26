@@ -8,17 +8,8 @@ import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
 jest.unmock('@shopgate/pwa-core');
-jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
 
-jest.mock('@shopgate/engage/core', () => ({
-  withForwardedRef: jest.fn(),
-  useScrollContainer: () => false,
-  isIOSTheme: () => false,
-  hasWebBridge: () => false,
-  isBeta: () => false,
-  i18n: {},
-}));
-
+jest.mock('@shopgate/engage/core');
 jest.mock('@shopgate/engage/product', () => ({
   withPriceCalculation: Component => props => <Component {...props} />,
   MapPriceHint: () => null,
@@ -29,9 +20,7 @@ jest.mock('@shopgate/engage/product', () => ({
   FeaturedMedia: () => null,
   ProductName: ({ name }) => name,
 }));
-jest.mock('@shopgate/engage/components', () => ({
-  Portal: ({ children }) => children || null,
-}));
+jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/category', () => ({
   PRODUCT_ITEM_PRICE: 'PRODUCT_ITEM_PRICE',
   PRODUCT_ITEM_PRICE_BEFORE: 'PRODUCT_ITEM_PRICE_BEFORE',
