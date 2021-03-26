@@ -6,7 +6,7 @@ import {
 } from '@shopgate/engage/components';
 import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
-import { bin2hex } from '@shopgate/engage/core';
+import { bin2hex, getThemeSettings } from '@shopgate/engage/core';
 import { ProductImage, PriceInfo, ITEM_PATH } from '@shopgate/engage/product';
 import {
   CartItemProductChangeLocation,
@@ -25,6 +25,8 @@ import styles from './CartItemProductLayout.style';
  * @returns {JSX}
  */
 export function CartItemProductLayout() {
+  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
+
   const { registerFulfillmentAction, isOrderDetails, isCheckoutConfirmation } = useCartItem();
   const context = useCartItemProduct();
   const {
@@ -114,7 +116,7 @@ export function CartItemProductLayout() {
               }
             >
               <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
-                <ProductImage src={product.featuredImageUrl} />
+                <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
               </SurroundPortals>
             </ConditionalWrapper>
           </div>

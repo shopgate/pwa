@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from '@shopgate/pwa-common/components';
+import { Portal } from '@shopgate/engage/components';
 import { ProductGridPrice } from '@shopgate/engage/product';
 import {
   PRODUCT_ITEM_PRICE,
   PRODUCT_ITEM_PRICE_BEFORE,
   PRODUCT_ITEM_PRICE_AFTER,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+} from '@shopgate/engage/category';
 
 /**
  * @returns {JSX}
  */
-function ProductCardPrice({ product, style }) {
+function ProductCardPrice({ style, product }) {
   const { id: productId } = product;
 
   const props = { productId };

@@ -67,7 +67,7 @@ export const MessageBar = () => null;
 export const Link = ({ children }) => children;
 export const Ellipsis = ({ children }) => children;
 export const SurroundPortals = ({ children }) => children;
-export const Portal = ({ children }) => children;
+export const Portal = ({ children }) => children || null; // null for portals like before, after
 export const Accordion = ({ children }) => children;
 export const ResponsiveContainer = ({ children }) => children;
 export const Grid = ({ children }) => children;

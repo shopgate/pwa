@@ -9,4 +9,6 @@ export const useScrollContainer = () => true;
 export const withForwardedRef = jest.fn(Component => Component);
 export const hasWebBridge = () => false;
 export const isBeta = () => false;
+export const getThemeSettings = () => {};
+export const grantCameraPermissions = jest.fn().mockResolvedValue(true);
 /* eslint-enable require-jsdoc */
