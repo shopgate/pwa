@@ -7,6 +7,7 @@ import { css } from 'glamor';
 import classNames from 'classnames';
 import CryptoJs from 'crypto-js';
 import sortBy from 'lodash/sortBy';
+import uniqBy from 'lodash/uniqBy';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme, i18n } from '@shopgate/engage/core';
 import {
@@ -124,20 +125,27 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
    * data handling, we transform the original data structure to the shape which is required for
    * the update request.
    */
-  const shippingMethods = useMemo(() => sortBy(availableShippingMethods.reduce((result, method) => {
-    const { serviceLevels: levels, ...rest } = method;
-    return result.concat(levels.map((serviceLevel) => {
-      const entry = {
-        ...rest,
-        serviceLevel,
-      };
-
-      return {
-        ...entry,
-        hash: hashShippingMethod(entry),
-      };
-    }));
-  }, []), ['serviceLevel.cost', 'serviceLevel.name']), [availableShippingMethods]);
+  const shippingMethods = useMemo(() => {
+    // Flat map all service levels of all shipping methods and aggregate with parent (method) data.
+    const unsortedLevels = availableShippingMethods.flatMap((method) => {
+      const { serviceLevels, ...methodData } = method;
+      return serviceLevels.map((serviceLevel) => {
+        const entry = {
+          ...methodData,
+          serviceLevel,
+        };
+        const hash = hashShippingMethod(entry);
+        return {
+          ...entry,
+          hash,
+        };
+      });
+    });
+    // Remove duplicated shipping levels that originated from different shipping methods.
+    const dedupedLevels = uniqBy(unsortedLevels, ({ serviceLevel }) => `${serviceLevel.code}#${serviceLevel.carrier?.code}`);
+    // Show cheapest service level first followed by alphabetic name.
+    return sortBy(dedupedLevels, ['serviceLevel.cost', 'serviceLevel.name']);
+  }, [availableShippingMethods]);
 
   const onChange = useCallback(async (event, value) => {
     // Determine the selected shipping method by its hash

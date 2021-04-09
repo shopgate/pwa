@@ -21,9 +21,11 @@ const CartItemProductLayoutWide = () => {
 
   return (
     <Fragment>
-      <div className={locationColumn}>
-        { !cartIsDirectShipOnly ? location?.name : '' }
-      </div>
+      {!cartIsDirectShipOnly ? (
+        <div className={locationColumn}>
+          {location?.name }
+        </div>
+      ) : null}
       <div className={statusColumn}>
         {getTranslatedLineItemStatus(cartItem?.status, cartItem?.subStatus)}
       </div>

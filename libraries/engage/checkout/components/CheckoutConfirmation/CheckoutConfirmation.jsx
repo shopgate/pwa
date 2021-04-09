@@ -8,7 +8,7 @@ import { CartItems } from '@shopgate/engage/cart';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
-import { convertLineItemsToCartItems, isReserveOnlyOrder } from '../../helpers';
+import { convertLineItemsToCartItems, isReserveOnlyOrder, isDirectShipOnlyOrder } from '../../helpers';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import CheckoutConfirmationPickUpContact from './CheckoutConfirmationPickUpContact';
 import CheckoutConfirmationOrderContact from './CheckoutConfirmationOrderContact';
@@ -126,7 +126,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
 
   // Map order data to more UI friendly format.
   const {
-    orderNumber, date, cartItems, isReserveOnly, currencyOverride,
+    orderNumber, date, cartItems, isReserveOnly, isDirectShipOnly, currencyOverride,
   } = useMemo(() => {
     if (!orderData) {
       return {};
@@ -137,6 +137,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
       date: orderData.date,
       cartItems: convertLineItemsToCartItems(orderData.lineItems),
       isReserveOnly: isReserveOnlyOrder(orderData),
+      isDirectShipOnly: isDirectShipOnlyOrder(orderData),
       currencyOverride: orderData.currencyCode,
     };
   }, [orderData]);
@@ -179,6 +180,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
             multiLineReservation
             editable={false}
             isCheckoutConfirmation
+            isDirectShipOnly={isDirectShipOnly}
             currencyOverride={currencyOverride}
           />
         </div>

@@ -10,6 +10,7 @@ import {
   ADDRESS_TYPE_SHIPPING,
 } from '@shopgate/engage/checkout';
 import { RippleButton, Card, ContextMenu } from '@shopgate/engage/components';
+import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
 const styles = {
   root: css({
@@ -125,7 +126,7 @@ const ProfileAddressCard = ({
           <span className={styles.others}>
             {i18n.text('checkout.billing.address', {
               postalCode: contact.postalCode || '',
-              region: contact.region || '',
+              region: iso3166?.[contact.country]?.divisions?.[contact.region] || contact.region || '',
               city: contact.city || '',
               country: contact.country || '',
             })}

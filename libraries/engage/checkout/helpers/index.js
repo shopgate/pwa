@@ -255,3 +255,15 @@ export const isReserveOnlyOrder = (order = {}) => {
   return !nonReserveItem;
 };
 
+/**
+ * Checks if an order is a direct ship only order
+ * @param {Object} order An order object
+ * @returns {boolean}
+ */
+export const isDirectShipOnlyOrder = (order = {}) => {
+  const nonDirectShipItem = order.lineItems.find(
+    lineItem => lineItem.fulfillmentMethod !== DIRECT_SHIP
+  );
+
+  return !nonDirectShipItem;
+};

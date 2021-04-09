@@ -13,8 +13,8 @@ import {
   CHECKOUT_ADDRESS_BOOK_PATH,
   CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 } from '../../constants/routes';
-
 import { ADDRESS_TYPE_BILLING, ADDRESS_TYPE_SHIPPING } from '../../constants';
+import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
 const { variables } = themeConfig;
 
@@ -144,7 +144,7 @@ const CheckoutAddress = ({ type }) => {
                 <span>
                   {i18n.text(`checkout.${type}.address`, {
                     postalCode: address.postalCode || '',
-                    region: address.region || '',
+                    region: iso3166?.[address.country]?.divisions?.[address.region] || address.region || '',
                     city: address.city || '',
                     country: address.country || '',
                   })}

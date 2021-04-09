@@ -645,7 +645,7 @@
   "order": {
     "status": {
       "order": {
-        "submitted": "Abgeschickt",
+        "submitted": "Übermittelt",
         "inProgress": "In Bearbeitung",
         "ready": "Abholbereit",
         "completed": "Abgeschlossen",

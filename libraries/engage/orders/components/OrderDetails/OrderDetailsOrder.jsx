@@ -8,7 +8,7 @@ import {
   CheckoutConfirmationOrderSummary,
   SupplementalContent,
 } from '../../../checkout/components';
-import { convertLineItemsToCartItems, isReserveOnlyOrder } from '../../../checkout/helpers';
+import { convertLineItemsToCartItems, isDirectShipOnlyOrder, isReserveOnlyOrder } from '../../../checkout/helpers';
 import { useOrderDetails } from '../../hooks';
 import OrderDetailsOrderHeader from './OrderDetailsOrderHeader';
 import OrderDetailsOrderPickupLocation from './OrderDetailsOrderPickupLocation';
@@ -33,7 +33,7 @@ const OrderDetailsOrder = () => {
   } = useOrderDetails();
 
   const {
-    cartItems, isReserveOnly, currencyOverride,
+    cartItems, isReserveOnly, isDirectShipOnly, currencyOverride,
   } = useMemo(() => {
     if (!order?.lineItems) {
       return {};
@@ -44,6 +44,7 @@ const OrderDetailsOrder = () => {
       date: order.date,
       cartItems: convertLineItemsToCartItems(order.lineItems),
       isReserveOnly: isReserveOnlyOrder(order),
+      isDirectShipOnly: isDirectShipOnlyOrder(order),
       currencyOverride: order.currencyCode,
     };
   }, [order]);
@@ -71,6 +72,7 @@ const OrderDetailsOrder = () => {
           editable={false}
           multiLineReservation
           isOrderDetails
+          isDirectShipOnly={isDirectShipOnly}
           currencyOverride={currencyOverride}
         />
       </div>
