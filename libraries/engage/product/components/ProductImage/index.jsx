@@ -137,7 +137,7 @@ class ProductImage extends Component {
    */
   render() {
     const {
-      noBackground, className, placeholderSrc, alt,
+      noBackground, className, placeholderSrc, alt, resolutions,
     } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
@@ -162,6 +162,7 @@ class ProductImage extends Component {
                 alt={alt}
                 showInnerShadow={showInnerShadow}
                 noBackground={noBackground}
+                resolutions={resolutions}
               />
             ) : (
               <div className={styles.placeholderContent} data-test-id="placeHolder">

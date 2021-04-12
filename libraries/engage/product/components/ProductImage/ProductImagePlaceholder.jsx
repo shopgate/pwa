@@ -13,7 +13,7 @@ const { colors } = themeConfig;
  * @returns {JSX}
  */
 const ProductImagePlaceholder = ({
-  src, alt, showInnerShadow, noBackground,
+  src, alt, showInnerShadow, noBackground, ...imageProps
 }) => {
   const [showPlaceholder, setShowPlaceholder] = useState(false);
 
@@ -32,6 +32,7 @@ const ProductImagePlaceholder = ({
           className={showInnerShadow ? styles.innerShadow : ''}
           styles={{ backgroundColor: noBackground ? 'transparent' : colors.light }}
           onError={onError}
+          {...imageProps}
         />
       )}
     </div>
