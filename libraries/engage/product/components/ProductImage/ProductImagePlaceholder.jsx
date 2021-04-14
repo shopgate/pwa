@@ -29,6 +29,7 @@ const ProductImagePlaceholder = ({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundColor: noBackground ? 'transparent' : colors.light,
+        position: 'absolute',
       };
     }
     return {
