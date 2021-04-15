@@ -14,16 +14,18 @@ import {
  * @returns {JSX}
  */
 const CartItemProductLayoutWide = () => {
-  const { location, cartItem } = useCartItem();
+  const { location, cartItem, cartIsDirectShipOnly } = useCartItem();
   const { product } = useCartItemProduct();
 
   const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
 
   return (
     <Fragment>
-      <div className={locationColumn}>
-        { location?.name }
-      </div>
+      {!cartIsDirectShipOnly ? (
+        <div className={locationColumn}>
+          {location?.name }
+        </div>
+      ) : null}
       <div className={statusColumn}>
         {getTranslatedLineItemStatus(cartItem?.status, cartItem?.subStatus)}
       </div>

@@ -31,6 +31,7 @@ const FulfillmentSlotSwitcher = ({
   fulfillmentSlot,
   renderBar,
   isFulfillmentScheduling,
+  isFulfillmentSlotValid,
   standalone,
   card,
   editable,
@@ -49,7 +50,7 @@ const FulfillmentSlotSwitcher = ({
       { renderBar ? (
         <div className={card ? styles.card : undefined}>
           <FulfillmentSlotSwitcherBar
-            fulfillmentSlot={fulfillmentSlot}
+            fulfillmentSlot={isFulfillmentSlotValid ? fulfillmentSlot : null}
             handleChange={handleOpen}
             standalone={standalone}
             editable={editable}
@@ -57,7 +58,7 @@ const FulfillmentSlotSwitcher = ({
         </div>
       ) : (
         <FulfillmentSlotSwitcherDefault
-          fulfillmentSlot={fulfillmentSlot}
+          fulfillmentSlot={isFulfillmentSlotValid ? fulfillmentSlot : null}
           handleChange={handleOpen}
           standalone={standalone}
           editable={editable}
@@ -73,6 +74,7 @@ FulfillmentSlotSwitcher.propTypes = {
   editable: PropTypes.bool,
   fulfillmentSlot: PropTypes.shape(),
   isFulfillmentScheduling: PropTypes.bool,
+  isFulfillmentSlotValid: PropTypes.bool,
   renderBar: PropTypes.bool,
   standalone: PropTypes.bool,
 };
@@ -83,6 +85,7 @@ FulfillmentSlotSwitcher.defaultProps = {
   editable: true,
   card: false,
   standalone: false,
+  isFulfillmentSlotValid: true,
 };
 
 export default connect(FulfillmentSlotSwitcher);

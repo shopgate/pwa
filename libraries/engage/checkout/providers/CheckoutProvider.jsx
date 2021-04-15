@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { isAvailable, InAppBrowser, Linking } from '@shopgate/native-modules';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
   i18n, useAsyncMemo, getUserAgent, LoadingProvider,
 } from '@shopgate/engage/core';
-import { MARKETING_OPT_IN_DEFAULT } from '@shopgate/engage/registration';
+import { MARKETING_OPT_IN_DEFAULT } from '@shopgate/engage/registration/constants';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
@@ -18,12 +18,16 @@ type Props = {
   shopSettings: any,
   paymentTransactions: any,
   billingAddress: any,
+  shippingAddress: any,
   fulfillmentSlot: any,
   pickupAddress: any,
   taxLines: any,
   userLocation: any,
   isDataReady: bool,
   orderReserveOnly?: bool,
+  isShippingAddressSelectionEnabled?: bool,
+  isPickupContactSelectionEnabled?: bool,
+  isGuestCheckout?: bool,
   campaignAttribution: any,
   order: any,
   fetchCart: () => Promise<any>,
@@ -81,6 +85,7 @@ const CheckoutProvider = ({
   children,
   shopSettings,
   billingAddress,
+  shippingAddress,
   pickupAddress,
   paymentTransactions,
   fetchCart,
@@ -89,6 +94,9 @@ const CheckoutProvider = ({
   isDataReady,
   fulfillmentSlot,
   orderReserveOnly,
+  isShippingAddressSelectionEnabled,
+  isPickupContactSelectionEnabled,
+  isGuestCheckout,
   campaignAttribution,
   clearCheckoutCampaign,
   order: checkoutOrder,
@@ -161,22 +169,37 @@ const CheckoutProvider = ({
               ...billingAddress,
               customerContactId: billingAddress.customerContactId || undefined,
             },
-            // When the customer is picking up himself we just take the
-            // billing address as pickup address.
-            values.pickupPerson === 'me' ? {
-              ...billingAddress,
-              customerContactId: billingAddress.customerContactId || undefined,
-              type: 'pickup',
-            } : {
-              type: 'pickup',
-              firstName: values.firstName,
-              lastName: values.lastName,
-              mobile: values.mobile,
-              emailAddress: values.emailAddress,
-            },
+            ...(isShippingAddressSelectionEnabled ? {
+              ...shippingAddress,
+              customerContactId: shippingAddress.customerContactId || undefined,
+            } : []),
+            ...(isPickupContactSelectionEnabled ? {
+              // When the customer is picking up himself we just take the
+              // billing address as pickup address.
+              ...(values.pickupPerson === 'me' ? {
+                ...billingAddress,
+                customerContactId: billingAddress.customerContactId || undefined,
+                type: 'pickup',
+              } : {
+                type: 'pickup',
+                firstName: values.firstName,
+                lastName: values.lastName,
+                mobile: values.mobile,
+                emailAddress: values.emailAddress,
+              }),
+            } : []),
           ],
           primaryBillToAddressSequenceIndex: 0,
           primaryShipToAddressSequenceIndex: 1,
+        });
+      } catch (error) {
+        setLocked(false);
+        return;
+      }
+    } else if (isGuestCheckout && isPickupContactSelectionEnabled && values.instructions) {
+      try {
+        await updateCheckoutOrder({
+          notes: values.instructions,
         });
       } catch (error) {
         setLocked(false);
@@ -251,20 +274,65 @@ const CheckoutProvider = ({
     // We don't set locked to false to avoid unnecessary UI changes right before
     // going to confirmation page.
   }, [
-    optInFormState.values,
     orderReadOnly,
+    isGuestCheckout,
+    isPickupContactSelectionEnabled,
     needsPayment,
     fetchCheckoutOrder,
     fetchCart,
+    clearCheckoutCampaign,
     historyReplace,
     updateCheckoutOrder,
     billingAddress,
+    isShippingAddressSelectionEnabled,
+    shippingAddress,
     paymentTransactions,
     updateOptIns,
     submitCheckoutOrder,
-    paymentHandlerRef,
     campaignAttribution,
-    clearCheckoutCampaign,
+    optInFormState.values,
+  ]);
+
+  const handleUpdateShippingMethod = useCallback(async (selectedShippingMethod) => {
+    setLocked(true);
+
+    try {
+      await updateCheckoutOrder({
+        addressSequences: [
+          {
+            ...billingAddress,
+          },
+          {
+            ...shippingAddress,
+            orderSegment: {
+              selectedShippingMethod,
+            },
+          },
+          ...(isGuestCheckout && pickupAddress ? [{
+            ...pickupAddress,
+          }] : []),
+        ],
+        primaryBillToAddressSequenceIndex: 0,
+        primaryShipToAddressSequenceIndex: 1,
+      });
+    } catch (e) {
+      // Nothing to see here
+    }
+
+    try {
+      await fetchCheckoutOrder();
+    } catch (e) {
+      // Nothing to see here
+    }
+
+    setLocked(false);
+  }, [
+    billingAddress,
+    pickupAddress,
+    shippingAddress,
+    fetchCheckoutOrder,
+    isGuestCheckout,
+    updateCheckoutOrder,
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.
@@ -294,11 +362,16 @@ const CheckoutProvider = ({
   // When "someone-else" is picked for pickup the validation rules need to change.
   React.useEffect(() => {
     setValidationRules(
-      formState.values.pickupPerson === 'me'
+      formState.values.pickupPerson === 'me' || isGuestCheckout
         ? selfPickupConstraints
         : pickupConstraints
     );
-  }, [formState.values.pickupPerson]);
+  }, [formState.values.pickupPerson, isGuestCheckout]);
+
+  const isOrderable = React.useMemo(
+    () => (typeof checkoutOrder?.isOrderable !== 'undefined' ? checkoutOrder.isOrderable : true),
+    [checkoutOrder]
+  );
 
   // Create memoized context value.
   const value = React.useMemo(() => ({
@@ -311,21 +384,27 @@ const CheckoutProvider = ({
     setPaymentData,
     paymentTransactions,
     isLocked,
-    isButtonLocked: (isLocked || isButtonLocked) && needsPayment,
+    isButtonLocked: ((isLocked || isButtonLocked) && needsPayment) || !isOrderable,
     isLoading,
     supportedCountries: shopSettings.supportedCountries,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,
     handleSubmitOrder: formState.handleSubmit,
     handleValidation: () => formState.validate(formState.values),
+    updateShippingMethod: handleUpdateShippingMethod,
     defaultPickupPersonState,
     userLocation,
     billingAddress,
+    shippingAddress,
     pickupAddress,
     taxLines,
     order: checkoutOrder,
+    currencyCode: checkoutOrder?.currencyCode,
     needsPayment,
     orderReserveOnly,
+    isShippingAddressSelectionEnabled,
+    isPickupContactSelectionEnabled,
+    isGuestCheckout,
     fulfillmentSlot,
     optInFormSetValues: optInFormState.setValues,
     defaultOptInFormState,
@@ -337,18 +416,24 @@ const CheckoutProvider = ({
     paymentButton,
     paymentData,
     paymentTransactions,
-    checkoutOrder,
     isLocked,
     isButtonLocked,
     needsPayment,
+    isOrderable,
     isLoading,
     shopSettings.supportedCountries,
     formState,
+    handleUpdateShippingMethod,
     userLocation,
     billingAddress,
+    shippingAddress,
     pickupAddress,
     taxLines,
+    checkoutOrder,
     orderReserveOnly,
+    isShippingAddressSelectionEnabled,
+    isPickupContactSelectionEnabled,
+    isGuestCheckout,
     fulfillmentSlot,
     optInFormState.setValues,
     defaultOptInFormState,
@@ -408,6 +493,9 @@ CheckoutProvider.defaultProps = {
   orderInitialized: false,
   orderReadOnly: false,
   orderReserveOnly: false,
+  isShippingAddressSelectionEnabled: false,
+  isPickupContactSelectionEnabled: false,
+  isGuestCheckout: false,
 };
 
 export default connect(CheckoutProvider);

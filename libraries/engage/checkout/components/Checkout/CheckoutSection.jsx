@@ -27,10 +27,10 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     fontSize: 15,
-    margin: `0 0 ${variables.gap.xbig}px`,
     padding: variables.gap.big,
     width: '100%',
     overflow: 'inherit !important',
+    marginBottom: variables.gap.big,
     ...(!isIOSTheme() ? {
       background: 'var(--color-background-accent)',
       boxShadow: 'none',
@@ -93,16 +93,18 @@ const CheckoutSection = ({
   hasForm,
   editLink,
   editLabel,
+  id,
 }) => (
   <Fragment>
     { title && (
-      <h3 className={styles.headline}>{i18n.text(title)}</h3>
+      <h3 className={styles.headline} id={id}>{i18n.text(title)}</h3>
     )}
     <Card
       className={classNames(styles.card.toString(), {
         [styles.cardWithForm.toString()]: hasForm,
       })
       }
+      id={!title ? id : null}
     >
       <div className={`${styles.actionsContainer} ${className}`}>
         {children || null}
@@ -185,6 +187,7 @@ CheckoutSection.propTypes = {
   editLabel: PropTypes.string,
   editLink: PropTypes.string,
   hasForm: PropTypes.bool,
+  id: PropTypes.string,
   title: PropTypes.string,
 };
 
@@ -196,6 +199,7 @@ CheckoutSection.defaultProps = {
   hasForm: false,
   editLink: null,
   editLabel: 'checkout.billing.edit',
+  id: null,
 };
 
 export default CheckoutSection;

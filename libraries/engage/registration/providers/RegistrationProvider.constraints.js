@@ -1,6 +1,10 @@
+import { i18n } from '@shopgate/engage/core';
 import { generateFormConstraints } from '@shopgate/engage/account/helper/form';
 
-export const baseConstraints = {
+/**
+ * @returns {Object}
+ */
+export const generateBaseConstraints = () => ({
   emailAddress: {
     presence: {
       message: 'validation.required',
@@ -15,16 +19,25 @@ export const baseConstraints = {
       message: 'validation.required',
       allowEmpty: false,
     },
+    length: {
+      minimum: 8,
+      tooShort: i18n.text('validation.minPasswordLength'),
+    },
   },
   passwordConfirm: {
     presence: {
       message: 'validation.required',
       allowEmpty: false,
     },
+    equality: {
+      attribute: 'password',
+      message: 'validation.passwordMismatch',
+      comparator: (v1, v2) => JSON.stringify(v1) === JSON.stringify(v2),
+    },
   },
-};
+});
 
-export const shippingConstraints = {
+const addressConstraints = {
   firstName: {
     presence: {
       message: 'validation.required',
@@ -71,6 +84,14 @@ export const shippingConstraints = {
       message: 'validation.mobileNumber',
     },
   },
+};
+
+export const billingConstraints = {
+  ...addressConstraints,
+};
+
+export const shippingConstraints = {
+  ...addressConstraints,
 };
 
 /**

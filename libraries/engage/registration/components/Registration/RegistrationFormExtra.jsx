@@ -1,22 +1,31 @@
 import React, { useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { FormBuilder } from '@shopgate/engage/components';
+import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { useRegistration } from '../../hooks';
+import { ELEMENT_ID_CUSTOMER_ATTRIBUTES } from '../../constants';
 import generateFormConfig from './RegistrationFormExtra.config';
-import { form } from './Registration.style';
+import { form, section } from './Registration.style';
+
 /**
+ * The RegistrationFormExtra component.
+ * @param {Object} props The component props
  * @returns {JSX}
  */
-const RegistrationFormExtra = () => {
+const RegistrationFormExtra = ({ isGuest }) => {
   const {
     defaultExtraFormState,
     updateExtraForm,
     customerAttributes,
-    extraFormRequestErrors,
-  } = useRegistration();
+    extraFormValidationErrors,
+  } = useRegistration(isGuest);
 
   const formConfig = useMemo(
-    () => generateFormConfig(customerAttributes),
-    [customerAttributes]
+    () => generateFormConfig({
+      customerAttributes,
+      isGuest,
+    }),
+    [customerAttributes, isGuest]
   );
 
   const handleUpdate = useCallback((values) => {
@@ -24,15 +33,25 @@ const RegistrationFormExtra = () => {
   }, [updateExtraForm]);
 
   return (
-    <FormBuilder
-      className={form}
-      name="RegistrationExtra"
-      config={formConfig}
-      defaults={defaultExtraFormState}
-      validationErrors={extraFormRequestErrors}
-      handleUpdate={handleUpdate}
-    />
+    <Section className={section} hasForm id={ELEMENT_ID_CUSTOMER_ATTRIBUTES}>
+      <FormBuilder
+        className={form}
+        name="RegistrationExtra"
+        config={formConfig}
+        defaults={defaultExtraFormState}
+        validationErrors={extraFormValidationErrors}
+        handleUpdate={handleUpdate}
+      />
+    </Section>
   );
+};
+
+RegistrationFormExtra.propTypes = {
+  isGuest: PropTypes.bool,
+};
+
+RegistrationFormExtra.defaultProps = {
+  isGuest: false,
 };
 
 export default RegistrationFormExtra;

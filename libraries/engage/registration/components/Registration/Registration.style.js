@@ -45,6 +45,14 @@ export const section = css({
 //  marginBottom: variables.gap.big * 1.5,
 }).toString();
 
+export const shippingFormSection = css({
+  paddingBottom: 32,
+}).toString();
+
+export const hidden = css({
+  display: 'none',
+}).toString();
+
 export const submitButtonContainer = css({
   margin: `0 ${variables.gap.big}px ${variables.gap.big}px`,
   '@media(min-width: 768px)': {

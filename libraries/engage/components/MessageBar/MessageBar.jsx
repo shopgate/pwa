@@ -73,7 +73,7 @@ const MessageBar = ({
           <div
             key={`${type}-${message}`}
             className={classnames(
-              styles[type](),
+              (styles[type] ? styles[type]() : null),
               classNames.message,
               Icon ? styles.withIcon : null
             )}

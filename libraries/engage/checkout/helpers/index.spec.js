@@ -114,6 +114,13 @@ describe('Checkout helpers', () => {
         },
         {
           visible: false,
+          type: 'shippingTotal',
+          label: null,
+          value: 0,
+          currencyCode: undefined,
+        },
+        {
+          visible: false,
           type: 'tax',
           label: null,
           value: 0,
@@ -134,6 +141,13 @@ describe('Checkout helpers', () => {
         {
           visible: true,
           type: 'subTotal',
+          label: null,
+          value: 0,
+          currencyCode: undefined,
+        },
+        {
+          visible: false,
+          type: 'shippingTotal',
           label: null,
           value: 0,
           currencyCode: undefined,
@@ -181,6 +195,13 @@ describe('Checkout helpers', () => {
           currencyCode: 'USD',
           info: null,
           messages: null,
+        },
+        {
+          visible: false,
+          type: 'shippingTotal',
+          label: null,
+          value: 0,
+          currencyCode: 'USD',
         },
         {
           visible: false,

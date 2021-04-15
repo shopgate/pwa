@@ -1,7 +1,10 @@
 import moment from 'moment';
 import validateJs from 'validate.js';
 
-validateJs.options = { format: 'detailed' };
+validateJs.options = {
+  format: 'detailed',
+  fullMessages: false,
+};
 
 validateJs.extend(validateJs.validators.datetime, {
   // The value is guaranteed not to be null or undefined but otherwise it
@@ -43,9 +46,10 @@ export function validate(values, constraints) {
       if (obj[item.attribute]) {
         return obj;
       }
+
       return {
         ...obj,
-        [item.attribute]: item.options.message,
+        [item.attribute]: item?.options?.message || item?.error,
       };
     }, {});
   }
