@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/engage';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { BackBar } from 'Components/AppBar/presets';
 import { i18n } from '@shopgate/engage/core';
-import { GuestRegistration } from '@shopgate/engage/checkout';
+import { GuestRegistration } from '@shopgate/engage/registration';
 
 const { colors } = themeConfig;
 
@@ -12,7 +12,7 @@ const { colors } = themeConfig;
  * The Cart component.
  * @returns {JSX}
  */
-const GuestCheckoutPage = () => (
+const GuestCheckoutRegistrationPage = () => (
   <View background={colors.background} aria-hidden={false}>
     <BackBar
       right={null}
@@ -24,4 +24,4 @@ const GuestCheckoutPage = () => (
   </View>
 );
 
-export default GuestCheckoutPage;
+export default GuestCheckoutRegistrationPage;

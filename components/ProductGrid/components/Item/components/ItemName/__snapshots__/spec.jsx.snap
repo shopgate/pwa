@@ -3,8 +3,6 @@
 exports[`<ItemName /> should render with minimal props 1`] = `
 <ProductName
   className="css-1xzic9e"
-  ellipsis={true}
-  itemProp={null}
   name="Foo"
   portalName="product-item.name"
   portalProps={
@@ -12,8 +10,6 @@ exports[`<ItemName /> should render with minimal props 1`] = `
       "productId": "1234",
     }
   }
-  rows={null}
-  style={null}
   testId="Productname: Foo"
 />
 `;

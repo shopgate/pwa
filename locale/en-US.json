@@ -36,7 +36,13 @@
     "profile": "Profile",
     "your_account": "My Account",
     "your_account_contact": "Address",
-    "page_not_found": "Page Not Found"
+    "page_not_found": "Page Not Found",
+    "checkout_addresses_shipping": "Choose Shipping Address",
+    "checkout_addresses_billing": "Choose Billing Address",
+    "checkout_addresses_add_shipping": "Add  New Shipping Address",
+    "checkout_addresses_add_billing": "Add New Billing Address",
+    "checkout_addresses_edit_shipping": "Edit Shipping Address",
+    "checkout_addresses_edit_billing": "Edit Billing Address"
   },
   "account": {
     "profile": {
@@ -48,7 +54,7 @@
         "middleName": "Middle Name",
         "lastName": "Last Name",
         "emailAddress": "Email Address",
-        "address1": "Address 1",
+        "address1": "Street & No.",
         "address2": "Address 2",
         "address3": "Address 3",
         "address4": "Address 4",
@@ -61,6 +67,8 @@
         "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
         "default_billing": "Primary Bill To Address",
         "default_shipping": "Primary Ship To Address",
+        "save_default_billing": "Save as default billing address for future orders",
+        "save_default_shipping": "Save as default shipping address for future orders",
         "save": "Save",
         "add": "Add Address",
         "success": "Saved Profile",
@@ -72,6 +80,8 @@
         "default_billing": "Primary Bill To Address",
         "default_shipping": "Primary Ship To Address",
         "add": "Add Address",
+        "select": "Select",
+        "selected": "Selected",
         "success": "Saved Profile",
         "context": {
           "edit": "Edit",
@@ -529,6 +539,13 @@
         "stripe": "Credit Card"
       }
     },
+      "shippingMethod": {
+      "title": "Shipping Method",
+      "errors": {
+        "noShippingAddress": "Please first provide a shipping address.",
+        "invalidShippingAddress": "This cart can not be shipped to this shipping address."
+      }
+    },
     "continue": "Continue",
     "steps": "Step {from} of {to}",
     "change_contacts": "Change Contacts",
@@ -576,7 +593,17 @@
       "headline_reserve": "Order Contact",
       "save": "Save",
       "address": "{city}, {region} {postalCode}",
-      "edit": "Edit"
+      "edit": "Edit",
+      "change": "Change",
+      "select_address": "Select a billing address"
+    },
+    "shipping": {
+      "headline": "Shipping Address",
+      "save": "Save",
+      "address": "{city}, {region} {postalCode}",
+      "edit": "Edit",
+      "change": "Change",
+      "select_address": "Select a shipping address"
     },
     "creditCard": {
       "headline": "Payment",
@@ -588,6 +615,7 @@
       "headline": "Order Summary",
       "tax": "Tax",
       "subTotal": "Subtotal",
+      "shippingTotal": "Shipping Fee",
       "total": "Grand Total"
     },
     "success": {
@@ -601,6 +629,7 @@
       "order_contact": "Order Contact",
       "pickup_notes": "Pickup Notes",
       "billed_to": "Billed To",
+      "shipped_to": "Shipped To",
       "order_summary": "Order Summary",
       "name": "Name",
       "phone_number": "Phone",
@@ -608,6 +637,7 @@
       "card_holder": "Card Holder",
       "address": "Address",
       "payment_method": "Payment Method",
+      "shipping_method": "Shipping Method",
       "continue": "Continue shopping"
     }
   },
@@ -683,10 +713,12 @@
   "registration": {
     "create_account": "Create account",
     "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
+    "different_shipping_address_label": "Different Shipping Address",
     "headlines": {
       "create_new_account": "Create new account",
       "shipping_address": "Shipping Address",
-      "billing_address": "Billing Address"
+      "billing_address": "Billing Address",
+      "billing_address_reserve": "Order Contact"
     }
   },"error": {
     "general": "Connectivity problems. Please check your internet connection or try again later."
@@ -710,7 +742,11 @@
     "numeric": "Please enter only numbers",
     "alphaNumeric": "Please enter only letters and numbers",
     "mobileNumber": "Please enter a valid mobile phone number",
-    "date": "Please enter a valid date"
+    "date": "Please enter a valid date",
+    "checkField": "Please check this field",
+    "emailConflict": "This e-mail address is already registered",
+    "passwordMismatch": "Your passwords do not match",
+    "minPasswordLength": "The minimum password length must be %\\{count\\} characters"
   },
   "formats": {
     "date": {

@@ -23,6 +23,10 @@ import {
 import { grantCameraPermissions } from '@shopgate/engage/core';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import {
+  CHECKOUT_ADDRESS_BOOK_PATTERN,
+  CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
+} from '@shopgate/engage/checkout';
+import {
   PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,
   PRODUCT_SLIDER_IMAGE_FORMATS,
 } from './Product/constants';
@@ -44,6 +48,8 @@ export default function app(subscribe) {
     authRoutes.set(ACCOUNT_PATH, LOGIN_PATH);
     authRoutes.set(ACCOUNT_PATTERN, LOGIN_PATH);
     authRoutes.set(`${ITEM_PATH}/:productId/write_review`, LOGIN_PATH);
+    authRoutes.set(CHECKOUT_ADDRESS_BOOK_PATTERN, LOGIN_PATH);
+    authRoutes.set(CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN, LOGIN_PATH);
 
     redirects.set(ORDERS_PATH, ORDERS_LEGACY_PATH);
 
