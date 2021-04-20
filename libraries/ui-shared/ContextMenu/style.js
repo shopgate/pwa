@@ -36,10 +36,16 @@ const menu = css({
   boxShadow: themeConfig.shadows.contextMenu,
 }).toString();
 
+const scrollable = css({
+  maxHeight: '30vh',
+  overflowY: 'auto',
+}).toString();
+
 export default {
   container,
   button,
   menu,
   overlay,
   disabled,
+  scrollable,
 };

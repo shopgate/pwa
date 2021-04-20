@@ -2,6 +2,7 @@ export {
   CheckoutConfirmationPickUpContact,
   CheckoutConfirmationOrderContact,
   CheckoutConfirmationBilledTo,
+  CheckoutConfirmationShippedTo,
   CheckoutConfirmationOrderSummary,
   CheckoutConfirmationSection,
 } from './CheckoutConfirmation';

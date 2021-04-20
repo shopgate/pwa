@@ -16,6 +16,7 @@ type Props = {
   onFocus: (hidden: boolean) => void,
   editable?: boolean,
   isOrderDetails?: boolean,
+  isDirectShipOnly?: boolean,
   isCheckoutConfirmation?: boolean,
   currencyOverride?: string,
 }
@@ -33,6 +34,7 @@ function CartItems({
   isOrderDetails,
   isCheckoutConfirmation,
   currencyOverride,
+  isDirectShipOnly,
 }: Props) {
   if (!cartItems || cartItems.length === 0) {
     return null;
@@ -44,6 +46,7 @@ function CartItems({
         <CartItemsHeaderWide
           editable={editable}
           isOrderDetails={isOrderDetails}
+          isDirectShipOnly={isDirectShipOnly}
           isCheckoutConfirmation={isCheckoutConfirmation}
         />
       </ResponsiveContainer>
@@ -54,7 +57,7 @@ function CartItems({
             <FulfillmentSlotSwitcher renderBar card editable={editable} />
           </ResponsiveContainer>
         ) : null}
-        {editable && (
+        {editable && !isDirectShipOnly && (
           <ResponsiveContainer breakpoint="<=xs" appAlways>
             <CartItemsSubstitution cartItems={cartItems} wrapCard className={card} />
           </ResponsiveContainer>
@@ -65,6 +68,7 @@ function CartItems({
               cartItem={item}
               isEditable={editable}
               isOrderDetails={isOrderDetails}
+              cartIsDirectShipOnly={isDirectShipOnly}
               isCheckoutConfirmation={isCheckoutConfirmation}
               locationId={item.fulfillmentLocationId}
             >
@@ -96,6 +100,7 @@ CartItems.defaultProps = {
   multiLineReservation: null,
   editable: true,
   isOrderDetails: false,
+  isDirectShipOnly: false,
   isCheckoutConfirmation: false,
   currencyOverride: null,
 };

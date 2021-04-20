@@ -15,8 +15,10 @@ export const addCustomerContacts = ({ contacts }) => async (dispatch) => {
     contacts,
   });
 
+  let response;
+
   try {
-    await (new PipelineRequest('shopgate.customer.addContacts')
+    response = await (new PipelineRequest('shopgate.customer.addContacts')
       .setTrusted()
       .setInput({
         contacts,
@@ -36,4 +38,6 @@ export const addCustomerContacts = ({ contacts }) => async (dispatch) => {
     });
     throw error;
   }
+
+  return response;
 };

@@ -12,7 +12,6 @@ import style from './style';
  */
 class FormElement extends Component {
   static propTypes = {
-    htmlFor: PropTypes.string.isRequired,
     children: PropTypes.node,
     className: PropTypes.oneOfType([
       PropTypes.string,
@@ -23,6 +22,7 @@ class FormElement extends Component {
     hasPlaceholder: PropTypes.bool,
     hasUnderline: PropTypes.bool,
     hasValue: PropTypes.bool,
+    htmlFor: PropTypes.string,
     isFocused: PropTypes.bool,
     label: PropTypes.node,
     labelStatic: PropTypes.bool,
@@ -35,6 +35,7 @@ class FormElement extends Component {
     className: '',
     errorText: '',
     placeholder: '',
+    htmlFor: '',
     label: '',
     labelStatic: false,
     isFocused: false,

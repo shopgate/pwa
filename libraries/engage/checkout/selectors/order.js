@@ -1,4 +1,6 @@
 import { createSelector } from 'reselect';
+import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import { DIRECT_SHIP, ROPIS, BOPIS } from '@shopgate/engage/locations';
 import {
   convertLineItemsToCartItems,
   getCheckoutTaxLinesFromOrder,
@@ -51,7 +53,22 @@ export const getCheckoutBillingAddress = createSelector(
     if (!order) return null;
 
     const addresses = order.addressSequences || [];
-    return addresses[order.primaryBillToAddressSequenceIndex];
+    return addresses.find(({ type }) => type === 'billing');
+  }
+);
+
+/**
+ * Returns the shipping address of the order.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getCheckoutShippingAddress = createSelector(
+  getCheckoutOrder,
+  (order) => {
+    if (!order) return null;
+
+    const addresses = order.addressSequences || [];
+    return addresses.find(({ type }) => type === 'shipping');
   }
 );
 
@@ -66,7 +83,7 @@ export const getCheckoutPickupAddress = createSelector(
     if (!order) return null;
 
     const addresses = order.addressSequences || [];
-    return addresses[order.primaryShipToAddressSequenceIndex];
+    return addresses.find(({ type }) => type === 'pickup');
   }
 );
 
@@ -87,6 +104,26 @@ export const isPickupAndBillingEquals = createSelector(
     if (billing.lastName !== pickup.lastName) return false;
 
     return true;
+  }
+);
+
+/**
+ * Returns whether the billing and shipping address are the same.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const isShippingBillingEquals = createSelector(
+  getCheckoutBillingAddress,
+  getCheckoutShippingAddress,
+  (billing, shipping) => {
+    if (!billing || !shipping) return true;
+
+    const positiveList = ['index', 'type', 'customerContactId'];
+
+    return Object.keys(billing).every((key) => {
+      if (positiveList.includes(key)) return true;
+      return billing[key] === shipping[key];
+    });
   }
 );
 
@@ -139,6 +176,65 @@ export const getCheckoutOrderLineItemsAsCartItems = createSelector(
 );
 
 /**
+ * Returns whether the active order is a pure reservation.
+ */
+export const getIsReserveOnly = createSelector(
+  getCheckoutOrder,
+  (order) => {
+    if (!order) return null;
+
+    return isReserveOnlyOrder(order);
+  }
+);
+
+/**
+ * Returns whether the current order just consists out of directShip items
+ */
+export const getIsDirectShipOnly = createSelector(
+  getCheckoutOrderLineItems,
+  (lineItems) => {
+    if (!Array.isArray(lineItems) || lineItems.length === 0) {
+      return false;
+    }
+
+    return lineItems.every(({ fulfillmentMethod }) => fulfillmentMethod === DIRECT_SHIP);
+  }
+);
+
+export const getHasDirectShipItems = createSelector(
+  getCheckoutOrderLineItems,
+  (lineItems) => {
+    if (!Array.isArray(lineItems) || lineItems.length === 0) {
+      return false;
+    }
+
+    return lineItems.some(({ fulfillmentMethod }) => fulfillmentMethod === DIRECT_SHIP);
+  }
+);
+
+export const getHasROPEItems = createSelector(
+  getCheckoutOrderLineItems,
+  (lineItems) => {
+    if (!Array.isArray(lineItems) || lineItems.length === 0) {
+      return false;
+    }
+
+    return lineItems.some(({ fulfillmentMethod }) => [ROPIS, BOPIS].includes(fulfillmentMethod));
+  }
+);
+
+/**
+ * Returns whether the shipping address selection is enabled
+ */
+export const getIsShippingAddressSelectionEnabled = createSelector(
+  getHasDirectShipItems,
+  isUserLoggedIn,
+  hasDirectShipItems => hasDirectShipItems
+);
+
+export const getIsPickupContactSelectionEnabled = getHasROPEItems;
+
+/**
  * Returns a list of tax lines for the order summary.
  * @param {Object} state The application state.
  * @returns {Object}
@@ -148,17 +244,5 @@ export const getCheckoutTaxLines = createSelector(
   (order) => {
     if (!order) return [];
     return getCheckoutTaxLinesFromOrder(order);
-  }
-);
-
-/**
- * Returns whether the active order is a pure reservation.
- */
-export const getIsReserveOnly = createSelector(
-  getCheckoutOrder,
-  (order) => {
-    if (!order) return null;
-
-    return isReserveOnlyOrder(order);
   }
 );

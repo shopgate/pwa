@@ -16,11 +16,16 @@ class Select extends Component {
     errorText: PropTypes.node,
     isControlled: PropTypes.bool,
     label: PropTypes.node,
+    multiple: PropTypes.bool,
     onChange: PropTypes.func,
     options: PropTypes.shape(),
     placeholder: PropTypes.node,
+    size: PropTypes.number,
     translateErrorText: PropTypes.bool,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
   };
 
   static defaultProps = {
@@ -32,8 +37,10 @@ class Select extends Component {
     onChange: () => {},
     options: {},
     translateErrorText: true,
+    size: null,
     value: '',
     disabled: false,
+    multiple: false,
   };
 
   /**
@@ -63,10 +70,17 @@ class Select extends Component {
    * @param {string} value The entered text.
    */
   handleChange = ({ target }) => {
-    if (!this.props.isControlled) {
-      this.setState({ value: target.value });
+    const { multiple } = this.props;
+
+    let { value } = target;
+    if (multiple) {
+      value = Array.from(target.selectedOptions, option => option.value);
     }
-    this.props.onChange(target.value);
+
+    if (!this.props.isControlled) {
+      this.setState({ value });
+    }
+    this.props.onChange(value);
   };
 
   /**
@@ -81,7 +95,7 @@ class Select extends Component {
    */
   render() {
     const {
-      name, options, translateErrorText, disabled,
+      name, options, translateErrorText, disabled, multiple, size,
     } = this.props;
     return (
       <FormElement
@@ -105,6 +119,10 @@ class Select extends Component {
           value={this.state.value}
           className={classNames(styles.select, 'select')}
           disabled={disabled}
+          {...multiple && {
+            multiple,
+            size,
+          }}
         >
           {
             Object.keys(options).map(key => (

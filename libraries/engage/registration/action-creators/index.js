@@ -7,14 +7,12 @@ import {
 
 /**
  * Creates the dispatched REQUEST_REGISTRATION action object.
- * @param {Array} contacts An array of contacts for the registration
- * @param {Object} additionalData Additional data for the request.
+ * @param {Object} customer The customer data
  * @returns {Object} The dispatched action object.
  */
-export const requestRegistration = (contacts, additionalData) => ({
+export const requestRegistration = customer => ({
   type: REQUEST_REGISTRATION,
-  contacts,
-  additionalData,
+  customer,
 });
 
 /**
@@ -30,15 +28,13 @@ export const successRegistration = response => ({
 /**
  * Creates the dispatched ERROR_REGISTRATION action object.
  * @param {Error} error An error object
- * @param {Array} contacts An array of contacts for the registration
- * @param {Object} additionalData Additional data for the request.
+ * @param {Object} customer The customer data
  * @returns {Object} The dispatched action object.
  */
-export const errorRegistration = (error, contacts, additionalData) => ({
+export const errorRegistration = (error, customer) => ({
   type: ERROR_REGISTRATION,
   error,
-  contacts,
-  additionalData,
+  customer,
 });
 
 /**

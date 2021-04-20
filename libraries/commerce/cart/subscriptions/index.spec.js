@@ -30,6 +30,7 @@ jest.mock('@shopgate/pwa-common/actions/router', () => ({
 
 jest.mock('../actions/addCouponsToCart', () => jest.fn());
 jest.mock('../actions/addProductsToCart', () => jest.fn());
+jest.mock('../actions/updateProductsInCart', () => jest.fn());
 
 describe('Cart subscriptions', () => {
   const subscribe = jest.fn();

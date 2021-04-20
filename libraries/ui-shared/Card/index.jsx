@@ -7,8 +7,8 @@ import styles from './style';
  * @param {Object} props The component properties.
  * @returns {JSX}
  */
-const Card = ({ className, children }) => (
-  <div className={`${styles} ${className}`}>
+const Card = ({ className, children, id }) => (
+  <div className={`${styles} ${className}`} id={id}>
     {children}
   </div>
 );
@@ -16,10 +16,12 @@ const Card = ({ className, children }) => (
 Card.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  id: PropTypes.string,
 };
 
 Card.defaultProps = {
   className: '',
+  id: null,
 };
 
 export default Card;

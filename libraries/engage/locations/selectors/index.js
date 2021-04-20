@@ -5,7 +5,6 @@ import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateS
 import { getProduct } from '@shopgate/engage/product/selectors/product';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { getIsLocationBasedShopping } from '@shopgate/engage/core';
-
 import { makeGetEnabledFulfillmentMethods } from '../../core/config';
 import { makeIsProductActive, makeIsBaseProductActive } from '../../product/selectors/product';
 import { isProductAvailable } from '../helpers/productInventory';
@@ -38,7 +37,7 @@ const getLocationsState = state => state.locations || {};
  * @param {Object} state State.
  * @return {Object}
  */
-const getLocationsStorage = state => state.locations.storage;
+export const getLocationsStorage = state => state.locations.storage;
 
 /**
  * Retrieves the store finder search.
@@ -462,4 +461,3 @@ export const makeGetFulfillmentSlotsForLocation = getLocationCode => createSelec
   getLocationCode,
   (storage, locationCode) => storage.fulfillmentSlotsByLocation?.[locationCode]
 );
-

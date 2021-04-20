@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
-import connect from './CartItemSubscription.connector';
+import {
+  BOPIS,
+  ROPIS,
+} from '@shopgate/engage/locations';
+import connect from './CartItemSubstitution.connector';
 import { useCartItem } from './CartItem.hooks';
 import Substitution, { SubstitutionWrapper } from '../Substitution';
 import { root } from './CartItemSubstitution.style';
@@ -12,7 +16,12 @@ import { root } from './CartItemSubstitution.style';
  * @returns {JSX}
  */
 const CartItemSubstitution = ({ setSubstitutionAllowed, editable }) => {
-  const { cartItem: { id, substitutionAllowed } } = useCartItem();
+  const { cartItem: { id, substitutionAllowed, fulfillment } } = useCartItem();
+
+  if (![ROPIS, BOPIS].includes(fulfillment?.method)) {
+    return null;
+  }
+
   return (
     <SubstitutionWrapper>
       <Substitution

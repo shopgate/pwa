@@ -13,5 +13,6 @@ export const SHOP_SETTING_IMAGES = 'images';
 export const SHOP_SETTING_IMAGES_PRODUCT_PLACEHOLDER = 'productPlaceholder';
 export const SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER = 'categoryPlaceholder';
 export const SHOP_SETTING_IMAGES_FAVICON = 'favicon';
+export const SHOP_SETTING_NUMBER_OF_ADDRESS_LINES = 'numberOfAddressLines';
 
 export const WISHLIST_MODE_PERSIST_ON_ADD = 'persistOnAdd';

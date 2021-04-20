@@ -199,7 +199,20 @@ export default function routerSubscriptions(subscribe) {
         }
       }
 
-      location = redirect;
+      // Add query parameters from the original location to the redirect
+      const parsedLocation = queryString.parseUrl(location);
+      const parsedRedirect = queryString.parseUrl(redirect);
+
+      const stringifiedQuery = queryString.stringify({
+        ...parsedLocation.query,
+        ...parsedRedirect.query,
+      });
+
+      const finalRedirect = stringifiedQuery ?
+        `${parsedRedirect.url}?${stringifiedQuery}` :
+        parsedRedirect.url;
+
+      location = finalRedirect;
     }
 
     const parsed = queryString.parseUrl(location);

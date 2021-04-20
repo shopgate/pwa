@@ -70,6 +70,8 @@ export {
   getAppliedPromotionsWithoutCoupons,
   getPromotionCoupons,
   hasLineItemPromotions,
+  hasDirectShipItems,
+  isDirectShipOnly,
 } from './cart.selectors';
 
 // STREAMS
