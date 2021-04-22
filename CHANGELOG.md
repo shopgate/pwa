@@ -1,5 +1,16 @@
 # Changelog
 
+## [v6.15.0](https://github.com/shopgate/pwa/compare/...v6.15.0) (2021-04-22)
+
+#### :rocket: Enhancement
+* [#1080](https://github.com/shopgate/pwa/pull/1080) Cart product quantity picker style class is added ([@alexbridge](https://github.com/alexbridge))
+* [#1079](https://github.com/shopgate/pwa/pull/1079) Added portal for headline on browse page ([@Carsten89](https://github.com/Carsten89))
+
+#### :bug: Bug Fix
+* [#1081](https://github.com/shopgate/pwa/pull/1081) Fix sorting by price for Product Widgets ([@alexbridge](https://github.com/alexbridge))
+* [#1077](https://github.com/shopgate/pwa/pull/1077) Fix issues related to React fiber nodes reconciliations  ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.13.13](https://github.com/shopgate/pwa/compare/v6.13.12...v6.13.13) (2021-03-09)
 
 #### :rocket: Enhancement
