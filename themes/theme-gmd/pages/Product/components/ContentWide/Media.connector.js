@@ -3,8 +3,6 @@ import {
   getProduct,
   getProductImages,
 } from '@shopgate/engage/product';
-import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
-import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
 
 /**
  * Creates the mapStateToProps connector function.
@@ -14,14 +12,13 @@ import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
  */
 const mapStateToProps = (state, props) => {
   const product = getProduct(state, props);
-  const featured = product?.featuredImageUrl;
+  const featured = product?.featuredImageBaseUrl || product?.featuredImageUrl;
 
   return {
     featuredImage: featured,
     images: getProductImages(state, {
       ...props,
       productId: props.variantId || props.productId,
-      formats: productImageFormats.get(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY),
     }) || [],
   };
 };

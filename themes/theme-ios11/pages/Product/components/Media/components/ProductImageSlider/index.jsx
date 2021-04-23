@@ -42,7 +42,6 @@ class ProductImageSlider extends Component {
   };
 
   /**
-  /**
    *
    * @inheritDoc
    */

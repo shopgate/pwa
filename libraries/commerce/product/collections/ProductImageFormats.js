@@ -57,4 +57,7 @@ class ProductImageFormats {
   }
 }
 
+/**
+ * @deprecated
+ */
 export default new ProductImageFormats();
