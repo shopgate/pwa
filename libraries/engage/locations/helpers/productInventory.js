@@ -11,6 +11,8 @@ export function isProductAvailable(location = {}, inventory = {}) {
     visible = 0,
   } = inventory || {};
 
+  console.warn(isAvailable, visible, isComingSoon);
+
   if (isComingSoon) {
     return false;
   }

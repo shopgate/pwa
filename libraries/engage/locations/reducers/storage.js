@@ -9,7 +9,7 @@ import {
   ERROR_PRODUCT_LOCATIONS,
   STORE_FULFILLMENT_METHOD,
   SELECT_LOCATION,
-  FETCH_FULFILLMENT_SLOTS_SUCCESS,
+  FETCH_FULFILLMENT_SLOTS_SUCCESS, RECEIVE_PRODUCT_INVENTORIES,
 } from '../constants';
 
 const initialState = {
@@ -89,7 +89,19 @@ export default (state = initialState, action) => {
         draft.pending = false;
         break;
       }
+      case RECEIVE_PRODUCT_INVENTORIES: {
+        action.inventories.forEach((inventory) => {
+          const { locationCode, ...rest } = inventory;
+          const key = generateSortedHash({
+            productCode: action.productCode,
+            locationCode,
+          });
 
+          draft.inventoriesByCodePair[key] = rest;
+        });
+
+        break;
+      }
       case RECEIVE_PRODUCT_LOCATIONS: {
         // Store all missing locations.
         storeLocationData(draft, action.locations);

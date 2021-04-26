@@ -71,7 +71,7 @@ function StoreListSearch({
   });
 
   useLayoutEffect(() => {
-    if ((!isLoading || message === 'locations.error_no_store_found') && (!locations || locations.length === 0)) {
+    if (!isLoading && (!locations || locations.length === 0)) {
       // Set a message when a location search resulted in zero locations.
       setMessage('locations.error_no_store_found');
     } else {

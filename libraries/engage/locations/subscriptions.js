@@ -1,4 +1,4 @@
-import { receivedVisibleProduct$ } from '@shopgate/engage/product';
+import { productIsReady$, variantDidChange$ } from '@shopgate/engage/product';
 import {
   cartReceived$,
   cartWillEnter$,
@@ -7,7 +7,13 @@ import {
   getCartItems,
 } from '@shopgate/engage/cart';
 import { userDidLogin$ } from '@shopgate/engage/user';
-import { receiveCoreConfig$, appDidStart$, routeWillEnter$ } from '@shopgate/engage/core';
+import {
+  receiveCoreConfig$,
+  appDidStart$,
+  routeWillEnter$,
+  UIEvents,
+  getCurrentRoute, hex2bin, getThemeSettings,
+} from '@shopgate/engage/core';
 import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import {
   getUserSearch, getStoreFinderSearch, getPreferredLocation, getIsPending,
@@ -20,6 +26,8 @@ import {
   userSearchChanged$,
   storeFinderWillEnter$,
 } from './locations.streams';
+import fetchProductInventories from './actions/fetchProductInventories';
+import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
 
 let initialLocationsResolve;
 let initialLocationsReject;
@@ -53,16 +61,45 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
  * Locations subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-function locations(subscribe) {
+function locationsSubscriber(subscribe) {
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
     // Fetch merchants locations.
     const userSearch = getUserSearch(getState());
     try {
-      const result = await dispatch(fetchLocations(userSearch));
-      initialLocationsResolve(result);
+      const { locations } = await dispatch(fetchLocations(userSearch));
+
+      // Preset preferredLocation if configured
+      const { preferredLocationDefault } = getThemeSettings('@shopgate/engage/locations') || {};
+      if (preferredLocationDefault) {
+        const preferredLocation = getPreferredLocation(getState());
+
+        // check if there is already a preferredLocation for the user, if not set one
+        if (!preferredLocation) {
+          const locationToPreselect = locations.find(l => l.code === preferredLocationDefault);
+          if (locationToPreselect) {
+            dispatch(selectLocation({ code: preferredLocationDefault }));
+          }
+        }
+      }
+
+      initialLocationsResolve(locations);
     } catch (error) {
       initialLocationsReject(error);
     }
+
+    UIEvents.addListener(EVENT_SET_OPEN, () => {
+      const route = getCurrentRoute(getState());
+
+      if (!route.params.productId && !route.state.productId) {
+        return;
+      }
+
+      const productId = route.state.productId || hex2bin(route.params.productId);
+
+      if (productId) {
+        dispatch(fetchProductLocations(productId, userSearch));
+      }
+    });
   });
 
   subscribe(userSearchChanged$, async ({ dispatch, getState, action }) => {
@@ -84,7 +121,8 @@ function locations(subscribe) {
     }
   });
 
-  subscribe(receivedVisibleProduct$.debounceTime(100), ({ action, dispatch, getState }) => {
+  const productInventoryNeedsUpdate$ = productIsReady$.merge(variantDidChange$).debounceTime(100);
+  subscribe(productInventoryNeedsUpdate$, ({ action, dispatch, getState }) => {
     const { productData } = action;
 
     // Skip if no fulfillment methods are set.
@@ -96,12 +134,17 @@ function locations(subscribe) {
       return;
     }
 
-    // Fetch locations for this specific product.
-    const userSearch = getUserSearch(getState());
-    dispatch(fetchProductLocations(action.productData.id, userSearch));
+    const state = getState();
+    const preferredLocation = getPreferredLocation(state);
 
-    // Fetch all locations for product without filters.
-    dispatch(fetchProductLocations(action.productData.id, {}));
+    if (!preferredLocation) {
+      return;
+    }
+
+    // Fetch inventories for this specific product.
+    dispatch(fetchProductInventories(action.productData.id, {
+      locationCodes: [preferredLocation.code],
+    }));
   });
 
   // Core config and cart subscriptions
@@ -182,4 +225,4 @@ function locations(subscribe) {
   });
 }
 
-export default locations;
+export default locationsSubscriber;

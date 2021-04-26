@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ENOTFOUND } from '@shopgate/pwa-core';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$, routeDidUpdate$ } from '@shopgate/pwa-common/streams/router';
+import { productRouteReappeared$ } from '@shopgate/pwa-tracking/streams/product';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { getBaseProduct } from '../selectors/product';
@@ -86,6 +87,14 @@ export const receivedVisibleProduct$ = productReceived$.merge(cachedProductRecei
 
     return action.productData.id === hex2bin(route.params.productId);
   });
+
+/**
+ * Emits when a product page was initially opened and its data is present.
+ */
+export const productIsReady$ = productWillEnter$
+  // Take care that the stream only emits when underlying streams emit within the correct order.
+  .switchMap(() => receivedVisibleProduct$.first())
+  .merge(productRouteReappeared$);
 
 /** Dispatched when ERROR_PRODUCT ENOTFOUND of visible product is received */
 export const visibleProductNotFound$ = errorProductNotFound$
