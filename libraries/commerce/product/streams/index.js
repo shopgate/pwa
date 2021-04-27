@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ENOTFOUND } from '@shopgate/pwa-core';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$, routeDidUpdate$ } from '@shopgate/pwa-common/streams/router';
-import { productRouteReappeared$ } from '@shopgate/pwa-tracking/streams/product';
+import { pwaDidAppear$ } from '@shopgate/pwa-common/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { getBaseProduct } from '../selectors/product';
@@ -23,6 +23,12 @@ import {
   ERROR_PRODUCT_SHIPPING,
   PRODUCT_NOT_AVAILABLE,
 } from '../constants';
+
+/**
+ * Emits when the category route comes active again after a legacy page was active.
+ */
+export const productRouteReappeared$ = pwaDidAppear$
+  .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
 
 export const productWillEnter$ = routeWillEnter$.merge(routeDidUpdate$)
   .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
