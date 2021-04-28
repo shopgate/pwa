@@ -141,7 +141,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     errorText=""
     hasPlaceholder={true}
     hasUnderline={true}
-    hasValue={false}
+    hasValue={true}
     htmlFor="test-name"
     isFocused={false}
     label=""
@@ -160,7 +160,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        value=""
+        value="DE"
       >
         <option
           className="option"
