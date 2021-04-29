@@ -498,17 +498,6 @@
         "label": "Scanner settings: icon on/off, etc"
       }
     },
-    "favorites": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": {
-        "limit": 100
-      },
-      "params": {
-        "type": "json",
-        "label": "Favorites settings: limits, etc"
-      }
-    },
     "hideProductImageShadow": {
       "type": "admin",
       "destination": "frontend",
