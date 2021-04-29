@@ -1,5 +1,11 @@
 /** @module favorites */
 
+// ACTION CREATORS
+export {
+  addProductToFavorites,
+  removeProductFromFavorites,
+} from '@shopgate/pwa-common-commerce/favorites/action-creators';
+
 // ACTIONS
 export { default as fetchFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/fetchFavorites';
 export {

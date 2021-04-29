@@ -6,6 +6,9 @@ export const ITEM_WRITE_REVIEW_PATTERN = `${ITEM_PATH}/:productId/write_review`;
 
 export const PRODUCT_LIFETIME = 3600000; // 1 hour in milliseconds
 
+export const PROVIDE_PRODUCT_BUFFER_TIME = 200;
+export const PROVIDE_PRODUCT = 'PROVIDE_PRODUCT';
+
 // PRODUCT
 export const REQUEST_PRODUCT = 'REQUEST_PRODUCT';
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';

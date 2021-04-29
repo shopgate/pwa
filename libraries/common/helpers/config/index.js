@@ -37,7 +37,6 @@ const defaultAppConfig = {
   },
   cart: {},
   scanner: {},
-  favorites: {},
   tracking: {
     hasWebTrackingEngage: false,
   },

@@ -1,10 +1,7 @@
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import {
-  userDidLogin$,
-  userDidLogout$,
-} from '@shopgate/pwa-common/streams/user';
+import { userDidLogin$ } from '@shopgate/pwa-common/streams/user';
 import {
   FAVORITES_PATH,
   ADD_PRODUCT_TO_FAVORITES,
@@ -37,20 +34,28 @@ import {
 export const favoritesWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === FAVORITES_PATH);
 
+export const addProductToFavorites$ = main$
+  .filter(({ action }) => action.type === ADD_PRODUCT_TO_FAVORITES);
+
+export const removeProductFromFavorites$ = main$
+  .filter(({ action }) => action.type === REMOVE_PRODUCT_FROM_FAVORITES);
+
+export const addOrRemoveFavorites$ = addProductToFavorites$.merge(removeProductFromFavorites$);
+export const addOrRemoveFavoritesDebounced$ = addOrRemoveFavorites$
+  .debounceTime(FETCH_FAVORITES_THROTTLE);
+
 /**
  * Gets triggered when the debounce time of `addProductToFavorites` passes.
  * @type {Observable}
  */
-export const addProductToFavoritesDebounced$ = main$
-  .filter(({ action }) => action.type === ADD_PRODUCT_TO_FAVORITES)
+export const addProductToFavoritesDebounced$ = addProductToFavorites$
   .debounceTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
 
 /**
  * Gets triggered when the debounce time of `removeProductFromFavorites` passes.
  * @type {Observable}
  */
-export const removeProductFromFavoritesDebounced$ = main$
-  .filter(({ action }) => action.type === REMOVE_PRODUCT_FROM_FAVORITES)
+export const removeProductFromFavoritesDebounced$ = removeProductFromFavorites$
   .debounceTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
 
 /**
@@ -84,7 +89,7 @@ export const shouldFetchFavorites$ = favoritesWillEnter$.merge(appDidStart$);
  * Gets triggered when the favorite list should be refreshed (without
  * @type {Observable}
  */
-export const shouldFetchFreshFavorites$ = userDidLogin$.merge(userDidLogout$);
+export const shouldFetchFreshFavorites$ = userDidLogin$;
 
 /**
  * Gets triggered when the favorites updated in any way.
@@ -102,6 +107,7 @@ export const favoritesDidUpdate$ = main$.filter(({ action }) => [
 /**
  * Gets triggered when an "add to favorites" action is being placed into the favorite list buffer.
  * @type {Observable}
+ * @deprecated
  */
 export const favoritesWillAddItem$ = main$
   .filter(({ action }) => action.type === REQUEST_ADD_FAVORITES);
@@ -109,6 +115,7 @@ export const favoritesWillAddItem$ = main$
 /**
  * Gets triggered when a single product has been successfully added to the favorite list.
  * @type {Observable}
+ * @deprecated
  */
 export const favoritesDidAddItem$ = main$
   .filter(({ action }) => action.type === SUCCESS_ADD_FAVORITES);
@@ -117,6 +124,7 @@ export const favoritesDidAddItem$ = main$
  * Gets triggered when a "remove from favorites" action is being placed into the favorite
  * list buffer.
  * @type {Observable}
+ * @deprecated
  */
 export const favoritesWillRemoveItem$ = main$
   .filter(({ action }) => action.type === REQUEST_REMOVE_FAVORITES);
@@ -124,6 +132,7 @@ export const favoritesWillRemoveItem$ = main$
 /**
  * Gets triggered when a single product has been successfully removed from the favorite list.
  * @type {Observable}
+ * @deprecated
  */
 export const favoritesDidRemoveItem$ = main$
   .filter(({ action }) => action.type === SUCCESS_REMOVE_FAVORITES);
@@ -131,6 +140,7 @@ export const favoritesDidRemoveItem$ = main$
 /**
  * Gets triggered when the favorite list has successfully been received from the backend.
  * @type {Observable}
+ * @deprecated
  */
 export const receiveFavorites$ = main$.filter(({ action }) => action.type === RECEIVE_FAVORITES);
 
@@ -138,6 +148,7 @@ export const receiveFavorites$ = main$.filter(({ action }) => action.type === RE
  * Gets triggered whenever all favorite changes have been successfully processed or once when
  * any of the buffered change requests fails.
  * @type {Observable}
+ * @deprecated
  */
 export const favoritesSyncIdle$ = main$
   .filter(({ action }) => action.type === IDLE_SYNC_FAVORITES);
@@ -145,12 +156,14 @@ export const favoritesSyncIdle$ = main$
 /**
  * Gets triggered when the favorites should be refreshed to maintain data consistency.
  * @type {Observable}
+ * @deprecated
  */
 export const refreshFavorites$ = favoritesSyncIdle$.debounceTime(FETCH_FAVORITES_THROTTLE);
 
 /**
  * Gets triggered when a product is requested to be added to or removed from the favorite list.
  * @type {Observable}
+ * @deprecated
  */
 export const didRequestAddOrRemoveFavorites$ = main$.filter(({ action }) => (
   action.type === REQUEST_ADD_FAVORITES || action.type === REQUEST_REMOVE_FAVORITES
@@ -159,6 +172,7 @@ export const didRequestAddOrRemoveFavorites$ = main$.filter(({ action }) => (
 /**
  * Gets triggered when the favorites action buffer should be flushed immediately.
  * @type {Observable}
+ * @deprecated
  */
 export const didRequestFlushFavoritesBuffer$ = main$
   .filter(({ action }) => action.type === REQUEST_FLUSH_FAVORITES_BUFFER);
@@ -167,6 +181,7 @@ export const didRequestFlushFavoritesBuffer$ = main$
  * Gets triggered when the favorites buffer is supposed to be flushed after some delay time or
  * when the `requestFlushFavoritesBuffer` action was triggered.
  * @type {Observable}
+ * @deprecated
  */
 export const didReceiveFlushFavoritesBuffer$ = didRequestAddOrRemoveFavorites$
   .buffer(didRequestAddOrRemoveFavorites$

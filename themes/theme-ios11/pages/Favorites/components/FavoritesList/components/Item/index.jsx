@@ -12,24 +12,18 @@ import styles from './style';
 
 /**
  * Renders Favorites list item.
- * @param {Object} product Product.
- * @returns {XML}
+ * @returns {JSX}
  */
 class Item extends Component {
   static propTypes = {
-    product: PropTypes.shape().isRequired,
+    product: PropTypes.shape(),
   };
 
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: true,
-    };
-  }
+  static defaultProps = {
+    product: null,
+  };
+
+  state = { visible: true }
 
   /**
    * Component did update callback.
@@ -66,6 +60,10 @@ class Item extends Component {
    * @returns {XML}
    */
   render() {
+    const { product } = this.props;
+    if (!product) {
+      return null;
+    }
     return (
       <Transition
         in={this.state.visible}

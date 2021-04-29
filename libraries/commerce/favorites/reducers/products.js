@@ -1,17 +1,24 @@
 import { uniq } from 'lodash';
+import { SUCCESS_LOGOUT } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
-  REQUEST_ADD_FAVORITES,
-  SUCCESS_ADD_FAVORITES,
-  CANCEL_REQUEST_SYNC_FAVORITES,
+  ADD_PRODUCT_TO_FAVORITES,
   ERROR_ADD_FAVORITES,
-  REQUEST_REMOVE_FAVORITES,
-  SUCCESS_REMOVE_FAVORITES,
   ERROR_REMOVE_FAVORITES,
-  REQUEST_FAVORITES,
-  ERROR_FETCH_FAVORITES,
-  RECEIVE_FAVORITES,
   FAVORITES_LIFETIME,
+  RECEIVE_FAVORITES_IDS,
+  REMOVE_PRODUCT_FROM_FAVORITES,
+  REQUEST_FAVORITES_IDS,
+  SUCCESS_ADD_FAVORITES,
+  SUCCESS_REMOVE_FAVORITES,
+  ERROR_FAVORITES_IDS,
 } from '../constants';
+
+const defaultState = {
+  expires: 0,
+  ids: [],
+  originalIds: [],
+  ready: false,
+};
 
 /**
  * Favorites reducer.
@@ -19,102 +26,90 @@ import {
  * @param {Object} action Dispatched action.
  * @returns {Object} New state.
  */
-const products = (state = {
-  lastChange: 0,
-  lastFetch: 0,
-  expires: 0,
-  ids: [],
-  syncCount: 0,
-}, action) => {
+const products = (state = defaultState, action) => {
   switch (action.type) {
-    case REQUEST_ADD_FAVORITES:
+    case ADD_PRODUCT_TO_FAVORITES: {
+      const adds = [].concat(action.productId);
       return {
         ...state,
-        ids: uniq([
-          ...state.ids,
-          action.productId,
-        ]),
-        lastChange: Date.now(),
-        syncCount: state.syncCount + 1,
+        ids: Array.from(new Set([...adds, ...state.ids])).filter(Boolean),
       };
-    case REQUEST_REMOVE_FAVORITES:
+    }
+    case REMOVE_PRODUCT_FROM_FAVORITES: {
+      const removes = [].concat(action.productId);
       return {
         ...state,
-        ids: state.ids.filter(id => id !== action.productId),
-        lastChange: Date.now(),
-        syncCount: state.syncCount + 1,
+        ids: state.ids.filter(id => !removes.includes(id)),
       };
-    case CANCEL_REQUEST_SYNC_FAVORITES:
-      // Sync count needs to be updated, when an add or a remove favorites action is cancelled
-      // This recovers from invalid sync states when a backend call is detected to be redundant
+    }
+
+    // Add succeeded to original storage
+    case SUCCESS_ADD_FAVORITES: {
+      const added = [].concat(action.productId);
       return {
         ...state,
-        syncCount: state.syncCount - action.count,
-        // ids must remain unchanged, because it's managed by all other actions
+        originalIds: Array.from(new Set([...added, ...state.originalIds])),
       };
-    case SUCCESS_ADD_FAVORITES:
-    case SUCCESS_REMOVE_FAVORITES:
+    }
+
+    // Remove succeeded from original storage
+    case SUCCESS_REMOVE_FAVORITES: {
+      const removed = [].concat(action.productId);
       return {
         ...state,
-        lastChange: Date.now(),
-        syncCount: state.syncCount - 1,
+        originalIds: state.originalIds.filter(id => !removed.includes(id))
+        ,
       };
-    case ERROR_ADD_FAVORITES:
+    }
+
+    case ERROR_ADD_FAVORITES: {
       // Clean up by removing the previously added product id
+      const added = [].concat(action.productId);
       return {
         ...state,
-        ids: state.ids.filter(id => id !== action.productId),
-        lastChange: Date.now(),
-        syncCount: state.syncCount - 1,
+        ids: state.ids.filter(id => !added.includes(id)),
       };
+    }
+
     case ERROR_REMOVE_FAVORITES:
       // Clean up by adding the previously removed product id back in
       return {
         ...state,
         ids: uniq([
+          ...[].concat(action.productId),
           ...state.ids,
-          action.productId,
         ]),
-        lastChange: Date.now(),
-        syncCount: state.syncCount - 1,
       };
-    case REQUEST_FAVORITES:
+
+    case REQUEST_FAVORITES_IDS:
       return {
         ...state,
         isFetching: true,
         ids: state.ids,
         expires: 0,
-        // No `ready` prop here! It should be undefined on first request and stay true later!
-        // `syncCount` stays untouched because this is not considered to be a sync.
       };
-    case RECEIVE_FAVORITES:
-      /**
-       * Note: When favorites are received, an add or remove request can be in progress. In this
-       *       case only fetching state will be updated and the received data will be discarded.
-       *       A new fetch request will be queued as soon as the sync is done, which will recover
-       *       discarded data.
-       */
+
+    case RECEIVE_FAVORITES_IDS:
       return {
         ...state,
-        ...(state.ready && (state.syncCount > 0 || state.lastChange > action.requestTimestamp))
-          ? { isFetching: false }
-          : {
-            isFetching: false,
-            expires: Date.now() + FAVORITES_LIFETIME,
-            ids: action.products.map(product => product.id),
-            ready: true,
-            // `syncCount` stays untouched because this is not considered to be a sync.
-          },
+        isFetching: false,
+        expires: Date.now() + FAVORITES_LIFETIME,
+        ids: action.productIds,
+        originalIds: action.productIds,
+        ready: true,
       };
-    case ERROR_FETCH_FAVORITES:
+
+    case ERROR_FAVORITES_IDS:
       return {
         ...state,
         isFetching: false,
         ids: state.ids,
         expires: 0,
-        ready: true,
-        // `syncCount` stays untouched because this is not considered to be a sync.
+        ready: false,
       };
+    case SUCCESS_LOGOUT:
+      return defaultState;
+
     default:
       return state;
   }
