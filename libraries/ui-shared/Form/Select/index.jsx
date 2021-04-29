@@ -57,6 +57,22 @@ class Select extends Component {
   }
 
   /**
+   * Corrects the selected value to the first option when the initial value is not located within
+   * the options.
+   */
+  componentDidMount() {
+    const { multiple, options } = this.props;
+    const { value } = this.state;
+
+    if (!multiple && options?.[value] === undefined) {
+      const fallback = Object.entries(options)?.[0]?.[0];
+      if (fallback !== undefined) {
+        this.handleChange({ target: { value: fallback } });
+      }
+    }
+  }
+
+  /**
    * Update state with new props.
    * @param {Object} nextProps The new props.
    */
