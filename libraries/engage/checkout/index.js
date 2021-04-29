@@ -9,7 +9,6 @@ export { submitCheckoutOrder } from '@shopgate/engage/checkout/actions/submitChe
 export { initializeCheckout } from '@shopgate/engage/checkout/actions/initializeCheckout';
 export { fetchPaymentMethods } from '@shopgate/engage/checkout/actions/fetchPaymentMethods';
 export { prepareCheckout } from '@shopgate/engage/checkout/actions/prepareCheckout';
-export { updateDefaultBillingContact } from '@shopgate/engage/checkout/actions/updateDefaultBillingContact';
 
 export {
   clearCheckoutOrder,
@@ -25,14 +24,18 @@ export { CHECKOUT_PATH };
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/checkout/selectors';
 export * from './selectors/guestCheckout';
+export * from './selectors/order';
 export * from './selectors/route';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/checkout/streams';
 
+// HOOKS
+export * from './hooks/common';
+
 // Components
 export { default as Checkout } from './components/Checkout/Checkout';
-export { default as CheckoutBillingChange } from './components/CheckoutAddresses/CheckoutBillingChange';
-export { default as GuestRegistration } from './components/GuestRegistration/GuestRegistration';
-export { default as GuestCheckoutPayment } from './components/GuestRegistration/GuestCheckoutPayment';
+export { default as GuestCheckoutPayment } from './components/GuestCheckout/GuestCheckout';
 export { default as CheckoutConfirmation } from './components/CheckoutConfirmation/CheckoutConfirmation';
+export { default as AddressBook } from './components/AddressBook';
+export { default as AddressBookContact } from './components/AddressBookContact';

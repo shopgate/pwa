@@ -4,13 +4,9 @@ import { shallow } from 'enzyme';
 import { getShippingLine } from '@shopgate/pwa-common-commerce/cart';
 import PaymentBarShippingCost from '../PaymentBarShippingCost';
 
-jest.mock('@shopgate/pwa-common-commerce/cart', () => {
-  const original = require.requireActual('@shopgate/pwa-common-commerce/cart');
-  return {
-    ...original, // Pass down all the exported objects
-    getShippingLine: jest.fn(),
-  };
-});
+jest.mock('@shopgate/pwa-common-commerce/cart', () => ({
+  getShippingLine: jest.fn(),
+}));
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useContext: () => ({

@@ -25,7 +25,10 @@ export type OwnProps = {
   updatePreferredLocation?: boolean,
   restrictMultiLocationOrders?: boolean,
   isCart?: boolean,
-  cartProducts?: Array<Object>
+  cartProducts?: Array<Object>,
+  fulfillmentSchedulingEnabled?: boolean,
+  activeFulfillmentSlotLocationCode?: string,
+  activeFulfillmentSlot?: Object
 };
 
 export type StateProps = {

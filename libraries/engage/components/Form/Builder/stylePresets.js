@@ -63,7 +63,7 @@ export const OUTLINED_FORM_FIELDS = {
       },
     } : {}),
   },
-  ' .formElement:not(.radioGroup) select': {
+  ' .formElement:not(.radioGroup) select, .formElement .info-field': {
     ...(!isIOSTheme() ? {
       paddingLeft: 16,
       color: 'var(--color-text-high-emphasis)',

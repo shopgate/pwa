@@ -198,31 +198,49 @@ export const getPromotionLinesFromOrder = (order = {}) =>
  * @param {Object} order An order object
  * @returns {Array}
  */
-export const getCheckoutTaxLinesFromOrder = (order = {}) => [
-  {
-    visible: true,
-    type: 'subTotal',
-    label: null,
-    value: order.subTotal || 0,
-    currencyCode: order.currencyCode,
-  },
-  ...getPromotionLinesFromOrder(order),
-  ...getCouponLinesFromOrder(order),
-  {
-    visible: order.taxAmount > 0,
-    type: 'tax',
-    label: null,
-    value: order.taxAmount || 0,
-    currencyCode: order.currencyCode,
-  },
-  {
-    visible: true,
-    type: 'total',
-    label: null,
-    value: order.total || 0,
-    currencyCode: order.currencyCode,
-  },
-];
+export const getCheckoutTaxLinesFromOrder = (order = {}) => {
+  const hasDirectShipItems = !!(order?.lineItems || []).find(
+    lineItem => lineItem?.fulfillmentMethod === DIRECT_SHIP
+  );
+  const hasSelectedShippingMethod = !!(order?.addressSequences || []).find(
+    address =>
+      address?.type === 'shipping' &&
+      !!address?.orderSegment?.selectedShippingMethod
+  );
+
+  return [
+    {
+      visible: true,
+      type: 'subTotal',
+      label: null,
+      value: order.subTotal || 0,
+      currencyCode: order.currencyCode,
+    },
+    ...getPromotionLinesFromOrder(order),
+    ...getCouponLinesFromOrder(order),
+    {
+      visible: hasDirectShipItems && hasSelectedShippingMethod,
+      type: 'shippingTotal',
+      label: null,
+      value: order.shippingTotal || 0,
+      currencyCode: order.currencyCode,
+    },
+    {
+      visible: order.taxAmount > 0,
+      type: 'tax',
+      label: null,
+      value: order.taxAmount || 0,
+      currencyCode: order.currencyCode,
+    },
+    {
+      visible: true,
+      type: 'total',
+      label: null,
+      value: order.total || 0,
+      currencyCode: order.currencyCode,
+    },
+  ];
+};
 
 /**
  * Checks if an order is a reserve only order
@@ -237,3 +255,15 @@ export const isReserveOnlyOrder = (order = {}) => {
   return !nonReserveItem;
 };
 
+/**
+ * Checks if an order is a direct ship only order
+ * @param {Object} order An order object
+ * @returns {boolean}
+ */
+export const isDirectShipOnlyOrder = (order = {}) => {
+  const nonDirectShipItem = order.lineItems.find(
+    lineItem => lineItem.fulfillmentMethod !== DIRECT_SHIP
+  );
+
+  return !nonDirectShipItem;
+};

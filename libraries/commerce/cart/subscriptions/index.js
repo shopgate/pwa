@@ -13,7 +13,13 @@ import {
 } from '@shopgate/pwa-common-commerce/product';
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import { checkoutSucceeded$ } from '@shopgate/pwa-common-commerce/checkout';
-import { DIRECT_SHIP, getPreferredLocation, getPreferredFulfillmentMethod } from '@shopgate/engage/locations';
+import {
+  DIRECT_SHIP,
+  ROPIS,
+  BOPIS,
+  getPreferredLocation,
+  getPreferredFulfillmentMethod,
+} from '@shopgate/engage/locations';
 import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
 import { errorBehavior } from '@shopgate/engage/core';
 import * as pipelines from '../constants/Pipelines';
@@ -141,18 +147,26 @@ export default function cart(subscribe) {
 
   subscribe(setFulfillmentSlot$, ({ dispatch, getState, action }) => {
     // When the fulfillment slot is set we need to update all line items.
-    const cartProducts = getCartProducts(getState());
-    if (!cartProducts.length) {
+    let products = getCartProducts(getState());
+    if (!products.length || !action?.fulfillmentSlot?.id) {
       return;
     }
 
-    // Update the slot id.
-    dispatch(updateProductsInCart(cartProducts.map(cartItem => ({
-      cartItemId: cartItem.id,
-      fulfillment: {
-        slotId: action.fulfillmentSlot.id,
-      },
-    }))));
+    products = products
+      .filter(product => [ROPIS, BOPIS].includes(product?.fulfillment?.method))
+      .map(product => ({
+        cartItemId: product.id,
+        fulfillment: {
+          slotId: action.fulfillmentSlot.id,
+        },
+      }));
+
+    if (!products.length) {
+      return;
+    }
+
+    // Update the slot id for ROPE products.
+    dispatch(updateProductsInCart(products));
   });
 
   subscribe(cartIdle$, ({ dispatch, getState }) => {

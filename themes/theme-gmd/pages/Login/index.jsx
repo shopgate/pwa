@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { REGISTER_PATH, LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import {
+  REGISTER_PATH,
+  LOGIN_PATH,
+  CHECKOUT_PATH,
+} from '@shopgate/pwa-common/constants/RoutePaths';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { View, TextLink } from '@shopgate/engage/components';
@@ -124,6 +128,8 @@ class Login extends Component {
    * @return {JSX}
    */
   render() {
+    const isCheckout = this.props.redirect?.location === CHECKOUT_PATH;
+
     return (
       <View aria-hidden={false}>
         <CloseBar shadow={false} />
@@ -178,7 +184,7 @@ class Login extends Component {
               <Portal name={PAGE_LOGIN_REGISTER_LINK}>
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
                 <TextLink
-                  href={REGISTER_PATH}
+                  href={`${REGISTER_PATH}${isCheckout ? '?checkout=1' : ''}`}
                   className={styles.signup}
                   disabled={this.props.isLoading || this.props.isDisabled}
                 >

@@ -6,6 +6,7 @@ import {
   SHOP_SETTING_IMAGES_PRODUCT_PLACEHOLDER,
   SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER,
   SHOP_SETTING_IMAGES_FAVICON,
+  SHOP_SETTING_NUMBER_OF_ADDRESS_LINES,
 } from '../constants/shopSettings';
 
 /**
@@ -81,4 +82,12 @@ export const getCategoryImagePlaceholder = createSelector(
 export const getFavicon = createSelector(
   getShopSettingImages,
   images => images?.[SHOP_SETTING_IMAGES_FAVICON] || null
+);
+
+/**
+ * Selects the number of address lines for registration / address forms
+ */
+export const getNumberOfAddressLines = makeGetShopSettingByKey(
+  SHOP_SETTING_NUMBER_OF_ADDRESS_LINES,
+  2
 );
