@@ -97,7 +97,7 @@ function locationsSubscriber(subscribe) {
       const productId = route.state.productId || hex2bin(route.params.productId);
 
       if (productId) {
-        dispatch(fetchProductLocations(productId, userSearch));
+        dispatch(fetchProductLocations(productId, getUserSearch(getState())));
       }
     });
   });
