@@ -10,6 +10,7 @@ import {
   getCheckoutOrder,
   getCheckoutBillingAddress,
   getCheckoutShippingAddress,
+  getIsPickupContactSelectionEnabled,
 } from '@shopgate/engage/checkout/selectors/order';
 import {
   updateCheckoutOrder as updateOrder,
@@ -30,6 +31,7 @@ const makeMapStateToProp = () => state => ({
   order: getCheckoutOrder(state),
   billingAddress: getCheckoutBillingAddress(state),
   shippingAddress: getCheckoutShippingAddress(state),
+  isPickupContactEnabled: getIsPickupContactSelectionEnabled(state),
 });
 
 const mapDispatchToProps = {
@@ -51,6 +53,7 @@ const AddressBookProvider = ({
   updateCheckoutOrder,
   fetchCheckoutOrder,
   historyPopToRoute,
+  isPickupContactEnabled,
 }) => {
   const [isLoading, setLoading] = useState(false);
   const { pathname, id: routeId, params: { type = ADDRESS_TYPE_BILLING } } = useRoute();
@@ -70,7 +73,7 @@ const AddressBookProvider = ({
     let primaryBillToAddressSequenceIndex = addressSequences
       .findIndex(address => address.type === 'billing');
     let primaryShipToAddressSequenceIndex = addressSequences
-      .findIndex(address => address.type === 'shipping');
+      .findIndex(address => address.type === 'shipping' || address.type === 'pickup');
 
     primaryBillToAddressSequenceIndex =
       primaryBillToAddressSequenceIndex !== -1
@@ -116,6 +119,16 @@ const AddressBookProvider = ({
           type: 'shipping',
         });
       }
+
+      const billingFromSequence = addressSequences.find(address => address.type === 'billing');
+
+      if (billingFromSequence && isPickupContactEnabled) {
+        addressSequences.push({
+          customerContactId: billingFromSequence.customerContactId,
+          type: 'pickup',
+        });
+      }
+
       await updateCheckoutOrder({
         addressSequences,
         ...createAddressSequenceIndexes(addressSequences),
@@ -129,7 +142,14 @@ const AddressBookProvider = ({
     }
 
     setLoading(false);
-  }, [billingAddress, popToCheckout, shippingAddress, type, updateCheckoutOrder]);
+  }, [
+    billingAddress,
+    isPickupContactEnabled,
+    popToCheckout,
+    shippingAddress,
+    type,
+    updateCheckoutOrder,
+  ]);
 
   const deleteContactFromOrder = useCallback(async (contactId) => {
     if (!Array.isArray(order?.addressSequences)) {
@@ -196,6 +216,7 @@ const AddressBookProvider = ({
 AddressBookProvider.propTypes = {
   fetchCheckoutOrder: PropTypes.func.isRequired,
   historyPopToRoute: PropTypes.func.isRequired,
+  isPickupContactEnabled: PropTypes.bool.isRequired,
   updateCheckoutOrder: PropTypes.func.isRequired,
   billingAddress: PropTypes.shape(),
   children: PropTypes.node,
