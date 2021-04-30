@@ -25,6 +25,7 @@ import {
   cartReceivedWithROPE$,
   userSearchChanged$,
   storeFinderWillEnter$,
+  preferredLocationDidUpdateOnPDP$,
 } from './locations.streams';
 import fetchProductInventories from './actions/fetchProductInventories';
 import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
@@ -121,7 +122,11 @@ function locationsSubscriber(subscribe) {
     }
   });
 
-  const productInventoryNeedsUpdate$ = productIsReady$.merge(variantDidChange$).debounceTime(100);
+  const productInventoryNeedsUpdate$ = productIsReady$
+    .merge(variantDidChange$)
+    .merge(preferredLocationDidUpdateOnPDP$)
+    .debounceTime(100);
+
   subscribe(productInventoryNeedsUpdate$, ({ action, dispatch, getState }) => {
     const { productData } = action;
 
