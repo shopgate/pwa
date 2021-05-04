@@ -28,6 +28,11 @@ export const storeCard = css({
   borderRadius: '0px 0px 3px 3px',
 }).toString();
 
+export const storeCardPlaceholder = css({
+  margin: '10px 0',
+  height: 36,
+}).toString();
+
 export const storeHeader = css({
   cursor: 'pointer',
   padding: `${baseCardPadding} ${gap.xsmall}px`,

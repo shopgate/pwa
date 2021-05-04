@@ -1,7 +1,10 @@
 import { main$ } from '@shopgate/pwa-common/streams';
 import { Observable } from 'rxjs/Observable';
 import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import { makeGetRoutePattern, getCurrentState } from '@shopgate/pwa-common/selectors/router';
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
+import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
+import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   SUBMIT_RESERVATION_SUCCESS,
   RECEIVE_PRODUCT_LOCATIONS,
@@ -87,3 +90,23 @@ export const storeFinderWillEnter$ = routeWillEnter$
 
 export const receiveLocations$ = main$
   .filter(({ action }) => action.type === RECEIVE_LOCATIONS);
+
+export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdate$
+  .filter(({ getState }) => {
+    const getRoutePattern = makeGetRoutePattern();
+    const routePattern = getRoutePattern(getState());
+    return routePattern === ITEM_PATTERN;
+  })
+  .switchMap(({ dispatch, getState, action }) => {
+    const state = getState();
+    const { productId } = getCurrentState(state);
+    const productData = getProductDataById(state, { productId });
+    return Observable.of({
+      action: {
+        ...action,
+        productData,
+      },
+      dispatch,
+      getState,
+    });
+  });
