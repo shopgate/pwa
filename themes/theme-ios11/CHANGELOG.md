@@ -1,5 +1,13 @@
 # Changelog
 
+## [v7.1.0](https://github.com/shopgate/pwa/compare/v7.0.1...v7.1.0) (2021-05-04)
+
+#### :rocket: Enhancement
+* [#1086](https://github.com/shopgate/pwa/pull/1086) Refactored product inventory and location fetching ([@Carsten89](https://github.com/Carsten89))
+* [#1076](https://github.com/shopgate/pwa/pull/1076) Support collectionOfValues customer attribute type ([@alexbridge](https://github.com/alexbridge))
+* [#1074](https://github.com/shopgate/pwa/pull/1074) Add portals to fulfillment selector ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
