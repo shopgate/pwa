@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import {
   Modal, Backdrop, ArrowIcon, Ripple,
 } from '@shopgate/engage/components';
-import { ProductImage } from '@shopgate/engage/product';
+import { ProductImage, getProductImageSettings } from '@shopgate/engage/product';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { css } from 'glamor';
 import connect from './Media.connector';
+
+const {
+  HeroImage: pdpResolutions,
+  GalleryImage: galleryResolutions,
+} = getProductImageSettings();
 
 const styles = {
   root: css({
@@ -153,6 +158,7 @@ const Media = ({ featuredImage, images }) => {
                 <ProductImage
                   onClick={() => handleOpenGallery(0)}
                   src={images[imageIndex]}
+                  resolutions={galleryResolutions}
                 />
               </div>
               <div className={styles.modalGallery}>
@@ -162,7 +168,10 @@ const Media = ({ featuredImage, images }) => {
                     onClick={() => handleOpenGallery(index)}
                     className={`${styles.modalPreview} ${index === imageIndex && styles.modalPreviewActive}`}
                   >
-                    <ProductImage src={image} />
+                    <ProductImage
+                      src={image}
+                      resolutions={galleryResolutions}
+                    />
                   </div>
                 ))}
               </div>
@@ -181,6 +190,7 @@ const Media = ({ featuredImage, images }) => {
         <ProductImage
           className={styles.image}
           src={featuredImage}
+          resolutions={pdpResolutions}
         />
       </div>
       <div className={styles.gallery}>
@@ -191,7 +201,10 @@ const Media = ({ featuredImage, images }) => {
               onClick={() => handleOpenGallery(index + 1)}
               className={styles.item}
             >
-              <ProductImage src={image} />
+              <ProductImage
+                src={image}
+                resolutions={pdpResolutions}
+              />
             </div>
           )))
           : null
