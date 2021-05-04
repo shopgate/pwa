@@ -15,3 +15,6 @@ export { default as requestProductLocations } from './requestProductLocations';
 export { default as submitReservationRequest } from './submitReservationRequest';
 export { default as submitReservationSuccess } from './submitReservationSuccess';
 export { default as submitReservationError } from './submitReservationError';
+export { default as requestProductInventories } from './requestProductInventories';
+export { default as receiveProductInventories } from './receiveProductInventories';
+export { default as errorProductInventories } from './errorProductInventories';

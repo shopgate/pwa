@@ -211,6 +211,9 @@
       },
       "default": {
         "settings": {
+          "@shopgate/engage/locations": {
+            "preferredLocationDefault": null
+          },
           "AppImages": {
             "quality": 75,
             "fillColor": "FFFFFF,1",

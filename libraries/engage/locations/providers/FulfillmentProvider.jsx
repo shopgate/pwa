@@ -35,7 +35,7 @@ import {
 } from './FulfillmentProvider.types';
 import connect from './FulfillmentProvider.connector';
 
-const EVENT_SET_OPEN = 'FulfillmentProvider.setOpen';
+export const EVENT_SET_OPEN = 'FulfillmentProvider.setOpen';
 
 type Props = OwnProps & StateProps & DispatchProps;
 
