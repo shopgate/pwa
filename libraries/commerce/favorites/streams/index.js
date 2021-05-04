@@ -115,7 +115,6 @@ export const favoritesWillAddItem$ = main$
 /**
  * Gets triggered when a single product has been successfully added to the favorite list.
  * @type {Observable}
- * @deprecated
  */
 export const favoritesDidAddItem$ = main$
   .filter(({ action }) => action.type === SUCCESS_ADD_FAVORITES);
@@ -132,7 +131,6 @@ export const favoritesWillRemoveItem$ = main$
 /**
  * Gets triggered when a single product has been successfully removed from the favorite list.
  * @type {Observable}
- * @deprecated
  */
 export const favoritesDidRemoveItem$ = main$
   .filter(({ action }) => action.type === SUCCESS_REMOVE_FAVORITES);
