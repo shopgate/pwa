@@ -104,7 +104,7 @@ const Media = ({ featuredImage, images }) => {
    * @param {number} index Image index.
    */
   const handleOpenGallery = (index) => {
-    if (images.length <= 1) {
+    if (images.length < 1) {
       return;
     }
     setGalleryOpen(true);
