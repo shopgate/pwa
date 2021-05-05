@@ -56,7 +56,7 @@ class Price extends Component {
           smallStriked
           className={styles.price}
         />
-        {info !== '' && (
+        {!!info && (
           <PriceInfo text={info} className={styles.basePrice} />
         )}
       </Fragment>
