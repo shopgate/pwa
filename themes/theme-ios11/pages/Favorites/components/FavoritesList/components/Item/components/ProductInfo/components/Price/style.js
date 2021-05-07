@@ -9,6 +9,7 @@ const price = css({
   textAlign: 'right',
   display: 'flex',
   alignContent: 'stretch',
+  justifyContent: 'flex-end',
 }).toString();
 
 const basePrice = css({
