@@ -69,15 +69,15 @@ export default function favorites(subscribe) {
   /**
    * Add relatives to added/removes fav and re-dispatch action
    */
-  subscribe(addOrRemoveFavorites$, (props) => {
-    const { productId, withRelatives } = props.action;
+  subscribe(addOrRemoveFavorites$, ({ action, getState, dispatch }) => {
+    const { productId, withRelatives } = action;
     if (!withRelatives) {
       return;
     }
-    const ids = getProductRelativesOnFavorites(props.getState(), { productId });
+    const ids = getProductRelativesOnFavorites(getState(), { productId });
     if (ids.length) {
-      props.dispatch({
-        ...props.action,
+      dispatch({
+        ...action,
         productId: ids,
         withRelatives: false,
       });
