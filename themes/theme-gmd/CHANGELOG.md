@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.16.0](https://github.com/shopgate/pwa/compare/v6.15.0...v6.16.0) (2021-05-11)
+
+#### :rocket: Enhancement
+* [#1087](https://github.com/shopgate/pwa/pull/1087) Remove limits for favorites and use lazy loading ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#1088](https://github.com/shopgate/pwa/pull/1088) Align fav item price ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.15.0](https://github.com/shopgate/pwa/compare/...v6.15.0) (2021-04-22)
 
 #### :rocket: Enhancement
