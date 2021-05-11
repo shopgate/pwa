@@ -72,6 +72,7 @@ export { default as ProductSlider } from './components/ProductSlider';
 export { default as Options } from './components/Options';
 export { default as Characteristics } from './components/Characteristics';
 export { default as Rating } from './components/Rating';
+export { default as ProductProvider } from './components/ProductProvider';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';

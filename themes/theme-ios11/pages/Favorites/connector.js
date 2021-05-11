@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
-import {
-  getFavorites,
-  isInitialLoading,
-} from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getFavoritesCount, isInitialLoading } from '@shopgate/engage/favorites';
 
 /**
  * Maps state to props.
@@ -10,25 +7,8 @@ import {
  * @returns {Object}
  */
 const mapStateToProps = state => ({
-  products: getFavorites(state),
+  hasFavorites: getFavoritesCount(state) > 0,
   initialLoading: isInitialLoading(state),
 });
 
-/**
- * @param {Object} next The next component props.
- * @param {Object} prev The previous component props.
- * @return {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (prev.products.length !== next.products.length) {
-    return false;
-  }
-
-  if (prev.initialLoading !== next.initialLoading) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps);

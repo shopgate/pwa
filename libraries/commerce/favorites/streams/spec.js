@@ -4,7 +4,6 @@ import {
   APP_DID_START,
   ROUTE_WILL_ENTER,
   SUCCESS_LOGIN,
-  SUCCESS_LOGOUT,
 } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   favoritesWillEnter$,
@@ -227,8 +226,7 @@ describe('Favorites streams', () => {
     it('should call subscribers to fetch fresh favorites on every login and logout', () => {
       shouldFetchFreshFavorites$.subscribe(subscriber);
       mainSubject.next({ action: { type: SUCCESS_LOGIN } });
-      mainSubject.next({ action: { type: SUCCESS_LOGOUT } });
-      expect(subscriber).toHaveBeenCalledTimes(2);
+      expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
     it('should call subscribers on any other action', () => {

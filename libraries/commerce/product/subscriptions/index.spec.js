@@ -7,7 +7,6 @@ import subscription from './index';
 import errorProduct from '../action-creators/errorProduct';
 import fetchProductImages from '../actions/fetchProductImages';
 import { galleryWillEnter$, productRelationsReceived$ } from '../streams';
-import { productImageFormats } from '../collections';
 
 const mockedGetProductsById = jest.fn();
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => jest.fn());
@@ -28,7 +27,7 @@ describe('Product subscription', () => {
   });
 
   it('should subscribe', () => {
-    expect(subscribe).toHaveBeenCalledTimes(9);
+    expect(subscribe).toHaveBeenCalledTimes(10);
   });
 
   describe('galleryWillEnter$', () => {

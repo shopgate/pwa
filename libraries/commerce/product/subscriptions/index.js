@@ -23,6 +23,7 @@ import {
   errorProductResourcesNotFound$,
   visibleProductNotFound$,
   productNotAvailable$,
+  fetchProductsRequested$,
 } from '../streams';
 import fetchProductsById from '../actions/fetchProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
@@ -174,6 +175,10 @@ function product(subscribe) {
     const [{ dispatch }] = buffered;
     const productIds = buffered.map(params => params.action.productId);
     dispatch(expireProductById(productIds, true));
+  });
+
+  subscribe(fetchProductsRequested$, ({ dispatch, action: { productId } }) => {
+    dispatch(fetchProductsById(productId));
   });
 }
 

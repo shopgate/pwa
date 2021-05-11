@@ -14,6 +14,9 @@ import {
   ERROR_FAVORITES,
   IDLE_SYNC_FAVORITES,
   REQUEST_FLUSH_FAVORITES_BUFFER,
+  REQUEST_FAVORITES_IDS,
+  ERROR_FAVORITES_IDS,
+  RECEIVE_FAVORITES_IDS,
 } from '../constants';
 
 /**
@@ -62,7 +65,7 @@ export const errorFavorites = (productId, error) => ({
 
 /**
  * Request add favorites action. This action just updates the redux store.
- * @param {string} productId Product identifier.
+ * @param {string|string[]} productId Product identifier.
  * @returns {Object}
  */
 export const requestAddFavorites = productId => ({
@@ -94,7 +97,7 @@ export const errorAddFavorites = (productId, error) => ({
 
 /**
  * Request remove favorites action. This action just updates the redux store.
- * @param {string} productId Product identifier.
+ * @param {string|string[]} productId Product identifier.
  * @returns {Object}
  */
 export const requestRemoveFavorites = productId => ({
@@ -168,4 +171,29 @@ export const receiveFavorites = (products, requestTimestamp) => ({
  */
 export const requestFavorites = () => ({
   type: REQUEST_FAVORITES,
+});
+
+/**
+ * @param {string[]} productIds .
+ * @returns {Object}
+ */
+export const receiveFavoriteIDs = productIds => ({
+  type: RECEIVE_FAVORITES_IDS,
+  productIds,
+});
+
+/**
+ * @returns {Object}
+ */
+export const requestFavoriteIds = () => ({
+  type: REQUEST_FAVORITES_IDS,
+});
+
+/**
+ * @param {Error} error .
+ * @returns {Object}
+ */
+export const errorFetchFavoriteIds = error => ({
+  type: ERROR_FAVORITES_IDS,
+  error,
 });
