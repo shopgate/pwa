@@ -84,9 +84,7 @@ export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const ERROR_USER = 'ERROR_USER';
 // LOCATION
-export const SELECT_LOCATION = 'SELECT_LOCATION';
 export const SELECT_GLOBAL_LOCATION = 'SELECT_GLOBAL_LOCATION';
-export const STORE_FORM_INPUT = 'STORE_FORM_INPUT';
 
 /**
  * --------- URL ------------
