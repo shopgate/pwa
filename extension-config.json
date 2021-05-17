@@ -211,6 +211,9 @@
       },
       "default": {
         "settings": {
+          "@shopgate/engage/locations": {
+            "preferredLocationDefault": null
+          },
           "@shopgate/engage/components/AppBar": {
             "background": "#fff",
             "color": "#000",
