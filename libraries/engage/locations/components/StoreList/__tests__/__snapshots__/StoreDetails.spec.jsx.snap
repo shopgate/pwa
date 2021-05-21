@@ -3,6 +3,7 @@
 exports[`engage > locations > StoreList > StoreDetails should render as expected 1`] = `
 <StoreDetails>
   <Accordion
+    className="css-o08ho"
     contentClassName="css-kxm41v"
     renderLabel={[Function]}
   >

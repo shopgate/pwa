@@ -2,7 +2,7 @@
 
 exports[`engage > locations > StoreList > StoreDistance should render when a unit system is set 1`] = `
 <span
-  className="css-t7m18c"
+  className="css-ryqibu"
 >
   5.4 imperial
 </span>
@@ -10,7 +10,7 @@ exports[`engage > locations > StoreList > StoreDistance should render when a uni
 
 exports[`engage > locations > StoreList > StoreDistance should render when the distance is 0 1`] = `
 <span
-  className="css-t7m18c"
+  className="css-ryqibu"
 >
   0 metric
 </span>
