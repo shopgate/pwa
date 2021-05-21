@@ -60,6 +60,10 @@ export const storeDetailsBody = css({
   borderTop: `1px solid ${themeColors.shade7}`,
 }).toString();
 
+export const storeDetailsAccordion = css({
+  justifyContent: 'space-between',
+}).toString();
+
 export const storeHoursToday = css({
   color: `var(--color-text-low-emphasis, ${themeColors.gray})`,
 }).toString();
