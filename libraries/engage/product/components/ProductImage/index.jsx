@@ -82,6 +82,7 @@ class ProductImage extends Component {
     const showPlaceholder = !props.src && (props.srcmap === null || props.srcmap.length === 0);
     this.state = {
       showPlaceholder,
+      imageLoadingFailed: false,
     };
   }
 
@@ -114,6 +115,7 @@ class ProductImage extends Component {
   imageLoadingFailed = () => {
     this.setState({
       showPlaceholder: true,
+      imageLoadingFailed: true,
     });
   };
 
@@ -145,7 +147,7 @@ class ProductImage extends Component {
       showInnerShadow = !appConfig.hideProductImageShadow;
     }
 
-    if (this.state.showPlaceholder) {
+    if (this.state.imageLoadingFailed || this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
