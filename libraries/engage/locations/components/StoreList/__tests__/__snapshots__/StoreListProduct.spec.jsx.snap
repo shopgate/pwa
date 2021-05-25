@@ -8,7 +8,8 @@ exports[`<StoreListProduct /> should render a product without selected variants.
   portalProps={
     Object {
       "product": Object {
-        "featuredImageUrl": "http://www.some.com",
+        "featuredImageBaseUrl": "http://www.some.com",
+        "featuredImageUrl": "http://www.some.com&height=200",
         "name": "Test Product",
       },
     }

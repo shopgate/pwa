@@ -1,14 +1,19 @@
 import { css } from 'glamor';
 import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 
-const placeholderContainer = css({
+/**
+ * Returns the correct styling for the given ratio
+ * @param {number} imageRatio imageRatio
+ * @return {string}
+ */
+const placeholderContainer = imageRatio => css({
   position: 'relative',
   width: '100%',
   ':before': {
     display: 'block',
     content: '""',
     width: '100%',
-    paddingTop: '100%',
+    paddingTop: `${100 * imageRatio}%`,
   },
 }).toString();
 

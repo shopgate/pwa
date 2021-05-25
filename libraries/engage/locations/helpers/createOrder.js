@@ -53,13 +53,13 @@ function createAddressSequence(formValues, getState) {
  * @returns {string}
  */
 function getProductImage(product, getState) {
-  let image = product.featuredImageUrl;
+  let image = product.featuredImageBaseUrl || product.featuredImageUrl;
 
   if (!image && product.baseProductId) {
     const baseProduct = getProductDataById(getState(), { productId: product.id });
 
     if (baseProduct) {
-      image = baseProduct.featuredImageUrl;
+      image = product.featuredImageBaseUrl || baseProduct.featuredImageUrl;
     }
   }
 
@@ -125,7 +125,7 @@ function createCartLineItems(getState) {
     product: {
       code: item.product.id,
       name: item.product.name,
-      image: item.product.featuredImageUrl,
+      image: item.product.featuredImageBaseUrl || item.product.featuredImageUrl,
       price: item.product.price.unit,
       currencyCode,
       ...item.product.properties && {

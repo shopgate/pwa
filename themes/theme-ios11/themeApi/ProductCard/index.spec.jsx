@@ -8,7 +8,8 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { mockProductId, mockProduct } from './mock';
 import ProductCard, { ProductCardUnwrapped } from './index';
 
-jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
+jest.unmock('@shopgate/pwa-core');
+jest.mock('@shopgate/engage/core');
 jest.mock('./components/Render', () => function ProductCardRender() { return null; });
 
 /**

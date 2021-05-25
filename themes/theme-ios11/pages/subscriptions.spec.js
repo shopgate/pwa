@@ -16,21 +16,8 @@ import subscriptions from './subscriptions';
 
 jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('@shopgate/engage/core', () => ({
-  hasWebBridge: () => false,
-  useScrollContainer: () => false,
-  isIOSTheme: () => false,
-  isBeta: () => false,
-  withCurrentProduct: component => component,
-  withForwardedRef: jest.fn(),
-  grantCameraPermissions: jest.fn().mockResolvedValue(true),
-}));
-jest.mock('@shopgate/engage/product', () => ({
-  productImageFormats: new Map(),
-  enableRedirectHandler: jest.fn(),
-  setDefaultProductFetchParams: jest.fn(),
-  ITEM_PATH: 'ITEM_PATH',
-}));
+jest.mock('@shopgate/engage/core');
+jest.mock('@shopgate/engage/product');
 
 const currentPath = '/some/path';
 

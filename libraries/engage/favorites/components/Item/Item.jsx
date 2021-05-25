@@ -17,6 +17,7 @@ import {
   bin2hex,
   showModal as showModalAction,
   historyPush as historyPushAction,
+  getThemeSettings,
 } from '@shopgate/engage/core';
 import { ResponsiveContainer, Link, SurroundPortals } from '@shopgate/engage/components';
 import { makeIsRopeProductOrderable, getPreferredLocation } from '@shopgate/engage/locations';
@@ -157,6 +158,7 @@ const FavoriteItem = ({
   showModal,
   historyPush,
 }) => {
+  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
@@ -242,7 +244,7 @@ const FavoriteItem = ({
         href={productLink}
       >
         <div className={styles.imageContainer}>
-          <ProductImage src={product.featuredImageUrl} />
+          <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
         </div>
         <div className={styles.infoContainer}>
           <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>

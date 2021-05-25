@@ -3,7 +3,8 @@ import { shallow } from 'enzyme';
 import StoreListProduct from '../StoreListProduct';
 
 const product = {
-  featuredImageUrl: 'http://www.some.com',
+  featuredImageUrl: 'http://www.some.com&height=200',
+  featuredImageBaseUrl: 'http://www.some.com',
   name: 'Test Product',
 };
 

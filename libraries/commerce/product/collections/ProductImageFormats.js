@@ -1,5 +1,6 @@
 /**
  * Class to maintain the image formats
+ * @deprecated not used anymore. Kept for backwards compatibility.
  */
 class ProductImageFormats {
   /**
@@ -56,4 +57,7 @@ class ProductImageFormats {
   }
 }
 
+/**
+ * @deprecated
+ */
 export default new ProductImageFormats();

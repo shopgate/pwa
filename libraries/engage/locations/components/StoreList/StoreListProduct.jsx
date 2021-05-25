@@ -26,7 +26,7 @@ function StoreListProduct() {
       <div className={styles.productContainer}>
         <div className={styles.productContainerInner}>
           <div className={styles.productImage}>
-            <ProductImage src={product.featuredImageUrl} />
+            <ProductImage src={product.featuredImageBaseUrl} />
           </div>
           <div className={styles.productContent}>
             <StoreListProductName />

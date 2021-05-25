@@ -114,7 +114,7 @@ export function CartItemProductLayout() {
               }
             >
               <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
-                <ProductImage src={product.featuredImageUrl} />
+                <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
               </SurroundPortals>
             </ConditionalWrapper>
           </div>

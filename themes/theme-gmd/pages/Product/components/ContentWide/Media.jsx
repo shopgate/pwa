@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import {
   Modal, Backdrop, ArrowIcon, Ripple,
 } from '@shopgate/engage/components';
-import { ProductImage } from '@shopgate/engage/product';
+import { ProductImage, getProductImageSettings } from '@shopgate/engage/product';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { css } from 'glamor';
 import connect from './Media.connector';
+
+const {
+  HeroImage: pdpResolutions,
+  GalleryImage: galleryResolutions,
+} = getProductImageSettings();
 
 const styles = {
   root: css({
@@ -96,10 +101,7 @@ const styles = {
  * @params {Object} featuredImage The featured image url.
  * @returns {JSX}
  */
-const Media = ({
-  featuredImage,
-  images,
-}) => {
+const Media = ({ featuredImage, images }) => {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -107,7 +109,7 @@ const Media = ({
    * @param {number} index Image index.
    */
   const handleOpenGallery = (index) => {
-    if (!images[1] || !images[1].sources) {
+    if (images.length < 1) {
       return;
     }
     setGalleryOpen(true);
@@ -118,7 +120,7 @@ const Media = ({
    * @param {number} value Image index mod.
    */
   const handleNextPrev = (value) => {
-    const lastIndex = images[1].sources.length - 1;
+    const lastIndex = images.length - 1;
     const newIndex = imageIndex + value;
     if (newIndex < 0) {
       setImageIndex(lastIndex);
@@ -155,17 +157,21 @@ const Media = ({
               <div className={styles.modalActive}>
                 <ProductImage
                   onClick={() => handleOpenGallery(0)}
-                  src={images[1].sources[imageIndex]}
+                  src={images[imageIndex]}
+                  resolutions={galleryResolutions}
                 />
               </div>
               <div className={styles.modalGallery}>
-                {images[1].sources.map((image, index) => (
+                {images.map((image, index) => (
                   <div
                     key={image}
                     onClick={() => handleOpenGallery(index)}
                     className={`${styles.modalPreview} ${index === imageIndex && styles.modalPreviewActive}`}
                   >
-                    <ProductImage src={image} />
+                    <ProductImage
+                      src={image}
+                      resolutions={galleryResolutions}
+                    />
                   </div>
                 ))}
               </div>
@@ -184,18 +190,25 @@ const Media = ({
         <ProductImage
           className={styles.image}
           src={featuredImage}
+          resolutions={pdpResolutions}
         />
       </div>
       <div className={styles.gallery}>
-        {images[0] ? images[0].sources.slice(1).map((image, index) => (
-          <div
-            key={image}
-            onClick={() => handleOpenGallery(index + 1)}
-            className={styles.item}
-          >
-            <ProductImage src={image} />
-          </div>
-        )) : null}
+        {images.length > 1
+          ? (images.slice(1).map((image, index) => (
+            <div
+              key={image}
+              onClick={() => handleOpenGallery(index + 1)}
+              className={styles.item}
+            >
+              <ProductImage
+                src={image}
+                resolutions={pdpResolutions}
+              />
+            </div>
+          )))
+          : null
+        }
       </div>
     </div>
   );
@@ -205,12 +218,12 @@ const Media = ({
 
 Media.propTypes = {
   featuredImage: PropTypes.string,
-  images: PropTypes.arrayOf(PropTypes.shape()),
+  images: PropTypes.arrayOf(PropTypes.string),
 };
 
 Media.defaultProps = {
   featuredImage: '',
-  images: [{ sources: [] }],
+  images: [],
 };
 
 export default connect(Media);

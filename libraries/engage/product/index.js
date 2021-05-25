@@ -90,6 +90,9 @@ export { default as withPriceCalculation } from './hocs/withPriceCalculation';
 export { default as withProductStock } from './hocs/withProductStock';
 export { default as withProduct } from './hocs/withProduct';
 
+// HOOKs
+export { useLoadProductImage } from './hooks/useLoadProductImage';
+
 // CONTEXTS
 export { ProductContext, VariantContext } from './components/context';
 
