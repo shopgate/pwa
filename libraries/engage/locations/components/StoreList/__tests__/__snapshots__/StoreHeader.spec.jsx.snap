@@ -48,7 +48,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
                 unitSystem="metric"
               >
                 <span
-                  className="css-ryqibu"
+                  className="css-t7m18c"
                 >
                   formats.distance.pattern
                 </span>
@@ -69,7 +69,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
             unitSystem="metric"
           >
             <span
-              className="css-ryqibu"
+              className="css-t7m18c"
             >
               formats.distance.pattern
             </span>
