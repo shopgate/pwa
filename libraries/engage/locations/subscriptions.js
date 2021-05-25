@@ -69,11 +69,25 @@ function locationsSubscriber(subscribe) {
     try {
       const { locations } = await dispatch(fetchLocations(userSearch));
 
+      const preferredLocation = getPreferredLocation(getState());
+
+      if (preferredLocation) {
+        const { code } = preferredLocation;
+        // Check if the preferred location is included within the fetched locations
+        const hasLocation = !!locations.find(location => location.code === code);
+
+        if (!hasLocation) {
+          // Fetch the missing location data
+          await dispatch(fetchLocations({
+            ...userSearch,
+            codes: [code],
+          }));
+        }
+      }
+
       // Preset preferredLocation if configured
       const { preferredLocationDefault } = getThemeSettings('@shopgate/engage/locations') || {};
       if (preferredLocationDefault) {
-        const preferredLocation = getPreferredLocation(getState());
-
         // check if there is already a preferredLocation for the user, if not set one
         if (!preferredLocation) {
           const locationToPreselect = locations.find(l => l.code === preferredLocationDefault);

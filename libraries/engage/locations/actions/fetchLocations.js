@@ -32,6 +32,10 @@ function fetchLocations(params) {
       filters.radius = params.radius;
     }
 
+    if (params.codes) {
+      filters.codes = params.codes;
+    }
+
     const request = new PipelineRequest(SHOPGATE_STOREFRONT_GET_LOCATIONS)
       .setInput(filters)
       .dispatch();
