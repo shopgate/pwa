@@ -8,7 +8,8 @@ import { StoreOpeningHours } from './StoreOpeningHours';
 import { StoreAddress } from './StoreAddress';
 import { StorePhoneNumber } from './StorePhoneNumber';
 import { StoreAddressShort } from './StoreAddressShort';
-import { storeDetailsBody } from './Store.style';
+import { storeDetailsBody, storeDetailsAccordion } from './Store.style';
+import { FulfillmentContext } from '../../locations.context';
 
 /**
  * Renders a single store details.
@@ -16,17 +17,20 @@ import { storeDetailsBody } from './Store.style';
  */
 export function StoreDetails() {
   const store = useContext(StoreContext);
+  const { product } = useContext(FulfillmentContext);
+
   if (!store) {
     return null;
   }
 
   return (
     <Accordion
+      className={storeDetailsAccordion}
       renderLabel={() => (
         <Fragment>
           <StoreAddress address={store.address} />
-          <ResponsiveContainer breakpoint="<=sm" appAlways>
-            <StockInfo location={store} showStoreName={false} />
+          <ResponsiveContainer breakpoint="<sm" appAlways>
+            <StockInfo location={store} product={product} showStoreName={false} />
           </ResponsiveContainer>
         </Fragment>
       )}
