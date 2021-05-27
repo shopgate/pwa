@@ -21,7 +21,7 @@ const mapStateToProps = (state, props) => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.images && next.images) {
+  if (!prev.images.length && next.images.length) {
     return false;
   }
 
