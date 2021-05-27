@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.16.1](https://github.com/shopgate/pwa/compare/v6.16.0...v6.16.1) (2021-05-27)
+
+#### :bug: Bug Fix
+* [#1090](https://github.com/shopgate/pwa/pull/1090) Fix for fast opening image gallery before getProductImages response is there ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.16.0](https://github.com/shopgate/pwa/compare/v6.15.0...v6.16.0) (2021-05-11)
 
 #### :rocket: Enhancement
