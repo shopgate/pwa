@@ -130,3 +130,10 @@ export const makeGetDefaultUnitSystem = () => {
     }
   );
 };
+
+/**
+ * @returns {Function}
+ */
+export const makeUseLocationFulfillmentMethods = () => createSelector(
+  () => true
+);

@@ -9,11 +9,13 @@ import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import {
   makeGetEnabledFulfillmentMethods,
   makeGetFulfillmentPaths,
+  makeUseLocationFulfillmentMethods,
 } from '../../../core/config';
 import {
   makeIsFulfillmentSelectorMethodEnabled,
   getPreferredLocation,
   makeGetLocationInventory,
+  makeGetLocationFulfillmentMethods,
   getPreferredFulfillmentMethod,
   getProductFulfillmentMethods,
 } from '../../selectors';
@@ -38,16 +40,22 @@ function makeMapStateToProps() {
   const isROPISEnabled = makeIsFulfillmentSelectorMethodEnabled(
     getLocationCode,
     getProductCode,
-    ROPIS
+    ROPIS,
+    // Set to true when fulfillment methods shall not be disabled that are not supported by location
+    false
   );
   const isBOPISEnabled = makeIsFulfillmentSelectorMethodEnabled(
     getLocationCode,
     getProductCode,
-    BOPIS
+    BOPIS,
+    // Set to true when fulfillment methods shall not be disabled that are not supported by location
+    false
   );
   const getInventory = makeGetLocationInventory(getLocationCode, getProductCode);
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+  const getLocationFulfillmentMethods = makeGetLocationFulfillmentMethods(getLocationCode);
   const isBaseProductActive = makeIsBaseProductActive();
+  const useLocationFulfillmentMethods = makeUseLocationFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.
@@ -62,6 +70,8 @@ function makeMapStateToProps() {
       fulfillmentPaths: getFulfillmentPaths(state),
       shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
       productFulfillmentMethods: getProductFulfillmentMethods(state, props),
+      locationFulfillmentMethods: getLocationFulfillmentMethods(state, props),
+      useLocationFulfillmentMethods: useLocationFulfillmentMethods(state, props),
       userFulfillmentMethod: getPreferredFulfillmentMethod(state, props),
       preferredLocation: getPreferredLocation(state, props),
       inventory: getInventory(state, props),

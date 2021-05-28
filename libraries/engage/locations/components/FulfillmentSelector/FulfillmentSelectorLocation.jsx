@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
+import intersection from 'lodash/intersection';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import {
   ROPIS,
   BOPIS,
+  DIRECT_SHIP,
 } from '../../constants';
 import { i18n } from '../../../core';
 import { isProductAvailable } from '../../helpers';
@@ -16,6 +18,7 @@ import {
   itemRow, itemColumn, itemSpacer,
 } from './FulfillmentSelectorItem.style';
 import { PRODUCT_FULFILLMENT_SELECTOR_LOCATION } from '../../constants/Portals';
+import { FulfillmentSelectorLocationMethodNotAvailable } from './FulfillmentSelectorLocationMethodNotAvailable';
 
 /**
  * The FulfillmentSelectorLocation component
@@ -32,6 +35,10 @@ export function FulfillmentSelectorLocation() {
     isROPISEnabled,
     isBOPISEnabled,
     userFulfillmentMethod,
+    productFulfillmentMethods,
+    shopFulfillmentMethods,
+    locationFulfillmentMethods,
+    useLocationFulfillmentMethods,
     productId,
   } = useFulfillmentSelectorState();
 
@@ -45,11 +52,28 @@ export function FulfillmentSelectorLocation() {
     }
   }, [handleChange, selected, userFulfillmentMethod]);
 
+  const locationSupportsFulfillmentMethod = useMemo(() => {
+    if (!useLocationFulfillmentMethods || !selected) {
+      return true;
+    }
+
+    return (locationFulfillmentMethods).includes(userFulfillmentMethod);
+  }, [locationFulfillmentMethods, selected, useLocationFulfillmentMethods, userFulfillmentMethod]);
+
+  const selectionAvailableForProduct = useMemo(() => intersection(
+    shopFulfillmentMethods || [],
+    productFulfillmentMethods || []
+  ).filter(entry => entry !== DIRECT_SHIP).includes(selection), [
+    shopFulfillmentMethods,
+    productFulfillmentMethods,
+    selection,
+  ]);
+
   if (!isReady) {
     return null;
   }
 
-  const isRopeMethodEnabled = (isROPISEnabled || isBOPISEnabled);
+  const isRopeMethodEnabled = (isROPISEnabled || isBOPISEnabled || selectionAvailableForProduct);
 
   return (
     <SurroundPortals
@@ -60,26 +84,30 @@ export function FulfillmentSelectorLocation() {
       }}
     >
       {(isRopeMethodEnabled && isOrderable && usedLocation) && (
-      <Grid className={classNames(itemRow, container)} component="div">
-        <ResponsiveContainer appAlways breakpoint="xs">
-          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-            <div className={locationName}>{usedLocation.name}</div>
-            <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
-          </Grid.Item>
-          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-            <StockInfo productId={productId} location={usedLocation} />
-          </Grid.Item>
-        </ResponsiveContainer>
-        <ResponsiveContainer webOnly breakpoint=">xs">
-          <div>
-            <div className={locationName}>{usedLocation.name}</div>
-            <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
-          </div>
-          <div className={itemSpacer}>
-            <StockInfo productId={productId} location={usedLocation} />
-          </div>
-        </ResponsiveContainer>
-      </Grid>
+        <Grid className={classNames(itemRow, container)} component="div">
+          <Grid component="div">
+            <ResponsiveContainer appAlways breakpoint="xs">
+              <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+                <div className={locationName}>{usedLocation.name}</div>
+              </Grid.Item>
+              <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+                <StockInfo productId={productId} location={usedLocation} />
+              </Grid.Item>
+            </ResponsiveContainer>
+            <ResponsiveContainer webOnly breakpoint=">xs">
+              <div>
+                <div className={locationName}>{usedLocation.name}</div>
+              </div>
+              <div className={itemSpacer}>
+                <StockInfo productId={productId} location={usedLocation} />
+              </div>
+            </ResponsiveContainer>
+          </Grid>
+          { selectionAvailableForProduct && !locationSupportsFulfillmentMethod ? (
+            <FulfillmentSelectorLocationMethodNotAvailable method={userFulfillmentMethod} />
+          ) : null }
+          <ChangeLocationButton onClick={handleChangeLocation} disabled={!selected} />
+        </Grid>
       )}
       {(isRopeMethodEnabled && selected && !isOrderable) && (
         <div className={container}>
@@ -88,11 +116,11 @@ export function FulfillmentSelectorLocation() {
           <ChangeLocationButton onClick={handleChangeLocation} />
         </div>
       )}
-      {!isRopeMethodEnabled && (
+      {false && !isRopeMethodEnabled ? (
         <div className={classNames(unavailable, container)}>
           {i18n.text('locations.no_available')}
         </div>
-      )}
+      ) : null}
     </SurroundPortals>
   );
 }

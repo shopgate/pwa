@@ -11,11 +11,12 @@ import {
 import {
   getLocationsStorage,
   makeIsRopeProductOrderable,
+  makeIsLocationFulfillmentMethodEnabled,
   getPreferredLocation,
   getPreferredFulfillmentMethod,
 } from '../locations/selectors';
 
-import { makeGetEnabledFulfillmentMethods } from '../core';
+import { makeGetEnabledFulfillmentMethods, makeUseLocationFulfillmentMethods } from '../core';
 
 /**
  * ########
@@ -76,6 +77,11 @@ export function makeIsAddToCartButtonDisabled() {
     (state, props) => props.variantId || props.productId || null
   );
   const getEnabledMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+  const isLocationFulfillmentMethodEnabled = makeIsLocationFulfillmentMethodEnabled(
+    (state, props) => getPreferredLocation(state, props)?.code,
+    (state, props) => getPreferredFulfillmentMethod(state, props)
+  );
+  const useLocationFulfillmentMethods = makeUseLocationFulfillmentMethods();
 
   return createSelector(
     getEnabledMerchantFulfillmentMethods,
@@ -85,6 +91,8 @@ export function makeIsAddToCartButtonDisabled() {
     isBaseProductActive,
     isProductOrderable,
     isRopeProductOrderable,
+    isLocationFulfillmentMethodEnabled,
+    useLocationFulfillmentMethods,
     (
       merchantFulfillmentMethods,
       userLocationFulfillmentMethod,
@@ -92,7 +100,9 @@ export function makeIsAddToCartButtonDisabled() {
       productActive,
       baseProductActive,
       productOrderable,
-      ropeProductOrderable
+      ropeProductOrderable,
+      locationFulfillmentMethodEnabled,
+      locationFulfillmentMethodsUsed
     ) => {
       if (!productActive || !baseProductActive) {
         return true;
@@ -105,6 +115,10 @@ export function makeIsAddToCartButtonDisabled() {
 
       if (isDirectShipSelected) {
         return !productOrderable && !productHasVariants;
+      }
+
+      if (locationFulfillmentMethodsUsed && !locationFulfillmentMethodEnabled) {
+        return true;
       }
 
       return ropeProductOrderable === false && !productHasVariants;

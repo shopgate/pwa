@@ -6,6 +6,7 @@ export const container = css({
   fontSize: '0.75rem',
   padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.small}px ${themeVariables.gap.big * 3}px`,
   marginTop: `-${themeVariables.gap.small}px`,
+  flexDirection: 'column',
 }).toString();
 
 export const unavailable = css({
