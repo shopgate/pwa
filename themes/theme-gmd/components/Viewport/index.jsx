@@ -47,7 +47,9 @@ setViewportHeight();
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Viewport = ({ children, enableWebIndexing, favicon }) => {
+const Viewport = ({
+  children, enableWebIndexing, favicon, googleSiteVerificationCode,
+}) => {
   const [hidden, setHidden] = useState(false);
   return (
     <main role="main" itemScope itemProp="http://schema.org/MobileApplication">
@@ -55,6 +57,9 @@ const Viewport = ({ children, enableWebIndexing, favicon }) => {
         <Helmet>
           { !enableWebIndexing && (
             <meta name="robots" content="noindex, nofollow" />
+          )}
+          { googleSiteVerificationCode && (
+            <meta name="google-site-verification" content={googleSiteVerificationCode} />
           )}
           { favicon && (
             <link rel="icon" type="image/png" sizes="32x32" href={favicon} />
@@ -89,11 +94,13 @@ Viewport.propTypes = {
   children: PropTypes.node.isRequired,
   enableWebIndexing: PropTypes.bool,
   favicon: PropTypes.string,
+  googleSiteVerificationCode: PropTypes.string,
 };
 
 Viewport.defaultProps = {
   enableWebIndexing: false,
   favicon: null,
+  googleSiteVerificationCode: null,
 };
 
 export default connect(Viewport);

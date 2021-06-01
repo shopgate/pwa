@@ -318,6 +318,7 @@ export {
   getDefaultCurrency,
   getEnableWebIndexing,
   getNumberOfAddressLines,
+  getGoogleSiteVerificationCode,
 } from './selectors';
 
 export {
