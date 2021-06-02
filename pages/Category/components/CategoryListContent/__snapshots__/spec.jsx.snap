@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryListContent /> should render 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(CategoryListContent)
+    categoryId="1234"
+  >
+    <CategoryListContent
+      categories={null}
+      categoryId="1234"
+      childrenCount={null}
+      dispatch={[Function]}
+      hasChildren={false}
+    >
+      <Portal
+        name="category.list.before"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      />
+      <Portal
+        name="category.list"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      />
+      <Portal
+        name="category.list.after"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      />
+    </CategoryListContent>
+  </Connect(CategoryListContent)>
+</Provider>
+`;

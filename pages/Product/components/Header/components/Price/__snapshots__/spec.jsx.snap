@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Price /> should not pass unitPriceMin for non variants 1`] = `
+<PlaceholderLabel
+  className="css-q720h0"
+  ready={true}
+  style={null}
+>
+  <Price
+    className="css-1051jlf"
+    currency="USD"
+    discounted={false}
+    fractions={true}
+    taxDisclaimer={true}
+    unitPrice={90.5}
+    unitPriceMin={0}
+  />
+</PlaceholderLabel>
+`;
+
+exports[`<Price /> should pass unitPriceMin for variants 1`] = `
+<PlaceholderLabel
+  className="css-q720h0"
+  ready={true}
+  style={null}
+>
+  <Price
+    className="css-1051jlf"
+    currency="USD"
+    discounted={false}
+    fractions={true}
+    taxDisclaimer={true}
+    unitPrice={90.5}
+    unitPriceMin={80.5}
+  />
+</PlaceholderLabel>
+`;
+
+exports[`<Price /> should render portals 1`] = `
+<Fragment>
+  <Portal
+    name="product.price.before"
+    props={null}
+  />
+  <Portal
+    name="product.price"
+    props={
+      Object {
+        "price": Object {
+          "currency": "USD",
+          "discount": 0,
+          "unitPrice": 90.5,
+          "unitPriceMin": 80.5,
+        },
+      }
+    }
+  >
+    <Consumer>
+      <Component />
+    </Consumer>
+  </Portal>
+  <Portal
+    name="product.price.after"
+    props={null}
+  />
+</Fragment>
+`;
