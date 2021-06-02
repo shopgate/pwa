@@ -93,7 +93,7 @@ class CharacteristicSheet extends PureComponent {
 
     return (
       <SheetDrawer title={label} isOpen={open} onClose={this.onClose} onDidOpen={this.onDidOpen}>
-        <SheetList>
+        <SheetList className="theme__product__characteristic__sheet">
           {items.map((item, index) => (
             <Item
               item={item}

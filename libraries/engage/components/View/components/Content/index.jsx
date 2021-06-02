@@ -151,6 +151,8 @@ class ViewContent extends Component {
 
 export default props => (
   <RouteContext.Consumer>
-    {({ visible, pattern = '' }) => <ViewContent {...props} visible={visible} className={`route__${pattern.replace(/:/g, '_')}`} />}
+    {({ visible, pattern = '' }) => (
+      <ViewContent {...props} visible={visible} className={`route_${pattern.replace(/[:/]/g, '_')}`} />
+    )}
   </RouteContext.Consumer>
 );
