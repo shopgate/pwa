@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterBarContent /> Given activeFilters are handled correctly should render active filters 1`] = `null`;

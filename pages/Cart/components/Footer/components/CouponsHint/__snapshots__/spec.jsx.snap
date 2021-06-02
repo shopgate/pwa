@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CouponsHint /> should render as expected without any props 1`] = `
+<CouponsHint>
+  <Translate
+    className="css-7apcdo"
+    params={Object {}}
+    role={null}
+    string="cart.coupons_not_supported"
+  >
+    <span
+      className="css-7apcdo"
+      role={null}
+    >
+      cart.coupons_not_supported
+    </span>
+  </Translate>
+</CouponsHint>
+`;

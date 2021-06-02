@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HtmlWidget /> should render the widget 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Html)
+    settings={
+      Object {
+        "defaultPadding": false,
+        "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+      }
+    }
+  >
+    <Html
+      navigate={[Function]}
+      settings={
+        Object {
+          "defaultPadding": false,
+          "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+        }
+      }
+    >
+      <div
+        style={Object {}}
+      >
+        <Connect(HtmlSanitizer)
+          className="css-7v4dr8"
+          decode={true}
+          processStyles={true}
+          settings={
+            Object {
+              "handleClick": [Function],
+              "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+            }
+          }
+        >
+          <HtmlSanitizer
+            className="css-7v4dr8"
+            decode={true}
+            navigate={[Function]}
+            processStyles={true}
+            settings={
+              Object {
+                "handleClick": [Function],
+                "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+              }
+            }
+            wrapper={[Function]}
+          >
+            <EmbeddedMedia>
+              <div
+                className="css-7v4dr8 common__html-sanitizer"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<h1>Hello World!</h1>",
+                  }
+                }
+              />
+            </EmbeddedMedia>
+          </HtmlSanitizer>
+        </Connect(HtmlSanitizer)>
+      </div>
+    </Html>
+  </Connect(Html)>
+</Provider>
+`;
+
+exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Html)
+    settings={
+      Object {
+        "defaultPadding": true,
+        "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+      }
+    }
+  >
+    <Html
+      navigate={[Function]}
+      settings={
+        Object {
+          "defaultPadding": true,
+          "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "padding": 16,
+          }
+        }
+      >
+        <Connect(HtmlSanitizer)
+          className="css-7v4dr8"
+          decode={true}
+          processStyles={true}
+          settings={
+            Object {
+              "handleClick": [Function],
+              "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+            }
+          }
+        >
+          <HtmlSanitizer
+            className="css-7v4dr8"
+            decode={true}
+            navigate={[Function]}
+            processStyles={true}
+            settings={
+              Object {
+                "handleClick": [Function],
+                "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+              }
+            }
+            wrapper={[Function]}
+          >
+            <EmbeddedMedia>
+              <div
+                className="css-7v4dr8 common__html-sanitizer"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<h1>Hello World!</h1>",
+                  }
+                }
+              />
+            </EmbeddedMedia>
+          </HtmlSanitizer>
+        </Connect(HtmlSanitizer)>
+      </div>
+    </Html>
+  </Connect(Html)>
+</Provider>
+`;
