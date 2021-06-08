@@ -6,6 +6,7 @@ export {
   getCategoryImagePlaceholder,
   getFavicon,
   getNumberOfAddressLines,
+  getGoogleSiteVerificationCode,
 } from './shopSettings';
 export {
   getIsLocationBasedShopping,

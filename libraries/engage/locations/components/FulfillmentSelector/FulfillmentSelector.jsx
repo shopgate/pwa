@@ -45,6 +45,8 @@ function FulfillmentSelector(props: Props) {
     productId,
     shopFulfillmentMethods,
     productFulfillmentMethods,
+    locationFulfillmentMethods,
+    useLocationFulfillmentMethods,
     preferredLocation,
     inventory,
     conditioner,
@@ -177,7 +179,16 @@ function FulfillmentSelector(props: Props) {
     });
   }, [conditioner, handleClose, isOpen, preferredLocation, storeFulfillmentMethod]);
 
-  if (!Array.isArray(shopFulfillmentMethods) || shopFulfillmentMethods.length === 0) {
+  const shopHasRopeMethods = useMemo(() => {
+    if (!Array.isArray(shopFulfillmentMethods)) {
+      return false;
+    }
+
+    return shopFulfillmentMethods.filter(method => method !== DIRECT_SHIP).length > 0;
+  },
+  [shopFulfillmentMethods]);
+
+  if (!shopHasRopeMethods) {
     return null;
   }
 
@@ -198,6 +209,8 @@ function FulfillmentSelector(props: Props) {
     isOrderable,
     shopFulfillmentMethods,
     productFulfillmentMethods,
+    locationFulfillmentMethods,
+    useLocationFulfillmentMethods,
   };
 
   return (

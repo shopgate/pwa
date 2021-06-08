@@ -4,7 +4,7 @@ import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/eng
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
 import { getProduct } from '@shopgate/engage/product/selectors/product';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { getIsLocationBasedShopping } from '@shopgate/engage/core';
+import { getIsLocationBasedShopping, makeUseLocationFulfillmentMethods } from '@shopgate/engage/core';
 import { makeGetEnabledFulfillmentMethods } from '../../core/config';
 import { makeIsProductActive, makeIsBaseProductActive } from '../../product/selectors/product';
 import { isProductAvailable } from '../helpers/productInventory';
@@ -296,6 +296,45 @@ export const makeGetLocationInventory = (getLocationCode, getProductCode) => (st
 };
 
 /**
+ * Creates a selector that retrieves the fulfillment methods for a product at a location.
+ * @param {Function} getLocationCode Has to retrieve the location code.
+ * @returns {Object}
+ */
+export const makeGetLocationFulfillmentMethods = (getLocationCode) => {
+  const getLocation = makeGetLocation(getLocationCode);
+  return createSelector(
+    getLocation,
+    location => location?.supportedFulfillmentMethods || []
+  );
+};
+
+/**
+ * Creates a selector that determines if a location supports a specified fulfillment method.
+ * @param {Function} getLocationCode Has to retrieve the location code.
+ * @param {string} fulfillmentMethod The fulfillment method to check.
+ * @returns {Function}
+ */
+export const makeIsLocationFulfillmentMethodEnabled = (getLocationCode, fulfillmentMethod) => {
+  const getLocationFulfillmentMethods = makeGetLocationFulfillmentMethods(getLocationCode);
+
+  return createSelector(
+    getLocationFulfillmentMethods,
+    state => state,
+    (fulfillmentMethods, state) => {
+      if (!fulfillmentMethods) {
+        return false;
+      }
+
+      const method = typeof fulfillmentMethod === 'function' ?
+        fulfillmentMethod(state) :
+        fulfillmentMethod;
+
+      return fulfillmentMethods.includes(method);
+    }
+  );
+};
+
+/**
  * Selector that retrieves the user's reserve form input.
  * @returns {Function}
  */
@@ -358,19 +397,23 @@ export const makeIsRopeProductOrderable = (getLocationCode, getProductCode) => {
  * @param {Function} getLocationCode Has to retrieve the location code.
  * @param {Function} getProductCode Has to retrieve the product code.
  * @param {string} fulfillmentMethod The fulfillment method to check.
+ * @param {bool} ignoreLocationMethods[false] Wether the location fulfillment methods are ignored
  * @returns {Function}
  */
 export const makeIsFulfillmentSelectorMethodEnabled = (
   getLocationCode,
   getProductCode,
-  fulfillmentMethod
+  fulfillmentMethod,
+  ignoreLocationMethods = false
 ) => {
   const getLocation = makeGetLocation(getLocationCode);
   const getInventory = makeGetLocationInventory(getLocationCode, getProductCode);
   const getMerchantFulfillmentMethods = makeGetEnabledFulfillmentMethods();
   const isProductActive = makeIsProductActive();
   const isBaseProductActive = makeIsBaseProductActive();
+  const useLocationFulfillmentMethods = makeUseLocationFulfillmentMethods();
 
+  const getLocationFulfillmentMethods = makeGetLocationFulfillmentMethods(getLocationCode);
   return createSelector(
     isProductActive,
     isBaseProductActive,
@@ -378,7 +421,9 @@ export const makeIsFulfillmentSelectorMethodEnabled = (
     getInventory,
     getMerchantFulfillmentMethods,
     getProductFulfillmentMethods,
+    getLocationFulfillmentMethods,
     getIsLocationBasedShopping,
+    useLocationFulfillmentMethods,
     (
       productActive,
       baseProductActive,
@@ -386,7 +431,9 @@ export const makeIsFulfillmentSelectorMethodEnabled = (
       inventory,
       merchantMethods,
       productMethods,
-      isLocationBasedShopping
+      locationMethods,
+      isLocationBasedShopping,
+      locationFulfillmentMethodsUsed
     ) => {
       if (!productActive || !baseProductActive) {
         return false;
@@ -396,7 +443,7 @@ export const makeIsFulfillmentSelectorMethodEnabled = (
         return false;
       }
 
-      const methodSupported =
+      let methodSupported =
         Array.isArray(merchantMethods) &&
         merchantMethods.includes(fulfillmentMethod) &&
         Array.isArray(productMethods) &&
@@ -404,6 +451,12 @@ export const makeIsFulfillmentSelectorMethodEnabled = (
 
       if (fulfillmentMethod === DIRECT_SHIP && methodSupported) {
         return true;
+      }
+
+      if (locationFulfillmentMethodsUsed && !ignoreLocationMethods && location) {
+        methodSupported = methodSupported &&
+          Array.isArray(locationMethods) &&
+          locationMethods.includes(fulfillmentMethod);
       }
 
       if (!methodSupported) {

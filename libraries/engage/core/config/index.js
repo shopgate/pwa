@@ -12,6 +12,7 @@ export {
   makeGetFulfillmentPaths,
   makeGetEnabledFulfillmentMethods,
   makeGetEnabledFulfillmentMethodsCount,
+  makeUseLocationFulfillmentMethods,
   getShopSettings,
   getConfigFetching,
 } from './config.selectors';

@@ -301,7 +301,9 @@
       "error": {
         "direct_ship": "Dieses Produkt steht nicht für den Versand zur Verfügung. Bitte wähle eine andere Option oder prüfe die Verfügbarkeit in einer Filiale in deiner Nähe.",
         "reserve": "Dieses Produkt ist nicht in der gewählten Filiale verfügbar. Bitte wähle eine andere Filiale.",
-        "not_ready": "Bitte wähle eine Filiale."
+        "not_ready": "Bitte wähle eine Filiale.",
+        "ropis": "Dieses Produkt steht in dieser Filiale nicht für Click & Reserve zur Verfügung. Bitte wähle eine andere Option oder Filiale.",
+        "bopis": "Dieses Produkt steht in dieser Filiale nicht für Click & Collect zur Verfügung. Bitte wähle eine andere Option oder Filiale."
       }
     },
     "stock_info": {

@@ -21,6 +21,8 @@ export type FulfillmentSelectorContextProps = {
   isOrderable: boolean,
   shopFulfillmentMethods?: string[] | null,
   productFulfillmentMethods: string[] | null,
+  locationFulfillmentMethods: string[] | null,
+  useLocationFulfillmentMethods: boolean,
   inventory?: Object,
   preferredLocation?: Object
 }
@@ -33,6 +35,8 @@ export type OwnProps = {
 export type StateProps = {
   shopFulfillmentMethods?: string[] | null,
   productFulfillmentMethods: string[] | null,
+  locationFulfillmentMethods: string[] | null,
+  useLocationFulfillmentMethods: boolean,
   isDirectShipEnabled: boolean,
   isROPISEnabled: boolean,
   isBOPISEnabled: boolean,

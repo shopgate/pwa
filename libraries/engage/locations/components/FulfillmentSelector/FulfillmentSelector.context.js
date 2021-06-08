@@ -19,4 +19,6 @@ export const FulfillmentSelectorContext = createContext<FulfillmentSelectorConte
   isOrderable: false,
   shopFulfillmentMethods: null,
   productFulfillmentMethods: null,
+  locationFulfillmentMethods: null,
+  useLocationFulfillmentMethods: false,
 });
