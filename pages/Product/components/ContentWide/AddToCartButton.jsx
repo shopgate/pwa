@@ -67,6 +67,8 @@ class AddToCartButton extends PureComponent {
         return;
       }
 
+      this.setState({ success: true });
+
       const addToCartData = {
         productId,
         options,
@@ -114,7 +116,6 @@ class AddToCartButton extends PureComponent {
     setTimeout(() => {
       this.locked = false;
     }, 0);
-    this.setState({ success: true });
   }
 
   /**
