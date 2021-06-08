@@ -9,6 +9,7 @@ jest.mock('@shopgate/pwa-common/context', () => ({
   RouteContext: {
     Consumer: jest.fn(({ children }) => children({
       visible: true,
+      pattern: 'page/:pageId,',
     })),
   },
 }));

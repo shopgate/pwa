@@ -16,7 +16,6 @@ class Characteristic extends PureComponent {
       PropTypes.shape(),
     ]).isRequired,
     disabled: PropTypes.bool.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     highlight: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -107,7 +106,11 @@ class Characteristic extends PureComponent {
     } = this.props;
     const translatedLabel = __('product.pick_an_attribute', [label]);
     const buttonLabel = this.getButtonLabel(translatedLabel);
-    const classes = classNames(styles.button, { [styles.buttonDisabled]: disabled });
+    const classes = classNames(
+      styles.button,
+      { [styles.buttonDisabled]: disabled },
+      'theme__product__characteristic'
+    );
 
     return (
       <div
@@ -122,8 +125,13 @@ class Characteristic extends PureComponent {
         style={transition[state]}
         data-test-id={label}
       >
-        {selected && <div className={styles.label}>{label}</div>}
-        <div className={styles.selection}>{buttonLabel}</div>
+        {selected && <div className={`${styles.label} theme__product__characteristic__label`}>{label}</div>}
+        <div
+          className={`${styles.selection} theme__product__characteristic__selection`}
+          {...selected && { 'data-selected': true }}
+        >
+          {buttonLabel}
+        </div>
       </div>
     );
   }

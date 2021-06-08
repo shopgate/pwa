@@ -49,7 +49,7 @@ class SheetItem extends PureComponent {
     } = this.props;
 
     return {
-      className: this.getStyle(item.selectable),
+      className: `${this.getStyle(item.selectable).toString()} theme__product__characteristic__option`,
       key: item.id,
       ref: forwardedRef,
       value: item.id,
