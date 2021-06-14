@@ -320,13 +320,14 @@ export const makeIsLocationFulfillmentMethodEnabled = (getLocationCode, fulfillm
   return createSelector(
     getLocationFulfillmentMethods,
     state => state,
-    (fulfillmentMethods, state) => {
+    (state, props) => props,
+    (fulfillmentMethods, state, props) => {
       if (!fulfillmentMethods) {
         return false;
       }
 
       const method = typeof fulfillmentMethod === 'function' ?
-        fulfillmentMethod(state) :
+        fulfillmentMethod(state, props) :
         fulfillmentMethod;
 
       return fulfillmentMethods.includes(method);

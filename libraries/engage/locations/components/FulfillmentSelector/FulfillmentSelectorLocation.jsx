@@ -69,10 +69,9 @@ export function FulfillmentSelectorLocation() {
     selection,
   ]);
 
-  if (!isReady) {
+  if (!isReady || (preferredLocation && !inventory)) {
     return null;
   }
-
   const isRopeMethodEnabled = (isROPISEnabled || isBOPISEnabled || selectionAvailableForProduct);
 
   return (
