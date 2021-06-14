@@ -64,7 +64,6 @@ function FulfillmentProvider(props: Props) {
     selectLocation,
     submitReservation,
     storeFormInput,
-    addProductsToCart,
     updateProductsInCart,
     isFetching,
     noInventory = false,
@@ -304,12 +303,6 @@ function FulfillmentProvider(props: Props) {
       updateProductsInCart([{
         quantity: cartItem.quantity,
         cartItemId: cartItem.id,
-        fulfillment,
-      }]);
-    } else {
-      addProductsToCart([{
-        productId: product.id,
-        quantity: 1,
         fulfillment,
       }]);
     }
