@@ -74,7 +74,7 @@ const CartItemProductLayoutWide = () => {
       })}
       >
         <div className={imageColumn}>
-          <ProductImage src={product.featuredImageBaseUrl} />
+          <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
         </div>
         <div className={detailsColumn}>
           <ConditionalWrapper
