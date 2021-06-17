@@ -53,7 +53,7 @@
         "middleName": "Отчество",
         "lastName": "Фамилия",
         "emailAddress": "Адрес электронной почты",
-        "address1": "Удица, номер дома",
+        "address1": "Улица, номер дома",
         "address2": "доп. адрес 2",
         "address3": "доп. адрес 3",
         "address4": "доп. адрес 4",
@@ -155,8 +155,8 @@
     "apply": "Применить",
     "more": "больше",
     "reset": "Сбросить",
-    "remove": "Удалить {фильтр} фильтр",
-    "edit": "Редактировать {фильтр} фильтр",
+    "remove": "Удалить {filter} фильтр",
+    "edit": "Редактировать {filter} фильтр",
     "filter_by": "Фильтровать по {label}"
   },
   "price": {
@@ -170,7 +170,7 @@
     },
     "msrp": "MSRP",
     "label": "Цена {price}",
-    "label_old_price": "Старая цена {цена}",
+    "label_old_price": "Старая цена {price}",
     "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
     "free": "Бесплатно"
   },
@@ -253,8 +253,8 @@
     "change_location": "Изменить магазин",
     "get_directions": "Получить маршрут",
     "store_hours": "Часы работы магазина",
-    "radius_km": "{радиус} км",
-    "radius_mi": "{радиус} миль",
+    "radius_km": "{radius} км",
+    "radius_mi": "{radius} миль",
     "radius": "Радиус",
     "stores_near": {
       "zip_code": "Магазины рядом с \"{zipCode}\"",
@@ -337,7 +337,7 @@
   },
   "search": {
     "no_result": {
-      "заголовок": "Ошибка",
+      "heading": "Ошибка",
       "body": "Ваш поиск \"{searchPhrase}\" вернул 0 результатов."
     },
     "placeholder": "Поиск",
@@ -363,7 +363,7 @@
   "cart": {
     "grand_total": "Итоговая сумма",
     "current_total": "Итого",
-    "items": "товаров",
+    "items": "Товары",
     "price": "Цена",
     "quantity": "Кол-во",
     "fulfilled_quantity": "Обработанное кол-во",
@@ -481,14 +481,14 @@
     "payment": "Способы оплаты",
     "terms": "Условия",
     "privacy": "Политика конфиденциальности",
-    "welcome_message": "Добро пожаловать, {имя}",
+    "welcome_message": "Добро пожаловать, {name}",
     "return_policy": "Политика возврата",
     "logout": "Выйти",
     "menuSubHeader": {
       "more": "Больше",
       "about": "О нас"
     },
-    "back": "Вернуться к {заголовку}",
+    "back": "Вернуться к {title}",
     "open_menu": "Открыть меню"
   },
   "reviews": {
@@ -497,7 +497,7 @@
     "review_count": "({count} {count, plural, =1 {отзыв} other {отзывов}})",
     "button_add": "Написать отзыв",
     "button_all": "Все {count} отзывов",
-    "author": "от {автора}",
+    "author": "от {author}",
     "rating_stars": "{rate} {rate, plural, =1 {звезда} other {звезды}} из {maxRate}",
     "review_form_rate": "Оцените этот продукт:",
     "review_form_author": "Ваше имя",
@@ -565,9 +565,9 @@
         "lastName": "Фамилия",
         "mobile": "Номер мобильного телефона",
         "emailAddress": "Адрес электронной почты",
-        "пароль": "Пароль *",
+        "password": "Пароль *",
         "passwordConfirm": "Подтвердить пароль *",
-        "компания": "Компания",
+        "company": "Компания",
         "address1": "Улица и номер дома",
         "address2": "доп. адрес",
         "postalCode": "Почтовый индекс",
@@ -722,7 +722,7 @@
       "message": "Этот сайт использует файлы cookie, чтобы обеспечить вам наилучшие удобство от работы с нашим сайтом.",
       "learnMore": "Узнать больше",
       "decline": "Отказаться",
-      "сохранить": "Сохранить",
+      "save": "Сохранить",
       "allowSelected": "Разрешить выбранное",
       "allowAll": "Разрешить все",
       "preferences": "Настройки",
@@ -756,18 +756,18 @@
       "pattern": "{distance} {unit}",
       "units": {
         "m": "м",
-        "км": "км",
+        "km": "км",
         "ft": "футов",
         "mi": "миль"
       }
     },
     "unitOfMeasurement": {
-      "мг": "мг",
+      "mg": "мг",
       "g": "гр",
-      "кг": "кг",
-      "мл": "мл",
+      "kg": "кг",
+      "ml": "мл",
       "l": "литр",
-      "см": "см",
+      "cm": "см",
       "m": "m",
       "m2": "m²",
       "m3": "m³",
