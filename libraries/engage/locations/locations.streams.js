@@ -15,6 +15,7 @@ import {
   SET_STORE_FINDER_SEARCH_RADIUS,
   SELECT_GLOBAL_LOCATION,
   STORE_FINDER_PATTERN,
+  PROVIDE_PRODUCT_ALTERNATIVE_LOCATION,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 
@@ -90,6 +91,9 @@ export const storeFinderWillEnter$ = routeWillEnter$
 
 export const receiveLocations$ = main$
   .filter(({ action }) => action.type === RECEIVE_LOCATIONS);
+
+export const provideAlternativeLocation$ = main$
+  .filter(({ action }) => action.type === PROVIDE_PRODUCT_ALTERNATIVE_LOCATION);
 
 export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdate$
   .filter(({ getState }) => {

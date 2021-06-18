@@ -18,6 +18,7 @@ import {
   makeGetLocationFulfillmentMethods,
   getPreferredFulfillmentMethod,
   getProductFulfillmentMethods,
+  getUserSearch,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
@@ -80,6 +81,7 @@ function makeMapStateToProps() {
       isBOPISEnabled: isBOPISEnabled(state, props),
       isOrderable: isProductOrderable(state, props) || !!hasVariants,
       isReady: hasVariants !== null && (!hasVariants || !baseProductActive),
+      userSearch: getUserSearch(state),
     };
   };
 }
