@@ -58,19 +58,35 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
     >
       <SurroundPortals
         portalName="product.reviews"
-        portalProps={null}
+        portalProps={
+          Object {
+            "productId": "foo",
+          }
+        }
       >
         <Portal
           name="product.reviews.before"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
         <Portal
           name="product.reviews"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
         <Portal
           name="product.reviews.after"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
       </SurroundPortals>
     </Reviews>
@@ -136,15 +152,27 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
     >
       <SurroundPortals
         portalName="product.reviews"
-        portalProps={null}
+        portalProps={
+          Object {
+            "productId": "foo",
+          }
+        }
       >
         <Portal
           name="product.reviews.before"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
         <Portal
           name="product.reviews"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         >
           <div
             className="css-1ej66kr engage__reviews__reviews"
@@ -2351,7 +2379,11 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
         </Portal>
         <Portal
           name="product.reviews.after"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
       </SurroundPortals>
     </Reviews>
@@ -2401,15 +2433,27 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
     >
       <SurroundPortals
         portalName="product.reviews"
-        portalProps={null}
+        portalProps={
+          Object {
+            "productId": "foo",
+          }
+        }
       >
         <Portal
           name="product.reviews.before"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
         <Portal
           name="product.reviews"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         >
           <div
             className="css-1ej66kr engage__reviews__reviews"
@@ -3475,7 +3519,11 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
         </Portal>
         <Portal
           name="product.reviews.after"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
       </SurroundPortals>
     </Reviews>
@@ -3506,15 +3554,27 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
     >
       <SurroundPortals
         portalName="product.reviews"
-        portalProps={null}
+        portalProps={
+          Object {
+            "productId": "foo",
+          }
+        }
       >
         <Portal
           name="product.reviews.before"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
         <Portal
           name="product.reviews"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         >
           <div
             className="css-1ej66kr engage__reviews__reviews"
@@ -3542,7 +3602,11 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
         </Portal>
         <Portal
           name="product.reviews.after"
-          props={null}
+          props={
+            Object {
+              "productId": "foo",
+            }
+          }
         />
       </SurroundPortals>
     </Reviews>

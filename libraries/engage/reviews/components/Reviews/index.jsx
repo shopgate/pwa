@@ -17,7 +17,10 @@ import connect from './connector';
  */
 function Reviews({ productId, reviews }) {
   return (
-    <SurroundPortals portalName={PRODUCT_REVIEWS}>
+    <SurroundPortals
+      portalName={PRODUCT_REVIEWS}
+      portalProps={{ productId }}
+    >
       {appConfig.hasReviews && (
         <div className={`${styles.container} engage__reviews__reviews`} data-test-id="reviewSection">
           <Header productId={productId} />
