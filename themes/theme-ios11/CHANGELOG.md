@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.16.2](https://github.com/shopgate/pwa/compare/v6.16.1...v6.16.2) (2021-06-23)
+
+#### :rocket: Enhancement
+* [#1095](https://github.com/shopgate/pwa/pull/1095) Add portals to reviews page ([@alexbridge](https://github.com/alexbridge))
+* [#1092](https://github.com/shopgate/pwa/pull/1092) Add more classnames to components ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.16.1](https://github.com/shopgate/pwa/compare/v6.16.0...v6.16.1) (2021-05-27)
 
 #### :bug: Bug Fix
