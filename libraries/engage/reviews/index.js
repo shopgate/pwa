@@ -10,6 +10,7 @@ export { default as submitReview } from '@shopgate/pwa-common-commerce/reviews/a
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/reviews/constants/index';
 export * from '@shopgate/pwa-common-commerce/reviews/constants/Pipelines';
+export * from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/reviews/selectors';
