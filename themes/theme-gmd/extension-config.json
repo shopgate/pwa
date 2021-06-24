@@ -273,6 +273,9 @@
           "@shopgate/engage/components/CartCouponIcon": {
             "viewBox": null,
             "color": null
+          },
+          "@shopgate/engage/components/Header/PriceStriked": {
+            "msrpLabel": "price.msrp"
           }
         },
         "typography": {

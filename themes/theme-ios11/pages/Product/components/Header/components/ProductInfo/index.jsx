@@ -12,9 +12,9 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Shipping from '@shopgate/engage/product/components/Header/Shipping';
 import Tiers from '@shopgate/engage/product/components/Header/Tiers';
+import PriceStriked from '@shopgate/engage/product/components/Header/PriceStriked';
 import Manufacturer from '../Manufacturer';
 import Availability from '../Availability';
-import PriceStriked from '../PriceStriked';
 import Price from '../Price';
 import PriceInfo from '../PriceInfo';
 import TaxDisclaimer from '../TaxDisclaimer';
