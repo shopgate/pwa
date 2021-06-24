@@ -20,7 +20,7 @@ import styles from './style';
  * @return {JSX}
  */
 const PriceStriked = ({ price }) => {
-  const { msrpLabel = 'price.msrp' } = useWidgetSettings('@shopgate/engage/components/Header/PriceStriked');
+  const { msrpLabel = 'price.msrp' } = useWidgetSettings('@shopgate/engage/product/components/Header/PriceStriked');
 
   return (
     <Fragment>
