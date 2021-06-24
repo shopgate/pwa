@@ -269,7 +269,7 @@
             "viewBox": null,
             "color": null
           },
-          "@shopgate/engage/components/Header/PriceStriked": {
+          "@shopgate/engage/product/components/Header/PriceStriked": {
             "msrpLabel": "price.msrp"
           }
         },
