@@ -214,7 +214,6 @@
           "@shopgate/engage/locations": {
             "preferredLocationDefault": null,
             "alternativeLocationOnPDP": {
-              "show": false,
               "radius": 50
             }
           },
