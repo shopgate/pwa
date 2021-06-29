@@ -43,6 +43,7 @@ type Props = OwnProps & StateProps & DispatchProps;
 function FulfillmentSelector(props: Props) {
   const {
     productId,
+    merchantSettings,
     shopFulfillmentMethods,
     productFulfillmentMethods,
     locationFulfillmentMethods,
@@ -206,6 +207,7 @@ function FulfillmentSelector(props: Props) {
     productId,
     handleChange,
     conditioner,
+    merchantSettings,
     fulfillmentPaths,
     userFulfillmentMethod,
     isOrderable,

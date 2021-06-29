@@ -7,9 +7,11 @@ import { provideProductAlternativeLocation } from '../../action-creators';
 import { StockInfo } from '../StockInfo';
 import { locationName } from './FulfillmentSelectorLocation.style';
 import { itemColumn, itemSpacer } from './FulfillmentSelectorItem.style';
+import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { PRODUCT_FULFILLMENT_SELECTOR_ALTERNATIVE_LOCATION } from '../../constants/Portals';
 import { getProductAlternativeLocations } from '../../selectors';
 import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
+import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 
 /**
  * The FulfillmentSelectorLocation component
@@ -18,23 +20,29 @@ import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
 function FulfillmentSelectorAlternativeLocation({
   productId, show, alternativeLocations, provideAlternativeLocation, widgetSettings,
 }) {
-  const {
-    alternativeLocationOnPDP: {
-      show: widgetShow = false,
-      radius = 50,
-    } = {},
-  } = widgetSettings || {};
+  const { merchantSettings = {} } = useFulfillmentSelectorState();
+  const { alternativeLocationOnPDP: { radius = 50 } = {} } = widgetSettings || {};
+
+  const showAlternative =
+    merchantSettings[MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION] || false;
 
   useEffect(() => {
-    if (show && widgetShow && productId && !alternativeLocations) {
+    if (show && showAlternative && productId && !alternativeLocations) {
       provideAlternativeLocation(productId, {
         sort: SORT_CLOSEST_LOCATION_WITH_INVENTORY,
         radius,
       });
     }
-  }, [productId, provideAlternativeLocation, alternativeLocations, radius, show, widgetShow]);
+  }, [
+    productId,
+    provideAlternativeLocation,
+    alternativeLocations,
+    radius,
+    show,
+    showAlternative,
+  ]);
 
-  if (!show || !widgetShow || !productId) {
+  if (!show || !showAlternative || !productId) {
     return null;
   }
 

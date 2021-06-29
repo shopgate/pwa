@@ -22,6 +22,7 @@ export type FulfillmentSelectorContextProps = {
   handleChange: (element: Selection, changeOnly: boolean) => void,
   conditioner: any,
   fulfillmentPaths: string[],
+  merchantSettings: Object,
   userFulfillmentMethod: string | null,
   isOrderable: boolean,
   shopFulfillmentMethods?: string[] | null,
@@ -39,6 +40,7 @@ export type OwnProps = {
 }
 
 export type StateProps = {
+  merchantSettings?: Object,
   shopFulfillmentMethods?: string[] | null,
   productFulfillmentMethods: string[] | null,
   locationFulfillmentMethods: string[] | null,

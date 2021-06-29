@@ -11,6 +11,8 @@ import {
   makeGetFulfillmentPaths,
   makeUseLocationFulfillmentMethods,
 } from '../../../core/config';
+import { getProductShowAlternativeLocation } from '../../../core/selectors';
+import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 import {
   makeIsFulfillmentSelectorMethodEnabled,
   getPreferredLocation,
@@ -68,6 +70,10 @@ function makeMapStateToProps() {
     const baseProductActive = isBaseProductActive(state, props);
 
     return {
+      merchantSettings: {
+        // eslint-disable-next-line max-len
+        [MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION]: getProductShowAlternativeLocation(state),
+      },
       fulfillmentPaths: getFulfillmentPaths(state),
       shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
       productFulfillmentMethods: getProductFulfillmentMethods(state, props),
