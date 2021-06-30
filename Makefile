@@ -453,6 +453,22 @@ define subtree-force-push
 
 endef
 
+####################################################################################################
+# SUBTREES RE-ATTACH
+####################################################################################################
+subtrees-re-attach:
+	echo " Re-attach subtrees"
+	$(foreach remote, $(THEMES), $(call subtree-re-attach, $(remote), themes/$(remote)))
+	$(foreach remote, $(EXTENSIONS), $(call subtree-re-attach, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote),--squash))
+
+define subtree-re-attach
+	rm -fr $(strip $(2))
+	git add .
+	git commit -m "Remove subtree of $(2)"
+	git subtree add --prefix=$(strip $(2)) $(strip $(1)) master $(3)
+
+endef
+
 
 ####################################################################################################
 # GITHUB API HELPER FUNCTIONS
