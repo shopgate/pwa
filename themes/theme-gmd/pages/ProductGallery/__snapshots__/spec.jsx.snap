@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductGallery> page should render content and an appbar 1`] = `
+<View>
+  <Content
+    initialSlide={2}
+    productId="SG10"
+  />
+</View>
+`;

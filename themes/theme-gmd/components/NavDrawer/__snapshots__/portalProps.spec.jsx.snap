@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavDrawer HeadlineCompatibility should render the headline when the text is passed via the text prop 1`] = `
+<NavDrawerTitle
+  text="Headline Text"
+/>
+`;
+
+exports[`NavDrawer HeadlineCompatibility should render the headline when the text is passed via the title prop 1`] = `
+<NavDrawerTitle
+  text="Headline Text"
+/>
+`;

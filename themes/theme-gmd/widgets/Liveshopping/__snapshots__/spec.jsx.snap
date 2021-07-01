@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LiveshoppingWidget /> should not render the widget without any data 1`] = `""`;
+
+exports[`<LiveshoppingWidget /> should render the widget with a slider for multiple products 1`] = `
+<div
+  className={
+    Object {
+      "data-css-9a70pf": "",
+    }
+  }
+  data-test-id="liveShoppingWidget"
+>
+  <Swiper
+    aria-hidden={null}
+    autoPlay={false}
+    className={null}
+    classNames={Object {}}
+    controls={false}
+    disabled={false}
+    freeMode={false}
+    indicators={true}
+    initialSlide={0}
+    interval={3000}
+    loop={true}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={true}
+    slidesPerView={1}
+    snapItems={true}
+    zoom={false}
+  >
+    <SwiperItem
+      className={null}
+      key="1234"
+    >
+      <LiveshoppingItem
+        productId="1234"
+      />
+    </SwiperItem>
+    <SwiperItem
+      className={null}
+      key="1235"
+    >
+      <LiveshoppingItem
+        productId="1235"
+      />
+    </SwiperItem>
+  </Swiper>
+</div>
+`;
+
+exports[`<LiveshoppingWidget /> should render the widget with no slider for one product 1`] = `
+<div
+  className={
+    Object {
+      "data-css-9a70pf": "",
+    }
+  }
+  data-test-id="liveShoppingWidget"
+>
+  <LiveshoppingItem
+    key="1234"
+    productId="1234"
+  />
+</div>
+`;
