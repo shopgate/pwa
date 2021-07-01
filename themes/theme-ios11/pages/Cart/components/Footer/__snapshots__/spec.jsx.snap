@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should render as expected when all items are supposed to be shown 1`] = `
+<Footer
+  hasCartItems={true}
+  showCouponsHint={true}
+>
+  <CouponsHint>
+    <Translate
+      className="css-7apcdo"
+      params={Object {}}
+      role={null}
+      string="cart.coupons_not_supported"
+    >
+      <span
+        className="css-7apcdo"
+        role={null}
+      >
+        cart.coupons_not_supported
+      </span>
+    </Translate>
+  </CouponsHint>
+  <TaxDisclaimer>
+    <SurroundPortals
+      portalName="product.tax-disclaimer"
+      portalProps={
+        Object {
+          "showTaxDisclaimer": false,
+        }
+      }
+    >
+      <Portal
+        name="product.tax-disclaimer.before"
+        props={
+          Object {
+            "showTaxDisclaimer": false,
+          }
+        }
+      />
+      <Portal
+        name="product.tax-disclaimer"
+        props={
+          Object {
+            "showTaxDisclaimer": false,
+          }
+        }
+      />
+      <Portal
+        name="product.tax-disclaimer.after"
+        props={
+          Object {
+            "showTaxDisclaimer": false,
+          }
+        }
+      />
+    </SurroundPortals>
+  </TaxDisclaimer>
+</Footer>
+`;
+
+exports[`<Footer /> should render as expected when no items are supposed to be shown 1`] = `
+<Footer
+  hasCartItems={false}
+  showCouponsHint={false}
+/>
+`;
+
+exports[`<Footer /> should render as expected when only the tax disclaimer is supposed to be shown 1`] = `
+<Footer
+  hasCartItems={true}
+  showCouponsHint={false}
+>
+  <TaxDisclaimer>
+    <SurroundPortals
+      portalName="product.tax-disclaimer"
+      portalProps={
+        Object {
+          "showTaxDisclaimer": false,
+        }
+      }
+    >
+      <Portal
+        name="product.tax-disclaimer.before"
+        props={
+          Object {
+            "showTaxDisclaimer": false,
+          }
+        }
+      />
+      <Portal
+        name="product.tax-disclaimer"
+        props={
+          Object {
+            "showTaxDisclaimer": false,
+          }
+        }
+      />
+      <Portal
+        name="product.tax-disclaimer.after"
+        props={
+          Object {
+            "showTaxDisclaimer": false,
+          }
+        }
+      />
+    </SurroundPortals>
+  </TaxDisclaimer>
+</Footer>
+`;
+
+exports[`<Footer /> should render as expected when only the the coupons hint is supposed to be shown 1`] = `
+<Footer
+  hasCartItems={false}
+  showCouponsHint={true}
+>
+  <CouponsHint>
+    <Translate
+      className="css-7apcdo"
+      params={Object {}}
+      role={null}
+      string="cart.coupons_not_supported"
+    >
+      <span
+        className="css-7apcdo"
+        role={null}
+      >
+        cart.coupons_not_supported
+      </span>
+    </Translate>
+  </CouponsHint>
+</Footer>
+`;

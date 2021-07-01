@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Section /> should not render without items 1`] = `
+<Section
+  title="Headline"
+/>
+`;
+
+exports[`<Section /> should render with a headline and items 1`] = `
+<Section
+  title="Headline"
+>
+  <Headline
+    style={
+      Object {
+        "margin": "24px 20px 16px",
+      }
+    }
+    tag="h2"
+    text="Headline"
+  >
+    <h2
+      className="css-18cwfw7 headline theme__headline"
+      data-test-id="Headline"
+      style={
+        Object {
+          "margin": "24px 20px 16px",
+        }
+      }
+    >
+      <Translate
+        className={null}
+        params={Object {}}
+        role={null}
+        string="Headline"
+      >
+        <span
+          className={null}
+          role={null}
+        >
+          Headline
+        </span>
+      </Translate>
+    </h2>
+  </Headline>
+  <div
+    className={
+      Object {
+        "data-css-13ch7sr": "",
+      }
+    }
+  >
+    <MoreMenuItem
+      className={null}
+      href="/link/one"
+      label="Item One"
+      onClick={null}
+      testId={null}
+    >
+      <Link
+        className="css-1hj8a57"
+        href="/link/one"
+      >
+        <div>
+          <Translate
+            className={null}
+            params={Object {}}
+            role={null}
+            string="Item One"
+          >
+            <span
+              className={null}
+              role={null}
+            >
+              Item One
+            </span>
+          </Translate>
+        </div>
+      </Link>
+    </MoreMenuItem>
+    <MoreMenuItem
+      className={null}
+      href="/link/two"
+      label="Item Two"
+      onClick={null}
+      testId={null}
+    >
+      <Link
+        className="css-1hj8a57"
+        href="/link/two"
+      >
+        <div>
+          <Translate
+            className={null}
+            params={Object {}}
+            role={null}
+            string="Item Two"
+          >
+            <span
+              className={null}
+              role={null}
+            >
+              Item Two
+            </span>
+          </Translate>
+        </div>
+      </Link>
+    </MoreMenuItem>
+  </div>
+</Section>
+`;
+
+exports[`<Section /> should render without a headline but items 1`] = `
+<Section
+  title=""
+>
+  <Headline
+    style={
+      Object {
+        "margin": "24px 20px 16px",
+      }
+    }
+    tag="h2"
+    text=""
+  />
+  <div
+    className={
+      Object {
+        "data-css-13ch7sr": "",
+      }
+    }
+  >
+    <MoreMenuItem
+      className={null}
+      href="/link/one"
+      label="Item One"
+      onClick={null}
+      testId={null}
+    >
+      <Link
+        className="css-1hj8a57"
+        href="/link/one"
+      >
+        <div>
+          <Translate
+            className={null}
+            params={Object {}}
+            role={null}
+            string="Item One"
+          >
+            <span
+              className={null}
+              role={null}
+            >
+              Item One
+            </span>
+          </Translate>
+        </div>
+      </Link>
+    </MoreMenuItem>
+    <MoreMenuItem
+      className={null}
+      href="/link/two"
+      label="Item Two"
+      onClick={null}
+      testId={null}
+    >
+      <Link
+        className="css-1hj8a57"
+        href="/link/two"
+      >
+        <div>
+          <Translate
+            className={null}
+            params={Object {}}
+            role={null}
+            string="Item Two"
+          >
+            <span
+              className={null}
+              role={null}
+            >
+              Item Two
+            </span>
+          </Translate>
+        </div>
+      </Link>
+    </MoreMenuItem>
+  </div>
+</Section>
+`;
