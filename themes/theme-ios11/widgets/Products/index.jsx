@@ -44,12 +44,7 @@ class ProductsWidget extends Component {
    * Request the products when the component mounts.
    */
   componentDidMount() {
-    const { products = [], settings } = this.props;
-    // When query is by product ids (queryType 4) some products may already be cached.
-    // This makes products.length an unreliable determinant of the need for getProducts()
-    if (products.length === 0 || settings.queryType === 4) {
-      this.getProducts();
-    }
+    this.getProducts(null, true);
   }
 
   /**
@@ -94,8 +89,9 @@ class ProductsWidget extends Component {
   /**
    * Build the params for requesting products and then make the request.
    * @param {Object} [settings] Widget settings object
+   * @param {boolean} [init=false] true if requested is caused by didMount
    */
-  getProducts = (settings) => {
+  getProducts = (settings, init = false) => {
     const { getProducts, id } = this.props;
     const {
       productLimit,
@@ -108,7 +104,7 @@ class ProductsWidget extends Component {
 
     const options = {
       limit: productLimit,
-      offset: this.productCount,
+      offset: !init ? this.productCount : 0,
       sort,
     };
 
