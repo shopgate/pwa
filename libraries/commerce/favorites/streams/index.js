@@ -5,6 +5,7 @@ import {
   userDidLogin$,
   userDidLogout$,
 } from '@shopgate/pwa-common/streams/user';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { WISH_LIST_PATH } from '@shopgate/engage/account/constants/routes';
 import {
   FAVORITES_PATH,
@@ -137,6 +138,12 @@ export const favoritesDidRemoveItem$ = main$
  * @type {Observable}
  */
 export const receiveFavorites$ = main$.filter(({ action }) => action.type === RECEIVE_FAVORITES);
+
+export const receiveFavoritesWhileVisible$ = receiveFavorites$
+  .filter(({ getState }) => {
+    const currentPath = getCurrentPathname(getState());
+    return currentPath === FAVORITES_PATH || currentPath === WISH_LIST_PATH;
+  });
 
 /**
  * Gets triggered whenever all favorite changes have been successfully processed or once when

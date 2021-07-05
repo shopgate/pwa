@@ -6,6 +6,7 @@ import {
   RECEIVE_LOCATIONS,
   REQUEST_PRODUCT_LOCATIONS,
   RECEIVE_PRODUCT_LOCATIONS,
+  RECEIVE_INVENTORIES,
   ERROR_PRODUCT_LOCATIONS,
   STORE_FULFILLMENT_METHOD,
   SELECT_LOCATION,
@@ -94,6 +95,19 @@ export default (state = initialState, action) => {
           const { locationCode, ...rest } = inventory;
           const key = generateSortedHash({
             productCode: action.productCode,
+            locationCode,
+          });
+
+          draft.inventoriesByCodePair[key] = rest;
+        });
+
+        break;
+      }
+      case RECEIVE_INVENTORIES: {
+        action.productInventories.forEach((inventory) => {
+          const { locationCode, productCode, ...rest } = inventory;
+          const key = generateSortedHash({
+            productCode,
             locationCode,
           });
 

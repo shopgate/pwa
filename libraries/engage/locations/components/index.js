@@ -20,3 +20,5 @@ export { GlobalLocationSelector } from './GlobalLocationSelector';
 export { GlobalLocationSwitcher } from './GlobalLocationSwitcher';
 export { FulfillmentSlotSwitcher } from './FulfillmentSlotSwitcher';
 export { StoreFinder } from './StoreFinder';
+export { StockInfo } from './StockInfo';
+export { default as StockInfoLists } from './StockInfoLists';

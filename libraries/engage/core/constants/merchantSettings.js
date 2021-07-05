@@ -6,3 +6,4 @@ export const MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED = 'enableFulfillmen
 export const MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS = 'restrictMultiLocationOrders';
 export const MERCHANT_SETTINGS_DEFAULT_CURRENCY = 'defaultCurrency';
 export const MERCHANT_SETTINGS_ENABLE_WEB_INDEXING = 'enableWebIndexing';
+export const MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY = 'productListShowInventory';

@@ -17,6 +17,7 @@ import requestProducts from '../action-creators/requestProducts';
 import receiveProducts from '../action-creators/receiveProducts';
 import errorProducts from '../action-creators/errorProducts';
 import deleteProductsByIds from '../action-creators/deleteProductsByIds';
+import receiveProductsCached from '../action-creators/receiveProductsCached';
 
 /**
  * Process the pipeline params to be compatible.
@@ -133,6 +134,13 @@ function fetchProducts(options) {
          * a caller that fetchProducts will return data.
          */
         onBeforeDispatch();
+
+        dispatch(receiveProductsCached({
+          hash,
+          requestParams,
+          products,
+        }));
+
         return Promise.resolve(result);
       }
 

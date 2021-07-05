@@ -14,7 +14,7 @@ import {
   SET_USER_SEARCH_GEOLOCATION,
   SET_STORE_FINDER_SEARCH_RADIUS,
   SELECT_GLOBAL_LOCATION,
-  STORE_FINDER_PATTERN,
+  STORE_FINDER_PATTERN, SELECT_LOCATION,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 
@@ -82,8 +82,11 @@ export const fulfillmentLocationsReceived$ = fulfillmentLocationsReceivedFromCar
   .merge(fulfillmentLocationsReceivedFromOrder$)
   .merge(fulfillmentLocationsReceivedFromProduct$);
 
-export const preferredLocationDidUpdate$ = main$
+export const preferredLocationDidUpdateGlobal$ = main$
   .filter(({ action }) => action.type === SELECT_GLOBAL_LOCATION);
+
+export const preferredLocationDidUpdate$ = main$
+  .filter(({ action }) => action.type === SELECT_LOCATION);
 
 export const storeFinderWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === STORE_FINDER_PATTERN);
@@ -91,7 +94,7 @@ export const storeFinderWillEnter$ = routeWillEnter$
 export const receiveLocations$ = main$
   .filter(({ action }) => action.type === RECEIVE_LOCATIONS);
 
-export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdate$
+export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdateGlobal$
   .filter(({ getState }) => {
     const getRoutePattern = makeGetRoutePattern();
     const routePattern = getRoutePattern(getState());

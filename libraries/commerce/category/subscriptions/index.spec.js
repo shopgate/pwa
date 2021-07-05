@@ -10,8 +10,8 @@ import {
   initialCategoryState,
 } from '@shopgate/pwa-common-commerce/category/mock';
 import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
-import { receivedVisibleCategory$ } from './streams';
-import subscribe from './subscriptions';
+import { receivedVisibleCategory$ } from '../streams';
+import subscribe from './index';
 
 const mockedStore = configureStore([thunk]);
 const mockedResolver = jest.fn();

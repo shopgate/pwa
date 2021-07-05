@@ -13,6 +13,7 @@ import {
   Availability,
 } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
+import { StockInfoLists } from '@shopgate/engage/locations';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';
@@ -61,6 +62,8 @@ const ItemDetails = ({ product, display }) => {
         text={i18n.text('product.available.not')}
         showWhenAvailable={false}
       />
+
+      <StockInfoLists product={product} />
 
       <ItemPrice product={product} display={display} />
     </div>

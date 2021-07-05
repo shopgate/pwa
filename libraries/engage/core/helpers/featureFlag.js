@@ -12,7 +12,7 @@ export function getFeatureFlag(key) {
  * @param {string} key key
  * @param {number} percentage percentage for how many users the flag should be set
  */
-export function setFeatureFlag(key, percentage) {
+export function setFeatureFlag(key, percentage = 10) {
   const hasFlag = getFeatureFlag(key);
 
   // flag is already set for user

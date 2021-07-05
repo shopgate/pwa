@@ -16,6 +16,7 @@ import orders from '@shopgate/engage/orders/subscriptions';
 import { subscriptions as coreConfig } from '@shopgate/engage/core/config';
 import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
+import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
 import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions';
 // Engage
 import engageCheckout from '@shopgate/engage/checkout/subscriptions';
@@ -35,13 +36,11 @@ import trackingScanner from '@shopgate/pwa-tracking/subscriptions/scanner';
 import app from 'Pages/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
 import rootCategory from 'Pages/RootCategory/subscriptions';
-import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import startPage from 'Pages/StartPage/subscriptions';
 import page from 'Pages/Page/subscriptions';
-import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -77,6 +76,7 @@ const subscriptions = [
   coreConfig,
   commerceReviews,
   commerceSearch,
+  commerceCategory,
   commerceScanner,
   // Engage subscribers
   engageCheckout,
@@ -86,13 +86,11 @@ const subscriptions = [
   app,
   viewport,
   rootCategory,
-  category,
   coupon,
   favorites,
   login,
   startPage,
   page,
-  search,
   reviews,
   writeReview,
   // Extensions

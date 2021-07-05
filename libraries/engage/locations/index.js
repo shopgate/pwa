@@ -21,6 +21,7 @@ export {
   GlobalLocationSwitcher,
   FulfillmentSlotSwitcher,
   StoreFinder,
+  StockInfoLists,
 } from './components';
 
 // CONSTANTS
@@ -51,6 +52,7 @@ export * from './selectors';
 export {
   submitReservationSuccess$,
   preferredLocationDidUpdate$,
+  preferredLocationDidUpdateGlobal$,
 } from './locations.streams';
 
 // HOOKS

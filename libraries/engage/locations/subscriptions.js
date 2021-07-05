@@ -1,4 +1,9 @@
-import { productIsReady$, variantDidChange$ } from '@shopgate/engage/product';
+import {
+  getProductsResult,
+  productIsReady$, productsReceived$, productsReceivedCached$,
+  RECEIVE_PRODUCTS_CACHED,
+  variantDidChange$,
+} from '@shopgate/engage/product';
 import {
   cartReceived$,
   cartWillEnter$,
@@ -12,14 +17,25 @@ import {
   appDidStart$,
   routeWillEnter$,
   UIEvents,
-  getCurrentRoute, hex2bin, getThemeSettings,
+  getCurrentRoute,
+  hex2bin,
+  getThemeSettings,
+  getCurrentSearchQuery,
 } from '@shopgate/engage/core';
-import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import {
-  getUserSearch, getStoreFinderSearch, getPreferredLocation, getIsPending,
-} from './selectors';
-import { fetchLocations, fetchProductLocations, setPending } from './actions';
-import selectLocation from './action-creators/selectLocation';
+  receiveFavoritesWhileVisible$,
+} from '@shopgate/pwa-common-commerce/favorites/streams';
+import { getFavoritesProductsIds } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import {
+  categoryDOMCachedEntered$,
+} from '@shopgate/pwa-common-commerce/category/streams';
+import {
+  searchDOMCachedEntered$,
+} from '@shopgate/pwa-common-commerce/search/streams';
+import { setShowInventoryInLists, showInventoryInLists } from './helpers/showInventoryInLists';
+import fetchInventories from './actions/fetchInventories';
+import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
+import fetchProductInventories from './actions/fetchProductInventories';
 import {
   submitReservationSuccess$,
   cartReceivedWithROPE$,
@@ -27,8 +43,12 @@ import {
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
 } from './locations.streams';
-import fetchProductInventories from './actions/fetchProductInventories';
-import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
+import selectLocation from './action-creators/selectLocation';
+import { fetchLocations, fetchProductLocations, setPending } from './actions';
+import {
+  getUserSearch, getStoreFinderSearch, getPreferredLocation, getIsPending,
+} from './selectors';
+import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 
 let initialLocationsResolve;
 let initialLocationsReject;
@@ -139,7 +159,7 @@ function locationsSubscriber(subscribe) {
   const productInventoryNeedsUpdate$ = productIsReady$
     .merge(variantDidChange$)
     .merge(preferredLocationDidUpdateOnPDP$)
-    .debounceTime(100);
+    .debounceTime(200);
 
   subscribe(productInventoryNeedsUpdate$, ({ action, dispatch, getState }) => {
     const { productData } = action;
@@ -241,6 +261,71 @@ function locationsSubscriber(subscribe) {
       return;
     }
     setLocationOnceAvailable(locationCode, dispatch);
+  });
+
+  subscribe(
+    categoryDOMCachedEntered$.merge(searchDOMCachedEntered$),
+    ({ action, dispatch, getState }) => {
+      const state = getState();
+
+      if (!showInventoryInLists(state)) {
+        return;
+      }
+
+      const { categoryId } = action.route.params;
+      const query = getCurrentSearchQuery(state);
+
+      const products = getProductsResult(
+        state,
+        {
+          categoryId: hex2bin(categoryId),
+          searchPhrase: query,
+        }
+      )?.products;
+
+      if (!products || !products.length) {
+        return;
+      }
+
+      const productCodes = products.map(({ id }) => id);
+
+      dispatch(fetchInventories(productCodes));
+    }
+  );
+
+  subscribe(productsReceived$.merge(productsReceivedCached$), ({ action, dispatch, getState }) => {
+    if (!showInventoryInLists(getState())) {
+      return;
+    }
+
+    if (!action.products || !action.products.length) {
+      return;
+    }
+
+    const productCodes = action.type !== RECEIVE_PRODUCTS_CACHED ?
+      action.products.map(({ id }) => id) : action.products;
+
+    dispatch(fetchInventories(productCodes));
+  });
+
+  subscribe(receiveFavoritesWhileVisible$, ({ dispatch, getState }) => {
+    const state = getState();
+
+    if (!showInventoryInLists(state)) {
+      return;
+    }
+    const productIds = getFavoritesProductsIds(state);
+
+    if (!productIds || !productIds.length) {
+      return;
+    }
+
+    dispatch(fetchInventories(productIds));
+  });
+
+  subscribe(appDidStart$, ({ getState }) => {
+    // enable inventory in product lists for some users
+    setShowInventoryInLists(getState());
   });
 }
 
