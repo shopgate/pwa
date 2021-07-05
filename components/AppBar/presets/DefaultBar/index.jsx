@@ -92,7 +92,9 @@ class AppBarDefault extends PureComponent {
 
       if (this.props.title) {
         const { __ } = this.context.i18n();
-        router.update(this.props.route.id, { title: __(this.props.title) });
+        if (this.props.route.state.title !== this.props.title) {
+          router.update(this.props.route.id, { title: __(this.props.title) });
+        }
       }
     }
   }
