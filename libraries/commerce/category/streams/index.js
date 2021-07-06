@@ -14,7 +14,6 @@ import {
   RECEIVE_ROOT_CATEGORIES,
   ERROR_CATEGORY,
   RECEIVE_CATEGORY,
-  CATEGORY_PATH,
 } from '../constants';
 
 export const categoryWillEnter$ = routeWillEnter$
@@ -80,5 +79,5 @@ export const errorVisibleCategory$ = main$
 export const categoryFiltersDidUpdate$ = filtersDidUpdate$
   .filter(({ getState }) => {
     const { pattern } = getCurrentRoute(getState());
-    return (pattern === `${CATEGORY_PATH}/:categoryId`);
+    return (pattern === CATEGORY_PATTERN);
   });
