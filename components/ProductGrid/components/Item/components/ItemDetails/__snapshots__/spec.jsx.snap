@@ -65,6 +65,15 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       state="AVAILABILITY_STATE_OK"
       text="product.available.not"
     />
+    <Connect(StockInfoLists)
+      product={
+        Object {
+          "id": "1234",
+          "name": "Foo",
+          "price": Object {},
+        }
+      }
+    />
     <div
       className="css-193sdzn"
     >
