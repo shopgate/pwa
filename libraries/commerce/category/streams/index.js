@@ -14,7 +14,6 @@ import {
   RECEIVE_ROOT_CATEGORIES,
   ERROR_CATEGORY,
   RECEIVE_CATEGORY,
-  CATEGORY_PATH,
 } from '../constants';
 
 export const categoryWillEnter$ = routeWillEnter$
