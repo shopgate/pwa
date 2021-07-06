@@ -22,7 +22,9 @@ export const filterProperties = (properties) => {
   }
 
   return properties.filter(({ label, code }) => {
-    const inList = appConfig.productPropertiesFilter.properties.indexOf(label || code) !== -1;
+    const inList = !!appConfig.productPropertiesFilter.properties.find(
+      p => p === code || p === label
+    );
 
     if (appConfig.productPropertiesFilter.type === PROPERTIES_FILTER_WHITELIST) {
       // Show item if allowed in whitelist
