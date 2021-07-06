@@ -80,5 +80,5 @@ export const errorVisibleCategory$ = main$
 export const categoryFiltersDidUpdate$ = filtersDidUpdate$
   .filter(({ getState }) => {
     const { pattern } = getCurrentRoute(getState());
-    return (pattern === `${CATEGORY_PATH}/:categoryId`);
+    return (pattern === CATEGORY_PATTERN);
   });
