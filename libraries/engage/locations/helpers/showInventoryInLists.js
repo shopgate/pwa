@@ -1,4 +1,4 @@
-import { setFeatureFlag, isFeatureEnabled } from '@shopgate/engage/core';
+import { setABFeatureFlag, isFeatureEnabled } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getProductListShowInventory } from '../../core/selectors';
 
@@ -35,6 +35,6 @@ export function setShowInventoryInLists(state) {
   const percentage = appConfig?.featureFlagPercentages?.showInventoryInLists || 5;
 
   // activate feature for x percent of user
-  setFeatureFlag(STORE_KEY, percentage);
+  setABFeatureFlag(STORE_KEY, percentage);
 }
 

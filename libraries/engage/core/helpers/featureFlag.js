@@ -1,4 +1,6 @@
-const STORE_KEY_PREFIX = 'sgFeatureFlag.';
+import { themeName, shopNumber } from '@shopgate/pwa-common/helpers/config';
+
+const STORE_KEY_PREFIX = `sgFeatureFlag_${shopNumber}_${themeName}.`;
 
 /**
  * @param {string} key key
@@ -12,7 +14,7 @@ export function getFeatureFlag(key) {
  * @param {string} key key
  * @param {number} percentage percentage for how many users the flag should be set
  */
-export function setFeatureFlag(key, percentage = 10) {
+export function setABFeatureFlag(key, percentage = 10) {
   const hasFlag = getFeatureFlag(key);
 
   // flag is already set for user
