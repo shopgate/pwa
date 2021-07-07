@@ -8,6 +8,7 @@ const container = css({
   bottom: 0,
   background: themeConfig.colors.light,
   color: themeConfig.colors.dark,
+  width: '100vw',
   maxWidth: 640,
   left: 0,
   right: 0,
