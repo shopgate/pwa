@@ -126,7 +126,11 @@ export default (state = initialState, action) => {
             productCode: action.productCode,
             locationCode: location.code,
           });
-          draft.inventoriesByCodePair[key] = location.productInventory;
+          // Keep bin/binLocation for location if present
+          draft.inventoriesByCodePair[key] = {
+            ...draft.inventoriesByCodePair[key],
+            ...location.productInventory,
+          };
         });
 
         // Store filtered result set.

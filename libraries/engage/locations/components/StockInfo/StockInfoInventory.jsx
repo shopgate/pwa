@@ -5,12 +5,12 @@ import { type Location } from '../../locations.types';
 
 type Props = {
   availabilityText: string,
-  comingSoon: boolean,
+  comingSoon?: boolean,
   location: Location,
   inventory: any,
   maxNumberVisible: number,
   aboveMaxExtension: string,
-}
+};
 
 /**
  * Renders the inventory given by the location into a given translation string.
@@ -53,3 +53,7 @@ export function StockInfoInventory(props: Props) {
     <I18n.Text string={availabilityText} params={{ visibleInventory }} />
   );
 }
+
+StockInfoInventory.defaultProps = {
+  comingSoon: false,
+};

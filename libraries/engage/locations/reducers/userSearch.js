@@ -4,6 +4,7 @@ import {
   SET_USER_SEARCH_COUNTRY_CODE,
   SET_USER_SEARCH_POSTAL_CODE,
   SET_USER_SEARCH_GEOLOCATION,
+  USER_SEARCH_GEOLOCATION_LIFETIME,
 } from '../constants';
 
 export const defaultState = {
@@ -37,8 +38,12 @@ export default function search(
     case SET_USER_SEARCH_GEOLOCATION:
       return {
         ...state,
-        geolocation: action.geolocation,
+        geolocation: {
+          ...action.geolocation,
+          expires: Date.now() + USER_SEARCH_GEOLOCATION_LIFETIME,
+        },
         postalCode: null,
+
       };
     default:
       return state;

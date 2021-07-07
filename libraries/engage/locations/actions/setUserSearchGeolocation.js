@@ -14,7 +14,10 @@ export default ({
     }));
 
     dispatch(setUserSearchGeolocation(geolocation, productId, isStoreFinder));
-    // eslint-disable-next-line no-empty
-  } catch (err) {}
+
+    return geolocation;
+  } catch (err) {
+    return null;
+  }
 };
 

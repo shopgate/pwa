@@ -8,6 +8,7 @@ import {
   MERCHANT_SETTINGS_DEFAULT_CURRENCY,
   MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
+  MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
 } from '../constants';
 
 /**
@@ -59,6 +60,11 @@ export const getDefaultCurrency = makeGetMerchantSettingByKey(
 
 export const getEnableWebIndexing = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
+  false
+);
+
+export const getProductShowAlternativeLocation = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
   false
 );
 
