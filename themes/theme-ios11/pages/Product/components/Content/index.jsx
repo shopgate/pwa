@@ -217,6 +217,11 @@ class ProductContent extends PureComponent {
               variantId={variantId}
             />
           </Section>
+          {/*
+              This feature is currently in BETA testing.
+              It should only be used for approved BETA Client Projects
+            */}
+          <RelationsSlider desiredPosition="properties" />
           <Section title="product.sections.ratings">
             <Reviews productId={productId} />
           </Section>
