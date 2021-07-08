@@ -17,7 +17,9 @@ export function showInventoryInLists(state) {
   }
 
   if (enabled === null) {
-    enabled = isFeatureEnabled(STORE_KEY);
+    // activate feature for x percent of user
+    const percentage = appConfig?.featureFlagPercentages?.showInventoryInLists || 5;
+    enabled = isFeatureEnabled(STORE_KEY, percentage);
   }
 
   return enabled;
@@ -32,9 +34,7 @@ export function setShowInventoryInLists(state) {
   if (!config) {
     return;
   }
-  const percentage = appConfig?.featureFlagPercentages?.showInventoryInLists || 5;
 
-  // activate feature for x percent of user
-  setABFeatureFlag(STORE_KEY, percentage);
+  setABFeatureFlag(STORE_KEY);
 }
 
