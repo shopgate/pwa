@@ -5,7 +5,11 @@ import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { preferredLocationDidUpdate$, preferredLocationDidUpdateGlobal$ } from '@shopgate/engage/locations/locations.streams';
+import {
+  preferredLocationDidUpdate$,
+  preferredLocationDidUpdateGlobalNotOnSearch$,
+  preferredLocationDidUpdateGlobalOnSearch$,
+} from '@shopgate/engage/locations';
 import {
   REQUEST_SEARCH_RESULTS,
   RECEIVE_SEARCH_RESULTS,
@@ -55,6 +59,7 @@ export const searchFiltersDidUpdate$ = filtersDidUpdate$
   });
 
 export const searchProductsNeedUpdate$ = preferredLocationDidUpdate$
+  .merge(preferredLocationDidUpdateGlobalNotOnSearch$)
   .switchMap(() => searchDOMCachedEntered$.first())
   .merge(searchFiltersDidUpdate$)
-  .merge(preferredLocationDidUpdateGlobal$);
+  .merge(preferredLocationDidUpdateGlobalOnSearch$);
