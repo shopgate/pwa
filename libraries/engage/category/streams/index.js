@@ -1,6 +1,7 @@
 import {
   preferredLocationDidUpdate$,
-  preferredLocationDidUpdateGlobal$,
+  preferredLocationDidUpdateGlobalNotOnCategory$,
+  preferredLocationDidUpdateGlobalOnCategory$,
 } from '@shopgate/engage/locations';
 import {
   categoryDOMCachedEntered$,
@@ -8,6 +9,8 @@ import {
 } from '@shopgate/pwa-common-commerce/category/streams';
 
 export const categoryProductsNeedUpdate$ = preferredLocationDidUpdate$
+  .merge(preferredLocationDidUpdateGlobalNotOnCategory$)
   .switchMap(() => categoryDOMCachedEntered$.first())
   .merge(categoryFiltersDidUpdate$)
-  .merge(preferredLocationDidUpdateGlobal$);
+  .merge(preferredLocationDidUpdateGlobalOnCategory$);
+

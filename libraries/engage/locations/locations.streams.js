@@ -1,10 +1,16 @@
 import { main$ } from '@shopgate/pwa-common/streams';
 import { Observable } from 'rxjs/Observable';
 import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import { makeGetRoutePattern, getCurrentState } from '@shopgate/pwa-common/selectors/router';
+import {
+  makeGetRoutePattern,
+  getCurrentState,
+  getCurrentRoute,
+} from '@shopgate/pwa-common/selectors/router';
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { CATEGORY_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import {
   SUBMIT_RESERVATION_SUCCESS,
   RECEIVE_PRODUCT_LOCATIONS,
@@ -84,6 +90,30 @@ export const fulfillmentLocationsReceived$ = fulfillmentLocationsReceivedFromCar
 
 export const preferredLocationDidUpdateGlobal$ = main$
   .filter(({ action }) => action.type === SELECT_GLOBAL_LOCATION);
+
+export const preferredLocationDidUpdateGlobalOnSearch$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern === SEARCH_PATTERN);
+  });
+
+export const preferredLocationDidUpdateGlobalNotOnSearch$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern !== SEARCH_PATTERN);
+  });
+
+export const preferredLocationDidUpdateGlobalOnCategory$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern === CATEGORY_PATTERN);
+  });
+
+export const preferredLocationDidUpdateGlobalNotOnCategory$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern !== CATEGORY_PATTERN);
+  });
 
 export const preferredLocationDidUpdate$ = main$
   .filter(({ action }) => action.type === SELECT_LOCATION);
