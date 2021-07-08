@@ -27,10 +27,10 @@ import {
 } from '@shopgate/pwa-common-commerce/favorites/streams';
 import { getFavoritesProductsIds } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import {
-  categoryDOMCachedEntered$,
+  categoryDidBackEnter$,
 } from '@shopgate/pwa-common-commerce/category/streams';
 import {
-  searchDOMCachedEntered$,
+  searchDidBackEntered$,
 } from '@shopgate/pwa-common-commerce/search/streams';
 import { setShowInventoryInLists, showInventoryInLists } from './helpers/showInventoryInLists';
 import fetchInventories from './actions/fetchInventories';
@@ -264,7 +264,7 @@ function locationsSubscriber(subscribe) {
   });
 
   subscribe(
-    categoryDOMCachedEntered$.merge(searchDOMCachedEntered$),
+    categoryDidBackEnter$.merge(searchDidBackEntered$),
     ({ action, dispatch, getState }) => {
       const state = getState();
 

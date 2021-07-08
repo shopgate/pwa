@@ -48,7 +48,7 @@ export const searchWillUpdate$ = routeWillEnter$
     action.route.pattern === SEARCH_PATTERN &&
     action.historyAction === ACTION_REPLACE);
 
-export const searchDOMCachedEntered$ = searchDidEnter$.filter(
+export const searchDidBackEntered$ = searchDidEnter$.filter(
   ({ action }) => action.historyAction === HISTORY_POP_ACTION
 );
 
@@ -60,6 +60,6 @@ export const searchFiltersDidUpdate$ = filtersDidUpdate$
 
 export const searchProductsNeedUpdate$ = preferredLocationDidUpdate$
   .merge(preferredLocationDidUpdateGlobalNotOnSearch$)
-  .switchMap(() => searchDOMCachedEntered$.first())
+  .switchMap(() => searchDidBackEntered$.first())
   .merge(searchFiltersDidUpdate$)
   .merge(preferredLocationDidUpdateGlobalOnSearch$);

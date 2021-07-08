@@ -45,7 +45,7 @@ function fetchInventories(productCodes, locationCode = null) {
       })
       .catch((error) => {
         logger.error(error);
-        dispatch(errorInventories(productCodes, error.code));
+        dispatch(errorInventories(productCodes, error));
       });
 
     return request;

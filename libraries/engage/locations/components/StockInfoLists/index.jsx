@@ -79,13 +79,15 @@ const StockInfoLists = ({
 };
 
 StockInfoLists.propTypes = {
-  inventory: PropTypes.shape().isRequired,
-  preferredLocation: PropTypes.shape().isRequired,
   product: PropTypes.shape().isRequired,
   showStockInfo: PropTypes.bool.isRequired,
+  inventory: PropTypes.shape(),
+  preferredLocation: PropTypes.shape(),
 };
 
 StockInfoLists.defaultProps = {
+  inventory: null,
+  preferredLocation: null,
 };
 
 export default connect(makeMapStateToProps)(StockInfoLists);

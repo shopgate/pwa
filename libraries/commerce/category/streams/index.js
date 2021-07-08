@@ -14,6 +14,7 @@ import {
   RECEIVE_ROOT_CATEGORIES,
   ERROR_CATEGORY,
   RECEIVE_CATEGORY,
+  CATEGORY_PATH,
 } from '../constants';
 
 export const categoryWillEnter$ = routeWillEnter$
@@ -37,7 +38,7 @@ export const receivedRootCategories$ = main$.filter(({ action }) => (
  */
 export const categoryError$ = main$.filter(({ action }) => (action.type === ERROR_CATEGORY));
 
-export const categoryDOMCachedEntered$ = categoryDidEnter$.filter(
+export const categoryDidBackEnter$ = categoryDidEnter$.filter(
   ({ action }) => action.historyAction === HISTORY_POP_ACTION
 );
 
