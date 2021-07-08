@@ -1,4 +1,5 @@
 import { themeName, shopNumber } from '@shopgate/pwa-common/helpers/config';
+import { isDev } from '@shopgate/engage/core';
 
 const STORE_KEY_PREFIX = `sgFeatureFlag_${shopNumber}_${themeName}__`;
 
@@ -31,6 +32,10 @@ export function setABFeatureFlag(key) {
  * @returns {boolean}
  */
 export function isFeatureEnabled(key, percentage = 10) {
+  if (isDev) {
+    return true;
+  }
+
   const featureFlagRandomNumber = getFeatureFlag(key);
 
   return featureFlagRandomNumber <= percentage;
