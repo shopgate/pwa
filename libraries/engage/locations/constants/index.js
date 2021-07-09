@@ -23,6 +23,7 @@ export {
   SUBMIT_RESERVATION_ERROR,
   FETCH_FULFILLMENT_SLOTS_ERROR,
   FETCH_FULFILLMENT_SLOTS_SUCCESS,
+  PROVIDE_PRODUCT_ALTERNATIVE_LOCATION,
 } from './ActionTypes';
 
 // PIPELINES
@@ -50,7 +51,12 @@ export const BOPIS = 'BOPIS';
 export const QUICK_RESERVE = 'quickReserve';
 export const MULTI_LINE_RESERVE = 'multiLineReserve';
 
+export const SORT_CLOSEST_LOCATION = 'closestLocation';
+export const SORT_CLOSEST_LOCATION_WITH_INVENTORY = 'closestLocationWithInventory';
+
 export const DEFAULT_ROPE_FULFILLMENT_METHOD = 'defaultRopeFulfillmentMethod';
+
+export const USER_SEARCH_GEOLOCATION_LIFETIME = 3e5; // 5 minutes for geolocation expire
 
 export {
   STAGE_SELECT_STORE,

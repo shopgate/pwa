@@ -19,6 +19,7 @@ import {
 } from './FulfillmentSelectorItem.style';
 import { PRODUCT_FULFILLMENT_SELECTOR_LOCATION } from '../../constants/Portals';
 import { FulfillmentSelectorLocationMethodNotAvailable } from './FulfillmentSelectorLocationMethodNotAvailable';
+import FulfillmentSelectorAlternativeLocation from './FulfillmentSelectorAlternativeLocation';
 
 /**
  * The FulfillmentSelectorLocation component
@@ -80,6 +81,7 @@ export function FulfillmentSelectorLocation() {
       portalProps={{
         productId,
         location: usedLocation,
+        inventory,
       }}
     >
       {(isRopeMethodEnabled && isOrderable && usedLocation) && (
@@ -115,11 +117,17 @@ export function FulfillmentSelectorLocation() {
           <ChangeLocationButton onClick={handleChangeLocation} />
         </div>
       )}
+      {/* eslint-disable-next-line no-constant-condition */}
       {false && !isRopeMethodEnabled ? (
         <div className={classNames(unavailable, container)}>
           {i18n.text('locations.no_available')}
         </div>
       ) : null}
+
+      <FulfillmentSelectorAlternativeLocation
+        show={!!isRopeMethodEnabled && (!!usedLocation && !!inventory && !isOrderable)}
+        productId={productId}
+      />
     </SurroundPortals>
   );
 }
