@@ -258,6 +258,15 @@ export const getUserSearchCountryCode = (state) => {
 };
 
 /**
+ * @param {Object} state State.
+ * @returns {string}
+ */
+export const getUserSearchGeolocation = (state) => {
+  const userSearch = getUserSearch(state);
+  return userSearch.geolocation;
+};
+
+/**
  * Retrieves the postal code from the user's search.
  * @param {Object} state State.
  * @returns {string}
@@ -514,4 +523,78 @@ export const makeGetFulfillmentSlotsForLocation = getLocationCode => createSelec
   getLocationsStorage,
   getLocationCode,
   (storage, locationCode) => storage.fulfillmentSlotsByLocation?.[locationCode]
+);
+
+/**
+ * Get alternative location params by geo location, preferred location, etc.
+ * @type {Object}
+ */
+export const getProductAlternativeLocationParams = createSelector(
+  getUserSearch,
+  getPreferredLocation,
+  (userSearch, preferredLocation) => {
+    if (!userSearch) {
+      return null;
+    }
+    const params = {
+      countryCode: userSearch.countryCode,
+    };
+    if (userSearch.geoLocation) {
+      params.geolocation = userSearch.geoLocation;
+    } else if (userSearch.postalCode) {
+      params.postalCode = userSearch.postalCode;
+    } else if (preferredLocation) {
+      params.geolocation = {
+        latitude: preferredLocation.latitude,
+        longitude: preferredLocation.longitude,
+      };
+    }
+
+    return params;
+  }
+);
+
+/**
+ * @param {Function} getParams get params for fetch locations.
+ * @returns {Array}
+ */
+export const getProductAlternativeLocations = createSelector(
+  (_, props) => props.productId,
+  (_, props) => props.params,
+  getLocationsStorage,
+  getProductAlternativeLocationParams,
+  (productId, propsParams, storage, alternativeParams) => {
+    if (!alternativeParams) {
+      return null;
+    }
+    const fetchParams = {
+      productCode: productId,
+      ...alternativeParams,
+      ...propsParams,
+    };
+
+    if (fetchParams.geolocation) {
+      fetchParams.latitude = fetchParams.geolocation.latitude;
+      fetchParams.longitude = fetchParams.geolocation.longitude;
+      delete fetchParams.geolocation;
+    }
+    const sortedHash = generateSortedHash(fetchParams);
+
+    const codes = storage.locationsByFilter[sortedHash] || [];
+    const locations = codes
+      .map(code => storage.locationsByCode[code])
+      .map((location) => {
+        const pair = generateSortedHash({
+          productCode: productId,
+          locationCode: location.code,
+        });
+
+        return {
+          ...location,
+          productInventory: storage.inventoriesByCodePair[pair] || null,
+        };
+      });
+
+    return locations.length ? locations : null;
+  }
 );

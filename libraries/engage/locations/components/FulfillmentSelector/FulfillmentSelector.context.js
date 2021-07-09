@@ -21,4 +21,5 @@ export const FulfillmentSelectorContext = createContext<FulfillmentSelectorConte
   productFulfillmentMethods: null,
   locationFulfillmentMethods: null,
   useLocationFulfillmentMethods: false,
+  merchantSettings: null,
 });

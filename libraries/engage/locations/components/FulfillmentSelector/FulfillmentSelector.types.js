@@ -5,6 +5,11 @@ import { type Location, type UserLocationFulfillmentMethod } from '../../locatio
 
 export type Selection = typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
 
+export type UserSearch = {
+  geolocation: null,
+  postalCode: null,
+}
+
 export type FulfillmentSelectorContextProps = {
   selection: Selection,
   selectedLocation: Location | null,
@@ -17,6 +22,7 @@ export type FulfillmentSelectorContextProps = {
   handleChange: (element: Selection, changeOnly: boolean) => void,
   conditioner: any,
   fulfillmentPaths: string[],
+  merchantSettings: Object,
   userFulfillmentMethod: string | null,
   isOrderable: boolean,
   shopFulfillmentMethods?: string[] | null,
@@ -24,7 +30,7 @@ export type FulfillmentSelectorContextProps = {
   locationFulfillmentMethods: string[] | null,
   useLocationFulfillmentMethods: boolean,
   inventory?: Object,
-  preferredLocation?: Object
+  preferredLocation?: Object,
 }
 
 export type OwnProps = {
@@ -33,6 +39,7 @@ export type OwnProps = {
 }
 
 export type StateProps = {
+  merchantSettings?: Object,
   shopFulfillmentMethods?: string[] | null,
   productFulfillmentMethods: string[] | null,
   locationFulfillmentMethods: string[] | null,

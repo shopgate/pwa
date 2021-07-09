@@ -12,13 +12,21 @@ import {
   appDidStart$,
   routeWillEnter$,
   UIEvents,
-  getCurrentRoute, hex2bin, getThemeSettings,
+  getCurrentRoute, hex2bin, getThemeSettings, shouldFetchData,
 } from '@shopgate/engage/core';
 import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import {
-  getUserSearch, getStoreFinderSearch, getPreferredLocation, getIsPending,
+  getUserSearch,
+  getStoreFinderSearch,
+  getPreferredLocation,
+  getIsPending,
+  getUserSearchGeolocation,
+  getProductAlternativeLocationParams,
+  getProductAlternativeLocations,
 } from './selectors';
-import { fetchLocations, fetchProductLocations, setPending } from './actions';
+import {
+  fetchLocations, fetchProductLocations, setPending, setUserSearchGeolocation,
+} from './actions';
 import selectLocation from './action-creators/selectLocation';
 import {
   submitReservationSuccess$,
@@ -26,6 +34,7 @@ import {
   userSearchChanged$,
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
+  provideAlternativeLocation$,
 } from './locations.streams';
 import fetchProductInventories from './actions/fetchProductInventories';
 import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
@@ -241,6 +250,39 @@ function locationsSubscriber(subscribe) {
       return;
     }
     setLocationOnceAvailable(locationCode, dispatch);
+  });
+
+  const alternative$ = productInventoryNeedsUpdate$
+    .switchMap(() => provideAlternativeLocation$.first());
+  /**
+   * Provide alternative location on PDP when preferred location is out of stock
+   */
+  subscribe(alternative$, async ({ action, dispatch, getState }) => {
+    const state = getState();
+
+    // Refresh geo location
+    if (shouldFetchData(getUserSearchGeolocation(state))) {
+      await dispatch(setUserSearchGeolocation({ silent: true }));
+    }
+
+    const alternativeLocations = getProductAlternativeLocations(state, action);
+    if (alternativeLocations) {
+      // Already fetched by default params
+      return;
+    }
+
+    const { productId, params } = action;
+
+    const alternativeParams = getProductAlternativeLocationParams(state);
+
+    const fetchParams = {
+      ...alternativeParams,
+      ...params,
+    };
+
+    if (fetchParams.geolocation || fetchParams.postalCode) {
+      dispatch(fetchProductLocations(productId, fetchParams));
+    }
   });
 }
 

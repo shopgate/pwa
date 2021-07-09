@@ -1,4 +1,3 @@
-import { logger } from '@shopgate/pwa-core/helpers';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import {
   requestProductLocations,
@@ -14,19 +13,23 @@ import { SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS } from '../constants';
  */
 function fetchProductLocations(productCode, params = {}) {
   return (dispatch) => {
+    const { postalCode, geolocation, ...restParams } = params;
+
     const filters = {
-      countryCode: params.countryCode,
       productCode,
+      ...restParams,
     };
-    if (params.geolocation) {
+
+    if (geolocation) {
       filters.longitude = params.geolocation.longitude;
       filters.latitude = params.geolocation.latitude;
     }
-    if (params.postalCode) {
+
+    if (postalCode) {
       filters.postalCode = params.postalCode;
     }
 
-    dispatch(requestProductLocations(productCode));
+    dispatch(requestProductLocations(productCode, filters));
 
     const request = new PipelineRequest(SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS)
       .setInput(filters)
@@ -37,7 +40,6 @@ function fetchProductLocations(productCode, params = {}) {
         dispatch(receiveProductLocations(productCode, filters, result.locations));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorProductLocations(productCode, error.code));
       });
 

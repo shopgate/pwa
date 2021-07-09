@@ -18,3 +18,4 @@ export { default as submitReservationError } from './submitReservationError';
 export { default as requestProductInventories } from './requestProductInventories';
 export { default as receiveProductInventories } from './receiveProductInventories';
 export { default as errorProductInventories } from './errorProductInventories';
+export { provideProductAlternativeLocation } from './provideProductAlternativeLocation';
