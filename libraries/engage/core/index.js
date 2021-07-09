@@ -66,6 +66,7 @@ export * from '@shopgate/pwa-core/constants/ErrorHandleTypes';
 export * from '@shopgate/pwa-core/constants/Pipeline';
 export * from '@shopgate/pwa-core/constants/ProcessTypes';
 export * from '@shopgate/pwa-core/constants/Scanner';
+export * from '@shopgate/pwa-core/constants/Trilean';
 
 // Common Constants
 export * from '@shopgate/pwa-common/constants/ActionTypes';
