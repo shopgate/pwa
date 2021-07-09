@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withWidgetSettings } from '@shopgate/engage/core';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
+import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 import { provideProductAlternativeLocation } from '../../action-creators';
 import { StockInfo } from '../StockInfo';
-import { locationName } from './FulfillmentSelectorLocation.style';
+import { locationName, alternativeLocation as gridClassName } from './FulfillmentSelectorLocation.style';
 import { itemColumn, itemSpacer } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { PRODUCT_FULFILLMENT_SELECTOR_ALTERNATIVE_LOCATION } from '../../constants/Portals';
 import { getProductAlternativeLocations } from '../../selectors';
 import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
-import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 
 /**
  * The FulfillmentSelectorLocation component
@@ -60,7 +60,7 @@ function FulfillmentSelectorAlternativeLocation({
         location: alternativeLocation,
       }}
     >
-      <Grid component="div">
+      <Grid component="div" className={gridClassName}>
         <ResponsiveContainer appAlways breakpoint="xs">
           <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
             <div className={locationName}>{alternativeLocation.name}</div>
@@ -70,11 +70,11 @@ function FulfillmentSelectorAlternativeLocation({
           </Grid.Item>
         </ResponsiveContainer>
         <ResponsiveContainer webOnly breakpoint=">xs">
-          <div>
-            <div className={locationName}>{alternativeLocation.name}</div>
-          </div>
-          <div className={itemSpacer}>
-            <StockInfo productId={productId} location={alternativeLocation} />
+          <div className={locationName}>
+            {alternativeLocation.name}
+            <span className={itemSpacer}>
+              <StockInfo productId={productId} location={alternativeLocation} />
+            </span>
           </div>
         </ResponsiveContainer>
       </Grid>

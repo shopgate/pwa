@@ -9,6 +9,12 @@ export const container = css({
   flexDirection: 'column',
 }).toString();
 
+export const alternativeLocation = css({
+  fontSize: '0.825rem',
+  padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.small}px ${themeVariables.gap.big * 3}px`,
+  marginTop: themeVariables.gap.small,
+}).toString();
+
 export const unavailable = css({
   color: themeColors.dark,
   fontSize: '0.625rem',

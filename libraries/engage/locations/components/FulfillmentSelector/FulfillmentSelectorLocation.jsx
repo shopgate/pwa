@@ -123,6 +123,7 @@ export function FulfillmentSelectorLocation() {
           {i18n.text('locations.no_available')}
         </div>
       ) : null}
+
       <FulfillmentSelectorAlternativeLocation
         show={!!isRopeMethodEnabled && (!!usedLocation && !!inventory && !isOrderable)}
         productId={productId}
