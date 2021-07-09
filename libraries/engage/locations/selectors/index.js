@@ -532,7 +532,7 @@ export const makeGetFulfillmentSlotsForLocation = getLocationCode => createSelec
 export const getProductAlternativeLocationParams = createSelector(
   getUserSearch,
   getPreferredLocation,
-  (userSearch, prefferredLocation) => {
+  (userSearch, preferredLocation) => {
     if (!userSearch) {
       return null;
     }
@@ -543,10 +543,10 @@ export const getProductAlternativeLocationParams = createSelector(
       params.geolocation = userSearch.geoLocation;
     } else if (userSearch.postalCode) {
       params.postalCode = userSearch.postalCode;
-    } else if (prefferredLocation) {
+    } else if (preferredLocation) {
       params.geolocation = {
-        latitude: prefferredLocation.latitude,
-        longitude: prefferredLocation.longitude,
+        latitude: preferredLocation.latitude,
+        longitude: preferredLocation.longitude,
       };
     }
 

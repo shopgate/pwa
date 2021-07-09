@@ -31,7 +31,6 @@ export type FulfillmentSelectorContextProps = {
   useLocationFulfillmentMethods: boolean,
   inventory?: Object,
   preferredLocation?: Object,
-  userSearch: UserSearch
 }
 
 export type OwnProps = {
@@ -49,7 +48,6 @@ export type StateProps = {
   isROPISEnabled: boolean,
   isBOPISEnabled: boolean,
   preferredLocation: Location | null,
-  productLocations: Location[] | null,
   inventory: any,
   userFulfillmentMethod: string | null,
   fulfillmentPaths: string[],
