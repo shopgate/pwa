@@ -16,10 +16,10 @@ import {
 import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
 import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
 import { router } from '@virtuous/conductor';
+import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';
-import TabBar from '../../../../components/TabBar';
 
 const SUGGESTIONS_MIN = 1;
 
@@ -138,16 +138,14 @@ class SearchField extends Component {
     // for testing purposes. we've faced an issue
     // where the keyboard will be shown for a few
     // milliseconds and then it'll hide.
-    const bufferTimeout = 0;
+    const bufferTimeout = 100;
 
     if (!focused) {
       setTimeout(() => {
         TabBar.show();
       }, bufferTimeout);
     } else {
-      setTimeout(() => {
-        TabBar.hide();
-      }, bufferTimeout);
+      TabBar.hide();
     }
 
     clearTimeout(this.onBlurTimeout);
