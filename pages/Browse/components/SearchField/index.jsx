@@ -127,7 +127,7 @@ class SearchField extends Component {
    * @param {boolean} focused Whether the element currently became focused.
    */
   handleFocusChange = (focused) => {
-    // for testing purposes. we've faced an issue
+    // we've faced an issue
     // where the keyboard will be shown for a few
     // milliseconds and then it'll hide.
     const bufferTimeout = 100;
