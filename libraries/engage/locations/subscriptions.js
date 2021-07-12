@@ -49,6 +49,7 @@ import {
   getUserSearch, getStoreFinderSearch, getPreferredLocation, getIsPending,
 } from './selectors';
 import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
+import selectGlobalLocation from './action-creators/selectGlobalLocation';
 
 let initialLocationsResolve;
 let initialLocationsReject;
@@ -247,6 +248,7 @@ function locationsSubscriber(subscribe) {
     }
 
     dispatch(selectLocation({ code: firstLocationCode }));
+    dispatch(selectGlobalLocation({ code: firstLocationCode }));
   });
 
   /**

@@ -9,7 +9,7 @@ import {
   preferredLocationDidUpdate$,
   preferredLocationDidUpdateGlobalNotOnSearch$,
   preferredLocationDidUpdateGlobalOnSearch$,
-} from '@shopgate/engage/locations';
+} from '@shopgate/engage/locations/locations.streams';
 import {
   REQUEST_SEARCH_RESULTS,
   RECEIVE_SEARCH_RESULTS,
