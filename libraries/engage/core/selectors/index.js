@@ -14,5 +14,6 @@ export {
   getRestrictMultiLocationOrders,
   getDefaultCurrency,
   getEnableWebIndexing,
+  getProductShowAlternativeLocation,
   getProductListShowInventory,
 } from './merchantSettings';

@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { PRODUCT_REVIEWS_ALL } from '@shopgate/engage/reviews';
 import Header from 'Components/Reviews/components/Header';
 import List from 'Components/Reviews/components/List';
 import { BackBar } from 'Components/AppBar/presets';
@@ -13,9 +15,14 @@ import connect from './connector';
 const ReviewsContent = ({ productId, rating, reviews }) => (
   <Fragment>
     <BackBar title="titles.reviews" right={null} />
-    <Header productId={productId} rating={rating} withTopGap />
-    <List productId={productId} reviews={reviews} />
-    <LoadMoreButton productId={productId} />
+    <SurroundPortals
+      portalName={PRODUCT_REVIEWS_ALL}
+      portalProps={{ productId }}
+    >
+      <Header productId={productId} rating={rating} withTopGap />
+      <List productId={productId} reviews={reviews} />
+      <LoadMoreButton productId={productId} />
+    </SurroundPortals>
   </Fragment>
 );
 

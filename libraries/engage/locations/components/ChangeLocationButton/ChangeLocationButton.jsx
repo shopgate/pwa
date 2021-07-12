@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
-import { RippleButton, I18n } from '@shopgate/engage/components';
+import { RippleButton, I18n, SurroundPortals } from '@shopgate/engage/components';
 import { button, ripple } from './ChangeLocationButton.style';
+import { PRODUCT_FULFILLMENT_CHANGE_LOCATION } from '../../constants/Portals';
 
 type Props = {
   onClick: () => void,
@@ -9,20 +10,28 @@ type Props = {
 }
 
 /**
- * @param {Function} onClick callback.
+ * @param {Object} props .
  * @returns {JSX}
  */
 export const ChangeLocationButtonUnwrapped = ({ onClick, disabled }: Props) => (
-  <RippleButton
-    onClick={onClick}
-    className={button}
-    disabled={disabled}
-    rippleClassName={ripple}
-    type="secondary"
-    flat
+  <SurroundPortals
+    portalName={PRODUCT_FULFILLMENT_CHANGE_LOCATION}
+    portalProps={{
+      onClick,
+      disabled,
+    }}
   >
-    <I18n.Text string="locations.change_location" />
-  </RippleButton>
+    <RippleButton
+      onClick={onClick}
+      className={button}
+      disabled={disabled}
+      rippleClassName={ripple}
+      type="secondary"
+      flat
+    >
+      <I18n.Text string="locations.change_location" />
+    </RippleButton>
+  </SurroundPortals>
 );
 
 ChangeLocationButtonUnwrapped.defaultProps = {

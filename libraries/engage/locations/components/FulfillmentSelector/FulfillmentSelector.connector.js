@@ -11,6 +11,8 @@ import {
   makeGetFulfillmentPaths,
   makeUseLocationFulfillmentMethods,
 } from '../../../core/config';
+import { getProductShowAlternativeLocation } from '../../../core/selectors';
+import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 import {
   makeIsFulfillmentSelectorMethodEnabled,
   getPreferredLocation,
@@ -18,6 +20,7 @@ import {
   makeGetLocationFulfillmentMethods,
   getPreferredFulfillmentMethod,
   getProductFulfillmentMethods,
+  getUserSearch,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
@@ -67,6 +70,10 @@ function makeMapStateToProps() {
     const baseProductActive = isBaseProductActive(state, props);
 
     return {
+      merchantSettings: {
+        // eslint-disable-next-line max-len
+        [MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION]: getProductShowAlternativeLocation(state),
+      },
       fulfillmentPaths: getFulfillmentPaths(state),
       shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
       productFulfillmentMethods: getProductFulfillmentMethods(state, props),
@@ -80,6 +87,7 @@ function makeMapStateToProps() {
       isBOPISEnabled: isBOPISEnabled(state, props),
       isOrderable: isProductOrderable(state, props) || !!hasVariants,
       isReady: hasVariants !== null && (!hasVariants || !baseProductActive),
+      userSearch: getUserSearch(state),
     };
   };
 }

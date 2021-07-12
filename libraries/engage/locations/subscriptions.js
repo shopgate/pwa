@@ -17,6 +17,7 @@ import {
   appDidStart$,
   routeWillEnter$,
   UIEvents,
+  shouldFetchData,
   getCurrentRoute,
   hex2bin,
   getThemeSettings,
@@ -32,6 +33,18 @@ import {
 import {
   searchDidBackEntered$,
 } from '@shopgate/pwa-common-commerce/search/streams';
+import {
+  getUserSearch,
+  getStoreFinderSearch,
+  getPreferredLocation,
+  getIsPending,
+  getUserSearchGeolocation,
+  getProductAlternativeLocationParams,
+  getProductAlternativeLocations,
+} from './selectors';
+import {
+  fetchLocations, fetchProductLocations, setPending, setUserSearchGeolocation,
+} from './actions';
 import { setShowInventoryInLists, showInventoryInLists } from './helpers/showInventoryInLists';
 import fetchInventories from './actions/fetchInventories';
 import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
@@ -42,12 +55,9 @@ import {
   userSearchChanged$,
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
+  provideAlternativeLocation$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
-import { fetchLocations, fetchProductLocations, setPending } from './actions';
-import {
-  getUserSearch, getStoreFinderSearch, getPreferredLocation, getIsPending,
-} from './selectors';
 import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import selectGlobalLocation from './action-creators/selectGlobalLocation';
 
@@ -263,6 +273,39 @@ function locationsSubscriber(subscribe) {
       return;
     }
     setLocationOnceAvailable(locationCode, dispatch);
+  });
+
+  const alternative$ = productInventoryNeedsUpdate$
+    .switchMap(() => provideAlternativeLocation$.first());
+  /**
+   * Provide alternative location on PDP when preferred location is out of stock
+   */
+  subscribe(alternative$, async ({ action, dispatch, getState }) => {
+    const state = getState();
+
+    // Refresh geo location
+    if (shouldFetchData(getUserSearchGeolocation(state))) {
+      await dispatch(setUserSearchGeolocation({ silent: true }));
+    }
+
+    const alternativeLocations = getProductAlternativeLocations(state, action);
+    if (alternativeLocations) {
+      // Already fetched by default params
+      return;
+    }
+
+    const { productId, params } = action;
+
+    const alternativeParams = getProductAlternativeLocationParams(state);
+
+    const fetchParams = {
+      ...alternativeParams,
+      ...params,
+    };
+
+    if (fetchParams.geolocation || fetchParams.postalCode) {
+      dispatch(fetchProductLocations(productId, fetchParams));
+    }
   });
 
   subscribe(
