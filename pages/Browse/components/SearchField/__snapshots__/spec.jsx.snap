@@ -1,360 +1,284 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Content /> Check search field should render with initial search query 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
+exports[`pages / Browse / components / SearchField Check search field should render with initial search query 1`] = `
+<SearchField
+  fetchSuggestions={[MockFunction]}
+  name="search"
+  openScanner={[MockFunction]}
+  pageId="1234"
+  query="foo"
+  showScannerIcon={false}
+  submitSearch={[MockFunction]}
 >
-  <Connect(SearchField)
-    pageId="1234"
-    query="foo"
+  <div
+    className="theme__browse__search-field"
+    data-test-id="SearchField"
   >
-    <SearchField
-      fetchSuggestions={[Function]}
-      name="search"
-      openScanner={[Function]}
-      pageId="1234"
-      query="foo"
-      showScannerIcon={true}
-      submitSearch={[Function]}
+    <div
+      className="css-2ciheh"
     >
       <div
-        className="theme__browse__search-field"
-        data-test-id="SearchField"
+        className="css-1utu657"
       >
-        <div
-          className="css-2ciheh"
+        <form
+          action="."
+          onSubmit={[Function]}
         >
-          <div
-            className="css-1utu657"
+          <label
+            className="css-19t1ju7"
+            htmlFor="search"
           >
-            <form
-              action="."
-              onSubmit={[Function]}
+            <div
+              className="css-tfmeke"
             >
-              <label
-                className="css-19t1ju7"
-                htmlFor="search"
-              >
-                <div
-                  className="css-tfmeke"
+              <Magnifier>
+                <Icon
+                  className=""
+                  color={null}
+                  content="<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>"
+                  size="inherit"
+                  viewBox="0 0 24 24"
                 >
-                  <Magnifier>
-                    <Icon
-                      className=""
-                      color={null}
-                      content="<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>"
-                      size="inherit"
-                      viewBox="0 0 24 24"
-                    >
-                      <svg
-                        className="css-yys9hb  common__icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>",
-                          }
-                        }
-                        style={
-                          Object {
-                            "fill": null,
-                            "fontSize": "inherit",
-                          }
-                        }
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      />
-                    </Icon>
-                  </Magnifier>
-                </div>
-              </label>
-              <_default
-                autoComplete={false}
-                className="css-11ngaym css-1qnjb83"
+                  <svg
+                    className="css-yys9hb  common__icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>",
+                      }
+                    }
+                    style={
+                      Object {
+                        "fill": null,
+                        "fontSize": "inherit",
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  />
+                </Icon>
+              </Magnifier>
+            </div>
+          </label>
+          <_default
+            autoComplete={false}
+            className="css-11ngaym"
+            onChange={[Function]}
+            onFocusChange={[Function]}
+            onSubmit={[Function]}
+            setRef={[Function]}
+            type="search"
+            value="foo"
+          >
+            <SimpleInput
+              attributes={null}
+              autoComplete={false}
+              autoCorrect={false}
+              className="css-11ngaym"
+              disabled={false}
+              id={null}
+              isControlled={false}
+              name={null}
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onKeyPress={[Function]}
+              onSanitize={[Function]}
+              onSubmit={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              type="search"
+              validateOnBlur={true}
+              value="foo"
+            >
+              <input
+                autoComplete="off"
+                autoCorrect="off"
+                className="css-11ngaym simpleInput common__simple-input"
+                disabled={false}
+                id={null}
+                name={null}
+                onBlur={[Function]}
                 onChange={[Function]}
-                onFocusChange={[Function]}
-                onSubmit={[Function]}
-                setRef={[Function]}
+                onFocus={[Function]}
+                onKeyPress={[Function]}
                 type="search"
                 value="foo"
-              >
-                <SimpleInput
-                  attributes={null}
-                  autoComplete={false}
-                  autoCorrect={false}
-                  className="css-11ngaym css-1qnjb83"
-                  disabled={false}
-                  id={null}
-                  isControlled={false}
-                  name={null}
-                  onChange={[Function]}
-                  onFocusChange={[Function]}
-                  onKeyPress={[Function]}
-                  onSanitize={[Function]}
-                  onSubmit={[Function]}
-                  onValidate={[Function]}
-                  password={false}
-                  setRef={[Function]}
-                  type="search"
-                  validateOnBlur={true}
-                  value="foo"
-                >
-                  <input
-                    autoComplete="off"
-                    autoCorrect="off"
-                    className="css-11ngaym css-1qnjb83 simpleInput common__simple-input"
-                    disabled={false}
-                    id={null}
-                    name={null}
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    type="search"
-                    value="foo"
-                  />
-                </SimpleInput>
-              </_default>
-              <Portal
-                name="scanner.icon.before"
-                props={null}
               />
-              <Portal
-                name="scanner.icon"
-                props={null}
-              >
-                <button
-                  aria-hidden={true}
-                  className="css-y68ulq"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  <BarcodeScanner>
-                    <Icon
-                      className=""
-                      color={null}
-                      content="<path d=\\"M4.3 6.226h1.926V17.77H4.3V6.226zm2.89 0h.965V17.77H7.19V6.226zm1.925 0H12V17.77H9.115V6.226zm3.85 0h.965V17.77h-.97l.005-11.544zm2.885 0h1.924V17.77H15.85V6.226zm2.884 0h.965V17.77h-.965V6.226zM2.376 4.3v3.85H.451V4.3a1.922 1.922 0 011.92-1.92h3.85v1.925H2.376zm19.248-1.925a1.922 1.922 0 011.92 1.92v3.85h-1.925V4.3h-3.85V2.376h3.855zM2.376 15.85v3.85h3.85v1.924h-3.85c-.254 0-.504-.048-.74-.149a1.9 1.9 0 01-.623-.417 1.952 1.952 0 01-.418-.624 1.95 1.95 0 01-.144-.74V15.85h1.925zm19.248 3.85v-3.85h1.925v3.85a1.922 1.922 0 01-1.92 1.92h-3.85v-1.926l3.845.005z\\"/>"
-                      size="inherit"
-                      viewBox="0 0 24 24"
-                    >
-                      <svg
-                        className="css-yys9hb  common__icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "<path d=\\"M4.3 6.226h1.926V17.77H4.3V6.226zm2.89 0h.965V17.77H7.19V6.226zm1.925 0H12V17.77H9.115V6.226zm3.85 0h.965V17.77h-.97l.005-11.544zm2.885 0h1.924V17.77H15.85V6.226zm2.884 0h.965V17.77h-.965V6.226zM2.376 4.3v3.85H.451V4.3a1.922 1.922 0 011.92-1.92h3.85v1.925H2.376zm19.248-1.925a1.922 1.922 0 011.92 1.92v3.85h-1.925V4.3h-3.85V2.376h3.855zM2.376 15.85v3.85h3.85v1.924h-3.85c-.254 0-.504-.048-.74-.149a1.9 1.9 0 01-.623-.417 1.952 1.952 0 01-.418-.624 1.95 1.95 0 01-.144-.74V15.85h1.925zm19.248 3.85v-3.85h1.925v3.85a1.922 1.922 0 01-1.92 1.92h-3.85v-1.926l3.845.005z\\"/>",
-                          }
-                        }
-                        style={
-                          Object {
-                            "fill": null,
-                            "fontSize": "inherit",
-                          }
-                        }
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      />
-                    </Icon>
-                  </BarcodeScanner>
-                </button>
-              </Portal>
-              <Portal
-                name="scanner.icon.after"
-                props={null}
-              />
-            </form>
-          </div>
-          <div>
-            <button
-              className="css-cmi6wl css-gyrv08"
-              onClick={[Function]}
-              type="button"
-            >
-              <Translate
-                className={null}
-                params={Object {}}
-                role={null}
-                string="search.cancel"
-              >
-                <span
-                  className={null}
-                  role={null}
-                />
-              </Translate>
-            </button>
-          </div>
-        </div>
-        <Component
-          bottomHeight={0}
-          onClick={[Function]}
-          searchPhrase="foo"
-          visible={false}
-        />
+            </SimpleInput>
+          </_default>
+        </form>
       </div>
-    </SearchField>
-  </Connect(SearchField)>
-</Provider>
+      <div>
+        <button
+          className="css-cmi6wl css-gyrv08"
+          onClick={[Function]}
+          type="button"
+        >
+          <Translate
+            className={null}
+            params={Object {}}
+            role={null}
+            string="search.cancel"
+          >
+            <span
+              className={null}
+              role={null}
+            >
+              search.cancel
+            </span>
+          </Translate>
+        </button>
+      </div>
+    </div>
+    <Component
+      bottomHeight={0}
+      onClick={[Function]}
+      searchPhrase="foo"
+      visible={false}
+    />
+  </div>
+</SearchField>
 `;
 
-exports[`<Content /> Check search field should show suggestions when focused 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
+exports[`pages / Browse / components / SearchField Check search field should show suggestions when focused 1`] = `
+<SearchField
+  fetchSuggestions={[MockFunction]}
+  name="search"
+  openScanner={[MockFunction]}
+  pageId="1234"
+  query="foo"
+  showScannerIcon={false}
+  submitSearch={[MockFunction]}
 >
-  <Connect(SearchField)
-    pageId="1234"
-    query="foo"
+  <div
+    className="theme__browse__search-field"
+    data-test-id="SearchField"
   >
-    <SearchField
-      fetchSuggestions={[Function]}
-      name="search"
-      openScanner={[Function]}
-      pageId="1234"
-      query="foo"
-      showScannerIcon={true}
-      submitSearch={[Function]}
+    <div
+      className="css-2ciheh"
     >
       <div
-        className="theme__browse__search-field"
-        data-test-id="SearchField"
+        className="css-1utu657"
       >
-        <div
-          className="css-2ciheh"
+        <form
+          action="."
+          onSubmit={[Function]}
         >
-          <div
-            className="css-1utu657"
+          <label
+            className="css-19t1ju7"
+            htmlFor="search"
           >
-            <form
-              action="."
-              onSubmit={[Function]}
+            <div
+              className="css-tfmeke"
             >
-              <label
-                className="css-19t1ju7"
-                htmlFor="search"
-              >
-                <div
-                  className="css-tfmeke"
+              <Magnifier>
+                <Icon
+                  className=""
+                  color={null}
+                  content="<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>"
+                  size="inherit"
+                  viewBox="0 0 24 24"
                 >
-                  <Magnifier>
-                    <Icon
-                      className=""
-                      color={null}
-                      content="<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>"
-                      size="inherit"
-                      viewBox="0 0 24 24"
-                    >
-                      <svg
-                        className="css-yys9hb  common__icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>",
-                          }
-                        }
-                        style={
-                          Object {
-                            "fill": null,
-                            "fontSize": "inherit",
-                          }
-                        }
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      />
-                    </Icon>
-                  </Magnifier>
-                </div>
-              </label>
-              <_default
-                autoComplete={false}
-                className="css-11ngaym"
+                  <svg
+                    className="css-yys9hb  common__icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<path d=\\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\\"/>",
+                      }
+                    }
+                    style={
+                      Object {
+                        "fill": null,
+                        "fontSize": "inherit",
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  />
+                </Icon>
+              </Magnifier>
+            </div>
+          </label>
+          <_default
+            autoComplete={false}
+            className="css-11ngaym"
+            onChange={[Function]}
+            onFocusChange={[Function]}
+            onSubmit={[Function]}
+            setRef={[Function]}
+            type="search"
+            value="foo"
+          >
+            <SimpleInput
+              attributes={null}
+              autoComplete={false}
+              autoCorrect={false}
+              className="css-11ngaym"
+              disabled={false}
+              id={null}
+              isControlled={false}
+              name={null}
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onKeyPress={[Function]}
+              onSanitize={[Function]}
+              onSubmit={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              type="search"
+              validateOnBlur={true}
+              value="foo"
+            >
+              <input
+                autoComplete="off"
+                autoCorrect="off"
+                className="css-11ngaym simpleInput common__simple-input"
+                disabled={false}
+                id={null}
+                name={null}
+                onBlur={[Function]}
                 onChange={[Function]}
-                onFocusChange={[Function]}
-                onSubmit={[Function]}
-                setRef={[Function]}
+                onFocus={[Function]}
+                onKeyPress={[Function]}
                 type="search"
                 value="foo"
-              >
-                <SimpleInput
-                  attributes={null}
-                  autoComplete={false}
-                  autoCorrect={false}
-                  className="css-11ngaym"
-                  disabled={false}
-                  id={null}
-                  isControlled={false}
-                  name={null}
-                  onChange={[Function]}
-                  onFocusChange={[Function]}
-                  onKeyPress={[Function]}
-                  onSanitize={[Function]}
-                  onSubmit={[Function]}
-                  onValidate={[Function]}
-                  password={false}
-                  setRef={[Function]}
-                  type="search"
-                  validateOnBlur={true}
-                  value="foo"
-                >
-                  <input
-                    autoComplete="off"
-                    autoCorrect="off"
-                    className="css-11ngaym simpleInput common__simple-input"
-                    disabled={false}
-                    id={null}
-                    name={null}
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    type="search"
-                    value="foo"
-                  />
-                </SimpleInput>
-              </_default>
-            </form>
-          </div>
-          <div>
-            <button
-              className="css-cmi6wl"
-              onClick={[Function]}
-              type="button"
-            >
-              <Translate
-                className={null}
-                params={Object {}}
-                role={null}
-                string="search.cancel"
-              >
-                <span
-                  className={null}
-                  role={null}
-                />
-              </Translate>
-            </button>
-          </div>
-        </div>
-        <div
-          className="css-1su8uh1"
-        />
-        <Component
-          bottomHeight={0}
-          onClick={[Function]}
-          searchPhrase="foo"
-          visible={true}
-        />
+              />
+            </SimpleInput>
+          </_default>
+        </form>
       </div>
-    </SearchField>
-  </Connect(SearchField)>
-</Provider>
+      <div>
+        <button
+          className="css-cmi6wl"
+          onClick={[Function]}
+          type="button"
+        >
+          <Translate
+            className={null}
+            params={Object {}}
+            role={null}
+            string="search.cancel"
+          >
+            <span
+              className={null}
+              role={null}
+            >
+              search.cancel
+            </span>
+          </Translate>
+        </button>
+      </div>
+    </div>
+    <div
+      className="css-1su8uh1"
+    />
+    <Component
+      bottomHeight={0}
+      onClick={[Function]}
+      searchPhrase="foo"
+      visible={true}
+    />
+  </div>
+</SearchField>
 `;
