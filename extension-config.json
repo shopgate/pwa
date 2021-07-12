@@ -212,7 +212,10 @@
       "default": {
         "settings": {
           "@shopgate/engage/locations": {
-            "preferredLocationDefault": null
+            "preferredLocationDefault": null,
+            "alternativeLocationOnPDP": {
+              "radius": 50
+            }
           },
           "AppImages": {
             "quality": 75,
