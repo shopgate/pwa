@@ -19,6 +19,7 @@ import { router } from '@virtuous/conductor';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';
+import TabBar from '../../../../components/TabBar';
 
 const SUGGESTIONS_MIN = 1;
 
@@ -134,6 +135,21 @@ class SearchField extends Component {
    * @param {boolean} focused Whether the element currently became focused.
    */
   handleFocusChange = (focused) => {
+    // for testing purposes. we've faced an issue
+    // where the keyboard will be shown for a few
+    // milliseconds and then it'll hide.
+    const bufferTimeout = 0;
+
+    if (!focused) {
+      setTimeout(() => {
+        TabBar.show();
+      }, bufferTimeout);
+    } else {
+      setTimeout(() => {
+        TabBar.hide();
+      }, bufferTimeout);
+    }
+
     clearTimeout(this.onBlurTimeout);
     this.onBlurTimeout = !focused ?
       setTimeout(() => {
