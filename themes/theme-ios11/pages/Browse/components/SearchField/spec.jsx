@@ -1,72 +1,35 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
-import { createMockStore } from '@shopgate/pwa-common/store';
-import {
-  SCANNER_SCOPE_DEFAULT,
-  SCANNER_TYPE_BARCODE,
-} from '@shopgate/pwa-core/constants/Scanner';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
-import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import SuggestionList from './components/SuggestionList';
+import SearchField from './index';
 import styles from './style';
 
-jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
-  i18n: {
-    text: () => '',
-    ready: true,
-  },
-}));
-
-jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('@virtuous/conductor', () => ({
-  router: {
-    update: jest.fn(),
-  },
-}));
-jest.mock('@shopgate/pwa-common/actions/router', () => ({
-  historyPush: jest.fn().mockReturnValue({ type: 'FOO' }),
-}));
 jest.mock('./components/SuggestionList', () => () => null);
+jest.mock('./connector', () => cmp => cmp);
 
-jest.mock('@shopgate/pwa-common/selectors/client', () => ({
-  hasScannerSupport: jest.fn().mockReturnValue(true),
-}));
+describe('pages / Browse / components / SearchField', () => {
+  let submitSearch;
+  let openScanner;
+  let fetchSuggestions;
 
-let mockHasNoScanner = false;
-let mockShowSearchFieldIcon = true;
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasNoScanner() { return mockHasNoScanner; },
-  get scanner() { return { showSearchFieldIcon: mockShowSearchFieldIcon }; },
-  themeConfig: {
-    colors: mockThemeConfig.colors,
-    variables: mockThemeConfig.variables,
-    icons: mockThemeConfig.icons,
-  },
-  themeColors: mockThemeConfig.colors,
-  themeVariables: mockThemeConfig.variables,
-}));
+  // eslint-disable-next-line require-jsdoc
+  const createWrapper = props => mount((
+    <SearchField
+      pageId="1234"
+      query="foo"
+      fetchSuggestions={fetchSuggestions}
+      openScanner={openScanner}
+      submitSearch={submitSearch}
+      showScannerIcon={false}
+      {...props}
+    />
+  ));
 
-const store = createMockStore();
-
-/**
- * @return {JSX}
- */
-const createWrapper = () => {
-  // Because we mock appConfig, we need import component in test runtime
-  // eslint-disable-next-line global-require
-  const SearchField = require('./index').default;
-  return mount((
-    <Provider store={store}>
-      <SearchField pageId="1234" query="foo" />
-    </Provider>));
-};
-
-describe('<Content />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    submitSearch = jest.fn();
+    fetchSuggestions = jest.fn();
+    openScanner = jest.fn();
   });
 
   describe('Check search field', () => {
@@ -74,11 +37,8 @@ describe('<Content />', () => {
       const wrapper = createWrapper();
       expect(wrapper).toMatchSnapshot();
       expect(wrapper.find('input').prop('value')).toEqual('foo');
-    });
-
-    it('should render with the scanner icon when the scanner is enabled and supported', () => {
-      const wrapper = createWrapper();
-      expect(wrapper.find(`button.${styles.scannerIcon}`)).toExist();
+      // Reset button should be initially hidden
+      expect(wrapper.find(`button.${styles.button}.${styles.hidden}`)).toExist();
     });
 
     it('should show suggestions when focused', () => {
@@ -95,48 +55,36 @@ describe('<Content />', () => {
 
       expect(wrapper.find(SuggestionList).prop('searchPhrase')).toEqual('foo');
       expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
+      // Reset button should be visible
+      expect(wrapper.find(`button.${styles.button}`)).toExist();
+      expect(wrapper.find(`button.${styles.button}.${styles.hidden}`)).not.toExist();
     });
 
     it('should submit search', () => {
-      const wrapper = createWrapper();
+      const wrapper = createWrapper({ submitSearch });
 
       // Change search and submit.
       wrapper.find('input').simulate('change', { target: { value: 'foo bar' } });
       wrapper.find('form').simulate('submit');
       wrapper.update();
 
-      expect(historyPush).toHaveBeenCalledWith({
-        pathname: '/search?s=foo%20bar',
-      });
+      expect(submitSearch).toHaveBeenCalledWith('foo bar');
     });
   });
 
   describe('Check scanner icon and action', () => {
-    it('should open the scanner', () => {
+    it('should not render when the scanner is not supported', () => {
       const wrapper = createWrapper();
+      expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
+    });
+
+    it('should open the scanner', () => {
+      const wrapper = createWrapper({
+        showScannerIcon: true,
+      });
       expect(wrapper.find(`button.${styles.scannerIcon}`)).toExist();
       wrapper.find(`button.${styles.scannerIcon}`).simulate('click');
-      expect(historyPush).toHaveBeenCalledWith({
-        pathname: getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE),
-        title: 'navigation.scanner',
-      });
-    });
-    it('should not render when the scanner is not supported', () => {
-      hasScannerSupport.mockReturnValue(false);
-      const wrapper = createWrapper();
-      expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
-    });
-
-    it('should not render when the scanner is not enabled', () => {
-      mockHasNoScanner = true;
-      const wrapper = createWrapper();
-      expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
-    });
-
-    it('should not render when icon is off', () => {
-      mockShowSearchFieldIcon = false;
-      const wrapper = createWrapper();
-      expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
+      expect(openScanner).toHaveBeenCalledTimes(1);
     });
   });
 });
