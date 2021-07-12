@@ -9,6 +9,7 @@ import {
   I18n, Input, SurroundPortals, MagnifierIcon, BarcodeScannerIcon,
 } from '@shopgate/engage/components';
 import { SCANNER_ICON } from '@shopgate/engage/scanner';
+import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';
@@ -126,6 +127,19 @@ class SearchField extends Component {
    * @param {boolean} focused Whether the element currently became focused.
    */
   handleFocusChange = (focused) => {
+    // we've faced an issue
+    // where the keyboard will be shown for a few
+    // milliseconds and then it'll hide.
+    const bufferTimeout = 100;
+
+    if (!focused) {
+      setTimeout(() => {
+        TabBar.show();
+      }, bufferTimeout);
+    } else {
+      TabBar.hide();
+    }
+
     this.setState({
       focused: focused
         ? Trilean.TRUE
