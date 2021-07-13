@@ -56,6 +56,7 @@ import {
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
+  preferredLocationDidUpdateGlobalOnWishlist$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
 import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
@@ -353,20 +354,23 @@ function locationsSubscriber(subscribe) {
     dispatch(fetchInventories(productCodes));
   });
 
-  subscribe(receiveFavoritesWhileVisible$, ({ dispatch, getState }) => {
-    const state = getState();
+  subscribe(
+    receiveFavoritesWhileVisible$.merge(preferredLocationDidUpdateGlobalOnWishlist$),
+    ({ dispatch, getState }) => {
+      const state = getState();
 
-    if (!showInventoryInLists(state)) {
-      return;
+      if (!showInventoryInLists(state)) {
+        return;
+      }
+      const productIds = getFavoritesProductsIds(state);
+
+      if (!productIds || !productIds.length) {
+        return;
+      }
+
+      dispatch(fetchInventories(productIds));
     }
-    const productIds = getFavoritesProductsIds(state);
-
-    if (!productIds || !productIds.length) {
-      return;
-    }
-
-    dispatch(fetchInventories(productIds));
-  });
+  );
 
   subscribe(appDidStart$, ({ getState }) => {
     // enable inventory in product lists for some users

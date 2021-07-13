@@ -11,6 +11,7 @@ import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { CATEGORY_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import {
   SUBMIT_RESERVATION_SUCCESS,
   RECEIVE_PRODUCT_LOCATIONS,
@@ -25,6 +26,7 @@ import {
   SELECT_LOCATION,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
+import { WISH_LIST_PATH } from '../account';
 
 export const submitReservationSuccess$ = main$
   .filter(({ action }) => action.type === SUBMIT_RESERVATION_SUCCESS);
@@ -92,6 +94,12 @@ export const fulfillmentLocationsReceived$ = fulfillmentLocationsReceivedFromCar
 
 export const preferredLocationDidUpdateGlobal$ = main$
   .filter(({ action }) => action.type === SELECT_GLOBAL_LOCATION);
+
+export const preferredLocationDidUpdateGlobalOnWishlist$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern === FAVORITES_PATH || pattern === WISH_LIST_PATH);
+  });
 
 export const preferredLocationDidUpdateGlobalOnSearch$ = preferredLocationDidUpdateGlobal$
   .filter(({ getState }) => {
