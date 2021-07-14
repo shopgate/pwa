@@ -20,7 +20,7 @@ import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
 function FulfillmentSelectorAlternativeLocation({
   productId, show, alternativeLocations, provideAlternativeLocation, widgetSettings,
 }) {
-  const { merchantSettings = {} } = useFulfillmentSelectorState();
+  const { merchantSettings = {}, selectedLocation } = useFulfillmentSelectorState();
   const { alternativeLocationOnPDP: { radius = 50 } = {} } = widgetSettings || {};
 
   const showAlternative =
@@ -50,7 +50,7 @@ function FulfillmentSelectorAlternativeLocation({
     return null;
   }
 
-  const alternativeLocation = alternativeLocations[0];
+  const alternativeLocation = alternativeLocations.find(l => l.code !== selectedLocation?.code);
 
   return (
     <SurroundPortals

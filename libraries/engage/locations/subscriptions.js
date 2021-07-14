@@ -127,7 +127,13 @@ function locationsSubscriber(subscribe) {
   });
 
   subscribe(userSearchChanged$, async ({ dispatch, getState, action }) => {
-    const { productId, isStoreFinder } = action;
+    const { productId, isStoreFinder, silent } = action;
+
+    if (silent === true) {
+      // Silent background propagation
+      return;
+    }
+
     const state = getState();
     const userSearch = getUserSearch(state);
 
