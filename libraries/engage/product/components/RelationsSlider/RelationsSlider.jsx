@@ -21,7 +21,7 @@ const RelationsSlider = ({ desiredPosition }) => {
 };
 
 RelationsSlider.propTypes = {
-  desiredPosition: PropTypes.oneOf(['header', 'description']),
+  desiredPosition: PropTypes.oneOf(['header', 'description', 'properties']),
 };
 
 RelationsSlider.defaultProps = {
