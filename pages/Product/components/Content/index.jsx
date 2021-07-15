@@ -9,27 +9,15 @@ import {
   Description,
   ProductContext,
   Options,
-  ProductUnitQuantityPicker, OrderQuantityHint,
 } from '@shopgate/engage/product';
 import { Reviews } from '@shopgate/engage/reviews';
-import { css } from 'glamor';
+import UnitQuantityPickerWithSection
+  from '@shopgate/engage/product/components/UnitQuantityPicker/UnitQuantityPickerWithSection';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import AppBar from '../AppBar';
 import connect from './connector';
-
-const styles = {
-  quantityPicker: css({
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-  }).toString(),
-  quantityHint: css({
-    marginBottom: -4,
-    paddingLeft: 16,
-  }).toString(),
-};
 
 /**
  * The product content component.
@@ -171,14 +159,7 @@ class ProductContent extends PureComponent {
             It should only be used for approved BETA Client Projects
           */}
           <RelationsSlider desiredPosition="header" />
-          <Section title="product.sections.quantity">
-            <ProductUnitQuantityPicker className={styles.quantityPicker}>
-              <OrderQuantityHint
-                productId={variantId || productId}
-                className={styles.quantityHint}
-              />
-            </ProductUnitQuantityPicker>
-          </Section>
+          <UnitQuantityPickerWithSection productId={productId} variantId={variantId} />
           <Section title="product.sections.options">
             <Characteristics productId={productId} variantId={variantId} />
             <Options />
