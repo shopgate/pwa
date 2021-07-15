@@ -4,6 +4,7 @@ import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
+import { useWidgetSettings } from '../../../core';
 
 const { variables, colors } = themeConfig;
 
@@ -12,19 +13,21 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
   }).toString(),
-  input: css({
+  input: color => css({
     padding: `0 ${variables.gap.small}px`,
     textAlign: 'center',
     flex: 1,
     fontSize: 15,
     height: 28,
-    width: '100%',
-    backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
+    width: '100%', // TODO @aien: check if --color-background-accent is defined in this branch
+    backgroundColor: `var(--color-background-accent, ${colors.shade8})`, // TODO @aien: use color
+    color,
   }).toString(),
   inputWrapper: css({
     width: '100%',
   }),
-  button: css({
+  button: bgColor => css({
+    backgroundColor: bgColor,
     width: 28,
     ' &&': {
       minWidth: 28,
@@ -73,6 +76,7 @@ const UnitQuantityPicker = ({
   minValue,
   maxValue,
 }) => {
+  const { buttonColor = colors.primary, inputBgColor = null } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
@@ -107,7 +111,7 @@ const UnitQuantityPicker = ({
     <div className={`${styles.root} ${className}`}>
       <RippleButton
         rippleClassName={styles.buttonRipple}
-        className={classNames(styles.button, styles.buttonNoRadiusRight, {
+        className={classNames(styles.button(buttonColor), styles.buttonNoRadiusRight, {
           [styles.disabled]: disabled,
         })}
         type="secondary"
@@ -118,7 +122,7 @@ const UnitQuantityPicker = ({
       </RippleButton>
       <span>
         <QuantityInput
-          className={styles.input}
+          className={styles.input(inputBgColor)}
           value={value}
           onChange={onChange}
           maxDecimals={maxDecimals}
@@ -133,7 +137,7 @@ const UnitQuantityPicker = ({
         type="secondary"
         disabled={!allowIncrement || disabled}
         rippleClassName={styles.buttonRipple}
-        className={classNames(styles.button, styles.buttonNoRadiusLeft, {
+        className={classNames(styles.button(buttonColor), styles.buttonNoRadiusLeft, {
           [styles.disabled]: disabled,
         })}
         onClick={handleIncrement}
