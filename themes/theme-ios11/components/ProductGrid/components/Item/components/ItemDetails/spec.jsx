@@ -13,6 +13,9 @@ jest.mock('@shopgate/engage/product', () => ({
 jest.mock('@shopgate/engage/components', () => ({
   Availability: () => null,
 }));
+jest.mock('@shopgate/engage/locations', () => ({
+  StockInfoLists: () => null,
+}));
 jest.mock('@shopgate/engage/core', () => ({
   i18n: {
     text: text => text,

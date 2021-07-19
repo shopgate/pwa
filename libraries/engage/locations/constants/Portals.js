@@ -1,5 +1,6 @@
 // @flow
 import { PRODUCT } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { PRODUCT_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 
 // CONTENTS
 const FULFILLMENT_SELECTOR = 'fulfillment-selector';
@@ -17,6 +18,9 @@ export const PRODUCT_FULFILLMENT_SELECTOR_LOCATION = `${PRODUCT}.${FULFILLMENT_S
 export const PRODUCT_FULFILLMENT_CHANGE_LOCATION = `${PRODUCT}.${FULFILLMENT_SELECTOR}.${CHANGE}.${LOCATION}`;
 export const PRODUCT_FULFILLMENT_SELECTOR_ALTERNATIVE_LOCATION = `${PRODUCT}.${FULFILLMENT_SELECTOR}.${ALTERNATIVE}.${LOCATION}`;
 export const PRODUCT_LOCATION_STOCK_INFO = `${PRODUCT}.${LOCATION_STOCK_INFO}`;
+
+/* PRODUCT LISTS */
+export const PRODUCT_LOCATION_STOCK_INFO_LIST = `${PRODUCT_ITEM}.${LOCATION_STOCK_INFO}`;
 
 /* FULFILLMENT SHEET */
 export const FULFILLMENT_SHEET = 'fulfillment-sheet';

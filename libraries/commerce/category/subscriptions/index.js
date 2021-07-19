@@ -7,12 +7,12 @@ import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchC
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { categoryProductsNeedUpdate$ } from '@shopgate/engage/category/streams';
 import {
   categoryWillEnter$,
   categoryDidEnter$,
-  categoryProductsNeedUpdate$,
   errorVisibleCategory$,
-} from './streams';
+} from '../streams';
 
 /**
  * Category subscriptions.

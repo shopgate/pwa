@@ -21,7 +21,7 @@ import {
   ERROR_PRODUCT_PROPERTIES,
   ERROR_PRODUCT_OPTIONS,
   ERROR_PRODUCT_SHIPPING,
-  PRODUCT_NOT_AVAILABLE,
+  PRODUCT_NOT_AVAILABLE, RECEIVE_PRODUCTS_CACHED, RECEIVE_PRODUCTS,
 } from '../constants';
 
 /**
@@ -137,3 +137,15 @@ export const productRelationsReceived$ =
 
 export const productNotAvailable$ =
   main$.filter(({ action }) => action.type === PRODUCT_NOT_AVAILABLE);
+
+/**
+ * Emits when product results has been received.
+ */
+export const productsReceived$ = main$
+  .filter(({ action }) => action.type === RECEIVE_PRODUCTS);
+
+/**
+ * Emits when product results has been received from cache.
+ */
+export const productsReceivedCached$ = main$
+  .filter(({ action }) => action.type === RECEIVE_PRODUCTS_CACHED);

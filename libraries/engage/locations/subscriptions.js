@@ -1,4 +1,9 @@
-import { productIsReady$, variantDidChange$ } from '@shopgate/engage/product';
+import {
+  getProductsResult,
+  productIsReady$, productsReceived$, productsReceivedCached$,
+  RECEIVE_PRODUCTS_CACHED,
+  variantDidChange$,
+} from '@shopgate/engage/product';
 import {
   cartReceived$,
   cartWillEnter$,
@@ -12,9 +17,22 @@ import {
   appDidStart$,
   routeWillEnter$,
   UIEvents,
-  getCurrentRoute, hex2bin, getThemeSettings, shouldFetchData,
+  shouldFetchData,
+  getCurrentRoute,
+  hex2bin,
+  getThemeSettings,
+  getCurrentSearchQuery,
 } from '@shopgate/engage/core';
-import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
+import {
+  receiveFavoritesWhileVisible$,
+} from '@shopgate/pwa-common-commerce/favorites/streams';
+import { getFavoritesProductsIds } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import {
+  categoryDidBackEnter$,
+} from '@shopgate/pwa-common-commerce/category/streams';
+import {
+  searchDidBackEntered$,
+} from '@shopgate/pwa-common-commerce/search/streams';
 import {
   getUserSearch,
   getStoreFinderSearch,
@@ -27,7 +45,10 @@ import {
 import {
   fetchLocations, fetchProductLocations, setPending, setUserSearchGeolocation,
 } from './actions';
-import selectLocation from './action-creators/selectLocation';
+import { setShowInventoryInLists, showInventoryInLists } from './helpers/showInventoryInLists';
+import fetchInventories from './actions/fetchInventories';
+import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
+import fetchProductInventories from './actions/fetchProductInventories';
 import {
   submitReservationSuccess$,
   cartReceivedWithROPE$,
@@ -35,9 +56,11 @@ import {
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
+  preferredLocationDidUpdateGlobalOnWishlist$,
 } from './locations.streams';
-import fetchProductInventories from './actions/fetchProductInventories';
-import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
+import selectLocation from './action-creators/selectLocation';
+import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
+import selectGlobalLocation from './action-creators/selectGlobalLocation';
 
 let initialLocationsResolve;
 let initialLocationsReject;
@@ -154,7 +177,7 @@ function locationsSubscriber(subscribe) {
   const productInventoryNeedsUpdate$ = productIsReady$
     .merge(variantDidChange$)
     .merge(preferredLocationDidUpdateOnPDP$)
-    .debounceTime(100);
+    .debounceTime(200);
 
   subscribe(productInventoryNeedsUpdate$, ({ action, dispatch, getState }) => {
     const { productData } = action;
@@ -242,6 +265,7 @@ function locationsSubscriber(subscribe) {
     }
 
     dispatch(selectLocation({ code: firstLocationCode }));
+    dispatch(selectGlobalLocation({ code: firstLocationCode }));
   });
 
   /**
@@ -289,6 +313,74 @@ function locationsSubscriber(subscribe) {
     if (fetchParams.geolocation || fetchParams.postalCode) {
       dispatch(fetchProductLocations(productId, fetchParams));
     }
+  });
+
+  subscribe(
+    categoryDidBackEnter$.merge(searchDidBackEntered$),
+    ({ action, dispatch, getState }) => {
+      const state = getState();
+
+      if (!showInventoryInLists(state)) {
+        return;
+      }
+
+      const { categoryId } = action.route.params;
+      const query = getCurrentSearchQuery(state);
+
+      const products = getProductsResult(
+        state,
+        {
+          categoryId: hex2bin(categoryId),
+          searchPhrase: query,
+        }
+      )?.products;
+
+      if (!products || !products.length) {
+        return;
+      }
+
+      const productCodes = products.map(({ id }) => id);
+
+      dispatch(fetchInventories(productCodes));
+    }
+  );
+
+  subscribe(productsReceived$.merge(productsReceivedCached$), ({ action, dispatch, getState }) => {
+    if (!showInventoryInLists(getState())) {
+      return;
+    }
+
+    if (!action.products || !action.products.length) {
+      return;
+    }
+
+    const productCodes = action.type !== RECEIVE_PRODUCTS_CACHED ?
+      action.products.map(({ id }) => id) : action.products;
+
+    dispatch(fetchInventories(productCodes));
+  });
+
+  subscribe(
+    receiveFavoritesWhileVisible$.merge(preferredLocationDidUpdateGlobalOnWishlist$),
+    ({ dispatch, getState }) => {
+      const state = getState();
+
+      if (!showInventoryInLists(state)) {
+        return;
+      }
+      const productIds = getFavoritesProductsIds(state);
+
+      if (!productIds || !productIds.length) {
+        return;
+      }
+
+      dispatch(fetchInventories(productIds));
+    }
+  );
+
+  subscribe(appDidStart$, ({ getState }) => {
+    // enable inventory in product lists for some users
+    setShowInventoryInLists(getState());
   });
 }
 

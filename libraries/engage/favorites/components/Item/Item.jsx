@@ -20,7 +20,11 @@ import {
   getThemeSettings,
 } from '@shopgate/engage/core';
 import { ResponsiveContainer, Link, SurroundPortals } from '@shopgate/engage/components';
-import { makeIsRopeProductOrderable, getPreferredLocation } from '@shopgate/engage/locations';
+import {
+  makeIsRopeProductOrderable,
+  getPreferredLocation,
+  StockInfoLists,
+} from '@shopgate/engage/locations';
 import {
   FAVORITES_PRODUCT_NAME,
   FAVORITES_PRODUCT_PRICE,
@@ -253,6 +257,8 @@ const FavoriteItem = ({
           <div className={styles.innerInfoContainer}>
             <div className={styles.infoContainerLeft}>
               <ItemCharacteristics characteristics={characteristics} />
+
+              <StockInfoLists product={product} />
             </div>
             <div className={styles.infoContainerRight}>
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>

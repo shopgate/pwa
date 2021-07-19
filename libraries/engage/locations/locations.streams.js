@@ -1,10 +1,17 @@
 import { main$ } from '@shopgate/pwa-common/streams';
 import { Observable } from 'rxjs/Observable';
 import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import { makeGetRoutePattern, getCurrentState } from '@shopgate/pwa-common/selectors/router';
+import {
+  makeGetRoutePattern,
+  getCurrentState,
+  getCurrentRoute,
+} from '@shopgate/pwa-common/selectors/router';
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { CATEGORY_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import {
   SUBMIT_RESERVATION_SUCCESS,
   RECEIVE_PRODUCT_LOCATIONS,
@@ -16,8 +23,10 @@ import {
   SELECT_GLOBAL_LOCATION,
   STORE_FINDER_PATTERN,
   PROVIDE_PRODUCT_ALTERNATIVE_LOCATION,
+  SELECT_LOCATION,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
+import { WISH_LIST_PATH } from '../account';
 
 export const submitReservationSuccess$ = main$
   .filter(({ action }) => action.type === SUBMIT_RESERVATION_SUCCESS);
@@ -83,8 +92,41 @@ export const fulfillmentLocationsReceived$ = fulfillmentLocationsReceivedFromCar
   .merge(fulfillmentLocationsReceivedFromOrder$)
   .merge(fulfillmentLocationsReceivedFromProduct$);
 
-export const preferredLocationDidUpdate$ = main$
+export const preferredLocationDidUpdateGlobal$ = main$
   .filter(({ action }) => action.type === SELECT_GLOBAL_LOCATION);
+
+export const preferredLocationDidUpdateGlobalOnWishlist$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern === FAVORITES_PATH || pattern === WISH_LIST_PATH);
+  });
+
+export const preferredLocationDidUpdateGlobalOnSearch$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern === SEARCH_PATTERN);
+  });
+
+export const preferredLocationDidUpdateGlobalNotOnSearch$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern !== SEARCH_PATTERN);
+  });
+
+export const preferredLocationDidUpdateGlobalOnCategory$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern === CATEGORY_PATTERN);
+  });
+
+export const preferredLocationDidUpdateGlobalNotOnCategory$ = preferredLocationDidUpdateGlobal$
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return (pattern !== CATEGORY_PATTERN);
+  });
+
+export const preferredLocationDidUpdate$ = main$
+  .filter(({ action }) => action.type === SELECT_LOCATION);
 
 export const storeFinderWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === STORE_FINDER_PATTERN);
@@ -95,7 +137,7 @@ export const receiveLocations$ = main$
 export const provideAlternativeLocation$ = main$
   .filter(({ action }) => action.type === PROVIDE_PRODUCT_ALTERNATIVE_LOCATION);
 
-export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdate$
+export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdateGlobal$
   .filter(({ getState }) => {
     const getRoutePattern = makeGetRoutePattern();
     const routePattern = getRoutePattern(getState());

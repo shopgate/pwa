@@ -587,6 +587,17 @@
         "path": "/v1/shop/%(shopId)s/omnichannel_merchant_code?parsed=true",
         "key": "value"
       }
+    },
+    "featureFlagPercentages": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "showInventoryInLists": 5
+      },
+      "params": {
+        "type": "json",
+        "label": "Mapping for percentage of users who should get the feature enabled"
+      }
     }
   }
 }

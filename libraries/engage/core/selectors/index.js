@@ -15,4 +15,5 @@ export {
   getDefaultCurrency,
   getEnableWebIndexing,
   getProductShowAlternativeLocation,
+  getProductListShowInventory,
 } from './merchantSettings';
