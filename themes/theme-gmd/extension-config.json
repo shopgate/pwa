@@ -280,6 +280,8 @@
           "@shopgate/engage/product/components/UnitQuantityPicker": {
             "show": false,
             "buttonColor": "$.colors.primary",
+            "buttonBgColor": "$.colors.dark",
+            "inputColor":  "$.colors.dark",
             "inputBgColor":  "$.colors.shade8"
           }
         },

@@ -13,21 +13,22 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
   }).toString(),
-  input: color => css({
+  input: (color, bgColor) => css({
     padding: `0 ${variables.gap.small}px`,
     textAlign: 'center',
     flex: 1,
     fontSize: 15,
     height: 28,
     width: '100%',
-    backgroundColor: colors.shade8,
+    backgroundColor: bgColor || colors.shade8,
     color,
   }).toString(),
   inputWrapper: css({
     width: '100%',
   }),
-  button: bgColor => css({
+  button: (color, bgColor) => css({
     backgroundColor: bgColor,
+    color,
     width: 28,
     ' &&': {
       minWidth: 28,
@@ -76,7 +77,12 @@ const UnitQuantityPicker = ({
   minValue,
   maxValue,
 }) => {
-  const { buttonColor = colors.primary, inputBgColor = null } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
+  const {
+    buttonColor = colors.primary,
+    buttonBgColor = colors.primary,
+    inputColor = null,
+    inputBgColor = null,
+  } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
@@ -111,9 +117,13 @@ const UnitQuantityPicker = ({
     <div className={`${styles.root} ${className}`}>
       <RippleButton
         rippleClassName={styles.buttonRipple}
-        className={classNames(styles.button(buttonColor), styles.buttonNoRadiusRight, {
-          [styles.disabled]: disabled,
-        })}
+        className={
+          classNames(
+            styles.button(buttonColor, buttonBgColor),
+            styles.buttonNoRadiusRight, {
+              [styles.disabled]: disabled,
+            }
+          )}
         type="secondary"
         disabled={!allowDecrement || disabled}
         onClick={handleDecrement}
@@ -122,7 +132,7 @@ const UnitQuantityPicker = ({
       </RippleButton>
       <span>
         <QuantityInput
-          className={styles.input(inputBgColor)}
+          className={styles.input(inputColor, inputBgColor)}
           value={value}
           onChange={onChange}
           maxDecimals={maxDecimals}
