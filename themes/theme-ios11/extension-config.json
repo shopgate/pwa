@@ -273,7 +273,7 @@
             "msrpLabel": "price.msrp"
           },
           "@shopgate/engage/product/components/UnitQuantityPicker": {
-            "show": true,
+            "show": false,
             "buttonColor": "$.colors.primary",
             "buttonBgColor": "$.colors.dark",
             "inputColor":  "$.colors.dark",

@@ -20,15 +20,15 @@ const styles = {
     fontSize: 15,
     height: 28,
     width: '100%',
-    backgroundColor: bgColor || colors.shade8,
+    backgroundColor: bgColor,
     color,
   }).toString(),
   inputWrapper: css({
     width: '100%',
   }),
   button: (color, bgColor) => css({
-    backgroundColor: bgColor,
-    color,
+    backgroundColor: `${bgColor} !important`,
+    color: `${color} !important`,
     width: 28,
     ' &&': {
       minWidth: 28,
@@ -78,10 +78,10 @@ const UnitQuantityPicker = ({
   maxValue,
 }) => {
   const {
-    buttonColor = colors.primary,
+    buttonColor = colors.shade8,
     buttonBgColor = colors.primary,
-    inputColor = null,
-    inputBgColor = null,
+    inputColor = colors.dark,
+    inputBgColor = colors.shade8,
   } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
@@ -147,9 +147,13 @@ const UnitQuantityPicker = ({
         type="secondary"
         disabled={!allowIncrement || disabled}
         rippleClassName={styles.buttonRipple}
-        className={classNames(styles.button(buttonColor), styles.buttonNoRadiusLeft, {
-          [styles.disabled]: disabled,
-        })}
+        className={
+          classNames(
+            styles.button(buttonColor, buttonBgColor),
+            styles.buttonNoRadiusLeft, {
+              [styles.disabled]: disabled,
+            }
+          )}
         onClick={handleIncrement}
       >
         +
