@@ -288,12 +288,15 @@ function locationsSubscriber(subscribe) {
    * Provide alternative location on PDP when preferred location is out of stock
    */
   subscribe(alternative$, async ({ action, dispatch, getState }) => {
-    const state = getState();
+    let state = getState();
 
     // Refresh geo location
     if (shouldFetchData(getUserSearchGeolocation(state))) {
       await dispatch(setUserSearchGeolocation({ silent: true }));
     }
+
+    // Get new state with geolocation
+    state = getState();
 
     const alternativeLocations = getProductAlternativeLocations(state, action);
     if (alternativeLocations) {
