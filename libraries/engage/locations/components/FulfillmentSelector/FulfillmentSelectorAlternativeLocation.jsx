@@ -60,24 +60,26 @@ function FulfillmentSelectorAlternativeLocation({
         location: alternativeLocation,
       }}
     >
-      <Grid component="div" className={gridClassName}>
-        <ResponsiveContainer appAlways breakpoint="xs">
-          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-            <div className={locationName}>{alternativeLocation.name}</div>
-          </Grid.Item>
-          <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-            <StockInfo productId={productId} location={alternativeLocation} />
-          </Grid.Item>
-        </ResponsiveContainer>
-        <ResponsiveContainer webOnly breakpoint=">xs">
-          <div className={locationName}>
-            {alternativeLocation.name}
-            <span className={itemSpacer}>
+      {alternativeLocation && (
+        <Grid component="div" className={gridClassName}>
+          <ResponsiveContainer appAlways breakpoint="xs">
+            <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+              <div className={locationName}>{alternativeLocation.name}</div>
+            </Grid.Item>
+            <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
               <StockInfo productId={productId} location={alternativeLocation} />
-            </span>
-          </div>
-        </ResponsiveContainer>
-      </Grid>
+            </Grid.Item>
+          </ResponsiveContainer>
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            <div className={locationName}>
+              {alternativeLocation.name}
+              <span className={itemSpacer}>
+                <StockInfo productId={productId} location={alternativeLocation} />
+              </span>
+            </div>
+          </ResponsiveContainer>
+        </Grid>
+      )}
     </SurroundPortals>
   );
 }
