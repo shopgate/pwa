@@ -13,7 +13,7 @@ export default ({
       requestPermissions: !useFallback,
     }));
 
-    dispatch(setUserSearchGeolocation(geolocation, productId, isStoreFinder));
+    dispatch(setUserSearchGeolocation(geolocation, productId, isStoreFinder, silent));
 
     return geolocation;
   } catch (err) {
