@@ -4,7 +4,7 @@ import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
-import { useWidgetSettings } from '../../../core';
+import { useWidgetSettings } from '@shopgate/engage/core';
 
 const { variables, colors } = themeConfig;
 
@@ -19,8 +19,8 @@ const styles = {
     flex: 1,
     fontSize: 15,
     height: 28,
-    width: '100%', // TODO @aien: check if --color-background-accent is defined in this branch
-    backgroundColor: `var(--color-background-accent, ${colors.shade8})`, // TODO @aien: use color
+    width: '100%',
+    backgroundColor: colors.shade8,
     color,
   }).toString(),
   inputWrapper: css({
