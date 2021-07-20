@@ -104,7 +104,7 @@ class TabBar extends PureComponent {
     UIEvents.removeListener(SHOW_TAB_BAR, this.show);
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
 
-    updateHeightCSSProperty(this.state.isVisible);
+    updateHeightCSSProperty(false);
   }
 
   show = ({ scroll } = {}) => {
