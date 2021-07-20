@@ -108,7 +108,7 @@ const mapStateToProps = (state, props) => ({
     productId: props.productId,
     params: {
       sort: SORT_CLOSEST_LOCATION_WITH_INVENTORY,
-      radius: props.widgetSettings.radius || 50,
+      radius: props.widgetSettings?.alternativeLocationOnPDP?.radius || 50,
     },
   }),
 });
