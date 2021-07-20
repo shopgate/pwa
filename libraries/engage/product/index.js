@@ -84,3 +84,8 @@ export { useLoadProductImage } from './hooks/useLoadProductImage';
 // CONTEXTS
 export { default as VariantContext } from './components/ProductCharacteristics/context';
 export { ProductContext } from './components/context';
+export {
+  ProductUnitQuantityPicker,
+  UnitQuantityPicker,
+  CartUnitQuantityPicker,
+} from './components/UnitQuantityPicker';

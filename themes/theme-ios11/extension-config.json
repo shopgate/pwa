@@ -271,6 +271,13 @@
           },
           "@shopgate/engage/product/components/Header/PriceStriked": {
             "msrpLabel": "price.msrp"
+          },
+          "@shopgate/engage/product/components/UnitQuantityPicker": {
+            "show": false,
+            "buttonColor": "$.colors.shade8",
+            "buttonBgColor": "$.colors.primary",
+            "inputColor":  "$.colors.dark",
+            "inputBgColor":  "$.colors.shade8"
           }
         },
         "typography": {

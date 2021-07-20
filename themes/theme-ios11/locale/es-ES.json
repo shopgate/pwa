@@ -98,7 +98,8 @@
       "description": "Descripción",
       "properties": "Propiedades",
       "ratings": "Valoraciones",
-      "purchase": "Comprar artículo"
+      "purchase": "Comprar artículo",
+      "quantity": "Cantidad"
     },
     "displayGroups": {
       "general": "General",

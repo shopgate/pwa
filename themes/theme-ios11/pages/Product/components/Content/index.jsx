@@ -4,9 +4,16 @@ import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { Section } from '@shopgate/engage/a11y';
 import {
-  ProductProperties, RelationsSlider, Description, ProductContext, Options, Characteristics,
+  ProductProperties,
+  RelationsSlider,
+  Description,
+  ProductContext,
+  Options,
+  Characteristics,
 } from '@shopgate/engage/product';
 import { Reviews } from '@shopgate/engage/reviews';
+import UnitQuantityPickerWithSection
+  from '@shopgate/engage/product/components/UnitQuantityPicker/UnitQuantityPickerWithSection';
 import Media from '../Media';
 import Header from '../Header';
 import AppBar from '../AppBar';
@@ -156,6 +163,7 @@ class ProductContent extends PureComponent {
             It should only be used for approved BETA Client Projects
           */}
           <RelationsSlider desiredPosition="header" />
+          <UnitQuantityPickerWithSection productId={productId} variantId={variantId} />
           <Section title="product.sections.options">
             <Characteristics productId={productId} variantId={variantId} />
             <Options />
