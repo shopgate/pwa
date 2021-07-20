@@ -18,7 +18,7 @@ export function showInventoryInLists(state) {
 
   if (enabled === null) {
     // activate feature for x percent of user
-    const percentage = appConfig?.featureFlagPercentages?.showInventoryInLists || 5;
+    const percentage = appConfig?.featureFlagPercentages?.showInventoryInLists || 100;
     enabled = isFeatureEnabled(STORE_KEY, percentage);
   }
 

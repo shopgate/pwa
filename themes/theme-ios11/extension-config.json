@@ -595,7 +595,7 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "showInventoryInLists": 5
+        "showInventoryInLists": 100
       },
       "params": {
         "type": "json",
