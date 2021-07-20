@@ -88,10 +88,23 @@ class TabBar extends PureComponent {
     }
   }
 
+  /**
+   * it's responsible to update the css height property of the tabbar
+   * @param {Object} prevProps previous props
+   * @param {Object} prevState previous state
+   */
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.isVisible !== prevState.isVisible) {
+      updateHeightCSSProperty(this.state.isVisible);
+    }
+  }
+
   /** Will unmount hook */
   componentWillUnmount() {
     UIEvents.removeListener(SHOW_TAB_BAR, this.show);
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
+
+    updateHeightCSSProperty(this.state.isVisible);
   }
 
   show = ({ scroll } = {}) => {
