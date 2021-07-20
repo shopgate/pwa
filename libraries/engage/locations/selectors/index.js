@@ -539,8 +539,8 @@ export const getProductAlternativeLocationParams = createSelector(
     const params = {
       countryCode: userSearch.countryCode,
     };
-    if (userSearch.geoLocation) {
-      params.geolocation = userSearch.geoLocation;
+    if (userSearch.geolocation) {
+      params.geolocation = userSearch.geolocation;
     } else if (userSearch.postalCode) {
       params.postalCode = userSearch.postalCode;
     } else if (preferredLocation) {
