@@ -134,7 +134,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -416,7 +416,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -424,7 +424,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     onOpen={[Function]}
                   >
                     <div
-                      className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
+                      className="css-vi6dox css-1rg7udn css-15ct02m common__drawer"
                       onAnimationEnd={[Function]}
                       style={
                         Object {
@@ -922,7 +922,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -1065,7 +1065,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -1191,7 +1191,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -1505,7 +1505,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -1513,7 +1513,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     onOpen={[Function]}
                   >
                     <div
-                      className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
+                      className="css-vi6dox css-1rg7udn css-15ct02m common__drawer"
                       onAnimationEnd={[Function]}
                       style={
                         Object {
@@ -1840,7 +1840,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -2140,7 +2140,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -2148,7 +2148,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     onOpen={[Function]}
                   >
                     <div
-                      className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
+                      className="css-vi6dox css-1rg7udn css-15ct02m common__drawer"
                       onAnimationEnd={[Function]}
                       style={
                         Object {
@@ -2475,7 +2475,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -2483,7 +2483,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     onOpen={[Function]}
                   >
                     <div
-                      className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
+                      className="css-vi6dox css-1rg7udn css-15ct02m common__drawer"
                       onAnimationEnd={[Function]}
                       style={
                         Object {
@@ -2957,7 +2957,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -3233,7 +3233,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         "out": "css-15ct02m",
                       }
                     }
-                    className="css-ruonn8"
+                    className="css-vi6dox"
                     isOpen={false}
                     onClose={[Function]}
                     onDidClose={[Function]}
@@ -3241,7 +3241,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     onOpen={[Function]}
                   >
                     <div
-                      className="css-ruonn8 css-1rg7udn css-15ct02m common__drawer"
+                      className="css-vi6dox css-1rg7udn css-15ct02m common__drawer"
                       onAnimationEnd={[Function]}
                       style={
                         Object {
