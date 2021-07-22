@@ -17,7 +17,6 @@ import {
   appDidStart$,
   routeWillEnter$,
   UIEvents,
-  shouldFetchData,
   getCurrentRoute,
   hex2bin,
   getThemeSettings,
@@ -38,12 +37,11 @@ import {
   getStoreFinderSearch,
   getPreferredLocation,
   getIsPending,
-  getUserSearchGeolocation,
   getProductAlternativeLocationParams,
   getProductAlternativeLocations,
 } from './selectors';
 import {
-  fetchLocations, fetchProductLocations, setPending, setUserSearchGeolocation,
+  fetchLocations, fetchProductLocations, setPending, setUserGeolocation,
 } from './actions';
 import { setShowInventoryInLists, showInventoryInLists } from './helpers/showInventoryInLists';
 import fetchInventories from './actions/fetchInventories';
@@ -288,15 +286,11 @@ function locationsSubscriber(subscribe) {
    * Provide alternative location on PDP when preferred location is out of stock
    */
   subscribe(alternative$, async ({ action, dispatch, getState }) => {
-    let state = getState();
-
     // Refresh geo location
-    if (shouldFetchData(getUserSearchGeolocation(state))) {
-      await dispatch(setUserSearchGeolocation({ silent: true }));
-    }
+    await dispatch(setUserGeolocation({ silent: true }));
 
     // Get new state with geolocation
-    state = getState();
+    const state = getState();
 
     const alternativeLocations = getProductAlternativeLocations(state, action);
     if (alternativeLocations) {
