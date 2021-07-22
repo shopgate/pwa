@@ -6,9 +6,12 @@ import fetchProducts from './fetchProducts';
  * @param {Array} productIds The product id's to request.
  * @param {string} [componentId=null] A unique id for the component that is using this action.
  * @param {boolean} [cached=true] cache result by hash
+ * @param {boolean} [includeFulfillment=true] includes fulfillment
  * @return {Function} A Redux Thunk
  */
-const fetchProductsById = (productIds, componentId = null, cached = true) => (
+const fetchProductsById = (
+  productIds, componentId = null, cached = true, includeFulfillment = true
+) => (
   (dispatch, getState) => {
     const state = getState();
     const products = state.product.productsById;
@@ -28,6 +31,7 @@ const fetchProductsById = (productIds, componentId = null, cached = true) => (
       params: {
         productIds: missingIds,
       },
+      includeFulfillment,
       includeFilters: false,
       includeSort: false,
     }));
