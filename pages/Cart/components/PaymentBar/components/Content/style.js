@@ -22,6 +22,7 @@ const container = css({
 const checkoutButton = css({
   display: 'flex',
   justifyContent: 'flex-end',
+  flexDirection: 'column',
 }).toString();
 
 const checkoutButtonContainer = css({
