@@ -4,7 +4,9 @@ import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput, I18n } from '@shopgate/engage/components';
-import { useWidgetSettings } from '@shopgate/engage/core';
+import { useWidgetSettings, withCurrentProduct } from '@shopgate/engage/core';
+import { connect } from 'react-redux';
+import { getProductPropertiesUnfiltered } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 const { variables, colors } = themeConfig;
 
@@ -95,14 +97,18 @@ const UnitQuantityPicker = ({
   disabled,
   minValue,
   maxValue,
+  productProperties,
 }) => {
   const {
     buttonColor = colors.shade8,
     buttonBgColor = colors.primary,
     inputColor = colors.dark,
     inputBgColor = colors.shade8,
-    label = '',
+    propertyLabel = '',
   } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
+
+  const property = productProperties.filter(({ label: l }) => l === propertyLabel)[0];
+
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
@@ -153,8 +159,8 @@ const UnitQuantityPicker = ({
       <span className={styles.quantityLabelWrapper(inputBgColor)}>
         <div aria-hidden className={styles.quantityLabel(inputColor)}>
           {
-            label && label !== ''
-              ? label
+            property && property.value && property.value !== ''
+              ? property.value
               : <I18n.Text string="product.sections.quantity" />
           }
         </div>
@@ -203,6 +209,10 @@ UnitQuantityPicker.propTypes = {
   maxDecimals: PropTypes.number,
   maxValue: PropTypes.number,
   minValue: PropTypes.number,
+  productProperties: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.string,
+  })),
   unit: PropTypes.string,
 };
 
@@ -218,6 +228,17 @@ UnitQuantityPicker.defaultProps = {
   disabled: false,
   minValue: null,
   maxValue: null,
+  productProperties: [],
 };
 
-export default UnitQuantityPicker;
+/**
+ * maps the state to props
+ * @param {Object} state state object
+ * @param {Object} props property object
+ * @return {{productProperties: unknown}}
+ */
+const mapStateToProps = (state, props) => ({
+  productProperties: getProductPropertiesUnfiltered(state, props),
+});
+
+export default withCurrentProduct(connect(mapStateToProps)(UnitQuantityPicker));
