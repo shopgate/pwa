@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
-import { I18n, SurroundPortals } from '@shopgate/engage/components';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
 import { withCurrentProduct } from '@shopgate/engage/core';
@@ -14,12 +14,9 @@ const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    margin: variables.gap.big,
-  }).toString(),
-  title: css({
-    fontSize: '1rem',
-    fontWeight: 500,
-    marginBottom: '0.5rem',
+    margin: variables.gap.small,
+    marginTop: '0px',
+    justifyContent: 'space-evenly',
   }).toString(),
 };
 
@@ -64,9 +61,6 @@ const ProductUnitQuantityPicker = ({
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
       <div className={classNames(styles.root, className)}>
         <div>
-          <div aria-hidden className={styles.title}>
-            <I18n.Text string="product.sections.quantity" />
-          </div>
           <UnitQuantityPicker
             className={hasUnitWithDecimals ? big : small}
             unit={hasUnitWithDecimals ? unit : null}

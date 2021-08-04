@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
-import { RippleButton, QuantityInput } from '@shopgate/engage/components';
+import { RippleButton, QuantityInput, I18n } from '@shopgate/engage/components';
 import { useWidgetSettings } from '@shopgate/engage/core';
 
 const { variables, colors } = themeConfig;
+
+// default dimension to be used for button and input
+// in order for them to look with the same size
+const defaultDimension = 36;
 
 const styles = {
   root: css({
@@ -18,8 +22,9 @@ const styles = {
     textAlign: 'center',
     flex: 1,
     fontSize: 15,
-    height: 28,
+    height: defaultDimension,
     width: '100%',
+    minWidth: '32px',
     backgroundColor: bgColor,
     color,
   }).toString(),
@@ -29,15 +34,19 @@ const styles = {
   button: (color, bgColor) => css({
     backgroundColor: `${bgColor} !important`,
     color: `${color} !important`,
-    width: 28,
+    width: defaultDimension,
     ' &&': {
-      minWidth: 28,
+      minWidth: defaultDimension,
       padding: 0,
     },
-    height: 28,
+    height: defaultDimension,
   }).toString(),
   buttonRipple: css({
     padding: 0,
+    // we use this calculation in order to make the font size
+    // relative to the default dimension. number 28 was the
+    // one we used before and it looked "normal" on desktop
+    fontSize: `${Math.floor((defaultDimension / 28) * 100)}%`,
   }).toString(),
   buttonNoRadiusLeft: css({
     ' &&': {
@@ -55,6 +64,16 @@ const styles = {
     ' > div': {
       padding: 0,
     },
+  }).toString(),
+  quantityLabelWrapper: bgColor => css({
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: bgColor,
+  }).toString(),
+  quantityLabel: color => css({
+    fontSize: '12px',
+    padding: '0 1em',
+    color,
   }).toString(),
 };
 
@@ -82,6 +101,7 @@ const UnitQuantityPicker = ({
     buttonBgColor = colors.primary,
     inputColor = colors.dark,
     inputBgColor = colors.shade8,
+    label = '',
   } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
@@ -130,7 +150,15 @@ const UnitQuantityPicker = ({
       >
         -
       </RippleButton>
-      <span>
+      <span className={styles.quantityLabelWrapper(inputBgColor)}>
+        <div aria-hidden className={styles.quantityLabel(inputColor)}>
+          {
+            label && label !== ''
+              ? label
+              : <I18n.Text string="product.sections.quantity" />
+          }
+        </div>
+
         <QuantityInput
           className={styles.input(inputColor, inputBgColor)}
           value={value}

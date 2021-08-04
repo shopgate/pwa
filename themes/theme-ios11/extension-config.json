@@ -277,7 +277,8 @@
             "buttonColor": "$.colors.shade8",
             "buttonBgColor": "$.colors.primary",
             "inputColor":  "$.colors.dark",
-            "inputBgColor":  "$.colors.shade8"
+            "inputBgColor":  "$.colors.shade8",
+            "label": ""
           }
         },
         "typography": {
