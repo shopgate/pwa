@@ -232,13 +232,10 @@ UnitQuantityPicker.defaultProps = {
  * maps the state to props
  * @param {Object} state state object
  * @param {Object} props property object
- * @return {{productProperties: unknown}}
+ * @return {{productProperty: *}}
  */
 const mapStateToProps = (state, props) => ({
-  productProperty: getCurrentProductPropertyByLabel(props.widgetSettings.propertyLabel)(
-    state,
-    props
-  ),
+  productProperty: getCurrentProductPropertyByLabel(state, props),
 });
 
 export default withWidgetSettings(

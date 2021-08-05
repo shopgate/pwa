@@ -111,10 +111,11 @@ export const makeIsBaseProductActive = () => createSelector(
 
 /**
  * Creates a selector to get the property of a product based on a given label
- * @param {string} propertyLabel the label of product coming from the config
  * @returns {Function}
  */
-export const getCurrentProductPropertyByLabel = propertyLabel => createSelector(
+export const getCurrentProductPropertyByLabel = createSelector(
   getProductPropertiesUnfiltered,
-  currentProductProperties => currentProductProperties.find(({ label: l }) => l === propertyLabel)
+  (state, props) => props.widgetSettings.propertyLabel,
+  (currentProductProperties, propertyLabel) => currentProductProperties
+    .find(({ label: l }) => l === propertyLabel)
 );
