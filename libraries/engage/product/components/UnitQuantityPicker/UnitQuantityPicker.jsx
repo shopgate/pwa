@@ -4,9 +4,9 @@ import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput, I18n } from '@shopgate/engage/components';
-import { useWidgetSettings, withCurrentProduct } from '@shopgate/engage/core';
+import { useWidgetSettings, withCurrentProduct, withWidgetSettings } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
-import { getProductPropertiesUnfiltered } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentProductPropertyByLabel } from '../../selectors/product';
 
 const { variables, colors } = themeConfig;
 
@@ -97,17 +97,14 @@ const UnitQuantityPicker = ({
   disabled,
   minValue,
   maxValue,
-  productProperties,
+  productProperty,
 }) => {
   const {
     buttonColor = colors.shade8,
     buttonBgColor = colors.primary,
     inputColor = colors.dark,
     inputBgColor = colors.shade8,
-    propertyLabel = '',
   } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
-
-  const property = productProperties.filter(({ label: l }) => l === propertyLabel)[0];
 
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
@@ -159,8 +156,8 @@ const UnitQuantityPicker = ({
       <span className={styles.quantityLabelWrapper(inputBgColor)}>
         <div aria-hidden className={styles.quantityLabel(inputColor)}>
           {
-            property && property.value && property.value !== ''
-              ? property.value
+            productProperty && productProperty.value && productProperty.value !== ''
+              ? productProperty.value
               : <I18n.Text string="product.sections.quantity" />
           }
         </div>
@@ -209,10 +206,10 @@ UnitQuantityPicker.propTypes = {
   maxDecimals: PropTypes.number,
   maxValue: PropTypes.number,
   minValue: PropTypes.number,
-  productProperties: PropTypes.arrayOf(PropTypes.shape({
+  productProperty: PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.string,
-  })),
+  }),
   unit: PropTypes.string,
 };
 
@@ -228,7 +225,7 @@ UnitQuantityPicker.defaultProps = {
   disabled: false,
   minValue: null,
   maxValue: null,
-  productProperties: [],
+  productProperty: null,
 };
 
 /**
@@ -238,7 +235,13 @@ UnitQuantityPicker.defaultProps = {
  * @return {{productProperties: unknown}}
  */
 const mapStateToProps = (state, props) => ({
-  productProperties: getProductPropertiesUnfiltered(state, props),
+  productProperty: getCurrentProductPropertyByLabel(props.widgetSettings.propertyLabel)(
+    state,
+    props
+  ),
 });
 
-export default withCurrentProduct(connect(mapStateToProps)(UnitQuantityPicker));
+export default withWidgetSettings(
+  withCurrentProduct(connect(mapStateToProps)(UnitQuantityPicker)),
+  '@shopgate/engage/product/components/UnitQuantityPicker'
+);

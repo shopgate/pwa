@@ -5,6 +5,7 @@ import {
   getProduct,
   getProductDataById,
   getBaseProduct,
+  getProductPropertiesUnfiltered,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { filterProperties } from './helpers';
 
@@ -106,4 +107,14 @@ export const makeIsBaseProductActive = () => createSelector(
 
     return baseProduct.active || false;
   }
+);
+
+/**
+ * Creates a selector to get the property of a product based on a given label
+ * @param {string} propertyLabel the label of product coming from the config
+ * @returns {Function}
+ */
+export const getCurrentProductPropertyByLabel = propertyLabel => createSelector(
+  getProductPropertiesUnfiltered,
+  currentProductProperties => currentProductProperties.find(({ label: l }) => l === propertyLabel)
 );
