@@ -115,7 +115,13 @@ export const makeIsBaseProductActive = () => createSelector(
  */
 export const getCurrentProductPropertyByLabel = createSelector(
   getProductPropertiesUnfiltered,
-  (state, props) => props.widgetSettings.propertyLabel,
-  (currentProductProperties, propertyLabel) => currentProductProperties
-    .find(({ label: l }) => l === propertyLabel)
+  (state, props) => props.widgetSettings,
+  (currentProductProperties, widgetSettings) => {
+    if (!widgetSettings || !widgetSettings.propertyLabel) {
+      return null;
+    }
+
+    return currentProductProperties
+      .find(({ label: l }) => l === widgetSettings.propertyLabel);
+  }
 );

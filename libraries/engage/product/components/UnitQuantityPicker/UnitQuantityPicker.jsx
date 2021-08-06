@@ -8,7 +8,7 @@ import { useWidgetSettings, withCurrentProduct, withWidgetSettings } from '@shop
 import { connect } from 'react-redux';
 import { getCurrentProductPropertyByLabel } from '../../selectors/product';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
 // default dimension to be used for button and input
 // in order for them to look with the same size
@@ -18,16 +18,20 @@ const styles = {
   root: css({
     display: 'flex',
     flexDirection: 'row',
+    width: '100%',
   }).toString(),
-  input: (color, bgColor) => css({
-    padding: `0 ${variables.gap.small}px`,
-    textAlign: 'center',
+  input: (color, bgColor, hasLabel) => css({
+    padding: '0',
     flex: 1,
-    fontSize: 15,
+    fontSize: 16,
+    fontWeight: 600,
     height: defaultDimension,
+    lineHeight: defaultDimension,
     width: '100%',
     minWidth: '32px',
     backgroundColor: bgColor,
+    marginLeft: hasLabel ? '-16px' : '0',
+    textAlign: hasLabel ? 'left' : 'center',
     color,
   }).toString(),
   inputWrapper: css({
@@ -49,6 +53,8 @@ const styles = {
     // relative to the default dimension. number 28 was the
     // one we used before and it looked "normal" on desktop
     fontSize: `${Math.floor((defaultDimension / 28) * 100)}%`,
+    height: defaultDimension,
+    lineHeight: `${defaultDimension - 1}px`,
   }).toString(),
   buttonNoRadiusLeft: css({
     ' &&': {
@@ -71,10 +77,17 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     backgroundColor: bgColor,
+    width: '100%',
+    lineHeight: defaultDimension,
+    height: defaultDimension,
   }).toString(),
   quantityLabel: color => css({
-    fontSize: '12px',
-    padding: '0 1em',
+    fontSize: '16px',
+    textAlign: 'center',
+    padding: '0',
+    flex: 1,
+    marginRight: '8px',
+    marginLeft: '-8px',
     color,
   }).toString(),
 };
@@ -104,7 +117,13 @@ const UnitQuantityPicker = ({
     buttonBgColor = colors.primary,
     inputColor = colors.dark,
     inputBgColor = colors.shade8,
+    showLabel = true,
   } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
+
+  let label = <I18n.Text string="product.sections.quantity" />;
+  if (productProperty && productProperty.value && productProperty.value !== '') {
+    label = productProperty.value;
+  }
 
   const handleDecrement = useCallback(() => {
     let newValue = value - decrementStep;
@@ -150,20 +169,20 @@ const UnitQuantityPicker = ({
         type="secondary"
         disabled={!allowDecrement || disabled}
         onClick={handleDecrement}
+        rippleSize={defaultDimension}
       >
         -
       </RippleButton>
       <span className={styles.quantityLabelWrapper(inputBgColor)}>
-        <div aria-hidden className={styles.quantityLabel(inputColor)}>
-          {
-            productProperty && productProperty.value && productProperty.value !== ''
-              ? productProperty.value
-              : <I18n.Text string="product.sections.quantity" />
-          }
-        </div>
+        {
+          showLabel &&
+          <div aria-hidden className={styles.quantityLabel(inputColor)}>
+            {label}
+          </div>
+        }
 
         <QuantityInput
-          className={styles.input(inputColor, inputBgColor)}
+          className={styles.input(inputColor, inputBgColor, showLabel)}
           value={value}
           onChange={onChange}
           maxDecimals={maxDecimals}

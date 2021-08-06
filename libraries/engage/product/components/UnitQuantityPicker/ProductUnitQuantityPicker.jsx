@@ -8,7 +8,6 @@ import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/p
 import { withCurrentProduct } from '@shopgate/engage/core';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
-import { small, big } from './styles';
 
 const { variables } = themeConfig;
 
@@ -60,9 +59,13 @@ const ProductUnitQuantityPicker = ({
   return (
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
       <div className={classNames(styles.root, className)}>
-        <div>
+        <div style={{
+          width: '100%',
+          padding: '0 16px',
+        }}
+        >
           <UnitQuantityPicker
-            className={hasUnitWithDecimals ? big : small}
+            className=""
             unit={hasUnitWithDecimals ? unit : null}
             maxDecimals={hasUnitWithDecimals ? 2 : 0}
             incrementStep={hasUnitWithDecimals ? 0.25 : 1}

@@ -278,7 +278,8 @@
             "buttonBgColor": "$.colors.primary",
             "inputColor":  "$.colors.dark",
             "inputBgColor":  "$.colors.shade8",
-            "propertyLabel": ""
+            "propertyLabel": "",
+            "showLabel": true
           }
         },
         "typography": {

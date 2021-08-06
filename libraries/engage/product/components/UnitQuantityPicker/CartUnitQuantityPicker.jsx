@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UnitQuantityPicker from './UnitQuantityPicker';
-import { small, big } from './styles';
 
 /**
  * @param {Object} props The component props.
@@ -43,8 +42,8 @@ CartUnitQuantityPicker.propTypes = {
 
 CartUnitQuantityPicker.defaultProps = {
   classNames: {
-    withDecimals: big,
-    withoutDecimals: small,
+    withDecimals: '',
+    withoutDecimals: '',
   },
   hasCatchWeight: false,
 };
