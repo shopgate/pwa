@@ -1,16 +1,20 @@
 import React from 'react';
 import { css } from 'glamor';
 import PropTypes from 'prop-types';
+import { themeConfig } from '@shopgate/engage';
 import { useWidgetSettings } from '../../../core';
 import { ProductUnitQuantityPicker } from './index';
 import { OrderQuantityHint } from '../../index';
 import { Section } from '../../../a11y';
 
+const { variables } = themeConfig;
+
 const styles = {
   quantityPicker: css({
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: variables.gap.big,
   }).toString(),
   quantityHint: css({
     marginBottom: -4,

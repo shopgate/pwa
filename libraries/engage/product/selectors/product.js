@@ -5,6 +5,7 @@ import {
   getProduct,
   getProductDataById,
   getBaseProduct,
+  getProductPropertiesUnfiltered,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { filterProperties } from './helpers';
 
@@ -105,5 +106,22 @@ export const makeIsBaseProductActive = () => createSelector(
     }
 
     return baseProduct.active || false;
+  }
+);
+
+/**
+ * Creates a selector to get the property of a product based on a given label
+ * @returns {Function}
+ */
+export const getCurrentProductPropertyByLabel = createSelector(
+  getProductPropertiesUnfiltered,
+  (state, props) => props.widgetSettings,
+  (currentProductProperties, widgetSettings) => {
+    if (!widgetSettings || !widgetSettings.propertyLabel) {
+      return null;
+    }
+
+    return currentProductProperties
+      .find(({ label }) => label === widgetSettings.propertyLabel);
   }
 );

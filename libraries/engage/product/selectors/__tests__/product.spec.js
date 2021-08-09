@@ -17,6 +17,7 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProductPropertiesState: jest.fn(),
   getProductId: jest.fn(),
   getProductDataById: jest.fn(),
+  getProductPropertiesUnfiltered: jest.fn(),
 }));
 
 const mockState = {

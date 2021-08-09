@@ -2,24 +2,27 @@ import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
-import { I18n, SurroundPortals } from '@shopgate/engage/components';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
-import { withCurrentProduct } from '@shopgate/engage/core';
+import { withCurrentProduct, useWidgetSettings } from '@shopgate/engage/core';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
-import { small, big } from './styles';
 
 const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    margin: variables.gap.big,
+    marginBottom: variables.gap.small,
+    marginTop: '0px',
+    justifyContent: 'space-evenly',
   }).toString(),
-  title: css({
-    fontSize: '1rem',
-    fontWeight: 500,
-    marginBottom: '0.5rem',
+  qtyContainer: css({
+    marginBottom: variables.gap.small,
+  }).toString(),
+  qtyWrapper: css({
+    width: '100%',
+    padding: '0',
   }).toString(),
 };
 
@@ -31,6 +34,12 @@ const styles = {
 const ProductUnitQuantityPicker = ({
   children, className, product, disabled, stockInfo,
 }) => {
+  const { show = false } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
+
+  if (!show) {
+    return null;
+  }
+
   const { quantity, setQuantity } = useContext(ProductContext);
 
   const { minValue, maxValue } = useMemo(() => {
@@ -63,12 +72,9 @@ const ProductUnitQuantityPicker = ({
   return (
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
       <div className={classNames(styles.root, className)}>
-        <div>
-          <div aria-hidden className={styles.title}>
-            <I18n.Text string="product.sections.quantity" />
-          </div>
+        <div className={styles.qtyWrapper}>
           <UnitQuantityPicker
-            className={hasUnitWithDecimals ? big : small}
+            className={styles.qtyContainer}
             unit={hasUnitWithDecimals ? unit : null}
             maxDecimals={hasUnitWithDecimals ? 2 : 0}
             incrementStep={hasUnitWithDecimals ? 0.25 : 1}
