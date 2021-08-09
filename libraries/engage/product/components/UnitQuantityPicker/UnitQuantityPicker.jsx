@@ -173,7 +173,7 @@ const UnitQuantityPicker = ({
       >
         -
       </RippleButton>
-      <span className={styles.quantityLabelWrapper(inputBgColor)}>
+      <div className={styles.quantityLabelWrapper(inputBgColor)}>
         {
           showLabel &&
           <div aria-hidden className={styles.quantityLabel(inputColor)}>
@@ -191,7 +191,7 @@ const UnitQuantityPicker = ({
           minValue={minValue}
           maxValue={maxValue}
         />
-      </span>
+      </div>
 
       <RippleButton
         type="secondary"

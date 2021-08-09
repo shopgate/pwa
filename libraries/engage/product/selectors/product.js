@@ -122,6 +122,6 @@ export const getCurrentProductPropertyByLabel = createSelector(
     }
 
     return currentProductProperties
-      .find(({ label: l }) => l === widgetSettings.propertyLabel);
+      .find(({ label }) => label === widgetSettings.propertyLabel);
   }
 );

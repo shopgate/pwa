@@ -94,5 +94,4 @@ export { ProductContext } from './components/context';
 export {
   ProductUnitQuantityPicker,
   UnitQuantityPicker,
-  CartUnitQuantityPicker,
 } from './components/UnitQuantityPicker';
