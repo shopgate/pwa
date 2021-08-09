@@ -13,7 +13,7 @@ const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    margin: variables.gap.small,
+    marginBottom: variables.gap.small,
     marginTop: '0px',
     justifyContent: 'space-evenly',
   }).toString(),
@@ -61,7 +61,7 @@ const ProductUnitQuantityPicker = ({
       <div className={classNames(styles.root, className)}>
         <div style={{
           width: '100%',
-          padding: '0 16px',
+          padding: '0',
         }}
         >
           <UnitQuantityPicker
