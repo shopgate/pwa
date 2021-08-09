@@ -20,6 +20,10 @@ const styles = {
   qtyContainer: css({
     marginBottom: variables.gap.small,
   }).toString(),
+  qtyWrapper: css({
+    width: '100%',
+    padding: '0',
+  }).toString(),
 };
 
 /**
@@ -68,11 +72,7 @@ const ProductUnitQuantityPicker = ({
   return (
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
       <div className={classNames(styles.root, className)}>
-        <div style={{
-          width: '100%',
-          padding: '0',
-        }}
-        >
+        <div className={styles.qtyWrapper}>
           <UnitQuantityPicker
             className={styles.qtyContainer}
             unit={hasUnitWithDecimals ? unit : null}
