@@ -23,7 +23,7 @@ const CartButtonBadge = ({ count, style }) => {
   const productCount = count > CART_MAX_ITEMS ? `${CART_MAX_ITEMS}+` : count;
 
   return (
-    <div style={badgeStyle} className={styles} data-test-id="badge">{productCount}</div>
+    <div style={badgeStyle} className={`${styles} appbar-cart-badge`} data-test-id="badge">{productCount}</div>
   );
 };
 
