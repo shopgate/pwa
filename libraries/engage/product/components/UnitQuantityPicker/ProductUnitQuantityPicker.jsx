@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
-import { withCurrentProduct } from '@shopgate/engage/core';
+import { withCurrentProduct, useWidgetSettings } from '@shopgate/engage/core';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
 
@@ -17,6 +17,9 @@ const styles = {
     marginTop: '0px',
     justifyContent: 'space-evenly',
   }).toString(),
+  qtyContainer: css({
+    marginBottom: variables.gap.small,
+  }).toString(),
 };
 
 /**
@@ -27,6 +30,12 @@ const styles = {
 const ProductUnitQuantityPicker = ({
   children, className, product, disabled, stockInfo,
 }) => {
+  const { show = false } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker') || {};
+
+  if (!show) {
+    return null;
+  }
+
   const { quantity, setQuantity } = useContext(ProductContext);
 
   const { minValue, maxValue } = useMemo(() => {
@@ -65,7 +74,7 @@ const ProductUnitQuantityPicker = ({
         }}
         >
           <UnitQuantityPicker
-            className=""
+            className={styles.qtyContainer}
             unit={hasUnitWithDecimals ? unit : null}
             maxDecimals={hasUnitWithDecimals ? 2 : 0}
             incrementStep={hasUnitWithDecimals ? 0.25 : 1}

@@ -279,7 +279,7 @@
             "inputColor":  "$.colors.dark",
             "inputBgColor":  "$.colors.shade8",
             "propertyLabel": "",
-            "showLabel": true
+            "showLabel": false
           }
         },
         "typography": {
