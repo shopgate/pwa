@@ -6,7 +6,7 @@ import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput, I18n } from '@shopgate/engage/components';
 import { useWidgetSettings, withCurrentProduct, withWidgetSettings } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
-import { getCurrentProductPropertyByLabel } from '../../selectors/product';
+import { getCurrentProductPropertyByLabel } from '@shopgate/engage/product/selectors/product';
 
 const { colors } = themeConfig;
 
