@@ -22,7 +22,7 @@ const CartItemBadge = (props) => {
   }
 
   return (
-    <div className={style}>{cartProductCount}</div>
+    <div className={`${style} tabbar-cart-badge`}>{cartProductCount}</div>
   );
 };
 
