@@ -11,7 +11,7 @@ import {
 } from '@shopgate/pwa-common/constants/Portals';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { withWidgetSettings, i18n } from '@shopgate/engage/core';
-import Badge from '../CartBadge';
+import CartBadge from '../CartBadge';
 import connect from './connector';
 import styles from './style';
 import transition from './transition';
@@ -33,7 +33,7 @@ class CartButton extends PureComponent {
    */
   get badge() {
     const { count } = this.props;
-    return () => <Badge style={this.style.badge} count={count} />;
+    return () => <CartBadge style={this.style.badge} count={count} />;
   }
 
   /**

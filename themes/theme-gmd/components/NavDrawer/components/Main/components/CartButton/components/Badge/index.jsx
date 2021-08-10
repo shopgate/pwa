@@ -10,7 +10,7 @@ import styles from './style';
  */
 const CartButtonBadge = ({ count }) => (
   (count > 0) && (
-    <span className={`${styles} navdrawer-cart-badge`} test-id="cartButtonBadge">
+    <span className={`${styles} theme__navdrawer__cart-button-badge theme__badge`} test-id="cartButtonBadge">
       {Math.min(count, CART_MAX_ITEMS)}
       {count > 99 && '+'}
     </span>
