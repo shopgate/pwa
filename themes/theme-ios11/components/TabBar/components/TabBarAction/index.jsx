@@ -19,6 +19,7 @@ const TabBarAction = (props) => {
     'theme__tab-bar__tab-bar-action',
     style.container,
     { [style.highlighted]: props.isHighlighted },
+    { 'tab-active': props.isHighlighted },
     { [style.regular]: !props.isHighlighted }
   );
 

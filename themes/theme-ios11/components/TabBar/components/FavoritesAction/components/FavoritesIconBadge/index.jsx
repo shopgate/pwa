@@ -48,7 +48,7 @@ export class FavoritesIconBadge extends Component {
       `${this.constructor.MAX_NUMBER}+`
       : this.props.favoritesCount;
     return (
-      <div className={style}>{number}</div>
+      <div className={`${style} theme__tab-bar__favorites-icon-badge theme__badge`}>{number}</div>
     );
   }
 }
