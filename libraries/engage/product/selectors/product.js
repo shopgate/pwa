@@ -117,7 +117,7 @@ export const getCurrentProductPropertyByLabel = createSelector(
   getProductPropertiesUnfiltered,
   (state, props) => props.widgetSettings,
   (currentProductProperties, widgetSettings) => {
-    if (!widgetSettings || !widgetSettings.propertyLabel) {
+    if (!currentProductProperties || !widgetSettings || !widgetSettings.propertyLabel) {
       return null;
     }
 
