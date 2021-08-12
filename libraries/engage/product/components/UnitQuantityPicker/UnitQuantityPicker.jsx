@@ -26,7 +26,7 @@ const styles = {
     fontSize: 16,
     fontWeight: 600,
     height: defaultDimension,
-    lineHeight: defaultDimension,
+    lineHeight: `${defaultDimension}px`,
     width: '100%',
     minWidth: '32px',
     backgroundColor: bgColor,
