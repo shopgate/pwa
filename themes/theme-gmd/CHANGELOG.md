@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.16.3](https://github.com/shopgate/pwa/compare/v6.16.2...v6.16.3) (2021-08-12)
+
+#### :rocket: Enhancement
+* [#1115](https://github.com/shopgate/pwa/pull/1115) add couple of new css classes ([@AienTech](https://github.com/AienTech))
+* [#1114](https://github.com/shopgate/pwa/pull/1114) Quantity picker improvements ([@AienTech](https://github.com/AienTech))
+
+
 ## [v6.16.2](https://github.com/shopgate/pwa/compare/v6.16.1...v6.16.2) (2021-07-21)
 
 #### :rocket: Enhancement
