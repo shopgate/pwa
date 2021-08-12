@@ -11,7 +11,11 @@ import ReviewsContent from './components/Content';
  */
 const Reviews = ({ id }) => (
   <View aria-hidden={false}>
-    {id && <ReviewsContent productId={id} />}
+    {/*
+    variantId needs to be != undefined here.
+    otherwise getCollectionForCurrentBaseProduct will not work
+    */}
+    {id && <ReviewsContent productId={id} variantId={null} />}
   </View>
 );
 
