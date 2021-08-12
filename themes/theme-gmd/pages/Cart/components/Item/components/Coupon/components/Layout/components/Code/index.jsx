@@ -4,14 +4,8 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import { Ellipsis } from '@shopgate/engage/components';
 import { css } from 'glamor';
 
-/**
- * on gmd theme the maximum width the
- * ellipsis wrapper can have is almost 182px.
- * @type {{ellipsis: string}}
- */
 const styles = {
   ellipsis: css({
-    width: '180px',
     whiteSpace: 'nowrap',
     display: 'inline-block !important',
   }).toString(),
