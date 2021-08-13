@@ -1,5 +1,18 @@
 # Changelog
 
+## [v7.3.0](https://github.com/shopgate/pwa/compare/v7.2.4...v7.3.0) (2021-08-13)
+
+#### :rocket: Enhancement
+* [#1099](https://github.com/shopgate/pwa/pull/1099) Added inventory to product lists ([@Carsten89](https://github.com/Carsten89))
+* [#1102](https://github.com/shopgate/pwa/pull/1102) Add reviews portals ([@alexbridge](https://github.com/alexbridge))
+* [#1096](https://github.com/shopgate/pwa/pull/1096) Added new position for RelationsSlider and filter properties by code ([@Carsten89](https://github.com/Carsten89))
+
+#### :bug: Bug Fix
+* [#1116](https://github.com/shopgate/pwa/pull/1116) Fix reviews page when productData are not there ([@Carsten89](https://github.com/Carsten89))
+* [#1099](https://github.com/shopgate/pwa/pull/1099) Added inventory to product lists ([@Carsten89](https://github.com/Carsten89))
+* [#1105](https://github.com/shopgate/pwa/pull/1105) Filter same location, stop propagation of silent geo location ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
