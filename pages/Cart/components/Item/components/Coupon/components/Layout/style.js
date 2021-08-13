@@ -29,6 +29,8 @@ const content = css({
 
 const contentLast = css({
   alignItems: 'flex-end',
+  flexBasis: '200px',
+  flexShrink: 1,
 }).toString();
 
 export default {
