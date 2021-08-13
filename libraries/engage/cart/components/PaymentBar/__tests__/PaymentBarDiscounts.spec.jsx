@@ -10,6 +10,9 @@ jest.mock('react', () => ({
 }));
 jest.mock('../PaymentBarDiscounts.connector', () => cmp => cmp);
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/pwa-common-commerce/cart', () => ({
+  CART_PAYMENT_BAR_TOTALS_DISCOUNTS: 'CART_PAYMENT_BAR_TOTALS_DISCOUNTS',
+}));
 
 describe('<PaymentBarDiscounts />', () => {
   it('should render and match snapshot', () => {

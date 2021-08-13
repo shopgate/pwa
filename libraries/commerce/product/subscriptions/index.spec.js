@@ -16,6 +16,7 @@ jest.mock('@shopgate/engage/core', () => ({
 jest.mock('../actions/fetchProductsById', () => (...args) => mockedGetProductsById(...args));
 jest.mock('../action-creators/expireProductById', () => jest.fn());
 jest.mock('../actions/fetchProductImages', () => jest.fn());
+jest.mock('@shopgate/engage/account', () => ({}));
 
 describe('Product subscription', () => {
   const subscribe = jest.fn();

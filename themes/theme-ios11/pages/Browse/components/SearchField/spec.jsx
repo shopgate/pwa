@@ -21,6 +21,7 @@ jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
 }));
 
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
+jest.mock('@shopgate/engage/account', () => ({}));
 jest.mock('@virtuous/conductor', () => ({
   router: {
     update: jest.fn(),

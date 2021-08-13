@@ -11,6 +11,9 @@ jest.mock('@shopgate/engage/product', () => ({
   AVAILABILITY_STATE_OK: 'AVAILABILITY_STATE_OK',
   AVAILABILITY_STATE_ALERT: 'AVAILABILITY_STATE_ALERT',
 }));
+jest.mock('@shopgate/engage/locations/components', () => ({
+  StockInfoLists: () => null,
+}));
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/core');
 jest.mock('../ItemName');
