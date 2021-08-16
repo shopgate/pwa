@@ -17,7 +17,14 @@ jest.mock('react', () => ({
 }));
 
 jest.mock('../PaymentBarTax.connector', () => cmp => cmp);
-
+jest.mock('@shopgate/pwa-common-commerce/cart', () => ({
+  CART_PAYMENT_BAR_TOTALS_TAX: 'CART_PAYMENT_BAR_TOTALS_TAX',
+  getTaxLine: jest.fn(() => ({
+    label: 'Tax',
+    amount: 10,
+    hint: null,
+  })),
+}));
 jest.mock('@shopgate/engage/components');
 
 describe('<PaymentBarTax />', () => {

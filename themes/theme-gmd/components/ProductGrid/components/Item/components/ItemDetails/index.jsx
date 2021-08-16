@@ -13,12 +13,12 @@ import {
   TextLink, Link, Availability,
 } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
+import { StockInfoLists } from '@shopgate/engage/locations/components';
 
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import ShortDescription from '../ShortDescription';
 import * as styles from './style';
-import { StockInfoLists } from '@shopgate/engage/locations/components';
 
 /**
  * The item details component.

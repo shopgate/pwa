@@ -24,7 +24,7 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentParams: () => ({}),
   getCurrentSearchQuery: () => mockedSearchQuery,
 }));
-
+jest.mock('@shopgate/engage/account', () => ({}));
 jest.mock('@shopgate/engage/locations/selectors', () => ({
   getPreferredLocation: jest.fn().mockReturnValue({}),
 }));

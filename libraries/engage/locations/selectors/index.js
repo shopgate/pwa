@@ -40,6 +40,13 @@ const getLocationsState = state => state.locations || {};
 export const getLocationsStorage = state => state.locations.storage;
 
 /**
+ * Gets the location user state.
+ * @param {Object} state State.
+ * @return {Object}
+ */
+const getUserState = state => state.locations.user || {};
+
+/**
  * Retrieves the store finder search.
  * @param {Object} state State.
  * @returns {Object}
@@ -265,6 +272,16 @@ export const getUserSearchGeolocation = (state) => {
   const userSearch = getUserSearch(state);
   return userSearch.geolocation;
 };
+
+/**
+ * Get user current geolocation
+ * @param {Object} state State.
+ * @returns {string}
+ */
+export const getUserGeolocation = createSelector(
+  getUserState,
+  state => state.geolocation || null
+);
 
 /**
  * Retrieves the postal code from the user's search.
@@ -530,16 +547,19 @@ export const makeGetFulfillmentSlotsForLocation = getLocationCode => createSelec
  * @type {Object}
  */
 export const getProductAlternativeLocationParams = createSelector(
+  getUserGeolocation,
   getUserSearch,
   getPreferredLocation,
-  (userSearch, preferredLocation) => {
+  (userGeolocation, userSearch, preferredLocation) => {
     if (!userSearch) {
       return null;
     }
     const params = {
       countryCode: userSearch.countryCode,
     };
-    if (userSearch.geolocation) {
+    if (userGeolocation) {
+      params.geolocation = userGeolocation;
+    } else if (userSearch.geolocation) {
       params.geolocation = userSearch.geolocation;
     } else if (userSearch.postalCode) {
       params.postalCode = userSearch.postalCode;
@@ -580,8 +600,11 @@ export const getProductAlternativeLocations = createSelector(
     }
     const sortedHash = generateSortedHash(fetchParams);
 
-    const codes = storage.locationsByFilter[sortedHash] || [];
-    const locations = codes
+    const codes = storage.locationsByFilter[sortedHash];
+    if (!codes) {
+      return null;
+    }
+    return codes
       .map(code => storage.locationsByCode[code])
       .map((location) => {
         const pair = generateSortedHash({
@@ -594,7 +617,5 @@ export const getProductAlternativeLocations = createSelector(
           productInventory: storage.inventoriesByCodePair[pair] || null,
         };
       });
-
-    return locations.length ? locations : null;
   }
 );

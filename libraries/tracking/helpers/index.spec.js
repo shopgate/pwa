@@ -17,6 +17,8 @@ jest.mock('@shopgate/engage/core', () => ({
   },
 }));
 
+jest.mock('@shopgate/pwa-common-commerce/search/streams', () => ({}));
+
 const scannerEvents = core.getScannerEvents();
 
 describe('Tracking helpers', () => {

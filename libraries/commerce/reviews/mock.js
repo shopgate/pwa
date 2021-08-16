@@ -196,7 +196,7 @@ const getReviewsStateForId = (id) => {
  */
 const setMocks = (mockReviewsAvailable = true) => {
   jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
-    ...require.requireActual('@shopgate/pwa-common/helpers/config'),
+    ...jest.requireActual('@shopgate/pwa-common/helpers/config'),
     get hasReviews() { return mockReviewsAvailable; },
     get showWriteReview() { return true; },
     themeConfig: mockedConfig,
