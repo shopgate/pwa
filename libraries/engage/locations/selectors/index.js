@@ -612,10 +612,17 @@ export const getProductAlternativeLocations = createSelector(
           locationCode: location.code,
         });
 
+        const productInventory = storage.inventoriesByCodePair[pair] || {};
+
+        if (!productInventory.isAvailable) {
+          return null;
+        }
+
         return {
           ...location,
-          productInventory: storage.inventoriesByCodePair[pair] || null,
+          productInventory,
         };
-      });
+      })
+      .filter(Boolean);
   }
 );
