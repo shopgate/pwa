@@ -33,6 +33,10 @@ const styles = {
     marginLeft: hasLabel ? '-16px' : '0',
     textAlign: hasLabel ? 'left' : 'center',
     color,
+    outline: 'none',
+    '&:focus': {
+      outline: 'none',
+    },
   }).toString(),
   inputWrapper: css({
     width: '100%',
