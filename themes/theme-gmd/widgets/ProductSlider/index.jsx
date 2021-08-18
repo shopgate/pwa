@@ -10,6 +10,8 @@ import Headline from 'Components/Headline';
 import connect from './connector';
 import styles from './style';
 
+const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
+
 /**
  * The core product slider widget.
  */
@@ -82,6 +84,7 @@ class ProductSlider extends PureComponent {
       queryParams,
       {
         sort: transformDisplayOptions(this.props.settings.sortOrder),
+        limit: PRODUCT_SLIDER_WIDGET_LIMIT,
       },
       id
     );
@@ -135,7 +138,7 @@ class ProductSlider extends PureComponent {
           slidesPerView={slidesPerView}
           classNames={{ container: styles.sliderContainer }}
         >
-          {products.slice(0, 30).map(product => (
+          {products.slice(0, PRODUCT_SLIDER_WIDGET_LIMIT).map(product => (
             <Swiper.Item key={product.id} className={styles.sliderItem}>
               <Card className={styles.card}>
                 <ProductCard
