@@ -42,6 +42,8 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   );
 };
 
+const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
+
 /**
  * The core product slider widget.
  */
@@ -114,6 +116,7 @@ class ProductSlider extends Component {
       queryParams,
       {
         sort: transformDisplayOptions(this.props.settings.sortOrder),
+        limit: PRODUCT_SLIDER_WIDGET_LIMIT,
       },
       id
     );
@@ -137,7 +140,7 @@ class ProductSlider extends Component {
     const { slidesPerView = 2.3 } = widgetSettings;
 
     // Create the slides for each product, only displays the first 30 products.
-    const items = this.props.products.slice(0, 30).map((
+    const items = this.props.products.slice(0, PRODUCT_SLIDER_WIDGET_LIMIT).map((
       product => createSliderItem(product, settings)
     ));
 
