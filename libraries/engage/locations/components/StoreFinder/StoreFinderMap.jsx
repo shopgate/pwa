@@ -22,7 +22,7 @@ const StoreFinderMap = ({ showUserPosition }) => {
   const {
     locations,
     selectedLocation,
-    selectLocation,
+    changeLocation,
     userSearch,
   } = useContext(StoreFinderContext);
 
@@ -84,8 +84,8 @@ const StoreFinderMap = ({ showUserPosition }) => {
   }, [locations, selectedLocation, userPosition]);
 
   const onMarkerClick = useCallback((event, location) => {
-    selectLocation(location, true);
-  }, [selectLocation]);
+    changeLocation(location, true);
+  }, [changeLocation]);
 
   return (
     <div className={container}>

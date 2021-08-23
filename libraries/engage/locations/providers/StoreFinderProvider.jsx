@@ -6,6 +6,7 @@ import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { STORE_FINDER_PATTERN } from '../constants';
 import { StoreFinderContext } from '../locations.context';
 import connect from './StoreFinder.connector';
+import { useNavigation, useRoute } from '../../core';
 
 /**
  * @param {Object} props The component props
@@ -19,11 +20,17 @@ const StoreFinderProvider = ({
   userSearch,
   storeFinderSearch,
   storeListRef,
+  selectGlobalLocation,
+  selectLocation,
 }) => {
+  const {
+    query: { selectLocation: querySelectLocation },
+  } = useRoute();
+  const { pop } = useNavigation();
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [locationsHash, setLocationsHash] = useState(null);
 
-  const selectLocation = useCallback((location, scrollIntoView = false) => {
+  const changeLocation = useCallback((location, scrollIntoView = false) => {
     setSelectedLocation(location);
 
     if (scrollIntoView && storeListRef.current) {
@@ -45,12 +52,23 @@ const StoreFinderProvider = ({
     }
   }, [storeListRef]);
 
+  const selectLocationCb = useCallback((location) => {
+    setSelectedLocation(location);
+
+    if (querySelectLocation) {
+      selectLocation(location);
+      selectGlobalLocation(location);
+      // Back navigation
+      pop();
+    }
+  }, [querySelectLocation, selectLocation, selectGlobalLocation, pop]);
+
   useEffect(() => {
     const hash = JSON.stringify(locations.map(({ code }) => code));
 
     if (hash !== locationsHash) {
       setLocationsHash(hash);
-      selectLocation(locations[0]);
+      changeLocation(locations[0]);
     }
   });
 
@@ -69,7 +87,9 @@ const StoreFinderProvider = ({
   const value = useMemo(() => ({
     locations,
     selectedLocation,
-    selectLocation,
+    changeLocation,
+    selectLocation: selectLocationCb,
+    hasSelectLocation: !!querySelectLocation,
     isFetching,
     shopSettings,
     userSearch,
@@ -78,7 +98,9 @@ const StoreFinderProvider = ({
   }), [
     isFetching,
     locations,
-    selectLocation,
+    changeLocation,
+    querySelectLocation,
+    selectLocationCb,
     selectedLocation,
     shopSettings,
     storeFinderSearch,
@@ -94,6 +116,8 @@ const StoreFinderProvider = ({
 };
 
 StoreFinderProvider.propTypes = {
+  selectGlobalLocation: PropTypes.func.isRequired,
+  selectLocation: PropTypes.func.isRequired,
   children: PropTypes.node,
   isFetching: PropTypes.bool,
   locations: PropTypes.arrayOf(PropTypes.shape()),

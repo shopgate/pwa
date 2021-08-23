@@ -18,11 +18,11 @@ const StoreFinderLocationHeader = () => {
   const {
     name, distance, unitSystem, operationHours, address,
   } = store;
-  const { selectLocation } = useContext(StoreFinderContext);
+  const { changeLocation } = useContext(StoreFinderContext);
 
   const handleClick = useCallback(() => {
-    selectLocation(store);
-  }, [selectLocation, store]);
+    changeLocation(store);
+  }, [changeLocation, store]);
 
   return (
     <div
