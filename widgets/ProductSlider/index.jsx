@@ -42,7 +42,7 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   );
 };
 
-const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
+export const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
 
 /**
  * The core product slider widget.
