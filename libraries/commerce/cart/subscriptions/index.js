@@ -43,6 +43,7 @@ import {
   cartUpdateFailed$,
   routeAddProductNavigate$,
   setFulfillmentSlot$,
+  cartWillEnterIdle$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import {
@@ -63,7 +64,8 @@ export default function cart(subscribe) {
    */
   const cartNeedsSync$ = userDidUpdate$.merge(
     remoteCartDidUpdate$,
-    checkoutSucceeded$
+    checkoutSucceeded$,
+    cartWillEnterIdle$
   );
 
   /**
