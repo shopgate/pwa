@@ -10,7 +10,12 @@ import {
   routeAddProductNavigate$,
 } from './index';
 
-jest.mock('@shopgate/pwa-common/selectors/router', () => ({ getCurrentPathname: jest.fn() }));
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+  getCurrentPathname: jest.fn(),
+}));
+jest.mock('../selectors/', () => ({
+  getIsFetching: jest.fn(),
+}));
 
 describe('Cart streams', () => {
   let dispatch;

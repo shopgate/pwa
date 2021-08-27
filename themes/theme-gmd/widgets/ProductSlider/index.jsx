@@ -10,7 +10,7 @@ import Headline from 'Components/Headline';
 import connect from './connector';
 import styles from './style';
 
-const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
+export const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
 
 /**
  * The core product slider widget.
