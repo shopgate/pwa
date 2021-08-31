@@ -6,7 +6,7 @@ import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { STORE_FINDER_PATTERN } from '../constants';
 import { StoreFinderContext } from '../locations.context';
 import connect from './StoreFinder.connector';
-import { useNavigation, useRoute } from '../../core';
+import { useNavigation } from '../../core';
 
 /**
  * @param {Object} props The component props
@@ -23,9 +23,6 @@ const StoreFinderProvider = ({
   selectGlobalLocation,
   selectLocation,
 }) => {
-  const {
-    query: { selectLocation: querySelectLocation },
-  } = useRoute();
   const { pop } = useNavigation();
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [locationsHash, setLocationsHash] = useState(null);
@@ -54,14 +51,10 @@ const StoreFinderProvider = ({
 
   const selectLocationCb = useCallback((location) => {
     setSelectedLocation(location);
-
-    if (querySelectLocation) {
-      selectLocation(location);
-      selectGlobalLocation(location);
-      // Back navigation
-      pop();
-    }
-  }, [querySelectLocation, selectLocation, selectGlobalLocation, pop]);
+    selectGlobalLocation(location);
+    // Back navigation
+    pop();
+  }, [selectLocation, selectGlobalLocation, pop]);
 
   useEffect(() => {
     const hash = JSON.stringify(locations.map(({ code }) => code));
@@ -89,7 +82,6 @@ const StoreFinderProvider = ({
     selectedLocation,
     changeLocation,
     selectLocation: selectLocationCb,
-    hasSelectLocation: !!querySelectLocation,
     isFetching,
     shopSettings,
     userSearch,
@@ -99,7 +91,6 @@ const StoreFinderProvider = ({
     isFetching,
     locations,
     changeLocation,
-    querySelectLocation,
     selectLocationCb,
     selectedLocation,
     shopSettings,
