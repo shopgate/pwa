@@ -51,6 +51,7 @@ const StoreFinderProvider = ({
 
   const selectLocationCb = useCallback((location) => {
     setSelectedLocation(location);
+    selectLocation(location);
     selectGlobalLocation(location);
     // Back navigation
     pop();

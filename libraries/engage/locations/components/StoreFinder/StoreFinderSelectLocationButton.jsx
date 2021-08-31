@@ -12,16 +12,12 @@ import { selectLocationButton, selectLocationButtonWrapper } from '../StoreList/
  */
 export const StoreFinderSelectLocationButton = () => {
   const store = useContext(StoreContext);
-  const { hasSelectLocation, selectLocation, isLoading } = useContext(StoreFinderContext);
+  const { selectLocation, isLoading } = useContext(StoreFinderContext);
 
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     selectLocation(store);
   }, [selectLocation, store]);
-
-  if (!hasSelectLocation) {
-    return null;
-  }
 
   return (
     <div className={selectLocationButtonWrapper}>
