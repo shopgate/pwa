@@ -20,6 +20,8 @@ import {
   storeOpeningHours,
   directionButton,
 } from './StoreFinderLocationDetailsWide.style';
+import { StoreFinderSelectLocationButton } from './StoreFinderSelectLocationButton';
+import { StoreContext } from './Store.context';
 
 /**
  * @returns {JSX}
@@ -37,50 +39,56 @@ const StoreFinderLocationDetailsWide = () => {
   }
 
   return (
-    <div className={container}>
+    <StoreContext.Provider value={location}>
+      <div className={container}>
 
-      <Grid className={headingLine}>
-        <Grid.Item grow={1}>
-          <div className={storeName}>
-            { location.name }
-          </div>
-          <div className={storeHours}>
-            <StoreHoursToday hours={location.operationHours} longLabel />
-          </div>
-        </Grid.Item>
-        <Grid.Item>
-          <div className={storeDistance}>
-            <StoreDistance distance={location.distance} unitSystem={location.unitSystem} />
-          </div>
-          <StoreFinderGetDirectionsButton address={location.address} className={directionButton} />
-        </Grid.Item>
-      </Grid>
+        <Grid className={headingLine}>
+          <Grid.Item grow={1}>
+            <div className={storeName}>
+              { location.name }
+            </div>
+            <div className={storeHours}>
+              <StoreHoursToday hours={location.operationHours} longLabel />
+            </div>
+          </Grid.Item>
+          <Grid.Item>
+            <div className={storeDistance}>
+              <StoreDistance distance={location.distance} unitSystem={location.unitSystem} />
+            </div>
+            <StoreFinderSelectLocationButton />
+            <StoreFinderGetDirectionsButton
+              address={location.address}
+              className={directionButton}
+            />
+          </Grid.Item>
+        </Grid>
 
-      <Grid className={storeDetailsLine}>
-        <Grid.Item>
-          <div className={storeAddress}>
-            <StoreAddress pure address={location.address} />
-          </div>
-          { location.address.phoneNumber && (
+        <Grid className={storeDetailsLine}>
+          <Grid.Item>
+            <div className={storeAddress}>
+              <StoreAddress pure address={location.address} />
+            </div>
+            { location.address.phoneNumber && (
             <div className={storePhoneNumber}>
               <I18n.Text string="locations.phone" />
               {': '}
               <StoreFinderLocationHeaderPhoneNumber phone={location.address.phoneNumber} pure />
             </div>
-          )}
-        </Grid.Item>
+            )}
+          </Grid.Item>
 
-        <Grid.Item className={storeOpeningHours}>
-          { hasOperationHours && (
+          <Grid.Item className={storeOpeningHours}>
+            { hasOperationHours && (
             <Fragment>
               <I18n.Text string="locations.store_hours" />
               {':'}
               <StoreOpeningHours pure hours={location.operationHours} />
             </Fragment>
-          )}
-        </Grid.Item>
-      </Grid>
-    </div>
+            )}
+          </Grid.Item>
+        </Grid>
+      </div>
+    </StoreContext.Provider>
   );
 };
 
