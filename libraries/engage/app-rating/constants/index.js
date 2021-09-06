@@ -1,0 +1,22 @@
+export const SET_NEXT_RULE = 'ADD_NEXT_RULE';
+export const RESET_RATE_STATE = 'RESET_RATE_STATE';
+
+export const INCREMENT_APP_START_COUNT = 'INCREMENT_APP_START_COUNT';
+export const RESET_APP_START_COUNT = 'RESET_APP_START_COUNT';
+export const RESET_APP_START_STATE = 'RESET_APP_START';
+
+export const INCREMENT_ORDERS_PLACED_COUNT = 'INCREMENT_ORDERS_PLACED_COUNT';
+export const RESET_ORDERS_PLACED_COUNT = 'RESET_ORDERS_PLACED_COUNT';
+export const RESET_ORDERS_PLACED_STATE = 'RESET_ORDERS_PLACED';
+
+export const INCREMENT_TIMER_COUNT = 'INCREMENT_TIMER_COUNT';
+export const RESET_TIMER_COUNT = 'RESET_TIMER_COUNT';
+export const RESET_TIMER_STATE = 'RESET_TIMER';
+
+/**
+ * @typedef {"appStarts" | "ordersPlaced" | "timer"} RULE_TYPES
+ */
+
+export const RULE_APP_STARTS = 'appStarts';
+export const RULE_ORDERS_PLACED = 'ordersPlaced';
+export const RULE_TIMER = 'timer';
