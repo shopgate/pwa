@@ -555,7 +555,7 @@
           }
         },
         "timeInterval": {
-          "value": 1,
+          "value": 10,
           "repeats": null,
           "answerNo": {
             "link": "...",
