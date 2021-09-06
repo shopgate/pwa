@@ -540,6 +540,41 @@
         "type": "json",
         "label": "Tracking settings: webTrackingEngage, etc"
       }
+    },
+    "appRating": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "minTimeBetweenPopups": 10,
+        "ordersPlaced": {
+          "value": 1,
+          "repeats": null,
+          "answerNo": {
+            "link": "...",
+            "repeats": 0
+          }
+        },
+        "timeInterval": {
+          "value": 1,
+          "repeats": null,
+          "answerNo": {
+            "link": "...",
+            "repeats": 0
+          }
+        },
+        "appStarts": {
+          "value": 2,
+          "repeats": 2,
+          "answerNo": {
+            "link": "...",
+            "repeats": 0
+          }
+        }
+      },
+      "params": {
+        "type": "json",
+        "label": "App rating settings"
+      }
     }
   }
 }
