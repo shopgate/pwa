@@ -1,27 +1,25 @@
 import {
-  SET_NEXT_RULE,
-  INCREMENT_APP_START_COUNT,
+  INCREASE_APP_START_COUNT,
   RESET_APP_START_STATE,
   RESET_APP_START_COUNT,
-  INCREMENT_ORDERS_PLACED_COUNT,
+  INCREASE_ORDERS_PLACED_COUNT,
   RESET_ORDERS_PLACED_COUNT,
   RESET_ORDERS_PLACED_STATE,
-  INCREMENT_TIMER_COUNT,
-  RESET_TIMER_COUNT,
-  RESET_TIMER_STATE,
+  INCREASE_TIMER_REPEATS,
+  SET_TIMER_START_TIME, SET_LAST_POPUP_TIMESTAMP,
 } from '../constants';
 
 const defaultState = {
-  nextRule: null,
-
   appStartCount: 0,
   appStartResetCount: 0,
 
   ordersPlacedCount: 0,
   ordersPlacedResetCount: 0,
 
-  timerCount: 0,
-  timerResetCount: 0,
+  timerRepeatsCount: 0,
+  timerStartTimestamp: null,
+
+  lastPopupAt: null,
 };
 
 /**
@@ -32,15 +30,7 @@ const defaultState = {
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case SET_NEXT_RULE: {
-      // should reset state if next rule !== current rule?
-      return {
-        ...state,
-        nextRule: action.rule,
-      };
-    }
-
-    case INCREMENT_APP_START_COUNT: {
+    case INCREASE_APP_START_COUNT: {
       return {
         ...state,
         appStartCount: state.appStartCount + 1,
@@ -61,7 +51,7 @@ export default (state = defaultState, action) => {
       };
     }
 
-    case INCREMENT_ORDERS_PLACED_COUNT: {
+    case INCREASE_ORDERS_PLACED_COUNT: {
       return {
         ...state,
         ordersPlacedCount: state.ordersPlacedCount + 1,
@@ -82,24 +72,23 @@ export default (state = defaultState, action) => {
       };
     }
 
-    case INCREMENT_TIMER_COUNT: {
+    case INCREASE_TIMER_REPEATS: {
       return {
         ...state,
-        timerCount: state.timerCount + 1,
+        timerRepeatsCount: state.timerRepeatsCount + 1,
       };
     }
-    case RESET_TIMER_COUNT: {
+    case SET_TIMER_START_TIME: {
       return {
         ...state,
-        timerCount: 0,
-        timerResetCount: state.timerResetCount + 1,
+        timerStartTimestamp: Date.now(),
       };
     }
-    case RESET_TIMER_STATE: {
+
+    case SET_LAST_POPUP_TIMESTAMP: {
       return {
         ...state,
-        timerCount: 0,
-        timerResetCount: 0,
+        lastPopupAt: Date.now(),
       };
     }
 

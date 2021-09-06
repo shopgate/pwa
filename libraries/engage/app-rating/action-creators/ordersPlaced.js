@@ -1,6 +1,6 @@
 import {
   RESET_ORDERS_PLACED_COUNT,
-  INCREMENT_ORDERS_PLACED_COUNT,
+  INCREASE_ORDERS_PLACED_COUNT,
   RESET_ORDERS_PLACED_STATE,
 } from '../constants';
 
@@ -8,8 +8,8 @@ import {
  * Increment the orders placed count
  * @return {Object} The dispatched action object.
  */
-export const incrementOrdersPlacedCount = () => ({
-  type: INCREMENT_ORDERS_PLACED_COUNT,
+export const increaseOrdersPlacedCount = () => ({
+  type: INCREASE_ORDERS_PLACED_COUNT,
 });
 
 /**

@@ -3,12 +3,13 @@ import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import showModalAction from '@shopgate/pwa-common/actions/modal/showModal';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import event from '@shopgate/pwa-core/classes/Event';
-import { incrementAppStartCount, resetAppStartCount } from '../action-creators/appStart';
-import { incrementOrdersPlacedCount, resetOrdersPlacedCount } from '../action-creators/ordersPlaced';
-import { incrementTimerCount, resetTimerCount } from '../action-creators/timer';
-import { RULE_APP_STARTS, RULE_ORDERS_PLACED, RULE_TIMER } from '../constants';
-
-// let timer;
+import { increaseAppStartCount, resetAppStartCount } from '../action-creators/appStart';
+import { increaseOrdersPlacedCount, resetOrdersPlacedCount } from '../action-creators/ordersPlaced';
+import {
+  resetTimerState,
+  setTimerStartTime,
+} from '../action-creators/timer';
+import { TIMER_TIMESPAN } from '../constants';
 
 /**
  * App rating subscriptions
@@ -20,66 +21,89 @@ export default function appRating(subscribe) {
       appStarts,
       ordersPlaced,
       timeInterval,
+      minTimeBetweenPopups,
     },
   } = appConfig;
 
   // even subscriber to handle app start ratings
+  // and also time interval ratings
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     const { appRating: state } = getState();
 
-    let mustShowModal = false;
-    let hasRepeats = false;
-    let incrementCountAction = null;
-    let resetCountAction = null;
-
-    switch (state.nextRule) {
-      case RULE_APP_STARTS: {
-        // app start count starts from 0
-        mustShowModal = state.appStartCount === appStarts.value - 1;
-        hasRepeats = appStarts.repeats === null || state.appStartResetCount < appStarts.repeats;
-
-        incrementCountAction = incrementAppStartCount;
-        resetCountAction = resetAppStartCount;
-        break;
-      }
-
-      case RULE_TIMER: {
-        // timer count starts from 0
-        mustShowModal = state.timerCount === timeInterval.value - 1;
-        hasRepeats = timeInterval.repeats === null ||
-          state.timerResetCount < timeInterval.repeats;
-
-        incrementCountAction = incrementTimerCount;
-        resetCountAction = resetTimerCount;
-        break;
-      }
-
-      case RULE_ORDERS_PLACED: {
-        // orders placed count starts from 0
-        mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
-        hasRepeats = ordersPlaced.repeats === null ||
-          state.ordersPlacedResetCount < ordersPlaced.repeats;
-
-        incrementCountAction = incrementOrdersPlacedCount;
-        resetCountAction = resetOrdersPlacedCount;
-
-        break;
-      }
-
-      default:
-        throw new Error(`rule ${state.nextRule} not defined`);
+    if (state.timerStartTimestamp === null) {
+      dispatch(setTimerStartTime());
     }
 
-    /**
-     * initiate the events
-     */
-    const initCounts = () => {
+    let mustShowModal;
+    let hasRepeats;
+    let resetAction;
+
+    if (
+      Number(state.timerStartTimestamp) > 0 &&
+      Date.now() - state.timerStartTimestamp >= (timeInterval.value * TIMER_TIMESPAN)
+    ) {
+      mustShowModal = true;
+      hasRepeats = timeInterval.repeats === null || state.timerRepeatsCount < timeInterval.repeats;
+      resetAction = resetTimerState;
+
+      // since the time is elapsed
+      // we reset the starting time
+      dispatch(setTimerStartTime());
+    } else {
+      mustShowModal = state.appStartCount === appStarts.value - 1;
+      hasRepeats = appStarts.repeats === null || state.appStartResetCount < appStarts.repeats;
+      resetAction = resetAppStartCount;
+
       if (!mustShowModal && hasRepeats) {
-        dispatch(incrementCountAction());
+        // increase the number of
+        // times the app has started
+        dispatch(increaseAppStartCount());
+      }
+    }
+
+    // we check if the minimum time
+    // between popups is already elapsed
+    const minTimeBetweenPopupsElapsed =
+      (Date.now() - state.lastPopupAt) >=
+      (minTimeBetweenPopups * TIMER_TIMESPAN);
+
+    if (mustShowModal && hasRepeats && minTimeBetweenPopupsElapsed) {
+      dispatch(resetAction());
+
+      // @INDICATOR: refactor
+      dispatch(showModalAction({
+        confirm: 'modal.ok',
+        dismiss: null,
+        title: 'test title',
+        message: 'test message',
+        type: MODAL_PIPELINE_ERROR,
+        params: {},
+      })).then(console.log);
+    }
+  });
+
+  // event subscriber to handle order placed ratings
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
+    const { appRating: state } = getState();
+
+    event.addCallback('checkoutSuccess', () => {
+      // orders placed count starts from 0
+      const mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
+      const hasRepeats = ordersPlaced.repeats === null ||
+        state.ordersPlacedResetCount < ordersPlaced.repeats;
+
+      if (!mustShowModal && hasRepeats) {
+        dispatch(increaseOrdersPlacedCount());
       }
 
-      if (mustShowModal && hasRepeats) {
-        dispatch(resetCountAction());
+      // we check if the minimum time
+      // between popups is already elapsed
+      const minTimeBetweenPopupsElapsed =
+        (Date.now() - state.lastPopupAt) >=
+        (minTimeBetweenPopups * TIMER_TIMESPAN);
+
+      if (mustShowModal && hasRepeats && minTimeBetweenPopupsElapsed) {
+        dispatch(resetOrdersPlacedCount());
 
         // @INDICATOR: refactor
         dispatch(showModalAction({
@@ -91,11 +115,6 @@ export default function appRating(subscribe) {
           params: {},
         })).then(console.log);
       }
-    };
-
-    event.addCallback('checkoutSuccess', () => {
-      initCounts();
     });
-    initCounts();
   });
 }
