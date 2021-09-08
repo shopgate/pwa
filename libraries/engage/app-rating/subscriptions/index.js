@@ -8,8 +8,8 @@ import {
   setTimerStartTime,
 } from '../action-creators/timer';
 import { TIMER_TIMESPAN } from '../constants';
-import { isMinTimeBetweenPopupsElapsed, showModal } from '../helpers';
 import { getAppRatingState } from '../selectors/appRating';
+import { showModal } from '../actions/showModal';
 
 /**
  * App rating subscriptions
@@ -27,7 +27,7 @@ export default function appRating(subscribe) {
 
   // even subscriber to handle app start ratings
   // and also time interval ratings
-  subscribe(appDidStart$, ({ dispatch, getState }) => {
+  subscribe(appDidStart$, async ({ dispatch, getState }) => {
     // every time the app starts
     // we increase the start count
     dispatch(increaseAppStartCount());
@@ -49,6 +49,7 @@ export default function appRating(subscribe) {
     let mustShowModal;
     let hasRepeats;
     let resetAction;
+    let increaseAction;
 
     if (
       Number(state.timerStartTimestamp) > 0 &&
@@ -60,23 +61,21 @@ export default function appRating(subscribe) {
 
       // since the time is elapsed
       // we reset the starting time
-      dispatch(setTimerStartTime());
+      increaseAction = setTimerStartTime;
     } else {
       mustShowModal = state.appStartCount >= appStarts.value;
       hasRepeats = appStarts.repeats === null || state.appStartResetCount < appStarts.repeats;
       resetAction = resetAppStartCount;
+      increaseAction = () => {};
     }
 
     // the actual show modal logic
-    if (mustShowModal && hasRepeats) {
-      // we check if the minimum time
-      // between popups is already elapsed
-      if (!isMinTimeBetweenPopupsElapsed(state)) {
-        return;
-      }
-
-      showModal(state, dispatch, resetAction);
-    }
+    dispatch(showModal(
+      resetAction,
+      increaseAction,
+      mustShowModal,
+      hasRepeats
+    ));
   });
 
   // event subscriber to handle order placed ratings
@@ -96,17 +95,12 @@ export default function appRating(subscribe) {
       const hasRepeats = ordersPlaced.repeats === null ||
         state.ordersPlacedResetCount < ordersPlaced.repeats;
 
-      if (!mustShowModal && hasRepeats) {
-        dispatch(increaseOrdersPlacedCount());
-      }
-
-      if (mustShowModal && hasRepeats) {
-        if (!isMinTimeBetweenPopupsElapsed(state)) {
-          return;
-        }
-
-        showModal(state, dispatch, resetOrdersPlacedCount);
-      }
+      dispatch(showModal(
+        resetOrdersPlacedCount,
+        increaseOrdersPlacedCount,
+        mustShowModal,
+        hasRepeats
+      ));
     });
   });
 }
