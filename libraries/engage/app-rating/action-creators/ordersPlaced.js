@@ -1,7 +1,6 @@
 import {
   RESET_ORDERS_PLACED_COUNT,
   INCREASE_ORDERS_PLACED_COUNT,
-  RESET_ORDERS_PLACED_STATE,
 } from '../constants';
 
 /**
@@ -18,12 +17,4 @@ export const increaseOrdersPlacedCount = () => ({
  */
 export const resetOrdersPlacedCount = () => ({
   type: RESET_ORDERS_PLACED_COUNT,
-});
-
-/**
- * Reset orders placed state
- * @return {Object} The dispatched action object.
- */
-export const resetOrdersPlacedState = () => ({
-  type: RESET_ORDERS_PLACED_STATE,
 });

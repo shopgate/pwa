@@ -1,7 +1,6 @@
 import {
   RESET_APP_START_COUNT,
   INCREASE_APP_START_COUNT,
-  RESET_APP_START_STATE,
 } from '../constants';
 
 /**
@@ -18,12 +17,4 @@ export const increaseAppStartCount = () => ({
  */
 export const resetAppStartCount = () => ({
   type: RESET_APP_START_COUNT,
-});
-
-/**
- * Reset app start state
- * @return {Object} The dispatched action object.
- */
-export const resetAppStartState = () => ({
-  type: RESET_APP_START_STATE,
 });
