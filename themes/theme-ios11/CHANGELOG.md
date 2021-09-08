@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.3.3](https://github.com/shopgate/pwa/compare/v7.3.2...v7.3.3) (2021-09-08)
+
+#### :rocket: Enhancement
+* [#1124](https://github.com/shopgate/pwa/pull/1124) Add "select location" to storefinder ([@alexbridge](https://github.com/alexbridge))
+* [#1123](https://github.com/shopgate/pwa/pull/1123) Add portals to EffectivityDates (CURB) ([@AienTech](https://github.com/AienTech))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
