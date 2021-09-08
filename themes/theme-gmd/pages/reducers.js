@@ -12,6 +12,7 @@ import router from '@shopgate/pwa-common/reducers/router';
 import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
+import appRating from '@shopgate/engage/app-rating/reducers';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
@@ -26,6 +27,7 @@ persistedReducers.set([
   'page',
   'url',
   'user',
+  'appRating',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -54,6 +56,7 @@ const reducers = combineReducers({
   search,
   url,
   user,
+  appRating,
 });
 
 export default reducers;
