@@ -9,7 +9,7 @@ import {
 } from '../action-creators/timer';
 import { TIMER_TIMESPAN } from '../constants';
 import { isMinTimeBetweenPopupsElapsed, showModal } from '../helpers';
-import getAppRatingState from '../selectors/appRating';
+import { getAppRatingState } from '../selectors/appRating';
 
 /**
  * App rating subscriptions
