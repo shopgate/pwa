@@ -106,7 +106,6 @@ function locationsSubscriber(subscribe) {
         if (!hasLocation) {
           // Fetch the missing location data
           await dispatch(fetchLocations({
-            ...userSearch,
             codes: [code],
           }));
         }
