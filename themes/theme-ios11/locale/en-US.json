@@ -253,5 +253,11 @@
         "month": "short"
       }
     }
+  },
+  "appRating": {
+    "yes": "Yes",
+    "no": "No",
+    "title": "Rate this app",
+    "message": "We would love your feedback, please give us a rating. Thanks!"
   }
 }

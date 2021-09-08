@@ -6,7 +6,9 @@ import {
   RESET_ORDERS_PLACED_COUNT,
   RESET_ORDERS_PLACED_STATE,
   INCREASE_TIMER_REPEATS,
-  SET_TIMER_START_TIME, SET_LAST_POPUP_TIMESTAMP,
+  SET_TIMER_START_TIME,
+  SET_LAST_POPUP_TIMESTAMP,
+  INCREASE_REJECTION_COUNT,
 } from '../constants';
 
 const defaultState = {
@@ -20,6 +22,7 @@ const defaultState = {
   timerStartTimestamp: null,
 
   lastPopupAt: null,
+  rejectionCount: 0,
 };
 
 /**
@@ -89,6 +92,12 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         lastPopupAt: Date.now(),
+      };
+    }
+    case INCREASE_REJECTION_COUNT: {
+      return {
+        ...state,
+        rejectionCount: state.rejectionCount + 1,
       };
     }
 
