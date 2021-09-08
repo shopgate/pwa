@@ -545,30 +545,26 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "minTimeBetweenPopups": 10,
+        "minTimeBetweenPopups": 1,
+        "rejectionMaxCount": 5,
+        "bundleId": {
+          "android": "...",
+          "ios": "..."
+        },
         "ordersPlaced": {
           "value": 1,
           "repeats": null,
-          "answerNo": {
-            "link": "...",
-            "repeats": 0
-          }
+          "answerNo": "/"
         },
         "timeInterval": {
-          "value": 10,
+          "value": 2,
           "repeats": null,
-          "answerNo": {
-            "link": "...",
-            "repeats": 0
-          }
+          "answerNo": "/"
         },
         "appStarts": {
           "value": 2,
           "repeats": 2,
-          "answerNo": {
-            "link": "...",
-            "repeats": 0
-          }
+          "answerNo": "/"
         }
       },
       "params": {
