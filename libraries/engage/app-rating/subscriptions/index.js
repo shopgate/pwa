@@ -21,6 +21,7 @@ export default function appRating(subscribe) {
       appStarts,
       ordersPlaced,
       timeInterval,
+      rejectionMaxCount,
     },
   } = appConfig;
 
@@ -36,7 +37,7 @@ export default function appRating(subscribe) {
     // cancel the process if user has
     // already rejected rating the app
     // many times before
-    if (!state) {
+    if (state.rejectionCount >= rejectionMaxCount) {
       return;
     }
 
@@ -86,7 +87,7 @@ export default function appRating(subscribe) {
       // cancel the process if user has
       // already rejected rating the app
       // many times before
-      if (!state) {
+      if (state.rejectionCount >= rejectionMaxCount) {
         return;
       }
 
