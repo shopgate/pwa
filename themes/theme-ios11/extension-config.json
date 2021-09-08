@@ -546,25 +546,23 @@
       "destination": "frontend",
       "default": {
         "minTimeBetweenPopups": 1,
-        "rejectionMaxCount": 5,
+        "rejectionMaxCount": 3,
+        "rejectionLink": "/",
         "bundleId": {
-          "android": "...",
-          "ios": "..."
+          "android": null,
+          "ios": null
         },
         "ordersPlaced": {
-          "value": 1,
-          "repeats": null,
-          "answerNo": "/"
+          "value": 3,
+          "repeats": 1
         },
         "timeInterval": {
           "value": 2,
-          "repeats": null,
-          "answerNo": "/"
+          "repeats": 1
         },
         "appStarts": {
-          "value": 2,
-          "repeats": 2,
-          "answerNo": "/"
+          "value": 3,
+          "repeats": 1
         }
       },
       "params": {
