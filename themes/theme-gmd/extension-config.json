@@ -540,7 +540,7 @@
       "default": {
         "minTimeBetweenPopups": 1,
         "rejectionMaxCount": 3,
-        "rejectionLink": "/",
+        "rejectionLink": null,
         "bundleId": {
           "android": null,
           "ios": null
