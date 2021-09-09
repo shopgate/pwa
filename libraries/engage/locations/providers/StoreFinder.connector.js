@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import { getShopSettings } from '@shopgate/engage/core/config';
 import {
-  makeGetLocationsForStoreFinder,
-  getIsFetching,
-  getUserSearch,
-  getStoreFinderSearch,
+  getIsFetching, getStoreFinderSearch, getUserSearch, makeGetLocationsForStoreFinder,
 } from '../selectors';
+import { selectGlobalLocation, selectLocation } from '../action-creators';
 
 /**
  * @returns {Function}
@@ -22,4 +20,9 @@ const makeMapStateToProps = () => {
   });
 };
 
-export default connect(makeMapStateToProps);
+const mapDispatchToProps = {
+  selectLocation,
+  selectGlobalLocation,
+};
+
+export default connect(makeMapStateToProps, mapDispatchToProps);
