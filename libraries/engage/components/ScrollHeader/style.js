@@ -11,6 +11,7 @@ const fadeIn = css.keyframes({
   '100%': { opacity: 1, top: 0 },
 });
 
+// todo: check if still in use
 export const scrolledIn = css({
   '&&': {
     animation: `${fadeIn} .2s`,
