@@ -24,8 +24,10 @@ function FilterBar({ filters }) {
   const containerRef = useRef();
 
   useLayoutEffect(() => {
-    const currentOffset = get(containerRef, 'current.offsetTop');
-    setOffsetTop(currentOffset);
+    if (offsetTop === 0) {
+      const currentOffset = get(containerRef, 'current.offsetTop');
+      setOffsetTop(currentOffset);
+    }
   });
 
   useEffect(() => {
