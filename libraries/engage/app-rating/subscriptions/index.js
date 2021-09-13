@@ -66,7 +66,7 @@ export default function appRating(subscribe) {
       mustShowModal = state.appStartCount >= appStarts.value;
       hasRepeats = appStarts.repeats === null || state.appStartResetCount < appStarts.repeats;
       resetAction = resetAppStartCount;
-      increaseAction = () => {};
+      increaseAction = null;
     }
 
     // the actual show modal logic

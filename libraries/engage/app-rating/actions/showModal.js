@@ -23,7 +23,7 @@ const {
  */
 export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
   return (dispatch, getState) => {
-    if (!mustShow && hasRepeats) {
+    if (!mustShow && hasRepeats && increaseAction) {
       dispatch(increaseAction());
     }
 
