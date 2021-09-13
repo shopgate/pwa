@@ -32,6 +32,7 @@ persistedReducers.set([
   'page',
   'locations.storage',
   'locations.userFormInput',
+  'locations.userSearch',
   'url',
   'user',
 ]);
