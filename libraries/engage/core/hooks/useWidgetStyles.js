@@ -1,6 +1,6 @@
 import defaultsDeep from 'lodash/defaultsDeep';
 import { useWidgetConfig } from './useWidgetConfig';
-import { getThemeStyles } from '../config/getThemeStyles';
+import { getThemeStyles } from '../config';
 
 /**
  * Retrieves the styles for a specific widget by its id. Returns an empty object when no styles
@@ -14,5 +14,5 @@ export function useWidgetStyles(widgetId, index = 0) {
   const { styles = {} } = useWidgetConfig(widgetId, index);
 
   const globalStyles = getThemeStyles(widgetId);
-  return defaultsDeep(globalStyles, styles);
+  return defaultsDeep(styles, globalStyles);
 }
