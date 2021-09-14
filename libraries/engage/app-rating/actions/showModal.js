@@ -4,12 +4,14 @@ import { historyPush } from '@shopgate/pwa-common/actions/router';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { increaseRejectionCount, setLastPopupTimestamp } from '../action-creators/popup';
 import { generateReviewLink } from '../helpers';
-import { isMinTimeBetweenPopupsElapsed } from './minTime';
+import { TIMER_TIMESPAN } from '../constants';
+import { getAppRatingState } from '../selectors/appRating';
 
 const {
   appRating: {
     bundleId: bId,
     rejectionLink,
+    minTimeBetweenPopups,
   },
 } = appConfig;
 
@@ -31,7 +33,12 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
       return;
     }
 
-    if (!isMinTimeBetweenPopupsElapsed()) {
+    const state = getAppRatingState(getState());
+
+    const isMinTimeBetweenPopupsElapsed = (Date.now() - state.lastPopupAt) >=
+      (minTimeBetweenPopups * TIMER_TIMESPAN);
+
+    if (!isMinTimeBetweenPopupsElapsed) {
       return;
     }
 
