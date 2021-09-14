@@ -1,6 +1,6 @@
 import defaultsDeep from 'lodash/defaultsDeep';
 import { useWidgetConfig } from './useWidgetConfig';
-import { getThemeStyles } from '../config';
+import { getThemeStyles } from '../config/getThemeStyles';
 
 /**
  * Retrieves the styles for a specific widget by its id. Returns an empty object when no styles

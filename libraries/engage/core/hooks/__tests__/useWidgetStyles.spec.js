@@ -1,6 +1,6 @@
 import { useWidgetStyles } from '../useWidgetStyles';
 import { useWidgetConfig } from '../useWidgetConfig';
-import { getThemeStyles } from '../../config';
+import { getThemeStyles } from '../../config/getThemeStyles';
 
 jest.mock('../useWidgetConfig', () => ({
   useWidgetConfig: jest.fn(),
