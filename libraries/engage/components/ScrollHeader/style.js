@@ -14,6 +14,6 @@ export const header = css({
 }).toString();
 
 export const hidden = css({
-  transform: 'translateY(-110%)',
+  transform: 'translateY(-250%)',
 }).toString();
 
