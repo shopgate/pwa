@@ -282,6 +282,7 @@
             "showLabel": false
           }
         },
+        "styles": {},
         "typography": {
           "family": "system, -apple-system, \"SF Pro Display\", \"Helvetica Neue\", \"Lucida Grande\"",
           "rootSize": 17,
