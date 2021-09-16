@@ -1,4 +1,4 @@
-import { OS_ANDROID, OS_IOS } from '../../../common/constants/Device';
+import { OS_ANDROID, OS_IOS } from '@shopgate/pwa-common/constants/Device';
 
 /**
  * Generates a review app deep link based on the given provider
