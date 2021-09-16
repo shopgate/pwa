@@ -3,7 +3,6 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 export const header = css({
   position: 'sticky',
-  top: 0,
   left: 0,
   backgroundColor: '#fff',
   transform: 'translateY(0)',

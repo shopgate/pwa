@@ -1,5 +1,5 @@
 import React, {
-  useState, useContext, useRef, useCallback, useLayoutEffect,
+  useState, useContext, useRef, useCallback, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -33,15 +33,13 @@ function ScrollHeader({ className, children }) {
     }
   }, [offset]);
 
-  useLayoutEffect(() => {
-    const currentOffset = get(ref, 'current.offsetTop');
-    // todo currentOffset > 10 !!! not good
-    if (offsetTop === 0 && offset === 0 && offsetTop !== currentOffset && currentOffset > 10) {
-      setOffsetTop(currentOffset);
-    }
-  });
-
   useScroll(onScroll, contentRef?.current);
+
+  useEffect(() => {
+    const currentOffset = get(ref, 'current.offsetTop');
+    setOffsetTop(currentOffset);
+  }, []);
+
   return (
     <div
       ref={ref}
