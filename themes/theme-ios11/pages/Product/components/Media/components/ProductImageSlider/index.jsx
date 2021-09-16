@@ -48,6 +48,9 @@ class ProductImageSlider extends Component {
   constructor(props, context) {
     super(props, context);
     this.mediaRef = React.createRef(null);
+    this.state = {
+      depImage: null,
+    };
   }
 
   /**
@@ -78,10 +81,16 @@ class ProductImageSlider extends Component {
       }
     }
     if (depImage) {
+      // if depImage has not changed since last time
+      if (this.state.depImage === depImage) {
+        if (this.mediaRef.current) this.mediaRef.current.style.filter = 'none';
+        return true;
+      }
       // Blur for image load
       if (this.mediaRef.current) {
         this.mediaRef.current.style.filter = 'blur(3px)';
       }
+      this.setState({ depImage });
       loadProductImage(depImage)
         .then(() => {
           if (this.mounted) {
@@ -155,16 +164,20 @@ class ProductImageSlider extends Component {
 
     let onClick = this.handleOpenGallery;
     if (!content) {
+      let src = null;
+      if (product && product.featuredImageBaseUrl) src = product.featuredImageBaseUrl;
+      else if (images && images.length) [src] = images;
+
       content = (
         <ProductImage
-          src={product ? product.featuredImageBaseUrl : null}
+          src={src}
           className={className}
-          forcePlaceholder={!product}
+          forcePlaceholder={!src}
           resolutions={pdpResolutions}
           noBackground
         />
       );
-      if (!product || !product.featuredImageBaseUrl) {
+      if (!src) {
         onClick = noop;
       }
     }
