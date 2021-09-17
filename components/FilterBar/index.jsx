@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useMemo, memo, useRef, useLayoutEffect,
+  useState, useEffect, useMemo, memo, useRef,
 } from 'react';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
@@ -23,12 +23,12 @@ function FilterBar({ filters }) {
 
   const containerRef = useRef();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const currentOffset = get(containerRef, 'current.offsetTop');
     if (offsetTop === 0 && offsetTop !== currentOffset) {
       setOffsetTop(currentOffset);
     }
-  });
+  }, [offsetTop]);
 
   useEffect(() => {
     setActive(filters !== null && Object.keys(filters).length > 0);
