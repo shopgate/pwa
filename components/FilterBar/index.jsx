@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useMemo, memo, useRef, useLayoutEffect,
+  useState, useEffect, useMemo, memo, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
@@ -23,12 +23,12 @@ function FilterBar({ filters }) {
 
   const containerRef = useRef();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const currentOffset = get(containerRef, 'current.offsetTop');
     if (offsetTop === 0 && offsetTop !== currentOffset) {
       setOffsetTop(currentOffset);
     }
-  });
+  }, [offsetTop]);
 
   useEffect(() => {
     setActive(filters !== null && Object.keys(filters).length > 0);
