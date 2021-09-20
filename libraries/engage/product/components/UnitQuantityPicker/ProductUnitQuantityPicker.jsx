@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
@@ -61,6 +61,24 @@ const ProductUnitQuantityPicker = ({
       maxValue: max,
     };
   }, [stockInfo]);
+
+  /**
+   * Validates an value based on minValue & maxValue and corrects it if necessary
+   * @param {number} val The value to be tested / adjusted
+   * @returns {number}
+   */
+  const validateQuantity = (val) => {
+    if (minValue && val < minValue) return minValue;
+    if (maxValue && val > maxValue) return maxValue;
+    return val;
+  };
+
+  useEffect(() => {
+    const validatedQuantity = validateQuantity(quantity);
+    if (validatedQuantity !== quantity) {
+      setQuantity(validatedQuantity);
+    }
+  }, [quantity, minValue, maxValue, validateQuantity, setQuantity]);
 
   if (!product) {
     return null;
