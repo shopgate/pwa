@@ -779,5 +779,11 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Sì",
+    "no": "No",
+    "title": "Vota l'app",
+    "message": "Ti piace la nostra app? Saremmo felici di ricevere una valutazione!"
   }
 }

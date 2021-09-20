@@ -786,5 +786,11 @@
     "weekData": {
       "firstDay": "sun"
     }
+  },
+  "appRating": {
+    "yes": "Yes",
+    "no": "No",
+    "title": "App rating",
+    "message": "Do you like our app? We would be happy to receive a rating!"
   }
 }
