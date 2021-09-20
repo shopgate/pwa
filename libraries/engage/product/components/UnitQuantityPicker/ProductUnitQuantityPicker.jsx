@@ -97,7 +97,7 @@ const ProductUnitQuantityPicker = ({
             maxDecimals={hasUnitWithDecimals ? 2 : 0}
             incrementStep={hasUnitWithDecimals ? 0.25 : 1}
             decrementStep={hasUnitWithDecimals ? 0.25 : 1}
-            onChange={value => setQuantity(value)}
+            onChange={setQuantity}
             value={quantity}
             disabled={disabled}
             minValue={minValue}
