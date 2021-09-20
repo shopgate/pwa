@@ -83,7 +83,9 @@ class ProductImageSlider extends Component {
     if (depImage) {
       // if depImage has not changed since last time
       if (this.state.depImage === depImage) {
-        if (this.mediaRef.current) this.mediaRef.current.style.filter = 'none';
+        if (this.mediaRef.current) {
+          this.mediaRef.current.style.filter = 'none';
+        }
         return true;
       }
       // Blur for image load
@@ -165,8 +167,11 @@ class ProductImageSlider extends Component {
     let onClick = this.handleOpenGallery;
     if (!content) {
       let src = null;
-      if (product && product.featuredImageBaseUrl) src = product.featuredImageBaseUrl;
-      else if (images && images.length) [src] = images;
+      if (product && product.featuredImageBaseUrl) {
+        src = product.featuredImageBaseUrl;
+      } else if (images && images.length) {
+        [src] = images;
+      }
 
       content = (
         <ProductImage
