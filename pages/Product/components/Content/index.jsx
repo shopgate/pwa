@@ -85,7 +85,6 @@ class ProductContent extends PureComponent {
       productId,
       variantId,
       currency: nextProps.currency,
-      quantity: 1,
       ...(productIdChanged && {
         options: {},
         optionsPrices: {},
