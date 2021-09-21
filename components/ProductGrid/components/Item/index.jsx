@@ -20,7 +20,6 @@ const Item = ({ product, display }) => (
       tagName="a"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
-      aria-hidden
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
