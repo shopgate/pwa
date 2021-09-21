@@ -249,5 +249,11 @@
         "month": "short"
       }
     }
+  },
+  "appRating": {
+    "yes": "Oui",
+    "no": "Non",
+    "title": "Évaluer l'application",
+    "message": "Vous aimez notre application ? Nous serions heureux de recevoir une évaluation !"
   }
 }
