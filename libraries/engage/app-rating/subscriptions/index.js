@@ -52,6 +52,7 @@ export default function appRating(subscribe) {
     let increaseAction;
 
     if (
+      Number(timeInterval.value) > 0 &&
       Number(state.timerStartTimestamp) > 0 &&
       Date.now() - state.timerStartTimestamp >= (timeInterval.value * TIMER_TIMESPAN)
     ) {
@@ -63,7 +64,7 @@ export default function appRating(subscribe) {
       // we reset the starting time
       increaseAction = setTimerStartTime;
     } else {
-      mustShowModal = state.appStartCount >= appStarts.value;
+      mustShowModal = Number(appStarts.value) > 0 && state.appStartCount >= appStarts.value;
       hasRepeats = appStarts.repeats === null || state.appStartResetCount < appStarts.repeats;
       resetAction = resetAppStartCount;
       increaseAction = null;

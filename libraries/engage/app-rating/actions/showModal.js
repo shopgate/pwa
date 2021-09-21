@@ -59,18 +59,18 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
         if (!link) {
           return;
         }
-        historyPush({
+        dispatch(historyPush({
           pathname: link,
-        });
+        }));
         return;
       }
 
       // user doesn't want to rate
       dispatch(increaseRejectionCount());
       if (rejectionLink) {
-        historyPush({
+        dispatch(historyPush({
           pathname: rejectionLink,
-        });
+        }));
       }
     });
   };
