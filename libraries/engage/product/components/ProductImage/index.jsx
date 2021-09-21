@@ -48,7 +48,7 @@ class ProductImage extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
-    'aria-hidden': null,
+    'aria-hidden': false,
     className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => { },
