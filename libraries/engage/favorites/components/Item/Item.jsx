@@ -18,6 +18,7 @@ import {
   showModal as showModalAction,
   historyPush as historyPushAction,
   getThemeSettings,
+  i18n,
 } from '@shopgate/engage/core';
 import { ResponsiveContainer, Link, SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -242,15 +243,19 @@ const FavoriteItem = ({
 
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
-      <Link
-        className={styles.root}
-        component="div"
-        href={productLink}
-      >
-        <div className={styles.imageContainer}>
+      <div className={styles.root}>
+        <Link
+          className={styles.imageContainer}
+          component="div"
+          href={productLink}
+        >
           <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
-        </div>
-        <div className={styles.infoContainer}>
+        </Link>
+        <Link
+          className={styles.infoContainer}
+          component="div"
+          href={productLink}
+        >
           <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
             <span className={styles.title}>{product.name}</span>
           </SurroundPortals>
@@ -289,13 +294,14 @@ const FavoriteItem = ({
                       onClick={handleAddToCart}
                       isLoading={false}
                       isDisabled={isDisabled}
+                      aria-label={i18n.text('product.add_to_cart')}
                     />
                   </SurroundPortals>
                 </SurroundPortals>
               </div>
             </ResponsiveContainer>
           </div>
-        </div>
+        </Link>
         <ResponsiveContainer breakpoint="<md" appAlways>
           <div className={styles.actions}>
             <SurroundPortals portalName={FAVORITES_LIST_ITEM_ACTIONS} portalProps={ctaPortalProps}>
@@ -305,12 +311,13 @@ const FavoriteItem = ({
                   onClick={handleAddToCart}
                   isLoading={false}
                   isDisabled={isDisabled}
+                  aria-label={i18n.text('product.add_to_cart')}
                 />
               </SurroundPortals>
             </SurroundPortals>
           </div>
         </ResponsiveContainer>
-      </Link>
+      </div>
     </SurroundPortals>
   );
 };
