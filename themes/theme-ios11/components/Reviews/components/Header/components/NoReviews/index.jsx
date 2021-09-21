@@ -10,7 +10,7 @@ import * as styles from './style';
  * @return {JSX}
  */
 const NoReviews = ({ productId }) => (
-  <div className={styles.container} aria-hidden>
+  <div className={styles.container}>
     <AverageRating productId={productId} />
     <div className={styles.noReviews}>
       {appConfig.showWriteReview && (
