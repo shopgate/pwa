@@ -6,6 +6,7 @@ import event from '@shopgate/pwa-core/classes/Event';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
+import { i18n } from '@shopgate/engage/core';
 import Input from '@shopgate/pwa-common/components/Input/';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -238,7 +239,7 @@ class SearchField extends Component {
       <Fragment>
         <Portal name={SCANNER_ICON_BEFORE} />
         <Portal name={SCANNER_ICON}>
-          <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button" aria-hidden>
+          <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button" aria-label={i18n.text('titles.scanner')}>
             <BarcodeScannerIcon />
           </button>
         </Portal>
