@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { hasWebBridge } from '@shopgate/engage/core';
+import debounce from 'lodash/debounce';
 import connect from './connector';
 import styles from './style';
 
@@ -39,6 +40,15 @@ class Link extends Component {
     target: null,
     state: {},
   };
+
+  /**
+   * Constructor
+   * @param {Object} props The component properties
+   */
+  constructor(props) {
+    super(props);
+    this.handleOpenLink = debounce(this.handleOpenLink.bind(this), 500);
+  }
 
   /**
    * Opens the link.
