@@ -242,5 +242,11 @@
         "month": "short"
       }
     }
+  },
+  "appRating": {
+    "yes": "Sim",
+    "no": "Não",
+    "title": "Avaliação da aplicação",
+    "message": "Gosta da nossa aplicação? Teremos todo o prazer em receber uma classificação!"
   }
 }
