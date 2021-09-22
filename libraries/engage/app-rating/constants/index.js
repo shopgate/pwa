@@ -12,6 +12,7 @@ export const SET_TIMER_START_TIME = 'SET_TIMER_START_TIME';
 export const SET_LAST_POPUP_TIMESTAMP = 'SET_LAST_POPUP_TIMESTAMP';
 
 export const INCREASE_REJECTION_COUNT = 'INCREASE_REJECTION_COUNT';
+export const SET_ALREADY_RATED = 'SET_ALREADY_RATED';
 
-// currently the timespan is set to a hour
-export const TIMER_TIMESPAN = 1000 * 60 * 60;
+// currently the timespan is set to a day
+export const TIMER_TIMESPAN = 1000 * 60 * 60 * 24;

@@ -9,6 +9,7 @@ import {
   SET_TIMER_START_TIME,
   SET_LAST_POPUP_TIMESTAMP,
   INCREASE_REJECTION_COUNT,
+  SET_ALREADY_RATED,
 } from '../constants';
 
 const defaultState = {
@@ -23,6 +24,7 @@ const defaultState = {
 
   lastPopupAt: null,
   rejectionCount: 0,
+  alreadyRated: false,
 };
 
 /**
@@ -98,6 +100,12 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         rejectionCount: state.rejectionCount + 1,
+      };
+    }
+    case SET_ALREADY_RATED: {
+      return {
+        ...state,
+        alreadyRated: action.to,
       };
     }
 

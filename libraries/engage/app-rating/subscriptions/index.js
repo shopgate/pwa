@@ -34,6 +34,13 @@ export default function appRating(subscribe) {
 
     const state = getAppRatingState(getState());
 
+    // if the user has already rated the app
+    // we'll cancel the operations as we
+    // don't have to show the modal once more
+    if (state.alreadyRated) {
+      return;
+    }
+
     // cancel the process if user has
     // already rejected rating the app
     // many times before
@@ -83,6 +90,13 @@ export default function appRating(subscribe) {
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     event.addCallback('checkoutSuccess', () => {
       const state = getAppRatingState(getState());
+
+      // if the user has already rated the app
+      // we'll cancel the operations as we
+      // don't have to show the modal once more
+      if (state.alreadyRated) {
+        return;
+      }
 
       // cancel the process if user has
       // already rejected rating the app

@@ -2,7 +2,11 @@ import showModalAction from '@shopgate/pwa-common/actions/modal/showModal';
 import { getPlatform } from '@shopgate/pwa-common/selectors/client';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { increaseRejectionCount, setLastPopupTimestamp } from '../action-creators/popup';
+import {
+  increaseRejectionCount,
+  setAlreadyRated,
+  setLastPopupTimestamp,
+} from '../action-creators/popup';
 import { generateReviewLink } from '../helpers';
 import { TIMER_TIMESPAN } from '../constants';
 import { getAppRatingState } from '../selectors/appRating';
@@ -59,6 +63,8 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
         if (!link) {
           return;
         }
+
+        dispatch(setAlreadyRated(true));
         dispatch(historyPush({
           pathname: link,
         }));
