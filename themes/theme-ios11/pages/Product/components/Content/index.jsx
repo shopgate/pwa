@@ -176,7 +176,7 @@ class ProductContent extends PureComponent {
       <div data-test-id={productId}>
         <AppBar productId={productId} />
         <ProductContext.Provider value={contextValue}>
-          <Media aria-hidden />
+          <Media />
           <Section title="product.sections.information">
             <Header />
           </Section>

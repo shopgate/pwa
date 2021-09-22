@@ -32,7 +32,7 @@ class ProductImageSlider extends Component {
   };
 
   static defaultProps = {
-    'aria-hidden': null,
+    'aria-hidden': false,
     className: null,
     historyPush: noop,
     images: null,
@@ -149,6 +149,7 @@ class ProductImageSlider extends Component {
           indicators
           onSlideChange={this.handleSlideChange}
           className={className}
+          aria-label={product ? product.name : ''}
         >
           {images.map(image => (
             <Swiper.Item key={`${productId}-${image}`}>
@@ -180,6 +181,7 @@ class ProductImageSlider extends Component {
           forcePlaceholder={!src}
           resolutions={pdpResolutions}
           noBackground
+          alt={product ? product.name : ''}
         />
       );
       if (!src) {
