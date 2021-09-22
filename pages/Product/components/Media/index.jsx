@@ -50,7 +50,7 @@ Media.propTypes = {
 };
 
 Media.defaultProps = {
-  'aria-hidden': null,
+  'aria-hidden': false,
   className: null,
 };
 
