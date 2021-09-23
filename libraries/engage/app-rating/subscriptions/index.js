@@ -1,6 +1,7 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import event from '@shopgate/pwa-core/classes/Event';
+import showModalAction from '@shopgate/pwa-common/actions/modal/showModal';
 import { increaseAppStartCount, resetAppStartCount } from '../action-creators/appStart';
 import { increaseOrdersPlacedCount, resetOrdersPlacedCount } from '../action-creators/ordersPlaced';
 import {
@@ -34,12 +35,24 @@ export default function appRating(subscribe) {
 
     const state = getAppRatingState(getState());
 
+    dispatch(showModalAction({
+      confirm: 'Yes',
+      dismiss: 'Maybe',
+      title: 'Testing',
+      message: JSON.stringify(state),
+    }));
+
     // if the user has already rated the app
     // we'll cancel the operations as we
     // don't have to show the modal once more
     if (state.alreadyRated) {
       // @INDICATOR
-      alert(JSON.stringify(({ msg: 'already rated' })));
+      dispatch(showModalAction({
+        confirm: 'Yes',
+        dismiss: 'Maybe',
+        title: 'Testing',
+        message: JSON.stringify(({ msg: 'already rated' })),
+      }));
       return;
     }
 
@@ -48,9 +61,14 @@ export default function appRating(subscribe) {
     // many times before
     if (state.rejectionCount >= rejectionMaxCount) {
       // @INDICATOR
-      alert(JSON.stringify({
-        rejectionCount: state.rejectionCount,
-        rejectionMaxCount,
+      dispatch(showModalAction({
+        confirm: 'Yes',
+        dismiss: 'Maybe',
+        title: 'Testing',
+        message: JSON.stringify({
+          rejectionCount: state.rejectionCount,
+          rejectionMaxCount,
+        }),
       }));
       return;
     }
@@ -60,34 +78,40 @@ export default function appRating(subscribe) {
       dispatch(setTimerStartTime());
     }
 
-    let mustShowModal;
-    let hasRepeats;
-    let resetAction;
-    let increaseAction;
+    let mustShowModal = false;
+    let hasRepeats = false;
+    let resetAction = null;
+    let increaseAction = null;
 
     if (
+      timeInterval &&
       Number(timeInterval.value) > 0 &&
       Number(state.timerStartTimestamp) > 0 &&
       Date.now() - state.timerStartTimestamp >= (timeInterval.value * TIMER_TIMESPAN)
     ) {
       mustShowModal = true;
-      hasRepeats = timeInterval.repeats === null || state.timerRepeatsCount < timeInterval.repeats;
+      hasRepeats = timeInterval.repeats === null || state.timerRepeatsCount <= timeInterval.repeats;
       resetAction = resetTimerState;
 
       // since the time is elapsed
       // we reset the starting time
       increaseAction = setTimerStartTime;
-    } else {
+    } else if (appStarts) {
       mustShowModal = Number(appStarts.value) > 0 && state.appStartCount >= appStarts.value;
-      hasRepeats = appStarts.repeats === null || state.appStartResetCount < appStarts.repeats;
+      hasRepeats = appStarts.repeats === null || state.appStartResetCount <= appStarts.repeats;
       resetAction = resetAppStartCount;
       increaseAction = null;
     }
 
     // @INDICATOR
-    alert(JSON.stringify({
-      resetAction,
-      increaseAction,
+    dispatch(showModalAction({
+      confirm: 'Yes',
+      dismiss: 'Maybe',
+      title: 'Testing',
+      message: JSON.stringify({
+        resetAction,
+        increaseAction,
+      }),
     }));
 
     // the actual show modal logic
@@ -108,6 +132,12 @@ export default function appRating(subscribe) {
       // we'll cancel the operations as we
       // don't have to show the modal once more
       if (state.alreadyRated) {
+        dispatch(showModalAction({
+          confirm: 'Yes',
+          dismiss: 'Maybe',
+          title: 'Testing',
+          message: JSON.stringify(({ msg: 'already rated' })),
+        }));
         return;
       }
 
@@ -115,6 +145,15 @@ export default function appRating(subscribe) {
       // already rejected rating the app
       // many times before
       if (state.rejectionCount >= rejectionMaxCount) {
+        dispatch(showModalAction({
+          confirm: 'Yes',
+          dismiss: 'Maybe',
+          title: 'Testing',
+          message: JSON.stringify({
+            rejectionCount: state.rejectionCount,
+            rejectionMaxCount,
+          }),
+        }));
         return;
       }
 

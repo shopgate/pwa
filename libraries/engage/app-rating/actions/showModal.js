@@ -31,13 +31,23 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
   return (dispatch, getState) => {
     if (!mustShow && hasRepeats && increaseAction) {
       // @INDICATOR
-      alert(JSON.stringify({ mustShow, hasRepeats, increaseAction }));
+      dispatch(showModalAction({
+        confirm: 'appRating.yes',
+        dismiss: 'appRating.no',
+        title: 'Testing',
+        message: JSON.stringify({ mustShow, hasRepeats, increaseAction }),
+      }));
       dispatch(increaseAction());
     }
 
     if (!(mustShow && hasRepeats)) {
       // @INDICATOR
-      alert(JSON.stringify({ mustShow, hasRepeats }));
+      dispatch(showModalAction({
+        confirm: 'appRating.yes',
+        dismiss: 'appRating.no',
+        title: 'Testing',
+        message: JSON.stringify({ mustShow, hasRepeats }),
+      }));
       return;
     }
 
@@ -48,7 +58,12 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
 
     if (!isMinDaysBetweenPopupsElapsed) {
       // @INDICATOR
-      alert(JSON.stringify({ isMinDaysBetweenPopupsElapsed }));
+      dispatch(showModalAction({
+        confirm: 'appRating.yes',
+        dismiss: 'appRating.no',
+        title: 'Testing',
+        message: JSON.stringify({ isMinDaysBetweenPopupsElapsed }),
+      }));
       return;
     }
 
@@ -71,6 +86,12 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
         }
 
         dispatch(setAlreadyRated(true));
+        dispatch(showModalAction({
+          confirm: 'appRating.yes',
+          dismiss: 'appRating.no',
+          title: 'Testing',
+          message: 'set already rated to true',
+        }));
         dispatch(historyPush({
           pathname: link,
         }));
@@ -79,7 +100,19 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
 
       // user doesn't want to rate
       dispatch(increaseRejectionCount());
+      dispatch(showModalAction({
+        confirm: 'appRating.yes',
+        dismiss: 'appRating.no',
+        title: 'Testing',
+        message: 'rejecting',
+      }));
       if (rejectionLink) {
+        dispatch(showModalAction({
+          confirm: 'appRating.yes',
+          dismiss: 'appRating.no',
+          title: 'Testing',
+          message: `rejecting with link ${rejectionLink}`,
+        }));
         dispatch(historyPush({
           pathname: rejectionLink,
         }));
