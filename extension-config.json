@@ -606,8 +606,8 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "minTimeBetweenPopups": 1,
-        "rejectionMaxCount": 3,
+        "minDaysBetweenPopups": 90,
+        "rejectionMaxCount": 2,
         "rejectionLink": null,
         "bundleId": {
           "android": null,
@@ -615,15 +615,15 @@
         },
         "ordersPlaced": {
           "value": 3,
-          "repeats": 1
+          "repeats": null
         },
         "timeInterval": {
           "value": 2,
-          "repeats": 1
+          "repeats": null
         },
         "appStarts": {
-          "value": 3,
-          "repeats": 1
+          "value": 1,
+          "repeats": null
         }
       },
       "params": {
