@@ -191,6 +191,8 @@
     "go_to_cart": "Carrinho",
     "no_more_found": "O item: \"{name}\" não está mais disponível.",
     "quantity": "Quantidade",
+    "decrease_quantity": "Diminuir a quantidade",
+    "increase_quantity": "Aumentar a quantidade",
     "minOrderQuantity": "Quantidade mín. do pedido: {quantity} {unit}",
     "maxOrderQuantity": "Quantidade máx. do pedido: {quantity} {unit}",
     "available": {
