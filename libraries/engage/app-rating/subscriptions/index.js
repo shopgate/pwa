@@ -38,6 +38,8 @@ export default function appRating(subscribe) {
     // we'll cancel the operations as we
     // don't have to show the modal once more
     if (state.alreadyRated) {
+      // @INDICATOR
+      alert(JSON.stringify(({ msg: 'already rated' })));
       return;
     }
 
@@ -45,6 +47,11 @@ export default function appRating(subscribe) {
     // already rejected rating the app
     // many times before
     if (state.rejectionCount >= rejectionMaxCount) {
+      // @INDICATOR
+      alert(JSON.stringify({
+        rejectionCount: state.rejectionCount,
+        rejectionMaxCount,
+      }));
       return;
     }
 
@@ -76,6 +83,12 @@ export default function appRating(subscribe) {
       resetAction = resetAppStartCount;
       increaseAction = null;
     }
+
+    // @INDICATOR
+    alert(JSON.stringify({
+      resetAction,
+      increaseAction,
+    }));
 
     // the actual show modal logic
     dispatch(showModal(
