@@ -109,7 +109,7 @@ export default function appRating(subscribe) {
       // orders placed count starts from 0
       const mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
       const hasRepeats = ordersPlaced.repeats === null ||
-        state.ordersPlacedResetCount < ordersPlaced.repeats;
+        state.ordersPlacedResetCount <= ordersPlaced.repeats;
 
       dispatch(showModal(
         resetOrdersPlacedCount,
