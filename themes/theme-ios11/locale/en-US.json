@@ -180,6 +180,7 @@
       "insufficientstock": "Sorry, this product is currently out of stock."
     },
     "description_heading": "About",
+    "share": "Share product",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
