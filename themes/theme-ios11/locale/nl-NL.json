@@ -191,6 +191,8 @@
     "go_to_cart": "Winkelwagen",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
+    "decrease_quantity": "Vermindering van de hoeveelheid",
+    "increase_quantity": "Hoeveelheid verhogen",
     "minOrderQuantity": "Min. bestelhoeveelheid: {quantity} {unit}",
     "maxOrderQuantity": "Max. bestelhoeveelheid: {quantity} {unit}",
     "available": {
