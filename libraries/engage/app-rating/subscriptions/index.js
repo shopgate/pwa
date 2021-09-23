@@ -64,7 +64,7 @@ export default function appRating(subscribe) {
       Date.now() - state.timerStartTimestamp >= (timeInterval.value * TIMER_TIMESPAN)
     ) {
       mustShowModal = true;
-      hasRepeats = timeInterval.repeats === null || state.timerRepeatsCount < timeInterval.repeats;
+      hasRepeats = timeInterval.repeats === null || state.timerRepeatsCount <= timeInterval.repeats;
       resetAction = resetTimerState;
 
       // since the time is elapsed
@@ -72,7 +72,7 @@ export default function appRating(subscribe) {
       increaseAction = setTimerStartTime;
     } else {
       mustShowModal = Number(appStarts.value) > 0 && state.appStartCount >= appStarts.value;
-      hasRepeats = appStarts.repeats === null || state.appStartResetCount < appStarts.repeats;
+      hasRepeats = appStarts.repeats === null || state.appStartResetCount <= appStarts.repeats;
       resetAction = resetAppStartCount;
       increaseAction = null;
     }
@@ -108,7 +108,7 @@ export default function appRating(subscribe) {
       // orders placed count starts from 0
       const mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
       const hasRepeats = ordersPlaced.repeats === null ||
-        state.ordersPlacedResetCount < ordersPlaced.repeats;
+        state.ordersPlacedResetCount <= ordersPlaced.repeats;
 
       dispatch(showModal(
         resetOrdersPlacedCount,
