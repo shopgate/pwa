@@ -15,7 +15,7 @@ const {
   appRating: {
     bundleId: bId,
     rejectionLink,
-    minTimeBetweenPopups,
+    minDaysBetweenPopups,
   },
 } = appConfig;
 
@@ -39,10 +39,10 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
 
     const state = getAppRatingState(getState());
 
-    const isMinTimeBetweenPopupsElapsed = (Date.now() - state.lastPopupAt) >=
-      (minTimeBetweenPopups * TIMER_TIMESPAN);
+    const isMinDaysBetweenPopupsElapsed = (Date.now() - state.lastPopupAt) >=
+      (minDaysBetweenPopups * TIMER_TIMESPAN);
 
-    if (!isMinTimeBetweenPopupsElapsed) {
+    if (!isMinDaysBetweenPopupsElapsed) {
       return;
     }
 
