@@ -2,7 +2,7 @@
 
 exports[`engage > components > view > index should have structured content 1`] = `
 <section
-  aria-hidden={true}
+  aria-hidden={false}
   className={
     Object {
       "data-css-296fln": "",
@@ -27,7 +27,7 @@ exports[`engage > components > view > index should have structured content 1`] =
 
 exports[`engage > components > view > index should initialize with visible route 1`] = `
 <ViewContainer
-  aria-hidden={true}
+  aria-hidden={false}
   background="#fff"
   noScrollOnKeyboard={false}
   visible={true}

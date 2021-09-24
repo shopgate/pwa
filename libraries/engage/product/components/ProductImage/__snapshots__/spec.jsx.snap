@@ -6,13 +6,13 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
   portalProps={null}
 >
   <div
-    aria-hidden={null}
+    aria-hidden={false}
     className={null}
   >
     <Image
       alt={null}
       animating={true}
-      aria-hidden={null}
+      aria-hidden={false}
       backgroundColor="#fff"
       className="css-3hjqnz"
       classNameImg=""
@@ -56,7 +56,7 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
   portalProps={null}
 >
   <div
-    aria-hidden={null}
+    aria-hidden={false}
     className="css-y5kkpq css-3hjqnz"
   >
     <div
@@ -77,13 +77,13 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   portalProps={null}
 >
   <div
-    aria-hidden={null}
+    aria-hidden={false}
     className={null}
   >
     <Image
       alt={null}
       animating={true}
-      aria-hidden={null}
+      aria-hidden={false}
       backgroundColor="#fff"
       className=""
       classNameImg=""
@@ -125,7 +125,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
 <ProductImage
   alt={null}
   animating={true}
-  aria-hidden={null}
+  aria-hidden={false}
   className={null}
   forcePlaceholder={false}
   highestResolutionLoaded={[Function]}
@@ -161,7 +161,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalProps={null}
 >
   <div
-    aria-hidden={null}
+    aria-hidden={false}
     className="css-y5kkpq"
   >
     <div
@@ -182,7 +182,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalProps={null}
 >
   <div
-    aria-hidden={null}
+    aria-hidden={false}
     className="css-y5kkpq"
   >
     <div
@@ -203,7 +203,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
   portalProps={null}
 >
   <div
-    aria-hidden={null}
+    aria-hidden={false}
     className="css-y5kkpq"
   >
     <div
@@ -224,13 +224,13 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   portalProps={null}
 >
   <div
-    aria-hidden={null}
+    aria-hidden={false}
     className={null}
   >
     <Image
       alt={null}
       animating={true}
-      aria-hidden={null}
+      aria-hidden={false}
       backgroundColor="#fff"
       className=""
       classNameImg=""

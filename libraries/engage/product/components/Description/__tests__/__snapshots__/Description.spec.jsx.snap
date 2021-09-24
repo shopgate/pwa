@@ -26,7 +26,6 @@ exports[`<Description /> should not render if no data is available 1`] = `
       }
     >
       <div
-        aria-hidden={true}
         className={
           Object {
             "data-css-1qs89bq": "",
@@ -90,7 +89,6 @@ exports[`<Description /> should render description if data is available 1`] = `
       }
     >
       <div
-        aria-hidden={true}
         className={
           Object {
             "data-css-1qs89bq": "",

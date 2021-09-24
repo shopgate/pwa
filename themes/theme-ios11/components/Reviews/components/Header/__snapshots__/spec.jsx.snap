@@ -37,7 +37,6 @@ exports[`<Header /> should render empty 1`] = `
         productId="foo"
       >
         <div
-          aria-hidden={true}
           className={
             Object {
               "data-css-1ppx0ok": "",
@@ -325,14 +324,15 @@ exports[`<Header /> should render empty 1`] = `
               productId="foo"
             >
               <div
-                aria-hidden={true}
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)
+                  aria-label="reviews.button_add"
                   href="/item/666f6f/write_review"
                   noGap={true}
                 >
                   <ButtonLink
+                    aria-label="reviews.button_add"
                     className=""
                     disabled={false}
                     flat={true}
@@ -341,6 +341,7 @@ exports[`<Header /> should render empty 1`] = `
                     noGap={true}
                   >
                     <ActionButton
+                      aria-label="reviews.button_add"
                       className=""
                       disabled={false}
                       flat={true}
@@ -910,14 +911,15 @@ exports[`<Header /> should render rating summary 1`] = `
               productId="foo"
             >
               <div
-                aria-hidden={true}
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)
+                  aria-label="reviews.button_add"
                   href="/item/666f6f/write_review"
                   noGap={true}
                 >
                   <ButtonLink
+                    aria-label="reviews.button_add"
                     className=""
                     disabled={false}
                     flat={true}
@@ -926,6 +928,7 @@ exports[`<Header /> should render rating summary 1`] = `
                     noGap={true}
                   >
                     <ActionButton
+                      aria-label="reviews.button_add"
                       className=""
                       disabled={false}
                       flat={true}
