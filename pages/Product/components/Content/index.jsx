@@ -180,7 +180,7 @@ class ProductContent extends PureComponent {
         <AppBar productId={productId} />
         <ProductContext.Provider value={contextValue}>
           <ResponsiveContainer breakpoint="xs" appAlways>
-            <Media aria-hidden />
+            <Media />
             <Header />
             <RelationsSlider desiredPosition="header" />
             <Section title="product.sections.quantity">
