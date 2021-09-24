@@ -7,9 +7,10 @@ import {
 
 /**
  * @param {Object} payload The link payload.
+ * @param {boolean} fromPushMessage Wether the function was called for a push message
  * @return {Function}
  */
-export default function handleLink(payload) {
+export default function handleLink(payload, fromPushMessage = false) {
   return (dispatch) => {
     let { link } = payload;
 
@@ -23,6 +24,13 @@ export default function handleLink(payload) {
     let pathname;
     if (link.startsWith('http')) {
       // Link is common URL schema.
+      if (fromPushMessage) {
+        dispatch(historyPush({
+          pathname: link,
+        }));
+        return;
+      }
+
       try {
         ({ pathname } = new URL(link));
       } catch (linkParseError) {

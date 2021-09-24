@@ -7,7 +7,7 @@ const PUSH_MESSAGE_OPENED = 'ajax_push_message_opened';
 /**
  * Handles the opening of a push notification. If the payload contains a link, it calls
  * the openDeepLink actions additionally.
- * @param {Object} payload The push notifiction payload.
+ * @param {Object} payload The push notification payload.
  * @return {Function} A redux thunk.
  */
 export default function handlePushNotification(payload = {}) {
@@ -32,7 +32,7 @@ export default function handlePushNotification(payload = {}) {
         .dispatch();
     }
 
-    dispatch(handleLink(payload));
+    dispatch(handleLink(payload, true));
     dispatch(openPushNotification(notificationId, link));
   };
 }
