@@ -45,21 +45,21 @@ class Link extends Component {
    * @param {Event} e An event object.
    */
   handleOpenLink = (e) => {
+    e.preventDefault();
+    if (this.props.disabled) {
+      return;
+    }
+
+    const params = {
+      pathname: this.props.href,
+      state: {
+        ...(this.props.state || {}),
+        ...(this.props.target ? { target: this.props.target } : {}),
+      },
+    };
+
     // setTimeout prevents double click while VoiceOver is active
     setTimeout(() => {
-      e.preventDefault();
-      if (this.props.disabled) {
-        return;
-      }
-
-      const params = {
-        pathname: this.props.href,
-        state: {
-          ...(this.props.state || {}),
-          ...(this.props.target ? { target: this.props.target } : {}),
-        },
-      };
-
       if (this.props.replace) {
         this.props.historyReplace(params);
       } else {
