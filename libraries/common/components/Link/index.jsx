@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { hasWebBridge } from '@shopgate/engage/core';
-import debounce from 'lodash/debounce';
 import connect from './connector';
 import styles from './style';
 
@@ -42,37 +41,31 @@ class Link extends Component {
   };
 
   /**
-   * Constructor
-   * @param {Object} props The component properties
-   */
-  constructor(props) {
-    super(props);
-    this.handleOpenLink = debounce(this.handleOpenLink.bind(this), 500);
-  }
-
-  /**
    * Opens the link.
    * @param {Event} e An event object.
    */
   handleOpenLink = (e) => {
-    e.preventDefault();
-    if (this.props.disabled) {
-      return;
-    }
+    // setTimeout prevents double click while VoiceOver is active
+    setTimeout(() => {
+      e.preventDefault();
+      if (this.props.disabled) {
+        return;
+      }
 
-    const params = {
-      pathname: this.props.href,
-      state: {
-        ...(this.props.state || {}),
-        ...(this.props.target ? { target: this.props.target } : {}),
-      },
-    };
+      const params = {
+        pathname: this.props.href,
+        state: {
+          ...(this.props.state || {}),
+          ...(this.props.target ? { target: this.props.target } : {}),
+        },
+      };
 
-    if (this.props.replace) {
-      this.props.historyReplace(params);
-    } else {
-      this.props.historyPush(params);
-    }
+      if (this.props.replace) {
+        this.props.historyReplace(params);
+      } else {
+        this.props.historyPush(params);
+      }
+    }, 0);
   };
 
   /**
