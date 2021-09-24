@@ -22,12 +22,16 @@ export default function appRating(subscribe) {
       ordersPlaced,
       timeInterval,
       rejectionMaxCount,
+      bundleId,
     },
   } = appConfig;
 
   // even subscriber to handle app start ratings
   // and also time interval ratings
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
+    if (!bundleId || !bundleId.android || !bundleId.ios) {
+      return;
+    }
     // every time the app starts
     // we increase the start count
     dispatch(increaseAppStartCount());
