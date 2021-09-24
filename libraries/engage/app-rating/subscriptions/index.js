@@ -53,10 +53,10 @@ export default function appRating(subscribe) {
       dispatch(setTimerStartTime());
     }
 
-    let mustShowModal;
-    let hasRepeats;
-    let resetAction;
-    let increaseAction;
+    let mustShowModal = false;
+    let hasRepeats = false;
+    let resetAction = null;
+    let increaseAction = null;
 
     if (
       Number(timeInterval.value) > 0 &&
@@ -70,7 +70,7 @@ export default function appRating(subscribe) {
       // since the time is elapsed
       // we reset the starting time
       increaseAction = setTimerStartTime;
-    } else {
+    } else if (appStarts) {
       mustShowModal = Number(appStarts.value) > 0 && state.appStartCount >= appStarts.value;
       hasRepeats = appStarts.repeats === null || state.appStartResetCount <= appStarts.repeats;
       resetAction = resetAppStartCount;
@@ -102,6 +102,10 @@ export default function appRating(subscribe) {
       // already rejected rating the app
       // many times before
       if (state.rejectionCount >= rejectionMaxCount) {
+        return;
+      }
+
+      if (!ordersPlaced) {
         return;
       }
 
