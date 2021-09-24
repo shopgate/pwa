@@ -32,7 +32,6 @@ class ItemImage extends PureComponent {
   render() {
     const { productId, name, imageUrl } = this.props;
     const props = { productId };
-
     return (
       <Fragment>
         <Portal name={PRODUCT_ITEM_IMAGE_BEFORE} props={props} />
@@ -42,7 +41,6 @@ class ItemImage extends PureComponent {
             src={imageUrl}
             resolutions={gridResolutions}
             itemProp="image"
-            aria-hidden
           />
         </Portal>
         <Portal name={PRODUCT_ITEM_IMAGE_AFTER} props={props} />

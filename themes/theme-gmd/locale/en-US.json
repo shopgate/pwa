@@ -179,6 +179,7 @@
       "insufficientstock": "Sorry, this product is currently out of stock."
     },
     "description_heading": "About",
+    "share": "Share product",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
@@ -187,6 +188,8 @@
     "add_to_cart": "Add to cart",
     "no_more_found": "The item \"{name}\" is no longer available.",
     "quantity": "Quantity",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
     "minOrderQuantity": "Min. order quantity: {quantity} {unit}",
     "maxOrderQuantity": "Max. order quantity: {quantity} {unit}",
     "available": {

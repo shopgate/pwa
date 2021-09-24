@@ -179,6 +179,7 @@
       "insufficientstock": "Leider ist dieses Produkt derzeit nicht mehr Verfügbar."
     },
     "description_heading": "Beschreibung",
+    "share": "Produkt teilen",
     "pick_an_attribute": "{0} auswählen",
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
     "adding_item": "{count, plural, =1 {{count} Produkt wird hinzugefügt} other {{count} Produkte werden hinzugefügt}}",
@@ -187,6 +188,8 @@
     "add_to_cart": "In den Warenkorb",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
     "quantity": "Menge",
+    "decrease_quantity": "Menge reduzieren",
+    "increase_quantity": "Menge erhöhen",
     "minOrderQuantity": "Min. Bestellmenge: {quantity} {unit}",
     "maxOrderQuantity": "Max. Bestellmenge: {quantity} {unit}",
     "available": {
