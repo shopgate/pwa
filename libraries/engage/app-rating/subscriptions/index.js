@@ -106,6 +106,10 @@ export default function appRating(subscribe) {
         return;
       }
 
+      if (!ordersPlaced) {
+        return;
+      }
+
       // orders placed count starts from 0
       const mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
       const hasRepeats = ordersPlaced.repeats === null ||
