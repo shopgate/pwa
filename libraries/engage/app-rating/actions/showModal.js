@@ -16,8 +16,42 @@ const {
     bundleId: bId,
     rejectionLink,
     minDaysBetweenPopups,
+    approveRejection,
   },
 } = appConfig;
+
+/**
+ * to handle the modal confirmation
+ * @return {(function(*, *): void)|*}
+ */
+function confirmModal() {
+  return (dispatch, getState) => {
+    const platform = getPlatform(getState());
+    const link = generateReviewLink(bId[platform], platform);
+    if (!link) {
+      return;
+    }
+
+    dispatch(setAlreadyRated(true));
+    dispatch(historyPush({
+      pathname: link,
+    }));
+  };
+}
+
+/**
+ * to handle the modal rejection
+ * @return {(function(*): void)|*}
+ */
+function rejectModal() {
+  return (dispatch) => {
+    if (rejectionLink) {
+      dispatch(historyPush({
+        pathname: rejectionLink,
+      }));
+    }
+  };
+}
 
 /**
  * shows the actual modal
@@ -28,7 +62,7 @@ const {
  * @return {(function(*, *): void)|*}
  */
 export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     if (!mustShow && hasRepeats && increaseAction) {
       dispatch(increaseAction());
     }
@@ -49,35 +83,40 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     dispatch(resetAction());
     dispatch(setLastPopupTimestamp());
 
-    dispatch(showModalAction({
+    const firstModalConfirmed = await dispatch(showModalAction({
       confirm: 'appRating.yes',
       dismiss: 'appRating.no',
       title: 'appRating.title',
       message: 'appRating.message',
-    })).then((confirmed) => {
-      // user touched yes and we
-      // redirect to store
-      if (confirmed) {
-        const platform = getPlatform(getState());
-        const link = generateReviewLink(bId[platform], platform);
-        if (!link) {
-          return;
-        }
+    }));
 
-        dispatch(setAlreadyRated(true));
-        dispatch(historyPush({
-          pathname: link,
-        }));
+    // user touched yes and we
+    // redirect to store
+    if (firstModalConfirmed) {
+      dispatch(confirmModal());
+      return;
+    }
+
+    // user doesn't want to rate
+    dispatch(increaseRejectionCount());
+
+    // we approve for rejection
+    if (approveRejection) {
+      const rejectionConfirmed = await dispatch(showModalAction({
+        confirm: 'appRating.yes',
+        dismiss: 'appRating.no',
+        title: 'appRating.title',
+        message: 'appRating.rejectionApprovalMessage',
+      }));
+
+      // user now wants to rate our app! yay :D
+      if (rejectionConfirmed) {
+        dispatch(confirmModal());
         return;
       }
+    }
 
-      // user doesn't want to rate
-      dispatch(increaseRejectionCount());
-      if (rejectionLink) {
-        dispatch(historyPush({
-          pathname: rejectionLink,
-        }));
-      }
-    });
+    // the user doesn't really want to give us a rate :(
+    dispatch(rejectModal());
   };
 }
