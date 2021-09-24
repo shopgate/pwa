@@ -608,21 +608,22 @@
       "default": {
         "minDaysBetweenPopups": 90,
         "rejectionMaxCount": 2,
+        "approveRejection": true,
         "rejectionLink": null,
         "bundleId": {
           "android": null,
           "ios": null
         },
         "ordersPlaced": {
-          "value": 3,
+          "value": 1,
           "repeats": null
         },
         "timeInterval": {
-          "value": 2,
+          "value": 30,
           "repeats": null
         },
         "appStarts": {
-          "value": 1,
+          "value": 10,
           "repeats": null
         }
       },
