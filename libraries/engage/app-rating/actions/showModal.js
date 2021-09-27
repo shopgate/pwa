@@ -115,7 +115,7 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
         eventLabel: userGivesFeedback ? 'yes' : 'no',
       }, state);
 
-      // user now wants to rate our app! yay :D
+      // user wants to give feedback
       if (userGivesFeedback) {
         dispatch(redirectTo(feedbackLink));
       }
