@@ -90,6 +90,10 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
       message: 'appRating.message',
     }));
 
+    /*
+        Tracking placeholder
+    */
+
     // user touched yes and we
     // redirect to store
     if (firstModalConfirmed) {
@@ -115,6 +119,10 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
         return;
       }
     }
+
+    /*
+        Tracking placeholder
+    */
 
     // the user doesn't really want to give us a rate :(
     dispatch(rejectModal());
