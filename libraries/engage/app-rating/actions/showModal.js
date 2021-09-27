@@ -27,7 +27,7 @@ const {
  * @param {boolean | null} setRated the url to redirect to
  * @return {(function(*, *): void)|*}
  */
-function confirmModal(url, setRated = false) {
+function redirectTo(url, setRated = false) {
   return (dispatch) => {
     if (!url) {
       return;
@@ -93,7 +93,7 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
       const platform = getPlatform(getState());
       const link = generateReviewLink(bId[platform], platform);
 
-      dispatch(confirmModal(link, true));
+      dispatch(redirectTo(link, true));
       return;
     }
 
@@ -117,8 +117,12 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
 
       // user now wants to rate our app! yay :D
       if (userGivesFeedback) {
-        dispatch(confirmModal(feedbackLink));
+        dispatch(redirectTo(feedbackLink));
       }
+
+      return;
     }
+
+    dispatch(redirectTo(feedbackLink));
   };
 }
