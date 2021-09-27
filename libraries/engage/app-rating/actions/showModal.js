@@ -2,6 +2,7 @@ import showModalAction from '@shopgate/pwa-common/actions/modal/showModal';
 import { getPlatform } from '@shopgate/pwa-common/selectors/client';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { track } from '@shopgate/pwa-tracking/helpers';
 import {
   increaseRejectionCount,
   setAlreadyRated,
@@ -60,9 +61,10 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
       return;
     }
 
-    const state = getAppRatingState(getState());
+    const state = getState();
+    const appRatingState = getAppRatingState(state);
 
-    const isMinDaysBetweenPopupsElapsed = (Date.now() - state.lastPopupAt) >=
+    const isMinDaysBetweenPopupsElapsed = (Date.now() - appRatingState.lastPopupAt) >=
       (minDaysBetweenPopups * TIMER_TIMESPAN);
 
     if (!isMinDaysBetweenPopupsElapsed) {
@@ -72,16 +74,18 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     dispatch(resetAction());
     dispatch(setLastPopupTimestamp());
 
-    /*
-        Tracking placeholder
-     */
-
     const firstModalConfirmed = await dispatch(showModalAction({
       confirm: 'appRating.yes',
       dismiss: 'appRating.no',
       title: 'appRating.title',
       message: 'appRating.message',
     }));
+
+    track('customEvent', {
+      eventCategory: 'appReviewPrompt',
+      eventAction: 'decision',
+      eventLabel: firstModalConfirmed ? 'yes' : 'no',
+    }, state);
 
     // user touched yes and we
     // redirect to store
@@ -105,9 +109,11 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
         message: 'appRating.rejectionApprovalMessage',
       }));
 
-      /*
-          Tracking placeholder
-      */
+      track('customEvent', {
+        eventCategory: 'appReviewPrompt',
+        eventAction: 'decision_feedback',
+        eventLabel: userGivesFeedback ? 'yes' : 'no',
+      }, state);
 
       // user now wants to rate our app! yay :D
       if (userGivesFeedback) {
