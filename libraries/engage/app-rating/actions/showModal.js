@@ -16,25 +16,29 @@ const {
     bundleId: bId,
     rejectionLink,
     minDaysBetweenPopups,
-    approveRejection,
+    askForFeedback,
+    feedbackLink,
   },
 } = appConfig;
 
 /**
  * to handle the modal confirmation
+ * @param {string} url the url to redirect to
+ * @param {boolean | null} setRated the url to redirect to
  * @return {(function(*, *): void)|*}
  */
-function confirmModal() {
-  return (dispatch, getState) => {
-    const platform = getPlatform(getState());
-    const link = generateReviewLink(bId[platform], platform);
-    if (!link) {
+function confirmModal(url, setRated = false) {
+  return (dispatch) => {
+    if (!url) {
       return;
     }
 
-    dispatch(setAlreadyRated(true));
+    if (setRated) {
+      dispatch(setAlreadyRated(setRated));
+    }
+
     dispatch(historyPush({
-      pathname: link,
+      pathname: url,
     }));
   };
 }
@@ -83,6 +87,10 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     dispatch(resetAction());
     dispatch(setLastPopupTimestamp());
 
+    /*
+        Tracking placeholder
+     */
+
     const firstModalConfirmed = await dispatch(showModalAction({
       confirm: 'appRating.yes',
       dismiss: 'appRating.no',
@@ -90,14 +98,13 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
       message: 'appRating.message',
     }));
 
-    /*
-        Tracking placeholder
-    */
-
     // user touched yes and we
     // redirect to store
     if (firstModalConfirmed) {
-      dispatch(confirmModal());
+      const platform = getPlatform(getState());
+      const link = generateReviewLink(bId[platform], platform);
+
+      dispatch(confirmModal(link, true));
       return;
     }
 
@@ -105,24 +112,24 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     dispatch(increaseRejectionCount());
 
     // we approve for rejection
-    if (approveRejection) {
-      const rejectionConfirmed = await dispatch(showModalAction({
+    if (askForFeedback) {
+      const userGivesFeedback = await dispatch(showModalAction({
         confirm: 'appRating.yes',
         dismiss: 'appRating.no',
         title: 'appRating.title',
         message: 'appRating.rejectionApprovalMessage',
       }));
 
+      /*
+          Tracking placeholder
+      */
+
       // user now wants to rate our app! yay :D
-      if (rejectionConfirmed) {
-        dispatch(confirmModal());
+      if (userGivesFeedback) {
+        dispatch(confirmModal(feedbackLink));
         return;
       }
     }
-
-    /*
-        Tracking placeholder
-    */
 
     // the user doesn't really want to give us a rate :(
     dispatch(rejectModal());
