@@ -608,7 +608,8 @@
       "default": {
         "minDaysBetweenPopups": 90,
         "rejectionMaxCount": 2,
-        "approveRejection": true,
+        "askForFeedback": true,
+        "feedbackLink": null,
         "rejectionLink": null,
         "bundleId": {
           "android": null,

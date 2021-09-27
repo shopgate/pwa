@@ -606,7 +606,8 @@
         "minDaysBetweenPopups": 90,
         "rejectionMaxCount": 2,
         "rejectionLink": null,
-        "approveRejection": true,
+        "askForFeedback": true,
+        "feedbackLink": null,
         "bundleId": {
           "android": null,
           "ios": null
