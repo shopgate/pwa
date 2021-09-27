@@ -540,7 +540,6 @@
       "default": {
         "minDaysBetweenPopups": 90,
         "rejectionMaxCount": 2,
-        "rejectionLink": null,
         "askForFeedback": true,
         "feedbackLink": null,
         "bundleId": {

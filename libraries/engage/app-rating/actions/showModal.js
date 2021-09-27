@@ -14,7 +14,6 @@ import { getAppRatingState } from '../selectors/appRating';
 const {
   appRating: {
     bundleId: bId,
-    rejectionLink,
     minDaysBetweenPopups,
     askForFeedback,
     feedbackLink,
@@ -40,20 +39,6 @@ function confirmModal(url, setRated = false) {
     dispatch(historyPush({
       pathname: url,
     }));
-  };
-}
-
-/**
- * to handle the modal rejection
- * @return {(function(*): void)|*}
- */
-function rejectModal() {
-  return (dispatch) => {
-    if (rejectionLink) {
-      dispatch(historyPush({
-        pathname: rejectionLink,
-      }));
-    }
   };
 }
 
@@ -127,11 +112,7 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
       // user now wants to rate our app! yay :D
       if (userGivesFeedback) {
         dispatch(confirmModal(feedbackLink));
-        return;
       }
     }
-
-    // the user doesn't really want to give us a rate :(
-    dispatch(rejectModal());
   };
 }
