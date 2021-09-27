@@ -610,7 +610,6 @@
         "rejectionMaxCount": 2,
         "askForFeedback": true,
         "feedbackLink": null,
-        "rejectionLink": null,
         "bundleId": {
           "android": null,
           "ios": null
