@@ -83,6 +83,10 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     dispatch(resetAction());
     dispatch(setLastPopupTimestamp());
 
+    /*
+        Tracking placeholder
+     */
+
     const firstModalConfirmed = await dispatch(showModalAction({
       confirm: 'appRating.yes',
       dismiss: 'appRating.no',
@@ -108,6 +112,10 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
         title: 'appRating.title',
         message: 'appRating.rejectionApprovalMessage',
       }));
+
+      /*
+          Tracking placeholder
+      */
 
       // user now wants to rate our app! yay :D
       if (rejectionConfirmed) {
