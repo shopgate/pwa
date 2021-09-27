@@ -93,6 +93,10 @@ export default function appRating(subscribe) {
   // event subscriber to handle order placed ratings
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     event.addCallback('checkoutSuccess', () => {
+      if (!bundleId || !bundleId.android || !bundleId.ios) {
+        return;
+      }
+
       const state = getAppRatingState(getState());
 
       // if the user has already rated the app
