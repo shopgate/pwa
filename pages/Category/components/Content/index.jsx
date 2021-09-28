@@ -14,9 +14,9 @@ import AppBar from '../AppBar';
 const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
   <Fragment>
     <AppBar hasProducts={hasProducts} hasChildren={hasChildren} categoryId={categoryId} />
+    <ProductFilters categoryId={categoryId} showFilters={hasProducts} />
     <CategoryListContent categoryId={categoryId} />
 
-    <ProductFilters categoryId={categoryId} showFilters={hasProducts} />
     <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
     <Empty
       categoryId={categoryId}
