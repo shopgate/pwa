@@ -2,6 +2,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { AccordionContainer, ChevronIcon } from '@shopgate/pwa-ui-shared';
+import { i18n } from '@shopgate/engage/core';
 import AccordionContent from './components/AccordionContent';
 import * as styles from './style';
 
@@ -70,6 +71,7 @@ function Accordion(props: Props) {
                 <div
                   className={styles.chevronContainerLeft}
                   {... (openWithChevron ? clickHandlers : {})}
+                  aria-label={i18n.text(open ? 'favorites.close_list' : 'favorites.open_list')}
                 >
                   <ChevronIcon
                     className={open ? styles.chevronOpen : styles.chevronClosed}
@@ -81,6 +83,7 @@ function Accordion(props: Props) {
                 <div
                   className={styles.chevronContainer}
                   {... (openWithChevron ? clickHandlers : {})}
+                  aria-label={i18n.text(open ? 'favorites.close_list' : 'favorites.open_list')}
                 >
                   <ChevronIcon
                     className={open ? styles.chevronOpen : styles.chevronClosed}

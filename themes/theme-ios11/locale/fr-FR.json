@@ -139,7 +139,9 @@
     "modal": {
       "message": "Pour ajouter ce produit à votre panier, veuillez sélectionner la variante.",
       "confirm": "Sélectionner la variante"
-    }
+    },
+    "open_list": "Liste ouverte.",
+    "close_list": "Fermer la liste."
   },
   "filter": {
     "sort": {

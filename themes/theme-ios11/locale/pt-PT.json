@@ -139,7 +139,9 @@
     "modal": {
       "message": "Para adicionar este produto ao seu carrinho, por favor selecione as variantes.",
       "confirm": "Selecionar variantes"
-    }
+    },
+    "open_list": "Lista aberta.",
+    "close_list": "Fechar lista."
   },
   "filter": {
     "sort": {
