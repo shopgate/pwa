@@ -139,7 +139,9 @@
     "modal": {
       "message": "Om dit product aan uw winkelwagen toe te voegen, selecteer alstublieft de varianten.",
       "confirm": "Selecteer varianten"
-    }
+    },
+    "open_list": "Open lijst.",
+    "close_list": "Sluit lijst."
   },
   "filter": {
     "sort": {

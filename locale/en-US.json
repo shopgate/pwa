@@ -140,7 +140,9 @@
     "modal": {
       "message": "To add this product to your cart, please select the variants.",
       "confirm": "Select variants"
-    }
+    },
+    "open_list": "Open list.",
+    "close_list": "Close list."
   },
   "filter": {
     "sort": {

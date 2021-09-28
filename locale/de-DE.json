@@ -140,7 +140,9 @@
     "modal": {
       "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wähle bitte die Varianten.",
       "confirm": "Varianten wählen"
-    }
+    },
+    "open_list": "Liste öffnen.",
+    "close_list": "Liste schließen."
   },
   "filter": {
     "sort": {
