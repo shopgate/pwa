@@ -24,7 +24,7 @@ export default function handleLink(payload, fromPushMessage = false) {
     let pathname;
     if (link.startsWith('http')) {
       // Link is common URL schema.
-      if (fromPushMessage) {
+      if (allowExternalLinks) {
         dispatch(historyPush({
           pathname: link,
         }));
