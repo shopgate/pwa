@@ -7,9 +7,10 @@ import {
 
 /**
  * @param {Object} payload The link payload.
+ * @param {boolean} allowExternalLinks Wether the function should open external links or should try to convert them to internal links
  * @return {Function}
  */
-export default function handleLink(payload) {
+export default function handleLink(payload, allowExternalLinks = false) {
   return (dispatch) => {
     let { link } = payload;
 
@@ -23,6 +24,13 @@ export default function handleLink(payload) {
     let pathname;
     if (link.startsWith('http')) {
       // Link is common URL schema.
+      if (allowExternalLinks) {
+        dispatch(historyPush({
+          pathname: link,
+        }));
+        return;
+      }
+
       try {
         ({ pathname } = new URL(link));
       } catch (linkParseError) {
