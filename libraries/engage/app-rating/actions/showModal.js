@@ -14,7 +14,7 @@ import { getAppRatingState } from '../selectors/appRating';
 
 const {
   appRating: {
-    bundleId: bId,
+    bundleId,
     minDaysBetweenPopups,
     askForFeedback,
     feedbackLink,
@@ -53,6 +53,15 @@ function redirectTo(url, setRated = false) {
  */
 export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
   return async (dispatch, getState) => {
+    const state = getState();
+    const platform = getPlatform(state);
+    const reviewLink = generateReviewLink(bundleId[platform], platform);
+
+    // no review link for current platform found -> don't show modal
+    if (!reviewLink) {
+      return;
+    }
+
     if (!mustShow && hasRepeats && increaseAction) {
       dispatch(increaseAction());
     }
@@ -61,7 +70,6 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
       return;
     }
 
-    const state = getState();
     const appRatingState = getAppRatingState(state);
 
     const isMinDaysBetweenPopupsElapsed = (Date.now() - appRatingState.lastPopupAt) >=
@@ -90,10 +98,7 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     // user touched yes and we
     // redirect to store
     if (firstModalConfirmed) {
-      const platform = getPlatform(getState());
-      const link = generateReviewLink(bId[platform], platform);
-
-      dispatch(redirectTo(link, true));
+      dispatch(redirectTo(reviewLink, true));
       return;
     }
 
