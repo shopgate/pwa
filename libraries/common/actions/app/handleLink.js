@@ -7,7 +7,7 @@ import {
 
 /**
  * @param {Object} payload The link payload.
- * @param {boolean} fromPushMessage Wether the function was called for a push message
+ * @param {boolean} allowExternalLinks Wether the function should open external links or should try to convert them to internal links
  * @return {Function}
  */
 export default function handleLink(payload, allowExternalLinks = false) {
