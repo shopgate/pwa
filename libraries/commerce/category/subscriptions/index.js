@@ -12,6 +12,7 @@ import {
   categoryWillEnter$,
   categoryDidEnter$,
   errorVisibleCategory$,
+  categoryFiltersDidUpdateFromFilterPage$,
 } from '../streams';
 
 /**
@@ -57,11 +58,21 @@ export default function category(subscribe) {
     dispatch(historyPop());
   });
 
-  subscribe(categoryProductsNeedUpdate$, ({ action, dispatch, getState }) => {
-    const { params, state: { offset = 0 } } = getCurrentRoute(getState());
+  subscribe(categoryProductsNeedUpdate$, ({ dispatch, getState }) => {
+    const { params, state: { offset = 0, filters } } = getCurrentRoute(getState());
     const categoryId = hex2bin(params.categoryId);
-    const { filters } = action;
 
+    dispatch(fetchCategoryProducts({
+      categoryId,
+      filters,
+      offset,
+      ...buildFetchCategoryProductsParams(),
+    }));
+  });
+
+  subscribe(categoryFiltersDidUpdateFromFilterPage$, ({ dispatch, action }) => {
+    const categoryId = hex2bin(action.route.params.categoryId);
+    const { filters, offset = 0 } = action.route.state;
     dispatch(fetchCategoryProducts({
       categoryId,
       filters,
