@@ -35,7 +35,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
     }
   >
     <Swiper
-      aria-hidden={null}
+      aria-hidden={false}
       autoPlay={false}
       className={null}
       classNames={Object {}}
@@ -54,7 +54,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
       zoom={false}
     >
       <div
-        aria-hidden={null}
+        aria-hidden={false}
         className="css-1hlki0z"
       >
         <ReactIdSwiper
@@ -485,7 +485,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
     }
   >
     <Swiper
-      aria-hidden={null}
+      aria-hidden={false}
       autoPlay={false}
       className={null}
       classNames={Object {}}
@@ -504,7 +504,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       zoom={false}
     >
       <div
-        aria-hidden={null}
+        aria-hidden={false}
         className="css-1hlki0z"
       >
         <ReactIdSwiper
@@ -775,7 +775,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
     }
   >
     <Swiper
-      aria-hidden={null}
+      aria-hidden={false}
       autoPlay={false}
       className={null}
       classNames={Object {}}
@@ -794,7 +794,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
       zoom={false}
     >
       <div
-        aria-hidden={null}
+        aria-hidden={false}
         className="css-1hlki0z"
       >
         <ReactIdSwiper
