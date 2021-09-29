@@ -10,6 +10,7 @@ type Props = {
   renderLabel: ({ open: boolean }) => void,
   children: React.Node,
   handleLabel?: string,
+  role?: string,
   testId?: string,
   className?: string,
   contentClassName?: string,
@@ -26,6 +27,7 @@ function Accordion(props: Props) {
   const {
     renderLabel,
     handleLabel,
+    role,
     children,
     testId,
     className,
@@ -47,7 +49,7 @@ function Accordion(props: Props) {
         const clickHandlers = {
           onClick: open ? handleClose : handleOpen,
           onKeyDown: open ? handleClose : handleOpen,
-          role: 'button',
+          role,
           tabIndex: '0',
         };
 
@@ -110,6 +112,7 @@ Accordion.defaultProps = {
   className: null,
   contentClassName: null,
   handleLabel: null,
+  role: 'button',
   testId: null,
   openWithChevron: false,
   chevronPosition: 'right',
