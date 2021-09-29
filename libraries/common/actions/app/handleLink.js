@@ -10,7 +10,7 @@ import {
  * @param {boolean} fromPushMessage Wether the function was called for a push message
  * @return {Function}
  */
-export default function handleLink(payload, fromPushMessage = false) {
+export default function handleLink(payload, allowExternalLinks = false) {
   return (dispatch) => {
     let { link } = payload;
 
