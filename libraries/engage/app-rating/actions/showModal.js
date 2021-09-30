@@ -39,6 +39,12 @@ function redirectTo(url, setRated = false) {
 
     dispatch(historyPush({
       pathname: url,
+      // open appstore as external url and not in inAppBrwoser
+      ...setRated && {
+        state: {
+          target: '_blank',
+        },
+      },
     }));
   };
 }
