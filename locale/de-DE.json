@@ -254,5 +254,12 @@
         "month": "short"
       }
     }
+  },
+  "appRating": {
+    "yes": "Ja",
+    "no": "Nein",
+    "title": "App bewerten",
+    "message": "Gefällt Ihnen unsere App? Wir freuen uns über eine Bewertung!",
+    "rejectionApprovalMessage": "Möchten Sie uns Feedback geben? Das hilft uns die App weiter zu verbessern."
   }
 }
