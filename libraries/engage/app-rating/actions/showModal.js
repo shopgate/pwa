@@ -39,7 +39,7 @@ function redirectTo(url, setRated = false) {
 
     dispatch(historyPush({
       pathname: url,
-      // open appstore as external url and not in inAppBrwoser
+      // open appstore as external url and not in inAppBrowser
       ...setRated && {
         state: {
           target: '_blank',
