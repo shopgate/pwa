@@ -248,5 +248,12 @@
         "month": "short"
       }
     }
+  },
+  "appRating": {
+    "yes": "Ja",
+    "no": "Nee",
+    "title": "Beoordeel app",
+    "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
+    "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
   }
 }
