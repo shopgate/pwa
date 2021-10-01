@@ -3,15 +3,15 @@ import { OS_ANDROID, OS_IOS } from '@shopgate/pwa-common/constants/Device';
 /**
  * Generates a review app deep link based on the given provider
  * @param {string} bundleId app bundle id
- * @param {OS_ANDROID | OS_IOS} provider the name of the provider
+ * @param {OS_ANDROID | OS_IOS} platform the name of the platform
  * @return {string | null}
  */
-export function generateReviewLink(bundleId, provider) {
+export function generateReviewLink(bundleId, platform) {
   if (!bundleId) {
     return null;
   }
 
-  switch (provider) {
+  switch (platform) {
     case OS_IOS: {
       return `https://itunes.apple.com/app/id${bundleId}?action=write-review`;
     }
