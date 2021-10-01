@@ -39,6 +39,9 @@ function redirectTo(url, setRated = false) {
 
     dispatch(historyPush({
       pathname: url,
+      ...setRated && {
+        target: '_blank',
+      },
     }));
   };
 }
