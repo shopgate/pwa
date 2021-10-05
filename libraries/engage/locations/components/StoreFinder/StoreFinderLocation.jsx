@@ -7,6 +7,7 @@ import StoreFinderLocationHeader from './StoreFinderLocationHeader';
 import StoreFinderLocationDetails from './StoreFinderLocationDetails';
 import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
 import { container, selected, directionsButton } from './StoreFinderLocation.style';
+import { StoreFinderSelectLocationButton } from './StoreFinderSelectLocationButton';
 
 /**
  * @returns {JSX}
@@ -28,6 +29,7 @@ const StoreFinderLocation = () => {
       <StoreFinderLocationHeader />
       <ResponsiveContainer breakpoint="<=sm" appAlways>
         <StoreFinderLocationDetails />
+        <StoreFinderSelectLocationButton />
         <StoreFinderGetDirectionsButton address={store.address} className={directionsButton} />
       </ResponsiveContainer>
     </div>

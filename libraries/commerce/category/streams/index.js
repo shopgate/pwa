@@ -5,10 +5,12 @@ import {
   routeDidLeave$,
   routeWillLeave$,
 } from '@shopgate/pwa-common/streams';
+import { routeDidUpdate$ } from '@shopgate/pwa-common/streams/router';
 import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { filterWillLeave$ } from '../../filter/streams';
 import {
   CATEGORY_PATTERN,
   RECEIVE_ROOT_CATEGORIES,
@@ -82,3 +84,10 @@ export const categoryFiltersDidUpdate$ = filtersDidUpdate$
     const { pattern } = getCurrentRoute(getState());
     return (pattern === CATEGORY_PATTERN);
   });
+
+export const categoryDidUpdate$ = routeDidUpdate$
+  .filter(({ action }) => action?.route?.pattern === CATEGORY_PATTERN);
+
+export const categoryFiltersDidUpdateFromFilterPage$ = categoryDidUpdate$
+  .switchMap(() => filterWillLeave$.first())
+  .switchMap(() => categoryWillEnter$.first());

@@ -55,7 +55,7 @@ class FilterContent extends PureComponent {
    * @param {Object} nextProps The next component props.
    */
   UNSAFE_componentWillReceiveProps({ activeFilters, filters }) {
-    if (Object.keys(activeFilters).length === 0 && this.canReset) {
+    if ((!activeFilters || Object.keys(activeFilters).length === 0) && this.canReset) {
       this.reset();
       return;
     }

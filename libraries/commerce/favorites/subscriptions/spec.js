@@ -193,7 +193,7 @@ describe('Favorites - subscriptions', () => {
         expect(getState).toHaveBeenCalledTimes(1);
         expect(getFavoritesProductsIds).toHaveBeenCalledWith(getState());
         expect(getFavoritesProductsIds).toHaveBeenCalledTimes(1);
-        expect(fetchProductsById).toHaveBeenCalledWith(productIds, null, false);
+        expect(fetchProductsById).toHaveBeenCalledWith(productIds, null, false, false);
         expect(fetchProductsById).toHaveBeenCalledTimes(1);
 
         // Expect the correct actions to be dispatched

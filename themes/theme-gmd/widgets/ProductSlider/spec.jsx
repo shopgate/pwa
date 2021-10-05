@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { UnwrappedProductSlider as ProductSlider } from './index';
+import {
+  PRODUCT_SLIDER_WIDGET_LIMIT,
+  UnwrappedProductSlider as ProductSlider,
+} from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
   hasWebBridge: jest.fn(() => false),
@@ -120,7 +123,10 @@ describe('<ProductSlider />', () => {
     expect(getProducts).toHaveBeenCalledWith(
       settings.queryType,
       settings.queryParams,
-      { sort: settings.sortOrder },
+      {
+        sort: settings.sortOrder,
+        limit: PRODUCT_SLIDER_WIDGET_LIMIT,
+      },
       sliderId
     );
   });
