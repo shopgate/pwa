@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Grid, Link, ProductProperties, PriceInfo, SurroundPortals,
 } from '@shopgate/engage/components';
-import { CART_ITEM_IMAGE } from '@shopgate/engage/cart';
+import { CART_ITEM_IMAGE, CART_ITEM_QUANTITY_PICKER } from '@shopgate/engage/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex, useWidgetSettings } from '@shopgate/engage/core';
 import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
@@ -65,12 +65,17 @@ const Layout = (props, context) => {
             <ProductImage src={props.product.featuredImageUrl} />
           </SurroundPortals>
         </div>
-        <QuantityPicker
-          quantity={props.quantity}
-          editMode={props.editMode}
-          onChange={props.handleUpdate}
-          onToggleEditMode={props.toggleEditMode}
-        />
+        <SurroundPortals
+          portalName={CART_ITEM_QUANTITY_PICKER}
+          portalProps={{ context, ...props }}
+        >
+          <QuantityPicker
+            quantity={props.quantity}
+            editMode={props.editMode}
+            onChange={props.handleUpdate}
+            onToggleEditMode={props.toggleEditMode}
+          />
+        </SurroundPortals>
       </Grid.Item>
     </Grid>
   );
