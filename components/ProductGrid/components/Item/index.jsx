@@ -25,7 +25,7 @@ const Item = ({ product, display }) => (
         ? <FeaturedMedia
           type={product.featuredMedia.type}
           url={product.featuredMedia.url}
-          altText={product.featuredMedia.altText}
+          altText={product.featuredMedia.altText || product.name}
         />
         : <ItemImage
           productId={product.id}
