@@ -17,6 +17,7 @@ exports[`<CategoryListContent /> should render 1`] = `
   >
     <CategoryListContent
       categories={null}
+      categoriesFetching={false}
       categoryId="1234"
       childrenCount={null}
       dispatch={[Function]}
