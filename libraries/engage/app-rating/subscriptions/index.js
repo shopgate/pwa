@@ -1,6 +1,7 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import event from '@shopgate/pwa-core/classes/Event';
+import { checkoutSuccess$ } from '@shopgate/engage/checkout/streams';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { increaseAppStartCount, resetAppStartCount } from '../action-creators/appStart';
 import { increaseOrdersPlacedCount, resetOrdersPlacedCount } from '../action-creators/ordersPlaced';
 import {
@@ -16,6 +17,10 @@ import { showModal } from '../actions/showModal';
  * @param {Function} subscribe The subscribe function
  */
 export default function appRating(subscribe) {
+  if (!hasWebBridge) {
+    return;
+  }
+
   const {
     appRating: {
       appStarts,
@@ -91,43 +96,41 @@ export default function appRating(subscribe) {
   });
 
   // event subscriber to handle order placed ratings
-  subscribe(appDidStart$, ({ dispatch, getState }) => {
-    event.addCallback('checkoutSuccess', () => {
-      if (!bundleId || !bundleId.android || !bundleId.ios) {
-        return;
-      }
+  subscribe(checkoutSuccess$, ({ dispatch, getState }) => {
+    if (!bundleId || !bundleId.android || !bundleId.ios) {
+      return;
+    }
 
-      const state = getAppRatingState(getState());
+    const state = getAppRatingState(getState());
 
-      // if the user has already rated the app
-      // we'll cancel the operations as we
-      // don't have to show the modal once more
-      if (state.alreadyRated) {
-        return;
-      }
+    // if the user has already rated the app
+    // we'll cancel the operations as we
+    // don't have to show the modal once more
+    if (state.alreadyRated) {
+      return;
+    }
 
-      // cancel the process if user has
-      // already rejected rating the app
-      // many times before
-      if (state.rejectionCount >= rejectionMaxCount) {
-        return;
-      }
+    // cancel the process if user has
+    // already rejected rating the app
+    // many times before
+    if (state.rejectionCount >= rejectionMaxCount) {
+      return;
+    }
 
-      if (!ordersPlaced) {
-        return;
-      }
+    if (!ordersPlaced) {
+      return;
+    }
 
-      // orders placed count starts from 0
-      const mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
-      const hasRepeats = ordersPlaced.repeats === null ||
+    // orders placed count starts from 0
+    const mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
+    const hasRepeats = ordersPlaced.repeats === null ||
         state.ordersPlacedResetCount <= ordersPlaced.repeats;
 
-      dispatch(showModal(
-        resetOrdersPlacedCount,
-        increaseOrdersPlacedCount,
-        mustShowModal,
-        hasRepeats
-      ));
-    });
+    dispatch(showModal(
+      resetOrdersPlacedCount,
+      increaseOrdersPlacedCount,
+      mustShowModal,
+      hasRepeats
+    ));
   });
 }
