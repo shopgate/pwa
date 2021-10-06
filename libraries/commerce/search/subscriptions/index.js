@@ -12,6 +12,7 @@ import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilt
 import {
   searchRequesting$,
   searchReceived$,
+  searchFiltersDidUpdateFromFilterPage$,
 } from '../streams';
 import { SEARCH_PATTERN } from '../constants';
 
@@ -54,9 +55,8 @@ export default function search(subscribe) {
     }));
   });
 
-  subscribe(searchProductsNeedUpdate$, ({ action, dispatch, getState }) => {
-    const { filters } = action;
-    const { query } = getCurrentRoute(getState());
+  subscribe(searchProductsNeedUpdate$, ({ dispatch, getState }) => {
+    const { query, state: { filters } } = getCurrentRoute(getState());
     const { s: searchPhrase, sort } = query;
 
     dispatch(fetchSearchResults({
@@ -69,5 +69,17 @@ export default function search(subscribe) {
 
   subscribe(searchDidEnter$, ({ dispatch }) => {
     dispatch(fetchFilters());
+  });
+
+  subscribe(searchFiltersDidUpdateFromFilterPage$, ({ dispatch, action }) => {
+    const { filters } = action.route.state;
+    const { s: searchPhrase, sort } = action.route.query;
+
+    dispatch(fetchSearchResults({
+      filters,
+      searchPhrase,
+      sort,
+      ...buildFetchSearchResultsParams(),
+    }));
   });
 }

@@ -35,5 +35,6 @@ export { getThemeAssets } from './getThemeAssets';
 export { getThemeColors } from './getThemeColors';
 export { getThemeConfig } from './getThemeConfig';
 export { getThemeSettings } from './getThemeSettings';
+export { getThemeStyles } from './getThemeStyles';
 export { getWidgetConfig } from './getWidgetConfig';
 export { getWidgetSettings } from './getWidgetSettings';
