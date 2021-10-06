@@ -275,6 +275,7 @@
             "slidesPerView": 2.3
           }
         },
+        "styles": {},
         "typography": {
           "family": "Roboto, Arial, sans-serif",
           "rootSize": 16,
