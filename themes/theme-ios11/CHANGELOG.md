@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.3.4](https://github.com/shopgate/pwa/compare/v7.3.3...v7.3.4) (2021-10-06)
+
+#### :bug: Bug Fix
+* [#1139](https://github.com/shopgate/pwa/pull/1139) Reset default <button> color introduced with iOS15 ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
