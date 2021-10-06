@@ -266,6 +266,7 @@
             "slidesPerView": 2.3
           }
         },
+        "styles": {},
         "typography": {
           "family": "system, -apple-system, \"SF Pro Display\", \"Helvetica Neue\", \"Lucida Grande\"",
           "rootSize": 17,
