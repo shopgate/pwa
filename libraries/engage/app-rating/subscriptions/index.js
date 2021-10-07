@@ -1,6 +1,7 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { checkoutSuccess$ } from '@shopgate/engage/checkout/streams';
+import event from '@shopgate/pwa-core/classes/Event';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { increaseAppStartCount, resetAppStartCount } from '../action-creators/appStart';
 import { increaseOrdersPlacedCount, resetOrdersPlacedCount } from '../action-creators/ordersPlaced';
@@ -95,8 +96,12 @@ export default function appRating(subscribe) {
     ));
   });
 
-  // event subscriber to handle order placed ratings
-  subscribe(checkoutSuccess$, ({ dispatch, getState }) => {
+  /**
+   * Handle checkout success logic
+   * @param {Function} dispatch dispatch
+   * @param {Function} getState getState
+   */
+  const handleCheckoutSuccess = (dispatch, getState) => {
     if (!bundleId || !bundleId.android || !bundleId.ios) {
       return;
     }
@@ -124,7 +129,7 @@ export default function appRating(subscribe) {
     // orders placed count starts from 0
     const mustShowModal = state.ordersPlacedCount === ordersPlaced.value - 1;
     const hasRepeats = ordersPlaced.repeats === null ||
-        state.ordersPlacedResetCount <= ordersPlaced.repeats;
+      state.ordersPlacedResetCount <= ordersPlaced.repeats;
 
     dispatch(showModal(
       resetOrdersPlacedCount,
@@ -132,5 +137,17 @@ export default function appRating(subscribe) {
       mustShowModal,
       hasRepeats
     ));
+  };
+
+  // subscriber to handle order placed ratings from native checkout
+  subscribe(checkoutSuccess$, ({ dispatch, getState }) => {
+    handleCheckoutSuccess(dispatch, getState);
+  });
+
+  // event subscriber to handle order placed ratings from webcheckout
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
+    event.addCallback('checkoutSuccess', () => {
+      handleCheckoutSuccess(dispatch, getState);
+    });
   });
 }
