@@ -1,5 +1,17 @@
 # Changelog
 
+## [v6.17.1](https://github.com/shopgate/pwa/compare/...v6.17.1) (2021-10-08)
+
+#### :rocket: Enhancement
+* [#1125](https://github.com/shopgate/pwa/pull/1125) App rating feature ([@AienTech](https://github.com/AienTech))
+* [#1138](https://github.com/shopgate/pwa/pull/1138) Added handling of external URLs via the new push message system ([@fkloes](https://github.com/fkloes))
+* [#1122](https://github.com/shopgate/pwa/pull/1122) Add portals to EffectivityDates ([@AienTech](https://github.com/AienTech))
+* [#1118](https://github.com/shopgate/pwa/pull/1118) CCP-2464 ([@AienTech](https://github.com/AienTech))
+* [#1117](https://github.com/shopgate/pwa/pull/1117) shorten long coupon codes ([@AienTech](https://github.com/AienTech))
+* [#1115](https://github.com/shopgate/pwa/pull/1115) add couple of new css classes ([@AienTech](https://github.com/AienTech))
+* [#1114](https://github.com/shopgate/pwa/pull/1114) Quantity picker improvements ([@AienTech](https://github.com/AienTech))
+
+
 ## [v6.16.2](https://github.com/shopgate/pwa/compare/v6.16.1...v6.16.2) (2021-07-21)
 
 #### :rocket: Enhancement
