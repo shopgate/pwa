@@ -602,6 +602,36 @@
         "type": "json",
         "label": "Mapping for percentage of users who should get the feature enabled"
       }
+    },
+    "appRating": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "minDaysBetweenPopups": 90,
+        "rejectionMaxCount": 2,
+        "askForFeedback": true,
+        "feedbackLink": null,
+        "bundleId": {
+          "android": null,
+          "ios": null
+        },
+        "ordersPlaced": {
+          "value": 1,
+          "repeats": null
+        },
+        "timeInterval": {
+          "value": 30,
+          "repeats": null
+        },
+        "appStarts": {
+          "value": 10,
+          "repeats": null
+        }
+      },
+      "params": {
+        "type": "json",
+        "label": "App rating settings"
+      }
     }
   }
 }
