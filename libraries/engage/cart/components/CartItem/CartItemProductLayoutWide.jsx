@@ -6,6 +6,7 @@ import {
   QuantityLabel,
   ConditionalWrapper,
   MessageBar,
+  SurroundPortals,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
@@ -14,7 +15,7 @@ import {
   ProductName,
   ITEM_PATH,
 } from '@shopgate/engage/product';
-import { CART_ITEM_NAME } from '@shopgate/pwa-common-commerce/cart';
+import { CART_ITEM_NAME, CART_ITEM_QUANTITY_PICKER } from '@shopgate/pwa-common-commerce/cart';
 import { bin2hex } from '@shopgate/engage/core';
 import { getLineItemActiveStatus } from '@shopgate/engage/orders';
 import { CartContextMenuChangeFulfillment } from '@shopgate/engage/locations';
@@ -121,17 +122,24 @@ const CartItemProductLayoutWide = () => {
         )}
         <div className={column}>
           { isEditable ? (
-            <CartUnitQuantityPicker
-              productId={product.id}
-              value={isOrderDetails ? cartItem.orderedQuantity : cartItem.quantity}
-              unit={product.unit}
-              hasCatchWeight={product.hasCatchWeight}
-              onChange={handleUpdate}
-              classNames={{
-                withDecimals: quantityPicker,
-                withoutDecimals: quantityPicker,
+            <SurroundPortals
+              portalName={CART_ITEM_QUANTITY_PICKER}
+              portalProps={{
+                product, cartItem, isOrderDetails, handleUpdate, isEditable,
               }}
-            />
+            >
+              <CartUnitQuantityPicker
+                productId={product.id}
+                value={isOrderDetails ? cartItem.orderedQuantity : cartItem.quantity}
+                unit={product.unit}
+                hasCatchWeight={product.hasCatchWeight}
+                onChange={handleUpdate}
+                classNames={{
+                  withDecimals: quantityPicker,
+                  withoutDecimals: quantityPicker,
+                }}
+              />
+            </SurroundPortals>
           ) : (
             <QuantityLabel
               className={quantityPickerDisabled}
