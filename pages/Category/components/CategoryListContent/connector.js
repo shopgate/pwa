@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import {
   getCategoryChildren,
+  areCategoryChildrenFetching,
   getCategoryChildCount,
   hasCategoryChildren,
 } from '@shopgate/pwa-common-commerce/category/selectors';
@@ -14,6 +15,7 @@ import {
  */
 const mapStateToProps = (state, props) => ({
   categories: getCategoryChildren(state, props),
+  categoriesFetching: areCategoryChildrenFetching(state, props),
   hasChildren: hasCategoryChildren(state, props),
   childrenCount: getCategoryChildCount(state, props),
 });
