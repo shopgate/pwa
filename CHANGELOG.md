@@ -1,5 +1,15 @@
 # Changelog
 
+## [v7.4.0](https://github.com/shopgate/pwa/compare/v7.3.3...v7.4.0) (2021-10-12)
+
+#### :rocket: Enhancement
+* [#1140](https://github.com/shopgate/pwa/pull/1140) Added new portal cart.item.quantity-picker to cartItems ([@Carsten89](https://github.com/Carsten89))
+* [#1136](https://github.com/shopgate/pwa/pull/1136) Adds feature to request an app rating from users ([@AienTech](https://github.com/AienTech))
+
+#### :bug: Bug Fix
+* [#1139](https://github.com/shopgate/pwa/pull/1139) Reset default <button> color introduced with iOS15 ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
