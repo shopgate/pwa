@@ -25,6 +25,7 @@ import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import account from '@shopgate/engage/account/reducers';
 import extensions from 'Extensions/reducers';
 import tabBar from 'Components/TabBar/reducer';
+import appRating from '@shopgate/engage/app-rating/reducers';
 
 persistedReducers.set([
   'cart.data',
@@ -35,6 +36,7 @@ persistedReducers.set([
   'locations.userSearch',
   'url',
   'user',
+  'appRating',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -71,6 +73,7 @@ const reducers = combineReducers({
   }),
   url,
   user,
+  appRating,
 });
 
 export default reducers;
