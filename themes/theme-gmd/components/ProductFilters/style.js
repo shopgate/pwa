@@ -5,6 +5,7 @@ export const filters = css({
   top: 0,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     top: 64,
+    marginBottom: 16,
   },
   [responsiveMediaQuery('<=xs', { webOnly: true })]: {
     top: 56,

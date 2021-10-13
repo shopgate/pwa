@@ -24,6 +24,7 @@ import orders from '@shopgate/engage/orders/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import account from '@shopgate/engage/account/reducers';
+import appRating from '@shopgate/engage/app-rating/reducers';
 import extensions from 'Extensions/reducers';
 
 persistedReducers.set([
@@ -35,6 +36,7 @@ persistedReducers.set([
   'locations.userSearch',
   'url',
   'user',
+  'appRating',
   ...(hasWebBridge() ? 'menu' : []),
 ]);
 
@@ -69,6 +71,7 @@ const reducers = combineReducers({
   search,
   url,
   user,
+  appRating,
 });
 
 export default reducers;

@@ -163,6 +163,17 @@ export const getCategoryChildren = createSelector(
   }
 );
 
+export const areCategoryChildrenFetching = createSelector(
+  [getChildCategoriesForCategory],
+  (childCategories) => {
+    if (!childCategories || !childCategories.isFetching) {
+      return false;
+    }
+
+    return childCategories.isFetching;
+  }
+);
+
 /**
  * Retrieves the number of products inside a category.
  * The category can either be referenced by a categoryId within the props,

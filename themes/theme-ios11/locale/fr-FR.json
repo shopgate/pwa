@@ -785,5 +785,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Oui",
+    "no": "Non",
+    "title": "Évaluer l'application",
+    "message": "Vous aimez notre application ? Nous serions heureux de recevoir une évaluation !",
+    "rejectionApprovalMessage": "Vous souhaitez nous faire part de vos commentaires ? Cela nous aidera à améliorer encore l'application."
   }
 }

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import {
   Grid, Link, TextLink, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
 } from '@shopgate/engage/components';
-import { CART_ITEM_IMAGE } from '@shopgate/pwa-common-commerce/cart';
+import { CART_ITEM_IMAGE, CART_ITEM_QUANTITY_PICKER } from '@shopgate/pwa-common-commerce/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex } from '@shopgate/engage/core';
 import { ProductImage, PriceInfo, ITEM_PATH } from '@shopgate/engage/product';
@@ -119,15 +119,28 @@ export function CartItemProductLayout() {
             </ConditionalWrapper>
           </div>
           { !isOrderDetails && (
-            <CartItemQuantityPicker
-              unit={product.unit}
-              hasCatchWeight={product.hasCatchWeight}
-              quantity={cartItem.quantity}
-              editMode={editMode}
-              onChange={handleUpdate}
-              onToggleEditMode={toggleEditMode}
-              disabled={!isEditable}
-            />
+            <SurroundPortals
+              portalName={CART_ITEM_QUANTITY_PICKER}
+              portalProps={{
+                product,
+                cartItem,
+                editMode,
+                handleUpdate,
+                toggleEditMode,
+                isEditable,
+                isOrderDetails,
+              }}
+            >
+              <CartItemQuantityPicker
+                unit={product.unit}
+                hasCatchWeight={product.hasCatchWeight}
+                quantity={cartItem.quantity}
+                editMode={editMode}
+                onChange={handleUpdate}
+                onToggleEditMode={toggleEditMode}
+                disabled={!isEditable}
+              />
+            </SurroundPortals>
           )}
         </Grid.Item>
       </Grid>
