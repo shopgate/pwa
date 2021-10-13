@@ -44,6 +44,8 @@ import page from 'Pages/Page/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+// App rating
+import appRating from '@shopgate/engage/app-rating/subscriptions';
 // Extensions
 import extensions from 'Extensions/subscribers';
 
@@ -82,6 +84,8 @@ const subscriptions = [
   engageCheckout,
   engageRegistration,
   engageTracking,
+  // App rating subscribers
+  appRating,
   // Theme subscribers.
   app,
   viewport,
