@@ -9,7 +9,12 @@ describe('<Link />', () => {
   const state = { x: 5 };
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it('renders with children', () => {
@@ -40,7 +45,7 @@ describe('<Link />', () => {
     ));
 
     wrapper.find('div').simulate('click');
-
+    jest.runAllTimers();
     expect(historyPush).toHaveBeenLastCalledWith({
       pathname,
       state,
@@ -61,7 +66,7 @@ describe('<Link />', () => {
     ));
 
     wrapper.find('div').simulate('click');
-
+    jest.runAllTimers();
     expect(historyReplace).toHaveBeenLastCalledWith({
       pathname,
       state,
