@@ -216,7 +216,7 @@ class ProductImageSlider extends Component {
  * @return {JSX}
  */
 const Wrapper = props => (
-  <SurroundPortals name={PRODUCT_IMAGE} portalProps={props}>
+  <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
     <ProductImageSlider {...props} />
   </SurroundPortals>
 );

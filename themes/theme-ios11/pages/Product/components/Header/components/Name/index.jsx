@@ -1,9 +1,11 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { PRODUCT_NAME, PRODUCT_NAME_AFTER, PRODUCT_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import {
+  PRODUCT_NAME,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { SurroundPortals } from '@shopgate/engage/components';
 import connect from './connector';
 import styles from './style';
 
@@ -48,14 +50,10 @@ Content.defaultProps = {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Name = ({ longName, name }) => (
-  <Fragment>
-    <Portal name={PRODUCT_NAME_BEFORE} />
-    <Portal name={PRODUCT_NAME}>
-      <Content name={name} longName={longName} />
-    </Portal>
-    <Portal name={PRODUCT_NAME_AFTER} />
-  </Fragment>
+const Name = props => (
+  <SurroundPortals portalName={PRODUCT_NAME} portalProps={props}>
+    <Content {...props} />
+  </SurroundPortals>
 );
 
 Name.propTypes = {

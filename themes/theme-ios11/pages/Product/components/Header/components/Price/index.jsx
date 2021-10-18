@@ -70,7 +70,7 @@ Content.defaultProps = {
  */
 const Price = props => (
   <Fragment>
-    <SurroundPortals name={PRODUCT_PRICE} portalProps={props}>
+    <SurroundPortals portalName={PRODUCT_PRICE} portalProps={props}>
       <Content {...props} />
     </SurroundPortals>
   </Fragment>
