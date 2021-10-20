@@ -151,7 +151,7 @@ clean:
 		lerna clean --yes;
 		rm -rf ./node_modules/;
 		rm -rf ./.cache-loader/;
-		node ./scripts/init-subtrees.js;
+		# node ./scripts/init-subtrees.js;
 		lerna bootstrap;
 
 
@@ -360,7 +360,7 @@ publish-to-github:
 		git push origin "releases/$(RELEASE_NAME)";
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		# UPDATING MASTER FOR STABLE RELEASE
-		$(call push-subtrees-to-git, master)
+		# $(call push-subtrees-to-git, master)
 		git reset --hard;
 		git merge origin/master
 		git push origin "releases/$(RELEASE_NAME)"
@@ -369,7 +369,7 @@ ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		git status;
 else
 		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branch)
-		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
+		# $(call push-subtrees-to-git, releases/$(RELEASE_NAME))
 endif
 
 define build-changelog
@@ -395,9 +395,9 @@ define push-subtrees-to-git
 endef
 
 define update-subtree-remotes
-		-git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
-		git reset --hard;
-		time git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		# -git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		# git reset --hard;
+		# time git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
 
 endef
 
@@ -446,8 +446,8 @@ endef
 ####################################################################################################
 subtrees-force-push:
 	echo " FORCE push subtrees"
-	$(foreach remote, $(THEMES), $(call subtree-force-push, $(remote), themes/$(remote)))
-	$(foreach remote, $(EXTENSIONS), $(call subtree-force-push, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote)))
+	# $(foreach remote, $(THEMES), $(call subtree-force-push, $(remote), themes/$(remote)))
+	# $(foreach remote, $(EXTENSIONS), $(call subtree-force-push, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote)))
 
 define subtree-force-push
 		git push $(strip $(1)) `git subtree split --prefix=$(strip $(2)) master`:master --force
@@ -459,14 +459,14 @@ endef
 ####################################################################################################
 subtrees-re-attach:
 	echo " Re-attach subtrees"
-	$(foreach remote, $(THEMES), $(call subtree-re-attach, $(remote), themes/$(remote)))
-	$(foreach remote, $(EXTENSIONS), $(call subtree-re-attach, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote)))
+	# $(foreach remote, $(THEMES), $(call subtree-re-attach, $(remote), themes/$(remote)))
+	# $(foreach remote, $(EXTENSIONS), $(call subtree-re-attach, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote)))
 
 define subtree-re-attach
-	rm -fr $(strip $(2))
-	git add .
-	git commit -m "Remove subtree of $(2)"
-	git subtree add --prefix=$(strip $(2)) $(strip $(1)) master
+	# rm -fr $(strip $(2))
+	# git add .
+	# git commit -m "Remove subtree of $(2)"
+	# git subtree add --prefix=$(strip $(2)) $(strip $(1)) master
 
 endef
 
