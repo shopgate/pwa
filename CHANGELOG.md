@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.17.6](https://github.com/shopgate/pwa/compare/...v6.17.6) (2021-10-20)
+
+#### :rocket: Enhancement
+* [#1125](https://github.com/shopgate/pwa/pull/1125) App rating feature ([@AienTech](https://github.com/AienTech))
+* [#1138](https://github.com/shopgate/pwa/pull/1138) Added handling of external URLs via the new push message system ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.16.3](https://github.com/shopgate/pwa/compare/v6.16.2...v6.16.3) (2021-08-30)
 
 #### :rocket: Enhancement
