@@ -12,7 +12,6 @@ const { themes, extensions } = repos;
  * @param {string} url The repository URL.
  */
 async function initSubtree(group, name, url) {
-  return;
   const prefix = `${group}/${name}`;
 
   if (fs.existsSync(`./${prefix}`)) {
