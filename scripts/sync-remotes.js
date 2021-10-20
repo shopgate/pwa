@@ -11,6 +11,7 @@ const { themes, extensions } = repos;
  * @param {string} pathname The local pathname.
  */
 async function synchRepo(remote, pathname) {
+  return;
   const cmd = `git subtree push --prefix=${pathname} ${remote} master`;
 
   try {
