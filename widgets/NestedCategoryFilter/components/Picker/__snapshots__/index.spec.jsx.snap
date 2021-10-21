@@ -90,6 +90,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -204,12 +205,13 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                   </Grid>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -439,6 +441,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -553,12 +556,13 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   </Grid>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -828,6 +832,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -942,12 +947,13 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   </Grid>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -1178,6 +1184,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -1292,12 +1299,13 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                   </Grid>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -1526,6 +1534,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -1683,6 +1692,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -1835,6 +1845,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title=""
         >
           <section
