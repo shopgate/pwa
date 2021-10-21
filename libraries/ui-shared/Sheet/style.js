@@ -15,11 +15,16 @@ const container = css({
   margin: '0 auto',
 }).toString();
 
+const containerFullScreen = css({
+  height: '100%',
+});
+
 const shadow = css({
   boxShadow: themeConfig.shadows.sheet,
 }).toString();
 
 const content = css({
+  position: 'relative',
   maxHeight: [
     `calc(100vh - ${themeConfig.variables.navigator.height}px)`,
     `calc(100vh - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
@@ -52,6 +57,7 @@ const drawerAnimation = {
 
 export default {
   container,
+  containerFullScreen,
   shadow,
   content,
   drawerAnimation,

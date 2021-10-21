@@ -10,12 +10,20 @@ import styles from './style';
  */
 const List = (props) => {
   const {
-    items, onClose, onSelect, selectedIndex,
+    items, onClose, onSelect, selectedIndex, query,
   } = props;
 
+  let filteredItems = items;
+  if (query && query.length) {
+    filteredItems = items.filter(({ label = '' }) => {
+      const searchLabel = label.replace(/ /g, '').toLowerCase();
+      const searchValue = query.replace(/ /g, '').toLowerCase();
+      return searchLabel.includes(searchValue);
+    });
+  }
   return (
     <ul className="engage__picker_list">
-      {items.map((item, currentIndex) => (
+      {filteredItems.map((item, currentIndex) => (
         <li
           key={item.value}
           className={classNames({
@@ -43,12 +51,14 @@ List.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onSelect: PropTypes.func.isRequired,
   onClose: PropTypes.func,
+  query: PropTypes.string,
   selectedIndex: PropTypes.number,
 };
 
 List.defaultProps = {
   onClose: () => { },
   selectedIndex: null,
+  query: '',
 };
 
 export default List;

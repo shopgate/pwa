@@ -136,6 +136,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label One"
               >
                 <section
@@ -434,6 +435,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label One"
               >
                 <section
@@ -548,12 +550,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         </Grid>
                       </Header>
                       <div
-                        className="css-1aon90l"
+                        className="css-1rwhgm2"
                         onScroll={[Function]}
                       >
                         <SheetList
                           key=".0"
                           onClose={[Function]}
+                          query=""
                         >
                           <SheetItem
                             item={
@@ -956,6 +959,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label One"
               >
                 <section
@@ -1099,6 +1103,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label Two"
               >
                 <section
@@ -1225,6 +1230,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title=""
               >
                 <section
@@ -1555,6 +1561,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label One"
               >
                 <section
@@ -1669,12 +1676,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         </Grid>
                       </Header>
                       <div
-                        className="css-1aon90l"
+                        className="css-1rwhgm2"
                         onScroll={[Function]}
                       >
                         <SheetList
                           key=".0"
                           onClose={[Function]}
+                          query=""
                         >
                           <SheetItem
                             item={
@@ -1890,6 +1898,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label Two"
               >
                 <section
@@ -2206,6 +2215,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label One"
               >
                 <section
@@ -2320,12 +2330,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         </Grid>
                       </Header>
                       <div
-                        className="css-1aon90l"
+                        className="css-1rwhgm2"
                         onScroll={[Function]}
                       >
                         <SheetList
                           key=".0"
                           onClose={[Function]}
+                          query=""
                         >
                           <SheetItem
                             item={
@@ -2541,6 +2552,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label Two"
               >
                 <section
@@ -2655,12 +2667,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         </Grid>
                       </Header>
                       <div
-                        className="css-1aon90l"
+                        className="css-1rwhgm2"
                         onScroll={[Function]}
                       >
                         <SheetList
                           key=".0"
                           onClose={[Function]}
+                          query=""
                         >
                           <SheetItem
                             item={
@@ -3025,6 +3038,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label One"
               >
                 <section
@@ -3303,6 +3317,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                 onClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
+                showSearch={false}
                 title="Label One"
               >
                 <section
@@ -3417,12 +3432,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         </Grid>
                       </Header>
                       <div
-                        className="css-1aon90l"
+                        className="css-1rwhgm2"
                         onScroll={[Function]}
                       >
                         <SheetList
                           key=".0"
                           onClose={[Function]}
+                          query=""
                         >
                           <SheetItem
                             item={

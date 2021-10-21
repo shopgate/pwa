@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
+import SearchBar from './components/SearchBar';
 import Header from './components/Header';
 import styles from './style';
 
@@ -37,6 +38,7 @@ class Sheet extends Component {
     onClose: PropTypes.func,
     onDidOpen: PropTypes.func,
     onOpen: PropTypes.func,
+    showSearch: PropTypes.bool,
     title: Header.propTypes.title,
   };
 
@@ -55,6 +57,7 @@ class Sheet extends Component {
     onClose: () => { },
     onDidOpen: () => { },
     onOpen: () => { },
+    showSearch: false,
     title: '',
   };
 
@@ -70,6 +73,7 @@ class Sheet extends Component {
     this.state = {
       isOpen: props.isOpen,
       scrolled: false,
+      query: '',
     };
   }
 
@@ -130,6 +134,14 @@ class Sheet extends Component {
   };
 
   /**
+   * New value from SearchBar
+   * @param {string} value .
+   *  */
+  handleSearchInput = (value) => {
+    this.setState({ query: value });
+  }
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -139,13 +151,14 @@ class Sheet extends Component {
         child,
         // Only add onClose prop to other components
         typeof child.type === 'function' && this.props.onClose !== null ? (
-          { onClose: this.props.onClose }
+          { onClose: this.props.onClose, query: this.state.query }
         ) : {}
       )
     ));
 
     const drawerClassNames = classNames(
       styles.container,
+      { [styles.containerFullScreen]: this.props.showSearch },
       { [this.props.className]: this.props.className }
     );
 
@@ -178,6 +191,20 @@ class Sheet extends Component {
             onScroll={this.handleScroll}
             className={contentClassNames}
           >
+            {this.props.showSearch && (
+            <div
+              style={{
+                backgroundColor: 'white',
+                position: 'sticky',
+                width: '100%',
+                top: 0,
+                zIndex: 2,
+              }}
+              className=""
+            >
+              <SearchBar handleChange={this.handleSearchInput} />
+            </div>
+            )}
             {children}
           </div>
         </Drawer>

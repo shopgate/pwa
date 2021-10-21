@@ -11,6 +11,7 @@ exports[`<Sheet /> should open 1`] = `
   onClose={[Function]}
   onDidOpen={[Function]}
   onOpen={[Function]}
+  showSearch={false}
   title="Test-Title"
 >
   <section
@@ -125,7 +126,7 @@ exports[`<Sheet /> should open 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l"
+          className="css-1rwhgm2"
           onScroll={[Function]}
         >
           <div
@@ -241,7 +242,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l"
+      className="css-1rwhgm2"
       onScroll={[Function]}
     />
   </Drawer>
@@ -278,7 +279,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l"
+      className="css-1rwhgm2"
       onScroll={[Function]}
     />
   </Drawer>
@@ -320,7 +321,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
       title="Test-Title"
     />
     <div
-      className="css-1aon90l"
+      className="css-1rwhgm2"
       onScroll={[Function]}
     >
       <div
@@ -370,6 +371,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   }
   onDidOpen={[Function]}
   onOpen={[Function]}
+  showSearch={false}
   title="Test-Title"
 >
   <section
@@ -484,7 +486,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l"
+          className="css-1rwhgm2"
           onScroll={[Function]}
         >
           <div

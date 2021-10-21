@@ -207,7 +207,7 @@ class Picker extends Component {
       value: buttonValue,
       disabled: this.props.disabled,
       openList: this.props.disabled
-        ? null
+        ? () => {}
         : () => { this.toggleOpenState(true); },
     };
 
