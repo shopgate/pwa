@@ -140,7 +140,9 @@
     "modal": {
       "message": "To add this product to your cart, please select the variants.",
       "confirm": "Select variants"
-    }
+    },
+    "open_list": "Open list.",
+    "close_list": "Close list."
   },
   "filter": {
     "sort": {
@@ -180,6 +182,7 @@
       "insufficientstock": "Sorry, this product is currently out of stock."
     },
     "description_heading": "About",
+    "share": "Share product",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
@@ -191,6 +194,8 @@
     "go_to_cart": "Go to cart",
     "no_more_found": "The item \"{name}\" is no longer available.",
     "quantity": "Quantity",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
     "minOrderQuantity": "Min. order quantity: {quantity} {unit}",
     "maxOrderQuantity": "Max. order quantity: {quantity} {unit}",
     "available": {

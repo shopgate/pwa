@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { i18n } from '@shopgate/engage/core';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
@@ -113,6 +114,7 @@ const UnitQuantityPicker = ({
         type="secondary"
         disabled={!allowDecrement || disabled}
         onClick={handleDecrement}
+        aria-label={i18n.text('product.decrease_quantity')}
       >
         -
       </RippleButton>
@@ -126,6 +128,7 @@ const UnitQuantityPicker = ({
           disabled={disabled}
           minValue={minValue}
           maxValue={maxValue}
+          aria-label={i18n.text('product.quantity')}
         />
       </span>
 
@@ -137,6 +140,7 @@ const UnitQuantityPicker = ({
           [styles.disabled]: disabled,
         })}
         onClick={handleIncrement}
+        aria-label={i18n.text('product.increase_quantity')}
       >
         +
       </RippleButton>

@@ -17,6 +17,7 @@ Array [
       handleLabel={null}
       openWithChevron={false}
       renderLabel={[Function]}
+      role="button"
       startOpened={false}
       testId="product-properties-group-Group 1"
     >
@@ -57,6 +58,7 @@ Array [
       handleLabel={null}
       openWithChevron={false}
       renderLabel={[Function]}
+      role="button"
       startOpened={false}
       testId="product-properties-group-Group 2"
     >

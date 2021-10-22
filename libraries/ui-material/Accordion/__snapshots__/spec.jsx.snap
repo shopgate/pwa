@@ -7,6 +7,7 @@ exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
   contentClassName={null}
   handleLabel={null}
   openWithChevron={false}
+  role="button"
   startOpened={false}
   testId="Some Thing"
 />
@@ -20,6 +21,7 @@ exports[`<Accordion /> should not render without children 1`] = `
   handleLabel={null}
   openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
   startOpened={false}
   testId="Some Thing"
 />
@@ -33,6 +35,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
   handleLabel={null}
   openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
   startOpened={false}
   testId="Some Thing"
 >
@@ -53,6 +56,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
     >
       <div />
       <div
+        aria-label="favorites.open_list"
         className={
           Object {
             "data-css-ghq21z": "",

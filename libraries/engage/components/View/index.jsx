@@ -60,7 +60,7 @@ ViewContainer.propTypes = {
 };
 
 ViewContainer.defaultProps = {
-  'aria-hidden': true,
+  'aria-hidden': false,
   background: colors.light,
   children: null,
   noScrollOnKeyboard: false,

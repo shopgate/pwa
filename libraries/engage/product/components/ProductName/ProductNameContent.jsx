@@ -11,9 +11,12 @@ const ProductNameContent = ({ name, ellipsis, rows }) => (
     condition={ellipsis}
     wrapper={children =>
       <Ellipsis rows={rows !== null ? rows : undefined}>
-        {children}
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+        <span tabIndex="0">
+          {children}
+        </span>
       </Ellipsis>
-      }
+    }
   >
     <span dangerouslySetInnerHTML={{ __html: name }} />
   </ConditionalWrapper>

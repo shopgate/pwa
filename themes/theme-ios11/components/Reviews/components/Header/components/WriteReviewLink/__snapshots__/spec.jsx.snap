@@ -17,14 +17,15 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
     productId="foo"
   >
     <div
-      aria-hidden={true}
       data-test-id="writeReview"
     >
       <Connect(ButtonLink)
+        aria-label="reviews.button_add"
         href="/item/666f6f/write_review"
         noGap={true}
       >
         <ButtonLink
+          aria-label="reviews.button_add"
           className=""
           disabled={false}
           flat={true}
@@ -33,6 +34,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
           noGap={true}
         >
           <ActionButton
+            aria-label="reviews.button_add"
             className=""
             disabled={false}
             flat={true}

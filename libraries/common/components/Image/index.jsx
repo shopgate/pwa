@@ -206,6 +206,7 @@ class Image extends Component {
           src={src}
           style={inlineStyles}
           alt={this.props.alt}
+          aria-label={this.props.alt}
           role="presentation"
           data-test-id="image"
         />
