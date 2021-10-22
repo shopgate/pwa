@@ -192,16 +192,7 @@ class Sheet extends Component {
             className={contentClassNames}
           >
             {this.props.showSearch && (
-            <div
-              style={{
-                backgroundColor: 'white',
-                position: 'sticky',
-                width: '100%',
-                top: 0,
-                zIndex: 2,
-              }}
-              className=""
-            >
+            <div className={styles.searchBarWrapper}>
               <SearchBar handleChange={this.handleSearchInput} />
             </div>
             )}

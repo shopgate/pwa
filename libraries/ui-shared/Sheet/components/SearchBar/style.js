@@ -43,13 +43,10 @@ const icon = css({
   fontSize: '1.235rem',
 }).toString();
 
-const searchBarWrapper = css({});
-
 export default {
   container,
   inputWrapper,
   input,
   label,
   icon,
-  searchBarWrapper,
 };

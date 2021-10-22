@@ -16,8 +16,8 @@ const List = (props) => {
   let filteredItems = items;
   if (query && query.length) {
     filteredItems = items.filter(({ label = '' }) => {
-      const searchLabel = label.replace(/ /g, '').toLowerCase();
-      const searchValue = query.replace(/ /g, '').toLowerCase();
+      const searchLabel = label.replaceAll(' ', '').toLowerCase();
+      const searchValue = query.replaceAll(' ', '').toLowerCase();
       return searchLabel.includes(searchValue);
     });
   }

@@ -19,6 +19,14 @@ const containerFullScreen = css({
   height: '100%',
 });
 
+const searchBarWrapper = css({
+  backgroundColor: 'white',
+  position: 'sticky',
+  width: '100%',
+  top: 0,
+  zIndex: 2,
+});
+
 const shadow = css({
   boxShadow: themeConfig.shadows.sheet,
 }).toString();
@@ -58,6 +66,7 @@ const drawerAnimation = {
 export default {
   container,
   containerFullScreen,
+  searchBarWrapper,
   shadow,
   content,
   drawerAnimation,
