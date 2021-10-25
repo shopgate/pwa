@@ -3,8 +3,9 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { isIOSTheme } from '@shopgate/engage/core';
+import { isIOSTheme, getThemeSettings } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
@@ -54,6 +55,8 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
       paypalButton.current.close();
     }
 
+    const customSettings = getThemeSettings('PayPal') || {};
+
     paypalButton.current = paypal.Buttons({
       fundingSource: fundingSource || paypal.FUNDING.PAYPAL,
       createOrder: () => {
@@ -78,6 +81,7 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
       style: {
         label: 'buynow',
         color: 'white',
+        ...customSettings,
       },
     });
     paypalButton.current.render(button.current);
