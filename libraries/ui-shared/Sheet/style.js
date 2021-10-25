@@ -16,7 +16,7 @@ const container = css({
 }).toString();
 
 const containerFullScreen = css({
-  height: '100%',
+  height: '100vh',
 });
 
 const searchBarWrapper = css({

@@ -158,12 +158,12 @@ class Sheet extends Component {
 
     const drawerClassNames = classNames(
       styles.container,
-      { [styles.containerFullScreen]: this.props.showSearch },
       { [this.props.className]: this.props.className }
     );
 
     const contentClassNames = classNames(
       styles.content,
+      { [styles.containerFullScreen]: this.props.showSearch },
       { [this.props.contentClassName]: this.props.contentClassName },
       { [styles.shadow]: !this.props.backdrop }
     );
