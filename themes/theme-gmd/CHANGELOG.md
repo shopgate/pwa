@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.5.0](https://github.com/shopgate/pwa/compare/v7.4.1...v7.5.0) (2021-10-26)
+
+#### :rocket: Enhancement
+* [#1142](https://github.com/shopgate/pwa/pull/1142) Mutable actions for scanner ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
