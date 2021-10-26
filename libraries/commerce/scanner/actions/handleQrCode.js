@@ -1,6 +1,7 @@
 import { historyPop, historyReplace } from '@shopgate/pwa-common/actions/router';
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
 import { fetchCategory, getCategory } from '@shopgate/pwa-common-commerce/category';
 import successHandleScanner from '../action-creators/successHandleScanner';
@@ -24,7 +25,7 @@ import handleNoResults from './handleNoResults';
  * @param {string} event.payload Barcode payload.
  * @return {Function} A redux thunk.
  */
-export default ({ scope, format, payload }) => async (dispatch, getState) => {
+const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) => {
   const { type, link, data } = parse2dsQrCode(payload) || {};
 
   /**
@@ -102,4 +103,7 @@ export default ({ scope, format, payload }) => async (dispatch, getState) => {
   }
   return null;
 };
+
+/** @mixes {MutableFunction} */
+export default mutable(handleQrCode);
 
