@@ -5,7 +5,7 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import Ripple from '../../../Ripple';
 import CrossIcon from '../../../icons/CrossIcon';
 import styles from './style';
-import SearchBar from '../SearchBar';
+import SearchBar from './components/SearchBar';
 
 /**
  * Header component.
