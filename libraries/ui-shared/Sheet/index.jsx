@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
-import SearchBar from './components/SearchBar';
 import Header from './components/Header';
 import styles from './style';
 
@@ -181,6 +180,8 @@ class Sheet extends Component {
         >
           {this.props.title &&
             <Sheet.Header
+              showSearch={this.props.showSearch}
+              handleChange={this.handleSearchInput}
               onToggleClose={this.handleClose}
               shadow={this.state.scrolled}
               title={this.props.title}
@@ -191,11 +192,6 @@ class Sheet extends Component {
             onScroll={this.handleScroll}
             className={contentClassNames}
           >
-            {this.props.showSearch && (
-            <div className={styles.searchBarWrapper}>
-              <SearchBar handleChange={this.handleSearchInput} />
-            </div>
-            )}
             {children}
           </div>
         </Drawer>

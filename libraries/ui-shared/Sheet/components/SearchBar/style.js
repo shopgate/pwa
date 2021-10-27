@@ -3,12 +3,13 @@ import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
   display: 'flex',
-  position: 'relative',
   flexDirection: 'row',
   flexWrap: 'nowrap',
   marginBottom: 4,
   paddingLeft: 16,
   paddingRight: 16,
+  paddingTop: 5,
+  paddingBottom: 10,
 }).toString();
 
 const inputWrapper = css({
