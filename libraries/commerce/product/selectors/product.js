@@ -643,6 +643,31 @@ export const getProductImages = createSelector(
   }
 );
 
+export const getFeaturedImage = createSelector(
+  getProduct,
+  getBaseProduct,
+  (product, baseProduct) => {
+    let productImage = null;
+    let baseProductImage = null;
+
+    if (Array.isArray(product?.featuredMedia)) {
+      productImage = product.featuredMedia.type === 'image'
+        ? product.featuredMedia.url
+        : null;
+    }
+    if (Array.isArray(baseProduct?.featuredMedia)) {
+      baseProductImage = baseProduct.featuredMedia.type === 'image'
+        ? baseProduct.featuredMedia.url
+        : null;
+    }
+
+    return productImage
+      || baseProductImage
+      || product?.featuredImageBaseUrl
+      || product?.featuredImageUrl;
+  }
+);
+
 /**
  * Retrieves the product variant data.
  * @param {Object} state The current application state.
