@@ -650,12 +650,12 @@ export const getFeaturedImage = createSelector(
     let productImage = null;
     let baseProductImage = null;
 
-    if (Array.isArray(product?.featuredMedia)) {
+    if (product?.featuredMedia) {
       productImage = product.featuredMedia.type === 'image'
         ? product.featuredMedia.url
         : null;
     }
-    if (Array.isArray(baseProduct?.featuredMedia)) {
+    if (baseProduct?.featuredMedia) {
       baseProductImage = baseProduct.featuredMedia.type === 'image'
         ? baseProduct.featuredMedia.url
         : null;
