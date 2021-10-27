@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
-  getProduct,
   getProductImages,
+  getFeaturedImage,
 } from '@shopgate/engage/product';
 
 /**
@@ -11,11 +11,10 @@ import {
  * @returns {Object}
  */
 const mapStateToProps = (state, props) => {
-  const product = getProduct(state, props);
-  const featured = product?.featuredImageBaseUrl || product?.featuredImageUrl;
+  const featuredImage = getFeaturedImage(state, props);
 
   return {
-    featuredImage: featured,
+    featuredImage,
     images: getProductImages(state, {
       ...props,
       productId: props.variantId || props.productId,
