@@ -19,7 +19,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
   }
 >
   <div
-    className="theme__browse__search-field"
+    className="ui-shared__sheet__search-field"
     data-test-id="SearchField"
   >
     <div

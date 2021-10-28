@@ -92,7 +92,7 @@ exports[`<Header /> should render searchbar 1`] = `
       handleChange={[Function]}
     >
       <div
-        className="theme__browse__search-field"
+        className="ui-shared__sheet__search-field"
         data-test-id="SearchField"
       >
         <div
