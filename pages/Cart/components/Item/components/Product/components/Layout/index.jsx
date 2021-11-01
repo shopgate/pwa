@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import {
   Grid, Link, ProductProperties, PriceInfo, SurroundPortals,
 } from '@shopgate/engage/components';
-import { CART_ITEM_IMAGE, CART_ITEM_LINK, CART_ITEM_QUANTITY_PICKER } from '@shopgate/engage/cart';
+import {
+  CART_ITEM_IMAGE,
+  CART_ITEM_LINK,
+  CART_ITEM_PROPERTIES,
+  CART_ITEM_QUANTITY_PICKER,
+} from '@shopgate/engage/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex, useWidgetSettings } from '@shopgate/engage/core';
 import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
@@ -39,7 +44,9 @@ const Layout = (props, context) => {
         </SurroundPortals>
         <Grid className={styles.info}>
           <Grid.Item grow={1} className={styles.properties}>
-            <ProductProperties properties={props.product.properties} lineClamp={2} />
+            <SurroundPortals portalName={CART_ITEM_PROPERTIES} portalProps={{ context, ...props }}>
+              <ProductProperties properties={props.product.properties} lineClamp={2} />
+            </SurroundPortals>
           </Grid.Item>
           <Grid.Item grow={1} className={styles.price}>
             <ProductPrice
