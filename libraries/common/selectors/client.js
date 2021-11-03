@@ -8,7 +8,7 @@ import {
   MODEL_NAMES_IPHONE_X,
   PAGE_INSETS_ANDROID,
   PAGE_INSETS_IOS,
-  PAGE_INSETS_IPHONE_X,
+  PAGE_INSETS_IPHONE_X, TYPE_TABLET,
 } from '../constants/Device';
 
 /**
@@ -87,7 +87,7 @@ export const hasScannerSupport = createSelector(
   (clientInformation, deviceInformation) => {
     // scanner is not supported on ipads
     const { type, os: { platform } } = deviceInformation;
-    const isIpad = type === 'tablet' && platform === PLATFORM_IOS;
+    const isIpad = type === TYPE_TABLET && platform === PLATFORM_IOS;
 
     return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion) && !isIpad;
   }
