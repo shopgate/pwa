@@ -280,6 +280,12 @@
             "inputBgColor":  "$.colors.shade8",
             "propertyLabel": "",
             "showLabel": false
+          },
+          "@shopgate/engage/product/components/ProductDiscountBadge": {
+            "pdp": {
+              "style": {},
+              "show": true
+            }
           }
         },
         "styles": {},
