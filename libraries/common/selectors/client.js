@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
-import { isVersionAtLeast, PLATFORM_IOS } from '@shopgate/pwa-core/helpers/version';
+import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
 import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
 import {
   OS_ANDROID,
@@ -78,23 +78,6 @@ export function makeSupportsIdentityService(service) {
 }
 
 /**
- * Checks if the currently stored lib version is one that supports the scanner.
- * @param {Object} state The application state.
- * @returns {boolean}
- */
-export const hasScannerSupport = createSelector(
-  getClientInformation,
-  getDeviceInformation,
-  (clientInformation, deviceInformation) => {
-    // scanner is not supported on ipads
-    const { type, os: { platform } } = deviceInformation;
-    const isIpad = type === TYPE_TABLET && platform === PLATFORM_IOS;
-
-    return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion) && !isIpad;
-  }
-);
-
-/**
  * Returns the device platform.
  * @param {Object} state The application state.
  * @return {string|null}
@@ -150,6 +133,24 @@ export const isAndroid = createSelector(
 export const isIos = createSelector(
   getPlatform,
   platform => platform === OS_IOS
+);
+
+/**
+ * Checks if the currently stored lib version is one that supports the scanner.
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const hasScannerSupport = createSelector(
+  getClientInformation,
+  getDeviceInformation,
+  isIos,
+  (clientInformation, deviceInformation, deviceIsIos) => {
+    // scanner is not supported on ipads
+    const { type } = deviceInformation;
+    const isIpad = type === TYPE_TABLET && deviceIsIos;
+
+    return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion) && !isIpad;
+  }
 );
 
 /**
