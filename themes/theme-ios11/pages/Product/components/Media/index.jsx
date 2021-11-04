@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isBeta, useWidgetSettings } from '@shopgate/engage/core';
+import { isBeta } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PORTAL_PRODUCT_MEDIA_SECTION } from '@shopgate/engage/components/constants';
 import { ProductContext } from '@shopgate/engage/product';
@@ -12,46 +12,40 @@ import ProductMediaSlider from './components/ProductMediaSlider';
  * The product media component.
  * @returns {JSX}
  */
-const Media = ({ 'aria-hidden': ariaHidden, className }) => {
-  const { pdp = { show: false, style: {} } } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge');
+const Media = ({ 'aria-hidden': ariaHidden, className }) => (
+  <ProductContext.Consumer>
+    {({ productId, variantId, characteristics }) => (
+      <SurroundPortals
+        portalName={PORTAL_PRODUCT_MEDIA_SECTION}
+        portalProps={{
+          productId,
+          variantId,
+        }}
+      >
+        <ProductDiscountBadge productId={productId} />
 
-  return (
-    <ProductContext.Consumer>
-      {({ productId, variantId, characteristics }) => (
-        <SurroundPortals
-          portalName={PORTAL_PRODUCT_MEDIA_SECTION}
-          portalProps={{
-            productId,
-            variantId,
-          }}
-        >
-          {
-          pdp.show && <ProductDiscountBadge productId={productId} style={pdp.style} />
-        }
-
-          {/* MediaSlider feature is currently in BETA testing.
+        {/* MediaSlider feature is currently in BETA testing.
               It should only be used for approved BETA Client Projects */}
-          {isBeta() ? (
-            <ProductMediaSlider
-              productId={productId}
-              variantId={variantId}
-              characteristics={characteristics}
-              aria-hidden={ariaHidden}
-              className={className}
-            />
-          ) : (
-            <ProductImageSlider
-              productId={productId}
-              variantId={variantId}
-              aria-hidden={ariaHidden}
-              className={className}
-            />
-          )}
-        </SurroundPortals>
-      )}
-    </ProductContext.Consumer>
-  );
-};
+        {isBeta() ? (
+          <ProductMediaSlider
+            productId={productId}
+            variantId={variantId}
+            characteristics={characteristics}
+            aria-hidden={ariaHidden}
+            className={className}
+          />
+        ) : (
+          <ProductImageSlider
+            productId={productId}
+            variantId={variantId}
+            aria-hidden={ariaHidden}
+            className={className}
+          />
+        )}
+      </SurroundPortals>
+    )}
+  </ProductContext.Consumer>
+);
 
 Media.propTypes = {
   'aria-hidden': PropTypes.bool,

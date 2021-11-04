@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { SurroundPortals } from '@shopgate/engage/components';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import {
   PRODUCT_DISCOUNT,
-  PRODUCT_DISCOUNT_AFTER,
-  PRODUCT_DISCOUNT_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import styles from './style';
 import connect from './connector';
 
@@ -27,6 +26,12 @@ class ProductDiscountBadge extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const { pdp = { show: false, style: {} } } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge');
+
+    if (!pdp.show) {
+      return null;
+    }
+
     const { productId, discount } = this.props;
     const props = { productId };
 
@@ -35,12 +40,10 @@ class ProductDiscountBadge extends PureComponent {
     }
 
     return (
-      <div className={`${styles.container} theme__product__product-discount`} aria-hidden>
-        <Portal name={PRODUCT_DISCOUNT_BEFORE} props={props} />
-        <Portal name={PRODUCT_DISCOUNT} props={props}>
+      <div style={pdp.style} className={`${styles.container} theme__product__product-discount`} aria-hidden>
+        <SurroundPortals portalName={PRODUCT_DISCOUNT} portalProps={props}>
           <DiscountBadge className={styles.badge} text={`-${discount}%`} />
-        </Portal>
-        <Portal name={PRODUCT_DISCOUNT_AFTER} props={props} />
+        </SurroundPortals>
       </div>
     );
   }
