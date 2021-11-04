@@ -35,10 +35,10 @@ class ProductDiscountBadge extends PureComponent {
     }
 
     return (
-      <div className={`${styles} theme__product__product-discount`} aria-hidden>
+      <div className={`${styles.container} theme__product__product-discount`} aria-hidden>
         <Portal name={PRODUCT_DISCOUNT_BEFORE} props={props} />
         <Portal name={PRODUCT_DISCOUNT} props={props}>
-          <DiscountBadge text={`-${discount}%`} />
+          <DiscountBadge className={styles.badge} text={`-${discount}%`} />
         </Portal>
         <Portal name={PRODUCT_DISCOUNT_AFTER} props={props} />
       </div>
