@@ -26,7 +26,7 @@ class ProductDiscountBadge extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { pdp = { show: false, style: {} } } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge');
+    const { pdp = { show: false, style: {} } } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge') || {};
 
     if (!pdp.show) {
       return null;
