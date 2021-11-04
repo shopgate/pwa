@@ -5,22 +5,35 @@ import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
 import { FulfillmentContext } from '../../locations.context';
 import { selectLocationButton, selectLocationButtonWrapper } from './Store.style';
+import connect from './StoreListSearch.connector';
 
 /**
  * The StoreSelectLocationButton component.
  * @returns {JSX}
  */
-export const StoreSelectLocationButton = () => {
+export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
   const store = useContext(StoreContext);
-  const { selectLocation, noInventory, isLoading } = useContext(FulfillmentContext);
+  const {
+    selectLocation, noInventory, isLoading, location, product,
+  } = useContext(FulfillmentContext);
+
   const isAvailable = isProductAvailable(store, store?.inventory);
 
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     if (noInventory || isAvailable) {
+      setPostalCode(location.address.postalCode, product.id);
       selectLocation(store);
     }
-  }, [isAvailable, noInventory, selectLocation, store]);
+  }, [
+    isAvailable,
+    location.address.postalCode,
+    noInventory,
+    product.id,
+    selectLocation,
+    setPostalCode,
+    store,
+  ]);
 
   return (
     <div className={selectLocationButtonWrapper}>
@@ -33,4 +46,4 @@ export const StoreSelectLocationButton = () => {
       </RippleButton>
     </div>
   );
-};
+});
