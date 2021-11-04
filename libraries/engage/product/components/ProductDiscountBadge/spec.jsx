@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ItemDiscount from './index';
+import ProductDiscountBadge from './index';
 
 describe('<ProductDiscountBadge />', () => {
   it('should render without discount', () => {
