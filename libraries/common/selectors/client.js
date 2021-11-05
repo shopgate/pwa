@@ -9,6 +9,7 @@ import {
   PAGE_INSETS_ANDROID,
   PAGE_INSETS_IOS,
   PAGE_INSETS_IPHONE_X,
+  TYPE_TABLET,
 } from '../constants/Device';
 
 /**
@@ -77,16 +78,6 @@ export function makeSupportsIdentityService(service) {
 }
 
 /**
- * Checks if the currently stored lib version is one that supports the scanner.
- * @param {Object} state The application state.
- * @returns {boolean}
- */
-export const hasScannerSupport = createSelector(
-  getClientInformation,
-  clientInformation => isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion)
-);
-
-/**
  * Returns the device platform.
  * @param {Object} state The application state.
  * @return {string|null}
@@ -142,6 +133,24 @@ export const isAndroid = createSelector(
 export const isIos = createSelector(
   getPlatform,
   platform => platform === OS_IOS
+);
+
+/**
+ * Checks if the currently stored lib version is one that supports the scanner.
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const hasScannerSupport = createSelector(
+  getClientInformation,
+  getDeviceInformation,
+  isIos,
+  (clientInformation, deviceInformation, deviceIsIos) => {
+    // scanner is not supported on ipads
+    const { type } = deviceInformation;
+    const isIpad = type === TYPE_TABLET && deviceIsIos;
+
+    return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion) && !isIpad;
+  }
 );
 
 /**
