@@ -5,6 +5,7 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import Ripple from '../../../Ripple';
 import CrossIcon from '../../../icons/CrossIcon';
 import styles from './style';
+import SearchBar from './components/SearchBar';
 
 /**
  * Header component.
@@ -15,8 +16,10 @@ class Header extends Component {
       PropTypes.string,
       PropTypes.element, // ex.: I18n.Text
     ]).isRequired,
+    handleChange: PropTypes.func,
     onToggleClose: PropTypes.func,
     shadow: PropTypes.bool,
+    showSearch: PropTypes.bool,
   };
 
   /**
@@ -26,6 +29,8 @@ class Header extends Component {
   static defaultProps = {
     onToggleClose: () => {},
     shadow: false,
+    handleChange: () => {},
+    showSearch: false,
   };
 
   static contextTypes = {
@@ -49,23 +54,25 @@ class Header extends Component {
    */
   render() {
     const classes = classNames(
-      styles.wrapper,
-      { [styles.shadow]: this.props.shadow }
+      styles.wrapper
     );
 
     const { __ } = this.context.i18n();
 
     return (
-      <Grid className={classes} component="div" wrap={false}>
-        <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
-          <Ripple className={styles.closeIcon}>
-            <CrossIcon size={24} />
-          </Ripple>
-        </button>
-        <Grid.Item className={styles.title} component="div" grow={1} role="heading">
-          {this.props.title}
-        </Grid.Item>
-      </Grid>
+      <div className={classNames({ [styles.shadow]: this.props.shadow })}>
+        <Grid className={classes} component="div" wrap={false}>
+          <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
+            <Ripple className={styles.closeIcon}>
+              <CrossIcon size={24} />
+            </Ripple>
+          </button>
+          <Grid.Item className={styles.title} component="div" grow={1} role="heading">
+            {this.props.title}
+          </Grid.Item>
+        </Grid>
+        {this.props.showSearch && <SearchBar handleChange={this.props.handleChange} />}
+      </div>
     );
   }
 }

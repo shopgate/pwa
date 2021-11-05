@@ -15,11 +15,28 @@ const container = css({
   margin: '0 auto',
 }).toString();
 
+const containerFullScreen = css({
+  height: [
+    `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px)`,
+    `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px - var(--safe-area-inset-top))`,
+  ],
+});
+
+const searchBarWrapper = css({
+  backgroundColor: 'white',
+  height: 52,
+  position: 'sticky',
+  width: '100%',
+  top: 0,
+  zIndex: 2,
+});
+
 const shadow = css({
   boxShadow: themeConfig.shadows.sheet,
 }).toString();
 
 const content = css({
+  position: 'relative',
   maxHeight: [
     `calc(100vh - ${themeConfig.variables.navigator.height}px)`,
     `calc(100vh - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
@@ -52,6 +69,8 @@ const drawerAnimation = {
 
 export default {
   container,
+  containerFullScreen,
+  searchBarWrapper,
   shadow,
   content,
   drawerAnimation,

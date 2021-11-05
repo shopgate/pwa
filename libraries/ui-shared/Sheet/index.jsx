@@ -37,6 +37,7 @@ class Sheet extends Component {
     onClose: PropTypes.func,
     onDidOpen: PropTypes.func,
     onOpen: PropTypes.func,
+    showSearch: PropTypes.bool,
     title: Header.propTypes.title,
   };
 
@@ -55,6 +56,7 @@ class Sheet extends Component {
     onClose: () => { },
     onDidOpen: () => { },
     onOpen: () => { },
+    showSearch: false,
     title: '',
   };
 
@@ -70,6 +72,7 @@ class Sheet extends Component {
     this.state = {
       isOpen: props.isOpen,
       scrolled: false,
+      query: '',
     };
   }
 
@@ -130,6 +133,14 @@ class Sheet extends Component {
   };
 
   /**
+   * New value from SearchBar
+   * @param {string} value .
+   *  */
+  handleSearchInput = (value) => {
+    this.setState({ query: value });
+  }
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -139,7 +150,7 @@ class Sheet extends Component {
         child,
         // Only add onClose prop to other components
         typeof child.type === 'function' && this.props.onClose !== null ? (
-          { onClose: this.props.onClose }
+          { onClose: this.props.onClose, query: this.state.query }
         ) : {}
       )
     ));
@@ -151,6 +162,7 @@ class Sheet extends Component {
 
     const contentClassNames = classNames(
       styles.content,
+      { [styles.containerFullScreen]: this.props.showSearch },
       { [this.props.contentClassName]: this.props.contentClassName },
       { [styles.shadow]: !this.props.backdrop }
     );
@@ -168,6 +180,8 @@ class Sheet extends Component {
         >
           {this.props.title &&
             <Sheet.Header
+              showSearch={this.props.showSearch}
+              handleChange={this.handleSearchInput}
               onToggleClose={this.handleClose}
               shadow={this.state.scrolled}
               title={this.props.title}
