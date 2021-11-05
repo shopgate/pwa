@@ -4,6 +4,7 @@ import { isBeta } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PORTAL_PRODUCT_MEDIA_SECTION } from '@shopgate/engage/components/constants';
 import { ProductContext } from '@shopgate/engage/product';
+import ProductDiscountBadge from '@shopgate/engage/product/components/ProductDiscountBadge';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
 
@@ -21,6 +22,8 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => (
           variantId,
         }}
       >
+        <ProductDiscountBadge productId={productId} />
+
         {/* MediaSlider feature is currently in BETA testing.
               It should only be used for approved BETA Client Projects */}
         {isBeta() ? (

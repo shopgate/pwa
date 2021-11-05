@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductDiscountBadge /> should render with discount 1`] = `
+<div
+  aria-hidden={true}
+  className="css-1mq4e16 theme__product__product-discount"
+>
+  <SurroundPortals
+    name="product.discount"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  >
+    <DiscountBadge
+      className=""
+      discount={null}
+      display="small"
+      text="-12%"
+    />
+  </SurroundPortals>
+</div>
+`;
+
+exports[`<ProductDiscountBadge /> should render without discount 1`] = `""`;
