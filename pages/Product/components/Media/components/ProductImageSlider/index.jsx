@@ -1,13 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
 import { withNavigation, bin2hex } from '@shopgate/engage/core';
-import { Swiper, Portal } from '@shopgate/engage/components';
+import { Swiper, SurroundPortals } from '@shopgate/engage/components';
 import {
   PRODUCT_IMAGE,
-  PRODUCT_IMAGE_AFTER,
-  PRODUCT_IMAGE_BEFORE,
   loadProductImage,
   ITEM_PATH,
   ProductImage,
@@ -73,6 +71,7 @@ class ProductImageSlider extends Component {
         this.mediaRef.current.style.filter = 'blur(3px)';
       }
     }
+
     if (nextProps.images) {
       if (!nextProps.images.length && nextProps.product) {
         depImage = nextProps.product.featuredImageBaseUrl;
@@ -80,6 +79,7 @@ class ProductImageSlider extends Component {
         [depImage] = nextProps.images;
       }
     }
+
     if (depImage) {
       // if depImage has not changed since last time
       if (this.state.depImage === depImage) {
@@ -109,6 +109,7 @@ class ProductImageSlider extends Component {
           }
         });
     }
+
     return false;
   }
 
@@ -165,6 +166,7 @@ class ProductImageSlider extends Component {
     }
 
     let onClick = this.handleOpenGallery;
+
     if (!content) {
       let src = null;
       if (product && product.featuredImageBaseUrl) {
@@ -192,27 +194,31 @@ class ProductImageSlider extends Component {
     };
 
     return (
-      <Fragment>
-        <Portal name={PRODUCT_IMAGE_BEFORE} />
-        <Portal name={PRODUCT_IMAGE}>
-          <div
-            className="theme__product__product-image-slider"
-            data-test-id={`product: ${product ? product.name : ''}`}
-            onClick={onClick}
-            onKeyDown={onClick}
-            role="button"
-            tabIndex="0"
-            aria-hidden={ariaHidden}
-            style={wrapperStyles}
-            ref={this.mediaRef}
-          >
-            {content}
-          </div>
-        </Portal>
-        <Portal name={PRODUCT_IMAGE_AFTER} />
-      </Fragment>
+      <div
+        className="theme__product__product-image-slider"
+        data-test-id={`product: ${product ? product.name : ''}`}
+        onClick={onClick}
+        onKeyDown={onClick}
+        role="button"
+        tabIndex="0"
+        aria-hidden={ariaHidden}
+        style={wrapperStyles}
+        ref={this.mediaRef}
+      >
+        {content}
+      </div>
     );
   }
 }
 
-export default withNavigation(connect(ProductImageSlider));
+/**
+ * @param {Object} props The component props.
+ * @return {JSX}
+ */
+const Wrapper = props => (
+  <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
+    <ProductImageSlider {...props} />
+  </SurroundPortals>
+);
+
+export default withNavigation(connect(Wrapper));
