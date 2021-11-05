@@ -38,14 +38,11 @@ exports[`<Price /> should pass unitPriceMin for variants 1`] = `
 
 exports[`<Price /> should render portals 1`] = `
 <Fragment>
-  <Portal
-    name="product.price.before"
-    props={null}
-  />
-  <Portal
-    name="product.price"
-    props={
+  <SurroundPortals
+    portalName="product.price"
+    portalProps={
       Object {
+        "hasProductVariants": true,
         "price": Object {
           "currency": "USD",
           "discount": 0,
@@ -55,13 +52,17 @@ exports[`<Price /> should render portals 1`] = `
       }
     }
   >
-    <Consumer>
-      <Component />
-    </Consumer>
-  </Portal>
-  <Portal
-    name="product.price.after"
-    props={null}
-  />
+    <Content
+      hasProductVariants={true}
+      price={
+        Object {
+          "currency": "USD",
+          "discount": 0,
+          "unitPrice": 90.5,
+          "unitPriceMin": 80.5,
+        }
+      }
+    />
+  </SurroundPortals>
 </Fragment>
 `;

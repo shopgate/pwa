@@ -90,6 +90,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -121,95 +122,102 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 }
               >
                 <Header
+                  handleChange={[Function]}
                   onToggleClose={[Function]}
                   shadow={false}
+                  showSearch={false}
                   title="Picker Label"
                 >
-                  <Grid
-                    className="css-1hncgty"
-                    component="div"
-                    wrap={false}
+                  <div
+                    className=""
                   >
-                    <div
-                      className="css-1hncgty css-h7r55a common__grid"
+                    <Grid
+                      className="css-1hncgty"
+                      component="div"
+                      wrap={false}
                     >
-                      <button
-                        aria-label="common.close"
-                        className="css-b3dcfs"
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
-                        <Ripple
-                          className="css-ugy6xl"
-                          color="#000"
-                          disabled={false}
-                          fill={false}
+                        <button
+                          aria-label="common.close"
+                          className="css-b3dcfs"
                           onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={false}
-                          size={null}
+                          type="button"
+                        >
+                          <Ripple
+                            className="css-ugy6xl"
+                            color="#000"
+                            disabled={false}
+                            fill={false}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              className="ui-shared__ripple css-ugy6xl"
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Cross
+                                size={24}
+                              >
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                  size={24}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb  common__icon"
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": 24,
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </Cross>
+                            </div>
+                          </Ripple>
+                        </button>
+                        <GridItem
+                          className="css-1mjy0de"
+                          component="div"
+                          grow={1}
+                          role="heading"
+                          shrink={1}
                         >
                           <div
-                            className="ui-shared__ripple css-ugy6xl"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
+                            className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
-                            <Cross
-                              size={24}
-                            >
-                              <Icon
-                                className=""
-                                color={null}
-                                content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
-                                size={24}
-                                viewBox="0 0 24 24"
-                              >
-                                <svg
-                                  className="css-yys9hb  common__icon"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                    }
-                                  }
-                                  style={
-                                    Object {
-                                      "fill": null,
-                                      "fontSize": 24,
-                                    }
-                                  }
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                />
-                              </Icon>
-                            </Cross>
+                            Picker Label
                           </div>
-                        </Ripple>
-                      </button>
-                      <GridItem
-                        className="css-1mjy0de"
-                        component="div"
-                        grow={1}
-                        role="heading"
-                        shrink={1}
-                      >
-                        <div
-                          className="css-1mjy0de css-1gs0ko2"
-                          role="heading"
-                        >
-                          Picker Label
-                        </div>
-                      </GridItem>
-                    </div>
-                  </Grid>
+                        </GridItem>
+                      </div>
+                    </Grid>
+                  </div>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -439,6 +447,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -470,95 +479,102 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 }
               >
                 <Header
+                  handleChange={[Function]}
                   onToggleClose={[Function]}
                   shadow={false}
+                  showSearch={false}
                   title="Picker Label"
                 >
-                  <Grid
-                    className="css-1hncgty"
-                    component="div"
-                    wrap={false}
+                  <div
+                    className=""
                   >
-                    <div
-                      className="css-1hncgty css-h7r55a common__grid"
+                    <Grid
+                      className="css-1hncgty"
+                      component="div"
+                      wrap={false}
                     >
-                      <button
-                        aria-label="common.close"
-                        className="css-b3dcfs"
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
-                        <Ripple
-                          className="css-ugy6xl"
-                          color="#000"
-                          disabled={false}
-                          fill={false}
+                        <button
+                          aria-label="common.close"
+                          className="css-b3dcfs"
                           onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={false}
-                          size={null}
+                          type="button"
+                        >
+                          <Ripple
+                            className="css-ugy6xl"
+                            color="#000"
+                            disabled={false}
+                            fill={false}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              className="ui-shared__ripple css-ugy6xl"
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Cross
+                                size={24}
+                              >
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                  size={24}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb  common__icon"
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": 24,
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </Cross>
+                            </div>
+                          </Ripple>
+                        </button>
+                        <GridItem
+                          className="css-1mjy0de"
+                          component="div"
+                          grow={1}
+                          role="heading"
+                          shrink={1}
                         >
                           <div
-                            className="ui-shared__ripple css-ugy6xl"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
+                            className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
-                            <Cross
-                              size={24}
-                            >
-                              <Icon
-                                className=""
-                                color={null}
-                                content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
-                                size={24}
-                                viewBox="0 0 24 24"
-                              >
-                                <svg
-                                  className="css-yys9hb  common__icon"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                    }
-                                  }
-                                  style={
-                                    Object {
-                                      "fill": null,
-                                      "fontSize": 24,
-                                    }
-                                  }
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                />
-                              </Icon>
-                            </Cross>
+                            Picker Label
                           </div>
-                        </Ripple>
-                      </button>
-                      <GridItem
-                        className="css-1mjy0de"
-                        component="div"
-                        grow={1}
-                        role="heading"
-                        shrink={1}
-                      >
-                        <div
-                          className="css-1mjy0de css-1gs0ko2"
-                          role="heading"
-                        >
-                          Picker Label
-                        </div>
-                      </GridItem>
-                    </div>
-                  </Grid>
+                        </GridItem>
+                      </div>
+                    </Grid>
+                  </div>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -828,6 +844,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -859,95 +876,102 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 }
               >
                 <Header
+                  handleChange={[Function]}
                   onToggleClose={[Function]}
                   shadow={false}
+                  showSearch={false}
                   title="Picker Label"
                 >
-                  <Grid
-                    className="css-1hncgty"
-                    component="div"
-                    wrap={false}
+                  <div
+                    className=""
                   >
-                    <div
-                      className="css-1hncgty css-h7r55a common__grid"
+                    <Grid
+                      className="css-1hncgty"
+                      component="div"
+                      wrap={false}
                     >
-                      <button
-                        aria-label="common.close"
-                        className="css-b3dcfs"
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
-                        <Ripple
-                          className="css-ugy6xl"
-                          color="#000"
-                          disabled={false}
-                          fill={false}
+                        <button
+                          aria-label="common.close"
+                          className="css-b3dcfs"
                           onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={false}
-                          size={null}
+                          type="button"
+                        >
+                          <Ripple
+                            className="css-ugy6xl"
+                            color="#000"
+                            disabled={false}
+                            fill={false}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              className="ui-shared__ripple css-ugy6xl"
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Cross
+                                size={24}
+                              >
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                  size={24}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb  common__icon"
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": 24,
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </Cross>
+                            </div>
+                          </Ripple>
+                        </button>
+                        <GridItem
+                          className="css-1mjy0de"
+                          component="div"
+                          grow={1}
+                          role="heading"
+                          shrink={1}
                         >
                           <div
-                            className="ui-shared__ripple css-ugy6xl"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
+                            className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
-                            <Cross
-                              size={24}
-                            >
-                              <Icon
-                                className=""
-                                color={null}
-                                content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
-                                size={24}
-                                viewBox="0 0 24 24"
-                              >
-                                <svg
-                                  className="css-yys9hb  common__icon"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                    }
-                                  }
-                                  style={
-                                    Object {
-                                      "fill": null,
-                                      "fontSize": 24,
-                                    }
-                                  }
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                />
-                              </Icon>
-                            </Cross>
+                            Picker Label
                           </div>
-                        </Ripple>
-                      </button>
-                      <GridItem
-                        className="css-1mjy0de"
-                        component="div"
-                        grow={1}
-                        role="heading"
-                        shrink={1}
-                      >
-                        <div
-                          className="css-1mjy0de css-1gs0ko2"
-                          role="heading"
-                        >
-                          Picker Label
-                        </div>
-                      </GridItem>
-                    </div>
-                  </Grid>
+                        </GridItem>
+                      </div>
+                    </Grid>
+                  </div>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -1178,6 +1202,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -1209,95 +1234,102 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 }
               >
                 <Header
+                  handleChange={[Function]}
                   onToggleClose={[Function]}
                   shadow={false}
+                  showSearch={false}
                   title="Picker Label"
                 >
-                  <Grid
-                    className="css-1hncgty"
-                    component="div"
-                    wrap={false}
+                  <div
+                    className=""
                   >
-                    <div
-                      className="css-1hncgty css-h7r55a common__grid"
+                    <Grid
+                      className="css-1hncgty"
+                      component="div"
+                      wrap={false}
                     >
-                      <button
-                        aria-label="common.close"
-                        className="css-b3dcfs"
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="css-1hncgty css-h7r55a common__grid"
                       >
-                        <Ripple
-                          className="css-ugy6xl"
-                          color="#000"
-                          disabled={false}
-                          fill={false}
+                        <button
+                          aria-label="common.close"
+                          className="css-b3dcfs"
                           onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={false}
-                          size={null}
+                          type="button"
+                        >
+                          <Ripple
+                            className="css-ugy6xl"
+                            color="#000"
+                            disabled={false}
+                            fill={false}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              className="ui-shared__ripple css-ugy6xl"
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Cross
+                                size={24}
+                              >
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                  size={24}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb  common__icon"
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": 24,
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </Cross>
+                            </div>
+                          </Ripple>
+                        </button>
+                        <GridItem
+                          className="css-1mjy0de"
+                          component="div"
+                          grow={1}
+                          role="heading"
+                          shrink={1}
                         >
                           <div
-                            className="ui-shared__ripple css-ugy6xl"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
+                            className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
-                            <Cross
-                              size={24}
-                            >
-                              <Icon
-                                className=""
-                                color={null}
-                                content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
-                                size={24}
-                                viewBox="0 0 24 24"
-                              >
-                                <svg
-                                  className="css-yys9hb  common__icon"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                    }
-                                  }
-                                  style={
-                                    Object {
-                                      "fill": null,
-                                      "fontSize": 24,
-                                    }
-                                  }
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                />
-                              </Icon>
-                            </Cross>
+                            Picker Label
                           </div>
-                        </Ripple>
-                      </button>
-                      <GridItem
-                        className="css-1mjy0de"
-                        component="div"
-                        grow={1}
-                        role="heading"
-                        shrink={1}
-                      >
-                        <div
-                          className="css-1mjy0de css-1gs0ko2"
-                          role="heading"
-                        >
-                          Picker Label
-                        </div>
-                      </GridItem>
-                    </div>
-                  </Grid>
+                        </GridItem>
+                      </div>
+                    </Grid>
+                  </div>
                 </Header>
                 <div
-                  className="css-1aon90l"
+                  className="css-1rwhgm2"
                   onScroll={[Function]}
                 >
                   <SheetList
                     key=".0"
                     onClose={[Function]}
+                    query=""
                   >
                     <SheetItem
                       item={
@@ -1526,6 +1558,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -1683,6 +1716,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title="Picker Label"
         >
           <section
@@ -1835,6 +1869,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
           onClose={[Function]}
           onDidOpen={[Function]}
           onOpen={[Function]}
+          showSearch={false}
           title=""
         >
           <section
