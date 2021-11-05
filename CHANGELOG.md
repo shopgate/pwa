@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.18.0](https://github.com/shopgate/pwa/compare/v6.17.7...v6.18.0) (2021-11-05)
+
+#### :rocket: Enhancement
+* [#1141](https://github.com/shopgate/pwa/pull/1141) Move portal children in own component to allow portal to override props + new portals + SearchBar for Picker Sheet ([@Carsten89](https://github.com/Carsten89))
+* [#1143](https://github.com/shopgate/pwa/pull/1143) extend hasScannerSupport to disable BarcodeScanner on ipads ([@AienTech](https://github.com/AienTech))
+* [#1144](https://github.com/shopgate/pwa/pull/1144) Add product discount badge on the product detail page ([@AienTech](https://github.com/AienTech))
+
+
 ## [v6.17.6](https://github.com/shopgate/pwa/compare/...v6.17.6) (2021-10-20)
 
 #### :rocket: Enhancement
