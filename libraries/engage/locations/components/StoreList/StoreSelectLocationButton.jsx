@@ -2,7 +2,7 @@ import React, { useContext, useCallback } from 'react';
 import { RippleButton } from '@shopgate/engage/components';
 import { isProductAvailable } from '../../helpers';
 import { StoreContext } from './Store.context';
-import { i18n } from '../../../core';
+import { i18n, useWidgetSettings } from '../../../core';
 import { FulfillmentContext } from '../../locations.context';
 import { selectLocationButton, selectLocationButtonWrapper } from './Store.style';
 import connect from './StoreListSearch.connector';
@@ -13,6 +13,8 @@ import connect from './StoreListSearch.connector';
  */
 export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
   const store = useContext(StoreContext);
+  const { setZipFromUserSearchLocation = true } = useWidgetSettings('@shopgate/engage/locations') || {};
+
   const {
     selectLocation, noInventory, isLoading, product,
   } = useContext(FulfillmentContext);
@@ -22,16 +24,18 @@ export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     if (noInventory || isAvailable) {
-      setPostalCode(store.address.postalCode, product.id);
+      if (setZipFromUserSearchLocation) {
+        setPostalCode(store.address.postalCode, product.id);
+      }
       selectLocation(store);
     }
   }, [
     isAvailable,
-    store.address.postalCode,
     noInventory,
     product.id,
     selectLocation,
     setPostalCode,
+    setZipFromUserSearchLocation,
     store,
   ]);
 
