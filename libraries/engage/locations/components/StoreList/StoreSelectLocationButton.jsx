@@ -14,7 +14,7 @@ import connect from './StoreListSearch.connector';
 export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
   const store = useContext(StoreContext);
   const {
-    selectLocation, noInventory, isLoading, location, product,
+    selectLocation, noInventory, isLoading, product,
   } = useContext(FulfillmentContext);
 
   const isAvailable = isProductAvailable(store, store?.inventory);
@@ -22,12 +22,12 @@ export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     if (noInventory || isAvailable) {
-      setPostalCode(location.address.postalCode, product.id);
+      setPostalCode(store.address.postalCode, product.id);
       selectLocation(store);
     }
   }, [
     isAvailable,
-    location.address.postalCode,
+    store.address.postalCode,
     noInventory,
     product.id,
     selectLocation,
