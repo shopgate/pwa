@@ -13,7 +13,7 @@ import connect from './StoreListSearch.connector';
  */
 export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
   const store = useContext(StoreContext);
-  const { setZipFromUserSearchLocation = true } = useWidgetSettings('@shopgate/engage/locations') || {};
+  const { setUserSearchZipLocationFromSelection = true } = useWidgetSettings('@shopgate/engage/locations') || {};
 
   const {
     selectLocation, noInventory, isLoading, product,
@@ -24,7 +24,7 @@ export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     if (noInventory || isAvailable) {
-      if (setZipFromUserSearchLocation) {
+      if (setUserSearchZipLocationFromSelection) {
         setPostalCode(store.address.postalCode, product.id);
       }
       selectLocation(store);
@@ -35,7 +35,7 @@ export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
     product.id,
     selectLocation,
     setPostalCode,
-    setZipFromUserSearchLocation,
+    setUserSearchZipLocationFromSelection,
     store,
   ]);
 
