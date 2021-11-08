@@ -1,5 +1,6 @@
 import React, { useContext, useCallback } from 'react';
 import { RippleButton } from '@shopgate/engage/components';
+import PropTypes from 'prop-types';
 import { isProductAvailable } from '../../helpers';
 import { StoreContext } from './Store.context';
 import { i18n, useWidgetSettings } from '../../../core';
@@ -11,7 +12,7 @@ import connect from './StoreListSearch.connector';
  * The StoreSelectLocationButton component.
  * @returns {JSX}
  */
-export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
+const StoreSelectLocationButton = ({ setPostalCode }) => {
   const store = useContext(StoreContext);
   const { setUserSearchZipLocationFromSelection = true } = useWidgetSettings('@shopgate/engage/locations') || {};
 
@@ -25,14 +26,14 @@ export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
     e.stopPropagation();
     if (noInventory || isAvailable) {
       if (setUserSearchZipLocationFromSelection) {
-        setPostalCode(store.address.postalCode, product.id);
+        setPostalCode(store.address.postalCode, product?.id);
       }
       selectLocation(store);
     }
   }, [
     isAvailable,
     noInventory,
-    product.id,
+    product,
     selectLocation,
     setPostalCode,
     setUserSearchZipLocationFromSelection,
@@ -50,4 +51,14 @@ export const StoreSelectLocationButton = connect(({ setPostalCode }) => {
       </RippleButton>
     </div>
   );
-});
+};
+
+StoreSelectLocationButton.propTypes = {
+  setPostalCode: PropTypes.func.isRequired,
+};
+
+const connectedStoreSelectLocationButton = connect(StoreSelectLocationButton);
+
+export {
+  connectedStoreSelectLocationButton as StoreSelectLocationButton,
+};
