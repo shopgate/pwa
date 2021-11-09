@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.5.0](https://github.com/shopgate/pwa/compare/v7.4.1...v7.5.0) (2021-11-09)
+
+#### :rocket: Enhancement
+* [#1145](https://github.com/shopgate/pwa/pull/1145) Setting the postalCode of the selected location for userSearch ([@AienTech](https://github.com/AienTech))
+* [#1142](https://github.com/shopgate/pwa/pull/1142) Mutable actions for scanner ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
