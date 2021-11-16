@@ -75,11 +75,15 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
         }
         return actions.reject();
       },
-      onApprove: () => {
-        formActions.current.onSubmit();
+      onApprove: async (_, actions) => {
+        const redirect = await formActions.current.onSubmit();
+        console.warn('xx', redirect);
+        if (redirect) {
+          actions.restart();
+        }
       },
       style: {
-        label: 'buynow',
+        label: 'pay',
         color: 'white',
         ...customSettings,
       },

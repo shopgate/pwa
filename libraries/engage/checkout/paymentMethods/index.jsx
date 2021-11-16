@@ -119,6 +119,7 @@ const PaymentMethodProvider = ({
   // Currently simply redirect fulfill request to the active payment method.
   useEffect(() => {
     setPaymentHandler({
+      getSupportsRedirect: paymentImpl?.getSupportsRedirect || (() => true),
       getCustomPayButton: () => paymentImpl?.payButton,
       fulfillTransaction: async ({ paymentTransactions }) => {
         const resolved = await paymentMethodRef.current.fulfillTransaction({ paymentTransactions });
