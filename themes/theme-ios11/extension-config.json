@@ -212,6 +212,7 @@
       "default": {
         "settings": {
           "@shopgate/engage/locations": {
+            "setUserSearchZipLocationFromSelection": true,
             "preferredLocationDefault": null,
             "alternativeLocationOnPDP": {
               "radius": 50

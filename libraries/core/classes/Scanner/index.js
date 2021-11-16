@@ -295,6 +295,7 @@ export class Scanner {
         this.closeHandler(this);
       }
     } catch (error) {
+      logger.warn('Scan handler threw error:', error);
       // Force restart when a handler throws an error.
       this.start();
     }
