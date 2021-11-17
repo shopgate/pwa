@@ -541,7 +541,8 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "hasWebTrackingEngage": false
+        "hasWebTrackingEngage": false,
+        "useSkuAsProductId": false
       },
       "params": {
         "type": "json",
