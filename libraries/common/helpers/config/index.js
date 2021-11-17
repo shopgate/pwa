@@ -39,6 +39,7 @@ const defaultAppConfig = {
   scanner: {},
   tracking: {
     hasWebTrackingEngage: false,
+    useSkuAsProductId: false,
   },
   webTrackingEngage: {
     android: '',

@@ -14,7 +14,7 @@ import {
 } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { parse2dsQrCode } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import core from '@shopgate/tracking-core/core/Core';
-import { shopNumber } from '@shopgate/pwa-common/helpers/config';
+import appConfig, { shopNumber } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core';
 
 /**
@@ -46,13 +46,16 @@ export const formatProductData = (productData) => {
     price,
     manufacturer,
     tags = [],
+    identifiers = {},
   } = productData;
+
+  const uid = (appConfig.tracking.useSkuAsProductId && identifiers.sku) ? identifiers.sku : id;
 
   return {
     name,
     manufacturer,
     tags,
-    uid: id,
+    uid,
     amount: {
       net: convertPriceToString(price.unitPriceNet),
       gross: convertPriceToString(price.unitPriceWithTax),
