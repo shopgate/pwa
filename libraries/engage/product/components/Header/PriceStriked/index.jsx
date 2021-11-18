@@ -20,7 +20,7 @@ import styles from './style';
  * @return {JSX}
  */
 const PriceStriked = ({ price }) => {
-  const { msrpLabel = 'price.msrp' } = useWidgetSettings('@shopgate/engage/product/components/Header/PriceStriked');
+  const { msrpLabel = 'price.msrp', unitPriceStrikedLabel } = useWidgetSettings('@shopgate/engage/product/components/Header/PriceStriked');
 
   return (
     <Fragment>
@@ -38,7 +38,12 @@ const PriceStriked = ({ price }) => {
             </Fragment>
           )}
           {(price && !price.msrp && price.unitPriceStriked > 0) && (
-            <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
+            <Fragment>
+              {!!unitPriceStrikedLabel && (
+                <I18n.Text string={unitPriceStrikedLabel} className={styles.msrp} />
+              )}
+              <StrikePrice value={price.unitPriceStriked} currency={price.currency} className={unitPriceStrikedLabel ? styles.msrpStriked : ''} />
+            </Fragment>
           )}
         </PlaceholderLabel>
       </Portal>
