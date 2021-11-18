@@ -270,7 +270,8 @@
             "color": null
           },
           "@shopgate/engage/product/components/Header/PriceStriked": {
-            "msrpLabel": "price.msrp"
+            "msrpLabel": "price.msrp",
+            "unitPriceStrikedLabel": null
           },
           "@shopgate/engage/product/components/UnitQuantityPicker": {
             "show": false,
