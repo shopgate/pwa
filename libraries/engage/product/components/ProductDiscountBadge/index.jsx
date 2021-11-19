@@ -1,52 +1,52 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
-import {
-  PRODUCT_DISCOUNT,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { PRODUCT_DISCOUNT } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import styles from './style';
 import connect from './connector';
 
 /**
- * The item discount component.
+ * ProductDiscountBadge
+ * @return {JSX}
  */
-class ProductDiscountBadge extends PureComponent {
-  static propTypes = {
-    productId: PropTypes.string.isRequired,
-    discount: PropTypes.number,
-  };
+const ProductDiscountBadge = ({ productId, discount }) => {
+  const {
+    pdp = {
+      show: false,
+      style: {},
+    },
+  } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge') || {};
 
-  static defaultProps = {
-    discount: null,
+  if (!pdp.show) {
+    return null;
   }
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { pdp = { show: false, style: {} } } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge') || {};
-
-    if (!pdp.show) {
-      return null;
-    }
-
-    const { productId, discount } = this.props;
-    const props = { productId };
-
-    if (!discount) {
-      return null;
-    }
-
-    return (
-      <div style={pdp.style} className={`${styles.container} theme__product__product-discount`} aria-hidden>
-        <SurroundPortals portalName={PRODUCT_DISCOUNT} portalProps={props}>
-          <DiscountBadge className={styles.badge} text={`-${discount}%`} />
-        </SurroundPortals>
-      </div>
-    );
+  if (!discount) {
+    return null;
   }
-}
+
+  return (
+    <div
+      style={pdp.style}
+      className={`${styles.container} theme__product__product-discount`}
+      aria-hidden
+    >
+      <SurroundPortals portalName={PRODUCT_DISCOUNT} portalProps={{ productId }}>
+        <DiscountBadge className={styles.badge} text={`-${discount}%`} />
+      </SurroundPortals>
+    </div>
+  );
+};
+
+ProductDiscountBadge.propTypes = {
+  productId: PropTypes.string.isRequired,
+  discount: PropTypes.number,
+};
+
+ProductDiscountBadge.defaultProps = {
+  discount: null,
+};
 
 export default connect(ProductDiscountBadge);
