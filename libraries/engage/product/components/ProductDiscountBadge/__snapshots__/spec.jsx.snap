@@ -1,26 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductDiscountBadge /> should render with discount 1`] = `
-<div
-  aria-hidden={true}
-  className="css-1mq4e16 theme__product__product-discount"
->
-  <SurroundPortals
-    name="product.discount"
-    props={
-      Object {
-        "productId": "1234",
-      }
+exports[`<ProductDiscountBadge /> should not render with discount if widgetSetting is false 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
+  }
+>
+  <Connect(ProductDiscountBadge)
+    productId="1234"
   >
-    <DiscountBadge
-      className=""
-      discount={null}
-      display="small"
-      text="-12%"
+    <ProductDiscountBadge
+      discount={12}
+      dispatch={[Function]}
+      productId="1234"
     />
-  </SurroundPortals>
-</div>
+  </Connect(ProductDiscountBadge)>
+</Provider>
 `;
 
-exports[`<ProductDiscountBadge /> should render without discount 1`] = `""`;
+exports[`<ProductDiscountBadge /> should render with discount 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductDiscountBadge)
+    productId="1234"
+  >
+    <ProductDiscountBadge
+      discount={12}
+      dispatch={[Function]}
+      productId="1234"
+    >
+      <div
+        aria-hidden={true}
+        className="css-5t3ew css-icjsl7 theme__product__product-discount"
+      >
+        <SurroundPortals
+          portalName="product.discount"
+          portalProps={
+            Object {
+              "discount": 12,
+              "productId": "1234",
+            }
+          }
+        >
+          <Portal
+            name="product.discount.before"
+            props={
+              Object {
+                "discount": 12,
+                "productId": "1234",
+              }
+            }
+          />
+          <Portal
+            name="product.discount"
+            props={
+              Object {
+                "discount": 12,
+                "productId": "1234",
+              }
+            }
+          >
+            <DiscountBadge
+              className="css-rvghpp"
+              discount={null}
+              display="small"
+              text="-12%"
+            >
+              <div
+                className="ui-shared__discount-badge"
+                data-test-id="-12%"
+              >
+                <Translate
+                  className="css-1815nu9 css-rvghpp"
+                  params={
+                    Array [
+                      null,
+                    ]
+                  }
+                  role={null}
+                  string="-12%"
+                >
+                  <span
+                    className="css-1815nu9 css-rvghpp"
+                    role={null}
+                  >
+                    -12%
+                  </span>
+                </Translate>
+              </div>
+            </DiscountBadge>
+          </Portal>
+          <Portal
+            name="product.discount.after"
+            props={
+              Object {
+                "discount": 12,
+                "productId": "1234",
+              }
+            }
+          />
+        </SurroundPortals>
+      </div>
+    </ProductDiscountBadge>
+  </Connect(ProductDiscountBadge)>
+</Provider>
+`;
+
+exports[`<ProductDiscountBadge /> should render without discount 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductDiscountBadge)
+    productId="1234"
+  >
+    <ProductDiscountBadge
+      discount={0}
+      dispatch={[Function]}
+      productId="1234"
+    />
+  </Connect(ProductDiscountBadge)>
+</Provider>
+`;

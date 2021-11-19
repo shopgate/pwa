@@ -146,7 +146,7 @@ export const hasScannerSupport = createSelector(
   isIos,
   (clientInformation, deviceInformation, deviceIsIos) => {
     // scanner is not supported on ipads
-    const { type } = deviceInformation;
+    const { type } = deviceInformation || {};
     const isIpad = type === TYPE_TABLET && deviceIsIos;
 
     return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion) && !isIpad;

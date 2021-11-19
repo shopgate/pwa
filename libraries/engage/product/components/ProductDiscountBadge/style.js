@@ -11,7 +11,7 @@ const styles = {
   }),
   badge: css({
     fontSize: '1.15rem',
-  }),
+  }).toString(),
 };
 
 export default styles;

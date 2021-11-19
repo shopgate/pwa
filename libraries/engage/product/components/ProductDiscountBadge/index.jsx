@@ -4,6 +4,7 @@ import { SurroundPortals } from '@shopgate/engage/components';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import { PRODUCT_DISCOUNT } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { useWidgetSettings } from '@shopgate/engage/core';
+import { css } from 'glamor';
 import styles from './style';
 import connect from './connector';
 
@@ -29,11 +30,10 @@ const ProductDiscountBadge = ({ productId, discount }) => {
 
   return (
     <div
-      style={pdp.style}
-      className={`${styles.container} theme__product__product-discount`}
+      className={`${styles.container} ${css(pdp.style)} theme__product__product-discount`}
       aria-hidden
     >
-      <SurroundPortals portalName={PRODUCT_DISCOUNT} portalProps={{ productId }}>
+      <SurroundPortals portalName={PRODUCT_DISCOUNT} portalProps={{ productId, discount }}>
         <DiscountBadge className={styles.badge} text={`-${discount}%`} />
       </SurroundPortals>
     </div>
