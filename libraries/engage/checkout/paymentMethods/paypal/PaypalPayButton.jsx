@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { isIOSTheme, getThemeSettings } from '@shopgate/engage/core';
+import {
+  isIOSTheme, getThemeSettings, showModal, MODAL_PIPELINE_ERROR,
+} from '@shopgate/engage/core';
+import { connect } from 'react-redux';
 import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
@@ -30,7 +33,10 @@ const styles = {
  * Paypal Pay button
  * @returns {JSX}
  */
-const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
+const PaypalPayButton = ({
+  // eslint-disable-next-line no-shadow
+  disabled, onSubmit, onValidate, showModal,
+}) => {
   const { paymentData, paymentTransactions } = useCheckoutContext();
   const [paypalActions, setPaypalActions] = useState(null);
   const paypal = usePaypal();
@@ -77,8 +83,14 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
       },
       onApprove: async (_, actions) => {
         const redirect = await formActions.current.onSubmit();
-        console.warn('xx', redirect);
         if (redirect) {
+          showModal({
+            type: MODAL_PIPELINE_ERROR,
+            title: null,
+            confirm: null,
+            dismiss: 'modal.ok',
+            message: 'checkout.errors.paypalFunding',
+          });
           actions.restart();
         }
       },
@@ -89,7 +101,7 @@ const PaypalPayButton = ({ disabled, onSubmit, onValidate }) => {
       },
     });
     paypalButton.current.render(button.current);
-  }, [disabled, fundingSource, paymentTransactions, paypal]);
+  }, [disabled, fundingSource, paymentTransactions, paypal, showModal]);
 
   // Sync our internal disabled state with paypals disabled state.
   useEffect(() => {
@@ -120,6 +132,11 @@ PaypalPayButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onValidate: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired,
 };
 
-export default PaypalPayButton;
+const mapDispatchToProps = {
+  showModal,
+};
+
+export default connect(null, mapDispatchToProps)(PaypalPayButton);
