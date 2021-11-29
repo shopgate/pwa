@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withWidgetSettings } from '@shopgate/engage/core';
 import connect from './connector';
 import style from './style';
 
@@ -11,10 +12,16 @@ export class FavoritesIconBadge extends Component {
 
   static propTypes = {
     favoritesCount: PropTypes.number,
+    widgetSettings: PropTypes.shape({
+      showCounter: PropTypes.bool,
+    }),
   };
 
   static defaultProps = {
     favoritesCount: 0,
+    widgetSettings: {
+      showCounter: true,
+    },
   };
 
   /**
@@ -41,9 +48,15 @@ export class FavoritesIconBadge extends Component {
    * @returns {JSX}
    */
   render() {
+    const { showCounter } = this.props.widgetSettings;
     if (this.props.favoritesCount === 0) {
       return null;
     }
+
+    if (showCounter === false) {
+      return <div className={`${style} theme__tab-bar__favorites-icon-badge theme__badge`} />;
+    }
+
     const number = (this.props.favoritesCount > this.constructor.MAX_NUMBER) ?
       `${this.constructor.MAX_NUMBER}+`
       : this.props.favoritesCount;
@@ -53,4 +66,4 @@ export class FavoritesIconBadge extends Component {
   }
 }
 
-export default connect(FavoritesIconBadge);
+export default withWidgetSettings(connect(FavoritesIconBadge), '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge');
