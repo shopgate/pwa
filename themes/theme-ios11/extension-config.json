@@ -287,6 +287,9 @@
               "style": {},
               "show": false
             }
+          },
+          "@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge": {
+            "showCounter": true
           }
         },
         "styles": {},
