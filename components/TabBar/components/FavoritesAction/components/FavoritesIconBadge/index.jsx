@@ -53,15 +53,13 @@ export class FavoritesIconBadge extends Component {
       return null;
     }
 
-    if (showCounter === false) {
-      return <div className={`${style} theme__tab-bar__favorites-icon-badge theme__badge`} />;
-    }
-
     const number = (this.props.favoritesCount > this.constructor.MAX_NUMBER) ?
       `${this.constructor.MAX_NUMBER}+`
       : this.props.favoritesCount;
     return (
-      <div className={`${style} theme__tab-bar__favorites-icon-badge theme__badge`}>{number}</div>
+      <div className={`${style} theme__tab-bar__favorites-icon-badge theme__badge`}>
+        {showCounter !== false ? number : ''}
+      </div>
     );
   }
 }
