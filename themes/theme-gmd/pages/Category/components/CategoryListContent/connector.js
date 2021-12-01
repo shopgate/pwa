@@ -6,6 +6,7 @@ import {
   getCategoryChildCount,
   hasCategoryChildren,
 } from '@shopgate/pwa-common-commerce/category/selectors';
+import { getShowCategoryImages } from '@shopgate/engage/core/selectors/merchantSettings';
 
 /**
  * Maps the contents of the state to the component props.
@@ -18,6 +19,7 @@ const mapStateToProps = (state, props) => ({
   categoriesFetching: areCategoryChildrenFetching(state, props),
   hasChildren: hasCategoryChildren(state, props),
   childrenCount: getCategoryChildCount(state, props),
+  showCategoryImages: getShowCategoryImages(state, props),
 });
 
 /**
@@ -34,11 +36,7 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
-  if (prev.childrenCount !== next.childrenCount) {
-    return false;
-  }
-
-  return true;
+  return prev.childrenCount === next.childrenCount;
 };
 
 export default connect(mapStateToProps, null, null, { areStatePropsEqual });
