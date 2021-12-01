@@ -40,6 +40,7 @@ const defaultAppConfig = {
   favorites: {},
   tracking: {
     hasWebTrackingEngage: false,
+    useSkuAsProductId: false,
   },
   webTrackingEngage: {
     android: '',
