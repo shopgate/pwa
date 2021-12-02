@@ -51,6 +51,7 @@ class CategoryListContent extends PureComponent {
                 <CategoryList
                   categories={categories}
                   prerender={categoriesFetching ? childrenCount : 0}
+                  showImages={this.props.showCategoryImages}
                 />
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
