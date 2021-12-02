@@ -564,6 +564,7 @@
       "checkCart": "Bitte überprüfe Deinen Warenkorb.",
       "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte überprüfe Deinen Warenkorb.",
+      "paypalFunding": "Bei der Ausführung der Zahlung ist ein Fehler aufgetreten.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
       "noPaymentTransaction": "Keine Payment Transaktion verfügbar.",
       "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse",
