@@ -76,5 +76,5 @@ export const getProductListShowInventory = makeGetMerchantSettingByKey(
 
 export const getShowCategoryImages = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_SHOW_CATEGORY_IMAGES,
-  false
+  true
 );
