@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useCallback } from 'react';
 import { isAvailable, InAppBrowser, Linking } from '@shopgate/native-modules';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
@@ -9,6 +10,7 @@ import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
 import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
+import { hasWebBridge } from '../../core';
 
 type Props = {
   orderInitialized?: bool,
@@ -155,6 +157,8 @@ const CheckoutProvider = ({
     });
   }, [showModal]);
 
+  const submitPromise = React.useRef(null);
+
   // Handles submit of the checkout form.
   const handleSubmitOrder = React.useCallback(async (values) => {
     setLocked(true);
@@ -194,6 +198,7 @@ const CheckoutProvider = ({
         });
       } catch (error) {
         setLocked(false);
+        submitPromise?.current?.resolve?.();
         return;
       }
     } else if (isGuestCheckout && isPickupContactSelectionEnabled && values.instructions) {
@@ -203,6 +208,7 @@ const CheckoutProvider = ({
         });
       } catch (error) {
         setLocked(false);
+        submitPromise?.current?.resolve?.();
         return;
       }
     }
@@ -215,6 +221,7 @@ const CheckoutProvider = ({
       });
       if (!fulfilledPaymentTransactions) {
         setLocked(false);
+        submitPromise?.current?.resolve?.();
         return;
       }
     }
@@ -248,13 +255,30 @@ const CheckoutProvider = ({
           });
           // On Close we simply unlock the checkout
           setLocked(false);
+          submitPromise?.current?.resolve?.();
           return;
         }
-        window.location.href = url;
+
+        // Implemented specifically for paypal:
+        // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
+        // In the website we don't want to redirect and instead use to paypal sdk to
+        // control the "mini browser" / popup.
+        let redirectWanted = true;
+        if (paymentHandlerRef?.current?.getSupportsRedirect) {
+          redirectWanted = paymentHandlerRef?.current?.getSupportsRedirect();
+        }
+        if (redirectWanted) {
+          window.location.href = url;
+        } else {
+          setLocked(false);
+        }
+
+        submitPromise?.current?.resolve?.(true);
         return;
       }
     } catch (error) {
       setLocked(false);
+      submitPromise?.current?.resolve?.();
       return;
     }
 
@@ -389,7 +413,16 @@ const CheckoutProvider = ({
     supportedCountries: shopSettings.supportedCountries,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,
-    handleSubmitOrder: formState.handleSubmit,
+    handleSubmitOrder: (...params) => {
+      const promise = new Promise((resolve, reject) => {
+        submitPromise.current = {
+          resolve,
+          reject,
+        };
+      });
+      formState.handleSubmit(...params);
+      return promise;
+    },
     handleValidation: () => formState.validate(formState.values),
     updateShippingMethod: handleUpdateShippingMethod,
     defaultPickupPersonState,
