@@ -36,7 +36,11 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
-  return prev.childrenCount === next.childrenCount;
+  if (prev.childrenCount !== next.childrenCount) {
+    return false;
+  }
+
+  return true;
 };
 
 export default connect(mapStateToProps, null, null, { areStatePropsEqual });
