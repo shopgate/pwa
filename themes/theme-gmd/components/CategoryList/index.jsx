@@ -16,7 +16,7 @@ import styles, { image } from './style';
  * @param {Array} props.categories The number of rows to prerender.
  * @returns {JSX}
  */
-const CategoryList = ({ categories, prerender }) => {
+const CategoryList = ({ categories, prerender, showImages }) => {
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;
@@ -45,7 +45,11 @@ const CategoryList = ({ categories, prerender }) => {
               title: category.name,
             }}
             testId={category.name}
-            rightComponent={<CategoryImage className={image} src={category.imageUrl} />}
+            rightComponent={
+              showImages
+                ? <CategoryImage className={image} src={category.imageUrl} />
+                : null
+            }
             linkComponent={TextLink}
           />
         </Portal>
@@ -57,11 +61,13 @@ const CategoryList = ({ categories, prerender }) => {
 CategoryList.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
   prerender: PropTypes.number,
+  showImages: PropTypes.bool,
 };
 
 CategoryList.defaultProps = {
   categories: null,
   prerender: 0,
+  showImages: true,
 };
 
 export default CategoryList;

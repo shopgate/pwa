@@ -22,6 +22,7 @@ class CategoryListContent extends PureComponent {
     categoriesFetching: PropTypes.bool,
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
+    showCategoryImages: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -29,6 +30,7 @@ class CategoryListContent extends PureComponent {
     categoriesFetching: false,
     childrenCount: 6,
     hasChildren: false,
+    showCategoryImages: true,
   }
 
   /**
@@ -49,12 +51,14 @@ class CategoryListContent extends PureComponent {
                 <CategoryList
                   categories={categories}
                   prerender={categoriesFetching ? childrenCount : 0}
+                  showImages={this.props.showCategoryImages}
                 />
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
                 <CategoryGrid
                   categories={categories}
                   prerender={categoriesFetching ? childrenCount : 0}
+                  showImages={this.props.showCategoryImages}
                 />
               </ResponsiveContainer>
             </Section>
