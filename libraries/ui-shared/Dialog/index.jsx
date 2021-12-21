@@ -32,7 +32,7 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
   // Assemble the actions.
   const actions = [];
   const {
-    confirm, dismiss, title, titleParams, message, params, type,
+    confirm, dismiss, title, titleParams, message, params, type, content,
   } = modal;
 
   // Push dismiss action first so the button is rendered first
@@ -77,7 +77,9 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
   return (
     <Modal>
       <Backdrop isVisible level={0} />
-      <DialogComponent {...dialogProps} />
+      <DialogComponent {...dialogProps}>
+        {content}
+      </DialogComponent>
     </Modal>
   );
 };
@@ -91,6 +93,7 @@ Dialog.propTypes = {
     message: PropTypes.string,
     params: PropTypes.shape(),
     type: PropTypes.string,
+    content: PropTypes.node,
   }).isRequired,
   onConfirm: PropTypes.func,
   onDismiss: PropTypes.func,
