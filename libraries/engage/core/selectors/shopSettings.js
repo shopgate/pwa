@@ -8,6 +8,7 @@ import {
   SHOP_SETTING_IMAGES_FAVICON,
   SHOP_SETTING_NUMBER_OF_ADDRESS_LINES,
   SHOP_SETTING_GOOGLE_SITE_VERIFICATION_CODE,
+  SHOP_SETTINGS_SHOW_CATEGORY_IMAGES,
 } from '../constants/shopSettings';
 
 /**
@@ -96,4 +97,9 @@ export const getNumberOfAddressLines = makeGetShopSettingByKey(
 export const getGoogleSiteVerificationCode = makeGetShopSettingByKey(
   SHOP_SETTING_GOOGLE_SITE_VERIFICATION_CODE,
   ''
+);
+
+export const getShowCategoryImages = makeGetShopSettingByKey(
+  SHOP_SETTINGS_SHOW_CATEGORY_IMAGES,
+  true
 );

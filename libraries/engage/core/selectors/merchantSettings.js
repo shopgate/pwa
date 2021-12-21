@@ -10,7 +10,6 @@ import {
   MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
 } from '../constants';
-import { MERCHANT_SETTINGS_SHOW_CATEGORY_IMAGES } from '../constants/merchantSettings';
 
 /**
  * Retrieves the merchantSettings state from the store.
@@ -72,9 +71,4 @@ export const getProductShowAlternativeLocation = makeGetMerchantSettingByKey(
 export const getProductListShowInventory = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
   false
-);
-
-export const getShowCategoryImages = makeGetMerchantSettingByKey(
-  MERCHANT_SETTINGS_SHOW_CATEGORY_IMAGES,
-  true
 );

@@ -6,7 +6,7 @@ import {
   getCategoryChildCount,
   hasCategoryChildren,
 } from '@shopgate/pwa-common-commerce/category/selectors';
-import { getShowCategoryImages } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getShowCategoryImages } from '@shopgate/engage/core/selectors/shopSettings';
 
 /**
  * Maps the contents of the state to the component props.
