@@ -26,7 +26,7 @@ export const getState = state => state?.settings?.shopSettings || {};
  */
 export const makeGetShopSettingByKey = (key, fallback = null) => createSelector(
   getState,
-  state => state?.[key] || fallback
+  state => (typeof state?.[key] !== 'undefined' ? state?.[key] : fallback)
 );
 
 /**
