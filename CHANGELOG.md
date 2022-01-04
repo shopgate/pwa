@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.5.2](https://github.com/shopgate/pwa/compare/v7.5.0...v7.5.2) (2022-01-04)
+
+#### :rocket: Enhancement
+* [#1149](https://github.com/shopgate/pwa/pull/1149) Added new config to hide category images ([@AienTech](https://github.com/AienTech))
+* [#1147](https://github.com/shopgate/pwa/pull/1147) Added new config to use SKU for tracking  ([@Carsten89](https://github.com/Carsten89))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
