@@ -40,9 +40,13 @@ const createTabAction = (tab, isHighlighted, path) => {
  * The TabBar component
  */
 class TabBar extends PureComponent {
-  static show = () => {
-    UIEvents.emit(SHOW_TAB_BAR);
-  }
+  /**
+   * Shows tha TabBar
+   * @param {boolean} [force=false] When set to TRUE the TabBar wil be shown even if not enabled
+   */
+   static show = (force = false) => {
+     UIEvents.emit(SHOW_TAB_BAR, { force });
+   }
 
   static hide = () => {
     UIEvents.emit(HIDE_TAB_BAR);
@@ -51,12 +55,14 @@ class TabBar extends PureComponent {
   static propTypes = {
     path: PropTypes.string.isRequired,
     activeTab: PropTypes.string,
+    isEnabled: PropTypes.bool,
     isVisible: PropTypes.bool,
   };
 
   static defaultProps = {
     activeTab: null,
     isVisible: true,
+    isEnabled: true,
   };
 
   /**
@@ -87,7 +93,12 @@ class TabBar extends PureComponent {
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
   }
 
-  show = () => {
+  show = ({ force } = {}) => {
+    // Don't show the TabBar when it's not enabled
+    if (!this.props.isEnabled && force !== true) {
+      return;
+    }
+
     this.setState({
       isVisible: true,
     });
