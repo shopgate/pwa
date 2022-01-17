@@ -42,9 +42,12 @@ const createTabAction = (tab, isHighlighted, path) => {
 
 /**
  * The TabBar component
- * @param {boolean} [force=false] When set to TRUE the tabbar wil be shown even if not enabled
  */
 class TabBar extends PureComponent {
+  /**
+   * Shows tha TabBar
+   * @param {boolean} [force=false] When set to TRUE the TabBar wil be shown even if not enabled
+   */
   static show = (force = false) => {
     UIEvents.emit(SHOW_TAB_BAR, { force });
   }
