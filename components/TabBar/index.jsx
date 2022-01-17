@@ -42,10 +42,11 @@ const createTabAction = (tab, isHighlighted, path) => {
 
 /**
  * The TabBar component
+ * @param {boolean} [force=false] When set to TRUE the tabbar wil be shown even if not enabled
  */
 class TabBar extends PureComponent {
-  static show = () => {
-    UIEvents.emit(SHOW_TAB_BAR);
+  static show = (force = false) => {
+    UIEvents.emit(SHOW_TAB_BAR, { force });
   }
 
   static hide = () => {
@@ -55,12 +56,14 @@ class TabBar extends PureComponent {
   static propTypes = {
     path: PropTypes.string.isRequired,
     activeTab: PropTypes.string,
+    isEnabled: PropTypes.bool,
     isVisible: PropTypes.bool,
   };
 
   static defaultProps = {
     activeTab: null,
     isVisible: true,
+    isEnabled: true,
   };
 
   /**
@@ -107,7 +110,12 @@ class TabBar extends PureComponent {
     updateHeightCSSProperty(false);
   }
 
-  show = ({ scroll } = {}) => {
+  show = ({ scroll, force } = {}) => {
+    // Don't show the TabBar when it's not enabled
+    if (!this.props.isEnabled && force !== true) {
+      return;
+    }
+
     if (scroll === true) {
       this.setState({
         isScrolledOut: false,
