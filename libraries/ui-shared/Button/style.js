@@ -16,6 +16,7 @@ const button = (text, background) => ({
   color: text,
   backgroundColor: background,
   minWidth: 64,
+  overflow: 'hidden',
   ...themeConfig.variables.buttonBase,
 });
 

@@ -58,7 +58,7 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
   useEffect(() => {
     // Add most late conditioner
     conditioner.addConditioner('product-quantity', checkQuantity, 100);
-  }, []);
+  }, [conditioner]);
 
   // Update resolveValue effect
   useEffect(() => {
@@ -70,7 +70,7 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
       promiseResolve(resolveValue);
     }
     setResolveValue(null);
-  }, [resolveValue]);
+  }, [promiseResolve, resolveValue]);
 
   const { min, max } = getQuantityRange(stock);
 
