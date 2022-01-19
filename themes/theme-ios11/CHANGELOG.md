@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.18.7](https://github.com/shopgate/pwa/compare/v6.18.6...v6.18.7) (2022-01-19)
+
+#### :rocket: Enhancement
+* [#1148](https://github.com/shopgate/pwa/pull/1148) Add option to disable the favorite badge icon counter in TabBar ([@AienTech](https://github.com/AienTech))
+
+
 ## [v6.18.0](https://github.com/shopgate/pwa/compare/v6.17.7...v6.18.0) (2021-11-18)
 
 #### :rocket: Enhancement
