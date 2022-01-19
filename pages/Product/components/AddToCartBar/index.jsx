@@ -5,13 +5,11 @@ import { isBeta } from '@shopgate/engage/core';
 import { ProductContext } from '@shopgate/engage/product';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PRODUCT_ADD_TO_CART_BAR,
-  PRODUCT_ADD_TO_CART_BAR_AFTER,
-  PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -120,8 +118,8 @@ class AddToCartBar extends Component {
       return;
     }
 
-    this.props.conditioner.check().then((fullfilled) => {
-      if (!fullfilled) {
+    this.props.conditioner.check().then((fulfilled) => {
+      if (!fulfilled) {
         return;
       }
 
@@ -166,8 +164,15 @@ class AddToCartBar extends Component {
     return ReactDOM.createPortal(
       (
         <Fragment>
-          <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
-          <Portal name={PRODUCT_ADD_TO_CART_BAR}>
+          <SurroundPortals
+            portalName={PRODUCT_ADD_TO_CART_BAR}
+            portalProps={{
+              ...this.props,
+              ...this.state,
+              handleAddToCart: this.handleAddToCart,
+              resetClicked: this.resetClicked,
+            }}
+          >
             <Section title="product.sections.purchase" className="theme__product__add-to-cart-bar">
               <div className={styles.container}>
                 <div className={styles.innerContainer} ref={this.ref}>
@@ -196,8 +201,7 @@ class AddToCartBar extends Component {
                 </div>
               </div>
             </Section>
-          </Portal>
-          <Portal name={PRODUCT_ADD_TO_CART_BAR_AFTER} />
+          </SurroundPortals>
         </Fragment>
       ),
       this.target
