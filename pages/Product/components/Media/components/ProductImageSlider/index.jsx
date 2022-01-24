@@ -191,6 +191,7 @@ class ProductImageSlider extends Component {
 
     const wrapperStyles = {
       transition: '0.5s filter ease-out', // blur filter
+      transform: 'translate3d(0, 0, 0)', // Fix for cut off overlapping icons
     };
 
     return (
