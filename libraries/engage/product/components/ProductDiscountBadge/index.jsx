@@ -16,7 +16,7 @@ import connect from './connector';
 const ProductDiscountBadge = ({ productId, discount }) => {
   const {
     pdp = {
-      show: true,
+      show: false,
       style: {},
     },
   } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge') || {};
