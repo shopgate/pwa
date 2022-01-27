@@ -52,6 +52,17 @@ const timer = css({
   fontWeight: 500,
 }).toString();
 
+const badgesPortal = css({
+  width: '50%',
+  '@media(min-width: 480px)': {
+    position: 'initial',
+    top: 'initial',
+    left: 'initial',
+    width: 'initial',
+    marginBottom: 8,
+  },
+}).toString();
+
 export default {
   image,
   infoPane,
@@ -61,4 +72,5 @@ export default {
   card,
   title,
   timer,
+  badgesPortal,
 };
