@@ -22,6 +22,7 @@ exports[`<CategoryListContent /> should render 1`] = `
       childrenCount={null}
       dispatch={[Function]}
       hasChildren={false}
+      showCategoryImages={true}
     >
       <Portal
         name="category.list.before"
