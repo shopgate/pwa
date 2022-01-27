@@ -257,7 +257,7 @@
     "error_title": "Leider konnte deine Reservierung nicht abgeschlossen werden.",
     "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfe die Verfügbarkeit in anderen Filialen im Warenkorb.",
     "error_invalid_zip_code": "Bitte gib eine gültige Postleitzahl ein.",
-    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen deine Eingabe.",
+    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfe deine Eingabe.",
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
