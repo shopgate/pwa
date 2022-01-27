@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import { getProductRoute, FeaturedMedia } from '@shopgate/engage/product';
+import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
-import styles, { itemDetails, itemImage } from './style';
+import styles, { itemDetails, itemImage, badgesPortal } from './style';
 
 /**
  * The Product Grid Item component.
@@ -35,12 +35,12 @@ const Item = ({ product, display }) => (
         />
       }
     </Link>
-
-    <ItemDiscount
-      productId={product.id}
-      discount={product.price.discount || null}
-    />
-
+    <ProductBadges location="productGrid" productId={product.id} className={badgesPortal}>
+      <ItemDiscount
+        productId={product.id}
+        discount={product.price.discount || null}
+      />
+    </ProductBadges>
     <div className={itemDetails}>
       <ItemDetails
         product={product}

@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'glamor';
 import { isBeta } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PORTAL_PRODUCT_MEDIA_SECTION } from '@shopgate/engage/components/constants';
+import { ProductDiscountBadge } from '@shopgate/engage/product';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
 import { ProductContext } from '../../context';
+
+const styles = {
+  root: css({
+    position: 'relative',
+  }),
+};
 
 /**
  * The product media component.
@@ -21,24 +29,27 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => (
           variantId,
         }}
       >
-        {/* MediaSlider feature is currently in BETA testing.
+        <div className={styles.root}>
+          <ProductDiscountBadge productId={productId} />
+          {/* MediaSlider feature is currently in BETA testing.
               It should only be used for approved BETA Client Projects */}
-        {isBeta() ? (
-          <ProductMediaSlider
-            productId={productId}
-            variantId={variantId}
-            characteristics={characteristics}
-            aria-hidden={ariaHidden}
-            className={className}
-          />
-        ) : (
-          <ProductImageSlider
-            productId={productId}
-            variantId={variantId}
-            aria-hidden={ariaHidden}
-            className={className}
-          />
-        )}
+          {isBeta() ? (
+            <ProductMediaSlider
+              productId={productId}
+              variantId={variantId}
+              characteristics={characteristics}
+              aria-hidden={ariaHidden}
+              className={className}
+            />
+          ) : (
+            <ProductImageSlider
+              productId={productId}
+              variantId={variantId}
+              aria-hidden={ariaHidden}
+              className={className}
+            />
+          )}
+        </div>
       </SurroundPortals>
     )}
   </ProductContext.Consumer>
