@@ -84,6 +84,10 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
             }
             src={null}
           />
+          <ProductBadges
+            location="productCard"
+            productId="PR0DUCTID"
+          />
           <div
             className={
               Object {
@@ -626,75 +630,80 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
             }
             src={null}
           />
-          <ProductCardBadge
+          <ProductBadges
+            location="productCard"
             productId="PR0DUCTID"
-            style={Object {}}
-            value={-50}
           >
-            <div
-              className={
-                Object {
-                  "data-css-7vxvfe": "",
-                }
-              }
+            <ProductCardBadge
+              productId="PR0DUCTID"
               style={Object {}}
+              value={-50}
             >
-              <Portal
-                name="product-item.discount.before"
-                props={
+              <div
+                className={
                   Object {
-                    "productId": "PR0DUCTID",
+                    "data-css-1hbxai8": "",
                   }
                 }
-              />
-              <Portal
-                name="product-item.discount"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
-                  }
-                }
+                style={Object {}}
               >
-                <DiscountBadge
-                  className=""
-                  discount={null}
-                  display="small"
-                  text="-50%"
-                >
-                  <div
-                    data-test-id="-50%"
-                  >
-                    <Translate
-                      className="css-t5udo1 "
-                      params={
-                        Array [
-                          null,
-                        ]
-                      }
-                      role={null}
-                      string="-50%"
-                      transform={null}
-                    >
-                      <span
-                        className="css-t5udo1 "
-                        role={null}
-                      >
-                        -50%
-                      </span>
-                    </Translate>
-                  </div>
-                </DiscountBadge>
-              </Portal>
-              <Portal
-                name="product-item.discount.after"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
+                <Portal
+                  name="product-item.discount.before"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
                   }
-                }
-              />
-            </div>
-          </ProductCardBadge>
+                />
+                <Portal
+                  name="product-item.discount"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                >
+                  <DiscountBadge
+                    className=""
+                    discount={null}
+                    display="small"
+                    text="-50%"
+                  >
+                    <div
+                      data-test-id="-50%"
+                    >
+                      <Translate
+                        className="css-13de4di "
+                        params={
+                          Array [
+                            null,
+                          ]
+                        }
+                        role={null}
+                        string="-50%"
+                        transform={null}
+                      >
+                        <span
+                          className="css-13de4di "
+                          role={null}
+                        >
+                          -50%
+                        </span>
+                      </Translate>
+                    </div>
+                  </DiscountBadge>
+                </Portal>
+                <Portal
+                  name="product-item.discount.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
+              </div>
+            </ProductCardBadge>
+          </ProductBadges>
           <div
             className={
               Object {
@@ -890,75 +899,80 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
             }
             src={null}
           />
-          <ProductCardBadge
+          <ProductBadges
+            location="productCard"
             productId="PR0DUCTID"
-            style={Object {}}
-            value={-50}
           >
-            <div
-              className={
-                Object {
-                  "data-css-7vxvfe": "",
-                }
-              }
+            <ProductCardBadge
+              productId="PR0DUCTID"
               style={Object {}}
+              value={-50}
             >
-              <Portal
-                name="product-item.discount.before"
-                props={
+              <div
+                className={
                   Object {
-                    "productId": "PR0DUCTID",
+                    "data-css-1hbxai8": "",
                   }
                 }
-              />
-              <Portal
-                name="product-item.discount"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
-                  }
-                }
+                style={Object {}}
               >
-                <DiscountBadge
-                  className=""
-                  discount={null}
-                  display="small"
-                  text="-50%"
-                >
-                  <div
-                    data-test-id="-50%"
-                  >
-                    <Translate
-                      className="css-t5udo1 "
-                      params={
-                        Array [
-                          null,
-                        ]
-                      }
-                      role={null}
-                      string="-50%"
-                      transform={null}
-                    >
-                      <span
-                        className="css-t5udo1 "
-                        role={null}
-                      >
-                        -50%
-                      </span>
-                    </Translate>
-                  </div>
-                </DiscountBadge>
-              </Portal>
-              <Portal
-                name="product-item.discount.after"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
+                <Portal
+                  name="product-item.discount.before"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
                   }
-                }
-              />
-            </div>
-          </ProductCardBadge>
+                />
+                <Portal
+                  name="product-item.discount"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                >
+                  <DiscountBadge
+                    className=""
+                    discount={null}
+                    display="small"
+                    text="-50%"
+                  >
+                    <div
+                      data-test-id="-50%"
+                    >
+                      <Translate
+                        className="css-13de4di "
+                        params={
+                          Array [
+                            null,
+                          ]
+                        }
+                        role={null}
+                        string="-50%"
+                        transform={null}
+                      >
+                        <span
+                          className="css-13de4di "
+                          role={null}
+                        >
+                          -50%
+                        </span>
+                      </Translate>
+                    </div>
+                  </DiscountBadge>
+                </Portal>
+                <Portal
+                  name="product-item.discount.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
+              </div>
+            </ProductCardBadge>
+          </ProductBadges>
           <div
             className={
               Object {
@@ -1501,75 +1515,80 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
             }
             src={null}
           />
-          <ProductCardBadge
+          <ProductBadges
+            location="productCard"
             productId="PR0DUCTID"
-            style={Object {}}
-            value={-50}
           >
-            <div
-              className={
-                Object {
-                  "data-css-7vxvfe": "",
-                }
-              }
+            <ProductCardBadge
+              productId="PR0DUCTID"
               style={Object {}}
+              value={-50}
             >
-              <Portal
-                name="product-item.discount.before"
-                props={
+              <div
+                className={
                   Object {
-                    "productId": "PR0DUCTID",
+                    "data-css-1hbxai8": "",
                   }
                 }
-              />
-              <Portal
-                name="product-item.discount"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
-                  }
-                }
+                style={Object {}}
               >
-                <DiscountBadge
-                  className=""
-                  discount={null}
-                  display="small"
-                  text="-50%"
-                >
-                  <div
-                    data-test-id="-50%"
-                  >
-                    <Translate
-                      className="css-t5udo1 "
-                      params={
-                        Array [
-                          null,
-                        ]
-                      }
-                      role={null}
-                      string="-50%"
-                      transform={null}
-                    >
-                      <span
-                        className="css-t5udo1 "
-                        role={null}
-                      >
-                        -50%
-                      </span>
-                    </Translate>
-                  </div>
-                </DiscountBadge>
-              </Portal>
-              <Portal
-                name="product-item.discount.after"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
+                <Portal
+                  name="product-item.discount.before"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
                   }
-                }
-              />
-            </div>
-          </ProductCardBadge>
+                />
+                <Portal
+                  name="product-item.discount"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                >
+                  <DiscountBadge
+                    className=""
+                    discount={null}
+                    display="small"
+                    text="-50%"
+                  >
+                    <div
+                      data-test-id="-50%"
+                    >
+                      <Translate
+                        className="css-13de4di "
+                        params={
+                          Array [
+                            null,
+                          ]
+                        }
+                        role={null}
+                        string="-50%"
+                        transform={null}
+                      >
+                        <span
+                          className="css-13de4di "
+                          role={null}
+                        >
+                          -50%
+                        </span>
+                      </Translate>
+                    </div>
+                  </DiscountBadge>
+                </Portal>
+                <Portal
+                  name="product-item.discount.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
+              </div>
+            </ProductCardBadge>
+          </ProductBadges>
           <div
             className={
               Object {
@@ -2112,75 +2131,80 @@ exports[`<ProductCardRender /> should render without name 1`] = `
             }
             src={null}
           />
-          <ProductCardBadge
+          <ProductBadges
+            location="productCard"
             productId="PR0DUCTID"
-            style={Object {}}
-            value={-50}
           >
-            <div
-              className={
-                Object {
-                  "data-css-7vxvfe": "",
-                }
-              }
+            <ProductCardBadge
+              productId="PR0DUCTID"
               style={Object {}}
+              value={-50}
             >
-              <Portal
-                name="product-item.discount.before"
-                props={
+              <div
+                className={
                   Object {
-                    "productId": "PR0DUCTID",
+                    "data-css-1hbxai8": "",
                   }
                 }
-              />
-              <Portal
-                name="product-item.discount"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
-                  }
-                }
+                style={Object {}}
               >
-                <DiscountBadge
-                  className=""
-                  discount={null}
-                  display="small"
-                  text="-50%"
-                >
-                  <div
-                    data-test-id="-50%"
-                  >
-                    <Translate
-                      className="css-t5udo1 "
-                      params={
-                        Array [
-                          null,
-                        ]
-                      }
-                      role={null}
-                      string="-50%"
-                      transform={null}
-                    >
-                      <span
-                        className="css-t5udo1 "
-                        role={null}
-                      >
-                        -50%
-                      </span>
-                    </Translate>
-                  </div>
-                </DiscountBadge>
-              </Portal>
-              <Portal
-                name="product-item.discount.after"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
+                <Portal
+                  name="product-item.discount.before"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
                   }
-                }
-              />
-            </div>
-          </ProductCardBadge>
+                />
+                <Portal
+                  name="product-item.discount"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                >
+                  <DiscountBadge
+                    className=""
+                    discount={null}
+                    display="small"
+                    text="-50%"
+                  >
+                    <div
+                      data-test-id="-50%"
+                    >
+                      <Translate
+                        className="css-13de4di "
+                        params={
+                          Array [
+                            null,
+                          ]
+                        }
+                        role={null}
+                        string="-50%"
+                        transform={null}
+                      >
+                        <span
+                          className="css-13de4di "
+                          role={null}
+                        >
+                          -50%
+                        </span>
+                      </Translate>
+                    </div>
+                  </DiscountBadge>
+                </Portal>
+                <Portal
+                  name="product-item.discount.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
+              </div>
+            </ProductCardBadge>
+          </ProductBadges>
           <div
             className={
               Object {
@@ -2708,6 +2732,10 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
             }
             src={null}
           />
+          <ProductBadges
+            location="productCard"
+            productId="PR0DUCTID"
+          />
           <div
             className={
               Object {
@@ -3175,75 +3203,80 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
             }
             src={null}
           />
-          <ProductCardBadge
+          <ProductBadges
+            location="productCard"
             productId="PR0DUCTID"
-            style={Object {}}
-            value={-50}
           >
-            <div
-              className={
-                Object {
-                  "data-css-7vxvfe": "",
-                }
-              }
+            <ProductCardBadge
+              productId="PR0DUCTID"
               style={Object {}}
+              value={-50}
             >
-              <Portal
-                name="product-item.discount.before"
-                props={
+              <div
+                className={
                   Object {
-                    "productId": "PR0DUCTID",
+                    "data-css-1hbxai8": "",
                   }
                 }
-              />
-              <Portal
-                name="product-item.discount"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
-                  }
-                }
+                style={Object {}}
               >
-                <DiscountBadge
-                  className=""
-                  discount={null}
-                  display="small"
-                  text="-50%"
-                >
-                  <div
-                    data-test-id="-50%"
-                  >
-                    <Translate
-                      className="css-t5udo1 "
-                      params={
-                        Array [
-                          null,
-                        ]
-                      }
-                      role={null}
-                      string="-50%"
-                      transform={null}
-                    >
-                      <span
-                        className="css-t5udo1 "
-                        role={null}
-                      >
-                        -50%
-                      </span>
-                    </Translate>
-                  </div>
-                </DiscountBadge>
-              </Portal>
-              <Portal
-                name="product-item.discount.after"
-                props={
-                  Object {
-                    "productId": "PR0DUCTID",
+                <Portal
+                  name="product-item.discount.before"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
                   }
-                }
-              />
-            </div>
-          </ProductCardBadge>
+                />
+                <Portal
+                  name="product-item.discount"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                >
+                  <DiscountBadge
+                    className=""
+                    discount={null}
+                    display="small"
+                    text="-50%"
+                  >
+                    <div
+                      data-test-id="-50%"
+                    >
+                      <Translate
+                        className="css-13de4di "
+                        params={
+                          Array [
+                            null,
+                          ]
+                        }
+                        role={null}
+                        string="-50%"
+                        transform={null}
+                      >
+                        <span
+                          className="css-13de4di "
+                          role={null}
+                        >
+                          -50%
+                        </span>
+                      </Translate>
+                    </div>
+                  </DiscountBadge>
+                </Portal>
+                <Portal
+                  name="product-item.discount.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
+              </div>
+            </ProductCardBadge>
+          </ProductBadges>
           <div
             className={
               Object {

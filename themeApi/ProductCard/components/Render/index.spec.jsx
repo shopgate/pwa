@@ -19,6 +19,8 @@ jest.mock('@shopgate/engage/product', () => ({
   ProductGridPrice: () => null,
   FeaturedMedia: () => null,
   ProductName: ({ name }) => name,
+  ProductDiscountBadge: () => null,
+  ProductBadges: ({ children }) => children,
 }));
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/category', () => ({
