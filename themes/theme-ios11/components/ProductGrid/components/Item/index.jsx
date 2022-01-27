@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import { getProductRoute, FeaturedMedia } from '@shopgate/engage/product';
+import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
@@ -34,12 +34,12 @@ const Item = ({ product, display }) => (
         />
     }
     </Link>
-
-    <ItemDiscount
-      productId={product.id}
-      discount={product.price.discount || null}
-    />
-
+    <ProductBadges location="productGrid" productId={product.id}>
+      <ItemDiscount
+        productId={product.id}
+        discount={product.price.discount || null}
+      />
+    </ProductBadges>
     <div className={itemDetails}>
       <Link
         tagName="a"

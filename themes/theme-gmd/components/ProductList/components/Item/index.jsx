@@ -16,7 +16,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import { Availability } from '@shopgate/engage/components';
-import { PriceInfo, ProductName } from '@shopgate/engage/product';
+import { PriceInfo, ProductName, ProductBadges } from '@shopgate/engage/product';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
@@ -43,9 +43,9 @@ const Item = ({ display, product }) => (
           <Image itemProp="image" src={product.featuredImageBaseUrl} alt={product.name} />
         </Portal>
         <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
-
-        {/* DISCOUNT */}
-        {!!product.price.discount && (
+        <ProductBadges location="productList" productId={product.id}>
+          {/* DISCOUNT */}
+          {!!product.price.discount && (
           <Fragment>
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
@@ -53,8 +53,8 @@ const Item = ({ display, product }) => (
             </Portal>
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
           </Fragment>
-        )}
-
+          )}
+        </ProductBadges>
       </Grid.Item>
       <Grid.Item grow={4} className={styles.titleContainer}>
 

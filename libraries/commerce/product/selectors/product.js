@@ -364,6 +364,23 @@ export const getProductCurrency = createSelector(
 );
 
 /**
+ * Retrieves the product discount.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductDiscount = createSelector(
+  getProductPriceData,
+  (price) => {
+    if (!price) {
+      return null;
+    }
+
+    return price.discount || 0;
+  }
+);
+
+/**
  * Retrieves the unit price from a product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.

@@ -79,6 +79,8 @@ export { default as Description } from './components/Description';
 export { VariantAvailability } from './components/ProductVariants';
 export { PriceInfo } from './components/PriceInfo';
 export { ProductName } from './components/ProductName';
+export { default as ProductBadges } from './components/ProductBadges';
+export { default as ProductDiscountBadge } from './components/ProductDiscountBadge';
 export {
   ProductUnitQuantityPicker,
   UnitQuantityPicker,

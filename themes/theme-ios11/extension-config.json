@@ -265,6 +265,12 @@
           },
           "@shopgate/engage/product/ProductSlider": {
             "slidesPerView": 2.3
+          },
+          "@shopgate/engage/product/components/ProductDiscountBadge": {
+            "pdp": {
+              "style": {},
+              "show": false
+            }
           }
         },
         "styles": {},

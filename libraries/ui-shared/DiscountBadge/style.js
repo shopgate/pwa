@@ -7,13 +7,15 @@ const badge = {
   background: `var(--color-secondary, ${colors.primary})`,
   borderRadius: 2,
   color: `var(--color-secondary-contrast, ${colors.primaryContrast})`,
-  paddingTop: 5,
-  paddingBottom: 5,
+  padding: 5,
   width: '100%',
   fontWeight: 700,
   textAlign: 'center',
-  display: 'inline-block',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   lineHeight: 1,
+  whiteSpace: 'nowrap',
   ...themeConfig.variables.discountBadgeBase,
 };
 
@@ -27,7 +29,7 @@ export default {
   }).toString(),
   big: css({
     ...badge,
-    paddingTop: 7,
+    paddingTop: 5,
     paddingLeft: 5,
     paddingRight: 5,
   }).toString(),

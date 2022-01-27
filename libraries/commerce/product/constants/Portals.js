@@ -33,6 +33,7 @@ const EFFECTIVITY_DATES = 'effectivity-dates';
 const UNIT_QUANTITY_PICKER = 'unit-quantity-picker';
 const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
+const DISCOUNT = 'discount';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -191,3 +192,6 @@ export const PRODUCT_EFFECTIVITY_DATES = `${PRODUCT}.${EFFECTIVITY_DATES}`;
 export const PRODUCT_ORDER_QUANTITY_AFTER = `${PRODUCT}.${ORDER_QUANTITY}.${AFTER}`;
 
 export const PRODUCT_UNIT_QUANTITY_PICKER = `${PRODUCT}.${UNIT_QUANTITY_PICKER}`;
+
+// PRODUCT DISCOUNT BADGE
+export const PRODUCT_DISCOUNT = `${PRODUCT}.${DISCOUNT}`;
