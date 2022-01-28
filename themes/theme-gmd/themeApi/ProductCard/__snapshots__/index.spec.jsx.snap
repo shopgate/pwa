@@ -229,75 +229,124 @@ exports[`<ProductCard /> should render as expected 1`] = `
                     </SurroundPortals>
                   </ProductImage>
                 </Component>
-                <ProductCardBadge
+                <ProductBadges
+                  className=""
+                  location="productCard"
+                  portalProps={null}
                   productId="PR0DUCTID"
-                  style={Object {}}
-                  value={-50}
                 >
                   <div
-                    className={
-                      Object {
-                        "data-css-7vxvfe": "",
-                      }
-                    }
-                    style={Object {}}
+                    className="css-1v2v86f product_badges product_badges__product-card"
                   >
-                    <Portal
-                      name="product-item.discount.before"
-                      props={
+                    <SurroundPortals
+                      portalName="component.product-badges"
+                      portalProps={
                         Object {
-                          "productId": "PR0DUCTID",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="product-item.discount"
-                      props={
-                        Object {
+                          "location": "productCard",
                           "productId": "PR0DUCTID",
                         }
                       }
                     >
-                      <DiscountBadge
-                        className=""
-                        discount={null}
-                        display="small"
-                        text="-50%"
-                      >
-                        <div
-                          className="ui-shared__discount-badge"
-                          data-test-id="-50%"
-                        >
-                          <Translate
-                            className="css-1815nu9 "
-                            params={
-                              Array [
-                                null,
-                              ]
-                            }
-                            role={null}
-                            string="-50%"
-                          >
-                            <span
-                              className="css-1815nu9 "
-                              role={null}
-                            >
-                              -50%
-                            </span>
-                          </Translate>
-                        </div>
-                      </DiscountBadge>
-                    </Portal>
-                    <Portal
-                      name="product-item.discount.after"
-                      props={
-                        Object {
-                          "productId": "PR0DUCTID",
+                      <Portal
+                        name="component.product-badges.before"
+                        props={
+                          Object {
+                            "location": "productCard",
+                            "productId": "PR0DUCTID",
+                          }
                         }
-                      }
-                    />
+                      />
+                      <Portal
+                        name="component.product-badges"
+                        props={
+                          Object {
+                            "location": "productCard",
+                            "productId": "PR0DUCTID",
+                          }
+                        }
+                      >
+                        <ProductCardBadge
+                          productId="PR0DUCTID"
+                          style={Object {}}
+                          value={-50}
+                        >
+                          <div
+                            className={
+                              Object {
+                                "data-css-1hbxai8": "",
+                              }
+                            }
+                            style={Object {}}
+                          >
+                            <Portal
+                              name="product-item.discount.before"
+                              props={
+                                Object {
+                                  "productId": "PR0DUCTID",
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product-item.discount"
+                              props={
+                                Object {
+                                  "productId": "PR0DUCTID",
+                                }
+                              }
+                            >
+                              <DiscountBadge
+                                className=""
+                                discount={null}
+                                display="small"
+                                text="-50%"
+                              >
+                                <div
+                                  className="ui-shared__discount-badge"
+                                  data-test-id="-50%"
+                                >
+                                  <Translate
+                                    className="css-tyfhga "
+                                    params={
+                                      Array [
+                                        null,
+                                      ]
+                                    }
+                                    role={null}
+                                    string="-50%"
+                                  >
+                                    <span
+                                      className="css-tyfhga "
+                                      role={null}
+                                    >
+                                      -50%
+                                    </span>
+                                  </Translate>
+                                </div>
+                              </DiscountBadge>
+                            </Portal>
+                            <Portal
+                              name="product-item.discount.after"
+                              props={
+                                Object {
+                                  "productId": "PR0DUCTID",
+                                }
+                              }
+                            />
+                          </div>
+                        </ProductCardBadge>
+                      </Portal>
+                      <Portal
+                        name="component.product-badges.after"
+                        props={
+                          Object {
+                            "location": "productCard",
+                            "productId": "PR0DUCTID",
+                          }
+                        }
+                      />
+                    </SurroundPortals>
                   </div>
-                </ProductCardBadge>
+                </ProductBadges>
                 <div
                   className={
                     Object {

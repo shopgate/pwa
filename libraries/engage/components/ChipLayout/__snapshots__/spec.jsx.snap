@@ -135,7 +135,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                 fill={true}
                 onClick={[Function]}
                 onComplete={[Function]}
-                overflow={false}
+                overflow={true}
                 size={null}
               >
                 <div
@@ -380,7 +380,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                 fill={true}
                 onClick={[Function]}
                 onComplete={[Function]}
-                overflow={false}
+                overflow={true}
                 size={null}
               >
                 <div
