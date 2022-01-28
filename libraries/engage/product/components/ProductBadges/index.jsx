@@ -10,7 +10,7 @@ const styles = {
   root: css({
     position: 'absolute',
     left: 10,
-    top: 8,
+    top: 10,
     zIndex: 5,
     transform: 'translate3d(0, 0, 0)',
     display: 'flex',
