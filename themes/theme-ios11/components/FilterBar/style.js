@@ -5,5 +5,5 @@ export default css({
   boxShadow: themeShadows.material,
   position: 'sticky',
   left: 0,
-  zIndex: 1,
+  zIndex: 10,
 });
