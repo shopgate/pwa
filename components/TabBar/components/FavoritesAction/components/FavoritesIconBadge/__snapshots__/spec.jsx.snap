@@ -3,6 +3,11 @@
 exports[`TabBar favorites action - lifecycle should update when number exceeds maximum 1`] = `
 <FavoritesIconBadge
   favoritesCount={9999}
+  widgetSettings={
+    Object {
+      "showCounter": true,
+    }
+  }
 >
   <div
     className="css-p6tvz theme__tab-bar__favorites-icon-badge theme__badge"
@@ -15,6 +20,11 @@ exports[`TabBar favorites action - lifecycle should update when number exceeds m
 exports[`TabBar favorites action - lifecycle should update when number is changed 1`] = `
 <FavoritesIconBadge
   favoritesCount={99}
+  widgetSettings={
+    Object {
+      "showCounter": true,
+    }
+  }
 >
   <div
     className="css-p6tvz theme__tab-bar__favorites-icon-badge theme__badge"
@@ -37,17 +47,22 @@ exports[`TabBar favorites action should render exact number 1`] = `
     }
   }
 >
-  <Connect(FavoritesIconBadge)>
-    <FavoritesIconBadge
-      dispatch={[Function]}
-      favoritesCount={1}
+  <WithWidgetSettings(Connect(FavoritesIconBadge))>
+    <Connect(FavoritesIconBadge)
+      widgetSettings={Object {}}
     >
-      <div
-        className="css-p6tvz theme__tab-bar__favorites-icon-badge theme__badge"
+      <FavoritesIconBadge
+        dispatch={[Function]}
+        favoritesCount={1}
+        widgetSettings={Object {}}
       >
-        1
-      </div>
-    </FavoritesIconBadge>
-  </Connect(FavoritesIconBadge)>
+        <div
+          className="css-p6tvz theme__tab-bar__favorites-icon-badge theme__badge"
+        >
+          1
+        </div>
+      </FavoritesIconBadge>
+    </Connect(FavoritesIconBadge)>
+  </WithWidgetSettings(Connect(FavoritesIconBadge))>
 </Provider>
 `;
