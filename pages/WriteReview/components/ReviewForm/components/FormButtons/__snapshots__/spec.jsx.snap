@@ -28,7 +28,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             className="css-1v7qljm"
           >
             <button
-              className="css-kevfw8 css-1vphhlq"
+              className="css-167848x css-1vphhlq"
               data-test-id="reviewCancelButton"
               onClick={[Function]}
               type="button"
@@ -68,13 +68,13 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 wrapContent={false}
               >
                 <Button
-                  className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                  className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                   disabled={false}
                   onClick={null}
                   testId="sendReviewButton"
                 >
                   <button
-                    className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                    className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                     data-test-id="sendReviewButton"
                     disabled={false}
                     onClick={null}
@@ -86,7 +86,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                       fill={true}
                       onClick={[Function]}
                       onComplete={[Function]}
-                      overflow={false}
+                      overflow={true}
                       size={null}
                     >
                       <div
