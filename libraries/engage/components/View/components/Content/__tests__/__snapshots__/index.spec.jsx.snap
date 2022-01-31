@@ -41,14 +41,14 @@ exports[`engage > components > view > components > content should render content
         id="PageHeaderBelow"
       />
     </ResponsiveContainer>
-    <SurroundPortals
-      portalName="view.content"
-      portalProps={null}
+    <ConditionalWrapper
+      condition={true}
+      wrapper={[Function]}
     >
       <div>
         Page #1
       </div>
-    </SurroundPortals>
+    </ConditionalWrapper>
     <ViewBelow />
   </article>
 </Swipeable>
