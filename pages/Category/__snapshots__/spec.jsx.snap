@@ -3,6 +3,7 @@
 exports[`Pages: <Category /> should render 1`] = `
 <MockedView
   aria-hidden={false}
+  noContentPortal={true}
 >
   <Consume
     context={
