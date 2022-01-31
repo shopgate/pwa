@@ -26,14 +26,14 @@ exports[`engage > components > view > components > content should render content
       title="Test Shop"
     />
     <ViewAbove />
-    <SurroundPortals
-      portalName="view.content"
-      portalProps={null}
+    <ConditionalWrapper
+      condition={true}
+      wrapper={[Function]}
     >
       <div>
         Page #1
       </div>
-    </SurroundPortals>
+    </ConditionalWrapper>
     <ViewBelow />
   </article>
 </Swipeable>

@@ -1,10 +1,9 @@
 import React, {
-  useState, useEffect, useMemo, memo, useRef,
+  useState, useEffect, useMemo, memo,
 } from 'react';
-import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
-import { ScrollHeader } from '@shopgate/engage/components';
+import { ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
 import styles from './style';
@@ -19,16 +18,6 @@ const { colors, variables: { scroll: { offset = 100 } = {} } } = themeConfig || 
 function FilterBar({ filters }) {
   const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
-  const [offsetTop, setOffsetTop] = useState(0);
-
-  const containerRef = useRef();
-
-  useEffect(() => {
-    const currentOffset = get(containerRef, 'current.offsetTop');
-    if (offsetTop === 0 && offsetTop !== currentOffset) {
-      setOffsetTop(currentOffset);
-    }
-  }, [offsetTop]);
 
   useEffect(() => {
     setActive(filters !== null && Object.keys(filters).length > 0);
@@ -39,15 +28,12 @@ function FilterBar({ filters }) {
     color: active ? colors.accentContrast : colors.dark,
   }), [active]);
 
-  const inlineStyle = {
-    ...style,
-    top: offsetTop || -2,
-  };
-
   return (
     <ScrollHeader hideOnScroll={hideOnScroll} scrollOffset={offset}>
-      <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={inlineStyle} ref={containerRef}>
-        <Content />
+      <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
+        <SurroundPortals portalName="filter-bar.content">
+          <Content />
+        </SurroundPortals>
       </div>
     </ScrollHeader>
   );
