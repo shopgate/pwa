@@ -12,6 +12,7 @@ import ProductFilters from 'Components/ProductFilters';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from 'Components/PageTitleBar';
+import { VIEW_CONTENT } from '@shopgate/engage/core';
 import Products from '../Products';
 import { emptyWrapper } from './style';
 import connect from './connector';
@@ -76,22 +77,24 @@ class SearchContent extends Component {
             <ProductFilters
               showFilters={showFilterBar}
             />
-            <Products
-              searchPhrase={searchPhrase}
-              filters={state.filters}
-              sort={query.sort || DEFAULT_SORT}
-              routeId={routeId}
-            />
-            {showNoResults && (
-              <SurroundPortals portalName={NO_RESULTS_CONTENT}>
-                <NoResults
-                  headlineText="search.no_result.heading"
-                  bodyText="search.no_result.body"
-                  searchPhrase={searchPhrase}
-                  className={emptyWrapper}
-                />
-              </SurroundPortals>
-            )}
+            <SurroundPortals portalName={VIEW_CONTENT}>
+              <Products
+                searchPhrase={searchPhrase}
+                filters={state.filters}
+                sort={query.sort || DEFAULT_SORT}
+                routeId={routeId}
+              />
+              {showNoResults && (
+                <SurroundPortals portalName={NO_RESULTS_CONTENT}>
+                  <NoResults
+                    headlineText="search.no_result.heading"
+                    bodyText="search.no_result.body"
+                    searchPhrase={searchPhrase}
+                    className={emptyWrapper}
+                  />
+                </SurroundPortals>
+              )}
+            </SurroundPortals>
           </Fragment>
         )}
       </RouteContext.Consumer>
