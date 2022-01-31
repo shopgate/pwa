@@ -11,6 +11,7 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { useScrollContainer } from '@shopgate/engage/core';
+import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -25,12 +26,14 @@ class ViewContent extends Component {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
+    noContentPortal: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
   };
 
   static defaultProps = {
     children: null,
     noScrollOnKeyboard: false,
+    noContentPortal: false,
   };
 
   /**
@@ -170,9 +173,16 @@ class ViewContent extends Component {
               <div id="PageHeaderBelow" />
             ) : null}
           </ResponsiveContainer>
-          <SurroundPortals portalName={VIEW_CONTENT}>
+          <ConditionalWrapper
+            condition={!this.props.noContentPortal}
+            wrapper={children =>
+              <SurroundPortals portalName={VIEW_CONTENT}>
+                {children}
+              </SurroundPortals>
+            }
+          >
             {this.props.children}
-          </SurroundPortals>
+          </ConditionalWrapper>
           <Below />
         </article>
       </Swipeable>

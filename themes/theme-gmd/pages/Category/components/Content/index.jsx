@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ProductFilters from 'Components/ProductFilters';
+import { VIEW_CONTENT } from '@shopgate/engage/core';
+import { SurroundPortals } from '@shopgate/engage/components';
 import ProductsContent from '../ProductsContent';
 import Empty from '../Empty';
 import CategoryListContent from '../CategoryListContent';
@@ -15,14 +17,16 @@ const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
   <Fragment>
     <AppBar hasProducts={hasProducts} hasChildren={hasChildren} categoryId={categoryId} />
     <ProductFilters categoryId={categoryId} showFilters={hasProducts} />
-    <CategoryListContent categoryId={categoryId} />
+    <SurroundPortals portalName={VIEW_CONTENT}>
+      <CategoryListContent categoryId={categoryId} />
 
-    <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
-    <Empty
-      categoryId={categoryId}
-      headlineText="category.no_result.heading"
-      bodyText="category.no_result.body"
-    />
+      <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
+      <Empty
+        categoryId={categoryId}
+        headlineText="category.no_result.heading"
+        bodyText="category.no_result.body"
+      />
+    </SurroundPortals>
   </Fragment>
 );
 

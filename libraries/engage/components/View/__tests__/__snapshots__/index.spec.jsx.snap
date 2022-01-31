@@ -15,6 +15,7 @@ exports[`engage > components > view > index should have structured content 1`] =
   }
 >
   <_default
+    noContentPortal={false}
     noScrollOnKeyboard={false}
     setContentRef={[MockFunction]}
   >
@@ -29,6 +30,7 @@ exports[`engage > components > view > index should initialize with visible route
 <ViewContainer
   aria-hidden={false}
   background="#fff"
+  noContentPortal={false}
   noScrollOnKeyboard={false}
   visible={true}
 >

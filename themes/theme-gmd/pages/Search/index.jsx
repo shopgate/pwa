@@ -33,7 +33,7 @@ class Search extends PureComponent {
    */
   render() {
     return (
-      <View background={colors.background} aria-hidden={false}>
+      <View background={colors.background} aria-hidden={false} noContentPortal>
         <Consume context={RouteContext} props={map}>
           {this.consumeRenderer}
         </Consume>

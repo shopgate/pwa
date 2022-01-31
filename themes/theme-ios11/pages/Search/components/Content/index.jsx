@@ -7,6 +7,7 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { BackBar } from 'Components/AppBar/presets';
 import ProductFilters from 'Components/ProductFilters';
+import { VIEW_CONTENT } from '@shopgate/engage/core';
 import Products from '../Products';
 import connect from './connector';
 
@@ -50,13 +51,14 @@ class SearchContent extends Component {
             <ProductFilters
               showFilters={showFilterBar}
             />
-            <Products
-              searchPhrase={searchPhrase}
-              filters={state.filters}
-              sort={query.sort || DEFAULT_SORT}
-              routeId={routeId}
-            />
-            {showNoResults && (
+            <SurroundPortals portalName={VIEW_CONTENT}>
+              <Products
+                searchPhrase={searchPhrase}
+                filters={state.filters}
+                sort={query.sort || DEFAULT_SORT}
+                routeId={routeId}
+              />
+              {showNoResults && (
               <SurroundPortals portalName={NO_RESULTS_CONTENT}>
                 <NoResults
                   headlineText="search.no_result.heading"
@@ -64,7 +66,8 @@ class SearchContent extends Component {
                   searchPhrase={searchPhrase}
                 />
               </SurroundPortals>
-            )}
+              )}
+            </SurroundPortals>
           </Fragment>
         )}
       </RouteContext.Consumer>
