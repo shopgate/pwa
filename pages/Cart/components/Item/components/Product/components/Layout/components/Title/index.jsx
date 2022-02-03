@@ -32,11 +32,14 @@ const Title = ({ value, handleRemove, toggleEditMode }, context) => (
       </SurroundPortals>
     </Grid.Item>
     <Grid.Item className={styles.menuContainer} shrink={0}>
-      <SurroundPortals portalName={CART_ITEM_CONTEXT_MENU} portalProps={context}>
+      <SurroundPortals
+        portalName={CART_ITEM_CONTEXT_MENU}
+        portalProps={{ context, handleRemove, toggleEditMode }}
+      >
         <ContextMenu classes={contextMenuClasses}>
           <SurroundPortals
             portalName={CART_ITEM_CONTEXT_MENU_ITEM_REMOVE}
-            portalProps={{ context }}
+            portalProps={{ context, handleRemove }}
           >
             <div data-test-id="cartItemContextMenuItemRemove">
               <ContextMenu.Item onClick={handleRemove}>
@@ -46,7 +49,7 @@ const Title = ({ value, handleRemove, toggleEditMode }, context) => (
           </SurroundPortals>
           <SurroundPortals
             portalName={CART_ITEM_CONTEXT_MENU_ITEM_EDIT}
-            portalProps={{ context }}
+            portalProps={{ context, toggleEditMode }}
           >
             <div data-test-id="cartItemContextMenuItemEdit">
               <ContextMenu.Item onClick={() => toggleEditMode(true)}>
