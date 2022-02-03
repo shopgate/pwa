@@ -108,7 +108,7 @@ class QuantityPicker extends Component {
   };
 
   /**
-   * Event handler for the the onChange event of the input.
+   * Event handler for the onChange event of the input.
    * @param {Object} event The event object.
    */
   handleInputChange = (event) => {
@@ -125,7 +125,7 @@ class QuantityPicker extends Component {
   };
 
   /**
-   * Event handler for the the onClick event of the input.
+   * Event handler for the onClick event of the input.
    * @param {Object} event The event object.
    */
   handleInputClick = (event) => {
@@ -140,7 +140,7 @@ class QuantityPicker extends Component {
   };
 
   /**
-   * Event handler for the the onFocus event of the input.
+   * Event handler for the onFocus event of the input.
    */
   handleInputFocus = () => {
     this.input.select();
@@ -157,7 +157,7 @@ class QuantityPicker extends Component {
   };
 
   /**
-   * Event handler for the the onBlur event of the input.
+   * Event handler for the onBlur event of the input.
    * @param {Object} event The event object.
    */
   handleInputBlur = (event) => {
