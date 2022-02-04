@@ -11,6 +11,7 @@ import {
   OrderQuantityHint,
   FeaturedMedia,
   Swatches,
+  ProductBadges,
 } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
 import ProductGridPrice from '../ProductGridPrice';
@@ -58,7 +59,8 @@ function ProductCard(props) {
           itemProp="image"
         />
       }
-      {!!(!hidePrice && product.price.discount) && (
+      <ProductBadges location={location} productId={product.id}>
+        {!!(!hidePrice && product.price.discount) && (
         <div className={styles.badgeWrapper}>
           <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
           <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
@@ -66,7 +68,8 @@ function ProductCard(props) {
           </Portal>
           <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
         </div>
-      )}
+        )}
+      </ProductBadges>
       {!(hidePrice && hideRating) && (
         <div className={styles.details}>
           {!hideRating && product.rating && product.rating.average > 0 && (

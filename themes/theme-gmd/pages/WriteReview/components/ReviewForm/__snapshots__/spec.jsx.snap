@@ -819,7 +819,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -859,13 +859,13 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -877,7 +877,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div
@@ -1737,7 +1737,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -1777,13 +1777,13 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -1795,7 +1795,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div
@@ -2927,7 +2927,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -2967,13 +2967,13 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -2985,7 +2985,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div
@@ -4051,7 +4051,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -4091,13 +4091,13 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -4109,7 +4109,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div
@@ -5175,7 +5175,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -5215,13 +5215,13 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -5233,7 +5233,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div
@@ -6305,7 +6305,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -6345,13 +6345,13 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -6363,7 +6363,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div
@@ -7429,7 +7429,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -7469,13 +7469,13 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -7487,7 +7487,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div
@@ -8354,7 +8354,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="css-1v7qljm"
                     >
                       <button
-                        className="css-kevfw8 css-1vphhlq"
+                        className="css-167848x css-1vphhlq"
                         data-test-id="reviewCancelButton"
                         onClick={[Function]}
                         type="button"
@@ -8394,13 +8394,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-19m2k92  ui-shared__ripple-button"
+                            className="ui-shared__button css-ftrply  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-19m2k92  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-ftrply  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -8412,7 +8412,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                 fill={true}
                                 onClick={[Function]}
                                 onComplete={[Function]}
-                                overflow={false}
+                                overflow={true}
                                 size={null}
                               >
                                 <div

@@ -294,13 +294,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="ui-shared__button css-ot1d6i css-6f03lb"
+                              className="ui-shared__button css-1ebybnk css-6f03lb"
                               disabled={true}
                               onClick={null}
                               testId="UserMenuLogin"
                             >
                               <button
-                                className="ui-shared__button css-ot1d6i css-6f03lb css-1rn65c0 common__button"
+                                className="ui-shared__button css-1ebybnk css-6f03lb css-1rn65c0 common__button"
                                 data-test-id="UserMenuLogin"
                                 disabled={true}
                                 onClick={null}
@@ -376,13 +376,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="ui-shared__button css-ot1d6i css-6f03lb"
+                              className="ui-shared__button css-1ebybnk css-6f03lb"
                               disabled={true}
                               onClick={null}
                               testId="UserMenuRegister"
                             >
                               <button
-                                className="ui-shared__button css-ot1d6i css-6f03lb css-1rn65c0 common__button"
+                                className="ui-shared__button css-1ebybnk css-6f03lb css-1rn65c0 common__button"
                                 data-test-id="UserMenuRegister"
                                 disabled={true}
                                 onClick={null}
@@ -538,13 +538,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="ui-shared__button css-19m2k92 css-6f03lb"
+                              className="ui-shared__button css-ftrply css-6f03lb"
                               disabled={false}
                               onClick={null}
                               testId="UserMenuLogin"
                             >
                               <button
-                                className="ui-shared__button css-19m2k92 css-6f03lb css-1rn65c0 common__button"
+                                className="ui-shared__button css-ftrply css-6f03lb css-1rn65c0 common__button"
                                 data-test-id="UserMenuLogin"
                                 disabled={false}
                                 onClick={null}
@@ -620,13 +620,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                             wrapContent={true}
                           >
                             <Button
-                              className="ui-shared__button css-19m2k92 css-6f03lb"
+                              className="ui-shared__button css-ftrply css-6f03lb"
                               disabled={false}
                               onClick={null}
                               testId="UserMenuRegister"
                             >
                               <button
-                                className="ui-shared__button css-19m2k92 css-6f03lb css-1rn65c0 common__button"
+                                className="ui-shared__button css-ftrply css-6f03lb css-1rn65c0 common__button"
                                 data-test-id="UserMenuRegister"
                                 disabled={false}
                                 onClick={null}

@@ -22,7 +22,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
     }
   >
     <DiscountBadge
-      className="css-1mk9z3i"
+      className="css-b15hhv"
       discount={50}
       display="big"
       text="liveshopping.discount_badge"
@@ -32,7 +32,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         data-test-id="liveshopping.discount_badge"
       >
         <Translate
-          className="css-hw727r css-1mk9z3i"
+          className="css-1g4qpn2 css-b15hhv"
           params={
             Array [
               50,
@@ -42,7 +42,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
           string="liveshopping.discount_badge"
         >
           <span
-            className="css-hw727r css-1mk9z3i"
+            className="css-1g4qpn2 css-b15hhv"
             role={null}
           >
             liveshopping.discount_badge

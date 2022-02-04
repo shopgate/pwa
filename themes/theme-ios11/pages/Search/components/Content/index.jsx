@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { VIEW_CONTENT } from '@shopgate/engage/core';
+import { SurroundPortals } from '@shopgate/engage/components';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { BackBar } from 'Components/AppBar/presets';
 import Bar from '../Bar';
@@ -47,14 +48,14 @@ class SearchContent extends Component {
             <BackBar title={searchPhrase} shadow={!showFilterBar} />
 
             {showFilterBar && <Bar key="below" /> }
-
-            <Products
-              searchPhrase={searchPhrase}
-              filters={state.filters}
-              sort={query.sort || DEFAULT_SORT}
-              routeId={routeId}
-            />
-            {showNoResults && (
+            <SurroundPortals portalName={VIEW_CONTENT}>
+              <Products
+                searchPhrase={searchPhrase}
+                filters={state.filters}
+                sort={query.sort || DEFAULT_SORT}
+                routeId={routeId}
+              />
+              {showNoResults && (
               <SurroundPortals portalName={NO_RESULTS_CONTENT}>
                 <NoResults
                   headlineText="search.no_result.heading"
@@ -62,7 +63,8 @@ class SearchContent extends Component {
                   searchPhrase={searchPhrase}
                 />
               </SurroundPortals>
-            )}
+              )}
+            </SurroundPortals>
           </Fragment>
         )}
       </RouteContext.Consumer>

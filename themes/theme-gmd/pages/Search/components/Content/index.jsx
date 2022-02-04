@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { VIEW_CONTENT } from '@shopgate/engage/core';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/pwa-core';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
@@ -56,22 +57,23 @@ class SearchContent extends Component {
             />
 
             {showFilterBar && <Bar /> }
-
-            <Products
-              searchPhrase={searchPhrase}
-              filters={state.filters}
-              sort={query.sort || DEFAULT_SORT}
-              routeId={routeId}
-            />
-            {showNoResults && (
-              <SurroundPortals portalName={NO_RESULTS_CONTENT}>
-                <NoResults
-                  headlineText="search.no_result.heading"
-                  bodyText="search.no_result.body"
-                  searchPhrase={searchPhrase}
-                />
-              </SurroundPortals>
-            )}
+            <SurroundPortals portalName={VIEW_CONTENT}>
+              <Products
+                searchPhrase={searchPhrase}
+                filters={state.filters}
+                sort={query.sort || DEFAULT_SORT}
+                routeId={routeId}
+              />
+              {showNoResults && (
+                <SurroundPortals portalName={NO_RESULTS_CONTENT}>
+                  <NoResults
+                    headlineText="search.no_result.heading"
+                    bodyText="search.no_result.body"
+                    searchPhrase={searchPhrase}
+                  />
+                </SurroundPortals>
+              )}
+            </SurroundPortals>
           </Fragment>
         )}
       </RouteContext.Consumer>

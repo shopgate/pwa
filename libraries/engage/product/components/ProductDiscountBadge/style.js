@@ -1,12 +1,11 @@
 import { css } from 'glamor';
 
 const styles = {
+  portal: css({
+    top: 12,
+  }).toString(),
   container: css({
-    lineHeight: 1,
-    position: 'absolute',
-    left: 22,
-    top: 17,
-    width: 65,
+    minWidth: 65,
     zIndex: 10,
   }),
   badge: css({

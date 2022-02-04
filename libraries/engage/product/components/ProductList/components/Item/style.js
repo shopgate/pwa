@@ -58,6 +58,10 @@ const priceInfo = css({
   fontSize: '0.75rem',
 }).toString();
 
+const discount = css({
+  minWidth: 40,
+}).toString();
+
 export default {
   listItemContainer,
   imageContainer,
@@ -69,4 +73,5 @@ export default {
   price,
   priceStriked,
   priceInfo,
+  discount,
 };

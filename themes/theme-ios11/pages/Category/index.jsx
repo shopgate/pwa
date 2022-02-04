@@ -30,8 +30,9 @@ class Category extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    // View is rendered with noContentPortal prop, since the content portal is rendered inside
     return (
-      <View aria-hidden={false}>
+      <View aria-hidden={false} noContentPortal>
         <Consume context={RouteContext} props={map}>
           {this.consumeRenderer}
         </Consume>

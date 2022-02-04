@@ -26,11 +26,7 @@ const title = css({
 }).toString();
 
 const badgeWrapper = css({
-  lineHeight: 1,
-  position: 'absolute',
-  left: 10,
-  top: 10,
-  width: 40,
+  minWidth: 40,
 }).toString();
 
 const wishlist = css({

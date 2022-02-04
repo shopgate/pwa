@@ -80,6 +80,7 @@ export { default as Options } from './components/Options';
 export { default as Characteristics } from './components/Characteristics';
 export { default as Rating } from './components/Rating';
 export { default as ProductProvider } from './components/ProductProvider';
+export { default as ProductBadges } from './components/ProductBadges';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';

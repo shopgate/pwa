@@ -9,6 +9,7 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import ConditionalWrapper from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -24,6 +25,7 @@ class ViewContent extends Component {
     visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
     className: PropTypes.string,
+    noContentPortal: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
   };
 
@@ -31,6 +33,7 @@ class ViewContent extends Component {
     className: '',
     children: null,
     noScrollOnKeyboard: false,
+    noContentPortal: false,
   };
 
   /**
@@ -139,9 +142,16 @@ class ViewContent extends Component {
         <article className={`${styles} engage__view__content ${this.props.className}`} ref={this.ref} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
-          <SurroundPortals portalName={VIEW_CONTENT}>
+          <ConditionalWrapper
+            condition={!this.props.noContentPortal}
+            wrapper={children =>
+              <SurroundPortals portalName={VIEW_CONTENT}>
+                {children}
+              </SurroundPortals>
+            }
+          >
             {this.props.children}
-          </SurroundPortals>
+          </ConditionalWrapper>
           <Below />
         </article>
       </Swipeable>

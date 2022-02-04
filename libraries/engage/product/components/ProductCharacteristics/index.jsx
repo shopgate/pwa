@@ -243,6 +243,13 @@ class ProductCharacteristics extends Component {
   }
 
   /**
+   * Resets the highlight state
+   */
+  resetHighlight = () => {
+    this.setState({ highlight: null });
+  }
+
+  /**
    * @return {JSX}
    */
   render() {
@@ -272,6 +279,7 @@ class ProductCharacteristics extends Component {
               select: this.handleSelection,
               selected,
               values,
+              resetHighlight: this.resetHighlight,
             })
           );
         })}

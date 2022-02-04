@@ -257,13 +257,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-1ebybnk css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-1ebybnk css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -755,13 +755,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -773,7 +773,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
@@ -1357,13 +1357,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1375,7 +1375,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
@@ -2031,13 +2031,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-1ebybnk css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-1ebybnk css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -2890,13 +2890,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -2908,7 +2908,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
@@ -3183,13 +3183,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-1ebybnk css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-ot1d6i css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-1ebybnk css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -3661,13 +3661,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-19m2k92 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-ftrply css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3679,7 +3679,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
