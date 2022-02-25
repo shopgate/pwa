@@ -102,6 +102,21 @@ export const makeGetFavorites = getListCode => createSelector(
 );
 
 /**
+ * Creates a selector that selects all ids that belong
+ * to the given favorite list.
+ * @param {Function} getListCode Selects the list code.
+ * @returns {Function}
+ */
+export const makeGetFavoritesIdsByList = getListCode => createSelector(
+  getFavoritesProducts,
+  getListCode,
+  (favProducts, listId) => {
+    const ids = favProducts.byList[listId]?.ids || [];
+    return ids;
+  }
+);
+
+/**
  * True when favorites where not yet fetched for the first time.
  * @param {Object} state The global state.
  * @returns {boolean}
