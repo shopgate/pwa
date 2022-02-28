@@ -1,3 +1,4 @@
+import { getProductDataById } from '@shopgate/engage/product/selectors/product';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import fetchProducts from './fetchProducts';
 
@@ -21,10 +22,14 @@ const fetchProductsById = (
 
     // Then only perform a pipeline request if there are products missing.
     if (!missingIds.length) {
-      return;
+      const productsById = productIds.map(id => getProductDataById(state, { productId: id }));
+      const totalProductCount = productsById.length;
+      return {
+        products: productsById,
+        totalProductCount,
+      };
     }
 
-    // eslint-disable-next-line consistent-return
     return dispatch(fetchProducts({
       ...componentId && { id: componentId },
       cached,
