@@ -58,7 +58,7 @@ export const hasMultipleFavoritesList = createSelector(
  * @param {Object} props The component props.
  * @returns {string} the id of the favorites list
  */
- export const getFavoritesListIdByName = createSelector(
+export const getFavoritesListIdByName = createSelector(
   getFavoritesLists,
   (state, props) => props.listName,
   (favLists, listName) => {
@@ -119,7 +119,7 @@ export const makeGetFavoritesIdsByList = getListCode => createSelector(
  * @param {Function} getListCode Selects the list code.
  * @returns {Function}
  */
-export const makeGetFavorites = getListCode => {
+export const makeGetFavorites = (getListCode) => {
   const getFavoritesIdsByList = makeGetFavoritesIdsByList(getListCode);
   return createSelector(
     getFavoritesIdsByList,
