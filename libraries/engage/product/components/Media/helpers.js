@@ -1,6 +1,4 @@
-import { APP_PLATFORM } from '@shopgate/pwa-common/constants/Configuration';
-import { OS_ANDROID } from '@shopgate/pwa-common/constants/Device';
-import configuration from '@shopgate/pwa-common/collections/Configuration';
+import { getImageFormat } from '../../../core/helpers/getImageFormat';
 
 const qualities = {
   jpeg: 75,
@@ -25,8 +23,7 @@ const defaultParams = {
 export const buildMediaImageUrl = (url, params) => {
   const parsedUrl = new URL(url);
 
-  const isAndroid = configuration.get(APP_PLATFORM) === OS_ANDROID;
-  const format = isAndroid ? 'webp' : defaultParams.format;
+  const format = getImageFormat();
 
   const merged = {
     ...defaultParams,
