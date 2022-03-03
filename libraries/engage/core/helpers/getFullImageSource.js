@@ -1,5 +1,5 @@
-import { isAndroidOs } from '@shopgate/pwa-core';
 import { getProductImageSettings } from '../../product/helpers';
+import { getImageFormat } from './getImageFormat';
 
 /**
  * Returns the actual url to the image, by adding url parameters with the dimensions for img-cdn
@@ -12,7 +12,7 @@ import { getProductImageSettings } from '../../product/helpers';
 export const getFullImageSource = (src, { width, height }) => {
   if (src && src.includes('images.shopgate.services/v2/images')) {
     const { fillColor, quality } = getProductImageSettings();
-    const format = isAndroidOs ? 'webp' : 'jpeg';
+    const format = getImageFormat();
 
     return `${src}&format=${format}&width=${width}&height=${height}&quality=${quality}&fill=${fillColor.replace('#', '')}`;
   }
