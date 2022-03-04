@@ -38,21 +38,37 @@ const scrollToRating = () => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Rating = ({ rating }) => (
-  <Fragment>
-    <Portal name={PRODUCT_RATING_BEFORE} />
-    <Portal name={PRODUCT_RATING}>
-      {appConfig.hasReviews && rating && rating.count &&
-        <div className={`${container} engage__product__rating`} onClick={scrollToRating} role="link" aria-hidden>
+const Rating = ({ rating }) => {
+  // TODO: get value from real theme config
+  const showEmptyRatingStars = false;
+
+  // TODO: move into a nice one liner
+  let showRatings;
+  if (showEmptyRatingStars) {
+    showRatings = appConfig.hasReviews && rating;
+  } else {
+    showRatings = appConfig.hasReviews && rating && rating.count;
+  }
+
+  return (
+    <Fragment>
+      <Portal name={PRODUCT_RATING_BEFORE} />
+      <Portal name={PRODUCT_RATING}>
+        {showRatings &&
+        <div
+          className={`${container} engage__product__rating`}
+          onClick={scrollToRating}
+          role="link"
+          aria-hidden
+        >
           <RatingStars value={rating.average} display="big" />
           <RatingCount count={rating.count} prominent />
         </div>
-      }
-    </Portal>
-    <Portal name={PRODUCT_RATING_AFTER} />
-  </Fragment>
-);
-
+        }
+      </Portal>
+      <Portal name={PRODUCT_RATING_AFTER} />
+    </Fragment>);
+};
 Rating.propTypes = {
   rating: PropTypes.shape(),
 };

@@ -72,6 +72,7 @@ function ProductCard(props) {
       </ProductBadges>
       {!(hidePrice && hideRating) && (
         <div className={styles.details}>
+          {/* TODO: change condition like we did in the other places */}
           {!hideRating && product.rating && product.rating.average > 0 && (
             <RatingStars value={product.rating.average} />
           )}
@@ -146,3 +147,8 @@ ProductCard.propTypes = {
 };
 
 export default ProductCard;
+
+// #1 withWidgetSettings(connect(ReviewForm), '@shopgate/engage/rating');
+// props.widgetSetting
+
+// #2 const { showEmptyRatingStars } = useWidgetSettings('@shopgate/engage/rating');
