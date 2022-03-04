@@ -12,7 +12,9 @@ const { hasReviews } = appConfig;
  * @return {JSX}
  */
 const RatingStars = ({ product }) => {
-  if (!hasReviews || !product || !product.rating || product.rating.average === 0) {
+  // TODO: adjust condition like we did on PDP
+
+  if (!hasReviews || !product || !product.rating) {
     return null;
   }
 
