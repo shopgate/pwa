@@ -260,6 +260,9 @@
           "@shopgate/engage/reviews": {
             "prefillAuthor": true
           },
+          "@shopgate/engage/rating": {
+            "showEmptyRatingStars": false
+          },
           "@shopgate/engage/components/TaxDisclaimer": {
             "show": null,
             "hint": "*",
