@@ -261,7 +261,7 @@
             "prefillAuthor": true
           },
           "@shopgate/engage/rating": {
-            "showEmptyRatingStars": false
+            "showEmptyRatingStars":false
           },
           "@shopgate/engage/components/TaxDisclaimer": {
             "show": null,
