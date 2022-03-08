@@ -14,6 +14,7 @@ import {
   ProductBadges,
 } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 import ProductGridPrice from '../ProductGridPrice';
 import { getProductImageSettings } from '../../helpers';
 import styles from './style';
@@ -36,7 +37,7 @@ function ProductCard(props) {
   } = props;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
-
+  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
   return (
     <Link
       className="engage__product-card"
@@ -72,10 +73,11 @@ function ProductCard(props) {
       </ProductBadges>
       {!(hidePrice && hideRating) && (
         <div className={styles.details}>
-          {/* TODO: change condition like we did in the other places */}
-          {!hideRating && product.rating && product.rating.average > 0 && (
+          {!hideRating && product.rating && product.rating.average > 0 ? (
             <RatingStars value={product.rating.average} />
-          )}
+          ) :
+            !hideRating && showEmptyRatingStars && product.rating &&
+            <RatingStars value={product.rating.average} />}
 
           {/*
             This feature is currently in BETA testing.
@@ -147,8 +149,3 @@ ProductCard.propTypes = {
 };
 
 export default ProductCard;
-
-// #1 withWidgetSettings(connect(ReviewForm), '@shopgate/engage/rating');
-// props.widgetSetting
-
-// #2 const { showEmptyRatingStars } = useWidgetSettings('@shopgate/engage/rating');

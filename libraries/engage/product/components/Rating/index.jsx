@@ -11,7 +11,7 @@ import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
 import { container } from './style';
 import connect from './connector';
-
+import { useWidgetSettings } from '../../../core/hooks/useWidgetSettings';
 /**
  * Scrolls page to reviews excerpt.
  */
@@ -39,17 +39,11 @@ const scrollToRating = () => {
  * @return {JSX}
  */
 const Rating = ({ rating }) => {
-  // TODO: get value from real theme config
-  const showEmptyRatingStars = false;
-
-  // TODO: move into a nice one liner
-  let showRatings;
-  if (showEmptyRatingStars) {
-    showRatings = appConfig.hasReviews && rating;
-  } else {
-    showRatings = appConfig.hasReviews && rating && rating.count;
-  }
-
+  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  const showRatings = showEmptyRatingStars ?
+    appConfig.hasReviews && rating
+    :
+    appConfig.hasReviews && rating && rating.count;
   return (
     <Fragment>
       <Portal name={PRODUCT_RATING_BEFORE} />

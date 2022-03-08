@@ -11,6 +11,7 @@ import {
 } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
+import { useWidgetSettings } from '../../../../../../libraries/engage/core/hooks/useWidgetSettings';
 import Badge from '../Badge';
 import Price from '../Price';
 import Title from '../Title';
@@ -44,7 +45,7 @@ function ProductCardRender({
   } = product;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
-
+  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
   return (
     <Link tagName="a" href={url}>
 
@@ -67,9 +68,11 @@ function ProductCardRender({
 
       {(!(hidePrice && hideRating)) && (
         <div className={style}>
-          {(!hideRating && rating && rating.average > 0) && (
+          {!hideRating && rating && rating.average > 0 ? (
             <RatingStars value={product.rating.average} />
-          )}
+          ) :
+            !hideRating && showEmptyRatingStars && product.rating &&
+            <RatingStars value={product.rating.average} />}
           {!hideName && (
             <Title title={product.name} rows={titleRows} />
           )}
