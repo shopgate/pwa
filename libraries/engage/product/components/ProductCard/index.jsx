@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
+import { isBeta, useWidgetSettings } from '@shopgate/engage/core';
 import {
   Link, Ellipsis, Portal, RatingStars, DiscountBadge,
 } from '@shopgate/engage/components';
@@ -14,7 +14,6 @@ import {
   ProductBadges,
 } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
-import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 import ProductGridPrice from '../ProductGridPrice';
 import { getProductImageSettings } from '../../helpers';
 import styles from './style';
@@ -38,6 +37,12 @@ function ProductCard(props) {
 
   const { ListImage: gridResolutions } = getProductImageSettings();
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  let showRatings = false;
+  if (!hideRating && product.rating && product.rating.average > 0) {
+    showRatings = true;
+  } else if (!hideRating && showEmptyRatingStars && product.rating) {
+    showRatings = true;
+  }
   return (
     <Link
       className="engage__product-card"
@@ -73,12 +78,7 @@ function ProductCard(props) {
       </ProductBadges>
       {!(hidePrice && hideRating) && (
         <div className={styles.details}>
-          {!hideRating && product.rating && product.rating.average > 0 ? (
-            <RatingStars value={product.rating.average} />
-          ) :
-            !hideRating && showEmptyRatingStars && product.rating &&
-            <RatingStars value={product.rating.average} />}
-
+            {showRatings && <RatingStars value={product.rating.average} />}
           {/*
             This feature is currently in BETA testing.
             It should only be used for approved BETA Client Projects

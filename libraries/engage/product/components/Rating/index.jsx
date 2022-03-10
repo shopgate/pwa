@@ -9,9 +9,10 @@ import {
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import { container } from './style';
 import connect from './connector';
-import { useWidgetSettings } from '../../../core/hooks/useWidgetSettings';
+
 /**
  * Scrolls page to reviews excerpt.
  */
