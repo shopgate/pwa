@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
+import { isBeta, useWidgetSettings } from '@shopgate/engage/core';
 import {
   FeaturedMedia,
   getProductImageSettings,
@@ -11,7 +11,6 @@ import {
 } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
-import { useWidgetSettings } from '../../../../../../libraries/engage/core/hooks/useWidgetSettings';
 import Badge from '../Badge';
 import Price from '../Price';
 import Title from '../Title';
@@ -46,6 +45,12 @@ function ProductCardRender({
 
   const { ListImage: gridResolutions } = getProductImageSettings();
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  let showRatings = false;
+  if (!hideRating && rating && rating.average > 0) {
+    showRatings = true;
+  } else if (!hideRating && showEmptyRatingStars && product.rating) {
+    showRatings = true;
+  }
   return (
     <Link tagName="a" href={url}>
 
@@ -68,11 +73,7 @@ function ProductCardRender({
 
       {(!(hidePrice && hideRating)) && (
         <div className={style}>
-          {!hideRating && rating && rating.average > 0 ? (
-            <RatingStars value={product.rating.average} />
-          ) :
-            !hideRating && showEmptyRatingStars && product.rating &&
-            <RatingStars value={product.rating.average} />}
+          { showRatings && <RatingStars value={product.rating.average} />}
           {!hideName && (
             <Title title={product.name} rows={titleRows} />
           )}
