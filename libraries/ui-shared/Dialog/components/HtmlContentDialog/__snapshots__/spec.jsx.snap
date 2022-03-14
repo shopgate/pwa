@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HtmlContentDialog /> should render the actions 1`] = `
+<BaseDialog
+  actions={
+    Array [
+      Object {
+        "action": [Function],
+        "label": "fooAction",
+      },
+    ]
+  }
+  title="This is the title."
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p><i>This is a html message.</i></p>",
+      }
+    }
+  />
+</BaseDialog>
+`;
+
+exports[`<HtmlContentDialog /> should render with minimal props 1`] = `
+<BaseDialog
+  actions={Array []}
+  title={null}
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p><i>This is a html message.</i></p>",
+      }
+    }
+  />
+</BaseDialog>
+`;
+
+exports[`<HtmlContentDialog /> should render with title and html message 1`] = `
+<BaseDialog
+  actions={Array []}
+  title="This is the title."
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p><i>This is a html message.</i></p>",
+      }
+    }
+  />
+</BaseDialog>
+`;
+
+exports[`<HtmlContentDialog /> should render with title, html message and messageParams 1`] = `
+<BaseDialog
+  actions={Array []}
+  title="This is the title."
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Message with {name}",
+      }
+    }
+  />
+</BaseDialog>
+`;
