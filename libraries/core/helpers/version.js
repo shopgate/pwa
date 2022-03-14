@@ -15,6 +15,7 @@ let requesting = false;
 
 const md = new MobileDetect(navigator.userAgent);
 export const isAndroidOs = md.is('AndroidOS');
+export const isIOs = md.is('iOS');
 const fullVersion = typeof detector === 'object' && detector.os ? detector.os.fullVersion : null;
 
 // Eslint doesn't allow to use one liner here.
