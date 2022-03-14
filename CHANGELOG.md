@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.19.0](https://github.com/shopgate/pwa/compare/v6.18.7...v6.19.0) (2022-03-14)
+
+#### :rocket: Enhancement
+* [#1153](https://github.com/shopgate/pwa/pull/1153) Added support for images in webp format for iOS version >= 14 ([@ortmann64](https://github.com/ortmann64))
+
+
 ## [v6.18.7](https://github.com/shopgate/pwa/compare/v6.18.6...v6.18.7) (2022-02-04)
 
 #### :rocket: Enhancement
