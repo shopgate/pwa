@@ -9,6 +9,7 @@ import {
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import { container } from './style';
 import connect from './connector';
 
@@ -38,21 +39,31 @@ const scrollToRating = () => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Rating = ({ rating }) => (
-  <Fragment>
-    <Portal name={PRODUCT_RATING_BEFORE} />
-    <Portal name={PRODUCT_RATING}>
-      {appConfig.hasReviews && rating && rating.count &&
-        <div className={`${container} engage__product__rating`} onClick={scrollToRating} role="link" aria-hidden>
+const Rating = ({ rating }) => {
+  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  const showRatings = showEmptyRatingStars ?
+    appConfig.hasReviews && rating
+    :
+    appConfig.hasReviews && rating && rating.count;
+  return (
+    <Fragment>
+      <Portal name={PRODUCT_RATING_BEFORE} />
+      <Portal name={PRODUCT_RATING}>
+        {showRatings &&
+        <div
+          className={`${container} engage__product__rating`}
+          onClick={scrollToRating}
+          role="link"
+          aria-hidden
+        >
           <RatingStars value={rating.average} display="big" />
           <RatingCount count={rating.count} prominent />
         </div>
-      }
-    </Portal>
-    <Portal name={PRODUCT_RATING_AFTER} />
-  </Fragment>
-);
-
+        }
+      </Portal>
+      <Portal name={PRODUCT_RATING_AFTER} />
+    </Fragment>);
+};
 Rating.propTypes = {
   rating: PropTypes.shape(),
 };

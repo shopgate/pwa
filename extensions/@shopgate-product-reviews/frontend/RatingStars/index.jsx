@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import Stars from './components/Stars';
 import connect from './connector';
 
@@ -12,11 +13,12 @@ const { hasReviews } = appConfig;
  * @return {JSX}
  */
 const RatingStars = ({ product }) => {
-  if (!hasReviews || !product || !product.rating || product.rating.average === 0) {
-    return null;
-  }
-
-  return <Stars value={product.rating.average} />;
+  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  const showRatings = showEmptyRatingStars ?
+    hasReviews && product.rating && product
+    :
+    hasReviews && product.rating && product.rating.count;
+  return (showRatings && <Stars value={product.rating.average} />);
 };
 
 RatingStars.propTypes = {
