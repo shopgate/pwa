@@ -1,5 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
-/* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
 import BasicDialog from '../BasicDialog';
@@ -14,6 +12,7 @@ const HtmlContentDialog = ({
   actions, message, title,
 }) => (
   <BasicDialog title={title} actions={actions}>
+    {/* eslint-disable-next-line react/no-danger */}
     <div dangerouslySetInnerHTML={{ __html: message }} />
   </BasicDialog>
 );
