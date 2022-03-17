@@ -9,14 +9,17 @@ import {
   MODAL_VARIANT_SELECT,
   MODAL_ACTION_TYPE_PRIMARY,
   MODAL_ACTION_TYPE_NORMAL,
+  DIALOG_HTML_CONTENT,
 } from './constants';
 import PipelineErrorDialog from './components/PipelineErrorDialog';
 import TextMessageDialog from './components/TextMessageDialog';
+import HtmlContentDialog from './components/HtmlContentDialog';
 import BasicDialog from './components/BasicDialog';
 import VariantSelectModal from './components/VariantSelectModal';
 
 const dialogTypes = {
   [DIALOG_TEXT_MESSAGE]: TextMessageDialog,
+  [DIALOG_HTML_CONTENT]: HtmlContentDialog,
   [MODAL_PIPELINE_ERROR]: PipelineErrorDialog,
   [MODAL_VARIANT_SELECT]: VariantSelectModal,
 };
@@ -32,7 +35,7 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
   // Assemble the actions.
   const actions = [];
   const {
-    confirm, dismiss, title, titleParams, message, params, type,
+    confirm, dismiss, title, titleParams, message, params, type, content,
   } = modal;
 
   // Push dismiss action first so the button is rendered first
@@ -77,7 +80,9 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
   return (
     <Modal>
       <Backdrop isVisible level={0} />
-      <DialogComponent {...dialogProps} />
+      <DialogComponent {...dialogProps}>
+        {content}
+      </DialogComponent>
     </Modal>
   );
 };
@@ -91,6 +96,7 @@ Dialog.propTypes = {
     message: PropTypes.string,
     params: PropTypes.shape(),
     type: PropTypes.string,
+    content: PropTypes.node,
   }).isRequired,
   onConfirm: PropTypes.func,
   onDismiss: PropTypes.func,

@@ -1,5 +1,6 @@
 {
   "name": "@shopgate/pwa",
+  "version": "6.0.0",
   "private": true,
   "workspaces": [
     "extensions/@shopgate-product-reviews/frontend",
