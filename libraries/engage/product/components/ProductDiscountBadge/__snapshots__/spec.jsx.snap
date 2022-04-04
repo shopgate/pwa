@@ -33,7 +33,7 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
         productId="1234"
       >
         <div
-          className="css-6hbts6 css-1bfvyxg product_badges product_badges__product-discount-badge"
+          className="css-9iaawp css-1bfvyxg product_badges product_badges__product-discount-badge"
         >
           <SurroundPortals
             portalName="component.product-badges"
@@ -122,7 +122,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
         productId="1234"
       >
         <div
-          className="css-6hbts6 css-1bfvyxg product_badges product_badges__product-discount-badge"
+          className="css-9iaawp css-1bfvyxg product_badges product_badges__product-discount-badge"
         >
           <SurroundPortals
             portalName="component.product-badges"
@@ -292,7 +292,7 @@ exports[`<ProductDiscountBadge /> should render without discount 1`] = `
         productId="1234"
       >
         <div
-          className="css-6hbts6 css-1bfvyxg product_badges product_badges__product-discount-badge"
+          className="css-9iaawp css-1bfvyxg product_badges product_badges__product-discount-badge"
         >
           <SurroundPortals
             portalName="component.product-badges"
