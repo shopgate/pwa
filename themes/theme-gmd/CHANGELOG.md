@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.6.1](https://github.com/shopgate/pwa/compare/v7.6.0...v7.6.1) (2022-04-04)
+
+#### :rocket: Enhancement
+* [#1152](https://github.com/shopgate/pwa/pull/1152) CCP-2532: changed the function fetchProductsById to return in any case the same object with the products ([@ortmann64](https://github.com/ortmann64))
+
+#### :bug: Bug Fix
+* [#1158](https://github.com/shopgate/pwa/pull/1158) Bugfix: added the listId to the action params ([@ortmann64](https://github.com/ortmann64))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
