@@ -236,7 +236,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                   productId="PR0DUCTID"
                 >
                   <div
-                    className="css-1ut1k4d product_badges product_badges__product-card"
+                    className="css-6hbts6 product_badges product_badges__product-card"
                   >
                     <SurroundPortals
                       portalName="component.product-badges"
