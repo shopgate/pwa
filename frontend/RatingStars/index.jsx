@@ -18,7 +18,7 @@ const RatingStars = ({ product }) => {
     hasReviews && product.rating && product
     :
     hasReviews && product.rating && product.rating.count;
-  return (showRatings && <Stars value={product.rating.average} />);
+  return (showRatings ? <Stars value={product.rating.average} /> : null);
 };
 
 RatingStars.propTypes = {
