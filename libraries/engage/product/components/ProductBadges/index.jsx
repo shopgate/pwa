@@ -9,12 +9,14 @@ import { PORTAL_PRODUCT_BADGES } from '../../../components/constants';
 const styles = {
   root: css({
     position: 'absolute',
-    left: 10,
+    paddingLeft: 10,
+    left: 0,
     top: 10,
     zIndex: 5,
     transform: 'translate3d(0, 0, 0)',
     display: 'flex',
     pointerEvents: 'none',
+    width: '100%',
     ' > *:empty': {
       display: 'none',
     },

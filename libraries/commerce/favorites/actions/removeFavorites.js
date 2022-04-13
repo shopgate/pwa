@@ -25,9 +25,9 @@ function removeFavorites(productId, listId) {
 
     try {
       await request;
-      dispatch(successRemoveFavorites(productId));
+      dispatch(successRemoveFavorites(productId, takenListId));
     } catch (error) {
-      dispatch(errorRemoveFavorites(productId, error));
+      dispatch(errorRemoveFavorites(productId, takenListId, error));
     }
 
     return request;

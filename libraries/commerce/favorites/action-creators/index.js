@@ -121,22 +121,26 @@ export const requestRemoveFavorites = (productId, listId) => ({
 /**
  * Action to be triggered upon successful removeFavorites (deleteFavorites)  pipeline call.
  * @param {string} productId Product identifier.
+ * @param {number} takenListId List id
  * @returns {Object}
  */
-export const successRemoveFavorites = productId => ({
+export const successRemoveFavorites = (productId, takenListId) => ({
   type: SUCCESS_REMOVE_FAVORITES,
   productId,
+  listId: takenListId,
 });
 
 /**
  * Action to be triggered upon a failed removeFavorites (deleteFavorites) pipeline call.
  * @param {string} productId Product identifier.
+ * @param {number} takenListId List id
  * @param {Error} error The error that occurred.
  * @returns {Object}
  */
-export const errorRemoveFavorites = (productId, error) => ({
+export const errorRemoveFavorites = (productId, takenListId, error) => ({
   type: ERROR_REMOVE_FAVORITES,
   productId,
+  listId: takenListId,
   error,
 });
 
