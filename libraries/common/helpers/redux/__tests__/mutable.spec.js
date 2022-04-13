@@ -1,3 +1,4 @@
+import noop from 'lodash/noop';
 import {
   mutable,
   next,
@@ -107,7 +108,7 @@ describe('Mutable', () => {
 
   it('should prevent further steps and the action from being executed at all after the first steps', () => {
     const mutated = mutable(original);
-    const result = 'dummy';
+    const result = noop;
     const use1 = jest.fn(() => stop(result));
     const use2 = jest.fn(() => next(200, 50));
     mutated.useBefore(use1);

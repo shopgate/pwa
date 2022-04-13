@@ -53,7 +53,7 @@ describe('Favorites - actions', () => {
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
       await removeFavorites(productId)(mockedDispatch, mockedGetState);
-      expect(mockedDispatch).toHaveBeenCalledWith(successRemoveFavorites(productId));
+      expect(mockedDispatch).toHaveBeenCalledWith(successRemoveFavorites(productId, 'DEFAULT'));
     });
 
     it('should dispatch the correct action on pipeline failure', (done) => {
@@ -71,7 +71,7 @@ describe('Favorites - actions', () => {
         })
         .catch(() => {
           expect(mockedDispatch)
-            .toHaveBeenCalledWith(errorRemoveFavorites(productId, mockErrorResponse));
+            .toHaveBeenCalledWith(errorRemoveFavorites(productId, 'DEFAULT', mockErrorResponse));
           done();
         });
     });
