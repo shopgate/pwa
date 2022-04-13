@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HtmlContentDialog /> should render the actions 1`] = `
-<BaseDialog
+<BasicDialog
   actions={
     Array [
       Object {
@@ -19,11 +19,11 @@ exports[`<HtmlContentDialog /> should render the actions 1`] = `
       }
     }
   />
-</BaseDialog>
+</BasicDialog>
 `;
 
 exports[`<HtmlContentDialog /> should render with minimal props 1`] = `
-<BaseDialog
+<BasicDialog
   actions={Array []}
   title={null}
 >
@@ -34,11 +34,11 @@ exports[`<HtmlContentDialog /> should render with minimal props 1`] = `
       }
     }
   />
-</BaseDialog>
+</BasicDialog>
 `;
 
 exports[`<HtmlContentDialog /> should render with title and html message 1`] = `
-<BaseDialog
+<BasicDialog
   actions={Array []}
   title="This is the title."
 >
@@ -49,11 +49,11 @@ exports[`<HtmlContentDialog /> should render with title and html message 1`] = `
       }
     }
   />
-</BaseDialog>
+</BasicDialog>
 `;
 
 exports[`<HtmlContentDialog /> should render with title, html message and messageParams 1`] = `
-<BaseDialog
+<BasicDialog
   actions={Array []}
   title="This is the title."
 >
@@ -64,5 +64,5 @@ exports[`<HtmlContentDialog /> should render with title, html message and messag
       }
     }
   />
-</BaseDialog>
+</BasicDialog>
 `;

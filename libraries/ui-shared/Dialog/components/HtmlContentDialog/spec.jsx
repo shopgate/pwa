@@ -56,6 +56,6 @@ describe('<HtmlContentDialog />', () => {
         actions={[]}
       />
     ));
-    expect(wrapper.find('BaseDialog').prop('title')).toEqual(customTitle);
+    expect(wrapper.find('BasicDialog').prop('title')).toEqual(customTitle);
   });
 });
