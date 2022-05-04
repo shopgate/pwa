@@ -16,6 +16,7 @@ jest.mock('../../../../core', () => ({
   isBeta: () => false,
   hasWebBridge: () => false,
   withForwardedRef: jest.fn(),
+  isIOSTheme: jest.fn(() => false),
 }));
 
 const properties = [

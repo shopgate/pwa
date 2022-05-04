@@ -10,7 +10,7 @@ exports[`engage > components > view > index should have structured content 1`] =
   }
   style={
     Object {
-      "display": "block",
+      "display": "flex",
     }
   }
 >
