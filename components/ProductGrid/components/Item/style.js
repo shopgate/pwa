@@ -22,6 +22,7 @@ export const badgesPortal = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     left: 'initial',
     right: 5,
+    width: 'inherit',
   },
 }).toString();
 
