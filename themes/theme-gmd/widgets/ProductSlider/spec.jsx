@@ -7,6 +7,7 @@ import {
 
 jest.mock('@shopgate/engage/core', () => ({
   hasWebBridge: jest.fn(() => false),
+  isIOSTheme: jest.fn(() => false),
   withWidgetSettings: component => component,
 }));
 

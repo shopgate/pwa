@@ -31,7 +31,7 @@ function ViewContainer({
   }
 
   const style = {
-    display: visible ? 'block' : 'none',
+    display: visible ? 'flex' : 'none',
   };
 
   return (
