@@ -2,31 +2,51 @@
 
 exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 >
-  <AccordionContainer>
+  <AccordionContainer
+    open={false}
+  >
     <div
       aria-controls="Some-Thing-content"
       aria-expanded={false}
       aria-label={null}
-      className="css-17o6uz7 ui-material__accordion"
+      className="css-1m4mdin"
       data-test-id="Some Thing"
       key="accordion-toggle"
       onClick={[Function]}
@@ -36,9 +56,10 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
     >
       <div />
       <div
+        aria-label="favorites.open_list"
         className={
           Object {
-            "data-css-1j1ou1w": "",
+            "data-css-ghq21z": "",
           }
         }
       >
@@ -53,7 +74,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
             viewBox="0 0 24 24"
           >
             <svg
-              className="css-yys9hb css-paji06 common__icon"
+              className="css-yys9hb css-paji06"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
@@ -73,11 +94,12 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       </div>
     </div>
     <AccordionContent
+      className={null}
       id="Some-Thing-content"
       key="Some-Thing-content"
       open={false}
     >
-      <div
+      <ForwardRef
         aria-hidden={true}
         className={
           Object {
@@ -87,20 +109,33 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
         id="Some-Thing-content"
         style={
           Object {
-            "height": 0,
+            "hook": "useSpring return value",
           }
         }
       >
         <div
+          aria-hidden={true}
           className={
             Object {
-              "data-css-yh2lvw": "",
+              "data-css-apm51k": "",
+            }
+          }
+          id="Some-Thing-content"
+          style={
+            Object {
+              "hook": "useSpring return value",
             }
           }
         >
-          Some content.
+          <div>
+            <div
+              className="css-yh2lvw"
+            >
+              Some content.
+            </div>
+          </div>
         </div>
-      </div>
+      </ForwardRef>
     </AccordionContent>
   </AccordionContainer>
 </Accordion>

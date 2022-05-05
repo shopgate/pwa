@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  addFavorites,
-  removeFavorites,
+  toggleFavoriteWithListChooser,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 
 /**
@@ -10,9 +9,9 @@ import {
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  addFavorites: productId => dispatch(addFavorites(productId)),
+  addFavorites: productId => dispatch(toggleFavoriteWithListChooser(productId)),
   removeFavorites: (productId, withRelatives) =>
-    dispatch(removeFavorites(productId, withRelatives)),
+    dispatch(toggleFavoriteWithListChooser(productId, withRelatives)),
 });
 
 export default connect(null, mapDispatchToProps, null, { pure: () => null });

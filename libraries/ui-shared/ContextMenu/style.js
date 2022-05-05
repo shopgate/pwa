@@ -12,6 +12,10 @@ const button = css({
   padding: 0,
 }).toString();
 
+const disabled = css({
+  cursor: 'not-allowed',
+}).toString();
+
 const overlay = css({
   position: 'fixed',
   top: 0,
@@ -32,9 +36,16 @@ const menu = css({
   boxShadow: themeConfig.shadows.contextMenu,
 }).toString();
 
+const scrollable = css({
+  maxHeight: '30vh',
+  overflowY: 'auto',
+}).toString();
+
 export default {
   container,
   button,
   menu,
   overlay,
+  disabled,
+  scrollable,
 };

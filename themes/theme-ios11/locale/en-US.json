@@ -32,10 +32,43 @@
     "error_limit": "You have exceeded the number of products allowed in the favorites.",
     "remove": "Remove from favorites",
     "removed": "Removed from favorites",
+    "add_list_modal": {
+      "title": "Add a new List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the name for your new wish list",
+      "label": "Name"
+    },
+    "rename_list_modal": {
+      "title": "Renaming List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the new name for your wish list",
+      "label": "Name"
+    },
+    "add_list": "Add New List",
+    "errors": {
+      "invalid_name": "Please enter a valid name for your wish list"
+    },
+    "rename_list": "Rename",
+    "remove_list": "Remove",
+    "add_to_list": "Add to list",
+    "remove_from_list": "Remove from list",
+    "edit_lists": "Edit lists",
+    "fo_method_chooser": {
+      "title": "Choose a Method"
+    },
+    "list_chooser": {
+      "title": "Choose a Wish List",
+      "add": "Add",
+      "remove": "Remove"
+    },
     "modal": {
       "message": "To add this product to your cart, please select the variants.",
       "confirm": "Select variants"
-    }
+    },
+    "open_list": "Open list.",
+    "close_list": "Close list."
   },
   "filter": {
     "sort": {

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import * as styles from './style';
 
 /**
@@ -7,7 +8,9 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function AccordionContent({ children, open, id }) {
+function AccordionContent({
+  children, open, id, className,
+}) {
   const ref = useRef(null);
   const height = (ref.current === null) ? 'auto' : ref.current.clientHeight;
   const style = {
@@ -16,7 +19,7 @@ function AccordionContent({ children, open, id }) {
 
   return (
     <div className={styles.content} style={style} id={id} aria-hidden={!open}>
-      <div ref={ref} className={styles.contentInner}>
+      <div ref={ref} className={classNames(styles.contentInner, className)}>
         {children}
       </div>
     </div>
@@ -26,10 +29,12 @@ function AccordionContent({ children, open, id }) {
 AccordionContent.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
+  className: PropTypes.string,
   open: PropTypes.bool,
 };
 
 AccordionContent.defaultProps = {
+  className: '',
   open: false,
 };
 

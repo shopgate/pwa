@@ -3,13 +3,32 @@ import { css } from 'glamor';
 export const toggle = css({
   padding: '12px 56px 12px 16px',
   position: 'relative',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+});
+
+export const toggleLeftAligned = css({
+  padding: '12px 16px 12px 16px',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
 });
 
 export const chevronContainer = css({
+  cursor: 'pointer',
   fontSize: '1.5rem',
   position: 'absolute',
   right: '1rem',
-  top: '.6875rem',
+  top: '50%',
+  transform: 'translate3d(0, -50%, 0)',
+});
+
+export const chevronContainerLeft = css({
+  cursor: 'pointer',
+  fontSize: '1.5rem',
+  marginRight: 12,
 });
 
 export const chevron = css({

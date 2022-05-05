@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, LoadingIndicator } from '@shopgate/engage/components';
+import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
+import { View } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
 import connect from './connector';
 import EmptyFavorites from './components/EmptyFavorites';
 import FavoritesList from './components/FavoritesList';
 
 /**
- * @param {Object} props .
+ * @param {Object} props The component props.
  * @return {JSX}
  */
-const Favorites = ({ initialLoading, hasFavorites }) => {
+const Favorites = ({ initialLoading, products, lists }) => {
   if (initialLoading) {
     return (
       <View>
@@ -23,22 +24,22 @@ const Favorites = ({ initialLoading, hasFavorites }) => {
   return (
     <View aria-hidden={false}>
       <BackBar title="titles.favorites" />
-      {hasFavorites
-        ? <FavoritesList />
-        : <EmptyFavorites />
-      }
+      {(!products.length && !lists.length) && <EmptyFavorites />}
+      {(products.length > 0 || lists.length > 0) && <FavoritesList products={products} />}
     </View>
   );
 };
 
 Favorites.propTypes = {
-  hasFavorites: PropTypes.bool,
   initialLoading: PropTypes.bool,
+  lists: PropTypes.arrayOf(PropTypes.shape()),
+  products: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Favorites.defaultProps = {
-  hasFavorites: false,
   initialLoading: true,
+  products: [],
+  lists: [],
 };
 
 export default connect(Favorites);

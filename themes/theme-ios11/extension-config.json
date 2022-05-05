@@ -42,6 +42,17 @@
         "key": "value"
       }
     },
+    "hasFavoritesLists": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_favorites_lists?parsed=true",
+        "key": "value"
+      }
+    },
     "hasReviews": {
       "type": "bigApi",
       "destination": "frontend",

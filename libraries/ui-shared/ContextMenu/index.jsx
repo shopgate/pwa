@@ -17,11 +17,24 @@ class ContextMenu extends Component {
   static propTypes = {
     children: PropTypes.node,
     classes: PropTypes.shape(),
+    disabled: PropTypes.bool,
+    isOpened: PropTypes.bool,
+    onStateChange: PropTypes.func,
+    scroll: PropTypes.bool,
+    showToggle: PropTypes.bool,
   };
 
   static defaultProps = {
     children: null,
-    classes: { container: '', button: '' },
+    classes: {
+      container: '',
+      button: '',
+    },
+    disabled: false,
+    showToggle: true,
+    isOpened: null,
+    onStateChange: null,
+    scroll: null,
   };
 
   /**
@@ -33,8 +46,15 @@ class ContextMenu extends Component {
 
     this.elementRef = null;
     this.state = {
-      active: false,
+      active: props.isOpened,
     };
+  }
+
+  /** @inheritDoc */
+  UNSAFE_componentWillReceiveProps({ isOpened }) {
+    if (typeof isOpened === 'boolean' && this.state.active !== isOpened) {
+      this.setState({ active: isOpened });
+    }
   }
 
   /**
@@ -63,9 +83,15 @@ class ContextMenu extends Component {
     }
 
     if (this.elementRef) {
-      this.setState(({ active }) => ({
-        active: !active,
-      }));
+      this.setState(({ active }) => {
+        const state = { active: !active };
+
+        if (this.props.onStateChange) {
+          this.props.onStateChange(state);
+        }
+
+        return state;
+      });
     }
   };
 
@@ -74,32 +100,47 @@ class ContextMenu extends Component {
    * @returns {JSX}
    */
   render() {
-    const { children, classes } = this.props;
+    const {
+      children, classes, disabled, showToggle, scroll,
+    } = this.props;
     const { active } = this.state;
+
+    const useScroll = typeof scroll === 'boolean' && !!scroll;
 
     return (
       <div
         data-test-id="contextMenu"
         ref={(ref) => { this.elementRef = ref; }}
-        className={classNames(styles.container, classes.container, 'ui-shared__context-menu')}
+        className={classNames(styles.container, classes.container)}
         aria-hidden
       >
-        <button
-          className={classNames(styles.button, classes.button)}
-          onClick={this.handleMenuToggle}
-          type="button"
-          aria-hidden
-        >
-          <MoreVertIcon />
-        </button>
+        {showToggle && (
+          <button
+            className={classNames(styles.button, classes.button, {
+              [styles.disabled]: disabled,
+            })}
+            onClick={this.handleMenuToggle}
+            disabled={disabled}
+            type="button"
+            aria-hidden
+          >
+            <MoreVertIcon />
+          </button>
+        )}
         <Portal isOpened={active}>
           <div className={styles.overlay}>
             <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
             <Position offset={this.offset}>
-              <div className={styles.menu}>
-                {Children.map(children, child => (
-                  React.cloneElement(child, { closeMenu: this.handleMenuToggle })
-                ))}
+              <div className={classNames(styles.menu, { [styles.scrollable]: useScroll })}>
+                {Children.map(children, (child) => {
+                  if (!child) {
+                    return null;
+                  }
+
+                  return (
+                    React.cloneElement(child, { closeMenu: this.handleMenuToggle })
+                  );
+                })}
               </div>
             </Position>
           </div>
