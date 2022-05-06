@@ -229,7 +229,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                     key=".$foo"
                   >
                     <div
-                      className="swiper-slide"
+                      className="css-10a4qrv swiper-slide"
                       data-test-id="Slider"
                     >
                       <div
@@ -261,7 +261,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                     key=".$bar"
                   >
                     <div
-                      className="swiper-slide"
+                      className="css-10a4qrv swiper-slide"
                       data-test-id="Slider"
                     >
                       <div
@@ -531,7 +531,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                     key=".$foo"
                   >
                     <div
-                      className="swiper-slide"
+                      className="css-10a4qrv swiper-slide"
                       data-test-id="Slider"
                     >
                       <div
@@ -563,7 +563,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                     key=".$bar"
                   >
                     <div
-                      className="swiper-slide"
+                      className="css-10a4qrv swiper-slide"
                       data-test-id="Slider"
                     >
                       <div

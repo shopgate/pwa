@@ -3,8 +3,14 @@
 exports[`Filter: <Selector /> should render with minimum props 1`] = `
 <FilterItem>
   <Accordion
+    chevronPosition="right"
+    className={null}
+    contentClassName={null}
     handleLabel="filter.filter_by"
+    openWithChevron={false}
     renderLabel={[Function]}
+    role="button"
+    startOpened={false}
     testId="foo"
   >
     <div

@@ -59,7 +59,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
         aria-label="favorites.open_list"
         className={
           Object {
-            "data-css-ghq21z": "",
+            "data-css-1ci1bnt": "",
           }
         }
       >
@@ -74,7 +74,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
             viewBox="0 0 24 24"
           >
             <svg
-              className="css-yys9hb css-paji06"
+              className="css-yys9hb css-paji06 common__icon"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
@@ -99,7 +99,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       key="Some-Thing-content"
       open={false}
     >
-      <ForwardRef
+      <div
         aria-hidden={true}
         className={
           Object {
@@ -109,33 +109,16 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
         id="Some-Thing-content"
         style={
           Object {
-            "hook": "useSpring return value",
+            "height": 0,
           }
         }
       >
         <div
-          aria-hidden={true}
-          className={
-            Object {
-              "data-css-apm51k": "",
-            }
-          }
-          id="Some-Thing-content"
-          style={
-            Object {
-              "hook": "useSpring return value",
-            }
-          }
+          className="css-yh2lvw"
         >
-          <div>
-            <div
-              className="css-yh2lvw"
-            >
-              Some content.
-            </div>
-          </div>
+          Some content.
         </div>
-      </ForwardRef>
+      </div>
     </AccordionContent>
   </AccordionContainer>
 </Accordion>

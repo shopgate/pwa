@@ -1,3 +1,4 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { SHOPGATE_USER_ADD_FAVORITES_LIST } from '../constants/Pipelines';
 import { SUCCESS_ADD_FAVORITES_LIST } from '../constants';
@@ -8,23 +9,26 @@ import { SUCCESS_ADD_FAVORITES_LIST } from '../constants';
  * @returns {Function} A redux thunk.
  */
 function addFavoritesList(name) {
-  return async (dispatch) => {
+  return (dispatch) => {
     const request = new PipelineRequest(SHOPGATE_USER_ADD_FAVORITES_LIST)
       .setInput({ name })
       .setRetries(0)
       .dispatch();
 
-    try {
-      const { id } = await request;
-      dispatch({
-        type: SUCCESS_ADD_FAVORITES_LIST,
-        listId: id,
-        name,
+    request
+      .then((id) => {
+        dispatch({
+          type: SUCCESS_ADD_FAVORITES_LIST,
+          listId: id,
+          name,
+        });
+      })
+      .catch(() => {
+        // Fail silently
       });
-    } catch (_) {
-      // Fail silently
-    }
+
+    return request;
   };
 }
 
-export default addFavoritesList;
+export default mutable(addFavoritesList);

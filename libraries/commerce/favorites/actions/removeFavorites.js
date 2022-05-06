@@ -1,3 +1,4 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { SHOPGATE_USER_DELETE_FAVORITES } from '../constants/Pipelines';
 import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators';
@@ -34,4 +35,4 @@ function removeFavorites(productId, listId) {
   };
 }
 
-export default removeFavorites;
+export default mutable(removeFavorites);

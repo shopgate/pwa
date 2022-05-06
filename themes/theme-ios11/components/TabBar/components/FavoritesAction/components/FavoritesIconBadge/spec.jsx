@@ -23,7 +23,7 @@ const createComponent = state => mount((
 describe('TabBar favorites action', () => {
   it('should render only icon when badge is 0', () => {
     const component = createComponent(mockedEmptyState);
-    expect(component.html()).toBe(null);
+    expect(component.html()).toBe('');
   });
   it('should render exact number', () => {
     const component = createComponent(mockedState);

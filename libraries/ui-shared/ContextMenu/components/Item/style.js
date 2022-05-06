@@ -1,7 +1,6 @@
 import { css } from 'glamor';
 import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-// import { getCSSCustomProp } from '@shopgate/engage/styles';
 
 /**
  * Get the item class.

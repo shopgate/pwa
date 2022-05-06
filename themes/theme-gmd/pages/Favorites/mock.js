@@ -40,9 +40,13 @@ export const mockedEmptyState = {
   },
   favorites: {
     products: {
-      ids: [],
-      ready: true,
-      isFetching: false,
+      byList: {
+        DEFAULT: {
+          ids: [],
+          ready: true,
+          isFetching: false,
+        },
+      },
     },
   },
 };
@@ -51,9 +55,13 @@ export const mockedState = {
   ...mockedEmptyState,
   favorites: {
     products: {
-      ids: ['foo'],
-      ready: true,
-      isFetching: false,
+      byList: {
+        DEFAULT: {
+          ids: ['foo'],
+          ready: true,
+          isFetching: false,
+        },
+      },
     },
   },
 };
