@@ -77,7 +77,7 @@ export default function cart(subscribe) {
    * Gets triggered when the app will start.
    */
   subscribe(appWillStart$, () => {
-    // Use the redirect system to handle coupons from deeplinks.
+    // Use the redirect system to handle coupons from deep links.
     redirects.set(DEEPLINK_CART_ADD_COUPON_PATTERN, ({ dispatch, action }) => {
       const [, , coupon] = action.params.pathname.split('/');
 
