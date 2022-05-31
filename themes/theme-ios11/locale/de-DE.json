@@ -68,7 +68,8 @@
       "confirm": "Varianten wählen"
     },
     "open_list": "Liste öffnen.",
-    "close_list": "Liste schließen."
+    "close_list": "Liste schließen.",
+    "load_more_button": "Weitere Artikel laden"
   },
   "filter": {
     "sort": {

@@ -33,42 +33,43 @@
     "remove": "Rimuovi dai favoriti",
     "removed": "Rimosso dai favoriti",
     "add_list_modal": {
-      "title": "Add a new List",
-      "dismiss": "Cancel",
-      "confirm": "Confirm",
-      "message": "Enter the name for your new wish list",
-      "label": "Name"
+      "title": "Aggiungere un nuovo elenco",
+      "dismiss": "Annullamento",
+      "confirm": "Confermare",
+      "message": "Inserite il nome del vostro nuovo elenco di preferiti",
+      "label": "Nome"
     },
     "rename_list_modal": {
-      "title": "Renaming List",
-      "dismiss": "Cancel",
-      "confirm": "Confirm",
-      "message": "Enter the new name for your wish list",
-      "label": "Name"
+      "title": "Rinominare l'elenco",
+      "dismiss": "Annullamento",
+      "confirm": "Confermare",
+      "message": "Inserite il nuovo nome per l'elenco dei preferiti",
+      "label": "Nome"
     },
-    "add_list": "Add New List",
+    "add_list": "Aggiungi nuovo elenco",
     "errors": {
-      "invalid_name": "Please enter a valid name for your wish list"
+      "invalid_name": "Inserire un nome valido per l'elenco dei preferiti"
     },
-    "rename_list": "Rename",
-    "remove_list": "Remove",
-    "add_to_list": "Add to list",
-    "remove_from_list": "Remove from list",
-    "edit_lists": "Edit lists",
+    "rename_list": "Rinominare",
+    "remove_list": "Rimuovere",
+    "add_to_list": "Aggiungi alla lista",
+    "remove_from_list": "Rimuovere dall'elenco",
+    "edit_lists": "Modifica elenchi",
     "fo_method_chooser": {
-      "title": "Choose a Method"
+      "title": "Scegliere un metodo"
     },
     "list_chooser": {
-      "title": "Choose a Wish List",
-      "add": "Add",
-      "remove": "Remove"
+      "title": "Scegliere un elenco di preferiti",
+      "add": "Aggiungi",
+      "remove": "Rimuovere"
     },
     "modal": {
       "message": "Per aggiungere questo prodotto al tuo carrello, prego selezionare le varianti.",
       "confirm": "Seleziona le varianti"
     },
     "open_list": "Elenco aperto.",
-    "close_list": "Chiudi lista."
+    "close_list": "Chiudi lista.",
+    "load_more_button": "Carica altri articoli"
   },
   "filter": {
     "sort": {

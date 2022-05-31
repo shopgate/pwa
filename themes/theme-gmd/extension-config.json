@@ -42,14 +42,14 @@
         "key": "value"
       }
     },
-    "hasFavoritesLists": {
+    "hasMultipleFavoritesLists": {
       "type": "bigApi",
       "destination": "frontend",
       "default": false,
       "params": {
         "method": "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_favorites_lists?parsed=true",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_multiple_favorites_lists?parsed=true",
         "key": "value"
       }
     },

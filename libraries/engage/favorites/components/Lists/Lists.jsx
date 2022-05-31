@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getFavoritesLists,
   isInitialLoading,
@@ -14,7 +15,7 @@ import removeFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions
 import { removeFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
 
 import List from '../List';
 import ListsModal from './ListsModal';
@@ -25,6 +26,7 @@ import {
 
 /**
  * @param {Object} state State
+ * @param {Object} props Props
  * @returns {Object}
  */
 const mapStateToProps = state => ({
@@ -64,9 +66,42 @@ const FavoriteLists = ({
   updateList,
   removeList,
   removeItem,
+  addToCart,
+  wishlistMode,
   lists,
   isInitializing,
 }) => {
+  // Add to cart state.
+  const promiseRef = useRef(null);
+
+  const handleAddToCart = useCallback((listId, product) => {
+    // Create promise to inform add to cart button when ready.
+    const promise = new Promise((resolve, reject) => {
+      promiseRef.current = {
+        resolve: () => {
+          // Remove item from wishlist after adding to cart.
+          if (wishlistMode !== WISHLIST_MODE_PERSIST_ON_ADD) {
+            removeItem(listId, product.id);
+          }
+          resolve();
+        },
+        reject,
+      };
+    });
+
+    // If all options are already configured immediately add it to the cart.
+    addToCart([{
+      productId: product.id,
+      quantity: 1,
+    }]);
+    promiseRef.current.resolve();
+    return promise;
+  }, [
+    addToCart,
+    removeItem,
+    wishlistMode,
+  ]);
+
   // Modal for renaming and adding.
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
@@ -113,6 +148,7 @@ const FavoriteLists = ({
             rename={openRenameModal}
             remove={() => removeList(list.id)}
             removeItem={productId => removeItem(list.id, productId)}
+            addToCart={product => handleAddToCart(list.id, product)}
             disableRemoveList={lists.length < 2}
           />
         </SurroundPortals>
@@ -125,7 +161,7 @@ const FavoriteLists = ({
         />
       ) : null}
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
-        {appConfig.hasFavoritesLists ? (
+        {appConfig.hasMultipleFavoritesLists ? (
           <RippleButton
             type="primary"
             className={styles.addButton}
@@ -142,9 +178,11 @@ const FavoriteLists = ({
 
 FavoriteLists.propTypes = {
   addList: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   removeList: PropTypes.func.isRequired,
   updateList: PropTypes.func.isRequired,
+  wishlistMode: PropTypes.string.isRequired,
   isInitializing: PropTypes.bool,
   lists: PropTypes.arrayOf(PropTypes.shape()),
 };

@@ -119,6 +119,21 @@ export const makeGetFavoritesIdsByList = getListCode => createSelector(
  * @param {Function} getListCode Selects the list code.
  * @returns {Function}
  */
+export const makeGetFavoritesProductsByList = getListCode => createSelector(
+  getFavoritesProducts,
+  getListCode,
+  (favProducts, listId) => {
+    const products = favProducts.byList[listId] || {};
+    return products;
+  }
+);
+
+/**
+ * Creates a selector that selects all products that belong
+ * to the given favorite list.
+ * @param {Function} getListCode Selects the list code.
+ * @returns {Function}
+ */
 export const makeGetFavorites = (getListCode) => {
   const getFavoritesIdsByList = makeGetFavoritesIdsByList(getListCode);
   return createSelector(

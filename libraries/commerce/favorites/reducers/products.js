@@ -13,6 +13,9 @@ import {
   SUCCESS_ADD_FAVORITES_LIST,
   RECEIVE_FAVORITES,
   FAVORITES_LIFETIME,
+  REQUEST_FAVORITES_IDS,
+  RECEIVE_FAVORITES_IDS,
+  ERROR_FAVORITES_IDS,
 } from '../constants';
 
 const defaultState = {
@@ -43,6 +46,7 @@ const products = (state = defaultState, action) => {
               expires: 0,
               ids: [],
               syncCount: 0,
+              ready: false,
             },
           },
         };
@@ -56,6 +60,7 @@ const products = (state = defaultState, action) => {
             ...existingList,
             isFetching: true,
             expires: 0,
+            ready: false,
           },
         },
       };
@@ -248,6 +253,72 @@ const products = (state = defaultState, action) => {
             ids: [],
             syncCount: 0,
             ready: true,
+          },
+        },
+      };
+    }
+
+    case REQUEST_FAVORITES_IDS: {
+      const list = state.byList[action.listId];
+      if (!list) {
+        return {
+          ...state,
+          byList: {
+            ...state.byList,
+            [action.listId]: {
+              isFetching: true,
+              lastChange: 0,
+              lastFetch: 0,
+              expires: 0,
+              ids: [],
+              syncCount: 0,
+            },
+          },
+        };
+      }
+
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: true,
+            expires: 0,
+          },
+        },
+      };
+    }
+
+    case RECEIVE_FAVORITES_IDS: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: false,
+            expires: Date.now() + FAVORITES_LIFETIME,
+            ids: action.productIds,
+            ready: true,
+          },
+        },
+      };
+    }
+
+    case ERROR_FAVORITES_IDS: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: false,
+            expires: 0,
+            ids: list.ids,
+            ready: false,
           },
         },
       };

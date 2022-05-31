@@ -68,7 +68,8 @@
       "confirm": "Select variants"
     },
     "open_list": "Open list.",
-    "close_list": "Close list."
+    "close_list": "Close list.",
+    "load_more_button": "Load more products"
   },
   "filter": {
     "sort": {

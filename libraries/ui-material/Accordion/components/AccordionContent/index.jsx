@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { useMemo } from 'react';
+import { useMeasure } from 'react-use';
 import * as styles from './style';
 
 /**
@@ -8,18 +9,17 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function AccordionContent({
-  children, open, id, className,
-}) {
-  const ref = useRef(null);
-  const height = (ref.current === null) ? 'auto' : ref.current.clientHeight;
-  const style = {
-    height: !open ? 0 : height,
-  };
+function AccordionContent(props) {
+  const {
+    children, open, id, className,
+  } = props;
+  const [ref, { height }] = useMeasure();
+
+  const style = useMemo(() => ({ height: open ? height : 0 }), [height, open]);
 
   return (
     <div className={styles.content} style={style} id={id} aria-hidden={!open}>
-      <div ref={ref} className={classNames(styles.contentInner, className)}>
+      <div ref={ref} className={classnames(styles.contentInner, className)}>
         {children}
       </div>
     </div>
@@ -34,8 +34,8 @@ AccordionContent.propTypes = {
 };
 
 AccordionContent.defaultProps = {
-  className: '',
   open: false,
+  className: null,
 };
 
 export default AccordionContent;

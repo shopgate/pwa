@@ -1,18 +1,35 @@
-import React, { Fragment } from 'react';
+import React, {
+  Fragment, useCallback, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
-  Accordion, Card, ContextMenu, SurroundPortals,
+  Accordion, Card, ContextMenu, SurroundPortals, RippleButton,
 } from '@shopgate/engage/components';
-import { makeGetFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getFavoritesCount, isFetching, makeGetFavoritesIdsByList } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
+import { ProductProvider } from '../../../product';
+import { FAVORITES_SHOW_LIMIT } from '../../../../../themes/theme-ios11/pages/Favorites/constants';
+
+const { colors, variables } = themeConfig;
 
 const styles = {
   root: css({
     margin: '8px 8px 10px',
+  }).toString(),
+  rootNoFavoritesLists: css({
+    // padding: '0 16px 16px',
+    // overflow: 'hidden',
+    background: colors.background,
+    flexGrow: 1,
+    paddingTop: variables.gap.xsmall,
+    paddingBottom: variables.gap.xxbig,
+    paddingLeft: '16px',
+    paddingRight: '16px',
   }).toString(),
   title: css({
     flex: 1,
@@ -24,6 +41,19 @@ const styles = {
     marginLeft: -16,
     marginRight: -16,
     marginBottom: 16,
+  }).toString(),
+  spacer: css({
+    height: 1,
+    width: 'calc(100% + 32px)',
+    marginLeft: -16,
+    marginRight: -16,
+    marginBottom: 16,
+  }).toString(),
+  loadMoreButton: css({
+    width: 'calc(100% - 32px)',
+    margin: 16,
+    backgroundColor: 'var(--color-primary)',
+    borderRadius: 5,
   }).toString(),
 };
 
@@ -60,14 +90,79 @@ FavoriteListLabel.propTypes = {
 };
 
 /**
+ * The content of a favorites list
+ * @returns {JSX}
+ */
+const FavoritesListContent = ({
+  id, productIds, addToCart, removeItem, shouldShowLoadMoreButton, loadMore,
+}) => (
+  <>
+    <div className={styles.divider} />
+
+    {productIds.length === 0 ? (
+      <span>{i18n.text('favorites.empty')}</span>
+    ) : null}
+
+    {productIds.map(({ productId }) => (
+      <ProductProvider productId={productId} key={productId}>
+        {({ product }) => (
+          product ? (
+            <Item
+              key={product.id}
+              product={product}
+              listId={id}
+              productId={product.id}
+              addToCart={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                return addToCart(product);
+              }}
+              remove={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                removeItem(product.id);
+              }}
+            />
+          ) : null)
+        }
+      </ProductProvider>
+    ))}
+
+    {shouldShowLoadMoreButton &&
+      <RippleButton
+        type="primary"
+        className={styles.loadMoreButton}
+        onClick={loadMore}
+        disabled={false}
+      >
+        {i18n.text('favorites.load_more_button')}
+      </RippleButton>
+    }
+
+    <div className={styles.spacer} />
+  </>
+);
+
+FavoritesListContent.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  loadMore: PropTypes.func.isRequired,
+  productIds: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeItem: PropTypes.func.isRequired,
+  shouldShowLoadMoreButton: PropTypes.bool.isRequired,
+};
+
+/**
  * @param {Object} _ State
  * @param {Object} props Props
  * @returns {Object}
  */
 const makeMapStateToProps = (_, { id }) => {
-  const getFavorites = makeGetFavorites(() => id);
+  const getFavoritesIds = makeGetFavoritesIdsByList(() => id);
   return state => ({
-    products: getFavorites(state),
+    favoriteIds: getFavoritesIds(state),
+    favoritesCount: getFavoritesCount(state),
+    isFetchingState: isFetching(state),
   });
 };
 
@@ -78,54 +173,75 @@ const makeMapStateToProps = (_, { id }) => {
 const FavoriteList = ({
   id,
   name,
-  products,
+  favoriteIds,
   rename,
   remove,
   removeItem,
+  addToCart,
   disableRemoveList,
-}) => (
-  <Card className={styles.root}>
-    <Accordion
-      className=""
-      openWithChevron
-      renderLabel={() =>
-        <FavoriteListLabel
+}) => {
+  const [offset, setOffset] = useState(FAVORITES_SHOW_LIMIT);
+
+  const productIds = favoriteIds.slice(0, offset)
+    .map(productId => ({ productId }));
+
+  const shouldShowLoadMoreButton = (favoriteIds.length - productIds.length > 0);
+
+  const loadMore = useCallback(() => {
+    const nextOffset = offset + FAVORITES_SHOW_LIMIT;
+    setOffset(nextOffset);
+  }, [offset]);
+
+  return (
+    appConfig.hasMultipleFavoritesLists ? (
+      <Card className={styles.root}>
+        <Accordion
+          className=""
+          openWithChevron
+          renderLabel={() =>
+            <FavoriteListLabel
+              id={id}
+              title={name}
+              rename={newName => rename(id, newName)}
+              remove={remove}
+              disableRemoveList={disableRemoveList}
+            />
+          }
+          chevronPosition="left"
+          startOpened
+          testId={id}
+        >
+          <FavoritesListContent
+            addToCart={addToCart}
+            id={id}
+            loadMore={loadMore}
+            productIds={productIds}
+            removeItem={removeItem}
+            shouldShowLoadMoreButton={shouldShowLoadMoreButton}
+          />
+        </Accordion>
+      </Card>
+    ) : (
+      <div className={styles.rootNoFavoritesLists}>
+        <FavoritesListContent
+          addToCart={addToCart}
           id={id}
-          title={name}
-          rename={newName => rename(id, newName)}
-          remove={remove}
-          disableRemoveList={disableRemoveList}
+          loadMore={loadMore}
+          productIds={productIds}
+          removeItem={removeItem}
+          shouldShowLoadMoreButton={shouldShowLoadMoreButton}
         />
-      }
-      chevronPosition="left"
-      startOpened
-    >
-      <div className={styles.divider} />
-      {products.length === 0 ? (
-        <span>{i18n.text('favorites.empty')}</span>
-      ) : null}
-      {products.map(product => (
-        <Item
-          key={product.id}
-          product={product}
-          listId={id}
-          productId={product.id}
-          remove={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            removeItem(product.id);
-          }}
-        />
-      ))}
-    </Accordion>
-  </Card>
-);
+      </div>
+    )
+  );
+};
 
 FavoriteList.propTypes = {
+  addToCart: PropTypes.func.isRequired,
   disableRemoveList: PropTypes.bool.isRequired,
+  favoriteIds: PropTypes.arrayOf(PropTypes.string).isRequired,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   remove: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   rename: PropTypes.func.isRequired,

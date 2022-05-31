@@ -16,6 +16,9 @@ import {
   REQUEST_FLUSH_FAVORITES_BUFFER,
   OPEN_FAVORITE_LIST_CHOOSER,
   CLOSE_FAVORITE_LIST_CHOOSER,
+  RECEIVE_FAVORITES_IDS,
+  REQUEST_FAVORITES_IDS,
+  ERROR_FAVORITES_IDS,
 } from '../constants';
 
 /**
@@ -198,6 +201,37 @@ export const receiveFavorites = (products, requestTimestamp, listId = null) => (
 export const requestFavorites = (listId = null) => ({
   type: REQUEST_FAVORITES,
   listId,
+});
+
+/**
+ * @param {string[]} listId The Id of the favorites list
+ * @param {string[]} productIds .
+ * @returns {Object}
+ */
+export const receiveFavoriteIDs = (listId, productIds) => ({
+  type: RECEIVE_FAVORITES_IDS,
+  listId,
+  productIds,
+});
+
+/**
+ * @param {string} listId The Id of the favorites list.
+ * @returns {Object}
+ */
+export const requestFavoriteIds = (listId = null) => ({
+  type: REQUEST_FAVORITES_IDS,
+  listId,
+});
+
+/**
+ * @param {string} listId The Id of the favorites list.
+ * @param {Error} error .
+ * @returns {Object}
+ */
+export const errorFetchFavoriteIds = (listId, error) => ({
+  type: ERROR_FAVORITES_IDS,
+  listId,
+  error,
 });
 
 /**

@@ -4,6 +4,7 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { FAVORITES_EMPTY } from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import styles from './style';
 import Icon from './components/Icon';
+import ContinueButton from './components/ContinueButton';
 
 /**
  * @return {JSX}
@@ -15,6 +16,7 @@ const EmptyFavorites = () => (
         <Icon />
         <I18n.Text string="favorites.empty" className={styles.title} />
       </div>
+      <ContinueButton />
     </SurroundPortals>
   </div>
 );

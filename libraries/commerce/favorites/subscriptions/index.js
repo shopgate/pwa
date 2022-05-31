@@ -2,7 +2,6 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
-import { fetchProductsById } from '@shopgate/pwa-common-commerce/product';
 import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
@@ -16,7 +15,6 @@ import {
   SHOPGATE_USER_ADD_FAVORITES,
   SHOPGATE_USER_DELETE_FAVORITES,
 } from '../constants/Pipelines';
-import fetchFavorites from '../actions/fetchFavorites';
 import fetchFavoritesLists from '../actions/fetchFavoritesList';
 import addFavorites from '../actions/addFavorites';
 import removeFavorites from '../actions/removeFavorites';
@@ -24,20 +22,18 @@ import {
   requestAddFavorites,
   requestRemoveFavorites,
   cancelRequestSyncFavorites,
-  errorFavorites,
   idleSyncFavorites,
 } from '../action-creators';
 import {
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  FAVORITES_LIMIT_ERROR,
 } from '../constants';
 import {
-  getFavoritesProductsIds,
   getFavoritesProducts,
   getFavoritesCount,
   makeGetProductRelativesOnFavorites,
 } from '../selectors';
+import fetchFavoriteIds from '../actions/fetchFavoriteIds';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -59,23 +55,19 @@ export default function favorites(subscribe) {
       SHOPGATE_USER_DELETE_FAVORITES,
     ]);
     const lists = await dispatch(fetchFavoritesLists());
-    lists.forEach(list => dispatch(fetchFavorites(false, list.id)));
+    lists.forEach(list => dispatch(fetchFavoriteIds(true, list.id)));
   });
 
   /** Favorites route enter */
-  subscribe(favoritesWillEnter$, async ({ dispatch, getState }) => {
+  subscribe(favoritesWillEnter$, async ({ dispatch }) => {
     const lists = await dispatch(fetchFavoritesLists());
-    const items = lists.map(list => dispatch(fetchFavorites(true, list.id)));
-    await Promise.all(items);
-
-    const productIds = getFavoritesProductsIds(getState());
-    dispatch(fetchProductsById(productIds, null, false, false));
+    lists.forEach(list => dispatch(fetchFavoriteIds(true, list.id)));
   });
 
   /** User login / logout */
   subscribe(shouldFetchFreshFavorites$, async ({ dispatch }) => {
     const lists = await dispatch(fetchFavoritesLists(true));
-    lists.forEach(list => dispatch(fetchFavorites(true, list.id)));
+    lists.forEach(list => dispatch(fetchFavoriteIds(false, list.id)));
   });
 
   subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {
@@ -90,17 +82,7 @@ export default function favorites(subscribe) {
       return;
     }
 
-    const { favorites: { limit = 100 } = {} } = appConfig;
-
-    const count = getFavoritesCount(getState());
-    if (count >= limit) {
-      // Dispatch a local error only, because the request to add is prevented
-      const error = new Error('Limit exceeded');
-      error.code = FAVORITES_LIMIT_ERROR;
-      dispatch(errorFavorites(action.productId, error));
-    } else {
-      dispatch(requestAddFavorites(action.productId, action.listId));
-    }
+    dispatch(requestAddFavorites(action.productId, action.listId));
   });
 
   subscribe(removeProductFromFavoritesDebounced$, ({ action, dispatch, getState }) => {
@@ -148,12 +130,12 @@ export default function favorites(subscribe) {
    */
   subscribe(refreshFavorites$, async ({ dispatch, action }) => {
     if (action.listId) {
-      dispatch(fetchFavorites(true, action.listId));
+      dispatch(fetchFavoriteIds(false, action.listId));
       return;
     }
 
     const lists = await dispatch(fetchFavoritesLists(true));
-    lists.forEach(list => dispatch(fetchFavorites(true, list.id)));
+    lists.forEach(list => dispatch(fetchFavoriteIds(false, list.id)));
   });
 
   /**

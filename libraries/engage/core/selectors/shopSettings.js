@@ -2,13 +2,6 @@ import { createSelector } from 'reselect';
 import {
   WISHLIST_MODE_PERSIST_ON_ADD,
   SHOP_SETTING_WISHLIST_MODE,
-  SHOP_SETTING_IMAGES,
-  SHOP_SETTING_IMAGES_PRODUCT_PLACEHOLDER,
-  SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER,
-  SHOP_SETTING_IMAGES_FAVICON,
-  SHOP_SETTING_NUMBER_OF_ADDRESS_LINES,
-  SHOP_SETTING_GOOGLE_SITE_VERIFICATION_CODE,
-  SHOP_SETTINGS_SHOW_CATEGORY_IMAGES,
 } from '../constants/shopSettings';
 
 /**
@@ -59,47 +52,4 @@ export const makeGetShopSettings = (keys = []) => createSelector(
 export const getWishlistMode = makeGetShopSettingByKey(
   SHOP_SETTING_WISHLIST_MODE,
   WISHLIST_MODE_PERSIST_ON_ADD
-);
-
-const getShopSettingImages = makeGetShopSettingByKey(SHOP_SETTING_IMAGES, {});
-
-/**
- * Selects the placeholder image for products
- */
-export const getProductImagePlaceholder = createSelector(
-  getShopSettingImages,
-  images => images?.[SHOP_SETTING_IMAGES_PRODUCT_PLACEHOLDER] || null
-);
-
-/**
- * Selects the placeholder image for products
- */
-export const getCategoryImagePlaceholder = createSelector(
-  getShopSettingImages,
-  images => images?.[SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER] || null
-);
-/**
- * Selects the placeholder image for products
- */
-export const getFavicon = createSelector(
-  getShopSettingImages,
-  images => images?.[SHOP_SETTING_IMAGES_FAVICON] || null
-);
-
-/**
- * Selects the number of address lines for registration / address forms
- */
-export const getNumberOfAddressLines = makeGetShopSettingByKey(
-  SHOP_SETTING_NUMBER_OF_ADDRESS_LINES,
-  2
-);
-
-export const getGoogleSiteVerificationCode = makeGetShopSettingByKey(
-  SHOP_SETTING_GOOGLE_SITE_VERIFICATION_CODE,
-  ''
-);
-
-export const getShowCategoryImages = makeGetShopSettingByKey(
-  SHOP_SETTINGS_SHOW_CATEGORY_IMAGES,
-  true
 );

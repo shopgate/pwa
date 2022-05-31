@@ -16,7 +16,7 @@ function addFavoritesList(name) {
       .dispatch();
 
     request
-      .then((id) => {
+      .then(({ id }) => {
         dispatch({
           type: SUCCESS_ADD_FAVORITES_LIST,
           listId: id,
