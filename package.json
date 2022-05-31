@@ -94,8 +94,5 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "compare-versions": "^3.4.0",
     "react-hot-loader": "~4.12.18"
-  },
-  "resolutions": {
-    "scheduler": "0.15.0"
   }
 }
