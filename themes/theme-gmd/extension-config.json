@@ -543,7 +543,7 @@
         "label": "Tracking settings: webTrackingEngage, etc"
       }
     },
-    "favorites": {
+    "favoritesMode": {
       "type": "admin",
       "destination": "frontend",
       "default": {

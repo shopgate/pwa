@@ -161,7 +161,7 @@ const FavoriteLists = ({
         />
       ) : null}
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
-        {appConfig.favorites.hasMultipleFavoritesLists ? (
+        {appConfig.favoritesMode.hasMultipleFavoritesLists ? (
           <RippleButton
             type="primary"
             className={styles.addButton}

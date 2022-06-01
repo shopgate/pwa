@@ -194,7 +194,7 @@ const FavoriteList = ({
   }, [offset, allFavoritesLoaded]);
 
   return (
-    appConfig.favorites.hasMultipleFavoritesLists ? (
+    appConfig.favoritesMode.hasMultipleFavoritesLists ? (
       <Card className={styles.root}>
         <Accordion
           className=""
