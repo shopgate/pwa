@@ -42,17 +42,6 @@
         "key": "value"
       }
     },
-    "hasMultipleFavoritesLists": {
-      "type": "bigApi",
-      "destination": "frontend",
-      "default": false,
-      "params": {
-        "method": "GET",
-        "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_multiple_favorites_lists?parsed=true",
-        "key": "value"
-      }
-    },
     "hasReviews": {
       "type": "bigApi",
       "destination": "frontend",
@@ -562,6 +551,17 @@
       "params": {
         "type": "json",
         "label": "Tracking settings: webTrackingEngage, etc"
+      }
+    },
+    "favorites": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "hasMultipleFavoritesLists": false
+      },
+      "params": {
+        "type": "json",
+        "label": "Favorites Settings"
       }
     },
     "appRating": {
