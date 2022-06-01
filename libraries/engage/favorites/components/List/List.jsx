@@ -1,5 +1,5 @@
 import React, {
-  Fragment, useCallback, useState,
+  Fragment, useCallback, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -9,11 +9,11 @@ import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   Accordion, Card, ContextMenu, SurroundPortals, RippleButton,
 } from '@shopgate/engage/components';
-import { getFavoritesCount, isFetching, makeGetFavoritesIdsByList } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getFavoritesCount, makeGetFavoritesIdsByList } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 import { ProductProvider } from '../../../product';
-import { FAVORITES_SHOW_LIMIT } from '../../../../../themes/theme-ios11/pages/Favorites/constants';
+import { FAVORITES_SHOW_LIMIT } from '../../constants/constants';
 
 const { colors, variables } = themeConfig;
 
@@ -22,8 +22,6 @@ const styles = {
     margin: '8px 8px 10px',
   }).toString(),
   rootNoFavoritesLists: css({
-    // padding: '0 16px 16px',
-    // overflow: 'hidden',
     background: colors.background,
     flexGrow: 1,
     paddingTop: variables.gap.xsmall,
@@ -133,7 +131,6 @@ const FavoritesListContent = ({
         type="primary"
         className={styles.loadMoreButton}
         onClick={loadMore}
-        disabled={false}
       >
         {i18n.text('favorites.load_more_button')}
       </RippleButton>
@@ -162,7 +159,6 @@ const makeMapStateToProps = (_, { id }) => {
   return state => ({
     favoriteIds: getFavoritesIds(state),
     favoritesCount: getFavoritesCount(state),
-    isFetchingState: isFetching(state),
   });
 };
 
@@ -185,12 +181,17 @@ const FavoriteList = ({
   const productIds = favoriteIds.slice(0, offset)
     .map(productId => ({ productId }));
 
-  const shouldShowLoadMoreButton = (favoriteIds.length - productIds.length > 0);
+  const allFavoritesLoaded = favoriteIds.length - productIds.length > 0;
+
+  const [shouldShowLoadMoreButton, setShouldShowLoadMoreButton] = useState(allFavoritesLoaded);
 
   const loadMore = useCallback(() => {
-    const nextOffset = offset + FAVORITES_SHOW_LIMIT;
-    setOffset(nextOffset);
+    setOffset(offset + FAVORITES_SHOW_LIMIT);
   }, [offset]);
+
+  useEffect(() => {
+    setShouldShowLoadMoreButton(allFavoritesLoaded);
+  }, [offset, allFavoritesLoaded]);
 
   return (
     appConfig.hasMultipleFavoritesLists ? (
