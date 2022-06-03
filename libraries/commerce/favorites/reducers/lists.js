@@ -6,6 +6,7 @@ import {
   OPEN_FAVORITE_LIST_CHOOSER,
   CLOSE_FAVORITE_LIST_CHOOSER,
   FAVORITES_LIFETIME,
+  FLUSH_FAVORITES,
 } from '../constants';
 
 const defaultState = {
@@ -22,6 +23,13 @@ const defaultState = {
  */
 const lists = (state = defaultState, action) => {
   switch (action.type) {
+    case FLUSH_FAVORITES: {
+      return {
+        ...state,
+        lists: [],
+      };
+    }
+
     case OPEN_FAVORITE_LIST_CHOOSER: {
       return {
         ...state,

@@ -23,6 +23,7 @@ import {
   requestRemoveFavorites,
   cancelRequestSyncFavorites,
   idleSyncFavorites,
+  flushFavorites,
 } from '../action-creators';
 import {
   REQUEST_ADD_FAVORITES,
@@ -66,8 +67,9 @@ export default function favorites(subscribe) {
 
   /** User login / logout */
   subscribe(shouldFetchFreshFavorites$, async ({ dispatch }) => {
+    await dispatch(flushFavorites());
     const lists = await dispatch(fetchFavoritesLists(true));
-    lists.forEach(list => dispatch(fetchFavoriteIds(false, list.id)));
+    lists.forEach(list => dispatch(fetchFavoriteIds(true, list.id)));
   });
 
   subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {

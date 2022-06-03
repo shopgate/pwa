@@ -171,7 +171,6 @@ export const getFavoritesCount = createSelector(
     if (!products?.byList) {
       return 0;
     }
-
     return Object
       .values(products.byList)
       .reduce((prev, list) => prev + list.ids.length, 0);

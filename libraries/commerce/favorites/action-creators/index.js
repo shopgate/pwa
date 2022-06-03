@@ -1,4 +1,5 @@
 import {
+  FLUSH_FAVORITES,
   ADD_PRODUCT_TO_FAVORITES,
   REMOVE_PRODUCT_FROM_FAVORITES,
   CANCEL_REQUEST_SYNC_FAVORITES,
@@ -20,6 +21,14 @@ import {
   REQUEST_FAVORITES_IDS,
   ERROR_FAVORITES_IDS,
 } from '../constants';
+
+/**
+ * Resets the favorites lists and products
+ * @returns {Object}
+ */
+export const flushFavorites = () => ({
+  type: FLUSH_FAVORITES,
+});
 
 /**
  * First action to add one product to favorites.

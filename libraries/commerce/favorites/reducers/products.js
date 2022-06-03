@@ -16,6 +16,7 @@ import {
   REQUEST_FAVORITES_IDS,
   RECEIVE_FAVORITES_IDS,
   ERROR_FAVORITES_IDS,
+  FLUSH_FAVORITES,
 } from '../constants';
 
 const defaultState = {
@@ -30,6 +31,13 @@ const defaultState = {
  */
 const products = (state = defaultState, action) => {
   switch (action.type) {
+    case FLUSH_FAVORITES: {
+      return {
+        ...state,
+        byList: {},
+      };
+    }
+
     // Handle an new favorites request.
     case REQUEST_FAVORITES: {
       const existingList = state.byList[action.listId];
