@@ -52,7 +52,6 @@ const styles = {
   addButton: css({
     width: 'calc(100% - 32px)',
     margin: 16,
-    backgroundColor: 'var(--color-primary)',
     borderRadius: 5,
   }).toString(),
 };

@@ -56,13 +56,13 @@ export default function favorites(subscribe) {
       SHOPGATE_USER_DELETE_FAVORITES,
     ]);
     const lists = await dispatch(fetchFavoritesLists());
-    lists.forEach(list => dispatch(fetchFavoriteIds(true, list.id)));
+    lists.forEach(list => dispatch(fetchFavoriteIds(false, list.id)));
   });
 
   /** Favorites route enter */
   subscribe(favoritesWillEnter$, async ({ dispatch }) => {
     const lists = await dispatch(fetchFavoritesLists());
-    lists.forEach(list => dispatch(fetchFavoriteIds(true, list.id)));
+    lists.forEach(list => dispatch(fetchFavoriteIds(false, list.id)));
   });
 
   /** User login / logout */
