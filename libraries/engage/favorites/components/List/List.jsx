@@ -31,6 +31,9 @@ const styles = {
   }).toString(),
   title: css({
     flex: 1,
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
   }).toString(),
   divider: css({
     height: 1,

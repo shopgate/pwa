@@ -53,6 +53,7 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
           value={input}
           errorText={error || undefined}
           className={styles.textField}
+          maxlength="25"
         />
       </div>
     </Dialog>
