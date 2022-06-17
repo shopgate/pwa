@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
+import classNames from 'classnames';
 import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
 import {
   ProductImage,
@@ -90,6 +91,9 @@ const styles = {
     minWidth: 0,
     marginLeft: 8,
     alignItems: 'flex-end',
+  }),
+  infoContainerRightTaxDisclaimer: css({
+    marginRight: 8,
   }),
   title: css({
     fontSize: 17,
@@ -192,6 +196,13 @@ const FavoriteItem = ({
     handleAddToCart,
   }), [handleAddToCart, isBaseProduct, isDisabled, listId, product.id, remove]);
 
+  const taxDisclaimer = true;
+
+  const priceClassNames = classNames(
+    styles.infoContainerRight,
+    { [styles.infoContainerRightTaxDisclaimer]: taxDisclaimer }
+  );
+
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
       <div className={styles.root}>
@@ -214,11 +225,11 @@ const FavoriteItem = ({
             <div className={styles.infoContainerLeft}>
               <ItemCharacteristics characteristics={characteristics} />
             </div>
-            <div className={styles.infoContainerRight}>
+            <div className={priceClassNames}>
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
                 <Price
                   currency={currency}
-                  taxDisclaimer
+                  taxDisclaimer={taxDisclaimer}
                   unitPrice={price}
                 />
               </SurroundPortals>

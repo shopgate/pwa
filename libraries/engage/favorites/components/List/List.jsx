@@ -52,7 +52,7 @@ const styles = {
   }).toString(),
   loadMoreButton: css({
     width: 'calc(100% - 32px)',
-    margin: 16,
+    margin: '16px 16px 0 16px',
     borderRadius: 5,
   }).toString(),
 };

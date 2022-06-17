@@ -26,7 +26,7 @@
     "add": "Zur Wunschliste hinzufügen",
     "added": "Das Produkt wurde zur Wunschliste hinzugefügt",
     "continue": "Weiter shoppen",
-    "empty": "Du hast noch keine Artikel auf der Wunschliste",
+    "empty": "Sie haben noch keine Artikel auf der Wunschliste",
     "error_add": "Das Produkt konnte nicht zur Wunschliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Wunschliste entfernt werden",
     "error_limit": "Die zulässige Anzahl von Produkten auf der Wunschliste wurde überschritten.",
@@ -36,19 +36,19 @@
       "title": "Neue Wunschliste anlegen",
       "dismiss": "Abbrechen",
       "confirm": "Bestätigen",
-      "message": "Der Name deiner neuen Wunschliste",
+      "message": "Der Name Ihrer neuen Wunschliste",
       "label": "Name"
     },
     "rename_list_modal": {
       "title": "Namen der Wunschliste ändern",
       "dismiss": "Abbrechen",
       "confirm": "Bestätigen",
-      "message": "Der neue Name deiner Wunschliste",
+      "message": "Der neue Name Ihrer Wunschliste",
       "label": "Name"
     },
     "add_list": "Neue Liste anlegen",
     "errors": {
-      "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
+      "invalid_name": "Bitte geben Sie einen vollständigen Namen für Ihre Wunschliste ein"
     },
     "rename_list": "Umbenennen",
     "remove_list": "Löschen",
@@ -56,15 +56,15 @@
     "remove_from_list": "Von Liste löschen",
     "edit_lists": "Liste editieren",
     "fo_method_chooser": {
-      "title": "Wähle eine Bestellmethode aus"
+      "title": "Wählen Sie eine Bestellmethode aus"
     },
     "list_chooser": {
-      "title": "Wähle eine Wunschliste aus",
+      "title": "Wählen Sie eine Wunschliste aus",
       "add": "Hinzufügen",
       "remove": "Löschen"
     },
     "modal": {
-      "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wähle bitte die Varianten.",
+      "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.",
       "confirm": "Varianten wählen"
     },
     "open_list": "Liste öffnen.",

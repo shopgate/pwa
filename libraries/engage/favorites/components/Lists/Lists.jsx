@@ -14,8 +14,6 @@ import updateFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions
 import removeFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/removeFavoritesList';
 import { removeFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
-import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
 
 import List from '../List';
 import ListsModal from './ListsModal';
@@ -25,6 +23,14 @@ import {
 } from '../../constants/Portals';
 
 /**
+ * TODO
+ *
+ * This constant originally comes from PWA 7 shopSettings. If another mode is requested in the
+ * future, this needs to be set dynamically.
+ */
+const WISHLIST_MODE_PERSIST_ON_ADD = 'persistOnAdd';
+
+/**
  * @param {Object} state State
  * @param {Object} props Props
  * @returns {Object}
@@ -32,7 +38,7 @@ import {
 const mapStateToProps = state => ({
   isInitializing: isInitialLoading(state),
   lists: getFavoritesLists(state),
-  wishlistMode: getWishlistMode(state),
+  wishlistMode: WISHLIST_MODE_PERSIST_ON_ADD,
 });
 
 /**
