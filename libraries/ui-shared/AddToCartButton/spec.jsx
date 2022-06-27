@@ -1,11 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 import AddToCartButton from './index';
 
+/**
+ * Flushes the promise queue.
+ * @returns {Promise}
+ */
+const flushPromises = () => new Promise(resolve => setImmediate(resolve));
+
 describe('<AddToCartButton />', () => {
-  it('should render in loading state and should not be clickable', async () => {
-    const spy = jest.fn().mockResolvedValue(true);
+  it('should render in loading state and should not be clickable', () => {
+    const spy = jest.fn(() => new Promise(resolve => resolve()));
 
     const wrapper = mount(<AddToCartButton
       onClick={spy}
@@ -13,17 +18,14 @@ describe('<AddToCartButton />', () => {
       isOrderable
       isDisabled={false}
     />);
+    wrapper.find('button').prop('onClick')();
 
-    await act(async () => {
-      wrapper.find('button').simulate('click');
-    });
-
-    expect(spy).toHaveBeenCalledTimes(0);
     expect(wrapper).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledTimes(0);
   });
 
   it('should render with checkmark icon and should not be clickable the second time', async () => {
-    const spy = jest.fn().mockResolvedValue(true);
+    const spy = jest.fn(() => new Promise(resolve => resolve()));
     const wrapper = mount(<AddToCartButton
       onClick={spy}
       isLoading={false}
@@ -31,34 +33,29 @@ describe('<AddToCartButton />', () => {
       isDisabled={false}
     />);
 
-    await act(async () => {
-      await wrapper.find('button').simulate('click');
-      wrapper.update();
-    });
+    wrapper.find('button').prop('onClick')();
+    wrapper.update();
+    await flushPromises();
 
-    await act(async () => {
-      wrapper.find('button').simulate('click');
-      wrapper.update();
-    });
+    wrapper.find('button').prop('onClick')();
+    wrapper.update();
+    await flushPromises();
 
-    expect(spy).toHaveBeenCalledTimes(1);
     expect(wrapper).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should render with cart icon and should be clickable', async () => {
-    const spy = jest.fn().mockResolvedValue(true);
+  it('should render with cart icon and should be clickable', () => {
+    const spy = jest.fn(() => new Promise(resolve => resolve()));
     const wrapper = mount(<AddToCartButton
       onClick={spy}
       isLoading={false}
       isOrderable
       isDisabled={false}
     />);
+    wrapper.find('button').prop('onClick')();
 
-    await act(async () => {
-      wrapper.find('button').simulate('click');
-    });
-
-    expect(spy).toHaveBeenCalledTimes(1);
     expect(wrapper).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

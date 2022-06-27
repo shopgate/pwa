@@ -6,7 +6,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
   id="some-id"
   open={false}
 >
-  <ForwardRef
+  <div
     aria-hidden={true}
     className={
       Object {
@@ -16,37 +16,20 @@ exports[`<AccordionContent /> should render as closed 1`] = `
     id="some-id"
     style={
       Object {
-        "hook": "useSpring return value",
+        "height": 0,
       }
     }
   >
     <div
-      aria-hidden={true}
-      className={
-        Object {
-          "data-css-apm51k": "",
-        }
-      }
-      id="some-id"
-      style={
-        Object {
-          "hook": "useSpring return value",
-        }
-      }
+      className="css-yh2lvw"
     >
-      <div>
-        <div
-          className="css-yh2lvw"
-        >
-          <div
-            id="test"
-          >
-            Some Child
-          </div>
-        </div>
+      <div
+        id="test"
+      >
+        Some Child
       </div>
     </div>
-  </ForwardRef>
+  </div>
 </AccordionContent>
 `;
 
@@ -56,7 +39,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
   id="some-id"
   open={true}
 >
-  <ForwardRef
+  <div
     aria-hidden={false}
     className={
       Object {
@@ -66,36 +49,19 @@ exports[`<AccordionContent /> should render as open 1`] = `
     id="some-id"
     style={
       Object {
-        "hook": "useSpring return value",
+        "height": 0,
       }
     }
   >
     <div
-      aria-hidden={false}
-      className={
-        Object {
-          "data-css-apm51k": "",
-        }
-      }
-      id="some-id"
-      style={
-        Object {
-          "hook": "useSpring return value",
-        }
-      }
+      className="css-yh2lvw"
     >
-      <div>
-        <div
-          className="css-yh2lvw"
-        >
-          <div
-            id="test"
-          >
-            Some Child
-          </div>
-        </div>
+      <div
+        id="test"
+      >
+        Some Child
       </div>
     </div>
-  </ForwardRef>
+  </div>
 </AccordionContent>
 `;
