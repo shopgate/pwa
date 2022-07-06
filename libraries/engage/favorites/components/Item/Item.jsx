@@ -26,13 +26,17 @@ import {
   FAVORITES_PRODUCT_PRICE,
   FAVORITES_ADD_TO_CART,
 } from '@shopgate/engage/favorites';
+import AvailableText from '@shopgate/pwa-ui-shared/Availability';
 import Price from '@shopgate/pwa-ui-shared/Price';
+import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import {
   FAVORITES_LIST_ITEM,
   FAVORITES_LIST_ITEM_ACTIONS,
+  FAVORITES_AVAILABILITY_TEXT,
 } from '../../constants/Portals';
 
 /**
@@ -113,6 +117,10 @@ const styles = {
     alignItems: 'center',
     width: 90,
   }).toString(),
+  basePrice: css({
+    fontSize: '0.6875rem',
+    textAlign: 'right',
+  }).toString(),
 };
 
 /**
@@ -133,7 +141,9 @@ const FavoriteItem = ({
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
-  const price = defaultPrice;
+  const specialPrice = product.price?.unitPriceStriked;
+  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice !== defaultPrice;
+  const price = hasStrikePrice ? specialPrice : defaultPrice;
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
@@ -196,7 +206,7 @@ const FavoriteItem = ({
     handleAddToCart,
   }), [handleAddToCart, isBaseProduct, isDisabled, listId, product.id, remove]);
 
-  const taxDisclaimer = true;
+  const taxDisclaimer = false;
 
   const priceClassNames = classNames(
     styles.infoContainerRight,
@@ -224,14 +234,34 @@ const FavoriteItem = ({
           <div className={styles.innerInfoContainer}>
             <div className={styles.infoContainerLeft}>
               <ItemCharacteristics characteristics={characteristics} />
+              <SurroundPortals
+                portalName={FAVORITES_AVAILABILITY_TEXT}
+                portalProps={commonPortalProps}
+              >
+                <AvailableText
+                  text={commonPortalProps.availability.text}
+                  state={commonPortalProps.availability.state}
+                  showWhenAvailable
+                />
+              </SurroundPortals>
             </div>
             <div className={priceClassNames}>
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
+                {hasStrikePrice ? (
+                  <PriceStriked
+                    value={defaultPrice}
+                    currency={currency}
+                  />
+                ) : null}
                 <Price
                   currency={currency}
+                  discounted={hasStrikePrice}
                   taxDisclaimer={taxDisclaimer}
                   unitPrice={price}
                 />
+                {!!product.price.info && (
+                  <PriceInfo text={product.price.info} className={styles.basePrice} />
+                )}
               </SurroundPortals>
             </div>
           </div>

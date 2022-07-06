@@ -17,26 +17,22 @@ import {
   refreshFavorites$,
 } from '../streams';
 import favorites from './index';
-import fetchFavorites from '../actions/fetchFavorites';
+import fetchFavoriteIds from '../actions/fetchFavoriteIds';
 import addFavorites from '../actions/addFavorites';
 import removeFavorites from '../actions/removeFavorites';
-import { FAVORITES_LIMIT_ERROR } from '../constants';
 import {
   SHOPGATE_USER_ADD_FAVORITES,
   SHOPGATE_USER_DELETE_FAVORITES,
 } from '../constants/Pipelines';
-import { fetchProductsById } from '../../product';
 import {
   addProductToFavorites,
   removeProductFromFavorites,
   requestAddFavorites,
   requestRemoveFavorites,
   cancelRequestSyncFavorites,
-  errorFavorites,
   idleSyncFavorites,
 } from '../action-creators';
 import {
-  getFavoritesProductsIds,
   getFavoritesProducts,
   getFavoritesCount,
   makeGetProductRelativesOnFavorites,
@@ -53,8 +49,8 @@ jest.mock('@shopgate/pwa-common-commerce/product', () => ({
 }));
 const mockedDefaultListId = 'DEFAULT';
 
-jest.mock('../actions/fetchFavorites', () =>
-  jest.fn().mockReturnValue('fetchFavoritesResult'));
+jest.mock('../actions/fetchFavoriteIds', () =>
+  jest.fn().mockReturnValue('fetchFavoriteIdsResult'));
 jest.mock('../actions/fetchFavoritesList', () =>
   jest.fn().mockResolvedValue([{
     id: 'DEFAULT',
@@ -80,10 +76,9 @@ jest.mock('../actions/removeFavorites', () =>
   jest.fn().mockReturnValue('removeFavoritesResult'));
 
 let mockedHasFavorites = true;
-let mockedFavoritesLimit = 100;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
-  get favorites() { return { limit: mockedFavoritesLimit }; },
+  get favorites() { return {}; },
 }));
 
 /**
@@ -163,12 +158,12 @@ describe('Favorites - subscriptions', () => {
         ]);
       });
 
-      it('should fetch favorites', async () => {
+      it('should fetch favoriteIds', async () => {
         await invoke(appDidStart$, { dispatch });
 
-        // Expect fetch favorites action to be dispatched
-        expect(fetchFavorites).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledWith(fetchFavorites());
+        // Expect fetch favorite ids action to be dispatched
+        expect(fetchFavoriteIds).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledWith(fetchFavoriteIds(false, mockedDefaultListId));
         expect(dispatch).toHaveBeenCalledTimes(2);
       });
     });
@@ -185,21 +180,11 @@ describe('Favorites - subscriptions', () => {
         })).toBeUndefined();
       });
 
-      it('should handle fetch and map favorites', async () => {
+      it('should fetch favorite lists and favorite ids', async () => {
         // eslint-disable-next-line extra-rules/no-single-line-objects
         await invoke(favoritesWillEnter$, { dispatch, getState });
-
-        // Expect products to be fetched correctly
-        expect(getState).toHaveBeenCalledTimes(1);
-        expect(getFavoritesProductsIds).toHaveBeenCalledWith(getState());
-        expect(getFavoritesProductsIds).toHaveBeenCalledTimes(1);
-        expect(fetchProductsById).toHaveBeenCalledWith(productIds, null, false, false);
-        expect(fetchProductsById).toHaveBeenCalledTimes(1);
-
-        // Expect the correct actions to be dispatched
-        expect(dispatch.mock.calls[1][0]).toBe(fetchFavorites());
-        expect(dispatch.mock.calls[2][1]).toBe(fetchProductsById());
-        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0]).toBe(fetchFavoriteIds(true, mockedDefaultListId));
       });
     });
 
@@ -214,13 +199,7 @@ describe('Favorites - subscriptions', () => {
 
       it('should fetch fresh favorites without using the cache', async () => {
         await invoke(shouldFetchFreshFavorites$, { dispatch });
-
-        expect(fetchFavorites).toHaveBeenCalledTimes(1);
-        expect(fetchFavorites).toHaveBeenCalledWith(true, mockedDefaultListId);
-
-        // Expect the correct actions to be dispatched
-        expect(dispatch.mock.calls[1][0]).toBe(fetchFavorites(true));
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
       });
     });
 
@@ -250,32 +229,6 @@ describe('Favorites - subscriptions', () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
       });
 
-      it('should proceed and dispatch an error if the product is not yet on the list and the limit is reached', () => {
-        const favoritesLimit = mockedFavoritesLimit;
-
-        const productId = 'prod3';
-        mockedFavoritesLimit = 2;
-        mockedGetFavoritesCountReturnValue = 2;
-
-        invoke(addProductToFavoritesDebounced$, {
-          action: addProductToFavorites(productId),
-          dispatch,
-          getState,
-        });
-
-        expect(getState).toHaveBeenCalledTimes(2);
-        expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
-        expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
-        expect(getFavoritesCount).toHaveBeenCalledWith(getState());
-        expect(getFavoritesCount).toHaveBeenCalledTimes(1);
-
-        const error = new Error('Limit exceeded');
-        error.code = FAVORITES_LIMIT_ERROR;
-        expect(dispatch).toHaveBeenCalledWith(errorFavorites(productId, error));
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        mockedFavoritesLimit = favoritesLimit;
-      });
-
       it('should proceed and dispatch an add request if all is good', () => {
         const productId = 'prod3';
         invoke(addProductToFavoritesDebounced$, {
@@ -284,12 +237,7 @@ describe('Favorites - subscriptions', () => {
           getState,
         });
 
-        expect(getState).toHaveBeenCalledTimes(2);
-        expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
-        expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
-        expect(getFavoritesCount).toHaveBeenCalledWith(getState());
-        expect(getFavoritesCount).toHaveBeenCalledTimes(1);
-
+        expect(getState).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(requestAddFavorites(productId));
         expect(dispatch).toHaveBeenCalledTimes(1);
       });
@@ -458,9 +406,9 @@ describe('Favorites - subscriptions', () => {
           action: { listId: mockedDefaultListId },
         });
 
-        expect(fetchFavorites).toHaveBeenCalledTimes(1);
+        expect(fetchFavoriteIds).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledWith(fetchFavorites(true));
+        expect(dispatch).toHaveBeenCalledWith(fetchFavoriteIds(true, mockedDefaultListId));
       });
     });
 

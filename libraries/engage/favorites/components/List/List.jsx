@@ -22,7 +22,7 @@ const styles = {
     margin: '8px 8px 10px',
   }).toString(),
   rootNoFavoritesLists: css({
-    background: colors.background,
+    background: colors.light,
     flexGrow: 1,
     paddingTop: variables.gap.xsmall,
     paddingBottom: variables.gap.xxbig,
@@ -97,7 +97,11 @@ const FavoritesListContent = ({
   id, productIds, addToCart, removeItem, shouldShowLoadMoreButton, loadMore,
 }) => (
   <>
-    <div className={styles.divider} />
+    {appConfig.favoritesMode.hasMultipleFavoritesLists ? (
+      <div className={styles.divider} />
+    ) : (
+      <div className={styles.spacer} />
+    )}
 
     {productIds.length === 0 ? (
       <span>{i18n.text('favorites.empty')}</span>

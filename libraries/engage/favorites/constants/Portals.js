@@ -6,3 +6,5 @@ export const FAVORITES_LIST_ADD_BUTTON = `${FAVORITES}.list-add-button`;
 export const FAVORITES_LIST_CONTEXT_MENU = `${FAVORITES}.list-context-menu`;
 export const FAVORITES_LIST_ITEM_ACTIONS = `${FAVORITES}.list-item-actions`;
 export const FAVORITES_LIST_ITEM = `${FAVORITES}.list-item`;
+
+export const FAVORITES_AVAILABILITY_TEXT = `${FAVORITES}.availability-text`;
