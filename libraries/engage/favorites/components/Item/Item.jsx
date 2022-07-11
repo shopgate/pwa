@@ -142,8 +142,7 @@ const FavoriteItem = ({
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
-  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice !== defaultPrice;
-  const price = hasStrikePrice ? specialPrice : defaultPrice;
+  const hasStrikePrice = product.price?.discount > 0;
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
@@ -190,10 +189,9 @@ const FavoriteItem = ({
       characteristics,
       id,
       name,
-      price,
       listId,
     };
-  }, [characteristics, listId, price, product]);
+  }, [characteristics, listId, product]);
 
   const ctaPortalProps = useMemo(() => ({
     isLoading: false,
@@ -249,7 +247,7 @@ const FavoriteItem = ({
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
                 {hasStrikePrice ? (
                   <PriceStriked
-                    value={defaultPrice}
+                    value={specialPrice}
                     currency={currency}
                   />
                 ) : null}
@@ -257,7 +255,7 @@ const FavoriteItem = ({
                   currency={currency}
                   discounted={hasStrikePrice}
                   taxDisclaimer={taxDisclaimer}
-                  unitPrice={price}
+                  unitPrice={defaultPrice}
                 />
                 {!!product.price.info && (
                   <PriceInfo text={product.price.info} className={styles.basePrice} />
