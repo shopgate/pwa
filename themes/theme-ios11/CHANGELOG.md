@@ -1,5 +1,16 @@
 # Changelog
 
+## [v7.7.0](https://github.com/shopgate/pwa/compare/v7.6.0...v7.7.0) (2022-07-13)
+
+#### :rocket: Enhancement
+* [#1157](https://github.com/shopgate/pwa/pull/1157) CCP-2517-CURB: Added a new dialog type to display HTML content ([@ortmann64](https://github.com/ortmann64))
+* [#1154](https://github.com/shopgate/pwa/pull/1154) Added support for images in webp format for iOS version >= 14 ([@ortmann64](https://github.com/ortmann64))
+* [#1152](https://github.com/shopgate/pwa/pull/1152) CCP-2532: changed the function fetchProductsById to return in any case the same object with the products ([@ortmann64](https://github.com/ortmann64))
+
+#### :bug: Bug Fix
+* [#1158](https://github.com/shopgate/pwa/pull/1158) Bugfix: added the listId to the action params ([@ortmann64](https://github.com/ortmann64))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
