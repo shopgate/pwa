@@ -50,7 +50,7 @@ export const convertLineItemsToCartItems = (lineItems = []) => lineItems.map((li
   if (Array.isArray(options)) {
     properties = options.map(option => ({
       label: option.name,
-      value: option.values[0].name,
+      value: option?.value?.name || option?.values?.[0]?.name,
     }));
   }
 
