@@ -12,7 +12,7 @@ import FavoritesList from './components/FavoritesList';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Favorites = ({ initialLoading, products }) => {
+const Favorites = ({ initialLoading, products, favoriteProductIds }) => {
   if (initialLoading) {
     return (
       <View>
@@ -27,7 +27,7 @@ const Favorites = ({ initialLoading, products }) => {
   return (
     <View aria-hidden={false}>
       <BackBar title="titles.favorites" />
-      {products.length > 0 || hasMultipleFavoritesLists ? (
+      {favoriteProductIds.length > 0 || hasMultipleFavoritesLists ? (
         <FavoritesList products={products} />
       ) : (
         <EmptyFavorites />
@@ -37,6 +37,7 @@ const Favorites = ({ initialLoading, products }) => {
 };
 
 Favorites.propTypes = {
+  favoriteProductIds: PropTypes.arrayOf(PropTypes.string),
   initialLoading: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape()),
 };
@@ -44,6 +45,7 @@ Favorites.propTypes = {
 Favorites.defaultProps = {
   initialLoading: true,
   products: [],
+  favoriteProductIds: [],
 };
 
 export default connect(Favorites);

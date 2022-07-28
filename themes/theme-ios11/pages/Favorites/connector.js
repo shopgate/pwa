@@ -3,6 +3,7 @@ import {
   getFavorites,
   getFavoritesLists,
   isInitialLoading,
+  getFavoritesProductsIds,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 
 /**
@@ -12,6 +13,7 @@ import {
  */
 const mapStateToProps = state => ({
   products: getFavorites(state),
+  favoriteProductIds: getFavoritesProductsIds(state),
   lists: getFavoritesLists(state),
   initialLoading: isInitialLoading(state),
 });
