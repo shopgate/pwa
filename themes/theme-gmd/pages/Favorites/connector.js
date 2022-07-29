@@ -13,7 +13,7 @@ import {
  */
 const mapStateToProps = state => ({
   products: getFavorites(state),
-  favoriteProductIds: getFavoritesProductsIds(state),
+  favoritesProductsIds: getFavoritesProductsIds(state),
   lists: getFavoritesLists(state),
   initialLoading: isInitialLoading(state),
 });
