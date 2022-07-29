@@ -556,6 +556,17 @@
         "label": "Tracking settings: webTrackingEngage, etc"
       }
     },
+    "favoritesMode": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "hasMultipleFavoritesLists": false
+      },
+      "params": {
+        "type": "json",
+        "label": "Favorites Settings"
+      }
+    },
     "appRating": {
       "type": "admin",
       "destination": "frontend",

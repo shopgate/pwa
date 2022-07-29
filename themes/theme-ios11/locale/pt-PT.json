@@ -32,10 +32,44 @@
     "error_limit": "Você excedeu o número de produtos permitidos nos favoritos.",
     "remove": "Remover de favoritos",
     "removed": "Removido dos favoritos",
+    "add_list_modal": {
+      "title": "Acrescentar uma nova Lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirme",
+      "message": "Introduza o nome para a sua nova lista de favoritos",
+      "label": "Nome"
+    },
+    "rename_list_modal": {
+      "title": "Renomear Lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirme",
+      "message": "Introduza o novo nome para a sua lista de favoritos",
+      "label": "Nome"
+    },
+    "add_list": "Adicionar Nova Lista",
+    "errors": {
+      "invalid_name": "Por favor, introduza um nome válido para a sua lista de favoritos"
+    },
+    "rename_list": "Renomear",
+    "remove_list": "Remover",
+    "add_to_list": "Adicionar à lista",
+    "remove_from_list": "Remover da lista",
+    "edit_lists": "Editar listas",
+    "fo_method_chooser": {
+      "title": "Escolha um método"
+    },
+    "list_chooser": {
+      "title": "Escolha uma lista de favoritos",
+      "add": "Acrescentar",
+      "remove": "Remover"
+    },
     "modal": {
       "message": "Para adicionar este produto ao seu carrinho, por favor selecione as variantes.",
       "confirm": "Selecionar variantes"
-    }
+    },
+    "open_list": "Lista aberta.",
+    "close_list": "Fechar lista.",
+    "load_more_button": "Załaduj inne artykuły"
   },
   "filter": {
     "sort": {

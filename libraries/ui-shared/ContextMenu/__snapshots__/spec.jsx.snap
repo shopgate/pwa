@@ -50,3 +50,120 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
   </div>
 </ContextMenu>
 `;
+
+exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
+<div
+  aria-hidden={true}
+  className="css-13azwyo ui-shared__context-menu"
+  data-test-id="contextMenu"
+>
+  <button
+    aria-hidden={true}
+    className="css-d6h5ju"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <MoreVert />
+  </button>
+  <Component
+    isOpened={true}
+  >
+    <div
+      className="css-dvvqn2"
+    >
+      <Backdrop
+        className=""
+        color="#000"
+        duration={200}
+        isVisible={true}
+        level={0}
+        onClick={[Function]}
+        opacity={0}
+      />
+      <Position
+        offset={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
+      >
+        <div
+          className="css-1uoznzv"
+        >
+          <Item
+            autoClose={true}
+            className="menu-active-item"
+            closeMenu={[Function]}
+            disabled={false}
+            key=".0"
+            onClick={[MockFunction]}
+          >
+            Item A
+          </Item>
+          <Item
+            autoClose={true}
+            className="menu-active-item"
+            closeMenu={[Function]}
+            disabled={false}
+            key=".1"
+            onClick={[MockFunction]}
+          >
+            Item B
+          </Item>
+        </div>
+      </Position>
+    </div>
+  </Component>
+</div>
+`;
+
+exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] = `
+<div
+  aria-hidden={true}
+  className="css-13azwyo ui-shared__context-menu"
+  data-test-id="contextMenu"
+>
+  <Component
+    isOpened={true}
+  >
+    <div
+      className="css-dvvqn2"
+    >
+      <Backdrop
+        className=""
+        color="#000"
+        duration={200}
+        isVisible={true}
+        level={0}
+        onClick={[Function]}
+        opacity={0}
+      />
+      <Position
+        offset={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
+      >
+        <div
+          className="css-1uoznzv"
+        >
+          <Item
+            autoClose={true}
+            className="menu-active-item"
+            closeMenu={[Function]}
+            disabled={false}
+            key=".0"
+            onClick={[MockFunction]}
+          >
+            Item A
+          </Item>
+        </div>
+      </Position>
+    </div>
+  </Component>
+</div>
+`;

@@ -19,23 +19,57 @@
     "shipping": "Versand",
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
-    "favorites": "Merkliste",
+    "favorites": "Wunschliste",
     "scanner": "Scanner"
   },
   "favorites": {
-    "add": "Zur Merkliste hinzufügen",
-    "added": "Das Produkt wurde Zur Merkliste hinzugefügt",
+    "add": "Zur Wunschliste hinzufügen",
+    "added": "Das Produkt wurde zur Wunschliste hinzugefügt",
     "continue": "Weiter shoppen",
-    "empty": "Sie haben noch keine Artikel in der Merkliste",
-    "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
-    "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
-    "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten.",
-    "remove": "Von der Merkliste löschen",
-    "removed": "Von Merkliste entfernt",
+    "empty": "Sie haben noch keine Artikel auf der Wunschliste",
+    "error_add": "Das Produkt konnte nicht zur Wunschliste hinzugefügt werden",
+    "error_remove": "Das Produkt konnte nicht von der Wunschliste entfernt werden",
+    "error_limit": "Die zulässige Anzahl von Produkten auf der Wunschliste wurde überschritten.",
+    "remove": "Von der Wunschliste löschen",
+    "removed": "Von Wunschliste entfernt",
+    "add_list_modal": {
+      "title": "Neue Wunschliste anlegen",
+      "dismiss": "Abbrechen",
+      "confirm": "Bestätigen",
+      "message": "Der Name Ihrer neuen Wunschliste",
+      "label": "Name"
+    },
+    "rename_list_modal": {
+      "title": "Namen der Wunschliste ändern",
+      "dismiss": "Abbrechen",
+      "confirm": "Bestätigen",
+      "message": "Der neue Name Ihrer Wunschliste",
+      "label": "Name"
+    },
+    "add_list": "Neue Liste anlegen",
+    "errors": {
+      "invalid_name": "Bitte geben Sie einen vollständigen Namen für Ihre Wunschliste ein"
+    },
+    "rename_list": "Umbenennen",
+    "remove_list": "Löschen",
+    "add_to_list": "Zur Liste hinzufügen",
+    "remove_from_list": "Von Liste löschen",
+    "edit_lists": "Liste editieren",
+    "fo_method_chooser": {
+      "title": "Wählen Sie eine Bestellmethode aus"
+    },
+    "list_chooser": {
+      "title": "Wählen Sie eine Wunschliste aus",
+      "add": "Hinzufügen",
+      "remove": "Löschen"
+    },
     "modal": {
       "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.",
       "confirm": "Varianten wählen"
-    }
+    },
+    "open_list": "Liste öffnen.",
+    "close_list": "Liste schließen.",
+    "load_more_button": "Weitere Artikel laden"
   },
   "filter": {
     "sort": {
@@ -187,7 +221,7 @@
     "your_account": "Mein Konto",
     "home": "Startseite",
     "categories": "Kategorien",
-    "favorites": "Merkliste",
+    "favorites": "Wunschliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",
@@ -226,7 +260,7 @@
     "browse": "Stöbern",
     "cart": "Warenkorb",
     "more": "Mehr",
-    "favorites": "Merkliste"
+    "favorites": "Wunschliste"
   },
   "scanner": {
     "instructions": "Bitte positionieren Sie den Barcode oder QR-Code in der Mitte. Die Erkennung erfolgt automatisch.",

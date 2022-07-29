@@ -20,6 +20,7 @@ class SimpleInput extends Component {
     disabled: PropTypes.bool,
     id: PropTypes.string,
     isControlled: PropTypes.bool,
+    maxlength: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func,
     onFocusChange: PropTypes.func,
@@ -41,6 +42,7 @@ class SimpleInput extends Component {
     disabled: false,
     id: null,
     isControlled: false,
+    maxlength: '',
     name: null,
     onChange: () => {},
     onFocusChange: () => {},
@@ -198,7 +200,9 @@ class SimpleInput extends Component {
       className,
       password,
       onKeyPress,
+      maxlength,
     } = this.props;
+
     const type = password ? 'password' : this.props.type;
     const { value } = this.state;
     const autoComplete = this.props.autoComplete ? 'on' : 'off';
@@ -219,6 +223,7 @@ class SimpleInput extends Component {
         disabled={this.props.disabled}
         autoCorrect={autoCorrect}
         autoComplete={autoComplete}
+        maxLength={maxlength}
         {...attributes}
       />
     );

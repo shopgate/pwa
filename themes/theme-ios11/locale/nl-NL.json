@@ -32,10 +32,44 @@
     "error_limit": "U hebt het aantal producten dat in de favorieten toegestaan zijn, overschreden.",
     "remove": "Verwijder van favorieten",
     "removed": "Verwijderd van favorieten",
+    "add_list_modal": {
+      "title": "Een nieuwe lijst toevoegen",
+      "dismiss": "Annuleren",
+      "confirm": "Bevestig",
+      "message": "Voer de naam in voor uw nieuwe favorietenlijst",
+      "label": "Naam"
+    },
+    "rename_list_modal": {
+      "title": "Lijst hernoemen",
+      "dismiss": "Annuleren",
+      "confirm": "Bevestig",
+      "message": "Voer de nieuwe naam voor uw favorietenlijst in",
+      "label": "Naam"
+    },
+    "add_list": "Nieuwe lijst toevoegen",
+    "errors": {
+      "invalid_name": "Voer een geldige naam in voor uw favorietenlijst"
+    },
+    "rename_list": "Hernoemen",
+    "remove_list": "Verwijder",
+    "add_to_list": "Toevoegen aan lijst",
+    "remove_from_list": "Uit de lijst verwijderen",
+    "edit_lists": "Lijsten bewerken",
+    "fo_method_chooser": {
+      "title": "Kies een methode"
+    },
+    "list_chooser": {
+      "title": "Kies een favorietenlijst",
+      "add": "Toevoegen",
+      "remove": "Verwijder"
+    },
     "modal": {
       "message": "Om dit product aan uw winkelwagen toe te voegen, selecteer alstublieft de varianten.",
       "confirm": "Selecteer varianten"
-    }
+    },
+    "open_list": "Open lijst.",
+    "close_list": "Sluit lijst.",
+    "load_more_button": "Andere artikelen laden"
   },
   "filter": {
     "sort": {

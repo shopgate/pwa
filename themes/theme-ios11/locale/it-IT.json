@@ -32,10 +32,44 @@
     "error_limit": "Hai superato il numero di prodotti consentiti nei preferiti.",
     "remove": "Rimuovi dai favoriti",
     "removed": "Rimosso dai favoriti",
+    "add_list_modal": {
+      "title": "Aggiungere un nuovo elenco",
+      "dismiss": "Annullamento",
+      "confirm": "Confermare",
+      "message": "Inserite il nome del vostro nuovo elenco di preferiti",
+      "label": "Nome"
+    },
+    "rename_list_modal": {
+      "title": "Rinominare l'elenco",
+      "dismiss": "Annullamento",
+      "confirm": "Confermare",
+      "message": "Inserite il nuovo nome per l'elenco dei preferiti",
+      "label": "Nome"
+    },
+    "add_list": "Aggiungi nuovo elenco",
+    "errors": {
+      "invalid_name": "Inserire un nome valido per l'elenco dei preferiti"
+    },
+    "rename_list": "Rinominare",
+    "remove_list": "Rimuovere",
+    "add_to_list": "Aggiungi alla lista",
+    "remove_from_list": "Rimuovere dall'elenco",
+    "edit_lists": "Modifica elenchi",
+    "fo_method_chooser": {
+      "title": "Scegliere un metodo"
+    },
+    "list_chooser": {
+      "title": "Scegliere un elenco di preferiti",
+      "add": "Aggiungi",
+      "remove": "Rimuovere"
+    },
     "modal": {
       "message": "Per aggiungere questo prodotto al tuo carrello, prego selezionare le varianti.",
       "confirm": "Seleziona le varianti"
-    }
+    },
+    "open_list": "Elenco aperto.",
+    "close_list": "Chiudi lista.",
+    "load_more_button": "Carica altri articoli"
   },
   "filter": {
     "sort": {

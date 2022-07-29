@@ -2,31 +2,51 @@
 
 exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 >
-  <AccordionContainer>
+  <AccordionContainer
+    open={false}
+  >
     <div
       aria-controls="Some-Thing-content"
       aria-expanded={false}
       aria-label={null}
-      className="css-17o6uz7 ui-material__accordion"
+      className="css-1m4mdin"
       data-test-id="Some Thing"
       key="accordion-toggle"
       onClick={[Function]}
@@ -36,9 +56,10 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
     >
       <div />
       <div
+        aria-label="favorites.open_list"
         className={
           Object {
-            "data-css-1j1ou1w": "",
+            "data-css-1ci1bnt": "",
           }
         }
       >
@@ -73,6 +94,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       </div>
     </div>
     <AccordionContent
+      className={null}
       id="Some-Thing-content"
       key="Some-Thing-content"
       open={false}
@@ -92,11 +114,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
         }
       >
         <div
-          className={
-            Object {
-              "data-css-yh2lvw": "",
-            }
-          }
+          className="css-yh2lvw"
         >
           Some content.
         </div>

@@ -23,6 +23,7 @@ import {
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
+import FavoritesListChooser from '@shopgate/engage/favorites/components/ListChooser';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -61,6 +62,7 @@ const Pages = ({ store }) => (
               <Viewport>
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBarContainer {...props} />} />
+                <FavoritesListChooser />
                 <Router history={history}>
                   <Route
                     pattern={INDEX_PATH}

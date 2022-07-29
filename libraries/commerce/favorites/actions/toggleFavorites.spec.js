@@ -5,7 +5,7 @@ import {
   removeFavorites,
   requestSync,
 } from './toggleFavorites';
-import { mockedGetState } from '../mock';
+import { mockedGetState, mockedDefaultListId as listId } from '../mock';
 import {
   ADD_PRODUCT_TO_FAVORITES,
   REMOVE_PRODUCT_FROM_FAVORITES, REQUEST_FLUSH_FAVORITES_BUFFER,
@@ -21,9 +21,12 @@ describe('Favorites - actions', () => {
       const expectedActions = [{
         type: ADD_PRODUCT_TO_FAVORITES,
         productId,
+        listId,
       }];
 
-      const store = mockStore({});
+      const store = mockStore(mockedGetState('then', {
+        withProducts: true,
+      }));
       store.dispatch(addFavorite(productId));
       setTimeout(() => {
         expect(store.getActions()).toEqual(expectedActions);
@@ -39,8 +42,11 @@ describe('Favorites - actions', () => {
         type: REMOVE_PRODUCT_FROM_FAVORITES,
         productId,
         withRelatives: false,
+        listId,
       }];
-      const store = mockStore({});
+      const store = mockStore(mockedGetState('then', {
+        withProducts: true,
+      }));
       store.dispatch(removeFavorites(productId));
       setTimeout(() => {
         expect(store.getActions()).toEqual(expectedActions);
@@ -54,6 +60,7 @@ describe('Favorites - actions', () => {
         type: REMOVE_PRODUCT_FROM_FAVORITES,
         productId,
         withRelatives: true,
+        listId,
       }];
       const store = mockStore(mockedGetState('then', {
         withProducts: true,

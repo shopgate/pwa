@@ -22,6 +22,20 @@ jest.mock(
   )
 );
 
+const mockState = {
+  favorites: {
+    lists: {
+      expires: 0,
+      lists: [{
+        id: 'DEFAULT',
+        name: 'Wish List',
+      }],
+    },
+  },
+};
+
+const mockedGetState = jest.fn(() => mockState);
+
 describe('Favorites - actions', () => {
   describe(SHOPGATE_USER_DELETE_FAVORITES, () => {
     beforeEach(() => {
@@ -31,15 +45,15 @@ describe('Favorites - actions', () => {
     });
 
     it('should call the correct pipeline', async () => {
-      const result = await removeFavorites('test-123')(jest.fn());
+      const result = await removeFavorites('test-123')(jest.fn(), mockedGetState);
       expect(result.mockInstance.name).toBe(SHOPGATE_USER_DELETE_FAVORITES);
     });
 
     it('should dispatch the correct action on pipeline success', async () => {
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
-      await removeFavorites(productId)(mockedDispatch);
-      expect(mockedDispatch).toHaveBeenCalledWith(successRemoveFavorites(productId));
+      await removeFavorites(productId)(mockedDispatch, mockedGetState);
+      expect(mockedDispatch).toHaveBeenCalledWith(successRemoveFavorites(productId, 'DEFAULT'));
     });
 
     it('should dispatch the correct action on pipeline failure', (done) => {
@@ -51,13 +65,13 @@ describe('Favorites - actions', () => {
 
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
-      removeFavorites(productId)(mockedDispatch)
+      removeFavorites(productId)(mockedDispatch, mockedGetState)
         .then(() => {
           done('resolved!');
         })
         .catch(() => {
           expect(mockedDispatch)
-            .toHaveBeenCalledWith(errorRemoveFavorites(productId, mockErrorResponse));
+            .toHaveBeenCalledWith(errorRemoveFavorites(productId, 'DEFAULT', mockErrorResponse));
           done();
         });
     });

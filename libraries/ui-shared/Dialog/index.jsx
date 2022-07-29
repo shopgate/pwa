@@ -31,7 +31,9 @@ const dialogTypes = {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Dialog = ({ modal, onConfirm, onDismiss }) => {
+const Dialog = ({
+  modal, onConfirm, onDismiss, children,
+}) => {
   // Assemble the actions.
   const actions = [];
   const {
@@ -73,6 +75,7 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
     title: dialogTitle,
     params,
     message: message || undefined,
+    children,
   };
 
   const DialogComponent = dialogTypes[dialogType] || BasicDialog;
@@ -98,11 +101,13 @@ Dialog.propTypes = {
     type: PropTypes.string,
     content: PropTypes.node,
   }).isRequired,
+  children: PropTypes.node,
   onConfirm: PropTypes.func,
   onDismiss: PropTypes.func,
 };
 
 Dialog.defaultProps = {
+  children: null,
   onConfirm: () => {},
   onDismiss: () => {},
 };

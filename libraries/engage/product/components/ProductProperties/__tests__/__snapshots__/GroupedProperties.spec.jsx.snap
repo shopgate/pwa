@@ -11,8 +11,14 @@ Array [
     key="Group 1"
   >
     <Accordion
+      chevronPosition="right"
+      className={null}
+      contentClassName={null}
       handleLabel={null}
+      openWithChevron={false}
       renderLabel={[Function]}
+      role="button"
+      startOpened={false}
       testId="product-properties-group-Group 1"
     >
       <Wrapper
@@ -46,8 +52,14 @@ Array [
     key="Group 2"
   >
     <Accordion
+      chevronPosition="right"
+      className={null}
+      contentClassName={null}
       handleLabel={null}
+      openWithChevron={false}
       renderLabel={[Function]}
+      role="button"
+      startOpened={false}
       testId="product-properties-group-Group 2"
     >
       <Wrapper

@@ -213,7 +213,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                 key=".$http=2//placehold.it/350x150"
               >
                 <div
-                  className="swiper-slide"
+                  className="css-10a4qrv swiper-slide"
                   data-test-id="Slider"
                 >
                   <Connect(Link)
@@ -262,7 +262,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                 key=".$http=2//placehold.it/10x10"
               >
                 <div
-                  className="swiper-slide"
+                  className="css-10a4qrv swiper-slide"
                   data-test-id="Slider"
                 >
                   <Connect(Link)
@@ -657,7 +657,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                 key=".$http=2//placehold.it/350x150"
               >
                 <div
-                  className="swiper-slide"
+                  className="css-10a4qrv swiper-slide"
                   data-test-id="Slider"
                 >
                   <img
@@ -676,7 +676,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                 key=".$http=2//placehold.it/10x10"
               >
                 <div
-                  className="swiper-slide"
+                  className="css-10a4qrv swiper-slide"
                   data-test-id="Slider"
                 >
                   <Connect(Link)
@@ -945,7 +945,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                 key=".$http=2//placehold.it/350x150"
               >
                 <div
-                  className="swiper-slide"
+                  className="css-10a4qrv swiper-slide"
                   data-test-id="Slider"
                 >
                   <Connect(Link)
@@ -994,7 +994,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                 key=".$http=2//placehold.it/10x10"
               >
                 <div
-                  className="swiper-slide"
+                  className="css-10a4qrv swiper-slide"
                   data-test-id="Slider"
                 >
                   <Connect(Link)

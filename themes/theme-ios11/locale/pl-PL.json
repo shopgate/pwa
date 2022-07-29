@@ -1,0 +1,299 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {czas {time}} =1 {# dzień {time}} other {# dni {time}}}",
+    "load_more": "Załaduj więcej",
+    "cancel": "Anuluj",
+    "submit": "Wyślij",
+    "undo": "Undo",
+    "required": "Wymagane*",
+    "please_choose": "Proszę wybrać",
+    "show_products": "Pokaż produkty",
+    "back": "Powrót",
+    "close": "Zamknij",
+    "products": "Produkty"
+  },
+  "titles": {
+    "categories": "Wszystkie kategorie",
+    "filter": "Filtr",
+    "cart": "Koszyk na zakupy",
+    "shipping": "Wysyłka",
+    "reviews": "Recenzje",
+    "browse": "Przeglądaj stronę",
+    "favorites": "Lista życzeń",
+    "scanner": "Skaner"
+  },
+  "favorites": {
+    "add": "Dodaj do listy obserwowanych",
+    "added": "Produkt został dodany do listy obserwowanych",
+    "continue": "Kontynuuj zakupy",
+    "empty": "Nie masz jeszcze żadnych produktów na swojej liście obserwowanych",
+    "error_add": "Produkt nie może zostać dodany do listy obserwowanych",
+    "error_remove": "Produkt nie może zostać usunięty z listy obserwowanych",
+    "error_limit": "Przekroczona została dozwolona liczba produktów na liście obserwacyjnej.",
+    "remove": "Usuń z listy obserwowanych",
+    "removed": "Usunięto z listy obserwowanych",
+    "add_list_modal": {
+      "title": "Utwórz nową listę życzeń",
+      "dismiss": "Anuluj",
+      "confirm": "Potwierdź",
+      "message": "Nazwa Twojej nowej listy życzeń",
+      "label": "Nazwa"
+    },
+    "rename_list_modal": {
+      "title": "Zmień nazwę listy życzeń",
+      "dismiss": "Anuluj",
+      "confirm": "Potwierdź",
+      "message": "Nowa nazwa Twojej listy życzeń",
+      "label": "Nazwa"
+    },
+    "add_list": "Utwórz nową listę",
+    "errors": {
+      "invalid_name": "Proszę podać pełną nazwę dla swojej listy życzeń"
+    },
+    "rename_list": "Zmień nazwę",
+    "remove_list": "Usuń",
+    "add_to_list": "Dodaj do listy",
+    "remove_from_list": "Usuń z listy",
+    "edit_lists": "Edytuj listę",
+    "fo_method_chooser": {
+      "title": "Wybierz metodę zamawiania"
+    },
+    "list_chooser": {
+      "title": "Wybierz listę życzeń",
+      "add": "Dodaj",
+      "remove": "Usuń"
+    },
+    "modal": {
+      "message": "Aby dodać ten produkt do koszyka, należy wybrać warianty.",
+      "confirm": "Wybierz warianty"
+    },
+    "open_list": "Lista otwarta.",
+    "close_list": "Lista zamknięta.",
+    "load_more_button": "Załaduj inne artykuły"
+  },
+  "filter": {
+    "sort": {
+      "default": "Sortuj według",
+      "most_popular": "Najlepsze wyniki",
+      "price_desc": "Najpierw najwyższa cena",
+      "price_asc": "Najpierw najniższa cena"
+    },
+    "apply": "Gotowe",
+    "more": "więcej",
+    "reset": "Resetuj",
+    "remove": "{filter} Usuń filtr",
+    "edit": "{filter} Edytuj filtr",
+    "filter_by": "Filtrowanie według {label}",
+    "label": {
+      "price": "Cena",
+      "category": "Kategoria",
+      "manufacturer": "Marka"
+    }
+  },
+  "price": {
+    "from": "Od {price}",
+    "range": "Cena od {fromPrice} do {toPrice}",
+    "range_from": "Zakres cen od",
+    "range_to": "Zakres cen do",
+    "tier": {
+      "set": "{from} sztuki: {price}",
+      "range": "{from} lub więcej: {price}"
+    },
+    "msrp": "MSRP",
+    "label": "Cena {price}.",
+    "label_old_price": "Stara cena {price}."
+  },
+  "product": {
+    "description_heading": "Opis",
+    "pick_an_attribute": "{0} wybierz",
+    "tax_disclaimer": "* Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
+    "item_added": "{count, plural, =0 {# brak produktów} =1 {{count} dodany produkt} other {{count} dodane produkty}}",
+    "adding_item": "{count, plural, =1 {{count} produkt został dodany} other {{count} produkty zostały dodane}}",
+    "pick_option_first": "Najpierw wybierz opcję. {option}",
+    "fill_out_required_input_first": "Najpierw wypełnij wszystkie pola obowiązkowe.",
+    "add_to_cart": "Dodaj do koszyka",
+    "go_to_cart": "Koszyk na zakupy",
+    "no_more_found": "Artykuł: \"{name}\" jest obecnie niedostępna.",
+    "quantity": "Ilość",
+    "minOrderQuantity": "Min. wielkość zamówienia:{quantity}",
+    "maxOrderQuantity": "Maks. Ilość zamówienia:{quantity}",
+    "available": {
+      "at": "Dostępne w dniu {startDate, date, DD} {startDate, date, MMM} o godzinie {startDate, time, short} a.m.",
+      "until": "Dostępne do {endDate, date, DD} {endDate, date, MMM} o godzinie {endDate, time, short}",
+      "not": "Obecnie niedostępne",
+      "not_search_similar": "{name} niedostępne. Wyszukać podobne produkty?"
+    },
+    "relations": {
+      "showMore": "Więcej"
+    },
+    "sections": {
+      "information": "Informacje o produkcie",
+      "options": "Wybierz opcje",
+      "description": "Opis",
+      "properties": "Właściwości",
+      "ratings": "Recenzje",
+      "purchase": "Kup produkt",
+      "quantity": "Ilość"
+    },
+    "displayGroups": {
+      "general": "Ogólne",
+      "features": "Cechy",
+      "pricing": "Informacje o cenach",
+      "properties": "Cechy"
+    }
+  },
+  "category": {
+    "error": {
+      "title": "Ups",
+      "not_found": "Nie znaleziono kategorii"
+    },
+    "no_result": {
+      "heading": "Ups!",
+      "body": "Nie znaleziono żadnych produktów."
+    },
+    "sections": {
+      "categories": "Kategorie",
+      "products": "Produkty"
+    }
+  },
+  "search": {
+    "label": "Szukaj na stronie",
+    "cancel": "Anuluj",
+    "no_result": {
+      "heading": "Ups!",
+      "body": "Twoje wyszukiwanie dla frazy \"{searchPhrase}\" nie przyniosło żadnych rezultatów."
+    },
+    "placeholder": "Szukaj na stronie"
+  },
+  "shipping": {
+    "unknown": "plus wysyłka",
+    "free": "Darmowa wysyłka",
+    "free_short": "Bezpłatnie",
+    "cost": "{price} Wysyłka"
+  },
+  "liveshopping": {
+    "discount_badge": "{0}% Oszczędzanie"
+  },
+  "modal": {
+    "confirm": "Potwierdź",
+    "dismiss": "Anuluj",
+    "ok": "Ok",
+    "title_error": "Ups!",
+    "body_error": "Wystąpił nieoczekiwany błąd. Proszę spróbować ponownie."
+  },
+  "cart": {
+    "subtotal": "Suma cząstkowa",
+    "total": "Suma koszyka",
+    "discount": "Rabat",
+    "discount_with_label": "Rabat ({label})",
+    "checkout": "Kasa",
+    "remove": "Usuń",
+    "edit": "Edytuj",
+    "empty": "Twój koszyk jest pusty.",
+    "continue": "Kontynuuj zakupy",
+    "redeem_coupon": "Wpisz kod kuponu",
+    "submit_coupon": "Wyślij kod kuponu",
+    "delete_coupon": "Usuń kod kuponu",
+    "coupon_code": "Kod",
+    "default_coupon_label": "Voucher",
+    "coupon_was_added": "Voucher został dodany!",
+    "coupons_not_supported": "Realizacja bonów i kart podarunkowych w następnym kroku",
+    "free_shipping": "Darmowa wysyłka",
+    "message_type_info": "Info",
+    "message_type_error": "Błąd",
+    "message_type_warning": "Ostrzeżenie"
+  },
+  "login": {
+    "headline": "Witamy na naszej stronie!",
+    "subline": "Aby kontynuować, zaloguj się.",
+    "email": "E-Mail",
+    "password": "Hasło",
+    "forgot_password": "Zapomniałeś hasła?",
+    "forgot_password_popup": "Aby zresetować hasło, należy skorzystać z witryny internetowej pulpitu.",
+    "button": "Zaloguj się",
+    "no_account": "Nie masz jeszcze konta?",
+    "signup": "Rejestr",
+    "logout_message": "Zostałeś wylogowany.",
+    "error": "Nazwa użytkownika lub hasło są nieprawidłowe"
+  },
+  "navigation": {
+    "login_register": "Zaloguj się",
+    "your_account": "Moje konto",
+    "home": "Strona główna",
+    "categories": "Kategorie",
+    "favorites": "Lista życzeń",
+    "my_orders": "Moje polecenia",
+    "cart": "Koszyk na zakupy",
+    "shipping": "Metody wysyłki",
+    "about": "Nota prawna",
+    "contact": "Kontakt",
+    "payment": "Metody płatności",
+    "terms": "Warunki",
+    "privacy": "Polityka prywatności",
+    "welcome_message": "Witaj {name}",
+    "return_policy": "Polityka anulowania",
+    "logout": "Zrezygnuj z subskrypcji",
+    "store_information": "O nas",
+    "more_menu": "Więcej",
+    "back": "Powrót do {title}"
+  },
+  "reviews": {
+    "rating": "Przegląd",
+    "no_reviews": "Napisz pierwszą ocenę.",
+    "review_count": "({count} {count, plural, =1 {ocena} other {oceny}})",
+    "button_add": "Oceń ten produkt",
+    "button_all": "Wszystkie {count} recenzji",
+    "author": "przez {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {gwiazdka} other {gwiazdki}} von {maxRate}.",
+    "review_form_rate": "Oceń ten produkt:",
+    "review_form_author": "Nazwa",
+    "review_form_title": "Tytuł (opcjonalnie)",
+    "review_form_text": "Twoja ocena (opcjonalnie)",
+    "review_form_error_author_empty": "Wprowadź nazwę.",
+    "review_form_rate_error": "Ile gwiazdek przyznasz?",
+    "review_form_error_length": "Maksymalna dozwolona długość {length} znaków.",
+    "press_to_rate_with_x_stars": "Wybierz, czy chcesz oceniać za pomocą {rate} {rate, plural, =1 {jedna gwiazdka} other {gwiazdki}}.",
+    "success_message": "Dziękujemy za ocenę!"
+  },
+  "tab_bar": {
+    "home": "Strona główna",
+    "browse": "Szuka",
+    "cart": "Koszyk",
+    "more": "Więcej",
+    "favorites": "Ulubione"
+  },
+  "scanner": {
+    "instructions": "Kod kreskowy lub kod QR należy umieścić na środku. Rozpoznanie jest automatyczne.",
+    "noResult": {
+      "qrCode": "Nie udało nam się znaleźć żadnych wyników dla tego kodu QR.",
+      "barCode": "Nie znaleziono produktu."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Przejdź do ustawień",
+      "camera_message": "Ta funkcja wymaga dostępu do aparatu. W ustawieniach należy zezwolić na dostęp.",
+      "geolocation_message": "Potrzebujemy dostępu do lokalizacji, aby pokazać pobliskie sklepy."
+    }
+  },
+  "error": {
+    "general": "Problem z połączeniem. Sprawdź połączenie internetowe lub spróbuj ponownie później."
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
+    }
+  },
+  "appRating": {
+    "yes": "Tak",
+    "no": "Nie",
+    "title": "Oceń aplikację",
+    "message": "Czy podoba Ci się nasza aplikacja? Będziemy wdzięczni za wystawienie oceny!",
+    "rejectionApprovalMessage": "Czy chcesz przekazać nam swoje uwagi? Pomoże nam to w dalszym ulepszaniu aplikacji."
+  }
+}

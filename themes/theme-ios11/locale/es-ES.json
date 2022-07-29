@@ -32,10 +32,44 @@
     "error_limit": "Has superado la cantidad de productos permitidos en favoritos.",
     "remove": "Quitar de favoritos",
     "removed": "Quitado de favoritos",
+    "add_list_modal": {
+      "title": "Añadir una nueva lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirmar",
+      "message": "Introduzca el nombre de su nueva lista de deseos",
+      "label": "Nombre"
+    },
+    "rename_list_modal": {
+      "title": "Cambiar el nombre de la lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirmar",
+      "message": "Introduzca el nuevo nombre de su lista de deseos",
+      "label": "Nombre"
+    },
+    "add_list": "Añadir nueva lista",
+    "errors": {
+      "invalid_name": "Por favor, introduzca un nombre válido para su lista de deseos"
+    },
+    "rename_list": "Renombrar",
+    "remove_list": "Eliminar",
+    "add_to_list": "Añadir a la lista",
+    "remove_from_list": "Eliminar de la lista",
+    "edit_lists": "Editar listas",
+    "fo_method_chooser": {
+      "title": "Elija un método"
+    },
+    "list_chooser": {
+      "title": "Elija una lista de favoritos",
+      "add": "Añadir",
+      "remove": "Eliminar"
+    },
     "modal": {
       "message": "Para añadir este producto a la cesta, por favor, seleccione las variantes.",
       "confirm": "Seleccionar variantes"
-    }
+    },
+    "open_list": "Lista abierta.",
+    "close_list": "Cerrar lista.",
+    "load_more_button": "Cargar otros artículos"
   },
   "filter": {
     "sort": {
