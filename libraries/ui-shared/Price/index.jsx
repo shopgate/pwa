@@ -33,7 +33,7 @@ const Price = (props, context) => {
       [styles.discounted]: props.discounted,
     },
     'price',
-    'ui-shared__price'
+    props.discounted ? 'ui-shared__price-discounted' : 'ui-shared__price'
   );
 
   const { __, _p } = context.i18n();
