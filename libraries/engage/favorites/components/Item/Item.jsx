@@ -121,6 +121,10 @@ const styles = {
     fontSize: '0.6875rem',
     textAlign: 'right',
   }).toString(),
+  availability: css({
+    fontSize: 14,
+    fontWeight: 400,
+  }).toString(),
 };
 
 /**
@@ -240,6 +244,7 @@ const FavoriteItem = ({
                   text={commonPortalProps.availability.text}
                   state={commonPortalProps.availability.state}
                   showWhenAvailable
+                  className={styles.availability}
                 />
               </SurroundPortals>
             </div>

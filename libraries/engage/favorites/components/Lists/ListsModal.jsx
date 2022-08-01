@@ -42,21 +42,22 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
         title: i18n.text(`favorites.${type}_modal.title`),
         dismiss: i18n.text(`favorites.${type}_modal.dismiss`),
         confirm: i18n.text(`favorites.${type}_modal.confirm`),
+        content: (
+          <div className={styles.root}>
+            <span>{i18n.text(`favorites.${type}_modal.message`)}</span>
+            <TextField
+              name="name"
+              label={i18n.text(`favorites.${type}_modal.label`)}
+              onChange={onChange}
+              value={input}
+              errorText={error || undefined}
+              className={styles.textField}
+              maxlength="25"
+            />
+          </div>
+        ),
       }}
-    >
-      <div className={styles.root}>
-        <span>{i18n.text(`favorites.${type}_modal.message`)}</span>
-        <TextField
-          name="name"
-          label={i18n.text(`favorites.${type}_modal.label`)}
-          onChange={onChange}
-          value={input}
-          errorText={error || undefined}
-          className={styles.textField}
-          maxlength="25"
-        />
-      </div>
-    </Dialog>
+    />
   );
 };
 
