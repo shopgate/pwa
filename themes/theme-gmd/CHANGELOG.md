@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.20.0](https://github.com/shopgate/pwa/compare/v6.19.2...v6.20.0) (2022-08-01)
+
+#### :boom: Breaking Change
+* [#1163](https://github.com/shopgate/pwa/pull/1163) added the option to use multiple favorites lists ([@ortmann64](https://github.com/ortmann64))
+
+
 ## [v6.19.0](https://github.com/shopgate/pwa/compare/v6.18.9...v6.19.0) (2022-04-05)
 
 #### :rocket: Enhancement
