@@ -50,6 +50,7 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
       loader={[Function]}
       loadingIndicator={<LoadingIndicator />}
       preloadMultiplier={2}
+      promiseBased={true}
       requestHash={null}
       totalItems={null}
       wrapper={[Function]}
