@@ -47,6 +47,7 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
           className={null}
         />
       }
+      promiseBased={true}
       requestHash={null}
       totalItems={null}
       wrapper={[Function]}

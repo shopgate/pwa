@@ -48,6 +48,7 @@ const ProductList = ({
           initialLimit={10}
           limit={ITEMS_PER_LOAD}
           requestHash={requestHash}
+          promiseBased
         />
       )}
     </ViewContext.Consumer>
