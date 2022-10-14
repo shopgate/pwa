@@ -64,13 +64,13 @@ class Characteristics extends PureComponent {
   render() {
     return (
       <Fragment>
-        <Portal name={PRODUCT_VARIANT_SELECT_BEFORE} props={this.props} />
-        <Portal name={PRODUCT_VARIANT_SELECT} props={this.props}>
+        <Portal name={PRODUCT_VARIANT_SELECT_BEFORE} />
+        <Portal name={PRODUCT_VARIANT_SELECT}>
           <ProductContext.Consumer>
             {this.consumeRenderer}
           </ProductContext.Consumer>
         </Portal>
-        <Portal name={PRODUCT_VARIANT_SELECT_AFTER} props={this.props} />
+        <Portal name={PRODUCT_VARIANT_SELECT_AFTER} />
       </Fragment>
     );
   }
