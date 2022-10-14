@@ -58,10 +58,10 @@ class InfiniteContainer extends Component {
      * 10ms was chosen because, on the one hand, it prevents the scroll event from flooding but,
      * on the other hand, it does not hinder users that scroll quickly from reloading next chunk.
      */
-    this.handleLoadingProxy = throttle((force, nextProps) =>
+    this.handleLoadingProxy = throttle(() =>
       (props.promiseBased
-        ? this.handleLoadingPromise(force, nextProps)
-        : this.handleLoading(force, nextProps)), 10);
+        ? this.handleLoadingPromise()
+        : this.handleLoading()), 10);
 
     this.handleLoadingProxy.bind(this);
 
@@ -120,7 +120,9 @@ class InfiniteContainer extends Component {
 
       if (this.receivedTotalItems(nextProps)) {
         // Trigger loading if totalItems are available
-        this.handleLoadingProxy(true, nextProps);
+        (nextProps.promiseBased
+          ? this.handleLoadingPromise
+          : this.handleLoading)(true, nextProps);
       }
 
       this.verifyAllDone(nextProps);
@@ -376,7 +378,7 @@ class InfiniteContainer extends Component {
       return;
     }
 
-    if (force || this.validateScrollPosition()) {
+    if (force === true || this.validateScrollPosition()) {
       // Add isLoading state to prevent requests while the current one is running
       this.isLoading = true;
 
