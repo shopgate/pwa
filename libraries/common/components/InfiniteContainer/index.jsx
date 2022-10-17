@@ -20,11 +20,11 @@ class InfiniteContainer extends Component {
     loader: PropTypes.func.isRequired,
     columns: PropTypes.number,
     containerRef: PropTypes.shape(),
+    enablePromiseBasedLoading: PropTypes.bool,
     initialLimit: PropTypes.number,
     limit: PropTypes.number,
     loadingIndicator: PropTypes.node,
     preloadMultiplier: PropTypes.number,
-    promiseBased: PropTypes.bool,
     requestHash: PropTypes.string,
     totalItems: PropTypes.number,
     wrapper: PropTypes.oneOfType([
@@ -43,7 +43,7 @@ class InfiniteContainer extends Component {
     requestHash: null,
     totalItems: null,
     wrapper: 'div',
-    promiseBased: false,
+    enablePromiseBasedLoading: false,
   };
 
   /**
@@ -60,12 +60,13 @@ class InfiniteContainer extends Component {
      * 10ms was chosen because, on the one hand, it prevents the scroll event from flooding but,
      * on the other hand, it does not hinder users that scroll quickly from reloading next chunk.
      */
-    this.handleLoadingProxy = throttle((force, nextProps) =>
-      (props.promiseBased
-        ? this.handleLoadingPromise(force, nextProps)
-        : this.handleLoading(force, nextProps)), 10);
-
-    this.handleLoadingProxy.bind(this);
+    this.handleLoadingProxy = throttle(() => {
+      if (props.enablePromiseBasedLoading) {
+        this.handleLoadingPromise();
+      } else {
+        this.handleLoading();
+      }
+    }, 10);
 
     // A flag to prevent concurrent loading requests.
     this.isLoading = false;
@@ -123,7 +124,11 @@ class InfiniteContainer extends Component {
 
       if (this.receivedTotalItems(nextProps)) {
         // Trigger loading if totalItems are available
-        this.handleLoadingProxy(true, nextProps);
+        if (nextProps.enablePromiseBasedLoading) {
+          this.handleLoadingPromise(true, nextProps);
+        } else {
+          this.handleLoading(true, nextProps);
+        }
       }
 
       this.verifyAllDone(nextProps);
@@ -166,8 +171,10 @@ class InfiniteContainer extends Component {
    * Reset the loading flag.
    */
   componentDidUpdate() {
-    if (!this.props.promiseBased) {
-      // When promise based implementation is active, `isLoading` is reset when response comes in d
+    // When promise based implementation is active, `isLoading` is reset when response comes in.
+    // In the legacy implementation this happens after the fetched items reached the component and
+    // is not necessary here anymore.
+    if (!this.props.enablePromiseBasedLoading) {
       this.isLoading = false;
     }
   }
@@ -233,16 +240,19 @@ class InfiniteContainer extends Component {
    * @returns {boolean}
    */
   allItemsAreRendered(props = this.props) {
-    const [start, length] = this.state.offset;
+    const [offset, limit] = this.state.offset;
 
-    if (props.promiseBased) {
+    if (props.enablePromiseBasedLoading) {
       const { totalItems } = props;
-      return totalItems !== null && (start + length >= totalItems);
+      // At promise based loading the offset is increased after the response came in.
+      // This method is invoked to evaluate if a new request needs to be dispatched, so we check
+      // against the current offset state.
+      return totalItems !== null && (offset >= totalItems);
     }
 
     return (
       !this.needsToReceiveItems(props) &&
-      start + length >= props.totalItems
+      offset + limit >= props.totalItems
     );
   }
 
@@ -406,10 +416,11 @@ class InfiniteContainer extends Component {
       const { loader } = props;
 
       try {
-        // Increase the offset for the upcoming request
-        const { offset } = this.increaseOffset();
+        const [offset] = this.state.offset;
         // Dispatch the request
         await loader(offset);
+        // Increase the offset for the next request
+        this.increaseOffset();
       } catch (e) {
         // Stop lazy loading processes on request error
         this.stopLazyLoading();
