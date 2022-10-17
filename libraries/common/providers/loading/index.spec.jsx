@@ -56,7 +56,7 @@ describe('LoadingProvider', () => {
     expect(wrapper.find('MockComponent > div').exists()).toBe(false);
   });
 
-  it('should render the child component when the current path is loading', () => {
+  it('should render the child component when the current path is loading', async () => {
     const wrapper = createWrapper(MOCKED_PATH);
     expect(wrapper).toMatchSnapshot();
     wrapper.instance().setLoading(MOCKED_PATH);

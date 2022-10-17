@@ -11,7 +11,7 @@ import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fet
 const getProducts = (searchPhrase, sort, offset) => (dispatch, getState) => {
   const filters = getActiveFilters(getState());
 
-  dispatch(fetchSearchResults({
+  return dispatch(fetchSearchResults({
     searchPhrase,
     offset,
     filters,

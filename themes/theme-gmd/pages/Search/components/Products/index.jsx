@@ -5,6 +5,7 @@ import connect from './connector';
 
 /**
  * The SearchProducts component.
+ * @returns {JSX}
  */
 class SearchProducts extends PureComponent {
   static propTypes = {
@@ -21,13 +22,15 @@ class SearchProducts extends PureComponent {
     totalProductCount: null,
   };
 
-  fetchProducts = () => {
-    this.props.getProducts(
-      this.props.searchPhrase,
-      this.props.sort,
-      this.props.products.length
-    );
-  }
+  /**
+   * @param {number} offset The offset for the fetching.
+   * @returns {Promise}
+   */
+  fetchProducts = offset => this.props.getProducts(
+    this.props.searchPhrase,
+    this.props.sort,
+    offset || this.props.products.length
+  )
 
   /**
    * @returns {JSX}
