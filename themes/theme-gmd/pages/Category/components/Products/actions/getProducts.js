@@ -11,7 +11,7 @@ import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/action
 const getProducts = (categoryId, sort, offset) => (dispatch, getState) => {
   const filters = getActiveFilters(getState());
 
-  dispatch(fetchCategoryProducts({
+  return dispatch(fetchCategoryProducts({
     categoryId,
     sort,
     offset,
