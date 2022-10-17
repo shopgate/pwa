@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
+import isEqual from 'lodash/isEqual';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { responsiveCondition } from '@shopgate/engage/styles';
 import connect from './connector';
@@ -21,6 +22,7 @@ class ProductCharacteristics extends Component {
     navigate: PropTypes.func.isRequired,
     render: PropTypes.func.isRequired,
     setCharacteristics: PropTypes.func.isRequired,
+    characteristics: PropTypes.shape(),
     finishTimeout: PropTypes.number,
     variantId: PropTypes.string,
     variants: PropTypes.shape({
@@ -33,6 +35,7 @@ class ProductCharacteristics extends Component {
     finishTimeout: 0,
     variantId: null,
     variants: null,
+    characteristics: null,
   }
 
   /**
@@ -43,10 +46,14 @@ class ProductCharacteristics extends Component {
 
     this.refsStore = {};
 
+    const characteristics = selectCharacteristics(props);
+
     this.state = {
       highlight: null,
-      characteristics: selectCharacteristics(props),
+      characteristics,
     };
+
+    props.setCharacteristics(characteristics);
 
     this.setRefs(props);
 
@@ -65,9 +72,20 @@ class ProductCharacteristics extends Component {
     if (!this.props.variants && nextProps.variants) {
       // Initialize refs and characteristics when the variants prop was updated with a valid value.
       this.setRefs(nextProps);
+      const characteristics = selectCharacteristics(nextProps);
       this.setState({
-        characteristics: selectCharacteristics(nextProps),
+        characteristics,
       }, this.checkSelectedCharacteristics);
+      // Inform parent component about potential updates e.g. preselected characteristic values
+      nextProps.setCharacteristics(characteristics);
+    } else if (
+      nextProps.characteristics &&
+      !isEqual(this.state.characteristics, nextProps.characteristics)
+    ) {
+      // Sync back characteristics from parent if set
+      this.setState({
+        characteristics: nextProps.characteristics,
+      });
     }
   }
 
@@ -193,14 +211,15 @@ class ProductCharacteristics extends Component {
    * @param {Array} values The characteristic values.
    * @param {number} charIndex The characteristic index.
    * @param {string|null} selectedValue selectedValue
+   * @param {boolean} charDisabled Whether the characteristic for the values is disabled
    * @return {Array}
    */
-  buildValues = (selections, charId, values, charIndex, selectedValue) => {
+  buildValues = (selections, charId, values, charIndex, selectedValue, charDisabled) => {
     // If this is the first characteristic then all values are selectable.
     if (charIndex === 0) {
       return values.map(value => ({
         ...value,
-        selectable: true,
+        selectable: !charDisabled,
         selected: selectedValue === value.id,
       }));
     }
@@ -227,7 +246,7 @@ class ProductCharacteristics extends Component {
 
       return ({
         ...value,
-        selectable,
+        selectable: charDisabled ? false : selectable,
         selected: selectedValue === value.id,
       });
     });
@@ -266,7 +285,14 @@ class ProductCharacteristics extends Component {
         {variants.characteristics.map((char, index) => {
           const disabled = !isCharacteristicEnabled(characteristics, index);
           const selected = getSelectedValue(char.id, characteristics);
-          const values = this.buildValues(characteristics, char.id, char.values, index, selected);
+          const values = this.buildValues(
+            characteristics,
+            char.id,
+            char.values,
+            index,
+            selected,
+            disabled
+          );
 
           return (
             this.props.render({
