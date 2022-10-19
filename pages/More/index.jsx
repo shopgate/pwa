@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { NAV_MENU_CONTENT, NAV_MENU_CONTENT_BEFORE, NAV_MENU_CONTENT_AFTER } from '@shopgate/pwa-common/constants/Portals';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  NAV_MENU_CONTENT_BEFORE,
+  NAV_MENU_CONTENT_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
-import { Portal, View } from '@shopgate/engage/components';
+import { View } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import Quicklinks from './components/Quicklinks';
@@ -59,10 +63,8 @@ class More extends Component {
         {!isLoggedIn && <UserMenu {...this.props} />}
         <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
         {isLoggedIn && <UserMenu {...this.props} />}
-        <Portal name={NAV_MENU_CONTENT} props={portalProps}>
-          <Quicklinks />
-          <StoreInfo />
-        </Portal>
+        <Quicklinks />
+        <StoreInfo />
         <Portal name={NAV_MENU_CONTENT_AFTER} props={portalProps} />
         <ClientInformation />
       </View>
