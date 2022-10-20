@@ -2,7 +2,7 @@ import React from 'react';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
-  QUICK_LINKS_CONTENT,
+  NAV_MENU_QUICK_LINKS,
 } from '@shopgate/pwa-common/constants/Portals';
 import portalProps from '../../portalProps';
 import connect from './connector';
@@ -13,7 +13,7 @@ import connect from './connector';
  */
 const QuickLinks = ({ links, navigate }) => (
   (links && links.length > 0) && (
-    <SurroundPortals portalName={QUICK_LINKS_CONTENT} portalProps={portalProps}>
+    <SurroundPortals portalName={NAV_MENU_QUICK_LINKS} portalProps={portalProps}>
       <NavDrawer.Section>
         {links.map(link => (
           <NavDrawer.Item

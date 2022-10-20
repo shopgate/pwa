@@ -4,7 +4,6 @@ const APP_BAR = 'app-bar';
 const VIEW = 'view';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
-const QUICK_LINKS = 'quick-links';
 const NO_RESULTS = 'no-results';
 const USER_MENU = 'user-menu';
 const FORM = 'form';
@@ -14,6 +13,7 @@ const GLOBALS = 'globals';
 const ROUTES = 'routes';
 const FOOTER = 'footer';
 const CONTENT = 'content';
+const QUICK_LINKS = 'quick-links';
 const HOME = 'home';
 const LOGIN = 'login';
 const SCANNER = 'scanner';
@@ -67,13 +67,12 @@ export const PAGE_LOGIN_REGISTER_LINK_BEFORE = `${PAGE}.${LOGIN}.${REGISTER_LINK
 export const PAGE_LOGIN_REGISTER_LINK = `${PAGE}.${LOGIN}.${REGISTER_LINK}`;
 export const PAGE_LOGIN_REGISTER_LINK_AFTER = `${PAGE}.${LOGIN}.${REGISTER_LINK}.${AFTER}`;
 
-export const NAV_MENU_CONTENT = `${NAV_MENU}.${CONTENT}`;
 export const NAV_MENU_CONTENT_BEFORE = `${NAV_MENU}.${CONTENT}.${BEFORE}`;
 export const NAV_MENU_CONTENT_AFTER = `${NAV_MENU}.${CONTENT}.${AFTER}`;
 
-export const QUICK_LINKS_CONTENT = `${QUICK_LINKS}.${CONTENT}`;
-export const QUICK_LINKS_CONTENT_BEFORE = `${QUICK_LINKS}.${CONTENT}.${BEFORE}`;
-export const QUICK_LINKS_CONTENT_AFTER = `${QUICK_LINKS}.${CONTENT}.${AFTER}`;
+export const NAV_MENU_QUICK_LINKS = `${NAV_MENU}.${QUICK_LINKS}`;
+export const NAV_MENU_QUICK_LINKS_BEFORE = `${NAV_MENU}.${QUICK_LINKS}.${BEFORE}`;
+export const NAV_MENU_QUICK_LINKS_AFTER = `${NAV_MENU}.${QUICK_LINKS}.${AFTER}`;
 
 export const NAV_MENU_HOME_BEFORE = `${NAV_MENU}.${HOME}.${BEFORE}`;
 export const NAV_MENU_HOME = `${NAV_MENU}.${HOME}`;
