@@ -28,7 +28,7 @@ const fetchCategoryProducts = ({
   (dispatch, getState) => {
     const sortOrder = sort || getSortOrder(getState(), { categoryId });
 
-    dispatch(fetchProducts({
+    return dispatch(fetchProducts({
       cached,
       cachedTime,
       params: {
