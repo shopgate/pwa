@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  QUICK_LINKS_CONTENT,
+  NAV_MENU_QUICK_LINKS,
 } from '@shopgate/pwa-common/constants/Portals';
 import { SurroundPortals } from '@shopgate/engage/components';
 import portalProps from '../../portalProps';
@@ -20,7 +20,7 @@ function Quicklinks({ entries }) {
   }
 
   return (
-    <SurroundPortals portalName={QUICK_LINKS_CONTENT} portalProps={portalProps}>
+    <SurroundPortals portalName={NAV_MENU_QUICK_LINKS} portalProps={portalProps}>
       <Section title="navigation.more_menu">
         {entries.map(entry => (
           <Section.Item href={entry.url} key={entry.url} label={entry.label} />
