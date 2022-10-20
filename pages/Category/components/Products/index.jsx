@@ -27,11 +27,12 @@ class CategoryProducts extends PureComponent {
 
   /**
    * @param {number} offset The offset for the fetching.
+   * @returns {Promise}
    */
   fetchProducts = (offset) => {
     const includeCharacteristics = isBeta();
 
-    this.props.getProducts(
+    return this.props.getProducts(
       this.props.categoryId,
       this.props.sort,
       offset || this.props.products.length,
