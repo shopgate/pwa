@@ -56,6 +56,7 @@ const ProductGrid = ({
           initialLimit={ITEMS_PER_LOAD}
           limit={ITEMS_PER_LOAD}
           requestHash={requestHash}
+          enablePromiseBasedLoading
         />
       )}
     </ViewContext.Consumer>
