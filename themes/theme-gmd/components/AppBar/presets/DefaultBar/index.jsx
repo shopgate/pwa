@@ -201,7 +201,7 @@ class AppBarDefault extends PureComponent {
 
     const { background, color } = this.props.widgetSettings;
     const { __ } = this.context.i18n();
-    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label={__('navigation.open_menu')} />;
+    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label="Menu" />;
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const right = (
       <Fragment>
