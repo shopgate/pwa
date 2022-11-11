@@ -32,7 +32,7 @@ const location = 'productCard';
  */
 function ProductCard(props) {
   const {
-    product, hidePrice, hideRating, hideName, titleRows,
+    product, hidePrice, hideRating, hideName, titleRows, linkState, linkReplace, linkHref,
   } = props;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
@@ -47,10 +47,12 @@ function ProductCard(props) {
     <Link
       className="engage__product-card"
       tagName="a"
-      href={getProductRoute(product.id)}
+      href={linkHref || getProductRoute(product.id)}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Product"
+      state={linkState}
+      replace={linkReplace}
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
@@ -146,6 +148,15 @@ ProductCard.propTypes = {
   hideRating: PropTypes.bool.isRequired,
   product: PropTypes.shape().isRequired,
   titleRows: PropTypes.number.isRequired,
+  linkHref: PropTypes.string,
+  linkReplace: PropTypes.bool,
+  linkState: PropTypes.shape(),
+};
+
+ProductCard.defaultProps = {
+  linkState: {},
+  linkReplace: false,
+  linkHref: '',
 };
 
 export default ProductCard;
