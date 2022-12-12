@@ -77,11 +77,17 @@ const ProfileForm = () => {
     deleteCustomer,
     validationErrors,
     merchantCustomerAttributes,
+    supportedCountries,
+    userLocation,
   } = useProfileContext();
 
   const formConfig = useMemo(
-    () => generateFormConfig(merchantCustomerAttributes),
-    [merchantCustomerAttributes]
+    () => generateFormConfig({
+      customerAttributes: merchantCustomerAttributes,
+      supportedCountries,
+      userLocation,
+    }),
+    [merchantCustomerAttributes, supportedCountries, userLocation]
   );
 
   /* eslint-disable react-hooks/exhaustive-deps */

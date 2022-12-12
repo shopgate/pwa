@@ -6,7 +6,12 @@ import { generateFormFields } from '@shopgate/engage/account/helper/form';
  * @param {Object} params Additional parameters
  * @returns {Object}
  */
-const generateFormConfig = ({ customerAttributes, isGuest }) => ({
+const generateFormConfig = ({
+  customerAttributes,
+  isGuest,
+  supportedCountries,
+  userLocation,
+}) => ({
   fields: {
     ...(!isGuest && {
       marketingOptIn: {
@@ -14,7 +19,11 @@ const generateFormConfig = ({ customerAttributes, isGuest }) => ({
         label: i18n.text('registration.marketing_opt_in_label'),
       },
     } : {}),
-    ...generateFormFields(customerAttributes),
+    ...generateFormFields({
+      customerAttributes,
+      supportedCountries,
+      userLocation,
+    }),
   },
 });
 

@@ -20,6 +20,8 @@ const mapCustomerAttributeType = (attribute) => {
       return 'checkbox';
     case 'date':
       return 'date';
+    case 'callingNumber':
+      return 'phone_picker';
     default:
       return 'text';
   }
@@ -27,11 +29,19 @@ const mapCustomerAttributeType = (attribute) => {
 
 /**
  * Generates form field config
- * @param {Object} customerAttributes Customer attributes.
- * @param {boolean} allowPleaseChoose Allows please choose option for required attributes.
+ * @param {Object} options Options for the helper
+ * @param {Object} options.customerAttributes Customer attributes.
+ * @param {boolean} options.allowPleaseChoose Allows please choose option for required attributes.
+ * @param {Array} options.supportedCountries A list of supported countries.
+ * @param {Object} options.userLocation User location for better phone picker defaults.
  * @returns {Object}
  */
-export const generateFormFields = (customerAttributes, allowPleaseChoose = true) => ({
+export const generateFormFields = ({
+  customerAttributes,
+  allowPleaseChoose = true,
+  supportedCountries,
+  userLocation,
+}) => ({
   ...Object.assign({}, ...sortBy(customerAttributes, ['sequenceId']).map(attribute => ({
     [`attribute_${attribute.code}`]: {
       type: mapCustomerAttributeType(attribute),
@@ -48,6 +58,12 @@ export const generateFormFields = (customerAttributes, allowPleaseChoose = true)
             }))),
         },
       }) : {}),
+      ...(attribute.type === 'callingNumber' ? {
+        config: {
+          supportedCountries,
+          userLocation,
+        },
+      } : null),
     },
   }))),
 });

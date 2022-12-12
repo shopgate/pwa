@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getShopSettings } from '@shopgate/engage/core/config';
+import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 import { useRoute, i18n, historyPush } from '@shopgate/engage/core';
 import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { useFormState as useForm, convertValidationErrors } from '@shopgate/engage/core/hooks/useFormState';
@@ -36,6 +38,8 @@ const mapStateToProps = state => ({
   contacts: getContacts(state),
   customer: getCustomer(state),
   merchantCustomerAttributes: getMerchantCustomerAttributes(state),
+  shopSettings: getShopSettings(state),
+  userLocation: getPreferredLocationAddress(state),
 });
 
 /**
@@ -67,6 +71,8 @@ const ProfileProvider = ({
   customer,
   merchantCustomerAttributes,
   children,
+  shopSettings,
+  userLocation,
 }) => {
   // Route
   const { pathname } = useRoute();
@@ -194,12 +200,16 @@ const ProfileProvider = ({
     merchantCustomerAttributes,
     customer: defaultState,
     isCheckout,
+    supportedCountries: shopSettings.supportedCountries,
+    userLocation,
     formState,
     saveForm: formState.handleSubmit,
     editContact,
     deleteContact: deleteContactWrapper,
     deleteCustomer: deleteCustomerWrapper,
   }), [
+    userLocation,
+    shopSettings.supportedCountries,
     contacts,
     merchantCustomerAttributes,
     isCheckout,
@@ -237,8 +247,10 @@ ProfileProvider.propTypes = {
   fetchCustomer: PropTypes.func.isRequired,
   merchantCustomerAttributes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   push: PropTypes.func.isRequired,
+  shopSettings: PropTypes.shape().isRequired,
   showDialog: PropTypes.func.isRequired,
   updateCustomer: PropTypes.func.isRequired,
+  userLocation: PropTypes.shape().isRequired,
   customer: PropTypes.shape(),
 };
 

@@ -229,6 +229,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
         countries={countries}
         labels={labels}
         disabled={disabled}
+        countryOptionsOrder={supportedCountries.length ? [...supportedCountries, '|'] : []}
       />
       {!!errorText && (
         <div className={`errorText ${styles.phoneFieldErrorText}`}>
