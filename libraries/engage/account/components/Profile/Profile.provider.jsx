@@ -1,11 +1,13 @@
 import React, {
-  createContext, useMemo, useEffect, useContext, useCallback,
+  createContext, useMemo, useEffect, useContext, useCallback, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getShopSettings } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
-import { useRoute, i18n, historyPush } from '@shopgate/engage/core';
+import {
+  useRoute, i18n, historyPush, EVALIDATION,
+} from '@shopgate/engage/core';
 import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { useFormState as useForm, convertValidationErrors } from '@shopgate/engage/core/hooks/useFormState';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
@@ -20,7 +22,11 @@ import { deleteCustomerContact } from '../../actions/deleteContact';
 import { deleteCustomer as deleteCustomerAction } from '../../actions/deleteCustomer';
 import { getContacts } from '../../selectors/contacts';
 import { getCustomer } from '../../selectors/customer';
-import { extractAttributes, extractDefaultValues } from '../../helper/form';
+import {
+  extractAttributes,
+  extractDefaultValues,
+  convertPipelineValidationErrors,
+} from '../../helper/form';
 import createConstraints from './Profile.constraints';
 
 const ProfileContext = createContext();
@@ -78,6 +84,8 @@ const ProfileProvider = ({
   const { pathname } = useRoute();
   const { isCheckout, type, deleteContactFromOrder } = useAddressBook();
 
+  const [requestErrors, setRequestErrors] = useState(null);
+
   // Default state.
   const defaultState = useMemo(() => (customer ? {
     ...customer,
@@ -88,6 +96,10 @@ const ProfileProvider = ({
   // Saving the form.
   const saveForm = useCallback(async (values) => {
     LoadingProvider.setLoading(pathname);
+
+    const attributes = extractAttributes(merchantCustomerAttributes, values);
+    let validationErrors;
+
     try {
       await updateCustomer({
         firstName: values.firstName,
@@ -99,7 +111,7 @@ const ProfileProvider = ({
         settings: {
           marketingOptIn: values.marketingOptIn,
         },
-        attributes: extractAttributes(merchantCustomerAttributes, values),
+        attributes,
       });
 
       await fetchCustomer();
@@ -109,11 +121,23 @@ const ProfileProvider = ({
         message: 'account.profile.form.success',
       });
     } catch (error) {
+      const { code, errors } = error;
+
+      if (code === EVALIDATION) {
+        const converted = convertPipelineValidationErrors(errors, attributes);
+        if (converted?.validation && Object.keys(converted.validation).length > 0) {
+          validationErrors = converted?.validation?.attributes;
+        }
+      }
+
       UIEvents.emit(ToastProvider.ADD, {
         id: 'account.profile.form.error',
         message: 'account.profile.form.error',
       });
     }
+
+    setRequestErrors(validationErrors || null);
+
     LoadingProvider.unsetLoading(pathname);
   }, [fetchCustomer, merchantCustomerAttributes, pathname, updateCustomer]);
 
@@ -129,8 +153,8 @@ const ProfileProvider = ({
   );
 
   const validationErrors = useMemo(() =>
-    convertValidationErrors(formState.validationErrors || {}),
-  [formState.validationErrors]);
+    convertValidationErrors(formState.validationErrors || requestErrors || {}),
+  [formState.validationErrors, requestErrors]);
 
   /**
    * Executes callback with confirmation beforehand.
