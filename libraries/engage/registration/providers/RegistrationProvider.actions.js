@@ -1,8 +1,10 @@
 import { EVALIDATION } from '@shopgate/engage/core';
-import { extractAttributes } from '@shopgate/engage/account/helper/form';
+import {
+  extractAttributes,
+  convertPipelineValidationErrors,
+} from '@shopgate/engage/account/helper/form';
 import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { submitRegistration as submit } from '../actions';
-import { convertSubmitRegistrationValidationErrors } from '../helpers';
 
 /**
  * Submits registration form data.
@@ -53,7 +55,7 @@ export const submitRegistration = ({
     }
   }
 
-  const converted = convertSubmitRegistrationValidationErrors(errors, attributes);
+  const converted = convertPipelineValidationErrors(errors, attributes);
 
   if (converted?.validation && Object.keys(converted.validation).length > 0) {
     const { emailAddress: errEmailAddress, password: errPassword } = converted.validation;
