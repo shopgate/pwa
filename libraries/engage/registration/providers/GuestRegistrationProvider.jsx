@@ -124,6 +124,7 @@ const GuestRegistrationProvider = ({
   const [billingFormRequestErrors, setBillingFormRequestErrors] = useState(null);
   const [shippingFormRequestErrors, setShippingFormRequestErrors] = useState(null);
   const [pickupFormRequestErrors, setPickupFormRequestErrors] = useState(null);
+  const [extraFormRequestErrors, setExtraFormRequestErrors] = useState(null);
   const [isShippingFormVisible, setIsShippingFormVisible] = useState(getIsShippingFormVisible());
   const [pickupConstraints, setPickupConstraints] = useState(generateSelfPickupConstraints());
   const { query: { edit: guestRegistrationEditMode = null } } = useRoute();
@@ -327,6 +328,7 @@ const GuestRegistrationProvider = ({
       setBillingFormRequestErrors(errors?.billingFormData || null);
       setShippingFormRequestErrors(errors?.shippingFormData || null);
       setPickupFormRequestErrors(errors?.pickupFormData || null);
+      setExtraFormRequestErrors(errors?.extraFormData || null);
 
       // Release forms for additional submits
       setIsBillingFormSubmitted(false);
@@ -419,7 +421,7 @@ const GuestRegistrationProvider = ({
         pickupFormState.validationErrors || pickupFormRequestErrors || {}
       ),
       extraFormValidationErrors: convertValidationErrors(
-        extraFormState.validationErrors || {}
+        extraFormState.validationErrors || extraFormRequestErrors || {}
       ),
       isShippingAddressSelectionEnabled,
       isPickupContactSelectionEnabled,
@@ -442,6 +444,7 @@ const GuestRegistrationProvider = ({
       defaultExtraFormState,
       extraFormState.setValues,
       extraFormState.validationErrors,
+      extraFormRequestErrors,
       defaultPickupFormState,
       pickupFormState.setValues,
       pickupFormState.validationErrors,

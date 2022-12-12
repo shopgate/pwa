@@ -70,7 +70,7 @@ export const submitGuestRegistration = ({
     }
   }
 
-  const converted = convertSubmitRegistrationValidationErrors(errors);
+  const converted = convertSubmitRegistrationValidationErrors(errors, attributes);
 
   if (converted?.validation && Object.keys(converted.validation).length > 0) {
     const sequenceErrors = converted?.validation?.addressSequences;
@@ -80,6 +80,7 @@ export const submitGuestRegistration = ({
     const billing = sequenceErrors?.['0'] || {};
     const shipping = shippingFormVisible ? sequenceErrors?.[shippingIndex] || {} : {};
     const pickup = pickupFormVisible ? sequenceErrors?.[pickupIndex] || {} : {};
+    const extra = converted?.validation?.attributes || {};
 
     return {
       response,
@@ -87,6 +88,7 @@ export const submitGuestRegistration = ({
         billingFormData: { ...billing },
         shippingFormData: { ...shipping },
         pickupFormData: { ...pickup },
+        extraFormData: { ...extra },
       },
     };
   }

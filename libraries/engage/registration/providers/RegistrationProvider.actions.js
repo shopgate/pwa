@@ -53,12 +53,13 @@ export const submitRegistration = ({
     }
   }
 
-  const converted = convertSubmitRegistrationValidationErrors(errors);
+  const converted = convertSubmitRegistrationValidationErrors(errors, attributes);
 
   if (converted?.validation && Object.keys(converted.validation).length > 0) {
     const { emailAddress: errEmailAddress, password: errPassword } = converted.validation;
     const billing = converted?.validation?.contacts?.['0'] || {};
     const shipping = converted?.validation?.contacts?.['1'] || {};
+    const extra = converted?.validation?.attributes || {};
 
     return {
       errors: {
@@ -71,6 +72,9 @@ export const submitRegistration = ({
         },
         shippingFormData: {
           ...shipping,
+        },
+        extraFormData: {
+          ...extra,
         },
       },
     };
