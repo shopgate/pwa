@@ -12,7 +12,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const SelectContextChoices = ({
-  options, onChange, value, placeholder, className, label, errorText,
+  options, onChange, value, placeholder, className, label, errorText, showErrorText,
 }) => {
   const [opened, setOpened] = useState(false);
 
@@ -40,6 +40,7 @@ const SelectContextChoices = ({
         className={className}
         label={label}
         errorText={errorText}
+        showErrorText={showErrorText}
         hasValue
         rightElement={<Chevron className={styles.chevron} />}
       >
@@ -84,6 +85,7 @@ SelectContextChoices.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.shape(),
   placeholder: PropTypes.node,
+  showErrorText: PropTypes.bool,
   value: PropTypes.arrayOf(PropTypes.string),
 };
 
@@ -95,6 +97,7 @@ SelectContextChoices.defaultProps = {
   onChange: () => {},
   options: {},
   value: [],
+  showErrorText: true,
 };
 
 export default SelectContextChoices;

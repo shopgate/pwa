@@ -11,7 +11,7 @@ import style from './style';
 const InfoField = (props) => {
   const {
     className, label, errorText, leftElement, rightElement,
-    hasUnderline, children, hasValue,
+    hasUnderline, children, hasValue, showErrorText,
   } = props;
 
   return (
@@ -22,6 +22,7 @@ const InfoField = (props) => {
       hasUnderline={hasUnderline}
       isFocused={false}
       hasValue={hasValue}
+      showErrorText={showErrorText}
     >
       <Grid>
         {leftElement && <Grid.Item grow={0} className={style.element}>{leftElement}</Grid.Item>}
@@ -48,6 +49,7 @@ InfoField.propTypes = {
   leftElement: PropTypes.node,
   /** Element to place right of text input (trailing icon) */
   rightElement: PropTypes.node,
+  showErrorText: PropTypes.bool,
 };
 
 InfoField.defaultProps = {
@@ -58,6 +60,7 @@ InfoField.defaultProps = {
   label: '',
   leftElement: null,
   rightElement: null,
+  showErrorText: true,
 };
 
 export default InfoField;

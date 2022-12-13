@@ -33,6 +33,7 @@ class TextField extends Component {
     onValidate: PropTypes.func,
     password: PropTypes.bool,
     setRef: PropTypes.func,
+    showErrorText: PropTypes.bool,
     translateErrorText: PropTypes.bool,
     type: PropTypes.string,
     value: PropTypes.string,
@@ -41,6 +42,7 @@ class TextField extends Component {
   static defaultProps = {
     className: '',
     errorText: '',
+    showErrorText: true,
     setRef: () => { },
     hintText: '',
     isControlled: false,
@@ -191,11 +193,14 @@ class TextField extends Component {
           disabled={this.props.disabled}
         />
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
-        <ErrorText
-          validationError={this.state.validationError}
-          errorText={this.props.errorText}
-          translate={this.props.translateErrorText}
-        />
+        {this.props.showErrorText &&
+          <ErrorText
+            validationError={this.state.validationError}
+            errorText={this.props.errorText}
+            translate={this.props.translateErrorText}
+          />
+        }
+
       </div>
     );
   }
