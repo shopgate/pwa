@@ -197,8 +197,9 @@ export const convertPipelineValidationErrors = (errors, attributes = []) => {
   }
 
   const converted = errors.reduce((result, error) => {
-    const { path = [], code } = error;
-    const { subentityPath = [] } = error;
+    const {
+      path = [], code, subentityPath = [], displayMessage,
+    } = error;
 
     let { message } = error;
 
@@ -207,15 +208,16 @@ export const convertPipelineValidationErrors = (errors, attributes = []) => {
       return result;
     }
 
+    let validationPath;
+
     if (path.length > 0) {
       message = i18n.text('validation.checkField');
-      setWith(result.validation, path.slice(2).join('.'), message, Object);
+      validationPath = path.slice(2).join('.');
     } else if (subentityPath.length > 0 && subentityPath[0] === 'attributes') {
       const attributeIndex = parseInt(subentityPath[1], 10);
 
       message = i18n.text('validation.checkField');
-
-      setWith(result.validation, `attributes.attribute_${attributes[attributeIndex].code}`, message, Object);
+      validationPath = `attributes.attribute_${attributes[attributeIndex].code}`;
     } else if (subentityPath.length > 0) {
       const field = subentityPath[subentityPath.length - 1];
 
@@ -224,8 +226,11 @@ export const convertPipelineValidationErrors = (errors, attributes = []) => {
       } else {
         message = i18n.text('validation.checkField');
       }
+      validationPath = subentityPath.join('.');
+    }
 
-      setWith(result.validation, subentityPath.join('.'), message, Object);
+    if (validationPath) {
+      setWith(result.validation, validationPath, displayMessage || message, Object);
     }
 
     return result;
