@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import Select from '@shopgate/pwa-ui-shared/Form/Select';
+import ErrorText from './ErrorText';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -24,7 +25,7 @@ const ElementSelect = (props) => {
   }
 
   return (
-    <div className={classNames(camelCase(name), { validationError: !!errorText })}>
+    <div className={classNames(camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
       <Select
         name={name}
         label={element.label}
@@ -35,8 +36,10 @@ const ElementSelect = (props) => {
         errorText={errorText}
         isControlled
         translateErrorText={false}
+        showErrorText={false}
         disabled={element.disabled}
       />
+      <ErrorText errorText={errorText} />
     </div>
   );
 };

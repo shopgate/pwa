@@ -16,6 +16,7 @@ import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
+import ErrorText from './ErrorText';
 
 const { variables, colors } = themeConfig;
 
@@ -30,7 +31,7 @@ const styles = {
     width: '100%',
     paddingTop: variables.gap.big * 0.75,
     paddingBottom: variables.gap.big * 1.25,
-    marginBottom: variables.gap.small,
+
     ' input.PhoneInputInput': {
       outline: 'none',
       fontSize: '1rem',
@@ -215,27 +216,25 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
   }
 
   return (
-    <div className={phoneClasses}>
-      <PhoneInput
-        defaultCountry={defaultCountry}
-        addInternationalOption={false}
-        flags={flags}
-        name={name}
-        value={value || ''}
-        onChange={handleChangeWrapped}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        placeholder={label}
-        countries={countries}
-        labels={labels}
-        disabled={disabled}
-        countryOptionsOrder={supportedCountries.length ? [...supportedCountries, '|'] : []}
-      />
-      {!!errorText && (
-        <div className={`errorText ${styles.phoneFieldErrorText}`}>
-          {errorText}
-        </div>
-      )}
+    <div className="formBuilderField">
+      <div className={phoneClasses}>
+        <PhoneInput
+          defaultCountry={defaultCountry}
+          addInternationalOption={false}
+          flags={flags}
+          name={name}
+          value={value || ''}
+          onChange={handleChangeWrapped}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          placeholder={label}
+          countries={countries}
+          labels={labels}
+          disabled={disabled}
+          countryOptionsOrder={supportedCountries.length ? [...supportedCountries, '|'] : []}
+        />
+      </div>
+      <ErrorText errorText={errorText} />
     </div>
   );
 });

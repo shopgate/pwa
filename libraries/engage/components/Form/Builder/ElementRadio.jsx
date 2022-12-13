@@ -4,6 +4,7 @@ import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
+import ErrorText from './ErrorText';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -25,7 +26,7 @@ const ElementRadio = (props) => {
   }
 
   return (
-    <div className={classNames(camelCase(name), { validationError: !!errorText })}>
+    <div className={classNames(camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
       <RadioGroup
         name={name}
         label={element.label}
@@ -34,6 +35,7 @@ const ElementRadio = (props) => {
         errorText={errorText}
         isControlled
         translateErrorText={false}
+        showErrorText={false}
         disabled={element.disabled}
       >
         {Object.keys(element.options).map(itemName => (
@@ -45,6 +47,7 @@ const ElementRadio = (props) => {
           />
         ))}
       </RadioGroup>
+      <ErrorText errorText={errorText} />
     </div>
   );
 };

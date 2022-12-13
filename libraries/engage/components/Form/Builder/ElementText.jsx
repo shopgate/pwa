@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
+import ErrorText from './ErrorText';
 import {
   ELEMENT_TYPE_TEXT,
   ELEMENT_TYPE_NUMBER,
@@ -44,7 +45,7 @@ const ElementText = (props) => {
   const type = mapping[element.type];
 
   return (
-    <div className={classNames(camelCase(name), { validationError: !!errorText })}>
+    <div className={classNames(camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
       <TextField
         type={type}
         name={name}
@@ -54,8 +55,10 @@ const ElementText = (props) => {
         errorText={errorText}
         isControlled
         translateErrorText={false}
+        showErrorText={false}
         disabled={element.disabled}
       />
+      <ErrorText errorText={errorText} />
     </div>
   );
 };

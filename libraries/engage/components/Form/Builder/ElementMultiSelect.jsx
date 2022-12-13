@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Select from '@shopgate/pwa-ui-shared/Form/Select';
 import SelectContextChoices from '@shopgate/pwa-ui-shared/Form/SelectContextChoices';
 import ResponsiveContainer from '../../ResponsiveContainer/ResponsiveContainer';
+import ErrorText from './ErrorText';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -28,7 +29,7 @@ const ElementMultiSelect = (props) => {
   const values = [].concat(value).filter(Boolean);
 
   return (
-    <div className={classNames(camelCase(name), { validationError: !!errorText })}>
+    <div className={classNames(camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
       <ResponsiveContainer appAlways breakpoint="xs">
         <Select
           name={name}
@@ -40,6 +41,7 @@ const ElementMultiSelect = (props) => {
           errorText={errorText}
           isControlled
           translateErrorText={false}
+          showErrorText={false}
           disabled={element.disabled}
           multiple
         />
@@ -52,8 +54,10 @@ const ElementMultiSelect = (props) => {
           options={element.options}
           onChange={element.handleChange}
           errorText={errorText}
+          showErrorText={false}
         />
       </ResponsiveContainer>
+      <ErrorText errorText={errorText} />
     </div>
   );
 };
