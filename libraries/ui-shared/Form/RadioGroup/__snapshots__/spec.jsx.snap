@@ -10,6 +10,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
   label=""
   name="radio"
   onChange={[MockFunction]}
+  showErrorText={true}
   translateErrorText={true}
   value={null}
 >
@@ -25,6 +26,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     label=""
     labelStatic={true}
     placeholder=""
+    showErrorText={true}
     translateErrorText={true}
   >
     <div
@@ -112,6 +114,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
   label=""
   name="radio"
   onChange={[Function]}
+  showErrorText={true}
   translateErrorText={true}
   value={null}
 >
@@ -127,6 +130,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     label=""
     labelStatic={true}
     placeholder=""
+    showErrorText={true}
     translateErrorText={true}
   >
     <div
@@ -277,6 +281,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
   label=""
   name="radio"
   onChange={[Function]}
+  showErrorText={true}
   translateErrorText={true}
   value={null}
 >
@@ -292,6 +297,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     label=""
     labelStatic={true}
     placeholder=""
+    showErrorText={true}
     translateErrorText={true}
   >
     <div
@@ -379,6 +385,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
   label=""
   name="radio"
   onChange={[Function]}
+  showErrorText={true}
   translateErrorText={true}
   value={null}
 >
@@ -394,6 +401,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     label=""
     labelStatic={true}
     placeholder=""
+    showErrorText={true}
     translateErrorText={true}
   >
     <div
@@ -417,6 +425,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
   label=""
   name="radio"
   onChange={[Function]}
+  showErrorText={true}
   translateErrorText={true}
   value={null}
 >
@@ -432,6 +441,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     label=""
     labelStatic={true}
     placeholder=""
+    showErrorText={true}
     translateErrorText={true}
   >
     <div
@@ -519,6 +529,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
   label=""
   name="radio"
   onChange={[Function]}
+  showErrorText={true}
   translateErrorText={true}
   value="foo"
 >
@@ -534,6 +545,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
     label=""
     labelStatic={true}
     placeholder=""
+    showErrorText={true}
     translateErrorText={true}
   >
     <div
