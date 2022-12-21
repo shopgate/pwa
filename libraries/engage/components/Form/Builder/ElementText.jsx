@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
-import ErrorText from './ErrorText';
+import FormHelper from './FormHelper';
+
 import {
   ELEMENT_TYPE_TEXT,
   ELEMENT_TYPE_NUMBER,
@@ -36,6 +37,7 @@ const ElementText = (props) => {
     name,
     value,
     visible,
+    formName,
   } = props;
 
   if (!visible) {
@@ -58,7 +60,11 @@ const ElementText = (props) => {
         showErrorText={false}
         disabled={element.disabled}
       />
-      <ErrorText errorText={errorText} />
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
+      />
     </div>
   );
 };
@@ -66,6 +72,7 @@ const ElementText = (props) => {
 ElementText.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,

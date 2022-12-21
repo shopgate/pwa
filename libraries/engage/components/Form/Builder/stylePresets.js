@@ -26,7 +26,7 @@ export const TWO_COLUMN_LAYOUT = {
 };
 
 export const OUTLINED_FORM_FIELDS = {
-  ' .errorContainer': {
+  ' .formHelper': {
     ...(!isIOSTheme() ? {
       minHeight: 32,
     } : {
@@ -49,7 +49,7 @@ export const OUTLINED_FORM_FIELDS = {
       paddingBottom: 'unset',
     },
   },
-  ' .radioGroup + .errorContainer, .checkbox + .errorContainer': {
+  ' .radioGroup + .formHelper, .checkbox + .formHelper': {
     minHeight: 0,
   },
   ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {

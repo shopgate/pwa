@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import Checkbox from '@shopgate/pwa-ui-shared/Form/Checkbox';
-import ErrorText from './ErrorText';
+import FormHelper from './FormHelper';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -18,6 +18,7 @@ const ElementCheckbox = (props) => {
     value,
     name,
     visible,
+    formName,
   } = props;
 
   if (!visible) {
@@ -36,7 +37,11 @@ const ElementCheckbox = (props) => {
         showErrorText={false}
         disabled={element.disabled}
       />
-      <ErrorText errorText={errorText} />
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
+      />
     </div>
   );
 };
@@ -44,6 +49,7 @@ const ElementCheckbox = (props) => {
 ElementCheckbox.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,

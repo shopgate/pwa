@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Select from '@shopgate/pwa-ui-shared/Form/Select';
 import SelectContextChoices from '@shopgate/pwa-ui-shared/Form/SelectContextChoices';
 import ResponsiveContainer from '../../ResponsiveContainer/ResponsiveContainer';
-import ErrorText from './ErrorText';
+import FormHelper from './FormHelper';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -20,6 +20,7 @@ const ElementMultiSelect = (props) => {
     name,
     value,
     visible,
+    formName,
   } = props;
 
   if (!visible) {
@@ -57,7 +58,11 @@ const ElementMultiSelect = (props) => {
           showErrorText={false}
         />
       </ResponsiveContainer>
-      <ErrorText errorText={errorText} />
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
+      />
     </div>
   );
 };
@@ -65,6 +70,7 @@ const ElementMultiSelect = (props) => {
 ElementMultiSelect.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string,

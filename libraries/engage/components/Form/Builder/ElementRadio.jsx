@@ -4,7 +4,7 @@ import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
-import ErrorText from './ErrorText';
+import FormHelper from './FormHelper';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -19,6 +19,7 @@ const ElementRadio = (props) => {
     name,
     value,
     visible,
+    formName,
   } = props;
 
   if (!visible) {
@@ -47,7 +48,11 @@ const ElementRadio = (props) => {
           />
         ))}
       </RadioGroup>
-      <ErrorText errorText={errorText} />
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
+      />
     </div>
   );
 };
@@ -55,6 +60,7 @@ const ElementRadio = (props) => {
 ElementRadio.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,

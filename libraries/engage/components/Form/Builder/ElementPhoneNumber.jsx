@@ -16,14 +16,14 @@ import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
-import ErrorText from './ErrorText';
+import FormHelper from './FormHelper';
 
 const { variables, colors } = themeConfig;
 
 const styles = {
   formField: css({
     width: '100%',
-    paddingBottom: variables.gap.small,
+    marginBottom: '0px !important',
   }).toString(),
 
   phoneField: css({
@@ -72,6 +72,7 @@ type Props = {
   errorText: string,
   value: string,
   visible: boolean,
+  formName: string,
   element: {
     default?: string,
     label?: string,
@@ -105,6 +106,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     errorText,
     value,
     visible,
+    formName,
   } = props;
   const {
     label,
@@ -201,17 +203,19 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
 
   if (!countries || countries.length === 0) {
     return (
-      <TextField
-        name={name}
-        value={value}
-        onChange={handleChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        label={label}
-        className={classnames(styles.formField, { validationError: !!errorText })}
-        errorText={errorText}
-        disabled={disabled}
-      />
+      <>
+        <TextField
+          name={name}
+          value={value}
+          onChange={handleChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          label={label}
+          className={classnames(styles.formField, { validationError: !!errorText })}
+          disabled={disabled}
+        />
+        <FormHelper errorText={errorText} element={element} />
+      </>
     );
   }
 
@@ -234,7 +238,11 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
           countryOptionsOrder={supportedCountries.length ? [...supportedCountries, '|'] : []}
         />
       </div>
-      <ErrorText errorText={errorText} />
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
+      />
     </div>
   );
 });

@@ -35,14 +35,7 @@ import buildFormDefaults from './helpers/buildFormDefaults';
 import buildCountryList from './helpers/buildCountryList';
 import buildProvinceList from './helpers/buildProvinceList';
 import buildValidationErrorList from './helpers/buildValidationErrorList';
-
-/**
- * Takes a string and converts it to a part to be used in a portal name
- * @package FormBuilder
- * @param {string} s The string to be sanitized
- * @return {string}
- */
-const sanitize = s => s.replace(/[\\._]/, '-');
+import { sanitizePortalName } from './helpers/common';
 
 /**
  * Optional select element
@@ -253,11 +246,12 @@ class Builder extends Component {
   /**
    * Takes an element of any type and renders it depending on type.
    * Also puts portals around the element.
+   * @param {string} formName Name of the form
    * @param {Object} element The data of the element to be rendered
    * @param {string} elementErrorText The error text to be shown for this specific element
    * @returns {JSX}
    */
-  renderElement = (element, elementErrorText) => {
+  renderElement = (formName, element, elementErrorText) => {
     const elementName = `${this.props.name}_${element.id}`;
     const elementValue = this.state.formData[element.id];
     const elementVisible = this.state.elementVisibility[element.id] || false;
@@ -300,6 +294,7 @@ class Builder extends Component {
         errorText={elementErrorText}
         value={elementValue}
         visible={elementVisible}
+        formName={formName}
       />
     );
   };
@@ -318,13 +313,30 @@ class Builder extends Component {
           {this.formElements.map(element => (
             <Fragment key={`${this.props.name}_${element.id}`}>
               <Portal
-                name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
+                name={`${sanitizePortalName(this.props.name)}.${sanitizePortalName(element.id)}.${BEFORE}`}
+                props={{
+                  formName: this.props.name,
+                  errorText: validationErrors[element.id] || '',
+                  element,
+                }}
               />
-              <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
-                {this.renderElement(element, validationErrors[element.id] || '')}
+              <Portal
+                name={`${sanitizePortalName(this.props.name)}.${sanitizePortalName(element.id)}`}
+                props={{
+                  formName: this.props.name,
+                  errorText: validationErrors[element.id] || '',
+                  element,
+                }}
+              >
+                {this.renderElement(this.props.name, element, validationErrors[element.id] || '')}
               </Portal>
               <Portal
-                name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}
+                name={`${sanitizePortalName(this.props.name)}.${sanitizePortalName(element.id)}.${AFTER}`}
+                props={{
+                  formName: this.props.name,
+                  errorText: validationErrors[element.id] || '',
+                  element,
+                }}
               />
             </Fragment>
           ))}

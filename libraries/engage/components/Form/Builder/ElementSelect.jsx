@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 import Select from '@shopgate/pwa-ui-shared/Form/Select';
-import ErrorText from './ErrorText';
+import FormHelper from './FormHelper';
 
 /**
  * Takes an element and renders it, if the type matches
@@ -18,6 +18,7 @@ const ElementSelect = (props) => {
     name,
     value,
     visible,
+    formName,
   } = props;
 
   if (!visible) {
@@ -39,7 +40,11 @@ const ElementSelect = (props) => {
         showErrorText={false}
         disabled={element.disabled}
       />
-      <ErrorText errorText={errorText} />
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
+      />
     </div>
   );
 };
@@ -47,6 +52,7 @@ const ElementSelect = (props) => {
 ElementSelect.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,
