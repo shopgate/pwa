@@ -79,6 +79,7 @@ const ProfileProvider = ({
   children,
   shopSettings,
   userLocation,
+  formContainerRef,
 }) => {
   // Route
   const { pathname } = useRoute();
@@ -149,12 +150,19 @@ const ProfileProvider = ({
   const formState = useForm(
     defaultState,
     saveForm,
-    constraints
+    constraints,
+    formContainerRef,
+    120
   );
 
   const validationErrors = useMemo(() =>
     convertValidationErrors(formState.validationErrors || requestErrors || {}),
   [formState.validationErrors, requestErrors]);
+
+  useEffect(() => {
+    formState.scrollToError();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formState.scrollToError, requestErrors]);
 
   /**
    * Executes callback with confirmation beforehand.
@@ -276,10 +284,12 @@ ProfileProvider.propTypes = {
   updateCustomer: PropTypes.func.isRequired,
   userLocation: PropTypes.shape().isRequired,
   customer: PropTypes.shape(),
+  formContainerRef: PropTypes.shape(),
 };
 
 ProfileProvider.defaultProps = {
   customer: null,
+  formContainerRef: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileProvider);
