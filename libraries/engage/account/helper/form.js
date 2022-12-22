@@ -29,19 +29,19 @@ const mapCustomerAttributeType = (attribute) => {
 };
 
 /**
- * Generates form field config
+ * Generates customer attributes form field config
  * @param {Object} options Options for the helper
- * @param {Object} options.customerAttributes Customer attributes.
- * @param {boolean} options.allowPleaseChoose Allows please choose option for required attributes.
+ * @param {Array} options.customerAttributes Customer attributes.
  * @param {Array} options.supportedCountries A list of supported countries.
  * @param {Object} options.userLocation User location for better phone picker defaults.
+ * @param {boolean} options.allowPleaseChoose Allows please choose option for required attributes.
  * @returns {Object}
  */
-export const generateFormFields = ({
+export const generateCustomerAttributesFields = ({
   customerAttributes,
-  allowPleaseChoose = true,
   supportedCountries,
   userLocation,
+  allowPleaseChoose = true,
 }) => ({
   ...Object.assign({}, ...sortBy(customerAttributes, ['sequenceId']).map(attribute => ({
     [`attribute_${attribute.code}`]: {
@@ -213,10 +213,22 @@ export const convertPipelineValidationErrors = (errors, attributes = []) => {
     if (path.length > 0) {
       message = i18n.text('validation.checkField');
       validationPath = path.slice(2).join('.');
-    } else if (subentityPath.length > 0 && subentityPath[0] === 'attributes') {
-      const attributeIndex = parseInt(subentityPath[1], 10);
+    } else if (subentityPath.length > 0 && subentityPath.includes('attributes')) {
+      /**
+       * Validation errors for customer attributes needs special handling. They are sent
+       * as an array to the server, which only includes the fields where an actual value was set.
+       * The subentityPath of attribute validation errors will only contain an array index which
+       * needs to be mapped to tha actual field id.
+       *
+       * So here in the first step, we search for the subentity path entry that comes after the
+       * "attributes" entry and convert it back to an integer which can be used to determine
+       * and entry within the attribute data that was used for the request.
+       */
+      const attributeIndex = parseInt(subentityPath[subentityPath.indexOf('attributes') + 1], 10);
 
       message = i18n.text('validation.checkField');
+      // Retrieve the attribute code to mock a validation path that can be used to find the correct
+      // form field.
       validationPath = `attributes.attribute_${attributes[attributeIndex].code}`;
     } else if (subentityPath.length > 0) {
       const field = subentityPath[subentityPath.length - 1];

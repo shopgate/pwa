@@ -50,7 +50,10 @@ export const OUTLINED_FORM_FIELDS = {
     },
   },
   ' .radioGroup + .formHelper, .checkbox + .formHelper': {
-    minHeight: 0,
+    minHeight: 16,
+  },
+  ' .checkbox': {
+    paddingBottom: 0,
   },
   ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
     paddingBottom: 8,

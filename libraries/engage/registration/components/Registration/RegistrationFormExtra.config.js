@@ -1,5 +1,5 @@
 import { i18n } from '@shopgate/engage/core';
-import { generateFormFields } from '@shopgate/engage/account/helper/form';
+import { generateCustomerAttributesFields } from '@shopgate/engage/account/helper/form';
 
 /**
  * Generates form configuration.
@@ -19,7 +19,7 @@ const generateFormConfig = ({
         label: i18n.text('registration.marketing_opt_in_label'),
       },
     } : {}),
-    ...generateFormFields({
+    ...generateCustomerAttributesFields({
       customerAttributes,
       supportedCountries,
       userLocation,
