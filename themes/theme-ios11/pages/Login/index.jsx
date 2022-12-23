@@ -23,6 +23,8 @@ import {
   PAGE_LOGIN_FORM_BEFORE,
   PAGE_LOGIN_FORM,
   PAGE_LOGIN_FORM_AFTER,
+  FORGOT_PASSWORD,
+  LOGIN_BUTTON,
 } from '@shopgate/pwa-common/constants/Portals';
 import { CloseBar } from 'Components/AppBar/presets';
 import connect from './connector';
@@ -166,16 +168,23 @@ class Login extends Component {
                   setRef={this.setPasswordFieldRef}
                 />
                 <div className={styles.forgotWrapper}>
-                  <ForgotPassword />
+                  <Portal name={FORGOT_PASSWORD}>
+                    <ForgotPassword />
+                  </Portal>
                 </div>
                 <div className={styles.buttonWrapper} data-test-id="LoginButton">
-                  <RippleButton
-                    className={styles.button}
-                    type="secondary"
+                  <Portal
+                    name={LOGIN_BUTTON}
                     disabled={this.props.isLoading || this.props.isDisabled}
                   >
-                    <I18n.Text string="login.button" />
-                  </RippleButton>
+                    <RippleButton
+                      className={styles.button}
+                      type="secondary"
+                      disabled={this.props.isLoading || this.props.isDisabled}
+                    >
+                      <I18n.Text string="login.button" />
+                    </RippleButton>
+                  </Portal>
                 </div>
               </form>
             </Portal>

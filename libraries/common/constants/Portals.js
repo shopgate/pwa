@@ -7,6 +7,8 @@ const NAV_MENU = 'nav-menu';
 const NO_RESULTS = 'no-results';
 const USER_MENU = 'user-menu';
 const FORM = 'form';
+const FORGOT = 'forgot';
+const USER = 'user';
 
 // CONTENTS
 const GLOBALS = 'globals';
@@ -32,6 +34,9 @@ const BACK = 'back';
 const CLOSE = 'close';
 const SIMPLE = 'simple';
 const CART_BUTTON = 'cart-button';
+const PASSWORD = 'password';
+const REGISTER = 'register';
+const BUTTON = 'button';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -50,6 +55,18 @@ export const APP_FOOTER_CONTENT_AFTER = `${APP}.${FOOTER}.${CONTENT}.${AFTER}`;
 export const VIEW_CONTENT_BEFORE = `${VIEW}.${CONTENT}.${BEFORE}`;
 export const VIEW_CONTENT = `${VIEW}.${CONTENT}`;
 export const VIEW_CONTENT_AFTER = `${VIEW}.${CONTENT}.${AFTER}`;
+
+export const FORGOT_PASSWORD_BEFORE = `${FORGOT}.${PASSWORD}.${BEFORE}`;
+export const FORGOT_PASSWORD = `${FORGOT}.${PASSWORD}`;
+export const FORGOT_PASSWORD_AFTER = `${FORGOT}.${PASSWORD}.${AFTER}`;
+
+export const USER_REGISTER_BEFORE = `${USER}.${REGISTER}.${BEFORE}`;
+export const USER_REGISTER = `${USER}.${REGISTER}`;
+export const USER_REGISTER_AFTER = `${USER}.${REGISTER}.${AFTER}`;
+
+export const LOGIN_BUTTON_BEFORE = `${LOGIN}.${BUTTON}.${BEFORE}`;
+export const LOGIN_BUTTON = `${LOGIN}.${BUTTON}`;
+export const LOGIN_BUTTON_AFTER = `${LOGIN}.${BUTTON}.${AFTER}`;
 
 export const PAGE_CONTENT_BEFORE = `${PAGE}.${CONTENT}.${BEFORE}`;
 export const PAGE_CONTENT = `${PAGE}.${CONTENT}`;

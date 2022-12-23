@@ -1,4 +1,8 @@
 import React, { useRef } from 'react';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  USER_REGISTER, USER_REGISTER_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import RegistrationProvider from '../../providers/RegistrationProvider';
 import RegistrationFormBase from './RegistrationFormBase';
 import RegistrationFormBilling from './RegistrationFormBilling';
@@ -16,20 +20,29 @@ const Registration = () => {
   const formContainerRef = useRef(null);
 
   return (
-    <RegistrationProvider formContainerRef={formContainerRef}>
-      <div className={container} ref={formContainerRef}>
-        <div className={containerItem}>
-          <RegistrationFormBase />
+    <Portal
+      name={USER_REGISTER}
+      formContainerRef={formContainerRef}
+      parentStyleClass={container}
+      childStyleClass={containerItem}
+    >
+      <RegistrationProvider formContainerRef={formContainerRef}>
+        <div className={container} ref={formContainerRef}>
+          <div className={containerItem}>
+            <RegistrationFormBase />
+          </div>
+          <div className={containerItem}>
+            <RegistrationFormBilling />
+            <RegistrationFormToggle />
+            <RegistrationFormShipping />
+            <RegistrationFormExtra />
+          </div>
         </div>
-        <div className={containerItem}>
-          <RegistrationFormBilling />
-          <RegistrationFormToggle />
-          <RegistrationFormShipping />
-          <RegistrationFormExtra />
-        </div>
-      </div>
-      <RegistrationFormActions />
-    </RegistrationProvider>
+        <Portal name={USER_REGISTER_AFTER}>
+          <RegistrationFormActions />
+        </Portal>
+      </RegistrationProvider>
+    </Portal>
   );
 };
 
