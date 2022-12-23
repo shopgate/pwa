@@ -16,13 +16,14 @@ import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
+import FormHelper from './FormHelper';
 
 const { variables, colors } = themeConfig;
 
 const styles = {
   formField: css({
     width: '100%',
-    paddingBottom: variables.gap.small,
+    marginBottom: '0px !important',
   }).toString(),
 
   phoneField: css({
@@ -30,7 +31,7 @@ const styles = {
     width: '100%',
     paddingTop: variables.gap.big * 0.75,
     paddingBottom: variables.gap.big * 1.25,
-    marginBottom: variables.gap.small,
+
     ' input.PhoneInputInput': {
       outline: 'none',
       fontSize: '1rem',
@@ -71,6 +72,7 @@ type Props = {
   errorText: string,
   value: string,
   visible: boolean,
+  formName: string,
   element: {
     default?: string,
     label?: string,
@@ -104,6 +106,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     errorText,
     value,
     visible,
+    formName,
   } = props;
   const {
     label,
@@ -200,41 +203,50 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
 
   if (!countries || countries.length === 0) {
     return (
-      <TextField
-        name={name}
-        value={value}
-        onChange={handleChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        label={label}
-        className={classnames(styles.formField, { validationError: !!errorText })}
-        errorText={errorText}
-        disabled={disabled}
-      />
+      <>
+        <TextField
+          name={name}
+          value={value}
+          onChange={handleChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          label={label}
+          className={classnames(styles.formField, { validationError: !!errorText })}
+          disabled={disabled}
+        />
+        <FormHelper
+          errorText={errorText}
+          element={element}
+          formName={formName}
+        />
+      </>
     );
   }
 
   return (
-    <div className={phoneClasses}>
-      <PhoneInput
-        defaultCountry={defaultCountry}
-        addInternationalOption={false}
-        flags={flags}
-        name={name}
-        value={value || ''}
-        onChange={handleChangeWrapped}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        placeholder={label}
-        countries={countries}
-        labels={labels}
-        disabled={disabled}
+    <div className="formBuilderField">
+      <div className={phoneClasses}>
+        <PhoneInput
+          defaultCountry={defaultCountry}
+          addInternationalOption={false}
+          flags={flags}
+          name={name}
+          value={value || ''}
+          onChange={handleChangeWrapped}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          placeholder={label}
+          countries={countries}
+          labels={labels}
+          disabled={disabled}
+          countryOptionsOrder={supportedCountries.length ? [...supportedCountries, '|'] : []}
+        />
+      </div>
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
       />
-      {!!errorText && (
-        <div className={`errorText ${styles.phoneFieldErrorText}`}>
-          {errorText}
-        </div>
-      )}
     </div>
   );
 });

@@ -23,15 +23,20 @@ export const convertValidationErrors = validationErrors => Object
  * @param {Function} complete The completion callback.
  * @param {Object} validationConstraints validationConstraints
  * @param {Object} [formContainerRef=null] A ref to a container with forms
+ * @param {number} [validationErrorScrollOffset=10] When a form container ref is passed with the
+ * parameters, whenever validation errors occur, the page will scroll to the first error. Depending
+ * on the page, the scroll logic might not be accurate. So this offset parameter can be used
+ * to influence scroll behavior.
  * @returns {{ handleChange, handleSubmit, values, valid, validationErrors: ?Object, isSubmitting }}
  */
 export function useFormState(
   initialState,
   complete,
   validationConstraints = {},
-  formContainerRef = null
+  formContainerRef = null,
+  validationErrorScrollOffset = 10
 ) {
-  const { scrollTo } = useScrollTo(formContainerRef);
+  const { scrollTo } = useScrollTo(formContainerRef, validationErrorScrollOffset);
 
   // Submit lock prevents the form from being submitted multiple times
   const submitLock = useRef(false);

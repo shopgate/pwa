@@ -10,7 +10,6 @@ import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
 import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
-import { hasWebBridge } from '../../core';
 
 type Props = {
   orderInitialized?: bool,
@@ -532,3 +531,4 @@ CheckoutProvider.defaultProps = {
 };
 
 export default connect(CheckoutProvider);
+/* eslint-enable no-unused-expressions */

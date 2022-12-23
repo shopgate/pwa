@@ -93,6 +93,7 @@ const RegistrationProvider = ({
   const [baseFormRequestErrors, setBaseFormRequestErrors] = useState(null);
   const [billingFormRequestErrors, setBillingFormRequestErrors] = useState(null);
   const [shippingFormRequestErrors, setShippingFormRequestErrors] = useState(null);
+  const [extraFormRequestErrors, setExtraFormRequestErrors] = useState(null);
   const [isShippingFormVisible, setIsShippingFormVisible] = useState(false);
   const { query } = useRoute();
 
@@ -235,6 +236,7 @@ const RegistrationProvider = ({
       setBaseFormRequestErrors(errors?.baseFormData || null);
       setBillingFormRequestErrors(errors?.billingFormData || null);
       setShippingFormRequestErrors(errors?.shippingFormData || null);
+      setExtraFormRequestErrors(errors?.extraFormData || null);
 
       // Release forms for additional submits
       setIsBaseFormSubmitted(false);
@@ -304,7 +306,7 @@ const RegistrationProvider = ({
         shippingFormState.validationErrors || shippingFormRequestErrors || {}
       ),
       extraFormValidationErrors: convertValidationErrors(
-        extraFormState.validationErrors || {}
+        extraFormState.validationErrors || extraFormRequestErrors || {}
       ),
       handleSubmit,
       updateBaseForm: baseFormState.setValues,
@@ -336,6 +338,7 @@ const RegistrationProvider = ({
       defaultExtraFormState,
       extraFormState.setValues,
       extraFormState.validationErrors,
+      extraFormRequestErrors,
       isShippingAddressSelectionEnabled,
       isShippingFormVisible,
       setIsShippingFormVisible,

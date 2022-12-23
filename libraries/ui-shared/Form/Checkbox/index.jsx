@@ -19,6 +19,7 @@ class Checkbox extends PureComponent {
     errorText: PropTypes.node,
     label: PropTypes.node,
     onChange: PropTypes.func,
+    showErrorText: PropTypes.bool,
     translateErrorText: PropTypes.bool,
   };
 
@@ -30,6 +31,7 @@ class Checkbox extends PureComponent {
     onChange: () => {},
     translateErrorText: true,
     disabled: false,
+    showErrorText: true,
   };
 
   /**
@@ -37,7 +39,7 @@ class Checkbox extends PureComponent {
    */
   render() {
     const {
-      name, label, onChange, className, errorText, translateErrorText, ...restProps
+      name, label, onChange, className, errorText, translateErrorText, showErrorText, ...restProps
     } = this.props;
     return (
       <FormElement
@@ -48,6 +50,7 @@ class Checkbox extends PureComponent {
         hasUnderline={false}
         hasPlaceholder={false}
         disabled={restProps.disabled}
+        showErrorText={showErrorText}
       >
         <UICheckbox
           {...restProps}

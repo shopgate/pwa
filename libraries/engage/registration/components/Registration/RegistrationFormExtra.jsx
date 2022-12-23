@@ -18,14 +18,18 @@ const RegistrationFormExtra = ({ isGuest }) => {
     updateExtraForm,
     customerAttributes,
     extraFormValidationErrors,
+    supportedCountries,
+    userLocation,
   } = useRegistration(isGuest);
 
   const formConfig = useMemo(
     () => generateFormConfig({
       customerAttributes,
       isGuest,
+      supportedCountries,
+      userLocation,
     }),
-    [customerAttributes, isGuest]
+    [customerAttributes, isGuest, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

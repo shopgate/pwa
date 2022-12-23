@@ -1,7 +1,7 @@
-import { convertSubmitRegistrationValidationErrors as convert } from './index';
+import { convertPipelineValidationErrors as convert } from './form';
 
-describe('Registration helpers', () => {
-  describe('.convertSubmitRegistrationValidationErrors()', () => {
+describe('Form helpers', () => {
+  describe('.convertPipelineValidationErrors()', () => {
     it('should return null when the input is no array', () => {
       expect(convert()).toBe(null);
       expect(convert('test')).toBe(null);
@@ -13,7 +13,7 @@ describe('Registration helpers', () => {
       expect(convert([])).toBe(null);
     });
 
-    it.only('should return converted validation errors', () => {
+    it('should return converted validation errors', () => {
       const errors = [
         {
           entityIndex: 0,
@@ -55,9 +55,22 @@ describe('Registration helpers', () => {
           message: 'Some error occurred',
           subentityPath: [],
         },
+        {
+          entityIndex: null,
+          code: 400,
+          message: 'Attribute error ocurred',
+          subentityPath: ['attributes', '1'],
+        },
       ];
 
-      const result = convert(errors);
+      const attributes = [{
+
+      }, {
+        code: 'acme',
+        value: 'invalid',
+      }];
+
+      const result = convert(errors, attributes);
       expect(result).toEqual({
         general: [{
           entityIndex: null,
@@ -75,6 +88,10 @@ describe('Registration helpers', () => {
               address1: 'validation.checkField',
               postalCode: 'validation.checkField',
             },
+          },
+          attributes: {
+            // eslint-disable-next-line camelcase
+            attribute_acme: 'validation.checkField',
           },
         },
       });

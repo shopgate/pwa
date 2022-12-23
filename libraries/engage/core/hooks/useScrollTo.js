@@ -4,9 +4,10 @@ import { hasWebBridge } from '../helpers/bridge';
 
 /**
  * @param {Object} ref A ref to the scroll container
+ * @param {number} [offset=10] Optional offset for the scroll operation
  * @returns {Object}
  */
-export const useScrollTo = (ref) => {
+export const useScrollTo = (ref, offset = 10) => {
   const scrollTo = useCallback((selector) => {
     if (!ref?.current) {
       return;
@@ -16,11 +17,11 @@ export const useScrollTo = (ref) => {
 
     if (firstElement) {
       if (hasWebBridge()) {
-        const offset = 10;
+        const scrollOffset = offset;
         const appBarHeight = getCSSCustomProp('--app-bar-height') || 0;
         const { top } = firstElement.getBoundingClientRect();
 
-        const scrollTop = top + window.pageYOffset - parseInt(appBarHeight, 10) - offset;
+        const scrollTop = top + window.pageYOffset - parseInt(appBarHeight, 10) - scrollOffset;
 
         window.scroll({
           top: scrollTop,
@@ -30,7 +31,7 @@ export const useScrollTo = (ref) => {
         firstElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [ref]);
+  }, [offset, ref]);
 
   return {
     scrollTo,

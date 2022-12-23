@@ -26,6 +26,35 @@ export const TWO_COLUMN_LAYOUT = {
 };
 
 export const OUTLINED_FORM_FIELDS = {
+  ' .formHelper': {
+    ...(!isIOSTheme() ? {
+      minHeight: 32,
+    } : {
+      minHeight: 12,
+    }),
+    ' .errorText': {
+      position: 'relative',
+      textOverflow: 'unset',
+      whiteSpace: 'unset',
+      lineHeight: '15px',
+      bottom: 'unset',
+      ...(!isIOSTheme() ? {
+        padding: '8px 8px 8px 16px',
+      } : {}),
+    },
+  },
+  ' .formBuilderField': {
+    ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
+      marginBottom: 'unset',
+      paddingBottom: 'unset',
+    },
+  },
+  ' .radioGroup + .formHelper, .checkbox + .formHelper': {
+    minHeight: 16,
+  },
+  ' .checkbox': {
+    paddingBottom: 0,
+  },
   ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
     paddingBottom: 8,
     ...(!isIOSTheme() ? {

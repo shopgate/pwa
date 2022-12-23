@@ -24,6 +24,7 @@ class RadioGroup extends Component {
     label: PropTypes.string,
     onChange: PropTypes.func,
     /* Radio group value */
+    showErrorText: PropTypes.bool,
     translateErrorText: PropTypes.bool,
     value: PropTypes.string,
   }
@@ -39,6 +40,7 @@ class RadioGroup extends Component {
     label: '',
     translateErrorText: true,
     value: null,
+    showErrorText: true,
   }
 
   /**
@@ -79,7 +81,15 @@ class RadioGroup extends Component {
    */
   render() {
     const {
-      children, className, label, errorText, direction, name, translateErrorText, disabled,
+      children,
+      className,
+      label,
+      errorText,
+      direction,
+      name,
+      translateErrorText,
+      disabled,
+      showErrorText,
     } = this.props;
 
     return (
@@ -91,6 +101,7 @@ class RadioGroup extends Component {
         labelStatic
         errorText={errorText}
         translateErrorText={translateErrorText}
+        showErrorText={showErrorText}
         htmlFor="none"
         hasUnderline={false}
         hasValue

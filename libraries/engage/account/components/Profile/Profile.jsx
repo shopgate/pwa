@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { css } from 'glamor';
 import Provider from './Profile.provider';
 import AddressBook from './ProfileAddressBook';
@@ -12,14 +12,17 @@ const styles = {
 };
 
 /** @returns {JSX} */
-const Profile = () => (
-  <Provider>
-    <div className={styles.root}>
-      <Header />
-      <Form />
-      <AddressBook />
-    </div>
-  </Provider>
-);
+const Profile = () => {
+  const formContainerRef = useRef(null);
 
+  return (
+    <Provider formContainerRef={formContainerRef}>
+      <div className={styles.root}>
+        <Header />
+        <Form ref={formContainerRef} />
+        <AddressBook />
+      </div>
+    </Provider>
+  );
+};
 export default Profile;

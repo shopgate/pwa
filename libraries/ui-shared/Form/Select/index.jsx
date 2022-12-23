@@ -20,6 +20,7 @@ class Select extends Component {
     onChange: PropTypes.func,
     options: PropTypes.shape(),
     placeholder: PropTypes.node,
+    showErrorText: PropTypes.bool,
     size: PropTypes.number,
     translateErrorText: PropTypes.bool,
     value: PropTypes.oneOfType([
@@ -37,6 +38,7 @@ class Select extends Component {
     onChange: () => {},
     options: {},
     translateErrorText: true,
+    showErrorText: true,
     size: null,
     value: '',
     disabled: false,
@@ -111,7 +113,7 @@ class Select extends Component {
    */
   render() {
     const {
-      name, options, translateErrorText, disabled, multiple, size,
+      name, options, translateErrorText, disabled, multiple, size, showErrorText,
     } = this.props;
     return (
       <FormElement
@@ -125,6 +127,7 @@ class Select extends Component {
         hasValue={!!this.state.value || !!options['']}
         hasPlaceholder={!disabled || this.state.value !== ''}
         disabled={disabled}
+        showErrorText={showErrorText}
       >
         <select
           id={this.props.name}

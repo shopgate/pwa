@@ -1,4 +1,3 @@
-import { i18n } from '@shopgate/engage/core';
 import { generateFormConstraints } from '@shopgate/engage/account/helper/form';
 
 /**
@@ -18,10 +17,6 @@ export const generateBaseConstraints = () => ({
     presence: {
       message: 'validation.required',
       allowEmpty: false,
-    },
-    length: {
-      minimum: 8,
-      tooShort: i18n.text('validation.minPasswordLength'),
     },
   },
   passwordConfirm: {

@@ -14,6 +14,7 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
         className="css-1h5rpg9"
       />
     }
+    showErrorText={true}
   >
     <div
       aria-hidden={true}
@@ -80,6 +81,7 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
         className="css-1h5rpg9"
       />
     }
+    showErrorText={true}
   >
     <div
       aria-hidden={true}
@@ -146,6 +148,7 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
         className="css-1h5rpg9"
       />
     }
+    showErrorText={true}
   >
     <div
       aria-hidden={true}

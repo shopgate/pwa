@@ -1,12 +1,17 @@
 import { i18n } from '@shopgate/engage/core';
-import { generateFormFields } from '@shopgate/engage/account/helper/form';
+import { generateCustomerAttributesFields } from '@shopgate/engage/account/helper/form';
 
 /**
  * Generates form configuration.
- * @param {Array} customerAttributes List of customer attributes.
+ * @param {Object} additionalOptions Options for the customer attributes creation helper
+ * @param {Array} additionalOptions.customerAttributes Customer attributes.
+ * @param {Array} additionalOptions.supportedCountries A list of supported countries.
+ * @param {Object} additionalOptions.userLocation User location for better phone picker defaults.
+ * @param {boolean} [additionalOptions.allowPleaseChoose] Allows please choose option for required
+ * attributes.
  * @returns {Object}
  */
-const generateFormConfig = customerAttributes => ({
+const generateFormConfig = additionalOptions => ({
   fields: {
     firstName: {
       type: 'text',
@@ -29,7 +34,7 @@ const generateFormConfig = customerAttributes => ({
       type: 'checkbox',
       label: i18n.text('account.profile.form.marketing_opt_in_label'),
     },
-    ...generateFormFields(customerAttributes, false),
+    ...generateCustomerAttributesFields(additionalOptions, false),
   },
 });
 
