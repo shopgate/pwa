@@ -1,10 +1,32 @@
-import { SHOP_SETTING_REGISTRATION_MODE_EXTENDED } from '@shopgate/engage/core';
+import {
+  SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+} from '@shopgate/engage/core';
 import { generateFormConstraints } from '@shopgate/engage/account/helper/form';
 
 /**
+ * Helper to generate base constraints
+ * @param {Object} params Options for the helper
+ * @param {string} params.registrationMode Current active registration mode
  * @returns {Object}
  */
-export const generateBaseConstraints = () => ({
+export const generateBaseConstraints = ({
+  registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+}) => ({
+  ...(registrationMode === SHOP_SETTING_REGISTRATION_MODE_SIMPLE ? {
+    firstName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+    },
+    lastName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+    },
+  } : null),
   emailAddress: {
     presence: {
       message: 'validation.required',
@@ -42,19 +64,19 @@ export const generateBaseConstraints = () => ({
 const generateAddressConstraints = ({
   registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
 }) => ({
-  firstName: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
-    },
-  },
-  lastName: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
-    },
-  },
   ...(registrationMode === SHOP_SETTING_REGISTRATION_MODE_EXTENDED) ? {
+    firstName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+    },
+    lastName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+    },
     address1: {
       presence: {
         message: 'validation.required',

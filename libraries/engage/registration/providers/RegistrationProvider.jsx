@@ -112,6 +112,11 @@ const RegistrationProvider = ({
     [cartHasDirectShipItems, query, registrationMode]
   );
 
+  const isBillingAddressSelectionEnabled = useMemo(
+    () => registrationMode !== SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+    [registrationMode]
+  );
+
   // Determine values to prefill some form fields
   const userCountry = useMemo(
     () => userLocation?.country || appConfig?.marketId || null,
@@ -120,7 +125,10 @@ const RegistrationProvider = ({
 
   const userRegion = useMemo(() => userLocation?.region || null, [userLocation]);
 
-  const baseConstraints = useMemo(() => generateBaseConstraints(), []);
+  const baseConstraints = useMemo(
+    () => generateBaseConstraints({ registrationMode }),
+    [registrationMode]
+  );
 
   const billingConstraints = useMemo(
     () => generateBillingConstraints({ registrationMode }),
@@ -334,6 +342,7 @@ const RegistrationProvider = ({
       updateShippingForm: shippingFormState.setValues,
       updateExtraForm: extraFormState.setValues,
       isShippingAddressSelectionEnabled,
+      isBillingAddressSelectionEnabled,
       isShippingFormVisible,
       setIsShippingFormVisible,
       numberOfAddressLines,
@@ -361,6 +370,7 @@ const RegistrationProvider = ({
       extraFormState.validationErrors,
       extraFormRequestErrors,
       isShippingAddressSelectionEnabled,
+      isBillingAddressSelectionEnabled,
       isShippingFormVisible,
       setIsShippingFormVisible,
       numberOfAddressLines,

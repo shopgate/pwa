@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import { RippleButton } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
-import { submitButton, submitButtonContainer } from './Registration.style';
+import { submitButton, submitButtonContainer } from './RegistrationContent.style';
 
 /**
  * PickupContactForm

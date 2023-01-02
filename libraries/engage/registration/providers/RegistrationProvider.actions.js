@@ -26,7 +26,14 @@ export const submitRegistration = ({
   const attributes = extractAttributes(customerAttributes, attributeData);
 
   const { emailAddress, password } = baseFormData;
-  const { firstName, lastName } = billingFormData;
+  let firstName;
+  let lastName;
+
+  if (registrationMode === SHOP_SETTING_REGISTRATION_MODE_SIMPLE) {
+    ({ firstName, lastName } = baseFormData);
+  } else {
+    ({ firstName, lastName } = billingFormData);
+  }
 
   const customer = {
     firstName,

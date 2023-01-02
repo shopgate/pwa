@@ -1,11 +1,27 @@
-import { i18n } from '@shopgate/engage/core';
+import {
+  i18n,
+  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+  SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+} from '@shopgate/engage/core';
 
 /**
  * Generates form configuration.
  * @returns {Object}
  */
-const generateFormConfig = () => ({
+const generateFormConfig = ({
+  registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+}) => ({
   fields: {
+    ...(registrationMode === SHOP_SETTING_REGISTRATION_MODE_SIMPLE ? {
+      firstName: {
+        type: 'text',
+        label: `${i18n.text('checkout.pickup_contact.form.firstName')} *`,
+      },
+      lastName: {
+        type: 'text',
+        label: `${i18n.text('checkout.pickup_contact.form.lastName')} *`,
+      },
+    } : null),
     emailAddress: {
       type: 'email',
       label: `${i18n.text('checkout.pickup_contact.form.emailAddress')} *`,

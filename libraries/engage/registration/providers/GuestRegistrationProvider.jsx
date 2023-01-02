@@ -438,6 +438,7 @@ const GuestRegistrationProvider = ({
        * the shared form components.
        */
       registrationMode: SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+      isBillingAddressSelectionEnabled: true,
     }),
     [
       isShippingFormEnabled,
