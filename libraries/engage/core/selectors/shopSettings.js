@@ -9,6 +9,8 @@ import {
   SHOP_SETTING_NUMBER_OF_ADDRESS_LINES,
   SHOP_SETTING_GOOGLE_SITE_VERIFICATION_CODE,
   SHOP_SETTINGS_SHOW_CATEGORY_IMAGES,
+  SHOP_SETTING_REGISTRATION_MODE,
+  SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
 } from '../constants/shopSettings';
 
 /**
@@ -102,4 +104,13 @@ export const getGoogleSiteVerificationCode = makeGetShopSettingByKey(
 export const getShowCategoryImages = makeGetShopSettingByKey(
   SHOP_SETTINGS_SHOW_CATEGORY_IMAGES,
   true
+);
+
+/**
+ * Creates a selector to retrieve the current active registration mode.
+ * When the selector returns "simple" the form will not contain any address related fields.
+ */
+export const getRegistrationMode = makeGetShopSettingByKey(
+  SHOP_SETTING_REGISTRATION_MODE,
+  SHOP_SETTING_REGISTRATION_MODE_EXTENDED
 );

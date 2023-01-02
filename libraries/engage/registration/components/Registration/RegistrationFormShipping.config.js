@@ -1,11 +1,16 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n, SHOP_SETTING_REGISTRATION_MODE_EXTENDED } from '@shopgate/engage/core';
 
 /**
  * Generates form configuration.
  * @param {Object} params Additional parameters
  * @returns {Object}
  */
-const generateFormConfig = ({ supportedCountries, userLocation, numberOfAddressLines }) => ({
+const generateFormConfig = ({
+  supportedCountries,
+  userLocation,
+  numberOfAddressLines,
+  registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+}) => (registrationMode === SHOP_SETTING_REGISTRATION_MODE_EXTENDED ? {
   fields: {
     firstName: {
       type: 'text',
@@ -68,6 +73,6 @@ const generateFormConfig = ({ supportedCountries, userLocation, numberOfAddressL
       required: true,
     },
   },
-});
+} : {});
 
 export default generateFormConfig;

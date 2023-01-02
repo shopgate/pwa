@@ -21,6 +21,7 @@ const RegistrationFormBilling = ({ isGuest }) => {
     updateBillingForm,
     numberOfAddressLines,
     orderReserveOnly,
+    registrationMode,
   } = useRegistration(isGuest);
 
   const formConfig = useMemo(
@@ -30,8 +31,16 @@ const RegistrationFormBilling = ({ isGuest }) => {
       numberOfAddressLines,
       isGuest,
       isReserveOnly: orderReserveOnly,
+      registrationMode,
     }),
-    [isGuest, numberOfAddressLines, orderReserveOnly, supportedCountries, userLocation]
+    [
+      isGuest,
+      numberOfAddressLines,
+      orderReserveOnly,
+      registrationMode,
+      supportedCountries,
+      userLocation,
+    ]
   );
 
   const title = useMemo(() => {

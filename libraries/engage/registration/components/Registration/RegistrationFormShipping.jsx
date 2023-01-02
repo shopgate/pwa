@@ -25,6 +25,7 @@ const RegistrationFormShipping = ({ isGuest }) => {
     isShippingFormVisible,
     isShippingAddressSelectionEnabled,
     numberOfAddressLines,
+    registrationMode,
   } = useRegistration(isGuest);
 
   const formConfig = useMemo(
@@ -32,8 +33,9 @@ const RegistrationFormShipping = ({ isGuest }) => {
       supportedCountries,
       userLocation,
       numberOfAddressLines,
+      registrationMode,
     }),
-    [numberOfAddressLines, supportedCountries, userLocation]
+    [numberOfAddressLines, registrationMode, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {
