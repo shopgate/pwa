@@ -4,28 +4,21 @@ import React, {
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
-  isIOSTheme, getThemeSettings, showModal, MODAL_PIPELINE_ERROR,
+  getThemeSettings, showModal, MODAL_PIPELINE_ERROR,
 } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
 import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
 
-const { colors } = themeConfig;
-
 const styles = {
   headline: css({
-    color: colors.shade3,
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    textTransform: 'uppercase',
     margin: '12px 0 12px 0',
-    ...(!isIOSTheme() ? {
-      color: 'var(--color-text-high-emphasis)',
-      textTransform: 'none',
-    } : {}),
+    color: 'var(--color-text-high-emphasis)',
+    textTransform: 'none',
   }).toString(),
 };
 

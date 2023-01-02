@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
-import { isIOSTheme, i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import { TextField } from '@shopgate/engage/components';
 import { getCSSCustomProp } from '@shopgate/engage/styles';
 import {
@@ -22,37 +22,27 @@ const styles = {
     flexDirection: 'column',
     flex: '0 0 auto',
     ' .formElement': {
-      ...(!isIOSTheme() ? {
-        background: `var(--color-background-accent, ${colors.shade8})`,
-        padding: 0,
-        marginBottom: 38,
-        borderTopLeftRadius: 4,
-        borderTopRightRadius: 4,
-        borderBottom: `1px solid ${colors.shade12}`,
-      } : {}),
+      background: `var(--color-background-accent, ${colors.shade8})`,
+      padding: 0,
+      marginBottom: 38,
+      borderTopLeftRadius: 4,
+      borderTopRightRadius: 4,
+      borderBottom: `1px solid ${colors.shade12}`,
     },
     ' .formElement label': {
-      ...(!isIOSTheme() ? {
-        color: 'var(--color-text-low-emphasis)',
-        paddingLeft: 24,
-      } : {}),
+      color: 'var(--color-text-low-emphasis)',
+      paddingLeft: 24,
     },
     ' .underline': {
-      ...(!isIOSTheme() ? {
-        marginBottom: 0,
-        borderBottom: 'none',
-      } : {}),
+      marginBottom: 0,
+      borderBottom: 'none',
     },
     ' .errorText': {
-      ...(!isIOSTheme() ? {
-        bottom: -20,
-        left: 18,
-      } : {}),
+      bottom: -20,
+      left: 18,
     },
     ' .StripeElement': {
-      ...(!isIOSTheme() ? {
-        paddingLeft: 16,
-      } : {}),
+      paddingLeft: 16,
     },
   }).toString(),
   secondRow: css({

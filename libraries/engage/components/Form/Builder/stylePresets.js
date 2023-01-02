@@ -1,4 +1,3 @@
-import { isIOSTheme } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/engage';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
@@ -27,20 +26,14 @@ export const TWO_COLUMN_LAYOUT = {
 
 export const OUTLINED_FORM_FIELDS = {
   ' .formHelper': {
-    ...(!isIOSTheme() ? {
-      minHeight: 32,
-    } : {
-      minHeight: 12,
-    }),
+    minHeight: 32,
     ' .errorText': {
       position: 'relative',
       textOverflow: 'unset',
       whiteSpace: 'unset',
       lineHeight: '15px',
       bottom: 'unset',
-      ...(!isIOSTheme() ? {
-        padding: '8px 8px 8px 16px',
-      } : {}),
+      padding: '8px 8px 8px 16px',
     },
   },
   ' .formBuilderField': {
@@ -57,58 +50,42 @@ export const OUTLINED_FORM_FIELDS = {
   },
   ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
     paddingBottom: 8,
-    ...(!isIOSTheme() ? {
-      background: `var(--color-background-accent, ${colors.shade8})`,
-      padding: 0,
-      marginBottom: 32,
-      borderTopLeftRadius: 4,
-      borderTopRightRadius: 4,
-      borderBottom: `1px solid ${colors.shade12}`,
-    } : {}),
+    background: `var(--color-background-accent, ${colors.shade8})`,
+    padding: 0,
+    marginBottom: 32,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+    borderBottom: `1px solid ${colors.shade12}`,
   },
   ' .phonePickerError': {
-    ...(!isIOSTheme() ? {
-      borderBottom: `2px solid var(--color-state-alert, ${colors.error})`,
-    } : {}),
+    borderBottom: `2px solid var(--color-state-alert, ${colors.error})`,
   },
   ' .phonePickerFocused:not(.phonePickerError)': {
-    ...(!isIOSTheme() ? {
-      borderBottom: '2px solid var(--color-primary)',
-    } : {}),
+    borderBottom: '2px solid var(--color-primary)',
   },
   ' .formElement:not(.radioGroup) label': {
-    ...(!isIOSTheme() ? {
-      paddingLeft: 24,
-      color: 'var(--color-text-low-emphasis)',
-      transform: 'translate3d(0, -18px, 0) scale3d(0.75, 0.75, 0.75)',
-    } : {}),
+    paddingLeft: 24,
+    color: 'var(--color-text-low-emphasis)',
+    transform: 'translate3d(0, -18px, 0) scale3d(0.75, 0.75, 0.75)',
   },
   ' .textField label': {
-    ...(!isIOSTheme() ? {
-      paddingLeft: 17,
-      color: 'var(--color-text-low-emphasis)',
-      '.floating': {
-        transform: 'translate3d(3px, -18px, 0) scale3d(0.75, 0.75, 0.75)',
-      },
-    } : {}),
+    paddingLeft: 17,
+    color: 'var(--color-text-low-emphasis)',
+    '.floating': {
+      transform: 'translate3d(3px, -18px, 0) scale3d(0.75, 0.75, 0.75)',
+    },
   },
   ' .formElement:not(.radioGroup) select, .formElement .info-field': {
-    ...(!isIOSTheme() ? {
-      paddingLeft: 16,
-      color: 'var(--color-text-high-emphasis)',
-    } : {}),
+    paddingLeft: 16,
+    color: 'var(--color-text-high-emphasis)',
   },
   ' .formElement:not(.radioGroup):not(.checkbox) svg': {
-    ...(!isIOSTheme() ? {
-      marginTop: 8,
-      right: 8,
-    } : {}),
+    marginTop: 8,
+    right: 8,
   },
   ' .formElement:not(.radioGroup) .placeholder': {
-    ...(!isIOSTheme() ? {
-      paddingLeft: 20,
-      color: 'var(--color-text-low-emphasis)',
-    } : {}),
+    paddingLeft: 20,
+    color: 'var(--color-text-low-emphasis)',
   },
   ' .formElement.disabled, .textField.disabled': {
     ' input, select, svg': {
@@ -119,67 +96,42 @@ export const OUTLINED_FORM_FIELDS = {
     },
   },
   ' .textField input': {
-    ...(!isIOSTheme() ? {
-      paddingLeft: 16,
-      color: 'var(--color-text-high-emphasis)',
-    } : {}),
+    paddingLeft: 16,
+    color: 'var(--color-text-high-emphasis)',
   },
   ' .underline': {
-    ...(!isIOSTheme() ? {
-      marginBottom: 0,
-      borderBottom: 'none',
-    } : {}),
+    marginBottom: 0,
+    borderBottom: 'none',
   },
   ' .errorText': {
-    ...(!isIOSTheme() ? {
-      bottom: -20,
-      paddingLeft: 16,
-    } : {
-      bottom: 0,
-    }),
+    bottom: -20,
+    paddingLeft: 16,
   },
   ' .phonePicker': {
     paddingTop: variables.gap.big,
-    ...(isIOSTheme() ? {
-      paddingBottom: 2,
-    } : {
-      paddingTop: 23,
-      paddingLeft: 8,
-    }),
+    paddingBottom: 2,
   },
   ' .phonePicker .PhoneInputInput': {
-    ...(!isIOSTheme() ? {
+    borderBottom: 'none',
+    color: 'var(--color-text-high-emphasis)',
+    '&:focus': {
       borderBottom: 'none',
-      color: 'var(--color-text-high-emphasis)',
-      '&:focus': {
-        borderBottom: 'none',
-      },
-      '::placeholder': {
-        color: 'var(--color-text-low-emphasis)',
-      },
-    } : {}),
+    },
+    '::placeholder': {
+      color: 'var(--color-text-low-emphasis)',
+    },
   },
   ' .phonePicker .errorText': {
-    ...(!isIOSTheme() ? {
-      marginLeft: -8,
-    } : {
-      marginLeft: 0,
-      bottom: -11,
-      overflow: 'initial',
-    }),
+    marginLeft: -8,
   },
   ' .PhoneInputCountryIcon': {
-    ...(!isIOSTheme() ? {
-      marginBottom: 8,
-      marginLeft: 16,
-    } : {}),
+    marginBottom: 8,
+    marginLeft: 16,
   },
   ' .PhoneInputCountrySelectArrow': {
-    ...(!isIOSTheme() ? {
-      marginRight: 6,
-      marginLeft: 10,
-      marginBottom: 8,
-    } : {}),
+    marginRight: 6,
+    marginLeft: 10,
+    marginBottom: 8,
   },
   ' .placeholder': {
     color: colors.shade12,

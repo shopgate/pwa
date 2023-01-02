@@ -4,46 +4,36 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, Link } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { isIOSTheme } from '@shopgate/engage/core';
 import CheckoutSectionInfo from './CheckoutSectionInfo';
 import CheckoutSectionMessages from './CheckoutSectionMessages';
 import { i18n } from '../../../core/helpers/i18n';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const styles = {
   headline: css({
-    color: colors.shade3,
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    textTransform: 'uppercase',
     margin: `0 0 ${variables.gap.small}px 0`,
-    ...(!isIOSTheme() ? {
-      color: 'var(--color-text-high-emphasis)',
-      textTransform: 'none',
-    } : {}),
+    color: 'var(--color-text-high-emphasis)',
+    textTransform: 'none',
   }),
   card: css({
     display: 'flex',
     flexDirection: 'row',
     fontSize: 15,
-    padding: variables.gap.big,
     width: '100%',
     overflow: 'inherit !important',
     marginBottom: variables.gap.big,
-    ...(!isIOSTheme() ? {
-      background: 'var(--color-background-accent)',
-      boxShadow: 'none',
-      padding: `${variables.gap.small}px ${variables.gap.big}px`,
-      margin: 0,
-    } : {}),
+    boxShadow: 'none',
+    background: 'var(--color-background-accent)',
+    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    margin: 0,
   }),
   cardWithForm: css({
-    ...(!isIOSTheme() ? {
-      background: 'inherit !important',
-      boxShadow: 'none  !important',
-      padding: '0px !important',
-    } : {}),
+    background: 'inherit !important',
+    boxShadow: 'none  !important',
+    padding: '0px !important',
   }).toString(),
   table: css({
     ' td': {
