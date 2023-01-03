@@ -3,7 +3,7 @@ import { FormBuilder } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import generateFormConfig from './RegistrationFormBase.config';
-import { form, section } from './Registration.style';
+import { form, section } from './RegistrationContent.style';
 
 /**
  * The RegistrationFormBase component.
@@ -14,11 +14,12 @@ const RegistrationFormBase = () => {
     defaultBaseFormState,
     baseFormValidationErrors,
     updateBaseForm,
+    registrationMode,
   } = useRegistration();
 
   const formConfig = useMemo(
-    () => generateFormConfig(),
-    []
+    () => generateFormConfig({ registrationMode }),
+    [registrationMode]
   );
 
   const handleUpdate = useCallback((values) => {

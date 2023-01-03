@@ -2,15 +2,20 @@ import React, {
   useMemo, useState, useEffect, useCallback,
 } from 'react';
 import { REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { LoadingProvider, i18n, useRoute } from '@shopgate/engage/core';
+import {
+  LoadingProvider,
+  i18n,
+  useRoute,
+  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+} from '@shopgate/engage/core';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { extractDefaultValues } from '../../account/helper/form';
 import Context from './RegistrationProvider.context';
 import {
   generateBaseConstraints,
-  billingConstraints,
-  shippingConstraints,
+  generateBillingConstraints,
+  generateShippingConstraints,
   generateExtraConstraints,
 } from './RegistrationProvider.constraints';
 import connect from './RegistrationProvider.connector';
@@ -22,6 +27,7 @@ type Props = {
   userLocation: any,
   customerAttributes: any,
   isDataReady: bool,
+  registrationMode: string,
   cartHasDirectShipItems?: bool,
   numberOfAddressLines?: number,
   submitRegistration: () => Promise<any>,
@@ -81,6 +87,7 @@ const RegistrationProvider = ({
   userLocation,
   customerAttributes,
   numberOfAddressLines,
+  registrationMode,
   submitRegistration,
   children,
   formContainerRef,
@@ -98,8 +105,16 @@ const RegistrationProvider = ({
   const { query } = useRoute();
 
   const isShippingAddressSelectionEnabled = useMemo(
-    () => query?.checkout && cartHasDirectShipItems,
-    [cartHasDirectShipItems, query]
+    () =>
+      query?.checkout &&
+      cartHasDirectShipItems &&
+      registrationMode !== SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+    [cartHasDirectShipItems, query, registrationMode]
+  );
+
+  const isBillingAddressSelectionEnabled = useMemo(
+    () => registrationMode !== SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+    [registrationMode]
   );
 
   // Determine values to prefill some form fields
@@ -110,7 +125,20 @@ const RegistrationProvider = ({
 
   const userRegion = useMemo(() => userLocation?.region || null, [userLocation]);
 
-  const baseConstraints = useMemo(() => generateBaseConstraints(), []);
+  const baseConstraints = useMemo(
+    () => generateBaseConstraints({ registrationMode }),
+    [registrationMode]
+  );
+
+  const billingConstraints = useMemo(
+    () => generateBillingConstraints({ registrationMode }),
+    [registrationMode]
+  );
+
+  const shippingConstraints = useMemo(
+    () => generateShippingConstraints({ registrationMode }),
+    [registrationMode]
+  );
 
   const extraConstraints = useMemo(
     () => generateExtraConstraints(customerAttributes), [customerAttributes]
@@ -314,9 +342,11 @@ const RegistrationProvider = ({
       updateShippingForm: shippingFormState.setValues,
       updateExtraForm: extraFormState.setValues,
       isShippingAddressSelectionEnabled,
+      isBillingAddressSelectionEnabled,
       isShippingFormVisible,
       setIsShippingFormVisible,
       numberOfAddressLines,
+      registrationMode,
     }),
     [
       shopSettings.supportedCountries,
@@ -340,9 +370,11 @@ const RegistrationProvider = ({
       extraFormState.validationErrors,
       extraFormRequestErrors,
       isShippingAddressSelectionEnabled,
+      isBillingAddressSelectionEnabled,
       isShippingFormVisible,
       setIsShippingFormVisible,
       numberOfAddressLines,
+      registrationMode,
     ]
   );
 

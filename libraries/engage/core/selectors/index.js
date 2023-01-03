@@ -7,6 +7,7 @@ export {
   getFavicon,
   getNumberOfAddressLines,
   getGoogleSiteVerificationCode,
+  getRegistrationMode,
 } from './shopSettings';
 export {
   getIsLocationBasedShopping,

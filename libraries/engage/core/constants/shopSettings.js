@@ -16,5 +16,8 @@ export const SHOP_SETTING_IMAGES_CATEGORY_PLACEHOLDER = 'categoryPlaceholder';
 export const SHOP_SETTING_IMAGES_FAVICON = 'favicon';
 export const SHOP_SETTING_NUMBER_OF_ADDRESS_LINES = 'numberOfAddressLines';
 export const SHOP_SETTINGS_SHOW_CATEGORY_IMAGES = 'showCategoryImages';
+export const SHOP_SETTING_REGISTRATION_MODE = 'registrationMode';
+export const SHOP_SETTING_REGISTRATION_MODE_SIMPLE = 'simple';
+export const SHOP_SETTING_REGISTRATION_MODE_EXTENDED = 'extended';
 
 export const WISHLIST_MODE_PERSIST_ON_ADD = 'persistOnAdd';

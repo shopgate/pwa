@@ -8,7 +8,7 @@ import { ELEMENT_ID_SHIPPING_CONTACT } from '../../constants';
 import generateFormConfig from './RegistrationFormShipping.config';
 import {
   form, section, shippingFormSection,
-} from './Registration.style';
+} from './RegistrationContent.style';
 
 /**
  * The RegistrationFormShipping component.

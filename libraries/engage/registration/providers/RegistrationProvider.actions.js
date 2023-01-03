@@ -1,4 +1,8 @@
-import { EVALIDATION } from '@shopgate/engage/core';
+import {
+  EVALIDATION,
+  getRegistrationMode,
+  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+} from '@shopgate/engage/core';
 import {
   extractAttributes,
   convertPipelineValidationErrors,
@@ -17,11 +21,19 @@ export const submitRegistration = ({
   baseFormData, billingFormData, shippingFormData, additionalFormData,
 }) => async (dispatch, getState) => {
   const customerAttributes = getMerchantCustomerAttributes(getState());
+  const registrationMode = getRegistrationMode(getState());
   const { marketingOptIn, ...attributeData } = additionalFormData;
   const attributes = extractAttributes(customerAttributes, attributeData);
 
   const { emailAddress, password } = baseFormData;
-  const { firstName, lastName } = billingFormData;
+  let firstName;
+  let lastName;
+
+  if (registrationMode === SHOP_SETTING_REGISTRATION_MODE_SIMPLE) {
+    ({ firstName, lastName } = baseFormData);
+  } else {
+    ({ firstName, lastName } = billingFormData);
+  }
 
   const customer = {
     firstName,
@@ -33,17 +45,21 @@ export const submitRegistration = ({
       marketingOptIn,
     },
   };
-  customer.contacts = [{
-    ...billingFormData,
-    emailAddress,
-    isDefaultBilling: true,
-    isDefaultShipping: !shippingFormData,
-  }, ...(shippingFormData ? [{
-    ...shippingFormData,
-    emailAddress,
-    isDefaultBilling: false,
-    isDefaultShipping: true,
-  }] : [])];
+
+  if (registrationMode !== SHOP_SETTING_REGISTRATION_MODE_SIMPLE) {
+    // No contacts creation at "simple" registration mode
+    customer.contacts = [{
+      ...billingFormData,
+      emailAddress,
+      isDefaultBilling: true,
+      isDefaultShipping: !shippingFormData,
+    }, ...(shippingFormData ? [{
+      ...shippingFormData,
+      emailAddress,
+      isDefaultBilling: false,
+      isDefaultShipping: true,
+    }] : [])];
+  }
 
   let errors;
 

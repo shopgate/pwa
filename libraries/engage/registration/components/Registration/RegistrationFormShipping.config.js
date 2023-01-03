@@ -5,7 +5,11 @@ import { i18n } from '@shopgate/engage/core';
  * @param {Object} params Additional parameters
  * @returns {Object}
  */
-const generateFormConfig = ({ supportedCountries, userLocation, numberOfAddressLines }) => ({
+const generateFormConfig = ({
+  supportedCountries,
+  userLocation,
+  numberOfAddressLines,
+}) => ({
   fields: {
     firstName: {
       type: 'text',

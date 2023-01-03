@@ -8,7 +8,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { useScrollTo } from '@shopgate/engage/core/hooks/useScrollTo';
 import {
-  LoadingProvider, i18n, useAsyncMemo, useRoute,
+  LoadingProvider, i18n, useAsyncMemo, useRoute, SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
 } from '@shopgate/engage/core';
 import {
   ADDRESS_TYPE_SHIPPING,
@@ -431,6 +431,14 @@ const GuestRegistrationProvider = ({
       supportedCountries: shopSettings.supportedCountries,
       isLocked,
       handleSubmit,
+      /**
+       * Handling of registrationMode "simple" is not implemented for checkout. But since
+       * the guest registration is actually an order update and not a real registration, we
+       * hardcode the registration mode here, since the provider value will be used inside
+       * the shared form components.
+       */
+      registrationMode: SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+      isBillingAddressSelectionEnabled: true,
     }),
     [
       isShippingFormEnabled,
