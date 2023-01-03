@@ -1,7 +1,7 @@
 import { themeConfig } from '@shopgate/engage';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
 export const TWO_COLUMN_LAYOUT = {
   [responsiveMediaQuery('>=md', { webOnly: false })]: {
@@ -108,7 +108,7 @@ export const OUTLINED_FORM_FIELDS = {
     paddingLeft: 16,
   },
   ' .phonePicker': {
-    paddingTop: variables.gap.big,
+    paddingTop: 24,
     paddingBottom: 2,
   },
   ' .phonePicker .PhoneInputInput': {
