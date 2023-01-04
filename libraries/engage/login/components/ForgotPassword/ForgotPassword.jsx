@@ -2,8 +2,9 @@ import { hot } from 'react-hot-loader/root';
 import React, { Fragment, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  RippleButton, TextField, I18n, ArrowIcon,
+  RippleButton, I18n, ArrowIcon,
 } from '@shopgate/engage/components';
+import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { i18n, EUSERNOTFOUND } from '@shopgate/engage/core';
 import {
   container,
