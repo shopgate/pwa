@@ -10,10 +10,11 @@ const generateFormConfig = ({
   customerAttributes,
   isGuest,
   supportedCountries,
+  countrySortOrder,
   userLocation,
 }) => ({
   fields: {
-    ...(!isGuest && {
+    ...(!isGuest ? {
       marketingOptIn: {
         type: 'checkbox',
         label: i18n.text('registration.marketing_opt_in_label'),
@@ -22,6 +23,7 @@ const generateFormConfig = ({
     ...generateCustomerAttributesFields({
       customerAttributes,
       supportedCountries,
+      countrySortOrder,
       userLocation,
     }),
   },

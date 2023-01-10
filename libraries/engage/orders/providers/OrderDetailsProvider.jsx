@@ -171,6 +171,7 @@ const OrderDetailsProvider = ({
       isLoading,
       showForm,
       supportedCountries: shopSettings.supportedCountries,
+      countrySortOrder: shopSettings.countrySortOrder,
       validationErrors: convertValidationErrors(
         authenticateFormState.validationErrors || {}
       ),
@@ -192,6 +193,7 @@ const OrderDetailsProvider = ({
       isLoading,
       order,
       shopSettings.supportedCountries,
+      shopSettings.countrySortOrder,
       userLocation,
       errorMessage,
     ]

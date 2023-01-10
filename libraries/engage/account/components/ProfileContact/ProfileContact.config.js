@@ -3,20 +3,23 @@ import { ADDRESS_TYPE_SHIPPING, ADDRESS_TYPE_BILLING } from '@shopgate/engage/ch
 
 /**
  * Generates form configuration.
- * @param {Array} supportedCountries A list of supported countries.
- * @param {Object} userLocation User location for better phone picker defaults.
- * @param {boolean} isCheckout Whether the form is shown within the checkout process
- * @param {string} type An address type
- * @param {number} numberOfAddressLines The number of address lines
+ * @param {Object} options Options for the helper
+ * @param {Array} options.supportedCountries A list of supported countries.
+ * @param {Array} options.countrySortOrder Sort order for supported countries.
+ * @param {Object} options.userLocation User location for better phone picker defaults.
+ * @param {boolean} options.isCheckout Whether the form is shown within the checkout process
+ * @param {string} options.type An address type
+ * @param {number} options.numberOfAddressLines The number of address lines
  * @returns {Object}
  */
-export const generateFormConfig = (
+export const generateFormConfig = ({
   supportedCountries,
+  countrySortOrder,
   userLocation,
   isCheckout,
   type,
-  numberOfAddressLines
-) => ({
+  numberOfAddressLines,
+}) => ({
   fields: {
     firstName: {
       type: 'text',
@@ -42,6 +45,7 @@ export const generateFormConfig = (
         label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
         config: {
           supportedCountries,
+          countrySortOrder,
           userLocation,
         },
       },

@@ -56,6 +56,7 @@ const styles = {
 const PickupContactForm = () => {
   const {
     supportedCountries,
+    countrySortOrder,
     userLocation,
     defaultPickupPersonState,
     formValidationErrors,
@@ -64,8 +65,12 @@ const PickupContactForm = () => {
   } = useCheckoutContext();
 
   const formConfig = React.useMemo(
-    () => generateFormConfig(supportedCountries, userLocation),
-    [supportedCountries, userLocation]
+    () => generateFormConfig({
+      supportedCountries,
+      countrySortOrder,
+      userLocation,
+    }),
+    [countrySortOrder, supportedCountries, userLocation]
   );
 
   const handleUpdate = React.useCallback((values) => {

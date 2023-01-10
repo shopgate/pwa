@@ -318,6 +318,7 @@ const RegistrationProvider = ({
   const value = useMemo(
     () => ({
       supportedCountries: shopSettings.supportedCountries || [],
+      countrySortOrder: shopSettings.countrySortOrder || [],
       customerAttributes,
       userLocation,
       defaultBaseFormState,
@@ -350,6 +351,7 @@ const RegistrationProvider = ({
     }),
     [
       shopSettings.supportedCountries,
+      shopSettings.countrySortOrder,
       customerAttributes,
       userLocation,
       defaultBaseFormState,

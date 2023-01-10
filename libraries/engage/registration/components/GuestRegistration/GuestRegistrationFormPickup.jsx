@@ -45,6 +45,7 @@ const styles = {
 const GuestRegistrationFormPickup = () => {
   const {
     supportedCountries,
+    countrySortOrder,
     userLocation,
     defaultPickupFormState,
     pickupFormValidationErrors,
@@ -56,9 +57,10 @@ const GuestRegistrationFormPickup = () => {
   const formConfig = React.useMemo(
     () => generateFormConfig({
       supportedCountries,
+      countrySortOrder,
       userLocation,
     }),
-    [supportedCountries, userLocation]
+    [countrySortOrder, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

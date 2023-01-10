@@ -15,6 +15,7 @@ import { form, section } from './RegistrationContent.style';
 const RegistrationFormBilling = ({ isGuest }) => {
   const {
     supportedCountries,
+    countrySortOrder,
     userLocation,
     defaultBillingFormState,
     billingFormValidationErrors,
@@ -27,12 +28,14 @@ const RegistrationFormBilling = ({ isGuest }) => {
   const formConfig = useMemo(
     () => generateFormConfig({
       supportedCountries,
+      countrySortOrder,
       userLocation,
       numberOfAddressLines,
       isGuest,
       isReserveOnly: orderReserveOnly,
     }),
     [
+      countrySortOrder,
       isGuest,
       numberOfAddressLines,
       orderReserveOnly,

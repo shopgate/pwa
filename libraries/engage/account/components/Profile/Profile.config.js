@@ -6,6 +6,7 @@ import { generateCustomerAttributesFields } from '@shopgate/engage/account/helpe
  * @param {Object} additionalOptions Options for the customer attributes creation helper
  * @param {Array} additionalOptions.customerAttributes Customer attributes.
  * @param {Array} additionalOptions.supportedCountries A list of supported countries.
+ * @param {Array} additionalOptions.countrySortOrder Sort order for supported countries.
  * @param {Object} additionalOptions.userLocation User location for better phone picker defaults.
  * @param {boolean} [additionalOptions.allowPleaseChoose] Allows please choose option for required
  * attributes.
