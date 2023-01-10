@@ -111,6 +111,19 @@ export const OUTLINED_FORM_FIELDS = {
     paddingTop: 24,
     paddingBottom: 2,
   },
+  ' .textField.phonePicker:not(.simpleInput) .label': {
+    left: 48,
+    '&.floating': {
+      left: 0,
+    },
+  },
+  ' .textField.phonePicker:not(.simpleInput) input': {
+    paddingLeft: 0,
+  },
+  ' .phonePicker > .PhoneInputInput': {
+    paddingLeft: 16,
+    width: '100%',
+  },
   ' .phonePicker .PhoneInputInput': {
     borderBottom: 'none',
     color: 'var(--color-text-high-emphasis)',
