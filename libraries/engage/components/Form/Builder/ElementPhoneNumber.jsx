@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import classnames from 'classnames';
-import { camelCase, upperCase } from 'lodash';
+import { camelCase, upperCase, isEqual } from 'lodash';
 import { i18n } from '@shopgate/engage/core';
 import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInputCountrySelect from 'react-phone-number-input/mobile';
@@ -189,6 +189,18 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     return country;
   }, [countries, countrySortOrder, userLocation, value]);
 
+  const countryOptionsOrder = React.useMemo(() => {
+    const countryListsEqual = isEqual([...countries].sort(), [...countrySortOrder].sort());
+    /**
+     * When list with supported countries has the same entries as the country sort order, we don't
+     * need to add a separator to the countryOptionsOrder array since the country picker lists
+     * will not show a section with unordered countries.
+     */
+    return countrySortOrder.length
+      ? [...countrySortOrder, ...(countryListsEqual ? [] : ['|'])]
+      : [];
+  }, [countries, countrySortOrder]);
+
   const hasCountrySelect = React.useMemo(() => countries.length > 1, [countries.length]);
 
   const handleChangeWrapped = React.useCallback((phoneValue) => {
@@ -229,7 +241,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
           onBlur={() => setIsFocused(false)}
           disabled={disabled}
           {...hasCountrySelect ? {
-            countryOptionsOrder: countrySortOrder.length ? [...countrySortOrder, '|'] : [],
+            countryOptionsOrder,
             addInternationalOption: false,
             flags,
             countries,
