@@ -190,14 +190,21 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
   }, [countries, countrySortOrder, userLocation, value]);
 
   const countryOptionsOrder = React.useMemo(() => {
-    const countryListsEqual = isEqual([...countries].sort(), [...countrySortOrder].sort());
+    /**
+     * To avoid component errors remove countries from the sort order array that are not part
+     * of the counties array.
+     */
+    const sanitizedCountrySortOrder = countrySortOrder.filter(
+      countryCode => countries.includes(countryCode)
+    );
+    const countryListsEqual = isEqual([...countries].sort(), [...sanitizedCountrySortOrder].sort());
     /**
      * When list with supported countries has the same entries as the country sort order, we don't
      * need to add a separator to the countryOptionsOrder array since the country picker lists
      * will not show a section with unordered countries.
      */
-    return countrySortOrder.length
-      ? [...countrySortOrder, ...(countryListsEqual ? [] : ['|'])]
+    return sanitizedCountrySortOrder.length
+      ? [...sanitizedCountrySortOrder, ...(countryListsEqual ? [] : ['|'])]
       : [];
   }, [countries, countrySortOrder]);
 
