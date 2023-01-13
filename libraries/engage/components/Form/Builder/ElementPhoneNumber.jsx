@@ -157,7 +157,7 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     let country;
 
     if (value) {
-      // Try to parse the value the determine a country
+      // Try to parse the value to determine a country
       const phoneNumber = parsePhoneNumber(value || '');
 
       if (phoneNumber && phoneNumber.country) {
