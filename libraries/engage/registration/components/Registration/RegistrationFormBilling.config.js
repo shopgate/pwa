@@ -7,6 +7,7 @@ import { i18n } from '@shopgate/engage/core';
  */
 const generateFormConfig = ({
   supportedCountries,
+  countrySortOrder,
   userLocation,
   numberOfAddressLines,
   isGuest,
@@ -32,6 +33,7 @@ const generateFormConfig = ({
       label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
       config: {
         supportedCountries,
+        countrySortOrder,
         userLocation,
       },
     },

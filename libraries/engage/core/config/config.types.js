@@ -6,6 +6,7 @@ export type MerchantSettings = {
 
 export type ShopSettings = {
   supportedCountries?: string[];
+  countrySortOrder?: string[];
 }
 
 export type ConfigState = {

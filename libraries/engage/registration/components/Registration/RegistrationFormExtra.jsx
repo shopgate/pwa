@@ -19,6 +19,7 @@ const RegistrationFormExtra = ({ isGuest }) => {
     customerAttributes,
     extraFormValidationErrors,
     supportedCountries,
+    countrySortOrder,
     userLocation,
   } = useRegistration(isGuest);
 
@@ -27,9 +28,10 @@ const RegistrationFormExtra = ({ isGuest }) => {
       customerAttributes,
       isGuest,
       supportedCountries,
+      countrySortOrder,
       userLocation,
     }),
-    [customerAttributes, isGuest, supportedCountries, userLocation]
+    [countrySortOrder, customerAttributes, isGuest, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

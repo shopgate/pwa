@@ -233,6 +233,7 @@ const ProfileProvider = ({
     customer: defaultState,
     isCheckout,
     supportedCountries: shopSettings.supportedCountries,
+    countrySortOrder: shopSettings.countrySortOrder,
     userLocation,
     formState,
     saveForm: formState.handleSubmit,
@@ -242,6 +243,7 @@ const ProfileProvider = ({
   }), [
     userLocation,
     shopSettings.supportedCountries,
+    shopSettings.countrySortOrder,
     contacts,
     merchantCustomerAttributes,
     isCheckout,

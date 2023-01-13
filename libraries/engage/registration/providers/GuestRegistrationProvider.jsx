@@ -429,6 +429,7 @@ const GuestRegistrationProvider = ({
       numberOfAddressLines,
       userLocation,
       supportedCountries: shopSettings.supportedCountries,
+      countrySortOrder: shopSettings.countrySortOrder,
       isLocked,
       handleSubmit,
       /**
@@ -468,6 +469,7 @@ const GuestRegistrationProvider = ({
       numberOfAddressLines,
       userLocation,
       shopSettings.supportedCountries,
+      shopSettings.countrySortOrder,
       isLocked,
       handleSubmit,
     ]

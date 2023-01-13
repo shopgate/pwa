@@ -410,6 +410,7 @@ const CheckoutProvider = ({
     isButtonLocked: ((isLocked || isButtonLocked) && needsPayment) || !isOrderable,
     isLoading,
     supportedCountries: shopSettings.supportedCountries,
+    countrySortOrder: shopSettings.countrySortOrder,
     formValidationErrors: convertValidationErrors(formState.validationErrors || {}),
     formSetValues: formState.setValues,
     handleSubmitOrder: (...params) => {
@@ -454,6 +455,7 @@ const CheckoutProvider = ({
     isOrderable,
     isLoading,
     shopSettings.supportedCountries,
+    shopSettings.countrySortOrder,
     formState,
     handleUpdateShippingMethod,
     userLocation,

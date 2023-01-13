@@ -112,13 +112,14 @@ const ProfileContact = ({
     return Math.max(numberOfAddressLines, addressLinesInContact);
   }, [contact, numberOfAddressLines]);
 
-  const formConfig = useMemo(() => generateFormConfig(
-    shopSettings?.supportedCountries,
+  const formConfig = useMemo(() => generateFormConfig({
+    supportedCountries: shopSettings?.supportedCountries,
+    countrySortOrder: shopSettings?.countrySortOrder,
     userLocation,
     isCheckout,
     type,
-    addressLines
-  ), [addressLines, isCheckout, shopSettings, type, userLocation]);
+    numberOfAddressLines: addressLines,
+  }), [addressLines, isCheckout, shopSettings, type, userLocation]);
 
   const constraints = useMemo(() => generateConstraints(isCheckout), [isCheckout]);
 

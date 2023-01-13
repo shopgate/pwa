@@ -33,6 +33,7 @@ const mapCustomerAttributeType = (attribute) => {
  * @param {Object} options Options for the helper
  * @param {Array} options.customerAttributes Customer attributes.
  * @param {Array} options.supportedCountries A list of supported countries.
+ * @param {Array} options.countrySortOrder Sort order for supported countries.
  * @param {Object} options.userLocation User location for better phone picker defaults.
  * @param {boolean} options.allowPleaseChoose Allows please choose option for required attributes.
  * @returns {Object}
@@ -40,6 +41,7 @@ const mapCustomerAttributeType = (attribute) => {
 export const generateCustomerAttributesFields = ({
   customerAttributes,
   supportedCountries,
+  countrySortOrder,
   userLocation,
   allowPleaseChoose = true,
 }) => ({
@@ -62,6 +64,7 @@ export const generateCustomerAttributesFields = ({
       ...(attribute.type === 'callingNumber' ? {
         config: {
           supportedCountries,
+          countrySortOrder,
           userLocation,
         },
       } : null),

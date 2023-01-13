@@ -78,6 +78,7 @@ const ProfileForm = forwardRef((_, ref) => {
     validationErrors,
     merchantCustomerAttributes,
     supportedCountries,
+    countrySortOrder,
     userLocation,
   } = useProfileContext();
 
@@ -85,9 +86,10 @@ const ProfileForm = forwardRef((_, ref) => {
     () => generateFormConfig({
       customerAttributes: merchantCustomerAttributes,
       supportedCountries,
+      countrySortOrder,
       userLocation,
     }),
-    [merchantCustomerAttributes, supportedCountries, userLocation]
+    [countrySortOrder, merchantCustomerAttributes, supportedCountries, userLocation]
   );
 
   /* eslint-disable react-hooks/exhaustive-deps */

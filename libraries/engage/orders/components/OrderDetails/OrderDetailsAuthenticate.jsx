@@ -16,6 +16,7 @@ const OrderDetailsAuthenticate = () => {
   const { pathname } = useRoute();
   const {
     supportedCountries,
+    countrySortOrder,
     userLocation,
     validationErrors,
     updateForm,
@@ -28,8 +29,12 @@ const OrderDetailsAuthenticate = () => {
   } = useOrderDetails();
 
   const formConfig = useMemo(
-    () => generateFormConfig(supportedCountries, userLocation),
-    [supportedCountries, userLocation]
+    () => generateFormConfig({
+      supportedCountries,
+      countrySortOrder,
+      userLocation,
+    }),
+    [countrySortOrder, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

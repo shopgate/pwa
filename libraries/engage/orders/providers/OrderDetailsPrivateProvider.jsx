@@ -55,12 +55,20 @@ const OrderDetailsProvider = ({
       order,
       isLoading,
       supportedCountries: shopSettings.supportedCountries,
+      countrySortOrder: shopSettings.countrySortOrder,
       userLocation,
       fetchOrderDetails,
       cancelOrder: handleCancel,
     }),
-    [order, isLoading, shopSettings.supportedCountries,
-      userLocation, fetchOrderDetails, handleCancel]
+    [
+      order,
+      isLoading,
+      shopSettings.supportedCountries,
+      shopSettings.countrySortOrder,
+      userLocation,
+      fetchOrderDetails,
+      handleCancel,
+    ]
   );
 
   return (
