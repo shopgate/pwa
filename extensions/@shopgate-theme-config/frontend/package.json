@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-config",
-  "version": "7.8.0-beta.5",
+  "version": "7.8.0",
   "description": "Provides the theme configurations for Catalog 2.0",
   "license": "Apache-2.0",
   "devDependencies": {
