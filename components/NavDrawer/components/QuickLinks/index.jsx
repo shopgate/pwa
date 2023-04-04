@@ -4,9 +4,7 @@ import { themeConfig } from '@shopgate/engage';
 import {
   NavDrawer, DescriptionIcon, Icon, SurroundPortals,
 } from '@shopgate/engage/components';
-import {
-  NAV_MENU_QUICK_LINKS,
-} from '@shopgate/pwa-common/constants/Portals';
+import { NAV_MENU_QUICK_LINKS } from '@shopgate/engage/core';
 import portalProps from '../../portalProps';
 
 import connect from './connector';
@@ -33,7 +31,6 @@ const QuickLinks = ({ links, navigate }) => (
 
           return (
             <NavDrawer.Item
-              aria-hidden
               key={link.url}
               label={link.label}
               onClick={() => navigate(link.url, link.label)}
