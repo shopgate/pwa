@@ -3,6 +3,8 @@ const PRODUCT = 'product';
 
 // CONTENTS
 const IMAGE = 'image';
+const IMAGES = 'images';
+const GALLERY = 'gallery';
 const MEDIA = 'media';
 const HEADER = 'header';
 const VARIANT_SELECT = 'variant-select';
@@ -47,6 +49,11 @@ const ROW2 = 'row2';
 export const PRODUCT_IMAGE_BEFORE = `${PRODUCT}.${IMAGE}.${BEFORE}`;
 export const PRODUCT_IMAGE = `${PRODUCT}.${IMAGE}`;
 export const PRODUCT_IMAGE_AFTER = `${PRODUCT}.${IMAGE}.${AFTER}`;
+
+// IMAGE GALLERY
+export const PRODUCT_GALLERY_IMAGES_BEFORE = `${PRODUCT}.${GALLERY}.${IMAGES}.${BEFORE}`;
+export const PRODUCT_GALLERY_IMAGES = `${PRODUCT}.${GALLERY}.${IMAGES}`;
+export const PRODUCT_GALLERY_IMAGES_AFTER = `${PRODUCT}.${GALLERY}.${IMAGES}.${AFTER}`;
 
 // MEDIA
 export const PRODUCT_MEDIA_BEFORE = `${PRODUCT}.${MEDIA}.${BEFORE}`;

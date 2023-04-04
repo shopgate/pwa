@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
-import { Image, Swiper } from '@shopgate/engage/components';
+import { Image, SurroundPortals, Swiper } from '@shopgate/engage/components';
+import { PRODUCT_GALLERY_IMAGES } from '@shopgate/pwa-common-commerce/product';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
@@ -60,4 +61,14 @@ ProductGalleryImages.propTypes = {
   initialSlide: PropTypes.number.isRequired,
 };
 
-export default connect(ProductGalleryImages);
+/**
+ * @param {Object} props The component props.
+ * @return {JSX}
+ */
+const Wrapper = props => (
+  <SurroundPortals portalName={PRODUCT_GALLERY_IMAGES} portalProps={props}>
+    <ProductGalleryImages {...props} />
+  </SurroundPortals>
+);
+
+export default connect(Wrapper);
