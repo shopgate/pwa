@@ -5,7 +5,7 @@ import {
 } from '@shopgate/engage/components';
 import {
   NAV_MENU_QUICK_LINKS,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import portalProps from '../../portalProps';
 
 import Section from '../Section';
