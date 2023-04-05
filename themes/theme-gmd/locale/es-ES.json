@@ -138,7 +138,9 @@
     "modal": {
       "message": "Para añadir este producto a la cesta, por favor, seleccione las variantes.",
       "confirm": "Seleccionar variantes"
-    }
+    },
+    "open_list": "Lista abierta.",
+    "close_list": "Cerrar lista."
   },
   "filter": {
     "sort": {
@@ -175,9 +177,10 @@
   },
   "product": {
     "errors": {
-      "insufficientstock": "Sorry, this product is currently out of stock."
+      "insufficientstock": "Lo sentimos, este producto está actualmente agotado."
     },
     "description_heading": "Sobre",
+    "share": "Compartir el producto",
     "pick_an_attribute": "Elija uno {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
     "adding_item": "{count, plural, =1 {Añadiendo {count} artículo} other {Añadiendo {count} artículos}}",
@@ -186,6 +189,8 @@
     "add_to_cart": "Añadir a la cesta",
     "no_more_found": "El artículo: \"{name}\" ya no está disponible.",
     "quantity": "Cantidad",
+    "decrease_quantity": "Disminuir la cantidad",
+    "increase_quantity": "Aumentar la cantidad",
     "minOrderQuantity": "Cantidad mín. del pedido: {quantity} {unit}",
     "maxOrderQuantity": "Cantidad máx. del pedido: {quantity} {unit}",
     "available": {
@@ -540,6 +545,7 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please check your cart.",
+      "paypalFunding": "Payment Error: The instrument presented was either declined by the processor or bank, or it can't be used for this payment.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",
       "genericUpdateBilling": "Failed to update billing address.",
@@ -769,5 +775,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Sí",
+    "no": "No",
+    "title": "Valorar la aplicación",
+    "message": "¿Te gusta nuestra aplicación? Estaremos encantados de recibir una valoración.",
+    "rejectionApprovalMessage": "¿Quiere darnos su opinión? Esto nos ayudará a mejorar la aplicación."
   }
 }

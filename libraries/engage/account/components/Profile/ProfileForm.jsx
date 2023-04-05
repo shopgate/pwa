@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, forwardRef } from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
@@ -69,7 +69,7 @@ const styles = {
 /**
  * @returns {JSX}
  */
-const ProfileForm = () => {
+const ProfileForm = forwardRef((_, ref) => {
   const {
     formState,
     customer,
@@ -77,11 +77,19 @@ const ProfileForm = () => {
     deleteCustomer,
     validationErrors,
     merchantCustomerAttributes,
+    supportedCountries,
+    countrySortOrder,
+    userLocation,
   } = useProfileContext();
 
   const formConfig = useMemo(
-    () => generateFormConfig(merchantCustomerAttributes),
-    [merchantCustomerAttributes]
+    () => generateFormConfig({
+      customerAttributes: merchantCustomerAttributes,
+      supportedCountries,
+      countrySortOrder,
+      userLocation,
+    }),
+    [countrySortOrder, merchantCustomerAttributes, supportedCountries, userLocation]
   );
 
   /* eslint-disable react-hooks/exhaustive-deps */
@@ -95,7 +103,7 @@ const ProfileForm = () => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} ref={ref}>
       <FormBuilder
         name="ProfileForm"
         className={styles.form}
@@ -124,6 +132,6 @@ const ProfileForm = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ProfileForm;

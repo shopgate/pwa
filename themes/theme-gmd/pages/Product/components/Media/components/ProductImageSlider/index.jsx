@@ -32,7 +32,7 @@ class ProductImageSlider extends Component {
   };
 
   static defaultProps = {
-    'aria-hidden': null,
+    'aria-hidden': false,
     className: null,
     historyPush: noop,
     images: null,
@@ -48,6 +48,9 @@ class ProductImageSlider extends Component {
   constructor(props, context) {
     super(props, context);
     this.mediaRef = React.createRef(null);
+    this.state = {
+      depImage: null,
+    };
   }
 
   /**
@@ -80,10 +83,18 @@ class ProductImageSlider extends Component {
     }
 
     if (depImage) {
+      // if depImage has not changed since last time
+      if (this.state.depImage === depImage) {
+        if (this.mediaRef.current) {
+          this.mediaRef.current.style.filter = 'none';
+        }
+        return true;
+      }
       // Blur for image load
       if (this.mediaRef.current) {
         this.mediaRef.current.style.filter = 'blur(3px)';
       }
+      this.setState({ depImage });
       loadProductImage(depImage)
         .then(() => {
           if (this.mounted) {
@@ -141,6 +152,7 @@ class ProductImageSlider extends Component {
           indicators
           onSlideChange={this.handleSlideChange}
           className={className}
+          aria-label={product ? product.name : ''}
         >
           {images.map(image => (
             <Swiper.Item key={`${productId}-${image}`}>
@@ -159,22 +171,30 @@ class ProductImageSlider extends Component {
     let onClick = this.handleOpenGallery;
 
     if (!content) {
+      let src = null;
+      if (product && product.featuredImageBaseUrl) {
+        src = product.featuredImageBaseUrl;
+      } else if (images && images.length) {
+        [src] = images;
+      }
       content = (
         <ProductImage
-          src={product ? product.featuredImageBaseUrl : null}
+          src={src}
           className={className}
-          forcePlaceholder={!product}
+          forcePlaceholder={!src}
           resolutions={pdpResolutions}
           noBackground
+          alt={product ? product.name : ''}
         />
       );
-      if (!product || !product.featuredImageBaseUrl) {
+      if (!src) {
         onClick = noop;
       }
     }
 
     const wrapperStyles = {
       transition: '0.5s filter ease-out', // blur filter
+      transform: 'translate3d(0, 0, 0)', // Fix for cut off overlapping icons
     };
 
     return (

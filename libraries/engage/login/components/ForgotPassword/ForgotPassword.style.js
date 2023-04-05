@@ -17,10 +17,11 @@ export const headline = css({
   fontSize: '2.1875rem',
   lineHeight: 1,
   fontWeight: 500,
+  paddingBottom: variables.gap.big,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     fontSize: '2rem',
     fontWeight: 'normal',
-    paddingBottom: variables.gap.big,
+
   },
 });
 
@@ -33,13 +34,11 @@ export const subline = css({
 
 export const form = css({
   paddingTop: 24,
-  [responsiveMediaQuery('>sm', { webOnly: true })]: {
-    ...StylePresets.OUTLINED_FORM_FIELDS,
-    ' .simpleInput': {
-      paddingLeft: variables.gap.big,
-    },
+  ...StylePresets.OUTLINED_FORM_FIELDS,
+  ' .simpleInput': {
+    paddingLeft: variables.gap.big,
   },
-});
+}).toString();
 
 export const buttonContainer = css({
   paddingTop: variables.gap.big * 2,

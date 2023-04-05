@@ -13,6 +13,7 @@ export default css({
     position: 'absolute',
     WebkitOverflowScrolling: 'touch',
   } : {
+    height: '100%',
     backgroundColor: 'var(--page-background-color)',
   }),
   [responsiveMediaQuery('>xs', { webOnly: true })]: {

@@ -1,6 +1,11 @@
 import { ACTION_REPLACE } from '@virtuous/conductor';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { routeWillEnter$, routeDidEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
+import {
+  routeWillEnter$,
+  routeDidEnter$,
+  routeWillLeave$,
+  routeDidUpdate$,
+} from '@shopgate/pwa-common/streams/router';
 import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
@@ -10,6 +15,7 @@ import {
   preferredLocationDidUpdateGlobalNotOnSearch$,
   preferredLocationDidUpdateGlobalOnSearch$,
 } from '@shopgate/engage/locations/locations.streams';
+import { filterWillLeave$ } from '../../filter/streams';
 import {
   REQUEST_SEARCH_RESULTS,
   RECEIVE_SEARCH_RESULTS,
@@ -63,3 +69,10 @@ export const searchProductsNeedUpdate$ = preferredLocationDidUpdate$
   .switchMap(() => searchDidBackEntered$.first())
   .merge(searchFiltersDidUpdate$)
   .merge(preferredLocationDidUpdateGlobalOnSearch$);
+
+export const searchDidUpdate$ = routeDidUpdate$
+  .filter(({ action }) => action?.route?.pattern === SEARCH_PATTERN);
+
+export const searchFiltersDidUpdateFromFilterPage$ = searchDidUpdate$
+  .switchMap(() => filterWillLeave$.first())
+  .switchMap(() => searchWillEnter$.first());

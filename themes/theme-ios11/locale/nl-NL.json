@@ -139,7 +139,9 @@
     "modal": {
       "message": "Om dit product aan uw winkelwagen toe te voegen, selecteer alstublieft de varianten.",
       "confirm": "Selecteer varianten"
-    }
+    },
+    "open_list": "Open lijst.",
+    "close_list": "Sluit lijst."
   },
   "filter": {
     "sort": {
@@ -176,9 +178,10 @@
   },
   "product": {
     "errors": {
-      "insufficientstock": "Sorry, this product is currently out of stock."
+      "insufficientstock": "Sorry, dit product is momenteel niet op voorraad."
     },
     "description_heading": "Over",
+    "share": "Product delen",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
@@ -190,6 +193,8 @@
     "go_to_cart": "Winkelwagen",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
+    "decrease_quantity": "Vermindering van de hoeveelheid",
+    "increase_quantity": "Hoeveelheid verhogen",
     "minOrderQuantity": "Min. bestelhoeveelheid: {quantity} {unit}",
     "maxOrderQuantity": "Max. bestelhoeveelheid: {quantity} {unit}",
     "available": {
@@ -550,6 +555,7 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please check your cart.",
+      "paypalFunding": "Payment Error: The instrument presented was either declined by the processor or bank, or it can't be used for this payment.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",
       "genericUpdateBilling": "Failed to update billing address.",
@@ -779,5 +785,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Ja",
+    "no": "Nee",
+    "title": "Beoordeel app",
+    "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
+    "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
   }
 }

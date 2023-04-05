@@ -1,3 +1,4 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import handleSearch from './handleSearch';
 import handleNoResults from './handleNoResults';
 import successHandleScanner from '../action-creators/successHandleScanner';
@@ -9,7 +10,7 @@ import successHandleScanner from '../action-creators/successHandleScanner';
  * @param {string} payload Barcode payload.
  * @return {Function} A redux thunk.
  */
-export default event => async (dispatch) => {
+const handleBarCode = event => async (dispatch) => {
   const { scope, format, payload } = event;
   if (await dispatch(handleSearch(payload))) {
     dispatch(successHandleScanner(scope, format, payload));
@@ -17,4 +18,7 @@ export default event => async (dispatch) => {
     dispatch(handleNoResults(event, 'scanner.noResult.barCode'));
   }
 };
+
+/** @mixes {MutableFunction} */
+export default mutable(handleBarCode);
 

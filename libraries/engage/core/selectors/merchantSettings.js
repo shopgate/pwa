@@ -26,7 +26,7 @@ const getState = state => state?.settings?.merchantSettings || {};
  */
 const makeGetMerchantSettingByKey = (key, fallback = null) => createSelector(
   getState,
-  state => state?.[key] || fallback
+  state => (typeof state?.[key] !== 'undefined' ? state?.[key] : fallback)
 );
 
 export const getIsLocationBasedShopping = makeGetMerchantSettingByKey(

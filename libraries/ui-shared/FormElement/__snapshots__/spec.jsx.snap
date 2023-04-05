@@ -13,6 +13,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   label="testlabel"
   labelStatic={false}
   placeholder=""
+  showErrorText={true}
   translateErrorText={true}
 >
   <div
@@ -106,6 +107,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   label=""
   labelStatic={false}
   placeholder=""
+  showErrorText={true}
   translateErrorText={true}
 >
   <div
@@ -145,6 +147,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   label=""
   labelStatic={false}
   placeholder=""
+  showErrorText={true}
   translateErrorText={true}
 >
   <div
@@ -188,6 +191,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   label=""
   labelStatic={false}
   placeholder=""
+  showErrorText={true}
   translateErrorText={true}
 >
   <div
@@ -228,6 +232,7 @@ exports[`<FormElement /> should show the error message 1`] = `
   label=""
   labelStatic={false}
   placeholder=""
+  showErrorText={true}
   translateErrorText={true}
 >
   <div
@@ -291,6 +296,7 @@ exports[`<FormElement /> should show the label 1`] = `
   label="The label"
   labelStatic={false}
   placeholder=""
+  showErrorText={true}
   translateErrorText={true}
 >
   <div
@@ -384,6 +390,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   label=""
   labelStatic={false}
   placeholder="The placeholder"
+  showErrorText={true}
   translateErrorText={true}
 >
   <div

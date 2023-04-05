@@ -9,14 +9,17 @@ import {
   MODAL_VARIANT_SELECT,
   MODAL_ACTION_TYPE_PRIMARY,
   MODAL_ACTION_TYPE_NORMAL,
+  DIALOG_HTML_CONTENT,
 } from './constants';
 import PipelineErrorDialog from './components/PipelineErrorDialog';
 import TextMessageDialog from './components/TextMessageDialog';
+import HtmlContentDialog from './components/HtmlContentDialog';
 import BasicDialog from './components/BasicDialog';
 import VariantSelectModal from './components/VariantSelectModal';
 
 const dialogTypes = {
   [DIALOG_TEXT_MESSAGE]: TextMessageDialog,
+  [DIALOG_HTML_CONTENT]: HtmlContentDialog,
   [MODAL_PIPELINE_ERROR]: PipelineErrorDialog,
   [MODAL_VARIANT_SELECT]: VariantSelectModal,
 };

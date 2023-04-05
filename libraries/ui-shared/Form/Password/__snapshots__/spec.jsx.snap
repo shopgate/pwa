@@ -48,6 +48,7 @@ exports[`<Password> should render a password field 1`] = `
       label=""
       labelStatic={false}
       placeholder=""
+      showErrorText={true}
       translateErrorText={true}
     >
       <div

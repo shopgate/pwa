@@ -29,9 +29,11 @@ const PRICE = 'price';
 const PRICE_INFO = 'price-info';
 const MAP_PRICE = 'map-price';
 const ORDER_QUANTITY = 'order-quantity';
+const EFFECTIVITY_DATES = 'effectivity-dates';
 const UNIT_QUANTITY_PICKER = 'unit-quantity-picker';
 const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
+const DISCOUNT = 'discount';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -186,6 +188,10 @@ export const PRODUCT_MAP_PRICE_AFTER = `${PRODUCT}.${MAP_PRICE}.${AFTER}`;
 // ORDER QUANTITY HINT
 export const PRODUCT_ORDER_QUANTITY_BEFORE = `${PRODUCT}.${ORDER_QUANTITY}.${BEFORE}`;
 export const PRODUCT_ORDER_QUANTITY = `${PRODUCT}.${ORDER_QUANTITY}`;
+export const PRODUCT_EFFECTIVITY_DATES = `${PRODUCT}.${EFFECTIVITY_DATES}`;
 export const PRODUCT_ORDER_QUANTITY_AFTER = `${PRODUCT}.${ORDER_QUANTITY}.${AFTER}`;
 
 export const PRODUCT_UNIT_QUANTITY_PICKER = `${PRODUCT}.${UNIT_QUANTITY_PICKER}`;
+
+// PRODUCT DISCOUNT BADGE
+export const PRODUCT_DISCOUNT = `${PRODUCT}.${DISCOUNT}`;

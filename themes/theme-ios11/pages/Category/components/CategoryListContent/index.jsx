@@ -17,12 +17,14 @@ class CategoryListContent extends PureComponent {
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.shape()),
+    categoriesFetching: PropTypes.bool,
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
   };
 
   static defaultProps = {
     categories: null,
+    categoriesFetching: false,
     childrenCount: 6,
     hasChildren: false,
   }
@@ -32,7 +34,7 @@ class CategoryListContent extends PureComponent {
    */
   render() {
     const {
-      hasChildren, categories, categoryId, childrenCount,
+      hasChildren, categories, categoryId, childrenCount, categoriesFetching,
     } = this.props;
 
     return (
@@ -41,7 +43,10 @@ class CategoryListContent extends PureComponent {
         <Portal name={CATEGORY_LIST} props={{ categoryId }}>
           {hasChildren && (
             <Section title="category.sections.categories">
-              <CategoryList categories={categories} prerender={childrenCount} />
+              <CategoryList
+                categories={categories}
+                prerender={categoriesFetching ? childrenCount : 0}
+              />
             </Section>
           )}
         </Portal>

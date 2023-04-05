@@ -9,53 +9,40 @@ import CryptoJs from 'crypto-js';
 import sortBy from 'lodash/sortBy';
 import uniqBy from 'lodash/uniqBy';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { isIOSTheme, i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import {
-  RadioGroupV2 as RadioGroup, RadioCard, MessageBar, Card, ConditionalWrapper,
+  RadioGroupV2 as RadioGroup, RadioCard, MessageBar,
 } from '@shopgate/engage/components';
 import { useCheckoutContext } from '@shopgate/engage/checkout/hooks/common';
 import ShippingMethod from './ShippingMethod';
 import connect from './connector';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    padding: `0 ${variables.gap.big}px ${variables.gap[isIOSTheme() ? 'big' : 'xbig']}px`,
+    padding: `0 ${variables.gap.big}px ${variables.gap.xbig}px`,
   }).toString(),
   headline: css({
-    color: colors.shade3,
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    textTransform: 'uppercase',
     padding: `0 ${variables.gap.small}px 0 0`,
     margin: `0 0 ${variables.gap.small}px 0`,
-    ...(!isIOSTheme() ? {
-      color: 'var(--color-text-high-emphasis)',
-      textTransform: 'none',
-    } : {}),
+    color: 'var(--color-text-high-emphasis)',
+    textTransform: 'none',
   }).toString(),
   container: css({
-    ...(!isIOSTheme() ? {
-      border: '1px solid #eaeaea',
-    } : {}),
+    border: '1px solid #eaeaea',
     ' li:nth-child(2n)': {
       background: 'var(--color-background-accent)',
     },
   }).toString(),
   containerSingle: css({
-    ...(!isIOSTheme() ? {
-      padding: variables.gap.small,
-    } : {
-      padding: variables.gap.big,
-    }),
+    padding: variables.gap.small,
   }).toString(),
   card: css({
     display: 'flex',
     alignItems: 'center',
-    ...(isIOSTheme() ? {
-      padding: `${variables.gap.xsmall}px ${variables.gap.small}px 0 ${variables.gap.xsmall}px`,
-    } : {}),
   }).toString(),
   errorMessage: css({
     margin: 0,
@@ -198,39 +185,30 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
       <h3 className={styles.headline}>
         {i18n.text('checkout.shippingMethod.title')}
       </h3>
-      <ConditionalWrapper
-        condition={isIOSTheme()}
-        wrapper={children =>
-          <Card className={styles.iOSCard}>
-            {children}
-          </Card>
-          }
-      >
-        { shippingMethods.length === 1 ? (
-          <div className={classNames(styles.container, styles.containerSingle)}>
-            <ShippingMethod shippingMethod={shippingMethods[0]} />
-          </div>
-        ) : (
-          <RadioGroup
-            name="shipping-methods"
-            value={selectedHash}
-            onChange={onChange}
-            component="ul"
-            classes={{ root: styles.container }}
-            disabled={isLoading}
-          >
-            { shippingMethods.map(shippingMethod => (
-              <RadioCard
-                renderCard={CardComponent}
-                value={shippingMethod.hash}
-                key={shippingMethod.hash}
-              >
-                <ShippingMethod shippingMethod={shippingMethod} />
-              </RadioCard>
-            ))}
-          </RadioGroup>
-        )}
-      </ConditionalWrapper>
+      { shippingMethods.length === 1 ? (
+        <div className={classNames(styles.container, styles.containerSingle)}>
+          <ShippingMethod shippingMethod={shippingMethods[0]} />
+        </div>
+      ) : (
+        <RadioGroup
+          name="shipping-methods"
+          value={selectedHash}
+          onChange={onChange}
+          component="ul"
+          classes={{ root: styles.container }}
+          disabled={isLoading}
+        >
+          { shippingMethods.map(shippingMethod => (
+            <RadioCard
+              renderCard={CardComponent}
+              value={shippingMethod.hash}
+              key={shippingMethod.hash}
+            >
+              <ShippingMethod shippingMethod={shippingMethod} />
+            </RadioCard>
+          ))}
+        </RadioGroup>
+      )}
     </div>
   );
 };

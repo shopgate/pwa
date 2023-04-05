@@ -1,4 +1,5 @@
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import errorHandleScanner from '../action-creators/errorHandleScanner';
 
@@ -10,7 +11,7 @@ import errorHandleScanner from '../action-creators/errorHandleScanner';
  * @param {string} message The message to display.
  * @return {Function} A redux thunk.
  */
-export default ({ scope, format, payload }, message) => async (dispatch) => {
+const handleNoResult = ({ scope, format, payload }, message) => async (dispatch) => {
   dispatch(errorHandleScanner(scope, format, payload));
   dispatch(showModal({
     dismiss: null,
@@ -19,4 +20,7 @@ export default ({ scope, format, payload }, message) => async (dispatch) => {
     message,
   })).then(confirmed => confirmed && Scanner.start());
 };
+
+/** @mixes {MutableFunction} */
+export default mutable(handleNoResult);
 

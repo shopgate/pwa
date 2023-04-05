@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { isIOSTheme } from '@shopgate/engage/core';
 import { getPaymentMethods } from '../selectors/payment';
 import { getCheckoutOrder } from '../selectors/order';
 import CheckoutContext from '../providers/CheckoutProvider.context';
@@ -43,28 +42,21 @@ const mapDispatchToProps = dispatch => ({
   fetchOrder: () => dispatch(fetchCheckoutOrder()),
 });
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const styles = {
   headline: css({
-    color: colors.shade3,
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    textTransform: 'uppercase',
     margin: `0 0 ${variables.gap.small}px 0`,
     marginLeft: 16,
     marginRight: 8,
-    ...(!isIOSTheme() ? {
-      color: 'var(--color-text-high-emphasis)',
-      textTransform: 'none',
-    } : {}),
+    color: 'var(--color-text-high-emphasis)',
+    textTransform: 'none',
   }).toString(),
   section: css({
     marginBottom: 0,
     marginTop: 4,
-    ...(isIOSTheme() ? {
-      marginBottom: 32,
-    } : {}),
   }).toString(),
   buttons: css({
     marginLeft: 16,
@@ -72,9 +64,6 @@ const styles = {
     marginBottom: 16,
     display: 'flex',
     flexDirection: 'row',
-    ...(isIOSTheme() ? {
-      marginBottom: 32,
-    } : {}),
   }).toString(),
 };
 
@@ -119,6 +108,7 @@ const PaymentMethodProvider = ({
   // Currently simply redirect fulfill request to the active payment method.
   useEffect(() => {
     setPaymentHandler({
+      getSupportsRedirect: paymentImpl?.getSupportsRedirect || (() => true),
       getCustomPayButton: () => paymentImpl?.payButton,
       fulfillTransaction: async ({ paymentTransactions }) => {
         const resolved = await paymentMethodRef.current.fulfillTransaction({ paymentTransactions });

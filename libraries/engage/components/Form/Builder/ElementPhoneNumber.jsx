@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
 import classnames from 'classnames';
-import { camelCase } from 'lodash';
+import { camelCase, upperCase, isEqual } from 'lodash';
 import { i18n } from '@shopgate/engage/core';
 import { parsePhoneNumber } from 'react-phone-number-input';
-import PhoneInput from 'react-phone-number-input/mobile';
+import PhoneInputCountrySelect from 'react-phone-number-input/mobile';
+import PhoneInput from 'react-phone-number-input/input-mobile';
 import { getCountries } from 'react-phone-number-input/input';
 import en from 'react-phone-number-input/locale/en';
 import de from 'react-phone-number-input/locale/de';
@@ -12,17 +13,18 @@ import es from 'react-phone-number-input/locale/es';
 import fr from 'react-phone-number-input/locale/fr';
 import pt from 'react-phone-number-input/locale/pt';
 import flags from 'react-phone-number-input/flags';
-import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
+import Label from '@shopgate/pwa-ui-shared/TextField/components/Label';
+import FormHelper from './FormHelper';
 
 const { variables, colors } = themeConfig;
 
 const styles = {
   formField: css({
     width: '100%',
-    paddingBottom: variables.gap.small,
+    marginBottom: '0px !important',
   }).toString(),
 
   phoneField: css({
@@ -30,7 +32,7 @@ const styles = {
     width: '100%',
     paddingTop: variables.gap.big * 0.75,
     paddingBottom: variables.gap.big * 1.25,
-    marginBottom: variables.gap.small,
+
     ' input.PhoneInputInput': {
       outline: 'none',
       fontSize: '1rem',
@@ -71,6 +73,7 @@ type Props = {
   errorText: string,
   value: string,
   visible: boolean,
+  formName: string,
   element: {
     default?: string,
     label?: string,
@@ -78,6 +81,7 @@ type Props = {
     handleChange: (string, any) => void,
     config?: {
       supportedCountries?: string[],
+      countrySortOrder?: string[],
       userLocation?: any,
     }
   },
@@ -104,14 +108,15 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     errorText,
     value,
     visible,
+    formName,
   } = props;
   const {
     label,
     handleChange,
-    default: defaultValue = '',
     disabled = false,
     config: {
       supportedCountries = [],
+      countrySortOrder = [],
       userLocation = {},
     } = {},
   } = element;
@@ -120,30 +125,17 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
 
   // Maps available countries to correct format.
   const countries = React.useMemo(() => {
-    if (!supportedCountries) {
+    if (supportedCountries.length === 0) {
       return builtInCountries;
     }
 
-    const sortedCountries = [
-      ...builtInCountries,
-    ];
-
-    const sanitizedSupportedCountries = supportedCountries.map((country) => {
+    return supportedCountries.map((country) => {
       const pieces = country.split('_');
-      return pieces[0];
+      return upperCase(pieces[0]);
     });
-
-    sanitizedSupportedCountries.forEach((country) => {
-      sortedCountries.splice(sortedCountries.indexOf(country), 1);
-    });
-
-    return [
-      ...sanitizedSupportedCountries,
-      ...sortedCountries,
-    ];
   }, [supportedCountries]);
 
-  const countriesNames = useCountriesNames(supportedCountries, locales);
+  const countriesNames = useCountriesNames(countries, locales);
 
   // Get labels for supported countries.
   const labels = React.useMemo(() => {
@@ -161,30 +153,69 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     return output;
   }, [countries, countriesNames]);
 
-  // Sets the default country based on the users location.
   const defaultCountry = React.useMemo(() => {
-    if (!defaultValue && !value && userLocation) {
-      return userLocation.country;
+    let country;
+
+    if (value) {
+      // Try to parse the value to determine a country
+      const phoneNumber = parsePhoneNumber(value || '');
+
+      if (phoneNumber && phoneNumber.country) {
+        ({ country } = phoneNumber);
+      }
     }
 
-    const phoneNumber = parsePhoneNumber(value || '');
-
-    if (phoneNumber && phoneNumber.country) {
-      return phoneNumber.country;
+    if (!country && userLocation) {
+      // Take the country from the user location if present
+      ({ country } = userLocation);
     }
 
-    if (userLocation) {
-      return userLocation.country;
+    if (!country) {
+      // If no country could be determined yet, take the country from the language
+      ([, country] = i18n.getLang().split('-'));
     }
 
-    return i18n.getLang().split('-')[1];
-  }, [defaultValue, userLocation, value]);
+    // Check if the determined country is included inside the available countries
+    if (!countries.includes(country)) {
+      if (countrySortOrder?.length && countries.includes(countrySortOrder[0])) {
+        // Take first country if the sort order list if present
+        ([country] = countrySortOrder);
+      } else {
+        // Take first country from the list
+        ([country] = countries);
+      }
+    }
+
+    return country;
+  }, [countries, countrySortOrder, userLocation, value]);
+
+  const countryOptionsOrder = React.useMemo(() => {
+    /**
+     * To avoid component errors remove countries from the sort order array that are not part
+     * of the counties array.
+     */
+    const sanitizedCountrySortOrder = countrySortOrder.filter(
+      countryCode => countries.includes(countryCode)
+    );
+    const countryListsEqual = isEqual([...countries].sort(), [...sanitizedCountrySortOrder].sort());
+    /**
+     * When list with supported countries has the same entries as the country sort order, we don't
+     * need to add a separator to the countryOptionsOrder array since the country picker lists
+     * will not show a section with unordered countries.
+     */
+    return sanitizedCountrySortOrder.length
+      ? [...sanitizedCountrySortOrder, ...(countryListsEqual ? [] : ['|'])]
+      : [];
+  }, [countries, countrySortOrder]);
+
+  const hasCountrySelect = React.useMemo(() => countries.length > 1, [countries.length]);
 
   const handleChangeWrapped = React.useCallback((phoneValue) => {
     handleChange(phoneValue, { target: { name } });
   }, [handleChange, name]);
 
-  const phoneClasses = classnames({
+  const phoneClasses = classnames('textField', {
+    simpleInput: !hasCountrySelect,
     [camelCase(name)]: true,
     phonePicker: true,
     phonePickerError: !!errorText,
@@ -198,43 +229,40 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     return null;
   }
 
-  if (!countries || countries.length === 0) {
-    return (
-      <TextField
-        name={name}
-        value={value}
-        onChange={handleChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        label={label}
-        className={classnames(styles.formField, { validationError: !!errorText })}
-        errorText={errorText}
-        disabled={disabled}
-      />
-    );
-  }
+  const Component = hasCountrySelect ? PhoneInputCountrySelect : PhoneInput;
 
   return (
-    <div className={phoneClasses}>
-      <PhoneInput
-        defaultCountry={defaultCountry}
-        addInternationalOption={false}
-        flags={flags}
-        name={name}
-        value={value || ''}
-        onChange={handleChangeWrapped}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        placeholder={label}
-        countries={countries}
-        labels={labels}
-        disabled={disabled}
+    <div className="formBuilderField">
+      <div className={phoneClasses}>
+        <Label
+          label={label}
+          isFocused={isFocused}
+          isFloating={isFocused || !!value}
+        />
+        <Component
+          defaultCountry={defaultCountry}
+          name={name}
+          value={value || ''}
+          onChange={handleChangeWrapped}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          disabled={disabled}
+          {...hasCountrySelect ? {
+            countryOptionsOrder,
+            addInternationalOption: false,
+            flags,
+            countries,
+            labels,
+          } : {
+            className: 'PhoneInputInput',
+          }}
+        />
+      </div>
+      <FormHelper
+        errorText={errorText}
+        element={element}
+        formName={formName}
       />
-      {!!errorText && (
-        <div className={`errorText ${styles.phoneFieldErrorText}`}>
-          {errorText}
-        </div>
-      )}
     </div>
   );
 });

@@ -5,7 +5,7 @@ exports[`<ItemDiscount /> should render with discount 1`] = `
   aria-hidden={true}
   className={
     Object {
-      "data-css-1mq4e16": "",
+      "data-css-1hbxai8": "",
     }
   }
 >

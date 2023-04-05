@@ -24,13 +24,14 @@ function ViewContainer({
   noScrollOnKeyboard,
   visible,
   'aria-hidden': ariaHidden,
+  noContentPortal,
 }) {
   if (visible) {
     setPageBackgroundColor(background);
   }
 
   const style = {
-    display: visible ? 'block' : 'none',
+    display: visible ? 'flex' : 'none',
   };
 
   return (
@@ -41,6 +42,7 @@ function ViewContainer({
             <Content
               noScrollOnKeyboard={noScrollOnKeyboard}
               setContentRef={setContentRef}
+              noContentPortal={noContentPortal}
             >
               {children}
             </Content>
@@ -56,14 +58,16 @@ ViewContainer.propTypes = {
   'aria-hidden': PropTypes.bool,
   background: PropTypes.string,
   children: PropTypes.node,
+  noContentPortal: PropTypes.bool,
   noScrollOnKeyboard: PropTypes.bool,
 };
 
 ViewContainer.defaultProps = {
-  'aria-hidden': true,
+  'aria-hidden': false,
   background: colors.light,
   children: null,
   noScrollOnKeyboard: false,
+  noContentPortal: false,
 };
 
 /**

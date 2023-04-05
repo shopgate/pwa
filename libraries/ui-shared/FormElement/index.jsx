@@ -27,6 +27,7 @@ class FormElement extends Component {
     label: PropTypes.node,
     labelStatic: PropTypes.bool,
     placeholder: PropTypes.node,
+    showErrorText: PropTypes.bool,
     translateErrorText: PropTypes.bool,
   };
 
@@ -44,6 +45,7 @@ class FormElement extends Component {
     hasUnderline: true,
     translateErrorText: true,
     disabled: false,
+    showErrorText: true,
   };
 
   /**
@@ -73,7 +75,7 @@ class FormElement extends Component {
   render() {
     const {
       isFocused, errorText, translateErrorText,
-      placeholder, hasPlaceholder, htmlFor, label, className, disabled, labelStatic,
+      placeholder, hasPlaceholder, htmlFor, label, className, disabled, labelStatic, showErrorText,
     } = this.props;
 
     return (
@@ -109,7 +111,9 @@ class FormElement extends Component {
         {this.props.hasUnderline &&
           <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />
         }
-        {errorText && <ErrorText errorText={errorText} translate={translateErrorText} />}
+        {errorText && showErrorText &&
+          <ErrorText errorText={errorText} translate={translateErrorText} />
+        }
       </div>
     );
   }

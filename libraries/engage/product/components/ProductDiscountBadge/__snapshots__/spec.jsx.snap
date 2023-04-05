@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductDiscountBadge /> should not render with discount if widgetSetting is false 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductDiscountBadge)
+    productId="1234"
+  >
+    <ProductDiscountBadge
+      discount={12}
+      dispatch={[Function]}
+      productId="1234"
+    >
+      <ProductBadges
+        className="css-1q31aw2"
+        location="productDiscountBadge"
+        portalProps={
+          Object {
+            "show": false,
+            "style": Object {},
+          }
+        }
+        productId="1234"
+      >
+        <div
+          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+        >
+          <SurroundPortals
+            portalName="component.product-badges"
+            portalProps={
+              Object {
+                "location": "productDiscountBadge",
+                "productId": "1234",
+                "show": false,
+                "style": Object {},
+              }
+            }
+          >
+            <Portal
+              name="component.product-badges.before"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": false,
+                  "style": Object {},
+                }
+              }
+            />
+            <Portal
+              name="component.product-badges"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": false,
+                  "style": Object {},
+                }
+              }
+            />
+            <Portal
+              name="component.product-badges.after"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": false,
+                  "style": Object {},
+                }
+              }
+            />
+          </SurroundPortals>
+        </div>
+      </ProductBadges>
+    </ProductDiscountBadge>
+  </Connect(ProductDiscountBadge)>
+</Provider>
+`;
+
+exports[`<ProductDiscountBadge /> should render with discount 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductDiscountBadge)
+    productId="1234"
+  >
+    <ProductDiscountBadge
+      discount={12}
+      dispatch={[Function]}
+      productId="1234"
+    >
+      <ProductBadges
+        className="css-1q31aw2"
+        location="productDiscountBadge"
+        portalProps={
+          Object {
+            "show": true,
+            "style": Object {
+              "color": "blue",
+            },
+          }
+        }
+        productId="1234"
+      >
+        <div
+          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+        >
+          <SurroundPortals
+            portalName="component.product-badges"
+            portalProps={
+              Object {
+                "location": "productDiscountBadge",
+                "productId": "1234",
+                "show": true,
+                "style": Object {
+                  "color": "blue",
+                },
+              }
+            }
+          >
+            <Portal
+              name="component.product-badges.before"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": true,
+                  "style": Object {
+                    "color": "blue",
+                  },
+                }
+              }
+            />
+            <Portal
+              name="component.product-badges"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": true,
+                  "style": Object {
+                    "color": "blue",
+                  },
+                }
+              }
+            >
+              <div
+                aria-hidden={true}
+                className="css-1bgf2js css-icjsl7 theme__product__product-discount"
+              >
+                <SurroundPortals
+                  portalName="product.discount"
+                  portalProps={
+                    Object {
+                      "discount": 12,
+                      "productId": "1234",
+                    }
+                  }
+                >
+                  <Portal
+                    name="product.discount.before"
+                    props={
+                      Object {
+                        "discount": 12,
+                        "productId": "1234",
+                      }
+                    }
+                  />
+                  <Portal
+                    name="product.discount"
+                    props={
+                      Object {
+                        "discount": 12,
+                        "productId": "1234",
+                      }
+                    }
+                  >
+                    <DiscountBadge
+                      className="css-1dtzobl"
+                      discount={null}
+                      display="small"
+                      text="-12%"
+                    >
+                      <div
+                        data-test-id="-12%"
+                      >
+                        <Translate
+                          className="css-13de4di css-1dtzobl"
+                          params={
+                            Array [
+                              null,
+                            ]
+                          }
+                          role={null}
+                          string="-12%"
+                          transform={null}
+                        >
+                          <span
+                            className="css-13de4di css-1dtzobl"
+                            role={null}
+                          >
+                            -12%
+                          </span>
+                        </Translate>
+                      </div>
+                    </DiscountBadge>
+                  </Portal>
+                  <Portal
+                    name="product.discount.after"
+                    props={
+                      Object {
+                        "discount": 12,
+                        "productId": "1234",
+                      }
+                    }
+                  />
+                </SurroundPortals>
+              </div>
+            </Portal>
+            <Portal
+              name="component.product-badges.after"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": true,
+                  "style": Object {
+                    "color": "blue",
+                  },
+                }
+              }
+            />
+          </SurroundPortals>
+        </div>
+      </ProductBadges>
+    </ProductDiscountBadge>
+  </Connect(ProductDiscountBadge)>
+</Provider>
+`;
+
+exports[`<ProductDiscountBadge /> should render without discount 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductDiscountBadge)
+    productId="1234"
+  >
+    <ProductDiscountBadge
+      discount={0}
+      dispatch={[Function]}
+      productId="1234"
+    >
+      <ProductBadges
+        className="css-1q31aw2"
+        location="productDiscountBadge"
+        portalProps={
+          Object {
+            "show": true,
+            "style": Object {
+              "color": "blue",
+            },
+          }
+        }
+        productId="1234"
+      >
+        <div
+          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+        >
+          <SurroundPortals
+            portalName="component.product-badges"
+            portalProps={
+              Object {
+                "location": "productDiscountBadge",
+                "productId": "1234",
+                "show": true,
+                "style": Object {
+                  "color": "blue",
+                },
+              }
+            }
+          >
+            <Portal
+              name="component.product-badges.before"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": true,
+                  "style": Object {
+                    "color": "blue",
+                  },
+                }
+              }
+            />
+            <Portal
+              name="component.product-badges"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": true,
+                  "style": Object {
+                    "color": "blue",
+                  },
+                }
+              }
+            />
+            <Portal
+              name="component.product-badges.after"
+              props={
+                Object {
+                  "location": "productDiscountBadge",
+                  "productId": "1234",
+                  "show": true,
+                  "style": Object {
+                    "color": "blue",
+                  },
+                }
+              }
+            />
+          </SurroundPortals>
+        </div>
+      </ProductBadges>
+    </ProductDiscountBadge>
+  </Connect(ProductDiscountBadge)>
+</Provider>
+`;

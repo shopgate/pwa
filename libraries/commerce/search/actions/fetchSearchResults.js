@@ -62,6 +62,9 @@ const fetchSearchResults = params => (dispatch, getState) => {
       }
     });
   }
+
+  // eslint-disable-next-line consistent-return
+  return promise;
 };
 
 /** @mixes {MutableFunction} */

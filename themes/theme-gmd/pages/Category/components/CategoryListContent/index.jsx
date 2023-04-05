@@ -19,14 +19,18 @@ class CategoryListContent extends PureComponent {
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.shape()),
+    categoriesFetching: PropTypes.bool,
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
+    showCategoryImages: PropTypes.bool,
   };
 
   static defaultProps = {
     categories: null,
+    categoriesFetching: false,
     childrenCount: 6,
     hasChildren: false,
+    showCategoryImages: true,
   }
 
   /**
@@ -34,7 +38,7 @@ class CategoryListContent extends PureComponent {
    */
   render() {
     const {
-      hasChildren, categories, categoryId, childrenCount,
+      hasChildren, categories, categoryId, childrenCount, categoriesFetching,
     } = this.props;
 
     return (
@@ -44,10 +48,18 @@ class CategoryListContent extends PureComponent {
           {hasChildren && (
             <Section title="category.sections.categories">
               <ResponsiveContainer appAlways breakpoint="<=xs">
-                <CategoryList categories={categories} prerender={childrenCount} />
+                <CategoryList
+                  categories={categories}
+                  prerender={categoriesFetching ? childrenCount : 0}
+                  showImages={this.props.showCategoryImages}
+                />
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
-                <CategoryGrid categories={categories} prerender={childrenCount} />
+                <CategoryGrid
+                  categories={categories}
+                  prerender={categoriesFetching ? childrenCount : 0}
+                  showImages={this.props.showCategoryImages}
+                />
               </ResponsiveContainer>
             </Section>
           )}

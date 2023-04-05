@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
 import { showNoResults, showFilterBar } from '../../selectors';
 
 /**
@@ -8,8 +9,14 @@ import { showNoResults, showFilterBar } from '../../selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  showFilterBar: showFilterBar(state, props),
-  showNoResults: showNoResults(state, props),
+  showFilterBar: showFilterBar(state, {
+    ...props,
+    params: buildFetchSearchResultsParams().params,
+  }),
+  showNoResults: showNoResults(state, {
+    ...props,
+    params: buildFetchSearchResultsParams().params,
+  }),
 });
 
 /**

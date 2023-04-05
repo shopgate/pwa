@@ -53,6 +53,21 @@ export const hasMultipleFavoritesList = createSelector(
 );
 
 /**
+ * A selector that gets the id of the favorites list by the given name
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {string} the id of the favorites list
+ */
+export const getFavoritesListIdByName = createSelector(
+  getFavoritesLists,
+  (state, props) => props.listName,
+  (favLists, listName) => {
+    const { id } = favLists.find(list => list.name === listName) || {};
+    return id;
+  }
+);
+
+/**
  * @param {Object} state The global state.
  * @returns {Array}
  * @deprecated
@@ -84,22 +99,36 @@ export const getFavorites = createSelector(
 );
 
 /**
+ * Creates a selector that selects all ids that belong
+ * to the given favorite list.
+ * @param {Function} getListCode Selects the list code.
+ * @returns {Function}
+ */
+export const makeGetFavoritesIdsByList = getListCode => createSelector(
+  getFavoritesProducts,
+  getListCode,
+  (favProducts, listId) => {
+    const ids = favProducts.byList[listId]?.ids || [];
+    return ids;
+  }
+);
+
+/**
  * Creates a selector that selects all products that belong
  * to the given favorite list.
  * @param {Function} getListCode Selects the list code.
  * @returns {Function}
  */
-export const makeGetFavorites = getListCode => createSelector(
-  getFavoritesProducts,
-  getListCode,
-  getProducts,
-  (favProducts, listId, products) => {
-    const ids = favProducts.byList[listId]?.ids || [];
-    return ids
+export const makeGetFavorites = (getListCode) => {
+  const getFavoritesIdsByList = makeGetFavoritesIdsByList(getListCode);
+  return createSelector(
+    getFavoritesIdsByList,
+    getProducts,
+    (ids, products) => ids
       .filter(id => !!products[id] && products[id].productData)
-      .map(id => products[id].productData);
-  }
-);
+      .map(id => products[id].productData)
+  );
+};
 
 /**
  * True when favorites where not yet fetched for the first time.

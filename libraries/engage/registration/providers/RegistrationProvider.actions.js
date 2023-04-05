@@ -1,8 +1,14 @@
-import { EVALIDATION } from '@shopgate/engage/core';
-import { extractAttributes } from '@shopgate/engage/account/helper/form';
+import {
+  EVALIDATION,
+  getRegistrationMode,
+  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+} from '@shopgate/engage/core';
+import {
+  extractAttributes,
+  convertPipelineValidationErrors,
+} from '@shopgate/engage/account/helper/form';
 import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
 import { submitRegistration as submit } from '../actions';
-import { convertSubmitRegistrationValidationErrors } from '../helpers';
 
 /**
  * Submits registration form data.
@@ -15,11 +21,19 @@ export const submitRegistration = ({
   baseFormData, billingFormData, shippingFormData, additionalFormData,
 }) => async (dispatch, getState) => {
   const customerAttributes = getMerchantCustomerAttributes(getState());
+  const registrationMode = getRegistrationMode(getState());
   const { marketingOptIn, ...attributeData } = additionalFormData;
   const attributes = extractAttributes(customerAttributes, attributeData);
 
   const { emailAddress, password } = baseFormData;
-  const { firstName, lastName } = billingFormData;
+  let firstName;
+  let lastName;
+
+  if (registrationMode === SHOP_SETTING_REGISTRATION_MODE_SIMPLE) {
+    ({ firstName, lastName } = baseFormData);
+  } else {
+    ({ firstName, lastName } = billingFormData);
+  }
 
   const customer = {
     firstName,
@@ -31,17 +45,21 @@ export const submitRegistration = ({
       marketingOptIn,
     },
   };
-  customer.contacts = [{
-    ...billingFormData,
-    emailAddress,
-    isDefaultBilling: true,
-    isDefaultShipping: !shippingFormData,
-  }, ...(shippingFormData ? [{
-    ...shippingFormData,
-    emailAddress,
-    isDefaultBilling: false,
-    isDefaultShipping: true,
-  }] : [])];
+
+  if (registrationMode !== SHOP_SETTING_REGISTRATION_MODE_SIMPLE) {
+    // No contacts creation at "simple" registration mode
+    customer.contacts = [{
+      ...billingFormData,
+      emailAddress,
+      isDefaultBilling: true,
+      isDefaultShipping: !shippingFormData,
+    }, ...(shippingFormData ? [{
+      ...shippingFormData,
+      emailAddress,
+      isDefaultBilling: false,
+      isDefaultShipping: true,
+    }] : [])];
+  }
 
   let errors;
 
@@ -53,12 +71,13 @@ export const submitRegistration = ({
     }
   }
 
-  const converted = convertSubmitRegistrationValidationErrors(errors);
+  const converted = convertPipelineValidationErrors(errors, attributes);
 
   if (converted?.validation && Object.keys(converted.validation).length > 0) {
     const { emailAddress: errEmailAddress, password: errPassword } = converted.validation;
     const billing = converted?.validation?.contacts?.['0'] || {};
     const shipping = converted?.validation?.contacts?.['1'] || {};
+    const extra = converted?.validation?.attributes || {};
 
     return {
       errors: {
@@ -71,6 +90,9 @@ export const submitRegistration = ({
         },
         shippingFormData: {
           ...shipping,
+        },
+        extraFormData: {
+          ...extra,
         },
       },
     };

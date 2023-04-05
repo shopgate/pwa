@@ -11,6 +11,11 @@ css.global('button, html [type="button"], [type="reset"], [type="submit"]', {
   WebkitAppearance: 'button',
 });
 
+// since iOS 15 button has a default color of blue rgb(0, 122, 255);
+css.global('button', {
+  color: 'inherit',
+});
+
 /**
  * 1. Change font properties to `inherit` in Safari.
  * 2. Correct the inability to style clickable types in iOS and Safari.

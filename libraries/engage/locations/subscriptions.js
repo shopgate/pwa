@@ -6,14 +6,12 @@ import {
 } from '@shopgate/engage/product';
 import {
   cartReceived$,
-  cartWillEnter$,
   fetchCart,
   cartDidEnter$,
   getCartItems,
 } from '@shopgate/engage/cart';
 import { userDidLogin$ } from '@shopgate/engage/user';
 import {
-  receiveCoreConfig$,
   appDidStart$,
   routeWillEnter$,
   UIEvents,
@@ -49,7 +47,6 @@ import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
 import fetchProductInventories from './actions/fetchProductInventories';
 import {
   submitReservationSuccess$,
-  cartReceivedWithROPE$,
   userSearchChanged$,
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
@@ -57,7 +54,7 @@ import {
   preferredLocationDidUpdateGlobalOnWishlist$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
-import { MULTI_LINE_RESERVE, SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
+import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import selectGlobalLocation from './action-creators/selectGlobalLocation';
 
 let initialLocationsResolve;
@@ -109,7 +106,6 @@ function locationsSubscriber(subscribe) {
         if (!hasLocation) {
           // Fetch the missing location data
           await dispatch(fetchLocations({
-            ...userSearch,
             codes: [code],
           }));
         }
@@ -200,22 +196,6 @@ function locationsSubscriber(subscribe) {
     dispatch(fetchProductInventories(action.productData.id, {
       locationCodes: [preferredLocation.code],
     }));
-  });
-
-  // Core config and cart subscriptions
-  subscribe(receiveCoreConfig$, ({ action }) => {
-    const {
-      config: {
-        merchantSettings: { enabledFulfillmentMethodSelectionForEngage = [] } = {},
-      },
-    } = action;
-    if (enabledFulfillmentMethodSelectionForEngage.includes(MULTI_LINE_RESERVE)) {
-      // Refresh ropis and mixed cart on every cart enter
-      const cartRefresh$ = cartReceivedWithROPE$.switchMap(() => cartWillEnter$.first());
-      subscribe(cartRefresh$, ({ dispatch }) => {
-        dispatch(fetchCart());
-      });
-    }
   });
 
   // Core config and cart subscriptions

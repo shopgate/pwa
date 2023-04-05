@@ -24,7 +24,13 @@ function fetchProduct(productId, forceFetch = false) {
 
     if (!forceFetch && !shouldFetchData(product)) {
       if (product.productData) {
-        dispatch(receiveProductCached(product.productData));
+        /*
+        This timeout is needed here to make sure receivedVisibleProduct$ comes after
+        productWillEnter$. Otherwise productIsReady$ is not working correctly.
+         */
+        setTimeout(() => {
+          dispatch(receiveProductCached(product.productData));
+        }, 0);
       }
 
       return undefined;

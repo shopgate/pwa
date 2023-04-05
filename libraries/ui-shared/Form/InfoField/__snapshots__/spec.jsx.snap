@@ -13,6 +13,7 @@ exports[`<InfoField> should render info field 1`] = `
   label=""
   labelStatic={false}
   placeholder=""
+  showErrorText={true}
   translateErrorText={true}
 >
   <Grid

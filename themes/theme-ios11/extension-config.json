@@ -212,6 +212,7 @@
       "default": {
         "settings": {
           "@shopgate/engage/locations": {
+            "setUserSearchZipLocationFromSelection": true,
             "preferredLocationDefault": null,
             "alternativeLocationOnPDP": {
               "radius": 50
@@ -264,8 +265,15 @@
           },
           "@shopgate/engage/product/ProductSlider": {
             "slidesPerView": 2.3
+          },
+          "@shopgate/engage/product/components/ProductDiscountBadge": {
+            "pdp": {
+              "style": {},
+              "show": false
+            }
           }
         },
+        "styles": {},
         "typography": {
           "family": "system, -apple-system, \"SF Pro Display\", \"Helvetica Neue\", \"Lucida Grande\"",
           "rootSize": 17,
@@ -535,7 +543,8 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "hasWebTrackingEngage": false
+        "hasWebTrackingEngage": false,
+        "useSkuAsProductId": false
       },
       "params": {
         "type": "json",
@@ -600,6 +609,36 @@
       "params": {
         "type": "json",
         "label": "Mapping for percentage of users who should get the feature enabled"
+      }
+    },
+    "appRating": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "minDaysBetweenPopups": 90,
+        "rejectionMaxCount": 2,
+        "askForFeedback": true,
+        "feedbackLink": null,
+        "bundleId": {
+          "android": null,
+          "ios": null
+        },
+        "ordersPlaced": {
+          "value": 1,
+          "repeats": null
+        },
+        "timeInterval": {
+          "value": 30,
+          "repeats": null
+        },
+        "appStarts": {
+          "value": 10,
+          "repeats": null
+        }
+      },
+      "params": {
+        "type": "json",
+        "label": "App rating settings"
       }
     }
   }

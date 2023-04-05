@@ -235,6 +235,13 @@ class ProductCharacteristics extends Component {
   }
 
   /**
+   * Resets the highlight state
+   */
+  resetHighlight = () => {
+    this.setState({ highlight: null });
+  }
+
+  /**
    * Finds the first unselected characteristic.
    * @return {Object|null}
    */
@@ -281,6 +288,7 @@ class ProductCharacteristics extends Component {
               select: this.handleSelection,
               selected,
               values,
+              resetHighlight: this.resetHighlight,
             })
           );
         })}

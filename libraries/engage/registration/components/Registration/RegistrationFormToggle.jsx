@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { i18n, isIOSTheme } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import { Toggle } from '@shopgate/engage/components';
 import { ELEMENT_ID_SHIPPING_CONTACT_TOGGLE } from '../../constants';
 import { useRegistration } from '../../hooks';
@@ -11,9 +11,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     paddingBottom: 24,
-    ...(isIOSTheme() ? {
-      padding: '16px 0',
-    } : {}),
   }).toString(),
   label: css({
     paddingRight: 8,

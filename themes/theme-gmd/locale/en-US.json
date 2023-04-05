@@ -139,7 +139,9 @@
     "modal": {
       "message": "To add this product to your cart, please select the variants.",
       "confirm": "Select variants"
-    }
+    },
+    "open_list": "Open list.",
+    "close_list": "Close list."
   },
   "filter": {
     "sort": {
@@ -179,6 +181,7 @@
       "insufficientstock": "Sorry, this product is currently out of stock."
     },
     "description_heading": "About",
+    "share": "Share product",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
@@ -187,6 +190,8 @@
     "add_to_cart": "Add to cart",
     "no_more_found": "The item \"{name}\" is no longer available.",
     "quantity": "Quantity",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
     "minOrderQuantity": "Min. order quantity: {quantity} {unit}",
     "maxOrderQuantity": "Max. order quantity: {quantity} {unit}",
     "available": {
@@ -548,6 +553,7 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please check your cart.",
+      "paypalFunding": "Payment Error: The instrument presented was either declined by the processor or bank, or it can't be used for this payment.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",
       "genericUpdateBilling": "Failed to update billing address.",
@@ -777,5 +783,12 @@
     "weekData": {
       "firstDay": "sun"
     }
+  },
+  "appRating": {
+    "yes": "Yes",
+    "no": "No",
+    "title": "App rating",
+    "message": "Do you like our app? We would be happy to receive a rating!",
+    "rejectionApprovalMessage": "Would you like to give us feedback? This helps us to improve the app further."
   }
 }

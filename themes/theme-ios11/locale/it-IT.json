@@ -139,7 +139,9 @@
     "modal": {
       "message": "Per aggiungere questo prodotto al tuo carrello, prego selezionare le varianti.",
       "confirm": "Seleziona le varianti"
-    }
+    },
+    "open_list": "Elenco aperto.",
+    "close_list": "Chiudi lista."
   },
   "filter": {
     "sort": {
@@ -176,9 +178,10 @@
   },
   "product": {
     "errors": {
-      "insufficientstock": "Sorry, this product is currently out of stock."
+      "insufficientstock": "Siamo spiacenti, questo prodotto è attualmente esaurito."
     },
     "description_heading": "A riguardo",
+    "share": "Condividi il prodotto",
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
     "item_added": "{count, plural, =0 {# non ci sono elementi aggiunti} =1 {{count} elemento aggiunto} other {{count} elementi aggiunti}}",
@@ -190,6 +193,8 @@
     "go_to_cart": "Vai al carrello",
     "no_more_found": "L'articolo: \"{name}\" non è più disponibile.",
     "quantity": "Quantità",
+    "decrease_quantity": "Diminuire la quantità",
+    "increase_quantity": "Aumentare la quantità",
     "minOrderQuantity": "Quantità min. d'ordine: {quantity} {unit}",
     "maxOrderQuantity": "Quantità max. d'ordine: {quantity} {unit}",
     "available": {
@@ -550,6 +555,7 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please check your cart.",
+      "paypalFunding": "Payment Error: The instrument presented was either declined by the processor or bank, or it can't be used for this payment.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",
       "genericUpdateBilling": "Failed to update billing address.",
@@ -779,5 +785,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Sì",
+    "no": "No",
+    "title": "Vota l'app",
+    "message": "Ti piace la nostra app? Saremmo felici di ricevere una valutazione!",
+    "rejectionApprovalMessage": "Vuoi darci un feedback? Questo ci aiuterà a migliorare ulteriormente l'applicazione."
   }
 }

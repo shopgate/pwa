@@ -5,7 +5,12 @@ import { i18n } from '@shopgate/engage/core';
  * @param {Object} params Additional parameters
  * @returns {Object}
  */
-const generateFormConfig = ({ supportedCountries, userLocation, numberOfAddressLines }) => ({
+const generateFormConfig = ({
+  supportedCountries,
+  countrySortOrder,
+  userLocation,
+  numberOfAddressLines,
+}) => ({
   fields: {
     firstName: {
       type: 'text',
@@ -20,6 +25,7 @@ const generateFormConfig = ({ supportedCountries, userLocation, numberOfAddressL
       label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
       config: {
         supportedCountries,
+        countrySortOrder,
         userLocation,
       },
     },

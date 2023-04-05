@@ -60,7 +60,6 @@ class More extends Component {
       <View aria-hidden={false}>
         <BackBar right={null} />
         <Headline style={styles.headline} tag="h1" text={this.welcomeMessage} />
-
         {!isLoggedIn && <UserMenu {...this.props} />}
         <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
         {isLoggedIn && <UserMenu {...this.props} />}

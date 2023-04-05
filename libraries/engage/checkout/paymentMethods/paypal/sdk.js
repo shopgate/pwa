@@ -31,6 +31,7 @@ export const loadWebSdk = (settings, order) => new Promise((resolve, reject) => 
     'merchant-id': settings.merchantIdInPayPal,
     'disable-funding': 'credit,card',
     'integration-date': '2020-12-07',
+    commit: 'true',
     currency: order.currencyCode,
     intent: 'authorize',
     components: 'buttons,funding-eligibility,marks',

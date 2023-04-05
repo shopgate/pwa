@@ -138,7 +138,9 @@
     "modal": {
       "message": "Pour ajouter ce produit à votre panier, veuillez sélectionner la variante.",
       "confirm": "Sélectionner la variante"
-    }
+    },
+    "open_list": "Liste ouverte.",
+    "close_list": "Fermer la liste."
   },
   "filter": {
     "sort": {
@@ -175,9 +177,10 @@
   },
   "product": {
     "errors": {
-      "insufficientstock": "Sorry, this product is currently out of stock."
+      "insufficientstock": "Désolé, ce produit est actuellement en rupture de stock."
     },
     "description_heading": "à propos",
+    "share": "Partager le produit",
     "pick_an_attribute": "Choisir un {0}",
     "tax_disclaimer": "* Inclus TVA plus frais de livraison éventuels",
     "adding_item": "{count, plural, =1 {Ajouter {count} un objet} other {Ajouter {count} des objets}}",
@@ -540,6 +543,7 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please check your cart.",
+      "paypalFunding": "Payment Error: The instrument presented was either declined by the processor or bank, or it can't be used for this payment.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",
       "genericUpdateBilling": "Failed to update billing address.",
@@ -769,5 +773,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Oui",
+    "no": "Non",
+    "title": "Évaluer l'application",
+    "message": "Vous aimez notre application ? Nous serions heureux de recevoir une évaluation !",
+    "rejectionApprovalMessage": "Vous souhaitez nous faire part de vos commentaires ? Cela nous aidera à améliorer encore l'application."
   }
 }

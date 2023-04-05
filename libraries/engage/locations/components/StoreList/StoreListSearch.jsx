@@ -177,6 +177,7 @@ function StoreListSearch({
               onClick={handleLocateMeButton}
               type="button"
               className={inputIcon}
+              aria-label={i18n.text('locations.stores_near.location')}
             >
               <LocatorIcon />
             </button>

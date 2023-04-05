@@ -138,7 +138,9 @@
     "modal": {
       "message": "Om dit product aan uw winkelwagen toe te voegen, selecteer alstublieft de varianten.",
       "confirm": "Selecteer varianten"
-    }
+    },
+    "open_list": "Open lijst.",
+    "close_list": "Sluit lijst."
   },
   "filter": {
     "sort": {
@@ -540,6 +542,7 @@
       "genericUpdate": "Failed to process order, please try again later.",
       "checkCart": "Please check your cart.",
       "genericSubmit": "Failed to complete order, please check your cart.",
+      "paypalFunding": "Payment Error: The instrument presented was either declined by the processor or bank, or it can't be used for this payment.",
       "missingPaymentMethod": "No payment method configured.",
       "noPaymentTransaction": "No payment transaction available.",
       "genericUpdateBilling": "Failed to update billing address.",
@@ -769,5 +772,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Ja",
+    "no": "Nee",
+    "title": "Beoordeel app",
+    "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
+    "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
   }
 }

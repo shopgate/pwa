@@ -8,7 +8,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { useScrollTo } from '@shopgate/engage/core/hooks/useScrollTo';
 import {
-  LoadingProvider, i18n, useAsyncMemo, useRoute,
+  LoadingProvider, i18n, useAsyncMemo, useRoute, SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
 } from '@shopgate/engage/core';
 import {
   ADDRESS_TYPE_SHIPPING,
@@ -124,6 +124,7 @@ const GuestRegistrationProvider = ({
   const [billingFormRequestErrors, setBillingFormRequestErrors] = useState(null);
   const [shippingFormRequestErrors, setShippingFormRequestErrors] = useState(null);
   const [pickupFormRequestErrors, setPickupFormRequestErrors] = useState(null);
+  const [extraFormRequestErrors, setExtraFormRequestErrors] = useState(null);
   const [isShippingFormVisible, setIsShippingFormVisible] = useState(getIsShippingFormVisible());
   const [pickupConstraints, setPickupConstraints] = useState(generateSelfPickupConstraints());
   const { query: { edit: guestRegistrationEditMode = null } } = useRoute();
@@ -327,6 +328,7 @@ const GuestRegistrationProvider = ({
       setBillingFormRequestErrors(errors?.billingFormData || null);
       setShippingFormRequestErrors(errors?.shippingFormData || null);
       setPickupFormRequestErrors(errors?.pickupFormData || null);
+      setExtraFormRequestErrors(errors?.extraFormData || null);
 
       // Release forms for additional submits
       setIsBillingFormSubmitted(false);
@@ -419,7 +421,7 @@ const GuestRegistrationProvider = ({
         pickupFormState.validationErrors || pickupFormRequestErrors || {}
       ),
       extraFormValidationErrors: convertValidationErrors(
-        extraFormState.validationErrors || {}
+        extraFormState.validationErrors || extraFormRequestErrors || {}
       ),
       isShippingAddressSelectionEnabled,
       isPickupContactSelectionEnabled,
@@ -427,8 +429,17 @@ const GuestRegistrationProvider = ({
       numberOfAddressLines,
       userLocation,
       supportedCountries: shopSettings.supportedCountries,
+      countrySortOrder: shopSettings.countrySortOrder,
       isLocked,
       handleSubmit,
+      /**
+       * Handling of registrationMode "simple" is not implemented for checkout. But since
+       * the guest registration is actually an order update and not a real registration, we
+       * hardcode the registration mode here, since the provider value will be used inside
+       * the shared form components.
+       */
+      registrationMode: SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+      isBillingAddressSelectionEnabled: true,
     }),
     [
       isShippingFormEnabled,
@@ -442,6 +453,7 @@ const GuestRegistrationProvider = ({
       defaultExtraFormState,
       extraFormState.setValues,
       extraFormState.validationErrors,
+      extraFormRequestErrors,
       defaultPickupFormState,
       pickupFormState.setValues,
       pickupFormState.validationErrors,
@@ -457,6 +469,7 @@ const GuestRegistrationProvider = ({
       numberOfAddressLines,
       userLocation,
       shopSettings.supportedCountries,
+      shopSettings.countrySortOrder,
       isLocked,
       handleSubmit,
     ]

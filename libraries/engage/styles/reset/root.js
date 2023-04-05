@@ -1,8 +1,10 @@
 import { css } from 'glamor';
-import { useScrollContainer, hasWebBridge } from '@shopgate/engage/core';
+import { useScrollContainer, hasWebBridge, isIOSTheme } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { typography } = themeConfig;
+
+const iosThemeActive = isIOSTheme();
 
 css.global('*, *:before, *:after', {
   boxSizing: 'border-box',
@@ -49,7 +51,7 @@ css.global('html, body', {
   backgroundColor: 'var(--page-background-color)',
 });
 
-if (hasWebBridge()) {
+if (hasWebBridge() && !iosThemeActive) {
   css.insert(`@media(min-width: 600px) {
     html, body {
       background-color: var(--color-background-gutter-body, var(--page-background-color))

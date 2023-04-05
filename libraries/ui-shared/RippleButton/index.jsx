@@ -35,6 +35,7 @@ class RippleButton extends Component {
       flat: this.props.flat,
       type: this.props.type,
       wrapContent: false,
+      'aria-label': this.props['aria-label'],
     };
   }
 

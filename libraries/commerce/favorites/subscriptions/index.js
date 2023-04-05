@@ -70,7 +70,7 @@ export default function favorites(subscribe) {
     await Promise.all(items);
 
     const productIds = getFavoritesProductsIds(getState());
-    dispatch(fetchProductsById(productIds, null, false));
+    dispatch(fetchProductsById(productIds, null, false, false));
   });
 
   /** User login / logout */

@@ -292,7 +292,7 @@ export { isTouchDevice } from './helpers/isTouchDevice';
 export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';
 export { hasWebBridge } from './helpers/bridge';
 export { useScrollContainer } from './helpers/scrollContainer';
-export { getDeviceType } from './helpers/deviceType';
+export { getDeviceTypeForCms } from './helpers/deviceType';
 export * from './helpers/featureFlag';
 
 // -------------- CONFIG -------------- //
@@ -320,6 +320,7 @@ export {
   getEnableWebIndexing,
   getNumberOfAddressLines,
   getGoogleSiteVerificationCode,
+  getRegistrationMode,
 } from './selectors';
 
 export {
@@ -330,6 +331,8 @@ export {
   SHOP_SETTING_PRODUCTS_SORT_ORDER,
   SHOP_SETTING_COOKIE_CONSENT_MODE,
   SHOP_SETTING_DISPLAY_PRICE_PER_MEASURE_UNIT,
+  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+  SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
   EUNAUTHORIZED,
   EAUTHENTICATION,
 } from './constants';

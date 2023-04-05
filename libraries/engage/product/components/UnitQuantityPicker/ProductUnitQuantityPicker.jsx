@@ -62,7 +62,7 @@ const ProductUnitQuantityPicker = ({
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
       <div className={classNames(styles.root, className)}>
         <div>
-          <div aria-hidden className={styles.title}>
+          <div className={styles.title}>
             <I18n.Text string="product.sections.quantity" />
           </div>
           <UnitQuantityPicker

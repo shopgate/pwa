@@ -5,7 +5,7 @@ import { useRegistration } from '../../hooks';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { ELEMENT_ID_BILLING_CONTACT } from '../../constants';
 import generateFormConfig from './RegistrationFormBilling.config';
-import { form, section } from './Registration.style';
+import { form, section } from './RegistrationContent.style';
 
 /**
  * The RegistrationFormBilling component.
@@ -15,23 +15,33 @@ import { form, section } from './Registration.style';
 const RegistrationFormBilling = ({ isGuest }) => {
   const {
     supportedCountries,
+    countrySortOrder,
     userLocation,
     defaultBillingFormState,
     billingFormValidationErrors,
     updateBillingForm,
     numberOfAddressLines,
     orderReserveOnly,
+    isBillingAddressSelectionEnabled,
   } = useRegistration(isGuest);
 
   const formConfig = useMemo(
     () => generateFormConfig({
       supportedCountries,
+      countrySortOrder,
       userLocation,
       numberOfAddressLines,
       isGuest,
       isReserveOnly: orderReserveOnly,
     }),
-    [isGuest, numberOfAddressLines, orderReserveOnly, supportedCountries, userLocation]
+    [
+      countrySortOrder,
+      isGuest,
+      numberOfAddressLines,
+      orderReserveOnly,
+      supportedCountries,
+      userLocation,
+    ]
   );
 
   const title = useMemo(() => {
@@ -45,6 +55,10 @@ const RegistrationFormBilling = ({ isGuest }) => {
   const handleUpdate = useCallback((values) => {
     updateBillingForm(values);
   }, [updateBillingForm]);
+
+  if (!isBillingAddressSelectionEnabled) {
+    return null;
+  }
 
   return (
     <Section title={title} className={section} hasForm id={ELEMENT_ID_BILLING_CONTACT}>

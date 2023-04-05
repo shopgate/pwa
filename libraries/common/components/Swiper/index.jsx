@@ -189,7 +189,7 @@ Swiper.propTypes = {
 };
 
 Swiper.defaultProps = {
-  'aria-hidden': null,
+  'aria-hidden': false,
   autoPlay: false,
   className: null,
   classNames: {},

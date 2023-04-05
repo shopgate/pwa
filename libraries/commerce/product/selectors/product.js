@@ -364,6 +364,23 @@ export const getProductCurrency = createSelector(
 );
 
 /**
+ * Retrieves the product discount.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductDiscount = createSelector(
+  getProductPriceData,
+  (price) => {
+    if (!price) {
+      return null;
+    }
+
+    return price.discount || 0;
+  }
+);
+
+/**
  * Retrieves the unit price from a product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
@@ -640,6 +657,31 @@ export const getProductImages = createSelector(
     }
 
     return productImages || null;
+  }
+);
+
+export const getFeaturedImage = createSelector(
+  getProduct,
+  getBaseProduct,
+  (product, baseProduct) => {
+    let productImage = null;
+    let baseProductImage = null;
+
+    if (product?.featuredMedia) {
+      productImage = product.featuredMedia.type === 'image'
+        ? product.featuredMedia.url
+        : null;
+    }
+    if (baseProduct?.featuredMedia) {
+      baseProductImage = baseProduct.featuredMedia.type === 'image'
+        ? baseProduct.featuredMedia.url
+        : null;
+    }
+
+    return productImage
+      || baseProductImage
+      || product?.featuredImageBaseUrl
+      || product?.featuredImageUrl;
   }
 );
 

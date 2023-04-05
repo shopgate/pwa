@@ -18,6 +18,11 @@ jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/engage/core');
 jest.mock('@shopgate/engage/product');
+jest.mock('@shopgate/engage/account', () => ({}));
+jest.mock('@shopgate/engage/checkout', () => ({
+  CHECKOUT_ADDRESS_BOOK_PATTERN: 'CHECKOUT_ADDRESS_BOOK_PATTERN',
+  CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN: 'CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN',
+}));
 
 const currentPath = '/some/path';
 

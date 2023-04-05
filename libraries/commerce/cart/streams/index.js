@@ -8,6 +8,7 @@ import {
   navigate$,
 } from '@shopgate/pwa-common/streams/router';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
+import { getIsFetching } from '../selectors';
 import {
   CART_PATH,
 
@@ -80,6 +81,9 @@ export const cartDidLeave$ = routeDidLeave$
 export const cartRequesting$ = main$.filter(({ action }) => (
   action.type === REQUEST_CART
 ));
+
+export const cartWillEnterIdle$ = cartWillEnter$
+  .filter(({ getState }) => !getIsFetching(getState()));
 
 /**
  * @type {Observable}

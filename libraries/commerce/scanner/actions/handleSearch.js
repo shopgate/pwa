@@ -1,4 +1,5 @@
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
@@ -9,7 +10,7 @@ import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
  * @param {string} searchPhrase The search phrase.
  * @return {Function} A redux thunk.
  */
-export default searchPhrase => async (dispatch) => {
+const handleSearch = searchPhrase => async (dispatch) => {
   const {
     products = [],
   } = await dispatch(fetchProductsByQuery(2, searchPhrase));
@@ -34,3 +35,5 @@ export default searchPhrase => async (dispatch) => {
   return true;
 };
 
+/** @mixes {MutableFunction} */
+export default mutable(handleSearch);

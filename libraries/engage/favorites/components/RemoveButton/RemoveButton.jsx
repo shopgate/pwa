@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+import { i18n } from '@shopgate/engage/core';
 import { Ripple } from '@shopgate/engage/components';
 import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
@@ -33,6 +34,7 @@ const RemoveButton = ({ onClick }) => (
     className={styles.root}
     onClick={onClick}
     type="button"
+    aria-label={i18n.text('favorites.remove')}
   >
     <Ripple>
       <CrossIcon className={styles.icon} />

@@ -8,7 +8,7 @@ import { ELEMENT_ID_SHIPPING_CONTACT } from '../../constants';
 import generateFormConfig from './RegistrationFormShipping.config';
 import {
   form, section, shippingFormSection,
-} from './Registration.style';
+} from './RegistrationContent.style';
 
 /**
  * The RegistrationFormShipping component.
@@ -18,6 +18,7 @@ import {
 const RegistrationFormShipping = ({ isGuest }) => {
   const {
     supportedCountries,
+    countrySortOrder,
     userLocation,
     defaultShippingFormState,
     shippingFormValidationErrors,
@@ -30,10 +31,11 @@ const RegistrationFormShipping = ({ isGuest }) => {
   const formConfig = useMemo(
     () => generateFormConfig({
       supportedCountries,
+      countrySortOrder,
       userLocation,
       numberOfAddressLines,
     }),
-    [numberOfAddressLines, supportedCountries, userLocation]
+    [countrySortOrder, numberOfAddressLines, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

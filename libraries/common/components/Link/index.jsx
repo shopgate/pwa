@@ -58,11 +58,14 @@ class Link extends Component {
       },
     };
 
-    if (this.props.replace) {
-      this.props.historyReplace(params);
-    } else {
-      this.props.historyPush(params);
-    }
+    // setTimeout prevents double click while VoiceOver is active
+    setTimeout(() => {
+      if (this.props.replace) {
+        this.props.historyReplace(params);
+      } else {
+        this.props.historyPush(params);
+      }
+    }, 0);
   };
 
   /**

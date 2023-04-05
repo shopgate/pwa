@@ -140,7 +140,9 @@
     "modal": {
       "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wähle bitte die Varianten.",
       "confirm": "Varianten wählen"
-    }
+    },
+    "open_list": "Liste öffnen.",
+    "close_list": "Liste schließen."
   },
   "filter": {
     "sort": {
@@ -180,6 +182,7 @@
       "insufficientstock": "Leider ist dieses Produkt derzeit nicht mehr Verfügbar."
     },
     "description_heading": "Beschreibung",
+    "share": "Produkt teilen",
     "pick_an_attribute": "{0} auswählen",
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
     "item_added": "{count, plural, =0 {# keine Produkte} =1 {{count} Produkt hinzugefügt} other {{count} Produkte hinzugefügt}}",
@@ -191,6 +194,8 @@
     "go_to_cart": "Warenkorb",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
     "quantity": "Menge",
+    "decrease_quantity": "Menge reduzieren",
+    "increase_quantity": "Menge erhöhen",
     "minOrderQuantity": "Min. Bestellmenge: {quantity} {unit}",
     "maxOrderQuantity": "Max. Bestellmenge: {quantity} {unit}",
     "available": {
@@ -252,7 +257,7 @@
     "error_title": "Leider konnte deine Reservierung nicht abgeschlossen werden.",
     "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfe die Verfügbarkeit in anderen Filialen im Warenkorb.",
     "error_invalid_zip_code": "Bitte gib eine gültige Postleitzahl ein.",
-    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen deine Eingabe.",
+    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfe deine Eingabe.",
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
@@ -559,6 +564,7 @@
       "checkCart": "Bitte überprüfe Deinen Warenkorb.",
       "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte überprüfe Deinen Warenkorb.",
+      "paypalFunding": "Bei der Ausführung der Zahlung ist ein Fehler aufgetreten.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
       "noPaymentTransaction": "Keine Payment Transaktion verfügbar.",
       "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse",
@@ -788,5 +794,12 @@
     "weekData": {
       "firstDay": "mon"
     }
+  },
+  "appRating": {
+    "yes": "Ja",
+    "no": "Nein",
+    "title": "App bewerten",
+    "message": "Gefällt Ihnen unsere App? Wir freuen uns über eine Bewertung!",
+    "rejectionApprovalMessage": "Möchten Sie uns Feedback geben? Das hilft uns die App weiter zu verbessern."
   }
 }

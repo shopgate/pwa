@@ -18,6 +18,14 @@ export const itemImage = css({
   },
 }).toString();
 
+export const badgesPortal = css({
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    left: 'initial',
+    right: 5,
+    width: 'inherit',
+  },
+}).toString();
+
 export default css({
   position: 'relative',
   display: 'flex',

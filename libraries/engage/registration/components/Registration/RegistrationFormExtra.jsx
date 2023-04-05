@@ -5,7 +5,7 @@ import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { useRegistration } from '../../hooks';
 import { ELEMENT_ID_CUSTOMER_ATTRIBUTES } from '../../constants';
 import generateFormConfig from './RegistrationFormExtra.config';
-import { form, section } from './Registration.style';
+import { form, section } from './RegistrationContent.style';
 
 /**
  * The RegistrationFormExtra component.
@@ -18,14 +18,20 @@ const RegistrationFormExtra = ({ isGuest }) => {
     updateExtraForm,
     customerAttributes,
     extraFormValidationErrors,
+    supportedCountries,
+    countrySortOrder,
+    userLocation,
   } = useRegistration(isGuest);
 
   const formConfig = useMemo(
     () => generateFormConfig({
       customerAttributes,
       isGuest,
+      supportedCountries,
+      countrySortOrder,
+      userLocation,
     }),
-    [customerAttributes, isGuest]
+    [countrySortOrder, customerAttributes, isGuest, supportedCountries, userLocation]
   );
 
   const handleUpdate = useCallback((values) => {

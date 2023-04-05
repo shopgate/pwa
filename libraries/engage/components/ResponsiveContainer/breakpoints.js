@@ -1,4 +1,6 @@
-import { hasWebBridge } from '@shopgate/engage/core';
+import { hasWebBridge, isIOSTheme } from '@shopgate/engage/core';
+
+const iosThemeActive = isIOSTheme();
 
 /* eslint-disable extra-rules/no-single-line-objects */
 const breakpoints = [
@@ -33,7 +35,8 @@ export const parser = (comparators, breakpoint, {
   const config = breakpoints.find(b => b.name === breakpointString);
 
   // Web / App config.
-  const isWeb = hasWebBridge();
+  // Handle iOS theme as app for now so that media queries in shared components only work for app
+  const isWeb = hasWebBridge() && !iosThemeActive;
 
   // Always mode.
   if ((webAlways && isWeb) || (appAlways && !isWeb)) {

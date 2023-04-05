@@ -9,7 +9,7 @@ import { container } from './FulfillmentSelectorHeader.style';
  */
 export function FulfillmentSelectorHeader() {
   return (
-    <div role="heading" aria-hidden className={container}>
+    <div role="heading" className={container}>
       {i18n.text('locations.fulfillment.heading')}
     </div>
   );

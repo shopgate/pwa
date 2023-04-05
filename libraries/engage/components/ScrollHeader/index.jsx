@@ -1,9 +1,10 @@
 import React, {
-  useState, useContext, useRef, useCallback,
+  useState, useContext, useRef, useCallback, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useScroll } from '@shopgate/engage/core';
+import get from 'lodash/get';
+import { useScroll, hasWebBridge } from '@shopgate/engage/core';
 import { header, hidden } from './style';
 import { ViewContext } from '../View';
 
@@ -17,6 +18,7 @@ function ScrollHeader({ className, children }) {
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
   const { contentRef } = useContext(ViewContext);
   const [offset, setOffset] = useState(0);
+  const [offsetTop, setOffsetTop] = useState(0);
 
   const onScroll = useCallback((callbackData) => {
     const { previousScrollTop, currentScrollTop } = callbackData;
@@ -32,6 +34,14 @@ function ScrollHeader({ className, children }) {
   }, [offset]);
 
   useScroll(onScroll, contentRef?.current);
+
+  useEffect(() => {
+    if (!hasWebBridge()) {
+      const currentOffset = get(ref, 'current.offsetTop');
+      setOffsetTop(currentOffset);
+    }
+  }, []);
+
   return (
     <div
       ref={ref}
@@ -40,6 +50,7 @@ function ScrollHeader({ className, children }) {
         shouldHideHeader && hidden,
         className
       )}
+      style={offsetTop ? { top: offsetTop } : {}}
     >
       {children}
     </div>

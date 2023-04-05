@@ -1,3 +1,4 @@
+import noop from 'lodash/noop';
 import { isObject } from '../validation';
 
 /**
@@ -127,7 +128,8 @@ export const mutable = (func) => {
     }
 
     if (!runAction) {
-      return mutatedArgs;
+      // the return value here gets passed to the dispatch() so it must be a function or action obj
+      return noop;
     }
 
     // Call the actual mutable

@@ -10,6 +10,7 @@ import {
   Description,
   ProductUnitQuantityPicker,
   OrderQuantityHint,
+  ProductDiscountBadge,
 } from '@shopgate/engage/product';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import FavoriteButtonWide from '@shopgate/engage/favorites/components/FavoriteButtonWide';
@@ -90,6 +91,7 @@ const ContentWide = ({
 }) => (
   <div className={styles.root}>
     <div className={styles.mediaRow}>
+      <ProductDiscountBadge productId={productId} />
       <Media productId={productId} variantId={variantId} />
     </div>
     <div className={styles.contentRow}>

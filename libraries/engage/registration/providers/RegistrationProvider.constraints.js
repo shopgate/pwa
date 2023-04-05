@@ -1,10 +1,32 @@
-import { i18n } from '@shopgate/engage/core';
+import {
+  SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
+} from '@shopgate/engage/core';
 import { generateFormConstraints } from '@shopgate/engage/account/helper/form';
 
 /**
+ * Helper to generate base constraints
+ * @param {Object} params Options for the helper
+ * @param {string} params.registrationMode Current active registration mode
  * @returns {Object}
  */
-export const generateBaseConstraints = () => ({
+export const generateBaseConstraints = ({
+  registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+}) => ({
+  ...(registrationMode === SHOP_SETTING_REGISTRATION_MODE_SIMPLE ? {
+    firstName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+    },
+    lastName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+    },
+  } : null),
   emailAddress: {
     presence: {
       message: 'validation.required',
@@ -18,10 +40,6 @@ export const generateBaseConstraints = () => ({
     presence: {
       message: 'validation.required',
       allowEmpty: false,
-    },
-    length: {
-      minimum: 8,
-      tooShort: i18n.text('validation.minPasswordLength'),
     },
   },
   passwordConfirm: {
@@ -37,62 +55,88 @@ export const generateBaseConstraints = () => ({
   },
 });
 
-const addressConstraints = {
-  firstName: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
+/**
+ * Helper to generate address constraints
+ * @param {Object} params Options for the helper
+ * @param {string} params.registrationMode Current active registration mode
+ * @returns {Object}
+ */
+const generateAddressConstraints = ({
+  registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+}) => ({
+  ...(registrationMode === SHOP_SETTING_REGISTRATION_MODE_EXTENDED) ? {
+    firstName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
     },
-  },
-  lastName: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
+    lastName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
     },
-  },
-  address1: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
+    address1: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
     },
-  },
-  city: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
+    city: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
     },
-  },
-  country: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
+    country: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
     },
-  },
-  postalCode: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
+    postalCode: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
     },
-  },
-  mobile: {
-    presence: {
-      message: 'validation.required',
-      allowEmpty: false,
+    mobile: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+      format: {
+        pattern: '^[+0-9]+',
+        message: 'validation.mobileNumber',
+      },
     },
-    format: {
-      pattern: '^[+0-9]+',
-      message: 'validation.mobileNumber',
-    },
-  },
-};
+  } : null,
+});
 
-export const billingConstraints = {
-  ...addressConstraints,
-};
+/**
+ * Helper to generate billing form constraints
+ * @param {Object} params Options for the helper
+ * @param {string} [params.registrationMode] Current active registration mode
+ * @returns {Object}
+ */
+export const generateBillingConstraints = ({
+  registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+}) => generateAddressConstraints({ registrationMode });
 
-export const shippingConstraints = {
-  ...addressConstraints,
-};
+/**
+ * Helper to generate shipping form constraints
+ * @param {Object} params Options for the helper
+ * @param {string} [params.registrationMode] Current active registration mode
+ * @returns {Object}
+ */
+export const generateShippingConstraints = ({
+  registrationMode = SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+}) => (registrationMode === SHOP_SETTING_REGISTRATION_MODE_EXTENDED
+  // Only at "extended" mode there will be constraints for the shipping form since "simple" has no
+  // shipping form.
+  ? generateAddressConstraints({ registrationMode })
+  : {});
 
 /**
  * Generates constraints for the "extra" form.

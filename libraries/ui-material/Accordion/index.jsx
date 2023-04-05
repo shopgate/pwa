@@ -2,6 +2,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { AccordionContainer, ChevronIcon } from '@shopgate/pwa-ui-shared';
+import { i18n } from '@shopgate/engage/core';
 import AccordionContent from './components/AccordionContent';
 import * as styles from './style';
 
@@ -9,6 +10,7 @@ type Props = {
   renderLabel: ({ open: boolean }) => void,
   children: React.Node,
   handleLabel?: string,
+  role?: string,
   testId?: string,
   className?: string,
   contentClassName?: string,
@@ -25,6 +27,7 @@ function Accordion(props: Props) {
   const {
     renderLabel,
     handleLabel,
+    role,
     children,
     testId,
     className,
@@ -46,7 +49,7 @@ function Accordion(props: Props) {
         const clickHandlers = {
           onClick: open ? handleClose : handleOpen,
           onKeyDown: open ? handleClose : handleOpen,
-          role: 'button',
+          role,
           tabIndex: '0',
         };
 
@@ -70,6 +73,7 @@ function Accordion(props: Props) {
                 <div
                   className={styles.chevronContainerLeft}
                   {... (openWithChevron ? clickHandlers : {})}
+                  aria-label={i18n.text(open ? 'favorites.close_list' : 'favorites.open_list')}
                 >
                   <ChevronIcon
                     className={open ? styles.chevronOpen : styles.chevronClosed}
@@ -81,6 +85,7 @@ function Accordion(props: Props) {
                 <div
                   className={styles.chevronContainer}
                   {... (openWithChevron ? clickHandlers : {})}
+                  aria-label={i18n.text(open ? 'favorites.close_list' : 'favorites.open_list')}
                 >
                   <ChevronIcon
                     className={open ? styles.chevronOpen : styles.chevronClosed}
@@ -107,6 +112,7 @@ Accordion.defaultProps = {
   className: null,
   contentClassName: null,
   handleLabel: null,
+  role: 'button',
   testId: null,
   openWithChevron: false,
   chevronPosition: 'right',
