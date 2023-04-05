@@ -7,7 +7,7 @@ import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constan
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CartContext } from '../../cart.context';
-import { button, disabledButton } from './CartSummaryWideCheckoutButton.style';
+import { container, button, disabledButton } from './CartSummaryWideCheckoutButton.style';
 import connect from './CartSummaryWideCheckoutButton.connector';
 
 type Props = {
@@ -27,17 +27,19 @@ const CartSummaryWideCheckoutButton = ({ isOrderable }:Props) => {
   });
 
   return (
-    <SurroundPortals portalName={CART_CHECKOUT_BUTTON} props={{ isActive }}>
-      <Link href={CHECKOUT_PATH} disabled={!isActive}>
-        <RippleButton
-          disabled={!isActive}
-          type="regular"
-          className={classes}
-        >
-          <I18n.Text string="cart.checkout" />
-        </RippleButton>
-      </Link>
-    </SurroundPortals>
+    <div className={container}>
+      <SurroundPortals portalName={CART_CHECKOUT_BUTTON} props={{ isActive }}>
+        <Link href={CHECKOUT_PATH} disabled={!isActive}>
+          <RippleButton
+            disabled={!isActive}
+            type="regular"
+            className={classes}
+          >
+            <I18n.Text string="cart.checkout" />
+          </RippleButton>
+        </Link>
+      </SurroundPortals>
+    </div>
   );
 };
 
