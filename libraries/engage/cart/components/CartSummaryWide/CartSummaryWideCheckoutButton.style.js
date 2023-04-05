@@ -3,6 +3,11 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors, variables } = themeConfig;
 
+export const container = css({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
 export const button = css({
   width: '100%',
   background: `var(--color-primary, ${colors.cta})`,

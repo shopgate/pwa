@@ -24,6 +24,7 @@ export const container = css({
 export const checkoutButton = css({
   display: 'flex',
   justifyContent: 'flex-end',
+  flexDirection: 'column',
 });
 
 export const checkoutButtonContainer = css({
