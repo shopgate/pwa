@@ -25,7 +25,6 @@ const styles = {
     background: colors.light,
     flexGrow: 1,
     paddingTop: variables.gap.xsmall,
-    paddingBottom: variables.gap.xxbig,
     paddingLeft: '16px',
     paddingRight: '16px',
   }).toString(),
