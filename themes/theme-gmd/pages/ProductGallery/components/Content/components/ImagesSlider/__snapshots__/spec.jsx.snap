@@ -32,6 +32,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
       }
     >
       <SurroundPortals
+        portalName="product.gallery.images"
         portalProps={
           Object {
             "dispatch": [Function],
@@ -366,6 +367,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
       }
     >
       <SurroundPortals
+        portalName="product.gallery.images"
         portalProps={
           Object {
             "dispatch": [Function],
