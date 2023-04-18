@@ -248,7 +248,7 @@ export const buildScannerUtmUrl = ({
     medium = 'qrcode_scanner';
     campaign = `${shopNumber}QRScan`;
 
-    const { type, data } = parse2dsQrCode(payload);
+    const { type, data } = parse2dsQrCode(payload) || {};
     if (type === QR_CODE_TYPE_SEARCH) {
       term = data.searchPhrase;
     }
