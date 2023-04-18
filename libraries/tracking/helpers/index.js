@@ -1,5 +1,6 @@
 import get from 'lodash/get';
 import find from 'lodash/find';
+import queryString from 'query-string';
 import { logger } from '@shopgate/pwa-core/helpers';
 import {
   QR_CODE_TYPE_HOMEPAGE,
@@ -310,6 +311,21 @@ export const buildScannerUtmUrl = ({
     }
   }
 
+  let parsedPayload;
+  let utmContent;
+
+  try {
+    parsedPayload = queryString.parseUrl(payload);
+  } catch (e) {
+    // noting to do here
+  }
+
+  if (parsedPayload && parsedPayload.query) {
+    if (parsedPayload.query.utm_content) {
+      utmContent = parsedPayload.query.utm_content;
+    }
+  }
+
   const { location } = scannerRoute;
 
   const newPath = new URL(location, 'http://scanner.com');
@@ -319,7 +335,7 @@ export const buildScannerUtmUrl = ({
     utm_medium: medium,
     utm_campaign: campaign,
     utm_term: term,
-    utm_content: referer,
+    utm_content: utmContent || referer,
   };
   /* eslint-enable camelcase */
 
