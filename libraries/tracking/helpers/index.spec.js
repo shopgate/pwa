@@ -171,6 +171,17 @@ describe('Tracking helpers', () => {
         });
         expect(result).toEqual('/scanner?utm_source=shopgate&utm_medium=qrcode_scanner&utm_campaign=30177QRScan&utm_term=searchPhrase&utm_content=%2F');
       });
+
+      it('should handle custom urls with utm params', () => {
+        const result = buildScannerUtmUrl({
+          scannerRoute: { location: '/scanner' },
+          format: 'QR_CODE',
+          payload: 'http://custom.url/foo/bar?utm_content=some_content',
+          referer,
+        });
+
+        expect(result).toEqual('/scanner?utm_source=shopgate&utm_medium=qrcode_scanner&utm_campaign=30177QRScan&utm_content=some_content');
+      });
     });
 
     describe('custom Utms', () => {
