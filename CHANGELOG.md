@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.8.1](https://github.com/shopgate/pwa/compare/v7.8.0...v7.8.1) (2023-04-18)
+
+#### :rocket: Enhancement
+* [#1181](https://github.com/shopgate/pwa/pull/1181) Fixed an issue at tracking event creation after successful scanner scan ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1181](https://github.com/shopgate/pwa/pull/1181) Fixed an issue at tracking event creation after successful scanner scan ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
