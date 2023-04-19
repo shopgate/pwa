@@ -7,6 +7,13 @@ jest.mock('../../actions/router', () => ({
   historyReset: jest.fn(),
 }));
 
+const mockedError = jest.fn();
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    error: (...args) => mockedError(...args),
+  },
+}));
+
 describe('handleLink()', () => {
   const dispatch = jest.fn();
 
@@ -60,6 +67,7 @@ describe('handleLink()', () => {
       handleLink({ link: 'http !@@##%$^&^*&* s://example.com/' })(dispatch);
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(historyReset).toHaveBeenCalledTimes(1);
+      expect(mockedError).toHaveBeenCalledTimes(1);
     });
   });
 

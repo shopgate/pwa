@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   getProductImages,
   getCurrentBaseProduct,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
+} from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.

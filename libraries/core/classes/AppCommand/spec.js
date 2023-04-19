@@ -2,6 +2,8 @@ import { hasSGJavaScriptBridge } from '../../helpers';
 import { defaultClientInformation } from '../../helpers/version';
 import AppCommand from './index';
 
+jest.unmock('./index.js');
+
 // Mocks for the logger.
 const mockedLoggerError = jest.fn();
 const mockedLoggerWarn = jest.fn();

@@ -1,7 +1,18 @@
 import { mockedPipelineRequestFactory } from './mock';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 
+const mockedWarn = jest.fn();
+jest.mock('../../helpers', () => ({
+  logger: {
+    warn: (...args) => mockedWarn(...args),
+  },
+}));
+
 describe('MockPipelineRequest', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it(
     'should create class that extends MockedPipelineRequest and resolves on dispatch',
     () => new Promise((resolve, reject) => {
@@ -84,6 +95,9 @@ describe('MockPipelineRequest', () => {
 
     request.setSuppressErrors(false);
     expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_DEFAULT);
+
+    expect(mockedWarn).toHaveBeenCalledTimes(2);
+    expect(mockedWarn).toHaveBeenCalledWith('Deprecated: setSuppressErrors() will be removed. Use setHandleErrors() instead!');
   });
 
   it('should handle deprecated setHandledErrors', () => {
@@ -91,6 +105,8 @@ describe('MockPipelineRequest', () => {
     const request = new PipelineClass('test');
     request.setHandledErrors(['SAMPLE_ERROR']);
     expect(request.errorBlacklist).toEqual(['SAMPLE_ERROR']);
+    expect(mockedWarn).toHaveBeenCalledTimes(1);
+    expect(mockedWarn).toHaveBeenCalledWith('Deprecated: setHandledErrors() will be removed in favor of setErrorBlacklist()!');
   });
 
   describe('setHandleErrors()', () => {
