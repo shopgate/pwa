@@ -50,13 +50,15 @@ const Accordion = (props) => {
 };
 
 Accordion.propTypes = {
-  children: PropTypes.node.isRequired,
-  renderLabel: PropTypes.func.isRequired,
+  children: PropTypes.node,
   handleLabel: PropTypes.string,
+  renderLabel: PropTypes.func,
   testId: PropTypes.string,
 };
 
 Accordion.defaultProps = {
+  children: null,
+  renderLabel: null,
   handleLabel: null,
   testId: null,
 };

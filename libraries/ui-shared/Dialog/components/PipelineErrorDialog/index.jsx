@@ -28,7 +28,7 @@ class PipelineErrorDialog extends Component {
       messageParams: PropTypes.shape(), // A list of key/value pairs (paramName: paramValue)
       translated: PropTypes.bool,
       pipeline: PropTypes.string.isRequired, // The identifier of the pipeline.
-      request: PropTypes.shape.isRequired, // The request as sent to the server.
+      request: PropTypes.shape().isRequired, // The request as sent to the server.
     }).isRequired,
     message: PropTypes.string,
   };

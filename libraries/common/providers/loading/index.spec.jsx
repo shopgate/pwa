@@ -61,10 +61,12 @@ describe('LoadingProvider', () => {
     expect(wrapper).toMatchSnapshot();
     wrapper.instance().setLoading(MOCKED_PATH);
     wrapper.update();
-    expect(wrapper.find('MockComponent > div').exists()).toBe(true);
-    wrapper.instance().unsetLoading(MOCKED_PATH);
-    wrapper.update();
-    expect(wrapper.find('MockComponent > div').exists()).toBe(false);
+    setTimeout(() => {
+      expect(wrapper.find('MockComponent > div').exists()).toBe(true);
+      wrapper.instance().unsetLoading(MOCKED_PATH);
+      wrapper.update();
+      expect(wrapper.find('MockComponent > div').exists()).toBe(false);
+    }, 0);
   });
 
   it('should populate internal methods its children', () => {

@@ -45,6 +45,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -84,6 +87,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -123,6 +129,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -162,6 +171,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -201,6 +213,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -240,6 +255,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -279,6 +297,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -318,6 +339,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -357,6 +381,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -396,6 +423,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -435,6 +465,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -474,6 +507,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -513,6 +549,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -552,6 +591,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -591,6 +633,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -630,6 +675,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -669,6 +717,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -708,6 +759,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -747,6 +801,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -786,6 +843,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -825,6 +885,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -864,6 +927,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -903,6 +969,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -942,6 +1011,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -981,6 +1053,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1020,6 +1095,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1059,6 +1137,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1098,6 +1179,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1137,6 +1221,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1176,6 +1263,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1246,6 +1336,9 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1285,6 +1378,9 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1324,6 +1420,9 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1363,6 +1462,9 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1402,6 +1504,9 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1479,6 +1584,9 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1518,6 +1626,9 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1557,6 +1668,9 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1596,6 +1710,9 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1635,6 +1752,9 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1705,6 +1825,9 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1744,6 +1867,9 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1783,6 +1909,9 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1822,6 +1951,9 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",
@@ -1861,6 +1993,9 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           hideName={false}
           hidePrice={false}
           hideRating={false}
+          linkHref=""
+          linkReplace={false}
+          linkState={Object {}}
           product={
             Object {
               "featuredImageBaseUrl": "http://placekitten.com",

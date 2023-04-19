@@ -17,7 +17,7 @@ jest.mock('./connector', () => Cmp => Cmp);
  * @returns {JSX}
  */
 const createWrapper = (html, props = {}) => mount((
-  <HtmlSanitizer {...props}>
+  <HtmlSanitizer navigate={() => {}} {...props}>
     {html}
   </HtmlSanitizer>
 ));
@@ -140,6 +140,7 @@ describe('<HtmlSanitizer />', () => {
           <HtmlSanitizer
             decode
             settings={{ handleClick: mockedHandleClick }}
+            navigate={() => {}}
           >
             {html}
           </HtmlSanitizer>
@@ -169,6 +170,7 @@ describe('<HtmlSanitizer />', () => {
           <HtmlSanitizer
             decode
             settings={{ handleClick: mockedHandleClick }}
+            navigate={() => {}}
           >
             {html}
           </HtmlSanitizer>

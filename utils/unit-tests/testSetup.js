@@ -22,3 +22,6 @@ const localStorageMock = (() => {
 })();
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
+
+// Mock the AppCommand class by default to avoid log spamming during test runs
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
