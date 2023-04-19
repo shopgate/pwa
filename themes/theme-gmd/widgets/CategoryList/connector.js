@@ -8,7 +8,7 @@ import { getCategoriesById } from '../selectors';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getCategory: categoryId => dispatch(fetchCategoryOrRootCategories(categoryId)),
+  fetchCategory: categoryId => dispatch(fetchCategoryOrRootCategories(categoryId)),
 });
 
 /**
