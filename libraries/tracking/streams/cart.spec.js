@@ -5,10 +5,10 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/action-creator
 import {
   getProductById,
   fetchProductsById,
-} from '@shopgate/pwa-common-commerce/product';
+} from '@shopgate/engage/product';
 import { productsAdded$ } from './cart';
 
-jest.mock('@shopgate/pwa-common-commerce/product', () => ({
+jest.mock('@shopgate/engage/product', () => ({
   getProductById: jest.fn().mockReturnValue({ productData: { id: 'mock' } }),
   fetchProductsById: jest.fn().mockReturnValue(() => Promise.resolve({
     products: [

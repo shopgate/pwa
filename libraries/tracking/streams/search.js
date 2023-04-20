@@ -10,6 +10,7 @@ import { searchDidEnter$ } from '@shopgate/pwa-common-commerce/search/streams';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { pwaDidAppear$ } from '@shopgate/pwa-common/streams/app';
+import { getIsAppWebViewVisible } from '@shopgate/engage/core';
 
 /**
  * Emits when the search route comes active again after a legacy page was active.
@@ -27,6 +28,8 @@ const resultsReceived$ = main$
  * Emits when the search is ready to be tracked and all relevant data is available.
  */
 export const searchIsReady$ = searchDidEnter$
+  // Do not track while PWA webview is in the background
+  .filter(({ getState }) => getIsAppWebViewVisible(getState()))
   .switchMap((data) => {
     const { getState } = data;
     const query = getCurrentSearchQuery(getState());

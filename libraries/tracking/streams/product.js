@@ -7,6 +7,7 @@ import {
   RECEIVE_PRODUCTS,
   ITEM_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
+import { getIsAppWebViewVisible } from '@shopgate/engage/core';
 
 /**
  * Emits when product results has been received.
@@ -30,6 +31,8 @@ export const productWillEnter$ = routeWillEnter$
  * Emits when a product page was initially opened and its data is present.
  */
 export const productIsReady$ = productWillEnter$
+  // Do not track while PWA webview is in the background
+  .filter(({ getState }) => getIsAppWebViewVisible(getState()))
   // Take care that the stream only emits when underlying streams emit within the correct order.
   .switchMap(() => receivedVisibleProduct$.first())
   .merge(productRouteReappeared$);

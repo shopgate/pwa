@@ -3,10 +3,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/defer';
 import { Observable } from 'rxjs/Observable';
 
-import {
-  productsAdded$ as originalProductsAdded$,
-} from '@shopgate/pwa-common-commerce/cart/streams';
-import { getProductById, fetchProductsById } from '@shopgate/pwa-common-commerce/product';
+import { productsAdded$ as originalProductsAdded$ } from '@shopgate/engage/cart';
+import { getProductById, fetchProductsById } from '@shopgate/engage/product';
 
 /**
  * Emits when a product was added to the cart and product data is available
