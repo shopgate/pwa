@@ -62,6 +62,7 @@ exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
 <HtmlSanitizer
   className={null}
   decode={true}
+  navigate={[Function]}
   processStyles={false}
   settings={Object {}}
   wrapper={[Function]}

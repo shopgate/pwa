@@ -13,9 +13,17 @@ import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 
 let request;
 
+const mockedWarn = jest.fn();
+jest.mock('../../helpers', () => ({
+  logger: {
+    warn: (...args) => mockedWarn(...args),
+  },
+}));
+
 describe('PipelineRequest', () => {
   beforeEach(() => {
     request = new PipelineRequest('testPipeline');
+    jest.clearAllMocks();
   });
 
   it('should throw if no pipeline name is set', (done) => {
@@ -369,12 +377,17 @@ describe('PipelineRequest', () => {
 
       request.setSuppressErrors(false);
       expect(request.handleErrors).toEqual(DEFAULT_HANDLE_ERROR);
+
+      expect(mockedWarn).toHaveBeenCalledTimes(2);
+      expect(mockedWarn).toHaveBeenCalledWith('Deprecated: setSuppressErrors() will be removed. Use setHandleErrors() instead!');
     });
 
     it('setHandledErrors', () => {
       const codes = ['ETEST'];
       request.setHandledErrors(codes);
       expect(request.errorBlacklist).toEqual(codes);
+      expect(mockedWarn).toHaveBeenCalledTimes(1);
+      expect(mockedWarn).toHaveBeenCalledWith('Deprecated: setHandledErrors() will be removed in favor of setErrorBlacklist()!');
     });
   });
 });
