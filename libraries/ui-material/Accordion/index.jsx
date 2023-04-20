@@ -96,19 +96,21 @@ function Accordion(props) {
 }
 
 Accordion.propTypes = {
-  children: PropTypes.node.isRequired,
-  renderLabel: PropTypes.func.isRequired,
   chevronPosition: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string,
   contentClassName: PropTypes.string,
   handleLabel: PropTypes.string,
   openWithChevron: PropTypes.bool,
+  renderLabel: PropTypes.func,
   role: PropTypes.string,
   startOpened: PropTypes.bool,
   testId: PropTypes.string,
 };
 
 Accordion.defaultProps = {
+  children: null,
+  renderLabel: null,
   chevronPosition: 'right',
   className: null,
   contentClassName: null,

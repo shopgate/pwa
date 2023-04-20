@@ -78,7 +78,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
         "translated": null,
       },
       Object {
-        "message": "Normal pre-translated message.",
+        "message": "Other normal pre-translated message.",
         "translated": true,
       },
     ]
@@ -130,12 +130,12 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     </div>
     <div
       className="css-1kmpcvg"
-      key="info-Normal pre-translated message."
+      key="info-Other normal pre-translated message."
     >
       <span
         aria-hidden={true}
       >
-        Normal pre-translated message.
+        Other normal pre-translated message.
       </span>
     </div>
   </div>

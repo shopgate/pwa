@@ -7,6 +7,7 @@ exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
   contentClassName={null}
   handleLabel={null}
   openWithChevron={false}
+  renderLabel={null}
   role="button"
   startOpened={false}
   testId="Some Thing"

@@ -47,6 +47,13 @@ jest.mock('@shopgate/pwa-common/components/Portal', () => {
   return Portal;
 });
 
+const mockedWarn = jest.fn();
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    warn: (...args) => mockedWarn(...args),
+  },
+}));
+
 const FOOTER_CHILD_ID = 'footer-child';
 const PORTAL_CONTENT_ID = 'portal-content';
 const insetBackgroundUpdateSpy = jest.spyOn(Footer.prototype, 'performFooterUpdate');
@@ -100,6 +107,7 @@ describe('<Footer />', () => {
     expect(wrapper.find(`div#AppFooter > #${FOOTER_CHILD_ID}`)).toExist();
     expect(mutationConstructorSpy).toHaveBeenCalledWith(expect.any(Function));
     expect(insetBackgroundUpdateSpy).toHaveBeenCalledTimes(1);
+    expect(mockedWarn).toHaveBeenCalledTimes(1);
   });
 
   describe('.hasVisibleContent()', () => {
