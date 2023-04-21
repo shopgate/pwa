@@ -34,6 +34,15 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
     setInput(value);
   }, []);
 
+  /**
+   * Submit handler for the text input
+   */
+  const handleKeyPress = useCallback((e) => {
+    if (e.key === 'Enter') {
+      onConfirmWrapped();
+    }
+  }, [onConfirmWrapped]);
+
   return (
     <Dialog
       onConfirm={onConfirmWrapped}
@@ -53,6 +62,7 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
               errorText={error || undefined}
               className={styles.textField}
               maxlength="25"
+              onKeyPress={handleKeyPress}
             />
           </div>
         ),

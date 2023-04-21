@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import { View } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
@@ -12,7 +11,11 @@ import FavoritesList from './components/FavoritesList';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Favorites = ({ initialLoading, products, favoritesProductsIds }) => {
+const Favorites = ({
+  initialLoading,
+  favoritesCount,
+  hasMultipleFavoritesListsSupport,
+}) => {
   if (initialLoading) {
     return (
       <View>
@@ -22,13 +25,11 @@ const Favorites = ({ initialLoading, products, favoritesProductsIds }) => {
     );
   }
 
-  const { hasMultipleFavoritesLists } = appConfig.favoritesMode;
-
   return (
     <View aria-hidden={false}>
       <BackBar title="titles.favorites" />
-      {favoritesProductsIds.length > 0 || hasMultipleFavoritesLists ? (
-        <FavoritesList products={products} />
+      {favoritesCount > 0 || hasMultipleFavoritesListsSupport ? (
+        <FavoritesList />
       ) : (
         <EmptyFavorites />
       )}
@@ -37,15 +38,15 @@ const Favorites = ({ initialLoading, products, favoritesProductsIds }) => {
 };
 
 Favorites.propTypes = {
-  favoritesProductsIds: PropTypes.arrayOf(PropTypes.string),
+  favoritesCount: PropTypes.number,
+  hasMultipleFavoritesListsSupport: PropTypes.bool,
   initialLoading: PropTypes.bool,
-  products: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Favorites.defaultProps = {
   initialLoading: true,
-  products: [],
-  favoritesProductsIds: [],
+  favoritesCount: 0,
+  hasMultipleFavoritesListsSupport: false,
 };
 
 export default connect(Favorites);

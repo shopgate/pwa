@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
-import { getFavoritesLists, getHasMultipleFavoritesListsSupport } from '../selectors';
+import { getFavoritesListState, getHasMultipleFavoritesListsSupport } from '../selectors';
 import { SHOPGATE_USER_GET_FAVORITES_LIST } from '../constants/Pipelines';
 import { RECEIVE_FAVORITES_LISTS } from '../constants';
 
@@ -32,7 +32,7 @@ function fetchFavoritesLists(ignoreCache = false) {
       return favoritesLists;
     }
 
-    const data = getFavoritesLists(getState());
+    const data = getFavoritesListState(getState());
 
     if (!ignoreCache && !shouldFetchData(data)) {
       return data?.lists || [];

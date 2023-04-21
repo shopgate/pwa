@@ -16,7 +16,7 @@ import {
 import {
   getHasMultipleFavoritesListsSupport,
   makeGetFavoritesProductsByList,
-  getFavoritesLists,
+  getFavoritesListState,
 } from '../selectors';
 
 /**
@@ -30,7 +30,7 @@ function fetchFavorites(ignoreCache = false, listId = DEFAULT_FAVORITES_LIST_ID)
     const state = getState();
 
     const hasMultiSupport = getHasMultipleFavoritesListsSupport(state);
-    const lists = getFavoritesLists(state);
+    const lists = getFavoritesListState(state);
 
     const favoritesListId = lists.find(list => list.id === listId)?.id ?? DEFAULT_FAVORITES_LIST_ID;
 

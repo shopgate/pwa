@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import {
-  getFavorites,
   getFavoritesLists,
   isInitialLoading,
-  getFavoritesProductsIds,
-} from '@shopgate/pwa-common-commerce/favorites/selectors';
+  getFavoritesCount,
+  getHasMultipleFavoritesListsSupport,
+} from '@shopgate/engage/favorites';
 
 /**
  * Maps state to props.
@@ -12,10 +12,10 @@ import {
  * @returns {Object}
  */
 const mapStateToProps = state => ({
-  products: getFavorites(state),
-  favoritesProductsIds: getFavoritesProductsIds(state),
+  favoritesCount: getFavoritesCount(state),
   lists: getFavoritesLists(state),
   initialLoading: isInitialLoading(state),
+  hasMultipleFavoritesListsSupport: getHasMultipleFavoritesListsSupport(state),
 });
 
 export default connect(mapStateToProps);

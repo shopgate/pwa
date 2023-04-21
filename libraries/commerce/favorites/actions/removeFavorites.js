@@ -5,7 +5,7 @@ import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators
 import { DEFAULT_FAVORITES_LIST_ID } from '../constants';
 import {
   getHasMultipleFavoritesListsSupport,
-  getFavoritesLists,
+  getFavoritesListState,
 } from '../selectors';
 
 /**
@@ -19,7 +19,7 @@ function removeFavorites(productId, listId = DEFAULT_FAVORITES_LIST_ID) {
     const state = getState();
 
     const hasMultiSupport = getHasMultipleFavoritesListsSupport(state);
-    const lists = getFavoritesLists(state);
+    const lists = getFavoritesListState(state);
 
     const favoritesListId = lists.find(list => list.id === listId)?.id ?? DEFAULT_FAVORITES_LIST_ID;
 
