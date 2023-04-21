@@ -44,7 +44,7 @@ import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
 
-const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
+const devFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.css';
 
 new ThemeConfigResolver().resolveAll();
 
