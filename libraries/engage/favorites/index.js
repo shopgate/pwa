@@ -27,3 +27,4 @@ export * from '@shopgate/pwa-common-commerce/favorites/selectors';
 export * from '@shopgate/pwa-common-commerce/favorites/streams';
 
 export { default as FavoriteLists } from './components/Lists';
+export { default as FavoritesListChooser } from './components/ListChooser';
