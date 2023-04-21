@@ -4,11 +4,12 @@ import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
 import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
 import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
+import { app } from '@shopgate/engage/core/reducers';
 import requestProducts from '@shopgate/pwa-common-commerce/product/action-creators/requestProducts';
 import receiveProducts from '@shopgate/pwa-common-commerce/product/action-creators/receiveProducts';
 import receiveProduct from '@shopgate/pwa-common-commerce/product/action-creators/receiveProduct';
 import { ITEM_PATTERN, ITEM_REVIEWS_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
-import { pwaDidAppear } from '@shopgate/pwa-common/action-creators';
+import { pwaDidAppear, pwaDidDisappear } from '@shopgate/pwa-common/action-creators';
 import {
   productsReceived$,
   productRouteReappeared$,
@@ -55,7 +56,10 @@ describe('Product streams', () => {
   let dispatch;
 
   beforeEach(() => {
-    store = createMockStore(combineReducers({ product }));
+    store = createMockStore(combineReducers({
+      product,
+      app,
+    }));
     ({ dispatch } = store);
     mockedRoutePattern = ITEM_PATTERN;
     mockedRouteProductId = '';
@@ -168,6 +172,15 @@ describe('Product streams', () => {
     it('should not emit when the PWA webview reappeared but the product page is not active', () => {
       dispatch(wrappedRouteWillEnter(ITEM_REVIEWS_PATTERN, HISTORY_PUSH_ACTION));
       dispatch(pwaDidAppear());
+      expect(productIsReadySubscriber).not.toHaveBeenCalled();
+    });
+
+    it('should not emit when app webview is not visible', () => {
+      const productId = mockBin2Hex('abc123');
+      dispatch(pwaDidDisappear());
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION, productId));
+      dispatch(receiveProduct(productId, { id: productId }));
+
       expect(productIsReadySubscriber).not.toHaveBeenCalled();
     });
   });
