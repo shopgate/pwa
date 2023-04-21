@@ -29,6 +29,7 @@
     "error_add": "Product could not be added to wish list",
     "error_remove": "Product could not be removed from wish list",
     "error_limit": "You have exceeded the number of products allowed in the wish list.",
+    "error_general": "The wish list could not be saved",
     "remove": "Remove from wish list",
     "removed": "Removed from wish list",
     "add_list_modal": {

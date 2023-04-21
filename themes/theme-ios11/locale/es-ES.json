@@ -30,6 +30,7 @@
     "error_add": "El producto no se pudo agregar a favoritos",
     "error_remove": "El producto no se pudo quitar de favoritos",
     "error_limit": "Has superado la cantidad de productos permitidos en favoritos.",
+    "error_general": "La lista de deseos no se ha podido guardar",
     "remove": "Quitar de favoritos",
     "removed": "Quitado de favoritos",
     "add_list_modal": {

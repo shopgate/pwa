@@ -30,6 +30,7 @@
     "error_add": "Das Produkt konnte nicht zur Wunschliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Wunschliste entfernt werden",
     "error_limit": "Die zulässige Anzahl von Produkten auf der Wunschliste wurde überschritten.",
+    "error_general": "Die Wunschliste konnte nicht gespeichert werden",
     "remove": "Von der Wunschliste löschen",
     "removed": "Von Wunschliste entfernt",
     "add_list_modal": {
