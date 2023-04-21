@@ -7,6 +7,8 @@ jest.mock('@shopgate/engage/core', () => ({
   withForwardedRef: jest.fn(),
   hasWebBridge: jest.fn(() => false),
   ToastProvider: jest.requireActual('@shopgate/pwa-common/providers/toast').default,
+  withCurrentProduct: jest.fn(),
+  withWidgetSettings: jest.fn(),
 }));
 
 jest.mock('@shopgate/engage/a11y', () => ({
