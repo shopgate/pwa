@@ -15,7 +15,7 @@ import {
   SHOPGATE_USER_ADD_FAVORITES,
   SHOPGATE_USER_DELETE_FAVORITES,
 } from '../constants/Pipelines';
-import fetchFavoritesLists from '../actions/fetchFavoritesList';
+import fetchFavoritesLists from '../actions/fetchFavoritesLists';
 import addFavorites from '../actions/addFavorites';
 import removeFavorites from '../actions/removeFavorites';
 import {

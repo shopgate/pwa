@@ -1,12 +1,21 @@
 import { createSelector } from 'reselect';
 import uniq from 'lodash/uniq';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getProducts,
   getProductId,
 } from '../../product/selectors/product';
 import { getKnownRelatives } from '../../product/selectors/variants';
+import { DEFAULT_FAVORITES_LIST_ID } from '../constants';
 
 const defaultIds = [];
+
+/**
+ * Creates a selector to check if the app has support for multiple favorites list.
+ * @returns {Function}
+ */
+export const getHasMultipleFavoritesListsSupport = () =>
+  appConfig.favoritesMode.hasMultipleFavoritesLists;
 
 /**
  * @param {Object} state The global state.
@@ -44,7 +53,7 @@ export const getFavoritesProducts = createSelector(
 
 export const getFavoritesDefaultList = createSelector(
   getFavoritesLists,
-  lists => lists[0]
+  lists => lists.find(list => list.id === DEFAULT_FAVORITES_LIST_ID)
 );
 
 export const hasMultipleFavoritesList = createSelector(
