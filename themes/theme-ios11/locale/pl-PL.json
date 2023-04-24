@@ -30,6 +30,7 @@
     "error_add": "Produkt nie może zostać dodany do listy obserwowanych",
     "error_remove": "Produkt nie może zostać usunięty z listy obserwowanych",
     "error_limit": "Przekroczona została dozwolona liczba produktów na liście obserwacyjnej.",
+    "error_general": "Lista życzeń nie mogła zostać zapisana",
     "remove": "Usuń z listy obserwowanych",
     "removed": "Usunięto z listy obserwowanych",
     "add_list_modal": {

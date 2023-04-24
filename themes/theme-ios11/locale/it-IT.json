@@ -30,6 +30,7 @@
     "error_add": "Non è possibile aggiungere il prodotto ai favoriti",
     "error_remove": "Non è possibile rimuovere il prodotto dai favoriti",
     "error_limit": "Hai superato il numero di prodotti consentiti nei preferiti.",
+    "error_general": "Non è stato possibile salvare la lista dei desideri",
     "remove": "Rimuovi dai favoriti",
     "removed": "Rimosso dai favoriti",
     "add_list_modal": {

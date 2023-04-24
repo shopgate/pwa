@@ -17,6 +17,7 @@ import {
   ETIMEOUT,
   ENETUNREACH,
   EUNKNOWN,
+  EFAVORITE,
 } from '@shopgate/pwa-core';
 import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
@@ -57,7 +58,11 @@ export default (subscribe) => {
     }).setMessage({
       code: ENETUNREACH,
       message: 'modal.body_error',
-    });
+    })
+      .setMessage({
+        code: EFAVORITE,
+        message: 'favorites.error_general',
+      });
   });
 
   /** Show a message to the user in case of pipeline error */

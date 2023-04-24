@@ -5,11 +5,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   Accordion, Card, ContextMenu, SurroundPortals, RippleButton,
 } from '@shopgate/engage/components';
-import { getFavoritesCount, makeGetFavoritesIdsByList } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import {
+  getFavoritesCount,
+  makeGetFavoritesIdsByList,
+  getHasMultipleFavoritesListsSupport,
+} from '@shopgate/engage/favorites';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 import { ProductProvider } from '../../../product';
@@ -93,10 +97,21 @@ FavoriteListLabel.propTypes = {
  * @returns {JSX}
  */
 const FavoritesListContent = ({
-  id, productIds, addToCart, removeItem, shouldShowLoadMoreButton, loadMore,
+  id,
+  productIds,
+  addToCart,
+  removeItem,
+  shouldShowLoadMoreButton,
+  loadMore,
+  hasMultipleFavoritesListsSupport,
 }) => (
+  /**
+   * TODO find a way to indicate loading of the list. products are fetched via the ProductProvider,
+   * so there is not a reliable way to determine if product fetching is done, since we might not
+   * receive a product for every list item.
+   */
   <>
-    {appConfig.favoritesMode.hasMultipleFavoritesLists ? (
+    {hasMultipleFavoritesListsSupport ? (
       <div className={styles.divider} />
     ) : (
       <div className={styles.spacer} />
@@ -152,6 +167,11 @@ FavoritesListContent.propTypes = {
   productIds: PropTypes.arrayOf(PropTypes.object).isRequired,
   removeItem: PropTypes.func.isRequired,
   shouldShowLoadMoreButton: PropTypes.bool.isRequired,
+  hasMultipleFavoritesListsSupport: PropTypes.bool,
+};
+
+FavoritesListContent.defaultProps = {
+  hasMultipleFavoritesListsSupport: false,
 };
 
 /**
@@ -164,6 +184,7 @@ const makeMapStateToProps = (_, { id }) => {
   return state => ({
     favoriteIds: getFavoritesIds(state),
     favoritesCount: getFavoritesCount(state),
+    hasMultipleFavoritesListsSupport: getHasMultipleFavoritesListsSupport(state),
   });
 };
 
@@ -180,6 +201,7 @@ const FavoriteList = ({
   removeItem,
   addToCart,
   disableRemoveList,
+  hasMultipleFavoritesListsSupport,
 }) => {
   const [offset, setOffset] = useState(FAVORITES_SHOW_LIMIT);
 
@@ -199,7 +221,7 @@ const FavoriteList = ({
   }, [offset, allFavoritesLoaded]);
 
   return (
-    appConfig.favoritesMode.hasMultipleFavoritesLists ? (
+    hasMultipleFavoritesListsSupport ? (
       <Card className={styles.root}>
         <Accordion
           className=""
@@ -224,6 +246,7 @@ const FavoriteList = ({
             productIds={productIds}
             removeItem={removeItem}
             shouldShowLoadMoreButton={shouldShowLoadMoreButton}
+            hasMultipleFavoritesListsSupport={hasMultipleFavoritesListsSupport}
           />
         </Accordion>
       </Card>
@@ -251,6 +274,11 @@ FavoriteList.propTypes = {
   remove: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   rename: PropTypes.func.isRequired,
+  hasMultipleFavoritesListsSupport: PropTypes.bool,
+};
+
+FavoriteList.defaultProps = {
+  hasMultipleFavoritesListsSupport: false,
 };
 
 export default connect(makeMapStateToProps)(FavoriteList);

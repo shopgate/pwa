@@ -22,6 +22,11 @@ jest.mock(
   )
 );
 
+// Mock the config object using class getters
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  get favoritesMode() { return { hasMultipleFavoritesLists: true }; },
+}));
+
 const mockState = {
   favorites: {
     lists: {

@@ -6,6 +6,7 @@ import {
   makeIsProductOnSpecificFavoriteList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { i18n } from '@shopgate/engage/core';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * @param {Object} state State.
@@ -23,7 +24,7 @@ const makeMapStateToProps = () => {
 
 const styles = {
   remove: css({
-    color: 'var(--color-state-alert)',
+    color: `var(--color-state-alert, ${themeConfig.colors.error})`,
   }).toString(),
   add: css({
     color: 'var(--color-state-ok)',

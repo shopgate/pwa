@@ -51,7 +51,7 @@ const mockedDefaultListId = 'DEFAULT';
 
 jest.mock('../actions/fetchFavoriteIds', () =>
   jest.fn().mockReturnValue('fetchFavoriteIdsResult'));
-jest.mock('../actions/fetchFavoritesList', () =>
+jest.mock('../actions/fetchFavoritesLists', () =>
   jest.fn().mockResolvedValue([{
     id: 'DEFAULT',
     name: 'Wish List',

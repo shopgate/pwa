@@ -1,5 +1,5 @@
 import React from 'react';
-import FavoriteLists from '@shopgate/engage/favorites/components/Lists';
+import { FavoriteLists } from '@shopgate/engage/favorites';
 import styles from './style';
 
 /**

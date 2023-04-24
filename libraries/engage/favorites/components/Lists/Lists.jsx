@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getFavoritesLists,
   isInitialLoading,
-} from '@shopgate/pwa-common-commerce/favorites/selectors';
-import addFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/addFavoritesList';
-import updateFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/updateFavoritesList';
-import removeFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/removeFavoritesList';
-import { removeFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+  getHasMultipleFavoritesListsSupport,
+  addFavoritesList,
+  updateFavoritesList,
+  removeFavoritesList,
+  removeFavorites,
+} from '@shopgate/engage/favorites';
+import { addProductsToCart } from '@shopgate/engage/cart';
 
 import List from '../List';
 import ListsModal from './ListsModal';
@@ -39,6 +39,7 @@ const mapStateToProps = state => ({
   isInitializing: isInitialLoading(state),
   lists: getFavoritesLists(state),
   wishlistMode: WISHLIST_MODE_PERSIST_ON_ADD,
+  hasMultipleFavoritesListsSupport: getHasMultipleFavoritesListsSupport(state),
 });
 
 /**
@@ -75,6 +76,7 @@ const FavoriteLists = ({
   wishlistMode,
   lists,
   isInitializing,
+  hasMultipleFavoritesListsSupport,
 }) => {
   // Add to cart state.
   const promiseRef = useRef(null);
@@ -166,7 +168,7 @@ const FavoriteLists = ({
         />
       ) : null}
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
-        {appConfig.favoritesMode.hasMultipleFavoritesLists ? (
+        {hasMultipleFavoritesListsSupport ? (
           <RippleButton
             type="primary"
             className={styles.addButton}
@@ -188,6 +190,7 @@ FavoriteLists.propTypes = {
   removeList: PropTypes.func.isRequired,
   updateList: PropTypes.func.isRequired,
   wishlistMode: PropTypes.string.isRequired,
+  hasMultipleFavoritesListsSupport: PropTypes.bool,
   isInitializing: PropTypes.bool,
   lists: PropTypes.arrayOf(PropTypes.shape()),
 };
@@ -195,6 +198,7 @@ FavoriteLists.propTypes = {
 FavoriteLists.defaultProps = {
   lists: [],
   isInitializing: true,
+  hasMultipleFavoritesListsSupport: false,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteLists);
