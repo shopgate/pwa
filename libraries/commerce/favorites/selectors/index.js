@@ -116,7 +116,7 @@ export const getFavorites = createSelector(
 export const makeGetFavoritesIdsByList = getListCode => createSelector(
   getFavoritesProducts,
   getListCode,
-  (favProducts, listId) => {
+  (favProducts, listId = DEFAULT_FAVORITES_LIST_ID) => {
     const ids = favProducts.byList[listId]?.ids || [];
     return ids;
   }
