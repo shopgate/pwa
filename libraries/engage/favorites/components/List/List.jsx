@@ -105,6 +105,11 @@ const FavoritesListContent = ({
   loadMore,
   hasMultipleFavoritesListsSupport,
 }) => (
+  /**
+   * TODO find a way to indicate loading of the list. products are fetched via the ProductProvider,
+   * so there is not a reliable way to determine if product fetching is done, since we might not
+   * receive a product for every list item.
+   */
   <>
     {hasMultipleFavoritesListsSupport ? (
       <div className={styles.divider} />
