@@ -6,6 +6,7 @@ import { PRODUCT_REVIEWS } from '@shopgate/engage/product';
 import List from './components/List';
 import Header from './components/Header';
 import AllReviewsLink from './components/AllReviewsLink';
+import ReviewsInfoText from './components/ReviewsInfoText';
 import styles from './style';
 import connect from './connector';
 
@@ -26,6 +27,7 @@ function Reviews({ productId, reviews }) {
           <Header productId={productId} />
           <List productId={productId} reviews={reviews} />
           <AllReviewsLink productId={productId} />
+          <ReviewsInfoText reviews={reviews} />
         </div>
       )}
     </SurroundPortals>

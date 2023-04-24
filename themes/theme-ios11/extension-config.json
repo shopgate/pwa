@@ -585,6 +585,19 @@
         "type": "json",
         "label": "App rating settings"
       }
+    },
+    "reviewsInfoText": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "text": null,
+        "linkText": null,
+        "linkUrl": null
+      },
+      "params": {
+        "type": "json",
+        "label": "An info text shown after the reviews on PDP"
+      }
     }
   }
 }
