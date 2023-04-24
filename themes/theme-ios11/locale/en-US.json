@@ -23,33 +23,33 @@
     "scanner": "Scanner"
   },
   "favorites": {
-    "add": "Add to wish list",
-    "added": "Product has been added to wish list",
+    "add": "Add to favorites list",
+    "added": "Product has been added to favorites list",
     "continue": "Continue shopping",
     "empty": "You don't have any saved products",
-    "error_add": "Product could not be added to wish list",
-    "error_remove": "Product could not be removed from wish list",
-    "error_limit": "You have exceeded the number of products allowed in the wish list.",
-    "error_general": "The wish list could not be saved",
-    "remove": "Remove from wish list",
-    "removed": "Removed from wish list",
+    "error_add": "Product could not be added to favorites list",
+    "error_remove": "Product could not be removed from favorites list",
+    "error_limit": "You have exceeded the number of products allowed in the favorites list.",
+    "error_general": "The favorites list could not be saved",
+    "remove": "Remove from favorites list",
+    "removed": "Removed from favorites list",
     "add_list_modal": {
       "title": "Add a new List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the name for your new wish list",
+      "message": "Enter the name for your new favorites list",
       "label": "Name"
     },
     "rename_list_modal": {
       "title": "Renaming List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the new name for your wish list",
+      "message": "Enter the new name for your favorites list",
       "label": "Name"
     },
     "add_list": "Add New List",
     "errors": {
-      "invalid_name": "Please enter a valid name for your wish list"
+      "invalid_name": "Please enter a valid name for your favorites list"
     },
     "rename_list": "Rename",
     "remove_list": "Remove",
@@ -60,7 +60,7 @@
       "title": "Choose a Method"
     },
     "list_chooser": {
-      "title": "Choose a Wish List",
+      "title": "Choose a Favorites List",
       "add": "Add",
       "remove": "Remove"
     },
