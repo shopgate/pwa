@@ -4,6 +4,7 @@ exports[`<ItemFavoritesButton /> should not render when its not a favorite 1`] =
 <ContextProvider
   value={
     Object {
+      "getServerState": undefined,
       "store": Object {
         "@@observable": [Function],
         "dispatch": [Function],
@@ -33,6 +34,7 @@ exports[`<ItemFavoritesButton /> should render if its a favorite 1`] = `
 <ContextProvider
   value={
     Object {
+      "getServerState": undefined,
       "store": Object {
         "@@observable": [Function],
         "dispatch": [Function],
