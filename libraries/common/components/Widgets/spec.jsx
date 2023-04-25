@@ -214,7 +214,7 @@ describe('<Widgets />', () => {
         components={components}
       />
     ));
-    expect(wrapper.html()).toBe(null);
+    expect(wrapper.isEmptyRender()).toBe(true);
   });
 
   it('should check settings of child widgets inside widget-grid', () => {

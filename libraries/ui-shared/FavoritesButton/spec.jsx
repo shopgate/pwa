@@ -141,6 +141,6 @@ describe('<FavoritesButton />', () => {
   it('should render null when feature flag is off', () => {
     jest.spyOn(appConfig, 'hasFavorites', 'get').mockReturnValue(false);
     component = createComponent(mockedStateOnList);
-    expect(component.html()).toBe(null);
+    expect(component.isEmptyRender()).toBe(true);
   });
 });
