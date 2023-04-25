@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import Picker from './index';
 import PickerList from './components/List';
 
-jest.mock('react-portal', () => (
+jest.mock('@shopgate/pwa-common/components/ReactPortal', () => (
   ({ isOpened, children }) => (isOpened ? children : null)
 ));
 

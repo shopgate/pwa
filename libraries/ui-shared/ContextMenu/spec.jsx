@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ContextMenu from './index';
 
-jest.mock('react-portal', () => (
+jest.mock('@shopgate/pwa-common/components/ReactPortal', () => (
   ({ isOpened, children }) => (
     isOpened ? children : null
   )
