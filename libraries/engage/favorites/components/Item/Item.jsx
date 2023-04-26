@@ -70,6 +70,8 @@ const styles = {
   imageContainer: css({
     flex: 0.4,
     marginRight: 18,
+    maxWidth: 170,
+    minWidth: 126,
   }).toString(),
   infoContainer: css({
     flex: 1,
