@@ -2,7 +2,6 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
-import { fetchProductsById } from '@shopgate/pwa-common-commerce/product';
 import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
@@ -33,8 +32,7 @@ import {
   FAVORITES_LIMIT_ERROR,
 } from '../constants';
 import {
-  getFavoritesProductsIds,
-  getFavoritesProducts,
+  getFavoritesItems,
   getFavoritesCount,
   makeGetProductRelativesOnFavorites,
 } from '../selectors';
@@ -64,13 +62,10 @@ export default function favorites(subscribe) {
   });
 
   /** Favorites route enter */
-  subscribe(favoritesWillEnter$, async ({ dispatch, getState }) => {
+  subscribe(favoritesWillEnter$, async ({ dispatch }) => {
     const lists = await dispatch(fetchFavoritesLists());
     const items = lists.map(list => dispatch(fetchFavorites(true, list.id)));
     await Promise.all(items);
-
-    const productIds = getFavoritesProductsIds(getState());
-    dispatch(fetchProductsById(productIds, null, false, false));
   });
 
   /** User login / logout */
@@ -81,7 +76,7 @@ export default function favorites(subscribe) {
 
   subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {
     // Nothing to do, when the store already contains the item
-    const activeProductInList = getFavoritesProducts(getState())
+    const activeProductInList = getFavoritesItems(getState())
       .byList[action.listId]
       ?.ids.find(id => id === action.productId);
 
@@ -118,7 +113,7 @@ export default function favorites(subscribe) {
       }
 
       // Avoids trying to remove something that was already removed (incoming fetch response)
-      const list = getFavoritesProducts(getState()).byList[action.listId];
+      const list = getFavoritesItems(getState()).byList[action.listId];
       if (!list?.ids.find(id => id === action.productId)) {
         // Call cancel action with "zero" count, because request was even dispatched
         dispatch(cancelRequestSyncFavorites(0, action.listId));
@@ -126,7 +121,7 @@ export default function favorites(subscribe) {
       }
 
       dispatch(requestRemoveFavorites(action.productId, action.listId));
-    } else if (!getFavoritesProducts(getState()).byList[action.listId]?.isFetching) {
+    } else if (!getFavoritesItems(getState()).byList[action.listId]?.isFetching) {
       // Remove should not be possible when no favorites available
       // Refresh to fix inconsistencies, by dispatching an idleSync action when not fetching
       dispatch(idleSyncFavorites(action.listId));

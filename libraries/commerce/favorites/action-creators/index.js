@@ -178,14 +178,14 @@ export const cancelRequestSyncFavorites = (count = 1, listId) => ({
 
 /**
  * Receive favorites action.
- * @param {Array} products Products.
- * @param {number} requestTimestamp Time when request was inited (ms).
+ * @param {Array} items Wishlist items.
+ * @param {number} requestTimestamp Time when request was initiated (ms).
  * @param {string} listId The Id of the wishlist.
  * @returns {Object}
  */
-export const receiveFavorites = (products, requestTimestamp, listId = null) => ({
+export const receiveFavorites = (items, requestTimestamp, listId = null) => ({
   type: RECEIVE_FAVORITES,
-  products,
+  items,
   requestTimestamp,
   listId,
 });

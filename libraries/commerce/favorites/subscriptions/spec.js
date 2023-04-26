@@ -37,7 +37,7 @@ import {
 } from '../action-creators';
 import {
   getFavoritesProductsIds,
-  getFavoritesProducts,
+  getFavoritesItems,
   getFavoritesCount,
   makeGetProductRelativesOnFavorites,
 } from '../selectors';
@@ -68,7 +68,7 @@ let mockedGetFavoritesProductsReturnValue;
 let mockedGetProductRelativesOnFavoritesReturnValue;
 jest.mock('../selectors', () => ({
   getFavoritesProductsIds: jest.fn(() => mockedGetFavoritesProductsIdsReturnValue),
-  getFavoritesProducts: jest.fn(() => mockedGetFavoritesProductsReturnValue),
+  getFavoritesItems: jest.fn(() => mockedGetFavoritesProductsReturnValue),
   getFavoritesCount: jest.fn(() => mockedGetFavoritesCountReturnValue),
   makeGetProductRelativesOnFavorites: jest.fn(() =>
     jest.fn().mockReturnValue(mockedGetProductRelativesOnFavoritesReturnValue)),
@@ -244,8 +244,8 @@ describe('Favorites - subscriptions', () => {
           getState,
         });
         expect(getState).toHaveBeenCalledTimes(1);
-        expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
-        expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
+        expect(getFavoritesItems).toHaveBeenCalledWith(getState());
+        expect(getFavoritesItems).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(cancelRequestSyncFavorites(0, mockedDefaultListId));
         expect(dispatch).toHaveBeenCalledTimes(1);
       });
@@ -264,8 +264,8 @@ describe('Favorites - subscriptions', () => {
         });
 
         expect(getState).toHaveBeenCalledTimes(2);
-        expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
-        expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
+        expect(getFavoritesItems).toHaveBeenCalledWith(getState());
+        expect(getFavoritesItems).toHaveBeenCalledTimes(1);
         expect(getFavoritesCount).toHaveBeenCalledWith(getState());
         expect(getFavoritesCount).toHaveBeenCalledTimes(1);
 
@@ -285,8 +285,8 @@ describe('Favorites - subscriptions', () => {
         });
 
         expect(getState).toHaveBeenCalledTimes(2);
-        expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
-        expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
+        expect(getFavoritesItems).toHaveBeenCalledWith(getState());
+        expect(getFavoritesItems).toHaveBeenCalledTimes(1);
         expect(getFavoritesCount).toHaveBeenCalledWith(getState());
         expect(getFavoritesCount).toHaveBeenCalledTimes(1);
 
@@ -325,7 +325,7 @@ describe('Favorites - subscriptions', () => {
 
         expect(getFavoritesCount).toHaveBeenCalledTimes(1);
         expect(makeGetProductRelativesOnFavorites).toHaveBeenCalledTimes(0);
-        expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
+        expect(getFavoritesItems).toHaveBeenCalledTimes(1);
         expect(getState).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenCalledTimes(1);
       });
@@ -341,7 +341,7 @@ describe('Favorites - subscriptions', () => {
 
         expect(getFavoritesCount).toHaveBeenCalledTimes(1);
         expect(makeGetProductRelativesOnFavorites).toHaveBeenCalledTimes(0);
-        expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
+        expect(getFavoritesItems).toHaveBeenCalledTimes(1);
         expect(getState).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(idleSyncFavorites(mockedDefaultListId));

@@ -6,7 +6,7 @@ import { i18n } from '@shopgate/engage/core';
 import {
   Accordion, Card, ContextMenu, SurroundPortals,
 } from '@shopgate/engage/components';
-import { makeGetFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { makeGetFavoritesItemsByList } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 
@@ -64,9 +64,9 @@ FavoriteListLabel.propTypes = {
  * @returns {Object}
  */
 const makeMapStateToProps = (_, { id }) => {
-  const getFavorites = makeGetFavorites(() => id);
+  const getFavorites = makeGetFavoritesItemsByList(() => id);
   return state => ({
-    products: getFavorites(state),
+    items: getFavorites(state),
   });
 };
 
@@ -77,7 +77,7 @@ const makeMapStateToProps = (_, { id }) => {
 const FavoriteList = ({
   id,
   name,
-  products,
+  items,
   rename,
   remove,
   removeItem,
@@ -99,13 +99,15 @@ const FavoriteList = ({
       startOpened
     >
       <div className={styles.divider} />
-      {products.length === 0 ? (
+      {items.length === 0 ? (
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
-      {products.map(product => (
+      {items.map(({ product, notes, quantity }) => (
         <Item
           key={product.id}
           product={product}
+          notes={notes}
+          quantity={quantity}
           listId={id}
           productId={product.id}
           addToCart={(e) => {
@@ -127,8 +129,8 @@ const FavoriteList = ({
 FavoriteList.propTypes = {
   addToCart: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   name: PropTypes.string.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   remove: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   rename: PropTypes.func.isRequired,

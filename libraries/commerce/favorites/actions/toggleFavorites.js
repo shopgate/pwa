@@ -1,4 +1,5 @@
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   getFavoritesDefaultList,
   getFavoritesLists,
@@ -64,14 +65,18 @@ export const requestSync = mutable(listId => (dispatch) => {
  */
 export const toggleFavorite = (productId, listId, withRelatives = false) =>
   (dispatch, getState) => {
-    const isOnList = makeIsProductOnSpecificFavoriteList(
-      () => productId,
-      () => listId
-    )(getState());
-
-    dispatch(!isOnList
-      ? addFavorite(productId, listId)
-      : removeFavorites(productId, withRelatives, listId));
+    // With extended favorites active the favorites button always adds (increases quantity)
+    if (appConfig.hasExtendedFavorites) {
+      dispatch(addFavorite(productId, listId));
+    } else {
+      const isOnList = makeIsProductOnSpecificFavoriteList(
+        () => productId,
+        () => listId
+      )(getState());
+      dispatch(!isOnList
+        ? addFavorite(productId, listId)
+        : removeFavorites(productId, withRelatives, listId));
+    }
   };
 
 /**

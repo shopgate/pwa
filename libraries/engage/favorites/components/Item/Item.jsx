@@ -35,13 +35,14 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import {
   FAVORITES_LIST_ITEM,
   FAVORITES_LIST_ITEM_ACTIONS,
 } from '../../constants/Portals';
+import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/UnitQuantityPicker';
 
 const { variables } = themeConfig;
 
@@ -154,6 +155,8 @@ const styles = {
 const FavoriteItem = ({
   listId,
   product,
+  notes,
+  quantity,
   remove,
   addToCart,
   isBaseProduct,
@@ -266,6 +269,30 @@ const FavoriteItem = ({
               <StockInfoLists product={product} />
             </div>
             <div className={styles.infoContainerRight}>
+
+              { appConfig.hasExtendedFavorites ? (
+                <div>
+                  <div>
+                    notes:
+                    {notes || ''}
+                  </div>
+                  <div>
+                    <UnitQuantityPicker
+                      // className={hasUnitWithDecimals ? big : small}
+                      // unit={hasUnitWithDecimals ? unit : null}
+                      // maxDecimals={hasUnitWithDecimals ? 2 : 0}
+                      // incrementStep={hasUnitWithDecimals ? 0.25 : 1}
+                      // decrementStep={hasUnitWithDecimals ? 0.25 : 1}
+                      // onChange={setQuantity}
+                      maxDecimals={0}
+                      value={quantity}
+                      // disabled={disabled}
+                      // minValue={minValue}
+                      // maxValue={maxValue}
+                    />
+                  </div>
+                </div>
+              ) : null}
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
                 {hasStrikePrice ? (
                   <PriceStriked
@@ -333,6 +360,8 @@ FavoriteItem.propTypes = {
   isBaseProduct: PropTypes.bool,
   isOrderable: PropTypes.bool,
   isRopeProductOrderable: PropTypes.bool,
+  notes: PropTypes.string,
+  quantity: PropTypes.number,
 };
 
 FavoriteItem.defaultProps = {
@@ -340,6 +369,8 @@ FavoriteItem.defaultProps = {
   isOrderable: true,
   isRopeProductOrderable: true,
   hasVariants: false,
+  notes: undefined,
+  quantity: 1,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteItem);

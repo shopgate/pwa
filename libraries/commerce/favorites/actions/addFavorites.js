@@ -20,6 +20,7 @@ function addFavorites(productId, listId = null) {
         productId,
         favoritesListId: takenListId,
       })
+      .setVersion(2)
       .setRetries(0)
       .dispatch();
 

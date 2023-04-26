@@ -38,6 +38,7 @@ const products = (state = {
             lastChange: 0,
             lastFetch: 0,
             expires: 0,
+            // todo replace with items
             ids: [],
             syncCount: 0,
           };
@@ -66,7 +67,7 @@ const products = (state = {
         }
 
         list.expires = Date.now() + FAVORITES_LIFETIME;
-        list.ids = action.products.map(product => product.id);
+        list.items = action.items;
         list.ready = true;
         // `syncCount` stays untouched because this is not considered to be a sync.
         break;
@@ -85,6 +86,7 @@ const products = (state = {
       // Handle adding favorite list products.
       case REQUEST_ADD_FAVORITES: {
         const list = draft.byList[action.listId];
+        // todo replace with items
         list.ids = uniq([
           ...list.ids,
           action.productId,
@@ -97,6 +99,7 @@ const products = (state = {
       // Handle removing favorite list products.
       case REQUEST_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
+        // todo replace with items
         list.ids.splice(list.ids.indexOf(action.productId), 1);
         list.lastChange = Date.now();
         list.syncCount += 1;
@@ -123,6 +126,7 @@ const products = (state = {
       // Handle deletion failure by adding the product back in to the list.
       case ERROR_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
+        // todo replace with items
         list.ids = uniq([...state.ids, action.productId]);
         list.lastChange = Date.now();
         list.syncCount -= 1;
@@ -132,6 +136,7 @@ const products = (state = {
       // Handle adding failure by removing the product from the list.
       case ERROR_ADD_FAVORITES: {
         const list = draft.byList[action.listId];
+        // todo replace with items
         list.ids.splice(list.ids.indexOf(action.productId), 1);
         list.lastChange = Date.now();
         list.syncCount -= 1;
@@ -151,6 +156,7 @@ const products = (state = {
           lastChange: 0,
           lastFetch: 0,
           expires: 0,
+          // todo replace with items
           ids: [],
           syncCount: 0,
           ready: true,

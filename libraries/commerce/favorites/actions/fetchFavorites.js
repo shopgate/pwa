@@ -36,13 +36,14 @@ function fetchFavorites(ignoreCache = false, listId = undefined) {
     dispatch(requestFavorites(takenListId));
 
     const request = new PipelineRequest(SHOPGATE_USER_GET_FAVORITES)
+      .setVersion(2)
       .setInput({ favoritesListId: takenListId })
       .setErrorBlacklist([EFAVORITE, EUNKNOWN, EBIGAPI, ELIMIT])
       .dispatch();
 
     try {
       const result = await request;
-      dispatch(receiveFavorites(result.products, timestamp, takenListId));
+      dispatch(receiveFavorites(result.items, timestamp, takenListId));
       return result;
     } catch (err) {
       dispatch(errorFetchFavorites(err, takenListId));

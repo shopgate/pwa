@@ -31,7 +31,7 @@ export const getFavoritesLists = state => getFavoritesListState(state)?.lists ||
  * @param {Object} state The global state.
  * @return {Object|null}
  */
-export const getFavoritesProducts = createSelector(
+export const getFavoritesItems = createSelector(
   getFavoritesState,
   (state) => {
     if (!state.products) {
@@ -73,7 +73,7 @@ export const getFavoritesListIdByName = createSelector(
  * @deprecated
  */
 export const getFavoritesProductsIds = createSelector(
-  getFavoritesProducts,
+  getFavoritesItems,
   (products) => {
     if (!products || !products.byList) {
       return defaultIds;
@@ -99,36 +99,16 @@ export const getFavorites = createSelector(
 );
 
 /**
- * Creates a selector that selects all ids that belong
+ * Creates a selector that selects all items that belong
  * to the given favorite list.
  * @param {Function} getListCode Selects the list code.
  * @returns {Function}
  */
-export const makeGetFavoritesIdsByList = getListCode => createSelector(
-  getFavoritesProducts,
+export const makeGetFavoritesItemsByList = getListCode => createSelector(
+  getFavoritesItems,
   getListCode,
-  (favProducts, listId) => {
-    const ids = favProducts.byList[listId]?.ids || [];
-    return ids;
-  }
+  (favItems, listId) => favItems.byList[listId]?.items || []
 );
-
-/**
- * Creates a selector that selects all products that belong
- * to the given favorite list.
- * @param {Function} getListCode Selects the list code.
- * @returns {Function}
- */
-export const makeGetFavorites = (getListCode) => {
-  const getFavoritesIdsByList = makeGetFavoritesIdsByList(getListCode);
-  return createSelector(
-    getFavoritesIdsByList,
-    getProducts,
-    (ids, products) => ids
-      .filter(id => !!products[id] && products[id].productData)
-      .map(id => products[id].productData)
-  );
-};
 
 /**
  * True when favorites where not yet fetched for the first time.
@@ -136,7 +116,7 @@ export const makeGetFavorites = (getListCode) => {
  * @returns {boolean}
  */
 export const isInitialLoading = createSelector(
-  getFavoritesProducts,
+  getFavoritesItems,
   (products) => {
     if (!products) {
       return true;
@@ -151,7 +131,7 @@ export const isInitialLoading = createSelector(
  * @return {number}
  */
 export const getFavoritesCount = createSelector(
-  getFavoritesProducts,
+  getFavoritesItems,
   (products) => {
     if (!products?.byList) {
       return 0;
@@ -177,7 +157,7 @@ export const hasFavorites = createSelector(
  * @return {boolean}
  */
 export const isFetching = createSelector(
-  getFavoritesProducts,
+  getFavoritesItems,
   (products) => {
     if (!products) {
       return false;
@@ -195,7 +175,7 @@ export const isFetching = createSelector(
 export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode) => createSelector(
   getProductCode,
   getListCode,
-  getFavoritesProducts,
+  getFavoritesItems,
   (productId, listId, products) => !!products.byList[listId]?.ids.includes(productId)
 );
 
@@ -205,7 +185,7 @@ export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode)
  */
 export const makeIsProductOnFavoriteList = getProductCode => createSelector(
   getProductCode,
-  getFavoritesProducts,
+  getFavoritesItems,
   (productId, products) => !!Object
     .values(products.byList)
     .find(list => !!list.ids.find(p => p === productId))
@@ -224,11 +204,11 @@ export const isCurrentProductOnFavoriteList = makeIsProductOnFavoriteList(getPro
  */
 export const getProductRelativesOnFavorites = createSelector(
   getKnownRelatives,
-  getFavoritesProducts,
-  (productRelativesIds, products) => productRelativesIds.filter(
+  getFavoritesItems,
+  (productRelativesIds, items) => productRelativesIds.filter(
     id => !!Object
-      .values(products.byList)
-      .find(list => !!list.ids.find(p => id === p))
+      .values(items.byList)
+      .find(list => !!list.items.find(({ product }) => id === product.id))
   )
 );
 
@@ -240,7 +220,7 @@ export const getProductRelativesOnFavorites = createSelector(
 export const makeGetProductRelativesOnFavorites = getListCode => createSelector(
   getListCode,
   getKnownRelatives,
-  getFavoritesProducts,
+  getFavoritesItems,
   (listId, productRelativesIds, products) => productRelativesIds.filter(
     id => products.byList[listId]?.ids.find(p => id === p)
   )
