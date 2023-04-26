@@ -229,19 +229,23 @@ class InfiniteContainer extends Component {
    * @returns {boolean}
    */
   allItemsAreRendered(props = this.props) {
+    const { totalItems, items } = props;
     const [offset, limit] = this.state.offset;
 
     if (props.enablePromiseBasedLoading) {
-      const { totalItems } = props;
       // At promise based loading the offset is increased after the response came in.
       // This method is invoked to evaluate if a new request needs to be dispatched, so we check
       // against the current offset state.
-      return totalItems !== null && (offset >= totalItems);
+      return (
+        totalItems !== null &&
+        (offset >= totalItems ||
+          (offset === 0 && Array.isArray(items) && items.length === totalItems))
+      );
     }
 
     return (
       !this.needsToReceiveItems(props) &&
-      offset + limit >= props.totalItems
+      offset + limit >= totalItems
     );
   }
 
