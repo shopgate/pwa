@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.19.7](https://github.com/shopgate/pwa/compare/v6.19.6...v6.19.7) (2023-04-27)
+
+#### :rocket: Enhancement
+* [#1141](https://github.com/shopgate/pwa/pull/1141) Move portal children in own component to allow portal to override props + new portals + SearchBar for Picker Sheet ([@Carsten89](https://github.com/Carsten89))
+* [#1141](https://github.com/shopgate/pwa/pull/1141) Move portal children in own component to allow portal to override props + new portals + SearchBar for Picker Sheet ([@Carsten89](https://github.com/Carsten89))
+* [#1125](https://github.com/shopgate/pwa/pull/1125) App rating feature ([@AienTech](https://github.com/AienTech))
+* [#1125](https://github.com/shopgate/pwa/pull/1125) App rating feature ([@AienTech](https://github.com/AienTech))
+
+
 ## [v6.19.0](https://github.com/shopgate/pwa/compare/v6.18.9...v6.19.0) (2022-04-05)
 
 #### :rocket: Enhancement
