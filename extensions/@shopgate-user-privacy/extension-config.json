@@ -60,6 +60,11 @@
       "id": "pt-PT",
       "path": "frontend/locale/pt-PT.json",
       "type": "translations"
+    },
+    {
+      "id": "pl-PL",
+      "path": "frontend/locale/pl-PL.json",
+      "type": "translations"
     }
   ]
 }
