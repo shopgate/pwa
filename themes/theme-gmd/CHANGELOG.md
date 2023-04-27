@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.20.0](https://github.com/shopgate/pwa/compare/v6.19.7...v6.20.0) (2023-04-27)
+
+#### :boom: Breaking Change
+* [#1163](https://github.com/shopgate/pwa/pull/1163) added the option to use multiple favorites lists ([@ortmann64](https://github.com/ortmann64))
+
+#### :house: Internal
+* [#1187](https://github.com/shopgate/pwa/pull/1187) Implemented backwards compatibility to older favorites extension ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.19.7](https://github.com/shopgate/pwa/compare/v6.19.6...v6.19.7) (2023-04-27)
 
 #### :rocket: Enhancement
