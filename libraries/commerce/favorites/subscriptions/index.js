@@ -40,8 +40,8 @@ import {
   getFavoritesItemsByList,
   getFavoritesCount,
   makeGetProductRelativesOnFavorites,
+  makeGetProductFromFavorites,
 } from '../selectors';
-import { getProductById } from '../../product';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -93,7 +93,9 @@ export default function favorites(subscribe) {
     }
 
     const { favorites: { limit = 100 } = {} } = appConfig;
-    const { productData: product } = getProductById(getState(), { productId: action.productId });
+
+    const getProductFromFavorites = makeGetProductFromFavorites(action.listId, action.productId);
+    const product = getProductFromFavorites(getState());
 
     const count = getFavoritesCount(getState());
     if (count >= limit) {
@@ -107,7 +109,8 @@ export default function favorites(subscribe) {
   });
 
   subscribe(updateProductInFavoritesDebounced$, ({ action, dispatch, getState }) => {
-    const { productData: product } = getProductById(getState(), { productId: action.productId });
+    const getProductFromFavorites = makeGetProductFromFavorites(action.listId, action.productId);
+    const product = getProductFromFavorites(getState());
 
     dispatch(requestUpdateFavorites(
       product, action.listId, action.quantity, action.notes
@@ -115,7 +118,9 @@ export default function favorites(subscribe) {
   });
 
   subscribe(removeProductFromFavoritesDebounced$, ({ action, dispatch, getState }) => {
-    const { productData: product } = getProductById(getState(), { productId: action.productId });
+    const getProductFromFavorites = makeGetProductFromFavorites(action.listId, action.productId);
+    const product = getProductFromFavorites(getState());
+
     const count = getFavoritesCount(getState());
     if (count > 0) {
       if (action.withRelatives) {
@@ -132,7 +137,7 @@ export default function favorites(subscribe) {
 
       // Avoids trying to remove something that was already removed (incoming fetch response)
       const list = getFavoritesItemsByList(getState()).byList[action.listId];
-      if (!list?.items.find(({ listProduct }) => listProduct.id === action.productId)) {
+      if (!list?.items.find(({ product: listProduct }) => listProduct.id === action.productId)) {
         // Call cancel action with "zero" count, because request was even dispatched
         dispatch(cancelRequestSyncFavorites(0, action.listId));
         return;
@@ -188,7 +193,7 @@ export default function favorites(subscribe) {
     const actions = actionBuffer.map(({ action }) => action);
     const actionsByListAndProduct = groupBy(actions, (({ listId, product }) => `${listId}-${product.id}`));
 
-    Object.values(actionsByListAndProduct).forEach((groupedActions) => {
+    Object.values(actionsByListAndProduct).forEach(async (groupedActions) => {
       const { product } = groupedActions[0];
       const { listId } = groupedActions[0];
 
@@ -201,8 +206,8 @@ export default function favorites(subscribe) {
 
       // If there are any update actions we only dispatch the last one
       if (updateActions.length > 0) {
-        const lastUpdateAction = updateActions.pop();
-        dispatch(updateFavorites(
+        const [lastUpdateAction] = updateActions.slice(-1);
+        await dispatch(updateFavorites(
           lastUpdateAction.product,
           lastUpdateAction.listId,
           lastUpdateAction.quantity,
@@ -213,15 +218,15 @@ export default function favorites(subscribe) {
       // Sum up all adds and removes, based on sum dispatch add / remove
       const addRemoveBalance = addActions.length - removeActions.length;
       if (addRemoveBalance > 0) {
-        dispatch(addFavorites(product, listId));
+        await dispatch(addFavorites(product, listId));
       }
       if (addRemoveBalance < 0) {
-        dispatch(removeFavorites(product, listId));
+        await dispatch(removeFavorites(product, listId));
       }
 
       // Fetch after there was any update / add / remove
       if (updateActions.length > 0 || addRemoveBalance > 0 || addRemoveBalance < 0) {
-        dispatch(idleSyncFavorites(listId));
+        await dispatch(idleSyncFavorites(listId));
       }
     });
   });

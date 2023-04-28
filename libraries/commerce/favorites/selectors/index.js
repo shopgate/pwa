@@ -84,11 +84,30 @@ export const getFavoritesProducts = createSelector(
  * @param {Function} getListCode Selects the list code.
  * @returns {Function}
  */
-export const makeGetFavoritesItemsByListByList = getListCode => createSelector(
+export const makeGetFavoritesItemsByList = getListCode => createSelector(
   getFavoritesItemsByList,
   getListCode,
   (favItems, listId) => favItems.byList[listId]?.items || []
 );
+
+/**
+ * Creates a selector that selects all protects that belong
+ * to the given favorite list.
+ * @param {string} listId The list code.
+ * @param {string} productId The product code.
+ * @returns {Function}
+ */
+export const makeGetProductFromFavorites = (listId, productId) => {
+  const getFavoritesItemsByListId = makeGetFavoritesItemsByList(() => listId);
+
+  return createSelector(
+    getFavoritesItemsByListId,
+    (items) => {
+      const matchingItem = items.find(({ product }) => product.id === productId);
+      return matchingItem.product;
+    }
+  );
+};
 
 /**
  * True when favorites where not yet fetched for the first time.

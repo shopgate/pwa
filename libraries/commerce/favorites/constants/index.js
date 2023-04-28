@@ -33,7 +33,7 @@ export const FAVORITES_LIFETIME = 3600000; // 1 hour
 export const FETCH_FAVORITES_THROTTLE = (process.env && process.env.NODE_ENV === 'test') ? 0 : 2000;
 export const FAVORITE_ACTION_BUFFER_TIME = 500;
 export const FAVORITE_BUTTON_DEBOUNCE_TIME = 200; // Handles duplicated add/remove button clicks
-export const FAVORITE_QUANTITY_DEBOUNCE_TIME = 800; // Handles duplicated update button clicks
+export const FAVORITE_QUANTITY_DEBOUNCE_TIME = 200; // Handles duplicated update button clicks
 
 export const RECEIVE_FAVORITES_LISTS = 'SUCCESS_FETCH_FAVORITES_LIST';
 export const SUCCESS_ADD_FAVORITES_LIST = 'SUCCESS_ADD_FAVORITES_LIST';
