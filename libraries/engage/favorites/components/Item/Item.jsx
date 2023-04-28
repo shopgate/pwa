@@ -1,5 +1,9 @@
 import React, {
-  useCallback, useMemo, useLayoutEffect, useState,
+  useCallback,
+  useMemo,
+  useLayoutEffect,
+  useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -36,6 +40,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import {
@@ -63,10 +68,17 @@ const makeMapStateToProps = () => {
   });
 };
 
-const mapDispatchToProps = {
+/**
+ * @param {Function} dispatch Dispatch.
+ * @returns {Object}
+ */
+const mapDispatchToProps = dispatch => ({
   showModal: showModalAction,
   historyPush: historyPushAction,
-};
+  updateFavoriteItem: (productId, listId, notes, quantity) => {
+    dispatch(updateFavorite(productId, listId, notes, quantity));
+  },
+});
 
 const styles = {
   root: css({
@@ -165,6 +177,7 @@ const FavoriteItem = ({
   hasVariants,
   showModal,
   historyPush,
+  updateFavoriteItem,
 }) => {
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
@@ -175,6 +188,15 @@ const FavoriteItem = ({
   const price = hasStrikePrice ? specialPrice : defaultPrice;
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
+
+  const { unit, hasCatchWeight } = product;
+  const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
+
+  const [internalQuantity, setInternalQuantity] = useState(quantity);
+
+  useEffect(() => {
+    setInternalQuantity(quantity);
+  }, [quantity]);
 
   useLayoutEffect(() => {
     setIsDisabled(!isOrderable && !hasVariants);
@@ -244,6 +266,19 @@ const FavoriteItem = ({
     handleAddToCart,
   }), [handleAddToCart, isBaseProduct, isDisabled, listId, product.id, remove]);
 
+  const handleChange = useCallback((newQuantity, event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    setInternalQuantity(newQuantity);
+    updateFavoriteItem(
+      product.id,
+      listId,
+      newQuantity,
+      notes
+    );
+  }, [listId, notes, product.id, updateFavoriteItem]);
+
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
       <div className={styles.root}>
@@ -269,28 +304,29 @@ const FavoriteItem = ({
               <StockInfoLists product={product} />
             </div>
             <div className={styles.infoContainerRight}>
-
               { appConfig.hasExtendedFavorites ? (
                 <div>
                   <div>
-                    notes:
-                    {notes || ''}
-                  </div>
-                  <div>
+                    {/* todo what to do with min / max value, stockINfo??? */}
                     <UnitQuantityPicker
-                      // className={hasUnitWithDecimals ? big : small}
-                      // unit={hasUnitWithDecimals ? unit : null}
-                      // maxDecimals={hasUnitWithDecimals ? 2 : 0}
-                      // incrementStep={hasUnitWithDecimals ? 0.25 : 1}
-                      // decrementStep={hasUnitWithDecimals ? 0.25 : 1}
-                      // onChange={setQuantity}
-                      maxDecimals={0}
-                      value={quantity}
-                      // disabled={disabled}
-                      // minValue={minValue}
-                      // maxValue={maxValue}
+                      unit={hasUnitWithDecimals ? unit : null}
+                      maxDecimals={hasUnitWithDecimals ? 2 : 0}
+                      incrementStep={hasUnitWithDecimals ? 0.25 : 1}
+                      decrementStep={hasUnitWithDecimals ? 0.25 : 1}
+                      onChange={handleChange}
+                      value={internalQuantity}
                     />
                   </div>
+                  {/* <div> */}
+                  {/*  {!notes ? <button type="button">Add a comment</button> : */}
+                  {/*  <div> */}
+                  {/*    <span>notes: </span> */}
+                  {/*    <span>{notes || ''}</span> */}
+                  {/*    /!*<button>Edit</button>*!/ */}
+                  {/*    /!*<button>Delete</button>*!/ */}
+                  {/*  </div> */}
+                  {/*    } */}
+                  {/* </div> */}
                 </div>
               ) : null}
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
@@ -356,6 +392,7 @@ FavoriteItem.propTypes = {
   product: PropTypes.shape().isRequired,
   remove: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
+  updateFavoriteItem: PropTypes.func.isRequired,
   hasVariants: PropTypes.bool,
   isBaseProduct: PropTypes.bool,
   isOrderable: PropTypes.bool,

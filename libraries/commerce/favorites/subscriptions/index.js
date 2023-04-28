@@ -2,6 +2,7 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
+import groupBy from 'lodash/groupBy';
 import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
@@ -10,6 +11,7 @@ import {
   errorFavoritesLimit$,
   refreshFavorites$,
   didReceiveFlushFavoritesBuffer$,
+  updateProductInFavoritesDebounced$,
 } from '../streams';
 import {
   SHOPGATE_USER_ADD_FAVORITES,
@@ -18,6 +20,7 @@ import {
 import fetchFavorites from '../actions/fetchFavorites';
 import fetchFavoritesLists from '../actions/fetchFavoritesList';
 import addFavorites from '../actions/addFavorites';
+import updateFavorites from '../actions/updateFavorites';
 import removeFavorites from '../actions/removeFavorites';
 import {
   requestAddFavorites,
@@ -25,17 +28,20 @@ import {
   cancelRequestSyncFavorites,
   errorFavorites,
   idleSyncFavorites,
+  requestUpdateFavorites,
 } from '../action-creators';
 import {
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
   FAVORITES_LIMIT_ERROR,
+  REQUEST_UPDATE_FAVORITES,
 } from '../constants';
 import {
-  getFavoritesItems,
+  getFavoritesItemsByList,
   getFavoritesCount,
   makeGetProductRelativesOnFavorites,
 } from '../selectors';
+import { getProductById } from '../../product';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -76,9 +82,9 @@ export default function favorites(subscribe) {
 
   subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {
     // Nothing to do, when the store already contains the item
-    const activeProductInList = getFavoritesItems(getState())
+    const activeProductInList = getFavoritesItemsByList(getState())
       .byList[action.listId]
-      ?.ids.find(id => id === action.productId);
+      ?.items.find(({ product }) => product.id === action.productId);
 
     if (activeProductInList) {
       // Call cancel action with "zero" count, because request was even dispatched
@@ -87,19 +93,29 @@ export default function favorites(subscribe) {
     }
 
     const { favorites: { limit = 100 } = {} } = appConfig;
+    const { productData: product } = getProductById(getState(), { productId: action.productId });
 
     const count = getFavoritesCount(getState());
     if (count >= limit) {
       // Dispatch a local error only, because the request to add is prevented
       const error = new Error('Limit exceeded');
       error.code = FAVORITES_LIMIT_ERROR;
-      dispatch(errorFavorites(action.productId, error));
+      dispatch(errorFavorites(action.product.id, error));
     } else {
-      dispatch(requestAddFavorites(action.productId, action.listId));
+      dispatch(requestAddFavorites(product, action.listId));
     }
   });
 
+  subscribe(updateProductInFavoritesDebounced$, ({ action, dispatch, getState }) => {
+    const { productData: product } = getProductById(getState(), { productId: action.productId });
+
+    dispatch(requestUpdateFavorites(
+      product, action.listId, action.quantity, action.notes
+    ));
+  });
+
   subscribe(removeProductFromFavoritesDebounced$, ({ action, dispatch, getState }) => {
+    const { productData: product } = getProductById(getState(), { productId: action.productId });
     const count = getFavoritesCount(getState());
     if (count > 0) {
       if (action.withRelatives) {
@@ -108,20 +124,22 @@ export default function favorites(subscribe) {
           getState(),
           { productId: action.productId }
         );
-        allOnList.forEach(id => dispatch(requestRemoveFavorites(id, action.listId)));
+
+        allOnList.forEach(listProduct =>
+          dispatch(requestRemoveFavorites(listProduct, action.listId)));
         return;
       }
 
       // Avoids trying to remove something that was already removed (incoming fetch response)
-      const list = getFavoritesItems(getState()).byList[action.listId];
-      if (!list?.ids.find(id => id === action.productId)) {
+      const list = getFavoritesItemsByList(getState()).byList[action.listId];
+      if (!list?.items.find(({ listProduct }) => listProduct.id === action.productId)) {
         // Call cancel action with "zero" count, because request was even dispatched
         dispatch(cancelRequestSyncFavorites(0, action.listId));
         return;
       }
 
-      dispatch(requestRemoveFavorites(action.productId, action.listId));
-    } else if (!getFavoritesItems(getState()).byList[action.listId]?.isFetching) {
+      dispatch(requestRemoveFavorites(product, action.listId));
+    } else if (!getFavoritesItemsByList(getState()).byList[action.listId]?.isFetching) {
       // Remove should not be possible when no favorites available
       // Refresh to fix inconsistencies, by dispatching an idleSync action when not fetching
       dispatch(idleSyncFavorites(action.listId));
@@ -153,8 +171,8 @@ export default function favorites(subscribe) {
   });
 
   /**
-   * Takes an action buffer of the request-add and request-remove favorites actions and triggers
-   * Pipeline requests for all of them. Errors are handled autonomously.
+   * Takes an action buffer of the request-add, request-remove and request-update favorites actions
+   * and triggers Pipeline requests for all of them. Errors are handled autonomously.
    * After all pipeline requests are done it resets the favorite page's state to "idle".
    */
   subscribe(didReceiveFlushFavoritesBuffer$, async (actionBuffer) => {
@@ -166,65 +184,43 @@ export default function favorites(subscribe) {
     // All actions provide the same functionality, just take the first entry
     const { dispatch } = actionBuffer[0];
 
-    // Compute a list of product ids that were in the action buffer
-    const bufferedProductIdsToSync = {};
-    actionBuffer.forEach(({ action }) => {
-      // Initialize data structure for each affected list.
-      if (bufferedProductIdsToSync[action.listId] === undefined) {
-        bufferedProductIdsToSync[action.listId] = {};
+    // Group all buffered actions by listId and productID
+    const actions = actionBuffer.map(({ action }) => action);
+    const actionsByListAndProduct = groupBy(actions, (({ listId, product }) => `${listId}-${product.id}`));
+
+    Object.values(actionsByListAndProduct).forEach((groupedActions) => {
+      const { product } = groupedActions[0];
+      const { listId } = groupedActions[0];
+
+      const updateActions = groupedActions
+        .filter(action => action.type === REQUEST_UPDATE_FAVORITES);
+      const addActions = groupedActions
+        .filter(action => action.type === REQUEST_ADD_FAVORITES);
+      const removeActions = groupedActions
+        .filter(action => action.type === REQUEST_REMOVE_FAVORITES);
+
+      // If there are any update actions we only dispatch the last one
+      if (updateActions.length > 0) {
+        const lastUpdateAction = updateActions.pop();
+        dispatch(updateFavorites(
+          lastUpdateAction.product,
+          lastUpdateAction.listId,
+          lastUpdateAction.quantity,
+          lastUpdateAction.notes
+        ));
       }
 
-      // Initialize data structure for each requested product id
-      // -> use object because of easy access and unique keys
-      if (bufferedProductIdsToSync[action.listId][action.productId] === undefined) {
-        bufferedProductIdsToSync[action.listId][action.productId] = {
-          id: action.productId,
-          listId: action.listId,
-          count: 0,
-        };
+      // Sum up all adds and removes, based on sum dispatch add / remove
+      const addRemoveBalance = addActions.length - removeActions.length;
+      if (addRemoveBalance > 0) {
+        dispatch(addFavorites(product, listId));
+      }
+      if (addRemoveBalance < 0) {
+        dispatch(removeFavorites(product, listId));
       }
 
-      if (action.type === REQUEST_ADD_FAVORITES) {
-        bufferedProductIdsToSync[action.listId][action.productId].count += 1;
-      } else if (action.type === REQUEST_REMOVE_FAVORITES) {
-        bufferedProductIdsToSync[action.listId][action.productId].count -= 1;
-      }
-    });
-
-    Object.keys(bufferedProductIdsToSync).forEach(async (listId) => {
-      const pendingProductIdsToSync = bufferedProductIdsToSync[listId];
-
-      // Filter out all products that sum up to a neutral sync state
-      const productIdsToSync = Object.values(pendingProductIdsToSync)
-        .filter(p => p.count !== 0);
-
-      // Cancel filtered out requests (incoming_from_buffer - outgoing)
-      const countRemoved = actionBuffer.length - productIdsToSync.length;
-      if (countRemoved > 0) {
-        dispatch(cancelRequestSyncFavorites(countRemoved, listId));
-      }
-
-      if (!productIdsToSync.length) {
-        // No requests are left to be processed.
-        return;
-      }
-
-      try {
-        // Dispatch all add or remove (delete) pipeline requests
-        // at once and wait for all to complete
-        await Promise.all(productIdsToSync.map((p) => {
-          if (p.count > 0) {
-            return dispatch(addFavorites(p.id, listId));
-          }
-          return dispatch(removeFavorites(p.id, listId));
-        }));
-
-        // Add and delete handle success and failure already.
-        // Ignore 'fetching' state and force fetch every time (fetch request can be outdated)
-        dispatch(idleSyncFavorites(listId));
-      } catch (err) {
-        // Errors are handled for each pipeline call. Just mark as idle here.
-        // Ignore 'fetching' state and force fetch every time (fetch request can be outdated)
+      // Fetch after there was any update / add / remove
+      if (updateActions.length > 0 || addRemoveBalance > 0 || addRemoveBalance < 0) {
         dispatch(idleSyncFavorites(listId));
       }
     });

@@ -74,22 +74,22 @@ const UnitQuantityPicker = ({
   minValue,
   maxValue,
 }) => {
-  const handleDecrement = useCallback(() => {
+  const handleDecrement = useCallback((event) => {
     let newValue = value - decrementStep;
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
       newValue = value;
     }
-    onChange(newValue);
+    onChange(newValue, event);
   }, [allowZero, decrementStep, minValue, onChange, value]);
 
-  const handleIncrement = useCallback(() => {
+  const handleIncrement = useCallback((event) => {
     let newValue = value + incrementStep;
 
     if (maxValue && newValue > maxValue) {
       newValue = value;
     }
 
-    onChange(newValue);
+    onChange(newValue, event);
   }, [incrementStep, maxValue, onChange, value]);
 
   useEffect(() => {

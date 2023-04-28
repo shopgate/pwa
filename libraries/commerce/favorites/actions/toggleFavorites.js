@@ -10,6 +10,7 @@ import {
   removeProductFromFavorites,
   requestFlushFavoritesBuffer,
   openFavoritesListChooser,
+  updateProductInFavorites,
 } from '../action-creators';
 
 /**
@@ -78,6 +79,20 @@ export const toggleFavorite = (productId, listId, withRelatives = false) =>
         : removeFavorites(productId, withRelatives, listId));
     }
   };
+
+/**
+ * Updatest a product in the favorite list (debounced and buffered).
+ * @param {string} productId Product identifier.
+ * @param {string} listId List identifier.
+ * @param {number} quantity
+ * @param {string} notes
+ * @return {Function}
+ */
+export const updateFavorite = mutable((productId, listId, quantity, notes) =>
+  (dispatch, getState) => {
+    const defaultList = getFavoritesDefaultList(getState());
+    dispatch(updateProductInFavorites(productId, listId || defaultList.id, quantity, notes));
+  });
 
 /**
  * Adds a product to a wishlist by opening a chooser if user has multiple lists.

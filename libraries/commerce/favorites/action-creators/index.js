@@ -16,6 +16,10 @@ import {
   REQUEST_FLUSH_FAVORITES_BUFFER,
   OPEN_FAVORITE_LIST_CHOOSER,
   CLOSE_FAVORITE_LIST_CHOOSER,
+  REQUEST_UPDATE_FAVORITES,
+  SUCCESS_UPDATE_FAVORITES,
+  ERROR_UPDATE_FAVORITES,
+  UPDATE_PRODUCT_IN_FAVORITES,
 } from '../constants';
 
 /**
@@ -29,6 +33,24 @@ export const addProductToFavorites = (productId, listId) => ({
   productId,
   listId,
 });
+
+/**
+ * First action to update a product in favorites.
+ * @param {number} productId Id of the product to add.
+ * @param {string} listId List identifier.
+ * @param {number} quantity The quantity of the product.
+ * @param {string} notes Notes about the product.
+ * @returns {Object}
+ */
+export const updateProductInFavorites = (productId, listId, quantity, notes) => ({
+  type: UPDATE_PRODUCT_IN_FAVORITES,
+  productId,
+  listId,
+  notes,
+  quantity,
+});
+
+// todo add updateProductinfavoritses
 
 /**
  * First action to remove one product to favorites.
@@ -70,76 +92,118 @@ export const errorFavorites = (productId, error) => ({
 
 /**
  * Request add favorites action. This action just updates the redux store.
- * @param {string} productId Product identifier.
+ * @param {Object} product Product.
  * @param {string} listId List identifier.
  * @returns {Object}
  */
-export const requestAddFavorites = (productId, listId) => ({
+export const requestAddFavorites = (product, listId) => ({
   type: REQUEST_ADD_FAVORITES,
-  productId,
+  product,
   listId,
 });
 
 /**
  * Action to be triggered upon successful addFavorites pipeline call.
- * @param {string} productId Product identifier.
+ * @param {Object} product Product.
  * @param {string} listId List identifier.
  * @returns {Object}
  */
-export const successAddFavorites = (productId, listId) => ({
+export const successAddFavorites = (product, listId) => ({
   type: SUCCESS_ADD_FAVORITES,
-  productId,
+  product,
   listId,
 });
 
 /**
  * Action to be triggered upon a failed addFavorites pipeline call.
- * @param {string} productId Product identifier.
+ * @param {Object} product Product.
  * @param {Error} error The error that occurred.
  * @param {string} listId List identifier.
  * @returns {Object}
  */
-export const errorAddFavorites = (productId, error, listId) => ({
+export const errorAddFavorites = (product, error, listId) => ({
   type: ERROR_ADD_FAVORITES,
-  productId,
+  product,
+  listId,
+  error,
+});
+
+/**
+ * Request update favorites action. This action just updates the redux store.
+ * @param {Object} product Product.
+ * @param {string} listId List identifier.
+ * @param {number} quantity The quantity of the product
+ * @param {string} notes Notes about the product
+ * @returns {Object}
+ */
+export const requestUpdateFavorites = (product, listId, quantity, notes) => ({
+  type: REQUEST_UPDATE_FAVORITES,
+  product,
+  listId,
+  notes,
+  quantity,
+});
+
+/**
+ * Action to be triggered upon successful updateFavorites pipeline call.
+ * @param {Object} product Product.
+ * @param {string} listId List identifier.
+ * @returns {Object}
+ */
+export const successUpdateFavorites = (product, listId) => ({
+  type: SUCCESS_UPDATE_FAVORITES,
+  product,
+  listId,
+});
+
+/**
+ * Action to be triggered upon failed updateFavorites pipeline call.
+ * @param {Object} product Product.
+ * @param {string} listId List identifier.
+ * @param {Error} error The error that occurred.
+ * @returns {Object}
+ */
+export const errorUpdateFavorites = (product, listId, error) => ({
+  type: ERROR_UPDATE_FAVORITES,
+  product,
   listId,
   error,
 });
 
 /**
  * Request remove favorites action. This action just updates the redux store.
- * @param {string} productId Product identifier.
+ * @param {Object} product Product.
  * @param {string} listId List identifier.
  * @returns {Object}
  */
-export const requestRemoveFavorites = (productId, listId) => ({
+export const requestRemoveFavorites = (product, listId) => ({
   type: REQUEST_REMOVE_FAVORITES,
-  productId,
+  product,
   listId,
 });
 
 /**
  * Action to be triggered upon successful removeFavorites (deleteFavorites)  pipeline call.
- * @param {string} productId Product identifier.
+ * @param {Object} product Product.
  * @param {number} takenListId List id
  * @returns {Object}
  */
-export const successRemoveFavorites = (productId, takenListId) => ({
+export const successRemoveFavorites = (product, takenListId) => ({
   type: SUCCESS_REMOVE_FAVORITES,
-  productId,
+  product,
   listId: takenListId,
 });
 
 /**
  * Action to be triggered upon a failed removeFavorites (deleteFavorites) pipeline call.
- * @param {string} productId Product identifier.
+ * @param {Object} product Product.
  * @param {number} takenListId List id
  * @param {Error} error The error that occurred.
  * @returns {Object}
  */
-export const errorRemoveFavorites = (productId, takenListId, error) => ({
+export const errorRemoveFavorites = (product, takenListId, error) => ({
   type: ERROR_REMOVE_FAVORITES,
-  productId,
+  product,
   listId: takenListId,
   error,
 });

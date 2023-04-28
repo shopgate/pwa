@@ -4,11 +4,11 @@ import { successAddFavorites, errorAddFavorites } from '../action-creators';
 
 /**
  * Adds a single product to the favorite list using the `addFavorites` pipeline.
- * @param {string} productId Id of the product to be added.
+ * @param {Object} product The product to be added.
  * @param {string} listId Id of the list to be added.
  * @returns {Function} A redux thunk.
  */
-function addFavorites(productId, listId = null) {
+function addFavorites(product, listId = null) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
@@ -17,18 +17,17 @@ function addFavorites(productId, listId = null) {
 
     const request = new PipelineRequest(SHOPGATE_USER_ADD_FAVORITES)
       .setInput({
-        productId,
+        productId: product.id,
         favoritesListId: takenListId,
       })
-      .setVersion(2)
       .setRetries(0)
       .dispatch();
 
     try {
       await request;
-      dispatch(successAddFavorites(productId, takenListId));
+      dispatch(successAddFavorites(product, takenListId));
     } catch (error) {
-      dispatch(errorAddFavorites(productId, error, takenListId));
+      dispatch(errorAddFavorites(product, error, takenListId));
     }
 
     return request;

@@ -1,4 +1,3 @@
-import { uniq } from 'lodash';
 import { produce } from 'immer';
 import {
   REQUEST_ADD_FAVORITES,
@@ -14,6 +13,7 @@ import {
   SUCCESS_ADD_FAVORITES_LIST,
   RECEIVE_FAVORITES,
   FAVORITES_LIFETIME,
+  SUCCESS_UPDATE_FAVORITES,
 } from '../constants';
 
 /**
@@ -28,7 +28,7 @@ const products = (state = {
   /* eslint-disable no-param-reassign */
   const producedState = produce(state, (draft) => {
     switch (action.type) {
-      // Handle an new favorites request.
+      // Handle a new favorites request.
       case REQUEST_FAVORITES: {
         const existingList = draft.byList[action.listId];
 
@@ -38,8 +38,7 @@ const products = (state = {
             lastChange: 0,
             lastFetch: 0,
             expires: 0,
-            // todo replace with items
-            ids: [],
+            items: [],
             syncCount: 0,
           };
           return;
@@ -86,11 +85,18 @@ const products = (state = {
       // Handle adding favorite list products.
       case REQUEST_ADD_FAVORITES: {
         const list = draft.byList[action.listId];
-        // todo replace with items
-        list.ids = uniq([
-          ...list.ids,
-          action.productId,
-        ]);
+        const matchingItem = list.items
+          .find(({ product: listItemProduct }) => listItemProduct.id === action.product.id);
+
+        if (matchingItem) {
+          matchingItem.quantity += 1;
+        } else {
+          list.items.push({
+            notes: '',
+            quantity: 1,
+            product: action.product,
+          });
+        }
         list.lastChange = Date.now();
         list.syncCount += 1;
         break;
@@ -99,8 +105,13 @@ const products = (state = {
       // Handle removing favorite list products.
       case REQUEST_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
-        // todo replace with items
-        list.ids.splice(list.ids.indexOf(action.productId), 1);
+
+        const matchingItemIndex = list.items
+          .findIndex(({ product }) => product.id === action.product.id);
+        if (matchingItemIndex > -1) {
+          list.items.splice(matchingItemIndex, 1);
+        }
+
         list.lastChange = Date.now();
         list.syncCount += 1;
         break;
@@ -116,6 +127,7 @@ const products = (state = {
 
       // Handle success of adding favorite list products.
       case SUCCESS_ADD_FAVORITES:
+      case SUCCESS_UPDATE_FAVORITES:
       case SUCCESS_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
         list.lastChange = Date.now();
@@ -126,8 +138,7 @@ const products = (state = {
       // Handle deletion failure by adding the product back in to the list.
       case ERROR_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
-        // todo replace with items
-        list.ids = uniq([...state.ids, action.productId]);
+        list.items.push({ quantity: 1, note: '', product: action.product });
         list.lastChange = Date.now();
         list.syncCount -= 1;
         break;
@@ -136,8 +147,13 @@ const products = (state = {
       // Handle adding failure by removing the product from the list.
       case ERROR_ADD_FAVORITES: {
         const list = draft.byList[action.listId];
-        // todo replace with items
-        list.ids.splice(list.ids.indexOf(action.productId), 1);
+
+        const matchingItemIndex = list.items
+          .findIndex(({ product }) => product.id === action.product.id);
+        if (matchingItemIndex > -1) {
+          list.items.splice(matchingItemIndex, 1);
+        }
+
         list.lastChange = Date.now();
         list.syncCount -= 1;
         break;
@@ -156,8 +172,7 @@ const products = (state = {
           lastChange: 0,
           lastFetch: 0,
           expires: 0,
-          // todo replace with items
-          ids: [],
+          items: [],
           syncCount: 0,
           ready: true,
         };

@@ -1,12 +1,9 @@
 import { createSelector } from 'reselect';
 import uniq from 'lodash/uniq';
 import {
-  getProducts,
   getProductId,
 } from '../../product/selectors/product';
 import { getKnownRelatives } from '../../product/selectors/variants';
-
-const defaultIds = [];
 
 /**
  * @param {Object} state The global state.
@@ -31,7 +28,7 @@ export const getFavoritesLists = state => getFavoritesListState(state)?.lists ||
  * @param {Object} state The global state.
  * @return {Object|null}
  */
-export const getFavoritesItems = createSelector(
+export const getFavoritesItemsByList = createSelector(
   getFavoritesState,
   (state) => {
     if (!state.products) {
@@ -53,35 +50,20 @@ export const hasMultipleFavoritesList = createSelector(
 );
 
 /**
- * A selector that gets the id of the favorites list by the given name
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @returns {string} the id of the favorites list
- */
-export const getFavoritesListIdByName = createSelector(
-  getFavoritesLists,
-  (state, props) => props.listName,
-  (favLists, listName) => {
-    const { id } = favLists.find(list => list.name === listName) || {};
-    return id;
-  }
-);
-
-/**
  * @param {Object} state The global state.
  * @returns {Array}
  * @deprecated
  */
-export const getFavoritesProductsIds = createSelector(
-  getFavoritesItems,
-  (products) => {
-    if (!products || !products.byList) {
-      return defaultIds;
+export const getFavoritesItems = createSelector(
+  getFavoritesItemsByList,
+  (favorites) => {
+    if (!favorites || !favorites.byList) {
+      return [];
     }
 
     return uniq(Object
-      .values(products.byList)
-      .map(l => l.ids)
+      .values(favorites.byList)
+      .map(l => l.items)
       .flat());
   }
 );
@@ -90,12 +72,10 @@ export const getFavoritesProductsIds = createSelector(
  * @param {Object} state The global state.
  * @deprecated
  */
-export const getFavorites = createSelector(
-  getFavoritesProductsIds,
-  getProducts,
-  (productIds, products) => productIds
-    .filter(id => !!products[id] && products[id].productData)
-    .map(id => products[id].productData)
+export const getFavoritesProducts = createSelector(
+  getFavoritesItems,
+  items => items
+    .map(({ product }) => product)
 );
 
 /**
@@ -104,8 +84,8 @@ export const getFavorites = createSelector(
  * @param {Function} getListCode Selects the list code.
  * @returns {Function}
  */
-export const makeGetFavoritesItemsByList = getListCode => createSelector(
-  getFavoritesItems,
+export const makeGetFavoritesItemsByListByList = getListCode => createSelector(
+  getFavoritesItemsByList,
   getListCode,
   (favItems, listId) => favItems.byList[listId]?.items || []
 );
@@ -116,7 +96,7 @@ export const makeGetFavoritesItemsByList = getListCode => createSelector(
  * @returns {boolean}
  */
 export const isInitialLoading = createSelector(
-  getFavoritesItems,
+  getFavoritesItemsByList,
   (products) => {
     if (!products) {
       return true;
@@ -131,7 +111,7 @@ export const isInitialLoading = createSelector(
  * @return {number}
  */
 export const getFavoritesCount = createSelector(
-  getFavoritesItems,
+  getFavoritesItemsByList,
   (products) => {
     if (!products?.byList) {
       return 0;
@@ -139,7 +119,7 @@ export const getFavoritesCount = createSelector(
 
     return Object
       .values(products.byList)
-      .reduce((prev, list) => prev + list.ids.length, 0);
+      .reduce((prev, list) => prev + list.items.length, 0);
   }
 );
 
@@ -157,7 +137,7 @@ export const hasFavorites = createSelector(
  * @return {boolean}
  */
 export const isFetching = createSelector(
-  getFavoritesItems,
+  getFavoritesItemsByList,
   (products) => {
     if (!products) {
       return false;
@@ -175,8 +155,9 @@ export const isFetching = createSelector(
 export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode) => createSelector(
   getProductCode,
   getListCode,
-  getFavoritesItems,
-  (productId, listId, products) => !!products.byList[listId]?.ids.includes(productId)
+  getFavoritesItemsByList,
+  (productId, listId, products) =>
+    !!products.byList[listId]?.items.some(({ product }) => product.id === productId)
 );
 
 /**
@@ -185,7 +166,7 @@ export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode)
  */
 export const makeIsProductOnFavoriteList = getProductCode => createSelector(
   getProductCode,
-  getFavoritesItems,
+  getFavoritesItemsByList,
   (productId, products) => !!Object
     .values(products.byList)
     .find(list => !!list.ids.find(p => p === productId))
@@ -204,7 +185,7 @@ export const isCurrentProductOnFavoriteList = makeIsProductOnFavoriteList(getPro
  */
 export const getProductRelativesOnFavorites = createSelector(
   getKnownRelatives,
-  getFavoritesItems,
+  getFavoritesItemsByList,
   (productRelativesIds, items) => productRelativesIds.filter(
     id => !!Object
       .values(items.byList)
@@ -220,10 +201,11 @@ export const getProductRelativesOnFavorites = createSelector(
 export const makeGetProductRelativesOnFavorites = getListCode => createSelector(
   getListCode,
   getKnownRelatives,
-  getFavoritesItems,
-  (listId, productRelativesIds, products) => productRelativesIds.filter(
-    id => products.byList[listId]?.ids.find(p => id === p)
-  )
+  getFavoritesItemsByList,
+  (listId, productRelativesIds, products) =>
+     products.byList[listId]?.items
+      .filter(({ product }) => productRelativesIds.includes(product.id))
+      .map(({ product }) => product)
 );
 
 /**
