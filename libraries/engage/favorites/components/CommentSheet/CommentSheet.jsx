@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
@@ -39,8 +39,6 @@ const CommentSheet = ({
   const isVisible = !!settings;
   const { productId, listId, item } = settings || {};
   const [value, setValue] = useState(item?.notes);
-
-  useEffect(() => { setValue(item?.notes); }, [item]);
 
   // eslint-disable-next-line require-jsdoc
   const handleSubmit = () => {

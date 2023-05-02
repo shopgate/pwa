@@ -1,4 +1,6 @@
 import { produce } from 'immer';
+import isNumber from 'lodash/isNumber';
+import isEmpty from 'lodash/isEmpty';
 import {
   REQUEST_ADD_FAVORITES,
   SUCCESS_ADD_FAVORITES,
@@ -14,6 +16,7 @@ import {
   RECEIVE_FAVORITES,
   FAVORITES_LIFETIME,
   SUCCESS_UPDATE_FAVORITES,
+  REQUEST_UPDATE_FAVORITES,
 } from '../constants';
 
 /**
@@ -99,6 +102,25 @@ const products = (state = {
         }
         list.lastChange = Date.now();
         list.syncCount += 1;
+        break;
+      }
+
+      case REQUEST_UPDATE_FAVORITES: {
+        const list = draft.byList[action.listId];
+        const matchingItem = list.items
+          .find(({ product: listItemProduct }) => listItemProduct.id === action.product.id);
+
+        if (matchingItem) {
+          if (isNumber(action.quantity)) {
+            matchingItem.quantity = action.quantity;
+          }
+
+          if (!isEmpty(action.notes)) {
+            matchingItem.notes = action.notes;
+          }
+          list.lastChange = Date.now();
+          list.syncCount += 1;
+        }
         break;
       }
 

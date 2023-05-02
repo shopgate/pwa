@@ -1,7 +1,8 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import isEmpty from 'lodash/isEmpty';
+import isNumber from 'lodash/isNumber';
 import { SHOPGATE_USER_UPDATE_FAVORITES } from '../constants/Pipelines';
 import { errorUpdateFavorites, successUpdateFavorites } from '../action-creators';
-
 /**
  * Updates a single product on the favorite list using the `updateFavorites` pipeline.
  * @param {Object} product Id of the product to be updated.
@@ -10,7 +11,7 @@ import { errorUpdateFavorites, successUpdateFavorites } from '../action-creators
  * @param {string} notes ew favorites notes to set
  * @returns {Function} A redux thunk.
  */
-function updateFavorites(product, listId = null, quantity = 1, notes = '') {
+function updateFavorites(product, listId = null, quantity, notes) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
@@ -21,8 +22,8 @@ function updateFavorites(product, listId = null, quantity = 1, notes = '') {
       .setInput({
         productId: product.id,
         favoritesListId: takenListId,
-        quantity,
-        notes,
+        ...(isNumber(quantity) ? { quantity } : {}),
+        ...(!isEmpty(notes) ? { notes } : {}),
       })
       .setRetries(0)
       .dispatch();

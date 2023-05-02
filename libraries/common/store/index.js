@@ -1,5 +1,5 @@
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore, applyMiddleware } from 'redux';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
@@ -48,6 +48,11 @@ export function configureStore(reducers, subscribers) {
   if (appConfig.benchmark) {
     benchmarkController.startup();
   }
+
+  const composeWithDevTools =
+    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      : compose;
 
   const store = createStore(
     makeRootReducer(reducers),
