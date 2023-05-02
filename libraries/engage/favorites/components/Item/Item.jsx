@@ -41,6 +41,7 @@ import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import { openFavoritesCommentSheet } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import {
@@ -75,9 +76,10 @@ const makeMapStateToProps = () => {
 const mapDispatchToProps = dispatch => ({
   showModal: showModalAction,
   historyPush: historyPushAction,
-  updateFavoriteItem: (productId, listId, notes, quantity) => {
-    dispatch(updateFavorite(productId, listId, notes, quantity));
+  updateFavoriteItem: (productId, listId, quantity, notes) => {
+    dispatch(updateFavorite(productId, listId, quantity, notes));
   },
+  openCommentSheet: (productId, listId) => dispatch(openFavoritesCommentSheet(productId, listId)),
 });
 
 const styles = {
@@ -178,6 +180,7 @@ const FavoriteItem = ({
   showModal,
   historyPush,
   updateFavoriteItem,
+  openCommentSheet,
 }) => {
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
@@ -201,6 +204,12 @@ const FavoriteItem = ({
   useLayoutEffect(() => {
     setIsDisabled(!isOrderable && !hasVariants);
   }, [hasVariants, isOrderable]);
+
+  const handleOpenComment = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openCommentSheet(product.id, listId);
+  }, [listId, openCommentSheet, product.id]);
 
   const handleAddToCart = useCallback((e) => {
     e.preventDefault();
@@ -317,16 +326,17 @@ const FavoriteItem = ({
                       value={internalQuantity}
                     />
                   </div>
-                  {/* <div> */}
-                  {/*  {!notes ? <button type="button">Add a comment</button> : */}
-                  {/*  <div> */}
-                  {/*    <span>notes: </span> */}
-                  {/*    <span>{notes || ''}</span> */}
-                  {/*    /!*<button>Edit</button>*!/ */}
-                  {/*    /!*<button>Delete</button>*!/ */}
-                  {/*  </div> */}
-                  {/*    } */}
-                  {/* </div> */}
+                  <div>
+                    <button type="button" onClick={handleOpenComment}>
+Add a comment
+                    </button>
+                    <div>
+                      <span>notes: </span>
+                      <span>{notes || ''}</span>
+                      {/* <button>Edit</button> */}
+                      {/* <button>Delete</button> */}
+                    </div>
+                  </div>
                 </div>
               ) : null}
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
@@ -389,6 +399,7 @@ FavoriteItem.propTypes = {
   addToCart: PropTypes.func.isRequired,
   historyPush: PropTypes.func.isRequired,
   listId: PropTypes.string.isRequired,
+  openCommentSheet: PropTypes.func.isRequired,
   product: PropTypes.shape().isRequired,
   remove: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import uniq from 'lodash/uniq';
 import {
-  getProductId,
+  getProductId, getProducts,
 } from '../../product/selectors/product';
 import { getKnownRelatives } from '../../product/selectors/variants';
 
@@ -90,6 +90,26 @@ export const makeGetFavoritesItemsByList = getListCode => createSelector(
   (favItems, listId) => favItems.byList[listId]?.items || []
 );
 
+export const getCommentSheetSettings = createSelector(
+  getFavoritesListState,
+  getFavoritesItemsByList,
+  ({ commentSheet }, favItems) => {
+    const { listId, productId } = commentSheet || {};
+    if (!listId || !productId) {
+      return undefined;
+    }
+
+    const items = favItems.byList[listId]?.items || [];
+    const item = items.find(({ product }) => productId === product.id);
+
+    if (!item) {
+      return undefined;
+    }
+
+    return { listId, productId, item };
+  }
+);
+
 /**
  * Creates a selector that selects all protects that belong
  * to the given favorite list.
@@ -102,9 +122,12 @@ export const makeGetProductFromFavorites = (listId, productId) => {
 
   return createSelector(
     getFavoritesItemsByListId,
-    (items) => {
-      const matchingItem = items.find(({ product }) => product.id === productId);
-      return matchingItem.product;
+    getProducts,
+    (items, products) => {
+      const matchingProduct =
+        items.find(({ product }) => product.id === productId)?.product ||
+        products[productId]?.productData;
+      return matchingProduct || {};
     }
   );
 };

@@ -7,6 +7,8 @@ import {
   OPEN_FAVORITE_LIST_CHOOSER,
   CLOSE_FAVORITE_LIST_CHOOSER,
   FAVORITES_LIFETIME,
+  OPEN_FAVORITE_COMMENT_SHEET,
+  CLOSE_FAVORITE_COMMENT_SHEET,
 } from '../constants';
 
 /**
@@ -19,6 +21,7 @@ const lists = (state = {
   expires: 0,
   lists: [],
   chooser: null,
+  commentSheet: null,
 }, action) => {
   /* eslint-disable no-param-reassign */
   const newState = produce(state, (draft) => {
@@ -33,6 +36,19 @@ const lists = (state = {
 
       case CLOSE_FAVORITE_LIST_CHOOSER: {
         draft.chooser = null;
+        break;
+      }
+
+      case OPEN_FAVORITE_COMMENT_SHEET: {
+        draft.commentSheet = {
+          productId: action.productId,
+          listId: action.listId,
+        };
+        break;
+      }
+
+      case CLOSE_FAVORITE_COMMENT_SHEET: {
+        draft.commentSheet = null;
         break;
       }
 
