@@ -7,8 +7,8 @@ import {
   mockedStateWithAll,
   mockedStateWithoutReview,
   mockedStateWithTwoReviews,
-  setMocks,
 } from '@shopgate/pwa-common-commerce/reviews/mock';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 
 const mockedStore = configureStore();
 
@@ -24,8 +24,11 @@ jest.mock('@shopgate/engage/product', () => ({
 }));
 jest.mock('@shopgate/engage/components');
 
-beforeEach(() => {
-  jest.resetModules();
+// Mock the getter of the hasReviews key inside the app config, so that we can turn it off later
+const hasReviewsGetter = jest.fn().mockReturnValue(true);
+
+Object.defineProperty(appConfig, 'hasReviews', {
+  get: hasReviewsGetter,
 });
 
 /**
@@ -49,7 +52,6 @@ describe('<Reviews />', () => {
   let component = null;
 
   it('should render when no reviews and rating given', () => {
-    setMocks();
     component = createComponent(mockedStateWithoutReview);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(true);
@@ -58,7 +60,6 @@ describe('<Reviews />', () => {
   });
 
   it('should render reviews, header and all reviews link', () => {
-    setMocks();
     component = createComponent(mockedStateWithAll);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(true);
@@ -67,7 +68,6 @@ describe('<Reviews />', () => {
   });
 
   it('should render reviews, header, but no all reviews link', () => {
-    setMocks();
     component = createComponent(mockedStateWithTwoReviews);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(true);
@@ -76,7 +76,8 @@ describe('<Reviews />', () => {
   });
 
   it('should not render when feature flag is off', () => {
-    setMocks(false);
+    hasReviewsGetter.mockReturnValue(false);
+
     component = createComponent(mockedStateWithAll);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(false);

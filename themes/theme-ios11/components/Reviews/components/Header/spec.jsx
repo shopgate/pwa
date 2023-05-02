@@ -36,7 +36,7 @@ describe('<Header />', () => {
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);
-    expect(header.find('RatingCount').html()).toBe(null);
+    expect(header.find('RatingCount').isEmptyRender()).toBe(true);
   });
 
   it('should render rating summary', () => {
@@ -51,6 +51,6 @@ describe('<Header />', () => {
 
   it('should render null when no review is provided', () => {
     header = createComponent(mockedStateWithAll, { productId: 'some-id' });
-    expect(header.html()).toBe(null);
+    expect(header.isEmptyRender()).toBe(true);
   });
 });

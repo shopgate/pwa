@@ -182,7 +182,6 @@ const PaymentMethodProvider = ({
         </div>
         {paymentImpl ? (
           <Provider
-            context={Context}
             data={paymentData}
             activePaymentMeta={activePaymentMeta}
           >

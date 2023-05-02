@@ -23,7 +23,7 @@ describe('RatingNumber', () => {
 
   it('should return when rating is null', () => {
     const component = mount(<RatingNumber rating={null} />);
-    expect(component.html()).toBe(null);
+    expect(component.isEmptyRender()).toBe(true);
     expect(console.error).not.toHaveBeenCalled();
   });
 
@@ -35,7 +35,7 @@ describe('RatingNumber', () => {
 
   it('should return number when division result is NaN', () => {
     const component = mount(<RatingNumber rating={{}} />);
-    expect(component.html()).toBe(null);
+    expect(component.isEmptyRender()).toBe(true);
     expect(console.error).toHaveBeenCalledTimes(1);
   });
 });

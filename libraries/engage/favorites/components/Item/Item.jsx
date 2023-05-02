@@ -91,7 +91,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     minWidth: 0,
-  }),
+  }).toString(),
   innerInfoContainer: css({
     flex: 1,
     display: 'flex',

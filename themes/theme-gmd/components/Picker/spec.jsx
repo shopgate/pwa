@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Picker from './index';
 
+jest.mock('@shopgate/pwa-common/components/ReactPortal');
 jest.mock('@shopgate/engage/components/View');
 jest.mock('@shopgate/engage/components', () => {
   // eslint-disable-next-line require-jsdoc

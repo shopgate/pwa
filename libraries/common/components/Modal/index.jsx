@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Portal from 'react-portal';
+import ReactPortal from '../ReactPortal';
 import styles from './style';
 
 /**
@@ -9,7 +9,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Modal = ({ children }) => (
-  <Portal isOpened>
+  <ReactPortal isOpened>
     <div className={styles.container}>
       <div className={styles.layout}>
         <div className={styles.content}>
@@ -17,7 +17,7 @@ const Modal = ({ children }) => (
         </div>
       </div>
     </div>
-  </Portal>
+  </ReactPortal>
 );
 
 Modal.propTypes = {

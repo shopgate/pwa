@@ -37,6 +37,6 @@ describe('Shipping label', () => {
   });
   it('should not render when shipping is unknown', () => {
     const component = createComponent(mockedStoreWithUnknownShipping);
-    expect(component.html()).toBe(null);
+    expect(component.isEmptyRender()).toBe(true);
   });
 });
