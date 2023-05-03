@@ -123,7 +123,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     minWidth: 0,
-    marginLeft: 8,
     alignItems: 'flex-end',
   }),
   priceInfo: css({
@@ -141,6 +140,29 @@ const styles = {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     marginBottom: 10,
+  }),
+  comment: css({
+    fontSize: 17,
+    color: 'var(--color-text-high-emphasis)',
+    fontWeight: 500,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    marginBottom: 10,
+  }),
+  addCommentButton: css({
+    fontSize: 17,
+    color: 'var(--color-primary)',
+    fontWeight: 500,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    marginBottom: 10,
+    textDecoration: 'underline',
+  }),
+  quantityPicker: css({
+    marginBottom: 10,
+    width: 120,
   }),
   actions: css({
     [responsiveMediaQuery('<md', { appAlways: true })]: {
@@ -288,6 +310,12 @@ const FavoriteItem = ({
     );
   }, [listId, notes, product.id, updateFavoriteItem]);
 
+  const handleDeleteComment = useCallback((event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    updateFavoriteItem(product.id, listId, quantity, '');
+  }, [listId, notes, product.id, quantity, updateFavoriteItem]);
+
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
       <div className={styles.root}>
@@ -315,7 +343,7 @@ const FavoriteItem = ({
             <div className={styles.infoContainerRight}>
               { appConfig.hasExtendedFavorites ? (
                 <div>
-                  <div>
+                  <div className={styles.quantityPicker}>
                     {/* todo what to do with min / max value, stockINfo??? */}
                     <UnitQuantityPicker
                       unit={hasUnitWithDecimals ? unit : null}
@@ -326,17 +354,26 @@ const FavoriteItem = ({
                       value={internalQuantity}
                     />
                   </div>
-                  <div>
-                    <button type="button" onClick={handleOpenComment}>
-Add a comment
-                    </button>
+                  {notes ? (
                     <div>
-                      <span>notes: </span>
-                      <span>{notes || ''}</span>
-                      {/* <button>Edit</button> */}
-                      {/* <button>Delete</button> */}
+                      <span className={styles.comment}>
+                        {`${i18n.text('favorites.add_comment.notes')}: `}
+                      </span>
+                      <span>{notes}</span>
+                      <span>
+                        <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
+                          {i18n.text('favorites.add_comment.edit')}
+                        </button>
+                        <button type="button" onClick={handleDeleteComment} className={styles.addCommentButton}>
+                          {i18n.text('favorites.add_comment.delete')}
+                        </button>
+                      </span>
                     </div>
-                  </div>
+                  ) : (
+                    <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
+                      {i18n.text('favorites.add_comment.title')}
+                    </button>
+                  )}
                 </div>
               ) : null}
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
@@ -9,6 +9,8 @@ import {
   closeFavoritesCommentSheet,
 } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import I18n from '@shopgate/pwa-common/components/I18n';
+import { css } from 'glamor';
 
 /**
  * @param {Object} state State.
@@ -29,6 +31,16 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
+const styles = {
+  root: css({
+    paddingBottom: 100,
+  }).toString(),
+  button: css({
+    marginTop: 16,
+    marginBottom: 16,
+  }),
+};
+
 /**
  * @param {Object} props Props.
  * @returns {JSX}
@@ -40,6 +52,8 @@ const CommentSheet = ({
   const { productId, listId, item } = settings || {};
   const [value, setValue] = useState(item?.notes);
 
+  useEffect(() => { setValue(item?.notes); }, [item]);
+
   // eslint-disable-next-line require-jsdoc
   const handleSubmit = () => {
     updateFavoriteItem(productId, listId, undefined, value);
@@ -49,47 +63,24 @@ const CommentSheet = ({
   return (
     <SheetDrawer
       isOpen={isVisible}
-      title={i18n.text('favorites.list_chooser.asdfasdfasdf')}
+      title={i18n.text('favorites.add_comment.title')}
       onDidClose={close}
+      className={styles.root}
     >
       <SheetList>
         <TextField
-          // type={type}
-          type="multiLine"
-          name="sadf"
-          label="label"
+          name="comment"
           value={value}
           onChange={(newValue) => { setValue(newValue); }}
-          errorText="eeee"
           multiLine
-          // translateErrorText={false}
-          // showErrorText={false}
-          // disabled={element.disabled}
         />
-
         <Button
-          type="button"
-          // key={date}
-          // className={classnames(
-          //   styles.button,
-          //   styles.buttonDate,
-          //   {
-          //     [styles.buttonActive]: selectedDate === date,
-          //   }
-          // )}
+          className={styles.button}
+          type="secondary"
           onClick={handleSubmit}
         >
-
-          <span>
-               asdf
-          </span>
-
+          <I18n.Text string="favorites.add_comment.button" />
         </Button>
-        <div>asdf</div>
-        <div>asdf</div>
-        <div>asdf</div>
-        <div>asdf</div>
-
       </SheetList>
     </SheetDrawer>
   );

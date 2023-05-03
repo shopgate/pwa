@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import isEmpty from 'lodash/isEmpty';
 import isNumber from 'lodash/isNumber';
+import isString from 'lodash/isString';
 import { SHOPGATE_USER_UPDATE_FAVORITES } from '../constants/Pipelines';
 import { errorUpdateFavorites, successUpdateFavorites } from '../action-creators';
 /**
@@ -23,7 +23,7 @@ function updateFavorites(product, listId = null, quantity, notes) {
         productId: product.id,
         favoritesListId: takenListId,
         ...(isNumber(quantity) ? { quantity } : {}),
-        ...(!isEmpty(notes) ? { notes } : {}),
+        ...(isString(notes) ? { notes } : {}),
       })
       .setRetries(0)
       .dispatch();

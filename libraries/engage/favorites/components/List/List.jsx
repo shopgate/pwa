@@ -103,24 +103,27 @@ const FavoriteList = ({
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
       {items.map(({ product, notes, quantity }) => (
-        <Item
-          key={product.id}
-          product={product}
-          notes={notes}
-          quantity={quantity}
-          listId={id}
-          productId={product.id}
-          addToCart={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            return addToCart(product);
-          }}
-          remove={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            removeItem(product.id);
-          }}
-        />
+        <>
+          <Item
+            key={product.id}
+            product={product}
+            notes={notes}
+            quantity={quantity}
+            listId={id}
+            productId={product.id}
+            addToCart={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              return addToCart(product);
+            }}
+            remove={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              removeItem(product.id);
+            }}
+          />
+          <div className={styles.divider} />
+        </>
       ))}
     </Accordion>
   </Card>

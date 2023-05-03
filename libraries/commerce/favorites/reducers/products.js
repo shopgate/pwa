@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import isNumber from 'lodash/isNumber';
-import isEmpty from 'lodash/isEmpty';
+import isString from 'lodash/isString';
 import {
   REQUEST_ADD_FAVORITES,
   SUCCESS_ADD_FAVORITES,
@@ -115,7 +115,7 @@ const products = (state = {
             matchingItem.quantity = action.quantity;
           }
 
-          if (!isEmpty(action.notes)) {
+          if (isString(action.notes)) {
             matchingItem.notes = action.notes;
           }
           list.lastChange = Date.now();

@@ -52,8 +52,6 @@ export const updateProductInFavorites = (productId, listId, quantity, notes) => 
   quantity,
 });
 
-// todo add updateProductinfavoritses
-
 /**
  * First action to remove one product to favorites.
  * @param {number} productId Id of the product to remove.
