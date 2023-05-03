@@ -211,7 +211,7 @@ export const makeIsProductOnFavoriteList = getProductCode => createSelector(
   getFavoritesItemsByList,
   (productId, products) => !!Object
     .values(products.byList)
-    .find(list => !!list.ids.find(p => p === productId))
+    .find(list => !!list?.items?.find(p => p === productId))
 );
 /**
  * @param {Object} state The global state.

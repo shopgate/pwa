@@ -79,7 +79,7 @@ const UnitQuantityPicker = ({
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
       newValue = value;
     }
-    onChange(newValue, event);
+    onChange(newValue, null, event);
   }, [allowZero, decrementStep, minValue, onChange, value]);
 
   const handleIncrement = useCallback((event) => {
@@ -89,7 +89,7 @@ const UnitQuantityPicker = ({
       newValue = value;
     }
 
-    onChange(newValue, event);
+    onChange(newValue, null, event);
   }, [incrementStep, maxValue, onChange, value]);
 
   useEffect(() => {
