@@ -84,9 +84,9 @@ export default function favorites(subscribe) {
     // Nothing to do, when the store already contains the item
     const activeProductInList = getFavoritesItemsByList(getState())
       .byList[action.listId]
-      ?.items.find(({ product }) => product.id === action.productId);
+        ?.items.find(({ product }) => product.id === action.productId);
 
-    if (activeProductInList) {
+    if (activeProductInList || !appConfig.hasExtendedFavorites) {
       // Call cancel action with "zero" count, because request was even dispatched
       dispatch(cancelRequestSyncFavorites(0, action.listId));
       return;
