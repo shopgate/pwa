@@ -2,6 +2,7 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
+import { makeGetRoutePattern } from '@shopgate/pwa-common/selectors/router';
 import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
@@ -28,6 +29,7 @@ import {
 import {
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
+  FAVORITES_PATH,
 } from '../constants';
 import {
   getFavoritesProducts,
@@ -45,7 +47,7 @@ export default function favorites(subscribe) {
   }
 
   /** App start */
-  subscribe(appDidStart$, async ({ dispatch }) => {
+  subscribe(appDidStart$, async ({ dispatch, getState }) => {
     // Setup sync pipeline dependencies (concurrency to each other and themselves)
     pipelineDependencies.set(SHOPGATE_USER_ADD_FAVORITES, [
       SHOPGATE_USER_ADD_FAVORITES,
@@ -55,8 +57,11 @@ export default function favorites(subscribe) {
       SHOPGATE_USER_ADD_FAVORITES,
       SHOPGATE_USER_DELETE_FAVORITES,
     ]);
-    const lists = await dispatch(fetchFavoritesLists());
-    lists.forEach(list => dispatch(fetchFavoriteIds(false, list.id)));
+
+    if (makeGetRoutePattern()(getState()) !== FAVORITES_PATH) {
+      const lists = await dispatch(fetchFavoritesLists());
+      lists.forEach(list => dispatch(fetchFavoriteIds(false, list.id)));
+    }
   });
 
   /** Favorites route enter */

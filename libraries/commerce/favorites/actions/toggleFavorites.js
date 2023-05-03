@@ -10,6 +10,7 @@ import {
   requestFlushFavoritesBuffer,
   openFavoritesListChooser,
 } from '../action-creators';
+import { DEFAULT_FAVORITES_LIST_ID } from '../constants';
 
 /**
  * Adds a product to the favorite list (debounced and buffered).
@@ -86,10 +87,11 @@ export const toggleFavoriteWithListChooser = mutable(
     (dispatch, getState) => {
       const state = getState();
       const lists = getFavoritesLists(state);
+      const listId = lists[0]?.id ?? DEFAULT_FAVORITES_LIST_ID;
 
       // Only one list available therefore we just add/remove it the product there.
       if (lists.length <= 1) {
-        dispatch(toggleFavorite(productId, lists[0].id, withRelatives));
+        dispatch(toggleFavorite(productId, listId, withRelatives));
         return;
       }
 
