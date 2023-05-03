@@ -124,6 +124,13 @@
     "errors": {
       "invalid_name": "Please enter a valid name for your wish list"
     },
+    "add_comment": {
+      "title": "Add a comment",
+      "button": "save",
+      "notes": "Comment",
+      "edit": "edit",
+      "delete": "delete"
+    },
     "rename_list": "Rename",
     "remove_list": "Remove",
     "add_to_list": "Add to list",
