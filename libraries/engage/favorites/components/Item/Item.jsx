@@ -107,23 +107,21 @@ const styles = {
     flexDirection: 'column',
     minWidth: 0,
   }),
-  innerInfoContainer: css({
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'row',
-    minWidth: 0,
-  }),
   infoContainerLeft: css({
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
     minWidth: 0,
+    paddingBottom: 10,
   }),
   infoContainerRight: css({
     display: 'flex',
     flexDirection: 'column',
     minWidth: 0,
     alignItems: 'flex-end',
+  }),
+  innerInfoContainerRight: css({
+    width: '100%',
   }),
   priceInfo: css({
     wordBreak: 'break-word',
@@ -159,6 +157,7 @@ const styles = {
     textOverflow: 'ellipsis',
     marginBottom: 10,
     textDecoration: 'underline',
+    paddingLeft: 0,
   }),
   quantityPicker: css({
     marginBottom: 10,
@@ -314,7 +313,7 @@ const FavoriteItem = ({
     event.preventDefault();
     event.stopPropagation();
     updateFavoriteItem(product.id, listId, quantity, '');
-  }, [listId, notes, product.id, quantity, updateFavoriteItem]);
+  }, [listId, product.id, quantity, updateFavoriteItem]);
 
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
@@ -334,15 +333,14 @@ const FavoriteItem = ({
           <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
             <span className={styles.title}>{product.name}</span>
           </SurroundPortals>
-          <div className={styles.innerInfoContainer}>
+          <div>
             <div className={styles.infoContainerLeft}>
               <ItemCharacteristics characteristics={characteristics} />
-
               <StockInfoLists product={product} />
             </div>
             <div className={styles.infoContainerRight}>
               { appConfig.hasExtendedFavorites ? (
-                <div>
+                <div className={styles.innerInfoContainerRight}>
                   <div className={styles.quantityPicker}>
                     {/* todo what to do with min / max value, stockINfo??? */}
                     <UnitQuantityPicker

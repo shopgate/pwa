@@ -124,6 +124,13 @@
     "errors": {
       "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
     },
+    "add_comment": {
+      "title": "Kommentar hinzufügen",
+      "button": "speichern",
+      "notes": "Kommentar",
+      "edit": "bearbeiten",
+      "delete": "löschen"
+    },
     "rename_list": "Umbenennen",
     "remove_list": "Löschen",
     "add_to_list": "Zur Liste hinzufügen",
