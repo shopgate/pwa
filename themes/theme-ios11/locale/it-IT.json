@@ -47,6 +47,10 @@
       "message": "Inserite il nuovo nome per l'elenco dei preferiti",
       "label": "Nome"
     },
+    "delete_list_modal": {
+      "title": "Cancellare l'elenco dei preferiti",
+      "message": "Volete davvero eliminare l'elenco dei preferiti \"{name}\"?"
+    },
     "add_list": "Aggiungi nuovo elenco",
     "errors": {
       "invalid_name": "Inserire un nome valido per l'elenco dei preferiti"

@@ -47,6 +47,10 @@
       "message": "Enter the new name for your favorites list",
       "label": "Name"
     },
+    "delete_list_modal": {
+      "title": "Delete Favorites List",
+      "message": "Do you really want to delete the \"{name}\" favorites list?"
+    },
     "add_list": "Add New List",
     "errors": {
       "invalid_name": "Please enter a valid name for your favorites list"

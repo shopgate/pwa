@@ -47,6 +47,10 @@
       "message": "Introduza o novo nome para a sua lista de favoritos",
       "label": "Nome"
     },
+    "delete_list_modal": {
+      "title": "Eliminar a lista de favoritos",
+      "message": "Quer mesmo apagar a lista de favoritos de \"{name}\"?"
+    },
     "add_list": "Adicionar Nova Lista",
     "errors": {
       "invalid_name": "Por favor, introduza um nome válido para a sua lista de favoritos"

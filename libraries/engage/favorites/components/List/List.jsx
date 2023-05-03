@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, showModal } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   Accordion, Card, ContextMenu, SurroundPortals, RippleButton,
@@ -189,6 +189,28 @@ const makeMapStateToProps = (_, { id }) => {
 };
 
 /**
+ * @param {Object} dispatch Dispatch
+ * @param {Object} props The component props
+ * @returns {Object}
+ */
+const mapDispatchToProps = (dispatch, props) => ({
+  remove: async (id) => {
+    // Protect list deletion with a confirmation modal
+    const confirmed = await dispatch(showModal({
+      message: 'favorites.delete_list_modal.message',
+      title: 'favorites.delete_list_modal.title',
+      params: {
+        name: props.name,
+      },
+    }));
+
+    if (confirmed) {
+      props.remove(id);
+    }
+  },
+});
+
+/**
  * Favorite List component
  * @return {JSX}
  */
@@ -281,4 +303,4 @@ FavoriteList.defaultProps = {
   hasMultipleFavoritesListsSupport: false,
 };
 
-export default connect(makeMapStateToProps)(FavoriteList);
+export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteList);

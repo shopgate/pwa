@@ -47,6 +47,10 @@
       "message": "Nowa nazwa Twojej listy życzeń",
       "label": "Nazwa"
     },
+    "delete_list_modal": {
+      "title": "Usuń listę ulubionych",
+      "message": "Czy naprawdę chcesz usunąć \"{name}\" listę ulubionych?"
+    },
     "add_list": "Utwórz nową listę",
     "errors": {
       "invalid_name": "Proszę podać pełną nazwę dla swojej listy życzeń"

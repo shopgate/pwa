@@ -47,6 +47,10 @@
       "message": "Voer de nieuwe naam voor uw favorietenlijst in",
       "label": "Naam"
     },
+    "delete_list_modal": {
+      "title": "Favorietenlijst verwijderen",
+      "message": "MWil je echt de \"{name}\" favorietenlijst verwijderen?"
+    },
     "add_list": "Nieuwe lijst toevoegen",
     "errors": {
       "invalid_name": "Voer een geldige naam in voor uw favorietenlijst"

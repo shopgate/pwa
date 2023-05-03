@@ -47,6 +47,10 @@
       "message": "Der neue Name Ihrer Merkliste",
       "label": "Name"
     },
+    "delete_list_modal": {
+      "title": "Merkliste löschen",
+      "message": "Möchten Sie die Merkliste \"{name}\" wirklich löschen?"
+    },
     "add_list": "Neue Liste anlegen",
     "errors": {
       "invalid_name": "Bitte geben Sie einen vollständigen Namen für Ihre Merkliste ein"
