@@ -348,7 +348,6 @@ const FavoriteItem = ({
               { appConfig.hasExtendedFavorites ? (
                 <div className={styles.innerInfoContainerRight}>
                   <div className={styles.quantityPicker}>
-                    {/* todo what to do with min / max value, stockINfo??? */}
                     <UnitQuantityPicker
                       unit={hasUnitWithDecimals ? unit : null}
                       maxDecimals={hasUnitWithDecimals ? 2 : 0}
