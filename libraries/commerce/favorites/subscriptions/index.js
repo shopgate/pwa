@@ -86,7 +86,7 @@ export default function favorites(subscribe) {
       .byList[action.listId]
         ?.items.find(({ product }) => product.id === action.productId);
 
-    if (activeProductInList || !appConfig.hasExtendedFavorites) {
+    if (activeProductInList && !appConfig.hasExtendedFavorites) {
       // Call cancel action with "zero" count, because request was even dispatched
       dispatch(cancelRequestSyncFavorites(0, action.listId));
       return;

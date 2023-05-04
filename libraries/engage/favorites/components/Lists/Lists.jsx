@@ -145,7 +145,7 @@ const FavoriteLists = ({
     }, 10);
   }, [activeProductId, addToCart, fetchLocations, userSearch]);
 
-  const handleAddToCart = useCallback((listId, product) => {
+  const handleAddToCart = useCallback((listId, product, quantity = 1) => {
     // Create promise to inform add to cart button when ready.
     const promise = new Promise((resolve, reject) => {
       promiseRef.current = {
@@ -179,7 +179,7 @@ const FavoriteLists = ({
     if (activeFulfillmentMethod && activeLocation) {
       addToCart([{
         productId: product.id,
-        quantity: 1,
+        quantity,
         fulfillment: {
           method: activeFulfillmentMethod,
           location: {
@@ -269,7 +269,7 @@ const FavoriteLists = ({
             rename={openRenameModal}
             remove={() => removeList(list.id)}
             removeItem={productId => removeItem(list.id, productId)}
-            addToCart={product => handleAddToCart(list.id, product)}
+            addToCart={(product, quantity) => handleAddToCart(list.id, product, quantity)}
           />
         </SurroundPortals>
       ))}

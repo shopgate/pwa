@@ -106,7 +106,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     minWidth: 0,
-  }),
+  }).toString(),
   innerInfoContainer: css({
     flex: 1,
     display: 'flex',
@@ -238,7 +238,7 @@ const FavoriteItem = ({
     e.stopPropagation();
 
     if (isBaseProduct && hasVariants) {
-      // Called for a parent product. Users needs to confirm the navigation to the PDP
+      // Called for a parent product. User needs to confirm the navigation to the PDP
       showModal({
         title: null,
         type: MODAL_VARIANT_SELECT,
@@ -314,7 +314,7 @@ const FavoriteItem = ({
     event.preventDefault();
     event.stopPropagation();
     updateFavoriteItem(product.id, listId, quantity, '');
-  }, [listId, notes, product.id, quantity, updateFavoriteItem]);
+  }, [listId, product.id, quantity, updateFavoriteItem]);
 
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>

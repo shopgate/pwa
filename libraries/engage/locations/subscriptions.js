@@ -345,7 +345,7 @@ function locationsSubscriber(subscribe) {
       if (!showInventoryInLists(state)) {
         return;
       }
-      const productIds = getFavoritesItems(state);
+      const productIds = (getFavoritesItems(state) || []).map(({ product }) => product.id);
 
       if (!productIds || !productIds.length) {
         return;

@@ -38,7 +38,7 @@ const styles = {
   button: css({
     marginTop: 16,
     marginBottom: 16,
-  }),
+  }).toString(),
 };
 
 /**

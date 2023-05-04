@@ -103,9 +103,8 @@ const FavoriteList = ({
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
       {items.map(({ product, notes, quantity }) => (
-        <>
+        <div key={product.id}>
           <Item
-            key={product.id}
             product={product}
             notes={notes}
             quantity={quantity}
@@ -114,7 +113,7 @@ const FavoriteList = ({
             addToCart={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              return addToCart(product);
+              return addToCart(product, quantity);
             }}
             remove={(e) => {
               e.preventDefault();
@@ -123,7 +122,7 @@ const FavoriteList = ({
             }}
           />
           <div className={styles.divider} />
-        </>
+        </div>
       ))}
     </Accordion>
   </Card>
