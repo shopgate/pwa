@@ -154,6 +154,9 @@ const styles = {
     textOverflow: 'ellipsis',
     marginBottom: 10,
   }),
+  notes: css({
+    paddingRight: 4,
+  }),
   addCommentButton: css({
     fontSize: 17,
     color: 'var(--color-primary)',
@@ -362,7 +365,7 @@ const FavoriteItem = ({
                       <span className={styles.comment}>
                         {`${i18n.text('favorites.add_comment.notes')}: `}
                       </span>
-                      <span>{notes}</span>
+                      <span className={styles.notes}>{notes}</span>
                       <span>
                         <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
                           {i18n.text('favorites.add_comment.edit')}

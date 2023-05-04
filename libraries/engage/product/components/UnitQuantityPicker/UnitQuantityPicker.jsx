@@ -92,6 +92,11 @@ const UnitQuantityPicker = ({
     onChange(newValue, null, event);
   }, [incrementStep, maxValue, onChange, value]);
 
+  const handleMouseDown = useCallback((event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  }, []);
+
   useEffect(() => {
     if (minValue && value < minValue) {
       onChange(minValue);
@@ -120,6 +125,7 @@ const UnitQuantityPicker = ({
       </RippleButton>
       <span>
         <QuantityInput
+          onMouseDown={handleMouseDown}
           className={styles.input}
           value={value}
           onChange={onChange}
