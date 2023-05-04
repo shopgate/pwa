@@ -102,7 +102,7 @@ const FavoriteList = ({
       {items.length === 0 ? (
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
-      {items.map(({ product, notes, quantity }) => (
+      {items.map(({ product, notes, quantity }, index) => (
         <div key={product.id}>
           <Item
             product={product}
@@ -121,7 +121,7 @@ const FavoriteList = ({
               removeItem(product.id);
             }}
           />
-          <div className={styles.divider} />
+          {(index === items.length - 1) ? null : <div className={styles.divider} />}
         </div>
       ))}
     </Accordion>

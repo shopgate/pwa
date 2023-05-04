@@ -53,6 +53,7 @@ import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import FavoritesCommentSheet from '@shopgate/engage/favorites/components/CommentSheet';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import ForgotPassword from './ForgotPassword';
 import Account from './Account';
@@ -94,6 +95,7 @@ const Pages = ({ store }) => (
                 <ModalContainer component={Dialog} />
                 <Toaster render={props => <SnackBar {...props} />} />
                 <FavoritesListChooser />
+                <FavoritesCommentSheet />
                 <FulfillmentSlotProvider />
                 <GlobalLocationSelector routePatternAllowList={globalLocationSelectorAllowList} />
                 <Router history={history}>
