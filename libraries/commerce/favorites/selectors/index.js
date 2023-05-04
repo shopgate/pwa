@@ -149,6 +149,7 @@ export const isInitialLoading = createSelector(
 );
 
 /**
+ * Returns the quantity of items in all lists
  * @param {Object} state The global state.
  * @return {number}
  */
@@ -162,6 +163,23 @@ export const getFavoritesCount = createSelector(
     return Object
       .values(products.byList)
       .reduce((prev, list) => prev + list.items.length, 0);
+  }
+);
+
+/**
+ * Returns the total quantity of items in all lists
+ * @param {Object} state The global state.
+ * @return {number}
+ */
+export const getFavoritesItemsCount = createSelector(
+  getFavoritesItemsByList,
+  (products) => {
+    if (!products?.byList) {
+      return 0;
+    }
+    return Object
+      .values(products.byList)
+      .reduce((prev, list) => list.items.reduce((acc, { quantity }) => acc + quantity, 0), 0);
   }
 );
 
