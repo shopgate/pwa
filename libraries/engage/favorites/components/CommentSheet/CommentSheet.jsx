@@ -11,6 +11,7 @@ import {
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { css } from 'glamor';
+import { usePrevious } from '@shopgate/pwa-common/hooks/usePrevious';
 
 /**
  * @param {Object} state State.
@@ -50,9 +51,14 @@ const CommentSheet = ({
 }) => {
   const isVisible = !!settings;
   const { productId, listId, item } = settings || {};
+  const prevProdId = usePrevious(productId);
   const [value, setValue] = useState(item?.notes);
 
-  useEffect(() => { setValue(item?.notes); }, [item]);
+  useEffect(() => {
+    if (prevProdId !== productId) {
+      setValue(item?.notes);
+    }
+  }, [item, prevProdId, productId]);
 
   // eslint-disable-next-line require-jsdoc
   const handleSubmit = () => {
