@@ -9,7 +9,6 @@ import { i18n } from '@shopgate/engage/core';
 import { getWishlistItemQuantityEnabled } from '../../../core/selectors/merchantSettings';
 
 /**
- * @param {Object} state State.
  * @returns {Object}
  */
 const makeMapStateToProps = () => {
@@ -37,7 +36,7 @@ const styles = {
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ListChooserItem = ({ isOnList, wishlistItemQuantityEnabled }) => {
   if (wishlistItemQuantityEnabled && isOnList) {
