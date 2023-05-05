@@ -1,5 +1,5 @@
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/merchantSettings';
 import {
   getFavoritesDefaultList,
   getFavoritesLists,
@@ -12,6 +12,7 @@ import {
   openFavoritesListChooser,
   updateProductInFavorites,
 } from '../action-creators';
+import fetchFavoritesListsWithItems from './fetchFavoritesListsWithItems';
 
 /**
  * Adds a product to the favorite list (debounced and buffered).
@@ -66,8 +67,9 @@ export const requestSync = mutable(listId => (dispatch) => {
  */
 export const toggleFavorite = (productId, listId, withRelatives = false) =>
   (dispatch, getState) => {
-    // With extended favorites active the favorites button always adds (increases quantity)
-    if (appConfig.hasExtendedFavorites) {
+    // With quantity enabled the favorites button always adds (increases quantity)
+    const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(getState());
+    if (wishlistItemQuantityEnabled) {
       dispatch(addFavorite(productId, listId));
     } else {
       const isOnList = makeIsProductOnSpecificFavoriteList(
@@ -103,7 +105,11 @@ export const updateFavorite = mutable((productId, listId, quantity, notes) =>
  */
 export const toggleFavoriteWithListChooser = mutable(
   (productId, withRelatives = false) =>
-    (dispatch, getState) => {
+    async (dispatch, getState) => {
+      // Ensure favorites lists are fetched before.
+      // In some cases this fetch will NOT happen on app start
+      await dispatch(fetchFavoritesListsWithItems());
+
       const state = getState();
       const lists = getFavoritesLists(state);
 

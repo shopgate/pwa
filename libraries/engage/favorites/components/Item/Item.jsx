@@ -39,7 +39,7 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { openFavoritesCommentSheet } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import Remove from '../RemoveButton';
@@ -49,6 +49,7 @@ import {
   FAVORITES_LIST_ITEM_ACTIONS,
 } from '../../constants/Portals';
 import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/UnitQuantityPicker';
+import { getWishlistItemNotesEnabled, getWishlistItemQuantityEnabled } from '../../../core/selectors/merchantSettings';
 
 const { variables } = themeConfig;
 
@@ -66,6 +67,8 @@ const makeMapStateToProps = () => {
     hasVariants: hasProductVariants(state, props),
     isOrderable: isProductOrderable(state, props),
     isRopeProductOrderable: isRopeProductOrderable(state, props),
+    wishlistItemQuantityEnabled: getWishlistItemQuantityEnabled(state),
+    wishlistItemNotesEnabled: getWishlistItemNotesEnabled(state),
   });
 };
 
@@ -211,6 +214,8 @@ const FavoriteItem = ({
   historyPush,
   updateFavoriteItem,
   openCommentSheet,
+  wishlistItemQuantityEnabled,
+  wishlistItemNotesEnabled,
 }) => {
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
@@ -345,8 +350,8 @@ const FavoriteItem = ({
               <StockInfoLists product={product} />
             </div>
             <div className={styles.infoContainerRight}>
-              { appConfig.hasExtendedFavorites ? (
-                <div className={styles.innerInfoContainerRight}>
+              <div className={styles.innerInfoContainerRight}>
+                { wishlistItemQuantityEnabled ? (
                   <div className={styles.quantityPicker}>
                     <UnitQuantityPicker
                       unit={hasUnitWithDecimals ? unit : null}
@@ -356,29 +361,31 @@ const FavoriteItem = ({
                       onChange={handleChange}
                       value={internalQuantity}
                     />
+                  </div>)
+                  : null}
+                {wishlistItemNotesEnabled && notes ? (
+                  <div>
+                    <span className={styles.comment}>
+                      {`${i18n.text('favorites.add_comment.notes')}: `}
+                    </span>
+                    <span className={styles.notes}>{notes}</span>
+                    <span>
+                      <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
+                        {i18n.text('favorites.add_comment.edit')}
+                      </button>
+                      <button type="button" onClick={handleDeleteComment} className={styles.addCommentButton}>
+                        {i18n.text('favorites.add_comment.delete')}
+                      </button>
+                    </span>
                   </div>
-                  {notes ? (
-                    <div>
-                      <span className={styles.comment}>
-                        {`${i18n.text('favorites.add_comment.notes')}: `}
-                      </span>
-                      <span className={styles.notes}>{notes}</span>
-                      <span>
-                        <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
-                          {i18n.text('favorites.add_comment.edit')}
-                        </button>
-                        <button type="button" onClick={handleDeleteComment} className={styles.addCommentButton}>
-                          {i18n.text('favorites.add_comment.delete')}
-                        </button>
-                      </span>
-                    </div>
-                  ) : (
-                    <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
-                      {i18n.text('favorites.add_comment.title')}
-                    </button>
-                  )}
-                </div>
-              ) : null}
+                ) : null}
+                {wishlistItemNotesEnabled && !notes ? (
+                  <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
+                    {i18n.text('favorites.add_comment.title')}
+                  </button>
+                ) : null}
+
+              </div>
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
                 {hasStrikePrice ? (
                   <PriceStriked
@@ -444,6 +451,8 @@ FavoriteItem.propTypes = {
   remove: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   updateFavoriteItem: PropTypes.func.isRequired,
+  wishlistItemNotesEnabled: PropTypes.bool.isRequired,
+  wishlistItemQuantityEnabled: PropTypes.bool.isRequired,
   hasVariants: PropTypes.bool,
   isBaseProduct: PropTypes.bool,
   isOrderable: PropTypes.bool,

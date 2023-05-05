@@ -4,6 +4,10 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import groupBy from 'lodash/groupBy';
 import {
+  getLoadWishlistOnAppStartEnabled,
+  getWishlistItemQuantityEnabled,
+} from '@shopgate/engage/core/selectors/merchantSettings';
+import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
   addProductToFavoritesDebounced$,
@@ -17,8 +21,6 @@ import {
   SHOPGATE_USER_ADD_FAVORITES,
   SHOPGATE_USER_DELETE_FAVORITES,
 } from '../constants/Pipelines';
-import fetchFavorites from '../actions/fetchFavorites';
-import fetchFavoritesLists from '../actions/fetchFavoritesList';
 import addFavorites from '../actions/addFavorites';
 import updateFavorites from '../actions/updateFavorites';
 import removeFavorites from '../actions/removeFavorites';
@@ -42,6 +44,7 @@ import {
   makeGetProductRelativesOnFavorites,
   makeGetProductFromFavorites,
 } from '../selectors';
+import fetchFavoritesListsWithItems from '../actions/fetchFavoritesListsWithItems';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -52,7 +55,7 @@ export default function favorites(subscribe) {
   }
 
   /** App start */
-  subscribe(appDidStart$, async ({ dispatch }) => {
+  subscribe(appDidStart$, async ({ dispatch, getState }) => {
     // Setup sync pipeline dependencies (concurrency to each other and themselves)
     pipelineDependencies.set(SHOPGATE_USER_ADD_FAVORITES, [
       SHOPGATE_USER_ADD_FAVORITES,
@@ -63,30 +66,31 @@ export default function favorites(subscribe) {
       SHOPGATE_USER_DELETE_FAVORITES,
     ]);
 
-    const lists = await dispatch(fetchFavoritesLists());
-    lists.forEach(list => dispatch(fetchFavorites(false, list.id)));
+    const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(getState());
+    if (loadWishlistOnAppStartEnabled) {
+      await dispatch(fetchFavoritesListsWithItems(false));
+    }
   });
 
   /** Favorites route enter */
   subscribe(favoritesWillEnter$, async ({ dispatch }) => {
-    const lists = await dispatch(fetchFavoritesLists());
-    const items = lists.map(list => dispatch(fetchFavorites(true, list.id)));
-    await Promise.all(items);
+    await dispatch(fetchFavoritesListsWithItems(true));
   });
 
   /** User login / logout */
   subscribe(shouldFetchFreshFavorites$, async ({ dispatch }) => {
-    const lists = await dispatch(fetchFavoritesLists(true));
-    lists.forEach(list => dispatch(fetchFavorites(true, list.id)));
+    await dispatch(fetchFavoritesListsWithItems(true));
   });
 
   subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {
+    const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(getState());
+
     // Nothing to do, when the store already contains the item
     const activeProductInList = getFavoritesItemsByList(getState())
       .byList[action.listId]
         ?.items.find(({ product }) => product.id === action.productId);
 
-    if (activeProductInList && !appConfig.hasExtendedFavorites) {
+    if (activeProductInList && !wishlistItemQuantityEnabled) {
       // Call cancel action with "zero" count, because request was even dispatched
       dispatch(cancelRequestSyncFavorites(0, action.listId));
       return;
@@ -165,14 +169,8 @@ export default function favorites(subscribe) {
    * Request after N seconds since last add or remove request to make sure
    * backend did actually save it
    */
-  subscribe(refreshFavorites$, async ({ dispatch, action }) => {
-    if (action.listId) {
-      dispatch(fetchFavorites(true, action.listId));
-      return;
-    }
-
-    const lists = await dispatch(fetchFavoritesLists(true));
-    lists.forEach(list => dispatch(fetchFavorites(true, list.id)));
+  subscribe(refreshFavorites$, async ({ dispatch }) => {
+    await dispatch(fetchFavoritesListsWithItems(true));
   });
 
   /**

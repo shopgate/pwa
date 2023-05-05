@@ -6,7 +6,7 @@ import {
   makeIsProductOnSpecificFavoriteList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { i18n } from '@shopgate/engage/core';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { getWishlistItemQuantityEnabled } from '../../../core/selectors/merchantSettings';
 
 /**
  * @param {Object} state State.
@@ -17,8 +17,11 @@ const makeMapStateToProps = () => {
     (_, props) => props.productId,
     (_, props) => props.listId
   );
+
   return (state, props) => ({
     isOnList: getIsOnList(state, props),
+    wishlistItemQuantityEnabled: getWishlistItemQuantityEnabled(state),
+
   });
 };
 
@@ -36,8 +39,8 @@ const styles = {
  * @param {Object} props Props.
  * @returns {JSX}
  */
-const ListChooserItem = ({ isOnList }) => {
-  if (appConfig.hasExtendedFavorites && isOnList) {
+const ListChooserItem = ({ isOnList, wishlistItemQuantityEnabled }) => {
+  if (wishlistItemQuantityEnabled && isOnList) {
     return (
       <span className={styles.add}>
         {i18n.text('favorites.list_chooser.add_more')}
@@ -59,6 +62,7 @@ const ListChooserItem = ({ isOnList }) => {
 
 ListChooserItem.propTypes = {
   isOnList: PropTypes.bool.isRequired,
+  wishlistItemQuantityEnabled: PropTypes.bool.isRequired,
 };
 
 export default connect(makeMapStateToProps)(ListChooserItem);
