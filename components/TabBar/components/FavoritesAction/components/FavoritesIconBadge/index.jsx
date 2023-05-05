@@ -11,10 +11,12 @@ export class FavoritesIconBadge extends Component {
 
   static propTypes = {
     favoritesCount: PropTypes.number,
+    showWishlistItemsCountBadge: PropTypes.bool,
   };
 
   static defaultProps = {
     favoritesCount: 0,
+    showWishlistItemsCountBadge: true,
   };
 
   /**
@@ -41,7 +43,7 @@ export class FavoritesIconBadge extends Component {
    * @returns {JSX}
    */
   render() {
-    if (this.props.favoritesCount === 0) {
+    if (!this.props.showWishlistItemsCountBadge || this.props.favoritesCount === 0) {
       return null;
     }
     const number = (this.props.favoritesCount > this.constructor.MAX_NUMBER) ?
