@@ -305,10 +305,7 @@ const FavoriteItem = ({
     handleAddToCart,
   }), [handleAddToCart, isBaseProduct, isDisabled, listId, product.id, remove]);
 
-  const handleChange = useCallback((newQuantity, cb, event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
+  const handleChange = useCallback((newQuantity) => {
     setInternalQuantity(newQuantity);
     updateFavoriteItem(
       product.id,

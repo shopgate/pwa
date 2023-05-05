@@ -79,7 +79,9 @@ const UnitQuantityPicker = ({
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
       newValue = value;
     }
-    onChange(newValue, null, event);
+    onChange(newValue);
+    event.preventDefault();
+    event.stopPropagation();
   }, [allowZero, decrementStep, minValue, onChange, value]);
 
   const handleIncrement = useCallback((event) => {
@@ -89,13 +91,10 @@ const UnitQuantityPicker = ({
       newValue = value;
     }
 
-    onChange(newValue, null, event);
-  }, [incrementStep, maxValue, onChange, value]);
-
-  const handleMouseDown = useCallback((event) => {
+    onChange(newValue);
     event.preventDefault();
     event.stopPropagation();
-  }, []);
+  }, [incrementStep, maxValue, onChange, value]);
 
   useEffect(() => {
     if (minValue && value < minValue) {
@@ -105,7 +104,7 @@ const UnitQuantityPicker = ({
     if (maxValue && value > maxValue) {
       onChange(maxValue);
     }
-  /* eslint-disable react-hooks/exhaustive-deps */
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, []);
   /* eslint-enable react-hooks/exhaustive-deps */
 
@@ -125,7 +124,6 @@ const UnitQuantityPicker = ({
       </RippleButton>
       <span>
         <QuantityInput
-          onMouseDown={handleMouseDown}
           className={styles.input}
           value={value}
           onChange={onChange}

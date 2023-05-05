@@ -100,6 +100,13 @@ const QuantityInput = forwardRef(({
       className={className}
       value={displayedValue}
       onChange={handleChange}
+      onClick={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }}
     />
   );
 });
