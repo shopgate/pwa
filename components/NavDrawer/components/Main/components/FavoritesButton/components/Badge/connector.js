@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import {
   getFavoritesItemsCount,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getShowWishlistItemsCountBadge } from '@shopgate/engage/core/selectors/merchantSettings';
 
 /**
  * Maps the contents of the state to the component props.
@@ -10,6 +11,7 @@ import {
  */
 const mapStateToProps = state => ({
   count: getFavoritesItemsCount(state),
+  showWishlistItemsCountBadge: getShowWishlistItemsCountBadge(state),
 });
 
 export default connect(mapStateToProps);
