@@ -179,7 +179,9 @@ export const getFavoritesItemsCount = createSelector(
     }
     return Object
       .values(products.byList)
-      .reduce((prev, list) => list.items.reduce((acc, { quantity }) => acc + quantity, 0), 0);
+      .reduce((prev, list) =>
+        prev + list.items.reduce((acc, { quantity }) =>
+          acc + quantity, 0), 0);
   }
 );
 
