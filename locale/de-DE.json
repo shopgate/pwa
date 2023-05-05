@@ -141,6 +141,7 @@
     "list_chooser": {
       "title": "Wähle eine Wunschliste aus",
       "add": "Hinzufügen",
+      "add_more": "Mehr Hinzufügen",
       "remove": "Löschen"
     },
     "modal": {

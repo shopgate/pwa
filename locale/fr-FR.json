@@ -133,6 +133,7 @@
     "list_chooser": {
       "title": "Choose a Wish List",
       "add": "Add",
+      "add_more": "Add more",
       "remove": "Remove"
     },
     "modal": {
