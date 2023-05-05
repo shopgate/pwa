@@ -57,7 +57,7 @@ const styles = {
 
 /**
  * A Quantity Picker with unit support.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const UnitQuantityPicker = ({
   className,

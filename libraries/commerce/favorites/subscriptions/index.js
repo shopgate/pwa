@@ -3,6 +3,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import groupBy from 'lodash/groupBy';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
@@ -11,7 +12,7 @@ import {
   errorFavoritesLimit$,
   refreshFavorites$,
   didReceiveFlushFavoritesBuffer$,
-  updateProductInFavoritesDebounced$,
+  updateProductInFavoritesDebounced$, favoritesDidAddItem$,
 } from '../streams';
 import {
   SHOPGATE_USER_ADD_FAVORITES,
@@ -229,5 +230,15 @@ export default function favorites(subscribe) {
         await dispatch(idleSyncFavorites(listId));
       }
     });
+  });
+
+  subscribe(favoritesDidAddItem$, ({ events }) => {
+    const shouldShowToast = true;
+    if (shouldShowToast) {
+      events.emit(ToastProvider.ADD, {
+        id: 'favorites.added',
+        message: 'favorites.added',
+      });
+    }
   });
 }

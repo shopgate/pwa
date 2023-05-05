@@ -9,7 +9,6 @@ import { i18n } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
- * @param {Object} state State.
  * @returns {Object}
  */
 const makeMapStateToProps = () => {
@@ -34,7 +33,7 @@ const styles = {
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ListChooserItem = ({ isOnList }) => {
   if (appConfig.hasExtendedFavorites && isOnList) {
