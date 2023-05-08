@@ -364,7 +364,9 @@
     "dismiss": "Verwerpen",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "Een onverwachte fout is opgetreden. Probeer opnieuw."
+    "body_error": "Een onverwachte fout is opgetreden. Probeer opnieuw.",
+    "close": "Sluiten",
+    "login": "Log in"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -460,6 +462,7 @@
     "no_account": "Heeft u geen account?",
     "signup": "Registreer",
     "logout_message": "U bent uitgelogd.",
+    "auto_logout_message": "U bent automatisch uitgelogd.",
     "error": "Uw gebruikersnaam en wachtwoord matchen geen account.",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",
