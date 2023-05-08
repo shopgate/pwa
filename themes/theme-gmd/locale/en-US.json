@@ -363,7 +363,9 @@
     "dismiss": "Dismiss",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "An unexpected error occurred. Please try again."
+    "body_error": "An unexpected error occurred. Please try again.",
+    "close": "Dismiss",
+    "login": "Login"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -464,6 +466,7 @@
     "no_account": "Don't have an account?",
     "register": "Create one here!",
     "logout_message": "You have been logged out.",
+    "auto_logout_message": "You have been logged out automatically.",
     "error": "Your username and password don't match any account",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",

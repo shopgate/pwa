@@ -363,7 +363,9 @@
     "dismiss": "Abbrechen",
     "ok": "Okay",
     "title_error": "Ups!",
-    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut."
+    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "close": "Schließen",
+    "login": "Anmelden"
   },
   "cart": {
     "grand_total": "Summe",
@@ -463,6 +465,7 @@
     "no_account": "Du hast noch kein Konto?",
     "register": "Starte hier.",
     "logout_message": "Du wurdest ausgeloggt.",
+    "auto_logout_message": "Du wurdest automatisch ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
       "subline": "Bitte gib deine Email-Adresse ein.",

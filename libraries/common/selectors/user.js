@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { SESSION_EXPIRY_CHECK_INTERVAL } from '../constants/user';
 import { getUrl } from './url';
 
 /**
@@ -128,3 +129,18 @@ export const isUserLoginDisabled = createSelector(
  * @return {string|null}
  */
 export const getRegisterUrl = state => getUrl(state, { type: 'register' });
+
+/**
+ * Retrieves the expiry timestamp from the user login storage
+ */
+export const getSessionExpiry = createSelector(
+  getLoginData,
+  loginData => loginData.expires
+);
+
+export const getIsSessionExpired = createSelector(
+  getSessionExpiry,
+  expiry => typeof expiry === 'number' &&
+    new Date().getTime() >= expiry - SESSION_EXPIRY_CHECK_INTERVAL
+
+);

@@ -1,3 +1,7 @@
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
+import 'rxjs/add/operator/takeUntil';
+
 import {
   REQUEST_LOGIN,
   SUCCESS_LOGIN,
@@ -10,6 +14,8 @@ import {
 } from '../constants/ActionTypes';
 import { appDidStart$ } from './app';
 import { main$ } from './main';
+import { SESSION_EXPIRY_CHECK_INTERVAL } from '../constants/user';
+import { getSessionExpiry } from '../selectors/user';
 
 /**
  * Gets triggered when user is requesting to login.
@@ -88,3 +94,31 @@ export const loginDidFail$ = main$
  */
 export const legacyConnectRegisterDidFail$ = main$
   .filter(({ action }) => action.type === ERROR_LEGACY_CONNECT_REGISTER);
+
+/**
+ * Emits when user session expiry needs to be checked. That's the case when the login state in
+ * Redux contains a numeric value for the "expires" property.
+ * Checks are performed at appStart since there might be a persisted value in Redux from the last
+ * sessions, or it happens after login when the login response contained a session lease.
+ */
+export const sessionExpiryNeedsToBeChecked$ = appDidStart$
+  .merge(userDidLogin$)
+  .filter(({ getState }) => {
+    const expiry = getSessionExpiry(getState());
+    return expiry !== null;
+  });
+
+/**
+ * Emits when a user session with an expiry expires. Therefore it performs an interval check to
+ * check if the session is still active.
+ */
+export const userSessionExpired$ = sessionExpiryNeedsToBeChecked$
+  .switchMap(data => Observable.interval(SESSION_EXPIRY_CHECK_INTERVAL)
+    .takeUntil(userDidLogout$)
+    .filter(() => {
+      const expiry = getSessionExpiry(data.getState());
+
+      return typeof expiry === 'number' &&
+        new Date().getTime() >= expiry - SESSION_EXPIRY_CHECK_INTERVAL;
+    })
+    .switchMap(() => Observable.of(data)));
