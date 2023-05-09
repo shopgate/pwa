@@ -15,7 +15,7 @@ import {
 import { appDidStart$ } from './app';
 import { main$ } from './main';
 import { SESSION_EXPIRY_CHECK_INTERVAL } from '../constants/user';
-import { getSessionExpiry } from '../selectors/user';
+import { getSessionExpiry, getIsSessionExpired } from '../selectors/user';
 
 /**
  * Gets triggered when user is requesting to login.
@@ -113,12 +113,15 @@ export const sessionExpiryNeedsToBeChecked$ = appDidStart$
  * check if the session is still active.
  */
 export const userSessionExpired$ = sessionExpiryNeedsToBeChecked$
-  .switchMap(data => Observable.interval(SESSION_EXPIRY_CHECK_INTERVAL)
-    .takeUntil(userDidLogout$)
-    .filter(() => {
-      const expiry = getSessionExpiry(data.getState());
+  .switchMap((data) => {
+    // At first check if the session already expired - necessary for appDidStart$
+    if (getIsSessionExpired(data.getState())) {
+      return Observable.of(data);
+    }
 
-      return typeof expiry === 'number' &&
-        new Date().getTime() >= expiry - SESSION_EXPIRY_CHECK_INTERVAL;
-    })
-    .switchMap(() => Observable.of(data)));
+    // Setup an interval that periodically checks if the session expired - runs till user logged out
+    return Observable.interval(SESSION_EXPIRY_CHECK_INTERVAL)
+      .takeUntil(userDidLogout$)
+      .filter(() => getIsSessionExpired(data.getState()))
+      .switchMap(() => Observable.of(data));
+  });

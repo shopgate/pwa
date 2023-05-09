@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { SESSION_EXPIRY_CHECK_INTERVAL } from '../constants/user';
 import { getUrl } from './url';
 
 /**
@@ -138,9 +137,16 @@ export const getSessionExpiry = createSelector(
   loginData => loginData.expires
 );
 
-export const getIsSessionExpired = createSelector(
-  getSessionExpiry,
-  expiry => typeof expiry === 'number' &&
-    new Date().getTime() >= expiry - SESSION_EXPIRY_CHECK_INTERVAL
+/**
+ * Checks if the current session is expired.
+ *
+ * !!! CAUTION Not implemented with createSelector since selector caching conflicts with processing
+ * the current timestamp
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const getIsSessionExpired = (state) => {
+  const expiry = getSessionExpiry(state);
 
-);
+  return typeof expiry === 'number' && new Date().getTime() >= expiry;
+};
