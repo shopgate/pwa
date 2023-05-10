@@ -11,7 +11,6 @@ import {
   RECEIVE_PRODUCT_RELATIONS,
 } from '../constants';
 import handleProductCollection from './helpers/handleProductCollection';
-import { RECEIVE_FAVORITES } from '../../favorites';
 
 /**
  * Stores products by their ID.
@@ -109,11 +108,6 @@ export default function productsById(state = {}, action) {
 
       return nextState;
     }
-    case RECEIVE_FAVORITES:
-      return {
-        ...state,
-        ...handleProductCollection(action.items.map(({ product }) => product)),
-      };
     default:
       return state;
   }

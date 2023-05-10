@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  getFavoritesProducts,
+  getFavorites,
   getFavoritesLists,
   isInitialLoading,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
@@ -11,7 +11,7 @@ import {
  * @returns {Object}
  */
 const mapStateToProps = state => ({
-  products: getFavoritesProducts(state),
+  products: getFavorites(state),
   lists: getFavoritesLists(state),
   initialLoading: isInitialLoading(state),
 });

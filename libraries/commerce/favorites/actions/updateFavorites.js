@@ -5,13 +5,13 @@ import { SHOPGATE_USER_UPDATE_FAVORITES } from '../constants/Pipelines';
 import { errorUpdateFavorites, successUpdateFavorites } from '../action-creators';
 /**
  * Updates a single product on the favorite list using the `updateFavorites` pipeline.
- * @param {Object} product Id of the product to be updated.
+ * @param {string} productId The id of the product.
  * @param {string} listId Id of the list to be updated.
  * @param {number} quantity New favorites quantity to set
  * @param {string} notes ew favorites notes to set
  * @returns {Function} A redux thunk.
  */
-function updateFavorites(product, listId = null, quantity, notes) {
+function updateFavorites(productId, listId = null, quantity, notes) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
@@ -20,7 +20,7 @@ function updateFavorites(product, listId = null, quantity, notes) {
 
     const request = new PipelineRequest(SHOPGATE_USER_UPDATE_FAVORITES)
       .setInput({
-        productId: product.id,
+        productId,
         favoritesListId: takenListId,
         ...(isNumber(quantity) ? { quantity } : {}),
         ...(isString(notes) ? { notes } : {}),
@@ -30,9 +30,9 @@ function updateFavorites(product, listId = null, quantity, notes) {
 
     try {
       await request;
-      dispatch(successUpdateFavorites(product, takenListId));
+      dispatch(successUpdateFavorites(productId, takenListId));
     } catch (error) {
-      dispatch(errorUpdateFavorites(product, error, takenListId));
+      dispatch(errorUpdateFavorites(productId, error, takenListId));
     }
 
     return request;

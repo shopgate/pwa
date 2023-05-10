@@ -6,7 +6,9 @@ import { i18n } from '@shopgate/engage/core';
 import {
   Accordion, Card, ContextMenu, SurroundPortals,
 } from '@shopgate/engage/components';
-import { makeGetFavoritesItemsByList } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import {
+  makeGetEnrichedFavoritesItemsByList,
+} from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 
@@ -64,7 +66,8 @@ FavoriteListLabel.propTypes = {
  * @returns {Object}
  */
 const makeMapStateToProps = (_, { id }) => {
-  const getFavorites = makeGetFavoritesItemsByList(() => id);
+  const getFavorites = makeGetEnrichedFavoritesItemsByList(() => id);
+
   return state => ({
     items: getFavorites(state),
   });
@@ -94,7 +97,7 @@ const FavoriteList = ({
           rename={newName => rename(id, newName)}
           remove={remove}
         />
-      }
+        }
       chevronPosition="left"
       startOpened
     >
@@ -102,7 +105,7 @@ const FavoriteList = ({
       {items.length === 0 ? (
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
-      {items.map(({ product, notes, quantity }, index) => (
+      {items.filter(({ product }) => product).map(({ product, notes, quantity }, index) => (
         <div key={product.id}>
           <Item
             product={product}

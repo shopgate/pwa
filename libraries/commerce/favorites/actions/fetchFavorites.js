@@ -12,6 +12,7 @@ import {
   requestFavorites,
   errorFetchFavorites,
 } from '../action-creators';
+import receiveProducts from '../../product/action-creators/receiveProducts';
 
 /**
  * Fetch favorites action.
@@ -44,6 +45,7 @@ function fetchFavorites(ignoreCache = false, listId = undefined) {
     try {
       const result = await request;
       dispatch(receiveFavorites(result.items, timestamp, takenListId));
+      dispatch(receiveProducts({ products: result.items.map(({ product }) => product) }));
       return result;
     } catch (err) {
       dispatch(errorFetchFavorites(err, takenListId));

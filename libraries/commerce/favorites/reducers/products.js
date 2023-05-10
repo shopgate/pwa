@@ -69,7 +69,8 @@ const products = (state = {
         }
 
         list.expires = Date.now() + FAVORITES_LIFETIME;
-        list.items = action.items;
+        list.items = action.items.map(({ quantity, notes, product }) =>
+          ({ quantity, notes, productId: product.id }));
         list.ready = true;
         // `syncCount` stays untouched because this is not considered to be a sync.
         break;
@@ -89,7 +90,7 @@ const products = (state = {
       case REQUEST_ADD_FAVORITES: {
         const list = draft.byList[action.listId];
         const matchingItem = list.items
-          .find(({ product: listItemProduct }) => listItemProduct.id === action.product.id);
+          .find(({ productId }) => productId === action.productId);
 
         if (matchingItem) {
           matchingItem.quantity += 1;
@@ -97,7 +98,7 @@ const products = (state = {
           list.items.push({
             notes: '',
             quantity: 1,
-            product: action.product,
+            productId: action.productId,
           });
         }
         list.lastChange = Date.now();
@@ -108,7 +109,7 @@ const products = (state = {
       case REQUEST_UPDATE_FAVORITES: {
         const list = draft.byList[action.listId];
         const matchingItem = list.items
-          .find(({ product: listItemProduct }) => listItemProduct.id === action.product.id);
+          .find(({ productId }) => productId === action.productId);
 
         if (matchingItem) {
           if (isNumber(action.quantity)) {
@@ -129,7 +130,8 @@ const products = (state = {
         const list = draft.byList[action.listId];
 
         const matchingItemIndex = list.items
-          .findIndex(({ product }) => product.id === action.product.id);
+          .findIndex(({ productId }) => productId === action.productId);
+
         if (matchingItemIndex > -1) {
           list.items.splice(matchingItemIndex, 1);
         }
@@ -160,7 +162,7 @@ const products = (state = {
       // Handle deletion failure by adding the product back in to the list.
       case ERROR_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
-        list.items.push({ quantity: 1, note: '', product: action.product });
+        list.items.push({ quantity: 1, note: '', productId: action.productId });
         list.lastChange = Date.now();
         list.syncCount -= 1;
         break;
@@ -171,7 +173,7 @@ const products = (state = {
         const list = draft.byList[action.listId];
 
         const matchingItemIndex = list.items
-          .findIndex(({ product }) => product.id === action.product.id);
+          .findIndex(({ productId }) => productId === action.productId);
         if (matchingItemIndex > -1) {
           list.items.splice(matchingItemIndex, 1);
         }
