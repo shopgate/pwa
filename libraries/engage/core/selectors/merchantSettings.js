@@ -99,6 +99,6 @@ export const getShowWishlistItemsCountBadge = createSelector(
     true
   ),
   (loadWishlistOnAppStartEnabled, showWishlistItemsCountBadge) =>
-    (!loadWishlistOnAppStartEnabled ? false : showWishlistItemsCountBadge)
+    (loadWishlistOnAppStartEnabled ? showWishlistItemsCountBadge : false)
 );
 
