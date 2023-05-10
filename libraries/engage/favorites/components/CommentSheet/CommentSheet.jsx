@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { getCommentSheetSettings } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, usePrevious } from '@shopgate/engage/core';
 import { SheetList, SheetDrawer, Button } from '@shopgate/engage/components';
 import {
   closeFavoritesCommentSheet,
@@ -11,7 +11,6 @@ import {
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { css } from 'glamor';
-import { usePrevious } from '@shopgate/pwa-common/hooks/usePrevious';
 
 /**
  * @param {Object} state State.

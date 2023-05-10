@@ -1,7 +1,7 @@
 import React from 'react';
 
 // eslint-disable-next-line require-jsdoc
-export const usePrevious = (value) => {
+export function usePrevious(value) {
   const ref = React.useRef(value);
 
   React.useEffect(() => {
@@ -9,4 +9,4 @@ export const usePrevious = (value) => {
   }, [value]);
 
   return ref.current;
-};
+}

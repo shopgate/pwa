@@ -257,6 +257,7 @@ export { useWidgetSettings } from './hooks/useWidgetSettings';
 export { useWidgetStyles } from './hooks/useWidgetStyles';
 export * from './hooks/html';
 export { useScroll } from './hooks/useScroll';
+export { usePrevious } from './hooks/usePrevious';
 
 // --------------- HOCs --------------- //
 
