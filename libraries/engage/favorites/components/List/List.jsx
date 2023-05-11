@@ -7,7 +7,7 @@ import {
   Accordion, Card, ContextMenu, SurroundPortals,
 } from '@shopgate/engage/components';
 import {
-  makeGetEnrichedFavoritesItemsByList,
+  makeGetFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
@@ -66,7 +66,7 @@ FavoriteListLabel.propTypes = {
  * @returns {Object}
  */
 const makeMapStateToProps = (_, { id }) => {
-  const getFavorites = makeGetEnrichedFavoritesItemsByList(() => id);
+  const getFavorites = makeGetFavorites(() => id);
 
   return state => ({
     items: getFavorites(state),

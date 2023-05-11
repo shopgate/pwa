@@ -107,7 +107,7 @@ export default function favorites(subscribe) {
       error.code = FAVORITES_LIMIT_ERROR;
       dispatch(errorFavorites(action.productId, error));
     } else {
-      dispatch(requestAddFavorites(action.productId, action.listId));
+      dispatch(requestAddFavorites(action.productId, action.listId, action.quantity, action.notes));
     }
   });
 
@@ -127,8 +127,8 @@ export default function favorites(subscribe) {
           { productId: action.productId }
         );
 
-        allOnList.forEach(listProduct =>
-          dispatch(requestRemoveFavorites(listProduct.id, action.listId)));
+        allOnList.forEach(id =>
+          dispatch(requestRemoveFavorites(id, action.listId)));
         return;
       }
 
@@ -190,8 +190,12 @@ export default function favorites(subscribe) {
     const actionsByListAndProduct = groupBy(actions, (({ listId, productId }) => `${listId}-${productId}}`));
 
     Object.values(actionsByListAndProduct).forEach(async (groupedActions) => {
-      const { productId } = groupedActions[0];
-      const { listId } = groupedActions[0];
+      const [{
+        productId,
+        listId,
+        quantity,
+        notes,
+      } = {}] = groupedActions;
 
       const updateActions = groupedActions
         .filter(action => action.type === REQUEST_UPDATE_FAVORITES);
@@ -214,10 +218,10 @@ export default function favorites(subscribe) {
       // Sum up all adds and removes, based on sum dispatch add / remove
       const addRemoveBalance = addActions.length - removeActions.length;
       if (addRemoveBalance > 0) {
-        await dispatch(addFavorites(productId, listId));
+        await dispatch(addFavorites(productId, listId, quantity, notes));
       }
       if (addRemoveBalance < 0) {
-        await dispatch(removeFavorites(productId, listId));
+        await dispatch(removeFavorites(productId, listId, quantity, notes));
       }
 
       // Fetch after there was any update / add / remove

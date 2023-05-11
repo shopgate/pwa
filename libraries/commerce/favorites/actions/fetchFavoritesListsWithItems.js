@@ -21,5 +21,4 @@ function fetchFavoritesListsWithItems(ignoreCache = false) {
   };
 }
 
-/** @mixes {MutableFunction} */
 export default fetchFavoritesListsWithItems;

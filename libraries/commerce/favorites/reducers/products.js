@@ -17,6 +17,7 @@ import {
   FAVORITES_LIFETIME,
   SUCCESS_UPDATE_FAVORITES,
   REQUEST_UPDATE_FAVORITES,
+  ERROR_UPDATE_FAVORITES,
 } from '../constants';
 
 /**
@@ -94,10 +95,12 @@ const products = (state = {
 
         if (matchingItem) {
           matchingItem.quantity += 1;
+          matchingItem.notes = typeof action.notes === 'string' ? action.notes : matchingItem.notes;
+          matchingItem.notes = typeof action.quantity === 'number' ? action.quantity : matchingItem.quantity;
         } else {
           list.items.push({
-            notes: '',
-            quantity: 1,
+            notes: action.notes || '',
+            quantity: action.quantity || 1,
             productId: action.productId,
           });
         }
@@ -162,7 +165,11 @@ const products = (state = {
       // Handle deletion failure by adding the product back in to the list.
       case ERROR_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
-        list.items.push({ quantity: 1, note: '', productId: action.productId });
+        list.items.push({
+          productId: action.productId,
+          quantity: action.quantity || 1,
+          notes: action.notes || '',
+        });
         list.lastChange = Date.now();
         list.syncCount -= 1;
         break;
@@ -177,6 +184,14 @@ const products = (state = {
         if (matchingItemIndex > -1) {
           list.items.splice(matchingItemIndex, 1);
         }
+
+        list.lastChange = Date.now();
+        list.syncCount -= 1;
+        break;
+      }
+
+      case ERROR_UPDATE_FAVORITES: {
+        const list = draft.byList[action.listId];
 
         list.lastChange = Date.now();
         list.syncCount -= 1;

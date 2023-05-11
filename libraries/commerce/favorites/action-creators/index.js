@@ -23,17 +23,22 @@ import {
   OPEN_FAVORITE_COMMENT_SHEET,
   CLOSE_FAVORITE_COMMENT_SHEET,
 } from '../constants';
+import { makeGetFavorites } from '../selectors';
 
 /**
  * First action to add one product to favorites.
  * @param {number} productId Id of the product to add.
  * @param {string} listId List identifier.
+ * @param {number} quantity New favorites quantity to set
+ * @param {string} notes New favorites notes to set
  * @returns {Object}
  */
-export const addProductToFavorites = (productId, listId) => ({
+export const addProductToFavorites = (productId, listId, quantity, notes) => ({
   type: ADD_PRODUCT_TO_FAVORITES,
   productId,
   listId,
+  quantity,
+  notes,
 });
 
 /**
@@ -94,12 +99,16 @@ export const errorFavorites = (productId, error) => ({
  * Request add favorites action. This action just updates the redux store.
  * @param {string} productId Product identifier.
  * @param {string} listId List identifier.
+ * @param {number} quantity New favorites quantity to set
+ * @param {string} notes New favorites notes to set
  * @returns {Object}
  */
-export const requestAddFavorites = (productId, listId) => ({
+export const requestAddFavorites = (productId, listId, quantity, notes) => ({
   type: REQUEST_ADD_FAVORITES,
   productId,
   listId,
+  quantity,
+  notes,
 });
 
 /**
@@ -176,11 +185,21 @@ export const errorUpdateFavorites = (productId, listId, error) => ({
  * @param {string} listId List identifier.
  * @returns {Object}
  */
-export const requestRemoveFavorites = (productId, listId) => ({
-  type: REQUEST_REMOVE_FAVORITES,
-  productId,
-  listId,
-});
+export const requestRemoveFavorites =
+  (productId, listId) => (dispatch, getState) => {
+    const getFavorites = makeGetFavorites(() => listId);
+    const favorites = getFavorites(getState());
+    const matchingFavorite = favorites.find(({ productId: itemProductId }) =>
+      itemProductId === productId) || {};
+
+    dispatch({
+      type: REQUEST_REMOVE_FAVORITES,
+      productId,
+      listId,
+      quantity: matchingFavorite.quantity || 1,
+      notes: matchingFavorite.notes || '',
+    });
+  };
 
 /**
  * Action to be triggered upon successful removeFavorites (deleteFavorites)  pipeline call.
@@ -197,15 +216,19 @@ export const successRemoveFavorites = (productId, takenListId) => ({
 /**
  * Action to be triggered upon a failed removeFavorites (deleteFavorites) pipeline call.
  * @param {string} productId Product identifier.
- * @param {number} takenListId List id
+ * @param {string} takenListId List id
  * @param {Error} error The error that occurred.
+ * @param {number} quantity Quantity of the favorite
+ * @param {string} notes Notes of the favorite
  * @returns {Object}
  */
-export const errorRemoveFavorites = (productId, takenListId, error) => ({
+export const errorRemoveFavorites = (productId, takenListId, error, quantity, notes) => ({
   type: ERROR_REMOVE_FAVORITES,
   productId,
   listId: takenListId,
   error,
+  quantity,
+  notes,
 });
 
 /**
