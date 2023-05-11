@@ -128,7 +128,7 @@ export default function favorites(subscribe) {
         );
 
         allOnList.forEach(listProduct =>
-          dispatch(requestRemoveFavorites(listProduct, action.listId)));
+          dispatch(requestRemoveFavorites(listProduct.id, action.listId)));
         return;
       }
 
