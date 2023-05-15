@@ -180,7 +180,7 @@ export const isFetching = createSelector(
       return false;
     }
 
-    return Object.values(products.byList).every(l => l.isFetching);
+    return Object.values(products.byList).some(l => l.isFetching);
   }
 );
 

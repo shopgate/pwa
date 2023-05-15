@@ -45,7 +45,10 @@ function fetchFavorites(ignoreCache = false, listId = undefined) {
     try {
       const result = await request;
       dispatch(receiveFavorites(result.items, timestamp, takenListId));
-      dispatch(receiveProducts({ products: result.items.map(({ product }) => product) }));
+      dispatch(receiveProducts({
+        products: result.items.map(({ product }) => product),
+        fetchInventory: false,
+      }));
       return result;
     } catch (err) {
       dispatch(errorFetchFavorites(err, takenListId));

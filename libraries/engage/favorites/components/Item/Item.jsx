@@ -99,6 +99,14 @@ const styles = {
   imageContainer: css({
     flex: 0.4,
     marginRight: 18,
+    [responsiveMediaQuery('>=xs', { appAlways: true })]: {
+      maxWidth: 120,
+      minWidth: 80,
+    },
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      maxWidth: 120,
+      minWidth: 80,
+    },
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       width: 120,
       flex: 'none',
@@ -342,7 +350,11 @@ const FavoriteItem = ({
           href={productLink}
         >
           <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
-            <span className={styles.title}>{product.name}</span>
+            <span
+              className={styles.title}
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{ __html: product.name }}
+            />
           </SurroundPortals>
           <div>
             <div className={styles.infoContainerLeft}>
