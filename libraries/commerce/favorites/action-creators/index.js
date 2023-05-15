@@ -192,7 +192,7 @@ export const requestRemoveFavorites =
     const matchingFavorite = favorites.find(({ productId: itemProductId }) =>
       itemProductId === productId) || {};
 
-    dispatch({
+    return dispatch({
       type: REQUEST_REMOVE_FAVORITES,
       productId,
       listId,

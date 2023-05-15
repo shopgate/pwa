@@ -322,6 +322,10 @@ export {
   getNumberOfAddressLines,
   getGoogleSiteVerificationCode,
   getRegistrationMode,
+  getWishlistItemQuantityEnabled,
+  getWishlistItemNotesEnabled,
+  getShowWishlistItemsCountBadge,
+  getLoadWishlistOnAppStartEnabled,
 } from './selectors';
 
 export {

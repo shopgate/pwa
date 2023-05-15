@@ -106,7 +106,7 @@ export const makeGetFavoritesIdsByList = getListCode => createSelector(
   getFavoritesProducts,
   getListCode,
   (favProducts, listId) =>
-    favProducts.byList[listId]?.items.map(({ productId }) => productId) || []
+    favProducts?.byList[listId]?.items.map(({ productId }) => productId) || []
 );
 
 /**
@@ -120,7 +120,7 @@ export const makeGetFavorites = getListCode => createSelector(
   getListCode,
   getProducts,
   (favItems, listId, products) => {
-    const items = favItems.byList[listId]?.items || [];
+    const items = favItems?.byList[listId]?.items || [];
     return items.map(item => ({ ...item, product: products[item.productId]?.productData }));
   }
 );
@@ -137,7 +137,7 @@ export const isInitialLoading = createSelector(
       return true;
     }
 
-    return !Object.values(products.byList).every(l => l.ready);
+    return !Object.values(products?.byList).every(l => l.ready);
   }
 );
 

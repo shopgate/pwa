@@ -17,4 +17,8 @@ export {
   getEnableWebIndexing,
   getProductShowAlternativeLocation,
   getProductListShowInventory,
+  getWishlistItemQuantityEnabled,
+  getWishlistItemNotesEnabled,
+  getShowWishlistItemsCountBadge,
+  getLoadWishlistOnAppStartEnabled,
 } from './merchantSettings';
