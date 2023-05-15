@@ -23,7 +23,7 @@ import {
 import {
   receiveFavoritesWhileVisible$,
 } from '@shopgate/pwa-common-commerce/favorites/streams';
-import { getFavoritesItems } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getFavoritesProductsIds } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import {
   categoryDidBackEnter$,
 } from '@shopgate/pwa-common-commerce/category/streams';
@@ -345,7 +345,7 @@ function locationsSubscriber(subscribe) {
       if (!showInventoryInLists(state)) {
         return;
       }
-      const productIds = (getFavoritesItems(state) || []).map(({ product }) => product.id);
+      const productIds = getFavoritesProductsIds(state);
 
       if (!productIds || !productIds.length) {
         return;
