@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { isRelativeProductOnList } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/core/selectors/merchantSettings';
+import { isRelativeProductOnList } from '@shopgate/engage/favorites';
+import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/core';
 
 /**
  * @param {Object} state The current application state.
