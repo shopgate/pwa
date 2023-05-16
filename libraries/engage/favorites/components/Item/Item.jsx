@@ -24,7 +24,11 @@ import {
   getThemeSettings,
   i18n,
 } from '@shopgate/engage/core';
-import { ResponsiveContainer, Link, SurroundPortals } from '@shopgate/engage/components';
+import {
+  ResponsiveContainer,
+  Link,
+  SurroundPortals,
+} from '@shopgate/engage/components';
 import {
   makeIsRopeProductOrderable,
   getPreferredLocation,
@@ -41,7 +45,7 @@ import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import { openFavoritesCommentSheet } from '@shopgate/pwa-common-commerce/favorites/action-creators';
+import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import {
@@ -82,7 +86,7 @@ const mapDispatchToProps = dispatch => ({
   updateFavoriteItem: (productId, listId, quantity, notes) => {
     dispatch(updateFavorite(productId, listId, quantity, notes));
   },
-  openCommentSheet: (productId, listId) => dispatch(openFavoritesCommentSheet(productId, listId)),
+  openCommentDialog: (productId, listId) => dispatch(openFavoritesCommentDialog(productId, listId)),
 });
 
 const styles = {
@@ -167,17 +171,21 @@ const styles = {
   }),
   notes: css({
     paddingRight: 4,
+    fontStyle: 'italic',
   }),
   addCommentButton: css({
     fontSize: 17,
-    color: 'var(--color-primary)',
+    color: 'var(--color-secondary)',
     fontWeight: 500,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     marginBottom: 10,
-    textDecoration: 'underline',
     paddingLeft: 0,
+    paddingRight: 0,
+  }),
+  buttons: css({
+    whiteSpace: 'nowrap',
   }),
   quantityPicker: css({
     marginBottom: 10,
@@ -221,7 +229,7 @@ const FavoriteItem = ({
   showModal,
   historyPush,
   updateFavoriteItem,
-  openCommentSheet,
+  openCommentDialog,
   wishlistItemQuantityEnabled,
   wishlistItemNotesEnabled,
 }) => {
@@ -234,9 +242,6 @@ const FavoriteItem = ({
   const price = hasStrikePrice ? specialPrice : defaultPrice;
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
-
-  const { unit, hasCatchWeight } = product;
-  const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   const [internalQuantity, setInternalQuantity] = useState(quantity);
 
@@ -251,8 +256,8 @@ const FavoriteItem = ({
   const handleOpenComment = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
-    openCommentSheet(product.id, listId);
-  }, [listId, openCommentSheet, product.id]);
+    openCommentDialog(product.id, listId);
+  }, [listId, openCommentDialog, product.id]);
 
   const handleAddToCart = useCallback((e) => {
     e.preventDefault();
@@ -366,10 +371,10 @@ const FavoriteItem = ({
                 { wishlistItemQuantityEnabled ? (
                   <div className={styles.quantityPicker}>
                     <UnitQuantityPicker
-                      unit={hasUnitWithDecimals ? unit : null}
-                      maxDecimals={hasUnitWithDecimals ? 2 : 0}
-                      incrementStep={hasUnitWithDecimals ? 0.25 : 1}
-                      decrementStep={hasUnitWithDecimals ? 0.25 : 1}
+                      maxValue={99}
+                      maxDecimals={0}
+                      incrementStep={1}
+                      decrementStep={1}
                       onChange={handleChange}
                       value={internalQuantity}
                     />
@@ -378,22 +383,23 @@ const FavoriteItem = ({
                 {wishlistItemNotesEnabled && notes ? (
                   <div>
                     <span className={styles.comment}>
-                      {`${i18n.text('favorites.add_comment.notes')}: `}
+                      {`${i18n.text('favorites.comments.notes')}: `}
                     </span>
-                    <span className={styles.notes}>{notes}</span>
-                    <span>
+                    <span className={styles.notes}>{`"${notes}"`}</span>
+                    <span className={styles.buttons}>
                       <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
-                        {i18n.text('favorites.add_comment.edit')}
+                        {i18n.text('favorites.comments.edit')}
                       </button>
+                      { ' | '}
                       <button type="button" onClick={handleDeleteComment} className={styles.addCommentButton}>
-                        {i18n.text('favorites.add_comment.delete')}
+                        {i18n.text('favorites.comments.delete')}
                       </button>
                     </span>
                   </div>
                 ) : null}
                 {wishlistItemNotesEnabled && !notes ? (
                   <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
-                    {i18n.text('favorites.add_comment.title')}
+                    {i18n.text('favorites.comments.add')}
                   </button>
                 ) : null}
 
@@ -458,7 +464,7 @@ FavoriteItem.propTypes = {
   addToCart: PropTypes.func.isRequired,
   historyPush: PropTypes.func.isRequired,
   listId: PropTypes.string.isRequired,
-  openCommentSheet: PropTypes.func.isRequired,
+  openCommentDialog: PropTypes.func.isRequired,
   product: PropTypes.shape().isRequired,
   remove: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,

@@ -24,6 +24,7 @@ import { fetchProductLocations } from '@shopgate/engage/locations/actions';
 
 import List from '../List';
 import ListsModal from './ListsModal';
+import CommentDialog from '../CommentDialog';
 import ItemFulfillmentMethod from '../ItemFulfillmentMethod';
 import {
   FAVORITES_LIST_ADD_BUTTON,
@@ -286,6 +287,7 @@ const FavoriteLists = ({
           fulfillmentMethod={fulfillmentMethod}
         />
       ) : null}
+      <CommentDialog />
       <ItemFulfillmentMethod
         isOpen={foMethodChooser}
         methods={fulfillmentMethods}

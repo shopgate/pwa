@@ -20,8 +20,8 @@ import {
   SUCCESS_UPDATE_FAVORITES,
   ERROR_UPDATE_FAVORITES,
   UPDATE_PRODUCT_IN_FAVORITES,
-  OPEN_FAVORITE_COMMENT_SHEET,
-  CLOSE_FAVORITE_COMMENT_SHEET,
+  OPEN_FAVORITE_COMMENT_DIALOG,
+  CLOSE_FAVORITE_COMMENT_DIALOG,
 } from '../constants';
 import { makeGetFavorites } from '../selectors';
 
@@ -313,8 +313,8 @@ export const closeFavoritesListChooser = () => ({
  * @param {string} listId The id of the list.
  * @returns {Object}
  */
-export const openFavoritesCommentSheet = (productId, listId) => ({
-  type: OPEN_FAVORITE_COMMENT_SHEET,
+export const openFavoritesCommentDialog = (productId, listId) => ({
+  type: OPEN_FAVORITE_COMMENT_DIALOG,
   productId,
   listId,
 });
@@ -323,6 +323,6 @@ export const openFavoritesCommentSheet = (productId, listId) => ({
  * Closes the favorite comment sheet
  * @returns {Object}
  */
-export const closeFavoritesCommentSheet = () => ({
-  type: CLOSE_FAVORITE_COMMENT_SHEET,
+export const closeFavoritesCommentDialog = () => ({
+  type: CLOSE_FAVORITE_COMMENT_DIALOG,
 });

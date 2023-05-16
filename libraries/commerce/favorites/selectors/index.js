@@ -258,12 +258,12 @@ export const isRelativeProductOnList = createSelector(
   relativesOnFavorites => relativesOnFavorites.length > 0
 );
 
-export const getCommentSheetSettings = createSelector(
+export const getCommentDialogSettings = createSelector(
   getFavoritesListState,
   getFavoritesProducts,
   getProducts,
-  ({ commentSheet }, favItems, products) => {
-    const { listId, productId } = commentSheet || {};
+  ({ commentDialog }, favItems, products) => {
+    const { listId, productId } = commentDialog || {};
     if (!listId || !productId) {
       return undefined;
     }
@@ -276,7 +276,10 @@ export const getCommentSheetSettings = createSelector(
     }
 
     return {
-      listId, productId, item, product: products[item.productId]?.productData,
+      listId,
+      productId,
+      item,
+      product: products[item.productId]?.productData,
     };
   }
 );

@@ -10,6 +10,7 @@ const button = css({
   fontSize: '1.5rem',
   outline: 0,
   padding: 0,
+  color: 'inherit',
 }).toString();
 
 const disabled = css({

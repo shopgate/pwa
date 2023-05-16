@@ -123,12 +123,23 @@
     "errors": {
       "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
     },
-    "add_comment": {
-      "title": "Kommentar hinzufügen",
-      "button": "speichern",
+    "delete_list_modal": {
+      "title": "Wunschliste löschen",
+      "message": "Möchtest Du die Wunschliste \"{name}\" wirklich löschen?"
+    },
+    "comment_modal": {
+      "titleAdd": "Kommentar hinzufügen",
+      "titleEdit": "Kommentar bearbeiten",
+      "dismiss": "Abbrechen",
+      "confirm": "Bestätigen",
+      "label": "Kommentar",
+      "characterCount": "{count} von {maxCount} Zeichen"
+    },
+    "comments": {
+      "add": "Kommentar hinzufügen",
       "notes": "Kommentar",
-      "edit": "bearbeiten",
-      "delete": "löschen"
+      "edit": "Bearbeiten",
+      "delete": "Löschen"
     },
     "rename_list": "Umbenennen",
     "remove_list": "Löschen",
