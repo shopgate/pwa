@@ -45,7 +45,10 @@ const QuantityInput = forwardRef(({
       return;
     }
 
-    onChange(newValue);
+    if (newValue !== value) {
+      onChange(newValue);
+    }
+
     customOnBlur(event, newValue);
   }, [customOnBlur, inputValue, maxDecimals, onChange, value]);
 
