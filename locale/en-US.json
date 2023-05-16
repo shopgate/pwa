@@ -124,12 +124,23 @@
     "errors": {
       "invalid_name": "Please enter a valid name for your wish list"
     },
-    "add_comment": {
-      "title": "Add a comment",
-      "button": "save",
+    "delete_list_modal": {
+      "title": "Delete Wish List",
+      "message": "Do you really want to delete the \"{name}\" wish list?"
+    },
+    "comment_modal": {
+      "titleAdd": "Add Comment",
+      "titleEdit": "Edit Comment",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "label": "Comment",
+      "characterCount": "{count} of {maxCount} characters"
+    },
+    "comments": {
+      "add": "Add Comment",
       "notes": "Comment",
-      "edit": "edit",
-      "delete": "delete"
+      "edit": "Edit",
+      "delete": "Delete"
     },
     "rename_list": "Rename",
     "remove_list": "Remove",
