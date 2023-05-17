@@ -29,6 +29,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       removeThrottle={0}
       removeWithRelatives={false}
       rippleClassName=""
+      wishlistItemQuantityEnabled={false}
     >
       <button
         aria-hidden={null}
@@ -117,6 +118,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       removeThrottle={0}
       removeWithRelatives={false}
       rippleClassName=""
+      wishlistItemQuantityEnabled={false}
     >
       <button
         aria-hidden={null}
