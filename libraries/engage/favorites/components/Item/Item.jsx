@@ -53,6 +53,8 @@ import ItemNotes from './ItemNotes';
 import {
   FAVORITES_LIST_ITEM,
   FAVORITES_LIST_ITEM_ACTIONS,
+  FAVORITES_NOTES,
+  FAVORITES_QUANTITY,
 } from '../../constants/Portals';
 
 const { variables } = themeConfig;
@@ -332,12 +334,16 @@ const FavoriteItem = ({
               <ItemCharacteristics characteristics={characteristics} />
               <StockInfoLists product={product} />
               <div className={styles.quantityNotesContainer}>
-                <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
-                <ItemNotes
-                  notes={notes}
-                  onClickDeleteComment={handleDeleteComment}
-                  onClickOpenComment={handleOpenComment}
-                />
+                <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
+                  <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
+                </SurroundPortals>
+                <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
+                  <ItemNotes
+                    notes={notes}
+                    onClickDeleteComment={handleDeleteComment}
+                    onClickOpenComment={handleOpenComment}
+                  />
+                </SurroundPortals>
               </div>
 
             </div>
