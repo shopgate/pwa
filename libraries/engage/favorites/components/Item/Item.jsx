@@ -48,12 +48,12 @@ import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/
 import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
+import ItemQuantity from './ItemQuantity';
+import ItemNotes from './ItemNotes';
 import {
   FAVORITES_LIST_ITEM,
   FAVORITES_LIST_ITEM_ACTIONS,
 } from '../../constants/Portals';
-import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/UnitQuantityPicker';
-import { getWishlistItemNotesEnabled, getWishlistItemQuantityEnabled } from '../../../core/selectors/merchantSettings';
 
 const { variables } = themeConfig;
 
@@ -71,8 +71,6 @@ const makeMapStateToProps = () => {
     hasVariants: hasProductVariants(state, props),
     isOrderable: isProductOrderable(state, props),
     isRopeProductOrderable: isRopeProductOrderable(state, props),
-    wishlistItemQuantityEnabled: getWishlistItemQuantityEnabled(state),
-    wishlistItemNotesEnabled: getWishlistItemNotesEnabled(state),
   });
 };
 
@@ -141,8 +139,10 @@ const styles = {
     minWidth: 0,
     alignItems: 'flex-end',
   }),
-  innerInfoContainerRight: css({
-    width: '100%',
+  quantityNotesContainer: css({
+    ':not(:empty)': {
+      marginTop: 10,
+    },
   }),
   priceInfo: css({
     wordBreak: 'break-word',
@@ -159,37 +159,6 @@ const styles = {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     marginBottom: 10,
-  }),
-  comment: css({
-    fontSize: 17,
-    color: 'var(--color-text-high-emphasis)',
-    fontWeight: 500,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    marginBottom: 10,
-  }),
-  notes: css({
-    paddingRight: 4,
-    fontStyle: 'italic',
-  }),
-  addCommentButton: css({
-    fontSize: 17,
-    color: 'var(--color-secondary)',
-    fontWeight: 500,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    marginBottom: 10,
-    paddingLeft: 0,
-    paddingRight: 0,
-  }),
-  buttons: css({
-    whiteSpace: 'nowrap',
-  }),
-  quantityPicker: css({
-    marginBottom: 10,
-    width: 120,
   }),
   actions: css({
     [responsiveMediaQuery('<md', { appAlways: true })]: {
@@ -230,8 +199,6 @@ const FavoriteItem = ({
   historyPush,
   updateFavoriteItem,
   openCommentDialog,
-  wishlistItemQuantityEnabled,
-  wishlistItemNotesEnabled,
 }) => {
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
@@ -323,8 +290,7 @@ const FavoriteItem = ({
     handleAddToCart,
   }), [handleAddToCart, isBaseProduct, isDisabled, listId, product.id, remove]);
 
-  const handleChange = useCallback((newQuantity) => {
-    setInternalQuantity(newQuantity);
+  const handleChangeQuantity = useCallback((newQuantity) => {
     updateFavoriteItem(
       product.id,
       listId,
@@ -361,49 +327,21 @@ const FavoriteItem = ({
               dangerouslySetInnerHTML={{ __html: product.name }}
             />
           </SurroundPortals>
-          <div>
+          <div className={styles.innerInfoContainer}>
             <div className={styles.infoContainerLeft}>
               <ItemCharacteristics characteristics={characteristics} />
               <StockInfoLists product={product} />
+              <div className={styles.quantityNotesContainer}>
+                <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
+                <ItemNotes
+                  notes={notes}
+                  onClickDeleteComment={handleDeleteComment}
+                  onClickOpenComment={handleOpenComment}
+                />
+              </div>
+
             </div>
             <div className={styles.infoContainerRight}>
-              <div className={styles.innerInfoContainerRight}>
-                { wishlistItemQuantityEnabled ? (
-                  <div className={styles.quantityPicker}>
-                    <UnitQuantityPicker
-                      maxValue={99}
-                      maxDecimals={0}
-                      incrementStep={1}
-                      decrementStep={1}
-                      onChange={handleChange}
-                      value={internalQuantity}
-                    />
-                  </div>)
-                  : null}
-                {wishlistItemNotesEnabled && notes ? (
-                  <div>
-                    <span className={styles.comment}>
-                      {`${i18n.text('favorites.comments.notes')}: `}
-                    </span>
-                    <span className={styles.notes}>{`"${notes}"`}</span>
-                    <span className={styles.buttons}>
-                      <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
-                        {i18n.text('favorites.comments.edit')}
-                      </button>
-                      { ' | '}
-                      <button type="button" onClick={handleDeleteComment} className={styles.addCommentButton}>
-                        {i18n.text('favorites.comments.delete')}
-                      </button>
-                    </span>
-                  </div>
-                ) : null}
-                {wishlistItemNotesEnabled && !notes ? (
-                  <button type="button" onClick={handleOpenComment} className={styles.addCommentButton}>
-                    {i18n.text('favorites.comments.add')}
-                  </button>
-                ) : null}
-
-              </div>
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
                 {hasStrikePrice ? (
                   <PriceStriked
@@ -469,8 +407,6 @@ FavoriteItem.propTypes = {
   remove: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   updateFavoriteItem: PropTypes.func.isRequired,
-  wishlistItemNotesEnabled: PropTypes.bool.isRequired,
-  wishlistItemQuantityEnabled: PropTypes.bool.isRequired,
   hasVariants: PropTypes.bool,
   isBaseProduct: PropTypes.bool,
   isOrderable: PropTypes.bool,
