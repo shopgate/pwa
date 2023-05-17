@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import HeartIcon from '../icons/HeartIcon';
 import HeartOutlineIcon from '../icons/HeartOutlineIcon';
+import HeartPlusOutlineIcon from '../icons/HeartPlusOutlineIcon';
 import Ripple from '../Ripple';
 import styles from './style';
 import connect from './connector';
@@ -25,6 +26,7 @@ class FavoritesButton extends Component {
     removeThrottle: PropTypes.number,
     removeWithRelatives: PropTypes.bool,
     rippleClassName: PropTypes.string,
+    wishlistItemQuantityEnabled: PropTypes.bool,
   };
 
   /**
@@ -48,6 +50,7 @@ class FavoritesButton extends Component {
     removeThrottle: 0,
     removeWithRelatives: false,
     rippleClassName: '',
+    wishlistItemQuantityEnabled: false,
   };
 
   /**
@@ -94,7 +97,8 @@ class FavoritesButton extends Component {
       return;
     }
 
-    if (!this.props.active) {
+    // When wishlist item quantity is active, items cannot be removed via the button
+    if (!this.props.active || this.props.wishlistItemQuantityEnabled) {
       this.props.addFavorites(this.props.productId);
     } else {
       setTimeout(() => {
@@ -108,6 +112,10 @@ class FavoritesButton extends Component {
    * @returns {JSX}
    */
   renderIcon() {
+    if (this.props.wishlistItemQuantityEnabled) {
+      return <HeartPlusOutlineIcon />;
+    }
+
     if (this.props.active) {
       return <HeartIcon />;
     }
