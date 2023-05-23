@@ -4,22 +4,21 @@ import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { Ripple } from '@shopgate/engage/components';
 import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
-import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const styles = {
   root: css({
     display: 'flex',
-    position: 'relative',
     background: themeColors.light,
     borderRadius: '50%',
+    border: 'solid',
+    borderWidth: 1,
     padding: 0,
-    fontSize: 20,
+    fontSize: 15,
     lineHeight: 1,
-    color: `var(--color-secondary, ${themeColors.accent})`,
     outline: 0,
-    boxShadow: themeShadows.buttons.elevated,
-    height: 32,
-    width: 32,
+    height: 20,
+    width: 20,
     justifyContent: 'center',
     alignItems: 'center',
   }).toString(),

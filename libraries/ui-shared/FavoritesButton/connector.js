@@ -2,7 +2,10 @@ import { connect } from 'react-redux';
 import {
   toggleFavoriteWithListChooser,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/merchantSettings';
+import {
+  getLoadWishlistOnAppStartEnabled,
+  getWishlistItemQuantityEnabled,
+} from '@shopgate/engage/core/selectors/merchantSettings';
 
 /**
  * Creates the mapStateToProps connector function.
@@ -10,6 +13,7 @@ import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/
  */
 const makeMapStateToProps = () => state => ({
   wishlistItemQuantityEnabled: getWishlistItemQuantityEnabled(state),
+  loadWishlistOnAppStartEnabled: getLoadWishlistOnAppStartEnabled(state),
 });
 
 /**

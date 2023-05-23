@@ -82,7 +82,6 @@ const buttonWrapperDefault = (bSize, iSize) => ({
  */
 const buttonWrapper = (bSize, iSize) => css({
   ...buttonWrapperDefault(bSize, iSize),
-  boxShadow: themeConfig.shadows.buttons.elevated,
 }).toString();
 
 /**

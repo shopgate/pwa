@@ -25,7 +25,6 @@ import {
   i18n,
 } from '@shopgate/engage/core';
 import {
-  ResponsiveContainer,
   Link,
   SurroundPortals,
 } from '@shopgate/engage/components';
@@ -46,13 +45,13 @@ import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
+import classNames from 'classnames';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import ItemQuantity from './ItemQuantity';
 import ItemNotes from './ItemNotes';
 import {
   FAVORITES_LIST_ITEM,
-  FAVORITES_LIST_ITEM_ACTIONS,
   FAVORITES_NOTES,
   FAVORITES_QUANTITY,
 } from '../../constants/Portals';
@@ -118,34 +117,16 @@ const styles = {
   }).toString(),
   infoContainer: css({
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    minWidth: 0,
   }).toString(),
-  innerInfoContainer: css({
-    flex: 1,
-    display: 'flex',
+  infoContainerRow: css({
     flexDirection: 'row',
-    minWidth: 0,
-  }),
-  infoContainerLeft: css({
-    flex: 1,
     display: 'flex',
-    flexDirection: 'column',
-    minWidth: 0,
-    paddingBottom: 10,
-  }),
-  infoContainerRight: css({
-    display: 'flex',
-    flexDirection: 'column',
-    minWidth: 0,
-    alignItems: 'flex-end',
-  }),
-  quantityNotesContainer: css({
-    ':not(:empty)': {
-      marginTop: 10,
-    },
-  }),
+    justifyContent: 'space-between',
+  }).toString(),
+  headerRow: css({ marginBottom: 10 }).toString(),
+  quantityContainer: css({
+    flexDirection: 'row', display: 'flex', alignItems: 'center', flexWrap: 'wrap',
+  }).toString(),
   priceInfo: css({
     wordBreak: 'break-word',
     fontSize: '0.875rem',
@@ -153,32 +134,14 @@ const styles = {
     color: 'var(--color-text-low-emphasis)',
     padding: `${variables.gap.xsmall}px 0`,
   }).toString(),
+  titleContainer: css({
+    marginRight: 10,
+  }).toString(),
   title: css({
     fontSize: 17,
-    color: 'var(--color-text-high-emphasis)',
+    color: 'var(--color-secondary)',
     fontWeight: 600,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
     marginBottom: 10,
-  }),
-  actions: css({
-    [responsiveMediaQuery('<md', { appAlways: true })]: {
-      position: 'absolute',
-      bottom: -24,
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: 90,
-    },
-    [responsiveMediaQuery('>=md', { webOnly: true })]: {
-      display: 'flex',
-      flexDirection: 'row',
-      width: 100,
-      justifyContent: 'space-between',
-      marginLeft: 64,
-    },
   }).toString(),
 };
 
@@ -317,37 +280,34 @@ const FavoriteItem = ({
         >
           <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
         </Link>
-        <Link
-          className={styles.infoContainer}
-          component="div"
-          href={productLink}
-        >
-          <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
-            <span
-              className={styles.title}
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: product.name }}
-            />
-          </SurroundPortals>
-          <div className={styles.innerInfoContainer}>
-            <div className={styles.infoContainerLeft}>
-              <ItemCharacteristics characteristics={characteristics} />
-              <StockInfoLists product={product} />
-              <div className={styles.quantityNotesContainer}>
-                <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
-                  <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
-                </SurroundPortals>
-                <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
-                  <ItemNotes
-                    notes={notes}
-                    onClickDeleteComment={handleDeleteComment}
-                    onClickOpenComment={handleOpenComment}
-                  />
-                </SurroundPortals>
-              </div>
 
-            </div>
-            <div className={styles.infoContainerRight}>
+        <div className={styles.infoContainer}>
+          <div className={classNames(styles.infoContainerRow, styles.headerRow)}>
+            <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
+              <Link
+                href={productLink}
+                tag="span"
+                className={styles.titleContainer}
+              >
+                <span
+                  className={styles.title}
+                // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{ __html: `${product.name}` }}
+                />
+              </Link>
+
+            </SurroundPortals>
+            <Remove onClick={remove} />
+          </div>
+          <ItemCharacteristics characteristics={characteristics} />
+          <StockInfoLists product={product} />
+          <div className={styles.infoContainerRow}>
+            <div className={styles.quantityContainer}>
+              <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
+                <div style={{ marginRight: 10 }}>
+                  <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
+                </div>
+              </SurroundPortals>
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
                 {hasStrikePrice ? (
                   <PriceStriked
@@ -364,41 +324,23 @@ const FavoriteItem = ({
                 <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
               </SurroundPortals>
             </div>
-            <ResponsiveContainer breakpoint=">=md" webOnly>
-              <div className={styles.actions}>
-                <SurroundPortals
-                  portalName={FAVORITES_LIST_ITEM_ACTIONS}
-                  portalProps={ctaPortalProps}
-                >
-                  <Remove onClick={remove} />
-                  <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
-                    <AddToCart
-                      onClick={handleAddToCart}
-                      isLoading={false}
-                      isDisabled={isDisabled}
-                      aria-label={i18n.text('product.add_to_cart')}
-                    />
-                  </SurroundPortals>
-                </SurroundPortals>
-              </div>
-            </ResponsiveContainer>
-          </div>
-        </Link>
-        <ResponsiveContainer breakpoint="<md" appAlways>
-          <div className={styles.actions}>
-            <SurroundPortals portalName={FAVORITES_LIST_ITEM_ACTIONS} portalProps={ctaPortalProps}>
-              <Remove onClick={remove} />
-              <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
-                <AddToCart
-                  onClick={handleAddToCart}
-                  isLoading={false}
-                  isDisabled={isDisabled}
-                  aria-label={i18n.text('product.add_to_cart')}
-                />
-              </SurroundPortals>
+            <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
+              <AddToCart
+                onClick={handleAddToCart}
+                isLoading={false}
+                isDisabled={isDisabled}
+                aria-label={i18n.text('product.add_to_cart')}
+              />
             </SurroundPortals>
           </div>
-        </ResponsiveContainer>
+          <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
+            <ItemNotes
+              notes={notes}
+              onClickDeleteComment={handleDeleteComment}
+              onClickOpenComment={handleOpenComment}
+            />
+          </SurroundPortals>
+        </div>
       </div>
     </SurroundPortals>
   );

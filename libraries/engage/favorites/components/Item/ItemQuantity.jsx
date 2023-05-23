@@ -8,7 +8,6 @@ import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/U
 
 const styles = {
   root: css({
-    marginBottom: 10,
     width: 120,
   }),
 };

@@ -8,6 +8,7 @@ import {
   getLoadWishlistOnAppStartEnabled,
   getWishlistItemQuantityEnabled,
 } from '@shopgate/engage/core/selectors/merchantSettings';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
@@ -41,6 +42,7 @@ import {
   REQUEST_REMOVE_FAVORITES,
   FAVORITES_LIMIT_ERROR,
   REQUEST_UPDATE_FAVORITES,
+  FAVORITES_PATH,
 } from '../constants';
 import {
   getFavoritesCount,
@@ -181,6 +183,7 @@ export default function favorites(subscribe) {
     if (!Array.isArray(actionBuffer) || !actionBuffer.length) {
       return;
     }
+    LoadingProvider.setLoading(FAVORITES_PATH);
 
     // All actions provide the same functionality, just take the first entry
     const { dispatch } = actionBuffer[0];
@@ -227,6 +230,7 @@ export default function favorites(subscribe) {
       // Fetch after there was any update / add / remove
       if (updateActions.length > 0 || addRemoveBalance > 0 || addRemoveBalance < 0) {
         await dispatch(idleSyncFavorites(listId));
+        LoadingProvider.unsetLoading(FAVORITES_PATH);
       }
     });
   });

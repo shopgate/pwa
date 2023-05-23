@@ -4,6 +4,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import HeartIcon from '../icons/HeartIcon';
 import HeartOutlineIcon from '../icons/HeartOutlineIcon';
 import HeartPlusOutlineIcon from '../icons/HeartPlusOutlineIcon';
+import HeartPlus from '../icons/HeartPlusIcon';
 import Ripple from '../Ripple';
 import styles from './style';
 import connect from './connector';
@@ -17,6 +18,7 @@ class FavoritesButton extends Component {
     addFavorites: PropTypes.func,
     'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
+    loadWishlistOnAppStartEnabled: PropTypes.bool,
     noShadow: PropTypes.bool,
     // When true, button would react on click only once.
     once: PropTypes.bool,
@@ -51,6 +53,7 @@ class FavoritesButton extends Component {
     removeWithRelatives: false,
     rippleClassName: '',
     wishlistItemQuantityEnabled: false,
+    loadWishlistOnAppStartEnabled: true,
   };
 
   /**
@@ -112,7 +115,15 @@ class FavoritesButton extends Component {
    * @returns {JSX}
    */
   renderIcon() {
-    if (this.props.wishlistItemQuantityEnabled) {
+    if (!this.props.loadWishlistOnAppStartEnabled) {
+      return <HeartPlusOutlineIcon />;
+    }
+
+    if (this.props.wishlistItemQuantityEnabled && this.props.active) {
+      return <HeartPlus />;
+    }
+
+    if (this.props.wishlistItemQuantityEnabled && !this.props.active) {
       return <HeartPlusOutlineIcon />;
     }
 

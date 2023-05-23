@@ -94,9 +94,8 @@ const products = (state = {
           .find(({ productId }) => productId === action.productId);
 
         if (matchingItem) {
-          matchingItem.quantity += 1;
           matchingItem.notes = typeof action.notes === 'string' ? action.notes : matchingItem.notes;
-          matchingItem.notes = typeof action.quantity === 'number' ? action.quantity : matchingItem.quantity;
+          matchingItem.quantity = typeof action.quantity === 'number' ? matchingItem.quantity + action.quantity : matchingItem.quantity + 1;
         } else {
           list.items.push({
             notes: action.notes || '',
