@@ -6,6 +6,8 @@ import { loadCustomStyles } from '@shopgate/engage/styles';
 import ErrorBoundary from './components/ErrorBoundary';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
+import { getIsSessionExpired } from './selectors/user';
+import logout from './actions/user/logout';
 
 /**
  * The application component.
@@ -23,7 +25,19 @@ class App extends Component {
    * Registers the component for the native events and fires the onload AppCommand.
    */
   componentDidMount() {
-    this.props.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
+    /**
+     * Async helper function that performs optional steps before appDidStart action is dispatched
+     */
+    const performAppStart = async () => {
+      if (getIsSessionExpired(this.props.store.getState())) {
+        // Logout the user before appDidStart when session is expired
+        await this.props.store.dispatch(logout(undefined, true));
+      }
+
+      this.props.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
+    };
+
+    performAppStart();
     loadCustomStyles();
   }
 

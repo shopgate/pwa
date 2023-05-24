@@ -128,3 +128,25 @@ export const isUserLoginDisabled = createSelector(
  * @return {string|null}
  */
 export const getRegisterUrl = state => getUrl(state, { type: 'register' });
+
+/**
+ * Retrieves the expiry timestamp from the user login storage
+ */
+export const getSessionExpiry = createSelector(
+  getLoginData,
+  loginData => loginData.expires
+);
+
+/**
+ * Checks if the current session is expired.
+ *
+ * !!! CAUTION Not implemented with createSelector since selector caching conflicts with processing
+ * the current timestamp
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const getIsSessionExpired = (state) => {
+  const expiry = getSessionExpiry(state);
+
+  return typeof expiry === 'number' && new Date().getTime() >= expiry;
+};
