@@ -383,7 +383,9 @@
     "dismiss": "Rejeter",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "Une erreur inattendue est apparue. Veuillez réessayer."
+    "body_error": "Une erreur inattendue est apparue. Veuillez réessayer.",
+    "close": "Fermer",
+    "login": "Se connecter"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -480,6 +482,7 @@
     "signup": "S'enregistrer",
     "register": "Créer un compte ici!",
     "logout_message": "Vous avez été déconnecté(e)",
+    "auto_logout_message": "Vous avez été déconnecté automatiquement.",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",

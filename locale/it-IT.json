@@ -383,7 +383,9 @@
     "dismiss": "Scarta",
     "ok": "Ok",
     "title_error": "Ops!",
-    "body_error": "Si è verificato un errore imprevisto. Riprova per favore."
+    "body_error": "Si è verificato un errore imprevisto. Riprova per favore.",
+    "close": "Chiudi",
+    "login": "Accedi"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -479,6 +481,7 @@
     "no_account": "Non hai un account?",
     "signup": "Registrati",
     "logout_message": "Sei uscito dall'account.",
+    "auto_logout_message": "L'utente è stato disconnesso automaticamente.",
     "error": "I tuoi nome utente e password non corrispondono ad alcun account",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",
