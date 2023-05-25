@@ -143,6 +143,7 @@ const styles = {
   }).toString(),
   titleContainer: css({
     marginRight: 10,
+    flex: 1,
   }).toString(),
   title: css({
     fontSize: 17,
@@ -304,7 +305,9 @@ const FavoriteItem = ({
               </Link>
 
             </SurroundPortals>
-            <Remove onClick={remove} />
+            <div>
+              <Remove onClick={remove} />
+            </div>
           </div>
           <ItemCharacteristics characteristics={characteristics} />
           <StockInfoLists product={product} />
