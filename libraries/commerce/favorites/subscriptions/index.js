@@ -87,10 +87,11 @@ export default function favorites(subscribe) {
   });
 
   subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {
-    const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(getState());
+    const state = getState();
+    const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(state);
 
     // Nothing to do, when the store already contains the item
-    const activeProductInList = getFavoritesProducts(getState())
+    const activeProductInList = getFavoritesProducts(state)
       .byList[action.listId]
         ?.items.find(({ productId }) => productId === action.productId);
 
@@ -102,7 +103,7 @@ export default function favorites(subscribe) {
 
     const { favorites: { limit = 100 } = {} } = appConfig;
 
-    const count = getFavoritesCount(getState());
+    const count = getFavoritesCount(state);
     if (count >= limit) {
       // Dispatch a local error only, because the request to add is prevented
       const error = new Error('Limit exceeded');
