@@ -125,7 +125,14 @@ const styles = {
   }).toString(),
   headerRow: css({ marginBottom: 10 }).toString(),
   quantityContainer: css({
-    flexDirection: 'row', display: 'flex', alignItems: 'center', flexWrap: 'wrap',
+    flexDirection: 'row',
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 10,
+  }).toString(),
+  priceContainer: css({
+    minWidth: 100,
   }).toString(),
   priceInfo: css({
     wordBreak: 'break-word',
@@ -304,24 +311,24 @@ const FavoriteItem = ({
           <div className={styles.infoContainerRow}>
             <div className={styles.quantityContainer}>
               <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
-                <div style={{ marginRight: 10 }}>
-                  <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
-                </div>
+                <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
               </SurroundPortals>
               <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
-                {hasStrikePrice ? (
-                  <PriceStriked
-                    value={defaultPrice}
+                <div className={styles.priceContainer}>
+                  {hasStrikePrice ? (
+                    <PriceStriked
+                      value={defaultPrice}
+                      currency={currency}
+                    />
+                  ) : null}
+                  <Price
                     currency={currency}
+                    discounted={hasStrikePrice}
+                    taxDisclaimer
+                    unitPrice={price}
                   />
-                ) : null}
-                <Price
-                  currency={currency}
-                  discounted={hasStrikePrice}
-                  taxDisclaimer
-                  unitPrice={price}
-                />
-                <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+                  <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+                </div>
               </SurroundPortals>
             </div>
             <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>

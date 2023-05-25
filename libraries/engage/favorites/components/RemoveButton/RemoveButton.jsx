@@ -4,17 +4,14 @@ import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { Ripple } from '@shopgate/engage/components';
 import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const styles = {
   root: css({
     display: 'flex',
-    background: themeColors.light,
     borderRadius: '50%',
-    border: 'solid',
-    borderWidth: 1,
+    color: 'var(--color-text-high-emphasis)',
     padding: 0,
-    fontSize: 15,
+    fontSize: 25,
     lineHeight: 1,
     outline: 0,
     height: 20,

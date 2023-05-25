@@ -115,16 +115,15 @@ class FavoritesButton extends Component {
    * @returns {JSX}
    */
   renderIcon() {
-    if (!this.props.loadWishlistOnAppStartEnabled) {
+    if (
+      !this.props.loadWishlistOnAppStartEnabled ||
+      (this.props.wishlistItemQuantityEnabled && !this.props.active)
+    ) {
       return <HeartPlusOutlineIcon />;
     }
 
     if (this.props.wishlistItemQuantityEnabled && this.props.active) {
       return <HeartPlus />;
-    }
-
-    if (this.props.wishlistItemQuantityEnabled && !this.props.active) {
-      return <HeartPlusOutlineIcon />;
     }
 
     if (this.props.active) {
