@@ -93,9 +93,6 @@ const styles = {
     display: 'flex',
     position: 'relative',
     '&:not(:last-child)': {
-      marginBottom: 48,
-    },
-    '&:last-child': {
       marginBottom: 16,
     },
   }).toString(),
@@ -117,19 +114,22 @@ const styles = {
   }).toString(),
   infoContainer: css({
     flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    gap: 8,
   }).toString(),
   infoContainerRow: css({
     flexDirection: 'row',
     display: 'flex',
     justifyContent: 'space-between',
   }).toString(),
-  headerRow: css({ marginBottom: 10 }).toString(),
   quantityContainer: css({
     flexDirection: 'row',
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
-    gap: 10,
+    gap: 16,
   }).toString(),
   priceContainer: css({
     minWidth: 100,
@@ -149,7 +149,6 @@ const styles = {
     fontSize: 17,
     color: 'var(--color-secondary)',
     fontWeight: 600,
-    marginBottom: 10,
   }).toString(),
 };
 

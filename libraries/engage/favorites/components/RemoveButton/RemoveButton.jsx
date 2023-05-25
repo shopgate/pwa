@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { Ripple } from '@shopgate/engage/components';
-import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
+import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 
 const styles = {
   root: css({
@@ -11,13 +11,12 @@ const styles = {
     borderRadius: '50%',
     color: 'var(--color-text-high-emphasis)',
     padding: 0,
-    fontSize: 25,
+    fontSize: '1.5rem',
     lineHeight: 1,
     outline: 0,
-    height: 20,
-    width: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: 8,
   }).toString(),
 };
 
@@ -33,7 +32,7 @@ const RemoveButton = ({ onClick }) => (
     aria-label={i18n.text('favorites.remove')}
   >
     <Ripple>
-      <CrossIcon className={styles.icon} />
+      <TrashOutlineIcon className={styles.icon} />
     </Ripple>
   </button>
 );

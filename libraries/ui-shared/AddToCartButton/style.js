@@ -73,6 +73,7 @@ const buttonWrapperDefault = (bSize, iSize) => ({
   paddingRight: (bSize - iSize) / 2,
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
+  flexShrink: 0,
 });
 /**
  * Circular button and container for the icons.

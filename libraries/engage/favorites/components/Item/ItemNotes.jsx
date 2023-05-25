@@ -8,6 +8,11 @@ import {
 import { getWishlistItemNotesEnabled } from '../../../core/selectors/merchantSettings';
 
 const styles = {
+  root: css({
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+  }),
   addCommentButton: css({
     fontSize: 17,
     color: 'var(--color-secondary)',
@@ -15,7 +20,6 @@ const styles = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    marginBottom: 10,
     paddingLeft: 0,
     paddingRight: 0,
     textAlign: 'left',
@@ -27,7 +31,6 @@ const styles = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    marginBottom: 10,
   }),
   notes: css({
     paddingRight: 4,
@@ -63,7 +66,7 @@ const ItemNotes = ({
   return (
     <>
       { notes ? (
-        <div>
+        <div className={styles.root}>
           <span className={styles.comment}>
             {`${i18n.text('favorites.comments.notes')}: `}
           </span>
