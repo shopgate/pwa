@@ -379,7 +379,9 @@
     "dismiss": "Desechar",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "Ocurrió un error inesperado. Intente nuevamente."
+    "body_error": "Ocurrió un error inesperado. Intente nuevamente.",
+    "close": "Cerrar",
+    "login": "Iniciar sesión"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -475,6 +477,7 @@
     "no_account": "¿Aún no tiene cuenta?",
     "register": "¡Crear una ahora!",
     "logout_message": "Ha sido desconectado.",
+    "auto_logout_message": "Se ha cerrado la sesión automáticamente.",
     "error": "Su usuario y contraseña no corresponden a ninguna cuenta",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",

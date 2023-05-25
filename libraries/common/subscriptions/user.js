@@ -5,6 +5,7 @@ import { LoadingProvider } from '../providers';
 import { fetchUser } from '../actions/user';
 import { successLogin } from '../action-creators';
 import { historyPush } from '../actions/router';
+import logout from '../actions/user/logout';
 import {
   appDidStart$,
   userWillLogin$,
@@ -13,6 +14,7 @@ import {
   userDidLogout$,
   userDidInitialize$,
   legacyConnectRegisterDidFail$,
+  userSessionExpired$,
 } from '../streams';
 import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
@@ -45,17 +47,30 @@ export default function user(subscribe) {
     dispatch(fetchUser());
   });
 
-  subscribe(userDidLogout$, ({ dispatch, action }) => {
+  subscribe(userDidLogout$, async ({ dispatch, action }) => {
     if (action.notify === false) {
       return;
     }
 
-    dispatch(showModal({
+    const isAutoLogout = action.autoLogout;
+
+    const confirmed = await dispatch(showModal({
       confirm: 'modal.ok',
       dismiss: null,
       message: 'login.logout_message',
       title: null,
+      ...(isAutoLogout ? {
+        message: 'login.auto_logout_message',
+        confirm: 'modal.login',
+        dismiss: 'modal.close',
+      } : null),
     }));
+
+    if (isAutoLogout && confirmed) {
+      dispatch(historyPush({
+        pathname: LOGIN_PATH,
+      }));
+    }
   });
 
   subscribe(appDidStart$, ({ dispatch, getState }) => {
@@ -71,5 +86,9 @@ export default function user(subscribe) {
     dispatch(historyPush({
       pathname: LEGACY_URL_CONNECT_REGISTER,
     }));
+  });
+
+  subscribe(userSessionExpired$, ({ dispatch }) => {
+    dispatch(logout(undefined, true));
   });
 }

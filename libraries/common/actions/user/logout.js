@@ -10,9 +10,10 @@ import { mutable } from '../../helpers/redux';
 /**
  * Logout the current user.
  * @param {boolean} [notify=true] If set to TRUE users are notified when the logout was successful.
+ * @param {boolean} [autoLogout=false] Whether the logout happened because session expired
  * @return {Function} A redux thunk.
  */
-function logout(notify = true) {
+function logout(notify = true, autoLogout = false) {
   return (dispatch) => {
     dispatch(requestLogout());
 
@@ -25,13 +26,13 @@ function logout(notify = true) {
         const { success, messages } = result;
 
         if (success) {
-          dispatch(successLogout(notify));
+          dispatch(successLogout(notify, autoLogout));
         } else {
-          dispatch(errorLogout(messages));
+          dispatch(errorLogout(messages, autoLogout));
         }
       })
       .catch(() => {
-        dispatch(errorLogout());
+        dispatch(errorLogout(undefined, autoLogout));
       });
 
     return request;

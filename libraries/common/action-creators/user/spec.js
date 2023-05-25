@@ -108,6 +108,7 @@ describe('Action Creators: user', () => {
       const expected = {
         type: SUCCESS_LOGOUT,
         notify: true,
+        autoLogout: false,
       };
       expect(successLogout()).toEqual(expected);
     });
@@ -116,15 +117,27 @@ describe('Action Creators: user', () => {
       const expected = {
         type: SUCCESS_LOGOUT,
         notify: true,
+        autoLogout: false,
       };
       expect(successLogout(true)).toEqual(expected);
     });
+
     it('should work as expected when called with false', () => {
       const expected = {
         type: SUCCESS_LOGOUT,
         notify: false,
+        autoLogout: false,
       };
       expect(successLogout(false)).toEqual(expected);
+    });
+
+    it('should work as expected when called with autoLogout parameter', () => {
+      const expected = {
+        type: SUCCESS_LOGOUT,
+        notify: true,
+        autoLogout: true,
+      };
+      expect(successLogout(undefined, true)).toEqual(expected);
     });
   });
 
@@ -133,6 +146,7 @@ describe('Action Creators: user', () => {
       const expected = {
         type: ERROR_LOGOUT,
         messages,
+        autoLogout: false,
       };
       expect(errorLogout(messages)).toEqual(expected);
     });
@@ -141,8 +155,18 @@ describe('Action Creators: user', () => {
       const expected = {
         type: ERROR_LOGOUT,
         messages: [],
+        autoLogout: false,
       };
       expect(errorLogout()).toEqual(expected);
+    });
+
+    it('should work as expected when called with autoLogout parameter', () => {
+      const expected = {
+        type: ERROR_LOGOUT,
+        messages,
+        autoLogout: true,
+      };
+      expect(errorLogout(messages, true)).toEqual(expected);
     });
   });
 

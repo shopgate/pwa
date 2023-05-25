@@ -18,6 +18,7 @@ import {
   SUCCESS_UPDATE_FAVORITES,
   REQUEST_UPDATE_FAVORITES,
   ERROR_UPDATE_FAVORITES,
+  RECEIVE_FAVORITES_LISTS,
 } from '../constants';
 
 /**
@@ -214,6 +215,19 @@ const products = (state = {
           syncCount: 0,
           ready: true,
         };
+        break;
+      }
+
+      // Handle cleanup after lists are updated
+      case RECEIVE_FAVORITES_LISTS: {
+        const listIds = action.favoritesLists.map(({ id }) => id);
+
+        Object.keys(draft.byList).forEach((id) => {
+          if (!listIds.includes(id)) {
+            // Remove list items that don't have a list anymore
+            delete draft.byList[id];
+          }
+        });
         break;
       }
 
