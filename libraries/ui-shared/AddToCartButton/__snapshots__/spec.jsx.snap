@@ -24,7 +24,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
     <button
       aria-hidden={false}
       aria-label={null}
-      className="null css-68omm3 css-1sr59j6"
+      className="null css-1e8v7r2 css-1sr59j6"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -190,7 +190,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
     <button
       aria-hidden={false}
       aria-label={null}
-      className="null css-68omm3 css-1sr59j6"
+      className="null css-1e8v7r2 css-1sr59j6"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -325,7 +325,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
     <button
       aria-hidden={false}
       aria-label={null}
-      className="null css-68omm3 css-1rxo1j2"
+      className="null css-1e8v7r2 css-1rxo1j2"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
