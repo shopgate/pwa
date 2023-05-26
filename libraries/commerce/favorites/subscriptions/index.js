@@ -192,8 +192,9 @@ export default function favorites(subscribe) {
     // Group all buffered actions by listId and productID
     const actions = actionBuffer.map(({ action }) => action);
     const actionsByListAndProduct = groupBy(actions, (({ listId, productId }) => `${listId}-${productId}}`));
+    const idleLists = [];
 
-    Object.values(actionsByListAndProduct).forEach(async (groupedActions) => {
+    await Object.values(actionsByListAndProduct).forEach(async (groupedActions) => {
       const [{
         productId,
         listId,
@@ -208,32 +209,42 @@ export default function favorites(subscribe) {
       const removeActions = groupedActions
         .filter(action => action.type === REQUEST_REMOVE_FAVORITES);
 
-      // If there are any update actions we only dispatch the last one
-      if (updateActions.length > 0) {
-        const [lastUpdateAction] = updateActions.slice(-1);
-        await dispatch(updateFavorites(
-          lastUpdateAction.productId,
-          lastUpdateAction.listId,
-          lastUpdateAction.quantity,
-          lastUpdateAction.notes
-        ));
-      }
+      try {
+        // If there are any update actions we only dispatch the last one
+        if (updateActions.length > 0) {
+          const [lastUpdateAction] = updateActions.slice(-1);
+          await dispatch(updateFavorites(
+            lastUpdateAction.productId,
+            lastUpdateAction.listId,
+            lastUpdateAction.quantity,
+            lastUpdateAction.notes
+          ));
+        }
 
-      // Sum up all adds and removes, based on sum dispatch add / remove
-      const addRemoveBalance = addActions.length - removeActions.length;
-      if (addRemoveBalance > 0) {
-        await dispatch(addFavorites(productId, listId, quantity, notes));
-      }
-      if (addRemoveBalance < 0) {
-        await dispatch(removeFavorites(productId, listId, quantity, notes));
-      }
+        // Sum up all adds and removes, based on sum dispatch add / remove
+        const addRemoveBalance = addActions.length - removeActions.length;
+        if (addRemoveBalance > 0) {
+          await dispatch(addFavorites(productId, listId, quantity, notes));
+        }
+        if (addRemoveBalance < 0) {
+          await dispatch(removeFavorites(productId, listId, quantity, notes));
+        }
 
-      // Fetch after there was any update / add / remove
-      if (updateActions.length > 0 || addRemoveBalance > 0 || addRemoveBalance < 0) {
-        await dispatch(idleSyncFavorites(listId));
-        LoadingProvider.unsetLoading(FAVORITES_PATH);
+        if (updateActions.length === 0 && addRemoveBalance === 0) {
+          dispatch(cancelRequestSyncFavorites(groupedActions.length, listId));
+        } else if (!idleLists.includes(listId)) {
+          idleLists.push(listId);
+          await dispatch(idleSyncFavorites(listId));
+        }
+      } catch (error) {
+        if (!idleLists.includes(listId)) {
+          idleLists.push(listId);
+          await dispatch(idleSyncFavorites(listId));
+        }
       }
     });
+
+    LoadingProvider.unsetLoading(FAVORITES_PATH);
   });
 
   subscribe(favoritesDidAddItem$, ({ events }) => {
