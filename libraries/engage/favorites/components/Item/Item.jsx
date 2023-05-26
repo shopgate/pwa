@@ -141,6 +141,11 @@ const styles = {
     color: 'var(--color-text-low-emphasis)',
     padding: `${variables.gap.xsmall}px 0`,
   }).toString(),
+  titleWrapper: css({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  }).toString(),
   titleContainer: css({
     marginRight: 10,
     flex: 1,
@@ -150,6 +155,11 @@ const styles = {
     color: 'var(--color-secondary)',
     fontWeight: 600,
   }).toString(),
+  removeContainer: css({
+    display: 'flex',
+    flexShrink: 0,
+    alignItems: 'flex-start',
+  }),
 };
 
 /**
@@ -289,22 +299,24 @@ const FavoriteItem = ({
         </Link>
 
         <div className={styles.infoContainer}>
-          <div className={classNames(styles.infoContainerRow, styles.headerRow)}>
-            <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
-              <Link
-                href={productLink}
-                tag="span"
-                className={styles.titleContainer}
-              >
-                <span
-                  className={styles.title}
+          <div className={classNames(styles.infoContainerRow)}>
+            <div className={styles.titleWrapper}>
+              <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
+                <Link
+                  href={productLink}
+                  tag="span"
+                  className={styles.titleContainer}
+                >
+                  <span
+                    className={styles.title}
                 // eslint-disable-next-line react/no-danger
-                  dangerouslySetInnerHTML={{ __html: `${product.name}` }}
-                />
-              </Link>
+                    dangerouslySetInnerHTML={{ __html: `${product.name}` }}
+                  />
+                </Link>
 
-            </SurroundPortals>
-            <div>
+              </SurroundPortals>
+            </div>
+            <div className={styles.removeContainer}>
               <Remove onClick={remove} />
             </div>
           </div>

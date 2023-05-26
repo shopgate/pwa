@@ -1,5 +1,8 @@
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
-import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/merchantSettings';
+import {
+  getWishlistItemQuantityEnabled,
+  getLoadWishlistOnAppStartEnabled,
+} from '@shopgate/engage/core/selectors/merchantSettings';
 import {
   getFavoritesDefaultList,
   getFavoritesLists,
@@ -69,15 +72,17 @@ export const requestSync = mutable(listId => (dispatch) => {
  */
 export const toggleFavorite = (productId, listId, withRelatives = false) =>
   (dispatch, getState) => {
+    const state = getState();
     // With quantity enabled the favorites button always adds (increases quantity)
-    const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(getState());
-    if (wishlistItemQuantityEnabled) {
+    const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(state);
+    const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(state);
+    if (wishlistItemQuantityEnabled || !loadWishlistOnAppStartEnabled) {
       dispatch(addFavorite(productId, listId));
     } else {
       const isOnList = makeIsProductOnSpecificFavoriteList(
         () => productId,
         () => listId
-      )(getState());
+      )(state);
       dispatch(!isOnList
         ? addFavorite(productId, listId)
         : removeFavorites(productId, withRelatives, listId));
