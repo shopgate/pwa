@@ -1,5 +1,9 @@
 import React, {
-  useCallback, useMemo, useLayoutEffect, useState,
+  useCallback,
+  useMemo,
+  useLayoutEffect,
+  useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -20,7 +24,10 @@ import {
   getThemeSettings,
   i18n,
 } from '@shopgate/engage/core';
-import { ResponsiveContainer, Link, SurroundPortals } from '@shopgate/engage/components';
+import {
+  Link,
+  SurroundPortals,
+} from '@shopgate/engage/components';
 import {
   makeIsRopeProductOrderable,
   getPreferredLocation,
@@ -36,11 +43,17 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
+import classNames from 'classnames';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
+import ItemQuantity from './ItemQuantity';
+import ItemNotes from './ItemNotes';
 import {
   FAVORITES_LIST_ITEM,
-  FAVORITES_LIST_ITEM_ACTIONS,
+  FAVORITES_NOTES,
+  FAVORITES_QUANTITY,
 } from '../../constants/Portals';
 
 const { variables } = themeConfig;
@@ -62,25 +75,38 @@ const makeMapStateToProps = () => {
   });
 };
 
-const mapDispatchToProps = {
+/**
+ * @param {Function} dispatch Dispatch.
+ * @returns {Object}
+ */
+const mapDispatchToProps = dispatch => ({
   showModal: showModalAction,
   historyPush: historyPushAction,
-};
+  updateFavoriteItem: (productId, listId, quantity, notes) => {
+    dispatch(updateFavorite(productId, listId, quantity, notes));
+  },
+  openCommentDialog: (productId, listId) => dispatch(openFavoritesCommentDialog(productId, listId)),
+});
 
 const styles = {
   root: css({
     display: 'flex',
     position: 'relative',
     '&:not(:last-child)': {
-      marginBottom: 48,
-    },
-    '&:last-child': {
       marginBottom: 16,
     },
   }).toString(),
   imageContainer: css({
     flex: 0.4,
     marginRight: 18,
+    [responsiveMediaQuery('>=xs', { appAlways: true })]: {
+      maxWidth: 120,
+      minWidth: 80,
+    },
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      maxWidth: 120,
+      minWidth: 80,
+    },
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       width: 120,
       flex: 'none',
@@ -90,27 +116,24 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    minWidth: 0,
-  }),
-  innerInfoContainer: css({
-    flex: 1,
-    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 8,
+  }).toString(),
+  infoContainerRow: css({
     flexDirection: 'row',
-    minWidth: 0,
-  }),
-  infoContainerLeft: css({
-    flex: 1,
     display: 'flex',
-    flexDirection: 'column',
-    minWidth: 0,
-  }),
-  infoContainerRight: css({
+    justifyContent: 'space-between',
+  }).toString(),
+  quantityContainer: css({
+    flexDirection: 'row',
     display: 'flex',
-    flexDirection: 'column',
-    minWidth: 0,
-    marginLeft: 8,
-    alignItems: 'flex-end',
-  }),
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 16,
+  }).toString(),
+  priceContainer: css({
+    minWidth: 100,
+  }).toString(),
   priceInfo: css({
     wordBreak: 'break-word',
     fontSize: '0.875rem',
@@ -118,33 +141,25 @@ const styles = {
     color: 'var(--color-text-low-emphasis)',
     padding: `${variables.gap.xsmall}px 0`,
   }).toString(),
+  titleWrapper: css({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  }).toString(),
+  titleContainer: css({
+    marginRight: 10,
+    flex: 1,
+  }).toString(),
   title: css({
     fontSize: 17,
-    color: 'var(--color-text-high-emphasis)',
+    color: 'var(--color-secondary)',
     fontWeight: 600,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    marginBottom: 10,
-  }),
-  actions: css({
-    [responsiveMediaQuery('<md', { appAlways: true })]: {
-      position: 'absolute',
-      bottom: -24,
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: 90,
-    },
-    [responsiveMediaQuery('>=md', { webOnly: true })]: {
-      display: 'flex',
-      flexDirection: 'row',
-      width: 100,
-      justifyContent: 'space-between',
-      marginLeft: 64,
-    },
   }).toString(),
+  removeContainer: css({
+    display: 'flex',
+    flexShrink: 0,
+    alignItems: 'flex-start',
+  }),
 };
 
 /**
@@ -154,6 +169,8 @@ const styles = {
 const FavoriteItem = ({
   listId,
   product,
+  notes,
+  quantity,
   remove,
   addToCart,
   isBaseProduct,
@@ -162,6 +179,8 @@ const FavoriteItem = ({
   hasVariants,
   showModal,
   historyPush,
+  updateFavoriteItem,
+  openCommentDialog,
 }) => {
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
@@ -173,16 +192,28 @@ const FavoriteItem = ({
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
+  const [internalQuantity, setInternalQuantity] = useState(quantity);
+
+  useEffect(() => {
+    setInternalQuantity(quantity);
+  }, [quantity]);
+
   useLayoutEffect(() => {
     setIsDisabled(!isOrderable && !hasVariants);
   }, [hasVariants, isOrderable]);
+
+  const handleOpenComment = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openCommentDialog(product.id, listId);
+  }, [listId, openCommentDialog, product.id]);
 
   const handleAddToCart = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
 
     if (isBaseProduct && hasVariants) {
-      // Called for a parent product. Users needs to confirm the navigation to the PDP
+      // Called for a parent product. User needs to confirm the navigation to the PDP
       showModal({
         title: null,
         type: MODAL_VARIANT_SELECT,
@@ -241,6 +272,21 @@ const FavoriteItem = ({
     handleAddToCart,
   }), [handleAddToCart, isBaseProduct, isDisabled, listId, product.id, remove]);
 
+  const handleChangeQuantity = useCallback((newQuantity) => {
+    updateFavoriteItem(
+      product.id,
+      listId,
+      newQuantity,
+      notes
+    );
+  }, [listId, notes, product.id, updateFavoriteItem]);
+
+  const handleDeleteComment = useCallback((event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    updateFavoriteItem(product.id, listId, quantity, '');
+  }, [listId, product.id, quantity, updateFavoriteItem]);
+
   return (
     <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
       <div className={styles.root}>
@@ -251,72 +297,71 @@ const FavoriteItem = ({
         >
           <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
         </Link>
-        <Link
-          className={styles.infoContainer}
-          component="div"
-          href={productLink}
-        >
-          <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
-            <span className={styles.title}>{product.name}</span>
-          </SurroundPortals>
-          <div className={styles.innerInfoContainer}>
-            <div className={styles.infoContainerLeft}>
-              <ItemCharacteristics characteristics={characteristics} />
 
-              <StockInfoLists product={product} />
-            </div>
-            <div className={styles.infoContainerRight}>
-              <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
-                {hasStrikePrice ? (
-                  <PriceStriked
-                    value={defaultPrice}
-                    currency={currency}
-                  />
-                ) : null}
-                <Price
-                  currency={currency}
-                  discounted={hasStrikePrice}
-                  taxDisclaimer
-                  unitPrice={price}
-                />
-                <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
-              </SurroundPortals>
-            </div>
-            <ResponsiveContainer breakpoint=">=md" webOnly>
-              <div className={styles.actions}>
-                <SurroundPortals
-                  portalName={FAVORITES_LIST_ITEM_ACTIONS}
-                  portalProps={ctaPortalProps}
+        <div className={styles.infoContainer}>
+          <div className={classNames(styles.infoContainerRow)}>
+            <div className={styles.titleWrapper}>
+              <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
+                <Link
+                  href={productLink}
+                  tag="span"
+                  className={styles.titleContainer}
                 >
-                  <Remove onClick={remove} />
-                  <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
-                    <AddToCart
-                      onClick={handleAddToCart}
-                      isLoading={false}
-                      isDisabled={isDisabled}
-                      aria-label={i18n.text('product.add_to_cart')}
-                    />
-                  </SurroundPortals>
-                </SurroundPortals>
-              </div>
-            </ResponsiveContainer>
-          </div>
-        </Link>
-        <ResponsiveContainer breakpoint="<md" appAlways>
-          <div className={styles.actions}>
-            <SurroundPortals portalName={FAVORITES_LIST_ITEM_ACTIONS} portalProps={ctaPortalProps}>
-              <Remove onClick={remove} />
-              <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
-                <AddToCart
-                  onClick={handleAddToCart}
-                  isLoading={false}
-                  isDisabled={isDisabled}
-                  aria-label={i18n.text('product.add_to_cart')}
-                />
+                  <span
+                    className={styles.title}
+                // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{ __html: `${product.name}` }}
+                  />
+                </Link>
+
               </SurroundPortals>
+            </div>
+            <div className={styles.removeContainer}>
+              <Remove onClick={remove} />
+            </div>
+          </div>
+          <ItemCharacteristics characteristics={characteristics} />
+          <StockInfoLists product={product} />
+          <div className={styles.infoContainerRow}>
+            <div className={styles.quantityContainer}>
+              <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
+                <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
+              </SurroundPortals>
+              <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
+                <div className={styles.priceContainer}>
+                  {hasStrikePrice ? (
+                    <PriceStriked
+                      value={defaultPrice}
+                      currency={currency}
+                    />
+                  ) : null}
+                  <Price
+                    currency={currency}
+                    discounted={hasStrikePrice}
+                    taxDisclaimer
+                    unitPrice={price}
+                  />
+                  <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+                </div>
+              </SurroundPortals>
+            </div>
+            <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
+              <AddToCart
+                onClick={handleAddToCart}
+                isLoading={false}
+                isDisabled={isDisabled}
+                aria-label={i18n.text('product.add_to_cart')}
+              />
             </SurroundPortals>
           </div>
-        </ResponsiveContainer>
+          <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
+            <ItemNotes
+              notes={notes}
+              onClickDeleteComment={handleDeleteComment}
+              onClickOpenComment={handleOpenComment}
+            />
+          </SurroundPortals>
+        </div>
       </div>
     </SurroundPortals>
   );
@@ -326,13 +371,17 @@ FavoriteItem.propTypes = {
   addToCart: PropTypes.func.isRequired,
   historyPush: PropTypes.func.isRequired,
   listId: PropTypes.string.isRequired,
+  openCommentDialog: PropTypes.func.isRequired,
   product: PropTypes.shape().isRequired,
   remove: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
+  updateFavoriteItem: PropTypes.func.isRequired,
   hasVariants: PropTypes.bool,
   isBaseProduct: PropTypes.bool,
   isOrderable: PropTypes.bool,
   isRopeProductOrderable: PropTypes.bool,
+  notes: PropTypes.string,
+  quantity: PropTypes.number,
 };
 
 FavoriteItem.defaultProps = {
@@ -340,6 +389,8 @@ FavoriteItem.defaultProps = {
   isOrderable: true,
   isRopeProductOrderable: true,
   hasVariants: false,
+  notes: undefined,
+  quantity: 1,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteItem);

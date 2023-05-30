@@ -59,7 +59,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
 >
   <button
     aria-hidden={true}
-    className="css-d6h5ju"
+    className="css-1jsppqd"
     disabled={false}
     onClick={[Function]}
     type="button"

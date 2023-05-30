@@ -21,6 +21,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       addFavorites={[Function]}
       aria-hidden={null}
       className=""
+      loadWishlistOnAppStartEnabled={true}
       noShadow={false}
       onRippleComplete={[Function]}
       once={false}
@@ -29,6 +30,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       removeThrottle={0}
       removeWithRelatives={false}
       rippleClassName=""
+      wishlistItemQuantityEnabled={false}
     >
       <button
         aria-hidden={null}
@@ -109,6 +111,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       addFavorites={[Function]}
       aria-hidden={null}
       className=""
+      loadWishlistOnAppStartEnabled={true}
       noShadow={false}
       onRippleComplete={[Function]}
       once={false}
@@ -117,6 +120,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       removeThrottle={0}
       removeWithRelatives={false}
       rippleClassName=""
+      wishlistItemQuantityEnabled={false}
     >
       <button
         aria-hidden={null}

@@ -73,6 +73,7 @@ const buttonWrapperDefault = (bSize, iSize) => ({
   paddingRight: (bSize - iSize) / 2,
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
+  flexShrink: 0,
 });
 /**
  * Circular button and container for the icons.
@@ -82,7 +83,6 @@ const buttonWrapperDefault = (bSize, iSize) => ({
  */
 const buttonWrapper = (bSize, iSize) => css({
   ...buttonWrapperDefault(bSize, iSize),
-  boxShadow: themeConfig.shadows.buttons.elevated,
 }).toString();
 
 /**

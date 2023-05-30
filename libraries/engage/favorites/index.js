@@ -11,6 +11,7 @@ export {
   toggleFavoriteWithListChooser,
   toggleFavorite,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+export { default as fetchFavoritesListsWithItems } from '@shopgate/pwa-common-commerce/favorites/actions/fetchFavoritesListsWithItems';
 
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/favorites/constants/index';

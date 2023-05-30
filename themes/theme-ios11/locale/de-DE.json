@@ -120,6 +120,24 @@
       "message": "Der neue Name deiner Wunschliste",
       "label": "Name"
     },
+    "delete_list_modal": {
+      "title": "Wunschliste löschen",
+      "message": "Möchtest Du die Wunschliste \"{name}\" wirklich löschen?"
+    },
+    "comment_modal": {
+      "titleAdd": "Kommentar hinzufügen",
+      "titleEdit": "Kommentar bearbeiten",
+      "dismiss": "Abbrechen",
+      "confirm": "Bestätigen",
+      "label": "Kommentar",
+      "characterCount": "{count} von {maxCount} Zeichen"
+    },
+    "comments": {
+      "add": "Kommentar hinzufügen",
+      "notes": "Kommentar",
+      "edit": "Bearbeiten",
+      "delete": "Löschen"
+    },
     "add_list": "Neue Liste anlegen",
     "errors": {
       "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
@@ -135,6 +153,7 @@
     "list_chooser": {
       "title": "Wähle eine Wunschliste aus",
       "add": "Hinzufügen",
+      "add_more": "Mehr Hinzufügen",
       "remove": "Löschen"
     },
     "modal": {

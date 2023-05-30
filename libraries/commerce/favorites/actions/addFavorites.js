@@ -6,9 +6,11 @@ import { successAddFavorites, errorAddFavorites } from '../action-creators';
  * Adds a single product to the favorite list using the `addFavorites` pipeline.
  * @param {string} productId Id of the product to be added.
  * @param {string} listId Id of the list to be added.
+ * @param {number} quantity New favorites quantity to set
+ * @param {string} notes New favorites notes to set
  * @returns {Function} A redux thunk.
  */
-function addFavorites(productId, listId = null) {
+function addFavorites(productId, listId = null, quantity, notes) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
@@ -19,6 +21,8 @@ function addFavorites(productId, listId = null) {
       .setInput({
         productId,
         favoritesListId: takenListId,
+        quantity,
+        notes,
       })
       .setRetries(0)
       .dispatch();

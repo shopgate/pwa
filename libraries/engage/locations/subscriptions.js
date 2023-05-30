@@ -23,7 +23,10 @@ import {
 import {
   receiveFavoritesWhileVisible$,
 } from '@shopgate/pwa-common-commerce/favorites/streams';
-import { getFavoritesProductsIds } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import {
+  getFavoritesProductsIds,
+  isFetching,
+} from '@shopgate/pwa-common-commerce/favorites/selectors';
 import {
   categoryDidBackEnter$,
 } from '@shopgate/pwa-common-commerce/category/streams';
@@ -327,7 +330,7 @@ function locationsSubscriber(subscribe) {
       return;
     }
 
-    if (!action.products || !action.products.length) {
+    if (!action.products || !action.products.length || action?.fetchInventory === false) {
       return;
     }
 
@@ -341,10 +344,10 @@ function locationsSubscriber(subscribe) {
     receiveFavoritesWhileVisible$.merge(preferredLocationDidUpdateGlobalOnWishlist$),
     ({ dispatch, getState }) => {
       const state = getState();
-
-      if (!showInventoryInLists(state)) {
+      if (!showInventoryInLists(state) || isFetching(getState())) {
         return;
       }
+
       const productIds = getFavoritesProductsIds(state);
 
       if (!productIds || !productIds.length) {

@@ -6,9 +6,9 @@ import {
   makeIsProductOnSpecificFavoriteList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { i18n } from '@shopgate/engage/core';
+import { getWishlistItemQuantityEnabled } from '../../../core/selectors/merchantSettings';
 
 /**
- * @param {Object} state State.
  * @returns {Object}
  */
 const makeMapStateToProps = () => {
@@ -16,8 +16,11 @@ const makeMapStateToProps = () => {
     (_, props) => props.productId,
     (_, props) => props.listId
   );
+
   return (state, props) => ({
     isOnList: getIsOnList(state, props),
+    wishlistItemQuantityEnabled: getWishlistItemQuantityEnabled(state),
+
   });
 };
 
@@ -27,25 +30,38 @@ const styles = {
   }).toString(),
   add: css({
     color: 'var(--color-state-ok)',
+    whiteSpace: 'noWrap',
   }).toString(),
 };
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-const ListChooserItem = ({ isOnList }) => (isOnList ? (
-  <span className={styles.remove}>
-    {i18n.text('favorites.list_chooser.remove')}
-  </span>
-) : (
-  <span className={styles.add}>
-    {i18n.text('favorites.list_chooser.add')}
-  </span>
-));
+const ListChooserItem = ({ isOnList, wishlistItemQuantityEnabled }) => {
+  if (wishlistItemQuantityEnabled && isOnList) {
+    return (
+      <span className={styles.add}>
+        {i18n.text('favorites.list_chooser.add_more')}
+      </span>);
+  }
+
+  if (isOnList) {
+    return (
+      <span className={styles.remove}>
+        {i18n.text('favorites.list_chooser.remove')}
+      </span>);
+  }
+
+  return (
+    <span className={styles.add}>
+      {i18n.text('favorites.list_chooser.add')}
+    </span>);
+};
 
 ListChooserItem.propTypes = {
   isOnList: PropTypes.bool.isRequired,
+  wishlistItemQuantityEnabled: PropTypes.bool.isRequired,
 };
 
 export default connect(makeMapStateToProps)(ListChooserItem);

@@ -123,6 +123,24 @@
     "errors": {
       "invalid_name": "Пожалуйста, введите название списка желаний"
     },
+    "delete_list_modal": {
+      "title": "Delete Wish List",
+      "message": "Do you really want to delete the \"{name}\" wish list?"
+    },
+    "comment_modal": {
+      "titleAdd": "Add Comment",
+      "titleEdit": "Edit Comment",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "label": "Comment",
+      "characterCount": "{count} of {maxCount} characters"
+    },
+    "comments": {
+      "add": "Add Comment",
+      "notes": "Comment",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
     "rename_list": "Переименовать",
     "remove_list": "Удалить",
     "add_to_list": "Добавить в список",
@@ -134,6 +152,7 @@
     "list_chooser": {
       "title": "Выберите список желаний",
       "add": "Добавить",
+      "add_more": "Добавить еще",
       "remove": "Удалить"
     },
     "modal": {

@@ -6,9 +6,11 @@ import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators
  * Removes a single product from the favorite list using the `deleteFavorites` pipeline.
  * @param {string} productId Id of the product to be deleted.
  * @param {string} listId Id of the list to be deleted.
+ * @param {number} quantity Quantity of the favorite
+ * @param {string} notes Notes of the favorite
  * @returns {Function} A redux thunk.
  */
-function removeFavorites(productId, listId) {
+function removeFavorites(productId, listId, quantity, notes) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
@@ -27,7 +29,13 @@ function removeFavorites(productId, listId) {
       await request;
       dispatch(successRemoveFavorites(productId, takenListId));
     } catch (error) {
-      dispatch(errorRemoveFavorites(productId, takenListId, error));
+      dispatch(errorRemoveFavorites(
+        productId,
+        takenListId,
+        error,
+        quantity,
+        notes
+      ));
     }
 
     return request;

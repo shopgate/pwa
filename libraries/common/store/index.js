@@ -14,7 +14,7 @@ import logger from './middelwares/logger';
  * The current version of the state created by this reducer.
  * @type {string}
  */
-const STATE_VERSION = 'v2';
+const STATE_VERSION = 'v3';
 const storeKey = `shopgate-connect_${shopNumber}-${themeName}_${STATE_VERSION}`;
 
 /**
@@ -48,15 +48,15 @@ export function configureStore(reducers, subscribers) {
     benchmarkController.startup();
   }
 
-  const composeEnhancers =
-  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : compose;
+  const composeWithDevTools =
+    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      : compose;
 
   const store = createStore(
     makeRootReducer(reducers),
     getInitialState(),
-    composeEnhancers(
+    composeWithDevTools(
       applyMiddleware(...[
         thunk,
         ...appConfig.benchmark ? [benchmarkMiddleware] : [],

@@ -27,6 +27,9 @@ import {
   FAVORITE_ACTION_BUFFER_TIME,
   FAVORITE_BUTTON_DEBOUNCE_TIME,
   SUCCESS_ADD_FAVORITES_LIST,
+  REQUEST_UPDATE_FAVORITES,
+  UPDATE_PRODUCT_IN_FAVORITES,
+  FAVORITE_QUANTITY_DEBOUNCE_TIME,
 } from '../constants';
 
 /**
@@ -49,6 +52,14 @@ export const favoritesWillEnter$ = routeWillEnter$
 export const addProductToFavoritesDebounced$ = main$
   .filter(({ action }) => action.type === ADD_PRODUCT_TO_FAVORITES)
   .debounceTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
+
+/**
+ * Gets triggered when the debounce time of `updateProductInFavorites` passes.
+ * @type {Observable}
+ */
+export const updateProductInFavoritesDebounced$ = main$
+  .filter(({ action }) => action.type === UPDATE_PRODUCT_IN_FAVORITES)
+  .debounceTime(FAVORITE_QUANTITY_DEBOUNCE_TIME);
 
 /**
  * Gets triggered when the debounce time of `removeProductFromFavorites` passes.
@@ -166,11 +177,14 @@ export const favoritesListAdded$ = main$
 export const refreshFavorites$ = favoritesSyncIdle$.debounceTime(FETCH_FAVORITES_THROTTLE);
 
 /**
- * Gets triggered when a product is requested to be added to or removed from the favorite list.
+ * Gets triggered when a product is requested to be added, removed or updated
+ * from the favorite list.
  * @type {Observable}
  */
-export const didRequestAddOrRemoveFavorites$ = main$.filter(({ action }) => (
-  action.type === REQUEST_ADD_FAVORITES || action.type === REQUEST_REMOVE_FAVORITES
+export const didRequestChangeFavorites$ = main$.filter(({ action }) => (
+  action.type === REQUEST_ADD_FAVORITES ||
+  action.type === REQUEST_REMOVE_FAVORITES ||
+  action.type === REQUEST_UPDATE_FAVORITES
 ));
 
 /**
@@ -185,7 +199,7 @@ export const didRequestFlushFavoritesBuffer$ = main$
  * when the `requestFlushFavoritesBuffer` action was triggered.
  * @type {Observable}
  */
-export const didReceiveFlushFavoritesBuffer$ = didRequestAddOrRemoveFavorites$
-  .buffer(didRequestAddOrRemoveFavorites$
+export const didReceiveFlushFavoritesBuffer$ = didRequestChangeFavorites$
+  .buffer(didRequestChangeFavorites$
     .debounceTime(FAVORITE_ACTION_BUFFER_TIME) // Compress delayed actions into a single one
     .merge(didRequestFlushFavoritesBuffer$));

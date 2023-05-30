@@ -22,7 +22,7 @@ import {
   receiveFavorites$,
   favoritesSyncIdle$,
   refreshFavorites$,
-  didRequestAddOrRemoveFavorites$,
+  didRequestChangeFavorites$,
   didRequestFlushFavoritesBuffer$,
   didReceiveFlushFavoritesBuffer$,
 } from './index';
@@ -289,7 +289,7 @@ describe('Favorites streams', () => {
   describe('favoritesWillRemoveItem$', () => {
     it('should call subscribers for every favorite to be removed', () => {
       favoritesWillRemoveItem$.subscribe(subscriber);
-      mainSubject.next({ action: requestRemoveFavorites('product1') });
+      mainSubject.next({ action: requestRemoveFavorites('product1')(action => action, () => ({})) });
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
@@ -375,16 +375,16 @@ describe('Favorites streams', () => {
     });
   });
 
-  describe('didRequestAddOrRemoveFavorites$', () => {
+  describe('didRequestChangeFavorites$', () => {
     it('should call subscribers for every actual add or remove request', () => {
-      didRequestAddOrRemoveFavorites$.subscribe(subscriber);
+      didRequestChangeFavorites$.subscribe(subscriber);
       mainSubject.next({ action: requestAddFavorites('product1') });
-      mainSubject.next({ action: requestRemoveFavorites('product2', false) });
+      mainSubject.next({ action: requestRemoveFavorites('product2', false)(actionInner => actionInner, () => ({})) });
       expect(subscriber).toHaveBeenCalledTimes(2);
     });
 
     it('should not call subscribers when the action does not match', () => {
-      didRequestAddOrRemoveFavorites$.subscribe(subscriber);
+      didRequestChangeFavorites$.subscribe(subscriber);
       mainSubject.next({ action: { type: DUMMY_ACTION } });
       expect(subscriber).toHaveBeenCalledTimes(0);
     });
@@ -417,6 +417,10 @@ describe('Favorites streams', () => {
 
       // Pump all actions into the buffer
       bufferedActions.forEach((action) => {
+        if (typeof action?.action === 'function') {
+          // eslint-disable-next-line no-param-reassign
+          action.action = action.action(actionInner => actionInner, () => ({}));
+        }
         mainSubject.next(action);
       });
 
@@ -440,6 +444,11 @@ describe('Favorites streams', () => {
 
       // Pump all actions into the buffer
       bufferedActions.forEach((action) => {
+        if (typeof action?.action === 'function') {
+          // eslint-disable-next-line no-param-reassign
+          action.action = action.action(actionInner => actionInner, () => ({}));
+        }
+
         mainSubject.next(action);
       });
 
