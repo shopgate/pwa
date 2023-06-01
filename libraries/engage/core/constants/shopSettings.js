@@ -19,5 +19,9 @@ export const SHOP_SETTINGS_SHOW_CATEGORY_IMAGES = 'showCategoryImages';
 export const SHOP_SETTING_REGISTRATION_MODE = 'registrationMode';
 export const SHOP_SETTING_REGISTRATION_MODE_SIMPLE = 'simple';
 export const SHOP_SETTING_REGISTRATION_MODE_EXTENDED = 'extended';
+export const SHOP_SETTING_WISHLIST_ITEM_QUANTITY_ENABLED = 'wishlistItemQuantityEnabled';
+export const SHOP_SETTING_WISHLIST_ITEM_NOTES_ENABLED = 'wishlistItemNotesEnabled';
+export const SHOP_SETTING_LOAD_WISHLIST_ON_APP_START_ENABLED = 'loadWishlistOnAppStartEnabled';
+export const SHOP_SETTING_SHOW_WISHLIST_ITEMS_COUNT_BADGE = 'showWishlistItemsCountBadge';
 
 export const WISHLIST_MODE_PERSIST_ON_ADD = 'persistOnAdd';

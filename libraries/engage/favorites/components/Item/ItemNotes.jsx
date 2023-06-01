@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {
   i18n,
 } from '@shopgate/engage/core';
-import { getWishlistItemNotesEnabled } from '../../../core/selectors/merchantSettings';
+import { getWishlistItemNotesEnabled } from '../../../core/selectors/shopSettings';
 
 const styles = {
   root: css({

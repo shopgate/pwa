@@ -6,7 +6,7 @@ import {
   makeIsProductOnSpecificFavoriteList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { i18n } from '@shopgate/engage/core';
-import { getWishlistItemQuantityEnabled } from '../../../core/selectors/merchantSettings';
+import { getWishlistItemQuantityEnabled } from '../../../core/selectors/shopSettings';
 
 /**
  * @returns {Object}

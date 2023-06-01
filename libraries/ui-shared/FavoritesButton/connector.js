@@ -5,7 +5,7 @@ import {
 import {
   getLoadWishlistOnAppStartEnabled,
   getWishlistItemQuantityEnabled,
-} from '@shopgate/engage/core/selectors/merchantSettings';
+} from '@shopgate/engage/core/selectors/shopSettings';
 
 /**
  * Creates the mapStateToProps connector function.

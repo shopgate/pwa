@@ -9,7 +9,7 @@ import {
   makeIsProductOnFavoriteList,
   hasMultipleFavoritesList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/shopSettings';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
