@@ -139,7 +139,10 @@
       "add": "Add Comment",
       "notes": "Comment",
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "added": "Comment added",
+      "removed": "Comment removed",
+      "updated": "Comment updated"
     },
     "rename_list": "Переименовать",
     "remove_list": "Удалить",
@@ -208,6 +211,8 @@
     "add_to_cart": "Добавить в корзину",
     "no_more_found": "Товар \"{name}\" больше не доступен.",
     "quantity": "Кол-во",
+    "increased_quantity_to": "Increased quantity to {quantity}",
+    "decreased_quantity_to": "Decreased quantity to {quantity}",
     "minOrderQuantity": "Мин. кол-во для заказа: {quantity} {unit}",
     "maxOrderQuantity": "Макс. кол-во для заказа: {quantity} {unit}",
     "available": {
