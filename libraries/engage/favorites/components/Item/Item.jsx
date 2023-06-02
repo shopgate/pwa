@@ -26,6 +26,7 @@ import {
 } from '@shopgate/engage/core';
 import {
   Link,
+  TextLink,
   SurroundPortals,
 } from '@shopgate/engage/components';
 import {
@@ -152,7 +153,7 @@ const styles = {
   }).toString(),
   title: css({
     fontSize: 17,
-    color: 'var(--color-secondary)',
+
     fontWeight: 600,
   }).toString(),
   removeContainer: css({
@@ -302,7 +303,7 @@ const FavoriteItem = ({
           <div className={classNames(styles.infoContainerRow)}>
             <div className={styles.titleWrapper}>
               <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
-                <Link
+                <TextLink
                   href={productLink}
                   tag="span"
                   className={styles.titleContainer}
@@ -312,7 +313,7 @@ const FavoriteItem = ({
                 // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML={{ __html: `${product.name}` }}
                   />
-                </Link>
+                </TextLink>
 
               </SurroundPortals>
             </div>
