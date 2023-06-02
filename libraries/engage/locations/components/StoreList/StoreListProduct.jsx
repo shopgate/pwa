@@ -18,12 +18,13 @@ function StoreListProduct() {
     return null;
   }
 
+  /* eslint-disable jsx-a11y/aria-role */
   return (
     <SurroundPortals
       portalName={FULFILLMENT_SHEET_PRODUCT}
       portalProps={{ product }}
     >
-      <div className={styles.productContainer}>
+      <div className={styles.productContainer} role="text">
         <div className={styles.productContainerInner}>
           <div className={styles.productImage}>
             <ProductImage src={product.featuredImageBaseUrl} />
@@ -36,6 +37,7 @@ function StoreListProduct() {
       </div>
     </SurroundPortals>
   );
+  /* eslint-enable jsx-a11y/aria-role */
 }
 
 export default StoreListProduct;

@@ -56,7 +56,14 @@ function FulfillmentSelectorItemUnwrapped(props: Props) {
   });
 
   return (
-    <label htmlFor={name} className={containerClasses} onClick={handleChange}>
+    <label
+      htmlFor={name}
+      className={containerClasses}
+      onClick={handleChange}
+      role="radio"
+      aria-checked={checked}
+      tabIndex="0"
+    >
       {checked
         ? <CheckedIcon className={disabled ? activeIconDisabled : activeIcon} />
         : <UncheckedIcon className={disabled ? inactiveIconDisabled : inactiveIcon} />

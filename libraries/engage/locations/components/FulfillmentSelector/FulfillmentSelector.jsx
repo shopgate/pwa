@@ -218,7 +218,7 @@ function FulfillmentSelector(props: Props) {
   return (
     <FulfillmentSelectorContext.Provider value={context}>
       <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR}>
-        <div className={container}>
+        <div className={container} role="radiogroup" tabIndex="0">
           <FulfillmentSelectorHeader />
           {shopFulfillmentMethods.includes(DIRECT_SHIP) && (
             <FulfillmentSelectorItem
