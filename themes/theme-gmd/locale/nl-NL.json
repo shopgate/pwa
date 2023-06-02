@@ -138,7 +138,10 @@
       "add": "Add Comment",
       "notes": "Comment",
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "added": "Comment added",
+      "removed": "Comment removed",
+      "updated": "Comment updated"
     },
     "rename_list": "Rename",
     "remove_list": "Remove",
@@ -207,6 +210,8 @@
     "add_to_cart": "Voeg aan winkelwagen toe",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
+    "increased_quantity_to": "Aantal verhoogd naar {quantity}",
+    "decreased_quantity_to": "Hoeveelheid verlaagd naar {quantity}",
     "minOrderQuantity": "Min. bestelhoeveelheid: {quantity} {unit}",
     "maxOrderQuantity": "Max. bestelhoeveelheid: {quantity} {unit}",
     "available": {

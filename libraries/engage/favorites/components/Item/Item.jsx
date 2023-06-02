@@ -39,6 +39,7 @@ import {
   FAVORITES_PRODUCT_PRICE,
   FAVORITES_ADD_TO_CART,
 } from '@shopgate/engage/favorites';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
@@ -234,6 +235,10 @@ const FavoriteItem = ({
       return false;
     }
 
+    broadcastLiveMessage('product.adding_item', {
+      params: { count: 1 },
+    });
+
     return addToCart(e);
   }, [
     addToCart,
@@ -286,6 +291,7 @@ const FavoriteItem = ({
     event.preventDefault();
     event.stopPropagation();
     updateFavoriteItem(product.id, listId, quantity, '');
+    broadcastLiveMessage('favorites.comments.removed');
   }, [listId, product.id, quantity, updateFavoriteItem]);
 
   return (
@@ -295,6 +301,7 @@ const FavoriteItem = ({
           className={styles.imageContainer}
           component="div"
           href={productLink}
+          aria-hidden
         >
           <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
         </Link>

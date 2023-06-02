@@ -10,6 +10,7 @@ import {
   Dialog,
   TextField,
 } from '@shopgate/engage/components';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import {
   closeFavoritesCommentDialog,
 } from '@shopgate/pwa-common-commerce/favorites/action-creators';
@@ -77,8 +78,16 @@ const CommentDialog = ({
 
   const handleSubmit = useCallback(() => {
     updateFavoriteItem(productId, listId, undefined, value);
+    if (!item?.notes && !!value) {
+      broadcastLiveMessage('favorites.comments.added');
+    }
+
+    if (item?.notes && value !== item.notes) {
+      broadcastLiveMessage('favorites.comments.updated');
+    }
+
     close();
-  }, [close, listId, productId, updateFavoriteItem, value]);
+  }, [close, item, listId, productId, updateFavoriteItem, value]);
 
   const handleChange = useCallback((newValue) => {
     setValue(newValue);
@@ -119,10 +128,12 @@ const CommentDialog = ({
           className={styles.input}
           attributes={attributes}
           multiLine
+          tabIndex={0}
         />
         <I18n.Text
           className={styles.characterCount}
           string="favorites.comment_modal.characterCount"
+          aria-hidden
           params={{
             maxCount: MAX_CHARACTER_COUNT,
             count: value?.length || 0,

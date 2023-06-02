@@ -62,20 +62,22 @@ const ItemNotes = ({
   if (!wishlistItemNotesEnabled) {
     return null;
   }
-
+  /* eslint-disable jsx-a11y/aria-role */
   return (
     <>
       { notes ? (
         <div className={styles.root}>
-          <span className={styles.comment}>
-            {`${i18n.text('favorites.comments.notes')}: `}
+          <span role="text">
+            <span className={styles.comment}>
+              {`${i18n.text('favorites.comments.notes')}: `}
+            </span>
+            <span className={styles.notes}>{`"${notes}"`}</span>
           </span>
-          <span className={styles.notes}>{`"${notes}"`}</span>
           <span className={styles.buttons}>
             <button type="button" onClick={onClickOpenComment} className={styles.addCommentButton}>
               {i18n.text('favorites.comments.edit')}
             </button>
-            { ' | '}
+            <span aria-hidden> | </span>
             <button type="button" onClick={onClickDeleteComment} className={styles.addCommentButton}>
               {i18n.text('favorites.comments.delete')}
             </button>
@@ -88,6 +90,7 @@ const ItemNotes = ({
       )}
     </>
   );
+  /* eslint-enable jsx-a11y/aria-role */
 };
 
 ItemNotes.propTypes = {
