@@ -136,7 +136,10 @@
       "add": "Kommentar hinzufügen",
       "notes": "Kommentar",
       "edit": "Bearbeiten",
-      "delete": "Löschen"
+      "delete": "Löschen",
+      "added": "Kommentar hinzugefügt",
+      "removed": "Kommentar entfernt",
+      "updated": "Kommentar aktualisiert"
     },
     "add_list": "Neue Liste anlegen",
     "errors": {
@@ -215,6 +218,8 @@
     "quantity": "Menge",
     "decrease_quantity": "Menge reduzieren",
     "increase_quantity": "Menge erhöhen",
+    "increased_quantity_to": "Menge auf {quantity} erhöht",
+    "decreased_quantity_to": "Menge auf {quantity} reduziert",
     "minOrderQuantity": "Min. Bestellmenge: {quantity} {unit}",
     "maxOrderQuantity": "Max. Bestellmenge: {quantity} {unit}",
     "available": {
