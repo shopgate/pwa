@@ -9,10 +9,6 @@ import {
   MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
   MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
-  MERCHANT_SETTINGS_LOAD_WISHLIST_ON_APP_START_ENABLED,
-  MERCHANT_SETTINGS_WISHLIST_ITEM_QUANTITY_ENABLED,
-  MERCHANT_SETTINGS_WISHLIST_ITEM_NOTES_ENABLED,
-  MERCHANT_SETTINGS_SHOW_WISHLIST_ITEMS_COUNT_BADGE,
 } from '../constants';
 
 /**
@@ -76,29 +72,3 @@ export const getProductListShowInventory = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
   false
 );
-
-export const getWishlistItemQuantityEnabled = makeGetMerchantSettingByKey(
-  MERCHANT_SETTINGS_WISHLIST_ITEM_QUANTITY_ENABLED,
-  false
-);
-
-export const getWishlistItemNotesEnabled = makeGetMerchantSettingByKey(
-  MERCHANT_SETTINGS_WISHLIST_ITEM_NOTES_ENABLED,
-  false
-);
-
-export const getLoadWishlistOnAppStartEnabled = makeGetMerchantSettingByKey(
-  MERCHANT_SETTINGS_LOAD_WISHLIST_ON_APP_START_ENABLED,
-  true
-);
-
-export const getShowWishlistItemsCountBadge = createSelector(
-  getLoadWishlistOnAppStartEnabled,
-  makeGetMerchantSettingByKey(
-    MERCHANT_SETTINGS_SHOW_WISHLIST_ITEMS_COUNT_BADGE,
-    true
-  ),
-  (loadWishlistOnAppStartEnabled, showWishlistItemsCountBadge) =>
-    (loadWishlistOnAppStartEnabled ? showWishlistItemsCountBadge : false)
-);
-

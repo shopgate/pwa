@@ -7,7 +7,7 @@ import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import {
   getLoadWishlistOnAppStartEnabled,
   getWishlistItemQuantityEnabled,
-} from '@shopgate/engage/core/selectors/merchantSettings';
+} from '@shopgate/engage/core/selectors/shopSettings';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import {
   favoritesWillEnter$,

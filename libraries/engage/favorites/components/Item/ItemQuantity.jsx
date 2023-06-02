@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { connect } from 'react-redux';
-import { getWishlistItemQuantityEnabled } from '../../../core/selectors/merchantSettings';
+import { getWishlistItemQuantityEnabled } from '../../../core/selectors/shopSettings';
 
 import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/UnitQuantityPicker';
 
