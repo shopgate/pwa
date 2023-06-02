@@ -17,7 +17,9 @@ import {
   errorFavoritesLimit$,
   refreshFavorites$,
   didReceiveFlushFavoritesBuffer$,
-  updateProductInFavoritesDebounced$, favoritesDidAddItem$,
+  updateProductInFavoritesDebounced$,
+  favoritesDidAddItem$,
+  favoritesSyncIdle$,
 } from '../streams';
 import {
   SHOPGATE_USER_ADD_FAVORITES,
@@ -243,8 +245,10 @@ export default function favorites(subscribe) {
         }
       }
     });
+  });
 
-    LoadingProvider.unsetLoading(FAVORITES_PATH);
+  subscribe(favoritesSyncIdle$, () => {
+    LoadingProvider.resetLoading(FAVORITES_PATH);
   });
 
   subscribe(favoritesDidAddItem$, ({ events }) => {
