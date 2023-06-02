@@ -11,7 +11,7 @@ const safebuttonColor = buttonColorContrast > 4 ? buttonColor : themeColors.ligh
 const container = css({
   position: 'fixed',
   height: 'var(--snack-bar-height, 80px)',
-  bottom: 'calc(var(--footer-height) + var(--safe-area-inset-bottom))',
+  bottom: 'var(--footer-height)',
   overflow: 'hidden',
   zIndex: 6,
   width: '100%',
