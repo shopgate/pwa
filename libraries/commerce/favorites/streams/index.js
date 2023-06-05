@@ -46,6 +46,12 @@ export const favoritesWillEnter$ = routeWillEnter$
     action.route.pathname === WISH_LIST_PATH);
 
 /**
+ * Gets triggered when ADD_PRODUCT_TO_FAVORITES action is dispatched
+ */
+export const addProductToFavorites$ = main$
+  .filter(({ action }) => action.type === ADD_PRODUCT_TO_FAVORITES);
+
+/**
  * Gets triggered when the debounce time of `addProductToFavorites` passes.
  * @type {Observable}
  */
