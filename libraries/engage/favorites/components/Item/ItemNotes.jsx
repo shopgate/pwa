@@ -58,37 +58,42 @@ const ItemNotes = ({
   notes,
   onClickOpenComment,
   onClickDeleteComment,
+  notesButtonRef,
 }) => {
   if (!wishlistItemNotesEnabled) {
     return null;
   }
   /* eslint-disable jsx-a11y/aria-role */
   return (
-    <>
-      { notes ? (
-        <div className={styles.root}>
-          <span role="text">
-            <span className={styles.comment}>
-              {`${i18n.text('favorites.comments.notes')}: `}
-            </span>
-            <span className={styles.notes}>{`"${notes}"`}</span>
+    <div className={styles.root}>
+      {notes && (
+        <span role="text">
+          <span className={styles.comment}>
+            {`${i18n.text('favorites.comments.notes')}: `}
           </span>
-          <span className={styles.buttons}>
-            <button type="button" onClick={onClickOpenComment} className={styles.addCommentButton}>
-              {i18n.text('favorites.comments.edit')}
-            </button>
+          <span className={styles.notes}>{`"${notes}"`}</span>
+        </span>
+      )}
+
+      <span className={styles.buttons}>
+        {/*
+          Slightly uncommon approach, but we want to re-use this button to increase
+          screen reader support. This approach takes care that there is always one DOM element
+          with the "notesId" that can be focused when closing the CommentDialog modal.
+        */}
+        <button type="button" onClick={onClickOpenComment} className={styles.addCommentButton} ref={notesButtonRef}>
+          {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
+        </button>
+        { notes && (
+          <>
             <span aria-hidden> | </span>
             <button type="button" onClick={onClickDeleteComment} className={styles.addCommentButton}>
               {i18n.text('favorites.comments.delete')}
             </button>
-          </span>
-        </div>
-      ) : (
-        <button type="button" onClick={onClickOpenComment} className={styles.addCommentButton}>
-          {i18n.text('favorites.comments.add')}
-        </button>
-      )}
-    </>
+          </>
+        )}
+      </span>
+    </div>
   );
   /* eslint-enable jsx-a11y/aria-role */
 };
@@ -98,10 +103,12 @@ ItemNotes.propTypes = {
   onClickOpenComment: PropTypes.func.isRequired,
   wishlistItemNotesEnabled: PropTypes.bool.isRequired,
   notes: PropTypes.string,
+  notesButtonRef: PropTypes.shape(),
 };
 
 ItemNotes.defaultProps = {
   notes: null,
+  notesButtonRef: null,
 };
 
 export default connect(makeMapStateToProps)(ItemNotes);

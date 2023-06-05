@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useState, useMemo, useCallback,
+  useEffect, useState, useMemo, useCallback, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -69,6 +69,8 @@ const CommentDialog = ({
   const { productId, listId, item } = settings || {};
   const prevProdId = usePrevious(productId);
   const [value, setValue] = useState(item?.notes);
+  // Reference to the element that triggered the dialog
+  const triggerRef = useRef(null);
 
   useEffect(() => {
     if (prevProdId !== productId) {
@@ -76,18 +78,38 @@ const CommentDialog = ({
     }
   }, [item, prevProdId, productId]);
 
-  const handleSubmit = useCallback(() => {
-    updateFavoriteItem(productId, listId, undefined, value);
-    if (!item?.notes && !!value) {
-      broadcastLiveMessage('favorites.comments.added');
+  useEffect(() => {
+    if (isVisible) {
+      triggerRef.current = document.activeElement;
     }
+  }, [isVisible]);
 
-    if (item?.notes && value !== item.notes) {
-      broadcastLiveMessage('favorites.comments.updated');
-    }
+  const handleClose = useCallback(() => {
+    setTimeout(() => {
+      if (triggerRef?.current) {
+        // Focus the element that triggered the dialog after dialog (a11y improvement)
+        triggerRef.current.focus();
+      }
+
+      if (!item?.notes && !!value) {
+        broadcastLiveMessage('favorites.comments.added');
+      }
+
+      if (item?.notes && value !== item.notes) {
+        broadcastLiveMessage('favorites.comments.updated');
+      }
+    }, 300);
 
     close();
-  }, [close, item, listId, productId, updateFavoriteItem, value]);
+  }, [close, item, value]);
+
+  const handleSubmit = useCallback(() => {
+    if (item?.notes !== value) {
+      updateFavoriteItem(productId, listId, undefined, value);
+    }
+
+    handleClose();
+  }, [handleClose, item, listId, productId, updateFavoriteItem, value]);
 
   const handleChange = useCallback((newValue) => {
     setValue(newValue);
@@ -108,7 +130,7 @@ const CommentDialog = ({
   return (
     <Dialog
       onConfirm={handleSubmit}
-      onDismiss={close}
+      onDismiss={handleClose}
       modal={{
         title: i18n.text(`favorites.comment_modal.${(item?.notes || '').length === 0 ? 'titleAdd' : 'titleEdit'}`),
         dismiss: i18n.text('favorites.comment_modal.dismiss'),

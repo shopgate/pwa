@@ -4,6 +4,7 @@ import React, {
   useLayoutEffect,
   useState,
   useEffect,
+  useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -194,6 +195,8 @@ const FavoriteItem = ({
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
+  const notesButtonRef = useRef();
+
   const [internalQuantity, setInternalQuantity] = useState(quantity);
 
   useEffect(() => {
@@ -291,7 +294,15 @@ const FavoriteItem = ({
     event.preventDefault();
     event.stopPropagation();
     updateFavoriteItem(product.id, listId, quantity, '');
-    broadcastLiveMessage('favorites.comments.removed');
+
+    setTimeout(() => {
+      if (notesButtonRef?.current) {
+        // Focus the add button after item deletion to improve a11y
+        notesButtonRef.current.focus();
+      }
+
+      broadcastLiveMessage('favorites.comments.removed');
+    }, 300);
   }, [listId, product.id, quantity, updateFavoriteItem]);
 
   return (
@@ -367,6 +378,7 @@ const FavoriteItem = ({
               notes={notes}
               onClickDeleteComment={handleDeleteComment}
               onClickOpenComment={handleOpenComment}
+              notesButtonRef={notesButtonRef}
             />
           </SurroundPortals>
         </div>

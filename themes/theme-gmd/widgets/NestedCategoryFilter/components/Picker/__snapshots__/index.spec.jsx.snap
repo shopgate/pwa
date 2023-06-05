@@ -120,8 +120,10 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 onOpen={[Function]}
               >
                 <div
+                  aria-modal={true}
                   className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
                   onAnimationEnd={[Function]}
+                  role="dialog"
                   style={
                     Object {
                       "animationDuration": "300ms",
@@ -201,10 +203,12 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           grow={1}
                           role="heading"
                           shrink={1}
+                          tabIndex={0}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
                             role="heading"
+                            tabIndex={0}
                           >
                             Picker Label
                           </div>
@@ -516,8 +520,10 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onOpen={[Function]}
               >
                 <div
+                  aria-modal={true}
                   className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
                   onAnimationEnd={[Function]}
+                  role="dialog"
                   style={
                     Object {
                       "animationDuration": "300ms",
@@ -597,10 +603,12 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           grow={1}
                           role="heading"
                           shrink={1}
+                          tabIndex={0}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
                             role="heading"
+                            tabIndex={0}
                           >
                             Picker Label
                           </div>
@@ -952,8 +960,10 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onOpen={[Function]}
               >
                 <div
+                  aria-modal={true}
                   className="css-1d4fqwq css-1rg7udn css-171mdnt"
                   onAnimationEnd={[Function]}
+                  role="dialog"
                   style={
                     Object {
                       "animationDuration": "300ms",
@@ -1033,10 +1043,12 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           grow={1}
                           role="heading"
                           shrink={1}
+                          tabIndex={0}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
                             role="heading"
+                            tabIndex={0}
                           >
                             Picker Label
                           </div>
@@ -1349,8 +1361,10 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 onOpen={[Function]}
               >
                 <div
+                  aria-modal={true}
                   className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
                   onAnimationEnd={[Function]}
+                  role="dialog"
                   style={
                     Object {
                       "animationDuration": "300ms",
@@ -1430,10 +1444,12 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           grow={1}
                           role="heading"
                           shrink={1}
+                          tabIndex={0}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
                             role="heading"
+                            tabIndex={0}
                           >
                             Picker Label
                           </div>

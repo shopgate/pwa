@@ -17,6 +17,7 @@ exports[`<StoreListProduct /> should render a product without selected variants.
 >
   <div
     className="css-73f55n"
+    role="text"
   >
     <div
       className="css-1f7wp8g"
