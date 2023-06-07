@@ -9,12 +9,15 @@ import styles from '../../style';
  * @returns {JSX}
  */
 const Buttons = ({ actions }) =>
-  actions.map(({ label, action, type = 'normal' }) => (
+  actions.map(({
+    label, action, type = 'normal', disabled = false,
+  }) => (
     <Button
       key={label}
       className={`${styles.button} ${type === 'primary' ? styles.buttonPrimary : ''}`}
       type="primary"
       onClick={action}
+      disabled={disabled}
       flat
     >
       <I18n.Text className={styles.buttonText} string={label} />
@@ -25,6 +28,7 @@ Buttons.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     action: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
   })),
 };
 

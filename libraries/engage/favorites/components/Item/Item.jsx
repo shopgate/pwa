@@ -4,6 +4,7 @@ import React, {
   useLayoutEffect,
   useState,
   useEffect,
+  useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -39,6 +40,7 @@ import {
   FAVORITES_PRODUCT_PRICE,
   FAVORITES_ADD_TO_CART,
 } from '@shopgate/engage/favorites';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
@@ -193,6 +195,8 @@ const FavoriteItem = ({
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
+  const notesButtonRef = useRef();
+
   const [internalQuantity, setInternalQuantity] = useState(quantity);
 
   useEffect(() => {
@@ -233,6 +237,10 @@ const FavoriteItem = ({
       historyPush({ pathname: productLink });
       return false;
     }
+
+    broadcastLiveMessage('product.adding_item', {
+      params: { count: 1 },
+    });
 
     return addToCart(e);
   }, [
@@ -286,6 +294,15 @@ const FavoriteItem = ({
     event.preventDefault();
     event.stopPropagation();
     updateFavoriteItem(product.id, listId, quantity, '');
+
+    setTimeout(() => {
+      if (notesButtonRef?.current) {
+        // Focus the add button after item deletion to improve a11y
+        notesButtonRef.current.focus();
+      }
+
+      broadcastLiveMessage('favorites.comments.removed');
+    }, 300);
   }, [listId, product.id, quantity, updateFavoriteItem]);
 
   return (
@@ -295,6 +312,7 @@ const FavoriteItem = ({
           className={styles.imageContainer}
           component="div"
           href={productLink}
+          aria-hidden
         >
           <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
         </Link>
@@ -360,6 +378,7 @@ const FavoriteItem = ({
               notes={notes}
               onClickDeleteComment={handleDeleteComment}
               onClickOpenComment={handleOpenComment}
+              notesButtonRef={notesButtonRef}
             />
           </SurroundPortals>
         </div>

@@ -68,7 +68,7 @@ class Header extends Component {
             </Ripple>
           </button>
         ) : <div className={styles.closePlaceholder} />}
-        <Grid.Item className={styles.title} component="div" grow={1} role="heading">
+        <Grid.Item className={styles.title} component="div" grow={1} role="heading" {...(allowClose ? { tabIndex: 0 } : null)}>
           {this.props.title}
         </Grid.Item>
       </Grid>

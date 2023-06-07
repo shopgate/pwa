@@ -5,6 +5,7 @@ import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 
 const { variables, colors } = themeConfig;
 
@@ -94,15 +95,37 @@ const UnitQuantityPicker = ({
     setIsFocused(false);
   }, []);
 
+  const handleManualChange = useCallback((newValue) => {
+    onChange(newValue);
+
+    let message;
+
+    if (newValue < value) {
+      message = 'product.decreased_quantity_to';
+    }
+
+    if (newValue > value) {
+      message = 'product.increased_quantity_to';
+    }
+
+    if (message) {
+      broadcastLiveMessage(message, {
+        params: {
+          quantity: newValue,
+        },
+      });
+    }
+  }, [onChange, value]);
+
   const handleDecrement = useCallback((event) => {
     let newValue = value - decrementStep;
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
       newValue = value;
     }
-    onChange(newValue);
+    handleManualChange(newValue);
     event.preventDefault();
     event.stopPropagation();
-  }, [allowZero, decrementStep, minValue, onChange, value]);
+  }, [allowZero, decrementStep, handleManualChange, minValue, value]);
 
   const handleIncrement = useCallback((event) => {
     let newValue = value + incrementStep;
@@ -111,10 +134,10 @@ const UnitQuantityPicker = ({
       newValue = value;
     }
 
-    onChange(newValue);
+    handleManualChange(newValue);
     event.preventDefault();
     event.stopPropagation();
-  }, [incrementStep, maxValue, onChange, value]);
+  }, [handleManualChange, incrementStep, maxValue, value]);
 
   useEffect(() => {
     if (minValue && value < minValue) {

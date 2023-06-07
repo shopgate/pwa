@@ -140,7 +140,10 @@
       "add": "Add Comment",
       "notes": "Comment",
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "added": "Comment added",
+      "removed": "Comment removed",
+      "updated": "Comment updated"
     },
     "rename_list": "Rename",
     "remove_list": "Remove",
@@ -215,6 +218,8 @@
     "quantity": "Quantity",
     "decrease_quantity": "Decrease quantity",
     "increase_quantity": "Increase quantity",
+    "increased_quantity_to": "Increased quantity to {quantity}",
+    "decreased_quantity_to": "Decreased quantity to {quantity}",
     "minOrderQuantity": "Min. order quantity: {quantity} {unit}",
     "maxOrderQuantity": "Max. order quantity: {quantity} {unit}",
     "available": {

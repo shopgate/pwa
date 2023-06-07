@@ -36,8 +36,10 @@ exports[`<Sheet /> should open 1`] = `
       onOpen={[Function]}
     >
       <div
+        aria-modal={true}
         className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
         onAnimationEnd={[Function]}
+        role="dialog"
         style={
           Object {
             "animationDuration": "300ms",
@@ -117,10 +119,12 @@ exports[`<Sheet /> should open 1`] = `
                 grow={1}
                 role="heading"
                 shrink={1}
+                tabIndex={0}
               >
                 <div
                   className="css-1mjy0de css-1gs0ko2"
                   role="heading"
+                  tabIndex={0}
                 >
                   Test-Title
                 </div>
@@ -461,8 +465,10 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       onOpen={[Function]}
     >
       <div
+        aria-modal={true}
         className="css-1d4fqwq css-1rg7udn css-171mdnt"
         onAnimationEnd={[Function]}
+        role="dialog"
         style={
           Object {
             "animationDuration": "300ms",
@@ -542,10 +548,12 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 grow={1}
                 role="heading"
                 shrink={1}
+                tabIndex={0}
               >
                 <div
                   className="css-1mjy0de css-1gs0ko2"
                   role="heading"
+                  tabIndex={0}
                 >
                   Test-Title
                 </div>

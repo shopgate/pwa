@@ -13,6 +13,7 @@ import {
   favoritesWillEnter$,
   shouldFetchFreshFavorites$,
   addProductToFavoritesDebounced$,
+  addProductToFavorites$,
   removeProductFromFavoritesDebounced$,
   errorFavoritesLimit$,
   refreshFavorites$,
@@ -251,9 +252,27 @@ export default function favorites(subscribe) {
     LoadingProvider.resetLoading(FAVORITES_PATH);
   });
 
-  subscribe(favoritesDidAddItem$, ({ events }) => {
-    const shouldShowToast = true;
-    if (shouldShowToast) {
+  subscribe(addProductToFavorites$, ({ events, getState }) => {
+    const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(getState());
+
+    // When wish list loading on app start is disabled, toast is shown instantly after the add
+    // action was dispatched. We don't have to wait for the "debounced" action, since
+    // removal of wishlist items is not possible.
+    if (!loadWishlistOnAppStartEnabled) {
+      events.emit(ToastProvider.ADD, {
+        id: 'favorites.added',
+        message: 'favorites.added',
+      });
+    }
+  });
+
+  subscribe(favoritesDidAddItem$, ({ events, getState }) => {
+    const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(getState());
+
+    // When wish list loading on app start is enabled, toast is shown after the add action from
+    // the buffer system is dispatched. We wait for that since the item might have been removed
+    // again within the debounce time.
+    if (loadWishlistOnAppStartEnabled) {
       events.emit(ToastProvider.ADD, {
         id: 'favorites.added',
         message: 'favorites.added',

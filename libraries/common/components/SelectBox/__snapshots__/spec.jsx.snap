@@ -118,6 +118,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #1"
                 onClick={[Function]}
@@ -161,6 +162,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #2"
                 onClick={[Function]}
@@ -204,6 +206,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #3"
                 onClick={[Function]}
@@ -357,6 +360,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #1"
                 onClick={[Function]}
@@ -400,6 +404,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #2"
                 onClick={[Function]}
@@ -443,6 +448,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #3"
                 onClick={[Function]}
@@ -596,6 +602,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #1"
                 onClick={[Function]}
@@ -639,6 +646,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               wrapper={[Function]}
             >
               <li
+                aria-current={true}
                 className="css-dw3c54 undefined"
                 data-test-id="My item #2"
                 onClick={[Function]}
@@ -682,6 +690,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
               wrapper={[Function]}
             >
               <li
+                aria-current={false}
                 className="css-dw3c54"
                 data-test-id="My item #3"
                 onClick={[Function]}

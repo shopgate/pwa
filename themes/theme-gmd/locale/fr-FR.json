@@ -138,7 +138,10 @@
       "add": "Add Comment",
       "notes": "Comment",
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "added": "Comment added",
+      "removed": "Comment removed",
+      "updated": "Comment updated"
     },
     "rename_list": "Rename",
     "remove_list": "Remove",
@@ -208,6 +211,10 @@
     "add_to_cart": "Ajouter au panier",
     "no_more_found": "L'article: \"{name}\" n'est plus disponible.",
     "quantity": "Quantité",
+    "decrease_quantity": "Diminution de la quantité",
+    "increase_quantity": "Augmenter la quantité",
+    "increased_quantity_to": "Augmentation de la quantité à {quantity}",
+    "decreased_quantity_to": "Quantité réduite à {quantity}",
     "minOrderQuantity": "Quantité min. par commande: {quantity} {unit}",
     "maxOrderQuantity": "Quantité max. par commande: {quantity} {unit}",
     "available": {

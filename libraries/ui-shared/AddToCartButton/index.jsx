@@ -195,6 +195,7 @@ class AddToCartButton extends Component {
         onClick={this.handleClick}
         aria-hidden={this.props['aria-hidden']}
         aria-label={this.props['aria-label']}
+        aria-disabled={this.props.isDisabled}
         ref={this.props.forwardedRef}
         type="button"
       >

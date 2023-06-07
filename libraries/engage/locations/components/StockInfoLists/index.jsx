@@ -58,10 +58,10 @@ const StockInfoLists = ({
     location: preferredLocation,
     product,
   };
-
+  /* eslint-disable jsx-a11y/aria-role */
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO_LIST} portalProps={portalProps}>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} role="text">
         <PlaceholderLabel ready={!!inventory}>
           <StockInfo product={product} location={preferredLocation} />
           {' '}
@@ -76,6 +76,7 @@ const StockInfoLists = ({
       </div>
     </SurroundPortals>
   );
+  /* eslint-enable jsx-a11y/aria-role */
 };
 
 StockInfoLists.propTypes = {

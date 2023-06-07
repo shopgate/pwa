@@ -22,6 +22,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
     onReset={[Function]}
   >
     <button
+      aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
       className="null css-1e8v7r2 css-1sr59j6"
@@ -188,6 +189,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
     onReset={[Function]}
   >
     <button
+      aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
       className="null css-1e8v7r2 css-1sr59j6"
@@ -323,6 +325,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
     onReset={[Function]}
   >
     <button
+      aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
       className="null css-1e8v7r2 css-1rxo1j2"
