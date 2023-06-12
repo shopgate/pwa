@@ -49,6 +49,7 @@ import {
 } from '../constants';
 import {
   getFavoritesCount,
+  makeGetFavoritesCountByList,
   makeGetProductRelativesOnFavorites,
   getFavoritesProducts,
 } from '../selectors';
@@ -106,7 +107,8 @@ export default function favorites(subscribe) {
 
     const { favorites: { limit = 100 } = {} } = appConfig;
 
-    const count = getFavoritesCount(state);
+    const count = makeGetFavoritesCountByList(() => action?.listId)(state);
+
     if (limit && count >= limit) {
       // Dispatch a local error only, because the request to add is prevented
       const error = new Error('Limit exceeded');

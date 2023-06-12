@@ -83,14 +83,20 @@ jest.mock('../actions/fetchFavoritesListsWithItems', () => {
 // Mock all used selectors to avoid mocking the store
 let mockedGetFavoritesProductsIdsReturnValue;
 let mockedGetFavoritesCountReturnValue;
+let mockedGetFavoritesCountByListReturnValue;
 let mockedGetFavoritesProductsReturnValue;
 let mockedGetProductRelativesOnFavoritesReturnValue;
 let mockedMakeGetFavoritesReturnValue;
+
+const mockedMakeGetFavoritesCountByList = jest.fn(
+  () => mockedGetFavoritesCountByListReturnValue || 0
+);
 
 jest.mock('../selectors', () => ({
   getFavoritesProductsIds: jest.fn(() => mockedGetFavoritesProductsIdsReturnValue),
   getFavoritesProducts: jest.fn(() => mockedGetFavoritesProductsReturnValue),
   getFavoritesCount: jest.fn(() => mockedGetFavoritesCountReturnValue),
+  makeGetFavoritesCountByList: jest.fn(() => mockedMakeGetFavoritesCountByList),
   makeGetFavorites: jest.fn(() => mockedMakeGetFavoritesReturnValue),
   makeGetProductRelativesOnFavorites: jest.fn(() =>
     jest.fn().mockReturnValue(mockedGetProductRelativesOnFavoritesReturnValue)),
@@ -297,10 +303,10 @@ describe('Favorites - subscriptions', () => {
 
         const productId = 'prod3';
         mockedFavoritesLimit = 2;
-        mockedGetFavoritesCountReturnValue = 2;
+        mockedGetFavoritesCountByListReturnValue = 2;
 
         invoke(addProductToFavoritesDebounced$, {
-          action: addProductToFavorites(productId),
+          action: addProductToFavorites(productId, 'DEFAULT'),
           dispatch,
           getState,
         });
@@ -308,8 +314,11 @@ describe('Favorites - subscriptions', () => {
         expect(getState).toHaveBeenCalledTimes(1);
         expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
         expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
-        expect(getFavoritesCount).toHaveBeenCalledWith(getState());
-        expect(getFavoritesCount).toHaveBeenCalledTimes(1);
+
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledWith(getState());
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledTimes(1);
+        expect(mockedMakeGetFavoritesCountByList)
+          .toHaveReturnedWith(mockedGetFavoritesCountByListReturnValue);
 
         const error = new Error('Limit exceeded');
         error.code = FAVORITES_LIMIT_ERROR;
@@ -329,8 +338,8 @@ describe('Favorites - subscriptions', () => {
         expect(getState).toHaveBeenCalledTimes(1);
         expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
         expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
-        expect(getFavoritesCount).toHaveBeenCalledWith(getState());
-        expect(getFavoritesCount).toHaveBeenCalledTimes(1);
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledWith(getState());
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledTimes(1);
 
         expect(dispatch).toHaveBeenCalledWith(requestAddFavorites(productId));
         expect(dispatch).toHaveBeenCalledTimes(1);

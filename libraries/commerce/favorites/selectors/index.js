@@ -126,6 +126,21 @@ export const makeGetFavorites = getListCode => createSelector(
 );
 
 /**
+ * Creates a selector that retrieves the amount of items on a specific favorites list
+ * to the given favorite list.
+ * @param {Function} getListCode Selects the list code.
+ * @returns {Function}
+ */
+export const makeGetFavoritesCountByList = (getListCode) => {
+  const getFavoritesIdsByList = makeGetFavoritesIdsByList(getListCode);
+
+  return createSelector(
+    getFavoritesIdsByList,
+    favorites => favorites.length
+  );
+};
+
+/**
  * True when favorites where not yet fetched for the first time.
  * @param {Object} state The global state.
  * @returns {boolean}
