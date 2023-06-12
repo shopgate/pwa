@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { connect } from 'react-redux';
@@ -35,6 +35,10 @@ const ItemQuantity = ({
     setInternalQuantity(newQuantity);
     onChange(newQuantity);
   }, [onChange]);
+
+  useEffect(() => {
+    setInternalQuantity(quantity);
+  }, [quantity]);
 
   if (!wishlistItemQuantityEnabled) {
     return null;
