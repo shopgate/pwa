@@ -8,7 +8,7 @@ import { getShowWishlistItemsCountBadge } from '@shopgate/engage/core';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  favoritesCount: getFavoritesCount(state),
+  favoritesCount: getFavoritesCount(state, { useItemQuantity: true }),
   showWishlistItemsCountBadge: getShowWishlistItemsCountBadge(state),
 });
 
