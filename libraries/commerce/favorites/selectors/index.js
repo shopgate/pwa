@@ -143,11 +143,14 @@ export const isInitialLoading = createSelector(
 
 /**
  * @param {Object} state The global state.
- * @return {number}
+ * @param {Object} props The selector props
+ * @param {boolean} [props.useItemQuantity=false] Whether to consider item quantity at calculation
+ * @return {Function}
  */
 export const getFavoritesCount = createSelector(
   getFavoritesProducts,
-  (products) => {
+  (_, props) => props?.useItemQuantity || false,
+  (products, useItemQuantity) => {
     if (!products?.byList) {
       return 0;
     }
@@ -155,8 +158,14 @@ export const getFavoritesCount = createSelector(
     return Object
       .values(products.byList)
       .reduce((prev, list) =>
-        prev + list.items.reduce((acc, { quantity = 1 }) =>
-          acc + quantity, 0), 0);
+        prev + list.items.reduce((acc, { quantity = 1 }) => {
+          if (useItemQuantity) {
+            return acc + quantity;
+          }
+
+          return acc + 1;
+        }, 0),
+      0);
   }
 );
 

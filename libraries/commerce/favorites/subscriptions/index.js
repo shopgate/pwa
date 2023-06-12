@@ -107,7 +107,7 @@ export default function favorites(subscribe) {
     const { favorites: { limit = 100 } = {} } = appConfig;
 
     const count = getFavoritesCount(state);
-    if (count >= limit) {
+    if (limit && count >= limit) {
       // Dispatch a local error only, because the request to add is prevented
       const error = new Error('Limit exceeded');
       error.code = FAVORITES_LIMIT_ERROR;
