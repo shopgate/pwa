@@ -31,7 +31,12 @@ class App extends Component {
     const performAppStart = async () => {
       if (getIsSessionExpired(this.props.store.getState())) {
         // Logout the user before appDidStart when session is expired
-        await this.props.store.dispatch(logout(undefined, true));
+        try {
+          await this.props.store.dispatch(logout(undefined, true));
+        } catch (e) {
+          // Noting to do here
+          console.error('AppStartLogout failed', e);
+        }
       }
 
       this.props.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
