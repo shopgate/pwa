@@ -14,10 +14,10 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     position: 'relative',
-    zIndex: 1000,
+    zIndex: 5,
   }).toString(),
   backdrop: css({
-    zIndex: 999,
+    zIndex: 4,
     top: 0,
     left: 0,
     height: '100%',
