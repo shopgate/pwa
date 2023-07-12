@@ -18,6 +18,7 @@ class TabBarFavoritesAction extends Component {
   static propTypes = {
     historyPush: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
+    showWishlistItemsCountBadge: PropTypes.bool.isRequired,
     ...TabBarAction.propTypes,
   };
 
@@ -35,8 +36,9 @@ class TabBarFavoritesAction extends Component {
    * @return {JSX}
    */
   render() {
-    const { label, favoritesCount } = this.props;
-    const ariaLabel = `${i18n.text(label)}. ${i18n.text('common.products')}: ${favoritesCount}.`;
+    const { label, favoritesCount, showWishlistItemsCountBadge } = this.props;
+    const ariaCount = showWishlistItemsCountBadge ? `${i18n.text('common.products')}: ${favoritesCount}.` : '';
+    const ariaLabel = `${i18n.text(label)}. ${ariaCount} `;
     return (
       <Fragment>
         <Portal

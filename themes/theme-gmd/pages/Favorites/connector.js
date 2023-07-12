@@ -3,7 +3,7 @@ import {
   getFavorites,
   getFavoritesLists,
   isInitialLoading,
-} from '@shopgate/pwa-common-commerce/favorites/selectors';
+} from '@shopgate/engage/favorites';
 
 /**
  * Maps state to props.

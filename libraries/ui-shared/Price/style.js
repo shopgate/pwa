@@ -10,9 +10,7 @@ const container = css({
 const disclaimer = css({
   color: 'initial',
   fontSize: 14,
-  position: 'absolute',
-  right: -10,
-  top: 0,
+  marginLeft: 10,
 }).toString();
 
 const discounted = css({

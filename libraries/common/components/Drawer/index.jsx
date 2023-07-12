@@ -124,6 +124,8 @@ class Drawer extends Component {
         className={combinedClassName}
         style={style}
         onAnimationEnd={this.handleAnimationEnd}
+        role="dialog"
+        aria-modal
       >
         {children}
       </div>

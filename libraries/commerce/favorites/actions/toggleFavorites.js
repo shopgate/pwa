@@ -1,5 +1,9 @@
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
+  getWishlistItemQuantityEnabled,
+  getLoadWishlistOnAppStartEnabled,
+} from '@shopgate/engage/core/selectors/shopSettings';
+import {
   getFavoritesDefaultList,
   getFavoritesLists,
   makeIsProductOnSpecificFavoriteList,
@@ -9,18 +13,22 @@ import {
   removeProductFromFavorites,
   requestFlushFavoritesBuffer,
   openFavoritesListChooser,
+  updateProductInFavorites,
 } from '../action-creators';
+import fetchFavoritesListsWithItems from './fetchFavoritesListsWithItems';
 
 /**
  * Adds a product to the favorite list (debounced and buffered).
  * @mixes {MutableFunction}
  * @param {string} productId Product identifier.
  * @param {string} listId List identifier.
+ * @param {number} quantity New favorites quantity to set
+ * @param {string} notes New favorites notes to set
  * @return {Function}
  */
-export const addFavorite = mutable((productId, listId) => (dispatch, getState) => {
+export const addFavorite = mutable((productId, listId, quantity, notes) => (dispatch, getState) => {
   const defaultList = getFavoritesDefaultList(getState());
-  dispatch(addProductToFavorites(productId, listId || defaultList.id));
+  dispatch(addProductToFavorites(productId, listId || defaultList.id, quantity, notes));
 });
 
 /**
@@ -64,15 +72,36 @@ export const requestSync = mutable(listId => (dispatch) => {
  */
 export const toggleFavorite = (productId, listId, withRelatives = false) =>
   (dispatch, getState) => {
-    const isOnList = makeIsProductOnSpecificFavoriteList(
-      () => productId,
-      () => listId
-    )(getState());
-
-    dispatch(!isOnList
-      ? addFavorite(productId, listId)
-      : removeFavorites(productId, withRelatives, listId));
+    const state = getState();
+    // With quantity enabled the favorites button always adds (increases quantity)
+    const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(state);
+    const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(state);
+    if (wishlistItemQuantityEnabled || !loadWishlistOnAppStartEnabled) {
+      dispatch(addFavorite(productId, listId));
+    } else {
+      const isOnList = makeIsProductOnSpecificFavoriteList(
+        () => productId,
+        () => listId
+      )(state);
+      dispatch(!isOnList
+        ? addFavorite(productId, listId)
+        : removeFavorites(productId, withRelatives, listId));
+    }
   };
+
+/**
+ * Updatest a product in the favorite list (debounced and buffered).
+ * @param {string} productId Product identifier.
+ * @param {string} listId List identifier.
+ * @param {number} quantity
+ * @param {string} notes
+ * @return {Function}
+ */
+export const updateFavorite = mutable((productId, listId, quantity, notes) =>
+  (dispatch, getState) => {
+    const defaultList = getFavoritesDefaultList(getState());
+    dispatch(updateProductInFavorites(productId, listId || defaultList.id, quantity, notes));
+  });
 
 /**
  * Adds a product to a wishlist by opening a chooser if user has multiple lists.
@@ -83,7 +112,11 @@ export const toggleFavorite = (productId, listId, withRelatives = false) =>
  */
 export const toggleFavoriteWithListChooser = mutable(
   (productId, withRelatives = false) =>
-    (dispatch, getState) => {
+    async (dispatch, getState) => {
+      // Ensure favorites lists are fetched before.
+      // In some cases this fetch will NOT happen on app start
+      await dispatch(fetchFavoritesListsWithItems());
+
       const state = getState();
       const lists = getFavoritesLists(state);
 

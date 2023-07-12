@@ -477,8 +477,10 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       onOpen={[Function]}
                     >
                       <div
+                        aria-modal={true}
                         className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
+                        role="dialog"
                         style={
                           Object {
                             "animationDuration": "300ms",
@@ -558,10 +560,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 grow={1}
                                 role="heading"
                                 shrink={1}
+                                tabIndex={0}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
                                   role="heading"
+                                  tabIndex={0}
                                 >
                                   Label One
                                 </div>
@@ -1730,8 +1734,10 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
+                        aria-modal={true}
                         className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
+                        role="dialog"
                         style={
                           Object {
                             "animationDuration": "300ms",
@@ -1811,10 +1817,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 grow={1}
                                 role="heading"
                                 shrink={1}
+                                tabIndex={0}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
                                   role="heading"
+                                  tabIndex={0}
                                 >
                                   Label One
                                 </div>
@@ -2491,8 +2499,10 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
+                        aria-modal={true}
                         className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
+                        role="dialog"
                         style={
                           Object {
                             "animationDuration": "300ms",
@@ -2572,10 +2582,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 grow={1}
                                 role="heading"
                                 shrink={1}
+                                tabIndex={0}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
                                   role="heading"
+                                  tabIndex={0}
                                 >
                                   Label One
                                 </div>
@@ -2924,8 +2936,10 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       onOpen={[Function]}
                     >
                       <div
+                        aria-modal={true}
                         className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
+                        role="dialog"
                         style={
                           Object {
                             "animationDuration": "300ms",
@@ -3005,10 +3019,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 grow={1}
                                 role="heading"
                                 shrink={1}
+                                tabIndex={0}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
                                   role="heading"
+                                  tabIndex={0}
                                 >
                                   Label Two
                                 </div>
@@ -3796,8 +3812,10 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       onOpen={[Function]}
                     >
                       <div
+                        aria-modal={true}
                         className="css-1d4fqwq css-1rg7udn css-171mdnt"
                         onAnimationEnd={[Function]}
+                        role="dialog"
                         style={
                           Object {
                             "animationDuration": "300ms",
@@ -3877,10 +3895,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 grow={1}
                                 role="heading"
                                 shrink={1}
+                                tabIndex={0}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
                                   role="heading"
+                                  tabIndex={0}
                                 >
                                   Label One
                                 </div>

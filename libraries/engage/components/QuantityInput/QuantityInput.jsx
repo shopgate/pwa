@@ -45,7 +45,10 @@ const QuantityInput = forwardRef(({
       return;
     }
 
-    onChange(newValue);
+    if (newValue !== value) {
+      onChange(newValue);
+    }
+
     customOnBlur(event, newValue);
   }, [customOnBlur, inputValue, maxDecimals, onChange, value]);
 
@@ -100,6 +103,13 @@ const QuantityInput = forwardRef(({
       className={className}
       value={displayedValue}
       onChange={handleChange}
+      onClick={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }}
     />
   );
 });

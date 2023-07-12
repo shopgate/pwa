@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { isObject } from '../helpers/validation';
+import authRoutes from '../collections/AuthRoutes';
 
 /**
  * @param {Object} state The application state.
@@ -232,3 +233,11 @@ export const makeGetPrevRouteIndexByPattern = pattern =>
     }
   );
 
+/**
+ * Creates a selector to determine if the current active route is "protected" (needs login).
+ * @returns {Function}
+ */
+export const makeGetIsCurrentRouteProtected = () => createSelector(
+  getCurrentPathname,
+  pattern => !!authRoutes.getProtector(pattern)
+);

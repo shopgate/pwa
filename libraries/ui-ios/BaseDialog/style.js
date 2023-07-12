@@ -2,7 +2,7 @@ import { css } from 'glamor';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const outerGap = 40;
-const border = themeColors.lightDark;
+const border = '#bbbbbb';
 
 const container = css({
   position: 'relative',

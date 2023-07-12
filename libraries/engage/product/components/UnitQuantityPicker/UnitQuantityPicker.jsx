@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 
 const { variables, colors } = themeConfig;
 
@@ -12,7 +13,17 @@ const styles = {
   root: css({
     display: 'flex',
     flexDirection: 'row',
+    position: 'relative',
+    zIndex: 5,
   }).toString(),
+  backdrop: css({
+    zIndex: 4,
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: '100%',
+    position: 'fixed',
+  }),
   input: css({
     padding: `0 ${variables.gap.small}px`,
     textAlign: 'center',
@@ -57,7 +68,7 @@ const styles = {
 
 /**
  * A Quantity Picker with unit support.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const UnitQuantityPicker = ({
   className,
@@ -74,23 +85,59 @@ const UnitQuantityPicker = ({
   minValue,
   maxValue,
 }) => {
-  const handleDecrement = useCallback(() => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleOnFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleOnBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
+
+  const handleManualChange = useCallback((newValue) => {
+    onChange(newValue);
+
+    let message;
+
+    if (newValue < value) {
+      message = 'product.decreased_quantity_to';
+    }
+
+    if (newValue > value) {
+      message = 'product.increased_quantity_to';
+    }
+
+    if (message) {
+      broadcastLiveMessage(message, {
+        params: {
+          quantity: newValue,
+        },
+      });
+    }
+  }, [onChange, value]);
+
+  const handleDecrement = useCallback((event) => {
     let newValue = value - decrementStep;
     if ((newValue <= 0 && !allowZero) || (minValue && newValue < minValue)) {
       newValue = value;
     }
-    onChange(newValue);
-  }, [allowZero, decrementStep, minValue, onChange, value]);
+    handleManualChange(newValue);
+    event.preventDefault();
+    event.stopPropagation();
+  }, [allowZero, decrementStep, handleManualChange, minValue, value]);
 
-  const handleIncrement = useCallback(() => {
+  const handleIncrement = useCallback((event) => {
     let newValue = value + incrementStep;
 
     if (maxValue && newValue > maxValue) {
       newValue = value;
     }
 
-    onChange(newValue);
-  }, [incrementStep, maxValue, onChange, value]);
+    handleManualChange(newValue);
+    event.preventDefault();
+    event.stopPropagation();
+  }, [handleManualChange, incrementStep, maxValue, value]);
 
   useEffect(() => {
     if (minValue && value < minValue) {
@@ -100,51 +147,60 @@ const UnitQuantityPicker = ({
     if (maxValue && value > maxValue) {
       onChange(maxValue);
     }
-  /* eslint-disable react-hooks/exhaustive-deps */
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, []);
   /* eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <div className={`${styles.root} ${className}`}>
-      <RippleButton
-        rippleClassName={styles.buttonRipple}
-        className={classNames(styles.button, styles.buttonNoRadiusRight, {
-          [styles.disabled]: disabled,
-        })}
-        type="secondary"
-        disabled={!allowDecrement || disabled}
-        onClick={handleDecrement}
-        aria-label={i18n.text('product.decrease_quantity')}
-      >
+    <>
+      { isFocused && (
+        // Show hidden backdrop when focused to avoid side effects when user blurs the input
+        // e.g. opening links unintended
+        <div className={styles.backdrop} />
+      )}
+      <div className={`${styles.root} ${className}`}>
+        <RippleButton
+          rippleClassName={styles.buttonRipple}
+          className={classNames(styles.button, styles.buttonNoRadiusRight, {
+            [styles.disabled]: disabled,
+          })}
+          type="secondary"
+          disabled={!allowDecrement || disabled}
+          onClick={handleDecrement}
+          aria-label={i18n.text('product.decrease_quantity')}
+        >
         -
-      </RippleButton>
-      <span>
-        <QuantityInput
-          className={styles.input}
-          value={value}
-          onChange={onChange}
-          maxDecimals={maxDecimals}
-          unit={unit}
-          disabled={disabled}
-          minValue={minValue}
-          maxValue={maxValue}
-          aria-label={i18n.text('product.quantity')}
-        />
-      </span>
+        </RippleButton>
+        <span>
+          <QuantityInput
+            className={styles.input}
+            value={value}
+            onChange={onChange}
+            maxDecimals={maxDecimals}
+            unit={unit}
+            disabled={disabled}
+            minValue={minValue}
+            maxValue={maxValue}
+            aria-label={i18n.text('product.quantity')}
+            onFocus={handleOnFocus}
+            onBlur={handleOnBlur}
+          />
+        </span>
 
-      <RippleButton
-        type="secondary"
-        disabled={!allowIncrement || disabled}
-        rippleClassName={styles.buttonRipple}
-        className={classNames(styles.button, styles.buttonNoRadiusLeft, {
-          [styles.disabled]: disabled,
-        })}
-        onClick={handleIncrement}
-        aria-label={i18n.text('product.increase_quantity')}
-      >
+        <RippleButton
+          type="secondary"
+          disabled={!allowIncrement || disabled}
+          rippleClassName={styles.buttonRipple}
+          className={classNames(styles.button, styles.buttonNoRadiusLeft, {
+            [styles.disabled]: disabled,
+          })}
+          onClick={handleIncrement}
+          aria-label={i18n.text('product.increase_quantity')}
+        >
         +
-      </RippleButton>
-    </div>
+        </RippleButton>
+      </div>
+    </>
   );
 };
 

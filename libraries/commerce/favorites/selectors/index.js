@@ -37,7 +37,6 @@ export const getFavoritesProducts = createSelector(
     if (!state.products) {
       return null;
     }
-
     return state.products;
   }
 );
@@ -78,10 +77,9 @@ export const getFavoritesProductsIds = createSelector(
     if (!products || !products.byList) {
       return defaultIds;
     }
-
     return uniq(Object
       .values(products.byList)
-      .map(l => l.ids)
+      .map(l => l.items.map(({ productId }) => productId))
       .flat());
   }
 );
@@ -107,10 +105,8 @@ export const getFavorites = createSelector(
 export const makeGetFavoritesIdsByList = getListCode => createSelector(
   getFavoritesProducts,
   getListCode,
-  (favProducts, listId) => {
-    const ids = favProducts.byList[listId]?.ids || [];
-    return ids;
-  }
+  (favProducts, listId) =>
+    favProducts?.byList[listId]?.items.map(({ productId }) => productId) || []
 );
 
 /**
@@ -119,14 +115,28 @@ export const makeGetFavoritesIdsByList = getListCode => createSelector(
  * @param {Function} getListCode Selects the list code.
  * @returns {Function}
  */
-export const makeGetFavorites = (getListCode) => {
+export const makeGetFavorites = getListCode => createSelector(
+  getFavoritesProducts,
+  getListCode,
+  getProducts,
+  (favItems, listId, products) => {
+    const items = favItems?.byList[listId]?.items || [];
+    return items.map(item => ({ ...item, product: products[item.productId]?.productData }));
+  }
+);
+
+/**
+ * Creates a selector that retrieves the amount of items on a specific favorites list
+ * to the given favorite list.
+ * @param {Function} getListCode Selects the list code.
+ * @returns {Function}
+ */
+export const makeGetFavoritesCountByList = (getListCode) => {
   const getFavoritesIdsByList = makeGetFavoritesIdsByList(getListCode);
+
   return createSelector(
     getFavoritesIdsByList,
-    getProducts,
-    (ids, products) => ids
-      .filter(id => !!products[id] && products[id].productData)
-      .map(id => products[id].productData)
+    favorites => favorites.length
   );
 };
 
@@ -142,24 +152,35 @@ export const isInitialLoading = createSelector(
       return true;
     }
 
-    return !Object.values(products.byList).every(l => l.ready);
+    return !Object.values(products?.byList).every(l => l.ready);
   }
 );
 
 /**
  * @param {Object} state The global state.
- * @return {number}
+ * @param {Object} props The selector props
+ * @param {boolean} [props.useItemQuantity=false] Whether to consider item quantity at calculation
+ * @return {Function}
  */
 export const getFavoritesCount = createSelector(
   getFavoritesProducts,
-  (products) => {
+  (_, props) => props?.useItemQuantity || false,
+  (products, useItemQuantity) => {
     if (!products?.byList) {
       return 0;
     }
 
     return Object
       .values(products.byList)
-      .reduce((prev, list) => prev + list.ids.length, 0);
+      .reduce((prev, list) =>
+        prev + list.items.reduce((acc, { quantity = 1 }) => {
+          if (useItemQuantity) {
+            return acc + quantity;
+          }
+
+          return acc + 1;
+        }, 0),
+      0);
   }
 );
 
@@ -183,7 +204,7 @@ export const isFetching = createSelector(
       return false;
     }
 
-    return Object.values(products.byList).every(l => l.isFetching);
+    return Object.values(products.byList).some(l => l.isFetching);
   }
 );
 
@@ -196,7 +217,9 @@ export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode)
   getProductCode,
   getListCode,
   getFavoritesProducts,
-  (productId, listId, products) => !!products.byList[listId]?.ids.includes(productId)
+  (productId, listId, products) =>
+    !!products.byList[listId]?.items.some(({ productId: itemProductId }) =>
+      itemProductId === productId)
 );
 
 /**
@@ -208,7 +231,9 @@ export const makeIsProductOnFavoriteList = getProductCode => createSelector(
   getFavoritesProducts,
   (productId, products) => !!Object
     .values(products.byList)
-    .find(list => !!list.ids.find(p => p === productId))
+    .find(list => !!list?.items?.find(({ productId: itemProductId }) =>
+      itemProductId === productId))
+
 );
 /**
  * @param {Object} state The global state.
@@ -228,7 +253,7 @@ export const getProductRelativesOnFavorites = createSelector(
   (productRelativesIds, products) => productRelativesIds.filter(
     id => !!Object
       .values(products.byList)
-      .find(list => !!list.ids.find(p => id === p))
+      .find(list => !!list.items.find(({ productId }) => id === productId))
   )
 );
 
@@ -242,7 +267,7 @@ export const makeGetProductRelativesOnFavorites = getListCode => createSelector(
   getKnownRelatives,
   getFavoritesProducts,
   (listId, productRelativesIds, products) => productRelativesIds.filter(
-    id => products.byList[listId]?.ids.find(p => id === p)
+    id => products.byList[listId]?.items.map(({ productId }) => productId).find(p => id === p)
   )
 );
 
@@ -255,4 +280,30 @@ export const makeGetProductRelativesOnFavorites = getListCode => createSelector(
 export const isRelativeProductOnList = createSelector(
   getProductRelativesOnFavorites,
   relativesOnFavorites => relativesOnFavorites.length > 0
+);
+
+export const getCommentDialogSettings = createSelector(
+  getFavoritesListState,
+  getFavoritesProducts,
+  getProducts,
+  ({ commentDialog }, favItems, products) => {
+    const { listId, productId } = commentDialog || {};
+    if (!listId || !productId) {
+      return undefined;
+    }
+
+    const items = favItems.byList[listId]?.items || [];
+    const item = items.find(({ productId: itemProductId }) => productId === itemProductId);
+
+    if (!item) {
+      return undefined;
+    }
+
+    return {
+      listId,
+      productId,
+      item,
+      product: products[item.productId]?.productData,
+    };
+  }
 );

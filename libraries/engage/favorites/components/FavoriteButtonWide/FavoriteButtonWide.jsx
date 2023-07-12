@@ -9,6 +9,7 @@ import {
   makeIsProductOnFavoriteList,
   hasMultipleFavoritesList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/shopSettings';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
@@ -20,6 +21,7 @@ const makeMapStateToProps = () => {
   return (state, props) => ({
     isOnList: getIsOnList(state, props),
     hasMultipleLists: hasMultipleFavoritesList(state),
+    wishlistItemQuantityEnabled: getWishlistItemQuantityEnabled(state),
   });
 };
 
@@ -55,16 +57,18 @@ const FavoriteButtonWide = ({
   toggle,
   isOnList,
   hasMultipleLists,
+  wishlistItemQuantityEnabled,
 }) => {
   const label = useMemo(() => {
-    if (!isOnList) {
+    // When wishlist item quantity is active, items cannot be removed via the button
+    if (!isOnList || wishlistItemQuantityEnabled) {
       return 'favorites.add_to_list';
     } if (hasMultipleLists) {
       return 'favorites.edit_lists';
     }
 
     return 'favorites.remove_from_list';
-  }, [hasMultipleLists, isOnList]);
+  }, [hasMultipleLists, isOnList, wishlistItemQuantityEnabled]);
 
   if (!appConfig.hasFavorites) {
     return null;
@@ -87,6 +91,7 @@ FavoriteButtonWide.propTypes = {
   isOnList: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
+  wishlistItemQuantityEnabled: PropTypes.bool.isRequired,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteButtonWide);

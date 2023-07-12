@@ -58,3 +58,8 @@ if (hasWebBridge() && !iosThemeActive) {
     }
   }`);
 }
+
+// since iOS 15 button has a default color of blue rgb(0, 122, 255);
+css.global('button', {
+  color: 'inherit',
+});

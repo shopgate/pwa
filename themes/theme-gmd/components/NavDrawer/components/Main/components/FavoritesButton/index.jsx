@@ -18,18 +18,21 @@ import portalProps from '../../../../portalProps';
 const LABEL = 'navigation.favorites';
 
 /**
+ * @param {Object} props The component props
  * @param {Function} props.navigate The navigate action.
  * @param {Function} props.count The favorite list item count.
+ * @param {Function} props.showWishlistItemsCountBadge Whether to show the badge or not
  * @returns {JSX}
  */
-const FavoritesButton = ({ navigate, count }) => {
-  const ariaLabel = `${i18n.text(LABEL)}. ${i18n.text('common.products')}: ${count}.`;
+const FavoritesButton = ({ navigate, count, showWishlistItemsCountBadge }) => {
+  const ariaLabel = showWishlistItemsCountBadge ? `${i18n.text('common.products')}: ${count}.` : '';
+
   return (
     <Fragment>
       <Portal name={NAV_MENU_FAVORITES_BEFORE} props={portalProps} />
       <Portal name={NAV_MENU_FAVORITES} props={portalProps}>
         <NavDrawer.Item
-          badge={Badge}
+          {...(showWishlistItemsCountBadge ? { badge: Badge } : {})}
           label={LABEL}
           aria-label={ariaLabel}
           icon={HeartIcon}
@@ -44,6 +47,7 @@ const FavoritesButton = ({ navigate, count }) => {
 
 FavoritesButton.propTypes = {
   navigate: PropTypes.func.isRequired,
+  showWishlistItemsCountBadge: PropTypes.bool.isRequired,
   count: PropTypes.number,
 };
 

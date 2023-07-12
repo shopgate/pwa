@@ -1,10 +1,9 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const content = css({
-  background: colors.light,
   position: 'relative',
   padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
 }).toString();

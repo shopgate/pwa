@@ -33,6 +33,7 @@ exports[`<Header /> should render with correct title 1`] = `
     grow={1}
     role="heading"
     shrink={1}
+    tabIndex={0}
   >
     My Title
   </GridItem>
