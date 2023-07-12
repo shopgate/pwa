@@ -1,5 +1,19 @@
 # Changelog
 
+## [v7.9.0](https://github.com/shopgate/pwa/compare/v7.8.2...v7.9.0) (2023-07-12)
+
+#### :rocket: Enhancement
+* [#1194](https://github.com/shopgate/pwa/pull/1194) Improved a11y for extended wishlist ([@fkloes](https://github.com/fkloes))
+* [#1191](https://github.com/shopgate/pwa/pull/1191) Implemented extended wishlist ([@SaschaKrist](https://github.com/SaschaKrist))
+* [#1192](https://github.com/shopgate/pwa/pull/1192) Implemented automatic logout on session expiry ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1193](https://github.com/shopgate/pwa/pull/1193) Fixed determination of new wish list related settings ([@fkloes](https://github.com/fkloes))
+
+#### :house: Internal
+* [#1195](https://github.com/shopgate/pwa/pull/1195) Extended favorites and auto logout ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
