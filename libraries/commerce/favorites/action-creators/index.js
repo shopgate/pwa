@@ -31,14 +31,16 @@ import { makeGetFavorites } from '../selectors';
  * @param {string} listId List identifier.
  * @param {number} quantity New favorites quantity to set
  * @param {string} notes New favorites notes to set
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Object}
  */
-export const addProductToFavorites = (productId, listId, quantity, notes) => ({
+export const addProductToFavorites = (productId, listId, quantity, notes, showToast = true) => ({
   type: ADD_PRODUCT_TO_FAVORITES,
   productId,
   listId,
   quantity,
   notes,
+  showToast,
 });
 
 /**
@@ -101,26 +103,30 @@ export const errorFavorites = (productId, error) => ({
  * @param {string} listId List identifier.
  * @param {number} quantity New favorites quantity to set
  * @param {string} notes New favorites notes to set
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Object}
  */
-export const requestAddFavorites = (productId, listId, quantity, notes) => ({
+export const requestAddFavorites = (productId, listId, quantity, notes, showToast = true) => ({
   type: REQUEST_ADD_FAVORITES,
   productId,
   listId,
   quantity,
   notes,
+  showToast,
 });
 
 /**
  * Action to be triggered upon successful addFavorites pipeline call.
  * @param {string} productId Product identifier.
  * @param {string} listId List identifier.
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Object}
  */
-export const successAddFavorites = (productId, listId) => ({
+export const successAddFavorites = (productId, listId, showToast = true) => ({
   type: SUCCESS_ADD_FAVORITES,
   productId,
   listId,
+  showToast,
 });
 
 /**
