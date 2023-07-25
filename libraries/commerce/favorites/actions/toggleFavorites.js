@@ -24,6 +24,7 @@ import fetchFavoritesListsWithItems from './fetchFavoritesListsWithItems';
  * @param {string} listId List identifier.
  * @param {number} quantity New favorites quantity to set
  * @param {string} notes New favorites notes to set
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @return {Function}
  */
 export const addFavorite = mutable((

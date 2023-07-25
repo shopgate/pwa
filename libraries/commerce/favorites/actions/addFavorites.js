@@ -8,9 +8,10 @@ import { successAddFavorites, errorAddFavorites } from '../action-creators';
  * @param {string} listId Id of the list to be added.
  * @param {number} quantity New favorites quantity to set
  * @param {string} notes New favorites notes to set
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Function} A redux thunk.
  */
-function addFavorites(productId, listId = null, quantity, notes) {
+function addFavorites(productId, listId = null, quantity, notes, showToast = true) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
     const { lists } = getState().favorites.lists;
@@ -29,7 +30,7 @@ function addFavorites(productId, listId = null, quantity, notes) {
 
     try {
       await request;
-      dispatch(successAddFavorites(productId, takenListId));
+      dispatch(successAddFavorites(productId, takenListId, showToast));
     } catch (error) {
       dispatch(errorAddFavorites(productId, error, takenListId));
     }

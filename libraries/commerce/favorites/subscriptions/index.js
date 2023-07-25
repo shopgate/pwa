@@ -115,7 +115,13 @@ export default function favorites(subscribe) {
       error.code = FAVORITES_LIMIT_ERROR;
       dispatch(errorFavorites(action.productId, error));
     } else {
-      dispatch(requestAddFavorites(action.productId, action.listId, action.quantity, action.notes));
+      dispatch(requestAddFavorites(
+        action.productId,
+        action.listId,
+        action.quantity,
+        action.notes,
+        action.showToast
+      ));
     }
   });
 
@@ -205,6 +211,7 @@ export default function favorites(subscribe) {
         listId,
         quantity,
         notes,
+        showToast,
       } = {}] = groupedActions;
 
       const updateActions = groupedActions
@@ -229,7 +236,7 @@ export default function favorites(subscribe) {
         // Sum up all adds and removes, based on sum dispatch add / remove
         const addRemoveBalance = addActions.length - removeActions.length;
         if (addRemoveBalance > 0) {
-          await dispatch(addFavorites(productId, listId, quantity, notes));
+          await dispatch(addFavorites(productId, listId, quantity, notes, showToast));
         }
         if (addRemoveBalance < 0) {
           await dispatch(removeFavorites(productId, listId, quantity, notes));
@@ -268,13 +275,13 @@ export default function favorites(subscribe) {
     }
   });
 
-  subscribe(favoritesDidAddItem$, ({ events, getState }) => {
+  subscribe(favoritesDidAddItem$, ({ events, getState, action }) => {
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(getState());
 
     // When wish list loading on app start is enabled, toast is shown after the add action from
     // the buffer system is dispatched. We wait for that since the item might have been removed
     // again within the debounce time.
-    if (loadWishlistOnAppStartEnabled) {
+    if (loadWishlistOnAppStartEnabled && action?.showToast !== false) {
       events.emit(ToastProvider.ADD, {
         id: 'favorites.added',
         message: 'favorites.added',
