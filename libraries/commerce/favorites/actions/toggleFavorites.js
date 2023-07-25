@@ -26,9 +26,15 @@ import fetchFavoritesListsWithItems from './fetchFavoritesListsWithItems';
  * @param {string} notes New favorites notes to set
  * @return {Function}
  */
-export const addFavorite = mutable((productId, listId, quantity, notes) => (dispatch, getState) => {
+export const addFavorite = mutable((
+  productId,
+  listId,
+  quantity,
+  notes,
+  showToast = true
+) => (dispatch, getState) => {
   const defaultList = getFavoritesDefaultList(getState());
-  dispatch(addProductToFavorites(productId, listId || defaultList.id, quantity, notes));
+  dispatch(addProductToFavorites(productId, listId || defaultList.id, quantity, notes, showToast));
 });
 
 /**

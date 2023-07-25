@@ -31,14 +31,16 @@ import { makeGetFavorites } from '../selectors';
  * @param {string} listId List identifier.
  * @param {number} quantity New favorites quantity to set
  * @param {string} notes New favorites notes to set
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Object}
  */
-export const addProductToFavorites = (productId, listId, quantity, notes) => ({
+export const addProductToFavorites = (productId, listId, quantity, notes, showToast = true) => ({
   type: ADD_PRODUCT_TO_FAVORITES,
   productId,
   listId,
   quantity,
   notes,
+  showToast,
 });
 
 /**
