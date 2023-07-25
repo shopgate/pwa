@@ -48,6 +48,7 @@ const ItemQuantity = ({
     <div className={styles.root}>
       <UnitQuantityPicker
         maxValue={99}
+        minValue={1}
         maxDecimals={0}
         incrementStep={1}
         decrementStep={1}
