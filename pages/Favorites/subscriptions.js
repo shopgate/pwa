@@ -17,7 +17,9 @@ export default function favorites(subscribe) {
           action.productId,
           action.listId,
           action.quantity,
-          action.notes
+          action.notes,
+          // No toast to prevent issue with SnackBar when toast is triggered by another toast
+          false
         )),
         actionLabel: 'common.undo',
       });
