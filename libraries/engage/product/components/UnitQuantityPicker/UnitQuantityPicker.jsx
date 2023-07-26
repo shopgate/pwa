@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback, useEffect, useState, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import { css } from 'glamor';
@@ -87,6 +89,8 @@ const UnitQuantityPicker = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
+  const inputRef = useRef(null);
+
   const handleOnFocus = useCallback(() => {
     setIsFocused(true);
   }, []);
@@ -151,6 +155,19 @@ const UnitQuantityPicker = ({
   }, []);
   /* eslint-enable react-hooks/exhaustive-deps */
 
+  /**
+   * Handler for pressing "enter" on Android
+   */
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === 'Enter' && inputRef.current !== null) {
+      try {
+        inputRef.current.blur();
+      } catch (e) {
+        // nothing to do here
+      }
+    }
+  }, []);
+
   return (
     <>
       { isFocused && (
@@ -184,6 +201,8 @@ const UnitQuantityPicker = ({
             aria-label={i18n.text('product.quantity')}
             onFocus={handleOnFocus}
             onBlur={handleOnBlur}
+            onKeyDown={handleKeyDown}
+            ref={inputRef}
           />
         </span>
 

@@ -95,9 +95,9 @@ const QuantityInput = forwardRef(({
     <input
       ref={inputRef}
       {...inputProps}
-      inputMode="decimal"
+      inputMode={maxDecimals > 0 ? 'decimal' : 'numeric'}
       /* Pattern signals some browsers to use specialized keyboard (if inputmode not supported */
-      pattern="[0-9.,]*"
+      pattern={maxDecimals > 0 ? '[0-9.,]*' : '[0–9]*'}
       onFocus={onFocus}
       onBlur={onBlur}
       className={className}
