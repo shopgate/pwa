@@ -282,13 +282,16 @@ const FavoriteItem = ({
   }), [handleAddToCart, isBaseProduct, isDisabled, listId, product.id, remove]);
 
   const handleChangeQuantity = useCallback((newQuantity) => {
+    // Do nothing when quantity didn't change
+    if (newQuantity === quantity) return;
+
     updateFavoriteItem(
       product.id,
       listId,
       newQuantity,
       notes
     );
-  }, [listId, notes, product.id, updateFavoriteItem]);
+  }, [listId, notes, product.id, quantity, updateFavoriteItem]);
 
   const handleDeleteComment = useCallback((event) => {
     event.preventDefault();
