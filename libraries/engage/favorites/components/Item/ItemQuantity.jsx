@@ -54,6 +54,7 @@ const ItemQuantity = ({
         decrementStep={1}
         onChange={handleChange}
         value={internalQuantity}
+        toggleTabBarOnFocus
       />
     </div>
   );

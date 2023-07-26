@@ -2,7 +2,7 @@ import React, {
   useCallback, useEffect, useState, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, UIEvents } from '@shopgate/engage/core';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
@@ -86,6 +86,7 @@ const UnitQuantityPicker = ({
   disabled,
   minValue,
   maxValue,
+  toggleTabBarOnFocus,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -93,11 +94,18 @@ const UnitQuantityPicker = ({
 
   const handleOnFocus = useCallback(() => {
     setIsFocused(true);
-  }, []);
+    if (toggleTabBarOnFocus) {
+      UIEvents.emit('HIDE_TAB_BAR');
+    }
+  }, [toggleTabBarOnFocus]);
 
   const handleOnBlur = useCallback(() => {
     setIsFocused(false);
-  }, []);
+
+    if (toggleTabBarOnFocus) {
+      UIEvents.emit('SHOW_TAB_BAR');
+    }
+  }, [toggleTabBarOnFocus]);
 
   const handleManualChange = useCallback((newValue) => {
     onChange(newValue);
@@ -236,6 +244,7 @@ UnitQuantityPicker.propTypes = {
   maxDecimals: PropTypes.number,
   maxValue: PropTypes.number,
   minValue: PropTypes.number,
+  toggleTabBarOnFocus: PropTypes.bool,
   unit: PropTypes.string,
 };
 
@@ -251,6 +260,7 @@ UnitQuantityPicker.defaultProps = {
   disabled: false,
   minValue: null,
   maxValue: null,
+  toggleTabBarOnFocus: false,
 };
 
 export default UnitQuantityPicker;
