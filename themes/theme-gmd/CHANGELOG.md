@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.9.4](https://github.com/shopgate/pwa/compare/v7.9.3...v7.9.4) (2023-07-27)
+
+#### :rocket: Enhancement
+* [#1197](https://github.com/shopgate/pwa/pull/1197) Implemented basic login form validation ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
