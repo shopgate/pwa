@@ -11,6 +11,7 @@ import {
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { View } from '@shopgate/engage/components';
+import { validate } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -32,6 +33,33 @@ import styles from './style';
 const defaultState = {
   login: '',
   password: '',
+  loginError: '',
+  passwordError: '',
+  showErrors: false,
+};
+
+const loginConstraints = {
+  login: {
+    presence: {
+      message: 'validation.required',
+      allowEmpty: false,
+    },
+    email: {
+      message: 'validation.email',
+    },
+  },
+};
+
+const passwordConstraints = {
+  password: {
+    presence: {
+      message: 'validation.required',
+      allowEmpty: false,
+    },
+    length: {
+      minimum: 3,
+    },
+  },
 };
 
 /**
@@ -44,12 +72,14 @@ class Login extends Component {
     isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
     redirect: PropTypes.shape(),
+    validate: PropTypes.bool,
   };
 
   static defaultProps = {
     isDisabled: false,
     isLoading: false,
     redirect: {},
+    validate: true,
   };
 
   /**
@@ -98,7 +128,14 @@ class Login extends Component {
    * @param {string} login The login username.
    */
   handleEmailChange = (login) => {
-    this.setState({ login });
+    this.setState(() => {
+      const { valid } = validate({ login }, loginConstraints);
+
+      return {
+        login,
+        loginError: !valid ? 'validation.email' : '',
+      };
+    });
   };
 
   /**
@@ -106,7 +143,14 @@ class Login extends Component {
    * @param {string} password The login password.
    */
   handlePasswordChange = (password) => {
-    this.setState({ password });
+    this.setState(() => {
+      const { valid } = validate({ password }, passwordConstraints);
+
+      return {
+        password,
+        passwordError: !valid ? 'validation.checkField' : '',
+      };
+    });
   };
 
   /**
@@ -119,6 +163,12 @@ class Login extends Component {
     // Blur all the fields.
     this.userField.blur();
     this.passwordField.blur();
+
+    if (this.props.validate && (this.state.loginError || this.state.passwordError)) {
+      // Start showing errors after first submit when configured
+      this.setState({ showErrors: true });
+      return;
+    }
 
     const { redirect = {} } = this.props;
     this.props.login(this.state, redirect);
@@ -155,6 +205,7 @@ class Login extends Component {
                   onChange={this.handleEmailChange}
                   value={this.state.login}
                   setRef={this.setUserFieldRef}
+                  errorText={this.state.showErrors ? this.state.loginError : ''}
                 />
                 <TextField
                   password
@@ -164,6 +215,7 @@ class Login extends Component {
                   onChange={this.handlePasswordChange}
                   value={this.state.password}
                   setRef={this.setPasswordFieldRef}
+                  errorText={this.state.showErrors ? this.state.passwordError : ''}
                 />
                 <div className={styles.forgotWrapper}>
                   <ForgotPassword />
