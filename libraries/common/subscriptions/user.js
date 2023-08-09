@@ -1,6 +1,7 @@
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import appConfig from '../helpers/config';
 import { LoadingProvider } from '../providers';
 import { fetchUser } from '../actions/user';
 import { successLogin } from '../action-creators';
@@ -53,6 +54,11 @@ export default function user(subscribe) {
     }
 
     const isAutoLogout = action.autoLogout;
+
+    if (isAutoLogout && appConfig?.disableAutoLogoutModal === true) {
+      // Prevent showing auto logout modal when turned off
+      return;
+    }
 
     const confirmed = await dispatch(showModal({
       confirm: 'modal.ok',

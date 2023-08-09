@@ -639,6 +639,15 @@
         "type": "json",
         "label": "App rating settings"
       }
+    },
+    "disableAutoLogoutModal": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Disable the modal that is shown after automatic logout"
+      }
     }
   }
 }
