@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.9.5](https://github.com/shopgate/pwa/compare/v7.9.4...v7.9.5) (2023-08-09)
+
+#### :rocket: Enhancement
+* [#1198](https://github.com/shopgate/pwa/pull/1198) Added theme config to disable auto logout modal ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
