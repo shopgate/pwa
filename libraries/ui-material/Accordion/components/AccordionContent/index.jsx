@@ -42,7 +42,7 @@ function AccordionContent(props: Props) {
   });
 
   return (
-    <animated.div className={styles.content} style={expand} id={id} aria-hidden={!open}>
+    <animated.div className={classnames('ui-material__accordion-content', styles.content)} style={expand} id={id} aria-hidden={!open}>
       <div ref={ref}>
         <div className={classnames(styles.contentInner, className)}>
           {children}

@@ -190,9 +190,12 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
         >
           <Wrapper
             dense={false}
+            groupName=""
+            htmlOnly={false}
           >
             <div
-              className="css-1x8awm9"
+              className="engage__product__product-property-group css-1x8awm9"
+              data-group-name=""
             >
               <table>
                 <thead />
@@ -208,9 +211,11 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                   >
                     <Row
                       key="undefined-undefined"
+                      type={null}
                     >
                       <tr
-                        key="undefinedundefined"
+                        className="engage__product__product-property"
+                        data-type={null}
                       >
                         <td
                           className={

@@ -46,7 +46,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       aria-controls="Some-Thing-content"
       aria-expanded={false}
       aria-label={null}
-      className="css-1m4mdin"
+      className="ui-material__accordion-title css-1m4mdin"
       data-test-id="Some Thing"
       key="accordion-toggle"
       onClick={[Function]}
@@ -101,11 +101,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
     >
       <ForwardRef
         aria-hidden={true}
-        className={
-          Object {
-            "data-css-apm51k": "",
-          }
-        }
+        className="ui-material__accordion-content css-apm51k"
         id="Some-Thing-content"
         style={
           Object {
@@ -115,11 +111,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       >
         <div
           aria-hidden={true}
-          className={
-            Object {
-              "data-css-apm51k": "",
-            }
-          }
+          className="ui-material__accordion-content css-apm51k"
           id="Some-Thing-content"
           style={
             Object {

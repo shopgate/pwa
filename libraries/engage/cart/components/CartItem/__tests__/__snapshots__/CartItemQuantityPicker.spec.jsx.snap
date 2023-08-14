@@ -33,12 +33,12 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="1"
       />
     </ForwardRef>
@@ -79,12 +79,12 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="1"
       />
     </ForwardRef>
@@ -125,12 +125,12 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="2"
       />
     </ForwardRef>
@@ -185,12 +185,12 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="123"
       />
     </ForwardRef>
@@ -252,12 +252,12 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="1"
       />
     </ForwardRef>
@@ -312,12 +312,12 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="1"
       />
     </ForwardRef>
@@ -401,12 +401,12 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="1"
       />
     </ForwardRef>
@@ -447,12 +447,12 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="3"
       />
     </ForwardRef>
@@ -493,12 +493,12 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
         className="css-1bncmx2"
         data-test-id="quantityPicker"
         disabled={false}
-        inputMode="decimal"
+        inputMode="numeric"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
-        pattern="[0-9.,]*"
+        pattern="[0–9]*"
         value="0"
       />
     </ForwardRef>
