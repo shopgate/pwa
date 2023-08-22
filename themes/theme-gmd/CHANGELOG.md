@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.10.0](https://github.com/shopgate/pwa/compare/v7.9.5...v7.10.0) (2023-08-22)
+
+#### :rocket: Enhancement
+* [#1199](https://github.com/shopgate/pwa/pull/1199) Added support for product properties of type "html" ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
