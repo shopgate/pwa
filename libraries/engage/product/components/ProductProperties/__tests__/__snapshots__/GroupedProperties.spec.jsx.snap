@@ -23,6 +23,8 @@ Array [
     >
       <Wrapper
         dense={true}
+        groupName="Group 1"
+        htmlOnly={false}
       >
         <Lists
           properties={
@@ -64,6 +66,8 @@ Array [
     >
       <Wrapper
         dense={true}
+        groupName="Group 2"
+        htmlOnly={false}
       >
         <Lists
           properties={

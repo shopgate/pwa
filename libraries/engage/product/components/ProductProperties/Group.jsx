@@ -9,7 +9,9 @@ import { subgroup } from './style';
  */
 const Group = ({ group }) => (
   <tr>
-    <td colSpan="2" className={subgroup}><span dangerouslySetInnerHTML={{ __html: group }} /></td>
+    <td colSpan="2" className={subgroup}>
+      <span dangerouslySetInnerHTML={{ __html: group }} />
+    </td>
   </tr>
 );
 
