@@ -93,7 +93,7 @@ class ViewContent extends Component {
     if (this.ref.current === window) {
       scrollTop = window.scrollY;
     } else {
-      (scrollTop = this.ref.current);
+      ({ scrollTop } = this.ref.current);
     }
 
     router.update(this.context.id, {
