@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.10.1](https://github.com/shopgate/pwa/compare/v7.10.0...v7.10.1) (2023-08-25)
+
+#### :bug: Bug Fix
+* [#1200](https://github.com/shopgate/pwa/pull/1200) Fixed scroll position persistence at back navigation ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
