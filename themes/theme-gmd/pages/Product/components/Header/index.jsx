@@ -24,7 +24,7 @@ class ProductHeader extends PureComponent {
     const id = variantId || productId;
 
     return (
-      <div className={styles.content}>
+      <div className={`${styles.content} theme__product__header`}>
         <CTAButtons productId={id} />
         <Section title="product.sections.information">
           <Rating productId={productId} />
