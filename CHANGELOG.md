@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.19.8](https://github.com/shopgate/pwa/compare/v6.19.7...v6.19.8) (2023-10-26)
+
+#### :rocket: Enhancement
+* [#1201](https://github.com/shopgate/pwa/pull/1201) CURB-3543 Improvements for fashion theme ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.19.7](https://github.com/shopgate/pwa/compare/v6.19.6...v6.19.7) (2023-04-27)
 
 #### :rocket: Enhancement
