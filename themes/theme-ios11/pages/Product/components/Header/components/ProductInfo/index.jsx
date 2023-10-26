@@ -32,8 +32,8 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
-      <Grid component="div">
-        <Grid.Item component="div" grow={1}>
+      <Grid component="div" className="theme__product__header__product-info">
+        <Grid.Item component="div" grow={1} className="theme__product__header__product-info__row1">
           <Portal name={PRODUCT_INFO_ROW1}>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
@@ -64,7 +64,7 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
               }
           </Portal>
         </Grid.Item>
-        <Grid.Item component="div" className={styles.priceContainer}>
+        <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
           <Portal name={PRODUCT_INFO_ROW2}>
             <div>
               <PriceStriked productId={productId} options={options} />
