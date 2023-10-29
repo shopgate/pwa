@@ -27,20 +27,26 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return (dispatch) => {
     dispatch(requestLogin(parameters.login, parameters.password, strategy));
 
-    const request = new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
-      .setTrusted()
-      .setErrorBlacklist([
-        EINVALIDCALL,
-        ELEGACYSGCONNECT,
-        EINCOMPLETELOGIN,
-      ])
-      .setInput({
-        strategy,
-        parameters,
+    return new Promise(resolve => window.grecaptcha.enterprise.ready(resolve))
+      .then(async () => {
+        const result = await window.grecaptcha.enterprise.execute('6LePX9soAAAAAGx1eawnMrtRCz80Mf57owgVIy_n', { action: 'login' });
+        return result;
       })
-      .dispatch();
-
-    request
+      .then(token => new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
+        .setTrusted()
+        .setErrorBlacklist([
+          EINVALIDCALL,
+          ELEGACYSGCONNECT,
+          EINCOMPLETELOGIN,
+        ])
+        .setInput({
+          strategy,
+          parameters: {
+            ...parameters,
+            recaptchaToken: token,
+          },
+        })
+        .dispatch())
       .then((result) => {
         const { success, messages, sessionLifetimeInSeconds } = result;
 
@@ -71,8 +77,6 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
           dispatch(errorLogin([], code));
         }
       });
-
-    return request;
   };
 }
 

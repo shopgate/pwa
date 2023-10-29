@@ -83,6 +83,12 @@ const Pages = ({ store }) => (
   <App store={store}>
     <Helmet>
       <html lang={appConfig.language.substring(0, 2)} />
+      <script src="https://www.google.com/recaptcha/enterprise.js?render=6LePX9soAAAAAGx1eawnMrtRCz80Mf57owgVIy_n" />
+      <style type="text/css">
+        {`
+          .grecaptcha-badge { display:none; }
+        `}
+      </style>
     </Helmet>
     <NavigationHandler>
       <AppProvider>
