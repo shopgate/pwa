@@ -26,12 +26,16 @@ import appConfig from '../../helpers/config';
  */
 function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return async (dispatch) => {
-    const { enabled: recaptchaEnabled, siteKey } = appConfig?.recaptcha;
+    const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
     dispatch(requestLogin(parameters.login, parameters.password, strategy));
 
     let recaptchaToken;
-    if (recaptchaEnabled && siteKey) {
-      recaptchaToken = await window.grecaptcha.enterprise.execute(siteKey, { action: 'login' });
+    if (recaptchaEnabled && googleCloudSiteKey) {
+      try {
+        recaptchaToken = await window.grecaptcha.enterprise.execute(googleCloudSiteKey, { action: 'login' });
+      } catch (error) {
+        dispatch(errorLogin(error));
+      }
     }
 
     const request = new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
