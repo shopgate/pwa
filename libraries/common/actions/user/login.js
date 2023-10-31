@@ -33,8 +33,8 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
     if (recaptchaEnabled && googleCloudSiteKey) {
       try {
         recaptchaToken = await window.grecaptcha.enterprise.execute(googleCloudSiteKey, { action: 'login' });
-      } catch (error) {
-        dispatch(errorLogin(error));
+      } catch (e) {
+        // noting to do here - just for protection
       }
     }
 
