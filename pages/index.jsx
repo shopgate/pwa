@@ -101,14 +101,14 @@ const globalLocationSelectorAllowList = [
  * @returns {JSX}
  */
 const Pages = ({ store }) => {
-  const { enabled: recaptchaEnabled, siteKey } = appConfig?.recaptcha;
+  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
 
   return (
     <App store={store}>
       <Helmet>
         <html lang={appConfig.language.substring(0, 2)} />
-        {recaptchaEnabled && siteKey ? (
-          <script src={`https://www.google.com/recaptcha/enterprise.js?render=${siteKey}`} />
+        {recaptchaEnabled && googleCloudSiteKey ? (
+          <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
         ) : null }
         <style type="text/css">
           {`
