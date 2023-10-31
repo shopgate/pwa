@@ -13,6 +13,7 @@ import {
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
 import { mutable } from '../../helpers/redux';
+import appConfig from '../../helpers/config';
 
 /**
  * Login the current user.
@@ -24,8 +25,18 @@ import { mutable } from '../../helpers/redux';
  * @return {Function} A redux thunk.
  */
 function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
-  return (dispatch) => {
+  return async (dispatch) => {
+    const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
     dispatch(requestLogin(parameters.login, parameters.password, strategy));
+
+    let recaptchaToken;
+    if (recaptchaEnabled && googleCloudSiteKey) {
+      try {
+        recaptchaToken = await window.grecaptcha.enterprise.execute(googleCloudSiteKey, { action: 'login' });
+      } catch (e) {
+        // noting to do here - just for protection
+      }
+    }
 
     const request = new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
       .setTrusted()
@@ -36,7 +47,10 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
       ])
       .setInput({
         strategy,
-        parameters,
+        parameters: {
+          ...parameters,
+          ...(recaptchaToken ? { recaptchaToken } : null),
+        },
       })
       .dispatch();
 
