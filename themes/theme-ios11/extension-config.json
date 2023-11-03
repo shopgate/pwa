@@ -596,7 +596,7 @@
       },
       "params": {
         "type": "json",
-        "label": "An info text shown after the reviews on PDP"
+        "label": "An info text shown after the reviews on PDP. The text can be extended with a link to e.g. a cms page."
       }
     }
   }
