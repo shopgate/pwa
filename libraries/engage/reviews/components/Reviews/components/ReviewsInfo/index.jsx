@@ -22,7 +22,7 @@ const styles = {
 };
 
 const {
-  reviewsInfoText: {
+  reviewsInfo: {
     text,
     linkText,
     linkUrl,
@@ -30,12 +30,12 @@ const {
 } = appConfig;
 
 /**
- * The ReviewsInfoText component
+ * The ReviewsInfo component
  * @param {Object} props The component props
  * @param {Array} [props.reviews] The reviews shown inside the Reviews component
  * @returns {JSX}
  */
-const ReviewsInfoText = ({
+const ReviewsInfo = ({
   reviews,
 }) => {
   if (!Array.isArray(reviews) || reviews.length === 0 || !text) {
@@ -56,12 +56,12 @@ const ReviewsInfoText = ({
   );
 };
 
-ReviewsInfoText.propTypes = {
+ReviewsInfo.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.shape()),
 };
 
-ReviewsInfoText.defaultProps = {
+ReviewsInfo.defaultProps = {
   reviews: [],
 };
 
-export default ReviewsInfoText;
+export default ReviewsInfo;

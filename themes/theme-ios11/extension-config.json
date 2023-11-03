@@ -586,7 +586,7 @@
         "label": "App rating settings"
       }
     },
-    "reviewsInfoText": {
+    "reviewsInfo": {
       "type": "admin",
       "destination": "frontend",
       "default": {
