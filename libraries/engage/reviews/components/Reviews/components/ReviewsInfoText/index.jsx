@@ -8,14 +8,12 @@ import { Link } from '@shopgate/engage/components';
 const styles = {
   root: css({
     textAlign: 'center',
-    marginBottom: '2rem',
     marginTop: 16,
     fontSize: '.875rem',
     fontWeight: 300,
     lineHeight: 1.5,
-    marginLeft: 16,
-    marginRight: 16,
-  }),
+    padding: '0.8125rem 1rem 1rem',
+  }).toString(),
   link: css({
     textAlign: 'center',
     fontWeight: 600,
@@ -40,7 +38,7 @@ const {
 const ReviewsInfoText = ({
   reviews,
 }) => {
-  if (!reviews || reviews.length === 0 || !text) {
+  if (!Array.isArray(reviews) || reviews.length === 0 || !text) {
     return null;
   }
 
