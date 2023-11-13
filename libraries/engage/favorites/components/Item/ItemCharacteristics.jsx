@@ -5,7 +5,7 @@ import { css } from 'glamor';
 const styles = {
   property: css({
     fontSize: 14,
-    color: 'var(--color-text-low-emphasis)',
+    color: 'var(--color-text-medium-emphasis)',
     fontWeight: 400,
     whiteSpace: 'nowrap',
     overflow: 'hidden',

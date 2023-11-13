@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import { ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { FulfillmentSelector } from '@shopgate/engage/locations';
+import { PORTAL_PRODUCT_IMAGE_SLIDER } from '@shopgate/engage/components/constants';
 import { Section } from '@shopgate/engage/a11y';
 import {
   ProductProperties,
@@ -92,7 +93,15 @@ const ContentWide = ({
   <div className={styles.root}>
     <div className={styles.mediaRow}>
       <ProductDiscountBadge productId={productId} />
-      <Media productId={productId} variantId={variantId} />
+      <SurroundPortals
+        portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
+        portalProps={{
+          productId,
+          variantId,
+        }}
+      >
+        <Media productId={productId} variantId={variantId} />
+      </SurroundPortals>
     </div>
     <div className={styles.contentRow}>
       <Header />

@@ -15,17 +15,18 @@ import {
   didReceiveFlushFavoritesBuffer$,
   errorFavoritesLimit$,
   refreshFavorites$,
+  updateProductInFavoritesDebounced$,
 } from '../streams';
 import favorites from './index';
 import fetchFavorites from '../actions/fetchFavorites';
 import addFavorites from '../actions/addFavorites';
 import removeFavorites from '../actions/removeFavorites';
+import updateFavorites from '../actions/updateFavorites';
 import { FAVORITES_LIMIT_ERROR } from '../constants';
 import {
   SHOPGATE_USER_ADD_FAVORITES,
   SHOPGATE_USER_DELETE_FAVORITES,
 } from '../constants/Pipelines';
-import { fetchProductsById } from '../../product';
 import {
   addProductToFavorites,
   removeProductFromFavorites,
@@ -34,13 +35,15 @@ import {
   cancelRequestSyncFavorites,
   errorFavorites,
   idleSyncFavorites,
+  updateProductInFavorites,
+  requestUpdateFavorites,
 } from '../action-creators';
 import {
-  getFavoritesProductsIds,
   getFavoritesProducts,
   getFavoritesCount,
   makeGetProductRelativesOnFavorites,
 } from '../selectors';
+import fetchFavoritesListsWithItems from '../actions/fetchFavoritesListsWithItems';
 
 // Required for custom runner without env-setup
 jest.mock('@shopgate/pwa-core', () => {});
@@ -51,6 +54,14 @@ jest.mock('@shopgate/pwa-common/actions/modal/showModal', () =>
 jest.mock('@shopgate/pwa-common-commerce/product', () => ({
   fetchProductsById: jest.fn(),
 }));
+
+jest.mock('@shopgate/pwa-common/providers', () => ({
+  LoadingProvider: {
+    setLoading: jest.fn(),
+    unsetLoading: jest.fn(),
+  },
+}));
+
 const mockedDefaultListId = 'DEFAULT';
 
 jest.mock('../actions/fetchFavorites', () =>
@@ -61,15 +72,32 @@ jest.mock('../actions/fetchFavoritesList', () =>
     name: 'Wish List',
   }]));
 
+jest.mock('../actions/fetchFavoritesListsWithItems', () => {
+  const original = jest.requireActual('../actions/fetchFavoritesListsWithItems');
+  return {
+    __esModule: true,
+    default: jest.fn(original.default),
+  };
+});
+
 // Mock all used selectors to avoid mocking the store
 let mockedGetFavoritesProductsIdsReturnValue;
 let mockedGetFavoritesCountReturnValue;
+let mockedGetFavoritesCountByListReturnValue;
 let mockedGetFavoritesProductsReturnValue;
 let mockedGetProductRelativesOnFavoritesReturnValue;
+let mockedMakeGetFavoritesReturnValue;
+
+const mockedMakeGetFavoritesCountByList = jest.fn(
+  () => mockedGetFavoritesCountByListReturnValue || 0
+);
+
 jest.mock('../selectors', () => ({
   getFavoritesProductsIds: jest.fn(() => mockedGetFavoritesProductsIdsReturnValue),
   getFavoritesProducts: jest.fn(() => mockedGetFavoritesProductsReturnValue),
   getFavoritesCount: jest.fn(() => mockedGetFavoritesCountReturnValue),
+  makeGetFavoritesCountByList: jest.fn(() => mockedMakeGetFavoritesCountByList),
+  makeGetFavorites: jest.fn(() => mockedMakeGetFavoritesReturnValue),
   makeGetProductRelativesOnFavorites: jest.fn(() =>
     jest.fn().mockReturnValue(mockedGetProductRelativesOnFavoritesReturnValue)),
 }));
@@ -78,12 +106,15 @@ jest.mock('../actions/addFavorites', () =>
   jest.fn().mockReturnValue('addFavoritesResult'));
 jest.mock('../actions/removeFavorites', () =>
   jest.fn().mockReturnValue('removeFavoritesResult'));
+jest.mock('../actions/updateFavorites', () =>
+  jest.fn().mockReturnValue('updateFavoritesResult'));
 
 let mockedHasFavorites = true;
 let mockedFavoritesLimit = 100;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
   get favorites() { return { limit: mockedFavoritesLimit }; },
+  get themeConfig() { return {}; },
 }));
 
 /**
@@ -115,10 +146,26 @@ describe('Favorites - subscriptions', () => {
       pipelineDependencies.set = pipelineDependenciesSet;
     });
 
+    const getState = jest.fn().mockReturnValue(() => {});
     // Dispatch always resolves it's promise by default
-    const dispatch = jest.fn(result => result);
-    const getState = jest.fn().mockReturnValue('getState');
+    const dispatch = jest.fn((result) => {
+      if (typeof result === 'function') {
+        return result(dispatch, getState);
+      }
+
+      return result;
+    });
     const productIds = ['prod1', 'prod2'];
+    const defaultListItems = [{
+      quantity: 1,
+      notes: null,
+      productId: productIds[0],
+    },
+    {
+      quantity: 1,
+      notes: null,
+      productId: productIds[1],
+    }];
 
     beforeEach(() => {
       jest.clearAllMocks();
@@ -130,11 +177,12 @@ describe('Favorites - subscriptions', () => {
       mockedGetFavoritesProductsReturnValue = {
         byList: {
           DEFAULT: {
-            ids: productIds,
+            items: defaultListItems,
             isFetching: false,
           },
         },
       };
+      mockedMakeGetFavoritesReturnValue = jest.fn().mockReturnValue(defaultListItems);
     });
 
     describe('appDidStart$', () => {
@@ -143,11 +191,17 @@ describe('Favorites - subscriptions', () => {
       });
 
       it('should not return any value', async () => {
-        await expect(invoke(appDidStart$, { dispatch })).resolves.toBeUndefined();
+        await expect(invoke(appDidStart$, {
+          dispatch,
+          getState,
+        })).resolves.toBeUndefined();
       });
 
       it('should set up pipeline dependencies correctly', () => {
-        invoke(appDidStart$, { dispatch });
+        invoke(appDidStart$, {
+          dispatch,
+          getState,
+        });
 
         // Expect pipeline dependencies to be set correctly
         expect(pipelineDependencies.set).toHaveBeenCalledTimes(2);
@@ -164,12 +218,14 @@ describe('Favorites - subscriptions', () => {
       });
 
       it('should fetch favorites', async () => {
-        await invoke(appDidStart$, { dispatch });
+        await invoke(appDidStart$, {
+          dispatch,
+          getState,
+        });
 
-        // Expect fetch favorites action to be dispatched
-        expect(fetchFavorites).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledWith(fetchFavorites());
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(fetchFavoritesListsWithItems).toHaveBeenCalledTimes(1);
+        expect(fetchFavoritesListsWithItems).toHaveBeenCalledWith(false);
+        expect(dispatch).toHaveBeenCalledTimes(3);
       });
     });
 
@@ -189,16 +245,8 @@ describe('Favorites - subscriptions', () => {
         // eslint-disable-next-line extra-rules/no-single-line-objects
         await invoke(favoritesWillEnter$, { dispatch, getState });
 
-        // Expect products to be fetched correctly
-        expect(getState).toHaveBeenCalledTimes(1);
-        expect(getFavoritesProductsIds).toHaveBeenCalledWith(getState());
-        expect(getFavoritesProductsIds).toHaveBeenCalledTimes(1);
-        expect(fetchProductsById).toHaveBeenCalledWith(productIds, null, false, false);
-        expect(fetchProductsById).toHaveBeenCalledTimes(1);
-
-        // Expect the correct actions to be dispatched
-        expect(dispatch.mock.calls[1][0]).toBe(fetchFavorites());
-        expect(dispatch.mock.calls[2][1]).toBe(fetchProductsById());
+        expect(fetchFavoritesListsWithItems).toHaveBeenCalledTimes(1);
+        expect(fetchFavoritesListsWithItems).toHaveBeenCalledWith(true);
         expect(dispatch).toHaveBeenCalledTimes(3);
       });
     });
@@ -213,14 +261,14 @@ describe('Favorites - subscriptions', () => {
       });
 
       it('should fetch fresh favorites without using the cache', async () => {
-        await invoke(shouldFetchFreshFavorites$, { dispatch });
+        await invoke(shouldFetchFreshFavorites$, {
+          dispatch,
+          getState,
+        });
 
-        expect(fetchFavorites).toHaveBeenCalledTimes(1);
-        expect(fetchFavorites).toHaveBeenCalledWith(true, mockedDefaultListId);
-
-        // Expect the correct actions to be dispatched
-        expect(dispatch.mock.calls[1][0]).toBe(fetchFavorites(true));
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(fetchFavoritesListsWithItems).toHaveBeenCalledTimes(1);
+        expect(fetchFavoritesListsWithItems).toHaveBeenCalledWith(true);
+        expect(dispatch).toHaveBeenCalledTimes(3);
       });
     });
 
@@ -255,19 +303,22 @@ describe('Favorites - subscriptions', () => {
 
         const productId = 'prod3';
         mockedFavoritesLimit = 2;
-        mockedGetFavoritesCountReturnValue = 2;
+        mockedGetFavoritesCountByListReturnValue = 2;
 
         invoke(addProductToFavoritesDebounced$, {
-          action: addProductToFavorites(productId),
+          action: addProductToFavorites(productId, 'DEFAULT'),
           dispatch,
           getState,
         });
 
-        expect(getState).toHaveBeenCalledTimes(2);
+        expect(getState).toHaveBeenCalledTimes(1);
         expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
         expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
-        expect(getFavoritesCount).toHaveBeenCalledWith(getState());
-        expect(getFavoritesCount).toHaveBeenCalledTimes(1);
+
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledWith(getState());
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledTimes(1);
+        expect(mockedMakeGetFavoritesCountByList)
+          .toHaveReturnedWith(mockedGetFavoritesCountByListReturnValue);
 
         const error = new Error('Limit exceeded');
         error.code = FAVORITES_LIMIT_ERROR;
@@ -284,13 +335,38 @@ describe('Favorites - subscriptions', () => {
           getState,
         });
 
-        expect(getState).toHaveBeenCalledTimes(2);
+        expect(getState).toHaveBeenCalledTimes(1);
         expect(getFavoritesProducts).toHaveBeenCalledWith(getState());
         expect(getFavoritesProducts).toHaveBeenCalledTimes(1);
-        expect(getFavoritesCount).toHaveBeenCalledWith(getState());
-        expect(getFavoritesCount).toHaveBeenCalledTimes(1);
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledWith(getState());
+        expect(mockedMakeGetFavoritesCountByList).toHaveBeenCalledTimes(1);
 
         expect(dispatch).toHaveBeenCalledWith(requestAddFavorites(productId));
+        expect(dispatch).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('updateProductInFavoritesDebounced$', () => {
+      it('should subscribe to the stream', () => {
+        expect(getSubscriptionCount(updateProductInFavoritesDebounced$)).toBe(1);
+      });
+
+      it('should not return any value', () => {
+        expect(invoke(updateProductInFavoritesDebounced$, {
+          action: updateProductInFavorites('prod3'),
+          dispatch,
+          getState,
+        })).toBeUndefined();
+      });
+
+      it('should proceed and dispatch an add request if all is good', () => {
+        const productId = 'prod3';
+        invoke(updateProductInFavoritesDebounced$, {
+          action: updateProductInFavorites(productId),
+          dispatch,
+          getState,
+        });
+        expect(dispatch).toHaveBeenCalledWith(requestUpdateFavorites(productId));
         expect(dispatch).toHaveBeenCalledTimes(1);
       });
     });
@@ -360,12 +436,12 @@ describe('Favorites - subscriptions', () => {
 
         // Expect multiple remove requests to be dispatched
         expect(makeGetProductRelativesOnFavorites).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[0][0]).toEqual(
-          requestRemoveFavorites(productIds[0], mockedDefaultListId)
-        );
+        expect(dispatch).toHaveBeenCalledTimes(4);
         expect(dispatch.mock.calls[1][0]).toEqual(
-          requestRemoveFavorites(productIds[1], mockedDefaultListId)
+          requestRemoveFavorites(productIds[0], mockedDefaultListId)(dispatch, getState)
+        );
+        expect(dispatch.mock.calls[3][0]).toEqual(
+          requestRemoveFavorites(productIds[1], mockedDefaultListId)(dispatch, getState)
         );
       });
 
@@ -390,9 +466,13 @@ describe('Favorites - subscriptions', () => {
         mockedGetFavoritesProductsReturnValue = {
           byList: {
             DEFAULT: {
-              ids: [
-                ...mockedGetFavoritesProductsReturnValue.byList.DEFAULT.ids,
-                productId,
+              items: [
+                ...mockedGetFavoritesProductsReturnValue.byList.DEFAULT.items,
+                {
+                  productId,
+                  quantity: 1,
+                  notes: null,
+                },
               ],
             },
           },
@@ -409,11 +489,10 @@ describe('Favorites - subscriptions', () => {
 
         // Only one removal request is expected
         expect(makeGetProductRelativesOnFavorites).toHaveBeenCalledTimes(0);
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledWith(requestRemoveFavorites(
-          productId,
-          mockedDefaultListId
-        ));
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0]).toEqual(
+          requestRemoveFavorites(productId, mockedDefaultListId)(dispatch, getState)
+        );
       });
     });
 
@@ -484,7 +563,12 @@ describe('Favorites - subscriptions', () => {
           getState,
         },
         {
-          action: requestRemoveFavorites(productId, mockedDefaultListId),
+          action: requestUpdateFavorites(productId, mockedDefaultListId),
+          dispatch,
+          getState,
+        },
+        {
+          action: requestRemoveFavorites(productId, mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }])).toBeUndefined();
@@ -500,12 +584,11 @@ describe('Favorites - subscriptions', () => {
           getState,
         },
         {
-          action: requestRemoveFavorites(productId, mockedDefaultListId),
+          action: requestRemoveFavorites(productId, mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }]);
-
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenCalledWith(cancelRequestSyncFavorites(2, mockedDefaultListId));
       });
 
@@ -528,12 +611,9 @@ describe('Favorites - subscriptions', () => {
         // One cancel and one add action call as well as one idle-sync afterwards
         expect(addFavorites).toHaveBeenCalledTimes(1);
         expect(addFavorites.mock.calls[0][0]).toBe(productId);
-        expect(dispatch).toHaveBeenCalledTimes(3);
-        expect(dispatch.mock.calls[0][0]).toEqual(
-          cancelRequestSyncFavorites(1, mockedDefaultListId)
-        );
-        expect(dispatch.mock.calls[1][0]).toEqual(addFavorites());
-        expect(dispatch.mock.calls[2][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[0][0]).toEqual(addFavorites());
+        expect(dispatch.mock.calls[1][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
       });
 
       it('should filter out duplicated remove requests', async () => {
@@ -541,11 +621,11 @@ describe('Favorites - subscriptions', () => {
 
         // Remove the same product twice
         await invoke(didReceiveFlushFavoritesBuffer$, [{
-          action: requestRemoveFavorites(productId, mockedDefaultListId),
+          action: requestRemoveFavorites(productId, mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }, {
-          action: requestRemoveFavorites(productId, mockedDefaultListId),
+          action: requestRemoveFavorites(productId, mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }]);
@@ -555,12 +635,9 @@ describe('Favorites - subscriptions', () => {
         // One cancel and one add action call as well as one idle-sync afterwards
         expect(removeFavorites).toHaveBeenCalledTimes(1);
         expect(removeFavorites.mock.calls[0][0]).toBe(productId);
-        expect(dispatch).toHaveBeenCalledTimes(3);
-        expect(dispatch.mock.calls[0][0]).toEqual(
-          cancelRequestSyncFavorites(1, mockedDefaultListId)
-        );
-        expect(dispatch.mock.calls[1][0]).toEqual(removeFavorites());
-        expect(dispatch.mock.calls[2][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
+        expect(dispatch).toHaveBeenCalledTimes(4);
+        expect(dispatch.mock.calls[2][0]).toEqual(removeFavorites());
+        expect(dispatch.mock.calls[3][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
       });
 
       it('should not filter out unique add or remove requests', async () => {
@@ -574,11 +651,11 @@ describe('Favorites - subscriptions', () => {
           dispatch,
           getState,
         }, {
-          action: requestRemoveFavorites('prod1', mockedDefaultListId),
+          action: requestRemoveFavorites('prod1', mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }, {
-          action: requestRemoveFavorites('prod2', mockedDefaultListId),
+          action: requestRemoveFavorites('prod2', mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }]);
@@ -592,12 +669,38 @@ describe('Favorites - subscriptions', () => {
         expect(removeFavorites).toHaveBeenCalledTimes(2);
         expect(removeFavorites.mock.calls[0][0]).toBe('prod1');
         expect(removeFavorites.mock.calls[1][0]).toBe('prod2');
-        expect(dispatch).toHaveBeenCalledTimes(5);
-        expect(dispatch.mock.calls[0][0]).toEqual(addFavorites());
-        expect(dispatch.mock.calls[1][0]).toEqual(addFavorites());
-        expect(dispatch.mock.calls[2][0]).toEqual(removeFavorites());
-        expect(dispatch.mock.calls[3][0]).toEqual(removeFavorites());
-        expect(dispatch.mock.calls[4][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
+        expect(dispatch).toHaveBeenCalledTimes(7);
+        expect(dispatch.mock.calls[2][0]).toEqual(addFavorites());
+        expect(dispatch.mock.calls[3][0]).toEqual(addFavorites());
+        expect(dispatch.mock.calls[4][0]).toEqual(removeFavorites());
+        expect(dispatch.mock.calls[5][0]).toEqual(removeFavorites());
+        expect(dispatch.mock.calls[6][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
+      });
+
+      it('should filter out duplicated update requests', async () => {
+        const productId = 'prod1';
+
+        // Add the same product twice
+        await invoke(didReceiveFlushFavoritesBuffer$, [{
+          action: requestUpdateFavorites(productId, mockedDefaultListId, 2),
+          dispatch,
+          getState,
+        }, {
+          action: requestUpdateFavorites(productId, mockedDefaultListId, 3),
+          dispatch,
+          getState,
+        }]);
+
+        await flushPromises();
+
+        // One cancel and one add action call as well as one idle-sync afterwards
+        expect(updateFavorites).toHaveBeenCalledTimes(1);
+        expect(updateFavorites.mock.calls[0][0]).toBe(productId);
+        expect(updateFavorites.mock.calls[0][1]).toBe(mockedDefaultListId);
+        expect(updateFavorites.mock.calls[0][2]).toBe(3);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[0][0]).toEqual(updateFavorites());
+        expect(dispatch.mock.calls[1][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
       });
 
       it('should properly handle conflicts and duplicates when they occur at once', async () => {
@@ -615,7 +718,7 @@ describe('Favorites - subscriptions', () => {
           dispatch,
           getState,
         }, {
-          action: requestRemoveFavorites('prod1', mockedDefaultListId),
+          action: requestRemoveFavorites('prod1', mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }, {
@@ -623,7 +726,7 @@ describe('Favorites - subscriptions', () => {
           dispatch,
           getState,
         }, {
-          action: requestRemoveFavorites('prod2', mockedDefaultListId),
+          action: requestRemoveFavorites('prod2', mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }]);
@@ -636,19 +739,22 @@ describe('Favorites - subscriptions', () => {
         expect(addFavorites.mock.calls[1][0]).toBe('prod4');
         expect(removeFavorites).toHaveBeenCalledTimes(1);
         expect(removeFavorites.mock.calls[0][0]).toBe('prod2');
-        expect(dispatch).toHaveBeenCalledTimes(5);
-        expect(dispatch.mock.calls[0][0]).toEqual(
-          cancelRequestSyncFavorites(3, mockedDefaultListId)
-        );
-        expect(dispatch.mock.calls[1][0]).toEqual(addFavorites());
+        expect(dispatch).toHaveBeenCalledTimes(7);
         expect(dispatch.mock.calls[2][0]).toEqual(addFavorites());
-        expect(dispatch.mock.calls[3][0]).toEqual(removeFavorites());
-        expect(dispatch.mock.calls[4][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
+        expect(dispatch.mock.calls[3][0]).toEqual(addFavorites());
+        expect(dispatch.mock.calls[4][0]).toEqual(
+          cancelRequestSyncFavorites(2, mockedDefaultListId)
+        );
+        expect(dispatch.mock.calls[5][0]).toEqual(removeFavorites());
+        expect(dispatch.mock.calls[6][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
       });
 
       it('should not break on any failing request', async () => {
         dispatch.mockImplementation(async (action) => {
-          if (action === addFavorites() || action === removeFavorites()) {
+          if (
+            action === addFavorites() ||
+            action === removeFavorites() ||
+            action === updateFavorites()) {
             throw new Error('Failed to add/remove favorite');
           }
         });
@@ -658,8 +764,14 @@ describe('Favorites - subscriptions', () => {
           action: requestAddFavorites('prod3'),
           dispatch,
           getState,
-        }, {
-          action: requestRemoveFavorites('prod1'),
+        },
+        {
+          action: requestUpdateFavorites('prod3'),
+          dispatch,
+          getState,
+        },
+        {
+          action: requestRemoveFavorites('prod1')(dispatch, getState),
           dispatch,
           getState,
         }])).resolves.toBeUndefined();
@@ -667,9 +779,18 @@ describe('Favorites - subscriptions', () => {
 
       it('should dispatch only the requests and one idle-sync if any error occurs', async () => {
         dispatch.mockImplementation(async (action) => {
-          if (action === addFavorites() || action === removeFavorites()) {
+          if (
+            action === addFavorites() ||
+            action === updateFavorites() ||
+            action === removeFavorites()) {
             throw new Error('Failed to add/remove favorite');
           }
+
+          if (typeof action === 'function') {
+            return action(dispatch, getState);
+          }
+
+          return action;
         });
 
         // Remove the same product twice
@@ -677,18 +798,24 @@ describe('Favorites - subscriptions', () => {
           action: requestAddFavorites('prod3', mockedDefaultListId),
           dispatch,
           getState,
-        }, {
-          action: requestRemoveFavorites('prod1', mockedDefaultListId),
+        },
+        {
+          action: requestUpdateFavorites('prod2', mockedDefaultListId, 3),
+          dispatch,
+          getState,
+        },
+        {
+          action: await requestRemoveFavorites('prod1', mockedDefaultListId)(dispatch, getState),
           dispatch,
           getState,
         }]);
 
         await flushPromises();
-
-        expect(dispatch).toHaveBeenCalledTimes(3);
-        expect(dispatch.mock.calls[0][0]).toEqual(addFavorites());
-        expect(dispatch.mock.calls[1][0]).toEqual(removeFavorites());
-        expect(dispatch.mock.calls[2][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
+        expect(dispatch).toHaveBeenCalledTimes(5);
+        expect(dispatch.mock.calls[1][0]).toEqual(addFavorites());
+        expect(dispatch.mock.calls[2][0]).toEqual(updateFavorites());
+        expect(dispatch.mock.calls[3][0]).toEqual(removeFavorites());
+        expect(dispatch.mock.calls[4][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
       });
     });
   });

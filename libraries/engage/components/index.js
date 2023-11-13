@@ -133,6 +133,8 @@ export { default as FlashDisabledIcon } from '@shopgate/pwa-ui-shared/icons/Flas
 export { default as GridIcon } from '@shopgate/pwa-ui-shared/icons/GridIcon';
 export { default as HeartIcon } from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 export { default as HeartOutlineIcon } from '@shopgate/pwa-ui-shared/icons/HeartOutlineIcon';
+export { default as HeartPlusIcon } from '@shopgate/pwa-ui-shared/icons/HeartPlusIcon';
+export { default as HeartPlusOutlineIcon } from '@shopgate/pwa-ui-shared/icons/HeartPlusOutlineIcon';
 export { default as HomeIcon } from '@shopgate/pwa-ui-shared/icons/HomeIcon';
 export { default as InfoIcon } from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 export { default as InfoOutlineIcon } from '@shopgate/pwa-ui-shared/icons/InfoOutlineIcon';
@@ -157,6 +159,7 @@ export { default as StarIcon } from '@shopgate/pwa-ui-shared/icons/StarIcon';
 export { default as StarOutlineIcon } from '@shopgate/pwa-ui-shared/icons/StarOutlineIcon';
 export { default as TickIcon } from '@shopgate/pwa-ui-shared/icons/TickIcon';
 export { default as TrashIcon } from '@shopgate/pwa-ui-shared/icons/TrashIcon';
+export { default as TrashOutlineIcon } from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 export { default as UncheckedIcon } from '@shopgate/pwa-ui-shared/icons/UncheckedIcon';
 export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';

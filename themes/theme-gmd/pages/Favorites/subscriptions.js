@@ -13,7 +13,14 @@ export default function favorites(subscribe) {
       events.emit(ToastProvider.ADD, {
         id: 'favorites.removed',
         message: 'favorites.removed',
-        action: () => dispatch(addFavorite(action.productId, action.listId)),
+        action: () => dispatch(addFavorite(
+          action.productId,
+          action.listId,
+          action.quantity,
+          action.notes,
+          // No toast to prevent issue with SnackBar when toast is triggered by another toast
+          false
+        )),
         actionLabel: 'common.undo',
       });
     }, FAVORITES_SHOW_TOAST_DELAY);

@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, showModal } from '@shopgate/engage/core';
 import {
   Accordion, Card, ContextMenu, SurroundPortals,
 } from '@shopgate/engage/components';
-import { makeGetFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import {
+  makeGetFavorites,
+} from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 
@@ -65,10 +67,33 @@ FavoriteListLabel.propTypes = {
  */
 const makeMapStateToProps = (_, { id }) => {
   const getFavorites = makeGetFavorites(() => id);
+
   return state => ({
-    products: getFavorites(state),
+    items: getFavorites(state),
   });
 };
+
+/**
+ * @param {Object} dispatch Dispatch
+ * @param {Object} props The component props
+ * @returns {Object}
+ */
+const mapDispatchToProps = (dispatch, props) => ({
+  remove: async (id) => {
+    // Protect list deletion with a confirmation modal
+    const confirmed = await dispatch(showModal({
+      message: 'favorites.delete_list_modal.message',
+      title: 'favorites.delete_list_modal.title',
+      params: {
+        name: props.name,
+      },
+    }));
+
+    if (confirmed) {
+      props.remove(id);
+    }
+  },
+});
 
 /**
  * Favorite List component
@@ -77,7 +102,7 @@ const makeMapStateToProps = (_, { id }) => {
 const FavoriteList = ({
   id,
   name,
-  products,
+  items,
   rename,
   remove,
   removeItem,
@@ -94,31 +119,35 @@ const FavoriteList = ({
           rename={newName => rename(id, newName)}
           remove={remove}
         />
-      }
+        }
       chevronPosition="left"
       startOpened
     >
       <div className={styles.divider} />
-      {products.length === 0 ? (
+      {items.length === 0 ? (
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
-      {products.map(product => (
-        <Item
-          key={product.id}
-          product={product}
-          listId={id}
-          productId={product.id}
-          addToCart={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            return addToCart(product);
-          }}
-          remove={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            removeItem(product.id);
-          }}
-        />
+      {items.filter(({ product }) => product).map(({ product, notes, quantity }, index) => (
+        <div key={product.id}>
+          <Item
+            product={product}
+            notes={notes}
+            quantity={quantity}
+            listId={id}
+            productId={product.id}
+            addToCart={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              return addToCart(product, quantity);
+            }}
+            remove={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              removeItem(product.id);
+            }}
+          />
+          {(index === items.length - 1) ? null : <div className={styles.divider} />}
+        </div>
       ))}
     </Accordion>
   </Card>
@@ -127,11 +156,11 @@ const FavoriteList = ({
 FavoriteList.propTypes = {
   addToCart: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   name: PropTypes.string.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   remove: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   rename: PropTypes.func.isRequired,
 };
 
-export default connect(makeMapStateToProps)(FavoriteList);
+export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteList);

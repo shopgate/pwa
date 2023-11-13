@@ -19,6 +19,10 @@ jest.mock('../../../../core', () => ({
   isIOSTheme: jest.fn(() => false),
 }));
 
+jest.mock('@shopgate/engage/components', () => ({
+  HtmlSanitizer: ({ children }) => children,
+}));
+
 const properties = [
   { displayGroup: 'test' },
 ];

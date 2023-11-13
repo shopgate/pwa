@@ -37,7 +37,7 @@ const Dialog = ({
   // Assemble the actions.
   const actions = [];
   const {
-    confirm, dismiss, title, titleParams, message, params, type,
+    confirm, dismiss, title, titleParams, message, params, type, confirmDisabled, dismissDisabled,
   } = modal;
 
   // Push dismiss action first so the button is rendered first
@@ -47,6 +47,7 @@ const Dialog = ({
       label: modal.dismiss,
       action: onDismiss,
       type: MODAL_ACTION_TYPE_PRIMARY,
+      disabled: dismissDisabled,
     });
   }
 
@@ -56,6 +57,7 @@ const Dialog = ({
       label: modal.confirm,
       action: onConfirm,
       type: MODAL_ACTION_TYPE_NORMAL,
+      disabled: confirmDisabled,
     });
   }
 
@@ -97,6 +99,14 @@ Dialog.propTypes = {
     message: PropTypes.string,
     params: PropTypes.shape(),
     type: PropTypes.string,
+    /**
+     * Whether the confirm button is disabled when visible
+     */
+    confirmDisabled: PropTypes.bool,
+    /**
+     * Whether the dismiss button is disabled when visible
+     */
+    dismissDisabled: PropTypes.bool,
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.any,

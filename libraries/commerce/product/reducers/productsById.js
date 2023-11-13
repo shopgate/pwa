@@ -108,7 +108,6 @@ export default function productsById(state = {}, action) {
 
       return nextState;
     }
-
     default:
       return state;
   }

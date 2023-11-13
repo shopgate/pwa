@@ -122,6 +122,27 @@
     "errors": {
       "invalid_name": "Please enter a valid name for your wish list"
     },
+    "delete_list_modal": {
+      "title": "Delete Wish List",
+      "message": "Do you really want to delete the \"{name}\" wish list?"
+    },
+    "comment_modal": {
+      "titleAdd": "Add Comment",
+      "titleEdit": "Edit Comment",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "label": "Comment",
+      "characterCount": "{count} of {maxCount} characters"
+    },
+    "comments": {
+      "add": "Add Comment",
+      "notes": "Comment",
+      "edit": "Edit",
+      "delete": "Delete",
+      "added": "Comment added",
+      "removed": "Comment removed",
+      "updated": "Comment updated"
+    },
     "rename_list": "Rename",
     "remove_list": "Remove",
     "add_to_list": "Add to list",
@@ -133,6 +154,7 @@
     "list_chooser": {
       "title": "Choose a Wish List",
       "add": "Add",
+      "add_more": "Add more",
       "remove": "Remove"
     },
     "modal": {
@@ -191,6 +213,8 @@
     "quantity": "Cantidad",
     "decrease_quantity": "Disminuir la cantidad",
     "increase_quantity": "Aumentar la cantidad",
+    "increased_quantity_to": "Aumento de la cantidad a {quantity}",
+    "decreased_quantity_to": "Cantidad reducida a {quantity}",
     "minOrderQuantity": "Cantidad mín. del pedido: {quantity} {unit}",
     "maxOrderQuantity": "Cantidad máx. del pedido: {quantity} {unit}",
     "available": {
@@ -360,7 +384,9 @@
     "dismiss": "Desechar",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "Ocurrió un error inesperado. Intente nuevamente."
+    "body_error": "Ocurrió un error inesperado. Intente nuevamente.",
+    "close": "Cerrar",
+    "login": "Iniciar sesión"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -456,6 +482,7 @@
     "no_account": "¿Aún no tiene cuenta?",
     "register": "¡Crear una ahora!",
     "logout_message": "Ha sido desconectado.",
+    "auto_logout_message": "Se ha cerrado la sesión automáticamente.",
     "error": "Su usuario y contraseña no corresponden a ninguna cuenta",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/aria-role */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -14,14 +15,17 @@ import {
 const GlobalLocationSwitcherBar = ({ locationName, handleChange, standalone }) => (
   <div className={wrapper}>
     <div className={classNames(inner, { [innerStandalone]: standalone })}>
-      <span className={heading}>
-        {i18n.text('locations.your_current_location.heading')}
+      <span role="text">
+        <span className={heading}>
+          {i18n.text('locations.your_current_location.heading')}
+        </span>
+        <span className={name}>{ locationName }</span>
       </span>
-      <span className={name}>{ locationName }</span>
       <RippleButton
         onClick={handleChange}
         type="secondary"
         className={button}
+        aria-haspopup
         flat
       >
         <I18n.Text string="locations.your_current_location.change" />
@@ -41,3 +45,4 @@ GlobalLocationSwitcherBar.defaultProps = {
 };
 
 export default GlobalLocationSwitcherBar;
+/* eslint-enable jsx-a11y/aria-role */

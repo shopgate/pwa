@@ -2,6 +2,19 @@ import { connect } from 'react-redux';
 import {
   toggleFavoriteWithListChooser,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import {
+  getLoadWishlistOnAppStartEnabled,
+  getWishlistItemQuantityEnabled,
+} from '@shopgate/engage/core/selectors/shopSettings';
+
+/**
+ * Creates the mapStateToProps connector function.
+ * @returns {Function}
+ */
+const makeMapStateToProps = () => state => ({
+  wishlistItemQuantityEnabled: getWishlistItemQuantityEnabled(state),
+  loadWishlistOnAppStartEnabled: getLoadWishlistOnAppStartEnabled(state),
+});
 
 /**
  * Connects the dispatch function to a callable function in the props.
@@ -14,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(toggleFavoriteWithListChooser(productId, withRelatives)),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(makeMapStateToProps, mapDispatchToProps);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { getGroupsFromProperties } from '../helpers/getGroupsFromProperties';
 import { isBeta } from '../../../../core';
 import Content from '../Content';
 
@@ -8,6 +9,10 @@ jest.mock('../../../../core', () => ({
 }));
 
 jest.mock('../GroupedProperties', () => function GroupedProperties() { return 'GroupedProperties'; });
+
+jest.mock('@shopgate/engage/components', () => ({
+  HtmlSanitizer: ({ children }) => children,
+}));
 
 const properties = [
   {
@@ -22,6 +27,12 @@ const properties = [
   },
   {
     name: 'test3',
+    type: 'html',
+    displayGroup: 'Group 1',
+    customDisplayGroupName: 'Custom Name Ignored',
+  },
+  {
+    name: 'test3',
     label: 'Test 3',
     displayGroup: 'Group 2',
   },
@@ -29,6 +40,12 @@ const properties = [
     name: 'test4',
     label: 'Test 4',
     displayGroup: 'Group 2',
+  },
+  {
+    name: 'html',
+    type: 'html',
+    displayGroup: 'custom',
+    customDisplayGroupName: 'Custom Name',
   },
 ];
 
@@ -66,7 +83,7 @@ describe('<Content />', () => {
     isBeta.mockReturnValueOnce(true);
     const wrapper = shallow(<Content properties={properties} />);
     expect(wrapper.find('GroupedProperties').length).toEqual(1);
-    expect(wrapper.find('GroupedProperties').prop('groups')).toEqual(['Group 1', 'Group 2']);
+    expect(wrapper.find('GroupedProperties').prop('groups')).toEqual(getGroupsFromProperties(properties));
     expect(wrapper).toMatchSnapshot();
   });
 });

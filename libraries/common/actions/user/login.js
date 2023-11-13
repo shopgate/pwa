@@ -42,10 +42,10 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
 
     request
       .then((result) => {
-        const { success, messages } = result;
+        const { success, messages, sessionLifetimeInSeconds } = result;
 
         if (success) {
-          dispatch(successLogin(redirect, strategy));
+          dispatch(successLogin(redirect, strategy, sessionLifetimeInSeconds));
         } else {
           dispatch(errorLogin(messages));
         }

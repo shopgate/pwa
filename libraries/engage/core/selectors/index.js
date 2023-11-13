@@ -8,6 +8,10 @@ export {
   getNumberOfAddressLines,
   getGoogleSiteVerificationCode,
   getRegistrationMode,
+  getWishlistItemQuantityEnabled,
+  getWishlistItemNotesEnabled,
+  getShowWishlistItemsCountBadge,
+  getLoadWishlistOnAppStartEnabled,
 } from './shopSettings';
 export {
   getIsLocationBasedShopping,

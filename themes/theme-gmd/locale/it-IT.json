@@ -122,6 +122,27 @@
     "errors": {
       "invalid_name": "Please enter a valid name for your wish list"
     },
+    "delete_list_modal": {
+      "title": "Delete Wish List",
+      "message": "Do you really want to delete the \"{name}\" wish list?"
+    },
+    "comment_modal": {
+      "titleAdd": "Add Comment",
+      "titleEdit": "Edit Comment",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "label": "Comment",
+      "characterCount": "{count} of {maxCount} characters"
+    },
+    "comments": {
+      "add": "Add Comment",
+      "notes": "Comment",
+      "edit": "Edit",
+      "delete": "Delete",
+      "added": "Comment added",
+      "removed": "Comment removed",
+      "updated": "Comment updated"
+    },
     "rename_list": "Rename",
     "remove_list": "Remove",
     "add_to_list": "Add to list",
@@ -133,6 +154,7 @@
     "list_chooser": {
       "title": "Choose a Wish List",
       "add": "Add",
+      "add_more": "Add more",
       "remove": "Remove"
     },
     "modal": {
@@ -188,6 +210,8 @@
     "add_to_cart": "Aggiungi al carrello",
     "no_more_found": "L'articolo: \"{name}\" non è più disponibile.",
     "quantity": "Quantità",
+    "increased_quantity_to": "Augmentation de la quantité à {quantity}",
+    "decreased_quantity_to": "Quantité réduite à {quantity}",
     "minOrderQuantity": "Quantità min. d'ordine: {quantity} {unit}",
     "maxOrderQuantity": "Quantità max. d'ordine: {quantity} {unit}",
     "available": {
@@ -357,7 +381,9 @@
     "dismiss": "Scarta",
     "ok": "Ok",
     "title_error": "Ops!",
-    "body_error": "Si è verificato un errore imprevisto. Riprova per favore."
+    "body_error": "Si è verificato un errore imprevisto. Riprova per favore.",
+    "close": "Chiudi",
+    "login": "Accedi"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -453,6 +479,7 @@
     "no_account": "Non hai un account?",
     "register": "Crealo qui!",
     "logout_message": "Sei uscito dall'account.",
+    "auto_logout_message": "L'utente è stato disconnesso automaticamente.",
     "error": "I tuoi nome utente e password non corrispondono ad alcun account",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",

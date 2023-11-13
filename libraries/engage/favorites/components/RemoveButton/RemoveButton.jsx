@@ -3,25 +3,23 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { Ripple } from '@shopgate/engage/components';
-import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
-import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
+import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 
 const styles = {
   root: css({
     display: 'flex',
-    position: 'relative',
-    background: themeColors.light,
     borderRadius: '50%',
-    padding: 0,
-    fontSize: 20,
+    color: 'var(--color-text-high-emphasis)',
+    fontSize: '1.5rem',
+    padding: '0 8px 8px 8px',
     lineHeight: 1,
-    color: `var(--color-secondary, ${themeColors.accent})`,
     outline: 0,
-    boxShadow: themeShadows.buttons.elevated,
-    height: 32,
-    width: 32,
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: -1,
+  }).toString(),
+  ripple: css({
+    flexShrink: 0,
   }).toString(),
 };
 
@@ -36,8 +34,8 @@ const RemoveButton = ({ onClick }) => (
     type="button"
     aria-label={i18n.text('favorites.remove')}
   >
-    <Ripple>
-      <CrossIcon className={styles.icon} />
+    <Ripple className={styles.ripple}>
+      <TrashOutlineIcon />
     </Ripple>
   </button>
 );

@@ -16,18 +16,47 @@ import {
   REQUEST_FLUSH_FAVORITES_BUFFER,
   OPEN_FAVORITE_LIST_CHOOSER,
   CLOSE_FAVORITE_LIST_CHOOSER,
+  REQUEST_UPDATE_FAVORITES,
+  SUCCESS_UPDATE_FAVORITES,
+  ERROR_UPDATE_FAVORITES,
+  UPDATE_PRODUCT_IN_FAVORITES,
+  OPEN_FAVORITE_COMMENT_DIALOG,
+  CLOSE_FAVORITE_COMMENT_DIALOG,
 } from '../constants';
+import { makeGetFavorites } from '../selectors';
 
 /**
  * First action to add one product to favorites.
  * @param {number} productId Id of the product to add.
  * @param {string} listId List identifier.
+ * @param {number} quantity New favorites quantity to set
+ * @param {string} notes New favorites notes to set
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Object}
  */
-export const addProductToFavorites = (productId, listId) => ({
+export const addProductToFavorites = (productId, listId, quantity, notes, showToast = true) => ({
   type: ADD_PRODUCT_TO_FAVORITES,
   productId,
   listId,
+  quantity,
+  notes,
+  showToast,
+});
+
+/**
+ * First action to update a product in favorites.
+ * @param {number} productId Id of the product to add.
+ * @param {string} listId List identifier.
+ * @param {number} quantity The quantity of the product.
+ * @param {string} notes Notes about the product.
+ * @returns {Object}
+ */
+export const updateProductInFavorites = (productId, listId, quantity, notes) => ({
+  type: UPDATE_PRODUCT_IN_FAVORITES,
+  productId,
+  listId,
+  notes,
+  quantity,
 });
 
 /**
@@ -72,24 +101,32 @@ export const errorFavorites = (productId, error) => ({
  * Request add favorites action. This action just updates the redux store.
  * @param {string} productId Product identifier.
  * @param {string} listId List identifier.
+ * @param {number} quantity New favorites quantity to set
+ * @param {string} notes New favorites notes to set
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Object}
  */
-export const requestAddFavorites = (productId, listId) => ({
+export const requestAddFavorites = (productId, listId, quantity, notes, showToast = true) => ({
   type: REQUEST_ADD_FAVORITES,
   productId,
   listId,
+  quantity,
+  notes,
+  showToast,
 });
 
 /**
  * Action to be triggered upon successful addFavorites pipeline call.
  * @param {string} productId Product identifier.
  * @param {string} listId List identifier.
+ * @param {boolean} showToast Whether to show a confirmation toast after product was added
  * @returns {Object}
  */
-export const successAddFavorites = (productId, listId) => ({
+export const successAddFavorites = (productId, listId, showToast = true) => ({
   type: SUCCESS_ADD_FAVORITES,
   productId,
   listId,
+  showToast,
 });
 
 /**
@@ -107,16 +144,68 @@ export const errorAddFavorites = (productId, error, listId) => ({
 });
 
 /**
+ * Request update favorites action. This action just updates the redux store.
+ * @param {string} productId Product identifier.
+ * @param {string} listId List identifier.
+ * @param {number} quantity The quantity of the product
+ * @param {string} notes Notes about the product
+ * @returns {Object}
+ */
+export const requestUpdateFavorites = (productId, listId, quantity, notes) => ({
+  type: REQUEST_UPDATE_FAVORITES,
+  productId,
+  listId,
+  notes,
+  quantity,
+});
+
+/**
+ * Action to be triggered upon successful updateFavorites pipeline call.
+ * @param {string} productId Product identifier.
+ * @param {string} listId List identifier.
+ * @returns {Object}
+ */
+export const successUpdateFavorites = (productId, listId) => ({
+  type: SUCCESS_UPDATE_FAVORITES,
+  productId,
+  listId,
+});
+
+/**
+ * Action to be triggered upon failed updateFavorites pipeline call.
+ * @param {string} productId Product identifier.
+ * @param {string} listId List identifier.
+ * @param {Error} error The error that occurred.
+ * @returns {Object}
+ */
+export const errorUpdateFavorites = (productId, listId, error) => ({
+  type: ERROR_UPDATE_FAVORITES,
+  productId,
+  listId,
+  error,
+});
+
+/**
  * Request remove favorites action. This action just updates the redux store.
  * @param {string} productId Product identifier.
  * @param {string} listId List identifier.
  * @returns {Object}
  */
-export const requestRemoveFavorites = (productId, listId) => ({
-  type: REQUEST_REMOVE_FAVORITES,
-  productId,
-  listId,
-});
+export const requestRemoveFavorites =
+  (productId, listId) => (dispatch, getState) => {
+    const getFavorites = makeGetFavorites(() => listId);
+    const favorites = getFavorites(getState());
+    const matchingFavorite = favorites.find(({ productId: itemProductId }) =>
+      itemProductId === productId) || {};
+
+    return dispatch({
+      type: REQUEST_REMOVE_FAVORITES,
+      productId,
+      listId,
+      quantity: matchingFavorite.quantity || 1,
+      notes: matchingFavorite.notes || '',
+    });
+  };
 
 /**
  * Action to be triggered upon successful removeFavorites (deleteFavorites)  pipeline call.
@@ -133,15 +222,19 @@ export const successRemoveFavorites = (productId, takenListId) => ({
 /**
  * Action to be triggered upon a failed removeFavorites (deleteFavorites) pipeline call.
  * @param {string} productId Product identifier.
- * @param {number} takenListId List id
+ * @param {string} takenListId List id
  * @param {Error} error The error that occurred.
+ * @param {number} quantity Quantity of the favorite
+ * @param {string} notes Notes of the favorite
  * @returns {Object}
  */
-export const errorRemoveFavorites = (productId, takenListId, error) => ({
+export const errorRemoveFavorites = (productId, takenListId, error, quantity, notes) => ({
   type: ERROR_REMOVE_FAVORITES,
   productId,
   listId: takenListId,
   error,
+  quantity,
+  notes,
 });
 
 /**
@@ -178,14 +271,14 @@ export const cancelRequestSyncFavorites = (count = 1, listId) => ({
 
 /**
  * Receive favorites action.
- * @param {Array} products Products.
- * @param {number} requestTimestamp Time when request was inited (ms).
+ * @param {Array} items Wishlist items.
+ * @param {number} requestTimestamp Time when request was initiated (ms).
  * @param {string} listId The Id of the wishlist.
  * @returns {Object}
  */
-export const receiveFavorites = (products, requestTimestamp, listId = null) => ({
+export const receiveFavorites = (items, requestTimestamp, listId = null) => ({
   type: RECEIVE_FAVORITES,
-  products,
+  items,
   requestTimestamp,
   listId,
 });
@@ -218,4 +311,24 @@ export const openFavoritesListChooser = (productId, withRelatives = false) => ({
  */
 export const closeFavoritesListChooser = () => ({
   type: CLOSE_FAVORITE_LIST_CHOOSER,
+});
+
+/**
+ * Opens the favorite comment sheet
+ * @param {string} productId The id of the product.
+ * @param {string} listId The id of the list.
+ * @returns {Object}
+ */
+export const openFavoritesCommentDialog = (productId, listId) => ({
+  type: OPEN_FAVORITE_COMMENT_DIALOG,
+  productId,
+  listId,
+});
+
+/**
+ * Closes the favorite comment sheet
+ * @returns {Object}
+ */
+export const closeFavoritesCommentDialog = () => ({
+  type: CLOSE_FAVORITE_COMMENT_DIALOG,
 });

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import HeartIcon from '../icons/HeartIcon';
 import HeartOutlineIcon from '../icons/HeartOutlineIcon';
+import HeartPlusOutlineIcon from '../icons/HeartPlusOutlineIcon';
+import HeartPlus from '../icons/HeartPlusIcon';
 import Ripple from '../Ripple';
 import styles from './style';
 import connect from './connector';
@@ -16,6 +18,7 @@ class FavoritesButton extends Component {
     addFavorites: PropTypes.func,
     'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
+    loadWishlistOnAppStartEnabled: PropTypes.bool,
     noShadow: PropTypes.bool,
     // When true, button would react on click only once.
     once: PropTypes.bool,
@@ -25,6 +28,7 @@ class FavoritesButton extends Component {
     removeThrottle: PropTypes.number,
     removeWithRelatives: PropTypes.bool,
     rippleClassName: PropTypes.string,
+    wishlistItemQuantityEnabled: PropTypes.bool,
   };
 
   /**
@@ -48,6 +52,8 @@ class FavoritesButton extends Component {
     removeThrottle: 0,
     removeWithRelatives: false,
     rippleClassName: '',
+    wishlistItemQuantityEnabled: false,
+    loadWishlistOnAppStartEnabled: true,
   };
 
   /**
@@ -94,7 +100,8 @@ class FavoritesButton extends Component {
       return;
     }
 
-    if (!this.props.active) {
+    // When wishlist item quantity is active, items cannot be removed via the button
+    if (!this.props.active || this.props.wishlistItemQuantityEnabled) {
       this.props.addFavorites(this.props.productId);
     } else {
       setTimeout(() => {
@@ -108,6 +115,17 @@ class FavoritesButton extends Component {
    * @returns {JSX}
    */
   renderIcon() {
+    if (
+      !this.props.loadWishlistOnAppStartEnabled ||
+      (this.props.wishlistItemQuantityEnabled && !this.props.active)
+    ) {
+      return <HeartPlusOutlineIcon />;
+    }
+
+    if (this.props.wishlistItemQuantityEnabled && this.props.active) {
+      return <HeartPlus />;
+    }
+
     if (this.props.active) {
       return <HeartIcon />;
     }

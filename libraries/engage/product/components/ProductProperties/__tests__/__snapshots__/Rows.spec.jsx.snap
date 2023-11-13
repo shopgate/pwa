@@ -5,16 +5,19 @@ Array [
   <Row
     key="test1-123"
     label="test1"
+    type={null}
     value="123"
   />,
   <Row
     key="test2-456"
     label="test2"
+    type={null}
     value="456"
   />,
   <Row
     key="test3-789"
     label="test3"
+    type={null}
     value="789"
   />,
 ]

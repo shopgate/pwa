@@ -14,6 +14,7 @@ const defaultState = {
   isLoggedIn: false,
   errors: null,
   strategy: null,
+  expires: null,
 };
 
 /**
@@ -47,6 +48,11 @@ export default function userLoginReducer(state = defaultState, action) {
         errors: null,
         isFetching: false,
         strategy: action.strategy,
+        ...(typeof action.sessionLifetimeInSeconds === 'number' ? {
+          expires: new Date().getTime() + (action.sessionLifetimeInSeconds * 1000),
+        } : {
+          expires: null,
+        }),
       };
     case ERROR_LOGIN:
       return {
@@ -60,6 +66,7 @@ export default function userLoginReducer(state = defaultState, action) {
         ...state,
         isLoggedIn: action.value,
         strategy: null,
+        ...(action.value === false ? { expires: null } : null),
       };
     case SUCCESS_LOGOUT:
       return defaultState;

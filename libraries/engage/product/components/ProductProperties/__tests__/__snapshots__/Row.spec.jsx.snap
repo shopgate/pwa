@@ -3,10 +3,13 @@
 exports[`<Row /> should render as expected 1`] = `
 <Row
   label="TestLabel"
+  type={null}
   value="TestValue"
 >
   <tr
-    key="TestLabelTestValue"
+    className="engage__product__product-property"
+    data-label="TestLabel"
+    data-type={null}
   >
     <td
       className={

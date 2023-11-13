@@ -1,5 +1,6 @@
-import { uniq } from 'lodash';
 import { produce } from 'immer';
+import isNumber from 'lodash/isNumber';
+import isString from 'lodash/isString';
 import {
   REQUEST_ADD_FAVORITES,
   SUCCESS_ADD_FAVORITES,
@@ -14,6 +15,10 @@ import {
   SUCCESS_ADD_FAVORITES_LIST,
   RECEIVE_FAVORITES,
   FAVORITES_LIFETIME,
+  SUCCESS_UPDATE_FAVORITES,
+  REQUEST_UPDATE_FAVORITES,
+  ERROR_UPDATE_FAVORITES,
+  RECEIVE_FAVORITES_LISTS,
 } from '../constants';
 
 /**
@@ -28,7 +33,7 @@ const products = (state = {
   /* eslint-disable no-param-reassign */
   const producedState = produce(state, (draft) => {
     switch (action.type) {
-      // Handle an new favorites request.
+      // Handle a new favorites request.
       case REQUEST_FAVORITES: {
         const existingList = draft.byList[action.listId];
 
@@ -38,7 +43,7 @@ const products = (state = {
             lastChange: 0,
             lastFetch: 0,
             expires: 0,
-            ids: [],
+            items: [],
             syncCount: 0,
           };
           return;
@@ -66,7 +71,8 @@ const products = (state = {
         }
 
         list.expires = Date.now() + FAVORITES_LIFETIME;
-        list.ids = action.products.map(product => product.id);
+        list.items = action.items.map(({ quantity, notes, product }) =>
+          ({ quantity, notes, productId: product.id }));
         list.ready = true;
         // `syncCount` stays untouched because this is not considered to be a sync.
         break;
@@ -85,19 +91,54 @@ const products = (state = {
       // Handle adding favorite list products.
       case REQUEST_ADD_FAVORITES: {
         const list = draft.byList[action.listId];
-        list.ids = uniq([
-          ...list.ids,
-          action.productId,
-        ]);
+        const matchingItem = list.items
+          .find(({ productId }) => productId === action.productId);
+
+        if (matchingItem) {
+          matchingItem.notes = typeof action.notes === 'string' ? action.notes : matchingItem.notes;
+          matchingItem.quantity = typeof action.quantity === 'number' ? matchingItem.quantity + action.quantity : matchingItem.quantity + 1;
+        } else {
+          list.items.push({
+            notes: action.notes || '',
+            quantity: action.quantity || 1,
+            productId: action.productId,
+          });
+        }
         list.lastChange = Date.now();
         list.syncCount += 1;
+        break;
+      }
+
+      case REQUEST_UPDATE_FAVORITES: {
+        const list = draft.byList[action.listId];
+        const matchingItem = list.items
+          .find(({ productId }) => productId === action.productId);
+
+        if (matchingItem) {
+          if (isNumber(action.quantity)) {
+            matchingItem.quantity = action.quantity;
+          }
+
+          if (isString(action.notes)) {
+            matchingItem.notes = action.notes;
+          }
+          list.lastChange = Date.now();
+          list.syncCount += 1;
+        }
         break;
       }
 
       // Handle removing favorite list products.
       case REQUEST_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
-        list.ids.splice(list.ids.indexOf(action.productId), 1);
+
+        const matchingItemIndex = list.items
+          .findIndex(({ productId }) => productId === action.productId);
+
+        if (matchingItemIndex > -1) {
+          list.items.splice(matchingItemIndex, 1);
+        }
+
         list.lastChange = Date.now();
         list.syncCount += 1;
         break;
@@ -113,6 +154,7 @@ const products = (state = {
 
       // Handle success of adding favorite list products.
       case SUCCESS_ADD_FAVORITES:
+      case SUCCESS_UPDATE_FAVORITES:
       case SUCCESS_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
         list.lastChange = Date.now();
@@ -123,7 +165,11 @@ const products = (state = {
       // Handle deletion failure by adding the product back in to the list.
       case ERROR_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
-        list.ids = uniq([...state.ids, action.productId]);
+        list.items.push({
+          productId: action.productId,
+          quantity: action.quantity || 1,
+          notes: action.notes || '',
+        });
         list.lastChange = Date.now();
         list.syncCount -= 1;
         break;
@@ -132,7 +178,21 @@ const products = (state = {
       // Handle adding failure by removing the product from the list.
       case ERROR_ADD_FAVORITES: {
         const list = draft.byList[action.listId];
-        list.ids.splice(list.ids.indexOf(action.productId), 1);
+
+        const matchingItemIndex = list.items
+          .findIndex(({ productId }) => productId === action.productId);
+        if (matchingItemIndex > -1) {
+          list.items.splice(matchingItemIndex, 1);
+        }
+
+        list.lastChange = Date.now();
+        list.syncCount -= 1;
+        break;
+      }
+
+      case ERROR_UPDATE_FAVORITES: {
+        const list = draft.byList[action.listId];
+
         list.lastChange = Date.now();
         list.syncCount -= 1;
         break;
@@ -151,10 +211,23 @@ const products = (state = {
           lastChange: 0,
           lastFetch: 0,
           expires: 0,
-          ids: [],
+          items: [],
           syncCount: 0,
           ready: true,
         };
+        break;
+      }
+
+      // Handle cleanup after lists are updated
+      case RECEIVE_FAVORITES_LISTS: {
+        const listIds = action.favoritesLists.map(({ id }) => id);
+
+        Object.keys(draft.byList).forEach((id) => {
+          if (!listIds.includes(id)) {
+            // Remove list items that don't have a list anymore
+            delete draft.byList[id];
+          }
+        });
         break;
       }
 

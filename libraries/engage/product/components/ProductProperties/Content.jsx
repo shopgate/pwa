@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '../../../core';
 import { getGroupsFromProperties } from './helpers/getGroupsFromProperties';
@@ -12,11 +12,11 @@ import { groupsContainer } from './style';
  * @returns {JSX}
  */
 const Content = ({ properties }) => {
+  const groups = useMemo(() => getGroupsFromProperties(properties), [properties]);
+
   if (!properties) {
     return null;
   }
-
-  const groups = getGroupsFromProperties(properties);
 
   // Display the simple properties if no groups exist or if not in beta mode.
   if (!isBeta() || !groups || groups.length === 0) {
@@ -32,8 +32,8 @@ const Content = ({ properties }) => {
     It should only be used for approved BETA Client Projects
   */
   return (
-    <div className={groupsContainer}>
-      <GroupedProperties properties={properties} groups={groups} />
+    <div className={`${groupsContainer} engage__product__product-properties`}>
+      <GroupedProperties groups={groups} />
     </div>
   );
 };

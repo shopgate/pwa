@@ -120,6 +120,27 @@
       "message": "Der neue Name deiner Wunschliste",
       "label": "Name"
     },
+    "delete_list_modal": {
+      "title": "Wunschliste löschen",
+      "message": "Möchtest Du die Wunschliste \"{name}\" wirklich löschen?"
+    },
+    "comment_modal": {
+      "titleAdd": "Kommentar hinzufügen",
+      "titleEdit": "Kommentar bearbeiten",
+      "dismiss": "Abbrechen",
+      "confirm": "Bestätigen",
+      "label": "Kommentar",
+      "characterCount": "{count} von {maxCount} Zeichen"
+    },
+    "comments": {
+      "add": "Kommentar hinzufügen",
+      "notes": "Kommentar",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "added": "Kommentar hinzugefügt",
+      "removed": "Kommentar entfernt",
+      "updated": "Kommentar aktualisiert"
+    },
     "add_list": "Neue Liste anlegen",
     "errors": {
       "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
@@ -135,6 +156,7 @@
     "list_chooser": {
       "title": "Wähle eine Wunschliste aus",
       "add": "Hinzufügen",
+      "add_more": "Mehr Hinzufügen",
       "remove": "Löschen"
     },
     "modal": {
@@ -196,6 +218,8 @@
     "quantity": "Menge",
     "decrease_quantity": "Menge reduzieren",
     "increase_quantity": "Menge erhöhen",
+    "increased_quantity_to": "Menge auf {quantity} erhöht",
+    "decreased_quantity_to": "Menge auf {quantity} reduziert",
     "minOrderQuantity": "Min. Bestellmenge: {quantity} {unit}",
     "maxOrderQuantity": "Max. Bestellmenge: {quantity} {unit}",
     "available": {
@@ -367,7 +391,9 @@
     "dismiss": "Abbrechen",
     "ok": "Okay",
     "title_error": "Ups!",
-    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut."
+    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "close": "Schließen",
+    "login": "Anmelden"
   },
   "cart": {
     "grand_total": "Summe",
@@ -468,6 +494,7 @@
     "register": "Starte hier.",
     "signup": "Registrieren",
     "logout_message": "Du wurdest ausgeloggt.",
+    "auto_logout_message": "Du wurdest automatisch ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
       "subline": "Bitte gib deine Email-Adresse ein.",

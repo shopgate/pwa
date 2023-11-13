@@ -51,6 +51,7 @@ class SelectBoxItem extends Component {
         role="menuitem"
         ref={this.props.forwardedRef}
         tabIndex={this.props.isSelected ? '0' : '-1'}
+        aria-current={this.props.isSelected}
       >
         <Wrapper>
           <I18n.Text string={this.props.label} />

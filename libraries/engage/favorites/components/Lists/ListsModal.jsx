@@ -2,13 +2,20 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Dialog, TextField } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
+import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { css } from 'glamor';
+
+const isIos = themeName.includes('ios');
 
 const styles = {
   root: css({
     display: 'flex',
     flexDirection: 'column',
   }),
+  input: css({
+    textAlign: 'left',
+    fontSize: '1rem',
+  }).toString(),
 };
 
 /**
@@ -45,10 +52,15 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
         <span>{i18n.text(`favorites.${type}_modal.message`)}</span>
         <TextField
           name="name"
-          label={i18n.text(`favorites.${type}_modal.label`)}
+          {...isIos ? {
+            placeholder: i18n.text(`favorites.${type}_modal.label`),
+          } : {
+            label: i18n.text(`favorites.${type}_modal.label`),
+          }}
           onChange={onChange}
           value={input}
           errorText={error || undefined}
+          className={styles.input}
         />
       </div>
     </Dialog>

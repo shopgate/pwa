@@ -11,6 +11,10 @@ import {
   SHOP_SETTINGS_SHOW_CATEGORY_IMAGES,
   SHOP_SETTING_REGISTRATION_MODE,
   SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+  SHOP_SETTING_LOAD_WISHLIST_ON_APP_START_ENABLED,
+  SHOP_SETTING_WISHLIST_ITEM_QUANTITY_ENABLED,
+  SHOP_SETTING_WISHLIST_ITEM_NOTES_ENABLED,
+  SHOP_SETTING_SHOW_WISHLIST_ITEMS_COUNT_BADGE,
 } from '../constants/shopSettings';
 
 /**
@@ -113,4 +117,29 @@ export const getShowCategoryImages = makeGetShopSettingByKey(
 export const getRegistrationMode = makeGetShopSettingByKey(
   SHOP_SETTING_REGISTRATION_MODE,
   SHOP_SETTING_REGISTRATION_MODE_EXTENDED
+);
+
+export const getWishlistItemQuantityEnabled = makeGetShopSettingByKey(
+  SHOP_SETTING_WISHLIST_ITEM_QUANTITY_ENABLED,
+  false
+);
+
+export const getWishlistItemNotesEnabled = makeGetShopSettingByKey(
+  SHOP_SETTING_WISHLIST_ITEM_NOTES_ENABLED,
+  false
+);
+
+export const getLoadWishlistOnAppStartEnabled = makeGetShopSettingByKey(
+  SHOP_SETTING_LOAD_WISHLIST_ON_APP_START_ENABLED,
+  true
+);
+
+export const getShowWishlistItemsCountBadge = createSelector(
+  getLoadWishlistOnAppStartEnabled,
+  makeGetShopSettingByKey(
+    SHOP_SETTING_SHOW_WISHLIST_ITEMS_COUNT_BADGE,
+    true
+  ),
+  (loadWishlistOnAppStartEnabled, showWishlistItemsCountBadge) =>
+    (loadWishlistOnAppStartEnabled ? showWishlistItemsCountBadge : false)
 );

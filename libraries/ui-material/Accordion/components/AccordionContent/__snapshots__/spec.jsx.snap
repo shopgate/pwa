@@ -8,11 +8,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
 >
   <ForwardRef
     aria-hidden={true}
-    className={
-      Object {
-        "data-css-apm51k": "",
-      }
-    }
+    className="ui-material__accordion-content css-apm51k"
     id="some-id"
     style={
       Object {
@@ -22,11 +18,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
   >
     <div
       aria-hidden={true}
-      className={
-        Object {
-          "data-css-apm51k": "",
-        }
-      }
+      className="ui-material__accordion-content css-apm51k"
       id="some-id"
       style={
         Object {
@@ -58,11 +50,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
 >
   <ForwardRef
     aria-hidden={false}
-    className={
-      Object {
-        "data-css-apm51k": "",
-      }
-    }
+    className="ui-material__accordion-content css-apm51k"
     id="some-id"
     style={
       Object {
@@ -72,11 +60,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
   >
     <div
       aria-hidden={false}
-      className={
-        Object {
-          "data-css-apm51k": "",
-        }
-      }
+      className="ui-material__accordion-content css-apm51k"
       id="some-id"
       style={
         Object {

@@ -58,6 +58,7 @@ function Accordion(props: Props) {
             <div
               {... (openWithChevron ? {} : clickHandlers)}
               className={classnames(
+                'ui-material__accordion-title',
                 className,
                 chevronPosition === 'right'
                   ? styles.toggle.toString()

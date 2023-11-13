@@ -124,6 +124,27 @@
     "errors": {
       "invalid_name": "Please enter a valid name for your wish list"
     },
+    "delete_list_modal": {
+      "title": "Delete Wish List",
+      "message": "Do you really want to delete the \"{name}\" wish list?"
+    },
+    "comment_modal": {
+      "titleAdd": "Add Comment",
+      "titleEdit": "Edit Comment",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "label": "Comment",
+      "characterCount": "{count} of {maxCount} characters"
+    },
+    "comments": {
+      "add": "Add Comment",
+      "notes": "Comment",
+      "edit": "Edit",
+      "delete": "Delete",
+      "added": "Comment added",
+      "removed": "Comment removed",
+      "updated": "Comment updated"
+    },
     "rename_list": "Rename",
     "remove_list": "Remove",
     "add_to_list": "Add to list",
@@ -135,6 +156,7 @@
     "list_chooser": {
       "title": "Choose a Wish List",
       "add": "Add",
+      "add_more": "Add more",
       "remove": "Remove"
     },
     "modal": {
@@ -196,6 +218,8 @@
     "quantity": "Quantity",
     "decrease_quantity": "Decrease quantity",
     "increase_quantity": "Increase quantity",
+    "increased_quantity_to": "Increased quantity to {quantity}",
+    "decreased_quantity_to": "Decreased quantity to {quantity}",
     "minOrderQuantity": "Min. order quantity: {quantity} {unit}",
     "maxOrderQuantity": "Max. order quantity: {quantity} {unit}",
     "available": {
@@ -366,7 +390,9 @@
     "dismiss": "Dismiss",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "An unexpected error occurred. Please try again."
+    "body_error": "An unexpected error occurred. Please try again.",
+    "close": "Dismiss",
+    "login": "Login"
   },
   "cart": {
     "grand_total": "Grand Total",
@@ -467,6 +493,7 @@
     "no_account": "Don't have an account?",
     "signup": "Register",
     "logout_message": "You have been logged out.",
+    "auto_logout_message": "You have been logged out automatically.",
     "error": "Your username and password don't match any account",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",

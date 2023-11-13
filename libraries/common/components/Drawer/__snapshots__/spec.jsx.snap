@@ -18,8 +18,10 @@ exports[`<Drawer /> should add custom classes 1`] = `
   onOpen={[Function]}
 >
   <div
+    aria-modal={true}
     className="custom-class-name css-1rg7udn css-1dwe0qx"
     onAnimationEnd={[Function]}
+    role="dialog"
     style={Object {}}
   />
 </Drawer>
@@ -43,8 +45,10 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
   onOpen={[Function]}
 >
   <div
+    aria-modal={true}
     className="custom-class-name css-1rg7udn css-1dwe0qx"
     onAnimationEnd={[Function]}
+    role="dialog"
     style={Object {}}
   />
 </Drawer>

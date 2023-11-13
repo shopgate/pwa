@@ -5,6 +5,7 @@ export {
   removeFavorites,
   requestSync as toggleFavorites,
 } from './actions/toggleFavorites';
+export { default as fetchFavoritesListsWithItems } from './actions/fetchFavoritesListsWithItems';
 
 // CONSTANTS
 export * from './constants/index';

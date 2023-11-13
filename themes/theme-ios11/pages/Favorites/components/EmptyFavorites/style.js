@@ -24,6 +24,7 @@ const iconContainer = css({
 
 const title = css({
   paddingTop: variables.emptyPage.titleTopGap,
+  textAlign: 'center',
 }).toString();
 
 export default {

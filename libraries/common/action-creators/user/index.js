@@ -35,12 +35,18 @@ export const requestLogin = (user, password, strategy = DEFAULT_LOGIN_STRATEGY) 
  * Creates the dispatched RECEIVE_LOGIN action object.
  * @param {string} redirect The location to redirect to.
  * @param {string} strategy The login strategy.
+ * @param {number} [sessionLifetimeInSeconds] The session lifetime in seconds
  * @returns {Object} The dispatched action object.
  */
-export const successLogin = (redirect, strategy = DEFAULT_LOGIN_STRATEGY) => ({
+export const successLogin = (
+  redirect,
+  strategy = DEFAULT_LOGIN_STRATEGY,
+  sessionLifetimeInSeconds
+) => ({
   type: SUCCESS_LOGIN,
   redirect,
   strategy,
+  sessionLifetimeInSeconds,
 });
 
 /**
@@ -74,21 +80,25 @@ export const requestLogout = () => ({
 /**
  * Creates the dispatched RECEIVE_LOGOUT action object.
  * @param {boolean} [notify=true] If set to TRUE users are notified when the logout was successful.
+ * @param {boolean} [autoLogout=false] Whether the logout happened because e.g. session expired
  * @returns {Object} The dispatched action object.
  */
-export const successLogout = (notify = true) => ({
+export const successLogout = (notify = true, autoLogout = false) => ({
   type: SUCCESS_LOGOUT,
   notify,
+  autoLogout,
 });
 
 /**
  * Creates the dispatched ERROR_LOGOUT action object.
  * @param {Array} [messages=[]] Array of error messages
+ * @param {boolean} [autoLogout=false] Whether the logout happened because e.g. session expired
  * @returns {Object} The dispatched action object.
  */
-export const errorLogout = (messages = []) => ({
+export const errorLogout = (messages = [], autoLogout = false) => ({
   type: ERROR_LOGOUT,
   messages,
+  autoLogout,
 });
 
 /**
