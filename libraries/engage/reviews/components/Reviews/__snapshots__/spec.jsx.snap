@@ -2375,6 +2375,44 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </div>
               </AllReviewsLink>
             </Connect(AllReviewsLink)>
+            <ReviewsInfo
+              reviews={
+                Array [
+                  Object {
+                    "author": "",
+                    "date": "2017-09-06T12:38:51.000Z",
+                    "id": 1,
+                    "rate": 100,
+                    "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                    "title": "",
+                  },
+                  Object {
+                    "author": "",
+                    "date": "2017-09-06T12:38:51.000Z",
+                    "id": 2,
+                    "rate": 100,
+                    "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                    "title": "",
+                  },
+                  Object {
+                    "author": "",
+                    "date": "2017-09-06T12:38:51.000Z",
+                    "id": 3,
+                    "rate": 100,
+                    "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                    "title": "",
+                  },
+                  Object {
+                    "author": "",
+                    "date": "2017-09-06T12:38:51.000Z",
+                    "id": 4,
+                    "rate": 100,
+                    "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                    "title": "",
+                  },
+                ]
+              }
+            />
           </div>
         </Portal>
         <Portal
@@ -3515,6 +3553,28 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 productId="foo"
               />
             </Connect(AllReviewsLink)>
+            <ReviewsInfo
+              reviews={
+                Array [
+                  Object {
+                    "author": "",
+                    "date": "2017-09-06T12:38:51.000Z",
+                    "id": 1,
+                    "rate": 100,
+                    "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                    "title": "",
+                  },
+                  Object {
+                    "author": "",
+                    "date": "2017-09-06T12:38:51.000Z",
+                    "id": 2,
+                    "rate": 100,
+                    "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                    "title": "",
+                  },
+                ]
+              }
+            />
           </div>
         </Portal>
         <Portal
@@ -3598,6 +3658,9 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                 productId="foo"
               />
             </Connect(AllReviewsLink)>
+            <ReviewsInfo
+              reviews={null}
+            />
           </div>
         </Portal>
         <Portal

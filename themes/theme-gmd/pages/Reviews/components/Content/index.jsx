@@ -4,6 +4,7 @@ import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS_ALL } from '@shopgate/engage/reviews';
 import Header from '@shopgate/engage/reviews/components/Reviews/components/Header';
 import List from '@shopgate/engage/reviews/components/Reviews/components/List';
+import ReviewsInfo from '@shopgate/engage/reviews/components/Reviews/components/ReviewsInfo';
 import { BackBar } from 'Components/AppBar/presets';
 import LoadMoreButton from '../LoadMore';
 import connect from './connector';
@@ -22,6 +23,7 @@ const ReviewsContent = ({ productId, rating, reviews }) => (
       <Header productId={productId} rating={rating} withTopGap />
       <List productId={productId} reviews={reviews} />
       <LoadMoreButton productId={productId} />
+      <ReviewsInfo reviews={reviews} />
     </SurroundPortals>
   </Fragment>
 );
