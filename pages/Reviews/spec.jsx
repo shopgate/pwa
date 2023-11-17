@@ -8,7 +8,7 @@ import { UnwrappedReviews as Reviews } from './index';
 
 const mockedStore = configureStore();
 jest.mock('@shopgate/engage/components');
-jest.mock('Components/Reviews/components/Header', () => () => 'div');
+jest.mock('@shopgate/engage/reviews/components/Reviews/components/Header', () => () => 'div');
 
 /**
  * Creates component
