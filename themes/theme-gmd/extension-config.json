@@ -577,7 +577,7 @@
       }
     },
     "reviewsInfo": {
-      "type": "admin",
+      "type": "bigApi",
       "destination": "frontend",
       "default": {
         "text": null,
@@ -585,8 +585,10 @@
         "linkUrl": null
       },
       "params": {
-        "type": "json",
-        "label": "An info text shown after the reviews on PDP. The text can be extended with a link to e.g. a cms page."
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_reviews_info_config?parsed=true",
+        "key": "value"
       }
     }
   }
