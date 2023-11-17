@@ -9,6 +9,9 @@ import { UnwrappedReviews as Reviews } from './index';
 const mockedStore = configureStore();
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/reviews/components/Reviews/components/Header', () => () => 'div');
+jest.mock('Components/AppBar/presets', () => ({
+  BackBar: () => null,
+}));
 
 /**
  * Creates component
@@ -21,13 +24,13 @@ const createComponent = () => mount(
   mockRenderOptions
 );
 
-describe.skip('<Reviews> page', () => {
+describe('<Reviews> page', () => {
   it('should not crash', () => {
     const component = createComponent();
     expect(component).toMatchSnapshot();
     expect(component.find('Reviews').exists()).toBe(true);
     expect(component.find('RatingStars').exists()).toBe(true);
     expect(component.find('LoadMore').exists()).toBe(true);
-    expect(component.find('List > div').length).toEqual(4);
+    expect(component.find('List li').length).toEqual(4);
   });
 });
