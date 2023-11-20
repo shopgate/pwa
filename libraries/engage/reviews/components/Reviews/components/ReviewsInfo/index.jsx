@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -34,10 +33,8 @@ const {
  * @param {Array} [props.reviews] The reviews shown inside the Reviews component
  * @returns {JSX}
  */
-const ReviewsInfo = ({
-  reviews,
-}) => {
-  if (!Array.isArray(reviews) || reviews.length === 0 || !text) {
+const ReviewsInfo = () => {
+  if (!text) {
     return null;
   }
 
@@ -53,14 +50,6 @@ const ReviewsInfo = ({
       </div>
     </div>
   );
-};
-
-ReviewsInfo.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape()),
-};
-
-ReviewsInfo.defaultProps = {
-  reviews: [],
 };
 
 export default ReviewsInfo;

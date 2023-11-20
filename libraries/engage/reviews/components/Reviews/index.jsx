@@ -27,7 +27,7 @@ function Reviews({ productId, productActive, reviews }) {
           <Header productId={productId} />
           <List productId={productId} reviews={reviews} />
           <AllReviewsLink productId={productId} />
-          <ReviewsInfo reviews={reviews} />
+          <ReviewsInfo />
         </div>
       )}
     </SurroundPortals>
