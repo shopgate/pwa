@@ -138,11 +138,17 @@ describe('Favorites - subscriptions', () => {
       });
 
       it('should not return any value', async () => {
-        await expect(invoke(appDidStart$, { dispatch })).resolves.toBeUndefined();
+        await expect(invoke(appDidStart$, {
+          dispatch,
+          getState,
+        })).resolves.toBeUndefined();
       });
 
       it('should set up pipeline dependencies correctly', () => {
-        invoke(appDidStart$, { dispatch });
+        invoke(appDidStart$, {
+          dispatch,
+          getState,
+        });
 
         // Expect pipeline dependencies to be set correctly
         expect(pipelineDependencies.set).toHaveBeenCalledTimes(2);
@@ -159,7 +165,10 @@ describe('Favorites - subscriptions', () => {
       });
 
       it('should fetch favoriteIds', async () => {
-        await invoke(appDidStart$, { dispatch });
+        await invoke(appDidStart$, {
+          dispatch,
+          getState,
+        });
 
         // Expect fetch favorite ids action to be dispatched
         expect(fetchFavoriteIds).toHaveBeenCalledTimes(1);
