@@ -85,13 +85,20 @@ export { default as ProductBadges } from './components/ProductBadges';
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
 export { default as withProductStock } from './hocs/withProductStock';
+export { default as withProductListType } from './hocs/withProductListType';
 
 // HOOKs
 export { useLoadProductImage } from './hooks/useLoadProductImage';
+export { default as useProductListType } from './hooks/useProductListType';
 
 // CONTEXTS
 export { default as VariantContext } from './components/ProductCharacteristics/context';
 export { ProductContext } from './components/context';
+export { default as ProductListTypeContext } from './providers/ProductListType/context';
+
+// PROVIDERS
+export { default as ProductListTypeProvider } from './providers/ProductListType';
+
 export {
   ProductUnitQuantityPicker,
   UnitQuantityPicker,

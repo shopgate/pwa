@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ProductListTypeProvider } from '@shopgate/engage/product';
 import { Swiper } from '@shopgate/pwa-common/components';
 import Item from './components/Item';
 import connect from './connector';
@@ -38,13 +39,15 @@ export class LiveshoppingWidget extends Component {
 
     return (
       <div className={styles.wrapper}>
-        <Swiper indicators loop={products.length > 1}>
-          {products.map(id => (
-            <Swiper.Item key={id}>
-              <Item productId={id} />
-            </Swiper.Item>
-          ))}
-        </Swiper>
+        <ProductListTypeProvider type="liveshopping" subType="widgets">
+          <Swiper indicators loop={products.length > 1}>
+            {products.map(id => (
+              <Swiper.Item key={id}>
+                <Item productId={id} />
+              </Swiper.Item>
+            ))}
+          </Swiper>
+        </ProductListTypeProvider>
       </div>
     );
   }

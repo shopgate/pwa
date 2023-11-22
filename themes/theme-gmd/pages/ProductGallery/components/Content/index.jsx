@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
+import { ProductListTypeProvider } from '@shopgate/engage/product';
 import MediaSlider from './components/MediaSlider';
 import ImageSlider from './components/ImagesSlider';
 
@@ -11,12 +12,12 @@ import ImageSlider from './components/ImagesSlider';
  * @returns {JSX}
  */
 const Content = ({ productId, initialSlide }) => (
-  <Fragment>
+  <ProductListTypeProvider type="productGallery">
     {isBeta()
       ? <MediaSlider productId={productId} initialSlide={initialSlide} />
       : <ImageSlider productId={productId} initialSlide={initialSlide} />
     }
-  </Fragment>
+  </ProductListTypeProvider>
 );
 
 Content.propTypes = {

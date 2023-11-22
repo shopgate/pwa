@@ -5,6 +5,7 @@ import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getCartConfig } from '@shopgate/pwa-common-commerce/cart';
 import { MessageBar, CardList, Portal } from '@shopgate/engage/components';
+import { ProductListTypeProvider } from '@shopgate/engage/product';
 import { BackBar } from 'Components/AppBar/presets';
 import Item from '../Item';
 import CouponField from '../CouponField';
@@ -80,7 +81,7 @@ class CartContentContainer extends PureComponent {
           <Fragment>
             {hasMessages && <MessageBar messages={messages} />}
             {hasItems && (
-              <Fragment>
+              <ProductListTypeProvider type="cart">
                 <Portal name={portals.CART_ITEM_LIST_BEFORE} />
                 <Portal name={portals.CART_ITEM_LIST}>
                   <CardList className={styles}>
@@ -100,7 +101,7 @@ class CartContentContainer extends PureComponent {
                 </Portal>
                 <Portal name={portals.CART_ITEM_LIST_AFTER} />
                 <PaymentBar visible={isPaymentBarVisible} />
-              </Fragment>
+              </ProductListTypeProvider>
             )}
             <Footer />
           </Fragment>
