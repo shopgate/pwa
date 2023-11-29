@@ -19,15 +19,19 @@ exports[`<ProductSlider /> should match snapshot 1`] = `
       className="css-90ryaa"
       key="prod1"
     >
-      <ProductCard
+      <Component
         productId="prod1"
-        style={
-          Object {
-            "height": "100%",
-            "margin": "0 8px",
+      >
+        <ProductCard
+          productId="prod1"
+          style={
+            Object {
+              "height": "100%",
+              "margin": "0 8px",
+            }
           }
-        }
-      />
+        />
+      </Component>
     </Swiper.Item>
   </Swiper>
 </ProductListTypeProvider>

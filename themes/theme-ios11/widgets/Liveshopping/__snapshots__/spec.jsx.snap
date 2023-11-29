@@ -37,17 +37,25 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
         className={null}
         key="1234"
       >
-        <LiveshoppingItem
+        <ProductListEntryProvider
           productId="1234"
-        />
+        >
+          <LiveshoppingItem
+            productId="1234"
+          />
+        </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
         className={null}
         key="1235"
       >
-        <LiveshoppingItem
+        <ProductListEntryProvider
           productId="1235"
-        />
+        >
+          <LiveshoppingItem
+            productId="1235"
+          />
+        </ProductListEntryProvider>
       </SwiperItem>
     </Swiper>
   </ProductListTypeProvider>
