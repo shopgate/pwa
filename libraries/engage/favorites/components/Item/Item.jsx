@@ -12,6 +12,7 @@ import {
   isBaseProduct as isBaseProductSelector,
   isProductOrderable,
   hasProductVariants,
+  ProductListEntryProvider,
 } from '@shopgate/engage/product';
 import {
   bin2hex,
@@ -218,74 +219,79 @@ const FavoriteItem = ({
   );
 
   return (
-    <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
-      <div className={styles.root}>
-        <Link
-          className={styles.imageContainer}
-          component="div"
-          href={productLink}
-        >
-          <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
-        </Link>
-        <Link
-          className={styles.infoContainer}
-          component="div"
-          href={productLink}
-        >
-          <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
-            <span className={styles.title}>{product.name}</span>
-          </SurroundPortals>
-          <div className={styles.innerInfoContainer}>
-            <div className={styles.infoContainerLeft}>
-              <ItemCharacteristics characteristics={characteristics} />
-              <SurroundPortals
-                portalName={FAVORITES_AVAILABILITY_TEXT}
-                portalProps={commonPortalProps}
-              >
-                <AvailableText
-                  text={commonPortalProps.availability.text}
-                  state={commonPortalProps.availability.state}
-                  showWhenAvailable
-                  className={styles.availability}
-                />
-              </SurroundPortals>
-            </div>
-            <div className={priceClassNames}>
-              <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
-                {hasStrikePrice ? (
-                  <PriceStriked
-                    value={specialPrice}
-                    currency={currency}
-                  />
-                ) : null}
-                <Price
-                  currency={currency}
-                  discounted={hasStrikePrice}
-                  taxDisclaimer={taxDisclaimer}
-                  unitPrice={defaultPrice}
-                />
-                {!!product.price.info && (
-                  <PriceInfo text={product.price.info} className={styles.basePrice} />
-                )}
-              </SurroundPortals>
-            </div>
-          </div>
-        </Link>
-        <div className={styles.actions}>
-          <SurroundPortals portalName={FAVORITES_LIST_ITEM_ACTIONS} portalProps={ctaPortalProps}>
-            <Remove onClick={remove} />
-            <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
-              <AddToCart
-                onClick={handleAddToCart}
-                isLoading={false}
-                isDisabled={isDisabled}
-                aria-label={i18n.text('product.add_to_cart')}
-              />
+    <ProductListEntryProvider productId={product.id}>
+      <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
+        <div className={styles.root}>
+          <Link
+            className={styles.imageContainer}
+            component="div"
+            href={productLink}
+          >
+            <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+          </Link>
+          <Link
+            className={styles.infoContainer}
+            component="div"
+            href={productLink}
+          >
+            <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
+              <span className={styles.title}>{product.name}</span>
             </SurroundPortals>
-          </SurroundPortals>
+            <div className={styles.innerInfoContainer}>
+              <div className={styles.infoContainerLeft}>
+                <ItemCharacteristics characteristics={characteristics} />
+                <SurroundPortals
+                  portalName={FAVORITES_AVAILABILITY_TEXT}
+                  portalProps={commonPortalProps}
+                >
+                  <AvailableText
+                    text={commonPortalProps.availability.text}
+                    state={commonPortalProps.availability.state}
+                    showWhenAvailable
+                    className={styles.availability}
+                  />
+                </SurroundPortals>
+              </div>
+              <div className={priceClassNames}>
+                <SurroundPortals
+                  portalName={FAVORITES_PRODUCT_PRICE}
+                  portalProps={commonPortalProps}
+                >
+                  {hasStrikePrice ? (
+                    <PriceStriked
+                      value={specialPrice}
+                      currency={currency}
+                    />
+                  ) : null}
+                  <Price
+                    currency={currency}
+                    discounted={hasStrikePrice}
+                    taxDisclaimer={taxDisclaimer}
+                    unitPrice={defaultPrice}
+                  />
+                  {!!product.price.info && (
+                  <PriceInfo text={product.price.info} className={styles.basePrice} />
+                  )}
+                </SurroundPortals>
+              </div>
+            </div>
+          </Link>
+          <div className={styles.actions}>
+            <SurroundPortals portalName={FAVORITES_LIST_ITEM_ACTIONS} portalProps={ctaPortalProps}>
+              <Remove onClick={remove} />
+              <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
+                <AddToCart
+                  onClick={handleAddToCart}
+                  isLoading={false}
+                  isDisabled={isDisabled}
+                  aria-label={i18n.text('product.add_to_cart')}
+                />
+              </SurroundPortals>
+            </SurroundPortals>
+          </div>
         </div>
-      </div>
-    </SurroundPortals>
+      </SurroundPortals>
+    </ProductListEntryProvider>
   );
 };
 

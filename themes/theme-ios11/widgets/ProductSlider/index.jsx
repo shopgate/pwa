@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, Card } from '@shopgate/engage/components';
-import { ProductCard, ProductListTypeProvider } from '@shopgate/engage/product';
+import {
+  ProductCard,
+  ProductListTypeProvider,
+  ProductListEntryProvider,
+} from '@shopgate/engage/product';
 import Headline from 'Components/Headline';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
@@ -22,15 +26,17 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
 
   return (
     <Swiper.Item key={key} className={styles.sliderItem}>
-      <Card className={styles.card}>
-        <ProductCard
-          product={product}
-          hideName={!showName}
-          hidePrice={!showPrice}
-          hideRating={!showReviews}
-          titleRows={2}
-        />
-      </Card>
+      <ProductListEntryProvider productId={product.id}>
+        <Card className={styles.card}>
+          <ProductCard
+            product={product}
+            hideName={!showName}
+            hidePrice={!showPrice}
+            hideRating={!showReviews}
+            titleRows={2}
+          />
+        </Card>
+      </ProductListEntryProvider>
     </Swiper.Item>
   );
 };

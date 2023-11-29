@@ -4,10 +4,12 @@ import React from 'react';
 /**
  * @typedef {"productSlider"|"productGrid"|"productList"|"favoritesList"|"cart"|"liveshopping"|"pdp"|"productGallery"} ProductListTypeContextType
  */
+export {};
 
 /**
  * @typedef {"widgets"|"category"} ProductListTypeContextSubType
  */
+export {};
 
 /* eslint-enable max-len */
 

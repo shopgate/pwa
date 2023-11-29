@@ -12,7 +12,7 @@ import {
 } from '@shopgate/engage/product';
 import { Reviews } from '@shopgate/engage/reviews';
 import UnitQuantityPickerWithSection
-  from '@shopgate/engage/product/components/UnitQuantityPicker/UnitQuantityPickerWithSection';
+from '@shopgate/engage/product/components/UnitQuantityPicker/UnitQuantityPickerWithSection';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
