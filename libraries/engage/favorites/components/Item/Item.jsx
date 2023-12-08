@@ -17,6 +17,7 @@ import {
   isBaseProduct as isBaseProductSelector,
   isProductOrderable,
   hasProductVariants,
+  ProductListEntryProvider,
 } from '@shopgate/engage/product';
 import {
   bin2hex,
@@ -309,84 +310,92 @@ const FavoriteItem = ({
   }, [listId, product.id, quantity, updateFavoriteItem]);
 
   return (
-    <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
-      <div className={styles.root}>
-        <Link
-          className={styles.imageContainer}
-          component="div"
-          href={productLink}
-          aria-hidden
-        >
-          <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
-        </Link>
+    <ProductListEntryProvider productId={product.id}>
+      <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
+        <div className={styles.root}>
+          <Link
+            className={styles.imageContainer}
+            component="div"
+            href={productLink}
+            aria-hidden
+          >
+            <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+          </Link>
 
-        <div className={styles.infoContainer}>
-          <div className={classNames(styles.infoContainerRow)}>
-            <div className={styles.titleWrapper}>
-              <SurroundPortals portalName={FAVORITES_PRODUCT_NAME} portalProps={commonPortalProps}>
-                <TextLink
-                  href={productLink}
-                  tag="span"
-                  className={styles.titleContainer}
+          <div className={styles.infoContainer}>
+            <div className={classNames(styles.infoContainerRow)}>
+              <div className={styles.titleWrapper}>
+                <SurroundPortals
+                  portalName={FAVORITES_PRODUCT_NAME}
+                  portalProps={commonPortalProps}
                 >
-                  <span
-                    className={styles.title}
-                // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{ __html: `${product.name}` }}
-                  />
-                </TextLink>
-
-              </SurroundPortals>
-            </div>
-            <div className={styles.removeContainer}>
-              <Remove onClick={remove} />
-            </div>
-          </div>
-          <ItemCharacteristics characteristics={characteristics} />
-          <StockInfoLists product={product} />
-          <div className={styles.infoContainerRow}>
-            <div className={styles.quantityContainer}>
-              <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
-                <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
-              </SurroundPortals>
-              <SurroundPortals portalName={FAVORITES_PRODUCT_PRICE} portalProps={commonPortalProps}>
-                <div className={styles.priceContainer}>
-                  {hasStrikePrice ? (
-                    <PriceStriked
-                      value={defaultPrice}
-                      currency={currency}
+                  <TextLink
+                    href={productLink}
+                    tag="span"
+                    className={styles.titleContainer}
+                  >
+                    <span
+                      className={styles.title}
+                      // eslint-disable-next-line react/no-danger
+                      dangerouslySetInnerHTML={{ __html: `${product.name}` }}
                     />
-                  ) : null}
-                  <Price
-                    currency={currency}
-                    discounted={hasStrikePrice}
-                    taxDisclaimer
-                    unitPrice={price}
-                  />
-                  <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
-                </div>
+                  </TextLink>
+
+                </SurroundPortals>
+              </div>
+              <div className={styles.removeContainer}>
+                <Remove onClick={remove} />
+              </div>
+            </div>
+            <ItemCharacteristics characteristics={characteristics} />
+            <StockInfoLists product={product} />
+            <div className={styles.infoContainerRow}>
+              <div className={styles.quantityContainer}>
+                <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
+                  <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
+                </SurroundPortals>
+                <SurroundPortals
+                  portalName={FAVORITES_PRODUCT_PRICE}
+                  portalProps={commonPortalProps}
+                >
+                  <div className={styles.priceContainer}>
+                    {hasStrikePrice ? (
+                      <PriceStriked
+                        value={defaultPrice}
+                        currency={currency}
+                      />
+                    ) : null}
+                    <Price
+                      currency={currency}
+                      discounted={hasStrikePrice}
+                      taxDisclaimer
+                      unitPrice={price}
+                    />
+                    <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+                  </div>
+                </SurroundPortals>
+              </div>
+              <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
+                <AddToCart
+                  onClick={handleAddToCart}
+                  isLoading={false}
+                  isDisabled={isDisabled}
+                  aria-label={i18n.text('product.add_to_cart')}
+                />
               </SurroundPortals>
             </div>
-            <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
-              <AddToCart
-                onClick={handleAddToCart}
-                isLoading={false}
-                isDisabled={isDisabled}
-                aria-label={i18n.text('product.add_to_cart')}
+            <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
+              <ItemNotes
+                notes={notes}
+                onClickDeleteComment={handleDeleteComment}
+                onClickOpenComment={handleOpenComment}
+                notesButtonRef={notesButtonRef}
               />
             </SurroundPortals>
           </div>
-          <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
-            <ItemNotes
-              notes={notes}
-              onClickDeleteComment={handleDeleteComment}
-              onClickOpenComment={handleOpenComment}
-              notesButtonRef={notesButtonRef}
-            />
-          </SurroundPortals>
         </div>
-      </div>
-    </SurroundPortals>
+      </SurroundPortals>
+    </ProductListEntryProvider>
   );
 };
 
