@@ -30,9 +30,13 @@ export class LiveshoppingWidget extends Component {
     if (products.length === 1) {
       return (
         <div className={styles.wrapper} data-test-id="liveShoppingWidget">
-          {products.map(id => (
-            <Item key={id} productId={id} />
-          ))}
+          <ProductListTypeProvider type="liveshopping" subType="widgets">
+            {products.map(id => (
+              <ProductListEntryProvider productId={id}>
+                <Item key={id} productId={id} />
+              </ProductListEntryProvider>
+            ))}
+          </ProductListTypeProvider>
         </div>
       );
     }
