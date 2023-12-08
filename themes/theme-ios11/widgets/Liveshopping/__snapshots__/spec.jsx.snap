@@ -71,9 +71,18 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
   }
   data-test-id="liveShoppingWidget"
 >
-  <LiveshoppingItem
-    key="1234"
-    productId="1234"
-  />
+  <ProductListTypeProvider
+    subType="widgets"
+    type="liveshopping"
+  >
+    <ProductListEntryProvider
+      key="1234"
+      productId="1234"
+    >
+      <LiveshoppingItem
+        productId="1234"
+      />
+    </ProductListEntryProvider>
+  </ProductListTypeProvider>
 </div>
 `;

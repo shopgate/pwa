@@ -32,8 +32,8 @@ export class LiveshoppingWidget extends Component {
         <div className={styles.wrapper} data-test-id="liveShoppingWidget">
           <ProductListTypeProvider type="liveshopping" subType="widgets">
             {products.map(id => (
-              <ProductListEntryProvider productId={id}>
-                <Item key={id} productId={id} />
+              <ProductListEntryProvider productId={id} key={id}>
+                <Item productId={id} />
               </ProductListEntryProvider>
             ))}
           </ProductListTypeProvider>
