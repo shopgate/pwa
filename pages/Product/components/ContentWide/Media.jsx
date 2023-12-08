@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import {
   Modal, Backdrop, ArrowIcon, Ripple,
 } from '@shopgate/engage/components';
-import { ProductImage, getProductImageSettings } from '@shopgate/engage/product';
+import {
+  ProductImage,
+  getProductImageSettings,
+  ProductListTypeProvider,
+  ProductListEntryProvider,
+} from '@shopgate/engage/product';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { css } from 'glamor';
 import connect from './Media.connector';
@@ -101,7 +106,12 @@ const styles = {
  * @params {Object} featuredImage The featured image url.
  * @returns {JSX}
  */
-const Media = ({ featuredImage, images }) => {
+const Media = ({
+  featuredImage,
+  images,
+  productId,
+  variantId,
+}) => {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -139,77 +149,85 @@ const Media = ({ featuredImage, images }) => {
     <div className={styles.root}>
       {galleryOpen ? (
         <Modal>
-          <Backdrop
-            isVisible
-            level={0}
-            opacity={80}
-            onClick={() => setGalleryOpen(false)}
-          />
-          <div className={styles.modalContainer}>
-            <Ripple
-              onClick={() => handleNextPrev(-1)}
-              color="#fff"
-              className={styles.leftArrow}
-            >
-              <ArrowIcon />
-            </Ripple>
-            <div className={styles.modal}>
-              <div className={styles.modalActive}>
-                <ProductImage
-                  onClick={() => handleOpenGallery(0)}
-                  src={images[imageIndex]}
-                  resolutions={galleryResolutions}
-                />
-              </div>
-              <div className={styles.modalGallery}>
-                {images.map((image, index) => (
-                  <div
-                    key={image}
-                    onClick={() => handleOpenGallery(index)}
-                    className={`${styles.modalPreview} ${index === imageIndex && styles.modalPreviewActive}`}
-                  >
+          <ProductListTypeProvider type="productGallery">
+            <ProductListEntryProvider productId={variantId || productId}>
+              <Backdrop
+                isVisible
+                level={0}
+                opacity={80}
+                onClick={() => setGalleryOpen(false)}
+              />
+              <div className={styles.modalContainer}>
+                <Ripple
+                  onClick={() => handleNextPrev(-1)}
+                  color="#fff"
+                  className={styles.leftArrow}
+                >
+                  <ArrowIcon />
+                </Ripple>
+                <div className={styles.modal}>
+                  <div className={styles.modalActive}>
                     <ProductImage
-                      src={image}
+                      onClick={() => handleOpenGallery(0)}
+                      src={images[imageIndex]}
                       resolutions={galleryResolutions}
                     />
                   </div>
-                ))}
+                  <div className={styles.modalGallery}>
+                    {images.map((image, index) => (
+                      <div
+                        key={image}
+                        onClick={() => handleOpenGallery(index)}
+                        className={`${styles.modalPreview} ${index === imageIndex && styles.modalPreviewActive}`}
+                      >
+                        <ProductImage
+                          src={image}
+                          resolutions={galleryResolutions}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <Ripple
+                  onClick={() => handleNextPrev(1)}
+                  color="#fff"
+                  className={styles.rightArrow}
+                >
+                  <ArrowIcon />
+                </Ripple>
               </div>
-            </div>
-            <Ripple
-              onClick={() => handleNextPrev(1)}
-              color="#fff"
-              className={styles.rightArrow}
-            >
-              <ArrowIcon />
-            </Ripple>
-          </div>
+            </ProductListEntryProvider>
+          </ProductListTypeProvider>
         </Modal>
       ) : null}
-      <div onClick={() => handleOpenGallery(0)}>
-        <ProductImage
-          className={styles.image}
-          src={featuredImage}
-          resolutions={pdpResolutions}
-        />
-      </div>
-      <div className={styles.gallery}>
-        {images.length > 1
-          ? (images.slice(1).map((image, index) => (
-            <div
-              key={image}
-              onClick={() => handleOpenGallery(index + 1)}
-              className={styles.item}
-            >
-              <ProductImage
-                src={image}
-                resolutions={pdpResolutions}
-              />
-            </div>
-          )))
-          : null
-        }
-      </div>
+      <ProductListTypeProvider type="pdp" subType="mediaSection">
+        <ProductListEntryProvider productId={variantId || productId}>
+          <div onClick={() => handleOpenGallery(0)}>
+            <ProductImage
+              className={styles.image}
+              src={featuredImage}
+              resolutions={pdpResolutions}
+            />
+          </div>
+          <div className={styles.gallery}>
+            {images.length > 1
+              ? (images.slice(1).map((image, index) => (
+                <div
+                  key={image}
+                  onClick={() => handleOpenGallery(index + 1)}
+                  className={styles.item}
+                >
+                  <ProductImage
+                    src={image}
+                    resolutions={pdpResolutions}
+                  />
+                </div>
+              )))
+              : null
+            }
+          </div>
+        </ProductListEntryProvider>
+      </ProductListTypeProvider>
     </div>
   );
   /* eslint-enable jsx-a11y/click-events-have-key-events */
@@ -217,13 +235,16 @@ const Media = ({ featuredImage, images }) => {
 };
 
 Media.propTypes = {
+  productId: PropTypes.string.isRequired,
   featuredImage: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
+  variantId: PropTypes.string,
 };
 
 Media.defaultProps = {
   featuredImage: '',
   images: [],
+  variantId: null,
 };
 
 export default connect(Media);
