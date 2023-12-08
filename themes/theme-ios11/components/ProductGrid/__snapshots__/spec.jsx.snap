@@ -7,6 +7,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   infiniteLoad={false}
   products={Array []}
   requestHash={null}
+  scope={null}
   totalProductCount={null}
 >
   <Layout>
@@ -19,7 +20,12 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
       <ul
         className="css-a9oap6 css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
-      />
+      >
+        <ProductListTypeProvider
+          subType={null}
+          type="productGrid"
+        />
+      </ul>
     </Grid>
   </Layout>
 </ProductGrid>
@@ -32,26 +38,32 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
   infiniteLoad={true}
   products={Array []}
   requestHash={null}
+  scope={null}
   totalProductCount={null}
 >
   <Consumer>
-    <InfiniteContainer
-      columns={2}
-      enablePromiseBasedLoading={true}
-      initialLimit={32}
-      items={Array []}
-      iterator={[Function]}
-      limit={32}
-      loader={[Function]}
-      loadingIndicator={
-        <LoadingIndicator
-          className={null}
-        />
-      }
-      requestHash={null}
-      totalItems={null}
-      wrapper={[Function]}
-    />
+    <ProductListTypeProvider
+      subType={null}
+      type="productGrid"
+    >
+      <InfiniteContainer
+        columns={2}
+        enablePromiseBasedLoading={true}
+        initialLimit={32}
+        items={Array []}
+        iterator={[Function]}
+        limit={32}
+        loader={[Function]}
+        loadingIndicator={
+          <LoadingIndicator
+            className={null}
+          />
+        }
+        requestHash={null}
+        totalItems={null}
+        wrapper={[Function]}
+      />
+    </ProductListTypeProvider>
   </Consumer>
 </ProductGrid>
 `;
