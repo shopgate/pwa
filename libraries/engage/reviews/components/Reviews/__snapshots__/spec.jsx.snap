@@ -2375,6 +2375,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </div>
               </AllReviewsLink>
             </Connect(AllReviewsLink)>
+            <ReviewsInfo />
           </div>
         </Portal>
         <Portal
@@ -3515,6 +3516,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 productId="foo"
               />
             </Connect(AllReviewsLink)>
+            <ReviewsInfo />
           </div>
         </Portal>
         <Portal
@@ -3598,6 +3600,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                 productId="foo"
               />
             </Connect(AllReviewsLink)>
+            <ReviewsInfo />
           </div>
         </Portal>
         <Portal
