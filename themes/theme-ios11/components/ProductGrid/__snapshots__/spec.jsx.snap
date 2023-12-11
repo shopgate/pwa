@@ -7,6 +7,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   infiniteLoad={false}
   products={Array []}
   requestHash={null}
+  scope={null}
   totalProductCount={null}
 >
   <Layout
@@ -21,7 +22,12 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
       <ul
         className="css-1ctgdf4 theme__product-grid css-h7r55a common__grid css-u7q1iu"
         data-test-id="productGrid"
-      />
+      >
+        <ProductListTypeProvider
+          subType={null}
+          type="productGrid"
+        />
+      </ul>
     </Grid>
   </Layout>
 </ProductGrid>
@@ -34,77 +40,83 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
   infiniteLoad={true}
   products={Array []}
   requestHash={null}
+  scope={null}
   totalProductCount={null}
 >
   <Consumer>
-    <InfiniteContainer
-      containerRef={
-        Object {
-          "current": null,
-        }
-      }
-      enablePromiseBasedLoading={true}
-      initialLimit={32}
-      items={Array []}
-      iterator={[Function]}
-      limit={32}
-      loader={[Function]}
-      loadingIndicator={<LoadingIndicator />}
-      preloadMultiplier={2}
-      requestHash={null}
-      totalItems={null}
-      wrapper={[Function]}
+    <ProductListTypeProvider
+      subType={null}
+      type="productGrid"
     >
-      <div
-        className="common__infinite-container"
+      <InfiniteContainer
+        containerRef={
+          Object {
+            "current": null,
+          }
+        }
+        enablePromiseBasedLoading={true}
+        initialLimit={32}
+        items={Array []}
+        iterator={[Function]}
+        limit={32}
+        loader={[Function]}
+        loadingIndicator={<LoadingIndicator />}
+        preloadMultiplier={2}
+        requestHash={null}
+        totalItems={null}
+        wrapper={[Function]}
       >
-        <div>
-          <Layout
-            columns={2}
-          >
-            <Grid
-              className="css-1ctgdf4 theme__product-grid"
-              component="ul"
-              data-test-id="productGrid"
-              wrap={true}
+        <div
+          className="common__infinite-container"
+        >
+          <div>
+            <Layout
+              columns={2}
             >
-              <ul
-                className="css-1ctgdf4 theme__product-grid css-h7r55a common__grid css-u7q1iu"
+              <Grid
+                className="css-1ctgdf4 theme__product-grid"
+                component="ul"
                 data-test-id="productGrid"
-              />
-            </Grid>
-          </Layout>
-        </div>
-        <LoadingIndicator>
-          <div
-            className="css-1aid7je loading-indicator ui-shared__loading-indicator"
-          >
-            <IndicatorCircle
-              color="#5ccee3"
-              paused={false}
-              size={32}
-              strokeWidth={3}
-            >
-              <svg
-                className="css-12jxe4c ui-shared__indicator-circle"
-                data-test-id="loadingIndicator"
-                height={32}
-                viewBox="25 25 50 50"
-                width={32}
-                xmlns="http://www.w3.org/2000/svg"
+                wrap={true}
               >
-                <circle
-                  className="css-1ei1yr2"
-                  cx="50"
-                  cy="50"
-                  r="20"
+                <ul
+                  className="css-1ctgdf4 theme__product-grid css-h7r55a common__grid css-u7q1iu"
+                  data-test-id="productGrid"
                 />
-              </svg>
-            </IndicatorCircle>
+              </Grid>
+            </Layout>
           </div>
-        </LoadingIndicator>
-      </div>
-    </InfiniteContainer>
+          <LoadingIndicator>
+            <div
+              className="css-1aid7je loading-indicator ui-shared__loading-indicator"
+            >
+              <IndicatorCircle
+                color="#5ccee3"
+                paused={false}
+                size={32}
+                strokeWidth={3}
+              >
+                <svg
+                  className="css-12jxe4c ui-shared__indicator-circle"
+                  data-test-id="loadingIndicator"
+                  height={32}
+                  viewBox="25 25 50 50"
+                  width={32}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    className="css-1ei1yr2"
+                    cx="50"
+                    cy="50"
+                    r="20"
+                  />
+                </svg>
+              </IndicatorCircle>
+            </div>
+          </LoadingIndicator>
+        </div>
+      </InfiniteContainer>
+    </ProductListTypeProvider>
   </Consumer>
 </ProductGrid>
 `;

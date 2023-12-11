@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, Card } from '@shopgate/engage/components';
-import { ProductCard } from '@shopgate/engage/product';
+import {
+  ProductCard,
+  ProductListTypeProvider,
+  ProductListEntryProvider,
+} from '@shopgate/engage/product';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
 import { WIDGET_ID } from '@shopgate/engage/product/components/ProductSlider';
@@ -99,30 +103,34 @@ class ProductSlider extends PureComponent {
     return (
       <div className={`${styles.slider} theme__widgets__product-slider`}>
         {this.renderHeadline()}
-        <Swiper
-          autoPlay={sliderSettings.autostart}
-          loop={false}
-          indicators={false}
-          controls={false}
-          interval={Number.parseInt(sliderSettings.delay, 10)}
-          freeMode
-          slidesPerView={slidesPerView}
-          classNames={{ container: styles.sliderContainer }}
-        >
-          {products.slice(0, 30).map(product => (
-            <Swiper.Item key={product.id} className={styles.sliderItem}>
-              <Card className={styles.card}>
-                <ProductCard
-                  product={product}
-                  hideName={!showName}
-                  hidePrice={!showPrice}
-                  hideRating={!showReviews}
-                  titleRows={2}
-                />
-              </Card>
-            </Swiper.Item>
-          ))}
-        </Swiper>
+        <ProductListTypeProvider type="productSlider" subType="widgets">
+          <Swiper
+            autoPlay={sliderSettings.autostart}
+            loop={false}
+            indicators={false}
+            controls={false}
+            interval={Number.parseInt(sliderSettings.delay, 10)}
+            freeMode
+            slidesPerView={slidesPerView}
+            classNames={{ container: styles.sliderContainer }}
+          >
+            {products.slice(0, 30).map(product => (
+              <Swiper.Item key={product.id} className={styles.sliderItem}>
+                <ProductListEntryProvider productId={product.id}>
+                  <Card className={styles.card}>
+                    <ProductCard
+                      product={product}
+                      hideName={!showName}
+                      hidePrice={!showPrice}
+                      hideRating={!showReviews}
+                      titleRows={2}
+                    />
+                  </Card>
+                </ProductListEntryProvider>
+              </Swiper.Item>
+            ))}
+          </Swiper>
+        </ProductListTypeProvider>
       </div>
     );
   }

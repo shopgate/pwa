@@ -10,6 +10,7 @@ import {
   CART_ITEM_BEFORE,
   CART_ITEM_AFTER,
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { ProductListEntryProvider } from '@shopgate/engage/product';
 import Product from './components/Product';
 import Coupon from './components/Coupon';
 
@@ -33,14 +34,15 @@ const CartItem = ({ item, onFocus }) => {
       <Portal name={CART_ITEM_BEFORE} props={props} />
       <Portal name={CART_ITEM} props={props}>
         {isProduct ? (
-          <Product
-            id={item.id}
-            key={item.id}
-            product={item.product}
-            quantity={item.quantity}
-            messages={item.messages}
-            onToggleFocus={onFocus}
-          />
+          <ProductListEntryProvider productId={item?.product?.id} key={item.id}>
+            <Product
+              id={item.id}
+              product={item.product}
+              quantity={item.quantity}
+              messages={item.messages}
+              onToggleFocus={onFocus}
+            />
+          </ProductListEntryProvider>
         ) : (
           <Coupon
             id={item.id}
