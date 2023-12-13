@@ -29,22 +29,35 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     snapItems={true}
     zoom={false}
   >
-    <SwiperItem
-      className={null}
-      key="1234"
+    <ProductListTypeProvider
+      subType="widgets"
+      type="liveshopping"
     >
-      <LiveshoppingItem
-        productId="1234"
-      />
-    </SwiperItem>
-    <SwiperItem
-      className={null}
-      key="1235"
-    >
-      <LiveshoppingItem
-        productId="1235"
-      />
-    </SwiperItem>
+      <SwiperItem
+        className={null}
+        key="1234"
+      >
+        <ProductListEntryProvider
+          productId="1234"
+        >
+          <LiveshoppingItem
+            productId="1234"
+          />
+        </ProductListEntryProvider>
+      </SwiperItem>
+      <SwiperItem
+        className={null}
+        key="1235"
+      >
+        <ProductListEntryProvider
+          productId="1235"
+        >
+          <LiveshoppingItem
+            productId="1235"
+          />
+        </ProductListEntryProvider>
+      </SwiperItem>
+    </ProductListTypeProvider>
   </Swiper>
 </div>
 `;
@@ -58,9 +71,18 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
   }
   data-test-id="liveShoppingWidget"
 >
-  <LiveshoppingItem
-    key="1234"
-    productId="1234"
-  />
+  <ProductListTypeProvider
+    subType="widgets"
+    type="liveshopping"
+  >
+    <ProductListEntryProvider
+      key="1234"
+      productId="1234"
+    >
+      <LiveshoppingItem
+        productId="1234"
+      />
+    </ProductListEntryProvider>
+  </ProductListTypeProvider>
 </div>
 `;

@@ -18,6 +18,7 @@ import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/componen
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { BackBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
+import { ProductListTypeProvider } from '@shopgate/engage/product';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
@@ -73,8 +74,9 @@ function CartContent(props) {
           )}
           {hasItems && (
             <Fragment>
-              <SurroundPortals portalName={CART_ITEM_LIST}>
-                {(cartItemsDisplay === 'line') && (
+              <ProductListTypeProvider type="cart">
+                <SurroundPortals portalName={CART_ITEM_LIST}>
+                  {(cartItemsDisplay === 'line') && (
                   <CardList className={styles}>
                     {cartItemsSorted.map(cartItem => (
                       <CartItemGroup
@@ -93,8 +95,8 @@ function CartContent(props) {
                       <CouponField onFocus={togglePaymentBar} />
                     </SurroundPortals>
                   </CardList>
-                )}
-                {(cartItemsDisplay === 'card') && (
+                  )}
+                  {(cartItemsDisplay === 'card') && (
                   <Fragment>
                     <CartItems
                       cartItems={cartItemsSorted}
@@ -105,8 +107,9 @@ function CartContent(props) {
                       <CouponField onFocus={togglePaymentBar} />
                     </SurroundPortals>
                   </Fragment>
-                )}
-              </SurroundPortals>
+                  )}
+                </SurroundPortals>
+              </ProductListTypeProvider>
               <PaymentBar visible={isPaymentBarVisible} />
             </Fragment>
           )}
