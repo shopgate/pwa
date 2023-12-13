@@ -77,7 +77,7 @@ exports[`<Sheet /> should open 1`] = `
                   size={null}
                 >
                   <div
-                    className="css-ugy6xl"
+                    className="ui-shared__ripple css-ugy6xl"
                     data-test-id="Ripple"
                     onClick={[Function]}
                     style={null}
@@ -506,7 +506,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   size={null}
                 >
                   <div
-                    className="css-ugy6xl"
+                    className="ui-shared__ripple css-ugy6xl"
                     data-test-id="Ripple"
                     onClick={[Function]}
                     style={null}

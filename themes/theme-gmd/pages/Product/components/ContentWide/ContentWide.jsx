@@ -13,9 +13,9 @@ import {
   OrderQuantityHint,
   ProductDiscountBadge,
 } from '@shopgate/engage/product';
+import { Reviews } from '@shopgate/engage/reviews';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import FavoriteButtonWide from '@shopgate/engage/favorites/components/FavoriteButtonWide';
-import Reviews from 'Components/Reviews';
 import { DESKTOP_MENU_BAR_HEIGHT } from '../../../../constants';
 import Characteristics from '../Characteristics';
 import Options from '../Options';

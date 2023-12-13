@@ -161,7 +161,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
@@ -561,7 +561,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
@@ -1001,7 +1001,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
@@ -1402,7 +1402,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             size={null}
                           >
                             <div
-                              className="css-ugy6xl"
+                              className="ui-shared__ripple css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
