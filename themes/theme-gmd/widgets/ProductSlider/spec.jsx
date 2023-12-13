@@ -22,6 +22,8 @@ jest.mock('@shopgate/engage/components', () => {
 });
 jest.mock('@shopgate/engage/product', () => ({
   ProductCard: ({ children }) => children,
+  ProductListTypeProvider: ({ children }) => children,
+  ProductListEntryProvider: ({ children }) => children,
 }));
 
 describe('<ProductSlider />', () => {

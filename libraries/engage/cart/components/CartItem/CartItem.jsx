@@ -7,6 +7,7 @@ import {
   CART_ITEM_TYPE_COUPON,
   CART_ITEM,
 } from '@shopgate/pwa-common-commerce/cart';
+import { ProductListEntryProvider } from '@shopgate/engage/product';
 import CartItemProduct from './CartItemProduct';
 import CartItemCoupon from './CartItemCoupon';
 import CartItemProductProvider from './CartItemProductProvider';
@@ -38,16 +39,18 @@ function CartItem({
 
   if (isProduct) {
     return (
-      <SurroundPortals portalName={CART_ITEM} portalProps={props}>
-        <CartItemProductProvider
-          cartItem={item}
-          onFocus={onFocus}
-          isEditable={editable}
-          currencyOverride={currencyOverride}
-        >
-          <CartItemProduct />
-        </CartItemProductProvider>
-      </SurroundPortals>
+      <ProductListEntryProvider productId={item?.product?.id}>
+        <SurroundPortals portalName={CART_ITEM} portalProps={props}>
+          <CartItemProductProvider
+            cartItem={item}
+            onFocus={onFocus}
+            isEditable={editable}
+            currencyOverride={currencyOverride}
+          >
+            <CartItemProduct />
+          </CartItemProductProvider>
+        </SurroundPortals>
+      </ProductListEntryProvider>
     );
   }
 
