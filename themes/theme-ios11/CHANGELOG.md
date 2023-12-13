@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.12.0](https://github.com/shopgate/pwa/compare/v7.11.1...v7.12.0) (2023-12-13)
+
+#### :rocket: Enhancement
+* [#1205](https://github.com/shopgate/pwa/pull/1205) Introduced new contexts around product lists to enable easy identification of product list types from child components ([@fkloes](https://github.com/fkloes))
+* [#1203](https://github.com/shopgate/pwa/pull/1203) Added configurable info text block to reviews list ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
