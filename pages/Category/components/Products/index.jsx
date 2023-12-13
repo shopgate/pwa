@@ -66,6 +66,7 @@ class CategoryProducts extends PureComponent {
           products={products}
           totalProductCount={totalProductCount}
           requestHash={hash}
+          scope="category"
         />
       </Fragment>
 
