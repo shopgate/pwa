@@ -7,11 +7,11 @@ import { Link } from '@shopgate/engage/components';
 const styles = {
   root: css({
     textAlign: 'center',
-    marginTop: 16,
+    marginTop: 8,
     fontSize: '.875rem',
     fontWeight: 300,
     lineHeight: 1.5,
-    padding: '0.8125rem 1rem 1rem',
+    padding: '0 1rem 1rem',
   }).toString(),
   link: css({
     textAlign: 'center',
