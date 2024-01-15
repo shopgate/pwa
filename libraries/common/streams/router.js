@@ -6,6 +6,7 @@ import {
   ROUTE_WILL_LEAVE,
   ROUTE_DID_LEAVE,
   ROUTE_DID_UPDATE,
+  WINDOW_OPEN_OVERRIDE,
 } from '../constants/ActionTypes';
 
 /**
@@ -49,3 +50,6 @@ export const routeDidUpdate$ = main$
  * @deprecated use routeDidEnter$
  */
 export const routeDidChange$ = routeDidEnter$;
+
+export const windowOpenOverride$ = main$
+  .filter(({ action }) => action.type === WINDOW_OPEN_OVERRIDE);

@@ -8,10 +8,10 @@ import {
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { historyRedirect } from '../actions/router';
+import { historyRedirect, historyPush, windowOpenOverride } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
-import { navigate$ } from '../streams';
+import { navigate$, appWillStart$, windowOpenOverride$ } from '../streams';
 import { navigate } from '../action-creators';
 import { getIsConnected } from '../selectors/client';
 import ToastProvider from '../providers/toast';
@@ -45,9 +45,14 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 }));
 
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
-jest.mock('../actions/router', () => ({
-  historyRedirect: jest.fn(),
-}));
+jest.mock('../actions/router', () => {
+  const { windowOpenOverride: windowOpenOriginal } = jest.requireActual('../actions/router');
+  return {
+    windowOpenOverride: jest.fn((...args) => windowOpenOriginal(...args)),
+    historyRedirect: jest.fn(),
+    historyPush: jest.fn(),
+  };
+});
 jest.mock('../selectors/client', () => ({
   getIsConnected: jest.fn().mockReturnValue(true),
 }));
@@ -93,7 +98,7 @@ describe('Router subscriptions', () => {
   });
 
   it('should subscribe as expected', async () => {
-    expect(subscribe).toHaveBeenCalledTimes(2);
+    expect(subscribe).toHaveBeenCalledTimes(4);
   });
 
   describe('navigate$', () => {
@@ -314,6 +319,57 @@ describe('Router subscriptions', () => {
       expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
 
+    it('should redirect from an external URL to an internal one', async () => {
+      const productCode = 'abc123';
+      const matcher = 'http://www.external.com/:seoName/:productCode';
+      const pathname = `http://www.external.com/nice-product-name/${productCode}?query=param`;
+      const redirectTarget = `/item/${productCode}`;
+
+      const redirectHandler = jest.fn((params) => {
+        expect(params).toEqual({
+          dispatch: expect.any(Function),
+          getState: expect.any(Function),
+          events: expect.any(Object),
+          action: {
+            params: {
+              action: ACTION_PUSH,
+              pathname,
+            },
+            route: expect.any(Object),
+            redirectMeta: {
+              matcher,
+              pathParams: {
+                seoName: 'nice-product-name',
+                productCode,
+              },
+              queryParams: {
+                query: 'param',
+              },
+            },
+          },
+        });
+
+        return new Promise((resolve) => {
+          resolve(redirectTarget);
+        });
+      });
+
+      redirects.set(matcher, redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname,
+      };
+
+      await callback(createCallbackPayload({ params }));
+
+      expect(router.push).toHaveBeenCalledTimes(1);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: redirectTarget,
+        state: params.state,
+      });
+    });
+
     it('should abort navigation when a redirect handler rejects', async () => {
       const error = new Error('W00ps');
 
@@ -507,6 +563,70 @@ describe('Router subscriptions', () => {
 
       callback(createCallbackPayload({ redirect }));
       expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('appWillStart$', () => {
+    let callback;
+    let stream;
+
+    beforeEach(() => {
+      [,, [stream, callback]] = subscribe.mock.calls;
+    });
+
+    it('should setup as expected', () => {
+      expect(stream).toEqual(appWillStart$);
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    describe('window.open()', () => {
+      beforeAll(() => {
+        callback(createCallbackPayload({}));
+      });
+
+      it('should return null when called and dispatched the windowOpenOverride action', () => {
+        const pathname = 'http://some.shop.com/abc123?query=param';
+        expect(window.open(pathname)).toBeNull();
+        expect(dispatch).toBeCalledTimes(1);
+        expect(dispatch).toBeCalledWith(windowOpenOverride({
+          pathname,
+        }));
+      });
+    });
+  });
+
+  describe('windowOpenOverride$', () => {
+    let callback;
+    let stream;
+
+    beforeEach(() => {
+      [,,, [stream, callback]] = subscribe.mock.calls;
+    });
+
+    it('should setup as expected', () => {
+      expect(stream).toEqual(windowOpenOverride$);
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    it('should dispatch historyPush when invoked with an url', () => {
+      const pathname = 'http://some.url';
+
+      callback(createCallbackPayload(windowOpenOverride({
+        pathname,
+      })));
+
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(historyPush({
+        pathname,
+      }));
+    });
+
+    it('should NOT dispatch historyPush when invoked with an empty url', () => {
+      callback(createCallbackPayload(windowOpenOverride({
+        pathname: null,
+      })));
+
+      expect(dispatch).not.toBeCalled();
     });
   });
 });
