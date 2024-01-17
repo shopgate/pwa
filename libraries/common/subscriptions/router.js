@@ -139,6 +139,7 @@ export default function routerSubscriptions(subscribe) {
               },
               route,
               redirectMeta: {
+                location,
                 matcher,
                 pathParams,
                 queryParams,
