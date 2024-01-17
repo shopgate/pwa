@@ -20,6 +20,7 @@ import PriceInfo from '../PriceInfo';
 import TaxDisclaimer from '../TaxDisclaimer';
 import StockInfo from '../StockInfo';
 import * as styles from './style';
+import BackInStock from '../BackInStock';
 
 /**
  * @param {Object} props The component props.
@@ -57,6 +58,9 @@ const ProductInfo = ({ productId, options }) => (
             </div>
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
+            </div>
+            <div className={styles.productInfo}>
+              <BackInStock productId={productId} />
             </div>
           </Portal>
         </Grid.Item>

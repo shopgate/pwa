@@ -14,6 +14,8 @@ import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions
 import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions';
+// Engage
+import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
@@ -74,6 +76,8 @@ const subscriptions = [
   commerceReviews,
   commerceSearch,
   commerceScanner,
+  // Engage subscribers
+  engageBackInStock,
   // App rating subscribers
   appRating,
   // Theme subscribers.
