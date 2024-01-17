@@ -6,6 +6,7 @@ import {
 import {
   NAV_MENU_QUICK_LINKS,
 } from '@shopgate/pwa-common/constants/Portals';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
 import portalProps from '../../portalProps';
 
 import Section from '../Section';
@@ -15,17 +16,22 @@ import connect from './connector';
  * The Quicklinks component.
  * @param {Object} props The component props.
  * @param {Array} props.entries The quicklinks.
+ * @param {boolean} props.isBackInStockEnabled Whether back in stock is enabled.
  * @returns {JSX}
  */
-function Quicklinks({ entries }) {
-  if (!entries || !entries.length) {
+function Quicklinks({ entries, isBackInStockEnabled }) {
+  const allEntries = isBackInStockEnabled ?
+    [...entries, { url: BACK_IN_STOCK_PATTERN, label: 'navigation.back_in_stock', key: 'back_in_stock' }] :
+    [...entries];
+
+  if (!allEntries || !allEntries.length) {
     return null;
   }
 
   return (
     <SurroundPortals portalName={NAV_MENU_QUICK_LINKS} portalProps={portalProps}>
       <Section title="navigation.more_menu">
-        {entries.map(entry => (
+        {allEntries.map(entry => (
           <Section.Item href={entry.url} key={entry.url} label={entry.label} />
         ))}
       </Section>
@@ -34,6 +40,7 @@ function Quicklinks({ entries }) {
 }
 
 Quicklinks.propTypes = {
+  isBackInStockEnabled: PropTypes.bool.isRequired,
   entries: PropTypes.arrayOf(PropTypes.shape()),
 };
 

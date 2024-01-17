@@ -55,10 +55,11 @@ class CharacteristicSheet extends PureComponent {
 
   /**
    * @param {Object} event The event object.
+   * @param {string} itemId The id that was selected
    */
-  handleItemClick = (event) => {
+  handleItemClick = (event, itemId) => {
     event.stopPropagation();
-    this.props.onSelect(event.target.value);
+    this.props.onSelect(itemId);
   }
 
   /**
@@ -102,6 +103,11 @@ class CharacteristicSheet extends PureComponent {
               rightComponent={() => this.renderAvailability(item.id)}
               selected={item.id === selectedValue}
               ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+              productId={this.props.productId}
+              characteristics={{
+                ...this.props.selection,
+                [this.props.charId]: item.id,
+              }}
             />
           ))}
         </SheetList>

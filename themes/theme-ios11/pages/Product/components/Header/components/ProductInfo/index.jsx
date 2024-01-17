@@ -20,12 +20,13 @@ import PriceInfo from '../PriceInfo';
 import TaxDisclaimer from '../TaxDisclaimer';
 import StockInfo from '../StockInfo';
 import * as styles from './style';
+import BackInStock from '../BackInStock';
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductInfo = ({ productId, options }) => (
+const ProductInfo = ({ productId, options, variantId }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
@@ -58,6 +59,9 @@ const ProductInfo = ({ productId, options }) => (
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
             </div>
+            <div className={styles.productInfo}>
+              <BackInStock productId={productId} variantId={variantId} />
+            </div>
           </Portal>
         </Grid.Item>
         <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
@@ -86,6 +90,7 @@ const ProductInfo = ({ productId, options }) => (
 ProductInfo.propTypes = {
   options: PropTypes.shape().isRequired,
   productId: PropTypes.string.isRequired,
+  variantId: PropTypes.string.isRequired,
 };
 
 export default memo(ProductInfo);

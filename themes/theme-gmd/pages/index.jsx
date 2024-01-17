@@ -41,6 +41,7 @@ import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
@@ -111,6 +112,11 @@ const Pages = ({ store }) => (
                     component={routes.Search}
                     cache
                     transform={routesTransforms[SEARCH_PATTERN]}
+                  />
+                  <Route
+                    pattern={BACK_IN_STOCK_PATTERN}
+                    component={routes.BackInStock}
+                    transform={routesTransforms[BACK_IN_STOCK_PATTERN]}
                   />
                   <Route
                     pattern={SEARCH_FILTER_PATTERN}

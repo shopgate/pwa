@@ -13,6 +13,7 @@ import {
 import Shipping from '@shopgate/engage/product/components/Header/Shipping';
 import Tiers from '@shopgate/engage/product/components/Header/Tiers';
 import PriceStriked from '@shopgate/engage/product/components/Header/PriceStriked';
+import BackInStock from '../BackInStock';
 import Manufacturer from '../Manufacturer';
 import Availability from '../Availability';
 import Price from '../Price';
@@ -25,7 +26,7 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductInfo = ({ productId, options }) => (
+const ProductInfo = ({ productId, options, variantId }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
@@ -58,6 +59,9 @@ const ProductInfo = ({ productId, options }) => (
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
             </div>
+            <div className={styles.productInfo}>
+              <BackInStock productId={productId} variantId={variantId} />
+            </div>
           </Portal>
         </Grid.Item>
         <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
@@ -86,6 +90,11 @@ const ProductInfo = ({ productId, options }) => (
 ProductInfo.propTypes = {
   options: PropTypes.shape().isRequired,
   productId: PropTypes.string.isRequired,
+  variantId: PropTypes.string,
+};
+
+ProductInfo.defaultProps = {
+  variantId: null,
 };
 
 export default memo(ProductInfo);

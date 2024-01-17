@@ -233,6 +233,17 @@ export const getProductLongName = createSelector(
 );
 
 /**
+ * Retrieves the product type.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductType = createSelector(
+  getProduct,
+  product => product?.type
+);
+
+/**
  * Retrieves the product rating.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.

@@ -17,6 +17,7 @@ const QUICK_LINKS = 'quick-links';
 const HOME = 'home';
 const LOGIN = 'login';
 const SCANNER = 'scanner';
+const BACK_IN_STOCK = 'back-in-stock';
 const REGISTER_LINK = 'register-link';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
@@ -81,6 +82,10 @@ export const NAV_MENU_QUICK_LINKS_AFTER = `${NAV_MENU}.${QUICK_LINKS}.${AFTER}`;
 export const NAV_MENU_SCANNER_BEFORE = `${NAV_MENU}.${SCANNER}.${BEFORE}`;
 export const NAV_MENU_SCANNER = `${NAV_MENU}.${SCANNER}`;
 export const NAV_MENU_SCANNER_AFTER = `${NAV_MENU}.${SCANNER}.${AFTER}`;
+
+export const NAV_MENU_BACK_IN_STOCK_BEFORE = `${NAV_MENU}.${BACK_IN_STOCK}.${BEFORE}`;
+export const NAV_MENU_BACK_IN_STOCK = `${NAV_MENU}.${BACK_IN_STOCK}`;
+export const NAV_MENU_BACK_IN_STOCK_AFTER = `${NAV_MENU}.${BACK_IN_STOCK}.${AFTER}`;
 
 export const NAV_MENU_TERMS_BEFORE = `${NAV_MENU}.${TERMS}.${BEFORE}`;
 export const NAV_MENU_TERMS = `${NAV_MENU}.${TERMS}`;

@@ -20,7 +20,21 @@
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Auf Lager Erinnerungen"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktiv Erinnerungen",
+      "past": "Abgelaufene Erinnerungen"
+    },
+    "empty_list_reminder": "Sie haben keine Erinnerungen in dieser Liste.",
+    "get_notified": "Erinnere mich",
+    "we_will_remind_you": "Sie werden benachrichtigt.",
+    "add_back_in_stock_success_modal": {
+      "title": "Erinnerung hinzugefügt!",
+      "message": "Wir werden Ihnen eine Push Nachricht senden wenn das Produkt wieder verfügbar ist. Sie können Ihre Erinnerungen in den Einstellungen verwalten."
+    }
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -240,6 +254,7 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
+    "back_in_stock": "Auf Lager Erinnerungen",
     "back": "Zurück zu {title}"
   },
   "reviews": {
@@ -275,9 +290,15 @@
     }
   },
   "permissions": {
+    "push_notifications": {
+      "message": "Bitte erlauben Sie Push Nachrichten im nächsten Schritt damit wir Sie Benachrichtigen können wenn das Produkt wieder auf Lager ist.",
+      "confirm": "Push Nachrichten erlauben",
+      "dismiss": "Abbrechen"
+    },
     "access_denied": {
       "settings_button": "Zu den Einstellungen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
+      "push_message": "Dieser Service benötigt Ihre Berechtigung für Push Nachrichten. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
   },
