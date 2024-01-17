@@ -22,6 +22,7 @@ import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions
 import engageCheckout from '@shopgate/engage/checkout/subscriptions';
 import engageRegistration from '@shopgate/engage/registration/subscriptions';
 import engageTracking from '@shopgate/engage/tracking/subscriptions';
+import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
@@ -84,6 +85,7 @@ const subscriptions = [
   engageCheckout,
   engageRegistration,
   engageTracking,
+  engageBackInStock,
   // App rating subscribers
   appRating,
   // Theme subscribers.

@@ -21,3 +21,4 @@ export const GuestCheckoutRegistration = lazy(() => import('./Checkout/GuestChec
 export const GuestCheckoutPayment = lazy(() => import('./Checkout/GuestCheckoutPayment'));
 export const Checkout = lazy(() => import('./Checkout/Checkout'));
 export const Register = lazy(() => import('./Register'));
+export const BackInStock = lazy(() => import('./BackInStock'));

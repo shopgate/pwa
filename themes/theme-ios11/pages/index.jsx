@@ -53,6 +53,7 @@ import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import ForgotPassword from './ForgotPassword';
 import Account from './Account';
@@ -215,6 +216,10 @@ const Pages = ({ store }) => {
                     <Route
                       pattern={STORE_FINDER_PATTERN}
                       component={StoreFinder}
+                    />
+                    <Route
+                      pattern={BACK_IN_STOCK_PATTERN}
+                      component={routes.BackInStock}
                     />
                     <Route.NotFound component={PageNotFound} />
                     {React.Children.map(routePortals, Component => Component)}

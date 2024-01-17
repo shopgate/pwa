@@ -42,7 +42,9 @@
     "checkout_addresses_add_shipping": "Add  New Shipping Address",
     "checkout_addresses_add_billing": "Add New Billing Address",
     "checkout_addresses_edit_shipping": "Edit Shipping Address",
-    "checkout_addresses_edit_billing": "Edit Billing Address"
+    "checkout_addresses_edit_billing": "Edit Billing Address",
+    "back_in_stock": "Back in Stock Reminders"
+
   },
   "account": {
     "profile": {
