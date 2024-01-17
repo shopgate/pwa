@@ -337,6 +337,7 @@ describe('Router subscriptions', () => {
             },
             route: expect.any(Object),
             redirectMeta: {
+              location: pathname,
               matcher,
               pathParams: {
                 seoName: 'nice-product-name',
