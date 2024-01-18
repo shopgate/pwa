@@ -86,21 +86,20 @@ class Redirects {
     }
 
     // Retrieve the matching pattern for the redirect from the redirects collection
-    const [patternMatch, handlerMatch] = Array.from(this.redirects.entries())
+    const [patternMatch] = Array.from(this.redirects.entries())
       .find(([, handler]) => handler === redirect) ?? [];
 
-    const result = null;
+    const result = {
+      handler: redirect,
+      queryParams: JSON.parse(JSON.stringify(query)),
+    };
 
     if (patternMatch) {
       // decode params from route patterns (e.g. /item/:productCode)
       const matcherResult = this.matcher(patternMatch)(url);
 
-      return {
-        matcher: patternMatch,
-        handler: handlerMatch,
-        pathParams: matcherResult,
-        queryParams: JSON.parse(JSON.stringify(query)),
-      };
+      result.matcher = patternMatch;
+      result.pathParams = matcherResult;
     }
 
     return result;
