@@ -12,3 +12,4 @@ export * from './routeWillPop';
 export * from './routeWillPush';
 export * from './routeWillReplace';
 export * from './routeWillReset';
+export * from './windowOpenOverride';

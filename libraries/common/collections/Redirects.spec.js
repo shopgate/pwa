@@ -35,6 +35,53 @@ describe('Redirects', () => {
     });
   });
 
+  describe('.getRedirectExtended()', () => {
+    it('should get a redirect for a distinct pathname', () => {
+      redirects.set(FROM, TO);
+      expect(redirects.getRedirectExtended(FROM)).toEqual({
+        matcher: FROM,
+        handler: TO,
+        pathParams: {},
+        queryParams: {},
+      });
+    });
+
+    it('should get a redirect for a pathname which matches a registered pattern', () => {
+      const FROM_WITH_PARAM = `${FROM}/:id`;
+      redirects.set(FROM_WITH_PARAM, TO);
+      expect(redirects.getRedirectExtended(`${FROM}/abc123`)).toEqual({
+        matcher: FROM_WITH_PARAM,
+        handler: TO,
+        pathParams: {
+          id: 'abc123',
+        },
+        queryParams: {},
+      });
+    });
+
+    it('should get a redirect for urls with path and query params', () => {
+      const url = 'https://some.shop.de/product/some-product-name/abc123?some=param';
+      const matcher = 'https://some.shop.de/product/:seoProductName/:productCode';
+
+      redirects.set(matcher, TO);
+      expect(redirects.getRedirectExtended(url)).toEqual({
+        matcher,
+        handler: TO,
+        pathParams: {
+          seoProductName: 'some-product-name',
+          productCode: 'abc123',
+        },
+        queryParams: {
+          some: 'param',
+        },
+      });
+    });
+
+    it('should get NULL for an unknown pathname', () => {
+      expect(redirects.getRedirectExtended(FROM)).toBeNull();
+    });
+  });
+
   describe('.set()', () => {
     it('should add a redirect', () => {
       redirects.set(FROM, TO);
