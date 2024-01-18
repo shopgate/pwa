@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper } from '@shopgate/pwa-common/components';
+import { ProductListTypeProvider, ProductListEntryProvider } from '@shopgate/engage/product';
 import Item from './components/Item';
 import connect from './connector';
 import styles from './style';
@@ -29,9 +30,13 @@ export class LiveshoppingWidget extends Component {
     if (products.length === 1) {
       return (
         <div className={styles.wrapper} data-test-id="liveShoppingWidget">
-          {products.map(id => (
-            <Item key={id} productId={id} />
-          ))}
+          <ProductListTypeProvider type="liveshopping" subType="widgets">
+            {products.map(id => (
+              <ProductListEntryProvider productId={id} key={id}>
+                <Item productId={id} />
+              </ProductListEntryProvider>
+            ))}
+          </ProductListTypeProvider>
         </div>
       );
     }
@@ -39,11 +44,15 @@ export class LiveshoppingWidget extends Component {
     return (
       <div className={styles.wrapper}>
         <Swiper indicators loop={products.length > 1}>
-          {products.map(id => (
-            <Swiper.Item key={id}>
-              <Item productId={id} />
-            </Swiper.Item>
-          ))}
+          <ProductListTypeProvider type="liveshopping" subType="widgets">
+            {products.map(id => (
+              <Swiper.Item key={id}>
+                <ProductListEntryProvider productId={id}>
+                  <Item productId={id} />
+                </ProductListEntryProvider>
+              </Swiper.Item>
+            ))}
+          </ProductListTypeProvider>
         </Swiper>
       </div>
     );

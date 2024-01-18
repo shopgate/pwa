@@ -17,6 +17,11 @@ jest.mock('@shopgate/pwa-common/components/InfiniteContainer', () =>
 jest.mock('./components/Iterator', () =>
   function Iterator() { return null; });
 
+jest.mock('@shopgate/engage/product', () => ({
+  ProductListTypeProvider: ({ children }) => children,
+  ProductListEntryProvider: ({ children }) => children,
+}));
+
 describe('<ProductGrid />', () => {
   it('should render with the InfiniteContainer', () => {
     const wrapper = mount((
