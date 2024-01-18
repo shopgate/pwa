@@ -4,6 +4,7 @@ import { css } from 'glamor';
 // import { ResponsiveContainer } from '@shopgate/engage/components';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import BackInStockRemindersProvider from '../../providers/BackInStockRemindersProvider';
+import List from '../List';
 // import { CHECKOUT_PATTERN } from '../../constants/routes';
 // import ProfileProvider from '../../../account/components/Profile/Profile.provider';
 // import CheckoutProvider from '../../providers/CheckoutProvider';
@@ -46,6 +47,7 @@ const BackInStockReminders = () => {
   return (
     <BackInStockRemindersProvider>
       <div>asdf</div>
+      <List />
     </BackInStockRemindersProvider>
   );
   // return (

@@ -1,5 +1,5 @@
-import { routeDidEnter$, routeWillEnter$ } from '@shopgate/pwa-common/streams';
 import {
+  addBackInStockReminderSuccess$,
   backInStockRemindersDidEnter$,
 } from '../streams';
 import { fetchBackInStoreReminders } from '../actions';
@@ -10,7 +10,10 @@ import { fetchBackInStoreReminders } from '../actions';
  */
 export default function backInStock(subscribe) {
   subscribe(backInStockRemindersDidEnter$, ({ dispatch }) => {
-    console.log('sasa: ##################### didenter ########################');
+    dispatch(fetchBackInStoreReminders());
+  });
+  subscribe(addBackInStockReminderSuccess$, ({ dispatch }) => {
     dispatch(fetchBackInStoreReminders());
   });
 }
+
