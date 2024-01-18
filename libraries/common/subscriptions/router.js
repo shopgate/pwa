@@ -13,9 +13,11 @@ import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
-import { historyRedirect } from '../actions/router';
+import { historyRedirect, historyPush, windowOpenOverride } from '../actions/router';
 import * as handler from './helpers/handleLinks';
-import { navigate$, userDidLogin$ } from '../streams';
+import {
+  navigate$, userDidLogin$, appWillStart$, windowOpenOverride$,
+} from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import { getIsConnected } from '../selectors/client';
 import { INDEX_PATH } from '../constants/RoutePaths';
@@ -157,8 +159,15 @@ export default function routerSubscriptions(subscribe) {
       }
     }
 
+    /* eslint-disable prefer-const */
     // Check for a redirect and change location if one is found.
-    let redirect = redirects.getRedirect(location);
+    let {
+      handler: redirect,
+      matcher,
+      pathParams,
+      queryParams,
+    } = redirects.getRedirectExtended(location) || {};
+    /* eslint-enable prefer-const */
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
@@ -185,6 +194,12 @@ export default function routerSubscriptions(subscribe) {
                 pathname: location,
               },
               route,
+              redirectMeta: {
+                location,
+                matcher,
+                pathParams,
+                queryParams,
+              },
             },
           });
         } catch (e) {
@@ -284,6 +299,43 @@ export default function routerSubscriptions(subscribe) {
   subscribe(redirectUser$, ({ action, dispatch }) => {
     if (appConfig.webCheckoutShopify === null) {
       dispatch(historyRedirect(action.redirect));
+    }
+  });
+
+  subscribe(appWillStart$, ({ dispatch }) => {
+    const windowOpenOriginal = window.open;
+    /**
+     * Override for the window.open method which is usually used by external SDKs to open URLs.
+     * Calls of this method would usually replace the PWA with the passed url. The override ensures
+     * that the URL is passed through the router system which implements logic for various URL
+     * formats.
+     *
+     * With debugging in mind "historyPush" is not directly dispatched. Instead it dispatches
+     * a dedicated action which is eventually transformed to "historyPush".
+     *
+     * @param {string} url A string indicating the URL or path of the resource to be loaded.
+     * @param {string} target @link https://developer.mozilla.org/en-US/docs/Web/API/Window/open#target
+     * @param {string} windowFeatures @link https://developer.mozilla.org/en-US/docs/Web/API/Window/open#windowfeatures
+     * @param {boolean} [isInternal=false] Whether the method is called by internal logic. This will
+     * invoke the original window.open with the method parameters.
+     * @returns {null}
+     */
+    window.open = (url = '', target, windowFeatures, isInternal = false) => {
+      if (!isInternal) {
+        dispatch(windowOpenOverride({ pathname: url }));
+      } else {
+        windowOpenOriginal(url, target, windowFeatures);
+      }
+
+      return null;
+    };
+  });
+
+  subscribe(windowOpenOverride$, ({ action, dispatch }) => {
+    if (action.pathname) {
+      dispatch(historyPush({
+        pathname: action.pathname,
+      }));
     }
   });
 }
