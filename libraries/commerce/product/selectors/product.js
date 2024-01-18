@@ -903,6 +903,42 @@ export const getProductsResult = createSelector(
 );
 
 /**
+ * Selector factory which creates a selector to retrieve a product results object based on a custom
+ * hash string.
+ * @param {string} hash A resultsByHash hash string
+ * @returns {Function}
+ */
+export const makeGetProductResultByCustomHash = (hash) => {
+  const parsedHash = JSON.parse(hash);
+
+  return createSelector(
+    state => state,
+    getProductState,
+    (state, productState) => {
+      let products = [];
+      let totalProductCount = !hash ? 0 : null;
+      const sort = parsedHash?.sort ?? DEFAULT_SORT;
+
+      const result = productState.resultsByHash[hash];
+
+      if (result && result.products) {
+        totalProductCount = result.totalResultCount;
+        products = result.products.map(
+          productId => getProductById(state, { productId }).productData
+        );
+      }
+
+      return {
+        products,
+        totalProductCount,
+        sort,
+        hash,
+      };
+    }
+  );
+};
+
+/**
  * Selector mappings for PWA < 6.0
  * @deprecated
  */
