@@ -913,11 +913,17 @@ export const makeGetProductResultByCustomHash = (hash) => {
 
   return createSelector(
     state => state,
+    (state, props) => props,
     getProductState,
-    (state, productState) => {
+    (state, props, productState) => {
+      const { searchPhrase } = props;
       let products = [];
       let totalProductCount = !hash ? 0 : null;
-      const sort = parsedHash?.sort ?? DEFAULT_SORT;
+
+      const sort = parsedHash?.sort || getSortOrder(state, {
+        ...props,
+        scope: typeof searchPhrase === 'undefined' ? SORT_SCOPE_CATEGORY : SORT_SCOPE_SEARCH,
+      });
 
       const result = productState.resultsByHash[hash];
 
