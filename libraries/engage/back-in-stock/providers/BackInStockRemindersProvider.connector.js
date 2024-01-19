@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
-import { getBackInStockSubscriptions } from '../selectors/backInStock';
-import { addBackInStoreSubscription } from '../actions';
+import {
+  getBackInStockSubscriptions,
+  getBackInStockSubscriptionsFetching,
+} from '../selectors/backInStock';
+import {
+  addBackInStoreSubscription,
+  removeBackInStoreSubscription,
+} from '../actions';
 
 /**
  * @returns {Function}
@@ -13,11 +19,13 @@ function makeMapStateToProps() {
    */
   return (state, props) => ({
     subscriptions: getBackInStockSubscriptions(state, props),
+    isFetching: getBackInStockSubscriptionsFetching(state, props),
   });
 }
 
 const mapDispatchToProps = {
   addBackInStoreSubscription,
+  removeBackInStoreSubscription,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

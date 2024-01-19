@@ -11,12 +11,17 @@ const BackInStoreRemindersProvider = ({
   subscriptions,
   children,
   addBackInStoreSubscription,
+  isFetching,
+  removeBackInStoreSubscription,
 }) => {
   // Create memoized context value.
   const value = useMemo(() => ({
     subscriptions,
     addBackInStoreSubscription,
-  }), [addBackInStoreSubscription, subscriptions]);
+    removeBackInStoreSubscription,
+    isFetching,
+
+  }), [addBackInStoreSubscription, isFetching, removeBackInStoreSubscription, subscriptions]);
 
   return (
     <Context.Provider value={value}>
@@ -27,11 +32,14 @@ const BackInStoreRemindersProvider = ({
 
 BackInStoreRemindersProvider.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
+  removeBackInStoreSubscription: PropTypes.func.isRequired,
   subscriptions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   children: PropTypes.node,
+  isFetching: PropTypes.bool,
 };
 BackInStoreRemindersProvider.defaultProps = {
   children: null,
+  isFetching: false,
 };
 
 export default connect(BackInStoreRemindersProvider);

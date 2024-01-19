@@ -1,23 +1,22 @@
 import React from 'react';
+import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
 import { useBackInStockReminderContext } from '../../hooks';
 import { Button } from '../../../components';
-
-// const styles = {};
 
 /**
  * The BackInStockReminders component.
  * @returns {JSX}
  */
 const List = () => {
-  const { subscriptions, addBackInStoreSubscription } = useBackInStockReminderContext();
+  const {
+    subscriptions,
+    addBackInStoreSubscription,
+    removeBackInStoreSubscription,
+    isFetching,
+  } = useBackInStockReminderContext();
   return (
     <div>
-      <div>asdf</div>
-      <div>asdf</div>
-      <div>asdf</div>
-      <div>asdf</div>
-      <div>asdf</div>
-
+      {isFetching ? <LoadingIndicator /> : null}
       <Button onClick={() => {
         addBackInStoreSubscription({ productCode: '24-MB01' });
       }}
@@ -31,9 +30,13 @@ const List = () => {
       >
         Add 24-MG03
       </Button>
-
-      {subscriptions.map(({ productCode, status }) => (
-        <div>
+      {subscriptions.map(({ productCode, status, subscriptionCode }) => (
+        <div style={{
+          padding: '8px',
+          margin: '8px',
+          border: 'solid',
+        }}
+        >
           <div>
 Product:
             {productCode}
@@ -42,6 +45,16 @@ Product:
 Status:
             {status}
           </div>
+          <Button onClick={() => {
+            removeBackInStoreSubscription({
+              subscriptionCode,
+            });
+          }}
+          >
+            Remove
+            {' '}
+            {productCode}
+          </Button>
         </div>))}
     </div>
   );

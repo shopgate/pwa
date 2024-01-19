@@ -6,6 +6,9 @@ import {
   FETCH_BACK_IN_STOCK_REMINDERS,
   FETCH_BACK_IN_STOCK_REMINDERS_ERROR,
   FETCH_BACK_IN_STOCK_REMINDERS_SUCCESS,
+  REMOVE_BACK_IN_STOCK_REMINDERS,
+  REMOVE_BACK_IN_STOCK_REMINDERS_ERROR,
+  REMOVE_BACK_IN_STOCK_REMINDERS_SUCCESS,
 } from '../constants';
 
 /**
@@ -18,7 +21,6 @@ export const fetchBackInStoreReminders = () => async (dispatch) => {
 
   try {
     const { subscriptions } = await pipelineRequest
-      // .setErrorBlacklist([ERROR_CODE_CHECKOUT_GENERIC])
       .setInput({
         limit: 100,
         offset: 100,
@@ -50,7 +52,6 @@ export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) 
 
   try {
     const { subscriptions } = await pipelineRequest
-      // .setErrorBlacklist([ERROR_CODE_CHECKOUT_GENERIC])
       .setInput({
         productCode,
       })
@@ -64,6 +65,36 @@ export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) 
   } catch (error) {
     dispatch({
       type: ADD_BACK_IN_STOCK_REMINDERS_ERROR,
+      error,
+    });
+
+    return null;
+  }
+};
+
+/**
+ * @returns {Function}
+ */
+export const removeBackInStoreSubscription = ({ subscriptionCode }) => async (dispatch) => {
+  dispatch({ type: REMOVE_BACK_IN_STOCK_REMINDERS });
+
+  const pipelineRequest = new PipelineRequest('shopgate.user.removeBackInStockSubscription');
+
+  try {
+    const { subscriptions } = await pipelineRequest
+      .setInput({
+        subscriptionCode,
+      })
+      .dispatch();
+
+    dispatch({
+      type: REMOVE_BACK_IN_STOCK_REMINDERS_SUCCESS,
+      subscriptions,
+    });
+    return subscriptions;
+  } catch (error) {
+    dispatch({
+      type: REMOVE_BACK_IN_STOCK_REMINDERS_ERROR,
       error,
     });
 
