@@ -201,7 +201,12 @@ export const openExternalLink = (location, historyAction, state, locationState =
   const { target } = locationState;
 
   if (!hasSGJavaScriptBridge() || hasWebBridge()) {
-    window.open(location, '_blank');
+    /**
+     * window.open is overwritten within the router subscriptions with a custom implementation.
+     * It needs to be called here with "true" as last parameter, so that the original window.open is
+     * invoked. Otherwise there would be the risk of infinite call cycles.
+     */
+    window.open(location, '_blank', undefined, true);
     handleAppRedirect(historyAction, state);
     return;
   }

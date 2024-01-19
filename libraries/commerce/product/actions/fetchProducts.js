@@ -18,6 +18,7 @@ import receiveProducts from '../action-creators/receiveProducts';
 import errorProducts from '../action-creators/errorProducts';
 import deleteProductsByIds from '../action-creators/deleteProductsByIds';
 import receiveProductsCached from '../action-creators/receiveProductsCached';
+import { makeGetProductResultByCustomHash } from '../selectors/product';
 
 /**
  * Process the pipeline params to be compatible.
@@ -56,6 +57,7 @@ const getDefaultSortOrder = makeGetDefaultSortOrder();
  * @param {Object} options The options for the getProducts request.
  * @param {Object} options.params The params for the getProduct pipeline.
  * @param {string} [options.pipeline='getProducts'] The pipeline to call.
+ * @param {Object} [options.filters = null] Filters object for the request
  * @param {boolean} [options.cached=true] If the result will be cached.
  * @param {?number} [options.cachedTime=null] Cache TTL in ms.
  * @param {?string} [options.id=null] A unique id for the component that is using this action.
@@ -65,6 +67,8 @@ const getDefaultSortOrder = makeGetDefaultSortOrder();
  *   into the product hash and the request.
  * @param {Function} [options.onBeforeDispatch=() => {}] A callback which is fired, before new data
  *  will be returned.
+ * @param {boolean} [options.resolveCachedProducts=false] Whether to resolve with products even
+ * when no actual request was done due to cached data.
  * @return {Function} A Redux Thunk
  */
 function fetchProducts(options) {
@@ -79,6 +83,7 @@ function fetchProducts(options) {
     includeFilters = true,
     includeFulfillment = true,
     onBeforeDispatch = () => { },
+    resolveCachedProducts = false,
   } = options;
 
   return (dispatch, getState) => {
@@ -134,14 +139,17 @@ function fetchProducts(options) {
          * a caller that fetchProducts will return data.
          */
         onBeforeDispatch();
-
         dispatch(receiveProductsCached({
           hash,
           requestParams,
           products,
         }));
 
-        return Promise.resolve(result);
+        return Promise.resolve(
+          resolveCachedProducts ?
+            makeGetProductResultByCustomHash(hash)(state) :
+            result
+        );
       }
 
       return null;

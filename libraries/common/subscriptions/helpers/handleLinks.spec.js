@@ -118,7 +118,7 @@ describe('handleLinks helpers', () => {
       );
 
       expect(window.open).toBeCalledTimes(1);
-      expect(window.open).toBeCalledWith(location, '_blank');
+      expect(window.open).toBeCalledWith(location, '_blank', undefined, true);
       expect(openPageExtern).not.toBeCalled();
       expect(openPage).not.toBeCalled();
     });
@@ -132,7 +132,7 @@ describe('handleLinks helpers', () => {
       );
 
       expect(window.open).toBeCalledTimes(1);
-      expect(window.open).toBeCalledWith(location, '_blank');
+      expect(window.open).toBeCalledWith(location, '_blank', undefined, true);
       expect(openPageExtern).not.toBeCalled();
       expect(openPage).not.toBeCalled();
     });
