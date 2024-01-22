@@ -25,6 +25,7 @@ function ViewContainer({
   visible,
   'aria-hidden': ariaHidden,
   noContentPortal,
+  noKeyboardListener,
 }) {
   if (visible) {
     setPageBackgroundColor(background);
@@ -41,6 +42,7 @@ function ViewContainer({
           <section className={styles} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
             <Content
               noScrollOnKeyboard={noScrollOnKeyboard}
+              noKeyboardListener={noKeyboardListener}
               setContentRef={setContentRef}
               noContentPortal={noContentPortal}
             >
@@ -59,6 +61,7 @@ ViewContainer.propTypes = {
   background: PropTypes.string,
   children: PropTypes.node,
   noContentPortal: PropTypes.bool,
+  noKeyboardListener: PropTypes.bool,
   noScrollOnKeyboard: PropTypes.bool,
 };
 
@@ -68,6 +71,7 @@ ViewContainer.defaultProps = {
   children: null,
   noScrollOnKeyboard: false,
   noContentPortal: false,
+  noKeyboardListener: false,
 };
 
 /**
