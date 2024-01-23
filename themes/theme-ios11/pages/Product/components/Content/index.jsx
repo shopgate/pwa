@@ -193,16 +193,21 @@ class ProductContent extends PureComponent {
               />
             </ProductUnitQuantityPicker>
           </Section>
+
           <Section title="product.sections.options">
             <Characteristics productId={productId} variantId={variantId} />
             <Options />
           </Section>
+
+
           <Section title="product.sections.fulfillment">
             <FulfillmentSelector
               productId={variantId || productId}
               conditioner={this.baseContextValue.conditioner}
             />
           </Section>
+
+
           <Section title="product.sections.description">
             <Description productId={productId} variantId={variantId} />
           </Section>

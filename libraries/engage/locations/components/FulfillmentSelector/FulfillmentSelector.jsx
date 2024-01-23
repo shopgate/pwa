@@ -32,6 +32,7 @@ import { FulfillmentSelectorAddToCart } from './FulfillmentSelectorAddToCart';
 import { FulfillmentSelectorLocation } from './FulfillmentSelectorLocation';
 import { container } from './FulfillmentSelector.style';
 import connect from './FulfillmentSelector.connector';
+import FulfillmentSelectorBackInStock from './FulfillmentSelectorBackInStock';
 
 type Props = OwnProps & StateProps & DispatchProps;
 
@@ -253,6 +254,8 @@ function FulfillmentSelector(props: Props) {
       </SurroundPortals>
       <FulfillmentSelectorLocation />
       <FulfillmentSelectorAddToCart />
+
+      <FulfillmentSelectorBackInStock productId={productId} />
     </FulfillmentSelectorContext.Provider>
   );
 }
