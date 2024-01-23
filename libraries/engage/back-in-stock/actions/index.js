@@ -17,10 +17,8 @@ import {
 export const fetchBackInStoreReminders = () => async (dispatch) => {
   dispatch({ type: FETCH_BACK_IN_STOCK_REMINDERS });
 
-  const pipelineRequest = new PipelineRequest('shopgate.user.getBackInStockSubscriptions');
-
   try {
-    const { subscriptions } = await pipelineRequest
+    const { subscriptions } = await new PipelineRequest('shopgate.user.getBackInStockSubscriptions')
       .setInput({
         limit: 100,
         offset: 100,
@@ -31,6 +29,7 @@ export const fetchBackInStoreReminders = () => async (dispatch) => {
       type: FETCH_BACK_IN_STOCK_REMINDERS_SUCCESS,
       subscriptions,
     });
+
     return subscriptions;
   } catch (error) {
     dispatch({

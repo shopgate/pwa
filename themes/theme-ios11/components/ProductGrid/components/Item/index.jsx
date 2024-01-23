@@ -22,6 +22,7 @@ const Item = ({ product, display }) => (
       state={{ title: product.name }}
       aria-hidden={!product.featuredMedia?.altText}
     >
+
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
           type={product.featuredMedia.type}

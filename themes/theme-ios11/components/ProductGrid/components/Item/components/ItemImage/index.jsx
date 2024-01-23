@@ -9,7 +9,7 @@ import {
 import { getProductImageSettings, ProductImage } from '@shopgate/engage/product';
 
 const { ListImage: gridResolutions } = getProductImageSettings();
-
+console.log('sasa: :12:gridResolutions:', gridResolutions);
 /**
  * The item image component.
  */
