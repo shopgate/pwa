@@ -1,37 +1,94 @@
 import React from 'react';
 import { css } from 'glamor';
-import { Link, Button } from '@shopgate/engage/components';
+import { Link, Ripple, TextLink } from '@shopgate/engage/components';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product';
-import { ProductImage } from '@shopgate/engage/product';
+import { PriceInfo, ProductImage } from '@shopgate/engage/product';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
+import Price from '@shopgate/pwa-ui-shared/Price';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 import { useBackInStockReminderContext } from '../../hooks';
+import { StockInfoLists } from '../../../locations';
+import { getThemeSettings, i18n } from '../../../core';
+import { responsiveMediaQuery } from '../../../components/ResponsiveContainer/mediaQuery';
+
+const { variables } = themeConfig;
 
 const styles = {
-  subscriptionContainer: css({
-  }).toString(),
-  subscriptionRow: css({
-    flex: 1, display: 'flex',
-  }).toString(),
-  subscriptionLeftRow: css({
-    width: '40%',
-  }).toString(),
-  subscriptionRightRow: css({
-    width: '60%',
-    padding: '8px',
-  }).toString(),
-  link: css({
-    textDecoration: 'underline',
-  }).toString(),
-  removeButton: css({
-    color: 'var(--color-primary)',
-  }).toString(),
-  removeButtonContainer: css({
-    justifyContent: 'end',
+  root: css({
     display: 'flex',
+    position: 'relative',
+    '&:not(:last-child)': {
+      marginBottom: 16,
+    },
   }).toString(),
-  price: css({
-    textAlign: 'end',
+  imageContainer: css({
+    flex: 0.4,
+    marginRight: 18,
+    [responsiveMediaQuery('>=xs', { appAlways: true })]: {
+      maxWidth: 120,
+      minWidth: 80,
+    },
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      maxWidth: 120,
+      minWidth: 80,
+    },
+    [responsiveMediaQuery('>=md', { webOnly: true })]: {
+      width: 120,
+      flex: 'none',
+    },
   }).toString(),
+  infoContainer: css({
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    gap: 8,
+  }).toString(),
+  infoContainerRow: css({
+    flexDirection: 'row',
+    display: 'flex',
+    justifyContent: 'space-between',
+  }).toString(),
+  quantityContainer: css({
+    flexDirection: 'row',
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 16,
+  }).toString(),
+  priceContainer: css({
+    minWidth: 100,
+  }).toString(),
+  priceInfo: css({
+    wordBreak: 'break-word',
+    fontSize: '0.875rem',
+    lineHeight: '0.875rem',
+    color: 'var(--color-text-low-emphasis)',
+    padding: `${variables.gap.xsmall}px 0`,
+  }).toString(),
+  titleWrapper: css({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  }).toString(),
+  titleContainer: css({
+    marginRight: 10,
+    flex: 1,
+  }).toString(),
+  title: css({
+    fontSize: 17,
+
+    fontWeight: 600,
+  }).toString(),
+  removeContainer: css({
+    display: 'flex',
+    flexShrink: 0,
+    alignItems: 'flex-start',
+  }),
+
 };
 
 /**
@@ -41,61 +98,76 @@ const Subscription = ({ subscription }) => {
   const { subscriptionCode, product } = subscription;
   const {
     removeBackInStoreSubscription,
-    isFetching,
   } = useBackInStockReminderContext();
+  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
+  const currency = product.price?.currency || 'EUR';
+  const defaultPrice = product.price?.unitPrice || 0;
+  const specialPrice = product.price?.unitPriceStriked;
+  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice !== defaultPrice;
+  const price = hasStrikePrice ? specialPrice : defaultPrice;
+  const productLink = getProductRoute(product.id);
 
   return (
-    <div
-      className={styles.subscriptionContainer}
-      key={subscriptionCode}
-    >
-      <div
-        className={styles.subscriptionRow}
+    <div className={styles.root}>
+      <Link
+        className={styles.imageContainer}
+        component="div"
+        href={productLink}
+        aria-hidden
       >
-        <div className={styles.subscriptionLeftRow}>
-          <Link
-            component="div"
-            href={getProductRoute(product.id)}
-            aria-hidden
-          >
-            <ProductImage
-              alt={product?.name}
-              src={product?.featuredMedia?.url}
-              itemProp="image"
-            />
-          </Link>
-        </div>
-        <div
-          className={styles.subscriptionRightRow}
-        >
-          <Link
-            href={getProductRoute(product.id)}
-            state={{ title: product.name }}
-            className={styles.link}
-          >
-            {product?.name }
-          </Link>
-          <div>OUT OF STOCK</div>
-          <div>We Will remind you </div>
-          <div className={styles.price} style={{ textAlign: 'end' }}>60$</div>
-          <div
-            className={styles.removeButtonContainer}
-          >
-            <Button
-              flat
-              type="plain"
-              className={styles.removeButton}
-              disabled={isFetching}
-              onClick={() => {
-                removeBackInStoreSubscription({
-                  subscriptionCode,
-                });
-              }}
+        <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+      </Link>
+
+      <div className={styles.infoContainer}>
+        <div className={classNames(styles.infoContainerRow)}>
+          <div className={styles.titleWrapper}>
+            <TextLink
+              href={productLink}
+              tag="span"
+              className={styles.titleContainer}
             >
-              Remove from list
-            </Button>
+              <span
+                className={styles.title}
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{ __html: `${product.name}` }}
+              />
+            </TextLink>
+          </div>
+          <div className={styles.removeContainer}>
+            <button
+              className={styles.root}
+              onClick={() => removeBackInStoreSubscription({ subscriptionCode })}
+              type="button"
+              aria-label={i18n.text('favorites.remove')}
+            >
+              <Ripple className={styles.ripple}>
+                <TrashOutlineIcon />
+              </Ripple>
+            </button>
           </div>
         </div>
+        <StockInfoLists product={product} />
+        <div className={styles.infoContainerRow}>
+          <div className={styles.quantityContainer}>
+            <div className={styles.priceContainer}>
+              {hasStrikePrice ? (
+                <PriceStriked
+                  value={defaultPrice}
+                  currency={currency}
+                />
+              ) : null}
+              <Price
+                currency={currency}
+                discounted={hasStrikePrice}
+                taxDisclaimer
+                unitPrice={price}
+              />
+              <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
   );

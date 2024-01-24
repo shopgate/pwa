@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from 'glamor';
 import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
 import {
-  Button, Accordion, Card,
+  Accordion, Card,
 } from '@shopgate/engage/components';
 import { useBackInStockReminderContext } from '../../hooks';
 import Subscription from '../Subscription';
@@ -24,11 +24,19 @@ const styles = {
  * @returns {JSX}
  */
 const List = () => {
+  const [isInitial, setIsInitial] = useState(true);
+
   const {
     subscriptions,
-    addBackInStoreSubscription,
     isFetching,
   } = useBackInStockReminderContext();
+
+  useEffect(() => {
+    if (!isFetching && isInitial) {
+      setIsInitial(false);
+    }
+  }, [isFetching, isInitial]);
+
 
   const groupedSubscriptions = subscriptions.reduce((acc, subscription) => {
     const { status } = subscription;
@@ -42,25 +50,6 @@ const List = () => {
 
   return (
     <div>
-      {isFetching ? <LoadingIndicator /> : null}
-      <div>degub spacing</div>
-      <div>degub spacing</div>
-      <div>degub spacing</div>
-      <div>degub spacing</div>
-      <Button onClick={() => {
-        addBackInStoreSubscription({ productCode: '24-MB01' });
-      }}
-      >
-        Add 24-MB01
-      </Button>
-
-      <Button onClick={() => {
-        addBackInStoreSubscription({ productCode: '24-MG03' });
-      }}
-      >
-        Add 24-MG03
-      </Button>
-
       {Object.entries(groupedSubscriptions).map(([groupKey, filteredSubscriptions]) => (
         <Card className={styles.root} key={groupKey}>
           <Accordion
@@ -71,12 +60,12 @@ const List = () => {
             startOpened
           >
             <div className={styles.divider} />
-            {filteredSubscriptions.length === 0 ? (
-            // todo adjust translatiion
+            {isInitial ? <LoadingIndicator /> : null}
+            {!isInitial && filteredSubscriptions.length === 0 ? (
               <span>{i18n.text('favorites.empty')}</span>
             ) : null}
 
-            {filteredSubscriptions.map((subscription, index) => (
+            {!isInitial && filteredSubscriptions.map((subscription, index) => (
               <div>
                 <Subscription subscription={subscription} key={subscription.subscriptionCode} />
                 {(index === filteredSubscriptions.length - 1) ?
