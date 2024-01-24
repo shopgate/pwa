@@ -9,13 +9,14 @@ import { getProduct } from '@shopgate/engage/product/selectors/product';
  * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const makeMapStateToProps = (_, props) => {
+const makeMapStateToProps = () => (state, props) => {
+  // TODO Is this legal?
   const getIsOnBackInStockList =
-    makeGetIsProductOnBackInStockList({ productCode: props.productId });
-  return (state, innerProps) => ({
+      makeGetIsProductOnBackInStockList({ productCode: props.productId });
+  return ({
     isOnBackInStockList: getIsOnBackInStockList(state),
-    product: getProduct(state, innerProps),
-    productType: getProductType(state, innerProps),
+    product: getProduct(state, props),
+    productType: getProductType(state, props),
   });
 };
 
