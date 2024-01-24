@@ -9,7 +9,7 @@ import {
 } from '../actions';
 
 /**
- * @returns {Function}
+ * @return {Function} The extended component props.
  */
 function makeMapStateToProps() {
   /**

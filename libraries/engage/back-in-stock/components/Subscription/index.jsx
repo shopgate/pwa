@@ -1,6 +1,10 @@
 import React from 'react';
 import { css } from 'glamor';
-import { Link, Ripple, TextLink } from '@shopgate/engage/components';
+import {
+  Link,
+  Ripple,
+  TextLink,
+} from '@shopgate/engage/components';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product';
 import { PriceInfo, ProductImage } from '@shopgate/engage/product';
 import PropTypes from 'prop-types';
@@ -92,6 +96,9 @@ const styles = {
 };
 
 /**
+ * Renders on single Back in Stock subscription
+ * @param {Object} props Props.
+ * @param {string} props.subscription The subscription which should be rendered
  * @returns {JSX}
  */
 const Subscription = ({ subscription }) => {

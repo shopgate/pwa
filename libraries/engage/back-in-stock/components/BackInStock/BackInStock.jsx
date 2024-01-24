@@ -3,14 +3,13 @@ import BackInStockSubscriptionsProvider from '../../providers/BackInStockSubscri
 import List from '../List';
 
 /**
- * The BackInStock component.
+ * The Back in Stock component.
  * @returns {JSX}
  */
-const BackInStock = () =>
-  (
-    <BackInStockSubscriptionsProvider>
-      <List />
-    </BackInStockSubscriptionsProvider>
-  );
+const BackInStock = () => (
+  <BackInStockSubscriptionsProvider>
+    <List />
+  </BackInStockSubscriptionsProvider>
+);
 
 export default BackInStock;

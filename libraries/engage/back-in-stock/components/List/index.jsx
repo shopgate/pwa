@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { css } from 'glamor';
 import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
 import {
-  Accordion, Card,
+  Accordion,
+  Card,
 } from '@shopgate/engage/components';
 import { useBackInStockSubscriptionsContext } from '../../hooks';
 import Subscription from '../Subscription';
@@ -20,7 +21,7 @@ const styles = {
 };
 
 /**
- * The BackInStockReminders component.
+ * The Back In Stock Subscriptions List.
  * @returns {JSX}
  */
 const List = () => {
@@ -65,7 +66,7 @@ const List = () => {
             ) : null}
 
             {!isInitial && filteredSubscriptions.map((subscription, index) => (
-              <div>
+              <div key={subscription.subscriptionCode}>
                 <Subscription subscription={subscription} key={subscription.subscriptionCode} />
                 {(index === filteredSubscriptions.length - 1) ?
                   null :

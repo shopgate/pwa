@@ -4,7 +4,7 @@ import Context from './BackInStockSubscriptionsProvider.context';
 import connect from './BackInStockSubscriptionsProvider.connector';
 
 /**
- * Checkout Provider
+ * Back in Stock Provider
  * @returns {JSX}
  */
 const BackInStoreSubscriptionsProvider = ({

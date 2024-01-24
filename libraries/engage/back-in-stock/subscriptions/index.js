@@ -4,7 +4,6 @@ import {
 import { fetchBackInStoreSubscriptions } from '../actions';
 
 /**
- *  subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function backInStock(subscribe) {

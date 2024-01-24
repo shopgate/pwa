@@ -12,6 +12,7 @@ import {
 } from '../constants';
 
 /**
+ * Fetches Back  in Stock Subscriptions
  * @returns {Function}
  */
 export const fetchBackInStoreSubscriptions = () => async (dispatch) => {
@@ -42,15 +43,16 @@ export const fetchBackInStoreSubscriptions = () => async (dispatch) => {
 };
 
 /**
+ * Add a Back  in Stock Subscription
+ * @param {Object} props Props.
+ * @param {string} props.productCode The product for which the subscription should be added
  * @returns {Function}
  */
 export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) => {
   dispatch({ type: ADD_BACK_IN_STOCK_SUBSCRIPTION });
 
-  const pipelineRequest = new PipelineRequest('shopgate.user.addBackInStockSubscription');
-
   try {
-    const { subscriptions } = await pipelineRequest
+    const { subscriptions } = await new PipelineRequest('shopgate.user.addBackInStockSubscription')
       .setInput({
         productCode,
       })
@@ -72,6 +74,9 @@ export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) 
 };
 
 /**
+ * Remove a Back in Stock Subscription
+ * @param {Object} props Props.
+ * @param {string} props.subscriptionCode The subscription which should be deleted
  * @returns {Function}
  */
 export const removeBackInStoreSubscription = ({ subscriptionCode }) => async (dispatch) => {

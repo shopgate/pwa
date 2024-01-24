@@ -254,7 +254,6 @@ function FulfillmentSelector(props: Props) {
       </SurroundPortals>
       <FulfillmentSelectorLocation />
       <FulfillmentSelectorAddToCart />
-
       <FulfillmentSelectorBackInStock productId={productId} />
     </FulfillmentSelectorContext.Provider>
   );

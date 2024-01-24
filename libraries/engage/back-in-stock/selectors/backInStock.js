@@ -13,12 +13,15 @@ export const getBackInStockSubscriptions = state => state.backInStock.subscripti
 export const getBackInStockSubscriptionsFetching = state => state.backInStock.isFetching;
 
 /**
- * @param {Function} getListCode Selects the list code.
+ * Creates a selector that retrieves if a specific product is already on the Back in Stock list
+ * @param {Object} props Props.
+ * @param {string} props.productCode The product which should be checked
  * @returns {Function}
  */
-export const makeGetIsProductOnBackInStockList = ({ productCode }) => createSelector(
-  getBackInStockSubscriptions,
-  subscriptions => subscriptions.some(({ productCode: subscriptionProductCode }) =>
-    subscriptionProductCode === productCode)
-);
+export const makeGetIsProductOnBackInStockList = ({ productCode }) =>
+  createSelector(
+    getBackInStockSubscriptions,
+    subscriptions => subscriptions.some(({ productCode: subscriptionProductCode }) =>
+      subscriptionProductCode === productCode)
+  );
 

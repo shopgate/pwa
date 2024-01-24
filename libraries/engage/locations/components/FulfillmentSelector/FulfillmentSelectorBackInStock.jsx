@@ -5,10 +5,13 @@ import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import connect from './FulfillmentSelectorBackInStock.connector';
 
 /**
+ * TODO
+ * @param {Function} addBackInStoreSubscription Action to add product to Back in Stock list
+ * @param {boolean} isOnBackInStockList If product is on Back in Stock list
+ * @returns {JSX}
  */
 function FulfillmentSelectorBackInStock({
   addBackInStoreSubscription,
-  productId: code,
   isOnBackInStockList,
 }) {
   const { productId, ...rest } = useFulfillmentSelectorState();
@@ -16,7 +19,7 @@ function FulfillmentSelectorBackInStock({
   console.log('sasa: FulfillmentSelectorBackInStock:42:rest:', rest);
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'red', padding: '8px' }}>
       <div>
           Back In Stock Reminder Mock
       </div>
@@ -34,7 +37,6 @@ on list
       >
         Add Reminder
       </Button>
-
     </div>
   );
 }
@@ -42,7 +44,6 @@ on list
 FulfillmentSelectorBackInStock.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
   isOnBackInStockList: PropTypes.bool.isRequired,
-  productId: PropTypes.string.isRequired,
 };
 
 export default connect(FulfillmentSelectorBackInStock);
