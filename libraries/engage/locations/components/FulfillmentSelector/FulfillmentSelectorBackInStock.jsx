@@ -1,23 +1,22 @@
 import React from 'react';
 import { Button } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
-import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import connect from './FulfillmentSelectorBackInStock.connector';
 
 /**
  * TODO
  * @param {Function} addBackInStoreSubscription Action to add product to Back in Stock list
  * @param {boolean} isOnBackInStockList If product is on Back in Stock list
+ * @param {string} productType ProductType
  * @returns {JSX}
  */
 function FulfillmentSelectorBackInStock({
   addBackInStoreSubscription,
   isOnBackInStockList,
+  productType,
+  productId,
 }) {
-  const { productId, ...rest } = useFulfillmentSelectorState();
-
-  console.log('sasa: FulfillmentSelectorBackInStock:42:rest:', rest);
-
+  // todo based on productType we can show/hide or enable/disable addBackinStock
   return (
     <div style={{ backgroundColor: 'red', padding: '8px' }}>
       <div>
@@ -32,7 +31,7 @@ function FulfillmentSelectorBackInStock({
 on list
       </div>
       <Button
-        disabled={isOnBackInStockList}
+        disabled={isOnBackInStockList || productType === 'parent'}
         onClick={() => { addBackInStoreSubscription({ productCode: productId }); }}
       >
         Add Reminder
@@ -44,6 +43,8 @@ on list
 FulfillmentSelectorBackInStock.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
   isOnBackInStockList: PropTypes.bool.isRequired,
+  productId: PropTypes.string.isRequired,
+  productType: PropTypes.string.isRequired,
 };
 
 export default connect(FulfillmentSelectorBackInStock);
