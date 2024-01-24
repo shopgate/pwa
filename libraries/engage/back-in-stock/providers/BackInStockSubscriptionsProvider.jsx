@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import Context from './BackInStockRemindersProvider.context';
-import connect from './BackInStockRemindersProvider.connector';
+import Context from './BackInStockSubscriptionsProvider.context';
+import connect from './BackInStockSubscriptionsProvider.connector';
 
 /**
  * Checkout Provider
  * @returns {JSX}
  */
-const BackInStoreRemindersProvider = ({
+const BackInStoreSubscriptionsProvider = ({
   subscriptions,
   children,
   addBackInStoreSubscription,
@@ -30,16 +30,16 @@ const BackInStoreRemindersProvider = ({
   );
 };
 
-BackInStoreRemindersProvider.propTypes = {
+BackInStoreSubscriptionsProvider.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
   removeBackInStoreSubscription: PropTypes.func.isRequired,
   subscriptions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   children: PropTypes.node,
   isFetching: PropTypes.bool,
 };
-BackInStoreRemindersProvider.defaultProps = {
+BackInStoreSubscriptionsProvider.defaultProps = {
   children: null,
   isFetching: false,
 };
 
-export default connect(BackInStoreRemindersProvider);
+export default connect(BackInStoreSubscriptionsProvider);

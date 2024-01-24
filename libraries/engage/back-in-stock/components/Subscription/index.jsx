@@ -9,7 +9,7 @@ import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
-import { useBackInStockReminderContext } from '../../hooks';
+import { useBackInStockSubscriptionsContext } from '../../hooks';
 import { StockInfoLists } from '../../../locations';
 import { getThemeSettings, i18n } from '../../../core';
 import { responsiveMediaQuery } from '../../../components/ResponsiveContainer/mediaQuery';
@@ -98,7 +98,7 @@ const Subscription = ({ subscription }) => {
   const { subscriptionCode, product } = subscription;
   const {
     removeBackInStoreSubscription,
-  } = useBackInStockReminderContext();
+  } = useBackInStockSubscriptionsContext();
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;

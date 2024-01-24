@@ -4,7 +4,7 @@ import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
 import {
   Accordion, Card,
 } from '@shopgate/engage/components';
-import { useBackInStockReminderContext } from '../../hooks';
+import { useBackInStockSubscriptionsContext } from '../../hooks';
 import Subscription from '../Subscription';
 import { i18n } from '../../../core';
 
@@ -29,14 +29,13 @@ const List = () => {
   const {
     subscriptions,
     isFetching,
-  } = useBackInStockReminderContext();
+  } = useBackInStockSubscriptionsContext();
 
   useEffect(() => {
     if (!isFetching && isInitial) {
       setIsInitial(false);
     }
   }, [isFetching, isInitial]);
-
 
   const groupedSubscriptions = subscriptions.reduce((acc, subscription) => {
     const { status } = subscription;

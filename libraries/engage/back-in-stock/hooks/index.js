@@ -1,8 +1,8 @@
 import React from 'react';
-import BackInStockRemindersProviderContext from '../providers/BackInStockRemindersProvider.context';
+import BackInStockSubscriptionsProvider from '../providers/BackInStockSubscriptionsProvider.context';
 
 /**
  * @returns {Object}
  */
-export const useBackInStockReminderContext = () =>
-  React.useContext(BackInStockRemindersProviderContext);
+export const useBackInStockSubscriptionsContext = () =>
+  React.useContext(BackInStockSubscriptionsProvider);

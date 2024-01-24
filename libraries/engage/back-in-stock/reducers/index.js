@@ -1,14 +1,14 @@
 import { produce } from 'immer';
 import {
-  ADD_BACK_IN_STOCK_REMINDERS,
-  ADD_BACK_IN_STOCK_REMINDERS_ERROR,
-  ADD_BACK_IN_STOCK_REMINDERS_SUCCESS,
-  FETCH_BACK_IN_STOCK_REMINDERS,
-  FETCH_BACK_IN_STOCK_REMINDERS_ERROR,
-  FETCH_BACK_IN_STOCK_REMINDERS_SUCCESS,
-  REMOVE_BACK_IN_STOCK_REMINDERS,
-  REMOVE_BACK_IN_STOCK_REMINDERS_ERROR,
-  REMOVE_BACK_IN_STOCK_REMINDERS_SUCCESS,
+  ADD_BACK_IN_STOCK_SUBSCRIPTION,
+  ADD_BACK_IN_STOCK_SUBSCRIPTION_ERROR,
+  ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
+  FETCH_BACK_IN_STOCK_SUBSCRIPTIONS,
+  FETCH_BACK_IN_STOCK_SUBSCRIPTIONS_ERROR,
+  FETCH_BACK_IN_STOCK_SUBSCRIPTIONS_SUCCESS,
+  REMOVE_BACK_IN_STOCK_SUBSCRIPTION,
+  REMOVE_BACK_IN_STOCK_SUBSCRIPTION_ERROR,
+  REMOVE_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
 } from '../constants';
 
 const initialState = {
@@ -25,42 +25,42 @@ export default function backInStockReducer(state = initialState, action) {
   /* eslint-disable no-param-reassign */
   const producer = produce((draft) => {
     switch (action.type) {
-      case FETCH_BACK_IN_STOCK_REMINDERS: {
+      case FETCH_BACK_IN_STOCK_SUBSCRIPTIONS: {
         draft.isFetching = true;
         break;
       }
-      case FETCH_BACK_IN_STOCK_REMINDERS_SUCCESS: {
+      case FETCH_BACK_IN_STOCK_SUBSCRIPTIONS_SUCCESS: {
         draft.isFetching = false;
         draft.subscriptions = action.subscriptions;
         break;
       }
-      case FETCH_BACK_IN_STOCK_REMINDERS_ERROR: {
+      case FETCH_BACK_IN_STOCK_SUBSCRIPTIONS_ERROR: {
         draft.isFetching = false;
         break;
       }
 
-      case ADD_BACK_IN_STOCK_REMINDERS: {
+      case ADD_BACK_IN_STOCK_SUBSCRIPTION: {
         draft.isFetching = true;
         break;
       }
-      case ADD_BACK_IN_STOCK_REMINDERS_SUCCESS: {
+      case ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS: {
         draft.isFetching = false;
         break;
       }
-      case ADD_BACK_IN_STOCK_REMINDERS_ERROR: {
+      case ADD_BACK_IN_STOCK_SUBSCRIPTION_ERROR: {
         draft.isFetching = false;
         break;
       }
 
-      case REMOVE_BACK_IN_STOCK_REMINDERS: {
+      case REMOVE_BACK_IN_STOCK_SUBSCRIPTION: {
         draft.isFetching = true;
         break;
       }
-      case REMOVE_BACK_IN_STOCK_REMINDERS_SUCCESS: {
+      case REMOVE_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS: {
         draft.isFetching = false;
         break;
       }
-      case REMOVE_BACK_IN_STOCK_REMINDERS_ERROR: {
+      case REMOVE_BACK_IN_STOCK_SUBSCRIPTION_ERROR: {
         draft.isFetching = false;
         break;
       }

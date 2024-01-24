@@ -1,7 +1,7 @@
 import {
   backInStockReminderNeedsFetch$,
 } from '../streams';
-import { fetchBackInStoreReminders } from '../actions';
+import { fetchBackInStoreSubscriptions } from '../actions';
 
 /**
  *  subscriptions.
@@ -9,7 +9,7 @@ import { fetchBackInStoreReminders } from '../actions';
  */
 export default function backInStock(subscribe) {
   subscribe(backInStockReminderNeedsFetch$, ({ dispatch }) => {
-    dispatch(fetchBackInStoreReminders());
+    dispatch(fetchBackInStoreSubscriptions());
   });
 }
 
