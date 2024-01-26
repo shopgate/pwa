@@ -20,7 +20,17 @@
     "reviews": "Reviews",
     "browse": "Browse",
     "favorites": "Favorites",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Back in Stock Reminders"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Active reminders",
+      "past": "Past reminders"
+    },
+    "empty_list_reminder": "You don't have reminders in this list.",
+    "get_notified": "Get notified",
+    "we_will_remind_you": "We will remind you when product is back in stock."
   },
   "favorites": {
     "add": "Add to favorites list",

@@ -20,7 +20,18 @@
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Auf Lager Erinnerung"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktiv Erinnerungen",
+      "past": "Abgelaufene Erinnerungen"
+    },
+    "empty_list_reminder": "Sie haben keine Erinnerungen in dieser Liste.",
+    "get_notified": "Erinnere mich",
+    "we_will_remind_you": "Wir werden Sie Benachrichtigen wenn das Produkt wieder verfügbar ist."
+
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",

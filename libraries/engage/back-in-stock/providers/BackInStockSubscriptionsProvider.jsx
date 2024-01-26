@@ -12,6 +12,7 @@ const BackInStoreSubscriptionsProvider = ({
   children,
   addBackInStoreSubscription,
   isFetching,
+  isInitial,
   removeBackInStoreSubscription,
 }) => {
   // Create memoized context value.
@@ -20,8 +21,13 @@ const BackInStoreSubscriptionsProvider = ({
     addBackInStoreSubscription,
     removeBackInStoreSubscription,
     isFetching,
-
-  }), [addBackInStoreSubscription, isFetching, removeBackInStoreSubscription, subscriptions]);
+    isInitial,
+  }), [
+    addBackInStoreSubscription,
+    isFetching,
+    isInitial,
+    removeBackInStoreSubscription,
+    subscriptions]);
 
   return (
     <Context.Provider value={value}>
@@ -36,10 +42,12 @@ BackInStoreSubscriptionsProvider.propTypes = {
   subscriptions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   children: PropTypes.node,
   isFetching: PropTypes.bool,
+  isInitial: PropTypes.bool,
 };
 BackInStoreSubscriptionsProvider.defaultProps = {
   children: null,
   isFetching: false,
+  isInitial: true,
 };
 
 export default connect(BackInStoreSubscriptionsProvider);

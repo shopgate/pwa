@@ -12,6 +12,7 @@ import {
 
 const initialState = {
   isFetching: false,
+  isInitial: true,
   subscriptions: [],
 };
 
@@ -31,6 +32,7 @@ export default (state = initialState, action) => {
     case FETCH_BACK_IN_STOCK_SUBSCRIPTIONS_SUCCESS: {
       return {
         ...state,
+        isInitial: false,
         isFetching: false,
         subscriptions: action.subscriptions,
       };

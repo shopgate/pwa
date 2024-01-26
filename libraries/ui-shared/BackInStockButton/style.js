@@ -11,15 +11,21 @@ export default {
     alignItems: 'center',
   }).toString(),
   backInStockMessageContainer: css({
-    display: 'flex',
+    display: 'inline',
     alignItems: 'center',
   }).toString(),
   backInStockMessage: css({
     marginLeft: '8px',
+    verticalAlign: 'middle',
+    textDecoration: 'underline',
   }).toString(),
   buttonText: css({
     marginLeft: '8px',
     textDecoration: 'underline',
+  }).toString(),
+  icon: css({
+    verticalAlign: 'middle',
+    display: 'inline',
   }).toString(),
 
 };

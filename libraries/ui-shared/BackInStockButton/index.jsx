@@ -6,6 +6,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Link from '@shopgate/pwa-common/components/Link';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
 import { Button } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
 const { colors } = themeConfig;
@@ -23,9 +24,9 @@ const BackInStockButton = ({
 }) => {
   if (isSubscribed) {
     return (
-      <Link href={BACK_IN_STOCK_PATTERN} className={styles.backInStockMessageContainer}>
-        <CheckedIcon color={colors.success} />
-        <span className={styles.backInStockMessage}>We will notify you</span>
+      <Link href={BACK_IN_STOCK_PATTERN} className={styles.backInStockMessageContainer} tag="span">
+        <CheckedIcon color={colors.success} className={styles.icon} />
+        <span className={styles.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
       </Link>
     );
   }

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { css } from 'glamor';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
-
 import {
   Accordion,
   Card,
 } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
 import { useBackInStockSubscriptionsContext } from '../../hooks';
 import Subscription from '../Subscription';
-import { i18n } from '../../../core';
 
 const styles = {
   divider: css({
@@ -19,6 +18,13 @@ const styles = {
     marginRight: -16,
     marginBottom: 16,
   }).toString(),
+  emptyText: css({
+    marginBottom: 16,
+    textAlign: 'center',
+  }).toString(),
+  listTitle: css({
+    fontWeight: '700',
+  }).toString(),
 };
 
 /**
@@ -26,18 +32,10 @@ const styles = {
  * @returns {JSX}
  */
 const List = () => {
-  const [isInitial, setIsInitial] = useState(true);
-
   const {
     subscriptions,
-    isFetching,
+    isInitial,
   } = useBackInStockSubscriptionsContext();
-
-  useEffect(() => {
-    if (!isFetching && isInitial) {
-      setIsInitial(false);
-    }
-  }, [isFetching, isInitial]);
 
   const groupedSubscriptions = subscriptions.reduce((acc, subscription) => {
     const { status } = subscription;
@@ -49,6 +47,12 @@ const List = () => {
     past: [],
   });
 
+  // eslint-disable-next-line require-jsdoc
+  const renderLabel = groupKey =>
+    <div className={styles.listTitle}>
+      {i18n.text(`back_in_stock.list_states.${groupKey}`)}
+    </div>;
+
   return (
     <div>
       {Object.entries(groupedSubscriptions).map(([groupKey, filteredSubscriptions]) => (
@@ -56,14 +60,14 @@ const List = () => {
           <Accordion
             className=""
             openWithChevron
-            renderLabel={() => groupKey}
+            renderLabel={() => renderLabel(groupKey)}
             chevronPosition="left"
             startOpened
           >
             <div className={styles.divider} />
             {isInitial ? <LoadingIndicator /> : null}
             {!isInitial && filteredSubscriptions.length === 0 ? (
-              <span>{i18n.text('favorites.empty')}</span>
+              <div className={styles.emptyText}>{i18n.text('back_in_stock.empty_list_reminder')}</div>
             ) : null}
 
             {!isInitial && filteredSubscriptions.map((subscription, index) => (
