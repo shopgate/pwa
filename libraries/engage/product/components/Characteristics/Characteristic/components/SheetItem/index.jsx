@@ -58,7 +58,7 @@ class SheetItem extends PureComponent {
       ref: forwardedRef,
       value: item.id,
       'aria-hidden': !item.selectable,
-      ...item.selectable && { onClick },
+      ...item.selectable && { onClick: event => onClick(event, item.id) },
     };
   };
 
@@ -73,13 +73,14 @@ class SheetItem extends PureComponent {
       productId,
       characteristics,
     } = this.props;
+
+    const buildProps = this.buildProps();
     return (
       <div>
-        <button {...this.buildProps()} data-test-id={item.label} aria-selected={selected} role="option" type="button">
+        <button {...buildProps} data-test-id={item.label} aria-selected={selected} role="option" type="button">
           {item.label}
           {item.selectable && <Right />}
           <BackInStockRow productId={productId} characteristics={characteristics} />
-
         </button>
 
       </div>

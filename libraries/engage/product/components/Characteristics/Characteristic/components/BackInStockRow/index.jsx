@@ -8,7 +8,8 @@ import connect from './connector';
 /**
  * The BackInStockRow component.
  * @param {Object} props The component props.
- * @param {Object} props.isOnBackInStockList Whether the product is on the back in stock list
+ * @param {boolean} props.isOnBackInStockList Whether the product is on the back in stock list
+ * @param {boolean} props.isBackinStockEnabled Whether the back in stock feature is enabled
  * @param {Array} props.productVariants The product variants
  * @param {Object} props.availability The product availability
  * @param {Object} props.characteristics The variant characteristics
@@ -20,12 +21,13 @@ const BackInStockRow = ({
   addBackInStoreSubscription,
   productVariants,
   characteristics,
+  isBackinStockEnabled,
 }) => {
   const foundVariant = productVariants?.products.find(product =>
     isEqual(product.characteristics, characteristics));
 
   if (availability?.state === AVAILABILITY_STATE_OK ||
-    availability === null || !foundVariant) return null;
+    availability === null || !foundVariant || !isBackinStockEnabled) return null;
 
   return (
     <div style={{
@@ -45,6 +47,7 @@ const BackInStockRow = ({
 
 BackInStockRow.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
+  isBackinStockEnabled: PropTypes.bool.isRequired,
   isOnBackInStockList: PropTypes.bool.isRequired,
   availability: PropTypes.shape(),
   characteristics: PropTypes.shape(),

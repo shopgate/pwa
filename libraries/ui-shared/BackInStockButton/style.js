@@ -3,6 +3,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 export default {
   button: css({
+    marginTop: '4px',
     color: themeConfig.colors.primary,
     textDecoration: 'underline',
   }).toString(),
@@ -11,16 +12,17 @@ export default {
     alignItems: 'center',
   }).toString(),
   backInStockMessageContainer: css({
+    marginTop: '4px',
     display: 'inline',
     alignItems: 'center',
   }).toString(),
   backInStockMessage: css({
-    marginLeft: '8px',
+    marginLeft: '4px',
     verticalAlign: 'middle',
     textDecoration: 'underline',
   }).toString(),
   buttonText: css({
-    marginLeft: '8px',
+    marginLeft: '4px',
     textDecoration: 'underline',
   }).toString(),
   icon: css({

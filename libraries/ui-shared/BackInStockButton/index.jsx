@@ -14,6 +14,8 @@ const { colors } = themeConfig;
  * This component renders a button to subscribe a product or a hint
  * that the product is already subscribed
  * @param {Object} props The component props
+ * @param {boolean} props.isLintToBackInStockEnabled Whether the link to the back in
+ * stock page is active
  * @param {boolean} props.isSubscribed Whether the product is already subscribed
  * @param {Function} props.onClick Action to subscribe the product
  * @return {JSX}
@@ -21,10 +23,16 @@ const { colors } = themeConfig;
 const BackInStockButton = ({
   onClick,
   isSubscribed = false,
+  isLintToBackInStockEnabled = false,
 }) => {
   if (isSubscribed) {
     return (
-      <Link href={BACK_IN_STOCK_PATTERN} className={styles.backInStockMessageContainer} tag="span">
+      <Link
+        href={BACK_IN_STOCK_PATTERN}
+        disabled={!isLintToBackInStockEnabled}
+        className={styles.backInStockMessageContainer}
+        tag="span"
+      >
         <CheckedIcon color={colors.success} className={styles.icon} />
         <span className={styles.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
       </Link>
@@ -50,6 +58,11 @@ const BackInStockButton = ({
 BackInStockButton.propTypes = {
   isSubscribed: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+  isLintToBackInStockEnabled: PropTypes.bool,
+};
+
+BackInStockButton.defaultProps = {
+  isLintToBackInStockEnabled: false,
 };
 
 export default BackInStockButton;

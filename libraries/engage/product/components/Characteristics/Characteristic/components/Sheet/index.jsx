@@ -55,10 +55,11 @@ class CharacteristicSheet extends PureComponent {
 
   /**
    * @param {Object} event The event object.
+   * @param {string} itemId The id that was selected
    */
-  handleItemClick = (event) => {
+  handleItemClick = (event, itemId) => {
     event.stopPropagation();
-    this.props.onSelect(event.target.value);
+    this.props.onSelect(itemId);
   }
 
   /**

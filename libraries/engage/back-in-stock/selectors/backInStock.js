@@ -61,3 +61,8 @@ export const getIsProductOnBackInStockListByCharacteristics = createSelector(
   }
 );
 
+/**
+ * Returns if the back in stock feature is enabled
+ * @returns {Function}
+ */
+export const getIsBackInStockEnabled = () => false;

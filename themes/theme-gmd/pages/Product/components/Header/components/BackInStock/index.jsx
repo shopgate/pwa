@@ -9,7 +9,8 @@ import connect from './connector';
 /**
  * The BackInStock component.
  * @param {Object} props The component props.
- * @param {Object} props.isOnBackInStockList Whether the product is on the back in stock list
+ * @param {boolean} props.isOnBackInStockList Whether the product is on the back in stock list
+ * @param {boolean} props.isBackinStockEnabled Whether the back in stock feature is enabled
  * @param {string} props.productId The product id
  * @param {string} props.productType The product type
  * @param {Object} props.stock The product stock info
@@ -22,8 +23,12 @@ const BackInStock = ({
   stock,
   productId,
   addBackInStoreSubscription,
+  isBackinStockEnabled,
 }) => {
-  const showBackInStock = productType !== 'parent' && productType !== null && stock?.state !== AVAILABILITY_STATE_OK;
+  const showBackInStock = productType !== 'parent' &&
+    productType !== null &&
+    stock?.state !== AVAILABILITY_STATE_OK &&
+    isBackinStockEnabled;
 
   return (
     <Fragment>
@@ -32,6 +37,7 @@ const BackInStock = ({
         {showBackInStock &&
           <BackInStockButton
             isSubscribed={isOnBackInStockList}
+            isLintToBackInStockEnabled
             onClick={() => { addBackInStoreSubscription({ productCode: productId }); }}
           />}
       </Portal>
@@ -42,6 +48,7 @@ const BackInStock = ({
 
 BackInStock.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
+  isBackinStockEnabled: PropTypes.bool.isRequired,
   isOnBackInStockList: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
   productType: PropTypes.string,

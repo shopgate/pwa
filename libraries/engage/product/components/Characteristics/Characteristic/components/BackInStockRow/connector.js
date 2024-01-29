@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import {
+  getIsBackInStockEnabled,
   getIsProductOnBackInStockListByCharacteristics,
 } from '@shopgate/engage/back-in-stock/selectors/backInStock';
 import {
@@ -15,6 +16,7 @@ const makeMapStateToProps = () => (state, props) => ({
   availability: getVariantAvailabilityByCharacteristics(state, props),
   isOnBackInStockList: getIsProductOnBackInStockListByCharacteristics(state, props),
   productVariants: getProductVariants(state, props),
+  isBackinStockEnabled: getIsBackInStockEnabled(state, props),
 });
 
 const mapDispatchToProps = {
