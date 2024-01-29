@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import {
-  getIsProductOnBackInStockListByVariant,
+  getIsProductOnBackInStockListByCharacteristics,
 } from '@shopgate/engage/back-in-stock/selectors/backInStock';
 import {
-  getProductAvailability,
-  getProductType,
+  getProductVariants,
+  getVariantAvailabilityByCharacteristics,
 } from '@shopgate/pwa-common-commerce/product';
 import { addBackInStoreSubscription } from '@shopgate/engage/back-in-stock/actions';
 
@@ -12,9 +12,9 @@ import { addBackInStoreSubscription } from '@shopgate/engage/back-in-stock/actio
  * @return {Object} The extended component props.
  */
 const makeMapStateToProps = () => (state, props) => ({
-  isOnBackInStockList: getIsProductOnBackInStockListByVariant(state, props),
-  productType: getProductType(state, props),
-  stock: getProductAvailability(state, props),
+  availability: getVariantAvailabilityByCharacteristics(state, props),
+  isOnBackInStockList: getIsProductOnBackInStockListByCharacteristics(state, props),
+  productVariants: getProductVariants(state, props),
 });
 
 const mapDispatchToProps = {

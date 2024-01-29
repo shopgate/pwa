@@ -1,4 +1,6 @@
 import { createSelector } from 'reselect';
+import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
+import isEqual from 'lodash/isEqual';
 
 /**
  * @param {Object} state The application state.
@@ -17,15 +19,45 @@ export const getBackInStockSubscriptionsFetching = state => state.backInStock.is
  * @returns {Object}
  */
 export const getBackInStockSubscriptionsInitial = state => state.backInStock.isInitial;
+
 /**
  * Creates a selector that retrieves if a specific product is already on the Back in Stock list
- * @param {Object} props Props.
- * @param {string} props.productCode The product which should be checked
  * @returns {Function}
  */
-export const makeGetIsProductOnBackInStockList = ({ productCode }) => createSelector(
+export const getIsProductOnBackInStockListByVariant = createSelector(
+  (state, props = {}) => props.variantId,
   getBackInStockSubscriptions,
-  subscriptions => subscriptions.some(({ productCode: subscriptionProductCode }) =>
-    subscriptionProductCode === productCode)
+  (variantId, subscriptions) => {
+    if (!variantId) {
+      return false;
+    }
+
+    return subscriptions.some(({ productCode }) =>
+      productCode === variantId);
+  }
+);
+
+/**
+ * Creates a selector that retrieves if a specific product is already on the Back in Stock list
+ * @returns {Function}
+ */
+export const getIsProductOnBackInStockListByCharacteristics = createSelector(
+  getProductVariants,
+  (state, props = {}) => props.characteristics,
+  getBackInStockSubscriptions,
+  (variants, characteristics, subscriptions) => {
+    if (!variants) {
+      return false;
+    }
+
+    const found = variants.products.find(product =>
+      isEqual(product.characteristics, characteristics));
+    if (!found) {
+      return false;
+    }
+
+    return subscriptions.some(({ productCode }) =>
+      productCode === found.id);
+  }
 );
 
