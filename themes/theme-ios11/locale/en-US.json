@@ -30,7 +30,7 @@
     },
     "empty_list_reminder": "You don't have reminders in this list.",
     "get_notified": "Get notified",
-    "we_will_remind_you": "We will remind you when product is back in stock.",
+    "we_will_remind_you": "We will remind you.",
     "add_back_in_stock_success_modal": {
       "title": "Back-in-Stock reminder added!",
       "message": "We will send you a push notification when the product is back in stock. You can manage your notifications in the settings."

@@ -117,10 +117,6 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[SEARCH_FILTER_PATTERN]}
                   />
                   <Route pattern={SCANNER_PATH} component={routes.Scanner} />
-                  {/* TODO: How to not show this page depending on selector
-                    connector ???
-                    redirect ???
-                    */}
                   <Route
                     pattern={BACK_IN_STOCK_PATTERN}
                     component={routes.BackInStock}

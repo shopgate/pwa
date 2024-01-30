@@ -113,18 +113,11 @@ const Pages = ({ store }) => (
                     cache
                     transform={routesTransforms[SEARCH_PATTERN]}
                   />
-                  {/* TODO: How to not show this page depending on selector
-                    connector ???
-                    redirect ???
-                    */}
-                  {
-                    true
-                    && <Route
-                      pattern={BACK_IN_STOCK_PATTERN}
-                      component={routes.BackInStock}
-                      transform={routesTransforms[BACK_IN_STOCK_PATTERN]}
-                    />
-                  }
+                  <Route
+                    pattern={BACK_IN_STOCK_PATTERN}
+                    component={routes.BackInStock}
+                    transform={routesTransforms[BACK_IN_STOCK_PATTERN]}
+                  />
                   <Route
                     pattern={SEARCH_FILTER_PATTERN}
                     component={routes.Filter}

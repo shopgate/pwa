@@ -19,7 +19,21 @@
     "shipping": "Shipping",
     "reviews": "Reviews",
     "favorites": "Favorites",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Back in Stock Reminders"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Active reminders",
+      "past": "Past reminders"
+    },
+    "empty_list_reminder": "You don't have reminders in this list.",
+    "get_notified": "Get notified",
+    "we_will_remind_you": "We will remind you.",
+    "add_back_in_stock_success_modal": {
+      "title": "Back-in-Stock reminder added!",
+      "message": "We will send you a push notification when the product is back in stock. You can manage your notifications in the settings."
+    }
   },
   "favorites": {
     "add": "Add to favorites list",

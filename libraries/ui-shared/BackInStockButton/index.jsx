@@ -49,7 +49,7 @@ const BackInStockButton = ({
       >
         <div className={styles.buttonContent}>
           <NotificationIcon color={colors.primary} />
-          <span className={styles.buttonText}>Get notified</span>
+          <span className={styles.buttonText}>{i18n.text('back_in_stock.get_notified')}</span>
         </div>
       </Button>
     </div>);
