@@ -8,6 +8,7 @@ import {
   getProductType,
 } from '@shopgate/pwa-common-commerce/product';
 import { addBackInStoreSubscription } from '@shopgate/engage/back-in-stock/actions';
+import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermissions';
 
 /**
  * @return {Object} The extended component props.
@@ -21,6 +22,7 @@ const makeMapStateToProps = () => (state, props) => ({
 
 const mapDispatchToProps = {
   addBackInStoreSubscription,
+  grantPushPermissions,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

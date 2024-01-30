@@ -15,6 +15,7 @@ import connect from './connector';
  * @param {string} props.productType The product type
  * @param {Object} props.stock The product stock info
  * @param {Function} props.addBackInStoreSubscription Add product to back in stock list
+ * @param {Function} props.grantPushPermissions Request / Set push permission
  * @return {JSX}
  */
 const BackInStock = ({
@@ -24,6 +25,7 @@ const BackInStock = ({
   productId,
   addBackInStoreSubscription,
   isBackinStockEnabled,
+  grantPushPermissions,
 }) => {
   const showBackInStock = productType !== 'parent' &&
     productType !== null &&
@@ -38,7 +40,12 @@ const BackInStock = ({
           <BackInStockButton
             isSubscribed={isOnBackInStockList}
             isLintToBackInStockEnabled
-            onClick={() => { addBackInStoreSubscription({ productCode: productId }); }}
+            onClick={async () => {
+              const allowed = await grantPushPermissions();
+              if (allowed) {
+                addBackInStoreSubscription({ productCode: productId });
+              }
+            }}
           />}
       </Portal>
       <Portal name={portals.PRODUCT_BACK_IN_STOCK_AFTER} />
@@ -48,6 +55,7 @@ const BackInStock = ({
 
 BackInStock.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
+  grantPushPermissions: PropTypes.func.isRequired,
   isBackinStockEnabled: PropTypes.bool.isRequired,
   isOnBackInStockList: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,

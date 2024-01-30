@@ -46,7 +46,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
   let status;
 
-  // Check the current status of the camera permissions.
+  // Check the current status of the requested permission.
   [{ status }] = await getAppPermissions([permissionId]);
 
   // Stop the process when the permission type is not supported.
