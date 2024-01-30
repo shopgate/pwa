@@ -97,13 +97,13 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[MORE_PATH]}
                   />
                   {
-                    appConfig.hasFavorites
-                    && <Route
-                      pattern={FAVORITES_PATH}
-                      component={routes.Favorites}
-                      transform={routesTransforms[FAVORITES_PATH]}
-                    />
-                  }
+                      appConfig.hasFavorites
+                      && <Route
+                        pattern={FAVORITES_PATH}
+                        component={routes.Favorites}
+                        transform={routesTransforms[FAVORITES_PATH]}
+                      />
+                    }
                   <Route pattern={LOGIN_PATH} component={routes.Login} />
                   <Route
                     pattern={SEARCH_PATTERN}
@@ -117,6 +117,10 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[SEARCH_FILTER_PATTERN]}
                   />
                   <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                  {/* TODO: How to not show this page depending on selector
+                    connector ???
+                    redirect ???
+                    */}
                   <Route
                     pattern={BACK_IN_STOCK_PATTERN}
                     component={routes.BackInStock}

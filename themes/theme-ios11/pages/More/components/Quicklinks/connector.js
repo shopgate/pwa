@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { QUICKLINKS_MENU } from '@shopgate/pwa-common/constants/MenuIDs';
 import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
+import { getIsBackInStockEnabled } from '@shopgate/engage/back-in-stock/selectors/backInStock';
 
 const props = {
   id: QUICKLINKS_MENU,
@@ -13,6 +14,7 @@ const props = {
  */
 const mapStateToProps = state => ({
   entries: getMenuById(state, props),
+  isBackInStockEnabled: getIsBackInStockEnabled(state, props),
 });
 
 export default connect(mapStateToProps);

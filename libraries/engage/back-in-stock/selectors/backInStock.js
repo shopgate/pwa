@@ -65,4 +65,13 @@ export const getIsProductOnBackInStockListByCharacteristics = createSelector(
  * Returns if the back in stock feature is enabled
  * @returns {Function}
  */
-export const getIsBackInStockEnabled = () => false;
+export const getIsBackInStockEnabled = () => true;
+
+/**
+ * Returns if subscription list is in use
+ * @returns {Function}
+ */
+export const getHasBackInStockSubscriptions = createSelector(
+  getBackInStockSubscriptions,
+  subscriptions => !!subscriptions.length
+);

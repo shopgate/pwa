@@ -249,6 +249,7 @@
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More",
+    "back_in_stock": "Back in Stock reminder",
     "back": "Back to {title}"
   },
   "reviews": {
