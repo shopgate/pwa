@@ -14,12 +14,13 @@ import {
   increaseRejectionCount,
   increaseOrdersPlacedCount,
   resetOrdersPlacedCount,
+  optInPostponed,
 } from '../action-creators';
 import {
   showOptIn,
 } from '../actions';
 import pushReducers from '../reducers';
-import subscription from './optIn';
+import subscriptions from './optIn';
 
 /**
  * @typedef {Object} MockedConfigSetting
@@ -103,7 +104,11 @@ describe('Push OptIn Subscriptions', () => {
 
     jest.clearAllMocks();
 
-    const store = createMockStore(combineReducers({ push: pushReducers }));
+    const store = createMockStore(
+      combineReducers({ push: pushReducers }),
+      subscriptions
+    );
+
     jest.spyOn(store, 'dispatch');
     jest.spyOn(store, 'getState');
 
@@ -113,7 +118,8 @@ describe('Push OptIn Subscriptions', () => {
       dispatch,
       getState,
     };
-    subscription(subscribe);
+
+    subscriptions(subscribe);
   });
 
   /**
@@ -134,13 +140,13 @@ describe('Push OptIn Subscriptions', () => {
 
         beforeEach(async () => {
           if (configType === 'appStarts') {
-            // Pick the callback of the subscription for handling of the appStarts setting
+            // Pick the callback of the subscriptions for handling of the appStarts setting
             [[, callback]] = subscribe.mock.calls;
 
             increaseCountAction = increaseAppStartCount;
             resetCountAction = resetAppStartCount;
           } else if (configType === 'ordersPlaced') {
-            // Pick the callback of the subscription for handling of the ordersPlaced setting
+            // Pick the callback of the subscriptions for handling of the ordersPlaced setting
             const [, [, subscribeCallback]] = subscribe.mock.calls;
             // Invoke the callback, so that an event handler for "checkoutSuccess" is registered
             await subscribeCallback(callbackParams);
@@ -260,14 +266,12 @@ describe('Push OptIn Subscriptions', () => {
           // 1st counter increase -> show opt in
           await callback(callbackParams);
           expect(showOptIn).toHaveBeenCalledTimes(1);
-          // Increase rejection count via actual action, since triggering increaseRejectionCount$
-          // steam is complicated
-          dispatch(increaseRejectionCount());
+          dispatch(optInPostponed());
 
           // 2nd counter increase -> show opt in
           await callback(callbackParams);
           expect(showOptIn).toHaveBeenCalledTimes(2);
-          dispatch(increaseRejectionCount());
+          dispatch(optInPostponed());
 
           // 3rd counter increase -> no opt in due to rejection count
           await callback(callbackParams);
@@ -288,19 +292,19 @@ describe('Push OptIn Subscriptions', () => {
           // 2nd counter increase -> show opt in
           await callback(callbackParams);
           expect(showOptIn).toHaveBeenCalledTimes(1);
-          dispatch(increaseRejectionCount());
+          dispatch(optInPostponed());
 
           await callback(callbackParams);
           // 4rth counter increase -> show opt in
           await callback(callbackParams);
           expect(showOptIn).toHaveBeenCalledTimes(2);
-          dispatch(increaseRejectionCount());
+          dispatch(optInPostponed());
 
           await callback(callbackParams);
           // 6th counter increase -> show opt in
           await callback(callbackParams);
           expect(showOptIn).toHaveBeenCalledTimes(3);
-          dispatch(increaseRejectionCount());
+          dispatch(optInPostponed());
 
           await callback(callbackParams);
           // 8th counter increase -> no opt in due to max repeats reached
@@ -310,4 +314,18 @@ describe('Push OptIn Subscriptions', () => {
       });
     }
   );
+
+  describe('increaseRejectionCount$', () => {
+    let callback;
+
+    beforeEach(() => {
+      [,, [, callback]] = subscribe.mock.calls;
+    });
+
+    it('should dispatch the increaseRejectionCount action when subscription emits', () => {
+      callback(callbackParams);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(increaseRejectionCount());
+    });
+  });
 });
