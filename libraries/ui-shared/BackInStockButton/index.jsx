@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Link from '@shopgate/pwa-common/components/Link';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
-import { Button } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
@@ -41,17 +40,14 @@ const BackInStockButton = ({
 
   return (
     <div>
-      <Button
-        flat
-        type="plain"
-        className={styles.button}
-        onClick={onClick}
-      >
+      {/* eslint-disable-next-line max-len */}
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/interactive-supports-focus,jsx-a11y/click-events-have-key-events */}
+      <a role="button" onClick={onClick} className={styles.button}>
         <div className={styles.buttonContent}>
           <NotificationIcon color={colors.primary} />
           <span className={styles.buttonText}>{i18n.text('back_in_stock.get_notified')}</span>
         </div>
-      </Button>
+      </a>
     </div>);
 };
 
