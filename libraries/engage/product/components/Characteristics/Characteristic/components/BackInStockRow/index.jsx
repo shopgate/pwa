@@ -13,6 +13,7 @@ import connect from './connector';
  * @param {Object} props.availability The product availability
  * @param {Object} props.subscription The subscription
  * @param {Object} props.characteristics The variant characteristics
+ * @param {Function} props.grantPushPermissions Request / Set push permission
  * @return {JSX}
  */
 const BackInStockRow = ({
@@ -21,6 +22,7 @@ const BackInStockRow = ({
   productVariants,
   characteristics,
   isBackinStockEnabled,
+  grantPushPermissions,
   subscription,
 }) => {
   const foundVariant = productVariants?.products.find(product =>
@@ -37,9 +39,12 @@ const BackInStockRow = ({
     >
       <BackInStockButton
         subscription={subscription}
-        onClick={(e) => {
+        onClick={async (e) => {
           e.stopPropagation();
-          addBackInStoreSubscription({ productCode: foundVariant.id });
+          const allowed = await grantPushPermissions();
+          if (allowed) {
+            addBackInStoreSubscription({ productCode: foundVariant.id });
+          }
         }}
       />
     </div>);
@@ -47,6 +52,7 @@ const BackInStockRow = ({
 
 BackInStockRow.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
+  grantPushPermissions: PropTypes.func.isRequired,
   isBackinStockEnabled: PropTypes.bool.isRequired,
   availability: PropTypes.shape(),
   characteristics: PropTypes.shape(),

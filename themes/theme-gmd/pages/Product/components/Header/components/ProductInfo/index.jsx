@@ -90,7 +90,11 @@ const ProductInfo = ({ productId, options, variantId }) => (
 ProductInfo.propTypes = {
   options: PropTypes.shape().isRequired,
   productId: PropTypes.string.isRequired,
-  variantId: PropTypes.string.isRequired,
+  variantId: PropTypes.string,
+};
+
+ProductInfo.defaultProps = {
+  variantId: null,
 };
 
 export default memo(ProductInfo);
