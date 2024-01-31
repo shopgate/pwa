@@ -5,7 +5,7 @@ import {
   event,
   getAppPermissions,
   PERMISSION_ID_PUSH,
-  PERMISSION_STRATUS_DENIED,
+  PERMISSION_STATUS_DENIED,
 } from '@shopgate/engage/core';
 import {
   increaseAppStartCount,
@@ -74,8 +74,8 @@ jest.mock('@shopgate/engage/core', () => {
     main$,
     PERMISSION_ID_PUSH,
     PERMISSION_STATUS_NOT_DETERMINED,
-    PERMISSION_STRATUS_GRANTED,
-    PERMISSION_STRATUS_DENIED,
+    PERMISSION_STATUS_GRANTED,
+    PERMISSION_STATUS_DENIED,
   } = jest.requireActual('@shopgate/engage/core');
   /* eslint-enable no-shadow */
 
@@ -84,9 +84,9 @@ jest.mock('@shopgate/engage/core', () => {
     appDidStart$,
     PERMISSION_ID_PUSH,
     PERMISSION_STATUS_NOT_DETERMINED,
-    PERMISSION_STRATUS_GRANTED,
-    PERMISSION_STRATUS_DENIED,
-    getAppPermissions: jest.fn().mockResolvedValue(PERMISSION_STATUS_NOT_DETERMINED),
+    PERMISSION_STATUS_GRANTED,
+    PERMISSION_STATUS_DENIED,
+    getAppPermissions: jest.fn().mockResolvedValue([{ status: PERMISSION_STATUS_NOT_DETERMINED }]),
     event: {
       addCallback: jest.fn(),
     },
@@ -171,7 +171,7 @@ describe('Push OptIn Subscriptions', () => {
             },
           });
 
-          getAppPermissions.mockResolvedValueOnce(PERMISSION_STRATUS_DENIED);
+          getAppPermissions.mockResolvedValueOnce([{ status: PERMISSION_STATUS_DENIED }]);
 
           await callback(callbackParams);
 

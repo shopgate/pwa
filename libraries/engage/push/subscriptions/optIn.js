@@ -64,13 +64,16 @@ export default function pushOptIn(subscribe) {
       configCountState = state.ordersPlacedCount;
     }
 
-    if (await getAppPermissions([PERMISSION_ID_PUSH]) !== PERMISSION_STATUS_NOT_DETERMINED) {
+    const [{ status: pushStatus }] = await getAppPermissions([PERMISSION_ID_PUSH]);
+
+    if (pushStatus !== PERMISSION_STATUS_NOT_DETERMINED) {
       return;
     }
 
     if (state.rejectionCount >= rejectionMaxCount) {
       return;
     }
+
     const mustShowModal = Number(configValue.value) > 0 && configCountState >= configValue.value;
     const hasRepeats = configValue.repeats === null || resetCountState <= configValue.repeats;
     const minDaysElapsed = (Date.now() - state.lastPopupAt) >= (minDaysBetweenOptIns * DAY_IN_MS);
