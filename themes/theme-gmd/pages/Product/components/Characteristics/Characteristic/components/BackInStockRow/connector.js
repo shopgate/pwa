@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getIsBackInStockEnabled,
-  getIsProductOnBackInStockListByCharacteristics,
+  getSubscriptionByCharacteristics,
 } from '@shopgate/engage/back-in-stock/selectors/backInStock';
 import {
   getProductVariants,
@@ -13,8 +13,8 @@ import { addBackInStoreSubscription } from '@shopgate/engage/back-in-stock/actio
  * @return {Object} The extended component props.
  */
 const makeMapStateToProps = () => (state, props) => ({
+  subscription: getSubscriptionByCharacteristics(state, props),
   availability: getVariantAvailabilityByCharacteristics(state, props),
-  isOnBackInStockList: getIsProductOnBackInStockListByCharacteristics(state, props),
   productVariants: getProductVariants(state, props),
   isBackinStockEnabled: getIsBackInStockEnabled(state, props),
 });

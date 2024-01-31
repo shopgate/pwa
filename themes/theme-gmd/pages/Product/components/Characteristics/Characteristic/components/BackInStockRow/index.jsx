@@ -8,20 +8,20 @@ import connect from './connector';
 /**
  * The BackInStockRow component.
  * @param {Object} props The component props.
- * @param {boolean} props.isOnBackInStockList Whether the product is on the back in stock list
  * @param {boolean} props.isBackinStockEnabled Whether the back in stock feature is enabled
  * @param {Array} props.productVariants The product variants
  * @param {Object} props.availability The product availability
  * @param {Object} props.characteristics The variant characteristics
+ * @param {Object} props.subscription The subscription
  * @return {JSX}
  */
 const BackInStockRow = ({
-  isOnBackInStockList,
   availability,
   addBackInStoreSubscription,
   productVariants,
   characteristics,
   isBackinStockEnabled,
+  subscription,
 }) => {
   const foundVariant = productVariants?.products.find(product =>
     isEqual(product.characteristics, characteristics));
@@ -36,7 +36,7 @@ const BackInStockRow = ({
     }}
     >
       <BackInStockButton
-        isSubscribed={isOnBackInStockList}
+        subscription={subscription}
         onClick={(e) => {
           e.stopPropagation();
           addBackInStoreSubscription({ productCode: foundVariant.id });
@@ -48,16 +48,17 @@ const BackInStockRow = ({
 BackInStockRow.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
   isBackinStockEnabled: PropTypes.bool.isRequired,
-  isOnBackInStockList: PropTypes.bool.isRequired,
   availability: PropTypes.shape(),
   characteristics: PropTypes.shape(),
   productVariants: PropTypes.shape(),
+  subscription: PropTypes.shape(),
 };
 
 BackInStockRow.defaultProps = {
   availability: null,
   productVariants: {},
   characteristics: {},
+  subscription: null,
 };
 
 export default connect(BackInStockRow);

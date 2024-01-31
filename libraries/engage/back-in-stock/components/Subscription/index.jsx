@@ -13,6 +13,8 @@ import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
+import AvailableText from '@shopgate/pwa-ui-shared/Availability';
+import BackInStockButton from '@shopgate/pwa-ui-shared/BackInStockButton';
 import { useBackInStockSubscriptionsContext } from '../../hooks';
 import { getThemeSettings, i18n } from '../../../core';
 
@@ -22,9 +24,7 @@ const styles = {
   root: css({
     display: 'flex',
     position: 'relative',
-    '&:not(:last-child)': {
-      marginBottom: 16,
-    },
+    marginBottom: 16,
   }).toString(),
   imageContainer: css({
     flex: 0.4,
@@ -44,12 +44,14 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
   }).toString(),
-  quantityContainer: css({
-    flexDirection: 'row',
+  baseContainerRow: css({
+    flexDirection: 'column',
     display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    gap: 16,
+  }).toString(),
+  priceContainerRow: css({
+    flexDirection: 'column',
+    display: 'flex',
+    alignItems: 'end',
   }).toString(),
   priceContainer: css({
     minWidth: 100,
@@ -60,6 +62,7 @@ const styles = {
     lineHeight: '0.875rem',
     color: 'var(--color-text-low-emphasis)',
     padding: `${variables.gap.xsmall}px 0`,
+    textAlign: 'right',
   }).toString(),
   titleWrapper: css({
     display: 'flex',
@@ -80,7 +83,6 @@ const styles = {
     flexShrink: 0,
     alignItems: 'flex-start',
   }),
-
 };
 
 /**
@@ -89,7 +91,9 @@ const styles = {
  * @param {string} props.subscription The subscription which should be rendered
  * @returns {JSX}
  */
-const Subscription = ({ subscription }) => {
+const Subscription = ({
+  subscription,
+}) => {
   const { subscriptionCode, product } = subscription;
   const {
     removeBackInStoreSubscription,
@@ -98,8 +102,7 @@ const Subscription = ({ subscription }) => {
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
-  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice !== defaultPrice;
-  const price = hasStrikePrice ? specialPrice : defaultPrice;
+  const hasStrikePrice = product.price?.discount > 0;
   const productLink = getProductRoute(product.id);
 
   return (
@@ -141,30 +144,32 @@ const Subscription = ({ subscription }) => {
             </button>
           </div>
         </div>
-        <div className={styles.infoContainerRow}>
-          <div className={styles.quantityContainer}>
-            <div className={styles.priceContainer}>
-              {hasStrikePrice ? (
-                <PriceStriked
-                  value={defaultPrice}
-                  currency={currency}
-                />
-              ) : null}
-              <Price
-                currency={currency}
-                discounted={hasStrikePrice}
-                taxDisclaimer
-                unitPrice={price}
-              />
-              <PriceInfo
-                product={product}
-                currency={currency}
-                className={styles.priceInfo}
-                text={product?.price?.info}
-              />
-            </div>
-          </div>
-
+        <div className={classNames(styles.baseContainerRow)}>
+          <AvailableText
+            text={product?.availability?.text}
+            state={product?.availability?.state}
+            showWhenAvailable={false}
+          />
+          <BackInStockButton
+            subscription={subscription}
+            onClick={() => {}}
+          />
+        </div>
+        <div className={styles.priceContainerRow}>
+          {hasStrikePrice ? (
+            <PriceStriked
+              value={specialPrice}
+              currency={currency}
+            />
+          ) : null}
+          <Price
+            currency={currency}
+            discounted={hasStrikePrice}
+            unitPrice={defaultPrice}
+          />
+          {!!product.price.info && (
+            <PriceInfo text={product.price.info} className={styles.priceInfo} />
+          )}
         </div>
 
       </div>

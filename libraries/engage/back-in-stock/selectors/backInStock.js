@@ -21,10 +21,10 @@ export const getBackInStockSubscriptionsFetching = state => state.backInStock.is
 export const getBackInStockSubscriptionsInitial = state => state.backInStock.isInitial;
 
 /**
- * Creates a selector that retrieves if a specific product is already on the Back in Stock list
+ * Creates a selector that retrieves the subscription of a product / variant or null
  * @returns {Function}
  */
-export const getIsProductOnBackInStockListByVariant = createSelector(
+export const getSubscriptionByVariant = createSelector(
   (state, props = {}) => (props.variantId ? props.variantId : props.productId),
   getBackInStockSubscriptions,
   (variantId, subscriptions) => {
@@ -32,8 +32,8 @@ export const getIsProductOnBackInStockListByVariant = createSelector(
       return false;
     }
 
-    return subscriptions.some(({ productCode }) =>
-      productCode === variantId);
+    return subscriptions.find(({ productCode }) =>
+      productCode === variantId) || null;
   }
 );
 
@@ -41,7 +41,7 @@ export const getIsProductOnBackInStockListByVariant = createSelector(
  * Creates a selector that retrieves if a specific product is already on the Back in Stock list
  * @returns {Function}
  */
-export const getIsProductOnBackInStockListByCharacteristics = createSelector(
+export const getSubscriptionByCharacteristics = createSelector(
   getProductVariants,
   (state, props = {}) => props.characteristics,
   getBackInStockSubscriptions,
@@ -52,12 +52,13 @@ export const getIsProductOnBackInStockListByCharacteristics = createSelector(
 
     const found = variants.products.find(product =>
       isEqual(product.characteristics, characteristics));
+
     if (!found) {
-      return false;
+      return null;
     }
 
-    return subscriptions.some(({ productCode }) =>
-      productCode === found.id);
+    return subscriptions.find(({ productCode }) =>
+      productCode === found.id) || null;
   }
 );
 

@@ -72,7 +72,12 @@ const List = () => {
 
             {!isInitial && filteredSubscriptions.map((subscription, index) => (
               <div key={subscription.subscriptionCode}>
-                <Subscription subscription={subscription} key={subscription.subscriptionCode} />
+                <Subscription
+                  subscription={subscription}
+                  productId={subscription.productCode}
+                  key={subscription.subscriptionCode}
+                  group={groupKey}
+                />
                 {(index === filteredSubscriptions.length - 1) ?
                   null :
                   <div className={styles.divider} />}

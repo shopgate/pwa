@@ -9,23 +9,23 @@ import connect from './connector';
 /**
  * The BackInStock component.
  * @param {Object} props The component props.
- * @param {Object} props.isOnBackInStockList Whether the product is on the back in stock list
  * @param {boolean} props.isBackinStockEnabled Whether the back in stock feature is enabled
  * @param {string} props.productId The product id
  * @param {string} props.productType The product type
  * @param {Object} props.stock The product stock info
  * @param {Function} props.addBackInStoreSubscription Add product to back in stock list
  * @param {Function} props.grantPushPermissions Request / Set push permission
+ * @param {Object} props.subscription The subscription
  * @return {JSX}
  */
 const BackInStock = ({
-  isOnBackInStockList,
   productType,
   stock,
   productId,
   addBackInStoreSubscription,
   isBackinStockEnabled,
   grantPushPermissions,
+  subscription,
 }) => {
   const showBackInStock = productType !== 'parent' &&
     productType !== null &&
@@ -38,8 +38,8 @@ const BackInStock = ({
       <Portal name={portals.PRODUCT_BACK_IN_STOCK}>
         {showBackInStock &&
           <BackInStockButton
-            isSubscribed={isOnBackInStockList}
-            isLintToBackInStockEnabled
+            subscription={subscription}
+            isLinkToBackInStockEnabled
             onClick={async () => {
               const allowed = await grantPushPermissions();
               if (allowed) {
@@ -57,13 +57,14 @@ BackInStock.propTypes = {
   addBackInStoreSubscription: PropTypes.func.isRequired,
   grantPushPermissions: PropTypes.func.isRequired,
   isBackinStockEnabled: PropTypes.bool.isRequired,
-  isOnBackInStockList: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
   productType: PropTypes.string,
   stock: PropTypes.shape(),
+  subscription: PropTypes.shape(),
 };
 
 BackInStock.defaultProps = {
+  subscription: null,
   productType: null,
   stock: null,
 };

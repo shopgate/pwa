@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getIsBackInStockEnabled,
-  getIsProductOnBackInStockListByVariant,
+  getSubscriptionByVariant,
 } from '@shopgate/engage/back-in-stock/selectors/backInStock';
 import {
   getProductAvailability,
@@ -14,7 +14,7 @@ import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermiss
  * @return {Object} The extended component props.
  */
 const makeMapStateToProps = () => (state, props) => ({
-  isOnBackInStockList: getIsProductOnBackInStockListByVariant(state, props),
+  subscription: getSubscriptionByVariant(state, props),
   productType: getProductType(state, props),
   stock: getProductAvailability(state, props),
   isBackinStockEnabled: getIsBackInStockEnabled(state, props),
