@@ -43,6 +43,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import extensions from 'Extensions/subscribers';
 // App rating
 import appRating from '@shopgate/engage/app-rating/subscriptions';
+import push from '@shopgate/engage/push/subscriptions';
 
 const subscriptions = [
   // Common subscribers.
@@ -74,6 +75,7 @@ const subscriptions = [
   commerceScanner,
   // App rating subscribers
   appRating,
+  push,
   // Theme subscribers.
   app,
   viewport,
