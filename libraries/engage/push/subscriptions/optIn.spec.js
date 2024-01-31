@@ -98,6 +98,8 @@ describe('Push OptIn Subscriptions', () => {
   let dispatch;
   let getState;
   let callbackParams;
+  const mockedTS = new Date('2024-01-31T12:00:00.000Z').getTime();
+  let dateMock;
 
   beforeEach(() => {
     setMockedConfig();
@@ -111,6 +113,8 @@ describe('Push OptIn Subscriptions', () => {
 
     jest.spyOn(store, 'dispatch');
     jest.spyOn(store, 'getState');
+
+    dateMock = jest.spyOn(Date, 'now').mockImplementation(() => mockedTS);
 
     ({ dispatch, getState } = store);
 
@@ -242,9 +246,6 @@ describe('Push OptIn Subscriptions', () => {
         });
 
         it('should not trigger opt in again till "minDaysBetweenOptIns" elapsed', async () => {
-          const mockedTS = new Date('2024-01-31T12:00:00.000Z').getTime();
-          const dateMock = jest.spyOn(Date, 'now').mockImplementation(() => mockedTS);
-
           setMockedConfig({
             [configType]: {
               value: 1,
