@@ -178,8 +178,25 @@ describe('Push OptIn Subscriptions', () => {
           expect(getAppPermissions).toHaveBeenCalled();
           expect(getAppPermissions).toHaveBeenCalledWith([PERMISSION_ID_PUSH]);
 
+          expect(dispatch).not.toHaveBeenCalled();
+        });
+
+        it('should not trigger opt in when config key is set to 0', async () => {
+          setMockedConfig({
+            [configType]: {
+              value: 0,
+            },
+          });
+
+          await callback(callbackParams);
+
+          expect(getAppPermissions).toHaveBeenCalled();
+          expect(getAppPermissions).toHaveBeenCalledWith([PERMISSION_ID_PUSH]);
+
           expect(dispatch).toHaveBeenCalledTimes(1);
           expect(dispatch).toHaveBeenCalledWith(increaseCountAction());
+
+          expect(showOptIn).not.toHaveBeenCalled();
         });
 
         it('should trigger opt in at the first counter increase', async () => {

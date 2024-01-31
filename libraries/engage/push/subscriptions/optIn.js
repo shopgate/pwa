@@ -38,9 +38,10 @@ export default function pushOptIn(subscribe) {
   /**
    * @param {Object} subscriptionParams Params from the subscription callback
    * @param {string} configKey The "pushOptIn" key the be used
+   * @param {Function} countIncreaseAction Action to increase the count in Redux for the configKey
    * @returns {void}
    */
-  const runChecks = async ({ dispatch, getState }, configKey) => {
+  const runChecks = async ({ dispatch, getState }, configKey, countIncreaseAction) => {
     const {
       pushOptIn: {
         appStarts,
@@ -49,6 +50,15 @@ export default function pushOptIn(subscribe) {
         minDaysBetweenOptIns,
       },
     } = appConfig;
+
+    const [{ status: pushStatus }] = await getAppPermissions([PERMISSION_ID_PUSH]);
+
+    if (pushStatus !== PERMISSION_STATUS_NOT_DETERMINED) {
+      return;
+    }
+
+    // TODO verify if we need to count when the config value is set to 0 ("off")
+    dispatch(countIncreaseAction());
 
     const state = getPushOptInState(getState());
 
@@ -62,12 +72,6 @@ export default function pushOptIn(subscribe) {
       resetAction = resetOrdersPlacedCount;
       resetCountState = state.ordersPlacedResetCount;
       configCountState = state.ordersPlacedCount;
-    }
-
-    const [{ status: pushStatus }] = await getAppPermissions([PERMISSION_ID_PUSH]);
-
-    if (pushStatus !== PERMISSION_STATUS_NOT_DETERMINED) {
-      return;
     }
 
     if (state.rejectionCount >= rejectionMaxCount) {
@@ -87,24 +91,19 @@ export default function pushOptIn(subscribe) {
 
   // event subscriber to handle app start based push opt in
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
-    // every time the app starts we increase the start count
-    dispatch(increaseAppStartCount());
-
     await runChecks({
       dispatch,
       getState,
-    }, 'appStarts');
+    }, 'appStarts', increaseAppStartCount);
   });
 
   // event subscriber to handle order based push opt in
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     event.addCallback('checkoutSuccess', async () => {
-      dispatch(increaseOrdersPlacedCount());
-
       await runChecks({
         dispatch,
         getState,
-      }, 'ordersPlaced');
+      }, 'ordersPlaced', increaseOrdersPlacedCount);
     });
   });
 
