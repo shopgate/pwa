@@ -30,7 +30,7 @@ persistedReducers.set([
   'url',
   'user',
   'appRating',
-  'push.optIn',
+  'push.optInTrigger',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [

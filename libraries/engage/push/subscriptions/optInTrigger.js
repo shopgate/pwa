@@ -21,7 +21,7 @@ import {
   PUSH_OPT_IN_OPT_IN_POSTPONED,
 } from '../constants';
 
-import { getPushOptInState } from '../selectors';
+import { getPushOptInTriggerState } from '../selectors';
 import { showOptIn } from '../actions';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
@@ -60,7 +60,7 @@ export default function pushOptIn(subscribe) {
     // TODO verify if we need to count when the config value is set to 0 ("off")
     dispatch(countIncreaseAction());
 
-    const state = getPushOptInState(getState());
+    const state = getPushOptInTriggerState(getState());
 
     let configValue = appStarts;
     let resetAction = resetAppStartCount;

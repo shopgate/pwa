@@ -1,1 +1,1 @@
-export * from './optIn';
+export * from './optInTrigger';

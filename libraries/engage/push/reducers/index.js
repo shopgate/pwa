@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import optIn from './optIn';
+import optInTrigger from './optInTrigger';
 
 export default combineReducers({
-  optIn,
+  optInTrigger,
 });

@@ -20,7 +20,7 @@ import {
   showOptIn,
 } from '../actions';
 import pushReducers from '../reducers';
-import subscriptions from './optIn';
+import subscriptions from './optInTrigger';
 
 /**
  * @typedef {Object} MockedConfigSetting
@@ -57,7 +57,7 @@ const setMockedConfig = (update = {}) => {
   }, update);
 };
 
-jest.mock('../actions/optIn.js', () => ({
+jest.mock('../actions/optInTrigger.js', () => ({
   showOptIn: jest.fn(),
 }));
 

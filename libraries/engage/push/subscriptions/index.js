@@ -1,5 +1,5 @@
-import optIn from './optIn';
+import optInTrigger from './optInTrigger';
 
 export default (subscribe) => {
-  optIn(subscribe);
+  optInTrigger(subscribe);
 };
