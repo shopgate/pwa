@@ -57,7 +57,6 @@ export default function pushOptIn(subscribe) {
       return;
     }
 
-    // TODO verify if we need to count when the config value is set to 0 ("off")
     dispatch(countIncreaseAction());
 
     const state = getPushOptInTriggerState(getState());

@@ -6,6 +6,7 @@ import {
   getAppPermissions,
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_DENIED,
+  APP_DID_START,
 } from '@shopgate/engage/core';
 import {
   increaseAppStartCount,
@@ -76,6 +77,7 @@ jest.mock('@shopgate/engage/core', () => {
     PERMISSION_STATUS_NOT_DETERMINED,
     PERMISSION_STATUS_GRANTED,
     PERMISSION_STATUS_DENIED,
+    APP_DID_START,
   } = jest.requireActual('@shopgate/engage/core');
   /* eslint-enable no-shadow */
 
@@ -86,6 +88,7 @@ jest.mock('@shopgate/engage/core', () => {
     PERMISSION_STATUS_NOT_DETERMINED,
     PERMISSION_STATUS_GRANTED,
     PERMISSION_STATUS_DENIED,
+    APP_DID_START,
     getAppPermissions: jest.fn().mockResolvedValue([{ status: PERMISSION_STATUS_NOT_DETERMINED }]),
     event: {
       addCallback: jest.fn(),
@@ -388,6 +391,34 @@ describe('Push OptIn Subscriptions', () => {
       // Opt-in doesn't show anymore for the 2nd order placement, since max rejection count exceeded
       await checkoutSuccessCallback();
       expect(showOptIn).toHaveBeenCalledTimes(4);
+    });
+  });
+
+  describe('appDidStart$', () => {
+    it('should run expected logic when appDidStart$ stream emits', () => {
+      setMockedConfig({
+        appStarts: {
+          value: 1,
+          repeats: 1,
+        },
+        ordersPlaced: {
+          value: 1,
+          repeats: 1,
+        },
+        minDaysBetweenOptIns: 0,
+      });
+
+      dispatch({ type: APP_DID_START });
+
+      // getAppPermissions should have been called 1st time for appDidStart
+      expect(getAppPermissions).toHaveBeenCalledTimes(1);
+
+      const [[eventName, eventCallback]] = event.addCallback.mock.calls;
+      expect(eventName).toBe('checkoutSuccess');
+      eventCallback();
+
+      // getAppPermissions should have been called 2nd time for checkoutSuccess event
+      expect(getAppPermissions).toHaveBeenCalledTimes(2);
     });
   });
 
