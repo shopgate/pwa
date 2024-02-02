@@ -1,5 +1,5 @@
 import React from 'react';
-import BackInStockSubscriptionsProvider from '../providers/BackInStockSubscriptionsProvider.context';
+import BackInStockSubscriptionsProvider from '@shopgate/engage/back-in-stock/providers/BackInStockSubscriptionsProvider.context';
 
 /**
  * Injects the Back in Stock Subscription Context

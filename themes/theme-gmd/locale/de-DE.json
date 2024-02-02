@@ -24,7 +24,7 @@
   },
   "back_in_stock": {
     "list_states": {
-      "active": "Aktiv Erinnerungen",
+      "active": "Aktive Erinnerungen",
       "past": "Abgelaufene Erinnerungen"
     },
     "empty_list_reminder": "Sie haben keine Erinnerungen in dieser Liste.",
@@ -283,7 +283,7 @@
     }
   },
   "permissions": {
-    "push_notifications": {
+    "back_in_stock_push_notifications": {
       "message": "Bitte erlauben Sie Push Nachrichten im nächsten Schritt damit wir Sie Benachrichtigen können wenn das Produkt wieder auf Lager ist.",
       "confirm": "Push Nachrichten erlauben",
       "dismiss": "Abbrechen"

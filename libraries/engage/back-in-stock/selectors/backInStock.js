@@ -21,7 +21,8 @@ export const getBackInStockSubscriptionsFetching = state => state.backInStock.is
 export const getBackInStockSubscriptionsInitial = state => state.backInStock.isInitial;
 
 /**
- * Creates a selector that retrieves the subscription of a product / variant or null
+ * Creates a selector that retrieves the subscription of
+ * a product / variant or null by its variantId / productId
  * @returns {Function}
  */
 export const getSubscriptionByVariant = createSelector(
@@ -38,7 +39,8 @@ export const getSubscriptionByVariant = createSelector(
 );
 
 /**
- * Creates a selector that retrieves if a specific product is already on the Back in Stock list
+ * Creates a selector that retrieves the subscription of
+ * a product / variant by its characteristics
  * @returns {Function}
  */
 export const getSubscriptionByCharacteristics = createSelector(

@@ -289,7 +289,7 @@
     }
   },
   "permissions": {
-    "push_notifications": {
+    "back_in_stock_push_notifications": {
       "message": "Please allow push notifications in the next step, so that we can send you a notification when the product is back in stock.",
       "confirm": "Allow push notifications",
       "dismiss": "Cancel"

@@ -1,5 +1,9 @@
 import { PipelineRequest } from '@shopgate/engage/core';
 import {
+  SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTIONS, SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTIONS,
+  SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS,
+} from '@shopgate/pwa-common-commerce/favorites';
+import {
   ADD_BACK_IN_STOCK_SUBSCRIPTION,
   ADD_BACK_IN_STOCK_SUBSCRIPTION_ERROR,
   ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
@@ -12,19 +16,20 @@ import {
 } from '../constants';
 
 /**
- * Fetches Back  in Stock Subscriptions
+ * Fetch Back in Stock Subscriptions
  * @returns {Function}
  */
 export const fetchBackInStoreSubscriptions = () => async (dispatch) => {
   dispatch({ type: FETCH_BACK_IN_STOCK_SUBSCRIPTIONS });
 
   try {
-    const { subscriptions } = await new PipelineRequest('shopgate.user.getBackInStockSubscriptions')
-      .setInput({
-        limit: 100,
-        offset: 100,
-      })
-      .dispatch();
+    const { subscriptions } =
+      await new PipelineRequest(SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS)
+        .setInput({
+          limit: 100,
+          offset: 0,
+        })
+        .dispatch();
 
     dispatch({
       type: FETCH_BACK_IN_STOCK_SUBSCRIPTIONS_SUCCESS,
@@ -43,7 +48,7 @@ export const fetchBackInStoreSubscriptions = () => async (dispatch) => {
 };
 
 /**
- * Add a Back  in Stock Subscription
+ * Add a Back in Stock Subscription
  * @param {Object} props Props.
  * @param {string} props.productCode The product for which the subscription should be added
  * @returns {Function}
@@ -52,11 +57,12 @@ export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) 
   dispatch({ type: ADD_BACK_IN_STOCK_SUBSCRIPTION });
 
   try {
-    const { subscriptions } = await new PipelineRequest('shopgate.user.addBackInStockSubscription')
-      .setInput({
-        productCode,
-      })
-      .dispatch();
+    const { subscriptions } =
+      await new PipelineRequest(SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTIONS)
+        .setInput({
+          productCode,
+        })
+        .dispatch();
 
     dispatch({
       type: ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
@@ -82,14 +88,13 @@ export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) 
 export const removeBackInStoreSubscription = ({ subscriptionCode }) => async (dispatch) => {
   dispatch({ type: REMOVE_BACK_IN_STOCK_SUBSCRIPTION });
 
-  const pipelineRequest = new PipelineRequest('shopgate.user.removeBackInStockSubscription');
-
   try {
-    const { subscriptions } = await pipelineRequest
-      .setInput({
-        subscriptionCode,
-      })
-      .dispatch();
+    const { subscriptions } =
+      await new PipelineRequest(SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTIONS)
+        .setInput({
+          subscriptionCode,
+        })
+        .dispatch();
 
     dispatch({
       type: REMOVE_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,

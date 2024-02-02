@@ -31,9 +31,9 @@ const grantPushPermissions = (options = {}) => dispatch => new Promise(async (re
   }
 
   const openSettings = await dispatch(showModal({
-    message: 'permissions.push_notifications.message',
-    confirm: 'permissions.push_notifications.confirm',
-    dismiss: 'permissions.push_notifications.dismiss',
+    message: 'permissions.back_in_stock_push_notifications.message',
+    confirm: 'permissions.back_in_stock_push_notifications.confirm',
+    dismiss: 'permissions.back_in_stock_push_notifications.dismiss',
     params: {},
   }));
 

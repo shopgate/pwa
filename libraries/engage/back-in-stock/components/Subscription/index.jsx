@@ -15,8 +15,10 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
 import BackInStockButton from '@shopgate/pwa-ui-shared/BackInStockButton';
-import { useBackInStockSubscriptionsContext } from '../../hooks';
-import { getThemeSettings, i18n } from '../../../core';
+import {
+  getThemeSettings, i18n,
+} from '@shopgate/engage/core';
+import { useBackInStockSubscriptionsContext } from '@shopgate/engage/back-in-stock/hooks';
 
 const { variables } = themeConfig;
 

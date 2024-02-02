@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import {
   getBackInStockSubscriptions,
-  getBackInStockSubscriptionsFetching, getBackInStockSubscriptionsInitial,
-} from '../selectors/backInStock';
+  getBackInStockSubscriptionsFetching,
+  getBackInStockSubscriptionsInitial,
+} from '@shopgate/engage/back-in-stock/selectors/backInStock';
 import {
   addBackInStoreSubscription,
   removeBackInStoreSubscription,
-} from '../actions';
+} from '@shopgate/engage/back-in-stock/actions';
 
 /**
  * @return {Function} The extended component props.
