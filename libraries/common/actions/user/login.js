@@ -32,6 +32,7 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
     let recaptchaToken;
     if (recaptchaEnabled && googleCloudSiteKey) {
       try {
+        await new Promise(resolve => window.grecaptcha.enterprise.ready(resolve));
         recaptchaToken = await window.grecaptcha.enterprise.execute(googleCloudSiteKey, { action: 'login' });
       } catch (e) {
         // noting to do here - just for protection
