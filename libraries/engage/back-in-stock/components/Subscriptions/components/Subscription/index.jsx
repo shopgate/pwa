@@ -4,15 +4,14 @@ import {
   Link,
   Ripple,
   PriceInfo,
+  CrossIcon,
 } from '@shopgate/engage/components';
-import { getProductRoute } from '@shopgate/pwa-common-commerce/product';
-import { ProductImage } from '@shopgate/engage/product';
+import { getProductRoute, ProductImage } from '@shopgate/engage/product';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { themeConfig } from '@shopgate/engage';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Price from '@shopgate/pwa-ui-shared/Price';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
 import BackInStockButton from '@shopgate/pwa-ui-shared/BackInStockButton';
 import {

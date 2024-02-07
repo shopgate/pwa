@@ -1,12 +1,9 @@
 import React from 'react';
 import { css } from 'glamor';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
-import {
-  Accordion,
-  Card,
-} from '@shopgate/engage/components';
+import { Accordion, Card } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import { useBackInStockSubscriptionsContext } from '../../hooks';
+import { useBackInStockSubscriptionsContext } from '../../../../hooks';
 import Subscription from '../Subscription';
 
 const styles = {

@@ -1,15 +1,15 @@
 import React from 'react';
 import BackInStockSubscriptionsProvider from '@shopgate/engage/back-in-stock/providers/BackInStockSubscriptionsProvider';
-import List from '../List';
+import List from './components/List';
 
 /**
- * The Back in Stock component.
+ * The Back in Stock Subscriptions component.
  * @returns {JSX}
  */
-const BackInStock = () => (
+const Subscriptions = () => (
   <BackInStockSubscriptionsProvider>
     <List />
   </BackInStockSubscriptionsProvider>
 );
 
-export default BackInStock;
+export default Subscriptions;
