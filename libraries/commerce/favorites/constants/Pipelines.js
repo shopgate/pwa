@@ -6,6 +6,3 @@ export const SHOPGATE_USER_GET_FAVORITES_LIST = 'shopgate.user.getFavoritesLists
 export const SHOPGATE_USER_ADD_FAVORITES_LIST = 'shopgate.user.addFavoritesList';
 export const SHOPGATE_USER_UPDATE_FAVORITES_LIST = 'shopgate.user.updateFavoritesList';
 export const SHOPGATE_USER_REMOVE_FAVORITES_LIST = 'shopgate.user.removeFavoritesList';
-export const SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS = 'shopgate.user.getBackInStockSubscriptions';
-export const SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTIONS = 'shopgate.user.addBackInStockSubscription';
-export const SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTIONS = 'shopgate.user.removeBackInStockSubscription';

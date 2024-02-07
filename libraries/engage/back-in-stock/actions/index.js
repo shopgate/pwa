@@ -1,9 +1,5 @@
 import { PipelineRequest } from '@shopgate/engage/core';
 import {
-  SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTIONS, SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTIONS,
-  SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS,
-} from '@shopgate/pwa-common-commerce/favorites';
-import {
   ADD_BACK_IN_STOCK_SUBSCRIPTION,
   ADD_BACK_IN_STOCK_SUBSCRIPTION_ERROR,
   ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
@@ -14,6 +10,11 @@ import {
   REMOVE_BACK_IN_STOCK_SUBSCRIPTION_ERROR,
   REMOVE_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
 } from '../constants';
+import {
+  SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTION,
+  SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTION,
+  SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS,
+} from '../constants/Portals';
 
 /**
  * Fetch Back in Stock Subscriptions
@@ -58,7 +59,7 @@ export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) 
 
   try {
     const { subscriptions } =
-      await new PipelineRequest(SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTIONS)
+      await new PipelineRequest(SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTION)
         .setInput({
           productCode,
         })
@@ -90,7 +91,7 @@ export const removeBackInStoreSubscription = ({ subscriptionCode }) => async (di
 
   try {
     const { subscriptions } =
-      await new PipelineRequest(SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTIONS)
+      await new PipelineRequest(SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTION)
         .setInput({
           subscriptionCode,
         })
