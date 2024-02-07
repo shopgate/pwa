@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import BackInStockButton from '@shopgate/pwa-ui-shared/BackInStockButton';
 import { AVAILABILITY_STATE_OK } from '@shopgate/pwa-common-commerce/product';
+import {
+  PRODUCT_BACK_IN_STOCK,
+  PRODUCT_BACK_IN_STOCK_AFTER,
+  PRODUCT_BACK_IN_STOCK_BEFORE,
+} from '@shopgate/engage/back-in-stock/constants/Portals';
 import connect from './connector';
 
 /**
@@ -34,8 +38,8 @@ const BackInStock = ({
 
   return (
     <Fragment>
-      <Portal name={portals.PRODUCT_BACK_IN_STOCK_BEFORE} />
-      <Portal name={portals.PRODUCT_BACK_IN_STOCK}>
+      <Portal name={PRODUCT_BACK_IN_STOCK_BEFORE} />
+      <Portal name={PRODUCT_BACK_IN_STOCK}>
         {showBackInStock &&
           <BackInStockButton
             subscription={subscription}
@@ -48,7 +52,7 @@ const BackInStock = ({
             }}
           />}
       </Portal>
-      <Portal name={portals.PRODUCT_BACK_IN_STOCK_AFTER} />
+      <Portal name={PRODUCT_BACK_IN_STOCK_AFTER} />
     </Fragment>
   );
 };
