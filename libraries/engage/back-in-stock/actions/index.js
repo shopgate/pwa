@@ -51,17 +51,17 @@ export const fetchBackInStoreSubscriptions = () => async (dispatch) => {
 /**
  * Add a Back in Stock Subscription
  * @param {Object} props Props.
- * @param {string} props.productCode The product for which the subscription should be added
+ * @param {string} props.productId The product for which the subscription should be added
  * @returns {Function}
  */
-export const addBackInStoreSubscription = ({ productCode }) => async (dispatch) => {
+export const addBackInStoreSubscription = ({ productId }) => async (dispatch) => {
   dispatch({ type: ADD_BACK_IN_STOCK_SUBSCRIPTION });
 
   try {
     const { subscriptions } =
       await new PipelineRequest(SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTION)
         .setInput({
-          productCode,
+          productCode: productId,
         })
         .dispatch();
 
