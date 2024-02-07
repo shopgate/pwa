@@ -20,7 +20,7 @@ import {
  * Fetch Back in Stock Subscriptions
  * @returns {Function}
  */
-export const fetchBackInStoreSubscriptions = () => (dispatch) => {
+export const fetchBackInStockSubscriptions = () => (dispatch) => {
   dispatch({ type: FETCH_BACK_IN_STOCK_SUBSCRIPTIONS });
 
   const request = new PipelineRequest(SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS)
@@ -54,7 +54,7 @@ export const fetchBackInStoreSubscriptions = () => (dispatch) => {
  * @param {string} props.productId The product for which the subscription should be added
  * @returns {Function}
  */
-export const addBackInStoreSubscription = ({ productId }) => (dispatch) => {
+export const addBackInStockSubscription = ({ productId }) => (dispatch) => {
   dispatch({ type: ADD_BACK_IN_STOCK_SUBSCRIPTION });
   const request = new PipelineRequest(SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTION)
     .setInput({
@@ -86,7 +86,7 @@ export const addBackInStoreSubscription = ({ productId }) => (dispatch) => {
  * @param {string} props.subscriptionCode The subscription which should be deleted
  * @returns {Function}
  */
-export const removeBackInStoreSubscription = ({ subscriptionCode }) => (dispatch) => {
+export const removeBackInStockSubscription = ({ subscriptionCode }) => (dispatch) => {
   dispatch({ type: REMOVE_BACK_IN_STOCK_SUBSCRIPTION });
   const request = new PipelineRequest(SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTION)
     .setInput({

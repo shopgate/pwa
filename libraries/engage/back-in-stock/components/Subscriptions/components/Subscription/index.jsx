@@ -97,7 +97,7 @@ const Subscription = ({
 }) => {
   const { subscriptionCode, product } = subscription;
   const {
-    removeBackInStoreSubscription,
+    removeBackInStockSubscription,
   } = useBackInStockSubscriptionsContext();
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const currency = product.price?.currency || 'EUR';
@@ -135,7 +135,7 @@ const Subscription = ({
           <div className={styles.removeContainer}>
             <button
               className={styles.root}
-              onClick={() => removeBackInStoreSubscription({ subscriptionCode })}
+              onClick={() => removeBackInStockSubscription({ subscriptionCode })}
               type="button"
               aria-label={i18n.text('favorites.remove')}
             >

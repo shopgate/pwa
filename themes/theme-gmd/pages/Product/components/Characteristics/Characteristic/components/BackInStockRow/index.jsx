@@ -18,7 +18,7 @@ import connect from './connector';
  */
 const BackInStockRow = ({
   availability,
-  addBackInStoreSubscription,
+  addBackInStockSubscription,
   productVariants,
   characteristics,
   isBackinStockEnabled,
@@ -42,7 +42,7 @@ const BackInStockRow = ({
         onClick={async () => {
           const allowed = await grantPushPermissions();
           if (allowed) {
-            addBackInStoreSubscription({ productCode: foundVariant.id });
+            addBackInStockSubscription({ productCode: foundVariant.id });
           }
         }}
       />
@@ -50,7 +50,7 @@ const BackInStockRow = ({
 };
 
 BackInStockRow.propTypes = {
-  addBackInStoreSubscription: PropTypes.func.isRequired,
+  addBackInStockSubscription: PropTypes.func.isRequired,
   grantPushPermissions: PropTypes.func.isRequired,
   isBackinStockEnabled: PropTypes.bool.isRequired,
   availability: PropTypes.shape(),

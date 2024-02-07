@@ -3,14 +3,14 @@ import {
   addBackInStockReminderSuccess$,
   backInStockReminderNeedsFetch$,
 } from '../streams';
-import { fetchBackInStoreSubscriptions } from '../actions';
+import { fetchBackInStockSubscriptions } from '../actions';
 
 /**
  * @param {Function} subscribe The subscribe function.
  */
 export default function backInStock(subscribe) {
   subscribe(backInStockReminderNeedsFetch$, ({ dispatch }) => {
-    dispatch(fetchBackInStoreSubscriptions());
+    dispatch(fetchBackInStockSubscriptions());
   });
 
   subscribe(addBackInStockReminderSuccess$, ({ dispatch }) => {

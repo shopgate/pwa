@@ -17,7 +17,7 @@ import connect from './connector';
  * @param {string} props.productId The product id
  * @param {string} props.productType The product type
  * @param {Object} props.stock The product stock info
- * @param {Function} props.addBackInStoreSubscription Add product to back in stock list
+ * @param {Function} props.addBackInStockSubscription Add product to back in stock list
  * @param {Function} props.grantPushPermissions Request / Set push permission
  * @param {Object} props.subscription The subscription
  * @return {JSX}
@@ -26,7 +26,7 @@ const BackInStock = ({
   productType,
   stock,
   productId,
-  addBackInStoreSubscription,
+  addBackInStockSubscription,
   isBackinStockEnabled,
   grantPushPermissions,
   subscription,
@@ -47,7 +47,7 @@ const BackInStock = ({
             onClick={async () => {
               const allowed = await grantPushPermissions();
               if (allowed) {
-                addBackInStoreSubscription({ productCode: productId });
+                addBackInStockSubscription({ productCode: productId });
               }
             }}
           />}
@@ -58,7 +58,7 @@ const BackInStock = ({
 };
 
 BackInStock.propTypes = {
-  addBackInStoreSubscription: PropTypes.func.isRequired,
+  addBackInStockSubscription: PropTypes.func.isRequired,
   grantPushPermissions: PropTypes.func.isRequired,
   isBackinStockEnabled: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,

@@ -7,7 +7,7 @@ import {
   getProductVariants,
   getVariantAvailabilityByCharacteristics,
 } from '@shopgate/pwa-common-commerce/product';
-import { addBackInStoreSubscription } from '@shopgate/engage/back-in-stock/actions';
+import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 
 /**
  * @return {Object} The extended component props.
@@ -20,7 +20,7 @@ const makeMapStateToProps = () => (state, props) => ({
 });
 
 const mapDispatchToProps = {
-  addBackInStoreSubscription,
+  addBackInStockSubscription,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

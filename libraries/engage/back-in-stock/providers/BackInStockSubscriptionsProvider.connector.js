@@ -5,8 +5,8 @@ import {
   getBackInStockSubscriptionsInitial,
 } from '@shopgate/engage/back-in-stock/selectors/backInStock';
 import {
-  addBackInStoreSubscription,
-  removeBackInStoreSubscription,
+  addBackInStockSubscription,
+  removeBackInStockSubscription,
 } from '@shopgate/engage/back-in-stock/actions';
 
 /**
@@ -26,8 +26,8 @@ function makeMapStateToProps() {
 }
 
 const mapDispatchToProps = {
-  addBackInStoreSubscription,
-  removeBackInStoreSubscription,
+  addBackInStockSubscription,
+  removeBackInStockSubscription,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

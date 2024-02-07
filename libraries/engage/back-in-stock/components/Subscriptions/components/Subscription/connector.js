@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addBackInStoreSubscription } from '@shopgate/engage/back-in-stock/actions';
+import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 import { getSubscriptionByVariant } from '@shopgate/engage/back-in-stock/selectors/backInStock';
 
 /**
@@ -10,7 +10,7 @@ const makeMapStateToProps = () => (state, props) => ({
 });
 
 const mapDispatchToProps = {
-  addBackInStoreSubscription,
+  addBackInStockSubscription,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

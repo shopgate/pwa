@@ -7,7 +7,7 @@ import {
   getProductAvailability,
   getProductType,
 } from '@shopgate/pwa-common-commerce/product';
-import { addBackInStoreSubscription } from '@shopgate/engage/back-in-stock/actions';
+import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermissions';
 
 /**
@@ -21,7 +21,7 @@ const makeMapStateToProps = () => (state, props) => ({
 });
 
 const mapDispatchToProps = {
-  addBackInStoreSubscription,
+  addBackInStockSubscription,
   grantPushPermissions,
 };
 

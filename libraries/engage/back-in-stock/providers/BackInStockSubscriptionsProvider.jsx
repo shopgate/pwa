@@ -7,13 +7,13 @@ import connect from './BackInStockSubscriptionsProvider.connector';
  * Back in Stock Provider
  * @returns {JSX}
  */
-const BackInStoreSubscriptionsProvider = ({
+const BackInStockSubscriptionsProvider = ({
   subscriptions,
   children,
-  addBackInStoreSubscription,
+  addBackInStockSubscription,
   isFetching,
   isInitial,
-  removeBackInStoreSubscription,
+  removeBackInStockSubscription,
 }) => {
   const groupedSubscriptions = useMemo(() => subscriptions.reduce((acc, subscription) => {
     const { status } = subscription;
@@ -29,15 +29,15 @@ const BackInStoreSubscriptionsProvider = ({
   const value = useMemo(() => ({
     subscriptions,
     groupedSubscriptions,
-    addBackInStoreSubscription,
-    removeBackInStoreSubscription,
+    addBackInStockSubscription,
+    removeBackInStockSubscription,
     isFetching,
     isInitial,
-  }), [addBackInStoreSubscription,
+  }), [addBackInStockSubscription,
     groupedSubscriptions,
     isFetching,
     isInitial,
-    removeBackInStoreSubscription,
+    removeBackInStockSubscription,
     subscriptions]);
 
   return (
@@ -47,18 +47,18 @@ const BackInStoreSubscriptionsProvider = ({
   );
 };
 
-BackInStoreSubscriptionsProvider.propTypes = {
-  addBackInStoreSubscription: PropTypes.func.isRequired,
-  removeBackInStoreSubscription: PropTypes.func.isRequired,
+BackInStockSubscriptionsProvider.propTypes = {
+  addBackInStockSubscription: PropTypes.func.isRequired,
+  removeBackInStockSubscription: PropTypes.func.isRequired,
   subscriptions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   children: PropTypes.node,
   isFetching: PropTypes.bool,
   isInitial: PropTypes.bool,
 };
-BackInStoreSubscriptionsProvider.defaultProps = {
+BackInStockSubscriptionsProvider.defaultProps = {
   children: null,
   isFetching: false,
   isInitial: true,
 };
 
-export default connect(BackInStoreSubscriptionsProvider);
+export default connect(BackInStockSubscriptionsProvider);
