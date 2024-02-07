@@ -14,8 +14,6 @@ import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions
 import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions';
-// Engage
-import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
@@ -45,7 +43,8 @@ import tabBar from 'Components/TabBar/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
-// App rating
+// Engage
+import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 import appRating from '@shopgate/engage/app-rating/subscriptions';
 
 const subscriptions = [
