@@ -14,7 +14,7 @@ import {
   SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTION,
   SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTION,
   SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS,
-} from '../constants/Portals';
+} from '../constants/Pipelines';
 
 /**
  * Fetch Back in Stock Subscriptions
