@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { css } from 'glamor';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import { Accordion, Card } from '@shopgate/engage/components';
@@ -30,25 +30,14 @@ const styles = {
  */
 const List = () => {
   const {
-    subscriptions,
     isInitial,
+    groupedSubscriptions,
   } = useBackInStockSubscriptionsContext();
 
-  const groupedSubscriptions = subscriptions.reduce((acc, subscription) => {
-    const { status } = subscription;
-    const groupingStatus = (status === 'inactive' || status === 'triggered') ? 'past' : status;
-    acc[groupingStatus].push(subscription);
-    return acc;
-  }, {
-    active: [],
-    past: [],
-  });
-
-  // eslint-disable-next-line require-jsdoc
-  const renderLabel = groupKey =>
+  const renderLabel = useCallback(groupKey =>
     <div className={styles.listTitle}>
       {i18n.text(`back_in_stock.list_states.${groupKey}`)}
-    </div>;
+    </div>, []);
 
   return (
     <div>

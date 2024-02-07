@@ -15,15 +15,26 @@ const BackInStoreSubscriptionsProvider = ({
   isInitial,
   removeBackInStoreSubscription,
 }) => {
+  const groupedSubscriptions = useMemo(() => subscriptions.reduce((acc, subscription) => {
+    const { status } = subscription;
+    const groupingStatus = (status === 'inactive' || status === 'triggered') ? 'past' : status;
+    acc[groupingStatus].push(subscription);
+    return acc;
+  }, {
+    active: [],
+    past: [],
+  }), [subscriptions]);
+
   // Create memoized context value.
   const value = useMemo(() => ({
     subscriptions,
+    groupedSubscriptions,
     addBackInStoreSubscription,
     removeBackInStoreSubscription,
     isFetching,
     isInitial,
-  }), [
-    addBackInStoreSubscription,
+  }), [addBackInStoreSubscription,
+    groupedSubscriptions,
     isFetching,
     isInitial,
     removeBackInStoreSubscription,
