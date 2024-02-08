@@ -5,6 +5,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { Placeholder } from '@shopgate/pwa-ui-shared';
 import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { i18n } from '@shopgate/engage/core';
 import { SheetList } from '../../../components';
 import styles from './style';
 
@@ -15,7 +16,7 @@ import styles from './style';
  * @param {Array} props.categories The number of rows to prerender.
  * @returns {JSX}
  */
-const CategoryList = ({ categories, prerender }) => {
+const CategoryList = ({ categories, prerender, showAllProducts, categoryId }) => {
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;
@@ -32,7 +33,23 @@ const CategoryList = ({ categories, prerender }) => {
   }
 
   return (
-    <SheetList className={`${styles} engage__category__category-list`}>
+    <SheetList className={`${styles.sheet} engage__category__category-list`}>
+      {showAllProducts ?
+        <div className={styles.showAllProducts}>
+          <Portal key={categoryId} name={CATEGORY_ITEM} props={{ categoryId }}>
+            <SheetList.Item
+              link={`${CATEGORY_PATH}/${bin2hex(categoryId)}/all`}
+              title={i18n.text('category.showAllProducts.title')}
+              linkState={{
+                categoryId,
+              }}
+              testId="showAllProducts"
+            />
+          </Portal>
+        </div>
+        :
+        null
+      }
       {categories.map(category => (
         <Portal key={category.id} name={CATEGORY_ITEM} props={{ categoryId: category.id }}>
           <SheetList.Item
@@ -52,12 +69,16 @@ const CategoryList = ({ categories, prerender }) => {
 
 CategoryList.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
+  categoryId: PropTypes.string,
   prerender: PropTypes.number,
+  showAllProducts: PropTypes.bool,
 };
 
 CategoryList.defaultProps = {
   categories: null,
+  categoryId: null,
   prerender: 0,
+  showAllProducts: false,
 };
 
 export default CategoryList;

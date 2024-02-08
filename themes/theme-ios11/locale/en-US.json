@@ -159,6 +159,9 @@
     "sections": {
       "categories": "Categories",
       "products": "Products"
+    },
+    "showAllProducts": {
+      "title": "Show all products"
     }
   },
   "search": {

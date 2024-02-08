@@ -1,6 +1,7 @@
 export const CATEGORY_PATH = '/category';
 export const ROOT_CATEGORY_PATTERN = CATEGORY_PATH;
 export const CATEGORY_PATTERN = `${CATEGORY_PATH}/:categoryId`;
+export const CATEGORY_ALL_PATTERN = `${CATEGORY_PATH}/:categoryId/all`;
 export const CATEGORY_FILTER_PATTERN = `${CATEGORY_PATH}/:categoryId/filter`;
 
 export const CATEGORY_LIFETIME = 3600000; // 1 hour in milliseconds

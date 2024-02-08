@@ -26,13 +26,13 @@ export const searchReceived$ = main$.filter(({ action }) => (
 ));
 
 export const searchWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN || action.route.pattern === '/category/:categoryId/all');
 
 export const searchDidEnter$ = routeDidEnter$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN || action.route.pattern === '/category/:categoryId/all');
 
 export const searchWillLeave$ = routeWillLeave$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN || action.route.pattern === '/category/:categoryId/all');
 
 export const searchWillUpdate$ = routeWillEnter$
   .filter(({ action }) =>

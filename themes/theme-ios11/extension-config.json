@@ -480,6 +480,17 @@
         "label": "Configure the display of cart information."
       }
     },
+    "categories": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "showAllProducts": true
+      },
+      "params": {
+        "type": "json",
+        "label": "Configure the display of all products of a category."
+      }
+    },
     "variantSelectionMode": {
       "type": "bigApi",
       "destination": "frontend",
