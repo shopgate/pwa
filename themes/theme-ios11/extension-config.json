@@ -567,6 +567,15 @@
         "label": "Favorites Settings"
       }
     },
+    "addNewFavoritesOnTop": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Whether to add new favorites on top of the list, instead at the bottom."
+      }
+    },
     "appRating": {
       "type": "admin",
       "destination": "frontend",

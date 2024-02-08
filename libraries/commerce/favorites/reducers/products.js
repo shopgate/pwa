@@ -1,4 +1,5 @@
 import { uniq } from 'lodash';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   REQUEST_ADD_FAVORITES,
   SUCCESS_ADD_FAVORITES,
@@ -18,6 +19,8 @@ import {
   ERROR_FAVORITES_IDS,
   FLUSH_FAVORITES,
 } from '../constants';
+
+const { addNewFavoritesOnTop = false } = appConfig;
 
 const defaultState = {
   byList: {},
@@ -143,8 +146,9 @@ const products = (state = defaultState, action) => {
           [action.listId]: {
             ...list,
             ids: uniq([
+              ...(addNewFavoritesOnTop ? [action.productId] : []),
               ...list.ids,
-              action.productId,
+              ...(addNewFavoritesOnTop ? [] : [action.productId]),
             ]),
             lastChange: Date.now(),
             syncCount: list.syncCount + 1,
@@ -213,7 +217,11 @@ const products = (state = defaultState, action) => {
           ...state.byList,
           [action.listId]: {
             ...list,
-            ids: uniq([...state.ids, action.productId]),
+            ids: uniq([
+              ...(addNewFavoritesOnTop ? [action.productId] : []),
+              ...state.ids,
+              ...(addNewFavoritesOnTop ? [] : [action.productId]),
+            ]),
             lastChange: Date.now(),
             syncCount: list.syncCount - 1,
           },
