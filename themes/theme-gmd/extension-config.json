@@ -518,6 +518,15 @@
         "label": "Favorites settings: limits, etc"
       }
     },
+    "addNewFavoritesOnTop": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Whether to add new favorites on top of the list, instead at the bottom."
+      }
+    },
     "hideProductImageShadow": {
       "type": "admin",
       "destination": "frontend",

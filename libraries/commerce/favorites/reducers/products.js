@@ -1,6 +1,7 @@
 import { produce } from 'immer';
 import isNumber from 'lodash/isNumber';
 import isString from 'lodash/isString';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   REQUEST_ADD_FAVORITES,
   SUCCESS_ADD_FAVORITES,
@@ -20,6 +21,8 @@ import {
   ERROR_UPDATE_FAVORITES,
   RECEIVE_FAVORITES_LISTS,
 } from '../constants';
+
+const { addNewFavoritesOnTop = false } = appConfig;
 
 /**
  * Favorites reducer.
@@ -98,11 +101,17 @@ const products = (state = {
           matchingItem.notes = typeof action.notes === 'string' ? action.notes : matchingItem.notes;
           matchingItem.quantity = typeof action.quantity === 'number' ? matchingItem.quantity + action.quantity : matchingItem.quantity + 1;
         } else {
-          list.items.push({
+          const newEntry = {
             notes: action.notes || '',
             quantity: action.quantity || 1,
             productId: action.productId,
-          });
+          };
+
+          if (addNewFavoritesOnTop) {
+            list.items.unshift(newEntry);
+          } else {
+            list.items.push(newEntry);
+          }
         }
         list.lastChange = Date.now();
         list.syncCount += 1;
@@ -165,11 +174,18 @@ const products = (state = {
       // Handle deletion failure by adding the product back in to the list.
       case ERROR_REMOVE_FAVORITES: {
         const list = draft.byList[action.listId];
-        list.items.push({
+        const newEntry = {
           productId: action.productId,
           quantity: action.quantity || 1,
           notes: action.notes || '',
-        });
+        };
+
+        if (addNewFavoritesOnTop) {
+          list.items.unshift(newEntry);
+        } else {
+          list.items.push(newEntry);
+        }
+
         list.lastChange = Date.now();
         list.syncCount -= 1;
         break;
