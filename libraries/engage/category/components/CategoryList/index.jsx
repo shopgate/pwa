@@ -16,7 +16,12 @@ import styles from './style';
  * @param {Array} props.categories The number of rows to prerender.
  * @returns {JSX}
  */
-const CategoryList = ({ categories, prerender, showAllProducts, categoryId }) => {
+const CategoryList = ({
+  categories,
+  prerender,
+  showAllProducts,
+  categoryId,
+}) => {
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;

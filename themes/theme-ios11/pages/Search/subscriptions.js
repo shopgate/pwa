@@ -14,7 +14,6 @@ import { searchFiltersDidUpdate$ } from './streams';
  */
 export default function search(subscribe) {
   subscribe(searchWillEnter$, ({ action, dispatch }) => {
-    console.log('-----action-----', action);
     const { filters } = action.route.state;
     let { s: searchPhrase } = action.route.query;
     const { sort } = action.route.query;
@@ -22,8 +21,6 @@ export default function search(subscribe) {
     if (action.route.pattern === '/category/:categoryId/all') {
       searchPhrase = '*';
     }
-
-    console.log('----searchPhrase-----', searchPhrase);
 
     dispatch(fetchSearchResults({
       filters,
