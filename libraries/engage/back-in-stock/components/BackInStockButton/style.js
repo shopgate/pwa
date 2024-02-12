@@ -1,5 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/engage';
 
 export default {
   button: css({

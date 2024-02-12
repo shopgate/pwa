@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BackInStockButton from '@shopgate/pwa-ui-shared/BackInStockButton';
-import { AVAILABILITY_STATE_OK } from '@shopgate/pwa-common-commerce/product';
+import { BackInStockButton } from '@shopgate/engage/back-in-stock';
+import { AVAILABILITY_STATE_OK } from '@shopgate/engage/product';
 import isEqual from 'lodash/isEqual';
 import connect from './connector';
 

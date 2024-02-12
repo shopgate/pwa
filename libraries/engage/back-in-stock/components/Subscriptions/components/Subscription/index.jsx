@@ -13,7 +13,7 @@ import { themeConfig } from '@shopgate/engage';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
-import BackInStockButton from '@shopgate/pwa-ui-shared/BackInStockButton';
+import { BackInStockButton } from '@shopgate/engage/back-in-stock/';
 import {
   getThemeSettings, i18n,
 } from '@shopgate/engage/core';

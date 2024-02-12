@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
-import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
+// import { getProductVariants } from '@shopgate/engage/product';
 import isEqual from 'lodash/isEqual';
+
+import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
 
 /**
  * @param {Object} state The application state.
