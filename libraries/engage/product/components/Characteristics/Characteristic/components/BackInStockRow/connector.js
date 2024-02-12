@@ -17,7 +17,7 @@ const makeMapStateToProps = () => (state, props) => ({
   availability: getVariantAvailabilityByCharacteristics(state, props),
   subscription: getSubscriptionByCharacteristics(state, props),
   productVariants: getProductVariants(state, props),
-  isBackinStockEnabled: getIsBackInStockEnabled(state, props),
+  isBackInStockEnabled: getIsBackInStockEnabled(state, props),
 });
 
 const mapDispatchToProps = {

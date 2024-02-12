@@ -116,7 +116,7 @@ const Pages = ({ store }) => (
                   <Route
                     pattern={BACK_IN_STOCK_PATTERN}
                     component={routes.BackInStock}
-                    transform={routesTransforms[BACK_IN_STOCK_PATTERN]}
+                    transform={BACK_IN_STOCK_PATTERN}
                   />
                   <Route
                     pattern={SEARCH_FILTER_PATTERN}

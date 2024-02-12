@@ -11,7 +11,7 @@ import BackInStockButton from './components/BackInStockButton';
 import connect from './connector';
 
 /**
- * @param {boolean} isBackinStockEnabled Whether the back in stock feature is enabled
+ * @param {boolean} isBackInStockEnabled Whether the back in stock feature is enabled
  * @return {JSX}
  */
 const MainSection = ({ isBackInStockEnabled }) => (
