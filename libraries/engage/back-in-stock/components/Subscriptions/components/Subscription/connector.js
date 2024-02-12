@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
-import { getSubscriptionByVariant } from '@shopgate/engage/back-in-stock/selectors/backInStock';
+import { getSubscriptionByVariant } from '@shopgate/engage/back-in-stock';
 
 /**
  * @return {Object} The extended component props.

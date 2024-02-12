@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   getIsBackInStockEnabled,
   getSubscriptionByVariant,
-} from '@shopgate/engage/back-in-stock/selectors/backInStock';
+} from '@shopgate/engage/back-in-stock';
 import {
   getProductAvailability,
   getProductType,

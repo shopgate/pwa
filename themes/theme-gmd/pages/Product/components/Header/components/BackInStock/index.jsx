@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
+import { AVAILABILITY_STATE_OK } from '@shopgate/engage/product';
 import BackInStockButton from '@shopgate/pwa-ui-shared/BackInStockButton';
-import { AVAILABILITY_STATE_OK } from '@shopgate/pwa-common-commerce/product';
 import {
   PRODUCT_BACK_IN_STOCK,
   PRODUCT_BACK_IN_STOCK_AFTER,

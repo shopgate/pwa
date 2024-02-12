@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getHasBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/selectors/backInStock';
+import { getHasBackInStockSubscriptions } from '@shopgate/engage/back-in-stock';
 
 /**
  * Maps the contents of the state to the component props.

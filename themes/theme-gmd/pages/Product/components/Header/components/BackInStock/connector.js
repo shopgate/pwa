@@ -2,13 +2,14 @@ import { connect } from 'react-redux';
 import {
   getIsBackInStockEnabled,
   getSubscriptionByVariant,
-} from '@shopgate/engage/back-in-stock/selectors/backInStock';
+  addBackInStockSubscription,
+} from '@shopgate/engage/back-in-stock';
 import {
   getProductAvailability,
   getProductType,
-} from '@shopgate/pwa-common-commerce/product';
-import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
-import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermissions';
+} from '@shopgate/engage/product';
+
+import { grantPushPermissions } from '@shopgate/engage/core';
 /**
  * @return {Object} The extended component props.
  */
