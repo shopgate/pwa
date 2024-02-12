@@ -110,7 +110,7 @@ describe('Push OptIn Subscriptions', () => {
     jest.clearAllMocks();
 
     const store = createMockStore(
-      combineReducers({ push: pushReducers }),
+      combineReducers({ pushOptIn: pushReducers }),
       subscriptions
     );
 
