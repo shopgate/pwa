@@ -48,7 +48,7 @@ const BackInStockButtonPortal = ({
             onClick={async () => {
               const allowed = await grantPushPermissions();
               if (allowed) {
-                addBackInStockSubscription({ productCode: productId });
+                addBackInStockSubscription({ productId });
               }
             }}
           />}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { BackInStockButton } from '@shopgate/engage/back-in-stock';
 import { AVAILABILITY_STATE_OK } from '@shopgate/engage/product';
 import isEqual from 'lodash/isEqual';
+import { withCurrentProduct } from '@shopgate/engage/core';
 import connect from './connector';
 
 /**
@@ -43,7 +44,7 @@ const CharacteristicsButton = ({
           e.stopPropagation();
           const allowed = await grantPushPermissions();
           if (allowed) {
-            addBackInStockSubscription({ productCode: foundVariant.id });
+            addBackInStockSubscription({ productId: foundVariant.id });
           }
         }}
       />
@@ -67,4 +68,4 @@ CharacteristicsButton.defaultProps = {
   subscription: null,
 };
 
-export default connect(CharacteristicsButton);
+export default withCurrentProduct(connect(CharacteristicsButton));

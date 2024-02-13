@@ -103,7 +103,6 @@ class CharacteristicSheet extends PureComponent {
               rightComponent={() => this.renderAvailability(item.id)}
               selected={item.id === selectedValue}
               ref={index === selectedIndex ? this.firstSelectableItemRef : null}
-              productId={this.props.productId}
               characteristics={{
                 ...this.props.selection,
                 [this.props.charId]: item.id,

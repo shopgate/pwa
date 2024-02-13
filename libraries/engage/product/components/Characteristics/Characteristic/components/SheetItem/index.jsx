@@ -70,7 +70,6 @@ class SheetItem extends PureComponent {
       item,
       rightComponent: Right,
       selected,
-      productId,
       characteristics,
     } = this.props;
 
@@ -80,7 +79,7 @@ class SheetItem extends PureComponent {
         <button {...buildProps} data-test-id={item.label} aria-selected={selected} role="option" type="button">
           {item.label}
           {item.selectable && <Right />}
-          <CharacteristicsButton productId={productId} characteristics={characteristics} />
+          <CharacteristicsButton characteristics={characteristics} />
         </button>
 
       </div>

@@ -15,6 +15,7 @@ export default {
     marginTop: '4px',
     display: 'inline',
     alignItems: 'center',
+    textAlign: 'end',
   }).toString(),
   backInStockMessage: css({
     marginLeft: '4px',
@@ -29,5 +30,4 @@ export default {
     verticalAlign: 'middle',
     display: 'inline',
   }).toString(),
-
 };
