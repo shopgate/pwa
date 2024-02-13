@@ -18,12 +18,14 @@ class FilterChips extends Component {
     updateFilters: PropTypes.func.isRequired,
     currentPathname: PropTypes.string,
     filters: PropTypes.shape(),
+    pattern: PropTypes.string,
     scrollTop: PropTypes.func,
   };
 
   static defaultProps = {
     currentPathname: '',
     filters: null,
+    pattern: '',
     scrollTop: () => { },
   };
 
@@ -69,7 +71,12 @@ class FilterChips extends Component {
    * @returns {JSX}
    */
   render() {
-    const { currentPathname, filters, openFilters } = this.props;
+    const {
+      currentPathname,
+      filters,
+      openFilters,
+      pattern,
+    } = this.props;
 
     if (filters === null || !Object.keys(filters).length) {
       return null;
@@ -120,18 +127,35 @@ class FilterChips extends Component {
             const removeLabel = i18n.text('filter.remove', { filter: filterFormatted });
             const editLabel = i18n.text('filter.edit', { filter: filterFormatted });
 
-            chips.push((
-              <Chip
-                id={value.id}
-                key={`filter-${value.id}`}
-                onRemove={() => this.handleRemove(filter.id, value.id)}
-                onClick={openFilters}
-                removeLabel={removeLabel}
-                editLabel={editLabel}
-              >
-                {filterFormatted}
-              </Chip>
-            ));
+            if (pattern === '/category/:categoryId/all') {
+              if (key !== 'categories') {
+                chips.push((
+                  <Chip
+                    id={value.id}
+                    key={`filter-${value.id}`}
+                    onRemove={() => this.handleRemove(filter.id, value.id)}
+                    onClick={openFilters}
+                    removeLabel={removeLabel}
+                    editLabel={editLabel}
+                  >
+                    {filterFormatted}
+                  </Chip>
+                ));
+              }
+            } else {
+              chips.push((
+                <Chip
+                  id={value.id}
+                  key={`filter-${value.id}`}
+                  onRemove={() => this.handleRemove(filter.id, value.id)}
+                  onClick={openFilters}
+                  removeLabel={removeLabel}
+                  editLabel={editLabel}
+                >
+                  {filterFormatted}
+                </Chip>
+              ));
+            }
           });
 
           break;
@@ -144,6 +168,7 @@ class FilterChips extends Component {
           moreLabel="filter.more"
           handleMoreButton={openFilters}
           pathname={currentPathname}
+          hideChipsLayout={pattern === '/category/:categoryId/all' && Object.keys(chips).length === 0}
         >
           {chips}
         </ChipLayout>

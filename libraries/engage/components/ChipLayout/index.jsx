@@ -27,6 +27,7 @@ class ChipLayout extends Component {
   static propTypes = {
     children: PropTypes.node,
     handleMoreButton: PropTypes.func,
+    hideChipsLayout: PropTypes.bool,
     invertMoreButton: PropTypes.bool,
     maxRows: PropTypes.number,
     moreLabel: PropTypes.string,
@@ -38,6 +39,7 @@ class ChipLayout extends Component {
   static defaultProps = {
     children: null,
     handleMoreButton: () => { },
+    hideChipsLayout: false,
     invertMoreButton: false,
     maxRows: 2,
     moreLabel: 'more',
@@ -160,6 +162,9 @@ class ChipLayout extends Component {
    * @returns {JSX}
    */
   render() {
+    if (this.props.hideChipsLayout) {
+      return null;
+    }
     return (
       <div
         ref={(element) => { this.containerRef = element; }}

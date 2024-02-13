@@ -19,6 +19,11 @@ class SearchContent extends Component {
     searchPhrase: PropTypes.string.isRequired,
     showFilterBar: PropTypes.bool.isRequired,
     showNoResults: PropTypes.bool.isRequired,
+    pattern: PropTypes.string,
+  }
+
+  static defaultProps = {
+    pattern: null,
   }
 
   /**
@@ -38,16 +43,16 @@ class SearchContent extends Component {
    */
   render() {
     const {
-      searchPhrase, showFilterBar, showNoResults,
+      searchPhrase, showFilterBar, showNoResults, pattern,
     } = this.props;
 
     return (
       <RouteContext.Consumer>
         {({ state, query, id: routeId }) => (
           <Fragment>
-            <BackBar title={searchPhrase} shadow={!showFilterBar} />
+            <BackBar title={pattern === '/category/:categoryId/all' ? state.categoryName : searchPhrase} shadow={!showFilterBar} />
 
-            {showFilterBar && <Bar key="below" /> }
+            {showFilterBar && <Bar pattern={pattern} key="below" /> }
             <SurroundPortals portalName={VIEW_CONTENT}>
               <Products
                 searchPhrase={searchPhrase}

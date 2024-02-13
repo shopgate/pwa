@@ -18,6 +18,7 @@ import styles from './style';
  */
 const CategoryList = ({
   categories,
+  currentCategory,
   prerender,
   showAllProducts,
   categoryId,
@@ -37,6 +38,19 @@ const CategoryList = ({
     );
   }
 
+  const filters = {
+    categories: {
+      id: 'categories',
+      label: 'Kategorie',
+      source: 'categories',
+      type: 'multiselect',
+      value: [{
+        id: currentCategory ? currentCategory.path : null,
+        label: currentCategory ? currentCategory.name : null,
+      }],
+    },
+  };
+
   return (
     <SheetList className={`${styles.sheet} engage__category__category-list`}>
       {showAllProducts ?
@@ -46,7 +60,9 @@ const CategoryList = ({
               link={`${CATEGORY_PATH}/${bin2hex(categoryId)}/all`}
               title={i18n.text('category.showAllProducts.title')}
               linkState={{
+                categoryName: currentCategory.name,
                 categoryId,
+                filters,
               }}
               testId="showAllProducts"
             />
@@ -75,6 +91,7 @@ const CategoryList = ({
 CategoryList.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
   categoryId: PropTypes.string,
+  currentCategory: PropTypes.shape(),
   prerender: PropTypes.number,
   showAllProducts: PropTypes.bool,
 };
@@ -82,6 +99,7 @@ CategoryList.propTypes = {
 CategoryList.defaultProps = {
   categories: null,
   categoryId: null,
+  currentCategory: null,
   prerender: 0,
   showAllProducts: false,
 };

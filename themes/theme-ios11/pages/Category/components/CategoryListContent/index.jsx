@@ -20,12 +20,14 @@ class CategoryListContent extends PureComponent {
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.shape()),
+    category: PropTypes.shape(),
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
   };
 
   static defaultProps = {
     categories: null,
+    category: null,
     childrenCount: 6,
     hasChildren: false,
   }
@@ -35,7 +37,7 @@ class CategoryListContent extends PureComponent {
    */
   render() {
     const {
-      hasChildren, categories, categoryId, childrenCount,
+      hasChildren, category, categories, categoryId, childrenCount,
     } = this.props;
 
     return (
@@ -49,6 +51,7 @@ class CategoryListContent extends PureComponent {
                 prerender={childrenCount}
                 showAllProducts={showAllProducts}
                 categoryId={categoryId}
+                currentCategory={category}
               />
             </Section>
           )}
