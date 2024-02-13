@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core';
+import { CharacteristicsButton } from '@shopgate/engage/back-in-stock';
 import styles from './style';
-import BackInStockRow from '../BackInStockRow';
 
 /**
  * The SheetItem component.
@@ -80,7 +80,7 @@ class SheetItem extends PureComponent {
         <button {...buildProps} data-test-id={item.label} aria-selected={selected} role="option" type="button">
           {item.label}
           {item.selectable && <Right />}
-          <BackInStockRow productId={productId} characteristics={characteristics} />
+          <CharacteristicsButton productId={productId} characteristics={characteristics} />
         </button>
 
       </div>

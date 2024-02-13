@@ -6,7 +6,7 @@ import isEqual from 'lodash/isEqual';
 import connect from './connector';
 
 /**
- * The BackInStockRow component.
+ * The CharacteristicsButton component.
  * @param {Object} props The component props.
  * @param {boolean} props.isBackInStockEnabled Whether the back in stock feature is enabled
  * @param {Array} props.productVariants The product variants
@@ -16,7 +16,7 @@ import connect from './connector';
  * @param {Function} props.grantPushPermissions Request / Set push permission
  * @return {JSX}
  */
-const BackInStockRow = ({
+const CharacteristicsButton = ({
   availability,
   addBackInStockSubscription,
   productVariants,
@@ -50,7 +50,7 @@ const BackInStockRow = ({
     </div>);
 };
 
-BackInStockRow.propTypes = {
+CharacteristicsButton.propTypes = {
   addBackInStockSubscription: PropTypes.func.isRequired,
   grantPushPermissions: PropTypes.func.isRequired,
   isBackInStockEnabled: PropTypes.bool.isRequired,
@@ -60,11 +60,11 @@ BackInStockRow.propTypes = {
   subscription: PropTypes.shape(),
 };
 
-BackInStockRow.defaultProps = {
+CharacteristicsButton.defaultProps = {
   availability: null,
   productVariants: {},
   characteristics: {},
   subscription: null,
 };
 
-export default connect(BackInStockRow);
+export default connect(CharacteristicsButton);
