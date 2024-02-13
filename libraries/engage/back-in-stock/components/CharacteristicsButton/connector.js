@@ -4,21 +4,30 @@ import {
   getSubscriptionByCharacteristics,
 } from '@shopgate/engage/back-in-stock';
 import {
-  getProductVariants,
   getVariantAvailabilityByCharacteristics,
 } from '@shopgate/pwa-common-commerce/product';
 import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermissions';
+import {
+  makeGetProductByCharacteristics,
+} from '@shopgate/engage/product';
 
 /**
  * @return {Object} The extended component props.
  */
-const makeMapStateToProps = () => (state, props) => ({
-  availability: getVariantAvailabilityByCharacteristics(state, props),
-  subscription: getSubscriptionByCharacteristics(state, props),
-  productVariants: getProductVariants(state, props),
-  isBackInStockEnabled: getIsBackInStockEnabled(state, props),
-});
+const makeMapStateToProps = () => {
+  const getProductByCharacteristics = makeGetProductByCharacteristics();
+
+  return (state, props) => {
+    const variant = getProductByCharacteristics(state, props) || {};
+    return ({
+      variant,
+      availability: getVariantAvailabilityByCharacteristics(state, props),
+      subscription: getSubscriptionByCharacteristics(state, props),
+      isBackInStockEnabled: getIsBackInStockEnabled(state, props),
+    });
+  };
+};
 
 const mapDispatchToProps = {
   addBackInStockSubscription,
