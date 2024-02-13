@@ -26,7 +26,7 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductInfo = ({ productId, options, variantId }) => (
+const ProductInfo = ({ productId, options }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
@@ -60,7 +60,7 @@ const ProductInfo = ({ productId, options, variantId }) => (
               <StockInfo productId={productId} />
             </div>
             <div className={styles.productInfo}>
-              <BackInStockButtonPortal productId={productId} variantId={variantId} />
+              <BackInStockButtonPortal />
             </div>
           </Portal>
         </Grid.Item>
@@ -90,7 +90,6 @@ const ProductInfo = ({ productId, options, variantId }) => (
 ProductInfo.propTypes = {
   options: PropTypes.shape().isRequired,
   productId: PropTypes.string.isRequired,
-  variantId: PropTypes.string.isRequired,
 };
 
 export default memo(ProductInfo);

@@ -8,6 +8,7 @@ import {
   PRODUCT_BACK_IN_STOCK_AFTER,
   PRODUCT_BACK_IN_STOCK_BEFORE,
 } from '@shopgate/engage/back-in-stock/constants/Portals';
+import { withCurrentProduct } from '@shopgate/engage/core';
 import connect from './connector';
 
 /**
@@ -73,4 +74,4 @@ BackInStockButtonPortal.defaultProps = {
   stock: null,
 };
 
-export default connect(BackInStockButtonPortal);
+export default withCurrentProduct(connect(BackInStockButtonPortal));

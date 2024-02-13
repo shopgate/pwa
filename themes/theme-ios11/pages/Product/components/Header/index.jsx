@@ -29,7 +29,7 @@ class ProductHeader extends PureComponent {
         <Section title="product.sections.information">
           <Rating productId={productId} />
           <Name productId={id} />
-          <ProductInfo productId={id} options={options} variantId={variantId} />
+          <ProductInfo productId={id} options={options} />
         </Section>
       </div>
     );
