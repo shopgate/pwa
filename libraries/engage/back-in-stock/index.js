@@ -11,4 +11,4 @@ export { default as CharacteristicsButton } from './components/CharacteristicsBu
 export * from './streams';
 
 // SELECTORS
-export * from './selectors/backInStock';
+export * from './selectors';

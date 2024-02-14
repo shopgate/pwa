@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import NotificationIcon from '@shopgate/pwa-ui-shared/icons/NotificationIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { NavDrawer, NotificationIcon, Portal } from '@shopgate/engage/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
 import {
   NAV_MENU_BACK_IN_STOCK,

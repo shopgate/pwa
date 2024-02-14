@@ -5,7 +5,6 @@ export default {
   button: css({
     marginTop: '4px',
     color: themeConfig.colors.primary,
-    textDecoration: 'underline',
   }).toString(),
   buttonContent: css({
     display: 'flex',
@@ -20,11 +19,9 @@ export default {
   backInStockMessage: css({
     marginLeft: '4px',
     verticalAlign: 'middle',
-    textDecoration: 'underline',
   }).toString(),
   buttonText: css({
     marginLeft: '4px',
-    textDecoration: 'underline',
   }).toString(),
   icon: css({
     verticalAlign: 'middle',

@@ -75,14 +75,11 @@ class SheetItem extends PureComponent {
 
     const buildProps = this.buildProps();
     return (
-      <div>
-        <button {...buildProps} data-test-id={item.label} aria-selected={selected} role="option" type="button">
-          {item.label}
-          {item.selectable && <Right />}
-          <CharacteristicsButton characteristics={characteristics} />
-        </button>
-
-      </div>
+      <button {...buildProps} data-test-id={item.label} aria-selected={selected} role="option" type="button">
+        {item.label}
+        {item.selectable && <Right />}
+        <CharacteristicsButton characteristics={characteristics} />
+      </button>
     );
   }
 }

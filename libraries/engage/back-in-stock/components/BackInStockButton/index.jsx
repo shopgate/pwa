@@ -1,9 +1,11 @@
 import React from 'react';
-import NotificationIcon from '@shopgate/pwa-ui-shared/icons/NotificationIcon';
-import CheckedIcon from '@shopgate/pwa-ui-shared/icons/CheckedIcon';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import Link from '@shopgate/pwa-common/components/Link';
+import { themeConfig } from '@shopgate/engage';
+import {
+  Link,
+  CheckedIcon,
+  NotificationIcon,
+} from '@shopgate/engage/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
