@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
-import { getSubscriptionByVariant } from '@shopgate/engage/back-in-stock';
+import { makeGetSubscriptionByProduct } from '@shopgate/engage/back-in-stock';
 
 /**
  * @return {Object} The extended component props.
  */
-const makeMapStateToProps = () => (state, props) => ({
-  subscription: getSubscriptionByVariant(state, props),
-});
+const makeMapStateToProps = () => {
+  const getSubscriptionByProduct = makeGetSubscriptionByProduct();
+  return (state, props) => ({
+    subscription: getSubscriptionByProduct(state, props),
+  });
+};
 
 const mapDispatchToProps = {
   addBackInStockSubscription,

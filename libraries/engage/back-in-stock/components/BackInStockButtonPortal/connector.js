@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getIsBackInStockEnabled,
-  getSubscriptionByVariant,
+  makeGetSubscriptionByProduct,
 } from '@shopgate/engage/back-in-stock';
 import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 import {
@@ -15,8 +15,9 @@ import { grantPushPermissions } from '@shopgate/engage/core';
  */
 const makeMapStateToProps = () => {
   const getProductType = makeGetProductType();
+  const getSubscriptionByProduct = makeGetSubscriptionByProduct();
   return (state, props) => ({
-    subscription: getSubscriptionByVariant(state, props),
+    subscription: getSubscriptionByProduct(state, props),
     productType: getProductType(state, props),
     stock: getProductAvailability(state, props),
     isBackInStockEnabled: getIsBackInStockEnabled(state, props),

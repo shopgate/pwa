@@ -27,16 +27,16 @@ export const getBackInStockSubscriptionsInitial = state => state.backInStock.isI
  * a product / variant or null by its variantId / productId
  * @returns {Function}
  */
-export const getSubscriptionByVariant = createSelector(
+export const makeGetSubscriptionByProduct = () => createSelector(
   (state, props = {}) => (props.variantId ? props.variantId : props.productId),
   getBackInStockSubscriptions,
-  (variantId, subscriptions) => {
-    if (!variantId) {
+  (requestedProductCode, subscriptions) => {
+    if (!requestedProductCode) {
       return false;
     }
 
     return subscriptions.find(({ productCode }) =>
-      productCode === variantId) || null;
+      productCode === requestedProductCode) || null;
   }
 );
 
