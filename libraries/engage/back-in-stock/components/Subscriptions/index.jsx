@@ -1,5 +1,5 @@
 import React from 'react';
-import BackInStockSubscriptionsProvider from '@shopgate/engage/back-in-stock/providers/BackInStockSubscriptionsProvider';
+import { BackInStockSubscriptionsProvider } from '@shopgate/engage/back-in-stock';
 import List from './components/List';
 
 /**

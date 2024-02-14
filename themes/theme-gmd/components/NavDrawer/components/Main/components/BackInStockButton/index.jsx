@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { NavDrawer, NotificationIcon, Portal } from '@shopgate/engage/components';
-import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
 import {
+  BACK_IN_STOCK_PATTERN,
   NAV_MENU_BACK_IN_STOCK,
   NAV_MENU_BACK_IN_STOCK_AFTER,
   NAV_MENU_BACK_IN_STOCK_BEFORE,
-} from '@shopgate/engage/back-in-stock/constants/Portals';
+} from '@shopgate/engage/back-in-stock';
 import navDrawerConnect from '../../../../connector';
 import portalProps from '../../../../portalProps';
 import Badge from './components/Badge';
