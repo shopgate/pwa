@@ -1,5 +1,5 @@
 {
-  "version": "6.20.1",
+  "version": "6.21.0",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -596,6 +596,21 @@
       "params": {
         "type": "json",
         "label": "App rating settings"
+      }
+    },
+    "reviewsInfo": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": {
+        "text": null,
+        "linkText": null,
+        "linkUrl": null
+      },
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_reviews_info_config?parsed=true",
+        "key": "value"
       }
     }
   }

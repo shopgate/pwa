@@ -14,6 +14,7 @@ import {
   makeGetFavoritesIdsByList,
   getHasMultipleFavoritesListsSupport,
 } from '@shopgate/engage/favorites';
+import { ProductListTypeProvider } from '@shopgate/engage/product';
 import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import Item from '../Item';
 import { ProductProvider } from '../../../product';
@@ -120,31 +121,32 @@ const FavoritesListContent = ({
     {productIds.length === 0 ? (
       <span>{i18n.text('favorites.empty')}</span>
     ) : null}
-
-    {productIds.map(({ productId }) => (
-      <ProductProvider productId={productId} key={productId}>
-        {({ product }) => (
-          product ? (
-            <Item
-              key={product.id}
-              product={product}
-              listId={id}
-              productId={product.id}
-              addToCart={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                return addToCart(product);
-              }}
-              remove={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                removeItem(product.id);
-              }}
-            />
-          ) : null)
+    <ProductListTypeProvider type="favoritesList">
+      {productIds.map(({ productId }) => (
+        <ProductProvider productId={productId} key={productId}>
+          {({ product }) => (
+            product ? (
+              <Item
+                key={product.id}
+                product={product}
+                listId={id}
+                productId={product.id}
+                addToCart={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return addToCart(product);
+                }}
+                remove={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  removeItem(product.id);
+                }}
+              />
+            ) : null)
         }
-      </ProductProvider>
-    ))}
+        </ProductProvider>
+      ))}
+    </ProductListTypeProvider>
 
     {shouldShowLoadMoreButton &&
       <RippleButton

@@ -7,6 +7,7 @@ import {
   PRODUCT_ITEM_AFTER,
   PRODUCT_ITEM_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { ProductListEntryProvider } from '@shopgate/engage/product';
 import Item from '../Item';
 
 /**
@@ -20,11 +21,13 @@ const Iterator = (props) => {
 
   return (
     <Grid.Item key={id} data-test-id={props.name}>
-      <Portal name={PRODUCT_ITEM_BEFORE} props={portalProps} />
-      <Portal name={PRODUCT_ITEM} props={portalProps}>
-        <Item product={props} display={display} />
-      </Portal>
-      <Portal name={PRODUCT_ITEM_AFTER} props={portalProps} />
+      <ProductListEntryProvider productId={props.id}>
+        <Portal name={PRODUCT_ITEM_BEFORE} props={portalProps} />
+        <Portal name={PRODUCT_ITEM} props={portalProps}>
+          <Item product={props} display={display} />
+        </Portal>
+        <Portal name={PRODUCT_ITEM_AFTER} props={portalProps} />
+      </ProductListEntryProvider>
     </Grid.Item>
   );
 };

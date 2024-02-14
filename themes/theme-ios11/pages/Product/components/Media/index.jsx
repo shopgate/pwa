@@ -7,7 +7,11 @@ import {
   PORTAL_PRODUCT_MEDIA_SECTION,
   PORTAL_PRODUCT_IMAGE_SLIDER,
 } from '@shopgate/engage/components/constants';
-import { ProductContext } from '@shopgate/engage/product';
+import {
+  ProductContext,
+  ProductListTypeProvider,
+  ProductListEntryProvider,
+} from '@shopgate/engage/product';
 import ProductDiscountBadge from '@shopgate/engage/product/components/ProductDiscountBadge';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
@@ -25,44 +29,48 @@ const styles = {
 const Media = ({ 'aria-hidden': ariaHidden, className }) => (
   <ProductContext.Consumer>
     {({ productId, variantId, characteristics }) => (
-      <SurroundPortals
-        portalName={PORTAL_PRODUCT_MEDIA_SECTION}
-        portalProps={{
-          productId,
-          variantId,
-        }}
-      >
-        <div className={styles.root}>
-          <ProductDiscountBadge productId={productId} />
-
+      <ProductListTypeProvider type="pdp" subType="mediaSection">
+        <ProductListEntryProvider productId={variantId || productId}>
           <SurroundPortals
-            portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
+            portalName={PORTAL_PRODUCT_MEDIA_SECTION}
             portalProps={{
               productId,
               variantId,
             }}
           >
-            {/* MediaSlider feature is currently in BETA testing.
+            <div className={styles.root}>
+              <ProductDiscountBadge productId={productId} />
+
+              <SurroundPortals
+                portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
+                portalProps={{
+                  productId,
+                  variantId,
+                }}
+              >
+                {/* MediaSlider feature is currently in BETA testing.
               It should only be used for approved BETA Client Projects */}
-            {isBeta() ? (
-              <ProductMediaSlider
-                productId={productId}
-                variantId={variantId}
-                characteristics={characteristics}
-                aria-hidden={ariaHidden}
-                className={className}
-              />
-            ) : (
-              <ProductImageSlider
-                productId={productId}
-                variantId={variantId}
-                aria-hidden={ariaHidden}
-                className={className}
-              />
-            )}
+                {isBeta() ? (
+                  <ProductMediaSlider
+                    productId={productId}
+                    variantId={variantId}
+                    characteristics={characteristics}
+                    aria-hidden={ariaHidden}
+                    className={className}
+                  />
+                ) : (
+                  <ProductImageSlider
+                    productId={productId}
+                    variantId={variantId}
+                    aria-hidden={ariaHidden}
+                    className={className}
+                  />
+                )}
+              </SurroundPortals>
+            </div>
           </SurroundPortals>
-        </div>
-      </SurroundPortals>
+        </ProductListEntryProvider>
+      </ProductListTypeProvider>
     )}
   </ProductContext.Consumer>
 );

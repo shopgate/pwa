@@ -190,6 +190,7 @@ class ProductsWidget extends Component {
           flags={flags}
           infiniteLoad={false}
           products={productSlice}
+          scope="widgets"
         />
         {this.renderMoreButton()}
       </div>

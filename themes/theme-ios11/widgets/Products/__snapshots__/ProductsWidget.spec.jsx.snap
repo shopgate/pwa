@@ -28,6 +28,7 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
       ]
     }
     requestHash={null}
+    scope="widgets"
     totalProductCount={null}
   />
 </div>
