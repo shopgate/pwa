@@ -2,7 +2,7 @@ import React from 'react';
 import { BackInStockSubscriptionsProviderContext } from '@shopgate/engage/back-in-stock';
 
 /**
- * Injects the Back in Stock Subscription Context
+ * Gives access to the values which the context BackInStockSubscriptionsProvider provide
  * @returns {JSX}
  */
 export const useBackInStockSubscriptionsContext = () =>
