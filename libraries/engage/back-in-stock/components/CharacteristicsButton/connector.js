@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getIsBackInStockEnabled,
-  getSubscriptionByCharacteristics,
+  makeGetSubscriptionByCharacteristics,
 } from '@shopgate/engage/back-in-stock';
 import {
   getVariantAvailabilityByCharacteristics,
@@ -17,6 +17,7 @@ import {
  */
 const makeMapStateToProps = () => {
   const getProductByCharacteristics = makeGetProductByCharacteristics();
+  const getSubscriptionByCharacteristics = makeGetSubscriptionByCharacteristics();
 
   return (state, props) => {
     const variant = getProductByCharacteristics(state, props) || {};

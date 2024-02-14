@@ -45,7 +45,7 @@ export const makeGetSubscriptionByProduct = () => createSelector(
  * a product / variant by its characteristics
  * @returns {Function}
  */
-export const getSubscriptionByCharacteristics = createSelector(
+export const makeGetSubscriptionByCharacteristics = () => createSelector(
   getProductVariants,
   (state, props = {}) => props.characteristics,
   getBackInStockSubscriptions,
