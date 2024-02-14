@@ -17,7 +17,7 @@ import { BackInStockButton } from '@shopgate/engage/back-in-stock/';
 import {
   getThemeSettings, i18n,
 } from '@shopgate/engage/core';
-import { useBackInStockSubscriptionsContext } from '@shopgate/engage/back-in-stock/hooks';
+import { useBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/hooks';
 
 const { variables } = themeConfig;
 
@@ -98,7 +98,7 @@ const Subscription = ({
   const { subscriptionCode, product } = subscription;
   const {
     removeBackInStockSubscription,
-  } = useBackInStockSubscriptionsContext();
+  } = useBackInStockSubscriptions();
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;

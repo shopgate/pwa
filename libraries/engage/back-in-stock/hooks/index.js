@@ -5,5 +5,5 @@ import { BackInStockSubscriptionsProviderContext } from '@shopgate/engage/back-i
  * Gives access to the values which the context BackInStockSubscriptionsProvider provide
  * @returns {JSX}
  */
-export const useBackInStockSubscriptionsContext = () =>
+export const useBackInStockSubscriptions = () =>
   React.useContext(BackInStockSubscriptionsProviderContext);
