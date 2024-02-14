@@ -1,7 +1,8 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/constants/AppEvents';
 import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+// import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { showModal } from '@shopgate/engage/core';
 import {
   STATUS_DENIED,
   STATUS_GRANTED,
@@ -23,6 +24,12 @@ import { logger } from '@shopgate/pwa-core/helpers';
  * @param {string} options.permissionId The id of the permission to request.
  * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
+ * @param {Object} [options.requestModal={}] Options for the request permission modal.
+ * @param {string} options.requestModal.title Modal title.
+ * @param {string} options.requestModal.message Modal message.
+ * @param {string} options.requestModal.confirm Label for the confirm button.
+ * @param {string} options.requestModal.dismiss Label for the dismiss button.
+ * @param {Object} options.requestModal.params Additional parameters for i18n strings.
  * @param {Object} [options.modal={}] Options for the settings modal.
  * @param {string} options.modal.title Modal title.
  * @param {string} options.modal.message Modal message.
@@ -35,6 +42,8 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   const {
     permissionId,
     useSettingsModal = false,
+    useRequestModal = false,
+    requestModal: requestModalOptions = {},
     modal: modalOptions = {},
   } = options;
 
@@ -57,13 +66,27 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
   // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
   if (status === STATUS_NOT_DETERMINED) {
-    // Trigger the native permissions dialog.
-    [{ status }] = await requestAppPermissions([{ permissionId }]);
+    if (useRequestModal) {
+      const requestAllowed = await dispatch(showModal({
+        message: requestModalOptions.message,
+        confirm: requestModalOptions.confirm,
+        dismiss: requestModalOptions.dismiss,
+        params: requestModalOptions.params,
+      }));
 
-    // The user denied the permissions within the native dialog.
-    if ([STATUS_DENIED, STATUS_NOT_DETERMINED].includes(status)) {
-      resolve(false);
-      return;
+      if (requestAllowed === false) {
+        resolve(false);
+        return;
+      }
+
+      // Trigger the native permissions dialog.
+      [{ status }] = await requestAppPermissions([{ permissionId }]);
+
+      // The user denied the permissions within the native dialog.
+      if ([STATUS_DENIED, STATUS_NOT_DETERMINED].includes(status)) {
+        resolve(false);
+        return;
+      }
     }
   }
 
