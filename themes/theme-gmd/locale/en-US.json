@@ -232,8 +232,8 @@
     "logout_message": "You have been logged out.",
     "error": "Your username and password don't match any account"
   },
-  "navigation": {
     "login_register": "Login / Register",
+  "navigation": {
     "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
@@ -281,7 +281,7 @@
       "qrCode": "We couldn't find a result for this QR code.",
       "barCode": "Product not found."
     }
-  },
+ },
   "permissions": {
     "back_in_stock_push_notifications": {
       "message": "Please allow push notifications in the next step, so that we can send you a notification when the product is back in stock.",
