@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 // import { getProductVariants } from '@shopgate/engage/product';
 import isEqual from 'lodash/isEqual';
+import { appConfig } from '@shopgate/engage';
 
 import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
 
@@ -70,7 +71,7 @@ export const makeGetSubscriptionByCharacteristics = () => createSelector(
  * Returns if the back in stock feature is enabled
  * @returns {Function}
  */
-export const getIsBackInStockEnabled = () => true;
+export const getIsBackInStockEnabled = () => appConfig?.showBackInStock;
 
 /**
  * Returns if subscription list is in use
