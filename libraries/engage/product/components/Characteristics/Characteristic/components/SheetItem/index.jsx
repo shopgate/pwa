@@ -11,10 +11,8 @@ class SheetItem extends PureComponent {
   static propTypes = {
     characteristics: PropTypes.shape().isRequired,
     item: PropTypes.shape().isRequired,
-    productId: PropTypes.string.isRequired,
     forwardedRef: PropTypes.shape(),
     onClick: PropTypes.func,
-
     rightComponent: PropTypes.func,
     selected: PropTypes.bool,
   };
