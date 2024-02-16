@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
@@ -24,7 +25,7 @@ function FilterBar({ filters, pattern }) {
   }, [filters]);
 
   useEffect(() => {
-    if (pattern === '/category/:categoryId/all' && Object.keys(filters).length === 1) {
+    if (filters !== null && pattern === CATEGORY_ALL_PATTERN && Object.keys(filters).length === 1) {
       setActive(false);
     }
   }, [filters, pattern]);

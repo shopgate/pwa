@@ -4,6 +4,7 @@ import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Chip, ChipLayout } from '@shopgate/engage/components';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { i18n } from '@shopgate/engage/core';
 import connect from './connector';
 import styles from './style';
@@ -127,7 +128,7 @@ class FilterChips extends Component {
             const removeLabel = i18n.text('filter.remove', { filter: filterFormatted });
             const editLabel = i18n.text('filter.edit', { filter: filterFormatted });
 
-            if (pattern === '/category/:categoryId/all') {
+            if (pattern === CATEGORY_ALL_PATTERN) {
               if (key !== 'categories') {
                 chips.push((
                   <Chip
@@ -168,7 +169,7 @@ class FilterChips extends Component {
           moreLabel="filter.more"
           handleMoreButton={openFilters}
           pathname={currentPathname}
-          hideChipsLayout={pattern === '/category/:categoryId/all' && Object.keys(chips).length === 0}
+          hideChipsLayout={pattern === CATEGORY_ALL_PATTERN && Object.keys(chips).length === 0}
         >
           {chips}
         </ChipLayout>

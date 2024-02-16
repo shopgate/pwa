@@ -3,6 +3,7 @@ import Consume from '@shopgate/pwa-common/components/Consume';
 import { View } from '@shopgate/engage/components';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import Content from './components/Content';
 
 const { colors } = themeConfig;
@@ -10,6 +11,7 @@ const { colors } = themeConfig;
 const map = {
   searchPhrase: 'query.s',
   open: 'open',
+  pattern: 'pattern',
 };
 
 /**
@@ -20,12 +22,12 @@ class Search extends PureComponent {
    * @param {Object} props the consumed props.
    * @returns {JSX}
    */
-  consumeRenderer = ({ searchPhrase, open }) => {
+  consumeRenderer = ({ searchPhrase, open, pattern }) => {
     if (!open) {
       return null;
     }
 
-    return <Content searchPhrase={searchPhrase} />;
+    return <Content searchPhrase={pattern === CATEGORY_ALL_PATTERN ? '*' : searchPhrase} pattern={pattern} />;
   }
 
   /**

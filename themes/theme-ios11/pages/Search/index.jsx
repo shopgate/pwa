@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { View } from '@shopgate/engage/components';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import Content from './components/Content';
 
@@ -23,7 +24,7 @@ class Search extends PureComponent {
       return null;
     }
 
-    return <Content searchPhrase={pattern === '/category/:categoryId/all' ? '*' : searchPhrase} pattern={pattern} />;
+    return <Content searchPhrase={pattern === CATEGORY_ALL_PATTERN ? '*' : searchPhrase} pattern={pattern} />;
   }
 
   /**

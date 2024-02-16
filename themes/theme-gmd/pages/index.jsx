@@ -20,6 +20,7 @@ import {
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
+  CATEGORY_ALL_PATTERN,
   CATEGORY_FILTER_PATTERN,
 } from '@shopgate/pwa-common-commerce/category/constants';
 import {
@@ -82,6 +83,7 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
                   />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
+                  <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
                   <Route
                     pattern={ITEM_PATTERN}

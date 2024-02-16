@@ -6,6 +6,7 @@ import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { BackBar } from 'Components/AppBar/presets';
 import Bar from '../Bar';
 import Products from '../Products';
@@ -50,7 +51,10 @@ class SearchContent extends Component {
       <RouteContext.Consumer>
         {({ state, query, id: routeId }) => (
           <Fragment>
-            <BackBar title={pattern === '/category/:categoryId/all' ? state.categoryName : searchPhrase} shadow={!showFilterBar} />
+            <BackBar
+              title={pattern === CATEGORY_ALL_PATTERN ? state.categoryName : searchPhrase}
+              shadow={!showFilterBar}
+            />
 
             {showFilterBar && <Bar pattern={pattern} key="below" /> }
             <SurroundPortals portalName={VIEW_CONTENT}>

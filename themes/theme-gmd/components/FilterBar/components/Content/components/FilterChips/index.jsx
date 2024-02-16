@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Chip, ChipLayout } from '@shopgate/engage/components';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
 import { i18n } from '@shopgate/engage/core';
 import connect from './connector';
@@ -18,12 +19,14 @@ class FilterChips extends Component {
     updateFilters: PropTypes.func.isRequired,
     currentPathname: PropTypes.string,
     filters: PropTypes.shape(),
+    pattern: PropTypes.string,
     scrollTop: PropTypes.func,
   };
 
   static defaultProps = {
     currentPathname: '',
     filters: null,
+    pattern: '',
     scrollTop: () => { },
   };
 
@@ -69,7 +72,12 @@ class FilterChips extends Component {
    * @returns {JSX}
    */
   render() {
-    const { currentPathname, filters, openFilters } = this.props;
+    const {
+      currentPathname,
+      filters,
+      openFilters,
+      pattern,
+    } = this.props;
 
     if (filters === null || !Object.keys(filters).length) {
       return null;
@@ -120,18 +128,35 @@ class FilterChips extends Component {
             const removeLabel = i18n.text('filter.remove', { filter: filterFormatted });
             const editLabel = i18n.text('filter.edit', { filter: filterFormatted });
 
-            chips.push((
-              <Chip
-                id={value.id}
-                key={`filter-${value.id}`}
-                onRemove={() => this.handleRemove(filter.id, value.id)}
-                onClick={openFilters}
-                removeLabel={removeLabel}
-                editLabel={editLabel}
-              >
-                {filterFormatted}
-              </Chip>
-            ));
+            if (pattern === CATEGORY_ALL_PATTERN) {
+              if (key !== 'categories') {
+                chips.push((
+                  <Chip
+                    id={value.id}
+                    key={`filter-${value.id}`}
+                    onRemove={() => this.handleRemove(filter.id, value.id)}
+                    onClick={openFilters}
+                    removeLabel={removeLabel}
+                    editLabel={editLabel}
+                  >
+                    {filterFormatted}
+                  </Chip>
+                ));
+              }
+            } else {
+              chips.push((
+                <Chip
+                  id={value.id}
+                  key={`filter-${value.id}`}
+                  onRemove={() => this.handleRemove(filter.id, value.id)}
+                  onClick={openFilters}
+                  removeLabel={removeLabel}
+                  editLabel={editLabel}
+                >
+                  {filterFormatted}
+                </Chip>
+              ));
+            }
           });
 
           break;
@@ -144,6 +169,7 @@ class FilterChips extends Component {
           moreLabel="filter.more"
           handleMoreButton={openFilters}
           pathname={currentPathname}
+          hideChipsLayout={pattern === CATEGORY_ALL_PATTERN && Object.keys(chips).length === 0}
         >
           {chips}
         </ChipLayout>

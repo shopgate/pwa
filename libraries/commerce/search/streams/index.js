@@ -1,6 +1,7 @@
 import { ACTION_REPLACE } from '@virtuous/conductor';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeDidEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import {
   REQUEST_SEARCH_RESULTS,
   RECEIVE_SEARCH_RESULTS,
@@ -26,13 +27,16 @@ export const searchReceived$ = main$.filter(({ action }) => (
 ));
 
 export const searchWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN || action.route.pattern === '/category/:categoryId/all');
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN ||
+  action.route.pattern === CATEGORY_ALL_PATTERN);
 
 export const searchDidEnter$ = routeDidEnter$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN || action.route.pattern === '/category/:categoryId/all');
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN ||
+  action.route.pattern === CATEGORY_ALL_PATTERN);
 
 export const searchWillLeave$ = routeWillLeave$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN || action.route.pattern === '/category/:categoryId/all');
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN ||
+  action.route.pattern === CATEGORY_ALL_PATTERN);
 
 export const searchWillUpdate$ = routeWillEnter$
   .filter(({ action }) =>
