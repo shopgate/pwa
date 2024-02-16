@@ -25,7 +25,7 @@ const fetchSearchResults = params => (dispatch) => {
     searchPhrase,
     limit = ITEMS_PER_LOAD,
     sort = DEFAULT_SORT,
-    filters,
+    filters = null,
     params: searchParams = null,
     cachedTime = null,
     resolveCachedProducts = false,
@@ -62,7 +62,7 @@ const fetchSearchResults = params => (dispatch) => {
       // Inspect the response object to determine, if it represents a search result, or an error.
       if (response && response.products && Array.isArray(response.products)) {
         // Dispatch the receive action when the response contains valid data.s
-        dispatch(receiveSearchResults(searchPhrase, filters, offset, response));
+        dispatch(receiveSearchResults(searchPhrase, offset, response));
       } else {
         // If no valid data is delivered within the response the error action is dispatched.
         dispatch(errorSearchResults(searchPhrase, offset));
