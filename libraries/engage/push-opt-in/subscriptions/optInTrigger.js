@@ -37,11 +37,11 @@ const increaseRejectionCount$ = main$.filter(
 export default function pushOptIn(subscribe) {
   /**
    * @param {Object} subscriptionParams Params from the subscription callback
-   * @param {string} configKey The "pushOptIn" key the be used
-   * @param {Function} countIncreaseAction Action to increase the count in Redux for the configKey
+   * @param {string} configKey The "pushOptIn" key to be used
+   * @param {Function} increaseCountAction Action to increase the count in Redux for the configKey
    * @returns {void}
    */
-  const runChecks = async ({ dispatch, getState }, configKey, countIncreaseAction) => {
+  const runChecks = async ({ dispatch, getState }, configKey, increaseCountAction) => {
     const {
       pushOptIn: {
         appStarts,
@@ -57,7 +57,7 @@ export default function pushOptIn(subscribe) {
       return;
     }
 
-    dispatch(countIncreaseAction());
+    dispatch(increaseCountAction());
 
     const state = getPushOptInTriggerState(getState());
 

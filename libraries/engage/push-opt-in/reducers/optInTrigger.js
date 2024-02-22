@@ -21,7 +21,7 @@ const defaultState = {
 };
 
 /**
- * Stores all the app rating states.
+ * Stores all the states related to the pushOptInTrigger functionality.
  * @param {Object} [state] The current state.
  * @param {Object} action The action object.
  * @return {Object} The new state.
