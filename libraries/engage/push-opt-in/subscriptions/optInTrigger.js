@@ -51,6 +51,8 @@ export default function pushOptIn(subscribe) {
       },
     } = appConfig;
 
+    // TODO add check to determine if the app supports push-opt-in
+
     const [{ status: pushStatus }] = await getAppPermissions([PERMISSION_ID_PUSH]);
 
     if (pushStatus !== PERMISSION_STATUS_NOT_DETERMINED) {
