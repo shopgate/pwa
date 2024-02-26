@@ -28,7 +28,6 @@ export const fetchBackInStockSubscriptions = () => async (dispatch) => {
       await new PipelineRequest(SHOPGATE_USER_GET_BACK_IN_STOCK_SUBSCRIPTIONS)
         .setInput({
           limit: 100,
-          offset: 0,
         })
         .dispatch();
 

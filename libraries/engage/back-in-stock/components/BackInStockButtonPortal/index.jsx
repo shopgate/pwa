@@ -17,6 +17,7 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @param {boolean} props.isBackInStockEnabled Whether the back in stock feature is enabled
  * @param {string} props.productId The product id
+ * @param {string} props.variantId The variant id
  * @param {string} props.productType The product type
  * @param {Object} props.stock The product stock info
  * @param {Function} props.addBackInStockSubscription Add product to back in stock list
@@ -28,6 +29,7 @@ const BackInStockButtonPortal = ({
   productType,
   stock,
   productId,
+  variantId,
   addBackInStockSubscription,
   isBackInStockEnabled,
   grantPushPermissions,
@@ -49,7 +51,7 @@ const BackInStockButtonPortal = ({
             onClick={async () => {
               const allowed = await grantPushPermissions();
               if (allowed) {
-                addBackInStockSubscription({ productId });
+                addBackInStockSubscription({ productId: variantId ?? productId });
               }
             }}
           />}
@@ -67,11 +69,13 @@ BackInStockButtonPortal.propTypes = {
   productType: PropTypes.string,
   stock: PropTypes.shape(),
   subscription: PropTypes.shape(),
+  variantId: PropTypes.string,
 };
 
 BackInStockButtonPortal.defaultProps = {
   subscription: null,
   productType: null,
+  variantId: null,
   stock: null,
 };
 

@@ -29,30 +29,26 @@ const styles = {
   }).toString(),
   imageContainer: css({
     flex: 0.4,
-    marginRight: 18,
     maxWidth: 170,
-    minWidth: 126,
+    minWidth: 70,
   }).toString(),
   infoContainer: css({
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    gap: 8,
   }).toString(),
   infoContainerRow: css({
-    flexDirection: 'row',
     display: 'flex',
     justifyContent: 'space-between',
   }).toString(),
   baseContainerRow: css({
     flexDirection: 'column',
     display: 'flex',
+    marginTop: '8px',
   }).toString(),
   priceContainerRow: css({
     flexDirection: 'column',
     display: 'flex',
     alignItems: 'end',
+    marginTop: '8px',
   }).toString(),
   priceContainer: css({
     minWidth: 100,
@@ -65,25 +61,20 @@ const styles = {
     padding: `${variables.gap.xsmall}px 0`,
     textAlign: 'right',
   }).toString(),
-  titleWrapper: css({
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 8,
-  }).toString(),
   titleContainer: css({
-    marginRight: 10,
-    flex: 1,
   }).toString(),
   title: css({
     fontSize: 17,
-
     fontWeight: 600,
+    flexWrap: 'wrap',
+    overflowWrap: 'anywhere',
   }).toString(),
   removeContainer: css({
-    display: 'flex',
-    flexShrink: 0,
-    alignItems: 'flex-start',
-  }),
+    minWidth: '30px',
+  }).toString(),
+  availabilityText: css({
+    fontSize: '0.875rem',
+  }).toString(),
 };
 
 /**
@@ -118,8 +109,8 @@ const Subscription = ({
       </Link>
 
       <div className={styles.infoContainer}>
-        <div className={classNames(styles.infoContainerRow)}>
-          <div className={styles.titleWrapper}>
+        <div className={styles.infoContainerRow}>
+          <div>
             <Link
               href={productLink}
               tag="span"
@@ -150,6 +141,7 @@ const Subscription = ({
             text={product?.availability?.text}
             state={product?.availability?.state}
             showWhenAvailable={false}
+            className={styles.availabilityText}
           />
           <BackInStockButton
             subscription={subscription}
@@ -172,7 +164,6 @@ const Subscription = ({
             <PriceInfo text={product.price.info} className={styles.priceInfo} />
           )}
         </div>
-
       </div>
     </div>
   );
