@@ -3,7 +3,6 @@ import { themeConfig } from '@shopgate/engage';
 
 export default {
   button: css({
-    marginTop: '4px',
     color: themeConfig.colors.primary,
   }).toString(),
   buttonContent: css({
@@ -19,9 +18,11 @@ export default {
   backInStockMessage: css({
     marginLeft: '4px',
     verticalAlign: 'middle',
+    fontSize: '0.875rem',
   }).toString(),
   buttonText: css({
     marginLeft: '4px',
+    fontSize: '0.875rem',
   }).toString(),
   icon: css({
     verticalAlign: 'middle',
