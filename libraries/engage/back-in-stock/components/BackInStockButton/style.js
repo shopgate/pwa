@@ -12,7 +12,6 @@ export default {
   backInStockMessageContainer: css({
     display: 'inline',
     alignItems: 'center',
-    textAlign: 'end',
     lineHeight: '20px',
   }).toString(),
   backInStockMessage: css({

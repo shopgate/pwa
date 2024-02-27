@@ -31,6 +31,7 @@ const styles = {
     flex: 0.4,
     maxWidth: 170,
     minWidth: 70,
+    paddingRight: '8px',
   }).toString(),
   infoContainer: css({
     flex: 1,
@@ -74,6 +75,7 @@ const styles = {
   }).toString(),
   availabilityText: css({
     fontSize: '0.875rem',
+    marginBottom: '4px',
   }).toString(),
 };
 

@@ -6,7 +6,7 @@ import {
   CheckedIcon,
   NotificationIcon,
 } from '@shopgate/engage/components';
-import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 import connect from './connector';
@@ -37,7 +37,13 @@ const BackInStockButton = ({
     if (stopPropagation) {
       event.stopPropagation();
     }
-    const allowed = await grantPushPermissions();
+    const allowed = await grantPushPermissions({
+      rationaleModal: {
+        message: 'permissions.back_in_stock_push_notifications.message',
+        confirm: 'permissions.back_in_stock_push_notifications.confirm',
+        dismiss: 'permissions.back_in_stock_push_notifications.dismiss',
+      },
+    });
     if (allowed) {
       addBackInStockSubscription({ productId });
     }
