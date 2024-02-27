@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/engage';
 import {
@@ -9,6 +9,7 @@ import {
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
+import connect from './connector';
 
 const { colors } = themeConfig;
 /**
@@ -17,15 +18,31 @@ const { colors } = themeConfig;
  * @param {Object} props The component props
  * @param {boolean} props.isLinkToBackInStockEnabled Whether the link to the back in
  * stock page is active
+ * @param {boolean} props.stopPropagation Stop event propagation
+ * @param {string} props.productId The product id
  * @param {Object} props.subscription The subscription
- * @param {Function} props.onClick Action to subscribe the product
+ * @param {Function} props.addBackInStockSubscription Add product to back in stock list
+ * @param {Function} props.grantPushPermissions Request / Set push permission
  * @return {JSX}
  */
 const BackInStockButton = ({
-  onClick,
+  productId,
   isLinkToBackInStockEnabled = false,
   subscription,
+  stopPropagation = false,
+  addBackInStockSubscription,
+  grantPushPermissions,
 }) => {
+  const handleClick = useCallback(async (event) => {
+    if (stopPropagation) {
+      event.stopPropagation();
+    }
+    const allowed = await grantPushPermissions();
+    if (allowed) {
+      addBackInStockSubscription({ productId });
+    }
+  }, [addBackInStockSubscription, grantPushPermissions, productId, stopPropagation]);
+
   if (subscription?.status === 'active') {
     return (
       <Link
@@ -44,7 +61,7 @@ const BackInStockButton = ({
     <div>
       {/* eslint-disable-next-line max-len */}
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/interactive-supports-focus,jsx-a11y/click-events-have-key-events */}
-      <a role="button" onClick={onClick} className={styles.button}>
+      <a role="button" onClick={handleClick} className={styles.button}>
         <div className={styles.buttonContent}>
           <NotificationIcon color={colors.primary} />
           <span className={styles.buttonText}>{i18n.text('back_in_stock.get_notified')}</span>
@@ -54,14 +71,18 @@ const BackInStockButton = ({
 };
 
 BackInStockButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  addBackInStockSubscription: PropTypes.func.isRequired,
+  grantPushPermissions: PropTypes.func.isRequired,
+  productId: PropTypes.string.isRequired,
   isLinkToBackInStockEnabled: PropTypes.bool,
+  stopPropagation: PropTypes.bool,
   subscription: PropTypes.shape(),
 };
 
 BackInStockButton.defaultProps = {
+  stopPropagation: false,
   isLinkToBackInStockEnabled: false,
   subscription: null,
 };
 
-export default BackInStockButton;
+export default connect(BackInStockButton);

@@ -3,11 +3,9 @@ import {
   getIsBackInStockEnabled,
   makeGetSubscriptionByProduct,
 } from '@shopgate/engage/back-in-stock';
-import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 import {
   getProduct,
 } from '@shopgate/engage/product';
-import { grantPushPermissions } from '@shopgate/engage/core';
 
 /**
  * @return {Object} The extended component props.
@@ -21,9 +19,4 @@ const makeMapStateToProps = () => {
   });
 };
 
-const mapDispatchToProps = {
-  addBackInStockSubscription,
-  grantPushPermissions,
-};
-
-export default connect(makeMapStateToProps, mapDispatchToProps);
+export default connect(makeMapStateToProps);

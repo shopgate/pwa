@@ -15,17 +15,13 @@ import connect from './connector';
  * @param {string} props.productId The product id
  * @param {string} props.variantId The variant id
  * @param {Object} props.product The product
- * @param {Function} props.addBackInStockSubscription Add product to back in stock list
- * @param {Function} props.grantPushPermissions Request / Set push permission
  * @param {Object} props.subscription The subscription
  * @return {JSX}
  */
 const ProductInfoBackInStockButton = ({
   productId,
   variantId,
-  addBackInStockSubscription,
   isBackInStockEnabled,
-  grantPushPermissions,
   subscription,
   product,
 }) => {
@@ -47,12 +43,7 @@ const ProductInfoBackInStockButton = ({
           <BackInStockButton
             subscription={subscription}
             isLinkToBackInStockEnabled
-            onClick={async () => {
-              const allowed = await grantPushPermissions();
-              if (allowed) {
-                addBackInStockSubscription({ productId: variantId ?? productId });
-              }
-            }}
+            productId={variantId ?? productId}
           />}
       </SurroundPortals>
     </Fragment>
@@ -60,8 +51,6 @@ const ProductInfoBackInStockButton = ({
 };
 
 ProductInfoBackInStockButton.propTypes = {
-  addBackInStockSubscription: PropTypes.func.isRequired,
-  grantPushPermissions: PropTypes.func.isRequired,
   isBackInStockEnabled: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
   product: PropTypes.shape({

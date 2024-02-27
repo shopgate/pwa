@@ -3,8 +3,6 @@ import {
   getIsBackInStockEnabled,
   makeGetSubscriptionByCharacteristics,
 } from '@shopgate/engage/back-in-stock';
-import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
-import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermissions';
 import {
   makeGetProductByCharacteristics,
 } from '@shopgate/engage/product';
@@ -26,10 +24,4 @@ const makeMapStateToProps = () => {
   };
 };
 
-const mapDispatchToProps = {
-  addBackInStockSubscription,
-  grantPushPermissions,
-
-};
-
-export default connect(makeMapStateToProps, mapDispatchToProps);
+export default connect(makeMapStateToProps);

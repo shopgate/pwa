@@ -10,13 +10,10 @@ import connect from './connector';
  * @param {boolean} props.isBackInStockEnabled Whether the back in stock feature is enabled
  * @param {Object} props.variant The variant for this entry
  * @param {Object} props.subscription The subscription
- * @param {Function} props.grantPushPermissions Request / Set push permission
  * @return {JSX}
  */
 const CharacteristicsButton = ({
-  addBackInStockSubscription,
   isBackInStockEnabled,
-  grantPushPermissions,
   subscription,
   variant,
 }) => {
@@ -35,20 +32,13 @@ const CharacteristicsButton = ({
     >
       <BackInStockButton
         subscription={subscription}
-        onClick={async (e) => {
-          e.stopPropagation();
-          const allowed = await grantPushPermissions();
-          if (allowed) {
-            addBackInStockSubscription({ productId: variant.id });
-          }
-        }}
+        stopPropagation
+        productId={variant.id}
       />
     </div>);
 };
 
 CharacteristicsButton.propTypes = {
-  addBackInStockSubscription: PropTypes.func.isRequired,
-  grantPushPermissions: PropTypes.func.isRequired,
   isBackInStockEnabled: PropTypes.bool.isRequired,
   subscription: PropTypes.shape(),
   variant: PropTypes.shape(),
