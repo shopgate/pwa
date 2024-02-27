@@ -5,15 +5,15 @@ import {
   Ripple,
   PriceInfo,
   CrossIcon,
+  PriceStriked,
+  Price,
+  Availability,
 } from '@shopgate/engage/components';
 import { getProductRoute, ProductImage } from '@shopgate/engage/product';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
-import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
-import Price from '@shopgate/pwa-ui-shared/Price';
-import AvailableText from '@shopgate/pwa-ui-shared/Availability';
-import { BackInStockButton } from '@shopgate/engage/back-in-stock/';
+import { BackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import {
   getThemeSettings, i18n,
 } from '@shopgate/engage/core';
@@ -137,7 +137,7 @@ const Subscription = ({
           </div>
         </div>
         <div className={classNames(styles.baseContainerRow)}>
-          <AvailableText
+          <Availability
             text={product?.availability?.text}
             state={product?.availability?.state}
             showWhenAvailable={false}

@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { css } from 'glamor';
-import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
-import { Accordion, Card } from '@shopgate/engage/components';
+import { LoadingIndicator, Accordion, Card } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import { useBackInStockSubscriptions } from '../../../../hooks';
 import Subscription from '../Subscription';

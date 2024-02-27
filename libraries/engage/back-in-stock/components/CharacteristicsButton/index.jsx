@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BackInStockButton } from '@shopgate/engage/back-in-stock';
+import { BackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import { AVAILABILITY_STATE_OK } from '@shopgate/engage/product';
 import { withCurrentProduct } from '@shopgate/engage/core';
 import connect from './connector';

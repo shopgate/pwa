@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/engage/components';
 import { AVAILABILITY_STATE_OK } from '@shopgate/engage/product';
 import {
-  BackInStockButton,
   PRODUCT_BACK_IN_STOCK,
   PRODUCT_BACK_IN_STOCK_AFTER,
   PRODUCT_BACK_IN_STOCK_BEFORE,
 } from '@shopgate/engage/back-in-stock';
-
+import { BackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import { withCurrentProduct } from '@shopgate/engage/core';
 import connect from './connector';
 
