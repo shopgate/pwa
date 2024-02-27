@@ -41,7 +41,7 @@ export default function pushOptIn(subscribe) {
    * @param {Function} increaseCountAction Action to increase the count in Redux for the configKey
    * @returns {void}
    */
-  const runChecks = async ({ dispatch, getState }, configKey, increaseCountAction) => {
+  const showOptInAfterChecks = async ({ dispatch, getState }, configKey, increaseCountAction) => {
     const {
       pushOptIn: {
         appStarts,
@@ -92,7 +92,7 @@ export default function pushOptIn(subscribe) {
 
   // event subscriber to handle app start based push opt in
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
-    await runChecks({
+    await showOptInAfterChecks({
       dispatch,
       getState,
     }, 'appStarts', increaseAppStartCount);
@@ -101,7 +101,7 @@ export default function pushOptIn(subscribe) {
   // event subscriber to handle order based push opt in
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     event.addCallback('checkoutSuccess', async () => {
-      await runChecks({
+      await showOptInAfterChecks({
         dispatch,
         getState,
       }, 'ordersPlaced', increaseOrdersPlacedCount);
