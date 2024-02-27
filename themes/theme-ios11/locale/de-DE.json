@@ -21,14 +21,14 @@
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
     "scanner": "Scanner",
-    "back_in_stock": "Wieder-auf-Lager Benachrichtigungen"
+    "back_in_stock": "Benachrichtigungen"
   },
   "back_in_stock": {
     "list_states": {
       "active": "Aktive Benachrichtigungen",
       "past": "Vergangene Benachrichtigungen"
     },
-    "empty_list_reminder": "Sie haben keine Benachrichtigungen konfiguriert",
+    "empty_list_reminder": "Du hast keine Benachrichtigungen konfiguriert",
     "get_notified": "Benachrichtige mich",
     "we_will_remind_you": "Du wirst benachrichtigt",
     "add_back_in_stock_success_modal": {
@@ -254,7 +254,7 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
-    "back_in_stock": "Wieder-auf-Lager Benachrichtigungen",
+    "back_in_stock": "Benachrichtigungen",
     "back": "Zurück zu {title}"
   },
   "reviews": {
