@@ -199,7 +199,7 @@
       "default": false,
       "params": {
         "type": "json",
-        "label": "If the Back-in-Stock feature is enable / disable."
+        "label": "If the Back-in-Stock feature is enabled / disabled."
       }
     },
     "theme": {
