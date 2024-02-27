@@ -5,7 +5,7 @@ export * from './constants/Portals';
 
 // Components
 export { default as BackInStockReminders } from './components/Subscriptions';
-export { default as BackInStockButtonPortal } from './components/BackInStockButtonPortal';
+export { default as ProductInfoBackInStockButton } from './components/ProductInfoBackInStockButton';
 export { default as CharacteristicsButton } from './components/CharacteristicsButton';
 
 // ACTIONS

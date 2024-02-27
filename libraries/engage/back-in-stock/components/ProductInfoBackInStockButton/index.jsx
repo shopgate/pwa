@@ -12,7 +12,7 @@ import { withCurrentProduct } from '@shopgate/engage/core';
 import connect from './connector';
 
 /**
- * The BackInStockButtonPortal component.
+ * The ProductInfoBackInStockButton component.
  * @param {Object} props The component props.
  * @param {boolean} props.isBackInStockEnabled Whether the back in stock feature is enabled
  * @param {string} props.productId The product id
@@ -24,7 +24,7 @@ import connect from './connector';
  * @param {Object} props.subscription The subscription
  * @return {JSX}
  */
-const BackInStockButtonPortal = ({
+const ProductInfoBackInStockButton = ({
   productType,
   stock,
   productId,
@@ -60,7 +60,7 @@ const BackInStockButtonPortal = ({
   );
 };
 
-BackInStockButtonPortal.propTypes = {
+ProductInfoBackInStockButton.propTypes = {
   addBackInStockSubscription: PropTypes.func.isRequired,
   grantPushPermissions: PropTypes.func.isRequired,
   isBackInStockEnabled: PropTypes.bool.isRequired,
@@ -71,11 +71,11 @@ BackInStockButtonPortal.propTypes = {
   variantId: PropTypes.string,
 };
 
-BackInStockButtonPortal.defaultProps = {
+ProductInfoBackInStockButton.defaultProps = {
   subscription: null,
   productType: null,
   variantId: null,
   stock: null,
 };
 
-export default withCurrentProduct(connect(BackInStockButtonPortal));
+export default withCurrentProduct(connect(ProductInfoBackInStockButton));
