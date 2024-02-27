@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getIsBackInStockEnabled } from '@shopgate/engage/back-in-stock';
+import { getIsBackInStockEnabled } from '@shopgate/engage/back-in-stock/selectors';
 
 /**
  * @param {Object} state The application state.

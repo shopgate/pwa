@@ -5,7 +5,6 @@ import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermiss
 const mapDispatchToProps = {
   addBackInStockSubscription,
   grantPushPermissions,
-
 };
 
 export default connect(null, mapDispatchToProps);

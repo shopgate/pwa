@@ -3,7 +3,7 @@ import {
   getBackInStockSubscriptions,
   getBackInStockSubscriptionsFetching,
   getBackInStockSubscriptionsInitial,
-} from '@shopgate/engage/back-in-stock';
+} from '@shopgate/engage/back-in-stock/selectors';
 import {
   addBackInStockSubscription,
   removeBackInStockSubscription,

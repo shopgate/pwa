@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core';
-import { CharacteristicsButton } from '@shopgate/engage/back-in-stock';
+import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
 import styles from './style';
 
 /**

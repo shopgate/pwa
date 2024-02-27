@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   PRODUCT_BACK_IN_STOCK,
-} from '@shopgate/engage/back-in-stock';
+} from '@shopgate/engage/back-in-stock/constants';
 import { BackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import { withCurrentProduct } from '@shopgate/engage/core';
 import connect from './connector';

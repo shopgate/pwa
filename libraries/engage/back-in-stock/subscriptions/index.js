@@ -1,9 +1,9 @@
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { fetchBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/actions';
 import {
   addBackInStockReminderSuccess$,
   backInStockReminderNeedsFetch$,
-} from '../streams';
-import { fetchBackInStockSubscriptions } from '../actions';
+} from '@shopgate/engage/back-in-stock/streams';
 
 /**
  * @param {Function} subscribe The subscribe function.

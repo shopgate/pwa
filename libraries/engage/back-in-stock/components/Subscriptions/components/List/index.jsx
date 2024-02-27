@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { css } from 'glamor';
 import { LoadingIndicator, Accordion, Card } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import { useBackInStockSubscriptions } from '../../../../hooks';
+import { useBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/hooks';
 import Subscription from '../Subscription';
 
 const styles = {

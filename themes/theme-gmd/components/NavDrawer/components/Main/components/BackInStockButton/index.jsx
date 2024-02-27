@@ -6,7 +6,7 @@ import {
   NAV_MENU_BACK_IN_STOCK,
   NAV_MENU_BACK_IN_STOCK_AFTER,
   NAV_MENU_BACK_IN_STOCK_BEFORE,
-} from '@shopgate/engage/back-in-stock';
+} from '@shopgate/engage/back-in-stock/constants';
 import navDrawerConnect from '../../../../connector';
 import portalProps from '../../../../portalProps';
 import Badge from './components/Badge';

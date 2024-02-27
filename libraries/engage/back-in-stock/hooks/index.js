@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackInStockSubscriptionsProviderContext } from '@shopgate/engage/back-in-stock';
+import { BackInStockSubscriptionsProviderContext } from '@shopgate/engage/back-in-stock/providers';
 
 /**
  * Gives access to the values which the context BackInStockSubscriptionsProvider provide

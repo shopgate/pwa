@@ -1,5 +1,5 @@
-import { appDidStart$, main$, routeDidEnter$ } from '@shopgate/pwa-common/streams';
-import { productWillEnter$ } from '@shopgate/pwa-common-commerce/product';
+import { appDidStart$, main$, routeDidEnter$ } from '@shopgate/engage/core';
+import { productWillEnter$ } from '@shopgate/engage/product';
 import {
   ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
   REMOVE_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
