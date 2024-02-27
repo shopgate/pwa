@@ -1,9 +1,6 @@
 import { createSelector } from 'reselect';
-// import { getProductVariants } from '@shopgate/engage/product';
-import isEqual from 'lodash/isEqual';
+import { makeGetProductByCharacteristics } from '@shopgate/engage/product';
 import { appConfig } from '@shopgate/engage';
-
-import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
 
 /**
  * @param {Object} state The application state.
@@ -46,26 +43,22 @@ export const makeGetSubscriptionByProduct = () => createSelector(
  * a product / variant by its characteristics
  * @returns {Function}
  */
-export const makeGetSubscriptionByCharacteristics = () => createSelector(
-  getProductVariants,
-  (state, props = {}) => props.characteristics,
-  getBackInStockSubscriptions,
-  (variants, characteristics, subscriptions) => {
-    if (!variants) {
-      return false;
+export const makeGetSubscriptionByCharacteristics = () => {
+  const getProductByCharacteristics = makeGetProductByCharacteristics();
+
+  return createSelector(
+    getProductByCharacteristics,
+    getBackInStockSubscriptions,
+    (product, subscriptions) => {
+      if (!product) {
+        return null;
+      }
+
+      return subscriptions.find(({ productCode }) =>
+        productCode === product.id) || null;
     }
-
-    const found = variants.products.find(product =>
-      isEqual(product.characteristics, characteristics));
-
-    if (!found) {
-      return null;
-    }
-
-    return subscriptions.find(({ productCode }) =>
-      productCode === found.id) || null;
-  }
-);
+  );
+};
 
 /**
  * Returns if the back in stock feature is enabled

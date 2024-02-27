@@ -5,8 +5,7 @@ import {
 } from '@shopgate/engage/back-in-stock';
 import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 import {
-  getProductAvailability,
-  makeGetProductType,
+  getProduct,
 } from '@shopgate/engage/product';
 import { grantPushPermissions } from '@shopgate/engage/core';
 
@@ -14,13 +13,11 @@ import { grantPushPermissions } from '@shopgate/engage/core';
  * @return {Object} The extended component props.
  */
 const makeMapStateToProps = () => {
-  const getProductType = makeGetProductType();
   const getSubscriptionByProduct = makeGetSubscriptionByProduct();
   return (state, props) => ({
     subscription: getSubscriptionByProduct(state, props),
-    productType: getProductType(state, props),
-    stock: getProductAvailability(state, props),
     isBackInStockEnabled: getIsBackInStockEnabled(state, props),
+    product: getProduct(state, props),
   });
 };
 

@@ -3,9 +3,6 @@ import {
   getIsBackInStockEnabled,
   makeGetSubscriptionByCharacteristics,
 } from '@shopgate/engage/back-in-stock';
-import {
-  getVariantAvailabilityByCharacteristics,
-} from '@shopgate/pwa-common-commerce/product';
 import { addBackInStockSubscription } from '@shopgate/engage/back-in-stock/actions';
 import grantPushPermissions from '@shopgate/engage/core/actions/grantPushPermissions';
 import {
@@ -23,7 +20,6 @@ const makeMapStateToProps = () => {
     const variant = getProductByCharacteristics(state, props) || {};
     return ({
       variant,
-      availability: getVariantAvailabilityByCharacteristics(state, props),
       subscription: getSubscriptionByCharacteristics(state, props),
       isBackInStockEnabled: getIsBackInStockEnabled(state, props),
     });

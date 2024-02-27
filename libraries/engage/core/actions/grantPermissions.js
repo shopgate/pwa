@@ -1,7 +1,6 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/constants/AppEvents';
 import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
-// import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { showModal } from '@shopgate/engage/core';
 import {
   STATUS_DENIED,
