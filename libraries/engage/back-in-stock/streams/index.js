@@ -2,9 +2,9 @@ import { appDidStart$, main$, routeDidEnter$ } from '@shopgate/pwa-common/stream
 import { productWillEnter$ } from '@shopgate/pwa-common-commerce/product';
 import {
   ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
-  BACK_IN_STOCK_PATTERN,
   REMOVE_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
-} from '../constants';
+  BACK_IN_STOCK_PATTERN,
+} from '@shopgate/engage/back-in-stock/constants';
 
 export const backInStockRemindersDidEnter$ = routeDidEnter$
   .filter(({ action }) => action.route.pattern === BACK_IN_STOCK_PATTERN);

@@ -1,8 +1,3 @@
-// CONSTANTS
-export * from './constants';
-export * from './constants/Pipelines';
-export * from './constants/Portals';
-
 // Components
 export { default as BackInStockReminders } from './components/Subscriptions';
 export { default as ProductInfoBackInStockButton } from './components/ProductInfoBackInStockButton';
