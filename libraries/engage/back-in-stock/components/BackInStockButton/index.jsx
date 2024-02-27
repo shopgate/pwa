@@ -79,8 +79,8 @@ const BackInStockButton = ({
 BackInStockButton.propTypes = {
   addBackInStockSubscription: PropTypes.func.isRequired,
   grantPushPermissions: PropTypes.func.isRequired,
-  productId: PropTypes.string.isRequired,
   isLinkToBackInStockEnabled: PropTypes.bool,
+  productId: PropTypes.string,
   stopPropagation: PropTypes.bool,
   subscription: PropTypes.shape(),
 };
@@ -89,6 +89,7 @@ BackInStockButton.defaultProps = {
   stopPropagation: false,
   isLinkToBackInStockEnabled: false,
   subscription: null,
+  productId: null,
 };
 
 export default connect(BackInStockButton);

@@ -6,7 +6,7 @@ import {
 import {
   NAV_MENU_QUICK_LINKS,
 } from '@shopgate/pwa-common/constants/Portals';
-import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import portalProps from '../../portalProps';
 
 import Section from '../Section';
