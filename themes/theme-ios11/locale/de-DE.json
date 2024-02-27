@@ -28,9 +28,9 @@
       "active": "Aktive Benachrichtigungen",
       "past": "Vergangene Benachrichtigungen"
     },
-    "empty_list_reminder": "Sie haben keine Benachrichtigungen konfiguriert.",
+    "empty_list_reminder": "Sie haben keine Benachrichtigungen konfiguriert",
     "get_notified": "Benachrichtige mich",
-    "we_will_remind_you": "Du wirst benachrichtigt.",
+    "we_will_remind_you": "Du wirst benachrichtigt",
     "add_back_in_stock_success_modal": {
       "title": "Benachrichtigung hinzugefügt!",
       "message": "Wir senden dir eine Push-Benachrichtigung wenn das Produkt wieder verfügbar ist. Du kannst diese Benachrichtigungen in den Einstellungen verwalten."
