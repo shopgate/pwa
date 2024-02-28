@@ -20,7 +20,7 @@
     "reviews": "Reviews",
     "favorites": "Favorites",
     "scanner": "Scanner",
-    "back_in_stock": "Back in Stock Reminders"
+    "back_in_stock": "Notifications"
   },
   "back_in_stock": {
     "list_states": {
@@ -241,7 +241,7 @@
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "scanner": "Scanner",
-    "back_in_stock": "Back in Stock reminder",
+    "back_in_stock": "Notifications",
     "shipping": "Shipping methods",
     "about": "Contact us",
     "payment": "Payment methods",

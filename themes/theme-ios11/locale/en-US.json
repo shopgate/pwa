@@ -21,7 +21,7 @@
     "browse": "Browse",
     "favorites": "Favorites",
     "scanner": "Scanner",
-    "back_in_stock": "Back in Stock Reminders"
+    "back_in_stock": "Notifications"
   },
   "back_in_stock": {
     "list_states": {
@@ -253,7 +253,7 @@
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More",
-    "back_in_stock": "Back in Stock reminder",
+    "back_in_stock": "Notifications",
     "back": "Back to {title}"
   },
   "reviews": {
