@@ -1,0 +1,1 @@
+export const PUSH_OPT_IN_MODAL = 'PUSH_OPT_IN_MODAL';

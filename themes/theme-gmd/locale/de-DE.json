@@ -271,6 +271,7 @@
     "access_denied": {
       "settings_button": "Zu den Einstellungen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
+      "push_message": "Sie haben Push-Benachrichtigungen für diese App deaktiviert. Bitte gehen Sie in die Einstellungen Ihres Geräts, um Benachrichtigungen für diese App zu aktivieren.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
   },
@@ -293,5 +294,11 @@
     "title": "App bewerten",
     "message": "Gefällt Ihnen unsere App? Wir freuen uns über eine Bewertung!",
     "rejectionApprovalMessage": "Möchten Sie uns Feedback geben? Das hilft uns die App weiter zu verbessern."
+  },
+  "pushNotification": {
+    "title": "Erhalte exklusive Coupons und Angebote",
+    "buttonAllow": "Benachrichtigungen aktivieren",
+    "buttonDeny": "Ich möchte keine Benachrichtigungen",
+    "message": "Aktiviere Benachrichtigungen, damit wir dir Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können"
   }
 }

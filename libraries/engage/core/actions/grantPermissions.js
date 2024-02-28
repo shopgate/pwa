@@ -55,7 +55,8 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     return;
   }
 
-  // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
+  // The user has never seen the permissions dialog yet,
+  // or temporary denied the permissions (Android).
   if (status === STATUS_NOT_DETERMINED) {
     // Trigger the native permissions dialog.
     [{ status }] = await requestAppPermissions([{ permissionId }]);

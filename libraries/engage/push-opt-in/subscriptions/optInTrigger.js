@@ -22,7 +22,7 @@ import {
 } from '../constants';
 
 import { getPushOptInTriggerState } from '../selectors';
-import { showOptIn } from '../actions';
+import { showOptInModal } from '../actions';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -86,7 +86,7 @@ export default function pushOptIn(subscribe) {
     if (mustShowModal && hasRepeats && minDaysElapsed) {
       dispatch(setLastPopupTimestamp());
       dispatch(resetAction());
-      dispatch(showOptIn());
+      dispatch(showOptInModal());
     }
   };
 
