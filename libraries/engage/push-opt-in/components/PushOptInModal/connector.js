@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { getPushOptInModalState } from '../../selectors';
+import { getPushOptInModal } from '../../selectors';
+import { grantPushPermissions } from '../../../core';
+import { optInPostponed } from '../../action-creators';
 
 /**
  * Maps the contents of the state to the component props.
@@ -7,7 +9,17 @@ import { getPushOptInModalState } from '../../selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  showPushOptInModal: getPushOptInModalState(state),
+  showPushOptInModal: getPushOptInModal(state),
 });
 
-export default connect(mapStateToProps);
+/**
+ * Connects the dispatch function to a callable function in the props.
+ * @param {Function} dispatch The redux dispatch function.
+ * @return {Object} The extended component props.
+ */
+const mapDispatchToProps = dispatch => ({
+  enablePushOptInModal: () => dispatch(grantPushPermissions({ useSettingsModal: true })),
+  denyPushOptInModal: () => dispatch(optInPostponed()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps);

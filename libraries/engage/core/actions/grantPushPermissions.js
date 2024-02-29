@@ -1,7 +1,5 @@
 import {
-  getAppPermissions,
   PERMISSION_ID_PUSH,
-  PERMISSION_STATUS_GRANTED,
 } from '@shopgate/pwa-core';
 import grantPermissions from './grantPermissions';
 
@@ -20,27 +18,23 @@ import grantPermissions from './grantPermissions';
  * @param {Object} options.modal.params Additional parameters for i18n strings.
  * @return { Function } A redux thunk.
  */
-const grantPushPermissions = (options = {}) => dispatch => new Promise(async (resolve) => {
-  const { useSettingsModal = false, modal = {} } = options;
-  const [{ status }] = await getAppPermissions([PERMISSION_ID_PUSH]);
+const grantPushPermissions = (options = {}) => dispatch => new Promise(
+  async (resolve) => {
+    const { useSettingsModal = false, modal = {} } = options;
 
-  if (status === PERMISSION_STATUS_GRANTED) {
-    resolve(true);
-    return;
+    const allowed = await dispatch(grantPermissions({
+      permissionId: PERMISSION_ID_PUSH,
+      useSettingsModal,
+      modal: {
+        title: null,
+        message: 'permissions.access_denied.push_message',
+        confirm: 'permissions.access_denied.settings_button',
+        ...modal,
+      },
+    }));
+
+    resolve(allowed);
   }
-
-  const allowed = await dispatch(grantPermissions({
-    permissionId: PERMISSION_ID_PUSH,
-    useSettingsModal,
-    modal: {
-      title: null,
-      message: 'permissions.access_denied.push_message',
-      confirm: 'permissions.access_denied.settings_button',
-      ...modal,
-    },
-  }));
-
-  resolve(allowed);
-});
+);
 
 export default grantPushPermissions;
