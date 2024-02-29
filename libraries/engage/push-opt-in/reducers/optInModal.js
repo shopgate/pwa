@@ -15,7 +15,7 @@ const pushOptInModalReducer = (state = defaultState, action) => {
     case PUSH_OPT_IN_MODAL: {
       return {
         ...state,
-        showPushOptInModal: true,
+        showPushOptInModal: !state.showPushOptInModal,
       };
     }
 

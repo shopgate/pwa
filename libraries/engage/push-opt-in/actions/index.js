@@ -1,1 +1,1 @@
-export * from './showOptInModal';
+export * from './pushOptInModal';

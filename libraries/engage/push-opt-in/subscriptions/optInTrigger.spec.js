@@ -18,7 +18,7 @@ import {
   optInPostponed,
 } from '../action-creators';
 import {
-  showOptInModal,
+  showPushOptInModal,
 } from '../actions';
 import pushReducers from '../reducers';
 import subscriptions from './optInTrigger';
@@ -59,7 +59,7 @@ const setMockedConfig = (update = {}) => {
 };
 
 jest.mock('../actions/optInTrigger.js', () => ({
-  showOptInModalModal: jest.fn(),
+  showPushOptInModalModal: jest.fn(),
 }));
 
 jest.mock('@shopgate/engage', () => ({
@@ -128,9 +128,9 @@ describe('Push OptIn Subscriptions', () => {
 
     subscriptions(subscribe);
 
-    // By default dispatching the showOptInModalModal action results
+    // By default dispatching the showPushOptInModalModal action results
     // into dispatching the optInPostponed action
-    showOptInModal.mockImplementation(() => (thunkDispatch) => {
+    showPushOptInModal.mockImplementation(() => (thunkDispatch) => {
       thunkDispatch(optInPostponed());
     });
   });
@@ -209,7 +209,7 @@ describe('Push OptIn Subscriptions', () => {
           expect(dispatch).toHaveBeenCalledTimes(1);
           expect(dispatch).toHaveBeenCalledWith(increaseCountAction());
 
-          expect(showOptInModal).not.toHaveBeenCalled();
+          expect(showPushOptInModal).not.toHaveBeenCalled();
         });
 
         it('should trigger opt-in at the first counter increase', async () => {
@@ -228,7 +228,7 @@ describe('Push OptIn Subscriptions', () => {
           expect(dispatch).toHaveBeenCalledWith(increaseCountAction());
           expect(dispatch).toHaveBeenCalledWith(setLastPopupTimestamp());
           expect(dispatch).toHaveBeenCalledWith(resetCountAction());
-          expect(showOptInModal).toHaveBeenCalledTimes(1);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(1);
         });
 
         it('should trigger opt-in at the 3rd counter increase', async () => {
@@ -241,17 +241,17 @@ describe('Push OptIn Subscriptions', () => {
           // 1st counter increase -> do not show opt-in
           await callback(callbackParams);
           expect(dispatch).toHaveBeenCalledTimes(1);
-          expect(showOptInModal).not.toHaveBeenCalled();
+          expect(showPushOptInModal).not.toHaveBeenCalled();
 
           // 2nd counter increase -> do not show opt-in
           await callback(callbackParams);
           expect(dispatch).toHaveBeenCalledTimes(2);
-          expect(showOptInModal).not.toHaveBeenCalled();
+          expect(showPushOptInModal).not.toHaveBeenCalled();
 
           // 3rd counter increase -> show opt-in
           await callback(callbackParams);
           expect(dispatch).toHaveBeenCalledTimes(6);
-          expect(showOptInModal).toHaveBeenCalledTimes(1);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(1);
         });
 
         it('should not trigger opt-in again till "minDaysBetweenOptIns" elapsed', async () => {
@@ -264,25 +264,25 @@ describe('Push OptIn Subscriptions', () => {
 
           // 1st counter increase -> show opt-in
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(1);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(1);
 
           // fast forward time by 1/2 day
           dateMock.mockImplementation(() => mockedTS + (1000 * 60 * 60 * 12));
 
           // 2nd counter increase -> do not show opt due to min days setting
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(1);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(1);
 
           // 3rd counter increase -> do not show opt due to min days setting
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(1);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(1);
 
           // fast forward time by 1 day
           dateMock.mockImplementation(() => mockedTS + (1000 * 60 * 60 * 24));
 
           // 4th counter increase -> show opt-in again
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(2);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(2);
         });
 
         it('should not trigger opt-in when max rejection count is reached', async () => {
@@ -296,15 +296,15 @@ describe('Push OptIn Subscriptions', () => {
 
           // 1st counter increase -> show opt-in
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(1);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(1);
 
           // 2nd counter increase -> show opt-in
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(2);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(2);
 
           // 3rd counter increase -> no opt-in due to rejection count
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(2);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(2);
         });
 
         it('should not trigger opt-in when max repeats are reached', async () => {
@@ -320,22 +320,22 @@ describe('Push OptIn Subscriptions', () => {
           await callback(callbackParams);
           // 2nd counter increase -> show opt-in
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(1);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(1);
 
           await callback(callbackParams);
           // 4th counter increase -> show opt-in
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(2);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(2);
 
           await callback(callbackParams);
           // 6th counter increase -> show opt-in
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(3);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(3);
 
           await callback(callbackParams);
           // 8th counter increase -> no opt-in due to max repeats reached
           await callback(callbackParams);
-          expect(showOptInModal).toHaveBeenCalledTimes(3);
+          expect(showPushOptInModal).toHaveBeenCalledTimes(3);
         });
       });
     }
@@ -368,17 +368,17 @@ describe('Push OptIn Subscriptions', () => {
 
       // 3 opt-ins can be triggered before opt-in by appStart is exceeded (initial + 2 repeats)
       await appStartsSubscriberCallback(callbackParams);
-      expect(showOptInModal).toHaveBeenCalledTimes(1);
+      expect(showPushOptInModal).toHaveBeenCalledTimes(1);
 
       await appStartsSubscriberCallback(callbackParams);
-      expect(showOptInModal).toHaveBeenCalledTimes(2);
+      expect(showPushOptInModal).toHaveBeenCalledTimes(2);
 
       await appStartsSubscriberCallback(callbackParams);
-      expect(showOptInModal).toHaveBeenCalledTimes(3);
+      expect(showPushOptInModal).toHaveBeenCalledTimes(3);
 
       // Opt-in does't show anymore for 4th app start since repeats exceeded
       await appStartsSubscriberCallback(callbackParams);
-      expect(showOptInModal).toHaveBeenCalledTimes(3);
+      expect(showPushOptInModal).toHaveBeenCalledTimes(3);
 
       ordersPlacedSubscriberCallback(callbackParams);
 
@@ -386,11 +386,11 @@ describe('Push OptIn Subscriptions', () => {
 
       // Opt-in shows again since max rejection count is not reached yet
       await checkoutSuccessCallback();
-      expect(showOptInModal).toHaveBeenCalledTimes(4);
+      expect(showPushOptInModal).toHaveBeenCalledTimes(4);
 
       // Opt-in doesn't show anymore for the 2nd order placement, since max rejection count exceeded
       await checkoutSuccessCallback();
-      expect(showOptInModal).toHaveBeenCalledTimes(4);
+      expect(showPushOptInModal).toHaveBeenCalledTimes(4);
     });
   });
 

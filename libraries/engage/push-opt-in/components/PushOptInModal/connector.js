@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { getPushOptInModal } from '../../selectors';
 import { grantPushPermissions } from '../../../core';
 import { optInPostponed } from '../../action-creators';
+import { hidePushOptInModal } from '../../actions';
 
 /**
  * Maps the contents of the state to the component props.
@@ -20,6 +21,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   enablePushOptInModal: () => dispatch(grantPushPermissions({ useSettingsModal: true })),
   denyPushOptInModal: () => dispatch(optInPostponed()),
+  hidePushOptInModal: () => dispatch(hidePushOptInModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

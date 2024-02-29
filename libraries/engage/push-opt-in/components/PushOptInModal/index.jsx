@@ -12,19 +12,24 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const PushOptInModal = ({ showPushOptInModal, enablePushOptInModal, denyPushOptInModal }) => {
+const PushOptInModal = ({
+  showPushOptInModal, enablePushOptInModal, denyPushOptInModal, hidePushOptInModal,
+}) => {
   /**
-   * Gives the permission for sending push notifications
+   * opens native modal to give the permission for sending push notifications
+   * and closes the custom modal
    */
   const handleClickEnable = () => {
     enablePushOptInModal();
+    hidePushOptInModal();
   };
 
   /**
-   * Denies the permission for sending push notifications
+   * Denies the permission for sending push notifications and closes the modal
    */
   const handleClickDeny = () => {
     denyPushOptInModal();
+    hidePushOptInModal();
   };
 
   if (!showPushOptInModal) {
@@ -53,6 +58,7 @@ const PushOptInModal = ({ showPushOptInModal, enablePushOptInModal, denyPushOptI
 PushOptInModal.propTypes = {
   denyPushOptInModal: PropTypes.func.isRequired,
   enablePushOptInModal: PropTypes.func.isRequired,
+  hidePushOptInModal: PropTypes.func.isRequired,
   showPushOptInModal: PropTypes.bool,
 };
 
