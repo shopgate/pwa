@@ -10,9 +10,11 @@ export default {
     alignItems: 'center',
   }).toString(),
   backInStockMessageContainer: css({
-    display: 'inline',
-    alignItems: 'center',
     lineHeight: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'end',
+    width: 'auto',
   }).toString(),
   backInStockMessage: css({
     marginLeft: '4px',
@@ -22,6 +24,7 @@ export default {
   buttonText: css({
     marginLeft: '4px',
     fontSize: '0.875rem',
+    lineHeight: '16.5px',
   }).toString(),
   icon: css({
     verticalAlign: 'middle',
