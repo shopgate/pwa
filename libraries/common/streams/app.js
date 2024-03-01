@@ -4,6 +4,8 @@ import {
   APP_WILL_START,
   PWA_DID_APPEAR,
   PWA_DID_DISAPPEAR,
+  OPEN_PUSH_NOTIFICATION,
+  OPEN_UNIVERSAL_LINK,
 } from '../constants/ActionTypes';
 import { main$ } from './main';
 
@@ -46,3 +48,9 @@ export const pwaDidDisappear$ = main$
       route: getCurrentRoute(params.getState()),
     },
   }));
+
+export const pushNotificationOpened$ = main$
+  .filter(({ action }) => action.type === OPEN_PUSH_NOTIFICATION);
+
+export const universalLinkOpened$ = main$
+  .filter(({ action }) => action.type === OPEN_UNIVERSAL_LINK);

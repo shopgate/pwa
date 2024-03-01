@@ -147,7 +147,7 @@ export default function cart(subscribe) {
     /**
      * @type {PipelineErrorElement[]} errors
      */
-    const { errors = [] } = action;
+    const { errors = [], couponsIds = [] } = action;
 
     if (Array.isArray(errors) && errors.length) {
       // Supports only one error, because none of the pipelines is ever called with multiple items.
@@ -167,6 +167,11 @@ export default function cart(subscribe) {
         type: MODAL_PIPELINE_ERROR,
         params: {
           ...errors[0],
+          ...(Array.isArray(couponsIds) && couponsIds.length > 0 ? {
+            request: {
+              couponsIds,
+            },
+          } : null),
         },
       }));
     }

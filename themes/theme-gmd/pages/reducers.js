@@ -20,6 +20,7 @@ import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import extensions from 'Extensions/reducers';
+import { app } from '@shopgate/engage/core/reducers';
 
 persistedReducers.set([
   'cart',
@@ -45,6 +46,7 @@ const reducers = combineReducers({
   cart,
   category,
   client,
+  app,
   ...extensions && { extensions: combineReducers(extensions) },
   favorites,
   filter,

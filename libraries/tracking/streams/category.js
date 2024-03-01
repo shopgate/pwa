@@ -11,6 +11,7 @@ import {
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { receivedRootCategories$ } from '@shopgate/pwa-common-commerce/category/streams';
 import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import { getIsAppWebViewVisible } from '@shopgate/engage/core';
 import { productsReceived$ } from './product';
 
 /**
@@ -42,6 +43,8 @@ const rootCategoryPreloaded$ = rootCategoryDidEnter$.filter(({ getState }) => {
  * Emits when a category's data is available.
  */
 const categoryDataLoaded$ = categoryDidEnter$
+  // Do not track while PWA webview is in the background
+  .filter(({ getState }) => getIsAppWebViewVisible(getState()))
   .switchMap((data) => {
     const { action, getState } = data;
     const { categoryId } = action.route.params;

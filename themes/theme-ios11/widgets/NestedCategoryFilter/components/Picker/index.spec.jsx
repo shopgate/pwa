@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
+import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
 import themeApi from '../../../../themeApi';
 import { mockedState, categoriesById, emptyRootCategories } from '../../mockData';
 import Picker from './index';
@@ -16,7 +16,9 @@ jest.unmock('@shopgate/pwa-ui-shared');
 
 jest.mock('@shopgate/engage/components');
 
-jest.mock('@shopgate/pwa-common-commerce/category/actions/getCategory', () => jest.fn(() => () => { }));
+jest.mock('@shopgate/engage/category', () => ({
+  fetchCategoryOrRootCategories: jest.fn(() => () => { }),
+}));
 
 /**
  * Renders the component.
@@ -57,7 +59,7 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(wrapper.find(`div.${label}`).text()).toEqual(props.label);
     expect(wrapper.find(`div.${selection}`).text()).toEqual('common.please_choose');
     expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
-    expect(getCategory).not.toHaveBeenCalled();
+    expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should render the picker without a label', () => {
@@ -91,7 +93,7 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
     expect(onSelect).toHaveBeenCalledTimes(1);
     expect(onSelect).toHaveBeenCalledWith(props.categoryId, categoriesById['1-2']);
-    expect(getCategory).not.toHaveBeenCalled();
+    expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should not accept user interaction when no categoryId was passed', () => {
@@ -105,7 +107,7 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(`div.${label}`).parent().hasClass(buttonDisabled)).toBe(true);
     expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
-    expect(getCategory).not.toHaveBeenCalled();
+    expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should accept user interaction when the categoryId is an empty string', () => {
@@ -117,7 +119,7 @@ describe('<NestedCategoryFilterPicker />', () => {
     wrapper.find(Picker).simulate('click');
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(true);
-    expect(getCategory).not.toHaveBeenCalled();
+    expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should highlight the preselected subcategory within the sheet ', () => {
@@ -129,7 +131,7 @@ describe('<NestedCategoryFilterPicker />', () => {
     wrapper.find(Picker).simulate('click');
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Drawer SheetItem').first().prop('selected')).toBe(true);
-    expect(getCategory).not.toHaveBeenCalled();
+    expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should request category data when it is not available yet', () => {
@@ -139,8 +141,8 @@ describe('<NestedCategoryFilterPicker />', () => {
       categoryId,
     });
 
-    expect(getCategory).toHaveBeenCalledTimes(1);
-    expect(getCategory).toHaveBeenCalledWith(categoryId);
+    expect(fetchCategoryOrRootCategories).toHaveBeenCalledTimes(1);
+    expect(fetchCategoryOrRootCategories).toHaveBeenCalledWith(categoryId);
   });
 
   it('should request root category data when it is not available yet', () => {
@@ -155,7 +157,7 @@ describe('<NestedCategoryFilterPicker />', () => {
       },
     });
 
-    expect(getCategory).toHaveBeenCalledTimes(1);
-    expect(getCategory).toHaveBeenCalledWith(categoryId);
+    expect(fetchCategoryOrRootCategories).toHaveBeenCalledTimes(1);
+    expect(fetchCategoryOrRootCategories).toHaveBeenCalledWith(categoryId);
   });
 });

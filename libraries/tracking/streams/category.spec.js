@@ -5,6 +5,7 @@ import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
+import { app } from '@shopgate/engage/core/reducers';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
 import receiveRootCategories from '@shopgate/pwa-common-commerce/category/action-creators/receiveRootCategories';
 import requestProducts from '@shopgate/pwa-common-commerce/product/action-creators/requestProducts';
@@ -13,7 +14,7 @@ import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
 } from '@shopgate/pwa-common-commerce/category/constants';
-import { pwaDidAppear } from '@shopgate/pwa-common/action-creators';
+import { pwaDidAppear, pwaDidDisappear } from '@shopgate/pwa-common/action-creators';
 import { categoryIsReady$ } from './category';
 
 let mockedRoutePattern;
@@ -63,7 +64,7 @@ describe('Category streams', () => {
 
     mockedRoutePattern = '';
     mockedCategoryId = null;
-    ({ dispatch } = createMockStore(combineReducers({ category, product })));
+    ({ dispatch } = createMockStore(combineReducers({ category, product, app })));
 
     categoryIsReadySubscriber = jest.fn();
     categoryIsReady$.subscribe(categoryIsReadySubscriber);
@@ -136,6 +137,16 @@ describe('Category streams', () => {
       dispatch(routeDidEnterWrapped('/some/pattern'));
       dispatchReceiveProducts([{ id: 'one' }], 'someid');
       expect(categoryIsReadySubscriber).not.toHaveBeenCalled();
+    });
+
+    describe('app webview not visible', () => {
+      it('should not emit when app webview is not visible', () => {
+        dispatch(pwaDidDisappear());
+        const categoryId = 'abc123';
+        dispatchReceiveProducts([{ id: 'one' }], categoryId);
+        dispatch(routeDidEnterWrapped(CATEGORY_PATTERN, categoryId));
+        expect(categoryIsReadySubscriber).not.toHaveBeenCalled();
+      });
     });
   });
 
