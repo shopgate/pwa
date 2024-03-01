@@ -76,7 +76,7 @@ class SheetItem extends PureComponent {
       <button {...buildProps} data-test-id={item.label} aria-selected={selected} role="option" type="button">
         {item.label}
         {item.selectable && <Right />}
-        <CharacteristicsButton characteristics={characteristics} />
+        {item.selectable && <CharacteristicsButton characteristics={characteristics} />}
       </button>
     );
   }
