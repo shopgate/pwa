@@ -11,7 +11,7 @@ import {
  * @return {Object} The extended component props.
  */
 const makeMapStateToProps = () => {
-  const getProductByCharacteristics = makeGetProductByCharacteristics();
+  const getProductByCharacteristics = makeGetProductByCharacteristics({ strict: true });
   const getSubscriptionByCharacteristics = makeGetSubscriptionByCharacteristics();
 
   return (state, props) => {
