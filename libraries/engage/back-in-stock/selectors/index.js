@@ -64,7 +64,7 @@ export const makeGetSubscriptionByCharacteristics = () => {
  * Returns if the back in stock feature is enabled
  * @returns {Function}
  */
-export const getIsBackInStockEnabled = () => appConfig?.showBackInStock;
+export const getIsBackInStockEnabled = () => appConfig?.showBackInStock || false;
 
 /**
  * Returns if subscription list is in use
