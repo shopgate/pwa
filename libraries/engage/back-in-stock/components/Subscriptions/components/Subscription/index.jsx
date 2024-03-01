@@ -77,6 +77,9 @@ const styles = {
     fontSize: '0.875rem',
     marginBottom: '4px',
   }).toString(),
+  ripple: css({
+    minWidth: '17px',
+  }).toString(),
 };
 
 /**
@@ -112,22 +115,19 @@ const Subscription = ({
 
       <div className={styles.infoContainer}>
         <div className={styles.infoContainerRow}>
-          <div>
-            <Link
-              href={productLink}
-              tag="span"
-              className={styles.titleContainer}
-            >
-              <span
-                className={styles.title}
+          <Link
+            href={productLink}
+            tag="span"
+            className={styles.titleContainer}
+          >
+            <span
+              className={styles.title}
                 // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: `${product.name}` }}
-              />
-            </Link>
-          </div>
+              dangerouslySetInnerHTML={{ __html: `${product.name}` }}
+            />
+          </Link>
           <div className={styles.removeContainer}>
             <button
-              className={styles.root}
               onClick={() => removeBackInStockSubscription({ subscriptionCode })}
               type="button"
               aria-label={i18n.text('favorites.remove')}
