@@ -16,10 +16,8 @@ import {
   increaseOrdersPlacedCount,
   resetOrdersPlacedCount,
   optInPostponed,
-} from '../action-creators';
-import {
   showPushOptInModal,
-} from '../actions';
+} from '../action-creators';
 import pushReducers from '../reducers';
 import subscriptions from './optInTrigger';
 
@@ -58,7 +56,7 @@ const setMockedConfig = (update = {}) => {
   }, update);
 };
 
-jest.mock('../actions/optInTrigger.js', () => ({
+jest.mock('../actions/pushOptInModal.js', () => ({
   showPushOptInModalModal: jest.fn(),
 }));
 

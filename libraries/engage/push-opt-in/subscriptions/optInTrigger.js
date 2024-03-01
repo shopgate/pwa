@@ -16,13 +16,13 @@ import {
   resetOrdersPlacedCount,
   setLastPopupTimestamp,
   increaseRejectionCount,
+  showPushOptInModal,
 } from '../action-creators';
 import {
   PUSH_OPT_IN_OPT_IN_POSTPONED,
 } from '../constants';
 
 import { getPushOptInTriggerState } from '../selectors';
-import { showPushOptInModal } from '../actions';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 

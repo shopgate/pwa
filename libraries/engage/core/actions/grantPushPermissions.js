@@ -18,23 +18,19 @@ import grantPermissions from './grantPermissions';
  * @param {Object} options.modal.params Additional parameters for i18n strings.
  * @return { Function } A redux thunk.
  */
-const grantPushPermissions = (options = {}) => dispatch => new Promise(
-  async (resolve) => {
-    const { useSettingsModal = false, modal = {} } = options;
+const grantPushPermissions = (options = {}) => (dispatch) => {
+  const { useSettingsModal = false, modal = {} } = options;
 
-    const allowed = await dispatch(grantPermissions({
-      permissionId: PERMISSION_ID_PUSH,
-      useSettingsModal,
-      modal: {
-        title: null,
-        message: 'permissions.access_denied.push_message',
-        confirm: 'permissions.access_denied.settings_button',
-        ...modal,
-      },
-    }));
-
-    resolve(allowed);
-  }
-);
+  return dispatch(grantPermissions({
+    permissionId: PERMISSION_ID_PUSH,
+    useSettingsModal,
+    modal: {
+      title: null,
+      message: 'permissions.access_denied.push_message',
+      confirm: 'permissions.access_denied.settings_button',
+      ...modal,
+    },
+  }));
+};
 
 export default grantPushPermissions;

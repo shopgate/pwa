@@ -13,25 +13,8 @@ import connect from './connector';
  * @returns {JSX.Element}
  */
 const PushOptInModal = ({
-  showPushOptInModal, enablePushOptInModal, denyPushOptInModal, hidePushOptInModal,
+  showPushOptInModal, allowPushOptInModal, denyPushOptInModal,
 }) => {
-  /**
-   * opens native modal to give the permission for sending push notifications
-   * and closes the custom modal
-   */
-  const handleClickEnable = () => {
-    enablePushOptInModal();
-    hidePushOptInModal();
-  };
-
-  /**
-   * Denies the permission for sending push notifications and closes the modal
-   */
-  const handleClickDeny = () => {
-    denyPushOptInModal();
-    hidePushOptInModal();
-  };
-
   if (!showPushOptInModal) {
     return null;
   }
@@ -40,13 +23,13 @@ const PushOptInModal = ({
     <Modal isOpened={showPushOptInModal}>
       <Grid className={styles.container}>
         <Grid.Item className={styles.item}>
-          <img src={pushImage} className={styles.image} alt="push opt-in graphic" />
+          <img src={pushImage} className={styles.image} alt="" aria-hidden="true" />
           <I18n.Text className={styles.title} string="pushNotification.title" />
           <I18n.Text string="pushNotification.message" />
-          <Button onClick={handleClickEnable} type="primary" className={styles.button}>
+          <Button onClick={allowPushOptInModal} type="primary" className={styles.button}>
             <I18n.Text string="pushNotification.buttonAllow" />
           </Button>
-          <Button onClick={handleClickDeny} type="plain" className={styles.button}>
+          <Button onClick={denyPushOptInModal} type="plain" className={styles.button}>
             <I18n.Text string="pushNotification.buttonDeny" className={styles.buttonText} />
           </Button>
         </Grid.Item>
@@ -56,9 +39,8 @@ const PushOptInModal = ({
 };
 
 PushOptInModal.propTypes = {
+  allowPushOptInModal: PropTypes.func.isRequired,
   denyPushOptInModal: PropTypes.func.isRequired,
-  enablePushOptInModal: PropTypes.func.isRequired,
-  hidePushOptInModal: PropTypes.func.isRequired,
   showPushOptInModal: PropTypes.bool,
 };
 

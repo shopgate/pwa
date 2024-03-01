@@ -41,7 +41,7 @@ import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import PushOptInModal from '@shopgate/engage/push-opt-in/components/PushOptInModal';
+import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';

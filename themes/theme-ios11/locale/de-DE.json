@@ -300,5 +300,11 @@
     "title": "App bewerten",
     "message": "Gefällt Ihnen unsere App? Wir freuen uns über eine Bewertung!",
     "rejectionApprovalMessage": "Möchten Sie uns Feedback geben? Das hilft uns die App weiter zu verbessern."
+  },
+  "pushNotification": {
+    "title": "Erhalte exklusive Coupons und Angebote",
+    "buttonAllow": "Benachrichtigungen aktivieren",
+    "buttonDeny": "Ich möchte keine Benachrichtigungen",
+    "message": "Aktiviere Benachrichtigungen, damit wir dir Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können."
   }
 }

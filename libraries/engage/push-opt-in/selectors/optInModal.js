@@ -11,7 +11,7 @@ export const getPushOptInModalState = state => state?.pushOptIn?.optInModal || {
  * Selects the property of the push opt-in modal.
  * @returns {boolean} whether push opt-in modal is shown.
  */
-export const getPushOptInModal = createSelector(
+export const getShowPushOptInModal = createSelector(
   getPushOptInModalState,
   modalState => modalState.showPushOptInModal || false
 );

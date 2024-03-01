@@ -1,4 +1,4 @@
-import { PUSH_OPT_IN_MODAL } from '../constants';
+import { HIDE_PUSH_OPT_IN_MODAL, SHOW_PUSH_OPT_IN_MODAL } from '../constants';
 
 const defaultState = {
   showPushOptInModal: false,
@@ -12,10 +12,16 @@ const defaultState = {
  */
 const pushOptInModalReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case PUSH_OPT_IN_MODAL: {
+    case SHOW_PUSH_OPT_IN_MODAL: {
       return {
         ...state,
-        showPushOptInModal: !state.showPushOptInModal,
+        showPushOptInModal: true,
+      };
+    }
+    case HIDE_PUSH_OPT_IN_MODAL: {
+      return {
+        ...state,
+        showPushOptInModal: false,
       };
     }
 
