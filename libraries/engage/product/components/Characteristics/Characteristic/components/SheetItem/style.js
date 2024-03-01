@@ -5,7 +5,7 @@ const { colors, variables } = themeConfig;
 
 const button = css({
   outline: 0,
-  padding: '16px 16px 16px 0',
+  padding: '16px 0 16px 0',
   textAlign: 'left',
   width: '100%',
 });

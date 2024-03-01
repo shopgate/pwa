@@ -20,7 +20,21 @@
     "reviews": "Recensioni",
     "browse": "Sfoglia",
     "favorites": "Favoriti",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Promemoria per il ritorno in magazzino"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Promemoria attivi",
+      "past": "Promemoria del passato"
+    },
+    "empty_list_reminder": "Non ci sono promemoria in questo elenco.",
+    "get_notified": "Ricevere una notifica",
+    "we_will_remind_you": "Ve lo ricordiamo.",
+    "add_back_in_stock_success_modal": {
+      "title": "Aggiunto un promemoria sul back-in-stock!",
+      "message": "Vi invieremo una notifica push quando il prodotto sarà di nuovo disponibile. È possibile gestire le notifiche nelle impostazioni."
+    }
   },
   "favorites": {
     "add": "Aggiungi ai favoriti",
@@ -223,6 +237,7 @@
     "categories": "Categorie",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
+    "back_in_stock": "Promemoria per il ritorno in magazzino",
     "shipping": "Modalità di spedizione",
     "about": "A riguardo",
     "contact": "Contatta",
@@ -269,9 +284,15 @@
     }
   },
   "permissions": {
+    "back_in_stock_push_notifications": {
+      "message": "Nella fase successiva, consentire le notifiche push, in modo da poter inviare una notifica quando il prodotto è di nuovo disponibile.",
+      "confirm": "Consentire le notifiche push",
+      "dismiss": "Annullamento"
+    },
     "access_denied": {
       "settings_button": "Vai alle impostazioni",
       "camera_message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
+      "push_message": "Questa funzione richiede l'accesso alle notifiche push. Consentire l'accesso nelle impostazioni.",
       "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione."
     }
   },
