@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Grid, I18n, Button, Modal,
 } from '@shopgate/engage/components';
+import { appConfig } from '@shopgate/engage';
 import pushImage from './push-opt-in.svg';
 import styles from './style';
 import connect from './connector';
@@ -15,6 +16,16 @@ import connect from './connector';
 const PushOptInModal = ({
   showPushOptInModal, allowPushOptInModal, denyPushOptInModal,
 }) => {
+  const {
+    pushOptIn: {
+      modalMessage,
+      modalTitle,
+      modalImage,
+      modalButtonDeny,
+      modalButtonAllow,
+    },
+  } = appConfig;
+
   if (!showPushOptInModal) {
     return null;
   }
@@ -23,14 +34,17 @@ const PushOptInModal = ({
     <Modal isOpened={showPushOptInModal}>
       <Grid className={styles.container}>
         <Grid.Item className={styles.item}>
-          <img src={pushImage} className={styles.image} alt="" aria-hidden="true" />
-          <I18n.Text className={styles.title} string="pushNotification.title" />
-          <I18n.Text string="pushNotification.message" />
+          <img src={modalImage.value || pushImage} className={styles.image} alt="" aria-hidden="true" />
+          <I18n.Text
+            className={styles.title}
+            string={modalTitle.value || 'pushNotification.title'}
+          />
+          <I18n.Text string={modalMessage.value || 'pushNotification.message'} />
           <Button onClick={allowPushOptInModal} type="primary" className={styles.button}>
-            <I18n.Text string="pushNotification.buttonAllow" />
+            <I18n.Text string={modalButtonAllow.value || 'pushNotification.buttonAllow'} />
           </Button>
           <Button onClick={denyPushOptInModal} type="plain" className={styles.button}>
-            <I18n.Text string="pushNotification.buttonDeny" className={styles.buttonText} />
+            <I18n.Text string={modalButtonDeny.value || 'pushNotification.buttonDeny'} className={styles.buttonText} />
           </Button>
         </Grid.Item>
       </Grid>

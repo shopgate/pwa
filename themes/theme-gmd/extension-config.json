@@ -600,6 +600,21 @@
         "appStarts": {
           "value": 1,
           "repeats": null
+        },
+        "modalMessage": {
+          "value": ""
+        },
+        "modalTitle": {
+            "value": ""
+        },
+        "modalImage": {
+          "value": null
+        },
+        "modalButtonDeny": {
+          "value": ""
+        },
+        "modalButtonAllow": {
+          "value": ""
         }
       },
       "params": {
