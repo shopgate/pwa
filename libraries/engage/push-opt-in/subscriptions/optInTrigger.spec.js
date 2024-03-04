@@ -56,8 +56,8 @@ const setMockedConfig = (update = {}) => {
   }, update);
 };
 
-jest.mock('../actions/pushOptInModal.js', () => ({
-  showPushOptInModalModal: jest.fn(),
+jest.mock('../action-creators/pushOptIn.js', () => ({
+  showPushOptInModal: jest.fn(),
 }));
 
 jest.mock('@shopgate/engage', () => ({
@@ -126,7 +126,7 @@ describe('Push OptIn Subscriptions', () => {
 
     subscriptions(subscribe);
 
-    // By default dispatching the showPushOptInModalModal action results
+    // By default dispatching the showPushOptInModal action results
     // into dispatching the optInPostponed action
     showPushOptInModal.mockImplementation(() => (thunkDispatch) => {
       thunkDispatch(optInPostponed());
