@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getIsPushOptInModalVisible } from '../../selectors';
-import { allowPushOptInModal, denyPushOptInModal } from '../../actions';
+import { allowPushOptIn, denyPushOptIn } from '../../actions';
 
 /**
  * Maps the contents of the state to the component props.
@@ -17,8 +17,8 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = {
-  allowPushOptInModal,
-  denyPushOptInModal,
+  allowPushOptIn,
+  denyPushOptIn,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps);

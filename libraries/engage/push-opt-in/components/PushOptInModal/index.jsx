@@ -14,7 +14,7 @@ import connect from './connector';
  * @returns {JSX.Element}
  */
 const PushOptInModal = ({
-  isPushOptInModalVisible, allowPushOptInModal, denyPushOptInModal,
+  isPushOptInModalVisible, allowPushOptIn, denyPushOptIn,
 }) => {
   const {
     pushOptIn: {
@@ -40,10 +40,10 @@ const PushOptInModal = ({
             string={modalTitle || 'pushNotification.title'}
           />
           <I18n.Text string={modalMessage || 'pushNotification.message'} />
-          <Button onClick={allowPushOptInModal} type="primary" className={styles.button}>
+          <Button onClick={allowPushOptIn} type="primary" className={styles.button}>
             <I18n.Text string={modalButtonAllow || 'pushNotification.buttonAllow'} />
           </Button>
-          <Button onClick={denyPushOptInModal} type="plain" className={styles.button}>
+          <Button onClick={denyPushOptIn} type="plain" className={styles.button}>
             <I18n.Text string={modalButtonDeny || 'pushNotification.buttonDeny'} className={styles.buttonText} />
           </Button>
         </Grid.Item>
@@ -53,8 +53,8 @@ const PushOptInModal = ({
 };
 
 PushOptInModal.propTypes = {
-  allowPushOptInModal: PropTypes.func.isRequired,
-  denyPushOptInModal: PropTypes.func.isRequired,
+  allowPushOptIn: PropTypes.func.isRequired,
+  denyPushOptIn: PropTypes.func.isRequired,
   isPushOptInModalVisible: PropTypes.bool.isRequired,
 };
 
