@@ -14,7 +14,7 @@ import connect from './connector';
  * @returns {JSX.Element}
  */
 const PushOptInModal = ({
-  showPushOptInModal, allowPushOptInModal, denyPushOptInModal,
+  isPushOptInModalVisible, allowPushOptInModal, denyPushOptInModal,
 }) => {
   const {
     pushOptIn: {
@@ -26,12 +26,12 @@ const PushOptInModal = ({
     },
   } = appConfig;
 
-  if (!showPushOptInModal) {
+  if (!isPushOptInModalVisible) {
     return null;
   }
 
   return (
-    <Modal isOpened={showPushOptInModal}>
+    <Modal isOpened={isPushOptInModalVisible}>
       <Grid className={styles.container}>
         <Grid.Item className={styles.item}>
           <img src={modalImage.value || pushImage} className={styles.image} alt="" aria-hidden="true" />
@@ -55,11 +55,7 @@ const PushOptInModal = ({
 PushOptInModal.propTypes = {
   allowPushOptInModal: PropTypes.func.isRequired,
   denyPushOptInModal: PropTypes.func.isRequired,
-  showPushOptInModal: PropTypes.bool,
-};
-
-PushOptInModal.defaultProps = {
-  showPushOptInModal: false,
+  isPushOptInModalVisible: PropTypes.bool.isRequired,
 };
 
 export default connect(PushOptInModal);

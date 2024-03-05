@@ -593,6 +593,11 @@
       "default": {
         "minDaysBetweenOptIns": 90,
         "rejectionMaxCount": 2,
+        "modalMessage": null,
+        "modalTitle": null,
+        "modalImage": null,
+        "modalButtonDeny": null,
+        "modalButtonAllow": null,
         "ordersPlaced": {
           "value": 0,
           "repeats": null
@@ -600,21 +605,6 @@
         "appStarts": {
           "value": 1,
           "repeats": null
-        },
-        "modalMessage": {
-          "value": ""
-        },
-        "modalTitle": {
-            "value": ""
-        },
-        "modalImage": {
-          "value": null
-        },
-        "modalButtonDeny": {
-          "value": ""
-        },
-        "modalButtonAllow": {
-          "value": ""
         }
       },
       "params": {
