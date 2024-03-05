@@ -276,6 +276,7 @@
   },
   "permissions": {
     "access_denied": {
+      "push_message": "Sie haben Push-Benachrichtigungen für diese App deaktiviert. Bitte gehen Sie in die Einstellungen Ihres Geräts, um Benachrichtigungen für diese App zu aktivieren.",
       "settings_button": "Zu den Einstellungen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."

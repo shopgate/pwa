@@ -34,17 +34,17 @@ const PushOptInModal = ({
     <Modal isOpened={isPushOptInModalVisible}>
       <Grid className={styles.container}>
         <Grid.Item className={styles.item}>
-          <img src={modalImage.value || pushImage} className={styles.image} alt="" aria-hidden="true" />
+          <img src={modalImage || pushImage} className={styles.image} alt="" aria-hidden="true" />
           <I18n.Text
             className={styles.title}
-            string={modalTitle.value || 'pushNotification.title'}
+            string={modalTitle || 'pushNotification.title'}
           />
-          <I18n.Text string={modalMessage.value || 'pushNotification.message'} />
+          <I18n.Text string={modalMessage || 'pushNotification.message'} />
           <Button onClick={allowPushOptInModal} type="primary" className={styles.button}>
-            <I18n.Text string={modalButtonAllow.value || 'pushNotification.buttonAllow'} />
+            <I18n.Text string={modalButtonAllow || 'pushNotification.buttonAllow'} />
           </Button>
           <Button onClick={denyPushOptInModal} type="plain" className={styles.button}>
-            <I18n.Text string={modalButtonDeny.value || 'pushNotification.buttonDeny'} className={styles.buttonText} />
+            <I18n.Text string={modalButtonDeny || 'pushNotification.buttonDeny'} className={styles.buttonText} />
           </Button>
         </Grid.Item>
       </Grid>
