@@ -31,7 +31,7 @@ const increaseRejectionCount$ = main$.filter(
 );
 
 /**
- * App rating subscriptions
+ * Push opt in subscriptions
  * @param {Function} subscribe The subscribe function
  */
 export default function pushOptIn(subscribe) {
