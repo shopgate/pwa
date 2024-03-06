@@ -277,7 +277,8 @@
     "access_denied": {
       "settings_button": "Go to settings",
       "camera_message": "This feature requires access to your camera. Please allow access in the settings.",
-      "geolocation_message": "To find stores near you, please go to Settings and enable location permissions."
+      "geolocation_message": "To find stores near you, please go to Settings and enable location permissions.",
+      "push_message": "This feature requires access to push notifications. Please allow access in the settings."
     }
   },
   "error": {

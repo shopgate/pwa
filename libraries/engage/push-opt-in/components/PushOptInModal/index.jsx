@@ -14,7 +14,7 @@ import connect from './connector';
  * @returns {JSX.Element}
  */
 const PushOptInModal = ({
-  showPushOptInModal, allowPushOptInModal, denyPushOptInModal,
+  isPushOptInModalVisible, allowPushOptIn, denyPushOptIn,
 }) => {
   const {
     pushOptIn: {
@@ -26,25 +26,25 @@ const PushOptInModal = ({
     },
   } = appConfig;
 
-  if (!showPushOptInModal) {
+  if (!isPushOptInModalVisible) {
     return null;
   }
 
   return (
-    <Modal isOpened={showPushOptInModal}>
+    <Modal isOpened={isPushOptInModalVisible}>
       <Grid className={styles.container}>
         <Grid.Item className={styles.item}>
-          <img src={modalImage.value || pushImage} className={styles.image} alt="" aria-hidden="true" />
+          <img src={modalImage || pushImage} className={styles.image} alt="" aria-hidden="true" />
           <I18n.Text
             className={styles.title}
-            string={modalTitle.value || 'pushNotification.title'}
+            string={modalTitle || 'pushNotification.title'}
           />
-          <I18n.Text string={modalMessage.value || 'pushNotification.message'} />
-          <Button onClick={allowPushOptInModal} type="primary" className={styles.button}>
-            <I18n.Text string={modalButtonAllow.value || 'pushNotification.buttonAllow'} />
+          <I18n.Text string={modalMessage || 'pushNotification.message'} />
+          <Button onClick={allowPushOptIn} type="primary" className={styles.button}>
+            <I18n.Text string={modalButtonAllow || 'pushNotification.buttonAllow'} />
           </Button>
-          <Button onClick={denyPushOptInModal} type="plain" className={styles.button}>
-            <I18n.Text string={modalButtonDeny.value || 'pushNotification.buttonDeny'} className={styles.buttonText} />
+          <Button onClick={denyPushOptIn} type="plain" className={styles.button}>
+            <I18n.Text string={modalButtonDeny || 'pushNotification.buttonDeny'} className={styles.buttonText} />
           </Button>
         </Grid.Item>
       </Grid>
@@ -53,13 +53,9 @@ const PushOptInModal = ({
 };
 
 PushOptInModal.propTypes = {
-  allowPushOptInModal: PropTypes.func.isRequired,
-  denyPushOptInModal: PropTypes.func.isRequired,
-  showPushOptInModal: PropTypes.bool,
-};
-
-PushOptInModal.defaultProps = {
-  showPushOptInModal: false,
+  allowPushOptIn: PropTypes.func.isRequired,
+  denyPushOptIn: PropTypes.func.isRequired,
+  isPushOptInModalVisible: PropTypes.bool.isRequired,
 };
 
 export default connect(PushOptInModal);

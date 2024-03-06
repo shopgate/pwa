@@ -1,7 +1,7 @@
 import { HIDE_PUSH_OPT_IN_MODAL, SHOW_PUSH_OPT_IN_MODAL } from '../constants';
 
 const defaultState = {
-  showPushOptInModal: false,
+  isPushOptInModalVisible: false,
 };
 
 /**
@@ -15,13 +15,13 @@ const pushOptInModalReducer = (state = defaultState, action) => {
     case SHOW_PUSH_OPT_IN_MODAL: {
       return {
         ...state,
-        showPushOptInModal: true,
+        isPushOptInModalVisible: true,
       };
     }
     case HIDE_PUSH_OPT_IN_MODAL: {
       return {
         ...state,
-        showPushOptInModal: false,
+        isPushOptInModalVisible: false,
       };
     }
 

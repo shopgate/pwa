@@ -6,7 +6,7 @@ import { hidePushOptInModal, optInPostponed } from '../action-creators';
  * and native modal should be triggered for setting the permission
  * @returns {Function}
  */
-export const allowPushOptInModal = () => async (dispatch) => {
+export const allowPushOptIn = () => async (dispatch) => {
   await dispatch(grantPushPermissions({ useSettingsModal: true }));
   dispatch(hidePushOptInModal());
 };
@@ -15,7 +15,7 @@ export const allowPushOptInModal = () => async (dispatch) => {
  * action to be dispatched when the user denied the push opt-in in the modal
  * @returns {Function}
  */
-export const denyPushOptInModal = () => async (dispatch) => {
+export const denyPushOptIn = () => async (dispatch) => {
   await dispatch(optInPostponed());
   dispatch(hidePushOptInModal());
 };

@@ -603,6 +603,11 @@
       "default": {
         "minDaysBetweenOptIns": 90,
         "rejectionMaxCount": 2,
+        "modalMessage": null,
+        "modalTitle": null,
+        "modalImage": null,
+        "modalButtonDeny": null,
+        "modalButtonAllow": null,
         "ordersPlaced": {
           "value": 0,
           "repeats": null
