@@ -294,5 +294,11 @@
     "title": "Valorar la aplicación",
     "message": "¿Te gusta nuestra aplicación? Estaremos encantados de recibir una valoración.",
     "rejectionApprovalMessage": "¿Quiere darnos su opinión? Esto nos ayudará a mejorar la aplicación."
+  },
+  "pushNotification": {
+    "title": "Reciba cupones y ofertas exclusivas",
+    "buttonAllow": "Activar las notificaciones",
+    "buttonDeny": "No quiero notificaciones",
+    "message": "Active las notificaciones para que podamos enviarle notificaciones push sobre nuevas ofertas, vales exclusivos y mucho más."
   }
 }

@@ -295,5 +295,11 @@
     "title": "Évaluer l'application",
     "message": "Vous aimez notre application ? Nous serions heureux de recevoir une évaluation !",
     "rejectionApprovalMessage": "Vous souhaitez nous faire part de vos commentaires ? Cela nous aidera à améliorer encore l'application."
+  },
+  "pushNotification": {
+    "title": "Reçois des coupons et des offres exclusives",
+    "buttonAllow": "Activer les notifications",
+    "buttonDeny": "Je ne veux pas de notifications",
+    "message": "Active les notifications pour que nous puissions t'envoyer des messages push sur les nouvelles offres, les bons d'achat exclusifs et plus encore."
   }
 }

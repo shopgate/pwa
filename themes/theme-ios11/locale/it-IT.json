@@ -294,5 +294,11 @@
     "title": "Vota l'app",
     "message": "Ti piace la nostra app? Saremmo felici di ricevere una valutazione!",
     "rejectionApprovalMessage": "Vuoi darci un feedback? Questo ci aiuterà a migliorare ulteriormente l'applicazione."
+  },
+  "pushNotification": {
+    "title": "Ricevere coupon e offerte esclusive",
+    "buttonAllow": "Abilita le notifiche",
+    "buttonDeny": "Non voglio notifiche",
+    "message": "Attivate le notifiche in modo da potervi inviare notifiche push su nuove offerte, buoni esclusivi e altro ancora."
   }
 }
