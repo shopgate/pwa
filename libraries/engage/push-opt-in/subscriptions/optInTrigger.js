@@ -16,13 +16,13 @@ import {
   resetOrdersPlacedCount,
   setLastPopupTimestamp,
   increaseRejectionCount,
+  showPushOptInModal,
 } from '../action-creators';
 import {
   PUSH_OPT_IN_OPT_IN_POSTPONED,
 } from '../constants';
 
 import { getPushOptInTriggerState } from '../selectors';
-import { showOptIn } from '../actions';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -51,7 +51,7 @@ export default function pushOptIn(subscribe) {
       },
     } = appConfig;
 
-    // TODO add check to determine if the app supports push-opt-in
+    // TODO add check to determine if the app supports push-opt-in (is done in CURB-3915)
 
     const [{ status: pushStatus }] = await getAppPermissions([PERMISSION_ID_PUSH]);
 
@@ -86,7 +86,7 @@ export default function pushOptIn(subscribe) {
     if (mustShowModal && hasRepeats && minDaysElapsed) {
       dispatch(setLastPopupTimestamp());
       dispatch(resetAction());
-      dispatch(showOptIn());
+      dispatch(showPushOptInModal());
     }
   };
 

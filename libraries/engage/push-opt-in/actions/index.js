@@ -1,1 +1,1 @@
-export * from './optInTrigger';
+export * from './pushOptInModal';

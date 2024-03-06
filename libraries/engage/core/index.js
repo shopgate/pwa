@@ -122,6 +122,7 @@ export { default as handlePushNotification } from '@shopgate/pwa-common/actions/
 export { default as registerLinkEvents } from '@shopgate/pwa-common/actions/app/registerLinkEvents';
 export { default as updateStatusBarBackground } from './actions/updateStatusBarBackground';
 export { default as grantPermissions } from './actions/grantPermissions';
+export { default as grantPushPermissions } from './actions/grantPushPermissions';
 export { default as grantCameraPermissions } from './actions/grantCameraPermissions';
 export { default as grantGeolocationPermissions } from './actions/grantGeolocationPermissions';
 export { default as getGeolocation } from './actions/getGeolocation';
