@@ -607,6 +607,26 @@
         "label": "App rating settings"
       }
     },
+    "pushOptIn": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "minDaysBetweenOptIns": 90,
+        "rejectionMaxCount": 2,
+        "ordersPlaced": {
+          "value": 0,
+          "repeats": null
+        },
+        "appStarts": {
+          "value": 1,
+          "repeats": null
+        }
+      },
+      "params": {
+        "type": "json",
+        "label": "App rating settings"
+      }
+    },
     "reviewsInfo": {
       "type": "bigApi",
       "destination": "frontend",
