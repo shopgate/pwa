@@ -31,7 +31,7 @@ const PushOptInModal = ({
   }
 
   return (
-    <Modal isOpened={isPushOptInModalVisible}>
+    <Modal isOpened={isPushOptInModalVisible} classes={{ content: styles.modalContent }}>
       <Grid className={styles.container}>
         <Grid.Item className={styles.item}>
           <img src={modalImage || pushImage} className={styles.image} alt="" aria-hidden="true" />

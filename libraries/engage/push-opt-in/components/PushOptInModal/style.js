@@ -1,6 +1,10 @@
 import { css } from 'glamor';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
+const modalContent = css({
+  width: '100%',
+}).toString();
+
 const container = css({
   backgroundColor: themeColors.lightOverlay,
   height: '100vh',
@@ -32,6 +36,7 @@ const link = css({
 
 const image = css({
   width: '80%',
+  maxWidth: 400,
 }).toString();
 
 const button = css({
@@ -43,6 +48,7 @@ const buttonText = css({
 }).toString();
 
 export default {
+  modalContent,
   container,
   item,
   title,

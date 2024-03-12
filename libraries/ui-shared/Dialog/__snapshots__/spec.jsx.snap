@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
-<Modal>
+<Modal
+  classes={
+    Object {
+      "container": "",
+      "content": "",
+      "layout": "",
+    }
+  }
+>
   <Backdrop
     className=""
     color="#000"
@@ -19,7 +27,15 @@ exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
 `;
 
 exports[`<Dialog /> should render a special dialog 1`] = `
-<Modal>
+<Modal
+  classes={
+    Object {
+      "container": "",
+      "content": "",
+      "layout": "",
+    }
+  }
+>
   <Backdrop
     className=""
     color="#000"
@@ -45,7 +61,15 @@ exports[`<Dialog /> should render a special dialog 1`] = `
 `;
 
 exports[`<Dialog /> should render variant select dialog 1`] = `
-<Modal>
+<Modal
+  classes={
+    Object {
+      "container": "",
+      "content": "",
+      "layout": "",
+    }
+  }
+>
   <Backdrop
     className=""
     color="#000"
@@ -68,7 +92,15 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
 `;
 
 exports[`<Dialog /> should render without props 1`] = `
-<Modal>
+<Modal
+  classes={
+    Object {
+      "container": "",
+      "content": "",
+      "layout": "",
+    }
+  }
+>
   <Backdrop
     className=""
     color="#000"
