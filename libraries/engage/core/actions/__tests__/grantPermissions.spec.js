@@ -3,10 +3,10 @@ import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/
 import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import {
-  STATUS_DENIED,
-  STATUS_GRANTED,
-  STATUS_NOT_DETERMINED,
-  STATUS_NOT_SUPPORTED,
+  PERMISSION_STATUS_DENIED,
+  PERMISSION_STATUS_GRANTED,
+  PERMISSION_STATUS_NOT_DETERMINED,
+  PERMISSION_STATUS_NOT_SUPPORTED,
   PERMISSION_ID_CAMERA,
 } from '@shopgate/pwa-core/constants/AppPermissions';
 import {
@@ -33,7 +33,7 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
  * @param {string} status The desired permission status.
  * @returns {Array}
  */
-const getPermissionsResponse = (status = STATUS_GRANTED) => [{ status }];
+const getPermissionsResponse = (status = PERMISSION_STATUS_GRANTED) => [{ status }];
 
 /**
  * Flushes the promise queue.
@@ -55,8 +55,8 @@ describe('engage > core > actions > grantPermissions', () => {
   jest.useFakeTimers();
 
   beforeAll(() => {
-    getAppPermissions.mockResolvedValue(getPermissionsResponse(STATUS_GRANTED));
-    requestAppPermissions.mockResolvedValue(getPermissionsResponse(STATUS_GRANTED));
+    getAppPermissions.mockResolvedValue(getPermissionsResponse(PERMISSION_STATUS_GRANTED));
+    requestAppPermissions.mockResolvedValue(getPermissionsResponse(PERMISSION_STATUS_GRANTED));
     showModal.mockResolvedValue(true);
   });
 
@@ -90,7 +90,8 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with FALSE when the permissions are not supported', async () => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_NOT_SUPPORTED));
+    getAppPermissions
+      .mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_NOT_SUPPORTED));
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
@@ -103,7 +104,8 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with TRUE when the permissions where not determined, but the user granted them', async () => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_NOT_DETERMINED));
+    getAppPermissions
+      .mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(true);
@@ -116,8 +118,9 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with FALSE when the permissions where not determined, and the user denied them', async () => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_NOT_DETERMINED));
-    requestAppPermissions.mockResolvedValue(getPermissionsResponse(STATUS_DENIED));
+    getAppPermissions
+      .mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
+    requestAppPermissions.mockResolvedValue(getPermissionsResponse(PERMISSION_STATUS_DENIED));
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
@@ -128,8 +131,10 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with FALSE when the permissions where not determined, and the user denied them temporary', async () => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_NOT_DETERMINED));
-    requestAppPermissions.mockResolvedValue(getPermissionsResponse(STATUS_NOT_DETERMINED));
+    getAppPermissions
+      .mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
+    requestAppPermissions
+      .mockResolvedValue(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
@@ -140,7 +145,7 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with FALSE when the permissions are denied, and no settings modal is about to be shown', async () => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_DENIED));
+    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
@@ -151,7 +156,7 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with FALSE when the user denied to open the app settings', async () => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_DENIED));
+    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
     showModal.mockResolvedValueOnce(false);
 
     const granted = await grantPermissions({
@@ -170,8 +175,8 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with FALSE when the user opened the settings, but did not grant permissions', (done) => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_DENIED));
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_DENIED));
+    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
+    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
 
     grantPermissions({
       permissionId,
@@ -196,8 +201,8 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with TRUE when the user opened the settings, and granted permissions', (done) => {
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_DENIED));
-    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(STATUS_GRANTED));
+    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
+    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_GRANTED));
 
     grantPermissions({
       permissionId,

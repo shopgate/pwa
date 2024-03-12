@@ -1,6 +1,6 @@
 import {
   PERMISSION_ID_PUSH,
-} from '@shopgate/pwa-core/constants/AppPermissions';
+} from '@shopgate/pwa-core';
 import grantPermissions from './grantPermissions';
 
 /**
@@ -27,8 +27,8 @@ import grantPermissions from './grantPermissions';
  */
 const grantPushPermissions = (options = {}) => (dispatch) => {
   const {
-    useSettingsModal = true,
-    useRationaleModal = true,
+    useSettingsModal = false,
+    useRationaleModal = false,
     modal = {},
     rationaleModal = {},
   } = options;

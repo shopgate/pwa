@@ -38,6 +38,8 @@ const BackInStockButton = ({
       event.stopPropagation();
     }
     const allowed = await grantPushPermissions({
+      useRationaleModal: true,
+      useSettingsModal: true,
       rationaleModal: {
         message: 'permissions.back_in_stock_push_notifications.message',
         confirm: 'permissions.back_in_stock_push_notifications.confirm',

@@ -44,6 +44,7 @@ import extensions from 'Extensions/subscribers';
 // Engage
 import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 import appRating from '@shopgate/engage/app-rating/subscriptions';
+import pushOptIn from '@shopgate/engage/push-opt-in/subscriptions';
 
 const subscriptions = [
   // Common subscribers.
@@ -77,6 +78,7 @@ const subscriptions = [
   engageBackInStock,
   // App rating subscribers
   appRating,
+  pushOptIn,
   // Theme subscribers.
   app,
   viewport,

@@ -14,6 +14,7 @@ import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
 import appRating from '@shopgate/engage/app-rating/reducers';
+import pushOptIn from '@shopgate/engage/push-opt-in/reducers';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
@@ -29,6 +30,7 @@ persistedReducers.set([
   'url',
   'user',
   'appRating',
+  'pushOptIn.optInTrigger',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -59,6 +61,7 @@ const reducers = combineReducers({
   url,
   user,
   appRating,
+  pushOptIn,
 });
 
 export default reducers;

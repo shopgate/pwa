@@ -3,10 +3,10 @@ import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/
 import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
 import { showModal } from '@shopgate/engage/core';
 import {
-  STATUS_DENIED,
-  STATUS_GRANTED,
-  STATUS_NOT_DETERMINED,
-  STATUS_NOT_SUPPORTED,
+  PERMISSION_STATUS_DENIED,
+  PERMISSION_STATUS_GRANTED,
+  PERMISSION_STATUS_NOT_DETERMINED,
+  PERMISSION_STATUS_NOT_SUPPORTED,
   availablePermissionsIds,
 } from '@shopgate/pwa-core/constants/AppPermissions';
 import {
@@ -59,13 +59,13 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   [{ status }] = await getAppPermissions([permissionId]);
 
   // Stop the process when the permission type is not supported.
-  if (status === STATUS_NOT_SUPPORTED) {
+  if (status === PERMISSION_STATUS_NOT_SUPPORTED) {
     resolve(false);
     return;
   }
 
   // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
-  if (status === STATUS_NOT_DETERMINED) {
+  if (status === PERMISSION_STATUS_NOT_DETERMINED) {
     if (useRationaleModal) {
       const requestAllowed = await dispatch(showModal({
         message: rationaleModalOptions.message || '',
@@ -84,19 +84,19 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     [{ status }] = await requestAppPermissions([{ permissionId }]);
 
     // The user denied the permissions within the native dialog.
-    if ([STATUS_DENIED, STATUS_NOT_DETERMINED].includes(status)) {
+    if ([PERMISSION_STATUS_DENIED, PERMISSION_STATUS_NOT_DETERMINED].includes(status)) {
       resolve(false);
       return;
     }
   }
 
-  if (status === STATUS_GRANTED) {
+  if (status === PERMISSION_STATUS_GRANTED) {
     resolve(true);
     return;
   }
 
   // The user permanently denied the permissions before.
-  if (status === STATUS_DENIED) {
+  if (status === PERMISSION_STATUS_DENIED) {
     if (!useSettingsModal) {
       resolve(false);
       return;
@@ -123,7 +123,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     const handler = async () => {
       event.removeCallback(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND, handler);
       [{ status }] = await getAppPermissions([permissionId]);
-      resolve(status === STATUS_GRANTED);
+      resolve(status === PERMISSION_STATUS_GRANTED);
     };
 
     /**

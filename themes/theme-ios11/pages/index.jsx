@@ -38,6 +38,7 @@ import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import themeApi from '../themeApi';
 import * as routes from './routes';
@@ -62,6 +63,7 @@ const Pages = ({ store }) => (
               <Portal name={APP_GLOBALS} />
               <Viewport>
                 <ModalContainer component={Dialog} />
+                <PushOptInModal />
                 <Toaster render={props => <SnackBarContainer {...props} />} />
                 <FavoritesListChooser />
                 <Router history={history}>
