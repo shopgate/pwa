@@ -316,7 +316,7 @@
     "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
     "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
   },
-  "pushNotification": {
+  "pushOptInModal": {
     "title": "Exclusieve coupons en aanbiedingen ontvangen",
     "buttonAllow": "Meldingen inschakelen",
     "buttonDeny": "Ik wil geen meldingen",

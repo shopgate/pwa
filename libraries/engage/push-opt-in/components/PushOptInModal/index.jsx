@@ -64,17 +64,17 @@ const PushOptInModal = ({
           <img src={imageSRC} className={classNames(styles.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
             className={classNames(styles.title, 'push-opt-in-modal__title')}
-            string={modalTitle || 'pushNotification.title'}
+            string={modalTitle || 'pushOptInModal.title'}
           />
           <I18n.Text
             className={classNames('push-opt-in-modal__message')}
-            string={modalMessage || 'pushNotification.message'}
+            string={modalMessage || 'pushOptInModal.message'}
           />
           <Button onClick={allowPushOptIn} type="primary" className={classNames(styles.button, 'push-opt-in-modal__button-allow')}>
-            <I18n.Text string={modalButtonAllow || 'pushNotification.buttonAllow'} />
+            <I18n.Text string={modalButtonAllow || 'pushOptInModal.buttonAllow'} />
           </Button>
           <Button onClick={denyPushOptIn} type="plain" className={classNames(styles.button, 'push-opt-in-modal__button-deny')}>
-            <I18n.Text string={modalButtonDeny || 'pushNotification.buttonDeny'} className={styles.buttonText} />
+            <I18n.Text string={modalButtonDeny || 'pushOptInModal.buttonDeny'} className={styles.buttonText} />
           </Button>
         </Grid.Item>
       </Grid>

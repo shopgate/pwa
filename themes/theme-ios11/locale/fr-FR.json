@@ -317,7 +317,7 @@
     "message": "Vous aimez notre application ? Nous serions heureux de recevoir une évaluation !",
     "rejectionApprovalMessage": "Vous souhaitez nous faire part de vos commentaires ? Cela nous aidera à améliorer encore l'application."
   },
-  "pushNotification": {
+  "pushOptInModal": {
     "title": "Reçois des coupons et des offres exclusives",
     "buttonAllow": "Activer les notifications",
     "buttonDeny": "Je ne veux pas de notifications",

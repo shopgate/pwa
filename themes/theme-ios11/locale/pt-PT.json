@@ -316,7 +316,7 @@
     "message": "Gosta da nossa aplicação? Teremos todo o prazer em receber uma classificação!",
     "rejectionApprovalMessage": "Gostaria de nos dar o seu feedback? Isto irá ajudar-nos a melhorar ainda mais a aplicação."
   },
-  "pushNotification": {
+  "pushOptInModal": {
     "title": "Receber cupões e ofertas exclusivas",
     "buttonAllow": "Ativar as notificações",
     "buttonDeny": "Não quero notificações",

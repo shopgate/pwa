@@ -291,8 +291,8 @@
     "access_denied": {
       "settings_button": "Go to settings",
       "camera_message": "This feature requires access to your camera. Please allow access in the settings.",
-      "geolocation_message": "To find stores near you, please go to Settings and enable location permissions.",
-      "push_message": "This feature requires access to push notifications. Please allow access in the settings."
+      "push_message": "This feature requires access to push notifications. Please allow access in the settings.",
+      "geolocation_message": "To find stores near you, please go to Settings and enable location permissions."
     }
   },
   "error": {
@@ -315,7 +315,7 @@
     "message": "Do you like our app? We would be happy to receive a rating!",
     "rejectionApprovalMessage": "Would you like to give us feedback? This helps us to improve the app further."
   },
-  "pushNotification": {
+  "pushOptInModal": {
     "title": "Receive exklusive coupons and offers",
     "buttonAllow": "Enable notifications",
     "buttonDeny": "I don't want notifications",

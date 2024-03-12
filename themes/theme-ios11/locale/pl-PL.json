@@ -322,7 +322,7 @@
     "message": "Czy podoba Ci się nasza aplikacja? Będziemy wdzięczni za wystawienie oceny!",
     "rejectionApprovalMessage": "Czy chcesz przekazać nam swoje uwagi? Pomoże nam to w dalszym ulepszaniu aplikacji."
   },
-  "pushNotification": {
+  "pushOptInModal": {
     "title": "Otrzymuj wyjątkowe kupony i oferty",
     "buttonAllow": "Włącz powiadomienia",
     "buttonDeny": "Nie chcę powiadomień",
