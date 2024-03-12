@@ -27,8 +27,8 @@ import grantPermissions from './grantPermissions';
  */
 const grantPushPermissions = (options = {}) => (dispatch) => {
   const {
-    useSettingsModal = true,
-    useRationaleModal = true,
+    useSettingsModal = false,
+    useRationaleModal = false,
     modal = {},
     rationaleModal = {},
   } = options;
