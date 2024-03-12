@@ -5,6 +5,8 @@ import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';
 import headerStyles from './components/Header/style';
 
+jest.mock('@shopgate/pwa-common/helpers/config');
+
 // Mock the portal
 jest.mock('react-portal', () => (
   ({ isOpened, children }) => (
@@ -13,6 +15,10 @@ jest.mock('react-portal', () => (
 ));
 jest.mock('@shopgate/engage', () => ({
   themeConfig: {},
+}));
+
+jest.mock('@shopgate/engage/back-in-stock/selectors', () => ({
+  isBackInStockEnabled: () => false,
 }));
 
 jest.mock('@shopgate/engage/components', () => ({
@@ -35,7 +41,6 @@ jest.mock('@shopgate/pwa-ui-shared/ClientInformation/connector', () => (obj) => 
   return newObj;
 });
 
-jest.mock('@shopgate/pwa-common/helpers/config');
 /*
 let mockedHasFavorites = true;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({

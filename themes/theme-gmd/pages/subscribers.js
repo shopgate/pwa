@@ -41,7 +41,8 @@ import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
-// App rating
+// Engage
+import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 import appRating from '@shopgate/engage/app-rating/subscriptions';
 
 const subscriptions = [
@@ -72,6 +73,8 @@ const subscriptions = [
   commerceReviews,
   commerceSearch,
   commerceScanner,
+  // Engage subscribers
+  engageBackInStock,
   // App rating subscribers
   appRating,
   // Theme subscribers.

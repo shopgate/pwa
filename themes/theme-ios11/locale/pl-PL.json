@@ -20,7 +20,21 @@
     "reviews": "Recenzje",
     "browse": "Przeglądaj stronę",
     "favorites": "Lista życzeń",
-    "scanner": "Skaner"
+    "scanner": "Skaner",
+    "back_in_stock": "Przypomnienia o powrocie do magazynu"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktywne przypomnienia",
+      "past": "Przypomnienia z przeszłości"
+    },
+    "empty_list_reminder": "Na tej liście nie ma przypomnień.",
+    "get_notified": "Otrzymuj powiadomienia",
+    "we_will_remind_you": "Przypominamy.",
+    "add_back_in_stock_success_modal": {
+      "title": "Dodano przypomnienie o dostępności w magazynie!",
+      "message": "Wyślemy Ci powiadomienie push, gdy produkt będzie ponownie dostępny w magazynie. Powiadomieniami można zarządzać w ustawieniach."
+    }
   },
   "favorites": {
     "add": "Dodaj do listy obserwowanych",
@@ -229,6 +243,7 @@
     "favorites": "Lista życzeń",
     "my_orders": "Moje polecenia",
     "cart": "Koszyk na zakupy",
+    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "shipping": "Metody wysyłki",
     "about": "Nota prawna",
     "contact": "Kontakt",
@@ -275,9 +290,15 @@
     }
   },
   "permissions": {
+    "back_in_stock_push_notifications": {
+      "message": "W następnym kroku zezwól na powiadomienia push, abyśmy mogli wysłać Ci powiadomienie, gdy produkt będzie ponownie dostępny w magazynie.",
+      "confirm": "Zezwalaj na powiadomienia push",
+      "dismiss": "Anuluj"
+    },
     "access_denied": {
       "settings_button": "Przejdź do ustawień",
       "camera_message": "Ta funkcja wymaga dostępu do aparatu. W ustawieniach należy zezwolić na dostęp.",
+      "push_message": "Ta funkcja wymaga dostępu do powiadomień push. Zezwól na dostęp w ustawieniach.",
       "geolocation_message": "Potrzebujemy dostępu do lokalizacji, aby pokazać pobliskie sklepy."
     }
   },

@@ -1,7 +1,7 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/constants/AppEvents';
 import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { showModal } from '@shopgate/engage/core';
 import {
   STATUS_DENIED,
   STATUS_GRANTED,
@@ -23,6 +23,13 @@ import { logger } from '@shopgate/pwa-core/helpers';
  * @param {string} options.permissionId The id of the permission to request.
  * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
+ * @param {boolean} [options.useRationaleModal=false] Whether a rational modal should be shown
+ * @param {Object} [options.rationaleModal={}] Options for the rationale modal.
+ * @param {string} options.rationaleModal.title Modal title.
+ * @param {string} options.rationaleModal.message Modal message.
+ * @param {string} options.rationaleModal.confirm Label for the confirm button.
+ * @param {string} options.rationaleModal.dismiss Label for the dismiss button.
+ * @param {Object} options.rationaleModal.params Additional parameters for i18n strings.
  * @param {Object} [options.modal={}] Options for the settings modal.
  * @param {string} options.modal.title Modal title.
  * @param {string} options.modal.message Modal message.
@@ -35,6 +42,8 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   const {
     permissionId,
     useSettingsModal = false,
+    useRationaleModal = false,
+    rationaleModal: rationaleModalOptions = {},
     modal: modalOptions = {},
   } = options;
 
@@ -46,7 +55,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
   let status;
 
-  // Check the current status of the camera permissions.
+  // Check the current status of the requested permission.
   [{ status }] = await getAppPermissions([permissionId]);
 
   // Stop the process when the permission type is not supported.
@@ -57,6 +66,20 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
   // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
   if (status === STATUS_NOT_DETERMINED) {
+    if (useRationaleModal) {
+      const requestAllowed = await dispatch(showModal({
+        message: rationaleModalOptions.message || '',
+        confirm: rationaleModalOptions.confirm || '',
+        dismiss: rationaleModalOptions.dismiss || '',
+        params: rationaleModalOptions.params || '',
+      }));
+
+      if (requestAllowed === false) {
+        resolve(false);
+        return;
+      }
+    }
+
     // Trigger the native permissions dialog.
     [{ status }] = await requestAppPermissions([{ permissionId }]);
 

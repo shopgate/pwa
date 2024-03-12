@@ -49,6 +49,7 @@ export {
   makeGetProductFeaturedMedia,
   makeIsProductActive,
   makeIsBaseProductActive,
+  makeGetProductType,
 } from './selectors/product';
 export * from './selectors/price';
 export * from './selectors/variants';

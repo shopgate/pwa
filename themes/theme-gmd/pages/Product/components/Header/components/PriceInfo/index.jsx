@@ -35,7 +35,7 @@ PriceInfo.propTypes = {
 };
 
 PriceInfo.defaultProps = {
-  price: '',
+  price: null,
 };
 
 export default connect(memo(PriceInfo));

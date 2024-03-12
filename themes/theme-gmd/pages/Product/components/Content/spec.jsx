@@ -11,6 +11,7 @@ jest.mock('@shopgate/engage/product', () => ({
   RelationsSlider: () => null,
   Description: () => null,
   Options: () => null,
+  Characteristics: () => null,
   ProductContext: {
     Provider: () => 'Provider',
   },
@@ -24,7 +25,6 @@ jest.mock('@shopgate/pwa-ui-shared/TaxDisclaimer', () => () => null);
 
 jest.mock('../Media', () => () => null);
 jest.mock('../Header', () => () => null);
-jest.mock('../Characteristics', () => () => null);
 jest.mock('../AppBar', () => () => null);
 jest.mock('./connector', () => Component => Component);
 
