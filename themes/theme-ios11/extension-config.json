@@ -613,11 +613,6 @@
       "default": {
         "minDaysBetweenOptIns": 90,
         "rejectionMaxCount": 2,
-        "modalMessage": null,
-        "modalTitle": null,
-        "modalImage": null,
-        "modalButtonDeny": null,
-        "modalButtonAllow": null,
         "ordersPlaced": {
           "value": 0,
           "repeats": null
@@ -625,11 +620,17 @@
         "appStarts": {
           "value": 1,
           "repeats": null
-        }
+        },
+        "modalMessage": null,
+        "modalTitle": null,
+        "modalButtonDeny": null,
+        "modalButtonAllow": null,
+        "modalImageURL": null,
+        "modalImageSVG": null
       },
       "params": {
         "type": "json",
-        "label": "App rating settings"
+        "label": "Push opt-in settings"
       }
     },
     "reviewsInfo": {

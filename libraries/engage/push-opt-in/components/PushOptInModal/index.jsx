@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {
   Grid, I18n, Button, Modal,
 } from '@shopgate/engage/components';
@@ -20,11 +21,37 @@ const PushOptInModal = ({
     pushOptIn: {
       modalMessage,
       modalTitle,
-      modalImage,
       modalButtonDeny,
       modalButtonAllow,
+      modalImageURL,
+      modalImageSVG,
     },
   } = appConfig;
+
+  const imageSRC = useMemo(() => {
+    // No overwrite configured -> use default image
+    if (!modalImageURL && !modalImageSVG) {
+      return pushImage;
+    }
+
+    // URL overwrite configured -> use it
+    if (modalImageURL) {
+      return modalImageURL;
+    }
+
+    // SVG overwrite configured -> create data url
+    try {
+      // Remove any characters outside the Latin1 range
+      const decoded = decodeURIComponent(encodeURIComponent(modalImageSVG));
+
+      // Now we can use btoa to convert the svg to base64
+      const base64 = btoa(decoded);
+
+      return `data:image/svg+xml;base64,${base64}`;
+    } catch (e) {
+      return pushImage;
+    }
+  }, [modalImageSVG, modalImageURL]);
 
   if (!isPushOptInModalVisible) {
     return null;
@@ -32,18 +59,21 @@ const PushOptInModal = ({
 
   return (
     <Modal isOpened={isPushOptInModalVisible} classes={{ content: styles.modalContent }}>
-      <Grid className={styles.container}>
+      <Grid className={classNames(styles.container, 'push-opt-in-modal__container')}>
         <Grid.Item className={styles.item}>
-          <img src={modalImage || pushImage} className={styles.image} alt="" aria-hidden="true" />
+          <img src={imageSRC} className={classNames(styles.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
-            className={styles.title}
+            className={classNames(styles.title, 'push-opt-in-modal__title')}
             string={modalTitle || 'pushNotification.title'}
           />
-          <I18n.Text string={modalMessage || 'pushNotification.message'} />
-          <Button onClick={allowPushOptIn} type="primary" className={styles.button}>
+          <I18n.Text
+            className={classNames('push-opt-in-modal__message')}
+            string={modalMessage || 'pushNotification.message'}
+          />
+          <Button onClick={allowPushOptIn} type="primary" className={classNames(styles.button, 'push-opt-in-modal__button-allow')}>
             <I18n.Text string={modalButtonAllow || 'pushNotification.buttonAllow'} />
           </Button>
-          <Button onClick={denyPushOptIn} type="plain" className={styles.button}>
+          <Button onClick={denyPushOptIn} type="plain" className={classNames(styles.button, 'push-opt-in-modal__button-deny')}>
             <I18n.Text string={modalButtonDeny || 'pushNotification.buttonDeny'} className={styles.buttonText} />
           </Button>
         </Grid.Item>
