@@ -19,7 +19,21 @@
     "shipping": "Shipping",
     "reviews": "Reviews",
     "favorites": "Favorites",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Notifications"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Active reminders",
+      "past": "Past reminders"
+    },
+    "empty_list_reminder": "You don't have reminders in this list.",
+    "get_notified": "Get notified",
+    "we_will_remind_you": "We will remind you.",
+    "add_back_in_stock_success_modal": {
+      "title": "Back-in-Stock reminder added!",
+      "message": "We will send you a push notification when the product is back in stock. You can manage your notifications in the settings."
+    }
   },
   "favorites": {
     "add": "Add to favorites list",
@@ -218,8 +232,8 @@
     "logout_message": "You have been logged out.",
     "error": "Your username and password don't match any account"
   },
-  "navigation": {
     "login_register": "Login / Register",
+  "navigation": {
     "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
@@ -227,6 +241,7 @@
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "scanner": "Scanner",
+    "back_in_stock": "Notifications",
     "shipping": "Shipping methods",
     "about": "Contact us",
     "payment": "Payment methods",
@@ -266,8 +281,13 @@
       "qrCode": "We couldn't find a result for this QR code.",
       "barCode": "Product not found."
     }
-  },
+ },
   "permissions": {
+    "back_in_stock_push_notifications": {
+      "message": "Please allow push notifications in the next step, so that we can send you a notification when the product is back in stock.",
+      "confirm": "Allow push notifications",
+      "dismiss": "Cancel"
+    },
     "access_denied": {
       "settings_button": "Go to settings",
       "camera_message": "This feature requires access to your camera. Please allow access in the settings.",

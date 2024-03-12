@@ -20,7 +20,21 @@
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Benachrichtigungen"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktive Benachrichtigungen",
+      "past": "Vergangene Benachrichtigungen"
+    },
+    "empty_list_reminder": "Du hast keine Benachrichtigungen konfiguriert",
+    "get_notified": "Benachrichtige mich",
+    "we_will_remind_you": "Du wirst benachrichtigt",
+    "add_back_in_stock_success_modal": {
+      "title": "Benachrichtigung hinzugefügt!",
+      "message": "Wir senden dir eine Push-Benachrichtigung wenn das Produkt wieder verfügbar ist. Du kannst diese Benachrichtigungen in den Einstellungen verwalten."
+    }
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -240,6 +254,7 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
+    "back_in_stock": "Benachrichtigungen",
     "back": "Zurück zu {title}"
   },
   "reviews": {
@@ -275,10 +290,16 @@
     }
   },
   "permissions": {
+    "back_in_stock_push_notifications": {
+      "message": "Bitte erlaube Push-Benachrichtigungen im nächsten Schritt, damit wir dir mitteilen können wenn das Produkt wieder verfügbar ist.",
+      "confirm": "Benachrichtigungen erlauben",
+      "dismiss": "Abbrechen"
+    },
     "access_denied": {
       "push_message": "Sie haben Push-Benachrichtigungen für diese App deaktiviert. Bitte gehen Sie in die Einstellungen Ihres Geräts, um Benachrichtigungen für diese App zu aktivieren.",
       "settings_button": "Zu den Einstellungen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
+      "push_message": "Du hast Push-Benachrichtigungen für diese App deaktiviert. Bitte gehe in die Einstellungen deines Gerätes um Benachrichtigungen für diese App zu aktivieren.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
   },

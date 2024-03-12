@@ -20,7 +20,21 @@
     "reviews": "Revues",
     "browse": "Naviguer",
     "favorites": "Favorits",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Retour en stock Rappels"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Rappels actifs",
+      "past": "Rappels du passé"
+    },
+    "empty_list_reminder": "Vous n'avez pas de rappels dans cette liste.",
+    "get_notified": "Recevoir une notification",
+    "we_will_remind_you": "Nous vous le rappelons.",
+    "add_back_in_stock_success_modal": {
+      "title": "Ajout d'un rappel de stock !",
+      "message": "Nous vous enverrons une notification push lorsque le produit sera à nouveau en stock. Vous pouvez gérer vos notifications dans les paramètres."
+    }
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
@@ -225,6 +239,7 @@
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
+    "back_in_stock": "Rappel de stock",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",
@@ -270,9 +285,15 @@
     }
   },
   "permissions": {
+    "back_in_stock_push_notifications": {
+      "message": "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock.",
+      "confirm": "Autoriser les notifications push",
+      "dismiss": "Annuler"
+    },
     "access_denied": {
       "settings_button": "Aller dans paramètres",
       "camera_message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
+      "push_message": "Cette fonctionnalité nécessite l'accès aux notifications push. Veuillez autoriser l'accès dans les paramètres.",
       "geolocation_message": "Pour trouver des magasins près de chez vous, allez dans Paramètres et activez l’autorisation de géolocalisation."
     }
   },
