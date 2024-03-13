@@ -9,11 +9,9 @@ import {
   PERMISSION_STATUS_NOT_SUPPORTED,
   availablePermissionsIds,
 } from '@shopgate/pwa-core/constants/AppPermissions';
-import {
-  getAppPermissions,
-  requestAppPermissions,
-} from '@shopgate/pwa-core/commands/appPermissions';
 import { logger } from '@shopgate/pwa-core/helpers';
+import requestAppPermission from './requestAppPermission';
+import requestAppPermissionStatus from './requestAppPermissionStatus';
 
 /**
  * Determines the current state of a specific permission for an app feature. If not already
@@ -56,7 +54,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   let status;
 
   // Check the current status of the requested permission.
-  [{ status }] = await getAppPermissions([permissionId]);
+  status = await dispatch(requestAppPermissionStatus({ permissionId }));
 
   // Stop the process when the permission type is not supported.
   if (status === PERMISSION_STATUS_NOT_SUPPORTED) {
@@ -81,7 +79,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     }
 
     // Trigger the native permissions dialog.
-    [{ status }] = await requestAppPermissions([{ permissionId }]);
+    status = await dispatch(requestAppPermission({ permissionId }));
 
     // The user denied the permissions within the native dialog.
     if ([PERMISSION_STATUS_DENIED, PERMISSION_STATUS_NOT_DETERMINED].includes(status)) {
@@ -122,7 +120,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
      */
     const handler = async () => {
       event.removeCallback(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND, handler);
-      [{ status }] = await getAppPermissions([permissionId]);
+      status = await dispatch(requestAppPermissionStatus({ permissionId }));
       resolve(status === PERMISSION_STATUS_GRANTED);
     };
 
