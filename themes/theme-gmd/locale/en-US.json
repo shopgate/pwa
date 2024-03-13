@@ -232,8 +232,8 @@
     "logout_message": "You have been logged out.",
     "error": "Your username and password don't match any account"
   },
-    "login_register": "Login / Register",
   "navigation": {
+    "login_register": "Login / Register",
     "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
