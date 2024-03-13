@@ -71,7 +71,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
         message: rationaleModalOptions.message || '',
         confirm: rationaleModalOptions.confirm || '',
         dismiss: rationaleModalOptions.dismiss || '',
-        params: rationaleModalOptions.params || '',
+        params: rationaleModalOptions.params,
       }));
 
       if (requestAllowed === false) {
