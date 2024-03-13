@@ -1,5 +1,7 @@
 import { appConfig } from '@shopgate/engage';
-import { i18n, configureStore, fetchClientInformation } from '@shopgate/engage/core';
+import {
+  i18n, configureStore, fetchClientInformation,
+} from '@shopgate/engage/core';
 import { appWillInit, appWillStart } from '@shopgate/pwa-common/action-creators/app';
 
 const {
@@ -21,9 +23,14 @@ export const initialize = async (locales, reducers, subscribers) => {
 
   const store = configureStore(reducers, subscribers);
 
+  try {
+    await store.dispatch(fetchClientInformation());
+  } catch (e) {
+    // Nothing to see here.
+  }
+
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
   store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
-  store.dispatch(fetchClientInformation());
 
   return {
     store,

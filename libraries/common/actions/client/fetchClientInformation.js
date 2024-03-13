@@ -19,10 +19,10 @@ function fetchClientInformation() {
 
     if (!hasSGJavaScriptBridge()) {
       dispatch(receiveClientInformation(defaultClientInformation));
-      return;
+      return Promise.resolve(defaultClientInformation);
     }
 
-    getWebStorageEntry({ name: 'clientInformation' })
+    return getWebStorageEntry({ name: 'clientInformation' })
       .then(response => dispatch(receiveClientInformation(response.value)))
       .catch(() => {
         dispatch(errorClientInformation());
