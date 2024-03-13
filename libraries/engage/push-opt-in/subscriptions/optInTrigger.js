@@ -5,10 +5,10 @@ import {
   main$,
   event,
   appDidStart$,
-  getAppPermissions,
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_NOT_DETERMINED,
 } from '@shopgate/engage/core';
+import { requestAppPermissionStatus } from '@shopgate/engage/core/actions';
 import {
   increaseAppStartCount,
   resetAppStartCount,
@@ -53,7 +53,9 @@ export default function pushOptIn(subscribe) {
 
     // TODO add check to determine if the app supports push-opt-in (is done in CURB-3915)
 
-    const [{ status: pushStatus }] = await getAppPermissions([PERMISSION_ID_PUSH]);
+    const pushStatus = await dispatch(requestAppPermissionStatus({
+      permissionId: PERMISSION_ID_PUSH,
+    }));
 
     if (pushStatus !== PERMISSION_STATUS_NOT_DETERMINED) {
       return;

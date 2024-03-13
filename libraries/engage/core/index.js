@@ -125,6 +125,8 @@ export { default as grantPermissions } from './actions/grantPermissions';
 export { default as grantPushPermissions } from './actions/grantPushPermissions';
 export { default as grantCameraPermissions } from './actions/grantCameraPermissions';
 export { default as grantGeolocationPermissions } from './actions/grantGeolocationPermissions';
+export { default as requestAppPermission } from './actions/requestAppPermission';
+export { default as requestAppPermissionStatus } from './actions/requestAppPermissionStatus';
 export { default as getGeolocation } from './actions/getGeolocation';
 
 // STREAMS

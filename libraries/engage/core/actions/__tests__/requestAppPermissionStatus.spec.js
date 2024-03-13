@@ -1,6 +1,7 @@
 import { getAppPermissions } from '@shopgate/pwa-core/commands/appPermissions';
 import {
   PERMISSION_STATUS_GRANTED,
+  PERMISSION_STATUS_NOT_SUPPORTED,
   PERMISSION_ID_PUSH,
 } from '@shopgate/pwa-core/constants/AppPermissions';
 import { appPermissionStatusReceived } from '../../action-creators';
@@ -46,6 +47,40 @@ describe('engage > core > actions > requestAppPermissionStatus', () => {
     expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
       permissionId,
       status: PERMISSION_STATUS_GRANTED,
+    }));
+  });
+
+  it('should fallback to PERMISSION_STATUS_NOT_SUPPORTED when command response is an empty array', async () => {
+    getAppPermissions
+      .mockResolvedValueOnce([]);
+
+    const result = await dispatch(requestAppPermissionStatus({
+      permissionId,
+    }));
+
+    expect(result).toBe(PERMISSION_STATUS_NOT_SUPPORTED);
+
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_SUPPORTED,
+    }));
+  });
+
+  it('should fallback to PERMISSION_STATUS_NOT_SUPPORTED when command response is empty', async () => {
+    getAppPermissions
+      .mockResolvedValueOnce();
+
+    const result = await dispatch(requestAppPermissionStatus({
+      permissionId,
+    }));
+
+    expect(result).toBe(PERMISSION_STATUS_NOT_SUPPORTED);
+
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_SUPPORTED,
     }));
   });
 });

@@ -1,4 +1,5 @@
 import { requestAppPermissions } from '@shopgate/pwa-core/commands/appPermissions';
+import { PERMISSION_STATUS_NOT_SUPPORTED } from '@shopgate/pwa-core/constants/AppPermissions';
 import { appPermissionStatusReceived } from '../action-creators';
 
 /**
@@ -9,7 +10,9 @@ import { appPermissionStatusReceived } from '../action-creators';
  * @returns {Function} A Redux thunk
  */
 const requestAppPermission = ({ permissionId }) => async (dispatch) => {
-  const [{ status }] = await requestAppPermissions([{ permissionId }]);
+  const [
+    { status } = { status: PERMISSION_STATUS_NOT_SUPPORTED },
+  ] = await requestAppPermissions([{ permissionId }]) ?? [];
 
   dispatch(appPermissionStatusReceived({
     permissionId,
