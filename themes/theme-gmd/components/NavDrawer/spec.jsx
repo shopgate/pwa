@@ -15,6 +15,7 @@ jest.mock('react-portal', () => (
 ));
 jest.mock('@shopgate/engage', () => ({
   themeConfig: {},
+  appConfig: {},
 }));
 
 jest.mock('@shopgate/engage/back-in-stock/selectors', () => ({
