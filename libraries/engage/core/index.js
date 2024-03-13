@@ -150,6 +150,7 @@ export * from '@shopgate/pwa-common/streams/client';
 
 // --------------- COLLECTIONS --------------- //
 
+export { default as appInitialization } from './collections/AppInitialization';
 export { default as authRoutes } from '@shopgate/pwa-common/collections/AuthRoutes';
 export { default as redirects } from '@shopgate/pwa-common/collections/Redirects';
 export { default as configuration } from '@shopgate/pwa-common/collections/Configuration';

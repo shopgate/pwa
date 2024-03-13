@@ -2,6 +2,7 @@ import { appConfig } from '@shopgate/engage';
 import {
   i18n, configureStore, fetchClientInformation,
 } from '@shopgate/engage/core';
+import { appInitialization } from '@shopgate/engage/core/collections';
 import { appWillInit, appWillStart } from '@shopgate/pwa-common/action-creators/app';
 
 const {
@@ -30,6 +31,13 @@ export const initialize = async (locales, reducers, subscribers) => {
   }
 
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
+
+  // Execute all registered handlers from the AppInitialization collection
+  await appInitialization.initialize({
+    dispatch: store.dispatch,
+    getState: store.getState,
+  });
+
   store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
 
   return {
