@@ -14,6 +14,7 @@ const BackInStockSubscriptionsProvider = ({
   isFetching,
   isInitial,
   removeBackInStockSubscription,
+  requestsPossible,
 }) => {
   const groupedSubscriptions = useMemo(() => subscriptions.reduce((acc, subscription) => {
     const { status } = subscription;
@@ -32,13 +33,16 @@ const BackInStockSubscriptionsProvider = ({
     addBackInStockSubscription,
     removeBackInStockSubscription,
     isFetching,
-    isInitial,
-  }), [addBackInStockSubscription,
+    isInitial: isInitial && requestsPossible,
+  }), [
+    addBackInStockSubscription,
     groupedSubscriptions,
     isFetching,
     isInitial,
     removeBackInStockSubscription,
-    subscriptions]);
+    subscriptions,
+    requestsPossible,
+  ]);
 
   return (
     <Context.Provider value={value}>
@@ -54,11 +58,13 @@ BackInStockSubscriptionsProvider.propTypes = {
   children: PropTypes.node,
   isFetching: PropTypes.bool,
   isInitial: PropTypes.bool,
+  requestsPossible: PropTypes.bool,
 };
 BackInStockSubscriptionsProvider.defaultProps = {
   children: null,
   isFetching: false,
   isInitial: true,
+  requestsPossible: false,
 };
 
 export default connect(BackInStockSubscriptionsProvider);

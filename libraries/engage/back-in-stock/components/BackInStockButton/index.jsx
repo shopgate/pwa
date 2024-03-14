@@ -41,9 +41,9 @@ const BackInStockButton = ({
       useRationaleModal: true,
       useSettingsModal: true,
       rationaleModal: {
-        message: 'permissions.back_in_stock_push_notifications.message',
-        confirm: 'permissions.back_in_stock_push_notifications.confirm',
-        dismiss: 'permissions.back_in_stock_push_notifications.dismiss',
+        message: 'back_in_stock.rationale.message',
+        confirm: 'back_in_stock.rationale.confirm',
+        dismiss: 'common.cancel',
       },
     });
     if (allowed) {
