@@ -21,19 +21,23 @@
     "browse": "Przeglądaj stronę",
     "favorites": "Lista życzeń",
     "scanner": "Skaner",
-    "back_in_stock": "Przypomnienia o powrocie do magazynu"
+    "back_in_stock": "Powiadomienia"
   },
   "back_in_stock": {
     "list_states": {
-      "active": "Aktywne przypomnienia",
-      "past": "Przypomnienia z przeszłości"
+      "active": "Aktywne powiadomienia",
+      "past": "Przeszłe powiadomienia"
     },
-    "empty_list_reminder": "Na tej liście nie ma przypomnień.",
-    "get_notified": "Otrzymuj powiadomienia",
-    "we_will_remind_you": "Przypominamy.",
+    "empty_list_reminder": "Nie skonfigurowano żadnych powiadomień",
+    "get_notified": "Powiadom mnie, gdy przedmiot będzie dostępny",
+    "we_will_remind_you": "Zostaniesz powiadomiony, gdy artykuł będzie ponownie dostępny",
     "add_back_in_stock_success_modal": {
-      "title": "Dodano przypomnienie o dostępności w magazynie!",
-      "message": "Wyślemy Ci powiadomienie push, gdy produkt będzie ponownie dostępny w magazynie. Powiadomieniami można zarządzać w ustawieniach."
+      "title": "Powiadomienie dodane!",
+      "message": "Wyślemy Ci powiadomienie push, gdy produkt będzie ponownie dostępny. Możesz zarządzać tymi powiadomieniami za pomocą menu."
+    },
+    "rationale": {
+      "message": "Zezwól na powiadomienia push w następnym kroku, abyśmy mogli powiadomić Cię, gdy produkt będzie ponownie dostępny",
+      "confirm": "Zezwól na powiadomienia"
     }
   },
   "favorites": {
@@ -290,15 +294,10 @@
     }
   },
   "permissions": {
-    "back_in_stock_push_notifications": {
-      "message": "W następnym kroku zezwól na powiadomienia push, abyśmy mogli wysłać Ci powiadomienie, gdy produkt będzie ponownie dostępny w magazynie.",
-      "confirm": "Zezwalaj na powiadomienia push",
-      "dismiss": "Anuluj"
-    },
     "access_denied": {
       "settings_button": "Przejdź do ustawień",
       "camera_message": "Ta funkcja wymaga dostępu do aparatu. W ustawieniach należy zezwolić na dostęp.",
-      "push_message": "Ta funkcja wymaga dostępu do powiadomień push. Zezwól na dostęp w ustawieniach.",
+      "push_message": "Powiadomienia push dla tej aplikacji zostały wyłączone. Przejdź do ustawień urządzenia, aby je aktywować.",
       "geolocation_message": "Potrzebujemy dostępu do lokalizacji, aby pokazać pobliskie sklepy."
     }
   },

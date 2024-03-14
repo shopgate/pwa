@@ -21,19 +21,23 @@
     "browse": "Buscar",
     "favorites": "Favoritos",
     "scanner": "Escáner",
-    "back_in_stock": "Recordatorio de existencias"
+    "back_in_stock": "Notificaciones"
   },
   "back_in_stock": {
     "list_states": {
-      "active": "Recordatorios activos",
-      "past": "Recordatorios anteriores"
+      "active": "Notificaciones activas",
+      "past": "Notificaciones pasadas"
     },
-    "empty_list_reminder": "No tienes recordatorios en esta lista.",
-    "get_notified": "Recibir notificaciones",
-    "we_will_remind_you": "Se lo recordaremos.",
+    "empty_list_reminder": "No tienes ninguna notificación configurada",
+    "get_notified": "Notificarme las nuevas existencias",
+    "we_will_remind_you": "Te avisaremos cuando el producto vuelva a estar en stock",
     "add_back_in_stock_success_modal": {
-      "title": "Recordatorio de existencias!",
-      "message": "Te enviaremos una notificación push cuando el producto vuelva a estar disponible. Puedes gestionar tus notificaciones en los ajustes."
+      "title": "¡Notificación de Back-In-Stock añadida!",
+      "message": "Te enviaremos una notificación push cuando el producto vuelva a estar en stock. Puedes gestionar tus notificaciones en el menú."
+    },
+    "rationale": {
+      "message": "Por favor, permite las notificaciones push en el siguiente paso, para que podamos enviarte una notificación cuando el producto vuelva a estar en stock.",
+      "confirm": "Permitir notificaciones push"
     }
   },
   "favorites": {
@@ -284,11 +288,6 @@
     }
   },
   "permissions": {
-    "back_in_stock_push_notifications": {
-      "message": "Permita las notificaciones push en el siguiente paso para que podamos enviarle una notificación cuando el producto vuelva a estar disponible.",
-      "confirm": "Permitir notificaciones push",
-      "dismiss": "Cancelar"
-    },
     "access_denied": {
       "settings_button": "Vaya a configuración",
       "camera_message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración.",

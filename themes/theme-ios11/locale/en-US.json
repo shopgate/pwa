@@ -25,15 +25,19 @@
   },
   "back_in_stock": {
     "list_states": {
-      "active": "Active reminders",
-      "past": "Past reminders"
+      "active": "Active notifications",
+      "past": "Past notifications"
     },
-    "empty_list_reminder": "You don't have reminders in this list.",
-    "get_notified": "Get notified",
-    "we_will_remind_you": "We will remind you.",
+    "empty_list_reminder": "You don't have any notifications configured",
+    "get_notified": "Notify me on new stock",
+    "we_will_remind_you": "We will notify you when the product is back in stock",
     "add_back_in_stock_success_modal": {
-      "title": "Back-in-Stock reminder added!",
-      "message": "We will send you a push notification when the product is back in stock. You can manage your notifications in the settings."
+      "title": "Back-In-Stock notification added!",
+      "message": "We will send you a push notification when the product is back in stock. You can manage your notifications in the menu."
+    },
+    "rationale": {
+      "message": "Please allow push notifications in the next step, so that we can send you a notification when the product is back in stock.",
+      "confirm": "Allow push notifications"
     }
   },
   "favorites": {
@@ -289,13 +293,8 @@
     }
   },
   "permissions": {
-    "back_in_stock_push_notifications": {
-      "message": "Please allow push notifications in the next step, so that we can send you a notification when the product is back in stock.",
-      "confirm": "Allow push notifications",
-      "dismiss": "Cancel"
-    },
     "access_denied": {
-      "settings_button": "Go to settings",
+      "settings_button": "Open settings",
       "camera_message": "This feature requires access to your camera. Please allow access in the settings.",
       "push_message": "This feature requires access to push notifications. Please allow access in the settings.",
       "geolocation_message": "To find stores near you, please go to Settings and enable location permissions."

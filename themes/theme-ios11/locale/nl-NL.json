@@ -21,19 +21,23 @@
     "browse": "Bladeren",
     "favorites": "Favorieten",
     "scanner": "Scanner",
-    "back_in_stock": "Terug in voorraad Herinneringen"
+    "back_in_stock": "Meldingen"
   },
   "back_in_stock": {
     "list_states": {
-      "active": "Actieve herinneringen",
-      "past": "Herinneringen uit het verleden"
+      "active": "Actieve meldingen",
+      "past": "Afgelopen meldingen"
     },
-    "empty_list_reminder": "Je hebt geen herinneringen in deze lijst.",
-    "get_notified": "Ontvang bericht",
-    "we_will_remind_you": "We zullen je eraan herinneren.",
+    "empty_list_reminder": "U hebt geen meldingen geconfigureerd",
+    "get_notified": "Stel me op de hoogte van nieuwe voorraad",
+    "we_will_remind_you": "We zullen u op de hoogte stellen wanneer het product weer op voorraad is",
     "add_back_in_stock_success_modal": {
-      "title": "Back-in-Stock herinnering toegevoegd!",
-      "message": "We sturen je een pushmelding wanneer het product weer op voorraad is. Je kunt je meldingen beheren in de instellingen."
+      "title": "Melding toegevoegd!",
+      "message": "We sturen je een pushmelding als het product weer op voorraad is. Je kunt je meldingen beheren in het menu."
+    },
+    "rationale": {
+      "message": "Sta pushmeldingen toe in de volgende stap, zodat we je een melding kunnen sturen als het product weer op voorraad is.",
+      "confirm": "Pushmeldingen toestaan"
     }
   },
   "favorites": {
@@ -284,11 +288,6 @@
     }
   },
   "permissions": {
-    "back_in_stock_push_notifications": {
-      "message": "Sta in de volgende stap pushmeldingen toe, zodat we je een melding kunnen sturen wanneer het product weer op voorraad is.",
-      "confirm": "Pushmeldingen toestaan",
-      "dismiss": "Annuleren"
-    },
     "access_denied": {
       "settings_button": "Ga naar instellingen",
       "camera_message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
