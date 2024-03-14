@@ -11,12 +11,13 @@ import { appPermissionStatusReceived } from '../action-creators';
  */
 const requestAppPermission = ({ permissionId }) => async (dispatch) => {
   const [
-    { status } = { status: PERMISSION_STATUS_NOT_SUPPORTED },
+    { status, options } = { status: PERMISSION_STATUS_NOT_SUPPORTED },
   ] = await requestAppPermissions([{ permissionId }]) ?? [];
 
   dispatch(appPermissionStatusReceived({
     permissionId,
     status,
+    options,
   }));
 
   return status;
