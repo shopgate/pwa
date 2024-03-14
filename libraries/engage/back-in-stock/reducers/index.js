@@ -1,6 +1,5 @@
 import {
   PERMISSION_ID_PUSH,
-  PERMISSION_STATUS_NOT_SUPPORTED,
   APP_PERMISSION_STATUS_RECEIVED,
 } from '@shopgate/engage/core/constants';
 import {
@@ -19,7 +18,7 @@ const initialState = {
   isFetching: false,
   isInitial: true,
   subscriptions: [],
-  pushPermissionStatus: PERMISSION_STATUS_NOT_SUPPORTED,
+  pushPermissionStatus: null,
 };
 
 /**
