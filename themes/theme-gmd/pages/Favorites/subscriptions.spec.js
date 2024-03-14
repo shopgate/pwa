@@ -9,6 +9,8 @@ jest.mock('@shopgate/engage/core', () => ({
   ToastProvider: jest.requireActual('@shopgate/pwa-common/providers/toast').default,
   withCurrentProduct: jest.fn(),
   withWidgetSettings: jest.fn(),
+  getClientInformation: jest.fn(),
+  isIos: jest.fn(),
 }));
 
 jest.mock('@shopgate/engage/a11y', () => ({
