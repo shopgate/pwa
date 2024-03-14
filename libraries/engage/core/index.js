@@ -6,7 +6,6 @@ import {
   parseQueryStringToObject,
   parseObjectToQueryString,
 } from '@shopgate/pwa-common/helpers/router';
-import { INDEX_PATH, INDEX_PATH_DEEPLINK } from '@shopgate/pwa-common/constants/RoutePaths';
 
 // --------------- CORE --------------- //
 
@@ -60,23 +59,7 @@ export * from '@shopgate/pwa-core/commands/unifiedTracking';
 // export * from '@shopgate/pwa-core/commands/webStorage';
 
 // Constants
-export * from '@shopgate/pwa-core/constants/AppEvents';
-export * from '@shopgate/pwa-core/constants/AppPermissions';
-export * from '@shopgate/pwa-core/constants/ErrorHandleTypes';
-export * from '@shopgate/pwa-core/constants/Pipeline';
-export * from '@shopgate/pwa-core/constants/ProcessTypes';
-export * from '@shopgate/pwa-core/constants/Scanner';
-export * from '@shopgate/pwa-core/constants/Trilean';
-
-// Common Constants
-export * from '@shopgate/pwa-common/constants/ActionTypes';
-export * from '@shopgate/pwa-common/constants/Configuration';
-export * from '@shopgate/pwa-common/constants/Device';
-export * from '@shopgate/pwa-common/constants/DisplayOptions';
-export * from '@shopgate/pwa-common/constants/Pipelines';
-export * from '@shopgate/pwa-common/constants/Portals';
-export { INDEX_PATH, INDEX_PATH_DEEPLINK };
-export * from './constants/geolocationRequest';
+export * from './constants';
 
 // Emitters
 export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
@@ -140,9 +123,6 @@ export * from '@shopgate/pwa-common/store';
 
 // ACTIONS
 export { default as fetchClientInformation } from '@shopgate/pwa-common/actions/client/fetchClientInformation';
-
-// CONSTANTS
-export * from '@shopgate/pwa-common/constants/client';
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/client';
@@ -217,9 +197,6 @@ export * from '@shopgate/pwa-common/selectors/url';
 // ACTIONS
 export { default as fetchMenu } from '@shopgate/pwa-common/actions/menu/fetchMenu';
 
-// CONSTANTS
-export * from '@shopgate/pwa-common/constants/MenuIDs';
-
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/menu';
 
@@ -229,9 +206,6 @@ export * from '@shopgate/pwa-common/selectors/menu';
 export { default as closeModal } from '@shopgate/pwa-common/actions/modal/closeModal';
 export { default as promiseMap } from '@shopgate/pwa-common/actions/modal/promiseMap';
 export { default as showModal } from '@shopgate/pwa-common/actions/modal/showModal';
-
-// CONSTANTS
-export * from '@shopgate/pwa-common/constants/ModalTypes';
 
 // HELPERS
 export { default as withShowModal } from '@shopgate/pwa-common/helpers/modal/withShowModal';

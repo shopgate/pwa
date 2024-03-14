@@ -3,7 +3,7 @@ import {
   PERMISSION_STATUS_GRANTED,
   PERMISSION_STATUS_NOT_SUPPORTED,
   PERMISSION_ID_PUSH,
-} from '@shopgate/pwa-core/constants/AppPermissions';
+} from '@shopgate/engage/core/constants';
 import { appPermissionStatusReceived } from '../../action-creators';
 import requestAppPermissionStatus from '../requestAppPermissionStatus';
 

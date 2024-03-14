@@ -1,5 +1,4 @@
 import event from '@shopgate/pwa-core/classes/Event';
-import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/constants/AppEvents';
 import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
 import { showModal } from '@shopgate/engage/core';
 import {
@@ -7,8 +6,9 @@ import {
   PERMISSION_STATUS_GRANTED,
   PERMISSION_STATUS_NOT_DETERMINED,
   PERMISSION_STATUS_NOT_SUPPORTED,
+  APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
   availablePermissionsIds,
-} from '@shopgate/pwa-core/constants/AppPermissions';
+} from '@shopgate/engage/core/constants';
 import { logger } from '@shopgate/pwa-core/helpers';
 import requestAppPermission from './requestAppPermission';
 import requestAppPermissionStatus from './requestAppPermissionStatus';

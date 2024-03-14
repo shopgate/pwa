@@ -5,9 +5,11 @@ import {
   main$,
   event,
   appDidStart$,
+} from '@shopgate/engage/core';
+import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_NOT_DETERMINED,
-} from '@shopgate/engage/core';
+} from '@shopgate/engage/core/constants';
 import { requestAppPermissionStatus } from '@shopgate/engage/core/actions';
 import {
   increaseAppStartCount,

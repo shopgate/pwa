@@ -4,10 +4,12 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import { getAppPermissions } from '@shopgate/pwa-core/commands/appPermissions';
 import {
   event,
+} from '@shopgate/engage/core';
+import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_DENIED,
   APP_DID_START,
-} from '@shopgate/engage/core';
+} from '@shopgate/engage/core/constants';
 import {
   increaseAppStartCount,
   setLastPopupTimestamp,
@@ -67,26 +69,14 @@ jest.mock('@shopgate/engage', () => ({
 }));
 
 jest.mock('@shopgate/engage/core', () => {
-  /* eslint-disable no-shadow */
   const {
     appDidStart$,
     main$,
-    PERMISSION_ID_PUSH,
-    PERMISSION_STATUS_NOT_DETERMINED,
-    PERMISSION_STATUS_GRANTED,
-    PERMISSION_STATUS_DENIED,
-    APP_DID_START,
   } = jest.requireActual('@shopgate/engage/core');
-  /* eslint-enable no-shadow */
 
   return {
     main$,
     appDidStart$,
-    PERMISSION_ID_PUSH,
-    PERMISSION_STATUS_NOT_DETERMINED,
-    PERMISSION_STATUS_GRANTED,
-    PERMISSION_STATUS_DENIED,
-    APP_DID_START,
     event: {
       addCallback: jest.fn(),
     },

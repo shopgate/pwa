@@ -5,8 +5,8 @@ import {
   PERMISSION_ID_LOCATION,
   PERMISSION_ID_PHONE,
   PERMISSION_ID_BACKGROUND_APP_REFRESH,
-} from '@shopgate/pwa-core/constants/AppPermissions';
-import { APP_PERMISSION_STATUS_RECEIVED } from '@shopgate/engage/core/constants';
+  APP_PERMISSION_STATUS_RECEIVED,
+} from '@shopgate/engage/core/constants';
 
 /**
  * Gets triggered when a permission status was received from the app.

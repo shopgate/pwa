@@ -1,5 +1,5 @@
 import { getAppPermissions } from '@shopgate/pwa-core/commands/appPermissions';
-import { PERMISSION_STATUS_NOT_SUPPORTED } from '@shopgate/pwa-core/constants/AppPermissions';
+import { PERMISSION_STATUS_NOT_SUPPORTED } from '@shopgate/engage/core/constants';
 import { appPermissionStatusReceived } from '../action-creators';
 
 /**

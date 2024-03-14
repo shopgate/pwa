@@ -6,7 +6,7 @@ import {
   PERMISSION_ID_LOCATION,
   PERMISSION_ID_PHONE,
   PERMISSION_ID_BACKGROUND_APP_REFRESH,
-} from '@shopgate/pwa-core/constants/AppPermissions';
+} from '@shopgate/engage/core/constants';
 import { appPermissionStatusReceived } from '../action-creators';
 import {
   appPermissionStatusReceived$,
