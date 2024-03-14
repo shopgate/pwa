@@ -68,7 +68,6 @@ const buttonPrimary = css({
 const buttonText = css({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
   display: 'block',
 }).toString();
 
