@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import {
   Link,
@@ -32,6 +33,7 @@ const BackInStockButton = ({
   stopPropagation = false,
   addBackInStockSubscription,
   grantPushPermissions,
+  alignRight,
 }) => {
   const handleClick = useCallback(async (event) => {
     if (stopPropagation) {
@@ -56,7 +58,10 @@ const BackInStockButton = ({
       <Link
         href={BACK_IN_STOCK_PATTERN}
         disabled={!isLinkToBackInStockEnabled}
-        className={styles.backInStockMessageContainer}
+        className={classNames(
+          styles.backInStockMessageContainer,
+          { [styles.rightAligned]: alignRight }
+        )}
         tag="span"
       >
         <CheckedIcon color={colors.success} className={styles.icon} />
@@ -64,23 +69,30 @@ const BackInStockButton = ({
       </Link>
     );
   }
-
+  /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/anchor-is-valid */
   return (
-    <div>
-      {/* eslint-disable-next-line max-len */}
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/interactive-supports-focus,jsx-a11y/click-events-have-key-events */}
-      <a role="button" onClick={handleClick} className={styles.button}>
-        <div className={styles.buttonContent}>
-          <NotificationIcon color={colors.primary} />
-          <span className={styles.buttonText}>{i18n.text('back_in_stock.get_notified')}</span>
-        </div>
-      </a>
-    </div>);
+    <a
+      role="button"
+      tabIndex={0}
+      onClick={handleClick}
+      className={classNames(
+        styles.button,
+        { [styles.rightAligned]: alignRight }
+      )}
+    >
+      <NotificationIcon color={colors.primary} className={styles.icon} />
+      <span className={styles.buttonText}>
+        {i18n.text('back_in_stock.get_notified')}
+      </span>
+    </a>
+  );
+  /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/anchor-is-valid */
 };
 
 BackInStockButton.propTypes = {
   addBackInStockSubscription: PropTypes.func.isRequired,
   grantPushPermissions: PropTypes.func.isRequired,
+  alignRight: PropTypes.bool,
   isLinkToBackInStockEnabled: PropTypes.bool,
   productId: PropTypes.string,
   stopPropagation: PropTypes.bool,
@@ -90,6 +102,7 @@ BackInStockButton.propTypes = {
 BackInStockButton.defaultProps = {
   stopPropagation: false,
   isLinkToBackInStockEnabled: false,
+  alignRight: false,
   subscription: null,
   productId: null,
 };

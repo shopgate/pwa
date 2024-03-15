@@ -25,17 +25,13 @@ const CharacteristicsButton = ({
   if (productIsNotAVariant || featureIsNotEnabled || !productIsNotAvailable) return null;
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'end',
-    }}
-    >
-      <BackInStockButton
-        subscription={subscription}
-        stopPropagation
-        productId={variant.id}
-      />
-    </div>);
+    <BackInStockButton
+      subscription={subscription}
+      stopPropagation
+      productId={variant.id}
+      alignRight
+    />
+  );
 };
 
 CharacteristicsButton.propTypes = {
