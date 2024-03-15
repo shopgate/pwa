@@ -2,7 +2,7 @@ import { css } from 'glamor';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const outerGap = 40;
-const border = themeColors.lightDark;
+const borderColor = 'rgba(0,0,0,0.2)';
 
 const container = css({
   position: 'relative',
@@ -18,6 +18,8 @@ const container = css({
 
 const content = css({
   padding: '16px',
+  display: 'flex',
+  flexDirection: 'column',
 }).toString();
 
 const title = css({
@@ -28,23 +30,28 @@ const title = css({
 const body = css({
   color: themeColors.dark,
   flexGrow: 1,
-  fontSize: '.765rem',
+  fontSize: '13px',
   textAlign: 'center',
   overflow: 'auto',
 }).toString();
 
 const actions = css({
-  borderTop: `0.5px solid ${border}`,
+  borderTop: `0.5px solid ${borderColor}`,
   display: 'flex',
   flexWrap: 'wrap',
 }).toString();
 
 const button = css({
+  '&& > *': {
+    color: '#1a73e8',
+  },
   // Increases specificity to allow button customization.
   '&&': {
-    fontWeight: 600,
+    fontWeight: 400,
     minWidth: '50%',
     flexGrow: 1,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   /*
    * Due to overflow hidden this will cause the bottom border to be
@@ -52,16 +59,17 @@ const button = css({
    */
   marginBottom: -1,
   marginRight: `-${themeVariables.gap.small / 2}px`,
+
   '&:not(:last-child)': {
     borderRadius: 0,
-    borderRight: `0.5px solid ${border}`,
-    borderBottom: `0.5px solid ${border}`,
+    borderRight: `0.5px solid ${borderColor}`,
+    borderBottom: `0.5px solid ${borderColor}`,
   },
 }).toString();
 
 const buttonPrimary = css({
   '&&': {
-    fontWeight: 600,
+    fontWeight: 400,
   },
 }).toString();
 
