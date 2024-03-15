@@ -4,6 +4,7 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import { getAppPermissions } from '@shopgate/pwa-core/commands/appPermissions';
 import {
   event,
+  logger,
 } from '@shopgate/engage/core';
 import {
   PERMISSION_ID_PUSH,
@@ -79,6 +80,9 @@ jest.mock('@shopgate/engage/core', () => {
     appDidStart$,
     event: {
       addCallback: jest.fn(),
+    },
+    logger: {
+      error: jest.fn(),
     },
   };
 });
@@ -430,6 +434,54 @@ describe('Push OptIn Subscriptions', () => {
       callback(callbackParams);
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(increaseRejectionCount());
+    });
+  });
+
+  describe('Config test', () => {
+    let callback;
+
+    beforeEach(() => {
+      [[, callback]] = subscribe.mock.calls;
+    });
+
+    it('should log an error when config is undefined', async () => {
+      mockedPushOptInConfig = undefined;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is appStarts property is not an object', async () => {
+      mockedPushOptInConfig.appStarts = 42;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is ordersPlaced property is not an object', async () => {
+      mockedPushOptInConfig.ordersPlaced = 42;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is rejectionMaxCount property is not a number', async () => {
+      mockedPushOptInConfig.rejectionMaxCount = null;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is minDaysBetweenOptIns property is not a number', async () => {
+      mockedPushOptInConfig.minDaysBetweenOptIns = null;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
 });

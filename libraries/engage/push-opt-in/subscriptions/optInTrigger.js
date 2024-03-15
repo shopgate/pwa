@@ -5,6 +5,7 @@ import {
   main$,
   event,
   appDidStart$,
+  logger,
 } from '@shopgate/engage/core';
 import {
   PERMISSION_ID_PUSH,
@@ -50,8 +51,19 @@ export default function pushOptIn(subscribe) {
         ordersPlaced,
         rejectionMaxCount,
         minDaysBetweenOptIns,
-      },
+      } = {},
     } = appConfig;
+
+    // Deactivate feature when config is invalid
+    if (
+      typeof minDaysBetweenOptIns !== 'number' ||
+      typeof rejectionMaxCount !== 'number' ||
+      typeof ordersPlaced !== 'object' ||
+      typeof appStarts !== 'object'
+    ) {
+      logger.error('PushOptInTrigger - Config invalid', appConfig?.pushOptIn);
+      return;
+    }
 
     // TODO add check to determine if the app supports push-opt-in (is done in CURB-3915)
 
