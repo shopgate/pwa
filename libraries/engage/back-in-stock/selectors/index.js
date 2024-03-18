@@ -14,8 +14,8 @@ import {
 export const getBackInStockState = state => state.backInStock;
 
 /**
- * @param {Object} state The application state.
- * @returns {Object}
+ * Selector to retrieve the back-in-stock subscriptions list
+ * @returns {Array}
  */
 export const getBackInStockSubscriptions = createSelector(
   getBackInStockState,
@@ -23,8 +23,8 @@ export const getBackInStockSubscriptions = createSelector(
 );
 
 /**
- * @param {Object} state The application state.
- * @returns {Object}
+ * Selector to retrieve the current fetching state of back-in-stock subscriptions
+ * @returns {boolean}
  */
 export const getBackInStockSubscriptionsFetching = createSelector(
   getBackInStockState,
@@ -32,8 +32,8 @@ export const getBackInStockSubscriptionsFetching = createSelector(
 );
 
 /**
- * @param {Object} state The application state.
- * @returns {Object}
+ * Selector to determine if back-in-stock subscriptions have been fetched before
+ * @returns {boolean}
  */
 export const getBackInStockSubscriptionsInitial = createSelector(
   getBackInStockState,
@@ -41,9 +41,8 @@ export const getBackInStockSubscriptionsInitial = createSelector(
 );
 
 /**
- * Creates a selector to retrieve the current status of the push app permission
- * @param {Object} state The application state.
- * @returns {Object}
+ * Selector to retrieve the current status of the push app permission
+ * @returns {string}
  */
 export const getBackInStockPushPermissionStatus = createSelector(
   getBackInStockState,
@@ -91,8 +90,8 @@ export const makeGetSubscriptionByCharacteristics = () => {
 };
 
 /**
- * Creates a selector to determine if the back-in-stock feature is enabled
- * @returns {Function}
+ * Selector to determine if the back-in-stock feature is enabled
+ * @returns {boolean}
  */
 export const getIsBackInStockEnabled = createSelector(
   getClientInformation,
@@ -125,8 +124,8 @@ export const getIsBackInStockEnabled = createSelector(
 );
 
 /**
- * Creates a selector to determine if back-in-stock related requests are currently possible.
- * @returns {Function}
+ * Selector to determine if back-in-stock related requests are currently possible.
+ * @returns {boolean}
  */
 export const getAreBackInStockRequestsPossible = createSelector(
   getIsBackInStockEnabled,
@@ -137,7 +136,7 @@ export const getAreBackInStockRequestsPossible = createSelector(
 
 /**
  * Returns if subscription list is in use
- * @returns {Function}
+ * @returns {boolean}
  */
 export const getHasBackInStockSubscriptions = createSelector(
   getBackInStockSubscriptions,

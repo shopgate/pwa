@@ -4,7 +4,7 @@ import { appPermissionStatusReceived } from '../action-creators';
 
 /**
  * Requests an additional app permission from the operating system.
- * Additionally it propagates * the received status via the APP_PERMISSION_STATUS_RECEIVED action.
+ * Additionally it propagates the received status via the APP_PERMISSION_STATUS_RECEIVED action.
  * @param {Object} params The action params
  * @param {string} params.permissionId The desired app permission id
  * @returns {Function} A Redux thunk
