@@ -19,14 +19,21 @@ function fetchClientInformation() {
 
     if (!hasSGJavaScriptBridge()) {
       dispatch(receiveClientInformation(defaultClientInformation));
-      return Promise.resolve(defaultClientInformation);
+      return Promise.resolve({
+        aga: 0,
+        value: defaultClientInformation,
+      });
     }
 
-    return getWebStorageEntry({ name: 'clientInformation' })
+    const request = getWebStorageEntry({ name: 'clientInformation' });
+
+    request
       .then(response => dispatch(receiveClientInformation(response.value)))
       .catch(() => {
         dispatch(errorClientInformation());
       });
+
+    return request;
   };
 }
 
