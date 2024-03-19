@@ -1,13 +1,16 @@
 import { combineReducers } from 'redux';
 import merge from 'lodash/merge';
 import { createMockStore } from '@shopgate/pwa-common/store';
+import { getAppPermissions } from '@shopgate/pwa-core/commands/appPermissions';
 import {
   event,
-  getAppPermissions,
+  logger,
+} from '@shopgate/engage/core';
+import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_DENIED,
   APP_DID_START,
-} from '@shopgate/engage/core';
+} from '@shopgate/engage/core/constants';
 import {
   increaseAppStartCount,
   setLastPopupTimestamp,
@@ -67,30 +70,30 @@ jest.mock('@shopgate/engage', () => ({
 }));
 
 jest.mock('@shopgate/engage/core', () => {
-  /* eslint-disable no-shadow */
   const {
     appDidStart$,
     main$,
-    PERMISSION_ID_PUSH,
-    PERMISSION_STATUS_NOT_DETERMINED,
-    PERMISSION_STATUS_GRANTED,
-    PERMISSION_STATUS_DENIED,
-    APP_DID_START,
   } = jest.requireActual('@shopgate/engage/core');
-  /* eslint-enable no-shadow */
 
   return {
     main$,
     appDidStart$,
-    PERMISSION_ID_PUSH,
-    PERMISSION_STATUS_NOT_DETERMINED,
-    PERMISSION_STATUS_GRANTED,
-    PERMISSION_STATUS_DENIED,
-    APP_DID_START,
-    getAppPermissions: jest.fn().mockResolvedValue([{ status: PERMISSION_STATUS_NOT_DETERMINED }]),
     event: {
       addCallback: jest.fn(),
     },
+    logger: {
+      error: jest.fn(),
+    },
+  };
+});
+
+jest.mock('@shopgate/pwa-core/commands/appPermissions', () => {
+  const {
+    PERMISSION_STATUS_NOT_DETERMINED,
+  } = jest.requireActual('@shopgate/pwa-core/constants/AppPermissions');
+
+  return {
+    getAppPermissions: jest.fn().mockResolvedValue([{ status: PERMISSION_STATUS_NOT_DETERMINED }]),
   };
 });
 
@@ -189,7 +192,7 @@ describe('Push OptIn Subscriptions', () => {
           expect(getAppPermissions).toHaveBeenCalled();
           expect(getAppPermissions).toHaveBeenCalledWith([PERMISSION_ID_PUSH]);
 
-          expect(dispatch).not.toHaveBeenCalled();
+          expect(dispatch).toHaveBeenCalledTimes(1);
         });
 
         it('should not trigger opt-in when config key is set to 0', async () => {
@@ -204,7 +207,7 @@ describe('Push OptIn Subscriptions', () => {
           expect(getAppPermissions).toHaveBeenCalled();
           expect(getAppPermissions).toHaveBeenCalledWith([PERMISSION_ID_PUSH]);
 
-          expect(dispatch).toHaveBeenCalledTimes(1);
+          expect(dispatch).toHaveBeenCalledTimes(2);
           expect(dispatch).toHaveBeenCalledWith(increaseCountAction());
 
           expect(showPushOptInModal).not.toHaveBeenCalled();
@@ -222,7 +225,7 @@ describe('Push OptIn Subscriptions', () => {
           expect(getAppPermissions).toHaveBeenCalled();
           expect(getAppPermissions).toHaveBeenCalledWith([PERMISSION_ID_PUSH]);
 
-          expect(dispatch).toHaveBeenCalledTimes(4);
+          expect(dispatch).toHaveBeenCalledTimes(5);
           expect(dispatch).toHaveBeenCalledWith(increaseCountAction());
           expect(dispatch).toHaveBeenCalledWith(setLastPopupTimestamp());
           expect(dispatch).toHaveBeenCalledWith(resetCountAction());
@@ -238,17 +241,17 @@ describe('Push OptIn Subscriptions', () => {
 
           // 1st counter increase -> do not show opt-in
           await callback(callbackParams);
-          expect(dispatch).toHaveBeenCalledTimes(1);
+          expect(dispatch).toHaveBeenCalledTimes(2);
           expect(showPushOptInModal).not.toHaveBeenCalled();
 
           // 2nd counter increase -> do not show opt-in
           await callback(callbackParams);
-          expect(dispatch).toHaveBeenCalledTimes(2);
+          expect(dispatch).toHaveBeenCalledTimes(4);
           expect(showPushOptInModal).not.toHaveBeenCalled();
 
           // 3rd counter increase -> show opt-in
           await callback(callbackParams);
-          expect(dispatch).toHaveBeenCalledTimes(6);
+          expect(dispatch).toHaveBeenCalledTimes(9);
           expect(showPushOptInModal).toHaveBeenCalledTimes(1);
         });
 
@@ -431,6 +434,54 @@ describe('Push OptIn Subscriptions', () => {
       callback(callbackParams);
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(increaseRejectionCount());
+    });
+  });
+
+  describe('Config test', () => {
+    let callback;
+
+    beforeEach(() => {
+      [[, callback]] = subscribe.mock.calls;
+    });
+
+    it('should log an error when config is undefined', async () => {
+      mockedPushOptInConfig = undefined;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is appStarts property is not an object', async () => {
+      mockedPushOptInConfig.appStarts = 42;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is ordersPlaced property is not an object', async () => {
+      mockedPushOptInConfig.ordersPlaced = 42;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is rejectionMaxCount property is not a number', async () => {
+      mockedPushOptInConfig.rejectionMaxCount = null;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an error when config is minDaysBetweenOptIns property is not a number', async () => {
+      mockedPushOptInConfig.minDaysBetweenOptIns = null;
+      await callback(callbackParams);
+
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -3,6 +3,7 @@ import {
   getBackInStockSubscriptions,
   getBackInStockSubscriptionsFetching,
   getBackInStockSubscriptionsInitial,
+  getAreBackInStockRequestsPossible,
 } from '@shopgate/engage/back-in-stock/selectors';
 import {
   addBackInStockSubscription,
@@ -22,6 +23,7 @@ function makeMapStateToProps() {
     subscriptions: getBackInStockSubscriptions(state, props),
     isFetching: getBackInStockSubscriptionsFetching(state, props),
     isInitial: getBackInStockSubscriptionsInitial(state, props),
+    requestsPossible: getAreBackInStockRequestsPossible(state, props),
   });
 }
 

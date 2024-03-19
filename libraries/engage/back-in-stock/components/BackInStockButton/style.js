@@ -4,30 +4,37 @@ import { themeConfig } from '@shopgate/engage';
 export default {
   button: css({
     color: themeConfig.colors.primary,
+    display: 'flex',
+    lineHeight: '16.5px',
   }).toString(),
   buttonContent: css({
     display: 'flex',
     alignItems: 'center',
   }).toString(),
   backInStockMessageContainer: css({
-    lineHeight: '20px',
+    lineHeight: '16.5px',
     display: 'flex',
     alignItems: 'center',
-    textAlign: 'end',
     width: 'auto',
   }).toString(),
+  rightAligned: css({
+    display: 'inline-block',
+    textAlign: 'right',
+  }).toString(),
   backInStockMessage: css({
-    marginLeft: '4px',
     verticalAlign: 'middle',
     fontSize: '0.875rem',
   }).toString(),
   buttonText: css({
-    marginLeft: '4px',
     fontSize: '0.875rem',
-    lineHeight: '16.5px',
+
   }).toString(),
   icon: css({
+    marginRight: 4,
+    marginTop: -1,
     verticalAlign: 'middle',
-    display: 'inline',
+    flexShrink: 0,
+    alignSelf: 'flex-start',
+    display: 'inline-flex',
   }).toString(),
 };

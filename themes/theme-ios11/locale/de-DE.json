@@ -29,11 +29,15 @@
       "past": "Vergangene Benachrichtigungen"
     },
     "empty_list_reminder": "Du hast keine Benachrichtigungen konfiguriert",
-    "get_notified": "Benachrichtige mich",
-    "we_will_remind_you": "Du wirst benachrichtigt",
+    "get_notified": "Benachrichtige mich, wenn der Artikel verfügbar ist",
+    "we_will_remind_you": "Du wirst benachrichtigt, wenn der Artikel wieder verfügbar ist",
     "add_back_in_stock_success_modal": {
       "title": "Benachrichtigung hinzugefügt!",
-      "message": "Wir senden dir eine Push-Benachrichtigung wenn das Produkt wieder verfügbar ist. Du kannst diese Benachrichtigungen in den Einstellungen verwalten."
+      "message": "Wir senden dir eine Push-Benachrichtigung wenn das Produkt wieder verfügbar ist. Du kannst diese Benachrichtigungen über das Menü verwalten."
+    },
+    "rationale": {
+      "message": "Bitte erlaube Push-Benachrichtigungen im nächsten Schritt, damit wir dir mitteilen können wenn das Produkt wieder verfügbar ist.",
+      "confirm": "Benachrichtigungen erlauben"
     }
   },
   "favorites": {
@@ -290,15 +294,10 @@
     }
   },
   "permissions": {
-    "back_in_stock_push_notifications": {
-      "message": "Bitte erlaube Push-Benachrichtigungen im nächsten Schritt, damit wir dir mitteilen können wenn das Produkt wieder verfügbar ist.",
-      "confirm": "Benachrichtigungen erlauben",
-      "dismiss": "Abbrechen"
-    },
     "access_denied": {
-      "settings_button": "Zu den Einstellungen",
+      "settings_button": "Einstellungen öffnen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
-      "push_message": "Du hast Push-Benachrichtigungen für diese App deaktiviert. Bitte gehe in die Einstellungen deines Gerätes um Benachrichtigungen für diese App zu aktivieren.",
+      "push_message": "Du hast Push-Benachrichtigungen für diese App deaktiviert. Bitte gehe in die Einstellungen deines Gerätes um sie zu aktivieren.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
   },

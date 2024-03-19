@@ -1,5 +1,4 @@
 import event from '@shopgate/pwa-core/classes/Event';
-import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/constants/AppEvents';
 import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import {
@@ -8,12 +7,14 @@ import {
   PERMISSION_STATUS_NOT_DETERMINED,
   PERMISSION_STATUS_NOT_SUPPORTED,
   PERMISSION_ID_CAMERA,
-} from '@shopgate/pwa-core/constants/AppPermissions';
+  APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
+} from '@shopgate/engage/core/constants';
 import {
   getAppPermissions,
   requestAppPermissions,
 } from '@shopgate/pwa-core/commands/appPermissions';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { appPermissionStatusReceived } from '../../action-creators';
 import grantPermissions from '../grantPermissions';
 
 jest.mock('@shopgate/pwa-core/classes/Event');
@@ -51,7 +52,13 @@ const customModalOptions = {
 };
 
 describe('engage > core > actions > grantPermissions', () => {
-  const dispatch = jest.fn(action => action);
+  const dispatch = jest.fn((result) => {
+    if (typeof result === 'function') {
+      return result(dispatch);
+    }
+
+    return result;
+  });
   jest.useFakeTimers();
 
   beforeAll(() => {
@@ -73,7 +80,14 @@ describe('engage > core > actions > grantPermissions', () => {
     expect(granted).toBe(true);
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId]);
     expect(requestAppPermissions).not.toHaveBeenCalled();
-    expect(dispatch).not.toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalledTimes(2);
+
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_GRANTED,
+    }));
+
     expect(openAppSettings).not.toHaveBeenCalled();
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
   });
@@ -97,7 +111,14 @@ describe('engage > core > actions > grantPermissions', () => {
     expect(granted).toBe(false);
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId]);
     expect(requestAppPermissions).not.toHaveBeenCalled();
-    expect(dispatch).not.toHaveBeenCalled();
+
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_SUPPORTED,
+    }));
+
     expect(openAppSettings).not.toHaveBeenCalled();
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
     expect(logger.error).not.toHaveBeenCalled();
@@ -111,7 +132,19 @@ describe('engage > core > actions > grantPermissions', () => {
     expect(granted).toBe(true);
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId]);
     expect(requestAppPermissions).toHaveBeenCalledWith([{ permissionId }]);
-    expect(dispatch).not.toHaveBeenCalled();
+
+    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_DETERMINED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(3, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(4, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_GRANTED,
+    }));
+
     expect(openAppSettings).not.toHaveBeenCalled();
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
     expect(logger.error).not.toHaveBeenCalled();
@@ -124,7 +157,19 @@ describe('engage > core > actions > grantPermissions', () => {
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
-    expect(dispatch).not.toHaveBeenCalled();
+
+    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_DETERMINED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(3, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(4, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_DENIED,
+    }));
+
     expect(openAppSettings).not.toHaveBeenCalled();
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
     expect(logger.error).not.toHaveBeenCalled();
@@ -138,7 +183,19 @@ describe('engage > core > actions > grantPermissions', () => {
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
-    expect(dispatch).not.toHaveBeenCalled();
+
+    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_DETERMINED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(3, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(4, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_DETERMINED,
+    }));
+
     expect(openAppSettings).not.toHaveBeenCalled();
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
     expect(logger.error).not.toHaveBeenCalled();
@@ -149,7 +206,14 @@ describe('engage > core > actions > grantPermissions', () => {
 
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
-    expect(dispatch).not.toHaveBeenCalled();
+
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_DENIED,
+    }));
+
     expect(openAppSettings).not.toHaveBeenCalled();
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
     expect(logger.error).not.toHaveBeenCalled();
@@ -165,7 +229,14 @@ describe('engage > core > actions > grantPermissions', () => {
       modal: customModalOptions,
     })(dispatch);
     expect(granted).toBe(false);
-    expect(dispatch).toHaveBeenCalledTimes(1);
+
+    expect(dispatch).toHaveBeenCalledTimes(3);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_DENIED,
+    }));
+
     expect(showModal).toHaveBeenCalledWith({
       title: null,
       ...customModalOptions,
@@ -184,7 +255,19 @@ describe('engage > core > actions > grantPermissions', () => {
     })(dispatch)
       .then((granted) => {
         expect(granted).toBe(false);
-        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        expect(dispatch).toHaveBeenCalledTimes(5);
+        expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+        expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+          permissionId,
+          status: PERMISSION_STATUS_DENIED,
+        }));
+        expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
+        expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+          permissionId,
+          status: PERMISSION_STATUS_DENIED,
+        }));
+
         expect(openAppSettings).toHaveBeenCalledTimes(1);
         expect(event.removeCallbackSpy).toHaveBeenCalledWith(
           APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
@@ -210,7 +293,19 @@ describe('engage > core > actions > grantPermissions', () => {
     })(dispatch)
       .then((granted) => {
         expect(granted).toBe(true);
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+
+        expect(dispatch).toHaveBeenCalledTimes(5);
+        expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+        expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+          permissionId,
+          status: PERMISSION_STATUS_DENIED,
+        }));
+        expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
+        expect(dispatch).toHaveBeenNthCalledWith(5, appPermissionStatusReceived({
+          permissionId,
+          status: PERMISSION_STATUS_GRANTED,
+        }));
         expect(openAppSettings).toHaveBeenCalledTimes(1);
         expect(event.removeCallbackSpy).toHaveBeenCalledWith(
           APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,

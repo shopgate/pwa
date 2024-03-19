@@ -6,6 +6,9 @@ import { useBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/hook
 import Subscription from '../Subscription';
 
 const styles = {
+  root: css({
+    margin: '8px 8px 10px',
+  }).toString(),
   divider: css({
     height: 1,
     width: 'calc(100% + 32px)',

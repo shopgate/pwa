@@ -21,19 +21,23 @@
     "browse": "Navegar",
     "favorites": "Favoritos",
     "scanner": "Scanner",
-    "back_in_stock": "Lembretes de reposição de stock"
+    "back_in_stock": "Notificações"
   },
   "back_in_stock": {
     "list_states": {
-      "active": "Lembretes activos",
-      "past": "Lembretes anteriores"
+      "active": "Notificações activas",
+      "past": "Notificações anteriores"
     },
-    "empty_list_reminder": "Não tem lembretes nesta lista.",
-    "get_notified": "Ser notificado",
-    "we_will_remind_you": "Lembrar-lhe-emos.",
+    "empty_list_reminder": "Não tem notificações configuradas",
+    "get_notified": "Notifique-me quando o item estiver disponível",
+    "we_will_remind_you": "Será notificado quando o artigo estiver novamente disponível",
     "add_back_in_stock_success_modal": {
-      "title": "Lembrete de stock adicionado!",
-      "message": "Enviar-lhe-emos uma notificação push quando o produto estiver novamente em stock. Pode gerir as suas notificações nas definições."
+      "title": "Notificação adicionada!",
+      "message": "Enviar-lhe-emos uma notificação push quando o produto estiver novamente disponível. Pode gerir estas notificações através do menu."
+    },
+    "rationale": {
+      "message": "Permita notificações push no passo seguinte para que possamos informá-lo quando o produto estiver novamente disponível.",
+      "confirm": "Permitir notificações"
     }
   },
   "favorites": {
@@ -284,15 +288,10 @@
     }
   },
   "permissions": {
-    "back_in_stock_push_notifications": {
-      "message": "Autorize as notificações push no passo seguinte, para que possamos enviar-lhe uma notificação quando o produto estiver novamente em stock.",
-      "confirm": "Permitir notificações push",
-      "dismiss": "Cancelar"
-    },
     "access_denied": {
       "settings_button": "Acesse configurações",
       "camera_message": "Esta funcionalidade requer acesso à sua câmara. Por favor autorize o acesso nas configurações.",
-      "push_message": "Esta funcionalidade requer acesso a notificações push. Autorize o acesso nas definições.",
+      "push_message": "Notificações anterioresEsta funcionalidade requer acesso a notificações push. Autorize o acesso nas definições.",
       "geolocation_message": "Para encontrar lojas perto de você, acesse Configurações e ative as permissões de localização."
     }
   },

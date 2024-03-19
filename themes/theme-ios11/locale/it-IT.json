@@ -21,19 +21,23 @@
     "browse": "Sfoglia",
     "favorites": "Favoriti",
     "scanner": "Scanner",
-    "back_in_stock": "Promemoria per il ritorno in magazzino"
+    "back_in_stock": "Notifiche"
   },
   "back_in_stock": {
     "list_states": {
-      "active": "Promemoria attivi",
-      "past": "Promemoria del passato"
+      "active": "Notifiche attive",
+      "past": "Notifiche passate"
     },
-    "empty_list_reminder": "Non ci sono promemoria in questo elenco.",
-    "get_notified": "Ricevere una notifica",
-    "we_will_remind_you": "Ve lo ricordiamo.",
+    "empty_list_reminder": "Non è stata configurata alcuna notifica",
+    "get_notified": "Notificami le nuove scorte",
+    "we_will_remind_you": "Ti avviseremo quando il prodotto tornerà in stock",
     "add_back_in_stock_success_modal": {
-      "title": "Aggiunto un promemoria sul back-in-stock!",
-      "message": "Vi invieremo una notifica push quando il prodotto sarà di nuovo disponibile. È possibile gestire le notifiche nelle impostazioni."
+      "title": "Aggiunta la notifica di back-in-stock!",
+      "message": "Ti invieremo una notifica push quando il prodotto sarà tornato in stock. È possibile gestire le notifiche nel menu"
+    },
+    "rationale": {
+      "message": "Si prega di consentire le notifiche push nella fase successiva, in modo da poter inviare una notifica quando il prodotto è di nuovo disponibile",
+      "confirm": "Consenti le notifiche push"
     }
   },
   "favorites": {
@@ -284,13 +288,8 @@
     }
   },
   "permissions": {
-    "back_in_stock_push_notifications": {
-      "message": "Nella fase successiva, consentire le notifiche push, in modo da poter inviare una notifica quando il prodotto è di nuovo disponibile.",
-      "confirm": "Consentire le notifiche push",
-      "dismiss": "Annullamento"
-    },
     "access_denied": {
-      "settings_button": "Vai alle impostazioni",
+      "settings_button": "Impostazioni aperte",
       "camera_message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
       "push_message": "Questa funzione richiede l'accesso alle notifiche push. Consentire l'accesso nelle impostazioni.",
       "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione."

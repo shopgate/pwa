@@ -1,6 +1,4 @@
-import {
-  PERMISSION_ID_PUSH,
-} from '@shopgate/pwa-core';
+import { PERMISSION_ID_PUSH } from '@shopgate/engage/core/constants';
 import grantPermissions from './grantPermissions';
 
 /**

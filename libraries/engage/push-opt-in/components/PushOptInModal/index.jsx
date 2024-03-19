@@ -25,7 +25,7 @@ const PushOptInModal = ({
       modalButtonAllow,
       modalImageURL,
       modalImageSVG,
-    },
+    } = {},
   } = appConfig;
 
   const imageSRC = useMemo(() => {

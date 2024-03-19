@@ -1,4 +1,8 @@
 import {
+  PERMISSION_ID_PUSH,
+  APP_PERMISSION_STATUS_RECEIVED,
+} from '@shopgate/engage/core/constants';
+import {
   ADD_BACK_IN_STOCK_SUBSCRIPTION,
   ADD_BACK_IN_STOCK_SUBSCRIPTION_ERROR,
   ADD_BACK_IN_STOCK_SUBSCRIPTION_SUCCESS,
@@ -14,6 +18,7 @@ const initialState = {
   isFetching: false,
   isInitial: true,
   subscriptions: [],
+  pushPermissionStatus: null,
 };
 
 /**
@@ -79,6 +84,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
+      };
+    }
+    case APP_PERMISSION_STATUS_RECEIVED: {
+      if (action.permissionId !== PERMISSION_ID_PUSH) {
+        return state;
+      }
+
+      return {
+        ...state,
+        pushPermissionStatus: action.status,
       };
     }
     default:
