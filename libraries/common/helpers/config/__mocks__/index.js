@@ -5,6 +5,7 @@ export const themeColors = themeConfig.colors;
 export const themeShadows = themeConfig.shadows;
 export const themeVariables = themeConfig.variables;
 export const themeIcons = themeConfig.icons;
+export const themeName = 'theme';
 
 const appConfig = {
   get hideProductImageShadow() { return true; },

@@ -20,7 +20,25 @@
     "reviews": "Recenzje",
     "browse": "Przeglądaj stronę",
     "favorites": "Lista życzeń",
-    "scanner": "Skaner"
+    "scanner": "Skaner",
+    "back_in_stock": "Powiadomienia"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktywne powiadomienia",
+      "past": "Przeszłe powiadomienia"
+    },
+    "empty_list_reminder": "Nie skonfigurowano żadnych powiadomień",
+    "get_notified": "Powiadom mnie, gdy przedmiot będzie dostępny",
+    "we_will_remind_you": "Zostaniesz powiadomiony, gdy artykuł będzie ponownie dostępny",
+    "add_back_in_stock_success_modal": {
+      "title": "Powiadomienie dodane!",
+      "message": "Wyślemy Ci powiadomienie push, gdy produkt będzie ponownie dostępny. Możesz zarządzać tymi powiadomieniami za pomocą menu."
+    },
+    "rationale": {
+      "message": "Zezwól na powiadomienia push w następnym kroku, abyśmy mogli powiadomić Cię, gdy produkt będzie ponownie dostępny",
+      "confirm": "Zezwól na powiadomienia"
+    }
   },
   "favorites": {
     "add": "Dodaj do listy obserwowanych",
@@ -229,6 +247,7 @@
     "favorites": "Lista życzeń",
     "my_orders": "Moje polecenia",
     "cart": "Koszyk na zakupy",
+    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "shipping": "Metody wysyłki",
     "about": "Nota prawna",
     "contact": "Kontakt",
@@ -278,6 +297,7 @@
     "access_denied": {
       "settings_button": "Przejdź do ustawień",
       "camera_message": "Ta funkcja wymaga dostępu do aparatu. W ustawieniach należy zezwolić na dostęp.",
+      "push_message": "Powiadomienia push dla tej aplikacji zostały wyłączone. Przejdź do ustawień urządzenia, aby je aktywować.",
       "geolocation_message": "Potrzebujemy dostępu do lokalizacji, aby pokazać pobliskie sklepy."
     }
   },
@@ -300,5 +320,11 @@
     "title": "Oceń aplikację",
     "message": "Czy podoba Ci się nasza aplikacja? Będziemy wdzięczni za wystawienie oceny!",
     "rejectionApprovalMessage": "Czy chcesz przekazać nam swoje uwagi? Pomoże nam to w dalszym ulepszaniu aplikacji."
+  },
+  "pushOptInModal": {
+    "title": "Otrzymuj wyjątkowe kupony i oferty",
+    "buttonAllow": "Włącz powiadomienia",
+    "buttonDeny": "Nie chcę powiadomień",
+    "message": "Aktywuj powiadomienia, abyśmy mogli wysyłać Ci powiadomienia push o nowych ofertach, ekskluzywnych kuponach i nie tylko."
   }
 }

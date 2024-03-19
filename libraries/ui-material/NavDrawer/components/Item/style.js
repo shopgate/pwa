@@ -22,7 +22,7 @@ const button = css({
   display: 'flex',
   fontWeight: 500,
   outline: 0,
-  padding: '16px 0',
+  padding: '16px 8px 16px 0',
   position: 'relative',
   width: '100%',
   ':first-child': {
@@ -32,10 +32,12 @@ const button = css({
 
 const label = css({
   marginTop: 2,
+  textAlign: 'left',
 }).toString();
 
 const iconWrapper = css({
-  width: 72,
+  width: 56,
+  flexShrink: 0,
 }).toString();
 
 const icon = css({

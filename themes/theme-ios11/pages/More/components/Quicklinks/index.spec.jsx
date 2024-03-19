@@ -7,6 +7,10 @@ import Quicklinks from './index';
 
 const store = createMockStore();
 
+jest.mock('@shopgate/engage/back-in-stock/selectors', () => ({
+  getIsBackInStockEnabled: jest.fn(() => false),
+}));
+
 jest.mock('@shopgate/pwa-common/components/Link', () => {
   /* eslint-disable react/prop-types, require-jsdoc */
   const Link = ({ children }) => (

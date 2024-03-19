@@ -13,6 +13,7 @@ import {
 import Shipping from '@shopgate/engage/product/components/Header/Shipping';
 import Tiers from '@shopgate/engage/product/components/Header/Tiers';
 import PriceStriked from '@shopgate/engage/product/components/Header/PriceStriked';
+import { ProductInfoBackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import Manufacturer from '../Manufacturer';
 import Availability from '../Availability';
 import Price from '../Price';
@@ -57,6 +58,9 @@ const ProductInfo = ({ productId, options }) => (
             </div>
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
+            </div>
+            <div className={styles.productInfo}>
+              <ProductInfoBackInStockButton />
             </div>
           </Portal>
         </Grid.Item>

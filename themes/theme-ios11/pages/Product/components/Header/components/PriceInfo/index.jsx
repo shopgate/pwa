@@ -22,7 +22,7 @@ const PriceInfo = ({ price }) => (
     <Portal name={PRODUCT_PRICE_INFO}>
       <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
         {(price && price.info !== '') && (
-          <PriceInfoBase className={styles.priceInfo} text={price.info} />
+        <PriceInfoBase className={styles.priceInfo} text={price.info} />
         )}
       </PlaceholderLabel>
     </Portal>
@@ -35,7 +35,7 @@ PriceInfo.propTypes = {
 };
 
 PriceInfo.defaultProps = {
-  price: '',
+  price: null,
 };
 
 export default connect(memo(PriceInfo));

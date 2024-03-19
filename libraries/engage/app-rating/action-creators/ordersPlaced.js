@@ -1,6 +1,6 @@
 import {
-  RESET_ORDERS_PLACED_COUNT,
-  INCREASE_ORDERS_PLACED_COUNT,
+  APP_RATING_RESET_ORDERS_PLACED_COUNT,
+  APP_RATING_INCREASE_ORDERS_PLACED_COUNT,
 } from '../constants';
 
 /**
@@ -8,7 +8,7 @@ import {
  * @return {Object} The dispatched action object.
  */
 export const increaseOrdersPlacedCount = () => ({
-  type: INCREASE_ORDERS_PLACED_COUNT,
+  type: APP_RATING_INCREASE_ORDERS_PLACED_COUNT,
 });
 
 /**
@@ -16,5 +16,5 @@ export const increaseOrdersPlacedCount = () => ({
  * @return {Object} The dispatched action object.
  */
 export const resetOrdersPlacedCount = () => ({
-  type: RESET_ORDERS_PLACED_COUNT,
+  type: APP_RATING_RESET_ORDERS_PLACED_COUNT,
 });

@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core';
+import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
 import styles from './style';
 
 /**
@@ -8,6 +10,7 @@ import styles from './style';
  */
 class SheetItem extends PureComponent {
   static propTypes = {
+    characteristics: PropTypes.shape().isRequired,
     item: PropTypes.shape().isRequired,
     forwardedRef: PropTypes.shape(),
     onClick: PropTypes.func,
@@ -27,12 +30,6 @@ class SheetItem extends PureComponent {
    * @returns {string}
    */
   getStyle = (selectable) => {
-    const { selected } = this.props;
-
-    if (selected) {
-      return styles.buttonSelected;
-    }
-
     if (!selectable) {
       return styles.buttonDisabled;
     }
@@ -54,7 +51,7 @@ class SheetItem extends PureComponent {
       ref: forwardedRef,
       value: item.id,
       'aria-hidden': !item.selectable,
-      ...item.selectable && { onClick },
+      ...item.selectable && { onClick: event => onClick(event, item.id) },
     };
   };
 
@@ -62,13 +59,35 @@ class SheetItem extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { item, rightComponent: Right, selected } = this.props;
+    const {
+      item,
+      rightComponent: Right,
+      selected,
+      characteristics,
+    } = this.props;
 
+    const buildProps = this.buildProps();
     return (
-      <button {...this.buildProps()} data-test-id={item.label} aria-selected={selected} role="option" type="button">
-        {item.label}
-        {item.selectable && <Right />}
-      </button>
+      <div className={classNames(styles.root, {
+        [styles.rootSelected]: selected,
+      })}
+      >
+        <button {...buildProps} data-test-id={item.label} aria-selected={selected} role="option" type="button">
+          <div className={styles.mainRow}>
+            <div>
+              {item.label}
+            </div>
+            <div className={styles.mainRowRight}>
+              {item.selectable && <Right />}
+            </div>
+          </div>
+        </button>
+        <div className={styles.bottomRow}>
+          {item.selectable && (
+          <CharacteristicsButton characteristics={characteristics} />
+          )}
+        </div>
+      </div>
     );
   }
 }

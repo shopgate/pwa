@@ -1,6 +1,6 @@
+import { GEOLOCATION_ERROR_DENIED } from '@shopgate/engage/core/constants';
 import grantGeolocationPermissions from './grantGeolocationPermissions';
 import GeolocationRequest from '../classes/GeolocationRequest';
-import { GEOLOCATION_ERROR_DENIED } from '../constants/geolocationRequest';
 
 /**
  * Determines the geolocation of the user. When not geolocation permissions are granted yet,

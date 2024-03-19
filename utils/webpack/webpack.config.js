@@ -147,6 +147,14 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',

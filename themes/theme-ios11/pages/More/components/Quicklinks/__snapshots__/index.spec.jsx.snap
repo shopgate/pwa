@@ -16,6 +16,7 @@ exports[`<Quicklinks /> should not render when no quicklinks are there 1`] = `
     <Quicklinks
       dispatch={[Function]}
       entries={Array []}
+      isBackInStockEnabled={false}
     />
   </Connect(Quicklinks)>
 </Provider>
@@ -48,6 +49,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           },
         ]
       }
+      isBackInStockEnabled={false}
     >
       <SurroundPortals
         portalName="nav-menu.quick-links"

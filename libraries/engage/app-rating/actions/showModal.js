@@ -9,7 +9,7 @@ import {
   setLastPopupTimestamp,
 } from '../action-creators/popup';
 import { generateReviewLink } from '../helpers';
-import { TIMER_TIMESPAN } from '../constants';
+import { APP_RATING_TIMER_TIMESPAN } from '../constants';
 import { getAppRatingState } from '../selectors/appRating';
 
 const {
@@ -79,7 +79,7 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     const appRatingState = getAppRatingState(state);
 
     const isMinDaysBetweenPopupsElapsed = (Date.now() - appRatingState.lastPopupAt) >=
-      (minDaysBetweenPopups * TIMER_TIMESPAN);
+      (minDaysBetweenPopups * APP_RATING_TIMER_TIMESPAN);
 
     if (!isMinDaysBetweenPopupsElapsed) {
       return;

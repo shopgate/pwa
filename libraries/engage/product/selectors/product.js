@@ -125,3 +125,12 @@ export const getCurrentProductPropertyByLabel = createSelector(
       .find(({ label }) => label === widgetSettings.propertyLabel);
   }
 );
+/**
+ * Create a selector to retrieve the product type.
+ * @returns {Function}
+ *
+ */
+export const makeGetProductType = () => createSelector(
+  getProduct,
+  product => product?.type
+);

@@ -412,6 +412,9 @@
             },
             "visibilityOff": {
               "$ref": "#/definitions/icon"
+            },
+            "notification": {
+              "$ref": "#/definitions/icon"
             }
           }
         },

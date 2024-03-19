@@ -1,4 +1,4 @@
-import { PERMISSION_ID_LOCATION } from '@shopgate/pwa-core/constants/AppPermissions';
+import { PERMISSION_ID_LOCATION } from '@shopgate/engage/core/constants';
 import grantPermissions from './grantPermissions';
 
 /**

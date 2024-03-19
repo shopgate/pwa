@@ -22,12 +22,12 @@ const Availability = ({ availability }) => (
     <Portal name={PRODUCT_AVAILABILITY}>
       <PlaceholderLabel className={styles.placeholder} ready={(availability !== null)}>
         {availability && (
-          <AvailableText
-            className={styles.availability}
-            showWhenAvailable
-            text={availability.text}
-            state={availability.state}
-          />
+        <AvailableText
+          className={styles.availability}
+          showWhenAvailable
+          text={availability.text || ''}
+          state={availability.state}
+        />
         )}
       </PlaceholderLabel>
     </Portal>

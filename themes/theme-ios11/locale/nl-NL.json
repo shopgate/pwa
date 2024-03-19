@@ -20,7 +20,25 @@
     "reviews": "Reviews",
     "browse": "Bladeren",
     "favorites": "Favorieten",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Meldingen"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Actieve meldingen",
+      "past": "Afgelopen meldingen"
+    },
+    "empty_list_reminder": "U hebt geen meldingen geconfigureerd",
+    "get_notified": "Stel me op de hoogte van nieuwe voorraad",
+    "we_will_remind_you": "We zullen u op de hoogte stellen wanneer het product weer op voorraad is",
+    "add_back_in_stock_success_modal": {
+      "title": "Melding toegevoegd!",
+      "message": "We sturen je een pushmelding als het product weer op voorraad is. Je kunt je meldingen beheren in het menu."
+    },
+    "rationale": {
+      "message": "Sta pushmeldingen toe in de volgende stap, zodat we je een melding kunnen sturen als het product weer op voorraad is.",
+      "confirm": "Pushmeldingen toestaan"
+    }
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
@@ -223,6 +241,7 @@
     "categories": "Categorieën",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
+    "back_in_stock": "Terug in voorraad herinnering",
     "shipping": "Verzendmethoden",
     "about": "Impressum",
     "contact": "Contact",
@@ -272,6 +291,7 @@
     "access_denied": {
       "settings_button": "Ga naar instellingen",
       "camera_message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
+      "push_message": "Deze functie vereist toegang tot pushmeldingen. Sta toegang toe in de instellingen.",
       "geolocation_message": "Ga naar Instellingen en schakel locatiemachtigingen in om winkels bij u in de buurt te vinden."
     }
   },
@@ -294,5 +314,11 @@
     "title": "Beoordeel app",
     "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
     "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
+  },
+  "pushOptInModal": {
+    "title": "Exclusieve coupons en aanbiedingen ontvangen",
+    "buttonAllow": "Meldingen inschakelen",
+    "buttonDeny": "Ik wil geen meldingen",
+    "message": "Activeer meldingen zodat we je pushberichten kunnen sturen over nieuwe aanbiedingen, exclusieve vouchers en meer."
   }
 }
