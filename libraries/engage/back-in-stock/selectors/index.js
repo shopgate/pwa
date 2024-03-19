@@ -52,9 +52,11 @@ export const getBackInStockPushPermissionStatus = createSelector(
 /**
  * Creates a selector that retrieves the subscription of
  * a product / variant or null by its variantId / productId
+ * @param {Object} params Params
+ * @param {string} params.status Get subscription for a specific status
  * @returns {Function}
  */
-export const makeGetSubscriptionByProduct = () => createSelector(
+export const makeGetSubscriptionByProduct = ({ status } = {}) => createSelector(
   (state, props = {}) => (props.variantId ? props.variantId : props.productId),
   getBackInStockSubscriptions,
   (requestedProductCode, subscriptions) => {
@@ -62,8 +64,8 @@ export const makeGetSubscriptionByProduct = () => createSelector(
       return false;
     }
 
-    return subscriptions.find(({ productCode }) =>
-      productCode === requestedProductCode) || null;
+    return subscriptions.find(({ productCode, status: productStatus }) =>
+      (productCode === requestedProductCode && status ? productStatus === status : true)) || null;
   }
 );
 

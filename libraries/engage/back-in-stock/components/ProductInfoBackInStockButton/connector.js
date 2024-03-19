@@ -11,7 +11,8 @@ import {
  * @return {Object} The extended component props.
  */
 const makeMapStateToProps = () => {
-  const getSubscriptionByProduct = makeGetSubscriptionByProduct();
+  const getSubscriptionByProduct =
+    makeGetSubscriptionByProduct({ status: 'active' });
   return (state, props) => ({
     subscription: getSubscriptionByProduct(state, props),
     isBackInStockEnabled: getIsBackInStockEnabled(state, props),
