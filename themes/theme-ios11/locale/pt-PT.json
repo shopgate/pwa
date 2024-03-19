@@ -159,6 +159,9 @@
       "features": "Características",
       "pricing": "Preços",
       "properties": "Propriedades"
+    },
+    "showAllProducts": {
+      "label": "Mostrar todos os produtos"
     }
   },
   "search": {

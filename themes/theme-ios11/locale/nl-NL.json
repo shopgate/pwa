@@ -159,6 +159,9 @@
     "sections": {
       "categories": "Categorieën",
       "products": "Producten"
+    },
+    "showAllProducts": {
+      "label": "Toon alle producten"
     }
   },
   "search": {

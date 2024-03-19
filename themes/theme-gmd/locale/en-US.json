@@ -158,7 +158,7 @@
       "products": "Products"
     },
     "showAllProducts": {
-      "title": "Show all products"
+      "label": "Show all products"
     }
   },
   "search": {

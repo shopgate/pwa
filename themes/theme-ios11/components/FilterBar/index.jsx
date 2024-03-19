@@ -2,7 +2,7 @@ import React, {
   useState, useEffect, useMemo, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useWidgetSettings } from '@shopgate/engage/core';
+import { useWidgetSettings, useRoute } from '@shopgate/engage/core';
 import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -16,17 +16,17 @@ const { colors, variables: { scroll: { offset = 100 } = {} } } = themeConfig || 
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function FilterBar({ filters, pattern }) {
+function FilterBar({ filters }) {
   const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
-
-  useEffect(() => {
-    setActive(filters !== null && Object.keys(filters).length > 0);
-  }, [filters]);
+  const { pattern } = useRoute();
 
   useEffect(() => {
     if (filters !== null && pattern === CATEGORY_ALL_PATTERN && Object.keys(filters).length === 1) {
       setActive(false);
+    }
+    if (filters !== null && Object.keys(filters).length > 0 && pattern !== CATEGORY_ALL_PATTERN) {
+      setActive(true);
     }
   }, [filters, pattern]);
 
@@ -48,12 +48,10 @@ function FilterBar({ filters, pattern }) {
 
 FilterBar.propTypes = {
   filters: PropTypes.shape(),
-  pattern: PropTypes.string,
 };
 
 FilterBar.defaultProps = {
   filters: null,
-  pattern: '',
 };
 
 export default memo(FilterBar);

@@ -56,7 +56,7 @@ class SearchContent extends Component {
               shadow={!showFilterBar}
             />
 
-            {showFilterBar && <Bar pattern={pattern} key="below" /> }
+            {showFilterBar && <Bar key="below" /> }
             <SurroundPortals portalName={VIEW_CONTENT}>
               <Products
                 searchPhrase={searchPhrase}

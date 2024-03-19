@@ -163,13 +163,16 @@ class FilterChips extends Component {
       }
     });
 
+    if (pattern === CATEGORY_ALL_PATTERN && Object.keys(chips).length === 0) {
+      return null;
+    }
+
     return (
       <div className={`${styles} theme__filter-bar__filter-chips`}>
         <ChipLayout
           moreLabel="filter.more"
           handleMoreButton={openFilters}
           pathname={currentPathname}
-          hideChipsLayout={pattern === CATEGORY_ALL_PATTERN && Object.keys(chips).length === 0}
         >
           {chips}
         </ChipLayout>

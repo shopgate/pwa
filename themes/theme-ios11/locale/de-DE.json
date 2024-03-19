@@ -161,7 +161,7 @@
       "products": "Produkte"
     },
     "showAllProducts": {
-      "title": "Alle Produkte anzeigen"
+      "label": "Alle Produkte anzeigen"
     }
   },
   "search": {

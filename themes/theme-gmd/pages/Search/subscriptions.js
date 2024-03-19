@@ -5,9 +5,8 @@ import {
 } from '@shopgate/pwa-common-commerce/search/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin, router } from '@shopgate/engage/core';
-import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
+import { CATEGORY_ALL_PATTERN, fetchCategory } from '@shopgate/engage/category';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
-import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { searchFiltersDidUpdate$ } from './streams';
 

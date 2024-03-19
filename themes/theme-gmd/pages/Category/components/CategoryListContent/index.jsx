@@ -50,8 +50,7 @@ class CategoryListContent extends PureComponent {
                 categories={categories}
                 prerender={childrenCount}
                 showAllProducts={showAllProducts}
-                categoryId={categoryId}
-                currentCategory={category}
+                parentCategory={category}
               />
             </Section>
           )}

@@ -7,7 +7,6 @@ import FilterBar from 'Components/FilterBar';
 const routeMap = {
   filters: 'state.filters',
   searchPhrase: 'query.s',
-  pattern: 'pattern',
 };
 
 const viewMap = {
@@ -20,13 +19,12 @@ const viewMap = {
  */
 const SearchBar = () => (
   <Consume context={RouteContext} props={routeMap}>
-    {({ searchPhrase, filters, pattern }) => (
+    {({ searchPhrase, filters }) => (
       <Consume context={ViewContext} props={viewMap}>
         {({ ref, setTop }) => (
           <FilterBar
             searchPhrase={searchPhrase}
             filters={filters}
-            pattern={pattern}
             setTop={setTop}
             viewRef={ref}
           />
