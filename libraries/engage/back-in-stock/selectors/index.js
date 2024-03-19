@@ -64,8 +64,17 @@ export const makeGetSubscriptionByProduct = ({ status } = {}) => createSelector(
       return false;
     }
 
-    return subscriptions.find(({ productCode, status: productStatus }) =>
-      (productCode === requestedProductCode && status ? productStatus === status : true)) || null;
+    return subscriptions.find(({ productCode, status: subscriptionStatus }) => {
+      let match = productCode === requestedProductCode;
+
+      if (match && status) {
+        // When the selector factory is created for a specific status, the subscription also
+        // needs to fulfill this condition
+        match = subscriptionStatus === status;
+      }
+
+      return match;
+    }) || null;
   }
 );
 
