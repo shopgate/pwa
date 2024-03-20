@@ -84,8 +84,8 @@ const makeMapStateToProps = () => {
  * @returns {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  showModal: showModalAction,
-  historyPush: historyPushAction,
+  showModal: (...args) => dispatch(showModalAction(...args)),
+  historyPush: (...args) => dispatch(historyPushAction(...args)),
   updateFavoriteItem: (productId, listId, quantity, notes) => {
     dispatch(updateFavorite(productId, listId, quantity, notes));
   },
