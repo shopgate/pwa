@@ -18,7 +18,7 @@ export const getShowAllProductsFilters = (parentCategory) => {
   const filters = {
     categories: {
       id: 'categories',
-      label: i18n.text('filters.label.category'),
+      label: i18n.text('filter.label.category'),
       source: 'categories',
       type: 'multiselect',
       isHidden: true,

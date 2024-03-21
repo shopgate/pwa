@@ -4,10 +4,10 @@ import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import {
-  searchWillEnter$,
-  searchDidEnter$,
-} from '@shopgate/pwa-common-commerce/search/streams';
-import { searchFiltersDidUpdate$ } from './streams';
+  searchFiltersDidUpdate$,
+  searchPageComponentWillEnter$,
+  searchPageComponentDidEnter$,
+} from './streams';
 import subscriptions from './subscriptions';
 
 jest.mock('@shopgate/pwa-common-commerce/filter/actions/fetchFilters', () =>
@@ -17,7 +17,20 @@ jest.mock('@shopgate/pwa-common-commerce/search/actions/fetchSearchResults', () 
   jest.fn().mockReturnValue('fetchSearchResults'));
 
 jest.mock('@shopgate/pwa-common/selectors/router', () => ({
-  getCurrentRoute: jest.fn(),
+  getCurrentRoute: jest.fn(() => ({
+    query: {
+      s: 'Some search phrase',
+      sort: 'relevance',
+    },
+  })),
+  getCurrentParams: () => ({}),
+  getCurrentState: () => ({}),
+}));
+jest.mock('@shopgate/pwa-common/selectors/history', () => ({
+  getCurrentQuery: () => ({
+    s: 'Some search phrase',
+    sort: 'relevance',
+  }),
 }));
 
 jest.mock('@shopgate/engage/product', () => ({
@@ -38,7 +51,7 @@ describe('SearchPage subscriptions', () => {
     expect(subscribe).toHaveBeenCalledTimes(3);
   });
 
-  describe('searchWillEnter$', () => {
+  describe('searchPageComponentWillEnter$', () => {
     let stream;
     let callback;
 
@@ -47,7 +60,7 @@ describe('SearchPage subscriptions', () => {
     });
 
     it('should have been called as expected', () => {
-      expect(stream).toBe(searchWillEnter$);
+      expect(stream).toBe(searchPageComponentWillEnter$);
       expect(callback).toBeInstanceOf(Function);
     });
 
@@ -119,7 +132,7 @@ describe('SearchPage subscriptions', () => {
     });
   });
 
-  describe('searchDidEnter$', () => {
+  describe('searchPageComponentDidEnter$', () => {
     let stream;
     let callback;
 
@@ -128,7 +141,7 @@ describe('SearchPage subscriptions', () => {
     });
 
     it('should have been called as expected', () => {
-      expect(stream).toBe(searchDidEnter$);
+      expect(stream).toBe(searchPageComponentDidEnter$);
       expect(callback).toBeInstanceOf(Function);
     });
 

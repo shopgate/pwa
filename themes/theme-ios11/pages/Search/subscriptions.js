@@ -1,21 +1,25 @@
 import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
-import {
-  searchWillEnter$,
-  searchDidEnter$,
-} from '@shopgate/pwa-common-commerce/search/streams';
 import { hex2bin, router } from '@shopgate/engage/core';
-import { CATEGORY_ALL_PATTERN, fetchCategory, getShowAllProductsFilters } from '@shopgate/engage/category';
+import {
+  CATEGORY_ALL_PATTERN,
+  fetchCategory,
+  getShowAllProductsFilters,
+} from '@shopgate/engage/category';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
-import { searchFiltersDidUpdate$ } from './streams';
+import {
+  searchFiltersDidUpdate$,
+  searchPageComponentWillEnter$,
+  searchPageComponentDidEnter$,
+} from './streams';
 
 /**
  * Filter subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function search(subscribe) {
-  subscribe(searchWillEnter$, async ({ action, dispatch }) => {
+  subscribe(searchPageComponentWillEnter$, async ({ action, dispatch }) => {
     let { filters } = action.route.state;
     let { s: searchPhrase } = action.route.query;
     const { sort } = action.route.query;
@@ -59,7 +63,7 @@ export default function search(subscribe) {
     }));
   });
 
-  subscribe(searchDidEnter$, ({ dispatch }) => {
+  subscribe(searchPageComponentDidEnter$, ({ dispatch }) => {
     dispatch(fetchFilters());
   });
 }
