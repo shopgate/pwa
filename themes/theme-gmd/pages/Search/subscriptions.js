@@ -52,8 +52,13 @@ export default function search(subscribe) {
 
   subscribe(searchFiltersDidUpdate$, ({ action, dispatch, getState }) => {
     const { filters } = action;
-    const { query } = getCurrentRoute(getState());
-    const { s: searchPhrase, sort } = query;
+    const { query, pattern } = getCurrentRoute(getState());
+    let { s: searchPhrase } = query;
+    const { sort } = query;
+
+    if (pattern === CATEGORY_ALL_PATTERN) {
+      searchPhrase = '*';
+    }
 
     dispatch(fetchSearchResults({
       filters,
