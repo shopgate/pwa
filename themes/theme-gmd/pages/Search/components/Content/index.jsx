@@ -61,7 +61,7 @@ class SearchContent extends Component {
             <DefaultBar
               center={
                 <AppBar.Title
-                  title={pattern === CATEGORY_ALL_PATTERN ? state.categoryName : searchPhrase}
+                  title={pattern === CATEGORY_ALL_PATTERN ? state.categoryName || '' : searchPhrase}
                   onClick={this.showSearch}
                 />
               }
