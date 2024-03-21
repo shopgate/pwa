@@ -5,7 +5,7 @@ import {
 } from '@shopgate/pwa-common-commerce/search/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin, router } from '@shopgate/engage/core';
-import { CATEGORY_ALL_PATTERN, fetchCategory } from '@shopgate/engage/category';
+import { CATEGORY_ALL_PATTERN, fetchCategory, getShowAllProductsFilters } from '@shopgate/engage/category';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { searchFiltersDidUpdate$ } from './streams';
@@ -26,18 +26,7 @@ export default function search(subscribe) {
       if (!filters) {
         const category = await dispatch(fetchCategory(hex2bin(action.route.params.categoryId)));
 
-        filters = {
-          categories: {
-            id: 'categories',
-            label: 'Kategorie',
-            source: 'categories',
-            type: 'multiselect',
-            value: [{
-              id: category.path,
-              label: category.name,
-            }],
-          },
-        };
+        filters = getShowAllProductsFilters(category);
 
         router.update(
           action.route.id,
