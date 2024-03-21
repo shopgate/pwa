@@ -69,7 +69,14 @@ class SearchContent extends Component {
                 <NoResults
                   headlineText="search.no_result.heading"
                   bodyText="search.no_result.body"
-                  searchPhrase={searchPhrase}
+                  {...pattern !== CATEGORY_ALL_PATTERN ? {
+                    headlineText: 'search.no_result.heading',
+                    bodyText: 'search.no_result.body',
+                    searchPhrase,
+                  } : {
+                    headlineText: 'category.no_result.heading',
+                    bodyText: 'category.no_result.body',
+                  }}
                 />
               </SurroundPortals>
               )}
