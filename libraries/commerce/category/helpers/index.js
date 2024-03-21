@@ -21,28 +21,14 @@ export const getShowAllProductsFilters = (parentCategory) => {
       label: i18n.text('filters.label.category'),
       source: 'categories',
       type: 'multiselect',
+      isHidden: true,
       value: [{
         id: parentCategory ? parentCategory.path : null,
         label: parentCategory ? parentCategory.name : null,
+        isHidden: true,
       }],
     },
   };
 
   return filters;
 };
-
-/**
- * Removes the categories filter from filters
- * @param {Object} filters filters
- * @returns {Object}
- */
-export const removeCategoriesFilter = (filters) => {
-  const clearedFilters = filters;
-
-  if (Object.keys(clearedFilters).length > 1) {
-    delete clearedFilters.categories;
-  }
-
-  return clearedFilters;
-};
-

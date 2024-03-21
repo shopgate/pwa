@@ -11,7 +11,7 @@ import styles from './style';
  * @returns {JSX}
  */
 function FilterBarContent() {
-  const { state, id: routeId, pattern } = useRoute();
+  const { state, id: routeId } = useRoute();
   const { scrollTop } = useContext(ViewContext);
   const { filters } = state;
 
@@ -21,7 +21,7 @@ function FilterBarContent() {
         <Sort />
         <FilterButton />
       </div>
-      <FilterChips filters={filters} routeId={routeId} scrollTop={scrollTop} pattern={pattern} />
+      <FilterChips filters={filters} routeId={routeId} scrollTop={scrollTop} />
     </Fragment>
   );
 }

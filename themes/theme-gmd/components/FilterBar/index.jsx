@@ -2,9 +2,9 @@ import React, {
   useState, useEffect, useMemo, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useWidgetSettings, useRoute } from '@shopgate/engage/core';
+import isPlainObject from 'lodash/isPlainObject';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import { ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
-import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
 import styles from './style';
@@ -19,16 +19,27 @@ const { colors, variables: { scroll: { offset = 100 } = {} } } = themeConfig || 
 function FilterBar({ filters }) {
   const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
-  const { pattern } = useRoute();
+
+  const sanitizedFilters = useMemo(() => {
+    if (!isPlainObject(filters)) {
+      return filters;
+    }
+
+    // Remove "hidden" filters from filters object
+    return Object.keys(filters).reduce((acc, filterKey) => {
+      const filter = filters[filterKey];
+
+      if (!filter?.isHidden) {
+        acc[filterKey] = filter;
+      }
+
+      return acc;
+    }, {});
+  }, [filters]);
 
   useEffect(() => {
-    if (filters !== null && pattern === CATEGORY_ALL_PATTERN && Object.keys(filters).length === 1) {
-      setActive(false);
-    }
-    if (filters !== null && Object.keys(filters).length > 0 && pattern !== CATEGORY_ALL_PATTERN) {
-      setActive(true);
-    }
-  }, [filters, pattern]);
+    setActive(sanitizedFilters !== null && Object.keys(sanitizedFilters).length > 0);
+  }, [filters, sanitizedFilters]);
 
   const style = useMemo(() => ({
     background: active ? colors.accent : colors.background,

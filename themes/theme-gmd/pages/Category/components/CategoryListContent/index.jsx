@@ -11,7 +11,7 @@ import { Section } from '@shopgate/engage/a11y';
 import { CategoryList } from '@shopgate/engage/category';
 import connect from './connector';
 
-const { showAllProducts } = appConfig.categories;
+const showAllProducts = appConfig.categoriesShowAllProducts;
 
 /**
  * The category list content.
