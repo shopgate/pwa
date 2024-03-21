@@ -11,7 +11,6 @@ import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilt
 import {
   searchFiltersDidUpdate$,
   searchPageComponentWillEnter$,
-  searchPageComponentDidEnter$,
 } from './streams';
 
 /**
@@ -48,6 +47,8 @@ export default function search(subscribe) {
       sort,
       ...buildFetchSearchResultsParams(),
     }));
+
+    dispatch(fetchFilters());
   });
 
   subscribe(searchFiltersDidUpdate$, ({ action, dispatch, getState }) => {
@@ -66,9 +67,5 @@ export default function search(subscribe) {
       sort,
       ...buildFetchSearchResultsParams(),
     }));
-  });
-
-  subscribe(searchPageComponentDidEnter$, ({ dispatch }) => {
-    dispatch(fetchFilters());
   });
 }

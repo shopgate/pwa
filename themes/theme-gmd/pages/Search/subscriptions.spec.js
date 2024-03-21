@@ -6,7 +6,6 @@ import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilt
 import {
   searchFiltersDidUpdate$,
   searchPageComponentWillEnter$,
-  searchPageComponentDidEnter$,
 } from './streams';
 import subscriptions from './subscriptions';
 
@@ -48,7 +47,7 @@ describe('SearchPage subscriptions', () => {
   });
 
   it('should call subscribe as expected', () => {
-    expect(subscribe).toHaveBeenCalledTimes(3);
+    expect(subscribe).toHaveBeenCalledTimes(2);
   });
 
   describe('searchPageComponentWillEnter$', () => {
@@ -81,13 +80,14 @@ describe('SearchPage subscriptions', () => {
 
       callback({ dispatch, action, getState });
 
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenCalledWith(fetchSearchResults());
       expect(fetchSearchResults).toHaveBeenCalledWith({
         filters: action.route.state.filters,
         searchPhrase: action.route.query.s,
         sort: action.route.query.sort,
       });
+      expect(dispatch).toHaveBeenCalledWith(fetchFilters());
     });
   });
 
@@ -129,26 +129,6 @@ describe('SearchPage subscriptions', () => {
         searchPhrase: route.query.s,
         sort: route.query.sort,
       });
-    });
-  });
-
-  describe('searchPageComponentDidEnter$', () => {
-    let stream;
-    let callback;
-
-    beforeAll(() => {
-      [,, [stream, callback]] = subscribe.mock.calls;
-    });
-
-    it('should have been called as expected', () => {
-      expect(stream).toBe(searchPageComponentDidEnter$);
-      expect(callback).toBeInstanceOf(Function);
-    });
-
-    it('should dispatch the fetchFilters action', () => {
-      callback({ dispatch });
-      expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(fetchFilters());
     });
   });
 });

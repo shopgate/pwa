@@ -3,12 +3,10 @@ import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams'
 import {
   CATEGORY_ALL_PATTERN,
   categoryAllWillEnter$,
-  categoryAllDidEnter$,
 } from '@shopgate/engage/category';
 import {
   SEARCH_PATH,
   searchWillEnter$,
-  searchDidEnter$,
 } from '@shopgate/engage/search';
 
 export const searchFiltersDidUpdate$ = filtersDidUpdate$
@@ -19,8 +17,4 @@ export const searchFiltersDidUpdate$ = filtersDidUpdate$
 
 export const searchPageComponentWillEnter$ = searchWillEnter$.merge(
   categoryAllWillEnter$
-);
-
-export const searchPageComponentDidEnter$ = searchDidEnter$.merge(
-  categoryAllDidEnter$
 );

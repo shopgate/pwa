@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
+import { CATEGORY_ALL_FILTER_PATTERN } from '@shopgate/engage/category';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -13,6 +14,7 @@ const map = {
   parentId: 'state.parentId',
   searchPhrase: 'query.s',
   visible: 'visible',
+  pattern: 'pattern',
 };
 
 /**
@@ -33,14 +35,19 @@ class Filter extends PureComponent {
       filters,
       parentId,
       searchPhrase,
+      pattern,
     } = consumed;
 
     return (
       <Content
         activeFilters={filters}
         parentId={parentId}
-        {...categoryId && { categoryId }}
-        {...searchPhrase && { searchPhrase }}
+        {...pattern !== CATEGORY_ALL_FILTER_PATTERN ? {
+          ...categoryId && { categoryId },
+          ...searchPhrase && { searchPhrase },
+        } : {
+          searchPhrase: '*',
+        }}
       />
     );
   }

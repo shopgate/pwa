@@ -1,17 +1,16 @@
 import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
 import { hex2bin, router } from '@shopgate/engage/core';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import {
   CATEGORY_ALL_PATTERN,
   fetchCategory,
   getShowAllProductsFilters,
 } from '@shopgate/engage/category';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import {
   searchFiltersDidUpdate$,
   searchPageComponentWillEnter$,
-  searchPageComponentDidEnter$,
 } from './streams';
 
 /**
@@ -48,6 +47,8 @@ export default function search(subscribe) {
       sort,
       ...buildFetchSearchResultsParams(),
     }));
+
+    dispatch(fetchFilters());
   });
 
   subscribe(searchFiltersDidUpdate$, ({ action, dispatch, getState }) => {
@@ -66,9 +67,5 @@ export default function search(subscribe) {
       sort,
       ...buildFetchSearchResultsParams(),
     }));
-  });
-
-  subscribe(searchPageComponentDidEnter$, ({ dispatch }) => {
-    dispatch(fetchFilters());
   });
 }

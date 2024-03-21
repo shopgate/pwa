@@ -16,7 +16,12 @@ import {
   LOGIN_PATH,
   PAGE_PATTERN,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CATEGORY_PATTERN, CATEGORY_ALL_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import {
+  CATEGORY_PATTERN,
+  CATEGORY_ALL_PATTERN,
+  CATEGORY_FILTER_PATTERN,
+  CATEGORY_ALL_FILTER_PATTERN,
+} from '@shopgate/pwa-common-commerce/category/constants';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -71,8 +76,9 @@ const Pages = ({ store }) => (
                   />
                   <Route pattern={PAGE_PATTERN} component={routes.Page} />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
-                  <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                  <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
+                  <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
                   <Route
                     pattern={ITEM_PATTERN}
                     component={routes.Product}
