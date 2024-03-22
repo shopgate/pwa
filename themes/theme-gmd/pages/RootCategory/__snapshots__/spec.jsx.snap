@@ -29,7 +29,9 @@ exports[`Pages: <RootCategory /> should render  1`] = `
           },
         ]
       }
+      parentCategory={null}
       prerender={8}
+      showAllProducts={false}
     />
   </SurroundPortals>
 </MockedView>

@@ -1,5 +1,5 @@
 import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { CATEGORY_PATH, CATEGORY_ALL_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
@@ -15,6 +15,7 @@ const openFilterRoute = () => (dispatch, getState) => {
     params: { categoryId },
     query,
     state,
+    pattern,
   } = getCurrentRoute(getState());
 
   const forwardState = {
@@ -22,7 +23,12 @@ const openFilterRoute = () => (dispatch, getState) => {
     parentId: id,
   };
 
-  if (categoryId) {
+  if (pattern === CATEGORY_ALL_PATTERN) {
+    dispatch(historyPush({
+      pathname: `${CATEGORY_PATH}/${categoryId}/all/filter`,
+      state: forwardState,
+    }));
+  } else if (categoryId) {
     dispatch(historyPush({
       pathname: `${CATEGORY_PATH}/${categoryId}/filter`,
       state: forwardState,

@@ -6,9 +6,12 @@ import {
   CATEGORY_LIST_AFTER,
   CATEGORY_LIST_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Section } from '@shopgate/engage/a11y';
 import { CategoryList } from '@shopgate/engage/category';
 import connect from './connector';
+
+const showAllProducts = appConfig.categoriesShowAllProducts;
 
 /**
  * The category list content.
@@ -17,12 +20,14 @@ class CategoryListContent extends PureComponent {
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.shape()),
+    category: PropTypes.shape(),
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
   };
 
   static defaultProps = {
     categories: null,
+    category: null,
     childrenCount: 6,
     hasChildren: false,
   }
@@ -32,7 +37,7 @@ class CategoryListContent extends PureComponent {
    */
   render() {
     const {
-      hasChildren, categories, categoryId, childrenCount,
+      hasChildren, category, categories, categoryId, childrenCount,
     } = this.props;
 
     return (
@@ -41,7 +46,12 @@ class CategoryListContent extends PureComponent {
         <Portal name={CATEGORY_LIST} props={{ categoryId }}>
           {hasChildren && (
             <Section title="category.sections.categories">
-              <CategoryList categories={categories} prerender={childrenCount} />
+              <CategoryList
+                categories={categories}
+                prerender={childrenCount}
+                showAllProducts={showAllProducts}
+                parentCategory={category}
+              />
             </Section>
           )}
         </Portal>
