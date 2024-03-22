@@ -99,7 +99,7 @@ class FilterContent extends PureComponent {
     const { filters } = this.props;
 
     const filter = filters.find(entry => entry.id === id);
-    const { value: initialValues } = this.initialFilters[id];
+    const { value: initialValues, useForFetchFilters = false } = this.initialFilters[id];
     let stateValue = value;
 
     if (initialValues.length === 0 && value.length === 0) {
@@ -125,10 +125,13 @@ class FilterContent extends PureComponent {
        */
       stateValue = value.map((valueId) => {
         const match = filter.values.find(entry => entry.id === valueId);
+        const initialMatch = initialValues.find(entry => entry.id === valueId);
 
         return {
           id: match.id,
           label: match.label,
+          useForFetchFilters:
+            match?.useForFetchFilters || initialMatch?.useForFetchFilters || false,
         };
       });
     }
@@ -138,6 +141,8 @@ class FilterContent extends PureComponent {
       type: filter.type,
       label: translateFilterLabel(filter.id, filter.label),
       value: stateValue,
+      // Take care that this property doesn't get lost during update of active filters
+      useForFetchFilters,
       ...(filter.source && { source: filter.source }),
     });
   }
@@ -191,7 +196,7 @@ class FilterContent extends PureComponent {
    * @returns {JSX}
    */
   renderCloseBar = () => {
-    const right = <ApplyButton key="right" active={this.hasChanged} onClick={this.save} />;
+    const right = <ApplyButton active={this.hasChanged} onClick={this.save} />;
     return <CloseBar title="titles.filter" right={right} />;
   }
 

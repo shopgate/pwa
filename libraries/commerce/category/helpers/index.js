@@ -21,11 +21,11 @@ export const getShowAllProductsFilters = (parentCategory) => {
       label: i18n.text('filter.label.category'),
       source: 'categories',
       type: 'multiselect',
-      isHidden: true,
       value: [{
         id: parentCategory ? parentCategory.path : null,
         label: parentCategory ? parentCategory.name : null,
         isHidden: true,
+        useForFetchFilters: true,
       }],
     },
   };

@@ -3,6 +3,7 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getCurrentState } from '@shopgate/pwa-common/selectors/router';
 import * as pipelines from '../constants/Pipelines';
+import buildRequestFilters from '../actions/helpers/buildRequestFilters';
 
 /**
  * Gets the filters reducer.
@@ -31,11 +32,13 @@ export const getFiltersByHash = createSelector(
   getFilterResults,
   (state, props) => props.categoryId,
   (state, props) => props.searchPhrase,
-  (results, categoryId, searchPhrase) => {
+  (state, props) => props.filters,
+  (results, categoryId, searchPhrase, filters) => {
     const hash = generateResultHash({
       pipeline: pipelines.SHOPGATE_CATALOG_GET_FILTERS,
       ...categoryId && { categoryId: hex2bin(categoryId) },
       ...searchPhrase && { searchPhrase },
+      ...filters && { filters: buildRequestFilters(filters) },
     }, false, false);
 
     return (results[hash] && results[hash].filters) || null;

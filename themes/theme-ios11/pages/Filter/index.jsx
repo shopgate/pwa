@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { CATEGORY_ALL_FILTER_PATTERN } from '@shopgate/engage/category';
+import { buildFilterParamsForFetchFiltersRequest } from '@shopgate/engage/filter';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -47,6 +48,7 @@ class Filter extends PureComponent {
           ...searchPhrase && { searchPhrase },
         } : {
           searchPhrase: '*',
+          filters: buildFilterParamsForFetchFiltersRequest(filters),
         }}
       />
     );

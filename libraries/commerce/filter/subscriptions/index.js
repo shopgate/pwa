@@ -1,6 +1,9 @@
 import { router } from '@shopgate/pwa-common/helpers/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
+  buildFilterParamsForFetchFiltersRequest,
+} from '@shopgate/engage/filter';
+import {
   CATEGORY_ALL_FILTER_PATTERN,
 } from '../../category/constants';
 import fetchCategory from '../../category/actions/fetchCategory';
@@ -16,9 +19,9 @@ import { filterDidEnter$ } from '../streams';
  */
 export default function filters(subscribe) {
   subscribe(filterDidEnter$, async ({ dispatch, action }) => {
-    if (action?.route?.pattern === CATEGORY_ALL_FILTER_PATTERN) {
-      let { filters: routeFilters } = action.route.state;
+    let { filters: routeFilters } = action?.route?.state || {};
 
+    if (action?.route?.pattern === CATEGORY_ALL_FILTER_PATTERN) {
       if (!routeFilters) {
         const category = await dispatch(fetchCategory(hex2bin(action.route.params.categoryId)));
 
@@ -34,6 +37,8 @@ export default function filters(subscribe) {
       }
     }
 
-    dispatch(fetchFilters());
+    dispatch(fetchFilters({
+      filters: buildFilterParamsForFetchFiltersRequest(routeFilters),
+    }));
   });
 }
