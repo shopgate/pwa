@@ -72,18 +72,11 @@ class Selector extends PureComponent {
     const { label, values } = this.props;
     const { selected } = this.state;
 
-    // Remove hidden values from the list
-    const sanitizedSelected = selected.filter((selectedId) => {
-      const hiddenMatch = values.find(value => value.id === selectedId && value.isHidden);
-
-      return !hiddenMatch;
-    });
-
     return (
       <Toggle
         {...props}
         label={label}
-        selected={<Selected values={values} selected={sanitizedSelected} />}
+        selected={<Selected values={values} selected={selected} />}
       />
     );
   }
@@ -103,7 +96,7 @@ class Selector extends PureComponent {
           handleLabel={i18n.text('filter.filter_by', { label })}
         >
           <div className={styles.content}>
-            {values.filter(value => !value.isHidden).map(value => (
+            {values.map(value => (
               <ValueButton
                 key={value.id}
                 id={value.id}
