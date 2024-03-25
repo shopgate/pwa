@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MediaSlider, MediaImage } from '@shopgate/engage/product';
+import { MediaSlider, MediaImage, getProductImageSettings } from '@shopgate/engage/product';
 import connect from './connector';
 
 /**
@@ -18,7 +18,8 @@ const ProductMediaSlider = ({
     className={className}
     renderPlaceholder={(featuredMedia) => {
       const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
-      return (<MediaImage {...props} className={className} />);
+      const { HeroImage: pdpResolutions } = getProductImageSettings();
+      return (<MediaImage {...props} className={className} resolutions={pdpResolutions} />);
     }}
   />
 );
