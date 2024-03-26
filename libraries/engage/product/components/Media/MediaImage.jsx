@@ -41,7 +41,7 @@ const MediaImage = ({
     <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
       <Image
         src={url}
-        resolutions={resolutions || undefined}
+        resolutions={resolutions}
         alt={altText}
         className={classes}
         backgroundColor="transparent"
@@ -65,7 +65,7 @@ MediaImage.defaultProps = {
   url: defaultProps.url,
   altText: defaultProps.altText,
   className: defaultProps.className,
-  resolutions: null,
+  resolutions: undefined,
 };
 
 export default MediaImage;
