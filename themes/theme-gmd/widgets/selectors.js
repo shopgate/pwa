@@ -157,11 +157,11 @@ export const getProductsResult = (state, type, params, id) => {
    * just request the products that are not available in Redux yet.
    * This can cause update issues in the UI, since selectors might not return fresh data when
    * Redux changes.
-   * So when the "useProductHashForProductIds" flag is active, the regular request system is
+   * So when the "useDefaultRequestForProductIds" flag is active, the regular request system is
    * used and whenever the fetch params change, new product data fill be fetched. Additionally
    * the default selector logic needs to be used which selects all data from the regular request.
    */
-  if (type === 4 && !params?.useProductHashForProductIds) {
+  if (type === 4 && !params?.useDefaultRequestForProductIds) {
     return getProductsResultsWithIds(state, type, params, id);
   }
 

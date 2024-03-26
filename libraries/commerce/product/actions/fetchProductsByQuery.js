@@ -16,7 +16,7 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
    * and not supposed to be used for the actual products request.
    */
   const {
-    useProductHashForProductIds = false,
+    useDefaultRequestForProductIds = false,
     ...sanitizedOptions
   } = options;
 
@@ -56,13 +56,13 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
        * just request the products that are not available in Redux yet.
        * This can cause update issues in the UI, since selectors might not return fresh data when
        * Redux changes.
-       * So when the "useProductHashForProductIds" flag is active, the regular request system is
+       * So when the "useDefaultRequestForProductIds" flag is active, the regular request system is
        * used and whenever the fetch params change, new product data fill be fetched.
        *
        * ATTENTION: To make the system work completely, also the "getProductsResult" selector helper
        * needs to be called with this parameter.
        */
-      if (useProductHashForProductIds) {
+      if (useDefaultRequestForProductIds) {
         const params = {
           productIds: value,
           ...sanitizedOptions,

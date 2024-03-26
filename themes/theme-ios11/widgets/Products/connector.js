@@ -27,7 +27,7 @@ const mapStateToProps = (state, props) => {
        * works as expected.
        */
       ...(hasInventoryInLists ? {
-        useProductHashForProductIds: true,
+        useDefaultRequestForProductIds: true,
       } : null),
     },
     props.id,
@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => ({
            * request and select data like the other widget types so that inventory data fetching
            * works as expected.
            */
-          useProductHashForProductIds: true,
+          useDefaultRequestForProductIds: true,
         } : null),
       }, id));
     });
