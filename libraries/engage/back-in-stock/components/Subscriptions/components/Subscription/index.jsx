@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { css } from 'glamor';
 import {
   Link,
@@ -77,6 +77,9 @@ const styles = {
     fontSize: '0.875rem',
     marginBottom: '4px',
   }).toString(),
+  characteristicText: css({
+    fontSize: '0.875rem',
+  }).toString(),
   ripple: css({
     minWidth: '17px',
   }).toString(),
@@ -101,6 +104,9 @@ const Subscription = ({
   const specialPrice = product.price?.unitPriceStriked;
   const hasStrikePrice = product.price?.discount > 0;
   const productLink = getProductRoute(product.id);
+
+  const getCharacteristicString = useCallback(characteristic =>
+    `${characteristic.label}: ${characteristic.value}`, []);
 
   return (
     <div className={styles.root}>
@@ -139,6 +145,13 @@ const Subscription = ({
           </div>
         </div>
         <div className={classNames(styles.baseContainerRow)}>
+          {product?.characteristics?.map(characteristic =>
+            <div
+              key={getCharacteristicString(characteristic)}
+              className={styles.characteristicText}
+            >
+              {getCharacteristicString(characteristic)}
+            </div>)}
           <Availability
             text={product?.availability?.text}
             state={product?.availability?.state}
