@@ -19,7 +19,7 @@ const MediaImage = ({ media, onClick }) => (
     <Image
       url={media.url}
       altText={media.altText}
-      params={PRODUCT_SLIDER_IMAGE_FORMATS[1]}
+      resolutions={PRODUCT_SLIDER_IMAGE_FORMATS}
     />
   </div>
 );
