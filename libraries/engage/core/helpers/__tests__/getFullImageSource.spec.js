@@ -101,7 +101,7 @@ describe('getFullImageSource()', () => {
       expect(result).toBe(`${baseUrl}?w=1024&h=1024&q=70&zd=resize&fillc=FFFFFF`);
     });
 
-    it('should add query parameters independent from the order of input parametgers', () => {
+    it('should add query parameters independent from the order of input parameters', () => {
       const result = getFullImageSource(baseUrl, {
         width: 1024,
         height: 1024,
