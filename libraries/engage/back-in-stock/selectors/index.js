@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { makeGetProductByCharacteristics } from '@shopgate/engage/product';
+import { appSupportsPushOptIn } from '@shopgate/engage/core/helpers';
 import { appConfig } from '@shopgate/engage';
 import { getClientInformation, isIos as getIsIos } from '@shopgate/engage/core';
 import {
@@ -109,6 +110,11 @@ export const getIsBackInStockEnabled = createSelector(
   getIsIos,
   getBackInStockPushPermissionStatus,
   (clientInformation, isIos, pushPermissionStatus) => {
+    if (!appSupportsPushOptIn()) {
+      // Disabled when the app doesn't support the required features
+      return false;
+    }
+
     const isRNEngage = navigator.userAgent.includes('RN Engage');
 
     /**
