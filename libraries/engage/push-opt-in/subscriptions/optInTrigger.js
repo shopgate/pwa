@@ -7,6 +7,7 @@ import {
   appDidStart$,
   logger,
 } from '@shopgate/engage/core';
+import { appSupportsPushOptIn } from '@shopgate/engage/core/helpers';
 import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_NOT_DETERMINED,
@@ -45,6 +46,11 @@ export default function pushOptIn(subscribe) {
    * @returns {void}
    */
   const showOptInAfterChecks = async ({ dispatch, getState }, configKey, increaseCountAction) => {
+    if (!appSupportsPushOptIn()) {
+      // Do nothing when the app doesn't support the features needed for the push-opt-in
+      return;
+    }
+
     const {
       pushOptIn: {
         appStarts,
@@ -64,8 +70,6 @@ export default function pushOptIn(subscribe) {
       logger.error('PushOptInTrigger - Config invalid', appConfig?.pushOptIn);
       return;
     }
-
-    // TODO add check to determine if the app supports push-opt-in (is done in CURB-3915)
 
     const pushStatus = await dispatch(requestAppPermissionStatus({
       permissionId: PERMISSION_ID_PUSH,

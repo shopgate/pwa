@@ -11,6 +11,7 @@ import {
   PERMISSION_STATUS_DENIED,
   APP_DID_START,
 } from '@shopgate/engage/core/constants';
+import { appSupportsPushOptIn } from '@shopgate/engage/core/helpers';
 import {
   increaseAppStartCount,
   setLastPopupTimestamp,
@@ -96,6 +97,10 @@ jest.mock('@shopgate/pwa-core/commands/appPermissions', () => {
     getAppPermissions: jest.fn().mockResolvedValue([{ status: PERMISSION_STATUS_NOT_DETERMINED }]),
   };
 });
+
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  appSupportsPushOptIn: jest.fn().mockReturnValue(true),
+}));
 
 describe('Push OptIn Subscriptions', () => {
   const subscribe = jest.fn();
@@ -253,6 +258,14 @@ describe('Push OptIn Subscriptions', () => {
           await callback(callbackParams);
           expect(dispatch).toHaveBeenCalledTimes(9);
           expect(showPushOptInModal).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not trigger opt-in when the app does not support push opt-in', async () => {
+          appSupportsPushOptIn.mockReturnValueOnce(false);
+          await callback(callbackParams);
+
+          expect(dispatch).not.toBeCalled();
+          expect(showPushOptInModal).not.toHaveBeenCalled();
         });
 
         it('should not trigger opt-in again till "minDaysBetweenOptIns" elapsed', async () => {
