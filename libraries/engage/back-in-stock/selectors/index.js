@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
 import { makeGetProductByCharacteristics } from '@shopgate/engage/product';
 import { appSupportsPushOptIn } from '@shopgate/engage/core/helpers';
+import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { appConfig } from '@shopgate/engage';
-import { getClientInformation, isIos as getIsIos } from '@shopgate/engage/core';
+import { getClientInformation } from '@shopgate/engage/core';
 import {
   PERMISSION_STATUS_GRANTED,
   PERMISSION_STATUS_NOT_SUPPORTED,
@@ -107,33 +108,25 @@ export const makeGetSubscriptionByCharacteristics = () => {
  */
 export const getIsBackInStockEnabled = createSelector(
   getClientInformation,
-  getIsIos,
   getBackInStockPushPermissionStatus,
-  (clientInformation, isIos, pushPermissionStatus) => {
+  (clientInformation, pushPermissionStatus) => {
     if (!appSupportsPushOptIn()) {
       // Disabled when the app doesn't support the required features
       return false;
     }
 
-    const isRNEngage = navigator.userAgent.includes('RN Engage');
+    // Perform app version checks when PWA runs outside the browser
+    if (hasSGJavaScriptBridge()) {
+      const { codebaseVersion = '0.0.0' } = clientInformation;
+      const [major] = codebaseVersion.split('.');
 
-    /**
-     * No support for the react-native-engage dev app on iOS since push token handling will not
-     * work as expected, and back-in-stock related requests will fail.
-     */
-    if (isIos && isRNEngage) {
-      return false;
-    }
-
-    const { codebaseVersion = '0.0.0' } = clientInformation;
-    const [major] = codebaseVersion.split('.');
-
-    /**
-     * The feature can be enabled on react-native-engage based apps (>= 11.0.0) with proper
-     * support for push permissions checks
-     */
-    if (parseInt(major, 10) < 11 || pushPermissionStatus === PERMISSION_STATUS_NOT_SUPPORTED) {
-      return false;
+      /**
+       * The feature can be enabled on react-native-engage based apps (>= 11.0.0) with proper
+       * support for push permissions checks
+       */
+      if (parseInt(major, 10) < 11 || pushPermissionStatus === PERMISSION_STATUS_NOT_SUPPORTED) {
+        return false;
+      }
     }
 
     return appConfig?.showBackInStock || false;
