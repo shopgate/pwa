@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { css } from 'glamor';
 import {
   Link,
@@ -105,9 +105,6 @@ const Subscription = ({
   const hasStrikePrice = product.price?.discount > 0;
   const productLink = getProductRoute(product.id);
 
-  const getCharacteristicString = useCallback(characteristic =>
-    `${characteristic.label}: ${characteristic.value}`, []);
-
   return (
     <div className={styles.root}>
       <Link
@@ -145,12 +142,14 @@ const Subscription = ({
           </div>
         </div>
         <div className={classNames(styles.baseContainerRow)}>
-          {product?.characteristics?.map(characteristic =>
+          {product?.characteristics?.map(({ label, value }) =>
             <div
-              key={getCharacteristicString(characteristic)}
+              key={label + value}
               className={styles.characteristicText}
             >
-              {getCharacteristicString(characteristic)}
+              {label}
+              {': '}
+              {value}
             </div>)}
           <Availability
             text={product?.availability?.text}
