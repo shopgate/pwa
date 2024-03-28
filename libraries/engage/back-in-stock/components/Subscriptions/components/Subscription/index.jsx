@@ -77,6 +77,9 @@ const styles = {
     fontSize: '0.875rem',
     marginBottom: '4px',
   }).toString(),
+  characteristicText: css({
+    fontSize: '0.875rem',
+  }).toString(),
   ripple: css({
     minWidth: '17px',
   }).toString(),
@@ -139,6 +142,15 @@ const Subscription = ({
           </div>
         </div>
         <div className={classNames(styles.baseContainerRow)}>
+          {product?.characteristics?.map(({ label, value }) =>
+            <div
+              key={label + value}
+              className={styles.characteristicText}
+            >
+              {label}
+              {': '}
+              {value}
+            </div>)}
           <Availability
             text={product?.availability?.text}
             state={product?.availability?.state}
