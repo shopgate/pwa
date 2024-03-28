@@ -94,10 +94,11 @@ const styles = {
 const Subscription = ({
   subscription,
 }) => {
-  const { subscriptionCode, product } = subscription;
+  const { subscriptionCode, product, productCode } = subscription;
   const {
     removeBackInStockSubscription,
   } = useBackInStockSubscriptions();
+
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
@@ -157,10 +158,12 @@ const Subscription = ({
             showWhenAvailable={false}
             className={styles.availabilityText}
           />
-          <BackInStockButton
-            subscription={subscription}
-            onClick={() => {}}
-          />
+          {subscription?.status === 'active' && (
+            <BackInStockButton
+              subscription={subscription}
+              productId={productCode}
+            />
+          )}
         </div>
         <div className={styles.priceContainerRow}>
           {hasStrikePrice ? (
