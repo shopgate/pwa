@@ -19,10 +19,6 @@ const styles = {
   }).toString(),
   emptyText: css({
     marginBottom: 16,
-    textAlign: 'center',
-  }).toString(),
-  listTitle: css({
-    fontWeight: '700',
   }).toString(),
 };
 
@@ -37,7 +33,7 @@ const List = () => {
   } = useBackInStockSubscriptions();
 
   const renderLabel = useCallback(groupKey =>
-    <div className={styles.listTitle}>
+    <div>
       {i18n.text(`back_in_stock.list_states.${groupKey}`)}
     </div>, []);
 
