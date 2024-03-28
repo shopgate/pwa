@@ -11,11 +11,20 @@ import fetchProductsById from './fetchProductsById';
  * @return {Function} A Redux Thunk
  */
 const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch) => {
+  /**
+   * Remove all properties from the options which are just intended to be used inside this function
+   * and not supposed to be used for the actual products request.
+   */
+  const {
+    useDefaultRequestForProductIds = false,
+    ...sanitizedOptions
+  } = options;
+
   switch (type) {
     // Product highlights
     case 1: {
       const params = {
-        ...options,
+        ...sanitizedOptions,
       };
 
       dispatch(fetchHighlightProducts({
@@ -30,7 +39,7 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
     case 3: {
       const params = {
         searchPhrase: value,
-        ...options,
+        ...sanitizedOptions,
       };
 
       return dispatch(fetchProducts({
@@ -42,7 +51,36 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
 
     // Product ID's
     case 4: {
-      dispatch(fetchProductsById(value, id));
+      /**
+       * By default the productIds query type bypasses the regular product request logic. It will
+       * just request the products that are not available in Redux yet.
+       * This can cause update issues in the UI, since selectors might not return fresh data when
+       * Redux changes.
+       * So when the "useDefaultRequestForProductIds" flag is active, the regular request system is
+       * used and whenever the fetch params change, new product data fill be fetched.
+       *
+       * ATTENTION: To make the system work completely, also the "getProductsResult" selector helper
+       * needs to be called with this parameter.
+       */
+      if (useDefaultRequestForProductIds) {
+        const params = {
+          productIds: value,
+          ...sanitizedOptions,
+        };
+
+        // Limit and offset are not fully supported for product requests with productId list
+        delete params.limit;
+        delete params.offset;
+
+        dispatch(fetchProducts({
+          params,
+          ...id && { id },
+          includeFilters: false,
+        }));
+      } else {
+        dispatch(fetchProductsById(value, id));
+      }
+
       break;
     }
 
@@ -50,7 +88,7 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
     case 5: {
       const params = {
         categoryId: value,
-        ...options,
+        ...sanitizedOptions,
       };
 
       return dispatch(fetchProducts({
