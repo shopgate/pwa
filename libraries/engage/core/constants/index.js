@@ -1,6 +1,7 @@
 import { INDEX_PATH, INDEX_PATH_DEEPLINK } from '@shopgate/pwa-common/constants/RoutePaths';
 
 export * from './actionTypes';
+export * from './appFeatures';
 export * from './geolocationRequest';
 
 // Core Constants
