@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import { makeGetProductByCharacteristics } from '@shopgate/engage/product';
-import { appSupportsPushOptIn } from '@shopgate/engage/core/helpers';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { appConfig } from '@shopgate/engage';
 import { getClientInformation } from '@shopgate/engage/core';
@@ -110,11 +109,6 @@ export const getIsBackInStockEnabled = createSelector(
   getClientInformation,
   getBackInStockPushPermissionStatus,
   (clientInformation, pushPermissionStatus) => {
-    if (!appSupportsPushOptIn()) {
-      // Disabled when the app doesn't support the required features
-      return false;
-    }
-
     // Perform app version checks when PWA runs outside the browser
     if (hasSGJavaScriptBridge()) {
       const { codebaseVersion = '0.0.0' } = clientInformation;
