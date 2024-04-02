@@ -1,10 +1,7 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/engage';
 
 export default {
   button: css({
-    color: themeConfig.colors.primary,
-    display: 'flex',
     lineHeight: '16.5px',
   }).toString(),
   buttonContent: css({
@@ -16,10 +13,6 @@ export default {
     display: 'flex',
     alignItems: 'center',
     width: 'auto',
-  }).toString(),
-  rightAligned: css({
-    display: 'inline-block',
-    textAlign: 'right',
   }).toString(),
   backInStockMessage: css({
     verticalAlign: 'middle',

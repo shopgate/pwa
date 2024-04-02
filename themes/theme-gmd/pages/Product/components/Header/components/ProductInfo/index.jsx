@@ -1,6 +1,8 @@
 import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import { MapPriceHint, OrderQuantityHint, EffectivityDates } from '@shopgate/engage/product';
+import {
+  MapPriceHint, OrderQuantityHint, EffectivityDates,
+} from '@shopgate/engage/product';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -24,7 +26,7 @@ import * as styles from './style';
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ProductInfo = ({ productId, options }) => (
   <Fragment>
@@ -59,9 +61,6 @@ const ProductInfo = ({ productId, options }) => (
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
             </div>
-            <div className={styles.productInfo}>
-              <ProductInfoBackInStockButton />
-            </div>
           </Portal>
         </Grid.Item>
         <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
@@ -83,6 +82,11 @@ const ProductInfo = ({ productId, options }) => (
         <TaxDisclaimer />
       </Grid>
     </Portal>
+    <Grid.Item component="div">
+      <div className={styles.productInfo}>
+        <ProductInfoBackInStockButton />
+      </div>
+    </Grid.Item>
     <Portal name={PRODUCT_INFO_AFTER} />
   </Fragment>
 );

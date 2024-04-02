@@ -33,10 +33,10 @@
     "we_will_remind_you": "Du wirst benachrichtigt, wenn der Artikel wieder verfügbar ist",
     "add_back_in_stock_success_modal": {
       "title": "Benachrichtigung hinzugefügt!",
-      "message": "Wir senden dir eine Push-Benachrichtigung wenn das Produkt wieder verfügbar ist. Du kannst diese Benachrichtigungen über das Menü verwalten."
+      "message": "Wir senden dir eine Push-Benachrichtigung, wenn das Produkt wieder verfügbar ist. Du kannst diese Benachrichtigungen über das Menü verwalten."
     },
     "rationale": {
-      "message": "Bitte erlaube Push-Benachrichtigungen im nächsten Schritt, damit wir dir mitteilen können wenn das Produkt wieder verfügbar ist.",
+      "message": "Bitte erlaube Push-Benachrichtigungen im nächsten Schritt, damit wir dir mitteilen können, wenn das Produkt wieder verfügbar ist.",
       "confirm": "Benachrichtigungen erlauben"
     }
   },

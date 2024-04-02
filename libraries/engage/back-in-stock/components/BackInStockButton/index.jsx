@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import {
-  Link,
-  CheckedIcon,
-  NotificationIcon,
+  Link, CheckedIcon, Button,
 } from '@shopgate/engage/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import { i18n } from '@shopgate/engage/core';
@@ -24,7 +22,7 @@ const { colors } = themeConfig;
  * @param {Object} props.subscription The subscription
  * @param {Function} props.addBackInStockSubscription Add product to back in stock list
  * @param {Function} props.grantPushPermissions Request / Set push permission
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const BackInStockButton = ({
   productId,
@@ -69,24 +67,18 @@ const BackInStockButton = ({
       </Link>
     );
   }
-  /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/anchor-is-valid */
   return (
-    <a
-      role="button"
+    <Button
+      type="primary"
       tabIndex={0}
       onClick={handleClick}
-      className={classNames(
-        styles.button,
-        { [styles.rightAligned]: alignRight }
-      )}
+      className={styles.button}
     >
-      <NotificationIcon color={colors.primary} className={styles.icon} />
       <span className={styles.buttonText}>
         {i18n.text('back_in_stock.get_notified')}
       </span>
-    </a>
+    </Button>
   );
-  /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/anchor-is-valid */
 };
 
 BackInStockButton.propTypes = {
