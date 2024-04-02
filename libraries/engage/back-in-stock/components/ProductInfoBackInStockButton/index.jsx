@@ -16,7 +16,7 @@ import connect from './connector';
  * @param {string} props.variantId The variant id
  * @param {Object} props.product The product
  * @param {Object} props.subscription The subscription
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const ProductInfoBackInStockButton = ({
   productId,
@@ -41,6 +41,7 @@ const ProductInfoBackInStockButton = ({
       >
         {showBackInStockButton &&
           <BackInStockButton
+            showAsButton
             subscription={subscription}
             isLinkToBackInStockEnabled
             productId={variantId ?? productId}

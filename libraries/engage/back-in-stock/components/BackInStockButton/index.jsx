@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import {
-  Link, CheckedIcon, Button,
+  Link, CheckedIcon, Button, NotificationIcon,
 } from '@shopgate/engage/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import { i18n } from '@shopgate/engage/core';
@@ -32,6 +32,7 @@ const BackInStockButton = ({
   addBackInStockSubscription,
   grantPushPermissions,
   alignRight,
+  showAsButton,
 }) => {
   const handleClick = useCallback(async (event) => {
     if (stopPropagation) {
@@ -67,17 +68,37 @@ const BackInStockButton = ({
       </Link>
     );
   }
+
+  if (showAsButton) {
+    return (
+      <Button
+        type="primary"
+        tabIndex={0}
+        onClick={handleClick}
+        className={styles.button}
+      >
+        <span className={styles.buttonText}>
+          {i18n.text('back_in_stock.get_notified')}
+        </span>
+      </Button>
+    );
+  }
   return (
-    <Button
-      type="primary"
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events
+    <a
+      role="button"
       tabIndex={0}
       onClick={handleClick}
-      className={styles.button}
+      className={classNames(
+        styles.button,
+        { [styles.rightAligned]: alignRight }
+      )}
     >
+      <NotificationIcon color={colors.primary} className={styles.icon} />
       <span className={styles.buttonText}>
         {i18n.text('back_in_stock.get_notified')}
       </span>
-    </Button>
+    </a>
   );
 };
 
@@ -87,6 +108,7 @@ BackInStockButton.propTypes = {
   alignRight: PropTypes.bool,
   isLinkToBackInStockEnabled: PropTypes.bool,
   productId: PropTypes.string,
+  showAsButton: PropTypes.bool,
   stopPropagation: PropTypes.bool,
   subscription: PropTypes.shape(),
 };
@@ -94,6 +116,7 @@ BackInStockButton.propTypes = {
 BackInStockButton.defaultProps = {
   stopPropagation: false,
   isLinkToBackInStockEnabled: false,
+  showAsButton: false,
   alignRight: false,
   subscription: null,
   productId: null,
