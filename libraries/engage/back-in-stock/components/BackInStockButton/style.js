@@ -3,9 +3,9 @@ import { themeConfig } from '@shopgate/engage';
 
 export default {
   button: css({
-    color: themeConfig.colors.primary,
-    display: 'flex',
     lineHeight: '16.5px',
+    color: themeConfig.colors.warning,
+    width: '100%',
   }).toString(),
   buttonContent: css({
     display: 'flex',

@@ -59,9 +59,6 @@ const ProductInfo = ({ productId, options }) => (
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
             </div>
-            <div className={styles.productInfo}>
-              <ProductInfoBackInStockButton />
-            </div>
           </Portal>
         </Grid.Item>
         <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
@@ -82,6 +79,9 @@ const ProductInfo = ({ productId, options }) => (
         </Grid.Item>
         <TaxDisclaimer />
       </Grid>
+      <Grid.Item component="div" className={styles.backInStockButton}>
+        <ProductInfoBackInStockButton />
+      </Grid.Item>
     </Portal>
     <Portal name={PRODUCT_INFO_AFTER} />
   </Fragment>
