@@ -11,7 +11,9 @@ export const productInfo = css({
 }).toString();
 
 export const backInStockButton = css({
-  marginTop: `${variables.gap.small}px`,
+  ':not(:empty)': {
+    marginTop: `${variables.gap.small}px`,
+  },
 }).toString();
 
 export const priceContainer = css({

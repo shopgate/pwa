@@ -82,9 +82,7 @@ const ProductInfo = ({ productId, options }) => (
         <TaxDisclaimer />
       </Grid>
       <Grid.Item component="div" className={styles.backInStockButton}>
-        <div className={styles.productInfo}>
-          <ProductInfoBackInStockButton />
-        </div>
+        <ProductInfoBackInStockButton />
       </Grid.Item>
     </Portal>
     <Portal name={PRODUCT_INFO_AFTER} />
