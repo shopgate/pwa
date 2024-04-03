@@ -79,7 +79,7 @@ const ProductInfo = ({ productId, options }) => (
         </Grid.Item>
         <TaxDisclaimer />
       </Grid>
-      <Grid.Item component="div">
+      <Grid.Item component="div" className={styles.backInStockButton}>
         <div className={styles.productInfo}>
           <ProductInfoBackInStockButton />
         </div>
