@@ -322,9 +322,9 @@
     "rejectionApprovalMessage": "Möchten Sie uns Feedback geben? Das hilft uns die App weiter zu verbessern."
   },
   "pushOptInModal": {
-    "title": "Erhalte exklusive Coupons und Angebote",
+    "title": "Erhalten Sie exklusive Coupons und Angebote",
     "buttonAllow": "Benachrichtigungen aktivieren",
     "buttonDeny": "Ich möchte keine Benachrichtigungen",
-    "message": "Aktiviere Benachrichtigungen, damit wir Ihnen Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können."
+    "message": "Aktivieren Sie Benachrichtigungen, damit wir Ihnen Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können."
   }
 }
