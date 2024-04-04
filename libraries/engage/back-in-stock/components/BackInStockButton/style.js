@@ -38,7 +38,7 @@ export default {
   }).toString(),
   iconCentered: css({
     alignSelf: 'center',
-    marginLeft: '-1px',
+    marginLeft: '-2px',
     marginRight: '8px',
   }).toString(),
 };
