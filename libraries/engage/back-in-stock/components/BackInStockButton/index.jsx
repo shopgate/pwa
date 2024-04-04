@@ -63,7 +63,10 @@ const BackInStockButton = ({
         )}
         tag="span"
       >
-        <CheckedIcon color={colors.success} className={styles.icon} />
+        <CheckedIcon
+          color={colors.success}
+          className={alignRight ? styles.icon : classNames(styles.iconCentered, styles.icon)}
+        />
         <span className={styles.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
       </Link>
     );
