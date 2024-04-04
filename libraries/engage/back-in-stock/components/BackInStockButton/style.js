@@ -37,8 +37,8 @@ export default {
     display: 'inline-flex',
   }).toString(),
   iconCentered: css({
-    margin: 'auto',
+    alignSelf: 'center',
+    marginLeft: '-1px',
     marginRight: '8px',
-    display: 'block',
   }).toString(),
 };
