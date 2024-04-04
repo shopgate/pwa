@@ -27,7 +27,6 @@ export default {
   }).toString(),
   buttonText: css({
     fontSize: '0.875rem',
-
   }).toString(),
   icon: css({
     marginRight: 4,
@@ -36,5 +35,10 @@ export default {
     flexShrink: 0,
     alignSelf: 'flex-start',
     display: 'inline-flex',
+  }).toString(),
+  iconCentered: css({
+    margin: 'auto',
+    marginRight: '8px',
+    display: 'block',
   }).toString(),
 };
