@@ -41,6 +41,8 @@ import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
@@ -51,7 +53,7 @@ new ThemeConfigResolver().resolveAll();
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Pages = ({ store }) => (
   <App store={store}>
@@ -66,6 +68,7 @@ const Pages = ({ store }) => (
               <Portal name={APP_GLOBALS} />
               <Viewport>
                 <ModalContainer component={Dialog} />
+                <PushOptInModal />
                 <Toaster render={props => <SnackBarContainer {...props} />} />
                 <FavoritesListChooser />
                 <Router history={history}>
@@ -98,19 +101,23 @@ const Pages = ({ store }) => (
                   />
                   <Route pattern={SCANNER_PATH} component={routes.Scanner} />
                   {
-                    appConfig.hasFavorites
-                    && <Route
-                      pattern={FAVORITES_PATH}
-                      component={routes.Favorites}
-                      transform={routesTransforms[FAVORITES_PATH]}
-                    />
-                  }
+                      appConfig.hasFavorites
+                      && <Route
+                        pattern={FAVORITES_PATH}
+                        component={routes.Favorites}
+                        transform={routesTransforms[FAVORITES_PATH]}
+                      />
+                    }
                   <Route pattern={LOGIN_PATH} component={routes.Login} />
                   <Route
                     pattern={SEARCH_PATTERN}
                     component={routes.Search}
                     cache
                     transform={routesTransforms[SEARCH_PATTERN]}
+                  />
+                  <Route
+                    pattern={BACK_IN_STOCK_PATTERN}
+                    component={routes.BackInStock}
                   />
                   <Route
                     pattern={SEARCH_FILTER_PATTERN}
@@ -120,9 +127,9 @@ const Pages = ({ store }) => (
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>
                 {isDev && (
-                  <Helmet>
-                    <link href={devFontsUrl} rel="stylesheet" />
-                  </Helmet>
+                <Helmet>
+                  <link href={devFontsUrl} rel="stylesheet" />
+                </Helmet>
                 )}
               </Viewport>
             </ToastProvider>

@@ -38,6 +38,8 @@ import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -61,6 +63,7 @@ const Pages = ({ store }) => (
               <Portal name={APP_GLOBALS} />
               <Viewport>
                 <ModalContainer component={Dialog} />
+                <PushOptInModal />
                 <Toaster render={props => <SnackBarContainer {...props} />} />
                 <FavoritesListChooser />
                 <Router history={history}>
@@ -96,13 +99,13 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[MORE_PATH]}
                   />
                   {
-                    appConfig.hasFavorites
-                    && <Route
-                      pattern={FAVORITES_PATH}
-                      component={routes.Favorites}
-                      transform={routesTransforms[FAVORITES_PATH]}
-                    />
-                  }
+                      appConfig.hasFavorites
+                      && <Route
+                        pattern={FAVORITES_PATH}
+                        component={routes.Favorites}
+                        transform={routesTransforms[FAVORITES_PATH]}
+                      />
+                    }
                   <Route pattern={LOGIN_PATH} component={routes.Login} />
                   <Route
                     pattern={SEARCH_PATTERN}
@@ -116,6 +119,10 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[SEARCH_FILTER_PATTERN]}
                   />
                   <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                  <Route
+                    pattern={BACK_IN_STOCK_PATTERN}
+                    component={routes.BackInStock}
+                  />
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>
               </Viewport>
@@ -126,7 +133,6 @@ const Pages = ({ store }) => (
     </NavigationHandler>
   </App>
 );
-
 Pages.propTypes = {
   store: PropTypes.shape().isRequired,
 };

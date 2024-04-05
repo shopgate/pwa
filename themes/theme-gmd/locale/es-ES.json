@@ -19,7 +19,25 @@
     "shipping": "Envío",
     "reviews": "Comentarios",
     "favorites": "Favoritos",
-    "scanner": "Escáner"
+    "scanner": "Escáner",
+    "back_in_stock": "Notificaciones"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Notificaciones activas",
+      "past": "Notificaciones pasadas"
+    },
+    "empty_list_reminder": "No tienes ninguna notificación configurada",
+    "get_notified": "Notificarme las nuevas existencias",
+    "we_will_remind_you": "Te avisaremos cuando el producto vuelva a estar en stock",
+    "add_back_in_stock_success_modal": {
+      "title": "¡Notificación de Back-In-Stock añadida!",
+      "message": "Te enviaremos una notificación push cuando el producto vuelva a estar en stock. Puedes gestionar tus notificaciones en el menú."
+    },
+    "rationale": {
+      "message": "Por favor, permite las notificaciones push en el siguiente paso, para que podamos enviarte una notificación cuando el producto vuelva a estar en stock.",
+      "confirm": "Permitir notificaciones push"
+    }
   },
   "favorites": {
     "add": "Agregar a favoritos",
@@ -222,6 +240,7 @@
     "my_orders": "Mis pedidos",
     "cart": "Cesta de la compra",
     "scanner": "Escáner",
+    "back_in_stock": "Recordatorio de existencias",
     "shipping": "Métodos de envío",
     "about": "Sobre nosotros",
     "payment": "Métodos de pago",
@@ -266,6 +285,7 @@
     "access_denied": {
       "settings_button": "Vaya a configuración",
       "camera_message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración.",
+      "push_message": "Esta función requiere acceso a las notificaciones push. Por favor, permita el acceso en la configuración.",
       "geolocation_message": "Para encontrar tiendas cerca de donde está, vaya a Configuración y habilite los permisos de ubicación."
     }
   },
@@ -288,5 +308,11 @@
     "title": "Valorar la aplicación",
     "message": "¿Te gusta nuestra aplicación? Estaremos encantados de recibir una valoración.",
     "rejectionApprovalMessage": "¿Quiere darnos su opinión? Esto nos ayudará a mejorar la aplicación."
+  },
+  "pushOptInModal": {
+    "title": "Reciba cupones y ofertas exclusivas",
+    "buttonAllow": "Activar las notificaciones",
+    "buttonDeny": "No quiero notificaciones",
+    "message": "Active las notificaciones para que podamos enviarle notificaciones push sobre nuevas ofertas, vales exclusivos y mucho más."
   }
 }

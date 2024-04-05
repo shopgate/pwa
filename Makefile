@@ -112,7 +112,6 @@ add-remotes:
 
 
 sanity-check:
-		git --version
 		npm install --no-package-lock --no-save yargs && \
 			node ./scripts/check-release-version.js -v="$(RELEASE_VERSION)";
 
@@ -141,7 +140,22 @@ else
 endif
 		$(call finalize-release)
 
+release-dry-run:
+	@echo "Purging dist"
+	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library)))
+	@echo "Running babel"
+	$(foreach library, $(LIBRARIES), $(call build-npm-package, libraries, $(library)))
+	@echo "Normalizing dist"
+	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library)))
+	@echo "You can check dist folder"
 
+release-normalize:
+	@echo "Normalizing dist"
+	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library)))
+
+release-purge:
+	@echo "Purging dist"
+	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library)))
 
 # Clean the repository before starting a release.
 clean:
@@ -317,16 +331,23 @@ endef
 
 define build-publish-npm-package
 		$(call build-npm-package, $(strip $(1)), $(strip $(2)))
+		$(call normalize-build, $(strip $(1)), $(strip $(2)))
 		$(call publish-npm-package, $(strip $(1)), $(strip $(2)), dist)
 		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))
 endef
 
 define build-npm-package
 		@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
-		BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-		cp ./$(strip $(1))/$(strip $(2))/package.json ./$(strip $(1))/$(strip $(2))/dist/;
-		cp ./$(strip $(1))/$(strip $(2))/README.md ./$(strip $(1))/$(strip $(2))/dist/;
-		cp ./$(strip $(1))/$(strip $(2))/LICENSE.md ./$(strip $(1))/$(strip $(2))/dist/;
+		@BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --copy-files --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+
+endef
+
+# tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+define normalize-build
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*tests*' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*mocks*' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*snapshots*' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*.spec.*' -delete
 
 endef
 
@@ -341,7 +362,7 @@ endef
 
 define clean-npm-package
 		@echo "> Cleaning './$(strip $(1))/$(strip $(2))/dist' npm package"
-		rm -rf -f ./$(strip $(1))/$(strip $(2))/dist;
+		-rm -rf ./$(strip $(1))/$(strip $(2))/dist;
 
 endef
 
@@ -395,8 +416,7 @@ endef
 
 define update-subtree-remotes
 		-git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
-		git reset --hard;
-		time git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
 
 endef
 
@@ -439,35 +459,6 @@ define finalize-release
 
 endef
 
-
-####################################################################################################
-# SUBTREES FORCE UPDATE
-####################################################################################################
-subtrees-force-push:
-	echo " FORCE push subtrees"
-	$(foreach remote, $(THEMES), $(call subtree-force-push, $(remote), themes/$(remote)))
-	$(foreach remote, $(EXTENSIONS), $(call subtree-force-push, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote)))
-
-define subtree-force-push
-		git push $(strip $(1)) `git subtree split --prefix=$(strip $(2)) master`:master --force
-
-endef
-
-####################################################################################################
-# SUBTREES RE-ATTACH
-####################################################################################################
-subtrees-re-attach:
-	echo " Re-attach subtrees"
-	$(foreach remote, $(THEMES), $(call subtree-re-attach, $(remote), themes/$(remote)))
-	$(foreach remote, $(EXTENSIONS), $(call subtree-re-attach, $(patsubst @shopgate-%,ext-%,$(remote)), extensions/$(remote)))
-
-define subtree-re-attach
-	rm -fr $(strip $(2))
-	git add .
-	git commit -m "Remove subtree of $(2)"
-	git subtree add --prefix=$(strip $(2)) $(strip $(1)) master
-
-endef
 
 
 ####################################################################################################

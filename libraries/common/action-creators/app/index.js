@@ -1,4 +1,5 @@
 import {
+  APP_WILL_INIT,
   APP_WILL_START,
   APP_DID_START,
   PWA_DID_APPEAR,
@@ -10,6 +11,16 @@ import {
   OPEN_PUSH_NOTIFICATION,
   OPEN_UNIVERSAL_LINK,
 } from '../../constants/ActionTypes';
+
+/**
+ * Creates the dispatched APP_WILL_INIT action object.
+ * @param {Object} location The initial history entry location.
+ * @return {Object} The dispatched action object.
+ */
+export const appWillInit = location => ({
+  type: APP_WILL_INIT,
+  location,
+});
 
 /**
  * Creates the dispatched APP_WILL_START action object.

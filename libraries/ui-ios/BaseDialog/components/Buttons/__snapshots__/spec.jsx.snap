@@ -5,7 +5,7 @@ exports[`<Buttons /> should not render if no actions are passed 1`] = `null`;
 exports[`<Buttons /> should render buttons 1`] = `
 Array [
   <Button
-    className="css-ksga6w "
+    className="css-400u0f "
     disabled={false}
     flat={true}
     key="action0"
@@ -15,14 +15,14 @@ Array [
     wrapContent={true}
   >
     <Translate
-      className="css-auznqr"
+      className="css-56or1u"
       params={Object {}}
       role={null}
       string="action0"
     />
   </Button>,
   <Button
-    className="css-ksga6w "
+    className="css-400u0f "
     disabled={false}
     flat={true}
     key="action1"
@@ -32,14 +32,14 @@ Array [
     wrapContent={true}
   >
     <Translate
-      className="css-auznqr"
+      className="css-56or1u"
       params={Object {}}
       role={null}
       string="action1"
     />
   </Button>,
   <Button
-    className="css-ksga6w "
+    className="css-400u0f "
     disabled={false}
     flat={true}
     key="action2"
@@ -49,7 +49,7 @@ Array [
     wrapContent={true}
   >
     <Translate
-      className="css-auznqr"
+      className="css-56or1u"
       params={Object {}}
       role={null}
       string="action2"

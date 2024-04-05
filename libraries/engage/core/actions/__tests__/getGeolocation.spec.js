@@ -21,7 +21,7 @@ jest.mock('../../classes/GeolocationRequest', () => class Foo {
   }
 });
 
-describe('engage > core > actions > grantCameraPermissions', () => {
+describe('engage > core > actions > getGeolocation', () => {
   const dispatch = jest.fn(action => action);
 
   beforeEach(() => {

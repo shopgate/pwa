@@ -33,7 +33,7 @@ import showModal from '../actions/modal/showModal';
 import { getUserData } from '../selectors/user';
 import { userDidUpdate$ } from '../streams/user';
 import { clientInformationDidUpdate$ } from '../streams/client';
-import { appWillStart$, appDidStart$ } from '../streams/app';
+import { appWillInit$, appWillStart$, appDidStart$ } from '../streams/app';
 import { appError$, pipelineError$ } from '../streams/error';
 import { getRouterStack } from '../selectors/router';
 import { MODAL_PIPELINE_ERROR } from '../constants/ModalTypes';
@@ -143,7 +143,7 @@ export default (subscribe) => {
     trackedSeverities = trackedSeverities.slice(0, minSeverityIndex + 1);
   }
 
-  subscribe(appWillStart$, ({ getState }) => {
+  subscribe(appWillInit$, ({ getState }) => {
     init({
       dsn: 'https://1a444b262ac6405594ab33fb0102b377@sentry.io/1398210',
       environment: env,

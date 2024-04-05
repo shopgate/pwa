@@ -20,7 +20,25 @@
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Benachrichtigungen"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktive Benachrichtigungen",
+      "past": "Vergangene Benachrichtigungen"
+    },
+    "empty_list_reminder": "Sie haben keine Benachrichtigungen konfiguriert",
+    "get_notified": "Benachrichtigen Sie mich, wenn der Artikel verfügbar ist",
+    "we_will_remind_you": "Sie werden benachrichtigt, wenn der Artikel wieder verfügbar ist",
+    "add_back_in_stock_success_modal": {
+      "title": "Benachrichtigung hinzugefügt!",
+      "message": "Wir senden Ihnen eine Push-Benachrichtigung, wenn das Produkt wieder verfügbar ist. Sie können diese Benachrichtigungen über das Menü verwalten."
+    },
+    "rationale": {
+      "message": "Bitte erlauben Sie Push-Benachrichtigungen im nächsten Schritt, damit wir Ihnen mitteilen können, wenn das Produkt wieder verfügbar ist.",
+      "confirm": "Benachrichtigungen erlauben"
+    }
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -240,6 +258,7 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
+    "back_in_stock": "Benachrichtigungen",
     "back": "Zurück zu {title}"
   },
   "reviews": {
@@ -276,9 +295,10 @@
   },
   "permissions": {
     "access_denied": {
-      "settings_button": "Zu den Einstellungen",
+      "settings_button": "Einstellungen öffnen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
-      "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
+      "push_message": "Sie haben Push-Benachrichtigungen für diese App deaktiviert. Bitte gehen Sie in die Einstellungen Ihres Gerätes, um sie zu aktivieren.",
+      "geolocation_message": "Wir benötigen Zugriff auf den Standort, um Filialen in der Nähe zu zeigen."
     }
   },
   "error": {
@@ -300,5 +320,11 @@
     "title": "App bewerten",
     "message": "Gefällt Ihnen unsere App? Wir freuen uns über eine Bewertung!",
     "rejectionApprovalMessage": "Möchten Sie uns Feedback geben? Das hilft uns die App weiter zu verbessern."
+  },
+  "pushOptInModal": {
+    "title": "Erhalten Sie exklusive Coupons und Angebote",
+    "buttonAllow": "Benachrichtigungen aktivieren",
+    "buttonDeny": "Ich möchte keine Benachrichtigungen",
+    "message": "Aktivieren Sie Benachrichtigungen, damit wir Ihnen Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können."
   }
 }

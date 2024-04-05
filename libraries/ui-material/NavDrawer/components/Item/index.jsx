@@ -28,7 +28,7 @@ class NavDrawerItem extends Component {
     badge: null,
     forwardedRef: null,
     icon: null,
-    onClick: () => {},
+    onClick: () => { },
     srOnly: false,
     style: {},
     testId: null,

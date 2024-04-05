@@ -9,7 +9,7 @@ exports[`<BasicDialog /> should render as expected 1`] = `
   role="alertdialog"
 >
   <div
-    className="css-1y16c93"
+    className="css-1462t03"
   >
     <Title
       title="Hello World"
@@ -23,7 +23,7 @@ exports[`<BasicDialog /> should render as expected 1`] = `
     />
   </div>
   <div
-    className="css-bonugw"
+    className="css-1hb9t7t"
   >
     <Buttons
       actions={
@@ -56,7 +56,7 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
   role="alertdialog"
 >
   <div
-    className="css-1y16c93"
+    className="css-1462t03"
   >
     <Title
       title={null}
@@ -66,7 +66,7 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
     />
   </div>
   <div
-    className="css-bonugw"
+    className="css-1hb9t7t"
   >
     <Buttons
       actions={Array []}
