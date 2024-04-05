@@ -12,6 +12,15 @@
         "path": "/v1/shop/%(shopId)s/has_user_account_deletion?parsed=true",
         "key": "value"
       }
+    },
+    "deleteAccountTarget": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": "nav-menu.logout.after",
+      "params": {
+        "type": "json",
+        "label": "Configuration to show delete account button at given portal positions"
+      }
     }
   },
   "components": [
@@ -19,7 +28,15 @@
       "type": "portals",
       "id": "DeleteAccount",
       "path": "frontend/DeleteAccount/index.jsx",
-      "target": "nav-menu.logout.after"
+      "target": [
+        "nav-menu.logout.after",
+        "nav-menu.shipping.after",
+        "nav-menu.payment.after",
+        "nav-menu.terms.after",
+        "nav-menu.privacy.after",
+        "nav-menu.return-policy.after",
+        "nav-menu.imprint.after"
+      ]
     },
     {
       "id": "DeleteAccountSubscribers",
