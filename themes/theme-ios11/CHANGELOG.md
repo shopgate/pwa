@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.22.0](https://github.com/shopgate/pwa/compare/v6.21.0...v6.22.0) (2024-04-05)
+
+#### :rocket: Enhancement
+* [#1214](https://github.com/shopgate/pwa/pull/1214) Add "show all products" button to category lists ([@Phmank](https://github.com/Phmank))
+* [#1228](https://github.com/shopgate/pwa/pull/1228) Add config to change the portal position of the Delete Account Button ([@Phmank](https://github.com/Phmank))
+* [#1219](https://github.com/shopgate/pwa/pull/1219) Implemented improved push notification opt-in mechanism ([@fkloes](https://github.com/fkloes))
+* [#1217](https://github.com/shopgate/pwa/pull/1217) Implemented Back-In-Stock reminder ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.21.0](https://github.com/shopgate/pwa/compare/v6.20.1...v6.21.0) (2024-02-01)
 
 #### :rocket: Enhancement
