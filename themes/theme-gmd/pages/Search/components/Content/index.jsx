@@ -8,6 +8,7 @@ import { AppBar } from '@shopgate/pwa-ui-material';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from '../Bar';
@@ -22,6 +23,11 @@ class SearchContent extends Component {
     searchPhrase: PropTypes.string.isRequired,
     showFilterBar: PropTypes.bool.isRequired,
     showNoResults: PropTypes.bool.isRequired,
+    pattern: PropTypes.string,
+  }
+
+  static defaultProps = {
+    pattern: null,
   }
 
   /**
@@ -45,7 +51,7 @@ class SearchContent extends Component {
    */
   render() {
     const {
-      searchPhrase, showFilterBar, showNoResults,
+      searchPhrase, showFilterBar, showNoResults, pattern,
     } = this.props;
 
     return (
@@ -53,7 +59,12 @@ class SearchContent extends Component {
         {({ state, query, id: routeId }) => (
           <Fragment>
             <DefaultBar
-              center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
+              center={
+                <AppBar.Title
+                  title={pattern === CATEGORY_ALL_PATTERN ? state.categoryName || '' : searchPhrase}
+                  onClick={this.showSearch}
+                />
+              }
             />
 
             {showFilterBar && <Bar /> }
@@ -69,7 +80,14 @@ class SearchContent extends Component {
                   <NoResults
                     headlineText="search.no_result.heading"
                     bodyText="search.no_result.body"
-                    searchPhrase={searchPhrase}
+                    {...pattern !== CATEGORY_ALL_PATTERN ? {
+                      headlineText: 'search.no_result.heading',
+                      bodyText: 'search.no_result.body',
+                      searchPhrase,
+                    } : {
+                      headlineText: 'category.no_result.heading',
+                      bodyText: 'category.no_result.body',
+                    }}
                   />
                 </SurroundPortals>
               )}

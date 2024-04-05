@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useMemo, memo,
+  useState, useMemo, memo, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
@@ -19,9 +19,9 @@ function FilterBar({ filters }) {
   const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
-  useEffect(() => {
-    setActive(filters !== null && Object.keys(filters).length > 0);
-  }, [filters]);
+  const handleChipCountUpdate = useCallback((count) => {
+    setActive(count > 0);
+  }, []);
 
   const style = useMemo(() => ({
     background: active ? colors.accent : colors.background,
@@ -32,7 +32,7 @@ function FilterBar({ filters }) {
     <ScrollHeader hideOnScroll={hideOnScroll} scrollOffset={offset}>
       <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
         <SurroundPortals portalName="filter-bar.content">
-          <Content />
+          <Content onChipCountUpdate={handleChipCountUpdate} />
         </SurroundPortals>
       </div>
     </ScrollHeader>

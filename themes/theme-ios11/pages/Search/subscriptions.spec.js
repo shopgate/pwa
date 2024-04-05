@@ -1,11 +1,12 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import {
-  searchWillEnter$,
-  searchDidEnter$,
-} from '@shopgate/pwa-common-commerce/search/streams';
-import { searchFiltersDidUpdate$ } from './streams';
+  searchFiltersDidUpdate$,
+  searchPageComponentWillEnter$,
+} from './streams';
 import subscriptions from './subscriptions';
 
 jest.mock('@shopgate/pwa-common-commerce/filter/actions/fetchFilters', () =>
@@ -15,11 +16,19 @@ jest.mock('@shopgate/pwa-common-commerce/search/actions/fetchSearchResults', () 
   jest.fn().mockReturnValue('fetchSearchResults'));
 
 jest.mock('@shopgate/pwa-common/selectors/router', () => ({
-  getCurrentRoute: () => ({
+  getCurrentRoute: jest.fn(() => ({
     query: {
       s: 'Some search phrase',
       sort: 'relevance',
     },
+  })),
+  getCurrentParams: () => ({}),
+  getCurrentState: () => ({}),
+}));
+jest.mock('@shopgate/pwa-common/selectors/history', () => ({
+  getCurrentQuery: () => ({
+    s: 'Some search phrase',
+    sort: 'relevance',
   }),
 }));
 
@@ -38,10 +47,10 @@ describe('SearchPage subscriptions', () => {
   });
 
   it('should call subscribe as expected', () => {
-    expect(subscribe).toHaveBeenCalledTimes(3);
+    expect(subscribe).toHaveBeenCalledTimes(2);
   });
 
-  describe('searchWillEnter$', () => {
+  describe('searchPageComponentWillEnter$', () => {
     let stream;
     let callback;
 
@@ -50,7 +59,7 @@ describe('SearchPage subscriptions', () => {
     });
 
     it('should have been called as expected', () => {
-      expect(stream).toBe(searchWillEnter$);
+      expect(stream).toBe(searchPageComponentWillEnter$);
       expect(callback).toBeInstanceOf(Function);
     });
 
@@ -69,18 +78,16 @@ describe('SearchPage subscriptions', () => {
         },
       };
 
-      callback({
-        action,
-        dispatch,
-      });
+      callback({ dispatch, action, getState });
 
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenCalledWith(fetchSearchResults());
       expect(fetchSearchResults).toHaveBeenCalledWith({
         filters: action.route.state.filters,
         searchPhrase: action.route.query.s,
         sort: action.route.query.sort,
       });
+      expect(dispatch).toHaveBeenCalledWith(fetchFilters());
     });
   });
 
@@ -105,17 +112,15 @@ describe('SearchPage subscriptions', () => {
         },
       };
 
+      getCurrentRoute.mockReturnValue(route);
+
       const action = {
         filters: {
           mocked: 'filters',
         },
       };
 
-      callback({
-        action,
-        dispatch,
-        getState,
-      });
+      callback({ dispatch, action, getState });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(fetchSearchResults());
@@ -126,24 +131,6 @@ describe('SearchPage subscriptions', () => {
       });
     });
   });
-
-  describe('searchDidEnter$', () => {
-    let stream;
-    let callback;
-
-    beforeAll(() => {
-      [,, [stream, callback]] = subscribe.mock.calls;
-    });
-
-    it('should have been called as expected', () => {
-      expect(stream).toBe(searchDidEnter$);
-      expect(callback).toBeInstanceOf(Function);
-    });
-
-    it('should dispatch the fetchFilters action', () => {
-      callback({ dispatch });
-      expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(fetchFilters());
-    });
-  });
 });
+
+/* eslint-enable extra-rules/no-single-line-objects */

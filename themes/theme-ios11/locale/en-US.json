@@ -177,6 +177,9 @@
     "sections": {
       "categories": "Categories",
       "products": "Products"
+    },
+    "showAllProducts": {
+      "label": "Show all products"
     }
   },
   "search": {

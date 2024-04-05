@@ -490,6 +490,15 @@
         "label": "Configure the display of cart information."
       }
     },
+    "categoriesShowAllProducts": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "type": "json",
+        "label": "Enables / Disables an option in the category list to show all products of the current category"
+      }
+    },
     "variantSelectionMode": {
       "type": "bigApi",
       "destination": "frontend",
