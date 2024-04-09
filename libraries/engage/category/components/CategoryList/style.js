@@ -8,7 +8,7 @@ const sheet = css({
 }).toString();
 
 const showAllProducts = css({
-  fontWeight: 800,
+  fontWeight: 700,
 }).toString();
 
 export default {
