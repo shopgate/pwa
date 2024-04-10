@@ -9,7 +9,7 @@ import styles from './style';
  * @returns {JSX.Element}
  */
 const Toggle = ({
-  label, title, disabled, handleChange,
+  label, title, disabled, checked, onChange,
 }) => {
   const toggleId = useMemo(() => Math.random(), []);
 
@@ -22,10 +22,16 @@ const Toggle = ({
         <span className={styles.label}>{label}</span>
       </div>
       <div>
-        <input className={styles.input} disabled={disabled} type="checkbox" id={`"${toggleId}"`} />
+        <input
+          onChange={onChange}
+          className={styles.input}
+          disabled={disabled}
+          checked={checked}
+          type="checkbox"
+          id={`"${toggleId}"`}
+        />
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label
-          onChange={handleChange}
           className={disabled
             ? classNames(styles.disabled, styles.toggleButton)
             : styles.toggleButton}
@@ -38,14 +44,16 @@ const Toggle = ({
 
 Toggle.propTypes = {
   label: PropTypes.node.isRequired,
+  checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  handleChange: PropTypes.func,
+  onChange: PropTypes.func,
   title: PropTypes.node,
 };
 Toggle.defaultProps = {
   disabled: false,
+  checked: false,
   title: null,
-  handleChange: null,
+  onChange: null,
 };
 
 export default Toggle;

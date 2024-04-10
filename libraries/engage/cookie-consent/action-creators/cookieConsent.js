@@ -2,14 +2,12 @@ import {
   ACCEPT_ALL_COOKIES,
   ACCEPT_REQUIRED_COOKIES,
   ACCEPT_SELECTED_COOKIES,
-  CHANGE_COMFORT_COOKIES,
-  CHANGE_STATISTICS_COOKIES,
   HIDE_COOKIE_CONSENT_MODAL,
   SHOW_COOKIE_CONSENT_MODAL,
 } from '../constants';
 
 /**
- * action to be dispatched when the push opt-in should be shown
+ * action to be dispatched when the cookie consent modal should be shown
  * @returns {Function}
  */
 export const showCookieConsentModal = () => ({
@@ -17,7 +15,7 @@ export const showCookieConsentModal = () => ({
 });
 
 /**
- * action to be dispatched when the push opt-in should be hidden
+ * action to be dispatched when the cookie consent modal should be hidden
  * @returns {Function}
  */
 export const hideCookieConsentModal = () => ({
@@ -26,11 +24,17 @@ export const hideCookieConsentModal = () => ({
 
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
- * and native modal should be triggered for setting the permission
+ * @param {boolean} areComfortCookiesSelected whether this cookie type was selected by user
+ * @param {boolean} areStatisticsCookiesSelected whether this cookie type was selected by user
  * @returns {Function}
  */
-export const grantSelectedCookies = () => ({
+export const grantSelectedCookies = ({
+  areComfortCookiesSelected,
+  areStatisticsCookiesSelected,
+}) => ({
   type: ACCEPT_SELECTED_COOKIES,
+  areComfortCookiesSelected,
+  areStatisticsCookiesSelected,
 });
 
 /**
@@ -49,22 +53,4 @@ export const grantAllCookies = () => ({
  */
 export const grantRequiredCookies = () => ({
   type: ACCEPT_REQUIRED_COOKIES,
-});
-
-/**
- * action to be dispatched when the user accepted all cookies in the custom modal
- * and native modal should be triggered for setting the permission
- * @returns {Function}
- */
-export const handleChangeComfortCookies = () => ({
-  type: CHANGE_COMFORT_COOKIES,
-});
-
-/**
- * action to be dispatched when the user accepted all cookies in the custom modal
- * and native modal should be triggered for setting the permission
- * @returns {Function}
- */
-export const handleChangeStatisticsCookies = () => ({
-  type: CHANGE_STATISTICS_COOKIES,
 });

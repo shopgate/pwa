@@ -35,18 +35,21 @@ const toggleButton = css({
   },
 }).toString();
 
-const disabled = css({
-  backgroundColor: themeConfig.colors.shade7,
-}).toString();
-
 const input = css({
   display: 'none',
   [`:checked + .${toggleButton}`]: {
     backgroundColor: themeConfig.colors.accent,
   },
+  [`:disabled + .${toggleButton}`]: {
+    backgroundColor: themeConfig.colors.shade7,
+  },
   [`:checked + .${toggleButton}::before`]: {
     transform: 'translateX(20px)',
   },
+}).toString();
+
+const disabled = css({
+  backgroundColor: themeConfig.colors.shade7,
 }).toString();
 
 const button = css({

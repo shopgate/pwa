@@ -2,13 +2,11 @@ import {
   ACCEPT_ALL_COOKIES,
   ACCEPT_REQUIRED_COOKIES,
   ACCEPT_SELECTED_COOKIES,
-  CHANGE_COMFORT_COOKIES,
-  CHANGE_STATISTICS_COOKIES,
 } from '../constants';
 
 const defaultState = {
-  areComfortCookiesSelected: false,
-  areStatisticsCookiesSelected: false,
+  areComfortCookiesSelected: null,
+  areStatisticsCookiesSelected: null,
 };
 
 /**
@@ -36,18 +34,8 @@ const cookieSettingsReducer = (state = defaultState, action) => {
     case ACCEPT_SELECTED_COOKIES: {
       return {
         ...state,
-      };
-    }
-    case CHANGE_COMFORT_COOKIES: {
-      return {
-        ...state,
-        areComfortCookiesSelected: !state.areComfortCookiesSelected,
-      };
-    }
-    case CHANGE_STATISTICS_COOKIES: {
-      return {
-        ...state,
-        areStatisticsCookiesSelected: !state.areComfortCookiesSelected,
+        areComfortCookiesSelected: action.areComfortCookiesSelected,
+        areStatisticsCookiesSelected: action.areStatisticsCookiesSelected,
       };
     }
 

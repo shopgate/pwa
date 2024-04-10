@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   Button, Grid, I18n,
 } from '@shopgate/engage/components';
@@ -12,48 +12,77 @@ import connect from './connector';
  * @returns {JSX.Element}
  */
 const CookieConsentDetail = ({
-  acceptAllCookies,
-  acceptSelectedCookies,
-  handleChangeComfortCookies,
-  handleChangeStatisticsCookies,
-}) => (
-  <Grid component="div" className={styles.container}>
-    <Grid.Item component="div">
-      <Toggle
-        label={<I18n.Text string="cookieSettings.comfort" />}
-        title={<I18n.Text string="cookieSettings.comfortTitle" />}
-        handleChange={handleChangeComfortCookies}
-      />
-      <Toggle
-        label={<I18n.Text string="cookieSettings.statistics" />}
-        title={<I18n.Text string="cookieSettings.statisticsTitle" />}
-        handleChange={handleChangeStatisticsCookies}
-      />
-      <Toggle
-        label={<I18n.Text string="cookieSettings.required" />}
-        title={<I18n.Text string="cookieSettings.requiredTitle" />}
-        disabled
-      />
-    </Grid.Item>
-    <Grid.Item component="div" className={styles.buttonWrapper}>
-      <Button onClick={acceptAllCookies} type="primary" className={styles.button}>
-        <I18n.Text string="cookieConsentModal.buttonAllow" />
-      </Button>
-      <Button onClick={acceptSelectedCookies} type="outline" className={styles.button}>
-        <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
-      </Button>
-    </Grid.Item>
-    <Grid.Item component="div">
-      <I18n.Text string="cookieSettings.privacy" />
-    </Grid.Item>
-  </Grid>
-);
+  confirmAllCookies,
+  confirmSelectedCookies,
+}) => {
+  const [areComfortCookiesSelected, setAreComfortCookiesSelected] = useState(false);
+  const [areStatisticsCookiesSelected, setAreStatisticsCookiesSelected] = useState(false);
+
+  const handleChangeComfortCookies = useCallback(() => {
+    setAreComfortCookiesSelected(!areComfortCookiesSelected);
+  }, [areComfortCookiesSelected]);
+
+  const handleChangeStatisticsCookies = useCallback(() => {
+    setAreStatisticsCookiesSelected(!areStatisticsCookiesSelected);
+  }, [areStatisticsCookiesSelected]);
+
+  const handleAcceptAllCookies = useCallback(() => {
+    setAreStatisticsCookiesSelected(true);
+    setAreComfortCookiesSelected(true);
+    confirmAllCookies();
+  }, [confirmAllCookies]);
+
+  return (
+    <Grid component="div" className={styles.container}>
+      <Grid.Item component="div">
+        <Toggle
+          label={<I18n.Text string="cookieSettings.comfort" />}
+          title={<I18n.Text string="cookieSettings.comfortTitle" />}
+          onChange={handleChangeComfortCookies}
+          checked={areComfortCookiesSelected}
+        />
+        <Toggle
+          label={<I18n.Text string="cookieSettings.statistics" />}
+          title={<I18n.Text string="cookieSettings.statisticsTitle" />}
+          onChange={handleChangeStatisticsCookies}
+          checked={areStatisticsCookiesSelected}
+        />
+        <Toggle
+          label={<I18n.Text string="cookieSettings.required" />}
+          title={<I18n.Text string="cookieSettings.requiredTitle" />}
+          disabled
+          checked
+        />
+      </Grid.Item>
+      <Grid.Item component="div" className={styles.buttonWrapper}>
+        <Button
+          onClick={() => handleAcceptAllCookies()}
+          type="primary"
+          className={styles.button}
+        >
+          <I18n.Text string="cookieConsentModal.buttonAllow" />
+        </Button>
+        <Button
+          onClick={() => confirmSelectedCookies({
+            areComfortCookiesSelected,
+            areStatisticsCookiesSelected,
+          })}
+          type="outline"
+          className={styles.button}
+        >
+          <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
+        </Button>
+      </Grid.Item>
+      <Grid.Item component="div">
+        <I18n.Text string="cookieSettings.privacy" />
+      </Grid.Item>
+    </Grid>
+  );
+};
 
 CookieConsentDetail.propTypes = {
-  acceptAllCookies: PropTypes.func.isRequired,
-  acceptSelectedCookies: PropTypes.func.isRequired,
-  handleChangeComfortCookies: PropTypes.bool.isRequired,
-  handleChangeStatisticsCookies: PropTypes.func.isRequired,
+  confirmAllCookies: PropTypes.func.isRequired,
+  confirmSelectedCookies: PropTypes.func.isRequired,
 };
 
 export default connect(CookieConsentDetail);

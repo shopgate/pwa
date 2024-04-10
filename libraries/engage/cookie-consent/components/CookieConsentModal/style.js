@@ -8,7 +8,6 @@ const modalContent = css({
 const container = css({
   backgroundColor: themeColors.lightOverlay,
   height: '100vh',
-  textAlign: 'center',
   padding: '30px',
   justifyContent: 'center',
   display: 'flex',
@@ -16,6 +15,7 @@ const container = css({
 }).toString();
 
 const title = css({
+  textAlign: 'center',
   fontWeight: 'bold',
   fontSize: '1.35rem',
   paddingTop: '30px',

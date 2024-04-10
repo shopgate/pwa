@@ -66,9 +66,7 @@ const CookieConsentModal = ({
             className={styles.title}
             string={modalTitle || 'cookieConsentModal.title'}
           />
-          <I18n.Text
-            string={modalMessage || 'cookieConsentModal.message'}
-          />
+          <I18n.Text string={modalMessage || 'cookieConsentModal.message'} />
           <Button onClick={acceptAllCookies} type="primary" className={styles.button}>
             <I18n.Text string={modalButtonAccept || 'cookieConsentModal.buttonAllow'} />
           </Button>

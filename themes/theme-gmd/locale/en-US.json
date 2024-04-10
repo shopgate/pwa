@@ -319,5 +319,12 @@
     "buttonAllow": "Enable notifications",
     "buttonDeny": "I don't want notifications",
     "message": "Activate notifications so that we can send you push notifications about new offers, exclusive vouchers and more."
+  },
+  "cookieConsentModal": {
+    "title": "Customize your personal shopping experience",
+    "buttonAllow": "Accept all",
+    "buttonDeny": "Only essential",
+    "buttonConfigure": "Configure settings",
+    "message": "Our app is designed to be optimally tailored to your preferences. We use modern tracking technologies and cookies, with which we collect your clicks and analyze them to present you with personalized content. You can adjust the settings at any time int the 'My Account' area. You can find more information in our detailed privacy policy."
   }
 }
