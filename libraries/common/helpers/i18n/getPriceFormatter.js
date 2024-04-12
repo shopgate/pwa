@@ -1,6 +1,9 @@
 import IntlMessageFormat from 'intl-messageformat';
 import curry from 'lodash/curry';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import messageCache from './messageCache';
+
+const { activatePriceGrouping } = appConfig;
 
 /**
  * Returns an instance of IntlMessageFormat from cache based on a hash.
@@ -29,6 +32,7 @@ const getFormattedPriceFromCache = (langCode, currency, fractions) => {
           currency,
           minimumFractionDigits: fractions ? 2 : 0,
           maximumFractionDigits: fractions ? 2 : 0,
+          useGrouping: activatePriceGrouping,
         },
       },
     }
