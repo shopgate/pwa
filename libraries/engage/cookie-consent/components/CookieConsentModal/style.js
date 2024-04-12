@@ -9,13 +9,14 @@ const container = css({
   backgroundColor: themeColors.lightOverlay,
   height: '100vh',
   padding: '30px',
+  paddingTop: 'calc(30px + var(--safe-area-inset-top))',
   justifyContent: 'center',
   display: 'flex',
   flexDirection: 'column',
+  textAlign: 'center',
 }).toString();
 
 const title = css({
-  textAlign: 'center',
   fontWeight: 'bold',
   fontSize: '1.35rem',
   paddingTop: '30px',
@@ -47,6 +48,12 @@ const buttonText = css({
   color: themeColors.gray,
 }).toString();
 
+const buttonWrapper = css({
+  display: 'flex',
+  flexDirection: 'column',
+  marginBottom: '30px',
+}).toString();
+
 export default {
   modalContent,
   container,
@@ -56,4 +63,5 @@ export default {
   image,
   button,
   buttonText,
+  buttonWrapper,
 };

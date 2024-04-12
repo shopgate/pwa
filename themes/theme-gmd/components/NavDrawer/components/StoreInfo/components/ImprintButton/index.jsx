@@ -15,8 +15,8 @@ import connect from '../../../../connector';
 const LABEL = 'navigation.about';
 
 /**
- * @param {Function} props.navigate The navigate action.
- * @returns {JSX}
+ * @param {Function} navigate The navigate action.
+ * @returns {JSX.Element}
  */
 const ImprintButton = ({ navigate }) => (
   <Fragment>

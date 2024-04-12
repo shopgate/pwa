@@ -13,10 +13,11 @@ import Terms from './components/Terms';
 import Privacy from './components/Privacy';
 import ReturnPolicy from './components/ReturnPolicy';
 import Imprint from './components/Imprint';
+import PrivacySettings from './components/PrivacySettings';
 
 /**
  * The StoreInfoComponent.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const StoreInfo = () => (
   <Fragment>
@@ -27,6 +28,7 @@ const StoreInfo = () => (
         <Payment />
         <Terms />
         <Privacy />
+        <PrivacySettings />
         <ReturnPolicy />
         <Imprint />
       </Section>

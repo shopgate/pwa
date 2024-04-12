@@ -59,23 +59,25 @@ const CookieConsentModal = ({
 
   return (
     <Modal isOpened={isCookieConsentModalVisible} classes={{ content: styles.modalContent }}>
-      <Grid className={styles.container}>
-        <Grid.Item className={styles.item}>
+      <Grid component="div" className={styles.container}>
+        <Grid.Item component="div" className={styles.item}>
           <img src={imageSRC} className={styles.image} alt="" aria-hidden="true" />
           <I18n.Text
             className={styles.title}
             string={modalTitle || 'cookieConsentModal.title'}
           />
           <I18n.Text string={modalMessage || 'cookieConsentModal.message'} />
-          <Button onClick={acceptAllCookies} type="primary" className={styles.button}>
-            <I18n.Text string={modalButtonAccept || 'cookieConsentModal.buttonAllow'} />
-          </Button>
-          <Button onClick={acceptRequiredCookies} type="outline" className={styles.button}>
-            <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
-          </Button>
-          <Button onClick={openSettings} type="outline" className={styles.button}>
-            <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
-          </Button>
+          <Grid.Item component="div" className={styles.buttonWrapper}>
+            <Button onClick={acceptAllCookies} type="primary" className={styles.button}>
+              <I18n.Text string={modalButtonAccept || 'cookieConsentModal.buttonAllow'} />
+            </Button>
+            <Button onClick={acceptRequiredCookies} type="outline" className={styles.button}>
+              <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
+            </Button>
+            <Button onClick={openSettings} type="outline" className={styles.button}>
+              <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
+            </Button>
+          </Grid.Item>
         </Grid.Item>
       </Grid>
     </Modal>

@@ -253,6 +253,7 @@
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
+    "privacySettings": "Datenschutzeinstellungen",
     "welcome_message": "Hallo {name}",
     "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",

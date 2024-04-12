@@ -11,7 +11,7 @@ import Item from '../../../Item';
 
 /**
  * The PrivacyComponent.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Privacy = () => (
   <Fragment>

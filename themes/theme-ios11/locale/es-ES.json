@@ -248,6 +248,7 @@
     "payment": "Métodos de pago",
     "terms": "Condiciones generales",
     "privacy": "Protección de datos",
+    "privacySettings": "Configuraciones de privacidad",
     "welcome_message": "Hola {name}",
     "return_policy": "Derecho de revocación",
     "logout": "Cerrar sesión",

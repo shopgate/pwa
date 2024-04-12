@@ -20,6 +20,7 @@ import PrivacyButton from './components/PrivacyButton';
 import ReturnsButton from './components/ReturnsButton';
 import ImprintButton from './components/ImprintButton';
 import portalProps from '../../portalProps';
+import PrivacySettingsButton from './components/PrivacySettingsButton';
 
 /**
  * @returns {JSX}
@@ -42,6 +43,7 @@ const StoreInfo = () => (
         <NavDrawerSection title="navigation.menuSubHeader.about">
           <TermsButton />
           <PrivacyButton />
+          <PrivacySettingsButton />
           {showReturnPolicy && <ReturnsButton />}
           <ImprintButton />
         </NavDrawerSection>

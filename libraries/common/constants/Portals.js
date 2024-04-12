@@ -20,6 +20,7 @@ const SCANNER = 'scanner';
 const REGISTER_LINK = 'register-link';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
+const PRIVACY_SETTINGS = 'cookie-consent';
 const IMPRINT = 'imprint';
 const STORE_INFORMATION = 'store-information';
 const STORE_INFORMATION_MORE = 'store-information-more';
@@ -89,6 +90,10 @@ export const NAV_MENU_TERMS_AFTER = `${NAV_MENU}.${TERMS}.${AFTER}`;
 export const NAV_MENU_PRIVACY_BEFORE = `${NAV_MENU}.${PRIVACY}.${BEFORE}`;
 export const NAV_MENU_PRIVACY = `${NAV_MENU}.${PRIVACY}`;
 export const NAV_MENU_PRIVACY_AFTER = `${NAV_MENU}.${PRIVACY}.${AFTER}`;
+
+export const NAV_MENU_PRIVACY_SETTINGS_BEFORE = `${NAV_MENU}.${PRIVACY_SETTINGS}.${BEFORE}`;
+export const NAV_MENU_PRIVACY_SETTINGS = `${NAV_MENU}.${PRIVACY_SETTINGS}`;
+export const NAV_MENU_PRIVACY_SETTINGS_AFTER = `${NAV_MENU}.${PRIVACY_SETTINGS}.${AFTER}`;
 
 export const NAV_MENU_IMPRINT_BEFORE = `${NAV_MENU}.${IMPRINT}.${BEFORE}`;
 export const NAV_MENU_IMPRINT = `${NAV_MENU}.${IMPRINT}`;

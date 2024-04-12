@@ -251,6 +251,7 @@
     "payment": "Payment methods",
     "terms": "Terms & Conditions",
     "privacy": "Privacy policy",
+    "privacySettings": "Privacy Settings",
     "welcome_message": "Welcome, {name}",
     "return_policy": "Return policy",
     "logout": "Sign out",
