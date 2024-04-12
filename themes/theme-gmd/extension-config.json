@@ -675,6 +675,15 @@
         "path": "/v1/shop/%(shopId)s/gui_sg_connect_reviews_info_config?parsed=true",
         "key": "value"
       }
+    },
+    "activatePriceGrouping": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "type": "json",
+        "label": "Whether to use grouping separators, such as thousands separators."
+      }
     }
   }
 }
