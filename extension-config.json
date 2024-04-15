@@ -679,7 +679,7 @@
         "key": "value"
       }
     },
-    "activatePriceGrouping": {
+    "showPriceGrouping": {
       "type": "admin",
       "destination": "frontend",
       "default": true,
