@@ -8,7 +8,7 @@ import {
 import Portal from '@shopgate/pwa-common/components/Portal';
 import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { PRIVACY_SETTINGS_PATH } from '@shopgate/theme-ios11/pages/More/constants';
+import { COOKIE_CONSENT_PATTERN } from '@shopgate/engage/cookie-consent/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
@@ -25,7 +25,7 @@ const PrivacySettingsButton = ({ navigate }) => (
       <NavDrawer.Item
         label={LABEL}
         icon={SecurityIcon}
-        onClick={navigate(PRIVACY_SETTINGS_PATH, LABEL)}
+        onClick={navigate(COOKIE_CONSENT_PATTERN)}
         testId="navDrawerPrivacySettingsButton"
       />
     </Portal>

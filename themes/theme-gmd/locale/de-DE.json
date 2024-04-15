@@ -327,7 +327,8 @@
     "modalButtonOnlyRequired": "Only essential",
     "modalButtonConfirmSelected": "Confirm selection",
     "buttonConfigure": "Configure settings",
-    "message": "Our app is designed to be optimally tailored to your preferences. We use modern tracking technologies and cookies, with which we collect your clicks and analyze them to present you with personalized content. You can adjust the settings at any time int the 'My Account' area. You can find more information in our detailed privacy policy."
+    "message": "Our app is designed to be optimally tailored to your preferences. We use modern tracking technologies and cookies, with which we collect your clicks and analyze them to present you with personalized content. You can adjust the settings at any time in the 'My Account' area. You can find more information in our detailed {privacyLink}.",
+    "privacyText": "privacy policy"
   },
   "cookieSettings": {
     "comfortTitle": "Comfort",
@@ -336,6 +337,6 @@
     "comfort": "These cookies and technologies allow for better functionality and performance.",
     "statistics": "These cookies and technologies allow us to show you more relevant ads.",
     "required": "Data that is required to run the app",
-    "privacy": "For more information please see our privacy policy."
+    "privacy": "For more information please see our {privacyLink}."
   }
 }

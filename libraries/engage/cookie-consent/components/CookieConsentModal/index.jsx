@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, I18n, Button, Modal,
+  Grid, I18n, Button, Modal, Link,
 } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
+import { PRIVACY_PATH } from '@shopgate/theme-gmd/components/NavDrawer/constants';
 import connect from './connector';
 import cookieImage from './cookieConsent.svg';
 import styles from './style';
@@ -25,6 +26,7 @@ const CookieConsentModal = ({
       modalButtonAccept,
       modalImageURL,
       modalImageSVG,
+      showRequiredCookiesButton,
     } = {},
   } = appConfig;
 
@@ -66,14 +68,23 @@ const CookieConsentModal = ({
             className={styles.title}
             string={modalTitle || 'cookieConsentModal.title'}
           />
-          <I18n.Text string={modalMessage || 'cookieConsentModal.message'} />
+          <I18n.Text string={modalMessage || 'cookieConsentModal.message'}>
+            <I18n.Placeholder forKey="privacyLink">
+              <Link href={PRIVACY_PATH} tag="span">
+                <I18n.Text string="cookieConsentModal.privacyText" className={styles.link} />
+              </Link>
+            </I18n.Placeholder>
+          </I18n.Text>
+
           <Grid.Item component="div" className={styles.buttonWrapper}>
             <Button onClick={acceptAllCookies} type="primary" className={styles.button}>
               <I18n.Text string={modalButtonAccept || 'cookieConsentModal.buttonAllow'} />
             </Button>
-            <Button onClick={acceptRequiredCookies} type="outline" className={styles.button}>
-              <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
-            </Button>
+            {showRequiredCookiesButton ? (
+              <Button onClick={acceptRequiredCookies} type="outline" className={styles.button}>
+                <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
+              </Button>
+            ) : null}
             <Button onClick={openSettings} type="outline" className={styles.button}>
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
             </Button>

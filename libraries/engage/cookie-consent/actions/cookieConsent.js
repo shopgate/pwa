@@ -5,6 +5,7 @@ import {
   grantSelectedCookies,
   hideCookieConsentModal,
 } from '../action-creators/cookieConsent';
+import { COOKIE_CONSENT_PATTERN } from '../constants';
 
 /**
  * action to be dispatched when the user accepted all cookies in the custom modal
@@ -51,6 +52,6 @@ export const acceptRequiredCookies = () => async (dispatch) => {
  * @returns {Function}
  */
 export const openSettings = () => async (dispatch) => {
-  dispatch(historyPush({ pathname: '/cookie-consent' }));
+  dispatch(historyPush({ pathname: COOKIE_CONSENT_PATTERN }));
   dispatch(hideCookieConsentModal());
 };

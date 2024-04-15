@@ -30,9 +30,8 @@ const item = css({
 }).toString();
 
 const link = css({
-  paddingTop: '30px',
-  textAlign: 'center',
-  color: themeColors.gray,
+  color: themeColors.accent,
+  textDecoration: 'underline',
 }).toString();
 
 const image = css({

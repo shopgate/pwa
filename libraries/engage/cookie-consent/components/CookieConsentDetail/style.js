@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const button = css({
   marginTop: '30px',
@@ -19,8 +20,14 @@ const buttonWrapper = css({
   marginBottom: '30px',
 }).toString();
 
+const link = css({
+  color: themeColors.accent,
+  textDecoration: 'underline',
+}).toString();
+
 export default {
   button,
   container,
   buttonWrapper,
+  link,
 };

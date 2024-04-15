@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import {
-  Button, Grid, I18n,
+  Button, Grid, I18n, Link,
 } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
+import { PRIVACY_PATH } from '@shopgate/theme-gmd/components/NavDrawer/constants';
 import styles from './style';
 import Toggle from '../../../components/Toggle';
 import connect from './connector';
@@ -74,7 +75,13 @@ const CookieConsentDetail = ({
         </Button>
       </Grid.Item>
       <Grid.Item component="div">
-        <I18n.Text string="cookieSettings.privacy" />
+        <I18n.Text string="cookieSettings.privacy">
+          <I18n.Placeholder forKey="privacyLink">
+            <Link href={PRIVACY_PATH} tag="span">
+              <I18n.Text string="cookieConsentModal.privacyText" className={styles.link} />
+            </Link>
+          </I18n.Placeholder>
+        </I18n.Text>
       </Grid.Item>
     </Grid>
   );

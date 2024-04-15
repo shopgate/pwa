@@ -633,7 +633,8 @@
         "modalButtonOnlyRequired": null,
         "modalButtonAccept": null,
         "modalImageURL": null,
-        "modalImageSVG": null
+        "modalImageSVG": null,
+        "showRequiredCookiesButton": false
       },
       "params": {
         "type": "json",

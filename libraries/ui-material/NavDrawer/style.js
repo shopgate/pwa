@@ -15,7 +15,7 @@ export const drawerStyle = css({
   color: themeColors.dark,
   height: '100vh',
   left: 0,
-  maxWidth: '67vw',
+  maxWidth: '70vw',
   position: 'fixed',
   top: 0,
   transition: 'transform 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
