@@ -3,9 +3,7 @@ import { mount } from 'enzyme';
 import Picker from './index';
 import PickerList from './components/List';
 
-jest.mock('@shopgate/pwa-common/components/ReactPortal', () => (
-  ({ isOpened, children }) => (isOpened ? children : null)
-));
+jest.mock('@shopgate/engage/components/ReduxConnectedPortal');
 
 describe('<Picker />', () => {
   let renderedElement;

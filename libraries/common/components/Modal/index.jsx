@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactPortal from 'react-portal';
+import { ReduxConnectedPortal } from '@shopgate/engage/components';
 import classNames from 'classnames';
 import styles from './style';
 
@@ -10,7 +10,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Modal = ({ children, classes }) => (
-  <ReactPortal isOpened>
+  <ReduxConnectedPortal isOpened>
     <div className={classNames(styles.container, classes?.container, 'common__modal')}>
       <div className={classNames(styles.layout, classes?.layout)}>
         <div className={classNames(styles.content, classes?.content)}>
@@ -18,7 +18,7 @@ const Modal = ({ children, classes }) => (
         </div>
       </div>
     </div>
-  </ReactPortal>
+  </ReduxConnectedPortal>
 );
 
 Modal.propTypes = {

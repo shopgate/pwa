@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactPortal from '@shopgate/pwa-common/components/ReactPortal';
+import { ReduxConnectedPortal } from '@shopgate/engage/components';
 import { withForwardedRef } from '@shopgate/engage/core';
 import PickerModal from './components/Modal';
 import PickerButton from './components/Button';
@@ -234,7 +234,7 @@ class Picker extends Component {
         aria-haspopup
       >
         {React.createElement(this.props.buttonComponent, buttonProps)}
-        <ReactPortal
+        <ReduxConnectedPortal
           onClose={() => this.toggleOpenState(false)}
           isOpened
         >
@@ -243,7 +243,7 @@ class Picker extends Component {
             modalProps,
             React.createElement(this.props.listComponent, listProps)
           )}
-        </ReactPortal>
+        </ReduxConnectedPortal>
       </div>
     );
   }

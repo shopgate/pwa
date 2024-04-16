@@ -1,7 +1,7 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ReactPortal from '@shopgate/pwa-common/components/ReactPortal';
+import { ReduxConnectedPortal } from '@shopgate/engage/components';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
@@ -127,7 +127,7 @@ class ContextMenu extends Component {
             <MoreVertIcon />
           </button>
         )}
-        <ReactPortal isOpened={active}>
+        <ReduxConnectedPortal isOpened={active}>
           <div className={styles.overlay}>
             <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
             <Position offset={this.offset}>
@@ -144,7 +144,7 @@ class ContextMenu extends Component {
               </div>
             </Position>
           </div>
-        </ReactPortal>
+        </ReduxConnectedPortal>
       </div>
     );
   }

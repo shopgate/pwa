@@ -31,7 +31,7 @@ export { default as ModalContainer, MODAL_EVENTS } from '@shopgate/pwa-common/co
 export { default as Picker } from './Picker';
 export { default as Portal } from '@shopgate/pwa-common/components/Portal';
 export { default as RangeSlider } from './RangeSlider';
-export { default as ReactPortal } from '@shopgate/pwa-common/components/ReactPortal';
+export { default as ReduxConnectedPortal } from './ReduxConnectedPortal';
 export { default as Route } from '@shopgate/pwa-common/components/Route';
 export { default as ScannerContainer } from '@shopgate/pwa-common/components/ScannerContainer';
 export { default as BaseSelect } from '@shopgate/pwa-common/components/Select';

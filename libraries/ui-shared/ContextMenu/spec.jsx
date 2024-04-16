@@ -3,11 +3,7 @@ import { mount, shallow } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ContextMenu from './index';
 
-jest.mock('@shopgate/pwa-common/components/ReactPortal', () => (
-  ({ isOpened, children }) => (
-    isOpened ? children : null
-  )
-));
+jest.mock('@shopgate/engage/components');
 
 global.requestAnimationFrame = fn => fn();
 

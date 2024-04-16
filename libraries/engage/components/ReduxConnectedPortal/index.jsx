@@ -4,12 +4,12 @@ import Portal from 'react-portal';
 import { Provider, ReactReduxContext } from 'react-redux';
 
 /**
- * The ReactPortal component acts as a wrapper around "react-portal" and injects the Redux
+ * The ReduxConnectedPortal component acts as a wrapper around "react-portal" and injects the Redux
  * store to give children access to it.
  * @param {Object} props The component props
  * @returns {JSX}
  */
-const ReactPortal = ({ children, ...props }) => (
+const ReduxConnectedPortal = ({ children, ...props }) => (
   <ReactReduxContext.Consumer>
     {(ctx => (
       <Portal {...props}>
@@ -21,12 +21,12 @@ const ReactPortal = ({ children, ...props }) => (
   </ReactReduxContext.Consumer>
 );
 
-ReactPortal.propTypes = {
+ReduxConnectedPortal.propTypes = {
   children: PropTypes.node,
 };
 
-ReactPortal.defaultProps = {
+ReduxConnectedPortal.defaultProps = {
   children: null,
 };
 
-export default ReactPortal;
+export default ReduxConnectedPortal;
