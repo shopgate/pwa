@@ -71,12 +71,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 0"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -275,7 +275,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       />
                     </div>
                   </RatingStars>
@@ -890,7 +890,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -899,13 +899,13 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -921,7 +921,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -1029,12 +1029,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 0"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -1233,7 +1233,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       />
                     </div>
                   </RatingStars>
@@ -1848,7 +1848,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -1857,13 +1857,13 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -1879,7 +1879,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -2058,12 +2058,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 5"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -2262,7 +2262,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       >
                         <div
                           aria-hidden={true}
@@ -3073,7 +3073,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -3082,13 +3082,13 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -3104,7 +3104,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -3222,12 +3222,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 5"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -3426,7 +3426,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       >
                         <div
                           aria-hidden={true}
@@ -4237,7 +4237,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -4246,13 +4246,13 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -4268,7 +4268,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -4386,12 +4386,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 5"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -4590,7 +4590,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       >
                         <div
                           aria-hidden={true}
@@ -5401,7 +5401,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -5410,13 +5410,13 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -5432,7 +5432,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -5550,12 +5550,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 5"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -5754,7 +5754,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       >
                         <div
                           aria-hidden={true}
@@ -6571,7 +6571,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -6580,13 +6580,13 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -6602,7 +6602,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -6720,12 +6720,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 5"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -6924,7 +6924,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       >
                         <div
                           aria-hidden={true}
@@ -7735,7 +7735,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -7744,13 +7744,13 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -7766,7 +7766,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -7874,12 +7874,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   >
                     <div
                       aria-label="reviews.rating_stars"
-                      className="css-13azwyo "
+                      className="css-13azwyo  ui-shared__rating-stars"
                       data-test-id="ratedStars: 0"
                       role="text"
                     >
                       <div
-                        className="css-5lxuz4"
+                        className="css-5lxuz4 rating-stars-empty"
                       >
                         <div
                           aria-label="reviews.press_to_rate_with_x_stars"
@@ -8078,7 +8078,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9"
+                        className="css-13xh6j9 rating-stars-filled"
                       />
                     </div>
                   </RatingStars>
@@ -8700,7 +8700,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       wrapContent={true}
                     >
                       <Button
-                        className=""
+                        className=" ui-shared__ripple-button"
                         disabled={false}
                         flat={false}
                         onClick={null}
@@ -8709,13 +8709,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1k9vl9z "
+                          className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button"
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-1k9vl9z  css-1rn65c0"
+                            className="ui-shared__button css-1k9vl9z  ui-shared__ripple-button css-1rn65c0 common__button"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -8731,7 +8731,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               size={null}
                             >
                               <div
-                                className="css-1fscwua "
+                                className="ui-shared__ripple css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}

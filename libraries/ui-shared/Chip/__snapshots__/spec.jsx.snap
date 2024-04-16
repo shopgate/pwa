@@ -23,7 +23,7 @@ exports[`<Chip /> should render a tag 1`] = `
     >
       <button
         aria-label={null}
-        className="css-39vnpz css-1rn65c0"
+        className="css-39vnpz css-1rn65c0 common__button"
         data-test-id="removeFilter"
         disabled={false}
         onClick={[Function]}
@@ -83,7 +83,7 @@ exports[`<Chip /> should render a tag 1`] = `
     >
       <button
         aria-label={null}
-        className="css-hb5pev css-1rn65c0"
+        className="css-hb5pev css-1rn65c0 common__button"
         data-test-id="Button"
         disabled={false}
         onClick={[Function]}
@@ -118,7 +118,7 @@ exports[`<Chip /> should render a without removable icon 1`] = `
     >
       <button
         aria-label={null}
-        className="css-hb5pev css-1rn65c0"
+        className="css-hb5pev css-1rn65c0 common__button"
         data-test-id="Button"
         disabled={false}
         onClick={[Function]}

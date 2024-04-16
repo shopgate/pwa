@@ -70,7 +70,7 @@ class ActionButton extends Component {
     }
 
     return (
-      <div className={containerClass} data-test-id={this.props.testId}>
+      <div className={`ui-shared__action-button ${containerClass}`} data-test-id={this.props.testId}>
         <RippleButton {...this.buttonProps} onClick={this.handleClick}>
           {this.props.children}
         </RippleButton>

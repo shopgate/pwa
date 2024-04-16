@@ -27,6 +27,7 @@ class ViewContent extends Component {
     visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
     noContentPortal: PropTypes.bool,
+    noKeyboardListener: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
   };
 
@@ -34,6 +35,7 @@ class ViewContent extends Component {
     children: null,
     noScrollOnKeyboard: false,
     noContentPortal: false,
+    noKeyboardListener: false,
   };
 
   /**
@@ -128,6 +130,10 @@ class ViewContent extends Component {
    * @param {boolean} overlap The height of the keyboard.
    */
   handleKeyboardChange = ({ open, overlap }) => {
+    if (this.props.noKeyboardListener) {
+      return;
+    }
+
     const height = (open) ? overlap : 0;
 
     if (this.props.visible && height !== this.state.keyboardHeight) {

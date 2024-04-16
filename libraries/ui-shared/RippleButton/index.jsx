@@ -29,7 +29,7 @@ class RippleButton extends Component {
    */
   get buttonProps() {
     return {
-      className: this.props.className,
+      className: `${this.props.className} ui-shared__ripple-button`,
       disabled: this.props.disabled,
       onClick: this.props.onClick,
       flat: this.props.flat,

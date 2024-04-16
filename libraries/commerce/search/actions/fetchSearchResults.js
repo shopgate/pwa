@@ -10,7 +10,16 @@ const getDefaultSortOrder = makeGetDefaultSortOrder();
 
 /**
  * Retrieves products for a certain search query.
- * @param {number} params The params for the products to request.
+ * @param {Object} params The params for the search products to request.
+ * @param {string} params.searchPhrase Search phrase for the request
+ * @param {number} [params.offset=0] Offset for the request
+ * @param {number} [params.limit=ITEMS_PER_LOAD] Limit for the request
+ * @param {string} [params.sort=DEFAULT_SORT] Limit for the request
+ * @param {Object} [params.filters = null] Filters object for the request
+ * @param {Object} [params.params = null] Additional params for the fetchProducts pipeline request
+ * @param {number} [params.cachedTime=null] Cache TTL in ms.
+ * @param {boolean} [params.resolveCachedProducts=false] Whether to resolve with products even
+ * when no actual request was done due to cached data.
  * @return {Function} The dispatched action.
  */
 const fetchSearchResults = params => (dispatch, getState) => {
@@ -23,6 +32,7 @@ const fetchSearchResults = params => (dispatch, getState) => {
     filters = null,
     params: searchParams = null,
     cachedTime = null,
+    resolveCachedProducts = false,
   } = params;
 
   if (!searchPhrase) {
@@ -39,6 +49,7 @@ const fetchSearchResults = params => (dispatch, getState) => {
       ...searchParams,
     },
     filters,
+    resolveCachedProducts,
     onBeforeDispatch: () => {
       // Dispatch the request action before the related pipeline request is executed.
       dispatch(requestSearchResults(searchPhrase, offset));

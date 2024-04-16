@@ -23,6 +23,7 @@ import {
   SurroundPortals,
   ResponsiveContainer,
 } from '@shopgate/engage/components';
+import { ProductListTypeProvider } from '@shopgate/engage/product';
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
@@ -107,8 +108,9 @@ function CartContent(props) {
           )}
           {hasItems && (
             <Fragment>
-              <SurroundPortals portalName={CART_ITEM_LIST}>
-                {(cartItemsDisplay === 'line') && (
+              <ProductListTypeProvider type="cart">
+                <SurroundPortals portalName={CART_ITEM_LIST}>
+                  {(cartItemsDisplay === 'line') && (
                   <CardList className={styles}>
                     {cartItemsSorted.map(cartItem => (
                       <CartItemGroup
@@ -128,8 +130,8 @@ function CartContent(props) {
                       <CouponField onFocus={togglePaymentBar} />
                     </SurroundPortals>
                   </CardList>
-                )}
-                {(cartItemsDisplay === 'card') && (
+                  )}
+                  {(cartItemsDisplay === 'card') && (
                   <Fragment>
                     <CartItems
                       cartItems={cartItemsSorted}
@@ -141,8 +143,9 @@ function CartContent(props) {
                       <CouponField onFocus={togglePaymentBar} />
                     </SurroundPortals>
                   </Fragment>
-                )}
-              </SurroundPortals>
+                  )}
+                </SurroundPortals>
+              </ProductListTypeProvider>
               <ResponsiveContainer appAlways breakpoint="<=xs">
                 <PaymentBar visible={isPaymentBarVisible} showSeparator={false} />
               </ResponsiveContainer>

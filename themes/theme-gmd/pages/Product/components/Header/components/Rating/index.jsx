@@ -8,7 +8,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
-import RatingCount from 'Components/Reviews/components/RatingCount';
+import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
 import { container } from './style';
 import connect from './connector';
 

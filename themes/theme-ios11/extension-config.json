@@ -1,5 +1,5 @@
 {
-  "version": "6.12.0-rc.1",
+  "version": "7.12.2",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -530,6 +530,18 @@
         "label": "Toggle inner shadows of product images"
       }
     },
+    "recaptcha": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "enabled": false,
+        "googleCloudSiteKey": null
+      },
+      "params": {
+        "type": "json",
+        "label": "Enable recaptcha for login"
+      }
+    },
     "webTrackingEngage": {
       "type": "bigApi",
       "destination": "frontend",
@@ -650,6 +662,30 @@
       "params": {
         "type": "json",
         "label": "Disable the modal that is shown after automatic logout"
+      }
+    },
+    "reviewsInfo": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": {
+        "text": null,
+        "linkText": null,
+        "linkUrl": null
+      },
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_reviews_info_config?parsed=true",
+        "key": "value"
+      }
+    },
+    "showPriceGrouping": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "type": "json",
+        "label": "Whether to use grouping separators, such as thousands separators."
       }
     }
   }

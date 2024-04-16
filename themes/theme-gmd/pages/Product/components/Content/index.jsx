@@ -17,7 +17,7 @@ import {
   FulfillmentSheet,
   FulfillmentPathSelector,
 } from '@shopgate/engage/locations';
-import Reviews from 'Components/Reviews';
+import { Reviews } from '@shopgate/engage/reviews';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';

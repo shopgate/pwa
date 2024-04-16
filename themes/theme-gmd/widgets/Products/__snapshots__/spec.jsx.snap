@@ -24,6 +24,7 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
         Object {},
       ]
     }
+    scope="widgets"
   />
 </div>
 `;

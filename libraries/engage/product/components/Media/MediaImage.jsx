@@ -5,7 +5,6 @@ import Image from '@shopgate/pwa-common/components/Image';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
-import { buildMediaImageUrl } from './helpers';
 import { useWidgetSettings } from '../../../core';
 import { defaultProps, propTypes } from './props';
 import MediaPlaceholder from './MediaPlaceholder';
@@ -16,7 +15,7 @@ import { innerShadow } from './style';
  * @returns {JSX}
  */
 const MediaImage = ({
-  url, altText, className, params,
+  url, altText, className, resolutions,
 }) => {
   const [placeholder, setPlaceholderEnabled] = useState(!url);
 
@@ -41,7 +40,8 @@ const MediaImage = ({
   return (
     <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
       <Image
-        src={buildMediaImageUrl(url, params)}
+        src={url}
+        resolutions={resolutions}
         alt={altText}
         className={classes}
         backgroundColor="transparent"
@@ -54,14 +54,18 @@ const MediaImage = ({
 MediaImage.propTypes = {
   altText: propTypes.altText,
   className: propTypes.className,
-  params: PropTypes.shape(),
+  resolutions: PropTypes.arrayOf(PropTypes.shape({
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    blur: PropTypes.number,
+  })),
   url: propTypes.url,
 };
 MediaImage.defaultProps = {
   url: defaultProps.url,
   altText: defaultProps.altText,
   className: defaultProps.className,
-  params: null,
+  resolutions: undefined,
 };
 
 export default MediaImage;

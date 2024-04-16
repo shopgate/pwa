@@ -226,7 +226,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -241,7 +241,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
@@ -250,13 +250,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={true}
                   >
                     <Button
-                      className="css-172ttat css-63oe3q"
+                      className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-172ttat css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -484,7 +484,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -803,7 +803,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -818,7 +818,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -827,13 +827,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1k9vl9z css-63oe3q"
+                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -849,7 +849,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
@@ -1417,7 +1417,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -1432,7 +1432,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -1441,13 +1441,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1k9vl9z css-63oe3q"
+                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1463,7 +1463,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
@@ -1707,7 +1707,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -2179,7 +2179,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -2194,7 +2194,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
@@ -2203,13 +2203,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={true}
                   >
                     <Button
-                      className="css-172ttat css-63oe3q"
+                      className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-172ttat css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -2455,7 +2455,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -2892,7 +2892,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -3211,7 +3211,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -3226,7 +3226,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -3235,13 +3235,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1k9vl9z css-63oe3q"
+                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3257,7 +3257,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
@@ -3512,7 +3512,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -3527,7 +3527,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
@@ -3536,13 +3536,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={true}
                   >
                     <Button
-                      className="css-172ttat css-63oe3q"
+                      className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-172ttat css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -3764,7 +3764,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   size={null}
                                 >
                                   <div
-                                    className="css-ugy6xl"
+                                    className="ui-shared__ripple css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -4083,7 +4083,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               wrapContent={true}
             >
               <div
-                className="css-omcrdt"
+                className="ui-shared__action-button css-omcrdt"
                 data-test-id={null}
               >
                 <RippleButton
@@ -4098,7 +4098,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   wrapContent={true}
                 >
                   <Button
-                    className="css-63oe3q"
+                    className="css-63oe3q ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
@@ -4107,13 +4107,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1k9vl9z css-63oe3q"
+                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="css-1k9vl9z css-63oe3q css-1rn65c0"
+                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -4129,7 +4129,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           size={null}
                         >
                           <div
-                            className="css-1fscwua "
+                            className="ui-shared__ripple css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}

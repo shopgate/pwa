@@ -6,6 +6,7 @@ import { i18n, showModal } from '@shopgate/engage/core';
 import {
   Accordion, Card, ContextMenu, SurroundPortals,
 } from '@shopgate/engage/components';
+import { ProductListTypeProvider } from '@shopgate/engage/product';
 import {
   makeGetFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
@@ -127,28 +128,30 @@ const FavoriteList = ({
       {items.length === 0 ? (
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
-      {items.filter(({ product }) => product).map(({ product, notes, quantity }, index) => (
-        <div key={product.id}>
-          <Item
-            product={product}
-            notes={notes}
-            quantity={quantity}
-            listId={id}
-            productId={product.id}
-            addToCart={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              return addToCart(product, quantity);
-            }}
-            remove={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              removeItem(product.id);
-            }}
-          />
-          {(index === items.length - 1) ? null : <div className={styles.divider} />}
-        </div>
-      ))}
+      <ProductListTypeProvider type="favoritesList">
+        {items.filter(({ product }) => product).map(({ product, notes, quantity }, index) => (
+          <div key={product.id}>
+            <Item
+              product={product}
+              notes={notes}
+              quantity={quantity}
+              listId={id}
+              productId={product.id}
+              addToCart={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                return addToCart(product, quantity);
+              }}
+              remove={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                removeItem(product.id);
+              }}
+            />
+            {(index === items.length - 1) ? null : <div className={styles.divider} />}
+          </div>
+        ))}
+      </ProductListTypeProvider>
     </Accordion>
   </Card>
 );
