@@ -1,5 +1,5 @@
 {
-  "version": "6.12.0-rc.1",
+  "version": "7.12.2",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -674,6 +674,15 @@
         "service": "config",
         "path": "/v1/shop/%(shopId)s/gui_sg_connect_reviews_info_config?parsed=true",
         "key": "value"
+      }
+    },
+    "showPriceGrouping": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "type": "json",
+        "label": "Whether to use grouping separators, such as thousands separators."
       }
     }
   }
