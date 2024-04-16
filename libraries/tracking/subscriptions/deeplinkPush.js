@@ -1,28 +1,9 @@
-import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
-  OPEN_DEEP_LINK,
-  OPEN_PUSH_NOTIFICATION,
-  OPEN_UNIVERSAL_LINK,
-} from '@shopgate/pwa-common/constants/ActionTypes';
+  pushNotificationOpened$,
+  deeplinkOpened$,
+  universalLinkOpened$,
+} from '@shopgate/pwa-common/streams/app';
 import { track } from '../helpers/index';
-
-/**
- * Emits when a deeplink was opened.
- */
-const deeplinkOpened$ = main$
-  .filter(({ action }) => action.type === OPEN_DEEP_LINK);
-
-/**
- * Emits when a push message was opened.
- */
-const pushOpened$ = main$
-  .filter(({ action }) => action.type === OPEN_PUSH_NOTIFICATION);
-
-/**
- * Emits when a universal link was opened.
- */
-const universalLinkOpened$ = main$
-  .filter(({ action }) => action.type === OPEN_UNIVERSAL_LINK);
 
 /**
  * Deeplink and push message tracking subscriptions.
@@ -51,7 +32,7 @@ export default function deeplinkPush(subscribe) {
   /**
    * Gets triggered when a push was opened.
    */
-  subscribe(pushOpened$, ({ getState, action }) => {
+  subscribe(pushNotificationOpened$, ({ getState, action }) => {
     const state = getState();
     const notificationId = action.notificationId ? action.notificationId.toString() : 'n/a';
 
