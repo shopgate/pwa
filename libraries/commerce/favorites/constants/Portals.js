@@ -9,7 +9,7 @@
 const NAV_MENU = 'nav-menu';
 
 // CONTENTS
-const FAVORITES = 'favorites';
+export const FAVORITES = 'favorites';
 const ADD_TO_CART = 'add-to-cart';
 const AVAILABILITY_TEXT = 'availability-text';
 const PRODUCT_NAME = 'product-name';

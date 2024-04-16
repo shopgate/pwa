@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { useCallback, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Chip, ChipLayout } from '@shopgate/engage/components';
@@ -10,32 +11,18 @@ import styles from './style';
 
 /**
  * The FilterChips component.
+ * @returns {JSX}
  */
-class FilterChips extends Component {
-  static propTypes = {
-    openFilters: PropTypes.func.isRequired,
-    routeId: PropTypes.string.isRequired,
-    updateFilters: PropTypes.func.isRequired,
-    currentPathname: PropTypes.string,
-    filters: PropTypes.shape(),
-    scrollTop: PropTypes.func,
-  };
-
-  static defaultProps = {
-    currentPathname: '',
-    filters: null,
-    scrollTop: () => { },
-  };
-
-  /**
-   * Removes the given filter id from the route state.
-   * @param {string} id The id of the filter to remove.
-   * @param {number} value The value to remove (multiselect).
-   */
-  handleRemove = (id, value) => {
-    const {
-      filters, routeId, updateFilters, scrollTop,
-    } = this.props;
+const FilterChips = ({
+  filters,
+  routeId,
+  updateFilters,
+  scrollTop,
+  openFilters,
+  currentPathname,
+  onChipCountUpdate,
+}) => {
+  const handleRemove = useCallback((id, value) => {
     const { [id]: selected, ...rest } = filters;
 
     if (selected.type === FILTER_TYPE_MULTISELECT) {
@@ -63,22 +50,20 @@ class FilterChips extends Component {
     router.update(routeId, { filters: newFilters });
     updateFilters(newFilters);
     scrollTop();
-  }
+  }, [filters, routeId, scrollTop, updateFilters]);
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { currentPathname, filters, openFilters } = this.props;
-
+  const chips = useMemo(() => {
     if (filters === null || !Object.keys(filters).length) {
-      return null;
+      return [];
     }
 
-    const chips = [];
-
+    const entries = [];
     Object.keys(filters).forEach((key) => {
       const filter = filters[key];
+
+      if (filter?.isHidden) {
+        return;
+      }
 
       switch (filter.type) {
         case FILTER_TYPE_RANGE: {
@@ -99,11 +84,11 @@ class FilterChips extends Component {
           const removeLabel = i18n.text('filter.remove', { filter: labelValue });
           const editLabel = i18n.text('filter.edit', { filter: labelValue });
 
-          chips.push((
+          entries.push((
             <Chip
               id={key}
               key={`filter-${key}`}
-              onRemove={this.handleRemove}
+              onRemove={handleRemove}
               onClick={openFilters}
               removeLabel={removeLabel}
               editLabel={editLabel}
@@ -116,15 +101,19 @@ class FilterChips extends Component {
         }
         default:
           filter.value.forEach((value) => {
+            if (value?.isHidden) {
+              return;
+            }
+
             const filterFormatted = `${translateFilterLabel(filter.id, filter.label)}: ${value.label}`;
             const removeLabel = i18n.text('filter.remove', { filter: filterFormatted });
             const editLabel = i18n.text('filter.edit', { filter: filterFormatted });
 
-            chips.push((
+            entries.push((
               <Chip
                 id={value.id}
                 key={`filter-${value.id}`}
-                onRemove={() => this.handleRemove(filter.id, value.id)}
+                onRemove={() => handleRemove(filter.id, value.id)}
                 onClick={openFilters}
                 removeLabel={removeLabel}
                 editLabel={editLabel}
@@ -138,18 +127,45 @@ class FilterChips extends Component {
       }
     });
 
-    return (
-      <div className={`${styles} theme__filter-bar__filter-chips`}>
-        <ChipLayout
-          moreLabel="filter.more"
-          handleMoreButton={openFilters}
-          pathname={currentPathname}
-        >
-          {chips}
-        </ChipLayout>
-      </div>
-    );
+    return entries;
+  }, [filters, handleRemove, openFilters]);
+
+  useEffect(() => {
+    onChipCountUpdate(chips.length);
+  }, [chips.length, onChipCountUpdate]);
+
+  if (chips.length === 0) {
+    return null;
   }
-}
+
+  return (
+    <div className={`${styles} theme__filter-bar__filter-chips`}>
+      <ChipLayout
+        moreLabel="filter.more"
+        handleMoreButton={openFilters}
+        pathname={currentPathname}
+      >
+        {chips}
+      </ChipLayout>
+    </div>
+  );
+};
+
+FilterChips.propTypes = {
+  openFilters: PropTypes.func.isRequired,
+  routeId: PropTypes.string.isRequired,
+  updateFilters: PropTypes.func.isRequired,
+  currentPathname: PropTypes.string,
+  filters: PropTypes.shape(),
+  onChipCountUpdate: PropTypes.func,
+  scrollTop: PropTypes.func,
+};
+
+FilterChips.defaultProps = {
+  currentPathname: '',
+  filters: null,
+  scrollTop: noop,
+  onChipCountUpdate: noop,
+};
 
 export default connect(FilterChips);

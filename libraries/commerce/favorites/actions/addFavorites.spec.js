@@ -22,6 +22,25 @@ jest.mock(
   )
 );
 
+// Mock the config object using class getters
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  get favoritesMode() { return { hasMultipleFavoritesLists: true }; },
+}));
+
+const mockState = {
+  favorites: {
+    lists: {
+      expires: 0,
+      lists: [{
+        id: 'DEFAULT',
+        name: 'Wish List',
+      }],
+    },
+  },
+};
+
+const mockedGetState = jest.fn(() => mockState);
+
 describe('Favorites - actions', () => {
   describe(SHOPGATE_USER_ADD_FAVORITES, () => {
     beforeEach(() => {
@@ -31,15 +50,15 @@ describe('Favorites - actions', () => {
     });
 
     it('should call the correct pipeline', async () => {
-      const result = await addFavorites('test-123')(jest.fn());
+      const result = await addFavorites('test-123')(jest.fn(), mockedGetState);
       expect(result.mockInstance.name).toBe(SHOPGATE_USER_ADD_FAVORITES);
     });
 
     it('should dispatch the correct action on pipeline success', async () => {
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
-      await addFavorites(productId)(mockedDispatch);
-      expect(mockedDispatch).toHaveBeenCalledWith(successAddFavorites(productId));
+      await addFavorites(productId)(mockedDispatch, mockedGetState);
+      expect(mockedDispatch).toHaveBeenCalledWith(successAddFavorites(productId, 'DEFAULT'));
     });
 
     it('should dispatch the correct action on pipeline failure', (done) => {
@@ -51,13 +70,13 @@ describe('Favorites - actions', () => {
 
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
-      addFavorites(productId)(mockedDispatch)
+      addFavorites(productId)(mockedDispatch, mockedGetState)
         .then(() => {
           done('resolved!');
         })
         .catch(() => {
           expect(mockedDispatch)
-            .toHaveBeenCalledWith(errorAddFavorites(productId, mockErrorResponse));
+            .toHaveBeenCalledWith(errorAddFavorites(productId, mockErrorResponse, 'DEFAULT'));
           done();
         });
     });

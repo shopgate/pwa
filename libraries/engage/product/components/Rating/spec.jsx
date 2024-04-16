@@ -34,7 +34,7 @@ describe('Rating (product header)', () => {
     });
     it('should render nothing when data is not available', () => {
       const component = getComponent(mockedStateWithoutReview);
-      expect(component.html()).toBe(null);
+      expect(component.html()).toBe('');
     });
   });
   describe('Scroll on click', () => {

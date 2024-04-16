@@ -20,22 +20,79 @@
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Benachrichtigungen"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktive Benachrichtigungen",
+      "past": "Vergangene Benachrichtigungen"
+    },
+    "empty_list_reminder": "Sie haben keine Benachrichtigungen konfiguriert",
+    "get_notified": "Benachrichtigen Sie mich, wenn der Artikel verfügbar ist",
+    "we_will_remind_you": "Sie werden benachrichtigt, wenn der Artikel wieder verfügbar ist",
+    "add_back_in_stock_success_modal": {
+      "title": "Benachrichtigung hinzugefügt!",
+      "message": "Wir senden Ihnen eine Push-Benachrichtigung, wenn das Produkt wieder verfügbar ist. Sie können diese Benachrichtigungen über das Menü verwalten."
+    },
+    "rationale": {
+      "message": "Bitte erlauben Sie Push-Benachrichtigungen im nächsten Schritt, damit wir Ihnen mitteilen können, wenn das Produkt wieder verfügbar ist.",
+      "confirm": "Benachrichtigungen erlauben"
+    }
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
-    "added": "Das Produkt wurde Zur Merkliste hinzugefügt",
+    "added": "Das Produkt wurde zur Merkliste hinzugefügt",
     "continue": "Weiter shoppen",
-    "empty": "Sie haben noch keine Artikel in der Merkliste",
+    "empty": "Sie haben noch keine Artikel auf der Merkliste",
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
     "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten.",
+    "error_general": "Die Merkliste konnte nicht gespeichert werden",
     "remove": "Von der Merkliste löschen",
     "removed": "Von Merkliste entfernt",
+    "add_list_modal": {
+      "title": "Neue Merkliste anlegen",
+      "dismiss": "Abbrechen",
+      "confirm": "Bestätigen",
+      "message": "Der Name Ihrer neuen Merkliste",
+      "label": "Name"
+    },
+    "rename_list_modal": {
+      "title": "Namen der Merkliste ändern",
+      "dismiss": "Abbrechen",
+      "confirm": "Bestätigen",
+      "message": "Der neue Name Ihrer Merkliste",
+      "label": "Name"
+    },
+    "delete_list_modal": {
+      "title": "Merkliste löschen",
+      "message": "Möchten Sie die Merkliste \"{name}\" wirklich löschen?"
+    },
+    "add_list": "Neue Liste anlegen",
+    "errors": {
+      "invalid_name": "Bitte geben Sie einen vollständigen Namen für Ihre Merkliste ein"
+    },
+    "rename_list": "Umbenennen",
+    "remove_list": "Löschen",
+    "add_to_list": "Zur Liste hinzufügen",
+    "remove_from_list": "Von Liste löschen",
+    "edit_lists": "Liste editieren",
+    "fo_method_chooser": {
+      "title": "Wählen Sie eine Bestellmethode aus"
+    },
+    "list_chooser": {
+      "title": "Wählen Sie eine Merkliste aus",
+      "add": "Hinzufügen",
+      "remove": "Löschen"
+    },
     "modal": {
       "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.",
       "confirm": "Varianten wählen"
-    }
+    },
+    "open_list": "Liste öffnen.",
+    "close_list": "Liste schließen.",
+    "load_more_button": "Weitere Artikel laden"
   },
   "filter": {
     "sort": {
@@ -120,6 +177,9 @@
     "sections": {
       "categories": "Kategorien",
       "products": "Produkte"
+    },
+    "showAllProducts": {
+      "label": "Alle Produkte anzeigen"
     }
   },
   "search": {
@@ -201,6 +261,7 @@
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr",
+    "back_in_stock": "Benachrichtigungen",
     "back": "Zurück zu {title}"
   },
   "reviews": {
@@ -237,9 +298,10 @@
   },
   "permissions": {
     "access_denied": {
-      "settings_button": "Zu den Einstellungen",
+      "settings_button": "Einstellungen öffnen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
-      "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
+      "push_message": "Sie haben Push-Benachrichtigungen für diese App deaktiviert. Bitte gehen Sie in die Einstellungen Ihres Gerätes, um sie zu aktivieren.",
+      "geolocation_message": "Wir benötigen Zugriff auf den Standort, um Filialen in der Nähe zu zeigen."
     }
   },
   "error": {
@@ -261,5 +323,11 @@
     "title": "App bewerten",
     "message": "Gefällt Ihnen unsere App? Wir freuen uns über eine Bewertung!",
     "rejectionApprovalMessage": "Möchten Sie uns Feedback geben? Das hilft uns die App weiter zu verbessern."
+  },
+  "pushOptInModal": {
+    "title": "Erhalten Sie exklusive Coupons und Angebote",
+    "buttonAllow": "Benachrichtigungen aktivieren",
+    "buttonDeny": "Ich möchte keine Benachrichtigungen",
+    "message": "Aktivieren Sie Benachrichtigungen, damit wir Ihnen Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können."
   }
 }

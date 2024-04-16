@@ -1,2 +1,1 @@
 export const FAVORITES_SHOW_TOAST_DELAY = 300;
-export const FAVORITES_SHOW_LIMIT = 10;

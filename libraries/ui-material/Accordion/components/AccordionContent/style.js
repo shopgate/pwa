@@ -8,4 +8,4 @@ export const content = css({
 export const contentInner = css({
   padding: '0 16px 16px',
   overflow: 'hidden',
-});
+}).toString();

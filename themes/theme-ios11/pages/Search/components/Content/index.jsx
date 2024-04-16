@@ -6,6 +6,7 @@ import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category';
 import { BackBar } from 'Components/AppBar/presets';
 import Bar from '../Bar';
 import Products from '../Products';
@@ -19,6 +20,11 @@ class SearchContent extends Component {
     searchPhrase: PropTypes.string.isRequired,
     showFilterBar: PropTypes.bool.isRequired,
     showNoResults: PropTypes.bool.isRequired,
+    pattern: PropTypes.string,
+  }
+
+  static defaultProps = {
+    pattern: null,
   }
 
   /**
@@ -38,14 +44,17 @@ class SearchContent extends Component {
    */
   render() {
     const {
-      searchPhrase, showFilterBar, showNoResults,
+      searchPhrase, showFilterBar, showNoResults, pattern,
     } = this.props;
 
     return (
       <RouteContext.Consumer>
         {({ state, query, id: routeId }) => (
           <Fragment>
-            <BackBar title={searchPhrase} shadow={!showFilterBar} />
+            <BackBar
+              title={pattern === CATEGORY_ALL_PATTERN ? state.categoryName : searchPhrase}
+              shadow={!showFilterBar}
+            />
 
             {showFilterBar && <Bar key="below" /> }
             <SurroundPortals portalName={VIEW_CONTENT}>
@@ -60,7 +69,14 @@ class SearchContent extends Component {
                 <NoResults
                   headlineText="search.no_result.heading"
                   bodyText="search.no_result.body"
-                  searchPhrase={searchPhrase}
+                  {...pattern !== CATEGORY_ALL_PATTERN ? {
+                    headlineText: 'search.no_result.heading',
+                    bodyText: 'search.no_result.body',
+                    searchPhrase,
+                  } : {
+                    headlineText: 'category.no_result.heading',
+                    bodyText: 'category.no_result.body',
+                  }}
                 />
               </SurroundPortals>
               )}

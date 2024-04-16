@@ -2,107 +2,129 @@
 
 exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={null}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 />
 `;
 
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
+  chevronPosition="right"
+  className={null}
+  contentClassName={null}
   handleLabel={null}
+  openWithChevron={false}
   renderLabel={[Function]}
+  role="button"
+  startOpened={false}
   testId="Some Thing"
 >
-  <AccordionContainer>
-    <div
-      aria-controls="Some-Thing-content"
-      aria-expanded={false}
-      aria-label={null}
-      className="css-17o6uz7 ui-material__accordion"
-      data-test-id="Some Thing"
-      key="accordion-toggle"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      role="button"
-      tabIndex="0"
-    >
-      <div />
-      <div
-        className={
-          Object {
-            "data-css-1j1ou1w": "",
-          }
-        }
-      >
-        <Chevron
-          className="css-paji06"
-        >
-          <Icon
-            className="css-paji06"
-            color={null}
-            content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
-            size="inherit"
-            viewBox="0 0 24 24"
-          >
-            <svg
-              className="css-yys9hb css-paji06 common__icon"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
-                }
-              }
-              style={
-                Object {
-                  "fill": null,
-                  "fontSize": "inherit",
-                }
-              }
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            />
-          </Icon>
-        </Chevron>
-      </div>
-    </div>
-    <AccordionContent
-      id="Some-Thing-content"
-      key="Some-Thing-content"
+  <div
+    className="ui-material__accordion-container"
+  >
+    <AccordionContainer
       open={false}
     >
       <div
-        aria-hidden={true}
-        className={
-          Object {
-            "data-css-apm51k": "",
-          }
-        }
-        id="Some-Thing-content"
-        style={
-          Object {
-            "height": 0,
-          }
-        }
+        aria-controls="Some-Thing-content"
+        aria-expanded={false}
+        aria-label={null}
+        className="css-1m4mdin"
+        data-test-id="Some Thing"
+        key="accordion-toggle"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex="0"
       >
+        <div />
         <div
+          aria-label="favorites.open_list"
           className={
             Object {
-              "data-css-yh2lvw": "",
+              "data-css-1ci1bnt": "",
             }
           }
         >
-          Some content.
+          <Chevron
+            className="css-paji06"
+          >
+            <Icon
+              className="css-paji06"
+              color={null}
+              content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+              size="inherit"
+              viewBox="0 0 24 24"
+            >
+              <svg
+                className="css-yys9hb css-paji06 common__icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+                  }
+                }
+                style={
+                  Object {
+                    "fill": null,
+                    "fontSize": "inherit",
+                  }
+                }
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              />
+            </Icon>
+          </Chevron>
         </div>
       </div>
-    </AccordionContent>
-  </AccordionContainer>
+      <AccordionContent
+        className={null}
+        id="Some-Thing-content"
+        key="Some-Thing-content"
+        open={false}
+      >
+        <div
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-apm51k": "",
+            }
+          }
+          id="Some-Thing-content"
+          style={
+            Object {
+              "height": 0,
+            }
+          }
+        >
+          <div
+            className="css-yh2lvw"
+          >
+            Some content.
+          </div>
+        </div>
+      </AccordionContent>
+    </AccordionContainer>
+  </div>
 </Accordion>
 `;

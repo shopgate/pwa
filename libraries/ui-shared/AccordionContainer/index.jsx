@@ -7,10 +7,22 @@ import PropTypes from 'prop-types';
 class AccordionContainer extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
+    open: PropTypes.bool,
   }
 
-  state = {
+  static defaultProps = {
     open: false,
+  }
+
+  /**
+   * Init
+   * @param {Object} props Props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: props.open,
+    };
   }
 
   /**

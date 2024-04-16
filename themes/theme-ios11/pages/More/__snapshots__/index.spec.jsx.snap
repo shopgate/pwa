@@ -4,11 +4,11 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
 <Provider
   store={
     Object {
+      "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
-      Symbol(observable): [Function],
     }
   }
 >
@@ -811,11 +811,11 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
 <Provider
   store={
     Object {
+      "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
-      Symbol(observable): [Function],
     }
   }
 >

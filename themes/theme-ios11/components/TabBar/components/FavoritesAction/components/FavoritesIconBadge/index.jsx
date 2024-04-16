@@ -49,6 +49,7 @@ export class FavoritesIconBadge extends Component {
    */
   render() {
     const { showCounter } = this.props.widgetSettings;
+
     if (this.props.favoritesCount === 0) {
       return null;
     }

@@ -20,7 +20,25 @@
     "reviews": "Avaliações",
     "browse": "Navegar",
     "favorites": "Favoritos",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Notificações"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Notificações activas",
+      "past": "Notificações anteriores"
+    },
+    "empty_list_reminder": "Não tem notificações configuradas",
+    "get_notified": "Notifique-me quando o item estiver disponível",
+    "we_will_remind_you": "Será notificado quando o artigo estiver novamente disponível",
+    "add_back_in_stock_success_modal": {
+      "title": "Notificação adicionada!",
+      "message": "Enviar-lhe-emos uma notificação push quando o produto estiver novamente disponível. Pode gerir estas notificações através do menu."
+    },
+    "rationale": {
+      "message": "Permita notificações push no passo seguinte para que possamos informá-lo quando o produto estiver novamente disponível.",
+      "confirm": "Permitir notificações"
+    }
   },
   "favorites": {
     "add": "Adicionar aos favoritos",
@@ -30,12 +48,51 @@
     "error_add": "O produto não pode ser adicionado aos favoritos",
     "error_remove": "O produto não pode ser removido dos favoritos",
     "error_limit": "Você excedeu o número de produtos permitidos nos favoritos.",
+    "error_general": "A lista de desejos não pôde ser guardada",
     "remove": "Remover de favoritos",
     "removed": "Removido dos favoritos",
+    "add_list_modal": {
+      "title": "Acrescentar uma nova Lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirme",
+      "message": "Introduza o nome para a sua nova lista de favoritos",
+      "label": "Nome"
+    },
+    "rename_list_modal": {
+      "title": "Renomear Lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirme",
+      "message": "Introduza o novo nome para a sua lista de favoritos",
+      "label": "Nome"
+    },
+    "delete_list_modal": {
+      "title": "Eliminar a lista de favoritos",
+      "message": "Quer mesmo apagar a lista de favoritos de \"{name}\"?"
+    },
+    "add_list": "Adicionar Nova Lista",
+    "errors": {
+      "invalid_name": "Por favor, introduza um nome válido para a sua lista de favoritos"
+    },
+    "rename_list": "Renomear",
+    "remove_list": "Remover",
+    "add_to_list": "Adicionar à lista",
+    "remove_from_list": "Remover da lista",
+    "edit_lists": "Editar listas",
+    "fo_method_chooser": {
+      "title": "Escolha um método"
+    },
+    "list_chooser": {
+      "title": "Escolha uma lista de favoritos",
+      "add": "Acrescentar",
+      "remove": "Remover"
+    },
     "modal": {
       "message": "Para adicionar este produto ao seu carrinho, por favor selecione as variantes.",
       "confirm": "Selecionar variantes"
-    }
+    },
+    "open_list": "Lista aberta.",
+    "close_list": "Fechar lista.",
+    "load_more_button": "Załaduj inne artykuły"
   },
   "filter": {
     "sort": {
@@ -120,6 +177,9 @@
       "features": "Características",
       "pricing": "Preços",
       "properties": "Propriedades"
+    },
+    "showAllProducts": {
+      "label": "Mostrar todos os produtos"
     }
   },
   "search": {
@@ -184,6 +244,7 @@
     "categories": "Categorias",
     "my_orders": "Meus Pedidos",
     "cart": "Carrinho de Compras",
+    "back_in_stock": "Lembrete de regresso ao stock",
     "shipping": "Métodos de Envio",
     "about": "Contact",
     "contact": "Contato",
@@ -233,6 +294,7 @@
     "access_denied": {
       "settings_button": "Acesse configurações",
       "camera_message": "Esta funcionalidade requer acesso à sua câmara. Por favor autorize o acesso nas configurações.",
+      "push_message": "Notificações anterioresEsta funcionalidade requer acesso a notificações push. Autorize o acesso nas definições.",
       "geolocation_message": "Para encontrar lojas perto de você, acesse Configurações e ative as permissões de localização."
     }
   },
@@ -255,5 +317,11 @@
     "title": "Avaliação da aplicação",
     "message": "Gosta da nossa aplicação? Teremos todo o prazer em receber uma classificação!",
     "rejectionApprovalMessage": "Gostaria de nos dar o seu feedback? Isto irá ajudar-nos a melhorar ainda mais a aplicação."
+  },
+  "pushOptInModal": {
+    "title": "Receber cupões e ofertas exclusivas",
+    "buttonAllow": "Ativar as notificações",
+    "buttonDeny": "Não quero notificações",
+    "message": "Ativar as notificações para que possamos enviar-lhe notificações push sobre novas ofertas, cupões exclusivos e muito mais."
   }
 }

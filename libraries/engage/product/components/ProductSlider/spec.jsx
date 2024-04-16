@@ -15,6 +15,9 @@ jest.mock('@shopgate/engage/components', () => {
     Swiper,
   };
 });
+jest.mock('@shopgate/engage/product', () => ({
+  ProductListTypeProvider: ({ children }) => children,
+}));
 jest.mock('@shopgate/pwa-common/context', () => {
   const ProductCard = props => <ProductCard {...props} />;
   return {

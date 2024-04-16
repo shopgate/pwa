@@ -20,22 +20,79 @@
     "reviews": "Reviews",
     "browse": "Browse",
     "favorites": "Favorites",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Notifications"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Active notifications",
+      "past": "Past notifications"
+    },
+    "empty_list_reminder": "You don't have any notifications configured",
+    "get_notified": "Notify me on new stock",
+    "we_will_remind_you": "We will notify you when the product is back in stock",
+    "add_back_in_stock_success_modal": {
+      "title": "Back-In-Stock notification added!",
+      "message": "We will send you a push notification when the product is back in stock. You can manage your notifications in the menu."
+    },
+    "rationale": {
+      "message": "Please allow push notifications in the next step, so that we can send you a notification when the product is back in stock.",
+      "confirm": "Allow push notifications"
+    }
   },
   "favorites": {
-    "add": "Add to favorites",
-    "added": "Product has been added to favorites",
+    "add": "Add to favorites list",
+    "added": "Product has been added to favorites list",
     "continue": "Continue shopping",
-    "empty": "You don't have any favorites",
-    "error_add": "Product could not be added to favorites",
-    "error_remove": "Product could not be removed from favorites",
-    "error_limit": "You have exceeded the number of products allowed in the favorites.",
-    "remove": "Remove from favorites",
-    "removed": "Removed from favorites",
+    "empty": "You don't have any saved products",
+    "error_add": "Product could not be added to favorites list",
+    "error_remove": "Product could not be removed from favorites list",
+    "error_limit": "You have exceeded the number of products allowed in the favorites list.",
+    "error_general": "The favorites list could not be saved",
+    "remove": "Remove from favorites list",
+    "removed": "Removed from favorites list",
+    "add_list_modal": {
+      "title": "Add a new List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the name for your new favorites list",
+      "label": "Name"
+    },
+    "rename_list_modal": {
+      "title": "Renaming List",
+      "dismiss": "Cancel",
+      "confirm": "Confirm",
+      "message": "Enter the new name for your favorites list",
+      "label": "Name"
+    },
+    "delete_list_modal": {
+      "title": "Delete Favorites List",
+      "message": "Do you really want to delete the \"{name}\" favorites list?"
+    },
+    "add_list": "Add New List",
+    "errors": {
+      "invalid_name": "Please enter a valid name for your favorites list"
+    },
+    "rename_list": "Rename",
+    "remove_list": "Remove",
+    "add_to_list": "Add to list",
+    "remove_from_list": "Remove from list",
+    "edit_lists": "Edit lists",
+    "fo_method_chooser": {
+      "title": "Choose a Method"
+    },
+    "list_chooser": {
+      "title": "Choose a Favorites List",
+      "add": "Add",
+      "remove": "Remove"
+    },
     "modal": {
       "message": "To add this product to your cart, please select the variants.",
       "confirm": "Select variants"
-    }
+    },
+    "open_list": "Open list.",
+    "close_list": "Close list.",
+    "load_more_button": "Load more products"
   },
   "filter": {
     "sort": {
@@ -120,6 +177,9 @@
     "sections": {
       "categories": "Categories",
       "products": "Products"
+    },
+    "showAllProducts": {
+      "label": "Show all products"
     }
   },
   "search": {
@@ -200,6 +260,7 @@
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More",
+    "back_in_stock": "Notifications",
     "back": "Back to {title}"
   },
   "reviews": {
@@ -236,8 +297,9 @@
   },
   "permissions": {
     "access_denied": {
-      "settings_button": "Go to settings",
+      "settings_button": "Open settings",
       "camera_message": "This feature requires access to your camera. Please allow access in the settings.",
+      "push_message": "This feature requires access to push notifications. Please allow access in the settings.",
       "geolocation_message": "To find stores near you, please go to Settings and enable location permissions."
     }
   },
@@ -260,5 +322,11 @@
     "title": "App rating",
     "message": "Do you like our app? We would be happy to receive a rating!",
     "rejectionApprovalMessage": "Would you like to give us feedback? This helps us to improve the app further."
+  },
+  "pushOptInModal": {
+    "title": "Receive exklusive coupons and offers",
+    "buttonAllow": "Enable notifications",
+    "buttonDeny": "I don't want notifications",
+    "message": "Activate notifications so that we can send you push notifications about new offers, exclusive vouchers and more."
   }
 }

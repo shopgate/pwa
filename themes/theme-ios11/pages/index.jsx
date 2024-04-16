@@ -16,13 +16,19 @@ import {
   LOGIN_PATH,
   PAGE_PATTERN,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import {
+  CATEGORY_PATTERN,
+  CATEGORY_ALL_PATTERN,
+  CATEGORY_FILTER_PATTERN,
+  CATEGORY_ALL_FILTER_PATTERN,
+} from '@shopgate/pwa-common-commerce/category/constants';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
+import { FavoritesListChooser } from '@shopgate/engage/favorites';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -37,6 +43,8 @@ import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -60,7 +68,9 @@ const Pages = ({ store }) => (
               <Portal name={APP_GLOBALS} />
               <Viewport>
                 <ModalContainer component={Dialog} />
+                <PushOptInModal />
                 <Toaster render={props => <SnackBarContainer {...props} />} />
+                <FavoritesListChooser />
                 <Router history={history}>
                   <Route
                     pattern={INDEX_PATH}
@@ -70,6 +80,8 @@ const Pages = ({ store }) => (
                   <Route pattern={PAGE_PATTERN} component={routes.Page} />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                  <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
+                  <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
                   <Route
                     pattern={ITEM_PATTERN}
                     component={routes.Product}
@@ -94,13 +106,13 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[MORE_PATH]}
                   />
                   {
-                    appConfig.hasFavorites
-                    && <Route
-                      pattern={FAVORITES_PATH}
-                      component={routes.Favorites}
-                      transform={routesTransforms[FAVORITES_PATH]}
-                    />
-                  }
+                      appConfig.hasFavorites
+                      && <Route
+                        pattern={FAVORITES_PATH}
+                        component={routes.Favorites}
+                        transform={routesTransforms[FAVORITES_PATH]}
+                      />
+                    }
                   <Route pattern={LOGIN_PATH} component={routes.Login} />
                   <Route
                     pattern={SEARCH_PATTERN}
@@ -114,6 +126,10 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[SEARCH_FILTER_PATTERN]}
                   />
                   <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                  <Route
+                    pattern={BACK_IN_STOCK_PATTERN}
+                    component={routes.BackInStock}
+                  />
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>
               </Viewport>
@@ -124,7 +140,6 @@ const Pages = ({ store }) => (
     </NavigationHandler>
   </App>
 );
-
 Pages.propTypes = {
   store: PropTypes.shape().isRequired,
 };

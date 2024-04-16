@@ -3,6 +3,10 @@ import { mount } from 'enzyme';
 import Accordion from './index';
 
 jest.unmock('@shopgate/pwa-ui-shared');
+jest.mock('react-spring', () => ({
+  ...jest.requireActual('react-spring'),
+  useSpring: jest.fn().mockReturnValue({ hook: 'useSpring return value' }),
+}));
 
 describe('<Accordion />', () => {
   beforeEach(() => {

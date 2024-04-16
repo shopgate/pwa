@@ -4,11 +4,11 @@ exports[`<RootCategories /> should render category list with root categories fro
 <Provider
   store={
     Object {
+      "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
-      Symbol(observable): [Function],
     }
   }
 >
@@ -162,7 +162,9 @@ exports[`<RootCategories /> should render category list with root categories fro
                   },
                 ]
               }
+              parentCategory={null}
               prerender={0}
+              showAllProducts={false}
             >
               <SheetList
                 className="css-1tgouoh engage__category__category-list"
@@ -180,7 +182,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     <ListItem
                       className="css-10041rq css-171mywc"
                       isSelected={false}
-                      key="child-0/.$123-123"
+                      key="child-1/.1:$123-123"
                       role={null}
                       tabIndex={0}
                     >
@@ -343,7 +345,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     <ListItem
                       className="css-10041rq css-171mywc"
                       isSelected={false}
-                      key="child-1/.$456-123"
+                      key="child-2/.1:$456-123"
                       role={null}
                       tabIndex={0}
                     >
@@ -506,7 +508,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     <ListItem
                       className="css-10041rq css-171mywc"
                       isSelected={false}
-                      key="child-2/.$789-123"
+                      key="child-3/.1:$789-123"
                       role={null}
                       tabIndex={0}
                     >
@@ -669,7 +671,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     <ListItem
                       className="css-10041rq css-171mywc"
                       isSelected={false}
-                      key="child-3/.$789-456"
+                      key="child-4/.1:$789-456"
                       role={null}
                       tabIndex={0}
                     >

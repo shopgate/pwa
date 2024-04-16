@@ -20,7 +20,25 @@
     "reviews": "Reviews",
     "browse": "Bladeren",
     "favorites": "Favorieten",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Meldingen"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Actieve meldingen",
+      "past": "Afgelopen meldingen"
+    },
+    "empty_list_reminder": "U hebt geen meldingen geconfigureerd",
+    "get_notified": "Stel me op de hoogte van nieuwe voorraad",
+    "we_will_remind_you": "We zullen u op de hoogte stellen wanneer het product weer op voorraad is",
+    "add_back_in_stock_success_modal": {
+      "title": "Melding toegevoegd!",
+      "message": "We sturen je een pushmelding als het product weer op voorraad is. Je kunt je meldingen beheren in het menu."
+    },
+    "rationale": {
+      "message": "Sta pushmeldingen toe in de volgende stap, zodat we je een melding kunnen sturen als het product weer op voorraad is.",
+      "confirm": "Pushmeldingen toestaan"
+    }
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
@@ -30,12 +48,51 @@
     "error_add": "Product kon niet aan favorieten worden toegevoegd",
     "error_remove": "Product kon niet van favorieten verwijderd worden",
     "error_limit": "U hebt het aantal producten dat in de favorieten toegestaan zijn, overschreden.",
+    "error_general": "De verlanglijst kon niet worden opgeslagen",
     "remove": "Verwijder van favorieten",
     "removed": "Verwijderd van favorieten",
+    "add_list_modal": {
+      "title": "Een nieuwe lijst toevoegen",
+      "dismiss": "Annuleren",
+      "confirm": "Bevestig",
+      "message": "Voer de naam in voor uw nieuwe favorietenlijst",
+      "label": "Naam"
+    },
+    "rename_list_modal": {
+      "title": "Lijst hernoemen",
+      "dismiss": "Annuleren",
+      "confirm": "Bevestig",
+      "message": "Voer de nieuwe naam voor uw favorietenlijst in",
+      "label": "Naam"
+    },
+    "delete_list_modal": {
+      "title": "Favorietenlijst verwijderen",
+      "message": "MWil je echt de \"{name}\" favorietenlijst verwijderen?"
+    },
+    "add_list": "Nieuwe lijst toevoegen",
+    "errors": {
+      "invalid_name": "Voer een geldige naam in voor uw favorietenlijst"
+    },
+    "rename_list": "Hernoemen",
+    "remove_list": "Verwijder",
+    "add_to_list": "Toevoegen aan lijst",
+    "remove_from_list": "Uit de lijst verwijderen",
+    "edit_lists": "Lijsten bewerken",
+    "fo_method_chooser": {
+      "title": "Kies een methode"
+    },
+    "list_chooser": {
+      "title": "Kies een favorietenlijst",
+      "add": "Toevoegen",
+      "remove": "Verwijder"
+    },
     "modal": {
       "message": "Om dit product aan uw winkelwagen toe te voegen, selecteer alstublieft de varianten.",
       "confirm": "Selecteer varianten"
-    }
+    },
+    "open_list": "Open lijst.",
+    "close_list": "Sluit lijst.",
+    "load_more_button": "Andere artikelen laden"
   },
   "filter": {
     "sort": {
@@ -120,6 +177,9 @@
     "sections": {
       "categories": "Categorieën",
       "products": "Producten"
+    },
+    "showAllProducts": {
+      "label": "Toon alle producten"
     }
   },
   "search": {
@@ -184,6 +244,7 @@
     "categories": "Categorieën",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
+    "back_in_stock": "Terug in voorraad herinnering",
     "shipping": "Verzendmethoden",
     "about": "Impressum",
     "contact": "Contact",
@@ -233,6 +294,7 @@
     "access_denied": {
       "settings_button": "Ga naar instellingen",
       "camera_message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
+      "push_message": "Deze functie vereist toegang tot pushmeldingen. Sta toegang toe in de instellingen.",
       "geolocation_message": "Ga naar Instellingen en schakel locatiemachtigingen in om winkels bij u in de buurt te vinden."
     }
   },
@@ -255,5 +317,11 @@
     "title": "Beoordeel app",
     "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
     "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
+  },
+  "pushOptInModal": {
+    "title": "Exclusieve coupons en aanbiedingen ontvangen",
+    "buttonAllow": "Meldingen inschakelen",
+    "buttonDeny": "Ik wil geen meldingen",
+    "message": "Activeer meldingen zodat we je pushberichten kunnen sturen over nieuwe aanbiedingen, exclusieve vouchers en meer."
   }
 }

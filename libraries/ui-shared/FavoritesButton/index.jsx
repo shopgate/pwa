@@ -83,7 +83,6 @@ class FavoritesButton extends Component {
   handleClick = (event) => {
     event.preventDefault();
     event.stopPropagation();
-
     if (this.props.once && this.clickedOnce) {
       return;
     }

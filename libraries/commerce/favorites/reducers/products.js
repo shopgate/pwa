@@ -1,23 +1,26 @@
 import { uniq } from 'lodash';
-import { SUCCESS_LOGOUT } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
-  ADD_PRODUCT_TO_FAVORITES,
-  ERROR_ADD_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
-  FAVORITES_LIFETIME,
-  RECEIVE_FAVORITES_IDS,
-  REMOVE_PRODUCT_FROM_FAVORITES,
-  REQUEST_FAVORITES_IDS,
+  REQUEST_ADD_FAVORITES,
   SUCCESS_ADD_FAVORITES,
+  CANCEL_REQUEST_SYNC_FAVORITES,
+  ERROR_ADD_FAVORITES,
+  REQUEST_REMOVE_FAVORITES,
   SUCCESS_REMOVE_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
+  REQUEST_FAVORITES,
+  ERROR_FETCH_FAVORITES,
+  SUCCESS_REMOVE_FAVORITES_LIST,
+  SUCCESS_ADD_FAVORITES_LIST,
+  RECEIVE_FAVORITES,
+  FAVORITES_LIFETIME,
+  REQUEST_FAVORITES_IDS,
+  RECEIVE_FAVORITES_IDS,
   ERROR_FAVORITES_IDS,
+  FLUSH_FAVORITES,
 } from '../constants';
 
 const defaultState = {
-  expires: 0,
-  ids: [],
-  originalIds: [],
-  ready: false,
+  byList: {},
 };
 
 /**
@@ -28,87 +31,306 @@ const defaultState = {
  */
 const products = (state = defaultState, action) => {
   switch (action.type) {
-    case ADD_PRODUCT_TO_FAVORITES: {
-      const adds = [].concat(action.productId);
+    case FLUSH_FAVORITES: {
       return {
         ...state,
-        ids: Array.from(new Set([...adds, ...state.ids])).filter(Boolean),
-      };
-    }
-    case REMOVE_PRODUCT_FROM_FAVORITES: {
-      const removes = [].concat(action.productId);
-      return {
-        ...state,
-        ids: state.ids.filter(id => !removes.includes(id)),
+        byList: {},
       };
     }
 
-    // Add succeeded to original storage
-    case SUCCESS_ADD_FAVORITES: {
-      const added = [].concat(action.productId);
+    // Handle an new favorites request.
+    case REQUEST_FAVORITES: {
+      const existingList = state.byList[action.listId];
+
+      if (!existingList) {
+        return {
+          ...state,
+          byList: {
+            ...state.byList,
+            [action.listId]: {
+              isFetching: true,
+              lastChange: 0,
+              lastFetch: 0,
+              expires: 0,
+              ids: [],
+              syncCount: 0,
+              ready: false,
+            },
+          },
+        };
+      }
+
       return {
         ...state,
-        originalIds: Array.from(new Set([...added, ...state.originalIds])),
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...existingList,
+            isFetching: true,
+            expires: 0,
+            ready: false,
+          },
+        },
       };
     }
 
-    // Remove succeeded from original storage
+    // Handle incoming favorite products.
+    case RECEIVE_FAVORITES: {
+      const list = state.byList[action.listId];
+      const isSynching = list.syncCount > 0;
+      const isOngoing = state.lastChange > action.requestTimestamp;
+
+      /**
+       * Note: When favorites are received, an add or remove request can be in progress. In this
+       *       case only fetching state will be updated and the received data will be discarded.
+       *       A new fetch request will be queued as soon as the sync is done, which will recover
+       *       discarded data.
+      */
+      if (list.ready && (isSynching || isOngoing)) {
+        return {
+          ...state,
+          byList: {
+            ...state.byList,
+            [action.listId]: {
+              ...list,
+              isFetching: false,
+            },
+          },
+        };
+      }
+
+      // `syncCount` stays untouched because this is not considered to be a sync.
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: true,
+            expires: Date.now() + FAVORITES_LIFETIME,
+            ids: action.products.map(product => product.id),
+            ready: true,
+          },
+        },
+      };
+    }
+
+    // Handle failed fetching
+    case ERROR_FETCH_FAVORITES: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: false,
+            expires: 0,
+            ready: true,
+          },
+        },
+      };
+      // `syncCount` stays untouched because this is not considered to be a sync.
+    }
+
+    // Handle adding favorite list products.
+    case REQUEST_ADD_FAVORITES: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            ids: uniq([
+              ...list.ids,
+              action.productId,
+            ]),
+            lastChange: Date.now(),
+            syncCount: list.syncCount + 1,
+          },
+        },
+      };
+    }
+
+    // Handle removing favorite list products.
+    case REQUEST_REMOVE_FAVORITES: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            ids: list.ids.filter(id => id !== action.productId),
+            lastChange: Date.now(),
+            syncCount: list.syncCount + 1,
+          },
+        },
+      };
+    }
+
+    // Handle cancellation of synchronization.
+    // Sync count needs to be updated, when an add or a remove favorites action is cancelled
+    // This recovers from invalid sync states when a backend call is detected to be redundant
+    case CANCEL_REQUEST_SYNC_FAVORITES: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            syncCount: list.syncCount + action.count,
+          },
+        },
+      };
+    }
+
+    // Handle success of adding favorite list products.
+    case SUCCESS_ADD_FAVORITES:
     case SUCCESS_REMOVE_FAVORITES: {
-      const removed = [].concat(action.productId);
+      const list = state.byList[action.listId];
       return {
         ...state,
-        originalIds: state.originalIds.filter(id => !removed.includes(id))
-        ,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            lastChange: Date.now(),
+            syncCount: list.syncCount - 1,
+          },
+        },
       };
     }
 
+    // Handle deletion failure by adding the product back in to the list.
+    case ERROR_REMOVE_FAVORITES: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            ids: uniq([...state.ids, action.productId]),
+            lastChange: Date.now(),
+            syncCount: list.syncCount - 1,
+          },
+        },
+      };
+    }
+
+    // Handle adding failure by removing the product from the list.
     case ERROR_ADD_FAVORITES: {
-      // Clean up by removing the previously added product id
-      const added = [].concat(action.productId);
+      const list = state.byList[action.listId];
       return {
         ...state,
-        ids: state.ids.filter(id => !added.includes(id)),
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            ids: list.ids.filter(id => id !== action.productId),
+            lastChange: Date.now(),
+            syncCount: list.syncCount - 1,
+          },
+        },
       };
     }
 
-    case ERROR_REMOVE_FAVORITES:
-      // Clean up by adding the previously removed product id back in
+    // Handle cleanup after deletion of a list.
+    case SUCCESS_REMOVE_FAVORITES_LIST: {
+      const { [action.listId]: removedListId, ...newByList } = state.byList;
       return {
         ...state,
-        ids: uniq([
-          ...[].concat(action.productId),
-          ...state.ids,
-        ]),
+        byList: newByList,
       };
+    }
 
-    case REQUEST_FAVORITES_IDS:
+    // Handle adding new lists.
+    case SUCCESS_ADD_FAVORITES_LIST: {
       return {
         ...state,
-        isFetching: true,
-        ids: state.ids,
-        expires: 0,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            isFetching: true,
+            lastChange: 0,
+            lastFetch: 0,
+            expires: 0,
+            ids: [],
+            syncCount: 0,
+            ready: true,
+          },
+        },
       };
+    }
 
-    case RECEIVE_FAVORITES_IDS:
-      return {
-        ...state,
-        isFetching: false,
-        expires: Date.now() + FAVORITES_LIFETIME,
-        ids: action.productIds,
-        originalIds: action.productIds,
-        ready: true,
-      };
+    case REQUEST_FAVORITES_IDS: {
+      const list = state.byList[action.listId];
+      if (!list) {
+        return {
+          ...state,
+          byList: {
+            ...state.byList,
+            [action.listId]: {
+              isFetching: true,
+              lastChange: 0,
+              lastFetch: 0,
+              expires: 0,
+              ids: [],
+              syncCount: 0,
+            },
+          },
+        };
+      }
 
-    case ERROR_FAVORITES_IDS:
       return {
         ...state,
-        isFetching: false,
-        ids: state.ids,
-        expires: 0,
-        ready: false,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: true,
+            expires: 0,
+          },
+        },
       };
-    case SUCCESS_LOGOUT:
-      return defaultState;
+    }
+
+    case RECEIVE_FAVORITES_IDS: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: false,
+            expires: Date.now() + FAVORITES_LIFETIME,
+            ids: action.productIds,
+            ready: true,
+          },
+        },
+      };
+    }
+
+    case ERROR_FAVORITES_IDS: {
+      const list = state.byList[action.listId];
+      return {
+        ...state,
+        byList: {
+          ...state.byList,
+          [action.listId]: {
+            ...list,
+            isFetching: false,
+            expires: 0,
+            ids: list.ids,
+            ready: false,
+          },
+        },
+      };
+    }
 
     default:
       return state;

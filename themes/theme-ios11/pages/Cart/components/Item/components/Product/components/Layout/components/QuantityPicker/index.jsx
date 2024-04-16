@@ -205,6 +205,7 @@ class QuantityPicker extends Component {
         <input
           ref={this.setRef}
           type="number"
+          pattern="[0-9]*"
           className={style}
           value={this.state.quantity}
           onChange={this.handleInputChange}

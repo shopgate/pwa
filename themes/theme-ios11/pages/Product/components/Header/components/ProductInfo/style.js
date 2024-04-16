@@ -10,6 +10,12 @@ export const productInfo = css({
   },
 }).toString();
 
+export const backInStockButton = css({
+  ':not(:empty)': {
+    marginTop: `${variables.gap.small}px`,
+  },
+}).toString();
+
 export const priceContainer = css({
   textAlign: 'right',
   marginLeft: variables.gap.big,

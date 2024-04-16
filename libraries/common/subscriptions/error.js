@@ -17,6 +17,7 @@ import {
   ETIMEOUT,
   ENETUNREACH,
   EUNKNOWN,
+  EFAVORITE,
 } from '@shopgate/pwa-core';
 import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
@@ -32,7 +33,7 @@ import showModal from '../actions/modal/showModal';
 import { getUserData } from '../selectors/user';
 import { userDidUpdate$ } from '../streams/user';
 import { clientInformationDidUpdate$ } from '../streams/client';
-import { appWillStart$, appDidStart$ } from '../streams/app';
+import { appWillInit$, appWillStart$, appDidStart$ } from '../streams/app';
 import { appError$, pipelineError$ } from '../streams/error';
 import { getRouterStack } from '../selectors/router';
 import { MODAL_PIPELINE_ERROR } from '../constants/ModalTypes';
@@ -57,7 +58,11 @@ export default (subscribe) => {
     }).setMessage({
       code: ENETUNREACH,
       message: 'modal.body_error',
-    });
+    })
+      .setMessage({
+        code: EFAVORITE,
+        message: 'favorites.error_general',
+      });
   });
 
   /** Show a message to the user in case of pipeline error */
@@ -138,7 +143,7 @@ export default (subscribe) => {
     trackedSeverities = trackedSeverities.slice(0, minSeverityIndex + 1);
   }
 
-  subscribe(appWillStart$, ({ getState }) => {
+  subscribe(appWillInit$, ({ getState }) => {
     init({
       dsn: 'https://1a444b262ac6405594ab33fb0102b377@sentry.io/1398210',
       environment: env,

@@ -82,6 +82,7 @@
     "@babel/plugin-proposal-export-default-from": "^7.5.2",
     "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-spread": "^7.2.2",
     "@babel/preset-env": "^7.5.5",
@@ -95,5 +96,8 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "compare-versions": "^3.4.0",
     "react-hot-loader": "~4.12.18"
+  },
+  "resolutions": {
+    "scheduler": "0.15.0"
   }
 }

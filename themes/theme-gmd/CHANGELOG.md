@@ -1,5 +1,46 @@
 # Changelog
 
+## [v6.22.0](https://github.com/shopgate/pwa/compare/v6.21.0...v6.22.0) (2024-04-10)
+
+#### :rocket: Enhancement
+* [#1214](https://github.com/shopgate/pwa/pull/1214) Add "show all products" button to category lists ([@Phmank](https://github.com/Phmank))
+* [#1228](https://github.com/shopgate/pwa/pull/1228) Add config to change the portal position of the Delete Account Button ([@Phmank](https://github.com/Phmank))
+* [#1219](https://github.com/shopgate/pwa/pull/1219) Implemented improved push notification opt-in mechanism ([@fkloes](https://github.com/fkloes))
+* [#1217](https://github.com/shopgate/pwa/pull/1217) Implemented Back-In-Stock reminder ([@fkloes](https://github.com/fkloes))
+
+
+## [v6.21.0](https://github.com/shopgate/pwa/compare/v6.20.1...v6.21.0) (2024-02-01)
+
+#### :rocket: Enhancement
+* [#1208](https://github.com/shopgate/pwa/pull/1208) Implemented overwrite for window.open() method and extended redirect collection system ([@fkloes](https://github.com/fkloes))
+* [#1204](https://github.com/shopgate/pwa/pull/1204) Introduced new contexts around product lists to enable easy identification of product list types from child components ([@fkloes](https://github.com/fkloes))
+* [#1186](https://github.com/shopgate/pwa/pull/1186) Added configurable info text block to reviews list ([@fkloes](https://github.com/fkloes))
+
+
+## [v6.20.1](https://github.com/shopgate/pwa/compare/v6.20.0...v6.20.1) (2023-10-26)
+
+#### :rocket: Enhancement
+* [#1201](https://github.com/shopgate/pwa/pull/1201) CURB-3543 Improvements for fashion theme ([@fkloes](https://github.com/fkloes))
+
+
+## [v6.20.0](https://github.com/shopgate/pwa/compare/v6.19.7...v6.20.0) (2023-05-03)
+
+#### :rocket: Enhancement
+* [#1163](https://github.com/shopgate/pwa/pull/1163) added the option to use multiple favorites lists ([@ortmann64](https://github.com/ortmann64))
+
+#### :house: Internal
+* [#1187](https://github.com/shopgate/pwa/pull/1187) Implemented backwards compatibility to older favorites extension ([@fkloes](https://github.com/fkloes))
+
+
+## [v6.19.7](https://github.com/shopgate/pwa/compare/v6.19.6...v6.19.7) (2023-04-27)
+
+#### :rocket: Enhancement
+* [#1141](https://github.com/shopgate/pwa/pull/1141) Move portal children in own component to allow portal to override props + new portals + SearchBar for Picker Sheet ([@Carsten89](https://github.com/Carsten89))
+* [#1141](https://github.com/shopgate/pwa/pull/1141) Move portal children in own component to allow portal to override props + new portals + SearchBar for Picker Sheet ([@Carsten89](https://github.com/Carsten89))
+* [#1125](https://github.com/shopgate/pwa/pull/1125) App rating feature ([@AienTech](https://github.com/AienTech))
+* [#1125](https://github.com/shopgate/pwa/pull/1125) App rating feature ([@AienTech](https://github.com/AienTech))
+
+
 ## [v6.19.0](https://github.com/shopgate/pwa/compare/v6.18.9...v6.19.0) (2022-04-05)
 
 #### :rocket: Enhancement

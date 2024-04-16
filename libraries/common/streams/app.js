@@ -1,5 +1,6 @@
 import { getCurrentRoute } from '../selectors/router';
 import {
+  APP_WILL_INIT,
   APP_DID_START,
   APP_WILL_START,
   PWA_DID_APPEAR,
@@ -8,6 +9,9 @@ import {
   OPEN_UNIVERSAL_LINK,
 } from '../constants/ActionTypes';
 import { main$ } from './main';
+
+export const appWillInit$ = main$
+  .filter(({ action }) => action.type === APP_WILL_INIT);
 
 /**
  * Gets triggered before the app starts.

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ContextMenu from './index';
 
@@ -14,31 +14,66 @@ global.requestAnimationFrame = fn => fn();
 jest.useFakeTimers();
 
 describe('<ContextMenu />', () => {
-  let renderedElement;
-  let renderedInstance;
   const mockItemAClick = jest.fn();
   const mockItemBClick = jest.fn();
   const numMenuItems = 2;
 
-  /**
-   * The view component
-   */
-  const renderComponent = () => {
-    renderedElement = mount((
-      <ContextMenu>
-        <ContextMenu.Item onClick={mockItemAClick}>Item A</ContextMenu.Item>
-        <ContextMenu.Item onClick={mockItemBClick}>Item B</ContextMenu.Item>
-      </ContextMenu>
-    ));
+  describe('Snapshot test', () => {
+    it('should match snapshot', () => {
+      const wrapper = shallow((
+        <ContextMenu isOpened>
+          <ContextMenu.Item
+            onClick={mockItemAClick}
+            className="menu-active-item"
+          >
+            {'Item A'}
+          </ContextMenu.Item>
+          <ContextMenu.Item
+            onClick={mockItemBClick}
+            className="menu-active-item"
+          >
+            {'Item B'}
+          </ContextMenu.Item>
+        </ContextMenu>
+      ));
+      expect(wrapper).toMatchSnapshot();
+    });
 
-    renderedInstance = renderedElement.instance();
-  };
-
-  beforeEach(() => {
-    renderComponent();
+    it('should match snapshot without toggle', () => {
+      const wrapper = shallow((
+        <ContextMenu isOpened showToggle={false}>
+          <ContextMenu.Item
+            onClick={mockItemAClick}
+            className="menu-active-item"
+          >
+            {'Item A'}
+          </ContextMenu.Item>
+        </ContextMenu>
+      ));
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
   describe.skip('Given the component was mounted to the DOM', () => {
+    let renderedElement;
+    let renderedInstance;
+
+    /**
+     * The view component
+     */
+    const renderComponent = () => {
+      renderedElement = mount((
+        <ContextMenu>
+          <ContextMenu.Item onClick={mockItemAClick}>Item A</ContextMenu.Item>
+          <ContextMenu.Item onClick={mockItemBClick}>Item B</ContextMenu.Item>
+        </ContextMenu>
+      ));
+
+      renderedInstance = renderedElement.instance();
+    };
+
+    beforeEach(renderComponent);
+
     it('should match snapshot', () => {
       expect(renderedElement).toMatchSnapshot();
     });

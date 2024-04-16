@@ -1,6 +1,8 @@
 import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import { MapPriceHint, OrderQuantityHint, EffectivityDates } from '@shopgate/engage/product';
+import {
+  MapPriceHint, OrderQuantityHint, EffectivityDates,
+} from '@shopgate/engage/product';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -13,6 +15,7 @@ import {
 import Shipping from '@shopgate/engage/product/components/Header/Shipping';
 import Tiers from '@shopgate/engage/product/components/Header/Tiers';
 import PriceStriked from '@shopgate/engage/product/components/Header/PriceStriked';
+import { ProductInfoBackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import Manufacturer from '../Manufacturer';
 import Availability from '../Availability';
 import Price from '../Price';
@@ -23,14 +26,14 @@ import * as styles from './style';
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ProductInfo = ({ productId, options }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
-      <Grid component="div">
-        <Grid.Item component="div" grow={1}>
+      <Grid component="div" className="theme__product__header__product-info">
+        <Grid.Item component="div" grow={1} className="theme__product__header__product-info__row1">
           <Portal name={PRODUCT_INFO_ROW1}>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
@@ -60,7 +63,7 @@ const ProductInfo = ({ productId, options }) => (
             </div>
           </Portal>
         </Grid.Item>
-        <Grid.Item component="div" className={styles.priceContainer}>
+        <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
           <Portal name={PRODUCT_INFO_ROW2}>
             <div>
               <PriceStriked productId={productId} options={options} />
@@ -78,6 +81,9 @@ const ProductInfo = ({ productId, options }) => (
         </Grid.Item>
         <TaxDisclaimer />
       </Grid>
+      <Grid.Item component="div" className={styles.backInStockButton}>
+        <ProductInfoBackInStockButton />
+      </Grid.Item>
     </Portal>
     <Portal name={PRODUCT_INFO_AFTER} />
   </Fragment>

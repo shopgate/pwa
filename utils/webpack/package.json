@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/webpack",
-  "version": "6.19.4",
+  "version": "6.22.0",
   "description": "The webpack configuration for Shopgate's Engage.",
   "main": "webpack.config.js",
   "license": "Apache-2.0",
@@ -11,6 +11,7 @@
     "color": "^3.1.2",
     "compression-webpack-plugin": "^3.0.0",
     "css-loader": "1.0.1",
+    "file-loader": "4.3.0",
     "html-webpack-plugin": "^3.2.0",
     "import-fresh": "3.0.0",
     "intl": "1.2.5",

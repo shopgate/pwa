@@ -50,6 +50,7 @@ class CategoryProducts extends PureComponent {
         products={this.props.products}
         totalProductCount={this.props.totalProductCount}
         requestHash={this.props.hash}
+        scope="category"
       />
     );
   }

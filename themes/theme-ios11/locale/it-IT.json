@@ -20,7 +20,25 @@
     "reviews": "Recensioni",
     "browse": "Sfoglia",
     "favorites": "Favoriti",
-    "scanner": "Scanner"
+    "scanner": "Scanner",
+    "back_in_stock": "Notifiche"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Notifiche attive",
+      "past": "Notifiche passate"
+    },
+    "empty_list_reminder": "Non è stata configurata alcuna notifica",
+    "get_notified": "Notificami le nuove scorte",
+    "we_will_remind_you": "Ti avviseremo quando il prodotto tornerà in stock",
+    "add_back_in_stock_success_modal": {
+      "title": "Aggiunta la notifica di back-in-stock!",
+      "message": "Ti invieremo una notifica push quando il prodotto sarà tornato in stock. È possibile gestire le notifiche nel menu"
+    },
+    "rationale": {
+      "message": "Si prega di consentire le notifiche push nella fase successiva, in modo da poter inviare una notifica quando il prodotto è di nuovo disponibile",
+      "confirm": "Consenti le notifiche push"
+    }
   },
   "favorites": {
     "add": "Aggiungi ai favoriti",
@@ -30,12 +48,51 @@
     "error_add": "Non è possibile aggiungere il prodotto ai favoriti",
     "error_remove": "Non è possibile rimuovere il prodotto dai favoriti",
     "error_limit": "Hai superato il numero di prodotti consentiti nei preferiti.",
+    "error_general": "Non è stato possibile salvare la lista dei desideri",
     "remove": "Rimuovi dai favoriti",
     "removed": "Rimosso dai favoriti",
+    "add_list_modal": {
+      "title": "Aggiungere un nuovo elenco",
+      "dismiss": "Annullamento",
+      "confirm": "Confermare",
+      "message": "Inserite il nome del vostro nuovo elenco di preferiti",
+      "label": "Nome"
+    },
+    "rename_list_modal": {
+      "title": "Rinominare l'elenco",
+      "dismiss": "Annullamento",
+      "confirm": "Confermare",
+      "message": "Inserite il nuovo nome per l'elenco dei preferiti",
+      "label": "Nome"
+    },
+    "delete_list_modal": {
+      "title": "Cancellare l'elenco dei preferiti",
+      "message": "Volete davvero eliminare l'elenco dei preferiti \"{name}\"?"
+    },
+    "add_list": "Aggiungi nuovo elenco",
+    "errors": {
+      "invalid_name": "Inserire un nome valido per l'elenco dei preferiti"
+    },
+    "rename_list": "Rinominare",
+    "remove_list": "Rimuovere",
+    "add_to_list": "Aggiungi alla lista",
+    "remove_from_list": "Rimuovere dall'elenco",
+    "edit_lists": "Modifica elenchi",
+    "fo_method_chooser": {
+      "title": "Scegliere un metodo"
+    },
+    "list_chooser": {
+      "title": "Scegliere un elenco di preferiti",
+      "add": "Aggiungi",
+      "remove": "Rimuovere"
+    },
     "modal": {
       "message": "Per aggiungere questo prodotto al tuo carrello, prego selezionare le varianti.",
       "confirm": "Seleziona le varianti"
-    }
+    },
+    "open_list": "Elenco aperto.",
+    "close_list": "Chiudi lista.",
+    "load_more_button": "Carica altri articoli"
   },
   "filter": {
     "sort": {
@@ -120,6 +177,9 @@
     "sections": {
       "categories": "Categorie",
       "products": "Prodotti"
+    },
+    "showAllProducts": {
+      "label": "Mostra tutti i prodotti"
     }
   },
   "search": {
@@ -165,7 +225,7 @@
     "free_shipping": "Spedizione Gratuita"
   },
   "login": {
-    "headline": "Benvenuto / a",
+    "headline": "Benvenuto/a",
     "subline": "Accedi per continuare",
     "email": "E-mail",
     "password": "Password",
@@ -184,6 +244,7 @@
     "categories": "Categorie",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
+    "back_in_stock": "Promemoria per il ritorno in magazzino",
     "shipping": "Modalità di spedizione",
     "about": "A riguardo",
     "contact": "Contatta",
@@ -231,8 +292,9 @@
   },
   "permissions": {
     "access_denied": {
-      "settings_button": "Vai alle impostazioni",
+      "settings_button": "Impostazioni aperte",
       "camera_message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
+      "push_message": "Questa funzione richiede l'accesso alle notifiche push. Consentire l'accesso nelle impostazioni.",
       "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione."
     }
   },
@@ -255,5 +317,11 @@
     "title": "Vota l'app",
     "message": "Ti piace la nostra app? Saremmo felici di ricevere una valutazione!",
     "rejectionApprovalMessage": "Vuoi darci un feedback? Questo ci aiuterà a migliorare ulteriormente l'applicazione."
+  },
+  "pushOptInModal": {
+    "title": "Ricevere coupon e offerte esclusive",
+    "buttonAllow": "Abilita le notifiche",
+    "buttonDeny": "Non voglio notifiche",
+    "message": "Attivate le notifiche in modo da potervi inviare notifiche push su nuove offerte, buoni esclusivi e altro ancora."
   }
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import compose from 'lodash/fp/compose';
+import noop from 'lodash/noop';
+import classNames from 'classnames';
 import Glow from '../../../Glow';
-import styles from './style';
+import { getItemClass } from './style';
 
 /**
  * A delay in ms after that the closeMenu callback gets triggered.
@@ -15,15 +17,22 @@ const CLOSE_DELAY = 250;
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Item = ({ children, closeMenu, onClick }) => {
+const Item = ({
+  children, closeMenu, onClick, disabled, autoClose, className,
+}) => {
   const handleClick = compose(
     onClick,
-    () => setTimeout(closeMenu, CLOSE_DELAY)
+    autoClose ? () => setTimeout(closeMenu, CLOSE_DELAY) : noop
   );
 
   return (
-    <Glow>
-      <div className={styles.item} onClick={handleClick} aria-hidden data-test-id="contextMenuButton">
+    <Glow disabled={disabled}>
+      <div
+        className={classNames(getItemClass(disabled), className)}
+        onClick={disabled ? noop : handleClick}
+        aria-hidden
+        data-test-id="contextMenuButton"
+      >
         {children}
       </div>
     </Glow>
@@ -31,15 +40,21 @@ const Item = ({ children, closeMenu, onClick }) => {
 };
 
 Item.propTypes = {
+  autoClose: PropTypes.bool,
   children: PropTypes.node,
+  className: PropTypes.string,
   closeMenu: PropTypes.func,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
 Item.defaultProps = {
+  autoClose: true,
   children: null,
+  className: '',
   closeMenu: () => {},
   onClick: () => {},
+  disabled: false,
 };
 
 export default Item;
