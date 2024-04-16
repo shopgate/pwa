@@ -142,7 +142,6 @@ class Core {
       overrideUnified: pluginOptions.options.overrideUnified,
       merchant: pluginOptions.merchant,
       shopgate: pluginOptions.shopgate,
-      shopgateInternal: pluginOptions.options.shopgateInternal,
     }) - 1;
 
     // Provide handle back for removal of event
@@ -164,6 +163,11 @@ class Core {
    * @returns {void}
    */
   notifyHelper(rawData, eventName, page, scope = {}, state) {
+    // Exit if the user opt out. But not for the explicit add or remove tracker events
+    if ([REMOVE_TRACKER, ADD_TRACKER].indexOf(eventName) === -1 && isOptOut()) {
+      return;
+    }
+
     // Default scope
     const scopeOptions = {
       shopgate: true,
@@ -180,22 +184,8 @@ class Core {
     // Initialize the event payload
     const eventData = typeof rawData !== 'undefined' ? rawData : {};
 
-    // Merge the global with the page specific callbacks and remove not allowed trackers
-    const combinedStorage = storeGlobal.concat(storePage).reduce((acc, entry) => {
-      let addTracker = true;
-
-      // Remove tracker if the user opt out. But not for the explicit add or remove tracker events
-      if ([REMOVE_TRACKER, ADD_TRACKER].indexOf(eventName) === -1 && isOptOut()) {
-        // shopgate internal trackers which don't track to 3rd party providers are allowed
-        addTracker = entry.shopgate === true && entry.shopgateInternal === true;
-      }
-
-      if (addTracker) {
-        acc.push(entry);
-      }
-
-      return acc;
-    }, []);
+    // Merge the global with the page specific callbacks
+    const combinedStorage = storeGlobal.concat(storePage);
 
     const blacklist = [];
     let useBlacklist = false;
