@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { item } from './styles';
 import SwiperItem from '.';
 
 describe('<SwiperItem />', () => {
@@ -11,7 +12,7 @@ describe('<SwiperItem />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toEqual('<div class="" data-test-id="Slider"><div></div></div>');
+    expect(wrapper.html()).toEqual(`<div class="${item}" data-test-id="Slider"><div></div></div>`);
   });
 
   it('should add custom className', () => {
@@ -22,6 +23,6 @@ describe('<SwiperItem />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toEqual('<div class="test" data-test-id="Slider"><div></div></div>');
+    expect(wrapper.html()).toEqual(`<div class="${item} test" data-test-id="Slider"><div></div></div>`);
   });
 });

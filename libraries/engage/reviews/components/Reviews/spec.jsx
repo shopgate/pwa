@@ -7,24 +7,31 @@ import {
   mockedStateWithAll,
   mockedStateWithoutReview,
   mockedStateWithTwoReviews,
-  setMocks,
 } from '@shopgate/pwa-common-commerce/reviews/mock';
+import appConfig from '@shopgate/pwa-common/helpers/config';
+import Reviews from './index';
 
 const mockedStore = configureStore();
 
 /**
  * @returns {JSX}
  */
-const Header = () => <div />;
-const mock = Header;
-jest.mock('./components/Header', () => mock);
+jest.mock('./components/Header', () => function Header() { return <div />; });
 jest.mock('@shopgate/engage/product', () => ({
   PRODUCT_REVIEWS: 'product.reviews',
   makeIsBaseProductActive: jest.fn(() => () => true),
 }));
-jest.mock('@shopgate/engage/components');
-beforeEach(() => {
-  jest.resetModules();
+jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: ({ children }) => children,
+}));
+
+// Mock the getter of the hasReviews key inside the app config, so that we can turn it off later
+jest.resetModules();
+
+const hasReviewsGetter = jest.fn().mockReturnValue(true);
+
+Object.defineProperty(appConfig, 'hasReviews', {
+  get: hasReviewsGetter,
 });
 
 /**
@@ -32,23 +39,17 @@ beforeEach(() => {
  * @param {Object} mockedState Mocked stage.
  * @return {ReactWrapper}
  */
-const createComponent = (mockedState) => {
-  /* eslint-disable global-require */
-  const Reviews = require('./index').default;
-  /* eslint-enable global-require */
-  return mount(
-    <Provider store={mockedStore(mockedState)}>
-      <Reviews productId="foo" />
-    </Provider>,
-    mockRenderOptions
-  );
-};
+const createComponent = mockedState => mount(
+  <Provider store={mockedStore(mockedState)}>
+    <Reviews productId="foo" />
+  </Provider>,
+  mockRenderOptions
+);
 
 describe('<Reviews />', () => {
   let component = null;
 
   it('should render when no reviews and rating given', () => {
-    setMocks();
     component = createComponent(mockedStateWithoutReview);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(true);
@@ -57,7 +58,6 @@ describe('<Reviews />', () => {
   });
 
   it('should render reviews, header and all reviews link', () => {
-    setMocks();
     component = createComponent(mockedStateWithAll);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(true);
@@ -66,7 +66,6 @@ describe('<Reviews />', () => {
   });
 
   it('should render reviews, header, but no all reviews link', () => {
-    setMocks();
     component = createComponent(mockedStateWithTwoReviews);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(true);
@@ -75,7 +74,8 @@ describe('<Reviews />', () => {
   });
 
   it('should not render when feature flag is off', () => {
-    setMocks(false);
+    hasReviewsGetter.mockReturnValueOnce(false);
+
     component = createComponent(mockedStateWithAll);
     expect(component).toMatchSnapshot();
     expect(component.find('Header').exists()).toBe(false);
