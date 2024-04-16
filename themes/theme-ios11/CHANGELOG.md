@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.12.3](https://github.com/shopgate/pwa/compare/v7.12.2...v7.12.3) (2024-04-16)
+
+#### :rocket: Enhancement
+* [#1231](https://github.com/shopgate/pwa/pull/1231) Add config and logic for price grouping ([@Phmank](https://github.com/Phmank))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
