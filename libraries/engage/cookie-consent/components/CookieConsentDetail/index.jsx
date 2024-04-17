@@ -68,7 +68,7 @@ const CookieConsentDetail = ({
             areComfortCookiesSelected,
             areStatisticsCookiesSelected,
           })}
-          type="outline"
+          type="simple"
           className={styles.button}
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />

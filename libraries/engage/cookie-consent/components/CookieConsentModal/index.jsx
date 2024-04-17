@@ -81,11 +81,11 @@ const CookieConsentModal = ({
               <I18n.Text string={modalButtonAccept || 'cookieConsentModal.buttonAllow'} />
             </Button>
             {showRequiredCookiesButton ? (
-              <Button onClick={acceptRequiredCookies} type="outline" className={styles.button}>
+              <Button onClick={acceptRequiredCookies} type="simple" className={styles.button}>
                 <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
               </Button>
             ) : null}
-            <Button onClick={openSettings} type="outline" className={styles.button}>
+            <Button onClick={openSettings} type="simple" className={styles.button}>
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
             </Button>
           </Grid.Item>

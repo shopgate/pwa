@@ -67,18 +67,18 @@ const plain = () => ({
 });
 
 /**
- * Creates an outline button style object.
+ * Creates a simple button style object.
  @param {boolean} disabled Whether this button is disabled.
  * @return {Object}
  */
-const outline = (disabled) => {
+const simple = (disabled) => {
   if (disabled) {
-    // outline disabled button style.
+    // simple disabled button style.
     return createButtonStyles(themeConfig.colors.shade4, themeConfig.colors.shade7);
   }
 
-  // outline enabled button style.
-  return createButtonStyles(themeConfig.colors.dark, themeConfig.colors.light);
+  // simple enabled button style.
+  return createButtonStyles(themeConfig.colors.dark, themeConfig.colors.shade7);
 };
 
 /**
@@ -151,7 +151,7 @@ const secondary = (disabled, flat) => {
 export default {
   plain,
   regular,
-  outline,
+  simple,
   primary,
   secondary,
   contentWrapper,

@@ -40,6 +40,8 @@ import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
+import { COOKIE_CONSENT_PATTERN } from '@shopgate/engage/cookie-consent/constants';
+import { CookieConsentModal } from '@shopgate/engage/cookie-consent/components';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -64,6 +66,7 @@ const Pages = ({ store }) => (
               <Viewport>
                 <ModalContainer component={Dialog} />
                 <PushOptInModal />
+                <CookieConsentModal />
                 <Toaster render={props => <SnackBarContainer {...props} />} />
                 <FavoritesListChooser />
                 <Router history={history}>
@@ -79,6 +82,10 @@ const Pages = ({ store }) => (
                     pattern={ITEM_PATTERN}
                     component={routes.Product}
                     transform={transformItemRoute}
+                  />
+                  <Route
+                    pattern={COOKIE_CONSENT_PATTERN}
+                    component={routes.CookieConsent}
                   />
                   <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
                   <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
