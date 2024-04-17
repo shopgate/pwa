@@ -644,7 +644,13 @@
         "modalButtonAccept": null,
         "modalImageURL": null,
         "modalImageSVG": null,
-        "showRequiredCookiesButton": false
+        "showRequiredCookiesButton": false,
+        "settingsComfortText": null,
+        "settingsComfortTitle": null,
+        "settingsStatisticsText": null,
+        "settingsStatisticsTitle": null,
+        "settingsRequiredText": null,
+        "settingsRequiredTitle": null
       },
       "params": {
         "type": "json",

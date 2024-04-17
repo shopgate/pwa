@@ -4,6 +4,7 @@ import {
 } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
 import { PRIVACY_PATH } from '@shopgate/theme-gmd/components/NavDrawer/constants';
+import { appConfig } from '@shopgate/engage';
 import styles from './style';
 import Toggle from '../../../components/Toggle';
 import connect from './connector';
@@ -16,6 +17,17 @@ const CookieConsentDetail = ({
   confirmAllCookies,
   confirmSelectedCookies,
 }) => {
+  const {
+    cookieConsent: {
+      settingsComfortText,
+      settingsComfortTitle,
+      settingsStatisticsText,
+      settingsStatisticsTitle,
+      settingsRequiredText,
+      settingsRequiredTitle,
+    } = {},
+  } = appConfig;
+
   const [areComfortCookiesSelected, setAreComfortCookiesSelected] = useState(false);
   const [areStatisticsCookiesSelected, setAreStatisticsCookiesSelected] = useState(false);
 
@@ -37,20 +49,20 @@ const CookieConsentDetail = ({
     <Grid component="div" className={styles.container}>
       <Grid.Item component="div">
         <Toggle
-          label={<I18n.Text string="cookieSettings.comfort" />}
-          title={<I18n.Text string="cookieSettings.comfortTitle" />}
+          label={<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}
+          title={<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
           onChange={handleChangeComfortCookies}
           checked={areComfortCookiesSelected}
         />
         <Toggle
-          label={<I18n.Text string="cookieSettings.statistics" />}
-          title={<I18n.Text string="cookieSettings.statisticsTitle" />}
+          label={<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}
+          title={<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
           onChange={handleChangeStatisticsCookies}
           checked={areStatisticsCookiesSelected}
         />
         <Toggle
-          label={<I18n.Text string="cookieSettings.required" />}
-          title={<I18n.Text string="cookieSettings.requiredTitle" />}
+          label={<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}
+          title={<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
           disabled
           checked
         />
