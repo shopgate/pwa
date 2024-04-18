@@ -16,6 +16,8 @@ import connect from './connector';
 const CookieConsentDetail = ({
   confirmAllCookies,
   confirmSelectedCookies,
+  areComfortCookiesSelectedState,
+  areStatisticsCookiesSelectedState,
 }) => {
   const {
     cookieConsent: {
@@ -28,8 +30,12 @@ const CookieConsentDetail = ({
     } = {},
   } = appConfig;
 
-  const [areComfortCookiesSelected, setAreComfortCookiesSelected] = useState(false);
-  const [areStatisticsCookiesSelected, setAreStatisticsCookiesSelected] = useState(false);
+  const [areComfortCookiesSelected, setAreComfortCookiesSelected] = useState(
+    areComfortCookiesSelectedState !== null ? areComfortCookiesSelectedState : false
+  );
+  const [areStatisticsCookiesSelected, setAreStatisticsCookiesSelected] = useState(
+    areStatisticsCookiesSelectedState !== null ? areStatisticsCookiesSelectedState : false
+  );
 
   const handleChangeComfortCookies = useCallback(() => {
     setAreComfortCookiesSelected(!areComfortCookiesSelected);
@@ -47,7 +53,7 @@ const CookieConsentDetail = ({
 
   return (
     <Grid component="div" className={styles.container}>
-      <Grid.Item component="div">
+      <Grid.Item component="div" className={styles.item}>
         <Toggle
           label={<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}
           title={<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
@@ -100,6 +106,8 @@ const CookieConsentDetail = ({
 };
 
 CookieConsentDetail.propTypes = {
+  areComfortCookiesSelectedState: PropTypes.bool.isRequired,
+  areStatisticsCookiesSelectedState: PropTypes.bool.isRequired,
   confirmAllCookies: PropTypes.func.isRequired,
   confirmSelectedCookies: PropTypes.func.isRequired,
 };

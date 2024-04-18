@@ -51,6 +51,7 @@ const buttonWrapper = css({
   display: 'flex',
   flexDirection: 'column',
   marginBottom: '30px',
+  width: '100%',
 }).toString();
 
 export default {

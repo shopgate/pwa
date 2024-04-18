@@ -1,8 +1,7 @@
 import { HIDE_COOKIE_CONSENT_MODAL, SHOW_COOKIE_CONSENT_MODAL } from '../constants';
 
 const defaultState = {
-  // TODO default: false
-  isCookieConsentModalVisible: true,
+  isCookieConsentModalVisible: false,
 };
 
 /**

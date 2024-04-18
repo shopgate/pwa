@@ -20,6 +20,11 @@ const buttonWrapper = css({
   marginBottom: '30px',
 }).toString();
 
+const item = css({
+  display: 'flex',
+  flexDirection: 'column',
+}).toString();
+
 const link = css({
   color: themeColors.accent,
   textDecoration: 'underline',
@@ -30,4 +35,5 @@ export default {
   container,
   buttonWrapper,
   link,
+  item,
 };
