@@ -54,3 +54,15 @@ export const getIsCookieConsentModalVisible = createSelector(
       && statisticsCookiesState !== null))
     || false
 );
+
+/**
+ * Selects the property of the cookie consent settings.
+ * @returns {boolean} whether cookie consent options have been chosen by the user.
+ */
+export const getIsCookieConsentHandled = createSelector(
+  getCookieConsentModalState,
+  (modalState) => {
+    console.log('AYAY :65:modalState:', modalState);
+    return modalState?.isCookieConsentHandled || false;
+  }
+);

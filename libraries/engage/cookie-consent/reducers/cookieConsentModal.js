@@ -1,7 +1,12 @@
-import { HIDE_COOKIE_CONSENT_MODAL, SHOW_COOKIE_CONSENT_MODAL } from '../constants';
+import {
+  COOKIE_CONSENT_DONE,
+  HIDE_COOKIE_CONSENT_MODAL,
+  SHOW_COOKIE_CONSENT_MODAL,
+} from '../constants';
 
 const defaultState = {
   isCookieConsentModalVisible: false,
+  isCookieConsentHandled: false,
 };
 
 /**
@@ -22,6 +27,12 @@ const cookieConsentModalReducer = (state = defaultState, action) => {
       return {
         ...state,
         isCookieConsentModalVisible: false,
+      };
+    }
+    case COOKIE_CONSENT_DONE: {
+      return {
+        ...state,
+        isCookieConsentHandled: true,
       };
     }
 

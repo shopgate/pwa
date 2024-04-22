@@ -5,6 +5,7 @@ import {
 } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
 import { PRIVACY_PATH } from '@shopgate/theme-gmd/components/NavDrawer/constants';
+import classNames from 'classnames';
 import connect from './connector';
 import cookieImage from './cookieConsent.svg';
 import styles from './style';
@@ -15,7 +16,10 @@ import styles from './style';
  * @returns {JSX.Element}
  */
 const CookieConsentModal = ({
-  isCookieConsentModalVisible, acceptAllCookies, acceptRequiredCookies, openSettings,
+  isCookieConsentModalVisible,
+  acceptAllCookies,
+  acceptRequiredCookies,
+  openSettings,
 }) => {
   const {
     cookieConsent: {
@@ -77,15 +81,15 @@ const CookieConsentModal = ({
           </I18n.Text>
 
           <Grid.Item component="div" className={styles.buttonWrapper}>
-            <Button onClick={acceptAllCookies} type="primary" className={styles.button}>
+            <Button onClick={acceptAllCookies} type="primary" className={classNames(styles.button, 'cookie-modal__allowAll-button')}>
               <I18n.Text string={modalButtonAccept || 'cookieConsentModal.buttonAllow'} />
             </Button>
             {showRequiredCookiesButton ? (
-              <Button onClick={acceptRequiredCookies} type="simple" className={styles.button}>
+              <Button onClick={acceptRequiredCookies} type="simple" className={classNames(styles.button, 'cookie-modal__allowRequired-button')}>
                 <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
               </Button>
             ) : null}
-            <Button onClick={openSettings} type="simple" className={styles.button}>
+            <Button onClick={openSettings} type="simple" className={classNames(styles.button, 'cookie-modal__settingsButton')}>
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
             </Button>
           </Grid.Item>

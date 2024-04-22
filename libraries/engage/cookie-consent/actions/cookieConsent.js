@@ -1,10 +1,11 @@
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import {
+  finishCookiesConsent,
   grantAllCookies,
   grantRequiredCookies,
   grantSelectedCookies,
   hideCookieConsentModal,
-} from '../action-creators/cookieConsent';
+} from '../action-creators';
 import { COOKIE_CONSENT_PATTERN } from '../constants';
 
 /**
@@ -14,6 +15,10 @@ import { COOKIE_CONSENT_PATTERN } from '../constants';
  */
 export const acceptAllCookies = () => async (dispatch) => {
   await dispatch(grantAllCookies());
+  dispatch(finishCookiesConsent({
+    areComfortCookiesSelected: true,
+    areStatisticsCookiesSelected: true,
+  }));
   dispatch(hideCookieConsentModal());
   dispatch(historyPush({ pathname: '/' }));
 };
@@ -21,8 +26,8 @@ export const acceptAllCookies = () => async (dispatch) => {
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
  * and native modal should be triggered for setting the permission
- * @param {boolean} areComfortCookiesSelected whether this cookie type was selected by user
- * @param {boolean} areStatisticsCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areComfortCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areStatisticsCookiesSelected whether this cookie type was selected by user
  * @returns {Function}
  */
 export const acceptSelectedCookies = ({
@@ -30,6 +35,10 @@ export const acceptSelectedCookies = ({
   areStatisticsCookiesSelected,
 }) => async (dispatch) => {
   await dispatch(grantSelectedCookies({
+    areComfortCookiesSelected,
+    areStatisticsCookiesSelected,
+  }));
+  dispatch(finishCookiesConsent({
     areComfortCookiesSelected,
     areStatisticsCookiesSelected,
   }));
@@ -44,6 +53,10 @@ export const acceptSelectedCookies = ({
  */
 export const acceptRequiredCookies = () => async (dispatch) => {
   await dispatch(grantRequiredCookies({ useSettingsModal: true }));
+  dispatch(finishCookiesConsent({
+    areComfortCookiesSelected: false,
+    areStatisticsCookiesSelected: false,
+  }));
   dispatch(hideCookieConsentModal());
 };
 

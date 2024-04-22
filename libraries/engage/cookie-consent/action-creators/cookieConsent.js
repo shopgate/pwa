@@ -2,6 +2,7 @@ import {
   ACCEPT_ALL_COOKIES,
   ACCEPT_REQUIRED_COOKIES,
   ACCEPT_SELECTED_COOKIES,
+  COOKIE_CONSENT_DONE,
   HIDE_COOKIE_CONSENT_MODAL,
   SHOW_COOKIE_CONSENT_MODAL,
 } from '../constants';
@@ -24,8 +25,8 @@ export const hideCookieConsentModal = () => ({
 
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
- * @param {boolean} areComfortCookiesSelected whether this cookie type was selected by user
- * @param {boolean} areStatisticsCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areComfortCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areStatisticsCookiesSelected whether this cookie type was selected by user
  * @returns {Function}
  */
 export const grantSelectedCookies = ({
@@ -53,4 +54,20 @@ export const grantAllCookies = () => ({
  */
 export const grantRequiredCookies = () => ({
   type: ACCEPT_REQUIRED_COOKIES,
+});
+
+/**
+ * action to be dispatched when the user accepted required cookies in the custom modal
+ * * and native modal should be triggered for setting the permission
+ * @param {boolean|null} areComfortCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areStatisticsCookiesSelected whether this cookie type was selected by user
+ * @returns {Function}
+ */
+export const finishCookiesConsent = ({
+  areComfortCookiesSelected,
+  areStatisticsCookiesSelected,
+}) => ({
+  type: COOKIE_CONSENT_DONE,
+  areComfortCookiesSelected,
+  areStatisticsCookiesSelected,
 });

@@ -5,6 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { PRIVACY_PATH } from '@shopgate/theme-gmd/components/NavDrawer/constants';
 import { appConfig } from '@shopgate/engage';
+import classNames from 'classnames';
 import styles from './style';
 import Toggle from '../../../components/Toggle';
 import connect from './connector';
@@ -77,7 +78,7 @@ const CookieConsentDetail = ({
         <Button
           onClick={() => handleAcceptAllCookies()}
           type="primary"
-          className={styles.button}
+          className={classNames(styles.button, 'cookie-settings__allowAll-button')}
         >
           <I18n.Text string="cookieConsentModal.buttonAllow" />
         </Button>
@@ -87,7 +88,7 @@ const CookieConsentDetail = ({
             areStatisticsCookiesSelected,
           })}
           type="simple"
-          className={styles.button}
+          className={classNames(styles.button, 'cookie-settings__allowSelection-button')}
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
         </Button>

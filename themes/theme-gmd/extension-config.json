@@ -640,7 +640,8 @@
         "settingsStatisticsText": null,
         "settingsStatisticsTitle": null,
         "settingsRequiredText": null,
-        "settingsRequiredTitle": null
+        "settingsRequiredTitle": null,
+        "cookieConsentActivated": false
       },
       "params": {
         "type": "json",
