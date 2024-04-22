@@ -561,7 +561,7 @@
       },
       "params": {
         "type": "json",
-        "label": "Enable recaptcha for login"
+        "label": "Enable reCAPTCHA for login"
       }
     },
     "webTrackingEngage": {
