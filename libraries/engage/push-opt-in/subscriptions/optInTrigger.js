@@ -26,7 +26,7 @@ import {
 } from '../constants';
 
 import { getPushOptInTriggerState } from '../selectors';
-import { cookieConsentDone$ } from '../../cookie-consent/streams';
+import { cookieConsentDone$ } from '../../tracking/streams';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 

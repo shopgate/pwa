@@ -3,9 +3,9 @@ import {
   NAV_MENU_PRIVACY_SETTINGS,
   NAV_MENU_PRIVACY_SETTINGS_AFTER,
   NAV_MENU_PRIVACY_SETTINGS_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { COOKIE_CONSENT_PATTERN } from '@shopgate/engage/cookie-consent/constants';
+} from '@shopgate/engage/core';
+import { Portal } from '@shopgate/engage/components';
+import { COOKIE_CONSENT_PATTERN } from '@shopgate/engage/tracking/constants';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 

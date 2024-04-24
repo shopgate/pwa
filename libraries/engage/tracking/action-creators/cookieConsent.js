@@ -57,7 +57,7 @@ export const grantRequiredCookies = () => ({
 });
 
 /**
- * action to be dispatched when the user accepted required cookies in the custom modal
+ * action to be dispatched when the cookies have been handled either by user or by merchant
  * * and native modal should be triggered for setting the permission
  * @param {boolean|null} areComfortCookiesSelected whether this cookie type was selected by user
  * @param {boolean|null} areStatisticsCookiesSelected whether this cookie type was selected by user

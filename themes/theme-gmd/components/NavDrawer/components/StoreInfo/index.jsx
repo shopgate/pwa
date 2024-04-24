@@ -11,7 +11,8 @@ import {
   NAV_MENU_STORE_INFORMATION_ABOUT,
   NAV_MENU_STORE_INFORMATION_ABOUT_AFTER,
   NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
+import { appConfig } from '@shopgate/engage';
 import NavDrawerSection from '../Section';
 import ShippingButton from './components/ShippingButton';
 import PaymentButton from './components/PaymentButton';
@@ -23,35 +24,39 @@ import portalProps from '../../portalProps';
 import PrivacySettingsButton from './components/PrivacySettingsButton';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-const StoreInfo = () => (
-  <Fragment>
-    <Portal name={NAV_MENU_STORE_INFORMATION_BEFORE} props={portalProps} />
-    <Portal name={NAV_MENU_STORE_INFORMATION} props={portalProps}>
-      <Portal name={NAV_MENU_STORE_INFORMATION_MORE_BEFORE} props={portalProps} />
-      <Portal name={NAV_MENU_STORE_INFORMATION_MORE} props={portalProps}>
-        <NavDrawerSection title="navigation.menuSubHeader.more">
-          <ShippingButton />
-          <PaymentButton />
-        </NavDrawerSection>
-      </Portal>
-      <Portal name={NAV_MENU_STORE_INFORMATION_MORE_AFTER} props={portalProps} />
+const StoreInfo = () => {
+  const { cookieConsent: { cookieConsentActivated } } = appConfig;
 
-      <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE} props={portalProps} />
-      <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT} props={portalProps}>
-        <NavDrawerSection title="navigation.menuSubHeader.about">
-          <TermsButton />
-          <PrivacyButton />
-          <PrivacySettingsButton />
-          {showReturnPolicy && <ReturnsButton />}
-          <ImprintButton />
-        </NavDrawerSection>
+  return (
+    <Fragment>
+      <Portal name={NAV_MENU_STORE_INFORMATION_BEFORE} props={portalProps} />
+      <Portal name={NAV_MENU_STORE_INFORMATION} props={portalProps}>
+        <Portal name={NAV_MENU_STORE_INFORMATION_MORE_BEFORE} props={portalProps} />
+        <Portal name={NAV_MENU_STORE_INFORMATION_MORE} props={portalProps}>
+          <NavDrawerSection title="navigation.menuSubHeader.more">
+            <ShippingButton />
+            <PaymentButton />
+          </NavDrawerSection>
+        </Portal>
+        <Portal name={NAV_MENU_STORE_INFORMATION_MORE_AFTER} props={portalProps} />
+
+        <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE} props={portalProps} />
+        <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT} props={portalProps}>
+          <NavDrawerSection title="navigation.menuSubHeader.about">
+            <TermsButton />
+            <PrivacyButton />
+            {cookieConsentActivated && <PrivacySettingsButton />}
+            {showReturnPolicy && <ReturnsButton />}
+            <ImprintButton />
+          </NavDrawerSection>
+        </Portal>
+        <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT_AFTER} props={portalProps} />
       </Portal>
-      <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT_AFTER} props={portalProps} />
-    </Portal>
-    <Portal name={NAV_MENU_STORE_INFORMATION_AFTER} props={portalProps} />
-  </Fragment>
-);
+      <Portal name={NAV_MENU_STORE_INFORMATION_AFTER} props={portalProps} />
+    </Fragment>
+  );
+};
 
 export default StoreInfo;

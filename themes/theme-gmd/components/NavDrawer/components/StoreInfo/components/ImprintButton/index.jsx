@@ -4,7 +4,7 @@ import {
   NAV_MENU_IMPRINT,
   NAV_MENU_IMPRINT_AFTER,
   NAV_MENU_IMPRINT_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
@@ -15,7 +15,7 @@ import connect from '../../../../connector';
 const LABEL = 'navigation.about';
 
 /**
- * @param {Function} navigate The navigate action.
+ * @param {Object} props The component props
  * @returns {JSX.Element}
  */
 const ImprintButton = ({ navigate }) => (

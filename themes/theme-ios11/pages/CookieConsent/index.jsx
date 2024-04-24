@@ -1,7 +1,7 @@
 import { View } from '@shopgate/engage/components';
 import React from 'react';
 import { BackBar } from 'Components/AppBar/presets';
-import { CookieConsentDetail } from '@shopgate/engage/cookie-consent/components';
+import { CookieConsentDetail } from '@shopgate/engage/tracking/components';
 
 /**
  * The CookieConsentPage component.

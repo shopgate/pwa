@@ -23,7 +23,7 @@ import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import extensions from 'Extensions/reducers';
 import tabBar from 'Components/TabBar/reducer';
-import cookieConsent from '@shopgate/engage/cookie-consent/reducers';
+import cookieConsent from '@shopgate/engage/tracking/reducers';
 
 persistedReducers.set([
   'cart',

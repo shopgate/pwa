@@ -61,8 +61,5 @@ export const getIsCookieConsentModalVisible = createSelector(
  */
 export const getIsCookieConsentHandled = createSelector(
   getCookieConsentModalState,
-  (modalState) => {
-    console.log('AYAY :65:modalState:', modalState);
-    return modalState?.isCookieConsentHandled || false;
-  }
+  modalState => modalState?.isCookieConsentHandled || false
 );
