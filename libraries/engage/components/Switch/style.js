@@ -6,14 +6,14 @@ const container = css({
   textAlign: 'left',
   marginBottom: '25px',
   justifyContent: 'space-between',
-}).toString();
+});
 
 const title = css({
   fontWeight: 'bold',
   display: 'block',
-}).toString();
+});
 
-const toggleButton = css({
+const switchButton = css({
   display: 'inline-block',
   width: '40px',
   height: '20px',
@@ -33,32 +33,32 @@ const toggleButton = css({
     borderRadius: '50%',
     transition: 'transform 0.3s',
   },
-}).toString();
+});
 
 const input = css({
   display: 'none',
-  [`:checked + .${toggleButton}`]: {
+  [`:checked + .${switchButton}`]: {
     backgroundColor: themeConfig.colors.accent,
   },
-  [`:disabled + .${toggleButton}`]: {
+  [`:disabled + .${switchButton}`]: {
     backgroundColor: themeConfig.colors.shade7,
   },
-  [`:checked + .${toggleButton}::before`]: {
+  [`:checked + .${switchButton}::before`]: {
     transform: 'translateX(20px)',
   },
-}).toString();
+});
 
 const disabled = css({
   backgroundColor: themeConfig.colors.shade7,
-}).toString();
+});
 
 const button = css({
   marginTop: '30px',
-}).toString();
+});
 
 export default {
   input,
-  toggleButton,
+  switchButton,
   title,
   container,
   button,

@@ -631,7 +631,7 @@
         "modalTitle": null,
         "modalButtonConfigureSettings": null,
         "modalButtonOnlyRequired": null,
-        "modalButtonAccept": null,
+        "modalButtonAcceptAll": null,
         "modalImageURL": null,
         "modalImageSVG": null,
         "showRequiredCookiesButton": false,

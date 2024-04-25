@@ -5,7 +5,7 @@ import {
   NAV_MENU_IMPRINT,
   NAV_MENU_IMPRINT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { IMPRINT_PATH } from '../../../../constants';
+import { IMPRINT_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 

@@ -8,7 +8,7 @@ import {
 import Portal from '@shopgate/pwa-common/components/Portal';
 import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { PRIVACY_PATH } from '../../../../constants';
+import { PRIVACY_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 

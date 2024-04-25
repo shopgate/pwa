@@ -14,17 +14,11 @@ const mapStateToProps = state => ({
 
 /**
  * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
  * @return {Object} The extended component props.
  */
-const mapDispatchToProps = dispatch => ({
-  confirmAllCookies: () => dispatch(acceptAllCookies()),
-  confirmSelectedCookies: ({
-    areComfortCookiesSelected, areStatisticsCookiesSelected,
-  }) => dispatch(acceptSelectedCookies({
-    areComfortCookiesSelected,
-    areStatisticsCookiesSelected,
-  })),
-});
+const mapDispatchToProps = {
+  acceptAllCookies,
+  acceptSelectedCookies,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps);

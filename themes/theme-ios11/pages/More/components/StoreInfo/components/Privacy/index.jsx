@@ -5,7 +5,7 @@ import {
   NAV_MENU_PRIVACY,
   NAV_MENU_PRIVACY_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { PRIVACY_PATH } from '../../../../constants';
+import { PRIVACY_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 

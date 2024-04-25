@@ -6,7 +6,7 @@ import {
   NAV_MENU_RETURN_POLICY,
   NAV_MENU_RETURN_POLICY_AFTER,
 } from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { RETURN_POLICY_PATH } from '../../../../constants';
+import { RETURN_POLICY_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 

@@ -44,7 +44,7 @@ import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import { CookieConsentModal } from '@shopgate/engage/tracking/components';
-import { COOKIE_CONSENT_PATTERN } from '@shopgate/engage/tracking/constants';
+import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import themeApi from '../themeApi';
@@ -88,7 +88,7 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
                   />
                   <Route
-                    pattern={COOKIE_CONSENT_PATTERN}
+                    pattern={PRIVACY_SETTINGS_PATTERN}
                     component={routes.CookieConsent}
                   />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />

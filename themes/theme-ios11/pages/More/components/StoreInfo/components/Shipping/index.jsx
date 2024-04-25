@@ -5,7 +5,7 @@ import {
   NAV_MENU_SHIPPING,
   NAV_MENU_SHIPPING_AFTER,
 } from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { SHIPPING_PATH } from '../../../../constants';
+import { SHIPPING_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 

@@ -4,14 +4,14 @@ import classNames from 'classnames';
 import styles from './style';
 
 /**
- * The Toggle component.
+ * The Switch component.
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const Toggle = ({
+const Switch = ({
   label, title, disabled, checked, onChange,
 }) => {
-  const toggleId = useMemo(() => Math.random(), []);
+  const switchId = useMemo(() => Math.random(), []);
 
   return (
     <div className={styles.container}>
@@ -19,7 +19,7 @@ const Toggle = ({
         {title ?
           <span className={styles.title}>{title}</span>
           : null}
-        <span className={styles.label}>{label}</span>
+        <span>{label}</span>
       </div>
       <div>
         <input
@@ -28,32 +28,32 @@ const Toggle = ({
           disabled={disabled}
           checked={checked}
           type="checkbox"
-          id={`"${toggleId}"`}
+          id={`${switchId}`}
         />
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label
           className={disabled
-            ? classNames(styles.disabled, styles.toggleButton)
-            : styles.toggleButton}
-          htmlFor={`"${toggleId}"`}
+            ? classNames(styles.disabled, styles.switchButton)
+            : styles.switchButton}
+          htmlFor={`${switchId}`}
         />
       </div>
     </div>
   );
 };
 
-Toggle.propTypes = {
+Switch.propTypes = {
   label: PropTypes.node.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   title: PropTypes.node,
 };
-Toggle.defaultProps = {
+Switch.defaultProps = {
   disabled: false,
   checked: false,
   title: null,
   onChange: null,
 };
 
-export default Toggle;
+export default Switch;

@@ -5,13 +5,13 @@ import {
   NAV_MENU_TERMS,
   NAV_MENU_TERMS_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { TERMS_PATH } from '../../../../constants';
+import { TERMS_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 
 /**
  * The TermsComponent.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Terms = () => (
   <Fragment>

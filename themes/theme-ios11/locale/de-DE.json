@@ -330,7 +330,7 @@
   },
   "cookieConsentModal": {
     "title": "Customize your personal shopping experience",
-    "buttonAllow": "Accept all",
+    "buttonAcceptAll": "Accept all",
     "modalButtonOnlyRequired": "Only essential",
     "modalButtonConfirmSelected": "Confirm selection",
     "buttonConfigure": "Configure settings",

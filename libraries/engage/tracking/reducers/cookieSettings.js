@@ -1,8 +1,4 @@
-import {
-  ACCEPT_ALL_COOKIES,
-  ACCEPT_REQUIRED_COOKIES,
-  ACCEPT_SELECTED_COOKIES,
-} from '../constants';
+import { UPDATE_COOKIE_CONSENT } from '../constants';
 
 const defaultState = {
   areComfortCookiesSelected: null,
@@ -17,21 +13,7 @@ const defaultState = {
  */
 const cookieSettingsReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case ACCEPT_ALL_COOKIES: {
-      return {
-        ...state,
-        areComfortCookiesSelected: true,
-        areStatisticsCookiesSelected: true,
-      };
-    }
-    case ACCEPT_REQUIRED_COOKIES: {
-      return {
-        ...state,
-        areComfortCookiesSelected: false,
-        areStatisticsCookiesSelected: false,
-      };
-    }
-    case ACCEPT_SELECTED_COOKIES: {
+    case UPDATE_COOKIE_CONSENT: {
       return {
         ...state,
         areComfortCookiesSelected: action.areComfortCookiesSelected,

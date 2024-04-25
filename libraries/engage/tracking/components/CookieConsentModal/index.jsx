@@ -4,7 +4,7 @@ import {
   Grid, I18n, Button, Modal, Link,
 } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
-import { PRIVACY_PATH } from '@shopgate/theme-gmd/components/NavDrawer/constants';
+import { PRIVACY_PATH } from '@shopgate/engage/page';
 import classNames from 'classnames';
 import connect from './connector';
 import cookieImage from './cookieConsent.svg';
@@ -19,7 +19,7 @@ const CookieConsentModal = ({
   isCookieConsentModalVisible,
   acceptAllCookies,
   acceptRequiredCookies,
-  openSettings,
+  openPrivacySettings,
 }) => {
   const {
     cookieConsent: {
@@ -27,7 +27,7 @@ const CookieConsentModal = ({
       modalTitle,
       modalButtonConfigureSettings,
       modalButtonOnlyRequired,
-      modalButtonAccept,
+      modalButtonAcceptAll,
       modalImageURL,
       modalImageSVG,
       showRequiredCookiesButton,
@@ -65,14 +65,17 @@ const CookieConsentModal = ({
 
   return (
     <Modal isOpened={isCookieConsentModalVisible} classes={{ content: styles.modalContent }}>
-      <Grid component="div" className={styles.container}>
+      <Grid component="div" className={classNames(styles.container, 'cookie-consent-modal__container')}>
         <Grid.Item component="div" className={styles.item}>
-          <img src={imageSRC} className={styles.image} alt="" aria-hidden="true" />
+          <img src={imageSRC} className={classNames(styles.image, 'cookie-consent-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
-            className={styles.title}
+            className={classNames(styles.title, 'cookie-consent-modal__title')}
             string={modalTitle || 'cookieConsentModal.title'}
           />
-          <I18n.Text string={modalMessage || 'cookieConsentModal.message'}>
+          <I18n.Text
+            string={modalMessage || 'cookieConsentModal.message'}
+            className={classNames('cookie-consent-modal__message')}
+          >
             <I18n.Placeholder forKey="privacyLink">
               <Link href={PRIVACY_PATH} tag="span">
                 <I18n.Text string="cookieConsentModal.privacyText" className={styles.link} />
@@ -81,15 +84,27 @@ const CookieConsentModal = ({
           </I18n.Text>
 
           <Grid.Item component="div" className={styles.buttonWrapper}>
-            <Button onClick={acceptAllCookies} type="primary" className={classNames(styles.button, 'cookie-modal__allowAll-button')}>
-              <I18n.Text string={modalButtonAccept || 'cookieConsentModal.buttonAllow'} />
+            <Button
+              onClick={acceptAllCookies}
+              type="primary"
+              className={classNames(styles.button, 'cookie-consent-modal__button-accept-all')}
+            >
+              <I18n.Text string={modalButtonAcceptAll || 'cookieConsentModal.buttonAcceptAll'} />
             </Button>
             {showRequiredCookiesButton ? (
-              <Button onClick={acceptRequiredCookies} type="simple" className={classNames(styles.button, 'cookie-modal__allowRequired-button')}>
+              <Button
+                onClick={acceptRequiredCookies}
+                type="simple"
+                className={classNames(styles.button, 'cookie-consent-modal__button-accept-required')}
+              >
                 <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
               </Button>
             ) : null}
-            <Button onClick={openSettings} type="simple" className={classNames(styles.button, 'cookie-modal__settingsButton')}>
+            <Button
+              onClick={openPrivacySettings}
+              type="simple"
+              className={classNames(styles.button, 'cookie-consent-modal__button-open-settings')}
+            >
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
             </Button>
           </Grid.Item>
@@ -103,7 +118,7 @@ CookieConsentModal.propTypes = {
   acceptAllCookies: PropTypes.func.isRequired,
   acceptRequiredCookies: PropTypes.func.isRequired,
   isCookieConsentModalVisible: PropTypes.bool.isRequired,
-  openSettings: PropTypes.func.isRequired,
+  openPrivacySettings: PropTypes.func.isRequired,
 };
 
 export default connect(CookieConsentModal);

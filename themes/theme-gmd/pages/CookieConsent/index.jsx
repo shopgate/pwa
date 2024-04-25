@@ -1,7 +1,7 @@
 import { View } from '@shopgate/engage/components';
 import React from 'react';
 import { BackBar } from 'Components/AppBar/presets';
-import { CookieConsentDetail } from '@shopgate/engage/tracking/components';
+import { PrivacySettings } from '@shopgate/engage/tracking/components';
 
 /**
  * The CookieConsentPage component.
@@ -10,7 +10,7 @@ import { CookieConsentDetail } from '@shopgate/engage/tracking/components';
 const CookieConsentPage = () => (
   <View aria-hidden={false}>
     <BackBar right={null} />
-    <CookieConsentDetail />
+    <PrivacySettings />
   </View>
 );
 

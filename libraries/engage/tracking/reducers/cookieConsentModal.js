@@ -1,5 +1,5 @@
 import {
-  COOKIE_CONSENT_DONE,
+  COOKIE_CONSENT_HANDLED,
   HIDE_COOKIE_CONSENT_MODAL,
   SHOW_COOKIE_CONSENT_MODAL,
 } from '../constants';
@@ -29,7 +29,7 @@ const cookieConsentModalReducer = (state = defaultState, action) => {
         isCookieConsentModalVisible: false,
       };
     }
-    case COOKIE_CONSENT_DONE: {
+    case COOKIE_CONSENT_HANDLED: {
       return {
         ...state,
         isCookieConsentHandled: true,

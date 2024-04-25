@@ -8,7 +8,7 @@ import {
 import Portal from '@shopgate/pwa-common/components/Portal';
 import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { PAYMENT_PATH } from '../../../../constants';
+import { PAYMENT_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 

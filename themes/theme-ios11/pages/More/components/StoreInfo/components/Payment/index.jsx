@@ -5,7 +5,7 @@ import {
   NAV_MENU_PAYMENT,
   NAV_MENU_PAYMENT_AFTER,
 } from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { PAYMENT_PATH } from '../../../../constants';
+import { PAYMENT_PATH } from '@shopgate/engage/page';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 

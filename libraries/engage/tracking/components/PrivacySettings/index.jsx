@@ -1,22 +1,21 @@
 import React, { useCallback, useState } from 'react';
 import {
-  Button, Grid, I18n, Link,
+  Button, Grid, I18n, Link, Switch,
 } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
-import { PRIVACY_PATH } from '@shopgate/theme-gmd/components/NavDrawer/constants';
+import { PRIVACY_PATH } from '@shopgate/engage/page';
 import { appConfig } from '@shopgate/engage';
 import classNames from 'classnames';
 import styles from './style';
-import Toggle from '../../../components/Toggle';
 import connect from './connector';
 
 /**
- * The CookieConsentDetail component.
+ * The PrivacySettings component.
  * @returns {JSX.Element}
  */
-const CookieConsentDetail = ({
-  confirmAllCookies,
-  confirmSelectedCookies,
+const PrivacySettings = ({
+  acceptAllCookies,
+  acceptSelectedCookies,
   areComfortCookiesSelectedState,
   areStatisticsCookiesSelectedState,
 }) => {
@@ -49,25 +48,25 @@ const CookieConsentDetail = ({
   const handleAcceptAllCookies = useCallback(() => {
     setAreStatisticsCookiesSelected(true);
     setAreComfortCookiesSelected(true);
-    confirmAllCookies();
-  }, [confirmAllCookies]);
+    acceptAllCookies();
+  }, [acceptAllCookies]);
 
   return (
     <Grid component="div" className={styles.container}>
       <Grid.Item component="div" className={styles.item}>
-        <Toggle
+        <Switch
           label={<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}
           title={<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
           onChange={handleChangeComfortCookies}
           checked={areComfortCookiesSelected}
         />
-        <Toggle
+        <Switch
           label={<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}
           title={<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
           onChange={handleChangeStatisticsCookies}
           checked={areStatisticsCookiesSelected}
         />
-        <Toggle
+        <Switch
           label={<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}
           title={<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
           disabled
@@ -78,17 +77,17 @@ const CookieConsentDetail = ({
         <Button
           onClick={() => handleAcceptAllCookies()}
           type="primary"
-          className={classNames(styles.button, 'cookie-settings__allowAll-button')}
+          className={classNames(styles.button, 'privacy-settings__button-accept-all')}
         >
-          <I18n.Text string="cookieConsentModal.buttonAllow" />
+          <I18n.Text string="cookieConsentModal.buttonAcceptAll" />
         </Button>
         <Button
-          onClick={() => confirmSelectedCookies({
+          onClick={() => acceptSelectedCookies({
             areComfortCookiesSelected,
             areStatisticsCookiesSelected,
           })}
           type="simple"
-          className={classNames(styles.button, 'cookie-settings__allowSelection-button')}
+          className={classNames(styles.button, 'privacy-settings__button-accept-selected')}
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
         </Button>
@@ -106,11 +105,11 @@ const CookieConsentDetail = ({
   );
 };
 
-CookieConsentDetail.propTypes = {
+PrivacySettings.propTypes = {
+  acceptAllCookies: PropTypes.func.isRequired,
+  acceptSelectedCookies: PropTypes.func.isRequired,
   areComfortCookiesSelectedState: PropTypes.bool.isRequired,
   areStatisticsCookiesSelectedState: PropTypes.bool.isRequired,
-  confirmAllCookies: PropTypes.func.isRequired,
-  confirmSelectedCookies: PropTypes.func.isRequired,
 };
 
-export default connect(CookieConsentDetail);
+export default connect(PrivacySettings);
