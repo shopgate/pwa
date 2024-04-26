@@ -1,10 +1,7 @@
-import {
-  appDidStart$, main$,
-} from '@shopgate/engage/core';
+import { appDidStart$, main$, ROUTE_WILL_LEAVE } from '@shopgate/engage/core';
+import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import { handleCookieConsent, showCookieConsentModal, updateCookieConsent } from '../action-creators';
-import {
-  getIsCookieConsentHandled,
-} from '../selectors';
+import { getIsCookieConsentHandled } from '../selectors';
 import { appConfig } from '../../index';
 import { COOKIE_CONSENT_HANDLED } from '../constants';
 import { cookieConsentUpdated$ } from '../streams';
@@ -16,6 +13,15 @@ import { cookieConsentUpdated$ } from '../streams';
 export const cookieConsentHandled$ = main$.filter(({ action }) => (
   action.type === COOKIE_CONSENT_HANDLED
 ));
+
+/**
+ * stream which gets triggered when the user navigates back from privacy settings page
+ * and cookie consent modal needs to be shown again.
+ * @type {Observable}
+ */
+export const navigateBackToCookieModal$ = main$
+  .filter(({ action }) => (action.type === ROUTE_WILL_LEAVE))
+  .filter(({ action }) => action.route.pathname === PRIVACY_SETTINGS_PATTERN);
 
 /**
  * determine whether to show the cookie consent modal at app start
@@ -50,5 +56,13 @@ export default function cookieConsent(subscribe) {
 
   subscribe(cookieConsentUpdated$, ({ dispatch }) => {
     dispatch(handleCookieConsent());
+  });
+
+  subscribe(navigateBackToCookieModal$, ({ dispatch, getState }) => {
+    const { cookieConsent: { isCookieConsentActivated } } = appConfig;
+    const isCookieConsentHandled = getIsCookieConsentHandled(getState());
+    if (isCookieConsentActivated && !isCookieConsentHandled) {
+      dispatch(showCookieConsentModal());
+    }
   });
 }

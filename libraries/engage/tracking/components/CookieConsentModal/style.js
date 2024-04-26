@@ -34,12 +34,12 @@ const link = css({
 }).toString();
 
 const image = css({
-  width: '80%',
+  width: '60%',
   maxWidth: 400,
 }).toString();
 
 const button = css({
-  marginTop: '30px',
+  marginTop: '20px',
 }).toString();
 
 const buttonText = css({

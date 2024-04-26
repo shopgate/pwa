@@ -2,7 +2,7 @@ import { css } from 'glamor';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const button = css({
-  marginTop: '30px',
+  marginTop: '20px',
 }).toString();
 
 const container = css({
