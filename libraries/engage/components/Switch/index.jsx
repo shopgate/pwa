@@ -15,11 +15,9 @@ const Switch = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.textWrapper}>
-        {title ?
-          <span className={styles.title}>{title}</span>
-          : null}
-        <span>{label}</span>
+      <div>
+        {title && <span className={styles.title}>{title}</span>}
+        {label && <span>{label}</span>}
       </div>
       <div>
         <input
@@ -43,9 +41,9 @@ const Switch = ({
 };
 
 Switch.propTypes = {
-  label: PropTypes.node.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
+  label: PropTypes.node,
   onChange: PropTypes.func,
   title: PropTypes.node,
 };
@@ -54,6 +52,7 @@ Switch.defaultProps = {
   checked: false,
   title: null,
   onChange: null,
+  label: null,
 };
 
 export default Switch;

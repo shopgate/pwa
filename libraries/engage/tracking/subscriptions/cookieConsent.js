@@ -3,8 +3,8 @@ import {
 } from '@shopgate/engage/core';
 import { handleCookieConsent, showCookieConsentModal, updateCookieConsent } from '../action-creators';
 import {
-  getAreComfortCookiesSelected,
-  getAreStatisticsCookiesSelected,
+  getAreComfortCookiesActive,
+  getAreStatisticsCookiesActive,
   getIsCookieConsentHandled,
 } from '../selectors';
 import { appConfig } from '../../index';
@@ -26,15 +26,15 @@ export default function cookieConsent(subscribe) {
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     const { cookieConsent: { cookieConsentActivated } } = appConfig;
     const isCookieConsentHandled = getIsCookieConsentHandled(getState());
-    const areStatisticsCookiesSelected = getAreStatisticsCookiesSelected(getState());
-    const areComfortCookiesSelected = getAreComfortCookiesSelected(getState());
+    const areStatisticsCookiesActive = getAreStatisticsCookiesActive(getState());
+    const areComfortCookiesActive = getAreComfortCookiesActive(getState());
 
     // if merchant has not activated the cookie feature:
     // trigger stream to continue with push opt-in modal
     if (!cookieConsentActivated) {
       dispatch(updateCookieConsent({
-        areComfortCookiesSelected: null,
-        areStatisticsCookiesSelected: null,
+        areComfortCookiesActive: null,
+        areStatisticsCookiesActive: null,
       }));
     }
 
@@ -48,17 +48,16 @@ export default function cookieConsent(subscribe) {
     // trigger stream to continue with push opt-in modal
     if (cookieConsentActivated && isCookieConsentHandled) {
       dispatch(updateCookieConsent({
-        areComfortCookiesSelected,
-        areStatisticsCookiesSelected,
+        areComfortCookiesActive,
+        areStatisticsCookiesActive,
       }));
     }
   });
 
   subscribe(cookieConsentHandled$, ({ dispatch, action }) => {
-    console.log('AYAY :54:action:', action);
     dispatch(handleCookieConsent({
-      areComfortCookiesSelected: action.areComfortCookiesSelected,
-      areStatisticsCookiesSelected: action.areStatisticsCookiesSelected,
+      areComfortCookiesActive: action.areComfortCookiesActive,
+      areStatisticsCookiesActive: action.areStatisticsCookiesActive,
     }));
   });
 }

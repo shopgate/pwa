@@ -23,31 +23,31 @@ export const hideCookieConsentModal = () => ({
 
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
- * @param {boolean|null} areComfortCookiesSelected whether this cookie type was selected by user
- * @param {boolean|null} areStatisticsCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areComfortCookiesActive whether this cookie type was selected by user
+ * @param {boolean|null} areStatisticsCookiesActive whether this cookie type was selected by user
  * @returns {Function}
  */
 export const updateCookieConsent = ({
-  areComfortCookiesSelected,
-  areStatisticsCookiesSelected,
+  areComfortCookiesActive,
+  areStatisticsCookiesActive,
 }) => ({
   type: UPDATE_COOKIE_CONSENT,
-  areComfortCookiesSelected,
-  areStatisticsCookiesSelected,
+  areComfortCookiesActive,
+  areStatisticsCookiesActive,
 });
 
 /**
  * action to be dispatched when the cookies have been handled either by user or by merchant
  * * and native modal should be triggered for setting the permission
- * @param {boolean|null} areComfortCookiesSelected whether this cookie type was selected by user
- * @param {boolean|null} areStatisticsCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areComfortCookiesActive whether this cookie type was selected by user
+ * @param {boolean|null} areStatisticsCookiesActive whether this cookie type was selected by user
  * @returns {Function}
  */
 export const handleCookieConsent = ({
-  areComfortCookiesSelected,
-  areStatisticsCookiesSelected,
+  areComfortCookiesActive,
+  areStatisticsCookiesActive,
 }) => ({
   type: COOKIE_CONSENT_HANDLED,
-  areComfortCookiesSelected,
-  areStatisticsCookiesSelected,
+  areComfortCookiesActive,
+  areStatisticsCookiesActive,
 });

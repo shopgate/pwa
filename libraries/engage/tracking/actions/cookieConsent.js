@@ -10,13 +10,10 @@ import { PRIVACY_SETTINGS_PATTERN } from '../constants';
  * and native modal should be triggered for setting the permission
  * @returns {Function}
  */
-export const acceptAllCookies = ({
-  areComfortCookiesSelected,
-  areStatisticsCookiesSelected,
-}) => (dispatch) => {
+export const acceptAllCookies = () => (dispatch) => {
   dispatch(updateCookieConsent({
-    areComfortCookiesSelected,
-    areStatisticsCookiesSelected,
+    areComfortCookiesActive: true,
+    areStatisticsCookiesActive: true,
   }));
   dispatch(hideCookieConsentModal());
   dispatch(historyPush({ pathname: '/' }));
@@ -25,17 +22,17 @@ export const acceptAllCookies = ({
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
  * and native modal should be triggered for setting the permission
- * @param {boolean|null} areComfortCookiesSelected whether this cookie type was selected by user
- * @param {boolean|null} areStatisticsCookiesSelected whether this cookie type was selected by user
+ * @param {boolean|null} areComfortCookiesActive whether this cookie type was selected by user
+ * @param {boolean|null} areStatisticsCookiesActive whether this cookie type was selected by user
  * @returns {Function}
  */
 export const acceptSelectedCookies = ({
-  areComfortCookiesSelected,
-  areStatisticsCookiesSelected,
+  areComfortCookiesActive,
+  areStatisticsCookiesActive,
 }) => (dispatch) => {
   dispatch(updateCookieConsent({
-    areComfortCookiesSelected,
-    areStatisticsCookiesSelected,
+    areComfortCookiesActive,
+    areStatisticsCookiesActive,
   }));
   dispatch(hideCookieConsentModal());
   dispatch(historyPush({ pathname: '/' }));
@@ -46,13 +43,10 @@ export const acceptSelectedCookies = ({
  * and native modal should be triggered for setting the permission
  * @returns {Function}
  */
-export const acceptRequiredCookies = ({
-  areComfortCookiesSelected,
-  areStatisticsCookiesSelected,
-}) => (dispatch) => {
+export const acceptRequiredCookies = () => (dispatch) => {
   dispatch(updateCookieConsent({
-    areComfortCookiesSelected,
-    areStatisticsCookiesSelected,
+    areComfortCookiesActive: false,
+    areStatisticsCookiesActive: false,
   }));
   dispatch(hideCookieConsentModal());
 };

@@ -16,20 +16,20 @@ export const getCookieSettingsState = state => state?.cookieConsent?.cookieSetti
 
 /**
  * Selects the property of the comfort cookie settings.
- * @returns {boolean} whether comfort cookies have been selected by the user.
+ * @returns {boolean|null} whether comfort cookies have been selected by the user.
  */
-export const getAreComfortCookiesSelected = createSelector(
+export const getAreComfortCookiesActive = createSelector(
   getCookieSettingsState,
-  modalState => modalState.areComfortCookiesSelected || false
+  modalState => modalState.areComfortCookiesActive
 );
 
 /**
  * Selects the property of the statistics cookie settings.
  * @returns {boolean} whether statistics cookies have been selected by the user.
  */
-export const getAreStatisticsCookiesSelected = createSelector(
+export const getAreStatisticsCookiesActive = createSelector(
   getCookieSettingsState,
-  modalState => modalState.areStatisticsCookiesSelected || false
+  modalState => modalState.areStatisticsCookiesActive
 );
 
 /**
@@ -38,13 +38,13 @@ export const getAreStatisticsCookiesSelected = createSelector(
  */
 export const getIsCookieConsentModalVisible = createSelector(
   getCookieConsentModalState,
-  getAreComfortCookiesSelected,
-  getAreStatisticsCookiesSelected,
+  getAreComfortCookiesActive,
+  getAreStatisticsCookiesActive,
   (modalState, comfortCookiesState, statisticsCookiesState) => (
     modalState.isCookieConsentModalVisible
-      && (comfortCookiesState !== null
-        && statisticsCookiesState !== null))
-    || false
+        && (comfortCookiesState === null
+          && statisticsCookiesState === null))
+      || false
 );
 
 /**
@@ -52,6 +52,7 @@ export const getIsCookieConsentModalVisible = createSelector(
  * @returns {boolean} whether cookie consent options have been chosen by the user.
  */
 export const getIsCookieConsentHandled = createSelector(
-  getCookieConsentModalState,
-  modalState => modalState?.isCookieConsentHandled || false
+  getCookieSettingsState,
+  modalState => (modalState?.areComfortCookiesActive !== null)
+    || (modalState?.areStatisticsCookiesActive !== null)
 );

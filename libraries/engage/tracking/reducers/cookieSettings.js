@@ -1,8 +1,8 @@
 import { UPDATE_COOKIE_CONSENT } from '../constants';
 
 const defaultState = {
-  areComfortCookiesSelected: null,
-  areStatisticsCookiesSelected: null,
+  areComfortCookiesActive: null,
+  areStatisticsCookiesActive: null,
 };
 
 /**
@@ -16,8 +16,8 @@ const cookieSettingsReducer = (state = defaultState, action) => {
     case UPDATE_COOKIE_CONSENT: {
       return {
         ...state,
-        areComfortCookiesSelected: action.areComfortCookiesSelected,
-        areStatisticsCookiesSelected: action.areStatisticsCookiesSelected,
+        areComfortCookiesActive: action.areComfortCookiesActive,
+        areStatisticsCookiesActive: action.areStatisticsCookiesActive,
       };
     }
 

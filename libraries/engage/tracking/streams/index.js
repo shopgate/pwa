@@ -14,7 +14,7 @@ export const cookieConsentUpdated$ = main$.filter(({ action }) => (
  * @type {Observable}
  */
 export const comfortCookieActivated$ = cookieConsentUpdated$.filter(({ action }) => (
-  action.areComfortCookiesSelected === true
+  action.areComfortCookiesActive === true
 ));
 
 /**
@@ -22,6 +22,6 @@ export const comfortCookieActivated$ = cookieConsentUpdated$.filter(({ action })
  * @type {Observable}
  */
 export const statisticsCookiesActivated$ = cookieConsentUpdated$.filter(({ action }) => (
-  action.areStatisticsCookiesSelected === true
+  action.areStatisticsCookiesActive === true
 ));
 

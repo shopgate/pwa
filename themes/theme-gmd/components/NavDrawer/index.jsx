@@ -10,7 +10,7 @@ import StoreInfo from './components/StoreInfo';
 import LogoutButton from './components/LogoutButton';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const NavDrawerContainer = ({ onOpen, onClose }) => (
   <NavDrawer onOpen={onOpen} onClose={onClose}>

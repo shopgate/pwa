@@ -4,7 +4,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const container = css({
   display: 'flex',
   textAlign: 'left',
-  marginBottom: '25px',
   justifyContent: 'space-between',
 });
 
@@ -50,10 +49,7 @@ const input = css({
 
 const disabled = css({
   backgroundColor: themeConfig.colors.shade7,
-});
-
-const button = css({
-  marginTop: '30px',
+  cursor: 'none',
 });
 
 export default {
@@ -61,6 +57,5 @@ export default {
   switchButton,
   title,
   container,
-  button,
   disabled,
 };

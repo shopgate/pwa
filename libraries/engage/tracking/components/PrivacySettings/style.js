@@ -30,10 +30,15 @@ const link = css({
   textDecoration: 'underline',
 }).toString();
 
+const switchWrapper = css({
+  marginBottom: '25px',
+});
+
 export default {
   button,
   container,
   buttonWrapper,
   link,
   item,
+  switchWrapper,
 };

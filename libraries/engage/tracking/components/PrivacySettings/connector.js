@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { acceptAllCookies, acceptSelectedCookies } from '../../actions';
-import { getAreComfortCookiesSelected, getAreStatisticsCookiesSelected } from '../../selectors';
+import { getAreComfortCookiesActive, getAreStatisticsCookiesActive } from '../../selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,8 +8,8 @@ import { getAreComfortCookiesSelected, getAreStatisticsCookiesSelected } from '.
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  areComfortCookiesSelectedState: getAreComfortCookiesSelected(state),
-  areStatisticsCookiesSelectedState: getAreStatisticsCookiesSelected(state),
+  areComfortCookiesActiveState: getAreComfortCookiesActive(state),
+  areStatisticsCookiesActiveState: getAreStatisticsCookiesActive(state),
 });
 
 /**

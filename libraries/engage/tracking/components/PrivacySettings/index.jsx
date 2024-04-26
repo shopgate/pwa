@@ -16,8 +16,8 @@ import connect from './connector';
 const PrivacySettings = ({
   acceptAllCookies,
   acceptSelectedCookies,
-  areComfortCookiesSelectedState,
-  areStatisticsCookiesSelectedState,
+  areComfortCookiesActiveState,
+  areStatisticsCookiesActiveState,
 }) => {
   const {
     cookieConsent: {
@@ -31,10 +31,10 @@ const PrivacySettings = ({
   } = appConfig;
 
   const [areComfortCookiesSelected, setAreComfortCookiesSelected] = useState(
-    areComfortCookiesSelectedState !== null ? areComfortCookiesSelectedState : false
+    areComfortCookiesActiveState !== null ? areComfortCookiesActiveState : false
   );
   const [areStatisticsCookiesSelected, setAreStatisticsCookiesSelected] = useState(
-    areStatisticsCookiesSelectedState !== null ? areStatisticsCookiesSelectedState : false
+    areStatisticsCookiesActiveState !== null ? areStatisticsCookiesActiveState : false
   );
 
   const handleChangeComfortCookies = useCallback(() => {
@@ -54,24 +54,30 @@ const PrivacySettings = ({
   return (
     <Grid component="div" className={styles.container}>
       <Grid.Item component="div" className={styles.item}>
-        <Switch
-          label={<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}
-          title={<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
-          onChange={handleChangeComfortCookies}
-          checked={areComfortCookiesSelected}
-        />
-        <Switch
-          label={<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}
-          title={<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
-          onChange={handleChangeStatisticsCookies}
-          checked={areStatisticsCookiesSelected}
-        />
-        <Switch
-          label={<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}
-          title={<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
-          disabled
-          checked
-        />
+        <Grid.Item component="div" className={styles.switchWrapper}>
+          <Switch
+            label={<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}
+            title={<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
+            onChange={handleChangeComfortCookies}
+            checked={areComfortCookiesSelected}
+          />
+        </Grid.Item>
+        <Grid.Item component="div" className={styles.switchWrapper}>
+          <Switch
+            label={<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}
+            title={<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
+            onChange={handleChangeStatisticsCookies}
+            checked={areStatisticsCookiesSelected}
+          />
+        </Grid.Item>
+        <Grid.Item component="div" className={styles.switchWrapper}>
+          <Switch
+            label={<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}
+            title={<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
+            disabled
+            checked
+          />
+        </Grid.Item>
       </Grid.Item>
       <Grid.Item component="div" className={styles.buttonWrapper}>
         <Button
@@ -83,8 +89,8 @@ const PrivacySettings = ({
         </Button>
         <Button
           onClick={() => acceptSelectedCookies({
-            areComfortCookiesSelected,
-            areStatisticsCookiesSelected,
+            areComfortCookiesActive: areComfortCookiesSelected,
+            areStatisticsCookiesActive: areStatisticsCookiesSelected,
           })}
           type="simple"
           className={classNames(styles.button, 'privacy-settings__button-accept-selected')}
@@ -108,8 +114,8 @@ const PrivacySettings = ({
 PrivacySettings.propTypes = {
   acceptAllCookies: PropTypes.func.isRequired,
   acceptSelectedCookies: PropTypes.func.isRequired,
-  areComfortCookiesSelectedState: PropTypes.bool.isRequired,
-  areStatisticsCookiesSelectedState: PropTypes.bool.isRequired,
+  areComfortCookiesActiveState: PropTypes.bool.isRequired,
+  areStatisticsCookiesActiveState: PropTypes.bool.isRequired,
 };
 
 export default connect(PrivacySettings);
