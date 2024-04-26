@@ -9,7 +9,6 @@ const container = css({
   backgroundColor: themeColors.lightOverlay,
   height: '100vh',
   padding: '30px',
-  paddingTop: 'calc(30px + var(--safe-area-inset-top))',
   justifyContent: 'center',
   display: 'flex',
   flexDirection: 'column',

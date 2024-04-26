@@ -114,8 +114,13 @@ const PrivacySettings = ({
 PrivacySettings.propTypes = {
   acceptAllCookies: PropTypes.func.isRequired,
   acceptSelectedCookies: PropTypes.func.isRequired,
-  areComfortCookiesActiveState: PropTypes.bool.isRequired,
-  areStatisticsCookiesActiveState: PropTypes.bool.isRequired,
+  areComfortCookiesActiveState: PropTypes.bool,
+  areStatisticsCookiesActiveState: PropTypes.bool,
+};
+
+PrivacySettings.defaultProps = {
+  areComfortCookiesActiveState: null,
+  areStatisticsCookiesActiveState: null,
 };
 
 export default connect(PrivacySettings);

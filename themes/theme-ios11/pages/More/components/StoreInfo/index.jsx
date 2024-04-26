@@ -21,7 +21,7 @@ import PrivacySettings from './components/PrivacySettings';
  * @returns {JSX.Element}
  */
 const StoreInfo = () => {
-  const { cookieConsent: { cookieConsentActivated } } = appConfig;
+  const { cookieConsent: { isCookieConsentActivated } } = appConfig;
 
   return (
     <Fragment>
@@ -32,7 +32,7 @@ const StoreInfo = () => {
           <Payment />
           <Terms />
           <Privacy />
-          {cookieConsentActivated && <PrivacySettings />}
+          {isCookieConsentActivated && <PrivacySettings />}
           <ReturnPolicy />
           <Imprint />
         </Section>

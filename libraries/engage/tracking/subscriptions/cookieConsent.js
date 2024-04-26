@@ -3,12 +3,11 @@ import {
 } from '@shopgate/engage/core';
 import { handleCookieConsent, showCookieConsentModal, updateCookieConsent } from '../action-creators';
 import {
-  getAreComfortCookiesActive,
-  getAreStatisticsCookiesActive,
   getIsCookieConsentHandled,
 } from '../selectors';
 import { appConfig } from '../../index';
 import { COOKIE_CONSENT_HANDLED } from '../constants';
+import { cookieConsentUpdated$ } from '../streams';
 
 /**
  * stream which gets triggered when the cookie consent has been handled by the user.
@@ -19,19 +18,17 @@ export const cookieConsentHandled$ = main$.filter(({ action }) => (
 ));
 
 /**
- * show cookie consent modal at first app start
+ * determine whether to show the cookie consent modal at app start
  * @param {Function} subscribe The subscribe function
  */
 export default function cookieConsent(subscribe) {
   subscribe(appDidStart$, ({ dispatch, getState }) => {
-    const { cookieConsent: { cookieConsentActivated } } = appConfig;
+    const { cookieConsent: { isCookieConsentActivated } } = appConfig;
     const isCookieConsentHandled = getIsCookieConsentHandled(getState());
-    const areStatisticsCookiesActive = getAreStatisticsCookiesActive(getState());
-    const areComfortCookiesActive = getAreComfortCookiesActive(getState());
 
     // if merchant has not activated the cookie feature:
     // trigger stream to continue with push opt-in modal
-    if (!cookieConsentActivated) {
+    if (!isCookieConsentActivated) {
       dispatch(updateCookieConsent({
         areComfortCookiesActive: null,
         areStatisticsCookiesActive: null,
@@ -40,24 +37,18 @@ export default function cookieConsent(subscribe) {
 
     // if merchant has activated cookie feature but user has not chosen cookies yet:
     // show cookie consent modal to make user choose them
-    if (cookieConsentActivated && !isCookieConsentHandled) {
+    if (isCookieConsentActivated && !isCookieConsentHandled) {
       dispatch(showCookieConsentModal());
     }
 
     // if merchant has activated cookie feature and user has chosen cookies already
     // trigger stream to continue with push opt-in modal
-    if (cookieConsentActivated && isCookieConsentHandled) {
-      dispatch(updateCookieConsent({
-        areComfortCookiesActive,
-        areStatisticsCookiesActive,
-      }));
+    if (isCookieConsentActivated && isCookieConsentHandled) {
+      dispatch(handleCookieConsent());
     }
   });
 
-  subscribe(cookieConsentHandled$, ({ dispatch, action }) => {
-    dispatch(handleCookieConsent({
-      areComfortCookiesActive: action.areComfortCookiesActive,
-      areStatisticsCookiesActive: action.areStatisticsCookiesActive,
-    }));
+  subscribe(cookieConsentUpdated$, ({ dispatch }) => {
+    dispatch(handleCookieConsent());
   });
 }

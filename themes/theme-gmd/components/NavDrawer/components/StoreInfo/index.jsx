@@ -27,7 +27,7 @@ import PrivacySettingsButton from './components/PrivacySettingsButton';
  * @returns {JSX.Element}
  */
 const StoreInfo = () => {
-  const { cookieConsent: { cookieConsentActivated } } = appConfig;
+  const { cookieConsent: { isCookieConsentActivated } } = appConfig;
 
   return (
     <Fragment>
@@ -47,7 +47,7 @@ const StoreInfo = () => {
           <NavDrawerSection title="navigation.menuSubHeader.about">
             <TermsButton />
             <PrivacyButton />
-            {cookieConsentActivated && <PrivacySettingsButton />}
+            {isCookieConsentActivated && <PrivacySettingsButton />}
             {showReturnPolicy && <ReturnsButton />}
             <ImprintButton />
           </NavDrawerSection>

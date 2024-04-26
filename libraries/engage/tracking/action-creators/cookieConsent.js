@@ -39,15 +39,8 @@ export const updateCookieConsent = ({
 /**
  * action to be dispatched when the cookies have been handled either by user or by merchant
  * * and native modal should be triggered for setting the permission
- * @param {boolean|null} areComfortCookiesActive whether this cookie type was selected by user
- * @param {boolean|null} areStatisticsCookiesActive whether this cookie type was selected by user
  * @returns {Function}
  */
-export const handleCookieConsent = ({
-  areComfortCookiesActive,
-  areStatisticsCookiesActive,
-}) => ({
+export const handleCookieConsent = () => ({
   type: COOKIE_CONSENT_HANDLED,
-  areComfortCookiesActive,
-  areStatisticsCookiesActive,
 });

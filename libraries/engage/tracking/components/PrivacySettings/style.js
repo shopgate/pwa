@@ -32,7 +32,7 @@ const link = css({
 
 const switchWrapper = css({
   marginBottom: '25px',
-});
+}).toString();
 
 export default {
   button,
