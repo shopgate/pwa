@@ -22,7 +22,7 @@ export const productsAdded$ = originalProductsAdded$
       .every(productId => getProductById(getState(), { productId }));
 
     if (productDataAvailable) {
-      // All product data for the tracking even is available - handover action data to subscribers
+      // All product data for the tracking event is available - handover action data to subscribers
       return Observable.of(input);
     }
 
