@@ -6,13 +6,13 @@ import {
   NAV_MENU_RETURN_POLICY,
   NAV_MENU_RETURN_POLICY_AFTER,
 } from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { RETURN_POLICY_PATH } from '@shopgate/engage/page';
+import { RETURN_POLICY_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 
 /**
  * The ReturnPolicyComponent.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ReturnPolicy = () => (
   <Fragment>

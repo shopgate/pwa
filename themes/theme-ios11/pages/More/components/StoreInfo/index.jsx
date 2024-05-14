@@ -16,30 +16,28 @@ import ReturnPolicy from './components/ReturnPolicy';
 import Imprint from './components/Imprint';
 import PrivacySettings from './components/PrivacySettings';
 
+const { cookieConsent: { isCookieConsentActivated } } = appConfig;
+
 /**
  * The StoreInfoComponent.
  * @returns {JSX.Element}
  */
-const StoreInfo = () => {
-  const { cookieConsent: { isCookieConsentActivated } } = appConfig;
-
-  return (
-    <Fragment>
-      <Portal name={NAV_MENU_STORE_INFORMATION_BEFORE} props={portalProps} />
-      <Portal name={NAV_MENU_STORE_INFORMATION} props={portalProps}>
-        <Section title="navigation.store_information">
-          <Shipping />
-          <Payment />
-          <Terms />
-          <Privacy />
-          {isCookieConsentActivated && <PrivacySettings />}
-          <ReturnPolicy />
-          <Imprint />
-        </Section>
-      </Portal>
-      <Portal name={NAV_MENU_STORE_INFORMATION_AFTER} props={portalProps} />
-    </Fragment>
-  );
-};
+const StoreInfo = () => (
+  <Fragment>
+    <Portal name={NAV_MENU_STORE_INFORMATION_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_STORE_INFORMATION} props={portalProps}>
+      <Section title="navigation.store_information">
+        <Shipping />
+        <Payment />
+        <Terms />
+        <Privacy />
+        {isCookieConsentActivated && <PrivacySettings />}
+        <ReturnPolicy />
+        <Imprint />
+      </Section>
+    </Portal>
+    <Portal name={NAV_MENU_STORE_INFORMATION_AFTER} props={portalProps} />
+  </Fragment>
+);
 
 export default StoreInfo;

@@ -49,7 +49,7 @@ const input = css({
 
 const disabled = css({
   backgroundColor: themeConfig.colors.shade7,
-  cursor: 'none',
+  cursor: 'not-allowed',
 });
 
 export default {

@@ -8,15 +8,16 @@ import {
 import Portal from '@shopgate/pwa-common/components/Portal';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { RETURN_POLICY_PATH } from '@shopgate/engage/page';
+import { RETURN_POLICY_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.return_policy';
 
 /**
- * @param {Function} props.navigate The navigate action.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {Function} props.navigate The navigate props
+ * @returns {JSX.Element}
  */
 const ReturnsButton = ({ navigate }) => (
   <Fragment>

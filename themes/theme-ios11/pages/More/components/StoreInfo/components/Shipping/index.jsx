@@ -5,13 +5,13 @@ import {
   NAV_MENU_SHIPPING,
   NAV_MENU_SHIPPING_AFTER,
 } from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { SHIPPING_PATH } from '@shopgate/engage/page';
+import { SHIPPING_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 
 /**
  * The ShippingComponent.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Shipping = () => (
   <Fragment>

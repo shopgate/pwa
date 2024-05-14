@@ -5,7 +5,7 @@ import {
   NAV_MENU_TERMS,
   NAV_MENU_TERMS_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { TERMS_PATH } from '@shopgate/engage/page';
+import { TERMS_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 

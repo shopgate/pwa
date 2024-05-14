@@ -89,7 +89,7 @@ const Pages = ({ store }) => (
                   />
                   <Route
                     pattern={PRIVACY_SETTINGS_PATTERN}
-                    component={routes.CookieConsent}
+                    component={routes.PrivacySettings}
                   />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />

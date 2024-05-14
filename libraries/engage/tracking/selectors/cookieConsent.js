@@ -33,7 +33,7 @@ export const getAreStatisticsCookiesActive = createSelector(
 );
 
 /**
- * Selects the property of the cookie consent modal.
+ * Selects the visibility property of the cookie consent modal.
  * @returns {boolean} whether cookie consent modal is shown.
  */
 export const getIsCookieConsentModalVisible = createSelector(
@@ -42,14 +42,12 @@ export const getIsCookieConsentModalVisible = createSelector(
   getAreStatisticsCookiesActive,
   (modalState, comfortCookiesState, statisticsCookiesState) => (
     modalState.isCookieConsentModalVisible
-        && (comfortCookiesState === null
-          && statisticsCookiesState === null))
-      || false
+        && (comfortCookiesState === null && statisticsCookiesState === null))
 );
 
 /**
- * Selects the property of the cookie consent settings.
- * @returns {boolean} whether cookie consent options have been chosen by the user.
+ * Selects the cookie consent settings property.
+ * @returns {boolean} whether cookie consent settings have been chosen by the user.
  */
 export const getIsCookieConsentHandled = createSelector(
   getCookieSettingsState,
