@@ -57,92 +57,104 @@ new ThemeConfigResolver().resolveAll();
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX.Element}
  */
-const Pages = ({ store }) => (
-  <App store={store}>
-    <Helmet>
-      <html lang={appConfig.language.substring(0, 2)} className="theme-gmd" />
-    </Helmet>
-    <NavigationHandler>
-      <AppProvider>
-        <ThemeContext.Provider value={themeApi}>
-          <LoadingProvider>
-            <ToastProvider>
-              <Portal name={APP_GLOBALS} />
-              <Viewport>
-                <ModalContainer component={Dialog} />
-                <PushOptInModal />
-                <Toaster render={props => <SnackBarContainer {...props} />} />
-                <FavoritesListChooser />
-                <Router history={history}>
-                  <Route
-                    pattern={INDEX_PATH}
-                    component={routes.StartPage}
-                    transform={routesTransforms[INDEX_PATH]}
-                  />
-                  <Route pattern={PAGE_PATTERN} component={routes.Page} />
-                  <Route
-                    pattern={ROOT_CATEGORY_PATTERN}
-                    component={routes.RootCategory}
-                    cache
-                    transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
-                  />
-                  <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
-                  <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                  <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
-                  <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
-                  <Route
-                    pattern={ITEM_PATTERN}
-                    component={routes.Product}
-                    transform={transformItemRoute}
-                  />
-                  <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
-                  <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
-                  <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
-                  <Route
-                    pattern={CART_PATH}
-                    component={routes.Cart}
-                    transform={routesTransforms[CART_PATH]}
-                  />
-                  <Route pattern={SCANNER_PATH} component={routes.Scanner} />
-                  {
-                      appConfig.hasFavorites
-                      && <Route
-                        pattern={FAVORITES_PATH}
-                        component={routes.Favorites}
-                        transform={routesTransforms[FAVORITES_PATH]}
-                      />
-                    }
-                  <Route pattern={LOGIN_PATH} component={routes.Login} />
-                  <Route
-                    pattern={SEARCH_PATTERN}
-                    component={routes.Search}
-                    cache
-                    transform={routesTransforms[SEARCH_PATTERN]}
-                  />
-                  <Route
-                    pattern={BACK_IN_STOCK_PATTERN}
-                    component={routes.BackInStock}
-                  />
-                  <Route
-                    pattern={SEARCH_FILTER_PATTERN}
-                    component={routes.Filter}
-                    transform={routesTransforms[SEARCH_FILTER_PATTERN]}
-                  />
-                  {React.Children.map(routePortals, Component => Component)}
-                </Router>
-                {isDev && (
-                <Helmet>
-                  <link href={devFontsUrl} rel="stylesheet" />
-                </Helmet>
-                )}
-              </Viewport>
-            </ToastProvider>
-          </LoadingProvider>
-        </ThemeContext.Provider>
-      </AppProvider>
-    </NavigationHandler>
-  </App>
-);
+const Pages = ({ store }) => {
+  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
+
+  return (
+    <App store={store}>
+      <Helmet>
+        <html lang={appConfig.language.substring(0, 2)} className="theme-gmd" />
+        {recaptchaEnabled && googleCloudSiteKey ? (
+          <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
+        ) : null }
+        <style type="text/css">
+          {`
+            .grecaptcha-badge { display:none; }
+          `}
+        </style>
+      </Helmet>
+      <NavigationHandler>
+        <AppProvider>
+          <ThemeContext.Provider value={themeApi}>
+            <LoadingProvider>
+              <ToastProvider>
+                <Portal name={APP_GLOBALS} />
+                <Viewport>
+                  <ModalContainer component={Dialog} />
+                  <PushOptInModal />
+                  <Toaster render={props => <SnackBarContainer {...props} />} />
+                  <FavoritesListChooser />
+                  <Router history={history}>
+                    <Route
+                      pattern={INDEX_PATH}
+                      component={routes.StartPage}
+                      transform={routesTransforms[INDEX_PATH]}
+                    />
+                    <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                    <Route
+                      pattern={ROOT_CATEGORY_PATTERN}
+                      component={routes.RootCategory}
+                      cache
+                      transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
+                    />
+                    <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
+                    <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                    <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
+                    <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
+                    <Route
+                      pattern={ITEM_PATTERN}
+                      component={routes.Product}
+                      transform={transformItemRoute}
+                    />
+                    <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
+                    <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
+                    <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
+                    <Route
+                      pattern={CART_PATH}
+                      component={routes.Cart}
+                      transform={routesTransforms[CART_PATH]}
+                    />
+                    <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                    {
+                        appConfig.hasFavorites
+                        && <Route
+                          pattern={FAVORITES_PATH}
+                          component={routes.Favorites}
+                          transform={routesTransforms[FAVORITES_PATH]}
+                        />
+                      }
+                    <Route pattern={LOGIN_PATH} component={routes.Login} />
+                    <Route
+                      pattern={SEARCH_PATTERN}
+                      component={routes.Search}
+                      cache
+                      transform={routesTransforms[SEARCH_PATTERN]}
+                    />
+                    <Route
+                      pattern={BACK_IN_STOCK_PATTERN}
+                      component={routes.BackInStock}
+                    />
+                    <Route
+                      pattern={SEARCH_FILTER_PATTERN}
+                      component={routes.Filter}
+                      transform={routesTransforms[SEARCH_FILTER_PATTERN]}
+                    />
+                    {React.Children.map(routePortals, Component => Component)}
+                  </Router>
+                  {isDev && (
+                  <Helmet>
+                    <link href={devFontsUrl} rel="stylesheet" />
+                  </Helmet>
+                  )}
+                </Viewport>
+              </ToastProvider>
+            </LoadingProvider>
+          </ThemeContext.Provider>
+        </AppProvider>
+      </NavigationHandler>
+    </App>
+  );
+};
 
 Pages.propTypes = {
   store: PropTypes.shape().isRequired,
