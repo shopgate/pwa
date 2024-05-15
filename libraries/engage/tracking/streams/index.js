@@ -1,27 +1,27 @@
 import { main$ } from '@shopgate/pwa-common/streams';
-import { UPDATE_COOKIE_CONSENT } from '../constants';
+import { COOKIE_CONSENT_HANDLED, UPDATE_COOKIE_CONSENT } from '../constants';
 
 /**
- * Gets triggered when the cookie consent has been handled by the user.
+ * Gets triggered when the cookie consent has been updated by the user or handled already.
  * @type {Observable}
  */
-export const cookieConsentUpdated$ = main$.filter(({ action }) => (
-  action.type === UPDATE_COOKIE_CONSENT
+export const cookieConsentSet$ = main$.filter(({ action }) => (
+  action.type === UPDATE_COOKIE_CONSENT || action.type === COOKIE_CONSENT_HANDLED
 ));
 
 /**
- * Gets triggered when the cookie consent has been handled by the user.
+ * Gets triggered when the cookie consent has been set either by user or merchant.
  * @type {Observable}
  */
-export const comfortCookieActivated$ = cookieConsentUpdated$.filter(({ action }) => (
+export const comfortCookieActivated$ = cookieConsentSet$.filter(({ action }) => (
   action.areComfortCookiesActive === true
 ));
 
 /**
- * Gets triggered when the cookie consent has been handled by the user.
+ * Gets triggered when the cookie consent has been set either by user or merchant.
  * @type {Observable}
  */
-export const statisticsCookiesActivated$ = cookieConsentUpdated$.filter(({ action }) => (
+export const statisticsCookiesActivated$ = cookieConsentSet$.filter(({ action }) => (
   action.areStatisticsCookiesActive === true
 ));
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getIsCookieConsentModalVisible } from '../../selectors';
+import { getIsCookieConsentModalVisible } from '../../selectors/cookieConsent';
 import { acceptAllCookies, acceptRequiredCookies, openPrivacySettings } from '../../actions';
 
 /**

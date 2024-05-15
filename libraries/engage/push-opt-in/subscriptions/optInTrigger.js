@@ -26,7 +26,7 @@ import {
 } from '../constants';
 
 import { getPushOptInTriggerState } from '../selectors';
-import { cookieConsentHandled$ } from '../../tracking/subscriptions/cookieConsent';
+import { cookieConsentSet$ } from '../../tracking/streams';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -111,7 +111,7 @@ export default function pushOptIn(subscribe) {
   };
 
   // event subscriber to handle app start based push opt in
-  subscribe(cookieConsentHandled$, async ({ dispatch, getState }) => {
+  subscribe(cookieConsentSet$, async ({ dispatch, getState }) => {
     await showOptInAfterChecks({
       dispatch,
       getState,
@@ -119,7 +119,7 @@ export default function pushOptIn(subscribe) {
   });
 
   // event subscriber to handle order based push opt in
-  subscribe(cookieConsentHandled$, ({ dispatch, getState }) => {
+  subscribe(cookieConsentSet$, ({ dispatch, getState }) => {
     event.addCallback('checkoutSuccess', async () => {
       await showOptInAfterChecks({
         dispatch,

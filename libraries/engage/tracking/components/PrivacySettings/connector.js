@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { acceptAllCookies, acceptSelectedCookies } from '../../actions';
-import { getAreComfortCookiesActive, getAreStatisticsCookiesActive } from '../../selectors';
+import { getAreComfortCookiesActive, getAreStatisticsCookiesActive } from '../../selectors/cookieConsent';
 
 /**
  * Maps the contents of the state to the component props.

@@ -32,7 +32,15 @@ const link = css({
 
 const switchWrapper = css({
   marginBottom: '25px',
+  display: 'flex',
+  textAlign: 'left',
+  justifyContent: 'space-between',
 }).toString();
+
+const title = css({
+  fontWeight: 'bold',
+  display: 'block',
+});
 
 export default {
   button,
@@ -41,4 +49,5 @@ export default {
   link,
   item,
   switchWrapper,
+  title,
 };

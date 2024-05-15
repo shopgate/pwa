@@ -55,25 +55,37 @@ const PrivacySettings = ({
     <Grid component="div" className={styles.container}>
       <Grid.Item component="div" className={styles.item}>
         <Grid.Item component="div" className={styles.switchWrapper}>
+          <div>
+            <span className={styles.title}>
+              {<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
+            </span>
+            <span>{<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}</span>
+          </div>
           <Switch
-            label={<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}
-            title={<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
             onChange={handleChangeComfortCookies}
             checked={areComfortCookiesSelected}
           />
         </Grid.Item>
         <Grid.Item component="div" className={styles.switchWrapper}>
+          <div>
+            <span className={styles.title}>
+              {<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
+            </span>
+            <span>{<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}</span>
+          </div>
           <Switch
-            label={<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}
-            title={<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
             onChange={handleChangeStatisticsCookies}
             checked={areStatisticsCookiesSelected}
           />
         </Grid.Item>
         <Grid.Item component="div" className={styles.switchWrapper}>
+          <div>
+            <span className={styles.title}>
+              {<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
+            </span>
+            <span>{<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}</span>
+          </div>
           <Switch
-            label={<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}
-            title={<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
             disabled
             checked
           />

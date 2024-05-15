@@ -25,11 +25,37 @@ export const getAreComfortCookiesActive = createSelector(
 
 /**
  * Selects the property of the statistics cookie settings.
- * @returns {boolean} whether statistics cookies have been selected by the user.
+ * @returns {boolean|null} whether statistics cookies have been selected by the user.
  */
 export const getAreStatisticsCookiesActive = createSelector(
   getCookieSettingsState,
   modalState => modalState.areStatisticsCookiesActive
+);
+
+/**
+ * Selects the property of the comfort cookie settings
+ * and returns true for tracking in case cookie feature is not activated (i.e. null)
+ * @returns {boolean} whether comfort cookies are set and should activate tracking.
+ */
+export const getAreComfortCookiesSet = createSelector(
+  getCookieSettingsState,
+  (modalState) => {
+    if (modalState.areComfortCookiesActive === null) return true;
+    return modalState.areComfortCookiesActive;
+  }
+);
+
+/**
+ * Selects the property of the statistics cookie settings
+ * and returns true for tracking in case cookie feature is not activated (i.e. null)
+ * @returns {boolean} whether statistics cookies are set and should activate tracking.
+ */
+export const getAreStatisticsCookiesSet = createSelector(
+  getCookieSettingsState,
+  (modalState) => {
+    if (modalState.areStatisticsCookiesActive === null) return true;
+    return modalState.areStatisticsCookiesActive;
+  }
 );
 
 /**

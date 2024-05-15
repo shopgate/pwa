@@ -7,11 +7,6 @@ const container = css({
   justifyContent: 'space-between',
 });
 
-const title = css({
-  fontWeight: 'bold',
-  display: 'block',
-});
-
 const switchButton = css({
   display: 'inline-block',
   width: '40px',
@@ -55,7 +50,6 @@ const disabled = css({
 export default {
   input,
   switchButton,
-  title,
   container,
   disabled,
 };
