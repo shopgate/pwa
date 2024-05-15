@@ -88,4 +88,22 @@ describe('handleLink()', () => {
       expect(historyPush).toHaveBeenCalledWith({ pathname: '/path/test' });
     });
   });
+
+  describe('handle relative links', () => {
+    it('should not modify valid links', () => {
+      const link = '/path/test';
+      handleLink({ link })(dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({ pathname: '/path/test' });
+    });
+
+    it('should add a leading slash when not included in link', () => {
+      const link = 'path/test';
+      handleLink({ link })(dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({ pathname: '/path/test' });
+    });
+  });
 });

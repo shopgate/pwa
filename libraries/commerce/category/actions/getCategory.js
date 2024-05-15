@@ -1,18 +1,16 @@
-import fetchRootCategories from './fetchRootCategories';
-import fetchCategory from './fetchCategory';
+import { logDeprecationMessage } from '@shopgate/pwa-core/helpers';
+import fetchCategoryOrRootCategories from './fetchCategoryOrRootCategories';
 
 /**
- * Retrieves a category from the server.
+ * Deprecation fallback for the fetchCategoryOrRootCategories action
+ * @deprecated
  * @param {string} categoryId The category ID.
  * @return {Function} The dispatched action.
  */
-const getCategory = categoryId => (dispatch) => {
-  if (!categoryId) {
-    dispatch(fetchRootCategories());
-    return;
-  }
+const getCategory = (categoryId) => {
+  logDeprecationMessage('The fetch action getCategory will be removed in future versions due naming conflict with getCategory selector. Please use fetchCategoryOrRootCategories as a replacement');
 
-  dispatch(fetchCategory(categoryId));
+  return fetchCategoryOrRootCategories(categoryId);
 };
 
 export default getCategory;

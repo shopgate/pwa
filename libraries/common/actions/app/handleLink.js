@@ -40,6 +40,11 @@ export default function handleLink(payload, allowExternalLinks = false) {
     } else {
       // Remove the deeplink protocol from the link.
       pathname = link.replace(/^(.*:)(\/\/)?/, '/');
+
+      if (!pathname.startsWith('/')) {
+        // Take care that pathname starts with a slash. Otherwise routing can break
+        pathname = `/${pathname}`;
+      }
     }
 
     if (!pathname || pathname === INDEX_PATH || pathname.startsWith(INDEX_PATH_DEEPLINK)) {
