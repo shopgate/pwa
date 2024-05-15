@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.23.0](https://github.com/shopgate/pwa/compare/v6.22.0...v6.23.0) (2024-05-15)
+
+#### :bug: Bug Fix
+* [#1182](https://github.com/shopgate/pwa/pull/1182) Fixed a couple of small bugs related to push messages and tracking ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.22.0](https://github.com/shopgate/pwa/compare/v6.21.0...v6.22.0) (2024-04-10)
 
 #### :rocket: Enhancement
