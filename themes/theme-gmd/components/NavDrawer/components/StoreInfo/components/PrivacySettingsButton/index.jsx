@@ -5,9 +5,11 @@ import {
   NAV_MENU_PRIVACY_SETTINGS_AFTER,
   NAV_MENU_PRIVACY_SETTINGS_BEFORE,
 } from '@shopgate/engage/core';
-import { Portal } from '@shopgate/engage/components';
-import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+import {
+  Portal,
+  NavDrawer,
+  SecurityIcon,
+} from '@shopgate/engage/components';
 import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
@@ -15,7 +17,8 @@ import connect from '../../../../connector';
 const LABEL = 'navigation.privacySettings';
 
 /**
- * @param {Function} navigate The navigate action.
+ * @param {Object} props The component props
+ * @param {Function} props.navigate The navigate props
  * @returns {JSX.Element}
  */
 const PrivacySettingsButton = ({ navigate }) => (

@@ -9,7 +9,7 @@ import { PrivacySettings } from '@shopgate/engage/tracking/components';
  */
 const PrivacySettingsPage = () => (
   <View aria-hidden={false}>
-    <BackBar right={null} />
+    <BackBar />
     <PrivacySettings />
   </View>
 );

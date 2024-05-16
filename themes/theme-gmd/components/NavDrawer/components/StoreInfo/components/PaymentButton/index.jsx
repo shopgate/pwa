@@ -4,10 +4,12 @@ import {
   NAV_MENU_PAYMENT,
   NAV_MENU_PAYMENT_AFTER,
   NAV_MENU_PAYMENT_BEFORE,
-} from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/market';
+import {
+  Portal,
+  NavDrawer,
+  CreditCardIcon,
+} from '@shopgate/engage/components';
 import { PAYMENT_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
@@ -15,8 +17,9 @@ import connect from '../../../../connector';
 const LABEL = 'navigation.payment';
 
 /**
- * @param {Function} navigate The navigate action.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {Function} props.navigate The navigate props
+ * @returns {JSX.Element}
  */
 const PaymentButton = ({ navigate }) => (
   <Fragment>

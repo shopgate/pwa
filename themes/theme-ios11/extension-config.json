@@ -651,7 +651,7 @@
         "settingsStatisticsTitle": null,
         "settingsRequiredText": null,
         "settingsRequiredTitle": null,
-        "isCookieConsentActivated": false
+        "isCookieConsentActivated": true
       },
       "params": {
         "type": "json",

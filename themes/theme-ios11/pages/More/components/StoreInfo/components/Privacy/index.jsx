@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   NAV_MENU_PRIVACY_BEFORE,
   NAV_MENU_PRIVACY,

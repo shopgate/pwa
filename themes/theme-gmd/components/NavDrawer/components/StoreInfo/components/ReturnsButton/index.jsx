@@ -4,10 +4,12 @@ import {
   NAV_MENU_RETURN_POLICY,
   NAV_MENU_RETURN_POLICY_AFTER,
   NAV_MENU_RETURN_POLICY_BEFORE,
-} from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/market';
+import {
+  Portal,
+  NavDrawer,
+  DescriptionIcon,
+} from '@shopgate/engage/components';
 import { RETURN_POLICY_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
