@@ -20,7 +20,7 @@ export const getCookieSettingsState = state => state?.cookieConsent?.cookieSetti
  */
 export const getAreComfortCookiesActive = createSelector(
   getCookieSettingsState,
-  modalState => modalState.areComfortCookiesActive
+  settingsState => settingsState.areComfortCookiesActive
 );
 
 /**
@@ -29,7 +29,7 @@ export const getAreComfortCookiesActive = createSelector(
  */
 export const getAreStatisticsCookiesActive = createSelector(
   getCookieSettingsState,
-  modalState => modalState.areStatisticsCookiesActive
+  settingsState => settingsState.areStatisticsCookiesActive
 );
 
 /**
@@ -39,9 +39,9 @@ export const getAreStatisticsCookiesActive = createSelector(
  */
 export const getAreComfortCookiesSet = createSelector(
   getCookieSettingsState,
-  (modalState) => {
-    if (modalState.areComfortCookiesActive === null) return true;
-    return modalState.areComfortCookiesActive;
+  (settingsState) => {
+    if (settingsState.areComfortCookiesActive === null) return true;
+    return settingsState.areComfortCookiesActive;
   }
 );
 
@@ -52,9 +52,9 @@ export const getAreComfortCookiesSet = createSelector(
  */
 export const getAreStatisticsCookiesSet = createSelector(
   getCookieSettingsState,
-  (modalState) => {
-    if (modalState.areStatisticsCookiesActive === null) return true;
-    return modalState.areStatisticsCookiesActive;
+  (settingsState) => {
+    if (settingsState.areStatisticsCookiesActive === null) return true;
+    return settingsState.areStatisticsCookiesActive;
   }
 );
 
@@ -77,6 +77,6 @@ export const getIsCookieConsentModalVisible = createSelector(
  */
 export const getIsCookieConsentHandled = createSelector(
   getCookieSettingsState,
-  modalState => (modalState?.areComfortCookiesActive !== null)
-    || (modalState?.areStatisticsCookiesActive !== null)
+  settingsState => (settingsState?.areComfortCookiesActive !== null)
+    || (settingsState?.areStatisticsCookiesActive !== null)
 );

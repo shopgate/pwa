@@ -40,6 +40,7 @@ const switchWrapper = css({
 const title = css({
   fontWeight: 'bold',
   display: 'block',
+  marginRight: '32px',
 });
 
 export default {

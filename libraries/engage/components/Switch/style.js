@@ -15,7 +15,6 @@ const switchButton = css({
   borderRadius: '10px',
   position: 'relative',
   cursor: 'pointer',
-  marginLeft: '32px',
   ':before': {
     content: '""',
     position: 'absolute',

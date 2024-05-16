@@ -1,7 +1,12 @@
 import { appDidStart$, main$, ROUTE_WILL_LEAVE } from '@shopgate/engage/core';
 import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import { handleCookieConsent, showCookieConsentModal } from '../action-creators';
-import { getIsCookieConsentHandled } from '../selectors/cookieConsent';
+import {
+  getAreComfortCookiesActive,
+  getAreStatisticsCookiesActive,
+  getIsCookieConsentHandled,
+} from '../selectors/cookieConsent';
+import { getAreComfortCookiesSet, getAreStatisticsCookiesSet } from '../selectors';
 import { appConfig } from '../../index';
 
 /**
@@ -25,7 +30,13 @@ export default function cookieConsent(subscribe) {
     // if merchant has not activated the cookie feature:
     // trigger stream to continue with push opt-in modal
     if (!isCookieConsentActivated) {
-      dispatch(handleCookieConsent());
+      const areComfortCookiesActive = getAreComfortCookiesSet(getState());
+      const areStatisticsCookiesActive = getAreStatisticsCookiesSet(getState());
+
+      dispatch(handleCookieConsent({
+        areComfortCookiesActive,
+        areStatisticsCookiesActive,
+      }));
     }
 
     // if merchant has activated cookie feature but user has not chosen cookies yet:
@@ -37,7 +48,13 @@ export default function cookieConsent(subscribe) {
     // if merchant has activated cookie feature and user has chosen cookies already
     // trigger stream to continue with push opt-in modal
     if (isCookieConsentActivated && isCookieConsentHandled) {
-      dispatch(handleCookieConsent());
+      const areComfortCookiesActive = getAreComfortCookiesActive(getState());
+      const areStatisticsCookiesActive = getAreStatisticsCookiesActive(getState());
+
+      dispatch(handleCookieConsent({
+        areComfortCookiesActive,
+        areStatisticsCookiesActive,
+      }));
     }
   });
 
