@@ -9,9 +9,9 @@ import styles from './style';
  * @returns {JSX.Element}
  */
 const Switch = ({
-  disabled, checked, onChange,
+  disabled, checked, onChange, id,
 }) => {
-  const switchId = useMemo(() => Math.random(), []);
+  const switchId = useMemo(() => id || Math.random(), [id]);
 
   return (
     <div className={styles.container}>
@@ -21,14 +21,14 @@ const Switch = ({
         disabled={disabled}
         checked={checked}
         type="checkbox"
-        id={`${switchId}`}
+        id={switchId}
       />
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label
         className={disabled
           ? classNames(styles.disabled, styles.switchButton)
           : styles.switchButton}
-        htmlFor={`${switchId}`}
+        htmlFor={switchId}
       />
     </div>
   );
@@ -37,12 +37,14 @@ const Switch = ({
 Switch.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
+  id: PropTypes.string,
   onChange: PropTypes.func,
 };
 Switch.defaultProps = {
   disabled: false,
   checked: false,
   onChange: null,
+  id: null,
 };
 
 export default Switch;
