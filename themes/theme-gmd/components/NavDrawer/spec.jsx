@@ -13,7 +13,6 @@ jest.mock('react-portal', () => (
     isOpened ? children : null
   )
 ));
-jest.mock('@shopgate/pwa-common/helpers/config');
 
 jest.mock('@shopgate/engage/back-in-stock/selectors', () => ({
   isBackInStockEnabled: () => false,
