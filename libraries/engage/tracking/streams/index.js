@@ -13,7 +13,7 @@ export const cookieConsentSet$ = main$.filter(({ action }) => (
  * Gets triggered when the cookie consent has been set either by user or merchant.
  * @type {Observable}
  */
-export const comfortCookieActivated$ = cookieConsentSet$.filter(({ action }) => (
+export const comfortCookiesActivated$ = cookieConsentSet$.filter(({ action }) => (
   action.areComfortCookiesActive === true
 ));
 
