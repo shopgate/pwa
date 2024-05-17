@@ -32,6 +32,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         data-test-id="liveshopping.discount_badge"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className="css-1g4qpn2 css-b15hhv"
           params={
             Array [

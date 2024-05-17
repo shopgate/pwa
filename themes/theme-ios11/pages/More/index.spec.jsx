@@ -32,6 +32,8 @@ jest.mock('./components/Quicklinks', () => {
 });
 /* eslint-enable require-jsdoc */
 
+jest.mock('@shopgate/pwa-common/helpers/config');
+
 const store = createMockStore();
 
 const mockedi18n = jest.fn().mockImplementation(text => text);

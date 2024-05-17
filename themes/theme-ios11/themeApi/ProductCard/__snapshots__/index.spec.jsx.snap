@@ -305,6 +305,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                   data-test-id="-50%"
                                 >
                                   <Translate
+                                    acceptPlainTextWithPlaceholders={false}
                                     className="css-tyfhga "
                                     params={
                                       Array [

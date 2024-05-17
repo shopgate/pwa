@@ -103,6 +103,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 }
               >
                 <Translate
+                  acceptPlainTextWithPlaceholders={false}
                   className={null}
                   params={Object {}}
                   role={null}
@@ -138,6 +139,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 >
                   <div>
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -167,6 +169,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 >
                   <div>
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}

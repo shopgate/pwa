@@ -125,6 +125,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -144,6 +145,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -393,6 +395,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -412,6 +415,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -602,6 +606,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -621,6 +626,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       htmlFor="foo_bar"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -870,6 +876,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -889,6 +896,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1297,6 +1305,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1316,6 +1325,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       htmlFor="foo_firstName"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1493,6 +1503,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1512,6 +1523,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       htmlFor="foo_lastName"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1768,6 +1780,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1787,6 +1800,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1982,6 +1996,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2001,6 +2016,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       htmlFor="foo_bar"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2257,6 +2273,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2276,6 +2293,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2471,6 +2489,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2490,6 +2509,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       htmlFor="foo_bar"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}

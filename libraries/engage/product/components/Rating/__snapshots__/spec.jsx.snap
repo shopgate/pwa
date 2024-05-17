@@ -356,6 +356,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
             prominent={true}
           >
             <Translate
+              acceptPlainTextWithPlaceholders={false}
               className="css-a7xi3l css-oixusm engage__reviews__rating-count"
               params={
                 Object {

@@ -20,17 +20,21 @@ const pureReturn = key => ({
  * @param {Object} locales A locales object.
  * @param {string} langCode A language code.
  * @param {string} key A translation key.
+ * @param {Object} options Additional options for the translator
+ * @param {boolean} [options.acceptPlainTextWithPlaceholders = false] When set to TRUE, the
+ * translator can also handle human readable texts that contain text replacement placeholders.
  * @returns {IntlMessageFormat}
  */
-const getMessageFromCache = (locales, langCode, key) => {
-  const hash = `${langCode}_${key}`;
+const getMessageFromCache = (locales, langCode, key, options = {}) => {
+  const { acceptPlainTextWithPlaceholders = false } = options;
+  const hash = `${langCode}_${key}_${acceptPlainTextWithPlaceholders ? 1 : 0}`;
 
   // Check if a cached instance already exists.
   if (messageCache[hash]) {
     return messageCache[hash];
   }
 
-  const message = getPath(locales, key);
+  const message = getPath(locales, key, acceptPlainTextWithPlaceholders ? key : undefined);
   if (typeof message !== 'string' || message.length === 0) {
     return pureReturn(key);
   }
@@ -55,10 +59,13 @@ const getMessageFromCache = (locales, langCode, key) => {
  * @param {string} langCode A language code.
  * @param {string} key A translation key.
  * @param {Object} [args] Arguments for the translation.
+ * @param {Object} options Additional options for the translator
+ * @param {boolean} [options.acceptPlainTextWithPlaceholders = false] When set to TRUE, the
+ * translator can also handle human readable texts that contain text replacement placeholders.
  * @returns {string}
  */
-const translate = (locales, langCode, key, args = {}) => (
-  getMessageFromCache(locales, langCode, key).format(args)
+const translate = (locales, langCode, key, args = {}, options = {}) => (
+  getMessageFromCache(locales, langCode, key, options).format(args)
 );
 
 export default curry(translate);

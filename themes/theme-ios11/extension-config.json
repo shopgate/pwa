@@ -642,6 +642,31 @@
         "label": "Push opt-in settings"
       }
     },
+    "cookieConsent": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "modalMessage": null,
+        "modalTitle": null,
+        "modalButtonConfigureSettings": null,
+        "modalButtonOnlyRequired": null,
+        "modalButtonAcceptAll": null,
+        "modalImageURL": null,
+        "modalImageSVG": null,
+        "showRequiredCookiesButton": false,
+        "settingsComfortText": null,
+        "settingsComfortTitle": null,
+        "settingsStatisticsText": null,
+        "settingsStatisticsTitle": null,
+        "settingsRequiredText": null,
+        "settingsRequiredTitle": null,
+        "isCookieConsentActivated": false
+      },
+      "params": {
+        "type": "json",
+        "label": "cookie consent settings"
+      }
+    },
     "reviewsInfo": {
       "type": "bigApi",
       "destination": "frontend",

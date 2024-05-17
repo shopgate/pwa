@@ -15,6 +15,7 @@ exports[`<Item /> should render as a button when no href, but a click handler is
     type="button"
   >
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className={null}
       params={Object {}}
       role={null}
@@ -45,6 +46,7 @@ exports[`<Item /> should render as a link when an href is passed to the props 1`
   >
     <div>
       <Translate
+        acceptPlainTextWithPlaceholders={false}
         className={null}
         params={Object {}}
         role={null}

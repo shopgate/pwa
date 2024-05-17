@@ -67,6 +67,21 @@ const plain = () => ({
 });
 
 /**
+ * Creates a simple button style object.
+ @param {boolean} disabled Whether this button is disabled.
+ * @return {Object}
+ */
+const simple = (disabled) => {
+  if (disabled) {
+    // simple disabled button style.
+    return createButtonStyles(themeConfig.colors.shade4, themeConfig.colors.shade7);
+  }
+
+  // simple enabled button style.
+  return createButtonStyles(themeConfig.colors.dark, themeConfig.colors.shade7);
+};
+
+/**
  * The regular flat button style.
  * @param {boolean} disabled Whether this button is disabled.
  * @return {Object} An object of style definitions.
@@ -136,6 +151,7 @@ const secondary = (disabled, flat) => {
 export default {
   plain,
   regular,
+  simple,
   primary,
   secondary,
   contentWrapper,

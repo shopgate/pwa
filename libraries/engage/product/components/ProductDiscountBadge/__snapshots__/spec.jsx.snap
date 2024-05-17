@@ -205,6 +205,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                         data-test-id="-12%"
                       >
                         <Translate
+                          acceptPlainTextWithPlaceholders={false}
                           className="css-tyfhga css-rvghpp"
                           params={
                             Array [

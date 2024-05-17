@@ -139,6 +139,7 @@ exports[`<Header /> should render searchbar 1`] = `
                   </Magnifier>
                 </div>
                 <Translate
+                  acceptPlainTextWithPlaceholders={false}
                   className={null}
                   params={Object {}}
                   role={null}

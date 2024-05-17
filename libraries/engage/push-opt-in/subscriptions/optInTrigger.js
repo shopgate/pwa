@@ -4,7 +4,6 @@ import {
 import {
   main$,
   event,
-  appDidStart$,
   logger,
 } from '@shopgate/engage/core';
 import { appSupportsPushOptIn } from '@shopgate/engage/core/helpers';
@@ -27,6 +26,7 @@ import {
 } from '../constants';
 
 import { getPushOptInTriggerState } from '../selectors';
+import { cookieConsentSet$ } from '../../tracking/streams';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -111,7 +111,7 @@ export default function pushOptIn(subscribe) {
   };
 
   // event subscriber to handle app start based push opt in
-  subscribe(appDidStart$, async ({ dispatch, getState }) => {
+  subscribe(cookieConsentSet$, async ({ dispatch, getState }) => {
     await showOptInAfterChecks({
       dispatch,
       getState,
@@ -119,7 +119,7 @@ export default function pushOptIn(subscribe) {
   });
 
   // event subscriber to handle order based push opt in
-  subscribe(appDidStart$, ({ dispatch, getState }) => {
+  subscribe(cookieConsentSet$, ({ dispatch, getState }) => {
     event.addCallback('checkoutSuccess', async () => {
       await showOptInAfterChecks({
         dispatch,
