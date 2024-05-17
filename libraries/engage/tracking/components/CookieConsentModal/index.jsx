@@ -75,6 +75,7 @@ const CookieConsentModal = ({
           <I18n.Text
             string={modalMessage || 'cookieConsentModal.message'}
             className={classNames('cookie-consent-modal__message')}
+            acceptPlainTextWithPlaceholders
           >
             <I18n.Placeholder forKey="privacyLink">
               <Link href={PRIVACY_PATH} tag="span">
