@@ -2344,6 +2344,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                       style={null}
                                     >
                                       <Translate
+                                        acceptPlainTextWithPlaceholders={false}
                                         className={null}
                                         params={
                                           Object {

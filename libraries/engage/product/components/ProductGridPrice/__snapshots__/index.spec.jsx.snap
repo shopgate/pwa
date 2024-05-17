@@ -62,6 +62,7 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
                   role="text"
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -227,6 +228,7 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
                   role="text"
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -357,6 +359,7 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
                   role="text"
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}

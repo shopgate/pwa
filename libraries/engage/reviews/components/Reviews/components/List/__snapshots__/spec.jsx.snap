@@ -937,6 +937,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 author="username123"
               >
                 <Translate
+                  acceptPlainTextWithPlaceholders={false}
                   className={null}
                   params={
                     Object {
@@ -1390,6 +1391,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 author="Carina Hoffmann"
               >
                 <Translate
+                  acceptPlainTextWithPlaceholders={false}
                   className={null}
                   params={
                     Object {
