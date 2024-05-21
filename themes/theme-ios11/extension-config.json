@@ -552,6 +552,18 @@
         "label": "Toggle inner shadows of product images"
       }
     },
+    "recaptcha": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "enabled": false,
+        "googleCloudSiteKey": null
+      },
+      "params": {
+        "type": "json",
+        "label": "Enable reCAPTCHA for login"
+      }
+    },
     "webTrackingEngage": {
       "type": "bigApi",
       "destination": "frontend",

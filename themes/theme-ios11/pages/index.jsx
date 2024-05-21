@@ -53,6 +53,8 @@ import { routesTransforms } from './routesTransforms';
 
 new ThemeConfigResolver().resolveAll();
 
+const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
+
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
@@ -61,6 +63,14 @@ const Pages = ({ store }) => (
   <App store={store}>
     <Helmet>
       <html lang={appConfig.language.substring(0, 2)} className="theme-ios11" />
+      {recaptchaEnabled && googleCloudSiteKey ? (
+        <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
+      ) : null }
+      <style type="text/css">
+        {`
+            .grecaptcha-badge { display:none; }
+          `}
+      </style>
     </Helmet>
     <NavigationHandler>
       <AppProvider>
@@ -81,6 +91,10 @@ const Pages = ({ store }) => (
                     transform={routesTransforms[INDEX_PATH]}
                   />
                   <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                  <Route
+                    pattern={PRIVACY_SETTINGS_PATTERN}
+                    component={routes.PrivacySettings}
+                  />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
                   <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
@@ -89,10 +103,6 @@ const Pages = ({ store }) => (
                     pattern={ITEM_PATTERN}
                     component={routes.Product}
                     transform={transformItemRoute}
-                  />
-                  <Route
-                    pattern={PRIVACY_SETTINGS_PATTERN}
-                    component={routes.PrivacySettings}
                   />
                   <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
                   <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
@@ -147,6 +157,7 @@ const Pages = ({ store }) => (
     </NavigationHandler>
   </App>
 );
+
 Pages.propTypes = {
   store: PropTypes.shape().isRequired,
 };

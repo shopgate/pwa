@@ -55,6 +55,8 @@ const devFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.css';
 
 new ThemeConfigResolver().resolveAll();
 
+const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
+
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX.Element}
@@ -63,6 +65,14 @@ const Pages = ({ store }) => (
   <App store={store}>
     <Helmet>
       <html lang={appConfig.language.substring(0, 2)} className="theme-gmd" />
+      {recaptchaEnabled && googleCloudSiteKey ? (
+        <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
+      ) : null }
+      <style type="text/css">
+        {`
+            .grecaptcha-badge { display:none; }
+          `}
+      </style>
     </Helmet>
     <NavigationHandler>
       <AppProvider>
@@ -84,14 +94,14 @@ const Pages = ({ store }) => (
                   />
                   <Route pattern={PAGE_PATTERN} component={routes.Page} />
                   <Route
+                    pattern={PRIVACY_SETTINGS_PATTERN}
+                    component={routes.PrivacySettings}
+                  />
+                  <Route
                     pattern={ROOT_CATEGORY_PATTERN}
                     component={routes.RootCategory}
                     cache
                     transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
-                  />
-                  <Route
-                    pattern={PRIVACY_SETTINGS_PATTERN}
-                    component={routes.PrivacySettings}
                   />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
@@ -138,9 +148,9 @@ const Pages = ({ store }) => (
                   {React.Children.map(routePortals, Component => Component)}
                 </Router>
                 {isDev && (
-                <Helmet>
-                  <link href={devFontsUrl} rel="stylesheet" />
-                </Helmet>
+                  <Helmet>
+                    <link href={devFontsUrl} rel="stylesheet" />
+                  </Helmet>
                 )}
               </Viewport>
             </ToastProvider>
