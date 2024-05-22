@@ -8,7 +8,6 @@ import { COOKIE_CONSENT_HANDLED, UPDATE_COOKIE_CONSENT } from '../constants';
 export const cookieConsentSet$ = main$.filter(({ action }) => (
   action.type === UPDATE_COOKIE_CONSENT || action.type === COOKIE_CONSENT_HANDLED
 ));
-
 /**
  * Gets triggered when the cookie consent has been initially configured by the user or is
  * handled already.
@@ -21,9 +20,10 @@ export const cookieConsentInitialized$ = cookieConsentSet$.first();
  * @type {Observable}
  */
 export const cookieConsentUpdated$ = cookieConsentSet$
-  .distinctUntilChanged(({ action: actionA }, { action: actionB }) =>
-    actionA.areComfortCookiesActive !== actionB.areComfortCookiesActive
-    || actionA.areStatisticsCookiesActive !== actionB.areStatisticsCookiesActive);
+  .pairwise()
+  .filter(([{ action: actionPrev }, { action: actionCurrent }]) =>
+    actionPrev.areComfortCookiesActive !== actionCurrent.areComfortCookiesActive
+      || actionPrev.areStatisticsCookiesActive !== actionCurrent.areStatisticsCookiesActive);
 
 /**
  * Gets triggered when the cookie consent has been set either by user or merchant.

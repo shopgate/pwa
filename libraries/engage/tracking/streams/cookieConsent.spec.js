@@ -131,11 +131,15 @@ describe('Cookie Consent Streams', () => {
         areStatisticsCookiesActive: false,
       }));
 
+      expect(subscriber).not.toBeCalled();
+
       // 2nd call -> no change
       dispatch(updateCookieConsent({
         areComfortCookiesActive: true,
         areStatisticsCookiesActive: false,
       }));
+
+      expect(subscriber).not.toBeCalled();
 
       // 3rd call -> areComfortCookiesActive and areStatisticsCookiesActive changed
       dispatch(updateCookieConsent({
@@ -143,17 +147,23 @@ describe('Cookie Consent Streams', () => {
         areStatisticsCookiesActive: true,
       }));
 
+      expect(subscriber).toHaveBeenCalledTimes(1);
+
       // 4rth call -> no change
       dispatch(updateCookieConsent({
         areComfortCookiesActive: false,
         areStatisticsCookiesActive: true,
       }));
 
+      expect(subscriber).toHaveBeenCalledTimes(1);
+
       // 5rth call -> areStatisticsCookiesActive changed
       dispatch(updateCookieConsent({
         areComfortCookiesActive: false,
         areStatisticsCookiesActive: false,
       }));
+
+      expect(subscriber).toHaveBeenCalledTimes(2);
 
       // 6th call -> no change
       dispatch(updateCookieConsent({
