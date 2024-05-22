@@ -5,14 +5,14 @@ import { createSelector } from 'reselect';
  * @param {Object} state The current state of the cookie consent modal.
  * @returns {Object} whether cookie consent modal is shown.
  */
-export const getCookieConsentModalState = state => state?.cookieConsent?.cookieConsentModal || {};
+export const getCookieConsentModalState = state => state?.tracking?.cookieConsentModal || {};
 
 /**
  * Selects the cookie settings state.
  * @param {Object} state The current state of the cookie settings.
  * @returns {Object} whether cookies have been selected by the user.
  */
-export const getCookieSettingsState = state => state?.cookieConsent?.cookieSettings || {};
+export const getCookieSettingsState = state => state?.tracking?.cookieSettings || {};
 
 /**
  * Selects the property of the comfort cookie settings.

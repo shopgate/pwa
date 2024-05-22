@@ -1,12 +1,12 @@
-import { appDidStart$, main$, ROUTE_WILL_LEAVE } from '@shopgate/engage/core';
+import { main$, appDidStart$ } from '@shopgate/engage/core/streams';
+import { ROUTE_WILL_LEAVE } from '@shopgate/engage/core/constants';
 import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import { handleCookieConsent, showCookieConsentModal } from '../action-creators';
 import {
-  getAreComfortCookiesActive,
-  getAreStatisticsCookiesActive,
   getIsCookieConsentHandled,
+  getAreComfortCookiesSet,
+  getAreStatisticsCookiesSet,
 } from '../selectors/cookieConsent';
-import { getAreComfortCookiesSet, getAreStatisticsCookiesSet } from '../selectors';
 import { appConfig } from '../../index';
 
 /**
@@ -24,37 +24,31 @@ export const navigateBackToCookieModal$ = main$
  */
 export default function cookieConsent(subscribe) {
   subscribe(appDidStart$, ({ dispatch, getState }) => {
+    const state = getState();
     const { cookieConsent: { isCookieConsentActivated } } = appConfig;
-    const isCookieConsentHandled = getIsCookieConsentHandled(getState());
+    const isCookieConsentHandled = getIsCookieConsentHandled(state);
 
-    // if merchant has not activated the cookie feature:
-    // trigger stream to continue with push opt-in modal
-    if (!isCookieConsentActivated) {
-      const areComfortCookiesActive = getAreComfortCookiesSet(getState());
-      const areStatisticsCookiesActive = getAreStatisticsCookiesSet(getState());
+    /**
+     * if merchant has not activated the cookie feature OR if merchant has activated cookie feature
+     * and user has chosen cookies already trigger stream to run code that depends on the cookie
+     * consent.
+     */
+    if (!isCookieConsentActivated || (isCookieConsentActivated && isCookieConsentHandled)) {
+      const areComfortCookiesActive = getAreComfortCookiesSet(state);
+      const areStatisticsCookiesActive = getAreStatisticsCookiesSet(state);
 
       dispatch(handleCookieConsent({
         areComfortCookiesActive,
         areStatisticsCookiesActive,
       }));
+
+      return;
     }
 
     // if merchant has activated cookie feature but user has not chosen cookies yet:
     // show cookie consent modal to make user choose them
     if (isCookieConsentActivated && !isCookieConsentHandled) {
       dispatch(showCookieConsentModal());
-    }
-
-    // if merchant has activated cookie feature and user has chosen cookies already
-    // trigger stream to continue with push opt-in modal
-    if (isCookieConsentActivated && isCookieConsentHandled) {
-      const areComfortCookiesActive = getAreComfortCookiesActive(getState());
-      const areStatisticsCookiesActive = getAreStatisticsCookiesActive(getState());
-
-      dispatch(handleCookieConsent({
-        areComfortCookiesActive,
-        areStatisticsCookiesActive,
-      }));
     }
   });
 

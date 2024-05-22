@@ -1,4 +1,4 @@
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { historyPush } from '@shopgate/engage/core/actions';
 import {
   updateCookieConsent,
   hideCookieConsentModal,

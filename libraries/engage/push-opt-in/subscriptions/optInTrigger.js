@@ -12,6 +12,7 @@ import {
   PERMISSION_STATUS_NOT_DETERMINED,
 } from '@shopgate/engage/core/constants';
 import { requestAppPermissionStatus } from '@shopgate/engage/core/actions';
+import { cookieConsentInitialized$ } from '@shopgate/engage/tracking/streams';
 import {
   increaseAppStartCount,
   resetAppStartCount,
@@ -26,7 +27,6 @@ import {
 } from '../constants';
 
 import { getPushOptInTriggerState } from '../selectors';
-import { cookieConsentSet$ } from '../../tracking/streams';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -111,7 +111,7 @@ export default function pushOptIn(subscribe) {
   };
 
   // event subscriber to handle app start based push opt in
-  subscribe(cookieConsentSet$, async ({ dispatch, getState }) => {
+  subscribe(cookieConsentInitialized$, async ({ dispatch, getState }) => {
     await showOptInAfterChecks({
       dispatch,
       getState,
@@ -119,7 +119,7 @@ export default function pushOptIn(subscribe) {
   });
 
   // event subscriber to handle order based push opt in
-  subscribe(cookieConsentSet$, ({ dispatch, getState }) => {
+  subscribe(cookieConsentInitialized$, ({ dispatch, getState }) => {
     event.addCallback('checkoutSuccess', async () => {
       await showOptInAfterChecks({
         dispatch,
