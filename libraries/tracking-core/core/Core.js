@@ -421,4 +421,7 @@ if (!window.SgTrackingCore) {
   window.SgTrackingCore = new Core();
 }
 
+/**
+ * @type {Core}
+ */
 export default window.SgTrackingCore;
