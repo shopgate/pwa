@@ -34,12 +34,12 @@ export default function cookieConsent(subscribe) {
      * consent.
      */
     if (!isCookieConsentActivated || (isCookieConsentActivated && isCookieConsentHandled)) {
-      const areComfortCookiesActive = getAreComfortCookiesSet(state);
-      const areStatisticsCookiesActive = getAreStatisticsCookiesSet(state);
+      const comfortCookiesAccepted = getAreComfortCookiesSet(state);
+      const statisticsCookiesAccepted = getAreStatisticsCookiesSet(state);
 
       dispatch(handleCookieConsent({
-        areComfortCookiesActive,
-        areStatisticsCookiesActive,
+        comfortCookiesAccepted,
+        statisticsCookiesAccepted,
       }));
 
       return;

@@ -9,10 +9,10 @@ import {
   cookieConsentSet$,
   cookieConsentInitialized$,
   cookieConsentUpdated$,
-  comfortCookiesActivated$,
-  statisticsCookiesActivated$,
-  comfortCookiesDeactivated$,
-  statisticsCookiesDeactivated$,
+  comfortCookiesAccepted$,
+  statisticsCookiesAccepted$,
+  comfortCookiesDeclined$,
+  statisticsCookiesDeclined$,
 } from './cookieConsent';
 
 describe('Cookie Consent Streams', () => {
@@ -38,8 +38,8 @@ describe('Cookie Consent Streams', () => {
 
     it('should emit after updateCookieConsent action was dispatched', () => {
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
-        areStatisticsCookiesActive: true,
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
@@ -47,22 +47,22 @@ describe('Cookie Consent Streams', () => {
 
     it('should emit after updateCookieConsent action was dispatched with different parameters', () => {
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(2);
 
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: true,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(3);
@@ -70,8 +70,8 @@ describe('Cookie Consent Streams', () => {
 
     it('should emit after handleCookieConsent action was dispatched', () => {
       dispatch(handleCookieConsent({
-        areComfortCookiesActive: true,
-        areStatisticsCookiesActive: true,
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
@@ -79,22 +79,22 @@ describe('Cookie Consent Streams', () => {
 
     it('should emit after handleCookieConsent action was dispatched with different parameters', () => {
       dispatch(handleCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       dispatch(handleCookieConsent({
-        areComfortCookiesActive: true,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(2);
 
       dispatch(handleCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: true,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(3);
@@ -108,11 +108,11 @@ describe('Cookie Consent Streams', () => {
 
     it('should only emit once per session', () => {
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
+        comfortCookiesAccepted: true,
       }));
 
       dispatch(handleCookieConsent({
-        areStatisticsCookiesActive: true,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
@@ -127,256 +127,256 @@ describe('Cookie Consent Streams', () => {
     it('should emit when action payload of cookieConsentSet$ stream changes ', () => {
       // Initial call
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
 
       // 2nd call -> no change
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
 
-      // 3rd call -> areComfortCookiesActive and areStatisticsCookiesActive changed
+      // 3rd call -> comfortCookiesAccepted and statisticsCookiesAccepted changed
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: true,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       // 4rth call -> no change
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: true,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
-      // 5rth call -> areStatisticsCookiesActive changed
+      // 5rth call -> statisticsCookiesAccepted changed
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(2);
 
       // 6th call -> no change
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
-        areStatisticsCookiesActive: false,
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(2);
     });
   });
 
-  describe('comfortCookiesActivated$', () => {
+  describe('comfortCookiesAccepted$', () => {
     beforeEach(() => {
-      subscription = comfortCookiesActivated$.subscribe(subscriber);
+      subscription = comfortCookiesAccepted$.subscribe(subscriber);
     });
 
-    it('should emit after updateCookieConsent was dispatched with active comfort cookies', () => {
+    it('should emit after updateCookieConsent was dispatched with accepted comfort cookies', () => {
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
+        comfortCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT emit after updateCookieConsent was dispatched with inactive comfort cookies', () => {
+    it('should NOT emit after updateCookieConsent was dispatched with declined comfort cookies', () => {
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
     });
 
-    it('should emit after handleCookieConsent was dispatched with active comfort cookies', () => {
+    it('should emit after handleCookieConsent was dispatched with accepted comfort cookies', () => {
       dispatch(handleCookieConsent({
-        areComfortCookiesActive: true,
+        comfortCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT emit after handleCookieConsent was dispatched with inactive comfort cookies', () => {
+    it('should NOT emit after handleCookieConsent was dispatched with declined comfort cookies', () => {
       dispatch(handleCookieConsent({
-        areComfortCookiesActive: false,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
     });
   });
 
-  describe('statisticsCookiesActivated$', () => {
+  describe('statisticsCookiesAccepted$', () => {
     beforeEach(() => {
-      subscription = statisticsCookiesActivated$.subscribe(subscriber);
+      subscription = statisticsCookiesAccepted$.subscribe(subscriber);
     });
 
-    it('should emit after updateCookieConsent was dispatched with active comfort cookies', () => {
+    it('should emit after updateCookieConsent was dispatched with accepted comfort cookies', () => {
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: true,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT emit after updateCookieConsent was dispatched with inactive comfort cookies', () => {
+    it('should NOT emit after updateCookieConsent was dispatched with declined comfort cookies', () => {
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
     });
 
-    it('should emit after handleCookieConsent was dispatched with active comfort cookies', () => {
+    it('should emit after handleCookieConsent was dispatched with accepted comfort cookies', () => {
       dispatch(handleCookieConsent({
-        areStatisticsCookiesActive: true,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT emit after handleCookieConsent was dispatched with inactive comfort cookies', () => {
+    it('should NOT emit after handleCookieConsent was dispatched with declined comfort cookies', () => {
       dispatch(handleCookieConsent({
-        areStatisticsCookiesActive: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
     });
   });
 
-  describe('comfortCookiesDeactivated$', () => {
+  describe('comfortCookiesDeclined$', () => {
     beforeEach(() => {
-      subscription = comfortCookiesDeactivated$.subscribe(subscriber);
+      subscription = comfortCookiesDeclined$.subscribe(subscriber);
     });
 
-    it('should emit when comfort cookies where activated and deactivated afterwards during a session', () => {
+    it('should emit when comfort cookies where accepted and declined afterwards during a session', () => {
       // activate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
+        comfortCookiesAccepted: true,
       }));
 
       expect(subscriber).not.toBeCalled();
 
       // deactivate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should only emit when there was an activation before the deactivation', () => {
+    it('should only emit when there was an acceptance before the decline', () => {
       // deactivate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
 
       // activate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
+        comfortCookiesAccepted: true,
       }));
 
       expect(subscriber).not.toBeCalled();
 
       // deactivate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       // deactivate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       // activate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: true,
+        comfortCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       // deactivate
       dispatch(updateCookieConsent({
-        areComfortCookiesActive: false,
+        comfortCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(2);
     });
   });
 
-  describe('statisticsCookiesDeactivated$', () => {
+  describe('statisticsCookiesDeclined$', () => {
     beforeEach(() => {
-      subscription = statisticsCookiesDeactivated$.subscribe(subscriber);
+      subscription = statisticsCookiesDeclined$.subscribe(subscriber);
     });
 
-    it('should emit when comfort cookies where activated and deactivated afterwards during a session', () => {
+    it('should emit when comfort cookies where accepted and declined afterwards during a session', () => {
       // activate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: true,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).not.toBeCalled();
 
       // deactivate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should only emit when there was an activation before the deactivation', () => {
+    it('should only emit when there was an acceptance before the decline', () => {
       // deactivate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).not.toBeCalled();
 
       // activate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: true,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).not.toBeCalled();
 
       // deactivate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       // deactivate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       // activate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: true,
+        statisticsCookiesAccepted: true,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
 
       // deactivate
       dispatch(updateCookieConsent({
-        areStatisticsCookiesActive: false,
+        statisticsCookiesAccepted: false,
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(2);
