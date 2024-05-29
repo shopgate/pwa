@@ -120,7 +120,7 @@ class AppCommandRequest extends Request {
    * @param {string} serial The serial that was used to identify the response callback.
    * @param {Object} response The response object for the request
    */
-  handleResponse(resolve, reject, serial, response) {
+  onResponse(resolve, reject, serial, response) {
     resolve(response);
   }
 
@@ -151,7 +151,7 @@ class AppCommandRequest extends Request {
         this.logColor
       );
       this.cleanUpRequest(requestCallback);
-      this.handleResponse(resolve, reject, ...params);
+      this.onResponse(resolve, reject, ...params);
     };
 
     // Add the request to the buffer.

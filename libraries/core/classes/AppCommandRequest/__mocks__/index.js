@@ -1,5 +1,6 @@
 import event from '../../Event';
 import logGroup from '../../../helpers/logGroup';
+import { hasSGJavaScriptBridge, logger } from '../../../helpers';
 
 const AppCommandRequest = jest.requireActual('../index').default;
 
@@ -7,6 +8,13 @@ jest.mock('../../AppCommand');
 jest.mock('../../../helpers/logGroup', () => ({
   __esModule: true,
   default: jest.fn(),
+}));
+
+jest.mock('../../../helpers', () => ({
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+  logger: {
+    error: jest.fn(),
+  },
 }));
 
 /**
@@ -19,6 +27,10 @@ jest.mock('../../../helpers/logGroup', () => ({
  */
 class MockedAppCommandRequest extends AppCommandRequest {
   logGroupSpy = logGroup;
+
+  errorLoggerMock = logger.error
+
+  hasSGJavaScriptBridgeMock = hasSGJavaScriptBridge;
 
   /**
    * Sets mocked response data for the app command request. Due to how the underlying app event

@@ -1,22 +1,25 @@
 import RequestAppPermissionsRequest from './RequestAppPermissionsRequest';
 import {
   PERMISSION_ID_LOCATION,
-  USAGE_WHEN_IN_USE,
+  PERMISSION_USAGE_WHEN_IN_USE,
 } from '../../constants/AppPermissions';
 
 const REQUEST_PERMISSIONS_COMMAND_NAME = 'requestAppPermissions';
 const REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME = 'requestAppPermissionsResponse';
 
-jest.mock('../Event', () => ({}));
+jest.mock('../AppCommandRequest');
 
 const permissions = [{
   permissionId: PERMISSION_ID_LOCATION,
   options: {
-    usage: USAGE_WHEN_IN_USE,
+    usage: PERMISSION_USAGE_WHEN_IN_USE,
   },
 }];
 
-describe('AppPermissionsRequest', () => {
+describe('RequestAppPermissionsRequest', () => {
+  /**
+   * @type {RequestAppPermissionsRequest}
+   */
   let instance;
   let setCommandParamsSpy;
 
@@ -73,6 +76,22 @@ describe('AppPermissionsRequest', () => {
       instance.setPermissions([{ wrongParam: 1337 }]);
       const result = instance.validateCommandParams();
       expect(result).toBe(false);
+    });
+  });
+
+  describe('.dispatch()', () => {
+    it('should resolve when command param validation is successful', () => {
+      const mockedResponse = { mocked: 'response' };
+      instance.setMockedResponse(mockedResponse);
+      instance.setPermissions(permissions);
+      expect(instance.dispatch()).resolves.toEqual(mockedResponse);
+    });
+
+    it('should reject when command param validation is not successful', () => {
+      const mockedResponse = { mocked: 'response' };
+      instance.setMockedResponse(mockedResponse);
+      instance.setPermissions([]);
+      expect(instance.dispatch()).rejects.toThrow(`${REQUEST_PERMISSIONS_COMMAND_NAME} - invalid command parameters passed`);
     });
   });
 });

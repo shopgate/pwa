@@ -1,4 +1,3 @@
-import { hasSGJavaScriptBridge } from '../../helpers';
 import {
   PERMISSION_ID_CAMERA,
   PERMISSION_ID_LOCATION,
@@ -8,9 +7,6 @@ import {
 import AppPermissionsRequest from './AppPermissionsRequest';
 
 jest.mock('../AppCommandRequest');
-jest.mock('../../helpers', () => ({
-  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
-}));
 
 const commandName = 'appCommand';
 const eventName = 'appEvent';
@@ -78,7 +74,7 @@ describe('AppPermissionsRequest', () => {
     });
 
     it('should mock the response for a getAppPermissions request when no SGJavaScriptBridge is present', async () => {
-      hasSGJavaScriptBridge.mockReturnValueOnce(false);
+      instance.hasSGJavaScriptBridgeMock.mockReturnValueOnce(false);
 
       const params = { permissionIds: [PERMISSION_ID_CAMERA, PERMISSION_ID_LOCATION] };
       instance.setCommandParams(params);
@@ -88,7 +84,7 @@ describe('AppPermissionsRequest', () => {
     });
 
     it('should mock the response for a requestAppPermissions request when no SGJavaScriptBridge is present', async () => {
-      hasSGJavaScriptBridge.mockReturnValueOnce(false);
+      instance.hasSGJavaScriptBridgeMock.mockReturnValueOnce(false);
 
       const params = {
         permissions: [{

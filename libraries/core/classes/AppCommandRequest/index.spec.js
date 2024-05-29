@@ -58,7 +58,7 @@ describe('AppCommandRequest', () => {
   let instance;
   let cleanUpRequestSpy;
   let onDispatchSpy;
-  let handleResponseSpy;
+  let onResponseSpy;
   let getResponseLogPayloadSpy;
 
   beforeEach(() => {
@@ -67,7 +67,7 @@ describe('AppCommandRequest', () => {
     instance = new AppCommandRequest(commandName, eventName);
     cleanUpRequestSpy = jest.spyOn(instance, 'cleanUpRequest');
     onDispatchSpy = jest.spyOn(instance, 'onDispatch');
-    handleResponseSpy = jest.spyOn(instance, 'handleResponse');
+    onResponseSpy = jest.spyOn(instance, 'onResponse');
     getResponseLogPayloadSpy = jest.spyOn(instance, 'getResponseLogPayload');
   });
 
@@ -172,8 +172,8 @@ describe('AppCommandRequest', () => {
         requestResponse
       );
 
-      expect(handleResponseSpy).toHaveBeenCalledTimes(1);
-      expect(handleResponseSpy).toHaveBeenCalledWith(
+      expect(onResponseSpy).toHaveBeenCalledTimes(1);
+      expect(onResponseSpy).toHaveBeenCalledWith(
         expect.any(Function),
         expect.any(Function),
         instance.serial,
@@ -246,7 +246,7 @@ describe('AppCommandRequest', () => {
           return [number, string, serial];
         }
 
-        handleResponse(resolve, reject, number, string, serial) {
+        onResponse(resolve, reject, number, string, serial) {
           resolve([number, string, serial]);
         }
       }
@@ -275,7 +275,7 @@ describe('AppCommandRequest', () => {
     it('should throw an error when custom response handler rejects', (done) => {
       /* eslint-disable class-methods-use-this, require-jsdoc */
       class CustomRequest extends AppCommandRequest {
-        handleResponse(resolve, reject) {
+        onResponse(resolve, reject) {
           reject(new Error('Fatal Error'));
         }
       }
