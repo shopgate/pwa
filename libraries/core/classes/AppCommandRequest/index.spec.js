@@ -14,6 +14,7 @@ jest.mock('../AppCommand');
 let lastAddedEventCallback = null;
 const mockedEventAddCallback = jest.fn();
 const mockedEventRemoveCallback = jest.fn();
+const mockedEventRegisterEvent = jest.fn();
 jest.mock('../Event', () => ({
   addCallback: (name, callback, ...args) => {
     mockedEventAddCallback(name, callback, ...args);
@@ -21,6 +22,9 @@ jest.mock('../Event', () => ({
   },
   removeCallback: (...args) => {
     mockedEventRemoveCallback(...args);
+  },
+  registerEvent: (...args) => {
+    mockedEventRegisterEvent(...args);
   },
 }));
 
@@ -81,6 +85,7 @@ describe('AppCommandRequest', () => {
       expect(instance.serial.length).toBeGreaterThan(1);
       expect(typeof instance.callbackName).toBe('string');
       expect(instance.callbackName.length).toBeGreaterThan(1);
+      expect(mockedEventRegisterEvent).toHaveBeenCalledWith(eventName);
     });
   });
 

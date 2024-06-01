@@ -22,12 +22,14 @@ class AppCommandRequest extends Request {
     super();
 
     this.commandName = commandName;
-    this.eventName = eventName;
+    this.eventName = eventName || `${commandName}Response`;
 
     this.commandParams = null;
 
     this.libVersion = '25.0';
     this.logColor = '#9a9800';
+
+    event.registerEvent(this.eventName);
 
     this.createSerial(this.commandName);
     this.createEventCallbackName(this.eventName);
