@@ -1,4 +1,7 @@
-import { historyPush } from '@shopgate/engage/core/actions';
+import {
+  historyPush,
+  grantAppTrackingTransparencyPermission,
+} from '@shopgate/engage/core/actions';
 import {
   updateCookieConsent,
   hideCookieConsentModal,
@@ -10,11 +13,14 @@ import { PRIVACY_SETTINGS_PATTERN } from '../constants';
  * and native modal should be triggered for setting the permission
  * @returns {Function}
  */
-export const acceptAllCookies = () => (dispatch) => {
+export const acceptAllCookies = () => async (dispatch) => {
+  await dispatch(grantAppTrackingTransparencyPermission());
+
   dispatch(updateCookieConsent({
     comfortCookiesAccepted: true,
     statisticsCookiesAccepted: true,
   }));
+
   dispatch(hideCookieConsentModal());
   dispatch(historyPush({ pathname: '/' }));
 };
@@ -29,11 +35,16 @@ export const acceptAllCookies = () => (dispatch) => {
 export const acceptSelectedCookies = ({
   comfortCookiesAccepted,
   statisticsCookiesAccepted,
-}) => (dispatch) => {
+}) => async (dispatch) => {
+  if (comfortCookiesAccepted || statisticsCookiesAccepted) {
+    await dispatch(grantAppTrackingTransparencyPermission());
+  }
+
   dispatch(updateCookieConsent({
     comfortCookiesAccepted,
     statisticsCookiesAccepted,
   }));
+
   dispatch(hideCookieConsentModal());
   dispatch(historyPush({ pathname: '/' }));
 };
