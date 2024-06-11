@@ -1,18 +1,18 @@
 # Shopgate Connect user privacy extension
 
 To comply to the new data privacy laws, we need to offer a button for the user to delete his account.
-Delete account requests are later processed by shopgate backend system. 
+Delete account requests are later processed by shopgate backend system.
 
 ## Configuration
 
-* `deleteAccountTarget` - (string) Target position for the Delete Account Button (choose one from the list below). 
+* `deleteAccountTarget` - (string) Target position for the Delete Account Button (choose one from the list below).
 
 
 
 ### Available target positions for Delete User Button
 
 ```json
- "nav-menu.logout.before",
+  "nav-menu.logout.before",
   "nav-menu.logout.after",
   "nav-menu.shipping.before",
   "nav-menu.shipping.after",
