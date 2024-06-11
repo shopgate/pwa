@@ -32,6 +32,7 @@ const BACK = 'back';
 const CLOSE = 'close';
 const SIMPLE = 'simple';
 const CART_BUTTON = 'cart-button';
+const ITEMS = 'items';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -77,6 +78,10 @@ export const NAV_MENU_HOME_AFTER = `${NAV_MENU}.${HOME}.${AFTER}`;
 export const NAV_MENU_QUICK_LINKS = `${NAV_MENU}.${QUICK_LINKS}`;
 export const NAV_MENU_QUICK_LINKS_BEFORE = `${NAV_MENU}.${QUICK_LINKS}.${BEFORE}`;
 export const NAV_MENU_QUICK_LINKS_AFTER = `${NAV_MENU}.${QUICK_LINKS}.${AFTER}`;
+
+export const NAV_MENU_QUICK_LINKS_ITEMS = `${NAV_MENU}.${QUICK_LINKS}.${ITEMS}`;
+export const NAV_MENU_QUICK_LINKS_ITEMS_BEFORE = `${NAV_MENU}.${QUICK_LINKS}.${ITEMS}.${BEFORE}`;
+export const NAV_MENU_QUICK_LINKS_ITEMS_AFTER = `${NAV_MENU}.${QUICK_LINKS}.${ITEMS}.${AFTER}`;
 
 export const NAV_MENU_SCANNER_BEFORE = `${NAV_MENU}.${SCANNER}.${BEFORE}`;
 export const NAV_MENU_SCANNER = `${NAV_MENU}.${SCANNER}`;
