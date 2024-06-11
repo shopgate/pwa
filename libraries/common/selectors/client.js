@@ -145,10 +145,15 @@ export const hasScannerSupport = createSelector(
   getDeviceInformation,
   isIos,
   (clientInformation, deviceInformation, deviceIsIos) => {
-    // scanner is not supported on ipads
     const { type } = deviceInformation || {};
     const isIpad = type === TYPE_TABLET && deviceIsIos;
 
+    if (isVersionAtLeast('11.0.0', clientInformation.appVersion)) {
+      // scanner is supported on all apps based on the react-native based apps
+      return true;
+    }
+
+    // scanner is not supported on iPads with the not react-native based app
     return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion) && !isIpad;
   }
 );
