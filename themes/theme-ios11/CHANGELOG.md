@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.22.2](https://github.com/shopgate/pwa/compare/v6.22.1...v6.22.2) (2024-06-11)
+
+#### :rocket: Enhancement
+* [#1235](https://github.com/shopgate/pwa/pull/1235) Enabled scanner support on iPads with recent app versions ([@fkloes](https://github.com/fkloes))
+* [#1236](https://github.com/shopgate/pwa/pull/1236) Added portals to quick links menu + make them available for the @shopgate/user-privacy delete account button ([@Phmank](https://github.com/Phmank))
+
+
 ## [v6.22.0](https://github.com/shopgate/pwa/compare/v6.21.0...v6.22.0) (2024-04-10)
 
 #### :rocket: Enhancement
