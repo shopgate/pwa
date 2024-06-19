@@ -7,7 +7,6 @@ const modalContent = css({
 
 const container = css({
   backgroundColor: themeColors.lightOverlay,
-  height: '100vh',
   textAlign: 'center',
   padding: '30px',
   justifyContent: 'center',
