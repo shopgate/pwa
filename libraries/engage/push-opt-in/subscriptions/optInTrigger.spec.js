@@ -408,8 +408,8 @@ describe('Push OptIn Subscriptions', () => {
     });
   });
 
-  describe('cookieConsentSet$', () => {
-    it('should run expected logic when cookieConsentSet$ stream emits', () => {
+  describe('cookieConsentInitialized$', () => {
+    it('should run expected logic when cookieConsentInitialized$ stream emits', () => {
       setMockedConfig({
         appStarts: {
           value: 1,
@@ -432,6 +432,10 @@ describe('Push OptIn Subscriptions', () => {
       eventCallback();
 
       // getAppPermissions should have been called 2nd time for checkoutSuccess event
+      expect(getAppPermissions).toHaveBeenCalledTimes(2);
+
+      // Verify that opt in is only initialized once
+      dispatch({ type: UPDATE_COOKIE_CONSENT });
       expect(getAppPermissions).toHaveBeenCalledTimes(2);
     });
   });

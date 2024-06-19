@@ -58,9 +58,6 @@ export * from '@shopgate/pwa-core/commands/unifiedTracking';
 // TODO: Contains circular dependency!
 // export * from '@shopgate/pwa-core/commands/webStorage';
 
-// Constants
-export * from './constants';
-
 // Emitters
 export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
 
@@ -91,44 +88,9 @@ export * from '@shopgate/pwa-common/helpers/style';
 export * from '@shopgate/pwa-common/helpers/tracking';
 export * from '@shopgate/pwa-common/helpers/validation';
 
-// STREAMS
-export * from '@shopgate/pwa-common/streams/main';
-export * from '@shopgate/pwa-common/streams/error';
-
-// --------------- APP --------------- //
-
-// ACTIONS
-export { default as handleDeepLink } from '@shopgate/pwa-common/actions/app/handleDeepLink';
-export { default as handleUniversalLink } from '@shopgate/pwa-common/actions/app/handleUniversalLink';
-export { default as handleLink } from '@shopgate/pwa-common/actions/app/handleLink';
-export { default as handlePushNotification } from '@shopgate/pwa-common/actions/app/handlePushNotification';
-export { default as registerLinkEvents } from '@shopgate/pwa-common/actions/app/registerLinkEvents';
-export { default as updateStatusBarBackground } from './actions/updateStatusBarBackground';
-export { default as grantPermissions } from './actions/grantPermissions';
-export { default as grantPushPermissions } from './actions/grantPushPermissions';
-export { default as grantCameraPermissions } from './actions/grantCameraPermissions';
-export { default as grantGeolocationPermissions } from './actions/grantGeolocationPermissions';
-export { default as requestAppPermission } from './actions/requestAppPermission';
-export { default as requestAppPermissionStatus } from './actions/requestAppPermissionStatus';
-export { default as getGeolocation } from './actions/getGeolocation';
-
-// STREAMS
-export * from '@shopgate/pwa-common/streams/app';
-
 // --------------- STORE --------------- //
 
 export * from '@shopgate/pwa-common/store';
-
-// --------------- CLIENT --------------- //
-
-// ACTIONS
-export { default as fetchClientInformation } from '@shopgate/pwa-common/actions/client/fetchClientInformation';
-
-// SELECTORS
-export * from '@shopgate/pwa-common/selectors/client';
-
-// STREAMS
-export * from '@shopgate/pwa-common/streams/client';
 
 // --------------- COLLECTIONS --------------- //
 
@@ -156,13 +118,6 @@ export { default as AppProvider } from './providers/AppProvider';
 
 // --------------- ROUTER --------------- //
 
-// ACTIONS
-export { historyPop } from '@shopgate/pwa-common/actions/router/historyPop';
-export { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
-export { historyRedirect } from '@shopgate/pwa-common/actions/router/historyRedirect';
-export { historyReplace } from '@shopgate/pwa-common/actions/router/historyReplace';
-export { historyReset } from '@shopgate/pwa-common/actions/router/historyReset';
-
 // HELPERS
 export {
   getCurrentRouteHelper,
@@ -176,42 +131,10 @@ export {
   push, pop, replace, reset,
 } from './router/helpers';
 
-// SELECTORS
-export * from '@shopgate/pwa-common/selectors/router';
-export * from '@shopgate/pwa-common/selectors/history';
-
-// STREAMS
-export * from '@shopgate/pwa-common/streams/router';
-
-// --------------- URL --------------- //
-
-// ACTIONS
-export { resetApp } from '@shopgate/pwa-common/action-creators/app';
-export * from '@shopgate/pwa-common/action-creators/url';
-
-// SELECTORS
-export * from '@shopgate/pwa-common/selectors/url';
-
-// --------------- MENU --------------- //
-
-// ACTIONS
-export { default as fetchMenu } from '@shopgate/pwa-common/actions/menu/fetchMenu';
-
-// SELECTORS
-export * from '@shopgate/pwa-common/selectors/menu';
-
 // --------------- MODAL --------------- //
-
-// ACTIONS
-export { default as closeModal } from '@shopgate/pwa-common/actions/modal/closeModal';
-export { default as promiseMap } from '@shopgate/pwa-common/actions/modal/promiseMap';
-export { default as showModal } from '@shopgate/pwa-common/actions/modal/showModal';
 
 // HELPERS
 export { default as withShowModal } from '@shopgate/pwa-common/helpers/modal/withShowModal';
-
-// SELECTORS
-export * from '@shopgate/pwa-common/selectors/modal';
 
 // --------------- HOOKS --------------- //
 
@@ -256,3 +179,6 @@ export { getFullImageSource } from './helpers/getFullImageSource';
 
 export * from './initialization';
 export * from './selectors';
+export * from './constants';
+export * from './actions';
+export * from './streams';

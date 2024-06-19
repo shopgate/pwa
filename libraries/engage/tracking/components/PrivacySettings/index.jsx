@@ -16,8 +16,8 @@ import connect from './connector';
 const PrivacySettings = ({
   acceptAllCookies,
   acceptSelectedCookies,
-  areComfortCookiesActiveState,
-  areStatisticsCookiesActiveState,
+  comfortCookiesAcceptedState,
+  statisticsCookiesAcceptedState,
 }) => {
   const {
     cookieConsent: {
@@ -31,10 +31,10 @@ const PrivacySettings = ({
   } = appConfig;
 
   const [areComfortCookiesSelected, setAreComfortCookiesSelected] = useState(
-    areComfortCookiesActiveState !== null ? areComfortCookiesActiveState : false
+    comfortCookiesAcceptedState !== null ? comfortCookiesAcceptedState : false
   );
   const [areStatisticsCookiesSelected, setAreStatisticsCookiesSelected] = useState(
-    areStatisticsCookiesActiveState !== null ? areStatisticsCookiesActiveState : false
+    statisticsCookiesAcceptedState !== null ? statisticsCookiesAcceptedState : false
   );
 
   const handleChangeComfortCookies = useCallback(() => {
@@ -101,8 +101,8 @@ const PrivacySettings = ({
         </Button>
         <Button
           onClick={() => acceptSelectedCookies({
-            areComfortCookiesActive: areComfortCookiesSelected,
-            areStatisticsCookiesActive: areStatisticsCookiesSelected,
+            comfortCookiesAccepted: areComfortCookiesSelected,
+            statisticsCookiesAccepted: areStatisticsCookiesSelected,
           })}
           type="simple"
           className={classNames(styles.button, 'privacy-settings__button-accept-selected')}
@@ -126,13 +126,13 @@ const PrivacySettings = ({
 PrivacySettings.propTypes = {
   acceptAllCookies: PropTypes.func.isRequired,
   acceptSelectedCookies: PropTypes.func.isRequired,
-  areComfortCookiesActiveState: PropTypes.bool,
-  areStatisticsCookiesActiveState: PropTypes.bool,
+  comfortCookiesAcceptedState: PropTypes.bool,
+  statisticsCookiesAcceptedState: PropTypes.bool,
 };
 
 PrivacySettings.defaultProps = {
-  areComfortCookiesActiveState: null,
-  areStatisticsCookiesActiveState: null,
+  comfortCookiesAcceptedState: null,
+  statisticsCookiesAcceptedState: null,
 };
 
 export default connect(PrivacySettings);

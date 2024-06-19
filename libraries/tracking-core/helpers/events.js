@@ -28,6 +28,7 @@ export const TRACK_LOGIN_FAILED = 'loginFailed';
 export const TRACK_CUSTOM_EVENT = 'customEvent';
 export const REMOVE_TRACKER = 'removeTracker';
 export const ADD_TRACKER = 'addTracker';
+export const COOKIE_CONSENT_UPDATED = 'cookieConsentUpdated';
 
 export const scannerEvents = {
   // Scan type is activated
@@ -90,4 +91,5 @@ export default [
   TRACK_LOGIN_SUCCESS,
   TRACK_LOGIN_FAILED,
   TRACK_CUSTOM_EVENT,
+  COOKIE_CONSENT_UPDATED,
 ];
