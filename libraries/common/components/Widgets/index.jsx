@@ -121,7 +121,7 @@ class Widgets extends Component {
           return null;
         }
 
-        const key = `w${index}`;
+        const key = `w${widget?.id || index}`;
 
         if (widget.type === WIDGET_GRID_TYPE) {
           // If it's a grid just create it and pass the child widgets.
