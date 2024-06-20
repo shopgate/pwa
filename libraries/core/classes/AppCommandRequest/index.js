@@ -6,6 +6,8 @@ import requestBuffer from '../RequestBuffer';
 import { logger } from '../../helpers';
 import logGroup from '../../helpers/logGroup';
 
+const DEFAULT_LIB_VERSION = '25.0';
+
 /**
  * The AppCommandRequest class is the base class to implement request like app commands that have a
  * corresponding app event that delivers response data.
@@ -26,7 +28,7 @@ class AppCommandRequest extends Request {
 
     this.commandParams = null;
 
-    this.libVersion = '25.0';
+    this.libVersion = DEFAULT_LIB_VERSION;
     this.logColor = '#9a9800';
 
     event.registerEvent(this.eventName);
@@ -50,7 +52,7 @@ class AppCommandRequest extends Request {
    * @param {string} [libVersion="25.0"] The lib version.
    * @return {AppCommandRequest}
    */
-  setLibVersion(libVersion = '25.0') {
+  setLibVersion(libVersion = DEFAULT_LIB_VERSION) {
     this.libVersion = libVersion;
     return this;
   }
@@ -114,7 +116,7 @@ class AppCommandRequest extends Request {
    *
    * This default handler expects the command serial as first and the request response as
    * second command response event parameter. If the class is used for request commands with a
-   * different response even payload, this method needs to be overwritten.
+   * different response event payload, this method needs to be overwritten.
    * @param {Function} resolve Resolve callback of the promise returned by the dispatch method
    * of the AppCommandRequest instance.
    * @param {Function} reject Reject callback of the promise returned by the dispatch method
@@ -173,7 +175,7 @@ class AppCommandRequest extends Request {
     // Try to dispatch the command.
     const success = await command.dispatch();
 
-    // If the dispatch of the command failed revert everything and reject to promise.
+    // If the dispatch of the command failed revert everything and reject the promise.
     if (success === false) {
       this.cleanUpRequest(requestCallback);
       reject(new Error(`${this.commandName} command dispatch failed`));
