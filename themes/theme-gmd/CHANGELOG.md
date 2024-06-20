@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.22.4](https://github.com/shopgate/pwa/compare/v6.22.3...v6.22.4) (2024-06-20)
+
+#### :bug: Bug Fix
+* [#1240](https://github.com/shopgate/pwa/pull/1240) Fixed an issue where "page" widgets where not updated properly after config update ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.22.3](https://github.com/shopgate/pwa/compare/v6.22.1...v6.22.3) (2024-06-13)
 
 #### :rocket: Enhancement
