@@ -23,7 +23,7 @@ const mapStateToProps = state => ({
  */
 const PrivacySettingsPage = ({ showTitle }) => (
   <View noContentPortal aria-hidden={false}>
-    <BackBar title={showTitle ? 'navigation.privacySettings' : undefined} />
+    <BackBar title={showTitle ? 'navigation.privacySettings' : ''} />
     <PrivacySettings />
   </View>
 );

@@ -55,7 +55,7 @@ const PrivacySettings = ({
   return (
     <Grid component="div" className={styles.container}>
       <Grid.Item component="div" className={styles.item}>
-        <Grid.Item component="div" className={styles.switchWrapper} htmlFor="comfort">
+        <Grid.Item component="div" className={styles.switchWrapper}>
           <Switch
             onChange={handleChangeComfortCookies}
             checked={areComfortCookiesSelected}
