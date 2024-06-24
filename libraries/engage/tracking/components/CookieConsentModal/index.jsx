@@ -65,17 +65,26 @@ const CookieConsentModal = ({
 
   return (
     <Modal isOpened={isCookieConsentModalVisible} classes={{ content: styles.modalContent }}>
-      <Grid component="div" className={classNames(styles.container, 'cookie-consent-modal__container')}>
+      <Grid
+        component="div"
+        className={classNames(styles.container, 'cookie-consent-modal__container')}
+        role="alertdialog"
+        aria-modal
+        aria-labelledby="cookieConsentDialogTitle"
+        aria-describedby="cookieConsentDialogMessage"
+      >
         <Grid.Item component="div" className={styles.item}>
           <img src={imageSRC} className={classNames(styles.image, 'cookie-consent-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
             className={classNames(styles.title, 'cookie-consent-modal__title')}
             string={modalTitle || 'cookieConsentModal.title'}
+            id="cookieConsentDialogTitle"
           />
           <I18n.Text
             string={modalMessage || 'cookieConsentModal.message'}
             className={classNames('cookie-consent-modal__message')}
             acceptPlainTextWithPlaceholders
+            id="cookieConsentDialogMessage"
           >
             <I18n.Placeholder forKey="privacyLink">
               <Link href={PRIVACY_PATH} tag="span">
@@ -111,6 +120,7 @@ const CookieConsentModal = ({
           </Grid.Item>
         </Grid.Item>
       </Grid>
+
     </Modal>
   );
 };

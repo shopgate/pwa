@@ -59,16 +59,24 @@ const PushOptInModal = ({
 
   return (
     <Modal isOpened={isPushOptInModalVisible} classes={{ content: styles.modalContent }}>
-      <Grid className={classNames(styles.container, 'push-opt-in-modal__container')}>
+      <Grid
+        className={classNames(styles.container, 'push-opt-in-modal__container')}
+        role="alertdialog"
+        aria-modal
+        aria-labelledby="pushOptInDialogTitle"
+        aria-describedby="pushOptInDialogMessage"
+      >
         <Grid.Item className={styles.item}>
           <img src={imageSRC} className={classNames(styles.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
             className={classNames(styles.title, 'push-opt-in-modal__title')}
             string={modalTitle || 'pushOptInModal.title'}
+            id="pushOptInDialogTitle"
           />
           <I18n.Text
             className={classNames('push-opt-in-modal__message')}
             string={modalMessage || 'pushOptInModal.message'}
+            id="pushOptInDialogMessage"
           />
           <Button onClick={allowPushOptIn} type="primary" className={classNames(styles.button, 'push-opt-in-modal__button-allow')}>
             <I18n.Text string={modalButtonAllow || 'pushOptInModal.buttonAllow'} />
