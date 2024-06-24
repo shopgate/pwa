@@ -73,6 +73,9 @@ class AppCommandRequest extends Request {
 
   /**
    * Validates the command params before dispatch.
+   *
+   * This method is supposed to be overwritten by an inheriting class. It's invoked with the
+   * currently configured command params object.
    * @param {Object} commandParams The params of the command to be dispatched
    * @return {boolean}
    */
@@ -81,7 +84,10 @@ class AppCommandRequest extends Request {
   }
 
   /**
-   * Creates a title for the app command request log
+   * Creates a title for the app command request log.
+   *
+   * This method is supposed to be overwritten by an inheriting class to enable customization of
+   * log output.
    * @returns {string}
    */
   getRequestLogTitle() {
@@ -89,7 +95,10 @@ class AppCommandRequest extends Request {
   }
 
   /**
-   * Creates a title for the app command response log
+   * Creates a title for the app command response log.
+   *
+   * This method is supposed to be overwritten by an inheriting class to enable customization of
+   * log output.
    * @returns {string}
    */
   getResponseLogTitle() {
