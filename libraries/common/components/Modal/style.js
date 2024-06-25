@@ -22,6 +22,9 @@ const content = css({
   position: 'relative',
   maxWidth: '100vw',
   maxHeight: '100vh',
+  paddingTop: 'var(--safe-area-inset-top)',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
+  overflowY: 'scroll',
 }).toString();
 
 export default {

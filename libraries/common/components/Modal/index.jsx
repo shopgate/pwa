@@ -7,7 +7,7 @@ import styles from './style';
 /**
  * The Modal component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Modal = ({ children, classes }) => (
   <Portal isOpened>
