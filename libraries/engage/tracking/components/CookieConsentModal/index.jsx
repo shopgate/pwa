@@ -64,7 +64,13 @@ const CookieConsentModal = ({
   }
 
   return (
-    <Modal isOpened={isCookieConsentModalVisible} classes={{ content: styles.modalContent }}>
+    <Modal
+      isOpened={isCookieConsentModalVisible}
+      classes={{
+        content: styles.modalContent,
+        layout: styles.modalLayout,
+      }}
+    >
       <Grid component="div" className={classNames(styles.container, 'cookie-consent-modal__container')}>
         <Grid.Item component="div" className={styles.item}>
           <img src={imageSRC} className={classNames(styles.image, 'cookie-consent-modal__image')} alt="" aria-hidden="true" />
