@@ -12,6 +12,7 @@ export const PERMISSION_ID_BACKGROUND_LOCATION = 'background_location';
 export const PERMISSION_ID_PUSH = 'push';
 // Only available on iOS
 export const PERMISSION_ID_BACKGROUND_APP_REFRESH = 'backgroundAppRefresh';
+export const PERMISSION_ID_APP_TRACKING_TRANSPARENCY = 'appTrackingTransparency';
 
 export const availablePermissionsIds = [
   PERMISSION_ID_BACKGROUND_APP_REFRESH,
@@ -20,6 +21,7 @@ export const availablePermissionsIds = [
   PERMISSION_ID_LOCATION,
   PERMISSION_ID_PHONE,
   PERMISSION_ID_PUSH,
+  PERMISSION_ID_APP_TRACKING_TRANSPARENCY,
 ];
 
 /**
