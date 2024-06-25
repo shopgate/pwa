@@ -5,6 +5,7 @@ import {
 } from '@shopgate/engage/components';
 import {
   NAV_MENU_QUICK_LINKS,
+  NAV_MENU_QUICK_LINKS_ITEMS,
 } from '@shopgate/pwa-common/constants/Portals';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import portalProps from '../../portalProps';
@@ -31,9 +32,11 @@ function Quicklinks({ entries, isBackInStockEnabled }) {
   return (
     <SurroundPortals portalName={NAV_MENU_QUICK_LINKS} portalProps={portalProps}>
       <Section title="navigation.more_menu">
-        {allEntries.map(entry => (
-          <Section.Item href={entry.url} key={entry.url} label={entry.label} />
-        ))}
+        <SurroundPortals portalName={NAV_MENU_QUICK_LINKS_ITEMS} portalProps={portalProps}>
+          {allEntries.map(entry => (
+            <Section.Item href={entry.url} key={entry.url} label={entry.label} />
+          ))}
+        </SurroundPortals>
       </Section>
     </SurroundPortals>
   );

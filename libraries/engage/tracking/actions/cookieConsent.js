@@ -28,8 +28,11 @@ export const acceptAllCookies = () => async (dispatch) => {
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
  * and native modal should be triggered for setting the permission
- * @param {boolean|null} comfortCookiesAccepted whether this cookie type was accepted by user
- * @param {boolean|null} statisticsCookiesAccepted whether this cookie type was accepted by user
+ * @param {Object} params Action params
+ * @param {boolean|null} params.comfortCookiesAccepted whether this cookie type was accepted
+ * by user
+ * @param {boolean|null} params.statisticsCookiesAccepted whether this cookie type was accepted
+ * by user
  * @returns {Function}
  */
 export const acceptSelectedCookies = ({

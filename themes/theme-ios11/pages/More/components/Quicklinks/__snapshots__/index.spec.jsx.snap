@@ -125,66 +125,108 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 }
               }
             >
-              <MoreMenuItem
-                className={null}
-                href="/some/url"
-                key="/some/url"
-                label="Some Label"
-                onClick={null}
-                testId={null}
+              <SurroundPortals
+                portalName="nav-menu.quick-links.items"
+                portalProps={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                    "Section": [Function],
+                  }
+                }
               >
-                <Link
-                  className="css-1hj8a57"
-                  href="/some/url"
+                <Portal
+                  name="nav-menu.quick-links.items.before"
+                  props={
+                    Object {
+                      "Headline": [Function],
+                      "Item": [Function],
+                      "Section": [Function],
+                    }
+                  }
+                />
+                <Portal
+                  name="nav-menu.quick-links.items"
+                  props={
+                    Object {
+                      "Headline": [Function],
+                      "Item": [Function],
+                      "Section": [Function],
+                    }
+                  }
                 >
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
-                      string="Some Label"
+                  <MoreMenuItem
+                    className={null}
+                    href="/some/url"
+                    key="/some/url"
+                    label="Some Label"
+                    onClick={null}
+                    testId={null}
+                  >
+                    <Link
+                      className="css-1hj8a57"
+                      href="/some/url"
                     >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        Some Label
-                      </span>
-                    </Translate>
-                  </div>
-                </Link>
-              </MoreMenuItem>
-              <MoreMenuItem
-                className={null}
-                href="/another/url"
-                key="/another/url"
-                label="Another Label"
-                onClick={null}
-                testId={null}
-              >
-                <Link
-                  className="css-1hj8a57"
-                  href="/another/url"
-                >
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
-                      string="Another Label"
+                      <div>
+                        <Translate
+                          acceptPlainTextWithPlaceholders={false}
+                          className={null}
+                          params={Object {}}
+                          role={null}
+                          string="Some Label"
+                        >
+                          <span
+                            className={null}
+                            role={null}
+                          >
+                            Some Label
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </MoreMenuItem>
+                  <MoreMenuItem
+                    className={null}
+                    href="/another/url"
+                    key="/another/url"
+                    label="Another Label"
+                    onClick={null}
+                    testId={null}
+                  >
+                    <Link
+                      className="css-1hj8a57"
+                      href="/another/url"
                     >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        Another Label
-                      </span>
-                    </Translate>
-                  </div>
-                </Link>
-              </MoreMenuItem>
+                      <div>
+                        <Translate
+                          acceptPlainTextWithPlaceholders={false}
+                          className={null}
+                          params={Object {}}
+                          role={null}
+                          string="Another Label"
+                        >
+                          <span
+                            className={null}
+                            role={null}
+                          >
+                            Another Label
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </MoreMenuItem>
+                </Portal>
+                <Portal
+                  name="nav-menu.quick-links.items.after"
+                  props={
+                    Object {
+                      "Headline": [Function],
+                      "Item": [Function],
+                      "Section": [Function],
+                    }
+                  }
+                />
+              </SurroundPortals>
             </div>
           </Section>
         </Portal>

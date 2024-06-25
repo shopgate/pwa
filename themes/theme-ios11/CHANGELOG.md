@@ -1,5 +1,24 @@
 # Changelog
 
+## [v6.22.4](https://github.com/shopgate/pwa/compare/v6.22.3...v6.22.4) (2024-06-20)
+
+#### :bug: Bug Fix
+* [#1240](https://github.com/shopgate/pwa/pull/1240) Fixed an issue where "page" widgets where not updated properly after config update ([@fkloes](https://github.com/fkloes))
+
+
+## [v6.22.3](https://github.com/shopgate/pwa/compare/v6.22.1...v6.22.3) (2024-06-13)
+
+#### :rocket: Enhancement
+* [#1235](https://github.com/shopgate/pwa/pull/1235) Enabled scanner support on iPads with recent app versions ([@fkloes](https://github.com/fkloes))
+* [#1236](https://github.com/shopgate/pwa/pull/1236) Added portals to quick links menu + make them available for the @shopgate/user-privacy delete account button ([@Phmank](https://github.com/Phmank))
+
+
+## [v6.22.1](https://github.com/shopgate/pwa/compare/v6.22.0...v6.22.1) (2024-05-28)
+
+#### :bug: Bug Fix
+* [#1182](https://github.com/shopgate/pwa/pull/1182) Fixed a couple of small bugs related to push messages and tracking ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.22.0](https://github.com/shopgate/pwa/compare/v6.21.0...v6.22.0) (2024-04-10)
 
 #### :rocket: Enhancement

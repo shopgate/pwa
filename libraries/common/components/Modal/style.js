@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
   position: 'fixed',
@@ -16,12 +17,14 @@ const layout = css({
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
+  backgroundColor: themeColors.lightOverlay,
 }).toString();
 
 const content = css({
+  paddingTop: 'var(--safe-area-inset-top)',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
+  overflowY: 'scroll',
   position: 'relative',
-  maxWidth: '100vw',
-  maxHeight: '100vh',
 }).toString();
 
 export default {
