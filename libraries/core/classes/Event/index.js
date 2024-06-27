@@ -4,6 +4,8 @@ import { logger } from '../../helpers';
 const HANDLER_ADD = 'add';
 const HANDLER_REMOVE = 'remove';
 
+/* eslint-disable extra-rules/potential-point-free */
+
 /**
  * Event class.
  */
@@ -13,7 +15,7 @@ class Event extends EventEmitter {
    */
   constructor() {
     super();
-
+    this.events = new Set();
     this.setMaxListeners(20);
 
     /**
@@ -35,6 +37,14 @@ class Event extends EventEmitter {
         this.call(...args);
       };
     }
+  }
+
+  /**
+   * Registers a new event
+   * @param {string} eventName The new event name
+   */
+  registerEvent(eventName) {
+    this.events.add(eventName);
   }
 
   /**
@@ -109,9 +119,7 @@ class Event extends EventEmitter {
     } else if ([
       'dataResponse',
       'webStorageResponse',
-      'getAppPermissionsResponse',
-      'requestAppPermissionsResponse',
-    ].includes(event)) {
+    ].includes(event) || Array.from(this.events).includes(event)) {
       eventName += `:${parameters[0]}`;
     }
 
@@ -122,6 +130,8 @@ class Event extends EventEmitter {
     }
   }
 }
+
+/* eslint-enable extra-rules/potential-point-free */
 
 // TODO:
 // We need this as a temporary solution because of double node_modules form extensions and theme.

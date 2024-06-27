@@ -58,7 +58,13 @@ const PushOptInModal = ({
   }
 
   return (
-    <Modal isOpened={isPushOptInModalVisible} classes={{ content: styles.modalContent }}>
+    <Modal
+      isOpened={isPushOptInModalVisible}
+      classes={{
+        content: styles.modalContent,
+        layout: styles.modalLayout,
+      }}
+    >
       <Grid
         className={classNames(styles.container, 'push-opt-in-modal__container')}
         role="alertdialog"

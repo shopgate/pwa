@@ -5,6 +5,10 @@ const modalContent = css({
   width: '100%',
 }).toString();
 
+const modalLayout = css({
+  backgroundColor: themeColors.lightOverlay,
+}).toString();
+
 const container = css({
   backgroundColor: themeColors.lightOverlay,
   textAlign: 'center',
@@ -48,6 +52,7 @@ const buttonText = css({
 
 export default {
   modalContent,
+  modalLayout,
   container,
   item,
   title,

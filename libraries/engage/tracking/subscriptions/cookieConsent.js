@@ -1,6 +1,10 @@
 import { main$, appDidStart$ } from '@shopgate/engage/core/streams';
 import { ROUTE_WILL_LEAVE } from '@shopgate/engage/core/constants';
 import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
+import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
+import {
+  grantAppTrackingTransparencyPermission,
+} from '@shopgate/engage/core/actions';
 import { handleCookieConsent, showCookieConsentModal } from '../action-creators';
 import {
   getIsCookieConsentHandled,
@@ -23,7 +27,7 @@ export const navigateBackToCookieModal$ = main$
  * @param {Function} subscribe The subscribe function
  */
 export default function cookieConsent(subscribe) {
-  subscribe(appDidStart$, ({ dispatch, getState }) => {
+  subscribe(appDidStart$, async ({ dispatch, getState }) => {
     const state = getState();
     const { cookieConsent: { isCookieConsentActivated } } = appConfig;
     const isCookieConsentHandled = getIsCookieConsentHandled(state);
@@ -33,7 +37,11 @@ export default function cookieConsent(subscribe) {
      * and user has chosen cookies already trigger stream to run code that depends on the cookie
      * consent.
      */
-    if (!isCookieConsentActivated || (isCookieConsentActivated && isCookieConsentHandled)) {
+    if (
+      !isCookieConsentActivated ||
+      (isCookieConsentActivated && isCookieConsentHandled) ||
+      !appSupportsCookieConsent()
+    ) {
       const comfortCookiesAccepted = getAreComfortCookiesSet(state);
       const statisticsCookiesAccepted = getAreStatisticsCookiesSet(state);
 
@@ -41,6 +49,10 @@ export default function cookieConsent(subscribe) {
         comfortCookiesAccepted,
         statisticsCookiesAccepted,
       }));
+
+      if (appSupportsCookieConsent() && (comfortCookiesAccepted || statisticsCookiesAccepted)) {
+        await dispatch(grantAppTrackingTransparencyPermission());
+      }
 
       return;
     }

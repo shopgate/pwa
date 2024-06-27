@@ -12,6 +12,7 @@ import {
   NAV_MENU_STORE_INFORMATION_ABOUT_AFTER,
   NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE,
 } from '@shopgate/engage/core';
+import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
 import { appConfig } from '@shopgate/engage';
 import NavDrawerSection from '../Section';
 import ShippingButton from './components/ShippingButton';
@@ -46,7 +47,7 @@ const StoreInfo = () => (
         <NavDrawerSection title="navigation.menuSubHeader.about">
           <TermsButton />
           <PrivacyButton />
-          {isCookieConsentActivated && <PrivacySettingsButton />}
+          {appSupportsCookieConsent() && isCookieConsentActivated && <PrivacySettingsButton />}
           {showReturnPolicy && <ReturnsButton />}
           <ImprintButton />
         </NavDrawerSection>

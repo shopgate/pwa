@@ -5,6 +5,7 @@ import {
   NAV_MENU_STORE_INFORMATION,
   NAV_MENU_STORE_INFORMATION_AFTER,
 } from '@shopgate/engage/core';
+import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
 import { appConfig } from '@shopgate/engage';
 import portalProps from '../../portalProps';
 import Section from '../Section';
@@ -31,7 +32,7 @@ const StoreInfo = () => (
         <Payment />
         <Terms />
         <Privacy />
-        {isCookieConsentActivated && <PrivacySettings />}
+        {appSupportsCookieConsent() && isCookieConsentActivated && <PrivacySettings />}
         <ReturnPolicy />
         <Imprint />
       </Section>
