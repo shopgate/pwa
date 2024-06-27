@@ -3,18 +3,24 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
   display: 'flex',
+  flex: 1,
   textAlign: 'left',
   justifyContent: 'space-between',
+  flexDirection: 'row-reverse',
+  gap: '32px',
 });
 
-const switchButton = css({
-  display: 'inline-block',
+const input = css({
+  display: 'flex',
+  flexShrink: 0,
+  appearance: 'none',
   width: '40px',
   height: '20px',
   backgroundColor: '#ccc',
   borderRadius: '10px',
   position: 'relative',
   cursor: 'pointer',
+
   ':before': {
     content: '""',
     position: 'absolute',
@@ -26,29 +32,19 @@ const switchButton = css({
     borderRadius: '50%',
     transition: 'transform 0.3s',
   },
-});
-
-const input = css({
-  display: 'none',
-  [`:checked + .${switchButton}`]: {
+  ':checked': {
     backgroundColor: themeConfig.colors.accent,
   },
-  [`:disabled + .${switchButton}`]: {
-    backgroundColor: themeConfig.colors.shade7,
-  },
-  [`:checked + .${switchButton}::before`]: {
+  ':checked::before': {
     transform: 'translateX(20px)',
   },
-});
-
-const disabled = css({
-  backgroundColor: themeConfig.colors.shade7,
-  cursor: 'not-allowed',
+  ':disabled': {
+    backgroundColor: themeConfig.colors.shade7,
+    cursor: 'not-allowed',
+  },
 });
 
 export default {
-  input,
-  switchButton,
   container,
-  disabled,
+  input,
 };

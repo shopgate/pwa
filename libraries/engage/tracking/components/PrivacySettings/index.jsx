@@ -5,6 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { PRIVACY_PATH } from '@shopgate/engage/page';
 import { appConfig } from '@shopgate/engage';
+import { i18n } from '@shopgate/engage/core';
 import classNames from 'classnames';
 import styles from './style';
 import connect from './connector';
@@ -55,40 +56,40 @@ const PrivacySettings = ({
     <Grid component="div" className={styles.container}>
       <Grid.Item component="div" className={styles.item}>
         <Grid.Item component="div" className={styles.switchWrapper}>
-          <div>
+          <Switch
+            onChange={handleChangeComfortCookies}
+            checked={areComfortCookiesSelected}
+            a11yFallbackText={`${i18n.text(settingsComfortTitle || 'cookieSettings.comfortTitle')}. ${i18n.text(settingsComfortText || 'cookieSettings.comfort')}`}
+          >
             <span className={styles.title}>
               {<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
             </span>
             <span>{<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}</span>
-          </div>
-          <Switch
-            onChange={handleChangeComfortCookies}
-            checked={areComfortCookiesSelected}
-          />
+          </Switch>
         </Grid.Item>
         <Grid.Item component="div" className={styles.switchWrapper}>
-          <div>
+          <Switch
+            onChange={handleChangeStatisticsCookies}
+            checked={areStatisticsCookiesSelected}
+            a11yFallbackText={`${i18n.text(settingsStatisticsTitle || 'cookieSettings.statisticsTitle')}. ${i18n.text(settingsStatisticsText || 'cookieSettings.statistics')}`}
+          >
             <span className={styles.title}>
               {<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
             </span>
             <span>{<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}</span>
-          </div>
-          <Switch
-            onChange={handleChangeStatisticsCookies}
-            checked={areStatisticsCookiesSelected}
-          />
+          </Switch>
         </Grid.Item>
         <Grid.Item component="div" className={styles.switchWrapper}>
-          <div>
+          <Switch
+            disabled
+            checked
+            a11yFallbackText={`${i18n.text(settingsRequiredTitle || 'cookieSettings.requiredTitle')}. ${i18n.text(settingsRequiredText || 'cookieSettings.required')}`}
+          >
             <span className={styles.title}>
               {<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
             </span>
             <span>{<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}</span>
-          </div>
-          <Switch
-            disabled
-            checked
-          />
+          </Switch>
         </Grid.Item>
       </Grid.Item>
       <Grid.Item component="div" className={styles.buttonWrapper}>
