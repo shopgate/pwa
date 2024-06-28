@@ -332,21 +332,21 @@
     "message": "Aktivieren Sie Benachrichtigungen, damit wir Ihnen Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können."
   },
   "cookieConsentModal": {
-    "title": "Customize your personal shopping experience",
-    "buttonAcceptAll": "Accept all",
-    "modalButtonOnlyRequired": "Only essential",
-    "modalButtonConfirmSelected": "Confirm selection",
-    "buttonConfigure": "Configure settings",
-    "message": "Our app is designed to be optimally tailored to your preferences. We use modern tracking technologies and cookies, with which we collect your clicks and analyze them to present you with personalized content. You can adjust the settings at any time in the 'My Account' area. You can find more information in our detailed {privacyLink}.",
-    "privacyText": "privacy policy"
+    "title": "Passen Sie Ihr persönliches Einkaufserlebnis an",
+    "buttonAcceptAll": "Alle akzeptieren",
+    "modalButtonOnlyRequired": "Nur erforderliche",
+    "modalButtonConfirmSelected": "Auswahl bestätigen",
+    "buttonConfigure": "Einstellungen konfigurieren",
+    "message": "Unser Ziel ist es, die App optimal auf Ihre Bedürfnisse anzupassen. Dafür verwenden wir moderne Tracking-Technologien, mit denen wir Einkaufsverhalten analysieren und die Daten nutzen, um unsere App zu verbessern und Ihnen personalisierte Inhalte zu präsentieren. Sie können die Einstellungen jederzeit im Bereich „Mein Konto“ anpassen. Weitere Informationen finden Sie in unserer detaillierten {privacyLink}.",
+    "privacyText": "Datenschutzerklärung"
   },
   "cookieSettings": {
-    "comfortTitle": "Comfort",
-    "statisticsTitle": "Personalization & Statistics",
-    "requiredTitle": "Required",
-    "comfort": "These cookies and technologies allow for better functionality and performance.",
-    "statistics": "These cookies and technologies allow us to show you more relevant ads.",
-    "required": "Data that is required to run the app",
-    "privacy": "For more information please see our {privacyLink}."
+    "comfortTitle": "Komfort",
+    "statisticsTitle": "Personalisierung & Statistik",
+    "requiredTitle": "Erforderlich",
+    "comfort": "Diese Cookies und Technologien ermöglichen einige zusätzliche Funktionen und eine bessere Leistung.",
+    "statistics": "Diese Statistiken helfen uns, unsere App zu verbessern und Ihnen relevantere Anzeigen zu zeigen.",
+    "required": "Daten, die für den Betrieb der App erforderlich sind",
+    "privacy": "Für weitere Informationen beachten Sie bitte unsere {privacyLink}."
   }
 }

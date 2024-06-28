@@ -324,5 +324,23 @@
     "buttonAllow": "Ativar as notificações",
     "buttonDeny": "Não quero notificações",
     "message": "Ativar as notificações para que possamos enviar-lhe notificações push sobre novas ofertas, cupões exclusivos e muito mais."
+  },
+  "cookieConsentModal": {
+    "title": "Personalize a sua experiência de compra",
+    "buttonAcceptAll": "Aceitar tudo",
+    "modalButtonOnlyRequired": "Apenas essenciais",
+    "modalButtonConfirmSelected": "Confirmar seleção",
+    "buttonConfigure": "Configurar definições",
+    "message": "A nossa aplicação foi concebida para ser otimizada de acordo com as suas preferências. Utilizamos tecnologias de monitorização modernas, com as quais analisamos o comportamento de compra e usamos os dados para melhorar a nossa aplicação e apresentar conteúdo personalizado. Pode ajustar as definições em qualquer momento na área “A Minha Conta”. Pode encontrar mais informações na nossa {privacyLink} detalhada.",
+    "privacyText": "política de privacidade"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Conforto",
+    "statisticsTitle": "Personalização e estatísticas",
+    "requiredTitle": "Obrigatório",
+    "comfort": "Estes cookies e tecnologias permitem algumas funcionalidades adicionais e melhor desempenho.",
+    "statistics": "Estes dados permitem-nos recolher mais estatísticas para melhorar a nossa aplicação e mostrar anúncios mais relevantes.",
+    "required": "Dados que são necessários para executar a aplicação",
+    "privacy": "Para obter mais informações, consulte a nossa {privacyLink}."
   }
 }

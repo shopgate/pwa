@@ -330,5 +330,23 @@
     "buttonAllow": "Włącz powiadomienia",
     "buttonDeny": "Nie chcę powiadomień",
     "message": "Aktywuj powiadomienia, abyśmy mogli wysyłać Ci powiadomienia push o nowych ofertach, ekskluzywnych kuponach i nie tylko."
+  },
+  "cookieConsentModal": {
+    "title": "Dostosuj swoje osobiste wrażenia z zakupów",
+    "buttonAcceptAll": "Akceptuj wszystko",
+    "modalButtonOnlyRequired": "Tylko niezbędne",
+    "modalButtonConfirmSelected": "Potwierdź wybór",
+    "buttonConfigure": "Skonfiguruj ustawienia",
+    "message": "Nasza aplikacja została zaprojektowana tak, aby była optymalnie dopasowana do swoich preferencji. Używamy nowoczesnych technologii śledzenia, za pomocą których analizujemy zachowania zakupowe i wykorzystujemy dane do ulepszania naszej aplikacji i przedstawiania Panu/Pani spersonalizowanych treści. Może Pan/Pani dostosować ustawienia w dowolnym momencie w obszarze „Moje konto”. Więcej informacji znajdzie Pan/Pani w naszej szczegółowej {privacyLink}.",
+    "privacyText": "polityka prywatności"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Komfort",
+    "statisticsTitle": "Personalizacja i statystyki",
+    "requiredTitle": "Wymagane",
+    "comfort": "Te pliki cookie i technologie umożliwiają pewne dodatkowe funkcje i lepsze działanie.",
+    "statistics": "Te dane pozwalają nam gromadzić więcej statystyk, aby ulepszać naszą aplikację i wyświetlać Panu/Pani bardziej trafne reklamy.",
+    "required": "Dane niezbędne do uruchomienia aplikacji",
+    "privacy": "Aby uzyskać więcej informacji, zapoznaj się z naszą {privacyLink}."
   }
 }

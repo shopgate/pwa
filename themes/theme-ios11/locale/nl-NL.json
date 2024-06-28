@@ -324,5 +324,23 @@
     "buttonAllow": "Meldingen inschakelen",
     "buttonDeny": "Ik wil geen meldingen",
     "message": "Activeer meldingen zodat we je pushberichten kunnen sturen over nieuwe aanbiedingen, exclusieve vouchers en meer."
+  },
+  "cookieConsentModal": {
+    "title": "Pas uw persoonlijke winkelervaring aan",
+    "buttonAcceptAll": "Alles accepteren",
+    "modalButtonOnlyRequired": "Alleen essentiële",
+    "modalButtonConfirmSelected": "Selectie bevestigen",
+    "buttonConfigure": "Instellingen configureren",
+    "message": "Onze app is ontworpen om optimaal te worden afgestemd op uw voorkeuren. We gebruiken moderne trackingtechnologieën, waarmee we winkelgedrag analyseren en de gegevens gebruiken om onze app te verbeteren en u gepersonaliseerde content te presenteren. U kunt de instellingen op elk moment aanpassen in het gedeelte “Mijn account”. U vindt meer informatie in ons uitgebreide {privacyLink}.",
+    "privacyText": "privacybeleid"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Comfort",
+    "statisticsTitle": "Personalisatie en statistieken",
+    "requiredTitle": "Vereist",
+    "comfort": "Deze cookies en technologieën maken enkele extra functies en betere prestaties mogelijk.",
+    "statistics": "Deze gegevens stellen ons in staat om meer statistieken te verzamelen om onze app te verbeteren en u relevantere advertenties te tonen.",
+    "required": "Gegevens die nodig zijn om de app uit te voeren",
+    "privacy": "Voor meer informatie raadpleegt u ons {privacyLink}."
   }
 }

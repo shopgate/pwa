@@ -7,7 +7,7 @@ import { appConfig } from '@shopgate/engage';
 import { PRIVACY_PATH } from '@shopgate/engage/page';
 import classNames from 'classnames';
 import connect from './connector';
-import cookieImage from './cookieConsent.svg';
+import cookieImage from './tracking-opt-in.svg';
 import styles from './style';
 
 /**
