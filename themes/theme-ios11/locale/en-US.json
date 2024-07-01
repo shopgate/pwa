@@ -333,7 +333,7 @@
   "cookieConsentModal": {
     "title": "Customize Your Personal Shopping Experience",
     "buttonAcceptAll": "Accept all",
-    "modalButtonOnlyRequired": "Only essential",
+    "modalButtonOnlyRequired": "Only required",
     "modalButtonConfirmSelected": "Confirm selection",
     "buttonConfigure": "Configure settings",
     "message": "Our app is designed to be optimally tailored to your preferences. We use modern tracking technologies, with which we analyze shopping behavior and use the data to improve our app and present you with personalized content. You can adjust the settings at any time in the “My Account” area. You can find more information in our detailed {privacyLink}.",
@@ -345,7 +345,7 @@
     "requiredTitle": "Required",
     "comfort": "These cookies and technologies allow for some additional features and better performance.",
     "statistics": "This data allows us to gather more statistics to improve our app and to show you more relevant ads.",
-    "required": "Data that is required to run the app",
+    "required": "Data that is required to run the app.",
     "privacy": "For more information please see our {privacyLink}."
   }
 }

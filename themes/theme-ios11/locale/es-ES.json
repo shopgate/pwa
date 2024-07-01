@@ -340,7 +340,7 @@
     "requiredTitle": "Requeridos",
     "comfort": "Estas cookies y tecnologías permiten algunas funciones adicionales y un mejor rendimiento.",
     "statistics": "Estos datos nos permiten recopilar más estadísticas para mejorar nuestra aplicación y mostrarle anuncios más relevantes.",
-    "required": "Datos que son necesarios para ejecutar la aplicación",
+    "required": "Datos que son necesarios para ejecutar la aplicación.",
     "privacy": "Para obtener más información, consulte nuestra {privacyLink}."
   }
 }
