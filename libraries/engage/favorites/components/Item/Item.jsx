@@ -26,6 +26,7 @@ import {
   getThemeSettings,
   i18n,
 } from '@shopgate/engage/core';
+import { makeGetSupportsFulfillmentSelectors } from '@shopgate/engage/core/config';
 import {
   Link,
   TextLink,
@@ -70,12 +71,14 @@ const makeMapStateToProps = () => {
     (state, props) => getPreferredLocation(state, props)?.code,
     (state, props) => props.variantId || props.productId || null
   );
+  const getSupportsFulfillmentSelectors = makeGetSupportsFulfillmentSelectors();
 
   return (state, props) => ({
     isBaseProduct: isBaseProductSelector(state, props),
     hasVariants: hasProductVariants(state, props),
     isOrderable: isProductOrderable(state, props),
     isRopeProductOrderable: isRopeProductOrderable(state, props),
+    supportsFulfillmentSelectors: getSupportsFulfillmentSelectors(state, props),
   });
 };
 
@@ -185,13 +188,14 @@ const FavoriteItem = ({
   historyPush,
   updateFavoriteItem,
   openCommentDialog,
+  supportsFulfillmentSelectors,
 }) => {
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
-  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice !== defaultPrice;
+  const hasStrikePrice = typeof specialPrice === 'number' && specialPrice > 0 && specialPrice > defaultPrice;
   const price = hasStrikePrice ? specialPrice : defaultPrice;
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
@@ -233,7 +237,7 @@ const FavoriteItem = ({
       return false;
     }
 
-    if (!isRopeProductOrderable) {
+    if (supportsFulfillmentSelectors && !isRopeProductOrderable) {
       // Product is not orderable for ROPE. So users need to do some corrections. Just redirect.
       historyPush({ pathname: productLink });
       return false;
@@ -253,6 +257,7 @@ const FavoriteItem = ({
     product.id,
     productLink,
     showModal,
+    supportsFulfillmentSelectors,
   ]);
 
   const commonPortalProps = useMemo(() => {
@@ -414,6 +419,7 @@ FavoriteItem.propTypes = {
   isRopeProductOrderable: PropTypes.bool,
   notes: PropTypes.string,
   quantity: PropTypes.number,
+  supportsFulfillmentSelectors: PropTypes.bool,
 };
 
 FavoriteItem.defaultProps = {
@@ -423,6 +429,7 @@ FavoriteItem.defaultProps = {
   hasVariants: false,
   notes: undefined,
   quantity: 1,
+  supportsFulfillmentSelectors: false,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteItem);

@@ -13,6 +13,7 @@ export {
   makeGetEnabledFulfillmentMethods,
   makeGetEnabledFulfillmentMethodsCount,
   makeUseLocationFulfillmentMethods,
+  makeGetSupportsFulfillmentSelectors,
   getShopSettings,
   getConfigFetching,
 } from './config.selectors';

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
-import { i18n, configuration, IS_CONNECT_EXTENSION_ATTACHED } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { i18n } from '@shopgate/engage/core';
+import { appConfig } from '@shopgate/engage';
 import {
   getFavoritesLists,
   isInitialLoading,
@@ -19,7 +21,10 @@ import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
 import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
 import { getPreferredLocation, getPreferredFulfillmentMethod, getUserSearch } from '@shopgate/engage/locations/selectors';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
+import {
+  makeGetEnabledFulfillmentMethods,
+  makeGetSupportsFulfillmentSelectors,
+} from '@shopgate/engage/core/config';
 import { fetchProductLocations } from '@shopgate/engage/locations/actions';
 
 import List from '../List';
@@ -31,6 +36,8 @@ import {
   FAVORITES_LIST,
 } from '../../constants/Portals';
 
+const { favoritesMode: { hasMultipleFavoritesLists } = {} } = appConfig;
+
 /**
  * @param {Object} state State
  * @param {Object} props Props
@@ -38,12 +45,14 @@ import {
  */
 const makeMapStateToProps = () => {
   const getFulfillmentMethods = makeGetEnabledFulfillmentMethods();
+  const getSupportsFulfillmentSelectors = makeGetSupportsFulfillmentSelectors();
   return (state, props) => ({
     isInitializing: isInitialLoading(state),
     lists: getFavoritesLists(state),
     preferredLocation: getPreferredLocation(state, props),
     preferredFulfillmentMethod: getPreferredFulfillmentMethod(state, props),
     shopFulfillmentMethods: getFulfillmentMethods(state, props),
+    supportsFulfillmentSelectors: getSupportsFulfillmentSelectors(state, props),
     wishlistMode: getWishlistMode(state),
     userSearch: getUserSearch(state),
   });
@@ -96,11 +105,10 @@ const FavoriteLists = ({
   lists,
   isInitializing,
   shopFulfillmentMethods,
+  supportsFulfillmentSelectors,
   userSearch,
   fetchLocations,
 }) => {
-  const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
-
   // Add to cart state.
   const promiseRef = useRef(null);
   const [activeProductId, setActiveProductId] = useState(null);
@@ -161,6 +169,15 @@ const FavoriteLists = ({
       };
     });
 
+    if (!supportsFulfillmentSelectors) {
+      addToCart([{
+        productId: product.id,
+        quantity,
+      }]);
+      promiseRef.current.resolve();
+      return promise;
+    }
+
     // Get location.
     let activeLocation = null;
     if (preferredLocation) {
@@ -216,6 +233,7 @@ const FavoriteLists = ({
     preferredLocation,
     removeItem,
     shopFulfillmentMethods,
+    supportsFulfillmentSelectors,
     wishlistMode,
   ]);
 
@@ -295,7 +313,7 @@ const FavoriteLists = ({
         onClose={handleMethodClose}
       />
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
-        {hasConnectExtension ? (
+        {hasNewServices() || hasMultipleFavoritesLists ? (
           <RippleButton
             type="primary"
             className={styles.addButton}
@@ -316,13 +334,14 @@ FavoriteLists.propTypes = {
   fetchLocations: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   removeList: PropTypes.func.isRequired,
-  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateList: PropTypes.func.isRequired,
   wishlistMode: PropTypes.string.isRequired,
   isInitializing: PropTypes.bool,
   lists: PropTypes.arrayOf(PropTypes.shape()),
   preferredFulfillmentMethod: PropTypes.string,
   preferredLocation: PropTypes.shape(),
+  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+  supportsFulfillmentSelectors: PropTypes.bool,
   userSearch: PropTypes.shape(),
 };
 
@@ -330,6 +349,8 @@ FavoriteLists.defaultProps = {
   lists: [],
   userSearch: {},
   preferredFulfillmentMethod: null,
+  shopFulfillmentMethods: [],
+  supportsFulfillmentSelectors: false,
   preferredLocation: null,
   isInitializing: true,
 };
