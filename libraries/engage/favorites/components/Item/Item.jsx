@@ -26,7 +26,7 @@ import {
   getThemeSettings,
   i18n,
 } from '@shopgate/engage/core';
-import { makeGetSupportsFulfillmentSelectors } from '@shopgate/engage/core/config';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import {
   Link,
   TextLink,
@@ -41,6 +41,7 @@ import {
   FAVORITES_PRODUCT_NAME,
   FAVORITES_PRODUCT_PRICE,
   FAVORITES_ADD_TO_CART,
+  FAVORITES_AVAILABILITY_TEXT,
 } from '@shopgate/engage/favorites';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
@@ -50,6 +51,7 @@ import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
+import AvailableText from '@shopgate/pwa-ui-shared/Availability';
 import classNames from 'classnames';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
@@ -71,14 +73,12 @@ const makeMapStateToProps = () => {
     (state, props) => getPreferredLocation(state, props)?.code,
     (state, props) => props.variantId || props.productId || null
   );
-  const getSupportsFulfillmentSelectors = makeGetSupportsFulfillmentSelectors();
 
   return (state, props) => ({
     isBaseProduct: isBaseProductSelector(state, props),
     hasVariants: hasProductVariants(state, props),
     isOrderable: isProductOrderable(state, props),
     isRopeProductOrderable: isRopeProductOrderable(state, props),
-    supportsFulfillmentSelectors: getSupportsFulfillmentSelectors(state, props),
   });
 };
 
@@ -188,7 +188,6 @@ const FavoriteItem = ({
   historyPush,
   updateFavoriteItem,
   openCommentDialog,
-  supportsFulfillmentSelectors,
 }) => {
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
@@ -237,7 +236,7 @@ const FavoriteItem = ({
       return false;
     }
 
-    if (supportsFulfillmentSelectors && !isRopeProductOrderable) {
+    if (hasNewServices() && !isRopeProductOrderable) {
       // Product is not orderable for ROPE. So users need to do some corrections. Just redirect.
       historyPush({ pathname: productLink });
       return false;
@@ -257,7 +256,6 @@ const FavoriteItem = ({
     product.id,
     productLink,
     showModal,
-    supportsFulfillmentSelectors,
   ]);
 
   const commonPortalProps = useMemo(() => {
@@ -353,7 +351,21 @@ const FavoriteItem = ({
               </div>
             </div>
             <ItemCharacteristics characteristics={characteristics} />
-            <StockInfoLists product={product} />
+            { !hasNewServices() ? (
+              <SurroundPortals
+                portalName={FAVORITES_AVAILABILITY_TEXT}
+                portalProps={commonPortalProps}
+              >
+                <AvailableText
+                  text={commonPortalProps.availability.text}
+                  state={commonPortalProps.availability.state}
+                  showWhenAvailable
+                  className={styles.availability}
+                />
+              </SurroundPortals>
+            ) :
+              (<StockInfoLists product={product} />)}
+
             <div className={styles.infoContainerRow}>
               <div className={styles.quantityContainer}>
                 <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
@@ -373,7 +385,6 @@ const FavoriteItem = ({
                     <Price
                       currency={currency}
                       discounted={hasStrikePrice}
-                      taxDisclaimer
                       unitPrice={price}
                     />
                     <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
@@ -419,7 +430,6 @@ FavoriteItem.propTypes = {
   isRopeProductOrderable: PropTypes.bool,
   notes: PropTypes.string,
   quantity: PropTypes.number,
-  supportsFulfillmentSelectors: PropTypes.bool,
 };
 
 FavoriteItem.defaultProps = {
@@ -429,7 +439,6 @@ FavoriteItem.defaultProps = {
   hasVariants: false,
   notes: undefined,
   quantity: 1,
-  supportsFulfillmentSelectors: false,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteItem);
