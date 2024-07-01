@@ -1,6 +1,5 @@
 // @flow
 import { createSelector, type Selector } from 'reselect';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { type ConfigState, type MerchantSettings } from './config.types';
 
 /**
@@ -92,12 +91,6 @@ export function makeGetEnabledFulfillmentMethodsCount() {
     }
   );
 }
-
-/**
- * Creates a selector to determine if the app supports fulfillment selectors.
- * @returns {Function}
- */
-export const makeGetSupportsFulfillmentSelectors = () => () => hasNewServices();
 
 /**
  * Creates a selector that retrieves the enabled fulfillment paths.

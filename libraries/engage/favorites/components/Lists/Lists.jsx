@@ -21,10 +21,7 @@ import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
 import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
 import { getPreferredLocation, getPreferredFulfillmentMethod, getUserSearch } from '@shopgate/engage/locations/selectors';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import {
-  makeGetEnabledFulfillmentMethods,
-  makeGetSupportsFulfillmentSelectors,
-} from '@shopgate/engage/core/config';
+import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
 import { fetchProductLocations } from '@shopgate/engage/locations/actions';
 
 import List from '../List';
@@ -45,14 +42,12 @@ const { favoritesMode: { hasMultipleFavoritesLists } = {} } = appConfig;
  */
 const makeMapStateToProps = () => {
   const getFulfillmentMethods = makeGetEnabledFulfillmentMethods();
-  const getSupportsFulfillmentSelectors = makeGetSupportsFulfillmentSelectors();
   return (state, props) => ({
     isInitializing: isInitialLoading(state),
     lists: getFavoritesLists(state),
     preferredLocation: getPreferredLocation(state, props),
     preferredFulfillmentMethod: getPreferredFulfillmentMethod(state, props),
     shopFulfillmentMethods: getFulfillmentMethods(state, props),
-    supportsFulfillmentSelectors: getSupportsFulfillmentSelectors(state, props),
     wishlistMode: getWishlistMode(state),
     userSearch: getUserSearch(state),
   });
@@ -105,7 +100,6 @@ const FavoriteLists = ({
   lists,
   isInitializing,
   shopFulfillmentMethods,
-  supportsFulfillmentSelectors,
   userSearch,
   fetchLocations,
 }) => {
@@ -169,7 +163,7 @@ const FavoriteLists = ({
       };
     });
 
-    if (!supportsFulfillmentSelectors) {
+    if (!hasNewServices()) {
       addToCart([{
         productId: product.id,
         quantity,
@@ -233,7 +227,6 @@ const FavoriteLists = ({
     preferredLocation,
     removeItem,
     shopFulfillmentMethods,
-    supportsFulfillmentSelectors,
     wishlistMode,
   ]);
 
@@ -341,7 +334,6 @@ FavoriteLists.propTypes = {
   preferredFulfillmentMethod: PropTypes.string,
   preferredLocation: PropTypes.shape(),
   shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
-  supportsFulfillmentSelectors: PropTypes.bool,
   userSearch: PropTypes.shape(),
 };
 
@@ -350,7 +342,6 @@ FavoriteLists.defaultProps = {
   userSearch: {},
   preferredFulfillmentMethod: null,
   shopFulfillmentMethods: [],
-  supportsFulfillmentSelectors: false,
   preferredLocation: null,
   isInitializing: true,
 };

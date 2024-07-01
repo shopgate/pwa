@@ -12,6 +12,7 @@ import {
   Availability as AvailableText,
 } from '@shopgate/engage/components';
 import { PRODUCT_AVAILABILITY } from '@shopgate/engage/product';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import connect from './Availability.connector';
 import { placeholder, availability as availabilityStyle } from './Availability.style';
 
@@ -25,11 +26,10 @@ function Availability({
   fulfillmentMethods,
   fulfillmentSelection,
   className,
-  supportsFulfillmentSelectors,
 }) {
   // Render only when no fulfillment methods are available or when the given method exists
   if (
-    supportsFulfillmentSelectors &&
+    hasNewServices() &&
     (!fulfillmentMethods ||
       fulfillmentMethods.indexOf(fulfillmentSelection) !== -1)
   ) {
@@ -66,7 +66,6 @@ Availability.propTypes = {
   className: PropTypes.string,
   fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
   fulfillmentSelection: PropTypes.string,
-  supportsFulfillmentSelectors: PropTypes.bool,
 };
 
 Availability.defaultProps = {
@@ -74,7 +73,6 @@ Availability.defaultProps = {
   fulfillmentMethods: null,
   fulfillmentSelection: '',
   className: null,
-  supportsFulfillmentSelectors: false,
 };
 
 export default connect(React.memo(Availability));
