@@ -1,12 +1,10 @@
 import EventEmitter from 'events';
-import {
-  APP_EVENT_GET_APP_PERMISSIONS_RESPONSE,
-  APP_EVENT_REQUEST_APP_PERMISSIONS_RESPONSE,
-} from '../../constants/AppEvents';
 import { logger } from '../../helpers';
 
 const HANDLER_ADD = 'add';
 const HANDLER_REMOVE = 'remove';
+
+/* eslint-disable extra-rules/potential-point-free */
 
 /**
  * Event class.
@@ -17,7 +15,7 @@ class Event extends EventEmitter {
    */
   constructor() {
     super();
-
+    this.events = new Set();
     this.setMaxListeners(20);
 
     /**
@@ -39,6 +37,14 @@ class Event extends EventEmitter {
         this.call(...args);
       };
     }
+  }
+
+  /**
+   * Registers a new event
+   * @param {string} eventName The new event name
+   */
+  registerEvent(eventName) {
+    this.events.add(eventName);
   }
 
   /**
@@ -113,9 +119,7 @@ class Event extends EventEmitter {
     } else if ([
       'dataResponse',
       'webStorageResponse',
-      APP_EVENT_GET_APP_PERMISSIONS_RESPONSE,
-      APP_EVENT_REQUEST_APP_PERMISSIONS_RESPONSE,
-    ].includes(event)) {
+    ].includes(event) || Array.from(this.events).includes(event)) {
       eventName += `:${parameters[0]}`;
     }
 
@@ -126,6 +130,8 @@ class Event extends EventEmitter {
     }
   }
 }
+
+/* eslint-enable extra-rules/potential-point-free */
 
 // TODO:
 // We need this as a temporary solution because of double node_modules form extensions and theme.
