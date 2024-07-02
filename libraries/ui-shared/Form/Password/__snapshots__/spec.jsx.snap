@@ -6,11 +6,12 @@ exports[`<Password> should render a password field 1`] = `
 >
   <TextField
     attributes={null}
-    className=""
+    className="ui-shared__form__password undefined"
     errorText=""
     hasUnderline={true}
     label=""
     leftElement={null}
+    maxlength=""
     multiLine={false}
     name="test-input"
     onChange={[Function]}
@@ -37,7 +38,7 @@ exports[`<Password> should render a password field 1`] = `
     value=""
   >
     <FormElement
-      className=""
+      className="ui-shared__form__password undefined ui-shared__form__text-field"
       disabled={false}
       errorText=""
       hasPlaceholder={true}
@@ -52,7 +53,7 @@ exports[`<Password> should render a password field 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv formElement"
+        className="css-1vjh8yv ui-shared__form__password undefined ui-shared__form__text-field formElement ui-shared__form-element"
       >
         <Grid
           className=""
@@ -74,6 +75,7 @@ exports[`<Password> should render a password field 1`] = `
                 <_default
                   attributes={null}
                   className="css-keangt"
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -91,6 +93,7 @@ exports[`<Password> should render a password field 1`] = `
                     id={null}
                     inputComponent="input"
                     isControlled={false}
+                    maxlength=""
                     multiLine={false}
                     name="test-input"
                     onChange={[Function]}
@@ -153,6 +156,7 @@ exports[`<Password> should render a password field 1`] = `
                 >
                   <div
                     aria-hidden={true}
+                    className="ui-shared__toggle-icon"
                     onClick={[Function]}
                   >
                     <VisibilityOffIcon

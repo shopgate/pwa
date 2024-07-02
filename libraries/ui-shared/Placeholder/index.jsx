@@ -33,7 +33,7 @@ class Placeholder extends PureComponent {
    */
   render() {
     return (
-      <div className={styles} style={this.props} />
+      <div className={`${styles} ui-shared__placeholder`} style={this.props} />
     );
   }
 }

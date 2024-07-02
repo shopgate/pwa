@@ -37,7 +37,16 @@ const Dialog = ({
   // Assemble the actions.
   const actions = [];
   const {
-    confirm, dismiss, title, titleParams, message, params, type, confirmDisabled, dismissDisabled,
+    confirm,
+    dismiss,
+    title,
+    titleParams,
+    message,
+    params,
+    type,
+    content,
+    confirmDisabled,
+    dismissDisabled,
   } = modal;
 
   // Push dismiss action first so the button is rendered first
@@ -77,7 +86,7 @@ const Dialog = ({
     title: dialogTitle,
     params,
     message: message || undefined,
-    children,
+    children: content || children,
   };
 
   const DialogComponent = dialogTypes[dialogType] || BasicDialog;
@@ -99,6 +108,7 @@ Dialog.propTypes = {
     message: PropTypes.string,
     params: PropTypes.shape(),
     type: PropTypes.string,
+    content: PropTypes.node,
     /**
      * Whether the confirm button is disabled when visible
      */

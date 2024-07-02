@@ -10,7 +10,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Manufacturer = ({ className, text }) => (
-  <div className={`${styles} ${className}`}>
+  <div className={`${styles} ${className} ui-shared__manufacturer`}>
     <span dangerouslySetInnerHTML={{ __html: text }} />
   </div>
 );

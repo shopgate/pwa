@@ -15,7 +15,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
   value={null}
 >
   <FormElement
-    className="radioGroup"
+    className="radioGroup ui-shared__form__radio-group"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -30,7 +30,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup formElement"
+      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -119,7 +119,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
   value={null}
 >
   <FormElement
-    className="radioGroup"
+    className="radioGroup ui-shared__form__radio-group"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -134,7 +134,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup formElement"
+      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -286,7 +286,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
   value={null}
 >
   <FormElement
-    className="radioGroup"
+    className="radioGroup ui-shared__form__radio-group"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -301,7 +301,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup formElement"
+      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -390,7 +390,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
   value={null}
 >
   <FormElement
-    className="radioGroup"
+    className="radioGroup ui-shared__form__radio-group"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -405,7 +405,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup formElement"
+      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
         className="css-1t62idy radioGroup"
@@ -430,7 +430,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
   value={null}
 >
   <FormElement
-    className="radioGroup"
+    className="radioGroup ui-shared__form__radio-group"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -445,7 +445,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup formElement"
+      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
         className="css-1gehsfr radioGroup"
@@ -534,7 +534,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
   value="foo"
 >
   <FormElement
-    className="radioGroup"
+    className="radioGroup ui-shared__form__radio-group"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -549,7 +549,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup formElement"
+      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
         className="css-1t62idy radioGroup"

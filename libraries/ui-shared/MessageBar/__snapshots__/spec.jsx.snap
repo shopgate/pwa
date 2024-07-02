@@ -11,7 +11,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   messages={Array []}
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese ui-shared__message-bar"
     role={null}
   />
 </Component>
@@ -34,7 +34,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   }
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese ui-shared__message-bar"
     role="alert"
   >
     <div
@@ -85,7 +85,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   }
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese ui-shared__message-bar"
     role="alert"
   >
     <div
@@ -159,7 +159,7 @@ exports[`<MessageBar /> Multiple messages rendering should render with custom cl
   }
 >
   <div
-    className="css-1gmese cls-container"
+    className="css-1gmese cls-container ui-shared__message-bar"
     role="alert"
   >
     <div
@@ -202,7 +202,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   }
 >
   <div
-    className="css-1gmese"
+    className="css-1gmese ui-shared__message-bar"
     role="alert"
   >
     <div

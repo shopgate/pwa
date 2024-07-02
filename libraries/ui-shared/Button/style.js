@@ -18,6 +18,7 @@ const button = (text, background) => ({
   color: text,
   backgroundColor: background,
   minWidth: 64,
+  overflow: 'hidden',
   ':disabled': {
     cursor: 'not-allowed',
   },

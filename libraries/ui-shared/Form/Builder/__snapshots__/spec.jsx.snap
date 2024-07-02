@@ -44,6 +44,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -102,7 +103,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
               value="default"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -310,6 +311,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -367,7 +369,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -590,7 +592,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -798,6 +800,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -855,7 +858,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
               value="abc"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1057,6 +1060,7 @@ exports[`<FormBuilder /> should not render invisible field 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1100,6 +1104,7 @@ exports[`<FormBuilder /> should render empty form 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1141,6 +1146,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1198,7 +1204,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1408,7 +1414,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1622,6 +1628,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1680,7 +1687,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -1908,7 +1915,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -2122,6 +2129,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
   >
     <form
       action="#"
+      className="ui-shared__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -2180,7 +2188,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="abc"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""
@@ -2408,7 +2416,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="cheat"
             >
               <div
-                className="css-e4z0u6 textField"
+                className="css-e4z0u6 textField ui-shared__text-field"
               >
                 <Hint
                   hintText=""

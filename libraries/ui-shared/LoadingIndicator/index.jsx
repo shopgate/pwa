@@ -1,21 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { themeConfig } from '@shopgate/engage';
 import IndicatorCircle from '../IndicatorCircle';
-import styles from './style';
+import styles, { imgContainer } from './style';
 
-type Props = {
-  className?: string
-}
+const {
+  loadingIndicator: { imgSrc: loadingImageSrc } = {},
+} = themeConfig.variables;
 
 /**
  * Renders a loading indicator.
  * @returns {JSX}
  */
-const LoadingIndicator = ({ className }: Props) => (
-  <div className={classNames(className, styles)}>
-    <IndicatorCircle />
-  </div>
-);
+const LoadingIndicator = ({ className }) => {
+  if (loadingImageSrc) {
+    return (
+      <div className={classNames(imgContainer, 'loading-indicator ui-shared__loading-indicator')}>
+        <img src={loadingImageSrc} alt="" />
+      </div>
+    );
+  }
+  return (
+    <div className={classNames(className, styles, 'loading-indicator ui-shared__loading-indicator')}>
+      <IndicatorCircle />
+    </div>
+  );
+};
+
+LoadingIndicator.propTypes = {
+  className: PropTypes.string,
+};
 
 LoadingIndicator.defaultProps = {
   className: null,

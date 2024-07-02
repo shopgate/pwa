@@ -43,7 +43,7 @@ class Checkbox extends PureComponent {
     } = this.props;
     return (
       <FormElement
-        className={classNames(className, style.root, 'checkbox')}
+        className={classNames(className, style.root, 'checkbox', 'ui-shared__form__checkbox')}
         htmlFor={name}
         errorText={errorText}
         translateErrorText={translateErrorText}

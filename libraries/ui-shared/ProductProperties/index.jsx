@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 
 /**
@@ -13,7 +14,7 @@ const Properties = ({ lineClamp, properties, className }) => {
   }
 
   return (
-    <ul className={className}>
+    <ul className={classNames(className, 'ui-shared__product-properties')}>
       {properties.map(({ label, value }) => (
         <li key={`${label}-${value}`}>
           {lineClamp &&

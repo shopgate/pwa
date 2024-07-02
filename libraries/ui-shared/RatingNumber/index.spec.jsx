@@ -17,7 +17,7 @@ describe('RatingNumber', () => {
     expect(component).toMatchSnapshot();
     expect(component.find('Number').props().number).toBe(5);
     expect(component.find('Number').props().fractions).toBe(2);
-    expect(component.find('Number').props().className).toBe('class-test');
+    expect(component.find('Number').props().className).toBe('class-test ui-shared__rating-number');
     expect(console.error).not.toHaveBeenCalled();
   });
 

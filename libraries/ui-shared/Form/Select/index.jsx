@@ -117,7 +117,7 @@ class Select extends Component {
     } = this.props;
     return (
       <FormElement
-        className={this.props.className}
+        className={`${this.props.className} ui-shared__form__select`}
         placeholder={this.props.placeholder}
         htmlFor={name}
         label={this.props.label}
