@@ -26,6 +26,8 @@ class TextField extends Component {
     label: PropTypes.node,
     /** Element to place left of text input (leading icon) */
     leftElement: PropTypes.node,
+    /** The max. length of the text input */
+    maxlength: PropTypes.string,
     /** Is simple input or textarea */
     multiLine: PropTypes.bool,
     onChange: PropTypes.func,
@@ -52,6 +54,7 @@ class TextField extends Component {
     rightElement: null,
     value: '',
     type: 'text',
+    maxlength: '',
   };
 
   /**
@@ -90,7 +93,7 @@ class TextField extends Component {
 
     return (
       <FormElement
-        className={className}
+        className={`${className} ui-shared__form__text-field`}
         htmlFor={props.name}
         placeholder={placeholder}
         label={label}

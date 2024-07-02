@@ -135,7 +135,7 @@ class SnackBar extends Component {
     const snackBarHeight = 40 + (rows * 20);
 
     return (
-      <div className={styles.container} style={{ '--snack-bar-height': `${snackBarHeight}px` }}>
+      <div className={`${styles.container} ui-material__snack-bar`} style={{ '--snack-bar-height': `${snackBarHeight}px` }}>
         <Spring
           from={{ top: snackBarHeight }}
           to={{ top: 0 }}

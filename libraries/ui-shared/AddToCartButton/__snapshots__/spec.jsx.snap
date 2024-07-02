@@ -25,7 +25,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="null css-1e8v7r2 css-1sr59j6"
+      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1sr59j6"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -45,7 +45,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
           strokeWidth={5}
         >
           <svg
-            className="css-12jxe4c"
+            className="css-12jxe4c ui-shared__indicator-circle"
             data-test-id="loadingIndicator"
             height={32}
             viewBox="25 25 50 50"
@@ -192,7 +192,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="null css-1e8v7r2 css-1sr59j6"
+      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1sr59j6"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -328,7 +328,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="null css-1e8v7r2 css-1rxo1j2"
+      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1rxo1j2"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"

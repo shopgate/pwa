@@ -9,6 +9,7 @@ exports[`<ToggleIcon> should render a toggle icon 1`] = `
 >
   <div
     aria-hidden={true}
+    className="ui-shared__toggle-icon"
     onClick={[Function]}
   >
     <VisibilityIcon>
@@ -50,6 +51,7 @@ exports[`<ToggleIcon> should render a toggle icon with false as default 1`] = `
 >
   <div
     aria-hidden={true}
+    className="ui-shared__toggle-icon"
     onClick={[Function]}
   >
     <VisibilityOffIcon>
@@ -105,6 +107,7 @@ exports[`<ToggleIcon> should trigger the toggleHandler callback 1`] = `
 >
   <div
     aria-hidden={true}
+    className="ui-shared__toggle-icon"
     onClick={[Function]}
   >
     <VisibilityOffIcon>

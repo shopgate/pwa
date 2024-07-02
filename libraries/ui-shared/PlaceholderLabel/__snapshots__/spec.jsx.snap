@@ -19,7 +19,7 @@ exports[`<PlaceholderLabel /> should render placeholder  1`] = `
   style={null}
 >
   <div
-    className="css-qd8qpa "
+    className="css-qd8qpa  ui-shared__placeholder-label"
     style={null}
   />
 </PlaceholderLabel>

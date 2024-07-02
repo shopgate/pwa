@@ -19,7 +19,7 @@ const PlaceholderParagraph = ({
   }
 
   return (
-    <div>
+    <div className="ui-shared__placeholder-paragraph">
       {range(lines).map((num) => {
         const width = (num % 2 === 0) ?
           `${widths[((num / 2) + widths.length) % widths.length]}%` :

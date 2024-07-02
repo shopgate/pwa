@@ -31,7 +31,7 @@ class CardList extends Component {
     }
 
     return (
-      <List className={className}>
+      <List className={`ui-shared__card-list ${className}`}>
         {Children.map(children, (child) => {
           if (!isValidElement(child)) {
             return null;

@@ -8,6 +8,7 @@ exports[`<TextField> should focus the input 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -18,7 +19,7 @@ exports[`<TextField> should focus the input 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -33,7 +34,7 @@ exports[`<TextField> should focus the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -55,6 +56,7 @@ exports[`<TextField> should focus the input 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -72,6 +74,7 @@ exports[`<TextField> should focus the input 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -141,6 +144,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -151,7 +155,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -166,7 +170,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -188,6 +192,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -205,6 +210,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -274,6 +280,7 @@ exports[`<TextField> should render a simple text field 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -284,7 +291,7 @@ exports[`<TextField> should render a simple text field 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -299,7 +306,7 @@ exports[`<TextField> should render a simple text field 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -321,6 +328,7 @@ exports[`<TextField> should render a simple text field 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -338,6 +346,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -407,6 +416,7 @@ exports[`<TextField> should render the text field as password 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -418,7 +428,7 @@ exports[`<TextField> should render the text field as password 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -433,7 +443,7 @@ exports[`<TextField> should render the text field as password 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -455,6 +465,7 @@ exports[`<TextField> should render the text field as password 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -473,6 +484,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -542,6 +554,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -552,7 +565,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
   value="FooBar"
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -567,7 +580,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -589,6 +602,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -606,6 +620,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -675,6 +690,7 @@ exports[`<TextField> should sanitize the input 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -686,7 +702,7 @@ exports[`<TextField> should sanitize the input 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -701,7 +717,7 @@ exports[`<TextField> should sanitize the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -723,6 +739,7 @@ exports[`<TextField> should sanitize the input 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -741,6 +758,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -810,6 +828,7 @@ exports[`<TextField> should show the error message 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -820,7 +839,7 @@ exports[`<TextField> should show the error message 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText="This is an error here"
     hasPlaceholder={true}
@@ -835,7 +854,7 @@ exports[`<TextField> should show the error message 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -857,6 +876,7 @@ exports[`<TextField> should show the error message 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -874,6 +894,7 @@ exports[`<TextField> should show the error message 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -966,6 +987,7 @@ exports[`<TextField> should show the label 1`] = `
   hasUnderline={true}
   label="This is the label"
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -976,7 +998,7 @@ exports[`<TextField> should show the label 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -991,7 +1013,7 @@ exports[`<TextField> should show the label 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -1066,6 +1088,7 @@ exports[`<TextField> should show the label 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1083,6 +1106,7 @@ exports[`<TextField> should show the label 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -1152,6 +1176,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -1162,7 +1187,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -1177,7 +1202,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -1224,6 +1249,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1241,6 +1267,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -1310,6 +1337,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
   hasUnderline={true}
   label=""
   leftElement={null}
+  maxlength=""
   multiLine={false}
   name="test-input"
   onChange={[Function]}
@@ -1336,7 +1364,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
   value=""
 >
   <FormElement
-    className=""
+    className=" ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasPlaceholder={true}
@@ -1351,7 +1379,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv formElement"
+      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -1373,6 +1401,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
               <_default
                 attributes={null}
                 className="css-keangt"
+                maxlength=""
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1406,6 +1435,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   id={null}
                   inputComponent="input"
                   isControlled={false}
+                  maxlength=""
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}

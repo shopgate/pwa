@@ -16,7 +16,7 @@ exports[`<Glow /> should render with a smile 1`] = `
     }
   >
     <div
-      className="css-13azwyo"
+      className="css-13azwyo ui-shared__glow"
       disabled={false}
       onClick={[Function]}
       style={null}

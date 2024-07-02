@@ -94,7 +94,7 @@ class RadioGroup extends Component {
 
     return (
       <FormElement
-        className={classNames(className, 'radioGroup', {
+        className={classNames(className, 'radioGroup', 'ui-shared__form__radio-group', {
           disabled,
         })}
         label={label}

@@ -22,7 +22,7 @@ const ScannerBar = ({ flashlightState, onToggleFlashlight }) => createPortal(
         onToggleFlashlight,
       }}
     >
-      <Grid className={styles.container}>
+      <Grid className={`${styles.container} ui-shared__scanner-bar`}>
         <Grid.Item className={styles.column}>
           <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
         </Grid.Item>

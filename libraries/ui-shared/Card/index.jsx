@@ -8,7 +8,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Card = ({ className, children, id }) => (
-  <div className={`${styles} ${className}`} id={id}>
+  <div className={`ui-shared__card ${styles} ${className}`} id={id}>
     {children}
   </div>
 );
