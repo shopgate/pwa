@@ -4,14 +4,17 @@ import {
   PERMISSION_ID_CAMERA,
 } from '../../constants/AppPermissions';
 
-import { COMMAND_GET_APP_PERMISSIONS } from '../../constants/AppCommands';
-import { APP_EVENT_GET_APP_PERMISSIONS_RESPONSE } from '../../constants/AppEvents';
+const GET_PERMISSIONS_COMMAND_NAME = 'getAppPermissions';
+const GET_PERMISSIONS_RESPONSE_EVENT_NAME = 'getAppPermissionsResponse';
 
-jest.mock('../Event', () => ({}));
+jest.mock('../AppCommandRequest');
 
 const permissionIds = [PERMISSION_ID_LOCATION, PERMISSION_ID_CAMERA];
 
-describe('AppPermissionsRequest', () => {
+describe('GetAppPermissionsRequest', () => {
+  /**
+   * @type {GetAppPermissionsRequest}
+   */
   let instance;
   let setCommandParamsSpy;
 
@@ -22,8 +25,8 @@ describe('AppPermissionsRequest', () => {
 
   describe('.constructor()', () => {
     it('should work as expected', () => {
-      expect(instance.commandName).toEqual(COMMAND_GET_APP_PERMISSIONS);
-      expect(instance.eventName).toEqual(APP_EVENT_GET_APP_PERMISSIONS_RESPONSE);
+      expect(instance.commandName).toEqual(GET_PERMISSIONS_COMMAND_NAME);
+      expect(instance.eventName).toEqual(GET_PERMISSIONS_RESPONSE_EVENT_NAME);
     });
   });
 
@@ -78,6 +81,22 @@ describe('AppPermissionsRequest', () => {
       instance.setPermissionIds({});
       const result = instance.validateCommandParams();
       expect(result).toBe(false);
+    });
+  });
+
+  describe('.dispatch()', () => {
+    it('should resolve when command param validation is successful', () => {
+      const mockedResponse = { mocked: 'response' };
+      instance.setMockedResponse(mockedResponse);
+      instance.setPermissionIds(permissionIds);
+      expect(instance.dispatch()).resolves.toEqual(mockedResponse);
+    });
+
+    it('should reject when command param validation is not successful', () => {
+      const mockedResponse = { mocked: 'response' };
+      instance.setMockedResponse(mockedResponse);
+      instance.setPermissionIds({});
+      expect(instance.dispatch()).rejects.toThrow(`${GET_PERMISSIONS_COMMAND_NAME} - invalid command parameters passed`);
     });
   });
 });
