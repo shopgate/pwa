@@ -1,30 +1,38 @@
-// @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {
+  AVAILABILITY_STATE_OK,
+  AVAILABILITY_STATE_WARNING,
+  AVAILABILITY_STATE_ALERT,
+} from '@shopgate/pwa-common-commerce/product/constants';
 import {
   SurroundPortals,
   PlaceholderLabel,
   Availability as AvailableText,
 } from '@shopgate/engage/components';
 import { PRODUCT_AVAILABILITY } from '@shopgate/engage/product';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import connect from './Availability.connector';
 import { placeholder, availability as availabilityStyle } from './Availability.style';
-import { type OwnProps, type StateProps } from './Availability.types';
-
-type Props = OwnProps & StateProps;
 
 /**
  * The Availability component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-function Availability(props: Props) {
-  const {
-    availability, fulfillmentMethods, fulfillmentSelection, className,
-  } = props;
-
+function Availability({
+  availability,
+  fulfillmentMethods,
+  fulfillmentSelection,
+  className,
+}) {
   // Render only when no fulfillment methods are available or when the given method exists
-  if (!fulfillmentMethods || fulfillmentMethods.indexOf(fulfillmentSelection) !== -1) {
+  if (
+    hasNewServices() &&
+    (!fulfillmentMethods ||
+      fulfillmentMethods.indexOf(fulfillmentSelection) !== -1)
+  ) {
     return null;
   }
 
@@ -46,6 +54,20 @@ function Availability(props: Props) {
   );
 }
 
+Availability.propTypes = {
+  availability: PropTypes.shape({
+    text: PropTypes.string,
+    state: PropTypes.oneOf([
+      AVAILABILITY_STATE_OK,
+      AVAILABILITY_STATE_WARNING,
+      AVAILABILITY_STATE_ALERT,
+    ]),
+  }),
+  className: PropTypes.string,
+  fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+  fulfillmentSelection: PropTypes.string,
+};
+
 Availability.defaultProps = {
   availability: null,
   fulfillmentMethods: null,
@@ -53,4 +75,4 @@ Availability.defaultProps = {
   className: null,
 };
 
-export default connect(React.memo<Props>(Availability));
+export default connect(React.memo(Availability));
