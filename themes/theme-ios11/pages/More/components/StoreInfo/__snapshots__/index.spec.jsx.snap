@@ -44,6 +44,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
           }
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -99,6 +100,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -160,6 +162,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -221,6 +224,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -282,6 +286,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -343,6 +348,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -404,6 +410,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}

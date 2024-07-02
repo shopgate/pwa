@@ -1,9 +1,13 @@
+import { appWillInit, appWillStart } from '@shopgate/pwa-common/action-creators/app';
 import { appConfig } from '@shopgate/engage';
 import {
-  i18n, configureStore, fetchClientInformation,
+  i18n,
+  configureStore,
+  fetchClientInformation,
 } from '@shopgate/engage/core';
-import { appInitialization } from '@shopgate/engage/core/collections';
-import { appWillInit, appWillStart } from '@shopgate/pwa-common/action-creators/app';
+import { appInitialization, configuration } from '@shopgate/engage/core/collections';
+import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/constants';
+import { getAppBaseUrl } from '@shopgate/engage/core/helpers';
 
 const {
   locales: { currency: currencyLocale = null } = {},
@@ -29,6 +33,10 @@ export const initialize = async (locales, reducers, subscribers) => {
   } catch (e) {
     // Nothing to see here.
   }
+
+  // Save the base url inside the configuration collection before any other code can apply
+  // url manipulations.
+  configuration.set(CONFIGURATION_COLLECTION_KEY_BASE_URL, getAppBaseUrl());
 
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
 

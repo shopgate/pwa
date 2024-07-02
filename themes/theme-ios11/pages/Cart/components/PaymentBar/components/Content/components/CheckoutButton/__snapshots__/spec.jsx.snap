@@ -34,6 +34,7 @@ exports[`<CheckoutButton /> should render disabled button 1`] = `
         wrapContent={true}
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -87,6 +88,7 @@ exports[`<CheckoutButton /> should render enabled button 1`] = `
         wrapContent={true}
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}

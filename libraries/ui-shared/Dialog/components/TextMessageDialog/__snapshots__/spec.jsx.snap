@@ -13,6 +13,7 @@ exports[`<TextMessageDialog /> should render the actions 1`] = `
   title="This is the title."
 >
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     className={null}
     params={Object {}}
     role={null}
@@ -27,6 +28,7 @@ exports[`<TextMessageDialog /> should render with minimal props 1`] = `
   title={null}
 >
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     className={null}
     params={Object {}}
     role={null}
@@ -41,6 +43,7 @@ exports[`<TextMessageDialog /> should render with title and message 1`] = `
   title="This is the title."
 >
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     className={null}
     params={Object {}}
     role={null}
@@ -55,6 +58,7 @@ exports[`<TextMessageDialog /> should render with title, message and messagePara
   title="This is the title."
 >
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     className={null}
     params={
       Object {

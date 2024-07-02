@@ -18,6 +18,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     price.range
   </span>
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     aria-hidden={true}
     className={null}
     params={Object {}}

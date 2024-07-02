@@ -43,6 +43,7 @@ exports[`<TextField> should focus the input 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -62,6 +63,7 @@ exports[`<TextField> should focus the input 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -168,6 +170,7 @@ exports[`<TextField> should focus the input 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -222,6 +225,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -241,6 +245,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -347,6 +352,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -401,6 +407,7 @@ exports[`<TextField> should render a simple text field 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -420,6 +427,7 @@ exports[`<TextField> should render a simple text field 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -526,6 +534,7 @@ exports[`<TextField> should render a simple text field 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -581,6 +590,7 @@ exports[`<TextField> should render the text field as password 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -600,6 +610,7 @@ exports[`<TextField> should render the text field as password 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -707,6 +718,7 @@ exports[`<TextField> should render the text field as password 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -761,6 +773,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -780,6 +793,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -886,6 +900,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -941,6 +956,7 @@ exports[`<TextField> should sanitize the input 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -960,6 +976,7 @@ exports[`<TextField> should sanitize the input 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1067,6 +1084,7 @@ exports[`<TextField> should sanitize the input 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1121,6 +1139,7 @@ exports[`<TextField> should show the error message 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1140,6 +1159,7 @@ exports[`<TextField> should show the error message 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1245,6 +1265,7 @@ exports[`<TextField> should show the error message 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1306,6 +1327,7 @@ exports[`<TextField> should show the label 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1332,6 +1354,7 @@ exports[`<TextField> should show the label 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1445,6 +1468,7 @@ exports[`<TextField> should show the label 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1499,6 +1523,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1525,6 +1550,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1631,6 +1657,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1706,6 +1733,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1725,6 +1753,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1873,6 +1902,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1943,6 +1973,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1962,6 +1993,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -2099,6 +2131,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}

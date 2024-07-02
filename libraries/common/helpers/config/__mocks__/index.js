@@ -10,6 +10,9 @@ export const themeName = 'theme';
 const appConfig = {
   get hideProductImageShadow() { return true; },
   get hasFavorites() { return true; },
+  get cookieConsent() {
+    return {};
+  },
 };
 
 export default appConfig;

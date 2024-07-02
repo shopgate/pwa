@@ -29,6 +29,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       }
     >
       <Translate
+        acceptPlainTextWithPlaceholders={false}
         className={null}
         params={Object {}}
         role={null}
@@ -63,6 +64,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       >
         <div>
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -91,6 +93,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       >
         <div>
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -143,6 +146,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       >
         <div>
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -171,6 +175,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       >
         <div>
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}

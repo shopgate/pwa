@@ -60,6 +60,8 @@ export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/Visibil
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 /** @returns {ReactElement} */
 export const SurroundPortals = ({ children }) => children;
+/** @returns {ReactElement} */
+export const Portal = ({ children }) => (children || null);
 
 /** @returns {ReactElement} */
 export const HtmlSanitizer = ({ children }) => children;

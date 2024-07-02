@@ -970,6 +970,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                       data-test-id="-50%"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className="css-tyfhga "
                         params={
                           Array [
@@ -1453,6 +1454,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                       data-test-id="-50%"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className="css-tyfhga "
                         params={
                           Array [
@@ -2283,6 +2285,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                       data-test-id="-50%"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className="css-tyfhga "
                         params={
                           Array [
@@ -3113,6 +3116,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                       data-test-id="-50%"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className="css-tyfhga "
                         params={
                           Array [
@@ -4481,6 +4485,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                       data-test-id="-50%"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className="css-tyfhga "
                         params={
                           Array [

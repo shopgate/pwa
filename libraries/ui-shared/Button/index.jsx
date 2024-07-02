@@ -6,6 +6,7 @@ import styles from './style';
 const buttonTypes = [
   'plain',
   'regular',
+  'simple',
   'primary',
   'secondary',
 ];
@@ -46,6 +47,8 @@ class Button extends Component {
         return styles.plain();
       case 'regular':
         return styles.regular(disabled);
+      case 'simple':
+        return styles.simple(disabled);
       default:
       case 'primary':
         return styles.primary(disabled, flat);

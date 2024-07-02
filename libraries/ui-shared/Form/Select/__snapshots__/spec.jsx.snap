@@ -43,6 +43,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -62,6 +63,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           htmlFor="test-name"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -120,6 +122,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -175,6 +178,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -194,6 +198,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           htmlFor="test-name"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -252,6 +257,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -302,6 +308,7 @@ exports[`<Select /> should render select with no options 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -321,6 +328,7 @@ exports[`<Select /> should render select with no options 1`] = `
           htmlFor="test-name"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -364,6 +372,7 @@ exports[`<Select /> should render select with no options 1`] = `
           className="css-hyvrm8 errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}

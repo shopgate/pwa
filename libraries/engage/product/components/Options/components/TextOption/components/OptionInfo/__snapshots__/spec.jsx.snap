@@ -41,6 +41,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
     shrink={1}
   >
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className={null}
       params={Object {}}
       role={null}

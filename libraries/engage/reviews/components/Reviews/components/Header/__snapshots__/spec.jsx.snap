@@ -306,6 +306,7 @@ exports[`<Header /> should render empty 1`] = `
             }
           >
             <Translate
+              acceptPlainTextWithPlaceholders={false}
               className={null}
               params={Object {}}
               role={null}
@@ -404,6 +405,7 @@ exports[`<Header /> should render empty 1`] = `
                                     style={null}
                                   >
                                     <Translate
+                                      acceptPlainTextWithPlaceholders={false}
                                       className={null}
                                       params={Object {}}
                                       role={null}
@@ -839,6 +841,7 @@ exports[`<Header /> should render rating summary 1`] = `
                     prominent={false}
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className="css-a7xi3l engage__reviews__rating-count"
                       params={
                         Object {
@@ -870,6 +873,7 @@ exports[`<Header /> should render rating summary 1`] = `
             role="text"
           >
             <Translate
+              acceptPlainTextWithPlaceholders={false}
               className="css-1nftllw"
               params={Object {}}
               role={null}
@@ -985,6 +989,7 @@ exports[`<Header /> should render rating summary 1`] = `
                                     style={null}
                                   >
                                     <Translate
+                                      acceptPlainTextWithPlaceholders={false}
                                       className={null}
                                       params={Object {}}
                                       role={null}

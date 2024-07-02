@@ -10,7 +10,7 @@ class GetAppPermissionsRequest extends AppPermissionsRequest {
    * The constructor.
    */
   constructor() {
-    super('getAppPermissions', 'getAppPermissionsResponse');
+    super('getAppPermissions');
   }
 
   /**

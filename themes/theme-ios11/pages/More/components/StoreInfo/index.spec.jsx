@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import StoreInfo from './index';
 
+jest.mock('@shopgate/pwa-common/helpers/config');
 jest.mock('@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy', () => true);
 jest.mock('@shopgate/pwa-common/components/Link', () => {
   /* eslint-disable react/prop-types */

@@ -26,6 +26,7 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
     data-test-id="taxDisclaimer"
   >
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className="css-fazkyv"
       params={Object {}}
       role={null}

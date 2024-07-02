@@ -7,6 +7,7 @@ exports[`<Footer /> should render as expected when all items are supposed to be 
 >
   <CouponsHint>
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className="css-7apcdo"
       params={Object {}}
       role={null}
@@ -115,6 +116,7 @@ exports[`<Footer /> should render as expected when only the the coupons hint is 
 >
   <CouponsHint>
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className="css-7apcdo"
       params={Object {}}
       role={null}

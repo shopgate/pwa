@@ -51,6 +51,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -160,6 +161,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           }
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -211,6 +213,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               type="button"
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -310,6 +313,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                     }
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -387,6 +391,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -471,6 +476,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -555,6 +561,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -639,6 +646,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -745,6 +753,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -853,6 +862,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
               }
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -974,6 +984,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-mocsp5"
                                         >
                                           <Translate
+                                            acceptPlainTextWithPlaceholders={false}
                                             className={null}
                                             params={Object {}}
                                             role={null}
@@ -1056,6 +1067,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-mocsp5"
                                         >
                                           <Translate
+                                            acceptPlainTextWithPlaceholders={false}
                                             className={null}
                                             params={Object {}}
                                             role={null}
@@ -1152,6 +1164,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     }
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1229,6 +1242,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1313,6 +1327,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1397,6 +1412,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1481,6 +1497,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1587,6 +1604,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}

@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   NAV_MENU_PRIVACY_BEFORE,
   NAV_MENU_PRIVACY,
   NAV_MENU_PRIVACY_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { PRIVACY_PATH } from '../../../../constants';
+import { PRIVACY_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 
 /**
  * The PrivacyComponent.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Privacy = () => (
   <Fragment>

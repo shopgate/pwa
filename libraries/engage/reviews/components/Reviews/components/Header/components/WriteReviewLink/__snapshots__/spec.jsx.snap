@@ -99,6 +99,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                           style={null}
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}

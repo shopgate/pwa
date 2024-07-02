@@ -145,6 +145,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                   style={null}
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -390,6 +391,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                   style={null}
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}

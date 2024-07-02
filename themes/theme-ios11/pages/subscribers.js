@@ -47,10 +47,13 @@ import extensions from 'Extensions/subscribers';
 import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 import appRating from '@shopgate/engage/app-rating/subscriptions';
 import pushOptIn from '@shopgate/engage/push-opt-in/subscriptions';
+import cookieConsent from '@shopgate/engage/tracking/subscriptions';
+import engageApp from '@shopgate/engage/core/subscriptions/app';
 
 const subscriptions = [
   // Common subscribers.
   commonApp,
+  engageApp,
   commonHistory,
   commonUser,
   commonMenu,
@@ -81,6 +84,7 @@ const subscriptions = [
   // App rating subscribers
   appRating,
   pushOptIn,
+  cookieConsent,
   // Theme subscribers.
   app,
   viewport,

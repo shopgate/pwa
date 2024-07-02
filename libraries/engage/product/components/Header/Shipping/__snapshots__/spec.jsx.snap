@@ -49,6 +49,7 @@ exports[`Shipping label should render free shipping 1`] = `
               role="text"
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -123,6 +124,7 @@ exports[`Shipping label should render shipping price 1`] = `
               role="text"
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}

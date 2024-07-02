@@ -9,7 +9,6 @@ import {
 import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_DENIED,
-  APP_DID_START,
 } from '@shopgate/engage/core/constants';
 import { appSupportsPushOptIn } from '@shopgate/engage/core/helpers';
 import {
@@ -24,6 +23,7 @@ import {
 } from '../action-creators';
 import pushReducers from '../reducers';
 import subscriptions from './optInTrigger';
+import { UPDATE_COOKIE_CONSENT } from '../../tracking/constants';
 
 /**
  * @typedef {Object} MockedConfigSetting
@@ -408,8 +408,8 @@ describe('Push OptIn Subscriptions', () => {
     });
   });
 
-  describe('appDidStart$', () => {
-    it('should run expected logic when appDidStart$ stream emits', () => {
+  describe('cookieConsentInitialized$', () => {
+    it('should run expected logic when cookieConsentInitialized$ stream emits', () => {
       setMockedConfig({
         appStarts: {
           value: 1,
@@ -422,7 +422,7 @@ describe('Push OptIn Subscriptions', () => {
         minDaysBetweenOptIns: 0,
       });
 
-      dispatch({ type: APP_DID_START });
+      dispatch({ type: UPDATE_COOKIE_CONSENT });
 
       // getAppPermissions should have been called 1st time for appDidStart
       expect(getAppPermissions).toHaveBeenCalledTimes(1);
@@ -432,6 +432,10 @@ describe('Push OptIn Subscriptions', () => {
       eventCallback();
 
       // getAppPermissions should have been called 2nd time for checkoutSuccess event
+      expect(getAppPermissions).toHaveBeenCalledTimes(2);
+
+      // Verify that opt in is only initialized once
+      dispatch({ type: UPDATE_COOKIE_CONSENT });
       expect(getAppPermissions).toHaveBeenCalledTimes(2);
     });
   });

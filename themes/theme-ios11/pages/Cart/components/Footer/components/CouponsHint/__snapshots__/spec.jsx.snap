@@ -3,6 +3,7 @@
 exports[`<CouponsHint /> should render as expected without any props 1`] = `
 <CouponsHint>
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     className="css-7apcdo"
     params={Object {}}
     role={null}
