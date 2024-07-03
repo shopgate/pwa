@@ -189,7 +189,7 @@ const mockedPermissions = async (
     // Use mocked permissions from local storage if available
     if (typeof getMockedAppPermissions === 'function') {
       const permissionMock = getMockedAppPermissions();
-      const type = this.commandName === COMMAND_GET_APP_PERMISSIONS ? 'get' : 'request';
+      const type = commandName === COMMAND_GET_APP_PERMISSIONS ? 'get' : 'request';
       const mockValue = permissionMock?.[permissionId]?.[type];
 
       if (mockValue) {
