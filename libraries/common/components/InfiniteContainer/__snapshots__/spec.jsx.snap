@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InfiniteContainer /> Given that the initialLimit is used in the correct ways Given that the initialLimit is NOT used should render without the initialLimit 1`] = `
-<div>
+<div
+  className="common__infinite-container"
+>
   <div>
     <div>
       <li
@@ -170,7 +172,9 @@ exports[`<InfiniteContainer /> Given that the initialLimit is used in the correc
 `;
 
 exports[`<InfiniteContainer /> Given the component was mounted to the DOM should match snapshot 1`] = `
-<div>
+<div
+  className="common__infinite-container"
+>
   <div>
     <div />
   </div>

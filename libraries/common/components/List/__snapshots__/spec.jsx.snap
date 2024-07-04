@@ -2,7 +2,7 @@
 
 exports[`<List /> renders with children 1`] = `
 <ul
-  className=""
+  className=" common_list"
   role={null}
 >
   <ListItem
@@ -28,7 +28,7 @@ exports[`<List /> renders with children 1`] = `
 
 exports[`<List /> renders without children 1`] = `
 <ul
-  className=""
+  className=" common_list"
   role={null}
 />
 `;
