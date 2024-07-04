@@ -1,5 +1,6 @@
 import AppPermissionsRequest from './AppPermissionsRequest';
 import { availablePermissionsIds } from '../../constants/AppPermissions';
+import { COMMAND_GET_APP_PERMISSIONS } from '../../constants/AppCommands';
 
 /**
  * The GetAppPermissionsRequest class is about to get an overview about the already granted
@@ -10,7 +11,7 @@ class GetAppPermissionsRequest extends AppPermissionsRequest {
    * The constructor.
    */
   constructor() {
-    super('getAppPermissions');
+    super(COMMAND_GET_APP_PERMISSIONS);
   }
 
   /**
