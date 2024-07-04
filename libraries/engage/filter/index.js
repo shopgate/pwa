@@ -22,6 +22,8 @@ export { default as PriceSlider } from './components/PriceSlider';
 
 export { default as buildInitialFilters } from './helpers/buildInitialFilters';
 export { default as buildUpdatedFilters } from './helpers/buildUpdatedFilters';
+export { default as buildFilterParamsForFetchFiltersRequest } from './helpers/buildFilterParamsForFetchFiltersRequest';
+export { translateFilterLabel } from './helpers/translateFilterLabel';
 
 export {
   SORT_ORDER_RELEVANCE,

@@ -1,5 +1,6 @@
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import event from '@shopgate/pwa-core/classes/Event';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import { redirects } from '@shopgate/pwa-common/collections';
@@ -22,6 +23,7 @@ import {
 } from '@shopgate/engage/locations';
 import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
 import { errorBehavior } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import addProductsToCart from '../actions/addProductsToCart';
@@ -50,6 +52,7 @@ import {
   CART_PATH,
   DEEPLINK_CART_ADD_COUPON_PATTERN,
   DEEPLINK_CART_ADD_PRODUCT_PATTERN,
+  CART_ITEM_TYPE_PRODUCT,
 } from '../constants';
 import { getCartProducts } from '../selectors';
 
@@ -189,7 +192,7 @@ export default function cart(subscribe) {
     /**
      * @type {PipelineErrorElement[]} errors
      */
-    const { errors = [] } = action;
+    const { errors = [], couponsIds = [] } = action;
 
     if (Array.isArray(errors) && errors.length) {
       // Supports only one error, because none of the pipelines is ever called with multiple items.
@@ -212,6 +215,11 @@ export default function cart(subscribe) {
             message,
             additionalParams,
             translated,
+            ...(Array.isArray(couponsIds) && couponsIds.length > 0 ? {
+              input: {
+                couponsIds,
+              },
+            } : null),
           },
         },
       });
@@ -242,47 +250,54 @@ export default function cart(subscribe) {
    */
   subscribe(routeAddProductNavigate$, async ({ dispatch, action, getState }) => {
     const state = getState();
-    const product = getProduct(state, action);
-    const preferredLocation = getPreferredLocation(state);
-    const preferredFulfillmentMethod = getPreferredFulfillmentMethod(state);
-    const shopFulfillmentMethods = getFulfillmentMethods(state);
 
     let redirectToPDP = false;
     let fulfillment = null;
 
     if (hasProductVariety(state, action)) {
-      // NO product or variety
+      // Redirect to PDP when the product has variants
       redirectToPDP = true;
-    } else if (preferredFulfillmentMethod !== DIRECT_SHIP) {
-      let activeLocation = null;
-      if (preferredLocation) {
-        activeLocation = preferredLocation;
-      }
+    } else if (hasNewServices()) {
+      const product = getProduct(state, action);
+      const preferredLocation = getPreferredLocation(state);
+      const preferredFulfillmentMethod = getPreferredFulfillmentMethod(state);
+      const shopFulfillmentMethods = getFulfillmentMethods(state);
 
-      // Get fulfillment method that is both active for location and product.
-      let activeFulfillmentMethod = preferredFulfillmentMethod;
-      const availableFulfillmentMethods = shopFulfillmentMethods?.filter(
-        s => product?.fulfillmentMethods.indexOf(s) || [] !== -1
-      ) || [];
+      if (preferredFulfillmentMethod !== DIRECT_SHIP) {
+        let activeLocation = null;
+        if (preferredLocation) {
+          activeLocation = preferredLocation;
+        }
 
-      if (activeLocation && !activeFulfillmentMethod && availableFulfillmentMethods.length === 1) {
-        [activeFulfillmentMethod] = availableFulfillmentMethods;
-      }
+        // Get fulfillment method that is both active for location and product.
+        let activeFulfillmentMethod = preferredFulfillmentMethod;
+        const availableFulfillmentMethods = shopFulfillmentMethods?.filter(
+          s => (product?.fulfillmentMethods || []).includes(s)
+        ) || [];
 
-      if (!product?.fulfillmentMethods.includes(activeFulfillmentMethod) || false) {
-        activeFulfillmentMethod = null;
-      }
+        if (
+          activeLocation &&
+          !activeFulfillmentMethod &&
+          availableFulfillmentMethods.length === 1
+        ) {
+          [activeFulfillmentMethod] = availableFulfillmentMethods;
+        }
 
-      if (!activeFulfillmentMethod || !activeLocation) {
-        redirectToPDP = true;
-      } else {
-        fulfillment = {
-          method: preferredFulfillmentMethod,
-          location: {
-            code: preferredLocation.code,
-            name: preferredLocation.name || '',
-          },
-        };
+        if (!product?.fulfillmentMethods.includes(activeFulfillmentMethod) || false) {
+          activeFulfillmentMethod = null;
+        }
+
+        if (!activeFulfillmentMethod || !activeLocation) {
+          redirectToPDP = true;
+        } else {
+          fulfillment = {
+            method: preferredFulfillmentMethod,
+            location: {
+              code: preferredLocation.code,
+              name: preferredLocation.name || '',
+            },
+          };
+        }
       }
     }
 
@@ -305,11 +320,38 @@ export default function cart(subscribe) {
   });
 
   /**
-   * Deffer coupon adding to a cart, until we have at least 1 product
+   * Deffer coupon adding to a cart, until we have the product from the push message inside cart.
+   *
+   * Logic was implemented for PWA 6 in ticket no PWA-1809.
    */
-  const addCoupon$ = routeAddProductNavigate$
+  const addCouponDeferred$ = routeAddProductNavigate$
     // Only if coupon is given
-    .filter(({ action: { couponCode = '' } }) => !!couponCode);
+    .filter(({ action: { couponCode = '' } }) => !!couponCode)
+    .filter(() => !hasNewServices())
+    .withLatestFrom(cartReceived$)
+    .switchMap(
+      ([navigate, cartReceived]) => {
+        if (cartReceived.action.cart.cartItems.find(i => i.type === CART_ITEM_TYPE_PRODUCT)) {
+        // We have items in cart, add coupon immediately
+          return Observable.of(navigate);
+        }
+        // Wait until first product in cart to add a coupon
+        return cartReceived$.filter(cartReceivedNext => (
+          cartReceivedNext.action.cart.cartItems.find(i => i.type === CART_ITEM_TYPE_PRODUCT)
+        )).first();
+      },
+      ([navigate]) => navigate
+    );
+
+  /**
+   * With the new services, the coupon is added immediately.
+   */
+  const addCouponImmediately$ = routeAddProductNavigate$
+    // Only if coupon is given
+    .filter(({ action: { couponCode = '' } }) => !!couponCode)
+    .filter(() => hasNewServices());
+
+  const addCoupon$ = addCouponDeferred$.merge(addCouponImmediately$);
 
   /**
    * Deeplink to add product and coupon to cart, eg /cart_add_product/123/COUPON
