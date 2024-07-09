@@ -24,7 +24,7 @@ import ImprintButton from './components/ImprintButton';
 import portalProps from '../../portalProps';
 import PrivacySettingsButton from './components/PrivacySettingsButton';
 
-const { cookieConsent: { isCookieConsentActivated } } = appConfig;
+const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
 
 /**
  * @returns {JSX.Element}

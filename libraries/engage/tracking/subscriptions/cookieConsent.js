@@ -29,7 +29,7 @@ export const navigateBackToCookieModal$ = main$
 export default function cookieConsent(subscribe) {
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
     const state = getState();
-    const { cookieConsent: { isCookieConsentActivated } } = appConfig;
+    const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
     const isCookieConsentHandled = getIsCookieConsentHandled(state);
 
     /**

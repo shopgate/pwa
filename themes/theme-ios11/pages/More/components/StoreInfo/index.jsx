@@ -17,7 +17,7 @@ import ReturnPolicy from './components/ReturnPolicy';
 import Imprint from './components/Imprint';
 import PrivacySettings from './components/PrivacySettings';
 
-const { cookieConsent: { isCookieConsentActivated } } = appConfig;
+const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
 
 /**
  * The StoreInfoComponent.
