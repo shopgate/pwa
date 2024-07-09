@@ -8,8 +8,8 @@ import {
 import { handleCookieConsent, showCookieConsentModal } from '../action-creators';
 import {
   getIsCookieConsentHandled,
-  getAreComfortCookiesSet,
-  getAreStatisticsCookiesSet,
+  getAreComfortCookiesAccepted,
+  getAreStatisticsCookiesAccepted,
 } from '../selectors/cookieConsent';
 import { appConfig } from '../../index';
 
@@ -42,8 +42,8 @@ export default function cookieConsent(subscribe) {
       (isCookieConsentActivated && isCookieConsentHandled) ||
       !appSupportsCookieConsent()
     ) {
-      const comfortCookiesAccepted = getAreComfortCookiesSet(state);
-      const statisticsCookiesAccepted = getAreStatisticsCookiesSet(state);
+      const comfortCookiesAccepted = getAreComfortCookiesAccepted(state);
+      const statisticsCookiesAccepted = getAreStatisticsCookiesAccepted(state);
 
       dispatch(handleCookieConsent({
         comfortCookiesAccepted,

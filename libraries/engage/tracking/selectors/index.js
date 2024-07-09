@@ -1,2 +1,2 @@
-export { getAreComfortCookiesSet } from './cookieConsent';
-export { getAreStatisticsCookiesSet } from './cookieConsent';
+export { getAreComfortCookiesAccepted } from './cookieConsent';
+export { getAreStatisticsCookiesAccepted } from './cookieConsent';

@@ -16,28 +16,32 @@ export const getCookieSettingsState = state => state?.tracking?.cookieSettings |
 
 /**
  * Selects the property of the comfort cookie settings.
+ * @private This selector is intended to be used internally. When a cookie consent status needs
+ * to be checked for a feature, please use `getAreComfortCookiesAccepted` instead.
  * @returns {boolean|null} whether comfort cookies have been selected by the user.
  */
-export const getAreComfortCookiesAccepted = createSelector(
+export const getAreComfortCookiesAcceptedInternal = createSelector(
   getCookieSettingsState,
   settingsState => settingsState.comfortCookiesAccepted
 );
 
 /**
  * Selects the property of the statistics cookie settings.
+ * @private This selector is intended to be used internally. When a cookie consent status needs
+ * to be checked for a feature, please use `getAreStatisticsCookiesAccepted` instead.
  * @returns {boolean|null} whether statistics cookies have been selected by the user.
  */
-export const getAreStatisticsCookiesAccepted = createSelector(
+export const getAreStatisticsCookiesAcceptedInternal = createSelector(
   getCookieSettingsState,
   settingsState => settingsState.statisticsCookiesAccepted
 );
 
 /**
- * Selects the property of the comfort cookie settings
- * and returns true for tracking in case cookie feature is not activated (i.e. null)
+ * Determines if comfort cookies where accepted in the cookie consent process. When cookie
+ * consent is inactive, the selector will also return true.
  * @returns {boolean} whether comfort cookies are set and should activate tracking.
  */
-export const getAreComfortCookiesSet = createSelector(
+export const getAreComfortCookiesAccepted = createSelector(
   getCookieSettingsState,
   (settingsState) => {
     if (settingsState.comfortCookiesAccepted === null) return true;
@@ -46,11 +50,11 @@ export const getAreComfortCookiesSet = createSelector(
 );
 
 /**
- * Selects the property of the statistics cookie settings
- * and returns true for tracking in case cookie feature is not activated (i.e. null)
+ * Determines if statistics cookies where accepted in the cookie consent process. When cookie
+ * consent is inactive, the selector will also return true.
  * @returns {boolean} whether statistics cookies are set and should activate tracking.
  */
-export const getAreStatisticsCookiesSet = createSelector(
+export const getAreStatisticsCookiesAccepted = createSelector(
   getCookieSettingsState,
   (settingsState) => {
     if (settingsState.statisticsCookiesAccepted === null) return true;
@@ -64,8 +68,8 @@ export const getAreStatisticsCookiesSet = createSelector(
  */
 export const getIsCookieConsentModalVisible = createSelector(
   getCookieConsentModalState,
-  getAreComfortCookiesAccepted,
-  getAreStatisticsCookiesAccepted,
+  getAreComfortCookiesAcceptedInternal,
+  getAreStatisticsCookiesAcceptedInternal,
   (modalState, comfortCookiesState, statisticsCookiesState) => (
     modalState.isCookieConsentModalVisible
         && (comfortCookiesState === null && statisticsCookiesState === null))
