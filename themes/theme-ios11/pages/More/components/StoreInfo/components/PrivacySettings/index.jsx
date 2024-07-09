@@ -10,7 +10,7 @@ import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 
 /**
- The PrivacySettingsComponent.
+ * The PrivacySettingsComponent.
  * @returns {JSX.Element}
  */
 const PrivacySettings = () => (
