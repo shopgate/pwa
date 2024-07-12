@@ -29,13 +29,13 @@ exports[`<Widget /> should render an image widget 1`] = `
   }
 >
   <GridItem
-    className="css-11tky1j"
+    className="common__widgets__widget css-11tky1j"
     component="div"
     grow={0}
     shrink={1}
   >
     <div
-      className="css-11tky1j"
+      className="common__widgets__widget css-11tky1j"
     >
       <div>
         <Suspense
@@ -73,13 +73,13 @@ exports[`<Widget /> should render an image widget with offset 1`] = `
   }
 >
   <GridItem
-    className="css-1fy9kc8"
+    className="common__widgets__widget css-1fy9kc8"
     component="div"
     grow={0}
     shrink={1}
   >
     <div
-      className="css-1fy9kc8"
+      className="common__widgets__widget css-1fy9kc8"
     >
       <div>
         <Suspense

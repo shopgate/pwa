@@ -103,6 +103,33 @@ describe('Client selectors', () => {
         const result = hasScannerSupport(createMockState({}));
         expect(result).toBeFalsy();
       });
+
+      it('should return false on iPads running with the non react-native based app', () => {
+        const result = hasScannerSupport(createMockState({
+          libVersion: SCANNER_MIN_APP_LIB_VERSION,
+          device: {
+            type: 'tablet',
+            os: {
+              platform: 'ios',
+            },
+          },
+        }));
+        expect(result).toBeFalsy();
+      });
+
+      it('should return true on iPads running with the react-native based app', () => {
+        const result = hasScannerSupport(createMockState({
+          libVersion: SCANNER_MIN_APP_LIB_VERSION,
+          appVersion: '11.0.4',
+          device: {
+            type: 'tablet',
+            os: {
+              platform: 'ios',
+            },
+          },
+        }));
+        expect(result).toBeTruthy();
+      });
     });
 
     describe('getDeviceInformation()', () => {

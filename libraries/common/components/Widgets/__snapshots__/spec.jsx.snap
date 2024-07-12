@@ -23,7 +23,9 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
     ]
   }
 >
-  <div>
+  <div
+    className="common__widgets"
+  >
     <Image
       col={0}
       key="w0"
@@ -78,7 +80,9 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
     ]
   }
 >
-  <div>
+  <div
+    className="common__widgets"
+  >
     <WidgetGrid
       components={
         Object {
@@ -106,11 +110,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
       key="w0"
     >
       <div
-        className={
-          Object {
-            "data-css-jldvt6": "",
-          }
-        }
+        className="css-jldvt6 common__widgets__widget-grid"
       >
         <Widget
           component={[Function]}
@@ -132,13 +132,13 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
           key="w0"
         >
           <GridItem
-            className="css-14cdwhd"
+            className="common__widgets__widget css-14cdwhd"
             component="div"
             grow={0}
             shrink={1}
           >
             <div
-              className="css-14cdwhd"
+              className="common__widgets__widget css-14cdwhd"
             >
               <div>
                 <Suspense
@@ -219,7 +219,9 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
     ]
   }
 >
-  <div>
+  <div
+    className="common__widgets"
+  >
     <Image
       col={0}
       key="w0"

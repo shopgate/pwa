@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HtmlSanitizer /> does not strip out images with absolute paths 1`] = `
-<div>
+<div
+  class="common__html-sanitizer"
+>
   
       
   <div>
@@ -27,7 +29,9 @@ exports[`<HtmlSanitizer /> does not strip out images with absolute paths 1`] = `
 `;
 
 exports[`<HtmlSanitizer /> should render the HtmlSanitizer 1`] = `
-<div>
+<div
+  class="common__html-sanitizer"
+>
   <h1>
     Hello World!
   </h1>
@@ -35,7 +39,9 @@ exports[`<HtmlSanitizer /> should render the HtmlSanitizer 1`] = `
 `;
 
 exports[`<HtmlSanitizer /> strips out images with relative paths 1`] = `
-<div>
+<div
+  class="common__html-sanitizer"
+>
   
       
   <div>
@@ -60,7 +66,7 @@ exports[`<HtmlSanitizer /> strips out images with relative paths 1`] = `
 
 exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
 <HtmlSanitizer
-  className={null}
+  className=""
   decode={true}
   navigate={[Function]}
   processStyles={false}
@@ -69,7 +75,7 @@ exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
 >
   <Component>
     <div
-      className={null}
+      className="common__html-sanitizer"
       dangerouslySetInnerHTML={
         Object {
           "__html": "  <p>Foo Bar</p> ",
