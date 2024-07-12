@@ -32,13 +32,12 @@ const hasChildNodes = (ref, headlineId) => {
  * @param {Object} props The component props.
  * @param {string} props.title The section title - can be a placeholder.
  * @param {Object} [props.titleParams={}] Additional parameters for the title placeholder.
- * @param {Object} [props.className=null] A class name for the section.
  * @param {NodeList} [props.children=null] Component children.
  * @returns {JSX}
  */
 function Section(props) {
   const {
-    title, titleParams, children, className, ...rest
+    title, titleParams, children, ...rest
   } = props;
   const contentRef = useRef(null);
   const [hasContent, setHasContent] = useState(false);

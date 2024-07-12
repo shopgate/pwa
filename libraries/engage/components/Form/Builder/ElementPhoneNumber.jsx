@@ -1,5 +1,5 @@
-// @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { camelCase, upperCase, isEqual } from 'lodash';
 import { i18n } from '@shopgate/engage/core';
@@ -68,25 +68,6 @@ const styles = {
   }),
 };
 
-type Props = {
-  name: string,
-  errorText: string,
-  value: string,
-  visible: boolean,
-  formName: string,
-  element: {
-    default?: string,
-    label?: string,
-    disabled?: bool,
-    handleChange: (string, any) => void,
-    config?: {
-      supportedCountries?: string[],
-      countrySortOrder?: string[],
-      userLocation?: any,
-    }
-  },
-};
-
 const builtInCountries = getCountries();
 const locales = {
   en,
@@ -101,7 +82,7 @@ const locales = {
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
+const UnwrappedElementPhoneNumber = React.memo((props) => {
   const {
     element,
     name,
@@ -232,7 +213,12 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
   const Component = hasCountrySelect ? PhoneInputCountrySelect : PhoneInput;
 
   return (
-    <div className="formBuilderField">
+    <div
+      className={classnames(
+        'formBuilderField',
+        'engage__form-phone-number'
+      )}
+    >
       <div className={phoneClasses}>
         <Label
           label={label}
@@ -266,5 +252,31 @@ const UnwrappedElementPhoneNumber = React.memo<Props>((props: Props) => {
     </div>
   );
 });
+
+UnwrappedElementPhoneNumber.propTypes = {
+  element: PropTypes.shape({
+    default: PropTypes.string,
+    label: PropTypes.string,
+    disabled: PropTypes.bool,
+    handleChange: PropTypes.func(),
+    config: PropTypes.shape({
+      supportedCountries: PropTypes.arrayOf(PropTypes.string),
+      countrySortOrder: PropTypes.arrayOf(PropTypes.string),
+      userLocation: PropTypes.shape(),
+    }),
+  }).isRequired,
+  errorText: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+  ]),
+  visible: PropTypes.bool,
+};
+
+UnwrappedElementPhoneNumber.defaultProps = {
+  value: '',
+  visible: true,
+};
 
 export default UnwrappedElementPhoneNumber;

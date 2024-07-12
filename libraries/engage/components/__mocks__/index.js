@@ -1,4 +1,6 @@
 /* eslint-disable require-jsdoc */
+import Sheet from '@shopgate/pwa-ui-shared/Sheet';
+
 // ICONS IOS
 export const CartIconIOS = () => null;
 export const FilterIconIOS = () => null;
@@ -66,7 +68,9 @@ export const ProgressBar = () => null;
 export const MessageBar = () => null;
 export const Link = ({ children }) => children;
 export const Ellipsis = ({ children }) => children;
+/** @returns {ReactElement} */
 export const SurroundPortals = ({ children }) => children;
+/** @returns {ReactElement} */
 export const Portal = ({ children }) => children || null; // null for portals like before, after
 export const Accordion = ({ children }) => children;
 export const ResponsiveContainer = ({ children }) => children;
@@ -81,16 +85,18 @@ export const Availability = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
 export const PlaceholderParagraph = ({ children }) => children;
+/** @returns {ReactElement} */
 export const HtmlSanitizer = ({ children }) => children;
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
+export const SheetDrawer = Sheet;
 export const SheetList = ({ children }) => children;
 SheetList.Item = ({ children }) => children;
 SheetList.Item.displayName = 'SheetList.Item';
 
 // HELPERS
 export const I18n = {
-  Text: () => null,
+  Text: () => 'I18n.Text',
   Placeholder: () => null,
   Price: () => null,
 };

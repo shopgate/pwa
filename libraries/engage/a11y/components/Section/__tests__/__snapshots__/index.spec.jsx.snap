@@ -2,17 +2,19 @@
 
 exports[`<Section /> should render hidden when no children rendered 1`] = `
 <Section
-  className={null}
+  className=""
   title="my.headline"
   titleParams={Object {}}
 >
-  <section />
+  <section
+    className=""
+  />
 </Section>
 `;
 
 exports[`<Section /> should render with a label 1`] = `
 <Section
-  className={null}
+  className=""
   title="my.headline"
   titleParams={
     Object {
@@ -22,6 +24,7 @@ exports[`<Section /> should render with a label 1`] = `
 >
   <section
     aria-labelledby="my-headline"
+    className=""
   >
     <h2
       hidden={true}

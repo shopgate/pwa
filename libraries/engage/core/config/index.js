@@ -23,11 +23,8 @@ export {
   errorCoreConfig$,
 } from './config.streams';
 
-export type {
-  MerchantSettings,
-  ConfigState,
-  ShopSettings,
-} from './config.types';
+export { ThemeConfigResolver } from './ThemeConfigResolver';
+export { isBeta } from './isBeta';
 
 export { getPageConfig } from './getPageConfig';
 export { getPageSettings } from './getPageSettings';

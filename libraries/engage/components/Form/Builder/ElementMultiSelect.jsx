@@ -30,7 +30,14 @@ const ElementMultiSelect = (props) => {
   const values = [].concat(value).filter(Boolean);
 
   return (
-    <div className={classNames(camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
+    <div
+      className={classNames(
+        camelCase(name),
+        'engage__form-multi-select',
+        'formBuilderField',
+        { validationError: !!errorText }
+      )}
+    >
       <ResponsiveContainer appAlways breakpoint="xs">
         <Select
           name={name}

@@ -79,7 +79,7 @@ export function useBrowserConnector() {
 
 /**
  * Logs a deprecation warning.
- * @param {string} element The deperecated element.
+ * @param {string} element The deprecated element.
  * @param {string} [version='v7.0.0'] The engage version of removal.
  */
 export function logDeprecationMessage(element, version = 'v7.0.0') {

@@ -26,12 +26,14 @@ class ViewContent extends Component {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
+    className: PropTypes.string,
     noContentPortal: PropTypes.bool,
     noKeyboardListener: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
   };
 
   static defaultProps = {
+    className: '',
     children: null,
     noScrollOnKeyboard: false,
     noContentPortal: false,
@@ -120,7 +122,7 @@ class ViewContent extends Component {
 
     return {
       overflow,
-      paddingBottom: keyboardHeight,
+      paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px)`,
     };
   }
 
@@ -171,7 +173,7 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article className={styles} ref={this.scrollContainer ? this.ref : null} style={this.style}>
+        <article className={`${styles} engage__view__content ${this.props.className}`} ref={this.scrollContainer ? this.ref : null} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
           <ResponsiveContainer breakpoint=">xs" webOnly>
@@ -198,6 +200,8 @@ class ViewContent extends Component {
 
 export default props => (
   <RouteContext.Consumer>
-    {({ visible }) => <ViewContent {...props} visible={visible} />}
+    {({ visible, pattern = '' }) => (
+      <ViewContent {...props} visible={visible} className={`route_${pattern.replace(/[:/]/g, '_')}`} />
+    )}
   </RouteContext.Consumer>
 );
