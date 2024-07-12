@@ -54,7 +54,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
 exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
 <div
   aria-hidden={true}
-  className="css-13azwyo"
+  className="css-13azwyo ui-shared__context-menu"
   data-test-id="contextMenu"
 >
   <button
@@ -123,7 +123,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
 exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] = `
 <div
   aria-hidden={true}
-  className="css-13azwyo"
+  className="css-13azwyo ui-shared__context-menu"
   data-test-id="contextMenu"
 >
   <Component

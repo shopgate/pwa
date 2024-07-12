@@ -16,7 +16,7 @@ import styles from './style';
  */
 const BasicDialog = ({ children, actions, title }) => (
   <div
-    className={styles.container}
+    className={`${styles.container} ui-ios__base-dialog`}
     data-test-id="basicDialog"
     role="alertdialog"
     aria-modal

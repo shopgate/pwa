@@ -34,7 +34,7 @@ exports[`<ProductProperties /> should render as expected when properties are pas
   }
 >
   <ul
-    className={null}
+    className="ui-shared__product-properties"
   >
     <li
       key="Label One-Value One"
@@ -68,7 +68,7 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
   }
 >
   <ul
-    className={null}
+    className="ui-shared__product-properties"
   >
     <li
       key="Label One-Value One"
