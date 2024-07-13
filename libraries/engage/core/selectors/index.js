@@ -23,6 +23,8 @@ export {
   getProductListShowInventory,
 } from './merchantSettings';
 
+export * from '../config/config.selectors';
+
 export * from './app';
 
 // --------------- CLIENT --------------- //

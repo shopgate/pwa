@@ -11,6 +11,7 @@ export * from './environment';
 export * from './appFeatures';
 export * from './baseUrl';
 export * from './bridge';
+export { isBeta } from '../config/isBeta';
 export { getFullImageSource } from './getFullImageSource';
 export { getImageFormat } from './getImageFormat';
 export { i18n, getWeekDaysOrder } from './i18n';
