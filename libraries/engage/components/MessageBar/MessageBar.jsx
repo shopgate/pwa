@@ -108,4 +108,4 @@ MessageBar.defaultProps = {
   showIcons: false,
 };
 
-export default hot(React.memo<Props>(MessageBar));
+export default hot(React.memo(MessageBar));

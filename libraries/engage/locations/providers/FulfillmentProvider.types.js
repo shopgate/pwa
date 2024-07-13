@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { type AddToCartProduct, type Item } from '../../cart';
-import { type ShopSettings } from '../../core/config';
+import { type ShopSettings } from '../../core/config/config.types';
 import { type Product, type BaseProductAware, type ProductAware } from '../../product';
 import {
   type Location,

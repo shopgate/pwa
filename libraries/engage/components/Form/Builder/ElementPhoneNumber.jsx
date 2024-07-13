@@ -258,7 +258,7 @@ UnwrappedElementPhoneNumber.propTypes = {
     default: PropTypes.string,
     label: PropTypes.string,
     disabled: PropTypes.bool,
-    handleChange: PropTypes.func(),
+    handleChange: PropTypes.func,
     config: PropTypes.shape({
       supportedCountries: PropTypes.arrayOf(PropTypes.string),
       countrySortOrder: PropTypes.arrayOf(PropTypes.string),
