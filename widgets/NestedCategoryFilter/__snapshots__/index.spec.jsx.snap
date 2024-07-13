@@ -250,13 +250,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-10t88aj css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-10t88aj css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -265,6 +265,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           className="css-kwqjom"
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -444,7 +445,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -455,89 +456,95 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       >
                         <Header
                           allowClose={true}
+                          handleChange={[Function]}
                           onToggleClose={[Function]}
                           shadow={false}
+                          showSearch={false}
                           title="Label One"
                         >
-                          <Grid
-                            className="css-1hncgty"
-                            component="div"
-                            wrap={false}
+                          <div
+                            className=""
                           >
-                            <div
-                              className="css-1hncgty css-h7r55a"
+                            <Grid
+                              className="css-1hncgty"
+                              component="div"
+                              wrap={false}
                             >
-                              <button
-                                aria-label="common.close"
-                                className="css-r4gt00"
-                                onClick={[Function]}
-                                type="button"
+                              <div
+                                className="css-1hncgty css-h7r55a common__grid"
                               >
-                                <Ripple
-                                  className="css-ugy6xl"
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
+                                <button
+                                  aria-label="common.close"
+                                  className="css-r4gt00"
                                   onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
+                                  type="button"
                                 >
-                                  <div
-                                    className="ui-shared__ripple css-ugy6xl"
-                                    data-test-id="Ripple"
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
                                     onClick={[Function]}
-                                    style={null}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
                                   >
-                                    <Cross
-                                      size={24}
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
                                     >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                      <Cross
                                         size={24}
-                                        viewBox="0 0 24 24"
                                       >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": 24,
-                                            }
-                                          }
+                                        <Icon
+                                          className=""
+                                          color={null}
+                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          size={24}
                                           viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </button>
-                              <GridItem
-                                className="css-1mjy0de"
-                                component="div"
-                                grow={1}
-                                role="heading"
-                                shrink={1}
-                                tabIndex={0}
-                              >
-                                <div
-                                  className="css-1mjy0de css-1gs0ko2"
+                                        >
+                                          <svg
+                                            className="css-yys9hb  common__icon"
+                                            dangerouslySetInnerHTML={
+                                              Object {
+                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              }
+                                            }
+                                            style={
+                                              Object {
+                                                "fill": null,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </button>
+                                <GridItem
+                                  className="css-1mjy0de"
+                                  component="div"
+                                  grow={1}
                                   role="heading"
+                                  shrink={1}
                                   tabIndex={0}
                                 >
-                                  Label One
-                                </div>
-                              </GridItem>
-                            </div>
-                          </Grid>
+                                  <div
+                                    className="css-1mjy0de css-1gs0ko2"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Label One
+                                  </div>
+                                </GridItem>
+                              </div>
+                            </Grid>
+                          </div>
                         </Header>
                         <div
                           className="css-13azwyo"
@@ -561,7 +568,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               unmountOnExit={false}
                             >
                               <div
-                                className="css-guf25f"
+                                className="function wrapper() {
+  return (0, _glamor.css)({
+    position: 'absolute',
+    bottom: 0,
+    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
+    width: '100%',
+    height: progressBarHeight,
+    overflow: 'hidden',
+    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    zIndex: '10'
+  }).toString();
+} ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -587,11 +605,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -602,7 +620,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -644,7 +662,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -748,7 +766,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -827,13 +845,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -845,7 +863,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
@@ -855,6 +873,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}
@@ -1441,13 +1460,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1459,7 +1478,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
@@ -1469,6 +1488,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}
@@ -1667,7 +1687,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -1678,89 +1698,95 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <Header
                           allowClose={true}
+                          handleChange={[Function]}
                           onToggleClose={[Function]}
                           shadow={false}
+                          showSearch={false}
                           title="Label One"
                         >
-                          <Grid
-                            className="css-1hncgty"
-                            component="div"
-                            wrap={false}
+                          <div
+                            className=""
                           >
-                            <div
-                              className="css-1hncgty css-h7r55a"
+                            <Grid
+                              className="css-1hncgty"
+                              component="div"
+                              wrap={false}
                             >
-                              <button
-                                aria-label="common.close"
-                                className="css-r4gt00"
-                                onClick={[Function]}
-                                type="button"
+                              <div
+                                className="css-1hncgty css-h7r55a common__grid"
                               >
-                                <Ripple
-                                  className="css-ugy6xl"
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
+                                <button
+                                  aria-label="common.close"
+                                  className="css-r4gt00"
                                   onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
+                                  type="button"
                                 >
-                                  <div
-                                    className="ui-shared__ripple css-ugy6xl"
-                                    data-test-id="Ripple"
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
                                     onClick={[Function]}
-                                    style={null}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
                                   >
-                                    <Cross
-                                      size={24}
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
                                     >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                      <Cross
                                         size={24}
-                                        viewBox="0 0 24 24"
                                       >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": 24,
-                                            }
-                                          }
+                                        <Icon
+                                          className=""
+                                          color={null}
+                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          size={24}
                                           viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </button>
-                              <GridItem
-                                className="css-1mjy0de"
-                                component="div"
-                                grow={1}
-                                role="heading"
-                                shrink={1}
-                                tabIndex={0}
-                              >
-                                <div
-                                  className="css-1mjy0de css-1gs0ko2"
+                                        >
+                                          <svg
+                                            className="css-yys9hb  common__icon"
+                                            dangerouslySetInnerHTML={
+                                              Object {
+                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              }
+                                            }
+                                            style={
+                                              Object {
+                                                "fill": null,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </button>
+                                <GridItem
+                                  className="css-1mjy0de"
+                                  component="div"
+                                  grow={1}
                                   role="heading"
+                                  shrink={1}
                                   tabIndex={0}
                                 >
-                                  Label One
-                                </div>
-                              </GridItem>
-                            </div>
-                          </Grid>
+                                  <div
+                                    className="css-1mjy0de css-1gs0ko2"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Label One
+                                  </div>
+                                </GridItem>
+                              </div>
+                            </Grid>
+                          </div>
                         </Header>
                         <div
                           className="css-13azwyo"
@@ -1784,7 +1810,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               unmountOnExit={false}
                             >
                               <div
-                                className="css-guf25f"
+                                className="function wrapper() {
+  return (0, _glamor.css)({
+    position: 'absolute',
+    bottom: 0,
+    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
+    width: '100%',
+    height: progressBarHeight,
+    overflow: 'hidden',
+    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    zIndex: '10'
+  }).toString();
+} ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -1810,11 +1847,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -1825,7 +1862,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -1867,7 +1904,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -1971,7 +2008,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -2203,13 +2240,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-10t88aj css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-10t88aj css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -2218,6 +2255,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           className="css-kwqjom"
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -2415,7 +2453,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -2426,89 +2464,95 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <Header
                           allowClose={true}
+                          handleChange={[Function]}
                           onToggleClose={[Function]}
                           shadow={false}
+                          showSearch={false}
                           title="Label One"
                         >
-                          <Grid
-                            className="css-1hncgty"
-                            component="div"
-                            wrap={false}
+                          <div
+                            className=""
                           >
-                            <div
-                              className="css-1hncgty css-h7r55a"
+                            <Grid
+                              className="css-1hncgty"
+                              component="div"
+                              wrap={false}
                             >
-                              <button
-                                aria-label="common.close"
-                                className="css-r4gt00"
-                                onClick={[Function]}
-                                type="button"
+                              <div
+                                className="css-1hncgty css-h7r55a common__grid"
                               >
-                                <Ripple
-                                  className="css-ugy6xl"
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
+                                <button
+                                  aria-label="common.close"
+                                  className="css-r4gt00"
                                   onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
+                                  type="button"
                                 >
-                                  <div
-                                    className="ui-shared__ripple css-ugy6xl"
-                                    data-test-id="Ripple"
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
                                     onClick={[Function]}
-                                    style={null}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
                                   >
-                                    <Cross
-                                      size={24}
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
                                     >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                      <Cross
                                         size={24}
-                                        viewBox="0 0 24 24"
                                       >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": 24,
-                                            }
-                                          }
+                                        <Icon
+                                          className=""
+                                          color={null}
+                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          size={24}
                                           viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </button>
-                              <GridItem
-                                className="css-1mjy0de"
-                                component="div"
-                                grow={1}
-                                role="heading"
-                                shrink={1}
-                                tabIndex={0}
-                              >
-                                <div
-                                  className="css-1mjy0de css-1gs0ko2"
+                                        >
+                                          <svg
+                                            className="css-yys9hb  common__icon"
+                                            dangerouslySetInnerHTML={
+                                              Object {
+                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              }
+                                            }
+                                            style={
+                                              Object {
+                                                "fill": null,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </button>
+                                <GridItem
+                                  className="css-1mjy0de"
+                                  component="div"
+                                  grow={1}
                                   role="heading"
+                                  shrink={1}
                                   tabIndex={0}
                                 >
-                                  Label One
-                                </div>
-                              </GridItem>
-                            </div>
-                          </Grid>
+                                  <div
+                                    className="css-1mjy0de css-1gs0ko2"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Label One
+                                  </div>
+                                </GridItem>
+                              </div>
+                            </Grid>
+                          </div>
                         </Header>
                         <div
                           className="css-13azwyo"
@@ -2532,7 +2576,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               unmountOnExit={false}
                             >
                               <div
-                                className="css-guf25f"
+                                className="function wrapper() {
+  return (0, _glamor.css)({
+    position: 'absolute',
+    bottom: 0,
+    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
+    width: '100%',
+    height: progressBarHeight,
+    overflow: 'hidden',
+    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    zIndex: '10'
+  }).toString();
+} ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -2558,11 +2613,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -2573,7 +2628,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2615,7 +2670,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2719,7 +2774,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -2852,7 +2907,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -2863,89 +2918,95 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <Header
                           allowClose={true}
+                          handleChange={[Function]}
                           onToggleClose={[Function]}
                           shadow={false}
+                          showSearch={false}
                           title="Label Two"
                         >
-                          <Grid
-                            className="css-1hncgty"
-                            component="div"
-                            wrap={false}
+                          <div
+                            className=""
                           >
-                            <div
-                              className="css-1hncgty css-h7r55a"
+                            <Grid
+                              className="css-1hncgty"
+                              component="div"
+                              wrap={false}
                             >
-                              <button
-                                aria-label="common.close"
-                                className="css-r4gt00"
-                                onClick={[Function]}
-                                type="button"
+                              <div
+                                className="css-1hncgty css-h7r55a common__grid"
                               >
-                                <Ripple
-                                  className="css-ugy6xl"
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
+                                <button
+                                  aria-label="common.close"
+                                  className="css-r4gt00"
                                   onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
+                                  type="button"
                                 >
-                                  <div
-                                    className="ui-shared__ripple css-ugy6xl"
-                                    data-test-id="Ripple"
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
                                     onClick={[Function]}
-                                    style={null}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
                                   >
-                                    <Cross
-                                      size={24}
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
                                     >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                      <Cross
                                         size={24}
-                                        viewBox="0 0 24 24"
                                       >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": 24,
-                                            }
-                                          }
+                                        <Icon
+                                          className=""
+                                          color={null}
+                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          size={24}
                                           viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </button>
-                              <GridItem
-                                className="css-1mjy0de"
-                                component="div"
-                                grow={1}
-                                role="heading"
-                                shrink={1}
-                                tabIndex={0}
-                              >
-                                <div
-                                  className="css-1mjy0de css-1gs0ko2"
+                                        >
+                                          <svg
+                                            className="css-yys9hb  common__icon"
+                                            dangerouslySetInnerHTML={
+                                              Object {
+                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              }
+                                            }
+                                            style={
+                                              Object {
+                                                "fill": null,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </button>
+                                <GridItem
+                                  className="css-1mjy0de"
+                                  component="div"
+                                  grow={1}
                                   role="heading"
+                                  shrink={1}
                                   tabIndex={0}
                                 >
-                                  Label Two
-                                </div>
-                              </GridItem>
-                            </div>
-                          </Grid>
+                                  <div
+                                    className="css-1mjy0de css-1gs0ko2"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Label Two
+                                  </div>
+                                </GridItem>
+                              </div>
+                            </Grid>
+                          </div>
                         </Header>
                         <div
                           className="css-13azwyo"
@@ -2969,7 +3030,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               unmountOnExit={false}
                             >
                               <div
-                                className="css-guf25f"
+                                className="function wrapper() {
+  return (0, _glamor.css)({
+    position: 'absolute',
+    bottom: 0,
+    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
+    width: '100%',
+    height: progressBarHeight,
+    overflow: 'hidden',
+    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    zIndex: '10'
+  }).toString();
+} ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -2995,11 +3067,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -3010,7 +3082,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3052,7 +3124,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3156,7 +3228,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -3235,13 +3307,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3253,7 +3325,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
@@ -3263,6 +3335,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}
@@ -3536,13 +3609,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-10t88aj css-63oe3q ui-shared__ripple-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-172ttat css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-10t88aj css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
@@ -3551,6 +3624,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           className="css-kwqjom"
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -3724,7 +3798,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt"
+                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -3735,89 +3809,95 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       >
                         <Header
                           allowClose={true}
+                          handleChange={[Function]}
                           onToggleClose={[Function]}
                           shadow={false}
+                          showSearch={false}
                           title="Label One"
                         >
-                          <Grid
-                            className="css-1hncgty"
-                            component="div"
-                            wrap={false}
+                          <div
+                            className=""
                           >
-                            <div
-                              className="css-1hncgty css-h7r55a"
+                            <Grid
+                              className="css-1hncgty"
+                              component="div"
+                              wrap={false}
                             >
-                              <button
-                                aria-label="common.close"
-                                className="css-r4gt00"
-                                onClick={[Function]}
-                                type="button"
+                              <div
+                                className="css-1hncgty css-h7r55a common__grid"
                               >
-                                <Ripple
-                                  className="css-ugy6xl"
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
+                                <button
+                                  aria-label="common.close"
+                                  className="css-r4gt00"
                                   onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
+                                  type="button"
                                 >
-                                  <div
-                                    className="ui-shared__ripple css-ugy6xl"
-                                    data-test-id="Ripple"
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
                                     onClick={[Function]}
-                                    style={null}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
                                   >
-                                    <Cross
-                                      size={24}
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
                                     >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                      <Cross
                                         size={24}
-                                        viewBox="0 0 24 24"
                                       >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": 24,
-                                            }
-                                          }
+                                        <Icon
+                                          className=""
+                                          color={null}
+                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          size={24}
                                           viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </button>
-                              <GridItem
-                                className="css-1mjy0de"
-                                component="div"
-                                grow={1}
-                                role="heading"
-                                shrink={1}
-                                tabIndex={0}
-                              >
-                                <div
-                                  className="css-1mjy0de css-1gs0ko2"
+                                        >
+                                          <svg
+                                            className="css-yys9hb  common__icon"
+                                            dangerouslySetInnerHTML={
+                                              Object {
+                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              }
+                                            }
+                                            style={
+                                              Object {
+                                                "fill": null,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </button>
+                                <GridItem
+                                  className="css-1mjy0de"
+                                  component="div"
+                                  grow={1}
                                   role="heading"
+                                  shrink={1}
                                   tabIndex={0}
                                 >
-                                  Label One
-                                </div>
-                              </GridItem>
-                            </div>
-                          </Grid>
+                                  <div
+                                    className="css-1mjy0de css-1gs0ko2"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Label One
+                                  </div>
+                                </GridItem>
+                              </div>
+                            </Grid>
+                          </div>
                         </Header>
                         <div
                           className="css-13azwyo"
@@ -3841,7 +3921,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               unmountOnExit={false}
                             >
                               <div
-                                className="css-guf25f"
+                                className="function wrapper() {
+  return (0, _glamor.css)({
+    position: 'absolute',
+    bottom: 0,
+    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
+    width: '100%',
+    height: progressBarHeight,
+    overflow: 'hidden',
+    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    zIndex: '10'
+  }).toString();
+} ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -3867,11 +3958,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             testId={null}
                           >
                             <List
-                              className={null}
+                              className="null engage__sheet-list"
                               role="listbox"
                             >
                               <ul
-                                className={null}
+                                className="null engage__sheet-list common_list"
                                 role="listbox"
                               >
                                 <ListItem
@@ -3882,7 +3973,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3924,7 +4015,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -4028,7 +4119,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h "
+                                className="css-hlk66h  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -4107,13 +4198,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-1k9vl9z css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -4125,7 +4216,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           fill={true}
                           onClick={[Function]}
                           onComplete={[Function]}
-                          overflow={false}
+                          overflow={true}
                           size={null}
                         >
                           <div
@@ -4135,6 +4226,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}
