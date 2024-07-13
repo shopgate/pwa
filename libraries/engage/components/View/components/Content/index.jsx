@@ -200,8 +200,8 @@ class ViewContent extends Component {
 
 export default props => (
   <RouteContext.Consumer>
-    {({ visible, pattern = '' }) => (
-      <ViewContent {...props} visible={visible} className={`route_${pattern.replace(/[:/]/g, '_')}`} />
+    {({ visible, pattern = '', is404 = false }) => (
+      <ViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
     )}
   </RouteContext.Consumer>
 );
