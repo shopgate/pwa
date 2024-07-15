@@ -24,7 +24,7 @@ const Tiers = ({ price }) => {
     <Fragment>
       <Portal name={PRODUCT_TIERS_BEFORE} />
       <Portal name={PRODUCT_TIERS}>
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper} engage__product__header__tiers`}>
           {price.tiers.map(tier => <Tier tier={tier} price={price} key={`${Object.values(tier).join('_')}`} />)}
         </div>
       </Portal>

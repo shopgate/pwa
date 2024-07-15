@@ -25,7 +25,7 @@ const iconMapping = {
 const MessageBar = ({
   messages, classNames, raised, showIcons,
 }) => {
-  const containerClass = React.useMemo<string>(() => {
+  const containerClass = React.useMemo(() => {
     if (raised) {
       return classnames(styles.containerRaised, classNames.containerRaised);
     }

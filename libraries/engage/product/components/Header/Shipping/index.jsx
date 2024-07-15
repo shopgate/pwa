@@ -22,7 +22,7 @@ const Shipping = ({ shipping }) => (
     <Portal name={PRODUCT_SHIPPING}>
       <PlaceholderLabel className={styles.placeholder} ready={(shipping !== null)}>
         {shipping && typeof shipping.price !== 'undefined' && shipping.price !== null && (
-          <Label className={styles.shipping} price={shipping.price} currency={shipping.currency} />
+          <Label className={`${styles.shipping} engage__product__header__shipping`} price={shipping.price} currency={shipping.currency} />
         )}
       </PlaceholderLabel>
     </Portal>
