@@ -17,10 +17,9 @@ import {
   FulfillmentPathSelector,
 } from '@shopgate/engage/locations';
 import { Reviews } from '@shopgate/engage/reviews';
+import { Characteristics, Options } from '@shopgate/engage/product/components';
 import Media from '../Media';
 import Header from '../Header';
-import Characteristics from '../Characteristics';
-import Options from '../Options';
 import AppBar from '../AppBar';
 import AddToCartBar from '../AddToCartBar';
 import connect from './connector';
