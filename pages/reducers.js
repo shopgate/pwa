@@ -4,6 +4,7 @@ import {
   configuration,
   RESET_APP_REDUCERS,
 } from '@shopgate/engage/core';
+import backInStock from '@shopgate/engage/back-in-stock/reducers';
 import checkout from '@shopgate/engage/checkout/reducers';
 import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
@@ -54,6 +55,7 @@ const reducers = combineReducers({
   router,
   cart,
   category,
+  backInStock,
   checkout,
   client,
   ...extensions && { extensions: combineReducers(extensions) },
