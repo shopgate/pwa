@@ -7,8 +7,8 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { Section } from '@shopgate/engage/a11y';
 import { ResponsiveContainer } from '@shopgate/engage/components';
+import { Rating } from '@shopgate/engage/product/components';
 import CTAButtons from './components/CTAButtons';
-import Rating from './components/Rating';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
 import styles from './style';

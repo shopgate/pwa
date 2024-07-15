@@ -29,7 +29,7 @@ const Item = ({ display, product }) => (
   <Link
     tagName="a"
     href={`${ITEM_PATH}/${bin2hex(product.id)}`}
-    className={styles.container}
+    className={`${styles.container} engage__product__product-list__item`}
     itemProp="item"
     itemScope
     itemType="http://schema.org/Product"
@@ -49,7 +49,7 @@ const Item = ({ display, product }) => (
           <Fragment>
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
-              <DiscountBadge text={`-${product.price.discount}%`} />
+              <DiscountBadge className={styles.discount} text={`-${product.price.discount}%`} />
             </Portal>
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
           </Fragment>

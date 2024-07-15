@@ -9,7 +9,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Layout = ({ children }) => (
-  <List className={styles.list} itemScope itemType="http://schema.org/ItemList" data-test-id="productList">
+  <List className={`${styles.list} engage__product__product-list`} itemScope itemType="http://schema.org/ItemList" data-test-id="productList">
     {children}
   </List>
 );

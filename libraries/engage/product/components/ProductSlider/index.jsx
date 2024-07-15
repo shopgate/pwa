@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import { Swiper } from '@shopgate/engage/components';
-import { Theme } from '@shopgate/pwa-common/context';
-import { ProductListTypeProvider, ProductListEntryProvider } from '@shopgate/engage/product';
+import { Theme } from '@shopgate/engage/core/contexts';
+import {
+  ProductListTypeProvider,
+  ProductListEntryProvider,
+} from '@shopgate/engage/product/providers';
 import { container, items } from './style';
 
 export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
@@ -33,7 +36,7 @@ function ProductSlider(props) {
           <ProductListTypeProvider type="productSlider" subType={scope}>
             <Swiper
               autoPlay={autoplay}
-              className={className}
+              className={`${className} engage__product__product-slider`}
               controls={false}
               indicators={false}
               interval={delay}
@@ -55,6 +58,8 @@ function ProductSlider(props) {
     </Theme>
   );
 }
+
+ProductSlider.WIDGET_ID = WIDGET_ID;
 
 ProductSlider.propTypes = {
   productIds: PropTypes.arrayOf(PropTypes.string).isRequired,
