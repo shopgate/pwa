@@ -2,12 +2,11 @@ import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import debounce from 'lodash/debounce';
-import TextField from '@shopgate/pwa-ui-shared/Form/TextField';
-import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
-import withShowModal from '@shopgate/pwa-common/helpers/modal/withShowModal';
+import { TextField, InfoIcon } from '@shopgate/engage/components';
+import { withShowModal } from '@shopgate/engage/core/hocs';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
-import transition from '../../../Characteristics/transition';
-import { ProductContext } from '../../../../context';
+import { ProductContext } from '@shopgate/engage/product/contexts';
+import transition from '@shopgate/engage/product/components/Characteristics/transition';
 import OptionInformation from './components/OptionInfo';
 import styles from './style';
 
@@ -33,8 +32,8 @@ class TextOption extends PureComponent {
   }
 
   /**
-     * @param {Object} props The component props.
-     */
+   * @param {Object} props The component props.
+   */
   constructor(props) {
     super(props);
 

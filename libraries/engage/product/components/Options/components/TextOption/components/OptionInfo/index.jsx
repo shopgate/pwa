@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import { ProductContext } from '../../../../../../context';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import styles from './style';
 
 /**
@@ -34,10 +34,10 @@ const OptionInfo = ({
   return (
     <Grid className={styles.info}>
       {required &&
-      <Grid.Item className={styles.required} aria-hidden>
-        <I18n.Text string="common.required" />
-      </Grid.Item>
-          }
+        <Grid.Item className={styles.required} aria-hidden>
+          <I18n.Text string="common.required" />
+        </Grid.Item>
+      }
       {!!price &&
         <Grid.Item grow={1} className={styles.price} aria-hidden>
           {`${label}: `}

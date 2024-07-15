@@ -17,7 +17,7 @@ const element = css({
   paddingBottom: 0,
   '& label': {
     fontWeight: 400,
-    color: 'var(--color-text-low-emphasis, inherit)',
+    color: 'var(--color-text-high-emphasis, inherit)',
   },
   '& input': {
     fontWeight: 500,

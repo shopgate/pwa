@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
-import { PriceDifference } from '@shopgate/engage/product';
-import Picker from 'Components/Picker';
-import { ProductContext } from '../../../../context';
+import { I18n, PickerUtilize as Picker } from '@shopgate/engage/components';
+import { PriceDifference } from '@shopgate/engage/product/components';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 
 /**
  * @param {Object} props The component props.

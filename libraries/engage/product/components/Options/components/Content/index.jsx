@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import Option from '../Option';
 import TextOption from '../TextOption';
-import { ProductContext } from '../../../../context';
 import connect from './connector';
 
 /**
@@ -71,7 +71,7 @@ class Options extends PureComponent {
     return (
       <ProductContext.Consumer>
         {({ setOption }) => (
-          <div data-test-id="optionsPicker">
+          <div data-test-id="optionsPicker" className="engage__product__options">
             {options.map((option) => {
               switch (option.type) {
                 case 'text':
