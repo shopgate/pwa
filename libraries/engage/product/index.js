@@ -53,18 +53,6 @@ export * from './selectors/relations';
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
 
-// HOCs
-export { default as withPriceCalculation } from './hocs/withPriceCalculation';
-export { default as withProductStock } from './hocs/withProductStock';
-export { default as withProduct } from './hocs/withProduct';
-export { default as withProductListType } from './hocs/withProductListType';
-export { default as withProductListEntry } from './hocs/withProductListEntry';
-
-// HOOKs
-export { useLoadProductImage } from './hooks/useLoadProductImage';
-export { default as useProductListType } from './hooks/useProductListType';
-export { default as useProductListEntry } from './hooks/useProductListEntry';
-
 // CONTEXTS
 export { ProductContext, VariantContext } from './components/context';
 export { default as ProductListTypeContext } from './providers/ProductListType/context';
@@ -72,4 +60,6 @@ export { default as ProductListEntryContext } from './providers/ProductListEntry
 
 export * from './constants';
 export * from './components';
+export * from './hocs';
+export * from './hooks';
 export * from './providers';

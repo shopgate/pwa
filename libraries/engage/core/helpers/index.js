@@ -55,9 +55,6 @@ export * from '@shopgate/pwa-common/helpers/validation';
 
 export { default as errorBehavior } from './errorBehavior';
 
-// --------------- MODAL --------------- //
-export { default as withShowModal } from '@shopgate/pwa-common/helpers/modal/withShowModal';
-
 // --------------- ROUTER --------------- //
 
 export {

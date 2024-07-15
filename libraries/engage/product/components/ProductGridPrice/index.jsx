@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import {
   Grid, Price, PriceStriked,
 } from '@shopgate/engage/components';
-import { PriceInfo } from '@shopgate/engage/product';
-import withPriceCalculation from '../../hocs/withPriceCalculation';
+import { PriceInfo } from '@shopgate/engage/product/components';
+import { withPriceCalculation } from '@shopgate/engage/product/hocs';
+
 import styles from './style';
 
 /**

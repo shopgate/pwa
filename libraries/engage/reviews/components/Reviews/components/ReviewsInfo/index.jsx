@@ -31,7 +31,6 @@ const {
 /**
  * The ReviewsInfo component
  * @param {Object} props The component props
- * @param {Array} [props.reviews] The reviews shown inside the Reviews component
  * @returns {JSX}
  */
 const ReviewsInfo = () => {
