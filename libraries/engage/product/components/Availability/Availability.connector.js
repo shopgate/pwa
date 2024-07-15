@@ -1,16 +1,12 @@
-// @flow
 import { connect } from 'react-redux';
 import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { AVAILABILITY_STATE_OK } from '@shopgate/pwa-common-commerce/product/constants';
-import { type OwnProps, type StateProps } from './Availability.types';
-import { type State } from '../../../types';
 
 /**
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {Object} The extended component props.
+ * Creates the mapStateToProps connector function.
+ * @returns {Function}
  */
-function mapStateToProps(state: State, props: OwnProps) {
+const makeMapStateToProps = () => (state, props) => {
   const product = getProduct(state, props);
 
   if (!product) {
@@ -28,6 +24,6 @@ function mapStateToProps(state: State, props: OwnProps) {
     },
     fulfillmentMethods: product.fulfillmentMethods || null,
   };
-}
+};
 
-export default connect<StateProps, null, OwnProps>(mapStateToProps);
+export default connect(makeMapStateToProps);

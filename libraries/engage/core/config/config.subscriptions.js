@@ -1,15 +1,16 @@
-// @flow
 import { appWillStart$ } from '@shopgate/pwa-common/streams';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { fetchConfig } from './config.actions';
-import { type SubscribeHandler } from '../../types';
 
 /**
  * Config subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-function config(subscribe: SubscribeHandler) {
+function config(subscribe) {
   subscribe(appWillStart$, ({ dispatch }) => {
-    dispatch(fetchConfig());
+    if (hasNewServices()) {
+      dispatch(fetchConfig());
+    }
   });
 }
 

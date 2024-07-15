@@ -1,4 +1,5 @@
 import groupBy from 'lodash/groupBy';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { ROPIS, BOPIS } from '../locations';
 
 /**
@@ -64,6 +65,20 @@ export function sortCartItems(cartItems) {
  * @returns {Object}
  */
 export const createCartItemPrices = (cartItem = {}) => {
+  if (!hasNewServices()) {
+    const { product: { price = {} } = {} } = cartItem;
+
+    return {
+      price: [],
+      subtotal: typeof price?.special === 'number' && price.special !== price.default ? [
+        { price: price.default },
+        { price: price.special },
+      ] : [
+        { price: price.default },
+      ],
+    };
+  }
+
   const {
     product = {}, quantity, price, promoAmount, extendedPrice, unitPromoAmount, unitDiscountAmount,
   } = cartItem;

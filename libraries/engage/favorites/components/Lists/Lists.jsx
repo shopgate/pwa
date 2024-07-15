@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
-import { i18n, configuration, IS_CONNECT_EXTENSION_ATTACHED } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { i18n } from '@shopgate/engage/core';
+import { appConfig } from '@shopgate/engage';
 import {
   getFavoritesLists,
   isInitialLoading,
@@ -30,6 +32,8 @@ import {
   FAVORITES_LIST_ADD_BUTTON,
   FAVORITES_LIST,
 } from '../../constants/Portals';
+
+const { favoritesMode: { hasMultipleFavoritesLists } = {} } = appConfig;
 
 /**
  * @param {Object} state State
@@ -99,8 +103,6 @@ const FavoriteLists = ({
   userSearch,
   fetchLocations,
 }) => {
-  const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
-
   // Add to cart state.
   const promiseRef = useRef(null);
   const [activeProductId, setActiveProductId] = useState(null);
@@ -160,6 +162,15 @@ const FavoriteLists = ({
         reject,
       };
     });
+
+    if (!hasNewServices()) {
+      addToCart([{
+        productId: product.id,
+        quantity,
+      }]);
+      promiseRef.current.resolve();
+      return promise;
+    }
 
     // Get location.
     let activeLocation = null;
@@ -295,7 +306,7 @@ const FavoriteLists = ({
         onClose={handleMethodClose}
       />
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
-        {hasConnectExtension ? (
+        {hasNewServices() || hasMultipleFavoritesLists ? (
           <RippleButton
             type="primary"
             className={styles.addButton}
@@ -316,13 +327,13 @@ FavoriteLists.propTypes = {
   fetchLocations: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   removeList: PropTypes.func.isRequired,
-  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateList: PropTypes.func.isRequired,
   wishlistMode: PropTypes.string.isRequired,
   isInitializing: PropTypes.bool,
   lists: PropTypes.arrayOf(PropTypes.shape()),
   preferredFulfillmentMethod: PropTypes.string,
   preferredLocation: PropTypes.shape(),
+  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
   userSearch: PropTypes.shape(),
 };
 
@@ -330,6 +341,7 @@ FavoriteLists.defaultProps = {
   lists: [],
   userSearch: {},
   preferredFulfillmentMethod: null,
+  shopFulfillmentMethods: [],
   preferredLocation: null,
   isInitializing: true,
 };
