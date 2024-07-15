@@ -128,10 +128,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label One"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -142,7 +143,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -422,10 +423,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label One"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -436,7 +438,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -445,7 +447,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
+                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -568,18 +570,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               unmountOnExit={false}
                             >
                               <div
-                                className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                                className="css-guf25f ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -602,6 +593,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             hasImages={false}
                             key=".0"
                             onClose={[Function]}
+                            query=""
                             testId={null}
                           >
                             <List
@@ -1049,10 +1041,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label One"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -1063,7 +1056,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1202,10 +1195,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label Two"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -1216,7 +1210,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1338,10 +1332,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title=""
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -1352,7 +1347,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1664,10 +1659,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label One"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -1678,7 +1674,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1687,7 +1683,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
+                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -1810,18 +1806,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               unmountOnExit={false}
                             >
                               <div
-                                className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                                className="css-guf25f ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -1844,6 +1829,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             hasImages={false}
                             key=".0"
                             onClose={[Function]}
+                            query=""
                             testId={null}
                           >
                             <List
@@ -2118,10 +2104,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label Two"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -2132,7 +2119,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2430,10 +2417,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label One"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -2444,7 +2432,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2453,7 +2441,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
+                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -2576,18 +2564,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               unmountOnExit={false}
                             >
                               <div
-                                className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                                className="css-guf25f ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -2610,6 +2587,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             hasImages={false}
                             key=".0"
                             onClose={[Function]}
+                            query=""
                             testId={null}
                           >
                             <List
@@ -2884,10 +2862,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label Two"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -2898,7 +2877,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2907,7 +2886,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
+                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -3030,18 +3009,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               unmountOnExit={false}
                             >
                               <div
-                                className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                                className="css-guf25f ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -3064,6 +3032,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             hasImages={false}
                             key=".0"
                             onClose={[Function]}
+                            query=""
                             testId={null}
                           >
                             <List
@@ -3487,10 +3456,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label One"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -3501,7 +3471,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3775,10 +3745,11 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
+                  showSearch={false}
                   title="Label One"
                 >
                   <section
-                    className={null}
+                    className="ui-shared__sheet"
                   >
                     <Drawer
                       alwaysActive={false}
@@ -3789,7 +3760,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1d4fqwq"
+                      className="css-qxf1dv"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3798,7 +3769,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     >
                       <div
                         aria-modal={true}
-                        className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
+                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -3921,18 +3892,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               unmountOnExit={false}
                             >
                               <div
-                                className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                                className="css-guf25f ui-shared__progress-bar"
                                 style={
                                   Object {
                                     "transform": "scale(1, 0)",
@@ -3955,6 +3915,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             hasImages={false}
                             key=".0"
                             onClose={[Function]}
+                            query=""
                             testId={null}
                           >
                             <List

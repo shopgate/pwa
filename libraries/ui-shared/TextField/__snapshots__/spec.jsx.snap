@@ -33,6 +33,7 @@ exports[`<TextField /> should focus the input 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -53,6 +54,7 @@ exports[`<TextField /> should focus the input 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -104,6 +106,7 @@ exports[`<TextField /> should focus the input 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -120,10 +123,11 @@ exports[`<TextField /> should focus the input 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -167,6 +171,7 @@ exports[`<TextField /> should focus the input 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -212,6 +217,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -232,6 +238,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -283,6 +290,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -299,10 +307,11 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -346,6 +355,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -391,6 +401,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -411,6 +422,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -462,6 +474,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -478,10 +491,11 @@ exports[`<TextField /> should render a simple text field 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -525,6 +539,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -570,6 +585,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -590,6 +606,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -641,6 +658,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -657,10 +675,11 @@ exports[`<TextField /> should render the text field as password 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -704,6 +723,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -749,6 +769,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -769,6 +790,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -820,6 +842,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -836,10 +859,11 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -883,6 +907,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -928,6 +953,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -948,6 +974,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -999,6 +1026,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1015,10 +1043,11 @@ exports[`<TextField /> should replace the error text with custom validation erro
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -1061,6 +1090,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1113,6 +1143,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1133,6 +1164,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1184,6 +1216,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1200,10 +1233,11 @@ exports[`<TextField /> should sanitize the input 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -1247,6 +1281,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1292,6 +1327,7 @@ exports[`<TextField /> should show the error message 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1312,6 +1348,7 @@ exports[`<TextField /> should show the error message 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1363,6 +1400,7 @@ exports[`<TextField /> should show the error message 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1379,10 +1417,11 @@ exports[`<TextField /> should show the error message 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -1425,6 +1464,7 @@ exports[`<TextField /> should show the error message 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1477,6 +1517,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1504,6 +1545,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1555,6 +1597,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1571,10 +1614,11 @@ exports[`<TextField /> should show the hint text 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -1618,6 +1662,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1663,6 +1708,7 @@ exports[`<TextField /> should show the label 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1683,6 +1729,7 @@ exports[`<TextField /> should show the label 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1741,6 +1788,7 @@ exports[`<TextField /> should show the label 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1757,10 +1805,11 @@ exports[`<TextField /> should show the label 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -1804,6 +1853,7 @@ exports[`<TextField /> should show the label 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1863,6 +1913,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         className="css-tnfb18 css-1jyyyen hint"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1883,6 +1934,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -1934,6 +1986,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           id="test-input"
           inputComponent="input"
           isControlled={false}
+          maxlength=""
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1950,10 +2003,11 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput"
+            className="css-keangt simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
+            maxLength=""
             min={null}
             name="test-input"
             onBlur={[Function]}
@@ -1997,6 +2051,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         className="css-of8bei errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}

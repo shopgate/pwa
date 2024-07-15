@@ -45,14 +45,11 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get webCheckoutShopify() { return mockedWebCheckoutConfig; },
   themeConfig: {},
 }));
-jest.mock('@shopgate/pwa-core/helpers', () => ({
-  ...require.requireActual('@shopgate/pwa-core/helpers'),
-  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
-}));
-
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
-jest.mock('@shopgate/engage/core', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   hasWebBridge: jest.fn().mockReturnValue(false),
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+  hasNewServices: jest.fn().mockReturnValue(false),
 }));
 jest.mock('../actions/router', () => {
   const { windowOpenOverride: windowOpenOriginal } = jest.requireActual('../actions/router');

@@ -76,7 +76,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb css-1h5rpg9"
+            className="css-yys9hb css-1h5rpg9 common__icon"
             dangerouslySetInnerHTML={
               Object {
                 "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
@@ -192,7 +192,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb css-1h5rpg9"
+            className="css-yys9hb css-1h5rpg9 common__icon"
             dangerouslySetInnerHTML={
               Object {
                 "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
@@ -288,7 +288,7 @@ exports[`<Select /> should render select with no options 1`] = `
           viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb css-1h5rpg9"
+            className="css-yys9hb css-1h5rpg9 common__icon"
             dangerouslySetInnerHTML={
               Object {
                 "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",

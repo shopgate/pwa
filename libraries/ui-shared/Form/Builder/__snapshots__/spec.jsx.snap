@@ -113,6 +113,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -133,6 +134,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     htmlFor="foo.foo"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -191,6 +193,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       id="foo.foo"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.foo"
                       onChange={[Function]}
@@ -207,10 +210,11 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.foo"
                         onBlur={[Function]}
@@ -379,6 +383,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -399,6 +404,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     htmlFor="foo.foo"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -457,6 +463,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       id="foo.foo"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.foo"
                       onChange={[Function]}
@@ -473,10 +480,11 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.foo"
                         onBlur={[Function]}
@@ -602,6 +610,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -622,6 +631,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     htmlFor="foo.bar"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -680,6 +690,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       id="foo.bar"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.bar"
                       onChange={[Function]}
@@ -696,10 +707,11 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.bar"
                         onBlur={[Function]}
@@ -868,6 +880,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -888,6 +901,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     htmlFor="foo.foo"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -946,6 +960,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       id="foo.foo"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.foo"
                       onChange={[Function]}
@@ -962,10 +977,11 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.foo"
                         onBlur={[Function]}
@@ -1214,6 +1230,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1234,6 +1251,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     htmlFor="foo.firstName"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1292,6 +1310,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       id="foo.firstName"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.firstName"
                       onChange={[Function]}
@@ -1308,10 +1327,11 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.firstName"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.firstName"
                         onBlur={[Function]}
@@ -1424,6 +1444,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1444,6 +1465,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     htmlFor="foo.lastName"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1502,6 +1524,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       id="foo.lastName"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.lastName"
                       onChange={[Function]}
@@ -1518,10 +1541,11 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.lastName"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.lastName"
                         onBlur={[Function]}
@@ -1697,6 +1721,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1717,6 +1742,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     htmlFor="foo.foo"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1775,6 +1801,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       id="foo.foo"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.foo"
                       onChange={[Function]}
@@ -1791,10 +1818,11 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.foo"
                         onBlur={[Function]}
@@ -1925,6 +1953,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1945,6 +1974,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     htmlFor="foo.bar"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -2003,6 +2033,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       id="foo.bar"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.bar"
                       onChange={[Function]}
@@ -2019,10 +2050,11 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.bar"
                         onBlur={[Function]}
@@ -2198,6 +2230,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -2218,6 +2251,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     htmlFor="foo.foo"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -2276,6 +2310,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       id="foo.foo"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.foo"
                       onChange={[Function]}
@@ -2292,10 +2327,11 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.foo"
                         onBlur={[Function]}
@@ -2426,6 +2462,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -2446,6 +2483,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     htmlFor="foo.bar"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -2504,6 +2542,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       id="foo.bar"
                       inputComponent="input"
                       isControlled={true}
+                      maxlength=""
                       multiLine={false}
                       name="foo.bar"
                       onChange={[Function]}
@@ -2520,10 +2559,11 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt simpleInput"
+                        className="css-keangt simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         inputMode={null}
+                        maxLength=""
                         min={null}
                         name="foo.bar"
                         onBlur={[Function]}

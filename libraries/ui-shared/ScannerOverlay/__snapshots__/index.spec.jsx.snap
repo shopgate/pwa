@@ -69,7 +69,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
             wrap={false}
           >
             <ul
-              className="css-1je6emb ui-shared__scanner-bar css-h7r55a"
+              className="css-1je6emb ui-shared__scanner-bar css-h7r55a common__grid"
             >
               <GridItem
                 className="css-1uot7vp"
@@ -132,7 +132,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb css-2rq5n9"
+                                    className="css-yys9hb css-2rq5n9 common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M15.22,3.1,12,9.51l-.8,1.59h3.86l-4,6.83v-6h-3V3.1h7.12M17,2h0Zm0,0H7V13h3v9l7-12H13l4-8Z\\" />",
@@ -184,6 +184,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                         props={null}
                       >
                         <Translate
+                          acceptPlainTextWithPlaceholders={false}
                           className={null}
                           params={Object {}}
                           role={null}

@@ -78,7 +78,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
               viewBox="0 0 24 24"
             >
               <svg
-                className="css-yys9hb css-paji06"
+                className="css-yys9hb css-paji06 common__icon"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
