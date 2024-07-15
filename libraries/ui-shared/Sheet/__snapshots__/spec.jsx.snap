@@ -14,10 +14,11 @@ exports[`<Sheet /> should open 1`] = `
   onDidClose={[Function]}
   onDidOpen={[Function]}
   onOpen={[Function]}
+  showSearch={false}
   title="Test-Title"
 >
   <section
-    className="css-1owavz5"
+    className="ui-shared__sheet css-1owavz5"
   >
     <Drawer
       alwaysActive={false}
@@ -28,7 +29,7 @@ exports[`<Sheet /> should open 1`] = `
           "out": "css-171mdnt",
         }
       }
-      className="css-1d4fqwq"
+      className="css-qxf1dv"
       isOpen={true}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -37,7 +38,7 @@ exports[`<Sheet /> should open 1`] = `
     >
       <div
         aria-modal={true}
-        className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
+        className="css-qxf1dv css-1rg7udn css-1ldjh2f"
         onAnimationEnd={[Function]}
         role="dialog"
         style={
@@ -284,7 +285,7 @@ exports[`<Sheet /> should open 1`] = `
 
 exports[`<Sheet /> should render closed without content 1`] = `
 <section
-  className={null}
+  className="ui-shared__sheet"
 >
   <Drawer
     alwaysActive={false}
@@ -295,7 +296,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1d4fqwq"
+    className="css-qxf1dv"
     isOpen={false}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -329,7 +330,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
 
 exports[`<Sheet /> should render opened without content 1`] = `
 <section
-  className="css-1owavz5"
+  className="ui-shared__sheet css-1owavz5"
 >
   <Drawer
     alwaysActive={false}
@@ -340,7 +341,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1d4fqwq"
+    className="css-qxf1dv"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -374,7 +375,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
 
 exports[`<Sheet /> should render with content and title 1`] = `
 <section
-  className="css-1owavz5"
+  className="ui-shared__sheet css-1owavz5"
 >
   <Drawer
     alwaysActive={false}
@@ -385,7 +386,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1d4fqwq"
+    className="css-qxf1dv"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -462,10 +463,11 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   onDidClose={[Function]}
   onDidOpen={[Function]}
   onOpen={[Function]}
+  showSearch={false}
   title="Test-Title"
 >
   <section
-    className={null}
+    className="ui-shared__sheet"
   >
     <Drawer
       alwaysActive={false}
@@ -476,7 +478,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           "out": "css-171mdnt",
         }
       }
-      className="css-1d4fqwq"
+      className="css-qxf1dv"
       isOpen={false}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -485,7 +487,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     >
       <div
         aria-modal={true}
-        className="css-1d4fqwq css-1rg7udn css-171mdnt"
+        className="css-qxf1dv css-1rg7udn css-171mdnt"
         onAnimationEnd={[Function]}
         role="dialog"
         style={
