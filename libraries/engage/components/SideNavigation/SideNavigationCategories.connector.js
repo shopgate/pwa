@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
+import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
 import {
   makeGetAreRootCategoriesFetching,
   makeGetSubcategoriesByCategoryId,
@@ -25,7 +25,7 @@ const makeMapStateToProps = () => {
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  fetchCategory: id => dispatch(fetchCategory(id)),
+  fetchCategory: id => dispatch(fetchCategoryOrRootCategories(id)),
 });
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

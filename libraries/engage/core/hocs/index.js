@@ -1,3 +1,4 @@
+export { default as withShowModal } from '@shopgate/pwa-common/helpers/modal/withShowModal';
 export { withTheme } from './withTheme';
 export { withRoute } from './withRoute';
 export { withCurrentProduct } from './withCurrentProduct';

@@ -22,12 +22,6 @@ export { default as fetchProductVariants } from '@shopgate/pwa-common-commerce/p
 // COLLECTIONS
 export { default as productImageFormats } from '@shopgate/pwa-common-commerce/product/collections/ProductImageFormats';
 
-// CONSTANTS
-export * from '@shopgate/pwa-common-commerce/product/constants/index';
-export * from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
-export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
-export * from './constants';
-
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';
 export * from './helpers/index';
@@ -50,6 +44,7 @@ export {
   makeGetProductFeaturedMedia,
   makeIsProductActive,
   makeIsBaseProductActive,
+  makeGetProductType,
 } from './selectors/product';
 export * from './selectors/price';
 export * from './selectors/variants';
@@ -57,35 +52,6 @@ export * from './selectors/relations';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
-
-// COMPONENTS
-export { default as ProductProperties } from './components/ProductProperties/ProductProperties';
-export { default as MapPriceHint } from './components/MapPriceHint';
-export { default as OrderQuantityHint } from './components/OrderQuantityHint';
-export { default as ProductImage } from './components/ProductImage';
-export { default as MediaSlider } from './components/MediaSlider';
-export { default as QuantityPicker } from './components/QuantityPicker';
-export { default as EffectivityDates } from './components/EffectivityDates';
-export { Availability } from './components/Availability';
-export { default as PriceDifference } from './components/PriceDifference';
-export { FeaturedMedia, MediaImage } from './components/Media';
-export { VariantSwatch } from './components/Swatch';
-export { Swatches } from './components/Swatches';
-export { RelationsSlider } from './components/RelationsSlider';
-export { default as ProductCard } from './components/ProductCard';
-export { default as ProductGridPrice } from './components/ProductGridPrice';
-export { default as ProductCharacteristics } from './components/ProductCharacteristics';
-export { default as Description } from './components/Description';
-export { VariantAvailability } from './components/ProductVariants';
-export { PriceInfo } from './components/PriceInfo';
-export { ProductName } from './components/ProductName';
-export { default as ProductBadges } from './components/ProductBadges';
-export { default as ProductDiscountBadge } from './components/ProductDiscountBadge';
-export {
-  ProductUnitQuantityPicker,
-  UnitQuantityPicker,
-  CartUnitQuantityPicker,
-} from './components/UnitQuantityPicker';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
@@ -104,16 +70,6 @@ export { ProductContext, VariantContext } from './components/context';
 export { default as ProductListTypeContext } from './providers/ProductListType/context';
 export { default as ProductListEntryContext } from './providers/ProductListEntry/context';
 
-// PROVIDERS
-export { default as ProductListTypeProvider } from './providers/ProductListType';
-export { default as ProductListEntryProvider } from './providers/ProductListEntry';
-
-// TYPES
-export type {
-  ProductId,
-  Product,
-  ProductAware,
-  BaseProductAware,
-  ProductCharacteristic,
-  ProductCharacteristicsAware,
-} from './product.types';
+export * from './constants';
+export * from './components';
+export * from './providers';

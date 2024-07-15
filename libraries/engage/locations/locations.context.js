@@ -1,6 +1,6 @@
 // @flow
 import { createContext } from 'react';
-import { type Product } from '../product';
+import { type Product } from '../product/product.types';
 import {
   type Location,
   type ReservationFormValues,
