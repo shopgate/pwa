@@ -25,6 +25,10 @@ const container = css({
   bottom: 0,
   background: themeConfig.colors.light,
   width: '100vw',
+  maxWidth: 640,
+  left: 0,
+  right: 0,
+  margin: '0 auto',
   color: `var(--color-text-high-emphasis, ${themeConfig.colors.dark})`,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     position: 'initial',
@@ -33,6 +37,22 @@ const container = css({
     width: '60%',
   },
 }).toString();
+
+const containerFullScreen = css({
+  height: [
+    `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px)`,
+    `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px - var(--safe-area-inset-top))`,
+  ],
+});
+
+const searchBarWrapper = css({
+  backgroundColor: 'white',
+  height: 52,
+  position: 'sticky',
+  width: '100%',
+  top: 0,
+  zIndex: 2,
+});
 
 const progressBarContainer = css({
   position: 'relative',
@@ -100,6 +120,8 @@ const drawerAnimation = {
 export default {
   section,
   container,
+  containerFullScreen,
+  searchBarWrapper,
   progressBarContainer,
   shadow,
   content,
