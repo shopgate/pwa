@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
+import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
 import Sheet from './components/Sheet';
 import styles from './style';
 import transition from '../transition';
@@ -16,7 +17,6 @@ class Characteristic extends PureComponent {
       PropTypes.shape(),
     ]).isRequired,
     disabled: PropTypes.bool.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     highlight: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -107,7 +107,11 @@ class Characteristic extends PureComponent {
     } = this.props;
     const translatedLabel = __('product.pick_an_attribute', [label]);
     const buttonLabel = this.getButtonLabel(translatedLabel);
-    const classes = classNames(styles.button, { [styles.buttonDisabled]: disabled });
+    const classes = classNames(
+      styles.button,
+      { [styles.buttonDisabled]: disabled },
+      'theme__product__characteristic'
+    );
 
     return (
       <div
@@ -122,8 +126,18 @@ class Characteristic extends PureComponent {
         style={transition[state]}
         data-test-id={label}
       >
-        {selected && <div className={styles.label}>{label}</div>}
-        <div className={styles.selection}>{buttonLabel}</div>
+        {selected && <div className={`${styles.label} theme__product__characteristic__label`}>{label}</div>}
+        <div
+          className={`${styles.selection} theme__product__characteristic__selection`}
+          {...selected && { 'data-selected': true }}
+        >
+          {buttonLabel}
+        </div>
+        <ResponsiveContainer breakpoint=">xs" webOnly>
+          <div className={styles.arrow}>
+            <ArrowDropIcon />
+          </div>
+        </ResponsiveContainer>
       </div>
     );
   }
@@ -134,7 +148,7 @@ class Characteristic extends PureComponent {
   render() {
     const { __ } = this.context.i18n();
     const {
-      id, selected, values,
+      id, selected, values, charRef,
     } = this.props;
     const displayLabel = this.props.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
@@ -146,6 +160,7 @@ class Characteristic extends PureComponent {
         </Transition>
         <Sheet
           charId={id}
+          contextRef={charRef}
           items={values}
           label={translatedLabel}
           onClose={this.closeSheet}

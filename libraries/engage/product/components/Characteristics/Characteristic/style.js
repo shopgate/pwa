@@ -17,7 +17,7 @@ const button = css({
 }).toString();
 
 const buttonDisabled = css({
-  color: themeColors.shade4,
+  color: `${themeColors.shade4} !important`,
 }).toString();
 
 const label = css({

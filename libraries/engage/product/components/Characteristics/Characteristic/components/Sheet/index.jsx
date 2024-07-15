@@ -6,7 +6,9 @@ import {
   Menu,
   ResponsiveContainer,
 } from '@shopgate/engage/components';
-import { VariantContext, VariantAvailability, ProductContext } from '@shopgate/engage/product';
+import { ThemeContext } from '@shopgate/engage/core/contexts';
+import { VariantContext, ProductContext } from '@shopgate/engage/product/contexts';
+import { VariantAvailability } from '@shopgate/engage/product/components';
 import { ViewContext } from '@shopgate/engage/components/View';
 
 import Item from '../SheetItem';
@@ -66,10 +68,11 @@ class CharacteristicSheet extends PureComponent {
 
   /**
    * @param {Object} event The event object.
+   * @param {string} itemId The id that was selected
    */
-  handleItemClick = (event) => {
+  handleItemClick = (event, itemId) => {
     event.stopPropagation();
-    this.props.onSelect(event.target.value);
+    this.props.onSelect(itemId);
   }
 
   /**
@@ -116,7 +119,7 @@ class CharacteristicSheet extends PureComponent {
             onClose={this.onClose}
             onDidOpen={this.onDidOpen}
           >
-            <SheetList>
+            <SheetList className="theme__product__characteristic__sheet">
               {items.map((item, index) => (
                 <Item
                   item={item}
@@ -125,28 +128,44 @@ class CharacteristicSheet extends PureComponent {
                   rightComponent={() => this.renderAvailability(item.id)}
                   selected={item.id === selectedValue}
                   ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+                  characteristics={{
+                    ...this.props.selection,
+                    [this.props.charId]: item.id,
+                  }}
                 />
               ))}
             </SheetList>
           </SheetDrawer>
         </ResponsiveContainer>
         <ResponsiveContainer webOnly breakpoint=">xs">
-          <Menu
-            isOpen={open}
-            onClose={this.onClose}
-            contextRef={contextRef}
-          >
-            {items.map((item, index) => (
-              <Item
-                key={item.id}
-                item={item}
-                onClick={this.handleItemClick}
-                rightComponent={() => this.renderAvailability(item.id)}
-                selected={item.id === selectedValue}
-                ref={index === selectedIndex ? this.firstSelectableItemRef : null}
-              />
-            ))}
-          </Menu>
+          <ThemeContext.Consumer>
+            {({ ...contextProps }) => (
+              <Menu
+                isOpen={open}
+                onClose={this.onClose}
+                contextRef={contextRef}
+              >
+                {/* Since the Menu component uses a "portal" internally, we need to manually
+                  transfer the ThemeContext inside, so that children can access it */}
+                <ThemeContext.Provider value={contextProps}>
+                  {items.map((item, index) => (
+                    <Item
+                      key={item.id}
+                      item={item}
+                      onClick={this.handleItemClick}
+                      rightComponent={() => this.renderAvailability(item.id)}
+                      selected={item.id === selectedValue}
+                      ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+                      characteristics={{
+                        ...this.props.selection,
+                        [this.props.charId]: item.id,
+                      }}
+                    />
+                  ))}
+                </ThemeContext.Provider>
+              </Menu>
+            )}
+          </ThemeContext.Consumer>
         </ResponsiveContainer>
       </Fragment>
     );

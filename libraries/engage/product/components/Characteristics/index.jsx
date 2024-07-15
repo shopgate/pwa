@@ -1,14 +1,14 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_VARIANT_SELECT,
   PRODUCT_VARIANT_SELECT_AFTER,
   PRODUCT_VARIANT_SELECT_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { ProductCharacteristics } from '@shopgate/engage/product';
-import { ProductContext } from '../../context';
+} from '@shopgate/engage/product/constants';
+import { ProductCharacteristics } from '@shopgate/engage/product/components';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import Characteristic from './Characteristic';
 import Swatch from './Swatch';
 

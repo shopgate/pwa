@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
-import { VariantSwatch } from '@shopgate/engage/product';
+import { VariantSwatch } from '@shopgate/engage/product/components';
 import styles from './style';
 import transition from '../transition';
 
