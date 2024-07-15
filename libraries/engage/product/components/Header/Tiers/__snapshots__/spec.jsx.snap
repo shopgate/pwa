@@ -11,7 +11,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
     props={null}
   >
     <div
-      className="css-ipvvc7"
+      className="css-ipvvc7 engage__product__header__tiers"
     >
       <Tier
         key="1_2_92.5"

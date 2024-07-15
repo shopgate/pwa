@@ -93,6 +93,7 @@ export const SheetDrawer = Sheet;
 export const SheetList = ({ children }) => children;
 SheetList.Item = ({ children }) => children;
 SheetList.Item.displayName = 'SheetList.Item';
+export const PriceDifference = () => 'PriceDifference';
 
 // HELPERS
 export const I18n = {

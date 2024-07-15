@@ -63,7 +63,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -125,7 +125,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
             visible={true}
           >
             <div
-              className="fooFoo formBuilderField"
+              className="fooFoo engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -149,7 +149,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                 value="default"
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -159,6 +159,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -179,6 +180,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -237,6 +239,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         id="foo_foo"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_foo"
                         onChange={[Function]}
@@ -253,10 +256,11 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_foo"
                           onBlur={[Function]}
@@ -473,7 +477,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -532,7 +536,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             visible={true}
           >
             <div
-              className="fooFoo formBuilderField"
+              className="fooFoo engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -556,7 +560,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -566,6 +570,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -586,6 +591,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -644,6 +650,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         id="foo_foo"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_foo"
                         onChange={[Function]}
@@ -660,10 +667,11 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_foo"
                           onBlur={[Function]}
@@ -898,7 +906,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             visible={true}
           >
             <div
-              className="fooBar formBuilderField"
+              className="fooBar engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -922,7 +930,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -932,6 +940,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -952,6 +961,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       htmlFor="foo_bar"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1010,6 +1020,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         id="foo_bar"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_bar"
                         onChange={[Function]}
@@ -1026,10 +1037,11 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_bar"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_bar"
                           onBlur={[Function]}
@@ -1318,7 +1330,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1377,7 +1389,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
             visible={true}
           >
             <div
-              className="fooFoo formBuilderField"
+              className="fooFoo engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -1401,7 +1413,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 value="abc"
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -1411,6 +1423,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1431,6 +1444,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -1489,6 +1503,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         id="foo_foo"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_foo"
                         onChange={[Function]}
@@ -1505,10 +1520,11 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_foo"
                           onBlur={[Function]}
@@ -1816,7 +1832,7 @@ exports[`<Builder /> should render empty form 1`] = `
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -1871,7 +1887,7 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -2001,7 +2017,7 @@ exports[`<Builder /> should render two text fields 1`] = `
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -2060,7 +2076,7 @@ exports[`<Builder /> should render two text fields 1`] = `
             visible={true}
           >
             <div
-              className="fooFirstName formBuilderField"
+              className="fooFirstName engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -2084,7 +2100,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -2094,6 +2110,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2114,6 +2131,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       htmlFor="foo_firstName"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2172,6 +2190,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         id="foo_firstName"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_firstName"
                         onChange={[Function]}
@@ -2188,10 +2207,11 @@ exports[`<Builder /> should render two text fields 1`] = `
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_firstName"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_firstName"
                           onBlur={[Function]}
@@ -2387,7 +2407,7 @@ exports[`<Builder /> should render two text fields 1`] = `
             visible={true}
           >
             <div
-              className="fooLastName formBuilderField"
+              className="fooLastName engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -2411,7 +2431,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -2421,6 +2441,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2441,6 +2462,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       htmlFor="foo_lastName"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2499,6 +2521,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         id="foo_lastName"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_lastName"
                         onChange={[Function]}
@@ -2515,10 +2538,11 @@ exports[`<Builder /> should render two text fields 1`] = `
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_lastName"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_lastName"
                           onBlur={[Function]}
@@ -2735,7 +2759,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -2797,7 +2821,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
             visible={true}
           >
             <div
-              className="fooFoo formBuilderField"
+              className="fooFoo engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -2821,7 +2845,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 value="default"
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -2831,6 +2855,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2851,6 +2876,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -2909,6 +2935,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         id="foo_foo"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_foo"
                         onChange={[Function]}
@@ -2925,10 +2952,11 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_foo"
                           onBlur={[Function]}
@@ -3184,7 +3212,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
             visible={true}
           >
             <div
-              className="fooBar formBuilderField"
+              className="fooBar engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -3208,7 +3236,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 value="default"
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -3218,6 +3246,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -3238,6 +3267,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       htmlFor="foo_bar"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -3296,6 +3326,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         id="foo_bar"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_bar"
                         onChange={[Function]}
@@ -3312,10 +3343,11 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_bar"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_bar"
                           onBlur={[Function]}
@@ -3640,7 +3672,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
   >
     <form
       action="#"
-      className="foo form"
+      className="foo form engage__form"
       onKeyPress={[Function]}
       onSubmit={[Function]}
     >
@@ -3702,7 +3734,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
             visible={true}
           >
             <div
-              className="fooFoo formBuilderField"
+              className="fooFoo engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -3726,7 +3758,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 value="abc"
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -3736,6 +3768,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -3756,6 +3789,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       htmlFor="foo_foo"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -3814,6 +3848,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         id="foo_foo"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_foo"
                         onChange={[Function]}
@@ -3830,10 +3865,11 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_foo"
                           onBlur={[Function]}
@@ -4089,7 +4125,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
             visible={true}
           >
             <div
-              className="fooBar formBuilderField"
+              className="fooBar engage__form-text formBuilderField"
             >
               <TextField
                 className=""
@@ -4113,7 +4149,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 value="cheat"
               >
                 <div
-                  className="css-e4z0u6 textField"
+                  className="css-e4z0u6 textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
@@ -4123,6 +4159,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       className="css-tnfb18 css-1jyyyen hint"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -4143,6 +4180,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       htmlFor="foo_bar"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -4201,6 +4239,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         id="foo_bar"
                         inputComponent="input"
                         isControlled={true}
+                        maxlength=""
                         multiLine={false}
                         name="foo_bar"
                         onChange={[Function]}
@@ -4217,10 +4256,11 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         <input
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput"
+                          className="css-keangt simpleInput common__simple-input"
                           disabled={false}
                           id="foo_bar"
                           inputMode={null}
+                          maxLength=""
                           min={null}
                           name="foo_bar"
                           onBlur={[Function]}

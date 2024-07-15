@@ -201,9 +201,11 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                       text="-12%"
                     >
                       <div
+                        className="ui-shared__discount-badge"
                         data-test-id="-12%"
                       >
                         <Translate
+                          acceptPlainTextWithPlaceholders={false}
                           className="css-13de4di css-1dtzobl"
                           params={
                             Array [

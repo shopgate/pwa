@@ -54,7 +54,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
               role="text"
             >
               <div
-                className="css-5lxuz4 rating-stars-empty"
+                className="css-4s85e9 rating-stars-empty"
               >
                 <div
                   className="css-1xicacy css-q4owmg"
@@ -74,7 +74,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -110,7 +110,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -146,7 +146,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -182,7 +182,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -218,7 +218,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -258,7 +258,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -294,7 +294,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -330,7 +330,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       viewBox="0 0 24 24"
                     >
                       <svg
-                        className="css-yys9hb "
+                        className="css-yys9hb  common__icon"
                         dangerouslySetInnerHTML={
                           Object {
                             "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs> <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath> <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
@@ -356,6 +356,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
             prominent={true}
           >
             <Translate
+              acceptPlainTextWithPlaceholders={false}
               className="css-a7xi3l css-1ty9mum engage__reviews__rating-count"
               params={
                 Object {
