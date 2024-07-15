@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Lists from '../Lists';
 
+jest.mock('@shopgate/engage/components');
+
 const propertiesNoSubs = [
   {
     name: 'test1',
