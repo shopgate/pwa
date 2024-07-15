@@ -98,10 +98,11 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className="css-1owavz5"
+              className="ui-shared__sheet css-1owavz5"
             >
               <Drawer
                 alwaysActive={false}
@@ -112,7 +113,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -121,7 +122,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -244,18 +245,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                         unmountOnExit={false}
                       >
                         <div
-                          className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -276,6 +266,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -515,10 +506,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className="css-1owavz5"
+              className="ui-shared__sheet css-1owavz5"
             >
               <Drawer
                 alwaysActive={false}
@@ -529,7 +521,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -538,7 +530,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -661,18 +653,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         unmountOnExit={false}
                       >
                         <div
-                          className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -693,6 +674,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -972,10 +954,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -986,7 +969,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -995,7 +978,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-171mdnt common__drawer"
+                  className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -1118,18 +1101,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         unmountOnExit={false}
                       >
                         <div
-                          className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -1150,6 +1122,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -1390,10 +1363,11 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className="css-1owavz5"
+              className="ui-shared__sheet css-1owavz5"
             >
               <Drawer
                 alwaysActive={false}
@@ -1404,7 +1378,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1413,7 +1387,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -1536,18 +1510,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         unmountOnExit={false}
                       >
                         <div
-                          className="function wrapper() {
-  return (0, _glamor.css)({
-    position: 'absolute',
-    bottom: 0,
-    background: (0, _color[\\"default\\"])((0, _styles.getCSSCustomProp)('--color-secondary') || colors.accent).fade(0.6),
-    width: '100%',
-    height: progressBarHeight,
-    overflow: 'hidden',
-    transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    zIndex: '10'
-  }).toString();
-} ui-shared__progress-bar"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -1568,6 +1531,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -1806,10 +1770,11 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -1820,7 +1785,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1973,10 +1938,11 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -1987,7 +1953,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -2135,10 +2101,11 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title=""
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -2149,7 +2116,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
