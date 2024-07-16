@@ -12,6 +12,15 @@
         "path": "/v1/shop/%(shopId)s/has_user_account_deletion?parsed=true",
         "key": "value"
       }
+    },
+    "deleteAccountTarget": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": "nav-menu.logout.after",
+      "params": {
+        "type": "json",
+        "label": "Configuration to show delete account button at given portal positions"
+      }
     }
   },
   "components": [
@@ -19,7 +28,24 @@
       "type": "portals",
       "id": "DeleteAccount",
       "path": "frontend/DeleteAccount/index.jsx",
-      "target": "nav-menu.logout.after"
+      "target": [
+        "nav-menu.logout.before",
+        "nav-menu.logout.after",
+        "nav-menu.shipping.before",
+        "nav-menu.shipping.after",
+        "nav-menu.payment.before",
+        "nav-menu.payment.after",
+        "nav-menu.terms.before",
+        "nav-menu.terms.after",
+        "nav-menu.privacy.before",
+        "nav-menu.privacy.after",
+        "nav-menu.return-policy.before",
+        "nav-menu.return-policy.after",
+        "nav-menu.imprint.before",
+        "nav-menu.imprint.after",
+        "nav-menu.quick-links.items.before",
+        "nav-menu.quick-links.items.after"
+      ]
     },
     {
       "id": "DeleteAccountSubscribers",
@@ -59,6 +85,11 @@
     {
       "id": "pt-PT",
       "path": "frontend/locale/pt-PT.json",
+      "type": "translations"
+    },
+    {
+      "id": "pl-PL",
+      "path": "frontend/locale/pl-PL.json",
       "type": "translations"
     }
   ]
