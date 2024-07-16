@@ -3,6 +3,8 @@ import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import List from './index';
 
+jest.mock('@shopgate/engage/components');
+
 describe('<List />', () => {
   let list = null;
 

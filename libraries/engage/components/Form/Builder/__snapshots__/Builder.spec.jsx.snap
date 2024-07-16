@@ -331,62 +331,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.foo.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -740,59 +685,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.foo.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -1136,98 +1029,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.bar.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "abc",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setVisibility",
-                              },
-                            ],
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.bar.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "abc",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setVisibility",
-                              },
-                            ],
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.bar.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "abc",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setVisibility",
-                              },
-                            ],
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -1593,59 +1395,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.foo.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -2280,59 +2030,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.firstName.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "firstName",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.firstName.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "firstName",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.firstName.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "firstName",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -2611,59 +2309,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.lastName.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "lastName",
-                            "label": "bar",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.lastName.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "lastName",
-                            "label": "bar",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.lastName.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "handleChange": [Function],
-                            "id": "lastName",
-                            "label": "bar",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -3027,62 +2673,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.foo.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -3452,113 +3043,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.bar.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "params": Object {
-                                  "type": "fixed",
-                                  "value": "cheat",
-                                },
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "default",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setValue",
-                              },
-                            ],
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.bar.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "params": Object {
-                                  "type": "fixed",
-                                  "value": "cheat",
-                                },
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "default",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setValue",
-                              },
-                            ],
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.bar.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "params": Object {
-                                  "type": "fixed",
-                                  "value": "cheat",
-                                },
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "default",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setValue",
-                              },
-                            ],
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -3940,62 +3425,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.foo.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.foo.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "foo",
-                            "label": "foo",
-                            "type": "text",
-                            "visible": true,
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
@@ -4365,113 +3795,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         "formName": "foo",
                       }
                     }
-                  >
-                    <Portal
-                      name="foo.bar.formHelper.before"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "params": Object {
-                                  "type": "fixed",
-                                  "value": "cheat",
-                                },
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "default",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setValue",
-                              },
-                            ],
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.bar.formHelper"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "params": Object {
-                                  "type": "fixed",
-                                  "value": "cheat",
-                                },
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "default",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setValue",
-                              },
-                            ],
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                    <Portal
-                      name="foo.bar.formHelper.after"
-                      props={
-                        Object {
-                          "element": Object {
-                            "actions": Array [
-                              Object {
-                                "params": Object {
-                                  "type": "fixed",
-                                  "value": "cheat",
-                                },
-                                "rules": Array [
-                                  Object {
-                                    "context": "foo",
-                                    "data": Array [
-                                      "default",
-                                    ],
-                                    "type": "notIn",
-                                  },
-                                ],
-                                "type": "setValue",
-                              },
-                            ],
-                            "custom": false,
-                            "default": "default",
-                            "handleChange": [Function],
-                            "id": "bar",
-                            "label": "bar",
-                            "type": "text",
-                          },
-                          "errorText": "",
-                          "formName": "foo",
-                        }
-                      }
-                    />
-                  </SurroundPortals>
+                  />
                 </div>
               </FormHelper>
             </div>
