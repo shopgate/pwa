@@ -1,6 +1,5 @@
 import { openPageExtern, openPage } from '@shopgate/pwa-core';
-import { hasWebBridge } from '@shopgate/engage/core/helpers';
-import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import { hasWebBridge, hasSGJavaScriptBridge } from '@shopgate/engage/core/helpers';
 import { isShopLink, sanitizeLink, openExternalLink } from './handleLinks';
 
 jest.mock('@shopgate/pwa-core', () => ({
@@ -12,15 +11,13 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   shopCNAME: 'm.example.com',
 }));
 
-jest.mock('@shopgate/pwa-core/helpers', () => ({
-  logger: {
-    warn: jest.fn(),
-  },
-  hasSGJavaScriptBridge: jest.fn(),
-}));
 jest.mock('@shopgate/engage/core/helpers', () => ({
   hasWebBridge: jest.fn(),
   hasNewServices: jest.fn(() => false),
+  hasSGJavaScriptBridge: jest.fn(),
+  logger: {
+    warn: jest.fn(),
+  },
 }));
 
 global.window.open = jest.fn();
