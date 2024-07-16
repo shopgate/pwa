@@ -94,6 +94,7 @@ export const SheetList = ({ children }) => children;
 SheetList.Item = ({ children }) => children;
 SheetList.Item.displayName = 'SheetList.Item';
 export const PriceDifference = () => 'PriceDifference';
+export const TaxDisclaimer = () => 'TaxDisclaimer';
 
 // HELPERS
 export const I18n = {
