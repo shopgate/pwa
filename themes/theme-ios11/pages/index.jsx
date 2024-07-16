@@ -53,6 +53,7 @@ import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import ForgotPassword from './ForgotPassword';
 import Account from './Account';
@@ -103,6 +104,7 @@ const Pages = ({ store }) => {
                 <Portal name={APP_GLOBALS} />
                 <Viewport>
                   <ModalContainer component={Dialog} />
+                  <PushOptInModal />
                   <Toaster render={props => <SnackBar {...props} />} />
                   <FavoritesListChooser />
                   <FulfillmentSlotProvider />

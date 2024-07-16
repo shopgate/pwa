@@ -2,15 +2,19 @@ import {
   APP_FEATURE_PUSH_OPT_IN,
   APP_FEATURE_COOKIE_CONSENT,
 } from '@shopgate/engage/core/constants';
-import { hasSGJavaScriptBridge, hasWebBridge } from '@shopgate/engage/core/helpers';
+import {
+  hasSGJavaScriptBridge,
+  hasWebBridge,
+  hasNewServices,
+} from '@shopgate/engage/core/helpers';
 
 /**
  * Determines if the app supports the push opt-in feature
  * @returns {boolean}
  */
 export const appSupportsPushOptIn = () => {
-  if (hasWebBridge()) {
-    // Not push notifications in browser mode
+  if (hasWebBridge() || hasNewServices()) {
+    // Not push notifications in browser mode. Deactivated for new system for now
     return false;
   }
 

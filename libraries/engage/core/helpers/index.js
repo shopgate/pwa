@@ -9,6 +9,7 @@ import {
 
 export * from './environment';
 export * from './appFeatures';
+export * from './appPermissions';
 export * from './baseUrl';
 export * from './bridge';
 export { isBeta } from '../config/isBeta';

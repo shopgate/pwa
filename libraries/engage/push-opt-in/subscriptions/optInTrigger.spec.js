@@ -6,9 +6,15 @@ import { event } from '@shopgate/engage/core';
 import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_DENIED,
+  PERMISSION_STATUS_GRANTED,
   APP_DID_START,
 } from '@shopgate/engage/core/constants';
-import { appSupportsPushOptIn, logger } from '@shopgate/engage/core/helpers';
+import {
+  appSupportsPushOptIn,
+  hasSGJavaScriptBridge,
+  createMockedPermissions,
+  logger,
+} from '@shopgate/engage/core/helpers';
 import {
   increaseAppStartCount,
   setLastPopupTimestamp,
@@ -90,6 +96,9 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   logger: {
     error: jest.fn(),
   },
+  hasSGJavaScriptBridge: jest.fn(() => true),
+  hasWebBridge: jest.fn(() => false),
+  createMockedPermissions: jest.fn(() => 'mockedPermissions'),
 }));
 
 describe('Push OptIn Subscriptions', () => {
@@ -340,6 +349,23 @@ describe('Push OptIn Subscriptions', () => {
           // 8th counter increase -> no opt-in due to max repeats reached
           await callback(callbackParams);
           expect(showPushOptInModal).toHaveBeenCalledTimes(3);
+        });
+
+        it('should inject a dispatch mock in development', async () => {
+          hasSGJavaScriptBridge.mockReturnValueOnce(false);
+
+          setMockedConfig({
+            [configType]: {
+              value: 1,
+            },
+          });
+
+          await callback(callbackParams);
+
+          expect(getAppPermissions).toHaveBeenCalled();
+          expect(getAppPermissions).toHaveBeenCalledWith([PERMISSION_ID_PUSH], 'mockedPermissions');
+          expect(createMockedPermissions).toHaveBeenCalledTimes(1);
+          expect(createMockedPermissions).toHaveBeenCalledWith(PERMISSION_STATUS_GRANTED);
         });
       });
     }

@@ -540,6 +540,7 @@
     "access_denied": {
       "settings_button": "Acesse configurações",
       "camera_message": "Esta funcionalidade requer acesso à sua câmara. Por favor autorize o acesso nas configurações.",
+      "push_message": "Notificações anterioresEsta funcionalidade requer acesso a notificações push. Autorize o acesso nas definições.",
       "geolocation_message": "Para encontrar lojas perto de você, acesse Configurações e ative as permissões de localização."
     }
   },
@@ -805,5 +806,11 @@
     "title": "Avaliação da aplicação",
     "message": "Gosta da nossa aplicação? Teremos todo o prazer em receber uma classificação!",
     "rejectionApprovalMessage": "Gostaria de nos dar o seu feedback? Isto irá ajudar-nos a melhorar ainda mais a aplicação."
+  },
+  "pushOptInModal": {
+    "title": "Receber cupões e ofertas exclusivas",
+    "buttonAllow": "Ativar as notificações",
+    "buttonDeny": "Não quero notificações",
+    "message": "Ativar as notificações para que possamos enviar-lhe notificações push sobre novas ofertas, cupões exclusivos e muito mais."
   }
 }
