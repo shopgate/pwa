@@ -11,11 +11,16 @@ jest.mock('@shopgate/engage/a11y', () => ({
 jest.mock('@shopgate/engage/reviews', () => ({
   Reviews: ({ children }) => children,
 }));
-jest.mock('@shopgate/engage/product', () => ({
+jest.mock('@shopgate/engage/product/components', () => ({
   ProductProperties: ({ children }) => children,
   RelationsSlider: ({ children }) => children,
   Description: ({ children }) => children,
   ProductUnitQuantityPicker: ({ children }) => children,
+  OrderQuantityHint: () => null,
+  Options: () => null,
+  Characteristics: () => null,
+}));
+jest.mock('@shopgate/engage/product/contexts', () => ({
   ProductContext: {
     Provider: ({ children }) => children,
   },
@@ -35,8 +40,6 @@ jest.mock('@shopgate/pwa-ui-shared/TaxDisclaimer', () => () => null);
 
 jest.mock('../Media', () => () => null);
 jest.mock('../Header', () => () => null);
-jest.mock('../Characteristics', () => () => null);
-jest.mock('../Options', () => () => null);
 jest.mock('../AppBar', () => () => null);
 jest.mock('./connector', () => Component => Component);
 
