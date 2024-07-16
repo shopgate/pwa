@@ -82,7 +82,8 @@ class FormElement extends Component {
       <div className={classNames(
         style.formElement,
         className,
-        'formElement', {
+        'formElement',
+        'ui-shared__form-element', {
           disabled,
         }
       )}

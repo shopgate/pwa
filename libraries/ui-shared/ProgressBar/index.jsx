@@ -117,7 +117,7 @@ class ProgressBar extends Component {
       >
         {state => (
           <div
-            className={styles.wrapper()}
+            className={`${styles.wrapper()} ui-shared__progress-bar`}
             style={transitionStyles[state]}
           >
             <div className={animationClasses.join(' ')} />

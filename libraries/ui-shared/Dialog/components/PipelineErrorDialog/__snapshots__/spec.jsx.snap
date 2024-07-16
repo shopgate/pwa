@@ -20,7 +20,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
       aria-modal={true}
-      className="css-1oc7wvq"
+      className="css-1oc7wvq ui-material__base-dialog"
       data-test-id="basicDialog"
       role="alertdialog"
     >
@@ -149,7 +149,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
       aria-modal={true}
-      className="css-1oc7wvq"
+      className="css-1oc7wvq ui-material__base-dialog"
       data-test-id="basicDialog"
       role="alertdialog"
     >

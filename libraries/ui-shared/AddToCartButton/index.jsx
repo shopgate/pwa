@@ -191,7 +191,7 @@ class AddToCartButton extends Component {
     return (
       <button
         data-test-id="addToCartButton"
-        className={`${this.props.className} ${className} ${buttonStyle}`}
+        className={`ui-shared__add-to-cart-button ${this.props.className} ${className} ${buttonStyle}`}
         onClick={this.handleClick}
         aria-hidden={this.props['aria-hidden']}
         aria-label={this.props['aria-label']}

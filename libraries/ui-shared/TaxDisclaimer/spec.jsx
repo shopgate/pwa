@@ -2,6 +2,14 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import I18n from '@shopgate/pwa-common/components/I18n';
 
+jest.mock('@shopgate/engage/core/hooks/useWidgetSettings', () => ({
+  useWidgetSettings: jest.fn().mockReturnValue({
+    show: null,
+    hint: '*',
+    text: null,
+  }),
+}));
+
 describe('<TaxDisclaimer />', () => {
   afterEach(() => {
     jest.resetModules();

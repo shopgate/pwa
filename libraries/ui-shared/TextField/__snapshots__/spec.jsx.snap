@@ -23,7 +23,7 @@ exports[`<TextField /> should focus the input 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -202,7 +202,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -381,7 +381,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -560,7 +560,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -739,7 +739,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   value="FooBar"
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -918,7 +918,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -1103,7 +1103,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -1282,7 +1282,7 @@ exports[`<TextField /> should show the error message 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -1467,7 +1467,7 @@ exports[`<TextField /> should show the hint text 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText="This is the hint text"
@@ -1653,7 +1653,7 @@ exports[`<TextField /> should show the label 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
@@ -1853,7 +1853,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField"
+    className="css-e4z0u6 textField ui-shared__text-field"
   >
     <Hint
       hintText=""
