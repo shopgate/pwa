@@ -656,6 +656,7 @@
         "modalImageURL": null,
         "modalImageSVG": null,
         "showRequiredCookiesButton": false,
+        "showComfortCookiesToggle": false,
         "settingsComfortText": null,
         "settingsComfortTitle": null,
         "settingsStatisticsText": null,

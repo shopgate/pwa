@@ -28,6 +28,7 @@ const PrivacySettings = ({
       settingsStatisticsTitle,
       settingsRequiredText,
       settingsRequiredTitle,
+      showComfortCookiesToggle,
     } = {},
   } = appConfig;
 
@@ -55,18 +56,20 @@ const PrivacySettings = ({
   return (
     <Grid component="div" className={styles.container}>
       <Grid.Item component="div" className={styles.item}>
-        <Grid.Item component="div" className={styles.switchWrapper}>
-          <Switch
-            onChange={handleChangeComfortCookies}
-            checked={areComfortCookiesSelected}
-            a11yFallbackText={`${i18n.text(settingsComfortTitle || 'cookieSettings.comfortTitle')}. ${i18n.text(settingsComfortText || 'cookieSettings.comfort')}`}
-          >
-            <span className={styles.title}>
-              {<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
-            </span>
-            <span>{<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}</span>
-          </Switch>
-        </Grid.Item>
+        {showComfortCookiesToggle ? (
+          <Grid.Item component="div" className={styles.switchWrapper}>
+            <Switch
+              onChange={handleChangeComfortCookies}
+              checked={areComfortCookiesSelected}
+              a11yFallbackText={`${i18n.text(settingsComfortTitle || 'cookieSettings.comfortTitle')}. ${i18n.text(settingsComfortText || 'cookieSettings.comfort')}`}
+            >
+              <span className={styles.title}>
+                {<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
+              </span>
+              <span>{<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}</span>
+            </Switch>
+          </Grid.Item>
+        ) : null}
         <Grid.Item component="div" className={styles.switchWrapper}>
           <Switch
             onChange={handleChangeStatisticsCookies}
