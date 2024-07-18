@@ -1,0 +1,326 @@
+{
+ "common": {
+    "countdown": "{days, plural, =0 {Totuși {time}} =1 {# Zi {time}} other {# Zile {time}}}",
+    "load_more": "Încarcă mai mult",
+    "cancel": "Anulează",
+    "submit": "Trimite",
+    "undo": "Undo",
+    "required": "Obligatoriu *",
+    "please_choose": "Vă rugăm să alegeți",
+    "show_products": "Arată produsele",
+    "back": "Înapoi",
+    "close": "Închide",
+    "products": "Produse"
+  },
+"titles": {
+    "categories": "Categorii",
+    "filter": "Filtru",
+    "cart": "Coș de cumpărături",
+    "shipping": "Transport maritim",
+    "reviews": "Recenzii",
+    "favorites": "Listă de supraveghere",
+    "scanner": "Scanner",
+    "back_in_stock": "Notificări"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Notificări active",
+      "past": "Notificări anterioare"
+    },
+    "empty_list_reminder": "Nu ați configurat nicio notificare",
+    "get_notified": "Anunță-mă când articolul este disponibil",
+    "we_will_remind_you": "Veți fi notificat când articolul este din nou disponibil",
+    "add_back_in_stock_success_modal": {
+      "title": "Notificare adăugată!",
+      "message": "Vă vom trimite o notificare push atunci când produsul este disponibil din nou. Puteți gestiona aceste notificări prin intermediul meniului."
+    },
+    "rationale": {
+      "message": "Vă rugăm să permiteți notificările push în etapa următoare, astfel încât să vă putem anunța când produsul este din nou disponibil.",
+      "confirm": "Permiteți notificările"
+    }
+  },
+   "favorites": {
+    "add": "Adăugare la lista de favorite",
+    "added": "Produsul a fost adăugat la lista de favorite",
+    "continue": "Continuă cumpărăturile",
+    "empty": "Nu aveți încă niciun articol pe lista de favorite",
+    "error_add": "The product could not be added to the watchlist",
+    "error_remove": "Produsul nu a putut fi eliminat din watchlist",
+    "error_limit": "Numărul permis de produse din lista de supraveghere a fost depășit.",
+    "error_general": "Lista de supraveghere nu a putut fi salvată",
+    "remove": "Ștergere din lista de monitorizare",
+    "removed": "Eliminat din lista de monitorizare",
+    "add_list_modal": {
+      "title": "Crearea unei noi liste de supraveghere",
+      "dismiss": "Anulează",
+      "confirm": "Confirmați",
+      "message": "Numele noii dvs. liste de supraveghere",
+      "label": "Nume"
+    },
+    "rename_list_modal": {
+      "title": "Schimbă numele listei de supraveghere",
+      "dismiss": "Anulează",
+      "confirm": "Confirmați",
+      "message": "Noul nume al listei dvs. de supraveghere",
+      "label": "Nume"
+    },
+    "delete_list_modal": {
+      "title": "Șterge lista de supraveghere",
+      "message": "Chiar doriți să ștergeți watchlist-ul \"{name}\"?"
+    },
+    "add_list": "Creați o listă nouă",
+    "errors": {
+      "invalid_name": "Vă rugăm să introduceți un nume complet pentru lista de supraveghere"
+    },
+    "rename_list": "Redenumire",
+    "remove_list": "Șterge",
+    "add_to_list": "Adaugă la listă",
+    "remove_from_list": "Șterge din listă",
+    "edit_lists": "Editează lista",
+    "fo_method_chooser": {
+      "title": "Selectați o metodă de comandă"
+    },
+    "list_chooser": {
+      "title": "Selectați o listă de monitorizare",
+      "add": "Adaugă",
+      "remove": "Șterge"
+    },
+    "modal": {
+      "message": "Pentru a adăuga acest produs la coșul de cumpărături, vă rugăm să selectați variantele.",
+      "confirm": "Selectați variantele"
+    },
+    "open_list": "Deschide lista.",
+    "close_list": "Închide lista.",
+    "load_more_button": "Încarcă mai multe articole"
+  },
+    "filter": {
+    "sort": {
+      "default": "Sortare",
+      "most_popular": "Cele mai bune rezultate",
+      "price_desc": "Cel mai mare preț mai întâi",
+      "price_asc": "Cel mai mic preț mai întâi"
+    },
+    "apply": "Efectuat",
+    "more": "mai mult",
+    "reset": "Resetare",
+    "remove": "{filter} eliminarea filtrului",
+    "edit": "{filter} editează filtrul",
+    "filter_by": "Filtrează după {label}",
+    "label": {
+      "price": "Preț",
+      "category": "Categorie",
+      "manufacturer": "Marca"
+    }
+  },
+  "price": {
+    "from": "De la {price}",
+    "range": "Preț de la {fromPrice} la {toPrice}",
+    "range_from": "Interval de preț de la",
+    "range_to": "Interval de preț până la",
+    "tier": {
+      "set": "{from} piesă: {price}",
+      "range": "{from} sau mai mult: {price}"
+    },
+    "msrp": "RRP",
+    "label": "Preț {price}.",
+    "label_old_price": "Prețul vechi {price}."
+  },
+  "product": {
+    "description_heading": "Descriere",
+    "pick_an_attribute": "{0} selectați",
+    "tax_disclaimer": "* Inclusiv TVA, eventual plus costuri de expediere",
+    "adding_item": "{count, plural, =1 {{count} Produs va fi adăugat} other {{count} Produse vor fi adăugate}}",
+    "pick_option_first": "Selectați mai întâi o opțiune. {option}",
+    "fill_out_required_input_first": "Completați mai întâi toate câmpurile obligatorii.",
+    "add_to_cart": "Adăugați la coș",
+    "no_more_found": "Articolul: \"{name}\" este în prezent în afara stocului.",
+    "quantity": "Cantitate",
+    "minOrderQuantity": "Cantitate minimă de comandă:{quantity}",
+    "maxOrderQuantity": "Cantitate maximă de comandă:{quantity}",
+    "available": {
+      "at": "Disponibil la {startDate, date, DD} {startDate, date, MMM} la {startDate, time, short} ora",
+      "until": "Disponibil până la {endDate, date, DD} {endDate, date, MMM} la {endDate, time, short} ora",
+      "not": "Momentan nu este disponibil",
+      "not_search_similar": "{name} nu este disponibil. Căutați produse similare?"
+    },
+    "relations": {
+      "showMore": "Mai mult"
+    },
+    "sections": {
+      "information": "Informații despre produs",
+      "options": "Selectați opțiuni",
+      "description": "Descriere",
+      "properties": "Proprietăți",
+      "ratings": "Ratinguri",
+      "purchase": "Cumpărați produsul",
+      "quantity": "Cantitate"
+    },
+      "displayGroups": {
+      "general": "Generalități",
+      "features": "Caracteristici",
+      "pricing": "Informații despre preț",
+      "properties": "Proprietăți"
+    }
+  },
+  "category": {
+    "error": {
+      "title": "Oops",
+      "not_found": "Categoria nu a fost găsită"
+    },
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Nu s-au găsit produse."
+    },
+    "sections": {
+      "categories": "Categorii",
+      "products": "Produse"
+    },
+    "showAllProducts": {
+      "label": "Arată toate produsele"
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Căutarea dvs. pentru \"{searchPhrase}\" nu a dat niciun rezultat."
+    },
+    "placeholder": "Căutare",
+    "close": "Sfârșitul căutării",
+    "reset": "Resetare căutare"
+  },
+  "transport": {
+    "unknown": "plus transport maritim",
+    "free": "Livrare gratuită",
+    "free_short": "Gratuit",
+    "cost": "{preț} Transport maritim"
+  },
+  "liveshopping": {
+    "discount_badge": "{0}% Salvați"
+  },
+  "modal": {
+    "confirm": "Confirmă",
+    "dismiss": "Anulare",
+    "ok": "Bine",
+    "title_error": "Oops!",
+    "body_error": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou."
+  },
+  "cart": {
+    "subtotal": "Subtotal",
+    "total": "Total coș de cumpărături",
+    "discount": "Reducere",
+    "discount_with_label": "Reducere ({label})",
+    "checkout": "Treceți la checkout",
+    "remove": "Eliminați",
+    "edit": "Editează",
+    "empty": "Coșul dvs. de cumpărături este gol.",
+    "continue": "Continuă cumpărăturile",
+    "redeem_coupon": "Introduceți codul voucherului",
+    "submit_coupon": "Trimiteți codul voucherului",
+    "delete_coupon": "Șterge codul voucherului",
+    "coupon_code": "Cod",
+    "default_coupon_label": "Cupon",
+    "coupon_was_added": "Cuponul a fost adăugat!",
+    "coupons_not_supported": "Răscumpărați cupoanele și cardurile cadou în etapa următoare",
+    "free_shipping": "Livrare gratuită",
+    "message_type_info": "Informații",
+    "message_type_error": "Eroare",
+    "message_type_warning": "Atenționare"
+  },
+  "login": {
+    "headline": "Bine ați venit!",
+    "subline": "Vă rugăm să vă conectați pentru a continua",
+    "email": "Email",
+    "password": "Parolă",
+    "forgot_password": "V-ați uitat parola?",
+    "forgot_password_popup": "Vă rugăm să utilizați site-ul desktop pentru a vă reseta parola.",
+    "button": "Conectați-vă",
+    "no_account": "Nu aveți încă un cont?",
+    "register": "Începeți aici.",
+    "logout_message": "Ați fost deconectat.",
+    "error": "Numele de utilizator sau parola nu sunt corecte"
+  },
+   "navigation": {
+    "login_register": "Conectați-vă",
+    "your_account": "Contul meu",
+    "home": "Pagina de pornire",
+    "categories": "Categorii",
+    "favorites": "Lista de supraveghere",
+    "my_orders": "Comenzile mele",
+    "cart": "Coș de cumpărături",
+    "scanner": "Scanner",
+    "shipping": "Metode de expediere",
+    "about": "Amprenta",
+    "payment": "Metode de plată",
+    "terms": "Termeni și condiții",
+    "privacy": "Protecția datelor",
+    "welcome_message": "Bună ziua {name}",
+    "return_policy": "Politica de anulare",
+    "logout": "Deconectare",
+    "menuSubHeader": {
+      "more": "Mai multe",
+      "about": "Despre noi"
+    },
+    "back_in_stock": "Notificări",
+    "back": "Înapoi la {title}",
+    "open_menu": "Deschide meniul"
+  },
+  "reviews": {
+    "rating": "Evaluare",
+    "no_reviews": "Scrieți prima recenzie.",
+    "review_count": "({count} {count, plural, =1 {Evaluare} other {Recenzii}})",
+    "button_add": "Evaluați produsul",
+    "button_all": "Toate {count} evaluările ",
+    "author": "de la {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {Stea} other {Stele}} de la {maxRate}.",
+    "review_form_rate": "Evaluați acest produs:",
+    "review_form_author": "Nume",
+    "review_form_title": "Titlu (opțional)",
+    "review_form_text": "Recenzia dumneavoastră (opțional)",
+    "review_form_error_author_empty": "Vă rugăm să introduceți un nume.",
+    "review_form_rate_error": "Câte stele dați?",
+    "review_form_error_length": "Maxim {length} caractere permise.",
+    "press_to_rate_with_x_stars": "Alegeți să evaluați cu {rate} {rate, plural, =1 {o Stea} alte {Stele}}",
+    "success_message": "Vă mulțumim pentru evaluare!"
+  },
+  "scanner": {
+    "instructions": "Vă rugăm să poziționați codul de bare sau codul QR în centru. Recunoașterea este automată.",
+    "noResult": {
+      "qrCode": "Nu am putut găsi un rezultat pentru acest cod QR.",
+      "barCode": "Product not found."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Deschideți setările",
+      "camera_message": "Această funcție necesită acces la cameră. Vă rugăm să permiteți accesul în setări.",
+      "push_message": "Ați dezactivat notificările push pentru această aplicație. Vă rugăm să accesați setările dispozitivului dvs. pentru a le activa.",
+      "geolocation_message": "Avem nevoie de acces la locație pentru a afișa magazinele din apropiere."
+    }
+  },
+  "error": {
+    "general": "Problemă de conectare. Vă rugăm să verificați conexiunea la internet sau să încercați din nou mai târziu."
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2-cifre"
+      },
+      "MMM": {
+        "month": "scurt"
+      }
+    }
+  },
+   "appRating": {
+    "yes": "Da",
+    "no": "Nu",
+    "title": "Evaluați aplicația",
+    "message": "Vă place aplicația noastră? Așteptăm cu nerăbdare un rating!",
+    "rejectionApprovalMessage": "Doriți să ne oferiți feedback? Acest lucru ne ajută să îmbunătățim în continuare aplicația."
+  },
+  "pushOptInModal": {
+    "title": "Primiți cupoane și oferte exclusive",
+    "buttonAllow": "Activați notificările",
+    "buttonDeny": "Nu doresc notificări",
+    "message": "Activați notificările, astfel încât să vă putem trimite notificări push despre oferte noi, cupoane exclusive și multe altele."
+  }
+}
