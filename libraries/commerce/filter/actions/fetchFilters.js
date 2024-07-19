@@ -11,12 +11,16 @@ import processParams from './helpers/processParams';
 
 /**
  * Retrieves the available filters for a list of products.
+ * @param {Object} options The options for the getProducts request.
+ * @param {Object} [options.filters = null] Filters object for the request
  * @returns {Function} A redux thunk
  */
-function fetchFilters() {
+function fetchFilters({
+  filters = null,
+} = {}) {
   return (dispatch, getState) => {
     const state = getState();
-    const params = buildFilterParams(state);
+    const params = buildFilterParams(state, filters);
 
     const hash = generateResultHash({
       pipeline: SHOPGATE_CATALOG_GET_FILTERS,

@@ -33,9 +33,13 @@ describe('Filter subscriptions', () => {
     it('should call get filters when stream emits', () => {
       callback({ dispatch });
       expect(fetchFilters).toHaveBeenCalledTimes(1);
-      expect(fetchFilters).toHaveBeenCalledWith();
+      expect(fetchFilters).toHaveBeenCalledWith({
+        filters: null,
+      });
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(fetchFilters());
+      expect(dispatch).toHaveBeenCalledWith(fetchFilters({
+        filters: null,
+      }));
     });
   });
 });

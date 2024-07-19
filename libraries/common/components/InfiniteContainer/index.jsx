@@ -462,7 +462,7 @@ class InfiniteContainer extends Component {
     );
 
     return (
-      <div ref={(elementRef) => { this.domElement = elementRef; }}>
+      <div ref={(elementRef) => { this.domElement = elementRef; }} className="common__infinite-container">
         <div>
           {content}
         </div>

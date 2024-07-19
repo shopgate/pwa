@@ -62,7 +62,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
     <img
       alt={null}
       aria-label={null}
-      className="css-f45h63"
+      className="css-f45h63 common__image"
       data-test-id="image"
       role="presentation"
       src="foo/bar"

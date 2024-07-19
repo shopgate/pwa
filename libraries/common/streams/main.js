@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/buffer';
+import 'rxjs/add/operator/bufferTime';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
@@ -11,6 +12,7 @@ import 'rxjs/add/operator/zip';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/pairwise';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/withLatestFrom';
