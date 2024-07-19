@@ -3,6 +3,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Builder } from '.';
 
+jest.mock('@shopgate/engage/components');
+
 describe('<Builder />', () => {
   it('should render empty form', () => {
     const wrapper = mount((

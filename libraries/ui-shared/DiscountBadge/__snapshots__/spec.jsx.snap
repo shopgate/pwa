@@ -6,6 +6,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
   data-test-id="foo"
 >
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     className="css-13de4di "
     params={
       Array [
@@ -25,6 +26,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
   data-test-id="SAVE {0}%"
 >
   <Translate
+    acceptPlainTextWithPlaceholders={false}
     className="css-13de4di "
     params={
       Array [

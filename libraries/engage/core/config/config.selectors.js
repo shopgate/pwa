@@ -1,13 +1,11 @@
-// @flow
-import { createSelector, type Selector } from 'reselect';
-import { type ConfigState, type MerchantSettings } from './config.types';
+import { createSelector } from 'reselect';
 
 /**
  * Retrieves the config state from the store.
  * @param {Object} state The current application state.
  * @return {Object} The locations state.
  */
-function getState(state): ConfigState {
+function getState(state) {
   return state?.settings?.config || {};
 }
 
@@ -15,7 +13,7 @@ function getState(state): ConfigState {
  * Creates the selector that retrieves the config.
  * @returns {Function}
  */
-export function makeGetConfig(): Selector<any, ConfigState> {
+export function makeGetConfig() {
   /**
    * @param {Object} state The application state.
    * @returns {Object}
@@ -30,7 +28,7 @@ export function makeGetConfig(): Selector<any, ConfigState> {
  * Creates the selector that retrieves the merchant settings.
  * @returns {Function}
  */
-export function makeGetMerchantSettings(): Selector<any, MerchantSettings> {
+export function makeGetMerchantSettings() {
   /**
    * @param {Object} state The application state.
    * @returns {Object}
@@ -46,20 +44,20 @@ export function makeGetMerchantSettings(): Selector<any, MerchantSettings> {
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getShopSettings = (state: any) => state?.settings?.config?.shopSettings || {};
+export const getShopSettings = state => state?.settings?.config?.shopSettings || {};
 
 /**
  * Selector that retrieves whether the config is still fetching.
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getConfigFetching = (state: any) => state?.settings?.config?.isFetching || false;
+export const getConfigFetching = state => state?.settings?.config?.isFetching || false;
 
 /**
  * Creates a selector that retrieves the enabled fulfillment paths from the merchant settings.
  * @returns {Function}
  */
-export function makeGetEnabledFulfillmentMethods(): Selector<any, string[]> {
+export function makeGetEnabledFulfillmentMethods() {
   const getMerchantSettings = makeGetMerchantSettings();
 
   return createSelector(
@@ -96,12 +94,12 @@ export function makeGetEnabledFulfillmentMethodsCount() {
  * Creates a selector that retrieves the enabled fulfillment paths.
  * @returns {Function}
  */
-export function makeGetFulfillmentPaths(): Selector<any, string[]> {
+export function makeGetFulfillmentPaths() {
   const getMerchantSettings = makeGetMerchantSettings();
 
   return createSelector(
     getMerchantSettings,
-    (settings): string[] => {
+    (settings) => {
       if (!settings || Object.keys(settings).length === 0) {
         return [];
       }

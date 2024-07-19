@@ -5,6 +5,7 @@ import {
   RESET_APP_REDUCERS,
   hasWebBridge,
 } from '@shopgate/engage/core';
+import backInStock from '@shopgate/engage/back-in-stock/reducers';
 import checkout from '@shopgate/engage/checkout/reducers';
 import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
@@ -14,6 +15,7 @@ import router from '@shopgate/pwa-common/reducers/router';
 import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
+import pushOptIn from '@shopgate/engage/push-opt-in/reducers';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
@@ -37,6 +39,7 @@ persistedReducers.set([
   'url',
   'user',
   'appRating',
+  'pushOptIn.optInTrigger',
   ...(hasWebBridge() ? 'menu' : []),
 ]);
 
@@ -55,6 +58,7 @@ const reducers = combineReducers({
   router,
   cart,
   category,
+  backInStock,
   checkout,
   client,
   ...extensions && { extensions: combineReducers(extensions) },
@@ -72,6 +76,7 @@ const reducers = combineReducers({
   url,
   user,
   appRating,
+  pushOptIn,
 });
 
 export default reducers;

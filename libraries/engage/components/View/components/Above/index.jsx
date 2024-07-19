@@ -17,7 +17,7 @@ function ViewAbove() {
           height: `calc(${top}px + var(--safe-area-inset-top))`,
         };
 
-        return <div aria-hidden style={styles} />;
+        return <div aria-hidden style={styles} className="engage__view__above" />;
       }}
     </ViewContext.Consumer>
   );

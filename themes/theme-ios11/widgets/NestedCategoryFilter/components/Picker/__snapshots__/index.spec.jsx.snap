@@ -98,10 +98,11 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className="css-1owavz5"
+              className="ui-shared__sheet css-1owavz5"
             >
               <Drawer
                 alwaysActive={false}
@@ -112,7 +113,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -121,7 +122,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
+                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -132,89 +133,95 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 >
                   <Header
                     allowClose={true}
+                    handleChange={[Function]}
                     onToggleClose={[Function]}
                     shadow={false}
+                    showSearch={false}
                     title="Picker Label"
                   >
-                    <Grid
-                      className="css-1hncgty"
-                      component="div"
-                      wrap={false}
+                    <div
+                      className=""
                     >
-                      <div
-                        className="css-1hncgty css-h7r55a"
+                      <Grid
+                        className="css-1hncgty"
+                        component="div"
+                        wrap={false}
                       >
-                        <button
-                          aria-label="common.close"
-                          className="css-r4gt00"
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="css-1hncgty css-h7r55a common__grid"
                         >
-                          <Ripple
-                            className="css-ugy6xl"
-                            color="#000"
-                            disabled={false}
-                            fill={false}
+                          <button
+                            aria-label="common.close"
+                            className="css-r4gt00"
                             onClick={[Function]}
-                            onComplete={[Function]}
-                            overflow={false}
-                            size={null}
+                            type="button"
                           >
-                            <div
-                              className="ui-shared__ripple css-ugy6xl"
-                              data-test-id="Ripple"
+                            <Ripple
+                              className="css-ugy6xl"
+                              color="#000"
+                              disabled={false}
+                              fill={false}
                               onClick={[Function]}
-                              style={null}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
                             >
-                              <Cross
-                                size={24}
+                              <div
+                                className="ui-shared__ripple css-ugy6xl"
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
                               >
-                                <Icon
-                                  className=""
-                                  color={null}
-                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                <Cross
                                   size={24}
-                                  viewBox="0 0 24 24"
                                 >
-                                  <svg
-                                    className="css-yys9hb "
-                                    dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                      }
-                                    }
-                                    style={
-                                      Object {
-                                        "fill": null,
-                                        "fontSize": 24,
-                                      }
-                                    }
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    size={24}
                                     viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  />
-                                </Icon>
-                              </Cross>
-                            </div>
-                          </Ripple>
-                        </button>
-                        <GridItem
-                          className="css-1mjy0de"
-                          component="div"
-                          grow={1}
-                          role="heading"
-                          shrink={1}
-                          tabIndex={0}
-                        >
-                          <div
-                            className="css-1mjy0de css-1gs0ko2"
+                                  >
+                                    <svg
+                                      className="css-yys9hb  common__icon"
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": 24,
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Cross>
+                              </div>
+                            </Ripple>
+                          </button>
+                          <GridItem
+                            className="css-1mjy0de"
+                            component="div"
+                            grow={1}
                             role="heading"
+                            shrink={1}
                             tabIndex={0}
                           >
-                            Picker Label
-                          </div>
-                        </GridItem>
-                      </div>
-                    </Grid>
+                            <div
+                              className="css-1mjy0de css-1gs0ko2"
+                              role="heading"
+                              tabIndex={0}
+                            >
+                              Picker Label
+                            </div>
+                          </GridItem>
+                        </div>
+                      </Grid>
+                    </div>
                   </Header>
                   <div
                     className="css-13azwyo"
@@ -238,7 +245,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                         unmountOnExit={false}
                       >
                         <div
-                          className="css-guf25f"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -259,6 +266,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -374,7 +382,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -498,10 +506,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className="css-1owavz5"
+              className="ui-shared__sheet css-1owavz5"
             >
               <Drawer
                 alwaysActive={false}
@@ -512,7 +521,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -521,7 +530,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
+                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -532,89 +541,95 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <Header
                     allowClose={true}
+                    handleChange={[Function]}
                     onToggleClose={[Function]}
                     shadow={false}
+                    showSearch={false}
                     title="Picker Label"
                   >
-                    <Grid
-                      className="css-1hncgty"
-                      component="div"
-                      wrap={false}
+                    <div
+                      className=""
                     >
-                      <div
-                        className="css-1hncgty css-h7r55a"
+                      <Grid
+                        className="css-1hncgty"
+                        component="div"
+                        wrap={false}
                       >
-                        <button
-                          aria-label="common.close"
-                          className="css-r4gt00"
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="css-1hncgty css-h7r55a common__grid"
                         >
-                          <Ripple
-                            className="css-ugy6xl"
-                            color="#000"
-                            disabled={false}
-                            fill={false}
+                          <button
+                            aria-label="common.close"
+                            className="css-r4gt00"
                             onClick={[Function]}
-                            onComplete={[Function]}
-                            overflow={false}
-                            size={null}
+                            type="button"
                           >
-                            <div
-                              className="ui-shared__ripple css-ugy6xl"
-                              data-test-id="Ripple"
+                            <Ripple
+                              className="css-ugy6xl"
+                              color="#000"
+                              disabled={false}
+                              fill={false}
                               onClick={[Function]}
-                              style={null}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
                             >
-                              <Cross
-                                size={24}
+                              <div
+                                className="ui-shared__ripple css-ugy6xl"
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
                               >
-                                <Icon
-                                  className=""
-                                  color={null}
-                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                <Cross
                                   size={24}
-                                  viewBox="0 0 24 24"
                                 >
-                                  <svg
-                                    className="css-yys9hb "
-                                    dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                      }
-                                    }
-                                    style={
-                                      Object {
-                                        "fill": null,
-                                        "fontSize": 24,
-                                      }
-                                    }
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    size={24}
                                     viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  />
-                                </Icon>
-                              </Cross>
-                            </div>
-                          </Ripple>
-                        </button>
-                        <GridItem
-                          className="css-1mjy0de"
-                          component="div"
-                          grow={1}
-                          role="heading"
-                          shrink={1}
-                          tabIndex={0}
-                        >
-                          <div
-                            className="css-1mjy0de css-1gs0ko2"
+                                  >
+                                    <svg
+                                      className="css-yys9hb  common__icon"
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": 24,
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Cross>
+                              </div>
+                            </Ripple>
+                          </button>
+                          <GridItem
+                            className="css-1mjy0de"
+                            component="div"
+                            grow={1}
                             role="heading"
+                            shrink={1}
                             tabIndex={0}
                           >
-                            Picker Label
-                          </div>
-                        </GridItem>
-                      </div>
-                    </Grid>
+                            <div
+                              className="css-1mjy0de css-1gs0ko2"
+                              role="heading"
+                              tabIndex={0}
+                            >
+                              Picker Label
+                            </div>
+                          </GridItem>
+                        </div>
+                      </Grid>
+                    </div>
                   </Header>
                   <div
                     className="css-13azwyo"
@@ -638,7 +653,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         unmountOnExit={false}
                       >
                         <div
-                          className="css-guf25f"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -659,6 +674,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -774,7 +790,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -938,10 +954,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -952,7 +969,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -961,7 +978,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-171mdnt"
+                  className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -972,89 +989,95 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <Header
                     allowClose={true}
+                    handleChange={[Function]}
                     onToggleClose={[Function]}
                     shadow={false}
+                    showSearch={false}
                     title="Picker Label"
                   >
-                    <Grid
-                      className="css-1hncgty"
-                      component="div"
-                      wrap={false}
+                    <div
+                      className=""
                     >
-                      <div
-                        className="css-1hncgty css-h7r55a"
+                      <Grid
+                        className="css-1hncgty"
+                        component="div"
+                        wrap={false}
                       >
-                        <button
-                          aria-label="common.close"
-                          className="css-r4gt00"
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="css-1hncgty css-h7r55a common__grid"
                         >
-                          <Ripple
-                            className="css-ugy6xl"
-                            color="#000"
-                            disabled={false}
-                            fill={false}
+                          <button
+                            aria-label="common.close"
+                            className="css-r4gt00"
                             onClick={[Function]}
-                            onComplete={[Function]}
-                            overflow={false}
-                            size={null}
+                            type="button"
                           >
-                            <div
-                              className="ui-shared__ripple css-ugy6xl"
-                              data-test-id="Ripple"
+                            <Ripple
+                              className="css-ugy6xl"
+                              color="#000"
+                              disabled={false}
+                              fill={false}
                               onClick={[Function]}
-                              style={null}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
                             >
-                              <Cross
-                                size={24}
+                              <div
+                                className="ui-shared__ripple css-ugy6xl"
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
                               >
-                                <Icon
-                                  className=""
-                                  color={null}
-                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                <Cross
                                   size={24}
-                                  viewBox="0 0 24 24"
                                 >
-                                  <svg
-                                    className="css-yys9hb "
-                                    dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                      }
-                                    }
-                                    style={
-                                      Object {
-                                        "fill": null,
-                                        "fontSize": 24,
-                                      }
-                                    }
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    size={24}
                                     viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  />
-                                </Icon>
-                              </Cross>
-                            </div>
-                          </Ripple>
-                        </button>
-                        <GridItem
-                          className="css-1mjy0de"
-                          component="div"
-                          grow={1}
-                          role="heading"
-                          shrink={1}
-                          tabIndex={0}
-                        >
-                          <div
-                            className="css-1mjy0de css-1gs0ko2"
+                                  >
+                                    <svg
+                                      className="css-yys9hb  common__icon"
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": 24,
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Cross>
+                              </div>
+                            </Ripple>
+                          </button>
+                          <GridItem
+                            className="css-1mjy0de"
+                            component="div"
+                            grow={1}
                             role="heading"
+                            shrink={1}
                             tabIndex={0}
                           >
-                            Picker Label
-                          </div>
-                        </GridItem>
-                      </div>
-                    </Grid>
+                            <div
+                              className="css-1mjy0de css-1gs0ko2"
+                              role="heading"
+                              tabIndex={0}
+                            >
+                              Picker Label
+                            </div>
+                          </GridItem>
+                        </div>
+                      </Grid>
+                    </div>
                   </Header>
                   <div
                     className="css-13azwyo"
@@ -1078,7 +1101,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         unmountOnExit={false}
                       >
                         <div
-                          className="css-guf25f"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -1099,6 +1122,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -1214,7 +1238,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -1339,10 +1363,11 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className="css-1owavz5"
+              className="ui-shared__sheet css-1owavz5"
             >
               <Drawer
                 alwaysActive={false}
@@ -1353,7 +1378,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1362,7 +1387,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               >
                 <div
                   aria-modal={true}
-                  className="css-1d4fqwq css-1rg7udn css-1ldjh2f"
+                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -1373,89 +1398,95 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 >
                   <Header
                     allowClose={true}
+                    handleChange={[Function]}
                     onToggleClose={[Function]}
                     shadow={false}
+                    showSearch={false}
                     title="Picker Label"
                   >
-                    <Grid
-                      className="css-1hncgty"
-                      component="div"
-                      wrap={false}
+                    <div
+                      className=""
                     >
-                      <div
-                        className="css-1hncgty css-h7r55a"
+                      <Grid
+                        className="css-1hncgty"
+                        component="div"
+                        wrap={false}
                       >
-                        <button
-                          aria-label="common.close"
-                          className="css-r4gt00"
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="css-1hncgty css-h7r55a common__grid"
                         >
-                          <Ripple
-                            className="css-ugy6xl"
-                            color="#000"
-                            disabled={false}
-                            fill={false}
+                          <button
+                            aria-label="common.close"
+                            className="css-r4gt00"
                             onClick={[Function]}
-                            onComplete={[Function]}
-                            overflow={false}
-                            size={null}
+                            type="button"
                           >
-                            <div
-                              className="ui-shared__ripple css-ugy6xl"
-                              data-test-id="Ripple"
+                            <Ripple
+                              className="css-ugy6xl"
+                              color="#000"
+                              disabled={false}
+                              fill={false}
                               onClick={[Function]}
-                              style={null}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
                             >
-                              <Cross
-                                size={24}
+                              <div
+                                className="ui-shared__ripple css-ugy6xl"
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
                               >
-                                <Icon
-                                  className=""
-                                  color={null}
-                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                <Cross
                                   size={24}
-                                  viewBox="0 0 24 24"
                                 >
-                                  <svg
-                                    className="css-yys9hb "
-                                    dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                      }
-                                    }
-                                    style={
-                                      Object {
-                                        "fill": null,
-                                        "fontSize": 24,
-                                      }
-                                    }
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    size={24}
                                     viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  />
-                                </Icon>
-                              </Cross>
-                            </div>
-                          </Ripple>
-                        </button>
-                        <GridItem
-                          className="css-1mjy0de"
-                          component="div"
-                          grow={1}
-                          role="heading"
-                          shrink={1}
-                          tabIndex={0}
-                        >
-                          <div
-                            className="css-1mjy0de css-1gs0ko2"
+                                  >
+                                    <svg
+                                      className="css-yys9hb  common__icon"
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": 24,
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Cross>
+                              </div>
+                            </Ripple>
+                          </button>
+                          <GridItem
+                            className="css-1mjy0de"
+                            component="div"
+                            grow={1}
                             role="heading"
+                            shrink={1}
                             tabIndex={0}
                           >
-                            Picker Label
-                          </div>
-                        </GridItem>
-                      </div>
-                    </Grid>
+                            <div
+                              className="css-1mjy0de css-1gs0ko2"
+                              role="heading"
+                              tabIndex={0}
+                            >
+                              Picker Label
+                            </div>
+                          </GridItem>
+                        </div>
+                      </Grid>
+                    </div>
                   </Header>
                   <div
                     className="css-13azwyo"
@@ -1479,7 +1510,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         unmountOnExit={false}
                       >
                         <div
-                          className="css-guf25f"
+                          className="css-guf25f ui-shared__progress-bar"
                           style={
                             Object {
                               "transform": "scale(1, 0)",
@@ -1500,6 +1531,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     <SheetList
                       key=".0"
                       onClose={[Function]}
+                      query=""
                     >
                       <SheetItem
                         item={
@@ -1615,7 +1647,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h "
+                          className="css-hlk66h  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -1738,10 +1770,11 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -1752,7 +1785,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1905,10 +1938,11 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title="Picker Label"
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -1919,7 +1953,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -2067,10 +2101,11 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
+            showSearch={false}
             title=""
           >
             <section
-              className={null}
+              className="ui-shared__sheet"
             >
               <Drawer
                 alwaysActive={false}
@@ -2081,7 +2116,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1d4fqwq"
+                className="css-qxf1dv"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}

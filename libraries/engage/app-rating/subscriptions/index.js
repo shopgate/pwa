@@ -9,7 +9,7 @@ import {
   resetTimerState,
   setTimerStartTime,
 } from '../action-creators/timer';
-import { TIMER_TIMESPAN } from '../constants';
+import { APP_RATING_TIMER_TIMESPAN } from '../constants';
 import { getAppRatingState } from '../selectors/appRating';
 import { showModal } from '../actions/showModal';
 
@@ -38,6 +38,7 @@ export default function appRating(subscribe) {
     if (!bundleId || !bundleId.android || !bundleId.ios) {
       return;
     }
+
     // every time the app starts
     // we increase the start count
     dispatch(increaseAppStartCount());
@@ -69,9 +70,10 @@ export default function appRating(subscribe) {
     let increaseAction = null;
 
     if (
+      timeInterval &&
       Number(timeInterval.value) > 0 &&
       Number(state.timerStartTimestamp) > 0 &&
-      Date.now() - state.timerStartTimestamp >= (timeInterval.value * TIMER_TIMESPAN)
+      Date.now() - state.timerStartTimestamp >= (timeInterval.value * APP_RATING_TIMER_TIMESPAN)
     ) {
       mustShowModal = true;
       hasRepeats = timeInterval.repeats === null || state.timerRepeatsCount <= timeInterval.repeats;

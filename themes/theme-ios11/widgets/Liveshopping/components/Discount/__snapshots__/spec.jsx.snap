@@ -28,9 +28,11 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
       text="liveshopping.discount_badge"
     >
       <div
+        className="ui-shared__discount-badge"
         data-test-id="liveshopping.discount_badge"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className="css-1hahtsy css-b15hhv"
           params={
             Array [

@@ -7,7 +7,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   data-test-id="ratedStars: 0"
 >
   <div
-    className="css-5lxuz4"
+    className="css-4s85e9"
   >
     <div
       className="css-1uwa32v css-q4owmg"
@@ -78,7 +78,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   data-test-id="ratedStars: 2.5"
 >
   <div
-    className="css-5lxuz4"
+    className="css-4s85e9"
   >
     <div
       className="css-1uwa32v css-q4owmg"
@@ -183,7 +183,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   data-test-id="ratedStars: 5"
 >
   <div
-    className="css-5lxuz4"
+    className="css-4s85e9"
   >
     <div
       className="css-1uwa32v css-q4owmg"
@@ -310,7 +310,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   data-test-id="ratedStars: 5"
 >
   <div
-    className="css-5lxuz4"
+    className="css-4s85e9"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -467,7 +467,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   data-test-id="ratedStars: 3.5"
 >
   <div
-    className="css-5lxuz4"
+    className="css-4s85e9"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"

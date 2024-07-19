@@ -15,7 +15,7 @@ const icon = css({
 }).toString();
 
 const emptyStars = css({
-  color: `var(--color-background-accent, ${colors.shade7})`,
+  color: colors.shade7,
 }).toString();
 
 const filledStars = css({

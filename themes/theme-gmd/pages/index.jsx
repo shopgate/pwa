@@ -50,6 +50,7 @@ import { FulfillmentSlotProvider } from '@shopgate/engage/locations/components/F
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
+import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import {
   CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PATTERN,
@@ -125,6 +126,7 @@ const Pages = ({ store }) => {
                 <BrandingColorBanner />
                 <Viewport>
                   <ModalContainer component={Dialog} />
+                  <PushOptInModal />
                   <Toaster render={props => <SnackBar {...props} />} />
                   <FavoritesListChooser />
                   <FulfillmentSlotProvider />

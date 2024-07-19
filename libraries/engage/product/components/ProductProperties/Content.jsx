@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '../../../core';
+import { isBeta } from '@shopgate/engage/core/helpers';
 import { getGroupsFromProperties } from './helpers/getGroupsFromProperties';
 import GroupedProperties from './GroupedProperties';
 import Wrapper from './Wrapper';

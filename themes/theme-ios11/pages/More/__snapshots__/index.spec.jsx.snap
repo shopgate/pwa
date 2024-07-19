@@ -51,6 +51,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -161,6 +162,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           }
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -212,7 +214,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               <div
                                 aria-hidden={null}
                                 aria-label={null}
-                                className="css-9auwkz css-1hj8a57"
+                                className="css-9auwkz css-1hj8a57 common__link"
                                 data-test-id="link: /account/profile"
                                 href={null}
                                 onClick={[Function]}
@@ -220,6 +222,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                                 tabIndex={null}
                               >
                                 <Translate
+                                  acceptPlainTextWithPlaceholders={false}
                                   className={null}
                                   params={Object {}}
                                   role={null}
@@ -266,7 +269,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               <div
                                 aria-hidden={null}
                                 aria-label={null}
-                                className="css-9auwkz css-1hj8a57"
+                                className="css-9auwkz css-1hj8a57 common__link"
                                 data-test-id="link: /account/orders"
                                 href={null}
                                 onClick={[Function]}
@@ -274,6 +277,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                                 tabIndex={null}
                               >
                                 <Translate
+                                  acceptPlainTextWithPlaceholders={false}
                                   className={null}
                                   params={Object {}}
                                   role={null}
@@ -320,7 +324,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               <div
                                 aria-hidden={null}
                                 aria-label={null}
-                                className="css-9auwkz css-1hj8a57"
+                                className="css-9auwkz css-1hj8a57 common__link"
                                 data-test-id="link: /account/wish-list"
                                 href={null}
                                 onClick={[Function]}
@@ -328,6 +332,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                                 tabIndex={null}
                               >
                                 <Translate
+                                  acceptPlainTextWithPlaceholders={false}
                                   className={null}
                                   params={Object {}}
                                   role={null}
@@ -375,6 +380,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               type="button"
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -475,6 +481,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                     }
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -547,7 +554,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/shipping"
                               href={null}
                               onClick={[Function]}
@@ -555,6 +562,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -634,7 +642,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/payment"
                               href={null}
                               onClick={[Function]}
@@ -642,6 +650,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -721,7 +730,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/terms"
                               href={null}
                               onClick={[Function]}
@@ -729,6 +738,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -808,7 +818,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/privacy"
                               href={null}
                               onClick={[Function]}
@@ -816,6 +826,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -917,7 +928,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/imprint"
                               href={null}
                               onClick={[Function]}
@@ -925,6 +936,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1034,6 +1046,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
               }
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -1093,7 +1106,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       wrap={false}
                     >
                       <ul
-                        className="css-az18cj css-h7r55a"
+                        className="css-az18cj css-h7r55a common__grid"
                       >
                         <GridItem
                           className="css-mzzsxh"
@@ -1126,7 +1139,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 <div
                                   aria-hidden={null}
                                   aria-label={null}
-                                  className="css-9auwkz "
+                                  className="css-9auwkz  common__link"
                                   data-test-id="link: /login"
                                   href={null}
                                   onClick={[Function]}
@@ -1143,13 +1156,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                     wrapContent={true}
                                   >
                                     <Button
-                                      className="ui-shared__button css-1k9vl9z css-6f03lb"
+                                      className="ui-shared__button css-13b58x4 css-6f03lb"
                                       disabled={false}
                                       onClick={null}
                                       testId="UserMenuLogin"
                                     >
                                       <button
-                                        className="ui-shared__button css-1k9vl9z css-6f03lb css-1rn65c0 common__button"
+                                        className="ui-shared__button css-13b58x4 css-6f03lb css-1rn65c0 common__button"
                                         data-test-id="UserMenuLogin"
                                         disabled={false}
                                         onClick={null}
@@ -1158,6 +1171,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-a1u7zd"
                                         >
                                           <Translate
+                                            acceptPlainTextWithPlaceholders={false}
                                             className={null}
                                             params={Object {}}
                                             role={null}
@@ -1211,7 +1225,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 <div
                                   aria-hidden={null}
                                   aria-label={null}
-                                  className="css-9auwkz "
+                                  className="css-9auwkz  common__link"
                                   data-test-id="link: /register"
                                   href={null}
                                   onClick={[Function]}
@@ -1228,13 +1242,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                     wrapContent={true}
                                   >
                                     <Button
-                                      className="ui-shared__button css-1k9vl9z css-6f03lb"
+                                      className="ui-shared__button css-13b58x4 css-6f03lb"
                                       disabled={false}
                                       onClick={null}
                                       testId="UserMenuRegister"
                                     >
                                       <button
-                                        className="ui-shared__button css-1k9vl9z css-6f03lb css-1rn65c0 common__button"
+                                        className="ui-shared__button css-13b58x4 css-6f03lb css-1rn65c0 common__button"
                                         data-test-id="UserMenuRegister"
                                         disabled={false}
                                         onClick={null}
@@ -1243,6 +1257,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-a1u7zd"
                                         >
                                           <Translate
+                                            acceptPlainTextWithPlaceholders={false}
                                             className={null}
                                             params={Object {}}
                                             role={null}
@@ -1340,6 +1355,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     }
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1412,7 +1428,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/shipping"
                               href={null}
                               onClick={[Function]}
@@ -1420,6 +1436,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1499,7 +1516,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/payment"
                               href={null}
                               onClick={[Function]}
@@ -1507,6 +1524,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1586,7 +1604,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/terms"
                               href={null}
                               onClick={[Function]}
@@ -1594,6 +1612,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1673,7 +1692,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/privacy"
                               href={null}
                               onClick={[Function]}
@@ -1681,6 +1700,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}
@@ -1782,7 +1802,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             <div
                               aria-hidden={null}
                               aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
+                              className="css-9auwkz css-1hj8a57 common__link"
                               data-test-id="link: /page/imprint"
                               href={null}
                               onClick={[Function]}
@@ -1790,6 +1810,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
+                                acceptPlainTextWithPlaceholders={false}
                                 className={null}
                                 params={Object {}}
                                 role={null}

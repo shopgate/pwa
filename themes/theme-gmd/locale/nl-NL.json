@@ -541,6 +541,7 @@
     "access_denied": {
       "settings_button": "Ga naar instellingen",
       "camera_message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
+      "push_message": "Deze functie vereist toegang tot pushmeldingen. Sta toegang toe in de instellingen.",
       "geolocation_message": "Ga naar Instellingen en schakel locatiemachtigingen in om winkels bij u in de buurt te vinden."
     }
   },
@@ -806,5 +807,11 @@
     "title": "Beoordeel app",
     "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
     "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
+  },
+  "pushOptInModal": {
+    "title": "Exclusieve coupons en aanbiedingen ontvangen",
+    "buttonAllow": "Meldingen inschakelen",
+    "buttonDeny": "Ik wil geen meldingen",
+    "message": "Activeer meldingen zodat we je pushberichten kunnen sturen over nieuwe aanbiedingen, exclusieve vouchers en meer."
   }
 }

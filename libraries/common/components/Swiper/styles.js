@@ -4,8 +4,10 @@ import { themeColors } from '@shopgate/pwa-common/helpers/config';
 export const container = css({
   position: 'relative',
   maxHeight: '100%',
-  // This needs to be 100vw to compensate a chrome 80 bug - see related ticket / pr.
-  width: '100vw',
+  // This needs to be 100vw to compensate a chrome 80 bug - see related ticket / pr. (PWA-2509)
+  // commented out for now since it causes issues in the responsive layout
+  // width: '100vw',
+
 }).toString();
 
 export const innerContainer = css({

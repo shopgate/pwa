@@ -170,7 +170,8 @@ export const getProductIsFetching = createSelector(
 );
 
 /**
- * Creates the selector to get a product's properties from the state.
+ * Creates the selector to get a product's properties from the state filtered via
+ * positive / negative list.
  * @returns {Function}
  */
 export function makeGetProductProperties() {
@@ -188,6 +189,23 @@ export function makeGetProductProperties() {
     }
   );
 }
+
+/**
+ * Creates the selector to get a product's properties from the state without filtering.
+ * @returns {Function}
+ */
+export const makeGetProductPropertiesUnfiltered = () => createSelector(
+  getProductId,
+  getProductPropertiesState,
+  (productId, properties) => {
+    const entry = properties[productId];
+    if (!entry || entry.isFetching || typeof entry.properties === 'undefined') {
+      return null;
+    }
+
+    return entry.properties;
+  }
+);
 
 /**
  * Creates the selector to get a product's effectivity dates.
@@ -269,4 +287,35 @@ export const makeIsBaseProductActive = () => createSelector(
 
     return baseProduct?.active || false;
   }
+);
+
+/**
+ * Creates a selector to get the property of a product based on a given label
+ * @returns {Function}
+ */
+export const makeGetCurrentProductPropertyByLabel = () => {
+  const getProductPropertiesUnfiltered = makeGetProductPropertiesUnfiltered();
+
+  return createSelector(
+    getProductPropertiesUnfiltered,
+    (state, props) => props.widgetSettings,
+    (currentProductProperties, widgetSettings) => {
+      if (!currentProductProperties || !widgetSettings || !widgetSettings.propertyLabel) {
+        return null;
+      }
+
+      return currentProductProperties
+        .find(({ label }) => label === widgetSettings.propertyLabel);
+    }
+  );
+};
+
+/**
+ * Create a selector to retrieve the product type.
+ * @returns {Function}
+ *
+ */
+export const makeGetProductType = () => createSelector(
+  getProduct,
+  product => product?.type
 );

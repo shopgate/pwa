@@ -29,6 +29,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         className="css-rkuo1o css-1jyyyen placeholder"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -57,6 +58,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -264,6 +266,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         className="css-1tzi51f errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -312,6 +315,7 @@ exports[`<FormElement /> should show the label 1`] = `
         className="css-rkuo1o placeholder"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -340,6 +344,7 @@ exports[`<FormElement /> should show the label 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -406,6 +411,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         className="css-rkuo1o placeholder"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}

@@ -64,7 +64,7 @@ class Form extends PureComponent {
     return (
       <form
         action="#"
-        className={classNames(this.props.className, 'form')}
+        className={classNames(this.props.className, 'form', 'engage__form')}
         onSubmit={this.handleSubmit}
         onKeyPress={this.handleKeyPress}
         ref={this.formElement}

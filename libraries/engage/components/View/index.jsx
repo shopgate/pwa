@@ -39,7 +39,7 @@ function ViewContainer({
     <ViewProvider>
       <ViewContext.Consumer>
         {({ setContentRef, ariaHidden: ariaHiddenContext }) => (
-          <section className={styles} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
+          <section className={`${styles} engage__view`} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
             <Content
               noScrollOnKeyboard={noScrollOnKeyboard}
               noKeyboardListener={noKeyboardListener}

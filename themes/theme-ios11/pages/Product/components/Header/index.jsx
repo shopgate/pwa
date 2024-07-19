@@ -5,8 +5,8 @@ import {
   PRODUCT_HEADER_AFTER,
   PRODUCT_HEADER_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { Rating } from '@shopgate/engage/product/components';
 import CTAButtons from './components/CTAButtons';
-import Rating from './components/Rating';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
 import styles from './style';

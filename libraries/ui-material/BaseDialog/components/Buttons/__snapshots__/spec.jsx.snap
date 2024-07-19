@@ -15,6 +15,7 @@ Array [
     wrapContent={true}
   >
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className={null}
       params={Object {}}
       role={null}
@@ -33,6 +34,7 @@ Array [
     wrapContent={true}
   >
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className={null}
       params={Object {}}
       role={null}
@@ -51,6 +53,7 @@ Array [
     wrapContent={true}
   >
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className={null}
       params={Object {}}
       role={null}

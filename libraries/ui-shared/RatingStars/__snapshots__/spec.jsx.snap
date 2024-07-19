@@ -8,7 +8,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   role="text"
 >
   <div
-    className="css-5lxuz4 rating-stars-empty"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -80,7 +80,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   role="text"
 >
   <div
-    className="css-5lxuz4 rating-stars-empty"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -186,7 +186,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   role="text"
 >
   <div
-    className="css-5lxuz4 rating-stars-empty"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -314,7 +314,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   role="text"
 >
   <div
-    className="css-5lxuz4 rating-stars-empty"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -472,7 +472,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   role="text"
 >
   <div
-    className="css-5lxuz4 rating-stars-empty"
+    className="css-4s85e9 rating-stars-empty"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"

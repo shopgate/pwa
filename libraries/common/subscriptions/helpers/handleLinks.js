@@ -3,10 +3,13 @@ import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { openPageExtern } from '@shopgate/pwa-core';
-import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { hasWebBridge } from '@shopgate/engage/core';
+import {
+  hasNewServices,
+  hasWebBridge,
+  logger,
+  hasSGJavaScriptBridge,
+} from '@shopgate/engage/core/helpers';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import authRoutes from '../../collections/AuthRoutes';
 

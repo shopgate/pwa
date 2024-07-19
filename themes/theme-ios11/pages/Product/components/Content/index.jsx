@@ -2,29 +2,31 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { Conditioner } from '@shopgate/pwa-core';
-import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import {
+  TaxDisclaimer,
+} from '@shopgate/engage/components';
 import { Section } from '@shopgate/engage/a11y';
 import {
+  Characteristics,
+  Options,
   ProductProperties,
   RelationsSlider,
   Description,
   ProductUnitQuantityPicker,
   OrderQuantityHint,
-} from '@shopgate/engage/product';
+} from '@shopgate/engage/product/components';
 import {
   FulfillmentSelector,
   FulfillmentSheet,
   FulfillmentPathSelector,
 } from '@shopgate/engage/locations';
 import { Reviews } from '@shopgate/engage/reviews';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import Media from '../Media';
 import Header from '../Header';
-import Characteristics from '../Characteristics';
-import Options from '../Options';
 import AppBar from '../AppBar';
 import AddToCartBar from '../AddToCartBar';
 import connect from './connector';
-import { ProductContext } from '../../context';
 
 const styles = {
   quantityPicker: css({

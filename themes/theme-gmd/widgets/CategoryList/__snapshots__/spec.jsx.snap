@@ -3,7 +3,6 @@
 exports[`<CategoryListWidget /> should not render the CategoryListWidget 1`] = `
 <CategoryListWidget
   fetchCategory={[Function]}
-  getCategory={[Function]}
   items={null}
   settings={
     Object {
@@ -18,7 +17,6 @@ exports[`<CategoryListWidget /> should not render the CategoryListWidget 1`] = `
 exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
 <CategoryListWidget
   fetchCategory={[Function]}
-  getCategory={[Function]}
   items={
     Array [
       Object {

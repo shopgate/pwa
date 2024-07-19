@@ -42,7 +42,7 @@ exports[`<TextField> should focus the input 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -91,10 +91,11 @@ exports[`<TextField> should focus the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -178,7 +179,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -227,10 +228,11 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -314,7 +316,7 @@ exports[`<TextField> should render a simple text field 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -363,10 +365,11 @@ exports[`<TextField> should render a simple text field 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -451,7 +454,7 @@ exports[`<TextField> should render the text field as password 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -501,10 +504,11 @@ exports[`<TextField> should render the text field as password 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -588,7 +592,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -637,10 +641,11 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -725,7 +730,7 @@ exports[`<TextField> should sanitize the input 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -775,10 +780,11 @@ exports[`<TextField> should sanitize the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -862,7 +868,7 @@ exports[`<TextField> should show the error message 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -911,10 +917,11 @@ exports[`<TextField> should show the error message 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -959,6 +966,7 @@ exports[`<TextField> should show the error message 1`] = `
           className="css-1tzi51f errorText"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1025,6 +1033,7 @@ exports[`<TextField> should show the label 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1053,6 +1062,7 @@ exports[`<TextField> should show the label 1`] = `
           htmlFor="test-input"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1074,7 +1084,7 @@ exports[`<TextField> should show the label 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -1123,10 +1133,11 @@ exports[`<TextField> should show the label 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -1214,6 +1225,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           className="css-rkuo1o placeholder"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -1235,7 +1247,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -1284,10 +1296,11 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}
@@ -1387,7 +1400,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         wrap={false}
       >
         <ul
-          className=" css-h7r55a"
+          className=" css-h7r55a common__grid"
         >
           <GridItem
             className="css-1kppfx4"
@@ -1467,10 +1480,11 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt simpleInput"
+                    className="css-keangt simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
+                    maxLength=""
                     min={null}
                     name="test-input"
                     onBlur={[Function]}

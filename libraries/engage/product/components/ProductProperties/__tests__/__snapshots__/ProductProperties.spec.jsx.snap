@@ -56,33 +56,8 @@ exports[`<ProductProperties /> should not render if no properties where passed 1
         }
       }
     >
-      <Portal
-        name="product.properties.before"
-        props={
-          Object {
-            "properties": null,
-          }
-        }
-      />
-      <Portal
-        name="product.properties"
-        props={
-          Object {
-            "properties": null,
-          }
-        }
-      >
-        <Content
-          properties={null}
-        />
-      </Portal>
-      <Portal
-        name="product.properties.after"
-        props={
-          Object {
-            "properties": null,
-          }
-        }
+      <Content
+        properties={null}
       />
     </SurroundPortals>
   </ProductProperties>
@@ -155,120 +130,83 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
         }
       }
     >
-      <Portal
-        name="product.properties.before"
-        props={
-          Object {
-            "properties": Array [
-              Object {
-                "displayGroup": "test",
-              },
-            ],
-          }
-        }
-      />
-      <Portal
-        name="product.properties"
-        props={
-          Object {
-            "properties": Array [
-              Object {
-                "displayGroup": "test",
-              },
-            ],
-          }
+      <Content
+        properties={
+          Array [
+            Object {
+              "displayGroup": "test",
+            },
+          ]
         }
       >
-        <Content
-          properties={
-            Array [
-              Object {
-                "displayGroup": "test",
-              },
-            ]
-          }
+        <Wrapper
+          dense={false}
+          groupName=""
+          htmlOnly={false}
         >
-          <Wrapper
-            dense={false}
-            groupName=""
-            htmlOnly={false}
+          <div
+            className="engage__product__product-property-group css-1x8awm9"
+            data-group-name=""
           >
-            <div
-              className="engage__product__product-property-group css-1x8awm9"
-              data-group-name=""
-            >
-              <table>
-                <thead />
-                <tbody>
-                  <Rows
-                    properties={
-                      Array [
-                        Object {
-                          "displayGroup": "test",
-                        },
-                      ]
-                    }
+            <table>
+              <thead />
+              <tbody>
+                <Rows
+                  properties={
+                    Array [
+                      Object {
+                        "displayGroup": "test",
+                      },
+                    ]
+                  }
+                >
+                  <Row
+                    key="undefined-undefined"
+                    type={null}
                   >
-                    <Row
-                      key="undefined-undefined"
-                      type={null}
+                    <tr
+                      className="engage__product__product-property"
+                      data-type={null}
                     >
-                      <tr
-                        className="engage__product__product-property"
-                        data-type={null}
+                      <td
+                        className={
+                          Object {
+                            "data-css-fl9ufm": "",
+                          }
+                        }
                       >
-                        <td
-                          className={
+                        <span
+                          dangerouslySetInnerHTML={
                             Object {
-                              "data-css-fl9ufm": "",
+                              "__html": undefined,
                             }
                           }
-                        >
-                          <span
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": undefined,
-                              }
-                            }
-                          />
-                        </td>
-                        <td
-                          className={
+                        />
+                      </td>
+                      <td
+                        className={
+                          Object {
+                            "data-css-fl9ufm": "",
+                          }
+                        }
+                        data-test-id="property: undefined"
+                      >
+                        <span
+                          dangerouslySetInnerHTML={
                             Object {
-                              "data-css-fl9ufm": "",
+                              "__html": undefined,
                             }
                           }
-                          data-test-id="property: undefined"
-                        >
-                          <span
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": undefined,
-                              }
-                            }
-                          />
-                        </td>
-                      </tr>
-                    </Row>
-                  </Rows>
-                </tbody>
-              </table>
-            </div>
-          </Wrapper>
-        </Content>
-      </Portal>
-      <Portal
-        name="product.properties.after"
-        props={
-          Object {
-            "properties": Array [
-              Object {
-                "displayGroup": "test",
-              },
-            ],
-          }
-        }
-      />
+                        />
+                      </td>
+                    </tr>
+                  </Row>
+                </Rows>
+              </tbody>
+            </table>
+          </div>
+        </Wrapper>
+      </Content>
     </SurroundPortals>
   </ProductProperties>
 </Connect(ProductProperties)>

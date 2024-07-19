@@ -2,14 +2,16 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, Card } from '@shopgate/engage/components';
 import {
-  ProductCard,
   ProductListTypeProvider,
   ProductListEntryProvider,
-} from '@shopgate/engage/product';
+} from '@shopgate/engage/product/providers';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { WIDGET_ID } from 'Components/ProductSlider';
+import {
+  ProductSlider as EngageProductSlider,
+  ProductCard,
+} from '@shopgate/engage/product/components';
 import Headline from 'Components/Headline';
 import connect from './connector';
 import styles from './style';
@@ -165,6 +167,6 @@ class ProductSlider extends PureComponent {
   }
 }
 
-export default withWidgetSettings(connect(ProductSlider), WIDGET_ID);
+export default withWidgetSettings(connect(ProductSlider), EngageProductSlider.WIDGET_ID);
 
 export { ProductSlider as UnwrappedProductSlider };

@@ -12,15 +12,11 @@ exports[`engage > components > view > components > content should render content
   stopPropagation={false}
 >
   <article
-    className={
-      Object {
-        "data-css-ytqxab": "",
-      }
-    }
+    className="css-ytqxab engage__view__content route_"
     style={
       Object {
         "overflow": "auto",
-        "paddingBottom": 0,
+        "paddingBottom": "calc(var(--tabbar-height) + 0px)",
       }
     }
   >
