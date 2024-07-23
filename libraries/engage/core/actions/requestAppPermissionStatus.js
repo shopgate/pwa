@@ -18,7 +18,7 @@ const requestAppPermissionStatus = ({
 }) => async (dispatch) => {
   const [
     { status, options } = { status: PERMISSION_STATUS_NOT_SUPPORTED },
-  ] = await getAppPermissions([permissionId], dispatchMock) ?? [];
+  ] = await getAppPermissions([permissionId], dispatchMock) || [];
 
   dispatch(appPermissionStatusReceived({
     permissionId,

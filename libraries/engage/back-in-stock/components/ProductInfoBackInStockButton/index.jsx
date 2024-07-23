@@ -44,7 +44,7 @@ const ProductInfoBackInStockButton = ({
             showAsButton
             subscription={subscription}
             isLinkToBackInStockEnabled
-            productId={variantId ?? productId}
+            productId={variantId || productId}
           />}
       </SurroundPortals>
     </Fragment>
