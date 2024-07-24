@@ -4,7 +4,10 @@ import { themeConfig } from '@shopgate/engage';
 import {
   NavDrawer, DescriptionIcon, Icon, SurroundPortals,
 } from '@shopgate/engage/components';
-import { NAV_MENU_QUICK_LINKS } from '@shopgate/engage/core';
+import {
+  NAV_MENU_QUICK_LINKS,
+  NAV_MENU_QUICK_LINKS_ITEMS,
+} from '@shopgate/engage/core';
 import portalProps from '../../portalProps';
 
 import connect from './connector';
@@ -20,24 +23,26 @@ const QuickLinks = ({ links, navigate }) => (
   (links && links.length > 0) && (
     <SurroundPortals portalName={NAV_MENU_QUICK_LINKS} portalProps={portalProps}>
       <NavDrawer.Section>
-        {links.map((link) => {
-          let icon = DescriptionIcon;
+        <SurroundPortals portalName={NAV_MENU_QUICK_LINKS_ITEMS} portalProps={portalProps}>
+          {links.map((link) => {
+            let icon = DescriptionIcon;
 
-          // Convert /page/some-link to pageSomeLink for custom icons
-          const path = camelCase(link.url);
-          if (icons[path]) {
-            icon = props => <Icon content={icons[path]} {...props} />;
-          }
+            // Convert /page/some-link to pageSomeLink for custom icons
+            const path = camelCase(link.url);
+            if (icons[path]) {
+              icon = props => <Icon content={icons[path]} {...props} />;
+            }
 
-          return (
-            <NavDrawer.Item
-              key={link.url}
-              label={link.label}
-              onClick={() => navigate(link.url, link.label)}
-              icon={icon}
-            />
-          );
-        })}
+            return (
+              <NavDrawer.Item
+                key={link.url}
+                label={link.label}
+                onClick={() => navigate(link.url, link.label)}
+                icon={icon}
+              />
+            );
+          })}
+        </SurroundPortals>
       </NavDrawer.Section>
     </SurroundPortals>
 

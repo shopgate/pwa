@@ -1,12 +1,17 @@
-// @flow
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import {
   Grid, Link, TextLink, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
 } from '@shopgate/engage/components';
-import { CART_ITEM_IMAGE, CART_ITEM_QUANTITY_PICKER } from '@shopgate/pwa-common-commerce/cart';
+import {
+  CART_ITEM_IMAGE,
+  CART_ITEM_LINK,
+  CART_ITEM_PROPERTIES,
+  CART_ITEM_QUANTITY_PICKER,
+} from '@shopgate/engage/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
-import { bin2hex } from '@shopgate/engage/core';
+import { bin2hex } from '@shopgate/engage/core/helpers';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { ProductImage, PriceInfo, ITEM_PATH } from '@shopgate/engage/product';
 import {
   CartItemProductChangeLocation,
@@ -25,6 +30,12 @@ import styles from './CartItemProductLayout.style';
  * @returns {JSX}
  */
 export function CartItemProductLayout() {
+  const {
+    show,
+  } = useWidgetSettings('@shopgate/engage/components/TaxDisclaimer');
+  // use widget setting if set to true/false, otherwise use market logic
+  const showDisclaimer = typeof show === 'boolean' ? show : showTaxDisclaimer;
+
   const { registerFulfillmentAction, isOrderDetails, isCheckoutConfirmation } = useCartItem();
   const context = useCartItemProduct();
   const {
@@ -36,6 +47,11 @@ export function CartItemProductLayout() {
     toggleEditMode,
     isEditable,
   } = context;
+
+  const portalProps = useMemo(() => ({
+    ...context,
+    quantity: cartItem.quantity,
+  }), [cartItem.quantity, context]);
 
   const isActive = !isOrderDetails
     ? true
@@ -62,13 +78,24 @@ export function CartItemProductLayout() {
               <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
                 {children}
               </TextLink>
+
             }
           >
-            <CartItemProductTitle value={product.name} />
+            <SurroundPortals
+              portalName={CART_ITEM_LINK}
+              portalProps={portalProps}
+            >
+              <CartItemProductTitle value={product.name} />
+            </SurroundPortals>
           </ConditionalWrapper>
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
-              <ProductProperties properties={product.properties} lineClamp={2} />
+              <SurroundPortals
+                portalName={CART_ITEM_PROPERTIES}
+                portalProps={portalProps}
+              >
+                <ProductProperties properties={product.properties} lineClamp={2} />
+              </SurroundPortals>
               { isOrderDetails && (
                 <CartItemProductOrderDetails />
               )}
@@ -84,7 +111,7 @@ export function CartItemProductLayout() {
                 </>
               )}
             </Grid.Item>
-            {showTaxDisclaimer && (
+            {showDisclaimer && (
               <Grid.Item
                 className={styles.disclaimerSpacer}
                 grow={0}
@@ -113,7 +140,7 @@ export function CartItemProductLayout() {
                 </Link>
               }
             >
-              <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
+              <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={portalProps}>
                 <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
               </SurroundPortals>
             </ConditionalWrapper>
@@ -121,15 +148,7 @@ export function CartItemProductLayout() {
           { !isOrderDetails && (
             <SurroundPortals
               portalName={CART_ITEM_QUANTITY_PICKER}
-              portalProps={{
-                product,
-                cartItem,
-                editMode,
-                handleUpdate,
-                toggleEditMode,
-                isEditable,
-                isOrderDetails,
-              }}
+              portalProps={portalProps}
             >
               <CartItemQuantityPicker
                 unit={product.unit}

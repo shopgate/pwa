@@ -158,7 +158,7 @@ class ProductSlider extends Component {
 
     // Finally, build the slider.
     return (
-      <div className={styles.slider}>
+      <div className={`theme__widgets__product-slider ${styles.slider}`}>
         {this.headline && <Headline text={settings.headline} />}
         <ProductListTypeProvider type="productSlider" subType="widgets">
           <Swiper
