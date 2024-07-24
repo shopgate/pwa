@@ -32,6 +32,7 @@ const ScannerButton = ({ hasScannerSupport, navigate }) => (
         <NavDrawer.Item
           label={LABEL}
           icon={BarcodeScannerIcon}
+          aria-hidden
           onClick={navigate(getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE), LABEL)}
           testId="navDrawerScannerButton"
         />

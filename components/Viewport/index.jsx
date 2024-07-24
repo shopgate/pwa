@@ -69,7 +69,7 @@ const Viewport = ({
 
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
       <CookieConsent />
-      <div className={styles.viewport} aria-hidden={hidden} tabIndex="-1">
+      <div className={`${styles.viewport} theme__viewport`} aria-hidden={hidden} tabIndex="-1">
         <LiveMessenger />
         <header className={styles.header} id="AppHeader">
           <ResponsiveContainer webOnly breakpoint=">xs">
