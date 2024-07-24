@@ -1,8 +1,9 @@
 import React, {
-  useState, useEffect, useMemo, memo,
+  useState, useMemo, memo, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
 import Content from './components/Content';
 import styles from './style';
@@ -17,9 +18,9 @@ const { colors } = themeConfig;
 function FilterBar({ filters, categoryId }) {
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
-  useEffect(() => {
-    setActive(filters !== null && Object.keys(filters).length > 0);
-  }, [filters]);
+  const handleChipCountUpdate = useCallback((count) => {
+    setActive(count > 0);
+  }, []);
 
   const style = useMemo(
     () => ({
@@ -39,9 +40,11 @@ function FilterBar({ filters, categoryId }) {
   );
 
   return (
-    <div className={styles} data-test-id="filterBar" style={style}>
+    <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
       <SortProvider scope={sortScope}>
-        <Content />
+        <SurroundPortals portalName="filter-bar.content">
+          <Content onChipCountUpdate={handleChipCountUpdate} />
+        </SurroundPortals>
       </SortProvider>
     </div>
   );
