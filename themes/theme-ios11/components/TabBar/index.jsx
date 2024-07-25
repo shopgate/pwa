@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -13,8 +14,11 @@ import {
   HIDE_TAB_BAR,
 } from './constants';
 import connect from './connector';
-import styles, { updateHeightCSSProperty } from './style';
+import styles, {
+  updateHeightCSSProperty, inVisible, scrolledIn, scrolledOut,
+} from './style';
 import visibleTabs from './tabs';
+import ScrollTabBar from './ScrollTabBar';
 
 /**
  * Renders the action for a given tab configuration.
@@ -44,9 +48,9 @@ class TabBar extends PureComponent {
    * Shows tha TabBar
    * @param {boolean} [force=false] When set to TRUE the TabBar wil be shown even if not enabled
    */
-   static show = (force = false) => {
-     UIEvents.emit(SHOW_TAB_BAR, { force });
-   }
+  static show = (force = false) => {
+    UIEvents.emit(SHOW_TAB_BAR, { force });
+  }
 
   static hide = () => {
     UIEvents.emit(HIDE_TAB_BAR);
@@ -76,7 +80,10 @@ class TabBar extends PureComponent {
     UIEvents.addListener(HIDE_TAB_BAR, this.hide);
   }
 
-  state = { isVisible: this.props.isVisible };
+  state = {
+    isVisible: this.props.isVisible,
+    isScrolledOut: false,
+  };
 
   /**
    * @param {Object} nextProps next props
@@ -87,24 +94,49 @@ class TabBar extends PureComponent {
     }
   }
 
+  /**
+   * it's responsible to update the css height property of the tabbar
+   * @param {Object} prevProps previous props
+   * @param {Object} prevState previous state
+   */
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.isVisible !== prevState.isVisible) {
+      updateHeightCSSProperty(this.state.isVisible);
+    }
+  }
+
   /** Will unmount hook */
   componentWillUnmount() {
     UIEvents.removeListener(SHOW_TAB_BAR, this.show);
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
+
+    updateHeightCSSProperty(false);
   }
 
-  show = ({ force } = {}) => {
+  show = ({ scroll, force } = {}) => {
     // Don't show the TabBar when it's not enabled
     if (!this.props.isEnabled && force !== true) {
       return;
     }
 
+    if (scroll === true) {
+      this.setState({
+        isScrolledOut: false,
+      });
+      return;
+    }
     this.setState({
       isVisible: true,
     });
   }
 
-  hide = () => {
+  hide = ({ scroll } = {}) => {
+    if (scroll === true) {
+      this.setState({
+        isScrolledOut: true,
+      });
+      return;
+    }
     this.setState({
       isVisible: false,
     });
@@ -115,10 +147,7 @@ class TabBar extends PureComponent {
    */
   render() {
     const { activeTab, path } = this.props;
-    const { isVisible } = this.state;
-    if (!isVisible) {
-      return null;
-    }
+    const { isVisible, isScrolledOut } = this.state;
 
     const props = {
       isVisible,
@@ -126,21 +155,30 @@ class TabBar extends PureComponent {
       path,
     };
 
+    const className = classNames('theme__tab-bar', styles,
+      isScrolledOut ? scrolledOut : scrolledIn,
+      {
+        [inVisible]: !isVisible,
+      });
+
     return (
-      <KeyboardConsumer>
-        {({ open }) => !open && (
+      <>
+        <KeyboardConsumer>
+          {({ open }) => !open && (
           <Fragment>
             <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
             {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
             <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-              <Grid className={styles} data-test-id="tabBar" role="tablist" component="div">
+              <Grid className={className} data-test-id="tabBar" role="tablist" component="div">
                 {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
               </Grid>
             </Portal>
             <Portal name={TAB_BAR_AFTER} props={{ ...props }} />
           </Fragment>
-        )}
-      </KeyboardConsumer>
+          )}
+        </KeyboardConsumer>
+        <ScrollTabBar />
+      </>
     );
   }
 }

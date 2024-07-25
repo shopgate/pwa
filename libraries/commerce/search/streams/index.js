@@ -15,6 +15,12 @@ import {
   preferredLocationDidUpdateGlobalNotOnSearch$,
   preferredLocationDidUpdateGlobalOnSearch$,
 } from '@shopgate/engage/locations/locations.streams';
+import {
+  CATEGORY_ALL_PATTERN,
+} from '@shopgate/pwa-common-commerce/category/constants';
+import {
+  categoryAllWillEnter$,
+} from '@shopgate/pwa-common-commerce/category/streams';
 import { filterWillLeave$ } from '../../filter/streams';
 import {
   REQUEST_SEARCH_RESULTS,
@@ -61,7 +67,7 @@ export const searchDidBackEntered$ = searchDidEnter$.filter(
 export const searchFiltersDidUpdate$ = filtersDidUpdate$
   .filter(({ getState }) => {
     const { pattern } = getCurrentRoute(getState());
-    return (pattern === SEARCH_PATH);
+    return (pattern === SEARCH_PATH || pattern === CATEGORY_ALL_PATTERN);
   });
 
 export const searchProductsNeedUpdate$ = preferredLocationDidUpdate$
@@ -76,3 +82,7 @@ export const searchDidUpdate$ = routeDidUpdate$
 export const searchFiltersDidUpdateFromFilterPage$ = searchDidUpdate$
   .switchMap(() => filterWillLeave$.first())
   .switchMap(() => searchWillEnter$.first());
+
+export const searchPageComponentWillEnter$ = searchWillEnter$.merge(
+  categoryAllWillEnter$
+);

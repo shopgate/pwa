@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   MapPriceHint,
@@ -14,6 +14,7 @@ import {
 } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
+import { hasNewServices as checkHasNewServices } from '@shopgate/engage/core/helpers';
 
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
@@ -29,12 +30,14 @@ const ItemDetails = ({ product, display }) => {
     id: productId, name = null, stock = null, shortDescription = null,
   } = product;
 
+  const hasNewServices = useMemo(() => checkHasNewServices(), []);
+
   if (display && !display.name && !display.price && !display.reviews) {
     return null;
   }
 
   return (
-    <div className={styles.details} tabIndex={-1} role="button">
+    <div className={`${styles.details} theme__product-grid__item__item-details`} tabIndex={-1} role="button">
       <Link
         href={getProductRoute(productId)}
         state={{ title: name }}
@@ -78,16 +81,19 @@ const ItemDetails = ({ product, display }) => {
         */}
         <EffectivityDates productId={productId} />
 
-        <Availability
-          state={!stock || stock.orderable
-            ? AVAILABILITY_STATE_OK
-            : AVAILABILITY_STATE_ALERT
-          }
-          text={i18n.text('product.available.not')}
-          showWhenAvailable={false}
-        />
-
-        <StockInfoLists product={product} />
+        { hasNewServices && (
+          <>
+            <Availability
+              state={!stock || stock.orderable
+                ? AVAILABILITY_STATE_OK
+                : AVAILABILITY_STATE_ALERT
+            }
+              text={i18n.text('product.available.not')}
+              showWhenAvailable={false}
+            />
+            <StockInfoLists product={product} />
+          </>
+        )}
 
         <div className={styles.itemPrice}>
           <ItemPrice product={product} display={display} />

@@ -12,7 +12,7 @@ import {
   NAV_MENU_STORE_INFORMATION_ABOUT,
   NAV_MENU_STORE_INFORMATION_ABOUT_AFTER,
   NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import NavDrawerSection from '../Section';
 import ShippingButton from './components/ShippingButton';
 import PaymentButton from './components/PaymentButton';
@@ -24,7 +24,7 @@ import ImprintButton from './components/ImprintButton';
 import portalProps from '../../portalProps';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const StoreInfo = () => (
   <Fragment>
