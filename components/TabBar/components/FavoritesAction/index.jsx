@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { withWidgetSettings } from '@shopgate/engage/core/hocs';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import FavoritesIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
@@ -19,10 +21,18 @@ class TabBarFavoritesAction extends Component {
     historyPush: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
     showWishlistItemsCountBadge: PropTypes.bool.isRequired,
+    widgetSettings: PropTypes.shape({
+      showCounter: PropTypes.bool,
+    }),
     ...TabBarAction.propTypes,
   };
 
-  static defaultProps = TabBarAction.defaultProps;
+  static defaultProps = {
+    widgetSettings: {
+      showCounter: true,
+    },
+    ...TabBarAction.defaultProps,
+  };
 
   /**
    * Handles the click action.
@@ -36,8 +46,14 @@ class TabBarFavoritesAction extends Component {
    * @return {JSX}
    */
   render() {
-    const { label, favoritesCount, showWishlistItemsCountBadge } = this.props;
-    const ariaCount = showWishlistItemsCountBadge ? `${i18n.text('common.products')}: ${favoritesCount}.` : '';
+    const showCounter =
+    (hasNewServices() && this.props.showWishlistItemsCountBadge) ||
+    (!hasNewServices() &&
+      (this.props.widgetSettings.showCounter ??
+        TabBarFavoritesAction.defaultProps.widgetSettings.showCounter));
+
+    const { label, favoritesCount } = this.props;
+    const ariaCount = showCounter ? `${i18n.text('common.products')}: ${favoritesCount}.` : '';
     const ariaLabel = `${i18n.text(label)}. ${ariaCount} `;
     return (
       <Fragment>
@@ -80,4 +96,4 @@ class TabBarFavoritesAction extends Component {
   }
 }
 
-export default connect(connectBadge(TabBarFavoritesAction));
+export default withWidgetSettings(connect(connectBadge(TabBarFavoritesAction)), '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge');
