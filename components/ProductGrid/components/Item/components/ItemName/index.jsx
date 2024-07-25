@@ -34,7 +34,7 @@ class ItemName extends PureComponent {
     return (
       <ProductName
         name={name}
-        className={styles}
+        className={`${styles} theme__product-grid__item__item-name`}
         portalName={PRODUCT_ITEM_NAME}
         portalProps={props}
         testId={`Productname: ${name}`}

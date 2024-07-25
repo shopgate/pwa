@@ -96,7 +96,9 @@ const FilterChips = ({
               removeLabel={removeLabel}
               editLabel={editLabel}
             >
-              {pricesFormatted}
+              <span className={label}>
+                {pricesFormatted}
+              </span>
             </Chip>
           ));
 
