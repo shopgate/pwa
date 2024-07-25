@@ -11,6 +11,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -57,6 +58,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -103,6 +105,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -163,6 +166,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -230,6 +234,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -290,6 +295,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -379,6 +385,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -425,6 +432,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -471,6 +479,7 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef

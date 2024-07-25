@@ -12,9 +12,8 @@ import {
 import {
   TextLink, Link, Availability,
 } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
-import { hasNewServices as checkHasNewServices } from '@shopgate/engage/core/helpers';
+import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
 
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
