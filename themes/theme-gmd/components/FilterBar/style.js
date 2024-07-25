@@ -1,8 +1,5 @@
 import { css } from 'glamor';
 
 export default css({
-  position: 'sticky',
-  top: '-2px', // behind header shadow
-  left: 0,
-  zIndex: 10,
+  transition: 'transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1)',
 });
