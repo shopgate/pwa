@@ -1,0 +1,326 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {Még mindig {time}} =1 {# Na {time}} other {# Napok {time}}}",
+    "load_more": "Töltsön többet",
+    "cancel": "Mégsem",
+    "submit": "Elküldés",
+    "undo": "Éso",
+    "required": "Kötelező *",
+    "please_choose": "Kérjük, válasszon",
+    "show_products": "Termékek megjelenítése",
+    "back": "Vissza",
+    "close": "Bezárás",
+    "products": "Termékek"
+  },
+  "titles": {
+    "categories": "Kategóriák",
+    "filter": "Szűrő",
+    "cart": "Kosár",
+    "shipping": "Szállítás",
+    "reviews": "Vélemények",
+    "favorites": "Megfigyelési lista",
+    "scanner": "Scanner",
+    "back_in_stock": "Notificări"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktív értesítések",
+      "past": "Múltbeli értesítések"
+    },
+    "empty_list_reminder": "Ön nem állított be értesítést",
+    "get_notified": "Értesítsen, ha az elem elérhető",
+    "we_will_remind_you": "Értesítést kap, ha az elem ismét elérhető",
+    "add_back_in_stock_success_modal": {
+      "title": "Értesítés hozzáadva!",
+      "message": "Push értesítést küldünk Önnek, ha a termék ismét elérhetővé válik. Ezeket az értesítéseket a menüben tudja kezelni."
+    },
+    "rationale": {
+      "message": "A következő lépésben engedélyezze a push értesítések küldését, hogy értesíthessük, ha a termék ismét elérhetővé válik.",
+      "confirm": "Engedélyezd az értesítéseket"
+    }
+  },
+  "favorites": {
+    "add": "Hozzáadás a kedvencek listájához",
+    "added": "A termék hozzá lett adva a kedvencek listájához",
+    "continue": "Vásárlás folytatása",
+    "empty": "Még nincs termék a figyelőlistán",
+    "error_add": "A terméket nem sikerült hozzáadni a figyelőlistához",
+    "error_remove": "A terméket nem sikerült eltávolítani a figyelőlistáról",
+    "error_limit": "A megfigyelési listán lévő termékek engedélyezett száma túllépésre került.",
+    "error_general": "A megfigyelési listát nem sikerült elmenteni",
+    "remove": "Törlés a figyelőlistáról",
+    "removed": "Eltávolítva a figyelőlistáról",
+    "add_list_modal": {
+      "title": "Új figyelőlista létrehozása",
+      "dismiss": "Törölje",
+      "confirm": "Megerősítés",
+      "message": "Az új figyelőlista neve",
+      "label": "Név"
+    },
+    "rename_list_modal": {
+      "title": "A figyelőlista nevének módosítása",
+      "dismiss": "Törölje",
+      "confirm": "Megerősítés",
+      "message": "A figyelőlista új neve",
+      "label": "Név"
+    },
+    "delete_list_modal": {
+      "title": "Figyelőlista törlése",
+      "message": "Tényleg törölni akarja a megfigyelési listát \"{name}\"?"
+    },
+    "add_list": "Új lista létrehozása",
+    "errors": {
+      "invalid_name": "Kérjük, adja meg a teljes nevet a megfigyelési listához"
+    },
+    "rename_list": "Átnevezni",
+    "remove_list": "Törlés",
+    "add_to_list": "Hozzáadás a listához",
+    "remove_from_list": "Törlés a listáról",
+    "edit_lists": "Listát szerkeszteni",
+    "fo_method_chooser": {
+      "title": "Megrendelési módszer kiválasztása"
+    },
+    "list_chooser": {
+      "title": "Válasszon ki egy megfigyelési listát",
+      "add": "Hozzáadás",
+      "remove": "Törlés"
+    },
+    "modal": {
+      "message": "A termék kosárba helyezéséhez válassza ki a változatokat.",
+      "confirm": "Változatok kiválasztása"
+    },
+    "open_list": "Nyissa meg a listát.",
+    "close_list": "Lista bezárása.",
+    "load_more_button": "További elemek betöltése"
+  },
+  "filter": {
+    "sort": {
+      "default": "Rendezés",
+      "most_popular": "Legjobb eredmények",
+      "price_desc": "Legmagasabb ár először",
+      "price_asc": "Legalacsonyabb ár először"
+    },
+    "apply": "Kész",
+    "more": "további",
+    "reset": "Reset",
+    "remove": "{filter} Szűrő eltávolítása",
+    "edit": "{filter} Szűrő szerkesztése",
+    "filter_by": "Szűrés {label}",
+    "label": {
+      "price": "Ár",
+      "category": "Kategória",
+      "manufacturer": "Márka"
+    }
+  },
+  "price": {
+    "from": "A címről {price}",
+    "range": "Ár {fromPrice} amíg {toPrice}",
+    "range_from": "Ártartomány",
+    "range_to": "Ártartomány akár",
+    "tier": {
+      "set": "{from} Bucată: {price}",
+      "range": "{from} vagy több: {price}"
+    },
+    "msrp": "RRP",
+    "label": "ár {price}.",
+    "label_old_price": "Régi ár {price}."
+  },
+  "product": {
+    "description_heading": "Leírás",
+    "pick_an_attribute": "{0} válasszon",
+    "tax_disclaimer": "* Áfával együtt, esetleg plusz szállítási költség",
+    "adding_item": "{count, plural, =1 {{count} termék kerül hozzáadásra} other {{count} termék kerül hozzáadásra}}",
+    "pick_option_first": "Először válasszon ki egy opciót. {option}",
+    "fill_out_required_input_first": "Először töltsd ki az összes kötelező mezőt.",
+    "add_to_cart": "Kosárba helyezés",
+    "no_more_found": "A cikk: \"{name}\" jelenleg nincs raktáron.",
+    "quantity": "Mennyiség",
+    "minOrderQuantity": "Minimális rendelési mennyiség:{quantity}",
+    "maxOrderQuantity": "Maximális rendelési mennyiség:{quantity}",
+    "available": {
+      "at": "Elérhető a {startDate, date, DD} {startDate, date, MMM} a címen {startDate, time, short} Óra",
+      "until": "Elérhető {endDate, date, DD} {endDate, date, MMM} a címen {endDate, time, short} Óra",
+      "not": "Jelenleg nem elérhető",
+      "not_search_similar": "{name} nem elérhető. Hasonló termékek keresése?"
+    },
+    "relations": {
+      "showMore": "Több"
+    },
+    "sections": {
+      "information": "Termékinformáció",
+      "options": "Válassza ki az opciókat",
+      "description": "Leírás",
+      "properties": "Tulajdonságok",
+      "ratings": "Értékelések",
+      "purchase": "Termék megvásárlása",
+      "quantity": "Mennyiség"
+    },
+    "displayGroups": {
+      "general": "Általános",
+      "features": "Jellemzők",
+      "pricing": "Árinformáció",
+      "properties": "Tulajdonságok"
+    }
+  },
+  "category": {
+     "error": {
+      "title": "Hoppá",
+      "not_found": "Kategória nem található"
+    },
+    "no_result": {
+      "heading": "Hoppá!",
+      "body": "Nem találtunk terméket."
+    },
+    "sections": {
+      "categories": "Kategóriák",
+      "products": "Termékek"
+    },
+    "showAllProducts": {
+      "label": "Összes termék megjelenítése"
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Hoppá!",
+      "body": "A \"{searchPhrase}\" keresése nem adott eredményt."
+    },
+    "placeholder": "Keresés",
+    "close": "Keresés vége",
+    "reset": "Keresés visszaállítása"
+  },
+  "shipping": {
+    "unknown": "plusz szállítás",
+    "free": "Ingyenes szállítás",
+    "free_short": "Ingyenes",
+    "cost": "{price} Szállítás"
+  },
+  "liveshopping": {
+    "discount_badge": "{0}% MENTSE"
+  },
+  "modal": {
+    "confirm": "Megerősítés",
+    "dismiss": "Törölje",
+    "ok": "Oké",
+    "title_error": "Hoppá!",
+    "body_error": "Váratlan hiba történt. Kérjük, próbálja meg újra."
+  },
+  "cart": {
+    "subtotal": "Részösszeg",
+    "total": "Kosár teljes összege",
+    "discount": "Kedvezmény",
+    "discount_with_label": "Kedvezmény ({label})",
+    "checkout": "Tovább a pénztárhoz",
+    "remove": "Eltávolítás",
+    "edit": "Szerkesztés",
+    "empty": "A kosár üres.",
+    "continue": "Folytassa a vásárlást",
+    "redeem_coupon": "Adja meg az utalvány kódot",
+    "submit_coupon": "Utalványkód beküldése",
+    "delete_coupon": "Utalványkód törlése",
+    "coupon_code": "Kód",
+    "default_coupon_label": "Kupon",
+    "coupon_was_added": "A kupon hozzá lett adva!",
+    "coupons_not_supported": "Kuponok és ajándékkártyák beváltása a következő lépésben",
+    "free_shipping": "Ingyenes szállítás",
+    "message_type_info": "Info",
+    "message_type_error": "Hiba",
+    "message_type_warning": "Figyelmeztetés"
+  },
+  "login": {
+    "headline": "Üdvözöljük!",
+    "subline": "Kérjük, jelentkezzen be a folytatáshoz",
+    "email": "Email",
+    "password": "Jelszó",
+    "forgot_password": "Elfelejtette jelszavát?",
+    "forgot_password_popup": "Kérjük, használja az asztali weboldalt jelszava visszaállításához.",
+    "button": "Bejelentkezés",
+    "no_account": "Még nincs fiókja?",
+    "register": "Kezdje el itt.",
+    "logout_message": "Önt kijelentkeztették.",
+    "error": "A felhasználónév vagy a jelszó nem megfelelő"
+  },
+  "navigation": {
+    "login_register": "Bejelentkezés",
+    "your_account": "A fiókom",
+    "home": "Kezdőlap",
+    "categories": "Kategóriák",
+    "favorites": "Megfigyelési lista",
+    "my_orders": "Parancsaim",
+    "cart": "Bevásárlókosár",
+    "scanner": "Scanner",
+    "shipping": "Szállítási módok",
+    "about": "Impresszum",
+    "payment": "Fizetési módok",
+    "terms": "Általános szerződési feltételek",
+    "privacy": "Adatvédelem",
+    "welcome_message": "Szia {name}",
+    "return_policy": "Lemondási szabályzat",
+    "logout": "Kijelentkezés",
+    "menuSubHeader": {
+      "more": "Több",
+      "about": "Rólunk"
+    },
+    "back_in_stock": "Értesítések",
+    "back": "Vissza a {title}",
+    "open_menu": "Menü megnyitása"
+  },
+  "reviews": {
+    "rating": "Értékelés",
+    "no_reviews": "Az első értékelés megírása.",
+    "review_count": "({count} {count, plural, =1 {Értékelés} other {Értékelések}})",
+    "button_add": "Értékelje a terméket",
+    "button_all": "Minden {count} értékelés",
+    "author": "a címről {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {csillag} other {csillagok}} a címről {maxRate}.",
+    "review_form_rate": "Értékelje ezt a terméket:",
+    "review_form_author": "Név",
+    "review_form_title": "Cím (opcionális)",
+    "review_form_text": "Az Ön véleménye (opcionális)",
+    "review_form_error_author_empty": "Kérjük, adjon meg egy nevet.",
+    "review_form_rate_error": "Hány csillagot ad?",
+    "review_form_error_length": "Maximális {length} megengedett karakterek.",
+    "press_to_rate_with_x_stars": "Choose to rate with {rate} {rate, plural, =1 {egy Csillag} other {Csillagok}}",
+    "success_message": "Köszönjük az értékelést!"
+  },
+  "scanner": {
+    "instructions": "Kérjük, helyezze a vonalkódot vagy a QR-kódot középre. A felismerés automatikusan történik.",
+    "noResult": {
+      "qrCode": "Nem találtunk eredményt erre a QR-kódra.",
+      "barCode": "A terméket nem találtuk."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Beállítások megnyitása",
+      "camera_message": "Ez a funkció hozzáférést igényel a kamerához. Kérjük, engedélyezze a hozzáférést a beállításokban.",
+      "push_message": "Ön letiltotta a push értesítéseket ehhez az alkalmazáshoz. Kérjük, engedélyezze őket a készülék beállításaiban.",
+      "geolocation_message": "Hozzáférésre van szükségünk a helymeghatározáshoz, hogy megmutathassuk a közeli üzleteket."
+    }
+  },
+   "error": {
+    "general": "Kapcsolati probléma. Kérjük, ellenőrizze internetkapcsolatát, vagy próbálja meg később újra."
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2 számjegyű"
+      },
+      "MMM": {
+        "month": "rövid"
+      }
+    }
+  },
+  "appRating": {
+    "yes": "Igen",
+    "no": "Nem",
+    "title": "Értékelje az alkalmazást",
+    "message": "Tetszik az alkalmazásunk? Várjuk értékelését!",
+    "rejectionApprovalMessage": "Szeretne visszajelzést adni nekünk? Ez segít nekünk az alkalmazás további fejlesztésében."
+  },
+  "pushOptInModal": {
+    "title": "Kapjon exkluzív kuponokat és ajánlatokat",
+    "buttonAllow": "Értesítések aktiválása",
+    "buttonDeny": "Nem kérek értesítést",
+    "message": "Engedélyezd az értesítéseket, hogy push értesítéseket küldhessünk neked az új ajánlatokról, exkluzív kuponokról és egyebekről."
+  }
+}

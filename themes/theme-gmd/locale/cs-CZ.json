@@ -1,0 +1,326 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {ještě {time}} =1 {# den {time}} other {# dny {time}}}",
+    "load_more": "Načíst více",
+    "cancel": "Zrušit",
+    "submit": "Odeslat",
+    "undo": "Zrušit",
+    "required": "Povinné *",
+    "please_choose": "Vyberte si prosím",
+    "show_products": "Zobrazit produkty",
+    "back": "Zpět",
+    "close": "Zavřít",
+    "products": "Produkty"
+  },
+  "titles": {
+    "categories": "Kategorie",
+    "filter": "Filtr",
+    "cart": "Nákupní košík",
+    "shipping": "Doprava",
+    "reviews": "Recenze",
+    "favorites": "Sledovaný seznam",
+    "scanner": "Skener",
+    "back_in_stock": "Oznámení"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktivní oznámení",
+      "past": "Minulá oznámení"
+    },
+    "empty_list_reminder": "Nemáte nakonfigurována žádná oznámení",
+    "get_notified": "Upozorněte mě, až bude položka dostupná",
+    "we_will_remind_you": "Budete upozorněni, až bude položka opět dostupná",
+    "add_back_in_stock_success_modal": {
+      "title": "Přidáno oznámení!",
+      "message": "Pošleme vám push oznámení, až bude produkt opět k dispozici. Tato oznámení můžete spravovat prostřednictvím nabídky."
+    },
+    "rationale": {
+      "message": "V dalším kroku prosím povolte push oznámení, abychom vás mohli informovat, až bude produkt opět k dispozici.",
+      "confirm": "Povolit oznámení"
+    }
+  },
+  "favorites": {
+    "add": "Přidat do seznamu oblíbených",
+    "added": "Produkt byl přidán do seznamu oblíbených",
+    "continue": "Pokračovat v nákupu",
+    "empty": "Na seznamu oblíbených položek zatím nemáte žádné položky",
+    "error_add": "Výrobek se nepodařilo přidat do seznamu sledovaných položek",
+    "error_remove": "Výrobek se nepodařilo odstranit ze seznamu sledovaných položek",
+    "error_limit": "Byl překročen povolený počet produktů na seznamu sledovaných položek.",
+    "error_general": "Seznam sledovaných produktů nebylo možné uložit",
+    "remove": "Odstranit ze seznamu sledovaných produktů",
+    "removed": "Odstraněno ze seznamu sledovaných produktů",
+    "add_list_modal": {
+      "title": "Vytvořit nový seznam sledování",
+      "dismiss": "Zrušit",
+      "confirm": "Potvrdit",
+      "message": "Název nového seznamu sledovaných položek",
+      "label": "Název"
+    },
+    "rename_list_modal": {
+      "title": "Změna názvu seznamu sledování",
+      "dismiss": "Zrušit",
+      "confirm": "Potvrdit",
+      "message": "Nový název seznamu sledovaných položek",
+      "label": "Název"
+    },
+    "delete_list_modal": {
+      "title": "Smazat seznam sledovaných položek",
+      "message": "Opravdu chcete smazat seznam hodinek \"{name}\"?"
+    },
+    "add_list": "Vytvořit nový seznam",
+    "errors": {
+      "invalid_name": "Zadejte prosím úplný název vašeho seznamu sledovaných položek."
+    },
+    "rename_list": "Přejmenovat",
+    "remove_list": "Smazat",
+    "add_to_list": "Přidat do seznamu",
+    "remove_from_list": "Odstranit ze seznamu",
+    "edit_lists": "Upravit seznam",
+    "fo_method_chooser": {
+      "title": "Vybrat metodu objednávky"
+    },
+    "list_chooser": {
+      "title": "Vyberte seznam sledování",
+      "add": "Přidat",
+      "remove": "Odstranit"
+    },
+    "modal": {
+      "message": "Chcete-li přidat tento produkt do košíku, vyberte prosím varianty.",
+      "confirm": "Vyberte varianty"
+    },
+    "open_list": "Otevřít seznam.",
+    "close_list": "Zavřít seznam.",
+    "load_more_button": "Načíst další položky"
+  },
+"filter": {
+    "sort": {
+      "default": "Třídit",
+      "most_popular": "Nejlepší výsledky",
+      "price_desc": "Nejdříve nejvyšší cena",
+      "price_asc": "Nejnižší cena na prvním místě"
+    },
+    "apply": "Hotovo",
+    "more": "více",
+    "reset": "Resetovat",
+    "remove": "{filter} odstranit filtr",
+    "edit": "{filter} editovat filtr",
+    "filter_by": "Filtrovat podle {label}",
+    "label": {
+      "price": "Cena",
+      "category": "Kategorie",
+      "manufacturer": "Značka"
+    }
+  },
+  "price": {
+    "from": "Od {price}",
+    "range": "Cena od {fromPrice} do {toPrice}",
+    "range_from": "Rozsah cen od",
+    "range_to": "Cenový rozsah do",
+    "tier": {
+      "set": "{from} kus: {price}",
+      "range": "{from} nebo více: {price}"
+    },
+    "msrp": "RRP",
+    "label": "Cena {price}.",
+    "label_old_price": "Stará cena {price}."
+  },
+  "product": {
+    "description_heading": "Popis",
+    "pick_an_attribute": "{0} vybrat",
+    "tax_disclaimer": "* Včetně DPH případně plus náklady na dopravu",
+    "adding_item": "{count, plural, =1 {{count} Produkt je přidán} other {{count} Produkty jsou přidávány}}",
+    "pick_option_first": "Nejprve vyberte možnost. {option}",
+    "fill_out_required_input_first": "Nejprve vyplňte všechna povinná pole.",
+    "add_to_cart": "Přidat do košíku",
+    "no_more_found": "Článek: \"{name}\" není momentálně skladem.",
+    "quantity": "Množství",
+    "minOrderQuantity": "Min. množství pro objednávku:{quantity}",
+    "maxOrderQuantity": "Max. objednací množství:{quantity}",
+    "available": {
+      "at": "Dostupné v {startDate, date, DD} {startDate, date, MMM} v {startDate, time, short} hodin",
+      "until": "Dostupné do {endDate, date, DD} {endDate, date, MMM} v {endDate, time, short} hodin",
+      "not": "V současné době není k dispozici",
+      "not_search_similar": "{name} není k dispozici. Hledat podobné produkty?"
+    },
+    "relations": {
+      "showMore": "Více na"
+    },
+    "sections": {
+      "information": "Informace o produktu",
+      "options": "Vyberte možnosti",
+      "description": "Popis",
+      "properties": "Vlastnosti",
+      "ratings": "Hodnocení",
+      "purchase": "Koupit produkt",
+      "quantity": "Množství"
+    },
+    "displayGroups": {
+      "general": "Obecné",
+      "features": "Funkce",
+      "pricing": "Informace o ceně",
+      "properties": "Vlastnosti"
+    }
+  },
+  "category": {
+    "error": {
+      "title": "Oops",
+      "not_found": "Kategorie nebyla nalezena"
+    },
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Nenalezeny žádné produkty."
+    },
+    "sections": {
+      "categories": "Kategorie",
+      "products": "Produkty"
+    },
+    "showAllProducts": {
+      "label": "Zobrazit všechny produkty"
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Vaše hledání \"{searchPhrase}\" nevrátilo žádné výsledky."
+    },
+    "placeholder": "Vyhledávání",
+    "close": "Konec hledání",
+    "reset": "Obnovit hledání"
+  },
+  "shipping": {
+    "unknown": "plus Poštovné",
+    "free": "Doprava zdarma",
+    "free_short": "Zdarma",
+    "cost": "{price} Doprava"
+  },
+  "liveshopping": {
+    "discount_badge":"{0}% Uložit"
+  },
+  "modal": {
+    "confirm": "Potvrdit",
+    "dismiss": "Zrušit",
+    "ok": "Dobře",
+    "title_error": "Oops!",
+    "body_error": "Došlo k neočekávané chybě. Zkuste to prosím znovu."
+  },
+  "cart": {
+    "subtotal": "Mezisoučet",
+    "total": "Celkový nákupní košík",
+    "discount": "Sleva",
+    "discount_with_label": "Sleva ({label})",
+    "checkout": "Pokladna",
+    "remove": "Odstranit",
+    "edit": "Upravit",
+    "empty": "Váš nákupní košík je prázdný.",
+    "continue": "Pokračovat v nákupu",
+    "redeem_coupon": "Zadejte kód voucheru",
+    "submit_coupon": "Odeslat kód voucheru",
+    "delete_coupon": "Smazat kód voucheru",
+    "coupon_code": "Kód",
+    "default_coupon_label": "Kupón",
+    "coupon_was_added": "Kupón byl přidán!",
+    "coupons_not_supported": "Uplatnění kupónů a dárkových karet v dalším kroku",
+    "free_shipping": "Doprava zdarma",
+    "message_type_info": "Informace",
+    "message_type_error": "Chyba",
+    "message_type_warning": "Varování"
+  },
+  "login": {
+    "headline": "Vítejte!",
+    "subline": "Pro pokračování se prosím přihlaste.",
+    "email": "Email",
+    "password": "Heslo",
+    "forgot_password": "Zapomněli jste své heslo?",
+    "forgot_password_popup": "Pro obnovení hesla použijte prosím webovou stránku na ploše.",
+    "button": "Přihlásit se",
+    "no_account": "Ještě nemáte účet?",
+    "register": "Začněte zde.",
+    "logout_message": "Byli jste odhlášeni.",
+    "error": "Uživatelské jméno nebo heslo není správné"
+  },
+  "navigation": {
+    "login_register": "Přihlásit se",
+    "your_account": "Můj účet",
+    "home": "Domovská stránka",
+    "categories": "Kategorie",
+    "favorites": "Seznam sledovaných osob",
+    "my_orders": "Moje objednávky",
+    "cart": "Nákupní košík",
+    "scanner": "Skener",
+    "shipping": "Způsoby dopravy",
+    "about": "Otisk",
+    "payment": "Platební metody",
+    "terms": "Podmínky",
+    "privacy": "Ochrana údajů",
+    "welcome_message": "Dobrý den {name}",
+    "return_policy": "Storno podmínky",
+    "logout": "Odhlášení",
+    "menuSubHeader": {
+      "more": "Více",
+      "about": "O nás"
+    },
+    "back_in_stock": "Oznámení",
+    "back": "Zpět na {title}",
+    "open_menu": "Otevřít menu"
+  },
+  "reviews": {
+    "rating": "Hodnocení",
+    "no_reviews": "Napište první recenzi.",
+    "review_count": "({count} {count, plural, =1 {Oceňování} other {Oceňování}})",
+    "button_add": "Hodnotit produkt",
+    "button_all": "Všechna {count} hodnocení",
+    "author": "z {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {hvězdička} other {hvězdičky}} z {maxRate}.",
+    "review_form_rate": "Ohodnoťte tento produkt:",
+    "review_form_author": "Jméno",
+    "review_form_title": "Název (nepovinný)",
+    "review_form_text": "Vaše recenze (nepovinný)",
+    "review_form_error_author_empty": "Zadejte prosím jméno.",
+    "review_form_rate_error": "Kolik hvězdiček dáváte?",
+    "review_form_error_length": "Maximální povolená délka {length} znaků.",
+    "press_to_rate_with_x_stars": "Zvolte hodnocení pomocí {rate} {rate, plural, =1 {jedna hvězdička} other {hvězdičky}}",
+    "success_message": "Děkujeme vám za vaše hodnocení!"
+  },
+  "scanner": {
+    "instructions": "Umístěte prosím čárový kód nebo QR kód doprostřed. Rozpoznání je automatické.",
+    "noResult": {
+      "qrCode": "Pro tento QR kód se nám nepodařilo najít výsledek.",
+      "barCode": "Produkt nebyl nalezen."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Otevřít nastavení",
+      "camera_message": "Tato funkce vyžaduje přístup k fotoaparátu. Povolte prosím přístup v nastavení.",
+      "push_message": "Pro tuto aplikaci jste zakázali push oznámení. Přejděte prosím do nastavení svého zařízení a povolte je.",
+      "geolocation_message": "Pro zobrazení okolních obchodů potřebujeme přístup k poloze."
+    }
+  },
+  "error": {
+    "general": "Problém s připojením. Zkontrolujte prosím připojení k internetu nebo to zkuste později."
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2místné číslo"
+      },
+      "MMM": {
+        "month": "krátký"
+      }
+    }
+  },
+  "appRating": {
+    "yes": "Ano",
+    "no": "Ne",
+    "title": "Hodnotit aplikaci",
+    "message": "Líbí se vám naše aplikace? Těšíme se na hodnocení!",
+    "rejectionApprovalMessage": "Chcete nám dát zpětnou vazbu? Pomůže nám to aplikaci dále vylepšovat."
+  },
+  "pushOptInModal": {
+    "title": "Dostávejte exkluzivní kupóny a nabídky",
+    "buttonAllow": "Aktivovat oznámení",
+    "buttonDeny": "Nechci oznámení",
+    "message": "Aktivujte si oznámení, abychom vám mohli posílat push oznámení o nových nabídkách, exkluzivních poukázkách a dalších informacích." 
+  }
+}
