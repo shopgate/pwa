@@ -113,7 +113,7 @@
     }
   },
   "price": {
-    "from": "Από {τιμή}",
+    "from": "Από {price}",
     "range": "Τιμή από {fromPrice} έως {toPrice}",
     "range_from": "Εύρος τιμών από",
     "range_to": "Εύρος τιμών έως",
