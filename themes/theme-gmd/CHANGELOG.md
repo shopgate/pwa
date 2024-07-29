@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.22.5](https://github.com/shopgate/pwa/compare/v6.22.4...v6.22.5) (2024-07-29)
+
+#### :rocket: Enhancement
+* [#1250](https://github.com/shopgate/pwa/pull/1250) Add translations for 6 new languages ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v6.22.4](https://github.com/shopgate/pwa/compare/v6.22.3...v6.22.4) (2024-06-20)
 
 #### :bug: Bug Fix
