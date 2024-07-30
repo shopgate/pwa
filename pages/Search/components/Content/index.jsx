@@ -59,6 +59,7 @@ class SearchContent extends Component {
     return (
       <DefaultBar
         center={<AppBar.Title title={title} onClick={this.showSearch} />}
+        shadow={!showFilterBar}
         below={<Bar showFilterBar={showFilterBar} />}
       />
     );
