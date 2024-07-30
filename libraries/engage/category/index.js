@@ -7,10 +7,8 @@ export { default as fetchCategoryChildren } from '@shopgate/pwa-common-commerce/
 export { default as fetchCategoryProducts } from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 export { default as fetchRootCategories } from '@shopgate/pwa-common-commerce/category/actions/fetchRootCategories';
 
-// CONSTANTS
-export * from '@shopgate/pwa-common-commerce/category/constants/index';
-export * from '@shopgate/pwa-common-commerce/category/constants/Pipelines';
-export * from '@shopgate/pwa-common-commerce/category/constants/Portals';
+// eslint-disable-next-line import/export
+export * from './constants';
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/category/selectors';

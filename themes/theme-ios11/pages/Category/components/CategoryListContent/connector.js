@@ -5,6 +5,7 @@ import {
   areCategoryChildrenFetching,
   getCategoryChildCount,
   hasCategoryChildren,
+  getCategory,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
@@ -15,6 +16,7 @@ import {
  */
 const mapStateToProps = (state, props) => ({
   categories: getCategoryChildren(state, props),
+  category: getCategory(state, props),
   categoriesFetching: areCategoryChildrenFetching(state, props),
   hasChildren: hasCategoryChildren(state, props),
   childrenCount: getCategoryChildCount(state, props),

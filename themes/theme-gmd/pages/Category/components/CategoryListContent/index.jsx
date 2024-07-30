@@ -6,11 +6,15 @@ import {
   CATEGORY_LIST_AFTER,
   CATEGORY_LIST_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Section } from '@shopgate/engage/a11y';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { ResponsiveContainer } from '@shopgate/engage/components';
-import CategoryList from 'Components/CategoryList';
+import { CategoryList } from '@shopgate/engage/category/components';
 import CategoryGrid from 'Components/CategoryGrid';
 import connect from './connector';
+
+const showAllProducts = appConfig.categoriesShowAllProducts;
 
 /**
  * The category list content.
@@ -20,6 +24,7 @@ class CategoryListContent extends PureComponent {
     categoryId: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.shape()),
     categoriesFetching: PropTypes.bool,
+    category: PropTypes.shape(),
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
     showCategoryImages: PropTypes.bool,
@@ -27,6 +32,7 @@ class CategoryListContent extends PureComponent {
 
   static defaultProps = {
     categories: null,
+    category: null,
     categoriesFetching: false,
     childrenCount: 6,
     hasChildren: false,
@@ -38,7 +44,7 @@ class CategoryListContent extends PureComponent {
    */
   render() {
     const {
-      hasChildren, categories, categoryId, childrenCount, categoriesFetching,
+      hasChildren, category, categories, categoryId, childrenCount, categoriesFetching,
     } = this.props;
 
     return (
@@ -51,6 +57,9 @@ class CategoryListContent extends PureComponent {
                 <CategoryList
                   categories={categories}
                   prerender={categoriesFetching ? childrenCount : 0}
+                  // "show all products" feature is only supported by the "old" services
+                  showAllProducts={!hasNewServices() && showAllProducts}
+                  parentCategory={category}
                   showImages={this.props.showCategoryImages}
                 />
               </ResponsiveContainer>

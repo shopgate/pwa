@@ -182,7 +182,12 @@
     "reset": "Zurücksetzen",
     "remove": "{filter} Filter entfernen",
     "edit": "{filter} Filter bearbeiten",
-    "filter_by": "Filtern nach {label}"
+    "filter_by": "Filtern nach {label}",
+    "label": {
+      "price": "Preis",
+      "category": "Kategorie",
+      "manufacturer": "Marke"
+    }
   },
   "price": {
     "from": "Ab {price}",
@@ -363,6 +368,9 @@
     "sections": {
       "categories": "Kategorien",
       "products": "Produkte"
+    },
+    "showAllProducts": {
+      "label": "Alle Produkte anzeigen"
     },
     "errors": {
       "404": "Kategorie nicht gefunden"

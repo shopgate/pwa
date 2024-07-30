@@ -17,7 +17,12 @@ import {
   PAGE_PATTERN,
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import {
+  CATEGORY_PATTERN,
+  CATEGORY_ALL_PATTERN,
+  CATEGORY_FILTER_PATTERN,
+  CATEGORY_ALL_FILTER_PATTERN,
+} from '@shopgate/engage/category/constants';
 import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account';
 import {
   ITEM_PATTERN,
@@ -86,7 +91,7 @@ const Pages = ({ store }) => {
   return (
     <App store={store}>
       <Helmet>
-        <html lang={appConfig.language.substring(0, 2)} />
+        <html lang={appConfig.language.substring(0, 2)} className="theme-ios11" />
         {recaptchaEnabled && googleCloudSiteKey ? (
           <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
         ) : null }
@@ -118,6 +123,8 @@ const Pages = ({ store }) => {
                     <Route pattern={PAGE_PATTERN} component={routes.Page} />
                     <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                     <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                    <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
+                    <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
                     <Route
                       pattern={ITEM_PATTERN}
                       component={routes.Product}
