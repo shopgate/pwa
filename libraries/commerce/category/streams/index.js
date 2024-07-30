@@ -98,6 +98,13 @@ export const categoryFiltersDidUpdate$ = filtersDidUpdate$
 export const categoryDidUpdate$ = routeDidUpdate$
   .filter(({ action }) => action?.route?.pattern === CATEGORY_PATTERN);
 
+export const categoryAllDidUpdate$ = routeDidUpdate$
+  .filter(({ action }) => action?.route?.pattern === CATEGORY_ALL_PATTERN);
+
 export const categoryFiltersDidUpdateFromFilterPage$ = categoryDidUpdate$
   .switchMap(() => filterWillLeave$.first())
   .switchMap(() => categoryWillEnter$.first());
+
+export const categoryAllFiltersDidUpdateFromFilterPage$ = categoryAllDidUpdate$
+  .switchMap(() => filterWillLeave$.first())
+  .switchMap(() => categoryAllWillEnter$.first());

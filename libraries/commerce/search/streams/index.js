@@ -18,9 +18,6 @@ import {
 import {
   CATEGORY_ALL_PATTERN,
 } from '@shopgate/pwa-common-commerce/category/constants';
-import {
-  categoryAllWillEnter$,
-} from '@shopgate/pwa-common-commerce/category/streams';
 import { filterWillLeave$ } from '../../filter/streams';
 import {
   REQUEST_SEARCH_RESULTS,
@@ -82,7 +79,3 @@ export const searchDidUpdate$ = routeDidUpdate$
 export const searchFiltersDidUpdateFromFilterPage$ = searchDidUpdate$
   .switchMap(() => filterWillLeave$.first())
   .switchMap(() => searchWillEnter$.first());
-
-export const searchPageComponentWillEnter$ = searchWillEnter$.merge(
-  categoryAllWillEnter$
-);
