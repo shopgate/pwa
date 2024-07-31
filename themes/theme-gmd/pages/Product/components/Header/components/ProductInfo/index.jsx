@@ -26,7 +26,7 @@ import * as styles from './style';
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ProductInfo = ({ productId, options, isROPEActive }) => (
   <Fragment>
@@ -37,7 +37,7 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
           <Portal name={PRODUCT_INFO_ROW1}>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
-                It should only be used for approved BETA Client Projects */}
+              It should only be used for approved BETA Client Projects */}
               <MapPriceHint productId={productId} />
             </div>
             <div className={styles.productInfo}>
