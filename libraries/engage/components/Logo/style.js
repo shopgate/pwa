@@ -12,7 +12,8 @@ const container = css({
 const image = css({
   margin: '0 auto',
   maxHeight: variables.navigator.height,
-  maxWidth: `calc(100vw - ${(variables.navigator.height * 3) + variables.gap.xbig}px)`,
+  maxWidth:
+    `calc(var(--page-content-width) - ${(variables.navigator.height * 3) + variables.gap.xbig}px)`,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
