@@ -1,21 +1,19 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { SurroundPortals } from '@shopgate/engage/components';
 import {
   PRODUCT_ADD_TO_CART_BAR,
-  PRODUCT_ADD_TO_CART_BAR_AFTER,
-  PRODUCT_ADD_TO_CART_BAR_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product/constants';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
 import CartItemsCount from './components/CartItemsCount';
-import { ProductContext } from '../../context';
 import connect from './connector';
 import styles from './style';
 
@@ -199,40 +197,44 @@ class AddToCartBar extends Component {
 
     return ReactDOM.createPortal(
       (
-        <Fragment>
-          <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
-          <Portal name={PRODUCT_ADD_TO_CART_BAR}>
-            <Section title="product.sections.purchase">
-              <div className={styles.container}>
-                <div className={styles.innerContainer} ref={this.ref}>
-                  <div className={styles.base}>
-                    <div className={styles.statusBar}>
-                      <CartItemsCount
-                        productId={this.props.productId}
-                        itemCount={added}
-                      />
-                      <AddMoreButton
-                        handleAddToCart={this.handleAddToCart}
-                        disabled={this.props.disabled}
-                        loading={this.props.loading}
-                        onReset={this.resetClicked}
-                        visible={added > 0}
-                        ref={this.moreButtonRef}
-                      />
-                    </div>
-                    <AddToCartButton
-                      disabled={this.props.disabled}
+        <SurroundPortals
+          portalName={PRODUCT_ADD_TO_CART_BAR}
+          portalProps={{
+            ...this.props,
+            ...this.state,
+            handleAddToCart: this.handleAddToCart,
+            resetClicked: this.resetClicked,
+          }}
+        >
+          <Section title="product.sections.purchase" className="theme__product__add-to-cart-bar">
+            <div className={styles.container}>
+              <div className={styles.innerContainer} ref={this.ref}>
+                <div className={styles.base}>
+                  <div className={styles.statusBar}>
+                    <CartItemsCount
+                      productId={this.props.productId}
                       itemCount={added}
+                    />
+                    <AddMoreButton
                       handleAddToCart={this.handleAddToCart}
+                      disabled={this.props.disabled}
+                      loading={this.props.loading}
                       onReset={this.resetClicked}
+                      visible={added > 0}
+                      ref={this.moreButtonRef}
                     />
                   </div>
+                  <AddToCartButton
+                    disabled={this.props.disabled}
+                    itemCount={added}
+                    handleAddToCart={this.handleAddToCart}
+                    onReset={this.resetClicked}
+                  />
                 </div>
               </div>
-            </Section>
-          </Portal>
-          <Portal name={PRODUCT_ADD_TO_CART_BAR_AFTER} />
-        </Fragment>
+            </div>
+          </Section>
+        </SurroundPortals>
       ),
       this.target
     );
