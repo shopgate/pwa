@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+jest.mock('@shopgate/engage/components');
+
 /**
  * Creates a component for testing.
  * @param {boolean} mockedShow Is the return policy supposed to be shown.

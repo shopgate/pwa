@@ -7,6 +7,7 @@ import Quicklinks from './index';
 
 const store = createMockStore();
 
+jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/pwa-common/components/Link', () => {
   /* eslint-disable react/prop-types, require-jsdoc */
   const Link = ({ children }) => (
