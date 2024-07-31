@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { CATEGORY_ALL_FILTER_PATTERN } from '@shopgate/engage/category/constants';
-import { buildFilterParamsForFetchFiltersRequest } from '@shopgate/engage/filter';
+import { buildFilterParamsForFetchFiltersRequest } from '@shopgate/engage/filter/helpers';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
