@@ -61,10 +61,10 @@ class CartButton extends Component {
    */
   get color() {
     if (this.state.clicked) {
-      return `var(--color-primary-contrast, ${colors.light})`;
+      return `var(--color-button-cta-contrast, ${colors.light})`;
     }
 
-    return (this.props.disabled && !this.props.loading) ? colors.shade5 : `var(--color-primary, ${colors.primary})`;
+    return (this.props.disabled && !this.props.loading) ? colors.shade5 : `var(--color-button-cta, ${colors.primary})`;
   }
 
   /**
@@ -74,7 +74,7 @@ class CartButton extends Component {
     if (this.props.loading) {
       return (
         <IndicatorCircle
-          color={`var(--color-primary-contrast, ${colors.primaryContrast})`}
+          color={`var(--color-button-cta-contrast, ${colors.primaryContrast})`}
           strokeWidth={4}
           paused={false}
         />
@@ -162,7 +162,7 @@ class CartButton extends Component {
     return (
       <FloatingActionButton
         background={this.color}
-        className={button}
+        className={`${button} theme__product__header__cta-buttons__cart-button`}
         onClick={this.handleClick}
         disabled={this.props.disabled}
         testId="addToCartButton"
