@@ -15,7 +15,7 @@ const Layout = (props) => {
 
   return (
     <div className={cartItemsDisplay === 'line' ? styles.wrapper : styles.wrapperCard}>
-      <form className={styles.container} onSubmit={props.handleAddCoupon} data-test-id="couponField">
+      <form className={`${styles.container} theme__cart__coupon`} onSubmit={props.handleAddCoupon} data-test-id="couponField">
         <TextField
           disabled={props.isLoading}
           name="coupon-code-field"
