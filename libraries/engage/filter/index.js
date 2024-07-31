@@ -19,11 +19,7 @@ export { default as FilterItem } from './components/FilterItem';
 export { default as PriceSlider } from './components/PriceSlider';
 
 // HELPERS
-
-export { default as buildInitialFilters } from './helpers/buildInitialFilters';
-export { default as buildUpdatedFilters } from './helpers/buildUpdatedFilters';
-export { default as buildFilterParamsForFetchFiltersRequest } from './helpers/buildFilterParamsForFetchFiltersRequest';
-export { translateFilterLabel } from './helpers/translateFilterLabel';
+export * from './helpers';
 
 export {
   SORT_ORDER_RELEVANCE,

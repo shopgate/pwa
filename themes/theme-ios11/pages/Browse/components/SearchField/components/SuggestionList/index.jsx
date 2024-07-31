@@ -6,7 +6,7 @@ import {
   SEARCH_SUGGESTIONS,
   SEARCH_SUGGESTION_ITEM,
   SEARCH_SUGGESTION_ITEM_CONTENT,
-} from '@shopgate/engage/search';
+} from '@shopgate/engage/search/constants';
 import connect from './connector';
 import styles from './style';
 

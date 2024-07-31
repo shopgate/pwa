@@ -13,7 +13,7 @@ import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fet
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import {
   buildFilterParamsForFetchFiltersRequest,
-} from '@shopgate/engage/filter';
+} from '@shopgate/engage/filter/helpers';
 import {
   categoryAllWillEnter$,
   categoryAllFiltersDidUpdateFromFilterPage$,

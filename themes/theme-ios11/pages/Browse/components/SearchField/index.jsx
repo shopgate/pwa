@@ -23,7 +23,7 @@ import {
   MagnifierIcon,
   BarcodeScannerIcon,
 } from '@shopgate/engage/components';
-import { SCANNER_ICON } from '@shopgate/engage/scanner';
+import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
 import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
