@@ -283,11 +283,11 @@
     "success_message": "Děkujeme vám za vaše hodnocení!"
   },
   "tab_bar": {
-    "home": "Dům",
+    "home": "Domů",
     "browse": "Procházet",
-    "cart": "Nákupní košík",
-    "more": "Více na",
-    "favorites": "Sledovaný seznam"
+    "cart": "Košík",
+    "more": "Více",
+    "favorites": "Oblíbené"
   },
   "scanner": {
     "instructions": "Umístěte prosím čárový kód nebo QR kód doprostřed. Rozpoznání je automatické.",
@@ -328,6 +328,6 @@
     "title": "Dostávejte exkluzivní kupóny a nabídky",
     "buttonAllow": "Aktivovat oznámení",
     "buttonDeny": "Nechci oznámení",
-    "message": "Aktivujte si oznámení, abychom vám mohli posílat push oznámení o nových nabídkách, exkluzivních poukázkách a dalších informacích." 
+    "message": "Aktivujte si oznámení, abychom vám mohli posílat push oznámení o nových nabídkách, exkluzivních poukázkách a dalších informacích."
   }
 }

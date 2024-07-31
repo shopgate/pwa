@@ -283,11 +283,11 @@
     "success_message": "Kiitos luokituksestasi!"
   },
   "tab_bar": {
-    "home": "Etusivu",
+    "home": "Koti",
     "browse": "Selaa",
     "cart": "Ostoskori",
     "more": "Lisää",
-    "favorites": "Seurantaluettelo"
+    "favorites": "Suosikit"
   },
   "scanner": {
     "instructions": "Aseta viivakoodi tai QR-koodi keskelle. Tunnistus tapahtuu automaattisesti.",

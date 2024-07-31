@@ -284,10 +284,10 @@
   },
   "tab_bar": {
     "home": "Kezdőlap",
-    "browse": "Böngészés",
+    "browse": "Böngésszen",
     "cart": "Kosár",
-    "more": "További",
-    "favorites": "Figyelőlista"
+    "more": "Több",
+    "favorites": "Kedvencek"
   },
   "scanner": {
     "instructions": "Kérjük, helyezze a vonalkódot vagy a QR-kódot középre. A felismerés automatikusan történik.",
