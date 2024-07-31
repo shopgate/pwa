@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   PRODUCT_PRICE,
@@ -72,11 +72,9 @@ Content.defaultProps = {
  * @return {JSX}
  */
 const Price = props => (
-  <Fragment>
-    <SurroundPortals portalName={PRODUCT_PRICE} portalProps={props}>
-      <Content {...props} />
-    </SurroundPortals>
-  </Fragment>
+  <SurroundPortals portalName={PRODUCT_PRICE} portalProps={props}>
+    <Content {...props} />
+  </SurroundPortals>
 );
 
 Price.propTypes = {

@@ -41,7 +41,7 @@ class ProductHeader extends PureComponent {
    */
   render() {
     return (
-      <SurroundPortals name={PRODUCT_HEADER}>
+      <SurroundPortals portalName={PRODUCT_HEADER}>
         <ProductContext.Consumer>
           {this.consumeRenderer}
         </ProductContext.Consumer>

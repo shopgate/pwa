@@ -1,6 +1,6 @@
 import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { hasWebBridge } from '@shopgate/engage/core';
+import { hasWebBridge, hasNewServices } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp, setCSSCustomProp } from './cssCustomProperties';
 
 const { colors } = themeConfig;
@@ -40,6 +40,9 @@ export const initCSSCustomProps = () => {
 
   const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).alpha(0.08);
   setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
+
+  setCSSCustomProp('--color-button-cta', 'var(--color-primary)');
+  setCSSCustomProp('--color-button-cta-contrast', 'var(--color-primary-contrast)');
 };
 
 /**
@@ -50,6 +53,14 @@ export const initCSSCustomPropsFallback = () => {
   setCSSCustomProp('--color-primary-contrast', getContrastColor(colors.primary));
   setCSSCustomProp('--color-secondary', colors.accent);
   setCSSCustomProp('--color-secondary-contrast', getContrastColor(colors.accent));
+
+  if (!hasNewServices()) {
+    setCSSCustomProp('--color-button-cta', colors.cta);
+    setCSSCustomProp('--color-button-cta-contrast', colors.ctaContrast);
+  } else {
+    setCSSCustomProp('--color-button-cta', 'var(--color-primary)');
+    setCSSCustomProp('--color-button-cta-contrast', 'var(--color-primary-contrast)');
+  }
 
   setCSSCustomProp('--color-text-high-emphasis', '#212121');
   setCSSCustomProp('--color-text-medium-emphasis', '#666666');
