@@ -5,7 +5,8 @@ import {
 } from '@shopgate/engage/components';
 import {
   NAV_MENU_QUICK_LINKS,
-} from '@shopgate/engage/core';
+  NAV_MENU_QUICK_LINKS_ITEMS,
+} from '@shopgate/engage/core/constants';
 import portalProps from '../../portalProps';
 
 import Section from '../Section';
@@ -25,9 +26,11 @@ function Quicklinks({ entries }) {
   return (
     <SurroundPortals portalName={NAV_MENU_QUICK_LINKS} portalProps={portalProps}>
       <Section title="navigation.more_menu">
-        {entries.map(entry => (
-          <Section.Item href={entry.url} key={entry.url} label={entry.label} />
-        ))}
+        <SurroundPortals portalName={NAV_MENU_QUICK_LINKS_ITEMS} portalProps={portalProps}>
+          {entries.map(entry => (
+            <Section.Item href={entry.url} key={entry.url} label={entry.label} />
+          ))}
+        </SurroundPortals>
       </Section>
     </SurroundPortals>
   );
