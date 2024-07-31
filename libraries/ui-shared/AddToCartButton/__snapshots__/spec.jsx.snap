@@ -25,7 +25,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1sr59j6"
+      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1vypr3k"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -192,7 +192,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1sr59j6"
+      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1vypr3k"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -328,7 +328,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1rxo1j2"
+      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1hx8uyq"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"

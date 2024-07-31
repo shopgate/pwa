@@ -7,6 +7,7 @@ jest.mock('@shopgate/engage/product/contexts', () => ({
     Consumer: ({ children }) => children({}),
   },
 }));
+jest.mock('@shopgate/engage/components');
 jest.mock('./connector', () => cmp => cmp);
 
 describe('<Price />', () => {
@@ -24,14 +25,22 @@ describe('<Price />', () => {
 
   it('should pass unitPriceMin for variants', () => {
     const wrapper = shallow(<Price price={price} hasProductVariants />)
-      .find('Consumer').dive();
+      .find('Content').dive()
+      .find('Consumer')
+      .dive();
+
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Price').prop('unitPriceMin')).toBe(price.unitPriceMin);
   });
 
   it('should not pass unitPriceMin for non variants', () => {
     const wrapper = shallow(<Price price={price} hasProductVariants={false} />)
-      .find('Consumer').dive();
+      .find('Content').dive()
+      .find('Consumer')
+      .dive();
+
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Price').prop('unitPriceMin')).toBe(0);
   });
 });
 
