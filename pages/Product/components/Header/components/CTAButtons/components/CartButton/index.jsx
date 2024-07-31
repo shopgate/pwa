@@ -5,7 +5,7 @@ import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { I18n } from '@shopgate/engage/components';
-import { ProductContext } from '@shopgate/engage/product';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import Icon from './components/Icon';
 import connect from './connector';
