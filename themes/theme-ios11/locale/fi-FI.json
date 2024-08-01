@@ -13,7 +13,7 @@
     "products": "Tuotteet"
   },
   "titles": {
-   "categories": "Luokat",
+    "categories": "Luokat",
     "filter": "Suodattimet",
     "cart": "Ostoskori",
     "shipping": "Toimitus",
@@ -35,7 +35,7 @@
       "title": "Ilmoitus lisätty!",
       "message": "Lähetämme sinulle push-ilmoituksen, kun tuote on jälleen saatavilla. Voit hallita näitä ilmoituksia valikon kautta."
     },
-   "rationale": {
+    "rationale": {
       "message": "Salli push-ilmoitukset seuraavassa vaiheessa, jotta voimme ilmoittaa sinulle, kun tuote on jälleen saatavilla.",
       "confirm": "Salli ilmoitukset"
     }
@@ -191,7 +191,7 @@
     },
     "placeholder": "Etsi"
   },
-"shipping": {
+  "shipping": {
     "unknown": "plus toimituskulut",
     "free": "Ilmainen toimitus",
     "free_short": "Ilmainen",
@@ -240,7 +240,7 @@
     "no_account": "Sinulla ei ole vielä tiliä?",
     "signup": "Rekisteröi",
     "logout_message": "Sinut on kirjauduttu ulos.",
-     "error": "Käyttäjätunnus tai salasana eivät ole oikein"
+    "error": "Käyttäjätunnus tai salasana eivät ole oikein"
   },
   "navigation": {
     "login_register": "Kirjaudu sisään",
@@ -283,11 +283,11 @@
     "success_message": "Kiitos luokituksestasi!"
   },
   "tab_bar": {
-    "home": "Etusivu",
+    "home": "Koti",
     "browse": "Selaa",
     "cart": "Ostoskori",
     "more": "Lisää",
-    "favorites": "Seurantaluettelo"
+    "favorites": "Suosikit"
   },
   "scanner": {
     "instructions": "Aseta viivakoodi tai QR-koodi keskelle. Tunnistus tapahtuu automaattisesti.",

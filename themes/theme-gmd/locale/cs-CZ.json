@@ -93,7 +93,7 @@
     "close_list": "Zavřít seznam.",
     "load_more_button": "Načíst další položky"
   },
-"filter": {
+  "filter": {
     "sort": {
       "default": "Třídit",
       "most_popular": "Nejlepší výsledky",
@@ -195,7 +195,7 @@
     "cost": "{price} Doprava"
   },
   "liveshopping": {
-    "discount_badge":"{0}% Uložit"
+    "discount_badge": "{0}% Uložit"
   },
   "modal": {
     "confirm": "Potvrdit",
@@ -321,6 +321,6 @@
     "title": "Dostávejte exkluzivní kupóny a nabídky",
     "buttonAllow": "Aktivovat oznámení",
     "buttonDeny": "Nechci oznámení",
-    "message": "Aktivujte si oznámení, abychom vám mohli posílat push oznámení o nových nabídkách, exkluzivních poukázkách a dalších informacích." 
+    "message": "Aktivujte si oznámení, abychom vám mohli posílat push oznámení o nových nabídkách, exkluzivních poukázkách a dalších informacích."
   }
 }

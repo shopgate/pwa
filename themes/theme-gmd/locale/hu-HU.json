@@ -163,7 +163,7 @@
     }
   },
   "category": {
-     "error": {
+    "error": {
       "title": "Hoppá",
       "not_found": "Kategória nem található"
     },
@@ -297,7 +297,7 @@
       "geolocation_message": "Hozzáférésre van szükségünk a helymeghatározáshoz, hogy megmutathassuk a közeli üzleteket."
     }
   },
-   "error": {
+  "error": {
     "general": "Kapcsolati probléma. Kérjük, ellenőrizze internetkapcsolatát, vagy próbálja meg később újra."
   },
   "formats": {
