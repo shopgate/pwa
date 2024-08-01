@@ -41,7 +41,7 @@ import {
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
+import { transformRoute as transformItemRoute } from '@shopgate/engage/product/helpers';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
@@ -59,6 +59,7 @@ import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import ForgotPassword from './ForgotPassword';
 import Account from './Account';
@@ -169,6 +170,10 @@ const Pages = ({ store }) => {
                       transform={routesTransforms[SEARCH_FILTER_PATTERN]}
                     />
                     <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                    <Route
+                      pattern={BACK_IN_STOCK_PATTERN}
+                      component={routes.BackInStock}
+                    />
                     <Route
                       pattern={CHECKOUT_PATTERN}
                       component={routes.Checkout}
