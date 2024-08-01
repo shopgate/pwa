@@ -11,14 +11,10 @@ import {
 import {
   appSupportsPushOptIn,
   logger,
-  hasSGJavaScriptBridge,
-  createMockedPermissions,
-  hasWebBridge,
 } from '@shopgate/engage/core/helpers';
 import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_NOT_DETERMINED,
-  PERMISSION_STATUS_GRANTED,
 } from '@shopgate/engage/core/constants';
 import { requestAppPermissionStatus } from '@shopgate/engage/core/actions';
 // TODO replace appDidStart$ with cookieConsentInitialized$ after cookie consent feature is merged
@@ -83,11 +79,6 @@ export default function pushOptIn(subscribe) {
 
     const { status: pushStatus } = await dispatch(requestAppPermissionStatus({
       permissionId: PERMISSION_ID_PUSH,
-      ...(!hasSGJavaScriptBridge() && !hasWebBridge() ? {
-        // In development a mock needs to be injected to enable command testing.  Command responses
-        // can be mocked via the global MockedAppPermissions object see appPermissions.js
-        dispatchMock: createMockedPermissions(PERMISSION_STATUS_GRANTED),
-      } : null),
     }));
 
     if (pushStatus !== PERMISSION_STATUS_NOT_DETERMINED) {
