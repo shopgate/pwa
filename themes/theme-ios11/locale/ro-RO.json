@@ -317,7 +317,7 @@
       }
     }
   },
-   "appRating": {
+  "appRating": {
     "yes": "Da",
     "no": "Nu",
     "title": "Evaluați aplicația",

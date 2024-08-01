@@ -40,7 +40,7 @@
       "confirm": "Engedélyezd az értesítéseket"
     }
   },
- "favorites": {
+  "favorites": {
     "add": "Hozzáadás a kedvencek listájához",
     "added": "A termék hozzá lett adva a kedvencek listájához",
     "continue": "Vásárlás folytatása",
@@ -167,21 +167,21 @@
   },
   "category": {
     "error": {
-     "title": "Hoppá",
-     "not_found": "Kategória nem található"
-   },
-   "no_result": {
-     "heading": "Hoppá!",
-     "body": "Nem találtunk terméket."
-   },
-   "sections": {
-     "categories": "Kategóriák",
-     "products": "Termékek"
-   },
-   "showAllProducts": {
-     "label": "Összes termék megjelenítése"
-   }
- },
+      "title": "Hoppá",
+      "not_found": "Kategória nem található"
+    },
+    "no_result": {
+      "heading": "Hoppá!",
+      "body": "Nem találtunk terméket."
+    },
+    "sections": {
+      "categories": "Kategóriák",
+      "products": "Termékek"
+    },
+    "showAllProducts": {
+      "label": "Összes termék megjelenítése"
+    }
+  },
   "search": {
     "label": "Keresés",
     "cancel": "Törölje",
@@ -191,13 +191,13 @@
     },
     "placeholder": "Keresés"
   },
- "shipping": {
+  "shipping": {
     "unknown": "plusz szállítás",
     "free": "Ingyenes szállítás",
     "free_short": "Ingyenes",
     "cost": "{price} Szállítás"
   },
- "liveshopping": {
+  "liveshopping": {
     "discount_badge": "{0}% MENTSE"
   },
   "modal": {
@@ -304,7 +304,7 @@
       "geolocation_message": "Hozzáférésre van szükségünk a helymeghatározáshoz, hogy megmutathassuk a közeli üzleteket."
     }
   },
-   "error": {
+  "error": {
     "general": "Kapcsolati probléma. Kérjük, ellenőrizze internetkapcsolatát, vagy próbálja meg később újra."
   },
   "formats": {
