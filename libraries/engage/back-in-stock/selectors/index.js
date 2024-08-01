@@ -1,9 +1,8 @@
 import { createSelector } from 'reselect';
 import { makeGetProductByCharacteristics } from '@shopgate/engage/product';
-import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { appConfig } from '@shopgate/engage';
-import { getClientInformation } from '@shopgate/engage/core';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { hasNewServices, hasSGJavaScriptBridge, hasWebBridge } from '@shopgate/engage/core/helpers';
+import { getClientInformation } from '@shopgate/engage/core/selectors';
 import {
   PERMISSION_STATUS_GRANTED,
   PERMISSION_STATUS_NOT_SUPPORTED,
@@ -110,7 +109,9 @@ export const getIsBackInStockEnabled = createSelector(
   getClientInformation,
   getBackInStockPushPermissionStatus,
   (clientInformation, pushPermissionStatus) => {
-    if (!hasNewServices()) {
+    // Feature is not supported with the new services right now, since non ROPE inventory is
+    // not fully supported.
+    if (hasNewServices() || hasWebBridge()) {
       return false;
     }
 

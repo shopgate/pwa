@@ -24,6 +24,7 @@
     "browse": "Bladeren",
     "favorites": "Favorieten",
     "scanner": "Scanner",
+    "back_in_stock": "Meldingen",
     "checkout": "Checkout",
     "checkout_confirmation": "Order Successful",
     "checkout_change_billing": "Change Billing Address",
@@ -93,6 +94,23 @@
         "messageContact": "Are you should you want to delete this address?",
         "messageCustomer": "Are you should you want to delete your account? This will delete all of your personal data and preferences."
       }
+    }
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Actieve meldingen",
+      "past": "Afgelopen meldingen"
+    },
+    "empty_list_reminder": "U hebt geen meldingen geconfigureerd",
+    "get_notified": "Stel me op de hoogte van nieuwe voorraad",
+    "we_will_remind_you": "We zullen u op de hoogte stellen wanneer het product weer op voorraad is",
+    "add_back_in_stock_success_modal": {
+      "title": "Melding toegevoegd!",
+      "message": "We sturen je een pushmelding als het product weer op voorraad is. Je kunt je meldingen beheren in het menu."
+    },
+    "rationale": {
+      "message": "Sta pushmeldingen toe in de volgende stap, zodat we je een melding kunnen sturen als het product weer op voorraad is.",
+      "confirm": "Pushmeldingen toestaan"
     }
   },
   "favorites": {
@@ -510,6 +528,7 @@
     "categories": "Categorieën",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
+    "back_in_stock": "Terug in voorraad herinnering",
     "shipping": "Verzendmethoden",
     "about": "Impressum",
     "contact": "Contact",

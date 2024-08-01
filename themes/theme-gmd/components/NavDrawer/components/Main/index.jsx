@@ -9,6 +9,7 @@ import FavoritesButton from './components/FavoritesButton';
 import CartButton from './components/CartButton';
 import ScannerButton from './components/ScannerButton';
 import AccountButton from './components/AccountButton';
+import BackInStockButton from './components/BackInStockButton';
 import connect from './connector';
 
 /**
@@ -22,6 +23,7 @@ const MainSection = ({ isLoggedIn }) => (
     <CartButton />
     {hasNewServices() && isLoggedIn && <AccountButton />}
     <ScannerButton />
+    <BackInStockButton />
   </NavDrawer.Section>
 );
 

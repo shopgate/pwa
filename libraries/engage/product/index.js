@@ -19,15 +19,6 @@ export { default as fetchProductsByQuery } from '@shopgate/pwa-common-commerce/p
 export { default as fetchProductShipping } from '@shopgate/pwa-common-commerce/product/actions/fetchProductShipping';
 export { default as fetchProductVariants } from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
 
-// COLLECTIONS
-export { default as productImageFormats } from '@shopgate/pwa-common-commerce/product/collections/ProductImageFormats';
-
-// HELPERS
-export * from '@shopgate/pwa-common-commerce/product/helpers';
-export * from './helpers/index';
-export * from './helpers/redirects';
-export * from './components/Media/helpers';
-
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/product/selectors/options';
 export * from '@shopgate/pwa-common-commerce/product/selectors/page';
@@ -50,16 +41,17 @@ export * from './selectors/price';
 export * from './selectors/variants';
 export * from './selectors/relations';
 
-// STREAMS
-export * from '@shopgate/pwa-common-commerce/product/streams';
-
 // CONTEXTS
 export { ProductContext, VariantContext } from './components/context';
 export { default as ProductListTypeContext } from './providers/ProductListType/context';
 export { default as ProductListEntryContext } from './providers/ProductListEntry/context';
 
+export * from './collections';
 export * from './constants';
+export * from './helpers';
 export * from './components';
 export * from './hocs';
 export * from './hooks';
 export * from './providers';
+// eslint-disable-next-line import/export
+export * from './streams';

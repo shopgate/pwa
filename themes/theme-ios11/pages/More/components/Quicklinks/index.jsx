@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   SurroundPortals,
@@ -7,6 +7,7 @@ import {
   NAV_MENU_QUICK_LINKS,
   NAV_MENU_QUICK_LINKS_ITEMS,
 } from '@shopgate/engage/core/constants';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import portalProps from '../../portalProps';
 
 import Section from '../Section';
@@ -16,10 +17,19 @@ import connect from './connector';
  * The Quicklinks component.
  * @param {Object} props The component props.
  * @param {Array} props.entries The quicklinks.
+ * @param {boolean} props.isBackInStockEnabled Whether back in stock is enabled.
  * @returns {JSX}
  */
-function Quicklinks({ entries }) {
-  if (!entries || !entries.length) {
+function Quicklinks({ entries, isBackInStockEnabled }) {
+  const allEntries = useMemo(() => (isBackInStockEnabled ?
+    [...entries, {
+      url: BACK_IN_STOCK_PATTERN,
+      label: 'navigation.back_in_stock',
+      key: 'back_in_stock',
+    }] :
+    [...entries]), [entries, isBackInStockEnabled]);
+
+  if (!allEntries || !allEntries.length) {
     return null;
   }
 
@@ -27,7 +37,7 @@ function Quicklinks({ entries }) {
     <SurroundPortals portalName={NAV_MENU_QUICK_LINKS} portalProps={portalProps}>
       <Section title="navigation.more_menu">
         <SurroundPortals portalName={NAV_MENU_QUICK_LINKS_ITEMS} portalProps={portalProps}>
-          {entries.map(entry => (
+          {allEntries.map(entry => (
             <Section.Item href={entry.url} key={entry.url} label={entry.label} />
           ))}
         </SurroundPortals>
@@ -37,6 +47,7 @@ function Quicklinks({ entries }) {
 }
 
 Quicklinks.propTypes = {
+  isBackInStockEnabled: PropTypes.bool.isRequired,
   entries: PropTypes.arrayOf(PropTypes.shape()),
 };
 
