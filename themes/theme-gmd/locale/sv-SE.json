@@ -39,7 +39,7 @@
       "confirm": "Tillåt aviseringar"
     }
   },
- "favorites": {
+  "favorites": {
     "add": "Lägg till i favoritlistan",
     "added": "Produkten har lagts till i favoritlistan",
     "continue": "Fortsätt shoppa",
@@ -66,7 +66,7 @@
     },
     "delete_list_modal": {
       "title": "Radera bevakningslista",
-      "message":"Vill du verkligen ta bort bevakningslistan \"{name}\"?"
+      "message": "Vill du verkligen ta bort bevakningslistan \"{name}\"?"
     },
     "add_list": "Skapa ny lista",
     "errors": {
@@ -182,7 +182,7 @@
   "search": {
     "no_result": {
       "heading": "Hoppsan!",
-      "body":"Din sökning efter \"{searchPhrase}\" gav inget resultat."
+      "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
     },
     "placeholder": "Sökning",
     "close": "Avsluta sökning",
@@ -248,8 +248,8 @@
     "my_orders": "Mina beställningar",
     "cart": "Kundkorg",
     "scanner": "Skanner",
-    "shipping":"Leveransmetoder",
-    "about":"Avtryck",
+    "shipping": "Leveransmetoder",
+    "about": "Avtryck",
     "payment": "Betalningsmetoder",
     "terms": "Villkor och bestämmelser",
     "privacy": "Dataskydd",
@@ -285,7 +285,7 @@
   "scanner": {
     "instructions": "Placera streckkoden eller QR-koden i mitten. Erkänningen sker automatiskt.",
     "noResult": {
-      "qrCode":"Vi kunde inte hitta något resultat för den här QR-koden.",
+      "qrCode": "Vi kunde inte hitta något resultat för den här QR-koden.",
       "barCode": "Produkten hittades inte."
     }
   },
@@ -313,7 +313,7 @@
   "appRating": {
     "yes": "Ja",
     "no": "Nej",
-    "title":"Betygsätt appen",
+    "title": "Betygsätt appen",
     "message": "Gillar du vår app? Vi ser fram emot ett betyg!",
     "rejectionApprovalMessage": "Skulle du vilja ge oss feedback? Det hjälper oss att förbättra appen ytterligare."
   },

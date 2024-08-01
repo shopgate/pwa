@@ -1,6 +1,6 @@
 {
   "common": {
-   "countdown": "{days, plural, =0 {fortfarande {time}} =1 {# Dag {time}} other {# Dagar {time}}}",
+    "countdown": "{days, plural, =0 {fortfarande {time}} =1 {# Dag {time}} other {# Dagar {time}}}",
     "load_more": "Ladda mer",
     "cancel": "Avbryt",
     "submit": "Skicka",
@@ -20,7 +20,7 @@
     "reviews": "Recensioner",
     "browse": "Bläddra",
     "favorites": "Bevakningslista",
-   "scanner": "Skanner",
+    "scanner": "Skanner",
     "back_in_stock": "Notifieringar"
   },
   "back_in_stock": {
@@ -40,7 +40,7 @@
       "confirm": "Tillåt aviseringar"
     }
   },
- "favorites": {
+  "favorites": {
     "add": "Lägg till i favoritlistan",
     "added": "Produkten har lagts till i favoritlistan",
     "continue": "Fortsätt shoppa",
@@ -67,7 +67,7 @@
     },
     "delete_list_modal": {
       "title": "Radera bevakningslista",
-      "message":"Vill du verkligen ta bort bevakningslistan \"{name}\"?"
+      "message": "Vill du verkligen ta bort bevakningslistan \"{name}\"?"
     },
     "add_list": "Skapa ny lista",
     "errors": {
@@ -136,10 +136,10 @@
     "fill_out_required_input_first": "Fyll i alla obligatoriska fält först.",
     "add_to_cart": "Lägg till i korgen",
     "go_to_cart": "Varukorg",
-   "no_more_found": "Artikeln: \"{name}\" är för närvarande slut i lager.",
-   "quantity": "Kvantitet",
-   "minOrderQuantity": "Min. orderkvantitet:{quantity}",
-   "maxOrderQuantity": "Max. orderkvantitet:{quantity}",
+    "no_more_found": "Artikeln: \"{name}\" är för närvarande slut i lager.",
+    "quantity": "Kvantitet",
+    "minOrderQuantity": "Min. orderkvantitet:{quantity}",
+    "maxOrderQuantity": "Max. orderkvantitet:{quantity}",
     "available": {
       "at": "Tillgänglig på {startDate, date, DD} {startDate, date, MMM} på {startDate, time, short} Klocka",
       "until": "Tillgänglig fram till {endDate, date, DD} {endDate, date, MMM} på {endDate, time, short} Klocka",
@@ -187,7 +187,7 @@
     "cancel": "Avbryt",
     "no_result": {
       "heading": "Hoppsan!",
-      "body":"Din sökning efter \"{searchPhrase}\" gav inget resultat."
+      "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
     },
     "placeholder": "Sökning"
   },
@@ -250,8 +250,8 @@
     "favorites": "Bevakningslista",
     "my_orders": "Mina beställningar",
     "cart": "Kundkorg",
-    "shipping":"Leveransmetoder",
-    "about":"Avtryck",
+    "shipping": "Leveransmetoder",
+    "about": "Avtryck",
     "contact": "Kontakta oss",
     "payment": "Betalningsmetoder",
     "terms": "Villkor och bestämmelser",
@@ -292,7 +292,7 @@
   "scanner": {
     "instructions": "Placera streckkoden eller QR-koden i mitten. Erkänningen sker automatiskt.",
     "noResult": {
-      "qrCode":"Vi kunde inte hitta något resultat för den här QR-koden.",
+      "qrCode": "Vi kunde inte hitta något resultat för den här QR-koden.",
       "barCode": "Produkten hittades inte."
     }
   },
@@ -320,7 +320,7 @@
   "appRating": {
     "yes": "Ja",
     "no": "Nej",
-    "title":"Betygsätt appen",
+    "title": "Betygsätt appen",
     "message": "Gillar du vår app? Vi ser fram emot ett betyg!",
     "rejectionApprovalMessage": "Skulle du vilja ge oss feedback? Det hjälper oss att förbättra appen ytterligare."
   },

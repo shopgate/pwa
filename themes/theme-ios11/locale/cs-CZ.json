@@ -13,7 +13,7 @@
     "products": "Produkty"
   },
   "titles": {
-   "categories": "Kategorie",
+    "categories": "Kategorie",
     "filter": "Filtr",
     "cart": "Nákupní košík",
     "shipping": "Doprava",
@@ -94,7 +94,7 @@
     "close_list": "Zavřít seznam.",
     "load_more_button": "Načíst další položky"
   },
-"filter": {
+  "filter": {
     "sort": {
       "default": "Třídit",
       "most_popular": "Nejlepší výsledky",
@@ -146,7 +146,7 @@
       "not": "V současné době není k dispozici",
       "not_search_similar": "{name} není k dispozici. Hledat podobné produkty?"
     },
-   "relations": {
+    "relations": {
       "showMore": "Více na"
     },
     "sections": {
@@ -186,7 +186,7 @@
     "label": "Vyhledávání",
     "cancel": "Zrušit",
     "no_result": {
-     "heading": "Oops!",
+      "heading": "Oops!",
       "body": "Vaše hledání \"{searchPhrase}\" nevrátilo žádné výsledky."
     },
     "placeholder": "Vyhledávání"
@@ -230,7 +230,7 @@
     "message_type_warning": "Varování"
   },
   "login": {
-   "headline": "Vítejte!",
+    "headline": "Vítejte!",
     "subline": "Pro pokračování se prosím přihlaste.",
     "email": "Email",
     "password": "Heslo",
