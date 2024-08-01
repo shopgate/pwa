@@ -53,6 +53,7 @@ import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import {
   CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PATTERN,
@@ -191,6 +192,10 @@ const Pages = ({ store }) => {
                         pattern={SEARCH_FILTER_PATTERN}
                         component={routes.Filter}
                         transform={routesTransforms[SEARCH_FILTER_PATTERN]}
+                      />
+                      <Route
+                        pattern={BACK_IN_STOCK_PATTERN}
+                        component={routes.BackInStock}
                       />
                       <Route
                         pattern={CHECKOUT_PATTERN}

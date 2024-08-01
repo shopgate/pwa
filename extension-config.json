@@ -211,6 +211,15 @@
         "label": "Use sentry.io for error (debug, info) logging"
       }
     },
+    "showBackInStock": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "If the Back-in-Stock feature is enabled / disabled."
+      }
+    },
     "theme": {
       "type": "admin",
       "destination": "frontend",

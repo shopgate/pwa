@@ -23,6 +23,7 @@
     "reviews": "Recensioni",
     "favorites": "Favoriti",
     "scanner": "Scanner",
+    "back_in_stock": "Notifiche",
     "checkout": "Checkout",
     "checkout_confirmation": "Order Successful",
     "checkout_change_billing": "Change Billing Address",
@@ -92,6 +93,23 @@
         "messageContact": "Are you should you want to delete this address?",
         "messageCustomer": "Are you should you want to delete your account? This will delete all of your personal data and preferences."
       }
+    }
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Notifiche attive",
+      "past": "Notifiche passate"
+    },
+    "empty_list_reminder": "Non è stata configurata alcuna notifica",
+    "get_notified": "Notificami le nuove scorte",
+    "we_will_remind_you": "Ti avviseremo quando il prodotto tornerà in stock",
+    "add_back_in_stock_success_modal": {
+      "title": "Aggiunta la notifica di back-in-stock!",
+      "message": "Ti invieremo una notifica push quando il prodotto sarà tornato in stock. È possibile gestire le notifiche nel menu"
+    },
+    "rationale": {
+      "message": "Si prega di consentire le notifiche push nella fase successiva, in modo da poter inviare una notifica quando il prodotto è di nuovo disponibile",
+      "confirm": "Consenti le notifiche push"
     }
   },
   "favorites": {
@@ -505,6 +523,7 @@
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
     "scanner": "Scanner",
+    "back_in_stock": "Promemoria per il ritorno in magazzino",
     "shipping": "Modalità di spedizione",
     "about": "Su di noi",
     "payment": "Modalità di pagamento",
