@@ -322,5 +322,23 @@
     "buttonAllow": "Értesítések aktiválása",
     "buttonDeny": "Nem kérek értesítést",
     "message": "Engedélyezd az értesítéseket, hogy push értesítéseket küldhessünk neked az új ajánlatokról, exkluzív kuponokról és egyebekről."
+  },
+  "cookieConsentModal": {
+    "title": "Személyre szabott vásárlási élményének beállítása",
+    "buttonAcceptAll": "Összes elfogadása",
+    "modalButtonOnlyRequired": "Csak a szükségesek",
+    "modalButtonConfirmSelected": "Kiválasztás megerősítése",
+    "buttonConfigure": "Beállítások konfigurálása",
+    "message": "Célunk az, hogy az alkalmazást az Ön igényeihez igazítsuk. Ehhez modern nyomkövetési technológiákat használunk, amelyekkel elemezzük a vásárlási szokásokat, és felhasználjuk az adatokat az alkalmazás fejlesztésére, valamint személyre szabott tartalmak bemutatására. A beállításokat bármikor módosíthatja a „Saját fiók” részben. További információkért kérjük, olvassa el részletes {privacyLink}.",
+    "privacyText": "Adatvédelmi nyilatkozat"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Kényelem",
+    "statisticsTitle": "Személyre szabás & Statisztika",
+    "requiredTitle": "Szükséges",
+    "comfort": "Ezek a sütik és technológiák lehetővé tesznek néhány további funkciót és jobb teljesítményt.",
+    "statistics": "Ezek a statisztikák segítenek nekünk az alkalmazás fejlesztésében és relevánsabb hirdetések bemutatásában.",
+    "required": "Az alkalmazás működéséhez szükséges adatok.",
+    "privacy": "További információkért kérjük, olvassa el {privacyLink}."
   }
 }
