@@ -1,0 +1,9 @@
+{
+  "user": {
+    "delete_account": "Ștergeți datele contului",
+    "delete_account_success": "Cerere de ștergere primită. Ați fost deconectat și vă vom șterge datele în măsura în care este posibil din punct de vedere legal. Acest proces poate dura câteva zile.",
+    "delete_account_error": "A apărut o eroare neașteptată. Please try again later",
+    "delete_account_confirm": "Vă rugăm să confirmați ștergerea tuturor datelor contului. Aceasta nu poate fi anulată.",
+    "contact_us": "Contactați-ne"
+  }
+}

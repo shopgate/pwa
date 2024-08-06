@@ -1,0 +1,326 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {fortfarande {time}} =1 {# Dag {time}} other {# Dagar {time}}}",
+    "load_more": "Ladda mer",
+    "cancel": "Avbryt",
+    "submit": "Skicka",
+    "undo": "Ångra",
+    "required": "Obligatoriskt *",
+    "please_choose": "Vänligen välj",
+    "show_products": "Visa produkter",
+    "back": "Tillbaka",
+    "close": "Stäng",
+    "products": "Produkter"
+  },
+  "titles": {
+    "categories": "Kategorier",
+    "filter": "Filter",
+    "cart": "Kundkorg",
+    "shipping": "Frakt",
+    "reviews": "Recensioner",
+    "favorites": "Bevakningslista",
+    "scanner": "Skanner",
+    "back_in_stock": "Notifieringar"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktiva aviseringar",
+      "past": "Tidigare aviseringar"
+    },
+    "empty_list_reminder": "Du har inte konfigurerat några aviseringar",
+    "get_notified": "Meddela mig när varan är tillgänglig",
+    "we_will_remind_you": "Du kommer att få ett meddelande när varan finns tillgänglig igen",
+    "add_back_in_stock_success_modal": {
+      "title": "Notifiering tillagd!",
+      "message": "Vi skickar ett push-meddelande till dig när produkten finns tillgänglig igen. Du kan hantera dessa aviseringar via menyn."
+    },
+    "rationale": {
+      "message": "Tillåt push-meddelanden i nästa steg så att vi kan meddela dig när produkten finns tillgänglig igen.",
+      "confirm": "Tillåt aviseringar"
+    }
+  },
+  "favorites": {
+    "add": "Lägg till i favoritlistan",
+    "added": "Produkten har lagts till i favoritlistan",
+    "continue": "Fortsätt shoppa",
+    "empty": "Du har ännu inga varor på bevakningslistan",
+    "error_add": "Produkten kunde inte läggas till i bevakningslistan",
+    "error_remove": "Produkten kunde inte tas bort från bevakningslistan",
+    "error_limit": "Det tillåtna antalet produkter på bevakningslistan har överskridits.",
+    "error_general": "Det gick inte att spara bevakningslistan",
+    "remove": "Ta bort från bevakningslistan",
+    "removed": "Borttagen från bevakningslistan",
+    "add_list_modal": {
+      "title": "Skapa ny bevakningslista",
+      "dismiss": "Avbryt",
+      "confirm": "Bekräfta",
+      "message": "Namnet på din nya bevakningslista",
+      "label": "Namn"
+    },
+    "rename_list_modal": {
+      "title": "Ändra namnet på bevakningslistan",
+      "dismiss": "Avbryt",
+      "confirm": "Bekräfta",
+      "message": "Det nya namnet på din bevakningslista",
+      "label": "Namn"
+    },
+    "delete_list_modal": {
+      "title": "Radera bevakningslista",
+      "message": "Vill du verkligen ta bort bevakningslistan \"{name}\"?"
+    },
+    "add_list": "Skapa ny lista",
+    "errors": {
+      "invalid_name": "Ange ett fullständigt namn för din bevakningslista"
+    },
+    "rename_list": "Byt namn på lista",
+    "remove_list": "Ta bort",
+    "add_to_list": "Lägg till i listan",
+    "remove_from_list": "Ta bort från listan",
+    "edit_lists": "Redigera lista",
+    "fo_method_chooser": {
+      "title": "Välj en ordermetod"
+    },
+    "list_chooser": {
+      "title": "Välj en bevakningslista",
+      "add": "Lägg till",
+      "remove": "Ta bort"
+    },
+    "modal": {
+      "message": "Välj varianter för att lägga den här produkten i varukorgen.",
+      "confirm": "Välj varianter"
+    },
+    "open_list": "Öppna lista.",
+    "close_list": "Stäng listan.",
+    "load_more_button": "Ladda fler artiklar"
+  },
+  "filter": {
+    "sort": {
+      "default": "Sortera",
+      "most_popular": "Bästa resultat",
+      "price_desc": "Högsta pris först",
+      "price_asc": "Lägsta pris först"
+    },
+    "apply": "Färdig",
+    "more": "Mer",
+    "reset": "Återställ",
+    "remove": "{filter} ta bort filter",
+    "edit": "{filter} redigera filter",
+    "filter_by": "Filtrera efter {label}",
+    "label": {
+      "price": "Pris",
+      "category": "Kategori",
+      "manufacturer": "Varumärke"
+    }
+  },
+  "price": {
+    "from": "Från {price}",
+    "range": "Pris från {fromPrice} till {toPrice}",
+    "range_from": "Prisintervall från",
+    "range_to": "Prisintervall till",
+    "tier": {
+      "set": "{from} bit: {price}",
+      "range": "{from} eller mer: {price}"
+    },
+    "msrp": "MSRP",
+    "label": "Pris {price}.",
+    "label_old_price": "Gammalt pris {price}."
+  },
+  "product": {
+    "description_heading": "Beskrivning",
+    "pick_an_attribute": "{0} välj",
+    "tax_disclaimer": "* Inkl. moms eventuellt plus fraktkostnader",
+    "adding_item": "{count, plural, =1 {{count} Produkter kommer att läggas till} other {{count} Produkter kommer att läggas till}}",
+    "pick_option_first": "Välj ett alternativ först. {option}",
+    "fill_out_required_input_first": "Fyll i alla obligatoriska fält först.",
+    "add_to_cart": "Lägg till i korgen",
+    "no_more_found": "Artikeln: \"{name}\" är för närvarande slut i lager.",
+    "quantity": "Kvantitet",
+    "minOrderQuantity": "Min. orderkvantitet:{quantity}",
+    "maxOrderQuantity": "Max. orderkvantitet:{quantity}",
+    "available": {
+      "at": "Tillgänglig på {startDate, date, DD} {startDate, date, MMM} på {startDate, time, short} Klocka",
+      "until": "Tillgänglig fram till {endDate, date, DD} {endDate, date, MMM} på {endDate, time, short} Klocka",
+      "not": "För närvarande inte tillgänglig",
+      "not_search_similar": "{name} inte tillgängligt. Sök efter liknande produkter?"
+    },
+    "relations": {
+      "showMore": "Mer"
+    },
+    "sections": {
+      "information": "Produktinformation",
+      "options": "Välj alternativ",
+      "description": "Beskrivning",
+      "properties": "Egenskaper",
+      "ratings": "Betyg",
+      "purchase": "Köpa produkt",
+      "quantity": "Kvantitet"
+    },
+    "displayGroups": {
+      "general": "Allmänt",
+      "features": "Funktioner",
+      "pricing": "Prisinformation",
+      "properties": "Egenskaper"
+    }
+  },
+  "category": {
+    "error": {
+      "title": "Hoppsan",
+      "not_found": "Kategorin hittades inte"
+    },
+    "no_result": {
+      "heading": "Hoppsan!",
+      "body": "Inga produkter hittades."
+    },
+    "sections": {
+      "categories": "Kategorier",
+      "products": "Produkter"
+    },
+    "showAllProducts": {
+      "label": "Visa alla produkter"
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Hoppsan!",
+      "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
+    },
+    "placeholder": "Sökning",
+    "close": "Avsluta sökning",
+    "reset": "Återställ sökning"
+  },
+  "shipping": {
+    "unknown": "plus frakt",
+    "free": "Fri frakt",
+    "free_short": "Kostnadsfritt",
+    "cost": "{price} Frakt"
+  },
+  "liveshopping": {
+    "discount_badge": "{0}% Besparingar"
+  },
+  "modal": {
+    "confirm": "Bekräfta",
+    "dismiss": "Avbryt",
+    "ok": "Okej",
+    "title_error": "Hoppsan!",
+    "body_error": "Ett oväntat fel har inträffat. Vänligen försök igen."
+  },
+  "cart": {
+    "subtotal": "Delsumma",
+    "total": "Total varukorg",
+    "discount": "Rabatt",
+    "discount_with_label": "Rabatt ({label})",
+    "checkout": "Fortsätt till kassan",
+    "remove": "Ta bort",
+    "edit": "Redigera",
+    "empty": "Din varukorg är tom.",
+    "continue": "Fortsätt handla",
+    "redeem_coupon": "Ange kupongkod",
+    "submit_coupon": "Skicka in kupongkoden",
+    "delete_coupon": "Ta bort kupongkoden",
+    "coupon_code": "Kod",
+    "default_coupon_label": "Kupong",
+    "coupon_was_added": "Kupongen har lagts till!",
+    "coupons_not_supported": "Lös in kuponger och presentkort i nästa steg",
+    "free_shipping": "Fri frakt",
+    "message_type_info": "Info",
+    "message_type_error": "Fel",
+    "message_type_warning": "Varning"
+  },
+  "login": {
+    "headline": "Välkommen!",
+    "subline": "Logga in för att fortsätta.",
+    "email": "E-post",
+    "password": "Lösenord",
+    "forgot_password": "Har du glömt ditt lösenord?",
+    "forgot_password_popup": "Använd skrivbordswebbplatsen för att återställa ditt lösenord.",
+    "button": "Logga in",
+    "no_account": "Har du inget konto än?",
+    "register": "Börja här.",
+    "logout_message": "Du har blivit utloggad.",
+    "error": "Användarnamn eller lösenord är inte korrekta"
+  },
+  "navigation": {
+    "login_register": "Logga in",
+    "your_account": "Mitt konto",
+    "home": "Startsida",
+    "categories": "Kategorier",
+    "favorites": "Bevakningslista",
+    "my_orders": "Mina beställningar",
+    "cart": "Kundkorg",
+    "scanner": "Skanner",
+    "shipping": "Leveransmetoder",
+    "about": "Avtryck",
+    "payment": "Betalningsmetoder",
+    "terms": "Villkor och bestämmelser",
+    "privacy": "Dataskydd",
+    "welcome_message": "Hej {name}",
+    "return_policy": "Avbokningsregler",
+    "logout": "Logga ut",
+    "menuSubHeader": {
+      "more": "Mer",
+      "about": "Om oss"
+    },
+    "back_in_stock": "Meddelanden",
+    "back": "Tillbaka till {title}",
+    "open_menu": "Öppna meny"
+  },
+  "reviews": {
+    "rating": "Betyg",
+    "no_reviews": "Skriv den första recensionen.",
+    "review_count": "({count} {count, plural, =1 {Värdering} other {Värderingar}})",
+    "button_add": "Betygsätt produkt",
+    "button_all": "Alla {count} Värderingar",
+    "author": "av {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {Stjärna} other {Stjärnor}} av {maxRate}.",
+    "review_form_rate": "Betygsätt den här Produkten:",
+    "review_form_author": "Namn",
+    "review_form_title": "Titel (valfritt)",
+    "review_form_text": "Din recension (valfritt)",
+    "review_form_error_author_empty": "Vänligen ange ett namn.",
+    "review_form_rate_error": "Hur många stjärnor ger du?",
+    "review_form_error_length": "Maximalt {length} tecken tillåtna.",
+    "press_to_rate_with_x_stars": "Välj att betygsätta med {rate} {rate, plural, =1 {en Stjärna} other {Stjärnor}}",
+    "success_message": "Tack för ditt betyg!"
+  },
+  "scanner": {
+    "instructions": "Placera streckkoden eller QR-koden i mitten. Erkänningen sker automatiskt.",
+    "noResult": {
+      "qrCode": "Vi kunde inte hitta något resultat för den här QR-koden.",
+      "barCode": "Produkten hittades inte."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Öppna inställningar",
+      "camera_message": "Den här funktionen kräver åtkomst till kameran. Vänligen tillåt åtkomst i inställningarna.",
+      "push_message": "Du har inaktiverat push-meddelanden för den här appen. Gå till inställningarna på din enhet för att aktivera dem.",
+      "geolocation_message": "Vi behöver tillgång till platsen för att visa närliggande butiker."
+    }
+  },
+  "error": {
+    "general": "Anslutningsproblem. Kontrollera din internetanslutning eller försök igen senare."
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2-siffrig"
+      },
+      "MMM": {
+        "month": "kort"
+      }
+    }
+  },
+  "appRating": {
+    "yes": "Ja",
+    "no": "Nej",
+    "title": "Betygsätt appen",
+    "message": "Gillar du vår app? Vi ser fram emot ett betyg!",
+    "rejectionApprovalMessage": "Skulle du vilja ge oss feedback? Det hjälper oss att förbättra appen ytterligare."
+  },
+  "pushOptInModal": {
+    "title": "Få exklusiva kuponger och erbjudanden",
+    "buttonAllow": "Aktivera aviseringar",
+    "buttonDeny": "Jag vill inte ha aviseringar",
+    "message": "Aktivera aviseringar så att vi kan skicka push-aviseringar om nya erbjudanden, exklusiva kuponger med mera."
+  }
+}
