@@ -8,12 +8,12 @@ import { getProduct } from '../selectors/product';
  * property name can be configured via the HOC options.
  * @param {Function} WrappedComponent The react component to wrap.
  * @param {Object} [options={}] Options for the HOC.
- * @param {string} [options.prop="productListEntryProduct"] An optional prop name to inject the
+ * @param {string} [options.prop="product"] An optional prop name to inject the
  * product into the wrapped component.
  * @returns {JSX}
  */
 export default function withProductListEntryProduct(WrappedComponent, options = {}) {
-  const injectedProp = options.prop || 'productListEntryProduct';
+  const injectedProp = options.prop || 'product';
   /**
    * @return {Function} The extended component props.
    */
