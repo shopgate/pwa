@@ -1,11 +1,14 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   FETCH_FULFILLMENT_SLOTS_ERROR,
   FETCH_FULFILLMENT_SLOTS_SUCCESS,
 } from '../constants/ActionTypes';
 
 /**
- * @param {Object} params params.
+ * Fetches fulfillment slots of a location
+ * @param {Object} params Function params
+ * @param {string} params.locationCode A location code
  * @returns {Function} A redux thunk.
  */
 function fetchFulfillmentSlots({ locationCode }) {
@@ -32,4 +35,5 @@ function fetchFulfillmentSlots({ locationCode }) {
   };
 }
 
-export default fetchFulfillmentSlots;
+/** @mixes {MutableFunction} */
+export default mutable(fetchFulfillmentSlots);
