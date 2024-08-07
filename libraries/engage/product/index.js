@@ -93,6 +93,7 @@ export { default as withProductStock } from './hocs/withProductStock';
 export { default as withProduct } from './hocs/withProduct';
 export { default as withProductListType } from './hocs/withProductListType';
 export { default as withProductListEntry } from './hocs/withProductListEntry';
+export { default as withProductListEntryProduct } from './hocs/withProductListEntryProduct';
 
 // HOOKs
 export { useLoadProductImage } from './hooks/useLoadProductImage';
