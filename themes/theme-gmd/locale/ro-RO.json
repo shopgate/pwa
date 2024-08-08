@@ -188,11 +188,11 @@
     "close": "Sfârșitul căutării",
     "reset": "Resetare căutare"
   },
-  "transport": {
+  "shipping": {
     "unknown": "plus transport maritim",
     "free": "Livrare gratuită",
     "free_short": "Gratuit",
-    "cost": "{preț} Transport maritim"
+    "cost": "{price} Transport maritim"
   },
   "liveshopping": {
     "discount_badge": "{0}% Salvați"
