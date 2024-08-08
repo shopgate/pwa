@@ -1,5 +1,5 @@
 {
- "common": {
+  "common": {
     "countdown": "{days, plural, =0 {Totuși {time}} =1 {# Zi {time}} other {# Zile {time}}}",
     "load_more": "Încarcă mai mult",
     "cancel": "Anulează",
@@ -12,7 +12,7 @@
     "close": "Închide",
     "products": "Produse"
   },
-"titles": {
+  "titles": {
     "categories": "Categorii",
     "filter": "Filtru",
     "cart": "Coș de cumpărături",
@@ -39,7 +39,7 @@
       "confirm": "Permiteți notificările"
     }
   },
-   "favorites": {
+  "favorites": {
     "add": "Adăugare la lista de favorite",
     "added": "Produsul a fost adăugat la lista de favorite",
     "continue": "Continuă cumpărăturile",
@@ -93,7 +93,7 @@
     "close_list": "Închide lista.",
     "load_more_button": "Încarcă mai multe articole"
   },
-    "filter": {
+  "filter": {
     "sort": {
       "default": "Sortare",
       "most_popular": "Cele mai bune rezultate",
@@ -155,7 +155,7 @@
       "purchase": "Cumpărați produsul",
       "quantity": "Cantitate"
     },
-      "displayGroups": {
+    "displayGroups": {
       "general": "Generalități",
       "features": "Caracteristici",
       "pricing": "Informații despre preț",
@@ -239,7 +239,7 @@
     "logout_message": "Ați fost deconectat.",
     "error": "Numele de utilizator sau parola nu sunt corecte"
   },
-   "navigation": {
+  "navigation": {
     "login_register": "Conectați-vă",
     "your_account": "Contul meu",
     "home": "Pagina de pornire",
@@ -310,7 +310,7 @@
       }
     }
   },
-   "appRating": {
+  "appRating": {
     "yes": "Da",
     "no": "Nu",
     "title": "Evaluați aplicația",

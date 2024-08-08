@@ -285,9 +285,9 @@
   "tab_bar": {
     "home": "Acasă",
     "browse": "Răsfoiește",
-    "cart": "Coș de cumpărături",
+    "cart": "Coș",
     "more": "Mai mult",
-    "favorites": "Listă de supraveghere"
+    "favorites": "Favorite"
   },
   "scanner": {
     "instructions": "Vă rugăm să poziționați codul de bare sau codul QR în centru. Recunoașterea este automată.",
@@ -317,7 +317,7 @@
       }
     }
   },
-   "appRating": {
+  "appRating": {
     "yes": "Da",
     "no": "Nu",
     "title": "Evaluați aplicația",

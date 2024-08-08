@@ -34,7 +34,7 @@
       "title": "Ilmoitus lisätty!",
       "message": "Lähetämme sinulle push-ilmoituksen, kun tuote on jälleen saatavilla. Voit hallita näitä ilmoituksia valikon kautta."
     },
-   "rationale": {
+    "rationale": {
       "message": "Salli push-ilmoitukset seuraavassa vaiheessa, jotta voimme ilmoittaa sinulle, kun tuote on jälleen saatavilla.",
       "confirm": "Salli ilmoitukset"
     }

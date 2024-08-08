@@ -93,7 +93,7 @@
     "close_list": "Κλείσιμο λίστας.",
     "load_more_button": "Φόρτωση περισσότερων στοιχείων"
   },
- "filter": {
+  "filter": {
     "sort": {
       "default": "Ταξινόμηση",
       "most_popular": "Καλύτερα αποτελέσματα",
@@ -113,7 +113,7 @@
     }
   },
   "price": {
-    "from": "Από {τιμή}",
+    "from": "Από {price}",
     "range": "Τιμή από {fromPrice} έως {toPrice}",
     "range_from": "Εύρος τιμών από",
     "range_to": "Εύρος τιμών έως",
@@ -239,7 +239,7 @@
     "logout_message": "Έχετε αποσυνδεθεί.",
     "error": "Το όνομα χρήστη ή ο κωδικός πρόσβασης δεν είναι σωστά"
   },
-"navigation": {
+  "navigation": {
     "login_register": "Είσοδος",
     "your_account": "Ο λογαριασμός μου",
     "home": "Αρχική σελίδα",
