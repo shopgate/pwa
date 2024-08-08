@@ -44,8 +44,8 @@
     "added": "Produsul a fost adăugat la lista de favorite",
     "continue": "Continuă cumpărăturile",
     "empty": "Nu aveți încă niciun articol pe lista de favorite",
-    "error_add": "The product could not be added to the watchlist",
-    "error_remove": "Produsul nu a putut fi eliminat din watchlist",
+    "error_add": "Produsul nu a putut fi adăugat în lista de favorite..",
+    "error_remove": "Produsul nu a putut fi eliminat din lista de favorite.",
     "error_limit": "Numărul permis de produse din lista de supraveghere a fost depășit.",
     "error_general": "Lista de supraveghere nu a putut fi salvată",
     "remove": "Ștergere din lista de monitorizare",
@@ -286,7 +286,7 @@
     "instructions": "Vă rugăm să poziționați codul de bare sau codul QR în centru. Recunoașterea este automată.",
     "noResult": {
       "qrCode": "Nu am putut găsi un rezultat pentru acest cod QR.",
-      "barCode": "Product not found."
+      "barCode": "Produsul nu a fost găsit."
     }
   },
   "permissions": {
