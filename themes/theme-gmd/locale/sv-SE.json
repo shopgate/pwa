@@ -322,5 +322,23 @@
     "buttonAllow": "Aktivera aviseringar",
     "buttonDeny": "Jag vill inte ha aviseringar",
     "message": "Aktivera aviseringar så att vi kan skicka push-aviseringar om nya erbjudanden, exklusiva kuponger med mera."
+  },
+  "cookieConsentModal": {
+    "title": "Anpassa din personliga köpupplevelse",
+    "buttonAcceptAll": "Acceptera alla",
+    "modalButtonOnlyRequired": "Endast nödvändiga",
+    "modalButtonConfirmSelected": "Bekräfta val",
+    "buttonConfigure": "Konfigurera inställningar",
+    "message": "Vårt mål är att optimera appen efter dina behov. För detta använder vi moderna spårningstekniker som gör det möjligt för oss att analysera köpbeteenden och använda data för att förbättra vår app samt presentera personligt innehåll. Du kan när som helst ändra inställningarna i avsnittet 'Mitt konto'. Mer information finns i vår detaljerade {privacyLink}.",
+    "privacyText": "Integritetspolicy"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Komfort",
+    "statisticsTitle": "Personalisering & Statistik",
+    "requiredTitle": "Nödvändigt",
+    "comfort": "Dessa cookies och tekniker möjliggör vissa ytterligare funktioner och bättre prestanda.",
+    "statistics": "Dessa statistik hjälper oss att förbättra vår app och visa mer relevanta annonser.",
+    "required": "Data som är nödvändiga för appens drift.",
+    "privacy": "För mer information, se vår {privacyLink}."
   }
 }

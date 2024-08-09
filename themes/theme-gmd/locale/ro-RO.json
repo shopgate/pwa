@@ -322,5 +322,23 @@
     "buttonAllow": "Activați notificările",
     "buttonDeny": "Nu doresc notificări",
     "message": "Activați notificările, astfel încât să vă putem trimite notificări push despre oferte noi, cupoane exclusive și multe altele."
+  },
+  "cookieConsentModal": {
+    "title": "Personalizați-vă experiența de cumpărături",
+    "buttonAcceptAll": "Acceptați toate",
+    "modalButtonOnlyRequired": "Doar necesare",
+    "modalButtonConfirmSelected": "Confirmați selecția",
+    "buttonConfigure": "Configurați setările",
+    "message": "Scopul nostru este de a optimiza aplicația pentru nevoile dumneavoastră. Pentru aceasta, folosim tehnologii moderne de urmărire care ne permit să analizăm comportamentul de cumpărare și să utilizăm datele pentru a îmbunătăți aplicația noastră și pentru a vă prezenta conținut personalizat. Puteți modifica setările oricând în secțiunea 'Contul meu'. Pentru mai multe informații, consultați {privacyLink}.",
+    "privacyText": "Politica de confidențialitate"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Confort",
+    "statisticsTitle": "Personalizare & Statistică",
+    "requiredTitle": "Necesar",
+    "comfort": "Aceste cookie-uri și tehnologii permit câteva funcții suplimentare și performanțe mai bune.",
+    "statistics": "Aceste statistici ne ajută să îmbunătățim aplicația noastră și să vă arătăm reclame mai relevante.",
+    "required": "Date necesare pentru funcționarea aplicației.",
+    "privacy": "Pentru mai multe informații, consultați {privacyLink}."
   }
 }

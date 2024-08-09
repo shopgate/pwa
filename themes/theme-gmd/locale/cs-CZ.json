@@ -322,5 +322,23 @@
     "buttonAllow": "Aktivovat oznámení",
     "buttonDeny": "Nechci oznámení",
     "message": "Aktivujte si oznámení, abychom vám mohli posílat push oznámení o nových nabídkách, exkluzivních poukázkách a dalších informacích."
+  },
+  "cookieConsentModal": {
+    "title": "Přizpůsobte si svůj osobní nákupní zážitek",
+    "buttonAcceptAll": "Přijmout vše",
+    "modalButtonOnlyRequired": "Pouze nezbytné",
+    "modalButtonConfirmSelected": "Potvrdit výběr",
+    "buttonConfigure": "Konfigurace nastavení",
+    "message": "Naším cílem je optimalizovat aplikaci pro vaše potřeby. K tomu používáme moderní sledovací technologie, které nám umožňují analyzovat nákupní chování a využívat data k vylepšení naší aplikace a poskytování personalizovaného obsahu. Nastavení můžete kdykoli změnit v sekci „Můj účet“. Další informace naleznete v naší podrobné {privacyLink}.",
+    "privacyText": "Prohlášení o ochraně osobních údajů"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Komfort",
+    "statisticsTitle": "Personalizace & Statistika",
+    "requiredTitle": "Nezbytné",
+    "comfort": "Tyto soubory cookie a technologie umožňují některé další funkce a lepší výkon.",
+    "statistics": "Tyto statistiky nám pomáhají zlepšovat naši aplikaci a zobrazovat relevantnější reklamy.",
+    "required": "Data nezbytná pro provoz aplikace.",
+    "privacy": "Další informace naleznete v naší {privacyLink}."
   }
 }

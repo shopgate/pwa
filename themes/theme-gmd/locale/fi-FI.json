@@ -322,5 +322,23 @@
     "buttonAllow": "Aktivoi ilmoitukset",
     "buttonDeny": "En halua ilmoituksia",
     "message": "Ota ilmoitukset käyttöön, jotta voimme lähettää sinulle push-ilmoituksia uusista tarjouksista, eksklusiivisista kupongeista ja muusta."
+  },
+  "cookieConsentModal": {
+    "title": "Mukauta henkilökohtainen ostokokemuksesi",
+    "buttonAcceptAll": "Hyväksy kaikki",
+    "modalButtonOnlyRequired": "Vain tarvittavat",
+    "modalButtonConfirmSelected": "Vahvista valinta",
+    "buttonConfigure": "Määritä asetukset",
+    "message": "Tavoitteenamme on optimoida sovellus tarpeidesi mukaan. Tätä varten käytämme moderneja seurantateknologioita, joiden avulla voimme analysoida ostokäyttäytymistä ja käyttää tietoja sovelluksen parantamiseen sekä henkilökohtaisen sisällön esittämiseen. Voit muuttaa asetuksia milloin tahansa kohdassa 'Oma tili'. Lisätietoja löytyy yksityiskohtaisesta {privacyLink}.",
+    "privacyText": "Tietosuojakäytäntö"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Mukavuus",
+    "statisticsTitle": "Personointi & Tilastot",
+    "requiredTitle": "Välttämätön",
+    "comfort": "Nämä evästeet ja teknologiat mahdollistavat joitain lisätoimintoja ja paremman suorituskyvyn.",
+    "statistics": "Nämä tilastot auttavat meitä parantamaan sovellustamme ja näyttämään osuvampia mainoksia.",
+    "required": "Sovelluksen toiminnan kannalta välttämättömät tiedot.",
+    "privacy": "Lisätietoja löydät {privacyLink}."
   }
 }
