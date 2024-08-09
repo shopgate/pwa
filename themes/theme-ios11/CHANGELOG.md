@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.23.0](https://github.com/shopgate/pwa/compare/v6.22.4...v6.23.0) (2024-08-09)
+
+#### :rocket: Enhancement
+* [#1250](https://github.com/shopgate/pwa/pull/1250) Add translations for 6 new languages ([@AylinUenal](https://github.com/AylinUenal))
+* [#1237](https://github.com/shopgate/pwa/pull/1237) Add safe-area inset to modal component ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v6.22.4](https://github.com/shopgate/pwa/compare/v6.22.3...v6.22.4) (2024-06-20)
 
 #### :bug: Bug Fix
