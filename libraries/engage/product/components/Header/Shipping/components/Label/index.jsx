@@ -6,13 +6,13 @@ import styles from './style';
 /**
  * The Shipping Label component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Label = ({ className, price, currency }) => (
   // eslint-disable-next-line jsx-a11y/aria-role
   <div role="text" className={`${className} ${styles.text}`}>
     {price > 0 ? (
-      <I18n.Text string="shipping.cost">
+      <I18n.Text string="shipping.cost" params={{ price }}>
         <I18n.Price forKey="price" price={price} currency={currency} />
       </I18n.Text>
     ) : (
