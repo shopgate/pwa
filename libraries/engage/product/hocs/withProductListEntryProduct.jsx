@@ -10,7 +10,7 @@ import { getProduct } from '../selectors/product';
  * @param {Object} [options={}] Options for the HOC.
  * @param {string} [options.prop="product"] An optional prop name to inject the
  * product into the wrapped component.
- * @returns {JSX}
+ * @returns {Function}
  */
 export default function withProductListEntryProduct(WrappedComponent, options = {}) {
   const injectedProp = options.prop || 'product';

@@ -3,7 +3,7 @@ import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   FETCH_FULFILLMENT_SLOTS_ERROR,
   FETCH_FULFILLMENT_SLOTS_SUCCESS,
-} from '../constants/ActionTypes';
+} from '../constants';
 
 /**
  * Fetches fulfillment slots of a location
