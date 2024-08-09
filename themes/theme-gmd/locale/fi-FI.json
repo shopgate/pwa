@@ -1,0 +1,326 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {Silti {time}} =1 {# Päivä {time}} other {# Päivät {time}}}",
+    "load_more": "Lataa lisää",
+    "cancel": "Peruuta",
+    "submit": "Lähetä",
+    "undo": "Kumoa",
+    "required": "Pakollinen *",
+    "please_choose": "Valitse",
+    "show_products": "Näytä tuotteet",
+    "back": "Takaisin",
+    "close": "Sulje",
+    "products": "Tuotteet"
+  },
+  "titles": {
+    "categories": "Luokat",
+    "filter": "Suodattimet",
+    "cart": "Ostoskori",
+    "shipping": "Toimitus",
+    "reviews": "Arvostelut",
+    "favorites": "Seurantaluettelo",
+    "scanner": "Skanneri",
+    "back_in_stock": "Ilmoitukset"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktiiviset ilmoitukset",
+      "past": "Menneet ilmoitukset"
+    },
+    "empty_list_reminder": "Et ole määrittänyt ilmoituksia",
+    "get_notified": "Ilmoita minulle, kun kohde on saatavilla",
+    "we_will_remind_you": "Sinulle ilmoitetaan, kun kohde on jälleen saatavilla",
+    "add_back_in_stock_success_modal": {
+      "title": "Ilmoitus lisätty!",
+      "message": "Lähetämme sinulle push-ilmoituksen, kun tuote on jälleen saatavilla. Voit hallita näitä ilmoituksia valikon kautta."
+    },
+    "rationale": {
+      "message": "Salli push-ilmoitukset seuraavassa vaiheessa, jotta voimme ilmoittaa sinulle, kun tuote on jälleen saatavilla.",
+      "confirm": "Salli ilmoitukset"
+    }
+  },
+  "favorites": {
+    "add": "Lisää suosikkilistalle",
+    "added": "Tuote on lisätty suosikkilistalle",
+    "continue": "Jatka ostoksia",
+    "empty": "Sinulla ei ole vielä yhtään tuotetta suosikkilistalla",
+    "error_add": "Tuotetta ei voitu lisätä seurantalistalle",
+    "error_remove": "Tuotetta ei voitu poistaa seurantalistalta",
+    "error_limit": "Seurantalistalla olevien tuotteiden sallittu määrä on ylitetty.",
+    "error_general": "Seurantalistaa ei voitu tallentaa",
+    "remove": "Poista seurantalistalta",
+    "removed": "Poistettu seurantalistalta",
+    "add_list_modal": {
+      "title": "Luo uusi tarkkailuluettelo",
+      "dismiss": "Peruuta",
+      "confirm": "Vahvista",
+      "message": "Uuden tarkkailulistan nimi",
+      "label": "Nimi"
+    },
+    "rename_list_modal": {
+      "title": "Muuta tarkkailulistan nimeä",
+      "dismiss": "Peruuta",
+      "confirm": "Vahvista",
+      "message": "Tarkkailulistan uusi nimi",
+      "label": "Nimi"
+    },
+    "delete_list_modal": {
+      "title": "Poista seurantalista",
+      "message": "Haluatko todella poistaa kellolistan \"{name}\"?"
+    },
+    "add_list": "Luo uusi luettelo",
+    "errors": {
+      "invalid_name": "Kirjoita täydellinen nimi seurantalistallesi."
+    },
+    "rename_list": "Nimeä uudelleen",
+    "remove_list": "Poista",
+    "add_to_list": "Lisää listalle",
+    "remove_from_list": "Poista listalta",
+    "edit_lists": "Muokkaa luetteloa",
+    "fo_method_chooser": {
+      "title": "Valitse tilaustapa"
+    },
+    "list_chooser": {
+      "title": "Valitse tarkkailuluettelo",
+      "add": "Lisää",
+      "remove": "Poista"
+    },
+    "modal": {
+      "message": "Jos haluat lisätä tämän tuotteen ostoskoriin, valitse vaihtoehdot.",
+      "confirm": "Valitse vaihtoehdot"
+    },
+    "open_list": "Avaa lista.",
+    "close_list": "Sulje lista.",
+    "load_more_button": "Lataa lisää tuotteita"
+  },
+  "filter": {
+    "sort": {
+      "default": "Lajittele",
+      "most_popular": "Parhaat tulokset",
+      "price_desc": "Korkein hinta ensin",
+      "price_asc": "Halvin hinta ensin"
+    },
+    "apply": "Valmis",
+    "more": "Lisää",
+    "reset": "Nollaa",
+    "remove": "{filter} poista suodatin",
+    "edit": "{filter} Muokkaa suodatinta",
+    "filter_by": "Suodata {label}",
+    "label": {
+      "price": "Hinta",
+      "category": "Kategoria",
+      "manufacturer": "Merkki"
+    }
+  },
+  "price": {
+    "from": "Alkaen {price}",
+    "range": "Hinta alkaen {fromPrice} kunnes {toPrice}",
+    "range_from": "Hinta vaihtelee välillä",
+    "range_to": "Hintaluokka enintään",
+    "tier": {
+      "set": "{from} Kappale: {price}",
+      "range": "{from} tai enemmän: {price}"
+    },
+    "msrp": "RRP",
+    "label": "Hinta {price}.",
+    "label_old_price": "Vanha hinta {price}."
+  },
+  "product": {
+    "description_heading": "Kuvaus",
+    "pick_an_attribute": "{0} valitse",
+    "tax_disclaimer": "* Sisältää alv:n ja mahdollisesti toimituskulut",
+    "adding_item": "{count, plural, =1 {{count} tuote lisätään} other {{count} tuotteet lisätään}}",
+    "pick_option_first": "Valitse vaihtoehto ensin. {option}",
+    "fill_out_required_input_first": "Täytä ensin kaikki pakolliset kentät.",
+    "add_to_cart": "Lisää koriin",
+    "no_more_found": "Artikkeli: \"{name}\" on tällä hetkellä loppunut varastosta.",
+    "quantity": "Määrä",
+    "minOrderQuantity": "Vähimmäistilausmäärä:{quantity}",
+    "maxOrderQuantity": "Max. Tilausmäärä:{quantity}",
+    "available": {
+      "at": "Saatavilla osoitteessa {startDate, date, DD} {startDate, date, MMM} osoitteessa {startDate, time, short} Kello",
+      "until": "Saatavilla asti {endDate, date, DD} {endDate, date, MMM} osoitteessa {endDate, time, short} Kello",
+      "not": "Tällä hetkellä ei käytettävissä",
+      "not_search_similar": "{name} ei saatavilla. Etsi vastaavia tuotteita?"
+    },
+    "relations": {
+      "showMore": "Lisää"
+    },
+    "sections": {
+      "information": "Tuotetiedot",
+      "options": "Valitse vaihtoehdot",
+      "description": "Kuvaus",
+      "properties": "Ominaisuudet",
+      "ratings": "Luokitukset",
+      "purchase": "Osta tuote",
+      "quantity": "Määrä"
+    },
+    "displayGroups": {
+      "general": "Yleinen",
+      "features": "Ominaisuudet",
+      "pricing": "Hintatiedot",
+      "properties": "Ominaisuudet"
+    }
+  },
+  "category": {
+    "error": {
+      "title": "Hups",
+      "not_found": "Kategoriaa ei löydy"
+    },
+    "no_result": {
+      "heading": "Hups!",
+      "body": "Tuotteita ei löytynyt"
+    },
+    "sections": {
+      "categories": "Kategoriat",
+      "products": "Tuotteet"
+    },
+    "showAllProducts": {
+      "label": "Näytä kaikki tuotteet"
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Hups!",
+      "body": "Hakusi \"{searchPhrase}\" ei tuottanut tuloksia."
+    },
+    "placeholder": "Etsi",
+    "close": "Lopeta haku",
+    "reset": "Nollaa haku"
+  },
+  "shipping": {
+    "unknown": "plus toimituskulut",
+    "free": "Ilmainen toimitus",
+    "free_short": "Ilmainen",
+    "cost": "{price} Toimitus"
+  },
+  "liveshopping": {
+    "discount_badge": "{0}% Säästö"
+  },
+  "modal": {
+    "confirm": "Vahvista",
+    "dismiss": "Peruuta",
+    "ok": "Okei",
+    "title_error": "Hups!",
+    "body_error": "On tapahtunut odottamaton virhe. Yritä uudelleen."
+  },
+  "cart": {
+    "subtotal": "Välisumma",
+    "total": "Ostoskori yhteensä",
+    "discount": "Alennus",
+    "discount_with_label": "Alennus ({label})",
+    "checkout": "Siirry kassalle",
+    "remove": "Poista",
+    "edit": "Muokkaa",
+    "empty": "Ostoskorisi on tyhjä.",
+    "continue": "Jatka ostoksia",
+    "redeem_coupon": "Kirjoita kuponkikoodi",
+    "submit_coupon": "Lähetä kuponkikoodi",
+    "delete_coupon": "Poista kuponkikoodi",
+    "coupon_code": "Koodi",
+    "default_coupon_label": "Kuponki",
+    "coupon_was_added": "Kuponki on lisätty!",
+    "coupons_not_supported": "Kuponkien ja lahjakorttien lunastaminen seuraavassa vaiheessa",
+    "free_shipping": "Ilmainen toimitus",
+    "message_type_info": "Info",
+    "message_type_error": "Virhe",
+    "message_type_warning": "Varoitus"
+  },
+  "login": {
+    "headline": "Tervetuloa!",
+    "subline": "Kirjaudu sisään jatkaaksesi.",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "forgot_password": "Unohditko salasanasi?",
+    "forgot_password_popup": "Käytä työpöytäsivustoa salasanasi palauttamiseen.",
+    "button": "Kirjaudu sisään",
+    "no_account": "Sinulla ei ole vielä tiliä?",
+    "register": "Aloita tästä.",
+    "logout_message": "Sinut on kirjauduttu ulos.",
+    "error": "Käyttäjätunnus tai salasana eivät ole oikein"
+  },
+  "navigation": {
+    "login_register": "Kirjaudu sisään",
+    "your_account": "Oma tili",
+    "home": "Kotisivu",
+    "categories": "Kategoriat",
+    "favorites": "Seurantaluettelo",
+    "my_orders": "Tilaukseni",
+    "cart": "Ostoskori",
+    "scanner": "Skanneri",
+    "shipping": "Toimitustavat",
+    "about": "Jälki",
+    "payment": "Maksutavat",
+    "terms": "Maksuehdot",
+    "privacy": "Tietosuoja",
+    "welcome_message": "Hei {name}",
+    "return_policy": "Peruutusehdot",
+    "logout": "Kirjaudu ulos",
+    "menuSubHeader": {
+      "more": "Lisää",
+      "about": "Tietoa meistä"
+    },
+    "back_in_stock": "Ilmoitukset",
+    "back": "Takaisin {title}",
+    "open_menu": "Avaa valikko"
+  },
+  "reviews": {
+    "rating": "Arviointi",
+    "no_reviews": "Kirjoita ensimmäinen arvostelu.",
+    "review_count": "({count} {count, plural, =1 {Arviointi} other {Arviot}})",
+    "button_add": "Arvioi tuote",
+    "button_all": "Kaikki {count} arvostelut",
+    "author": "osoitteesta {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {Tähti} other {Tähdet}} osoitteesta {maxRate}.",
+    "review_form_rate": "Arvioi tämä tuote:",
+    "review_form_author": "Nimi",
+    "review_form_title": "Otsikko (valinnainen)",
+    "review_form_text": "Arvostelusi (valinnainen)",
+    "review_form_error_author_empty": "Kirjoita nimi.",
+    "review_form_rate_error": "Kuinka monta tähteä annat?",
+    "review_form_error_length": "Enintään {length} merkkiä sallittu.",
+    "press_to_rate_with_x_stars": "Valitse arvostella kanssa {rate} {rate, plural, =1 {yksi Tähti} other {Tähdet}}",
+    "success_message": "Kiitos luokituksestasi!"
+  },
+  "scanner": {
+    "instructions": "Aseta viivakoodi tai QR-koodi keskelle. Tunnistus tapahtuu automaattisesti.",
+    "noResult": {
+      "qrCode": "Emme löytäneet tulosta tälle QR-koodille.",
+      "barCode": "Tuotetta ei löytynyt."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Avaa asetukset",
+      "camera_message": "Tämä toiminto vaatii kameran käyttöoikeuden. Salli pääsy asetuksissa.",
+      "push_message": "Olet poistanut push-ilmoitukset käytöstä tämän sovelluksen osalta. Ota ne käyttöön laitteesi asetuksissa.",
+      "geolocation_message": "Tarvitsemme pääsyn sijaintiin, jotta voimme näyttää lähellä olevat kaupat."
+    }
+  },
+  "error": {
+    "general": "Yhteysongelma. Tarkista internetyhteytesi tai yritä myöhemmin uudelleen."
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2-numeroinen"
+      },
+      "MMM": {
+        "month": "lyhyt"
+      }
+    }
+  },
+  "appRating": {
+    "yes": "Kyllä",
+    "no": "Ei",
+    "title": "Arvioi sovellus",
+    "message": "Pidätkö sovelluksestamme? Odotamme mielenkiinnolla arvosanaa!",
+    "rejectionApprovalMessage": "Haluaisitko antaa meille palautetta? Se auttaa meitä parantamaan sovellusta edelleen."
+  },
+  "pushOptInModal": {
+    "title": "Vastaanota eksklusiivisia kuponkeja ja tarjouksia",
+    "buttonAllow": "Aktivoi ilmoitukset",
+    "buttonDeny": "En halua ilmoituksia",
+    "message": "Ota ilmoitukset käyttöön, jotta voimme lähettää sinulle push-ilmoituksia uusista tarjouksista, eksklusiivisista kupongeista ja muusta."
+  }
+}

@@ -6,7 +6,7 @@ import styles from './style';
 /**
  * The Shipping Label component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Label = ({ className, price, currency }) => (
   // eslint-disable-next-line jsx-a11y/aria-role
