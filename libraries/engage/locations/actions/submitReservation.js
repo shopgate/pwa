@@ -1,5 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   submitReservationRequest,
   submitReservationSuccess,
@@ -44,4 +45,5 @@ function submitReservation(values, product) {
   };
 }
 
-export default submitReservation;
+/** @mixes {MutableFunction} */
+export default mutable(submitReservation);

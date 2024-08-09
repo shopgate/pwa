@@ -1,5 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   requestLocations,
   receiveLocations,
@@ -8,7 +9,22 @@ import {
 import { SHOPGATE_STOREFRONT_GET_LOCATIONS } from '../constants';
 
 /**
- * @param {Object} params params.
+ * Returns a list of locations based on search options & defaults. Including geographical radial
+ * distance & other merchant configurations
+ * @param {Object} params Function params
+ * @param {string} [params.postalCode] A postal code
+ * @param {string} [params.countryCode] Indicates to which country the postal code belongs.
+ * Is required if the postalCode parameter is set
+ * @param {Object} [params.geolocation] A geolocation object
+ * @param {string} params.geolocation.longitude Longitude to search by coordinates. Works only in
+ * combination with radius and latitude.
+ * @param {string} params.geolocation.latitude Latitude to search by coordinates. Works only in
+ * combination with radius and longitude.
+ * @param {number} [params.radius] Used only with geolocation.longitude & geolocation.latitude.
+ * @param {string[]} [params.codes] Search by location codes. This cannot be combined with
+ * coordinate search or a postal code search
+ * @param {boolean} [params.enableInLocationFinder=false] When set to `true` only locations are
+ * returned which are enabled for the location finder.
  * @returns {Function} A redux thunk.
  */
 function fetchLocations(params) {
@@ -53,4 +69,5 @@ function fetchLocations(params) {
   };
 }
 
-export default fetchLocations;
+/** @mixes {MutableFunction} */
+export default mutable(fetchLocations);
