@@ -253,6 +253,7 @@
     "payment": "Fizetési módok",
     "terms": "Általános szerződési feltételek",
     "privacy": "Adatvédelem",
+    "privacySettings": "Adatvédelmi beállítások",
     "welcome_message": "Szia {name}",
     "return_policy": "Lemondási szabályzat",
     "logout": "Kijelentkezés",

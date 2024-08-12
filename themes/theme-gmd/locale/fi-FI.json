@@ -253,6 +253,7 @@
     "payment": "Maksutavat",
     "terms": "Maksuehdot",
     "privacy": "Tietosuoja",
+    "privacySettings": "Tietosuoja-asetukset",
     "welcome_message": "Hei {name}",
     "return_policy": "Peruutusehdot",
     "logout": "Kirjaudu ulos",

@@ -253,6 +253,7 @@
     "payment": "Platební metody",
     "terms": "Podmínky",
     "privacy": "Ochrana údajů",
+    "privacySettings": "Nastavení ochrany osobních údajů",
     "welcome_message": "Dobrý den {name}",
     "return_policy": "Storno podmínky",
     "logout": "Odhlášení",

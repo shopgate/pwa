@@ -253,6 +253,7 @@
     "payment": "Betalningsmetoder",
     "terms": "Villkor och bestämmelser",
     "privacy": "Dataskydd",
+    "privacySettings": "Sekretessinställningar",
     "welcome_message": "Hej {name}",
     "return_policy": "Avbokningsregler",
     "logout": "Logga ut",
