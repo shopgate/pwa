@@ -172,12 +172,6 @@
       "categories": "Categorias",
       "products": "Produtos"
     },
-    "displayGroups": {
-      "general": "Geral",
-      "features": "Características",
-      "pricing": "Preços",
-      "properties": "Propriedades"
-    },
     "showAllProducts": {
       "label": "Mostrar todos os produtos"
     }
@@ -247,7 +241,6 @@
     "back_in_stock": "Lembrete de regresso ao stock",
     "shipping": "Métodos de Envio",
     "about": "Contact",
-    "contact": "Contato",
     "payment": "Métodos de Pagamento",
     "terms": "Termos e Condições",
     "privacy": "Política de Privacidade",
