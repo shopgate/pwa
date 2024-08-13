@@ -62,8 +62,9 @@ export const mutableActions = {
 
 /**
  * Takes a function and makes it mutable.
- * @param {Function} func Original function to convert to a mutable
- * @returns {Function}
+ * @template {Function} T
+ * @param {T} func Original function to convert to a mutable
+ * @returns {T}
  */
 export const mutable = (func) => {
   const original = func;
