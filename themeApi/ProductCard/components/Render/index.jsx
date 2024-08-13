@@ -8,6 +8,7 @@ import {
   OrderQuantityHint,
   ProductImage,
   ProductBadges,
+  useProductListType,
 } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
@@ -44,9 +45,17 @@ function ProductCardRender({
   } = product;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
+  const productListContext = useProductListType();
 
   return (
-    <Link tagName="a" href={url}>
+    <Link
+      tagName="a"
+      href={url}
+      state={{
+        isRecommendation: productListContext?.subType?.isRecommendation,
+        recommendationScope: productListContext?.subType?.recommendationScope,
+      }}
+    >
 
       {isBeta() && featuredMedia
         ? <FeaturedMedia
