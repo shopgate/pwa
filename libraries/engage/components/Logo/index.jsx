@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import noop from 'lodash/noop';
 import styles from './style';
@@ -19,7 +20,7 @@ const Logo = ({ className, onClick, showLogo }) => {
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     <div
       onClick={onClick}
-      className={`${styles.container} ${className}`}
+      className={classNames(styles.container, className, 'engage__logo')}
     >
       <img
         className={styles.image}

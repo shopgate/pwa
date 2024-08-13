@@ -50,8 +50,10 @@ export function CartItemProductLayout() {
 
   const portalProps = useMemo(() => ({
     ...context,
+    isOrderDetails,
+    isCheckoutConfirmation,
     quantity: cartItem.quantity,
-  }), [cartItem.quantity, context]);
+  }), [cartItem.quantity, context, isCheckoutConfirmation, isOrderDetails]);
 
   const isActive = !isOrderDetails
     ? true
