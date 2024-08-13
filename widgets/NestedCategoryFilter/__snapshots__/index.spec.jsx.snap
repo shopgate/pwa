@@ -161,7 +161,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -474,7 +474,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -483,7 +483,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     >
                       <div
                         aria-modal={true}
-                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -1110,7 +1110,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1264,7 +1264,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1401,7 +1401,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1746,7 +1746,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1755,7 +1755,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -2191,7 +2191,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2522,7 +2522,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2531,7 +2531,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -2967,7 +2967,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2976,7 +2976,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -3563,7 +3563,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3854,7 +3854,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-qxf1dv"
+                      className="css-1rtxert"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3863,7 +3863,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     >
                       <div
                         aria-modal={true}
-                        className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
