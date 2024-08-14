@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.23.0](https://github.com/shopgate/pwa/compare/v6.22.5...v6.23.0) (2024-08-14)
+
+#### :rocket: Enhancement
+* [#1246](https://github.com/shopgate/pwa/pull/1246) Added GDPR compliant opt-in for tracking ([@fkloes](https://github.com/fkloes))
+* [#1237](https://github.com/shopgate/pwa/pull/1237) Add safe-area inset to modal component ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v6.22.5](https://github.com/shopgate/pwa/compare/v6.22.4...v6.22.5) (2024-08-09)
 
 #### :rocket: Enhancement
