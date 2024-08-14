@@ -5,9 +5,12 @@ const modalContent = css({
   width: '100%',
 }).toString();
 
+const modalLayout = css({
+  backgroundColor: themeColors.lightOverlay,
+}).toString();
+
 const container = css({
   backgroundColor: themeColors.lightOverlay,
-  height: '100vh',
   textAlign: 'center',
   padding: '30px',
   justifyContent: 'center',
@@ -49,6 +52,7 @@ const buttonText = css({
 
 export default {
   modalContent,
+  modalLayout,
   container,
   item,
   title,

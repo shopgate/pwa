@@ -256,6 +256,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           className="css-kwqjom"
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -751,6 +752,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}
@@ -1337,6 +1339,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}
@@ -1982,6 +1985,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           className="css-kwqjom"
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -2838,6 +2842,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}
@@ -3116,6 +3121,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           className="css-kwqjom"
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -3605,6 +3611,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             style={null}
                           >
                             <Translate
+                              acceptPlainTextWithPlaceholders={false}
                               className={null}
                               params={Object {}}
                               role={null}

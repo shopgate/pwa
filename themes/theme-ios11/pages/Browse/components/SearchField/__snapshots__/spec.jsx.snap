@@ -117,6 +117,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
           type="button"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}
@@ -259,6 +260,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
           type="button"
         >
           <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
             params={Object {}}
             role={null}

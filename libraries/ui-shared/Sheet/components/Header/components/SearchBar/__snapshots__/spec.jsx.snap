@@ -66,6 +66,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
               </Magnifier>
             </div>
             <Translate
+              acceptPlainTextWithPlaceholders={false}
               className={null}
               params={Object {}}
               role={null}

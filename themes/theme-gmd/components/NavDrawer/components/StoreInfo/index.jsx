@@ -11,7 +11,9 @@ import {
   NAV_MENU_STORE_INFORMATION_ABOUT,
   NAV_MENU_STORE_INFORMATION_ABOUT_AFTER,
   NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
+import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
+import { appConfig } from '@shopgate/engage';
 import NavDrawerSection from '../Section';
 import ShippingButton from './components/ShippingButton';
 import PaymentButton from './components/PaymentButton';
@@ -20,9 +22,12 @@ import PrivacyButton from './components/PrivacyButton';
 import ReturnsButton from './components/ReturnsButton';
 import ImprintButton from './components/ImprintButton';
 import portalProps from '../../portalProps';
+import PrivacySettingsButton from './components/PrivacySettingsButton';
+
+const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const StoreInfo = () => (
   <Fragment>
@@ -42,6 +47,7 @@ const StoreInfo = () => (
         <NavDrawerSection title="navigation.menuSubHeader.about">
           <TermsButton />
           <PrivacyButton />
+          {appSupportsCookieConsent() && isCookieConsentActivated && <PrivacySettingsButton />}
           {showReturnPolicy && <ReturnsButton />}
           <ImprintButton />
         </NavDrawerSection>

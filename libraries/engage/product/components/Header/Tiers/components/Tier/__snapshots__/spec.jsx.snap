@@ -2,6 +2,7 @@
 
 exports[`<Tier /> Rendering with data should render tier prices when tier prices are available 1`] = `
 <Translate
+  acceptPlainTextWithPlaceholders={false}
   className="css-z8ikop"
   key="3"
   params={

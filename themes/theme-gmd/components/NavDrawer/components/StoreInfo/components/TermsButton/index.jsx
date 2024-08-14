@@ -4,19 +4,22 @@ import {
   NAV_MENU_TERMS,
   NAV_MENU_TERMS_AFTER,
   NAV_MENU_TERMS_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { TERMS_PATH } from '../../../../constants';
+} from '@shopgate/engage/core';
+import {
+  Portal,
+  NavDrawer,
+  DescriptionIcon,
+} from '@shopgate/engage/components';
+import { TERMS_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.terms';
 
 /**
- * @param {Function} props.navigate The navigate action.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {Function} props.navigate The navigate props
+ * @returns {JSX.Element}
  */
 const TermsButton = ({ navigate }) => (
   <Fragment>

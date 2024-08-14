@@ -7,11 +7,14 @@ import {
 const GET_PERMISSIONS_COMMAND_NAME = 'getAppPermissions';
 const GET_PERMISSIONS_RESPONSE_EVENT_NAME = 'getAppPermissionsResponse';
 
-jest.mock('../Event', () => ({}));
+jest.mock('../AppCommandRequest');
 
 const permissionIds = [PERMISSION_ID_LOCATION, PERMISSION_ID_CAMERA];
 
-describe('AppPermissionsRequest', () => {
+describe('GetAppPermissionsRequest', () => {
+  /**
+   * @type {GetAppPermissionsRequest}
+   */
   let instance;
   let setCommandParamsSpy;
 
@@ -78,6 +81,22 @@ describe('AppPermissionsRequest', () => {
       instance.setPermissionIds({});
       const result = instance.validateCommandParams();
       expect(result).toBe(false);
+    });
+  });
+
+  describe('.dispatch()', () => {
+    it('should resolve when command param validation is successful', () => {
+      const mockedResponse = { mocked: 'response' };
+      instance.setMockedResponse(mockedResponse);
+      instance.setPermissionIds(permissionIds);
+      expect(instance.dispatch()).resolves.toEqual(mockedResponse);
+    });
+
+    it('should reject when command param validation is not successful', () => {
+      const mockedResponse = { mocked: 'response' };
+      instance.setMockedResponse(mockedResponse);
+      instance.setPermissionIds({});
+      expect(instance.dispatch()).rejects.toThrow(`${GET_PERMISSIONS_COMMAND_NAME} - invalid command parameters passed`);
     });
   });
 });

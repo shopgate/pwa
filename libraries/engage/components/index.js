@@ -41,6 +41,7 @@ export { default as Swiper } from '@shopgate/pwa-common/components/Swiper';
 export { default as Toaster } from '@shopgate/pwa-common/components/Toaster';
 export { default as Transition } from '@shopgate/pwa-common/components/Transition';
 export { default as Widgets } from '@shopgate/pwa-common/components/Widgets';
+export { default as Switch } from '@shopgate/engage/components/Switch';
 
 // iOS
 export { default as AppBarIOS } from '@shopgate/pwa-ui-ios/AppBar';

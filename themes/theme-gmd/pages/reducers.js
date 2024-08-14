@@ -23,6 +23,7 @@ import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import extensions from 'Extensions/reducers';
 import { app } from '@shopgate/engage/core/reducers';
+import tracking from '@shopgate/engage/tracking/reducers';
 
 persistedReducers.set([
   'cart',
@@ -32,6 +33,8 @@ persistedReducers.set([
   'user',
   'appRating',
   'pushOptIn.optInTrigger',
+  'tracking.cookieConsentModal',
+  'tracking.cookieSettings',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -64,6 +67,7 @@ const reducers = combineReducers({
   user,
   appRating,
   pushOptIn,
+  tracking,
 });
 
 export default reducers;

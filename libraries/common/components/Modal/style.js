@@ -19,9 +19,10 @@ const layout = css({
 }).toString();
 
 const content = css({
+  paddingTop: 'var(--safe-area-inset-top)',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
+  overflowY: 'scroll',
   position: 'relative',
-  maxWidth: '100vw',
-  maxHeight: '100vh',
 }).toString();
 
 export default {

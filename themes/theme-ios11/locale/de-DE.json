@@ -254,6 +254,7 @@
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
+    "privacySettings": "Datenschutzeinstellungen",
     "welcome_message": "Hallo {name}",
     "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
@@ -327,5 +328,23 @@
     "buttonAllow": "Benachrichtigungen aktivieren",
     "buttonDeny": "Ich möchte keine Benachrichtigungen",
     "message": "Aktivieren Sie Benachrichtigungen, damit wir Ihnen Push-Mitteilungen zu neuen Angeboten, exklusiven Gutscheinen und mehr senden können."
+  },
+  "cookieConsentModal": {
+    "title": "Passen Sie Ihr persönliches Einkaufserlebnis an",
+    "buttonAcceptAll": "Alle akzeptieren",
+    "modalButtonOnlyRequired": "Nur erforderliche",
+    "modalButtonConfirmSelected": "Auswahl bestätigen",
+    "buttonConfigure": "Einstellungen konfigurieren",
+    "message": "Unser Ziel ist es, die App optimal auf Ihre Bedürfnisse anzupassen. Dafür verwenden wir moderne Tracking-Technologien, mit denen wir Einkaufsverhalten analysieren und die Daten nutzen, um unsere App zu verbessern und Ihnen personalisierte Inhalte zu präsentieren. Sie können die Einstellungen jederzeit im Bereich „Mein Konto“ anpassen. Weitere Informationen finden Sie in unserer detaillierten {privacyLink}.",
+    "privacyText": "Datenschutzerklärung"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Komfort",
+    "statisticsTitle": "Personalisierung & Statistik",
+    "requiredTitle": "Erforderlich",
+    "comfort": "Diese Cookies und Technologien ermöglichen einige zusätzliche Funktionen und eine bessere Leistung.",
+    "statistics": "Diese Statistiken helfen uns, unsere App zu verbessern und Ihnen relevantere Anzeigen zu zeigen.",
+    "required": "Daten, die für den Betrieb der App erforderlich sind.",
+    "privacy": "Für weitere Informationen beachten Sie bitte unsere {privacyLink}."
   }
 }
