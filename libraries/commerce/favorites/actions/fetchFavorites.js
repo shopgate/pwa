@@ -13,6 +13,11 @@ import {
   requestFavorites,
   errorFetchFavorites,
 } from '../action-creators';
+import {
+  getHasMultipleFavoritesListsSupport,
+  makeGetFavoritesProductsByList,
+} from '../selectors';
+
 import receiveProducts from '../../product/action-creators/receiveProducts';
 
 /**
@@ -28,8 +33,10 @@ function fetchFavorites(ignoreCache = false, listId = undefined) {
     const defaultList = lists?.[0] || { code: 'DEFAULT' };
     const takenListId = listId || defaultList.code;
 
-    // Check cache.
-    const data = getState().favorites.products.byList[takenListId];
+    const hasMultiSupport = getHasMultipleFavoritesListsSupport(getState());
+    const getFavoritesProductsByList = makeGetFavoritesProductsByList(() => takenListId);
+    const data = getFavoritesProductsByList(getState());
+
     if (!ignoreCache && !shouldFetchData(data)) {
       return null;
     }
@@ -42,7 +49,9 @@ function fetchFavorites(ignoreCache = false, listId = undefined) {
 
     const request = new PipelineRequest(SHOPGATE_USER_GET_FAVORITES)
       .setVersion(pipelineVersion)
-      .setInput({ favoritesListId: takenListId })
+      .setInput({
+        ...hasMultiSupport ? { favoritesListId: takenListId } : null,
+      })
       .setErrorBlacklist([EFAVORITE, EUNKNOWN, EBIGAPI, ELIMIT])
       .dispatch();
 

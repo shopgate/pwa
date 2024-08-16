@@ -4,6 +4,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import groupBy from 'lodash/groupBy';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { makeGetRoutePattern } from '@shopgate/engage/core/selectors';
 import {
   getLoadWishlistOnAppStartEnabled,
   getWishlistItemQuantityEnabled,
@@ -75,7 +76,7 @@ export default function favorites(subscribe) {
     ]);
 
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(getState());
-    if (loadWishlistOnAppStartEnabled) {
+    if (loadWishlistOnAppStartEnabled && makeGetRoutePattern()(getState()) !== FAVORITES_PATH) {
       await dispatch(fetchFavoritesListsWithItems(false));
     }
   });

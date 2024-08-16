@@ -180,7 +180,8 @@
       "confirm": "Seleccionar variantes"
     },
     "open_list": "Lista abierta.",
-    "close_list": "Cerrar lista."
+    "close_list": "Cerrar lista.",
+    "load_more_button": "Cargar otros artículos"
   },
   "filter": {
     "sort": {
