@@ -100,6 +100,7 @@ jest.mock('../selectors', () => ({
   makeGetFavorites: jest.fn(() => mockedMakeGetFavoritesReturnValue),
   makeGetProductRelativesOnFavorites: jest.fn(() =>
     jest.fn().mockReturnValue(mockedGetProductRelativesOnFavoritesReturnValue)),
+  getUseGetFavoriteIdsPipeline: jest.fn().mockReturnValue(false),
 }));
 
 jest.mock('../actions/addFavorites', () =>
