@@ -53,6 +53,7 @@ import {
   makeGetFavoritesCountByList,
   makeGetProductRelativesOnFavorites,
   getFavoritesProducts,
+  getUseGetFavoriteIdsPipeline,
 } from '../selectors';
 
 /**
@@ -109,8 +110,9 @@ export default function favorites(subscribe) {
     const { favorites: { limit = 100 } = {} } = appConfig;
 
     const count = makeGetFavoritesCountByList(() => action?.listId)(state);
-
-    if (limit && count >= limit) {
+    // When the getFavorites pipeline is used to fetch favorites, the amount of items is limited
+    // since it returns full product entities. Hence adding more items needs to be prevented.
+    if (limit && count >= limit && !getUseGetFavoriteIdsPipeline(state)) {
       // Dispatch a local error only, because the request to add is prevented
       const error = new Error('Limit exceeded');
       error.code = FAVORITES_LIMIT_ERROR;
