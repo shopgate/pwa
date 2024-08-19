@@ -69,11 +69,11 @@ function fetchFavorites(ignoreCache = false, listId = undefined) {
         delete result.products;
       }
 
-      dispatch(receiveFavorites(result.items, timestamp, takenListId));
       dispatch(receiveProducts({
         products: result.items.map(({ product }) => product),
         fetchInventory: false,
       }));
+      dispatch(receiveFavorites(result.items, timestamp, takenListId));
       return result;
     } catch (err) {
       dispatch(errorFetchFavorites(err, takenListId));
