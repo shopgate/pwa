@@ -87,8 +87,6 @@ const ListContent = ({
         {i18n.text('favorites.load_more_button')}
       </RippleButton>
     }
-
-    <div className={styles.spacer} />
   </>
 );
 

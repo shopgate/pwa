@@ -25,13 +25,6 @@ const styles = {
     marginRight: -16,
     marginBottom: 16,
   }),
-  spacer: css({
-    height: 1,
-    width: 'calc(100% + 32px)',
-    marginLeft: -16,
-    marginRight: -16,
-    marginBottom: 16,
-  }),
   loadMoreButton: css({
     width: 'calc(100% - 32px)',
     margin: '16px 16px 0 16px',
