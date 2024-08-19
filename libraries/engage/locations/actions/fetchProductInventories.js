@@ -1,5 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   requestProductInventories,
   receiveProductInventories,
@@ -8,8 +9,10 @@ import {
 import { SHOPGATE_STOREFRONT_GET_PRODUCT_INVENTORIES } from '../constants';
 
 /**
+ * Fetches inventories for a product
  * @param {string} productCode The product ID to fetch inventories for.
  * @param {Object} [params={}] Optional params for the inventories request.
+ * @param {string[]} params.locationCodes A list of location codes.
  * @returns {Function} A redux thunk.
  */
 function fetchProductInventories(productCode, params = {}) {
@@ -40,4 +43,5 @@ function fetchProductInventories(productCode, params = {}) {
   };
 }
 
-export default fetchProductInventories;
+/** @mixes {MutableFunction} */
+export default mutable(fetchProductInventories);
