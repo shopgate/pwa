@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   requestProductLocations,
   receiveProductLocations,
@@ -7,8 +8,15 @@ import {
 import { SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS } from '../constants';
 
 /**
+ * Returns a list of locations and item availability for a given product
  * @param {string} productCode The product ID to fetch locations for.
  * @param {Object} [params={}] Optional params for the location request.
+ * @param {string} [params.postalCode] A postal code
+ * @param {Object} [params.geolocation] A geolocation object
+ * @param {string} params.geolocation.longitude Longitude to search by coordinates. Works only in
+ * combination with latitude.
+ * @param {string} params.geolocation.latitude Latitude to search by coordinates. Works only in
+ * combination with longitude.
  * @returns {Function} A redux thunk.
  */
 function fetchProductLocations(productCode, params = {}) {
@@ -47,4 +55,5 @@ function fetchProductLocations(productCode, params = {}) {
   };
 }
 
-export default fetchProductLocations;
+/** @mixes {MutableFunction} */
+export default mutable(fetchProductLocations);
