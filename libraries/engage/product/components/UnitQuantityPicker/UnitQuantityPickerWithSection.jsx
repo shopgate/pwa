@@ -11,7 +11,6 @@ const styles = {
   quantityPicker: css({
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
   }).toString(),
   quantityHint: css({
     marginBottom: -4,
@@ -34,7 +33,7 @@ const UnitQuantityPickerWithSection = ({
 
   return (
     <Section title="product.sections.quantity">
-      <ProductUnitQuantityPicker className={styles.quantityPicker}>
+      <ProductUnitQuantityPicker className={styles.quantityPicker} size="large">
         <OrderQuantityHint
           productId={variantId || productId}
           className={styles.quantityHint}

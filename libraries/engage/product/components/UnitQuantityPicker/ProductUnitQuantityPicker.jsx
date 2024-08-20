@@ -31,7 +31,7 @@ const styles = {
  * @returns {JSX}
  */
 const ProductUnitQuantityPicker = ({
-  children, className, product, disabled, stockInfo,
+  children, className, product, disabled, stockInfo, size,
 }) => {
   const { show = hasNewServices() } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
 
@@ -80,6 +80,7 @@ const ProductUnitQuantityPicker = ({
             disabled={disabled}
             minValue={minValue}
             maxValue={maxValue}
+            size={size}
           />
         </div>
         { children && (
@@ -97,12 +98,14 @@ ProductUnitQuantityPicker.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   product: PropTypes.shape(),
+  size: PropTypes.oneOf(['default', 'large']),
   stockInfo: PropTypes.shape(),
 };
 
 ProductUnitQuantityPicker.defaultProps = {
   disabled: false,
   product: null,
+  size: undefined,
   stockInfo: null,
   children: null,
   className: null,

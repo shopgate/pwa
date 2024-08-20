@@ -20,7 +20,7 @@ const CartUnitQuantityPicker = ({
 
   return (
     <UnitQuantityPicker
-      className={hasUnitWithDecimals ? withDecimals : withoutDecimals}
+      className={!hasUnitWithDecimals ? withDecimals : withoutDecimals}
       unit={hasUnitWithDecimals ? unit : null}
       maxDecimals={hasUnitWithDecimals ? 2 : 0}
       incrementStep={hasUnitWithDecimals ? 0.25 : 1}
