@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { useWidgetStyles, logger } from '../../../core';
+import { logger } from '../../../core/helpers';
+import { useWidgetStyles } from '../../../core/hooks';
 import { I18n, SheetDrawer, SheetList } from '../../../components';
-import { getQuantityRange } from './helpers';
+import { useQuantityRange } from './hooks';
 
 let deprecationWarning =
   'QuantityPicker is deprecated in favor of the UnitQuantityPicker component.\nUnitQuantityPicker now additionally supports units and floating point values.';
@@ -83,12 +84,13 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
   }, [promiseResolve, resolveValue]);
 
   const styles = useWidgetStyles('@shopgate/engage/product/QuantityPicker');
+  const quantityRange = useQuantityRange(stock);
 
   if (!stock) {
     return null;
   }
 
-  const { min, max } = getQuantityRange(stock);
+  const { min, max } = quantityRange;
 
   const items = Array((max - min) + 1)
     .fill(min)

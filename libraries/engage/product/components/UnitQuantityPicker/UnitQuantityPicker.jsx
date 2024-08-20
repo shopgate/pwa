@@ -7,7 +7,7 @@ import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
-import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
 
 const { variables, colors } = themeConfig;
 

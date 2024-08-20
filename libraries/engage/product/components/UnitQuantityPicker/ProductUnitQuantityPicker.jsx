@@ -5,7 +5,9 @@ import classNames from 'classnames';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
-import { withCurrentProduct } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { withCurrentProduct } from '@shopgate/engage/core/hocs';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
 import { small, big } from './styles';
@@ -31,6 +33,8 @@ const styles = {
 const ProductUnitQuantityPicker = ({
   children, className, product, disabled, stockInfo,
 }) => {
+  const { show = hasNewServices() } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
+
   const { quantity, setQuantity } = useContext(ProductContext);
 
   const { minValue, maxValue } = useMemo(() => {
@@ -51,7 +55,7 @@ const ProductUnitQuantityPicker = ({
     };
   }, [stockInfo]);
 
-  if (!product) {
+  if (!product || !show) {
     return null;
   }
 
