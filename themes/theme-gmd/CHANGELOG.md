@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.23.2](https://github.com/shopgate/pwa/compare/v6.23.1...v6.23.2) (2024-08-21)
+
+#### :bug: Bug Fix
+* [#1258](https://github.com/shopgate/pwa/pull/1258) Fixed an issue with the historyReplace router action ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.23.0](https://github.com/shopgate/pwa/compare/v6.22.5...v6.23.0) (2024-08-14)
 
 #### :rocket: Enhancement
