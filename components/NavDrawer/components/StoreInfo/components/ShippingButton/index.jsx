@@ -4,19 +4,22 @@ import {
   NAV_MENU_SHIPPING,
   NAV_MENU_SHIPPING_AFTER,
   NAV_MENU_SHIPPING_BEFORE,
-} from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import LocalShippingIcon from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { SHIPPING_PATH } from '../../../../constants';
+} from '@shopgate/engage/market';
+import {
+  Portal,
+  NavDrawer,
+  LocalShippingIcon,
+} from '@shopgate/engage/components';
+import { SHIPPING_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.shipping';
 
 /**
- * @param {Function} props.navigate The navigate action.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {Function} props.navigate The navigate props
+ * @returns {JSX.Element}
  */
 const ShippingButton = ({ navigate }) => (
   <Fragment>

@@ -10,6 +10,7 @@ import {
   PriceSlider,
   buildInitialFilters,
   buildUpdatedFilters,
+  translateFilterLabel,
 } from '@shopgate/engage/filter';
 import { CloseBar } from 'Components/AppBar/presets';
 import Selector from './components/Selector';
@@ -108,7 +109,7 @@ class FilterContent extends PureComponent {
     const { filters } = this.props;
 
     const filter = filters.find(entry => entry.id === id);
-    const { value: initialValues } = this.initialFilters[id];
+    const { value: initialValues, useForFetchFilters = false } = this.initialFilters[id];
     let stateValue = value;
 
     if (initialValues.length === 0 && value.length === 0) {
@@ -134,10 +135,13 @@ class FilterContent extends PureComponent {
        */
       stateValue = value.map((valueId) => {
         const match = filter.values.find(entry => entry.id === valueId);
+        const initialMatch = initialValues.find(entry => entry.id === valueId);
 
         return {
           id: match.id,
           label: match.label,
+          useForFetchFilters:
+            match?.useForFetchFilters || initialMatch?.useForFetchFilters || false,
         };
       });
     }
@@ -145,8 +149,10 @@ class FilterContent extends PureComponent {
     this.add(id, {
       id,
       type: filter.type,
-      label: filter.label,
+      label: translateFilterLabel(filter.id, filter.label),
       value: stateValue,
+      // Take care that this property doesn't get lost during update of active filters
+      useForFetchFilters,
       ...(filter.source && { source: filter.source }),
     });
   }
@@ -254,7 +260,7 @@ class FilterContent extends PureComponent {
             <Selector
               id={filter.id}
               key={filter.id}
-              label={filter.label}
+              label={translateFilterLabel(filter.id, filter.label)}
               values={filter.values}
               multi={filter.type === FILTER_TYPE_MULTISELECT}
               onChange={this.update}

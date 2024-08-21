@@ -13,9 +13,9 @@ import AppBar from '../AppBar';
  * @param {Object} props.categoryId The category id.
  * @returns {JSX}
  */
-const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
+const CategoryContent = ({ categoryId, hasProducts }) => (
   <Fragment>
-    <AppBar hasProducts={hasProducts} hasChildren={hasChildren} categoryId={categoryId} />
+    <AppBar filtersShown={hasProducts} categoryId={categoryId} />
     <ProductFilters categoryId={categoryId} showFilters={hasProducts} />
     <SurroundPortals portalName={VIEW_CONTENT}>
       <CategoryListContent categoryId={categoryId} />
@@ -32,12 +32,10 @@ const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
 
 CategoryContent.propTypes = {
   categoryId: PropTypes.string.isRequired,
-  hasChildren: PropTypes.bool,
   hasProducts: PropTypes.bool,
 };
 
 CategoryContent.defaultProps = {
-  hasChildren: false,
   hasProducts: false,
 };
 

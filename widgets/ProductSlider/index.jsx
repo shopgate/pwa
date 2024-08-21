@@ -132,7 +132,7 @@ class ProductSlider extends PureComponent {
 
     // Finally, build the slider.
     return (
-      <div className={styles.slider}>
+      <div className={`${styles.slider} theme__widgets__product-slider`}>
         {this.renderHeadline()}
         <ProductListTypeProvider type="productSlider" subType="widgets">
           <Swiper

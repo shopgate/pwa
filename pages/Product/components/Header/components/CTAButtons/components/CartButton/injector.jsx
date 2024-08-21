@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductContext } from '../../../../../../context';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 
 export default Component => () => (
   <ProductContext.Consumer>

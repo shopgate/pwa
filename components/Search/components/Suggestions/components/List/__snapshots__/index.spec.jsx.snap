@@ -5,6 +5,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase={null}
   suggestions={
     Array [
       "foo",
@@ -19,6 +20,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     portalProps={
       Object {
         "onClick": [Function],
+        "searchPhrase": null,
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -29,11 +31,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     }
   >
     <div
-      className={
-        Object {
-          "data-css-1aemm47": "",
-        }
-      }
+      className="css-1aemm47 theme__search__suggestion-list"
     >
       <SurroundPortals
         key="foo"
@@ -181,6 +179,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   bottomHeight={10}
   fetching={true}
   onClick={[Function]}
+  searchPhrase={null}
   suggestions={
     Array [
       "foo bar buz quz",
@@ -195,6 +194,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     portalProps={
       Object {
         "onClick": [Function],
+        "searchPhrase": null,
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -205,11 +205,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     }
   >
     <div
-      className={
-        Object {
-          "data-css-1aemm47": "",
-        }
-      }
+      className="css-1aemm47 theme__search__suggestion-list"
     >
       <SurroundPortals
         key="foo"
@@ -357,6 +353,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
+  searchPhrase={null}
   suggestions={
     Array [
       "foo bar buz quz",
@@ -371,6 +368,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     portalProps={
       Object {
         "onClick": [Function],
+        "searchPhrase": null,
         "suggestions": Array [
           "foo bar buz quz",
           "foo bar buz",
@@ -381,11 +379,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     }
   >
     <div
-      className={
-        Object {
-          "data-css-1aemm47": "",
-        }
-      }
+      className="css-1aemm47 theme__search__suggestion-list"
     >
       <SurroundPortals
         key="foo bar buz quz"
@@ -549,6 +543,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       dispatch={[Function]}
       fetching={false}
       onClick={[Function]}
+      searchPhrase={null}
       suggestions={
         Array [
           "foo",
@@ -563,6 +558,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         portalProps={
           Object {
             "onClick": [Function],
+            "searchPhrase": null,
             "suggestions": Array [
               "foo",
               "foo bar",
@@ -573,11 +569,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         }
       >
         <div
-          className={
-            Object {
-              "data-css-1aemm47": "",
-            }
-          }
+          className="css-1aemm47 theme__search__suggestion-list"
         >
           <SurroundPortals
             key="foo"
