@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals, View } from '@shopgate/engage/components';
-import { CATEGORY_LIST } from '@shopgate/engage/category';
-import CategoryList from 'Components/CategoryList';
+import { CATEGORY_LIST } from '@shopgate/engage/category/constants';
+import { CategoryList } from '@shopgate/engage/category/components';
 import { DefaultBar } from 'Components/AppBar/presets';
 import connect from './connector';
 

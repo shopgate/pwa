@@ -1,8 +1,9 @@
-import { appWillInit$ } from '@shopgate/engage/core';
-import { PERMISSION_ID_PUSH } from '@shopgate/engage/core/constants';
+import { appWillInit$ } from '@shopgate/engage/core/streams';
+import {
+  PERMISSION_ID_PUSH,
+} from '@shopgate/engage/core/constants';
 import { appInitialization } from '@shopgate/engage/core/collections';
-import { requestAppPermissionStatus } from '@shopgate/engage/core/actions';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { requestAppPermissionStatus, showModal } from '@shopgate/engage/core/actions';
 import { fetchBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/actions';
 import {
   addBackInStockReminderSuccess$,

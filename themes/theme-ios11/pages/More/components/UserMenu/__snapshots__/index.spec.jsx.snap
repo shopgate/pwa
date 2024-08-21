@@ -77,7 +77,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 text="navigation.your_account"
               >
                 <h2
-                  className="css-18cwfw7"
+                  className="css-18cwfw7 headline theme__headline"
                   data-test-id="Headline"
                   style={
                     Object {
@@ -111,14 +111,14 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
               >
                 <MoreMenuItem
                   className={null}
-                  href={null}
+                  href="/account/profile"
                   label="navigation.profile"
                   onClick={null}
                   testId="accountButton"
                 >
                   <Link
                     className="css-1hj8a57"
-                    href={null}
+                    href="/account/profile"
                   >
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
@@ -139,14 +139,14 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 </MoreMenuItem>
                 <MoreMenuItem
                   className={null}
-                  href={null}
+                  href="/account/orders"
                   label="navigation.order_history"
                   onClick={null}
                   testId="accountButton"
                 >
                   <Link
                     className="css-1hj8a57"
-                    href={null}
+                    href="/account/orders"
                   >
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
@@ -167,14 +167,14 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 </MoreMenuItem>
                 <MoreMenuItem
                   className={null}
-                  href={null}
+                  href="/account/wish-list"
                   label="navigation.wish_list"
                   onClick={null}
                   testId="accountButton"
                 >
                   <Link
                     className="css-1hj8a57"
-                    href={null}
+                    href="/account/wish-list"
                   >
                     <Translate
                       acceptPlainTextWithPlaceholders={false}

@@ -47,7 +47,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       text="Yay Categories"
     >
       <h3
-        className="css-137piww"
+        className="css-137piww headline theme__headline"
       >
         Yay Categories
       </h3>

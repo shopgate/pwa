@@ -25,7 +25,10 @@ const container = css({
   bottom: 0,
   background: themeConfig.colors.light,
   width: '100vw',
-  maxWidth: 640,
+  [responsiveMediaQuery('<xl', { appOnly: true })]: {
+    // Max width was introduced in PWA6 CCP-2496
+    maxWidth: 640,
+  },
   left: 0,
   right: 0,
   margin: '0 auto',

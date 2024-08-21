@@ -14,6 +14,7 @@ export const Search = lazy(() => import('./Search'));
 export const Login = lazy(() => import('./Login'));
 export const WriteReview = lazy(() => import('./WriteReview'));
 export const Scanner = lazy(() => import('./Scanner'));
+export const BackInStock = lazy(() => import('./BackInStock'));
 export const CheckoutAddressBook = lazy(() => import('./Checkout/CheckoutAddressBook'));
 export const CheckoutAddressBookContact = lazy(() => import('./Checkout/CheckoutAddressBookContact'));
 export const GuestCheckoutRegistration = lazy(() => import('./Checkout/GuestCheckoutRegistration'));

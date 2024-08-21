@@ -21,6 +21,11 @@ export const content = css({
   paddingLeft: variables.gap.big,
   paddingTop: variables.gap.small,
   paddingBottom: variables.gap.small,
+  // took from https://stackoverflow.com/a/36247448
+  // in order to prevent the long coupon codes from
+  // breaking the ui, we need to reset the default
+  // flexbox settings (taken from CCP-2475)
+  minWidth: 0,
 }).toString();
 
 export const contentLast = css({

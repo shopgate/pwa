@@ -2,7 +2,7 @@
 
 exports[`<ItemName /> should render with minimal props 1`] = `
 <ProductName
-  className="css-5rrf15"
+  className="css-5rrf15 theme__product-grid__item__item-name"
   name="Foo"
   portalName="product-item.name"
   portalProps={

@@ -16,6 +16,7 @@ import { appWillStart$ } from '@shopgate/pwa-common/streams';
 import { configuration } from '@shopgate/pwa-common/collections';
 import { TAB_BAR_PATTERNS_BLACK_LIST } from '@shopgate/pwa-common/constants/Configuration';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
+import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import {
   enableTabBar,
   disableTabBar,
@@ -35,6 +36,7 @@ const blacklist = [
   SCANNER_PATH,
   REGISTER_PATH,
   FORGOT_PASSWORD_PATTERN,
+  PRIVACY_SETTINGS_PATTERN,
   ...checkoutRoutes,
 ];
 

@@ -16,6 +16,7 @@ exports[`<Quicklinks /> should not render when no quicklinks are there 1`] = `
     <Quicklinks
       dispatch={[Function]}
       entries={Array []}
+      isBackInStockEnabled={false}
     />
   </Connect(Quicklinks)>
 </Provider>
@@ -48,6 +49,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           },
         ]
       }
+      isBackInStockEnabled={false}
     >
       <SurroundPortals
         portalName="nav-menu.quick-links"
@@ -59,68 +61,58 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           }
         }
       >
-        <Portal
-          name="nav-menu.quick-links.before"
-          props={
-            Object {
-              "Headline": [Function],
-              "Item": [Function],
-              "Section": [Function],
-            }
-          }
-        />
-        <Portal
-          name="nav-menu.quick-links"
-          props={
-            Object {
-              "Headline": [Function],
-              "Item": [Function],
-              "Section": [Function],
-            }
-          }
+        <Section
+          title="navigation.more_menu"
         >
-          <Section
-            title="navigation.more_menu"
+          <Headline
+            style={
+              Object {
+                "margin": "24px 20px 16px",
+              }
+            }
+            tag="h2"
+            text="navigation.more_menu"
           >
-            <Headline
+            <h2
+              className="css-18cwfw7 headline theme__headline"
+              data-test-id="Headline"
               style={
                 Object {
                   "margin": "24px 20px 16px",
                 }
               }
-              tag="h2"
-              text="navigation.more_menu"
             >
-              <h2
-                className="css-18cwfw7"
-                data-test-id="Headline"
-                style={
-                  Object {
-                    "margin": "24px 20px 16px",
-                  }
-                }
+              <Translate
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={Object {}}
+                role={null}
+                string="navigation.more_menu"
+                transform={null}
               >
-                <Translate
-                  acceptPlainTextWithPlaceholders={false}
+                <span
                   className={null}
-                  params={Object {}}
                   role={null}
-                  string="navigation.more_menu"
-                  transform={null}
                 >
-                  <span
-                    className={null}
-                    role={null}
-                  >
-                    navigation.more_menu
-                  </span>
-                </Translate>
-              </h2>
-            </Headline>
-            <div
-              className={
+                  navigation.more_menu
+                </span>
+              </Translate>
+            </h2>
+          </Headline>
+          <div
+            className={
+              Object {
+                "data-css-13ch7sr": "",
+              }
+            }
+          >
+            <SurroundPortals
+              portalName="nav-menu.quick-links.items"
+              portalProps={
                 Object {
-                  "data-css-13ch7sr": "",
+                  "Headline": [Function],
+                  "Item": [Function],
+                  "Section": [Function],
                 }
               }
             >
@@ -186,19 +178,9 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                   </div>
                 </Link>
               </MoreMenuItem>
-            </div>
-          </Section>
-        </Portal>
-        <Portal
-          name="nav-menu.quick-links.after"
-          props={
-            Object {
-              "Headline": [Function],
-              "Item": [Function],
-              "Section": [Function],
-            }
-          }
-        />
+            </SurroundPortals>
+          </div>
+        </Section>
       </SurroundPortals>
     </Quicklinks>
   </Connect(Quicklinks)>

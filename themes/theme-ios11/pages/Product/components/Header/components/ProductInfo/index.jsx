@@ -5,9 +5,18 @@ import {
   EffectivityDates,
   Availability,
 } from '@shopgate/engage/product';
-import { Shipping, PriceStriked, Tiers } from '@shopgate/engage/product/components/Header';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  Shipping,
+  PriceStriked,
+  Tiers,
+} from '@shopgate/engage/product/components/Header';
+import {
+  ProductInfoBackInStockButton,
+} from '@shopgate/engage/back-in-stock/components';
+import {
+  Grid,
+  Portal,
+} from '@shopgate/engage/components';
 import {
   PRODUCT_INFO,
   PRODUCT_INFO_AFTER,
@@ -80,6 +89,9 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
         </Grid.Item>
         <TaxDisclaimer />
       </Grid>
+      <Grid.Item component="div" className={styles.backInStockButton}>
+        <ProductInfoBackInStockButton />
+      </Grid.Item>
     </Portal>
     <Portal name={PRODUCT_INFO_AFTER} />
   </Fragment>

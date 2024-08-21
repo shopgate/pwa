@@ -66,6 +66,7 @@ export const TimeIcon = () => null;
 // COMPONENTS
 export const ProgressBar = () => null;
 export const MessageBar = () => null;
+export const Input = () => null;
 export const Link = ({ children }) => children;
 export const Ellipsis = ({ children }) => children;
 /** @returns {ReactElement} */
@@ -85,13 +86,14 @@ export const Availability = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
 export const PlaceholderParagraph = ({ children }) => children;
+export const PlaceholderLabel = ({ children }) => children;
 /** @returns {ReactElement} */
 export const HtmlSanitizer = ({ children }) => children;
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
 export const SheetDrawer = Sheet;
 export const SheetList = ({ children }) => children;
-SheetList.Item = ({ children }) => children;
+SheetList.Item = () => null;
 SheetList.Item.displayName = 'SheetList.Item';
 export const PriceDifference = () => 'PriceDifference';
 export const TaxDisclaimer = () => 'TaxDisclaimer';

@@ -2,7 +2,7 @@ import { router } from '@shopgate/pwa-common/helpers/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
   buildFilterParamsForFetchFiltersRequest,
-} from '@shopgate/engage/filter';
+} from '@shopgate/engage/filter/helpers';
 import {
   CATEGORY_ALL_FILTER_PATTERN,
 } from '../../category/constants';

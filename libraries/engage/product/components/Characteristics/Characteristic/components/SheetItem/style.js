@@ -57,7 +57,6 @@ const mainRowRight = css({
 
 const bottomRow = css({
   '&:not(:empty)': {
-    marginTop: 8,
     textAlign: 'right',
   },
 }).toString();

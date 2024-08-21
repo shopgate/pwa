@@ -23,6 +23,7 @@
     "reviews": "Revues",
     "favorites": "Favorits",
     "scanner": "Scanner",
+    "back_in_stock": "Notifications",
     "checkout": "Checkout",
     "checkout_confirmation": "Order Successful",
     "checkout_change_billing": "Change Billing Address",
@@ -92,6 +93,23 @@
         "messageContact": "Are you should you want to delete this address?",
         "messageCustomer": "Are you should you want to delete your account? This will delete all of your personal data and preferences."
       }
+    }
+  },
+  "back_in_stock": {
+    "list_states" : {
+      "active" : "Notifications actives",
+      "past" : "Notifications passées"
+    },
+    "empty_list_reminder" : "Vous n'avez pas de notifications configurées",
+    "get_notified" : "Me notifier des nouveaux stocks",
+    "we_will_remind_you" : "Nous vous avertirons lorsque le produit sera à nouveau en stock",
+    "add_back_in_stock_success_modal" : {
+      "title" : "Notification de retour en stock ajoutée !",
+      "message" : "Nous vous enverrons une notification push lorsque le produit sera de nouveau en stock. Vous pouvez gérer vos notifications dans le menu."
+    },
+    "rationale" : {
+      "message" : "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock",
+      "confirm" : "Allow push notifications"
     }
   },
   "favorites": {
@@ -180,7 +198,12 @@
     "reset": "Effacer tout",
     "remove": "Supprimer {filter} filtre",
     "edit": "Modifier {filter} filtrer",
-    "filter_by": "Filtrer par {label}"
+    "filter_by": "Filtrer par {label}",
+    "label": {
+      "price": "Prix",
+      "category": "Catégorie",
+      "manufacturer": "Marque"
+    }
   },
   "price": {
     "from": "De {price}",
@@ -357,6 +380,9 @@
       "categories": "Catégories",
       "products": "Produits"
     },
+    "showAllProducts": {
+      "label": "Afficher tous les produits"
+    },
     "errors": {
       "404": "Catégorie non trouvée"
     }
@@ -500,6 +526,7 @@
     "my_orders": "Mes Commandes",
     "cart": "Panier",
     "scanner": "Scanner",
+    "back_in_stock": "Rappel de stock",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",

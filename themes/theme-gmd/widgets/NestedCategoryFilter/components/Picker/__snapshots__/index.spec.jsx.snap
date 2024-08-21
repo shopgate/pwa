@@ -113,7 +113,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-qxf1dv"
+                className="css-1rtxert"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -122,7 +122,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               >
                 <div
                   aria-modal={true}
-                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -521,7 +521,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-qxf1dv"
+                className="css-1rtxert"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -530,7 +530,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -969,7 +969,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-qxf1dv"
+                className="css-1rtxert"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -978,7 +978,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-qxf1dv css-1rg7udn css-171mdnt common__drawer"
+                  className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -1378,7 +1378,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-qxf1dv"
+                className="css-1rtxert"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1387,7 +1387,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               >
                 <div
                   aria-modal={true}
-                  className="css-qxf1dv css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -1785,7 +1785,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-qxf1dv"
+                className="css-1rtxert"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1953,7 +1953,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-qxf1dv"
+                className="css-1rtxert"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -2116,7 +2116,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-qxf1dv"
+                className="css-1rtxert"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}

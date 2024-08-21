@@ -45,7 +45,7 @@ function Availability({
           <AvailableText
             className={availabilityStyle}
             showWhenAvailable
-            text={availability.text}
+            text={availability.text || ''}
             state={availability.state}
           />
         )}

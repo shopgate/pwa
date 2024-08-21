@@ -11,7 +11,14 @@ const showAllProducts = css({
   fontWeight: 700,
 }).toString();
 
+const image = css({
+  display: 'none',
+  background: 'red',
+  borderRadius: 20,
+}).toString();
+
 export default {
   sheet,
   showAllProducts,
+  image,
 };

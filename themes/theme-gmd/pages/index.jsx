@@ -21,8 +21,10 @@ import {
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
+  CATEGORY_ALL_PATTERN,
   CATEGORY_FILTER_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
+  CATEGORY_ALL_FILTER_PATTERN,
+} from '@shopgate/engage/category/constants';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -51,6 +53,7 @@ import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import {
   CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PATTERN,
@@ -99,7 +102,7 @@ const globalLocationSelectorAllowList = [
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Pages = ({ store }) => {
   const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
@@ -107,7 +110,7 @@ const Pages = ({ store }) => {
   return (
     <App store={store}>
       <Helmet>
-        <html lang={appConfig.language.substring(0, 2)} />
+        <html lang={appConfig.language.substring(0, 2)} className="theme-gmd" />
         {recaptchaEnabled && googleCloudSiteKey ? (
           <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
         ) : null }
@@ -154,6 +157,8 @@ const Pages = ({ store }) => {
                       />
                       <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                       <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                      <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
+                      <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
                       <Route
                         pattern={ITEM_PATTERN}
                         component={routes.Product}
@@ -187,6 +192,10 @@ const Pages = ({ store }) => {
                         pattern={SEARCH_FILTER_PATTERN}
                         component={routes.Filter}
                         transform={routesTransforms[SEARCH_FILTER_PATTERN]}
+                      />
+                      <Route
+                        pattern={BACK_IN_STOCK_PATTERN}
+                        component={routes.BackInStock}
                       />
                       <Route
                         pattern={CHECKOUT_PATTERN}
