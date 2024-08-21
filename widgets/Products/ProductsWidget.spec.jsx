@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { UnwrappedProductsWidget as ProductsWidget } from './index';
+import { UnwrappedProductsWidget as ProductsWidget } from './ProductsWidget';
 
 jest.mock('@shopgate/engage/components');
 jest.mock('Components/ProductGrid', () => function ProductGrid() { return null; });

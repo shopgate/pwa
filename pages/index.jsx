@@ -17,7 +17,12 @@ import {
   PAGE_PATTERN,
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import {
+  CATEGORY_PATTERN,
+  CATEGORY_ALL_PATTERN,
+  CATEGORY_FILTER_PATTERN,
+  CATEGORY_ALL_FILTER_PATTERN,
+} from '@shopgate/engage/category/constants';
 import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account';
 import {
   ITEM_PATTERN,
@@ -36,7 +41,7 @@ import {
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
+import { transformRoute as transformItemRoute } from '@shopgate/engage/product/helpers';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
@@ -54,6 +59,7 @@ import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
+import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import ForgotPassword from './ForgotPassword';
 import Account from './Account';
@@ -86,7 +92,7 @@ const Pages = ({ store }) => {
   return (
     <App store={store}>
       <Helmet>
-        <html lang={appConfig.language.substring(0, 2)} />
+        <html lang={appConfig.language.substring(0, 2)} className="theme-ios11" />
         {recaptchaEnabled && googleCloudSiteKey ? (
           <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
         ) : null }
@@ -118,6 +124,8 @@ const Pages = ({ store }) => {
                     <Route pattern={PAGE_PATTERN} component={routes.Page} />
                     <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                     <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                    <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
+                    <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
                     <Route
                       pattern={ITEM_PATTERN}
                       component={routes.Product}
@@ -162,6 +170,10 @@ const Pages = ({ store }) => {
                       transform={routesTransforms[SEARCH_FILTER_PATTERN]}
                     />
                     <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                    <Route
+                      pattern={BACK_IN_STOCK_PATTERN}
+                      component={routes.BackInStock}
+                    />
                     <Route
                       pattern={CHECKOUT_PATTERN}
                       component={routes.Checkout}

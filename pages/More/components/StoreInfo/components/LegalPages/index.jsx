@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   SurroundPortals, ConditionalWrapper,
 } from '@shopgate/engage/components';
@@ -15,7 +16,7 @@ import {
   PRIVACY_PATH,
   RETURN_POLICY_PATH,
   TERMS_PATH,
-} from '../../../../constants';
+} from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import Item from '../../../Item';
 import connect from './connector';
@@ -27,15 +28,11 @@ const pagePortalMapping = {
   [TERMS_PATH]: NAV_MENU_TERMS,
 };
 
-type Props = {
-  legalPages?: Array,
-}
-
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const LegalPages = ({ legalPages }: Props) => {
+const LegalPages = ({ legalPages }) => {
   if (!legalPages) {
     return null;
   }
@@ -62,6 +59,13 @@ const LegalPages = ({ legalPages }: Props) => {
       );
     })
   );
+};
+
+LegalPages.propTypes = {
+  legalPages: PropTypes.arrayOf(PropTypes.shape({
+    url: PropTypes.string,
+    label: PropTypes.string,
+  })),
 };
 
 LegalPages.defaultProps = {

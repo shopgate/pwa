@@ -39,42 +39,21 @@ exports[`<RootCategories /> should render category list with root categories fro
       <div
         data-test-id="categoriesList"
       >
-        <Headline
-          style={
-            Object {
-              "marginTop": 20,
+        <SurroundPortals
+          portalName="browse.category-list.headline"
+        >
+          <Headline
+            style={
+              Object {
+                "marginTop": 20,
+              }
             }
-          }
-          text=""
-        />
-        <Portal
-          name="browse.category-list.before"
-          props={
-            Object {
-              "categories": Array [
-                Object {
-                  "id": "123-123",
-                  "name": "foo",
-                },
-                Object {
-                  "id": "456-123",
-                  "name": "bar",
-                },
-                Object {
-                  "id": "789-123",
-                  "name": "baz",
-                },
-                Object {
-                  "id": "789-456",
-                  "name": "qux",
-                },
-              ],
-            }
-          }
-        />
-        <Portal
-          name="browse.category-list"
-          props={
+            text=""
+          />
+        </SurroundPortals>
+        <SurroundPortals
+          portalName="browse.category-list"
+          portalProps={
             Object {
               "categories": Array [
                 Object {
@@ -118,14 +97,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                 },
               ]
             }
+            parentCategory={null}
             prerender={0}
+            showAllProducts={false}
+            showImages={false}
           >
             <SheetList
-              className={
-                Object {
-                  "data-css-1tgouoh": "",
-                }
-              }
+              className="css-1tgouoh engage__category__category-list"
             >
               <Portal
                 key="123-123"
@@ -136,14 +114,16 @@ exports[`<RootCategories /> should render category list with root categories fro
                   }
                 }
               >
-                <Item
+                <SheetList.Item
                   link="/category/3132332d313233"
+                  linkComponent={[Function]}
                   linkState={
                     Object {
                       "categoryId": "123-123",
                       "title": "foo",
                     }
                   }
+                  rightComponent={null}
                   testId="foo"
                   title="foo"
                 />
@@ -157,14 +137,16 @@ exports[`<RootCategories /> should render category list with root categories fro
                   }
                 }
               >
-                <Item
+                <SheetList.Item
                   link="/category/3435362d313233"
+                  linkComponent={[Function]}
                   linkState={
                     Object {
                       "categoryId": "456-123",
                       "title": "bar",
                     }
                   }
+                  rightComponent={null}
                   testId="bar"
                   title="bar"
                 />
@@ -178,14 +160,16 @@ exports[`<RootCategories /> should render category list with root categories fro
                   }
                 }
               >
-                <Item
+                <SheetList.Item
                   link="/category/3738392d313233"
+                  linkComponent={[Function]}
                   linkState={
                     Object {
                       "categoryId": "789-123",
                       "title": "baz",
                     }
                   }
+                  rightComponent={null}
                   testId="baz"
                   title="baz"
                 />
@@ -199,46 +183,23 @@ exports[`<RootCategories /> should render category list with root categories fro
                   }
                 }
               >
-                <Item
+                <SheetList.Item
                   link="/category/3738392d343536"
+                  linkComponent={[Function]}
                   linkState={
                     Object {
                       "categoryId": "789-456",
                       "title": "qux",
                     }
                   }
+                  rightComponent={null}
                   testId="qux"
                   title="qux"
                 />
               </Portal>
             </SheetList>
           </CategoryList>
-        </Portal>
-        <Portal
-          name="browse.category-list.after"
-          props={
-            Object {
-              "categories": Array [
-                Object {
-                  "id": "123-123",
-                  "name": "foo",
-                },
-                Object {
-                  "id": "456-123",
-                  "name": "bar",
-                },
-                Object {
-                  "id": "789-123",
-                  "name": "baz",
-                },
-                Object {
-                  "id": "789-456",
-                  "name": "qux",
-                },
-              ],
-            }
-          }
-        />
+        </SurroundPortals>
       </div>
     </RootCategories>
   </Connect(RootCategories)>
