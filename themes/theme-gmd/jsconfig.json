@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "Components/*": ["./components/*"],
+      "Config/*": ["./config/*"],
+      "Extensions/*": ["./extensions/*"],
+      "Pages/*": ["./pages/*"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

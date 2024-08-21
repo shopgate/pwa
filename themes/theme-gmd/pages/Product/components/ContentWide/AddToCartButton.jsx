@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import { Ripple } from '@shopgate/engage/components';
@@ -124,7 +125,10 @@ class AddToCartButton extends PureComponent {
    */
   renderIcon() {
     return (
-      <div className={styles.icon}>
+      <div className={classNames(styles.icon, {
+        [styles.iconDisabled]: this.props.disabled,
+      })}
+      >
         <Icon
           disabled={this.props.disabled}
           success={this.state.success}

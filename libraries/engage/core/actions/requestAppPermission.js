@@ -1,5 +1,13 @@
+import {
+  hasSGJavaScriptBridge,
+  hasWebBridge,
+  createMockedPermissions,
+} from '@shopgate/engage/core/helpers';
 import { requestAppPermissions } from '@shopgate/pwa-core/commands/appPermissions';
-import { PERMISSION_STATUS_NOT_SUPPORTED } from '@shopgate/engage/core/constants';
+import {
+  PERMISSION_STATUS_NOT_SUPPORTED,
+  PERMISSION_STATUS_GRANTED,
+} from '@shopgate/engage/core/constants';
 import { appPermissionStatusReceived } from '../action-creators';
 
 /**
@@ -14,8 +22,15 @@ import { appPermissionStatusReceived } from '../action-creators';
  */
 const requestAppPermission = ({
   permissionId,
-  dispatchMock,
+  dispatchMock: dispatchMockParam,
 }) => async (dispatch) => {
+  let dispatchMock = dispatchMockParam;
+  // In development a mock needs to be injected to enable command testing. Command responses
+  // can be mocked via the global MockedAppPermissions object see appPermissions.js
+  if (!dispatchMockParam && (!hasSGJavaScriptBridge() || hasWebBridge())) {
+    dispatchMock = createMockedPermissions(PERMISSION_STATUS_GRANTED);
+  }
+
   const [
     { status, options, data } = { status: PERMISSION_STATUS_NOT_SUPPORTED },
   ] = await requestAppPermissions([{ permissionId }], dispatchMock) ?? [];

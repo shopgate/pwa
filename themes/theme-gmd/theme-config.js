@@ -1,6 +1,6 @@
 const appConfig = require('./config/app.json');
 
-const { theme: { colors } = {} } = appConfig;
+const { theme: { colors, variables = {} } = {} } = appConfig;
 const {
   light, dark, primary, accent,
 } = colors;
@@ -46,6 +46,10 @@ module.exports = {
     toast: {
       duration: 5000,
     },
+    scroll: {
+      // Offset fo hiding elements when scrolling
+      hideOffset: 100,
+    },
     navigator: {
       height: 56,
     },
@@ -55,6 +59,8 @@ module.exports = {
     loadingIndicator: {
       size: 32,
       strokeWidth: 3,
+      imgSrc: null, // Use remote or data image src as loading indicator
+      ...variables.loadingIndicator,
     },
     paymentBar: {
       height: 78,

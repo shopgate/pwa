@@ -15,7 +15,7 @@ import styles, { itemDetails, itemImage, badgesPortal } from './style';
  * @return {JSX}
  */
 const Item = ({ product, display }) => (
-  <div className={styles}>
+  <div className={`${styles} theme__product-grid__item`}>
     <Link
       tag="a"
       href={getProductRoute(product.id)}

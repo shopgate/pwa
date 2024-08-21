@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ProductName } from '@shopgate/engage/product';
+import { ProductName } from '@shopgate/engage/product/components';
 import styles from './style';
 
 /**

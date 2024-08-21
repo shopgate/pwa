@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -7,7 +8,8 @@ import { Placeholder } from '@shopgate/pwa-ui-shared';
 import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { i18n } from '@shopgate/engage/core';
 import { getShowAllProductsFilters } from '@shopgate/engage/category';
-import { SheetList } from '../../../components';
+import { SheetList, TextLink } from '@shopgate/engage/components';
+import CategoryImage from '../CategoryImage';
 import styles from './style';
 
 /**
@@ -22,6 +24,7 @@ const CategoryList = ({
   parentCategory,
   prerender,
   showAllProducts,
+  showImages,
 }) => {
   if (!categories || !categories.length) {
     if (prerender === 0) {
@@ -29,8 +32,8 @@ const CategoryList = ({
     }
 
     return (
-      <SheetList className={`${styles} engage__category__category-list`}>
-        {[...Array(prerender)].map((val, index) => {
+      <SheetList className={classNames(styles.sheet, 'engage__category__category-list')}>
+        {Array(Math.min(prerender, 8)).fill('').map((val, index) => {
           const key = `placeholder-${index}`;
           return <Placeholder height={20} key={key} left={0} top={18} width={220} />;
         })}
@@ -41,9 +44,9 @@ const CategoryList = ({
   const filters = getShowAllProductsFilters(parentCategory);
 
   return (
-    <SheetList className={`${styles.sheet} engage__category__category-list`}>
+    <SheetList className={classNames(styles.sheet, 'engage__category__category-list')}>
       {showAllProducts ?
-        <div className={`${styles.showAllProducts} engage__category__category-show-all-products`}>
+        <div className={classNames(styles.showAllProducts, 'engage__category__category-show-all-products')}>
           <Portal
             key={parentCategory.id}
             name="category.show-all-products"
@@ -58,6 +61,7 @@ const CategoryList = ({
                 filters,
               }}
               testId="showAllProducts"
+              linkComponent={TextLink}
             />
           </Portal>
         </div>
@@ -69,11 +73,18 @@ const CategoryList = ({
           <SheetList.Item
             link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
             title={category.name}
+            description={category.description}
             linkState={{
               categoryId: category.id,
               title: category.name,
             }}
             testId={category.name}
+            rightComponent={
+              showImages
+                ? <CategoryImage className={styles.image} src={category.imageUrl} />
+                : null
+            }
+            linkComponent={TextLink}
           />
         </Portal>
       ))}
@@ -86,6 +97,7 @@ CategoryList.propTypes = {
   parentCategory: PropTypes.shape(),
   prerender: PropTypes.number,
   showAllProducts: PropTypes.bool,
+  showImages: PropTypes.bool,
 };
 
 CategoryList.defaultProps = {
@@ -93,6 +105,7 @@ CategoryList.defaultProps = {
   parentCategory: null,
   prerender: 0,
   showAllProducts: false,
+  showImages: false,
 };
 
 export default CategoryList;

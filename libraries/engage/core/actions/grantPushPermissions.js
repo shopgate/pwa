@@ -6,9 +6,9 @@ import grantPermissions from './grantPermissions';
  * If not already happened, the user will be prompted to grant permissions.
  * The action returns a promise which resolves with a boolean value, that indicates the state.
  * @param {Object} options Action options.
- * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
+ * @param {boolean} [options.useSettingsModal=true] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
- * @param {boolean} [options.useRationaleModal=true] Whether a rational modal should be shown
+ * @param {boolean} [options.useRationaleModal=false] Whether a rational modal should be shown
  * @param {Object} [options.rationaleModal={}] Options for the rationale modal.
  * @param {string} options.rationaleModal.title Modal title.
  * @param {string} options.rationaleModal.message Modal message.
@@ -25,7 +25,7 @@ import grantPermissions from './grantPermissions';
  */
 const grantPushPermissions = (options = {}) => (dispatch) => {
   const {
-    useSettingsModal = false,
+    useSettingsModal = true,
     useRationaleModal = false,
     modal = {},
     rationaleModal = {},

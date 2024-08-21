@@ -165,7 +165,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
     const hasCustomUnit = (unit && hasCatchWeight) || false;
 
     return (
-      <form onSubmit={this.handleSubmitForm}>
+      <form onSubmit={this.handleSubmitForm} className="theme__cart__product__quantity-picker">
         <QuantityInput
           ref={this.input}
           className={inputStyle.toString()}

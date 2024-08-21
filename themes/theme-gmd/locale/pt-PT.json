@@ -23,6 +23,7 @@
     "reviews": "Avaliações",
     "favorites": "Favoritos",
     "scanner": "Scanner",
+    "back_in_stock": "Notificações",
     "checkout": "Checkout",
     "checkout_confirmation": "Order Successful",
     "checkout_change_billing": "Change Billing Address",
@@ -92,6 +93,23 @@
         "messageContact": "Are you should you want to delete this address?",
         "messageCustomer": "Are you should you want to delete your account? This will delete all of your personal data and preferences."
       }
+    }
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Notificações activas",
+      "past": "Notificações anteriores"
+    },
+    "empty_list_reminder": "Não tem notificações configuradas",
+    "get_notified": "Notifique-me quando o item estiver disponível",
+    "we_will_remind_you": "Será notificado quando o artigo estiver novamente disponível",
+    "add_back_in_stock_success_modal": {
+      "title": "Notificação adicionada!",
+      "message": "Enviar-lhe-emos uma notificação push quando o produto estiver novamente disponível. Pode gerir estas notificações através do menu."
+    },
+    "rationale": {
+      "message": "Permita notificações push no passo seguinte para que possamos informá-lo quando o produto estiver novamente disponível.",
+      "confirm": "Permitir notificações"
     }
   },
   "favorites": {
@@ -180,7 +198,12 @@
     "reset": "Reiniciar",
     "remove": "Remover {filter} filtro",
     "edit": "Editar {filter} filtro",
-    "filter_by": "Filtrar por {label}"
+    "filter_by": "Filtrar por {label}",
+    "label": {
+      "price": "Preço",
+      "category": "Categoria",
+      "manufacturer": "Marca"
+    }
   },
   "price": {
     "from": "De {price}",
@@ -353,6 +376,9 @@
       "categories": "Categorias",
       "products": "Produtos"
     },
+    "showAllProducts": {
+      "label": "Mostrar todos os produtos"
+    },
     "errors": {
       "404": "Categoria não encontrada."
     }
@@ -496,6 +522,7 @@
     "my_orders": "Meus Pedidos",
     "cart": "Carrinho de Compras",
     "scanner": "Scanner",
+    "back_in_stock": "Lembrete de regresso ao stock",
     "shipping": "Métodos de Envio",
     "about": "Entre em Contato Conosco",
     "payment": "Métodos de Pagamento",

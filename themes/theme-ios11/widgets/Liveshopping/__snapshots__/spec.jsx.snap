@@ -10,28 +10,28 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     }
   }
 >
-  <Swiper
-    aria-hidden={false}
-    autoPlay={false}
-    className={null}
-    classNames={Object {}}
-    controls={false}
-    disabled={false}
-    freeMode={false}
-    indicators={true}
-    initialSlide={0}
-    interval={3000}
-    loop={true}
-    maxIndicators={null}
-    onSlideChange={[Function]}
-    rebuildOnUpdate={true}
-    slidesPerView={1}
-    snapItems={true}
-    zoom={false}
+  <ProductListTypeProvider
+    subType="widgets"
+    type="liveshopping"
   >
-    <ProductListTypeProvider
-      subType="widgets"
-      type="liveshopping"
+    <Swiper
+      aria-hidden={false}
+      autoPlay={false}
+      className={null}
+      classNames={Object {}}
+      controls={false}
+      disabled={false}
+      freeMode={false}
+      indicators={true}
+      initialSlide={0}
+      interval={3000}
+      loop={true}
+      maxIndicators={null}
+      onSlideChange={[Function]}
+      rebuildOnUpdate={true}
+      slidesPerView={1}
+      snapItems={true}
+      zoom={false}
     >
       <SwiperItem
         className={null}
@@ -57,8 +57,8 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
           />
         </ProductListEntryProvider>
       </SwiperItem>
-    </ProductListTypeProvider>
-  </Swiper>
+    </Swiper>
+  </ProductListTypeProvider>
 </div>
 `;
 

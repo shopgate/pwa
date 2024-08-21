@@ -1,8 +1,8 @@
 import React, {
-  useState, useEffect, useMemo, memo,
+  useState, useMemo, memo, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import { ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
 import Provider from './FilterBarProvider';
@@ -20,9 +20,9 @@ const { colors } = themeConfig;
 function FilterBar({ filters, categoryId }) {
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
-  useEffect(() => {
-    setActive(filters !== null && Object.keys(filters).length > 0);
-  }, [filters]);
+  const handleChipCountUpdate = useCallback((count) => {
+    setActive(count > 0);
+  }, []);
 
   const style = useMemo(
     () => ({
@@ -42,13 +42,15 @@ function FilterBar({ filters, categoryId }) {
   );
 
   return (
-    <div className={styles} data-test-id="filterBar" style={style}>
+    <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
       <SortProvider scope={sortScope}>
         <Provider>
-          <Content />
-          <ResponsiveContainer breakpoint=">xs" webOnly>
-            <Modal />
-          </ResponsiveContainer>
+          <SurroundPortals portalName="filter-bar.content">
+            <Content onChipCountUpdate={handleChipCountUpdate} />
+            <ResponsiveContainer breakpoint=">xs" webOnly>
+              <Modal />
+            </ResponsiveContainer>
+          </SurroundPortals>
         </Provider>
       </SortProvider>
     </div>

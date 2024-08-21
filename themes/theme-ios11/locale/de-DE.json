@@ -26,6 +26,7 @@
     "browse": "Durchsuchen",
     "favorites": "Wunschliste",
     "scanner": "Scanner",
+    "back_in_stock": "Benachrichtigungen",
     "checkout_confirmation": "Bestellung erfolgreich",
     "checkout_change_billing": "Rechnungsadresse ändern",
     "register": "Registrieren",
@@ -94,6 +95,23 @@
         "messageContact": "Willst du wirklich diese Adresse löschen",
         "messageCustomer": "Willst du wirklich deinen Account löschen. All deine persönlichen Daten und Einstellungen werden gelöscht."
       }
+    }
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktive Benachrichtigungen",
+      "past": "Vergangene Benachrichtigungen"
+    },
+    "empty_list_reminder": "Sie haben keine Benachrichtigungen konfiguriert",
+    "get_notified": "Benachrichtigen Sie mich, wenn der Artikel verfügbar ist",
+    "we_will_remind_you": "Sie werden benachrichtigt, wenn der Artikel wieder verfügbar ist",
+    "add_back_in_stock_success_modal": {
+      "title": "Benachrichtigung hinzugefügt!",
+      "message": "Wir senden Ihnen eine Push-Benachrichtigung, wenn das Produkt wieder verfügbar ist. Sie können diese Benachrichtigungen über das Menü verwalten."
+    },
+    "rationale": {
+      "message": "Bitte erlauben Sie Push-Benachrichtigungen im nächsten Schritt, damit wir Ihnen mitteilen können, wenn das Produkt wieder verfügbar ist.",
+      "confirm": "Benachrichtigungen erlauben"
     }
   },
   "favorites": {
@@ -182,7 +200,12 @@
     "reset": "Zurücksetzen",
     "remove": "{filter} Filter entfernen",
     "edit": "{filter} Filter bearbeiten",
-    "filter_by": "Filtern nach {label}"
+    "filter_by": "Filtern nach {label}",
+    "label": {
+      "price": "Preis",
+      "category": "Kategorie",
+      "manufacturer": "Marke"
+    }
   },
   "price": {
     "from": "Ab {price}",
@@ -364,6 +387,9 @@
       "categories": "Kategorien",
       "products": "Produkte"
     },
+    "showAllProducts": {
+      "label": "Alle Produkte anzeigen"
+    },
     "errors": {
       "404": "Kategorie nicht gefunden"
     }
@@ -525,6 +551,7 @@
     "order_history": "Bestellverlauf",
     "wish_list": "Wunschliste",
     "profile": "Profil",
+    "back_in_stock": "Benachrichtigungen",
     "back": "Zurück zu {title}"
   },
   "reviews": {

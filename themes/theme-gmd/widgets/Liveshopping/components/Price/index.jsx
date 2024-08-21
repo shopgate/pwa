@@ -22,6 +22,7 @@ function LiveShoppingPrice({ price }) {
         />
       }
       <Price
+        discounted={priceStriked > 0}
         className={priceStriked > 0 ? styles.price : ''}
         unitPrice={price.unitPrice}
         unitPriceMin={price.unitPriceMin}

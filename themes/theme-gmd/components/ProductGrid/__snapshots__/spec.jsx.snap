@@ -10,15 +10,17 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   scope={null}
   totalProductCount={null}
 >
-  <Layout>
+  <Layout
+    columns={2}
+  >
     <Grid
-      className="css-167e8rr"
+      className="css-14bu05p"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="css-167e8rr css-h7r55a common__grid css-u7q1iu"
+        className="css-14bu05p css-h7r55a common__grid css-u7q1iu"
         data-test-id="productGrid"
       >
         <ProductListTypeProvider
@@ -47,7 +49,6 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
       type="productGrid"
     >
       <InfiniteContainer
-        columns={2}
         enablePromiseBasedLoading={true}
         initialLimit={32}
         items={Array []}

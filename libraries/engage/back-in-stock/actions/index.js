@@ -1,4 +1,4 @@
-import { PipelineRequest } from '@shopgate/engage/core';
+import { PipelineRequest } from '@shopgate/engage/core/classes';
 import {
   SHOPGATE_USER_ADD_BACK_IN_STOCK_SUBSCRIPTION,
   SHOPGATE_USER_DELETE_BACK_IN_STOCK_SUBSCRIPTION,
