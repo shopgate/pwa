@@ -36,7 +36,7 @@ const QuantityInput = forwardRef(({
   }, [customOnFocus]);
 
   const onBlur = useCallback((event) => {
-    const newValue = parseFloatString(inputValue, maxDecimals);
+    let newValue = parseFloatString(inputValue, maxDecimals);
     setIsFocused(false);
 
     // If invalid switch to old value.
@@ -45,28 +45,26 @@ const QuantityInput = forwardRef(({
       return;
     }
 
+    if (minValue && newValue < minValue) {
+      newValue = minValue;
+    }
+
+    if (maxValue && newValue > maxValue) {
+      newValue = maxValue;
+    }
+
+    setInputValue(`${newValue}`);
     if (newValue !== value) {
       onChange(newValue);
     }
 
     customOnBlur(event, newValue);
-  }, [customOnBlur, inputValue, maxDecimals, onChange, value]);
+  }, [customOnBlur, inputValue, maxDecimals, maxValue, minValue, onChange, value]);
 
   const handleChange = useCallback((event) => {
-    let newValue = event.target.value;
-
-    if (newValue !== '') {
-      if (minValue && newValue < minValue) {
-        newValue = `${minValue}`;
-      }
-
-      if (maxValue && newValue > maxValue) {
-        newValue = `${maxValue}`;
-      }
-    }
-
+    const newValue = event.target.value;
     setInputValue(newValue);
-  }, [maxValue, minValue]);
+  }, []);
 
   // Select the current input value after focus.
   useLayoutEffect(() => {
