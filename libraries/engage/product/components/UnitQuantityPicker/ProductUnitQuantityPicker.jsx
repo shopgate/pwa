@@ -16,8 +16,8 @@ const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    margin: variables.gap.big,
-  }).toString(),
+    padding: variables.gap.big,
+  }),
   title: css({
     fontSize: '1rem',
     fontWeight: 500,
@@ -31,7 +31,15 @@ const styles = {
  * @returns {JSX}
  */
 const ProductUnitQuantityPicker = ({
-  children, className, product, disabled, stockInfo, size,
+  children,
+  className,
+  classes,
+  product,
+  disabled,
+  stockInfo,
+  size,
+  quantityLabel,
+  hideHeadline,
 }) => {
   const { show = hasNewServices() } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
 
@@ -66,11 +74,14 @@ const ProductUnitQuantityPicker = ({
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
       <div className={classNames(styles.root, className)}>
         <div>
-          <div className={styles.title}>
-            <I18n.Text string="product.sections.quantity" />
-          </div>
+          {!hideHeadline && (
+            <div className={styles.title}>
+              <I18n.Text string="product.sections.quantity" />
+            </div>
+          )}
           <UnitQuantityPicker
-            className={hasUnitWithDecimals ? big : small}
+            // eslint-disable-next-line no-nested-ternary
+            className={classes?.picker ? classes.picker : (hasUnitWithDecimals ? big : small)}
             unit={hasUnitWithDecimals ? unit : null}
             maxDecimals={hasUnitWithDecimals ? 2 : 0}
             incrementStep={hasUnitWithDecimals ? 0.25 : 1}
@@ -81,6 +92,7 @@ const ProductUnitQuantityPicker = ({
             minValue={minValue}
             maxValue={maxValue}
             size={size}
+            quantityLabel={quantityLabel}
           />
         </div>
         { children && (
@@ -95,9 +107,14 @@ const ProductUnitQuantityPicker = ({
 
 ProductUnitQuantityPicker.propTypes = {
   children: PropTypes.node,
+  classes: PropTypes.shape({
+    picker: PropTypes.string,
+  }),
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  hideHeadline: PropTypes.bool,
   product: PropTypes.shape(),
+  quantityLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   size: PropTypes.oneOf(['default', 'large']),
   stockInfo: PropTypes.shape(),
 };
@@ -109,6 +126,11 @@ ProductUnitQuantityPicker.defaultProps = {
   stockInfo: null,
   children: null,
   className: null,
+  quantityLabel: null,
+  classes: {
+    picker: null,
+  },
+  hideHeadline: false,
 };
 
 export default withCurrentProduct(connect(ProductUnitQuantityPicker));

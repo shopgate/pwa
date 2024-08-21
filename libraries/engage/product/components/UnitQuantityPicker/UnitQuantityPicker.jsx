@@ -28,20 +28,41 @@ const styles = {
     width: '100%',
     position: 'fixed',
   }),
-  input: ({ inputColor, inputBgColor }) => css({
-    padding: `0 ${variables.gap.small}px`,
-    textAlign: 'center',
-    flex: 1,
-    fontSize: 15,
-    height: '100%',
+  inputWrapper: ({ inputColor, inputBgColor }) => css({
+    display: 'flex',
+    alignItems: 'center',
     width: '100%',
+    fontSize: 16,
     backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
     ...(inputColor && { color: `${inputColor} !important` }),
     ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
-  }).toString(),
-  inputWrapper: css({
-    width: '100%',
+    ' .quantity-label': {
+      paddingLeft: variables.gap.small,
+      paddingRight: 4,
+      textAlign: 'center',
+
+      width: 'calc(100% - 32px)',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+    },
   }),
+  input: ({
+    inputColor, inputBgColor, hasLabel, size,
+  }) => {
+    const fontWeight = size === 'large' ? 600 : 'normal';
+
+    return css({
+      padding: `0 ${variables.gap.small}px`,
+      textAlign: hasLabel ? 'left' : 'center',
+      fontWeight,
+      height: '100%',
+      width: '100%',
+      ...(inputColor && { color: `${inputColor}` }),
+      ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
+      ...(hasLabel && { paddingLeft: 0 }),
+    }).toString();
+  },
   button: ({ size = 'default', buttonColor, buttonBgColor }) => {
     const sizeValue = size === 'large' ? 36 : 28;
 
@@ -53,8 +74,10 @@ const styles = {
       },
       height: sizeValue,
       fontSize: `${Math.floor((sizeValue / 28) * 100)}% !important`,
-      ...(buttonColor && { color: `${buttonColor} !important` }),
-      ...(buttonBgColor && { backgroundColor: `${buttonBgColor} !important` }),
+      '&:not(:disabled)': {
+        ...(buttonColor && { color: `${buttonColor} !important` }),
+        ...(buttonBgColor && { backgroundColor: `${buttonBgColor} !important` }),
+      },
     });
   },
   buttonRipple: css({
@@ -87,8 +110,8 @@ const UnitQuantityPicker = ({
   className,
   onChange,
   value,
-  allowDecrement: propsAllowDecrement,
-  allowIncrement: propsAllowIncrement,
+  allowDecrement,
+  allowIncrement,
   allowZero,
   decrementStep,
   incrementStep,
@@ -99,10 +122,8 @@ const UnitQuantityPicker = ({
   maxValue,
   size,
   toggleTabBarOnFocus,
+  quantityLabel,
 }) => {
-  const allowIncrement = propsAllowIncrement && (maxValue !== null ? value < maxValue : true);
-  const allowDecrement = propsAllowDecrement && (value > (minValue ?? 0));
-
   const widgetDefaults = useMemo(() => {
     if (hasNewServices()) {
       // The widget configuration was introduced with CCP-2449 in PWA6. It's inactive for now
@@ -127,7 +148,6 @@ const UnitQuantityPicker = ({
     buttonBgColor = widgetDefaults.buttonBgColor,
     inputColor = widgetDefaults.inputColor,
     inputBgColor = widgetDefaults.inputBgColor,
-    // eslint-disable-next-line no-unused-vars
     showLabel = widgetDefaults.showLabel,
   } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
 
@@ -247,11 +267,23 @@ const UnitQuantityPicker = ({
         >
         -
         </RippleButton>
-        <span>
+        <span
+          className={styles.inputWrapper({
+            inputColor,
+            inputBgColor,
+          })}
+        >
+          {quantityLabel && showLabel && (
+            <span aria-hidden className="quantity-label">
+              {quantityLabel}
+            </span>
+          )}
           <QuantityInput
             className={styles.input({
               inputColor,
               inputBgColor,
+              hasLabel: showLabel && !!quantityLabel,
+              size,
             })}
             value={value}
             onChange={onChange}
@@ -306,6 +338,7 @@ UnitQuantityPicker.propTypes = {
   maxDecimals: PropTypes.number,
   maxValue: PropTypes.number,
   minValue: PropTypes.number,
+  quantityLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   size: PropTypes.oneOf(['default', 'large']),
   toggleTabBarOnFocus: PropTypes.bool,
   unit: PropTypes.string,
@@ -324,6 +357,7 @@ UnitQuantityPicker.defaultProps = {
   minValue: null,
   size: 'default',
   maxValue: null,
+  quantityLabel: null,
   toggleTabBarOnFocus: false,
 };
 
