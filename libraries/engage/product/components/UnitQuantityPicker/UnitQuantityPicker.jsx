@@ -61,6 +61,10 @@ const styles = {
       ...(inputColor && { color: `${inputColor}` }),
       ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
       ...(hasLabel && { paddingLeft: 0 }),
+      outline: 'none',
+      '&:focus:not(:focus-visible)': {
+        outline: 'none',
+      },
     }).toString();
   },
   button: ({ size = 'default', buttonColor, buttonBgColor }) => {
