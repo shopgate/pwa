@@ -70,10 +70,19 @@ class Route extends React.Component {
       const { setPattern, ...context } = route;
       context.open = true;
       context.visible = route.id === this.currentRoute.id;
+      /**
+       * When a route is "replaced" the router doesn't assign a new route id to the old route
+       * stack entry. This can cause issues when a route is replaced by itself, since the content
+       * will not remount out of the box.
+       *
+       * The "replaceRouteId" state prop is injected by the "historyReplace" action. It's used
+       * to enforce re-remounting routes which where replaced by itself.
+       */
+      const replaceRouteId = context?.state?.replaceRouteId || '';
 
       return (
-        <ErrorBoundary key={`error.${route.id}`}>
-          <RouteContext.Provider key={route.id} value={context}>
+        <ErrorBoundary key={`error.${route.id}_${replaceRouteId}`}>
+          <RouteContext.Provider key={`${route.id}_${replaceRouteId}`} value={context}>
             <Suspense fallback={<Loading />}>
               <Component />
             </Suspense>
