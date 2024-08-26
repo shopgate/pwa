@@ -16,6 +16,7 @@ import {
 import {
   getHasMultipleFavoritesListsSupport,
   makeGetFavoritesProductsByList,
+  getFavoritesDefaultList,
 } from '../selectors';
 
 import receiveProducts from '../../product/action-creators/receiveProducts';
@@ -29,8 +30,7 @@ import receiveProducts from '../../product/action-creators/receiveProducts';
 function fetchFavorites(ignoreCache = false, listId = undefined) {
   return async (dispatch, getState) => {
     // Fallback for deprecated calls without list id.
-    const { lists } = getState().favorites.lists;
-    const defaultList = lists?.[0] || { code: 'DEFAULT' };
+    const defaultList = getFavoritesDefaultList(getState());
     const takenListId = listId || defaultList.code;
 
     const hasMultiSupport = getHasMultipleFavoritesListsSupport(getState());

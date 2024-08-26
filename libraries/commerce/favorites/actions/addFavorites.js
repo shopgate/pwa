@@ -1,6 +1,15 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import {
+  getWishlistItemNotesEnabled,
+  getWishlistItemQuantityEnabled,
+} from '@shopgate/engage/core/selectors';
 import { SHOPGATE_USER_ADD_FAVORITES } from '../constants/Pipelines';
 import { successAddFavorites, errorAddFavorites } from '../action-creators';
+import {
+  getHasMultipleFavoritesListsSupport,
+  getFavoritesDefaultList,
+} from '../selectors';
 
 /**
  * Adds a single product to the favorite list using the `addFavorites` pipeline.
@@ -13,17 +22,21 @@ import { successAddFavorites, errorAddFavorites } from '../action-creators';
  */
 function addFavorites(productId, listId = null, quantity, notes, showToast = true) {
   return async (dispatch, getState) => {
+    const state = getState();
+    const hasMultiSupport = getHasMultipleFavoritesListsSupport(state);
+    const quantityEnabled = getWishlistItemQuantityEnabled(state);
+    const notesEnabled = getWishlistItemNotesEnabled(state);
+
     // Fallback for deprecated calls without list id.
-    const { lists } = getState().favorites.lists;
-    const defaultList = lists?.[0] || { id: 'DEFAULT' };
+    const defaultList = getFavoritesDefaultList(state);
     const takenListId = listId || defaultList.id;
 
     const request = new PipelineRequest(SHOPGATE_USER_ADD_FAVORITES)
       .setInput({
         productId,
-        favoritesListId: takenListId,
-        quantity,
-        notes,
+        ...hasMultiSupport ? { favoritesListId: takenListId } : null,
+        ...quantityEnabled ? { quantity } : null,
+        ...notesEnabled ? { notes } : null,
       })
       .setRetries(0)
       .dispatch();
@@ -39,4 +52,4 @@ function addFavorites(productId, listId = null, quantity, notes, showToast = tru
   };
 }
 
-export default addFavorites;
+export default mutable(addFavorites);

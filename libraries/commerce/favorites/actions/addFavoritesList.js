@@ -1,3 +1,4 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { SHOPGATE_USER_ADD_FAVORITES_LIST } from '../constants/Pipelines';
 import { SUCCESS_ADD_FAVORITES_LIST } from '../constants';
@@ -27,4 +28,4 @@ function addFavoritesList(name) {
   };
 }
 
-export default addFavoritesList;
+export default mutable(addFavoritesList);

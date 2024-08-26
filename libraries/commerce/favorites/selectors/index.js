@@ -45,7 +45,9 @@ export const getFavoritesProducts = createSelector(
 
 export const getFavoritesDefaultList = createSelector(
   getFavoritesLists,
-  lists => lists[0]
+  lists => lists.find(list => list.id === 'DEFAULT') ?? {
+    id: 'DEFAULT',
+  }
 );
 
 export const hasMultipleFavoritesList = createSelector(

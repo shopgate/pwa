@@ -55,6 +55,7 @@ import {
   getFavoritesProducts,
   getUseGetFavoriteIdsPipeline,
 } from '../selectors';
+import fetchFavoriteIds from '../actions/fetchFavoriteIds';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -179,9 +180,15 @@ export default function favorites(subscribe) {
    * Request after N seconds since last add or remove request to make sure
    * backend did actually save it
    */
-  subscribe(refreshFavorites$, async ({ dispatch, action }) => {
+  subscribe(refreshFavorites$, async ({ dispatch, action, getState }) => {
     if (action.listId) {
-      dispatch(fetchFavorites(true, action.listId));
+      const useGetFavoriteIdsPipeline = getUseGetFavoriteIdsPipeline(getState());
+
+      if (useGetFavoriteIdsPipeline) {
+        dispatch(fetchFavoriteIds(true, action.listId));
+      } else {
+        dispatch(fetchFavorites(true, action.listId));
+      }
       return;
     }
 
