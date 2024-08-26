@@ -26,13 +26,14 @@ ConditionalWrapper.propTypes = {
    * optionally defined in `wrapperFalsy`.
    */
   condition: PropTypes.bool.isRequired,
-  wrapper: PropTypes.elementType.isRequired,
   children: PropTypes.node,
+  wrapper: PropTypes.elementType,
   wrapperFalsy: PropTypes.elementType,
 };
 
 ConditionalWrapper.defaultProps = {
   children: null,
+  wrapper: null,
   wrapperFalsy: null,
 };
 
