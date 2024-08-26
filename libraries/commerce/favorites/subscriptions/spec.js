@@ -529,6 +529,7 @@ describe('Favorites - subscriptions', () => {
         await expect(invoke(refreshFavorites$, {
           dispatch,
           action: { listId: mockedDefaultListId },
+          getState,
         })).resolves.toBeUndefined();
       });
 
@@ -536,6 +537,7 @@ describe('Favorites - subscriptions', () => {
         await invoke(refreshFavorites$, {
           dispatch,
           action: { listId: mockedDefaultListId },
+          getState,
         });
 
         expect(fetchFavorites).toHaveBeenCalledTimes(1);
