@@ -45,15 +45,14 @@ function ProductCardRender({
   } = product;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
-  const productListContext = useProductListType();
+  const { meta } = useProductListType();
 
   return (
     <Link
       tagName="a"
       href={url}
       state={{
-        isRecommendation: productListContext?.subType?.isRecommendation,
-        recommendationScope: productListContext?.subType?.recommendationScope,
+        ...meta,
       }}
     >
 
