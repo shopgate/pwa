@@ -784,21 +784,9 @@
       "billing_address": "Billing Address",
       "billing_address_reserve": "Order Contact"
     }
-  },"error": {
-    "general": "Connectivity problems. Please check your internet connection or try again later."
   },
-  "tracking": {
-    "cookieConsent": {
-      "message": "This website uses cookies to ensure you get the best experience on our website.",
-      "learnMore": "Learn more",
-      "decline": "Decline",
-      "save": "Save",
-      "allowSelected": "Allow selected",
-      "allowAll": "Allow all",
-      "preferences": "Preferences",
-      "needed": "Needed",
-      "analytics": "Analytics"
-    }
+  "error": {
+    "general": "Connectivity problems. Please check your internet connection or try again later."
   },
   "validation": {
     "required": "Please complete this field",

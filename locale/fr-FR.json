@@ -778,21 +778,9 @@
       "billing_address": "Billing Address",
       "billing_address_reserve": "Order Contact"
     }
-  },"error": {
-    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
-  "tracking": {
-    "cookieConsent": {
-      "message": "This website uses cookies to ensure you get the best experience on our website.",
-      "learnMore": "Learn more",
-      "decline": "Decline",
-      "save": "Save",
-      "allowSelected": "Allow selected",
-      "allowAll": "Allow all",
-      "preferences": "Preferences",
-      "needed": "Needed",
-      "analytics": "Analytics"
-    }
+  "error": {
+    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
   "validation": {
     "required": "Veuillez remplir ce champ",
