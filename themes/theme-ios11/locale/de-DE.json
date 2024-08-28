@@ -789,19 +789,6 @@
   "error": {
     "general": "Verbindungsproblem. Bitte überprüfe deine Internetverbindung oder versuche es später noch einmal."
   },
-  "tracking": {
-    "cookieConsent": {
-      "message": "Wir verwenden Cookies, damit du den besten Service genießen kannst.",
-      "learnMore": "Mehr erfahren",
-      "decline": "Ablehnen",
-      "save": "Speichern",
-      "allowSelected": "Auswahl bestätigen",
-      "allowAll": "Alle wählen",
-      "preferences": "Einstellungen",
-      "needed": "Erforderlich",
-      "analytics": "Analytics"
-    }
-  },
   "validation": {
     "required": "Bitte vervollständige dieses Feld",
     "email": "Gib bitte eine gültige E-Mail-Adresse ein",

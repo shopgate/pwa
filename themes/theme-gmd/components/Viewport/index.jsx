@@ -6,7 +6,6 @@ import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
-import { CookieConsent } from '@shopgate/engage/tracking';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
 import WideBar from 'Components/AppBar/presets/DefaultBar/components/WideBar';
@@ -68,7 +67,6 @@ const Viewport = ({
       )}
 
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
-      <CookieConsent />
       <div className={`${styles.viewport} theme__viewport`} aria-hidden={hidden} tabIndex="-1">
         <LiveMessenger />
         <header className={styles.header} id="AppHeader">

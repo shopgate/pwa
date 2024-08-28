@@ -8,10 +8,10 @@ import {
   CODE_TRACKING,
   defaultClientInformation,
 } from '@shopgate/pwa-core';
+import { appDidStart$ } from '@shopgate/engage/core';
 import { TYPE_PHONE, OS_ALL, OS_ANDROID } from '@shopgate/pwa-common/constants/Device';
 import appConfig, { shopNumber, componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import core from '@shopgate/tracking-core/core/Core';
-import { initializeTracking$ } from '@shopgate/engage/tracking';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
 
 /**
@@ -22,7 +22,7 @@ export default function setup(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(initializeTracking$, async ({ getState }) => {
+  subscribe(appDidStart$, async ({ getState }) => {
     const clientInformationResponse = !useBrowserConnector() ? await getWebStorageEntry({ name: 'clientInformation' }) : { value: defaultClientInformation };
 
     const clientInformation = {
