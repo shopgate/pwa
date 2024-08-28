@@ -29,12 +29,19 @@ export * from './featureFlag';
 // --------------- CORE --------------- //
 
 export * from '@shopgate/pwa-core/helpers';
+export * from '@shopgate/pwa-core/helpers/version';
 export { default as logGroup } from '@shopgate/pwa-core/helpers/logGroup';
 export * from '@shopgate/pwa-core/helpers/version';
 export * from '@shopgate/pwa-common/helpers/data';
 export * from '@shopgate/pwa-common/helpers/date';
 export * from '@shopgate/pwa-common/helpers/dom';
-export * from '@shopgate/pwa-common/helpers/environment';
+export {
+  env,
+  isDev,
+  isProd,
+  isRemote,
+  isStaging,
+} from '@shopgate/pwa-common/helpers/environment';
 export { default as decodeHTML } from '@shopgate/pwa-common/helpers/html/decodeHTML';
 export * from '@shopgate/pwa-common/helpers/html/handleDOM';
 export { default as parseHTML } from '@shopgate/pwa-common/helpers/html/parseHTML';
