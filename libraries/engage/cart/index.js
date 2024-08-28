@@ -50,7 +50,8 @@ export {
 } from './cart.selectors';
 
 // STREAMS
-export * from '@shopgate/pwa-common-commerce/cart/streams';
+// eslint-disable-next-line import/export
+export * from './streams';
 
 // CONTEXTS
 export { CartContext } from './cart.context';
