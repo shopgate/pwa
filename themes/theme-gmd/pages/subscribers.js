@@ -31,6 +31,7 @@ import trackingCheckout from '@shopgate/pwa-tracking/subscriptions/checkout';
 import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
 import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
 import trackingScanner from '@shopgate/pwa-tracking/subscriptions/scanner';
+import trackingFavorites from '@shopgate/pwa-tracking/subscriptions/favorites';
 // Theme
 import app from 'Pages/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
@@ -46,12 +47,15 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
 import appRating from '@shopgate/engage/app-rating/subscriptions';
 import pushOptIn from '@shopgate/engage/push-opt-in/subscriptions';
+import cookieConsent from '@shopgate/engage/tracking/subscriptions';
+import engageApp from '@shopgate/engage/core/subscriptions/app';
 // Extensions
 import extensions from 'Extensions/subscribers';
 
 const subscriptions = [
   // Common subscribers.
   commonApp,
+  engageApp,
   commonHistory,
   commonUser,
   commonMenu,
@@ -67,6 +71,7 @@ const subscriptions = [
   trackingSearch,
   trackingDeeplinkPush,
   trackingScanner,
+  trackingFavorites,
   // Common Commerce subscribers.
   commerceCart,
   commerceCheckout,
@@ -87,6 +92,7 @@ const subscriptions = [
   // App rating subscribers
   appRating,
   pushOptIn,
+  cookieConsent,
   // Theme subscribers.
   app,
   viewport,

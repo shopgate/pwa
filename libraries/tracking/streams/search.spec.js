@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
+import { app } from '@shopgate/engage/core/reducers';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
 import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import receiveSearchResults from '@shopgate/pwa-common-commerce/search/action-creators/receiveSearchResults';
-import { pwaDidAppear } from '@shopgate/pwa-common/action-creators';
+import { pwaDidAppear, pwaDidDisappear } from '@shopgate/pwa-common/action-creators';
 import { searchIsReady$ } from './search';
 
 let mockedRoutePattern;
@@ -23,10 +24,6 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentState: () => ({}),
   getCurrentParams: () => ({}),
   getCurrentSearchQuery: () => mockedSearchQuery,
-}));
-jest.mock('@shopgate/engage/account', () => ({}));
-jest.mock('@shopgate/engage/locations/selectors', () => ({
-  getPreferredLocation: jest.fn().mockReturnValue({}),
 }));
 
 /**
@@ -53,21 +50,23 @@ describe('Search streams', () => {
   let dispatch;
 
   beforeEach(() => {
-    jest.resetAllMocks();
     jest.clearAllMocks();
 
     mockedRoutePattern = '';
     mockedSearchQuery = null;
-    ({ dispatch } = createMockStore(combineReducers({ product })));
+    ({ dispatch } = createMockStore(combineReducers({
+      product,
+      app,
+    })));
 
     searchIsReadySubscriber = jest.fn();
     searchIsReady$.subscribe(searchIsReadySubscriber);
   });
 
   describe('searchIsReady$', () => {
-    describe('search route', () => {
-      const searchQuery = 'Search Query';
+    const searchQuery = 'Search Query';
 
+    describe('search route', () => {
       it('should emit when the search route is active and search results came in', () => {
         dispatch(routeDidEnterWrapped(SEARCH_PATTERN, searchQuery));
         dispatch(receiveSearchResults());
@@ -96,6 +95,15 @@ describe('Search streams', () => {
       it('should not emit when pwaDidAppear is dispatched and no search route is active', () => {
         mockedRoutePattern = '/some/pattern';
         dispatch(pwaDidAppear());
+        expect(searchIsReadySubscriber).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('app webview not visible', () => {
+      it('should not emit when app webview is not visible', () => {
+        dispatch(pwaDidDisappear());
+        dispatch(routeDidEnterWrapped(SEARCH_PATTERN, searchQuery));
+        dispatch(receiveSearchResults());
         expect(searchIsReadySubscriber).not.toHaveBeenCalled();
       });
     });

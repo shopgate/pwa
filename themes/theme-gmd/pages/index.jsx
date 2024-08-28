@@ -40,6 +40,7 @@ import {
   NavigationHandler,
   BrandingColorBanner,
   SideNavigation,
+  SnackBarContainer,
 } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
@@ -49,11 +50,12 @@ import { STORE_FINDER_PATTERN, GlobalLocationSelector } from '@shopgate/engage/l
 import FavoritesListChooser from '@shopgate/engage/favorites/components/ListChooser';
 
 import { FulfillmentSlotProvider } from '@shopgate/engage/locations/components/FulfillmentSlotSwitcher';
-import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
+import { CookieConsentModal } from '@shopgate/engage/tracking/components';
+import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import {
   CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PATTERN,
@@ -130,7 +132,8 @@ const Pages = ({ store }) => {
                 <Viewport>
                   <ModalContainer component={Dialog} />
                   <PushOptInModal />
-                  <Toaster render={props => <SnackBar {...props} />} />
+                  <CookieConsentModal />
+                  <Toaster render={props => <SnackBarContainer {...props} />} />
                   <FavoritesListChooser />
                   <FulfillmentSlotProvider />
                   <GlobalLocationSelector routePatternAllowList={globalLocationSelectorAllowList} />
@@ -149,6 +152,10 @@ const Pages = ({ store }) => {
                         transform={routesTransforms[INDEX_PATH]}
                       />
                       <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                      <Route
+                        pattern={PRIVACY_SETTINGS_PATTERN}
+                        component={routes.PrivacySettings}
+                      />
                       <Route
                         pattern={ROOT_CATEGORY_PATTERN}
                         component={routes.RootCategory}

@@ -13,7 +13,6 @@ import { blacklistedPatterns, pagesAreReady$ } from './pages';
 
 let mockedPattern;
 jest.mock('@shopgate/pwa-common/selectors/router', () => ({
-  ...jest.requireActual('@shopgate/pwa-common/selectors/router'),
   getCurrentRoute: () => ({
     pattern: mockedPattern,
   }),

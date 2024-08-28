@@ -7,7 +7,6 @@ import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_DENIED,
   PERMISSION_STATUS_GRANTED,
-  APP_DID_START,
 } from '@shopgate/engage/core/constants';
 import {
   appSupportsPushOptIn,
@@ -438,8 +437,7 @@ describe('Push OptIn Subscriptions', () => {
         minDaysBetweenOptIns: 0,
       });
 
-      // TODO replace with UPDATE_COOKIE_CONSENT after cookie consent feature is merged
-      dispatch({ type: APP_DID_START });
+      dispatch({ type: UPDATE_COOKIE_CONSENT });
 
       // getAppPermissions should have been called 1st time for appDidStart
       expect(getAppPermissions).toHaveBeenCalledTimes(1);
@@ -451,12 +449,9 @@ describe('Push OptIn Subscriptions', () => {
       // getAppPermissions should have been called 2nd time for checkoutSuccess event
       expect(getAppPermissions).toHaveBeenCalledTimes(2);
 
-      // TODO remove conditional after cookie consent feature is merged
       // Verify that opt in is only initialized once
-      if (false) {
-        dispatch({ type: UPDATE_COOKIE_CONSENT });
-        expect(getAppPermissions).toHaveBeenCalledTimes(2);
-      }
+      dispatch({ type: UPDATE_COOKIE_CONSENT });
+      expect(getAppPermissions).toHaveBeenCalledTimes(2);
     });
   });
 

@@ -20,7 +20,6 @@ import {
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { PAGE_PATTERN } from '@shopgate/engage/page';
 import { pwaVisibility$ } from './app';
 import { checkoutDidEnter$ } from './checkout';
@@ -33,7 +32,6 @@ export const blacklistedPatterns = [
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
   ITEM_PATTERN,
-  FAVORITES_PATH,
   SEARCH_PATH,
   // Patterns for routes which are not supported for tracking at the moment.
   CATEGORY_FILTER_PATTERN,

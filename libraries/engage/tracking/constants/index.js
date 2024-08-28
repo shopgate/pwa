@@ -6,3 +6,4 @@ export const UPDATE_COOKIE_CONSENT = 'UPDATE_COOKIE_CONSENT';
 export const COOKIE_CONSENT_HANDLED = 'COOKIE_CONSENT_HANDLED';
 
 export const PRIVACY_SETTINGS_PATTERN = '/privacy-settings';
+

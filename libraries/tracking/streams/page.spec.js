@@ -6,6 +6,7 @@ import {
   RECEIVE_PAGE_CONFIG,
 } from '@shopgate/pwa-common/constants/ActionTypes';
 import { PAGE_PATTERN, getPageConfigById } from '@shopgate/engage/page';
+import { getIsAppWebViewVisible } from '@shopgate/engage/core';
 import { pageIsReady$ } from './page';
 
 jest.mock('@shopgate/engage/core', () => {
@@ -17,13 +18,20 @@ jest.mock('@shopgate/engage/core', () => {
     main$,
     routeDidEnter$,
     pwaDidAppear$,
+    getIsAppWebViewVisible: jest.fn().mockReturnValue(true),
   };
 });
 
-jest.mock('@shopgate/engage/page', () => ({
-  PAGE_PATTERN: 'PAGE_PATTERN',
-  getPageConfigById: jest.fn(),
-}));
+jest.mock('@shopgate/engage/page', () => {
+  const {
+    PAGE_PATTERN: PAGE_PATTERN_ORIGINAL,
+  } = require.requireActual('@shopgate/engage/page');
+
+  return {
+    PAGE_PATTERN: PAGE_PATTERN_ORIGINAL,
+    getPageConfigById: jest.fn(),
+  };
+});
 
 jest.mock('@shopgate/pwa-common/selectors/router', () => {
   const actual = require.requireActual('@shopgate/pwa-common/selectors/router');
@@ -115,6 +123,16 @@ describe('Page streams', () => {
         expect(subscriber).toHaveBeenCalledTimes(1);
         expect(subscriber).toHaveBeenCalledWith(routeDidEnterPayload);
         expect(getPageConfigById).toHaveBeenCalledTimes(1);
+      });
+
+      describe('app webview not visible', () => {
+        it('should not emit when app webview is not visible', () => {
+          getIsAppWebViewVisible.mockReturnValueOnce(false);
+          subscription = pageIsReady$.subscribe(subscriber);
+          mainSubject.next(routeDidEnterPayload);
+
+          expect(subscriber).not.toHaveBeenCalled();
+        });
       });
     });
 
