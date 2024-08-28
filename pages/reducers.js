@@ -20,7 +20,7 @@ import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
-import { settings } from '@shopgate/engage/core/reducers';
+import { settings, app } from '@shopgate/engage/core/reducers';
 import locations from '@shopgate/engage/locations/reducers';
 import orders from '@shopgate/engage/orders/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
@@ -28,6 +28,7 @@ import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import account from '@shopgate/engage/account/reducers';
 import appRating from '@shopgate/engage/app-rating/reducers';
 import extensions from 'Extensions/reducers';
+import tracking from '@shopgate/engage/tracking/reducers';
 
 persistedReducers.set([
   'cart.data',
@@ -40,6 +41,8 @@ persistedReducers.set([
   'user',
   'appRating',
   'pushOptIn.optInTrigger',
+  'tracking.cookieConsentModal',
+  'tracking.cookieSettings',
   ...(hasWebBridge() ? 'menu' : []),
 ]);
 
@@ -61,6 +64,7 @@ const reducers = combineReducers({
   backInStock,
   checkout,
   client,
+  app,
   ...extensions && { extensions: combineReducers(extensions) },
   favorites,
   filter,
@@ -77,6 +81,7 @@ const reducers = combineReducers({
   user,
   appRating,
   pushOptIn,
+  tracking,
 });
 
 export default reducers;
