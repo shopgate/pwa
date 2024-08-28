@@ -14,17 +14,20 @@ import Context from './context';
  * @param {string} param.type Type of the context e.g. "productSlider" or "productGrid".
  * @param {string} param.subType Optional sub type of the context. Depending on its usage it can
  * make a statement about in which context the product list is used e.g. "widgets".
+ * @param {Object} param.meta Optional meta information that can be used by child components
  * @returns {JSX}
  */
 function ProductListTypeProvider({
   children,
   type,
   subType,
+  meta,
 }) {
   const value = useMemo(() => ({
     type,
     subType,
-  }), [subType, type]);
+    meta,
+  }), [meta, subType, type]);
 
   return (
     <Context.Provider value={value}>
@@ -36,13 +39,14 @@ function ProductListTypeProvider({
 ProductListTypeProvider.propTypes = {
   type: PropTypes.string.isRequired,
   children: PropTypes.node,
+  meta: PropTypes.shape({}),
   subType: PropTypes.string,
 };
 
 ProductListTypeProvider.defaultProps = {
   children: null,
   subType: null,
+  meta: null,
 };
 
 export default ProductListTypeProvider;
-
