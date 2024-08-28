@@ -533,6 +533,7 @@
     "payment": "Métodos de pago",
     "terms": "Términos",
     "privacy": "Política de privacidad",
+    "privacySettings": "Configuraciones de privacidad",
     "welcome_message": "Bienvenido {name}",
     "return_policy": "Política de devolución",
     "logout": "Cerrar sesión",

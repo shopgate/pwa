@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
 import {
   NAV_MENU_STORE_INFORMATION_BEFORE,
   NAV_MENU_STORE_INFORMATION,
   NAV_MENU_STORE_INFORMATION_AFTER,
 } from '@shopgate/engage/core/constants';
+import { hasNewServices, appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
+import { appConfig } from '@shopgate/engage';
 import portalProps from '../../portalProps';
 import Section from '../Section';
 import Shipping from './components/Shipping';
@@ -15,6 +16,9 @@ import Privacy from './components/Privacy';
 import ReturnPolicy from './components/ReturnPolicy';
 import Imprint from './components/Imprint';
 import LegalPages from './components/LegalPages';
+import PrivacySettings from './components/PrivacySettings';
+
+const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
 
 /**
  * The StoreInfoComponent.
@@ -37,6 +41,7 @@ const StoreInfo = () => (
           <Fragment>
             <Terms />
             <Privacy />
+            {appSupportsCookieConsent() && isCookieConsentActivated && <PrivacySettings />}
             <ReturnPolicy />
             <Imprint />
           </Fragment>
