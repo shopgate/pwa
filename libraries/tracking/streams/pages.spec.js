@@ -17,6 +17,7 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
     pattern: mockedPattern,
   }),
 }));
+jest.mock('@shopgate/engage/core/streams/app', () => ({}));
 
 /**
  * A wrapper for the route did enter action creator. Beside returning the action object of the

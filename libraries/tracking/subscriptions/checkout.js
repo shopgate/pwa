@@ -1,7 +1,15 @@
-import event from '@shopgate/pwa-core/classes/Event';
-import analyticsSetCustomValues from '@shopgate/pwa-core/commands/analyticsSetCustomValues';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { checkoutSuccess$ } from '@shopgate/engage/checkout/streams';
+import {
+  event,
+} from '@shopgate/engage/core/classes';
+import {
+  appDidStart$,
+} from '@shopgate/engage/core/streams';
+import {
+  analyticsSetCustomValues,
+} from '@shopgate/engage/core/commands';
+import {
+  checkoutSuccess$,
+} from '@shopgate/engage/checkout/streams';
 import getCart from '../selectors/cart';
 import { track, formatPurchaseData, formatNativeCheckoutPurchaseData } from '../helpers';
 import { checkoutDidEnter$ } from '../streams/checkout';

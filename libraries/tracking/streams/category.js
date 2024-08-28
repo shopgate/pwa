@@ -1,17 +1,21 @@
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import { pwaDidAppear$ } from '@shopgate/pwa-common/streams/app';
+import {
+  routeDidEnter$,
+  pwaDidAppear$,
+} from '@shopgate/engage/core/streams';
+import {
+  hex2bin,
+} from '@shopgate/engage/core/helpers';
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
+} from '@shopgate/engage/category/constants';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { receivedRootCategories$ } from '@shopgate/pwa-common-commerce/category/streams';
-import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
-import { getIsAppWebViewVisible } from '@shopgate/engage/core';
+import { receivedRootCategories$ } from '@shopgate/engage/category/streams';
+import { getRootCategories } from '@shopgate/engage/category/selectors';
+import { getIsAppWebViewVisible } from '@shopgate/engage/core/selectors';
 import { productsReceived$ } from './product';
 
 /**

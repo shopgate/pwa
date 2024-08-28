@@ -1,20 +1,20 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
-import { app } from '@shopgate/engage/core/reducers';
+import locations from '@shopgate/engage/locations/reducers';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
 import receiveRootCategories from '@shopgate/pwa-common-commerce/category/action-creators/receiveRootCategories';
 import requestProducts from '@shopgate/pwa-common-commerce/product/action-creators/requestProducts';
 import receiveProducts from '@shopgate/pwa-common-commerce/product/action-creators/receiveProducts';
+import { pwaDidAppear, pwaDidDisappear } from '@shopgate/pwa-common/action-creators';
+import { app } from '@shopgate/engage/core/reducers';
+import { generateResultHash, bin2hex } from '@shopgate/engage/core/helpers';
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
-import { pwaDidAppear, pwaDidDisappear } from '@shopgate/pwa-common/action-creators';
+} from '@shopgate/engage/category/constants';
 import { categoryIsReady$ } from './category';
 
 let mockedRoutePattern;
@@ -64,7 +64,9 @@ describe('Category streams', () => {
 
     mockedRoutePattern = '';
     mockedCategoryId = null;
-    ({ dispatch } = createMockStore(combineReducers({ category, product, app })));
+    ({ dispatch } = createMockStore(combineReducers({
+      category, product, app, locations,
+    })));
 
     categoryIsReadySubscriber = jest.fn();
     categoryIsReady$.subscribe(categoryIsReadySubscriber);
@@ -99,7 +101,7 @@ describe('Category streams', () => {
      * @param {string} categoryId A category id.
      */
     const dispatchReceiveProducts = (products, categoryId) => {
-      const hash = generateResultHash({ categoryId });
+      const hash = generateResultHash({ categoryId, sort: 'relevance' });
 
       dispatch(requestProducts({ hash }));
       dispatch(receiveProducts({
@@ -109,7 +111,7 @@ describe('Category streams', () => {
       }));
     };
 
-    it('should emit when a category route is active and category date is available', () => {
+    it('should emit when a category route is active and category data is available', () => {
       const categoryId = 'abc123';
       dispatchReceiveProducts([{ id: 'one' }], categoryId);
       dispatch(routeDidEnterWrapped(CATEGORY_PATTERN, categoryId));

@@ -1,15 +1,19 @@
 import { createSelector } from 'reselect';
 import {
   hex2bin,
+} from '@shopgate/engage/core/helpers';
+import {
   makeGetRouteParam,
   makeGetRoutePattern,
-} from '@shopgate/engage/core';
+} from '@shopgate/engage/core/selectors';
 import {
   CATEGORY_PATTERN,
   ROOT_CATEGORY_PATTERN,
+} from '@shopgate/engage/category/constants';
+import {
   getRootCategories,
   getCategory,
-} from '@shopgate/engage/category';
+} from '@shopgate/engage/category/selectors';
 import {
   createCategoryData,
   createRootCategoryData,

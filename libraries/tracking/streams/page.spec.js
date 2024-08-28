@@ -4,37 +4,24 @@ import {
   ROUTE_DID_ENTER,
   PWA_DID_APPEAR,
   RECEIVE_PAGE_CONFIG,
-} from '@shopgate/pwa-common/constants/ActionTypes';
-import { PAGE_PATTERN, getPageConfigById } from '@shopgate/engage/page';
-import { getIsAppWebViewVisible } from '@shopgate/engage/core';
+} from '@shopgate/engage/core/constants';
+import {
+  getIsAppWebViewVisible,
+} from '@shopgate/engage/core/selectors';
+import { PAGE_PATTERN } from '@shopgate/engage/page/constants';
+import { getPageConfigById } from '@shopgate/engage/page/selectors';
 import { pageIsReady$ } from './page';
 
-jest.mock('@shopgate/engage/core', () => {
-  const {
-    main$, routeDidEnter$, pwaDidAppear$,
-  } = require.requireActual('@shopgate/engage/core');
+jest.mock('@shopgate/engage/core/selectors', () => ({
+  getIsAppWebViewVisible: jest.fn().mockReturnValue(true),
+}));
 
-  return {
-    main$,
-    routeDidEnter$,
-    pwaDidAppear$,
-    getIsAppWebViewVisible: jest.fn().mockReturnValue(true),
-  };
-});
-
-jest.mock('@shopgate/engage/page', () => {
-  const {
-    PAGE_PATTERN: PAGE_PATTERN_ORIGINAL,
-  } = require.requireActual('@shopgate/engage/page');
-
-  return {
-    PAGE_PATTERN: PAGE_PATTERN_ORIGINAL,
-    getPageConfigById: jest.fn(),
-  };
-});
+jest.mock('@shopgate/engage/page/selectors', () => ({
+  getPageConfigById: jest.fn(),
+}));
 
 jest.mock('@shopgate/pwa-common/selectors/router', () => {
-  const actual = require.requireActual('@shopgate/pwa-common/selectors/router');
+  const actual = jest.requireActual('@shopgate/pwa-common/selectors/router');
   return {
     ...actual,
     getCurrentRoute: jest.fn(),

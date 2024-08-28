@@ -1,4 +1,4 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { getCurrentRoute } from '@shopgate/engage/core/selectors';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { productIsReady$ } from '../streams/product';
 import { getBaseProductFormatted, getProductFormatted } from '../selectors/product';

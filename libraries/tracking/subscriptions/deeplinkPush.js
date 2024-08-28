@@ -2,7 +2,7 @@ import {
   pushNotificationOpened$,
   deeplinkOpened$,
   universalLinkOpened$,
-} from '@shopgate/pwa-common/streams/app';
+} from '@shopgate/engage/core/streams';
 import { track } from '../helpers/index';
 
 /**

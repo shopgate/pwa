@@ -1,26 +1,29 @@
-import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import {
   appWillStart$,
   pwaDidAppear$,
   pwaDidDisappear$,
-} from '@shopgate/pwa-common/streams/app';
-import { APP_WILL_START, PWA_DID_APPEAR } from '@shopgate/pwa-common/constants/ActionTypes';
+  routeDidEnter$,
+} from '@shopgate/engage/core/streams';
+import {
+  APP_WILL_START,
+  PWA_DID_APPEAR,
+} from '@shopgate/engage/core/constants';
 import {
   SEARCH_PATH,
   SEARCH_FILTER_PATTERN,
-} from '@shopgate/pwa-common-commerce/search/constants';
+} from '@shopgate/engage/search/constants';
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
   CATEGORY_FILTER_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
+} from '@shopgate/engage/category/constants';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
-} from '@shopgate/pwa-common-commerce/product/constants';
-import { PAGE_PATTERN } from '@shopgate/engage/page';
+} from '@shopgate/engage/product/constants';
+import { PAGE_PATTERN } from '@shopgate/engage/page/constants';
 import { pwaVisibility$ } from './app';
 import { checkoutDidEnter$ } from './checkout';
 

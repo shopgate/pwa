@@ -2,10 +2,11 @@ import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import { app } from '@shopgate/engage/core/reducers';
+import locations from '@shopgate/engage/locations/reducers';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
-import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import receiveSearchResults from '@shopgate/pwa-common-commerce/search/action-creators/receiveSearchResults';
 import { pwaDidAppear, pwaDidDisappear } from '@shopgate/pwa-common/action-creators';
+import { SEARCH_PATTERN } from '@shopgate/engage/search/constants';
 import { searchIsReady$ } from './search';
 
 let mockedRoutePattern;
@@ -57,6 +58,7 @@ describe('Search streams', () => {
     ({ dispatch } = createMockStore(combineReducers({
       product,
       app,
+      locations,
     })));
 
     searchIsReadySubscriber = jest.fn();

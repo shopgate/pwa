@@ -1,14 +1,16 @@
 import { createSelector } from 'reselect';
 import {
+  makeGetRouteParam,
+  makeGetRoutePattern,
+} from '@shopgate/engage/core/selectors';
+import {
+  hex2bin,
+} from '@shopgate/engage/core/helpers';
+import { ITEM_PATTERN } from '@shopgate/engage/product/constants';
+import {
   getBaseProduct,
   getProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import {
-  hex2bin,
-  makeGetRouteParam,
-  makeGetRoutePattern,
-} from '@shopgate/engage/core';
-import { ITEM_PATTERN } from '@shopgate/engage/product';
 import { formatProductData } from '../helpers';
 
 /**

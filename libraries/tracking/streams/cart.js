@@ -3,7 +3,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/defer';
 import { Observable } from 'rxjs/Observable';
 
-import { productsAdded$ as originalProductsAdded$ } from '@shopgate/engage/cart';
+import { productsAdded$ as originalProductsAdded$ } from '@shopgate/engage/cart/streams';
 import { getProductById, fetchProductsById } from '@shopgate/engage/product';
 
 /**
