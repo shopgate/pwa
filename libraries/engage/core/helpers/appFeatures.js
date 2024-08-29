@@ -37,6 +37,11 @@ export const appSupportsPushOptIn = () => {
  * @returns {boolean}
  */
 export const appSupportsCookieConsent = () => {
+  if (hasWebBridge()) {
+    // Deactivated in browser mode for now
+    return false;
+  }
+
   if (!hasSGJavaScriptBridge()) {
     // Always supported in development
     return true;

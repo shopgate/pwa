@@ -15,11 +15,16 @@ import widgets from 'Extensions/widgets';
 import connect from './connector';
 
 /**
+ * @param {Object} props The component props
  * @param {Object} props.configs The page configs.
  * @param {string} props.pageId The page id.
+ * @param {bool} props.isCookieConsentHandled Whether the cookie consent is handled (pages can be
+ * to show the privacy policy. We need to re-configure the screen so that users can't break out)
  * @return {JSX}
  */
-function PageContent({ configs, pageId, postponeRender }) {
+function PageContent({
+  configs, pageId, postponeRender, isCookieConsentHandled,
+}) {
   if (!configs) {
     return null;
   }
@@ -34,7 +39,11 @@ function PageContent({ configs, pageId, postponeRender }) {
 
   return (
     <Fragment>
-      <Bar center={center} title={configs.title || ''} />
+      <Bar
+        center={center}
+        title={configs.title || ''}
+        {...!isCookieConsentHandled ? { right: <></> } : null}
+      />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
         {(!postponeRender && configs && configs.widgets) && (
@@ -49,12 +58,14 @@ function PageContent({ configs, pageId, postponeRender }) {
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
   configs: PropTypes.shape(),
+  isCookieConsentHandled: PropTypes.bool,
   postponeRender: PropTypes.bool,
 };
 
 PageContent.defaultProps = {
   configs: null,
   postponeRender: false,
+  isCookieConsentHandled: true,
 };
 
 export default connect(PageContent);

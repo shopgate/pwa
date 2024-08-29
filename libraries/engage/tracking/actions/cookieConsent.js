@@ -71,5 +71,4 @@ export const acceptRequiredCookies = () => (dispatch) => {
  */
 export const openPrivacySettings = () => (dispatch) => {
   dispatch(historyPush({ pathname: PRIVACY_SETTINGS_PATTERN }));
-  dispatch(hideCookieConsentModal());
 };

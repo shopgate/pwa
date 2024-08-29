@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, I18n, Button, Modal, Link,
+  Grid, I18n, Button, Modal, Link, ConditionalWrapper,
 } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
-import { PRIVACY_PATH } from '@shopgate/engage/page';
 import classNames from 'classnames';
 import connect from './connector';
 import cookieImage from './tracking-opt-in.svg';
@@ -20,6 +19,7 @@ const CookieConsentModal = ({
   acceptAllCookies,
   acceptRequiredCookies,
   openPrivacySettings,
+  privacyPolicyLink,
 }) => {
   const {
     cookieConsent: {
@@ -93,9 +93,16 @@ const CookieConsentModal = ({
             id="cookieConsentDialogMessage"
           >
             <I18n.Placeholder forKey="privacyLink">
-              <Link href={PRIVACY_PATH} tag="span">
-                <I18n.Text string="cookieConsentModal.privacyText" className={styles.link} />
-              </Link>
+              <ConditionalWrapper
+                condition={!!privacyPolicyLink}
+                wrapper={children => (
+                  <Link href={privacyPolicyLink} tag="span" className={styles.link}>
+                    {children}
+                  </Link>
+                )}
+              >
+                <I18n.Text string="cookieConsentModal.privacyText" />
+              </ConditionalWrapper>
             </I18n.Placeholder>
           </I18n.Text>
 
@@ -136,6 +143,11 @@ CookieConsentModal.propTypes = {
   acceptRequiredCookies: PropTypes.func.isRequired,
   isCookieConsentModalVisible: PropTypes.bool.isRequired,
   openPrivacySettings: PropTypes.func.isRequired,
+  privacyPolicyLink: PropTypes.string,
+};
+
+CookieConsentModal.defaultProps = {
+  privacyPolicyLink: null,
 };
 
 export default connect(CookieConsentModal);

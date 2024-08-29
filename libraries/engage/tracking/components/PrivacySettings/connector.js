@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { makeGetPrivacyPolicyLink } from '@shopgate/engage/page/selectors';
 import { acceptAllCookies, acceptSelectedCookies } from '../../actions';
 import {
   getAreComfortCookiesAcceptedInternal,
@@ -6,14 +7,16 @@ import {
 } from '../../selectors/cookieConsent';
 
 /**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  comfortCookiesAcceptedState: getAreComfortCookiesAcceptedInternal(state),
-  statisticsCookiesAcceptedState: getAreStatisticsCookiesAcceptedInternal(state),
-});
+const makeGetStateToProps = () => {
+  const getPrivacyPolicyLink = makeGetPrivacyPolicyLink();
+  return state => ({
+    comfortCookiesAcceptedState: getAreComfortCookiesAcceptedInternal(state),
+    statisticsCookiesAcceptedState: getAreStatisticsCookiesAcceptedInternal(state),
+    privacyPolicyLink: getPrivacyPolicyLink(state),
+  });
+};
 
 /**
  * Connects the dispatch function to a callable function in the props.
@@ -24,4 +27,4 @@ const mapDispatchToProps = {
   acceptSelectedCookies,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(makeGetStateToProps, mapDispatchToProps);

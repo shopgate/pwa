@@ -1,4 +1,8 @@
 import { createSelector } from 'reselect';
+import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
+import { appConfig } from '../../index';
+
+const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
 
 /**
  * Selects the cookie consent modal state.
@@ -13,6 +17,23 @@ export const getCookieConsentModalState = state => state?.tracking?.cookieConsen
  * @returns {Object} whether cookies have been accepted by the user.
  */
 export const getCookieSettingsState = state => state?.tracking?.cookieSettings || {};
+
+/**
+ * Determines whether the cookie consent process is finished (selection happened before, feature is
+ * inactive, app doesn't support the feature).
+ * @returns {boolean} whether cookie consent settings have been chosen by the user.
+ */
+export const getIsCookieConsentHandled = createSelector(
+  getCookieSettingsState,
+  (settingsState) => {
+    if (!isCookieConsentActivated || !appSupportsCookieConsent()) {
+      return true;
+    }
+
+    return (settingsState?.comfortCookiesAccepted !== null)
+    || (settingsState?.statisticsCookiesAccepted !== null);
+  }
+);
 
 /**
  * Selects the property of the comfort cookie settings.
@@ -43,7 +64,9 @@ export const getAreStatisticsCookiesAcceptedInternal = createSelector(
  */
 export const getAreComfortCookiesAccepted = createSelector(
   getCookieSettingsState,
-  (settingsState) => {
+  getIsCookieConsentHandled,
+  (settingsState, consentHandled) => {
+    if (!consentHandled) return false;
     if (settingsState.comfortCookiesAccepted === null) return true;
     return settingsState.comfortCookiesAccepted;
   }
@@ -56,7 +79,9 @@ export const getAreComfortCookiesAccepted = createSelector(
  */
 export const getAreStatisticsCookiesAccepted = createSelector(
   getCookieSettingsState,
-  (settingsState) => {
+  getIsCookieConsentHandled,
+  (settingsState, consentHandled) => {
+    if (!consentHandled) return false;
     if (settingsState.statisticsCookiesAccepted === null) return true;
     return settingsState.statisticsCookiesAccepted;
   }
@@ -73,14 +98,4 @@ export const getIsCookieConsentModalVisible = createSelector(
   (modalState, comfortCookiesState, statisticsCookiesState) => (
     modalState.isCookieConsentModalVisible
         && (comfortCookiesState === null && statisticsCookiesState === null))
-);
-
-/**
- * Selects the cookie consent settings property.
- * @returns {boolean} whether cookie consent settings have been chosen by the user.
- */
-export const getIsCookieConsentHandled = createSelector(
-  getCookieSettingsState,
-  settingsState => (settingsState?.comfortCookiesAccepted !== null)
-    || (settingsState?.statisticsCookiesAccepted !== null)
 );

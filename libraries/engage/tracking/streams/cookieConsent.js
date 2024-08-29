@@ -1,7 +1,15 @@
-import { main$ } from '@shopgate/engage/core/streams';
+import { main$, routeWillEnter$ } from '@shopgate/engage/core/streams';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
-import { COOKIE_CONSENT_HANDLED, UPDATE_COOKIE_CONSENT } from '../constants';
+import { makeGetPrivacyPolicyLink } from '@shopgate/engage/page/selectors';
+import {
+  COOKIE_CONSENT_HANDLED,
+  UPDATE_COOKIE_CONSENT,
+  PRIVACY_SETTINGS_PATTERN,
+} from '../constants';
+import {
+  getIsCookieConsentHandled,
+} from '../selectors/cookieConsent';
 
 /**
  * Gets triggered when the cookie consent has been updated by the user or handled already.
@@ -71,3 +79,34 @@ export const statisticsCookiesDeclined$ = statisticsCookiesAccepted$
   .switchMap(() => cookieConsentSet$.filter(({ action }) => (
     action.statisticsCookiesAccepted === false
   )).first());
+
+/**
+ * Emit when the cookie consent modal is supposed to be shown / hidden on route changes.
+ *
+ * When cookie consent is not handled yet, the modal should overlay every route, except the
+ * pages with privacy polity and privacy settings when extended consent decisions are taken.
+ */
+export const cookieConsentModalShouldToggle$ = routeWillEnter$
+  // Stop the stream after cookie consent is handled
+  .takeUntil(cookieConsentInitialized$)
+  .switchMap((input) => {
+    const { action, getState } = input;
+    const isCookieConsentHandled = getIsCookieConsentHandled(getState());
+
+    let showConsentModal = false;
+
+    // Only run extended logic when cookie consent is active and still need to be handled
+    if (!isCookieConsentHandled) {
+      const pagesWithoutModal = [
+        PRIVACY_SETTINGS_PATTERN,
+        makeGetPrivacyPolicyLink()(getState()),
+      ];
+
+      showConsentModal = !pagesWithoutModal.includes(action?.route?.pathname);
+    }
+
+    return Observable.of({
+      ...input,
+      showConsentModal,
+    });
+  });

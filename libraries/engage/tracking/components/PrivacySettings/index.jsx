@@ -1,9 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import {
-  Button, Grid, I18n, Link, Switch,
+  Button, Grid, I18n, Link, Switch, ConditionalWrapper,
 } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
-import { PRIVACY_PATH } from '@shopgate/engage/page';
 import { appConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core';
 import classNames from 'classnames';
@@ -19,6 +18,7 @@ const PrivacySettings = ({
   acceptSelectedCookies,
   comfortCookiesAcceptedState,
   statisticsCookiesAcceptedState,
+  privacyPolicyLink,
 }) => {
   const {
     cookieConsent: {
@@ -117,9 +117,16 @@ const PrivacySettings = ({
       <Grid.Item component="div">
         <I18n.Text string="cookieSettings.privacy">
           <I18n.Placeholder forKey="privacyLink">
-            <Link href={PRIVACY_PATH} tag="span">
-              <I18n.Text string="cookieConsentModal.privacyText" className={styles.link} />
-            </Link>
+            <ConditionalWrapper
+              condition={!!privacyPolicyLink}
+              wrapper={children => (
+                <Link href={privacyPolicyLink} tag="span" className={styles.link}>
+                  {children}
+                </Link>
+              )}
+            >
+              <I18n.Text string="cookieConsentModal.privacyText" />
+            </ConditionalWrapper>
           </I18n.Placeholder>
         </I18n.Text>
       </Grid.Item>
@@ -131,12 +138,14 @@ PrivacySettings.propTypes = {
   acceptAllCookies: PropTypes.func.isRequired,
   acceptSelectedCookies: PropTypes.func.isRequired,
   comfortCookiesAcceptedState: PropTypes.bool,
+  privacyPolicyLink: PropTypes.string,
   statisticsCookiesAcceptedState: PropTypes.bool,
 };
 
 PrivacySettings.defaultProps = {
   comfortCookiesAcceptedState: null,
   statisticsCookiesAcceptedState: null,
+  privacyPolicyLink: null,
 };
 
 export default connect(PrivacySettings);

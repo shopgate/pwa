@@ -1,15 +1,18 @@
 import { connect } from 'react-redux';
+import { makeGetPrivacyPolicyLink } from '@shopgate/engage/page/selectors';
 import { getIsCookieConsentModalVisible } from '../../selectors/cookieConsent';
 import { acceptAllCookies, acceptRequiredCookies, openPrivacySettings } from '../../actions';
 
 /**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  isCookieConsentModalVisible: getIsCookieConsentModalVisible(state),
-});
+const makeGetStateToProps = () => {
+  const getPrivacyPolicyLink = makeGetPrivacyPolicyLink();
+  return state => ({
+    isCookieConsentModalVisible: getIsCookieConsentModalVisible(state),
+    privacyPolicyLink: getPrivacyPolicyLink(state),
+  });
+};
 
 /**
  * Connects the dispatch function to a callable function in the props.
@@ -21,4 +24,4 @@ const mapDispatchToProps = {
   openPrivacySettings,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(makeGetStateToProps, mapDispatchToProps);
