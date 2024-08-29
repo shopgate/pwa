@@ -64,7 +64,7 @@ const LegalButtons = ({ legalPages, navigate }) => {
       return (
         <ConditionalWrapper
           key={url}
-          condition={portalName}
+          condition={!!portalName}
           wrapper={children =>
             <SurroundPortals portalName={portalName} portalProps={portalProps}>
               {children}

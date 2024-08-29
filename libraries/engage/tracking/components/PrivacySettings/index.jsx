@@ -120,12 +120,12 @@ const PrivacySettings = ({
             <ConditionalWrapper
               condition={!!privacyPolicyLink}
               wrapper={children => (
-                <Link href={privacyPolicyLink} tag="span" className={styles.link}>
+                <Link href={privacyPolicyLink} tag="span">
                   {children}
                 </Link>
               )}
             >
-              <I18n.Text string="cookieConsentModal.privacyText" />
+              <I18n.Text string="cookieConsentModal.privacyText" className={styles.link} />
             </ConditionalWrapper>
           </I18n.Placeholder>
         </I18n.Text>
