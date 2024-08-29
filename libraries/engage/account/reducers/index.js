@@ -1,4 +1,5 @@
 import { produce } from 'immer';
+import { SUCCESS_LOGOUT } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   FETCH_CUSTOMER_CONTACTS,
   FETCH_CUSTOMER_CONTACTS_SUCCESS,
@@ -58,6 +59,12 @@ export default function checkoutReducer(state = initialState, action) {
       case FETCH_CUSTOMER_SUCCESS: {
         draft.customer.isFetching = false;
         draft.customer.data = action.customer;
+        break;
+      }
+
+      case SUCCESS_LOGOUT: {
+        draft.customer = initialState.customer;
+        draft.contacts = initialState.contacts;
         break;
       }
 
