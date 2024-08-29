@@ -41,7 +41,6 @@ persistedReducers.set([
   'user',
   'appRating',
   'pushOptIn.optInTrigger',
-  'tracking.cookieConsentModal',
   'tracking.cookieSettings',
 ]);
 
