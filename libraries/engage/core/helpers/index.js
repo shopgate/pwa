@@ -28,8 +28,14 @@ export * from './featureFlag';
 
 // --------------- CORE --------------- //
 
-export * from '@shopgate/pwa-core/helpers';
-export * from '@shopgate/pwa-core/helpers/version';
+export {
+  logger,
+  ajaxUrl,
+  hasSGJavaScriptBridge,
+  useBrowserConnector,
+  hasWebBridgeCore,
+  logDeprecationMessage,
+} from '@shopgate/pwa-core/helpers';
 export { default as logGroup } from '@shopgate/pwa-core/helpers/logGroup';
 export * from '@shopgate/pwa-core/helpers/version';
 export * from '@shopgate/pwa-common/helpers/data';
