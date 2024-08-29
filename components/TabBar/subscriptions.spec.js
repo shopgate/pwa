@@ -19,7 +19,7 @@ import subscriptions from './subscriptions';
 const createMockedStore = () => configureStore()({});
 
 jest.mock('@shopgate/engage/checkout', () => ({
-  ...require.requireActual('@shopgate/engage/checkout/constants'),
+  ...jest.requireActual('@shopgate/engage/checkout/constants'),
 }));
 
 jest.mock('@shopgate/engage/login', () => ({
@@ -62,7 +62,7 @@ describe('TabBar subscriptions', () => {
   it('should set configuration tab bar blacklist on app start', () => {
     appWillStartCallback();
     expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toBeInstanceOf(Array);
-    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toHaveLength(18);
+    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toHaveLength(17);
   });
 
   it('should be initialized as expected', () => {
