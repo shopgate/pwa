@@ -1,10 +1,17 @@
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
+import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
 import cookieSettings from '../reducers/cookieSettings';
+import {
+  getIsCookieConsentHandled,
+} from '../selectors/cookieConsent';
 import {
   updateCookieConsent,
   handleCookieConsent,
 } from '../action-creators';
+import {
+  PRIVACY_SETTINGS_PATTERN,
+} from '../constants';
 import {
   cookieConsentSet$,
   cookieConsentInitialized$,
@@ -13,7 +20,17 @@ import {
   statisticsCookiesAccepted$,
   comfortCookiesDeclined$,
   statisticsCookiesDeclined$,
+  cookieConsentModalShouldToggle$,
 } from './cookieConsent';
+
+const MOCKED_PRIVACY_POLICY_PAGE = '/privacy/policy';
+
+jest.mock('@shopgate/engage/page/selectors', () => ({
+  makeGetPrivacyPolicyLink: jest.fn(() => () => MOCKED_PRIVACY_POLICY_PAGE),
+}));
+jest.mock('../selectors/cookieConsent', () => ({
+  getIsCookieConsentHandled: jest.fn(() => true),
+}));
 
 describe('Cookie Consent Streams', () => {
   let subscriber;
@@ -377,6 +394,117 @@ describe('Cookie Consent Streams', () => {
       // deactivate
       dispatch(updateCookieConsent({
         statisticsCookiesAccepted: false,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('cookieConsentModalShouldToggle$', () => {
+    beforeEach(() => {
+      subscription = cookieConsentModalShouldToggle$.subscribe(subscriber);
+    });
+
+    /**
+     * Creates an object for a subscriber call check.
+     * @param {Object} expected Object with relevant properties to be checked
+     * @returns {Object}
+     */
+    const getSubscriberCall = expected => ({
+      action: expect.any(Object),
+      dispatch: expect.any(Function),
+      events: expect.any(Object),
+      getState: expect.any(Function),
+      prevState: expect.any(Object),
+      ...expected,
+    });
+
+    it('should emit with "showConsentModal === true" when cookie consent is not handled yet and a random route is opened', () => {
+      getIsCookieConsentHandled.mockReturnValueOnce(false);
+
+      dispatch(routeWillEnter({
+        pathname: '/some/route',
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      expect(subscriber).toHaveBeenCalledWith(getSubscriberCall({
+        showConsentModal: true,
+      }));
+    });
+
+    it('should emit with "showConsentModal === false" when cookie consent is not handled yet and a whitelisted route is opened', () => {
+      getIsCookieConsentHandled.mockReturnValueOnce(false);
+
+      dispatch(routeWillEnter({
+        pathname: PRIVACY_SETTINGS_PATTERN,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      expect(subscriber).toHaveBeenLastCalledWith(getSubscriberCall({
+        showConsentModal: false,
+      }));
+
+      dispatch(routeWillEnter({
+        pathname: MOCKED_PRIVACY_POLICY_PAGE,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(2);
+      expect(subscriber).toHaveBeenLastCalledWith(getSubscriberCall({
+        showConsentModal: false,
+      }));
+    });
+
+    it('should emit with "showConsentModal === false" when cookie consent is already handled', () => {
+      getIsCookieConsentHandled.mockReturnValueOnce(true);
+
+      dispatch(routeWillEnter({
+        pathname: '/some/route',
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      expect(subscriber).toHaveBeenCalledWith(getSubscriberCall({
+        showConsentModal: false,
+      }));
+
+      dispatch(routeWillEnter({
+        pathname: PRIVACY_SETTINGS_PATTERN,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(2);
+      expect(subscriber).toHaveBeenCalledWith(getSubscriberCall({
+        showConsentModal: false,
+      }));
+
+      dispatch(routeWillEnter({
+        pathname: MOCKED_PRIVACY_POLICY_PAGE,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(3);
+      expect(subscriber).toHaveBeenCalledWith(getSubscriberCall({
+        showConsentModal: false,
+      }));
+    });
+
+    it('should stop emitting after cookie consent is "handled"', () => {
+      getIsCookieConsentHandled.mockReturnValueOnce(false);
+
+      dispatch(routeWillEnter({
+        pathname: '/some/route',
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
+
+      dispatch(routeWillEnter({
+        pathname: PRIVACY_SETTINGS_PATTERN,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(2);
+
+      // Should now stop emitting
+      dispatch(handleCookieConsent({}));
+
+      dispatch(routeWillEnter({
+        pathname: '/some/route',
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(2);
