@@ -44,7 +44,7 @@ const LegalPages = ({ legalPages }) => {
       return (
         <ConditionalWrapper
           key={url}
-          condition={portalName}
+          condition={!!portalName}
           wrapper={children =>
             <SurroundPortals portalName={portalName} portalProps={portalProps}>
               {children}
