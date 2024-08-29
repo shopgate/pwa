@@ -1,13 +1,15 @@
 import React, {
-  useCallback, useEffect, useState, useRef,
+  useCallback, useEffect, useState, useRef, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import { i18n, UIEvents } from '@shopgate/engage/core';
+import { i18n, hasNewServices } from '@shopgate/engage/core/helpers';
+import { UIEvents } from '@shopgate/engage/core';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
-import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
 
 const { variables, colors } = themeConfig;
 
@@ -26,26 +28,62 @@ const styles = {
     width: '100%',
     position: 'fixed',
   }),
-  input: css({
-    padding: `0 ${variables.gap.small}px`,
-    textAlign: 'center',
-    flex: 1,
-    fontSize: 15,
-    height: 28,
+  inputWrapper: ({ inputColor, inputBgColor }) => css({
+    display: 'flex',
+    alignItems: 'center',
     width: '100%',
+    fontSize: 16,
     backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
-  }).toString(),
-  inputWrapper: css({
-    width: '100%',
-  }),
-  button: css({
-    width: 28,
-    ' &&': {
-      minWidth: 28,
-      padding: 0,
+    ...(inputColor && { color: `${inputColor} !important` }),
+    ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
+    ' .quantity-label': {
+      paddingLeft: variables.gap.small,
+      paddingRight: 4,
+      textAlign: 'center',
+
+      width: 'calc(100% - 32px)',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
     },
-    height: 28,
-  }).toString(),
+  }),
+  input: ({
+    inputColor, inputBgColor, hasLabel, size,
+  }) => {
+    const fontWeight = size === 'large' ? 600 : 'normal';
+
+    return css({
+      padding: `0 ${variables.gap.small}px`,
+      textAlign: hasLabel ? 'left' : 'center',
+      fontWeight,
+      height: '100%',
+      width: '100%',
+      ...(inputColor && { color: `${inputColor}` }),
+      ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
+      ...(hasLabel && { paddingLeft: 0 }),
+      outline: 'none',
+      '&:focus:not(:focus-visible)': {
+        outline: 'none',
+      },
+    }).toString();
+  },
+  button: ({ size = 'default', buttonColor, buttonBgColor }) => {
+    const sizeValue = size === 'large' ? 36 : 28;
+
+    return css({
+      width: sizeValue,
+      ' &&': {
+        minWidth: sizeValue,
+        padding: 0,
+      },
+      height: sizeValue,
+      fontSize: `${Math.floor((sizeValue / 28) * 100)}% !important`,
+      '&:not(:disabled)': {
+        ...(buttonColor && { color: `${buttonColor} !important` }),
+        ...(buttonBgColor && { backgroundColor: `${buttonBgColor} !important` }),
+      },
+    });
+  },
   buttonRipple: css({
     padding: 0,
   }).toString(),
@@ -86,8 +124,37 @@ const UnitQuantityPicker = ({
   disabled,
   minValue,
   maxValue,
+  size,
   toggleTabBarOnFocus,
+  quantityLabel,
 }) => {
+  const widgetDefaults = useMemo(() => {
+    if (hasNewServices()) {
+      // The widget configuration was introduced with CCP-2449 in PWA6. It's inactive for now
+      // when running on new services, since for those shops it never existed and the default
+      // values would introduce breaking changes.
+      return {
+
+      };
+    }
+
+    return {
+      buttonColor: colors.shade8,
+      buttonBgColor: colors.primary,
+      inputColor: colors.dark,
+      inputBgColor: colors.shade8,
+      showLabel: true,
+    };
+  }, []);
+
+  const {
+    buttonColor = widgetDefaults.buttonColor,
+    buttonBgColor = widgetDefaults.buttonBgColor,
+    inputColor = widgetDefaults.inputColor,
+    inputBgColor = widgetDefaults.inputBgColor,
+    showLabel = widgetDefaults.showLabel,
+  } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
+
   const [isFocused, setIsFocused] = useState(false);
 
   const inputRef = useRef(null);
@@ -185,20 +252,43 @@ const UnitQuantityPicker = ({
       )}
       <div className={`${styles.root} ${className}`}>
         <RippleButton
-          rippleClassName={styles.buttonRipple}
-          className={classNames(styles.button, styles.buttonNoRadiusRight, {
-            [styles.disabled]: disabled,
-          })}
           type="secondary"
           disabled={!allowDecrement || disabled}
+          rippleClassName={styles.buttonRipple}
+          className={classNames(
+            styles.button({
+              size,
+              buttonColor,
+              buttonBgColor,
+            }),
+            styles.buttonNoRadiusRight,
+            {
+              [styles.disabled]: !allowDecrement || disabled,
+            }
+          )}
           onClick={handleDecrement}
           aria-label={i18n.text('product.decrease_quantity')}
         >
         -
         </RippleButton>
-        <span>
+        <span
+          className={styles.inputWrapper({
+            inputColor,
+            inputBgColor,
+          })}
+        >
+          {quantityLabel && showLabel && (
+            <span aria-hidden className="quantity-label">
+              {quantityLabel}
+            </span>
+          )}
           <QuantityInput
-            className={styles.input}
+            className={styles.input({
+              inputColor,
+              inputBgColor,
+              hasLabel: showLabel && !!quantityLabel,
+              size,
+            })}
             value={value}
             onChange={onChange}
             maxDecimals={maxDecimals}
@@ -218,9 +308,17 @@ const UnitQuantityPicker = ({
           type="secondary"
           disabled={!allowIncrement || disabled}
           rippleClassName={styles.buttonRipple}
-          className={classNames(styles.button, styles.buttonNoRadiusLeft, {
-            [styles.disabled]: disabled,
-          })}
+          className={classNames(
+            styles.button({
+              size,
+              buttonColor,
+              buttonBgColor,
+            }),
+            styles.buttonNoRadiusLeft,
+            {
+              [styles.disabled]: !allowIncrement || disabled,
+            }
+          )}
           onClick={handleIncrement}
           aria-label={i18n.text('product.increase_quantity')}
         >
@@ -244,6 +342,8 @@ UnitQuantityPicker.propTypes = {
   maxDecimals: PropTypes.number,
   maxValue: PropTypes.number,
   minValue: PropTypes.number,
+  quantityLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  size: PropTypes.oneOf(['default', 'large']),
   toggleTabBarOnFocus: PropTypes.bool,
   unit: PropTypes.string,
 };
@@ -259,7 +359,9 @@ UnitQuantityPicker.defaultProps = {
   unit: null,
   disabled: false,
   minValue: null,
+  size: 'default',
   maxValue: null,
+  quantityLabel: null,
   toggleTabBarOnFocus: false,
 };
 
