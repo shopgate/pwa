@@ -5,10 +5,10 @@ import { css } from 'glamor';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { i18n } from '@shopgate/engage/core';
-import { appConfig } from '@shopgate/engage';
 import {
   getFavoritesLists,
   isInitialLoading,
+  getHasMultipleFavoritesListsSupport,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import addFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/addFavoritesList';
 import updateFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/updateFavoritesList';
@@ -33,8 +33,6 @@ import {
   FAVORITES_LIST,
 } from '../../constants/Portals';
 
-const { favoritesMode: { hasMultipleFavoritesLists } = {} } = appConfig;
-
 /**
  * @param {Object} state State
  * @param {Object} props Props
@@ -50,6 +48,7 @@ const makeMapStateToProps = () => {
     shopFulfillmentMethods: getFulfillmentMethods(state, props),
     wishlistMode: getWishlistMode(state),
     userSearch: getUserSearch(state),
+    hasMultipleFavoritesListsSupport: getHasMultipleFavoritesListsSupport(state),
   });
 };
 
@@ -102,6 +101,7 @@ const FavoriteLists = ({
   shopFulfillmentMethods,
   userSearch,
   fetchLocations,
+  hasMultipleFavoritesListsSupport,
 }) => {
   // Add to cart state.
   const promiseRef = useRef(null);
@@ -282,6 +282,7 @@ const FavoriteLists = ({
             remove={() => removeList(list.id)}
             removeItem={productId => removeItem(list.id, productId)}
             addToCart={(product, quantity) => handleAddToCart(list.id, product, quantity)}
+            hasMultipleFavoritesListsSupport={hasMultipleFavoritesListsSupport}
           />
         </SurroundPortals>
       ))}
@@ -306,7 +307,7 @@ const FavoriteLists = ({
         onClose={handleMethodClose}
       />
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
-        {hasNewServices() || hasMultipleFavoritesLists ? (
+        {hasMultipleFavoritesListsSupport ? (
           <RippleButton
             type="primary"
             className={styles.addButton}
@@ -325,6 +326,7 @@ FavoriteLists.propTypes = {
   addList: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
   fetchLocations: PropTypes.func.isRequired,
+  hasMultipleFavoritesListsSupport: PropTypes.bool.isRequired,
   removeItem: PropTypes.func.isRequired,
   removeList: PropTypes.func.isRequired,
   updateList: PropTypes.func.isRequired,

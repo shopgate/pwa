@@ -18,7 +18,6 @@ export { default as ProductImage } from './ProductImage';
 export { default as ProductList } from './ProductList';
 export * from './ProductName';
 export { default as ProductProperties } from './ProductProperties/ProductProperties';
-export { default as ProductProvider } from './ProductProvider';
 export { default as ProductSlider } from './ProductSlider';
 export * from './ProductVariants';
 export { default as QuantityPicker } from './QuantityPicker';

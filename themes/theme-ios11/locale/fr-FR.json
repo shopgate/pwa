@@ -181,7 +181,8 @@
       "confirm": "Sélectionner la variante"
     },
     "open_list": "Liste ouverte.",
-    "close_list": "Fermer la liste."
+    "close_list": "Fermer la liste.",
+    "load_more_button": "Charger d'autres articles"
   },
   "filter": {
     "sort": {

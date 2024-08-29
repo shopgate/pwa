@@ -4,6 +4,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import groupBy from 'lodash/groupBy';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { makeGetRoutePattern } from '@shopgate/engage/core/selectors';
 import {
   getLoadWishlistOnAppStartEnabled,
   getWishlistItemQuantityEnabled,
@@ -52,7 +53,9 @@ import {
   makeGetFavoritesCountByList,
   makeGetProductRelativesOnFavorites,
   getFavoritesProducts,
+  getUseGetFavoriteIdsPipeline,
 } from '../selectors';
+import fetchFavoriteIds from '../actions/fetchFavoriteIds';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -75,7 +78,7 @@ export default function favorites(subscribe) {
     ]);
 
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(getState());
-    if (loadWishlistOnAppStartEnabled) {
+    if (loadWishlistOnAppStartEnabled && makeGetRoutePattern()(getState()) !== FAVORITES_PATH) {
       await dispatch(fetchFavoritesListsWithItems(false));
     }
   });
@@ -108,8 +111,9 @@ export default function favorites(subscribe) {
     const { favorites: { limit = 100 } = {} } = appConfig;
 
     const count = makeGetFavoritesCountByList(() => action?.listId)(state);
-
-    if (limit && count >= limit) {
+    // When the getFavorites pipeline is used to fetch favorites, the amount of items is limited
+    // since it returns full product entities. Hence adding more items needs to be prevented.
+    if (limit && count >= limit && !getUseGetFavoriteIdsPipeline(state)) {
       // Dispatch a local error only, because the request to add is prevented
       const error = new Error('Limit exceeded');
       error.code = FAVORITES_LIMIT_ERROR;
@@ -176,9 +180,15 @@ export default function favorites(subscribe) {
    * Request after N seconds since last add or remove request to make sure
    * backend did actually save it
    */
-  subscribe(refreshFavorites$, async ({ dispatch, action }) => {
+  subscribe(refreshFavorites$, async ({ dispatch, action, getState }) => {
     if (action.listId) {
-      dispatch(fetchFavorites(true, action.listId));
+      const useGetFavoriteIdsPipeline = getUseGetFavoriteIdsPipeline(getState());
+
+      if (useGetFavoriteIdsPipeline) {
+        dispatch(fetchFavoriteIds(true, action.listId));
+      } else {
+        dispatch(fetchFavorites(true, action.listId));
+      }
       return;
     }
 

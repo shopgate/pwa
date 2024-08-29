@@ -1,65 +1,22 @@
-import React, { Fragment } from 'react';
+import React, {
+  useState, useEffect, useCallback, useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
-import { i18n, showModal } from '@shopgate/engage/core';
+import { showModal } from '@shopgate/engage/core/actions';
 import {
-  Accordion, Card, ContextMenu, SurroundPortals,
+  Accordion,
+  Card,
+  ConditionalWrapper,
 } from '@shopgate/engage/components';
-import { ProductListTypeProvider } from '@shopgate/engage/product';
 import {
   makeGetFavorites,
+  getUseGetFavoriteIdsPipeline,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
-import Item from '../Item';
-
-const styles = {
-  root: css({
-    margin: '8px 8px 10px',
-  }).toString(),
-  title: css({
-    flex: 1,
-  }).toString(),
-  divider: css({
-    height: 1,
-    width: 'calc(100% + 32px)',
-    backgroundColor: 'rgb(234, 234, 234)',
-    marginLeft: -16,
-    marginRight: -16,
-    marginBottom: 16,
-  }).toString(),
-};
-
-/**
- * Favorite List Label component
- * @return {JSX}
- */
-const FavoriteListLabel = ({
-  id, title, rename, remove,
-}) => (
-  <Fragment>
-    <span className={styles.title}>
-      {title}
-    </span>
-    <SurroundPortals portalName={FAVORITES_LIST_CONTEXT_MENU} portalProps={{ id }}>
-      <ContextMenu>
-        <ContextMenu.Item onClick={rename}>
-          {i18n.text('favorites.rename_list')}
-        </ContextMenu.Item>
-        <ContextMenu.Item onClick={remove} disabled={id === 'DEFAULT'}>
-          {i18n.text('favorites.remove_list')}
-        </ContextMenu.Item>
-      </ContextMenu>
-    </SurroundPortals>
-  </Fragment>
-);
-
-FavoriteListLabel.propTypes = {
-  id: PropTypes.string.isRequired,
-  remove: PropTypes.func.isRequired,
-  rename: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-};
+import { FAVORITES_SHOW_LIMIT } from '@shopgate/engage/favorites/constants';
+import ListAccordionLabel from './ListAccordionLabel';
+import ListContent from './ListContent';
+import styles from './styles';
 
 /**
  * @param {Object} _ State
@@ -71,6 +28,7 @@ const makeMapStateToProps = (_, { id }) => {
 
   return state => ({
     items: getFavorites(state),
+    useGetFavoriteIdsPipeline: getUseGetFavoriteIdsPipeline(state),
   });
 };
 
@@ -108,53 +66,94 @@ const FavoriteList = ({
   remove,
   removeItem,
   addToCart,
-}) => (
-  <Card className={styles.root}>
-    <Accordion
-      className=""
-      openWithChevron
-      renderLabel={() =>
-        <FavoriteListLabel
-          id={id}
-          title={name}
-          rename={newName => rename(id, newName)}
-          remove={remove}
-        />
-        }
-      chevronPosition="left"
-      startOpened
+  hasMultipleFavoritesListsSupport,
+  useGetFavoriteIdsPipeline,
+}) => {
+  const [offset, setOffset] = useState(FAVORITES_SHOW_LIMIT);
+
+  const filteredItems = useMemo(() => {
+    /**
+     * The getFavoriteIds pipeline doesn't return full products, but only product ids. Product data
+     * is selected inside the ListContent component via the ProductProvider. To avoid requests with
+     * huge response data, the favlist items are splitted into chunks, so that the ProductProvider
+     * only has to request fresh data for each chunk.
+     *
+     * As long as not all products from the list are shown, a "Load More" button is presented to the
+     * user, which will add an additional chunk of product ids to the ListContent component.
+     */
+    if (useGetFavoriteIdsPipeline) {
+      return items.slice(0, offset);
+    }
+
+    // When the getFavorites pipeline is used, no special handling is necessary. "items" can passed
+    // the the ListContent component as they are.
+    return items;
+  }, [items, offset, useGetFavoriteIdsPipeline]);
+
+  const allFavoritesLoaded = useMemo(() => {
+    if (useGetFavoriteIdsPipeline) {
+      return items.length - filteredItems.length > 0;
+    }
+    /**
+     * In case of getFavorites pipeline is used, and all favorites are always loaded, "false" as
+     * return value might seem a bit weird, but the value is actually used to determine if the
+     * load more button is supposed to be shown (not needed if all favorites are already present).
+     */
+    return false;
+  }, [filteredItems.length, items.length, useGetFavoriteIdsPipeline]);
+
+  const [
+    showLoadMoreButton,
+    setShowLoadMoreButton,
+  ] = useState(allFavoritesLoaded);
+
+  const handleLoadMore = useCallback(() => {
+    setOffset(offset + FAVORITES_SHOW_LIMIT);
+  }, [offset]);
+
+  useEffect(() => {
+    setShowLoadMoreButton(allFavoritesLoaded);
+  }, [offset, allFavoritesLoaded]);
+
+  return (
+    <ConditionalWrapper
+      condition={hasMultipleFavoritesListsSupport}
+      wrapperFalsy={children => (
+        <div className={styles.rootNoFavoritesLists}>
+          {children}
+        </div>
+      )}
+      wrapper={children => (
+        <Card className={styles.root}>
+          <Accordion
+            className=""
+            renderLabel={() =>
+              <ListAccordionLabel
+                id={id}
+                title={name}
+                rename={newName => rename(id, newName)}
+                remove={remove}
+              />
+              }
+            chevronPosition="left"
+            startOpened
+          >
+            {children}
+          </Accordion>
+        </Card>
+      )}
     >
-      <div className={styles.divider} />
-      {items.length === 0 ? (
-        <span>{i18n.text('favorites.empty')}</span>
-      ) : null}
-      <ProductListTypeProvider type="favoritesList">
-        {items.filter(({ product }) => product).map(({ product, notes, quantity }, index) => (
-          <div key={product.id}>
-            <Item
-              product={product}
-              notes={notes}
-              quantity={quantity}
-              listId={id}
-              productId={product.id}
-              addToCart={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                return addToCart(product, quantity);
-              }}
-              remove={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                removeItem(product.id);
-              }}
-            />
-            {(index === items.length - 1) ? null : <div className={styles.divider} />}
-          </div>
-        ))}
-      </ProductListTypeProvider>
-    </Accordion>
-  </Card>
-);
+      <ListContent
+        listId={id}
+        items={filteredItems}
+        removeItem={removeItem}
+        addToCart={addToCart}
+        onLoadMore={handleLoadMore}
+        showLoadMoreButton={showLoadMoreButton}
+      />
+    </ConditionalWrapper>
+  );
+};
 
 FavoriteList.propTypes = {
   addToCart: PropTypes.func.isRequired,
@@ -164,6 +163,13 @@ FavoriteList.propTypes = {
   remove: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,
   rename: PropTypes.func.isRequired,
+  hasMultipleFavoritesListsSupport: PropTypes.bool,
+  useGetFavoriteIdsPipeline: PropTypes.bool,
+};
+
+FavoriteList.defaultProps = {
+  hasMultipleFavoritesListsSupport: false,
+  useGetFavoriteIdsPipeline: false,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(FavoriteList);

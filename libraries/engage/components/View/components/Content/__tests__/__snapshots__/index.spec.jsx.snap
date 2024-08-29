@@ -40,6 +40,7 @@ exports[`engage > components > view > components > content should render content
     <ConditionalWrapper
       condition={true}
       wrapper={[Function]}
+      wrapperFalsy={null}
     >
       <div>
         Page #1

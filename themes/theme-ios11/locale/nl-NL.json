@@ -181,7 +181,8 @@
       "confirm": "Selecteer varianten"
     },
     "open_list": "Open lijst.",
-    "close_list": "Sluit lijst."
+    "close_list": "Sluit lijst.",
+    "load_more_button": "Andere artikelen laden"
   },
   "filter": {
     "sort": {

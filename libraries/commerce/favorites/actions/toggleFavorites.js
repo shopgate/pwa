@@ -77,7 +77,7 @@ export const requestSync = mutable(listId => (dispatch) => {
  * @param {boolean} withRelatives When true relatives which are on list are also removed.
  * @return {Function}
  */
-export const toggleFavorite = (productId, listId, withRelatives = false) =>
+export const toggleFavorite = mutable((productId, listId, withRelatives = false) =>
   (dispatch, getState) => {
     const state = getState();
     // With quantity enabled the favorites button always adds (increases quantity)
@@ -94,7 +94,7 @@ export const toggleFavorite = (productId, listId, withRelatives = false) =>
         ? addFavorite(productId, listId)
         : removeFavorites(productId, withRelatives, listId));
     }
-  };
+  });
 
 /**
  * Updatest a product in the favorite list (debounced and buffered).
