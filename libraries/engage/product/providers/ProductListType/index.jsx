@@ -39,7 +39,7 @@ function ProductListTypeProvider({
 ProductListTypeProvider.propTypes = {
   type: PropTypes.string.isRequired,
   children: PropTypes.node,
-  meta: PropTypes.shape({}),
+  meta: PropTypes.shape(),
   subType: PropTypes.string,
 };
 

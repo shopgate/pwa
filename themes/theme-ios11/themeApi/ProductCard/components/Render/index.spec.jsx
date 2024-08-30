@@ -21,6 +21,7 @@ jest.mock('@shopgate/engage/product', () => ({
   ProductName: ({ name }) => name,
   ProductDiscountBadge: () => null,
   ProductBadges: ({ children }) => children,
+  useProductListType: jest.fn(() => ({ meta: null })),
 }));
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/category', () => ({

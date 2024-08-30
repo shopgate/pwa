@@ -68,7 +68,7 @@ ProductSlider.propTypes = {
    * and is intended as a description in which "context" the component is used.
    * @default null
    */
-  meta: PropTypes.shape({}),
+  meta: PropTypes.shape(),
   scope: PropTypes.string,
   slidesPerView: PropTypes.number,
   snap: PropTypes.bool,
