@@ -22,7 +22,6 @@ export const acceptAllCookies = () => async (dispatch) => {
   }));
 
   dispatch(hideCookieConsentModal());
-  dispatch(historyPush({ pathname: '/' }));
 };
 
 /**
@@ -49,7 +48,6 @@ export const acceptSelectedCookies = ({
   }));
 
   dispatch(hideCookieConsentModal());
-  dispatch(historyPush({ pathname: '/' }));
 };
 
 /**

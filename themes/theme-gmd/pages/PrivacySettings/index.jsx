@@ -12,28 +12,35 @@ import { getIsCookieConsentHandled } from '@shopgate/engage/tracking/selectors/c
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  showTitle: getIsCookieConsentHandled(state),
+  cookieConsentHandled: getIsCookieConsentHandled(state),
 });
 
 /**
  * The CookieConsentPage component.
  * @param {Object} props The component props
- * @param {boolean} props.showTitle Whether to show the page title
+ * @param {boolean} props.cookieConsentHandled Whether to show the page title
  * @returns {JSX.Element}
  */
-const PrivacySettingsPage = ({ showTitle }) => (
+const PrivacySettingsPage = ({ cookieConsentHandled }) => (
   <View noContentPortal aria-hidden={false}>
-    <BackBar title={showTitle ? 'navigation.privacySettings' : ''} />
+    <BackBar
+      {...cookieConsentHandled ? {
+        title: 'navigation.privacySettings',
+      } : {
+        // Hide the search icon when cookie consent is not handled yet
+        right: (<></>),
+      }}
+    />
     <PrivacySettings />
   </View>
 );
 
 PrivacySettingsPage.propTypes = {
-  showTitle: PropTypes.bool,
+  cookieConsentHandled: PropTypes.bool,
 };
 
 PrivacySettingsPage.defaultProps = {
-  showTitle: false,
+  cookieConsentHandled: false,
 };
 
 export default connect(mapStateToProps)(PrivacySettingsPage);
