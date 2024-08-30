@@ -43,6 +43,7 @@ function PageContent({
       <BarComponent
         center={center}
         title={configs.title || ''}
+        {...!isCookieConsentHandled && { right: (<></>) }}
       />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
