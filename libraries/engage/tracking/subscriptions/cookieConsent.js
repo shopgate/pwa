@@ -2,6 +2,8 @@ import { appDidStart$ } from '@shopgate/engage/core/streams';
 import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
 import {
   grantAppTrackingTransparencyPermission,
+  historyReset,
+  historyPop,
 } from '@shopgate/engage/core/actions';
 import {
   handleCookieConsent,
@@ -13,7 +15,11 @@ import {
   getAreComfortCookiesAccepted,
   getAreStatisticsCookiesAccepted,
 } from '../selectors/cookieConsent';
-import { cookieConsentModalShouldToggle$ } from '../streams/cookieConsent';
+import {
+  cookieConsentInitializedByUserInternal$,
+  privacySettingsConfirmedWithoutChangeInternal$,
+  cookieConsentModalShouldToggleInternal$,
+} from '../streams/cookieConsent';
 
 /**
  * determine whether to show the cookie consent modal at app start
@@ -48,7 +54,18 @@ export default function cookieConsent(subscribe) {
     }
   });
 
-  subscribe(cookieConsentModalShouldToggle$, ({ dispatch, showConsentModal }) => {
+  subscribe(cookieConsentInitializedByUserInternal$, ({ dispatch }) => {
+    // Reset history after consent initialization to guarantee an empty history
+    dispatch(historyReset());
+  });
+
+  subscribe(privacySettingsConfirmedWithoutChangeInternal$, ({ dispatch }) => {
+    // Remove privacy settings route from route stack when any button was clicked but no settings
+    // where changed. When something was changed, app will reset via the "analytics" streams.
+    dispatch(historyPop());
+  });
+
+  subscribe(cookieConsentModalShouldToggleInternal$, ({ dispatch, showConsentModal }) => {
     dispatch(showConsentModal ? showCookieConsentModal() : hideCookieConsentModal());
   });
 }

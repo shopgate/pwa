@@ -15,12 +15,14 @@ import {
 import {
   cookieConsentSet$,
   cookieConsentInitialized$,
+  cookieConsentInitializedByUserInternal$,
+  privacySettingsConfirmedWithoutChangeInternal$,
   cookieConsentUpdated$,
   comfortCookiesAccepted$,
   statisticsCookiesAccepted$,
   comfortCookiesDeclined$,
   statisticsCookiesDeclined$,
-  cookieConsentModalShouldToggle$,
+  cookieConsentModalShouldToggleInternal$,
 } from './cookieConsent';
 
 const MOCKED_PRIVACY_POLICY_PAGE = '/privacy/policy';
@@ -133,6 +135,94 @@ describe('Cookie Consent Streams', () => {
       }));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('cookieConsentInitializedByUserInternal$', () => {
+    beforeEach(() => {
+      subscription = cookieConsentInitializedByUserInternal$.subscribe(subscriber);
+    });
+
+    it('should emit when cookie consent was initially handled by user', () => {
+      dispatch(updateCookieConsent({}));
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      dispatch(updateCookieConsent({}));
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      dispatch(handleCookieConsent({}));
+      expect(subscriber).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not emit when cookie consent was initially handled by system', () => {
+      dispatch(handleCookieConsent({}));
+      expect(subscriber).not.toBeCalled();
+      dispatch(handleCookieConsent({}));
+      expect(subscriber).not.toBeCalled();
+      dispatch(updateCookieConsent({}));
+      expect(subscriber).not.toBeCalled();
+    });
+  });
+
+  describe('privacySettingsConfirmedWithoutChangeInternal$', () => {
+    beforeEach(() => {
+      subscription = privacySettingsConfirmedWithoutChangeInternal$.subscribe(subscriber);
+    });
+
+    it('should only emit when privacy settings where confirmed without change', () => {
+      // Initial call - invoked by consent modal or when app started and consent was already given
+      dispatch(updateCookieConsent({
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: false,
+      }));
+
+      expect(subscriber).not.toBeCalled();
+
+      // Next call -> settings changed
+      dispatch(updateCookieConsent({
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: true,
+      }));
+
+      expect(subscriber).not.toBeCalled();
+
+      // Next call -> settings changed
+      dispatch(updateCookieConsent({
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
+      }));
+
+      expect(subscriber).not.toBeCalled();
+
+      // Next call -> nothing changed - should emit
+      dispatch(updateCookieConsent({
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
+
+      // Next call -> nothing changed - should emit
+      dispatch(updateCookieConsent({
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(2);
+
+      // Next call -> settings changed
+      dispatch(updateCookieConsent({
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: true,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(2);
+
+      // Next call ->  nothing changed - should emit
+      dispatch(updateCookieConsent({
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: true,
+      }));
+
+      expect(subscriber).toHaveBeenCalledTimes(3);
     });
   });
 
@@ -400,9 +490,9 @@ describe('Cookie Consent Streams', () => {
     });
   });
 
-  describe('cookieConsentModalShouldToggle$', () => {
+  describe('cookieConsentModalShouldToggleInternal$', () => {
     beforeEach(() => {
-      subscription = cookieConsentModalShouldToggle$.subscribe(subscriber);
+      subscription = cookieConsentModalShouldToggleInternal$.subscribe(subscriber);
     });
 
     /**

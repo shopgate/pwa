@@ -3,6 +3,7 @@ import {
 } from '@shopgate/engage/core/action-creators';
 import {
   appSupportsCookieConsent,
+  hasSGJavaScriptBridge,
 } from '@shopgate/engage/core/helpers';
 import {
   analyticsSetConsent,
@@ -23,8 +24,9 @@ export default function analytics(subscribe) {
    * @param {Object} params.action Cookie consent update action
    */
   const sendConsentToApp = async ({ action }) => {
-    if (!appSupportsCookieConsent()) {
-      // Not worth to dispatch commands to an app that doesn't support them
+    if (!appSupportsCookieConsent() || !hasSGJavaScriptBridge()) {
+      // Not worth to dispatch commands to an app that doesn't support them.
+      // Within browser do not block process while waiting for an app response that will never come.
       return;
     }
 
