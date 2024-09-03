@@ -20,11 +20,13 @@ export {};
  * @property {ProductListTypeContextSubType} [subType=null] Optional sub type of the active
  * ProductListTypeContext. Depending on its usage it can make a statement about in which context
  * the product list is used e.g. "widgets".
+ * @property {Object} [meta=null] Optional meta information that can be used by child components
  */
 export {};
 
 export default React.createContext({
   type: null,
   subType: null,
+  meta: null,
 });
 

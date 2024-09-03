@@ -2,6 +2,7 @@
 
 exports[`<ProductSlider /> should match snapshot 1`] = `
 <ProductListTypeProvider
+  meta={null}
   subType={null}
   type="productSlider"
 >

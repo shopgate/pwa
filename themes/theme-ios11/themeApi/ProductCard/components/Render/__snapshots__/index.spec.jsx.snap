@@ -43,6 +43,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
   >
     <Connect(Link)
       href="/some/url"
+      state={Object {}}
       tagName="a"
     >
       <Link
@@ -589,6 +590,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
   >
     <Connect(Link)
       href="/some/url"
+      state={Object {}}
       tagName="a"
     >
       <Link
@@ -860,6 +862,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
   >
     <Connect(Link)
       href="/some/url"
+      state={Object {}}
       tagName="a"
     >
       <Link
@@ -1478,6 +1481,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
   >
     <Connect(Link)
       href="/some/url"
+      state={Object {}}
       tagName="a"
     >
       <Link
@@ -2096,6 +2100,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
   >
     <Connect(Link)
       href="/some/url"
+      state={Object {}}
       tagName="a"
     >
       <Link
@@ -2699,6 +2704,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
   >
     <Connect(Link)
       href="/some/url"
+      state={Object {}}
       tagName="a"
     >
       <Link
@@ -3170,6 +3176,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
   >
     <Connect(Link)
       href="/some/url"
+      state={Object {}}
       tagName="a"
     >
       <Link
