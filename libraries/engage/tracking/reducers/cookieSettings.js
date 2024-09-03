@@ -1,9 +1,12 @@
+import { appConfig } from '@shopgate/engage';
 import { UPDATE_COOKIE_CONSENT } from '../constants';
 
 const defaultState = {
   comfortCookiesAccepted: null,
   statisticsCookiesAccepted: null,
 };
+
+const { cookieConsent: { showComfortCookiesToggle } = {} } = appConfig;
 
 /**
  * Stores all states of the cookie settings.
@@ -16,7 +19,9 @@ const cookieSettingsReducer = (state = defaultState, action) => {
     case UPDATE_COOKIE_CONSENT: {
       return {
         ...state,
-        comfortCookiesAccepted: action.comfortCookiesAccepted,
+        comfortCookiesAccepted: showComfortCookiesToggle === true
+          ? action.comfortCookiesAccepted
+          : true,
         statisticsCookiesAccepted: action.statisticsCookiesAccepted,
       };
     }
