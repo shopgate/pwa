@@ -20,6 +20,28 @@ const cookieConsentSetInternal$ = main$.filter(({ action }) => (
 export const cookieConsentInitialized$ = cookieConsentSetInternal$.first();
 
 /**
+ * Gets triggered when the cookie consent was initialized / handled by user. In that case
+ * the UPDATE_COOKIE_CONSENT action is dispatched. When handled automatically the
+ * COOKIE_CONSENT_HANDLED action is dispatched.
+ */
+export const cookieConsentInitializedByUserInternal$ = cookieConsentInitialized$
+  .filter(({ action }) => action.type === UPDATE_COOKIE_CONSENT);
+
+/**
+ * Gets triggered when the user interacted with the buttons on the privacy settings page,
+ * but no settings was changed. Needed to navigate back to the previous page.
+ * When a setting was changed, the "cookieConsentUpdated$" stream triggers which will cause
+ * an app reload.
+ * @type {Observable}
+ */
+export const privacySettingsConfirmedWithoutChangeInternal$ = cookieConsentSetInternal$
+  .pairwise()
+  .filter(([{ action: actionPrev }, { action: actionCurrent }]) =>
+    actionPrev.comfortCookiesAccepted === actionCurrent.comfortCookiesAccepted
+    && actionPrev.statisticsCookiesAccepted === actionCurrent.statisticsCookiesAccepted)
+  .switchMap(([, latest]) => Observable.of(latest));
+
+/**
  * Gets triggered when cookie consent settings changed after initialization
  * @type {Observable}
  */
