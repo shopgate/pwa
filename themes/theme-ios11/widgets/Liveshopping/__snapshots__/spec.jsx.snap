@@ -11,6 +11,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
   }
 >
   <ProductListTypeProvider
+    meta={null}
     subType="widgets"
     type="liveshopping"
   >
@@ -72,6 +73,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
   data-test-id="liveShoppingWidget"
 >
   <ProductListTypeProvider
+    meta={null}
     subType="widgets"
     type="liveshopping"
   >
