@@ -8,6 +8,7 @@ import {
   OrderQuantityHint,
   ProductImage,
   ProductBadges,
+  useProductListType,
 } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
@@ -44,9 +45,16 @@ function ProductCardRender({
   } = product;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
+  const { meta } = useProductListType();
 
   return (
-    <Link tagName="a" href={url}>
+    <Link
+      tagName="a"
+      href={url}
+      state={{
+        ...meta,
+      }}
+    >
 
       {isBeta() && featuredMedia
         ? <FeaturedMedia

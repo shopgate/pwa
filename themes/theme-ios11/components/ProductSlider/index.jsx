@@ -20,6 +20,7 @@ function ProductSlider(props) {
     productIds,
     snap,
     scope,
+    meta,
   } = props;
 
   const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
@@ -30,7 +31,7 @@ function ProductSlider(props) {
       {({ ProductCard }) => {
         const Item = props.item || ProductCard;
         return (
-          <ProductListTypeProvider type="productSlider" subType={scope}>
+          <ProductListTypeProvider type="productSlider" subType={scope} meta={meta}>
             <Swiper
               autoPlay={autoplay}
               className={className}
@@ -67,6 +68,7 @@ ProductSlider.propTypes = {
    * and is intended as a description in which "context" the component is used.
    * @default null
    */
+  meta: PropTypes.shape(),
   scope: PropTypes.string,
   slidesPerView: PropTypes.number,
   snap: PropTypes.bool,
@@ -80,6 +82,7 @@ ProductSlider.defaultProps = {
   slidesPerView: null,
   snap: false,
   scope: null,
+  meta: null,
 };
 
 export default ProductSlider;
