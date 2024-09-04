@@ -24,6 +24,7 @@ const consentContainer = css({
   width: '100%',
   padding: 16,
   fontSize: '0.9rem',
+  lineHeight: '1.2rem',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
