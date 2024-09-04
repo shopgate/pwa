@@ -13,9 +13,11 @@ class HtmlSanitizer extends Component {
     navigate: PropTypes.func.isRequired,
     children: PropTypes.string,
     className: PropTypes.string,
+    comfortCookiesAccepted: PropTypes.bool,
     decode: PropTypes.bool,
     processStyles: PropTypes.bool,
     settings: PropTypes.shape(),
+    statisticsCookiesAccepted: PropTypes.bool,
     wrapper: PropTypes.func,
   };
 
@@ -26,6 +28,9 @@ class HtmlSanitizer extends Component {
     processStyles: false,
     settings: {},
     wrapper: EmbeddedMedia,
+    comfortCookiesAccepted: false,
+    statisticsCookiesAccepted: false,
+
   };
 
   /**
@@ -105,7 +110,11 @@ class HtmlSanitizer extends Component {
         this.props.children,
         this.props.decode,
         this.props.settings,
-        this.props.processStyles
+        this.props.processStyles,
+        {
+          comfortCookiesAccepted: this.props.comfortCookiesAccepted,
+          statisticsCookiesAccepted: this.props.statisticsCookiesAccepted,
+        }
       ),
     };
 

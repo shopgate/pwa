@@ -1,5 +1,7 @@
 import MediaProvider from './MediaProvider';
 
+/* eslint-disable class-methods-use-this */
+
 const scriptUrl = 'https://player.vimeo.com/api/player.js';
 /**
  * The Vimeo media provider class.
@@ -14,6 +16,15 @@ class VimeoMediaProvider extends MediaProvider {
     this.isPending = true;
     this.remoteScriptUrl = scriptUrl;
     this.deferred = [];
+  }
+
+  /**
+   * Retrieves a list of media containers for Vimeo.
+   * @param {ParentNode} container A DOM container that may contain Vimeo iframes.
+   * @returns {NodeListOf<Element>}
+   */
+  getMediaContainers(container) {
+    return container.querySelectorAll('iframe[src*="vimeo.com"]');
   }
 
   /**
@@ -52,7 +63,7 @@ class VimeoMediaProvider extends MediaProvider {
       return this;
     }
 
-    const iframes = container.querySelectorAll('iframe[src*="vimeo.com"]');
+    const iframes = this.getMediaContainers(container);
 
     if (!iframes.length) {
       return this;
@@ -87,3 +98,5 @@ class VimeoMediaProvider extends MediaProvider {
 }
 
 export default VimeoMediaProvider;
+
+/* eslint-enable class-methods-use-this */

@@ -1,5 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import CryptoJs from 'crypto-js';
+import { embeddedMedia } from '../../collections';
 import {
   getExternalScripts,
   getInlineScripts,
@@ -16,17 +17,31 @@ import decodeHTML from './decodeHTML';
  * @param {boolean} decode Whether the html must be decoded.
  * @param {Object} settings The settings are used to create a unique ID.
  * @param {boolean} [processStyles=false] When true, found styles are also added to the DOM.
+ * @param {Object} [cookieConsentSettings] Additional settings related to cookie consent.
+ * @param {boolean} [cookieConsentSettings.comfortCookiesAccepted] Whether comfort cookies
+ * are accepted.
+ * @param {boolean} [cookieConsentSettings.statisticsCookiesAccepted] Whether statistics cookies
+ * are accepted.
  * @returns {string} The HTML without any script tags.
  */
-const parseHTML = (html, decode, settings, processStyles = false) => {
+const parseHTML = (html, decode, settings, processStyles = false, cookieConsentSettings = {}) => {
   const id = CryptoJs.MD5(JSON.stringify(settings)).toString();
   const container = getDOMContainer(`html-sanitizer-${id}`);
+
+  const cookieConsent = {
+    comfortCookiesAccepted: false,
+    statisticsCookiesAccepted: false,
+    ...cookieConsentSettings,
+  };
 
   try {
     const parser = new DOMParser();
     const unparsedHTML = decode ? decodeHTML(html) : html;
     // Parse the html string to a DOM object.
     const dom = parser.parseFromString(`<body>${unparsedHTML}</body>`, 'text/html');
+
+    embeddedMedia.handleCookieConsent(dom, cookieConsent);
+
     // How many onloads have been processed.
     let onloads = 0;
 
