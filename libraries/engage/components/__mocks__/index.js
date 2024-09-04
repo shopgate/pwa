@@ -82,6 +82,7 @@ export const Price = () => null;
 export const PriceStriked = () => null;
 export const PriceInfo = () => null;
 export const RangeSlider = () => null;
+export const RatingStars = () => null;
 export const Availability = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
