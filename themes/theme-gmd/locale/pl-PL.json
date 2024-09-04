@@ -341,5 +341,11 @@
     "statistics": "Te dane pozwalają nam gromadzić więcej statystyk, aby ulepszać naszą aplikację i wyświetlać Panu/Pani bardziej trafne reklamy.",
     "required": "Dane niezbędne do uruchomienia aplikacji.",
     "privacy": "Aby uzyskać więcej informacji, zapoznaj się z naszą {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Aby wyświetlić osadzone filmy z zewnętrznych witryn, należy zezwolić na korzystanie z plików cookie ułatwiających korzystanie z witryny.",
+      "link": "Kliknij tutaj, aby zezwolić na pliki cookie i obejrzeć film"
+    }
   }
 }

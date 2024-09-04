@@ -341,5 +341,11 @@
     "statistics": "Ezek a statisztikák segítenek nekünk az alkalmazás fejlesztésében és relevánsabb hirdetések bemutatásában.",
     "required": "Az alkalmazás működéséhez szükséges adatok.",
     "privacy": "További információkért kérjük, olvassa el {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Az ágyazott videók megtekintéséhez külső webhelyekről engedélyezni kell a kényelmi sütiket.",
+      "link": "Kattintson ide a kényelmi sütik engedélyezéséhez és a videó megtekintéséhez"
+    }
   }
 }

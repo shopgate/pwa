@@ -336,5 +336,11 @@
     "statistics": "Estos datos nos permiten recopilar más estadísticas para mejorar nuestra aplicación y mostrarle anuncios más relevantes.",
     "required": "Datos que son necesarios para ejecutar la aplicación.",
     "privacy": "Para obtener más información, consulte nuestra {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Es necesario permitir las cookies de comodidad para ver videos incrustados de sitios web externos.",
+      "link": "Haga clic aquí para permitir las cookies de comodidad y ver el video"
+    }
   }
 }

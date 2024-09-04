@@ -341,5 +341,11 @@
     "statistics": "Nämä tilastot auttavat meitä parantamaan sovellustamme ja näyttämään osuvampia mainoksia.",
     "required": "Sovelluksen toiminnan kannalta välttämättömät tiedot.",
     "privacy": "Lisätietoja löydät {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Upotettujen videoiden katsomiseen ulkoisilta verkkosivuilta tulee sallia mukavuusevästeet.",
+      "link": "Napsauttamalla tästä voit sallia mukavuusevästeet ja katsoa videon"
+    }
   }
 }

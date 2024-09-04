@@ -23,20 +23,20 @@
     "back_in_stock": "Notifications"
   },
   "back_in_stock": {
-    "list_states" : {
-      "active" : "Notifications actives",
-      "past" : "Notifications passées"
+    "list_states": {
+      "active": "Notifications actives",
+      "past": "Notifications passées"
     },
-    "empty_list_reminder" : "Vous n'avez pas de notifications configurées",
-    "get_notified" : "Me notifier des nouveaux stocks",
-    "we_will_remind_you" : "Nous vous avertirons lorsque le produit sera à nouveau en stock",
-    "add_back_in_stock_success_modal" : {
-      "title" : "Notification de retour en stock ajoutée !",
-      "message" : "Nous vous enverrons une notification push lorsque le produit sera de nouveau en stock. Vous pouvez gérer vos notifications dans le menu."
+    "empty_list_reminder": "Vous n'avez pas de notifications configurées",
+    "get_notified": "Me notifier des nouveaux stocks",
+    "we_will_remind_you": "Nous vous avertirons lorsque le produit sera à nouveau en stock",
+    "add_back_in_stock_success_modal": {
+      "title": "Notification de retour en stock ajoutée !",
+      "message": "Nous vous enverrons une notification push lorsque le produit sera de nouveau en stock. Vous pouvez gérer vos notifications dans le menu."
     },
-    "rationale" : {
-      "message" : "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock",
-      "confirm" : "Allow push notifications"
+    "rationale": {
+      "message": "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock",
+      "confirm": "Allow push notifications"
     }
   },
   "favorites": {
@@ -336,5 +336,11 @@
     "statistics": "Ces données nous permettent de collecter plus de statistiques pour améliorer notre application et de vous montrer des publicités plus pertinentes.",
     "required": "Données nécessaires au fonctionnement de l'application.",
     "privacy": "Pour plus d'informations, veuillez consulter notre {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Les cookies de confort doivent être autorisés pour afficher les vidéos intégrées provenant de sites web externes.",
+      "link": "Cliquez ici pour autoriser les cookies de confort et afficher la vidéo"
+    }
   }
 }

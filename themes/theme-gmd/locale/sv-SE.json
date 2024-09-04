@@ -341,5 +341,11 @@
     "statistics": "Dessa statistik hjälper oss att förbättra vår app och visa mer relevanta annonser.",
     "required": "Data som är nödvändiga för appens drift.",
     "privacy": "För mer information, se vår {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Komfortkakor måste tillåtas för att visa inbäddade videor från externa webbplatser.",
+      "link": "Klicka här för att tillåta komfortkakor och visa videon"
+    }
   }
 }

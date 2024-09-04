@@ -341,5 +341,11 @@
     "statistics": "Tyto statistiky nám pomáhají zlepšovat naši aplikaci a zobrazovat relevantnější reklamy.",
     "required": "Data nezbytná pro provoz aplikace.",
     "privacy": "Další informace naleznete v naší {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Pro zobrazení vložených videí z externích webových stránek je nutné povolit komfortní cookies.",
+      "link": "Klikněte zde pro povolení komfortních cookies a zobrazení videa"
+    }
   }
 }
