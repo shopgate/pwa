@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import {
-  FeaturedMedia,
   getProductImageSettings,
+} from '@shopgate/engage/product/helpers';
+import { useProductListType } from '@shopgate/engage/product/hooks';
+import {
   MapPriceHint,
   OrderQuantityHint,
   ProductImage,
   ProductBadges,
-} from '@shopgate/engage/product';
-import Link from '@shopgate/pwa-common/components/Link';
-import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
+  FeaturedMedia,
+} from '@shopgate/engage/product/components';
+import { Link, RatingStars } from '@shopgate/engage/components';
 import Badge from '../Badge';
 import Price from '../Price';
 import Title from '../Title';
@@ -45,6 +47,7 @@ function ProductCardRender({
   } = product;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
+  const { meta } = useProductListType();
 
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
 
@@ -60,7 +63,13 @@ function ProductCardRender({
     return false;
   }, [hideRating, rating, showEmptyRatingStars]);
   return (
-    <Link tagName="a" href={url}>
+    <Link
+      tagName="a"
+      href={url}
+      state={{
+        ...meta,
+      }}
+    >
 
       {isBeta() && featuredMedia
         ? <FeaturedMedia
