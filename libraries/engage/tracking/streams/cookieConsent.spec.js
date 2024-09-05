@@ -17,6 +17,15 @@ import {
   statisticsCookiesDeclined$,
 } from './cookieConsent';
 
+jest.mock('@shopgate/engage', () => ({
+  appConfig: {
+    cookieConsent: {
+      showComfortCookiesToggle: true,
+      isCookieConsentActivated: true,
+    },
+  },
+}));
+
 describe('Cookie Consent Streams', () => {
   let subscriber;
   let subscription;
