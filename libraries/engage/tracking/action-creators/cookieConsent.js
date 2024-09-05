@@ -1,3 +1,4 @@
+import { appConfig } from '@shopgate/engage';
 import {
   UPDATE_COOKIE_CONSENT,
   COOKIE_CONSENT_HANDLED,
@@ -21,6 +22,8 @@ export const hideCookieConsentModal = () => ({
   type: HIDE_COOKIE_CONSENT_MODAL,
 });
 
+const { cookieConsent: { showComfortCookiesToggle } = {} } = appConfig;
+
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
  * @param {Object} params Action params
@@ -35,7 +38,9 @@ export const updateCookieConsent = ({
   statisticsCookiesAccepted = false,
 }) => ({
   type: UPDATE_COOKIE_CONSENT,
-  comfortCookiesAccepted,
+  comfortCookiesAccepted: showComfortCookiesToggle === true
+    ? comfortCookiesAccepted
+    : true,
   statisticsCookiesAccepted,
 });
 
