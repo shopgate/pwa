@@ -28,15 +28,6 @@ class VimeoMediaProvider extends MediaProvider {
   }
 
   /**
-   * Retrieves a list of media containers related scripts for Vimeo.
-   * @param {ParentNode} container A DOM container that may contain Vimeo iframes.
-   * @returns {NodeListOf<Element>}
-   */
-  getMediaScripts(container) {
-    return container.querySelectorAll('script[src*="vimeo.com"]');
-  }
-
-  /**
    * @inheritDoc
    */
   onScriptLoaded() {
@@ -108,7 +99,8 @@ class VimeoMediaProvider extends MediaProvider {
   /**
    * Optimizes video container to make it responsive.
    * @param {Element} container A DOM container.
-   * @returns {MediaProvider}
+   * @override
+   * @returns {VimeoMediaProvider}
    */
   responsify(container) {
     /**
@@ -140,6 +132,27 @@ class VimeoMediaProvider extends MediaProvider {
       super.responsify(container);
     }
 
+    return this;
+  }
+
+  /**
+   * Searches for embedded media and replaces it with a placeholder element when comfort cookie
+   * consent is not accepted.
+   * @param {ParentNode} container A DOM container.
+   * @param {Object} [cookieConsentSettings] Additional settings related to cookie consent.
+   * @param {boolean} [cookieConsentSettings.comfortCookiesAccepted] Whether comfort cookies
+   * are accepted.
+   * @param {boolean} [cookieConsentSettings.statisticsCookiesAccepted] Whether statistics cookies.
+   * @override
+   * @returns {VimeoMediaProvider}
+   */
+  handleCookieConsent(container, cookieConsentSettings) {
+    // Remove Vimeo player scripts from container, since the MediaProvider has custom logic for it
+    container.querySelectorAll('script[src*="vimeo.com"]').forEach((entry) => {
+      entry.remove();
+    });
+
+    super.handleCookieConsent(container, cookieConsentSettings);
     return this;
   }
 }

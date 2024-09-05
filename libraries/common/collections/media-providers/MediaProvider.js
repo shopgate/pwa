@@ -55,15 +55,6 @@ class MediaProvider {
   }
 
   /**
-   * Callback to retrieve a list of media container related scripts
-   * @callback
-   * @abstract
-   */
-  getMediaScripts() {
-    logger.error('MediaProvider.getMediaScripts() needs to be implemented within an inheriting class');
-  }
-
-  /**
    * Optimizes video container to make it responsive.
    * @param {Element} container A DOM container.
    * @returns {MediaProvider}
@@ -100,26 +91,13 @@ class MediaProvider {
    * @param {boolean} [cookieConsentSettings.comfortCookiesAccepted] Whether comfort cookies
    * are accepted.
    * @param {boolean} [cookieConsentSettings.statisticsCookiesAccepted] Whether statistics cookies.
-   * @returns {YouTubeMediaProvider}
+   * @returns {MediaProvider}
    */
   handleCookieConsent(container, cookieConsentSettings = {}) {
     const iframes = this.getMediaContainers(container);
 
     if (!iframes.length || cookieConsentSettings.comfortCookiesAccepted !== false) {
       return this;
-    }
-
-    const scripts = this.getMediaScripts(container);
-
-    try {
-      if (Symbol.iterator in Object(scripts)) {
-        // Remove potential scripts from container
-        scripts.forEach((entry) => {
-          entry.remove();
-        });
-      }
-    } catch {
-      // Nothing to do here
     }
 
     iframes.forEach((iframe) => {

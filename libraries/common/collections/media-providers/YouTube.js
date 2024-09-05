@@ -18,14 +18,6 @@ class YouTubeMediaProvider extends MediaProvider {
   }
 
   /**
-   * Retrieves a list of media containers related scripts for YouTube.
-   * @returns {NodeListOf<Element>}
-   */
-  getMediaScripts() {
-    return [];
-  }
-
-  /**
    * Add a DOM container with embedded videos.
    * @override
    * @param {ParentNode} container A DOM container.
