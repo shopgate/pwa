@@ -129,7 +129,7 @@ class VimeoMediaProvider extends MediaProvider {
 
     if (!hasResponsiveContainer) {
       // Invoke default responsify logic when no container is present
-      super.responsify(container);
+      return super.responsify(container);
     }
 
     return this;
@@ -152,8 +152,7 @@ class VimeoMediaProvider extends MediaProvider {
       entry.remove();
     });
 
-    super.handleCookieConsent(container, cookieConsentSettings);
-    return this;
+    return super.handleCookieConsent(container, cookieConsentSettings);
   }
 }
 

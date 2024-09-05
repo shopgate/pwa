@@ -46,6 +46,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
         >
           <HtmlSanitizer
             className="css-7v4dr8"
+            comfortCookiesAccepted={false}
             decode={true}
             navigate={[Function]}
             processStyles={true}
@@ -55,9 +56,17 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
                 "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
               }
             }
+            statisticsCookiesAccepted={false}
             wrapper={[Function]}
           >
-            <EmbeddedMedia>
+            <EmbeddedMedia
+              cookieConsentSettings={
+                Object {
+                  "comfortCookiesAccepted": false,
+                  "statisticsCookiesAccepted": false,
+                }
+              }
+            >
               <div
                 className="css-7v4dr8 common__html-sanitizer"
                 dangerouslySetInnerHTML={
@@ -125,6 +134,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
         >
           <HtmlSanitizer
             className="css-7v4dr8"
+            comfortCookiesAccepted={false}
             decode={true}
             navigate={[Function]}
             processStyles={true}
@@ -134,9 +144,17 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
                 "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
               }
             }
+            statisticsCookiesAccepted={false}
             wrapper={[Function]}
           >
-            <EmbeddedMedia>
+            <EmbeddedMedia
+              cookieConsentSettings={
+                Object {
+                  "comfortCookiesAccepted": false,
+                  "statisticsCookiesAccepted": false,
+                }
+              }
+            >
               <div
                 className="css-7v4dr8 common__html-sanitizer"
                 dangerouslySetInnerHTML={
