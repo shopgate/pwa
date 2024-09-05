@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.23.4](https://github.com/shopgate/pwa/compare/v6.23.3...v6.23.4) (2024-09-05)
+
+#### :bug: Bug Fix
+* [#1265](https://github.com/shopgate/pwa/pull/1265) Fixed some cookie consents bugs with UI and navigation ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.23.3](https://github.com/shopgate/pwa/compare/v6.23.1...v6.23.3) (2024-08-22)
 
 #### :bug: Bug Fix
