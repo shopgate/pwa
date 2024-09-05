@@ -100,7 +100,7 @@ class MediaProvider {
     }
 
     iframes.forEach((iframe) => {
-      // Add responsive container around YouTube iframes
+      // Add responsive container around iframes
       this.responsify(iframe);
       // Select the container and clear its content
       const responsiveContainer = iframe.parentNode;
@@ -120,21 +120,28 @@ class MediaProvider {
   injectCookieConsentMessage(container) {
     // Create the wrapper for the message element
     const messageWrapper = document.createElement('div');
-    messageWrapper.classList.add(styles.consentContainer);
+    messageWrapper.classList.add(
+      styles.consentContainer,
+      'common__media-provider_cookie-consent-message-container'
+    );
 
     // Add an SVG icon (implemented this way, since there where issues with document.createElement)
     messageWrapper.innerHTML = consentMessageIcon;
 
     // Create the main message and add it to the wrapper
     const message = document.createElement('span');
-    message.innerText = i18n.text('htmlSanitizer.videoCookieConsent.message');
+    message.classList.add('common__media-provider_cookie-consent-message-container_message');
+    message.innerHTML = i18n.text('htmlSanitizer.videoCookieConsent.message');
     messageWrapper.appendChild(message);
 
     // Create the link and add it to the wrapper
     const link = document.createElement('a');
-    link.classList.add(styles.consentLink);
+    link.classList.add(
+      styles.consentLink,
+      'common__media-provider_cookie-consent-message-container_link'
+    );
     link.href = PRIVACY_SETTINGS_PATTERN;
-    link.innerText = i18n.text('htmlSanitizer.videoCookieConsent.link');
+    link.innerHTML = i18n.text('htmlSanitizer.videoCookieConsent.link');
     messageWrapper.appendChild(link);
 
     // Add the wrapper to the container

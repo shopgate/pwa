@@ -44,6 +44,15 @@ describe('YouTube media provider', () => {
     });
   });
 
+  describe('.getMediaContainers()', () => {
+    it('should return all YouTube iframes', () => {
+      const container = createContainer([videos[0], videos[3], 'random/url']);
+      const result = instance.getMediaContainers(container);
+      expect(result).toMatchSnapshot();
+      expect(result).toHaveLength(2);
+    });
+  });
+
   describe('.add()', () => {
     it('should add multiple containers as expected', () => {
       const containerOne = createContainer([videos[0]]);

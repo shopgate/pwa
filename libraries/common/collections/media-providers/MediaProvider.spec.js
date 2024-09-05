@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { logger } from '@shopgate/engage/core/helpers';
+import { logger, i18n } from '@shopgate/engage/core/helpers';
 import MediaProvider from './MediaProvider';
 import styles from './style';
 
@@ -32,6 +32,14 @@ describe('MediaProvider', () => {
       const instance = new MediaProvider();
       expect(instance.containers).toBeInstanceOf(Map);
       expect(Array.from(instance.containers)).toHaveLength(0);
+    });
+  });
+
+  describe('.getMediaContainers()', () => {
+    it('should log an error when it is not overwritten', () => {
+      const instance = new MediaProvider();
+      instance.getMediaContainers();
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -99,6 +107,69 @@ describe('MediaProvider', () => {
       expect(container.getAttribute('height')).toBeNull();
       expect(container.getAttribute('width')).toBeNull();
       expect(container.closest('div').className).toBe(styles.responsiveContainer.toString());
+    });
+  });
+
+  describe('.handleCookieConsent()', () => {
+    let instance;
+    let dom;
+
+    beforeAll(() => {
+      instance = new MediaProvider();
+      instance.getMediaContainers = container => container.querySelectorAll('iframe');
+    });
+
+    beforeEach(() => {
+      dom = document.createElement('body');
+    });
+
+    it('should not modify the dom container when no media containers where found', () => {
+      dom.innerHTML = '<div></div>';
+      instance.handleCookieConsent(dom);
+
+      expect(dom).toMatchSnapshot();
+    });
+
+    it('should not modify the dom container when media containers where found and comfort cookies are accepted', () => {
+      dom.innerHTML = '<div><iframe src="some/url" /></div>';
+      instance.handleCookieConsent(dom, { comfortCookiesAccepted: true });
+
+      expect(dom).toMatchSnapshot();
+      expect(dom.querySelectorAll('iframe')[0].getAttribute('src')).toBe('some/url');
+    });
+
+    it('should replace the iframe with the cookie consent message container when comfort cookies are not accepted', () => {
+      dom.innerHTML = '<div><iframe src="some/url" /></div>';
+      instance.handleCookieConsent(dom, { comfortCookiesAccepted: false });
+
+      expect(dom).toMatchSnapshot();
+      expect(dom.querySelectorAll('iframe')).toHaveLength(0);
+      expect(dom.querySelector('.common__media-provider_cookie-consent-message-container_message').textContent).toBe(i18n.text('htmlSanitizer.videoCookieConsent.message'));
+      expect(dom.querySelector('.common__media-provider_cookie-consent-message-container_link').textContent).toBe(i18n.text('htmlSanitizer.videoCookieConsent.link'));
+    });
+  });
+
+  describe('.injectCookieConsentMessage()', () => {
+    let instance;
+    let dom;
+
+    beforeAll(() => {
+      instance = new MediaProvider();
+      instance.getMediaContainers = container => container.querySelectorAll('iframe');
+    });
+
+    beforeEach(() => {
+      dom = document.createElement('body');
+    });
+
+    it('should add the cookie consent message container', () => {
+      dom.innerHTML = '<div></div>';
+      instance.injectCookieConsentMessage(dom);
+
+      expect(dom).toMatchSnapshot();
+      expect(dom.querySelectorAll('iframe')).toHaveLength(0);
+      expect(dom.querySelector('.common__media-provider_cookie-consent-message-container_message').textContent).toBe(i18n.text('htmlSanitizer.videoCookieConsent.message'));
+      expect(dom.querySelector('.common__media-provider_cookie-consent-message-container_link').textContent).toBe(i18n.text('htmlSanitizer.videoCookieConsent.link'));
     });
   });
 });

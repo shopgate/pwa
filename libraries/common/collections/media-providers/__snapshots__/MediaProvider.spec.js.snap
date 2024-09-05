@@ -1,5 +1,148 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MediaProvider .handleCookieConsent() should not modify the dom container when media containers where found and comfort cookies are accepted 1`] = `
+<body>
+  <div>
+    <iframe
+      src="some/url"
+    >
+      &lt;/div&gt;
+    </iframe>
+  </div>
+</body>
+`;
+
+exports[`MediaProvider .handleCookieConsent() should not modify the dom container when no media containers where found 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`MediaProvider .handleCookieConsent() should replace the iframe with the cookie consent message container when comfort cookies are not accepted 1`] = `
+<body>
+  <div>
+    <div
+      class="css-1t9591k"
+    >
+      <div
+        class="css-jrb9wt common__media-provider_cookie-consent-message-container"
+      >
+        
+  
+        <svg
+          class="css-1nccr4y"
+          height="100%"
+          version="1.1"
+          viewBox="0 0 110 84"
+          width="100%"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          
+    
+          <g
+            transform="matrix(1,0,0,1,-24.6099,-41.8178)"
+          >
+            
+      
+            <path
+              d="M50.303,68.639L104.088,98.668L56.288,125.172C55.039,125.865 53.518,125.845 52.288,125.12C51.058,124.396 50.303,123.075 50.303,121.648L50.303,68.639ZM50.303,54.702L50.303,45.855C50.303,44.425 51.059,43.102 52.292,42.376C53.524,41.651 55.048,41.631 56.298,42.324C71.141,50.554 109.492,71.82 124.676,80.239C125.95,80.945 126.741,82.288 126.741,83.745C126.741,85.203 125.95,86.545 124.676,87.252L116.612,91.724L50.303,54.702Z"
+            />
+            
+      
+            <g
+              transform="matrix(0.944597,0.527391,-0.487489,0.873129,45.7069,-42.8282)"
+            >
+              
+        
+              <path
+                d="M139,89C139,87.344 137.757,86 136.227,86L26.773,86C25.243,86 24,87.344 24,89C24,90.656 25.243,92 26.773,92L136.227,92C137.757,92 139,90.656 139,89Z"
+              />
+              
+      
+            </g>
+            
+    
+          </g>
+          
+  
+        </svg>
+        <span
+          class="common__media-provider_cookie-consent-message-container_message"
+        >
+          htmlSanitizer.videoCookieConsent.message
+        </span>
+        <a
+          class="css-v9gxso common__media-provider_cookie-consent-message-container_link"
+          href="/privacy-settings"
+        >
+          htmlSanitizer.videoCookieConsent.link
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`MediaProvider .injectCookieConsentMessage() should add the cookie consent message container 1`] = `
+<body>
+  <div />
+  <div
+    class="css-jrb9wt common__media-provider_cookie-consent-message-container"
+  >
+    
+  
+    <svg
+      class="css-1nccr4y"
+      height="100%"
+      version="1.1"
+      viewBox="0 0 110 84"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      
+    
+      <g
+        transform="matrix(1,0,0,1,-24.6099,-41.8178)"
+      >
+        
+      
+        <path
+          d="M50.303,68.639L104.088,98.668L56.288,125.172C55.039,125.865 53.518,125.845 52.288,125.12C51.058,124.396 50.303,123.075 50.303,121.648L50.303,68.639ZM50.303,54.702L50.303,45.855C50.303,44.425 51.059,43.102 52.292,42.376C53.524,41.651 55.048,41.631 56.298,42.324C71.141,50.554 109.492,71.82 124.676,80.239C125.95,80.945 126.741,82.288 126.741,83.745C126.741,85.203 125.95,86.545 124.676,87.252L116.612,91.724L50.303,54.702Z"
+        />
+        
+      
+        <g
+          transform="matrix(0.944597,0.527391,-0.487489,0.873129,45.7069,-42.8282)"
+        >
+          
+        
+          <path
+            d="M139,89C139,87.344 137.757,86 136.227,86L26.773,86C25.243,86 24,87.344 24,89C24,90.656 25.243,92 26.773,92L136.227,92C137.757,92 139,90.656 139,89Z"
+          />
+          
+      
+        </g>
+        
+    
+      </g>
+      
+  
+    </svg>
+    <span
+      class="common__media-provider_cookie-consent-message-container_message"
+    >
+      htmlSanitizer.videoCookieConsent.message
+    </span>
+    <a
+      class="css-v9gxso common__media-provider_cookie-consent-message-container_link"
+      href="/privacy-settings"
+    >
+      htmlSanitizer.videoCookieConsent.link
+    </a>
+  </div>
+</body>
+`;
+
 exports[`MediaProvider .responsify() should not responsify already responsive element 1`] = `
 <body>
   <div>

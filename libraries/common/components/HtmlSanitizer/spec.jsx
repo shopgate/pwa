@@ -4,11 +4,6 @@ import { JSDOM } from 'jsdom';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import HtmlSanitizer from './index';
 
-jest.mock('@shopgate/pwa-common/collections/EmbeddedMedia', () => ({
-  add: jest.fn(),
-  remove: jest.fn(),
-  handleCookieConsent: jest.fn(),
-}));
 jest.mock('../EmbeddedMedia', () => ({ children }) => children);
 jest.mock('./connector', () => Cmp => Cmp);
 
@@ -24,8 +19,15 @@ const createWrapper = (html, props = {}) => mount((
 ));
 
 describe('<HtmlSanitizer />', () => {
+  let embeddedMediaAddSpy;
+  let embeddedMediaRemoveSpy;
+  let embeddedMediaHandleCookieConsentSpy;
+
   beforeEach(() => {
     jest.clearAllMocks();
+    embeddedMediaAddSpy = jest.spyOn(embeddedMedia, 'add');
+    embeddedMediaRemoveSpy = jest.spyOn(embeddedMedia, 'remove');
+    embeddedMediaHandleCookieConsentSpy = jest.spyOn(embeddedMedia, 'handleCookieConsent');
   });
 
   it('should render the HtmlSanitizer', () => {
@@ -46,19 +48,19 @@ describe('<HtmlSanitizer />', () => {
   it('should add and remove handlers for embedded media', () => {
     const wrapper = createWrapper('<div></div>', { decode: true });
     const ref = wrapper.instance().htmlContainer.current;
-    expect(embeddedMedia.add).toHaveBeenCalledTimes(1);
-    expect(embeddedMedia.add).toHaveBeenCalledWith(ref);
-    expect(embeddedMedia.remove).toHaveBeenCalledTimes(0);
+    expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(1);
+    expect(embeddedMediaAddSpy).toHaveBeenCalledWith(ref);
+    expect(embeddedMediaRemoveSpy).toHaveBeenCalledTimes(0);
 
     wrapper.setProps({ children: '<span></span>' });
-    expect(embeddedMedia.add).toHaveBeenCalledTimes(2);
-    expect(embeddedMedia.add).toHaveBeenCalledWith(ref);
-    expect(embeddedMedia.remove).toHaveBeenCalledTimes(0);
+    expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(2);
+    expect(embeddedMediaAddSpy).toHaveBeenCalledWith(ref);
+    expect(embeddedMediaRemoveSpy).toHaveBeenCalledTimes(0);
 
     wrapper.unmount();
-    expect(embeddedMedia.add).toHaveBeenCalledTimes(2);
-    expect(embeddedMedia.remove).toHaveBeenCalledTimes(1);
-    expect(embeddedMedia.remove).toHaveBeenCalledWith(ref);
+    expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(2);
+    expect(embeddedMediaRemoveSpy).toHaveBeenCalledTimes(1);
+    expect(embeddedMediaRemoveSpy).toHaveBeenCalledWith(ref);
   });
 
   it('strips out images with relative paths', () => {
@@ -191,6 +193,58 @@ describe('<HtmlSanitizer />', () => {
 
       expect(mockedHandleClick).toHaveBeenCalledTimes(1);
       expect(mockedHandleClick).toHaveBeenCalledWith('#I-ll-be-the-one-to-tuck-you-in-at-night', '_blank');
+    });
+  });
+
+  describe('Cookie consent handling', () => {
+    it('should invoke handleCookieConsent method of embedded media with default cookie consent settings', () => {
+      createWrapper('<div></div>', { decode: true });
+
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledTimes(1);
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledWith(expect.any(Document), {
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: false,
+      });
+    });
+
+    it('should invoke handleCookieConsent method of embedded media with accepted comfort cookies', () => {
+      createWrapper('<div></div>', {
+        decode: true,
+        comfortCookiesAccepted: true,
+      });
+
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledTimes(1);
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledWith(expect.any(Document), {
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: false,
+      });
+    });
+
+    it('should invoke handleCookieConsent method of embedded media with accepted statistics cookies', () => {
+      createWrapper('<div></div>', {
+        decode: true,
+        statisticsCookiesAccepted: true,
+      });
+
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledTimes(1);
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledWith(expect.any(Document), {
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: true,
+      });
+    });
+
+    it('should invoke handleCookieConsent method of embedded media with all cookies accepted', () => {
+      createWrapper('<div></div>', {
+        decode: true,
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: true,
+      });
+
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledTimes(1);
+      expect(embeddedMediaHandleCookieConsentSpy).toHaveBeenCalledWith(expect.any(Document), {
+        comfortCookiesAccepted: true,
+        statisticsCookiesAccepted: true,
+      });
     });
   });
 });
