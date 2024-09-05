@@ -37,7 +37,7 @@ export const getAreStatisticsCookiesAcceptedInternal = createSelector(
   settingsState => settingsState.statisticsCookiesAccepted
 );
 
-const { cookieConsent: { showComfortCookiesToggle } = {} } = appConfig;
+const { cookieConsent: { showComfortCookiesToggle, isCookieConsentActivated } = {} } = appConfig;
 
 /**
  * Determines if comfort cookies where accepted in the cookie consent process. When cookie
@@ -47,9 +47,8 @@ const { cookieConsent: { showComfortCookiesToggle } = {} } = appConfig;
 export const getAreComfortCookiesAccepted = createSelector(
   getCookieSettingsState,
   (settingsState) => {
-    if (
-      settingsState.comfortCookiesAccepted === null || showComfortCookiesToggle === false
-    ) return true;
+    if (!isCookieConsentActivated || !showComfortCookiesToggle) return true;
+    if (settingsState.comfortCookiesAccepted === null) return true;
     return settingsState.comfortCookiesAccepted;
   }
 );
@@ -62,6 +61,7 @@ export const getAreComfortCookiesAccepted = createSelector(
 export const getAreStatisticsCookiesAccepted = createSelector(
   getCookieSettingsState,
   (settingsState) => {
+    if (!isCookieConsentActivated) return true;
     if (settingsState.statisticsCookiesAccepted === null) return true;
     return settingsState.statisticsCookiesAccepted;
   }

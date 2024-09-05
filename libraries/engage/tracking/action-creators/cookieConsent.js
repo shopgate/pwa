@@ -23,6 +23,7 @@ export const hideCookieConsentModal = () => ({
 });
 
 const { cookieConsent: { showComfortCookiesToggle } = {} } = appConfig;
+
 /**
  * action to be dispatched when the user accepted the selected cookies in the custom modal
  * @param {Object} params Action params
