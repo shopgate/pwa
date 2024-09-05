@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.12.4](https://github.com/shopgate/pwa/compare/v7.12.3...v7.12.4) (2024-09-05)
+
+#### :rocket: Enhancement
+* [#1261](https://github.com/shopgate/pwa/pull/1261) Add meta property to ProductListProvider ([@SaschaKrist](https://github.com/SaschaKrist))
+
+#### :bug: Bug Fix
+* [#1264](https://github.com/shopgate/pwa/pull/1264) Customer data is fully reset on logout ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
