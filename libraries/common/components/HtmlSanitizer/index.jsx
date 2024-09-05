@@ -105,23 +105,25 @@ class HtmlSanitizer extends Component {
    * @returns {JSX}
    */
   render() {
+    const cookieConsentSettings = {
+      comfortCookiesAccepted: this.props.comfortCookiesAccepted,
+      statisticsCookiesAccepted: this.props.statisticsCookiesAccepted,
+    };
+
     const innerHTML = {
       __html: parseHTML(
         this.props.children,
         this.props.decode,
         this.props.settings,
         this.props.processStyles,
-        {
-          comfortCookiesAccepted: this.props.comfortCookiesAccepted,
-          statisticsCookiesAccepted: this.props.statisticsCookiesAccepted,
-        }
+        cookieConsentSettings
       ),
     };
 
     const { wrapper: Wrapper } = this.props;
 
     return (
-      <Wrapper>
+      <Wrapper cookieConsentSettings={cookieConsentSettings}>
         <div
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={innerHTML}
