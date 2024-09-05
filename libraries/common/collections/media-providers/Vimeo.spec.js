@@ -6,6 +6,15 @@ const videos = [
   'https://player.vimeo.com/video/224765967?color=32ac5c&title=0&byline=0&portrait=0',
 ];
 
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  logger: {
+    error: jest.fn(),
+  },
+  i18n: {
+    text: jest.fn(key => key),
+  },
+}));
+
 /**
  * Creates a DOM container with iframes.
  * @param {Array} srcs A list of video URLs.

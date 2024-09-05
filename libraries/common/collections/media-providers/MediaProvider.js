@@ -1,5 +1,4 @@
-import { logger } from '@shopgate/pwa-core/helpers';
-import { i18n } from '@shopgate/engage/core/helpers';
+import { i18n, logger } from '@shopgate/engage/core/helpers';
 import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import { isRelativePosition, isAbsolutePosition } from '../../helpers/dom';
 import styles from './style';

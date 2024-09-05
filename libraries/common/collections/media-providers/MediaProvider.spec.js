@@ -1,11 +1,14 @@
 import { JSDOM } from 'jsdom';
-import { logger } from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/engage/core/helpers';
 import MediaProvider from './MediaProvider';
 import styles from './style';
 
-jest.mock('@shopgate/pwa-core/helpers', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   logger: {
     error: jest.fn(),
+  },
+  i18n: {
+    text: jest.fn(key => key),
   },
 }));
 
@@ -81,7 +84,7 @@ describe('MediaProvider', () => {
       expect(dom).toMatchSnapshot();
       expect(container.getAttribute('height')).toBeNull();
       expect(container.getAttribute('width')).toBeNull();
-      expect(container.closest('div').className).toBe(styles);
+      expect(container.closest('div').className).toBe(styles.responsiveContainer.toString());
     });
 
     it('should not responsify already responsive element', () => {
@@ -95,7 +98,7 @@ describe('MediaProvider', () => {
       expect(dom).toMatchSnapshot();
       expect(container.getAttribute('height')).toBeNull();
       expect(container.getAttribute('width')).toBeNull();
-      expect(container.closest('div').className).toBe(styles);
+      expect(container.closest('div').className).toBe(styles.responsiveContainer.toString());
     });
   });
 });

@@ -7,6 +7,7 @@ import HtmlSanitizer from './index';
 jest.mock('@shopgate/pwa-common/collections/EmbeddedMedia', () => ({
   add: jest.fn(),
   remove: jest.fn(),
+  handleCookieConsent: jest.fn(),
 }));
 jest.mock('../EmbeddedMedia', () => ({ children }) => children);
 jest.mock('./connector', () => Cmp => Cmp);
@@ -63,7 +64,7 @@ describe('<HtmlSanitizer />', () => {
   it('strips out images with relative paths', () => {
     const html = `
       <div>
-       <style>a { color: red }</style>
+      <style>a { color: red }</style>
         <a href="foo">
           <img src="bar.jpg" />
         </a>
