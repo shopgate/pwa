@@ -1,5 +1,7 @@
 import MediaProvider from './MediaProvider';
 
+/* eslint-disable class-methods-use-this */
+
 const scriptUrl = 'https://player.vimeo.com/api/player.js';
 /**
  * The Vimeo media provider class.
@@ -14,6 +16,15 @@ class VimeoMediaProvider extends MediaProvider {
     this.isPending = true;
     this.remoteScriptUrl = scriptUrl;
     this.deferred = [];
+  }
+
+  /**
+   * Retrieves a list of media containers for Vimeo.
+   * @param {ParentNode} container A DOM container that may contain Vimeo iframes.
+   * @returns {NodeListOf<Element>}
+   */
+  getMediaContainers(container) {
+    return container.querySelectorAll('iframe[src*="vimeo.com"]');
   }
 
   /**
@@ -52,7 +63,7 @@ class VimeoMediaProvider extends MediaProvider {
       return this;
     }
 
-    const iframes = container.querySelectorAll('iframe[src*="vimeo.com"]');
+    const iframes = this.getMediaContainers(container);
 
     if (!iframes.length) {
       return this;
@@ -84,6 +95,31 @@ class VimeoMediaProvider extends MediaProvider {
 
     return this;
   }
+
+  /**
+   * Searches for embedded media and replaces it with a placeholder element when comfort cookie
+   * consent is not accepted.
+   *
+   * Should be called before media container / markup is mounted to the DOM.
+   * @param {ParentNode} container A DOM container.
+   * @param {Object} [cookieConsentSettings] Additional settings related to cookie consent.
+   * @param {boolean} [cookieConsentSettings.comfortCookiesAccepted] Whether comfort cookies
+   * are accepted.
+   * @param {boolean} [cookieConsentSettings.statisticsCookiesAccepted] Whether statistics cookies
+   * are accepted.
+   * @override
+   * @returns {VimeoMediaProvider}
+   */
+  handleCookieConsent(container, cookieConsentSettings) {
+    // Remove Vimeo player scripts since the VimeoMediaProvider has custom logic for it
+    container.querySelectorAll('script[src*="vimeo.com"]').forEach((entry) => {
+      entry.remove();
+    });
+
+    return super.handleCookieConsent(container, cookieConsentSettings);
+  }
 }
 
 export default VimeoMediaProvider;
+
+/* eslint-enable class-methods-use-this */

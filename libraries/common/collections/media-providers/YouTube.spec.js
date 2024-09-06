@@ -9,6 +9,15 @@ const videos = [
   'https://youtube-nocookie.com/fooo?controls=0',
 ];
 
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  logger: {
+    error: jest.fn(),
+  },
+  i18n: {
+    text: jest.fn(key => key),
+  },
+}));
+
 /**
  * Creates a DOM container with iframes.
  * @param {Array} srcs A list of video URLs.
@@ -32,6 +41,15 @@ describe('YouTube media provider', () => {
     it('should construct as expected', () => {
       expect(instance.containers).toBeInstanceOf(Map);
       expect(instance.containers.size).toBe(0);
+    });
+  });
+
+  describe('.getMediaContainers()', () => {
+    it('should return all YouTube iframes', () => {
+      const container = createContainer([videos[0], videos[3], 'random/url']);
+      const result = instance.getMediaContainers(container);
+      expect(result).toMatchSnapshot();
+      expect(result).toHaveLength(2);
     });
   });
 
