@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.12.5](https://github.com/shopgate/pwa/compare/v7.12.4...v7.12.5) (2024-09-06)
+
+#### :rocket: Enhancement
+* [#1268](https://github.com/shopgate/pwa/pull/1268) Add core tracking for favorites ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
