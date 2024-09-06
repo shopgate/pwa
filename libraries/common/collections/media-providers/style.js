@@ -8,6 +8,7 @@ const responsiveContainer = css({
   height: 0,
   overflow: 'hidden',
   padding: '56.25% 0 0 0',
+  fontSize: '0.875rem',
   ' iframe, object, embed': {
     position: 'absolute',
     top: 0,
@@ -23,13 +24,12 @@ const consentContainer = css({
   height: '100%',
   width: '100%',
   padding: 16,
-  fontSize: '0.9rem',
   lineHeight: '1.2rem',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   textAlign: 'center',
-  gap: 24,
+  gap: 16,
   background: colors.shade10,
   border: `1px solid ${colors.shade5}`,
   // Add a tiny little border radius to make the message container look nice with padding
@@ -45,7 +45,7 @@ const consentLink = css({
 
 const consentIcon = css({
   fill: colors.shade5,
-  height: 48,
+  height: 40,
 });
 
 export default {
