@@ -64,7 +64,6 @@ describe('DOM Helpers', () => {
             </style>`;
 
           const element = document.createElement('div');
-          element.classList.add('custom-class');
           wrapper.appendChild(element);
 
           // Mount element to the document
@@ -126,7 +125,6 @@ describe('DOM Helpers', () => {
             </style>`;
 
           const element = document.createElement('div');
-          element.classList.add('custom-class');
           wrapper.appendChild(element);
 
           expect(getStyle(element, 'backgroundColor')).toBe('');
