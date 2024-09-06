@@ -30,7 +30,6 @@ class HtmlSanitizer extends Component {
     wrapper: EmbeddedMedia,
     comfortCookiesAccepted: false,
     statisticsCookiesAccepted: false,
-
   };
 
   /**

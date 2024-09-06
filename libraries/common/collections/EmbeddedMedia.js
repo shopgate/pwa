@@ -55,7 +55,8 @@ class EmbeddedMedia {
    * @param {Object} [cookieConsentSettings] Additional settings related to cookie consent.
    * @param {boolean} [cookieConsentSettings.comfortCookiesAccepted] Whether comfort cookies
    * are accepted.
-   * @param {boolean} [cookieConsentSettings.statisticsCookiesAccepted] Whether statistics cookies.
+   * @param {boolean} [cookieConsentSettings.statisticsCookiesAccepted] Whether statistics cookies
+   * are accepted.
    */
   handleCookieConsent(container, cookieConsentSettings = {}) {
     const cookieConsent = {
