@@ -1,17 +1,17 @@
 {
   "name": "@shopgate/pwa-ui-shared",
-  "version": "7.12.2",
+  "version": "7.12.5",
   "description": "Shopgate's shared UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@shopgate/pwa-ui-ios": "7.12.2",
-    "@shopgate/pwa-ui-material": "7.12.2",
+    "@shopgate/pwa-ui-ios": "7.12.5",
+    "@shopgate/pwa-ui-material": "7.12.5",
     "react-day-picker": "^7.4.8"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "7.12.2",
-    "@shopgate/pwa-common-commerce": "7.12.2",
+    "@shopgate/pwa-common": "7.12.5",
+    "@shopgate/pwa-common-commerce": "7.12.5",
     "classnames": "^2.2.5",
     "react": "~16.12.0"
   },
