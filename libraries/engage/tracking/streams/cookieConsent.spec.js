@@ -34,6 +34,15 @@ jest.mock('../selectors/cookieConsent', () => ({
   getIsCookieConsentHandled: jest.fn(() => true),
 }));
 
+jest.mock('@shopgate/engage', () => ({
+  appConfig: {
+    cookieConsent: {
+      showComfortCookiesToggle: true,
+      isCookieConsentActivated: true,
+    },
+  },
+}));
+
 describe('Cookie Consent Streams', () => {
   let subscriber;
   let subscription;

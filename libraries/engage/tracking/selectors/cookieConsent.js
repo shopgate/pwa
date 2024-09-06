@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
+import { appConfig } from '@shopgate/engage';
 import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
-import { appConfig } from '../../index';
 
-const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
+const { cookieConsent: { isCookieConsentActivated, showComfortCookiesToggle } = {} } = appConfig;
 
 /**
  * Selects the cookie consent modal state.
@@ -67,6 +67,7 @@ export const getAreComfortCookiesAccepted = createSelector(
   getIsCookieConsentHandled,
   (settingsState, consentHandled) => {
     if (!consentHandled) return false;
+    if (!isCookieConsentActivated || !showComfortCookiesToggle) return true;
     if (settingsState.comfortCookiesAccepted === null) return true;
     return settingsState.comfortCookiesAccepted;
   }
@@ -82,6 +83,7 @@ export const getAreStatisticsCookiesAccepted = createSelector(
   getIsCookieConsentHandled,
   (settingsState, consentHandled) => {
     if (!consentHandled) return false;
+    if (!isCookieConsentActivated) return true;
     if (settingsState.statisticsCookiesAccepted === null) return true;
     return settingsState.statisticsCookiesAccepted;
   }
