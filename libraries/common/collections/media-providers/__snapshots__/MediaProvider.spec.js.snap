@@ -22,15 +22,15 @@ exports[`MediaProvider .handleCookieConsent() should replace the iframe with the
 <body>
   <div>
     <div
-      class="css-1t9591k"
+      class="css-1t4jwth"
     >
       <div
-        class="css-jrb9wt common__media-provider_cookie-consent-message-container"
+        class="css-j0rmw5 common__media-provider_cookie-consent-message-container"
       >
         
   
         <svg
-          class="css-1nccr4y"
+          class="css-1ok2y9v"
           height="100%"
           version="1.1"
           viewBox="0 0 110 84"
@@ -87,12 +87,12 @@ exports[`MediaProvider .injectCookieConsentMessage() should add the cookie conse
 <body>
   <div />
   <div
-    class="css-jrb9wt common__media-provider_cookie-consent-message-container"
+    class="css-j0rmw5 common__media-provider_cookie-consent-message-container"
   >
     
   
     <svg
-      class="css-1nccr4y"
+      class="css-1ok2y9v"
       height="100%"
       version="1.1"
       viewBox="0 0 110 84"
@@ -147,7 +147,7 @@ exports[`MediaProvider .responsify() should not responsify already responsive el
 <body>
   <div>
     <div
-      class="css-1t9591k"
+      class="css-1t4jwth"
     >
       <iframe
         allow="autoplay; fullscreen"
@@ -164,7 +164,7 @@ exports[`MediaProvider .responsify() should not responsify already responsive el
 exports[`MediaProvider .responsify() should responsify a dom container 1`] = `
 <body>
   <div
-    class="css-1t9591k"
+    class="css-1t4jwth"
   >
     <iframe />
   </div>
