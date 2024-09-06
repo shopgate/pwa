@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.23.4](https://github.com/shopgate/pwa/compare/v6.23.3...v6.23.4) (2024-09-06)
+
+#### :rocket: Enhancement
+* [#1267](https://github.com/shopgate/pwa/pull/1267) HTML Sanitizer now blocks YouTube and Vimeo videos when comfort cookies are not accepted ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1265](https://github.com/shopgate/pwa/pull/1265) Fixed some cookie consents bugs with UI and navigation ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.23.3](https://github.com/shopgate/pwa/compare/v6.23.1...v6.23.3) (2024-08-22)
 
 #### :bug: Bug Fix
