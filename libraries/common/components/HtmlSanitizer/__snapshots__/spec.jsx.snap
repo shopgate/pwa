@@ -46,7 +46,7 @@ exports[`<HtmlSanitizer /> strips out images with relative paths 1`] = `
       
   <div>
     
-       
+      
     
         
     <a
@@ -67,13 +67,22 @@ exports[`<HtmlSanitizer /> strips out images with relative paths 1`] = `
 exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
 <HtmlSanitizer
   className=""
+  comfortCookiesAccepted={false}
   decode={true}
   navigate={[Function]}
   processStyles={false}
   settings={Object {}}
+  statisticsCookiesAccepted={false}
   wrapper={[Function]}
 >
-  <Component>
+  <Component
+    cookieConsentSettings={
+      Object {
+        "comfortCookiesAccepted": false,
+        "statisticsCookiesAccepted": false,
+      }
+    }
+  >
     <div
       className=" common__html-sanitizer"
       dangerouslySetInnerHTML={

@@ -341,5 +341,11 @@
     "statistics": "Aceste statistici ne ajută să îmbunătățim aplicația noastră și să vă arătăm reclame mai relevante.",
     "required": "Date necesare pentru funcționarea aplicației.",
     "privacy": "Pentru mai multe informații, consultați {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Pentru a vizualiza videoclipurile încorporate de pe site-uri externe, este necesar să permiteți cookie-urile de confort.",
+      "link": "Faceți clic aici pentru a permite cookie-urile de confort și pentru a vizualiza videoclipul"
+    }
   }
 }

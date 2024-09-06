@@ -1,10 +1,22 @@
 import URLSearchParams from 'url-search-params';
 import MediaProvider from './MediaProvider';
 
+/* eslint-disable class-methods-use-this */
+
 /**
  * The YouTube media provider class.
  */
 class YouTubeMediaProvider extends MediaProvider {
+  /**
+   * Retrieves a list of media containers for YouTube.
+   * @param {ParentNode} container A DOM container that may contain YouTube iframes.
+   * @returns {NodeListOf<Element>}
+   */
+  getMediaContainers(container) {
+    return container
+      .querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"]');
+  }
+
   /**
    * Add a DOM container with embedded videos.
    * @override
@@ -12,8 +24,7 @@ class YouTubeMediaProvider extends MediaProvider {
    * @returns {YouTubeMediaProvider}
    */
   add(container) {
-    const iframes = container
-      .querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"]');
+    const iframes = this.getMediaContainers(container);
 
     if (!iframes.length) {
       return this;
@@ -60,3 +71,5 @@ class YouTubeMediaProvider extends MediaProvider {
 }
 
 export default YouTubeMediaProvider;
+
+/* eslint-enable class-methods-use-this */

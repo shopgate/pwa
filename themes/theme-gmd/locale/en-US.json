@@ -341,5 +341,11 @@
     "statistics": "This data allows us to gather more statistics to improve our app and to show you more relevant ads.",
     "required": "Data that is required to run the app.",
     "privacy": "For more information please see our {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Comfort cookies need to be allowed to view embedded videos from external websites.",
+      "link": "Click here to allow comfort cookies and view video"
+    }
   }
 }

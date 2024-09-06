@@ -336,5 +336,11 @@
     "statistics": "Deze gegevens stellen ons in staat om meer statistieken te verzamelen om onze app te verbeteren en u relevantere advertenties te tonen.",
     "required": "Gegevens die nodig zijn om de app uit te voeren.",
     "privacy": "Voor meer informatie raadpleegt u ons {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Comfortcookies moeten worden toegestaan om ingesloten video's van externe websites te bekijken.",
+      "link": "Klik hier om comfortcookies toe te staan en de video te bekijken"
+    }
   }
 }
