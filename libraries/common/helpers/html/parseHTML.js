@@ -40,6 +40,8 @@ const parseHTML = (html, decode, settings, processStyles = false, cookieConsentS
     // Parse the html string to a DOM object.
     const dom = parser.parseFromString(`<body>${unparsedHTML}</body>`, 'text/html');
 
+    // Run cookie consent logic from embedded media to remove markup that's not supposed to run
+    // when consent is not accepted.
     embeddedMedia.handleCookieConsent(dom, cookieConsent);
 
     // How many onloads have been processed.

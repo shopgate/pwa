@@ -85,6 +85,8 @@ class MediaProvider {
   /**
    * Searches for embedded media and replaces it with a placeholder element when comfort cookie
    * consent is not accepted.
+   *
+   * Should be called before media container / markup is mounted to the DOM.
    * @param {ParentNode} container A DOM container.
    * @param {Object} [cookieConsentSettings] Additional settings related to cookie consent.
    * @param {boolean} [cookieConsentSettings.comfortCookiesAccepted] Whether comfort cookies
