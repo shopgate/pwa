@@ -219,7 +219,12 @@
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
     "coupons_not_supported": "Coupons non pris en charge",
-    "free_shipping": "Livraison gratuite"
+    "free_shipping": "Livraison gratuite",
+    "submit_coupon": "Envoyer le code promo",
+    "delete_coupon": "Supprimer le code promo",
+    "message_type_info": "Information",
+    "message_type_error": "Erreur",
+    "message_type_warning": "Avertissement"
   },
   "login": {
     "headline": "Bienvenue",

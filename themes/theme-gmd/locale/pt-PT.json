@@ -219,7 +219,12 @@
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
-    "free_shipping": "Envio Grátis"
+    "free_shipping": "Envio Grátis",
+    "submit_coupon": "Enviar cupom",
+    "delete_coupon": "Excluir cupom",
+    "message_type_info": "Informação",
+    "message_type_error": "Erro",
+    "message_type_warning": "Aviso"
   },
   "login": {
     "headline": "Bem vindo",

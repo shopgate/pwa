@@ -219,7 +219,12 @@
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Il coupon è stato aggiunto al carrello!",
     "coupons_not_supported": "Aggiungi i coupon e buoni regalo alla cassa",
-    "free_shipping": "Spedizione Gratuita"
+    "free_shipping": "Spedizione Gratuita",
+    "submit_coupon": "Invia codice promozionale",
+    "delete_coupon": "Elimina codice promozionale",
+    "message_type_info": "Informazione",
+    "message_type_error": "Errore",
+    "message_type_warning": "Avvertimento"
   },
   "login": {
     "headline": "Benvenuto/a",
