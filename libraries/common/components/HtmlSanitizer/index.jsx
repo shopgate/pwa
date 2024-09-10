@@ -55,7 +55,11 @@ class HtmlSanitizer extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children;
+    return (
+      nextProps.children !== this.props.children ||
+      nextProps.comfortCookiesAccepted !== this.props.comfortCookiesAccepted ||
+      nextProps.statisticsCookiesAccepted !== this.props.statisticsCookiesAccepted
+    );
   }
 
   /**
