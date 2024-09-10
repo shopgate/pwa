@@ -17,7 +17,6 @@ import {
   cookieConsentInitializedByUserInternal$,
   privacySettingsConfirmedWithoutChangeInternal$,
 } from '../streams/cookieConsent';
-import { appConfig } from '../../index';
 
 /**
  * stream which gets triggered when the user navigates back from privacy settings page
@@ -35,7 +34,6 @@ export const navigateBackToCookieModal$ = main$
 export default function cookieConsent(subscribe) {
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
     const state = getState();
-    const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
     const isCookieConsentHandled = getIsCookieConsentHandled(state);
 
     /**
@@ -43,11 +41,7 @@ export default function cookieConsent(subscribe) {
      * and user has chosen cookies already trigger stream to run code that depends on the cookie
      * consent.
      */
-    if (
-      !isCookieConsentActivated ||
-      (isCookieConsentActivated && isCookieConsentHandled) ||
-      !appSupportsCookieConsent()
-    ) {
+    if (isCookieConsentHandled) {
       const comfortCookiesAccepted = getAreComfortCookiesAccepted(state);
       const statisticsCookiesAccepted = getAreStatisticsCookiesAccepted(state);
 
@@ -59,21 +53,16 @@ export default function cookieConsent(subscribe) {
       if (appSupportsCookieConsent() && (comfortCookiesAccepted || statisticsCookiesAccepted)) {
         await dispatch(grantAppTrackingTransparencyPermission());
       }
-
-      return;
-    }
-
-    // if merchant has activated cookie feature but user has not chosen cookies yet:
-    // show cookie consent modal to make user choose them
-    if (isCookieConsentActivated && !isCookieConsentHandled) {
+    } else {
+      // if merchant has activated cookie feature but user has not chosen cookies yet:
+      // show cookie consent modal to make user choose them
       dispatch(showCookieConsentModal());
     }
   });
 
   subscribe(navigateBackToCookieModal$, ({ dispatch, getState }) => {
-    const { cookieConsent: { isCookieConsentActivated } } = appConfig;
     const isCookieConsentHandled = getIsCookieConsentHandled(getState());
-    if (isCookieConsentActivated && !isCookieConsentHandled) {
+    if (!isCookieConsentHandled) {
       dispatch(showCookieConsentModal());
     }
   });
