@@ -13,9 +13,11 @@ import PageContent from './components/Content';
  */
 const mapStateToProps = state => ({
   /**
-   * Pages can be used to the "privacy policy". To prevent that users can break out the cookie
-   * consent process, the page needs to be re-configured to remove elements that might open other
-   * screens.
+   * Pages can be used to display the "privacy policy". This might be opened during the cookie
+   * cookie consent process.
+   * To prevent that users can break out the cookie consent process, the page needs to be
+   * re-configured to remove elements that might open other screens when cookie consent is not
+   * handled yet.
    */
   isCookieConsentHandled: getIsCookieConsentHandled(state),
 });
