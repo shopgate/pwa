@@ -36,7 +36,7 @@
     },
     "rationale": {
       "message": "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock",
-      "confirm": "Allow push notifications"
+      "confirm": "Autorisez les notifications push"
     }
   },
   "favorites": {
