@@ -44,6 +44,7 @@ export * from './deviceTypes';
 export * from './geolocationRequest';
 
 // Core Constants
+export * from '@shopgate/pwa-core/constants/ErrorManager';
 export * from '@shopgate/pwa-core/constants/AppEvents';
 export * from '@shopgate/pwa-core/constants/AppPermissions';
 export * from '@shopgate/pwa-core/constants/ErrorHandleTypes';

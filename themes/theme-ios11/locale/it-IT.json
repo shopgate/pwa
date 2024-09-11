@@ -536,6 +536,7 @@
     "payment": "Modalità di pagamento",
     "terms": "Termini e Condizioni",
     "privacy": "Politica della Privacy",
+    "privacySettings": "Impostazioni della privacy",
     "welcome_message": "Benvenuto / a {name}",
     "return_policy": "Politica di Restituzione",
     "logout": "Esci",
@@ -777,21 +778,9 @@
       "billing_address": "Billing Address",
       "billing_address_reserve": "Order Contact"
     }
-  },"error": {
-    "general": "Impossibile connettersi. Per favore verifica la connessione internet."
   },
-  "tracking": {
-    "cookieConsent": {
-      "message": "This website uses cookies to ensure you get the best experience on our website.",
-      "learnMore": "Learn more",
-      "decline": "Decline",
-      "save": "Save",
-      "allowSelected": "Allow selected",
-      "allowAll": "Allow all",
-      "preferences": "Preferences",
-      "needed": "Needed",
-      "analytics": "Analytics"
-    }
+  "error": {
+    "general": "Impossibile connettersi. Per favore verifica la connessione internet."
   },
   "validation": {
     "required": "Per favore completa questo campo",
@@ -854,5 +843,23 @@
     "buttonAllow": "Abilita le notifiche",
     "buttonDeny": "Non voglio notifiche",
     "message": "Attivate le notifiche in modo da potervi inviare notifiche push su nuove offerte, buoni esclusivi e altro ancora."
+  },
+  "cookieConsentModal": {
+    "title": "Personalizzi la sua esperienza di acquisto",
+    "buttonAcceptAll": "Accetta tutto",
+    "modalButtonOnlyRequired": "Solo essenziali",
+    "modalButtonConfirmSelected": "Conferma la selezione",
+    "buttonConfigure": "Configura le impostazioni",
+    "message": "La nostra app è progettata per essere ottimizzata in base alle sue preferenze. Utilizziamo tecnologie di tracciamento moderne, con cui analizziamo il comportamento di acquisto e utilizziamo i dati per migliorare la nostra app e presentarle contenuti personalizzati. Può modificare le impostazioni in qualsiasi momento nell'area “Il mio account”. Può trovare maggiori informazioni nella nostra {privacyLink} dettagliata.",
+    "privacyText": "informativa sulla privacy"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Comfort",
+    "statisticsTitle": "Personalizzazione e statistiche",
+    "requiredTitle": "Obbligatori",
+    "comfort": "Questi cookie e tecnologie consentono alcune funzionalità aggiuntive e prestazioni migliori.",
+    "statistics": "Questi dati ci consentono di raccogliere più statistiche per migliorare la nostra app e mostrarle annunci più pertinenti.",
+    "required": "Dati necessari per eseguire l'app.",
+    "privacy": "Per maggiori informazioni, consulti la nostra {privacyLink}."
   }
 }

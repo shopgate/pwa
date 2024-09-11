@@ -1,16 +1,21 @@
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import { pwaDidAppear$ } from '@shopgate/pwa-common/streams/app';
+import {
+  routeDidEnter$,
+  pwaDidAppear$,
+} from '@shopgate/engage/core/streams';
+import {
+  hex2bin,
+} from '@shopgate/engage/core/helpers';
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
+} from '@shopgate/engage/category/constants';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { receivedRootCategories$ } from '@shopgate/pwa-common-commerce/category/streams';
-import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import { receivedRootCategories$ } from '@shopgate/engage/category/streams';
+import { getRootCategories } from '@shopgate/engage/category/selectors';
+import { getIsAppWebViewVisible } from '@shopgate/engage/core/selectors';
 import { productsReceived$ } from './product';
 
 /**
@@ -42,6 +47,8 @@ const rootCategoryPreloaded$ = rootCategoryDidEnter$.filter(({ getState }) => {
  * Emits when a category's data is available.
  */
 const categoryDataLoaded$ = categoryDidEnter$
+  // Do not track while PWA webview is in the background
+  .filter(({ getState }) => getIsAppWebViewVisible(getState()))
   .switchMap((data) => {
     const { action, getState } = data;
     const { categoryId } = action.route.params;

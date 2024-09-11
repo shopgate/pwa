@@ -46,7 +46,7 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
-import { NavigationHandler } from '@shopgate/engage/components';
+import { NavigationHandler, SnackBarContainer } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
@@ -55,11 +55,12 @@ import { STORE_FINDER_PATTERN, GlobalLocationSelector } from '@shopgate/engage/l
 import FavoritesListChooser from '@shopgate/engage/favorites/components/ListChooser';
 import { FulfillmentSlotProvider } from '@shopgate/engage/locations/components/FulfillmentSlotSwitcher';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
-import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import { PushOptInModal } from '@shopgate/engage/push-opt-in/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
+import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
+import { CookieConsentModal } from '@shopgate/engage/tracking/components';
 import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
 import ForgotPassword from './ForgotPassword';
 import Account from './Account';
@@ -111,7 +112,8 @@ const Pages = ({ store }) => {
                 <Viewport>
                   <ModalContainer component={Dialog} />
                   <PushOptInModal />
-                  <Toaster render={props => <SnackBar {...props} />} />
+                  <CookieConsentModal />
+                  <Toaster render={props => <SnackBarContainer {...props} />} />
                   <FavoritesListChooser />
                   <FulfillmentSlotProvider />
                   <GlobalLocationSelector routePatternAllowList={globalLocationSelectorAllowList} />
@@ -122,6 +124,10 @@ const Pages = ({ store }) => {
                       transform={routesTransforms[INDEX_PATH]}
                     />
                     <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                    <Route
+                      pattern={PRIVACY_SETTINGS_PATTERN}
+                      component={routes.PrivacySettings}
+                    />
                     <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                     <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
                     <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />

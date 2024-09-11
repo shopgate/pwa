@@ -34,6 +34,7 @@ import {
   searchDidBackEntered$,
 } from '@shopgate/pwa-common-commerce/search/streams';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { cookieConsentInitialized$ } from '@shopgate/engage/tracking/streams';
 import {
   getUserSearch,
   getStoreFinderSearch,
@@ -94,7 +95,7 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
  * @param {Function} subscribe The subscribe function.
  */
 function locationsSubscriber(subscribe) {
-  subscribe(appDidStart$, async ({ dispatch, getState }) => {
+  subscribe(cookieConsentInitialized$, async ({ dispatch, getState }) => {
     if (!hasNewServices()) {
       // no ROPE stuff when connected with old services right now
       return;

@@ -1,9 +1,17 @@
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
-import { RECEIVE_PAGE_CONFIG } from '@shopgate/pwa-common/constants/ActionTypes';
-import { main$, routeDidEnter$, pwaDidAppear$ } from '@shopgate/engage/core';
-import { PAGE_PATTERN, getPageConfigById } from '@shopgate/engage/page';
+import { RECEIVE_PAGE_CONFIG } from '@shopgate/engage/core/constants';
+import {
+  main$,
+  routeDidEnter$,
+  pwaDidAppear$,
+} from '@shopgate/engage/core/streams';
+import {
+  getIsAppWebViewVisible,
+} from '@shopgate/engage/core/selectors';
+import { PAGE_PATTERN } from '@shopgate/engage/page/constants';
+import { getPageConfigById } from '@shopgate/engage/page/selectors';
 
 /**
  * Emits when a "page" was entered.
@@ -24,6 +32,8 @@ const pageConfigReceived$ = main$
  * Emits when a "page" was opened, and its config is available.
  */
 export const pageIsReady$ = pageDidEnter$
+  // Do not track while PWA webview is in the background
+  .filter(({ getState }) => getIsAppWebViewVisible(getState()))
   .switchMap((data) => {
     const { action, getState } = data;
     const { pageId } = action.route.params;

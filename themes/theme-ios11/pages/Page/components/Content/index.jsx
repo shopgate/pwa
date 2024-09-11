@@ -15,11 +15,14 @@ import widgets from 'Extensions/widgets';
 import connect from './connector';
 
 /**
+ * @param {Object} props The component props
  * @param {Object} props.configs The page configs.
  * @param {string} props.pageId The page id.
  * @return {JSX}
  */
-function PageContent({ configs, pageId, postponeRender }) {
+function PageContent({
+  configs, pageId, postponeRender,
+}) {
   if (!configs) {
     return null;
   }
@@ -34,7 +37,10 @@ function PageContent({ configs, pageId, postponeRender }) {
 
   return (
     <Fragment>
-      <Bar center={center} title={configs.title || ''} />
+      <Bar
+        center={center}
+        title={configs.title || ''}
+      />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
         {(!postponeRender && configs && configs.widgets) && (

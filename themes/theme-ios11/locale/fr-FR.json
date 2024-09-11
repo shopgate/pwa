@@ -537,6 +537,7 @@
     "payment": "Méthodes de paiement",
     "terms": "Termes",
     "privacy": "Politique de confidentialité",
+    "privacySettings": "Paramètres de confidentialité",
     "welcome_message": "Bienvenue, {name}",
     "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
@@ -778,21 +779,9 @@
       "billing_address": "Billing Address",
       "billing_address_reserve": "Order Contact"
     }
-  },"error": {
-    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
-  "tracking": {
-    "cookieConsent": {
-      "message": "This website uses cookies to ensure you get the best experience on our website.",
-      "learnMore": "Learn more",
-      "decline": "Decline",
-      "save": "Save",
-      "allowSelected": "Allow selected",
-      "allowAll": "Allow all",
-      "preferences": "Preferences",
-      "needed": "Needed",
-      "analytics": "Analytics"
-    }
+  "error": {
+    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
   "validation": {
     "required": "Veuillez remplir ce champ",
@@ -855,5 +844,23 @@
     "buttonAllow": "Activer les notifications",
     "buttonDeny": "Je ne veux pas de notifications",
     "message": "Active les notifications pour que nous puissions t'envoyer des messages push sur les nouvelles offres, les bons d'achat exclusifs et plus encore."
+  },
+  "cookieConsentModal": {
+    "title": "Personnalisez votre expérience d'achat",
+    "buttonAcceptAll": "Tout accepter",
+    "modalButtonOnlyRequired": "Uniquement essentiels",
+    "modalButtonConfirmSelected": "Confirmer la sélection",
+    "buttonConfigure": "Configurer les paramètres",
+    "message": "Notre application est conçue pour être parfaitement adaptée à vos préférences. Nous utilisons des technologies de suivi modernes, avec lesquelles nous analysons le comportement d'achat et utilisons les données pour améliorer notre application et vous présenter du contenu personnalisé. Vous pouvez ajuster les paramètres à tout moment dans la zone « Mon compte ». Vous trouverez plus d'informations dans notre {privacyLink} détaillée.",
+    "privacyText": "politique de confidentialité"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Confort",
+    "statisticsTitle": "Personnalisation et statistiques",
+    "requiredTitle": "Obligatoire",
+    "comfort": "Ces cookies et technologies permettent certaines fonctionnalités supplémentaires et de meilleures performances.",
+    "statistics": "Ces données nous permettent de collecter plus de statistiques pour améliorer notre application et de vous montrer des publicités plus pertinentes.",
+    "required": "Données nécessaires au fonctionnement de l'application.",
+    "privacy": "Pour plus d'informations, veuillez consulter notre {privacyLink}."
   }
 }

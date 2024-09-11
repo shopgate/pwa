@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { hasNewServices, appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
 import {
   NAV_MENU_STORE_INFORMATION,
   NAV_MENU_STORE_INFORMATION_AFTER,
@@ -13,6 +13,7 @@ import {
   NAV_MENU_STORE_INFORMATION_ABOUT_AFTER,
   NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE,
 } from '@shopgate/engage/core';
+import { appConfig } from '@shopgate/engage';
 import NavDrawerSection from '../Section';
 import ShippingButton from './components/ShippingButton';
 import PaymentButton from './components/PaymentButton';
@@ -22,6 +23,9 @@ import PrivacyButton from './components/PrivacyButton';
 import ReturnsButton from './components/ReturnsButton';
 import ImprintButton from './components/ImprintButton';
 import portalProps from '../../portalProps';
+import PrivacySettingsButton from './components/PrivacySettingsButton';
+
+const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
 
 /**
  * @returns {JSX.Element}
@@ -50,6 +54,7 @@ const StoreInfo = () => (
             <Fragment>
               <TermsButton />
               <PrivacyButton />
+              {appSupportsCookieConsent() && isCookieConsentActivated && <PrivacySettingsButton />}
               {showReturnPolicy && <ReturnsButton />}
               <ImprintButton />
             </Fragment>
