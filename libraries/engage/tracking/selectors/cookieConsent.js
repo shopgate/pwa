@@ -21,7 +21,8 @@ export const getCookieSettingsState = state => state?.tracking?.cookieSettings |
 /**
  * Determines whether the cookie consent process is finished (selection happened before, feature is
  * inactive, app doesn't support the feature).
- * @returns {boolean} whether cookie consent settings have been chosen by the user.
+ * @returns {boolean} Whether the cookie consent process is handled either by user
+ * or by app/feature settings
  */
 export const getIsCookieConsentHandled = createSelector(
   getCookieSettingsState,
@@ -58,7 +59,7 @@ export const getAreStatisticsCookiesAcceptedInternal = createSelector(
 );
 
 /**
- * Determines if comfort cookies where accepted in the cookie consent process. When cookie
+ * Determines if comfort cookies were accepted in the cookie consent process. When cookie
  * consent is inactive, the selector will also return true.
  * @returns {boolean} whether comfort cookies are set and should activate tracking.
  */
@@ -74,7 +75,7 @@ export const getAreComfortCookiesAccepted = createSelector(
 );
 
 /**
- * Determines if statistics cookies where accepted in the cookie consent process. When cookie
+ * Determines if statistics cookies were accepted in the cookie consent process. When cookie
  * consent is inactive, the selector will also return true.
  * @returns {boolean} whether statistics cookies are set and should activate tracking.
  */

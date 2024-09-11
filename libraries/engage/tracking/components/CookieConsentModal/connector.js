@@ -6,7 +6,7 @@ import { acceptAllCookies, acceptRequiredCookies, openPrivacySettings } from '..
 /**
  * @return {Object} The extended component props.
  */
-const makeGetStateToProps = () => {
+const makeMapStateToProps = () => {
   const getPrivacyPolicyLink = makeGetPrivacyPolicyLink();
   return state => ({
     isCookieConsentModalVisible: getIsCookieConsentModalVisible(state),
@@ -24,4 +24,4 @@ const mapDispatchToProps = {
   openPrivacySettings,
 };
 
-export default connect(makeGetStateToProps, mapDispatchToProps);
+export default connect(makeMapStateToProps, mapDispatchToProps);

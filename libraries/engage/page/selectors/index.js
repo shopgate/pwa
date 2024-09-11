@@ -11,7 +11,7 @@ export * from '@shopgate/pwa-common/selectors/page';
  *
  * When the new services are active, the link is extracted from the "shopgate.cms.getMenu" response.
  * Otherwise it's a static link to the legacy privacy page.
- * @returns {string}
+ * @returns {string|null}
  */
 export const makeGetPrivacyPolicyLink = () => {
   const getMenu = makeGetMenu(LEGAL_MENU);

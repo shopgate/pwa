@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 /**
- * The CookieConsentPage component.
+ * The PrivacySettingsPage component.
  * @param {Object} props The component props
  * @param {boolean} props.showTitle Whether to show the page title
  * @returns {JSX.Element}

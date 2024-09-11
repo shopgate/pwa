@@ -9,7 +9,7 @@ import {
 /**
  * @return {Object} The extended component props.
  */
-const makeGetStateToProps = () => {
+const makeMapStateToProps = () => {
   const getPrivacyPolicyLink = makeGetPrivacyPolicyLink();
   return state => ({
     comfortCookiesAcceptedState: getAreComfortCookiesAcceptedInternal(state),
@@ -27,4 +27,4 @@ const mapDispatchToProps = {
   acceptSelectedCookies,
 };
 
-export default connect(makeGetStateToProps, mapDispatchToProps);
+export default connect(makeMapStateToProps, mapDispatchToProps);
