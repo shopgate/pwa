@@ -218,13 +218,13 @@
     "empty": "Seu carrinho está vazio",
     "continue": "Continuar comprando",
     "redeem_coupon": "Inserir código de cupom",
+    "submit_coupon": "Enviar cupão",
+    "delete_coupon": "Apagar cupão",
     "coupon_code": "Código",
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
     "free_shipping": "Envio Grátis",
-    "submit_coupon": "Enviar cupão",
-    "delete_coupon": "Apagar cupão",
     "message_type_info": "Informação",
     "message_type_error": "Erro",
     "message_type_warning": "Aviso"
@@ -249,7 +249,6 @@
     "categories": "Categorias",
     "my_orders": "Meus Pedidos",
     "cart": "Carrinho de Compras",
-    "back_in_stock": "Lembrete de regresso ao stock",
     "shipping": "Métodos de Envio",
     "about": "Contact",
     "payment": "Métodos de Pagamento",
@@ -261,6 +260,7 @@
     "logout": "Encerrar Sessão",
     "store_information": "Armazenar Informações",
     "more_menu": "Mais",
+    "back_in_stock": "Lembrete de regresso ao stock",
     "back": "Voltar para {title}"
   },
   "reviews": {

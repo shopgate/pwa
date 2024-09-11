@@ -215,13 +215,13 @@
     "empty": "Uw winkelwagen is leeg",
     "continue": "Winkel verder",
     "redeem_coupon": "Voer coupon code in",
+    "submit_coupon": "Kortingscode verzenden",
+    "delete_coupon": "Kortingscode verwijderen",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
     "coupons_not_supported": "Wissel uw vouchers en cadeaubonnen in bij de volgende stap",
     "free_shipping": "Gratis verzending",
-    "submit_coupon": "Kortingscode verzenden",
-    "delete_coupon": "Kortingscode verwijderen",
     "message_type_info": "Informatie",
     "message_type_error": "Fout",
     "message_type_warning": "Waarschuwing"
@@ -248,7 +248,6 @@
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
     "scanner": "Scanner",
-    "back_in_stock": "Terug in voorraad herinnering",
     "shipping": "Verzendmethoden",
     "about": "Over ons",
     "payment": "Uw betalingswens",
@@ -262,6 +261,7 @@
       "more": "Meer",
       "about": "Over ons"
     },
+    "back_in_stock": "Terug in voorraad herinnering",
     "back": "Terug naar {title}",
     "open_menu": "Open menu"
   },

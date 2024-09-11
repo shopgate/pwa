@@ -248,7 +248,6 @@
     "my_orders": "Moje polecenia",
     "cart": "Koszyk na zakupy",
     "scanner": "Skaner",
-    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "shipping": "Metody wysyłki",
     "about": "Nota prawna",
     "payment": "Metody płatności",
@@ -262,6 +261,7 @@
       "more": "Więcej",
       "about": "O nas"
     },
+    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "back": "Powrót do {title}",
     "open_menu": "Otwórz menu"
   },

@@ -248,7 +248,6 @@
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "scanner": "Scanner",
-    "back_in_stock": "Notifications",
     "shipping": "Shipping methods",
     "about": "Contact us",
     "payment": "Payment methods",
@@ -262,6 +261,7 @@
       "more": "More",
       "about": "About us"
     },
+    "back_in_stock": "Notifications",
     "back": "Back to {title}",
     "open_menu": "Open menu"
   },
@@ -289,7 +289,7 @@
       "qrCode": "We couldn't find a result for this QR code.",
       "barCode": "Product not found."
     }
- },
+  },
   "permissions": {
     "access_denied": {
       "settings_button": "Open settings",
