@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.23.5](https://github.com/shopgate/pwa/compare/v6.23.4...v6.23.5) (2024-09-12)
+
+#### :rocket: Enhancement
+* [#1270](https://github.com/shopgate/pwa/pull/1270) Added missing translations to some locale files ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.23.3](https://github.com/shopgate/pwa/compare/v6.23.1...v6.23.3) (2024-08-22)
 
 #### :bug: Bug Fix
