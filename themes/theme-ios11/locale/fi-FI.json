@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Luokat",
+    "allCategories": "Kaikki kategoriat",
     "filter": "Suodattimet",
     "cart": "Ostoskori",
     "shipping": "Toimitus",

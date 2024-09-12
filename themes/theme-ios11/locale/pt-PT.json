@@ -13,7 +13,8 @@
     "products": "Produtos"
   },
   "titles": {
-    "categories": "Todas as Categorias",
+    "categories": "Categorias",
+    "allCategories": "Todas as categorias",
     "filter": "Filtro",
     "cart": "Carrinho",
     "shipping": "Envio",

@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Kategorier",
+    "allCategories": "Alla kategorier",
     "filter": "Filter",
     "cart": "Kundkorg",
     "shipping": "Frakt",

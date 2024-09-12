@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Κατηγορίες",
+    "allCategories": "Όλες οι κατηγορίες",
     "filter": "Φίλτρο",
     "cart": "Καλάθι αγορών",
     "shipping": "Αποστολή",

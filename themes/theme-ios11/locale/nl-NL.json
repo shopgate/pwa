@@ -13,7 +13,8 @@
     "products": "Producten"
   },
   "titles": {
-    "categories": "Alle Categorieën",
+    "categories": "Categorieën",
+    "allCategories": "Alle categorieën",
     "filter": "Filter",
     "cart": "Winkelwagen",
     "shipping": "Verzending",
@@ -250,7 +251,7 @@
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
     "shipping": "Verzendmethoden",
-    "about": "Impressum",
+    "about": "Over ons",
     "payment": "Uw betalingswens",
     "terms": "Algemene Voorwaarden",
     "privacy": "Privacybeleid",
