@@ -280,7 +280,7 @@
     "review_form_error_author_empty": "Παρακαλώ εισάγετε ένα όνομα.",
     "review_form_rate_error": "Πόσα αστέρια δίνετε;",
     "review_form_error_length": "Μέγιστο {length} επιτρεπόμενων χαρακτήρων.",
-    "press_to_rate_with_x_stars": "Επιλέξτε να αξιολογήσετε με {rate} {rate, plural, =1 {ένα αστέρι} other {Αστέρια}}",
+    "press_to_rate_with_x_stars": "Επιλέξτε να αξιολογήσετε με {rate} {rate, plural, =1 {ένα αστέρι} other {Αστέρια}}.",
     "success_message": "Σας ευχαριστούμε για την αξιολόγησή σας!"
   },
   "scanner": {

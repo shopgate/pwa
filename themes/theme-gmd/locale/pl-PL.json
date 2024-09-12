@@ -189,8 +189,8 @@
     "reset": "Resetuj wyszukiwanie"
   },
   "shipping": {
-    "unknown": "plus Wysyłka",
-    "free": "Darmowa Wysyłka",
+    "unknown": "plus wysyłka",
+    "free": "Darmowa wysyłka",
     "free_short": "Bezpłatnie",
     "cost": "{price} Wysyłka"
   },

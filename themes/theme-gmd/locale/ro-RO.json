@@ -44,7 +44,7 @@
     "added": "Produsul a fost adăugat la lista de favorite",
     "continue": "Continuă cumpărăturile",
     "empty": "Nu aveți încă niciun articol pe lista de favorite",
-    "error_add": "Produsul nu a putut fi adăugat în lista de favorite..",
+    "error_add": "Produsul nu a putut fi adăugat în lista de favorite.",
     "error_remove": "Produsul nu a putut fi eliminat din lista de favorite.",
     "error_limit": "Numărul permis de produse din lista de supraveghere a fost depășit.",
     "error_general": "Lista de supraveghere nu a putut fi salvată",
@@ -280,7 +280,7 @@
     "review_form_error_author_empty": "Vă rugăm să introduceți un nume.",
     "review_form_rate_error": "Câte stele dați?",
     "review_form_error_length": "Maxim {length} caractere permise.",
-    "press_to_rate_with_x_stars": "Alegeți să evaluați cu {rate} {rate, plural, =1 {o Stea} other {Stele}}",
+    "press_to_rate_with_x_stars": "Alegeți să evaluați cu {rate} {rate, plural, =1 {o Stea} other {Stele}}.",
     "success_message": "Vă mulțumim pentru evaluare!"
   },
   "scanner": {

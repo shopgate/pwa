@@ -14,7 +14,7 @@
   },
   "titles": {
     "categories": "Todas las categorías",
-    "filter": "Filtrar",
+    "filter": "Filtro",
     "cart": "Cesta",
     "shipping": "Envío",
     "reviews": "Comentarios",
@@ -98,7 +98,7 @@
     "sort": {
       "default": "Ordenar por",
       "most_popular": "Más popular",
-      "price_desc": "Precio: mayor a Menor",
+      "price_desc": "Precio: Mayor a Menor",
       "price_asc": "Precio: Menor a Mayor"
     },
     "apply": "Aplicar",
@@ -167,7 +167,7 @@
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "No se encontró la categoría"
     },
     "no_result": {
@@ -187,7 +187,7 @@
     "cancel": "Cancelar",
     "no_result": {
       "heading": "Oops!",
-      "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultado."
+      "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultados."
     },
     "placeholder": "Buscar"
   },
@@ -205,7 +205,7 @@
     "dismiss": "Descartar",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "Ocurrió un error inesperado. vuelva a intentarlo."
+    "body_error": "Ocurrió un error inesperado. Intente nuevamente."
   },
   "cart": {
     "subtotal": "Total parcial",
@@ -244,13 +244,13 @@
   },
   "navigation": {
     "login_register": "Iniciar sesión / Registro",
-    "your_account": "Su cuenta",
+    "your_account": "Mi cuenta",
     "home": "Inicio",
     "categories": "Categorías",
     "my_orders": "Mis pedidos",
     "cart": "Cesta de la compra",
     "shipping": "Métodos de envío",
-    "about": "Sobre",
+    "about": "Sobre nosotros",
     "payment": "Métodos de pago",
     "terms": "Condiciones generales",
     "privacy": "Protección de datos",
@@ -276,9 +276,9 @@
     "review_form_title": "Título del comentario (opcional)",
     "review_form_text": "Comentario del producto (opcional)",
     "review_form_error_author_empty": "Ingrese un nombre.",
-    "review_form_rate_error": "Elija una calificación por estrella.",
+    "review_form_rate_error": "Seleccione una estrella de calificación.",
     "review_form_error_length": "Máxima cantidad {length} de caracteres.",
-    "press_to_rate_with_x_stars": "presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
+    "press_to_rate_with_x_stars": "Presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
     "success_message": "¡Gracias por su comentario!"
   },
   "tab_bar": {

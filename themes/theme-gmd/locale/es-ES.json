@@ -95,7 +95,7 @@
   },
   "filter": {
     "sort": {
-      "default": "Ordenado por",
+      "default": "Ordenar por",
       "most_popular": "Más popular",
       "price_desc": "Precio: Mayor a Menor",
       "price_asc": "Precio: Menor a Mayor"
@@ -127,7 +127,7 @@
   },
   "product": {
     "description_heading": "Descripción",
-    "pick_an_attribute": "Elija uno {0}",
+    "pick_an_attribute": "Elegir un {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
     "adding_item": "{count, plural, =1 {Añadiendo {count} artículo} other {Añadiendo {count} artículos}}",
     "pick_option_first": "Seleccionar primero una opción. {option}",
@@ -199,7 +199,7 @@
   },
   "modal": {
     "confirm": "Confirmar",
-    "dismiss": "Desechar",
+    "dismiss": "Descartar",
     "ok": "Ok",
     "title_error": "Oops!",
     "body_error": "Ocurrió un error inesperado. Intente nuevamente."
@@ -221,14 +221,14 @@
     "default_coupon_label": "Cupón",
     "coupon_was_added": "¡El cupón ha sido añadido a su cesta!",
     "coupons_not_supported": "Agregue los cupones y vales de regalo mientras realiza el pago",
-    "free_shipping": "Envío gratuito",
+    "free_shipping": "Envío gratis",
     "message_type_info": "Información",
     "message_type_error": "Error",
     "message_type_warning": "Advertencia"
   },
   "login": {
     "headline": "Hola",
-    "subline": "Iniciar sesión para continuar",
+    "subline": "Inicie sesión para continuar",
     "email": "Email",
     "password": "Contraseña",
     "forgot_password": "¿Has olvidado tu contraseña?",
@@ -279,7 +279,7 @@
     "review_form_text": "Comentario del producto (opcional)",
     "review_form_error_author_empty": "Ingrese un nombre.",
     "review_form_rate_error": "Seleccione una estrella de calificación.",
-    "review_form_error_length": "Máxima cantidad de {length} caracteres.",
+    "review_form_error_length": "Máxima cantidad {length} de caracteres.",
     "press_to_rate_with_x_stars": "Presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
     "success_message": "¡Gracias por su comentario!"
   },

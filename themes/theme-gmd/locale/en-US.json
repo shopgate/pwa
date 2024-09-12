@@ -81,7 +81,7 @@
       "title": "Choose a Method"
     },
     "list_chooser": {
-      "title": "Choose a Favorites list",
+      "title": "Choose a Favorites List",
       "add": "Add",
       "remove": "Remove"
     },
@@ -248,15 +248,15 @@
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "scanner": "Scanner",
-    "shipping": "Shipping methods",
+    "shipping": "Shipping Methods",
     "about": "Contact us",
-    "payment": "Payment methods",
+    "payment": "Payment Methods",
     "terms": "Terms & Conditions",
-    "privacy": "Privacy policy",
+    "privacy": "Privacy Policy",
     "privacySettings": "Privacy Settings",
-    "welcome_message": "Welcome, {name}",
+    "welcome_message": "Welcome {name}",
     "return_policy": "Return policy",
-    "logout": "Sign out",
+    "logout": "Logout",
     "menuSubHeader": {
       "more": "More",
       "about": "About us"

@@ -280,7 +280,7 @@
     "review_form_error_author_empty": "Vänligen ange ett namn.",
     "review_form_rate_error": "Hur många stjärnor ger du?",
     "review_form_error_length": "Maximalt {length} tecken tillåtna.",
-    "press_to_rate_with_x_stars": "Välj att betygsätta med {rate} {rate, plural, =1 {en Stjärna} other {Stjärnor}}",
+    "press_to_rate_with_x_stars": "Välj att betygsätta med {rate} {rate, plural, =1 {en Stjärna} other {Stjärnor}}.",
     "success_message": "Tack för ditt betyg!"
   },
   "scanner": {

@@ -9,7 +9,7 @@
     "please_choose": "Por favor escolha",
     "show_products": "Mostrar produtos",
     "back": "Voltar",
-    "close": "Close",
+    "close": "Fechar",
     "products": "Produtos"
   },
   "titles": {
@@ -167,7 +167,7 @@
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "Categoria não encontrada."
     },
     "no_result": {
@@ -218,8 +218,8 @@
     "empty": "Seu carrinho está vazio",
     "continue": "Continuar comprando",
     "redeem_coupon": "Inserir código de cupom",
-    "submit_coupon": "Enviar cupão",
-    "delete_coupon": "Apagar cupão",
+    "submit_coupon": "Enviar cupom",
+    "delete_coupon": "Excluir cupom",
     "coupon_code": "Código",
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
@@ -257,7 +257,7 @@
     "privacySettings": "Configurações de privacidade",
     "welcome_message": "Bem vindo {name}",
     "return_policy": "Política de Devoluções",
-    "logout": "Encerrar Sessão",
+    "logout": "Terminar sessão",
     "store_information": "Armazenar Informações",
     "more_menu": "Mais",
     "back_in_stock": "Lembrete de regresso ao stock",
@@ -268,7 +268,7 @@
     "no_reviews": "Seja o primeiro a avaliar este produto:",
     "review_count": "({count} {count, plural, =1 {Avaliação} other {Avaliações}})",
     "button_add": "Escreva uma avaliação",
-    "button_all": "Todas as{count} avaliações",
+    "button_all": "Todas as {count} avaliações",
     "author": "pelo {author}",
     "rating_stars": "{rate} {rate, plural, =1 {estrela} other {estrelas}} de {maxRate}",
     "review_form_rate": "Avalie este produto:",

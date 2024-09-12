@@ -158,7 +158,7 @@
     "displayGroups": {
       "general": "Geral",
       "features": "Características",
-      "pricing": "Preços",
+      "pricing": "Informações de Preço",
       "properties": "Propriedades"
     }
   },
@@ -249,14 +249,14 @@
     "cart": "Carrinho de Compras",
     "scanner": "Scanner",
     "shipping": "Métodos de Envio",
-    "about": "Entre em Contato Conosco",
+    "about": "Contact",
     "payment": "Métodos de Pagamento",
     "terms": "Termos e Condições",
     "privacy": "Política de Privacidade",
     "privacySettings": "Configurações de privacidade",
     "welcome_message": "Bem vindo {name}",
     "return_policy": "Política de Devoluções",
-    "logout": "Sair",
+    "logout": "Terminar sessão",
     "menuSubHeader": {
       "more": "Mais",
       "about": "Sobre nós"

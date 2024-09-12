@@ -167,7 +167,7 @@
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "Category not found"
     },
     "no_result": {
@@ -252,7 +252,7 @@
     "shipping": "Shipping Methods",
     "about": "Contact",
     "payment": "Payment Methods",
-    "terms": "Terms and Conditions",
+    "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
     "privacySettings": "Privacy Settings",
     "welcome_message": "Welcome {name}",

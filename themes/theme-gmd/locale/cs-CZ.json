@@ -280,7 +280,7 @@
     "review_form_error_author_empty": "Zadejte prosím jméno.",
     "review_form_rate_error": "Kolik hvězdiček dáváte?",
     "review_form_error_length": "Maximální povolená délka {length} znaků.",
-    "press_to_rate_with_x_stars": "Zvolte hodnocení pomocí {rate} {rate, plural, =1 {jedna hvězdička} other {hvězdičky}}",
+    "press_to_rate_with_x_stars": "Zvolte hodnocení pomocí {rate} {rate, plural, =1 {jedna hvězdička} other {hvězdičky}}.",
     "success_message": "Děkujeme vám za vaše hodnocení!"
   },
   "scanner": {

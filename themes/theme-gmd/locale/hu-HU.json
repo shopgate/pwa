@@ -280,7 +280,7 @@
     "review_form_error_author_empty": "Kérjük, adjon meg egy nevet.",
     "review_form_rate_error": "Hány csillagot ad?",
     "review_form_error_length": "Maximális {length} megengedett karakterek.",
-    "press_to_rate_with_x_stars": "Choose to rate with {rate} {rate, plural, =1 {egy Csillag} other {Csillagok}}",
+    "press_to_rate_with_x_stars": "Choose to rate with {rate} {rate, plural, =1 {egy Csillag} other {Csillagok}}.",
     "success_message": "Köszönjük az értékelést!"
   },
   "scanner": {
