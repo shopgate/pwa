@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Wszystkie kategorie",
+    "allCategories": "Wszystkie kategorie",
     "filter": "Filtr",
     "cart": "Koszyk na zakupy",
     "shipping": "Wysyłka",
@@ -249,7 +250,6 @@
     "categories": "Kategorie",
     "my_orders": "Moje polecenia",
     "cart": "Koszyk na zakupy",
-    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "shipping": "Metody wysyłki",
     "about": "Nota prawna",
     "payment": "Metody płatności",
@@ -261,6 +261,7 @@
     "logout": "Zrezygnuj z subskrypcji",
     "store_information": "O nas",
     "more_menu": "Więcej",
+    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "back": "Powrót do {title}"
   },
   "reviews": {

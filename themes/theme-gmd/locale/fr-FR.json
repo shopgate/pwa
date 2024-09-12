@@ -36,7 +36,7 @@
     },
     "rationale": {
       "message": "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock",
-      "confirm": "Allow push notifications"
+      "confirm": "Autorisez les notifications push"
     }
   },
   "favorites": {
@@ -214,12 +214,17 @@
     "edit": "Modifier",
     "empty": "Votre panier est vide",
     "continue": "Continuer l'achat",
-    "redeem_coupon": "Enter votre code coupon",
+    "redeem_coupon": "Entrez votre code coupon",
+    "submit_coupon": "Envoyer le code promo",
+    "delete_coupon": "Supprimer le code promo",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
-    "coupons_not_supported": "Coupons non pris en charge",
-    "free_shipping": "Livraison gratuite"
+    "coupons_not_supported": "Utilisez vos bons et cartes-cadeaux à l'étape suivante",
+    "free_shipping": "Livraison gratuite",
+    "message_type_info": "Information",
+    "message_type_error": "Erreur",
+    "message_type_warning": "Avertissement"
   },
   "login": {
     "headline": "Bienvenue",
@@ -236,14 +241,12 @@
   },
   "navigation": {
     "login_register": "Se connecter / S'inscrire",
-    "your_account": "Ton compte",
     "home": "Accueil",
     "categories": "Catégories",
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
     "scanner": "Scanner",
-    "back_in_stock": "Rappel de stock",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",
@@ -257,6 +260,7 @@
       "more": "Plus",
       "about": "À propos de nous"
     },
+    "back_in_stock": "Rappel de stock",
     "back": "Retour à {title}",
     "open_menu": "Open menu"
   },

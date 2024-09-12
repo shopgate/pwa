@@ -9,11 +9,12 @@
     "please_choose": "Por favor escolha",
     "show_products": "Mostrar produtos",
     "back": "Voltar",
-    "close": "Close",
+    "close": "Fechar",
     "products": "Produtos"
   },
   "titles": {
-    "categories": "Todas as Categorias",
+    "categories": "Categorias",
+    "allCategories": "Todas as categorias",
     "filter": "Filtro",
     "cart": "Carrinho",
     "shipping": "Envio",
@@ -157,11 +158,17 @@
       "ratings": "Avaliações",
       "purchase": "Comprar Item",
       "quantity": "Quantidade"
+    },
+    "displayGroups": {
+      "general": "Geral",
+      "features": "Características",
+      "pricing": "Informações de Preço",
+      "properties": "Propriedades"
     }
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "Categoria não encontrada."
     },
     "no_result": {
@@ -212,11 +219,16 @@
     "empty": "Seu carrinho está vazio",
     "continue": "Continuar comprando",
     "redeem_coupon": "Inserir código de cupom",
+    "submit_coupon": "Enviar cupom",
+    "delete_coupon": "Excluir cupom",
     "coupon_code": "Código",
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
-    "free_shipping": "Envio Grátis"
+    "free_shipping": "Envio Grátis",
+    "message_type_info": "Informação",
+    "message_type_error": "Erro",
+    "message_type_warning": "Aviso"
   },
   "login": {
     "headline": "Bem vindo",
@@ -233,12 +245,11 @@
   },
   "navigation": {
     "login_register": "Entrar / Registrar",
-    "your_account": "Sua Conta",
+    "your_account": "Minha conta",
     "home": "Início",
     "categories": "Categorias",
     "my_orders": "Meus Pedidos",
     "cart": "Carrinho de Compras",
-    "back_in_stock": "Lembrete de regresso ao stock",
     "shipping": "Métodos de Envio",
     "about": "Contact",
     "payment": "Métodos de Pagamento",
@@ -247,9 +258,10 @@
     "privacySettings": "Configurações de privacidade",
     "welcome_message": "Bem vindo {name}",
     "return_policy": "Política de Devoluções",
-    "logout": "Encerrar Sessão",
+    "logout": "Terminar sessão",
     "store_information": "Armazenar Informações",
     "more_menu": "Mais",
+    "back_in_stock": "Lembrete de regresso ao stock",
     "back": "Voltar para {title}"
   },
   "reviews": {
@@ -257,7 +269,7 @@
     "no_reviews": "Seja o primeiro a avaliar este produto:",
     "review_count": "({count} {count, plural, =1 {Avaliação} other {Avaliações}})",
     "button_add": "Escreva uma avaliação",
-    "button_all": "Todas as{count} avaliações",
+    "button_all": "Todas as {count} avaliações",
     "author": "pelo {author}",
     "rating_stars": "{rate} {rate, plural, =1 {estrela} other {estrelas}} de {maxRate}",
     "review_form_rate": "Avalie este produto:",

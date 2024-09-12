@@ -189,8 +189,8 @@
     "reset": "Resetuj wyszukiwanie"
   },
   "shipping": {
-    "unknown": "plus Wysyłka",
-    "free": "Darmowa Wysyłka",
+    "unknown": "plus wysyłka",
+    "free": "Darmowa wysyłka",
     "free_short": "Bezpłatnie",
     "cost": "{price} Wysyłka"
   },
@@ -241,14 +241,12 @@
   },
   "navigation": {
     "login_register": "Zaloguj się",
-    "your_account": "Moje konto",
     "home": "Strona główna",
     "categories": "Kategorie",
     "favorites": "Lista życzeń",
     "my_orders": "Moje polecenia",
     "cart": "Koszyk na zakupy",
     "scanner": "Skaner",
-    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "shipping": "Metody wysyłki",
     "about": "Nota prawna",
     "payment": "Metody płatności",
@@ -262,6 +260,7 @@
       "more": "Więcej",
       "about": "O nas"
     },
+    "back_in_stock": "Przypomnienie o powrocie do magazynu",
     "back": "Powrót do {title}",
     "open_menu": "Otwórz menu"
   },

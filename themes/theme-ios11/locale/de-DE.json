@@ -13,7 +13,8 @@
     "products": "Produkte"
   },
   "titles": {
-    "categories": "Alle Kategorien",
+    "categories": "Kategorien",
+    "allCategories": "Alle Kategorien",
     "filter": "Filter",
     "cart": "Warenkorb",
     "shipping": "Versand",
@@ -231,7 +232,7 @@
   },
   "login": {
     "headline": "Willkommen!",
-    "subline": "Bitte melden Sie sich an, um fortzufahren.",
+    "subline": "Bitte melden Sie sich an, um fortzufahren",
     "email": "E-Mail",
     "password": "Passwort",
     "forgot_password": "Passwort vergessen?",
@@ -278,7 +279,7 @@
     "review_form_error_author_empty": "Bitte geben Sie einen Namen an.",
     "review_form_rate_error": "Wie viele Sterne vergeben Sie?",
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
-    "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
+    "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}.",
     "success_message": "Vielen Dank für Ihre Bewertung!"
   },
   "tab_bar": {

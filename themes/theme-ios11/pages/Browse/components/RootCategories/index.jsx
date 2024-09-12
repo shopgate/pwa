@@ -36,7 +36,7 @@ class RootCategories extends PureComponent {
         <SurroundPortals
           portalName={BROWSE_CATEGORY_LIST_HEADLINE}
         >
-          <Headline style={styles.headline} text={__('titles.categories')} />
+          <Headline style={styles.headline} text={__('titles.allCategories')} />
         </SurroundPortals>
         <SurroundPortals
           portalName={BROWSE_CATEGORY_LIST}

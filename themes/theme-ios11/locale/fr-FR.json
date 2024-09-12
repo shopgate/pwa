@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Catégories",
+    "allCategories": "Toutes les catégories",
     "filter": "Filtre",
     "cart": "Panier",
     "shipping": "Livraison",
@@ -24,20 +25,20 @@
     "back_in_stock": "Notifications"
   },
   "back_in_stock": {
-    "list_states" : {
-      "active" : "Notifications actives",
-      "past" : "Notifications passées"
+    "list_states": {
+      "active": "Notifications actives",
+      "past": "Notifications passées"
     },
-    "empty_list_reminder" : "Vous n'avez pas de notifications configurées",
-    "get_notified" : "Me notifier des nouveaux stocks",
-    "we_will_remind_you" : "Nous vous avertirons lorsque le produit sera à nouveau en stock",
-    "add_back_in_stock_success_modal" : {
-      "title" : "Notification de retour en stock ajoutée !",
-      "message" : "Nous vous enverrons une notification push lorsque le produit sera de nouveau en stock. Vous pouvez gérer vos notifications dans le menu."
+    "empty_list_reminder": "Vous n'avez pas de notifications configurées",
+    "get_notified": "Me notifier des nouveaux stocks",
+    "we_will_remind_you": "Nous vous avertirons lorsque le produit sera à nouveau en stock",
+    "add_back_in_stock_success_modal": {
+      "title": "Notification de retour en stock ajoutée !",
+      "message": "Nous vous enverrons une notification push lorsque le produit sera de nouveau en stock. Vous pouvez gérer vos notifications dans le menu."
     },
-    "rationale" : {
-      "message" : "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock",
-      "confirm" : "Allow push notifications"
+    "rationale": {
+      "message": "Veuillez autoriser les notifications push à l'étape suivante, afin que nous puissions vous envoyer une notification lorsque le produit est de nouveau en stock",
+      "confirm": "Autorisez les notifications push"
     }
   },
   "favorites": {
@@ -217,12 +218,17 @@
     "edit": "Modifier",
     "empty": "Votre panier est vide",
     "continue": "Continuer l'achat",
-    "redeem_coupon": "Enter votre code coupon",
+    "redeem_coupon": "Entrez votre code coupon",
+    "submit_coupon": "Envoyer le code promo",
+    "delete_coupon": "Supprimer le code promo",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
-    "coupons_not_supported": "Coupons non pris en charge",
-    "free_shipping": "Livraison gratuite"
+    "coupons_not_supported": "Utilisez vos bons et cartes-cadeaux à l'étape suivante",
+    "free_shipping": "Livraison gratuite",
+    "message_type_info": "Information",
+    "message_type_error": "Erreur",
+    "message_type_warning": "Avertissement"
   },
   "login": {
     "headline": "Bienvenue",
@@ -239,12 +245,11 @@
   },
   "navigation": {
     "login_register": "Se connecter / S'inscrire",
-    "your_account": "Ton compte",
+    "your_account": "Mon compte",
     "home": "Accueil",
     "categories": "Catégories",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
-    "back_in_stock": "Rappel de stock",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",
@@ -256,6 +261,7 @@
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
     "more_menu": "Plus",
+    "back_in_stock": "Rappel de stock",
     "back": "Retour à {title}"
   },
   "reviews": {

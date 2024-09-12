@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Categorie",
+    "allCategories": "Tutte le categorie",
     "filter": "Filtro",
     "cart": "Carrello",
     "shipping": "Spedizione",
@@ -187,7 +188,7 @@
     "cancel": "Cancella",
     "no_result": {
       "heading": "Ops!",
-      "body": "La vostra ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
+      "body": "La tua ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
     },
     "placeholder": "Cerca"
   },
@@ -218,11 +219,16 @@
     "empty": "Il tuo carrello è vuoto",
     "continue": "Continua ad acquistare",
     "redeem_coupon": "Inserire il codice coupon",
+    "submit_coupon": "Invia codice promozionale",
+    "delete_coupon": "Elimina codice promozionale",
     "coupon_code": "Codice",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Il coupon è stato aggiunto al carrello!",
     "coupons_not_supported": "Aggiungi i coupon e buoni regalo alla cassa",
-    "free_shipping": "Spedizione Gratuita"
+    "free_shipping": "Spedizione Gratuita",
+    "message_type_info": "Informazioni",
+    "message_type_error": "Errore",
+    "message_type_warning": "Avvertimento"
   },
   "login": {
     "headline": "Benvenuto/a",
@@ -230,7 +236,7 @@
     "email": "E-mail",
     "password": "Password",
     "forgot_password": "Password dimenticata?",
-    "forgot_password_popup": "Usare il sito web del desktop per resettare la password prego.",
+    "forgot_password_popup": "Usa il sito web del desktop per resettare la password prego.",
     "button": "Accedi",
     "no_account": "Non hai un account?",
     "signup": "Registrati",
@@ -239,30 +245,30 @@
   },
   "navigation": {
     "login_register": "Accedi / Registrati",
-    "your_account": "Il tuo Account",
+    "your_account": "Il mio account",
     "home": "Pagina iniziale",
     "categories": "Categorie",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
-    "back_in_stock": "Promemoria per il ritorno in magazzino",
     "shipping": "Modalità di spedizione",
-    "about": "A riguardo",
+    "about": "Su di noi",
     "payment": "Modalità di pagamento",
     "terms": "Termini e Condizioni",
-    "privacy": "Politica della Privacy",
+    "privacy": "Politica sulla privacy",
     "privacySettings": "Impostazioni della privacy",
-    "welcome_message": "Benvenuto / a {name}",
-    "return_policy": "Politica di Restituzione",
+    "welcome_message": "Benvenuto {name}",
+    "return_policy": "Politica di restituzione",
     "logout": "Esci",
     "store_information": "Informazioni del Negozio",
     "more_menu": "Di più",
+    "back_in_stock": "Promemoria per il ritorno in magazzino",
     "back": "Indietro alla {title}"
   },
   "reviews": {
     "rating": "valutazione",
     "no_reviews": "Vota prima degli altri questo prodotto:",
     "review_count": "({count} {count, plural, =1 {Recensione} other {Recensioni}})",
-    "button_add": "Aggiungi una recensione",
+    "button_add": "Scrivi una recensione",
     "button_all": "Tutte le {count} Recensioni",
     "author": "da {author}",
     "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}} su {maxRate}",

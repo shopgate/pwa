@@ -81,7 +81,7 @@
       "title": "Choose a Method"
     },
     "list_chooser": {
-      "title": "Choose a Favorites list",
+      "title": "Choose a Favorites List",
       "add": "Add",
       "remove": "Remove"
     },
@@ -241,27 +241,26 @@
   },
   "navigation": {
     "login_register": "Login / Register",
-    "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
     "favorites": "Favorites",
     "my_orders": "My orders",
-    "cart": "Shopping cart",
+    "cart": "Shopping Cart",
     "scanner": "Scanner",
-    "back_in_stock": "Notifications",
-    "shipping": "Shipping methods",
-    "about": "Contact us",
-    "payment": "Payment methods",
+    "shipping": "Shipping Methods",
+    "about": "Contact Us",
+    "payment": "Payment Methods",
     "terms": "Terms & Conditions",
-    "privacy": "Privacy policy",
+    "privacy": "Privacy Policy",
     "privacySettings": "Privacy Settings",
-    "welcome_message": "Welcome, {name}",
-    "return_policy": "Return policy",
-    "logout": "Sign out",
+    "welcome_message": "Welcome {name}",
+    "return_policy": "Return Policy",
+    "logout": "Logout",
     "menuSubHeader": {
       "more": "More",
       "about": "About us"
     },
+    "back_in_stock": "Notifications",
     "back": "Back to {title}",
     "open_menu": "Open menu"
   },
@@ -289,7 +288,7 @@
       "qrCode": "We couldn't find a result for this QR code.",
       "barCode": "Product not found."
     }
- },
+  },
   "permissions": {
     "access_denied": {
       "settings_button": "Open settings",
