@@ -17,7 +17,8 @@
     }
   },
   "titles": {
-    "categories": "Alle Kategorien",
+    "categories": "Kategorien",
+    "allCategories": "Alle Kategorien",
     "checkout": "Checkout",
     "filter": "Filter",
     "cart": "Warenkorb",
