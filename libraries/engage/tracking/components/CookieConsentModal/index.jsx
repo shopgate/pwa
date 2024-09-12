@@ -35,25 +35,25 @@ const CookieConsentModal = ({
   } = appConfig;
 
   const imageSRC = useMemo(() => {
-    // if no overwrite configured: use default image
     if (!modalImageURL && !modalImageSVG) {
       return cookieImage;
     }
 
-    // if URL overwrite configured: use it
     if (modalImageURL) {
       return modalImageURL;
     }
 
     // if SVG overwrite configured: create data url
     try {
-      // Remove any characters outside the Latin1 range
-      const decoded = decodeURIComponent(encodeURIComponent(modalImageSVG));
+      // encode SVG string to UTF-8 byte array to handle non-Latin1 characters
+      // (e.g. Unicode characters like emojis)
+      const utf8Encoder = new TextEncoder();
+      const svgBytes = utf8Encoder.encode(modalImageSVG);
 
-      // Now we can use btoa to convert the svg to base64
-      const base64 = btoa(decoded);
+      // Convert the byte array to a Base64 string
+      const base64Svg = btoa(String.fromCharCode.apply(null, svgBytes));
 
-      return `data:image/svg+xml;base64,${base64}`;
+      return `data:image/svg+xml;base64,${base64Svg}`;
     } catch (e) {
       return cookieImage;
     }
