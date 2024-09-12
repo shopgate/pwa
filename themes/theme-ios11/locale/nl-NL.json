@@ -13,11 +13,12 @@
     "products": "Producten"
   },
   "titles": {
-    "categories": "Alle Categorieën",
+    "categories": "Categorieën",
+    "allCategories": "Alle categorieën",
     "filter": "Filter",
     "cart": "Winkelwagen",
     "shipping": "Verzending",
-    "reviews": "Reviews",
+    "reviews": "Beoordelingen",
     "browse": "Bladeren",
     "favorites": "Favorieten",
     "scanner": "Scanner",
@@ -217,12 +218,17 @@
     "edit": "Wijzig",
     "empty": "Uw winkelwagen is leeg",
     "continue": "Winkel verder",
-    "redeem_coupon": "Voer coupon code in",
+    "redeem_coupon": "Voer uw kortingscode in",
+    "submit_coupon": "Kortingscode verzenden",
+    "delete_coupon": "Kortingscode verwijderen",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
-    "coupons_not_supported": "Coupons zijn ongeldig.",
-    "free_shipping": "Gratis verzending"
+    "coupons_not_supported": "Wissel uw vouchers en cadeaubonnen in bij de volgende stap",
+    "free_shipping": "Gratis verzending",
+    "message_type_info": "Informatie",
+    "message_type_error": "Fout",
+    "message_type_warning": "Waarschuwing"
   },
   "login": {
     "headline": "Welkom",
@@ -239,14 +245,13 @@
   },
   "navigation": {
     "login_register": "Log in / Registreer",
-    "your_account": "Uw Account",
+    "your_account": "Mijn account",
     "home": "Home",
     "categories": "Categorieën",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
-    "back_in_stock": "Terug in voorraad herinnering",
     "shipping": "Verzendmethoden",
-    "about": "Impressum",
+    "about": "Over ons",
     "payment": "Uw betalingswens",
     "terms": "Algemene Voorwaarden",
     "privacy": "Privacybeleid",
@@ -256,6 +261,7 @@
     "logout": "Log uit",
     "store_information": "Over ons",
     "more_menu": "Meer",
+    "back_in_stock": "Terug in voorraad herinnering",
     "back": "Terug naar {title}"
   },
   "reviews": {

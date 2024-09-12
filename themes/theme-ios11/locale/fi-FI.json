@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Luokat",
+    "allCategories": "Kaikki kategoriat",
     "filter": "Suodattimet",
     "cart": "Ostoskori",
     "shipping": "Toimitus",
@@ -244,7 +245,7 @@
   },
   "navigation": {
     "login_register": "Kirjaudu sisään",
-    "your_account": "Oma tili",
+    "your_account": "Minun tili",
     "home": "Kotisivu",
     "categories": "Kategoriat",
     "my_orders": "Tilaukseni",
@@ -261,7 +262,7 @@
     "store_information": "Tietoa meistä",
     "more_menu": "Lisää",
     "back_in_stock": "Ilmoitukset",
-    "back": "Takaisin osoitteeseen {title}"
+    "back": "Takaisin {title}"
   },
   "reviews": {
     "rating": "Arviointi",
@@ -278,7 +279,7 @@
     "review_form_error_author_empty": "Kirjoita nimi.",
     "review_form_rate_error": "Kuinka monta tähteä annat?",
     "review_form_error_length": "Enintään {length} merkkiä sallittu.",
-    "press_to_rate_with_x_stars": "Valitse arvostella kanssa {rate} {rate, plural, =1 {yksi Tähti} other {Tähdet}}",
+    "press_to_rate_with_x_stars": "Valitse arvostella kanssa {rate} {rate, plural, =1 {yksi Tähti} other {Tähdet}}.",
     "success_message": "Kiitos luokituksestasi!"
   },
   "tab_bar": {

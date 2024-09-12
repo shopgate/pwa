@@ -14,6 +14,7 @@
   },
   "titles": {
     "categories": "Categorii",
+    "allCategories": "Toate categoriile",
     "filter": "Filtru",
     "cart": "Coș de cumpărături",
     "shipping": "Transport maritim",
@@ -278,7 +279,7 @@
     "review_form_error_author_empty": "Vă rugăm să introduceți un nume.",
     "review_form_rate_error": "Câte stele dați?",
     "review_form_error_length": "Maxim {length} caractere permise.",
-    "press_to_rate_with_x_stars": "Alegeți să evaluați cu {rate} {rate, plural, =1 {o Stea} other {Stele}}",
+    "press_to_rate_with_x_stars": "Alegeți să evaluați cu {rate} {rate, plural, =1 {o Stea} other {Stele}}.",
     "success_message": "Vă mulțumim pentru evaluare!"
   },
   "tab_bar": {

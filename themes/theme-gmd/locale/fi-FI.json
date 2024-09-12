@@ -241,7 +241,6 @@
   },
   "navigation": {
     "login_register": "Kirjaudu sisään",
-    "your_account": "Oma tili",
     "home": "Kotisivu",
     "categories": "Kategoriat",
     "favorites": "Seurantaluettelo",
@@ -280,7 +279,7 @@
     "review_form_error_author_empty": "Kirjoita nimi.",
     "review_form_rate_error": "Kuinka monta tähteä annat?",
     "review_form_error_length": "Enintään {length} merkkiä sallittu.",
-    "press_to_rate_with_x_stars": "Valitse arvostella kanssa {rate} {rate, plural, =1 {yksi Tähti} other {Tähdet}}",
+    "press_to_rate_with_x_stars": "Valitse arvostella kanssa {rate} {rate, plural, =1 {yksi Tähti} other {Tähdet}}.",
     "success_message": "Kiitos luokituksestasi!"
   },
   "scanner": {

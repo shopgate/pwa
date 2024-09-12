@@ -13,7 +13,8 @@
     "products": "Products"
   },
   "titles": {
-    "categories": "All Categories",
+    "categories": "Categories",
+    "allCategories": "All Categories",
     "filter": "Filter",
     "cart": "Cart",
     "shipping": "Shipping",
@@ -167,7 +168,7 @@
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "Category not found"
     },
     "no_result": {
@@ -244,19 +245,19 @@
   },
   "navigation": {
     "login_register": "Login / Register",
-    "your_account": "Your Account",
+    "your_account": "My account",
     "home": "Home",
     "categories": "Categories",
     "my_orders": "My orders",
-    "cart": "Shopping cart",
+    "cart": "Shopping Cart",
     "shipping": "Shipping Methods",
-    "about": "Contact",
+    "about": "Contact Us",
     "payment": "Payment Methods",
-    "terms": "Terms and Conditions",
+    "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
     "privacySettings": "Privacy Settings",
     "welcome_message": "Welcome {name}",
-    "return_policy": "Return policy",
+    "return_policy": "Return Policy",
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More",

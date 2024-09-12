@@ -158,7 +158,7 @@
     "displayGroups": {
       "general": "Geral",
       "features": "Características",
-      "pricing": "Preços",
+      "pricing": "Informações de Preço",
       "properties": "Propriedades"
     }
   },
@@ -215,11 +215,16 @@
     "empty": "Seu carrinho está vazio",
     "continue": "Continuar comprando",
     "redeem_coupon": "Inserir código de cupom",
+    "submit_coupon": "Enviar cupom",
+    "delete_coupon": "Excluir cupom",
     "coupon_code": "Código",
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
-    "free_shipping": "Envio Grátis"
+    "free_shipping": "Envio Grátis",
+    "message_type_info": "Informação",
+    "message_type_error": "Erro",
+    "message_type_warning": "Aviso"
   },
   "login": {
     "headline": "Bem vindo",
@@ -236,27 +241,26 @@
   },
   "navigation": {
     "login_register": "Entrar / Registrar",
-    "your_account": "Sua Conta",
     "home": "Início",
     "categories": "Categorias",
     "favorites": "Favoritos",
     "my_orders": "Meus Pedidos",
     "cart": "Carrinho de Compras",
     "scanner": "Scanner",
-    "back_in_stock": "Lembrete de regresso ao stock",
     "shipping": "Métodos de Envio",
-    "about": "Entre em Contato Conosco",
+    "about": "Contact",
     "payment": "Métodos de Pagamento",
     "terms": "Termos e Condições",
     "privacy": "Política de Privacidade",
     "privacySettings": "Configurações de privacidade",
     "welcome_message": "Bem vindo {name}",
     "return_policy": "Política de Devoluções",
-    "logout": "Sair",
+    "logout": "Terminar sessão",
     "menuSubHeader": {
       "more": "Mais",
       "about": "Sobre nós"
     },
+    "back_in_stock": "Lembrete de regresso ao stock",
     "back": "Voltar para {title}",
     "open_menu": "Open menu"
   },
