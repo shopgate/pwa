@@ -4,7 +4,7 @@ import requestProductImages from '../action-creators/requestProductImages';
 import { SHOPGATE_CATALOG_GET_PRODUCT_IMAGES } from '../constants/Pipelines';
 import receiveProductImages from '../action-creators/receiveProductImages';
 import errorProductImages from '../action-creators/errorProductImages';
-import { getProductImagesState } from '..';
+import { getProductImagesState } from '../selectors/product';
 
 /**
  * Maybe requests images for a product from server.

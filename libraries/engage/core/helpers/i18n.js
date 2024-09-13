@@ -39,7 +39,7 @@ const I18n = () => {
   return {
     init({ locales, lang, currencyLocale = null }) {
       if (didInit) {
-        logger.warn('Looks like i18n locales are already inited. Changing locales now may lead to inconsistent translations.');
+        logger.warn('Looks like i18n locales are already initialized. Changing locales now may lead to inconsistent translations.');
       }
       didInit = true;
 
