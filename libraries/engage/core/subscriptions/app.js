@@ -1,5 +1,6 @@
-import { appWillStart$ } from '@shopgate/pwa-common/streams';
+import { appWillStart$ } from '@shopgate/engage/core/streams';
 import { configuration } from '@shopgate/engage/core/collections';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/constants';
 import { reloadApp$ } from '../streams';
 import { reloadApp } from '../action-creators';
@@ -10,6 +11,8 @@ import { reloadApp } from '../action-creators';
  */
 export default function app(subscribe) {
   subscribe(appWillStart$, ({ dispatch }) => {
+    console.log(`%cℹ️ PWA uses ${hasNewServices() ? 'NEW' : 'OLD'} services`, 'color: blue');
+
     // Add global function to enable PWA reload from the console
     window.reloadSGApp = () => {
       dispatch(reloadApp());
