@@ -65,6 +65,11 @@ export function sortCartItems(cartItems) {
  * @returns {Object}
  */
 export const createCartItemPrices = (cartItem = {}) => {
+  /**
+   * When PWA doesn't run with new services and uses a "shopgate.cart.getCart.v1" pipeline from one
+   * of the available cart extensions, we return a price array based on the response of those
+   * pipelines.
+   */
   if (!hasNewServices()) {
     const { product: { price = {} } = {} } = cartItem;
 
@@ -79,9 +84,15 @@ export const createCartItemPrices = (cartItem = {}) => {
     };
   }
 
+  /**
+   * When running with the new services, the "shopgate.cart.getCart.v1" pipeline returns entities
+   * with different price properties. Those are handled here.
+   */
+
   const {
     product = {}, quantity, price, promoAmount, extendedPrice, unitPromoAmount, unitDiscountAmount,
   } = cartItem;
+
   const {
     unit, unitSale, unitEffective,
   } = product?.price || {};
