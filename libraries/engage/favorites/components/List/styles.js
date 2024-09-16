@@ -10,7 +10,7 @@ const styles = {
   rootNoFavoritesLists: css({
     background: colors.light,
     flexGrow: 1,
-    paddingTop: variables.gap.xsmall,
+    paddingBottom: variables.gap.small,
     paddingLeft: '16px',
     paddingRight: '16px',
   }),
