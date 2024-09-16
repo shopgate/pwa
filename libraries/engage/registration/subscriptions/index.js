@@ -29,7 +29,8 @@ export default function registration(subscribe) {
     dispatch(historyPop());
     dispatch(successLogin(
       redirect,
-      REGISTRATION_FORM_LOGIN_STRATEGY
+      REGISTRATION_FORM_LOGIN_STRATEGY,
+      action?.response?.sessionLifetimeInSeconds
     ));
   });
 }
