@@ -53,7 +53,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               id={null}
               inputComponent="input"
               isControlled={false}
-              maxlength=""
+              maxLength=""
               name={null}
               onChange={[Function]}
               onFocusChange={[Function]}
@@ -168,7 +168,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               id={null}
               inputComponent="input"
               isControlled={false}
-              maxlength=""
+              maxLength=""
               name={null}
               onChange={[Function]}
               onFocusChange={[Function]}

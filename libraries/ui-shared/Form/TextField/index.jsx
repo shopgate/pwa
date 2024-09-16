@@ -27,7 +27,7 @@ class TextField extends Component {
     /** Element to place left of text input (leading icon) */
     leftElement: PropTypes.node,
     /** The max. length of the text input */
-    maxlength: PropTypes.string,
+    maxLength: PropTypes.string,
     /** Is simple input or textarea */
     multiLine: PropTypes.bool,
     onChange: PropTypes.func,
@@ -54,7 +54,7 @@ class TextField extends Component {
     rightElement: null,
     value: '',
     type: 'text',
-    maxlength: '',
+    maxLength: '',
   };
 
   /**
