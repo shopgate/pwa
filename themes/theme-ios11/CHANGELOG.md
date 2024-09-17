@@ -1,5 +1,18 @@
 # Changelog
 
+## [v7.20.0](https://github.com/shopgate/pwa/compare/...v7.20.0) (2024-09-17)
+
+#### :rocket: Enhancement
+* [#1267](https://github.com/shopgate/pwa/pull/1267) HTML Sanitizer now blocks YouTube and Vimeo videos when comfort cookies are not accepted ([@fkloes](https://github.com/fkloes))
+* [#1268](https://github.com/shopgate/pwa/pull/1268) Add core tracking for favorites ([@SaschaKrist](https://github.com/SaschaKrist))
+* [#1261](https://github.com/shopgate/pwa/pull/1261) Add meta property to ProductListProvider ([@SaschaKrist](https://github.com/SaschaKrist))
+* [#1231](https://github.com/shopgate/pwa/pull/1231) Add config and logic for price grouping ([@Phmank](https://github.com/Phmank))
+
+#### :bug: Bug Fix
+* [#1271](https://github.com/shopgate/pwa/pull/1271) Fix svg encoding in cookie and push opt-in modals ([@AylinUenal](https://github.com/AylinUenal))
+* [#1264](https://github.com/shopgate/pwa/pull/1264) Customer data is fully reset on logout ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
