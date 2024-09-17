@@ -23,3 +23,9 @@ export const GuestCheckoutRegistration = lazy(() => import('./Checkout/GuestChec
 export const GuestCheckoutPayment = lazy(() => import('./Checkout/GuestCheckoutPayment'));
 export const Checkout = lazy(() => import('./Checkout/Checkout'));
 export const Register = lazy(() => import('./Register'));
+export const OrderDetails = lazy(() => import('./OrderDetails'));
+export const CheckoutConfirmationPage = lazy(() => import('./Checkout/CheckoutConfirmation'));
+export const ForgotPassword = lazy(() => import('./ForgotPassword'));
+export const Account = lazy(() => import('./Account'));
+export const AccountContact = lazy(() => import('./Account/Contact'));
+export const StoreFinder = lazy(() => import('./StoreFinder'));
