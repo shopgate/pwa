@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.23.5](https://github.com/shopgate/pwa/compare/v6.23.4...v6.23.5) (2024-09-17)
+
+#### :rocket: Enhancement
+* [#1270](https://github.com/shopgate/pwa/pull/1270) Added missing translations to some locale files ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1271](https://github.com/shopgate/pwa/pull/1271) Fix svg encoding in cookie and push opt-in modals ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v6.23.4](https://github.com/shopgate/pwa/compare/v6.23.3...v6.23.4) (2024-09-11)
 
 #### :rocket: Enhancement
