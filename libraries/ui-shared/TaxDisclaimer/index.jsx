@@ -13,6 +13,7 @@ import styles from './style';
  * @returns {Function}
  */
 const TaxDisclaimer = () => {
+  // Added with PWA 6 - CCP-2372
   const {
     show,
     text,

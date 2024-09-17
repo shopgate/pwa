@@ -18,6 +18,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Price = (props, context) => {
+  // Added with PWA 6 - CCP-2372
   const {
     show,
     hint,

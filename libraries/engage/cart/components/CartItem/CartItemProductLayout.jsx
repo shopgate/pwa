@@ -30,6 +30,7 @@ import styles from './CartItemProductLayout.style';
  * @returns {JSX}
  */
 export function CartItemProductLayout() {
+  // Added with PWA 6 - CCP-2372
   const {
     show,
   } = useWidgetSettings('@shopgate/engage/components/TaxDisclaimer');
