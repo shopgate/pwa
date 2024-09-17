@@ -46,7 +46,8 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
-import { STORE_FINDER_PATTERN, GlobalLocationSelector } from '@shopgate/engage/locations';
+import { STORE_FINDER_PATTERN } from '@shopgate/engage/locations/constants';
+import { GlobalLocationSelector } from '@shopgate/engage/locations/components';
 import FavoritesListChooser from '@shopgate/engage/favorites/components/ListChooser';
 
 import { FulfillmentSlotProvider } from '@shopgate/engage/locations/components/FulfillmentSlotSwitcher';
@@ -65,14 +66,8 @@ import {
   CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 } from '@shopgate/engage/checkout/constants';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
-import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account';
-import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders';
-import CheckoutConfirmationPage from './Checkout/CheckoutConfirmation';
-import ForgotPassword from './ForgotPassword';
-import OrderDetails from './OrderDetails';
-import Account from './Account';
-import AccountContact from './Account/Contact';
-import StoreFinder from './StoreFinder';
+import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account/constants';
+import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders/constants';
 import PageNotFound from './404';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -218,7 +213,7 @@ const Pages = ({ store }) => {
                       />
                       <Route
                         pattern={CHECKOUT_CONFIRMATION_PATTERN}
-                        component={CheckoutConfirmationPage}
+                        component={routes.CheckoutConfirmationPage}
                       />
                       <Route
                         pattern={CHECKOUT_ADDRESS_BOOK_PATTERN}
@@ -234,31 +229,31 @@ const Pages = ({ store }) => {
                       />
                       <Route
                         pattern={FORGOT_PASSWORD_PATTERN}
-                        component={ForgotPassword}
+                        component={routes.ForgotPassword}
                       />
                       <Route
                         pattern={ACCOUNT_PATH}
-                        component={Account}
+                        component={routes.Account}
                       />
                       <Route
                         pattern={ACCOUNT_PATTERN}
-                        component={Account}
+                        component={routes.Account}
                       />
                       <Route
                         pattern={PROFILE_ADDRESS_PATH}
-                        component={AccountContact}
+                        component={routes.AccountContact}
                       />
                       <Route
                         pattern={ORDER_DETAILS_PATTERN}
-                        component={OrderDetails}
+                        component={routes.OrderDetails}
                       />
                       <Route
                         pattern={ORDER_DETAILS_PRIVATE_PATTERN}
-                        component={OrderDetails}
+                        component={routes.OrderDetails}
                       />
                       <Route
                         pattern={STORE_FINDER_PATTERN}
-                        component={StoreFinder}
+                        component={routes.StoreFinder}
                       />
                       <Route.NotFound component={PageNotFound} />
                       {React.Children.map(routePortals, Component => Component)}
