@@ -1,5 +1,3 @@
-import { loadStripe } from '@stripe/stripe-js';
-
 let resolve;
 let reject;
 let stripe;
@@ -16,8 +14,11 @@ let loaded = false;
  * @returns {Stripe}
  */
 export const loadSdk = (publishableKey) => {
-  if (loaded) { return promise; }
+  if (loaded || !publishableKey) { return promise; }
   loaded = true;
+
+  // eslint-disable-next-line global-require
+  const { loadStripe } = require('@stripe/stripe-js');
 
   /** */
   const fn = async () => {
