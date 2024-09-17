@@ -27,10 +27,3 @@ export * from '@shopgate/pwa-common-commerce/checkout/streams';
 
 // HOOKS
 export * from './hooks/common';
-
-// Components
-export { default as Checkout } from './components/Checkout/Checkout';
-export { default as GuestCheckoutPayment } from './components/GuestCheckout/GuestCheckout';
-export { default as CheckoutConfirmation } from './components/CheckoutConfirmation/CheckoutConfirmation';
-export { default as AddressBook } from './components/AddressBook';
-export { default as AddressBookContact } from './components/AddressBookContact';

@@ -1,4 +1,4 @@
-import { PipelineRequest } from '@shopgate/engage/core';
+import { PipelineRequest } from '@shopgate/engage/core/classes';
 import {
   FETCH_CUSTOMER,
   FETCH_CUSTOMER_ERROR,
