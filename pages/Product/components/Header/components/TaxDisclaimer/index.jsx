@@ -8,6 +8,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const TaxDisclaimer = () => {
+  // Added with PWA 6 - CCP-2372
   const {
     show,
   } = useWidgetSettings('@shopgate/engage/components/TaxDisclaimer');
