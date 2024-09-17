@@ -1,6 +1,13 @@
+import { loadStripe } from '@stripe/stripe-js';
+import { logger } from '@shopgate/engage/core/helpers';
+
+// Write a log when sdk module loads - should not happen before entering native checkout
+logger.warn('Stripe payment method module loaded');
+
 let resolve;
 let reject;
 let stripe;
+
 export const promise = new Promise((res, rej) => {
   resolve = res;
   reject = rej;
@@ -16,9 +23,6 @@ let loaded = false;
 export const loadSdk = (publishableKey) => {
   if (loaded || !publishableKey) { return promise; }
   loaded = true;
-
-  // eslint-disable-next-line global-require
-  const { loadStripe } = require('@stripe/stripe-js');
 
   /** */
   const fn = async () => {
