@@ -2,7 +2,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { logger } from '@shopgate/engage/core/helpers';
 
 // Write a log when sdk module loads - should not happen before entering native checkout
-logger.warn('Stripe payment method module loaded');
+logger.warn('Stripe SDK loaded');
 
 let resolve;
 let reject;
