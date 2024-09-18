@@ -9,6 +9,7 @@ const { colors: { light: defaultBackgroundColor } } = themeConfig;
  * @param {string} color The new background color.
  */
 export const setPageBackgroundColor = (color = defaultBackgroundColor) => {
+  // Curbside website changes never its background color
   if (!hasWebBridge()) {
     setCSSCustomProp('--page-background-color', color);
   }
