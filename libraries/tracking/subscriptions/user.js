@@ -1,6 +1,6 @@
 import { loginDidFail$ } from '@shopgate/engage/user';
 import { makeGetUser } from '../selectors/user';
-import { loginSuccess$ } from '../streams/user';
+import { loginSuccess$, registrationSuccess$ } from '../streams/user';
 import { track } from '../helpers/index';
 
 /**
@@ -19,4 +19,9 @@ export default function user(subscribe) {
    */
   subscribe(loginDidFail$, ({ getState }) => (
     track('loginFailed', undefined, getState())));
+
+  subscribe(registrationSuccess$, ({ getState }) => (
+    track('completedRegistration', {
+      registrationType: 'E-Mail',
+    }, getState())));
 }
