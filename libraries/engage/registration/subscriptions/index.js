@@ -10,7 +10,7 @@ import { registrationSuccess$ } from '../streams';
  * @param {Function} subscribe Subscribes to an observable.
  */
 export default function registration(subscribe) {
-  subscribe(registrationSuccess$, ({ dispatch, getState }) => {
+  subscribe(registrationSuccess$, ({ dispatch, getState, action }) => {
     const currentRoute = getCurrentRoute(getState());
     let redirect;
 
@@ -29,7 +29,8 @@ export default function registration(subscribe) {
     dispatch(historyPop());
     dispatch(successLogin(
       redirect,
-      REGISTRATION_FORM_LOGIN_STRATEGY
+      REGISTRATION_FORM_LOGIN_STRATEGY,
+      action?.response?.sessionLifetimeInSeconds
     ));
   });
 }
