@@ -43,6 +43,10 @@ export const initCSSCustomProps = () => {
 
   setCSSCustomProp('--color-button-cta', 'var(--color-primary)');
   setCSSCustomProp('--color-button-cta-contrast', 'var(--color-primary-contrast)');
+
+  if (!getCSSCustomProp('--color-button-dialog-ios')) {
+    setCSSCustomProp('--color-button-dialog-ios', '#1a73e8');
+  }
 };
 
 /**
@@ -60,6 +64,10 @@ export const initCSSCustomPropsFallback = () => {
   } else {
     setCSSCustomProp('--color-button-cta', 'var(--color-primary)');
     setCSSCustomProp('--color-button-cta-contrast', 'var(--color-primary-contrast)');
+  }
+
+  if (!getCSSCustomProp('--color-button-dialog-ios')) {
+    setCSSCustomProp('--color-button-dialog-ios', '#1a73e8');
   }
 
   setCSSCustomProp('--color-text-high-emphasis', '#212121');

@@ -43,7 +43,7 @@ const actions = css({
 
 const button = css({
   '&& > *': {
-    color: '#1a73e8',
+    color: 'var(--color-button-dialog-ios, #1a73e8)',
   },
   // Increases specificity to allow button customization.
   '&&': {
