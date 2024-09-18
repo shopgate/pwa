@@ -122,6 +122,8 @@ class TabBar extends PureComponent {
     if (scroll === true) {
       this.setState({
         isScrolledOut: false,
+      }, () => {
+        updateHeightCSSProperty(true);
       });
       return;
     }
@@ -134,6 +136,8 @@ class TabBar extends PureComponent {
     if (scroll === true) {
       this.setState({
         isScrolledOut: true,
+      }, () => {
+        updateHeightCSSProperty(false);
       });
       return;
     }
