@@ -145,7 +145,14 @@ class SnackBar extends Component {
           onRest={this.handleRest}
         >
           {props => (
-            <div className={styles.wrapper} style={props} data-footer-inset-update-ignore="true">
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+            <div
+              className={styles.wrapper}
+              style={props}
+              data-footer-inset-update-ignore="true"
+              onClick={this.hide}
+            >
               <div className={styles.box} {...boxProps}>
                 <Ellipsis rows={rows}>
                   <span className={styles.label} aria-live="assertive" role="status">
