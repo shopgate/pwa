@@ -4,16 +4,16 @@
     "load_more": "Mehr laden",
     "cancel": "Abbrechen",
     "submit": "Abschicken",
-    "undo": "Rück­gän­gig",
+    "undo": "Rückgängig",
     "required": "Erforderlich *",
     "please_choose": "Bitte wählen",
     "show_products": "Produkte anzeigen",
     "back": "Zurück",
     "close": "Schließen",
     "products": "Produkte",
-    "error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "errors": {
-      "generic": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut."
+      "generic": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
     }
   },
   "titles": {
@@ -65,7 +65,7 @@
         "phone": "Telefonnummer",
         "mobile": "Telefonnummer",
         "region": "Bundesland",
-        "marketing_opt_in_label": "Halte mich auf dem Laufenden mit Neuigkeiten und exklusiven Angeboten.",
+        "marketing_opt_in_label": "Halten Sie mich auf dem Laufenden mit Neuigkeiten und exklusiven Angeboten.",
         "default_billing": "Standard Rechnungsadresse",
         "default_shipping": "Standard Lieferadresse",
         "save_default_billing": "Diese Rechnungsadresse für künftige Bestellungen speichern",
@@ -73,7 +73,7 @@
         "save": "Speichern",
         "add": "Adresse hinzufügen",
         "success": "Profil gespeichert",
-        "error": "Fehler beim speichern"
+        "error": "Fehler beim Speichern"
       },
       "delete": "Account löschen",
       "address_book": {
@@ -90,10 +90,10 @@
         }
       },
       "confirm": {
-        "title": "Bist du dir sicher?",
+        "title": "Sind Sie sich sicher?",
         "confirm": "Bestätigen",
-        "messageContact": "Willst du wirklich diese Adresse löschen",
-        "messageCustomer": "Willst du wirklich deinen Account löschen. All deine persönlichen Daten und Einstellungen werden gelöscht."
+        "messageContact": "Wollen Sie wirklich diese Adresse löschen",
+        "messageCustomer": "Wollen Sie wirklich Ihren Account löschen. All Ihre persönlichen Daten und Einstellungen werden gelöscht."
       }
     }
   },
@@ -121,7 +121,7 @@
     "empty": "Sie haben noch keine Artikel auf der Merkliste",
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
-    "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten.",
+    "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten",
     "remove": "Von der Merkliste löschen",
     "removed": "Von Merkliste entfernt",
     "add_list_modal": {
@@ -274,7 +274,7 @@
     }
   },
   "locations": {
-    "headline": "Läden in deiner Nähe",
+    "headline": "Läden in Ihrer Nähe",
     "details": "Details",
     "hours_details": "Laden Öffnungsdetails",
     "today_hours": "Heute: {hours}",
@@ -298,14 +298,14 @@
     "me": "Ich selbst",
     "someone_else": "Jemand anderes",
     "success_heading": "Reservierungsbestätigung",
-    "success_title": "Vielen Dank für deine Reservierung!",
-    "success_copy": "Wir senden dir in Kürze eine E-Mail/SMS Nachricht, sobald deine Reservierung bereit zur Abholung ist.",
+    "success_title": "Vielen Dank für Ihre Reservierung!",
+    "success_copy": "Wir senden Ihnen in Kürze eine E-Mail/SMS Nachricht, sobald Ihre Reservierung bereit zur Abholung ist.",
     "success_order_num": "Reservierungs-Nr.",
     "error_heading": "Es ist ein Fehler aufgetreten",
-    "error_title": "Leider konnte deine Reservierung nicht abgeschlossen werden.",
-    "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfe die Verfügbarkeit in anderen Filialen im Warenkorb.",
-    "error_invalid_zip_code": "Bitte gib eine gültige Postleitzahl ein.",
-    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfe deine Eingabe.",
+    "error_title": "Leider konnte Ihre Reservierung nicht abgeschlossen werden.",
+    "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfen Sie die Verfügbarkeit in anderen Filialen im Warenkorb.",
+    "error_invalid_zip_code": "Bitte geben Sie eine gültige Postleitzahl ein.",
+    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe.",
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "select_location": "Filiale wählen",
@@ -316,7 +316,7 @@
     "radius": "Radius",
     "stores_near": {
       "zip_code": "Filialen nähe \"{zipCode}\"",
-      "location": "filialen in deiner Nähe"
+      "location": "Filialen in Ihrer Nähe"
     },
     "your_current_timeslot": {
       "heading": "Abholzeit",
@@ -352,11 +352,11 @@
       "ropis": "Click & Reserve",
       "bopis": "Click & Collect",
       "error": {
-        "direct_ship": "Dieses Produkt steht nicht für den Versand zur Verfügung. Bitte wähle eine andere Option oder prüfe die Verfügbarkeit in einer Filiale in deiner Nähe.",
-        "reserve": "Dieses Produkt ist nicht in der gewählten Filiale verfügbar. Bitte wähle eine andere Filiale.",
-        "not_ready": "Bitte wähle eine Filiale.",
-        "ropis": "Dieses Produkt steht in dieser Filiale nicht für Click & Reserve zur Verfügung. Bitte wähle eine andere Option oder Filiale.",
-        "bopis": "Dieses Produkt steht in dieser Filiale nicht für Click & Collect zur Verfügung. Bitte wähle eine andere Option oder Filiale."
+        "direct_ship": "Dieses Produkt steht nicht für den Versand zur Verfügung. Bitte wählen Sie andere Option oder prüfen Sie die Verfügbarkeit in einer Filiale in Ihrer Nähe.",
+        "reserve": "Dieses Produkt ist nicht in der gewählten Filiale verfügbar. Bitte wählen Sie andere Filiale.",
+        "not_ready": "Bitte wählen Sie eine Filiale.",
+        "ropis": "Dieses Produkt steht in dieser Filiale nicht für Click & Reserve zur Verfügung. Bitte wählen Sie andere Option oder Filiale.",
+        "bopis": "Dieses Produkt steht in dieser Filiale nicht für Click & Collect zur Verfügung. Bitte wählen Sie andere Option oder Filiale."
       }
     },
     "stock_info": {
@@ -371,7 +371,7 @@
     "no_available": "nicht verfügbar",
     "multi_location_modal": {
       "title": "Filiale wechseln",
-      "message": "Du hast bereits Produkte von einer anderen Filiale im Warenkorb. Diese Produkte werden zur neuen Filiale geändert. Preise und Verfügbarkeit können sich unterscheiden.",
+      "message": "Sie haben bereits Produkte von einer anderen Filiale im Warenkorb. Diese Produkte werden zur neuen Filiale geändert. Preise und Verfügbarkeit können sich unterscheiden.",
       "change_store": "Filiale wechseln"
     }
   },
@@ -459,10 +459,10 @@
     "message_type_error": "Fehler",
     "message_type_warning": "Warnung",
     "errors": {
-      "404": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
-      "1001": "Eins oder mehrere Produkte in Deinem Warenkorb sind derzeit nicht auf Lager. Bitte entferne diese.",
-      "1002": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
-      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wähle eine andere Abholzeit aus.",
+      "404": "Ein oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus Ihrem Warenkorb entfernt.",
+      "1001": "Ein oder mehrere Produkte in Ihrem Warenkorb sind derzeit nicht auf Lager. Bitte entfernen Sie diese.",
+      "1002": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wählen Sie nur eine Filiale aus.",
+      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wählen Sie eine andere Abholzeit aus.",
       "item": {
         "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar.",
         "1004": "Bitte wählen Sie eine Abholzeit aus.",
@@ -481,21 +481,21 @@
       "coupon": {
         "404": "Dieser Gutschein existiert nicht.",
         "2000": "Dieser Gutschein ist ungültig.",
-        "2001": "Der Gutschein ist erst gültig ab {startDate, date, yyyyMMdd} {startDate, time, short} Uhr.",
-        "2002": "Der Gutschein ist abgelaufen am {endDate, date, yyyyMMdd} {endDate, time, short} Uhr.",
-        "2003": "Der Gutschein ist nicht gültig für deinen aktuellen Warenkorb.",
+        "2001": "Der Gutschein ist erst gültig ab {startDate, date, yyyyMMdd} um {startDate, time, short} Uhr.",
+        "2002": "Der Gutschein ist am {endDate, date, yyyyMMdd} um {endDate, time, short} Uhr abgelaufen.",
+        "2003": "Der Gutschein ist für Ihren aktuellen Warenkorb nicht gültig.",
         "2004": "Dieser Gutschein wurde bereits eingelöst.",
         "2005": "Dieser Gutschein hat das Limit der maximalen Einlösungen erreicht.",
         "generic": "Bei diesem Gutschein ist ein unerwarteter Fehler aufgetreten."
       },
       "generic": "Ein unerwarteter Fehler ist aufgetreten.",
-      "insufficientstock": "Eins oder mehrere Produkte in Deinem Warenkorb sind derzeit nicht auf Lager. Bitte entferne diese.",
-      "multiplelocations": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
-      "productsNotFound": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
-      "mixed_cart": "Reservierungen und Online Bestellungen müssen in separaten Bestellungen aufgegeben werden. Bitte aktualisiere die Produkte, sodass im Warenkorb entweder nur Online Bestellungen oder Reservierungen sind.",
-      "direct_ship_item": "Prüfe, ob dieses Produkt in einer Filiale in deiner Nähe reserviert werden kann.",
-      "ropis_cart_inventory": "Nicht alle Produkte können reserviert werden. Bitte überprüfe die Fehler und ändere die Lieferoptionen.",
-      "ropis_item_inventory": "Dieses Produkt kann in der gewünschten Filiale nicht reserviert werden. Prüfe, ob es in einer anderen Filiale vorrätig ist.",
+      "insufficientstock": "Ein oder mehrere Produkte in Ihrem Warenkorb sind derzeit nicht auf Lager. Bitte entfernen Sie diese.",
+      "multiplelocations": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wählen Sie nur eine Filiale aus.",
+      "productsNotFound": "Ein oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus Ihrem Warenkorb entfernt.",
+      "mixed_cart": "Reservierungen und Online-Bestellungen müssen in getrennten Bestellungen aufgegeben werden. Bitte aktualisieren Sie die Produkte, so dass der Warenkorb entweder nur Online-Bestellungen oder nur Reservierungen enthält.",
+      "direct_ship_item": "Prüfen Sie, ob dieses Produkt in einer Filiale in Ihrer Nähe reserviert werden kann.",
+      "ropis_cart_inventory": "Nicht alle Produkte können reserviert werden. Bitte überprüfen Sie die Fehler und ändern Sie die Lieferoptionen.",
+      "ropis_item_inventory": "Dieses Produkt kann in der gewünschten Filiale nicht reserviert werden. Prüfen Sie, ob es in einer anderen Filiale vorrätig ist.",
       "ropis_item_inventory_exceed": "Gewünschte Anzahl nicht verfügbar bei {storeName}. Die maximale Anzahl von {inventory} wird reserviert.",
       "mixed_cart_coupon_removed": "Der Gutschein \"{code}\" ist nicht verfügbar für Reservierungen."
     },
@@ -520,11 +520,11 @@
     "no_account": "Sie haben noch kein Konto?",
     "signup": "Registrieren",
     "logout_message": "Sie wurden ausgeloggt.",
-    "auto_logout_message": "Du wurdest automatisch ausgeloggt.",
+    "auto_logout_message": "Sie wurden automatisch ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
-      "subline": "Bitte gib deine E-Mail-Adresse ein.",
-      "reset_instructions": "Du erhälst eine E-Mail zum Zurücksetzen deines Passworts an {email}",
+      "subline": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+      "reset_instructions": "Sie erhalten eine E-Mail zum Zurücksetzen Ihres Passworts an {email}",
       "back_to_login": "Zurück zur Anmeldung",
       "customer_not_found": "Zu dieser E-Mail Adresse liegt und kein Account vor."
     }
@@ -601,9 +601,9 @@
     "steps": "Schritt {from} von {to}",
     "change_contacts": "Kontakt ändern",
     "change_addresses": "Adresse ändern",
-    "finalizePayment": "Bestellung ab­schlie­ßen",
+    "finalizePayment": "Bestellung abschließen",
     "payment": {
-      "title": "Wie möchtest du bezahlen?",
+      "title": "Wie möchten Sie bezahlen?",
       "buttons": {
         "stripe": "Kreditkarte"
       }
@@ -616,16 +616,16 @@
       }
     },
     "errors": {
-      "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
-      "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
-      "checkCart": "Bitte überprüfe Deinen Warenkorb.",
-      "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte überprüfe Deinen Warenkorb.",
+      "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuchen Sie es später erneut.",
+      "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuchen Sie es später erneut.",
+      "checkCart": "Bitte überprüfen Sie Ihren Warenkorb.",
+      "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte überprüfen Sie Ihren Warenkorb.",
       "paypalFunding": "Bei der Ausführung der Zahlung ist ein Fehler aufgetreten.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
-      "noPaymentTransaction": "Keine Payment Transaktion verfügbar.",
+      "noPaymentTransaction": "Keine Zahlungstransaktion verfügbar.",
       "genericUpdateBilling": "Fehler bei Aktualisierung der Rechnungsadresse",
       "payment": {
-        "genericExternal": "Die Bezahlung mit der ausgewählten Bezahlmethode ist leider fehlgeschlagen. Versuche es erneut mit einer anderen Bezahlmethode."
+        "genericExternal": "Die Bezahlung mit der ausgewählten Zahlungsart ist leider fehlgeschlagen. versuchen Sie es erneut mit einer anderen Zahlungsart."
       }
     },
     "pickup_contact": {
@@ -659,7 +659,7 @@
       "address": "{postalCode} {city}, {region}",
       "edit": "Ändern",
       "change": "Ändern",
-      "select_address": "Wähle eine Rechnungsadresse aus"
+      "select_address": "Wählen Sie eine Rechnungsadresse aus"
     },
     "shipping": {
       "headline": "Lieferadresse",
@@ -667,7 +667,7 @@
       "address": "{postalCode} {city}, {region}",
       "edit": "Ändern",
       "change": "Ändern",
-      "select_address": "Wähle eine Lieferadresse aus"
+      "select_address": "Wählen Sie eine Lieferadresse aus"
     },
     "creditCard": {
       "headline": "Zahlungsart",
@@ -683,9 +683,9 @@
       "total": "Summe"
     },
     "success": {
-      "title": "Vielen Dank für deine Bestellung",
-      "instructions_1": "Folgend findest du deine Bestellinformationen. Bei Fragen bzgl. der Bestellung, bitte kontaktiere deine Filiale.",
-      "instructions_2": "Bitte beachte das die Abholzeiten aufgrund von Feiertagen und Wochenenden variieren können.",
+      "title": "Vielen Dank für Ihre Bestellung",
+      "instructions_1": "Folgend finden Sie Ihre Bestellinformationen. Bei Fragen bzgl. der Bestellung, kontaktieren Sie bitte Ihre Filiale.",
+      "instructions_2": "Bitte beachten Sie, dass die Abholzeiten aufgrund von Feiertagen und Wochenenden variieren können.",
       "order_number": "Bestellnummer: {orderNumber}",
       "order_date": "Bestelldatum: {date}",
       "your_items": "Produkte:",
@@ -735,11 +735,11 @@
       "phone_number": "Telefon"
     },
     "subline": {
-      "order_number": "Deine Bestellnummer lautet: {orderNumber}",
+      "order_number": "Ihre Bestellnummer lautet: {orderNumber}",
       "order_status": "Status: {status}"
     },
     "authenticate": {
-      "instructions": "Bitte authentifiziere Dich mit deiner E-Mail und Telefonnummer, die für die Bestellung verwendet wurde.",
+      "instructions": "Bitte authentifizieren Sie sich mit Ihrer E-Mail und Telefonnummer, die für die Bestellung verwendet wurde.",
       "or_login": "Oder einloggen"
     },
     "errors": {
@@ -752,7 +752,7 @@
       "button": "Bestellung stornieren",
       "modal": {
         "title": "Stornierung",
-        "message": "Willst du wirklich die Bestellung stornieren? Dieser Vorgang kann nicht rückgängig gemacht werden!",
+        "message": "Wollen Sie wirklich die Bestellung stornieren? Dieser Vorgang kann nicht rückgängig gemacht werden!",
         "confirm": "Ja, Bestellung stornieren"
       }
     }
@@ -776,7 +776,7 @@
   },
   "registration": {
     "create_account": "Account erstellen",
-    "marketing_opt_in_label": "Halte mich auf dem Laufenden mit Neuigkeiten und exklusiven Angeboten.",
+    "marketing_opt_in_label": "Halten Sie mich auf dem Laufenden mit Neuigkeiten und exklusiven Angeboten.",
     "different_shipping_address_label": "Abweichende Lieferadresse",
     "headlines": {
       "create_new_account": "Neuen Account erstellen",
@@ -789,13 +789,13 @@
     "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
   },
   "validation": {
-    "required": "Bitte vervollständige dieses Feld",
-    "email": "Gib bitte eine gültige E-Mail-Adresse ein",
-    "numeric": "Bitte gib nur Zahlen ein",
-    "alphaNumeric": "Gib bitte nur Buchstaben und Zahlen ein",
-    "mobileNumber": "Gib bitte eine gültige Handynummer ein",
-    "date": "Bitte gib ein gültiges Datum ein",
-    "checkField": "Bitte überprüfe dieses Feld",
+    "required": "Bitte vervollständigen Sie dieses Feld",
+    "email": "Geben Sie bitte eine gültige E-Mail-Adresse ein",
+    "numeric": "Bitte geben Sie nur Zahlen ein",
+    "alphaNumeric": "Bitte geben Sie nur Buchstaben und Zahlen ein",
+    "mobileNumber": "Bitte geben Sie eine gültige Handynummer ein",
+    "date": "Bitte geben Sie ein gültiges Datum ein",
+    "checkField": "Bitte überprüfen Sie dieses Feld",
     "emailConflict": "Diese E-Mail-Adresse ist bereits registriert",
     "passwordMismatch": "Die Passwörter stimmen nicht überein",
     "minPasswordLength": "Die minimale Passwortlänge beträgt %'{count} Zeichen"
