@@ -386,13 +386,13 @@
     }
   },
   "search": {
+    "placeholder": "Cerca",
+    "close": "Termina la ricerca",
+    "reset": "Reimposta ricerca",
     "no_result": {
       "heading": "Ops!",
       "body": "La tua ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    },
-    "placeholder": "Cerca",
-    "close": "Termina la ricerca",
-    "reset": "Reimposta ricerca"
+    }
   },
   "shipping": {
     "unknown": "più spedizione",
@@ -533,12 +533,12 @@
     "welcome_message": "Benvenuto/a {name}",
     "return_policy": "Politica di restituzione",
     "logout": "Esci",
+    "back": "Indietro alla {title}",
+    "open_menu": "Open menu",
     "menuSubHeader": {
       "more": "Di più",
       "about": "Su di noi"
-    },
-    "back": "Indietro alla {title}",
-    "open_menu": "Open menu"
+    }
   },
   "reviews": {
     "rating": "valutazione",
@@ -580,6 +580,7 @@
     "steps": "Step {from} of {to}",
     "change_contacts": "Change Contacts",
     "change_addresses": "Change Addresses",
+    "finalizePayment": "Finalize your Order",
     "payment": {
       "title": "How would you like to pay this order?",
       "buttons": {
@@ -606,7 +607,6 @@
         "genericExternal": "The payment with the selected payment method failed. Please try a different payment method."
       }
     },
-    "finalizePayment": "Finalize your Order",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "headline_reserve": "Pickup Contact",

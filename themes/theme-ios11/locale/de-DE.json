@@ -19,7 +19,6 @@
   "titles": {
     "categories": "Kategorien",
     "allCategories": "Alle Kategorien",
-    "checkout": "Checkout",
     "filter": "Filter",
     "cart": "Warenkorb",
     "shipping": "Versand",
@@ -28,6 +27,7 @@
     "favorites": "Wunschliste",
     "scanner": "Scanner",
     "back_in_stock": "Benachrichtigungen",
+    "checkout": "Checkout",
     "checkout_confirmation": "Bestellung erfolgreich",
     "checkout_change_billing": "Rechnungsadresse ändern",
     "register": "Registrieren",
@@ -139,6 +139,10 @@
       "message": "Der neue Name deiner Wunschliste",
       "label": "Name"
     },
+    "add_list": "Neue Liste anlegen",
+    "errors": {
+      "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
+    },
     "delete_list_modal": {
       "title": "Wunschliste löschen",
       "message": "Möchtest Du die Wunschliste \"{name}\" wirklich löschen?"
@@ -159,10 +163,6 @@
       "added": "Kommentar hinzugefügt",
       "removed": "Kommentar entfernt",
       "updated": "Kommentar aktualisiert"
-    },
-    "add_list": "Neue Liste anlegen",
-    "errors": {
-      "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
     },
     "rename_list": "Umbenennen",
     "remove_list": "Löschen",
@@ -264,8 +264,7 @@
       "properties": "Eigenschaften",
       "ratings": "Bewertungen",
       "purchase": "Produkt kaufen",
-      "quantity": "Menge",
-      "price": "Preis"
+      "quantity": "Menge"
     },
     "displayGroups": {
       "general": "Allgemein",
@@ -349,9 +348,9 @@
     "change_fulfillment_method": "Liefermethode ändern",
     "fulfillment": {
       "heading": "Verfügbarkeit",
+      "direct_ship": "Online bestellen",
       "ropis": "Click & Reserve",
       "bopis": "Click & Collect",
-      "direct_ship": "Online bestellen",
       "error": {
         "direct_ship": "Dieses Produkt steht nicht für den Versand zur Verfügung. Bitte wähle eine andere Option oder prüfe die Verfügbarkeit in einer Filiale in deiner Nähe.",
         "reserve": "Dieses Produkt ist nicht in der gewählten Filiale verfügbar. Bitte wähle eine andere Filiale.",
@@ -397,13 +396,13 @@
     }
   },
   "search": {
+    "label": "Suche",
+    "cancel": "Abbrechen",
+    "placeholder": "Suchen",
     "no_result": {
       "heading": "Ups!",
       "body": "Deine Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
-    },
-    "placeholder": "Suchen",
-    "label": "Suche",
-    "cancel": "Abbrechen"
+    }
   },
   "shipping": {
     "unknown": "zzgl. Versand",
@@ -460,35 +459,35 @@
     "message_type_error": "Fehler",
     "message_type_warning": "Warnung",
     "errors": {
+      "404": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
+      "1001": "Eins oder mehrere Produkte in Deinem Warenkorb sind derzeit nicht auf Lager. Bitte entferne diese.",
+      "1002": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
+      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wähle eine andere Abholzeit aus.",
       "item": {
+        "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar.",
+        "1004": "Bitte wählen Sie eine Abholzeit aus.",
+        "1005": "Die minimale Bestellmenge von {minQty} wurde noch nicht erreicht.",
+        "1006": "Die maximale Bestellmenge von {maxQty} wurde überschritten.",
+        "1007": "Bitte wählen Sie eine Abholfiliale aus.",
         "shopgate.cart.updateProducts": {
           "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar."
         },
         "shopgate.cart.addProducts": {
           "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar."
         },
-        "1001": "Das Produkt ist nicht in der gewünschten Anzahl verfügbar.",
-        "1004": "Bitte wählen Sie eine Abholzeit aus.",
-        "1005": "Die minimale Bestellmenge von {minQty} wurde noch nicht erreicht.",
-        "1006": "Die maximale Bestellmenge von {maxQty} wurde überschritten.",
-        "1007": "Bitte wählen Sie eine Abholfiliale aus.",
         "generic": "Bei diesem Produkt ist ein unerwarteter Fehler aufgetreten.",
         "insufficientstock": "Derzeit nicht auf Lager."
       },
       "coupon": {
+        "404": "Dieser Gutschein existiert nicht.",
         "2000": "Dieser Gutschein ist ungültig.",
         "2001": "Der Gutschein ist erst gültig ab {startDate, date, yyyyMMdd} {startDate, time, short} Uhr.",
         "2002": "Der Gutschein ist abgelaufen am {endDate, date, yyyyMMdd} {endDate, time, short} Uhr.",
         "2003": "Der Gutschein ist nicht gültig für deinen aktuellen Warenkorb.",
         "2004": "Dieser Gutschein wurde bereits eingelöst.",
         "2005": "Dieser Gutschein hat das Limit der maximalen Einlösungen erreicht.",
-        "404": "Dieser Gutschein existiert nicht.",
         "generic": "Bei diesem Gutschein ist ein unerwarteter Fehler aufgetreten."
       },
-      "1001": "Eins oder mehrere Produkte in Deinem Warenkorb sind derzeit nicht auf Lager. Bitte entferne diese.",
-      "1002": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
-      "1003": "Das ausgewählte Zeitfenster für die Abholung ist nicht mehr verfügbar. Bitte wähle eine andere Abholzeit aus.",
-      "404": "Eins oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus deinem Warenkorb entfernt.",
       "generic": "Ein unerwarteter Fehler ist aufgetreten.",
       "insufficientstock": "Eins oder mehrere Produkte in Deinem Warenkorb sind derzeit nicht auf Lager. Bitte entferne diese.",
       "multiplelocations": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wähle nur eine Filiale aus.",
@@ -519,7 +518,6 @@
     "forgot_password_popup": "Bitte benutze die Desktop-Website, um Dein Passwort zurückzusetzen.",
     "button": "Anmelden",
     "no_account": "Du hast noch kein Konto?",
-    "register": "Starte hier.",
     "signup": "Registrieren",
     "logout_message": "Du wurdest ausgeloggt.",
     "auto_logout_message": "Du wurdest automatisch ausgeloggt.",
@@ -536,7 +534,6 @@
     "your_account": "Mein Konto",
     "home": "Startseite",
     "categories": "Kategorien",
-    "favorites": "Wunschliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",
@@ -546,6 +543,7 @@
     "terms": "AGB",
     "privacy": "Datenschutz",
     "privacySettings": "Datenschutzeinstellungen",
+    "back_in_stock": "Benachrichtigungen",
     "welcome_message": "Hallo {name}",
     "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
@@ -554,7 +552,6 @@
     "order_history": "Bestellverlauf",
     "wish_list": "Wunschliste",
     "profile": "Profil",
-    "back_in_stock": "Benachrichtigungen",
     "back": "Zurück zu {title}"
   },
   "reviews": {
@@ -604,6 +601,7 @@
     "steps": "Schritt {from} von {to}",
     "change_contacts": "Kontakt ändern",
     "change_addresses": "Adresse ändern",
+    "finalizePayment": "Bestellung ab­schlie­ßen",
     "payment": {
       "title": "Wie möchtest du bezahlen?",
       "buttons": {
@@ -619,8 +617,8 @@
     },
     "errors": {
       "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuche es später erneut.",
-      "checkCart": "Bitte überprüfe Deinen Warenkorb.",
       "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuche es später erneut.",
+      "checkCart": "Bitte überprüfe Deinen Warenkorb.",
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte überprüfe Deinen Warenkorb.",
       "paypalFunding": "Bei der Ausführung der Zahlung ist ein Fehler aufgetreten.",
       "missingPaymentMethod": "Keine Zahlungsart konfiguriert.",
@@ -630,7 +628,6 @@
         "genericExternal": "Die Bezahlung mit der ausgewählten Bezahlmethode ist leider fehlgeschlagen. Versuche es erneut mit einer anderen Bezahlmethode."
       }
     },
-    "finalizePayment": "Bestellung ab­schlie­ßen",
     "pickup_contact": {
       "headline": "Kontakt zur Abholung",
       "headline_reserve": "Kontakt zur Abholung",
@@ -647,8 +644,8 @@
         "address2": "Adresszusatz",
         "postalCode": "Postleitzahl",
         "city": "Stadt",
-        "region": "Bundesland",
         "country": "Land",
+        "region": "Bundesland",
         "who_will_pickup": "Wer wird diese Bestellung abholen?",
         "me": "Ich selbst",
         "someone_else": "Jemand anderes",

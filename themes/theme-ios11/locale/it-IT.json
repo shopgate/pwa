@@ -305,6 +305,7 @@
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
+    "select_location": "Select location",
     "get_directions": "Get Directions",
     "store_hours": "Store Hours",
     "radius_km": "{radius} km",
@@ -342,7 +343,6 @@
     "quick_reserve": "Quick reservation",
     "reserve_to_cart": "Reserve to cart",
     "change_fulfillment_method": "Change fulfillment method",
-    "select_location": "Select location",
     "fulfillment": {
       "heading": "Availability",
       "direct_ship": "Direct ship",
@@ -395,11 +395,11 @@
   "search": {
     "label": "Cerca",
     "cancel": "Cancella",
+    "placeholder": "Cerca",
     "no_result": {
       "heading": "Ops!",
       "body": "La vostra ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    },
-    "placeholder": "Cerca"
+    }
   },
   "shipping": {
     "unknown": "più spedizione",
@@ -450,37 +450,36 @@
     "free_shipping": "Spedizione Gratuita",
     "allow_substitution_all": "Allow Substitutions on All Products?",
     "allow_substitution": "Allow Substitutions?",
-    "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
     "errors": {
+      "404": "One or more products has been removed from your cart due to unavailability.",
+      "1001": "One or more products in the cart are out of stock. Please remove the products.",
+      "1002": "Orders are limited to a single pickup store, please select only one fulfillment location.",
+      "1003": "The selected pickup time frame is not available anymore. Please choose a different pickup time.",
       "item": {
+        "1001": "The requested quantity is not available.",
+        "1004": "Please choose a pickup time.",
+        "1005": "The minimum order quantity of {minQty} has not been reached.",
+        "1006": "The maximum order quantity of {maxQty} has been exceeded.",
+        "1007": "Please choose a pickup store.",
         "shopgate.cart.updateProducts": {
           "1001": "The requested quantity is not available."
         },
         "shopgate.cart.addProducts": {
           "1001": "The requested quantity is not available."
         },
-        "1001": "The requested quantity is not available.",
-        "1004": "Please choose a pickup time.",
-        "1005": "The minimum order quantity of {minQty} has not been reached.",
-        "1006": "The maximum order quantity of {maxQty} has been exceeded.",
-        "1007": "Please choose a pickup store.",
         "generic": "An unexpected error occurred with this item.",
         "insufficientstock": "Currently out of stock."
       },
       "coupon": {
+        "404": "This was coupon was not found.",
         "2000": "This coupon is not valid.",
         "2001": "The coupon is not active until {startDate, date, yyyyMMdd} {startDate, time, short}.",
         "2002": "The coupon expired at {endDate, date, yyyyMMdd} {endDate, time, short}.",
         "2003": "This coupon is not valid for your current cart.",
         "2004": "This coupon has already been redeemed.",
         "2005": "This coupon has exceeded total allowed redemptions.",
-        "404": "This was coupon was not found.",
         "generic": "An unexpected error occurred with this coupon."
       },
-      "1001": "One or more products in the cart are out of stock. Please remove the products.",
-      "1002": "Orders are limited to a single pickup store, please select only one fulfillment location.",
-      "1003": "The selected pickup time frame is not available anymore. Please choose a different pickup time.",
-      "404": "One or more products has been removed from your cart due to unavailability.",
       "generic": "An unexpected error occurred.",
       "insufficientstock": "One or more products in the cart are out of stock. Please remove the products.",
       "multiplelocations": "Orders are limited to a single pickup store, please select only one fulfillment location.",
@@ -529,7 +528,6 @@
     "categories": "Categorie",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
-    "back_in_stock": "Promemoria per il ritorno in magazzino",
     "shipping": "Modalità di spedizione",
     "about": "A riguardo",
     "contact": "Contatta",
@@ -537,6 +535,7 @@
     "terms": "Termini e Condizioni",
     "privacy": "Politica della Privacy",
     "privacySettings": "Impostazioni della privacy",
+    "back_in_stock": "Promemoria per il ritorno in magazzino",
     "welcome_message": "Benvenuto / a {name}",
     "return_policy": "Politica di Restituzione",
     "logout": "Esci",
@@ -590,23 +589,24 @@
   "checkout": {
     "submit_order": "Buy Now",
     "continue_payment": "Continue to Payment",
+    "continue": "Continue",
+    "steps": "Step {from} of {to}",
+    "change_contacts": "Change Contacts",
+    "change_addresses": "Change Addresses",
+    "finalizePayment": "Finalize your Order",
     "payment": {
       "title": "How would you like to pay this order?",
       "buttons": {
         "stripe": "Credit Card"
       }
     },
-      "shippingMethod": {
+    "shippingMethod": {
       "title": "Shipping Method",
       "errors": {
         "noShippingAddress": "Please first provide a shipping address.",
         "invalidShippingAddress": "This cart can not be shipped to this shipping address."
       }
     },
-    "continue": "Continue",
-    "steps": "Step {from} of {to}",
-    "change_contacts": "Change Contacts",
-    "change_addresses": "Change Addresses",
     "errors": {
       "genericInitialize": "Checkout is currently unavailable, please try again later.",
       "genericUpdate": "Failed to process order, please try again later.",
@@ -620,7 +620,6 @@
         "genericExternal": "The payment with the selected payment method failed. Please try a different payment method."
       }
     },
-    "finalizePayment": "Finalize your Order",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "headline_reserve": "Pickup Contact",
@@ -642,8 +641,7 @@
         "who_will_pickup": "Who will pick up this order?",
         "me": "Me",
         "someone_else": "Someone else",
-        "instructions": "Pickup Instructions",
-        "instructionsPlaceholder": "Please include information about your vehicle. Example: White Honda Accord/License Plate #"
+        "instructions": "Pickup Instructions"
       }
     },
     "billing": {
