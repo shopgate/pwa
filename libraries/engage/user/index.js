@@ -22,3 +22,5 @@ export * from './selectors/data';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/user';
+
+export { registrationSuccess$ } from '@shopgate/engage/registration/streams';
