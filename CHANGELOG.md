@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.12.6](https://github.com/shopgate/pwa/compare/v7.12.5...v7.12.6) (2024-09-19)
+
+#### :rocket: Enhancement
+* [#1272](https://github.com/shopgate/pwa/pull/1272) Implemented "completedRegistration" tracking event ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1273](https://github.com/shopgate/pwa/pull/1273) Limited login session lifetime is now also set after registration ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
