@@ -24,7 +24,7 @@
     "shipping": "Shipping",
     "reviews": "Reviews",
     "browse": "Browse",
-    "favorites": "Wish List",
+    "favorites": "Favorites",
     "scanner": "Scanner",
     "back_in_stock": "Notifications",
     "checkout": "Checkout",
@@ -116,36 +116,36 @@
     }
   },
   "favorites": {
-    "add": "Add to wish list",
-    "added": "Product has been added to wish list",
+    "add": "Add to favorites list",
+    "added": "Product has been added to favorites list",
     "continue": "Continue shopping",
     "empty": "You don't have any saved products",
-    "error_add": "Product could not be added to wish list",
-    "error_remove": "Product could not be removed from wish list",
-    "error_limit": "You have exceeded the number of products allowed in the wish list.",
-    "remove": "Remove from wish list",
-    "removed": "Removed from wish list",
+    "error_add": "Product could not be added to favorites list",
+    "error_remove": "Product could not be removed from favorites list",
+    "error_limit": "You have exceeded the number of products allowed in the favorites list.",
+    "remove": "Remove from favorites list",
+    "removed": "Removed from favorites list",
     "add_list_modal": {
       "title": "Add a new List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the name for your new wish list",
+      "message": "Enter the name for your new favorites list",
       "label": "Name"
     },
     "rename_list_modal": {
       "title": "Renaming List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the new name for your wish list",
+      "message": "Enter the new name for your favorites list",
       "label": "Name"
     },
     "add_list": "Add New List",
     "errors": {
-      "invalid_name": "Please enter a valid name for your wish list"
+      "invalid_name": "Please enter a valid name for your favorites list"
     },
     "delete_list_modal": {
-      "title": "Delete Wish List",
-      "message": "Do you really want to delete the \"{name}\" wish list?"
+      "title": "Delete Favorites List",
+      "message": "Do you really want to delete the \"{name}\" favorites list?"
     },
     "comment_modal": {
       "titleAdd": "Add Comment",
@@ -173,7 +173,7 @@
       "title": "Choose a Method"
     },
     "list_chooser": {
-      "title": "Choose a Wish List",
+      "title": "Choose a Favorites List",
       "add": "Add",
       "add_more": "Add more",
       "remove": "Remove"
@@ -377,7 +377,7 @@
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "Category not found"
     },
     "no_result": {
@@ -534,18 +534,18 @@
     "your_account": "My Account",
     "home": "Home",
     "categories": "Categories",
-    "my_orders": "My orders",
-    "cart": "Shopping cart",
+    "my_orders": "My Orders",
+    "cart": "Shopping Cart",
     "shipping": "Shipping Methods",
-    "about": "Contact",
+    "about": "Contact Us",
     "contact": "Contact",
     "payment": "Payment Methods",
-    "terms": "Terms and Conditions",
+    "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
     "privacySettings": "Privacy Settings",
     "back_in_stock": "Notifications",
     "welcome_message": "Welcome {name}",
-    "return_policy": "Return policy",
+    "return_policy": "Return Policy",
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More",
@@ -577,7 +577,7 @@
     "browse": "Browse",
     "cart": "Cart",
     "more": "More",
-    "favorites": "Wish List"
+    "favorites": "Favorites"
   },
   "scanner": {
     "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
