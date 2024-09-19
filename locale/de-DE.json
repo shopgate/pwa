@@ -788,7 +788,7 @@
     "checkField": "Bitte überprüfe dieses Feld",
     "emailConflict": "Diese E-Mail-Adresse ist bereits registriert",
     "passwordMismatch": "Die Passwörter stimmen nicht überein",
-    "minPasswordLength": "Die minimale Passwortlänge beträgt %\\{count\\} Zeichen"
+    "minPasswordLength": "Die minimale Passwortlänge beträgt %'{count} Zeichen"
   },
   "formats": {
     "date": {
