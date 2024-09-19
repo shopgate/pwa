@@ -386,13 +386,13 @@
     }
   },
   "search": {
+    "placeholder": "Zoek",
+    "close": "Zoeken beëindigen",
+    "reset": "Reset zoekopdracht",
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
-    },
-    "placeholder": "Zoek",
-    "close": "Zoeken beëindigen",
-    "reset": "Reset zoekopdracht"
+    }
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -533,12 +533,12 @@
     "welcome_message": "Welkom {name}",
     "return_policy": "Herroepingsrecht",
     "logout": "Log uit",
+    "back": "Terug naar {title}",
+    "open_menu": "Open menu",
     "menuSubHeader": {
       "more": "Meer",
       "about": "Over ons"
-    },
-    "back": "Terug naar {title}",
-    "open_menu": "Open menu"
+    }
   },
   "reviews": {
     "rating": "Rating",
@@ -580,6 +580,7 @@
     "steps": "Step {from} of {to}",
     "change_contacts": "Change Contacts",
     "change_addresses": "Change Addresses",
+    "finalizePayment": "Finalize your Order",
     "payment": {
       "title": "How would you like to pay this order?",
       "buttons": {
@@ -606,7 +607,6 @@
         "genericExternal": "The payment with the selected payment method failed. Please try a different payment method."
       }
     },
-    "finalizePayment": "Finalize your Order",
     "pickup_contact": {
       "headline": "Pickup Contact Info",
       "headline_reserve": "Pickup Contact",
