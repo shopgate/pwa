@@ -34,7 +34,6 @@
     "order_details": "Order Details",
     "store_finder": "Store Finder",
     "order_history": "Order History",
-    "wish_list": "Wish List",
     "profile": "Profile",
     "your_account": "My Account",
     "your_account_contact": "Address",
@@ -535,6 +534,7 @@
     "your_account": "My Account",
     "home": "Home",
     "categories": "Categories",
+    "favorites": "Favorites",
     "my_orders": "My Orders",
     "cart": "Shopping Cart",
     "shipping": "Shipping Methods",
@@ -551,7 +551,6 @@
     "store_information": "Store Information",
     "more_menu": "More",
     "order_history": "Order History",
-    "wish_list": "Wish List",
     "profile": "Profile",
     "back": "Back to {title}"
   },

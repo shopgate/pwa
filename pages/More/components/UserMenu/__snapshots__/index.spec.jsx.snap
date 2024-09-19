@@ -168,7 +168,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 <MoreMenuItem
                   className={null}
                   href="/account/wish-list"
-                  label="navigation.wish_list"
+                  label="navigation.favorites"
                   onClick={null}
                   testId="accountButton"
                 >
@@ -181,14 +181,14 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       className={null}
                       params={Object {}}
                       role={null}
-                      string="navigation.wish_list"
+                      string="navigation.favorites"
                       transform={null}
                     >
                       <span
                         className={null}
                         role={null}
                       >
-                        navigation.wish_list
+                        navigation.favorites
                       </span>
                     </Translate>
                   </Link>
