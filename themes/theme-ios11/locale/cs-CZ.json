@@ -139,8 +139,8 @@
     "go_to_cart": "Nákupní košík",
     "no_more_found": "Článek: \"{name}\" není momentálně skladem.",
     "quantity": "Množství",
-    "minOrderQuantity": "Min. množství pro objednávku:{quantity}",
-    "maxOrderQuantity": "Max. objednací množství:{quantity}",
+    "minOrderQuantity": "Min. množství pro objednávku: {quantity} {unit}",
+    "maxOrderQuantity": "Max. objednací množství: {quantity} {unit}",
     "available": {
       "at": "Dostupné v {startDate, date, DD} {startDate, date, MMM} v {startDate, time, short} hodin",
       "until": "Dostupné do {endDate, date, DD} {endDate, date, MMM} v {endDate, time, short} hodin",
