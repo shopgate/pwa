@@ -1,18 +1,16 @@
 import {
-  main$, makeGetPrevRoute, getCurrentRoute, historyPop,
+  makeGetPrevRoute, getCurrentRoute, historyPop,
 } from '@shopgate/engage/core';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { REGISTRATION_FORM_LOGIN_STRATEGY } from '@shopgate/pwa-common/constants/user';
 import { successLogin } from '@shopgate/pwa-common/action-creators';
-import { SUCCESS_REGISTRATION } from '../constants';
+import { registrationSuccess$ } from '../streams';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
  */
 export default function registration(subscribe) {
-  const registrationSuccess$ = main$
-    .filter(({ action }) => action.type === SUCCESS_REGISTRATION);
-
-  subscribe(registrationSuccess$, ({ dispatch, getState }) => {
+  subscribe(registrationSuccess$, ({ dispatch, getState, action }) => {
     const currentRoute = getCurrentRoute(getState());
     let redirect;
 
@@ -29,7 +27,11 @@ export default function registration(subscribe) {
 
     // TODO improve navigation since the login page will be briefly visible
     dispatch(historyPop());
-    dispatch(successLogin(redirect));
+    dispatch(successLogin(
+      redirect,
+      REGISTRATION_FORM_LOGIN_STRATEGY,
+      action?.response?.sessionLifetimeInSeconds
+    ));
   });
 }
 
