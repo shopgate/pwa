@@ -182,7 +182,8 @@
     },
     "open_list": "Liste öffnen.",
     "close_list": "Liste schließen.",
-    "load_more_button": "Weitere Artikel laden"
+    "load_more_button": "Weitere Artikel laden",
+    "error_general": "Die Merkliste konnte nicht gespeichert werden"
   },
   "filter": {
     "sort": {
