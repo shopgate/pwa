@@ -34,7 +34,6 @@
     "order_details": "Bestelldetails",
     "store_finder": "Filialfinder",
     "order_history": "Bestellverlauf",
-    "wish_list": "Wunschliste",
     "profile": "Profil",
     "your_account": "Mein Account",
     "your_account_contact": "Adresse",
@@ -55,7 +54,7 @@
         "firstName": "Vorname",
         "middleName": "Mittelname",
         "lastName": "Nachname",
-        "emailAddress": "Email-Adresse",
+        "emailAddress": "E-Mail-Adresse",
         "address1": "Straße und Hausnummer",
         "address2": "Adresse 2",
         "address3": "Adresse 3",
@@ -524,10 +523,10 @@
     "auto_logout_message": "Du wurdest automatisch ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
-      "subline": "Bitte gib deine Email-Adresse ein.",
-      "reset_instructions": "Du erhälst eine Email zum Zurücksetzen deines Passworts an {email}",
+      "subline": "Bitte gib deine E-Mail-Adresse ein.",
+      "reset_instructions": "Du erhälst eine E-Mail zum Zurücksetzen deines Passworts an {email}",
       "back_to_login": "Zurück zur Anmeldung",
-      "customer_not_found": "Zu dieser Email Adresse liegt und kein Account vor."
+      "customer_not_found": "Zu dieser E-Mail Adresse liegt und kein Account vor."
     }
   },
   "navigation": {
@@ -535,6 +534,7 @@
     "your_account": "Mein Konto",
     "home": "Startseite",
     "categories": "Kategorien",
+    "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",
@@ -551,7 +551,6 @@
     "store_information": "Über uns",
     "more_menu": "Mehr",
     "order_history": "Bestellverlauf",
-    "wish_list": "Wunschliste",
     "profile": "Profil",
     "back": "Zurück zu {title}"
   },
@@ -698,7 +697,7 @@
       "order_summary": "Zusammenfassung der Bestellung",
       "name": "Name",
       "phone_number": "Telefonnummer",
-      "email_address": "Email Adresse",
+      "email_address": "E-Mail Adresse",
       "card_holder": "Kartenhalter",
       "address": "Adresse",
       "payment_method": "Zahlungsart",
