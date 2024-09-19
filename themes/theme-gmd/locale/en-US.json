@@ -502,7 +502,7 @@
     },
     "price_caption": {
       "reservation": "Reservation",
-      "pay_in_store": ""
+      "pay_in_store": "Pay in Store"
     }
   },
   "login": {

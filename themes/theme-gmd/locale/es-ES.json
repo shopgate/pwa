@@ -1,0 +1,350 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {Sólo {time} queda} =1 {# día {time}} other {# días {time}}}",
+    "load_more": "Cargar más",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "undo": "Deshacer",
+    "required": "Necesaria *",
+    "please_choose": "Por favor, seleccione",
+    "show_products": "Mostrar productos",
+    "back": "Volver",
+    "close": "Cerrar",
+    "products": "Productos"
+  },
+  "titles": {
+    "categories": "Categorías",
+    "filter": "Filtro",
+    "cart": "Cesta",
+    "shipping": "Envío",
+    "reviews": "Comentarios",
+    "favorites": "Favoritos",
+    "scanner": "Escáner",
+    "back_in_stock": "Notificaciones"
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Notificaciones activas",
+      "past": "Notificaciones pasadas"
+    },
+    "empty_list_reminder": "No tienes ninguna notificación configurada",
+    "get_notified": "Notificarme las nuevas existencias",
+    "we_will_remind_you": "Te avisaremos cuando el producto vuelva a estar en stock",
+    "add_back_in_stock_success_modal": {
+      "title": "¡Notificación de Back-In-Stock añadida!",
+      "message": "Te enviaremos una notificación push cuando el producto vuelva a estar en stock. Puedes gestionar tus notificaciones en el menú."
+    },
+    "rationale": {
+      "message": "Por favor, permite las notificaciones push en el siguiente paso, para que podamos enviarte una notificación cuando el producto vuelva a estar en stock.",
+      "confirm": "Permitir notificaciones push"
+    }
+  },
+  "favorites": {
+    "add": "Agregar a favoritos",
+    "added": "El producto ha sido añadido a favoritos",
+    "continue": "Continuar comprando",
+    "empty": "No tiene favoritos",
+    "error_add": "El producto no se pudo agregar a favoritos",
+    "error_remove": "El producto no se pudo quitar de favoritos",
+    "error_limit": "Has superado la cantidad de productos permitidos en favoritos.",
+    "error_general": "La lista de deseos no se ha podido guardar",
+    "remove": "Quitar de favoritos",
+    "removed": "Quitado de favoritos",
+    "add_list_modal": {
+      "title": "Añadir una nueva lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirmar",
+      "message": "Introduzca el nombre de su nueva lista de deseos",
+      "label": "Nombre"
+    },
+    "rename_list_modal": {
+      "title": "Cambiar el nombre de la lista",
+      "dismiss": "Cancelar",
+      "confirm": "Confirmar",
+      "message": "Introduzca el nuevo nombre de su lista de deseos",
+      "label": "Nombre"
+    },
+    "delete_list_modal": {
+      "title": "Borrar la lista de favoritos",
+      "message": "¿De verdad quieres borrar la lista de favoritos \"{name}\"?"
+    },
+    "add_list": "Añadir nueva lista",
+    "errors": {
+      "invalid_name": "Por favor, introduzca un nombre válido para su lista de deseos"
+    },
+    "rename_list": "Renombrar",
+    "remove_list": "Eliminar",
+    "add_to_list": "Añadir a la lista",
+    "remove_from_list": "Eliminar de la lista",
+    "edit_lists": "Editar listas",
+    "fo_method_chooser": {
+      "title": "Elija un método"
+    },
+    "list_chooser": {
+      "title": "Elija una lista de favoritos",
+      "add": "Añadir",
+      "remove": "Eliminar"
+    },
+    "modal": {
+      "message": "Para añadir este producto a la cesta, por favor, seleccione las variantes.",
+      "confirm": "Seleccionar variantes"
+    },
+    "open_list": "Lista abierta.",
+    "close_list": "Cerrar lista.",
+    "load_more_button": "Cargar otros artículos"
+  },
+  "filter": {
+    "sort": {
+      "default": "Ordenar por",
+      "most_popular": "Más popular",
+      "price_desc": "Precio: Mayor a Menor",
+      "price_asc": "Precio: Menor a Mayor"
+    },
+    "apply": "Aplicar",
+    "more": "más",
+    "reset": "Borrar",
+    "remove": "Eliminar {filter} filtro",
+    "edit": "Editar {filter} filtro",
+    "filter_by": "Filtrar por {label}",
+    "label": {
+      "price": "Precio",
+      "category": "Categoría",
+      "manufacturer": "Marca"
+    }
+  },
+  "price": {
+    "from": "Desde {price}",
+    "range": "Precio desde {fromPrice} hasta {toPrice}",
+    "range_from": "Rango de precio desde",
+    "range_to": "Rango de precio hasta",
+    "tier": {
+      "set": "artículos {from}: {price}",
+      "range": "{from} o más: {price}"
+    },
+    "msrp": "PVP",
+    "label": "Precio {price}.",
+    "label_old_price": "Precio anterior {price}."
+  },
+  "product": {
+    "description_heading": "Descripción",
+    "pick_an_attribute": "Elegir un {0}",
+    "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
+    "adding_item": "{count, plural, =1 {Añadiendo {count} artículo} other {Añadiendo {count} artículos}}",
+    "pick_option_first": "Seleccionar primero una opción. {option}",
+    "fill_out_required_input_first": "Rellenar primero las entradas necesarias.",
+    "add_to_cart": "Añadir a la cesta",
+    "no_more_found": "El artículo: \"{name}\" ya no está disponible.",
+    "quantity": "Cantidad",
+    "minOrderQuantity": "Cantidad mín. del pedido: {quantity} {unit}",
+    "maxOrderQuantity": "Cantidad máx. del pedido: {quantity} {unit}",
+    "available": {
+      "at": "Disponible {startDate, date, DD} {startDate, date, MMM} a las {startDate, time, short}",
+      "until": "Disponible hasta {endDate, date, DD} {endDate, date, MMM} a las {endDate, time, short}",
+      "not": "Indisponible por el momento",
+      "not_search_similar": "{name} indisponible. ¿Buscar productos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar todo"
+    },
+    "sections": {
+      "information": "Información sobre el producto",
+      "options": "Elegir opciones",
+      "description": "Descripción",
+      "properties": "Propiedades",
+      "ratings": "Valoraciones",
+      "purchase": "Comprar artículo",
+      "quantity": "Cantidad"
+    },
+    "displayGroups": {
+      "general": "General",
+      "features": "Características",
+      "pricing": "Precio",
+      "properties": "Propiedades"
+    }
+  },
+  "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "No se encontró la categoría"
+    },
+    "no_result": {
+      "heading": "Oops!",
+      "body": "No se encontraron productos."
+    },
+    "sections": {
+      "categories": "Categorías",
+      "products": "Productos"
+    },
+    "showAllProducts": {
+      "label": "Mostrar todos los productos"
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultados."
+    },
+    "placeholder": "Buscar",
+    "close": "Fin de búsqueda",
+    "reset": "Restablecer búsqueda"
+  },
+  "shipping": {
+    "unknown": "más envío",
+    "free": "Entrega gratuita",
+    "free_short": "Gratis",
+    "cost": "{price} envío"
+  },
+  "liveshopping": {
+    "discount_badge": "AHORRE {0}%"
+  },
+  "modal": {
+    "confirm": "Confirmar",
+    "dismiss": "Descartar",
+    "ok": "Ok",
+    "title_error": "Oops!",
+    "body_error": "Ocurrió un error inesperado. Intente nuevamente."
+  },
+  "cart": {
+    "subtotal": "Total parcial",
+    "total": "Total de la cesta",
+    "discount": "Descuento",
+    "discount_with_label": "Descuento ({label})",
+    "checkout": "Pagar",
+    "remove": "Quitar",
+    "edit": "Editar",
+    "empty": "Tu cesta está vacía",
+    "continue": "Continuar comprando",
+    "redeem_coupon": "Ingresar código del cupón",
+    "submit_coupon": "Enviar código promocional",
+    "delete_coupon": "Eliminar código promocional",
+    "coupon_code": "Código",
+    "default_coupon_label": "Cupón",
+    "coupon_was_added": "¡El cupón ha sido añadido a su cesta!",
+    "coupons_not_supported": "Agregue los cupones y vales de regalo mientras realiza el pago",
+    "free_shipping": "Envío gratis",
+    "message_type_info": "Información",
+    "message_type_error": "Error",
+    "message_type_warning": "Advertencia"
+  },
+  "login": {
+    "headline": "Hola",
+    "subline": "Inicie sesión para continuar",
+    "email": "Email",
+    "password": "Contraseña",
+    "forgot_password": "¿Has olvidado tu contraseña?",
+    "forgot_password_popup": "Utilice el sitio web para restablecer su contraseña.",
+    "button": "Iniciar sesión",
+    "no_account": "¿Aún no tienes una cuenta?",
+    "register": "¡Créate una ahora!",
+    "logout_message": "Ha sido desconectado.",
+    "error": "Su usuario y contraseña no corresponden a ninguna cuenta"
+  },
+  "navigation": {
+    "login_register": "Iniciar sesión / Registro",
+    "home": "Inicio",
+    "categories": "Categorías",
+    "favorites": "Favoritos",
+    "my_orders": "Mis pedidos",
+    "cart": "Cesta de la compra",
+    "scanner": "Escáner",
+    "shipping": "Métodos de envío",
+    "about": "Sobre nosotros",
+    "payment": "Métodos de pago",
+    "terms": "Condiciones generales",
+    "privacy": "Protección de datos",
+    "privacySettings": "Configuraciones de privacidad",
+    "welcome_message": "Hola {name}",
+    "return_policy": "Derecho de revocación",
+    "logout": "Cerrar sesión",
+    "menuSubHeader": {
+      "more": "Más",
+      "about": "Sobre nosotros"
+    },
+    "back_in_stock": "Recordatorio de existencias",
+    "back": "Volver a {title}",
+    "open_menu": "Open menu"
+  },
+  "reviews": {
+    "rating": "Calificación",
+    "no_reviews": "Sea el primero en calificar este producto:",
+    "review_count": "({count} {count, plural, =1 {Comentario} other {Comentarios}})",
+    "button_add": "Escriba un comentario",
+    "button_all": "Todos los {count} Comentarios",
+    "author": "por {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}} de {maxRate}",
+    "review_form_rate": "Calificar este producto:",
+    "review_form_author": "Su Nombre",
+    "review_form_title": "Título del comentario (opcional)",
+    "review_form_text": "Comentario del producto (opcional)",
+    "review_form_error_author_empty": "Ingrese un nombre.",
+    "review_form_rate_error": "Seleccione una estrella de calificación.",
+    "review_form_error_length": "Máxima cantidad {length} de caracteres.",
+    "press_to_rate_with_x_stars": "Presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
+    "success_message": "¡Gracias por su comentario!"
+  },
+  "scanner": {
+    "instructions": "Por favor, mantenga el código de barras o el código QR en el centro. La detección se realiza de forma automática.",
+    "noResult": {
+      "qrCode": "No pudimos encontrar un resultado para este código QR.",
+      "barCode": "No se encontraron productos."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Vaya a configuración",
+      "camera_message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración.",
+      "push_message": "Esta función requiere acceso a las notificaciones push. Por favor, permita el acceso en la configuración.",
+      "geolocation_message": "Para encontrar tiendas cerca de donde está, vaya a Configuración y habilite los permisos de ubicación."
+    }
+  },
+  "error": {
+    "general": "No se puede conectar. Por favor, compruebe su conexión a Internet."
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
+    }
+  },
+  "appRating": {
+    "yes": "Sí",
+    "no": "No",
+    "title": "Valorar la aplicación",
+    "message": "¿Te gusta nuestra aplicación? Estaremos encantados de recibir una valoración.",
+    "rejectionApprovalMessage": "¿Quiere darnos su opinión? Esto nos ayudará a mejorar la aplicación."
+  },
+  "pushOptInModal": {
+    "title": "Reciba cupones y ofertas exclusivas",
+    "buttonAllow": "Activar las notificaciones",
+    "buttonDeny": "No quiero notificaciones",
+    "message": "Active las notificaciones para que podamos enviarle notificaciones push sobre nuevas ofertas, vales exclusivos y mucho más."
+  },
+  "cookieConsentModal": {
+    "title": "Personalice su experiencia de compra",
+    "buttonAcceptAll": "Aceptar todo",
+    "modalButtonOnlyRequired": "Solo esenciales",
+    "modalButtonConfirmSelected": "Confirmar selección",
+    "buttonConfigure": "Configurar ajustes",
+    "message": "Nuestra aplicación está diseñada para adaptarse de forma óptima a sus preferencias. Utilizamos tecnologías de seguimiento modernas, con las que analizamos el comportamiento de compra y usamos los datos para mejorar nuestra aplicación y presentarle contenido personalizado. Puede ajustar la configuración en cualquier momento en el área “Mi cuenta”. Puede encontrar más información en nuestra {privacyLink} detallada.",
+    "privacyText": "política de privacidad"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Comodidad",
+    "statisticsTitle": "Personalización y estadísticas",
+    "requiredTitle": "Requeridos",
+    "comfort": "Estas cookies y tecnologías permiten algunas funciones adicionales y un mejor rendimiento.",
+    "statistics": "Estos datos nos permiten recopilar más estadísticas para mejorar nuestra aplicación y mostrarle anuncios más relevantes.",
+    "required": "Datos que son necesarios para ejecutar la aplicación.",
+    "privacy": "Para obtener más información, consulte nuestra {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Es necesario permitir las cookies de comodidad para ver videos incrustados de sitios web externos.",
+      "link": "Haga clic aquí para permitir las cookies de comodidad y ver el video"
+    }
+  }
+}
