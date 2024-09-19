@@ -22,7 +22,7 @@
     "cart": "Warenkorb",
     "shipping": "Versand",
     "reviews": "Bewertungen",
-    "favorites": "Wunschliste",
+    "favorites": "Merkliste",
     "scanner": "Scanner",
     "back_in_stock": "Benachrichtigungen",
     "checkout": "Checkout",
@@ -114,36 +114,36 @@
     }
   },
   "favorites": {
-    "add": "Zur Wunschliste hinzufügen",
-    "added": "Das Produkt wurde zur Wunschliste hinzugefügt",
+    "add": "Zur Merkliste hinzufügen",
+    "added": "Das Produkt wurde zur Merkliste hinzugefügt",
     "continue": "Weiter shoppen",
-    "empty": "Du hast noch keine Artikel auf der Wunschliste",
-    "error_add": "Das Produkt konnte nicht zur Wunschliste hinzugefügt werden",
-    "error_remove": "Das Produkt konnte nicht von der Wunschliste entfernt werden",
-    "error_limit": "Die zulässige Anzahl von Produkten auf der Wunschliste wurde überschritten.",
-    "remove": "Von der Wunschliste löschen",
-    "removed": "Von Wunschliste entfernt",
+    "empty": "Sie haben noch keine Artikel auf der Merkliste",
+    "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
+    "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
+    "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten.",
+    "remove": "Von der Merkliste löschen",
+    "removed": "Von Merkliste entfernt",
     "add_list_modal": {
-      "title": "Neue Wunschliste anlegen",
+      "title": "Neue Merkliste anlegen",
       "dismiss": "Abbrechen",
       "confirm": "Bestätigen",
-      "message": "Der Name deiner neuen Wunschliste",
+      "message": "Der Name Ihrer neuen Merkliste",
       "label": "Name"
     },
     "rename_list_modal": {
-      "title": "Namen der Wunschliste ändern",
+      "title": "Namen der Merkliste ändern",
       "dismiss": "Abbrechen",
       "confirm": "Bestätigen",
-      "message": "Der neue Name deiner Wunschliste",
+      "message": "Der neue Name Ihrer Merkliste",
       "label": "Name"
     },
     "add_list": "Neue Liste anlegen",
     "errors": {
-      "invalid_name": "Bitte geb einen vollständigen Namen für deine Wunschliste ein"
+      "invalid_name": "Bitte geben Sie einen vollständigen Namen für Ihre Merkliste ein"
     },
     "delete_list_modal": {
-      "title": "Wunschliste löschen",
-      "message": "Möchtest Du die Wunschliste \"{name}\" wirklich löschen?"
+      "title": "Merkliste löschen",
+      "message": "Möchten Sie die Merkliste \"{name}\" wirklich löschen?"
     },
     "comment_modal": {
       "titleAdd": "Kommentar hinzufügen",
@@ -168,16 +168,16 @@
     "remove_from_list": "Von Liste löschen",
     "edit_lists": "Liste editieren",
     "fo_method_chooser": {
-      "title": "Wähle eine Bestellmethode aus"
+      "title": "Wählen Sie eine Bestellmethode aus"
     },
     "list_chooser": {
-      "title": "Wähle eine Wunschliste aus",
+      "title": "Wählen Sie eine Merkliste aus",
       "add": "Hinzufügen",
       "add_more": "Mehr Hinzufügen",
       "remove": "Löschen"
     },
     "modal": {
-      "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wähle bitte die Varianten.",
+      "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.",
       "confirm": "Varianten wählen"
     },
     "open_list": "Liste öffnen.",
@@ -231,8 +231,8 @@
     "pick_an_attribute": "{0} auswählen",
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
     "adding_item": "{count, plural, =1 {{count} Produkt wird hinzugefügt} other {{count} Produkte werden hinzugefügt}}",
-    "pick_option_first": "Wähle zuerst eine Option. {option}",
-    "fill_out_required_input_first": "Fülle zuerst alle Pflichtfelder aus.",
+    "pick_option_first": "Wählen Sie zuerst eine Option. {option}",
+    "fill_out_required_input_first": "Füllen Sie zuerst alle Pflichtfelder aus.",
     "add_to_cart": "In den Warenkorb",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
     "quantity": "Menge",
@@ -397,7 +397,7 @@
     "reset": "Suche zurücksetzen",
     "no_result": {
       "heading": "Ups!",
-      "body": "Deine Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
+      "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
     }
   },
   "shipping": {
@@ -414,7 +414,7 @@
     "dismiss": "Abbrechen",
     "ok": "Okay",
     "title_error": "Ups!",
-    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "close": "Schließen",
     "login": "Anmelden"
   },
@@ -439,7 +439,7 @@
     "reserve": "Reserve",
     "remove": "Entfernen",
     "edit": "Bearbeiten",
-    "empty": "Dein Warenkorb ist leer",
+    "empty": "Ihr Warenkorb ist leer",
     "continue": "Weiter shoppen",
     "redeem_coupon": "Gutscheincode eingeben",
     "submit_coupon": "Gutscheincode absenden",
@@ -447,7 +447,7 @@
     "coupon_code": "Code",
     "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!",
-    "coupons_not_supported": "Löse Gutscheine und Geschenkkarten im nächsten Schritt ein",
+    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein",
     "free_shipping": "Kostenloser Versand",
     "allow_substitution_all": "Ersatzartikel für alle Produkte erlauben?",
     "allow_substitution": "Ersatzartikel erlauben",
@@ -507,15 +507,15 @@
   },
   "login": {
     "headline": "Willkommen!",
-    "subline": "Bitte melde dich an, um fortzufahren",
+    "subline": "Bitte melden Sie sich an, um fortzufahren",
     "email": "E-Mail",
     "password": "Passwort",
     "forgot_password": "Passwort vergessen?",
-    "forgot_password_popup": "Bitte benutze die Desktop-Website, um Dein Passwort zurückzusetzen.",
+    "forgot_password_popup": "Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.",
     "button": "Anmelden",
-    "no_account": "Du hast noch kein Konto?",
-    "register": "Starte hier.",
-    "logout_message": "Du wurdest ausgeloggt.",
+    "no_account": "Sie haben noch kein Konto?",
+    "register": "Starten Sie hier.",
+    "logout_message": "Sie wurden ausgeloggt.",
     "auto_logout_message": "Du wurdest automatisch ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
     "reset_password": {
@@ -530,7 +530,7 @@
     "your_account": "Mein Konto",
     "home": "Startseite",
     "categories": "Kategorien",
-    "favorites": "Wunschliste",
+    "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
     "scanner": "Scanner",
@@ -553,24 +553,24 @@
   },
   "reviews": {
     "rating": "Bewertung",
-    "no_reviews": "Verfasse die erste Bewertung.",
+    "no_reviews": "Verfassen Sie die erste Bewertung.",
     "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
     "button_add": "Produkt bewerten",
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
     "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}} von {maxRate}.",
-    "review_form_rate": "Bewerte dieses Produkt:",
+    "review_form_rate": "Bewerten Sie dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
-    "review_form_text": "Deine Bewertung (optional)",
-    "review_form_error_author_empty": "Bitte gib einen Namen an.",
-    "review_form_rate_error": "Wie viele Sterne vergibst du?",
+    "review_form_text": "Ihre Bewertung (optional)",
+    "review_form_error_author_empty": "Bitte geben Sie einen Namen an.",
+    "review_form_rate_error": "Wie viele Sterne vergeben Sie?",
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
-    "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
-    "success_message": "Vielen Dank für deine Bewertung!"
+    "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}.",
+    "success_message": "Vielen Dank für Ihre Bewertung!"
   },
   "scanner": {
-    "instructions": "Bitte positioniere den Barcode oder QR-Code in der Mitte. Die Erkennung erfolgt automatisch.",
+    "instructions": "Bitte positionieren Sie den Barcode oder QR-Code in der Mitte. Die Erkennung erfolgt automatisch.",
     "noResult": {
       "qrCode": "Wir konnten für diesen QR-Code kein Ergebnis finden.",
       "barCode": "Produkt nicht gefunden."
@@ -579,9 +579,9 @@
   "permissions": {
     "access_denied": {
       "settings_button": "Einstellungen öffnen",
-      "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlaube den Zugriff in den Einstellungen.",
+      "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "push_message": "Sie haben Push-Benachrichtigungen für diese App deaktiviert. Bitte gehen Sie in die Einstellungen Ihres Gerätes, um sie zu aktivieren.",
-      "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
+      "geolocation_message": "Wir benötigen Zugriff auf den Standort, um Filialen in der Nähe zu zeigen."
     }
   },
   "checkout": {
@@ -776,7 +776,7 @@
     }
   },
   "error": {
-    "general": "Verbindungsproblem. Bitte überprüfe deine Internetverbindung oder versuche es später noch einmal."
+    "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
   },
   "validation": {
     "required": "Bitte vervollständige dieses Feld",
