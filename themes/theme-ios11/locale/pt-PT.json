@@ -783,7 +783,7 @@
     "checkField": "Please check this field",
     "emailConflict": "This e-mail address is already registered",
     "passwordMismatch": "Your passwords do not match",
-    "minPasswordLength": "The minimum password length must be %\\{count\\} characters"
+    "minPasswordLength": "The minimum password length must be %'{count} characters"
   },
   "formats": {
     "date": {
