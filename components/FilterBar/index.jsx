@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { SurroundPortals } from '@shopgate/engage/components';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
 import Content from './components/Content';
 import styles from './style';
@@ -42,9 +41,7 @@ function FilterBar({ filters, categoryId }) {
   return (
     <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
       <SortProvider scope={sortScope}>
-        <SurroundPortals portalName="filter-bar.content">
-          <Content onChipCountUpdate={handleChipCountUpdate} />
-        </SurroundPortals>
+        <Content onChipCountUpdate={handleChipCountUpdate} />
       </SortProvider>
     </div>
   );
