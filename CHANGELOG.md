@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.12.7](https://github.com/shopgate/pwa/compare/v7.12.6...v7.12.7) (2024-09-21)
+
+#### :bug: Bug Fix
+* [#1274](https://github.com/shopgate/pwa/pull/1274) Fixed strike price display error on wishlist ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
