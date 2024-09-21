@@ -202,7 +202,6 @@ const FavoriteItem = ({
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
   const hasStrikePrice = typeof specialPrice === 'number' && specialPrice >= defaultPrice;
-  const price = hasStrikePrice ? specialPrice : defaultPrice;
   const characteristics = product?.characteristics || [];
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
@@ -276,10 +275,10 @@ const FavoriteItem = ({
       characteristics,
       id,
       name,
-      price,
+      price: defaultPrice,
       listId,
     };
-  }, [characteristics, listId, price, product]);
+  }, [characteristics, defaultPrice, listId, product]);
 
   const ctaPortalProps = useMemo(() => ({
     isLoading: false,
@@ -393,7 +392,7 @@ const FavoriteItem = ({
                       <Price
                         currency={currency}
                         discounted={hasStrikePrice}
-                        unitPrice={price}
+                        unitPrice={defaultPrice}
                         className={styles.price}
                       />
                     </div>
