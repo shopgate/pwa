@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Voer alstublieft uw naam in.",
     "review_form_rate_error": "Selecteer alstublieft een sterrenbeoordeling.",
     "review_form_error_length": "Maximum lengte {length} karakters.",
-    "press_to_rate_with_x_stars": "Selecteer om te waarderen met {rate} {rate, plural, =1 {star} other {stars}}.",
+    "press_to_rate_with_x_stars": "Kies om te beoordelen met {rate} {rate, plural, =1 {ster} other {sterren}}.",
     "success_message": "Bedankt voor uw beoordeling!"
   },
   "tab_bar": {

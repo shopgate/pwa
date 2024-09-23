@@ -7,7 +7,7 @@
     "undo": "Défaire",
     "required": "Obligatoires *",
     "please_choose": "Veuillez choisir",
-    "show_products": "Présentation produits",
+    "show_products": "Afficher les produits",
     "back": "Retour",
     "close": "Fermer",
     "products": "Produits"
@@ -51,7 +51,7 @@
     "error_limit": "Vous avez dépassé le nombre de produits autorisés dans les favoris.",
     "error_general": "La liste de souhaits n'a pas pu être enregistrée",
     "remove": "Retirer des favorits",
-    "removed": "Retivé des favorits",
+    "removed": "Retiré des favorits",
     "add_list_modal": {
       "title": "Ajouter une nouvelle liste",
       "dismiss": "Annuler",
@@ -195,7 +195,7 @@
   "shipping": {
     "unknown": "avec frais de livraison",
     "free": "Livraison gratuite",
-    "free_short": "Fratuit",
+    "free_short": "Gratuit",
     "cost": "{price} Livraison"
   },
   "liveshopping": {
@@ -268,18 +268,18 @@
     "rating": "Evaluation",
     "no_reviews": "Soyez le premier à évaluer ce produit:",
     "review_count": "({count} {count, plural, =1 {Revue} other {Revues}})",
-    "button_add": "Ecrire un revue",
+    "button_add": "Ecrire une revue",
     "button_all": "Tous les {count} revues",
     "author": "par {author}",
     "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} sur {maxRate}",
     "review_form_rate": "Evaluer ce produit:",
     "review_form_author": "Votre nom",
-    "review_form_title": "Titre du revue (optional)",
-    "review_form_text": "Produit évalué(optional)",
+    "review_form_title": "Titre de la revue (optional)",
+    "review_form_text": "Produit évalué (optional)",
     "review_form_error_author_empty": "Veuillez entrer un nom.",
-    "review_form_rate_error": "Veillez sélectionner une note en étoile.",
-    "review_form_error_length": "Longeure caractère maximale {length}.",
-    "press_to_rate_with_x_stars": "Appuyez pour noter avec{rate} {rate, plural, =1 {star} other {stars}}.",
+    "review_form_rate_error": "Veuillez sélectionner une note en étoile.",
+    "review_form_error_length": "Longueur caractère maximale {length}.",
+    "press_to_rate_with_x_stars": "Choisissez pour évaluer avec {rate} {rate, plural, =1 {étoile} other {étoiles}}.",
     "success_message": "Merci pour votre revue!"
   },
   "tab_bar": {
