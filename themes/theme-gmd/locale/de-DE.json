@@ -25,7 +25,7 @@
     "favorites": "Merkliste",
     "scanner": "Scanner",
     "back_in_stock": "Benachrichtigungen",
-    "checkout": "Checkout",
+    "checkout": "Check-out",
     "checkout_confirmation": "Bestellung erfolgreich",
     "checkout_change_billing": "Rechnungsadresse ändern",
     "register": "Registrieren",
@@ -90,8 +90,8 @@
       "confirm": {
         "title": "Sind Sie sich sicher?",
         "confirm": "Bestätigen",
-        "messageContact": "Wollen Sie wirklich diese Adresse löschen",
-        "messageCustomer": "Wollen Sie wirklich Ihren Account löschen. All Ihre persönlichen Daten und Einstellungen werden gelöscht."
+        "messageContact": "Wollen Sie wirklich diese Adresse löschen?",
+        "messageCustomer": "Wollen Sie wirklich Ihren Account löschen? All Ihre persönlichen Daten und Einstellungen werden gelöscht."
       }
     }
   },
@@ -224,7 +224,7 @@
   },
   "product": {
     "errors": {
-      "insufficientstock": "Leider ist dieses Produkt derzeit nicht mehr Verfügbar."
+      "insufficientstock": "Leider ist dieses Produkt derzeit nicht mehr verfügbar."
     },
     "description_heading": "Beschreibung",
     "share": "Produkt teilen",
@@ -338,7 +338,7 @@
       "bopis": "Click & Collect",
       "direct_ship": "Online bestellen"
     },
-    "choose_reservation_type": "Reservierungs-Art wählen",
+    "choose_reservation_type": "Reservierungsart wählen",
     "quick_reserve": "Sofort reservieren",
     "reserve_to_cart": "In den Warenkorb reservieren",
     "change_fulfillment_method": "Liefermethode ändern",
@@ -488,7 +488,7 @@
       "insufficientstock": "Ein oder mehrere Produkte in Ihrem Warenkorb sind derzeit nicht auf Lager. Bitte entfernen Sie diese.",
       "multiplelocations": "Bestellungen sind auf eine einzige Abholfiliale limitiert. Bitte wählen Sie nur eine Filiale aus.",
       "productsNotFound": "Ein oder mehrere Produkte wurden, aufgrund der Verfügbarkeit aus Ihrem Warenkorb entfernt.",
-      "mixed_cart": "Reservierungen und Online-Bestellungen müssen in getrennten Bestellungen aufgegeben werden. Bitte aktualisieren Sie die Produkte, so dass der Warenkorb entweder nur Online-Bestellungen oder nur Reservierungen enthält.",
+      "mixed_cart": "Reservierungen und Online-Bestellungen müssen in getrennten Bestellungen aufgegeben werden. Bitte aktualisieren Sie die Produkte, sodass der Warenkorb entweder nur Online-Bestellungen oder nur Reservierungen enthält.",
       "direct_ship_item": "Prüfen Sie, ob dieses Produkt in einer Filiale in Ihrer Nähe reserviert werden kann.",
       "ropis_cart_inventory": "Nicht alle Produkte können reserviert werden. Bitte überprüfen Sie die Fehler und ändern Sie die Lieferoptionen.",
       "ropis_item_inventory": "Dieses Produkt kann in der gewünschten Filiale nicht reserviert werden. Prüfen Sie, ob es in einer anderen Filiale vorrätig ist.",
@@ -522,7 +522,7 @@
       "subline": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
       "reset_instructions": "Sie erhalten eine E-Mail zum Zurücksetzen Ihres Passworts an {email}",
       "back_to_login": "Zurück zur Anmeldung",
-      "customer_not_found": "Zu dieser E-Mail Adresse liegt und kein Account vor."
+      "customer_not_found": "Zu dieser E-Mail-Adresse liegt und kein Account vor."
     }
   },
   "navigation": {
@@ -606,7 +606,7 @@
       }
     },
     "errors": {
-      "genericInitialize": "Der Checkout ist derzeit nicht Verfügbar, bitte versuchen Sie es später erneut.",
+      "genericInitialize": "Der Check-out ist derzeit nicht verfügbar, bitte versuchen Sie es später erneut.",
       "genericUpdate": "Die Bestellung konnte nicht verarbeitet werden, bitte versuchen Sie es später erneut.",
       "checkCart": "Bitte überprüfen Sie Ihren Warenkorb.",
       "genericSubmit": "Die Bestellung konnte nicht verarbeitet werden, bitte überprüfen Sie Ihren Warenkorb.",
@@ -626,7 +626,7 @@
         "firstName": "Vorname",
         "lastName": "Nachname",
         "mobile": "Mobilnummer",
-        "emailAddress": "E-Mail Adresse",
+        "emailAddress": "E-Mail-Adresse",
         "password": "Passwort *",
         "passwordConfirm": "Passwort wiederholen *",
         "company": "Firma",
@@ -639,7 +639,7 @@
         "who_will_pickup": "Wer wird diese Bestellung abholen?",
         "me": "Ich selbst",
         "someone_else": "Jemand anderes",
-        "instructions": "Abhol-Hinweise"
+        "instructions": "Abholhinweise"
       }
     },
     "billing": {
