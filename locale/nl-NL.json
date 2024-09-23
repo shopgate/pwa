@@ -292,7 +292,7 @@
   "scanner": {
     "instructions": "Bewaar de streepjescode of QR-code in het midden. De detectie wordt automatisch uitgevoerd.",
     "noResult": {
-      "qrCode": "Er werd geen resultaat voor uw QR code gevonden.",
+      "qrCode": "Er werd geen resultaat voor uw QR-code gevonden.",
       "barCode": "Geen producten gevonden."
     }
   },
