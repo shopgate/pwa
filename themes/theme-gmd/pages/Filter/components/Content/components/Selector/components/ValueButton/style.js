@@ -21,6 +21,6 @@ export const inactive = css({
 
 export const active = css(inactive, {
   // Before the custom properties the accent color was used for this class.
-  borderColor: `var(--color-primary, ${themeColors.accent})`,
-  color: `var(--color-primary, ${themeColors.accent})`,
+  borderColor: `var(--color-primary, ${themeColors.secondary})`,
+  color: `var(--color-primary, ${themeColors.secondary})`,
 });
