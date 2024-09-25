@@ -17,7 +17,6 @@ const greyStyle = css({
 
 const prominentStyle = css({
   ...main,
-  // Before the custom properties the primary color was used for this class.
   color: `var(--color-primary, ${colors.secondary})`,
 }).toString();
 

@@ -9,7 +9,6 @@ const wrapper = css({
 }).toString();
 
 const price = css({
-  // Before the custom properties the accent color was used for this class.
   color: `var(--color-primary, ${colors.secondary})`,
   display: 'inline-block',
   fontWeight: 500,
@@ -62,7 +61,6 @@ const rangeSlider = {
   }).toString(),
 
   range: css({
-    // Before the custom properties the accent color was used for this class.
     background: `var(--color-primary, ${colors.secondary})`,
     position: 'absolute',
     height: '100%',

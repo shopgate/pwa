@@ -3,7 +3,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 const badge = {
-  // Before the custom properties the primary color was used for this class.
   background: `var(--color-primary, ${colors.secondary})`,
   borderRadius: 2,
   color: `var(--color-primary-contrast, ${colors.secondaryContrast})`,
