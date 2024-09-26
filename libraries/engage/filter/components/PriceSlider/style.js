@@ -9,7 +9,7 @@ const wrapper = css({
 }).toString();
 
 const price = css({
-  color: `var(--color-primary, ${colors.secondary})`,
+  color: `var(--color-secondary, ${colors.primary})`,
   display: 'inline-block',
   fontWeight: 500,
   textAlign: 'center',
@@ -61,7 +61,7 @@ const rangeSlider = {
   }).toString(),
 
   range: css({
-    background: `var(--color-primary, ${colors.secondary})`,
+    background: `var(--color-secondary, ${colors.primary})`,
     position: 'absolute',
     height: '100%',
     marginLeft: variables.gap.small,
