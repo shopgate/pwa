@@ -5,7 +5,7 @@ const { colors } = themeConfig;
 const badge = {
   background: `var(--color-primary, ${colors.secondary})`,
   borderRadius: 2,
-  color: `var(--color-primary-contrast, ${colors.secondaryContrast})`,
+  color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
   padding: 5,
   width: '100%',
   fontWeight: 700,

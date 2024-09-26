@@ -19,7 +19,7 @@ const emptyStars = css({
 
 const filledStars = css({
   position: 'absolute',
-  color: `var(--color-primary, ${colors.secondary})`,
+  color: `var(--color-primary, ${colors.primary})`,
   top: 0,
 }).toString();
 

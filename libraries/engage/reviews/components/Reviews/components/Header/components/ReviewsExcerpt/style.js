@@ -21,7 +21,7 @@ export const reviewsLine = css({
 });
 
 export const averageRatingNumber = css({
-  color: `var(--color-primary, ${colors.secondary})`,
+  color: `var(--color-primary, ${colors.primary})`,
   marginLeft: variables.gap.small,
 }).toString();
 
