@@ -22,7 +22,7 @@
     "cart": "Cart",
     "shipping": "Shipping",
     "reviews": "Reviews",
-    "favorites": "Wish List",
+    "favorites": "Favorites",
     "scanner": "Scanner",
     "back_in_stock": "Notifications",
     "checkout": "Checkout",
@@ -32,7 +32,6 @@
     "order_details": "Order Details",
     "store_finder": "Store Finder",
     "order_history": "Order History",
-    "wish_list": "Wish List",
     "profile": "Profile",
     "your_account": "My Account",
     "your_account_contact": "Address",
@@ -114,36 +113,36 @@
     }
   },
   "favorites": {
-    "add": "Add to wish list",
-    "added": "Product has been added to wish list",
+    "add": "Add to favorites list",
+    "added": "Product has been added to favorites list",
     "continue": "Continue shopping",
     "empty": "You don't have any saved products",
-    "error_add": "Product could not be added to wish list",
-    "error_remove": "Product could not be removed from wish list",
-    "error_limit": "You have exceeded the number of products allowed in the wish list.",
-    "remove": "Remove from wish list",
-    "removed": "Removed from wish list",
+    "error_add": "Product could not be added to favorites list",
+    "error_remove": "Product could not be removed from favorites list",
+    "error_limit": "You have exceeded the number of products allowed in the favorites list.",
+    "remove": "Remove from favorites list",
+    "removed": "Removed from favorites list",
     "add_list_modal": {
       "title": "Add a new List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the name for your new wish list",
+      "message": "Enter the name for your new favorites list",
       "label": "Name"
     },
     "rename_list_modal": {
       "title": "Renaming List",
       "dismiss": "Cancel",
       "confirm": "Confirm",
-      "message": "Enter the new name for your wish list",
+      "message": "Enter the new name for your favorites list",
       "label": "Name"
     },
     "add_list": "Add New List",
     "errors": {
-      "invalid_name": "Please enter a valid name for your wish list"
+      "invalid_name": "Please enter a valid name for your favorites list"
     },
     "delete_list_modal": {
-      "title": "Delete Wish List",
-      "message": "Do you really want to delete the \"{name}\" wish list?"
+      "title": "Delete Favorites List",
+      "message": "Do you really want to delete the \"{name}\" favorites list?"
     },
     "comment_modal": {
       "titleAdd": "Add Comment",
@@ -171,7 +170,7 @@
       "title": "Choose a Method"
     },
     "list_chooser": {
-      "title": "Choose a Wish List",
+      "title": "Choose a Favorites List",
       "add": "Add",
       "add_more": "Add more",
       "remove": "Remove"
@@ -182,7 +181,8 @@
     },
     "open_list": "Open list.",
     "close_list": "Close list.",
-    "load_more_button": "Load more products"
+    "load_more_button": "Load more products",
+    "error_general": "The favorites list could not be saved"
   },
   "filter": {
     "sort": {
@@ -230,7 +230,7 @@
     "share": "Share product",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
-    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "adding_item": "{count, plural, =1 {Adding one item} other {Adding {count} items}}",
     "pick_option_first": "Pick an option first. {option}",
     "fill_out_required_input_first": "Fill out the required inputs first.",
     "add_to_cart": "Add to cart",
@@ -502,7 +502,7 @@
     },
     "price_caption": {
       "reservation": "Reservation",
-      "pay_in_store": ""
+      "pay_in_store": "Pay in Store"
     }
   },
   "login": {
@@ -530,20 +530,20 @@
     "your_account": "My Account",
     "home": "Home",
     "categories": "Categories",
-    "favorites": "Wish List",
-    "my_orders": "My orders",
-    "cart": "Shopping cart",
+    "favorites": "Favorites",
+    "my_orders": "My Orders",
+    "cart": "Shopping Cart",
     "scanner": "Scanner",
-    "shipping": "Shipping methods",
-    "about": "Contact us",
-    "payment": "Payment methods",
-    "terms": "Terms",
-    "privacy": "Privacy policy",
+    "shipping": "Shipping Methods",
+    "about": "Contact Us",
+    "payment": "Payment Methods",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
     "privacySettings": "Privacy Settings",
     "back_in_stock": "Notifications",
-    "welcome_message": "Welcome, {name}",
-    "return_policy": "Return policy",
-    "logout": "Sign out",
+    "welcome_message": "Welcome {name}",
+    "return_policy": "Return Policy",
+    "logout": "Logout",
     "back": "Back to {title}",
     "open_menu": "Open menu",
     "menuSubHeader": {
@@ -558,7 +558,7 @@
     "button_add": "Write a Review",
     "button_all": "All {count} Reviews",
     "author": "by {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} of {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {One star} other {{rate} stars}} of {maxRate}.",
     "review_form_rate": "Rate this product:",
     "review_form_author": "Your Name",
     "review_form_title": "Review title (optional)",
@@ -566,7 +566,7 @@
     "review_form_error_author_empty": "Please enter a name.",
     "review_form_rate_error": "Please select a star rating.",
     "review_form_error_length": "Max length {length} characters.",
-    "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
+    "press_to_rate_with_x_stars": "Press to rate with {rate, plural, =1 {one star} other {{rate} stars}}.",
     "success_message": "Thanks for your review!"
   },
   "scanner": {
@@ -788,7 +788,7 @@
     "checkField": "Please check this field",
     "emailConflict": "This e-mail address is already registered",
     "passwordMismatch": "Your passwords do not match",
-    "minPasswordLength": "The minimum password length must be %\\{count\\} characters"
+    "minPasswordLength": "The minimum password length must be %'{count} characters"
   },
   "formats": {
     "date": {
