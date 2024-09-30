@@ -279,7 +279,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                 >
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
-                    className="css-13de4di "
+                    className="css-7wvaon "
                     params={
                       Array [
                         null,
@@ -290,7 +290,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                     transform={null}
                   >
                     <span
-                      className="css-13de4di "
+                      className="css-7wvaon "
                       role={null}
                     >
                       -50%
@@ -523,7 +523,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 >
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
-                    className="css-13de4di "
+                    className="css-7wvaon "
                     params={
                       Array [
                         null,
@@ -534,7 +534,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                     transform={null}
                   >
                     <span
-                      className="css-13de4di "
+                      className="css-7wvaon "
                       role={null}
                     >
                       -50%
@@ -770,7 +770,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 >
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
-                    className="css-13de4di "
+                    className="css-7wvaon "
                     params={
                       Array [
                         null,
@@ -781,7 +781,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                     transform={null}
                   >
                     <span
-                      className="css-13de4di "
+                      className="css-7wvaon "
                       role={null}
                     >
                       -50%
@@ -1017,7 +1017,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 >
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
-                    className="css-13de4di "
+                    className="css-7wvaon "
                     params={
                       Array [
                         null,
@@ -1028,7 +1028,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                     transform={null}
                   >
                     <span
-                      className="css-13de4di "
+                      className="css-7wvaon "
                       role={null}
                     >
                       -50%
@@ -1349,7 +1349,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                 >
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
-                    className="css-13de4di "
+                    className="css-7wvaon "
                     params={
                       Array [
                         null,
@@ -1360,7 +1360,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                     transform={null}
                   >
                     <span
-                      className="css-13de4di "
+                      className="css-7wvaon "
                       role={null}
                     >
                       -50%
