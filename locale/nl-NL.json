@@ -129,7 +129,7 @@
     "description_heading": "Over",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
-    "adding_item": "{count, plural, =1 {{count} artikel toevoegen} other {{count} artikelen toevoegen}}",
+    "adding_item": "{count, plural, =1 {Er wordt één product toegevoegd} other {Er worden {count} producten toegevoegd}}",
     "pick_option_first": "Kies eerst een optie. {option}",
     "fill_out_required_input_first": "Vul eerst de vereiste input in.",
     "add_to_cart": "Voeg aan winkelwagen toe",
@@ -271,7 +271,7 @@
     "button_add": "Schrijf een beoordeling",
     "button_all": "Alle {count} Beoordelingen",
     "author": "door {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} uit {maxRate}",
+    "rating_stars": "{rate, plural, =1 {Eén ster} other {{rate} sterren}} van {maxRate}.",
     "review_form_rate": "Beoordeel dit product:",
     "review_form_author": "Uw naam",
     "review_form_title": "Review titel (optioneel)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Voer alstublieft uw naam in.",
     "review_form_rate_error": "Selecteer alstublieft een sterrenbeoordeling.",
     "review_form_error_length": "Maximum lengte {length} karakters.",
-    "press_to_rate_with_x_stars": "Kies om te beoordelen met {rate} {rate, plural, =1 {ster} other {sterren}}.",
+    "press_to_rate_with_x_stars": "Kies om te beoordelen met {rate, plural, =1 {één ster} other {{rate} sterren}}.",
     "success_message": "Bedankt voor uw beoordeling!"
   },
   "scanner": {
