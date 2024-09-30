@@ -2,7 +2,7 @@ import React, {
   useState, useMemo, memo, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import { ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
+import { ResponsiveContainer } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
 import Provider from './FilterBarProvider';
@@ -45,12 +45,10 @@ function FilterBar({ filters, categoryId }) {
     <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
       <SortProvider scope={sortScope}>
         <Provider>
-          <SurroundPortals portalName="filter-bar.content">
-            <Content onChipCountUpdate={handleChipCountUpdate} />
-            <ResponsiveContainer breakpoint=">xs" webOnly>
-              <Modal />
-            </ResponsiveContainer>
-          </SurroundPortals>
+          <Content onChipCountUpdate={handleChipCountUpdate} />
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            <Modal />
+          </ResponsiveContainer>
         </Provider>
       </SortProvider>
     </div>

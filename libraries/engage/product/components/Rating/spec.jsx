@@ -12,6 +12,7 @@ import Rating from './index';
 import { getElementById } from './mock';
 
 setMocks();
+jest.mock('@shopgate/engage/components');
 
 describe('Rating (product header)', () => {
   const mockedStore = configureStore();

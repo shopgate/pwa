@@ -32,7 +32,7 @@ export const addFavorite = mutable((
   listId,
   quantity,
   notes,
-  showToast = true
+  showToast = false
 ) => (dispatch, getState) => {
   const defaultList = getFavoritesDefaultList(getState());
   dispatch(addProductToFavorites(productId, listId || defaultList.id, quantity, notes, showToast));
@@ -84,7 +84,7 @@ export const toggleFavorite = mutable((productId, listId, withRelatives = false)
     const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(state);
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(state);
     if (wishlistItemQuantityEnabled || !loadWishlistOnAppStartEnabled) {
-      dispatch(addFavorite(productId, listId));
+      dispatch(addFavorite(productId, listId, null, null, true));
     } else {
       const isOnList = makeIsProductOnSpecificFavoriteList(
         () => productId,
