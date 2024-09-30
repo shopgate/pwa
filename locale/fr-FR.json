@@ -129,7 +129,7 @@
     "description_heading": "à propos",
     "pick_an_attribute": "Choisir un {0}",
     "tax_disclaimer": "* Inclus TVA plus frais de livraison éventuels",
-    "adding_item": "{count, plural, =1 {Ajouter {count} un objet} other {Ajouter {count} des objets}}",
+    "adding_item": "{count, plural, =1 {Un produit est en cours d'ajout} other {{count} produits sont en cours d'ajout}}",
     "pick_option_first": "Choisissez d'abord une option. {option}",
     "fill_out_required_input_first": "Remplissez d'abord les entrées requises.",
     "add_to_cart": "Ajouter au panier",
@@ -271,7 +271,7 @@
     "button_add": "Ecrire une revue",
     "button_all": "Tous les {count} revues",
     "author": "par {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} sur {maxRate}",
+    "rating_stars": "{rate, plural, =1 {Une étoile} other {{rate} étoiles}} sur {maxRate}.",
     "review_form_rate": "Evaluer ce produit:",
     "review_form_author": "Votre nom",
     "review_form_title": "Titre de la revue (optional)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Veuillez entrer un nom.",
     "review_form_rate_error": "Veuillez sélectionner une note en étoile.",
     "review_form_error_length": "Longueur caractère maximale {length}.",
-    "press_to_rate_with_x_stars": "Choisissez pour évaluer avec {rate} {rate, plural, =1 {étoile} other {étoiles}}.",
+    "press_to_rate_with_x_stars": "Appuyez pour noter avec {rate, plural, =1 {une étoile} other {{rate} étoiles}}.",
     "success_message": "Merci pour votre revue!"
   },
   "scanner": {

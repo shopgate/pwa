@@ -129,7 +129,7 @@
     "description_heading": "Beskrivning",
     "pick_an_attribute": "{0} välj",
     "tax_disclaimer": "* Inkl. moms eventuellt plus fraktkostnader",
-    "adding_item": "{count, plural, =1 {{count} Produkter kommer att läggas till} other {{count} Produkter kommer att läggas till}}",
+    "adding_item": "{count, plural, =1 {En produkt läggs till} other {{count} produkter läggs till}}",
     "pick_option_first": "Välj ett alternativ först. {option}",
     "fill_out_required_input_first": "Fyll i alla obligatoriska fält först.",
     "add_to_cart": "Lägg till i korgen",
@@ -271,7 +271,7 @@
     "button_add": "Betygsätt produkt",
     "button_all": "Alla {count} Värderingar",
     "author": "av {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stjärna} other {Stjärnor}} av {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {En stjärna} other {{rate} stjärnor}} av {maxRate}.",
     "review_form_rate": "Betygsätt den här Produkten:",
     "review_form_author": "Namn",
     "review_form_title": "Titel (valfritt)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Vänligen ange ett namn.",
     "review_form_rate_error": "Hur många stjärnor ger du?",
     "review_form_error_length": "Maximalt {length} tecken tillåtna.",
-    "press_to_rate_with_x_stars": "Välj att betygsätta med {rate} {rate, plural, =1 {en Stjärna} other {Stjärnor}}.",
+    "press_to_rate_with_x_stars": "Tryck för att betygsätta med {rate, plural, =1 {en stjärna} other {{rate} stjärnor}}.",
     "success_message": "Tack för ditt betyg!"
   },
   "scanner": {

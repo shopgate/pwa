@@ -129,7 +129,7 @@
     "description_heading": "A riguardo",
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
-    "adding_item": "{count, plural, =1 {Aggiungendo {count} articolo} other {Aggiungendo {count} di articoli}}",
+    "adding_item": "{count, plural, =1 {Un prodotto viene aggiunto} other {Vengono aggiunti {count} prodotti}}",
     "pick_option_first": "Prima scegli un'opzione. {option}",
     "fill_out_required_input_first": "Prima inserisci i dati richiesti.",
     "add_to_cart": "Aggiungi al carrello",
@@ -271,7 +271,7 @@
     "button_add": "Scrivi una recensione",
     "button_all": "Tutte le {count} Recensioni",
     "author": "da {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}} su {maxRate}",
+    "rating_stars": "{rate, plural, =1 {Una stella} other {{rate} stelle}} su {maxRate}.",
     "review_form_rate": "Vota questo prodotto:",
     "review_form_author": "Il tuo nome",
     "review_form_title": "Titolo della recensione (opzionale)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Inserire un nome prego.",
     "review_form_rate_error": "Selezionare le stelle per la valutazione prego.",
     "review_form_error_length": "Massima lunghezza {length} caratteri.",
-    "press_to_rate_with_x_stars": "Premere per votare con {rate} {rate, plural, =1 {stella} other {stelle}}.",
+    "press_to_rate_with_x_stars": "Premere per valutare con {rate, plural, =1 {una stella} other {{rate} stelle}}.",
     "success_message": "Grazie per la tua recensione!"
   },
   "scanner": {

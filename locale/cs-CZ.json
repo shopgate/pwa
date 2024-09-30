@@ -129,7 +129,7 @@
     "description_heading": "Popis",
     "pick_an_attribute": "{0} vybrat",
     "tax_disclaimer": "* Včetně DPH případně plus náklady na dopravu",
-    "adding_item": "{count, plural, =1 {{count} Produkt je přidán} other {{count} Produkty jsou přidávány}}",
+    "adding_item": "{count, plural, =1 {Přidává se jeden produkt} other {Přidává se {count} produktů}}",
     "pick_option_first": "Nejprve vyberte možnost. {option}",
     "fill_out_required_input_first": "Nejprve vyplňte všechna povinná pole.",
     "add_to_cart": "Přidat do košíku",
@@ -271,7 +271,7 @@
     "button_add": "Hodnotit produkt",
     "button_all": "Všechna {count} hodnocení",
     "author": "z {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {hvězdička} other {hvězdičky}} z {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {Jedna hvězda} other {{rate} hvězdiček}} z {maxRate}.",
     "review_form_rate": "Ohodnoťte tento produkt:",
     "review_form_author": "Jméno",
     "review_form_title": "Název (nepovinný)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Zadejte prosím jméno.",
     "review_form_rate_error": "Kolik hvězdiček dáváte?",
     "review_form_error_length": "Maximální povolená délka {length} znaků.",
-    "press_to_rate_with_x_stars": "Zvolte hodnocení pomocí {rate} {rate, plural, =1 {jedna hvězdička} other {hvězdičky}}.",
+    "press_to_rate_with_x_stars": "Vyberte pro hodnocení s {rate, plural, =1 {jednou hvězdou} other {{rate} hvězdičkami}}.",
     "success_message": "Děkujeme vám za vaše hodnocení!"
   },
   "scanner": {

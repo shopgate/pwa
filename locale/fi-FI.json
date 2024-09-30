@@ -129,7 +129,7 @@
     "description_heading": "Kuvaus",
     "pick_an_attribute": "{0} valitse",
     "tax_disclaimer": "* Sisältää alv:n ja mahdollisesti toimituskulut",
-    "adding_item": "{count, plural, =1 {{count} tuote lisätään} other {{count} tuotteet lisätään}}",
+    "adding_item": "{count, plural, =1 {Lisätään yksi tuote} other {Lisätään {count} tuotetta}}",
     "pick_option_first": "Valitse vaihtoehto ensin. {option}",
     "fill_out_required_input_first": "Täytä ensin kaikki pakolliset kentät.",
     "add_to_cart": "Lisää koriin",
@@ -271,7 +271,7 @@
     "button_add": "Arvioi tuote",
     "button_all": "Kaikki {count} arvostelut",
     "author": "osoitteesta {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Tähti} other {Tähdet}} osoitteesta {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {Yksi tähti} other {{rate} tähteä}} {maxRate} tähdestä.",
     "review_form_rate": "Arvioi tämä tuote:",
     "review_form_author": "Nimi",
     "review_form_title": "Otsikko (valinnainen)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Kirjoita nimi.",
     "review_form_rate_error": "Kuinka monta tähteä annat?",
     "review_form_error_length": "Enintään {length} merkkiä sallittu.",
-    "press_to_rate_with_x_stars": "Valitse arvostella kanssa {rate} {rate, plural, =1 {yksi Tähti} other {Tähdet}}.",
+    "press_to_rate_with_x_stars": "Valitse arvioidaksesi {rate, plural, =1 {yhdellä tähdellä} other {{rate} tähdellä}}.",
     "success_message": "Kiitos luokituksestasi!"
   },
   "scanner": {
