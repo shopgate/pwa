@@ -31,7 +31,7 @@ const LoggedIn = ({ logout }) => {
             />
             <Item
               href={WISH_LIST_PATH}
-              label="navigation.wish_list"
+              label="navigation.favorites"
               testId="accountButton"
             />
             <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
