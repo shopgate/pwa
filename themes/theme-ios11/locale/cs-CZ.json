@@ -49,7 +49,6 @@
     "error_add": "Výrobek se nepodařilo přidat do seznamu sledovaných položek",
     "error_remove": "Výrobek se nepodařilo odstranit ze seznamu sledovaných položek",
     "error_limit": "Byl překročen povolený počet produktů na seznamu sledovaných položek.",
-    "error_general": "Seznam sledovaných produktů nebylo možné uložit",
     "remove": "Odstranit ze seznamu sledovaných produktů",
     "removed": "Odstraněno ze seznamu sledovaných produktů",
     "add_list_modal": {
@@ -66,13 +65,13 @@
       "message": "Nový název seznamu sledovaných položek",
       "label": "Název"
     },
-    "delete_list_modal": {
-      "title": "Smazat seznam sledovaných položek",
-      "message": "Opravdu chcete smazat seznam hodinek \"{name}\"?"
-    },
     "add_list": "Vytvořit nový seznam",
     "errors": {
       "invalid_name": "Zadejte prosím úplný název vašeho seznamu sledovaných položek."
+    },
+    "delete_list_modal": {
+      "title": "Smazat seznam sledovaných položek",
+      "message": "Opravdu chcete smazat seznam hodinek \"{name}\"?"
     },
     "rename_list": "Přejmenovat",
     "remove_list": "Smazat",
@@ -93,7 +92,8 @@
     },
     "open_list": "Otevřít seznam.",
     "close_list": "Zavřít seznam.",
-    "load_more_button": "Načíst další položky"
+    "load_more_button": "Načíst další položky",
+    "error_general": "Seznam sledovaných produktů nebylo možné uložit"
   },
   "filter": {
     "sort": {
@@ -132,7 +132,7 @@
     "pick_an_attribute": "{0} vybrat",
     "tax_disclaimer": "* Včetně DPH případně plus náklady na dopravu",
     "item_added": "{count, plural, =0 {# žádné produkty} =1 {{count} Přidaný produkt} other {{count} Přidané produkty}}",
-    "adding_item": "{count, plural, =1 {{count} Produkt je přidán} other {{count} Produkty jsou přidávány}}",
+    "adding_item": "{count, plural, =1 {Přidává se jeden produkt} other {Přidává se {count} produktů}}",
     "pick_option_first": "Nejprve vyberte možnost. {option}",
     "fill_out_required_input_first": "Nejprve vyplňte všechna povinná pole.",
     "add_to_cart": "Přidat do košíku",
@@ -186,11 +186,11 @@
   "search": {
     "label": "Vyhledávání",
     "cancel": "Zrušit",
+    "placeholder": "Vyhledávání",
     "no_result": {
       "heading": "Oops!",
       "body": "Vaše hledání \"{searchPhrase}\" nevrátilo žádné výsledky."
-    },
-    "placeholder": "Vyhledávání"
+    }
   },
   "shipping": {
     "unknown": "plus Poštovné",
@@ -256,12 +256,12 @@
     "terms": "Podmínky",
     "privacy": "Ochrana údajů",
     "privacySettings": "Nastavení ochrany osobních údajů",
+    "back_in_stock": "Oznámení",
     "welcome_message": "Dobrý den {name}",
     "return_policy": "Storno podmínky",
     "logout": "Odhlášení",
     "store_information": "O nás",
     "more_menu": "Více na",
-    "back_in_stock": "Oznámení",
     "back": "Zpět na {title}"
   },
   "reviews": {
@@ -271,7 +271,7 @@
     "button_add": "Hodnotit produkt",
     "button_all": "Všechna {count} hodnocení",
     "author": "z {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {hvězdička} other {hvězdičky}} z {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {Jedna hvězda} other {{rate} hvězdiček}} z {maxRate}.",
     "review_form_rate": "Ohodnoťte tento produkt:",
     "review_form_author": "Jméno",
     "review_form_title": "Název (nepovinný)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Zadejte prosím jméno.",
     "review_form_rate_error": "Kolik hvězdiček dáváte?",
     "review_form_error_length": "Maximální povolená délka {length} znaků.",
-    "press_to_rate_with_x_stars": "Zvolte hodnocení pomocí {rate} {rate, plural, =1 {jedna hvězdička} other {hvězdičky}}.",
+    "press_to_rate_with_x_stars": "Vyberte pro hodnocení s {rate, plural, =1 {jednou hvězdou} other {{rate} hvězdičkami}}.",
     "success_message": "Děkujeme vám za vaše hodnocení!"
   },
   "tab_bar": {

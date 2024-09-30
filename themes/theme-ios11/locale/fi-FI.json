@@ -49,7 +49,6 @@
     "error_add": "Tuotetta ei voitu lisätä seurantalistalle",
     "error_remove": "Tuotetta ei voitu poistaa seurantalistalta",
     "error_limit": "Seurantalistalla olevien tuotteiden sallittu määrä on ylitetty.",
-    "error_general": "Seurantalistaa ei voitu tallentaa",
     "remove": "Poista seurantalistalta",
     "removed": "Poistettu seurantalistalta",
     "add_list_modal": {
@@ -66,13 +65,13 @@
       "message": "Tarkkailulistan uusi nimi",
       "label": "Nimi"
     },
-    "delete_list_modal": {
-      "title": "Poista seurantalista",
-      "message": "Haluatko todella poistaa kellolistan \"{name}\"?"
-    },
     "add_list": "Luo uusi luettelo",
     "errors": {
       "invalid_name": "Kirjoita täydellinen nimi seurantalistallesi."
+    },
+    "delete_list_modal": {
+      "title": "Poista seurantalista",
+      "message": "Haluatko todella poistaa kellolistan \"{name}\"?"
     },
     "rename_list": "Nimeä uudelleen",
     "remove_list": "Poista",
@@ -93,7 +92,8 @@
     },
     "open_list": "Avaa lista.",
     "close_list": "Sulje lista.",
-    "load_more_button": "Lataa lisää tuotteita"
+    "load_more_button": "Lataa lisää tuotteita",
+    "error_general": "Seurantalistaa ei voitu tallentaa"
   },
   "filter": {
     "sort": {
@@ -132,7 +132,7 @@
     "pick_an_attribute": "{0} valitse",
     "tax_disclaimer": "* Sisältää alv:n ja mahdollisesti toimituskulut",
     "item_added": "{count, plural, =0 {# kei tuotteita} =1 {{count} Tuote lisätty} other {{count} Lisätyt tuotteet}}",
-    "adding_item": "{count, plural, =1 {{count} tuote lisätään} other {{count} tuotteet lisätään}}",
+    "adding_item": "{count, plural, =1 {Lisätään yksi tuote} other {Lisätään {count} tuotetta}}",
     "pick_option_first": "Valitse vaihtoehto ensin. {option}",
     "fill_out_required_input_first": "Täytä ensin kaikki pakolliset kentät.",
     "add_to_cart": "Lisää koriin",
@@ -186,11 +186,11 @@
   "search": {
     "label": "Etsi",
     "cancel": "Peruuta",
+    "placeholder": "Etsi",
     "no_result": {
       "heading": "Hups!",
       "body": "Hakusi \"{searchPhrase}\" ei tuottanut tuloksia."
-    },
-    "placeholder": "Etsi"
+    }
   },
   "shipping": {
     "unknown": "plus toimituskulut",
@@ -256,12 +256,12 @@
     "terms": "Maksuehdot",
     "privacy": "Tietosuoja",
     "privacySettings": "Tietosuoja-asetukset",
+    "back_in_stock": "Ilmoitukset",
     "welcome_message": "Hei {name}",
     "return_policy": "Peruutusehdot",
     "logout": "Kirjaudu ulos",
     "store_information": "Tietoa meistä",
     "more_menu": "Lisää",
-    "back_in_stock": "Ilmoitukset",
     "back": "Takaisin {title}"
   },
   "reviews": {
@@ -271,7 +271,7 @@
     "button_add": "Arvioi tuote",
     "button_all": "Kaikki {count} arvostelut",
     "author": "osoitteesta {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Tähti} other {Tähdet}} osoitteesta {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {Yksi tähti} other {{rate} tähteä}} {maxRate} tähdestä.",
     "review_form_rate": "Arvioi tämä tuote:",
     "review_form_author": "Nimi",
     "review_form_title": "Otsikko (valinnainen)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Kirjoita nimi.",
     "review_form_rate_error": "Kuinka monta tähteä annat?",
     "review_form_error_length": "Enintään {length} merkkiä sallittu.",
-    "press_to_rate_with_x_stars": "Valitse arvostella kanssa {rate} {rate, plural, =1 {yksi Tähti} other {Tähdet}}.",
+    "press_to_rate_with_x_stars": "Valitse arvioidaksesi {rate, plural, =1 {yhdellä tähdellä} other {{rate} tähdellä}}.",
     "success_message": "Kiitos luokituksestasi!"
   },
   "tab_bar": {

@@ -129,7 +129,7 @@
     "description_heading": "Descripción",
     "pick_an_attribute": "Elegir un {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
-    "adding_item": "{count, plural, =1 {Añadiendo {count} artículo} other {Añadiendo {count} artículos}}",
+    "adding_item": "{count, plural, =1 {Se está añadiendo un producto} other {Se están añadiendo {count} productos}}",
     "pick_option_first": "Seleccionar primero una opción. {option}",
     "fill_out_required_input_first": "Rellenar primero las entradas necesarias.",
     "add_to_cart": "Añadir a la cesta",
@@ -271,7 +271,7 @@
     "button_add": "Escriba un comentario",
     "button_all": "Todos los {count} Comentarios",
     "author": "por {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}} de {maxRate}",
+    "rating_stars": "{rate, plural, =1 {Una estrella} other {{rate} estrellas}} de {maxRate}.",
     "review_form_rate": "Calificar este producto:",
     "review_form_author": "Su Nombre",
     "review_form_title": "Título del comentario (opcional)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Ingrese un nombre.",
     "review_form_rate_error": "Seleccione una estrella de calificación.",
     "review_form_error_length": "Máxima cantidad {length} de caracteres.",
-    "press_to_rate_with_x_stars": "Presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
+    "press_to_rate_with_x_stars": "Pulse para calificar con {rate, plural, =1 {una estrella} other {{rate} estrellas}}.",
     "success_message": "¡Gracias por su comentario!"
   },
   "scanner": {

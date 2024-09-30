@@ -129,7 +129,7 @@
     "description_heading": "Descriere",
     "pick_an_attribute": "{0} selectați",
     "tax_disclaimer": "* Inclusiv TVA, eventual plus costuri de expediere",
-    "adding_item": "{count, plural, =1 {{count} Produs va fi adăugat} other {{count} Produse vor fi adăugate}}",
+    "adding_item": "{count, plural, =1 {Se adaugă un produs} other {Se adaugă {count} produse}}",
     "pick_option_first": "Selectați mai întâi o opțiune. {option}",
     "fill_out_required_input_first": "Completați mai întâi toate câmpurile obligatorii.",
     "add_to_cart": "Adăugați la coș",
@@ -271,7 +271,7 @@
     "button_add": "Evaluați produsul",
     "button_all": "Toate {count} evaluările ",
     "author": "de la {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stea} other {Stele}} de la {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {O stea} other {{rate} stele}} din {maxRate}.",
     "review_form_rate": "Evaluați acest produs:",
     "review_form_author": "Nume",
     "review_form_title": "Titlu (opțional)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Vă rugăm să introduceți un nume.",
     "review_form_rate_error": "Câte stele dați?",
     "review_form_error_length": "Maxim {length} caractere permise.",
-    "press_to_rate_with_x_stars": "Alegeți să evaluați cu {rate} {rate, plural, =1 {o Stea} other {Stele}}.",
+    "press_to_rate_with_x_stars": "Apăsați pentru a evalua cu {rate, plural, =1 {o stea} other {{rate} stele}}.",
     "success_message": "Vă mulțumim pentru evaluare!"
   },
   "scanner": {

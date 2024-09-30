@@ -129,7 +129,7 @@
     "description_heading": "Leírás",
     "pick_an_attribute": "{0} válasszon",
     "tax_disclaimer": "* Áfával együtt, esetleg plusz szállítási költség",
-    "adding_item": "{count, plural, =1 {{count} termék kerül hozzáadásra} other {{count} termék kerül hozzáadásra}}",
+    "adding_item": "{count, plural, =1 {Egy termék hozzáadása folyamatban van} other {Hozzáadás alatt van {count} termék}}",
     "pick_option_first": "Először válasszon ki egy opciót. {option}",
     "fill_out_required_input_first": "Először töltsd ki az összes kötelező mezőt.",
     "add_to_cart": "Kosárba helyezés",
@@ -271,7 +271,7 @@
     "button_add": "Értékelje a terméket",
     "button_all": "Minden {count} értékelés",
     "author": "a címről {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {csillag} other {csillagok}} a címről {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {Egy csillag} other {{rate} csillag}} a {maxRate}-ból.",
     "review_form_rate": "Értékelje ezt a terméket:",
     "review_form_author": "Név",
     "review_form_title": "Cím (opcionális)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Kérjük, adjon meg egy nevet.",
     "review_form_rate_error": "Hány csillagot ad?",
     "review_form_error_length": "Maximális {length} megengedett karakterek.",
-    "press_to_rate_with_x_stars": "Choose to rate with {rate} {rate, plural, =1 {egy Csillag} other {Csillagok}}.",
+    "press_to_rate_with_x_stars": "Válassza a {rate, plural, =1 {egy csillaggal} other {{rate} csillaggal}} történő értékeléshez.",
     "success_message": "Köszönjük az értékelést!"
   },
   "scanner": {

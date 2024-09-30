@@ -49,7 +49,6 @@
     "error_add": "Produsul nu a putut fi adăugat în lista de favorite.",
     "error_remove": "Produsul nu a putut fi eliminat din lista de favorite.",
     "error_limit": "Numărul permis de produse din lista de supraveghere a fost depășit.",
-    "error_general": "Lista de supraveghere nu a putut fi salvată",
     "remove": "Ștergere din lista de monitorizare",
     "removed": "Eliminat din lista de monitorizare",
     "add_list_modal": {
@@ -66,13 +65,13 @@
       "message": "Noul nume al listei dvs. de supraveghere",
       "label": "Nume"
     },
-    "delete_list_modal": {
-      "title": "Șterge lista de supraveghere",
-      "message": "Chiar doriți să ștergeți watchlist-ul \"{name}\"?"
-    },
     "add_list": "Creați o listă nouă",
     "errors": {
       "invalid_name": "Vă rugăm să introduceți un nume complet pentru lista de supraveghere"
+    },
+    "delete_list_modal": {
+      "title": "Șterge lista de supraveghere",
+      "message": "Chiar doriți să ștergeți watchlist-ul \"{name}\"?"
     },
     "rename_list": "Redenumire",
     "remove_list": "Șterge",
@@ -93,7 +92,8 @@
     },
     "open_list": "Deschide lista.",
     "close_list": "Închide lista.",
-    "load_more_button": "Încarcă mai multe articole"
+    "load_more_button": "Încarcă mai multe articole",
+    "error_general": "Lista de supraveghere nu a putut fi salvată"
   },
   "filter": {
     "sort": {
@@ -132,7 +132,7 @@
     "pick_an_attribute": "{0} selectați",
     "tax_disclaimer": "* Inclusiv TVA, eventual plus costuri de expediere",
     "item_added": "{count, plural, =0 {# fără Produse} =1 {{count} Produs adăugat} other {{count} Produse adăugate}}",
-    "adding_item": "{count, plural, =1 {{count} Produs va fi adăugat} other {{count} Produse vor fi adăugate}}",
+    "adding_item": "{count, plural, =1 {Se adaugă un produs} other {Se adaugă {count} produse}}",
     "pick_option_first": "Selectați mai întâi o opțiune. {option}",
     "fill_out_required_input_first": "Completați mai întâi toate câmpurile obligatorii.",
     "add_to_cart": "Adăugați la coș",
@@ -186,11 +186,11 @@
   "search": {
     "label": "Căutare",
     "cancel": "Anulează",
+    "placeholder": "Căutare",
     "no_result": {
       "heading": "Oops!",
       "body": "Căutarea dvs. pentru \"{searchPhrase}\" nu a dat niciun rezultat."
-    },
-    "placeholder": "Căutare"
+    }
   },
   "shipping": {
     "unknown": "plus transport maritim",
@@ -256,12 +256,12 @@
     "terms": "Termeni și condiții",
     "privacy": "Protecția datelor",
     "privacySettings": "Setări de confidențialitate",
+    "back_in_stock": "Notificări",
     "welcome_message": "Bună ziua {name}",
     "return_policy": "Politica de anulare",
     "logout": "Deconectare",
     "store_information": "Despre noi",
     "more_menu": "Mai multe",
-    "back_in_stock": "Notificări",
     "back": "Înapoi la {title}"
   },
   "reviews": {
@@ -271,7 +271,7 @@
     "button_add": "Evaluați produsul",
     "button_all": "Toate {count} evaluările ",
     "author": "de la {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stea} other {Stele}} de la {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {O stea} other {{rate} stele}} din {maxRate}.",
     "review_form_rate": "Evaluați acest produs:",
     "review_form_author": "Nume",
     "review_form_title": "Titlu (opțional)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Vă rugăm să introduceți un nume.",
     "review_form_rate_error": "Câte stele dați?",
     "review_form_error_length": "Maxim {length} caractere permise.",
-    "press_to_rate_with_x_stars": "Alegeți să evaluați cu {rate} {rate, plural, =1 {o Stea} other {Stele}}.",
+    "press_to_rate_with_x_stars": "Apăsați pentru a evalua cu {rate, plural, =1 {o stea} other {{rate} stele}}.",
     "success_message": "Vă mulțumim pentru evaluare!"
   },
   "tab_bar": {

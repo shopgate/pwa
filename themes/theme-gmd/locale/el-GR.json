@@ -129,7 +129,7 @@
     "description_heading": "Περιγραφή",
     "pick_an_attribute": "{0} επιλέξτε",
     "tax_disclaimer": "* Συμπεριλαμβανομένου του ΦΠΑ ενδεχομένως συν τα έξοδα αποστολής",
-    "adding_item": "{count, plural, =1 {{count} προϊόν θα προστεθεί} other {{count} προϊόντα θα προστεθούν}}",
+    "adding_item": "{count, plural, =1 {Προστίθεται ένα προϊόν} other {Προστίθενται {count} προϊόντα}}",
     "pick_option_first": "Επιλέξτε πρώτα μια επιλογή. {option}",
     "fill_out_required_input_first": "Συμπληρώστε πρώτα όλα τα υποχρεωτικά πεδία.",
     "add_to_cart": "Προσθήκη στο καλάθι",
@@ -271,7 +271,7 @@
     "button_add": "Βαθμολογήστε το προϊόν",
     "button_all": "Όλες οι {count} αξιολογήσεις",
     "author": "από το {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Αστέρι} other {Αστέρια}} της {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {Ένα αστέρι} other {{rate} αστέρια}} από {maxRate}.",
     "review_form_rate": "Βαθμολογήστε αυτό το προϊόν:",
     "review_form_author": "Όνομα",
     "review_form_title": "Τίτλος (προαιρετικός)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Παρακαλώ εισάγετε ένα όνομα.",
     "review_form_rate_error": "Πόσα αστέρια δίνετε;",
     "review_form_error_length": "Μέγιστο {length} επιτρεπόμενων χαρακτήρων.",
-    "press_to_rate_with_x_stars": "Επιλέξτε να αξιολογήσετε με {rate} {rate, plural, =1 {ένα αστέρι} other {Αστέρια}}.",
+    "press_to_rate_with_x_stars": "Πατήστε για να βαθμολογήσετε με {rate, plural, =1 {ένα αστέρι} other {{rate} αστέρια}}.",
     "success_message": "Σας ευχαριστούμε για την αξιολόγησή σας!"
   },
   "scanner": {

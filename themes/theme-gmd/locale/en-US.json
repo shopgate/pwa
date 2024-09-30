@@ -230,7 +230,7 @@
     "share": "Share product",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
-    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "adding_item": "{count, plural, =1 {Adding one item} other {Adding {count} items}}",
     "pick_option_first": "Pick an option first. {option}",
     "fill_out_required_input_first": "Fill out the required inputs first.",
     "add_to_cart": "Add to cart",
@@ -558,7 +558,7 @@
     "button_add": "Write a Review",
     "button_all": "All {count} Reviews",
     "author": "by {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} of {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {One star} other {{rate} stars}} of {maxRate}.",
     "review_form_rate": "Rate this product:",
     "review_form_author": "Your Name",
     "review_form_title": "Review title (optional)",
@@ -566,7 +566,7 @@
     "review_form_error_author_empty": "Please enter a name.",
     "review_form_rate_error": "Please select a star rating.",
     "review_form_error_length": "Max length {length} characters.",
-    "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
+    "press_to_rate_with_x_stars": "Press to rate with {rate, plural, =1 {one star} other {{rate} stars}}.",
     "success_message": "Thanks for your review!"
   },
   "scanner": {
