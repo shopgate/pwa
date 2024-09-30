@@ -288,7 +288,7 @@ exports[`<Header /> should render empty 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9 rating-stars-filled"
+                        className="css-1m683rn rating-stars-filled"
                       />
                     </div>
                   </RatingStars>
@@ -732,7 +732,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         </div>
                       </div>
                       <div
-                        className="css-13xh6j9 rating-stars-filled"
+                        className="css-1m683rn rating-stars-filled"
                       >
                         <div
                           className="css-ntfpo9 css-q4owmg"
@@ -896,17 +896,17 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 reviews.rating
                 <RatingNumber
-                  className="css-1k1ak38"
+                  className="css-1lvzoef"
                   key=".0"
                   rating={50}
                 >
                   <FormatNumber
-                    className="css-1k1ak38 ui-shared__rating-number"
+                    className="css-1lvzoef ui-shared__rating-number"
                     fractions={2}
                     number={2.5}
                   >
                     <span
-                      className="css-1k1ak38 ui-shared__rating-number"
+                      className="css-1lvzoef ui-shared__rating-number"
                     >
                       n
                     </span>

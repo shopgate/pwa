@@ -128,7 +128,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                   >
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
-                      className="css-13de4di css-1dtzobl"
+                      className="css-7wvaon css-1dtzobl"
                       params={
                         Array [
                           null,
@@ -139,7 +139,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                       transform={null}
                     >
                       <span
-                        className="css-13de4di css-1dtzobl"
+                        className="css-7wvaon css-1dtzobl"
                         role={null}
                       >
                         -12%
