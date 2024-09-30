@@ -20,7 +20,7 @@
     "shipping": "Livraison",
     "reviews": "Revues",
     "browse": "Naviguer",
-    "favorites": "Favorits",
+    "favorites": "Favoris",
     "scanner": "Scanner",
     "back_in_stock": "Notifications"
   },
@@ -43,15 +43,15 @@
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
-    "added": "Le produit a été ajouté aux favorits",
+    "added": "Le produit a été ajouté aux favoris",
     "continue": "Continuer l'achat",
-    "empty": "Vous n'avez rien dans vos favorits",
-    "error_add": "Le produit n'a pas pu être ajouté aux favorits",
-    "error_remove": "Le produit n'a pas pu être retiré des favorits",
+    "empty": "Vous n'avez rien dans vos favoris",
+    "error_add": "Le produit n'a pas pu être ajouté aux favoris",
+    "error_remove": "Le produit n'a pas pu être retiré des favoris",
     "error_limit": "Vous avez dépassé le nombre de produits autorisés dans les favoris.",
-    "error_general": "La liste de souhaits n'a pas pu être enregistrée",
-    "remove": "Retirer des favorits",
-    "removed": "Retiré des favorits",
+    "error_general": "La liste de favoris n'a pas pu être enregistrée",
+    "remove": "Retirer des favoris",
+    "removed": "Retiré des favoris",
     "add_list_modal": {
       "title": "Ajouter une nouvelle liste",
       "dismiss": "Annuler",
@@ -287,7 +287,7 @@
     "browse": "Naviguer",
     "cart": "Panier",
     "more": "Plus",
-    "favorites": "Favorits"
+    "favorites": "Favoris"
   },
   "scanner": {
     "instructions": "S'il vous plaît gardez le code à barres ou un code QR dans le centre. La détection est effectuée automatiquement.",
