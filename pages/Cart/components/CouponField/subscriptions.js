@@ -6,7 +6,7 @@ import {
   cartDidLeave$,
   productsUpdated$,
 } from '@shopgate/engage/cart';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { showModal } from '@shopgate/engage/core/actions';
 
 /**
  * Coupons subscription.
