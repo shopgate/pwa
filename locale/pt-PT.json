@@ -49,7 +49,6 @@
     "error_add": "O produto não pode ser adicionado aos favoritos",
     "error_remove": "O produto não pode ser removido dos favoritos",
     "error_limit": "Você excedeu o número de produtos permitidos nos favoritos.",
-    "error_general": "A lista de desejos não pôde ser guardada",
     "remove": "Remover de favoritos",
     "removed": "Removido dos favoritos",
     "add_list_modal": {
@@ -66,13 +65,13 @@
       "message": "Introduza o novo nome para a sua lista de favoritos",
       "label": "Nome"
     },
-    "delete_list_modal": {
-      "title": "Eliminar a lista de favoritos",
-      "message": "Quer mesmo apagar a lista de favoritos de \"{name}\"?"
-    },
     "add_list": "Adicionar Nova Lista",
     "errors": {
       "invalid_name": "Por favor, introduza um nome válido para a sua lista de favoritos"
+    },
+    "delete_list_modal": {
+      "title": "Eliminar a lista de favoritos",
+      "message": "Quer mesmo apagar a lista de favoritos de \"{name}\"?"
     },
     "rename_list": "Renomear",
     "remove_list": "Remover",
@@ -93,7 +92,8 @@
     },
     "open_list": "Lista aberta.",
     "close_list": "Fechar lista.",
-    "load_more_button": "Załaduj inne artykuły"
+    "load_more_button": "Załaduj inne artykuły",
+    "error_general": "A lista de desejos não pôde ser guardada"
   },
   "filter": {
     "sort": {
@@ -132,7 +132,7 @@
     "pick_an_attribute": "Escolher {0}",
     "tax_disclaimer": "* Incl. IVA mais custos de envio, se aplicável",
     "item_added": "{count, plural, =0 {# nenhum item adicionado} =1 {{count} item adicionado} other {{count} itens adicionados}}",
-    "adding_item": "{count, plural, =1 {Adicionando {count} item} other {Adicionando {count} items}}",
+    "adding_item": "{count, plural, =1 {Um produto está a ser adicionado} other {Estão a ser adicionados {count} produtos}}",
     "pick_option_first": "Primeiro escolha uma opção. {option}",
     "fill_out_required_input_first": "Primeiro preencha os campos obrigatórios.",
     "add_to_cart": "Adicionar ao carrinho",
@@ -186,11 +186,11 @@
   "search": {
     "label": "Pesquisar",
     "cancel": "Cancelar",
+    "placeholder": "Pesquisar",
     "no_result": {
       "heading": "Oops!",
       "body": "Sua pesquisa \"{searchPhrase}\" tem 0 resultados."
-    },
-    "placeholder": "Pesquisar"
+    }
   },
   "shipping": {
     "unknown": "mais o custo de envio",
@@ -256,12 +256,12 @@
     "terms": "Termos e Condições",
     "privacy": "Política de Privacidade",
     "privacySettings": "Configurações de privacidade",
+    "back_in_stock": "Lembrete de regresso ao stock",
     "welcome_message": "Bem vindo {name}",
     "return_policy": "Política de Devoluções",
     "logout": "Terminar sessão",
     "store_information": "Armazenar Informações",
     "more_menu": "Mais",
-    "back_in_stock": "Lembrete de regresso ao stock",
     "back": "Voltar para {title}"
   },
   "reviews": {
@@ -271,7 +271,7 @@
     "button_add": "Escreva uma avaliação",
     "button_all": "Todas as {count} avaliações",
     "author": "pelo {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {estrela} other {estrelas}} de {maxRate}",
+    "rating_stars": "{rate, plural, =1 {Uma estrela} other {{rate} estrelas}} de {maxRate}.",
     "review_form_rate": "Avalie este produto:",
     "review_form_author": "Seu Nome",
     "review_form_title": "Título da avaliação (opcional)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Por favor, insira um nome.",
     "review_form_rate_error": "Por favor, selecione uma qualificação com as estrelas.",
     "review_form_error_length": "Tamanho máximo de {length} caracteres.",
-    "press_to_rate_with_x_stars": "Pressione para avaliar com {rate} {rate, plural, =1 {estrela} other {estrelas}}.",
+    "press_to_rate_with_x_stars": "Pressione para avaliar com {rate, plural, =1 {uma estrela} other {{rate} estrelas}}.",
     "success_message": "Obrigado pela sua avaliação!"
   },
   "tab_bar": {

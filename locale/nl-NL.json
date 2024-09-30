@@ -49,7 +49,6 @@
     "error_add": "Product kon niet aan favorieten worden toegevoegd",
     "error_remove": "Product kon niet van favorieten verwijderd worden",
     "error_limit": "U hebt het aantal producten dat in de favorieten toegestaan zijn, overschreden.",
-    "error_general": "De verlanglijst kon niet worden opgeslagen",
     "remove": "Verwijder van favorieten",
     "removed": "Verwijderd van favorieten",
     "add_list_modal": {
@@ -66,13 +65,13 @@
       "message": "Voer de nieuwe naam voor uw favorietenlijst in",
       "label": "Naam"
     },
-    "delete_list_modal": {
-      "title": "Favorietenlijst verwijderen",
-      "message": "MWil je echt de \"{name}\" favorietenlijst verwijderen?"
-    },
     "add_list": "Nieuwe lijst toevoegen",
     "errors": {
       "invalid_name": "Voer een geldige naam in voor uw favorietenlijst"
+    },
+    "delete_list_modal": {
+      "title": "Favorietenlijst verwijderen",
+      "message": "MWil je echt de \"{name}\" favorietenlijst verwijderen?"
     },
     "rename_list": "Hernoemen",
     "remove_list": "Verwijder",
@@ -93,7 +92,8 @@
     },
     "open_list": "Open lijst.",
     "close_list": "Sluit lijst.",
-    "load_more_button": "Andere artikelen laden"
+    "load_more_button": "Andere artikelen laden",
+    "error_general": "De verlanglijst kon niet worden opgeslagen"
   },
   "filter": {
     "sort": {
@@ -132,7 +132,6 @@
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
-    "adding_item": "{count, plural, =1 {{count} artikel toevoegen} other {{count} artikelen toevoegen}}",
     "pick_option_first": "Kies eerst een optie. {option}",
     "fill_out_required_input_first": "Vul eerst de vereiste input in.",
     "add_to_cart": "Voeg aan winkelwagen toe",
@@ -186,11 +185,11 @@
   "search": {
     "label": "Zoek",
     "cancel": "Annuleer",
+    "placeholder": "Zoek",
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
-    },
-    "placeholder": "Zoek"
+    }
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -256,12 +255,12 @@
     "terms": "Algemene Voorwaarden",
     "privacy": "Privacybeleid",
     "privacySettings": "Privacy-instellingen",
+    "back_in_stock": "Terug in voorraad herinnering",
     "welcome_message": "Welkom {name}",
     "return_policy": "Herroepingsrecht",
     "logout": "Log uit",
     "store_information": "Over ons",
     "more_menu": "Meer",
-    "back_in_stock": "Terug in voorraad herinnering",
     "back": "Terug naar {title}"
   },
   "reviews": {
@@ -271,7 +270,6 @@
     "button_add": "Schrijf een beoordeling",
     "button_all": "Alle {count} Beoordelingen",
     "author": "door {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} uit {maxRate}",
     "review_form_rate": "Beoordeel dit product:",
     "review_form_author": "Uw naam",
     "review_form_title": "Review titel (optioneel)",
@@ -279,7 +277,6 @@
     "review_form_error_author_empty": "Voer alstublieft uw naam in.",
     "review_form_rate_error": "Selecteer alstublieft een sterrenbeoordeling.",
     "review_form_error_length": "Maximum lengte {length} karakters.",
-    "press_to_rate_with_x_stars": "Kies om te beoordelen met {rate} {rate, plural, =1 {ster} other {sterren}}.",
     "success_message": "Bedankt voor uw beoordeling!"
   },
   "tab_bar": {

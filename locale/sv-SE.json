@@ -49,7 +49,6 @@
     "error_add": "Produkten kunde inte läggas till i bevakningslistan",
     "error_remove": "Produkten kunde inte tas bort från bevakningslistan",
     "error_limit": "Det tillåtna antalet produkter på bevakningslistan har överskridits.",
-    "error_general": "Det gick inte att spara bevakningslistan",
     "remove": "Ta bort från bevakningslistan",
     "removed": "Borttagen från bevakningslistan",
     "add_list_modal": {
@@ -66,13 +65,13 @@
       "message": "Det nya namnet på din bevakningslista",
       "label": "Namn"
     },
-    "delete_list_modal": {
-      "title": "Radera bevakningslista",
-      "message": "Vill du verkligen ta bort bevakningslistan \"{name}\"?"
-    },
     "add_list": "Skapa ny lista",
     "errors": {
       "invalid_name": "Ange ett fullständigt namn för din bevakningslista"
+    },
+    "delete_list_modal": {
+      "title": "Radera bevakningslista",
+      "message": "Vill du verkligen ta bort bevakningslistan \"{name}\"?"
     },
     "rename_list": "Byt namn på lista",
     "remove_list": "Ta bort",
@@ -93,7 +92,8 @@
     },
     "open_list": "Öppna lista.",
     "close_list": "Stäng listan.",
-    "load_more_button": "Ladda fler artiklar"
+    "load_more_button": "Ladda fler artiklar",
+    "error_general": "Det gick inte att spara bevakningslistan"
   },
   "filter": {
     "sort": {
@@ -132,7 +132,7 @@
     "pick_an_attribute": "{0} välj",
     "tax_disclaimer": "* Inkl. moms eventuellt plus fraktkostnader",
     "item_added": "{count, plural, =0 {# inga Produkter} =1 {{count} Produkt tillagd} other {{count} Produkter tillagda}}",
-    "adding_item": "{count, plural, =1 {{count} Produkter kommer att läggas till} other {{count} Produkter kommer att läggas till}}",
+    "adding_item": "{count, plural, =1 {En produkt läggs till} other {{count} produkter läggs till}}",
     "pick_option_first": "Välj ett alternativ först. {option}",
     "fill_out_required_input_first": "Fyll i alla obligatoriska fält först.",
     "add_to_cart": "Lägg till i korgen",
@@ -186,11 +186,11 @@
   "search": {
     "label": "Sök",
     "cancel": "Avbryt",
+    "placeholder": "Sökning",
     "no_result": {
       "heading": "Hoppsan!",
       "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
-    },
-    "placeholder": "Sökning"
+    }
   },
   "shipping": {
     "unknown": "plus frakt",
@@ -256,12 +256,12 @@
     "terms": "Villkor och bestämmelser",
     "privacy": "Dataskydd",
     "privacySettings": "Sekretessinställningar",
+    "back_in_stock": "Meddelanden",
     "welcome_message": "Hej {name}",
     "return_policy": "Avbokningsregler",
     "logout": "Logga ut",
     "store_information": "Om oss",
     "more_menu": "Mer",
-    "back_in_stock": "Meddelanden",
     "back": "Tillbaka till {title}"
   },
   "reviews": {
@@ -271,7 +271,7 @@
     "button_add": "Betygsätt produkt",
     "button_all": "Alla {count} Värderingar",
     "author": "av {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stjärna} other {Stjärnor}} av {maxRate}.",
+    "rating_stars": "{rate, plural, =1 {En stjärna} other {{rate} stjärnor}} av {maxRate}.",
     "review_form_rate": "Betygsätt den här Produkten:",
     "review_form_author": "Namn",
     "review_form_title": "Titel (valfritt)",
@@ -279,7 +279,7 @@
     "review_form_error_author_empty": "Vänligen ange ett namn.",
     "review_form_rate_error": "Hur många stjärnor ger du?",
     "review_form_error_length": "Maximalt {length} tecken tillåtna.",
-    "press_to_rate_with_x_stars": "Välj att betygsätta med {rate} {rate, plural, =1 {en Stjärna} other {Stjärnor}}.",
+    "press_to_rate_with_x_stars": "Tryck för att betygsätta med {rate, plural, =1 {en stjärna} other {{rate} stjärnor}}.",
     "success_message": "Tack för ditt betyg!"
   },
   "tab_bar": {
