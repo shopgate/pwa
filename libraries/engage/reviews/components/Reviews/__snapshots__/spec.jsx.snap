@@ -416,7 +416,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -876,7 +876,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1336,7 +1336,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1796,7 +1796,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2472,7 +2472,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2932,7 +2932,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
