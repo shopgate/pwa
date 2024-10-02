@@ -259,7 +259,8 @@
       "properties": "Vlastnosti",
       "ratings": "Hodnocení",
       "purchase": "Koupit produkt",
-      "quantity": "Množství"
+      "quantity": "Množství",
+      "price": "Cena"
     },
     "displayGroups": {
       "general": "Obecné",
@@ -526,6 +527,7 @@
   },
   "navigation": {
     "login_register": "Přihlásit se",
+    "your_account": "Můj účet",
     "home": "Domovská stránka",
     "categories": "Kategorie",
     "favorites": "Seznam přání",

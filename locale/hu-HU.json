@@ -259,7 +259,8 @@
       "properties": "Tulajdonságok",
       "ratings": "Értékelések",
       "purchase": "Termék megvásárlása",
-      "quantity": "Mennyiség"
+      "quantity": "Mennyiség",
+      "price": "Ár"
     },
     "displayGroups": {
       "general": "Általános",
@@ -526,6 +527,7 @@
   },
   "navigation": {
     "login_register": "Bejelentkezés",
+    "your_account": "Saját fiók",
     "home": "Kezdőlap",
     "categories": "Kategóriák",
     "favorites": "Kedvencek",

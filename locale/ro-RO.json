@@ -259,7 +259,8 @@
       "properties": "Proprietăți",
       "ratings": "Ratinguri",
       "purchase": "Cumpărați produsul",
-      "quantity": "Cantitate"
+      "quantity": "Cantitate",
+      "price": "Preț"
     },
     "displayGroups": {
       "general": "Generalități",
@@ -526,6 +527,7 @@
   },
   "navigation": {
     "login_register": "Conectați-vă",
+    "your_account": "Contul meu",
     "home": "Pagina de pornire",
     "categories": "Categorii",
     "favorites": "Lista de dorințe",

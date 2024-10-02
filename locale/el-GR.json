@@ -259,7 +259,8 @@
       "properties": "Ιδιότητες",
       "ratings": "Αξιολογήσεις",
       "purchase": "Αγορά προϊόντος",
-      "quantity": "Ποσότητα"
+      "quantity": "Ποσότητα",
+      "price": "Τιμή"
     },
     "displayGroups": {
       "general": "Γενικά",
@@ -526,6 +527,7 @@
   },
   "navigation": {
     "login_register": "Είσοδος",
+    "your_account": "Ο λογαριασμός μου",
     "home": "Αρχική σελίδα",
     "categories": "Κατηγορίες",
     "favorites": "Λίστα αγαπημένων",

@@ -259,7 +259,8 @@
       "properties": "Eigenschappen",
       "ratings": "Ratings",
       "purchase": "Aankoopitem",
-      "quantity": "Aantal"
+      "quantity": "Aantal",
+      "price": "Prijs"
     },
     "displayGroups": {
       "general": "Algemeen",
@@ -526,6 +527,7 @@
   },
   "navigation": {
     "login_register": "Log in / Registreer",
+    "your_account": "Mijn account",
     "home": "Home",
     "categories": "Categorieën",
     "favorites": "Verlanglijst",
