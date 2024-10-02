@@ -10,7 +10,11 @@
     "show_products": "Zobrazit produkty",
     "back": "Zpět",
     "close": "Zavřít",
-    "products": "Produkty"
+    "products": "Produkty",
+    "error": "Došlo k neočekávané chybě. Zkuste to prosím znovu.",
+    "errors": {
+      "generic": "Došlo k neočekávané chybě. Zkuste to prosím znovu."
+    }
   },
   "titles": {
     "categories": "Kategorie",
@@ -20,7 +24,76 @@
     "reviews": "Recenze",
     "favorites": "Sledovaný seznam",
     "scanner": "Skener",
-    "back_in_stock": "Oznámení"
+    "back_in_stock": "Oznámení",
+    "checkout": "Pokladna",
+    "checkout_confirmation": "Objednávka úspěšná",
+    "checkout_change_billing": "Změnit fakturační adresu",
+    "register": "Registrovat se",
+    "order_details": "Detaily objednávky",
+    "store_finder": "Vyhledávač prodejen",
+    "order_history": "Historie objednávek",
+    "profile": "Profil",
+    "your_account": "Můj účet",
+    "your_account_contact": "Adresa",
+    "page_not_found": "Stránka nenalezena",
+    "checkout_addresses_shipping": "Vyberte doručovací adresu",
+    "checkout_addresses_billing": "Vyberte fakturační adresu",
+    "checkout_addresses_add_shipping": "Přidat doručovací adresu",
+    "checkout_addresses_add_billing": "Přidat fakturační adresu",
+    "checkout_addresses_edit_shipping": "Změnit doručovací adresu",
+    "checkout_addresses_edit_billing": "Změnit fakturační adresu"
+  },
+  "account": {
+    "profile": {
+      "customer": {
+        "number": "Zákaznické číslo: {customerNumber}"
+      },
+      "form": {
+        "firstName": "Jméno",
+        "middleName": "Druhé jméno",
+        "lastName": "Příjmení",
+        "emailAddress": "E-mailová adresa",
+        "address1": "Ulice a číslo popisné",
+        "address2": "Adresa 2",
+        "address3": "Adresa 3",
+        "address4": "Adresa 4",
+        "postalCode": "PSČ",
+        "city": "Město",
+        "country": "Země",
+        "phone": "Telefonní číslo",
+        "mobile": "Mobilní číslo",
+        "region": "Kraj",
+        "marketing_opt_in_label": "Informujte mě o novinkách a exkluzivních nabídkách.",
+        "default_billing": "Výchozí fakturační adresa",
+        "default_shipping": "Výchozí doručovací adresa",
+        "save_default_billing": "Uložit tuto fakturační adresu pro budoucí objednávky",
+        "save_default_shipping": "Uložit tuto doručovací adresu pro budoucí objednávky",
+        "save": "Uložit",
+        "add": "Přidat adresu",
+        "success": "Profil byl uložen",
+        "error": "Chyba při ukládání"
+      },
+      "delete": "Smazat účet",
+      "address_book": {
+        "title": "Správa adres",
+        "default_billing": "Výchozí fakturační adresa",
+        "default_shipping": "Výchozí doručovací adresa",
+        "add": "Přidat adresu",
+        "select": "Vybrat",
+        "selected": "Vybráno",
+        "success": "Profil byl uložen",
+        "context": {
+          "edit": "Upravit",
+          "remove": "Smazat"
+        }
+      },
+      "confirm": {
+        "title": "Jste si jistý/á?",
+        "confirm": "Potvrdit",
+        "messageContact": "Opravdu chcete tuto adresu smazat?",
+        "messageCustomer": "Opravdu chcete smazat svůj účet? Všechny vaše osobní údaje a nastavení budou smazány."
+      }
+    }
   },
   "back_in_stock": {
     "list_states": {
@@ -72,6 +145,23 @@
     "errors": {
       "invalid_name": "Zadejte prosím úplný název vašeho seznamu sledovaných položek."
     },
+    "comment_modal": {
+      "titleAdd": "Přidat komentář",
+      "titleEdit": "Upravit komentář",
+      "dismiss": "Zrušit",
+      "confirm": "Potvrdit",
+      "label": "Komentář",
+      "characterCount": "{count} z {maxCount} znaků"
+    },
+    "comments": {
+      "add": "Přidat komentář",
+      "notes": "Komentář",
+      "edit": "Upravit",
+      "delete": "Smazat",
+      "added": "Komentář byl přidán",
+      "removed": "Komentář byl smazán",
+      "updated": "Komentář byl aktualizován"
+    },
     "rename_list": "Přejmenovat",
     "remove_list": "Smazat",
     "add_to_list": "Přidat do seznamu",
@@ -83,6 +173,7 @@
     "list_chooser": {
       "title": "Vyberte seznam sledování",
       "add": "Přidat",
+      "add_more": "Přidat více",
       "remove": "Odstranit"
     },
     "modal": {
@@ -98,7 +189,11 @@
       "default": "Třídit",
       "most_popular": "Nejlepší výsledky",
       "price_desc": "Nejdříve nejvyšší cena",
-      "price_asc": "Nejnižší cena na prvním místě"
+      "price_asc": "Nejnižší cena na prvním místě",
+      "name_asc": "Název A - Z",
+      "name_desc": "Název Z - A",
+      "rank_asc": "Nejnižší hodnocení první",
+      "rank_desc": "Nejvyšší hodnocení první"
     },
     "apply": "Hotovo",
     "more": "více",
@@ -123,10 +218,16 @@
     },
     "msrp": "RRP",
     "label": "Cena {price}.",
-    "label_old_price": "Stará cena {price}."
+    "label_old_price": "Stará cena {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Zdarma"
   },
   "product": {
+    "errors": {
+      "insufficientstock": "Bohužel tento produkt již není k dispozici."
+    },
     "description_heading": "Popis",
+    "share": "Sdílet produkt",
     "pick_an_attribute": "{0} vybrat",
     "tax_disclaimer": "* Včetně DPH případně plus náklady na dopravu",
     "adding_item": "{count, plural, =1 {Přidává se jeden produkt} other {Přidává se {count} produktů}}",
@@ -135,6 +236,10 @@
     "add_to_cart": "Přidat do košíku",
     "no_more_found": "Článek: \"{name}\" není momentálně skladem.",
     "quantity": "Množství",
+    "decrease_quantity": "Snížit množství",
+    "increase_quantity": "Zvýšit množství",
+    "increased_quantity_to": "Množství zvýšeno na {quantity}",
+    "decreased_quantity_to": "Množství sníženo na {quantity}",
     "minOrderQuantity": "Min. množství pro objednávku: {quantity} {unit}",
     "maxOrderQuantity": "Max. objednací množství: {quantity} {unit}",
     "available": {
@@ -149,6 +254,7 @@
     "sections": {
       "information": "Informace o produktu",
       "options": "Vyberte možnosti",
+      "fulfillment": "Dostupnost",
       "description": "Popis",
       "properties": "Vlastnosti",
       "ratings": "Hodnocení",
@@ -160,6 +266,108 @@
       "features": "Funkce",
       "pricing": "Informace o ceně",
       "properties": "Vlastnosti"
+    }
+  },
+  "locations": {
+    "headline": "Obchody ve vaší blízkosti",
+    "details": "Podrobnosti",
+    "hours_details": "Detaily otevírací doby",
+    "today_hours": "Dnes: {hours}",
+    "today_hours_long": "Dnes otevřeno: {hours}",
+    "address": "{postalCode} {city}",
+    "map_open": "Otevřít na mapách",
+    "phone": "Telefonní číslo",
+    "mon": "Pondělí",
+    "tue": "Úterý",
+    "wed": "Středa",
+    "thu": "Čtvrtek",
+    "fri": "Pátek",
+    "sat": "Sobota",
+    "sun": "Neděle",
+    "place_reservation": "Odeslat rezervaci",
+    "firstName": "Křestní jméno",
+    "lastName": "Příjmení",
+    "cellPhone": "Telefonní číslo pro SMS upozornění",
+    "emailAddress": "E-mailová adresa",
+    "who_will_pickup": "Kdo tuto objednávku vyzvedne?",
+    "me": "Já",
+    "someone_else": "Někdo jiný",
+    "success_heading": "Potvrzení rezervace",
+    "success_title": "Děkujeme za vaši rezervaci!",
+    "success_copy": "Brzy vám zašleme e-mail nebo SMS, až bude vaše rezervace připravena k vyzvednutí.",
+    "success_order_num": "Rezervační číslo",
+    "error_heading": "Došlo k chybě",
+    "error_title": "Vaši rezervaci se bohužel nepodařilo dokončit.",
+    "error_copy": "Během procesu rezervace došlo k chybě. Některé položky mohou být vyprodány. Zkontrolujte dostupnost v jiných prodejnách ve vašem košíku.",
+    "error_invalid_zip_code": "Zadejte prosím platné PSČ.",
+    "error_no_store_found": "V této oblasti bohužel nemáme žádné prodejny, zkontrolujte prosím svůj vstup.",
+    "search_placeholder": "PSČ",
+    "change_location": "Změnit prodejnu",
+    "select_location": "Vybrat prodejnu",
+    "get_directions": "Naplánovat trasu",
+    "store_hours": "Otevírací doba",
+    "radius_km": "{radius} km",
+    "radius_mi": "{radius} mílí",
+    "radius": "Poloměr",
+    "stores_near": {
+      "zip_code": "Prodejny poblíž \"{zipCode}\"",
+      "location": "Prodejny ve vaší blízkosti"
+    },
+    "your_current_timeslot": {
+      "heading": "Čas vyzvednutí",
+      "change": "Změnit",
+      "today": "Dnes",
+      "tomorrow": "Zítra",
+      "not_set": "Vyberte prosím..",
+      "dialog": {
+        "title": "Vyberte čas vyzvednutí",
+        "date": "Datum",
+        "morning": "Ráno",
+        "afternoon": "Odpoledne",
+        "evening": "Večer",
+        "schedule": "Vybrat"
+      }
+    },
+    "your_current_location": {
+      "heading": "Aktuální prodejna",
+      "change": "Změnit"
+    },
+    "method": {
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "direct_ship": "Objednat online"
+    },
+    "choose_reservation_type": "Vyberte typ rezervace",
+    "quick_reserve": "Rychlá rezervace",
+    "reserve_to_cart": "Rezervovat do košíku",
+    "change_fulfillment_method": "Změnit způsob doručení",
+    "fulfillment": {
+      "heading": "Dostupnost",
+      "direct_ship": "Objednat online",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "error": {
+        "direct_ship": "Tento produkt není k dispozici pro odeslání. Vyberte jinou možnost nebo zkontrolujte dostupnost ve vaší blízkosti.",
+        "reserve": "Tento produkt není dostupný ve zvolené prodejně. Vyberte jinou prodejnu.",
+        "not_ready": "Vyberte prosím prodejnu.",
+        "ropis": "Tento produkt není k dispozici pro Click & Reserve v této prodejně. Vyberte jinou možnost nebo prodejnu.",
+        "bopis": "Tento produkt není k dispozici pro Click & Collect v této prodejně. Vyberte jinou možnost nebo prodejnu."
+      }
+    },
+    "stock_info": {
+      "pick_up_at": "v {storeName}",
+      "availableInventory": "{visibleInventory} na skladě",
+      "available": "Dostupné",
+      "limitedAvailability": "Pouze {visibleInventory} na skladě",
+      "notAvailable": "Není dostupné",
+      "customAvailability": "Není dostupné v této prodejně",
+      "comingSoon": "Brzy k dispozici"
+    },
+    "no_available": "není dostupné",
+    "multi_location_modal": {
+      "title": "Změnit prodejnu",
+      "message": "V košíku již máte produkty z jiné prodejny. Tyto produkty budou změněny na novou prodejnu. Ceny a dostupnost se mohou lišit.",
+      "change_store": "Změnit prodejnu"
     }
   },
   "category": {
@@ -177,6 +385,9 @@
     },
     "showAllProducts": {
       "label": "Zobrazit všechny produkty"
+    },
+    "errors": {
+      "404": "Kategorie nebyla nalezena"
     }
   },
   "search": {
@@ -202,14 +413,29 @@
     "dismiss": "Zrušit",
     "ok": "Dobře",
     "title_error": "Oops!",
-    "body_error": "Došlo k neočekávané chybě. Zkuste to prosím znovu."
+    "body_error": "Došlo k neočekávané chybě. Zkuste to prosím znovu.",
+    "close": "Zavřít",
+    "login": "Přihlásit se"
   },
   "cart": {
+    "grand_total": "Celková suma",
+    "current_total": "Celková suma",
+    "items": "Produkty",
+    "price": "Cena",
+    "quantity": "Množství",
+    "fulfilled_quantity": "Vykonané množství",
+    "ordered_quantity": "Objednané množství",
+    "location": "Prodejna",
+    "status": "Status",
+    "remove_item": "Odebrat produkt",
     "subtotal": "Mezisoučet",
     "total": "Celkový nákupní košík",
     "discount": "Sleva",
     "discount_with_label": "Sleva ({label})",
+    "coupon_label": "Sleva: {label}",
+    "promotion_label": "{label}",
     "checkout": "Pokladna",
+    "reserve": "Rezervovat",
     "remove": "Odstranit",
     "edit": "Upravit",
     "empty": "Váš nákupní košík je prázdný.",
@@ -222,9 +448,61 @@
     "coupon_was_added": "Kupón byl přidán!",
     "coupons_not_supported": "Uplatnění kupónů a dárkových karet v dalším kroku",
     "free_shipping": "Doprava zdarma",
+    "allow_substitution_all": "Povolit náhradu za všechny produkty?",
+    "allow_substitution": "Povolit náhradu",
     "message_type_info": "Informace",
     "message_type_error": "Chyba",
-    "message_type_warning": "Varování"
+    "message_type_warning": "Varování",
+    "errors": {
+      "404": "Jeden nebo více produktů bylo z vašeho košíku odebráno kvůli nedostupnosti.",
+      "1001": "Jeden nebo více produktů v košíku momentálně není dostupný. Odstraňte prosím tyto položky.",
+      "1002": "Objednávky jsou omezeny na jedinou odběrnou prodejnu. Vyberte prosím pouze jednu prodejnu.",
+      "1003": "Zvolené časové okno pro vyzvednutí již není dostupné. Vyberte prosím jiný čas.",
+      "item": {
+        "1001": "Produkt není k dispozici v požadovaném množství.",
+        "1004": "Vyberte prosím čas vyzvednutí.",
+        "1005": "Minimální množství pro objednání {minQty} nebylo dosaženo.",
+        "1006": "Maximální množství pro objednání {maxQty} bylo překročeno.",
+        "1007": "Vyberte prosím odběrnou prodejnu.",
+        "shopgate.cart.updateProducts": {
+          "1001": "Produkt není k dispozici v požadovaném množství."
+        },
+        "shopgate.cart.addProducts": {
+          "1001": "Produkt není k dispozici v požadovaném množství."
+        },
+        "generic": "Došlo k neočekávané chybě u tohoto produktu.",
+        "insufficientstock": "Není na skladě."
+      },
+      "coupon": {
+        "404": "Tento kupon neexistuje.",
+        "2000": "Tento kupon je neplatný.",
+        "2001": "Tento kupon je platný od {startDate, date, yyyyMMdd} v {startDate, time, short}.",
+        "2002": "Tento kupon vypršel {endDate, date, yyyyMMdd} v {endDate, time, short}.",
+        "2003": "Tento kupon není platný pro váš aktuální košík.",
+        "2004": "Tento kupon již byl použit.",
+        "2005": "Tento kupon dosáhl limitu maximálního počtu použití.",
+        "generic": "Došlo k neočekávané chybě u tohoto kuponu."
+      },
+      "generic": "Došlo k neočekávané chybě.",
+      "insufficientstock": "Jeden nebo více produktů ve vašem košíku momentálně není dostupný. Odstraňte prosím tyto produkty.",
+      "multiplelocations": "Objednávky jsou omezeny na jednu odběrnou prodejnu. Vyberte prosím pouze jednu prodejnu.",
+      "productsNotFound": "Jeden nebo více produktů bylo kvůli nedostupnosti odebráno z vašeho košíku.",
+      "mixed_cart": "Rezervace a online objednávky musí být provedeny v samostatných objednávkách. Prosím aktualizujte produkty, aby košík obsahoval pouze online objednávky nebo pouze rezervace.",
+      "direct_ship_item": "Zkontrolujte, zda tento produkt může být rezervován ve vaší blízkosti.",
+      "ropis_cart_inventory": "Ne všechny produkty mohou být rezervovány. Zkontrolujte chyby a změňte možnosti doručení.",
+      "ropis_item_inventory": "Tento produkt nelze rezervovat ve zvolené prodejně. Zkontrolujte, zda je dostupný v jiné prodejně.",
+      "ropis_item_inventory_exceed": "Požadované množství není k dispozici v {storeName}. Rezervováno bude maximální množství {inventory}.",
+      "mixed_cart_coupon_removed": "Kupon \"{code}\" není dostupný pro rezervace."
+    },
+    "change_fulfillment": {
+      "direct_ship": "Změnit na Objednat online",
+      "bopis": "Změnit na Click & Collect",
+      "ropis": "Změnit na Click & Reserve"
+    },
+    "price_caption": {
+      "reservation": "Rezervace",
+      "pay_in_store": "Platba v prodejně"
+    }
   },
   "login": {
     "headline": "Vítejte!",
@@ -237,13 +515,20 @@
     "no_account": "Ještě nemáte účet?",
     "register": "Začněte zde.",
     "logout_message": "Byli jste odhlášeni.",
-    "error": "Uživatelské jméno nebo heslo není správné"
+    "error": "Uživatelské jméno nebo heslo není správné",
+    "auto_logout_message": "Byli jste automaticky odhlášeni.",
+    "reset_password": {
+      "subline": "Zadejte prosím vaši e-mailovou adresu.",
+      "reset_instructions": "Zasíláme vám e-mail pro resetování hesla na {email}",
+      "back_to_login": "Zpět na přihlášení",
+      "customer_not_found": "Účet s touto e-mailovou adresou neexistuje."
+    }
   },
   "navigation": {
     "login_register": "Přihlásit se",
     "home": "Domovská stránka",
     "categories": "Kategorie",
-    "favorites": "Seznam sledovaných osob",
+    "favorites": "Seznam přání",
     "my_orders": "Moje objednávky",
     "cart": "Nákupní košík",
     "scanner": "Skener",
@@ -253,16 +538,16 @@
     "terms": "Podmínky",
     "privacy": "Ochrana údajů",
     "privacySettings": "Nastavení ochrany osobních údajů",
+    "back_in_stock": "Oznámení",
     "welcome_message": "Dobrý den {name}",
     "return_policy": "Storno podmínky",
     "logout": "Odhlášení",
+    "back": "Zpět na {title}",
+    "open_menu": "Otevřít menu",
     "menuSubHeader": {
       "more": "Více",
       "about": "O nás"
-    },
-    "back_in_stock": "Oznámení",
-    "back": "Zpět na {title}",
-    "open_menu": "Otevřít menu"
+    }
   },
   "reviews": {
     "rating": "Hodnocení",
@@ -297,8 +582,211 @@
       "geolocation_message": "Pro zobrazení okolních obchodů potřebujeme přístup k poloze."
     }
   },
+  "checkout": {
+    "submit_order": "Koupit nyní",
+    "continue_payment": "Pokračovat k platbě",
+    "continue": "Pokračovat",
+    "steps": "Krok {from} z {to}",
+    "change_contacts": "Změnit kontakt",
+    "change_addresses": "Změnit adresu",
+    "finalizePayment": "Dokončit objednávku",
+    "payment": {
+      "title": "Jak si přejete platit?",
+      "buttons": {
+        "stripe": "Kreditní karta"
+      }
+    },
+    "shippingMethod": {
+      "title": "Způsob dopravy",
+      "errors": {
+        "noShippingAddress": "Nejprve zadejte doručovací adresu.",
+        "invalidShippingAddress": "Tento košík nelze odeslat na uvedenou adresu."
+      }
+    },
+    "errors": {
+      "genericInitialize": "Pokladna není momentálně dostupná, zkuste to prosím později.",
+      "genericUpdate": "Objednávku se nepodařilo zpracovat, zkuste to prosím později.",
+      "checkCart": "Zkontrolujte prosím svůj košík.",
+      "genericSubmit": "Objednávku se nepodařilo zpracovat, zkontrolujte prosím svůj košík.",
+      "paypalFunding": "Při zpracování platby došlo k chybě.",
+      "missingPaymentMethod": "Žádná platební metoda není nakonfigurována.",
+      "noPaymentTransaction": "Žádná platební transakce není dostupná.",
+      "genericUpdateBilling": "Chyba při aktualizaci fakturační adresy",
+      "payment": {
+        "genericExternal": "Platba s vybranou platební metodou selhala. Zkuste prosím jinou metodu."
+      }
+    },
+    "pickup_contact": {
+      "headline": "Kontaktní osoba pro vyzvednutí",
+      "headline_reserve": "Kontaktní osoba pro vyzvednutí",
+      "subheadline": "Potvrzení objednávky bude zasláno na tento e-mail. Telefonní číslo bude použito pouze při dotazech.",
+      "form": {
+        "firstName": "Jméno",
+        "lastName": "Příjmení",
+        "mobile": "Mobilní číslo",
+        "emailAddress": "E-mailová adresa",
+        "password": "Heslo *",
+        "passwordConfirm": "Potvrzení hesla *",
+        "company": "Společnost",
+        "address1": "Ulice a číslo domu",
+        "address2": "Doplňující adresa",
+        "postalCode": "PSČ",
+        "city": "Město",
+        "country": "Země",
+        "region": "Kraj",
+        "who_will_pickup": "Kdo tuto objednávku vyzvedne?",
+        "me": "Já",
+        "someone_else": "Někdo jiný",
+        "instructions": "Poznámky k vyzvednutí"
+      }
+    },
+    "billing": {
+      "headline": "Fakturační adresa",
+      "headline_reserve": "Kontaktní osoba pro objednávku",
+      "save": "Uložit",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Upravit",
+      "change": "Změnit",
+      "select_address": "Vyberte fakturační adresu"
+    },
+    "shipping": {
+      "headline": "Doručovací adresa",
+      "save": "Uložit",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Upravit",
+      "change": "Změnit",
+      "select_address": "Vyberte doručovací adresu"
+    },
+    "creditCard": {
+      "headline": "Platební metoda",
+      "card": "Číslo kreditní karty *",
+      "cvc": "Bezpečnostní kód *",
+      "expiry": "Platnost do *"
+    },
+    "summary": {
+      "headline": "Shrnutí",
+      "tax": "Daň",
+      "subTotal": "Mezisoučet",
+      "shippingTotal": "Dopravné",
+      "total": "Celkem"
+    },
+    "success": {
+      "title": "Děkujeme za vaši objednávku",
+      "instructions_1": "Níže najdete informace o vaší objednávce. Pokud máte dotazy ohledně vaší objednávky, kontaktujte prosím svou prodejnu.",
+      "instructions_2": "Upozorňujeme, že časy vyzvednutí se mohou lišit v závislosti na svátcích a víkendech.",
+      "order_number": "Číslo objednávky: {orderNumber}",
+      "order_date": "Datum objednávky: {date}",
+      "your_items": "Produkty:",
+      "pick_up_contact": "Kontaktní osoba pro vyzvednutí",
+      "order_contact": "Kontaktní osoba pro objednávku",
+      "pickup_notes": "Poznámky k vyzvednutí",
+      "billed_to": "Fakturační adresa",
+      "shipped_to": "Doručovací adresa",
+      "order_summary": "Shrnutí objednávky",
+      "name": "Jméno",
+      "phone_number": "Telefonní číslo",
+      "email_address": "E-mailová adresa",
+      "card_holder": "Držitel karty",
+      "address": "Adresa",
+      "payment_method": "Platební metoda",
+      "shipping_method": "Způsob dopravy",
+      "continue": "Pokračovat v nakupování"
+    }
+  },
+  "order": {
+    "status": {
+      "order": {
+        "submitted": "Odesláno",
+        "inProgress": "Zpracovává se",
+        "ready": "Připraveno k vyzvednutí",
+        "completed": "Dokončeno",
+        "canceled": "Zrušeno"
+      },
+      "line_item": {
+        "pending": "Čeká se",
+        "inProgress": "Zpracovává se",
+        "unavailable": "Nedostupné",
+        "canceled": "Zrušeno",
+        "fulfilled": "Vykonáno",
+        "substituted": "Nahrazeno",
+        "replaced": "Vyměněno",
+        "itemAdded": "Přidáno",
+        "rejected": "Odmítnuto",
+        "open": "Otevřené"
+      }
+    }
+  },
+  "order_details": {
+    "pickup_location": {
+      "headline": "Prodejna pro vyzvednutí",
+      "address": "Adresa",
+      "phone_number": "Telefon"
+    },
+    "subline": {
+      "order_number": "Vaše objednávkové číslo je: {orderNumber}",
+      "order_status": "Status: {status}"
+    },
+    "authenticate": {
+      "instructions": "Prosím, autentizujte se pomocí e-mailu a telefonního čísla, které bylo použito pro objednávku.",
+      "or_login": "Nebo se přihlaste"
+    },
+    "errors": {
+      "authenticate": "E-mail a telefonní číslo neodpovídají této objednávce.",
+      "expired": "Sezení pro tuto objednávku vypršelo.",
+      "authorize": "Tato objednávka nepatří tomuto účtu.",
+      "not_found": "Objednávka nenalezena."
+    },
+    "cancel": {
+      "button": "Zrušit objednávku",
+      "modal": {
+        "title": "Zrušení",
+        "message": "Opravdu chcete zrušit tuto objednávku? Tento krok nelze vrátit zpět!",
+        "confirm": "Ano, zrušit objednávku"
+      }
+    }
+  },
+  "orders": {
+    "header": {
+      "date": "Datum objednávky",
+      "orderNumber": "Číslo objednávky",
+      "status": "Status",
+      "lineItemCount": "Počet produktů",
+      "total": "Celková suma"
+    },
+    "no_result": {
+      "body": "Žádné objednávky nenalezeny."
+    },
+    "itemCount": "{count, plural, =1 {Produkt} other {Produkty}}"
+  },
+  "page": {
+    "not_found": "Požadovaná stránka nebyla nalezena.",
+    "continue": "Pokračovat v nakupování"
+  },
+  "registration": {
+    "create_account": "Vytvořit účet",
+    "marketing_opt_in_label": "Informujte mě o novinkách a exkluzivních nabídkách.",
+    "different_shipping_address_label": "Jiná doručovací adresa",
+    "headlines": {
+      "create_new_account": "Vytvořit nový účet",
+      "shipping_address": "Doručovací adresa",
+      "billing_address": "Fakturační adresa",
+      "billing_address_reserve": "Kontaktní osoba pro objednávku"
+    }
+  },
   "error": {
     "general": "Problém s připojením. Zkontrolujte prosím připojení k internetu nebo to zkuste později."
+  },
+  "validation": {
+    "required": "Vyplňte prosím toto pole",
+    "email": "Zadejte platnou e-mailovou adresu",
+    "numeric": "Zadejte pouze čísla",
+    "alphaNumeric": "Zadejte pouze písmena a čísla",
+    "mobileNumber": "Zadejte platné mobilní číslo",
+    "date": "Zadejte platné datum",
+    "checkField": "Zkontrolujte prosím toto pole",
+    "emailConflict": "Tento e-mail je již zaregistrován",
+    "passwordMismatch": "Hesla se neshodují",
+    "minPasswordLength": "Minimální délka hesla je %'{count} znaků"
   },
   "formats": {
     "date": {
@@ -307,7 +795,34 @@
       },
       "MMM": {
         "month": "krátký"
+      },
+      "pattern": "dd.mm.rrrr"
+    },
+    "distance": {
+      "pattern": "{distance} {unit}",
+      "units": {
+        "m": "m",
+        "km": "km",
+        "ft": "ft",
+        "mi": "míle"
       }
+    },
+    "unitOfMeasurement": {
+      "mg": "mg",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "cm": "cm",
+      "m": "m",
+      "m2": "m²",
+      "m3": "m³",
+      "piece": "ks"
+    }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "mon"
     }
   },
   "appRating": {
