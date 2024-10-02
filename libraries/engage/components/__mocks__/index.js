@@ -71,6 +71,11 @@ export const I18n = {
   Text: () => 'I18n.Text',
 };
 export const PlaceholderParagraph = ({ children }) => children;
+export const Grid = ({ children }) => children;
+Grid.Item = ({ children }) => children;
+Grid.Item.displayName = 'Grid.Item';
+export const Link = ({ children }) => children;
+export const Button = ({ children }) => children;
 
 export { default as View, ViewContext } from '../View/__mocks__/index';
 /* eslint-enable require-jsdoc */
