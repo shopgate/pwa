@@ -232,7 +232,7 @@
     "share": "Product delen",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
-    "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
+    "item_added": "{count, plural, =0 {# geen producten toegevoegd} =1 {{count} product toegevoegd} other {{count} producten toegevoegd}}",
     "item_added_unit": "{count} {unit} toegevoegd",
     "adding_item": "{count, plural, =1 {Er wordt één product toegevoegd} other {Er worden {count} producten toegevoegd}}",
     "pick_option_first": "Kies eerst een optie. {option}",
