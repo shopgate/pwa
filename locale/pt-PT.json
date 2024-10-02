@@ -10,7 +10,11 @@
     "show_products": "Mostrar produtos",
     "back": "Voltar",
     "close": "Fechar",
-    "products": "Produtos"
+    "products": "Produtos",
+    "error": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+    "errors": {
+      "generic": "Ocorreu um erro inesperado. Por favor, tente novamente."
+    }
   },
   "titles": {
     "categories": "Categorias",
@@ -22,7 +26,76 @@
     "browse": "Navegar",
     "favorites": "Favoritos",
     "scanner": "Scanner",
-    "back_in_stock": "Notificações"
+    "back_in_stock": "Notificações",
+    "checkout": "Finalizar compra",
+    "checkout_confirmation": "Pedido bem-sucedido",
+    "checkout_change_billing": "Alterar endereço de faturação",
+    "register": "Registar",
+    "order_details": "Detalhes do pedido",
+    "store_finder": "Localizador de lojas",
+    "order_history": "Histórico de pedidos",
+    "profile": "Perfil",
+    "your_account": "A minha conta",
+    "your_account_contact": "Endereço",
+    "page_not_found": "Página não encontrada",
+    "checkout_addresses_shipping": "Selecionar endereço de envio",
+    "checkout_addresses_billing": "Selecionar endereço de faturação",
+    "checkout_addresses_add_shipping": "Adicionar endereço de envio",
+    "checkout_addresses_add_billing": "Adicionar endereço de faturação",
+    "checkout_addresses_edit_shipping": "Alterar endereço de envio",
+    "checkout_addresses_edit_billing": "Alterar endereço de faturação"
+  },
+  "account": {
+    "profile": {
+      "customer": {
+        "number": "Nº de cliente: {customerNumber}"
+      },
+      "form": {
+        "firstName": "Primeiro Nome",
+        "middleName": "Nome do Meio",
+        "lastName": "Último Nome",
+        "emailAddress": "Endereço de Email",
+        "address1": "Rua e Número",
+        "address2": "Endereço 2",
+        "address3": "Endereço 3",
+        "address4": "Endereço 4",
+        "postalCode": "Código Postal",
+        "city": "Cidade",
+        "country": "País",
+        "phone": "Número de Telefone",
+        "mobile": "Número de Telemóvel",
+        "region": "Região",
+        "marketing_opt_in_label": "Mantenha-me atualizado com notícias e ofertas exclusivas.",
+        "default_billing": "Endereço de faturação padrão",
+        "default_shipping": "Endereço de envio padrão",
+        "save_default_billing": "Guardar este endereço de faturação para futuros pedidos",
+        "save_default_shipping": "Guardar este endereço de envio para futuros pedidos",
+        "save": "Guardar",
+        "add": "Adicionar endereço",
+        "success": "Perfil guardado",
+        "error": "Erro ao guardar"
+      },
+      "delete": "Eliminar conta",
+      "address_book": {
+        "title": "Gestão de endereços",
+        "default_billing": "Endereço de faturação padrão",
+        "default_shipping": "Endereço de envio padrão",
+        "add": "Adicionar endereço",
+        "select": "Selecionar",
+        "selected": "Selecionado",
+        "success": "Perfil guardado",
+        "context": {
+          "edit": "Editar",
+          "remove": "Eliminar"
+        }
+      },
+      "confirm": {
+        "title": "Tem a certeza?",
+        "confirm": "Confirmar",
+        "messageContact": "Tem a certeza de que deseja eliminar este endereço?",
+        "messageCustomer": "Tem a certeza de que deseja eliminar a sua conta? Todos os seus dados pessoais e definições serão eliminados."
+      }
+    }
   },
   "back_in_stock": {
     "list_states": {
@@ -73,6 +146,23 @@
       "title": "Eliminar a lista de favoritos",
       "message": "Quer mesmo apagar a lista de favoritos de \"{name}\"?"
     },
+    "comment_modal": {
+      "titleAdd": "Adicionar comentário",
+      "titleEdit": "Editar comentário",
+      "dismiss": "Cancelar",
+      "confirm": "Confirmar",
+      "label": "Comentário",
+      "characterCount": "{count} de {maxCount} caracteres"
+    },
+    "comments": {
+      "add": "Adicionar comentário",
+      "notes": "Comentário",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "added": "Comentário adicionado",
+      "removed": "Comentário eliminado",
+      "updated": "Comentário atualizado"
+    },
     "rename_list": "Renomear",
     "remove_list": "Remover",
     "add_to_list": "Adicionar à lista",
@@ -84,6 +174,7 @@
     "list_chooser": {
       "title": "Escolha uma lista de favoritos",
       "add": "Acrescentar",
+      "add_more": "Adicionar mais",
       "remove": "Remover"
     },
     "modal": {
@@ -100,7 +191,11 @@
       "default": "Ordenar por",
       "most_popular": "Mais populares",
       "price_desc": "Preço: Mais alto para mais baixo",
-      "price_asc": "Preço: Mais baixo para mais alto"
+      "price_asc": "Preço: Mais baixo para mais alto",
+      "name_asc": "Nome A - Z",
+      "name_desc": "Nome Z - A",
+      "rank_asc": "Classificação mais baixa primeiro",
+      "rank_desc": "Classificação mais alta primeiro"
     },
     "apply": "Feito",
     "more": "mais",
@@ -125,13 +220,20 @@
     },
     "msrp": "Preço sugerido",
     "label": "Preço {price}.",
-    "label_old_price": "Preço antigo {price}."
+    "label_old_price": "Preço antigo {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Grátis"
   },
   "product": {
+    "errors": {
+      "insufficientstock": "Lamentamos, este produto não está disponível no momento."
+    },
     "description_heading": "Sobre",
+    "share": "Partilhar produto",
     "pick_an_attribute": "Escolher {0}",
     "tax_disclaimer": "* Incl. IVA mais custos de envio, se aplicável",
     "item_added": "{count, plural, =0 {# nenhum item adicionado} =1 {{count} item adicionado} other {{count} itens adicionados}}",
+    "item_added_unit": "{count} {unit} adicionado",
     "adding_item": "{count, plural, =1 {Um produto está a ser adicionado} other {Estão a ser adicionados {count} produtos}}",
     "pick_option_first": "Primeiro escolha uma opção. {option}",
     "fill_out_required_input_first": "Primeiro preencha os campos obrigatórios.",
@@ -139,6 +241,10 @@
     "go_to_cart": "Carrinho",
     "no_more_found": "O item: \"{name}\" não está mais disponível.",
     "quantity": "Quantidade",
+    "decrease_quantity": "Diminuir quantidade",
+    "increase_quantity": "Aumentar quantidade",
+    "increased_quantity_to": "Quantidade aumentada para {quantity}",
+    "decreased_quantity_to": "Quantidade reduzida para {quantity}",
     "minOrderQuantity": "Quantidade mín. do pedido: {quantity} {unit}",
     "maxOrderQuantity": "Quantidade máx. do pedido: {quantity} {unit}",
     "available": {
@@ -153,6 +259,7 @@
     "sections": {
       "information": "Informação do produto",
       "options": "Escolha as opções",
+      "fulfillment": "Disponibilidade",
       "description": "Descrição",
       "properties": "Propriedades",
       "ratings": "Avaliações",
@@ -164,6 +271,108 @@
       "features": "Características",
       "pricing": "Informações de Preço",
       "properties": "Propriedades"
+    }
+  },
+  "locations": {
+    "headline": "Lojas perto de si",
+    "details": "Detalhes",
+    "hours_details": "Detalhes do horário da loja",
+    "today_hours": "Hoje: {hours}",
+    "today_hours_long": "Aberto hoje: {hours}",
+    "address": "{postalCode} {city}",
+    "map_open": "Abrir no mapa",
+    "phone": "Número de telefone",
+    "mon": "Segunda-feira",
+    "tue": "Terça-feira",
+    "wed": "Quarta-feira",
+    "thu": "Quinta-feira",
+    "fri": "Sexta-feira",
+    "sat": "Sábado",
+    "sun": "Domingo",
+    "place_reservation": "Efetuar reserva",
+    "firstName": "Nome",
+    "lastName": "Apelido",
+    "cellPhone": "Número de telemóvel para notificações por SMS",
+    "emailAddress": "Endereço de e-mail",
+    "who_will_pickup": "Quem irá recolher este pedido?",
+    "me": "Eu mesmo",
+    "someone_else": "Outra pessoa",
+    "success_heading": "Confirmação de reserva",
+    "success_title": "Obrigado pela sua reserva!",
+    "success_copy": "Enviar-lhe-emos um e-mail ou mensagem SMS quando a sua reserva estiver pronta para recolha.",
+    "success_order_num": "Nº de reserva",
+    "error_heading": "Ocorreu um erro",
+    "error_title": "Infelizmente, não conseguimos concluir a sua reserva.",
+    "error_copy": "Ocorreu um erro durante o processo de reserva. Alguns artigos podem estar esgotados. Verifique a disponibilidade em outras lojas no carrinho de compras.",
+    "error_invalid_zip_code": "Por favor, insira um código postal válido.",
+    "error_no_store_found": "Não encontrámos lojas nesta área. Por favor, verifique os dados introduzidos.",
+    "search_placeholder": "Código postal",
+    "change_location": "Alterar loja",
+    "select_location": "Selecionar loja",
+    "get_directions": "Obter direções",
+    "store_hours": "Horário de funcionamento",
+    "radius_km": "{radius} km",
+    "radius_mi": "{radius} milhas",
+    "radius": "Raio",
+    "stores_near": {
+      "zip_code": "Lojas perto de \"{zipCode}\"",
+      "location": "Lojas perto de si"
+    },
+    "your_current_timeslot": {
+      "heading": "Horário de recolha",
+      "change": "Alterar",
+      "today": "Hoje",
+      "tomorrow": "Amanhã",
+      "not_set": "Por favor, selecione..",
+      "dialog": {
+        "title": "Selecionar horário de recolha",
+        "date": "Data",
+        "morning": "Manhã",
+        "afternoon": "Tarde",
+        "evening": "Noite",
+        "schedule": "Selecionar"
+      }
+    },
+    "your_current_location": {
+      "heading": "Loja atual",
+      "change": "Alterar"
+    },
+    "method": {
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "direct_ship": "Comprar online"
+    },
+    "choose_reservation_type": "Escolher tipo de reserva",
+    "quick_reserve": "Reserva rápida",
+    "reserve_to_cart": "Reservar no carrinho",
+    "change_fulfillment_method": "Alterar método de entrega",
+    "fulfillment": {
+      "heading": "Disponibilidade",
+      "direct_ship": "Comprar online",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "error": {
+        "direct_ship": "Este produto não está disponível para envio. Por favor, escolha outra opção ou verifique a disponibilidade numa loja próxima.",
+        "reserve": "Este produto não está disponível na loja selecionada. Por favor, escolha outra loja.",
+        "not_ready": "Por favor, selecione uma loja.",
+        "ropis": "Este produto não está disponível para Click & Reserve nesta loja. Por favor, escolha outra opção ou loja.",
+        "bopis": "Este produto não está disponível para Click & Collect nesta loja. Por favor, escolha outra opção ou loja."
+      }
+    },
+    "stock_info": {
+      "pick_up_at": "em {storeName}",
+      "availableInventory": "{visibleInventory} em stock",
+      "available": "Disponível",
+      "limitedAvailability": "Apenas {visibleInventory} disponíveis",
+      "notAvailable": "Indisponível",
+      "customAvailability": "Não disponível nesta loja",
+      "comingSoon": "Disponível em breve"
+    },
+    "no_available": "indisponível",
+    "multi_location_modal": {
+      "title": "Alterar loja",
+      "message": "Já tem produtos no seu carrinho de outra loja. Estes produtos serão transferidos para a nova loja. Os preços e a disponibilidade podem variar.",
+      "change_store": "Alterar loja"
     }
   },
   "category": {
@@ -181,6 +390,9 @@
     },
     "showAllProducts": {
       "label": "Mostrar todos os produtos"
+    },
+    "errors": {
+      "404": "Categoria não encontrada"
     }
   },
   "search": {
@@ -206,14 +418,29 @@
     "dismiss": "Descartar",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "Ocorreu um erro inesperado. Por favor, tente novamente."
+    "body_error": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+    "close": "Fechar",
+    "login": "Iniciar sessão"
   },
   "cart": {
+    "grand_total": "Total",
+    "current_total": "Total",
+    "items": "Produtos",
+    "price": "Preço",
+    "quantity": "Quantidade",
+    "fulfilled_quantity": "Quantidade satisfeita",
+    "ordered_quantity": "Quantidade encomendada",
+    "location": "Loja",
+    "status": "Estado",
+    "remove_item": "Remover produto",
     "subtotal": "Subtotal",
     "total": "Total do carrinho",
     "discount": "Desconto",
     "discount_with_label": "Desconto ({label})",
+    "coupon_label": "Cupão: {label}",
+    "promotion_label": "{label}",
     "checkout": "Finalizar compra agora",
+    "reserve": "Reservar",
     "remove": "Remover",
     "edit": "Editar",
     "empty": "Seu carrinho está vazio",
@@ -226,9 +453,61 @@
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
     "free_shipping": "Envio Grátis",
+    "allow_substitution_all": "Permitir substituições para todos os produtos?",
+    "allow_substitution": "Permitir substituições",
     "message_type_info": "Informação",
     "message_type_error": "Erro",
-    "message_type_warning": "Aviso"
+    "message_type_warning": "Aviso",
+    "errors": {
+      "404": "Um ou mais produtos foram removidos do seu carrinho devido à indisponibilidade.",
+      "1001": "Um ou mais produtos no seu carrinho não estão disponíveis no momento. Por favor, remova-os.",
+      "1002": "As encomendas estão limitadas a uma única loja de recolha. Por favor, escolha apenas uma loja.",
+      "1003": "O horário de recolha selecionado já não está disponível. Por favor, selecione outro.",
+      "item": {
+        "1001": "O produto não está disponível na quantidade desejada.",
+        "1004": "Por favor, selecione um horário de recolha.",
+        "1005": "Ainda não foi atingida a quantidade mínima de encomenda de {minQty}.",
+        "1006": "Foi ultrapassada a quantidade máxima de encomenda de {maxQty}.",
+        "1007": "Por favor, selecione uma loja de recolha.",
+        "shopgate.cart.updateProducts": {
+          "1001": "O produto não está disponível na quantidade desejada."
+        },
+        "shopgate.cart.addProducts": {
+          "1001": "O produto não está disponível na quantidade desejada."
+        },
+        "generic": "Ocorreu um erro inesperado com este produto.",
+        "insufficientstock": "Atualmente fora de stock."
+      },
+      "coupon": {
+        "404": "Este cupão não existe.",
+        "2000": "Este cupão é inválido.",
+        "2001": "O cupão será válido a partir de {startDate, date, yyyyMMdd} às {startDate, time, short}.",
+        "2002": "O cupão expirou a {endDate, date, yyyyMMdd} às {endDate, time, short}.",
+        "2003": "Este cupão não é válido para o seu carrinho atual.",
+        "2004": "Este cupão já foi utilizado.",
+        "2005": "Este cupão atingiu o limite máximo de utilizações.",
+        "generic": "Ocorreu um erro inesperado com este cupão."
+      },
+      "generic": "Ocorreu um erro inesperado.",
+      "insufficientstock": "Um ou mais produtos no seu carrinho estão esgotados. Por favor, remova-os.",
+      "multiplelocations": "As encomendas estão limitadas a uma única loja de recolha. Por favor, escolha apenas uma loja.",
+      "productsNotFound": "Um ou mais produtos foram removidos do seu carrinho devido à indisponibilidade.",
+      "mixed_cart": "As reservas e as encomendas online devem ser feitas separadamente. Por favor, atualize os produtos para que o carrinho contenha apenas encomendas online ou apenas reservas.",
+      "direct_ship_item": "Verifique se este produto pode ser reservado numa loja próxima.",
+      "ropis_cart_inventory": "Nem todos os produtos podem ser reservados. Por favor, verifique os erros e altere as opções de entrega.",
+      "ropis_item_inventory": "Este produto não pode ser reservado na loja selecionada. Verifique se está disponível noutra loja.",
+      "ropis_item_inventory_exceed": "A quantidade desejada não está disponível na {storeName}. Será reservada a quantidade máxima de {inventory}.",
+      "mixed_cart_coupon_removed": "O cupão \"{code}\" não está disponível para reservas."
+    },
+    "change_fulfillment": {
+      "direct_ship": "Alterar para Comprar online",
+      "bopis": "Alterar para Click & Collect",
+      "ropis": "Alterar para Click & Reserve"
+    },
+    "price_caption": {
+      "reservation": "Reserva",
+      "pay_in_store": "Pagar na loja"
+    }
   },
   "login": {
     "headline": "Bem-vindo",
@@ -241,17 +520,26 @@
     "no_account": "Você não tem uma conta?",
     "signup": "Registrar",
     "logout_message": "Você foi desconectado.",
-    "error": "O seu nome de utilizador e a sua palavra-passe não correspondem a nenhuma conta."
+    "auto_logout_message": "Foi desconectado automaticamente.",
+    "error": "O seu nome de utilizador e a sua palavra-passe não correspondem a nenhuma conta.",
+    "reset_password": {
+      "subline": "Por favor, insira o seu endereço de e-mail.",
+      "reset_instructions": "Irá receber um e-mail para redefinir a sua palavra-passe em {email}",
+      "back_to_login": "Voltar ao início de sessão",
+      "customer_not_found": "Não encontramos uma conta com este endereço de e-mail."
+    }
   },
   "navigation": {
     "login_register": "Entrar / Registrar",
     "your_account": "Minha conta",
     "home": "Início",
     "categories": "Categorias",
+    "favorites": "Lista de favoritos",
     "my_orders": "Meus Pedidos",
     "cart": "Carrinho de Compras",
     "shipping": "Métodos de Envio",
     "about": "Contact",
+    "contact": "Contacto",
     "payment": "Métodos de Pagamento",
     "terms": "Termos e Condições",
     "privacy": "Política de Privacidade",
@@ -262,6 +550,8 @@
     "logout": "Terminar sessão",
     "store_information": "Armazenar Informações",
     "more_menu": "Mais",
+    "order_history": "Histórico de pedidos",
+    "profile": "Perfil",
     "back": "Voltar para {title}"
   },
   "reviews": {
@@ -304,8 +594,211 @@
       "geolocation_message": "Para encontrar lojas perto de você, acesse Configurações e ative as permissões de localização."
     }
   },
+  "checkout": {
+    "submit_order": "Comprar agora",
+    "continue_payment": "Continuar para o pagamento",
+    "continue": "Continuar",
+    "steps": "Passo {from} de {to}",
+    "change_contacts": "Alterar contacto",
+    "change_addresses": "Alterar endereço",
+    "finalizePayment": "Concluir encomenda",
+    "payment": {
+      "title": "Como deseja pagar?",
+      "buttons": {
+        "stripe": "Cartão de crédito"
+      }
+    },
+    "shippingMethod": {
+      "title": "Método de envio",
+      "errors": {
+        "noShippingAddress": "Por favor, insira um endereço de envio primeiro.",
+        "invalidShippingAddress": "Este carrinho não pode ser enviado para o endereço fornecido."
+      }
+    },
+    "errors": {
+      "genericInitialize": "O processo de finalização da compra não está disponível no momento. Por favor, tente novamente mais tarde.",
+      "genericUpdate": "Não foi possível processar a encomenda. Por favor, tente novamente mais tarde.",
+      "checkCart": "Por favor, verifique o seu carrinho.",
+      "genericSubmit": "Não foi possível processar a encomenda. Por favor, verifique o seu carrinho.",
+      "paypalFunding": "Ocorreu um erro durante o pagamento.",
+      "missingPaymentMethod": "Nenhum método de pagamento configurado.",
+      "noPaymentTransaction": "Nenhuma transação de pagamento disponível.",
+      "genericUpdateBilling": "Erro ao atualizar o endereço de faturação",
+      "payment": {
+        "genericExternal": "O pagamento com o método selecionado falhou. Por favor, tente outro método."
+      }
+    },
+    "pickup_contact": {
+      "headline": "Contacto para recolha",
+      "headline_reserve": "Contacto para recolha",
+      "subheadline": "A confirmação do pedido será enviada para este endereço de e-mail. O número de telefone será usado apenas em caso de dúvidas.",
+      "form": {
+        "firstName": "Primeiro Nome",
+        "lastName": "Último Nome",
+        "mobile": "Número de Telemóvel",
+        "emailAddress": "Endereço de e-mail",
+        "password": "Palavra-passe *",
+        "passwordConfirm": "Confirmar palavra-passe *",
+        "company": "Empresa",
+        "address1": "Rua e número da porta",
+        "address2": "Complemento de endereço",
+        "postalCode": "Código Postal",
+        "city": "Cidade",
+        "country": "País",
+        "region": "Região",
+        "who_will_pickup": "Quem irá recolher este pedido?",
+        "me": "Eu mesmo",
+        "someone_else": "Outra pessoa",
+        "instructions": "Instruções de recolha"
+      }
+    },
+    "billing": {
+      "headline": "Endereço de faturação",
+      "headline_reserve": "Contacto do pedido",
+      "save": "Guardar",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Editar",
+      "change": "Alterar",
+      "select_address": "Selecione um endereço de faturação"
+    },
+    "shipping": {
+      "headline": "Endereço de envio",
+      "save": "Guardar",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Editar",
+      "change": "Alterar",
+      "select_address": "Selecione um endereço de envio"
+    },
+    "creditCard": {
+      "headline": "Método de pagamento",
+      "card": "Número do cartão de crédito *",
+      "cvc": "Código de segurança *",
+      "expiry": "Validade *"
+    },
+    "summary": {
+      "headline": "Resumo",
+      "tax": "Impostos",
+      "subTotal": "Subtotal",
+      "shippingTotal": "Custos de envio",
+      "total": "Total"
+    },
+    "success": {
+      "title": "Obrigado pela sua encomenda",
+      "instructions_1": "Abaixo encontrará as informações sobre o seu pedido. Se tiver dúvidas sobre a encomenda, por favor, contacte a sua loja.",
+      "instructions_2": "Tenha em atenção que os horários de recolha podem variar durante feriados e fins de semana.",
+      "order_number": "Número de encomenda: {orderNumber}",
+      "order_date": "Data do pedido: {date}",
+      "your_items": "Produtos:",
+      "pick_up_contact": "Contacto para recolha",
+      "order_contact": "Contacto do pedido",
+      "pickup_notes": "Notas de recolha",
+      "billed_to": "Endereço de faturação",
+      "shipped_to": "Endereço de envio",
+      "order_summary": "Resumo do pedido",
+      "name": "Nome",
+      "phone_number": "Número de telefone",
+      "email_address": "Endereço de e-mail",
+      "card_holder": "Titular do cartão",
+      "address": "Endereço",
+      "payment_method": "Método de pagamento",
+      "shipping_method": "Método de envio",
+      "continue": "Continuar a comprar"
+    }
+  },
+  "order": {
+    "status": {
+      "order": {
+        "submitted": "Enviado",
+        "inProgress": "Em processamento",
+        "ready": "Pronto para recolha",
+        "completed": "Concluído",
+        "canceled": "Cancelado"
+      },
+      "line_item": {
+        "pending": "Pendente",
+        "inProgress": "Em processamento",
+        "unavailable": "Indisponível",
+        "canceled": "Cancelado",
+        "fulfilled": "Satisfeito",
+        "substituted": "Substituído",
+        "replaced": "Substituído",
+        "itemAdded": "Adicionado",
+        "rejected": "Rejeitado",
+        "open": "Aberto"
+      }
+    }
+  },
+  "order_details": {
+    "pickup_location": {
+      "headline": "Loja de recolha",
+      "address": "Endereço",
+      "phone_number": "Telefone"
+    },
+    "subline": {
+      "order_number": "O seu número de pedido é: {orderNumber}",
+      "order_status": "Estado: {status}"
+    },
+    "authenticate": {
+      "instructions": "Por favor, autentique-se com o seu e-mail e número de telefone usados para o pedido.",
+      "or_login": "Ou iniciar sessão"
+    },
+    "errors": {
+      "authenticate": "O e-mail e o número de telefone não correspondem a este pedido.",
+      "expired": "A sessão para este pedido expirou.",
+      "authorize": "O pedido não pertence a esta conta.",
+      "not_found": "Pedido não encontrado."
+    },
+    "cancel": {
+      "button": "Cancelar pedido",
+      "modal": {
+        "title": "Cancelamento",
+        "message": "Tem a certeza de que deseja cancelar o pedido? Esta ação não pode ser desfeita!",
+        "confirm": "Sim, cancelar pedido"
+      }
+    }
+  },
+  "orders": {
+    "header": {
+      "date": "Data do pedido",
+      "orderNumber": "Número de pedido",
+      "status": "Estado",
+      "lineItemCount": "Quantidade de produtos",
+      "total": "Total do pedido"
+    },
+    "no_result": {
+      "body": "Nenhum pedido encontrado."
+    },
+    "itemCount": "{count, plural, =1 {Produto} other {Produtos}}"
+  },
+  "page": {
+    "not_found": "Lamentamos, a página solicitada não foi encontrada.",
+    "continue": "Continuar a comprar"
+  },
+  "registration": {
+    "create_account": "Criar conta",
+    "marketing_opt_in_label": "Mantenha-me atualizado com notícias e ofertas exclusivas.",
+    "different_shipping_address_label": "Endereço de envio diferente",
+    "headlines": {
+      "create_new_account": "Criar nova conta",
+      "shipping_address": "Endereço de envio",
+      "billing_address": "Endereço de faturação",
+      "billing_address_reserve": "Contacto do pedido"
+    }
+  },
   "error": {
     "general": "Não consigo conectar. Por favor, verifique a sua ligação à internet e tente novamente."
+  },
+  "validation": {
+    "required": "Por favor, preencha este campo",
+    "email": "Por favor, insira um endereço de e-mail válido",
+    "numeric": "Por favor, insira apenas números",
+    "alphaNumeric": "Por favor, insira apenas letras e números",
+    "mobileNumber": "Por favor, insira um número de telemóvel válido",
+    "date": "Por favor, insira uma data válida",
+    "checkField": "Por favor, verifique este campo",
+    "emailConflict": "Este endereço de e-mail já está registado",
+    "passwordMismatch": "As palavras-passe não coincidem",
+    "minPasswordLength": "O comprimento mínimo da palavra-passe é %'{count} caracteres"
   },
   "formats": {
     "date": {
@@ -314,7 +807,34 @@
       },
       "MMM": {
         "month": "short"
+      },
+      "pattern": "dd.mm.aaaa"
+    },
+    "distance": {
+      "pattern": "{distance} {unit}",
+      "units": {
+        "m": "m",
+        "km": "km",
+        "ft": "pés",
+        "mi": "mi"
       }
+    },
+    "unitOfMeasurement": {
+      "mg": "mg",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "cm": "cm",
+      "m": "m",
+      "m2": "m²",
+      "m3": "m³",
+      "piece": "unid."
+    }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "mon"
     }
   },
   "appRating": {

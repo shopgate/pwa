@@ -10,7 +10,11 @@
     "show_products": "Termékek megjelenítése",
     "back": "Vissza",
     "close": "Bezárás",
-    "products": "Termékek"
+    "products": "Termékek",
+    "error": "Váratlan hiba történt. Kérjük, próbálja meg újra.",
+    "errors": {
+      "generic": "Váratlan hiba történt. Kérjük, próbálja meg újra."
+    }
   },
   "titles": {
     "categories": "Kategóriák",
@@ -22,7 +26,76 @@
     "browse": "Böngészés",
     "favorites": "Megfigyelési lista",
     "scanner": "Scanner",
-    "back_in_stock": "Notificări"
+    "back_in_stock": "Notificări",
+    "checkout": "Pénztár",
+    "checkout_confirmation": "Sikeres rendelés",
+    "checkout_change_billing": "Számlázási cím módosítása",
+    "register": "Regisztráció",
+    "order_details": "Rendelés részletei",
+    "store_finder": "Üzletkereső",
+    "order_history": "Rendelési előzmények",
+    "profile": "Profil",
+    "your_account": "Saját fiók",
+    "your_account_contact": "Cím",
+    "page_not_found": "Az oldal nem található",
+    "checkout_addresses_shipping": "Szállítási cím kiválasztása",
+    "checkout_addresses_billing": "Számlázási cím kiválasztása",
+    "checkout_addresses_add_shipping": "Szállítási cím hozzáadása",
+    "checkout_addresses_add_billing": "Számlázási cím hozzáadása",
+    "checkout_addresses_edit_shipping": "Szállítási cím módosítása",
+    "checkout_addresses_edit_billing": "Számlázási cím módosítása"
+  },
+  "account": {
+    "profile": {
+      "customer": {
+        "number": "Vásárló sz.: {customerNumber}"
+      },
+      "form": {
+        "firstName": "Keresztnév",
+        "middleName": "Második Keresztnév",
+        "lastName": "Vezetéknév",
+        "emailAddress": "E-mail Cím",
+        "address1": "Utca és Házszám",
+        "address2": "Cím 2",
+        "address3": "Cím 3",
+        "address4": "Cím 4",
+        "postalCode": "Irányítószám",
+        "city": "Város",
+        "country": "Ország",
+        "phone": "Telefonszám",
+        "mobile": "Mobiltelefonszám",
+        "region": "Megye",
+        "marketing_opt_in_label": "Szeretnék értesülni hírekről és exkluzív ajánlatokról.",
+        "default_billing": "Alapértelmezett számlázási cím",
+        "default_shipping": "Alapértelmezett szállítási cím",
+        "save_default_billing": "Mentse ezt a számlázási címet a jövőbeni rendelésekhez",
+        "save_default_shipping": "Mentse ezt a szállítási címet a jövőbeni rendelésekhez",
+        "save": "Mentés",
+        "add": "Cím hozzáadása",
+        "success": "A profil mentve",
+        "error": "Hiba történt a mentés során"
+      },
+      "delete": "Fiók törlése",
+      "address_book": {
+        "title": "Címjegyzék kezelése",
+        "default_billing": "Alapértelmezett számlázási cím",
+        "default_shipping": "Alapértelmezett szállítási cím",
+        "add": "Cím hozzáadása",
+        "select": "Kiválasztás",
+        "selected": "Kiválasztva",
+        "success": "A profil mentve",
+        "context": {
+          "edit": "Szerkesztés",
+          "remove": "Törlés"
+        }
+      },
+      "confirm": {
+        "title": "Biztos benne?",
+        "confirm": "Megerősítés",
+        "messageContact": "Biztosan törli ezt a címet?",
+        "messageCustomer": "Biztosan törli a fiókját? Minden személyes adat és beállítás törlésre kerül."
+      }
+    }
   },
   "back_in_stock": {
     "list_states": {
@@ -73,6 +146,23 @@
       "title": "Figyelőlista törlése",
       "message": "Tényleg törölni akarja a megfigyelési listát \"{name}\"?"
     },
+    "comment_modal": {
+      "titleAdd": "Megjegyzés hozzáadása",
+      "titleEdit": "Megjegyzés szerkesztése",
+      "dismiss": "Mégse",
+      "confirm": "Megerősítés",
+      "label": "Megjegyzés",
+      "characterCount": "{count} a {maxCount} karakterből"
+    },
+    "comments": {
+      "add": "Megjegyzés hozzáadása",
+      "notes": "Megjegyzés",
+      "edit": "Szerkesztés",
+      "delete": "Törlés",
+      "added": "Megjegyzés hozzáadva",
+      "removed": "Megjegyzés eltávolítva",
+      "updated": "Megjegyzés frissítve"
+    },
     "rename_list": "Átnevezni",
     "remove_list": "Törlés",
     "add_to_list": "Hozzáadás a listához",
@@ -84,6 +174,7 @@
     "list_chooser": {
       "title": "Válasszon ki egy megfigyelési listát",
       "add": "Hozzáadás",
+      "add_more": "Több hozzáadása",
       "remove": "Törlés"
     },
     "modal": {
@@ -100,7 +191,11 @@
       "default": "Rendezés",
       "most_popular": "Legjobb eredmények",
       "price_desc": "Legmagasabb ár először",
-      "price_asc": "Legalacsonyabb ár először"
+      "price_asc": "Legalacsonyabb ár először",
+      "name_asc": "Név A - Z",
+      "name_desc": "Név Z - A",
+      "rank_asc": "Legalacsonyabb rang először",
+      "rank_desc": "Legmagasabb rang először"
     },
     "apply": "Kész",
     "more": "további",
@@ -125,13 +220,20 @@
     },
     "msrp": "RRP",
     "label": "ár {price}.",
-    "label_old_price": "Régi ár {price}."
+    "label_old_price": "Régi ár {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Ingyenes"
   },
   "product": {
+    "errors": {
+      "insufficientstock": "Sajnos ez a termék jelenleg nem elérhető."
+    },
     "description_heading": "Leírás",
+    "share": "Termék megosztása",
     "pick_an_attribute": "{0} válasszon",
     "tax_disclaimer": "* Áfával együtt, esetleg plusz szállítási költség",
     "item_added": "{count, plural, =0 {# nincsenek termékek} =1 {{count} Termék hozzáadva} other {{count} Hozzáadott termékek}}",
+    "item_added_unit": "{count} {unit} hozzáadva",
     "adding_item": "{count, plural, =1 {Egy termék hozzáadása folyamatban van} other {Hozzáadás alatt van {count} termék}}",
     "pick_option_first": "Először válasszon ki egy opciót. {option}",
     "fill_out_required_input_first": "Először töltsd ki az összes kötelező mezőt.",
@@ -139,6 +241,10 @@
     "go_to_cart": "Bevásárlókosár",
     "no_more_found": "A cikk: \"{name}\" jelenleg nincs raktáron.",
     "quantity": "Mennyiség",
+    "decrease_quantity": "Mennyiség csökkentése",
+    "increase_quantity": "Mennyiség növelése",
+    "increased_quantity_to": "A mennyiség {quantity}-ra növelve",
+    "decreased_quantity_to": "A mennyiség {quantity}-ra csökkentve",
     "minOrderQuantity": "Minimális rendelési mennyiség: {quantity} {unit}",
     "maxOrderQuantity": "Maximális rendelési mennyiség: {quantity} {unit}",
     "available": {
@@ -153,6 +259,7 @@
     "sections": {
       "information": "Termékinformáció",
       "options": "Válassza ki az opciókat",
+      "fulfillment": "Elérhetőség",
       "description": "Leírás",
       "properties": "Tulajdonságok",
       "ratings": "Értékelések",
@@ -164,6 +271,108 @@
       "features": "Jellemzők",
       "pricing": "Árinformáció",
       "properties": "Tulajdonságok"
+    }
+  },
+  "locations": {
+    "headline": "Üzletek az Ön közelében",
+    "details": "Részletek",
+    "hours_details": "Üzlet nyitvatartási részletei",
+    "today_hours": "Ma: {hours}",
+    "today_hours_long": "Ma nyitva: {hours}",
+    "address": "{postalCode} {city}",
+    "map_open": "Megnyitás a térképen",
+    "phone": "Telefonszám",
+    "mon": "Hétfő",
+    "tue": "Kedd",
+    "wed": "Szerda",
+    "thu": "Csütörtök",
+    "fri": "Péntek",
+    "sat": "Szombat",
+    "sun": "Vasárnap",
+    "place_reservation": "Foglalás beküldése",
+    "firstName": "Keresztnév",
+    "lastName": "Vezetéknév",
+    "cellPhone": "Mobiltelefonszám SMS értesítéshez",
+    "emailAddress": "E-mail cím",
+    "who_will_pickup": "Ki fogja átvenni a rendelést?",
+    "me": "Én magam",
+    "someone_else": "Valaki más",
+    "success_heading": "Foglalás visszaigazolása",
+    "success_title": "Köszönjük a foglalást!",
+    "success_copy": "Hamarosan e-mailt/SMS-t küldünk, amint a foglalás átvehető.",
+    "success_order_num": "Foglalási szám",
+    "error_heading": "Hiba történt",
+    "error_title": "Sajnos nem sikerült befejezni a foglalást.",
+    "error_copy": "Hiba történt a foglalási folyamat során. Lehet, hogy néhány termék már elfogyott. Kérjük, ellenőrizze a termékek elérhetőségét más üzletekben.",
+    "error_invalid_zip_code": "Kérjük, adjon meg egy érvényes irányítószámot.",
+    "error_no_store_found": "Ebben a térségben sajnos nincs üzletünk, kérjük, ellenőrizze a beírt adatokat.",
+    "search_placeholder": "Irányítószám",
+    "change_location": "Üzlet módosítása",
+    "select_location": "Üzlet kiválasztása",
+    "get_directions": "Útvonalterv",
+    "store_hours": "Nyitvatartás",
+    "radius_km": "{radius} km",
+    "radius_mi": "{radius} mérföld",
+    "radius": "Sugár",
+    "stores_near": {
+      "zip_code": "Üzletek \"{zipCode}\" közelében",
+      "location": "Üzletek az Ön közelében"
+    },
+    "your_current_timeslot": {
+      "heading": "Átvételi időpont",
+      "change": "Módosítás",
+      "today": "Ma",
+      "tomorrow": "Holnap",
+      "not_set": "Kérjük, válasszon..",
+      "dialog": {
+        "title": "Átvételi időpont kiválasztása",
+        "date": "Dátum",
+        "morning": "Reggel",
+        "afternoon": "Délután",
+        "evening": "Este",
+        "schedule": "Kiválasztás"
+      }
+    },
+    "your_current_location": {
+      "heading": "Aktuális üzlet",
+      "change": "Módosítás"
+    },
+    "method": {
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "direct_ship": "Online rendelés"
+    },
+    "choose_reservation_type": "Foglalási típus kiválasztása",
+    "quick_reserve": "Gyors foglalás",
+    "reserve_to_cart": "Kosárba foglalás",
+    "change_fulfillment_method": "Szállítási mód módosítása",
+    "fulfillment": {
+      "heading": "Elérhetőség",
+      "direct_ship": "Online rendelés",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "error": {
+        "direct_ship": "Ez a termék nem elérhető szállításra. Kérjük, válasszon másik opciót, vagy ellenőrizze a termék elérhetőségét egy közeli üzletben.",
+        "reserve": "Ez a termék nem elérhető az Ön által kiválasztott üzletben. Kérjük, válasszon másik üzletet.",
+        "not_ready": "Kérjük, válasszon üzletet.",
+        "ropis": "Ez a termék nem elérhető Click & Reserve szolgáltatással ebben az üzletben. Kérjük, válasszon másik opciót vagy üzletet.",
+        "bopis": "Ez a termék nem elérhető Click & Collect szolgáltatással ebben az üzletben. Kérjük, válasszon másik opciót vagy üzletet."
+      }
+    },
+    "stock_info": {
+      "pick_up_at": "Az alábbi helyen: {storeName}",
+      "availableInventory": "{visibleInventory} készleten",
+      "available": "Elérhető",
+      "limitedAvailability": "Csak {visibleInventory} darab van készleten",
+      "notAvailable": "Nem elérhető",
+      "customAvailability": "Nem elérhető ebben az üzletben",
+      "comingSoon": "Hamarosan elérhető"
+    },
+    "no_available": "nem elérhető",
+    "multi_location_modal": {
+      "title": "Üzlet módosítása",
+      "message": "Már van termék a kosárban egy másik üzletből. Ezek a termékek az új üzletre módosulnak. Az árak és az elérhetőség változhatnak.",
+      "change_store": "Üzlet módosítása"
     }
   },
   "category": {
@@ -181,6 +390,9 @@
     },
     "showAllProducts": {
       "label": "Összes termék megjelenítése"
+    },
+    "errors": {
+      "404": "Kategória nem található"
     }
   },
   "search": {
@@ -206,14 +418,29 @@
     "dismiss": "Törölje",
     "ok": "Oké",
     "title_error": "Hoppá!",
-    "body_error": "Váratlan hiba történt. Kérjük, próbálja meg újra."
+    "body_error": "Váratlan hiba történt. Kérjük, próbálja meg újra.",
+    "close": "Bezárás",
+    "login": "Bejelentkezés"
   },
   "cart": {
+    "grand_total": "Összeg",
+    "current_total": "Jelenlegi összeg",
+    "items": "Termékek",
+    "price": "Ár",
+    "quantity": "Mennyiség",
+    "fulfilled_quantity": "Teljesített mennyiség",
+    "ordered_quantity": "Rendelt mennyiség",
+    "location": "Üzlet",
+    "status": "Állapot",
+    "remove_item": "Termék eltávolítása",
     "subtotal": "Részösszeg",
     "total": "Kosár teljes összege",
     "discount": "Kedvezmény",
     "discount_with_label": "Kedvezmény ({label})",
+    "coupon_label": "Kupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Tovább a pénztárhoz",
+    "reserve": "Foglalás",
     "remove": "Eltávolítás",
     "edit": "Szerkesztés",
     "empty": "A kosár üres.",
@@ -226,9 +453,61 @@
     "coupon_was_added": "A kupon hozzá lett adva!",
     "coupons_not_supported": "Kuponok és ajándékkártyák beváltása a következő lépésben",
     "free_shipping": "Ingyenes szállítás",
+    "allow_substitution_all": "Engedélyezi a helyettesítést minden termékre?",
+    "allow_substitution": "Helyettesítés engedélyezése",
     "message_type_info": "Info",
     "message_type_error": "Hiba",
-    "message_type_warning": "Figyelmeztetés"
+    "message_type_warning": "Figyelmeztetés",
+    "errors": {
+      "404": "Egy vagy több terméket eltávolítottak a kosárból a készlet elérhetősége miatt.",
+      "1001": "Egy vagy több termék jelenleg nem elérhető. Kérjük, távolítsa el ezeket.",
+      "1002": "Rendelés csak egyetlen átvételi üzletre korlátozódik. Kérjük, válasszon egyetlen üzletet.",
+      "1003": "A kiválasztott átvételi idő már nem elérhető. Kérjük, válasszon másik időpontot.",
+      "item": {
+        "1001": "A termék nem elérhető a kívánt mennyiségben.",
+        "1004": "Kérjük, válasszon átvételi időpontot.",
+        "1005": "A minimális rendelési mennyiség {minQty} még nem teljesült.",
+        "1006": "A maximális rendelési mennyiség {maxQty} meghaladva.",
+        "1007": "Kérjük, válasszon átvételi üzletet.",
+        "shopgate.cart.updateProducts": {
+          "1001": "A termék nem elérhető a kívánt mennyiségben."
+        },
+        "shopgate.cart.addProducts": {
+          "1001": "A termék nem elérhető a kívánt mennyiségben."
+        },
+        "generic": "Váratlan hiba történt ezzel a termékkel.",
+        "insufficientstock": "Jelenleg nincs raktáron."
+      },
+      "coupon": {
+        "404": "Ez a kupon nem létezik.",
+        "2000": "Ez a kupon érvénytelen.",
+        "2001": "A kupon {startDate, date, yyyyMMdd} dátumtól {startDate, time, short} órától érvényes.",
+        "2002": "A kupon {endDate, date, yyyyMMdd} dátumon {endDate, time, short} órakor lejárt.",
+        "2003": "Ez a kupon nem érvényes az Ön jelenlegi kosarára.",
+        "2004": "Ez a kupon már be lett váltva.",
+        "2005": "Ez a kupon elérte a maximális beváltási limitet.",
+        "generic": "Váratlan hiba történt ezzel a kuponnal."
+      },
+      "generic": "Váratlan hiba történt.",
+      "insufficientstock": "Egy vagy több termék jelenleg nem elérhető a kosarában. Kérjük, távolítsa el ezeket.",
+      "multiplelocations": "Rendelés csak egyetlen átvételi üzletre korlátozódik. Kérjük, válasszon egyetlen üzletet.",
+      "productsNotFound": "Egy vagy több terméket eltávolítottak a kosárból a készlet elérhetősége miatt.",
+      "mixed_cart": "Foglalások és online rendelések külön megrendelésként adhatók fel. Kérjük, frissítse a termékeket úgy, hogy a kosárban csak online rendelések vagy csak foglalások legyenek.",
+      "direct_ship_item": "Ellenőrizze, hogy ez a termék foglalható-e egy közeli üzletben.",
+      "ropis_cart_inventory": "Nem minden termék foglalható le. Kérjük, ellenőrizze a hibákat és módosítsa a szállítási opciókat.",
+      "ropis_item_inventory": "Ez a termék nem foglalható le a kívánt üzletben. Ellenőrizze, hogy elérhető-e másik üzletben.",
+      "ropis_item_inventory_exceed": "A kívánt mennyiség nem elérhető {storeName}-nál. A maximális mennyiség {inventory} lesz lefoglalva.",
+      "mixed_cart_coupon_removed": "A(z) \"{code}\" kupon nem érvényes foglalásokra."
+    },
+    "change_fulfillment": {
+      "direct_ship": "Módosítás Online rendelésre",
+      "bopis": "Módosítás Click & Collect-re",
+      "ropis": "Módosítás Click & Reserve-re"
+    },
+    "price_caption": {
+      "reservation": "Foglalás",
+      "pay_in_store": "Fizetés az üzletben"
+    }
   },
   "login": {
     "headline": "Üdvözöljük!",
@@ -241,17 +520,26 @@
     "no_account": "Még nincs fiókja?",
     "signup": "Kezdje el itt.",
     "logout_message": "Önt kijelentkeztették.",
-    "error": "A felhasználónév vagy a jelszó nem megfelelő"
+    "auto_logout_message": "Automatikusan kijelentkeztettek.",
+    "error": "A felhasználónév vagy a jelszó nem megfelelő",
+    "reset_password": {
+      "subline": "Kérjük, adja meg e-mail címét.",
+      "reset_instructions": "Kapni fog egy e-mailt a jelszó visszaállításához a(z) {email} címre",
+      "back_to_login": "Vissza a bejelentkezéshez",
+      "customer_not_found": "Ehhez az e-mail címhez nem tartozik fiók."
+    }
   },
   "navigation": {
     "login_register": "Bejelentkezés",
     "your_account": "Saját fiók",
     "home": "Kezdőlap",
     "categories": "Kategóriák",
+    "favorites": "Kedvencek",
     "my_orders": "Parancsaim",
     "cart": "Bevásárlókosár",
     "shipping": "Szállítási módok",
     "about": "Impresszum",
+    "contact": "Kapcsolat",
     "payment": "Fizetési módok",
     "terms": "Általános szerződési feltételek",
     "privacy": "Adatvédelem",
@@ -262,6 +550,8 @@
     "logout": "Kijelentkezés",
     "store_information": "Rólunk",
     "more_menu": "További",
+    "order_history": "Rendelési előzmények",
+    "profile": "Profil",
     "back": "Vissza a {title}"
   },
   "reviews": {
@@ -304,8 +594,211 @@
       "geolocation_message": "Hozzáférésre van szükségünk a helymeghatározáshoz, hogy megmutathassuk a közeli üzleteket."
     }
   },
+  "checkout": {
+    "submit_order": "Vásárlás most",
+    "continue_payment": "Tovább a fizetéshez",
+    "continue": "Folytatás",
+    "steps": "Lépés {from} / {to}",
+    "change_contacts": "Kapcsolat módosítása",
+    "change_addresses": "Cím módosítása",
+    "finalizePayment": "Rendelés befejezése",
+    "payment": {
+      "title": "Hogyan szeretne fizetni?",
+      "buttons": {
+        "stripe": "Bankkártya"
+      }
+    },
+    "shippingMethod": {
+      "title": "Szállítási mód",
+      "errors": {
+        "noShippingAddress": "Először adjon meg egy szállítási címet.",
+        "invalidShippingAddress": "Ez a kosár nem küldhető el a megadott szállítási címre."
+      }
+    },
+    "errors": {
+      "genericInitialize": "A pénztár jelenleg nem érhető el, kérjük, próbálja újra később.",
+      "genericUpdate": "A rendelés feldolgozása nem sikerült, kérjük, próbálja meg később újra.",
+      "checkCart": "Kérjük, ellenőrizze a kosarát.",
+      "genericSubmit": "A rendelés feldolgozása nem sikerült, kérjük, ellenőrizze a kosarát.",
+      "paypalFunding": "Hiba történt a fizetés során.",
+      "missingPaymentMethod": "Nincs fizetési mód beállítva.",
+      "noPaymentTransaction": "Nincs elérhető fizetési tranzakció.",
+      "genericUpdateBilling": "Hiba történt a számlázási cím frissítésekor",
+      "payment": {
+        "genericExternal": "Sajnos a kiválasztott fizetési mód nem sikerült. Próbálja meg egy másik fizetési móddal."
+      }
+    },
+    "pickup_contact": {
+      "headline": "Kapcsolat az átvételhez",
+      "headline_reserve": "Kapcsolat az átvételhez",
+      "subheadline": "A rendelés visszaigazolását erre az e-mail címre küldjük. A telefonszámot csak kérdések esetén használjuk.",
+      "form": {
+        "firstName": "Keresztnév",
+        "lastName": "Vezetéknév",
+        "mobile": "Mobiltelefonszám",
+        "emailAddress": "E-mail cím",
+        "password": "Jelszó *",
+        "passwordConfirm": "Jelszó megerősítése *",
+        "company": "Cég",
+        "address1": "Utca és házszám",
+        "address2": "Címkiegészítés",
+        "postalCode": "Irányítószám",
+        "city": "Város",
+        "country": "Ország",
+        "region": "Megye",
+        "who_will_pickup": "Ki fogja átvenni a rendelést?",
+        "me": "Én magam",
+        "someone_else": "Valaki más",
+        "instructions": "Átvételi utasítások"
+      }
+    },
+    "billing": {
+      "headline": "Számlázási cím",
+      "headline_reserve": "Rendelési kapcsolat",
+      "save": "Mentés",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Módosítás",
+      "change": "Módosítás",
+      "select_address": "Válasszon számlázási címet"
+    },
+    "shipping": {
+      "headline": "Szállítási cím",
+      "save": "Mentés",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Módosítás",
+      "change": "Módosítás",
+      "select_address": "Válasszon szállítási címet"
+    },
+    "creditCard": {
+      "headline": "Fizetési mód",
+      "card": "Bankkártyaszám *",
+      "cvc": "Biztonsági kód *",
+      "expiry": "Lejárat dátuma *"
+    },
+    "summary": {
+      "headline": "Összegzés",
+      "tax": "Adók",
+      "subTotal": "Részösszeg",
+      "shippingTotal": "Szállítási költségek",
+      "total": "Végösszeg"
+    },
+    "success": {
+      "title": "Köszönjük a rendelését",
+      "instructions_1": "Alább találja a rendelés részleteit. Ha kérdése van a rendeléssel kapcsolatban, kérjük, vegye fel a kapcsolatot az üzlettel.",
+      "instructions_2": "Kérjük, vegye figyelembe, hogy az átvételi időpontok változhatnak ünnepnapokon és hétvégén.",
+      "order_number": "Rendelési szám: {orderNumber}",
+      "order_date": "Rendelési dátum: {date}",
+      "your_items": "Termékek:",
+      "pick_up_contact": "Kapcsolat az átvételhez",
+      "order_contact": "Rendelési kapcsolat",
+      "pickup_notes": "Átvételi megjegyzések",
+      "billed_to": "Számlázási cím",
+      "shipped_to": "Szállítási cím",
+      "order_summary": "Rendelési összegzés",
+      "name": "Név",
+      "phone_number": "Telefonszám",
+      "email_address": "E-mail cím",
+      "card_holder": "Kártyatulajdonos",
+      "address": "Cím",
+      "payment_method": "Fizetési mód",
+      "shipping_method": "Szállítási mód",
+      "continue": "Tovább a vásárláshoz"
+    }
+  },
+  "order": {
+    "status": {
+      "order": {
+        "submitted": "Beküldve",
+        "inProgress": "Folyamatban",
+        "ready": "Átvételre kész",
+        "completed": "Teljesítve",
+        "canceled": "Lemondva"
+      },
+      "line_item": {
+        "pending": "Függőben",
+        "inProgress": "Folyamatban",
+        "unavailable": "Nem elérhető",
+        "canceled": "Lemondva",
+        "fulfilled": "Teljesítve",
+        "substituted": "Helyettesítve",
+        "replaced": "Kicserélve",
+        "itemAdded": "Hozzáadva",
+        "rejected": "Elutasítva",
+        "open": "Nyitott"
+      }
+    }
+  },
+  "order_details": {
+    "pickup_location": {
+      "headline": "Átvételi üzlet",
+      "address": "Cím",
+      "phone_number": "Telefonszám"
+    },
+    "subline": {
+      "order_number": "A rendelési száma: {orderNumber}",
+      "order_status": "Állapot: {status}"
+    },
+    "authenticate": {
+      "instructions": "Kérjük, azonosítsa magát az e-mail címével és telefonszámával, amelyet a rendeléshez használt.",
+      "or_login": "Vagy jelentkezzen be"
+    },
+    "errors": {
+      "authenticate": "Az e-mail cím és a telefonszám nem egyezik meg ezzel a rendeléssel.",
+      "expired": "A rendeléshez tartozó munkamenet lejárt.",
+      "authorize": "Ez a rendelés nem ehhez a fiókhoz tartozik.",
+      "not_found": "A rendelés nem található."
+    },
+    "cancel": {
+      "button": "Rendelés lemondása",
+      "modal": {
+        "title": "Lemondás",
+        "message": "Biztosan lemondja a rendelést? Ez a művelet nem visszavonható!",
+        "confirm": "Igen, lemondom a rendelést"
+      }
+    }
+  },
+  "orders": {
+    "header": {
+      "date": "Rendelés dátuma",
+      "orderNumber": "Rendelési szám",
+      "status": "Állapot",
+      "lineItemCount": "Termékek száma",
+      "total": "Végösszeg"
+    },
+    "no_result": {
+      "body": "Nem találhatók rendelések."
+    },
+    "itemCount": "{count, plural, =1 {Termék} other {Termékek}}"
+  },
+  "page": {
+    "not_found": "Sajnos a keresett oldal nem található.",
+    "continue": "Folytassa a vásárlást"
+  },
+  "registration": {
+    "create_account": "Fiók létrehozása",
+    "marketing_opt_in_label": "Szeretnék értesülni hírekről és exkluzív ajánlatokról.",
+    "different_shipping_address_label": "Eltérő szállítási cím",
+    "headlines": {
+      "create_new_account": "Új fiók létrehozása",
+      "shipping_address": "Szállítási cím",
+      "billing_address": "Számlázási cím",
+      "billing_address_reserve": "Rendelési kapcsolat"
+    }
+  },
   "error": {
     "general": "Kapcsolati probléma. Kérjük, ellenőrizze internetkapcsolatát, vagy próbálja meg később újra."
+  },
+  "validation": {
+    "required": "Kérjük, töltse ki ezt a mezőt",
+    "email": "Kérjük, adjon meg egy érvényes e-mail címet",
+    "numeric": "Kérjük, csak számokat adjon meg",
+    "alphaNumeric": "Kérjük, csak betűket és számokat adjon meg",
+    "mobileNumber": "Kérjük, adjon meg egy érvényes mobiltelefonszámot",
+    "date": "Kérjük, adjon meg egy érvényes dátumot",
+    "checkField": "Kérjük, ellenőrizze ezt a mezőt",
+    "emailConflict": "Ez az e-mail cím már regisztrálva van",
+    "passwordMismatch": "A jelszavak nem egyeznek",
+    "minPasswordLength": "A jelszónak legalább %'{count} karakter hosszúnak kell lennie"
   },
   "formats": {
     "date": {
@@ -314,7 +807,34 @@
       },
       "MMM": {
         "month": "rövid"
+      },
+      "pattern": "nn.hh.éééé"
+    },
+    "distance": {
+      "pattern": "{distance} {unit}",
+      "units": {
+        "m": "m",
+        "km": "km",
+        "ft": "láb",
+        "mi": "mérf."
       }
+    },
+    "unitOfMeasurement": {
+      "mg": "mg",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "cm": "cm",
+      "m": "m",
+      "m2": "m²",
+      "m3": "m³",
+      "piece": "db"
+    }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "mon"
     }
   },
   "appRating": {
