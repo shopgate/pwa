@@ -259,7 +259,8 @@
       "properties": "Propriétés",
       "ratings": "Evaluations",
       "purchase": "Acheter l'objet",
-      "quantity": "Quantité"
+      "quantity": "Quantité",
+      "price": "Prix"
     },
     "displayGroups": {
       "general": "Général",
@@ -526,6 +527,7 @@
   },
   "navigation": {
     "login_register": "Se connecter / S'inscrire",
+    "your_account": "Mon compte",
     "home": "Accueil",
     "categories": "Catégories",
     "favorites": "Liste d'envies",

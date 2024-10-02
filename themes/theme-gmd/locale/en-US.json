@@ -120,6 +120,7 @@
     "error_add": "Product could not be added to favorites list",
     "error_remove": "Product could not be removed from favorites list",
     "error_limit": "You have exceeded the number of products allowed in the favorites list.",
+    "error_general": "The favorites list could not be saved",
     "remove": "Remove from favorites list",
     "removed": "Removed from favorites list",
     "add_list_modal": {
@@ -136,13 +137,13 @@
       "message": "Enter the new name for your favorites list",
       "label": "Name"
     },
-    "add_list": "Add New List",
-    "errors": {
-      "invalid_name": "Please enter a valid name for your favorites list"
-    },
     "delete_list_modal": {
       "title": "Delete Favorites List",
       "message": "Do you really want to delete the \"{name}\" favorites list?"
+    },
+    "add_list": "Add New List",
+    "errors": {
+      "invalid_name": "Please enter a valid name for your favorites list"
     },
     "comment_modal": {
       "titleAdd": "Add Comment",
@@ -181,8 +182,7 @@
     },
     "open_list": "Open list.",
     "close_list": "Close list.",
-    "load_more_button": "Load more products",
-    "error_general": "The favorites list could not be saved"
+    "load_more_button": "Load more products"
   },
   "filter": {
     "sort": {
@@ -392,13 +392,13 @@
     }
   },
   "search": {
-    "placeholder": "Search",
-    "close": "End search",
-    "reset": "Reset search",
     "no_result": {
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
-    }
+    },
+    "placeholder": "Search",
+    "close": "End search",
+    "reset": "Reset search"
   },
   "shipping": {
     "unknown": "plus shipping",
@@ -516,8 +516,8 @@
     "no_account": "Don't have an account?",
     "register": "Create one here!",
     "logout_message": "You have been logged out.",
-    "auto_logout_message": "You have been logged out automatically.",
     "error": "Your username and password don't match any account",
+    "auto_logout_message": "You have been logged out automatically.",
     "reset_password": {
       "subline": "Please enter your Email to initiate the password reset process.",
       "reset_instructions": "Password Reset instructions have been sent to {email}",

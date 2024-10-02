@@ -259,7 +259,8 @@
       "properties": "Ominaisuudet",
       "ratings": "Luokitukset",
       "purchase": "Osta tuote",
-      "quantity": "Määrä"
+      "quantity": "Määrä",
+      "price": "Hinta"
     },
     "displayGroups": {
       "general": "Yleinen",
@@ -526,6 +527,7 @@
   },
   "navigation": {
     "login_register": "Kirjaudu sisään",
+    "your_account": "Oma tili",
     "home": "Kotisivu",
     "categories": "Kategoriat",
     "favorites": "Suosikit",
