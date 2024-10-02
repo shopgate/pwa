@@ -91,6 +91,36 @@
       "id": "pl-PL",
       "path": "frontend/locale/pl-PL.json",
       "type": "translations"
+    },
+    {
+      "id": "cs-CZ",
+      "path": "frontend/locale/cs-CZ.json",
+      "type": "translations"
+    },
+    {
+      "id": "el-GR",
+      "path": "frontend/locale/el-GR.json",
+      "type": "translations"
+    },
+    {
+      "id": "fi-FI",
+      "path": "frontend/locale/fi-FI.json",
+      "type": "translations"
+    },
+    {
+      "id": "hu-HU",
+      "path": "frontend/locale/hu-HU.json",
+      "type": "translations"
+    },
+    {
+      "id": "ro-RO",
+      "path": "frontend/locale/ro-RO.json",
+      "type": "translations"
+    },
+    {
+      "id": "sv-SE",
+      "path": "frontend/locale/sv-SE.json",
+      "type": "translations"
     }
   ]
 }
