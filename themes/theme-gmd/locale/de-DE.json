@@ -120,6 +120,7 @@
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
     "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten",
+    "error_general": "Die Merkliste konnte nicht gespeichert werden",
     "remove": "Von der Merkliste löschen",
     "removed": "Von Merkliste entfernt",
     "add_list_modal": {
@@ -136,13 +137,13 @@
       "message": "Der neue Name Ihrer Merkliste",
       "label": "Name"
     },
-    "add_list": "Neue Liste anlegen",
-    "errors": {
-      "invalid_name": "Bitte geben Sie einen vollständigen Namen für Ihre Merkliste ein"
-    },
     "delete_list_modal": {
       "title": "Merkliste löschen",
       "message": "Möchten Sie die Merkliste \"{name}\" wirklich löschen?"
+    },
+    "add_list": "Neue Liste anlegen",
+    "errors": {
+      "invalid_name": "Bitte geben Sie einen vollständigen Namen für Ihre Merkliste ein"
     },
     "comment_modal": {
       "titleAdd": "Kommentar hinzufügen",
@@ -181,8 +182,7 @@
     },
     "open_list": "Liste öffnen.",
     "close_list": "Liste schließen.",
-    "load_more_button": "Weitere Artikel laden",
-    "error_general": "Die Merkliste konnte nicht gespeichert werden"
+    "load_more_button": "Weitere Artikel laden"
   },
   "filter": {
     "sort": {
@@ -392,13 +392,13 @@
     }
   },
   "search": {
-    "placeholder": "Suchen",
-    "close": "Suche beenden",
-    "reset": "Suche zurücksetzen",
     "no_result": {
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
-    }
+    },
+    "placeholder": "Suchen",
+    "close": "Suche beenden",
+    "reset": "Suche zurücksetzen"
   },
   "shipping": {
     "unknown": "zzgl. Versand",
@@ -516,8 +516,8 @@
     "no_account": "Sie haben noch kein Konto?",
     "register": "Starten Sie hier.",
     "logout_message": "Sie wurden ausgeloggt.",
-    "auto_logout_message": "Sie wurden automatisch ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt",
+    "auto_logout_message": "Sie wurden automatisch ausgeloggt.",
     "reset_password": {
       "subline": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
       "reset_instructions": "Sie erhalten eine E-Mail zum Zurücksetzen Ihres Passworts an {email}",
