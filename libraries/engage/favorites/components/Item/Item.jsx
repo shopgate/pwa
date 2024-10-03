@@ -313,7 +313,7 @@ const FavoriteItem = ({
       <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
         <div className={classNames(styles.root, 'engage__favorites__item')}>
           <Link
-            className={styles.imageContainer}
+            className={classNames(styles.imageContainer, 'engage__favorites__item__image-container')}
             component="div"
             href={productLink}
             aria-hidden
