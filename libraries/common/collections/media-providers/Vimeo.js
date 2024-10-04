@@ -60,7 +60,10 @@ class VimeoMediaProvider extends MediaProvider {
 
     const players = [];
 
-    iframes.forEach((iframe) => {
+    iframes.forEach((iframe, index) => {
+      // Block clicks on Vimeo icon
+      iframes[index].sandbox = 'allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation';
+
       this.responsify(iframe);
       players.push(new window.Vimeo.Player(iframe));
     });

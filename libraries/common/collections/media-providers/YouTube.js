@@ -21,6 +21,9 @@ class YouTubeMediaProvider extends MediaProvider {
 
     // Update the video urls to enable stopping videos via the event API.
     iframes.forEach((iframe, index) => {
+      // Block clicks on YouTube icon
+      iframes[index].sandbox = 'allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation';
+
       this.responsify(iframe);
 
       const { src } = iframe;
