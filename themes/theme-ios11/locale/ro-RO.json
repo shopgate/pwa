@@ -466,7 +466,7 @@
       "item": {
         "1001": "Produsul nu este disponibil în cantitatea dorită.",
         "1004": "Vă rugăm să selectați un interval orar pentru ridicare.",
-        "1005": "Nu s-a atins încă cantitatea minimă de comandă de {minQty}.",
+        "1005": "Cantitatea minimă de comandă de {minQty} nu a fost încă atinsă.",
         "1006": "A fost depășită cantitatea maximă de comandă de {maxQty}.",
         "1007": "Vă rugăm să selectați un magazin de ridicare.",
         "shopgate.cart.updateProducts": {
