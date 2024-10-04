@@ -338,8 +338,8 @@
       "change": "Zmień"
     },
     "method": {
-      "ropis": "Zarezerwuj i odbierz",
-      "bopis": "Kliknij i odbierz",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
       "direct_ship": "Zamów online"
     },
     "choose_reservation_type": "Wybierz rodzaj rezerwacji",
@@ -349,14 +349,14 @@
     "fulfillment": {
       "heading": "Dostępność",
       "direct_ship": "Zamów online",
-      "ropis": "Zarezerwuj i odbierz",
-      "bopis": "Kliknij i odbierz",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
       "error": {
         "direct_ship": "Ten produkt nie jest dostępny do wysyłki. Proszę wybrać inną opcję lub sprawdzić dostępność w pobliskim sklepie.",
         "reserve": "Ten produkt nie jest dostępny w wybranym sklepie. Proszę wybrać inny sklep.",
         "not_ready": "Proszę wybrać sklep.",
-        "ropis": "Ten produkt nie jest dostępny w wybranym sklepie do rezerwacji. Proszę wybrać inną opcję lub sklep.",
-        "bopis": "Ten produkt nie jest dostępny w wybranym sklepie do odbioru. Proszę wybrać inną opcję lub sklep."
+        "ropis": "Ten produkt nie jest dostępny w opcji Click & Reserve w tym sklepie. Proszę wybrać inną opcję lub sklep.",
+        "bopis": "Ten produkt nie jest dostępny w opcji Click & Collect w tym sklepie. Proszę wybrać inną opcję lub sklep."
       }
     },
     "stock_info": {
@@ -501,8 +501,8 @@
     },
     "change_fulfillment": {
       "direct_ship": "Zmień na zamówienie online",
-      "bopis": "Zmień na Kliknij i odbierz",
-      "ropis": "Zmień na Zarezerwuj i odbierz"
+      "bopis": "Zmień na Click & Collect",
+      "ropis": "Zmień na Click & Reserve"
     },
     "price_caption": {
       "reservation": "Rezerwacja",
