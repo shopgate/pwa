@@ -24,7 +24,7 @@
     "shipping": "Doprava",
     "reviews": "Recenze",
     "browse": "Procházet",
-    "favorites": "Sledovaný seznam",
+    "favorites": "Seznam oblíbených",
     "scanner": "Skener",
     "back_in_stock": "Oznámení",
     "checkout": "Pokladna",
@@ -119,32 +119,32 @@
     "added": "Produkt byl přidán do seznamu oblíbených",
     "continue": "Pokračovat v nákupu",
     "empty": "Na seznamu oblíbených položek zatím nemáte žádné položky",
-    "error_add": "Výrobek se nepodařilo přidat do seznamu sledovaných položek",
-    "error_remove": "Výrobek se nepodařilo odstranit ze seznamu sledovaných položek",
-    "error_limit": "Byl překročen povolený počet produktů na seznamu sledovaných položek.",
-    "remove": "Odstranit ze seznamu sledovaných produktů",
-    "removed": "Odstraněno ze seznamu sledovaných produktů",
+    "error_add": "Výrobek se nepodařilo přidat do seznamu oblíbených položek",
+    "error_remove": "Výrobek se nepodařilo odstranit ze seznamu oblíbených položek",
+    "error_limit": "Byl překročen povolený počet produktů na seznamu oblíbených položek.",
+    "remove": "Odstranit ze seznamu oblíbených položek",
+    "removed": "Odstraněno ze seznamu oblíbených položek",
     "add_list_modal": {
-      "title": "Vytvořit nový seznam sledování",
+      "title": "Vytvořit nový seznam oblíbených",
       "dismiss": "Zrušit",
       "confirm": "Potvrdit",
-      "message": "Název nového seznamu sledovaných položek",
+      "message": "Název nového seznamu oblíbených položek",
       "label": "Název"
     },
     "rename_list_modal": {
-      "title": "Změna názvu seznamu sledování",
+      "title": "Změna názvu seznamu oblíbených",
       "dismiss": "Zrušit",
       "confirm": "Potvrdit",
-      "message": "Nový název seznamu sledovaných položek",
+      "message": "Nový název seznamu oblíbených položek",
       "label": "Název"
     },
     "add_list": "Vytvořit nový seznam",
     "errors": {
-      "invalid_name": "Zadejte prosím úplný název vašeho seznamu sledovaných položek."
+      "invalid_name": "Zadejte prosím úplný název vašeho seznamu oblíbených položek."
     },
     "delete_list_modal": {
-      "title": "Smazat seznam sledovaných položek",
-      "message": "Opravdu chcete smazat seznam hodinek \"{name}\"?"
+      "title": "Smazat seznam oblíbených",
+      "message": "Opravdu chcete smazat seznam oblíbených položek \"{name}\"?"
     },
     "comment_modal": {
       "titleAdd": "Přidat komentář",
@@ -172,7 +172,7 @@
       "title": "Vybrat metodu objednávky"
     },
     "list_chooser": {
-      "title": "Vyberte seznam sledování",
+      "title": "Vyberte seznam oblíbených položek",
       "add": "Přidat",
       "add_more": "Přidat více",
       "remove": "Odstranit"
@@ -184,7 +184,7 @@
     "open_list": "Otevřít seznam.",
     "close_list": "Zavřít seznam.",
     "load_more_button": "Načíst další položky",
-    "error_general": "Seznam sledovaných produktů nebylo možné uložit"
+    "error_general": "Seznam oblíbených nebylo možné uložit"
   },
   "filter": {
     "sort": {
@@ -534,7 +534,7 @@
     "your_account": "Můj účet",
     "home": "Domovská stránka",
     "categories": "Kategorie",
-    "favorites": "Seznam přání",
+    "favorites": "Seznam oblíbených",
     "my_orders": "Moje objednávky",
     "cart": "Nákupní košík",
     "shipping": "Způsoby dopravy",

@@ -115,32 +115,32 @@
     }
   },
   "favorites": {
-    "add": "Dodaj do listy obserwowanych",
-    "added": "Produkt został dodany do listy obserwowanych",
+    "add": "Dodaj do ulubionych",
+    "added": "Produkt został dodany do ulubionych",
     "continue": "Kontynuuj zakupy",
-    "empty": "Nie masz jeszcze żadnych produktów na swojej liście obserwowanych",
-    "error_add": "Produkt nie może zostać dodany do listy obserwowanych",
-    "error_remove": "Produkt nie może zostać usunięty z listy obserwowanych",
-    "error_limit": "Przekroczona została dozwolona liczba produktów na liście obserwacyjnej.",
-    "remove": "Usuń z listy obserwowanych",
-    "removed": "Usunięto z listy obserwowanych",
+    "empty": "Nie masz jeszcze żadnych produktów w ulubionych",
+    "error_add": "Produkt nie może zostać dodany do ulubionych",
+    "error_remove": "Produkt nie może zostać usunięty z ulubionych",
+    "error_limit": "Przekroczona została dozwolona liczba produktów w ulubionych.",
+    "remove": "Usuń z ulubionych",
+    "removed": "Usunięto z ulubionych",
     "add_list_modal": {
-      "title": "Utwórz nową listę życzeń",
+      "title": "Utwórz nową listę ulubionych",
       "dismiss": "Anuluj",
       "confirm": "Potwierdź",
-      "message": "Nazwa Twojej nowej listy życzeń",
+      "message": "Nazwa Twojej nowej listy ulubionych",
       "label": "Nazwa"
     },
     "rename_list_modal": {
-      "title": "Zmień nazwę listy życzeń",
+      "title": "Zmień nazwę listy ulubionych",
       "dismiss": "Anuluj",
       "confirm": "Potwierdź",
-      "message": "Nowa nazwa Twojej listy życzeń",
+      "message": "Nowa nazwa Twojej listy ulubionych",
       "label": "Nazwa"
     },
     "add_list": "Utwórz nową listę",
     "errors": {
-      "invalid_name": "Proszę podać pełną nazwę dla swojej listy życzeń"
+      "invalid_name": "Proszę podać pełną nazwę dla swojej listy ulubionych"
     },
     "delete_list_modal": {
       "title": "Usuń listę ulubionych",
@@ -172,7 +172,7 @@
       "title": "Wybierz metodę zamawiania"
     },
     "list_chooser": {
-      "title": "Wybierz listę życzeń",
+      "title": "Wybierz listę ulubionych",
       "add": "Dodaj",
       "add_more": "Dodaj więcej",
       "remove": "Usuń"
@@ -184,7 +184,7 @@
     "open_list": "Lista otwarta.",
     "close_list": "Lista zamknięta.",
     "load_more_button": "Załaduj inne artykuły",
-    "error_general": "Lista życzeń nie mogła zostać zapisana"
+    "error_general": "Lista ulubionych nie mogła zostać zapisana"
   },
   "filter": {
     "sort": {
@@ -534,7 +534,7 @@
     "your_account": "Moje konto",
     "home": "Strona główna",
     "categories": "Kategorie",
-    "favorites": "Lista życzeń",
+    "favorites": "Ulubione",
     "my_orders": "Moje polecenia",
     "cart": "Koszyk na zakupy",
     "shipping": "Metody wysyłki",

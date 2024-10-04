@@ -128,19 +128,19 @@
       "title": "Añadir una nueva lista",
       "dismiss": "Cancelar",
       "confirm": "Confirmar",
-      "message": "Introduzca el nombre de su nueva lista de deseos",
+      "message": "Introduzca el nombre de su nueva lista de favoritos",
       "label": "Nombre"
     },
     "rename_list_modal": {
       "title": "Cambiar el nombre de la lista",
       "dismiss": "Cancelar",
       "confirm": "Confirmar",
-      "message": "Introduzca el nuevo nombre de su lista de deseos",
+      "message": "Introduzca el nuevo nombre de su lista de favoritos",
       "label": "Nombre"
     },
     "add_list": "Añadir nueva lista",
     "errors": {
-      "invalid_name": "Por favor, introduzca un nombre válido para su lista de deseos"
+      "invalid_name": "Por favor, introduzca un nombre válido para su lista de favoritos"
     },
     "delete_list_modal": {
       "title": "Borrar la lista de favoritos",
@@ -184,7 +184,7 @@
     "open_list": "Lista abierta.",
     "close_list": "Cerrar lista.",
     "load_more_button": "Cargar otros artículos",
-    "error_general": "La lista de deseos no se ha podido guardar"
+    "error_general": "La lista de favoritos no se ha podido guardar"
   },
   "filter": {
     "sort": {
@@ -534,7 +534,7 @@
     "your_account": "Mi cuenta",
     "home": "Inicio",
     "categories": "Categorías",
-    "favorites": "Lista de deseos",
+    "favorites": "Lista de favoritos",
     "my_orders": "Mis pedidos",
     "cart": "Cesta de la compra",
     "shipping": "Métodos de envío",
