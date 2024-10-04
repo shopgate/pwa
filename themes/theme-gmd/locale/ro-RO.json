@@ -113,37 +113,37 @@
     }
   },
   "favorites": {
-    "add": "Adăugare la lista de favorite",
-    "added": "Produsul a fost adăugat la lista de favorite",
+    "add": "Adaugă la favorite",
+    "added": "Produsul a fost adăugat la favorite",
     "continue": "Continuă cumpărăturile",
-    "empty": "Nu aveți încă niciun articol pe lista de favorite",
-    "error_add": "Produsul nu a putut fi adăugat în lista de favorite.",
-    "error_remove": "Produsul nu a putut fi eliminat din lista de favorite.",
-    "error_limit": "Numărul permis de produse din lista de supraveghere a fost depășit.",
-    "error_general": "Lista de supraveghere nu a putut fi salvată",
-    "remove": "Ștergere din lista de monitorizare",
-    "removed": "Eliminat din lista de monitorizare",
+    "empty": "Nu aveți favorite",
+    "error_add": "Nu s-a putut adăuga la favorite.",
+    "error_remove": "Nu s-a putut elimina din favorite.",
+    "error_limit": "Ați depășit limita de produse la favorite.",
+    "error_general": "Lista de favorite nu a putut fi salvată",
+    "remove": "Șterge din favorite",
+    "removed": "Eliminat din favorite",
     "add_list_modal": {
-      "title": "Crearea unei noi liste de supraveghere",
+      "title": "Crearea unei noi liste de favorite",
       "dismiss": "Anulează",
       "confirm": "Confirmați",
-      "message": "Numele noii dvs. liste de supraveghere",
+      "message": "Nume pentru lista de favorite",
       "label": "Nume"
     },
     "rename_list_modal": {
-      "title": "Schimbă numele listei de supraveghere",
+      "title": "Schimbă numele listei de favorite",
       "dismiss": "Anulează",
       "confirm": "Confirmați",
-      "message": "Noul nume al listei dvs. de supraveghere",
+      "message": "Noul nume pentru lista de favorite",
       "label": "Nume"
     },
     "delete_list_modal": {
-      "title": "Șterge lista de supraveghere",
-      "message": "Chiar doriți să ștergeți watchlist-ul \"{name}\"?"
+      "title": "Șterge lista de favorite",
+      "message": "Chiar doriți să ștergeți lista de favorite \"{name}\"?"
     },
     "add_list": "Creați o listă nouă",
     "errors": {
-      "invalid_name": "Vă rugăm să introduceți un nume complet pentru lista de supraveghere"
+      "invalid_name": "Introduceți un nume valid pentru lista de favorite"
     },
     "comment_modal": {
       "titleAdd": "Adăugați un comentariu",
@@ -171,7 +171,7 @@
       "title": "Selectați o metodă de comandă"
     },
     "list_chooser": {
-      "title": "Selectați o listă de monitorizare",
+      "title": "Selectați o listă de favorite",
       "add": "Adaugă",
       "add_more": "Adăugați mai mult",
       "remove": "Șterge"
@@ -530,7 +530,7 @@
     "your_account": "Contul meu",
     "home": "Pagina de pornire",
     "categories": "Categorii",
-    "favorites": "Lista de dorințe",
+    "favorites": "Favorite",
     "my_orders": "Comenzile mele",
     "cart": "Coș de cumpărături",
     "scanner": "Scanner",

@@ -22,7 +22,7 @@
     "cart": "Kundkorg",
     "shipping": "Frakt",
     "reviews": "Recensioner",
-    "favorites": "Bevakningslista",
+    "favorites": "Favoritlista",
     "scanner": "Skanner",
     "back_in_stock": "Notifieringar",
     "checkout": "Slutför köp",
@@ -116,34 +116,34 @@
     "add": "Lägg till i favoritlistan",
     "added": "Produkten har lagts till i favoritlistan",
     "continue": "Fortsätt shoppa",
-    "empty": "Du har ännu inga varor på bevakningslistan",
-    "error_add": "Produkten kunde inte läggas till i bevakningslistan",
-    "error_remove": "Produkten kunde inte tas bort från bevakningslistan",
-    "error_limit": "Det tillåtna antalet produkter på bevakningslistan har överskridits.",
-    "error_general": "Det gick inte att spara bevakningslistan",
-    "remove": "Ta bort från bevakningslistan",
-    "removed": "Borttagen från bevakningslistan",
+    "empty": "Du har ännu inga varor på favoritlistan",
+    "error_add": "Produkten kunde inte läggas till i favoritlistan",
+    "error_remove": "Produkten kunde inte tas bort från favoritlistan",
+    "error_limit": "Det tillåtna antalet produkter på favoritlistan har överskridits.",
+    "error_general": "Det gick inte att spara favoritlistan",
+    "remove": "Ta bort från favoritlistan",
+    "removed": "Borttagen från favoritlistan",
     "add_list_modal": {
-      "title": "Skapa ny bevakningslista",
+      "title": "Skapa ny favoritlista",
       "dismiss": "Avbryt",
       "confirm": "Bekräfta",
-      "message": "Namnet på din nya bevakningslista",
+      "message": "Namnet på din nya favoritlista",
       "label": "Namn"
     },
     "rename_list_modal": {
-      "title": "Ändra namnet på bevakningslistan",
+      "title": "Ändra namnet på favoritlistan",
       "dismiss": "Avbryt",
       "confirm": "Bekräfta",
-      "message": "Det nya namnet på din bevakningslista",
+      "message": "Det nya namnet på din favoritlista",
       "label": "Namn"
     },
     "delete_list_modal": {
-      "title": "Radera bevakningslista",
-      "message": "Vill du verkligen ta bort bevakningslistan \"{name}\"?"
+      "title": "Radera favoritlista",
+      "message": "Vill du verkligen ta bort favoritlistan \"{name}\"?"
     },
     "add_list": "Skapa ny lista",
     "errors": {
-      "invalid_name": "Ange ett fullständigt namn för din bevakningslista"
+      "invalid_name": "Ange ett fullständigt namn för din favoritlista"
     },
     "comment_modal": {
       "titleAdd": "Lägg till kommentar",
@@ -171,7 +171,7 @@
       "title": "Välj en ordermetod"
     },
     "list_chooser": {
-      "title": "Välj en bevakningslista",
+      "title": "Välj en favoritlista",
       "add": "Lägg till",
       "add_more": "Lägg till fler",
       "remove": "Ta bort"
@@ -530,7 +530,7 @@
     "your_account": "Mitt konto",
     "home": "Startsida",
     "categories": "Kategorier",
-    "favorites": "Önskelista",
+    "favorites": "Favoritlista",
     "my_orders": "Mina beställningar",
     "cart": "Kundkorg",
     "scanner": "Skanner",

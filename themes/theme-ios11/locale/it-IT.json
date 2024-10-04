@@ -121,30 +121,30 @@
     "empty": "Non hai favoriti",
     "error_add": "Non è possibile aggiungere il prodotto ai favoriti",
     "error_remove": "Non è possibile rimuovere il prodotto dai favoriti",
-    "error_limit": "Hai superato il numero di prodotti consentiti nei preferiti.",
+    "error_limit": "Hai superato il numero massimo di articoli nei favoriti.",
     "remove": "Rimuovi dai favoriti",
     "removed": "Rimosso dai favoriti",
     "add_list_modal": {
       "title": "Aggiungere un nuovo elenco",
       "dismiss": "Annullamento",
       "confirm": "Confermare",
-      "message": "Inserite il nome del vostro nuovo elenco di preferiti",
+      "message": "Inserisci il nome del tuo nuovo elenco di favoriti",
       "label": "Nome"
     },
     "rename_list_modal": {
       "title": "Rinominare l'elenco",
       "dismiss": "Annullamento",
       "confirm": "Confermare",
-      "message": "Inserite il nuovo nome per l'elenco dei preferiti",
+      "message": "Inserisci il nuovo nome per l'elenco dei favoriti",
       "label": "Nome"
     },
     "add_list": "Aggiungi nuovo elenco",
     "errors": {
-      "invalid_name": "Inserire un nome valido per l'elenco dei preferiti"
+      "invalid_name": "Inserisci un nome valido per l'elenco dei favoriti"
     },
     "delete_list_modal": {
-      "title": "Cancellare l'elenco dei preferiti",
-      "message": "Volete davvero eliminare l'elenco dei preferiti \"{name}\"?"
+      "title": "Elimina elenco dei favoriti",
+      "message": "Sei sicuro di voler eliminare l'elenco dei favoriti \"{name}\"?"
     },
     "comment_modal": {
       "titleAdd": "Aggiungi commento",
@@ -172,7 +172,7 @@
       "title": "Scegliere un metodo"
     },
     "list_chooser": {
-      "title": "Scegliere un elenco di preferiti",
+      "title": "Seleziona un elenco di favoriti",
       "add": "Aggiungi",
       "add_more": "Aggiungi altro",
       "remove": "Rimuovere"
@@ -534,7 +534,7 @@
     "your_account": "Il mio account",
     "home": "Pagina iniziale",
     "categories": "Categorie",
-    "favorites": "Lista dei desideri",
+    "favorites": "Favoriti",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
     "shipping": "Modalità di spedizione",

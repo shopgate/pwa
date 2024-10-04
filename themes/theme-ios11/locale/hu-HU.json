@@ -24,7 +24,7 @@
     "shipping": "Szállítás",
     "reviews": "Vélemények",
     "browse": "Böngészés",
-    "favorites": "Megfigyelési lista",
+    "favorites": "Kedvencek listája",
     "scanner": "Scanner",
     "back_in_stock": "Notificări",
     "checkout": "Pénztár",
@@ -115,36 +115,36 @@
     }
   },
   "favorites": {
-    "add": "Hozzáadás a kedvencek listájához",
-    "added": "A termék hozzá lett adva a kedvencek listájához",
+    "add": "Hozzáadás a Kedvencek listájához",
+    "added": "A termék hozzáadva a Kedvencek listájához",
     "continue": "Vásárlás folytatása",
-    "empty": "Még nincs termék a figyelőlistán",
-    "error_add": "A terméket nem sikerült hozzáadni a figyelőlistához",
-    "error_remove": "A terméket nem sikerült eltávolítani a figyelőlistáról",
-    "error_limit": "A megfigyelési listán lévő termékek engedélyezett száma túllépésre került.",
-    "remove": "Törlés a figyelőlistáról",
-    "removed": "Eltávolítva a figyelőlistáról",
+    "empty": "Nincs termék a Kedvencek listáján",
+    "error_add": "A terméket nem sikerült hozzáadni a Kedvencek listájához",
+    "error_remove": "A terméket nem sikerült eltávolítani a Kedvencek listájáról",
+    "error_limit": "Túllépte a Kedvencek listáján szereplő termékek megengedett számát",
+    "remove": "Eltávolítás a Kedvencek listájáról",
+    "removed": "Eltávolítva a Kedvencek listájáról",
     "add_list_modal": {
-      "title": "Új figyelőlista létrehozása",
+      "title": "Új Kedvencek lista létrehozása",
       "dismiss": "Törölje",
       "confirm": "Megerősítés",
-      "message": "Az új figyelőlista neve",
+      "message": "Az új Kedvencek lista neve",
       "label": "Név"
     },
     "rename_list_modal": {
-      "title": "A figyelőlista nevének módosítása",
+      "title": "Kedvencek lista átnevezése",
       "dismiss": "Törölje",
       "confirm": "Megerősítés",
-      "message": "A figyelőlista új neve",
+      "message": "Az új Kedvencek lista neve",
       "label": "Név"
     },
-    "add_list": "Új lista létrehozása",
+    "add_list": "Új Kedvencek lista létrehozása",
     "errors": {
-      "invalid_name": "Kérjük, adja meg a teljes nevet a megfigyelési listához"
+      "invalid_name": "Adja meg a Kedvencek listája teljes nevét"
     },
     "delete_list_modal": {
-      "title": "Figyelőlista törlése",
-      "message": "Tényleg törölni akarja a megfigyelési listát \"{name}\"?"
+      "title": "Kedvencek lista törlése",
+      "message": "Valóban törölni kívánja a Kedvencek listáját \"{name}\"?"
     },
     "comment_modal": {
       "titleAdd": "Megjegyzés hozzáadása",
@@ -172,7 +172,7 @@
       "title": "Megrendelési módszer kiválasztása"
     },
     "list_chooser": {
-      "title": "Válasszon ki egy megfigyelési listát",
+      "title": "Válassza ki a Kedvencek listáját",
       "add": "Hozzáadás",
       "add_more": "Több hozzáadása",
       "remove": "Törlés"
@@ -184,7 +184,7 @@
     "open_list": "Nyissa meg a listát.",
     "close_list": "Lista bezárása.",
     "load_more_button": "További elemek betöltése",
-    "error_general": "A megfigyelési listát nem sikerült elmenteni"
+    "error_general": "A kedvencek listáját nem sikerült elmenteni"
   },
   "filter": {
     "sort": {
@@ -534,7 +534,7 @@
     "your_account": "Saját fiók",
     "home": "Kezdőlap",
     "categories": "Kategóriák",
-    "favorites": "Kedvencek",
+    "favorites": "Kedvencek listája",
     "my_orders": "Parancsaim",
     "cart": "Bevásárlókosár",
     "shipping": "Szállítási módok",

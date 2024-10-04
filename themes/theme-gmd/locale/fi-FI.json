@@ -22,7 +22,7 @@
     "cart": "Ostoskori",
     "shipping": "Toimitus",
     "reviews": "Arvostelut",
-    "favorites": "Seurantaluettelo",
+    "favorites": "Suosikkilista",
     "scanner": "Skanneri",
     "back_in_stock": "Ilmoitukset",
     "checkout": "Kassalle",
@@ -117,33 +117,33 @@
     "added": "Tuote on lisätty suosikkilistalle",
     "continue": "Jatka ostoksia",
     "empty": "Sinulla ei ole vielä yhtään tuotetta suosikkilistalla",
-    "error_add": "Tuotetta ei voitu lisätä seurantalistalle",
-    "error_remove": "Tuotetta ei voitu poistaa seurantalistalta",
-    "error_limit": "Seurantalistalla olevien tuotteiden sallittu määrä on ylitetty.",
+    "error_add": "Tuotetta ei voitu lisätä suosikkilistalle",
+    "error_remove": "Tuotetta ei voitu poistaa suosikkilistalta",
+    "error_limit": "Suosikkilistalla olevien tuotteiden sallittu määrä on ylitetty.",
     "error_general": "Seurantalistaa ei voitu tallentaa",
-    "remove": "Poista seurantalistalta",
-    "removed": "Poistettu seurantalistalta",
+    "remove": "Poista suosikkilistalta",
+    "removed": "Poistettu suosikkilistalta",
     "add_list_modal": {
-      "title": "Luo uusi tarkkailuluettelo",
+      "title": "Luo uusi suosikkilista",
       "dismiss": "Peruuta",
       "confirm": "Vahvista",
-      "message": "Uuden tarkkailulistan nimi",
+      "message": "Uuden suosikkilistan nimi",
       "label": "Nimi"
     },
     "rename_list_modal": {
-      "title": "Muuta tarkkailulistan nimeä",
+      "title": "Muuta suosikkilistan nimeä",
       "dismiss": "Peruuta",
       "confirm": "Vahvista",
-      "message": "Tarkkailulistan uusi nimi",
+      "message": "Suosikkilistan uusi nimi",
       "label": "Nimi"
     },
     "delete_list_modal": {
-      "title": "Poista seurantalista",
-      "message": "Haluatko todella poistaa kellolistan \"{name}\"?"
+      "title": "Poista suosikkilista",
+      "message": "Haluatko todella poistaa suosikkilistan \"{name}\"?"
     },
-    "add_list": "Luo uusi luettelo",
+    "add_list": "Luo uusi suosikkilista",
     "errors": {
-      "invalid_name": "Kirjoita täydellinen nimi seurantalistallesi."
+      "invalid_name": "Kirjoita täydellinen nimi suosikkilistallesi."
     },
     "comment_modal": {
       "titleAdd": "Lisää kommentti",
@@ -171,7 +171,7 @@
       "title": "Valitse tilaustapa"
     },
     "list_chooser": {
-      "title": "Valitse tarkkailuluettelo",
+      "title": "Valitse suosikkilista",
       "add": "Lisää",
       "add_more": "Lisää enemmän",
       "remove": "Poista"
@@ -530,7 +530,7 @@
     "your_account": "Oma tili",
     "home": "Kotisivu",
     "categories": "Kategoriat",
-    "favorites": "Suosikit",
+    "favorites": "Suosikkilista",
     "my_orders": "Tilaukseni",
     "cart": "Ostoskori",
     "scanner": "Skanneri",

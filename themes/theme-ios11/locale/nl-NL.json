@@ -144,7 +144,7 @@
     },
     "delete_list_modal": {
       "title": "Favorietenlijst verwijderen",
-      "message": "MWil je echt de \"{name}\" favorietenlijst verwijderen?"
+      "message": "Wilt u echt de \"{name}\" favorietenlijst verwijderen?"
     },
     "comment_modal": {
       "titleAdd": "Opmerking toevoegen",
@@ -534,7 +534,7 @@
     "your_account": "Mijn account",
     "home": "Home",
     "categories": "Categorieën",
-    "favorites": "Verlanglijst",
+    "favorites": "Favorieten",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
     "shipping": "Verzendmethoden",
