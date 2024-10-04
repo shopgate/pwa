@@ -338,7 +338,7 @@
       "change": "Changer"
     },
     "method": {
-      "ropis": "Click & Réserver",
+      "ropis": "Click & Reserve",
       "bopis": "Click & Collect",
       "direct_ship": "Commander en ligne"
     },
@@ -349,13 +349,13 @@
     "fulfillment": {
       "heading": "Disponibilité",
       "direct_ship": "Commander en ligne",
-      "ropis": "Click & Réserver",
+      "ropis": "Click & Reserve",
       "bopis": "Click & Collect",
       "error": {
         "direct_ship": "Ce produit n'est pas disponible pour la livraison. Veuillez choisir une autre option ou vérifier la disponibilité dans un magasin proche.",
         "reserve": "Ce produit n'est pas disponible dans le magasin sélectionné. Veuillez choisir un autre magasin.",
         "not_ready": "Veuillez sélectionner un magasin.",
-        "ropis": "Ce produit n'est pas disponible pour Click & Réserver dans ce magasin. Veuillez choisir une autre option ou un autre magasin.",
+        "ropis": "Ce produit n'est pas disponible pour Click & Reserve dans ce magasin. Veuillez choisir une autre option ou un autre magasin.",
         "bopis": "Ce produit n'est pas disponible pour Click & Collect dans ce magasin. Veuillez choisir une autre option ou un autre magasin."
       }
     },
@@ -502,7 +502,7 @@
     "change_fulfillment": {
       "direct_ship": "Changer en Commander en ligne",
       "bopis": "Changer en Click & Collect",
-      "ropis": "Changer en Click & Réserver"
+      "ropis": "Changer en Click & Reserve"
     },
     "price_caption": {
       "reservation": "Réservation",
