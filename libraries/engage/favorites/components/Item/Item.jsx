@@ -331,7 +331,7 @@ const FavoriteItem = ({
                   <TextLink
                     href={productLink}
                     tag="span"
-                    className={styles.titleContainer}
+                    className={classNames(styles.titleContainer, 'engage__favorites__item__title-container')}
                   >
                     <span
                       className={styles.title}
