@@ -615,7 +615,7 @@
       "noPaymentTransaction": "Brak dostępnej transakcji płatniczej.",
       "genericUpdateBilling": "Błąd podczas aktualizacji adresu rozliczeniowego",
       "payment": {
-        "genericExternal": "Płatność wybraną metodą niestety nie powiodła się. Spróbuj ponownie, wybierając inną metodę."
+        "genericExternal": "Płatność się niestety nie powiodła wybraną metodą. Spróbuj ponownie, wybierając inną metodę."
       }
     },
     "pickup_contact": {
