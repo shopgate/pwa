@@ -168,7 +168,7 @@ const styles = {
 
 /**
  * Favorite Item component
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const FavoriteItem = ({
   listId,
@@ -311,17 +311,17 @@ const FavoriteItem = ({
   return (
     <ProductListEntryProvider productId={product.id}>
       <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
-        <div className={styles.root}>
+        <div className={classNames(styles.root, 'engage__favorites__item')}>
           <Link
-            className={styles.imageContainer}
+            className={classNames(styles.imageContainer, 'engage__favorites__item__image-container')}
             component="div"
             href={productLink}
             aria-hidden
           >
-            <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+            <ProductImage className={classNames('engage__favorites__item__image')} src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
           </Link>
 
-          <div className={styles.infoContainer}>
+          <div className={classNames(styles.infoContainer, 'engage__favorites__item__info-container')}>
             <div className={classNames(styles.infoContainerRow)}>
               <div className={styles.titleWrapper}>
                 <SurroundPortals
