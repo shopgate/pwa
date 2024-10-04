@@ -119,7 +119,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         <Text
           string="more"
         >
-          I18n.Text
+          more
         </Text>
       </RippleButton>
     </div>
@@ -338,7 +338,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         <Text
           string="more"
         >
-          I18n.Text
+          more
         </Text>
       </RippleButton>
     </div>
