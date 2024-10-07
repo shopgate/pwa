@@ -6,11 +6,14 @@ import { isUserLoginDisabled } from '@shopgate/pwa-common/selectors/user';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import UserMenu from './index';
 
+jest.mock('@shopgate/engage/components');
+
 jest.mock('@shopgate/pwa-common/selectors/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),
 }));
 
 jest.mock('@shopgate/pwa-common/components/Link', () => function Link({ children }) { return children; });
+jest.mock('@shopgate/pwa-ui-shared/Sheet', () => null);
 
 const store = createMockStore();
 
@@ -37,9 +40,9 @@ describe('<UserMenu />', () => {
 
     expect(wrapper).toMatchSnapshot();
     const links = wrapper.find('Link');
-    expect(links.at(0).text()).toBe('login.button');
+    expect(links.find('Text').at(0).prop('string')).toBe('login.button');
     expect(links.at(0).prop('disabled')).toBe(false);
-    expect(links.at(1).text()).toBe('login.signup');
+    expect(links.find('Text').at(1).prop('string')).toBe('login.signup');
     expect(links.at(1).prop('disabled')).toBe(false);
   });
 
