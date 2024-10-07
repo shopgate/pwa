@@ -101,7 +101,7 @@ export const TaxDisclaimer = () => 'TaxDisclaimer';
 
 // HELPERS
 export const I18n = {
-  Text: () => 'I18n.Text',
+  Text: ({ string }) => string,
   Placeholder: () => null,
   Price: () => null,
 };

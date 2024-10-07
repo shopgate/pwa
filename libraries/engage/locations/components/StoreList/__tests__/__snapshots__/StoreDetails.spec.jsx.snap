@@ -37,7 +37,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               className="css-1lr3f02"
               string="locations.hours_details"
             >
-              I18n.Text
+              locations.hours_details
             </Text>
             <div
               className="css-1btxmah"
@@ -140,7 +140,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                 className="css-1lr3f02"
                 string="locations.phone"
               >
-                I18n.Text
+                locations.phone
               </Text>
             </Grid.Item>
           </Grid>
@@ -200,7 +200,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                 className="css-1lr3f02"
                 string="locations.map_open"
               >
-                I18n.Text
+                locations.map_open
               </Text>
             </Grid.Item>
           </Grid>
