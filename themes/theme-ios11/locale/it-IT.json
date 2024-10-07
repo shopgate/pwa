@@ -128,7 +128,7 @@
       "title": "Aggiungere un nuovo elenco",
       "dismiss": "Annullamento",
       "confirm": "Confermare",
-      "message": "Inserisci il nome del tuo nuovo elenco di favoriti",
+      "message": "Inserisca il nome del suo nuovo elenco di favoriti",
       "label": "Nome"
     },
     "rename_list_modal": {
@@ -144,7 +144,7 @@
     },
     "delete_list_modal": {
       "title": "Elimina elenco dei favoriti",
-      "message": "Sei sicuro di voler eliminare l'elenco dei favoriti \"{name}\"?"
+      "message": "È sicuro di voler eliminare l'elenco dei favoriti \"{name}\"?"
     },
     "comment_modal": {
       "titleAdd": "Aggiungi commento",
