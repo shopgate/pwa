@@ -13,11 +13,11 @@ import AppBar from '../AppBar';
 /**
  * @param {Object} props The component props.
  * @param {string} props.categoryId The category id.
- * @param {boolean} props.hasProducts Whether the category has products.
  * @param {boolean} props.hasChildren Whether the category has children.
+ * @param {boolean} props.hasProducts Whether the category has products.
  * @returns {JSX}
  */
-const CategoryContent = ({ categoryId, hasProducts, hasChildren }) => {
+const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => {
   // Show filter logic for old services
   let showFilters = hasProducts && !hasChildren;
   // Show filter logic for new services
