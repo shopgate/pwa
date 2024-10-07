@@ -10,7 +10,11 @@
     "show_products": "Arată produsele",
     "back": "Înapoi",
     "close": "Închide",
-    "products": "Produse"
+    "products": "Produse",
+    "error": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou.",
+    "errors": {
+      "generic": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou."
+    }
   },
   "titles": {
     "categories": "Categorii",
@@ -20,7 +24,76 @@
     "reviews": "Recenzii",
     "favorites": "Listă de supraveghere",
     "scanner": "Scanner",
-    "back_in_stock": "Notificări"
+    "back_in_stock": "Notificări",
+    "checkout": "Finalizare comandă",
+    "checkout_confirmation": "Comanda a fost plasată cu succes",
+    "checkout_change_billing": "Modificare adresă de facturare",
+    "register": "Înregistrare",
+    "order_details": "Detalii comandă",
+    "store_finder": "Găsire magazin",
+    "order_history": "Istoricul comenzilor",
+    "profile": "Profil",
+    "your_account": "Contul meu",
+    "your_account_contact": "Adresă",
+    "page_not_found": "Pagina nu a fost găsită",
+    "checkout_addresses_shipping": "Selectați adresa de livrare",
+    "checkout_addresses_billing": "Selectați adresa de facturare",
+    "checkout_addresses_add_shipping": "Adăugați o adresă de livrare",
+    "checkout_addresses_add_billing": "Adăugați o adresă de facturare",
+    "checkout_addresses_edit_shipping": "Modificați adresa de livrare",
+    "checkout_addresses_edit_billing": "Modificați adresa de facturare"
+  },
+  "account": {
+    "profile": {
+      "customer": {
+        "number": "Nr. client: {customerNumber}"
+      },
+      "form": {
+        "firstName": "Prenume",
+        "middleName": "Al doilea Prenume",
+        "lastName": "Nume de Familie",
+        "emailAddress": "Adresă de Email",
+        "address1": "Stradă și Număr",
+        "address2": "Adresă 2",
+        "address3": "Adresă 3",
+        "address4": "Adresă 4",
+        "postalCode": "Cod Poștal",
+        "city": "Oraș",
+        "country": "Țară",
+        "phone": "Număr de Telefon",
+        "mobile": "Număr de Mobil",
+        "region": "Județ",
+        "marketing_opt_in_label": "Ține-mă la curent cu noutăți și oferte exclusive.",
+        "default_billing": "Adresă de facturare implicită",
+        "default_shipping": "Adresă de livrare implicită",
+        "save_default_billing": "Salvați această adresă de facturare pentru comenzi viitoare",
+        "save_default_shipping": "Salvați această adresă de livrare pentru comenzi viitoare",
+        "save": "Salvați",
+        "add": "Adăugați adresă",
+        "success": "Profil salvat",
+        "error": "Eroare la salvare"
+      },
+      "delete": "Ștergeți contul",
+      "address_book": {
+        "title": "Gestionare adrese",
+        "default_billing": "Adresă de facturare implicită",
+        "default_shipping": "Adresă de livrare implicită",
+        "add": "Adăugați adresă",
+        "select": "Selectați",
+        "selected": "Selectat",
+        "success": "Profil salvat",
+        "context": {
+          "edit": "Editați",
+          "remove": "Eliminați"
+        }
+      },
+      "confirm": {
+        "title": "Sunteți sigur?",
+        "confirm": "Confirmați",
+        "messageContact": "Sunteți sigur că doriți să ștergeți această adresă?",
+        "messageCustomer": "Sunteți sigur că doriți să ștergeți contul? Toate datele personale și setările vor fi șterse."
+      }
+    }
   },
   "back_in_stock": {
     "list_states": {
@@ -40,37 +113,54 @@
     }
   },
   "favorites": {
-    "add": "Adăugare la lista de favorite",
-    "added": "Produsul a fost adăugat la lista de favorite",
+    "add": "Adaugă la favorite",
+    "added": "Produsul a fost adăugat la favorite",
     "continue": "Continuă cumpărăturile",
-    "empty": "Nu aveți încă niciun articol pe lista de favorite",
-    "error_add": "Produsul nu a putut fi adăugat în lista de favorite.",
-    "error_remove": "Produsul nu a putut fi eliminat din lista de favorite.",
-    "error_limit": "Numărul permis de produse din lista de supraveghere a fost depășit.",
-    "error_general": "Lista de supraveghere nu a putut fi salvată",
-    "remove": "Ștergere din lista de monitorizare",
-    "removed": "Eliminat din lista de monitorizare",
+    "empty": "Nu aveți favorite",
+    "error_add": "Nu s-a putut adăuga la favorite.",
+    "error_remove": "Nu s-a putut elimina din favorite.",
+    "error_limit": "Ați depășit limita de produse la favorite.",
+    "error_general": "Lista de favorite nu a putut fi salvată",
+    "remove": "Șterge din favorite",
+    "removed": "Eliminat din favorite",
     "add_list_modal": {
-      "title": "Crearea unei noi liste de supraveghere",
+      "title": "Crearea unei noi liste de favorite",
       "dismiss": "Anulează",
       "confirm": "Confirmați",
-      "message": "Numele noii dvs. liste de supraveghere",
+      "message": "Nume pentru lista de favorite",
       "label": "Nume"
     },
     "rename_list_modal": {
-      "title": "Schimbă numele listei de supraveghere",
+      "title": "Schimbă numele listei de favorite",
       "dismiss": "Anulează",
       "confirm": "Confirmați",
-      "message": "Noul nume al listei dvs. de supraveghere",
+      "message": "Noul nume pentru lista de favorite",
       "label": "Nume"
     },
     "delete_list_modal": {
-      "title": "Șterge lista de supraveghere",
-      "message": "Chiar doriți să ștergeți watchlist-ul \"{name}\"?"
+      "title": "Șterge lista de favorite",
+      "message": "Chiar doriți să ștergeți lista de favorite \"{name}\"?"
     },
     "add_list": "Creați o listă nouă",
     "errors": {
-      "invalid_name": "Vă rugăm să introduceți un nume complet pentru lista de supraveghere"
+      "invalid_name": "Introduceți un nume valid pentru lista de favorite"
+    },
+    "comment_modal": {
+      "titleAdd": "Adăugați un comentariu",
+      "titleEdit": "Editați comentariul",
+      "dismiss": "Anulați",
+      "confirm": "Confirmați",
+      "label": "Comentariu",
+      "characterCount": "{count} din {maxCount} caractere"
+    },
+    "comments": {
+      "add": "Adăugați un comentariu",
+      "notes": "Comentariu",
+      "edit": "Editați",
+      "delete": "Ștergeți",
+      "added": "Comentariu adăugat",
+      "removed": "Comentariu eliminat",
+      "updated": "Comentariu actualizat"
     },
     "rename_list": "Redenumire",
     "remove_list": "Șterge",
@@ -81,8 +171,9 @@
       "title": "Selectați o metodă de comandă"
     },
     "list_chooser": {
-      "title": "Selectați o listă de monitorizare",
+      "title": "Selectați o listă de favorite",
       "add": "Adaugă",
+      "add_more": "Adăugați mai mult",
       "remove": "Șterge"
     },
     "modal": {
@@ -98,7 +189,11 @@
       "default": "Sortare",
       "most_popular": "Cele mai bune rezultate",
       "price_desc": "Cel mai mare preț mai întâi",
-      "price_asc": "Cel mai mic preț mai întâi"
+      "price_asc": "Cel mai mic preț mai întâi",
+      "name_asc": "Nume A - Z",
+      "name_desc": "Nume Z - A",
+      "rank_asc": "Cel mai mic rang primul",
+      "rank_desc": "Cel mai mare rang primul"
     },
     "apply": "Efectuat",
     "more": "mai mult",
@@ -123,10 +218,16 @@
     },
     "msrp": "RRP",
     "label": "Preț {price}.",
-    "label_old_price": "Prețul vechi {price}."
+    "label_old_price": "Prețul vechi {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Gratuit"
   },
   "product": {
+    "errors": {
+      "insufficientstock": "Din păcate, acest produs nu mai este disponibil."
+    },
     "description_heading": "Descriere",
+    "share": "Distribuiți produsul",
     "pick_an_attribute": "{0} selectați",
     "tax_disclaimer": "* Inclusiv TVA, eventual plus costuri de expediere",
     "adding_item": "{count, plural, =1 {Se adaugă un produs} other {Se adaugă {count} produse}}",
@@ -135,6 +236,10 @@
     "add_to_cart": "Adăugați la coș",
     "no_more_found": "Articolul: \"{name}\" este în prezent în afara stocului.",
     "quantity": "Cantitate",
+    "decrease_quantity": "Scădeți cantitatea",
+    "increase_quantity": "Creșteți cantitatea",
+    "increased_quantity_to": "Cantitatea a fost crescută la {quantity}",
+    "decreased_quantity_to": "Cantitatea a fost scăzută la {quantity}",
     "minOrderQuantity": "Cantitate minimă de comandă: {quantity} {unit}",
     "maxOrderQuantity": "Cantitate maximă de comandă: {quantity} {unit}",
     "available": {
@@ -149,17 +254,121 @@
     "sections": {
       "information": "Informații despre produs",
       "options": "Selectați opțiuni",
+      "fulfillment": "Disponibilitate",
       "description": "Descriere",
       "properties": "Proprietăți",
       "ratings": "Ratinguri",
       "purchase": "Cumpărați produsul",
-      "quantity": "Cantitate"
+      "quantity": "Cantitate",
+      "price": "Preț"
     },
     "displayGroups": {
       "general": "Generalități",
       "features": "Caracteristici",
       "pricing": "Informații despre preț",
       "properties": "Proprietăți"
+    }
+  },
+  "locations": {
+    "headline": "Magazine aproape de dvs.",
+    "details": "Detalii",
+    "hours_details": "Detalii despre program",
+    "today_hours": "Astăzi: {hours}",
+    "today_hours_long": "Deschis astăzi: {hours}",
+    "address": "{postalCode} {city}",
+    "map_open": "Deschideți în hărți",
+    "phone": "Număr de telefon",
+    "mon": "Luni",
+    "tue": "Marți",
+    "wed": "Miercuri",
+    "thu": "Joi",
+    "fri": "Vineri",
+    "sat": "Sâmbătă",
+    "sun": "Duminică",
+    "place_reservation": "Faceți o rezervare",
+    "firstName": "Prenume",
+    "lastName": "Nume",
+    "cellPhone": "Număr de mobil pentru notificări SMS",
+    "emailAddress": "Adresă de email",
+    "who_will_pickup": "Cine va ridica această comandă?",
+    "me": "Eu însumi",
+    "someone_else": "Altă persoană",
+    "success_heading": "Confirmarea rezervării",
+    "success_title": "Vă mulțumim pentru rezervare!",
+    "success_copy": "Vă vom trimite un e-mail sau un mesaj SMS când rezervarea dvs. va fi gata pentru ridicare.",
+    "success_order_num": "Nr. rezervare",
+    "error_heading": "A apărut o eroare",
+    "error_title": "Din păcate, nu am putut finaliza rezervarea dvs.",
+    "error_copy": "A apărut o eroare în timpul procesului de rezervare. Este posibil ca unele articole să fie deja epuizate. Vă rugăm să verificați disponibilitatea în alte magazine din coșul dvs.",
+    "error_invalid_zip_code": "Vă rugăm să introduceți un cod poștal valid.",
+    "error_no_store_found": "Nu am găsit magazine în această zonă, vă rugăm să verificați datele introduse.",
+    "search_placeholder": "Cod poștal",
+    "change_location": "Schimbați magazinul",
+    "select_location": "Selectați magazinul",
+    "get_directions": "Obțineți indicații",
+    "store_hours": "Program",
+    "radius_km": "{radius} km",
+    "radius_mi": "{radius} mile",
+    "radius": "Rază",
+    "stores_near": {
+      "zip_code": "Magazine aproape de \"{zipCode}\"",
+      "location": "Magazine aproape de dvs."
+    },
+    "your_current_timeslot": {
+      "heading": "Interval orar",
+      "change": "Schimbați",
+      "today": "Astăzi",
+      "tomorrow": "Mâine",
+      "not_set": "Vă rugăm să selectați..",
+      "dialog": {
+        "title": "Selectați un interval orar",
+        "date": "Data",
+        "morning": "Dimineață",
+        "afternoon": "După-amiază",
+        "evening": "Seara",
+        "schedule": "Selectați"
+      }
+    },
+    "your_current_location": {
+      "heading": "Magazinul curent",
+      "change": "Schimbați"
+    },
+    "method": {
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "direct_ship": "Comandați online"
+    },
+    "choose_reservation_type": "Alegeți tipul de rezervare",
+    "quick_reserve": "Rezervați rapid",
+    "reserve_to_cart": "Rezervați în coș",
+    "change_fulfillment_method": "Schimbați metoda de livrare",
+    "fulfillment": {
+      "heading": "Disponibilitate",
+      "direct_ship": "Comandați online",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "error": {
+        "direct_ship": "Acest produs nu este disponibil pentru expediere. Vă rugăm să alegeți o altă opțiune sau să verificați disponibilitatea într-un magazin apropiat.",
+        "reserve": "Acest produs nu este disponibil în magazinul selectat. Vă rugăm să alegeți un alt magazin.",
+        "not_ready": "Vă rugăm să selectați un magazin.",
+        "ropis": "Acest produs nu este disponibil pentru Click & Reserve în acest magazin. Vă rugăm să alegeți o altă opțiune sau un alt magazin.",
+        "bopis": "Acest produs nu este disponibil pentru Click & Collect în acest magazin. Vă rugăm să alegeți o altă opțiune sau un alt magazin."
+      }
+    },
+    "stock_info": {
+      "pick_up_at": "la {storeName}",
+      "availableInventory": "{visibleInventory} în stoc",
+      "available": "Disponibil",
+      "limitedAvailability": "Doar {visibleInventory} în stoc",
+      "notAvailable": "Indisponibil",
+      "customAvailability": "Nu este disponibil în acest magazin",
+      "comingSoon": "Disponibil în curând"
+    },
+    "no_available": "indisponibil",
+    "multi_location_modal": {
+      "title": "Schimbați magazinul",
+      "message": "Aveți deja produse dintr-un alt magazin în coș. Aceste produse vor fi schimbate pentru noul magazin. Prețurile și disponibilitatea pot varia.",
+      "change_store": "Schimbați magazinul"
     }
   },
   "category": {
@@ -177,6 +386,9 @@
     },
     "showAllProducts": {
       "label": "Arată toate produsele"
+    },
+    "errors": {
+      "404": "Categoria nu a fost găsită"
     }
   },
   "search": {
@@ -202,14 +414,29 @@
     "dismiss": "Anulare",
     "ok": "Bine",
     "title_error": "Oops!",
-    "body_error": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou."
+    "body_error": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou.",
+    "close": "Închideți",
+    "login": "Autentificare"
   },
   "cart": {
+    "grand_total": "Total general",
+    "current_total": "Total actual",
+    "items": "Produse",
+    "price": "Preț",
+    "quantity": "Cantitate",
+    "fulfilled_quantity": "Cantitate îndeplinită",
+    "ordered_quantity": "Cantitate comandată",
+    "location": "Magazin",
+    "status": "Stare",
+    "remove_item": "Eliminați produsul",
     "subtotal": "Subtotal",
     "total": "Total coș de cumpărături",
     "discount": "Reducere",
     "discount_with_label": "Reducere ({label})",
+    "coupon_label": "Cupon: {label}",
+    "promotion_label": "{label}",
     "checkout": "Treceți la checkout",
+    "reserve": "Rezervați",
     "remove": "Eliminați",
     "edit": "Editează",
     "empty": "Coșul dvs. de cumpărături este gol.",
@@ -222,9 +449,61 @@
     "coupon_was_added": "Cuponul a fost adăugat!",
     "coupons_not_supported": "Răscumpărați cupoanele și cardurile cadou în etapa următoare",
     "free_shipping": "Livrare gratuită",
+    "allow_substitution_all": "Permiteți substituirea tuturor produselor?",
+    "allow_substitution": "Permiteți substituirea",
     "message_type_info": "Informații",
     "message_type_error": "Eroare",
-    "message_type_warning": "Atenționare"
+    "message_type_warning": "Atenționare",
+    "errors": {
+      "404": "Unul sau mai multe produse au fost eliminate din coșul dvs. din cauza indisponibilității.",
+      "1001": "Unul sau mai multe produse din coșul dvs. nu sunt disponibile în prezent. Vă rugăm să le eliminați.",
+      "1002": "Comenzile sunt limitate la un singur magazin de ridicare. Vă rugăm să alegeți un singur magazin.",
+      "1003": "Intervalul orar selectat pentru ridicare nu mai este disponibil. Vă rugăm să alegeți un alt interval.",
+      "item": {
+        "1001": "Produsul nu este disponibil în cantitatea dorită.",
+        "1004": "Vă rugăm să selectați un interval orar pentru ridicare.",
+        "1005": "Cantitatea minimă de comandă de {minQty} nu a fost încă atinsă.",
+        "1006": "A fost depășită cantitatea maximă de comandă de {maxQty}.",
+        "1007": "Vă rugăm să selectați un magazin de ridicare.",
+        "shopgate.cart.updateProducts": {
+          "1001": "Produsul nu este disponibil în cantitatea dorită."
+        },
+        "shopgate.cart.addProducts": {
+          "1001": "Produsul nu este disponibil în cantitatea dorită."
+        },
+        "generic": "A apărut o eroare neașteptată cu acest produs.",
+        "insufficientstock": "Nu este disponibil în stoc."
+      },
+      "coupon": {
+        "404": "Acest cupon nu există.",
+        "2000": "Acest cupon este invalid.",
+        "2001": "Cuponul va fi valabil începând cu {startDate, date, yyyyMMdd} la {startDate, time, short}.",
+        "2002": "Cuponul a expirat pe {endDate, date, yyyyMMdd} la {endDate, time, short}.",
+        "2003": "Acest cupon nu este valabil pentru coșul dvs. actual.",
+        "2004": "Acest cupon a fost deja utilizat.",
+        "2005": "Acest cupon a atins limita maximă de utilizări.",
+        "generic": "A apărut o eroare neașteptată cu acest cupon."
+      },
+      "generic": "A apărut o eroare neașteptată.",
+      "insufficientstock": "Unul sau mai multe produse din coșul dvs. nu sunt în stoc. Vă rugăm să le eliminați.",
+      "multiplelocations": "Comenzile sunt limitate la un singur magazin de ridicare. Vă rugăm să alegeți un singur magazin.",
+      "productsNotFound": "Unul sau mai multe produse au fost eliminate din coșul dvs. din cauza indisponibilității.",
+      "mixed_cart": "Rezervările și comenzile online trebuie să fie plasate în comenzi separate. Vă rugăm să actualizați produsele astfel încât coșul să conțină doar comenzi online sau doar rezervări.",
+      "direct_ship_item": "Verificați dacă acest produs poate fi rezervat într-un magazin apropiat.",
+      "ropis_cart_inventory": "Nu toate produsele pot fi rezervate. Vă rugăm să verificați erorile și să schimbați opțiunile de livrare.",
+      "ropis_item_inventory": "Acest produs nu poate fi rezervat în magazinul selectat. Verificați dacă este disponibil în alt magazin.",
+      "ropis_item_inventory_exceed": "Cantitatea dorită nu este disponibilă la {storeName}. Va fi rezervată cantitatea maximă de {inventory}.",
+      "mixed_cart_coupon_removed": "Cuponul \"{code}\" nu este disponibil pentru rezervări."
+    },
+    "change_fulfillment": {
+      "direct_ship": "Schimbați la Comandați online",
+      "bopis": "Schimbați la Click & Collect",
+      "ropis": "Schimbați la Click & Reserve"
+    },
+    "price_caption": {
+      "reservation": "Rezervare",
+      "pay_in_store": "Plătiți în magazin"
+    }
   },
   "login": {
     "headline": "Bine ați venit!",
@@ -237,13 +516,21 @@
     "no_account": "Nu aveți încă un cont?",
     "register": "Începeți aici.",
     "logout_message": "Ați fost deconectat.",
-    "error": "Numele de utilizator sau parola nu sunt corecte"
+    "error": "Numele de utilizator sau parola nu sunt corecte",
+    "auto_logout_message": "Ați fost deconectat automat.",
+    "reset_password": {
+      "subline": "Vă rugăm să introduceți adresa de email.",
+      "reset_instructions": "Veți primi un email pentru a vă reseta parola la {email}",
+      "back_to_login": "Înapoi la autentificare",
+      "customer_not_found": "Nu am găsit un cont asociat cu această adresă de email."
+    }
   },
   "navigation": {
     "login_register": "Conectați-vă",
+    "your_account": "Contul meu",
     "home": "Pagina de pornire",
     "categories": "Categorii",
-    "favorites": "Lista de supraveghere",
+    "favorites": "Favorite",
     "my_orders": "Comenzile mele",
     "cart": "Coș de cumpărături",
     "scanner": "Scanner",
@@ -253,16 +540,16 @@
     "terms": "Termeni și condiții",
     "privacy": "Protecția datelor",
     "privacySettings": "Setări de confidențialitate",
+    "back_in_stock": "Notificări",
     "welcome_message": "Bună ziua {name}",
     "return_policy": "Politica de anulare",
     "logout": "Deconectare",
+    "back": "Înapoi la {title}",
+    "open_menu": "Deschide meniul",
     "menuSubHeader": {
       "more": "Mai multe",
       "about": "Despre noi"
-    },
-    "back_in_stock": "Notificări",
-    "back": "Înapoi la {title}",
-    "open_menu": "Deschide meniul"
+    }
   },
   "reviews": {
     "rating": "Evaluare",
@@ -297,8 +584,211 @@
       "geolocation_message": "Avem nevoie de acces la locație pentru a afișa magazinele din apropiere."
     }
   },
+  "checkout": {
+    "submit_order": "Cumpărați acum",
+    "continue_payment": "Continuați către plată",
+    "continue": "Continuați",
+    "steps": "Pasul {from} din {to}",
+    "change_contacts": "Modificați contactul",
+    "change_addresses": "Modificați adresa",
+    "finalizePayment": "Finalizați comanda",
+    "payment": {
+      "title": "Cum doriți să plătiți?",
+      "buttons": {
+        "stripe": "Card de credit"
+      }
+    },
+    "shippingMethod": {
+      "title": "Metodă de livrare",
+      "errors": {
+        "noShippingAddress": "Vă rugăm să introduceți mai întâi o adresă de livrare.",
+        "invalidShippingAddress": "Acest coș nu poate fi livrat la adresa specificată."
+      }
+    },
+    "errors": {
+      "genericInitialize": "Procesul de finalizare a comenzii nu este disponibil momentan. Vă rugăm să încercați mai târziu.",
+      "genericUpdate": "Comanda nu a putut fi procesată. Vă rugăm să încercați mai târziu.",
+      "checkCart": "Vă rugăm să verificați coșul dvs.",
+      "genericSubmit": "Comanda nu a putut fi procesată, vă rugăm să verificați coșul dvs.",
+      "paypalFunding": "A apărut o eroare în timpul procesului de plată.",
+      "missingPaymentMethod": "Nu există o metodă de plată configurată.",
+      "noPaymentTransaction": "Nu există nicio tranzacție de plată disponibilă.",
+      "genericUpdateBilling": "Eroare la actualizarea adresei de facturare",
+      "payment": {
+        "genericExternal": "Plata cu metoda selectată a eșuat. Vă rugăm să încercați cu o altă metodă."
+      }
+    },
+    "pickup_contact": {
+      "headline": "Contact pentru ridicare",
+      "headline_reserve": "Contact pentru ridicare",
+      "subheadline": "Confirmarea comenzii va fi trimisă la această adresă de email. Numărul de telefon va fi folosit doar în cazul în care apar întrebări.",
+      "form": {
+        "firstName": "Prenume",
+        "lastName": "Nume de Familie",
+        "mobile": "Număr de Mobil",
+        "emailAddress": "Adresă de Email",
+        "password": "Parolă *",
+        "passwordConfirm": "Confirmați parola *",
+        "company": "Companie",
+        "address1": "Strada și numărul",
+        "address2": "Informații suplimentare adresă",
+        "postalCode": "Cod Poștal",
+        "city": "Oraș",
+        "country": "Țară",
+        "region": "Județ",
+        "who_will_pickup": "Cine va ridica această comandă?",
+        "me": "Eu însumi",
+        "someone_else": "Altă persoană",
+        "instructions": "Instrucțiuni pentru ridicare"
+      }
+    },
+    "billing": {
+      "headline": "Adresă de facturare",
+      "headline_reserve": "Contact pentru comandă",
+      "save": "Salvați",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Editați",
+      "change": "Schimbați",
+      "select_address": "Selectați o adresă de facturare"
+    },
+    "shipping": {
+      "headline": "Adresă de livrare",
+      "save": "Salvați",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Editați",
+      "change": "Schimbați",
+      "select_address": "Selectați o adresă de livrare"
+    },
+    "creditCard": {
+      "headline": "Metodă de plată",
+      "card": "Număr card de credit *",
+      "cvc": "Cod de securitate *",
+      "expiry": "Dată expirare *"
+    },
+    "summary": {
+      "headline": "Rezumat",
+      "tax": "Taxe",
+      "subTotal": "Subtotal",
+      "shippingTotal": "Costuri de livrare",
+      "total": "Total"
+    },
+    "success": {
+      "title": "Vă mulțumim pentru comanda dvs.",
+      "instructions_1": "Mai jos găsiți informațiile despre comanda dvs. Dacă aveți întrebări despre comandă, vă rugăm să contactați magazinul dvs.",
+      "instructions_2": "Rețineți că orele de ridicare pot varia în funcție de sărbători și weekenduri.",
+      "order_number": "Numărul comenzii: {orderNumber}",
+      "order_date": "Data comenzii: {date}",
+      "your_items": "Produse:",
+      "pick_up_contact": "Contact pentru ridicare",
+      "order_contact": "Contact pentru comandă",
+      "pickup_notes": "Note pentru ridicare",
+      "billed_to": "Adresă de facturare",
+      "shipped_to": "Adresă de livrare",
+      "order_summary": "Rezumatul comenzii",
+      "name": "Nume",
+      "phone_number": "Număr de telefon",
+      "email_address": "Adresă de email",
+      "card_holder": "Deținător card",
+      "address": "Adresă",
+      "payment_method": "Metodă de plată",
+      "shipping_method": "Metodă de livrare",
+      "continue": "Continuați cumpărăturile"
+    }
+  },
+  "order": {
+    "status": {
+      "order": {
+        "submitted": "Trimis",
+        "inProgress": "În curs de procesare",
+        "ready": "Gata de ridicare",
+        "completed": "Finalizat",
+        "canceled": "Anulat"
+      },
+      "line_item": {
+        "pending": "În așteptare",
+        "inProgress": "În curs de procesare",
+        "unavailable": "Indisponibil",
+        "canceled": "Anulat",
+        "fulfilled": "Îndeplinit",
+        "substituted": "Înlocuit",
+        "replaced": "Înlocuit",
+        "itemAdded": "Adăugat",
+        "rejected": "Respins",
+        "open": "Deschis"
+      }
+    }
+  },
+  "order_details": {
+    "pickup_location": {
+      "headline": "Magazin de ridicare",
+      "address": "Adresă",
+      "phone_number": "Telefon"
+    },
+    "subline": {
+      "order_number": "Numărul comenzii dvs. este: {orderNumber}",
+      "order_status": "Stare: {status}"
+    },
+    "authenticate": {
+      "instructions": "Vă rugăm să vă autentificați cu adresa de email și numărul de telefon utilizate pentru comandă.",
+      "or_login": "Sau autentificare"
+    },
+    "errors": {
+      "authenticate": "Emailul și numărul de telefon nu se potrivesc cu această comandă.",
+      "expired": "Sesiunea pentru această comandă a expirat.",
+      "authorize": "Comanda nu aparține acestui cont.",
+      "not_found": "Comanda nu a fost găsită."
+    },
+    "cancel": {
+      "button": "Anulați comanda",
+      "modal": {
+        "title": "Anulare",
+        "message": "Sunteți sigur că doriți să anulați comanda? Această acțiune nu poate fi anulată!",
+        "confirm": "Da, anulează comanda"
+      }
+    }
+  },
+  "orders": {
+    "header": {
+      "date": "Data comenzii",
+      "orderNumber": "Numărul comenzii",
+      "status": "Stare",
+      "lineItemCount": "Număr produse",
+      "total": "Total comandă"
+    },
+    "no_result": {
+      "body": "Nu au fost găsite comenzi."
+    },
+    "itemCount": "{count, plural, =1 {Produs} other {Produse}}"
+  },
+  "page": {
+    "not_found": "Din păcate, pagina solicitată nu a fost găsită.",
+    "continue": "Continuați cumpărăturile"
+  },
+  "registration": {
+    "create_account": "Creați cont",
+    "marketing_opt_in_label": "Ține-mă la curent cu noutăți și oferte exclusive.",
+    "different_shipping_address_label": "Adresă de livrare diferită",
+    "headlines": {
+      "create_new_account": "Creați un cont nou",
+      "shipping_address": "Adresă de livrare",
+      "billing_address": "Adresă de facturare",
+      "billing_address_reserve": "Contact pentru comandă"
+    }
+  },
   "error": {
     "general": "Problemă de conectare. Vă rugăm să verificați conexiunea la internet sau să încercați din nou mai târziu."
+  },
+  "validation": {
+    "required": "Vă rugăm să completați acest câmp",
+    "email": "Vă rugăm să introduceți o adresă de email validă",
+    "numeric": "Vă rugăm să introduceți doar numere",
+    "alphaNumeric": "Vă rugăm să introduceți doar litere și cifre",
+    "mobileNumber": "Vă rugăm să introduceți un număr de mobil valid",
+    "date": "Vă rugăm să introduceți o dată validă",
+    "checkField": "Vă rugăm să verificați acest câmp",
+    "emailConflict": "Această adresă de email este deja înregistrată",
+    "passwordMismatch": "Parolele nu corespund",
+    "minPasswordLength": "Lungimea minimă a parolei este de %'{count} caractere"
   },
   "formats": {
     "date": {
@@ -307,7 +797,34 @@
       },
       "MMM": {
         "month": "scurt"
+      },
+      "pattern": "zz.ll.aaaa"
+    },
+    "distance": {
+      "pattern": "{distance} {unit}",
+      "units": {
+        "m": "m",
+        "km": "km",
+        "ft": "ft",
+        "mi": "milă"
       }
+    },
+    "unitOfMeasurement": {
+      "mg": "mg",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "cm": "cm",
+      "m": "m",
+      "m2": "m²",
+      "m3": "m³",
+      "piece": "buc."
+    }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "mon"
     }
   },
   "appRating": {

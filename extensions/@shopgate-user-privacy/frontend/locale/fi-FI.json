@@ -1,0 +1,9 @@
+{
+  "user": {
+    "delete_account": "Tilin tietojen poistaminen",
+    "delete_account_success": "Poistopyyntö vastaanotettu. Sinut on kirjauduttu ulos ja poistamme tietosi niin pitkälle kuin se on laillisesti mahdollista. Prosessi voi kestää muutaman päivän.",
+    "delete_account_error": "On tapahtunut odottamaton virhe. Yritä myöhemmin uudelleen",
+    "delete_account_confirm": "Vahvista kaikkien tilitietojen poistaminen. Tätä ei voi perua.",
+    "contact_us": "Yhteystiedot"
+  }
+}

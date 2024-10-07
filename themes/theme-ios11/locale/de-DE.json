@@ -52,7 +52,7 @@
       },
       "form": {
         "firstName": "Vorname",
-        "middleName": "Mittelname",
+        "middleName": "Zweiter Vorname",
         "lastName": "Nachname",
         "emailAddress": "E-Mail-Adresse",
         "address1": "Straße und Hausnummer",
