@@ -530,7 +530,7 @@
     "your_account": "Mon compte",
     "home": "Accueil",
     "categories": "Catégories",
-    "favorites": "Liste d'envies",
+    "favorites": "Favoris",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
     "scanner": "Scanner",
@@ -545,7 +545,7 @@
     "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
     "back": "Retour à {title}",
-    "open_menu": "Open menu",
+    "open_menu": "Ouvrez le menu",
     "menuSubHeader": {
       "more": "Plus",
       "about": "À propos de nous"
