@@ -1,4 +1,4 @@
-import { hasWebBridge, isIOSTheme } from '@shopgate/engage/core';
+import { hasWebBridge, isIOSTheme } from '@shopgate/engage/core/helpers';
 
 const iosThemeActive = isIOSTheme();
 
