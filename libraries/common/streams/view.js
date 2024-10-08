@@ -34,7 +34,7 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
       trailing: true,
     })
     .map((event) => {
-      const scrollTop = element.scrollY || element.scrollTop;
+      const scrollTop = element.scrollY || element.scrollTop || 0;
       return {
         event,
         scrollTop,

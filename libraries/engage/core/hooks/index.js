@@ -12,3 +12,4 @@ export { useWidgetStyles } from './useWidgetStyles';
 export * from './html';
 export { useScroll } from './useScroll';
 export { usePrevious } from './usePrevious';
+export { useResponsiveValue } from '@shopgate/engage/components/ResponsiveContainer/hooks';
