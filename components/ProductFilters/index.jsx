@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useRoute } from '@shopgate/engage/core';
+import { useWidgetSettings, useRoute } from '@shopgate/engage/core/hooks';
 import { ResponsiveContainer, ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
 import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
+import { themeConfig } from '@shopgate/engage';
 import FilterBar from 'Components/FilterBar';
 import { filters } from './style';
+
+const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
 /**
  * @param {Object} props.categoryId The category id.
  * @returns {JSX}
  */
 const ProductFilters = ({ categoryId, showFilters }) => {
+  const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
   const { state } = useRoute();
   return (
-    <ScrollHeader className={filters}>
+    <ScrollHeader className={filters} hideOnScroll={hideOnScroll} scrollOffset={offset}>
       <SurroundPortals portalName="filter-bar.content">
         <ResponsiveContainer appAlways breakpoint="<=xs">
           <GlobalLocationSwitcher renderBar />
