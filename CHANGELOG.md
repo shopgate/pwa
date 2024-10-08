@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.23.6](https://github.com/shopgate/pwa/compare/v6.23.5...v6.23.6) (2024-10-08)
+
+#### :rocket: Enhancement
+* [#1276](https://github.com/shopgate/pwa/pull/1276) Small improvements for WebCheckout extensions ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1283](https://github.com/shopgate/pwa/pull/1283) Fixed an issue when YouTube or Video logos where tapped inside iframes ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.23.5](https://github.com/shopgate/pwa/compare/v6.23.4...v6.23.5) (2024-09-17)
 
 #### :rocket: Enhancement
