@@ -3,6 +3,7 @@ export * from './appPermissions';
 
 export * from '@shopgate/pwa-common/streams/main';
 export * from '@shopgate/pwa-common/streams/error';
+export * from '@shopgate/pwa-common/streams/view';
 
 // --------------- APP --------------- //
 export * from '@shopgate/pwa-common/streams/app';
