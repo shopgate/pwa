@@ -3,6 +3,8 @@ import { mount, shallow } from 'enzyme';
 import { PickerUtilize as Picker } from '@shopgate/engage/components';
 import Options from './index';
 
+jest.mock('@shopgate/engage/components');
+
 jest.mock('@shopgate/engage/product/contexts', () => ({
   ProductContext: {
     Consumer: jest.fn(({ children }) => children({
@@ -11,8 +13,6 @@ jest.mock('@shopgate/engage/product/contexts', () => ({
     })),
   },
 }));
-
-jest.mock('@shopgate/engage/components/View');
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => (obj) => {
