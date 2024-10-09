@@ -1,4 +1,3 @@
-// @flow
 import { connect } from 'react-redux';
 import { getGrandTotal } from '@shopgate/pwa-common-commerce/cart/selectors';
 

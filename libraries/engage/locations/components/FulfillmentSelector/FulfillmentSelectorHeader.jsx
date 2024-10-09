@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { i18n } from '@shopgate/engage/core';
 import { container } from './FulfillmentSelectorHeader.style';
