@@ -35,8 +35,8 @@ function addFavorites(productId, listId = null, quantity, notes, showToast = tru
       .setInput({
         productId,
         ...hasMultiSupport ? { favoritesListId: takenListId } : null,
-        ...quantityEnabled ? { quantity } : null,
-        ...notesEnabled ? { notes } : null,
+        ...quantityEnabled && quantity !== null ? { quantity } : null,
+        ...notesEnabled && notes !== null ? { notes } : null,
       })
       .setRetries(0)
       .dispatch();
