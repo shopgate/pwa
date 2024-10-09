@@ -77,7 +77,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 text="navigation.your_account"
               >
                 <h2
-                  className="css-18cwfw7"
+                  className="css-18cwfw7 headline theme__headline"
                   data-test-id="Headline"
                   style={
                     Object {
@@ -86,6 +86,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   }
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -110,16 +111,17 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
               >
                 <MoreMenuItem
                   className={null}
-                  href={null}
+                  href="/account/profile"
                   label="navigation.profile"
                   onClick={null}
                   testId="accountButton"
                 >
                   <Link
                     className="css-1hj8a57"
-                    href={null}
+                    href="/account/profile"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -137,16 +139,17 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 </MoreMenuItem>
                 <MoreMenuItem
                   className={null}
-                  href={null}
+                  href="/account/orders"
                   label="navigation.order_history"
                   onClick={null}
                   testId="accountButton"
                 >
                   <Link
                     className="css-1hj8a57"
-                    href={null}
+                    href="/account/orders"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -164,27 +167,28 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 </MoreMenuItem>
                 <MoreMenuItem
                   className={null}
-                  href={null}
-                  label="navigation.wish_list"
+                  href="/account/wish-list"
+                  label="navigation.favorites"
                   onClick={null}
                   testId="accountButton"
                 >
                   <Link
                     className="css-1hj8a57"
-                    href={null}
+                    href="/account/wish-list"
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
-                      string="navigation.wish_list"
+                      string="navigation.favorites"
                       transform={null}
                     >
                       <span
                         className={null}
                         role={null}
                       >
-                        navigation.wish_list
+                        navigation.favorites
                       </span>
                     </Translate>
                   </Link>
@@ -219,6 +223,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       type="button"
                     >
                       <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={Object {}}
                         role={null}
@@ -324,130 +329,50 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
             data-test-id="userMenu"
           >
             <Grid
-              className="css-az18cj"
-              component="ul"
-              wrap={false}
+              className="css-az18cj theme__more-page__user-menu__container"
             >
-              <ul
-                className="css-az18cj css-h7r55a"
+              <Grid.Item
+                className="css-mzzsxh theme__more-page__login-button__container"
               >
-                <GridItem
-                  className="css-mzzsxh"
-                  component="li"
-                  grow={0}
-                  shrink={1}
+                <Link
+                  disabled={true}
+                  href="/login"
                 >
-                  <li
-                    className="css-mzzsxh"
+                  <Button
+                    className="css-6f03lb theme__more-page__login-button"
+                    disabled={true}
+                    testId="UserMenuLogin"
+                    type="secondary"
                   >
-                    <Link
-                      disabled={true}
-                      href="/login"
+                    <Text
+                      string="login.button"
                     >
-                      <Button
-                        className="css-6f03lb"
-                        disabled={true}
-                        flat={false}
-                        onClick={null}
-                        testId="UserMenuLogin"
-                        type="secondary"
-                        wrapContent={true}
-                      >
-                        <Button
-                          className="ui-shared__button css-172ttat css-6f03lb"
-                          disabled={true}
-                          onClick={null}
-                          testId="UserMenuLogin"
-                        >
-                          <button
-                            className="ui-shared__button css-172ttat css-6f03lb css-1rn65c0 common__button"
-                            data-test-id="UserMenuLogin"
-                            disabled={true}
-                            onClick={null}
-                          >
-                            <div
-                              className="css-kwqjom"
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="login.button"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  login.button
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                    </Link>
-                  </li>
-                </GridItem>
-                <GridItem
-                  className="css-mzzsxh"
-                  component="li"
-                  grow={0}
-                  shrink={1}
+                      login.button
+                    </Text>
+                  </Button>
+                </Link>
+              </Grid.Item>
+              <Grid.Item
+                className="css-mzzsxh theme__more-page-register-button__container"
+              >
+                <Link
+                  disabled={true}
+                  href="/register"
                 >
-                  <li
-                    className="css-mzzsxh"
+                  <Button
+                    className="css-6f03lb theme__more-page-register-button"
+                    disabled={true}
+                    testId="UserMenuRegister"
+                    type="secondary"
                   >
-                    <Link
-                      disabled={true}
-                      href="/register"
+                    <Text
+                      string="login.signup"
                     >
-                      <Button
-                        className="css-6f03lb"
-                        disabled={true}
-                        flat={false}
-                        onClick={null}
-                        testId="UserMenuRegister"
-                        type="secondary"
-                        wrapContent={true}
-                      >
-                        <Button
-                          className="ui-shared__button css-172ttat css-6f03lb"
-                          disabled={true}
-                          onClick={null}
-                          testId="UserMenuRegister"
-                        >
-                          <button
-                            className="ui-shared__button css-172ttat css-6f03lb css-1rn65c0 common__button"
-                            data-test-id="UserMenuRegister"
-                            disabled={true}
-                            onClick={null}
-                          >
-                            <div
-                              className="css-kwqjom"
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="login.signup"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  login.signup
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                    </Link>
-                  </li>
-                </GridItem>
-              </ul>
+                      login.signup
+                    </Text>
+                  </Button>
+                </Link>
+              </Grid.Item>
             </Grid>
           </div>
         </LoggedOut>
@@ -520,130 +445,50 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
             data-test-id="userMenu"
           >
             <Grid
-              className="css-az18cj"
-              component="ul"
-              wrap={false}
+              className="css-az18cj theme__more-page__user-menu__container"
             >
-              <ul
-                className="css-az18cj css-h7r55a"
+              <Grid.Item
+                className="css-mzzsxh theme__more-page__login-button__container"
               >
-                <GridItem
-                  className="css-mzzsxh"
-                  component="li"
-                  grow={0}
-                  shrink={1}
+                <Link
+                  disabled={false}
+                  href="/login"
                 >
-                  <li
-                    className="css-mzzsxh"
+                  <Button
+                    className="css-6f03lb theme__more-page__login-button"
+                    disabled={false}
+                    testId="UserMenuLogin"
+                    type="secondary"
                   >
-                    <Link
-                      disabled={false}
-                      href="/login"
+                    <Text
+                      string="login.button"
                     >
-                      <Button
-                        className="css-6f03lb"
-                        disabled={false}
-                        flat={false}
-                        onClick={null}
-                        testId="UserMenuLogin"
-                        type="secondary"
-                        wrapContent={true}
-                      >
-                        <Button
-                          className="ui-shared__button css-1k9vl9z css-6f03lb"
-                          disabled={false}
-                          onClick={null}
-                          testId="UserMenuLogin"
-                        >
-                          <button
-                            className="ui-shared__button css-1k9vl9z css-6f03lb css-1rn65c0 common__button"
-                            data-test-id="UserMenuLogin"
-                            disabled={false}
-                            onClick={null}
-                          >
-                            <div
-                              className="css-a1u7zd"
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="login.button"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  login.button
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                    </Link>
-                  </li>
-                </GridItem>
-                <GridItem
-                  className="css-mzzsxh"
-                  component="li"
-                  grow={0}
-                  shrink={1}
+                      login.button
+                    </Text>
+                  </Button>
+                </Link>
+              </Grid.Item>
+              <Grid.Item
+                className="css-mzzsxh theme__more-page-register-button__container"
+              >
+                <Link
+                  disabled={false}
+                  href="/register"
                 >
-                  <li
-                    className="css-mzzsxh"
+                  <Button
+                    className="css-6f03lb theme__more-page-register-button"
+                    disabled={false}
+                    testId="UserMenuRegister"
+                    type="secondary"
                   >
-                    <Link
-                      disabled={false}
-                      href="/register"
+                    <Text
+                      string="login.signup"
                     >
-                      <Button
-                        className="css-6f03lb"
-                        disabled={false}
-                        flat={false}
-                        onClick={null}
-                        testId="UserMenuRegister"
-                        type="secondary"
-                        wrapContent={true}
-                      >
-                        <Button
-                          className="ui-shared__button css-1k9vl9z css-6f03lb"
-                          disabled={false}
-                          onClick={null}
-                          testId="UserMenuRegister"
-                        >
-                          <button
-                            className="ui-shared__button css-1k9vl9z css-6f03lb css-1rn65c0 common__button"
-                            data-test-id="UserMenuRegister"
-                            disabled={false}
-                            onClick={null}
-                          >
-                            <div
-                              className="css-a1u7zd"
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="login.signup"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  login.signup
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                    </Link>
-                  </li>
-                </GridItem>
-              </ul>
+                      login.signup
+                    </Text>
+                  </Button>
+                </Link>
+              </Grid.Item>
             </Grid>
           </div>
         </LoggedOut>

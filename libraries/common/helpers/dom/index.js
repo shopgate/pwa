@@ -47,7 +47,8 @@ export const getAbsoluteHeight = (element) => {
  * @returns {string}
  */
 export const getStyle = (element, property) => {
-  if (window.getComputedStyle) {
+  // Use computed styles if possible - doesn't work with elements which are not mounted to the DOM
+  if (window.getComputedStyle && document.body.contains(element)) {
     // getPropertyValue expects the property in kebab case.
     return window.getComputedStyle(element, null)
       .getPropertyValue(property.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());

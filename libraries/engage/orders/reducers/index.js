@@ -1,4 +1,3 @@
-// @flow
 import { combineReducers } from 'redux';
 import ordersById from './ordersById';
 import ordersByNumber from './ordersByNumber';

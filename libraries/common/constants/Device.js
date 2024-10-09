@@ -3,6 +3,7 @@ export const OS_ANDROID = 'android';
 export const OS_IOS = 'ios';
 
 export const TYPE_PHONE = 'phone';
+export const TYPE_TABLET = 'tablet';
 
 export const MODEL_NAMES_IPHONE_X = [
   'iPhone10,3',

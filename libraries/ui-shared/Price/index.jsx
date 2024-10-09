@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 import styles from './style';
 
 /**
@@ -17,12 +18,23 @@ import styles from './style';
  * @return {JSX}
  */
 const Price = (props, context) => {
+  // Added with PWA 6 - CCP-2372
+  const {
+    show,
+    hint,
+  } = useWidgetSettings('@shopgate/engage/components/TaxDisclaimer');
+
+  // use widget setting if set to true/false, otherwise use market logic
+  const showDisclaimer = typeof show === 'boolean' ? show : showTaxDisclaimer;
+
   const containerClasses = classNames(
     styles.container,
     props.className,
     {
       [styles.discounted]: props.discounted,
-    }
+    },
+    'price',
+    props.discounted ? 'ui-shared__price-discounted' : 'ui-shared__price'
   );
 
   const { __, _p } = context.i18n();
@@ -73,8 +85,10 @@ const Price = (props, context) => {
           </>
         )}
       </span>
-      {props.taxDisclaimer && showTaxDisclaimer ? (
-        <div role="text" className={styles.disclaimer} aria-label={__('product.tax_disclaimer')}>*</div>
+      {props.taxDisclaimer && showDisclaimer ? (
+        <div role="text" className={styles.disclaimer} aria-label={__('product.tax_disclaimer')}>
+          {hint || '*'}
+        </div>
       ) : null}
     </div>
   );

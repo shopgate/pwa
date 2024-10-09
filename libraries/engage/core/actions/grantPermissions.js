@@ -1,20 +1,17 @@
 import event from '@shopgate/pwa-core/classes/Event';
-import { APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core/constants/AppEvents';
-import openAppSettings from '@shopgate/pwa-core/commands/openAppSettings';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { openAppSettings } from '@shopgate/engage/core/commands';
+import { showModal } from '@shopgate/engage/core/actions';
 import {
-  STATUS_DENIED,
-  STATUS_GRANTED,
-  STATUS_NOT_DETERMINED,
-  STATUS_NOT_SUPPORTED,
+  PERMISSION_STATUS_DENIED,
+  PERMISSION_STATUS_GRANTED,
+  PERMISSION_STATUS_NOT_DETERMINED,
+  PERMISSION_STATUS_NOT_SUPPORTED,
+  APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
   availablePermissionsIds,
-} from '@shopgate/pwa-core/constants/AppPermissions';
-import {
-  getAppPermissions,
-  requestAppPermissions,
-} from '@shopgate/pwa-core/commands/appPermissions';
-import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
-import { hasWebBridge } from '@shopgate/engage/core';
+} from '@shopgate/engage/core/constants';
+import { logger, hasSGJavaScriptBridge, hasWebBridge } from '@shopgate/engage/core/helpers';
+import requestAppPermission from './requestAppPermission';
+import requestAppPermissionStatus from './requestAppPermissionStatus';
 import { createMockedPermissions } from '../helpers/appPermissions';
 
 /**
@@ -25,6 +22,13 @@ import { createMockedPermissions } from '../helpers/appPermissions';
  * @param {string} options.permissionId The id of the permission to request.
  * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
+ * @param {boolean} [options.useRationaleModal=false] Whether a rational modal should be shown
+ * @param {Object} [options.rationaleModal={}] Options for the rationale modal.
+ * @param {string} options.rationaleModal.title Modal title.
+ * @param {string} options.rationaleModal.message Modal message.
+ * @param {string} options.rationaleModal.confirm Label for the confirm button.
+ * @param {string} options.rationaleModal.dismiss Label for the dismiss button.
+ * @param {Object} options.rationaleModal.params Additional parameters for i18n strings.
  * @param {Object} [options.modal={}] Options for the settings modal.
  * @param {string} options.modal.title Modal title.
  * @param {string} options.modal.message Modal message.
@@ -33,7 +37,7 @@ import { createMockedPermissions } from '../helpers/appPermissions';
  * @param {Object} options.modal.params Additional parameters for i18n strings.
  * @param {boolean} [options.requestPermissions=true] If set to TRUE no permissions will be
  * requested if not already granted,
- * @param {boolean} [option.resolveWithData=false] If set to TRUE the Promise will resolve with
+ * @param {boolean} [options.resolveWithData=false] If set to TRUE the Promise will resolve with
  * data if available (e.g. geolocation).
  * @return { Function } A redux thunk.
  */
@@ -41,6 +45,8 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   const {
     permissionId,
     useSettingsModal = false,
+    useRationaleModal = false,
+    rationaleModal: rationaleModalOptions = {},
     modal: modalOptions = {},
     requestPermissions = true,
     resolveWithData = false,
@@ -55,7 +61,10 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
      * permissions dialog. When permissions are not supposed to be requested, it will resolve with
      * the NOT_DETERMINED status, to keep logic between browsers / apps in sync as much as possible.
      */
-    const fallbackStatus = requestPermissions ? STATUS_GRANTED : STATUS_NOT_DETERMINED;
+    const fallbackStatus = requestPermissions
+      ? PERMISSION_STATUS_GRANTED
+      : PERMISSION_STATUS_NOT_DETERMINED;
+
     dispatchMock = createMockedPermissions(fallbackStatus);
   }
 
@@ -69,38 +78,58 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   let data;
 
   // Check the current status of the camera permissions.
-  [{ status }] = await getAppPermissions([permissionId], dispatchMock);
+  ({ status } = await dispatch(requestAppPermissionStatus({
+    permissionId,
+    dispatchMock,
+  })));
 
   // Stop the process when the permission type is not supported.
-  if (status === STATUS_NOT_SUPPORTED) {
+  if (status === PERMISSION_STATUS_NOT_SUPPORTED) {
     resolve(false);
     return;
   }
 
   // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
-  if (status === STATUS_NOT_DETERMINED) {
+  if (status === PERMISSION_STATUS_NOT_DETERMINED) {
     if (!requestPermissions) {
       resolve(false);
       return;
     }
 
+    if (useRationaleModal) {
+      const requestAllowed = await dispatch(showModal({
+        message: rationaleModalOptions.message || '',
+        confirm: rationaleModalOptions.confirm || '',
+        dismiss: rationaleModalOptions.dismiss || '',
+        params: rationaleModalOptions.params,
+      }));
+
+      if (requestAllowed === false) {
+        resolve(false);
+        return;
+      }
+    }
+
     // Trigger the native permissions dialog.
-    [{ status, data }] = await requestAppPermissions([{ permissionId }], dispatchMock);
+    ({ status, data } = await dispatch(requestAppPermission({
+      permissionId,
+      dispatchMock,
+    })));
 
     // The user denied the permissions within the native dialog.
-    if ([STATUS_DENIED, STATUS_NOT_DETERMINED].includes(status)) {
+    if ([PERMISSION_STATUS_DENIED, PERMISSION_STATUS_NOT_DETERMINED].includes(status)) {
       resolve(false);
       return;
     }
   }
 
-  if (status === STATUS_GRANTED) {
+  if (status === PERMISSION_STATUS_GRANTED) {
     resolve(resolveWithData && data ? data : true);
     return;
   }
 
   // The user permanently denied the permissions before.
-  if (status === STATUS_DENIED) {
+  if (status === PERMISSION_STATUS_DENIED) {
     if (!useSettingsModal) {
       resolve(false);
       return;
@@ -126,8 +155,11 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
      */
     const handler = async () => {
       event.removeCallback(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND, handler);
-      [{ status }] = await getAppPermissions([permissionId]);
-      resolve(status === STATUS_GRANTED);
+      ({ status } = await dispatch(requestAppPermissionStatus({
+        permissionId,
+      })));
+
+      resolve(status === PERMISSION_STATUS_GRANTED);
     };
 
     /**

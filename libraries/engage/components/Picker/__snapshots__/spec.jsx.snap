@@ -48,7 +48,7 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
   >
     <div
       aria-haspopup={true}
-      className=""
+      className=" engage__picker"
       role="button"
       tabIndex={0}
     >
@@ -59,7 +59,7 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
         value=""
       >
         <button
-          className="css-15pexpa"
+          className="css-15pexpa engage__picker__button"
           onClick={[Function]}
           type="button"
         >

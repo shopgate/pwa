@@ -16,9 +16,8 @@ import {
 import { Reviews } from '@shopgate/engage/reviews';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import FavoriteButtonWide from '@shopgate/engage/favorites/components/FavoriteButtonWide';
+import { Characteristics, Options } from '@shopgate/engage/product/components';
 import { DESKTOP_MENU_BAR_HEIGHT } from '../../../../constants';
-import Characteristics from '../Characteristics';
-import Options from '../Options';
 import Header from '../Header';
 import Price from './Price';
 import Media from './Media';

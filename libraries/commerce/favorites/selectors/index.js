@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 import uniq from 'lodash/uniq';
+import appConfig from '@shopgate/pwa-common/helpers/config';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import {
   getProducts,
   getProductId,
@@ -43,7 +45,9 @@ export const getFavoritesProducts = createSelector(
 
 export const getFavoritesDefaultList = createSelector(
   getFavoritesLists,
-  lists => lists[0]
+  lists => lists.find(list => list.id === 'DEFAULT') ?? {
+    id: 'DEFAULT',
+  }
 );
 
 export const hasMultipleFavoritesList = createSelector(
@@ -307,3 +311,35 @@ export const getCommentDialogSettings = createSelector(
     };
   }
 );
+
+/**
+ * Creates a selector that selects all products that belong
+ * to the given favorite list.
+ * @param {Function} getListCode Callback that's supposed to return a favorites list code
+ * @returns {Function}
+ */
+export const makeGetFavoritesProductsByList = getListCode => createSelector(
+  getFavoritesProducts,
+  getListCode,
+  (favProducts, listId) => {
+    const products = favProducts.byList[listId] || {};
+    return products;
+  }
+);
+
+/**
+ * Creates a selector to check if the app has support for multiple favorites list.
+ * @returns {Function}
+ */
+export const getHasMultipleFavoritesListsSupport = () =>
+  hasNewServices() || appConfig?.favoritesMode?.hasMultipleFavoritesLists;
+
+/**
+ * Creates a selector the determine if the PWA is supposed to fetch favorite list entries via the
+ * "getFavoriteIds" pipeline instead of "getFavorites".
+ *
+ * This pipeline was introduced in PWA6 when support for more than 100 items per favorite list was
+ * requested. PWA-1877
+ * @returns {Function}
+ */
+export const getUseGetFavoriteIdsPipeline = () => !hasNewServices();

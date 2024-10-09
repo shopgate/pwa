@@ -1,19 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 
 /**
- * EmbeddedMedia component.
+ * EmbeddedMedia component. Handles loading of media related scripts e.g. the Vimeo Player.
  * @returns {JSX}
  */
-const EmbeddedMedia = ({ children }) => {
-  if (!embeddedMedia.getHasPendingProviders()) {
+const EmbeddedMedia = ({ children, cookieConsentSettings }) => {
+  const cookieConsent = useMemo(() => ({
+    comfortCookiesAccepted: false,
+    statisticsCookiesAccepted: false,
+    ...cookieConsentSettings,
+  }), [cookieConsentSettings]);
+
+  if (!embeddedMedia.getHasPendingProviders() || !cookieConsent.comfortCookiesAccepted) {
     return children;
   }
 
   // Get all pending providers
-  const pendingProviders = [...embeddedMedia.providers].filter(p => p.isPending);
+  const pendingProviders = Array.from(embeddedMedia.providers).filter(p => p.isPending);
 
   /**
    * Inject onLoad cb to script tags
@@ -53,6 +59,17 @@ const EmbeddedMedia = ({ children }) => {
 
 EmbeddedMedia.propTypes = {
   children: PropTypes.node.isRequired,
+  cookieConsentSettings: PropTypes.shape({
+    comfortCookiesAccepted: PropTypes.bool,
+    statisticsCookiesAccepted: PropTypes.bool,
+  }),
+};
+
+EmbeddedMedia.defaultProps = {
+  cookieConsentSettings: {
+    comfortCookiesAccepted: false,
+    statisticsCookiesAccepted: false,
+  },
 };
 
 export default EmbeddedMedia;

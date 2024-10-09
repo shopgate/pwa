@@ -1,4 +1,6 @@
 import React, { Fragment, useContext } from 'react';
+import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import { useRoute } from '@shopgate/engage/core';
 import { ViewContext } from '@shopgate/engage/components/View';
 import Sort from './components/Sort';
@@ -10,7 +12,7 @@ import styles from './style';
  * The filter bar content component.
  * @returns {JSX}
  */
-function FilterBarContent() {
+function FilterBarContent({ onChipCountUpdate }) {
   const { state, id: routeId } = useRoute();
   const { scrollTop } = useContext(ViewContext);
   const { filters } = state;
@@ -21,9 +23,22 @@ function FilterBarContent() {
         <Sort />
         <FilterButton />
       </div>
-      <FilterChips filters={filters} routeId={routeId} scrollTop={scrollTop} />
+      <FilterChips
+        filters={filters}
+        routeId={routeId}
+        scrollTop={scrollTop}
+        onChipCountUpdate={onChipCountUpdate}
+      />
     </Fragment>
   );
 }
+
+FilterBarContent.propTypes = {
+  onChipCountUpdate: PropTypes.func,
+};
+
+FilterBarContent.defaultProps = {
+  onChipCountUpdate: noop,
+};
 
 export default FilterBarContent;

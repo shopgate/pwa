@@ -13,7 +13,7 @@ import styles from './style';
  */
 function FilterButton({ navigate }) {
   return (
-    <button className={styles.button} onClick={navigate} data-test-id="filterButton" type="button">
+    <button className={`${styles.button} theme__filter-bar__filter-button`} onClick={navigate} data-test-id="filterButton" type="button">
       <Ripple className={styles.filterButtonRipple} fill>
         <Grid component="div">
           <Grid.Item className={styles.filterButton} component="div">

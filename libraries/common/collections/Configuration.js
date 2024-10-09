@@ -39,6 +39,10 @@ class Configuration {
    * @returns {Configuration}
    */
   update(key, updater) {
+    if (!this.store.has(key)) {
+      logGroup('CONFIGURATION%c not found', { key }, '#e0061e');
+      return this;
+    }
     if (typeof updater !== 'function') {
       logGroup('CONFIGURATION%c updater is not function', { key }, '#e0061e');
       return this;

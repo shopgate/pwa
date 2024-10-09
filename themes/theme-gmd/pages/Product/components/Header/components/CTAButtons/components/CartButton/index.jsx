@@ -5,7 +5,7 @@ import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { I18n } from '@shopgate/engage/components';
-import { ProductContext } from '@shopgate/engage/product';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import Icon from './components/Icon';
 import connect from './connector';
@@ -61,10 +61,10 @@ class CartButton extends Component {
    */
   get color() {
     if (this.state.clicked) {
-      return `var(--color-primary-contrast, ${colors.light})`;
+      return `var(--color-button-cta-contrast, ${colors.light})`;
     }
 
-    return (this.props.disabled && !this.props.loading) ? colors.shade5 : `var(--color-primary, ${colors.primary})`;
+    return (this.props.disabled && !this.props.loading) ? colors.shade5 : `var(--color-button-cta, ${colors.primary})`;
   }
 
   /**
@@ -74,7 +74,7 @@ class CartButton extends Component {
     if (this.props.loading) {
       return (
         <IndicatorCircle
-          color={`var(--color-primary-contrast, ${colors.primaryContrast})`}
+          color={`var(--color-button-cta-contrast, ${colors.primaryContrast})`}
           strokeWidth={4}
           paused={false}
         />
@@ -162,7 +162,7 @@ class CartButton extends Component {
     return (
       <FloatingActionButton
         background={this.color}
-        className={button}
+        className={`${button} theme__product__header__cta-buttons__cart-button`}
         onClick={this.handleClick}
         disabled={this.props.disabled}
         testId="addToCartButton"

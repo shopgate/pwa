@@ -9,18 +9,23 @@ import {
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
 import { AppBar } from '@shopgate/pwa-ui-material';
-import { DefaultBar } from 'Components/AppBar/presets';
-import Logo from 'Components/Logo';
+import { DefaultBar, BackBar } from 'Components/AppBar/presets';
+import { Logo } from '@shopgate/engage/components';
 import widgets from 'Extensions/widgets';
 import styles from './style';
 import connect from './connector';
 
 /**
+ * @param {Object} props The component props
  * @param {Object} props.configs The page configs.
  * @param {string} props.pageId The page id.
+ * @param {bool} props.isCookieConsentHandled Whether the cookie consent is handled (pages can be
+ * to show the privacy policy. We need to re-configure the screen so that users can't break out)
  * @return {JSX}
  */
-function PageContent({ configs, pageId, postponeRender }) {
+function PageContent({
+  configs, pageId, postponeRender, isCookieConsentHandled,
+}) {
   if (!configs) {
     return null;
   }
@@ -31,9 +36,15 @@ function PageContent({ configs, pageId, postponeRender }) {
     center = <AppBar.Title key="center" title={configs.title || ''} />;
   }
 
+  const BarComponent = !isCookieConsentHandled ? BackBar : DefaultBar;
+
   return (
     <Fragment>
-      <DefaultBar center={center} title={configs.title || ''} />
+      <BarComponent
+        center={center}
+        title={configs.title || ''}
+        {...!isCookieConsentHandled && { right: (<></>) }}
+      />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
         <div key="widgetWrapper" className={styles.widgetWrapper}>
@@ -50,12 +61,14 @@ function PageContent({ configs, pageId, postponeRender }) {
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
   configs: PropTypes.shape(),
+  isCookieConsentHandled: PropTypes.bool,
   postponeRender: PropTypes.bool,
 };
 
 PageContent.defaultProps = {
   configs: null,
   postponeRender: false,
+  isCookieConsentHandled: true,
 };
 
 export default connect(PageContent);

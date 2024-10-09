@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YouTube media provider .getMediaContainers() should return all YouTube iframes 1`] = `
+NodeList [
+  <iframe
+    src="https://youtube.com/fooo?enablejsapi=0&controls=0"
+  />,
+  <iframe
+    src="https://youtube-nocookie.com/fooo?controls=0"
+  />,
+]
+`;

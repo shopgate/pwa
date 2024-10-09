@@ -5,7 +5,9 @@ import {
   areCategoryChildrenFetching,
   getCategoryChildCount,
   hasCategoryChildren,
+  getCategory,
 } from '@shopgate/pwa-common-commerce/category/selectors';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { getShowCategoryImages } from '@shopgate/engage/core/selectors/shopSettings';
 
 /**
@@ -15,11 +17,12 @@ import { getShowCategoryImages } from '@shopgate/engage/core/selectors/shopSetti
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
+  category: getCategory(state, props),
   categories: getCategoryChildren(state, props),
   categoriesFetching: areCategoryChildrenFetching(state, props),
   hasChildren: hasCategoryChildren(state, props),
   childrenCount: getCategoryChildCount(state, props),
-  showCategoryImages: getShowCategoryImages(state, props),
+  showCategoryImages: hasNewServices() ? getShowCategoryImages(state, props) : false,
 });
 
 /**

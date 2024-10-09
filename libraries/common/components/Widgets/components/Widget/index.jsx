@@ -45,12 +45,12 @@ class Widget extends Component {
 
     return (
       <Grid.Item
-        className={styles.widgetCell({
+        className={`common__widgets__widget ${styles.widgetCell({
           col,
           row,
           height,
           width,
-        })}
+        })}`}
         component="div"
       >
         <div className={styles.content}>

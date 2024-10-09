@@ -14,11 +14,11 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function Description({ html, navigate }) {
+function Description({ html, navigate, ...props }) {
   return (
-    <SurroundPortals portalName={PRODUCT_DESCRIPTION}>
+    <SurroundPortals portalName={PRODUCT_DESCRIPTION} portalProps={{ html, navigate, ...props }}>
       {(html !== '') && (
-        <div className={container}>
+        <div className={`${container} engage__product__description`}>
           <div className={title}>
             <I18n.Text string="product.description_heading" />
           </div>

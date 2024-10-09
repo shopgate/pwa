@@ -6,6 +6,15 @@ const videos = [
   'https://player.vimeo.com/video/224765967?color=32ac5c&title=0&byline=0&portrait=0',
 ];
 
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  logger: {
+    error: jest.fn(),
+  },
+  i18n: {
+    text: jest.fn(key => key),
+  },
+}));
+
 /**
  * Creates a DOM container with iframes.
  * @param {Array} srcs A list of video URLs.
@@ -62,6 +71,15 @@ describe('Vimeo media provider', () => {
       expect(instance.containers).toBeInstanceOf(Map);
       expect(instance.isPending).toBe(true);
       expect(instance.deferred).toEqual([]);
+    });
+  });
+
+  describe('.getMediaContainers()', () => {
+    it('should return all Vimeo iframes', () => {
+      const container = createContainer([...videos, 'random/url']);
+      const result = instance.getMediaContainers(container);
+      expect(result).toMatchSnapshot();
+      expect(result).toHaveLength(2);
     });
   });
 
@@ -153,6 +171,23 @@ describe('Vimeo media provider', () => {
       expect(instance.add).nthCalledWith(2, 'container 2');
 
       expect(instance.deferred).toHaveLength(0);
+    });
+  });
+
+  describe('.handleCookieConsent()', () => {
+    it('should remove player scripts from the input containers', () => {
+      const embeddedCode = `
+<body>
+  <div style="padding:56.25% 0 0 0;position:relative;">
+    <iframe src="https://player.vimeo.com/video/45" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="How to make a Vimeo Create video"></iframe>
+  </div>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+      `;
+      const container = new JSDOM(embeddedCode);
+      instance.handleCookieConsent(container.window.document);
+      expect(container.serialize()).toMatchSnapshot();
+      expect(container.window.document.querySelectorAll('script')).toHaveLength(0);
     });
   });
 });

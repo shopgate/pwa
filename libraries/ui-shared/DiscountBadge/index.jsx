@@ -16,7 +16,7 @@ const DiscountBadge = ({
   display,
   discount,
 }) => (
-  <div data-test-id={text}>
+  <div data-test-id={text} className="ui-shared__discount-badge">
     <I18n.Text
       className={`${styles[display]} ${className}`}
       string={text}

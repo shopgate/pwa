@@ -146,7 +146,7 @@ class CountdownTimer extends Component {
       <I18n.Text
         string={this.state.formattedTime.string}
         params={this.state.formattedTime.params}
-        className={this.props.className}
+        className={`${this.props.className} common__countdown-timer`}
       />
     );
   }

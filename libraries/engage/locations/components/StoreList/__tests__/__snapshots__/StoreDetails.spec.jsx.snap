@@ -36,7 +36,9 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             <Text
               className="css-1lr3f02"
               string="locations.hours_details"
-            />
+            >
+              locations.hours_details
+            </Text>
             <div
               className="css-1btxmah"
             >
@@ -137,7 +139,9 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               <Text
                 className="css-1lr3f02"
                 string="locations.phone"
-              />
+              >
+                locations.phone
+              </Text>
             </Grid.Item>
           </Grid>
         </StoreDetailsLine>
@@ -195,7 +199,9 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               <Text
                 className="css-1lr3f02"
                 string="locations.map_open"
-              />
+              >
+                locations.map_open
+              </Text>
             </Grid.Item>
           </Grid>
         </StoreDetailsLine>

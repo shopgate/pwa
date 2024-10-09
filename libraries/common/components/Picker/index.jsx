@@ -11,6 +11,7 @@ import PickerList from './components/List';
  * to an object representation containing value and label properties.
  * @param {*} item - An item of any type.
  * @returns {Object} An object representation of the item.
+ * @deprecated Use Picker from engage instead
  */
 const normalizeItem = (item) => {
   if (item !== null && typeof item !== 'undefined') {
@@ -228,7 +229,7 @@ class Picker extends Component {
     return (
       <div
         role="button"
-        className={this.props.className}
+        className={`${this.props.className} common__picker`}
         ref={this.props.forwardedRef}
         tabIndex={0}
         aria-haspopup

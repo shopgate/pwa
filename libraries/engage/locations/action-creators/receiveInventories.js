@@ -1,13 +1,11 @@
 import { RECEIVE_INVENTORIES } from '../constants';
 
 /**
- * Creates the dispatched RECEIVE_PRODUCT_INVENTORIES action object.
- * @param {Array} productCodes The code of the product.
- * @param {Array} locationCodes List of location codes.
- * @param {Array} inventories List of product invetories.
- * @return {Object} The RECEIVE_PRODUCT_LOCATIONS action.
+ * Creates the dispatched RECEIVE_INVENTORIES action object.
+ * @param {Array} productInventories List of product inventories.
+ * @return {Object} The RECEIVE_INVENTORIES action.
  */
-const receiveInventories = (productInventories) => ({
+const receiveInventories = productInventories => ({
   type: RECEIVE_INVENTORIES,
   productInventories,
 });

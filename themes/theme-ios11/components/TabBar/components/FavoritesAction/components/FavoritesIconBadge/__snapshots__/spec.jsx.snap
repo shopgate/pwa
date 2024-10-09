@@ -4,9 +4,14 @@ exports[`TabBar favorites action - lifecycle should update when number exceeds m
 <FavoritesIconBadge
   favoritesCount={9999}
   showWishlistItemsCountBadge={true}
+  widgetSettings={
+    Object {
+      "showCounter": true,
+    }
+  }
 >
   <div
-    className="css-2xnaag"
+    className="css-2xnaag theme__tab-bar__favorites-icon-badge theme__badge"
   >
     999+
   </div>
@@ -17,9 +22,14 @@ exports[`TabBar favorites action - lifecycle should update when number is change
 <FavoritesIconBadge
   favoritesCount={99}
   showWishlistItemsCountBadge={true}
+  widgetSettings={
+    Object {
+      "showCounter": true,
+    }
+  }
 >
   <div
-    className="css-2xnaag"
+    className="css-2xnaag theme__tab-bar__favorites-icon-badge theme__badge"
   >
     99
   </div>
@@ -39,18 +49,23 @@ exports[`TabBar favorites action should render exact number 1`] = `
     }
   }
 >
-  <Connect(FavoritesIconBadge)>
-    <FavoritesIconBadge
-      dispatch={[Function]}
-      favoritesCount={1}
-      showWishlistItemsCountBadge={true}
+  <WithWidgetSettings(Connect(FavoritesIconBadge))>
+    <Connect(FavoritesIconBadge)
+      widgetSettings={Object {}}
     >
-      <div
-        className="css-2xnaag"
+      <FavoritesIconBadge
+        dispatch={[Function]}
+        favoritesCount={1}
+        showWishlistItemsCountBadge={true}
+        widgetSettings={Object {}}
       >
-        1
-      </div>
-    </FavoritesIconBadge>
-  </Connect(FavoritesIconBadge)>
+        <div
+          className="css-2xnaag theme__tab-bar__favorites-icon-badge theme__badge"
+        >
+          1
+        </div>
+      </FavoritesIconBadge>
+    </Connect(FavoritesIconBadge)>
+  </WithWidgetSettings(Connect(FavoritesIconBadge))>
 </Provider>
 `;

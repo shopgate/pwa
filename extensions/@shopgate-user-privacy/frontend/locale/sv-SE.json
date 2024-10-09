@@ -1,0 +1,9 @@
+{
+  "user": {
+    "delete_account": "Ta bort kontouppgifter",
+    "delete_account_success": "Begäran om radering mottagen. Du har blivit utloggad och vi kommer att radera dina uppgifter så långt det är juridiskt möjligt. Denna process kan ta några dagar.",
+    "delete_account_error": "Ett oväntat fel har inträffat. Vänligen försök igen senare",
+    "delete_account_confirm": "Vänligen bekräfta raderingen av alla kontouppgifter. Detta kan inte ångras.",
+    "contact_us": "Kontakta oss"
+  }
+}

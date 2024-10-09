@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > components > view > provider should initialize and provider context 1`] = `
-<Component
+<Provider
   value={
     Object {
       "ariaHidden": false,
@@ -23,5 +23,5 @@ exports[`engage > components > view > provider should initialize and provider co
   <div>
     Page #1
   </div>
-</Component>
+</Provider>
 `;

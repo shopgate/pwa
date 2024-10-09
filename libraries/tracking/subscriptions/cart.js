@@ -1,4 +1,4 @@
-import { productsAdded$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import { productsAdded$ } from '../streams/cart';
 import { getAddToCartProducts } from '../selectors/cart';
 import getPage from '../selectors/page';
 import { track } from '../helpers/index';

@@ -1,0 +1,9 @@
+{
+  "user": {
+    "delete_account": "Fiókadatok törlése",
+    "delete_account_success": "Törlési kérelem érkezett. Önt kijelentkeztettük, és az adatait törölni fogjuk, amennyire ez jogilag lehetséges. Ez a folyamat néhány napot vehet igénybe.",
+    "delete_account_error": "Váratlan hiba történt. Kérjük, próbálja meg később újra",
+    "delete_account_confirm": "Kérjük, erősítse meg az összes fiókadat törlését. Ezt nem lehet visszacsinálni.",
+    "contact_us": "Kapcsolat"
+  }
+}

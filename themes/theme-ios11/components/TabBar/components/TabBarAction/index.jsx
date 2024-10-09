@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import Button from '@shopgate/pwa-common/components/Button';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import style from './style';
@@ -11,11 +12,14 @@ import style from './style';
  * @returns {JSX}
  */
 const TabBarAction = (props) => {
+  const { showLabels = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
   const Icon = props.icon;
 
   const className = classNames(
+    'theme__tab-bar__tab-bar-action',
     style.container,
     { [style.highlighted]: props.isHighlighted },
+    { 'tab-active': props.isHighlighted },
     { [style.regular]: !props.isHighlighted }
   );
 
@@ -31,7 +35,7 @@ const TabBarAction = (props) => {
     >
       {Icon}
       <div className={style.label} data-test-id={props.label}>
-        <I18n.Text string={props.label} />
+        {showLabels && <I18n.Text string={props.label} />}
       </div>
       {props.children}
     </Button>

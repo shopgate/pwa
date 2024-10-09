@@ -14,8 +14,13 @@ const COUPON_FIELD = 'coupon-field';
 const CHECKOUT_BUTTON = 'checkout-button';
 
 const NAME = 'name';
+const CONTEXT_MENU = 'context-menu';
+const REMOVE = 'remove';
+const EDIT = 'edit';
 const IMAGE = 'image';
 const QUANTITY_PICKER = 'quantity-picker';
+const LINK = 'link';
+const PROPERTIES = 'properties';
 const PRICE = 'price';
 const PRICE_STRIKED = 'price-striked';
 const COUPON_CODE = 'coupon-code';
@@ -40,9 +45,17 @@ export const CART_ITEM_NAME_BEFORE = `${CART}.${ITEM}.${NAME}.${BEFORE}`;
 export const CART_ITEM_NAME = `${CART}.${ITEM}.${NAME}`;
 export const CART_ITEM_NAME_AFTER = `${CART}.${ITEM}.${NAME}.${AFTER}`;
 
+export const CART_ITEM_CONTEXT_MENU = `${CART}.${ITEM}.${CONTEXT_MENU}`;
+
+export const CART_ITEM_CONTEXT_MENU_ITEM_REMOVE = `${CART}.${ITEM}.${CONTEXT_MENU}.${ITEM}.${REMOVE}`;
+export const CART_ITEM_CONTEXT_MENU_ITEM_EDIT = `${CART}.${ITEM}.${CONTEXT_MENU}.${ITEM}.${EDIT}`;
+
 export const CART_ITEM_IMAGE_BEFORE = `${CART}.${ITEM}.${IMAGE}.${BEFORE}`;
 export const CART_ITEM_IMAGE = `${CART}.${ITEM}.${IMAGE}`;
 export const CART_ITEM_IMAGE_AFTER = `${CART}.${ITEM}.${IMAGE}.${AFTER}`;
+
+export const CART_ITEM_LINK = `${CART}.${ITEM}.${LINK}`;
+export const CART_ITEM_PROPERTIES = `${CART}.${ITEM}.${PROPERTIES}`;
 
 export const CART_ITEM_QUANTITY_PICKER = `${CART}.${ITEM}.${QUANTITY_PICKER}`;
 

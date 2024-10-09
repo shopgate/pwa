@@ -43,7 +43,7 @@ const MapPriceHint = ({ price, mapPrice }) => {
             between &&
             <I18n.Text
               string={settings.hint}
-              className={classNames(defaultStyle, css(styles.hint).toString())}
+              className={classNames('engage__product__map-price-hint', defaultStyle, css(styles.hint).toString())}
             />
           )}
         </TimeBoundary>

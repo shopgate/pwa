@@ -15,7 +15,7 @@ const FavoritesButtonBadge = ({ count }) => {
   }
   const number = (count > maxNumber) ? `${maxNumber}+` : count;
 
-  return <span className={styles}>{number}</span>;
+  return <span className={`${styles} theme__nav-drawer__favorites-button-badge theme__badge`}>{number}</span>;
 };
 
 FavoritesButtonBadge.propTypes = {

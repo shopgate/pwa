@@ -72,31 +72,32 @@ function addToCart(data) {
       .setErrorBlacklist(ECART)
       .dispatch();
 
-    try {
-      const result = await request;
-      if (result.messages && messagesHaveErrors(result.messages)) {
-        /**
-         * @deprecated: The property "messages" is not supposed to be part of the
-         * pipeline response. Specification demands errors to be returned as response
-         * object with an "error" property. This code snippet needs to be removed after
-         * fixing the `@shopgate/legacy-cart` extension.
-         */
+    request
+      .then((result) => {
+        if (result.messages && messagesHaveErrors(result.messages)) {
+          /**
+           * @deprecated: The property "messages" is not supposed to be part of the
+           * pipeline response. Specification demands errors to be returned as response
+           * object with an "error" property. This code snippet needs to be removed after
+           * fixing the `@shopgate/legacy-cart` extension.
+           */
+          dispatch(errorAddProductsToCart(
+            products,
+            createErrorMessageList(SHOPGATE_CART_ADD_PRODUCTS, result.messages)
+          ));
+          return;
+        }
+
+        dispatch(successAddProductsToCart());
+      })
+      .catch((error) => {
         dispatch(errorAddProductsToCart(
           products,
-          createErrorMessageList(SHOPGATE_CART_ADD_PRODUCTS, result.messages)
+          createPipelineErrorList(SHOPGATE_CART_ADD_PRODUCTS, error)
         ));
-        return result;
-      }
+      });
 
-      dispatch(successAddProductsToCart());
-      return result;
-    } catch (error) {
-      dispatch(errorAddProductsToCart(
-        products,
-        createPipelineErrorList(SHOPGATE_CART_ADD_PRODUCTS, error)
-      ));
-      return null;
-    }
+    return request;
   };
 }
 

@@ -1,0 +1,867 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {fortfarande {time}} =1 {# Dag {time}} other {# Dagar {time}}}",
+    "load_more": "Ladda mer",
+    "cancel": "Avbryt",
+    "submit": "Skicka",
+    "undo": "Ångra",
+    "required": "Obligatoriskt *",
+    "please_choose": "Vänligen välj",
+    "show_products": "Visa produkter",
+    "back": "Tillbaka",
+    "close": "Stäng",
+    "products": "Produkter",
+    "error": "Ett oväntat fel har inträffat. Vänligen försök igen.",
+    "errors": {
+      "generic": "Ett oväntat fel har inträffat. Vänligen försök igen."
+    }
+  },
+  "titles": {
+    "categories": "Kategorier",
+    "filter": "Filter",
+    "cart": "Kundkorg",
+    "shipping": "Frakt",
+    "reviews": "Recensioner",
+    "favorites": "Favoritlista",
+    "scanner": "Skanner",
+    "back_in_stock": "Notifieringar",
+    "checkout": "Slutför köp",
+    "checkout_confirmation": "Beställningen har genomförts",
+    "checkout_change_billing": "Ändra fakturaadress",
+    "register": "Registrera",
+    "order_details": "Beställningsdetaljer",
+    "store_finder": "Butikssökare",
+    "order_history": "Beställningshistorik",
+    "profile": "Profil",
+    "your_account": "Mitt konto",
+    "your_account_contact": "Adress",
+    "page_not_found": "Sidan hittades inte",
+    "checkout_addresses_shipping": "Välj leveransadress",
+    "checkout_addresses_billing": "Välj fakturaadress",
+    "checkout_addresses_add_shipping": "Lägg till leveransadress",
+    "checkout_addresses_add_billing": "Lägg till fakturaadress",
+    "checkout_addresses_edit_shipping": "Ändra leveransadress",
+    "checkout_addresses_edit_billing": "Ändra fakturaadress"
+  },
+  "account": {
+    "profile": {
+      "customer": {
+        "number": "Kundnummer: {customerNumber}"
+      },
+      "form": {
+        "firstName": "Förnamn",
+        "middleName": "Mellannamn",
+        "lastName": "Efternamn",
+        "emailAddress": "E-postadress",
+        "address1": "Gata och Nummer",
+        "address2": "Adress 2",
+        "address3": "Adress 3",
+        "address4": "Adress 4",
+        "postalCode": "Postnummer",
+        "city": "Stad",
+        "country": "Land",
+        "phone": "Telefonnummer",
+        "mobile": "Mobilnummer",
+        "region": "Län",
+        "marketing_opt_in_label": "Håll mig uppdaterad med nyheter och exklusiva erbjudanden.",
+        "default_billing": "Standard fakturaadress",
+        "default_shipping": "Standard leveransadress",
+        "save_default_billing": "Spara denna fakturaadress för framtida beställningar",
+        "save_default_shipping": "Spara denna leveransadress för framtida beställningar",
+        "save": "Spara",
+        "add": "Lägg till adress",
+        "success": "Profil sparad",
+        "error": "Fel vid sparande"
+      },
+      "delete": "Ta bort konto",
+      "address_book": {
+        "title": "Adressbok",
+        "default_billing": "Standard fakturaadress",
+        "default_shipping": "Standard leveransadress",
+        "add": "Lägg till adress",
+        "select": "Välj",
+        "selected": "Vald",
+        "success": "Profil sparad",
+        "context": {
+          "edit": "Redigera",
+          "remove": "Ta bort"
+        }
+      },
+      "confirm": {
+        "title": "Är du säker?",
+        "confirm": "Bekräfta",
+        "messageContact": "Vill du verkligen ta bort denna adress?",
+        "messageCustomer": "Vill du verkligen ta bort ditt konto? Alla dina personuppgifter och inställningar kommer att raderas."
+      }
+    }
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Aktiva aviseringar",
+      "past": "Tidigare aviseringar"
+    },
+    "empty_list_reminder": "Du har inte konfigurerat några aviseringar",
+    "get_notified": "Meddela mig när varan är tillgänglig",
+    "we_will_remind_you": "Du kommer att få ett meddelande när varan finns tillgänglig igen",
+    "add_back_in_stock_success_modal": {
+      "title": "Notifiering tillagd!",
+      "message": "Vi skickar ett push-meddelande till dig när produkten finns tillgänglig igen. Du kan hantera dessa aviseringar via menyn."
+    },
+    "rationale": {
+      "message": "Tillåt push-meddelanden i nästa steg så att vi kan meddela dig när produkten finns tillgänglig igen.",
+      "confirm": "Tillåt aviseringar"
+    }
+  },
+  "favorites": {
+    "add": "Lägg till i favoritlistan",
+    "added": "Produkten har lagts till i favoritlistan",
+    "continue": "Fortsätt shoppa",
+    "empty": "Du har ännu inga varor på favoritlistan",
+    "error_add": "Produkten kunde inte läggas till i favoritlistan",
+    "error_remove": "Produkten kunde inte tas bort från favoritlistan",
+    "error_limit": "Det tillåtna antalet produkter på favoritlistan har överskridits.",
+    "error_general": "Det gick inte att spara favoritlistan",
+    "remove": "Ta bort från favoritlistan",
+    "removed": "Borttagen från favoritlistan",
+    "add_list_modal": {
+      "title": "Skapa ny favoritlista",
+      "dismiss": "Avbryt",
+      "confirm": "Bekräfta",
+      "message": "Namnet på din nya favoritlista",
+      "label": "Namn"
+    },
+    "rename_list_modal": {
+      "title": "Ändra namnet på favoritlistan",
+      "dismiss": "Avbryt",
+      "confirm": "Bekräfta",
+      "message": "Det nya namnet på din favoritlista",
+      "label": "Namn"
+    },
+    "delete_list_modal": {
+      "title": "Radera favoritlista",
+      "message": "Vill du verkligen ta bort favoritlistan \"{name}\"?"
+    },
+    "add_list": "Skapa ny lista",
+    "errors": {
+      "invalid_name": "Ange ett fullständigt namn för din favoritlista"
+    },
+    "comment_modal": {
+      "titleAdd": "Lägg till kommentar",
+      "titleEdit": "Redigera kommentar",
+      "dismiss": "Avbryt",
+      "confirm": "Bekräfta",
+      "label": "Kommentar",
+      "characterCount": "{count} av {maxCount} tecken"
+    },
+    "comments": {
+      "add": "Lägg till kommentar",
+      "notes": "Kommentar",
+      "edit": "Redigera",
+      "delete": "Ta bort",
+      "added": "Kommentar tillagd",
+      "removed": "Kommentar borttagen",
+      "updated": "Kommentar uppdaterad"
+    },
+    "rename_list": "Byt namn på lista",
+    "remove_list": "Ta bort",
+    "add_to_list": "Lägg till i listan",
+    "remove_from_list": "Ta bort från listan",
+    "edit_lists": "Redigera lista",
+    "fo_method_chooser": {
+      "title": "Välj en ordermetod"
+    },
+    "list_chooser": {
+      "title": "Välj en favoritlista",
+      "add": "Lägg till",
+      "add_more": "Lägg till fler",
+      "remove": "Ta bort"
+    },
+    "modal": {
+      "message": "Välj varianter för att lägga den här produkten i varukorgen.",
+      "confirm": "Välj varianter"
+    },
+    "open_list": "Öppna lista.",
+    "close_list": "Stäng listan.",
+    "load_more_button": "Ladda fler artiklar"
+  },
+  "filter": {
+    "sort": {
+      "default": "Sortera",
+      "most_popular": "Bästa resultat",
+      "price_desc": "Högsta pris först",
+      "price_asc": "Lägsta pris först",
+      "name_asc": "Namn A - Ö",
+      "name_desc": "Namn Ö - A",
+      "rank_asc": "Lägsta rank först",
+      "rank_desc": "Högsta rank först"
+    },
+    "apply": "Färdig",
+    "more": "Mer",
+    "reset": "Återställ",
+    "remove": "{filter} ta bort filter",
+    "edit": "{filter} redigera filter",
+    "filter_by": "Filtrera efter {label}",
+    "label": {
+      "price": "Pris",
+      "category": "Kategori",
+      "manufacturer": "Varumärke"
+    }
+  },
+  "price": {
+    "from": "Från {price}",
+    "range": "Pris från {fromPrice} till {toPrice}",
+    "range_from": "Prisintervall från",
+    "range_to": "Prisintervall till",
+    "tier": {
+      "set": "{from} bit: {price}",
+      "range": "{from} eller mer: {price}"
+    },
+    "msrp": "MSRP",
+    "label": "Pris {price}.",
+    "label_old_price": "Gammalt pris {price}.",
+    "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
+    "free": "Gratis"
+  },
+  "product": {
+    "errors": {
+      "insufficientstock": "Tyvärr är denna produkt för tillfället inte tillgänglig."
+    },
+    "description_heading": "Beskrivning",
+    "share": "Dela produkt",
+    "pick_an_attribute": "{0} välj",
+    "tax_disclaimer": "* Inkl. moms eventuellt plus fraktkostnader",
+    "adding_item": "{count, plural, =1 {En produkt läggs till} other {{count} produkter läggs till}}",
+    "pick_option_first": "Välj ett alternativ först. {option}",
+    "fill_out_required_input_first": "Fyll i alla obligatoriska fält först.",
+    "add_to_cart": "Lägg till i korgen",
+    "no_more_found": "Artikeln: \"{name}\" är för närvarande slut i lager.",
+    "quantity": "Kvantitet",
+    "decrease_quantity": "Minska mängd",
+    "increase_quantity": "Öka mängd",
+    "increased_quantity_to": "Mängden ökades till {quantity}",
+    "decreased_quantity_to": "Mängden minskades till {quantity}",
+    "minOrderQuantity": "Min. orderkvantitet: {quantity} {unit}",
+    "maxOrderQuantity": "Max. orderkvantitet: {quantity} {unit}",
+    "available": {
+      "at": "Tillgänglig på {startDate, date, DD} {startDate, date, MMM} på {startDate, time, short} Klocka",
+      "until": "Tillgänglig fram till {endDate, date, DD} {endDate, date, MMM} på {endDate, time, short} Klocka",
+      "not": "För närvarande inte tillgänglig",
+      "not_search_similar": "{name} inte tillgängligt. Sök efter liknande produkter?"
+    },
+    "relations": {
+      "showMore": "Mer"
+    },
+    "sections": {
+      "information": "Produktinformation",
+      "options": "Välj alternativ",
+      "fulfillment": "Tillgänglighet",
+      "description": "Beskrivning",
+      "properties": "Egenskaper",
+      "ratings": "Betyg",
+      "purchase": "Köpa produkt",
+      "quantity": "Kvantitet",
+      "price": "Pris"
+    },
+    "displayGroups": {
+      "general": "Allmänt",
+      "features": "Funktioner",
+      "pricing": "Prisinformation",
+      "properties": "Egenskaper"
+    }
+  },
+  "locations": {
+    "headline": "Butiker nära dig",
+    "details": "Detaljer",
+    "hours_details": "Butikens öppettider",
+    "today_hours": "Idag: {hours}",
+    "today_hours_long": "Öppet idag: {hours}",
+    "address": "{postalCode} {city}",
+    "map_open": "Öppna i kartor",
+    "phone": "Telefonnummer",
+    "mon": "Måndag",
+    "tue": "Tisdag",
+    "wed": "Onsdag",
+    "thu": "Torsdag",
+    "fri": "Fredag",
+    "sat": "Lördag",
+    "sun": "Söndag",
+    "place_reservation": "Skicka bokning",
+    "firstName": "Förnamn",
+    "lastName": "Efternamn",
+    "cellPhone": "Mobilnummer för SMS-meddelanden",
+    "emailAddress": "E-postadress",
+    "who_will_pickup": "Vem kommer att hämta denna beställning?",
+    "me": "Jag själv",
+    "someone_else": "Någon annan",
+    "success_heading": "Bokningsbekräftelse",
+    "success_title": "Tack för din bokning!",
+    "success_copy": "Vi skickar ett e-postmeddelande eller SMS till dig när din bokning är klar för hämtning.",
+    "success_order_num": "Bokningsnummer",
+    "error_heading": "Ett fel inträffade",
+    "error_title": "Tyvärr kunde vi inte slutföra din bokning.",
+    "error_copy": "Ett fel inträffade under bokningsprocessen. Några av artiklarna kan ha sålts slut. Vänligen kontrollera tillgängligheten i andra butiker i din varukorg.",
+    "error_invalid_zip_code": "Vänligen ange ett giltigt postnummer.",
+    "error_no_store_found": "Vi hittade tyvärr inga butiker i detta område, vänligen kontrollera din inmatning.",
+    "search_placeholder": "Postnummer",
+    "change_location": "Byt butik",
+    "select_location": "Välj butik",
+    "get_directions": "Få vägbeskrivning",
+    "store_hours": "Öppettider",
+    "radius_km": "{radius} km",
+    "radius_mi": "{radius} miles",
+    "radius": "Radie",
+    "stores_near": {
+      "zip_code": "Butiker nära \"{zipCode}\"",
+      "location": "Butiker nära dig"
+    },
+    "your_current_timeslot": {
+      "heading": "Upphämtningstid",
+      "change": "Ändra",
+      "today": "Idag",
+      "tomorrow": "Imorgon",
+      "not_set": "Vänligen välj..",
+      "dialog": {
+        "title": "Välj upphämtningstid",
+        "date": "Datum",
+        "morning": "Morgon",
+        "afternoon": "Eftermiddag",
+        "evening": "Kväll",
+        "schedule": "Välj"
+      }
+    },
+    "your_current_location": {
+      "heading": "Nuvarande butik",
+      "change": "Ändra"
+    },
+    "method": {
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "direct_ship": "Beställ online"
+    },
+    "choose_reservation_type": "Välj bokningstyp",
+    "quick_reserve": "Snabb bokning",
+    "reserve_to_cart": "Boka i varukorgen",
+    "change_fulfillment_method": "Ändra leveransmetod",
+    "fulfillment": {
+      "heading": "Tillgänglighet",
+      "direct_ship": "Beställ online",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "error": {
+        "direct_ship": "Denna produkt är inte tillgänglig för leverans. Vänligen välj ett annat alternativ eller kontrollera tillgängligheten i en butik nära dig.",
+        "reserve": "Denna produkt är inte tillgänglig i den valda butiken. Vänligen välj en annan butik.",
+        "not_ready": "Vänligen välj en butik.",
+        "ropis": "Denna produkt är inte tillgänglig för Click & Reserve i denna butik. Vänligen välj ett annat alternativ eller en annan butik.",
+        "bopis": "Denna produkt är inte tillgänglig för Click & Collect i denna butik. Vänligen välj ett annat alternativ eller en annan butik."
+      }
+    },
+    "stock_info": {
+      "pick_up_at": "hos {storeName}",
+      "availableInventory": "{visibleInventory} i lager",
+      "available": "Tillgänglig",
+      "limitedAvailability": "Endast {visibleInventory} kvar i lager",
+      "notAvailable": "Inte tillgänglig",
+      "customAvailability": "Inte tillgänglig i denna butik",
+      "comingSoon": "Kommer snart"
+    },
+    "no_available": "inte tillgänglig",
+    "multi_location_modal": {
+      "title": "Byt butik",
+      "message": "Du har redan produkter från en annan butik i din varukorg. Dessa produkter kommer att ändras till den nya butiken. Priser och tillgänglighet kan variera.",
+      "change_store": "Byt butik"
+    }
+  },
+  "category": {
+    "error": {
+      "title": "Hoppsan",
+      "not_found": "Kategorin hittades inte"
+    },
+    "no_result": {
+      "heading": "Hoppsan!",
+      "body": "Inga produkter hittades."
+    },
+    "sections": {
+      "categories": "Kategorier",
+      "products": "Produkter"
+    },
+    "showAllProducts": {
+      "label": "Visa alla produkter"
+    },
+    "errors": {
+      "404": "Kategorin hittades inte"
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Hoppsan!",
+      "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
+    },
+    "placeholder": "Sökning",
+    "close": "Avsluta sökning",
+    "reset": "Återställ sökning"
+  },
+  "shipping": {
+    "unknown": "plus frakt",
+    "free": "Fri frakt",
+    "free_short": "Kostnadsfritt",
+    "cost": "{price} Frakt"
+  },
+  "liveshopping": {
+    "discount_badge": "{0}% Besparingar"
+  },
+  "modal": {
+    "confirm": "Bekräfta",
+    "dismiss": "Avbryt",
+    "ok": "Okej",
+    "title_error": "Hoppsan!",
+    "body_error": "Ett oväntat fel har inträffat. Vänligen försök igen.",
+    "close": "Stäng",
+    "login": "Logga in"
+  },
+  "cart": {
+    "grand_total": "Totalsumma",
+    "current_total": "Aktuell summa",
+    "items": "Produkter",
+    "price": "Pris",
+    "quantity": "Mängd",
+    "fulfilled_quantity": "Fullföljd mängd",
+    "ordered_quantity": "Beställd mängd",
+    "location": "Butik",
+    "status": "Status",
+    "remove_item": "Ta bort produkt",
+    "subtotal": "Delsumma",
+    "total": "Total varukorg",
+    "discount": "Rabatt",
+    "discount_with_label": "Rabatt ({label})",
+    "coupon_label": "Kupong: {label}",
+    "promotion_label": "{label}",
+    "checkout": "Fortsätt till kassan",
+    "reserve": "Boka",
+    "remove": "Ta bort",
+    "edit": "Redigera",
+    "empty": "Din varukorg är tom.",
+    "continue": "Fortsätt handla",
+    "redeem_coupon": "Ange kupongkod",
+    "submit_coupon": "Skicka in kupongkoden",
+    "delete_coupon": "Ta bort kupongkoden",
+    "coupon_code": "Kod",
+    "default_coupon_label": "Kupong",
+    "coupon_was_added": "Kupongen har lagts till!",
+    "coupons_not_supported": "Lös in kuponger och presentkort i nästa steg",
+    "free_shipping": "Fri frakt",
+    "allow_substitution_all": "Tillåt ersättningsartiklar för alla produkter?",
+    "allow_substitution": "Tillåt ersättningsartiklar",
+    "message_type_info": "Info",
+    "message_type_error": "Fel",
+    "message_type_warning": "Varning",
+    "errors": {
+      "404": "En eller flera produkter har tagits bort från din varukorg på grund av otillgänglighet.",
+      "1001": "En eller flera produkter i din varukorg är för närvarande inte i lager. Vänligen ta bort dem.",
+      "1002": "Beställningar är begränsade till en enda upphämtningsbutik. Vänligen välj endast en butik.",
+      "1003": "Den valda upphämtningstiden är inte längre tillgänglig. Vänligen välj en annan tid.",
+      "item": {
+        "1001": "Produkten är inte tillgänglig i önskad mängd.",
+        "1004": "Vänligen välj en upphämtningstid.",
+        "1005": "Den minsta beställningsmängden på {minQty} har inte uppnåtts.",
+        "1006": "Den maximala beställningsmängden på {maxQty} har överskridits.",
+        "1007": "Vänligen välj en upphämtningsbutik.",
+        "shopgate.cart.updateProducts": {
+          "1001": "Produkten är inte tillgänglig i önskad mängd."
+        },
+        "shopgate.cart.addProducts": {
+          "1001": "Produkten är inte tillgänglig i önskad mängd."
+        },
+        "generic": "Ett oväntat fel inträffade med denna produkt.",
+        "insufficientstock": "För närvarande inte i lager."
+      },
+      "coupon": {
+        "404": "Denna kupong finns inte.",
+        "2000": "Denna kupong är ogiltig.",
+        "2001": "Kupongen blir giltig från {startDate, date, yyyyMMdd} kl. {startDate, time, short}.",
+        "2002": "Kupongen gick ut den {endDate, date, yyyyMMdd} kl. {endDate, time, short}.",
+        "2003": "Denna kupong är inte giltig för din nuvarande varukorg.",
+        "2004": "Denna kupong har redan lösts in.",
+        "2005": "Denna kupong har nått det maximala inlösningsantalet.",
+        "generic": "Ett oväntat fel inträffade med denna kupong."
+      },
+      "generic": "Ett oväntat fel inträffade.",
+      "insufficientstock": "En eller flera produkter i din varukorg är inte i lager. Vänligen ta bort dem.",
+      "multiplelocations": "Beställningar är begränsade till en enda upphämtningsbutik. Vänligen välj endast en butik.",
+      "productsNotFound": "En eller flera produkter har tagits bort från din varukorg på grund av otillgänglighet.",
+      "mixed_cart": "Bokningar och onlinebeställningar måste göras i separata beställningar. Vänligen uppdatera produkterna så att varukorgen endast innehåller onlinebeställningar eller bokningar.",
+      "direct_ship_item": "Kontrollera om denna produkt kan reserveras i en butik nära dig.",
+      "ropis_cart_inventory": "Inte alla produkter kan reserveras. Vänligen kontrollera felen och ändra leveransalternativen.",
+      "ropis_item_inventory": "Denna produkt kan inte reserveras i den valda butiken. Kontrollera om den är tillgänglig i en annan butik.",
+      "ropis_item_inventory_exceed": "Önskad mängd är inte tillgänglig på {storeName}. Den maximala mängden på {inventory} kommer att reserveras.",
+      "mixed_cart_coupon_removed": "Kupongen \"{code}\" är inte tillgänglig för bokningar."
+    },
+    "change_fulfillment": {
+      "direct_ship": "Ändra till Beställ online",
+      "bopis": "Ändra till Click & Collect",
+      "ropis": "Ändra till Click & Reserve"
+    },
+    "price_caption": {
+      "reservation": "Bokning",
+      "pay_in_store": "Betala i butik"
+    }
+  },
+  "login": {
+    "headline": "Välkommen!",
+    "subline": "Logga in för att fortsätta.",
+    "email": "E-post",
+    "password": "Lösenord",
+    "forgot_password": "Har du glömt ditt lösenord?",
+    "forgot_password_popup": "Använd skrivbordswebbplatsen för att återställa ditt lösenord.",
+    "button": "Logga in",
+    "no_account": "Har du inget konto än?",
+    "register": "Börja här.",
+    "logout_message": "Du har blivit utloggad.",
+    "error": "Användarnamn eller lösenord är inte korrekta",
+    "auto_logout_message": "Du har loggats ut automatiskt.",
+    "reset_password": {
+      "subline": "Vänligen ange din e-postadress.",
+      "reset_instructions": "Du kommer att få ett e-postmeddelande för att återställa ditt lösenord till {email}",
+      "back_to_login": "Tillbaka till inloggning",
+      "customer_not_found": "Vi kunde inte hitta något konto kopplat till denna e-postadress."
+    }
+  },
+  "navigation": {
+    "login_register": "Logga in",
+    "your_account": "Mitt konto",
+    "home": "Startsida",
+    "categories": "Kategorier",
+    "favorites": "Favoritlista",
+    "my_orders": "Mina beställningar",
+    "cart": "Kundkorg",
+    "scanner": "Skanner",
+    "shipping": "Leveransmetoder",
+    "about": "Avtryck",
+    "payment": "Betalningsmetoder",
+    "terms": "Villkor och bestämmelser",
+    "privacy": "Dataskydd",
+    "privacySettings": "Sekretessinställningar",
+    "back_in_stock": "Meddelanden",
+    "welcome_message": "Hej {name}",
+    "return_policy": "Avbokningsregler",
+    "logout": "Logga ut",
+    "back": "Tillbaka till {title}",
+    "open_menu": "Öppna meny",
+    "menuSubHeader": {
+      "more": "Mer",
+      "about": "Om oss"
+    }
+  },
+  "reviews": {
+    "rating": "Betyg",
+    "no_reviews": "Skriv den första recensionen.",
+    "review_count": "({count} {count, plural, =1 {Värdering} other {Värderingar}})",
+    "button_add": "Betygsätt produkt",
+    "button_all": "Alla {count} Värderingar",
+    "author": "av {author}",
+    "rating_stars": "{rate, plural, =1 {En stjärna} other {{rate} stjärnor}} av {maxRate}.",
+    "review_form_rate": "Betygsätt den här Produkten:",
+    "review_form_author": "Namn",
+    "review_form_title": "Titel (valfritt)",
+    "review_form_text": "Din recension (valfritt)",
+    "review_form_error_author_empty": "Vänligen ange ett namn.",
+    "review_form_rate_error": "Hur många stjärnor ger du?",
+    "review_form_error_length": "Maximalt {length} tecken tillåtna.",
+    "press_to_rate_with_x_stars": "Tryck för att betygsätta med {rate, plural, =1 {en stjärna} other {{rate} stjärnor}}.",
+    "success_message": "Tack för ditt betyg!"
+  },
+  "scanner": {
+    "instructions": "Placera streckkoden eller QR-koden i mitten. Erkänningen sker automatiskt.",
+    "noResult": {
+      "qrCode": "Vi kunde inte hitta något resultat för den här QR-koden.",
+      "barCode": "Produkten hittades inte."
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Öppna inställningar",
+      "camera_message": "Den här funktionen kräver åtkomst till kameran. Vänligen tillåt åtkomst i inställningarna.",
+      "push_message": "Du har inaktiverat push-meddelanden för den här appen. Gå till inställningarna på din enhet för att aktivera dem.",
+      "geolocation_message": "Vi behöver tillgång till platsen för att visa närliggande butiker."
+    }
+  },
+  "checkout": {
+    "submit_order": "Köp nu",
+    "continue_payment": "Fortsätt till betalning",
+    "continue": "Fortsätt",
+    "steps": "Steg {from} av {to}",
+    "change_contacts": "Ändra kontakt",
+    "change_addresses": "Ändra adress",
+    "finalizePayment": "Slutför beställning",
+    "payment": {
+      "title": "Hur vill du betala?",
+      "buttons": {
+        "stripe": "Kreditkort"
+      }
+    },
+    "shippingMethod": {
+      "title": "Leveranssätt",
+      "errors": {
+        "noShippingAddress": "Vänligen ange en leveransadress först.",
+        "invalidShippingAddress": "Denna varukorg kan inte skickas till den angivna adressen."
+      }
+    },
+    "errors": {
+      "genericInitialize": "Slutförandet av beställningen är för närvarande inte tillgängligt. Vänligen försök igen senare.",
+      "genericUpdate": "Beställningen kunde inte behandlas. Vänligen försök igen senare.",
+      "checkCart": "Vänligen kontrollera din varukorg.",
+      "genericSubmit": "Beställningen kunde inte behandlas, vänligen kontrollera din varukorg.",
+      "paypalFunding": "Ett fel inträffade vid betalningen.",
+      "missingPaymentMethod": "Ingen betalningsmetod konfigurerad.",
+      "noPaymentTransaction": "Ingen betalningstransaktion tillgänglig.",
+      "genericUpdateBilling": "Fel vid uppdatering av fakturaadress",
+      "payment": {
+        "genericExternal": "Betalningen med den valda metoden misslyckades. Försök igen med en annan metod."
+      }
+    },
+    "pickup_contact": {
+      "headline": "Upphämtningskontakt",
+      "headline_reserve": "Upphämtningskontakt",
+      "subheadline": "Beställningsbekräftelsen kommer att skickas till denna e-postadress. Telefonnummer används endast om det finns några frågor.",
+      "form": {
+        "firstName": "Förnamn",
+        "lastName": "Efternamn",
+        "mobile": "Mobilnummer",
+        "emailAddress": "E-postadress",
+        "password": "Lösenord *",
+        "passwordConfirm": "Bekräfta lösenord *",
+        "company": "Företag",
+        "address1": "Gata och husnummer",
+        "address2": "Adresskomplement",
+        "postalCode": "Postnummer",
+        "city": "Stad",
+        "country": "Land",
+        "region": "Län",
+        "who_will_pickup": "Vem kommer att hämta denna beställning?",
+        "me": "Jag själv",
+        "someone_else": "Någon annan",
+        "instructions": "Upphämtningsinstruktioner"
+      }
+    },
+    "billing": {
+      "headline": "Fakturaadress",
+      "headline_reserve": "Beställningskontakt",
+      "save": "Spara",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Redigera",
+      "change": "Ändra",
+      "select_address": "Välj en fakturaadress"
+    },
+    "shipping": {
+      "headline": "Leveransadress",
+      "save": "Spara",
+      "address": "{postalCode} {city}, {region}",
+      "edit": "Redigera",
+      "change": "Ändra",
+      "select_address": "Välj en leveransadress"
+    },
+    "creditCard": {
+      "headline": "Betalningsmetod",
+      "card": "Kreditkortsnummer *",
+      "cvc": "Säkerhetskod *",
+      "expiry": "Utgångsdatum *"
+    },
+    "summary": {
+      "headline": "Sammanfattning",
+      "tax": "Skatt",
+      "subTotal": "Delsumma",
+      "shippingTotal": "Fraktkostnad",
+      "total": "Totalt"
+    },
+    "success": {
+      "title": "Tack för din beställning",
+      "instructions_1": "Nedan hittar du din beställningsinformation. Om du har några frågor om beställningen, vänligen kontakta din butik.",
+      "instructions_2": "Observera att upphämtningstider kan variera under helgdagar och helger.",
+      "order_number": "Beställningsnummer: {orderNumber}",
+      "order_date": "Beställningsdatum: {date}",
+      "your_items": "Produkter:",
+      "pick_up_contact": "Upphämtningskontakt",
+      "order_contact": "Beställningskontakt",
+      "pickup_notes": "Upphämtningsanteckningar",
+      "billed_to": "Fakturaadress",
+      "shipped_to": "Leveransadress",
+      "order_summary": "Beställningssammanfattning",
+      "name": "Namn",
+      "phone_number": "Telefonnummer",
+      "email_address": "E-postadress",
+      "card_holder": "Kortinnehavare",
+      "address": "Adress",
+      "payment_method": "Betalningsmetod",
+      "shipping_method": "Leveransmetod",
+      "continue": "Fortsätt handla"
+    }
+  },
+  "order": {
+    "status": {
+      "order": {
+        "submitted": "Inskickad",
+        "inProgress": "Under behandling",
+        "ready": "Klar för upphämtning",
+        "completed": "Slutförd",
+        "canceled": "Avbruten"
+      },
+      "line_item": {
+        "pending": "Väntar",
+        "inProgress": "Under behandling",
+        "unavailable": "Inte tillgänglig",
+        "canceled": "Avbruten",
+        "fulfilled": "Utförd",
+        "substituted": "Ersatt",
+        "replaced": "Ersatt",
+        "itemAdded": "Tillagd",
+        "rejected": "Avvisad",
+        "open": "Öppen"
+      }
+    }
+  },
+  "order_details": {
+    "pickup_location": {
+      "headline": "Upphämtningsbutik",
+      "address": "Adress",
+      "phone_number": "Telefon"
+    },
+    "subline": {
+      "order_number": "Ditt beställningsnummer är: {orderNumber}",
+      "order_status": "Status: {status}"
+    },
+    "authenticate": {
+      "instructions": "Vänligen autentisera dig med din e-postadress och telefonnummer som användes vid beställningen.",
+      "or_login": "Eller logga in"
+    },
+    "errors": {
+      "authenticate": "E-postadressen och telefonnumret matchar inte denna beställning.",
+      "expired": "Sessionen för denna beställning har gått ut.",
+      "authorize": "Beställningen tillhör inte detta konto.",
+      "not_found": "Beställningen hittades inte."
+    },
+    "cancel": {
+      "button": "Avbryt beställning",
+      "modal": {
+        "title": "Avbryt",
+        "message": "Är du säker på att du vill avbryta beställningen? Denna åtgärd kan inte ångras!",
+        "confirm": "Ja, avbryt beställning"
+      }
+    }
+  },
+  "orders": {
+    "header": {
+      "date": "Beställningsdatum",
+      "orderNumber": "Beställningsnummer",
+      "status": "Status",
+      "lineItemCount": "Antal produkter",
+      "total": "Total beställning"
+    },
+    "no_result": {
+      "body": "Inga beställningar hittades."
+    },
+    "itemCount": "{count, plural, =1 {Produkt} other {Produkter}}"
+  },
+  "page": {
+    "not_found": "Tyvärr kunde vi inte hitta den begärda sidan.",
+    "continue": "Fortsätt handla"
+  },
+  "registration": {
+    "create_account": "Skapa konto",
+    "marketing_opt_in_label": "Håll mig uppdaterad med nyheter och exklusiva erbjudanden.",
+    "different_shipping_address_label": "Annan leveransadress",
+    "headlines": {
+      "create_new_account": "Skapa nytt konto",
+      "shipping_address": "Leveransadress",
+      "billing_address": "Fakturaadress",
+      "billing_address_reserve": "Beställningskontakt"
+    }
+  },
+  "error": {
+    "general": "Anslutningsproblem. Kontrollera din internetanslutning eller försök igen senare."
+  },
+  "validation": {
+    "required": "Vänligen fyll i detta fält",
+    "email": "Vänligen ange en giltig e-postadress",
+    "numeric": "Vänligen ange endast siffror",
+    "alphaNumeric": "Vänligen ange endast bokstäver och siffror",
+    "mobileNumber": "Vänligen ange ett giltigt mobilnummer",
+    "date": "Vänligen ange ett giltigt datum",
+    "checkField": "Vänligen kontrollera detta fält",
+    "emailConflict": "Denna e-postadress är redan registrerad",
+    "passwordMismatch": "Lösenorden stämmer inte överens",
+    "minPasswordLength": "Minsta lösenordslängd är %'{count} tecken"
+  },
+  "formats": {
+    "date": {
+      "DD": {
+        "day": "2-siffrig"
+      },
+      "MMM": {
+        "month": "kort"
+      },
+      "pattern": "dd.mm.åååå"
+    },
+    "distance": {
+      "pattern": "{distance} {unit}",
+      "units": {
+        "m": "m",
+        "km": "km",
+        "ft": "fot",
+        "mi": "mil"
+      }
+    },
+    "unitOfMeasurement": {
+      "mg": "mg",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "cm": "cm",
+      "m": "m",
+      "m2": "m²",
+      "m3": "m³",
+      "piece": "st."
+    }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "mon"
+    }
+  },
+  "appRating": {
+    "yes": "Ja",
+    "no": "Nej",
+    "title": "Betygsätt appen",
+    "message": "Gillar du vår app? Vi ser fram emot ett betyg!",
+    "rejectionApprovalMessage": "Skulle du vilja ge oss feedback? Det hjälper oss att förbättra appen ytterligare."
+  },
+  "pushOptInModal": {
+    "title": "Få exklusiva kuponger och erbjudanden",
+    "buttonAllow": "Aktivera aviseringar",
+    "buttonDeny": "Jag vill inte ha aviseringar",
+    "message": "Aktivera aviseringar så att vi kan skicka push-aviseringar om nya erbjudanden, exklusiva kuponger med mera."
+  },
+  "cookieConsentModal": {
+    "title": "Anpassa din personliga köpupplevelse",
+    "buttonAcceptAll": "Acceptera alla",
+    "modalButtonOnlyRequired": "Endast nödvändiga",
+    "modalButtonConfirmSelected": "Bekräfta val",
+    "buttonConfigure": "Konfigurera inställningar",
+    "message": "Vårt mål är att optimera appen efter dina behov. För detta använder vi moderna spårningstekniker som gör det möjligt för oss att analysera köpbeteenden och använda data för att förbättra vår app samt presentera personligt innehåll. Du kan när som helst ändra inställningarna i avsnittet 'Mitt konto'. Mer information finns i vår detaljerade {privacyLink}.",
+    "privacyText": "Integritetspolicy"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Komfort",
+    "statisticsTitle": "Personalisering & Statistik",
+    "requiredTitle": "Nödvändigt",
+    "comfort": "Dessa cookies och tekniker möjliggör vissa ytterligare funktioner och bättre prestanda.",
+    "statistics": "Dessa statistik hjälper oss att förbättra vår app och visa mer relevanta annonser.",
+    "required": "Data som är nödvändiga för appens drift.",
+    "privacy": "För mer information, se vår {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Komfortkakor måste tillåtas för att visa inbäddade videor från externa webbplatser.",
+      "link": "Klicka här för att tillåta komfortkakor och visa videon"
+    }
+  }
+}

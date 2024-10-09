@@ -1,4 +1,3 @@
-// @flow
 import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';

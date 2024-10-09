@@ -13,7 +13,7 @@ class DeleteAccount extends Component {
 
   static propTypes = {
     deleteAccount: PropTypes.func.isRequired,
-    Item: PropTypes.node.isRequired,
+    Item: PropTypes.elementType.isRequired,
     isShown: PropTypes.bool,
   }
 

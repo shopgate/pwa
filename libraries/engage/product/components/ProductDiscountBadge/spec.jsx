@@ -6,6 +6,7 @@ import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings
 import { mockedProduct1, mockedStateWithDiscount, mockedStateWithoutDiscount } from './mock';
 import ProductDiscountBadge from './index';
 
+jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/core/hooks/useWidgetSettings', () => ({
   useWidgetSettings: jest.fn(),
 }));

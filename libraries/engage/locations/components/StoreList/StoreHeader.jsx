@@ -1,4 +1,3 @@
-// @flow
 import React, { useCallback, useContext } from 'react';
 import classNames from 'classnames';
 import { Grid, ResponsiveContainer } from '@shopgate/engage/components';

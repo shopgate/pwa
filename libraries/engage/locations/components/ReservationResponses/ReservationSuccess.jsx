@@ -1,4 +1,3 @@
-// @flow
 import React, { useContext } from 'react';
 import { i18n } from '../../../core/helpers/i18n';
 import { FulfillmentContext } from '../../locations.context';

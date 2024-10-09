@@ -146,7 +146,7 @@ class FavoritesButton extends Component {
       <button
         aria-label={this.getLabel()}
         aria-hidden={this.props['aria-hidden']}
-        className={`${className} ${this.props.className}`}
+        className={`ui-shared__favorites-button ${className} ${this.props.className}`}
         onClick={this.handleClick}
         data-test-id="favoriteButton"
         type="button"

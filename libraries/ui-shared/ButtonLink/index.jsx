@@ -43,7 +43,7 @@ class ButtonLink extends Component {
     } = this.props;
 
     return (
-      <ActionButton onClick={this.handleClick} type="secondary" {...props}>
+      <ActionButton className="ui-shared__button-link" onClick={this.handleClick} type="secondary" {...props}>
         {children}
       </ActionButton>
     );

@@ -66,7 +66,7 @@ class PickerModal extends Component {
     }
 
     return (
-      <div className={styles.wrapper}>
+      <div className={`${styles.wrapper} engage__picker_modal`}>
         <div aria-hidden className={backgroundClassName} onClick={this.closeModal} />
         <div className={containerClassName}>
           {React.cloneElement(

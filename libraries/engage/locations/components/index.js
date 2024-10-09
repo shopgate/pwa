@@ -1,4 +1,3 @@
-// @flow
 export { FulfillmentSelector } from './FulfillmentSelector';
 export { FulfillmentSheet } from './FulfillmentSheet';
 export { FulfillmentPathSelector } from './FulfillmentPathSelector';

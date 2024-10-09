@@ -1,0 +1,9 @@
+{
+  "user": {
+    "delete_account": "Usuń dane konta",
+    "delete_account_success": "Otrzymano żądanie usunięcia. Zostałeś wylogowany, a my usuniemy Twoje dane, w zakresie możliwym z prawnego punktu widzenia. Proces ten może potrwać kilka dni.",
+    "delete_account_error": "Wystąpił nieoczekiwany błąd. Proszę spróbować ponownie później.",
+    "delete_account_confirm": "Proszę potwierdzić usunięcie wszystkich danych konta. Nie da się tego odwrócić.",
+    "contact_us": "Kontakt"
+  }
+}

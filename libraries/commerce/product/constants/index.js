@@ -4,7 +4,11 @@ export const ITEM_GALLERY_PATTERN = `${ITEM_PATH}/:productId/gallery/:slide`;
 export const ITEM_REVIEWS_PATTERN = `${ITEM_PATH}/:productId/reviews`;
 export const ITEM_WRITE_REVIEW_PATTERN = `${ITEM_PATH}/:productId/write_review`;
 
+// TODO was 3600000 (1 hour in milliseconds) in PWA 6
 export const PRODUCT_LIFETIME = 59000; // 59 seconds in milliseconds
+
+export const PROVIDE_PRODUCT_BUFFER_TIME = 200;
+export const PROVIDE_PRODUCT = 'PROVIDE_PRODUCT';
 
 // PRODUCT
 export const REQUEST_PRODUCT = 'REQUEST_PRODUCT';

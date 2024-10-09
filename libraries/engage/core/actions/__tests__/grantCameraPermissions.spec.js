@@ -1,4 +1,4 @@
-import { PERMISSION_ID_CAMERA } from '@shopgate/pwa-core/constants/AppPermissions';
+import { PERMISSION_ID_CAMERA } from '@shopgate/engage/core/constants';
 import grantPermissions from '../grantPermissions';
 import grantCameraPermissions from '../grantCameraPermissions';
 

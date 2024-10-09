@@ -12,11 +12,15 @@ import { i18n } from '@shopgate/engage/core/helpers/i18n';
  * and pass the JSX nodes as children.
  * @param {Object} props The component props.
  * @param {Object} props.string The string to translate.
- * @param {Array} props.children Children to use as placeholders. Must be one of the components
+ * @param {Object} [props.params] Object with translation placeholder replacements
+ * @param {Array} [props.children] Children to use as placeholders. Must be one of the components
  *                               provided by I18n.
- * @param {string} props.className Additional classes to append to the translated wrapper element.
+ * @param {string} [props.className] Additional classes to append to the translated wrapper element.
+ * @param {string} [props.role] Optional aria role
  * @param {Function} [props.transform] Input a function to modify the resulting string.
- * @returns {JSX} The translated string as JSX component.
+ * @param {boolean} [acceptPlainTextWithPlaceholders=false] When set to TRUE, the component can
+ * also handle human readable texts that contain text replacement placeholders.
+ * @returns {JSX.Element} The translated string as JSX component.
  */
 const Translate = ({
   string,
@@ -25,6 +29,7 @@ const Translate = ({
   className,
   role,
   transform,
+  acceptPlainTextWithPlaceholders,
   ...rest
 }) => {
   if (typeof string !== 'string' || string.length === 0) {
@@ -49,7 +54,11 @@ const Translate = ({
     } : obj), { ...params });
 
     // Split the tokenized string at the separators.
-    const stringParts = i18n.text(string, values).split(separator);
+    const stringParts = i18n.text(
+      string,
+      values,
+      { acceptPlainTextWithPlaceholders }
+    ).split(separator);
 
     // Create a new array containing the separated chunks of the text and merge the substitutions.
     // The result can be an array with multiple strings and will be joined together.
@@ -71,6 +80,7 @@ const Translate = ({
 
 Translate.propTypes = {
   string: PropTypes.node.isRequired,
+  acceptPlainTextWithPlaceholders: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   params: PropTypes.oneOfType([
@@ -87,6 +97,7 @@ Translate.defaultProps = {
   params: {},
   role: null,
   transform: null,
+  acceptPlainTextWithPlaceholders: false,
 };
 
 export default Translate;

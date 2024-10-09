@@ -7,6 +7,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
+import { getIsCookieConsentHandled } from '@shopgate/engage/tracking/selectors/cookieConsent';
 import {
   TAB_HOME,
   TAB_BROWSE,
@@ -60,7 +61,10 @@ export const getActiveTab = createSelector(
  */
 export const isTabBarEnabled = createSelector(
   getTabBarState,
-  state => state.enabled
+  getIsCookieConsentHandled,
+  // Do not show the TabBar when cookie consent is not handled yet. This prevents breaking out
+  // of the cookie consent process.
+  (state, cookieConsentHandled) => cookieConsentHandled && state.enabled
 );
 
 /**

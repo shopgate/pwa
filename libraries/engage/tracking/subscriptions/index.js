@@ -1,20 +1,7 @@
-import { appDidStart$ } from '@shopgate/engage/core';
-import { isTrackingAllowed } from '../helpers';
-import { hasCookieConsent } from '../selectors';
-import { initTracking } from '../action-creators';
+import analytics from './analytics';
+import cookieConsent from './cookieConsent';
 
-/**
- * Orders subscriptions.
- * @param {Function} subscribe The subscribe function.
- */
-const tracking = (subscribe) => {
-  subscribe(appDidStart$, ({ getState, dispatch }) => {
-    const hasConsent = hasCookieConsent(getState());
-
-    if (!hasConsent || isTrackingAllowed()) {
-      dispatch(initTracking());
-    }
-  });
+export default (subscribe) => {
+  analytics(subscribe);
+  cookieConsent(subscribe);
 };
-
-export default tracking;

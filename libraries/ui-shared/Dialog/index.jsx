@@ -84,7 +84,7 @@ const Dialog = ({
 
   return (
     <Modal>
-      <Backdrop isVisible level={0} />
+      <Backdrop isVisible level={0} opacity={30} />
       <DialogComponent {...dialogProps} />
     </Modal>
   );

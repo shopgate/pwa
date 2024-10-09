@@ -5,7 +5,9 @@ import classNames from 'classnames';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
-import { withCurrentProduct } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { withCurrentProduct } from '@shopgate/engage/core/hocs';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
 import { small, big } from './styles';
@@ -14,8 +16,8 @@ const { variables } = themeConfig;
 
 const styles = {
   root: css({
-    margin: variables.gap.big,
-  }).toString(),
+    padding: variables.gap.big,
+  }),
   title: css({
     fontSize: '1rem',
     fontWeight: 500,
@@ -29,8 +31,18 @@ const styles = {
  * @returns {JSX}
  */
 const ProductUnitQuantityPicker = ({
-  children, className, product, disabled, stockInfo,
+  children,
+  className,
+  classes,
+  product,
+  disabled,
+  stockInfo,
+  size,
+  quantityLabel,
+  hideHeadline,
 }) => {
+  const { show = hasNewServices() } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
+
   const { quantity, setQuantity } = useContext(ProductContext);
 
   const { minValue, maxValue } = useMemo(() => {
@@ -51,7 +63,7 @@ const ProductUnitQuantityPicker = ({
     };
   }, [stockInfo]);
 
-  if (!product) {
+  if (!product || !show) {
     return null;
   }
 
@@ -62,11 +74,14 @@ const ProductUnitQuantityPicker = ({
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
       <div className={classNames(styles.root, className)}>
         <div>
-          <div className={styles.title}>
-            <I18n.Text string="product.sections.quantity" />
-          </div>
+          {!hideHeadline && (
+            <div className={styles.title}>
+              <I18n.Text string="product.sections.quantity" />
+            </div>
+          )}
           <UnitQuantityPicker
-            className={hasUnitWithDecimals ? big : small}
+            // eslint-disable-next-line no-nested-ternary
+            className={classes?.picker ? classes.picker : (hasUnitWithDecimals ? big : small)}
             unit={hasUnitWithDecimals ? unit : null}
             maxDecimals={hasUnitWithDecimals ? 2 : 0}
             incrementStep={hasUnitWithDecimals ? 0.25 : 1}
@@ -76,6 +91,8 @@ const ProductUnitQuantityPicker = ({
             disabled={disabled}
             minValue={minValue}
             maxValue={maxValue}
+            size={size}
+            quantityLabel={quantityLabel}
           />
         </div>
         { children && (
@@ -90,18 +107,30 @@ const ProductUnitQuantityPicker = ({
 
 ProductUnitQuantityPicker.propTypes = {
   children: PropTypes.node,
+  classes: PropTypes.shape({
+    picker: PropTypes.string,
+  }),
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  hideHeadline: PropTypes.bool,
   product: PropTypes.shape(),
+  quantityLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  size: PropTypes.oneOf(['default', 'large']),
   stockInfo: PropTypes.shape(),
 };
 
 ProductUnitQuantityPicker.defaultProps = {
   disabled: false,
   product: null,
+  size: undefined,
   stockInfo: null,
   children: null,
   className: null,
+  quantityLabel: null,
+  classes: {
+    picker: null,
+  },
+  hideHeadline: false,
 };
 
 export default withCurrentProduct(connect(ProductUnitQuantityPicker));

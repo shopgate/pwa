@@ -9,7 +9,7 @@ import {
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { ProductListEntryProvider } from '@shopgate/engage/product';
 import Item from '../Item';
-import styles from './style';
+
 /**
  * The Product Grid Iterator component.
  * @param {Object} props The component props.
@@ -17,10 +17,10 @@ import styles from './style';
  */
 const Iterator = (props) => {
   const portalProps = { productId: props.id };
-  const { id, display, columns } = props;
+  const { id, display } = props;
 
   return (
-    <Grid.Item key={id} className={styles.item(columns)} data-test-id={props.name}>
+    <Grid.Item key={id} data-test-id={props.name}>
       <ProductListEntryProvider productId={props.id}>
         <Portal name={PRODUCT_ITEM_BEFORE} props={portalProps} />
         <Portal name={PRODUCT_ITEM} props={portalProps}>
@@ -34,13 +34,11 @@ const Iterator = (props) => {
 
 Iterator.propTypes = {
   id: PropTypes.string.isRequired,
-  columns: PropTypes.number,
   display: PropTypes.shape(),
   name: PropTypes.string,
 };
 
 Iterator.defaultProps = {
-  columns: 2,
   display: null,
   name: null,
 };

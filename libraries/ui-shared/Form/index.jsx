@@ -65,6 +65,7 @@ class Form extends PureComponent {
         onSubmit={this.handleSubmit}
         onKeyPress={this.handleKeyPress}
         ref={this.formElement}
+        className="ui-shared__form"
       >
         {this.props.children}
       </form>

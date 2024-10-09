@@ -142,10 +142,10 @@ class Stars extends Component {
         data-test-id={`ratedStars: ${ratedStars}`}
         aria-hidden
       >
-        <div className={styles.emptyStars}>
+        <div className={`${styles.emptyStars} rating-stars-empty`}>
           {emptyStars}
         </div>
-        <div className={styles.filledStars}>
+        <div className={`${styles.filledStars} rating-stars-filled`}>
           {filledStars}
         </div>
       </div>

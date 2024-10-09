@@ -96,7 +96,7 @@ class Link extends Component {
 
     return (
       <Tag
-        className={`${styles} ${className}`}
+        className={`${styles} ${className} common__link`}
         onClick={this.handleOpenLink}
         role={role}
         data-test-id={`link: ${href}`}

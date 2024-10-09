@@ -18,6 +18,7 @@ exports[`<CategoryListContent /> should render 1`] = `
     <CategoryListContent
       categories={null}
       categoriesFetching={false}
+      category={null}
       categoryId="1234"
       childrenCount={null}
       dispatch={[Function]}
@@ -39,6 +40,69 @@ exports[`<CategoryListContent /> should render 1`] = `
           }
         }
       />
+      <Portal
+        name="category.list.after"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      />
+    </CategoryListContent>
+  </Connect(CategoryListContent)>
+</Provider>
+`;
+
+exports[`<CategoryListContent /> should render with CategoryList 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(CategoryListContent)
+    categoryId="1234"
+  >
+    <CategoryListContent
+      categories={null}
+      categoriesFetching={false}
+      category={null}
+      categoryId="1234"
+      childrenCount={null}
+      dispatch={[Function]}
+      hasChildren={true}
+    >
+      <Portal
+        name="category.list.before"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      />
+      <Portal
+        name="category.list"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      >
+        <Section
+          title="category.sections.categories"
+        >
+          <CategoryList
+            categories={null}
+            parentCategory={null}
+            prerender={0}
+          />
+        </Section>
+      </Portal>
       <Portal
         name="category.list.after"
         props={

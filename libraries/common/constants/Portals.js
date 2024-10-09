@@ -20,6 +20,7 @@ const SCANNER = 'scanner';
 const REGISTER_LINK = 'register-link';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
+const PRIVACY_SETTINGS = 'privacy-settings';
 const IMPRINT = 'imprint';
 const STORE_INFORMATION = 'store-information';
 const STORE_INFORMATION_MORE = 'store-information-more';
@@ -32,6 +33,7 @@ const BACK = 'back';
 const CLOSE = 'close';
 const SIMPLE = 'simple';
 const CART_BUTTON = 'cart-button';
+const ITEMS = 'items';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -74,6 +76,10 @@ export const NAV_MENU_QUICK_LINKS = `${NAV_MENU}.${QUICK_LINKS}`;
 export const NAV_MENU_QUICK_LINKS_BEFORE = `${NAV_MENU}.${QUICK_LINKS}.${BEFORE}`;
 export const NAV_MENU_QUICK_LINKS_AFTER = `${NAV_MENU}.${QUICK_LINKS}.${AFTER}`;
 
+export const NAV_MENU_QUICK_LINKS_ITEMS = `${NAV_MENU}.${QUICK_LINKS}.${ITEMS}`;
+export const NAV_MENU_QUICK_LINKS_ITEMS_BEFORE = `${NAV_MENU}.${QUICK_LINKS}.${ITEMS}.${BEFORE}`;
+export const NAV_MENU_QUICK_LINKS_ITEMS_AFTER = `${NAV_MENU}.${QUICK_LINKS}.${ITEMS}.${AFTER}`;
+
 export const NAV_MENU_HOME_BEFORE = `${NAV_MENU}.${HOME}.${BEFORE}`;
 export const NAV_MENU_HOME = `${NAV_MENU}.${HOME}`;
 export const NAV_MENU_HOME_AFTER = `${NAV_MENU}.${HOME}.${AFTER}`;
@@ -89,6 +95,10 @@ export const NAV_MENU_TERMS_AFTER = `${NAV_MENU}.${TERMS}.${AFTER}`;
 export const NAV_MENU_PRIVACY_BEFORE = `${NAV_MENU}.${PRIVACY}.${BEFORE}`;
 export const NAV_MENU_PRIVACY = `${NAV_MENU}.${PRIVACY}`;
 export const NAV_MENU_PRIVACY_AFTER = `${NAV_MENU}.${PRIVACY}.${AFTER}`;
+
+export const NAV_MENU_PRIVACY_SETTINGS_BEFORE = `${NAV_MENU}.${PRIVACY_SETTINGS}.${BEFORE}`;
+export const NAV_MENU_PRIVACY_SETTINGS = `${NAV_MENU}.${PRIVACY_SETTINGS}`;
+export const NAV_MENU_PRIVACY_SETTINGS_AFTER = `${NAV_MENU}.${PRIVACY_SETTINGS}.${AFTER}`;
 
 export const NAV_MENU_IMPRINT_BEFORE = `${NAV_MENU}.${IMPRINT}.${BEFORE}`;
 export const NAV_MENU_IMPRINT = `${NAV_MENU}.${IMPRINT}`;

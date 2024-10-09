@@ -4,19 +4,22 @@ import {
   NAV_MENU_PRIVACY,
   NAV_MENU_PRIVACY_AFTER,
   NAV_MENU_PRIVACY_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { PRIVACY_PATH } from '../../../../constants';
+} from '@shopgate/engage/core';
+import {
+  Portal,
+  NavDrawer,
+  SecurityIcon,
+} from '@shopgate/engage/components';
+import { PRIVACY_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.privacy';
 
 /**
- * @param {Function} props.navigate The navigate action.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {Function} props.navigate The navigate props
+ * @returns {JSX.Element}
  */
 const PrivacyButton = ({ navigate }) => (
   <Fragment>

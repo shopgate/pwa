@@ -4,6 +4,7 @@ import {
   configuration,
   RESET_APP_REDUCERS,
 } from '@shopgate/engage/core';
+import backInStock from '@shopgate/engage/back-in-stock/reducers';
 import checkout from '@shopgate/engage/checkout/reducers';
 import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
@@ -13,11 +14,12 @@ import router from '@shopgate/pwa-common/reducers/router';
 import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
+import pushOptIn from '@shopgate/engage/push-opt-in/reducers';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
-import { settings } from '@shopgate/engage/core/reducers';
+import { settings, app } from '@shopgate/engage/core/reducers';
 import locations from '@shopgate/engage/locations/reducers';
 import orders from '@shopgate/engage/orders/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
@@ -26,6 +28,7 @@ import account from '@shopgate/engage/account/reducers';
 import extensions from 'Extensions/reducers';
 import tabBar from 'Components/TabBar/reducer';
 import appRating from '@shopgate/engage/app-rating/reducers';
+import tracking from '@shopgate/engage/tracking/reducers';
 
 persistedReducers.set([
   'cart.data',
@@ -37,6 +40,8 @@ persistedReducers.set([
   'url',
   'user',
   'appRating',
+  'pushOptIn.optInTrigger',
+  'tracking.cookieSettings',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -54,8 +59,10 @@ const reducers = combineReducers({
   router,
   cart,
   category,
+  backInStock,
   checkout,
   client,
+  app,
   ...extensions && { extensions: combineReducers(extensions) },
   favorites,
   filter,
@@ -74,6 +81,8 @@ const reducers = combineReducers({
   url,
   user,
   appRating,
+  pushOptIn,
+  tracking,
 });
 
 export default reducers;

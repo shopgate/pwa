@@ -1,6 +1,11 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { SHOPGATE_USER_DELETE_FAVORITES } from '../constants/Pipelines';
 import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators';
+import {
+  getHasMultipleFavoritesListsSupport,
+  getFavoritesDefaultList,
+} from '../selectors';
 
 /**
  * Removes a single product from the favorite list using the `deleteFavorites` pipeline.
@@ -12,15 +17,18 @@ import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators
  */
 function removeFavorites(productId, listId, quantity, notes) {
   return async (dispatch, getState) => {
+    const state = getState();
+
+    const hasMultiSupport = getHasMultipleFavoritesListsSupport(state);
+
     // Fallback for deprecated calls without list id.
-    const { lists } = getState().favorites.lists;
-    const defaultList = lists?.[0] || { id: 'DEFAULT' };
+    const defaultList = getFavoritesDefaultList(state);
     const takenListId = listId || defaultList.id;
 
     const request = new PipelineRequest(SHOPGATE_USER_DELETE_FAVORITES)
       .setInput({
         productId,
-        favoritesListId: takenListId,
+        ...hasMultiSupport ? { favoritesListId: takenListId } : null,
       })
       .setRetries(0)
       .dispatch();
@@ -42,4 +50,4 @@ function removeFavorites(productId, listId, quantity, notes) {
   };
 }
 
-export default removeFavorites;
+export default mutable(removeFavorites);

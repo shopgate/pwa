@@ -164,7 +164,7 @@ class Widgets extends Component {
     }
 
     return (
-      <div>{this.createArrayOfElements(widgets, components)}</div>
+      <div className="common__widgets">{this.createArrayOfElements(widgets, components)}</div>
     );
   }
 }

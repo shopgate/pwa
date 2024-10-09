@@ -1,22 +1,30 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
-import event from '@shopgate/pwa-core/classes/Event';
-import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import I18n from '@shopgate/pwa-common/components/I18n/';
-import { i18n } from '@shopgate/engage/core';
-import Input from '@shopgate/pwa-common/components/Input/';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import {
-  SCANNER_ICON_BEFORE,
-  SCANNER_ICON,
-  SCANNER_ICON_AFTER,
-} from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
-import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
-import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
-import { router } from '@virtuous/conductor';
+  registerEvents,
+} from '@shopgate/engage/core/commands';
+import {
+  i18n,
+  router,
+} from '@shopgate/engage/core/helpers';
+import {
+  Trilean,
+  EVENT_KEYBOARD_WILL_CHANGE,
+} from '@shopgate/engage/core/constants';
+import {
+  event,
+} from '@shopgate/engage/core/classes';
+import {
+  I18n,
+  Input,
+  SurroundPortals,
+  MagnifierIcon,
+  BarcodeScannerIcon,
+} from '@shopgate/engage/components';
+import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
+import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';
@@ -51,13 +59,13 @@ class SearchField extends Component {
     super(props);
 
     this.state = {
-      focused: false,
+      /** @type {null|boolean} added with CCP-2443 */
+      focused: Trilean.NONE,
       bottomHeight: 0,
       query: this.props.query || '',
     };
 
     this.input = null;
-    this.onBlurTimeout = null;
   }
 
   /**
@@ -73,7 +81,6 @@ class SearchField extends Component {
    */
   componentWillUnmount() {
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-    clearTimeout(this.onBlurTimeout);
   }
 
   /**
@@ -116,7 +123,7 @@ class SearchField extends Component {
        */
       this.setState({
         query: '',
-        focused: false,
+        focused: Trilean.NONE,
       });
     }, 0);
   }
@@ -135,15 +142,24 @@ class SearchField extends Component {
    * @param {boolean} focused Whether the element currently became focused.
    */
   handleFocusChange = (focused) => {
-    clearTimeout(this.onBlurTimeout);
-    this.onBlurTimeout = !focused ?
+    // we've faced an issue
+    // where the keyboard will be shown for a few
+    // milliseconds and then it'll hide.
+    const bufferTimeout = 100;
+
+    if (!focused) {
       setTimeout(() => {
-        /*
-         * Delay the execution of the state change until the next cycle
-         * to give pending click events a chance to run.
-         */
-        this.setState({ focused });
-      }, 200) : this.setState({ focused });
+        TabBar.show();
+      }, bufferTimeout);
+    } else {
+      TabBar.hide();
+    }
+
+    this.setState({
+      focused: focused
+        ? Trilean.TRUE
+        : Trilean.FALSE,
+    });
   };
 
   /**
@@ -155,14 +171,13 @@ class SearchField extends Component {
     e.preventDefault();
 
     const query = searchQuery || this.state.query;
-
     if (!query) {
       return;
     }
 
     router.update(this.props.pageId, { query });
 
-    this.setState({ focused: false }, () => {
+    this.setState({ focused: Trilean.FALSE }, () => {
       /**
        * "submitSearch" might cause a component unmount. So we take care that the state update
        * happens before to avoid errors about state updates on unmounted components.
@@ -182,7 +197,7 @@ class SearchField extends Component {
       className={styles.label}
     >
       <div className={styles.icon}>
-        <SearchIcon />
+        <MagnifierIcon />
       </div>
       {!this.state.query.length && <I18n.Text string="search.label" />}
     </label>
@@ -195,7 +210,7 @@ class SearchField extends Component {
   renderCancelButton = () => (
     <button
       className={classNames(styles.button, {
-        [styles.hidden]: !this.state.focused,
+        [styles.hidden]: this.state.focused === Trilean.NONE,
       })}
       onClick={this.reset}
       type="button"
@@ -231,20 +246,16 @@ class SearchField extends Component {
    * @returns {JSX}
    */
   renderScannerIcon = () => {
-    if (!this.props.showScannerIcon || this.state.focused) {
+    if (!this.props.showScannerIcon || this.state.focused !== Trilean.NONE) {
       return null;
     }
 
     return (
-      <Fragment>
-        <Portal name={SCANNER_ICON_BEFORE} />
-        <Portal name={SCANNER_ICON}>
-          <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button" aria-label={i18n.text('titles.scanner')}>
-            <BarcodeScannerIcon />
-          </button>
-        </Portal>
-        <Portal name={SCANNER_ICON_AFTER} />
-      </Fragment>
+      <SurroundPortals portalName={SCANNER_ICON}>
+        <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button" aria-hidden aria-label={i18n.text('titles.scanner')}>
+          <BarcodeScannerIcon />
+        </button>
+      </SurroundPortals>
     );
   }
 
@@ -256,7 +267,7 @@ class SearchField extends Component {
     const { focused } = this.state;
 
     return (
-      <div data-test-id="SearchField">
+      <div className="theme__browse__search-field" data-test-id="SearchField">
         <div className={styles.container}>
           <div className={styles.inputWrapper}>
             <form onSubmit={this.handleSubmit} action=".">
@@ -269,9 +280,9 @@ class SearchField extends Component {
             {this.renderCancelButton()}
           </div>
         </div>
-        {focused && <div className={styles.overlay} />}
+        {focused !== Trilean.NONE && <div className={styles.overlay} />}
         <SuggestionList
-          visible={focused}
+          visible={focused !== Trilean.NONE}
           searchPhrase={this.state.query}
           onClick={this.handleSubmit}
           bottomHeight={this.state.bottomHeight}

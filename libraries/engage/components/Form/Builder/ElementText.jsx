@@ -47,7 +47,14 @@ const ElementText = (props) => {
   const type = mapping[element.type];
 
   return (
-    <div className={classNames(camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
+    <div
+      className={classNames(
+        camelCase(name),
+        'engage__form-text',
+        'formBuilderField',
+        { validationError: !!errorText }
+      )}
+    >
       <TextField
         type={type}
         name={name}

@@ -1,6 +1,6 @@
 import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { hasWebBridge } from '@shopgate/engage/core';
+import { hasWebBridge, hasNewServices } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp, setCSSCustomProp } from './cssCustomProperties';
 
 const { colors } = themeConfig;
@@ -40,6 +40,13 @@ export const initCSSCustomProps = () => {
 
   const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).alpha(0.08);
   setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
+
+  setCSSCustomProp('--color-button-cta', 'var(--color-primary)');
+  setCSSCustomProp('--color-button-cta-contrast', 'var(--color-primary-contrast)');
+
+  if (!getCSSCustomProp('--color-button-dialog-ios')) {
+    setCSSCustomProp('--color-button-dialog-ios', '#1a73e8');
+  }
 };
 
 /**
@@ -51,10 +58,26 @@ export const initCSSCustomPropsFallback = () => {
   setCSSCustomProp('--color-secondary', colors.accent);
   setCSSCustomProp('--color-secondary-contrast', getContrastColor(colors.accent));
 
+  if (!hasNewServices()) {
+    setCSSCustomProp('--color-button-cta', colors.cta);
+    setCSSCustomProp('--color-button-cta-contrast', colors.ctaContrast);
+  } else {
+    setCSSCustomProp('--color-button-cta', 'var(--color-primary)');
+    setCSSCustomProp('--color-button-cta-contrast', 'var(--color-primary-contrast)');
+  }
+
+  if (!getCSSCustomProp('--color-button-dialog-ios')) {
+    setCSSCustomProp('--color-button-dialog-ios', '#1a73e8');
+  }
+
   setCSSCustomProp('--color-text-high-emphasis', '#212121');
   setCSSCustomProp('--color-text-medium-emphasis', '#666666');
   setCSSCustomProp('--color-text-low-emphasis', '#9e9e9e');
   setCSSCustomProp('--color-background-accent', '#f7f7f7');
+
+  setCSSCustomProp('--color-state-alert', colors.error);
+  setCSSCustomProp('--color-state-warning', colors.warning);
+  setCSSCustomProp('--color-state-ok', colors.success);
 
   const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).fade(0.9);
   setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);

@@ -68,4 +68,19 @@ describe('i18n', () => {
       expect(getWeekDaysOrder()).toEqual(['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri']);
     });
   });
+
+  it('should return default text for missing translation', () => {
+    const locales = {
+      test: {
+        string: 'Test string: {bar}',
+      },
+    };
+    i18n.init({
+      locales,
+      lang: 'en-US',
+    });
+
+    expect(i18n.textWithDefault('test.missing', 'Default text'))
+      .toBe('Default text');
+  });
 });

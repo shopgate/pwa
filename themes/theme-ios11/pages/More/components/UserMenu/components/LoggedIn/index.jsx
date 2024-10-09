@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
-import { ORDERS_PATH, WISH_LIST_PATH, PROFILE_PATH } from '@shopgate/engage/account';
+import { ORDERS_PATH, WISH_LIST_PATH, PROFILE_PATH } from '@shopgate/engage/account/constants';
 import Section from '../../../Section';
 import Item from '../../../Item';
 
@@ -31,7 +31,7 @@ const LoggedIn = ({ logout }) => {
             />
             <Item
               href={WISH_LIST_PATH}
-              label="navigation.wish_list"
+              label="navigation.favorites"
               testId="accountButton"
             />
             <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />

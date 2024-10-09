@@ -6,7 +6,7 @@ exports[`RatingNumber should render a number 1`] = `
   rating={100}
 >
   <Number
-    className="class-test"
+    className="class-test ui-shared__rating-number"
     fractions={2}
     number={5}
   >

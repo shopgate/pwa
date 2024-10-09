@@ -26,12 +26,13 @@ import appConfig from '../../helpers/config';
  */
 function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return async (dispatch) => {
-    const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
+    const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
     dispatch(requestLogin(parameters.login, parameters.password, strategy));
 
     let recaptchaToken;
     if (recaptchaEnabled && googleCloudSiteKey) {
       try {
+        // Add a reCAPTCHA token to the login request when feature is configured
         await new Promise(resolve => window.grecaptcha.enterprise.ready(resolve));
         recaptchaToken = await window.grecaptcha.enterprise.execute(googleCloudSiteKey, { action: 'login' });
       } catch (e) {

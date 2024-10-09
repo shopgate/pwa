@@ -120,7 +120,7 @@ class Backdrop extends Component {
       },
     };
 
-    const className = `${style} ${this.props.className}`;
+    const className = `${style} ${this.props.className} common__backdrop`;
 
     return (
       <Transition childrenStyles={transition}>

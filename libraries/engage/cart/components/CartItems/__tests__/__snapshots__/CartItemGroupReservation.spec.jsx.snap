@@ -13,8 +13,8 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
         }
       }
     >
-      <Component />
-      <Component
+      <StoreOpeningHours />
+      <StorePhoneNumber
         phone="012456789"
       />
     </div>

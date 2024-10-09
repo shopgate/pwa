@@ -3,24 +3,26 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { getProductImageSettings as mockGetProductImageSettings } from '@shopgate/engage/product/helpers';
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
 jest.unmock('@shopgate/pwa-core');
 
 jest.mock('@shopgate/engage/core');
-jest.mock('@shopgate/engage/product', () => ({
+jest.mock('@shopgate/engage/product/hocs', () => ({
   withPriceCalculation: Component => props => <Component {...props} />,
+}));
+jest.mock('@shopgate/engage/product/components', () => ({
   MapPriceHint: () => null,
   OrderQuantityHint: () => null,
-  getProductImageSettings: mockGetProductImageSettings,
   ProductImage: () => null,
   ProductGridPrice: () => null,
   FeaturedMedia: () => null,
   ProductName: ({ name }) => name,
   ProductDiscountBadge: () => null,
   ProductBadges: ({ children }) => children,
+}));
+jest.mock('@shopgate/engage/product/hooks', () => ({
   useProductListType: jest.fn(() => ({ meta: null })),
 }));
 jest.mock('@shopgate/engage/components');

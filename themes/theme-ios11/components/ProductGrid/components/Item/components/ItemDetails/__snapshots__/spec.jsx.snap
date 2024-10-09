@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ItemDetails /> should render with minimal props 1`] = `
+exports[`<ItemDetails /> should render additional components with new services 1`] = `
 <div
-  className={
-    Object {
-      "data-css-t5ln4b": "",
-    }
-  }
+  className="css-t5ln4b theme__product-grid__item__item-details"
   role="button"
   tabIndex={-1}
 >
@@ -41,6 +37,43 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
         "price": Object {},
       }
     }
+  />
+  <ItemPrice
+    display={null}
+    product={
+      Object {
+        "id": "1234",
+        "name": "Foo",
+        "price": Object {},
+      }
+    }
+  />
+</div>
+`;
+
+exports[`<ItemDetails /> should render with minimal props 1`] = `
+<div
+  className="css-t5ln4b theme__product-grid__item__item-details"
+  role="button"
+  tabIndex={-1}
+>
+  <Swatches
+    productId="1234"
+  />
+  <ItemName
+    display={null}
+    name="Foo"
+    productId="1234"
+  />
+  <MapPriceHint
+    productId="1234"
+  />
+  <OrderQuantityHint
+    className="css-1okiobr"
+    productId="1234"
+  />
+  <EffectivityDates
+    productId="1234"
   />
   <ItemPrice
     display={null}

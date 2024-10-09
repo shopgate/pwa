@@ -26,7 +26,14 @@ const ElementSelect = (props) => {
   }
 
   return (
-    <div className={classNames(camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
+    <div
+      className={classNames(
+        camelCase(name),
+        'engage__form-select',
+        'formBuilderField',
+        { validationError: !!errorText }
+      )}
+    >
       <Select
         name={name}
         label={element.label}

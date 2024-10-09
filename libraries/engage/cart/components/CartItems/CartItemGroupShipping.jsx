@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { LocalShippingIcon } from '../../../components';

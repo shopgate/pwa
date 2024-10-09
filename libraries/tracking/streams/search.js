@@ -1,15 +1,23 @@
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  main$,
+  pwaDidAppear$,
+} from '@shopgate/engage/core/streams';
+import {
+  getIsAppWebViewVisible,
+  getCurrentSearchQuery,
+} from '@shopgate/engage/core/selectors';
 import {
   SEARCH_PATTERN,
   RECEIVE_SEARCH_RESULTS,
-} from '@shopgate/pwa-common-commerce/search/constants';
-import { getCurrentSearchQuery } from '@shopgate/pwa-common/selectors/router';
-import { searchDidEnter$ } from '@shopgate/pwa-common-commerce/search/streams';
-import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { main$ } from '@shopgate/pwa-common/streams/main';
-import { pwaDidAppear$ } from '@shopgate/pwa-common/streams/app';
+} from '@shopgate/engage/search/constants';
+import {
+  searchDidEnter$,
+} from '@shopgate/engage/search/streams';
 
 /**
  * Emits when the search route comes active again after a legacy page was active.
@@ -27,6 +35,8 @@ const resultsReceived$ = main$
  * Emits when the search is ready to be tracked and all relevant data is available.
  */
 export const searchIsReady$ = searchDidEnter$
+  // Do not track while PWA webview is in the background
+  .filter(({ getState }) => getIsAppWebViewVisible(getState()))
   .switchMap((data) => {
     const { getState } = data;
     const query = getCurrentSearchQuery(getState());

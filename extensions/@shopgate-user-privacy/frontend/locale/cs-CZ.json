@@ -1,0 +1,9 @@
+{
+  "user": {
+    "delete_account": "Smazat údaje o účtu",
+    "delete_account_success": "Požadavek na smazání byl přijat. Byli jste odhlášeni a my vaše údaje v rámci zákonných možností vymažeme. Tento proces může trvat několik dní.",
+    "delete_account_error": "Došlo k neočekávané chybě. Zkuste to prosím později.",
+    "delete_account_confirm": "Potvrďte prosím vymazání všech údajů o účtu. Toto nelze vzít zpět.",
+    "contact_us": "Kontaktujte nás"
+  }
+}

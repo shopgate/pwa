@@ -19,6 +19,7 @@ const ProductFilters = ({ categoryId, showFilters }) => {
           <GlobalLocationSwitcher renderBar />
           <FulfillmentSlotSwitcher renderBar />
         </ResponsiveContainer>
+
         {showFilters && (
         <FilterBar
           categoryId={categoryId}
