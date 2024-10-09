@@ -1,5 +1,24 @@
 # Changelog
 
+## [v7.20.0](https://github.com/shopgate/pwa/compare/...v7.20.0) (2024-10-09)
+
+#### :rocket: Enhancement
+* [#1276](https://github.com/shopgate/pwa/pull/1276) Small improvements for WebCheckout extensions ([@fkloes](https://github.com/fkloes))
+* [#1272](https://github.com/shopgate/pwa/pull/1272) Implemented "completedRegistration" tracking event ([@fkloes](https://github.com/fkloes))
+* [#1267](https://github.com/shopgate/pwa/pull/1267) HTML Sanitizer now blocks YouTube and Vimeo videos when comfort cookies are not accepted ([@fkloes](https://github.com/fkloes))
+* [#1268](https://github.com/shopgate/pwa/pull/1268) Add core tracking for favorites ([@SaschaKrist](https://github.com/SaschaKrist))
+* [#1261](https://github.com/shopgate/pwa/pull/1261) Add meta property to ProductListProvider ([@SaschaKrist](https://github.com/SaschaKrist))
+* [#1231](https://github.com/shopgate/pwa/pull/1231) Add config and logic for price grouping ([@Phmank](https://github.com/Phmank))
+
+#### :bug: Bug Fix
+* [#1283](https://github.com/shopgate/pwa/pull/1283) Fixed an issue when YouTube or Video logos where tapped inside iframes ([@fkloes](https://github.com/fkloes))
+* [#1274](https://github.com/shopgate/pwa/pull/1274) Fixed strike price display error on wishlist ([@fkloes](https://github.com/fkloes))
+* [#1274](https://github.com/shopgate/pwa/pull/1274) Fixed strike price display error on wishlist ([@fkloes](https://github.com/fkloes))
+* [#1273](https://github.com/shopgate/pwa/pull/1273) Limited login session lifetime is now also set after registration ([@fkloes](https://github.com/fkloes))
+* [#1271](https://github.com/shopgate/pwa/pull/1271) Fix svg encoding in cookie and push opt-in modals ([@AylinUenal](https://github.com/AylinUenal))
+* [#1264](https://github.com/shopgate/pwa/pull/1264) Customer data is fully reset on logout ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-27)
 
 #### :rocket: Enhancement
