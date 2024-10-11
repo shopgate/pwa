@@ -29,7 +29,7 @@ describe('TabBar favorites action', () => {
   it('should render only icon when badge is 0', () => {
     getFavoritesCount.mockReturnValueOnce(0);
     const component = createComponent(mockedEmptyState);
-    expect(component.html()).toBe(null);
+    expect(component.isEmptyRender()).toBe(true);
   });
   it('should render exact number', () => {
     const component = createComponent(mockedState);

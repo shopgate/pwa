@@ -96,5 +96,6 @@ export const I18n = {
 };
 
 export { default as View, ViewContext } from '../View/__mocks__/index';
+export { default as ReduxConnectedPortal } from '../ReduxConnectedPortal/__mocks__/index';
 
 /* eslint-enable require-jsdoc */
