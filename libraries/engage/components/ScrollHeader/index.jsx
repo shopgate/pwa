@@ -23,13 +23,16 @@ function ScrollHeader({
       scrollTop, scrolled, scrollOut, scrollIn,
     } = scrollEvent;
 
-    if (scrolled) {
-      if (!shouldHideHeader && scrollOut && scrollTop >= scrollOffset) {
-        setShouldHideHeader(true);
-      }
-      if (shouldHideHeader && scrollIn) {
-        setShouldHideHeader(false);
-      }
+    if (!scrolled) {
+      return;
+    }
+
+    if (!shouldHideHeader && scrollOut && scrollTop >= scrollOffset) {
+      setShouldHideHeader(true);
+    }
+
+    if (shouldHideHeader && scrollIn) {
+      setShouldHideHeader(false);
     }
   }, [scrollOffset, shouldHideHeader]);
 
