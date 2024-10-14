@@ -1,4 +1,3 @@
-// @flow
 import { i18n } from '@shopgate/engage/core';
 
 /**
@@ -7,7 +6,7 @@ import { i18n } from '@shopgate/engage/core';
  * @param {boolean} [imperial=false] Whether the original distance is imperial or metric
  * @returns {string}
  */
-const formatDistance = (distance: number, imperial: boolean = false): string => {
+const formatDistance = (distance, imperial = false) => {
   let distanceAltered = distance;
   let precision = 0;
   let unit;

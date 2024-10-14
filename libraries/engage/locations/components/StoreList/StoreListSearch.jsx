@@ -87,6 +87,18 @@ function StoreListSearch({
     setCountryCode(event.target.value, productId, isStoreFinder);
   }, [isStoreFinder, productId, setCountryCode]);
 
+  useEffect(() => {
+    if (!Array.isArray(supportedCountries) || !supportedCountries.length) {
+      return;
+    }
+
+    // Check if current countryCode is included in supportedCountries. Update the code to a valid
+    // one if nothing was found.
+    if (!supportedCountries.includes(countryCode)) {
+      handleCountrySelectChange({ target: { value: supportedCountries[0] } });
+    }
+  }, [countryCode, handleCountrySelectChange, supportedCountries]);
+
   /**
    * Blurs the postal code input to trigger an update.
    * @param {SyntheticEvent} event A React event object.

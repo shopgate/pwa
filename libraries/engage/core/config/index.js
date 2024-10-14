@@ -1,4 +1,3 @@
-// @flow
 export { default as subscriptions } from './config.subscriptions';
 export { default as reducers } from './config.reducers';
 

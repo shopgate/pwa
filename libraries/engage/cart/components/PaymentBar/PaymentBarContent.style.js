@@ -1,4 +1,3 @@
-// @flow
 import { css } from 'glamor';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';

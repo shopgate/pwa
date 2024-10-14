@@ -1,4 +1,3 @@
-// @flow
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
