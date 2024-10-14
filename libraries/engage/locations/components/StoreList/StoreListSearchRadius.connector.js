@@ -1,4 +1,3 @@
-// @flow
 import { connect } from 'react-redux';
 import { makeGetDefaultUnitSystem } from '@shopgate/engage/core/config/config.selectors';
 import { getStoreFinderSearchRadius } from '../../selectors';

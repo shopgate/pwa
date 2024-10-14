@@ -1,4 +1,3 @@
-// @flow
 export { default as errorLocations } from './errorLocations';
 export { default as selectLocation } from './selectLocation';
 export { default as selectGlobalLocation } from './selectGlobalLocation';

@@ -1,4 +1,3 @@
-// @flow
 import { PRODUCT } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { PRODUCT_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 

@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import { UIEvents, i18n } from '@shopgate/engage/core';
 import { SheetList } from '@shopgate/engage/components';
@@ -90,7 +89,7 @@ function FulfillmentPathSelector() {
   );
 }
 
-FulfillmentPathSelector.open = (callbackFn: (value: string) => void) => {
+FulfillmentPathSelector.open = (callbackFn) => {
   callback = callbackFn;
   UIEvents.emit(EVENT_SET_OPEN);
 };

@@ -73,6 +73,10 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
+  if (prev.userMethod !== next.userMethod) {
+    return false;
+  }
+
   return true;
 };
 

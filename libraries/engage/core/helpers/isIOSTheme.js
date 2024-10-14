@@ -1,4 +1,3 @@
-// @flow
 /**
  * Checks if current theme is an iOS theme.
  * @returns {boolean}

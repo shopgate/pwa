@@ -1,4 +1,3 @@
-// @flow
 import { FAVORITES } from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 
 export const FAVORITES_LIST = `${FAVORITES}.list`;

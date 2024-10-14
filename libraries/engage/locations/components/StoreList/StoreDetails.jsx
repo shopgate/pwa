@@ -1,4 +1,3 @@
-// @flow
 import React, { useContext, Fragment } from 'react';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { Accordion } from '../../../components';
