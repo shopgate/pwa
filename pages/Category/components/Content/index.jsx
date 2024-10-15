@@ -21,7 +21,7 @@ const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => {
   // Show filter logic for old services
   let showFilters = hasProducts && !hasChildren;
   // Show filter logic for new services
-  if (!hasNewServices()) {
+  if (hasNewServices()) {
     showFilters = hasProducts;
   }
 
