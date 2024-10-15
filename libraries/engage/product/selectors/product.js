@@ -261,13 +261,18 @@ export function makeGetProductFeaturedMedia() {
 
 /**
  * Creates a selector to indicate if a product is active.
+ *
+ * @param {boolean} [returnNullIfProductMissing=false] - Flag to determine the return value when
+ * the product is not found. If set to `true`, the selector will return `null` when the product
+ * is not found. If `false`, it will return `false`.
+ *
  * @returns {Function}
  */
-export const makeIsProductActive = () => createSelector(
+export const makeIsProductActive = (returnNullIfProductMissing = false) => createSelector(
   getProduct,
   (product) => {
     if (!product) {
-      return false;
+      return returnNullIfProductMissing ? null : false;
     }
 
     return product?.active || false;
@@ -276,13 +281,18 @@ export const makeIsProductActive = () => createSelector(
 
 /**
  * Creates a selector to indicate if the base product is active.
+ *
+ * @param {boolean} [returnNullIfProductMissing=false] - Flag to determine the return value when
+ * the product is not found. If set to `true`, the selector will return `null` when the product
+ * is not found. If `false`, it will return `false`.
+ *
  * @returns {Function}
  */
-export const makeIsBaseProductActive = () => createSelector(
+export const makeIsBaseProductActive = (returnNullIfProductMissing = false) => createSelector(
   getBaseProduct,
   (baseProduct) => {
     if (!baseProduct) {
-      return false;
+      return returnNullIfProductMissing ? null : false;
     }
 
     return baseProduct?.active || false;
