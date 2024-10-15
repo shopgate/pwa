@@ -26,7 +26,6 @@ const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => {
   }
 
   return (
-
     <Fragment>
       <AppBar filtersShown={hasProducts} categoryId={categoryId} />
       <ProductFilters categoryId={categoryId} showFilters={showFilters} />
