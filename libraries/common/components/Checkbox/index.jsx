@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 /**
  * Base checkbox component.
- * @type {Object}
  */
 class Checkbox extends Component {
   static propTypes = {
@@ -92,6 +91,17 @@ class Checkbox extends Component {
   };
 
   /**
+   * Handler for keyDown events of the checkbox
+   * @param {Object} e The keyDown event payload
+   */
+  handleKeyDown = (e) => {
+    if (e.key === ' ') {
+      // Toggle checkbox on "space" - mocks behavior of native checkboxes
+      this.handleCheck();
+    }
+  }
+
+  /**
    * Renders the checked/unchecked icon.
    * @returns {JSX}
    */
@@ -134,7 +144,10 @@ class Checkbox extends Component {
       <div
         className={classNames(this.props.className, 'checkbox')}
         onClick={this.handleCheck}
-        aria-hidden
+        onKeyDown={this.handleKeyDown}
+        role="checkbox"
+        aria-checked={this.props.checked}
+        tabIndex={0}
       >
         {this.renderInput()}
         {this.renderLabelIfItIsOnThe('left')}
