@@ -13,6 +13,7 @@ import style from './style';
 class Checkbox extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    checkboxClassName: PropTypes.string,
     className: PropTypes.string,
     defaultChecked: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -25,6 +26,7 @@ class Checkbox extends PureComponent {
 
   static defaultProps = {
     className: '',
+    checkboxClassName: undefined,
     defaultChecked: undefined,
     errorText: '',
     label: '',
@@ -39,8 +41,17 @@ class Checkbox extends PureComponent {
    */
   render() {
     const {
-      name, label, onChange, className, errorText, translateErrorText, showErrorText, ...restProps
+      name,
+      label,
+      onChange,
+      className,
+      errorText,
+      translateErrorText,
+      showErrorText,
+      checkboxClassName,
+      ...restProps
     } = this.props;
+
     return (
       <FormElement
         className={classNames(className, style.root, 'checkbox')}
@@ -54,15 +65,17 @@ class Checkbox extends PureComponent {
       >
         <UICheckbox
           {...restProps}
+          className={checkboxClassName}
           name={name}
           onCheck={onChange}
           checkedClassName={`${className} ${style.checked}`}
           unCheckedClassName={className}
           labelPosition="right"
-          label={
+          label={typeof label === 'string' ? (
             <div className={classNames(style.labelWrapper, 'label')}>
               <I18n.Text className={style.label} string={label} />
             </div>
+          ) : label
           }
         />
       </FormElement>
