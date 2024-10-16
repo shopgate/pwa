@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 /**
  * Returns the styling based on the container height.
@@ -26,9 +26,8 @@ const layout = css({
 const moreButtonWrapper = css({
   position: 'absolute',
   right: 0,
-  bottom: 0,
+  bottom: 6,
   marginLeft: 'auto',
-  marginRight: variables.gap.small,
 }).toString();
 
 const moreButtonBase = {
@@ -42,12 +41,10 @@ const moreButtonBase = {
 
 const moreButton = css({
   ...moreButtonBase,
-  color: colors.light,
 }).toString();
 
 const moreButtonInverted = css({
   ...moreButtonBase,
-  color: colors.accent,
 }).toString();
 
 export default {
