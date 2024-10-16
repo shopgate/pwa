@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Accordion } from '@shopgate/engage/components';
+import { Accordion, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import { FilterItem } from '@shopgate/engage/filter';
+import { FILTER_SELECTOR, FilterItem } from '@shopgate/engage/filter';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
@@ -65,6 +65,15 @@ class Selector extends PureComponent {
   }
 
   /**
+   * Filter value change handler for the portal props. Invokes handleClick method with a mocked
+   * click event
+   * @param {string} updatedId Id of the updated filter value
+   */
+  handlePortalChange = (updatedId) => {
+    this.handleClick({ target: { value: updatedId } });
+  }
+
+  /**
    * @param {Object} props The send render props.
    * @return {JSX}
    */
@@ -85,29 +94,45 @@ class Selector extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { values, id, label } = this.props;
+    const {
+      values, id, label, multi,
+    } = this.props;
     const { selected } = this.state;
 
     return (
-      <FilterItem>
-        <Accordion
-          renderLabel={this.renderLabel}
-          testId={id}
-          handleLabel={i18n.text('filter.filter_by', { label })}
-        >
-          <div className={styles.content}>
-            {values.map(value => (
-              <ValueButton
-                key={value.id}
-                id={value.id}
-                label={value.label}
-                isActive={(selected && selected.includes(value.id))}
-                onClick={this.handleClick}
-              />
-            ))}
-          </div>
-        </Accordion>
-      </FilterItem>
+      <SurroundPortals
+        portalName={FILTER_SELECTOR}
+        portalProps={{
+          filter: {
+            id,
+            label,
+            values,
+            isMultiSelect: multi,
+          },
+          selectedValueIds: selected,
+          onChange: this.handlePortalChange,
+        }}
+      >
+        <FilterItem>
+          <Accordion
+            renderLabel={this.renderLabel}
+            testId={id}
+            handleLabel={i18n.text('filter.filter_by', { label })}
+          >
+            <div className={styles.content}>
+              {values.map(value => (
+                <ValueButton
+                  key={value.id}
+                  id={value.id}
+                  label={value.label}
+                  isActive={(selected && selected.includes(value.id))}
+                  onClick={this.handleClick}
+                />
+              ))}
+            </div>
+          </Accordion>
+        </FilterItem>
+      </SurroundPortals>
     );
   }
 }
