@@ -9,10 +9,11 @@ import {
 
 /**
  * @param {Object} payload The link payload.
- * @param {boolean} fromPushMessage Wether the function was called for a push message
+ * @param {boolean} allowExternalLinks Wether the function should open external links or should try
+ * to convert them to internal links
  * @return {Function}
  */
-export default function handleLink(payload, fromPushMessage = false) {
+export default function handleLink(payload, allowExternalLinks = false) {
   return async (dispatch) => {
     let { link } = payload;
 
@@ -26,7 +27,7 @@ export default function handleLink(payload, fromPushMessage = false) {
     let pathname;
     if (link.startsWith('http')) {
       // Link is common URL schema.
-      if (fromPushMessage) {
+      if (allowExternalLinks) {
         dispatch(historyPush({
           pathname: link,
         }));
@@ -41,6 +42,11 @@ export default function handleLink(payload, fromPushMessage = false) {
     } else {
       // Remove the deeplink protocol from the link.
       pathname = link.replace(/^(.*:)(\/\/)?/, '/');
+
+      if (!pathname.startsWith('/')) {
+        // Take care that pathname starts with a slash. Otherwise routing can break
+        pathname = `/${pathname}`;
+      }
     }
 
     if (!pathname || pathname === INDEX_PATH || pathname.startsWith(INDEX_PATH_DEEPLINK)) {

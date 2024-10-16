@@ -21,7 +21,7 @@ const RatingNumber = ({ rating, className }) => {
     return null;
   }
 
-  return <I18n.Number number={number} className={className} fractions={2} />;
+  return <I18n.Number number={number} className={`${className} ui-shared__rating-number`} fractions={2} />;
 };
 
 RatingNumber.propTypes = {

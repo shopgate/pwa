@@ -26,6 +26,7 @@ import {
   getThemeSettings,
   i18n,
 } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import {
   Link,
   TextLink,
@@ -40,6 +41,7 @@ import {
   FAVORITES_PRODUCT_NAME,
   FAVORITES_PRODUCT_PRICE,
   FAVORITES_ADD_TO_CART,
+  FAVORITES_AVAILABILITY_TEXT,
 } from '@shopgate/engage/favorites';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
@@ -49,6 +51,7 @@ import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
+import AvailableText from '@shopgate/pwa-ui-shared/Availability';
 import classNames from 'classnames';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
@@ -137,6 +140,13 @@ const styles = {
   }).toString(),
   priceContainer: css({
     minWidth: 100,
+  }).toString(),
+  priceContainerInner: css({
+    display: 'inline-block',
+    textAlign: 'right',
+  }),
+  price: css({
+    justifyContent: 'flex-end',
   }).toString(),
   priceInfo: css({
     wordBreak: 'break-word',
@@ -232,7 +242,7 @@ const FavoriteItem = ({
       return false;
     }
 
-    if (!isRopeProductOrderable) {
+    if (hasNewServices() && !isRopeProductOrderable) {
       // Product is not orderable for ROPE. So users need to do some corrections. Just redirect.
       historyPush({ pathname: productLink });
       return false;
@@ -347,7 +357,21 @@ const FavoriteItem = ({
               </div>
             </div>
             <ItemCharacteristics characteristics={characteristics} />
-            <StockInfoLists product={product} />
+            { !hasNewServices() ? (
+              <SurroundPortals
+                portalName={FAVORITES_AVAILABILITY_TEXT}
+                portalProps={commonPortalProps}
+              >
+                <AvailableText
+                  text={commonPortalProps.availability.text}
+                  state={commonPortalProps.availability.state}
+                  showWhenAvailable
+                  className={styles.availability}
+                />
+              </SurroundPortals>
+            ) :
+              (<StockInfoLists product={product} />)}
+
             <div className={styles.infoContainerRow}>
               <div className={styles.quantityContainer}>
                 <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
@@ -358,18 +382,20 @@ const FavoriteItem = ({
                   portalProps={commonPortalProps}
                 >
                   <div className={styles.priceContainer}>
-                    {hasStrikePrice ? (
-                      <PriceStriked
-                        value={specialPrice}
+                    <div className={styles.priceContainerInner}>
+                      {hasStrikePrice ? (
+                        <PriceStriked
+                          value={specialPrice}
+                          currency={currency}
+                        />
+                      ) : null}
+                      <Price
                         currency={currency}
+                        discounted={hasStrikePrice}
+                        unitPrice={defaultPrice}
+                        className={styles.price}
                       />
-                    ) : null}
-                    <Price
-                      currency={currency}
-                      discounted={hasStrikePrice}
-                      taxDisclaimer
-                      unitPrice={defaultPrice}
-                    />
+                    </div>
                     <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
                   </div>
                 </SurroundPortals>

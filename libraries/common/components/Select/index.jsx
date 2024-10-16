@@ -196,7 +196,7 @@ class Select extends Component {
     ) : null;
 
     return (
-      <div className={`${styles.container} ${this.props.className}`} ref={(ref) => { this.domElement = ref; }}>
+      <div className={`${styles.container} ${this.props.className} common_select`} ref={(ref) => { this.domElement = ref; }}>
         <div onTouchStart={this.toggleOpenState}>
           <span>
             {selectedLabel}

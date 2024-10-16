@@ -8,19 +8,14 @@ import { makeGetProductProperties } from '../../../selectors/product';
 const mockStore = configureStore();
 const store = mockStore({});
 
-jest.mock('../../../selectors/product', () => ({
-  makeGetProductProperties: jest.fn(() => jest.fn()),
-}));
-
-jest.mock('../../../../core', () => ({
-  isBeta: () => false,
+jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/core', () => ({
   hasWebBridge: () => false,
   withForwardedRef: jest.fn(),
   isIOSTheme: jest.fn(() => false),
 }));
-
-jest.mock('@shopgate/engage/components', () => ({
-  HtmlSanitizer: ({ children }) => children,
+jest.mock('../../../selectors/product', () => ({
+  makeGetProductProperties: jest.fn(() => jest.fn()),
 }));
 
 const properties = [
@@ -48,7 +43,6 @@ describe('<ProductProperties />', () => {
   it('should render if properties are passed', () => {
     makeGetProductProperties.mockReturnValueOnce(() => properties);
     const wrapper = mount(<ProductProperties key="2" store={store} />);
-
     expect(wrapper.find('Content').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });

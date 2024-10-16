@@ -1,4 +1,3 @@
-// @flow
 import { main$ } from '@shopgate/pwa-common/streams';
 import {
   REQUEST_CORE_CONFIG,

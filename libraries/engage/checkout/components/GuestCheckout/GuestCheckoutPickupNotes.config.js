@@ -9,7 +9,6 @@ const generateFormConfig = () => ({
     instructions: {
       type: 'text',
       label: i18n.text('checkout.pickup_contact.form.instructions'),
-      placeholder: i18n.text('checkout.pickup_contact.form.instructionsPlaceholder'),
     },
   },
 });

@@ -7,6 +7,7 @@ import React, {
   forwardRef,
 } from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import { isIOs } from '@shopgate/pwa-core';
 import { parseFloatString, formatFloat } from './helper';
 
@@ -24,6 +25,7 @@ const QuantityInput = forwardRef(({
   unit,
   minValue,
   maxValue,
+  onKeyDown,
   ...inputProps
 }, outerInputRef) => {
   const inputRef = outerInputRef || useRef();
@@ -36,7 +38,7 @@ const QuantityInput = forwardRef(({
   }, [customOnFocus]);
 
   const onBlur = useCallback((event) => {
-    const newValue = parseFloatString(inputValue, maxDecimals);
+    let newValue = parseFloatString(inputValue, maxDecimals);
     setIsFocused(false);
 
     // If invalid switch to old value.
@@ -45,28 +47,41 @@ const QuantityInput = forwardRef(({
       return;
     }
 
+    if (minValue && newValue < minValue) {
+      newValue = minValue;
+    }
+
+    if (maxValue && newValue > maxValue) {
+      newValue = maxValue;
+    }
+
+    setInputValue(`${newValue}`);
     if (newValue !== value) {
       onChange(newValue);
     }
 
     customOnBlur(event, newValue);
-  }, [customOnBlur, inputValue, maxDecimals, onChange, value]);
+  }, [customOnBlur, inputValue, maxDecimals, maxValue, minValue, onChange, value]);
 
   const handleChange = useCallback((event) => {
-    let newValue = event.target.value;
+    const newValue = event.target.value;
+    setInputValue(newValue);
+  }, []);
 
-    if (newValue !== '') {
-      if (minValue && newValue < minValue) {
-        newValue = `${minValue}`;
-      }
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === 'Enter') {
+      // Prevents false positive validation error when enter key is pressed inside input
+      event.preventDefault();
 
-      if (maxValue && newValue > maxValue) {
-        newValue = `${maxValue}`;
+      if (inputRef.current) {
+        inputRef.current.blur();
       }
     }
 
-    setInputValue(newValue);
-  }, [maxValue, minValue]);
+    if (typeof onKeyDown === 'function') {
+      onKeyDown(event);
+    }
+  }, [inputRef, onKeyDown]);
 
   // Select the current input value after focus.
   useLayoutEffect(() => {
@@ -103,6 +118,7 @@ const QuantityInput = forwardRef(({
       className={className}
       value={displayedValue}
       onChange={handleChange}
+      onKeyDown={handleKeyDown}
       onClick={(event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -123,6 +139,7 @@ QuantityInput.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
+  onKeyDown: PropTypes.func,
   unit: PropTypes.string,
 };
 
@@ -132,9 +149,10 @@ QuantityInput.defaultProps = {
   unit: null,
   minValue: null,
   maxValue: null,
-  onFocus: () => {},
-  onChange: () => {},
-  onBlur: () => {},
+  onFocus: noop,
+  onChange: noop,
+  onBlur: noop,
+  onKeyDown: noop,
 };
 
 export default QuantityInput;

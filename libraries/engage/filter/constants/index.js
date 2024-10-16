@@ -1,3 +1,7 @@
+export * from '@shopgate/pwa-common-commerce/filter/constants/index';
+export * from '@shopgate/pwa-common-commerce/filter/constants/Pipelines';
+export * from '@shopgate/pwa-common-commerce/filter/constants/Portals';
+
 export {
   SORT_ORDER_RELEVANCE,
   SORT_ORDER_PRICE_ASC,

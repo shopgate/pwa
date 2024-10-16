@@ -17,7 +17,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement"
+    className="css-1vjh8yv formElement ui-shared__form-element"
   >
     <Placeholder
       aria-hidden={true}
@@ -29,6 +29,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         className="css-rkuo1o css-1jyyyen placeholder"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -57,6 +58,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -111,7 +113,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement"
+    className="css-1vjh8yv formElement ui-shared__form-element"
   >
     <Underline
       hasErrorMessage={false}
@@ -151,7 +153,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement"
+    className="css-1vjh8yv formElement ui-shared__form-element"
   >
     <input
       key="test-key"
@@ -195,7 +197,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement"
+    className="css-1vjh8yv formElement ui-shared__form-element"
   >
     <Underline
       hasErrorMessage={false}
@@ -236,7 +238,7 @@ exports[`<FormElement /> should show the error message 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement"
+    className="css-1vjh8yv formElement ui-shared__form-element"
   >
     <Underline
       hasErrorMessage={true}
@@ -264,6 +266,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         className="css-1tzi51f errorText"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -300,7 +303,7 @@ exports[`<FormElement /> should show the label 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement"
+    className="css-1vjh8yv formElement ui-shared__form-element"
   >
     <Placeholder
       aria-hidden={true}
@@ -312,6 +315,7 @@ exports[`<FormElement /> should show the label 1`] = `
         className="css-rkuo1o placeholder"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -340,6 +344,7 @@ exports[`<FormElement /> should show the label 1`] = `
         htmlFor="test-input"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}
@@ -394,7 +399,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement"
+    className="css-1vjh8yv formElement ui-shared__form-element"
   >
     <Placeholder
       aria-hidden={true}
@@ -406,6 +411,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         className="css-rkuo1o placeholder"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}

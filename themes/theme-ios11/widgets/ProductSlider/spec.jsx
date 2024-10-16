@@ -19,11 +19,20 @@ jest.mock('@shopgate/engage/components', () => {
     Card: ({ children }) => children,
   };
 });
-jest.mock('@shopgate/engage/product', () => ({
-  ProductCard: ({ children }) => children,
+jest.mock('@shopgate/engage/product/providers', () => ({
   ProductListTypeProvider: ({ children }) => children,
   ProductListEntryProvider: ({ children }) => children,
 }));
+jest.mock('@shopgate/engage/product/components', () => {
+  const {
+    default: ProductSliderOriginal,
+  } = jest.requireActual('@shopgate/engage/product/components/ProductSlider');
+
+  return {
+    ProductCard: ({ children }) => children,
+    ProductSlider: ProductSliderOriginal,
+  };
+});
 
 describe('<ProductSlider />', () => {
   /**

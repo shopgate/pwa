@@ -16,12 +16,12 @@ import styles from './style';
 class CategoryListWidget extends Component {
   static propTypes = {
     settings: PropTypes.shape().isRequired,
-    getCategory: PropTypes.func,
+    fetchCategory: PropTypes.func,
     items: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
-    getCategory: () => {},
+    fetchCategory: () => {},
     items: null,
   };
 
@@ -30,7 +30,7 @@ class CategoryListWidget extends Component {
    */
   componentDidMount() {
     if (!this.props.items) {
-      this.props.getCategory(this.props.settings.categoryNumber);
+      this.props.fetchCategory(this.props.settings.categoryNumber);
     }
   }
 

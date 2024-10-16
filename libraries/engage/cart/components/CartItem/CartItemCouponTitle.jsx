@@ -1,19 +1,15 @@
-// @flow
-import * as React from 'react';
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import styles from './CartItemCouponTitle.style';
-
-type Props = {
-  value?: string,
-}
 
 /**
  * The CouponTitle component.
  * @param {Object} props The component properties.
  * @returns {JSX}
  */
-export function CartItemCouponTitle({ value }: Props) {
-  const title = React.useMemo<string>(() => (
+export function CartItemCouponTitle({ value }) {
+  const title = useMemo(() => (
     value || i18n.text('cart.default_coupon_label')
   ), [value]);
 
@@ -23,6 +19,10 @@ export function CartItemCouponTitle({ value }: Props) {
     </div>
   );
 }
+
+CartItemCouponTitle.propTypes = {
+  value: PropTypes.string,
+};
 
 CartItemCouponTitle.defaultProps = {
   value: null,

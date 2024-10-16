@@ -1,4 +1,3 @@
-// @flow
 import { connect } from 'react-redux';
 import { getSubstitutionPreferencesEnabled } from '@shopgate/engage/core/selectors/merchantSettings';
 

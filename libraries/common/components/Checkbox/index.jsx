@@ -132,7 +132,7 @@ class Checkbox extends Component {
   render() {
     return (
       <div
-        className={classNames(this.props.className, 'checkbox')}
+        className={classNames(this.props.className, 'checkbox', 'common__checkbox')}
         onClick={this.handleCheck}
         aria-hidden
       >

@@ -20,7 +20,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
       aria-modal={true}
-      className="css-1oc7wvq"
+      className="css-1oc7wvq ui-material__base-dialog"
       data-test-id="basicDialog"
       role="alertdialog"
     >
@@ -43,16 +43,17 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             >
               <Dotdotdot
                 clamp={3}
-                className=""
+                className=" common__ellipsis"
                 ellipsis="..."
                 tagName="div"
                 truncationChar="…"
                 useNativeClamp={true}
               >
                 <div
-                  className=""
+                  className=" common__ellipsis"
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -78,6 +79,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             >
               <React.Fragment>
                 <Translate
+                  acceptPlainTextWithPlaceholders={false}
                   className={null}
                   params={Object {}}
                   role={null}
@@ -96,6 +98,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
               onClick={[Function]}
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -149,7 +152,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
       aria-modal={true}
-      className="css-1oc7wvq"
+      className="css-1oc7wvq ui-material__base-dialog"
       data-test-id="basicDialog"
       role="alertdialog"
     >
@@ -172,16 +175,17 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             >
               <Dotdotdot
                 clamp={3}
-                className=""
+                className=" common__ellipsis"
                 ellipsis="..."
                 tagName="div"
                 truncationChar="…"
                 useNativeClamp={true}
               >
                 <div
-                  className=""
+                  className=" common__ellipsis"
                 >
                   <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
@@ -207,6 +211,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             >
               <React.Fragment>
                 <Translate
+                  acceptPlainTextWithPlaceholders={false}
                   className={null}
                   params={Object {}}
                   role={null}
@@ -225,6 +230,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
               onClick={[Function]}
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}

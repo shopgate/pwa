@@ -1,12 +1,13 @@
 import { createSelector } from 'reselect';
 import find from 'lodash/find';
 import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
+import isEqual from 'lodash/isEqual';
 
 /**
  * Creates a selector that retrieves a product by a characteristic.
  * @returns {Function}
  */
-export function makeGetProductByCharacteristics() {
+export function makeGetProductByCharacteristics({ strict } = {}) {
   return createSelector(
     (_, props) => props.characteristics,
     getProductVariants,
@@ -15,7 +16,14 @@ export function makeGetProductByCharacteristics() {
         return null;
       }
 
-      const product = find(variants.products, { characteristics });
+      let product;
+
+      if (strict) {
+        product = variants.products.find(_product =>
+          isEqual(_product.characteristics, characteristics));
+      } else {
+        product = find(variants.products, { characteristics });
+      }
 
       if (!product) {
         return null;

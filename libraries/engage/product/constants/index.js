@@ -15,3 +15,6 @@ export const availabilityTypes = [
   AVAILABILITY_TYPE_CUSTOM_AVAILABILITY,
 ];
 
+export * from '@shopgate/pwa-common-commerce/product/constants/index';
+export * from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
+export * from '@shopgate/pwa-common-commerce/product/constants/Portals';

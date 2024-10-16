@@ -1,6 +1,6 @@
-// @flow
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { i18n, errorBehavior } from '@shopgate/engage/core';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
@@ -8,18 +8,6 @@ import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import WarningIcon from '@shopgate/pwa-ui-shared/icons/WarningIcon';
 
 import * as styles from './MessageBar.style';
-import { type ClassNames, type Message } from './MessageBar.types';
-
-type DefaultProps = {
-  classNames: ClassNames,
-};
-
-type Props = DefaultProps & {
-  messages: Message[],
-  classNames?: ClassNames,
-  raised?: boolean,
-  showIcons?: boolean
-};
 
 const iconMapping = {
   info: InfoIcon,
@@ -36,8 +24,8 @@ const iconMapping = {
  */
 const MessageBar = ({
   messages, classNames, raised, showIcons,
-}: Props) => {
-  const containerClass = React.useMemo<string>(() => {
+}) => {
+  const containerClass = React.useMemo(() => {
     if (raised) {
       return classnames(styles.containerRaised, classNames.containerRaised);
     }
@@ -94,6 +82,21 @@ const MessageBar = ({
   );
 };
 
+MessageBar.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    message: PropTypes.string,
+    type: PropTypes.string,
+  })).isRequired,
+  classNames: PropTypes.shape({
+    container: PropTypes.string,
+    containerRaised: PropTypes.string,
+    message: PropTypes.string,
+    icon: PropTypes.string,
+  }),
+  raised: PropTypes.bool,
+  showIcons: PropTypes.bool,
+};
+
 MessageBar.defaultProps = {
   classNames: {
     container: null,
@@ -105,4 +108,4 @@ MessageBar.defaultProps = {
   showIcons: false,
 };
 
-export default hot(React.memo<Props>(MessageBar));
+export default hot(React.memo(MessageBar));

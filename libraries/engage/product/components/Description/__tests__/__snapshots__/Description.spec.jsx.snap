@@ -17,13 +17,23 @@ exports[`<Description /> should not render if no data is available 1`] = `
 >
   <SurroundPortals
     portalName="PRODUCT_DESCRIPTION"
+    portalProps={
+      Object {
+        "html": null,
+        "navigate": [Function],
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+      }
+    }
   >
     <div
-      className={
-        Object {
-          "data-css-1gp4e0e": "",
-        }
-      }
+      className="css-1gp4e0e engage__product__description"
     >
       <div
         className={
@@ -34,7 +44,9 @@ exports[`<Description /> should not render if no data is available 1`] = `
       >
         <Text
           string="product.description_heading"
-        />
+        >
+          product.description_heading
+        </Text>
       </div>
       <PlaceholderParagraph
         className="css-11lvu0k"
@@ -80,13 +92,23 @@ exports[`<Description /> should render description if data is available 1`] = `
 >
   <SurroundPortals
     portalName="PRODUCT_DESCRIPTION"
+    portalProps={
+      Object {
+        "html": "<h1>foo</h1>",
+        "navigate": [Function],
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+      }
+    }
   >
     <div
-      className={
-        Object {
-          "data-css-1gp4e0e": "",
-        }
-      }
+      className="css-1gp4e0e engage__product__description"
     >
       <div
         className={
@@ -97,7 +119,9 @@ exports[`<Description /> should render description if data is available 1`] = `
       >
         <Text
           string="product.description_heading"
-        />
+        >
+          product.description_heading
+        </Text>
       </div>
       <PlaceholderParagraph
         className="css-11lvu0k"

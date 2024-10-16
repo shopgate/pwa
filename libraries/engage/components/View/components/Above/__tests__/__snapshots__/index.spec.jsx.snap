@@ -3,6 +3,7 @@
 exports[`engage > components > view > components > above should render above 1`] = `
 <div
   aria-hidden={true}
+  className="engage__view__above"
   style={
     Object {
       "flexShrink": 0,

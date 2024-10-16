@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
+import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
 import { getCategoriesById } from '../selectors';
 
 /**
@@ -8,9 +8,7 @@ import { getCategoriesById } from '../selectors';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getCategory(categoryId) {
-    dispatch(getCategory(categoryId));
-  },
+  fetchCategory: categoryId => dispatch(fetchCategoryOrRootCategories(categoryId)),
 });
 
 /**

@@ -3,7 +3,7 @@ import { View } from '@shopgate/engage/components';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { BackBar } from 'Components/AppBar/presets';
 import { i18n } from '@shopgate/engage/core';
-import { OrderDetails as Content } from '@shopgate/engage/orders';
+import { OrderDetails as Content } from '@shopgate/engage/orders/components';
 
 /**
  * @returns {JSX}

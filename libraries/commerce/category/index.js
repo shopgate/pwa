@@ -1,9 +1,9 @@
 // ACTIONS
 export { default as fetchCategory } from './actions/fetchCategory';
+export { default as fetchCategoryOrRootCategories } from './actions/fetchCategoryOrRootCategories';
 export { default as fetchCategoryChildren } from './actions/fetchCategoryChildren';
 export { default as fetchCategoryProducts } from './actions/fetchCategoryProducts';
 export { default as fetchRootCategories } from './actions/fetchRootCategories';
-export { default as getCategory } from './actions/getCategory';
 
 // CONSTANTS
 export * from './constants/index';

@@ -9,7 +9,7 @@ import {
   setLastPopupTimestamp,
 } from '../action-creators/popup';
 import { generateReviewLink } from '../helpers';
-import { TIMER_TIMESPAN } from '../constants';
+import { APP_RATING_TIMER_TIMESPAN } from '../constants';
 import { getAppRatingState } from '../selectors/appRating';
 
 const {
@@ -22,7 +22,7 @@ const {
 } = appConfig;
 
 /**
- * to handle the user redirection
+ * to handle the modal confirmation
  * @param {string} url the url to redirect to
  * @param {boolean | null} setRated the url to redirect to
  * @return {(function(*, *): void)|*}
@@ -39,8 +39,11 @@ function redirectTo(url, setRated = false) {
 
     dispatch(historyPush({
       pathname: url,
+      // open appstore as external url and not in inAppBrowser
       ...setRated && {
-        target: '_blank',
+        state: {
+          target: '_blank',
+        },
       },
     }));
   };
@@ -76,7 +79,7 @@ export function showModal(resetAction, increaseAction, mustShow, hasRepeats) {
     const appRatingState = getAppRatingState(state);
 
     const isMinDaysBetweenPopupsElapsed = (Date.now() - appRatingState.lastPopupAt) >=
-      (minDaysBetweenPopups * TIMER_TIMESPAN);
+      (minDaysBetweenPopups * APP_RATING_TIMER_TIMESPAN);
 
     if (!isMinDaysBetweenPopupsElapsed) {
       return;

@@ -1,6 +1,6 @@
 // @flow
 import { createContext } from 'react';
-import { type Product } from '../product';
+import { type Product } from '../product/product.types';
 import {
   type Location,
   type ReservationFormValues,
@@ -10,7 +10,7 @@ import {
   type SheetCallbackFn,
 } from './locations.types';
 import { STAGE_SELECT_STORE } from './constants';
-import { type ShopSettings } from '../core/config';
+import { type ShopSettings } from '../core/config/config.types';
 
 export type FulfillmentContextProps = {
   selectLocation: (location: Location) => Promise<void>,

@@ -4,7 +4,7 @@ exports[`<Link /> renders with children 1`] = `
 <div
   aria-hidden={null}
   aria-label={null}
-  className="css-9auwkz "
+  className="css-9auwkz  common__link"
   data-test-id="link: /"
   href={null}
   onClick={[Function]}

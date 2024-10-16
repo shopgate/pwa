@@ -4,19 +4,22 @@ import {
   NAV_MENU_IMPRINT,
   NAV_MENU_IMPRINT_AFTER,
   NAV_MENU_IMPRINT_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { IMPRINT_PATH } from '../../../../constants';
+} from '@shopgate/engage/core';
+import {
+  Portal,
+  NavDrawer,
+  InfoIcon,
+} from '@shopgate/engage/components';
+import { IMPRINT_PATH } from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.about';
 
 /**
- * @param {Function} props.navigate The navigate action.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {Function} props.navigate The navigate props
+ * @returns {JSX.Element}
  */
 const ImprintButton = ({ navigate }) => (
   <Fragment>

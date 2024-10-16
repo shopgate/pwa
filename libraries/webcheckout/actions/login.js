@@ -1,3 +1,4 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import HttpRequest from '@shopgate/pwa-core/classes/HttpRequest';
 import requestShopifyLogin from '../action-creators/requestShopifyLogin';
 import errorShopifyLogin from '../action-creators/errorShopifyLogin';
@@ -10,7 +11,7 @@ import { isShopify, getShopifyUrl } from '../selectors';
  * @param {string} password The login password.
  * @return {Function} A redux thunk.
  */
-export default (user, password) => (dispatch) => {
+const webCheckoutLogin = (user, password) => (dispatch) => {
   if (!isShopify()) {
     // The success is dispatched here to take care that the streams work as expected
     dispatch(successShopifyLogin());
@@ -23,6 +24,7 @@ export default (user, password) => (dispatch) => {
     .setMethod('POST')
     .setTimeout(20000)
     .setPayload({
+      // eslint-disable-next-line camelcase
       form_type: 'customer_login',
       customer: {
         email: user,
@@ -46,3 +48,6 @@ export default (user, password) => (dispatch) => {
       dispatch(errorShopifyLogin());
     });
 };
+
+/** @mixes {MutableFunction} */
+export default mutable(webCheckoutLogin);

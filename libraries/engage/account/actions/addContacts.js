@@ -1,4 +1,4 @@
-import { PipelineRequest } from '@shopgate/engage/core';
+import { PipelineRequest } from '@shopgate/engage/core/classes';
 import {
   ADD_CUSTOMER_CONTACT,
   ADD_CUSTOMER_CONTACT_SUCCESS,

@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useLayoutEffect } from 'react';
+import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 import { setCSSCustomProp } from '@shopgate/engage/styles';
@@ -23,16 +24,6 @@ const updateAppBarHeight = (ref) => {
   setCSSCustomProp('--app-bar-height', `${getAbsoluteHeight(ref.current)}px`);
 };
 
-type Props = {
-  backgroundColor?: string,
-  below?: any,
-  center?: any,
-  left?: any,
-  right?: any,
-  shadow?: boolean,
-  textColor?: string,
-}
-
 /**
  * The AppBar component
  * @param {Object} props The component props.
@@ -46,7 +37,7 @@ const AppBar = ({
   backgroundColor,
   textColor,
   shadow,
-}: Props) => {
+}) => {
   const contentRef = useRef(null);
   const style = useMemo(() => ({
     background: backgroundColor,
@@ -70,7 +61,7 @@ const AppBar = ({
   return (
     <header
       ref={contentRef}
-      className={styles.outer}
+      className={`${styles.outer} ui-material__app-bar`}
       data-test-id="Navigator"
       role="banner"
       style={style}
@@ -83,6 +74,16 @@ const AppBar = ({
       <Below elements={below} />
     </header>
   );
+};
+
+AppBar.propTypes = {
+  backgroundColor: PropTypes.string,
+  below: PropTypes.node,
+  center: PropTypes.node,
+  left: PropTypes.node,
+  right: PropTypes.node,
+  shadow: PropTypes.bool,
+  textColor: PropTypes.string,
 };
 
 AppBar.defaultProps = {

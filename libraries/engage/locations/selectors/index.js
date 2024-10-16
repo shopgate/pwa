@@ -4,7 +4,7 @@ import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/eng
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
 import { getProduct } from '@shopgate/engage/product/selectors/product';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { getIsLocationBasedShopping, makeUseLocationFulfillmentMethods } from '@shopgate/engage/core';
+import { getIsLocationBasedShopping, makeUseLocationFulfillmentMethods } from '@shopgate/engage/core/selectors';
 import { makeGetEnabledFulfillmentMethods } from '../../core/config';
 import { makeIsProductActive, makeIsBaseProductActive } from '../../product/selectors/product';
 import { isProductAvailable } from '../helpers/productInventory';

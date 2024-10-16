@@ -11,6 +11,7 @@ import {
   PAGE_INSETS_ANDROID,
   PAGE_INSETS_IOS,
   PAGE_INSETS_IPHONE_X,
+  TYPE_TABLET,
 } from '../constants/Device';
 
 const md = new MobileDetect(navigator.userAgent);
@@ -81,18 +82,6 @@ export function makeSupportsIdentityService(service) {
 }
 
 /**
- * Checks if the currently stored lib version is one that supports the scanner.
- * @param {Object} state The application state.
- * @returns {boolean}
- */
-export const hasScannerSupport = createSelector(
-  getClientInformation,
-  clientInformation =>
-    !hasWebBridge() &&
-    isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion)
-);
-
-/**
  * Returns the device platform.
  * @param {Object} state The application state.
  * @return {string|null}
@@ -154,6 +143,29 @@ export const isAndroid = createSelector(
 export const isIos = createSelector(
   getPlatform,
   platform => platform === OS_IOS
+);
+
+/**
+ * Checks if the currently stored lib version is one that supports the scanner.
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const hasScannerSupport = createSelector(
+  getClientInformation,
+  getDeviceInformation,
+  isIos,
+  (clientInformation, deviceInformation, deviceIsIos) => {
+    const { type } = deviceInformation || {};
+    const isIpad = type === TYPE_TABLET && deviceIsIos;
+
+    if (isVersionAtLeast('11.0.0', clientInformation.appVersion)) {
+      // scanner is supported on all apps based on the react-native based apps
+      return true;
+    }
+
+    // scanner is not supported on iPads with the not react-native based app
+    return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, clientInformation.libVersion) && !isIpad;
+  }
 );
 
 /**

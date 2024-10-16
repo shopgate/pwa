@@ -12,7 +12,7 @@ jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
 }));
 
 jest.mock('@shopgate/engage/components');
-jest.mock('@shopgate/engage/product', () => ({
+jest.mock('@shopgate/engage/product/components', () => ({
   PriceInfo: () => null,
 }));
 

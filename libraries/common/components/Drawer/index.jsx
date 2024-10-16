@@ -111,7 +111,8 @@ class Drawer extends Component {
       className,
       styles.container,
       { [animationIn]: isOpen },
-      { [animationOut]: !isOpen }
+      { [animationOut]: !isOpen },
+      'common__drawer'
     );
 
     const style = {};

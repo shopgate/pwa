@@ -1,23 +1,16 @@
-// @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useSpring, animated } from 'react-spring';
 import useMeasure from 'react-use/lib/useMeasure';
 import * as styles from './style';
-
-export type Props = {
-  children: React.Node,
-  id: string,
-  open?: boolean,
-  className?: string,
-}
 
 /**
  * The accordion content component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function AccordionContent(props: Props) {
+function AccordionContent(props) {
   const {
     children, open, id, className,
   } = props;
@@ -51,6 +44,13 @@ function AccordionContent(props: Props) {
     </animated.div>
   );
 }
+
+AccordionContent.propTypes = {
+  children: PropTypes.node.isRequired,
+  id: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  open: PropTypes.bool,
+};
 
 AccordionContent.defaultProps = {
   open: false,

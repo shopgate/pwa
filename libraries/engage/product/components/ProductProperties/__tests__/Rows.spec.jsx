@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Rows from '../Rows';
 
+jest.mock('@shopgate/engage/components');
+
 const properties = [
   {
     label: 'test1',

@@ -99,6 +99,7 @@ const variables = {
   loadingIndicator: {
     size: 32,
     strokeWidth: 3,
+    imgSrc: null,
   },
   paymentBar: {
     height: 78,
@@ -207,4 +208,4 @@ export const themeConfig = {
 
 // Alias for jest hoisting
 export const mockThemeConfig = themeConfig;
-
+export const themeName = 'theme';

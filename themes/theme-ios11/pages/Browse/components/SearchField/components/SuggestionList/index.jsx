@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SurroundPortals } from '@shopgate/engage/components';
@@ -6,7 +6,7 @@ import {
   SEARCH_SUGGESTIONS,
   SEARCH_SUGGESTION_ITEM,
   SEARCH_SUGGESTION_ITEM_CONTENT,
-} from '@shopgate/engage/search';
+} from '@shopgate/engage/search/constants';
 import connect from './connector';
 import styles from './style';
 
@@ -18,6 +18,7 @@ class SuggestionList extends Component {
     bottomHeight: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
     fetching: PropTypes.bool,
+    searchPhrase: PropTypes.string,
     suggestions: PropTypes.arrayOf(PropTypes.string),
     visible: PropTypes.bool,
   }
@@ -26,6 +27,7 @@ class SuggestionList extends Component {
     suggestions: [],
     fetching: false,
     visible: false,
+    searchPhrase: '',
   }
 
   /**
@@ -34,7 +36,8 @@ class SuggestionList extends Component {
    */
   shouldComponentUpdate(nextProps) {
     return (nextProps.fetching === false && nextProps.suggestions) ||
-      (this.props.visible !== nextProps.visible);
+      (this.props.visible !== nextProps.visible) ||
+      (this.props.searchPhrase !== nextProps.searchPhrase);
   }
 
   /**
@@ -42,11 +45,28 @@ class SuggestionList extends Component {
    */
   render() {
     const {
-      onClick, suggestions, bottomHeight, visible,
+      onClick, suggestions, bottomHeight, visible, searchPhrase,
     } = this.props;
 
-    if (!suggestions) {
+    if (!visible) {
       return null;
+    }
+
+    if (!suggestions) {
+      return (
+        <SurroundPortals
+          portalName={SEARCH_SUGGESTIONS}
+          portalProps={{
+            onClick,
+            suggestions,
+            searchPhrase,
+            visible,
+            bottomHeight,
+          }}
+        >
+          <Fragment />
+        </SurroundPortals>
+      );
     }
 
     return (
@@ -55,10 +75,14 @@ class SuggestionList extends Component {
         portalProps={{
           onClick,
           suggestions,
+          searchPhrase,
+          visible,
+          bottomHeight,
         }}
       >
         <div
           className={classnames(
+            'theme__browse__search-field__suggestion-list',
             styles.list,
             styles.bottom(bottomHeight),
             { [styles.hidden]: !visible }

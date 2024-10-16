@@ -18,8 +18,8 @@ import connect from './connector';
  * @return {JSX}
  */
 const EffectivityDates = ({
-                            dates, children, productNotAvailable, productId,
-                          }) => {
+  dates, children, productNotAvailable, productId,
+}) => {
   if (!isBeta() || !dates) {
     return children;
   }
@@ -31,7 +31,6 @@ const EffectivityDates = ({
   const endDate = dates.endDate ? new Date(dates.endDate) : null;
 
   const hintAddClass = styles && styles.hint ? css(styles.hint).toString() : null;
-  const hintClass = classNames(hint, hintAddClass);
 
   return (
     <SurroundPortals
@@ -42,7 +41,7 @@ const EffectivityDates = ({
         {({ before, between, after }) => {
           if (before) {
             return showScheduledLabel(startDate, settings)
-              ? <I18n.Text string="product.available.at" params={{ startDate }} className={hintClass} />
+              ? <I18n.Text string="product.available.at" params={{ startDate }} className={classNames(hint, hintAddClass)} />
               : children;
           }
 
@@ -51,7 +50,7 @@ const EffectivityDates = ({
               <Fragment>
                 {children}
                 {showExpiringLabel(endDate, settings) &&
-                  <I18n.Text string="product.available.until" params={{ endDate }} className={hintClass} />
+                  <I18n.Text string="product.available.until" params={{ endDate }} className={classNames(hint, hintAddClass)} />
                 }
               </Fragment>
             );
@@ -61,7 +60,7 @@ const EffectivityDates = ({
             productNotAvailable();
 
             return showExpiringLabel(endDate, settings)
-              ? <I18n.Text string="product.available.not" className={hintClass} />
+              ? <I18n.Text string="product.available.not" className={classNames(hint, hintAddClass, notAvailable)} />
               : children;
           }
           return children;
@@ -87,6 +86,7 @@ EffectivityDates.defaultProps = {
     startDate: null,
     endDate: null,
   },
+  productId: null,
 };
 
 export default connect(EffectivityDates);

@@ -59,7 +59,7 @@ class ToggleIcon extends Component {
     const { onIcon, offIcon } = this.props;
     const { on } = this.state;
     return (
-      <div onClick={this.handleToggle} aria-hidden>
+      <div className="ui-shared__toggle-icon" onClick={this.handleToggle} aria-hidden>
         {on && onIcon}
         {!on && offIcon}
       </div>

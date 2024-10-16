@@ -1,4 +1,4 @@
-import { PipelineRequest } from '@shopgate/engage/core';
+import { PipelineRequest } from '@shopgate/engage/core/classes';
 import { successLogout } from '@shopgate/pwa-common/action-creators/user';
 import {
   DELETE_CUSTOMER,

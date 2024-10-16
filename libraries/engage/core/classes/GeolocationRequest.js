@@ -4,7 +4,6 @@ import { GEOLOCATION_DEFAULT_TIMEOUT } from '../constants/geolocationRequest';
 
 /**
  * The GeolocationRequest class enables to retrieve the current geolocation of the device.
- * @deprecated
  */
 class GeolocationRequest {
   /**

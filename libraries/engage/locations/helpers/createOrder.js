@@ -1,4 +1,3 @@
-// @flow
 import snakeCase from 'lodash/snakeCase';
 import {
   makeGetMerchantSettings, i18n, getPlatform, getUserAgent,

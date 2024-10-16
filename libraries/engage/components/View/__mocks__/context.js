@@ -15,4 +15,7 @@ export const ViewContext = ({
   Consumer(props) {
     return props.children(context);
   },
+  Provider({ children }) {
+    return children;
+  },
 });

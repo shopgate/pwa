@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CategoryListContent /> should render 1`] = `
+exports[`<CategoryListContent /> should render with CategoryList 1`] = `
 <Provider
   store={
     Object {
@@ -18,11 +18,92 @@ exports[`<CategoryListContent /> should render 1`] = `
     <CategoryListContent
       categories={null}
       categoriesFetching={false}
+      category={null}
+      categoryId="1234"
+      childrenCount={null}
+      dispatch={[Function]}
+      hasChildren={true}
+      showCategoryImages={false}
+    >
+      <Portal
+        name="category.list.before"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      />
+      <Portal
+        name="category.list"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      >
+        <Section
+          title="category.sections.categories"
+        >
+          <ResponsiveContainer
+            appAlways={true}
+            breakpoint="<=xs"
+          >
+            <CategoryList
+              categories={null}
+              parentCategory={null}
+              prerender={0}
+              showImages={false}
+            />
+          </ResponsiveContainer>
+          <ResponsiveContainer
+            breakpoint=">xs"
+            webOnly={true}
+          >
+            <CategoryGrid
+              categories={null}
+              prerender={0}
+              showImages={false}
+            />
+          </ResponsiveContainer>
+        </Section>
+      </Portal>
+      <Portal
+        name="category.list.after"
+        props={
+          Object {
+            "categoryId": "1234",
+          }
+        }
+      />
+    </CategoryListContent>
+  </Connect(CategoryListContent)>
+</Provider>
+`;
+
+exports[`<CategoryListContent /> should render without CategoryList 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(CategoryListContent)
+    categoryId="1234"
+  >
+    <CategoryListContent
+      categories={null}
+      categoriesFetching={false}
+      category={null}
       categoryId="1234"
       childrenCount={null}
       dispatch={[Function]}
       hasChildren={false}
-      showCategoryImages={true}
+      showCategoryImages={false}
     >
       <Portal
         name="category.list.before"

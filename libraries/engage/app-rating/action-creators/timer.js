@@ -1,6 +1,6 @@
 import {
-  SET_TIMER_START_TIME,
-  INCREASE_TIMER_REPEATS,
+  APP_RATING_SET_TIMER_START_TIME,
+  APP_RATING_INCREASE_TIMER_REPEATS,
 } from '../constants';
 
 /**
@@ -8,7 +8,7 @@ import {
  * @return {Object} The dispatched action object.
  */
 export const resetTimerState = () => ({
-  type: INCREASE_TIMER_REPEATS,
+  type: APP_RATING_INCREASE_TIMER_REPEATS,
 });
 
 /**
@@ -16,6 +16,6 @@ export const resetTimerState = () => ({
  * @return {Object} The dispatched action object.
  */
 export const setTimerStartTime = () => ({
-  type: SET_TIMER_START_TIME,
+  type: APP_RATING_SET_TIMER_START_TIME,
 });
 

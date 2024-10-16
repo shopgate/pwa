@@ -26,7 +26,7 @@ import {
   SELECT_LOCATION,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
-import { WISH_LIST_PATH } from '../account';
+import { WISH_LIST_PATH } from '../account/constants';
 
 export const submitReservationSuccess$ = main$
   .filter(({ action }) => action.type === SUBMIT_RESERVATION_SUCCESS);

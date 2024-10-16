@@ -1,4 +1,3 @@
-// @flow
 import React, { useContext } from 'react';
 import { Grid, ProductProperties } from '@shopgate/engage/components';
 import { ProductGridPrice } from '../../../product';

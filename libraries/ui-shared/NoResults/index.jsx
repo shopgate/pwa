@@ -11,7 +11,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const NoResults = props => (
-  <div className={classNames(styles.wrapper, props.className)} data-test-id="noResults">
+  <div className={classNames(styles.wrapper, props.className, ' ui-shared__no-results')} data-test-id="noResults">
     <div className={styles.icon}>
       <Icon />
     </div>

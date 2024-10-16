@@ -3,6 +3,8 @@ import { embeddedMedia } from '../collections';
 import { Vimeo, YouTube } from '../collections/media-providers';
 import subscription from './app';
 
+jest.mock('@shopgate/engage/core/helpers', () => ({}));
+
 describe.skip('App subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn();

@@ -13,6 +13,8 @@ import {
 } from '../constants/sort';
 import { makeGetShopSettingByKey } from '../../core/selectors/shopSettings';
 
+export * from '@shopgate/pwa-common-commerce/filter/selectors';
+
 /**
  * Tries to determine the sort scope by selector props.
  * @param {Object} props Selector props.

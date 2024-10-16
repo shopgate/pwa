@@ -25,7 +25,7 @@ const LABEL = 'navigation.favorites';
  * @returns {JSX}
  */
 const FavoritesButton = ({ navigate, count, showWishlistItemsCountBadge }) => {
-  const ariaLabel = showWishlistItemsCountBadge ? `${i18n.text('common.products')}: ${count}.` : '';
+  const ariaLabel = showWishlistItemsCountBadge ? `${i18n.text(LABEL)}. ${i18n.text('common.products')}: ${count}.` : '';
 
   return (
     <Fragment>

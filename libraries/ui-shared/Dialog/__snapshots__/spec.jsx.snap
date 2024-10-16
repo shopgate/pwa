@@ -18,7 +18,7 @@ exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
     level={0}
     lockBodyScroll={true}
     onClick={[Function]}
-    opacity={50}
+    opacity={30}
   />
   <BasicDialog
     actions={Array []}
@@ -45,7 +45,7 @@ exports[`<Dialog /> should render a special dialog 1`] = `
     level={0}
     lockBodyScroll={true}
     onClick={[Function]}
-    opacity={50}
+    opacity={30}
   />
   <PipelineErrorDialog
     actions={Array []}
@@ -80,7 +80,7 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
     level={0}
     lockBodyScroll={true}
     onClick={[Function]}
-    opacity={50}
+    opacity={30}
   />
   <VariantSelectModal
     actions={Array []}
@@ -112,7 +112,7 @@ exports[`<Dialog /> should render without props 1`] = `
     level={0}
     lockBodyScroll={true}
     onClick={[Function]}
-    opacity={50}
+    opacity={30}
   />
   <TextMessageDialog
     actions={Array []}
