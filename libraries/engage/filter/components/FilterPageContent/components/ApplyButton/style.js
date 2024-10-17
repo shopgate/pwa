@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 
 const wrapper = css({
-  marginTop: 10,
+  display: 'flex',
 });
 
 const button = css({

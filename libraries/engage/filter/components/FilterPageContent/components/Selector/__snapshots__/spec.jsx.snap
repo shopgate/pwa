@@ -2,6 +2,7 @@
 
 exports[`Filter: <Selector /> should render with minimum props 1`] = `
 <Component
+  portalName="filter.selector"
   portalProps={
     Object {
       "filter": Object {

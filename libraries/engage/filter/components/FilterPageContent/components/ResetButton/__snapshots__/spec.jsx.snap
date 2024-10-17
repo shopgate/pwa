@@ -1,67 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <ResetButton /> should handle clicks 1`] = `
-<div
-  className={
+<SurroundPortals
+  portalName="filter.reset-button"
+  portalProps={
     Object {
-      "data-css-lg74ao": "",
+      "active": true,
+      "onClick": [MockFunction],
     }
   }
 >
-  <Button
-    disabled={false}
-    flat={true}
-    onClick={[MockFunction]}
-    testId="clearAllButton"
-    type="primary"
+  <div
+    className={
+      Object {
+        "data-css-lg74ao": "",
+      }
+    }
   >
-    <Text
-      string="filter.reset"
-    />
-  </Button>
-</div>
+    <Button
+      disabled={false}
+      flat={true}
+      onClick={[MockFunction]}
+      testId="clearAllButton"
+      type="primary"
+    >
+      <Text
+        string="filter.reset"
+      />
+    </Button>
+  </div>
+</SurroundPortals>
 `;
 
 exports[`Filter: <ResetButton /> should render as activated 1`] = `
-<div
-  className={
+<SurroundPortals
+  portalName="filter.reset-button"
+  portalProps={
     Object {
-      "data-css-lg74ao": "",
+      "active": true,
+      "onClick": [Function],
     }
   }
 >
-  <Button
-    disabled={false}
-    flat={true}
-    onClick={[Function]}
-    testId="clearAllButton"
-    type="primary"
+  <div
+    className={
+      Object {
+        "data-css-lg74ao": "",
+      }
+    }
   >
-    <Text
-      string="filter.reset"
-    />
-  </Button>
-</div>
+    <Button
+      disabled={false}
+      flat={true}
+      onClick={[Function]}
+      testId="clearAllButton"
+      type="primary"
+    >
+      <Text
+        string="filter.reset"
+      />
+    </Button>
+  </div>
+</SurroundPortals>
 `;
 
 exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
-<div
-  className={
+<SurroundPortals
+  portalName="filter.reset-button"
+  portalProps={
     Object {
-      "data-css-lg74ao": "",
+      "active": false,
+      "onClick": [Function],
     }
   }
 >
-  <Button
-    disabled={true}
-    flat={true}
-    onClick={[Function]}
-    testId="clearAllButton"
-    type="primary"
+  <div
+    className={
+      Object {
+        "data-css-lg74ao": "",
+      }
+    }
   >
-    <Text
-      string="filter.reset"
-    />
-  </Button>
-</div>
+    <Button
+      disabled={true}
+      flat={true}
+      onClick={[Function]}
+      testId="clearAllButton"
+      type="primary"
+    >
+      <Text
+        string="filter.reset"
+      />
+    </Button>
+  </div>
+</SurroundPortals>
 `;

@@ -51,8 +51,11 @@ const FilterPageProvider = ({
   filters: filtersProp,
   activeFilters: activeFiltersProp,
   parentRouteId,
+  onApply,
   children,
 }) => {
+  const [currentFilters, setCurrentFilters] = useState(activeFiltersProp || {});
+
   /**
    * Storage that hosts an object that represents the initial state of the filters page.
    * It's created from the "filters" array that contains all available filters, and the
@@ -67,6 +70,12 @@ const FilterPageProvider = ({
    * all filters that where modified since the filters page was opened.
    */
   const [changedFilters, setChangedFilters] = useState({});
+
+  // Object that represents the current state of all filters
+  const mergedFilters = useMemo(() => ({
+    ...initialFilters,
+    ...changedFilters,
+  }), [changedFilters, initialFilters]);
 
   /**
    * Effect that updates the "initialFilters" state when it doesn't have content yet
@@ -87,15 +96,18 @@ const FilterPageProvider = ({
    * @type {boolean}
    */
   const resetPossible = useMemo(
-    () => !!(Object.keys(activeFiltersProp || {}).length || Object.keys(changedFilters).length),
-    [activeFiltersProp, changedFilters]
+    () => !!(Object.keys(currentFilters).length || Object.keys(changedFilters).length),
+    [changedFilters, currentFilters]
   );
 
   /**
    * Whether the filter selection has changed since the filters page was opened
    * @type {boolean}
    */
-  const hasChanged = useMemo(() => Object.keys(changedFilters).length > 0, [changedFilters]);
+  const hasChanged = useMemo(() => (
+    Object.keys(changedFilters).length > 0
+    || !!(Object.keys(currentFilters).length === 0 && activeFiltersProp)
+  ), [activeFiltersProp, changedFilters, currentFilters]);
 
   /**
    * Retrieves a list of currently selected values for a filter
@@ -122,6 +134,7 @@ const FilterPageProvider = ({
    */
   const resetAllFilters = useCallback(() => {
     setInitialFilters(buildInitialFilters(filtersProp, {}));
+    setCurrentFilters({});
     setChangedFilters({});
   }, [filtersProp]);
 
@@ -243,18 +256,21 @@ const FilterPageProvider = ({
    * Applies the current filter selection to the parent route with a product list to be filtered
    */
   const applyFilters = useCallback(() => {
+    const filters = buildUpdatedFilters(currentFilters, changedFilters);
+
     router.update(
       parentRouteId,
-      { filters: buildUpdatedFilters(activeFiltersProp || {}, changedFilters) }
+      { filters }
     );
 
-    setTimeout(router.pop, 250);
-  }, [activeFiltersProp, changedFilters, parentRouteId]);
+    onApply(filters);
+  }, [changedFilters, currentFilters, onApply, parentRouteId]);
 
   const value = useMemo(() => ({
     resetPossible,
     hasChanged,
     apiFilters: filtersProp || [],
+    filters: mergedFilters,
     resetAllFilters,
     resetChangedFilters,
     getSelectedFilterValues,
@@ -264,6 +280,7 @@ const FilterPageProvider = ({
     hasChanged,
     resetPossible,
     filtersProp,
+    mergedFilters,
     resetAllFilters,
     resetChangedFilters,
     getSelectedFilterValues,
@@ -284,6 +301,8 @@ FilterPageProvider.propTypes = {
   children: PropTypes.node,
   /** Array of available filters */
   filters: PropTypes.arrayOf(PropTypes.shape()),
+  /** Callback invoked when users pressed the apply button */
+  onApply: PropTypes.func,
   /** Id of the route with the product list that's supposed to be filtered */
   parentRouteId: PropTypes.string,
 };
@@ -293,6 +312,7 @@ FilterPageProvider.defaultProps = {
   activeFilters: null,
   parentRouteId: null,
   filters: null,
+  onApply: () => setTimeout(router.pop, 250),
 };
 
 export default connect(mapStateToProps, null, null, { areStatePropsEqual })(FilterPageProvider);

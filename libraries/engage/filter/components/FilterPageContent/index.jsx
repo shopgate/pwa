@@ -1,44 +1,88 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import FilterPageProvider from '../../providers/FilterPageProvider';
-import Content from './components/Content';
+import { SurroundPortals, ResponsiveContainer } from '@shopgate/engage/components';
+import { useFilterPage } from '@shopgate/engage/filter/hooks';
+import {
+  PORTAL_FILTER_PRICE_RANGE,
+  PORTAL_FILTER_PAGE_CONTENT,
+  FILTER_TYPE_RANGE,
+  FILTER_TYPE_MULTISELECT,
+  PriceSlider,
+} from '@shopgate/engage/filter';
+import Selector from './components/Selector';
+import ApplyButton from './components/ApplyButton';
+import ResetButton from './components/ResetButton';
 
 /**
- * The FilterPageContent component
- * @param {Object} props The component props
+ * The Content component renders all filters for the filter page.
+ * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const FilterPageContent = ({
-  activeFilters,
-  categoryId,
-  searchPhrase,
-  parentRouteId,
-  AppBarComponent,
-}) => (
-  <FilterPageProvider
-    activeFilters={activeFilters}
-    categoryId={categoryId}
-    searchPhrase={searchPhrase}
-    parentRouteId={parentRouteId}
-  >
-    <Content AppBarComponent={AppBarComponent} />
-  </FilterPageProvider>
-);
+const Content = ({ AppBarComponent }) => {
+  const {
+    apiFilters,
+    resetPossible,
+    hasChanged,
+    applyFilters,
+    resetAllFilters,
+    getSelectedFilterValues,
+    updateSelectedFilterValues,
+  } = useFilterPage();
 
-FilterPageContent.propTypes = {
-  activeFilters: PropTypes.shape(),
-  AppBarComponent: PropTypes.elementType,
-  categoryId: PropTypes.string,
-  parentRouteId: PropTypes.string,
-  searchPhrase: PropTypes.string,
+  return (
+    <SurroundPortals portalName={PORTAL_FILTER_PAGE_CONTENT}>
+      { AppBarComponent && (
+        <AppBarComponent
+          title="titles.filter"
+          right={<ApplyButton active={hasChanged} onClick={applyFilters} />}
+        />
+      )}
+      {apiFilters.map((filter) => {
+        const portalProps = { filter };
+        const value = getSelectedFilterValues(filter.id);
+
+        if (filter.type === FILTER_TYPE_RANGE) {
+          return (
+            <Fragment key={filter.id}>
+              <SurroundPortals portalName={PORTAL_FILTER_PRICE_RANGE} portalProps={portalProps}>
+                <PriceSlider
+                  id={filter.id}
+                  key={filter.id}
+                  min={filter.minimum}
+                  max={filter.maximum}
+                  onChange={updateSelectedFilterValues}
+                  value={value}
+                />
+              </SurroundPortals>
+            </Fragment>
+          );
+        }
+
+        return (
+          <Selector
+            id={filter.id}
+            key={filter.id}
+            label={filter.label}
+            values={filter.values}
+            multi={filter.type === FILTER_TYPE_MULTISELECT}
+            onChange={updateSelectedFilterValues}
+            selected={value}
+          />
+        );
+      })}
+      <ResponsiveContainer breakpoint="<sm" appAlways>
+        <ResetButton active={resetPossible} onClick={resetAllFilters} />
+      </ResponsiveContainer>
+    </SurroundPortals>
+  );
 };
 
-FilterPageContent.defaultProps = {
-  activeFilters: null,
-  categoryId: null,
-  searchPhrase: null,
-  parentRouteId: null,
+Content.propTypes = {
+  AppBarComponent: PropTypes.elementType,
+};
+
+Content.defaultProps = {
   AppBarComponent: null,
 };
 
-export default FilterPageContent;
+export default Content;

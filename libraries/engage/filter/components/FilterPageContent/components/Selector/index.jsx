@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import { FILTER_SELECTOR, FilterItem } from '@shopgate/engage/filter';
+import { FilterItem } from '@shopgate/engage/filter';
+import { PORTAL_FILTER_SELECTOR } from '@shopgate/engage/filter/constants';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
@@ -101,7 +102,7 @@ class Selector extends PureComponent {
 
     return (
       <SurroundPortals
-        portalName={FILTER_SELECTOR}
+        portalName={PORTAL_FILTER_SELECTOR}
         portalProps={{
           filter: {
             id,

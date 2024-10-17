@@ -59,6 +59,7 @@ export {};
  * was opened
  * @property {boolean} resetPossible Whether a reset of the active filters is possible
  * @property {APIFilter[]} apiFilters List of available filters from the API
+ * @property {RouteFilters} filters Object that represents the current state of all filters
  * @property {function():void} resetAllFilters Resets all filters which have been changed by the
  * user
  * @property {function():void} resetChangedFilters Resets all filters which have been changed by the
@@ -76,6 +77,7 @@ const context = createContext({
   hasChanged: false,
   resetPossible: false,
   apiFilters: [],
+  filters: {},
   resetAllFilters: noop,
   resetChangedFilters: noop,
   applyFilters: noop,

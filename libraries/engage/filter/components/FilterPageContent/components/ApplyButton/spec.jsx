@@ -12,6 +12,7 @@ jest.mock('@shopgate/engage/core', () => ({
   },
 }));
 jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: ({ children }) => children,
   I18n: {
     Text: () => 'I18n.Text',
   },
