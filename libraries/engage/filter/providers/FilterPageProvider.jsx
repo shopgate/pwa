@@ -315,4 +315,7 @@ FilterPageProvider.defaultProps = {
   onApply: () => setTimeout(router.pop, 250),
 };
 
+/**
+ * @type FilterPageProvider
+ */
 export default connect(mapStateToProps, null, null, { areStatePropsEqual })(FilterPageProvider);
