@@ -3,7 +3,7 @@ import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { View } from '@shopgate/engage/components';
-import Content from '@shopgate/engage/filter/components/FilterPageContent';
+import Content from '@shopgate/engage/filter/components/FilterPageContentWithProvider';
 import { CloseBar } from 'Components/AppBar/presets';
 
 const { colors } = themeConfig;
