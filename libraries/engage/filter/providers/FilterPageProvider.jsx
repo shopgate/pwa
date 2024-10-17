@@ -44,6 +44,9 @@ const areStatePropsEqual = (next, prev) => {
  * list
  * @param {string} props.parentRouteId Id of the route with the product list that's supposed to be
  * filtered
+ * @param {Function} [props.onApply] Callback invoked when users pressed the apply button
+ * @param {string} [props.categoryId] A category to be used for filter selection from Redux
+ * @param {string} [props.searchPhrase] A search phrase to be used for filter selection from Redux
  * @param {NodeList} children Provider children
  * @returns {JSX.Element}
  */
@@ -296,14 +299,10 @@ const FilterPageProvider = ({
 };
 
 FilterPageProvider.propTypes = {
-  /** Object with the active filters for a filtered product list */
   activeFilters: PropTypes.shape(),
   children: PropTypes.node,
-  /** Array of available filters */
   filters: PropTypes.arrayOf(PropTypes.shape()),
-  /** Callback invoked when users pressed the apply button */
   onApply: PropTypes.func,
-  /** Id of the route with the product list that's supposed to be filtered */
   parentRouteId: PropTypes.string,
 };
 
