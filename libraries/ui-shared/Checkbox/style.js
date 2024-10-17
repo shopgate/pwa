@@ -4,6 +4,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const icon = css({
   width: 24,
   height: 24,
+  flexShrink: 0,
 }).toString();
 
 const checkedIcon = css({
