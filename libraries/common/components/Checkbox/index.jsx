@@ -10,7 +10,7 @@ import classNames from 'classnames';
  * @property {string} [className] Class name for the checkbox
  * @property {boolean} [defaultChecked] Whether the checkbox is checked by default
  * @property {boolean} [disabled] Disabled state of the checkbox (default `false`)
- * @property {React.ReactNode | string} [label] Checkbox label. Can be a string of a component.
+ * @property {React.ReactNode | string} [label] Checkbox label. Can be a string or a component.
  * @property {"left"|"right"} [labelPosition] Position for the lable (default `"left"`)
  * @property {string} [name] Name for the hidden input tag
  * @property {Function} [onCheck] Callback invoked when checkbox is toggled
