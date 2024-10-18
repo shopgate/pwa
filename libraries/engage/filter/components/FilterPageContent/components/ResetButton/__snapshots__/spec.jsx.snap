@@ -5,7 +5,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
   portalName="filter.reset-button"
   portalProps={
     Object {
-      "active": true,
+      "disabled": false,
       "onClick": [MockFunction],
     }
   }
@@ -37,7 +37,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
   portalName="filter.reset-button"
   portalProps={
     Object {
-      "active": true,
+      "disabled": false,
       "onClick": [Function],
     }
   }
@@ -69,7 +69,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
   portalName="filter.reset-button"
   portalProps={
     Object {
-      "active": false,
+      "disabled": true,
       "onClick": [Function],
     }
   }

@@ -5,7 +5,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
   portalName="filter.apply-button"
   portalProps={
     Object {
-      "active": true,
+      "disabled": false,
       "onClick": [MockFunction],
       "widgetSettings": Object {},
     }
@@ -44,7 +44,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
   portalName="filter.apply-button"
   portalProps={
     Object {
-      "active": true,
+      "disabled": false,
       "onClick": [Function],
       "widgetSettings": Object {},
     }
@@ -83,7 +83,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
   portalName="filter.apply-button"
   portalProps={
     Object {
-      "active": false,
+      "disabled": true,
       "onClick": [Function],
       "widgetSettings": Object {},
     }

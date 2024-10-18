@@ -8,17 +8,17 @@ jest.mock('@shopgate/engage/components');
 
 describe('Filter: <ResetButton />', () => {
   it('should render as activated', () => {
-    const wrapper = shallow(<ResetButton active onClick={() => {}} />);
+    const wrapper = shallow(<ResetButton onClick={() => {}} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render as deactivated', () => {
-    const wrapper = shallow(<ResetButton active={false} onClick={() => {}} />);
+    const wrapper = shallow(<ResetButton disabled onClick={() => {}} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should handle clicks', () => {
-    const wrapper = shallow(<ResetButton onClick={clickMock} active />);
+    const wrapper = shallow(<ResetButton onClick={clickMock} />);
     expect(wrapper).toMatchSnapshot();
     wrapper.find('Button').simulate('click');
     expect(clickMock).toHaveBeenCalled();

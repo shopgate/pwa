@@ -7,16 +7,19 @@ import styles from './style';
 
 /**
  * The filter apply button component.
+ * @param {Object} props The component props
+ * @param {boolean} props.disabled Whether the button is disabled
+ * @param {Function} props.onClick Click handler for the button
  * @returns {JSX}
  */
-const FilterApplyButton = ({ active, onClick, widgetSettings }) => {
+const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
   const { buttonTextColor, buttonTextColorDisabled } = widgetSettings;
-  const buttonColor = active ? buttonTextColor : buttonTextColorDisabled;
+  const buttonColor = !disabled ? buttonTextColor : buttonTextColorDisabled;
 
   return (
     <SurroundPortals
       portalName={PORTAL_FILTER_APPLY_BUTTON}
-      portalProps={{ active, onClick, widgetSettings }}
+      portalProps={{ disabled, onClick, widgetSettings }}
     >
       <div className={styles.wrapper}>
         <Button
@@ -24,7 +27,7 @@ const FilterApplyButton = ({ active, onClick, widgetSettings }) => {
           flat
           type="primary"
           onClick={onClick}
-          disabled={!active}
+          disabled={disabled}
           testId="applyFilterButton"
         >
           <I18n.Text string="filter.apply" style={{ color: buttonColor }} />
@@ -35,9 +38,13 @@ const FilterApplyButton = ({ active, onClick, widgetSettings }) => {
 };
 
 FilterApplyButton.propTypes = {
-  active: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   widgetSettings: PropTypes.shape().isRequired,
+  disabled: PropTypes.bool,
+};
+
+FilterApplyButton.defaultProps = {
+  disabled: false,
 };
 
 export default withWidgetSettings(memo(FilterApplyButton), '@shopgate/engage/components/AppBar');

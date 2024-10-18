@@ -34,7 +34,7 @@ const Content = ({ AppBarComponent }) => {
       { AppBarComponent && (
         <AppBarComponent
           title="titles.filter"
-          right={<ApplyButton active={hasChanged} onClick={applyFilters} />}
+          right={<ApplyButton disabled={!hasChanged} onClick={applyFilters} />}
         />
       )}
       {apiFilters.map((filter) => {
@@ -71,7 +71,7 @@ const Content = ({ AppBarComponent }) => {
         );
       })}
       <ResponsiveContainer breakpoint="<sm" appAlways>
-        <ResetButton active={resetPossible} onClick={resetAllFilters} />
+        <ResetButton disabled={!resetPossible} onClick={resetAllFilters} />
       </ResponsiveContainer>
     </SurroundPortals>
   );

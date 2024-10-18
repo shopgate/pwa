@@ -8,7 +8,20 @@ import AccordionContent from './components/AccordionContent';
 import * as styles from './style';
 
 /**
+ * Accordion component
  * @param {Object} props The component props.
+ * @param {Function} props.renderLabel Function that returns a React component used as header label
+ * @param {string} [props.handleLabel] Aria label for the header label
+ * @param {string} [props.role] Aria role (default `"button"`)
+ * @param {boolean} [props.openWithChevron] Whether to toggle the accordion only with the chevron
+ * (default `false`)
+ * @param {boolean} [props.startOpened] Whether to render initially open (default `false`)
+ * @param {"left"|"right"} [props.chevronPosition] Position of the chevron icon (default `"right"`)
+ * @param {string} [props.className] Class name for the header section
+ * @param {string} [props.chevronClassName] Class name for the chevron
+ * @param {string} [props.contentClassName] Class name for the content wrapper
+ * @param {string} [props.testId] Test ID for the component
+ * @param {React.ReactNode} props.children Children used for the content section of the accordion
  * @returns {JSX}
  */
 function Accordion(props) {

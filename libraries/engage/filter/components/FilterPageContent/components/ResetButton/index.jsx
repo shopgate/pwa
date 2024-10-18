@@ -7,19 +7,21 @@ import styles from './style';
 /**
  * The filter reset button component.
  * @param {Object} props The component props.
+ * @param {boolean} props.disabled Whether the button is disabled
+ * @param {Function} props.onClick Click handler for the button
  * @returns {JSX}
  */
-const FilterResetButton = ({ active, onClick }) => (
+const FilterResetButton = ({ disabled, onClick }) => (
   <SurroundPortals
     portalName={PORTAL_FILTER_RESET_BUTTON}
-    portalProps={{ active, onClick }}
+    portalProps={{ disabled, onClick }}
   >
     <div className={styles}>
       <Button
         flat
         type="primary"
         onClick={onClick}
-        disabled={!active}
+        disabled={disabled}
         testId="clearAllButton"
       >
         <I18n.Text string="filter.reset" />
@@ -29,8 +31,12 @@ const FilterResetButton = ({ active, onClick }) => (
 );
 
 FilterResetButton.propTypes = {
-  active: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+};
+
+FilterResetButton.defaultProps = {
+  disabled: false,
 };
 
 export default memo(FilterResetButton);
