@@ -11,6 +11,7 @@ Array [
     key="Group 1"
   >
     <Accordion
+      chevronClassName={null}
       chevronPosition="right"
       className={null}
       contentClassName={null}
@@ -54,6 +55,7 @@ Array [
     key="Group 2"
   >
     <Accordion
+      chevronClassName={null}
       chevronPosition="right"
       className={null}
       contentClassName={null}

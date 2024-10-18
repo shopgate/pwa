@@ -34,7 +34,11 @@ class PriceSlider extends PureComponent {
   constructor(props) {
     super(props);
 
-    const initialValue = props.value || [props.min, props.max];
+    let initialValue = [props.min, props.max];
+
+    if (Array.isArray(props.value) && props.value.length > 0) {
+      initialValue = props.value;
+    }
 
     this.state = {
       value: initialValue,
