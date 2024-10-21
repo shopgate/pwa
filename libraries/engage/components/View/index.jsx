@@ -16,7 +16,7 @@ export { ViewContext };
 /**
  * The View container component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 function ViewContainer({
   background,
@@ -76,7 +76,7 @@ ViewContainer.defaultProps = {
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 export default function View(props) {
   return (

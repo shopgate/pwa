@@ -26,7 +26,7 @@ const Favorites = ({
   }
 
   return (
-    <View aria-hidden={false}>
+    <View>
       <DefaultBar title="titles.favorites" />
       {favoritesCount > 0 || hasMultipleFavoritesListsSupport ? (
         <FavoritesList />
