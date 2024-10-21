@@ -12,7 +12,7 @@ const { colors } = themeConfig;
  * @returns {JSX}
  */
 const BackInStockPage = () => (
-  <View aria-hidden={false} background={colors.background}>
+  <View background={colors.background}>
     <BackBar title={i18n.text('titles.back_in_stock')} />
     <BackInStockReminders />
   </View>

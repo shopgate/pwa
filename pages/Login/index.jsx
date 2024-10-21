@@ -181,7 +181,7 @@ class Login extends Component {
     const isCheckout = this.props.redirect?.location === CHECKOUT_PATH;
 
     return (
-      <View aria-hidden={false}>
+      <View>
         <CloseBar shadow={false} />
         <section className={styles.container} data-test-id="LoginPage">
           <Portal name={PAGE_LOGIN_BEFORE} />

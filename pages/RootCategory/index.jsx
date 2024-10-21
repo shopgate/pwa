@@ -19,12 +19,12 @@ class RootCategory extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { categories } = this.props;
     return (
-      <View aria-hidden={false}>
+      <View>
         <DefaultBar title="titles.categories" />
         <SurroundPortals portalName={CATEGORY_LIST} portalProps={{ categories }}>
           <CategoryList categories={categories} prerender={8} />
