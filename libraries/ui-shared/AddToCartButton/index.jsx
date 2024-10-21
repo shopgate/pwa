@@ -76,6 +76,12 @@ class AddToCartButton extends Component {
     };
 
     const result = this.props.onClick(e);
+
+    if (result === false) {
+      // Do not trigger animation when adding to cart was aborted by the parent component (PWA-2764)
+      return;
+    }
+
     if (result instanceof Promise) {
       (async () => {
         try {
