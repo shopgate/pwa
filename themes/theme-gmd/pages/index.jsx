@@ -159,7 +159,7 @@ const Pages = ({ store }) => {
                       />
                       <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                       <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                      <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} />
+                      <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} cache />
                       <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
                       <Route
                         pattern={ITEM_PATTERN}
