@@ -4,17 +4,7 @@ import Item from '../Item';
 import Section from './index';
 import styles from '../../style';
 
-jest.mock('@shopgate/pwa-common/components/Link', () => {
-  /* eslint-disable react/prop-types, require-jsdoc */
-  const Link = ({ children }) => (
-    <div>
-      {children}
-    </div>
-  );
-
-  /* eslint-enable react/prop-types require-jsdoc */
-  return Link;
-});
+jest.mock('@shopgate/engage/components');
 
 describe('<Section />', () => {
   it('should render with a headline and items', () => {

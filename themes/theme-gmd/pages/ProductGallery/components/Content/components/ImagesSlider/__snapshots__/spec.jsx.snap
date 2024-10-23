@@ -275,6 +275,10 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                               resolutions={
                                 Array [
                                   Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
+                                  Object {
                                     "height": 2048,
                                     "width": 2048,
                                   },
@@ -306,6 +310,10 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                               classNameImg="css-4kgshc"
                               resolutions={
                                 Array [
+                                  Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
                                   Object {
                                     "height": 2048,
                                     "width": 2048,
@@ -611,6 +619,10 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                               resolutions={
                                 Array [
                                   Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
+                                  Object {
                                     "height": 2048,
                                     "width": 2048,
                                   },
@@ -642,6 +654,10 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                               classNameImg="css-4kgshc"
                               resolutions={
                                 Array [
+                                  Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
                                   Object {
                                     "height": 2048,
                                     "width": 2048,
