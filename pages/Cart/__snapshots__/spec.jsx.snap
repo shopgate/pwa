@@ -2,7 +2,6 @@
 
 exports[`<Cart> page should match snapshot 1`] = `
 <View
-  aria-hidden={false}
   background="#f8f8f8"
 >
   <Content />
