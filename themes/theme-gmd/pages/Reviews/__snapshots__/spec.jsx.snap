@@ -586,7 +586,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               d
                             </FormatDate>
                           </ReviewDate>
-
+                           
                           <Author
                             author=""
                           />
@@ -1047,7 +1047,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               d
                             </FormatDate>
                           </ReviewDate>
-
+                           
                           <Author
                             author=""
                           />
@@ -1508,7 +1508,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               d
                             </FormatDate>
                           </ReviewDate>
-
+                           
                           <Author
                             author=""
                           />
@@ -1969,7 +1969,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               d
                             </FormatDate>
                           </ReviewDate>
-
+                           
                           <Author
                             author=""
                           />
