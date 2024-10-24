@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-inline-transition-group';
-import { toggleBodyScroll } from '@shopgate/engage/styles';
+import { toggleBodyScroll } from '@shopgate/engage/styles/helpers';
 import style from './style';
 
 /**

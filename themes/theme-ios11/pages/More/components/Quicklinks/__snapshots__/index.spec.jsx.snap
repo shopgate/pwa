@@ -128,23 +128,11 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                   className="css-1hj8a57"
                   href="/some/url"
                 >
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
-                      string="Some Label"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        Some Label
-                      </span>
-                    </Translate>
-                  </div>
+                  <Text
+                    string="Some Label"
+                  >
+                    Some Label
+                  </Text>
                 </Link>
               </MoreMenuItem>
               <MoreMenuItem
@@ -159,23 +147,11 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                   className="css-1hj8a57"
                   href="/another/url"
                 >
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
-                      string="Another Label"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        Another Label
-                      </span>
-                    </Translate>
-                  </div>
+                  <Text
+                    string="Another Label"
+                  >
+                    Another Label
+                  </Text>
                 </Link>
               </MoreMenuItem>
             </SurroundPortals>

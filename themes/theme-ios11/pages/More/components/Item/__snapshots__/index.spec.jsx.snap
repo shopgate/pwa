@@ -14,21 +14,11 @@ exports[`<Item /> should render as a button when no href, but a click handler is
     onClick={[Function]}
     type="button"
   >
-    <Translate
-      acceptPlainTextWithPlaceholders={false}
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="Item Label"
-      transform={null}
     >
-      <span
-        className={null}
-        role={null}
-      >
-        Item Label
-      </span>
-    </Translate>
+      Item Label
+    </Text>
   </button>
 </MoreMenuItem>
 `;
@@ -45,23 +35,11 @@ exports[`<Item /> should render as a link when an href is passed to the props 1`
     className="css-1hj8a57"
     href="/some/link"
   >
-    <div>
-      <Translate
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={Object {}}
-        role={null}
-        string="Item Label"
-        transform={null}
-      >
-        <span
-          className={null}
-          role={null}
-        >
-          Item Label
-        </span>
-      </Translate>
-    </div>
+    <Text
+      string="Item Label"
+    >
+      Item Label
+    </Text>
   </Link>
 </MoreMenuItem>
 `;

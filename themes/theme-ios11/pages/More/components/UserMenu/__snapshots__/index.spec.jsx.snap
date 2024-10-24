@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UserMenu /> should render as expected when the user is logged in 1`] = `
+exports[`<UserMenu /> should render additional links when logged in and new services are enabled 1`] = `
 <Provider
   store={
     Object {
@@ -15,7 +15,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
   <UserMenu
     entries={null}
     isLoggedIn={true}
-    logout={[MockFunction]}
+    logout={[Function]}
     user={null}
   >
     <Portal
@@ -23,9 +23,9 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
       props={
         Object {
           "entries": null,
-          "handleLogout": [MockFunction],
+          "handleLogout": [Function],
           "isLoggedIn": true,
-          "logout": [MockFunction],
+          "logout": [Function],
           "user": null,
         }
       }
@@ -35,27 +35,19 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
       props={
         Object {
           "entries": null,
-          "handleLogout": [MockFunction],
+          "handleLogout": [Function],
           "isLoggedIn": true,
-          "logout": [MockFunction],
+          "logout": [Function],
           "user": null,
         }
       }
     >
       <LoggedIn
-        logout={[MockFunction]}
+        logout={[Function]}
       >
-        <Portal
-          name="nav-menu.my-account.before"
-          props={
-            Object {
-              "Item": [Function],
-            }
-          }
-        />
-        <Portal
-          name="nav-menu.my-account"
-          props={
+        <SurroundPortals
+          portalName="nav-menu.my-account"
+          portalProps={
             Object {
               "Item": [Function],
             }
@@ -120,21 +112,11 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     className="css-1hj8a57"
                     href="/account/profile"
                   >
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
+                    <Text
                       string="navigation.profile"
-                      transform={null}
                     >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        navigation.profile
-                      </span>
-                    </Translate>
+                      navigation.profile
+                    </Text>
                   </Link>
                 </MoreMenuItem>
                 <MoreMenuItem
@@ -148,21 +130,11 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     className="css-1hj8a57"
                     href="/account/orders"
                   >
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
+                    <Text
                       string="navigation.order_history"
-                      transform={null}
                     >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        navigation.order_history
-                      </span>
-                    </Translate>
+                      navigation.order_history
+                    </Text>
                   </Link>
                 </MoreMenuItem>
                 <MoreMenuItem
@@ -176,34 +148,168 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     className="css-1hj8a57"
                     href="/account/wish-list"
                   >
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
+                    <Text
                       string="navigation.favorites"
-                      transform={null}
                     >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        navigation.favorites
-                      </span>
-                    </Translate>
+                      navigation.favorites
+                    </Text>
                   </Link>
                 </MoreMenuItem>
-                <Portal
-                  name="nav-menu.logout.before"
-                  props={
+                <SurroundPortals
+                  portalName="nav-menu.logout"
+                  portalProps={
                     Object {
                       "Item": [Function],
                     }
                   }
-                />
-                <Portal
-                  name="nav-menu.logout"
-                  props={
+                >
+                  <MoreMenuItem
+                    className={null}
+                    href={null}
+                    label="navigation.logout"
+                    onClick={[Function]}
+                    testId="logoutButton"
+                  >
+                    <button
+                      className="css-1hj8a57"
+                      data-test-id="logoutButton"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Text
+                        string="navigation.logout"
+                      >
+                        navigation.logout
+                      </Text>
+                    </button>
+                  </MoreMenuItem>
+                </SurroundPortals>
+              </div>
+            </Section>
+          </div>
+        </SurroundPortals>
+      </LoggedIn>
+    </Portal>
+    <Portal
+      name="user-menu.container.after"
+      props={
+        Object {
+          "entries": null,
+          "handleLogout": [Function],
+          "isLoggedIn": true,
+          "logout": [Function],
+          "user": null,
+        }
+      }
+    />
+  </UserMenu>
+</Provider>
+`;
+
+exports[`<UserMenu /> should render as expected when the user is logged in 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <UserMenu
+    entries={null}
+    isLoggedIn={true}
+    logout={[MockFunction]}
+    user={null}
+  >
+    <Portal
+      name="user-menu.container.before"
+      props={
+        Object {
+          "entries": null,
+          "handleLogout": [MockFunction],
+          "isLoggedIn": true,
+          "logout": [MockFunction],
+          "user": null,
+        }
+      }
+    />
+    <Portal
+      name="user-menu.container"
+      props={
+        Object {
+          "entries": null,
+          "handleLogout": [MockFunction],
+          "isLoggedIn": true,
+          "logout": [MockFunction],
+          "user": null,
+        }
+      }
+    >
+      <LoggedIn
+        logout={[MockFunction]}
+      >
+        <SurroundPortals
+          portalName="nav-menu.my-account"
+          portalProps={
+            Object {
+              "Item": [Function],
+            }
+          }
+        >
+          <div
+            data-test-id="userMenu"
+          >
+            <Section
+              title="navigation.your_account"
+            >
+              <Headline
+                style={
+                  Object {
+                    "margin": "24px 20px 16px",
+                  }
+                }
+                tag="h2"
+                text="navigation.your_account"
+              >
+                <h2
+                  className="css-18cwfw7 headline theme__headline"
+                  data-test-id="Headline"
+                  style={
+                    Object {
+                      "margin": "24px 20px 16px",
+                    }
+                  }
+                >
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
+                    className={null}
+                    params={Object {}}
+                    role={null}
+                    string="navigation.your_account"
+                    transform={null}
+                  >
+                    <span
+                      className={null}
+                      role={null}
+                    >
+                      navigation.your_account
+                    </span>
+                  </Translate>
+                </h2>
+              </Headline>
+              <div
+                className={
+                  Object {
+                    "data-css-13ch7sr": "",
+                  }
+                }
+              >
+                <SurroundPortals
+                  portalName="nav-menu.logout"
+                  portalProps={
                     Object {
                       "Item": [Function],
                     }
@@ -222,44 +328,18 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       onClick={[MockFunction]}
                       type="button"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={Object {}}
-                        role={null}
+                      <Text
                         string="navigation.logout"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          navigation.logout
-                        </span>
-                      </Translate>
+                        navigation.logout
+                      </Text>
                     </button>
                   </MoreMenuItem>
-                </Portal>
-                <Portal
-                  name="nav-menu.logout.after"
-                  props={
-                    Object {
-                      "Item": [Function],
-                    }
-                  }
-                />
+                </SurroundPortals>
               </div>
             </Section>
           </div>
-        </Portal>
-        <Portal
-          name="nav-menu.my-account.after"
-          props={
-            Object {
-              "Item": [Function],
-            }
-          }
-        />
+        </SurroundPortals>
       </LoggedIn>
     </Portal>
     <Portal

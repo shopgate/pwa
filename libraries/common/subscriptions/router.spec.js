@@ -515,6 +515,32 @@ describe('Router subscriptions', () => {
       );
     });
 
+    it('should handle external urls as expected when they are returned by a redirect handler', async () => {
+      const externalUrl = 'https://www.google.com/maps/dir/?api=1&destination=Gro';
+
+      /**
+       * @return {Promise}
+       */
+      const redirectHandler = () => Promise.resolve(externalUrl);
+
+      redirects.set('/register', redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/register',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall(openExternalLinkSpy);
+
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        externalUrl,
+        params.action,
+        mockedRouterState,
+        undefined
+      );
+    });
+
     it('should handle native links like expected', async () => {
       /**
        * Replace the implementation of handler.openNative link temporarily. It reassigns
