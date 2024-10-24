@@ -24,7 +24,7 @@ function PaymentBarCheckoutButton({ isOrderable }: Props) {
   const isActive = useMemo(() => (isOrderable && !isLoading), [isLoading, isOrderable]);
 
   return (
-    <SurroundPortals portalName={CART_CHECKOUT_BUTTON} props={{ isActive }}>
+    <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive }}>
       <Link href={CHECKOUT_PATH} disabled={!isActive}>
         <RippleButton
           disabled={!isActive}
