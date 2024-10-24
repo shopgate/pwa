@@ -33,7 +33,7 @@ const styles = {
 
 /**
  * Filter modal content component
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FilterModalContent = ({
   onClose,

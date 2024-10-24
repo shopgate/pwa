@@ -7,7 +7,7 @@ import connect from './FilterBarProvider.connector';
 /**
  * FilterBar provider
  * @param {Object} props React props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FilterBarProvider = ({
   children,
