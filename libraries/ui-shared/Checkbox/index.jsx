@@ -8,14 +8,18 @@ import styles from './style';
 
 /**
  * The checkbox template component.
- * @param {string} checkedClassName class for checked icon.
- * @param {string} unCheckedClassName class for unchecked icon.
- * @param {Object} props The component properties.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {string} props.className Class for the underlying Checkbox component
+ * @param {string} props.checkedClassName Class for checked icon.
+ * @param {string} props.unCheckedClassName Class for unchecked icon.
+ * @returns {JSX.Element}
  */
-const Checkbox = ({ checkedClassName, unCheckedClassName, ...props }) => (
+const Checkbox = ({
+  checkedClassName, unCheckedClassName, className, ...props
+}) => (
   <BaseCheckbox
     {...props}
+    className={`ui-shared__checkbox ${className}`}
     checkedIcon={
       <CheckedIcon className={classNames(styles.icon, checkedClassName, 'checkedIcon')} />
     }
@@ -27,11 +31,13 @@ const Checkbox = ({ checkedClassName, unCheckedClassName, ...props }) => (
 
 Checkbox.propTypes = {
   checkedClassName: PropTypes.string,
+  className: PropTypes.string,
   unCheckedClassName: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
   checkedClassName: styles.checkedIcon,
+  className: '',
   unCheckedClassName: styles.uncheckedIcon,
 };
 

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter: <ResetButton /> should handle clicks 1`] = `
+<SurroundPortals
+  portalName="filter.reset-button"
+  portalProps={
+    Object {
+      "disabled": false,
+      "onClick": [MockFunction],
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-lg74ao": "",
+      }
+    }
+  >
+    <Button
+      disabled={false}
+      flat={true}
+      onClick={[MockFunction]}
+      testId="clearAllButton"
+      type="primary"
+    >
+      <Text
+        string="filter.reset"
+      />
+    </Button>
+  </div>
+</SurroundPortals>
+`;
+
+exports[`Filter: <ResetButton /> should render as activated 1`] = `
+<SurroundPortals
+  portalName="filter.reset-button"
+  portalProps={
+    Object {
+      "disabled": false,
+      "onClick": [Function],
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-lg74ao": "",
+      }
+    }
+  >
+    <Button
+      disabled={false}
+      flat={true}
+      onClick={[Function]}
+      testId="clearAllButton"
+      type="primary"
+    >
+      <Text
+        string="filter.reset"
+      />
+    </Button>
+  </div>
+</SurroundPortals>
+`;
+
+exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
+<SurroundPortals
+  portalName="filter.reset-button"
+  portalProps={
+    Object {
+      "disabled": true,
+      "onClick": [Function],
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-lg74ao": "",
+      }
+    }
+  >
+    <Button
+      disabled={true}
+      flat={true}
+      onClick={[Function]}
+      testId="clearAllButton"
+      type="primary"
+    >
+      <Text
+        string="filter.reset"
+      />
+    </Button>
+  </div>
+</SurroundPortals>
+`;
