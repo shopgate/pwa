@@ -14,11 +14,12 @@ import ApplyButton from './components/ApplyButton';
 import ResetButton from './components/ResetButton';
 
 /**
- * The Content component renders all filters for the filter page.
+ * The FilterPageContent component renders all filters for the filter page.
  * @param {Object} props The component props.
+ * @param {React.ComponentType} props.AppBarComponent The component to be rendered as the app bar
  * @returns {JSX.Element}
  */
-const Content = ({ AppBarComponent }) => {
+const FilterPageContent = ({ AppBarComponent }) => {
   const {
     apiFilters,
     resetPossible,
@@ -77,12 +78,12 @@ const Content = ({ AppBarComponent }) => {
   );
 };
 
-Content.propTypes = {
+FilterPageContent.propTypes = {
   AppBarComponent: PropTypes.elementType,
 };
 
-Content.defaultProps = {
+FilterPageContent.defaultProps = {
   AppBarComponent: null,
 };
 
-export default Content;
+export default FilterPageContent;

@@ -12,7 +12,7 @@ import styles from './style';
  * @param {string} props.className Class for the underlying Checkbox component
  * @param {string} props.checkedClassName Class for checked icon.
  * @param {string} props.unCheckedClassName Class for unchecked icon.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Checkbox = ({
   checkedClassName, unCheckedClassName, className, ...props

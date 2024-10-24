@@ -22,7 +22,7 @@ import * as styles from './style';
  * @param {string} [props.contentClassName] Class name for the content wrapper
  * @param {string} [props.testId] Test ID for the component
  * @param {React.ReactNode} props.children Children used for the content section of the accordion
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function Accordion(props) {
   const {

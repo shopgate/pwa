@@ -22,7 +22,7 @@ const map = {
 class Filter extends PureComponent {
   /**
    * @param {Object} consumed The consumed context props.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   consumeRenderer = (consumed) => {
     if (!consumed.visible) {
@@ -48,7 +48,7 @@ class Filter extends PureComponent {
   }
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     return (

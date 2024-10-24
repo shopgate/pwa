@@ -9,7 +9,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @param {boolean} props.disabled Whether the button is disabled
  * @param {Function} props.onClick Click handler for the button
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FilterResetButton = ({ disabled, onClick }) => (
   <SurroundPortals
