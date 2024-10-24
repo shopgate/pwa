@@ -9,7 +9,7 @@ import connect from './connector';
  * The CategoryAppBar component.
  * @returns {JSX}
  */
-function CategoryAppBar({ title }) {
+function CategoryAppBar({ filtersShown, title }) {
   /**
    * @returns {JSX}
    */
@@ -17,6 +17,7 @@ function CategoryAppBar({ title }) {
     <DefaultBar
       title={title}
       below={<PageTitleBar />}
+      shadow={!filtersShown}
     />
   );
 
@@ -33,6 +34,7 @@ function CategoryAppBar({ title }) {
 }
 
 CategoryAppBar.propTypes = {
+  filtersShown: PropTypes.bool.isRequired,
   title: PropTypes.string,
 };
 

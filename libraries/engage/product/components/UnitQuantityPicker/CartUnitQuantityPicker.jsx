@@ -1,17 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import { small, big } from './styles';
-
-type Props = {
-  unit: string,
-  value: number,
-  hasCatchWeight?: boolean,
-  onChange: () => any,
-  classNames?: {
-    withDecimals: string,
-    withoutDecimals: string,
-  }
-}
 
 /**
  * @param {Object} props The component props.
@@ -19,7 +10,7 @@ type Props = {
  */
 const CartUnitQuantityPicker = ({
   unit, value, onChange, classNames, hasCatchWeight,
-}: Props) => {
+}) => {
   const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   const {
@@ -29,7 +20,7 @@ const CartUnitQuantityPicker = ({
 
   return (
     <UnitQuantityPicker
-      className={hasUnitWithDecimals ? withDecimals : withoutDecimals}
+      className={!hasUnitWithDecimals ? withDecimals : withoutDecimals}
       unit={hasUnitWithDecimals ? unit : null}
       maxDecimals={hasUnitWithDecimals ? 2 : 0}
       incrementStep={hasUnitWithDecimals ? 0.25 : 1}
@@ -40,7 +31,20 @@ const CartUnitQuantityPicker = ({
   );
 };
 
+CartUnitQuantityPicker.propTypes = {
+  value: PropTypes.number.isRequired,
+  classNames: PropTypes.shape({
+    withDecimals: PropTypes.string,
+    withoutDecimals: PropTypes.string,
+  }),
+  hasCatchWeight: PropTypes.bool,
+  onChange: PropTypes.func,
+  unit: PropTypes.string,
+};
+
 CartUnitQuantityPicker.defaultProps = {
+  unit: null,
+  onChange: noop,
   classNames: {
     withDecimals: big,
     withoutDecimals: small,

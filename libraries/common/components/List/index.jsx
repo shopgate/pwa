@@ -8,7 +8,7 @@ import ListItem from './components/Item';
  * @returns {JSX}
  */
 const List = ({ children, className, role }) => (
-  <ul className={className} role={role}>{children}</ul>
+  <ul className={`${className} common_list`} role={role}>{children}</ul>
 );
 
 List.Item = ListItem;

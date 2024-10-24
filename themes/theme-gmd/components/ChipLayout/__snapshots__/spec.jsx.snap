@@ -24,7 +24,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removeLabel={null}
       >
         <div
-          className="css-s3ttd5"
+          className="ui-shared__chip css-151hpn9"
           data-test-id="some-id"
         >
           <Button
@@ -49,18 +49,17 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                 webOnly={false}
               >
                 <Cross
-                  color="var(--color-primary, #5ccee3)"
                   size={16}
                 >
                   <Icon
                     className=""
-                    color="var(--color-primary, #5ccee3)"
+                    color={null}
                     content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                     size={16}
                     viewBox="0 0 24 24"
                   >
                     <svg
-                      className="css-yys9hb "
+                      className="css-yys9hb  common__icon"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -68,7 +67,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                       }
                       style={
                         Object {
-                          "fill": "var(--color-primary, #5ccee3)",
+                          "fill": null,
                           "fontSize": 16,
                         }
                       }
@@ -118,7 +117,9 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       >
         <Text
           string="more"
-        />
+        >
+          more
+        </Text>
       </RippleButton>
     </div>
   </div>
@@ -149,7 +150,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="css-s3ttd5"
+          className="ui-shared__chip css-151hpn9"
           data-test-id="some-id"
         >
           <Button
@@ -174,18 +175,17 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                 webOnly={false}
               >
                 <Cross
-                  color="var(--color-primary, #5ccee3)"
                   size={16}
                 >
                   <Icon
                     className=""
-                    color="var(--color-primary, #5ccee3)"
+                    color={null}
                     content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                     size={16}
                     viewBox="0 0 24 24"
                   >
                     <svg
-                      className="css-yys9hb "
+                      className="css-yys9hb  common__icon"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -193,7 +193,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                       }
                       style={
                         Object {
-                          "fill": "var(--color-primary, #5ccee3)",
+                          "fill": null,
                           "fontSize": 16,
                         }
                       }
@@ -241,7 +241,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="css-s3ttd5"
+          className="ui-shared__chip css-151hpn9"
           data-test-id="some-other-id"
         >
           <Button
@@ -266,18 +266,17 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                 webOnly={false}
               >
                 <Cross
-                  color="var(--color-primary, #5ccee3)"
                   size={16}
                 >
                   <Icon
                     className=""
-                    color="var(--color-primary, #5ccee3)"
+                    color={null}
                     content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                     size={16}
                     viewBox="0 0 24 24"
                   >
                     <svg
-                      className="css-yys9hb "
+                      className="css-yys9hb  common__icon"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -285,7 +284,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                       }
                       style={
                         Object {
-                          "fill": "var(--color-primary, #5ccee3)",
+                          "fill": null,
                           "fontSize": 16,
                         }
                       }
@@ -335,7 +334,9 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       >
         <Text
           string="more"
-        />
+        >
+          more
+        </Text>
       </RippleButton>
     </div>
   </div>

@@ -69,11 +69,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
       style={Object {}}
     >
       <section
-        className={
-          Object {
-            "data-css-2u45iy": "",
-          }
-        }
+        className="theme__product-card css-2u45iy"
         data-test-id="Product: Product Name"
         style={
           Object {
@@ -155,11 +151,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       style={Object {}}
     >
       <section
-        className={
-          Object {
-            "data-css-2u45iy": "",
-          }
-        }
+        className="theme__product-card css-2u45iy"
         data-test-id="Product: Product Name"
         style={
           Object {

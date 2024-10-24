@@ -66,7 +66,7 @@ export default function app(subscribe) {
 
       const { params: { pathname } } = action;
 
-      dispatch(grantCameraPermissions())
+      dispatch(grantCameraPermissions({ useSettingsModal: true }))
         .then((granted) => {
           resolve(granted ? pathname : null);
         });

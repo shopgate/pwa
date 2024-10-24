@@ -3,7 +3,8 @@ import { View } from '@shopgate/engage/components';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { BackBar } from 'Components/AppBar/presets';
 import { i18n, useRoute } from '@shopgate/engage/core';
-import { AddressBookContact as Content, ADDRESS_TYPE_BILLING } from '@shopgate/engage/checkout';
+import { ADDRESS_TYPE_BILLING } from '@shopgate/engage/checkout';
+import { AddressBookContact as Content } from '@shopgate/engage/checkout/components';
 
 /**
  * @returns {JSX}

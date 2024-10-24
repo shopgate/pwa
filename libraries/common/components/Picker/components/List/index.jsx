@@ -13,7 +13,7 @@ const PickerList = ({
   onSelect,
   selectedIndex,
 }) => (
-  <ul>
+  <ul className="common__picker__list">
     {items.map((item, currentIndex) => (
       <li
         key={item.value}

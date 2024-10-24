@@ -1,53 +1,52 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
-import { ORDERS_PATH, WISH_LIST_PATH, PROFILE_PATH } from '@shopgate/engage/account';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { NAV_MENU_MY_ACCOUNT, NAV_MENU_LOGOUT } from '@shopgate/engage/core/constants';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { ORDERS_PATH, WISH_LIST_PATH, PROFILE_PATH } from '@shopgate/engage/account/constants';
 import Section from '../../../Section';
 import Item from '../../../Item';
 
 /**
  * @param {Object} props The component props.
- * @param {Object} context The consumed context.
+ * @param {Function} props.logout Callback invoked when users press the "logout" button
  * @returns {JSX}
  */
 const LoggedIn = ({ logout }) => {
   const props = { Item };
   return (
-    <Fragment>
-      <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_BEFORE} props={props} />
-      <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT} props={props}>
-        <div data-test-id="userMenu">
-          <Section title="navigation.your_account">
-            <Item
-              href={PROFILE_PATH}
-              label="navigation.profile"
-              testId="accountButton"
-            />
-            <Item
-              href={ORDERS_PATH}
-              label="navigation.order_history"
-              testId="accountButton"
-            />
-            <Item
-              href={WISH_LIST_PATH}
-              label="navigation.wish_list"
-              testId="accountButton"
-            />
-            <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
-            <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
+    <SurroundPortals portalName={NAV_MENU_MY_ACCOUNT} portalProps={props}>
+      <div data-test-id="userMenu">
+        <Section title="navigation.your_account">
+          {hasNewServices() && (
+            <>
               <Item
-                onClick={logout}
-                label="navigation.logout"
-                testId="logoutButton"
+                href={PROFILE_PATH}
+                label="navigation.profile"
+                testId="accountButton"
               />
-            </Portal>
-            <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
-          </Section>
-        </div>
-      </Portal>
-      <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_AFTER} props={props} />
-    </Fragment>
+              <Item
+                href={ORDERS_PATH}
+                label="navigation.order_history"
+                testId="accountButton"
+              />
+              <Item
+                href={WISH_LIST_PATH}
+                label="navigation.favorites"
+                testId="accountButton"
+              />
+            </>
+          )}
+          <SurroundPortals portalName={NAV_MENU_LOGOUT} portalProps={props}>
+            <Item
+              onClick={logout}
+              label="navigation.logout"
+              testId="logoutButton"
+            />
+          </SurroundPortals>
+        </Section>
+      </div>
+    </SurroundPortals>
   );
 };
 

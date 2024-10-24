@@ -42,7 +42,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             text="navigation.welcome_message"
           >
             <h1
-              className="css-18cwfw7"
+              className="css-18cwfw7 headline theme__headline"
               data-test-id="Headline"
               style={
                 Object {
@@ -51,6 +51,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -120,17 +121,9 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               <LoggedIn
                 logout={[Function]}
               >
-                <Portal
-                  name="nav-menu.my-account.before"
-                  props={
-                    Object {
-                      "Item": [Function],
-                    }
-                  }
-                />
-                <Portal
-                  name="nav-menu.my-account"
-                  props={
+                <SurroundPortals
+                  portalName="nav-menu.my-account"
+                  portalProps={
                     Object {
                       "Item": [Function],
                     }
@@ -152,7 +145,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         text="navigation.your_account"
                       >
                         <h2
-                          className="css-18cwfw7"
+                          className="css-18cwfw7 headline theme__headline"
                           data-test-id="Headline"
                           style={
                             Object {
@@ -161,6 +154,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           }
                         >
                           <Translate
+                            acceptPlainTextWithPlaceholders={false}
                             className={null}
                             params={Object {}}
                             role={null}
@@ -183,179 +177,9 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           }
                         }
                       >
-                        <MoreMenuItem
-                          className={null}
-                          href="/account/profile"
-                          label="navigation.profile"
-                          onClick={null}
-                          testId="accountButton"
-                        >
-                          <Connect(Link)
-                            className="css-1hj8a57"
-                            href="/account/profile"
-                          >
-                            <Link
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-1hj8a57"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="/account/profile"
-                              replace={false}
-                              role="link"
-                              state={Object {}}
-                              tabIndex={null}
-                              tag="div"
-                              target={null}
-                            >
-                              <div
-                                aria-hidden={null}
-                                aria-label={null}
-                                className="css-9auwkz css-1hj8a57"
-                                data-test-id="link: /account/profile"
-                                href={null}
-                                onClick={[Function]}
-                                role="link"
-                                tabIndex={null}
-                              >
-                                <Translate
-                                  className={null}
-                                  params={Object {}}
-                                  role={null}
-                                  string="navigation.profile"
-                                  transform={null}
-                                >
-                                  <span
-                                    className={null}
-                                    role={null}
-                                  >
-                                    navigation.profile
-                                  </span>
-                                </Translate>
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </MoreMenuItem>
-                        <MoreMenuItem
-                          className={null}
-                          href="/account/orders"
-                          label="navigation.order_history"
-                          onClick={null}
-                          testId="accountButton"
-                        >
-                          <Connect(Link)
-                            className="css-1hj8a57"
-                            href="/account/orders"
-                          >
-                            <Link
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-1hj8a57"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="/account/orders"
-                              replace={false}
-                              role="link"
-                              state={Object {}}
-                              tabIndex={null}
-                              tag="div"
-                              target={null}
-                            >
-                              <div
-                                aria-hidden={null}
-                                aria-label={null}
-                                className="css-9auwkz css-1hj8a57"
-                                data-test-id="link: /account/orders"
-                                href={null}
-                                onClick={[Function]}
-                                role="link"
-                                tabIndex={null}
-                              >
-                                <Translate
-                                  className={null}
-                                  params={Object {}}
-                                  role={null}
-                                  string="navigation.order_history"
-                                  transform={null}
-                                >
-                                  <span
-                                    className={null}
-                                    role={null}
-                                  >
-                                    navigation.order_history
-                                  </span>
-                                </Translate>
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </MoreMenuItem>
-                        <MoreMenuItem
-                          className={null}
-                          href="/account/wish-list"
-                          label="navigation.wish_list"
-                          onClick={null}
-                          testId="accountButton"
-                        >
-                          <Connect(Link)
-                            className="css-1hj8a57"
-                            href="/account/wish-list"
-                          >
-                            <Link
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-1hj8a57"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="/account/wish-list"
-                              replace={false}
-                              role="link"
-                              state={Object {}}
-                              tabIndex={null}
-                              tag="div"
-                              target={null}
-                            >
-                              <div
-                                aria-hidden={null}
-                                aria-label={null}
-                                className="css-9auwkz css-1hj8a57"
-                                data-test-id="link: /account/wish-list"
-                                href={null}
-                                onClick={[Function]}
-                                role="link"
-                                tabIndex={null}
-                              >
-                                <Translate
-                                  className={null}
-                                  params={Object {}}
-                                  role={null}
-                                  string="navigation.wish_list"
-                                  transform={null}
-                                >
-                                  <span
-                                    className={null}
-                                    role={null}
-                                  >
-                                    navigation.wish_list
-                                  </span>
-                                </Translate>
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </MoreMenuItem>
-                        <Portal
-                          name="nav-menu.logout.before"
-                          props={
-                            Object {
-                              "Item": [Function],
-                            }
-                          }
-                        />
-                        <Portal
-                          name="nav-menu.logout"
-                          props={
+                        <SurroundPortals
+                          portalName="nav-menu.logout"
+                          portalProps={
                             Object {
                               "Item": [Function],
                             }
@@ -374,43 +198,18 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               onClick={[Function]}
                               type="button"
                             >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
+                              <Text
                                 string="navigation.logout"
-                                transform={null}
                               >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.logout
-                                </span>
-                              </Translate>
+                                navigation.logout
+                              </Text>
                             </button>
                           </MoreMenuItem>
-                        </Portal>
-                        <Portal
-                          name="nav-menu.logout.after"
-                          props={
-                            Object {
-                              "Item": [Function],
-                            }
-                          }
-                        />
+                        </SurroundPortals>
                       </div>
                     </Section>
                   </div>
-                </Portal>
-                <Portal
-                  name="nav-menu.my-account.after"
-                  props={
-                    Object {
-                      "Item": [Function],
-                    }
-                  }
-                />
+                </SurroundPortals>
               </LoggedIn>
             </Portal>
             <Portal
@@ -466,7 +265,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7"
+                    className="css-18cwfw7 headline theme__headline"
                     data-test-id="Headline"
                     style={
                       Object {
@@ -475,6 +274,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                     }
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -525,52 +325,16 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/shipping"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/shipping"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.shipping"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/shipping"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.shipping"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.shipping
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.shipping
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -612,52 +376,16 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/payment"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/payment"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.payment"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/payment"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.payment"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.payment
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.payment
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -699,52 +427,16 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/terms"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/terms"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.terms"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/terms"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.terms"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.terms
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.terms
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -786,52 +478,16 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/privacy"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/privacy"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.privacy"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/privacy"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.privacy"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.privacy
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.privacy
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -895,52 +551,16 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/imprint"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/imprint"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.about"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/imprint"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.about"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.about
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.about
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1025,7 +645,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             text="login.headline"
           >
             <h1
-              className="css-18cwfw7"
+              className="css-18cwfw7 headline theme__headline"
               data-test-id="Headline"
               style={
                 Object {
@@ -1034,6 +654,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
               }
             >
               <Translate
+                acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={Object {}}
                 role={null}
@@ -1088,184 +709,50 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     data-test-id="userMenu"
                   >
                     <Grid
-                      className="css-az18cj"
-                      component="ul"
-                      wrap={false}
+                      className="css-az18cj theme__more-page__user-menu__container"
                     >
-                      <ul
-                        className="css-az18cj css-h7r55a"
+                      <Grid.Item
+                        className="css-mzzsxh theme__more-page__login-button__container"
                       >
-                        <GridItem
-                          className="css-mzzsxh"
-                          component="li"
-                          grow={0}
-                          shrink={1}
+                        <Link
+                          disabled={false}
+                          href="/login"
                         >
-                          <li
-                            className="css-mzzsxh"
+                          <Button
+                            className="css-6f03lb theme__more-page__login-button"
+                            disabled={false}
+                            testId="UserMenuLogin"
+                            type="secondary"
                           >
-                            <Connect(Link)
-                              disabled={false}
-                              href="/login"
+                            <Text
+                              string="login.button"
                             >
-                              <Link
-                                aria-hidden={null}
-                                aria-label={null}
-                                className=""
-                                disabled={false}
-                                historyPush={[Function]}
-                                historyReplace={[Function]}
-                                href="/login"
-                                replace={false}
-                                role="link"
-                                state={Object {}}
-                                tabIndex={null}
-                                tag="div"
-                                target={null}
-                              >
-                                <div
-                                  aria-hidden={null}
-                                  aria-label={null}
-                                  className="css-9auwkz "
-                                  data-test-id="link: /login"
-                                  href={null}
-                                  onClick={[Function]}
-                                  role="link"
-                                  tabIndex={null}
-                                >
-                                  <Button
-                                    className="css-6f03lb"
-                                    disabled={false}
-                                    flat={false}
-                                    onClick={null}
-                                    testId="UserMenuLogin"
-                                    type="secondary"
-                                    wrapContent={true}
-                                  >
-                                    <Button
-                                      className="ui-shared__button css-1k9vl9z css-6f03lb"
-                                      disabled={false}
-                                      onClick={null}
-                                      testId="UserMenuLogin"
-                                    >
-                                      <button
-                                        className="ui-shared__button css-1k9vl9z css-6f03lb css-1rn65c0 common__button"
-                                        data-test-id="UserMenuLogin"
-                                        disabled={false}
-                                        onClick={null}
-                                      >
-                                        <div
-                                          className="css-a1u7zd"
-                                        >
-                                          <Translate
-                                            className={null}
-                                            params={Object {}}
-                                            role={null}
-                                            string="login.button"
-                                            transform={null}
-                                          >
-                                            <span
-                                              className={null}
-                                              role={null}
-                                            >
-                                              login.button
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </button>
-                                    </Button>
-                                  </Button>
-                                </div>
-                              </Link>
-                            </Connect(Link)>
-                          </li>
-                        </GridItem>
-                        <GridItem
-                          className="css-mzzsxh"
-                          component="li"
-                          grow={0}
-                          shrink={1}
+                              login.button
+                            </Text>
+                          </Button>
+                        </Link>
+                      </Grid.Item>
+                      <Grid.Item
+                        className="css-mzzsxh theme__more-page-register-button__container"
+                      >
+                        <Link
+                          disabled={false}
+                          href="/register"
                         >
-                          <li
-                            className="css-mzzsxh"
+                          <Button
+                            className="css-6f03lb theme__more-page-register-button"
+                            disabled={false}
+                            testId="UserMenuRegister"
+                            type="secondary"
                           >
-                            <Connect(Link)
-                              disabled={false}
-                              href="/register"
+                            <Text
+                              string="login.signup"
                             >
-                              <Link
-                                aria-hidden={null}
-                                aria-label={null}
-                                className=""
-                                disabled={false}
-                                historyPush={[Function]}
-                                historyReplace={[Function]}
-                                href="/register"
-                                replace={false}
-                                role="link"
-                                state={Object {}}
-                                tabIndex={null}
-                                tag="div"
-                                target={null}
-                              >
-                                <div
-                                  aria-hidden={null}
-                                  aria-label={null}
-                                  className="css-9auwkz "
-                                  data-test-id="link: /register"
-                                  href={null}
-                                  onClick={[Function]}
-                                  role="link"
-                                  tabIndex={null}
-                                >
-                                  <Button
-                                    className="css-6f03lb"
-                                    disabled={false}
-                                    flat={false}
-                                    onClick={null}
-                                    testId="UserMenuRegister"
-                                    type="secondary"
-                                    wrapContent={true}
-                                  >
-                                    <Button
-                                      className="ui-shared__button css-1k9vl9z css-6f03lb"
-                                      disabled={false}
-                                      onClick={null}
-                                      testId="UserMenuRegister"
-                                    >
-                                      <button
-                                        className="ui-shared__button css-1k9vl9z css-6f03lb css-1rn65c0 common__button"
-                                        data-test-id="UserMenuRegister"
-                                        disabled={false}
-                                        onClick={null}
-                                      >
-                                        <div
-                                          className="css-a1u7zd"
-                                        >
-                                          <Translate
-                                            className={null}
-                                            params={Object {}}
-                                            role={null}
-                                            string="login.signup"
-                                            transform={null}
-                                          >
-                                            <span
-                                              className={null}
-                                              role={null}
-                                            >
-                                              login.signup
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </button>
-                                    </Button>
-                                  </Button>
-                                </div>
-                              </Link>
-                            </Connect(Link)>
-                          </li>
-                        </GridItem>
-                      </ul>
+                              login.signup
+                            </Text>
+                          </Button>
+                        </Link>
+                      </Grid.Item>
                     </Grid>
                   </div>
                 </LoggedOut>
@@ -1331,7 +818,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7"
+                    className="css-18cwfw7 headline theme__headline"
                     data-test-id="Headline"
                     style={
                       Object {
@@ -1340,6 +827,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     }
                   >
                     <Translate
+                      acceptPlainTextWithPlaceholders={false}
                       className={null}
                       params={Object {}}
                       role={null}
@@ -1390,52 +878,16 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/shipping"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/shipping"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.shipping"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/shipping"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.shipping"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.shipping
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.shipping
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1477,52 +929,16 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/payment"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/payment"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.payment"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/payment"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.payment"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.payment
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.payment
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1564,52 +980,16 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/terms"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/terms"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.terms"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/terms"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.terms"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.terms
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.terms
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1651,52 +1031,16 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/privacy"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/privacy"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.privacy"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/privacy"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.privacy"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.privacy
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.privacy
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1760,52 +1104,16 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <Connect(Link)
+                        <Link
                           className="css-1hj8a57"
                           href="/page/imprint"
                         >
-                          <Link
-                            aria-hidden={null}
-                            aria-label={null}
-                            className="css-1hj8a57"
-                            disabled={false}
-                            historyPush={[Function]}
-                            historyReplace={[Function]}
-                            href="/page/imprint"
-                            replace={false}
-                            role="link"
-                            state={Object {}}
-                            tabIndex={null}
-                            tag="div"
-                            target={null}
+                          <Text
+                            string="navigation.about"
                           >
-                            <div
-                              aria-hidden={null}
-                              aria-label={null}
-                              className="css-9auwkz css-1hj8a57"
-                              data-test-id="link: /page/imprint"
-                              href={null}
-                              onClick={[Function]}
-                              role="link"
-                              tabIndex={null}
-                            >
-                              <Translate
-                                className={null}
-                                params={Object {}}
-                                role={null}
-                                string="navigation.about"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  navigation.about
-                                </span>
-                              </Translate>
-                            </div>
-                          </Link>
-                        </Connect(Link)>
+                            navigation.about
+                          </Text>
+                        </Link>
                       </MoreMenuItem>
                     </Portal>
                     <Portal

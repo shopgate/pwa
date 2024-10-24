@@ -133,7 +133,7 @@ class NavDrawer extends Component {
 
             return (
               <section
-                className={drawerStyle}
+                className={`${drawerStyle} ui-material__nav-drawer`}
                 data-test-id="NavDrawer"
                 style={transition[state]}
                 aria-hidden={ariaHidden}

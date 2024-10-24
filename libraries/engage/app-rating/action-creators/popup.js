@@ -1,7 +1,7 @@
 import {
-  INCREASE_REJECTION_COUNT,
-  SET_ALREADY_RATED,
-  SET_LAST_POPUP_TIMESTAMP,
+  APP_RATING_INCREASE_REJECTION_COUNT,
+  APP_RATING_SET_ALREADY_RATED,
+  APP_RATING_SET_LAST_POPUP_TIMESTAMP,
 } from '../constants';
 
 /**
@@ -9,7 +9,7 @@ import {
  * @return {Object} The dispatched action object.
  */
 export const setLastPopupTimestamp = () => ({
-  type: SET_LAST_POPUP_TIMESTAMP,
+  type: APP_RATING_SET_LAST_POPUP_TIMESTAMP,
 });
 
 /**
@@ -17,7 +17,7 @@ export const setLastPopupTimestamp = () => ({
  * @return {Object} The dispatched action object.
  */
 export const increaseRejectionCount = () => ({
-  type: INCREASE_REJECTION_COUNT,
+  type: APP_RATING_INCREASE_REJECTION_COUNT,
 });
 
 /**
@@ -26,7 +26,7 @@ export const increaseRejectionCount = () => ({
  * @return {Object} The dispatched action object.
  */
 export const setAlreadyRated = to => ({
-  type: SET_ALREADY_RATED,
+  type: APP_RATING_SET_ALREADY_RATED,
   to,
 });
 

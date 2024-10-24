@@ -4,7 +4,7 @@ exports[`<ProductSlider /> should call the products callback on mount 1`] = `""`
 
 exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] = `
 <div
-  className="css-1b16rjo"
+  className="css-1b16rjo theme__widgets__product-slider"
 >
   <Headline
     text="Lorem ipsum"
@@ -1324,7 +1324,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
 
 exports[`<ProductSlider /> should not render an empty headline 1`] = `
 <div
-  className="css-1b16rjo"
+  className="css-1b16rjo theme__widgets__product-slider"
 >
   <ProductListTypeProvider
     subType="widgets"
@@ -1568,7 +1568,7 @@ exports[`<ProductSlider /> should not render the widget without any data 1`] = `
 
 exports[`<ProductSlider /> should render the headline 1`] = `
 <div
-  className="css-1b16rjo"
+  className="css-1b16rjo theme__widgets__product-slider"
 >
   <Headline
     text="Lorem ipsum"
@@ -1813,7 +1813,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
 
 exports[`<ProductSlider /> should render the widget with data 1`] = `
 <div
-  className="css-1b16rjo"
+  className="css-1b16rjo theme__widgets__product-slider"
 >
   <ProductListTypeProvider
     subType="widgets"

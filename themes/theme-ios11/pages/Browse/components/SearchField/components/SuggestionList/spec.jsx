@@ -29,7 +29,7 @@ describe('<SuggestionList />', () => {
 
     const wrapper = mount((
       <Provider store={store}>
-        <SuggestionList bottomHeight={10} onClick={() => {}} />
+        <SuggestionList bottomHeight={10} onClick={() => {}} visible />
       </Provider>
     ));
 
@@ -49,6 +49,7 @@ describe('<SuggestionList />', () => {
         onClick={() => { }}
         suggestions={suggestionsOne}
         fetching={false}
+        visible
       />
     ));
 
@@ -80,12 +81,19 @@ describe('<SuggestionList />', () => {
     const onClickMock = jest.fn();
     const wrapper = mount((
       <Provider store={store}>
-        <SuggestionList bottomHeight={10} onClick={onClickMock} />
+        <SuggestionList bottomHeight={10} onClick={onClickMock} visible />
       </Provider>
     ));
 
     wrapper.find('button').at(2).simulate('click');
 
     expect(onClickMock).toHaveBeenCalledWith(expect.anything(), 'foo bar buz');
+  });
+
+  it('should render portal without suggestions', () => {
+    const wrapper = mount((
+      <UnwrappedSuggestionList bottomHeight={0} onClick={() => { }} suggestions={null} visible />
+    ));
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,4 +1,3 @@
-// @flow
 import React, { useMemo, useContext } from 'react';
 import { Availability } from '@shopgate/engage/components';
 import { i18n, LoadingContext, useRoute } from '@shopgate/engage/core';

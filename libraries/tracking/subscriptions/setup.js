@@ -11,8 +11,13 @@ import {
 import { TYPE_PHONE, OS_ALL, OS_ANDROID } from '@shopgate/pwa-common/constants/Device';
 import appConfig, { shopNumber, componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import core from '@shopgate/tracking-core/core/Core';
-import { initializeTracking$ } from '@shopgate/engage/tracking';
+import { COOKIE_CONSENT_UPDATED } from '@shopgate/tracking-core/helpers/events';
+import {
+  cookieConsentInitialized$,
+  cookieConsentUpdated$,
+} from '@shopgate/engage/tracking/streams';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
+import { track } from '../helpers/index';
 
 /**
  * Setup tracking subscriptions.
@@ -22,7 +27,9 @@ export default function setup(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(initializeTracking$, async ({ getState }) => {
+  subscribe(cookieConsentInitialized$, async ({ getState, action }) => {
+    const { statisticsCookiesAccepted, comfortCookiesAccepted } = action;
+
     const clientInformationResponse = !useBrowserConnector() ? await getWebStorageEntry({ name: 'clientInformation' }) : { value: defaultClientInformation };
 
     const clientInformation = {
@@ -32,13 +39,17 @@ export default function setup(subscribe) {
       services: get(clientInformationResponse, 'value.device.supportedAnalyticsServices', []),
       libVersion: get(clientInformationResponse, 'value.libVersion'),
       appVersion: get(clientInformationResponse, 'value.appVersion'),
+      cookieConsent: {
+        statisticsCookiesAccepted,
+        comfortCookiesAccepted,
+      },
     };
 
     // TODO: instantiate the UnifiedPlugin only if a native tracker is configured (FB, AppsFlyer)
     // eslint-disable-next-line no-new
     new UnifiedPlugin();
 
-    if (appConfig.tracking.hasWebTrackingEngage) {
+    if (appConfig.tracking.hasWebTrackingEngage && statisticsCookiesAccepted) {
       // eslint-disable-next-line global-require
       const GaBase = require('@shopgate/tracking-core/plugins/trackers/GaBase').default;
       GaBase.createUniversal({
@@ -63,7 +74,6 @@ export default function setup(subscribe) {
 
       Object.keys(trackingExtensions).forEach((key) => {
         const pluginInit = extensionsIndex[key];
-
         if (pluginInit) {
           /**
            * Call the init function of the plugin.
@@ -84,5 +94,18 @@ export default function setup(subscribe) {
     }
 
     core.registerFinished();
+  });
+
+  /**
+   * Gets triggered when the cookie consent selection changes. Registered trackers will be informed
+   * about the new decisions.
+   */
+  subscribe(cookieConsentUpdated$, ({ action }) => {
+    const { statisticsCookiesAccepted, comfortCookiesAccepted } = action;
+
+    track(COOKIE_CONSENT_UPDATED, {
+      statisticsCookiesAccepted,
+      comfortCookiesAccepted,
+    });
   });
 }

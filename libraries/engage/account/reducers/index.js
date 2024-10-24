@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { SUCCESS_LOGOUT } from '@shopgate/pwa-common/constants/ActionTypes';
+import { SUCCESS_LOGOUT } from '@shopgate/engage/core/constants';
 import {
   FETCH_CUSTOMER_CONTACTS,
   FETCH_CUSTOMER_CONTACTS_SUCCESS,

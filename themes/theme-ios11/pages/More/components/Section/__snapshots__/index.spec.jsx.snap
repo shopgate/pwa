@@ -20,7 +20,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
     text="Headline"
   >
     <h2
-      className="css-18cwfw7"
+      className="css-18cwfw7 headline theme__headline"
       data-test-id="Headline"
       style={
         Object {
@@ -29,6 +29,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       }
     >
       <Translate
+        acceptPlainTextWithPlaceholders={false}
         className={null}
         params={Object {}}
         role={null}
@@ -62,22 +63,11 @@ exports[`<Section /> should render with a headline and items 1`] = `
         className="css-1hj8a57"
         href="/link/one"
       >
-        <div>
-          <Translate
-            className={null}
-            params={Object {}}
-            role={null}
-            string="Item One"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              Item One
-            </span>
-          </Translate>
-        </div>
+        <Text
+          string="Item One"
+        >
+          Item One
+        </Text>
       </Link>
     </MoreMenuItem>
     <MoreMenuItem
@@ -91,22 +81,11 @@ exports[`<Section /> should render with a headline and items 1`] = `
         className="css-1hj8a57"
         href="/link/two"
       >
-        <div>
-          <Translate
-            className={null}
-            params={Object {}}
-            role={null}
-            string="Item Two"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              Item Two
-            </span>
-          </Translate>
-        </div>
+        <Text
+          string="Item Two"
+        >
+          Item Two
+        </Text>
       </Link>
     </MoreMenuItem>
   </div>
@@ -144,22 +123,11 @@ exports[`<Section /> should render without a headline but items 1`] = `
         className="css-1hj8a57"
         href="/link/one"
       >
-        <div>
-          <Translate
-            className={null}
-            params={Object {}}
-            role={null}
-            string="Item One"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              Item One
-            </span>
-          </Translate>
-        </div>
+        <Text
+          string="Item One"
+        >
+          Item One
+        </Text>
       </Link>
     </MoreMenuItem>
     <MoreMenuItem
@@ -173,22 +141,11 @@ exports[`<Section /> should render without a headline but items 1`] = `
         className="css-1hj8a57"
         href="/link/two"
       >
-        <div>
-          <Translate
-            className={null}
-            params={Object {}}
-            role={null}
-            string="Item Two"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              Item Two
-            </span>
-          </Translate>
-        </div>
+        <Text
+          string="Item Two"
+        >
+          Item Two
+        </Text>
       </Link>
     </MoreMenuItem>
   </div>

@@ -22,7 +22,9 @@ describe('Favorites - actions', () => {
         type: ADD_PRODUCT_TO_FAVORITES,
         productId,
         listId,
-        showToast: true,
+        showToast: false,
+        notes: undefined,
+        quantity: undefined,
       }];
 
       const store = mockStore(mockedGetState('then', {

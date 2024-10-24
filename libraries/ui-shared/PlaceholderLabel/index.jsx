@@ -12,7 +12,7 @@ const PlaceholderLabel = ({
 }) => {
   if (!ready) {
     return (
-      <div style={style} className={`${styles.label} ${className}`} />
+      <div style={style} className={`${styles.label} ${className} ui-shared__placeholder-label`} />
     );
   }
 

@@ -1,6 +1,7 @@
 import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { themeConfig } from '@shopgate/engage';
 
 /**
  * Gets a basic style object for the chip layout.
@@ -29,8 +30,15 @@ const chipBase = (hasRemoveButton = true) => ({
  */
 const chip = (hasRemoveButton = true, inverted = false) => css({
   ...chipBase(hasRemoveButton),
-  backgroundColor: (inverted ? `var(--color-primary, ${themeConfig.accent})` : `var(--color-primary-contrast, ${themeConfig.accentContrast})`),
-  color: (inverted ? `var(--color-primary-contrast, ${themeConfig.accentContrast})` : `var(--color-primary, ${themeConfig.accent})`),
+  ...(hasNewServices() ? {
+    backgroundColor: inverted ? 'var(--color-primary)' : 'var(--color-primary-contrast)',
+    color: inverted ? 'var(--color-primary-contrast)' : 'var(--color-primary)',
+  } : {
+    backgroundColor: inverted ? 'var(--color-secondary)' : 'var(--color-secondary-contrast)',
+    color: inverted ? 'var(--color-secondary-contrast)' : 'var(--color-secondary)',
+    '--color-text-high-emphasis': inverted ? 'var(--color-secondary-contrast)' : 'var(--color-secondary)',
+  }),
+
 }).toString();
 
 const removeButton = css({

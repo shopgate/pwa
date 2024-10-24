@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductWidgets /> should render the products ids widget 1`] = `
+<ProductsIdsWidget
+  settings={
+    Object {
+      "headline": "",
+      "layout": "grid",
+      "productLimit": 6,
+      "queryParams": Array [
+        1,
+        2,
+        4,
+      ],
+      "queryType": 4,
+    }
+  }
+/>
+`;
+
+exports[`<ProductWidgets /> should render the products widget 1`] = `
+<ProductsWidget
+  settings={
+    Object {
+      "headline": "",
+      "layout": "grid",
+      "productLimit": 6,
+      "queryParams": "Blue",
+      "queryType": 2,
+    }
+  }
+/>
+`;

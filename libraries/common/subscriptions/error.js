@@ -19,6 +19,7 @@ import {
   ETIMEOUT,
   ENETUNREACH,
   EUNKNOWN,
+  EFAVORITE,
 } from '@shopgate/pwa-core';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
@@ -61,7 +62,11 @@ export default (subscribe) => {
     }).setMessage({
       code: ENETUNREACH,
       message: 'modal.body_error',
-    });
+    })
+      .setMessage({
+        code: EFAVORITE,
+        message: 'favorites.error_general',
+      });
   });
 
   /** Show a message to the user in case of pipeline error */
@@ -272,13 +277,21 @@ export default (subscribe) => {
   const allErrors$ = pipelineError$.merge(appError$);
   // Log all error messages which are presented to the user
   subscribe(allErrors$, ({ action }) => {
+    const { error = {} } = action;
+    const {
+      code,
+      message,
+      meta: {
+        message: metaMessage,
+      } = {},
+    } = error;
     withScope((scope) => {
       scope.setTag('error', 'E_USER');
-      scope.setTag('errorCode', action.error.code);
-      scope.setTag('errorMessage', action.error.message);
+      scope.setTag('errorCode', code);
+      scope.setTag('errorMessage', message);
       captureEvent({
-        message: action.error.meta.message,
-        extra: action.error,
+        message: metaMessage || message,
+        extra: error,
       });
     });
   });

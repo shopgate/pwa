@@ -1,5 +1,3 @@
-// @flow
-import * as Redux from 'redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import {
@@ -9,12 +7,11 @@ import {
 } from './config.action-creators';
 import { makeGetConfig } from './config.selectors';
 import { PIPELINE_CORE_GET_CONFIG } from './config.constants';
-import { type MerchantSettings } from './config.types';
 
 /**
  * @returns {Function} A redux thunk.
  */
-export const fetchConfig = () => (dispatch: Redux.Dispatch, getState: () => {}) => {
+export const fetchConfig = () => (dispatch, getState) => {
   const getConfig = makeGetConfig();
   const config = getConfig(getState());
 
@@ -28,7 +25,7 @@ export const fetchConfig = () => (dispatch: Redux.Dispatch, getState: () => {}) 
     .dispatch();
 
   request
-    .then((result: MerchantSettings) => {
+    .then((result) => {
       dispatch(receiveConfig(result));
     })
     .catch((error) => {

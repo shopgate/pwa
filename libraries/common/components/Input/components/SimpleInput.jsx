@@ -22,6 +22,7 @@ class SimpleInput extends Component {
     /* eslint-disable-next-line react/forbid-prop-types */
     inputComponent: PropTypes.any,
     isControlled: PropTypes.bool,
+    maxLength: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func,
     onFocusChange: PropTypes.func,
@@ -43,6 +44,7 @@ class SimpleInput extends Component {
     disabled: false,
     id: null,
     isControlled: false,
+    maxLength: '',
     name: null,
     onChange: () => { },
     onFocusChange: () => { },
@@ -212,6 +214,7 @@ class SimpleInput extends Component {
       className,
       password,
       onKeyPress,
+      maxLength,
     } = this.props;
     const type = password ? 'password' : this.props.type;
 
@@ -226,7 +229,7 @@ class SimpleInput extends Component {
         id={this.props.id}
         name={this.props.name}
         ref={ref => this.handleRef(ref)}
-        className={classNames(className, 'simpleInput')}
+        className={classNames(className, 'simpleInput', 'common__simple-input')}
         type={type}
         inputMode={type === 'number' ? 'decimal' : null}
         pattern={type === 'number' ? '[0-9]*' : null}
@@ -243,6 +246,7 @@ class SimpleInput extends Component {
         disabled={this.props.disabled}
         autoCorrect={autoCorrect}
         autoComplete={autoComplete}
+        maxLength={maxLength}
         {...attributes}
       />
     );

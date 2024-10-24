@@ -36,7 +36,7 @@ exports[`<Picker /> should render the picker 1`] = `
             Object {
               "current": <div
                 aria-haspopup="true"
-                class="css-kdzjuz"
+                class="css-kdzjuz engage__picker"
                 role="button"
                 tabindex="0"
               >
@@ -68,7 +68,7 @@ exports[`<Picker /> should render the picker 1`] = `
         >
           <div
             aria-haspopup={true}
-            className="css-kdzjuz"
+            className="css-kdzjuz engage__picker"
             role="button"
             tabIndex={0}
           >

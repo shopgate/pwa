@@ -1,4 +1,3 @@
-// @flow
 import React, { Fragment } from 'react';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';

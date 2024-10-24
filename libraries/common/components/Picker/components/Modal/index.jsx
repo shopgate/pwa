@@ -63,7 +63,7 @@ class PickerModal extends Component {
 
     return (this.props.isOpen) ? (
       <div
-        className={styles.wrapper}
+        className={`${styles.wrapper} common__picker__modal`}
       >
         <div
           aria-hidden

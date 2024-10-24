@@ -1,17 +1,13 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
-
-type Props = {
-  freeShipping?: boolean
-}
 
 /**
  * The Coupon Free Shipping component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function CartItemCouponFreeShipping({ freeShipping }: Props) {
+export function CartItemCouponFreeShipping({ freeShipping }) {
   if (!freeShipping) {
     return null;
   }
@@ -22,6 +18,10 @@ export function CartItemCouponFreeShipping({ freeShipping }: Props) {
     </div>
   );
 }
+
+CartItemCouponFreeShipping.propTypes = {
+  freeShipping: PropTypes.bool,
+};
 
 CartItemCouponFreeShipping.defaultProps = {
   freeShipping: false,

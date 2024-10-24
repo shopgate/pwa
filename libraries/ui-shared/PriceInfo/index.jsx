@@ -11,7 +11,7 @@ import styles from './style';
  */
 const PriceInfo = ({ className, text }) => (
   <div
-    className={`${styles} ${className}`}
+    className={`${styles} ${className} ui-shared__price-info`}
     dangerouslySetInnerHTML={{ __html: text }}
     data-test-id={`priceInfo: ${text}`}
   />

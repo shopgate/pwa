@@ -1,5 +1,5 @@
 import core from '@shopgate/tracking-core/core/Core';
-import { routeDidLeave$ } from '@shopgate/pwa-common/streams';
+import { routeDidLeave$ } from '@shopgate/engage/core/streams';
 import { scanActivated$, scanFail$, scanSuccess$ } from '../streams/scanner';
 import { buildScannerUtmUrl, createScannerEventData, track } from '../helpers';
 

@@ -13,7 +13,7 @@ import styles from './style';
  */
 const Icon = props => (
   <svg
-    className={`${styles} ${props.className}`}
+    className={`${styles} ${props.className} common__icon`}
     viewBox={props.viewBox}
     xmlns="http://www.w3.org/2000/svg"
     dangerouslySetInnerHTML={{ __html: props.content }}

@@ -19,7 +19,7 @@ const IndicatorCircle = ({
   paused,
 }) => (
   <svg
-    className={styles.spinner(paused)}
+    className={`${styles.spinner(paused)} ui-shared__indicator-circle`}
     viewBox="25 25 50 50"
     width={size}
     height={size}

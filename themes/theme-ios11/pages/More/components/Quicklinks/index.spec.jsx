@@ -7,17 +7,10 @@ import Quicklinks from './index';
 
 const store = createMockStore();
 
-jest.mock('@shopgate/pwa-common/components/Link', () => {
-  /* eslint-disable react/prop-types, require-jsdoc */
-  const Link = ({ children }) => (
-    <div>
-      {children}
-    </div>
-  );
-
-  /* eslint-enable react/prop-types, require-jsdoc */
-  return Link;
-});
+jest.mock('@shopgate/engage/back-in-stock/selectors', () => ({
+  getIsBackInStockEnabled: jest.fn(() => false),
+}));
+jest.mock('@shopgate/engage/components');
 
 let mockedQuicklinks;
 jest.mock('@shopgate/pwa-common/selectors/menu', () => ({
@@ -48,7 +41,7 @@ describe('<Quicklinks />', () => {
     const links = wrapper.find('Link');
     quicklinks.forEach((entry, index) => {
       const link = links.at(index);
-      expect(link.text()).toBe(entry.label);
+      expect(link.find('Text').prop('string')).toBe(entry.label);
       expect(link.prop('href')).toBe(entry.url);
     });
   });

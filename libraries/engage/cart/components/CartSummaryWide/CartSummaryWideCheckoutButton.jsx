@@ -28,7 +28,7 @@ const CartSummaryWideCheckoutButton = ({ isOrderable }:Props) => {
 
   return (
     <div className={container}>
-      <SurroundPortals portalName={CART_CHECKOUT_BUTTON} props={{ isActive }}>
+      <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive }}>
         <Link href={CHECKOUT_PATH} disabled={!isActive}>
           <RippleButton
             disabled={!isActive}

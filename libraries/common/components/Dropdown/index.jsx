@@ -83,7 +83,7 @@ class Dropdown extends Component {
         duration={this.props.duration}
         easing={this.props.easing}
       >
-        <div className={`${styles} ${this.props.className}`} aria-hidden={!this.props.isOpen}>
+        <div className={`${styles} ${this.props.className} common__dropdown`} aria-hidden={!this.props.isOpen}>
           {this.props.children}
         </div>
       </Transition>

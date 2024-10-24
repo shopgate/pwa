@@ -53,6 +53,7 @@ export * from './constants/Pipeline';
 export * from './constants/ProcessTypes';
 export * from './constants/Scanner';
 export * from './constants/ErrorManager';
+export * from './constants/Trilean';
 
 // Emitters
 export { default as UIEvents } from './emitters/ui';

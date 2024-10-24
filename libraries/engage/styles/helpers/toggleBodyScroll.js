@@ -1,5 +1,5 @@
 import MobileDetect from 'mobile-detect';
-import { logger } from '@shopgate/engage/core';
+import { logger } from '@shopgate/engage/core/helpers';
 
 const md = new MobileDetect(navigator.userAgent);
 

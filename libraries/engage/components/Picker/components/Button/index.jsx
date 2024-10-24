@@ -8,7 +8,7 @@ import styles from './style';
  * @returns {JSX} The button component.
  */
 const PickerButton = ({ value, label, openList }) => (
-  <button className={styles.button} onClick={openList} type="button">
+  <button className={`${styles.button} engage__picker__button`} onClick={openList} type="button">
     <span className={styles.label}>{label}</span>
     {value !== null && (
       <span className={styles.value}>{value}</span>

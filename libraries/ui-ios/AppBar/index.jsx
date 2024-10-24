@@ -59,7 +59,7 @@ const AppBar = ({
     };
   }, [contentRef, observer]);
 
-  const sectionClasses = classnames(styles.outer, classes.outer);
+  const sectionClasses = classnames(styles.outer, classes.outer, 'ui-ios__app-bar');
 
   return (
     <section

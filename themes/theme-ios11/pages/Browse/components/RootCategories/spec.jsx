@@ -28,18 +28,8 @@ jest.mock('@shopgate/pwa-common-commerce/category/selectors', () => ({
     },
   ]),
 }));
+jest.mock('@shopgate/engage/components');
 jest.mock('Components/Headline', () => function Headline() { return null; });
-jest.mock('@shopgate/engage/components', () => {
-  // eslint-disable-next-line require-jsdoc
-  function SheetList({ children }) { return children; }
-  SheetList.Item = function Item() { return null; };
-
-  return {
-    SheetList,
-    Image: () => null,
-    TextLink: () => null,
-  };
-});
 
 const mockContext = {
   context: {

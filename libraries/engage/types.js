@@ -1,4 +1,3 @@
-// @flow
 import { type Action, type Dispatch } from 'redux';
 import { type Observable } from 'rxjs';
 

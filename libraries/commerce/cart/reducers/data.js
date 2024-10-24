@@ -67,6 +67,10 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         ...cart,
+        // Map cart flags to properties on root level to establish compatibility with getCart
+        // pipelines that don't return "isOrderable" and "isTaxIncluded" flags
+        isOrderable: cart?.flags?.orderable ?? true,
+        isTaxIncluded: cart?.flags?.taxIncluded ?? true,
         expires: 0,
         items: cartItems,
         isFetching: false,

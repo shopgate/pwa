@@ -1,4 +1,3 @@
-// @flow
 import { connect } from 'react-redux';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 

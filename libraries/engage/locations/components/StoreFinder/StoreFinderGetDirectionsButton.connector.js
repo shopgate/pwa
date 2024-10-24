@@ -1,4 +1,3 @@
-// @flow
 import { connect } from 'react-redux';
 import { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
 

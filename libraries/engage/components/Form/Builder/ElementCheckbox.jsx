@@ -26,7 +26,15 @@ const ElementCheckbox = (props) => {
   }
 
   return (
-    <div className={classNames('container-checkbox', camelCase(name), 'formBuilderField', { validationError: !!errorText })}>
+    <div
+      className={classNames(
+        'container-checkbox',
+        camelCase(name),
+        'engage__form-checkbox',
+        'formBuilderField',
+        { validationError: !!errorText }
+      )}
+    >
       <Checkbox
         name={name}
         errorText={errorText}

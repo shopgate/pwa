@@ -1,18 +1,23 @@
-// @flow
 import React from 'react';
-import { i18n } from '@shopgate/engage/core';
-
-type Props = {
-  value: string,
-}
+import PropTypes from 'prop-types';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { Ellipsis } from '@shopgate/engage/components';
 
 /**
 * The Coupon Code component.
 * @param {Object} props The component props.
 * @returns {JSX}
 */
-export const CartItemCouponCode = ({ value }: Props) => (
-  <div>
+export const CartItemCouponCode = ({ value }) => (
+  <Ellipsis rows={2}>
     {`${i18n.text('cart.coupon_code')}: ${value}`}
-  </div>
+  </Ellipsis>
 );
+
+CartItemCouponCode.propTypes = {
+  value: PropTypes.string,
+};
+
+CartItemCouponCode.defaultProps = {
+  value: '',
+};

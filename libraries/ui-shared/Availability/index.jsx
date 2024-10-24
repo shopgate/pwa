@@ -35,7 +35,7 @@ const Availability = ({
   }
 
   return (
-    <div className={`${className} ${style}`} data-test-id={`availabilityText: ${text}`}>
+    <div className={`ui-shared__availability ${className} ${style}`} data-test-id={`availabilityText: ${text}`}>
       {text}
     </div>
   );

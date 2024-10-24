@@ -1,56 +1,54 @@
 import React, {
-  useState, useContext, useRef, useCallback, useEffect,
+  useState, useCallback, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import get from 'lodash/get';
-import { useScroll, hasWebBridge } from '@shopgate/engage/core';
-import { header, hidden } from './style';
-import { ViewContext } from '../View';
+import { viewScroll$ } from '@shopgate/engage/core/streams';
+import {
+  root, scrolledIn, scrolledOut, transition,
+} from './style';
 
 /**
  * Scroll Header component
  * @param {Object} props props
  * @returns {JSX}
  */
-function ScrollHeader({ className, children }) {
-  const ref = useRef();
+function ScrollHeader({
+  className, children, hideOnScroll, scrollOffset,
+}) {
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
-  const { contentRef } = useContext(ViewContext);
-  const [offset, setOffset] = useState(0);
-  const [offsetTop, setOffsetTop] = useState(0);
 
-  const onScroll = useCallback((callbackData) => {
-    const { previousScrollTop, currentScrollTop } = callbackData;
-    if (previousScrollTop !== currentScrollTop) {
-      const isScrolledDown = previousScrollTop < currentScrollTop;
-      const box = ref.current.getBoundingClientRect();
-      const stickHeader = currentScrollTop >= offset + 100;
-      if (!previousScrollTop) {
-        setOffset(currentScrollTop + box.top);
-      }
-      setShouldHideHeader(isScrolledDown && stickHeader);
+  const onScroll = useCallback((scrollEvent) => {
+    const {
+      scrollTop, scrolled, scrollOut, scrollIn,
+    } = scrollEvent;
+
+    if (!scrolled) {
+      return;
     }
-  }, [offset]);
 
-  useScroll(onScroll, contentRef?.current);
+    if (!shouldHideHeader && scrollOut && scrollTop >= scrollOffset) {
+      setShouldHideHeader(true);
+    }
+
+    if (shouldHideHeader && scrollIn) {
+      setShouldHideHeader(false);
+    }
+  }, [scrollOffset, shouldHideHeader]);
 
   useEffect(() => {
-    if (!hasWebBridge()) {
-      const currentOffset = get(ref, 'current.offsetTop');
-      setOffsetTop(currentOffset);
+    if (hideOnScroll) {
+      const subscription = viewScroll$.subscribe(onScroll);
+      return () => subscription.unsubscribe();
     }
-  }, []);
+    return undefined;
+  });
 
   return (
-    <div
-      ref={ref}
-      className={classNames(
-        header,
-        shouldHideHeader && hidden,
-        className
-      )}
-      style={offsetTop ? { top: offsetTop } : {}}
+    <div className={classNames(root, transition, className, {
+      [scrolledIn]: !shouldHideHeader,
+      [scrolledOut]: shouldHideHeader,
+    })}
     >
       {children}
     </div>
@@ -60,10 +58,14 @@ function ScrollHeader({ className, children }) {
 ScrollHeader.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  hideOnScroll: PropTypes.bool,
+  scrollOffset: PropTypes.number,
 };
 
 ScrollHeader.defaultProps = {
   className: null,
+  hideOnScroll: true,
+  scrollOffset: 100,
 };
 
 export default ScrollHeader;

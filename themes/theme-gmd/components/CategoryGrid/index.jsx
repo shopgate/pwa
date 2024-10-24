@@ -21,7 +21,7 @@ const CategoryGrid = ({
     }
 
     return (
-      <ul className={classNames(grid, className)}>
+      <ul className={classNames(grid, className, 'engage__category__category-grid')}>
         {Array(Math.min(prerender, 8)).fill('').map((val, index) => {
           const key = `placeholder-${index}`;
           return <CategoryGridItemPlaceholder key={key} showImages={showImages} />;
@@ -31,7 +31,7 @@ const CategoryGrid = ({
   }
 
   return (
-    <ul className={classNames(grid, className)}>
+    <ul className={classNames(grid, className, 'engage__category__category-grid')}>
       {categories.map(category => (
         <CategoryGridItem key={category.id} category={category} showImages={showImages} />
       ))}

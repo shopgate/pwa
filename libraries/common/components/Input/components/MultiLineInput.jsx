@@ -94,7 +94,7 @@ class MultiLineInput extends SimpleInput {
         id={this.props.id}
         name={this.props.name}
         ref={ref => this.handleRef(ref)}
-        className={classNames(className, 'multiLineInput')}
+        className={classNames(className, 'multiLineInput', 'common__multi-line-input')}
         type={type}
         value={value}
         onChange={this.handleChange}

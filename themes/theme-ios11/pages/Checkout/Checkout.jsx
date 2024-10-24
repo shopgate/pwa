@@ -3,7 +3,7 @@ import { View } from '@shopgate/engage/components';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { BackBar } from 'Components/AppBar/presets';
 import { i18n } from '@shopgate/engage/core';
-import { Checkout } from '@shopgate/engage/checkout';
+import { Checkout } from '@shopgate/engage/checkout/components';
 
 /**
  * The Cart component.

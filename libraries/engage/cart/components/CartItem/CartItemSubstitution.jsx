@@ -16,9 +16,9 @@ import { root } from './CartItemSubstitution.style';
  * @returns {JSX}
  */
 const CartItemSubstitution = ({ setSubstitutionAllowed, editable }) => {
-  const { cartItem: { id, substitutionAllowed, fulfillment } } = useCartItem();
+  const { cartItem: { id, substitutionAllowed, fulfillment } = {} } = useCartItem();
 
-  if (![ROPIS, BOPIS].includes(fulfillment?.method)) {
+  if (![ROPIS, BOPIS].includes(fulfillment?.method || [])) {
     return null;
   }
 

@@ -154,7 +154,7 @@ function CartContent(props) {
               </ResponsiveContainer>
             </Fragment>
           )}
-          <ResponsiveContainer breakpoint="<=xs">
+          <ResponsiveContainer breakpoint="<=xs" appAlways>
             <Footer />
           </ResponsiveContainer>
         </Fragment>

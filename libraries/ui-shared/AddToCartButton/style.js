@@ -100,16 +100,16 @@ const buttonWrapperNoShadow = (bSize, iSize) => css({
  * Styling that is applied to the button when cart icon is shown.
  */
 const buttonReady = css({
-  background: `var(--color-primary, ${themeConfig.colors.cta})`,
-  color: `var(--color-primary-contrast, ${themeConfig.colors.ctaContrast})`,
+  background: `var(--color-button-cta, ${themeConfig.colors.cta})`,
+  color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
 }).toString();
 
 /**
  * Styling that is applied to the button when checkmark is shown.
  */
 const buttonSuccess = css({
-  color: `var(--color-primary, ${themeConfig.colors.cta})`,
-  background: `var(--color-primary-contrast, ${themeConfig.colors.ctaContrast})`,
+  background: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
+  color: `var(--color-button-cta, ${themeConfig.colors.cta})`,
 }).toString();
 
 /**
@@ -117,7 +117,7 @@ const buttonSuccess = css({
  */
 const buttonDisabled = css({
   background: themeConfig.colors.shade5,
-  color: themeConfig.colors.ctaContrast,
+  color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
   boxShadow: themeConfig.shadows.buttons.disabled,
 }).toString();
 

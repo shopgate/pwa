@@ -42,7 +42,7 @@ const mergeTranslations = (theme, extensions, locale = process.env.LOCALE_FILE) 
       return result;
     }
 
-    // Merge the curent extensions into the result.
+    // Merge the current extensions into the result.
     return merge(result, extensions[extensionLocale]);
   }, cloneDeep(theme));
 };

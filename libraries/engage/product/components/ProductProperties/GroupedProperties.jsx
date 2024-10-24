@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/pwa-ui-material';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import Lists from './Lists';
 import ListsHTML from './ListsHTML';
 import Wrapper from './Wrapper';

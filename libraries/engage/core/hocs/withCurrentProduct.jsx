@@ -1,5 +1,4 @@
-// @flow
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 
 /**
@@ -22,21 +21,21 @@ const getInjectedProps = (context, prop) => {
  * Injects the current Product Context information into the desired component.
  * @param {Function} WrappedComponent The react component to wrap.
  * @param {Object} [options] A optional prop name to inject the current product properties.
- * @property {string} [options.prop] An optional prop name to inject the current product properties.
+ * @param {string} [options.prop] An optional prop name to inject the current product properties.
  * @returns {JSX}
  */
-export function withCurrentProduct<P = {}>(
-  WrappedComponent: React.AbstractComponent<P>,
-  options: { prop?: string } = {}
+export function withCurrentProduct(
+  WrappedComponent,
+  options = {}
 ) {
   /**
-       * The actual HOC.
-       * @param {Object} props The component props.
-       * @returns {JSX}
-       */
-  function WithCurrentProduct(props: P): React.Element<React.ComponentType<P>> {
-    const { contexts: { ProductContext } } = React.useContext(ThemeContext);
-    const productProps = React.useContext(ProductContext);
+   * The actual HOC.
+   * @param {Object} props The component props.
+   * @returns {JSX}
+   */
+  function WithCurrentProduct(props) {
+    const { contexts: { ProductContext } } = useContext(ThemeContext);
+    const productProps = useContext(ProductContext);
 
     return (
       <WrappedComponent {...getInjectedProps(productProps, options.prop)} {...props} />

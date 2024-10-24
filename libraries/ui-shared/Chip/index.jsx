@@ -1,7 +1,6 @@
 import React, { useRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
 import CrossIcon from '../icons/CrossIcon';
 import styles from './style';
@@ -26,7 +25,7 @@ function Chip(props) {
   });
 
   return (
-    <div ref={ref} className={styles.chip(removable, invert)} data-test-id={id}>
+    <div ref={ref} className={`ui-shared__chip ${styles.chip(removable, invert)}`} data-test-id={id}>
       {removable && (
         <Button
           className={styles.removeButton}
@@ -37,13 +36,11 @@ function Chip(props) {
           <ResponsiveContainer breakpoint="<=xs" appAlways>
             <CrossIcon
               size={16}
-              color={invert ? themeConfig.colors.light : `var(--color-primary, ${themeConfig.colors.accent})`}
             />
           </ResponsiveContainer>
           <ResponsiveContainer breakpoint=">xs" webOnly>
             <CrossIcon
               size={18}
-              color={invert ? themeConfig.colors.light : 'var(--color-primary)'}
             />
           </ResponsiveContainer>
 

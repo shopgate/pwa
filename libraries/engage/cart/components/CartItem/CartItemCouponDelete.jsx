@@ -1,19 +1,14 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CrossIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import styles from './CartItemCouponDelete.style';
-
-type Props = {
-  handleDelete?: (event: SyntheticEvent<HTMLButtonElement>) => void,
-}
-
 /**
  * The Coupon Delete component.
  * @param {Object} props The component properties.
  * @returns {JSX}
  */
-export const CartItemCouponDelete = ({ handleDelete }: Props) => (
+export const CartItemCouponDelete = ({ handleDelete }) => (
   <button
     className={styles}
     onClick={handleDelete}
@@ -24,6 +19,10 @@ export const CartItemCouponDelete = ({ handleDelete }: Props) => (
     <CrossIcon />
   </button>
 );
+
+CartItemCouponDelete.propTypes = {
+  handleDelete: PropTypes.func,
+};
 
 CartItemCouponDelete.defaultProps = {
   handleDelete: () => { },

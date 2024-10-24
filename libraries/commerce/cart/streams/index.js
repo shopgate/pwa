@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import { ACTION_PUSH, ACTION_REPLACE } from '@virtuous/conductor';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
@@ -8,6 +9,13 @@ import {
   navigate$,
 } from '@shopgate/pwa-common/streams/router';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
+import {
+  pushNotificationOpened$,
+} from '@shopgate/pwa-common/streams/app';
+import {
+  INDEX_PATH_DEEPLINK,
+  INDEX_PATH,
+} from '@shopgate/pwa-common/constants/RoutePaths';
 import { getIsFetching } from '../selectors';
 import {
   CART_PATH,
@@ -42,9 +50,51 @@ import {
 } from '../constants';
 
 /**
+ * Specialized stream to handle push notifications that redirect to index screen with a coupon code.
+ * Default logic would dispatch a historyReset in that case without link in the action payload,
+ * so we need to hook onto the pushNotificationOpen stream to inspect the link.
+ * @type {Observable}
+ */
+const pushNotificationWithIndexCouponOpened$ = pushNotificationOpened$
+  .filter(({ action }) => {
+    if (!action.link) {
+      // stop execution when push contains no link
+      return false;
+    }
+
+    const [pathname] = action.link.split('?');
+
+    if (pathname !== INDEX_PATH && pathname !== (INDEX_PATH_DEEPLINK)) {
+      // stop execution when link doesn't reference index path
+      return false;
+    }
+
+    const parsed = queryString.parseUrl(action.link);
+
+    if (!parsed || !parsed.query || !parsed.query.coupon) {
+      // stop execution when link doesn't contain a coupon
+      return false;
+    }
+
+    return true;
+  }).map(input => ({
+    // mock payload of navigation action to keep further handling simple
+    ...input,
+    action: {
+      historyAction: ACTION_PUSH,
+      route: {
+        query: {
+          coupon: queryString.parseUrl(input.action.link).query.coupon,
+        },
+      },
+    },
+  }));
+
+/**
  * @type {Observable}
  */
 export const routeWithCouponWillEnter$ = routeWillEnter$
+  .merge(pushNotificationWithIndexCouponOpened$)
   .filter(({ action }) =>
     [
       ACTION_PUSH,

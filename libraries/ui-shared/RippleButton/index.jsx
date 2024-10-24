@@ -58,6 +58,7 @@ class RippleButton extends Component {
       className: `${style.contentWrapper} ${this.props.rippleClassName}`,
       fill: true,
       size: this.props.rippleSize,
+      overflow: true,
     };
 
     return (

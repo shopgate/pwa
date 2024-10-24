@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/engage';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { BackBar } from 'Components/AppBar/presets';
 import { i18n } from '@shopgate/engage/core';
-import { GuestCheckoutPayment } from '@shopgate/engage/checkout';
+import { GuestCheckoutPayment } from '@shopgate/engage/checkout/components';
 
 const { colors } = themeConfig;
 

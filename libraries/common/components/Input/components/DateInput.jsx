@@ -11,7 +11,7 @@ import moment from 'moment';
 import CalendarIcon from '@shopgate/pwa-ui-shared/icons/CalendarIcon';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import SimpleInput from './SimpleInput';
 
 const { variables } = themeConfig;

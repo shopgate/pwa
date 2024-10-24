@@ -45,7 +45,7 @@ class SheetList extends Component {
     };
 
     return (
-      <List className={className} role="listbox">
+      <List className={`${className} engage__sheet-list`} role="listbox">
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) {
             return null;

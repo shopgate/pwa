@@ -43,7 +43,7 @@
     "validate.js": "^0.13.1"
   },
   "devDependencies": {
-    "classnames": "^2.2.6",
+    "classnames": "2.3.3",
     "jest-mock-console": "^0.4.2",
     "lodash": "^4.17.11",
     "prop-types": "~15.7.2",

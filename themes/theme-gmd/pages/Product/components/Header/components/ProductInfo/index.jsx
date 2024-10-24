@@ -5,9 +5,19 @@ import {
   EffectivityDates,
   Availability,
 } from '@shopgate/engage/product';
-import { ResponsiveContainer } from '@shopgate/engage/components';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  ResponsiveContainer,
+  Grid,
+  Portal,
+} from '@shopgate/engage/components';
+import {
+  Shipping,
+  PriceStriked,
+  Tiers,
+} from '@shopgate/engage/product/components/Header';
+import {
+  ProductInfoBackInStockButton,
+} from '@shopgate/engage/back-in-stock/components';
 import {
   PRODUCT_INFO,
   PRODUCT_INFO_AFTER,
@@ -16,11 +26,8 @@ import {
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Manufacturer from '../Manufacturer';
-import Shipping from '../Shipping';
-import PriceStriked from '../PriceStriked';
 import Price from '../Price';
 import PriceInfo from '../PriceInfo';
-import Tiers from '../Tiers';
 import TaxDisclaimer from '../TaxDisclaimer';
 import StockInfo from '../StockInfo';
 import connect from './connector';
@@ -28,7 +35,7 @@ import * as styles from './style';
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ProductInfo = ({ productId, options, isROPEActive }) => (
   <Fragment>
@@ -39,7 +46,7 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
           <Portal name={PRODUCT_INFO_ROW1}>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
-                It should only be used for approved BETA Client Projects */}
+              It should only be used for approved BETA Client Projects */}
               <MapPriceHint productId={productId} />
             </div>
             <div className={styles.productInfo}>
@@ -86,6 +93,9 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
         </ResponsiveContainer>
         <TaxDisclaimer />
       </Grid>
+      <Grid.Item component="div" className={styles.backInStockButton}>
+        <ProductInfoBackInStockButton />
+      </Grid.Item>
     </Portal>
     <Portal name={PRODUCT_INFO_AFTER} />
   </Fragment>

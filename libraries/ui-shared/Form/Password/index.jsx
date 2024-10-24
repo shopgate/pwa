@@ -9,6 +9,8 @@ import style from './style';
  * A component that provides a password field with visibility toggle.
  */
 class Password extends Component {
+  static propTypes = TextField.propTypes;
+
   /**
    * Initializes the component.
    * @param {Object} props The components props.
@@ -37,6 +39,7 @@ class Password extends Component {
     return (
       <TextField
         {...this.props}
+        className={`ui-shared__form__password ${this.props.className}`}
         rightElement={
           <ToggleIcon
             on={isVisible}

@@ -1,11 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
+import { isBeta } from '@shopgate/engage/core/helpers';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import {
-  Link, Portal, RatingStars, DiscountBadge,
+  Link,
+  RatingStars,
+  DiscountBadge,
+  SurroundPortals,
 } from '@shopgate/engage/components';
 import {
   getProductRoute,
+} from '@shopgate/engage/product';
+import {
   MapPriceHint,
   ProductImage,
   OrderQuantityHint,
@@ -13,10 +19,13 @@ import {
   Swatches,
   ProductName,
   ProductBadges,
-} from '@shopgate/engage/product';
-import * as portals from '@shopgate/pwa-common-commerce/category';
+} from '@shopgate/engage/product/components';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
+import {
+  PRODUCT_ITEM_DISCOUNT,
+  PRODUCT_ITEM_PRICE,
+} from '@shopgate/engage/category';
 import ProductGridPrice from '../ProductGridPrice';
-import { getProductImageSettings } from '../../helpers';
 import styles from './style';
 
 const location = 'productCard';
@@ -37,6 +46,19 @@ function ProductCard(props) {
   } = props;
 
   const { ListImage: gridResolutions } = getProductImageSettings();
+  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+
+  const showRatings = useMemo(() => {
+    if (!hideRating && product?.rating?.average > 0) {
+      return true;
+    }
+
+    if (!hideRating && showEmptyRatingStars && product?.rating) {
+      return true;
+    }
+
+    return false;
+  }, [hideRating, product, showEmptyRatingStars]);
 
   return (
     <Link
@@ -62,20 +84,18 @@ function ProductCard(props) {
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
         <div className={styles.badgeWrapper}>
-          <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
-          <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
+          <SurroundPortals
+            portalName={PRODUCT_ITEM_DISCOUNT}
+            portalProps={{ productId: product.id }}
+          >
             <DiscountBadge text={`-${product.price.discount}%`} />
-          </Portal>
-          <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
+          </SurroundPortals>
         </div>
         )}
       </ProductBadges>
       {!(hidePrice && hideRating) && (
         <div className={styles.details}>
-          {!hideRating && product.rating && product.rating.average > 0 && (
-            <RatingStars value={product.rating.average} />
-          )}
-
+            {showRatings && <RatingStars value={product.rating.average} />}
           {/*
             This feature is currently in BETA testing.
             It should only be used for approved BETA Client Projects
@@ -105,31 +125,15 @@ function ProductCard(props) {
           <OrderQuantityHint productId={product.id} />
 
           {!hidePrice && (
-            <Fragment>
-              <Portal
-                name={portals.PRODUCT_ITEM_PRICE_BEFORE}
-                props={{
-                  productId: product.id,
-                  location,
-                }}
-              />
-              <Portal
-                name={portals.PRODUCT_ITEM_PRICE}
-                props={{
-                  productId: product.id,
-                  location,
-                }}
-              >
-                <ProductGridPrice product={product} />
-              </Portal>
-              <Portal
-                name={portals.PRODUCT_ITEM_PRICE_AFTER}
-                props={{
-                  productId: product.id,
-                  location,
-                }}
-              />
-            </Fragment>
+            <SurroundPortals
+              portalName={PRODUCT_ITEM_PRICE}
+              portalProps={{
+                productId: product.id,
+                location,
+              }}
+            >
+              <ProductGridPrice product={product} />
+            </SurroundPortals>
           )}
         </div>
       )}

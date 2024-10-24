@@ -3,11 +3,13 @@ import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { openPageExtern } from '@shopgate/pwa-core';
-import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { IS_CONNECT_EXTENSION_ATTACHED } from '@shopgate/pwa-common/constants/Configuration';
-import configuration from '@shopgate/pwa-common/collections/Configuration';
-import { hasWebBridge } from '@shopgate/engage/core';
+import {
+  hasNewServices,
+  hasWebBridge,
+  logger,
+  hasSGJavaScriptBridge,
+} from '@shopgate/engage/core/helpers';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import authRoutes from '../../collections/AuthRoutes';
 
@@ -95,10 +97,8 @@ export const isLegacyPage = location => (
  * @return {boolean}
  */
 export const isLegacyLink = (location) => {
-  const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
-
   if (
-    hasConnectExtension &&
+    hasNewServices() &&
     [LEGACY_LINK_STOREFINDER, LEGACY_LINK_ACCOUNT].some(link => location.startsWith(link))
   ) {
     return false;

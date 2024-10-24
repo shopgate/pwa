@@ -18,6 +18,7 @@ exports[`<NavDrawerTitle /> should render when a text is passed within the props
     }
   >
     <Translate
+      acceptPlainTextWithPlaceholders={false}
       className={null}
       params={Object {}}
       role={null}

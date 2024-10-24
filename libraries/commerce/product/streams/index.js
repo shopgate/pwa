@@ -21,7 +21,11 @@ import {
   ERROR_PRODUCT_PROPERTIES,
   ERROR_PRODUCT_OPTIONS,
   ERROR_PRODUCT_SHIPPING,
-  PRODUCT_NOT_AVAILABLE, RECEIVE_PRODUCTS_CACHED, RECEIVE_PRODUCTS,
+  PRODUCT_NOT_AVAILABLE,
+  RECEIVE_PRODUCTS_CACHED,
+  RECEIVE_PRODUCTS,
+  PROVIDE_PRODUCT_BUFFER_TIME,
+  PROVIDE_PRODUCT,
 } from '../constants';
 
 /**
@@ -149,3 +153,22 @@ export const productsReceived$ = main$
  */
 export const productsReceivedCached$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCTS_CACHED);
+
+/**
+ * Buffer PROVIDE_PRODUCT action and map to have array of requested products
+ * @type {Observable}
+ */
+export const fetchProductsRequested$ = main$
+  .filter(({ action }) => action.type === PROVIDE_PRODUCT)
+  .bufferTime(PROVIDE_PRODUCT_BUFFER_TIME)
+  .filter(actions => actions.length > 0)
+  .map((actions) => {
+    const productIds = actions.map(({ action: { productId } }) => productId);
+    return {
+      ...actions[0],
+      action: {
+        ...actions[0].action,
+        productId: productIds,
+      },
+    };
+  });

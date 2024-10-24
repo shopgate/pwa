@@ -42,7 +42,7 @@ const Account = ({ historyReplace }) => {
             <Tab value="orders" label={i18n.text('titles.order_history')} />
 
             {appConfig.hasFavorites ? (
-              <Tab value="wish-list" label={i18n.text('titles.wish_list')} />
+              <Tab value="wish-list" label={i18n.text('titles.favorites')} />
             ) : null}
           </Tabs>
         </div>

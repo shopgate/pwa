@@ -1,5 +1,5 @@
 import { themeName, shopNumber } from '@shopgate/pwa-common/helpers/config';
-import { isDev } from '@shopgate/engage/core';
+import { isDev } from '@shopgate/engage/core/helpers';
 
 const STORE_KEY_PREFIX = `sgFeatureFlag_${shopNumber}_${themeName}__`;
 

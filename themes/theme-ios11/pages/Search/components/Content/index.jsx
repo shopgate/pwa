@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { SurroundPortals, NoResults } from '@shopgate/engage/components';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category/constants';
 import { BackBar } from 'Components/AppBar/presets';
 import ProductFilters from 'Components/ProductFilters';
 import { VIEW_CONTENT } from '@shopgate/engage/core';
@@ -19,6 +19,11 @@ class SearchContent extends Component {
     searchPhrase: PropTypes.string.isRequired,
     showFilterBar: PropTypes.bool.isRequired,
     showNoResults: PropTypes.bool.isRequired,
+    pattern: PropTypes.string,
+  }
+
+  static defaultProps = {
+    pattern: null,
   }
 
   /**
@@ -38,7 +43,7 @@ class SearchContent extends Component {
    */
   render() {
     const {
-      searchPhrase, showFilterBar, showNoResults,
+      searchPhrase, showFilterBar, showNoResults, pattern,
     } = this.props;
 
     return (
@@ -46,7 +51,7 @@ class SearchContent extends Component {
         {({ state, query, id: routeId }) => (
           <Fragment>
             <BackBar
-              title={searchPhrase}
+              title={pattern === CATEGORY_ALL_PATTERN ? state.categoryName : searchPhrase}
             />
             <ProductFilters
               showFilters={showFilterBar}
@@ -63,7 +68,14 @@ class SearchContent extends Component {
                 <NoResults
                   headlineText="search.no_result.heading"
                   bodyText="search.no_result.body"
-                  searchPhrase={searchPhrase}
+                  {...pattern !== CATEGORY_ALL_PATTERN ? {
+                    headlineText: 'search.no_result.heading',
+                    bodyText: 'search.no_result.body',
+                    searchPhrase,
+                  } : {
+                    headlineText: 'category.no_result.heading',
+                    bodyText: 'category.no_result.body',
+                  }}
                 />
               </SurroundPortals>
               )}

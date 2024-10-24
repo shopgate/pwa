@@ -35,11 +35,7 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
   }
 >
   <div
-    className={
-      Object {
-        "data-css-jldvt6": "",
-      }
-    }
+    className="css-jldvt6 common__widgets__widget-grid"
   >
     <Widget
       component={[Function]}
@@ -59,13 +55,13 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
       key="w0"
     >
       <GridItem
-        className="css-1v59zcp"
+        className="common__widgets__widget css-1v59zcp"
         component="div"
         grow={0}
         shrink={1}
       >
         <div
-          className="css-1v59zcp"
+          className="common__widgets__widget css-1v59zcp"
         >
           <div>
             <Suspense
