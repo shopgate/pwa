@@ -9,7 +9,7 @@ import Item from '../../../Item';
 
 /**
  * @param {Object} props The component props.
- * @param {Object} context The consumed context.
+ * @param {Function} props.logout Callback invoked when users press the "logout" button
  * @returns {JSX}
  */
 const LoggedIn = ({ logout }) => {
