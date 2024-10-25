@@ -3,10 +3,7 @@
 // ACTIONS
 export { default as fetchFilters } from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 
-// CONSTANTS
-export * from '@shopgate/pwa-common-commerce/filter/constants/index';
-export * from '@shopgate/pwa-common-commerce/filter/constants/Pipelines';
-export * from '@shopgate/pwa-common-commerce/filter/constants/Portals';
+export * from './constants';
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/filter/selectors';
@@ -22,18 +19,6 @@ export { default as PriceSlider } from './components/PriceSlider';
 
 export { default as buildInitialFilters } from './helpers/buildInitialFilters';
 export { default as buildUpdatedFilters } from './helpers/buildUpdatedFilters';
-
-export {
-  SORT_ORDER_RELEVANCE,
-  SORT_ORDER_PRICE_ASC,
-  SORT_ORDER_PRICE_DESC,
-  SORT_ORDER_NAME_ASC,
-  SORT_ORDER_NAME_DESC,
-  SORT_ORDER_RANK_ASC,
-  SORT_ORDER_RANK_DESC,
-  SORT_SCOPE_CATEGORY,
-  SORT_SCOPE_SEARCH,
-} from './constants';
 
 export {
   makeExtendedSortOptionsSupported,

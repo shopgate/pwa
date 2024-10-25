@@ -3,8 +3,23 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 /**
+ * @typedef {Object} CheckboxProps
+ * @property {React.ReactNode} checkedIcon React component used as icon for the checked state
+ * @property {React.ReactNode} uncheckedIcon React component used as icon for the unchecked state
+ * @property {boolean} [checked] Current checked state of the checkbox
+ * @property {string} [className] Class name for the checkbox
+ * @property {boolean} [defaultChecked] Whether the checkbox is checked by default
+ * @property {boolean} [disabled] Disabled state of the checkbox (default `false`)
+ * @property {React.ReactNode | string} [label] Checkbox label. Can be a string or a component.
+ * @property {"left"|"right"} [labelPosition] Position for the lable (default `"left"`)
+ * @property {string} [name] Name for the hidden input tag
+ * @property {Function} [onCheck] Callback invoked when checkbox is toggled
+ */
+
+/**
  * Base checkbox component.
- * @type {Object}
+ * @extends {React.Component<CheckboxProps>}
+ * @returns {JSX.Element}
  */
 class Checkbox extends Component {
   static propTypes = {
@@ -92,6 +107,17 @@ class Checkbox extends Component {
   };
 
   /**
+   * Handler for keyDown events of the checkbox
+   * @param {Object} e The keyDown event payload
+   */
+  handleKeyDown = (e) => {
+    if (e.key === ' ') {
+      // Toggle checkbox on "space" - mocks behavior of native checkboxes
+      this.handleCheck();
+    }
+  }
+
+  /**
    * Renders the checked/unchecked icon.
    * @returns {JSX}
    */
@@ -134,7 +160,10 @@ class Checkbox extends Component {
       <div
         className={classNames(this.props.className, 'checkbox')}
         onClick={this.handleCheck}
-        aria-hidden
+        onKeyDown={this.handleKeyDown}
+        role="checkbox"
+        aria-checked={this.props.checked}
+        tabIndex={0}
       >
         {this.renderInput()}
         {this.renderLabelIfItIsOnThe('left')}

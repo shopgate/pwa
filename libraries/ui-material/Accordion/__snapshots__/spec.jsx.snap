@@ -2,11 +2,13 @@
 
 exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 <Accordion
+  chevronClassName={null}
   chevronPosition="right"
   className={null}
   contentClassName={null}
   handleLabel={null}
   openWithChevron={false}
+  renderLabel={[Function]}
   role="button"
   startOpened={false}
   testId="Some Thing"
@@ -15,6 +17,7 @@ exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
+  chevronClassName={null}
   chevronPosition="right"
   className={null}
   contentClassName={null}
@@ -29,6 +32,7 @@ exports[`<Accordion /> should not render without children 1`] = `
 
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
+  chevronClassName={null}
   chevronPosition="right"
   className={null}
   contentClassName={null}
@@ -39,77 +43,74 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
   startOpened={false}
   testId="Some Thing"
 >
-  <AccordionContainer
-    open={false}
+  <div
+    className="ui-material__accordion-container"
   >
-    <div
-      aria-controls="Some-Thing-content"
-      aria-expanded={false}
-      aria-label={null}
-      className="ui-material__accordion-title css-1m4mdin"
-      data-test-id="Some Thing"
-      key="accordion-toggle"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      role="button"
-      tabIndex="0"
-    >
-      <div />
-      <div
-        aria-label="favorites.open_list"
-        className={
-          Object {
-            "data-css-ghq21z": "",
-          }
-        }
-      >
-        <Chevron
-          className="css-paji06"
-        >
-          <Icon
-            className="css-paji06"
-            color={null}
-            content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
-            size="inherit"
-            viewBox="0 0 24 24"
-          >
-            <svg
-              className="css-yys9hb css-paji06"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
-                }
-              }
-              style={
-                Object {
-                  "fill": null,
-                  "fontSize": "inherit",
-                }
-              }
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            />
-          </Icon>
-        </Chevron>
-      </div>
-    </div>
-    <AccordionContent
-      className={null}
-      id="Some-Thing-content"
-      key="Some-Thing-content"
+    <AccordionContainer
       open={false}
     >
-      <ForwardRef
-        aria-hidden={true}
-        className="ui-material__accordion-content css-apm51k"
-        id="Some-Thing-content"
-        style={
-          Object {
-            "hook": "useSpring return value",
-          }
-        }
+      <div
+        aria-controls="Some-Thing-content"
+        aria-expanded={false}
+        aria-label={null}
+        className="ui-material__accordion-title css-10xt915 css-dw3c54"
+        data-test-id="Some Thing"
+        key="accordion-toggle"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex="0"
       >
         <div
+          className={
+            Object {
+              "data-css-1s27fob": "",
+            }
+          }
+        >
+          <div />
+        </div>
+        <div
+          aria-label="favorites.open_list"
+          className="css-1puew42"
+        >
+          <Chevron
+            className="css-paji06"
+          >
+            <Icon
+              className="css-paji06"
+              color={null}
+              content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+              size="inherit"
+              viewBox="0 0 24 24"
+            >
+              <svg
+                className="css-yys9hb css-paji06"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+                  }
+                }
+                style={
+                  Object {
+                    "fill": null,
+                    "fontSize": "inherit",
+                  }
+                }
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              />
+            </Icon>
+          </Chevron>
+        </div>
+      </div>
+      <AccordionContent
+        className={null}
+        id="Some-Thing-content"
+        key="Some-Thing-content"
+        open={false}
+      >
+        <ForwardRef
           aria-hidden={true}
           className="ui-material__accordion-content css-apm51k"
           id="Some-Thing-content"
@@ -119,16 +120,27 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
             }
           }
         >
-          <div>
-            <div
-              className="css-yh2lvw"
-            >
-              Some content.
+          <div
+            aria-hidden={true}
+            className="ui-material__accordion-content css-apm51k"
+            id="Some-Thing-content"
+            style={
+              Object {
+                "hook": "useSpring return value",
+              }
+            }
+          >
+            <div>
+              <div
+                className="css-yh2lvw"
+              >
+                Some content.
+              </div>
             </div>
           </div>
-        </div>
-      </ForwardRef>
-    </AccordionContent>
-  </AccordionContainer>
+        </ForwardRef>
+      </AccordionContent>
+    </AccordionContainer>
+  </div>
 </Accordion>
 `;
