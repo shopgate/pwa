@@ -84,12 +84,14 @@ const FilterPageProvider = ({
    * Effect that updates the "initialFilters" state when it doesn't have content yet
    */
   useEffect(() => {
-    if (Object.keys(initialFilters).length > 0) {
-      return;
-    }
+    setInitialFilters((currentState) => {
+      if (Object.keys(currentState).length > 0) {
+        return currentState;
+      }
 
-    setInitialFilters(buildInitialFilters(filtersProp, activeFiltersProp));
-  }, [activeFiltersProp, filtersProp, initialFilters]);
+      return buildInitialFilters(filtersProp, activeFiltersProp);
+    });
+  }, [activeFiltersProp, filtersProp]);
 
   /**
    * Whether a reset of the active filters is possible.
