@@ -98,8 +98,13 @@ export default function search(subscribe) {
   // location based shopping is active. That's currently only supported when new services are
   // used, but the new services don't support "show all products".
   subscribe(searchProductsNeedUpdate$, ({ dispatch, getState }) => {
-    const { query, state: { filters } } = getCurrentRoute(getState());
-    const { s: searchPhrase, sort } = query;
+    const { query, state: { filters }, pattern } = getCurrentRoute(getState());
+    const { sort } = query;
+    let { s: searchPhrase } = query;
+
+    if (pattern === CATEGORY_ALL_PATTERN) {
+      searchPhrase = '*';
+    }
 
     dispatch(fetchSearchResults({
       filters,
