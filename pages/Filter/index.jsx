@@ -5,14 +5,15 @@ import { buildFilterParamsForFetchFiltersRequest } from '@shopgate/engage/filter
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import Content from './components/Content';
+import Content from '@shopgate/engage/filter/components/FilterPageContentWithProvider';
+import { CloseBar } from 'Components/AppBar/presets';
 
 const { colors } = themeConfig;
 
 const map = {
   categoryId: 'params.categoryId',
   filters: 'state.filters',
-  parentId: 'state.parentId',
+  parentRouteId: 'state.parentId',
   searchPhrase: 'query.s',
   visible: 'visible',
   pattern: 'pattern',
@@ -24,7 +25,7 @@ const map = {
 class Filter extends PureComponent {
   /**
    * @param {Object} consumed The consumed context props.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   consumeRenderer = (consumed) => {
     if (!consumed.visible) {
@@ -34,15 +35,16 @@ class Filter extends PureComponent {
     const {
       categoryId,
       filters,
-      parentId,
+      parentRouteId,
       searchPhrase,
       pattern,
     } = consumed;
 
     return (
       <Content
+        AppBarComponent={CloseBar}
         activeFilters={filters}
-        parentId={parentId}
+        parentRouteId={parentRouteId}
         {...pattern !== CATEGORY_ALL_FILTER_PATTERN ? {
           ...categoryId && { categoryId },
           ...searchPhrase && { searchPhrase },
@@ -55,7 +57,7 @@ class Filter extends PureComponent {
   }
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     return (
