@@ -9,10 +9,10 @@ import styles from './style';
 /**
  * The checkbox template component.
  * @param {Object} props The component props
- * @param {string} props.checkedClassName class for checked icon.
- * @param {string} props.unCheckedClassName class for unchecked icon.
- * @param {string} props.className className
- * @returns {JSX}
+ * @param {string} props.className Class for the underlying Checkbox component
+ * @param {string} props.checkedClassName Class for checked icon.
+ * @param {string} props.unCheckedClassName Class for unchecked icon.
+ * @returns {JSX.Element}
  */
 const Checkbox = ({
   checkedClassName, unCheckedClassName, className, ...props

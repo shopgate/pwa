@@ -2,44 +2,39 @@ import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 export const toggle = css({
-  padding: '12px 56px 12px 16px',
+  padding: '12px 16px',
   position: 'relative',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-});
+  justifyContent: 'space-between',
+  gap: 12,
+}).toString();
+
+export const clickable = css({
+  cursor: 'pointer',
+}).toString();
 
 export const toggleLeftAligned = css({
-  padding: '12px 16px 12px 16px',
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
+  flexDirection: 'row-reverse',
 });
 
 export const chevronContainer = css({
-  cursor: 'pointer',
+  display: 'flex',
+  flexShrink: 0,
   fontSize: '1.5rem',
-  position: 'absolute',
-  right: '1rem',
-  top: '50%',
-  transform: 'translate3d(0, -50%, 0)',
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     backgroundColor: 'rgba(0, 0, 0, 0.04)',
     borderRadius: 32,
     padding: 8,
   },
-});
+}).toString();
 
-export const chevronContainerLeft = css({
-  cursor: 'pointer',
-  fontSize: '1.5rem',
-  marginRight: 12,
-  [responsiveMediaQuery('>sm', { webOnly: true })]: {
-    backgroundColor: 'rgba(0, 0, 0, 0.04)',
-    borderRadius: 32,
-    padding: 8,
-  },
+export const labelContainer = css({
+  marginRight: 'auto',
+  display: 'flex',
+  flex: 1,
+  alignItems: 'center',
 });
 
 export const chevron = css({
