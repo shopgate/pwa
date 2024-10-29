@@ -1,8 +1,7 @@
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
-import {
-  getFullImageSource, getThemeSettings, isBeta, loadImage,
-} from '@shopgate/engage/core';
+import { getFullImageSource, isBeta, loadImage } from '@shopgate/engage/core/helpers';
+import { getThemeSettings } from '@shopgate/engage/core/config';
 import { buildShowScheduledParams } from '../components/EffectivityDates/helpers';
 
 export * from '@shopgate/pwa-common-commerce/product/helpers';

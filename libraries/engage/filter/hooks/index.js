@@ -6,3 +6,5 @@ import SortProvider from '../providers/SortProvider.context';
  * @returns {Object}
  */
 export const useSort = () => useContext(SortProvider);
+
+export * from './filterPage';

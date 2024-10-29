@@ -12,7 +12,7 @@ const { currency } = appConfig;
 /**
  * The filter price range slider label component.
  * @param {Object} props The component props.
- * @returns {JSX}
+* @returns {JSX.Element}
  */
 function Label(props) {
   const {

@@ -36,7 +36,7 @@ function PaymentBarReserveButton({ historyReset }: Props) {
   }
 
   return (
-    <SurroundPortals portalName={CART_CHECKOUT_BUTTON} props={{ isActive: orderable }}>
+    <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive: orderable }}>
       <RippleButton
         onClick={handleClick}
         disabled={!orderable}

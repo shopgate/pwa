@@ -1,5 +1,5 @@
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { hasWebBridge } from '@shopgate/engage/core';
+import { hasWebBridge } from '@shopgate/engage/core/helpers';
 import { setCSSCustomProp } from './cssCustomProperties';
 
 const { colors: { light: defaultBackgroundColor } } = themeConfig;

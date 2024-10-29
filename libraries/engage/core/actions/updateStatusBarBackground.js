@@ -1,4 +1,3 @@
-import { isAvailable } from '@shopgate/native-modules';
 import { isIos } from '@shopgate/pwa-common/selectors/client';
 import { updateLegacyNavigationBar } from '../helpers/updateLegacyNavigationBar';
 
@@ -10,7 +9,7 @@ import { updateLegacyNavigationBar } from '../helpers/updateLegacyNavigationBar'
  */
 export default function updateStatusBarBackground(color, isDefault = false) {
   return (dispatch, getState) => {
-    if (!isAvailable() && !isIos(getState())) {
+    if (!isIos(getState())) {
       return;
     }
 

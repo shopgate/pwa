@@ -22,9 +22,12 @@ exports[`RadioButton should render selected RadioButton 1`] = `
     }
   >
     <div
-      aria-hidden={true}
+      aria-checked={true}
       className="checkbox common__checkbox"
       onClick={[Function]}
+      onKeyDown={[Function]}
+      role="checkbox"
+      tabIndex={0}
     >
       <RadioChecked
         className="css-7tg3d8"
@@ -78,9 +81,11 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
     }
   >
     <div
-      aria-hidden={true}
       className="checkbox common__checkbox"
       onClick={[Function]}
+      onKeyDown={[Function]}
+      role="checkbox"
+      tabIndex={0}
     >
       <RadioUnchecked
         className="css-1gf5nsk"

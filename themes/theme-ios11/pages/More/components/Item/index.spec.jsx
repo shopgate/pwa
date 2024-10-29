@@ -2,22 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Item from './index';
 
-jest.mock('@shopgate/pwa-common/components/Link', () => {
-  /* eslint-disable react/prop-types */
-  /**
-   * Mocked LinkComponent.
-   * @param {Object} props Component props.
-   * @return {JSX}
-   */
-  const Link = ({ children }) => (
-    <div>
-      {children}
-    </div>
-  );
-
-  /* eslint-enable react/prop-types */
-  return Link;
-});
+jest.mock('@shopgate/engage/components');
 
 const label = 'Item Label';
 
@@ -38,6 +23,6 @@ describe('<Item />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Link').exists()).toBe(true);
     expect(wrapper.find('Link').prop('href')).toBe(href);
-    expect(wrapper.text()).toBe(label);
+    expect(wrapper.find('Text').prop('string')).toBe(label);
   });
 });

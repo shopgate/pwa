@@ -54,6 +54,7 @@ class SearchContent extends Component {
               title={pattern === CATEGORY_ALL_PATTERN ? state.categoryName : searchPhrase}
             />
             <ProductFilters
+              searchPhrase={searchPhrase}
               showFilters={showFilterBar}
             />
             <SurroundPortals portalName={VIEW_CONTENT}>

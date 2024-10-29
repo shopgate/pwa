@@ -1,3 +1,4 @@
+import noop from 'lodash/noop';
 /* eslint-disable require-jsdoc */
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 
@@ -74,6 +75,11 @@ export const SurroundPortals = ({ children }) => children;
 /** @returns {ReactElement} */
 export const Portal = ({ children }) => children || null; // null for portals like before, after
 export const Accordion = ({ children }) => children;
+export const AccordionContainer = ({ children, open = false }) => children({
+  handleClose: noop,
+  open,
+  handleOpen: noop,
+});
 export const ResponsiveContainer = ({ children }) => children;
 export const Grid = ({ children }) => children;
 Grid.Item = ({ children }) => children;
