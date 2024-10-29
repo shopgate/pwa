@@ -15,7 +15,7 @@ import AppBar from '../AppBar';
  * @param {string} props.categoryId The category id.
  * @param {boolean} props.hasChildren Whether the category has children.
  * @param {boolean} props.hasProducts Whether the category has products.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => {
   // Show filter logic for old services
@@ -28,7 +28,11 @@ const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => {
   return (
     <Fragment>
       <AppBar hasProducts={hasProducts} hasChildren={hasChildren} categoryId={categoryId} />
-      <ProductFilters categoryId={categoryId} showFilters={showFilters} />
+      <ProductFilters
+        categoryId={categoryId}
+        hasSubcategories={hasChildren}
+        showFilters={showFilters}
+      />
       <SurroundPortals portalName={VIEW_CONTENT}>
         <CategoryListContent categoryId={categoryId} />
 
