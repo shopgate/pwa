@@ -17,7 +17,7 @@ const LABEL = 'navigation.back_in_stock';
 /**
  * @param {Function} navigate The navigate action.
  * @param {boolean} isBackInStockEnabled Whether the back in stock feature is enabled
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const BackInStockButton = ({ navigate, isBackInStockEnabled }) => (
   <Fragment>

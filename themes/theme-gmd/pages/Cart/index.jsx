@@ -7,10 +7,10 @@ const { colors } = themeConfig;
 
 /**
  * The Cart component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Cart = () => (
-  <View background={colors.background} aria-hidden={false}>
+  <View background={colors.background}>
     <Content />
   </View>
 );

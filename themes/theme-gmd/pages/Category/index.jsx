@@ -35,7 +35,7 @@ class Category extends PureComponent {
   render() {
     // View is rendered with noContentPortal prop, since the content portal is rendered inside
     return (
-      <View background={colors.background} aria-hidden={false} noContentPortal>
+      <View background={colors.background} noContentPortal>
         <Consume context={RouteContext} props={map}>
           {this.consumeRenderer}
         </Consume>

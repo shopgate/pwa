@@ -16,9 +16,7 @@ exports[`<Reviews> page should not crash 1`] = `
   <Reviews
     id="foo"
   >
-    <MockedView
-      aria-hidden={false}
-    >
+    <MockedView>
       <div>
         <Connect(ReviewsContent)
           productId="foo"
