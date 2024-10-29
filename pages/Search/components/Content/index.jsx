@@ -84,6 +84,7 @@ class SearchContent extends Component {
               { this.getAppBar(state.categoryName) }
             </ResponsiveContainer>
             <ProductFilters
+              searchPhrase={searchPhrase}
               showFilters={showFilterBar}
             />
             <SurroundPortals portalName={VIEW_CONTENT}>
