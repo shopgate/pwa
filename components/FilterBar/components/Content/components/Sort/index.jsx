@@ -1,6 +1,6 @@
 import React from 'react';
 import { SelectBox, ArrowDropIcon, SurroundPortals } from '@shopgate/engage/components';
-import { useSort, FILTER_SORT_OPTIONS } from '@shopgate/engage/filter';
+import { useSort, PORTAL_FILTER_SORT_OPTIONS } from '@shopgate/engage/filter';
 import Item from './components/Item';
 import styles from './style';
 
@@ -13,7 +13,7 @@ const Sort = () => {
   const { activeOption, options, updateRoute } = useSort();
 
   return (
-    <SurroundPortals portalName={FILTER_SORT_OPTIONS} portalProps={{ items: options }}>
+    <SurroundPortals portalName={PORTAL_FILTER_SORT_OPTIONS} portalProps={{ items: options }}>
       <SelectBox
         handleSelectionUpdate={updateRoute}
         items={options}

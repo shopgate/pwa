@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { hasActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { getResultByHash } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
@@ -37,7 +38,7 @@ export const showFilterBar = createSelector(
   areResultsFetching,
   showNoResults,
   (hasFilters, isFetching, hasResults) => {
-    if (isFetching) {
+    if (hasNewServices() && isFetching) {
       return false;
     }
 
