@@ -275,6 +275,11 @@ define update-pwa-versions
 		@echo "======================================================================"
 		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
+
+		# --skip-npm --skip-git: No npm publish / git commit or tag creation
+		# --repo-version $(RELEASE_VERSION): Update all lerna modules to RELEASE_VERSION
+		# --force-publish: Force lerna to apply version number to all packages independent if something has changed
+		# --yes --exact: Skip all prompts / Apply exact version (7.0.0) instead of range (^7.0.0)
 		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact;
 
 		# Checking version
