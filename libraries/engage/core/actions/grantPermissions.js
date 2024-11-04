@@ -115,7 +115,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       }));
 
       dispatch(softOptInSelected({
-        selected: requestAllowed ? 'approved' : 'later',
+        selection: requestAllowed ? 'approved' : 'later',
         meta,
       }));
 

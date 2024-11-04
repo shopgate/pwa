@@ -12,7 +12,7 @@ export const allowPushOptIn = () => async (dispatch, getState) => {
   const meta = getPushOptInTrackingMeta(getState());
 
   dispatch(softOptInSelected({
-    selected: 'approved',
+    selection: 'approved',
     meta,
   }));
 
@@ -32,7 +32,7 @@ export const denyPushOptIn = () => async (dispatch, getState) => {
   const meta = getPushOptInTrackingMeta(getState());
 
   dispatch(softOptInSelected({
-    selected: 'later',
+    selection: 'later',
     meta,
   }));
 

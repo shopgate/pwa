@@ -33,13 +33,13 @@ export const softOptInShown = ({ meta }) => ({
 /**
  * Lorem Ipsum
  * @param {Object} params Action params
- * @param {"approved"|"denied"|"later"} params.selected User selection
+ * @param {"approved"|"denied"|"later"} params.selection User selection
  * @param {Object} params.meta Meta data for the action
  * @returns {Object} The Redux action object
  */
-export const softOptInSelected = ({ selected, meta }) => ({
+export const softOptInSelected = ({ selection, meta }) => ({
   type: SOFT_OPT_IN_SELECTED,
-  selected,
+  selection,
   meta: sanitizeMeta(meta),
 });
 
