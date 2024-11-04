@@ -73,7 +73,7 @@ exports[`MediaProvider .handleCookieConsent() should replace the iframe with the
         </span>
         <a
           class="css-v9gxso common__media-provider_cookie-consent-message-container_link"
-          href="/privacy-settings"
+          href="/privacy-settings?source=video"
         >
           htmlSanitizer.videoCookieConsent.link
         </a>
@@ -135,7 +135,7 @@ exports[`MediaProvider .injectCookieConsentMessage() should add the cookie conse
     </span>
     <a
       class="css-v9gxso common__media-provider_cookie-consent-message-container_link"
-      href="/privacy-settings"
+      href="/privacy-settings?source=video"
     >
       htmlSanitizer.videoCookieConsent.link
     </a>
