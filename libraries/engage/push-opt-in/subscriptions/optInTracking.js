@@ -27,7 +27,7 @@ export default function pushOptInTracking(subscribe) {
     const { meta: { permission, ...meta } } = action;
 
     track('customEvent', {
-      eventCategory: 'softPushOpt',
+      eventCategory: 'softPushOptIn',
       eventAction: 'shown',
       label: null,
       additionalEventParams: {
@@ -41,7 +41,7 @@ export default function pushOptInTracking(subscribe) {
     const { selection, meta: { permission, ...meta } } = action;
 
     track('customEvent', {
-      eventCategory: 'softPushOpt',
+      eventCategory: 'softPushOptIn',
       eventAction: 'decision',
       label: selection,
       additionalEventParams: {

@@ -5,6 +5,7 @@ import {
   historyReset,
   historyPop,
 } from '@shopgate/engage/core/actions';
+import { softOptInShown } from '@shopgate/engage/core/action-creators';
 import {
   handleCookieConsent,
   showCookieConsentModal,
@@ -14,6 +15,7 @@ import {
   getIsCookieConsentHandled,
   getAreComfortCookiesAccepted,
   getAreStatisticsCookiesAccepted,
+  getCookieConsentTrackingMeta,
 } from '../selectors/cookieConsent';
 import {
   cookieConsentInitializedByUserInternal$,
@@ -30,6 +32,8 @@ export default function cookieConsent(subscribe) {
     const state = getState();
     const isCookieConsentHandled = getIsCookieConsentHandled(state);
 
+    const trackingMeta = getCookieConsentTrackingMeta(state);
+
     /**
      * if merchant has not activated the cookie feature OR if merchant has activated cookie feature
      * and user has chosen cookies already trigger stream to run code that depends on the cookie
@@ -45,11 +49,12 @@ export default function cookieConsent(subscribe) {
       }));
 
       if (appSupportsCookieConsent() && (comfortCookiesAccepted || statisticsCookiesAccepted)) {
-        await dispatch(grantAppTrackingTransparencyPermission());
+        await dispatch(grantAppTrackingTransparencyPermission({ meta: trackingMeta }));
       }
     } else {
       // if merchant has activated cookie feature but user has not chosen cookies yet:
       // show cookie consent modal to make user choose them
+      dispatch(softOptInShown({ meta: trackingMeta }));
       dispatch(showCookieConsentModal());
     }
   });

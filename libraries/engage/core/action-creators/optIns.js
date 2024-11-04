@@ -9,12 +9,16 @@ import {
 } from '@shopgate/engage/core/constants';
 
 /**
+ * @typedef {Object} OptInMeta
+ * @property {string} permission Meta data permission
+ */
+
+/**
  * Sanitizes the meta object of opt in actions
- * @param {Object} meta The original meta object
+ * @param {OptInMeta} meta The original meta object
  * @returns {Object} The sanitized meta object
  */
 const sanitizeMeta = (meta = {}) => ({
-  context: 'other',
   permission: 'other',
   ...meta,
 });
@@ -22,10 +26,10 @@ const sanitizeMeta = (meta = {}) => ({
 /**
  * Lorem Ipsum
  * @param {Object} params Action params
- * @param {Object} params.meta Meta data for the action
+ * @param {OptInMeta} params.meta Meta data for the action
  * @returns {Object} The Redux action object
  */
-export const softOptInShown = ({ meta }) => ({
+export const softOptInShown = ({ meta } = {}) => ({
   type: SOFT_OPT_IN_SHOWN,
   meta: sanitizeMeta(meta),
 });
@@ -33,8 +37,9 @@ export const softOptInShown = ({ meta }) => ({
 /**
  * Lorem Ipsum
  * @param {Object} params Action params
- * @param {"approved"|"denied"|"later"} params.selection User selection
- * @param {Object} params.meta Meta data for the action
+ * @param {"approved"|"denied"|"later"|"approvedAll"|"deniedAll"|"manage"} params.selection
+ * User selection
+ * @param {OptInMeta} params.meta Meta data for the action
  * @returns {Object} The Redux action object
  */
 export const softOptInSelected = ({ selection, meta }) => ({
@@ -47,7 +52,7 @@ export const softOptInSelected = ({ selection, meta }) => ({
  * Lorem Ipsum
  * @param {Object} params Action params
  * @param {string} params.permissionId Permission id the action was dispatched for
- * @param {Object} params.meta Meta data for the action
+ * @param {OptInMeta} params.meta Meta data for the action
  * @returns {Object} The Redux action object
  */
 export const hardOptInShown = ({ permissionId, meta }) => ({
@@ -61,7 +66,7 @@ export const hardOptInShown = ({ permissionId, meta }) => ({
  * @param {Object} params Action params
  * @param {string} params.permissionId Permission id the action was dispatched for
  * @param {string} params.status Permission status
- * @param {Object} params.meta Meta data for the action
+ * @param {OptInMeta} params.meta Meta data for the action
  * @returns {Object} The Redux action object
  */
 export const hardOptInSelected = ({ permissionId, status, meta }) => {

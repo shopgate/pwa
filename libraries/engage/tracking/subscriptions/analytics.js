@@ -1,4 +1,12 @@
 import {
+  softOptInShown$,
+  softOptInSelected$,
+  hardOptInShown$,
+  hardOptInSelected$,
+} from '@shopgate/engage/core/streams';
+import { track } from '@shopgate/engage/tracking/helpers';
+
+import {
   reloadApp,
 } from '@shopgate/engage/core/action-creators';
 import {
@@ -12,6 +20,18 @@ import {
   cookieConsentInitialized$,
   cookieConsentUpdated$,
 } from '../streams';
+
+const softTrackingOptInShown$ = softOptInShown$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const softTrackingOptInSelected$ = softOptInSelected$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const hardTrackingOptInShown$ = hardOptInShown$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const hardTrackingOptInSelected$ = hardOptInSelected$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
 
 /**
  * Analytics subscriptions
@@ -49,5 +69,60 @@ export default function analytics(subscribe) {
     // The PWA is reloaded whenever cookie consent settings changed to guarantee that all trackers
     // are turned off
     dispatch(reloadApp());
+  });
+
+  subscribe(softTrackingOptInShown$, ({ getState }) => {
+    track('customEvent', {
+      eventCategory: 'softTrackingOptIn',
+      eventAction: 'shown',
+      label: null,
+      additionalEventParams: {
+        eventName: 'softTrackingOptInShown',
+      },
+    }, getState());
+  });
+
+  subscribe(softTrackingOptInSelected$, ({ action, getState }) => {
+    const { selection, meta: { permission, ...meta } } = action;
+
+    track('customEvent', {
+      eventCategory: 'softTrackingOptIn',
+      eventAction: 'decision',
+      label: selection,
+      additionalEventParams: {
+        eventName: 'softTrackingOptInSelected',
+        selection,
+        ...meta,
+      },
+    }, getState());
+  });
+
+  subscribe(hardTrackingOptInShown$, ({ action, getState }) => {
+    const { meta: { permission, ...meta } } = action;
+
+    track('customEvent', {
+      eventCategory: 'hardTrackingOptIn',
+      eventAction: 'shown',
+      label: null,
+      additionalEventParams: {
+        eventName: 'hardTrackingOptInShown',
+        ...meta,
+      },
+    }, getState());
+  });
+
+  subscribe(hardTrackingOptInSelected$, ({ action, getState }) => {
+    const { selection, meta: { permission, ...meta } } = action;
+
+    track('customEvent', {
+      eventCategory: 'hardTrackingOptIn',
+      eventAction: 'decision',
+      label: selection,
+      additionalEventParams: {
+        eventName: 'hardTrackingOptInSelected',
+        selection,
+        ...meta,
+      },
+    }, getState());
   });
 }

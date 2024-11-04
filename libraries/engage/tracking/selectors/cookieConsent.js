@@ -102,3 +102,23 @@ export const getIsCookieConsentModalVisible = createSelector(
     modalState.isCookieConsentModalVisible
         && (comfortCookiesState === null && statisticsCookiesState === null))
 );
+
+/**
+ * Determines if the cookie consent feature is activated
+ */
+export const getIsCookieConsentActivated = createSelector(
+  () => isCookieConsentActivated && appSupportsCookieConsent()
+);
+
+/**
+ * Creates a meta data object for tracking opt in tracking events
+ */
+export const getCookieConsentTrackingMeta = createSelector(
+  getIsCookieConsentActivated,
+  (_, props = {}) => props,
+  (isActivated, states) => ({
+    permission: 'tracking',
+    usesSoftTrackingOptIn: isActivated,
+    ...states,
+  })
+);
