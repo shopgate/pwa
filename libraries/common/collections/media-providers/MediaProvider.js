@@ -143,7 +143,7 @@ class MediaProvider {
       styles.consentLink,
       'common__media-provider_cookie-consent-message-container_link'
     );
-    link.href = PRIVACY_SETTINGS_PATTERN;
+    link.href = `${PRIVACY_SETTINGS_PATTERN}?source=video`;
     link.innerHTML = i18n.text('htmlSanitizer.videoCookieConsent.link');
     messageWrapper.appendChild(link);
 

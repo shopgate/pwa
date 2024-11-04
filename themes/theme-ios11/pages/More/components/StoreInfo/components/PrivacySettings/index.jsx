@@ -19,7 +19,7 @@ const PrivacySettings = () => (
     <Portal name={NAV_MENU_PRIVACY_SETTINGS} props={portalProps}>
       <Item
         label="navigation.privacySettings"
-        href={PRIVACY_SETTINGS_PATTERN}
+        href={`${PRIVACY_SETTINGS_PATTERN}?source=settings`}
       />
     </Portal>
     <Portal name={NAV_MENU_PRIVACY_SETTINGS_AFTER} props={portalProps} />

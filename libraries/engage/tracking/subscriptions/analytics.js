@@ -3,9 +3,12 @@ import {
   softOptInSelected$,
   hardOptInShown$,
   hardOptInSelected$,
+  routeWillEnter$,
 } from '@shopgate/engage/core/streams';
+import {
+  getCurrentQuery,
+} from '@shopgate/engage/core/selectors';
 import { track } from '@shopgate/engage/tracking/helpers';
-
 import {
   reloadApp,
 } from '@shopgate/engage/core/action-creators';
@@ -20,6 +23,12 @@ import {
   cookieConsentInitialized$,
   cookieConsentUpdated$,
 } from '../streams';
+import {
+  getIsCookieConsentHandled,
+} from '../selectors/cookieConsent';
+import {
+  PRIVACY_SETTINGS_PATTERN,
+} from '../constants';
 
 const softTrackingOptInShown$ = softOptInShown$
   .filter(({ action }) => action?.meta?.permission === 'tracking');
@@ -32,6 +41,11 @@ const hardTrackingOptInShown$ = hardOptInShown$
 
 const hardTrackingOptInSelected$ = hardOptInSelected$
   .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const privacySettingsWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === PRIVACY_SETTINGS_PATTERN)
+  // Only emit when cookie consent is already handled
+  .filter(({ getState }) => getIsCookieConsentHandled(getState()));
 
 /**
  * Analytics subscriptions
@@ -122,6 +136,47 @@ export default function analytics(subscribe) {
         eventName: 'hardTrackingOptInSelected',
         selection,
         ...meta,
+      },
+    }, getState());
+  });
+
+  subscribe(cookieConsentUpdated$, ({ action, getState }) => {
+    const { source = 'other' } = getCurrentQuery(getState());
+
+    const {
+      comfortCookiesAccepted: allowComfortNew,
+      statisticsCookiesAccepted: allowStatisticsNew,
+      previous: {
+        comfortCookiesAccepted: allowComfortOld,
+        statisticsCookiesAccepted: allowStatisticsOld,
+      } = {},
+    } = action;
+
+    track('customEvent', {
+      eventCategory: 'softTrackingSettings',
+      eventAction: 'changed',
+      label: null,
+      additionalEventParams: {
+        eventName: 'softTrackingSettingsChanged',
+        context: source,
+        allowComfortOld,
+        allowComfortNew,
+        allowStatisticsOld,
+        allowStatisticsNew,
+      },
+    }, getState());
+  });
+
+  subscribe(privacySettingsWillEnter$, ({ getState }) => {
+    const { source = 'other' } = getCurrentQuery(getState());
+
+    track('customEvent', {
+      eventCategory: 'softTrackingSettings',
+      eventAction: 'shown',
+      label: null,
+      additionalEventParams: {
+        eventName: 'softTrackingSettingsShown',
+        context: source,
       },
     }, getState());
   });

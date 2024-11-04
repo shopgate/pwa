@@ -28,7 +28,7 @@ const PrivacySettingsButton = ({ navigate }) => (
       <NavDrawer.Item
         label={LABEL}
         icon={SecurityIcon}
-        onClick={navigate(PRIVACY_SETTINGS_PATTERN)}
+        onClick={navigate(`${PRIVACY_SETTINGS_PATTERN}?source=settings`)}
         testId="navDrawerPrivacySettingsButton"
       />
     </Portal>

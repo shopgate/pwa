@@ -49,8 +49,6 @@ const updateCookieConsentLocal = update => (dispatch, getState) => {
       selection,
       meta,
     }));
-  } else {
-    // TODO implement "softTrackingSettingsChanged" event
   }
 
   // Broadcast the actual state update

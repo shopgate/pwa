@@ -10,7 +10,7 @@ import {
 
 /**
  * @typedef {Object} OptInMeta
- * @property {string} permission Meta data permission
+ * @property {string} permission Permission type the event is dispatched for
  */
 
 /**
