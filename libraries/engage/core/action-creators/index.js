@@ -8,3 +8,4 @@ export {
 
 export * from './app';
 export * from './appPermissions';
+export * from './optIns';

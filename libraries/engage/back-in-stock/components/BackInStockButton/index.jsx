@@ -46,6 +46,11 @@ const BackInStockButton = ({
         confirm: 'back_in_stock.rationale.confirm',
         dismiss: 'common.cancel',
       },
+      meta: {
+        context: 'backInStock',
+        usesSoftPushOptIn: false,
+        permission: 'push',
+      },
     });
     if (allowed) {
       addBackInStockSubscription({ productId });
