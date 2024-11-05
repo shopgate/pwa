@@ -56,10 +56,21 @@ const StockInfoUnwrapped = ({ location, inventory, className }: Props) => {
 
   const portalProps = React.useMemo(() => ({
     location,
+    inventory,
+    comingSoon,
+    settings,
     className,
     availabilityText,
     availabilityTextColor,
-  }), [availabilityText, availabilityTextColor, className, location]);
+  }), [
+    availabilityText,
+    availabilityTextColor,
+    className,
+    comingSoon,
+    inventory,
+    location,
+    settings,
+  ]);
 
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO} portalProps={portalProps}>
