@@ -29,7 +29,7 @@ export default function pushOptInTracking(subscribe) {
     track('customEvent', {
       eventCategory: 'softPushOptIn',
       eventAction: 'shown',
-      label: null,
+      eventLabel: null,
       additionalEventParams: {
         eventName: 'softPushOptInShown',
         ...meta,
@@ -43,7 +43,7 @@ export default function pushOptInTracking(subscribe) {
     track('customEvent', {
       eventCategory: 'softPushOptIn',
       eventAction: 'decision',
-      label: selection,
+      eventLabel: selection,
       additionalEventParams: {
         eventName: 'softPushOptInSelected',
         selection,
@@ -58,7 +58,7 @@ export default function pushOptInTracking(subscribe) {
     track('customEvent', {
       eventCategory: 'hardPushOptIn',
       eventAction: 'shown',
-      label: null,
+      eventLabel: null,
       additionalEventParams: {
         eventName: 'hardPushOptInShown',
         ...meta,
@@ -72,7 +72,7 @@ export default function pushOptInTracking(subscribe) {
     track('customEvent', {
       eventCategory: 'hardPushOptIn',
       eventAction: 'decision',
-      label: selection,
+      eventLabel: selection,
       additionalEventParams: {
         eventName: 'hardPushOptInSelected',
         selection,

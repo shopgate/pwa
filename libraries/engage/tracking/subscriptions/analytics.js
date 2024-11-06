@@ -89,7 +89,7 @@ export default function analytics(subscribe) {
     track('customEvent', {
       eventCategory: 'softTrackingOptIn',
       eventAction: 'shown',
-      label: null,
+      eventLabel: null,
       additionalEventParams: {
         eventName: 'softTrackingOptInShown',
       },
@@ -102,7 +102,7 @@ export default function analytics(subscribe) {
     track('customEvent', {
       eventCategory: 'softTrackingOptIn',
       eventAction: 'decision',
-      label: selection,
+      eventLabel: selection,
       additionalEventParams: {
         eventName: 'softTrackingOptInSelected',
         selection,
@@ -117,7 +117,7 @@ export default function analytics(subscribe) {
     track('customEvent', {
       eventCategory: 'hardTrackingOptIn',
       eventAction: 'shown',
-      label: null,
+      eventLabel: null,
       additionalEventParams: {
         eventName: 'hardTrackingOptInShown',
         ...meta,
@@ -131,7 +131,7 @@ export default function analytics(subscribe) {
     track('customEvent', {
       eventCategory: 'hardTrackingOptIn',
       eventAction: 'decision',
-      label: selection,
+      eventLabel: selection,
       additionalEventParams: {
         eventName: 'hardTrackingOptInSelected',
         selection,
@@ -155,7 +155,7 @@ export default function analytics(subscribe) {
     track('customEvent', {
       eventCategory: 'softTrackingSettings',
       eventAction: 'changed',
-      label: null,
+      eventLabel: null,
       additionalEventParams: {
         eventName: 'softTrackingSettingsChanged',
         context: source,
@@ -173,7 +173,7 @@ export default function analytics(subscribe) {
     track('customEvent', {
       eventCategory: 'softTrackingSettings',
       eventAction: 'shown',
-      label: null,
+      eventLabel: null,
       additionalEventParams: {
         eventName: 'softTrackingSettingsShown',
         context: source,
