@@ -1,4 +1,6 @@
-import { hasWebBridge, isIOSTheme } from '@shopgate/engage/core';
+// Ugly imports to avoid breaking tests due to circular dependencies
+import { isIOSTheme } from '@shopgate/engage/core/helpers/isIOSTheme';
+import { hasWebBridge } from '@shopgate/engage/core/helpers/bridge';
 
 const iosThemeActive = isIOSTheme();
 

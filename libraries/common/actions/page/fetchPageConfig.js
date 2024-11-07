@@ -1,5 +1,6 @@
 import { PipelineRequest } from '@shopgate/pwa-core';
 import { getDeviceTypeForCms } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { SHOPGATE_CMS_GET_PAGE_CONFIG } from '../../constants/Pipelines';
 import {
   requestPageConfig,
@@ -30,7 +31,9 @@ function fetchPageConfig(pageId) {
     const request = new PipelineRequest(SHOPGATE_CMS_GET_PAGE_CONFIG)
       .setInput({
         pageId,
-        deviceType: deviceTypeOfCmsPage,
+        ...(hasNewServices() ? {
+          deviceType: deviceTypeOfCmsPage,
+        } : null),
       })
       .dispatch();
 

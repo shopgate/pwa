@@ -18,7 +18,7 @@ import {
 /**
  * The CategoryGridItem component
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CategoryGridItem = ({ category, showImages }) => (
   /* eslint-disable react/no-danger */

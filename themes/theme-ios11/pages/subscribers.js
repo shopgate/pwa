@@ -49,12 +49,16 @@ import tabBar from 'Components/TabBar/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // App rating
 import appRating from '@shopgate/engage/app-rating/subscriptions';
+import engageBackInStock from '@shopgate/engage/back-in-stock/subscriptions';
+import pushOptIn from '@shopgate/engage/push-opt-in/subscriptions';
+import engageApp from '@shopgate/engage/core/subscriptions/app';
 // Extensions
 import extensions from 'Extensions/subscribers';
 
 const subscriptions = [
   // Common subscribers.
   commonApp,
+  engageApp,
   commonHistory,
   commonUser,
   commonMenu,
@@ -87,9 +91,11 @@ const subscriptions = [
   // Engage subscribers
   engageCheckout,
   engageRegistration,
+  engageBackInStock,
   engageTracking,
   // App rating subscribers
   appRating,
+  pushOptIn,
   // Theme subscribers.
   app,
   viewport,

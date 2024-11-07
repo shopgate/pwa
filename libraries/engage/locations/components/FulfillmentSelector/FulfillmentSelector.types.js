@@ -1,5 +1,4 @@
 // @flow
-import { type ProductId } from '../../../product';
 import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import { type Location, type UserLocationFulfillmentMethod } from '../../locations.types';
 
@@ -18,7 +17,7 @@ export type FulfillmentSelectorContextProps = {
   isROPISEnabled: boolean,
   isBOPISEnabled: boolean,
   isReady: boolean,
-  productId: ProductId,
+  productId: string,
   handleChange: (element: Selection, changeOnly: boolean) => void,
   conditioner: any,
   fulfillmentPaths: string[],

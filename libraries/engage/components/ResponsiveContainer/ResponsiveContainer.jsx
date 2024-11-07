@@ -1,15 +1,5 @@
-import { useMemo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { addListener } from './listener';
-import { parser } from './breakpoints';
-
-const comparators = {
-  '>=': (from, to, width) => width >= from,
-  '>': (from, to, width) => width >= to,
-  '<': (from, to, width) => width < from,
-  '<=': (from, to, width) => width < to,
-  '': (from, to, width) => width >= from && width < to,
-};
+import { useResponsiveValue } from './hooks';
 
 /**
  * Renders a responsive container that allows to render based on width.
@@ -19,31 +9,14 @@ const comparators = {
 const ResponsiveContainer = ({
   breakpoint, webOnly, webAlways, appOnly, appAlways, children,
 }) => {
-  // Active breakpoint used for triggering rerenders on resize.
-  const [activeBreakpoint, setActiveBreakpoint] = useState(null);
+  const render = useResponsiveValue(breakpoint, {
+    webOnly,
+    webAlways,
+    appOnly,
+    appAlways,
+  });
 
-  // Calculate if should render due to visibility.
-  /* eslint-disable react-hooks/exhaustive-deps */
-  const breakpointSafe = useMemo(() => {
-    const parsed = parser(comparators, breakpoint, {
-      breakpoint,
-      webOnly,
-      webAlways,
-      appOnly,
-      appAlways,
-    });
-
-    return parsed;
-  }, [activeBreakpoint, breakpoint]);
-  /* eslint-enable react-hooks/exhaustive-deps */
-
-  // Watch for resize changes.
-  useEffect(() => addListener((newBreakpoint) => {
-    setActiveBreakpoint(newBreakpoint);
-  }), []);
-
-  // Ignore rendering if one of given condition applies.
-  if (!breakpointSafe) {
+  if (!render) {
     return null;
   }
 

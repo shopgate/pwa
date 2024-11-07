@@ -45,14 +45,11 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get webCheckoutShopify() { return mockedWebCheckoutConfig; },
   themeConfig: {},
 }));
-jest.mock('@shopgate/pwa-core/helpers', () => ({
-  ...require.requireActual('@shopgate/pwa-core/helpers'),
-  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
-}));
-
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
-jest.mock('@shopgate/engage/core', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   hasWebBridge: jest.fn().mockReturnValue(false),
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+  hasNewServices: jest.fn().mockReturnValue(false),
 }));
 jest.mock('../actions/router', () => {
   const { windowOpenOverride: windowOpenOriginal } = jest.requireActual('../actions/router');
@@ -515,6 +512,32 @@ describe('Router subscriptions', () => {
         params.action,
         mockedRouterState,
         params.state
+      );
+    });
+
+    it('should handle external urls as expected when they are returned by a redirect handler', async () => {
+      const externalUrl = 'https://www.google.com/maps/dir/?api=1&destination=Gro';
+
+      /**
+       * @return {Promise}
+       */
+      const redirectHandler = () => Promise.resolve(externalUrl);
+
+      redirects.set('/register', redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/register',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall(openExternalLinkSpy);
+
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        externalUrl,
+        params.action,
+        mockedRouterState,
+        undefined
       );
     });
 

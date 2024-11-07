@@ -25,6 +25,7 @@ exports[`<CartEmpty /> should render 1`] = `
         data-test-id="emptyCartPlaceHolderString"
       >
         <Translate
+          acceptPlainTextWithPlaceholders={false}
           className={null}
           params={Object {}}
           role={null}

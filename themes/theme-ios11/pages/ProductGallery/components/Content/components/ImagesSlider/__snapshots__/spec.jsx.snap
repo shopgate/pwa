@@ -97,7 +97,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
             >
               <div
                 aria-hidden={false}
-                className="css-1hlki0z css-sa13d4"
+                className="css-1hlki0z css-sa13d4 common__swiper"
               >
                 <ReactIdSwiper
                   ContainerEl="div"
@@ -261,7 +261,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                         key=".$foo"
                       >
                         <div
-                          className="swiper-slide"
+                          className="css-10a4qrv swiper-slide"
                           data-test-id="Slider"
                         >
                           <div
@@ -274,6 +274,10 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                               classNameImg="css-4kgshc"
                               resolutions={
                                 Array [
+                                  Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
                                   Object {
                                     "height": 2048,
                                     "width": 2048,
@@ -293,7 +297,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                         key=".$bar"
                       >
                         <div
-                          className="swiper-slide"
+                          className="css-10a4qrv swiper-slide"
                           data-test-id="Slider"
                         >
                           <div
@@ -306,6 +310,10 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                               classNameImg="css-4kgshc"
                               resolutions={
                                 Array [
+                                  Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
                                   Object {
                                     "height": 2048,
                                     "width": 2048,
@@ -433,7 +441,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
             >
               <div
                 aria-hidden={false}
-                className="css-1hlki0z css-sa13d4"
+                className="css-1hlki0z css-sa13d4 common__swiper"
               >
                 <ReactIdSwiper
                   ContainerEl="div"
@@ -597,7 +605,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                         key=".$foo"
                       >
                         <div
-                          className="swiper-slide"
+                          className="css-10a4qrv swiper-slide"
                           data-test-id="Slider"
                         >
                           <div
@@ -610,6 +618,10 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                               classNameImg="css-4kgshc"
                               resolutions={
                                 Array [
+                                  Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
                                   Object {
                                     "height": 2048,
                                     "width": 2048,
@@ -629,7 +641,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                         key=".$bar"
                       >
                         <div
-                          className="swiper-slide"
+                          className="css-10a4qrv swiper-slide"
                           data-test-id="Slider"
                         >
                           <div
@@ -642,6 +654,10 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                               classNameImg="css-4kgshc"
                               resolutions={
                                 Array [
+                                  Object {
+                                    "height": 1024,
+                                    "width": 1024,
+                                  },
                                   Object {
                                     "height": 2048,
                                     "width": 2048,

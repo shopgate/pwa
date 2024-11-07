@@ -1,9 +1,13 @@
 import { createSelector } from 'reselect';
+import {
+  getCurrentPathname,
+  makeGetRouteParam,
+} from '@shopgate/engage/core/selectors';
+import {
+  isDev,
+} from '@shopgate/engage/core/helpers';
+import { getPageConfigById } from '@shopgate/engage/page/selectors';
 import { shopNumber } from '@shopgate/pwa-common/helpers/config';
-import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
-import { getPageConfigById } from '@shopgate/engage/page';
-import { makeGetRouteParam } from '@shopgate/engage/core';
-import { isDev } from '@shopgate/pwa-common/helpers/environment';
 
 /**
  * The tracking base URL.

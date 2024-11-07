@@ -2,8 +2,8 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import noop from 'lodash/noop';
-import { AccordionContainer, ChevronIcon } from '@shopgate/pwa-ui-shared';
-import { i18n } from '@shopgate/engage/core';
+import { AccordionContainer, ChevronIcon } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
 import AccordionContent from './components/AccordionContent';
 import * as styles from './style';
 

@@ -1,4 +1,7 @@
+import noop from 'lodash/noop';
 /* eslint-disable require-jsdoc */
+import Sheet from '@shopgate/pwa-ui-shared/Sheet';
+
 // ICONS IOS
 export const CartIconIOS = () => null;
 export const FilterIconIOS = () => null;
@@ -64,11 +67,19 @@ export const TimeIcon = () => null;
 // COMPONENTS
 export const ProgressBar = () => null;
 export const MessageBar = () => null;
+export const Input = () => null;
 export const Link = ({ children }) => children;
 export const Ellipsis = ({ children }) => children;
+/** @returns {ReactElement} */
 export const SurroundPortals = ({ children }) => children;
+/** @returns {ReactElement} */
 export const Portal = ({ children }) => children || null; // null for portals like before, after
 export const Accordion = ({ children }) => children;
+export const AccordionContainer = ({ children, open = false }) => children({
+  handleClose: noop,
+  open,
+  handleOpen: noop,
+});
 export const ResponsiveContainer = ({ children }) => children;
 export const Grid = ({ children }) => children;
 Grid.Item = ({ children }) => children;
@@ -77,20 +88,27 @@ export const Price = () => null;
 export const PriceStriked = () => null;
 export const PriceInfo = () => null;
 export const RangeSlider = () => null;
+export const RatingStars = () => null;
 export const Availability = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
 export const PlaceholderParagraph = ({ children }) => children;
+export const PlaceholderLabel = ({ children }) => children;
+/** @returns {ReactElement} */
 export const HtmlSanitizer = ({ children }) => children;
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
+export const SheetDrawer = Sheet;
 export const SheetList = ({ children }) => children;
-SheetList.Item = ({ children }) => children;
+SheetList.Item = () => null;
 SheetList.Item.displayName = 'SheetList.Item';
+export const PriceDifference = () => 'PriceDifference';
+export const TaxDisclaimer = () => 'TaxDisclaimer';
+export const PickerUtilize = () => 'PickerUtilize';
 
 // HELPERS
 export const I18n = {
-  Text: () => null,
+  Text: ({ string }) => string,
   Placeholder: () => null,
   Price: () => null,
 };

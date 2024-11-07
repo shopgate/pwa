@@ -170,7 +170,8 @@ export const getProductIsFetching = createSelector(
 );
 
 /**
- * Creates the selector to get a product's properties from the state.
+ * Creates the selector to get a product's properties from the state filtered via
+ * positive / negative list.
  * @returns {Function}
  */
 export function makeGetProductProperties() {
@@ -188,6 +189,23 @@ export function makeGetProductProperties() {
     }
   );
 }
+
+/**
+ * Creates the selector to get a product's properties from the state without filtering.
+ * @returns {Function}
+ */
+export const makeGetProductPropertiesUnfiltered = () => createSelector(
+  getProductId,
+  getProductPropertiesState,
+  (productId, properties) => {
+    const entry = properties[productId];
+    if (!entry || entry.isFetching || typeof entry.properties === 'undefined') {
+      return null;
+    }
+
+    return entry.properties;
+  }
+);
 
 /**
  * Creates the selector to get a product's effectivity dates.
@@ -243,13 +261,18 @@ export function makeGetProductFeaturedMedia() {
 
 /**
  * Creates a selector to indicate if a product is active.
+ *
+ * @param {boolean} [returnNullIfProductMissing=false] - Flag to determine the return value when
+ * the product is not found. If set to `true`, the selector will return `null` when the product
+ * is not found. If `false`, it will return `false`.
+ *
  * @returns {Function}
  */
-export const makeIsProductActive = () => createSelector(
+export const makeIsProductActive = (returnNullIfProductMissing = false) => createSelector(
   getProduct,
   (product) => {
     if (!product) {
-      return false;
+      return returnNullIfProductMissing ? null : false;
     }
 
     return product?.active || false;
@@ -258,15 +281,51 @@ export const makeIsProductActive = () => createSelector(
 
 /**
  * Creates a selector to indicate if the base product is active.
+ *
+ * @param {boolean} [returnNullIfProductMissing=false] - Flag to determine the return value when
+ * the product is not found. If set to `true`, the selector will return `null` when the product
+ * is not found. If `false`, it will return `false`.
+ *
  * @returns {Function}
  */
-export const makeIsBaseProductActive = () => createSelector(
+export const makeIsBaseProductActive = (returnNullIfProductMissing = false) => createSelector(
   getBaseProduct,
   (baseProduct) => {
     if (!baseProduct) {
-      return false;
+      return returnNullIfProductMissing ? null : false;
     }
 
     return baseProduct?.active || false;
   }
+);
+
+/**
+ * Creates a selector to get the property of a product based on a given label
+ * @returns {Function}
+ */
+export const makeGetCurrentProductPropertyByLabel = () => {
+  const getProductPropertiesUnfiltered = makeGetProductPropertiesUnfiltered();
+
+  return createSelector(
+    getProductPropertiesUnfiltered,
+    (state, props) => props.widgetSettings,
+    (currentProductProperties, widgetSettings) => {
+      if (!currentProductProperties || !widgetSettings || !widgetSettings.propertyLabel) {
+        return null;
+      }
+
+      return currentProductProperties
+        .find(({ label }) => label === widgetSettings.propertyLabel);
+    }
+  );
+};
+
+/**
+ * Create a selector to retrieve the product type.
+ * @returns {Function}
+ *
+ */
+export const makeGetProductType = () => createSelector(
+  getProduct,
+  product => product?.type
 );

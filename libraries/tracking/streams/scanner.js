@@ -1,7 +1,16 @@
-import { main$ } from '@shopgate/pwa-common/streams/main';
-import { SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE } from '@shopgate/pwa-core/constants/Scanner';
-import { scannerDidEnter$ } from '@shopgate/pwa-common-commerce/scanner/streams';
-import { SUCCESS_HANDLE_SCANNER, ERROR_HANDLE_SCANNER } from '@shopgate/pwa-common-commerce/scanner/constants';
+import {
+  main$,
+} from '@shopgate/engage/core/streams';
+import {
+  scannerDidEnter$,
+} from '@shopgate/engage/scanner/streams';
+import {
+  SUCCESS_HANDLE_SCANNER,
+  ERROR_HANDLE_SCANNER,
+} from '@shopgate/engage/scanner/constants';
+import {
+  SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE,
+} from '@shopgate/engage/core/constants';
 
 /** @type {Observable} */
 export const scanActivated$ = scannerDidEnter$.filter(({ action }) => {

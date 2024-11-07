@@ -1,11 +1,10 @@
 import React, { memo } from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
-import PriceStriked from '../Header/components/PriceStriked';
+import { PriceStriked, Tiers } from '@shopgate/engage/product/components/Header';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import Price from '../Header/components/Price';
 import PriceInfo from '../Header/components/PriceInfo';
-import Tiers from '../Header/components/Tiers';
-import { ProductContext } from '../../context';
 
 const styles = {
   headline: css({

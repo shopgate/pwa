@@ -3,10 +3,9 @@ import {
   COUPON_TYPE_FIXED,
   COUPON_TYPE_PERCENTAGE,
 } from '@shopgate/pwa-common-commerce/cart';
-import { type ProductId } from '../product';
 
 export type AddToCartProduct = {
-  productId: ProductId;
+  productId: string;
   quantity: number;
   fulfillment?: {
     method: string;

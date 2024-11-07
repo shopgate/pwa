@@ -23,6 +23,7 @@ jest.mock('@shopgate/engage/product', () => ({
   makeIsBaseProductActive: jest.fn(() => () => true),
 }));
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/pwa-ui-shared/Sheet', () => function Sheet() { return null; });
 beforeEach(() => {
   jest.resetModules();
 });

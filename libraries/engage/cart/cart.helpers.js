@@ -1,4 +1,5 @@
 import groupBy from 'lodash/groupBy';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { ROPIS, BOPIS } from '../locations';
 
 /**
@@ -64,9 +65,34 @@ export function sortCartItems(cartItems) {
  * @returns {Object}
  */
 export const createCartItemPrices = (cartItem = {}) => {
+  /**
+   * When PWA doesn't run with new services and uses a "shopgate.cart.getCart.v1" pipeline from one
+   * of the available cart extensions, we return a price array based on the response of those
+   * pipelines.
+   */
+  if (!hasNewServices()) {
+    const { product: { price = {} } = {} } = cartItem;
+
+    return {
+      price: [],
+      subtotal: typeof price?.special === 'number' && price.special !== price.default ? [
+        { price: price.default },
+        { price: price.special },
+      ] : [
+        { price: price.default },
+      ],
+    };
+  }
+
+  /**
+   * When running with the new services, the "shopgate.cart.getCart.v1" pipeline returns entities
+   * with different price properties. Those are handled here.
+   */
+
   const {
     product = {}, quantity, price, promoAmount, extendedPrice, unitPromoAmount, unitDiscountAmount,
   } = cartItem;
+
   const {
     unit, unitSale, unitEffective,
   } = product?.price || {};

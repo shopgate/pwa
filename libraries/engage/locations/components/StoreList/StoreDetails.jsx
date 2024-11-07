@@ -1,4 +1,3 @@
-// @flow
 import React, { useContext } from 'react';
 import { Accordion } from '../../../components';
 import { StoreContext } from './Store.context';

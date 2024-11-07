@@ -5,6 +5,7 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import Ripple from '../../../Ripple';
 import CrossIcon from '../../../icons/CrossIcon';
 import styles from './style';
+import SearchBar from './components/SearchBar';
 
 /**
  * Header component.
@@ -16,8 +17,10 @@ class Header extends Component {
       PropTypes.element, // ex.: I18n.Text
     ]).isRequired,
     allowClose: PropTypes.bool,
+    handleChange: PropTypes.func,
     onToggleClose: PropTypes.func,
     shadow: PropTypes.bool,
+    showSearch: PropTypes.bool,
   };
 
   /**
@@ -28,6 +31,8 @@ class Header extends Component {
     onToggleClose: () => {},
     shadow: false,
     allowClose: true,
+    handleChange: () => {},
+    showSearch: false,
   };
 
   static contextTypes = {
@@ -53,25 +58,27 @@ class Header extends Component {
     const { allowClose } = this.props;
 
     const classes = classNames(
-      styles.wrapper,
-      { [styles.shadow]: this.props.shadow }
+      styles.wrapper
     );
 
     const { __ } = this.context.i18n();
 
     return (
-      <Grid className={classes} component="div" wrap={false}>
-        {allowClose ? (
-          <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
-            <Ripple className={styles.closeIcon}>
-              <CrossIcon size={24} />
-            </Ripple>
-          </button>
-        ) : <div className={styles.closePlaceholder} />}
-        <Grid.Item className={styles.title} component="div" grow={1} role="heading" {...(allowClose ? { tabIndex: 0 } : null)}>
-          {this.props.title}
-        </Grid.Item>
-      </Grid>
+      <div className={classNames({ [styles.shadow]: this.props.shadow })}>
+        <Grid className={classes} component="div" wrap={false}>
+          {allowClose ? (
+            <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
+              <Ripple className={styles.closeIcon}>
+                <CrossIcon size={24} />
+              </Ripple>
+            </button>
+          ) : <div className={styles.closePlaceholder} />}
+          <Grid.Item className={styles.title} component="div" grow={1} role="heading" {...(allowClose ? { tabIndex: 0 } : null)}>
+            {this.props.title}
+          </Grid.Item>
+        </Grid>
+        {this.props.showSearch && <SearchBar handleChange={this.props.handleChange} />}
+      </div>
     );
   }
 }

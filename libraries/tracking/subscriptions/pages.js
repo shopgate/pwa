@@ -1,4 +1,4 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { getCurrentRoute } from '@shopgate/engage/core/selectors';
 import { categoryIsReady$ } from '../streams/category';
 import { searchIsReady$ } from '../streams/search';
 import { productIsReady$ } from '../streams/product';

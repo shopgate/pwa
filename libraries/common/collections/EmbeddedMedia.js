@@ -48,6 +48,31 @@ class EmbeddedMedia {
   }
 
   /**
+   * Searches for embedded media and replaces it with a placeholder element when required cookie
+   * consent is not accepted.
+   * Should be invoked before container content is added to the DOM to fulfill all regulations.
+   * @param {ParentNode} container A DOM container.
+   * @param {Object} [cookieConsentSettings] Additional settings related to cookie consent.
+   * @param {boolean} [cookieConsentSettings.comfortCookiesAccepted] Whether comfort cookies
+   * are accepted.
+   * @param {boolean} [cookieConsentSettings.statisticsCookiesAccepted] Whether statistics cookies
+   * are accepted.
+   */
+  handleCookieConsent(container, cookieConsentSettings = {}) {
+    const cookieConsent = {
+      comfortCookiesAccepted: false,
+      statisticsCookiesAccepted: false,
+      ...cookieConsentSettings,
+    };
+
+    this.providers.forEach((provider) => {
+      if (provider.handleCookieConsent) {
+        provider.handleCookieConsent(container, cookieConsent);
+      }
+    });
+  }
+
+  /**
    * Stops all playing media within the DOM containers.
    */
   stop() {

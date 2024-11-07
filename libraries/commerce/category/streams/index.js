@@ -13,6 +13,7 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { filterWillLeave$ } from '../../filter/streams';
 import {
   CATEGORY_PATTERN,
+  CATEGORY_ALL_PATTERN,
   RECEIVE_ROOT_CATEGORIES,
   ERROR_CATEGORY,
   RECEIVE_CATEGORY,
@@ -27,6 +28,15 @@ export const categoryDidEnter$ = routeDidEnter$
 
 export const categoryDidLeave$ = routeDidLeave$
   .filter(({ action }) => action.route.pattern === CATEGORY_PATTERN);
+
+export const categoryAllWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === CATEGORY_ALL_PATTERN);
+
+export const categoryAllDidEnter$ = routeDidEnter$
+  .filter(({ action }) => action.route.pattern === CATEGORY_ALL_PATTERN);
+
+export const categoryAllDidLeave$ = routeDidLeave$
+  .filter(({ action }) => action.route.pattern === CATEGORY_ALL_PATTERN);
 
 /**
  * Gets triggered when the root categories received.
@@ -88,6 +98,13 @@ export const categoryFiltersDidUpdate$ = filtersDidUpdate$
 export const categoryDidUpdate$ = routeDidUpdate$
   .filter(({ action }) => action?.route?.pattern === CATEGORY_PATTERN);
 
+export const categoryAllDidUpdate$ = routeDidUpdate$
+  .filter(({ action }) => action?.route?.pattern === CATEGORY_ALL_PATTERN);
+
 export const categoryFiltersDidUpdateFromFilterPage$ = categoryDidUpdate$
   .switchMap(() => filterWillLeave$.first())
   .switchMap(() => categoryWillEnter$.first());
+
+export const categoryAllFiltersDidUpdateFromFilterPage$ = categoryAllDidUpdate$
+  .switchMap(() => filterWillLeave$.first())
+  .switchMap(() => categoryAllWillEnter$.first());

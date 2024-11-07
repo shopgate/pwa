@@ -2,8 +2,6 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'intersection-observer';
 
-const thresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
-
 /**
  * The IntersectionVisibility component.
  * @example
@@ -14,18 +12,29 @@ const thresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
  *     </IntersectionVisibility>
  */
 class IntersectionVisibility extends Component {
+  /**
+   * Calculate threshold by number of steps
+   * Ex: 5 steps will be [0.20, 0.40, 0.60, 0.80, 1.00]
+   * @param {number} steps .
+   * @returns {number[]}
+   */
+  static buildThresholdList = steps => (
+    Array(steps).fill(0).map((v, i) => (i + 1) / steps)
+  )
+
   static propTypes = {
     children: PropTypes.func.isRequired,
     thresholds: PropTypes.arrayOf(PropTypes.number),
   };
 
   static defaultProps = {
-    thresholds,
+    thresholds: IntersectionVisibility.buildThresholdList(10),
   }
 
   state = {
     visible: true,
     ratio: 1,
+    entries: null,
   };
 
   /**
@@ -63,12 +72,14 @@ class IntersectionVisibility extends Component {
   }
 
   /**
-   * @param {Object} intersectionRatio first entry
+   * @param {IntersectionObserverEntry[]} entries first entry
    */
-  handleIntersectionEvent = ([{ intersectionRatio }]) => {
+  handleIntersectionEvent = (entries) => {
+    const [{ intersectionRatio }] = entries;
     this.setState({
       visible: intersectionRatio > 0,
       ratio: intersectionRatio,
+      entries,
     });
   };
 

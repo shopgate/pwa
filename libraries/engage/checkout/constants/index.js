@@ -1,3 +1,9 @@
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+
+export * from '@shopgate/pwa-common-commerce/checkout/constants/index';
+export * from '@shopgate/pwa-common-commerce/checkout/constants/Pipelines';
+export { CHECKOUT_PATH };
+
 export {
   CHECKOUT_PATTERN,
   GUEST_CHECKOUT_PATTERN,

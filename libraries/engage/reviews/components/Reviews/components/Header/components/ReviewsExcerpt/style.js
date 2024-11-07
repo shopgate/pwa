@@ -21,8 +21,7 @@ export const reviewsLine = css({
 });
 
 export const averageRatingNumber = css({
-  // Before the custom properties the primary color was used for this class.
-  color: `var(--color-secondary, ${colors.primary})`,
+  color: `var(--color-primary, ${colors.primary})`,
   marginLeft: variables.gap.small,
 }).toString();
 

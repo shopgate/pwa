@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   SurroundPortals, ConditionalWrapper, NavDrawer, Icon,
@@ -16,7 +17,7 @@ import {
   PRIVACY_PATH,
   RETURN_POLICY_PATH,
   TERMS_PATH,
-} from '../../../../constants';
+} from '@shopgate/engage/page/constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
@@ -36,16 +37,11 @@ const pageTestIdMapping = {
   [TERMS_PATH]: 'navDrawerTermsButton',
 };
 
-type Props = {
-  legalLinks?: Array,
-  navigate: () => any
-}
-
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const LegalButtons = ({ legalPages, navigate }: Props) => {
+const LegalButtons = ({ legalPages, navigate }) => {
   if (!legalPages) {
     return null;
   }
@@ -68,7 +64,7 @@ const LegalButtons = ({ legalPages, navigate }: Props) => {
       return (
         <ConditionalWrapper
           key={url}
-          condition={portalName}
+          condition={!!portalName}
           wrapper={children =>
             <SurroundPortals portalName={portalName} portalProps={portalProps}>
               {children}
@@ -85,6 +81,14 @@ const LegalButtons = ({ legalPages, navigate }: Props) => {
       );
     })
   );
+};
+
+LegalButtons.propTypes = {
+  navigate: PropTypes.func.isRequired,
+  legalPages: PropTypes.arrayOf(PropTypes.shape({
+    url: PropTypes.string,
+    label: PropTypes.string,
+  })),
 };
 
 LegalButtons.defaultProps = {

@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { Dialog, TextField } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
@@ -38,6 +39,9 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
     setInput(value);
   }, []);
 
+  // Favorites list name was restricted to 25 characters on PWA6 in CCP-2535
+  const textFieldMaxLength = useMemo(() => (!hasNewServices() ? '25' : undefined), []);
+
   return (
     <Dialog
       onConfirm={onConfirmWrapped}
@@ -57,6 +61,7 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
           } : {
             label: i18n.text(`favorites.${type}_modal.label`),
           }}
+          maxLength={textFieldMaxLength}
           onChange={onChange}
           value={input}
           errorText={error || undefined}

@@ -11,6 +11,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -25,6 +26,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={1}
     >
@@ -38,6 +40,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="1"
       />
@@ -57,6 +60,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -71,6 +75,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={1}
     >
@@ -84,6 +89,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="1"
       />
@@ -103,6 +109,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -117,6 +124,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={2}
     >
@@ -130,6 +138,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="2"
       />
@@ -163,6 +172,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -177,6 +187,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={2}
     >
@@ -190,6 +201,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="123"
       />
@@ -230,6 +242,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -244,6 +257,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={1}
     >
@@ -257,6 +271,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="1"
       />
@@ -290,6 +305,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -304,6 +320,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={1}
     >
@@ -317,6 +334,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="1"
       />
@@ -379,6 +397,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -393,6 +412,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={1}
     >
@@ -406,6 +426,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="1"
       />
@@ -425,6 +446,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -439,6 +461,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={3}
     >
@@ -452,6 +475,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="3"
       />
@@ -471,6 +495,7 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
   unit={null}
 >
   <form
+    className="theme__cart__product__quantity-picker"
     onSubmit={[Function]}
   >
     <ForwardRef
@@ -485,6 +510,7 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       unit={null}
       value={0}
     >
@@ -498,6 +524,7 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         pattern="[0–9]*"
         value="0"
       />

@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
+import { isBeta } from '@shopgate/engage/core/helpers';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import {
-  FeaturedMedia,
   getProductImageSettings,
+} from '@shopgate/engage/product/helpers';
+import { useProductListType } from '@shopgate/engage/product/hooks';
+import {
   MapPriceHint,
   OrderQuantityHint,
   ProductImage,
   ProductBadges,
-  useProductListType,
-} from '@shopgate/engage/product';
-import Link from '@shopgate/pwa-common/components/Link';
-import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
+  FeaturedMedia,
+} from '@shopgate/engage/product/components';
+import { Link, RatingStars } from '@shopgate/engage/components';
 import Badge from '../Badge';
 import Price from '../Price';
 import Title from '../Title';
@@ -47,6 +49,19 @@ function ProductCardRender({
   const { ListImage: gridResolutions } = getProductImageSettings();
   const { meta } = useProductListType();
 
+  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+
+  const showRatings = useMemo(() => {
+    if (!hideRating && rating?.average > 0) {
+      return true;
+    }
+
+    if (!hideRating && showEmptyRatingStars && rating) {
+      return true;
+    }
+
+    return false;
+  }, [hideRating, rating, showEmptyRatingStars]);
   return (
     <Link
       tagName="a"
@@ -72,11 +87,10 @@ function ProductCardRender({
       <ProductBadges location="productCard" productId={product.id}>
         {(!hidePrice && price.discount > 0) && <Badge productId={id} value={-price.discount} />}
       </ProductBadges>
+
       {(!(hidePrice && hideRating)) && (
         <div className={style}>
-          {(!hideRating && rating && rating.average > 0) && (
-            <RatingStars value={product.rating.average} />
-          )}
+          {showRatings && <RatingStars value={product.rating.average} />}
           {!hideName && (
             <Title title={product.name} rows={titleRows} />
           )}

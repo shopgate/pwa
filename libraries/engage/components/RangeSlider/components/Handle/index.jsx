@@ -24,7 +24,7 @@ const RangeSliderHandle = (props) => {
 
   return (
     <div
-      className={cxs(classNames.handleOuter, styles)}
+      className={cxs(classNames.handleOuter, styles, 'engage__range-slider__handle')}
       style={style}
       {...eventHandler}
     >

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigation } from '@shopgate/engage/core';
+import { useNavigation } from '@shopgate/engage/core/hooks';
 import { HtmlSanitizer } from '@shopgate/engage/components';
 
 /**

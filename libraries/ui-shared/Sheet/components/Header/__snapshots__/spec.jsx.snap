@@ -1,41 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Header /> should render with correct title 1`] = `
-<Grid
-  className="css-1hncgty"
-  component="div"
-  wrap={false}
+<div
+  className=""
 >
-  <button
-    aria-label="common.close"
-    className="css-r4gt00"
-    onClick={[Function]}
-    type="button"
-  >
-    <Ripple
-      className="css-ugy6xl"
-      color="#000"
-      disabled={false}
-      fill={false}
-      onClick={[Function]}
-      onComplete={[Function]}
-      overflow={false}
-      size={null}
-    >
-      <Cross
-        size={24}
-      />
-    </Ripple>
-  </button>
-  <GridItem
-    className="css-1mjy0de"
+  <Grid
+    className="css-1hncgty"
     component="div"
-    grow={1}
-    role="heading"
-    shrink={1}
-    tabIndex={0}
+    wrap={false}
   >
-    My Title
-  </GridItem>
-</Grid>
+    <button
+      aria-label="common.close"
+      className="css-r4gt00"
+      onClick={[Function]}
+      type="button"
+    >
+      <Ripple
+        className="css-ugy6xl"
+        color="#000"
+        disabled={false}
+        fill={false}
+        onClick={[Function]}
+        onComplete={[Function]}
+        overflow={false}
+        size={null}
+      >
+        <Cross
+          size={24}
+        />
+      </Ripple>
+    </button>
+    <GridItem
+      className="css-1mjy0de"
+      component="div"
+      grow={1}
+      role="heading"
+      shrink={1}
+      tabIndex={0}
+    >
+      My Title
+    </GridItem>
+  </Grid>
+</div>
 `;

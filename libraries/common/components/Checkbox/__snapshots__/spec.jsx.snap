@@ -3,7 +3,7 @@
 exports[`<Checkbox /> should render the checkbox with the label after the icon 1`] = `
 <div
   aria-checked={false}
-  className="checkbox"
+  className="checkbox common__checkbox"
   onClick={[Function]}
   onKeyDown={[Function]}
   role="checkbox"
@@ -19,7 +19,7 @@ exports[`<Checkbox /> should render the checkbox with the label after the icon 1
 exports[`<Checkbox /> should render the checkbox with the label before the icon 1`] = `
 <div
   aria-checked={false}
-  className="checkbox"
+  className="checkbox common__checkbox"
   onClick={[Function]}
   onKeyDown={[Function]}
   role="checkbox"
@@ -35,7 +35,7 @@ exports[`<Checkbox /> should render the checkbox with the label before the icon 
 exports[`<Checkbox /> should render the unchecked icon if "checked" is false 1`] = `
 <div
   aria-checked={false}
-  className="checkbox"
+  className="checkbox common__checkbox"
   onClick={[Function]}
   onKeyDown={[Function]}
   role="checkbox"
@@ -49,7 +49,7 @@ exports[`<Checkbox /> should render the unchecked icon if "checked" is false 1`]
 exports[`<Checkbox /> should render the unchecked icon if "checked" is false 2`] = `
 <div
   aria-checked={true}
-  className="checkbox"
+  className="checkbox common__checkbox"
   onClick={[Function]}
   onKeyDown={[Function]}
   role="checkbox"

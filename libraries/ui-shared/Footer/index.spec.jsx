@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { SHEET_EVENTS } from '../Sheet';
 import { updateInsetBackgroundColor, updateFooterHeight } from './style';
 import Footer from './index';
@@ -39,12 +38,6 @@ jest.mock('@shopgate/pwa-common/helpers/dom', () => {
     getAbsoluteHeight: jest.fn(),
   };
 });
-jest.mock('@shopgate/pwa-core/helpers', () => ({
-  logger: {
-    warn: jest.fn(),
-  },
-}));
-
 jest.mock('@shopgate/pwa-common/components/Portal', () => {
   // eslint-disable-next-line require-jsdoc
   function Portal() {
@@ -53,6 +46,13 @@ jest.mock('@shopgate/pwa-common/components/Portal', () => {
 
   return Portal;
 });
+
+const mockedWarn = jest.fn();
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    warn: (...args) => mockedWarn(...args),
+  },
+}));
 
 const FOOTER_CHILD_ID = 'footer-child';
 const PORTAL_CONTENT_ID = 'portal-content';
@@ -107,7 +107,7 @@ describe('<Footer />', () => {
     expect(wrapper.find(`div#AppFooter > #${FOOTER_CHILD_ID}`)).toExist();
     expect(mutationConstructorSpy).toHaveBeenCalledWith(expect.any(Function));
     expect(insetBackgroundUpdateSpy).toHaveBeenCalledTimes(1);
-    expect(logger.warn).toHaveBeenCalledTimes(1);
+    expect(mockedWarn).toHaveBeenCalledTimes(1);
   });
 
   describe('.hasVisibleContent()', () => {

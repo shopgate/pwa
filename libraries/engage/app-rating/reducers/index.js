@@ -1,15 +1,15 @@
 import {
-  INCREASE_APP_START_COUNT,
-  RESET_APP_START_STATE,
-  RESET_APP_START_COUNT,
-  INCREASE_ORDERS_PLACED_COUNT,
-  RESET_ORDERS_PLACED_COUNT,
-  RESET_ORDERS_PLACED_STATE,
-  INCREASE_TIMER_REPEATS,
-  SET_TIMER_START_TIME,
-  SET_LAST_POPUP_TIMESTAMP,
-  INCREASE_REJECTION_COUNT,
-  SET_ALREADY_RATED,
+  APP_RATING_INCREASE_APP_START_COUNT,
+  APP_RATING_RESET_APP_START_STATE,
+  APP_RATING_RESET_APP_START_COUNT,
+  APP_RATING_INCREASE_ORDERS_PLACED_COUNT,
+  APP_RATING_RESET_ORDERS_PLACED_COUNT,
+  APP_RATING_RESET_ORDERS_PLACED_STATE,
+  APP_RATING_INCREASE_TIMER_REPEATS,
+  APP_RATING_SET_TIMER_START_TIME,
+  APP_RATING_SET_LAST_POPUP_TIMESTAMP,
+  APP_RATING_INCREASE_REJECTION_COUNT,
+  APP_RATING_SET_ALREADY_RATED,
 } from '../constants';
 
 const defaultState = {
@@ -35,20 +35,20 @@ const defaultState = {
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case INCREASE_APP_START_COUNT: {
+    case APP_RATING_INCREASE_APP_START_COUNT: {
       return {
         ...state,
         appStartCount: state.appStartCount + 1,
       };
     }
-    case RESET_APP_START_COUNT: {
+    case APP_RATING_RESET_APP_START_COUNT: {
       return {
         ...state,
         appStartCount: 0,
         appStartResetCount: state.appStartResetCount + 1,
       };
     }
-    case RESET_APP_START_STATE: {
+    case APP_RATING_RESET_APP_START_STATE: {
       return {
         ...state,
         appStartCount: 0,
@@ -56,20 +56,20 @@ export default (state = defaultState, action) => {
       };
     }
 
-    case INCREASE_ORDERS_PLACED_COUNT: {
+    case APP_RATING_INCREASE_ORDERS_PLACED_COUNT: {
       return {
         ...state,
         ordersPlacedCount: state.ordersPlacedCount + 1,
       };
     }
-    case RESET_ORDERS_PLACED_COUNT: {
+    case APP_RATING_RESET_ORDERS_PLACED_COUNT: {
       return {
         ...state,
         ordersPlacedCount: 0,
         ordersPlacedResetCount: state.ordersPlacedResetCount + 1,
       };
     }
-    case RESET_ORDERS_PLACED_STATE: {
+    case APP_RATING_RESET_ORDERS_PLACED_STATE: {
       return {
         ...state,
         ordersPlacedCount: 0,
@@ -77,33 +77,32 @@ export default (state = defaultState, action) => {
       };
     }
 
-    case INCREASE_TIMER_REPEATS: {
+    case APP_RATING_INCREASE_TIMER_REPEATS: {
       return {
         ...state,
         timerRepeatsCount: state.timerRepeatsCount + 1,
       };
     }
-    case SET_TIMER_START_TIME: {
+    case APP_RATING_SET_TIMER_START_TIME: {
       return {
         ...state,
         timerStartTimestamp: Date.now(),
       };
     }
 
-    case SET_LAST_POPUP_TIMESTAMP: {
+    case APP_RATING_SET_LAST_POPUP_TIMESTAMP: {
       return {
         ...state,
         lastPopupAt: Date.now(),
       };
     }
-    case INCREASE_REJECTION_COUNT: {
+    case APP_RATING_INCREASE_REJECTION_COUNT: {
       return {
         ...state,
         rejectionCount: state.rejectionCount + 1,
       };
     }
-
-    case SET_ALREADY_RATED: {
+    case APP_RATING_SET_ALREADY_RATED: {
       return {
         ...state,
         alreadyRated: action.to,

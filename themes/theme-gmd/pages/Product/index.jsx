@@ -33,11 +33,11 @@ class Product extends PureComponent {
   }
 
   /**
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     return (
-      <View aria-hidden={false} background={colors.light}>
+      <View background={colors.light}>
         <Consume context={RouteContext} props={props}>
           {this.consumeRenderer}
         </Consume>

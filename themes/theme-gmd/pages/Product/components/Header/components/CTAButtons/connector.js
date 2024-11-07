@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { isCurrentProductOnFavoriteList } from '@shopgate/engage/favorites';
-import { makeIsProductActive, makeIsBaseProductActive } from '@shopgate/engage/product';
+import { makeIsProductActive } from '@shopgate/engage/product';
 import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/core';
 
 /**
@@ -10,11 +10,10 @@ import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/core';
  * @return {Object} The extended component props.
  */
 const makeMapStateToProps = () => {
-  const isProductActive = makeIsProductActive();
-  const isBaseProductActive = makeIsBaseProductActive();
+  const isProductActive = makeIsProductActive(true);
 
   return (state, props) => {
-    const isActive = isProductActive(state, props) && isBaseProductActive(state, props);
+    const isActive = isProductActive(state, props) !== false;
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(state);
     const isOnWishlist = isCurrentProductOnFavoriteList(state, props);
 

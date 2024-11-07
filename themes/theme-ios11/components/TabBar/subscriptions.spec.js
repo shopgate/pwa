@@ -19,7 +19,7 @@ import subscriptions from './subscriptions';
 const createMockedStore = () => configureStore()({});
 
 jest.mock('@shopgate/engage/checkout', () => ({
-  ...require.requireActual('@shopgate/engage/checkout/constants'),
+  ...jest.requireActual('@shopgate/engage/checkout/constants'),
 }));
 
 jest.mock('@shopgate/engage/login', () => ({

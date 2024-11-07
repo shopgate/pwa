@@ -39,6 +39,8 @@ class RouteNotFound extends React.Component {
     const { setPattern, ...context } = this.currentRoute;
     context.open = true;
     context.visible = true;
+    context.pattern = '';
+    context.is404 = true;
 
     return (
       <ErrorBoundary key="error.404">

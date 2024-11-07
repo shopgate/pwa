@@ -7,8 +7,8 @@ import { i18n } from '../core';
  * @returns {Object|null}
  */
 export const getCountryNames = (
-  countryCodes: string[] = [],
-  defaultLocales: { [key: string]: any } = {}
+  countryCodes = [],
+  defaultLocales = {}
 ) => {
   const lang = i18n.getLang().split('-')[0];
   const defaultLocale = defaultLocales[lang] || defaultLocales.en || {};
@@ -18,7 +18,7 @@ export const getCountryNames = (
     return localeCountries;
   }
 
-  const translated: { [string]: string } = countryCodes.reduce((acc, code) => ({
+  const translated = countryCodes.reduce((acc, code) => ({
     ...acc,
     [code]: localeCountries[code] || defaultLocale[code] || code,
   }), {});

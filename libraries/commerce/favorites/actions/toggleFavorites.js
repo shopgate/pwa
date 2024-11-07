@@ -32,7 +32,7 @@ export const addFavorite = mutable((
   listId,
   quantity,
   notes,
-  showToast = true
+  showToast = false
 ) => (dispatch, getState) => {
   const defaultList = getFavoritesDefaultList(getState());
   dispatch(addProductToFavorites(productId, listId || defaultList.id, quantity, notes, showToast));
@@ -77,14 +77,14 @@ export const requestSync = mutable(listId => (dispatch) => {
  * @param {boolean} withRelatives When true relatives which are on list are also removed.
  * @return {Function}
  */
-export const toggleFavorite = (productId, listId, withRelatives = false) =>
+export const toggleFavorite = mutable((productId, listId, withRelatives = false) =>
   (dispatch, getState) => {
     const state = getState();
     // With quantity enabled the favorites button always adds (increases quantity)
     const wishlistItemQuantityEnabled = getWishlistItemQuantityEnabled(state);
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(state);
     if (wishlistItemQuantityEnabled || !loadWishlistOnAppStartEnabled) {
-      dispatch(addFavorite(productId, listId));
+      dispatch(addFavorite(productId, listId, null, null, true));
     } else {
       const isOnList = makeIsProductOnSpecificFavoriteList(
         () => productId,
@@ -94,7 +94,7 @@ export const toggleFavorite = (productId, listId, withRelatives = false) =>
         ? addFavorite(productId, listId)
         : removeFavorites(productId, withRelatives, listId));
     }
-  };
+  });
 
 /**
  * Updatest a product in the favorite list (debounced and buffered).

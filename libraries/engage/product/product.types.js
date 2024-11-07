@@ -4,7 +4,6 @@ export type ProductId = string;
 
 export type ProductCharacteristic = {
   id: string | number,
-  name: string,
   label: string,
   value: string,
 }

@@ -1,4 +1,4 @@
-import { PipelineRequest } from '@shopgate/engage/core';
+import { PipelineRequest } from '@shopgate/engage/core/classes';
 import {
   DELETE_CUSTOMER_CONTACT,
   DELETE_CUSTOMER_CONTACT_SUCCESS,

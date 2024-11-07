@@ -7,6 +7,7 @@ import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category/constants';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import ProductFilters from 'Components/ProductFilters';
 import { DefaultBar } from 'Components/AppBar/presets';
@@ -25,6 +26,11 @@ class SearchContent extends Component {
     searchPhrase: PropTypes.string.isRequired,
     showFilterBar: PropTypes.bool.isRequired,
     showNoResults: PropTypes.bool.isRequired,
+    pattern: PropTypes.string,
+  }
+
+  static defaultProps = {
+    pattern: null,
   }
 
   /**
@@ -44,13 +50,16 @@ class SearchContent extends Component {
   }
 
   /**
+   * @param {string} categoryName Name of the category
    * @returns {JSX}
    */
-  getAppBar = () => {
-    const { searchPhrase, showFilterBar } = this.props;
+  getAppBar = (categoryName = '') => {
+    const { searchPhrase, showFilterBar, pattern } = this.props;
+    const title = pattern === CATEGORY_ALL_PATTERN ? categoryName || '' : searchPhrase;
     return (
       <DefaultBar
-        center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
+        center={<AppBar.Title title={title} onClick={this.showSearch} />}
+        shadow={!showFilterBar}
         below={<Bar showFilterBar={showFilterBar} />}
       />
     );
@@ -61,7 +70,7 @@ class SearchContent extends Component {
    */
   render() {
     const {
-      searchPhrase, showNoResults, showFilterBar,
+      searchPhrase, showNoResults, showFilterBar, pattern,
     } = this.props;
 
     return (
@@ -69,12 +78,13 @@ class SearchContent extends Component {
         {({ state, query, id: routeId }) => (
           <Fragment>
             <ResponsiveContainer appAlways breakpoint="<=xs">
-              { this.getAppBar() }
+              { this.getAppBar(state.categoryName) }
             </ResponsiveContainer>
             <ResponsiveContainer webOnly breakpoint=">xs">
-              { this.getAppBar() }
+              { this.getAppBar(state.categoryName) }
             </ResponsiveContainer>
             <ProductFilters
+              searchPhrase={searchPhrase}
               showFilters={showFilterBar}
             />
             <SurroundPortals portalName={VIEW_CONTENT}>
@@ -89,8 +99,15 @@ class SearchContent extends Component {
                   <NoResults
                     headlineText="search.no_result.heading"
                     bodyText="search.no_result.body"
-                    searchPhrase={searchPhrase}
                     className={emptyWrapper}
+                    {...pattern !== CATEGORY_ALL_PATTERN ? {
+                      headlineText: 'search.no_result.heading',
+                      bodyText: 'search.no_result.body',
+                      searchPhrase,
+                    } : {
+                      headlineText: 'category.no_result.heading',
+                      bodyText: 'category.no_result.body',
+                    }}
                   />
                 </SurroundPortals>
               )}

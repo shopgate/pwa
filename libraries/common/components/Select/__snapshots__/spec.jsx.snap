@@ -23,7 +23,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6 "
+    className="css-7c9av6  common_select"
   >
     <div
       onTouchStart={[Function]}
@@ -153,7 +153,7 @@ exports[`<Select /> renders with implicit items (closed) 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6 "
+    className="css-7c9av6  common_select"
   >
     <div
       onTouchStart={[Function]}
@@ -189,7 +189,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6 "
+    className="css-7c9av6  common_select"
   >
     <div
       onTouchStart={[Function]}
@@ -310,7 +310,7 @@ exports[`<Select /> renders without items 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6 "
+    className="css-7c9av6  common_select"
   >
     <div
       onTouchStart={[Function]}
@@ -346,7 +346,7 @@ exports[`<Select /> triggers callback on change 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6 "
+    className="css-7c9av6  common_select"
   >
     <div
       onTouchStart={[Function]}

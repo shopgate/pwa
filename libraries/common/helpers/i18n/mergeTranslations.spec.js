@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import merge from 'lodash/merge';
 import mergeTranslations from './mergeTranslations';
 
@@ -51,7 +52,7 @@ const extensionTranslations = {
   },
 };
 
-// Manually merged translations to eleminate false positives through wrong configured lodash merge.
+// Manually merged translations to eliminate false positives through wrong configured lodash merge.
 const mergedTranslations = {
   common: {
     cancel: 'Cancel',
@@ -100,3 +101,4 @@ describe('mergeTranslations helper', () => {
     expect(result).toEqual(themeTranslations);
   });
 });
+/* eslint-enable camelcase */

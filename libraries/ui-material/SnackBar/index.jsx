@@ -135,7 +135,7 @@ class SnackBar extends Component {
     const snackBarHeight = 40 + (rows * 20);
 
     return (
-      <div className={styles.container} style={{ '--snack-bar-height': `${snackBarHeight}px` }}>
+      <div className={`${styles.container} ui-material__snack-bar`} style={{ '--snack-bar-height': `${snackBarHeight}px` }}>
         <Spring
           from={{ top: snackBarHeight }}
           to={{ top: 0 }}
@@ -145,7 +145,14 @@ class SnackBar extends Component {
           onRest={this.handleRest}
         >
           {props => (
-            <div className={styles.wrapper} style={props} data-footer-inset-update-ignore="true">
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+            <div
+              className={styles.wrapper}
+              style={props}
+              data-footer-inset-update-ignore="true"
+              onClick={this.hide}
+            >
               <div className={styles.box} {...boxProps}>
                 <Ellipsis rows={rows}>
                   <span className={styles.label} aria-live="assertive" role="status">

@@ -9,12 +9,16 @@ import {
 } from '@shopgate/engage/components/constants';
 import {
   ProductDiscountBadge,
+} from '@shopgate/engage/product/components';
+import {
   ProductListTypeProvider,
   ProductListEntryProvider,
-} from '@shopgate/engage/product';
+} from '@shopgate/engage/product/providers';
+import {
+  ProductContext,
+} from '@shopgate/engage/product/contexts';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
-import { ProductContext } from '../../context';
 
 const styles = {
   root: css({

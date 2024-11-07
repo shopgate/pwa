@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 
 const sectionTitle = 'Section Title';
 
+jest.mock('@shopgate/engage/components');
+
 /**
  * Creates a component for testing.
  * @param {boolean} mockedValue Tells if the theme setting to show the section title is active.
@@ -14,6 +16,7 @@ const createComponent = (mockedValue = true) => {
     const originalConfig = require.requireActual('@shopgate/pwa-common/helpers/config');
     return ({
       ...originalConfig,
+      language: 'de-de',
       get showGmdMenuSubHeaders() { return mockedValue; },
     });
   });

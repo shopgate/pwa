@@ -1,7 +1,7 @@
 import { ToastProvider } from '@shopgate/pwa-common/providers';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { logger, i18n } from '@shopgate/engage/core';
+import { logger, i18n } from '@shopgate/engage/core/helpers';
 
 /**
  * Creates an error message for a pipeline and a code

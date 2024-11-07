@@ -1,5 +1,4 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { isDev } from '@shopgate/engage/core';
 import { initCSSCustomProps, initCSSCustomPropsFallback } from './initCSSCustomProperties';
 
 /**
@@ -15,9 +14,7 @@ export const loadCustomStyles = () => {
    * Error handler
    */
   const onError = () => {
-    if (isDev) {
-      initCSSCustomPropsFallback();
-    }
+    initCSSCustomPropsFallback();
   };
 
   if (!href) {

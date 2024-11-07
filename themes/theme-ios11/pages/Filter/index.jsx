@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
+import { CATEGORY_ALL_FILTER_PATTERN } from '@shopgate/engage/category/constants';
+import { buildFilterParamsForFetchFiltersRequest } from '@shopgate/engage/filter/helpers';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -14,6 +16,7 @@ const map = {
   parentRouteId: 'state.parentId',
   searchPhrase: 'query.s',
   visible: 'visible',
+  pattern: 'pattern',
 };
 
 /**
@@ -34,6 +37,7 @@ class Filter extends PureComponent {
       filters,
       parentRouteId,
       searchPhrase,
+      pattern,
     } = consumed;
 
     return (
@@ -41,8 +45,13 @@ class Filter extends PureComponent {
         AppBarComponent={CloseBar}
         activeFilters={filters}
         parentRouteId={parentRouteId}
-        {...categoryId && { categoryId }}
-        {...searchPhrase && { searchPhrase }}
+        {...pattern !== CATEGORY_ALL_FILTER_PATTERN ? {
+          ...categoryId && { categoryId },
+          ...searchPhrase && { searchPhrase },
+        } : {
+          searchPhrase: '*',
+          filters: buildFilterParamsForFetchFiltersRequest(filters),
+        }}
       />
     );
   }

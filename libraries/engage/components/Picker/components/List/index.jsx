@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './style';
@@ -10,12 +10,23 @@ import styles from './style';
  */
 const PickerList = (props) => {
   const {
-    items, onClose, onSelect, selectedIndex,
+    items, onClose, onSelect, selectedIndex, query,
   } = props;
 
+  const filteredItems = useMemo(() => {
+    if (!query || !query.length) {
+      return items;
+    }
+
+    return items.filter(({ label = '' }) => {
+      const searchLabel = label.replaceAll(' ', '').toLowerCase();
+      const searchValue = query.replaceAll(' ', '').toLowerCase();
+      return searchLabel.includes(searchValue);
+    });
+  }, [items, query]);
   return (
-    <ul>
-      {items.map((item, currentIndex) => (
+    <ul className="engage__picker_list">
+      {filteredItems.map((item, currentIndex) => (
         <li
           key={item.value}
           className={classNames({
@@ -43,12 +54,14 @@ PickerList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onSelect: PropTypes.func.isRequired,
   onClose: PropTypes.func,
+  query: PropTypes.string,
   selectedIndex: PropTypes.number,
 };
 
 PickerList.defaultProps = {
   onClose: () => { },
   selectedIndex: null,
+  query: '',
 };
 
 export default PickerList;

@@ -39,7 +39,7 @@ const getFormattedNumberFromCache = (langCode, fractions) => {
  * Get a formatted number by a language code.
  * @param {string} langCode A language code.
  * @param {number} value The number to format.
- * @param {boolean} fractions Nnumber of digits after dot.
+ * @param {boolean} fractions Number of digits after dot.
  * @returns {string}
  */
 const formatNumber = (langCode, value, fractions) => (

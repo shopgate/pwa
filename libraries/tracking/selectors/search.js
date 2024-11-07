@@ -2,8 +2,10 @@ import { createSelector } from 'reselect';
 import {
   getSortOrder,
   getSearchPhrase,
-} from '@shopgate/pwa-common/selectors/history';
-import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
+} from '@shopgate/engage/core/selectors';
+import {
+  generateResultHash,
+} from '@shopgate/engage/core/helpers';
 import { getFulfillmentParams } from '@shopgate/pwa-common-commerce/product';
 
 /**

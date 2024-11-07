@@ -18,7 +18,9 @@ exports[`<PlaceholderParagraph /> should render placeholder  1`] = `
   lines={3}
   ready={false}
 >
-  <div>
+  <div
+    className="ui-shared__placeholder-paragraph"
+  >
     <PlaceholderLabel
       className=""
       key="0"
@@ -30,7 +32,7 @@ exports[`<PlaceholderParagraph /> should render placeholder  1`] = `
       }
     >
       <div
-        className="css-qd8qpa "
+        className="css-qd8qpa  ui-shared__placeholder-label"
         style={
           Object {
             "width": "95%",
@@ -45,7 +47,7 @@ exports[`<PlaceholderParagraph /> should render placeholder  1`] = `
       style={null}
     >
       <div
-        className="css-qd8qpa "
+        className="css-qd8qpa  ui-shared__placeholder-label"
         style={null}
       />
     </PlaceholderLabel>
@@ -60,7 +62,7 @@ exports[`<PlaceholderParagraph /> should render placeholder  1`] = `
       }
     >
       <div
-        className="css-qd8qpa "
+        className="css-qd8qpa  ui-shared__placeholder-label"
         style={
           Object {
             "width": "100%",

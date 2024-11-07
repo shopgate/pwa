@@ -29,7 +29,9 @@ export const updateLegacyNavigationBar = (options = {}) => {
     statusBarStyle = Color(styles.statusBarBackground).isDark() ? 'light' : 'dark';
   }
 
-  if (isAvailable()) {
+  // Status bar update via native-modules deactivated for now since it doesn't work
+  // reliable when opening a page inside the In-App-Browser.
+  if (false && isAvailable()) {
     const style = statusBarStyle === 'dark' ? 'dark-content' : 'light-content';
 
     StatusBar.setBarStyle({ style });

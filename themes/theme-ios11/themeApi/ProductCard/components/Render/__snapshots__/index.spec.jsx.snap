@@ -41,508 +41,136 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
     titleRows={3}
     url="/some/url"
   >
-    <Connect(Link)
+    <Link
       href="/some/url"
       state={Object {}}
       tagName="a"
     >
-      <Link
-        aria-hidden={null}
-        aria-label={null}
-        className=""
-        disabled={false}
-        historyPush={[Function]}
-        historyReplace={[Function]}
-        href="/some/url"
-        replace={false}
-        role="link"
-        state={Object {}}
-        tabIndex={null}
-        tag="div"
-        tagName="a"
-        target={null}
+      <ProductImage
+        alt="Product Name"
+        itemProp="image"
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src={null}
+      />
+      <ProductBadges
+        location="productCard"
+        productId="PR0DUCTID"
+      />
+      <div
+        className={
+          Object {
+            "data-css-1rbh2c4": "",
+          }
+        }
       >
-        <div
-          aria-hidden={null}
-          aria-label={null}
-          className="css-9auwkz "
-          data-test-id="link: /some/url"
-          href={null}
-          onClick={[Function]}
-          role="link"
-          tabIndex={null}
+        <RatingStars
+          value={80}
+        />
+        <ProductCardTitle
+          rows={3}
+          style={Object {}}
+          title="Product Name"
         >
-          <ProductImage
-            alt="Product Name"
-            itemProp="image"
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-              ]
-            }
-            src={null}
-          />
-          <ProductBadges
-            location="productCard"
-            productId="PR0DUCTID"
-          />
-          <div
-            className={
-              Object {
-                "data-css-1rbh2c4": "",
-              }
-            }
+          <ProductName
+            className="css-by38mh"
+            name="Product Name"
+            rows={3}
+            style={Object {}}
+            testId="Productname: Product Name"
           >
-            <RatingStars
-              className=""
-              display="small"
-              isSelectable={false}
-              onSelection={[Function]}
-              value={80}
-            >
-              <div
-                aria-label="reviews.rating_stars"
-                className="css-13azwyo  ui-shared__rating-stars"
-                data-test-id="ratedStars: 4"
-                role="text"
-              >
-                <div
-                  className="css-5lxuz4 rating-stars-empty"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="1"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="2"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="3"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="4"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="5"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-                <div
-                  className="css-13xh6j9 rating-stars-filled"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="6"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="7"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="8"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="9"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-              </div>
-            </RatingStars>
-            <ProductCardTitle
-              rows={3}
-              style={Object {}}
-              title="Product Name"
-            >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
-                style={Object {}}
-                testId="Productname: Product Name"
-              >
-                Product Name
-              </ProductName>
-            </ProductCardTitle>
-            <MapPriceHint
-              productId="PR0DUCTID"
-            />
-            <OrderQuantityHint
-              productId="PR0DUCTID"
-            />
-            <ProductCardPrice
-              product={
+            Product Name
+          </ProductName>
+        </ProductCardTitle>
+        <MapPriceHint
+          productId="PR0DUCTID"
+        />
+        <OrderQuantityHint
+          productId="PR0DUCTID"
+        />
+        <ProductCardPrice
+          product={
+            Object {
+              "featuredImageBaseUrl": null,
+              "featuredImageUrl": null,
+              "id": "PR0DUCTID",
+              "name": "Product Name",
+              "price": Object {
+                "currency": "EUR",
+                "discount": 0,
+                "info": "Price Info",
+                "unitPrice": 5,
+                "unitPriceStriked": 10,
+              },
+              "rating": Object {
+                "average": 80,
+                "count": 4,
+                "reviewCount": 3,
+              },
+            }
+          }
+          style={Object {}}
+        >
+          <div
+            style={Object {}}
+          >
+            <Portal
+              name="PRODUCT_ITEM_PRICE_BEFORE"
+              props={
                 Object {
-                  "featuredImageBaseUrl": null,
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 0,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "productId": "PR0DUCTID",
                 }
               }
-              style={Object {}}
+            />
+            <Portal
+              name="PRODUCT_ITEM_PRICE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
             >
-              <div
-                style={Object {}}
-              >
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
+              <ProductGridPrice
+                product={
+                  Object {
+                    "featuredImageBaseUrl": null,
+                    "featuredImageUrl": null,
+                    "id": "PR0DUCTID",
+                    "name": "Product Name",
+                    "price": Object {
+                      "currency": "EUR",
+                      "discount": 0,
+                      "info": "Price Info",
+                      "unitPrice": 5,
+                      "unitPriceStriked": 10,
+                    },
+                    "rating": Object {
+                      "average": 80,
+                      "count": 4,
+                      "reviewCount": 3,
+                    },
                   }
-                />
-                <Portal
-                  name="PRODUCT_ITEM_PRICE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                >
-                  <ProductGridPrice
-                    product={
-                      Object {
-                        "featuredImageBaseUrl": null,
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
-                          "currency": "EUR",
-                          "discount": 0,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
-                      }
-                    }
-                  />
-                </Portal>
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardPrice>
+                }
+              />
+            </Portal>
+            <Portal
+              name="PRODUCT_ITEM_PRICE_AFTER"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
           </div>
-        </div>
-      </Link>
-    </Connect(Link)>
+        </ProductCardPrice>
+      </div>
+    </Link>
   </ProductCardRender>
 </Provider>
 `;
@@ -588,231 +216,205 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
     titleRows={3}
     url="/some/url"
   >
-    <Connect(Link)
+    <Link
       href="/some/url"
       state={Object {}}
       tagName="a"
     >
-      <Link
-        aria-hidden={null}
-        aria-label={null}
-        className=""
-        disabled={false}
-        historyPush={[Function]}
-        historyReplace={[Function]}
-        href="/some/url"
-        replace={false}
-        role="link"
-        state={Object {}}
-        tabIndex={null}
-        tag="div"
-        tagName="a"
-        target={null}
+      <ProductImage
+        alt="Product Name"
+        itemProp="image"
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src={null}
+      />
+      <ProductBadges
+        location="productCard"
+        productId="PR0DUCTID"
       >
-        <div
-          aria-hidden={null}
-          aria-label={null}
-          className="css-9auwkz "
-          data-test-id="link: /some/url"
-          href={null}
-          onClick={[Function]}
-          role="link"
-          tabIndex={null}
+        <ProductCardBadge
+          productId="PR0DUCTID"
+          style={Object {}}
+          value={-50}
         >
-          <ProductImage
-            alt="Product Name"
-            itemProp="image"
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-              ]
-            }
-            src={null}
-          />
-          <ProductBadges
-            location="productCard"
-            productId="PR0DUCTID"
-          >
-            <ProductCardBadge
-              productId="PR0DUCTID"
-              style={Object {}}
-              value={-50}
-            >
-              <div
-                className={
-                  Object {
-                    "data-css-1hbxai8": "",
-                  }
-                }
-                style={Object {}}
-              >
-                <Portal
-                  name="product-item.discount.before"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="product-item.discount"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                >
-                  <DiscountBadge
-                    className=""
-                    discount={null}
-                    display="small"
-                    text="-50%"
-                  >
-                    <div
-                      data-test-id="-50%"
-                    >
-                      <Translate
-                        className="css-13de4di "
-                        params={
-                          Array [
-                            null,
-                          ]
-                        }
-                        role={null}
-                        string="-50%"
-                        transform={null}
-                      >
-                        <span
-                          className="css-13de4di "
-                          role={null}
-                        >
-                          -50%
-                        </span>
-                      </Translate>
-                    </div>
-                  </DiscountBadge>
-                </Portal>
-                <Portal
-                  name="product-item.discount.after"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardBadge>
-          </ProductBadges>
           <div
             className={
               Object {
-                "data-css-1rbh2c4": "",
+                "data-css-1hbxai8": "",
               }
             }
+            style={Object {}}
           >
-            <ProductCardTitle
-              rows={3}
-              style={Object {}}
-              title="Product Name"
-            >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
-                style={Object {}}
-                testId="Productname: Product Name"
-              >
-                Product Name
-              </ProductName>
-            </ProductCardTitle>
-            <MapPriceHint
-              productId="PR0DUCTID"
-            />
-            <OrderQuantityHint
-              productId="PR0DUCTID"
-            />
-            <ProductCardPrice
-              product={
+            <Portal
+              name="product-item.discount.before"
+              props={
                 Object {
-                  "featuredImageBaseUrl": null,
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 0,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "productId": "PR0DUCTID",
                 }
               }
-              style={Object {}}
+            />
+            <Portal
+              name="product-item.discount"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
             >
-              <div
-                style={Object {}}
+              <DiscountBadge
+                className=""
+                discount={null}
+                display="small"
+                text="-50%"
               >
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="PRODUCT_ITEM_PRICE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
+                <div
+                  className="ui-shared__discount-badge"
+                  data-test-id="-50%"
                 >
-                  <ProductGridPrice
-                    product={
-                      Object {
-                        "featuredImageBaseUrl": null,
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 0,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
-                      }
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
+                    className="css-7wvaon "
+                    params={
+                      Array [
+                        null,
+                      ]
                     }
-                  />
-                </Portal>
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardPrice>
+                    role={null}
+                    string="-50%"
+                    transform={null}
+                  >
+                    <span
+                      className="css-7wvaon "
+                      role={null}
+                    >
+                      -50%
+                    </span>
+                  </Translate>
+                </div>
+              </DiscountBadge>
+            </Portal>
+            <Portal
+              name="product-item.discount.after"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
           </div>
-        </div>
-      </Link>
-    </Connect(Link)>
+        </ProductCardBadge>
+      </ProductBadges>
+      <div
+        className={
+          Object {
+            "data-css-1rbh2c4": "",
+          }
+        }
+      >
+        <ProductCardTitle
+          rows={3}
+          style={Object {}}
+          title="Product Name"
+        >
+          <ProductName
+            className="css-by38mh"
+            name="Product Name"
+            rows={3}
+            style={Object {}}
+            testId="Productname: Product Name"
+          >
+            Product Name
+          </ProductName>
+        </ProductCardTitle>
+        <MapPriceHint
+          productId="PR0DUCTID"
+        />
+        <OrderQuantityHint
+          productId="PR0DUCTID"
+        />
+        <ProductCardPrice
+          product={
+            Object {
+              "featuredImageBaseUrl": null,
+              "featuredImageUrl": null,
+              "id": "PR0DUCTID",
+              "name": "Product Name",
+              "price": Object {
+                "currency": "EUR",
+                "discount": 50,
+                "info": "Price Info",
+                "unitPrice": 5,
+                "unitPriceStriked": 10,
+              },
+              "rating": Object {
+                "average": 0,
+                "count": 4,
+                "reviewCount": 3,
+              },
+            }
+          }
+          style={Object {}}
+        >
+          <div
+            style={Object {}}
+          >
+            <Portal
+              name="PRODUCT_ITEM_PRICE_BEFORE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+            <Portal
+              name="PRODUCT_ITEM_PRICE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            >
+              <ProductGridPrice
+                product={
+                  Object {
+                    "featuredImageBaseUrl": null,
+                    "featuredImageUrl": null,
+                    "id": "PR0DUCTID",
+                    "name": "Product Name",
+                    "price": Object {
+                      "currency": "EUR",
+                      "discount": 50,
+                      "info": "Price Info",
+                      "unitPrice": 5,
+                      "unitPriceStriked": 10,
+                    },
+                    "rating": Object {
+                      "average": 0,
+                      "count": 4,
+                      "reviewCount": 3,
+                    },
+                  }
+                }
+              />
+            </Portal>
+            <Portal
+              name="PRODUCT_ITEM_PRICE_AFTER"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+          </div>
+        </ProductCardPrice>
+      </div>
+    </Link>
   </ProductCardRender>
 </Provider>
 `;
@@ -858,578 +460,208 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <Connect(Link)
+    <Link
       href="/some/url"
       state={Object {}}
       tagName="a"
     >
-      <Link
-        aria-hidden={null}
-        aria-label={null}
-        className=""
-        disabled={false}
-        historyPush={[Function]}
-        historyReplace={[Function]}
-        href="/some/url"
-        replace={false}
-        role="link"
-        state={Object {}}
-        tabIndex={null}
-        tag="div"
-        tagName="a"
-        target={null}
+      <ProductImage
+        alt="Product Name"
+        itemProp="image"
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src={null}
+      />
+      <ProductBadges
+        location="productCard"
+        productId="PR0DUCTID"
       >
-        <div
-          aria-hidden={null}
-          aria-label={null}
-          className="css-9auwkz "
-          data-test-id="link: /some/url"
-          href={null}
-          onClick={[Function]}
-          role="link"
-          tabIndex={null}
+        <ProductCardBadge
+          productId="PR0DUCTID"
+          style={Object {}}
+          value={-50}
         >
-          <ProductImage
-            alt="Product Name"
-            itemProp="image"
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-              ]
-            }
-            src={null}
-          />
-          <ProductBadges
-            location="productCard"
-            productId="PR0DUCTID"
-          >
-            <ProductCardBadge
-              productId="PR0DUCTID"
-              style={Object {}}
-              value={-50}
-            >
-              <div
-                className={
-                  Object {
-                    "data-css-1hbxai8": "",
-                  }
-                }
-                style={Object {}}
-              >
-                <Portal
-                  name="product-item.discount.before"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="product-item.discount"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                >
-                  <DiscountBadge
-                    className=""
-                    discount={null}
-                    display="small"
-                    text="-50%"
-                  >
-                    <div
-                      data-test-id="-50%"
-                    >
-                      <Translate
-                        className="css-13de4di "
-                        params={
-                          Array [
-                            null,
-                          ]
-                        }
-                        role={null}
-                        string="-50%"
-                        transform={null}
-                      >
-                        <span
-                          className="css-13de4di "
-                          role={null}
-                        >
-                          -50%
-                        </span>
-                      </Translate>
-                    </div>
-                  </DiscountBadge>
-                </Portal>
-                <Portal
-                  name="product-item.discount.after"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardBadge>
-          </ProductBadges>
           <div
             className={
               Object {
-                "data-css-1rbh2c4": "",
+                "data-css-1hbxai8": "",
               }
             }
+            style={Object {}}
           >
-            <RatingStars
-              className=""
-              display="small"
-              isSelectable={false}
-              onSelection={[Function]}
-              value={80}
-            >
-              <div
-                aria-label="reviews.rating_stars"
-                className="css-13azwyo  ui-shared__rating-stars"
-                data-test-id="ratedStars: 4"
-                role="text"
-              >
-                <div
-                  className="css-5lxuz4 rating-stars-empty"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="1"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="2"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="3"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="4"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="5"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-                <div
-                  className="css-13xh6j9 rating-stars-filled"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="6"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="7"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="8"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="9"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-              </div>
-            </RatingStars>
-            <ProductCardTitle
-              rows={3}
-              style={Object {}}
-              title="Product Name"
-            >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
-                style={Object {}}
-                testId="Productname: Product Name"
-              >
-                Product Name
-              </ProductName>
-            </ProductCardTitle>
-            <MapPriceHint
-              productId="PR0DUCTID"
-            />
-            <OrderQuantityHint
-              productId="PR0DUCTID"
-            />
-            <ProductCardPrice
-              product={
+            <Portal
+              name="product-item.discount.before"
+              props={
                 Object {
-                  "featuredImageBaseUrl": null,
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "productId": "PR0DUCTID",
                 }
               }
-              style={Object {}}
+            />
+            <Portal
+              name="product-item.discount"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
             >
-              <div
-                style={Object {}}
+              <DiscountBadge
+                className=""
+                discount={null}
+                display="small"
+                text="-50%"
               >
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="PRODUCT_ITEM_PRICE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
+                <div
+                  className="ui-shared__discount-badge"
+                  data-test-id="-50%"
                 >
-                  <ProductGridPrice
-                    product={
-                      Object {
-                        "featuredImageBaseUrl": null,
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
-                      }
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
+                    className="css-7wvaon "
+                    params={
+                      Array [
+                        null,
+                      ]
                     }
-                  />
-                </Portal>
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardPrice>
+                    role={null}
+                    string="-50%"
+                    transform={null}
+                  >
+                    <span
+                      className="css-7wvaon "
+                      role={null}
+                    >
+                      -50%
+                    </span>
+                  </Translate>
+                </div>
+              </DiscountBadge>
+            </Portal>
+            <Portal
+              name="product-item.discount.after"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
           </div>
-        </div>
-      </Link>
-    </Connect(Link)>
+        </ProductCardBadge>
+      </ProductBadges>
+      <div
+        className={
+          Object {
+            "data-css-1rbh2c4": "",
+          }
+        }
+      >
+        <RatingStars
+          value={80}
+        />
+        <ProductCardTitle
+          rows={3}
+          style={Object {}}
+          title="Product Name"
+        >
+          <ProductName
+            className="css-by38mh"
+            name="Product Name"
+            rows={3}
+            style={Object {}}
+            testId="Productname: Product Name"
+          >
+            Product Name
+          </ProductName>
+        </ProductCardTitle>
+        <MapPriceHint
+          productId="PR0DUCTID"
+        />
+        <OrderQuantityHint
+          productId="PR0DUCTID"
+        />
+        <ProductCardPrice
+          product={
+            Object {
+              "featuredImageBaseUrl": null,
+              "featuredImageUrl": null,
+              "id": "PR0DUCTID",
+              "name": "Product Name",
+              "price": Object {
+                "currency": "EUR",
+                "discount": 50,
+                "info": "Price Info",
+                "unitPrice": 5,
+                "unitPriceStriked": 10,
+              },
+              "rating": Object {
+                "average": 80,
+                "count": 4,
+                "reviewCount": 3,
+              },
+            }
+          }
+          style={Object {}}
+        >
+          <div
+            style={Object {}}
+          >
+            <Portal
+              name="PRODUCT_ITEM_PRICE_BEFORE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+            <Portal
+              name="PRODUCT_ITEM_PRICE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            >
+              <ProductGridPrice
+                product={
+                  Object {
+                    "featuredImageBaseUrl": null,
+                    "featuredImageUrl": null,
+                    "id": "PR0DUCTID",
+                    "name": "Product Name",
+                    "price": Object {
+                      "currency": "EUR",
+                      "discount": 50,
+                      "info": "Price Info",
+                      "unitPrice": 5,
+                      "unitPriceStriked": 10,
+                    },
+                    "rating": Object {
+                      "average": 80,
+                      "count": 4,
+                      "reviewCount": 3,
+                    },
+                  }
+                }
+              />
+            </Portal>
+            <Portal
+              name="PRODUCT_ITEM_PRICE_AFTER"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+          </div>
+        </ProductCardPrice>
+      </div>
+    </Link>
   </ProductCardRender>
 </Provider>
 `;
@@ -1475,578 +707,208 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
     titleRows={1}
     url="/some/url"
   >
-    <Connect(Link)
+    <Link
       href="/some/url"
       state={Object {}}
       tagName="a"
     >
-      <Link
-        aria-hidden={null}
-        aria-label={null}
-        className=""
-        disabled={false}
-        historyPush={[Function]}
-        historyReplace={[Function]}
-        href="/some/url"
-        replace={false}
-        role="link"
-        state={Object {}}
-        tabIndex={null}
-        tag="div"
-        tagName="a"
-        target={null}
+      <ProductImage
+        alt="Product Name"
+        itemProp="image"
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src={null}
+      />
+      <ProductBadges
+        location="productCard"
+        productId="PR0DUCTID"
       >
-        <div
-          aria-hidden={null}
-          aria-label={null}
-          className="css-9auwkz "
-          data-test-id="link: /some/url"
-          href={null}
-          onClick={[Function]}
-          role="link"
-          tabIndex={null}
+        <ProductCardBadge
+          productId="PR0DUCTID"
+          style={Object {}}
+          value={-50}
         >
-          <ProductImage
-            alt="Product Name"
-            itemProp="image"
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-              ]
-            }
-            src={null}
-          />
-          <ProductBadges
-            location="productCard"
-            productId="PR0DUCTID"
-          >
-            <ProductCardBadge
-              productId="PR0DUCTID"
-              style={Object {}}
-              value={-50}
-            >
-              <div
-                className={
-                  Object {
-                    "data-css-1hbxai8": "",
-                  }
-                }
-                style={Object {}}
-              >
-                <Portal
-                  name="product-item.discount.before"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="product-item.discount"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                >
-                  <DiscountBadge
-                    className=""
-                    discount={null}
-                    display="small"
-                    text="-50%"
-                  >
-                    <div
-                      data-test-id="-50%"
-                    >
-                      <Translate
-                        className="css-13de4di "
-                        params={
-                          Array [
-                            null,
-                          ]
-                        }
-                        role={null}
-                        string="-50%"
-                        transform={null}
-                      >
-                        <span
-                          className="css-13de4di "
-                          role={null}
-                        >
-                          -50%
-                        </span>
-                      </Translate>
-                    </div>
-                  </DiscountBadge>
-                </Portal>
-                <Portal
-                  name="product-item.discount.after"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardBadge>
-          </ProductBadges>
           <div
             className={
               Object {
-                "data-css-1rbh2c4": "",
+                "data-css-1hbxai8": "",
               }
             }
+            style={Object {}}
           >
-            <RatingStars
-              className=""
-              display="small"
-              isSelectable={false}
-              onSelection={[Function]}
-              value={80}
-            >
-              <div
-                aria-label="reviews.rating_stars"
-                className="css-13azwyo  ui-shared__rating-stars"
-                data-test-id="ratedStars: 4"
-                role="text"
-              >
-                <div
-                  className="css-5lxuz4 rating-stars-empty"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="1"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="2"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="3"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="4"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="5"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-                <div
-                  className="css-13xh6j9 rating-stars-filled"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="6"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="7"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="8"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="9"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-              </div>
-            </RatingStars>
-            <ProductCardTitle
-              rows={1}
-              style={Object {}}
-              title="Product Name"
-            >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={1}
-                style={Object {}}
-                testId="Productname: Product Name"
-              >
-                Product Name
-              </ProductName>
-            </ProductCardTitle>
-            <MapPriceHint
-              productId="PR0DUCTID"
-            />
-            <OrderQuantityHint
-              productId="PR0DUCTID"
-            />
-            <ProductCardPrice
-              product={
+            <Portal
+              name="product-item.discount.before"
+              props={
                 Object {
-                  "featuredImageBaseUrl": null,
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "productId": "PR0DUCTID",
                 }
               }
-              style={Object {}}
+            />
+            <Portal
+              name="product-item.discount"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
             >
-              <div
-                style={Object {}}
+              <DiscountBadge
+                className=""
+                discount={null}
+                display="small"
+                text="-50%"
               >
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="PRODUCT_ITEM_PRICE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
+                <div
+                  className="ui-shared__discount-badge"
+                  data-test-id="-50%"
                 >
-                  <ProductGridPrice
-                    product={
-                      Object {
-                        "featuredImageBaseUrl": null,
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
-                      }
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
+                    className="css-7wvaon "
+                    params={
+                      Array [
+                        null,
+                      ]
                     }
-                  />
-                </Portal>
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardPrice>
+                    role={null}
+                    string="-50%"
+                    transform={null}
+                  >
+                    <span
+                      className="css-7wvaon "
+                      role={null}
+                    >
+                      -50%
+                    </span>
+                  </Translate>
+                </div>
+              </DiscountBadge>
+            </Portal>
+            <Portal
+              name="product-item.discount.after"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
           </div>
-        </div>
-      </Link>
-    </Connect(Link)>
+        </ProductCardBadge>
+      </ProductBadges>
+      <div
+        className={
+          Object {
+            "data-css-1rbh2c4": "",
+          }
+        }
+      >
+        <RatingStars
+          value={80}
+        />
+        <ProductCardTitle
+          rows={1}
+          style={Object {}}
+          title="Product Name"
+        >
+          <ProductName
+            className="css-by38mh"
+            name="Product Name"
+            rows={1}
+            style={Object {}}
+            testId="Productname: Product Name"
+          >
+            Product Name
+          </ProductName>
+        </ProductCardTitle>
+        <MapPriceHint
+          productId="PR0DUCTID"
+        />
+        <OrderQuantityHint
+          productId="PR0DUCTID"
+        />
+        <ProductCardPrice
+          product={
+            Object {
+              "featuredImageBaseUrl": null,
+              "featuredImageUrl": null,
+              "id": "PR0DUCTID",
+              "name": "Product Name",
+              "price": Object {
+                "currency": "EUR",
+                "discount": 50,
+                "info": "Price Info",
+                "unitPrice": 5,
+                "unitPriceStriked": 10,
+              },
+              "rating": Object {
+                "average": 80,
+                "count": 4,
+                "reviewCount": 3,
+              },
+            }
+          }
+          style={Object {}}
+        >
+          <div
+            style={Object {}}
+          >
+            <Portal
+              name="PRODUCT_ITEM_PRICE_BEFORE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+            <Portal
+              name="PRODUCT_ITEM_PRICE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            >
+              <ProductGridPrice
+                product={
+                  Object {
+                    "featuredImageBaseUrl": null,
+                    "featuredImageUrl": null,
+                    "id": "PR0DUCTID",
+                    "name": "Product Name",
+                    "price": Object {
+                      "currency": "EUR",
+                      "discount": 50,
+                      "info": "Price Info",
+                      "unitPrice": 5,
+                      "unitPriceStriked": 10,
+                    },
+                    "rating": Object {
+                      "average": 80,
+                      "count": 4,
+                      "reviewCount": 3,
+                    },
+                  }
+                }
+              />
+            </Portal>
+            <Portal
+              name="PRODUCT_ITEM_PRICE_AFTER"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+          </div>
+        </ProductCardPrice>
+      </div>
+    </Link>
   </ProductCardRender>
 </Provider>
 `;
@@ -2092,563 +954,193 @@ exports[`<ProductCardRender /> should render without name 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <Connect(Link)
+    <Link
       href="/some/url"
       state={Object {}}
       tagName="a"
     >
-      <Link
-        aria-hidden={null}
-        aria-label={null}
-        className=""
-        disabled={false}
-        historyPush={[Function]}
-        historyReplace={[Function]}
-        href="/some/url"
-        replace={false}
-        role="link"
-        state={Object {}}
-        tabIndex={null}
-        tag="div"
-        tagName="a"
-        target={null}
+      <ProductImage
+        alt="Product Name"
+        itemProp="image"
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src={null}
+      />
+      <ProductBadges
+        location="productCard"
+        productId="PR0DUCTID"
       >
-        <div
-          aria-hidden={null}
-          aria-label={null}
-          className="css-9auwkz "
-          data-test-id="link: /some/url"
-          href={null}
-          onClick={[Function]}
-          role="link"
-          tabIndex={null}
+        <ProductCardBadge
+          productId="PR0DUCTID"
+          style={Object {}}
+          value={-50}
         >
-          <ProductImage
-            alt="Product Name"
-            itemProp="image"
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-              ]
-            }
-            src={null}
-          />
-          <ProductBadges
-            location="productCard"
-            productId="PR0DUCTID"
-          >
-            <ProductCardBadge
-              productId="PR0DUCTID"
-              style={Object {}}
-              value={-50}
-            >
-              <div
-                className={
-                  Object {
-                    "data-css-1hbxai8": "",
-                  }
-                }
-                style={Object {}}
-              >
-                <Portal
-                  name="product-item.discount.before"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="product-item.discount"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                >
-                  <DiscountBadge
-                    className=""
-                    discount={null}
-                    display="small"
-                    text="-50%"
-                  >
-                    <div
-                      data-test-id="-50%"
-                    >
-                      <Translate
-                        className="css-13de4di "
-                        params={
-                          Array [
-                            null,
-                          ]
-                        }
-                        role={null}
-                        string="-50%"
-                        transform={null}
-                      >
-                        <span
-                          className="css-13de4di "
-                          role={null}
-                        >
-                          -50%
-                        </span>
-                      </Translate>
-                    </div>
-                  </DiscountBadge>
-                </Portal>
-                <Portal
-                  name="product-item.discount.after"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardBadge>
-          </ProductBadges>
           <div
             className={
               Object {
-                "data-css-1rbh2c4": "",
+                "data-css-1hbxai8": "",
               }
             }
+            style={Object {}}
           >
-            <RatingStars
-              className=""
-              display="small"
-              isSelectable={false}
-              onSelection={[Function]}
-              value={80}
-            >
-              <div
-                aria-label="reviews.rating_stars"
-                className="css-13azwyo  ui-shared__rating-stars"
-                data-test-id="ratedStars: 4"
-                role="text"
-              >
-                <div
-                  className="css-5lxuz4 rating-stars-empty"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="1"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="2"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="3"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="4"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="5"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-                <div
-                  className="css-13xh6j9 rating-stars-filled"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="6"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="7"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="8"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="9"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-              </div>
-            </RatingStars>
-            <MapPriceHint
-              productId="PR0DUCTID"
-            />
-            <OrderQuantityHint
-              productId="PR0DUCTID"
-            />
-            <ProductCardPrice
-              product={
+            <Portal
+              name="product-item.discount.before"
+              props={
                 Object {
-                  "featuredImageBaseUrl": null,
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "productId": "PR0DUCTID",
                 }
               }
-              style={Object {}}
+            />
+            <Portal
+              name="product-item.discount"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
             >
-              <div
-                style={Object {}}
+              <DiscountBadge
+                className=""
+                discount={null}
+                display="small"
+                text="-50%"
               >
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="PRODUCT_ITEM_PRICE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
+                <div
+                  className="ui-shared__discount-badge"
+                  data-test-id="-50%"
                 >
-                  <ProductGridPrice
-                    product={
-                      Object {
-                        "featuredImageBaseUrl": null,
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
-                      }
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
+                    className="css-7wvaon "
+                    params={
+                      Array [
+                        null,
+                      ]
                     }
-                  />
-                </Portal>
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardPrice>
+                    role={null}
+                    string="-50%"
+                    transform={null}
+                  >
+                    <span
+                      className="css-7wvaon "
+                      role={null}
+                    >
+                      -50%
+                    </span>
+                  </Translate>
+                </div>
+              </DiscountBadge>
+            </Portal>
+            <Portal
+              name="product-item.discount.after"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
           </div>
-        </div>
-      </Link>
-    </Connect(Link)>
+        </ProductCardBadge>
+      </ProductBadges>
+      <div
+        className={
+          Object {
+            "data-css-1rbh2c4": "",
+          }
+        }
+      >
+        <RatingStars
+          value={80}
+        />
+        <MapPriceHint
+          productId="PR0DUCTID"
+        />
+        <OrderQuantityHint
+          productId="PR0DUCTID"
+        />
+        <ProductCardPrice
+          product={
+            Object {
+              "featuredImageBaseUrl": null,
+              "featuredImageUrl": null,
+              "id": "PR0DUCTID",
+              "name": "Product Name",
+              "price": Object {
+                "currency": "EUR",
+                "discount": 50,
+                "info": "Price Info",
+                "unitPrice": 5,
+                "unitPriceStriked": 10,
+              },
+              "rating": Object {
+                "average": 80,
+                "count": 4,
+                "reviewCount": 3,
+              },
+            }
+          }
+          style={Object {}}
+        >
+          <div
+            style={Object {}}
+          >
+            <Portal
+              name="PRODUCT_ITEM_PRICE_BEFORE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+            <Portal
+              name="PRODUCT_ITEM_PRICE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            >
+              <ProductGridPrice
+                product={
+                  Object {
+                    "featuredImageBaseUrl": null,
+                    "featuredImageUrl": null,
+                    "id": "PR0DUCTID",
+                    "name": "Product Name",
+                    "price": Object {
+                      "currency": "EUR",
+                      "discount": 50,
+                      "info": "Price Info",
+                      "unitPrice": 5,
+                      "unitPriceStriked": 10,
+                    },
+                    "rating": Object {
+                      "average": 80,
+                      "count": 4,
+                      "reviewCount": 3,
+                    },
+                  }
+                }
+              />
+            </Portal>
+            <Portal
+              name="PRODUCT_ITEM_PRICE_AFTER"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+          </div>
+        </ProductCardPrice>
+      </div>
+    </Link>
   </ProductCardRender>
 </Provider>
 `;
@@ -2694,433 +1186,61 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <Connect(Link)
+    <Link
       href="/some/url"
       state={Object {}}
       tagName="a"
     >
-      <Link
-        aria-hidden={null}
-        aria-label={null}
-        className=""
-        disabled={false}
-        historyPush={[Function]}
-        historyReplace={[Function]}
-        href="/some/url"
-        replace={false}
-        role="link"
-        state={Object {}}
-        tabIndex={null}
-        tag="div"
-        tagName="a"
-        target={null}
+      <ProductImage
+        alt="Product Name"
+        itemProp="image"
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src={null}
+      />
+      <ProductBadges
+        location="productCard"
+        productId="PR0DUCTID"
+      />
+      <div
+        className={
+          Object {
+            "data-css-1rbh2c4": "",
+          }
+        }
       >
-        <div
-          aria-hidden={null}
-          aria-label={null}
-          className="css-9auwkz "
-          data-test-id="link: /some/url"
-          href={null}
-          onClick={[Function]}
-          role="link"
-          tabIndex={null}
+        <RatingStars
+          value={80}
+        />
+        <ProductCardTitle
+          rows={3}
+          style={Object {}}
+          title="Product Name"
         >
-          <ProductImage
-            alt="Product Name"
-            itemProp="image"
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-              ]
-            }
-            src={null}
-          />
-          <ProductBadges
-            location="productCard"
-            productId="PR0DUCTID"
-          />
-          <div
-            className={
-              Object {
-                "data-css-1rbh2c4": "",
-              }
-            }
+          <ProductName
+            className="css-by38mh"
+            name="Product Name"
+            rows={3}
+            style={Object {}}
+            testId="Productname: Product Name"
           >
-            <RatingStars
-              className=""
-              display="small"
-              isSelectable={false}
-              onSelection={[Function]}
-              value={80}
-            >
-              <div
-                aria-label="reviews.rating_stars"
-                className="css-13azwyo  ui-shared__rating-stars"
-                data-test-id="ratedStars: 4"
-                role="text"
-              >
-                <div
-                  className="css-5lxuz4 rating-stars-empty"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="1"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="2"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="3"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="4"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="5"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-                <div
-                  className="css-13xh6j9 rating-stars-filled"
-                >
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="6"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="7"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="8"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-kdb68h css-q4owmg"
-                    key="9"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                </div>
-              </div>
-            </RatingStars>
-            <ProductCardTitle
-              rows={3}
-              style={Object {}}
-              title="Product Name"
-            >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
-                style={Object {}}
-                testId="Productname: Product Name"
-              >
-                Product Name
-              </ProductName>
-            </ProductCardTitle>
-            <MapPriceHint
-              productId="PR0DUCTID"
-            />
-            <OrderQuantityHint
-              productId="PR0DUCTID"
-            />
-          </div>
-        </div>
-      </Link>
-    </Connect(Link)>
+            Product Name
+          </ProductName>
+        </ProductCardTitle>
+        <MapPriceHint
+          productId="PR0DUCTID"
+        />
+        <OrderQuantityHint
+          productId="PR0DUCTID"
+        />
+      </div>
+    </Link>
   </ProductCardRender>
 </Provider>
 `;
@@ -3166,231 +1286,205 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <Connect(Link)
+    <Link
       href="/some/url"
       state={Object {}}
       tagName="a"
     >
-      <Link
-        aria-hidden={null}
-        aria-label={null}
-        className=""
-        disabled={false}
-        historyPush={[Function]}
-        historyReplace={[Function]}
-        href="/some/url"
-        replace={false}
-        role="link"
-        state={Object {}}
-        tabIndex={null}
-        tag="div"
-        tagName="a"
-        target={null}
+      <ProductImage
+        alt="Product Name"
+        itemProp="image"
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src={null}
+      />
+      <ProductBadges
+        location="productCard"
+        productId="PR0DUCTID"
       >
-        <div
-          aria-hidden={null}
-          aria-label={null}
-          className="css-9auwkz "
-          data-test-id="link: /some/url"
-          href={null}
-          onClick={[Function]}
-          role="link"
-          tabIndex={null}
+        <ProductCardBadge
+          productId="PR0DUCTID"
+          style={Object {}}
+          value={-50}
         >
-          <ProductImage
-            alt="Product Name"
-            itemProp="image"
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-              ]
-            }
-            src={null}
-          />
-          <ProductBadges
-            location="productCard"
-            productId="PR0DUCTID"
-          >
-            <ProductCardBadge
-              productId="PR0DUCTID"
-              style={Object {}}
-              value={-50}
-            >
-              <div
-                className={
-                  Object {
-                    "data-css-1hbxai8": "",
-                  }
-                }
-                style={Object {}}
-              >
-                <Portal
-                  name="product-item.discount.before"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="product-item.discount"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                >
-                  <DiscountBadge
-                    className=""
-                    discount={null}
-                    display="small"
-                    text="-50%"
-                  >
-                    <div
-                      data-test-id="-50%"
-                    >
-                      <Translate
-                        className="css-13de4di "
-                        params={
-                          Array [
-                            null,
-                          ]
-                        }
-                        role={null}
-                        string="-50%"
-                        transform={null}
-                      >
-                        <span
-                          className="css-13de4di "
-                          role={null}
-                        >
-                          -50%
-                        </span>
-                      </Translate>
-                    </div>
-                  </DiscountBadge>
-                </Portal>
-                <Portal
-                  name="product-item.discount.after"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardBadge>
-          </ProductBadges>
           <div
             className={
               Object {
-                "data-css-1rbh2c4": "",
+                "data-css-1hbxai8": "",
               }
             }
+            style={Object {}}
           >
-            <ProductCardTitle
-              rows={3}
-              style={Object {}}
-              title="Product Name"
-            >
-              <ProductName
-                className="css-by38mh"
-                name="Product Name"
-                rows={3}
-                style={Object {}}
-                testId="Productname: Product Name"
-              >
-                Product Name
-              </ProductName>
-            </ProductCardTitle>
-            <MapPriceHint
-              productId="PR0DUCTID"
-            />
-            <OrderQuantityHint
-              productId="PR0DUCTID"
-            />
-            <ProductCardPrice
-              product={
+            <Portal
+              name="product-item.discount.before"
+              props={
                 Object {
-                  "featuredImageBaseUrl": null,
-                  "featuredImageUrl": null,
-                  "id": "PR0DUCTID",
-                  "name": "Product Name",
-                  "price": Object {
-                    "currency": "EUR",
-                    "discount": 50,
-                    "info": "Price Info",
-                    "unitPrice": 5,
-                    "unitPriceStriked": 10,
-                  },
-                  "rating": Object {
-                    "average": 80,
-                    "count": 4,
-                    "reviewCount": 3,
-                  },
+                  "productId": "PR0DUCTID",
                 }
               }
-              style={Object {}}
+            />
+            <Portal
+              name="product-item.discount"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
             >
-              <div
-                style={Object {}}
+              <DiscountBadge
+                className=""
+                discount={null}
+                display="small"
+                text="-50%"
               >
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_BEFORE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-                <Portal
-                  name="PRODUCT_ITEM_PRICE"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
+                <div
+                  className="ui-shared__discount-badge"
+                  data-test-id="-50%"
                 >
-                  <ProductGridPrice
-                    product={
-                      Object {
-                        "featuredImageBaseUrl": null,
-                        "featuredImageUrl": null,
-                        "id": "PR0DUCTID",
-                        "name": "Product Name",
-                        "price": Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        },
-                        "rating": Object {
-                          "average": 80,
-                          "count": 4,
-                          "reviewCount": 3,
-                        },
-                      }
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
+                    className="css-7wvaon "
+                    params={
+                      Array [
+                        null,
+                      ]
                     }
-                  />
-                </Portal>
-                <Portal
-                  name="PRODUCT_ITEM_PRICE_AFTER"
-                  props={
-                    Object {
-                      "productId": "PR0DUCTID",
-                    }
-                  }
-                />
-              </div>
-            </ProductCardPrice>
+                    role={null}
+                    string="-50%"
+                    transform={null}
+                  >
+                    <span
+                      className="css-7wvaon "
+                      role={null}
+                    >
+                      -50%
+                    </span>
+                  </Translate>
+                </div>
+              </DiscountBadge>
+            </Portal>
+            <Portal
+              name="product-item.discount.after"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
           </div>
-        </div>
-      </Link>
-    </Connect(Link)>
+        </ProductCardBadge>
+      </ProductBadges>
+      <div
+        className={
+          Object {
+            "data-css-1rbh2c4": "",
+          }
+        }
+      >
+        <ProductCardTitle
+          rows={3}
+          style={Object {}}
+          title="Product Name"
+        >
+          <ProductName
+            className="css-by38mh"
+            name="Product Name"
+            rows={3}
+            style={Object {}}
+            testId="Productname: Product Name"
+          >
+            Product Name
+          </ProductName>
+        </ProductCardTitle>
+        <MapPriceHint
+          productId="PR0DUCTID"
+        />
+        <OrderQuantityHint
+          productId="PR0DUCTID"
+        />
+        <ProductCardPrice
+          product={
+            Object {
+              "featuredImageBaseUrl": null,
+              "featuredImageUrl": null,
+              "id": "PR0DUCTID",
+              "name": "Product Name",
+              "price": Object {
+                "currency": "EUR",
+                "discount": 50,
+                "info": "Price Info",
+                "unitPrice": 5,
+                "unitPriceStriked": 10,
+              },
+              "rating": Object {
+                "average": 80,
+                "count": 4,
+                "reviewCount": 3,
+              },
+            }
+          }
+          style={Object {}}
+        >
+          <div
+            style={Object {}}
+          >
+            <Portal
+              name="PRODUCT_ITEM_PRICE_BEFORE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+            <Portal
+              name="PRODUCT_ITEM_PRICE"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            >
+              <ProductGridPrice
+                product={
+                  Object {
+                    "featuredImageBaseUrl": null,
+                    "featuredImageUrl": null,
+                    "id": "PR0DUCTID",
+                    "name": "Product Name",
+                    "price": Object {
+                      "currency": "EUR",
+                      "discount": 50,
+                      "info": "Price Info",
+                      "unitPrice": 5,
+                      "unitPriceStriked": 10,
+                    },
+                    "rating": Object {
+                      "average": 80,
+                      "count": 4,
+                      "reviewCount": 3,
+                    },
+                  }
+                }
+              />
+            </Portal>
+            <Portal
+              name="PRODUCT_ITEM_PRICE_AFTER"
+              props={
+                Object {
+                  "productId": "PR0DUCTID",
+                }
+              }
+            />
+          </div>
+        </ProductCardPrice>
+      </div>
+    </Link>
   </ProductCardRender>
 </Provider>
 `;

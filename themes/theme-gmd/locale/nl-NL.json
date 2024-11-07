@@ -11,8 +11,9 @@
     "back": "Terug",
     "close": "Sluiten",
     "products": "Producten",
+    "error": "Er is een onverwachte fout opgetreden. Probeer het alstublieft opnieuw.",
     "errors": {
-      "generic": "An unexpected error occurred. Please try again."
+      "generic": "Er is een onverwachte fout opgetreden. Probeer het alstublieft opnieuw."
     }
   },
   "titles": {
@@ -23,75 +24,92 @@
     "reviews": "Beoordelingen",
     "favorites": "Favorieten",
     "scanner": "Scanner",
-    "checkout": "Checkout",
-    "checkout_confirmation": "Order Successful",
-    "checkout_change_billing": "Change Billing Address",
-    "register": "Register",
-    "order_details": "Order Details",
-    "store_finder": "Store Finder",
-    "order_history": "Order History",
-    "wish_list": "Wish List",
-    "profile": "Profile",
-    "your_account": "My Account",
-    "your_account_contact": "Address",
-    "page_not_found": "Page Not Found",
-    "checkout_addresses_shipping": "Choose Shipping Address",
-    "checkout_addresses_billing": "Choose Billing Address",
-    "checkout_addresses_add_shipping": "Add  New Shipping Address",
-    "checkout_addresses_add_billing": "Add New Billing Address",
-    "checkout_addresses_edit_shipping": "Edit Shipping Address",
-    "checkout_addresses_edit_billing": "Edit Billing Address"
+    "back_in_stock": "Meldingen",
+    "checkout": "Afrekenen",
+    "checkout_confirmation": "Bestelling succesvol",
+    "checkout_change_billing": "Factuuradres wijzigen",
+    "register": "Registreren",
+    "order_details": "Bestelgegevens",
+    "store_finder": "Winkelzoeker",
+    "order_history": "Bestelgeschiedenis",
+    "profile": "Profiel",
+    "your_account": "Mijn Account",
+    "your_account_contact": "Adres",
+    "page_not_found": "Pagina niet gevonden",
+    "checkout_addresses_shipping": "Verzendadres kiezen",
+    "checkout_addresses_billing": "Factuuradres kiezen",
+    "checkout_addresses_add_shipping": "Verzendadres toevoegen",
+    "checkout_addresses_add_billing": "Factuuradres toevoegen",
+    "checkout_addresses_edit_shipping": "Verzendadres wijzigen",
+    "checkout_addresses_edit_billing": "Factuuradres wijzigen"
   },
   "account": {
     "profile": {
       "customer": {
-        "number": "Customer No.: {customerNumber}"
+        "number": "Klantnummer: {customerNumber}"
       },
       "form": {
-        "firstName": "First Name",
-        "middleName": "Middle Name",
-        "lastName": "Last Name",
-        "emailAddress": "Email Address",
-        "address1": "Street & No.",
-        "address2": "Address 2",
-        "address3": "Address 3",
-        "address4": "Address 4",
-        "postalCode": "Postal Code",
-        "city": "City",
-        "country": "Country",
-        "phone": "Phone",
-        "mobile": "Mobile",
-        "region": "State",
-        "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
-        "default_billing": "Primary Bill To Address",
-        "default_shipping": "Primary Ship To Address",
-        "save_default_billing": "Save as default billing address for future orders",
-        "save_default_shipping": "Save as default shipping address for future orders",
-        "save": "Save",
-        "add": "Add Address",
-        "success": "Saved Profile",
-        "error": "Saving Profile failed"
+        "firstName": "Voornaam",
+        "middleName": "Tussennaam",
+        "lastName": "Achternaam",
+        "emailAddress": "E-mailadres",
+        "address1": "Straat en Huisnummer",
+        "address2": "Adres 2",
+        "address3": "Adres 3",
+        "address4": "Adres 4",
+        "postalCode": "Postcode",
+        "city": "Stad",
+        "country": "Land",
+        "phone": "Telefoonnummer",
+        "mobile": "Mobiel Nummer",
+        "region": "Provincie",
+        "marketing_opt_in_label": "Houd mij op de hoogte van nieuws en exclusieve aanbiedingen.",
+        "default_billing": "Standaard factuuradres",
+        "default_shipping": "Standaard verzendadres",
+        "save_default_billing": "Dit factuuradres opslaan voor toekomstige bestellingen",
+        "save_default_shipping": "Dit verzendadres opslaan voor toekomstige bestellingen",
+        "save": "Opslaan",
+        "add": "Adres toevoegen",
+        "success": "Profiel opgeslagen",
+        "error": "Fout bij opslaan"
       },
-      "delete": "Delete Account",
+      "delete": "Account verwijderen",
       "address_book": {
-        "title": "Address Book",
-        "default_billing": "Primary Bill To Address",
-        "default_shipping": "Primary Ship To Address",
-        "add": "Add Address",
-        "select": "Select",
-        "selected": "Selected",
-        "success": "Saved Profile",
+        "title": "Adresbeheer",
+        "default_billing": "Standaard factuuradres",
+        "default_shipping": "Standaard verzendadres",
+        "add": "Adres toevoegen",
+        "select": "Selecteren",
+        "selected": "Geselecteerd",
+        "success": "Profiel opgeslagen",
         "context": {
-          "edit": "Edit",
-          "remove": "Remove"
+          "edit": "Bewerken",
+          "remove": "Verwijderen"
         }
       },
       "confirm": {
-        "title": "Are you sure?",
-        "confirm": "Confirm",
-        "messageContact": "Are you should you want to delete this address?",
-        "messageCustomer": "Are you should you want to delete your account? This will delete all of your personal data and preferences."
+        "title": "Weet u het zeker?",
+        "confirm": "Bevestigen",
+        "messageContact": "Wilt u dit adres echt verwijderen?",
+        "messageCustomer": "Wilt u uw account echt verwijderen? Al uw persoonlijke gegevens en instellingen zullen worden verwijderd."
       }
+    }
+  },
+  "back_in_stock": {
+    "list_states": {
+      "active": "Actieve meldingen",
+      "past": "Afgelopen meldingen"
+    },
+    "empty_list_reminder": "U hebt geen meldingen geconfigureerd",
+    "get_notified": "Stel me op de hoogte van nieuwe voorraad",
+    "we_will_remind_you": "We zullen u op de hoogte stellen wanneer het product weer op voorraad is",
+    "add_back_in_stock_success_modal": {
+      "title": "Melding toegevoegd!",
+      "message": "We sturen je een pushmelding als het product weer op voorraad is. Je kunt je meldingen beheren in het menu."
+    },
+    "rationale": {
+      "message": "Sta pushmeldingen toe in de volgende stap, zodat we je een melding kunnen sturen als het product weer op voorraad is.",
+      "confirm": "Pushmeldingen toestaan"
     }
   },
   "favorites": {
@@ -102,67 +120,69 @@
     "error_add": "Product kon niet aan favorieten worden toegevoegd",
     "error_remove": "Product kon niet van favorieten verwijderd worden",
     "error_limit": "U hebt het aantal producten dat in de favorieten toegestaan zijn, overschreden.",
+    "error_general": "De verlanglijst kon niet worden opgeslagen",
     "remove": "Verwijder van favorieten",
     "removed": "Verwijderd van favorieten",
     "add_list_modal": {
-      "title": "Add a new List",
-      "dismiss": "Cancel",
-      "confirm": "Confirm",
-      "message": "Enter the name for your new wish list",
-      "label": "Name"
+      "title": "Een nieuwe lijst toevoegen",
+      "dismiss": "Annuleren",
+      "confirm": "Bevestig",
+      "message": "Voer de naam in voor uw nieuwe favorietenlijst",
+      "label": "Naam"
     },
     "rename_list_modal": {
-      "title": "Renaming List",
-      "dismiss": "Cancel",
-      "confirm": "Confirm",
-      "message": "Enter the new name for your wish list",
-      "label": "Name"
-    },
-    "add_list": "Add New List",
-    "errors": {
-      "invalid_name": "Please enter a valid name for your wish list"
+      "title": "Lijst hernoemen",
+      "dismiss": "Annuleren",
+      "confirm": "Bevestig",
+      "message": "Voer de nieuwe naam voor uw favorietenlijst in",
+      "label": "Naam"
     },
     "delete_list_modal": {
-      "title": "Delete Wish List",
-      "message": "Do you really want to delete the \"{name}\" wish list?"
+      "title": "Favorietenlijst verwijderen",
+      "message": "Wilt u echt de \"{name}\" favorietenlijst verwijderen?"
+    },
+    "add_list": "Nieuwe lijst toevoegen",
+    "errors": {
+      "invalid_name": "Voer een geldige naam in voor uw favorietenlijst"
     },
     "comment_modal": {
-      "titleAdd": "Add Comment",
-      "titleEdit": "Edit Comment",
-      "dismiss": "Cancel",
-      "confirm": "Confirm",
-      "label": "Comment",
-      "characterCount": "{count} of {maxCount} characters"
+      "titleAdd": "Opmerking toevoegen",
+      "titleEdit": "Opmerking bewerken",
+      "dismiss": "Annuleren",
+      "confirm": "Bevestigen",
+      "label": "Opmerking",
+      "characterCount": "{count} van {maxCount} tekens"
     },
     "comments": {
-      "add": "Add Comment",
-      "notes": "Comment",
-      "edit": "Edit",
-      "delete": "Delete",
-      "added": "Comment added",
-      "removed": "Comment removed",
-      "updated": "Comment updated"
+      "add": "Opmerking toevoegen",
+      "notes": "Opmerking",
+      "edit": "Bewerken",
+      "delete": "Verwijderen",
+      "added": "Opmerking toegevoegd",
+      "removed": "Opmerking verwijderd",
+      "updated": "Opmerking bijgewerkt"
     },
-    "rename_list": "Rename",
-    "remove_list": "Remove",
-    "add_to_list": "Add to list",
-    "remove_from_list": "Remove from list",
-    "edit_lists": "Edit lists",
+    "rename_list": "Hernoemen",
+    "remove_list": "Verwijder",
+    "add_to_list": "Toevoegen aan lijst",
+    "remove_from_list": "Uit de lijst verwijderen",
+    "edit_lists": "Lijsten bewerken",
     "fo_method_chooser": {
-      "title": "Choose a Method"
+      "title": "Kies een methode"
     },
     "list_chooser": {
-      "title": "Choose a Wish List",
-      "add": "Add",
-      "add_more": "Add more",
-      "remove": "Remove"
+      "title": "Kies een favorietenlijst",
+      "add": "Toevoegen",
+      "add_more": "Meer toevoegen",
+      "remove": "Verwijder"
     },
     "modal": {
       "message": "Om dit product aan uw winkelwagen toe te voegen, selecteer alstublieft de varianten.",
       "confirm": "Selecteer varianten"
     },
     "open_list": "Open lijst.",
-    "close_list": "Sluit lijst."
+    "close_list": "Sluit lijst.",
+    "load_more_button": "Andere artikelen laden"
   },
   "filter": {
     "sort": {
@@ -170,17 +190,22 @@
       "most_popular": "Meest populair",
       "price_desc": "Prijs: Hoog naar Laag",
       "price_asc": "Prijs: Laag naar Hoog",
-      "name_asc": "Name A - Z",
-      "name_desc": "Name Z - A",
-      "rank_asc": "Rank Low To High",
-      "rank_desc": "Rank High To Low"
+      "name_asc": "Naam A - Z",
+      "name_desc": "Naam Z - A",
+      "rank_asc": "Laagste rang eerst",
+      "rank_desc": "Hoogste rang eerst"
     },
     "apply": "Klaar",
     "more": "meer",
     "reset": "Wis alles",
     "remove": "Verwijder {filter} filter",
     "edit": "Bewerk {filter} filter",
-    "filter_by": "Filteren op {label}"
+    "filter_by": "Filteren op {label}",
+    "label": {
+      "price": "Prijs",
+      "category": "Categorie",
+      "manufacturer": "Merk"
+    }
   },
   "price": {
     "from": "Vanaf {price}",
@@ -195,22 +220,25 @@
     "label": "Prijs {price}.",
     "label_old_price": "Vorige prijs {price}.",
     "pricePerMeasurementFormat": "{price}/{refValue}{refUom}",
-    "free": "Free"
+    "free": "Gratis"
   },
   "product": {
     "errors": {
-      "insufficientstock": "Sorry, this product is currently out of stock."
+      "insufficientstock": "Dit product is helaas niet meer beschikbaar."
     },
     "description_heading": "Over",
+    "share": "Product delen",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
-    "adding_item": "{count, plural, =1 {{count} artikel toevoegen} other {{count} artikelen toevoegen}}",
+    "adding_item": "{count, plural, =1 {Er wordt één product toegevoegd} other {Er worden {count} producten toegevoegd}}",
     "pick_option_first": "Kies eerst een optie. {option}",
     "fill_out_required_input_first": "Vul eerst de vereiste input in.",
     "add_to_cart": "Voeg aan winkelwagen toe",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
-    "increased_quantity_to": "Aantal verhoogd naar {quantity}",
+    "decrease_quantity": "Hoeveelheid verlagen",
+    "increase_quantity": "Hoeveelheid verhogen",
+    "increased_quantity_to": "Hoeveelheid verhoogd naar {quantity}",
     "decreased_quantity_to": "Hoeveelheid verlaagd naar {quantity}",
     "minOrderQuantity": "Min. bestelhoeveelheid: {quantity} {unit}",
     "maxOrderQuantity": "Max. bestelhoeveelheid: {quantity} {unit}",
@@ -226,11 +254,13 @@
     "sections": {
       "information": "Productinformatie",
       "options": "Kies opties",
+      "fulfillment": "Beschikbaarheid",
       "description": "Omschrijving",
       "properties": "Eigenschappen",
       "ratings": "Ratings",
       "purchase": "Aankoopitem",
-      "quantity": "Quantity"
+      "quantity": "Aantal",
+      "price": "Prijs"
     },
     "displayGroups": {
       "general": "Algemeen",
@@ -241,13 +271,13 @@
   },
   "locations": {
     "headline": "Winkels in uw buurt",
-    "details": "Winkel details",
-    "hours_details": "Store opening details",
+    "details": "Details",
+    "hours_details": "Winkeldetails",
     "today_hours": "Vandaag: {hours}",
-    "today_hours_long": "Hours Today: {hours}",
+    "today_hours_long": "Vandaag geopend: {hours}",
     "address": "{postalCode} {city}",
-    "map_open": "Open in maps",
-    "phone": "Phone",
+    "map_open": "Open in kaarten",
+    "phone": "Telefoonnummer",
     "mon": "Maandag",
     "tue": "Dinsdag",
     "wed": "Woensdag",
@@ -255,90 +285,90 @@
     "fri": "Vrijdag",
     "sat": "Zaterdag",
     "sun": "Zondag",
-    "place_reservation": "Submit Reservation",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "cellPhone": "Mobile number for SMS notifications",
-    "emailAddress": "Email Address",
-    "who_will_pickup": "Who will pick up this order?",
-    "me": "Me",
-    "someone_else": "Someone else",
-    "success_heading": "Reservation Confirmation",
-    "success_title": "Thank you for your reservation",
-    "success_copy": "We will send you an email/text message shortly when your order is ready for pickup.",
-    "success_order_num": "Reservation no.",
-    "error_heading": "An error has occurred",
-    "error_title": "We're sorry but your reservation could not be placed.",
-    "error_copy": "There was an issue when trying to place your reservation. Probably some items have sold out meanwhile. Please check availability at a different location.",
-    "error_invalid_zip_code": "Please enter a valid ZIP code.",
-    "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
-    "search_placeholder": "ZIP code",
-    "change_location": "Change location",
-    "get_directions": "Get Directions",
-    "store_hours": "Store Hours",
+    "place_reservation": "Reservering indienen",
+    "firstName": "Voornaam",
+    "lastName": "Achternaam",
+    "cellPhone": "Mobielnummer voor sms-meldingen",
+    "emailAddress": "E-mailadres",
+    "who_will_pickup": "Wie haalt deze bestelling op?",
+    "me": "Ikzelf",
+    "someone_else": "Iemand anders",
+    "success_heading": "Reserveringsbevestiging",
+    "success_title": "Bedankt voor uw reservering!",
+    "success_copy": "U ontvangt binnenkort een e-mail of sms zodra uw reservering klaar is om opgehaald te worden.",
+    "success_order_num": "Reserveringsnummer",
+    "error_heading": "Er is een fout opgetreden",
+    "error_title": "Helaas kon uw reservering niet worden voltooid.",
+    "error_copy": "Er is een fout opgetreden tijdens het reserveren. Mogelijk zijn enkele artikelen niet meer beschikbaar. Controleer de beschikbaarheid in andere winkels in uw winkelmand.",
+    "error_invalid_zip_code": "Voer een geldige postcode in.",
+    "error_no_store_found": "We hebben helaas geen winkels in deze omgeving. Controleer uw invoer.",
+    "search_placeholder": "Postcode",
+    "change_location": "Winkel wijzigen",
+    "select_location": "Winkel selecteren",
+    "get_directions": "Route plannen",
+    "store_hours": "Openingstijden",
     "radius_km": "{radius} km",
-    "radius_mi": "{radius} Miles",
+    "radius_mi": "{radius} mijl",
     "radius": "Radius",
     "stores_near": {
-      "zip_code": "Stores near \"{zipCode}\"",
-      "location": "Stores near your location"
+      "zip_code": "Winkels nabij \"{zipCode}\"",
+      "location": "Winkels in uw buurt"
     },
     "your_current_timeslot": {
-      "heading": "Pickup Time",
-      "change": "Change",
-      "today": "Today",
-      "tomorrow": "Tomorrow",
-      "not_set": "Not set yet",
+      "heading": "Ophaaltijd",
+      "change": "Wijzigen",
+      "today": "Vandaag",
+      "tomorrow": "Morgen",
+      "not_set": "Selecteer alstublieft..",
       "dialog": {
-        "title": "Pick a Pickup Slot",
-        "date": "Date",
-        "morning": "Morning",
-        "afternoon": "Afternoon",
-        "evening": "Evening",
-        "schedule": "Choose"
+        "title": "Ophaaltijd selecteren",
+        "date": "Datum",
+        "morning": "Ochtend",
+        "afternoon": "Middag",
+        "evening": "Avond",
+        "schedule": "Selecteren"
       }
     },
     "your_current_location": {
-      "heading": "Your Current Location",
-      "change": "Change"
+      "heading": "Huidige winkel",
+      "change": "Wijzigen"
     },
     "method": {
-      "ropis": "Reserve online pickup in store / curbside",
-      "bopis": "Buy online pickup in store / curbside",
-      "direct_ship": "Ship to address"
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
+      "direct_ship": "Online bestellen"
     },
-    "choose_reservation_type": "Choose Reservation Type",
-    "quick_reserve": "Quick reservation",
-    "reserve_to_cart": "Reserve to cart",
-    "change_fulfillment_method": "Change fulfillment method",
-    "select_location": "Select location",
+    "choose_reservation_type": "Reserveringsmethode kiezen",
+    "quick_reserve": "Snel reserveren",
+    "reserve_to_cart": "Reserveren in winkelmand",
+    "change_fulfillment_method": "Verzendmethode wijzigen",
     "fulfillment": {
-      "heading": "Availability",
-      "direct_ship": "Direct ship",
-      "ropis": "Reserve online pickup in store / curbside",
-      "bopis": "Buy online pickup in store / curbside",
+      "heading": "Beschikbaarheid",
+      "direct_ship": "Online bestellen",
+      "ropis": "Click & Reserve",
+      "bopis": "Click & Collect",
       "error": {
-        "direct_ship": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
-        "reserve": "This product is not available at your chosen location. Please select a different location.",
-        "not_ready": "Please choose a preferred location you want to order to.",
-        "ropis": "This product is not available for \"reserve online pickup in store\" at your chosen location. Please select a different option or location.",
-        "bopis": "This product is not available for \"buy online pickup in store\" at your chosen location. Please select a different option or location."
+        "direct_ship": "Dit product is niet beschikbaar voor verzending. Kies een andere optie of controleer de beschikbaarheid in een winkel in de buurt.",
+        "reserve": "Dit product is niet beschikbaar in de geselecteerde winkel. Kies een andere winkel.",
+        "not_ready": "Selecteer alstublieft een winkel.",
+        "ropis": "Dit product is niet beschikbaar voor Click & Reserve in deze winkel. Kies een andere optie of winkel.",
+        "bopis": "Dit product is niet beschikbaar voor Click & Collect in deze winkel. Kies een andere optie of winkel."
       }
     },
     "stock_info": {
-      "pick_up_at": "at {storeName}",
-      "availableInventory": "{visibleInventory} in stock",
-      "available": "Available",
-      "limitedAvailability": "Only {visibleInventory} left in stock",
-      "notAvailable": "Out of stock",
-      "customAvailability": "Not available in this store",
-      "comingSoon": "Coming Soon"
+      "pick_up_at": "bij {storeName}",
+      "availableInventory": "{visibleInventory} op voorraad",
+      "available": "Beschikbaar",
+      "limitedAvailability": "Nog slechts {visibleInventory} op voorraad",
+      "notAvailable": "Niet beschikbaar",
+      "customAvailability": "Niet beschikbaar in deze winkel",
+      "comingSoon": "Binnenkort beschikbaar"
     },
-    "no_available": "not available",
+    "no_available": "niet beschikbaar",
     "multi_location_modal": {
-      "title": "Change store",
-      "message": "You already have products from a different store in the cart. These products will be changed to the new store. Prices and availability might differ.",
-      "change_store": "Switch store"
+      "title": "Winkel wijzigen",
+      "message": "U heeft al producten uit een andere winkel in uw winkelmand. Deze producten zullen worden gewijzigd naar de nieuwe winkel. Prijzen en beschikbaarheid kunnen variëren.",
+      "change_store": "Winkel wijzigen"
     }
   },
   "category": {
@@ -353,6 +383,9 @@
     "sections": {
       "categories": "Categorieën",
       "products": "Producten"
+    },
+    "showAllProducts": {
+      "label": "Toon alle producten"
     },
     "errors": {
       "404": "Categorie niet gevonden"
@@ -383,19 +416,19 @@
     "title_error": "Oops!",
     "body_error": "Een onverwachte fout is opgetreden. Probeer opnieuw.",
     "close": "Sluiten",
-    "login": "Log in"
+    "login": "Inloggen"
   },
   "cart": {
-    "grand_total": "Grand Total",
-    "current_total": "Current Total",
-    "items": "Items",
-    "price": "Price",
-    "quantity": "Qty",
-    "fulfilled_quantity": "Fulfilled Qty",
-    "ordered_quantity": "Ordered Qty",
-    "location": "Location",
+    "grand_total": "Totaal",
+    "current_total": "Totaal",
+    "items": "Producten",
+    "price": "Prijs",
+    "quantity": "Hoeveelheid",
+    "fulfilled_quantity": "Uitgevoerde hoeveelheid",
+    "ordered_quantity": "Bestelde hoeveelheid",
+    "location": "Winkel",
     "status": "Status",
-    "remove_item": "Remove item",
+    "remove_item": "Product verwijderen",
     "subtotal": "Subtotaal",
     "total": "Totaal winkelwagen",
     "discount": "Korting",
@@ -403,69 +436,73 @@
     "coupon_label": "Coupon: {label}",
     "promotion_label": "{label}",
     "checkout": "Afrekenen",
-    "reserve": "Reserve",
+    "reserve": "Reserveren",
     "remove": "Verwijderen",
     "edit": "Wijzig",
     "empty": "Uw winkelwagen is leeg",
     "continue": "Winkel verder",
-    "redeem_coupon": "Voer coupon code in",
+    "redeem_coupon": "Voer uw kortingscode in",
+    "submit_coupon": "Kortingscode verzenden",
+    "delete_coupon": "Kortingscode verwijderen",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
-    "coupons_not_supported": "Coupons zijn ongeldig.",
+    "coupons_not_supported": "Wissel uw vouchers en cadeaubonnen in bij de volgende stap",
     "free_shipping": "Gratis verzending",
-    "allow_substitution_all": "Allow Substitutions on All Products?",
-    "allow_substitution": "Allow Substitutions?",
-    "reservation_hint": "* Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
+    "allow_substitution_all": "Vervangende artikelen toestaan voor alle producten?",
+    "allow_substitution": "Vervangende artikelen toestaan",
+    "message_type_info": "Informatie",
+    "message_type_error": "Fout",
+    "message_type_warning": "Waarschuwing",
     "errors": {
+      "404": "Een of meer producten zijn vanwege beschikbaarheid uit uw winkelmand verwijderd.",
+      "1001": "Een of meer producten in uw winkelmand zijn momenteel niet op voorraad. Verwijder deze alstublieft.",
+      "1002": "Bestellingen zijn beperkt tot één ophaallocatie. Kies alstublieft slechts één winkel.",
+      "1003": "Het geselecteerde tijdvak voor ophalen is niet meer beschikbaar. Kies een andere ophaaltijd.",
       "item": {
+        "1001": "Dit product is niet in de gewenste hoeveelheid beschikbaar.",
+        "1004": "Selecteer alstublieft een ophaaltijd.",
+        "1005": "De minimale bestelhoeveelheid van {minQty} is nog niet bereikt.",
+        "1006": "De maximale bestelhoeveelheid van {maxQty} is overschreden.",
+        "1007": "Selecteer alstublieft een ophaallocatie.",
         "shopgate.cart.updateProducts": {
-          "1001": "The requested quantity is not available."
+          "1001": "Dit product is niet in de gewenste hoeveelheid beschikbaar."
         },
         "shopgate.cart.addProducts": {
-          "1001": "The requested quantity is not available."
+          "1001": "Dit product is niet in de gewenste hoeveelheid beschikbaar."
         },
-        "1001": "The requested quantity is not available.",
-        "1004": "Please choose a pickup time.",
-        "1005": "The minimum order quantity of {minQty} has not been reached.",
-        "1006": "The maximum order quantity of {maxQty} has been exceeded.",
-        "1007": "Please choose a pickup store.",
-        "generic": "An unexpected error occurred with this item.",
-        "insufficientstock": "Currently out of stock."
+        "generic": "Er is een onverwachte fout opgetreden met dit product.",
+        "insufficientstock": "Momenteel niet op voorraad."
       },
       "coupon": {
-        "2000": "This coupon is not valid.",
-        "2001": "The coupon is not active until {startDate, date, yyyyMMdd} {startDate, time, short}.",
-        "2002": "The coupon expired at {endDate, date, yyyyMMdd} {endDate, time, short}.",
-        "2003": "This coupon is not valid for your current cart.",
-        "2004": "This coupon has already been redeemed.",
-        "2005": "This coupon has exceeded total allowed redemptions.",
-        "404": "This was coupon was not found.",
-        "generic": "An unexpected error occurred with this coupon."
+        "404": "Deze coupon bestaat niet.",
+        "2000": "Deze coupon is ongeldig.",
+        "2001": "Deze coupon is pas geldig vanaf {startDate, date, yyyyMMdd} om {startDate, time, short} uur.",
+        "2002": "Deze coupon is verlopen op {endDate, date, yyyyMMdd} om {endDate, time, short} uur.",
+        "2003": "Deze coupon is niet geldig voor uw huidige winkelmand.",
+        "2004": "Deze coupon is al ingewisseld.",
+        "2005": "Deze coupon heeft het maximale aantal keer dat het kan worden ingewisseld bereikt.",
+        "generic": "Er is een onverwachte fout opgetreden met deze coupon."
       },
-      "1001": "One or more products in the cart are out of stock. Please remove the products.",
-      "1002": "Orders are limited to a single pickup store, please select only one fulfillment location.",
-      "1003": "The selected pickup time frame is not available anymore. Please choose a different pickup time.",
-      "404": "One or more products has been removed from your cart due to unavailability.",
-      "generic": "An unexpected error occurred.",
-      "insufficientstock": "One or more products in the cart are out of stock. Please remove the products.",
-      "multiplelocations": "Orders are limited to a single pickup store, please select only one fulfillment location.",
-      "productsNotFound": "One or more products has been removed from your cart due to unavailability.",
-      "mixed_cart": "We currently do not support Ship to Address and Reserve to Cart within the same transaction. Please update your delivery options and continue shopping or proceed to checkout.",
-      "direct_ship_item": "Check if this item is available for reserve at a store near you.",
-      "ropis_cart_inventory": "Not all of your items can be reserved. Please check the products in cart and change fulfillment options.",
-      "ropis_item_inventory": "This item is not available for reservation at the selected location. Check for availability at a different location.",
-      "ropis_item_inventory_exceed": "This item is not available in the desired quantity at {storeName}. {inventory} will be reserved.",
-      "mixed_cart_coupon_removed": "The coupon \"{code}\" is not valid for in store reservations. Once you have placed the reservation it will be available for direct ship orders again."
+      "generic": "Er is een onverwachte fout opgetreden.",
+      "insufficientstock": "Een of meer producten in uw winkelmand zijn momenteel niet op voorraad. Verwijder deze alstublieft.",
+      "multiplelocations": "Bestellingen zijn beperkt tot één ophaallocatie. Kies alstublieft slechts één winkel.",
+      "productsNotFound": "Een of meer producten zijn vanwege beschikbaarheid uit uw winkelmand verwijderd.",
+      "mixed_cart": "Reserveringen en online bestellingen moeten apart worden geplaatst. Pas uw producten aan zodat de winkelmand ofwel alleen online bestellingen ofwel alleen reserveringen bevat.",
+      "direct_ship_item": "Controleer of dit product gereserveerd kan worden in een winkel in de buurt.",
+      "ropis_cart_inventory": "Niet alle producten kunnen worden gereserveerd. Controleer de fouten en pas de bezorgopties aan.",
+      "ropis_item_inventory": "Dit product kan niet worden gereserveerd in de gewenste winkel. Controleer of het in een andere winkel op voorraad is.",
+      "ropis_item_inventory_exceed": "Gewenste hoeveelheid niet beschikbaar bij {storeName}. De maximale hoeveelheid van {inventory} zal worden gereserveerd.",
+      "mixed_cart_coupon_removed": "De coupon \"{code}\" is niet beschikbaar voor reserveringen."
     },
     "change_fulfillment": {
-      "direct_ship": "Change to Delivery",
-      "bopis": "Change to BOPIS",
-      "ropis": "Change to Reservation"
+      "direct_ship": "Wijzigen naar online bestellen",
+      "bopis": "Wijzigen naar Click & Collect",
+      "ropis": "Wijzigen naar Click & Reserve"
     },
     "price_caption": {
-      "reservation": "Reservation",
-      "pay_in_store": ""
+      "reservation": "Reservering",
+      "pay_in_store": "Betalen in de winkel"
     }
   },
   "login": {
@@ -479,18 +516,18 @@
     "no_account": "Heeft u geen account?",
     "register": "Creëer uw account hier!",
     "logout_message": "U bent uitgelogd.",
-    "auto_logout_message": "U bent automatisch uitgelogd.",
     "error": "Uw gebruikersnaam en wachtwoord matchen geen account.",
+    "auto_logout_message": "U bent automatisch uitgelogd.",
     "reset_password": {
-      "subline": "Please enter your Email to initiate the password reset process.",
-      "reset_instructions": "Password Reset instructions have been sent to {email}",
-      "back_to_login": "Back to Login",
-      "customer_not_found": "We couldn't find an account for this email address"
+      "subline": "Voer alstublieft uw e-mailadres in.",
+      "reset_instructions": "U ontvangt een e-mail om uw wachtwoord opnieuw in te stellen op {email}",
+      "back_to_login": "Terug naar inloggen",
+      "customer_not_found": "Geen account gevonden met dit e-mailadres."
     }
   },
   "navigation": {
     "login_register": "Log in / Registreer",
-    "your_account": "Uw Account",
+    "your_account": "Mijn account",
     "home": "Home",
     "categories": "Categorieën",
     "favorites": "Favorieten",
@@ -500,17 +537,19 @@
     "shipping": "Verzendmethoden",
     "about": "Over ons",
     "payment": "Uw betalingswens",
-    "terms": "Voorwaarden",
+    "terms": "Algemene Voorwaarden",
     "privacy": "Privacybeleid",
+    "privacySettings": "Privacy-instellingen",
+    "back_in_stock": "Terug in voorraad herinnering",
     "welcome_message": "Welkom {name}",
     "return_policy": "Herroepingsrecht",
     "logout": "Log uit",
+    "back": "Terug naar {title}",
+    "open_menu": "Menu openen",
     "menuSubHeader": {
       "more": "Meer",
       "about": "Over ons"
-    },
-    "back": "Terug naar {title}",
-    "open_menu": "Open menu"
+    }
   },
   "reviews": {
     "rating": "Rating",
@@ -519,7 +558,7 @@
     "button_add": "Schrijf een beoordeling",
     "button_all": "Alle {count} Beoordelingen",
     "author": "door {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} uit {maxRate}",
+    "rating_stars": "{rate, plural, =1 {Eén ster} other {{rate} sterren}} van {maxRate}.",
     "review_form_rate": "Beoordeel dit product:",
     "review_form_author": "Uw naam",
     "review_form_title": "Review titel (optioneel)",
@@ -527,13 +566,13 @@
     "review_form_error_author_empty": "Voer alstublieft uw naam in.",
     "review_form_rate_error": "Selecteer alstublieft een sterrenbeoordeling.",
     "review_form_error_length": "Maximum lengte {length} karakters.",
-    "press_to_rate_with_x_stars": "Selecteer om te waarderen met {rate} {rate, plural, =1 {star} other {stars}}.",
+    "press_to_rate_with_x_stars": "Kies om te beoordelen met {rate, plural, =1 {één ster} other {{rate} sterren}}.",
     "success_message": "Bedankt voor uw beoordeling!"
   },
   "scanner": {
     "instructions": "Bewaar de streepjescode of QR-code in het midden. De detectie wordt automatisch uitgevoerd.",
     "noResult": {
-      "qrCode": "Er werd geen resultaat voor uw QR code gevonden.",
+      "qrCode": "Er werd geen resultaat voor uw QR-code gevonden.",
       "barCode": "Geen producten gevonden."
     }
   },
@@ -541,227 +580,215 @@
     "access_denied": {
       "settings_button": "Ga naar instellingen",
       "camera_message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
+      "push_message": "Deze functie vereist toegang tot pushmeldingen. Sta toegang toe in de instellingen.",
       "geolocation_message": "Ga naar Instellingen en schakel locatiemachtigingen in om winkels bij u in de buurt te vinden."
     }
   },
   "checkout": {
-    "submit_order": "Buy Now",
-    "continue_payment": "Continue to Payment",
+    "submit_order": "Nu kopen",
+    "continue_payment": "Doorgaan naar betaling",
+    "continue": "Doorgaan",
+    "steps": "Stap {from} van {to}",
+    "change_contacts": "Contact wijzigen",
+    "change_addresses": "Adres wijzigen",
+    "finalizePayment": "Bestelling afronden",
     "payment": {
-      "title": "How would you like to pay this order?",
+      "title": "Hoe wilt u betalen?",
       "buttons": {
-        "stripe": "Credit Card"
+        "stripe": "Creditcard"
       }
     },
-      "shippingMethod": {
-      "title": "Shipping Method",
+    "shippingMethod": {
+      "title": "Verzendmethode",
       "errors": {
-        "noShippingAddress": "Please first provide a shipping address.",
-        "invalidShippingAddress": "This cart can not be shipped to this shipping address."
+        "noShippingAddress": "Voer alstublieft eerst een verzendadres in.",
+        "invalidShippingAddress": "Deze winkelmand kan niet naar het opgegeven adres worden verzonden."
       }
     },
-    "continue": "Continue",
-    "steps": "Step {from} of {to}",
-    "change_contacts": "Change Contacts",
-    "change_addresses": "Change Addresses",
     "errors": {
-      "genericInitialize": "Checkout is currently unavailable, please try again later.",
-      "genericUpdate": "Failed to process order, please try again later.",
-      "checkCart": "Please check your cart.",
-      "genericSubmit": "Failed to complete order, please check your cart.",
-      "paypalFunding": "Payment Error: The instrument presented was either declined by the processor or bank, or it can't be used for this payment.",
-      "missingPaymentMethod": "No payment method configured.",
-      "noPaymentTransaction": "No payment transaction available.",
-      "genericUpdateBilling": "Failed to update billing address.",
+      "genericInitialize": "Afrekenen is momenteel niet beschikbaar, probeer het later opnieuw.",
+      "genericUpdate": "De bestelling kon niet worden verwerkt, probeer het later opnieuw.",
+      "checkCart": "Controleer alstublieft uw winkelmand.",
+      "genericSubmit": "De bestelling kon niet worden verwerkt, controleer alstublieft uw winkelmand.",
+      "paypalFunding": "Er is een fout opgetreden bij het uitvoeren van de betaling.",
+      "missingPaymentMethod": "Geen betaalmethode ingesteld.",
+      "noPaymentTransaction": "Geen betalingstransactie beschikbaar.",
+      "genericUpdateBilling": "Fout bij het bijwerken van het factuuradres",
       "payment": {
-        "genericExternal": "The payment with the selected payment method failed. Please try a different payment method."
+        "genericExternal": "Betaling met de geselecteerde betaalmethode is mislukt. Probeer het opnieuw met een andere betaalmethode."
       }
     },
-    "finalizePayment": "Finalize your Order",
     "pickup_contact": {
-      "headline": "Pickup Contact Info",
-      "headline_reserve": "Pickup Contact",
-      "subheadline": "We'll send your order confirmation to this email and use the following phone number only if we have questions.",
+      "headline": "Afhaalcontact",
+      "headline_reserve": "Afhaalcontact",
+      "subheadline": "De bestelbevestiging wordt naar dit e-mailadres verzonden. Telefoonnummer wordt alleen gebruikt bij vragen.",
       "form": {
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "mobile": "Mobile Number",
-        "emailAddress": "E-Mail Address",
-        "password": "Password *",
-        "passwordConfirm": "Confirm password *",
-        "company": "Company",
-        "address1": "Street & No.",
-        "address2": "Address 2",
-        "postalCode": "ZIP Code",
-        "city": "City",
-        "country": "Country",
-        "region": "Region",
-        "who_will_pickup": "Who will pick up this order?",
-        "me": "Me",
-        "someone_else": "Someone else",
-        "instructions": "Pickup Instructions",
-        "instructionsPlaceholder": "Please include information about your vehicle. Example: White Honda Accord/License Plate #"
+        "firstName": "Voornaam",
+        "lastName": "Achternaam",
+        "mobile": "Mobiel Nummer",
+        "emailAddress": "E-mailadres",
+        "password": "Wachtwoord *",
+        "passwordConfirm": "Wachtwoord bevestigen *",
+        "company": "Bedrijf",
+        "address1": "Straat en huisnummer",
+        "address2": "Adresregel 2",
+        "postalCode": "Postcode",
+        "city": "Stad",
+        "country": "Land",
+        "region": "Provincie",
+        "who_will_pickup": "Wie haalt deze bestelling op?",
+        "me": "Ikzelf",
+        "someone_else": "Iemand anders",
+        "instructions": "Ophaalnotities"
       }
     },
     "billing": {
-      "headline": "Billing Address",
-      "headline_reserve": "Order Contact",
-      "save": "Save",
+      "headline": "Factuuradres",
+      "headline_reserve": "Bestelcontact",
+      "save": "Opslaan",
       "address": "{postalCode} {city}, {region}",
-      "edit": "Edit",
-      "change": "Change",
-      "select_address": "Select a billing address"
+      "edit": "Bewerken",
+      "change": "Wijzigen",
+      "select_address": "Kies een factuuradres"
     },
     "shipping": {
-      "headline": "Shipping Address",
-      "save": "Save",
+      "headline": "Verzendadres",
+      "save": "Opslaan",
       "address": "{postalCode} {city}, {region}",
-      "edit": "Edit",
-      "change": "Change",
-      "select_address": "Select a shipping address"
+      "edit": "Bewerken",
+      "change": "Wijzigen",
+      "select_address": "Kies een verzendadres"
     },
     "creditCard": {
-      "headline": "Payment",
-      "card": "Credit Card Number *",
-      "cvc": "Security Code *",
-      "expiry": "Valid Until *"
+      "headline": "Betaalmethode",
+      "card": "Creditcardnummer *",
+      "cvc": "Beveiligingscode *",
+      "expiry": "Geldig tot *"
     },
     "summary": {
-      "headline": "Order Summary",
-      "tax": "Tax",
-      "subTotal": "Subtotal",
-      "shippingTotal": "Shipping Fee",
-      "total": "Grand Total"
+      "headline": "Samenvatting",
+      "tax": "Belastingen",
+      "subTotal": "Subtotaal",
+      "shippingTotal": "Verzendkosten",
+      "total": "Totaal"
     },
     "success": {
-      "title": "Thank you!",
-      "instructions_1": "Below you will find your order details. For questions regarding your order, contact the store that received your reservation.",
-      "instructions_2": "Please note pickup dates may vary because of holidays and weekends. Check your store's hours below for the most accurate pickup time.",
-      "order_number": "Order number: {orderNumber}",
-      "order_date": "Order Date: {date}",
-      "your_items": "Your item(s)",
-      "pick_up_contact": "Pickup Contact",
-      "order_contact": "Order Contact",
-      "pickup_notes": "Pickup Notes",
-      "billed_to": "Billed To",
-      "shipped_to": "Shipped To",
-      "order_summary": "Order Summary",
-      "name": "Name",
-      "phone_number": "Phone",
-      "email_address": "Email",
-      "card_holder": "Card Holder",
-      "address": "Address",
-      "payment_method": "Payment Method",
-      "shipping_method": "Shipping Method",
-      "continue": "Continue shopping"
+      "title": "Bedankt voor uw bestelling",
+      "instructions_1": "Hieronder vindt u de informatie over uw bestelling. Neem bij vragen over uw bestelling contact op met uw winkel.",
+      "instructions_2": "Houd er rekening mee dat afhaaltijden kunnen variëren op feestdagen en weekenden.",
+      "order_number": "Bestelnummer: {orderNumber}",
+      "order_date": "Besteldatum: {date}",
+      "your_items": "Producten:",
+      "pick_up_contact": "Afhaalcontact",
+      "order_contact": "Bestelcontact",
+      "pickup_notes": "Afhaalnotities",
+      "billed_to": "Factuuradres",
+      "shipped_to": "Verzendadres",
+      "order_summary": "Bestelsamenvatting",
+      "name": "Naam",
+      "phone_number": "Telefoonnummer",
+      "email_address": "E-mailadres",
+      "card_holder": "Kaarthouder",
+      "address": "Adres",
+      "payment_method": "Betaalmethode",
+      "shipping_method": "Verzendmethode",
+      "continue": "Doorgaan met winkelen"
     }
   },
   "order": {
     "status": {
       "order": {
-        "submitted": "Submitted",
-        "inProgress": "In Progress",
-        "ready": "Ready",
-        "completed": "Completed",
-        "canceled": "Canceled"
+        "submitted": "Ingediend",
+        "inProgress": "In behandeling",
+        "ready": "Klaar om op te halen",
+        "completed": "Voltooid",
+        "canceled": "Geannuleerd"
       },
       "line_item": {
-        "pending": "Pending",
-        "inProgress": "In Progress",
-        "unavailable": "Unavailable",
-        "canceled": "Canceled",
-        "fulfilled": "Fulfilled",
-        "substituted": "Substituted",
-        "replaced": "Replaced",
-        "itemAdded": "Added",
-        "rejected": "Rejected",
+        "pending": "In afwachting",
+        "inProgress": "In behandeling",
+        "unavailable": "Niet beschikbaar",
+        "canceled": "Geannuleerd",
+        "fulfilled": "Uitgevoerd",
+        "substituted": "Vervangen",
+        "replaced": "Vervangen",
+        "itemAdded": "Toegevoegd",
+        "rejected": "Geweigerd",
         "open": "Open"
       }
     }
   },
   "order_details": {
     "pickup_location": {
-      "headline": "Pickup Location",
-      "address": "Address",
-      "phone_number": "Phone"
+      "headline": "Ophaallocatie",
+      "address": "Adres",
+      "phone_number": "Telefoonnummer"
     },
     "subline": {
-      "order_number": "Your Order Number is: {orderNumber}",
+      "order_number": "Uw bestelnummer is: {orderNumber}",
       "order_status": "Status: {status}"
     },
     "authenticate": {
-      "instructions": "Please authenticate with the e-mail address and phone number from your order.",
-      "or_login": "Or login."
+      "instructions": "Verifieer uzelf met het e-mailadres en telefoonnummer die voor de bestelling zijn gebruikt.",
+      "or_login": "Of inloggen"
     },
     "errors": {
-      "authenticate": "E-Mail address and phone number do not match with this order.",
-      "expired": "The session for this order expired.",
-      "authorize": "This order doesn't belong to your account.",
-      "not_found": "Order not found."
+      "authenticate": "E-mailadres en telefoonnummer komen niet overeen met deze bestelling.",
+      "expired": "De sessie voor deze bestelling is verlopen.",
+      "authorize": "Deze bestelling behoort niet tot dit account.",
+      "not_found": "Bestelling niet gevonden."
     },
     "cancel": {
-      "button": "Cancel Order",
+      "button": "Bestelling annuleren",
       "modal": {
-        "title": "Cancel Order",
-        "message": "Are you sure you want to cancel your order? This can not be undone!",
-        "confirm": "Yes, Cancel my Order"
+        "title": "Annuleren",
+        "message": "Weet u zeker dat u de bestelling wilt annuleren? Deze actie kan niet ongedaan worden gemaakt!",
+        "confirm": "Ja, bestelling annuleren"
       }
     }
   },
   "orders": {
     "header": {
-      "date": "Order Date",
-      "orderNumber": "Order Number",
+      "date": "Besteldatum",
+      "orderNumber": "Bestelnummer",
       "status": "Status",
-      "lineItemCount": "Number of Items",
-      "total": "Order Total"
+      "lineItemCount": "Aantal producten",
+      "total": "Besteltotaal"
     },
     "no_result": {
-      "body": "No Orders found."
+      "body": "Geen bestellingen gevonden."
     },
-    "itemCount": "{count, plural, =1 {item} other {items}}"
+    "itemCount": "{count, plural, =1 {product} other {producten}}"
   },
   "page": {
-    "not_found": "The page you’re looking for can’t be found.",
-    "continue": "Continue shopping"
+    "not_found": "Helaas, de gewenste pagina is niet gevonden.",
+    "continue": "Verder winkelen"
   },
   "registration": {
-    "create_account": "Create account",
-    "marketing_opt_in_label": "Keep me up to date on news and exclusive offers",
-    "different_shipping_address_label": "Different Shipping Address",
+    "create_account": "Account aanmaken",
+    "marketing_opt_in_label": "Houd mij op de hoogte van nieuws en exclusieve aanbiedingen.",
+    "different_shipping_address_label": "Afwijkend verzendadres",
     "headlines": {
-      "create_new_account": "Create new account",
-      "shipping_address": "Shipping Address",
-      "billing_address": "Billing Address",
-      "billing_address_reserve": "Order Contact"
+      "create_new_account": "Nieuw account aanmaken",
+      "shipping_address": "Verzendadres",
+      "billing_address": "Factuuradres",
+      "billing_address_reserve": "Bestelcontact"
     }
-  },"error": {
-    "general": "Onmogelijk de se connecter. Controleer je internetverbinding en probeer opnieuw."
   },
-  "tracking": {
-    "cookieConsent": {
-      "message": "This website uses cookies to ensure you get the best experience on our website.",
-      "learnMore": "Learn more",
-      "decline": "Decline",
-      "save": "Save",
-      "allowSelected": "Allow selected",
-      "allowAll": "Allow all",
-      "preferences": "Preferences",
-      "needed": "Needed",
-      "analytics": "Analytics"
-    }
+  "error": {
+    "general": "Onmogelijk om verbinding te maken. Controleer je internetverbinding en probeer opnieuw."
   },
   "validation": {
-    "required": "Gelieve het veld compleet in te vullen",
-    "email": "Voer a.u.b. een geldig e-mail adres in",
-    "numeric": "Gelieve alleen cijfers in te voeren",
-    "alphaNumeric": "Gelieve alleen letters en cijfers in te vullen",
-    "mobileNumber": "Voer een geldig GSM nummer in",
-    "date": "Please enter a valid date",
-    "checkField": "Please check this field",
-    "emailConflict": "This e-mail address is already registered",
-    "passwordMismatch": "Your passwords do not match",
-    "minPasswordLength": "The minimum password length must be %\\{count\\} characters"
+    "required": "Vul dit veld in alstublieft",
+    "email": "Voer alstublieft een geldig e-mailadres in",
+    "numeric": "Voer alstublieft alleen cijfers in",
+    "alphaNumeric": "Voer alstublieft alleen letters en cijfers in",
+    "mobileNumber": "Voer alstublieft een geldig mobiel nummer in",
+    "date": "Voer alstublieft een geldige datum in",
+    "checkField": "Controleer dit veld alstublieft",
+    "emailConflict": "Dit e-mailadres is al geregistreerd",
+    "passwordMismatch": "De wachtwoorden komen niet overeen",
+    "minPasswordLength": "Het wachtwoord moet minimaal %'{count} tekens bevatten"
   },
   "formats": {
     "date": {
@@ -771,7 +798,7 @@
       "MMM": {
         "month": "short"
       },
-      "pattern": "de-mm-jjjj"
+      "pattern": "dd.mm.jjjj"
     },
     "distance": {
       "pattern": "{distance} {unit}",
@@ -792,7 +819,7 @@
       "m": "m",
       "m2": "m²",
       "m3": "m³",
-      "piece": "count"
+      "piece": "St."
     }
   },
   "supplementalData": {
@@ -806,5 +833,35 @@
     "title": "Beoordeel app",
     "message": "Vind je onze app leuk? Wij ontvangen graag een beoordeling!",
     "rejectionApprovalMessage": "Wilt u ons feedback geven? Dit zal ons helpen om de app verder te verbeteren."
+  },
+  "pushOptInModal": {
+    "title": "Exclusieve coupons en aanbiedingen ontvangen",
+    "buttonAllow": "Meldingen inschakelen",
+    "buttonDeny": "Ik wil geen meldingen",
+    "message": "Activeer meldingen zodat we je pushberichten kunnen sturen over nieuwe aanbiedingen, exclusieve vouchers en meer."
+  },
+  "cookieConsentModal": {
+    "title": "Pas uw persoonlijke winkelervaring aan",
+    "buttonAcceptAll": "Alles accepteren",
+    "modalButtonOnlyRequired": "Alleen essentiële",
+    "modalButtonConfirmSelected": "Selectie bevestigen",
+    "buttonConfigure": "Instellingen configureren",
+    "message": "Onze app is ontworpen om optimaal te worden afgestemd op uw voorkeuren. We gebruiken moderne trackingtechnologieën, waarmee we winkelgedrag analyseren en de gegevens gebruiken om onze app te verbeteren en u gepersonaliseerde content te presenteren. U kunt de instellingen op elk moment aanpassen in het gedeelte “Mijn account”. U vindt meer informatie in ons uitgebreide {privacyLink}.",
+    "privacyText": "privacybeleid"
+  },
+  "cookieSettings": {
+    "comfortTitle": "Comfort",
+    "statisticsTitle": "Personalisatie en statistieken",
+    "requiredTitle": "Vereist",
+    "comfort": "Deze cookies en technologieën maken enkele extra functies en betere prestaties mogelijk.",
+    "statistics": "Deze gegevens stellen ons in staat om meer statistieken te verzamelen om onze app te verbeteren en u relevantere advertenties te tonen.",
+    "required": "Gegevens die nodig zijn om de app uit te voeren.",
+    "privacy": "Voor meer informatie raadpleegt u ons {privacyLink}."
+  },
+  "htmlSanitizer": {
+    "videoCookieConsent": {
+      "message": "Comfortcookies moeten worden toegestaan om ingesloten video's van externe websites te bekijken.",
+      "link": "Klik hier om comfortcookies toe te staan en de video te bekijken"
+    }
   }
 }

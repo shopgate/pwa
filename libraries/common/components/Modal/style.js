@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const container = css({
   position: 'fixed',
@@ -25,6 +26,10 @@ const content = css({
   paddingTop: 'var(--safe-area-inset-top)',
   paddingBottom: 'var(--safe-area-inset-bottom)',
   overflowY: 'scroll',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    overflowY: 'initial',
+  },
+
 }).toString();
 
 export default {

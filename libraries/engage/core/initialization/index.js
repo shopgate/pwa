@@ -9,6 +9,9 @@ import { appWillInit, appWillStart } from '@shopgate/pwa-common/action-creators/
 import { i18n } from '@shopgate/engage/core';
 import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchClientInformation';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { appInitialization, configuration } from '@shopgate/engage/core/collections';
+import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/constants';
+import { getAppBaseUrl } from '@shopgate/engage/core/helpers';
 import {
   receiveShopSettings,
   receiveMerchantSettings,
@@ -126,6 +129,7 @@ const fetchSettings = store => new Promise((resolve, reject) => {
  */
 export const initialize = async (locales, reducers, subscribers) => {
   moment.locale(process.env.LOCALE);
+
   i18n.init({
     locales,
     lang: process.env.LOCALE,
@@ -133,6 +137,16 @@ export const initialize = async (locales, reducers, subscribers) => {
   });
 
   const store = configureStore(reducers, subscribers);
+
+  try {
+    await store.dispatch(fetchClientInformation());
+  } catch (e) {
+    // Nothing to see here.
+  }
+
+  // Save the base url inside the configuration collection before any other code can apply
+  // url manipulations.
+  configuration.set(CONFIGURATION_COLLECTION_KEY_BASE_URL, getAppBaseUrl());
 
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
 
@@ -142,8 +156,13 @@ export const initialize = async (locales, reducers, subscribers) => {
     // Nothing to see here.
   }
 
+  // Execute all registered handlers from the AppInitialization collection
+  await appInitialization.initialize({
+    dispatch: store.dispatch,
+    getState: store.getState,
+  });
+
   store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
-  store.dispatch(fetchClientInformation());
 
   return {
     store,

@@ -186,7 +186,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="text"
                             >
                               <div
-                                className="css-5lxuz4 rating-stars-empty"
+                                className="css-4s85e9 rating-stars-empty"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -206,7 +206,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -242,7 +242,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -278,7 +278,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -314,7 +314,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -350,7 +350,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -370,7 +370,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-13xh6j9 rating-stars-filled"
+                                className="css-1m683rn rating-stars-filled"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -390,7 +390,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -426,7 +426,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -462,7 +462,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -498,7 +498,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -534,7 +534,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -647,7 +647,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="text"
                             >
                               <div
-                                className="css-5lxuz4 rating-stars-empty"
+                                className="css-4s85e9 rating-stars-empty"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -667,7 +667,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -703,7 +703,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -739,7 +739,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -775,7 +775,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -811,7 +811,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -831,7 +831,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-13xh6j9 rating-stars-filled"
+                                className="css-1m683rn rating-stars-filled"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -851,7 +851,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -887,7 +887,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -923,7 +923,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -959,7 +959,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -995,7 +995,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1108,7 +1108,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="text"
                             >
                               <div
-                                className="css-5lxuz4 rating-stars-empty"
+                                className="css-4s85e9 rating-stars-empty"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -1128,7 +1128,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1164,7 +1164,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1200,7 +1200,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1236,7 +1236,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1272,7 +1272,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1292,7 +1292,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-13xh6j9 rating-stars-filled"
+                                className="css-1m683rn rating-stars-filled"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -1312,7 +1312,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1348,7 +1348,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1384,7 +1384,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1420,7 +1420,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1456,7 +1456,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1569,7 +1569,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="text"
                             >
                               <div
-                                className="css-5lxuz4 rating-stars-empty"
+                                className="css-4s85e9 rating-stars-empty"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -1589,7 +1589,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1625,7 +1625,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1661,7 +1661,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1697,7 +1697,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1733,7 +1733,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1753,7 +1753,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-13xh6j9 rating-stars-filled"
+                                className="css-1m683rn rating-stars-filled"
                               >
                                 <div
                                   className="css-kdb68h css-q4owmg"
@@ -1773,7 +1773,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1809,7 +1809,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1845,7 +1845,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1881,7 +1881,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1917,7 +1917,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="css-yys9hb "
+                                        className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",

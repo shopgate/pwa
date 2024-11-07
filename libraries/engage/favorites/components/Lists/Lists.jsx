@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
-import { i18n, configuration, IS_CONNECT_EXTENSION_ATTACHED } from '@shopgate/engage/core';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { i18n } from '@shopgate/engage/core';
 import {
   getFavoritesLists,
   isInitialLoading,
+  getHasMultipleFavoritesListsSupport,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import addFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/addFavoritesList';
 import updateFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/updateFavoritesList';
@@ -46,6 +48,7 @@ const makeMapStateToProps = () => {
     shopFulfillmentMethods: getFulfillmentMethods(state, props),
     wishlistMode: getWishlistMode(state),
     userSearch: getUserSearch(state),
+    hasMultipleFavoritesListsSupport: getHasMultipleFavoritesListsSupport(state),
   });
 };
 
@@ -98,9 +101,8 @@ const FavoriteLists = ({
   shopFulfillmentMethods,
   userSearch,
   fetchLocations,
+  hasMultipleFavoritesListsSupport,
 }) => {
-  const hasConnectExtension = !!configuration.get(IS_CONNECT_EXTENSION_ATTACHED);
-
   // Add to cart state.
   const promiseRef = useRef(null);
   const [activeProductId, setActiveProductId] = useState(null);
@@ -160,6 +162,15 @@ const FavoriteLists = ({
         reject,
       };
     });
+
+    if (!hasNewServices()) {
+      addToCart([{
+        productId: product.id,
+        quantity,
+      }]);
+      promiseRef.current.resolve();
+      return promise;
+    }
 
     // Get location.
     let activeLocation = null;
@@ -271,6 +282,7 @@ const FavoriteLists = ({
             remove={() => removeList(list.id)}
             removeItem={productId => removeItem(list.id, productId)}
             addToCart={(product, quantity) => handleAddToCart(list.id, product, quantity)}
+            hasMultipleFavoritesListsSupport={hasMultipleFavoritesListsSupport}
           />
         </SurroundPortals>
       ))}
@@ -295,7 +307,7 @@ const FavoriteLists = ({
         onClose={handleMethodClose}
       />
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
-        {hasConnectExtension ? (
+        {hasMultipleFavoritesListsSupport ? (
           <RippleButton
             type="primary"
             className={styles.addButton}
@@ -314,15 +326,16 @@ FavoriteLists.propTypes = {
   addList: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
   fetchLocations: PropTypes.func.isRequired,
+  hasMultipleFavoritesListsSupport: PropTypes.bool.isRequired,
   removeItem: PropTypes.func.isRequired,
   removeList: PropTypes.func.isRequired,
-  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateList: PropTypes.func.isRequired,
   wishlistMode: PropTypes.string.isRequired,
   isInitializing: PropTypes.bool,
   lists: PropTypes.arrayOf(PropTypes.shape()),
   preferredFulfillmentMethod: PropTypes.string,
   preferredLocation: PropTypes.shape(),
+  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
   userSearch: PropTypes.shape(),
 };
 
@@ -330,6 +343,7 @@ FavoriteLists.defaultProps = {
   lists: [],
   userSearch: {},
   preferredFulfillmentMethod: null,
+  shopFulfillmentMethods: [],
   preferredLocation: null,
   isInitializing: true,
 };

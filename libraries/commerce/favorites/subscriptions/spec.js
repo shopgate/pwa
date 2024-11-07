@@ -100,6 +100,7 @@ jest.mock('../selectors', () => ({
   makeGetFavorites: jest.fn(() => mockedMakeGetFavoritesReturnValue),
   makeGetProductRelativesOnFavorites: jest.fn(() =>
     jest.fn().mockReturnValue(mockedGetProductRelativesOnFavoritesReturnValue)),
+  getUseGetFavoriteIdsPipeline: jest.fn().mockReturnValue(false),
 }));
 
 jest.mock('../actions/addFavorites', () =>
@@ -528,6 +529,7 @@ describe('Favorites - subscriptions', () => {
         await expect(invoke(refreshFavorites$, {
           dispatch,
           action: { listId: mockedDefaultListId },
+          getState,
         })).resolves.toBeUndefined();
       });
 
@@ -535,6 +537,7 @@ describe('Favorites - subscriptions', () => {
         await invoke(refreshFavorites$, {
           dispatch,
           action: { listId: mockedDefaultListId },
+          getState,
         });
 
         expect(fetchFavorites).toHaveBeenCalledTimes(1);

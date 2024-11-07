@@ -3,6 +3,7 @@ const FILTER = 'filter';
 
 // CONTENTS
 const PRICE_RANGE = 'price-range';
+const SORT = 'sort-options';
 const SELECTOR = 'selector';
 const APPLY_BUTTON = 'apply-button';
 const RESET_BUTTON = 'reset-button';
@@ -19,9 +20,14 @@ export const FILTER_PRICE_RANGE_BEFORE = `${FILTER}.${PRICE_RANGE}.${BEFORE}`;
 /** @deprecated Use PORTAL_FILTER_PRICE_RANGE_AFTER instead  */
 export const FILTER_PRICE_RANGE_AFTER = `${FILTER}.${PRICE_RANGE}.${AFTER}`;
 
+/** @deprecated Use PORTAL_FILTER_SORT_OPTIONS instead  */
+export const FILTER_SORT_OPTIONS = `${FILTER}.${SORT}`;
+
 export const PORTAL_FILTER_PRICE_RANGE = FILTER_PRICE_RANGE;
 export const PORTAL_FILTER_PRICE_RANGE_BEFORE = FILTER_PRICE_RANGE_BEFORE;
 export const PORTAL_FILTER_PRICE_RANGE_AFTER = FILTER_PRICE_RANGE_AFTER;
+
+export const PORTAL_FILTER_SORT_OPTIONS = FILTER_SORT_OPTIONS;
 
 export const PORTAL_FILTER_SELECTOR = `${FILTER}.${SELECTOR}`;
 export const PORTAL_FILTER_SELECTOR_BEFORE = `${FILTER}.${SELECTOR}.${BEFORE}`;

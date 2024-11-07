@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import EmbeddedMedia from '../EmbeddedMedia';
 import parseHTML from '../../helpers/html/parseHTML';
+import connect from './connector';
 
 /**
  * HtmlSanitizer component.
  */
 class HtmlSanitizer extends Component {
   static propTypes = {
+    navigate: PropTypes.func.isRequired,
     children: PropTypes.string,
     className: PropTypes.string,
+    comfortCookiesAccepted: PropTypes.bool,
     decode: PropTypes.bool,
     processStyles: PropTypes.bool,
     settings: PropTypes.shape(),
+    statisticsCookiesAccepted: PropTypes.bool,
     wrapper: PropTypes.func,
   };
 
   static defaultProps = {
     children: '',
-    className: null,
+    className: '',
     decode: false,
     processStyles: false,
     settings: {},
     wrapper: EmbeddedMedia,
+    comfortCookiesAccepted: false,
+    statisticsCookiesAccepted: false,
   };
 
   /**
@@ -49,7 +56,11 @@ class HtmlSanitizer extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children;
+    return (
+      nextProps.children !== this.props.children ||
+      nextProps.comfortCookiesAccepted !== this.props.comfortCookiesAccepted ||
+      nextProps.statisticsCookiesAccepted !== this.props.statisticsCookiesAccepted
+    );
   }
 
   /**
@@ -84,7 +95,11 @@ class HtmlSanitizer extends Component {
 
       if (href) {
         event.preventDefault();
-        this.props.settings.handleClick(href, target);
+        if (this.props.settings.handleClick) {
+          this.props.settings.handleClick(href, target);
+        } else {
+          this.props.navigate(href, target);
+        }
       }
     }
   };
@@ -94,28 +109,38 @@ class HtmlSanitizer extends Component {
    * @returns {JSX}
    */
   render() {
+    const cookieConsentSettings = {
+      comfortCookiesAccepted: this.props.comfortCookiesAccepted,
+      statisticsCookiesAccepted: this.props.statisticsCookiesAccepted,
+    };
+
     const innerHTML = {
       __html: parseHTML(
         this.props.children,
         this.props.decode,
         this.props.settings,
-        this.props.processStyles
+        this.props.processStyles,
+        cookieConsentSettings
       ),
     };
 
     const { wrapper: Wrapper } = this.props;
 
     return (
-      <Wrapper>
+      <Wrapper cookieConsentSettings={cookieConsentSettings}>
         <div
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={innerHTML}
           ref={this.htmlContainer}
-          className={this.props.className}
+          className={classNames(this.props.className, 'common__html-sanitizer')}
         />
       </Wrapper>
     );
   }
 }
 
-export default HtmlSanitizer;
+HtmlSanitizer.propTypes = {
+  navigate: PropTypes.func.isRequired,
+};
+
+export default connect(HtmlSanitizer);

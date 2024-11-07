@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { isBeta } from '@shopgate/engage/core/helpers';
 import { getGroupsFromProperties } from '../helpers/getGroupsFromProperties';
-import { isBeta } from '../../../../core';
 import Content from '../Content';
 
-jest.mock('../../../../core', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   isBeta: jest.fn(),
 }));
 

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating (product header) Rendering should render rating when data is available 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Rating)
+    productId="foo"
+  >
+    <Rating
+      dispatch={[Function]}
+      productId="foo"
+      rating={
+        Object {
+          "average": 50,
+          "count": 4,
+        }
+      }
+    >
+      <SurroundPortals
+        portalName="product.rating"
+      >
+        <div
+          aria-hidden={true}
+          className="css-1w47iqp"
+          onClick={[Function]}
+          role="link"
+        >
+          <RatingStars
+            display="big"
+            value={50}
+          />
+          <RatingCount
+            count={4}
+            prominent={true}
+          >
+            <Translate
+              acceptPlainTextWithPlaceholders={false}
+              className="css-a7xi3l css-760a0s engage__reviews__rating-count"
+              params={
+                Object {
+                  "count": 4,
+                  "prominent": true,
+                }
+              }
+              role={null}
+              string="reviews.review_count"
+              transform={null}
+            >
+              <span
+                className="css-a7xi3l css-760a0s engage__reviews__rating-count"
+                role={null}
+              >
+                reviews.review_count
+              </span>
+            </Translate>
+          </RatingCount>
+        </div>
+      </SurroundPortals>
+    </Rating>
+  </Connect(Rating)>
+</Provider>
+`;

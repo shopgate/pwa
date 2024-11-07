@@ -232,7 +232,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           role="text"
                         >
                           <div
-                            className="css-5lxuz4 rating-stars-empty"
+                            className="css-4s85e9 rating-stars-empty"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -252,7 +252,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -288,7 +288,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -324,7 +324,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -360,7 +360,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -396,7 +396,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -416,7 +416,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -436,7 +436,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -472,7 +472,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -508,7 +508,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -544,7 +544,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -580,7 +580,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -692,7 +692,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           role="text"
                         >
                           <div
-                            className="css-5lxuz4 rating-stars-empty"
+                            className="css-4s85e9 rating-stars-empty"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -712,7 +712,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -748,7 +748,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -784,7 +784,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -820,7 +820,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -856,7 +856,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -876,7 +876,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -896,7 +896,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -932,7 +932,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -968,7 +968,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1004,7 +1004,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1040,7 +1040,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1152,7 +1152,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           role="text"
                         >
                           <div
-                            className="css-5lxuz4 rating-stars-empty"
+                            className="css-4s85e9 rating-stars-empty"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1172,7 +1172,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1208,7 +1208,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1244,7 +1244,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1280,7 +1280,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1316,7 +1316,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1336,7 +1336,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1356,7 +1356,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1392,7 +1392,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1428,7 +1428,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1464,7 +1464,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1500,7 +1500,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1612,7 +1612,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           role="text"
                         >
                           <div
-                            className="css-5lxuz4 rating-stars-empty"
+                            className="css-4s85e9 rating-stars-empty"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1632,7 +1632,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1668,7 +1668,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1704,7 +1704,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1740,7 +1740,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1776,7 +1776,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1796,7 +1796,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1816,7 +1816,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1852,7 +1852,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1888,7 +1888,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1924,7 +1924,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -1960,7 +1960,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2089,13 +2089,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button css-4imzno  ui-shared__ripple-button"
+                              className="ui-shared__button css-19qtnye  ui-shared__ripple-button"
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="ui-shared__button css-4imzno  ui-shared__ripple-button css-1rn65c0 common__button"
+                                className="ui-shared__button css-19qtnye  ui-shared__ripple-button css-1rn65c0 common__button"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
@@ -2107,7 +2107,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   fill={true}
                                   onClick={[Function]}
                                   onComplete={[Function]}
-                                  overflow={false}
+                                  overflow={true}
                                   size={null}
                                 >
                                   <div
@@ -2117,6 +2117,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                     style={null}
                                   >
                                     <Translate
+                                      acceptPlainTextWithPlaceholders={false}
                                       className={null}
                                       params={
                                         Object {
@@ -2287,7 +2288,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                           role="text"
                         >
                           <div
-                            className="css-5lxuz4 rating-stars-empty"
+                            className="css-4s85e9 rating-stars-empty"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2307,7 +2308,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2343,7 +2344,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2379,7 +2380,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2415,7 +2416,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2451,7 +2452,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2471,7 +2472,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2491,7 +2492,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2527,7 +2528,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2563,7 +2564,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2599,7 +2600,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2635,7 +2636,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2747,7 +2748,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                           role="text"
                         >
                           <div
-                            className="css-5lxuz4 rating-stars-empty"
+                            className="css-4s85e9 rating-stars-empty"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2767,7 +2768,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2803,7 +2804,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2839,7 +2840,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2875,7 +2876,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2911,7 +2912,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2931,7 +2932,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-13xh6j9 rating-stars-filled"
+                            className="css-1m683rn rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2951,7 +2952,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -2987,7 +2988,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3023,7 +3024,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3059,7 +3060,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
@@ -3095,7 +3096,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
-                                    className="css-yys9hb "
+                                    className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
                                       Object {
                                         "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",

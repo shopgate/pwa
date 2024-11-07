@@ -5,6 +5,9 @@ import {
   APP_WILL_START,
   PWA_DID_APPEAR,
   PWA_DID_DISAPPEAR,
+  OPEN_PUSH_NOTIFICATION,
+  OPEN_UNIVERSAL_LINK,
+  OPEN_DEEP_LINK,
 } from '../constants/ActionTypes';
 import { main$ } from './main';
 
@@ -50,3 +53,21 @@ export const pwaDidDisappear$ = main$
       route: getCurrentRoute(params.getState()),
     },
   }));
+
+/**
+ * Emits when a push message was opened.
+ */
+export const pushNotificationOpened$ = main$
+  .filter(({ action }) => action.type === OPEN_PUSH_NOTIFICATION);
+
+/**
+ * Emits when a universal link was opened.
+ */
+export const universalLinkOpened$ = main$
+  .filter(({ action }) => action.type === OPEN_UNIVERSAL_LINK);
+
+/**
+ * Emits when a deeplink was opened.
+ */
+export const deeplinkOpened$ = main$
+  .filter(({ action }) => action.type === OPEN_DEEP_LINK);

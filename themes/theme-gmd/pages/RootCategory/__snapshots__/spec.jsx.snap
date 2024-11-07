@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pages: <RootCategory /> should render  1`] = `
-<MockedView
-  aria-hidden={false}
->
+<MockedView>
   <DefaultBar
     title="titles.categories"
   />
@@ -29,7 +27,10 @@ exports[`Pages: <RootCategory /> should render  1`] = `
           },
         ]
       }
+      parentCategory={null}
       prerender={8}
+      showAllProducts={false}
+      showImages={false}
     />
   </SurroundPortals>
 </MockedView>

@@ -1,43 +1,31 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { Conditioner } from '@shopgate/pwa-core';
-import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import {
+  ResponsiveContainer,
+  TaxDisclaimer,
+} from '@shopgate/engage/components';
 import { Section } from '@shopgate/engage/a11y';
 import {
+  Characteristics,
+  Options,
   ProductProperties,
   RelationsSlider,
   Description,
-  ProductUnitQuantityPicker,
-  OrderQuantityHint,
-} from '@shopgate/engage/product';
+  UnitQuantityPickerWithSection,
+} from '@shopgate/engage/product/components';
 import {
   FulfillmentSelector,
   FulfillmentSheet,
   FulfillmentPathSelector,
 } from '@shopgate/engage/locations';
 import { Reviews } from '@shopgate/engage/reviews';
+import { ProductContext } from '@shopgate/engage/product/contexts';
 import Media from '../Media';
 import Header from '../Header';
-import Characteristics from '../Characteristics';
-import Options from '../Options';
 import AppBar from '../AppBar';
 import ContentWide from '../ContentWide';
 import connect from './connector';
-import { ProductContext } from '../../context';
-
-const styles = {
-  quantityPicker: css({
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-  }).toString(),
-  quantityHint: css({
-    marginBottom: -4,
-    paddingLeft: 16,
-  }).toString(),
-};
 
 /**
  * The product content component.
@@ -180,17 +168,10 @@ class ProductContent extends PureComponent {
         <AppBar productId={productId} />
         <ProductContext.Provider value={contextValue}>
           <ResponsiveContainer breakpoint="xs" appAlways>
-            <Media />
+            <Media aria-hidden />
             <Header />
             <RelationsSlider desiredPosition="header" />
-            <Section title="product.sections.quantity">
-              <ProductUnitQuantityPicker className={styles.quantityPicker}>
-                <OrderQuantityHint
-                  productId={variantId || productId}
-                  className={styles.quantityHint}
-                />
-              </ProductUnitQuantityPicker>
-            </Section>
+            <UnitQuantityPickerWithSection productId={productId} variantId={variantId} />
             <Section title="product.sections.options">
               <Characteristics productId={productId} variantId={variantId} />
               <Options />

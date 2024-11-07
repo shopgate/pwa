@@ -119,6 +119,7 @@ class Selector extends PureComponent {
             renderLabel={this.renderLabel}
             testId={id}
             handleLabel={i18n.text('filter.filter_by', { label })}
+            className={styles.accordion}
           >
             <div className={styles.content}>
               {values.map(value => (
