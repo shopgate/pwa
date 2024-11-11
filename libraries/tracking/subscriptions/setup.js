@@ -8,6 +8,9 @@ import {
   CODE_TRACKING,
   defaultClientInformation,
 } from '@shopgate/pwa-core';
+import { registerEvents } from '@shopgate/engage/core/commands';
+import { appWillStart$ } from '@shopgate/engage/core/streams';
+import { event } from '@shopgate/engage/core/classes';
 import { TYPE_PHONE, OS_ALL, OS_ANDROID } from '@shopgate/pwa-common/constants/Device';
 import appConfig, { shopNumber, componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import core from '@shopgate/tracking-core/core/Core';
@@ -24,6 +27,15 @@ import { track } from '../helpers/index';
  * @param {Function} subscribe The subscribe function.
  */
 export default function setup(subscribe) {
+  subscribe(appWillStart$, () => {
+    registerEvents(['nativeSgTrackingEventFired']);
+
+    // Route SgTracking events sent from the app to the tracking system
+    event.addCallback('nativeSgTrackingEventFired', ({ name, params }) => {
+      track(name, params);
+    });
+  });
+
   /**
    * Gets triggered when the app starts.
    */
