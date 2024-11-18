@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.20.3](https://github.com/shopgate/pwa/compare/v7.20.2...v7.20.3) (2024-11-18)
+
+#### :house: Internal
+* [#1293](https://github.com/shopgate/pwa/pull/1293) Cleaned up changelog files after merging codebases ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.20.0](https://github.com/shopgate/pwa/compare/...v7.20.0) (2024-11-07)
 
 #### :rocket: Enhancement
