@@ -24,7 +24,8 @@ const sanitizeMeta = (meta = {}) => ({
 });
 
 /**
- * Lorem Ipsum
+ * Creates the SOFT_OPT_IN_SHOWN Redux action object that's supposed to be dispatched when a
+ * soft opt-in (e.g. push or tracking) was shown.
  * @param {Object} params Action params
  * @param {OptInMeta} params.meta Meta data for the action
  * @returns {Object} The Redux action object
@@ -35,7 +36,8 @@ export const softOptInShown = ({ meta } = {}) => ({
 });
 
 /**
- * Lorem Ipsum
+ * Creates the SOFT_OPT_IN_SELECTED Redux action object that's supposed to be dispatched when a
+ * a decision inside a soft opt-in (e.g. push or tracking) was taken.
  * @param {Object} params Action params
  * @param {"approved"|"denied"|"later"|"approvedAll"|"deniedAll"|"manage"} params.selection
  * User selection
@@ -49,7 +51,8 @@ export const softOptInSelected = ({ selection, meta }) => ({
 });
 
 /**
- * Lorem Ipsum
+ * Creates the HARD_OPT_IN_SHOWN Redux action object that's supposed to be dispatched when a
+ * hard opt-in (native permission dialog) was shown.
  * @param {Object} params Action params
  * @param {string} params.permissionId Permission id the action was dispatched for
  * @param {OptInMeta} params.meta Meta data for the action
@@ -62,7 +65,8 @@ export const hardOptInShown = ({ permissionId, meta }) => ({
 });
 
 /**
- * Lorem Ipsum
+ * Creates the HARD_OPT_IN_SELECTED Redux action object that's supposed to be dispatched when a
+ * a decision inside a hard opt-in (native permission dialog) was taken.
  * @param {Object} params Action params
  * @param {string} params.permissionId Permission id the action was dispatched for
  * @param {string} params.status Permission status
