@@ -72,7 +72,7 @@ export const address = css({
   display: 'flex',
   flexFlow: 'row nowrap',
   color: `var(--color-text-low-emphasis, ${themeColors.gray})`,
-  marginBottom: gapM,
+  marginBottom: 4,
 }).toString();
 
 export const addressIcon = css({
@@ -127,6 +127,13 @@ export const selectLocationButtonWrapper = css({
   padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
   [responsiveMediaQuery('>=sm', { webOnly: true })]: {
     padding: `0 0 ${gap.small}px 0`,
+  },
+});
+
+export const stockInfoContainer = css({
+  marginTop: 8,
+  ':empty': {
+    display: 'none',
   },
 });
 
