@@ -15,7 +15,11 @@ import {
 } from '@shopgate/engage/core/constants';
 import { logger, hasWebBridge } from '@shopgate/engage/core/helpers';
 
-import { appPermissionStatusReceived } from '../../action-creators';
+import {
+  appPermissionStatusReceived,
+  hardOptInShown,
+  hardOptInSelected,
+} from '../../action-creators';
 import grantPermissions from '../grantPermissions';
 import { createMockedPermissions } from '../../helpers/appPermissions';
 
@@ -144,16 +148,26 @@ describe('engage > core > actions > grantPermissions', () => {
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId], undefined);
     expect(requestAppPermissions).toHaveBeenCalledWith([{ permissionId }], undefined);
 
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenCalledTimes(6);
+
     expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
     expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
       permissionId,
       status: PERMISSION_STATUS_NOT_DETERMINED,
     }));
-    expect(dispatch).toHaveBeenNthCalledWith(3, expect.any(Function));
-    expect(dispatch).toHaveBeenNthCalledWith(4, appPermissionStatusReceived({
+    expect(dispatch).toHaveBeenNthCalledWith(3, hardOptInShown({
+      permissionId,
+      meta: {},
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(5, appPermissionStatusReceived({
       permissionId,
       status: PERMISSION_STATUS_GRANTED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(6, hardOptInSelected({
+      permissionId,
+      status: PERMISSION_STATUS_GRANTED,
+      meta: {},
     }));
 
     expect(openAppSettings).not.toHaveBeenCalled();
@@ -169,16 +183,25 @@ describe('engage > core > actions > grantPermissions', () => {
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
 
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenCalledTimes(6);
     expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
     expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
       permissionId,
       status: PERMISSION_STATUS_NOT_DETERMINED,
     }));
-    expect(dispatch).toHaveBeenNthCalledWith(3, expect.any(Function));
-    expect(dispatch).toHaveBeenNthCalledWith(4, appPermissionStatusReceived({
+    expect(dispatch).toHaveBeenNthCalledWith(3, hardOptInShown({
+      permissionId,
+      meta: {},
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(5, appPermissionStatusReceived({
       permissionId,
       status: PERMISSION_STATUS_DENIED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(6, hardOptInSelected({
+      permissionId,
+      status: PERMISSION_STATUS_DENIED,
+      meta: {},
     }));
 
     expect(openAppSettings).not.toHaveBeenCalled();
@@ -195,16 +218,25 @@ describe('engage > core > actions > grantPermissions', () => {
     const granted = await grantPermissions({ permissionId })(dispatch);
     expect(granted).toBe(false);
 
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenCalledTimes(6);
     expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
     expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
       permissionId,
       status: PERMISSION_STATUS_NOT_DETERMINED,
     }));
-    expect(dispatch).toHaveBeenNthCalledWith(3, expect.any(Function));
-    expect(dispatch).toHaveBeenNthCalledWith(4, appPermissionStatusReceived({
+    expect(dispatch).toHaveBeenNthCalledWith(3, hardOptInShown({
+      permissionId,
+      meta: {},
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(5, appPermissionStatusReceived({
       permissionId,
       status: PERMISSION_STATUS_NOT_DETERMINED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(6, hardOptInSelected({
+      permissionId,
+      status: PERMISSION_STATUS_NOT_DETERMINED,
+      meta: {},
     }));
 
     expect(openAppSettings).not.toHaveBeenCalled();

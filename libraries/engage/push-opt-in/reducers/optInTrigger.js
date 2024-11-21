@@ -11,9 +11,11 @@ import {
 
 const defaultState = {
   appStartCount: 0,
+  appStartCountAbs: 0,
   appStartResetCount: 0,
 
   ordersPlacedCount: 0,
+  ordersPlacedCountAbs: 0,
   ordersPlacedResetCount: 0,
 
   lastPopupAt: null,
@@ -32,6 +34,7 @@ const pushOptInReducer = (state = defaultState, action) => {
       return {
         ...state,
         appStartCount: state.appStartCount + 1,
+        appStartCountAbs: state.appStartCountAbs + 1,
       };
     }
     case PUSH_OPT_IN_RESET_APP_START_COUNT: {
@@ -53,6 +56,7 @@ const pushOptInReducer = (state = defaultState, action) => {
       return {
         ...state,
         ordersPlacedCount: state.ordersPlacedCount + 1,
+        ordersPlacedCountAbs: state.ordersPlacedCountAbs + 1,
       };
     }
     case PUSH_OPT_IN_RESET_ORDERS_PLACED_COUNT: {
@@ -73,7 +77,7 @@ const pushOptInReducer = (state = defaultState, action) => {
     case PUSH_OPT_IN_SET_LAST_POPUP_TIMESTAMP: {
       return {
         ...state,
-        lastPopupAt: Date.now(),
+        lastPopupAt: new Date(Date.now()).toISOString(),
       };
     }
     case PUSH_OPT_IN_INCREASE_REJECTION_COUNT: {

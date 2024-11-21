@@ -21,6 +21,7 @@ import grantPermissions from './grantPermissions';
  * @param {string} options.modal.confirm Label for the confirm button.
  * @param {string} options.modal.dismiss Label for the dismiss button.
  * @param {Object} options.modal.params Additional parameters for i18n strings.
+ * @param {Object} [options.meta={}] Additional meta data used for opt-in tracking actions
  * @return { Function } A redux thunk.
  */
 const grantPushPermissions = (options = {}) => (dispatch) => {
@@ -29,6 +30,7 @@ const grantPushPermissions = (options = {}) => (dispatch) => {
     useRationaleModal = false,
     modal = {},
     rationaleModal = {},
+    meta = {},
   } = options;
 
   return dispatch(grantPermissions({
@@ -42,6 +44,7 @@ const grantPushPermissions = (options = {}) => (dispatch) => {
       ...modal,
     },
     rationaleModal,
+    meta,
   }));
 };
 

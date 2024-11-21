@@ -10,6 +10,12 @@ import {
   availablePermissionsIds,
 } from '@shopgate/engage/core/constants';
 import { logger, hasSGJavaScriptBridge, hasWebBridge } from '@shopgate/engage/core/helpers';
+import {
+  softOptInShown,
+  softOptInSelected,
+  hardOptInShown,
+  hardOptInSelected,
+} from '../action-creators';
 import requestAppPermission from './requestAppPermission';
 import requestAppPermissionStatus from './requestAppPermissionStatus';
 import { createMockedPermissions } from '../helpers/appPermissions';
@@ -39,6 +45,7 @@ import { createMockedPermissions } from '../helpers/appPermissions';
  * requested if not already granted,
  * @param {boolean} [options.resolveWithData=false] If set to TRUE the Promise will resolve with
  * data if available (e.g. geolocation).
+ * @param {Object} [options.meta={}] Additional meta data used for opt-in tracking actions
  * @return { Function } A redux thunk.
  */
 const grantPermissions = (options = {}) => dispatch => new Promise(async (resolve) => {
@@ -50,6 +57,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     modal: modalOptions = {},
     requestPermissions = true,
     resolveWithData = false,
+    meta = {},
   } = options;
 
   let dispatchMock;
@@ -97,11 +105,18 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     }
 
     if (useRationaleModal) {
+      dispatch(softOptInShown({ meta }));
+
       const requestAllowed = await dispatch(showModal({
         message: rationaleModalOptions.message || '',
         confirm: rationaleModalOptions.confirm || '',
         dismiss: rationaleModalOptions.dismiss || '',
         params: rationaleModalOptions.params,
+      }));
+
+      dispatch(softOptInSelected({
+        selection: requestAllowed ? 'approved' : 'later',
+        meta,
       }));
 
       if (requestAllowed === false) {
@@ -110,11 +125,22 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       }
     }
 
+    dispatch(hardOptInShown({
+      permissionId,
+      meta,
+    }));
+
     // Trigger the native permissions dialog.
     ({ status, data } = await dispatch(requestAppPermission({
       permissionId,
       dispatchMock,
     })));
+
+    dispatch(hardOptInSelected({
+      permissionId,
+      status,
+      meta,
+    }));
 
     // The user denied the permissions within the native dialog.
     if ([PERMISSION_STATUS_DENIED, PERMISSION_STATUS_NOT_DETERMINED].includes(status)) {

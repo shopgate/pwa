@@ -58,7 +58,17 @@ export const cookieConsentUpdated$ = cookieConsentSetInternal$
   .filter(([{ action: actionPrev }, { action: actionCurrent }]) =>
     actionPrev.comfortCookiesAccepted !== actionCurrent.comfortCookiesAccepted
       || actionPrev.statisticsCookiesAccepted !== actionCurrent.statisticsCookiesAccepted)
-  .switchMap(([, latest]) => Observable.of(latest));
+  .switchMap(([previous, latest]) => {
+    const { type, ...prevPayload } = previous.action;
+
+    return Observable.of({
+      ...latest,
+      action: {
+        ...latest.action,
+        previous: prevPayload,
+      },
+    });
+  });
 
 /**
  * Gets triggered when the cookie consent has been updated by the user or handled already.

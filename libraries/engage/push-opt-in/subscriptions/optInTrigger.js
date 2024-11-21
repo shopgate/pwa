@@ -15,6 +15,7 @@ import {
   PERMISSION_ID_PUSH,
   PERMISSION_STATUS_NOT_DETERMINED,
 } from '@shopgate/engage/core/constants';
+import { softOptInShown } from '@shopgate/engage/core/action-creators';
 import { requestAppPermissionStatus } from '@shopgate/engage/core/actions';
 import { cookieConsentInitialized$ } from '@shopgate/engage/tracking/streams';
 import {
@@ -30,7 +31,7 @@ import {
   PUSH_OPT_IN_OPT_IN_POSTPONED,
 } from '../constants';
 
-import { getPushOptInTriggerState } from '../selectors';
+import { getPushOptInTriggerState, getPushOptInTrackingMeta } from '../selectors';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -105,12 +106,16 @@ export default function pushOptIn(subscribe) {
 
     const mustShowModal = Number(configValue.value) > 0 && configCountState >= configValue.value;
     const hasRepeats = configValue.repeats === null || resetCountState <= configValue.repeats;
-    const minDaysElapsed = (Date.now() - state.lastPopupAt) >= (minDaysBetweenOptIns * DAY_IN_MS);
+    const minDaysElapsed =
+      Date.now() - new Date(state.lastPopupAt) >= minDaysBetweenOptIns * DAY_IN_MS;
 
     if (mustShowModal && hasRepeats && minDaysElapsed) {
+      const meta = getPushOptInTrackingMeta(getState());
+
+      dispatch(softOptInShown({ meta }));
       dispatch(setLastPopupTimestamp());
       dispatch(resetAction());
-      dispatch(showPushOptInModal());
+      dispatch(showPushOptInModal(configKey));
     }
   };
 

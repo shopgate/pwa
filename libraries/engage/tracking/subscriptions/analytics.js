@@ -1,4 +1,15 @@
 import {
+  softOptInShown$,
+  softOptInSelected$,
+  hardOptInShown$,
+  hardOptInSelected$,
+  routeWillEnter$,
+} from '@shopgate/engage/core/streams';
+import {
+  getCurrentQuery,
+} from '@shopgate/engage/core/selectors';
+import { track } from '@shopgate/engage/tracking/helpers';
+import {
   reloadApp,
 } from '@shopgate/engage/core/action-creators';
 import {
@@ -12,6 +23,29 @@ import {
   cookieConsentInitialized$,
   cookieConsentUpdated$,
 } from '../streams';
+import {
+  getIsCookieConsentHandled,
+} from '../selectors/cookieConsent';
+import {
+  PRIVACY_SETTINGS_PATTERN,
+} from '../constants';
+
+const softTrackingOptInShown$ = softOptInShown$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const softTrackingOptInSelected$ = softOptInSelected$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const hardTrackingOptInShown$ = hardOptInShown$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const hardTrackingOptInSelected$ = hardOptInSelected$
+  .filter(({ action }) => action?.meta?.permission === 'tracking');
+
+const privacySettingsWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === PRIVACY_SETTINGS_PATTERN)
+  // Only emit when cookie consent is already handled
+  .filter(({ getState }) => getIsCookieConsentHandled(getState()));
 
 /**
  * Analytics subscriptions
@@ -49,5 +83,101 @@ export default function analytics(subscribe) {
     // The PWA is reloaded whenever cookie consent settings changed to guarantee that all trackers
     // are turned off
     dispatch(reloadApp());
+  });
+
+  subscribe(softTrackingOptInShown$, ({ getState }) => {
+    track('customEvent', {
+      eventCategory: 'softTrackingOptIn',
+      eventAction: 'shown',
+      eventLabel: null,
+      additionalEventParams: {
+        eventName: 'softTrackingOptInShown',
+      },
+    }, getState());
+  });
+
+  subscribe(softTrackingOptInSelected$, ({ action, getState }) => {
+    const { selection, meta: { permission, ...meta } } = action;
+
+    track('customEvent', {
+      eventCategory: 'softTrackingOptIn',
+      eventAction: 'decision',
+      eventLabel: selection,
+      additionalEventParams: {
+        eventName: 'softTrackingOptInSelected',
+        selection,
+        ...meta,
+      },
+    }, getState());
+  });
+
+  subscribe(hardTrackingOptInShown$, ({ action, getState }) => {
+    const { meta: { permission, ...meta } } = action;
+
+    track('customEvent', {
+      eventCategory: 'hardTrackingOptIn',
+      eventAction: 'shown',
+      eventLabel: null,
+      additionalEventParams: {
+        eventName: 'hardTrackingOptInShown',
+        ...meta,
+      },
+    }, getState());
+  });
+
+  subscribe(hardTrackingOptInSelected$, ({ action, getState }) => {
+    const { selection, meta: { permission, ...meta } } = action;
+
+    track('customEvent', {
+      eventCategory: 'hardTrackingOptIn',
+      eventAction: 'decision',
+      eventLabel: selection,
+      additionalEventParams: {
+        eventName: 'hardTrackingOptInSelected',
+        selection,
+        ...meta,
+      },
+    }, getState());
+  });
+
+  subscribe(cookieConsentUpdated$, ({ action, getState }) => {
+    const { source = 'other' } = getCurrentQuery(getState());
+
+    const {
+      comfortCookiesAccepted: allowComfortNew,
+      statisticsCookiesAccepted: allowStatisticsNew,
+      previous: {
+        comfortCookiesAccepted: allowComfortOld,
+        statisticsCookiesAccepted: allowStatisticsOld,
+      } = {},
+    } = action;
+
+    track('customEvent', {
+      eventCategory: 'softTrackingSettings',
+      eventAction: 'changed',
+      eventLabel: null,
+      additionalEventParams: {
+        eventName: 'softTrackingSettingsChanged',
+        context: source,
+        allowComfortOld,
+        allowComfortNew,
+        allowStatisticsOld,
+        allowStatisticsNew,
+      },
+    }, getState());
+  });
+
+  subscribe(privacySettingsWillEnter$, ({ getState }) => {
+    const { source = 'other' } = getCurrentQuery(getState());
+
+    track('customEvent', {
+      eventCategory: 'softTrackingSettings',
+      eventAction: 'shown',
+      eventLabel: null,
+      additionalEventParams: {
+        eventName: 'softTrackingSettingsShown',
+        context: source,
+      },
+    }, getState());
   });
 }

@@ -1,6 +1,7 @@
 import { HIDE_PUSH_OPT_IN_MODAL, SHOW_PUSH_OPT_IN_MODAL } from '../constants';
 
 const defaultState = {
+  triggerType: null,
   isPushOptInModalVisible: false,
 };
 
@@ -15,12 +16,14 @@ const pushOptInModalReducer = (state = defaultState, action) => {
     case SHOW_PUSH_OPT_IN_MODAL: {
       return {
         ...state,
+        triggerType: action.triggerType,
         isPushOptInModalVisible: true,
       };
     }
     case HIDE_PUSH_OPT_IN_MODAL: {
       return {
         ...state,
+        triggerType: null,
         isPushOptInModalVisible: false,
       };
     }

@@ -42,6 +42,7 @@ export * from './actionTypes';
 export * from './appFeatures';
 export * from './deviceTypes';
 export * from './geolocationRequest';
+export * from './optIns';
 
 // Core Constants
 export * from '@shopgate/pwa-core/constants/ErrorManager';

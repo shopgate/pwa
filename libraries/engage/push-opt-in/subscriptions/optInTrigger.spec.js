@@ -228,7 +228,7 @@ describe('Push OptIn Subscriptions', () => {
           expect(getAppPermissions).toHaveBeenCalled();
           expect(getAppPermissions).toHaveBeenCalledWith([PERMISSION_ID_PUSH], undefined);
 
-          expect(dispatch).toHaveBeenCalledTimes(5);
+          expect(dispatch).toHaveBeenCalledTimes(6);
           expect(dispatch).toHaveBeenCalledWith(increaseCountAction());
           expect(dispatch).toHaveBeenCalledWith(setLastPopupTimestamp());
           expect(dispatch).toHaveBeenCalledWith(resetCountAction());
@@ -254,7 +254,7 @@ describe('Push OptIn Subscriptions', () => {
 
           // 3rd counter increase -> show opt-in
           await callback(callbackParams);
-          expect(dispatch).toHaveBeenCalledTimes(9);
+          expect(dispatch).toHaveBeenCalledTimes(10);
           expect(showPushOptInModal).toHaveBeenCalledTimes(1);
         });
 
