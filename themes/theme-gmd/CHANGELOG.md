@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.21.0](https://github.com/shopgate/pwa/compare/v7.20.3...v7.21.0) (2024-11-21)
+
+#### :rocket: Enhancement
+* [#1292](https://github.com/shopgate/pwa/pull/1292) Implemented tracking events for recently developed opt-in features ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.20.3](https://github.com/shopgate/pwa/compare/v7.20.2...v7.20.3) (2024-11-18)
 
 #### :house: Internal
