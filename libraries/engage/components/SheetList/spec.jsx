@@ -35,7 +35,7 @@ describe('<SheetList />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(SheetList).html()).toBe(null);
+    expect(wrapper.find(SheetList).isEmptyRender()).toBe(true);
   });
 
   it('should not render invalid children', () => {

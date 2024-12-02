@@ -1,5 +1,3 @@
-import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
-
 const mockProductId = 'foo';
 const hash = `{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","productId":"${mockProductId}"}`;
 
@@ -189,20 +187,6 @@ const getReviewsStateForId = (id) => {
   };
 };
 
-/**
- * Sets up mocks.
- * @param {bool} mockReviewsAvailable A feature flag "hasReviews" value.
- * @type {Function}
- */
-const setMocks = (mockReviewsAvailable = true) => {
-  jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
-    ...jest.requireActual('@shopgate/pwa-common/helpers/config'),
-    get hasReviews() { return mockReviewsAvailable; },
-    get showWriteReview() { return true; },
-    themeConfig: mockedConfig,
-  }));
-};
-
 export {
   hash,
   mockProductId,
@@ -214,5 +198,4 @@ export {
   mockedStateWithAll,
   reviewRouteMock,
   writeReviewRouteMock,
-  setMocks,
 };

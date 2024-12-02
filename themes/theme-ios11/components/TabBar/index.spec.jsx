@@ -40,12 +40,6 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-jest.mock('react-portal', () => (
-  ({ isOpened, children }) => (
-    isOpened ? children : null
-  )
-));
-
 /**
  * Creates a connected component
  * @param {Object} mockedState state
