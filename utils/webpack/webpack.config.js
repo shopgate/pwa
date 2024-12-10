@@ -235,7 +235,7 @@ const config = {
       new TerserPlugin({
         parallel: true,
         extractComments: false,
-        sourceMap: true,
+        sourceMap: !!devtool,
         terserOptions: {
           ecma: 5,
           keep_fnames: false,
