@@ -10,11 +10,6 @@ import ModalContainer from './index';
 // const store = configureStore({ modal: modalReducer });
 // Replacement for commented out configureStore()
 const store = {};
-jest.mock('react-portal', () => (
-  ({ isOpened, children }) => (
-    isOpened ? children : null
-  )
-));
 
 jest.mock('redux-logger', () => ({
   createLogger: () => () => next => action => next(action),

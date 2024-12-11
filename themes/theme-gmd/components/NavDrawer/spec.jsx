@@ -5,13 +5,6 @@ import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';
 import headerStyles from './components/Header/style';
 
-// Mock the portal
-jest.mock('react-portal', () => (
-  ({ isOpened, children }) => (
-    isOpened ? children : null
-  )
-));
-
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
 jest.mock('@shopgate/pwa-ui-shared/ClientInformation', () => () => 'ClientInformation');

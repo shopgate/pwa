@@ -11,7 +11,8 @@ jest.mock('@shopgate/engage/components', () => {
   return {
     SheetList,
     Sheet: ({ children }) => children,
-    Picker: require.requireActual('@shopgate/engage/components/Picker').default,
+    Picker: jest.requireActual('@shopgate/engage/components/Picker').default,
+    ReduxConnectedReactPortal: jest.requireActual('@shopgate/engage/components/ReduxConnectedReactPortal/__mocks__').default,
   };
 });
 

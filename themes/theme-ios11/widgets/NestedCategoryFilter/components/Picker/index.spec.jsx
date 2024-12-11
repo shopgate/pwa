@@ -24,10 +24,14 @@ jest.mock('@shopgate/engage/category', () => ({
 }));
 
 /**
+ * @typedef {import("@types/enzyme").ReactWrapper} ReactWrapper
+ */
+
+/**
  * Renders the component.
  * @param {Object} props The component props.
  * @param {Object} [state=mockedState] A mocked Redux state.
- * @return {Object} The mounted component.
+ * @return {ReactWrapper} The mounted component.
  */
 const renderComponent = (props = {}, state = mockedState) => {
   const store = configureStore([thunk])(state);

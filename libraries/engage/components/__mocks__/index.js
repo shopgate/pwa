@@ -1,6 +1,6 @@
 import noop from 'lodash/noop';
 /* eslint-disable require-jsdoc */
-import Sheet from '@shopgate/pwa-ui-shared/Sheet';
+import UISharedSheet from '@shopgate/pwa-ui-shared/Sheet';
 
 // ICONS IOS
 export const CartIconIOS = () => null;
@@ -98,13 +98,14 @@ export const PlaceholderLabel = ({ children }) => children;
 export const HtmlSanitizer = ({ children }) => children;
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
-export const SheetDrawer = Sheet;
+export const SheetDrawer = UISharedSheet;
 export const SheetList = ({ children }) => children;
 SheetList.Item = () => null;
 SheetList.Item.displayName = 'SheetList.Item';
 export const PriceDifference = () => 'PriceDifference';
 export const TaxDisclaimer = () => 'TaxDisclaimer';
 export const PickerUtilize = () => 'PickerUtilize';
+export const Sheet = jest.requireActual('@shopgate/pwa-ui-shared/Sheet').default;
 
 // HELPERS
 export const I18n = {
@@ -114,5 +115,6 @@ export const I18n = {
 };
 
 export { default as View, ViewContext } from '../View/__mocks__/index';
+export { default as ReduxConnectedReactPortal } from '../ReduxConnectedReactPortal/__mocks__/index';
 
 /* eslint-enable require-jsdoc */

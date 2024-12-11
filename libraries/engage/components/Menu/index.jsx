@@ -1,6 +1,6 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
-import Portal from 'react-portal';
+import { ReduxConnectedReactPortal } from '@shopgate/engage/components';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Position from './components/Position';
 import Item from './components/Item';
@@ -72,7 +72,7 @@ class Menu extends Component {
     const { children, isOpen, onClose } = this.props;
 
     return (
-      <Portal isOpened={isOpen}>
+      <ReduxConnectedReactPortal isOpened={isOpen}>
         <div className={styles.overlay}>
           <Backdrop isVisible level={0} opacity={0} onClick={onClose} />
           <Position offset={this.offset}>
@@ -89,7 +89,7 @@ class Menu extends Component {
             </div>
           </Position>
         </div>
-      </Portal>
+      </ReduxConnectedReactPortal>
     );
   }
 }
