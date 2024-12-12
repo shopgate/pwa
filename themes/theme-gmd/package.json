@@ -67,7 +67,7 @@
     "redux-mock-store": "^1.5.4",
     "reselect": "^4.1.8",
     "smoothscroll-polyfill": "^0.4.3",
-    "webpack": "4.39.1",
+    "webpack": "^4.47.0",
     "webpack-cli": "3.3.6"
   },
   "devDependencies": {
