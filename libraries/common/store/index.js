@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from '@redux-devtools/extension';
 import { persistState } from '@virtuous/redux-persister';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import benchmarkController from '@shopgate/pwa-benchmark';
@@ -18,7 +19,7 @@ const STATE_VERSION = 'v3';
 const storeKey = `shopgate-connect_${shopNumber}-${themeName}_${STATE_VERSION}`;
 
 /**
- * Returns a normalized initialState from the localstorage.
+ * Returns a normalized initialState from the local storage.
  * @returns {Object}
  */
 function getInitialState() {
@@ -47,11 +48,6 @@ export function configureStore(reducers, subscribers) {
   if (appConfig.benchmark) {
     benchmarkController.startup();
   }
-
-  const composeWithDevTools =
-    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-      : compose;
 
   const store = createStore(
     makeRootReducer(reducers),
