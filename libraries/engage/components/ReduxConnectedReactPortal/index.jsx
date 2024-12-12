@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Portal from 'react-portal';
 import { Provider, ReactReduxContext } from 'react-redux';
+import Portal from './Portal';
 
 /**
- * The ReduxConnectedReactPortal component acts as a wrapper around "react-portal" and injects the
- * Redux store to give children access to it.
- * @param {Object} props The component props
+ * @typedef {import("./Portal.d.ts").ReactPortalProps} ComponentProps
+ */
+
+/**
+ * ReduxConnectedReactPortal is a wrapper around "react-portal" v3 that ensures
+ * children rendered in the portal have access to the Redux store.
+ *
+ * This addresses the limitation introduced by the switch to the new Context API in react-redux v6,
+ * where the Redux store is only accessible to components within the StoreProvider. Since the Portal
+ * component renders its children outside the React component tree, this wrapper bridges the gap.
+ *
+ * @param {ComponentProps} props The component props
  * @returns {JSX}
  */
 const ReduxConnectedReactPortal = ({ children, ...props }) => (

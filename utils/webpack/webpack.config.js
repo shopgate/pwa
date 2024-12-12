@@ -62,6 +62,10 @@ const config = {
     alias: {
       ...rxPaths(),
       'react-dom': '@hot-loader/react-dom',
+      // Replace "react-portal" imports with a custom component that ensures
+      // Redux store access for its children, even when rendered outside the
+      // React component tree.
+      'react-portal': '@shopgate/engage/components/ReduxConnectedReactPortal',
     },
     modules: [
       path.resolve(themePath, 'widgets'),
