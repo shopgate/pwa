@@ -18,7 +18,7 @@ import {
   getCurrentRoute,
   hex2bin,
   getThemeSettings,
-  getCurrentSearchQuery,
+  getCurrentSearchQuery, PipelineRequest, appWillInit$, logger,
 } from '@shopgate/engage/core';
 import {
   receiveFavoritesWhileVisible$,
@@ -46,7 +46,7 @@ import {
 import {
   fetchLocations, fetchProductLocations, setPending, setUserGeolocation,
 } from './actions';
-import { setShowInventoryInLists, showInventoryInLists } from './helpers/showInventoryInLists';
+import { setShowInventoryInLists, showInventoryInLists } from './helpers';
 import fetchInventories from './actions/fetchInventories';
 import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
 import fetchProductInventories from './actions/fetchProductInventories';
@@ -95,6 +95,21 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
  * @param {Function} subscribe The subscribe function.
  */
 function locationsSubscriber(subscribe) {
+  subscribe(appWillInit$, ({ dispatch, getState }) => {
+    // check if location was set by user and is stored in redux
+    const location = getPreferredLocation(getState());
+    // if NO location has been set: get location from backend and set in redux
+    if (!location) {
+      new PipelineRequest('shopgate.user.getDefaultLocation').dispatch()
+        .then((result) => {
+          if (result) {
+            dispatch(selectLocation(result.location));
+          }
+        })
+        .catch(err => logger.error(err));
+    }
+  });
+
   subscribe(cookieConsentInitialized$, async ({ dispatch, getState }) => {
     if (!hasNewServices()) {
       // no ROPE stuff when connected with old services right now
