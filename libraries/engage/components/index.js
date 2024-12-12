@@ -31,7 +31,6 @@ export { default as ModalContainer, MODAL_EVENTS } from '@shopgate/pwa-common/co
 export { default as Picker } from './Picker';
 export { default as Portal } from '@shopgate/pwa-common/components/Portal';
 export { default as RangeSlider } from './RangeSlider';
-export { default as ConnectedReactPortal } from './ConnectedReactPortal';
 export { default as Route } from '@shopgate/pwa-common/components/Route';
 export { default as ScannerContainer } from '@shopgate/pwa-common/components/ScannerContainer';
 export { default as BaseSelect } from '@shopgate/pwa-common/components/Select';
@@ -199,3 +198,5 @@ export { default as Logo } from './Logo';
 export { default as PickerUtilize } from './PickerUtilize';
 export { default as Switch } from './Switch';
 export { default as SnackBarContainer } from './SnackBarContainer';
+export { default as ConnectedReactPortal } from './ConnectedReactPortal';
+export { default as ConnectedReactDOMPortal } from './ConnectedReactDOMPortal';

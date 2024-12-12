@@ -1,6 +1,5 @@
 import React from 'react';
-import { createPortal } from 'react-dom';
-import Sheet from '@shopgate/pwa-ui-shared/Sheet';
+import { Sheet, ConnectedReactDOMPortal } from '@shopgate/engage/components';
 
 const node = document.getElementById('portals');
 
@@ -10,10 +9,9 @@ const node = document.getElementById('portals');
  */
 function SheetDrawer(props) {
   return (
-    createPortal(
-      <Sheet {...props} />,
-      node
-    )
+    <ConnectedReactDOMPortal domNode={node}>
+      <Sheet {...props} />
+    </ConnectedReactDOMPortal>
   );
 }
 
