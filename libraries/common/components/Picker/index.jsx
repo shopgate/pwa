@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ReduxConnectedReactPortal } from '@shopgate/engage/components';
+import { ConnectedReactPortal } from '@shopgate/engage/components';
 import { withForwardedRef } from '@shopgate/engage/core';
 import PickerModal from './components/Modal';
 import PickerButton from './components/Button';
@@ -236,7 +236,7 @@ class Picker extends Component {
       >
         {React.createElement(this.props.buttonComponent, buttonProps)}
 
-        <ReduxConnectedReactPortal
+        <ConnectedReactPortal
           onClose={() => this.toggleOpenState(false)}
           isOpened
         >
@@ -245,7 +245,7 @@ class Picker extends Component {
             modalProps,
             React.createElement(this.props.listComponent, listProps)
           )}
-        </ReduxConnectedReactPortal>
+        </ConnectedReactPortal>
       </div>
     );
   }

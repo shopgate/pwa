@@ -53,7 +53,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
         </Icon>
       </MoreVert>
     </button>
-    <ReduxConnectedReactPortal
+    <ConnectedReactPortal
       isOpened={null}
     />
   </div>
@@ -75,7 +75,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
   >
     <MoreVert />
   </button>
-  <ReduxConnectedReactPortal
+  <ConnectedReactPortal
     isOpened={true}
   >
     <div
@@ -125,7 +125,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
         </div>
       </Position>
     </div>
-  </ReduxConnectedReactPortal>
+  </ConnectedReactPortal>
 </div>
 `;
 
@@ -135,7 +135,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] 
   className="css-13azwyo ui-shared__context-menu"
   data-test-id="contextMenu"
 >
-  <ReduxConnectedReactPortal
+  <ConnectedReactPortal
     isOpened={true}
   >
     <div
@@ -175,6 +175,6 @@ exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] 
         </div>
       </Position>
     </div>
-  </ReduxConnectedReactPortal>
+  </ConnectedReactPortal>
 </div>
 `;

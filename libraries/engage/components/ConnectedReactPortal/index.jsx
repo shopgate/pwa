@@ -8,7 +8,7 @@ import Portal from './Portal';
  */
 
 /**
- * ReduxConnectedReactPortal is a wrapper around "react-portal" v3 that ensures
+ * ConnectedReactPortal is a wrapper around "react-portal" v3 that ensures
  * children rendered in the portal have access to the Redux store.
  *
  * This addresses the limitation introduced by the switch to the new Context API in react-redux v6,
@@ -18,7 +18,7 @@ import Portal from './Portal';
  * @param {ComponentProps} props The component props
  * @returns {JSX}
  */
-const ReduxConnectedReactPortal = ({ children, ...props }) => (
+const ConnectedReactPortal = ({ children, ...props }) => (
   <ReactReduxContext.Consumer>
     {(ctx => (
       <Portal {...props}>
@@ -30,12 +30,12 @@ const ReduxConnectedReactPortal = ({ children, ...props }) => (
   </ReactReduxContext.Consumer>
 );
 
-ReduxConnectedReactPortal.propTypes = {
+ConnectedReactPortal.propTypes = {
   children: PropTypes.node,
 };
 
-ReduxConnectedReactPortal.defaultProps = {
+ConnectedReactPortal.defaultProps = {
   children: null,
 };
 
-export default ReduxConnectedReactPortal;
+export default ConnectedReactPortal;

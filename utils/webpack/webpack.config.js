@@ -65,7 +65,7 @@ const config = {
       // Replace "react-portal" imports with a custom component that ensures
       // Redux store access for its children, even when rendered outside the
       // React component tree.
-      'react-portal': '@shopgate/engage/components/ReduxConnectedReactPortal',
+      'react-portal': '@shopgate/engage/components/ConnectedReactPortal',
     },
     modules: [
       path.resolve(themePath, 'widgets'),

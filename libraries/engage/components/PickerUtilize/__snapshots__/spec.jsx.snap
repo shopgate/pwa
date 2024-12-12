@@ -90,7 +90,7 @@ exports[`<Picker /> should render the picker 1`] = `
                 </span>
               </button>
             </Button>
-            <ReduxConnectedReactPortal
+            <ConnectedReactPortal
               isOpened={true}
               onClose={[Function]}
             >
@@ -115,7 +115,7 @@ exports[`<Picker /> should render the picker 1`] = `
                   </Component>
                 </Sheet>
               </Component>
-            </ReduxConnectedReactPortal>
+            </ConnectedReactPortal>
           </div>
         </Picker>
       </ForwardRef(WithForwardedRef(Picker))>

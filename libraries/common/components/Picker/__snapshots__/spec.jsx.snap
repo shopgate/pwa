@@ -57,7 +57,7 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
         />
       </button>
     </PickerButton>
-    <ReduxConnectedReactPortal
+    <ConnectedReactPortal
       isOpened={true}
       onClose={[Function]}
     >
@@ -66,7 +66,7 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
         isOpen={false}
         onClose={[Function]}
       />
-    </ReduxConnectedReactPortal>
+    </ConnectedReactPortal>
   </div>
 </Picker>
 `;
