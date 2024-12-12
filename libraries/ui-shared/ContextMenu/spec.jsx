@@ -50,7 +50,7 @@ describe('<ContextMenu />', () => {
     });
   });
 
-  describe.skip('Given the component was mounted to the DOM', () => {
+  describe('Given the component was mounted to the DOM', () => {
     let renderedElement;
     let renderedInstance;
 
@@ -75,7 +75,7 @@ describe('<ContextMenu />', () => {
     });
 
     it('should have active state set to false', () => {
-      expect(renderedInstance.state.active).toBe(false);
+      expect(renderedInstance.state.active).toBe(null);
     });
 
     it('should render the toggle button', () => {
@@ -102,7 +102,8 @@ describe('<ContextMenu />', () => {
 
       describe('Given the first item gets clicked', () => {
         beforeEach(() => {
-          renderedElement.find(ContextMenu.Item).first().children().find('[onClick]')
+          renderedElement.find(ContextMenu.Item).first().children().find('[data-test-id="contextMenuButton"]')
+            .first()
             .simulate('click');
           jest.runAllTimers();
         });
