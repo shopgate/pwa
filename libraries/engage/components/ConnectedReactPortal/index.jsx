@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider, ReactReduxContext } from 'react-redux';
-import Portal from './Portal';
+import Portal from 'react-portal';
 
 /**
- * @typedef {import("./Portal.d.ts").ReactPortalProps} ComponentProps
+ * @typedef {import('@types/react-portal')} ReactPortal
  */
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * ConnectedReactPortal is a wrapper around "react-portal" v3 that ensures
  * children rendered in the portal have access to the Redux store.
@@ -15,8 +16,7 @@ import Portal from './Portal';
  * where the Redux store is only accessible to components within the StoreProvider. Since the Portal
  * component renders its children outside the React component tree, this wrapper bridges the gap.
  *
- * @param {ComponentProps} props The component props
- * @returns {JSX}
+ * @type {ReactPortal}
  */
 const ConnectedReactPortal = ({ children, ...props }) => (
   <ReactReduxContext.Consumer>
