@@ -20,7 +20,7 @@ class Item extends Component {
     isDisabled: PropTypes.bool,
     isSelected: PropTypes.bool,
     link: PropTypes.string,
-    linkComponent: PropTypes.func,
+    linkComponent: PropTypes.elementType,
     linkState: PropTypes.shape(),
     onClick: PropTypes.func,
     rightComponent: PropTypes.element,

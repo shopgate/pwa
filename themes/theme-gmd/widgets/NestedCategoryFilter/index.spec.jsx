@@ -18,14 +18,18 @@ jest.unmock('@shopgate/pwa-ui-shared');
 
 jest.mock('@shopgate/engage/components', () => ({
   SheetDrawer: props => <MockSheet {...props} />,
-  SheetList: require.requireActual('@shopgate/engage/components/SheetList').default,
+  SheetList: jest.requireActual('@shopgate/engage/components/SheetList').default,
 }));
+
+/**
+ * @typedef {import("@types/enzyme").ReactWrapper} ReactWrapper
+ */
 
 /**
  * Renders the component.
  * @param {Object} props The component props.
  * @param {Object} [state=mockedState] A mocked Redux state.
- * @return {Object} The mounted component.
+ * @return {ReactWrapper} The mounted component.
  */
 const renderComponent = (props = {}, state = mockedState) => {
   const store = configureStore([thunk])(state);

@@ -6,20 +6,20 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@shopgate/pwa-common": "7.20.3",
-    "react": "~16.12.0",
-    "react-dom": "~16.12.0",
-    "redux": "^4.0.1"
+    "react": "~16.14.0",
+    "react-dom": "~16.14.0",
+    "redux": "^4.2.1"
   },
   "dependencies": {
-    "classnames": "2.3.3",
+    "classnames": "2.5.1",
     "color": "^3.1.0",
     "glamor": "^2.20.40",
-    "prop-types": "~15.7.2",
+    "prop-types": "~15.8.1",
     "react-spring": "^8.0.27",
     "react-transition-group": "^2.2.1",
     "react-use": "~13.12.2"
   },
   "peerDependencies": {
-    "react": "~16.12.0"
+    "react": "~16.14.0"
   }
 }

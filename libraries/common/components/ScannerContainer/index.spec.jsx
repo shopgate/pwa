@@ -74,7 +74,7 @@ describe('<ScannerContainer />', () => {
 
   it('should open the scanner when the component mounts', async () => {
     const wrapper = createWrapper();
-    await wrapper.find(ScannerContainer).instance().componentDidMount();
+    await wrapper.find(ScannerContainer);
 
     expect(scannerDidOpen).toHaveBeenCalledTimes(1);
     expect(scannerOpenSpy).toHaveBeenCalledTimes(1);
@@ -82,7 +82,7 @@ describe('<ScannerContainer />', () => {
 
   it('should not open the scanner when the component mounts and the scanner is not supported', async () => {
     const wrapper = createWrapper('10.0.0');
-    await wrapper.find(ScannerContainer).instance().componentDidMount();
+    await wrapper.find(ScannerContainer);
 
     expect(scannerDidOpen).not.toHaveBeenCalled();
     expect(scannerOpenSpy).not.toHaveBeenCalled();

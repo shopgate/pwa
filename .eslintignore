@@ -12,3 +12,4 @@ coverage
 offline.js
 polyfill.js
 template.ejs
+*.d.ts

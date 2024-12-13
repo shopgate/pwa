@@ -90,12 +90,32 @@ exports[`<Picker /> should render the picker 1`] = `
                 </span>
               </button>
             </Button>
-            <Portal
+            <ConnectedReactPortal
               isOpened={true}
               onClose={[Function]}
-              onOpen={[Function]}
-              onUpdate={[Function]}
-            />
+            >
+              <Component
+                duration={300}
+                isOpen={false}
+                onClose={[Function]}
+              >
+                <Sheet
+                  duration={300}
+                  isOpen={false}
+                  onClose={[Function]}
+                  onDidOpen={[Function]}
+                  title="Picker label"
+                >
+                  <Component
+                    items={Array []}
+                    onSelect={[Function]}
+                    selectedIndex={-1}
+                  >
+                    <SheetList />
+                  </Component>
+                </Sheet>
+              </Component>
+            </ConnectedReactPortal>
           </div>
         </Picker>
       </ForwardRef(WithForwardedRef(Picker))>
