@@ -199,4 +199,4 @@ export { default as PickerUtilize } from './PickerUtilize';
 export { default as Switch } from './Switch';
 export { default as SnackBarContainer } from './SnackBarContainer';
 export { default as ConnectedReactPortal } from './ConnectedReactPortal';
-export { default as ConnectedReactDOMPortal } from './ConnectedReactDOMPortal';
+
