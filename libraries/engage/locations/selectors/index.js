@@ -184,6 +184,16 @@ export const getPreferredLocationAddress = (state) => {
 };
 
 /**
+ * Checks whether the default location set by the user has been migrated to data base yet.
+ * @param {Object} state State.
+ * @return {boolean}
+ */
+export const getDefaultLocationMigrated = (state) => {
+  const storage = getLocationsStorage(state);
+  return storage.defaultLocationMigrated;
+};
+
+/**
   Gets the users preferred location.
  * @param {Object} state State.
  * @param {Object} props Props.
