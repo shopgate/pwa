@@ -10,6 +10,7 @@ import {
   ERROR_PRODUCT_LOCATIONS,
   STORE_FULFILLMENT_METHOD,
   SELECT_LOCATION,
+  MIGRATE_DEFAULT_LOCATION,
   FETCH_FULFILLMENT_SLOTS_SUCCESS, RECEIVE_PRODUCT_INVENTORIES,
 } from '../constants';
 
@@ -36,6 +37,8 @@ const initialState = {
   locationsByFilter: {},
   // Available FO slots mapped by location.
   fulfillmentSlotsByLocation: {},
+  // whether default location selected by user has been migrated to data base
+  defaultLocationMigrated: false,
 };
 
 /* eslint-disable no-param-reassign */
@@ -151,6 +154,10 @@ export default (state = initialState, action) => {
 
       case SELECT_LOCATION:
         draft.preferredLocation.code = action.location?.code || null;
+        break;
+
+      case MIGRATE_DEFAULT_LOCATION:
+        draft.defaultLocationMigrated = true;
         break;
 
       default:
