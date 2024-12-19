@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const chalk = require('chalk');
+const crypto = require('crypto');
 const TerserPlugin = require('terser-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
@@ -30,6 +31,11 @@ const t = i18n(__filename);
 
 const devtool = isDev ? sourceMap : (process.env.SOURCE_MAPS || false);
 const fileSuffix = devtool ? '.sm' : '';
+
+// This is a workaround for the issue with the md4 hash algorithm after upgrading to node:18
+// Error: error:0308010C:digital envelope routines::unsupported
+const crypto_orig_createHash = crypto.createHash;
+crypto.createHash = algorithm => crypto_orig_createHash(algorithm === 'md4' ? 'sha256' : algorithm);
 
 const config = {
   mode: ENV,
