@@ -38,7 +38,13 @@ const MediaImage = ({
   }
 
   return (
-    <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
+    <SurroundPortals
+      portalName={PORTAL_PRODUCT_IMAGE}
+      portalProps={{
+        src: url,
+        resolutions,
+      }}
+    >
       <Image
         src={url}
         resolutions={resolutions}
