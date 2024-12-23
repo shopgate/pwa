@@ -150,7 +150,13 @@ class ProductImage extends Component {
     if (this.state.imageLoadingFailed || this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
+        <SurroundPortals
+          portalName={PORTAL_PRODUCT_IMAGE}
+          portalProps={{
+            src: this.props.src,
+            resolutions: this.props.resolutions,
+          }}
+        >
           <div
             className={classnames(styles.placeholderContainer(this.getImageRatio()), {
               [styles.innerShadow]: showInnerShadow,
