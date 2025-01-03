@@ -7,7 +7,7 @@ import { i18n, useWidgetSettings } from '../../../core';
 import { FulfillmentContext } from '../../locations.context';
 import { selectLocationButton, selectLocationButtonWrapper } from './Store.style';
 import connect from './StoreListSearch.connector';
-import { setDefaultLocation } from '../../actions';
+import { sendDefaultLocationCode } from '../../actions';
 
 /**
  * The StoreSelectLocationButton component.
@@ -30,7 +30,7 @@ const StoreSelectLocationButton = ({ setPostalCode }) => {
         setPostalCode(store.address.postalCode, product?.id);
       }
       selectLocation(store);
-      setDefaultLocation(store.code);
+      sendDefaultLocationCode(store.code);
     }
   }, [
     isAvailable,

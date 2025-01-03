@@ -10,7 +10,6 @@ import {
   ERROR_PRODUCT_LOCATIONS,
   STORE_FULFILLMENT_METHOD,
   SELECT_LOCATION,
-  MIGRATE_DEFAULT_LOCATION,
   FETCH_FULFILLMENT_SLOTS_SUCCESS, RECEIVE_PRODUCT_INVENTORIES,
 } from '../constants';
 
@@ -154,10 +153,6 @@ export default (state = initialState, action) => {
 
       case SELECT_LOCATION:
         draft.preferredLocation.code = action.location?.code || null;
-        break;
-
-      case MIGRATE_DEFAULT_LOCATION:
-        draft.defaultLocationMigrated = true;
         break;
 
       default:

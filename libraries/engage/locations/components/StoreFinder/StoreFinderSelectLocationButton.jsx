@@ -4,7 +4,7 @@ import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
 import { StoreFinderContext } from '../../locations.context';
 import { selectLocationButton, selectLocationButtonWrapper } from '../StoreList/Store.style';
-import { setDefaultLocation } from '../../actions';
+import { sendDefaultLocationCode } from '../../actions';
 
 /**
  * The StoreFinderSelectLocationButton component.
@@ -18,7 +18,7 @@ export const StoreFinderSelectLocationButton = () => {
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     selectLocation(store);
-    setDefaultLocation(store.code);
+    sendDefaultLocationCode(store.code);
   }, [selectLocation, store]);
 
   return (

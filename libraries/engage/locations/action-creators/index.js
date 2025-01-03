@@ -22,4 +22,3 @@ export { provideProductAlternativeLocation } from './provideProductAlternativeLo
 export { default as requestInventories } from './requestInventories';
 export { default as receiveInventories } from './receiveInventories';
 export { default as errorInventories } from './errorInventories';
-export { default as setDefaultLocationMigrated } from './setDefaultLocationMigrated';

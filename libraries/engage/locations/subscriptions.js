@@ -18,7 +18,7 @@ import {
   getCurrentRoute,
   hex2bin,
   getThemeSettings,
-  getCurrentSearchQuery, PipelineRequest, appWillInit$, logger,
+  getCurrentSearchQuery, appWillInit$,
 } from '@shopgate/engage/core';
 import {
   receiveFavoritesWhileVisible$,
@@ -61,6 +61,7 @@ import {
 import selectLocation from './action-creators/selectLocation';
 import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import selectGlobalLocation from './action-creators/selectGlobalLocation';
+import { fetchDefaultLocation } from './actions/fetchDefaultLocation';
 
 let initialLocationsResolve;
 let initialLocationsReject;
@@ -98,16 +99,9 @@ function locationsSubscriber(subscribe) {
   subscribe(appWillInit$, ({ dispatch, getState }) => {
     // check if location was set by user and is stored in redux
     const location = getPreferredLocation(getState());
-
     // if NO location has been set: get location from backend and set in redux
-    if (!location) {
-      new PipelineRequest('shopgate.user.getDefaultLocation').dispatch()
-        .then((result) => {
-          if (result) {
-            dispatch(selectLocation(result.location));
-          }
-        })
-        .catch(err => logger.error(err));
+    if (!location && hasNewServices) {
+      dispatch(fetchDefaultLocation);
     }
   });
 

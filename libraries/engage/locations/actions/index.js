@@ -8,7 +8,7 @@ export { default as fetchProductLocations } from './fetchProductLocations';
 export { default as submitReservation } from './submitReservation';
 export { default as setUserSearchGeolocation } from './setUserSearchGeolocation';
 export { default as setUserGeolocation } from './setUserGeolocation';
-export { default as setDefaultLocation } from './setDefaultLocation';
+export { default as sendDefaultLocationCode } from './sendDefaultLocationCode';
 
 /**
  * Sets pending state of locations
