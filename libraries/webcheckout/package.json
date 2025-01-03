@@ -19,6 +19,6 @@
   "devDependencies": {
     "@shopgate/pwa-common": "7.21.2",
     "@shopgate/pwa-core": "7.21.2",
-    "react": "~16.12.0"
+    "react": "~16.14.0"
   }
 }

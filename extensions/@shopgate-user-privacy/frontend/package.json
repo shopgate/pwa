@@ -1,6 +1,5 @@
 {
   "name": "@shopgate/user-privacy",
-  "version": "7.21.2",
   "description": "Shopgate Connect User Privacy Extension",
   "license": "Apache 2.0",
   "repository": {
@@ -12,9 +11,9 @@
     "@shopgate/pwa-common-commerce": "7.21.2",
     "@shopgate/pwa-core": "7.21.2",
     "@shopgate/pwa-ui-shared": "7.21.2",
-    "prop-types": "~15.7.2",
-    "react": "~16.12.0",
-    "react-redux": "^5.1.2",
-    "redux": "^4.0.1"
+    "prop-types": "~15.8.1",
+    "react": "~16.14.0",
+    "react-redux": "^8.1.3",
+    "redux": "^4.2.1"
   }
 }
