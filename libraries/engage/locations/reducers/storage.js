@@ -36,8 +36,6 @@ const initialState = {
   locationsByFilter: {},
   // Available FO slots mapped by location.
   fulfillmentSlotsByLocation: {},
-  // whether default location selected by user has been migrated to data base
-  defaultLocationMigrated: false,
 };
 
 /* eslint-disable no-param-reassign */

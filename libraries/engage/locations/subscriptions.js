@@ -44,7 +44,7 @@ import {
   getProductAlternativeLocations,
 } from './selectors';
 import {
-  fetchLocations, fetchProductLocations, setPending, setUserGeolocation,
+  fetchLocations, fetchProductLocations, sendDefaultLocationCode, setPending, setUserGeolocation,
 } from './actions';
 import { setShowInventoryInLists, showInventoryInLists } from './helpers';
 import fetchInventories from './actions/fetchInventories';
@@ -56,7 +56,7 @@ import {
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
-  preferredLocationDidUpdateGlobalOnWishlist$,
+  preferredLocationDidUpdateGlobalOnWishlist$, preferredLocationDidUpdate$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
 import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
@@ -103,6 +103,12 @@ function locationsSubscriber(subscribe) {
     if (!location && hasNewServices) {
       dispatch(fetchDefaultLocation);
     }
+  });
+
+  subscribe(preferredLocationDidUpdate$, ({ dispatch, getState }) => {
+    const preferredLocation = getPreferredLocation(getState());
+
+    dispatch(sendDefaultLocationCode(preferredLocation.code));
   });
 
   subscribe(cookieConsentInitialized$, async ({ dispatch, getState }) => {

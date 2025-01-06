@@ -4,12 +4,11 @@ import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
 import { StoreFinderContext } from '../../locations.context';
 import { selectLocationButton, selectLocationButtonWrapper } from '../StoreList/Store.style';
-import { sendDefaultLocationCode } from '../../actions';
 
 /**
  * The StoreFinderSelectLocationButton component.
  * Renders if route query.selectLocation param is passed
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 export const StoreFinderSelectLocationButton = () => {
   const store = useContext(StoreContext);
@@ -18,7 +17,6 @@ export const StoreFinderSelectLocationButton = () => {
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     selectLocation(store);
-    sendDefaultLocationCode(store.code);
   }, [selectLocation, store]);
 
   return (
