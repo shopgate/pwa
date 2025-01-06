@@ -1,9 +1,10 @@
 import { PipelineRequest } from '@shopgate/engage/core/classes';
+import { EINVALIDCALL } from '@shopgate/engage/core/constants';
 import {
   FETCH_CUSTOMER,
   FETCH_CUSTOMER_ERROR,
   FETCH_CUSTOMER_SUCCESS,
-} from '../constants/actions';
+} from '../constants';
 
 /**
  * Starts entering the checkout process for the customer.
@@ -15,6 +16,7 @@ export const fetchCustomerData = () => async (dispatch) => {
   try {
     const { customer } = await (new PipelineRequest('shopgate.customer.getCustomer')
       .setTrusted()
+      .setErrorBlacklist([EINVALIDCALL])
       .dispatch()
     );
 
