@@ -7,12 +7,12 @@ export const SOURCE_CONSOLE = 'console';
 export const CODE_TRACKING = 'ETRACKING';
 
 export const Severity = {
-  Fatal: Symbol('fatal'),
-  Error: Symbol('error'),
-  Critical: Symbol('critical'),
-  Warning: Symbol('warning'),
-  Info: Symbol('info'),
-  Debug: Symbol('debug'),
+  Fatal: 'fatal',
+  Error: 'error',
+  Critical: 'critical',
+  Warning: 'warning',
+  Info: 'info',
+  Debug: 'debug',
 };
 
 export const DEFAULT_SEVERITY = Severity.Error;
