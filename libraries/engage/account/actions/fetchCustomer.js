@@ -1,4 +1,5 @@
 import { PipelineRequest } from '@shopgate/engage/core/classes';
+import { EINVALIDCALL } from '@shopgate/engage/core/constants';
 import {
   FETCH_CUSTOMER,
   FETCH_CUSTOMER_ERROR,
@@ -15,7 +16,7 @@ export const fetchCustomerData = () => async (dispatch) => {
   try {
     const { customer } = await (new PipelineRequest('shopgate.customer.getCustomer')
       .setTrusted()
-      .setErrorBlacklist(['EINVALIDCALL'])
+      .setErrorBlacklist([EINVALIDCALL])
       .dispatch()
     );
 
