@@ -18,7 +18,7 @@ import {
   getCurrentRoute,
   hex2bin,
   getThemeSettings,
-  getCurrentSearchQuery, appWillInit$,
+  getCurrentSearchQuery, appWillInit$, appInitialization,
 } from '@shopgate/engage/core';
 import {
   receiveFavoritesWhileVisible$,
@@ -44,6 +44,7 @@ import {
   getProductAlternativeLocations,
 } from './selectors';
 import {
+  fetchDefaultLocation,
   fetchLocations, fetchProductLocations, sendDefaultLocationCode, setPending, setUserGeolocation,
 } from './actions';
 import { setShowInventoryInLists, showInventoryInLists } from './helpers';
@@ -61,7 +62,6 @@ import {
 import selectLocation from './action-creators/selectLocation';
 import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
 import selectGlobalLocation from './action-creators/selectGlobalLocation';
-import { fetchDefaultLocation } from './actions/fetchDefaultLocation';
 
 let initialLocationsResolve;
 let initialLocationsReject;
@@ -96,19 +96,23 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
  * @param {Function} subscribe The subscribe function.
  */
 function locationsSubscriber(subscribe) {
-  subscribe(appWillInit$, ({ dispatch, getState }) => {
-    // check if location was set by user and is stored in redux
-    const location = getPreferredLocation(getState());
-    // if NO location has been set: get location from backend and set in redux
-    if (!location && hasNewServices) {
-      dispatch(fetchDefaultLocation);
-    }
+  subscribe(appWillInit$, () => {
+    appInitialization.set('location', async ({ dispatch, getState }) => {
+      // check if location was set by user and is stored in redux
+      const location = getPreferredLocation(getState());
+      // if NO location has been set: get location from backend and set in redux
+      if (!location && hasNewServices()) {
+        dispatch(fetchDefaultLocation());
+      }
+    });
   });
 
   subscribe(preferredLocationDidUpdate$, ({ dispatch, getState }) => {
     const preferredLocation = getPreferredLocation(getState());
 
-    dispatch(sendDefaultLocationCode(preferredLocation.code));
+    if (preferredLocation) {
+      dispatch(sendDefaultLocationCode(preferredLocation.code));
+    }
   });
 
   subscribe(cookieConsentInitialized$, async ({ dispatch, getState }) => {

@@ -9,6 +9,7 @@ export { default as submitReservation } from './submitReservation';
 export { default as setUserSearchGeolocation } from './setUserSearchGeolocation';
 export { default as setUserGeolocation } from './setUserGeolocation';
 export { default as sendDefaultLocationCode } from './sendDefaultLocationCode';
+export { default as fetchDefaultLocation } from './fetchDefaultLocation';
 
 /**
  * Sets pending state of locations

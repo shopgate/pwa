@@ -11,7 +11,6 @@ import { STAGE_SELECT_STORE, MULTI_LINE_RESERVE } from '../../constants';
 /**
  * Maps state to props.
  * @param {Object} state State
- * @param {Object} props Props
  * @return {Object}
  */
 const mapStateToProps = state => ({
