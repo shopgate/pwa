@@ -13,15 +13,15 @@ module.exports = (api) => {
     ],
     plugins: [
       'lodash',
-      '@babel/plugin-proposal-class-properties',
-      ['@babel/plugin-proposal-object-rest-spread', {
-        loose: true,
+      '@babel/plugin-transform-class-properties',
+      ['@babel/plugin-transform-object-rest-spread', {
+        useBuiltIns: true,
       }],
       ['@babel/plugin-transform-spread', {
         loose: true,
       }],
       '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-export-namespace-from',
+      '@babel/plugin-transform-export-namespace-from',
       '@babel/plugin-proposal-export-default-from',
       'transform-export-extensions',
       ['@babel/plugin-syntax-dynamic-import', {
