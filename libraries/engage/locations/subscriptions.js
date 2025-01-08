@@ -102,7 +102,7 @@ function locationsSubscriber(subscribe) {
       const location = getPreferredLocation(getState());
       // if NO location has been set: get location from backend and set in redux
       if (!location && hasNewServices()) {
-        dispatch(fetchDefaultLocation());
+        await dispatch(fetchDefaultLocation());
       }
     });
   });
