@@ -177,7 +177,13 @@ class ProductImage extends Component {
 
     // Return the actual image.
     return (
-      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
+      <SurroundPortals
+        portalName={PORTAL_PRODUCT_IMAGE}
+        portalProps={{
+          src: this.props.src,
+          resolutions: this.props.resolutions,
+        }}
+      >
         <div aria-hidden={this.props['aria-hidden']} className={`${className} engage__product__product-image`} aria-label={this.props.alt}>
           <Image
             {...this.props}

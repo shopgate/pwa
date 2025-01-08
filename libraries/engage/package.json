@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/engage",
-  "version": "7.20.3",
+  "version": "7.21.2",
   "description": "Shopgate's ENGAGE library.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -16,12 +16,12 @@
   ],
   "dependencies": {
     "@shopgate/native-modules": "1.0.0-beta.18",
-    "@shopgate/pwa-common": "7.20.3",
-    "@shopgate/pwa-common-commerce": "7.20.3",
-    "@shopgate/pwa-core": "7.20.3",
-    "@shopgate/pwa-ui-ios": "7.20.3",
-    "@shopgate/pwa-ui-material": "7.20.3",
-    "@shopgate/pwa-ui-shared": "7.20.3",
+    "@shopgate/pwa-common": "7.21.2",
+    "@shopgate/pwa-common-commerce": "7.21.2",
+    "@shopgate/pwa-core": "7.21.2",
+    "@shopgate/pwa-ui-ios": "7.21.2",
+    "@shopgate/pwa-ui-material": "7.21.2",
+    "@shopgate/pwa-ui-shared": "7.21.2",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.3.1",
     "@virtuous/conductor": "~2.5.0",
@@ -43,14 +43,14 @@
     "validate.js": "^0.13.1"
   },
   "devDependencies": {
-    "classnames": "2.3.3",
+    "classnames": "2.5.1",
     "jest-mock-console": "^0.4.2",
     "lodash": "^4.17.11",
-    "prop-types": "~15.7.2",
-    "react": "~16.12.0",
-    "react-redux": "^5.1.2",
-    "redux": "^4.0.1",
-    "redux-mock-store": "^1.5.3",
-    "reselect": "^3.0.1"
+    "prop-types": "~15.8.1",
+    "react": "~16.14.0",
+    "react-redux": "^8.1.3",
+    "redux": "^4.2.1",
+    "redux-mock-store": "^1.5.4",
+    "reselect": "^4.1.8"
   }
 }

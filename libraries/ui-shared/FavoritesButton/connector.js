@@ -27,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(toggleFavoriteWithListChooser(productId, withRelatives)),
 });
 
-export default connect(makeMapStateToProps, mapDispatchToProps, null, { pure: () => null });
+export default connect(makeMapStateToProps, mapDispatchToProps);

@@ -3,7 +3,22 @@
 exports[`<ProductImage /> should apply an inner shadow to the image if turned off via the widget settings 1`] = `
 <SurroundPortals
   portalName="component.product-image"
-  portalProps={null}
+  portalProps={
+    Object {
+      "resolutions": Array [
+        Object {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        Object {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
+    }
+  }
 >
   <div
     aria-hidden={false}
@@ -75,7 +90,22 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
 exports[`<ProductImage /> should not apply an inner shadow to the image if turned off via the app config 1`] = `
 <SurroundPortals
   portalName="component.product-image"
-  portalProps={null}
+  portalProps={
+    Object {
+      "resolutions": Array [
+        Object {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        Object {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
+    }
+  }
 >
   <div
     aria-hidden={false}
@@ -223,7 +253,22 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
 exports[`<ProductImage /> should render the image without a placeholder 1`] = `
 <SurroundPortals
   portalName="component.product-image"
-  portalProps={null}
+  portalProps={
+    Object {
+      "resolutions": Array [
+        Object {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        Object {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
+    }
+  }
 >
   <div
     aria-hidden={false}
