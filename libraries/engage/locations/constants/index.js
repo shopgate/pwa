@@ -72,4 +72,6 @@ export {
 
 export {
   STORE_FINDER_PATTERN,
+  STORE_DETAILS_PATTERN,
+  STORE_DETAILS_PATH,
 } from './routes';
