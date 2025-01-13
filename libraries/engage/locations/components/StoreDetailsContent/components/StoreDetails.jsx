@@ -7,7 +7,6 @@ import { i18n, getWeekDaysOrder, getCurrentRoute } from '@shopgate/engage/core';
 import PropTypes from 'prop-types';
 
 const styles = {
-
   headerWrappper: css({
     display: 'flex',
   }),
@@ -26,6 +25,7 @@ const styles = {
   }),
   locationRow: css({
     display: 'flex',
+    gap: '4px',
   }),
   locationColumn: css({
     flex: 1,
