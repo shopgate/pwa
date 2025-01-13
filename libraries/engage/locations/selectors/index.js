@@ -626,3 +626,26 @@ export const getProductAlternativeLocations = createSelector(
       .filter(Boolean);
   }
 );
+
+/**
+ * Creates a selector that retrieves nearby locations for current displayed store.
+ * @returns {Function}
+ */
+export const makeGetNearbyLocationsByRouteLocation = () => {
+  const getFilteredLocationsForRoute = makeGetFilteredLocations((state) => {
+    const route = getCurrentRoute(state);
+    const getRouteLocation = makeGetLocation(() => route.params.code);
+    const routeLocation = getRouteLocation(state);
+
+    return ({
+      countryCode: routeLocation.countryCode,
+      latitude: routeLocation.latitude,
+      longitude: routeLocation.longitude,
+    });
+  });
+
+  return createSelector(
+    getFilteredLocationsForRoute,
+    locations => locations
+  );
+};

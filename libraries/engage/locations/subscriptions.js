@@ -42,6 +42,7 @@ import {
   getIsPending,
   getProductAlternativeLocationParams,
   getProductAlternativeLocations,
+  makeGetLocation,
 } from './selectors';
 import {
   fetchLocations, fetchProductLocations, setPending, setUserGeolocation,
@@ -57,6 +58,7 @@ import {
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
   preferredLocationDidUpdateGlobalOnWishlist$,
+  storeDetailPageWillEnter$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
 import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
@@ -306,7 +308,6 @@ function locationsSubscriber(subscribe) {
     categoryDidBackEnter$.merge(searchDidBackEntered$),
     ({ action, dispatch, getState }) => {
       const state = getState();
-
       if (!showInventoryInLists(state)) {
         return;
       }
@@ -368,6 +369,20 @@ function locationsSubscriber(subscribe) {
   subscribe(appDidStart$, ({ getState }) => {
     // enable inventory in product lists for some users
     setShowInventoryInLists(getState());
+  });
+
+  subscribe(storeDetailPageWillEnter$, async ({ dispatch, getState }) => {
+    const route = getCurrentRoute(getState());
+    const getLocation = makeGetLocation(() => route.params.code);
+    const location = getLocation(getState());
+
+    await dispatch(fetchLocations({
+      geolocation: {
+        longitude: location.longitude,
+        latitude: location.latitude,
+      },
+      countryCode: location.localeCode,
+    }));
   });
 }
 
