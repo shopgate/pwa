@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import classNames from 'classnames';
 import {
   Grid, I18n, Button, Modal,
@@ -53,6 +54,17 @@ const PushOptInModal = ({
     }
   }, [modalImageSVG, modalImageURL]);
 
+  // Button event handlers are throttled to prevent multiple clicks
+  const handleAllowPushOptIn = useCallback(
+    throttle(allowPushOptIn, 1000, { leading: true, trailing: false }),
+    []
+  );
+
+  const handleDenyPushOptIn = useCallback(
+    throttle(denyPushOptIn, 1000, { leading: true, trailing: false }),
+    []
+  );
+
   if (!isPushOptInModalVisible) {
     return null;
   }
@@ -84,10 +96,10 @@ const PushOptInModal = ({
             string={modalMessage || 'pushOptInModal.message'}
             id="pushOptInDialogMessage"
           />
-          <Button onClick={allowPushOptIn} type="primary" className={classNames(styles.button, 'push-opt-in-modal__button-allow')}>
+          <Button onClick={handleAllowPushOptIn} type="primary" className={classNames(styles.button, 'push-opt-in-modal__button-allow')}>
             <I18n.Text string={modalButtonAllow || 'pushOptInModal.buttonAllow'} />
           </Button>
-          <Button onClick={denyPushOptIn} type="plain" className={classNames(styles.button, 'push-opt-in-modal__button-deny')}>
+          <Button onClick={handleDenyPushOptIn} type="plain" className={classNames(styles.button, 'push-opt-in-modal__button-deny')}>
             <I18n.Text string={modalButtonDeny || 'pushOptInModal.buttonDeny'} className={styles.buttonText} />
           </Button>
         </Grid.Item>
