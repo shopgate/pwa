@@ -5,13 +5,7 @@ import {
   variantDidChange$,
 } from '@shopgate/engage/product';
 import {
-  cartReceived$,
-  fetchCart,
-  cartDidEnter$,
-  getCartItems,
-} from '@shopgate/engage/cart';
-import { userDidLogin$ } from '@shopgate/engage/user';
-import {
+  ToastProvider,
   appDidStart$,
   routeWillEnter$,
   UIEvents,
@@ -20,6 +14,14 @@ import {
   getThemeSettings,
   getCurrentSearchQuery,
 } from '@shopgate/engage/core';
+import {
+  cartReceived$,
+  fetchCart,
+  cartDidEnter$,
+  getCartItems,
+} from '@shopgate/engage/cart';
+import { userDidLogin$ } from '@shopgate/engage/user';
+
 import {
   receiveFavoritesWhileVisible$,
 } from '@shopgate/pwa-common-commerce/favorites/streams';
@@ -55,6 +57,7 @@ import {
   submitReservationSuccess$,
   userSearchChanged$,
   storeFinderWillEnter$,
+  preferredLocationDidUpdate$,
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
   preferredLocationDidUpdateGlobalOnWishlist$,
@@ -346,6 +349,18 @@ function locationsSubscriber(subscribe) {
       action.products.map(({ id }) => id) : action.products;
 
     dispatch(fetchInventories(productCodes));
+  });
+
+  subscribe(preferredLocationDidUpdate$, ({ action, events }) => {
+    const { location = {}, showToast } = action;
+    const { name } = location;
+
+    if (showToast) {
+      events.emit(ToastProvider.ADD, {
+        id: 'location.chaged',
+        message: `${name} has been selected as your preferred location.`,
+      });
+    }
   });
 
   subscribe(

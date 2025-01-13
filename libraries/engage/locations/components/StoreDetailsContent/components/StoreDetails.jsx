@@ -2,8 +2,8 @@ import React from 'react';
 import { css } from 'glamor';
 import { LocationIcon } from '@shopgate/engage/components';
 import { connect } from 'react-redux';
-import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
-import { i18n, getWeekDaysOrder } from '@shopgate/engage/core';
+import { getPreferredLocation, makeGetLocation } from '@shopgate/engage/locations/selectors';
+import { i18n, getWeekDaysOrder, getCurrentRoute } from '@shopgate/engage/core';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -51,9 +51,14 @@ const styles = {
  * @param {Object} state .
  * @returns {Object}
  */
-const mapStateToProps = state => ({
-  preferredLocation: getPreferredLocation(state),
-});
+const mapStateToProps = (state) => {
+  const route = getCurrentRoute(state);
+  const getRouteLocation = makeGetLocation(() => route.params.code);
+  return ({
+    preferredLocation: getPreferredLocation(state),
+    routeLocation: getRouteLocation(state),
+  });
+};
 
 /**
  * Store details component.
@@ -61,8 +66,12 @@ const mapStateToProps = state => ({
   * @returns {JSX}
   */
 const StoreDetails = (props) => {
-  const { preferredLocation } = props;
-  const { name: locationName, address, operationHours } = preferredLocation;
+  const { preferredLocation, routeLocation } = props;
+  const storesEqual = preferredLocation
+    && routeLocation
+    && preferredLocation.code === routeLocation.code;
+
+  const { name: locationName, address, operationHours } = routeLocation;
 
   return (
     <div>
@@ -70,7 +79,9 @@ const StoreDetails = (props) => {
         <div className={styles.headerIcon}>
           <LocationIcon className={styles.icon} />
         </div>
-        <div className={styles.header}>My Store</div>
+        <div className={styles.header}>
+          {storesEqual ? 'My Store' : 'Make my Store'}
+        </div>
       </div>
 
       <div className={styles.locationName}>{locationName}</div>
@@ -119,7 +130,8 @@ const StoreDetails = (props) => {
 };
 
 StoreDetails.propTypes = {
-  preferredLocation: PropTypes.shape({
+  routeLocation: PropTypes.shape({
+    code: PropTypes.string,
     name: PropTypes.string,
     address: PropTypes.shape({
       street: PropTypes.string,
@@ -128,6 +140,9 @@ StoreDetails.propTypes = {
       phoneNumber: PropTypes.string,
     }),
     operationHours: PropTypes.shape(),
+  }).isRequired,
+  preferredLocation: PropTypes.shape({
+    code: PropTypes.string,
   }),
 };
 
