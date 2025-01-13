@@ -8,7 +8,7 @@ import { selectLocationButton, selectLocationButtonWrapper } from '../StoreList/
 /**
  * The StoreFinderSelectLocationButton component.
  * Renders if route query.selectLocation param is passed
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 export const StoreFinderSelectLocationButton = () => {
   const store = useContext(StoreContext);

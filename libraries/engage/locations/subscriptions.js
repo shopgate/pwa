@@ -18,7 +18,7 @@ import {
   getCurrentRoute,
   hex2bin,
   getThemeSettings,
-  getCurrentSearchQuery,
+  getCurrentSearchQuery, appWillInit$, appInitialization,
 } from '@shopgate/engage/core';
 import {
   receiveFavoritesWhileVisible$,
@@ -44,9 +44,10 @@ import {
   getProductAlternativeLocations,
 } from './selectors';
 import {
-  fetchLocations, fetchProductLocations, setPending, setUserGeolocation,
+  fetchDefaultLocation,
+  fetchLocations, fetchProductLocations, sendDefaultLocationCode, setPending, setUserGeolocation,
 } from './actions';
-import { setShowInventoryInLists, showInventoryInLists } from './helpers/showInventoryInLists';
+import { setShowInventoryInLists, showInventoryInLists } from './helpers';
 import fetchInventories from './actions/fetchInventories';
 import { EVENT_SET_OPEN } from './providers/FulfillmentProvider';
 import fetchProductInventories from './actions/fetchProductInventories';
@@ -56,7 +57,7 @@ import {
   storeFinderWillEnter$,
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
-  preferredLocationDidUpdateGlobalOnWishlist$,
+  preferredLocationDidUpdateGlobalOnWishlist$, preferredLocationDidUpdate$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
 import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
@@ -95,6 +96,25 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
  * @param {Function} subscribe The subscribe function.
  */
 function locationsSubscriber(subscribe) {
+  subscribe(appWillInit$, () => {
+    appInitialization.set('location', async ({ dispatch, getState }) => {
+      // check if location was set by user and is stored in redux
+      const location = getPreferredLocation(getState());
+      // if NO location has been set: get location from backend and set in redux
+      if (!location && hasNewServices()) {
+        await dispatch(fetchDefaultLocation());
+      }
+    });
+  });
+
+  subscribe(preferredLocationDidUpdate$, ({ dispatch, getState }) => {
+    const preferredLocation = getPreferredLocation(getState());
+
+    if (preferredLocation) {
+      dispatch(sendDefaultLocationCode(preferredLocation.code));
+    }
+  });
+
   subscribe(cookieConsentInitialized$, async ({ dispatch, getState }) => {
     if (!hasNewServices()) {
       // no ROPE stuff when connected with old services right now
