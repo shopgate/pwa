@@ -15,10 +15,8 @@ import { item } from './styles';
  */
 function SwiperItem({ children, className, ...slideProps }) {
   return (
-    <SwiperSlide {...slideProps}>
-      <div className={classNames(item, className)} data-test-id="Slider">
-        {children}
-      </div>
+    <SwiperSlide {...slideProps} className={classNames(item, className)} data-test-id="Slider">
+      {children}
     </SwiperSlide>
   );
 }

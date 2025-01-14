@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from '@shopgate/pwa-common/components/Link';
-import { Swiper } from '@shopgate/pwa-common/components';
+import { Swiper, Link } from '@shopgate/engage/components';
 import { image as imgStyle, link as linkStyle } from './style';
 
 /**

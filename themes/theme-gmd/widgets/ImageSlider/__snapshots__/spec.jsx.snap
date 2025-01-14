@@ -35,288 +35,48 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
     }
   >
     <Swiper
-      aria-hidden={false}
       autoPlay={false}
       className={null}
-      classNames={Object {}}
-      controls={false}
-      disabled={false}
-      freeMode={false}
       indicators={true}
-      initialSlide={0}
       interval={7000}
       loop={false}
-      maxIndicators={null}
-      onSlideChange={[Function]}
-      rebuildOnUpdate={true}
-      slidesPerView={1}
-      snapItems={true}
-      zoom={false}
     >
-      <div
-        aria-hidden={false}
-        className="css-1hlki0z common__swiper"
+      <SwiperItem
+        key="http://placehold.it/350x150"
       >
-        <ReactIdSwiper
-          ContainerEl="div"
-          WrapperEl="div"
-          allowSlideNext={true}
-          allowSlidePrev={true}
-          autoplay={false}
-          containerClass="css-18n9gca"
-          freeMode={false}
-          getSwiper={[Function]}
-          initialSlide={0}
-          loop={false}
-          modules={
-            Array [
-              Object {
-                "create": [Function],
-                "name": "pagination",
-                "on": Object {
-                  "activeIndexChange": [Function],
-                  "click": [Function],
-                  "destroy": [Function],
-                  "init": [Function],
-                  "slidesLengthChange": [Function],
-                  "snapGridLengthChange": [Function],
-                  "snapIndexChange": [Function],
-                },
-                "params": Object {
-                  "pagination": Object {
-                    "bulletActiveClass": "swiper-pagination-bullet-active",
-                    "bulletClass": "swiper-pagination-bullet",
-                    "bulletElement": "span",
-                    "clickable": false,
-                    "clickableClass": "swiper-pagination-clickable",
-                    "currentClass": "swiper-pagination-current",
-                    "dynamicBullets": false,
-                    "dynamicMainBullets": 1,
-                    "el": null,
-                    "formatFractionCurrent": [Function],
-                    "formatFractionTotal": [Function],
-                    "hiddenClass": "swiper-pagination-hidden",
-                    "hideOnClick": false,
-                    "lockClass": "swiper-pagination-lock",
-                    "modifierClass": "swiper-pagination-",
-                    "progressbarFillClass": "swiper-pagination-progressbar-fill",
-                    "progressbarOpposite": false,
-                    "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
-                    "renderBullet": null,
-                    "renderCustom": null,
-                    "renderFraction": null,
-                    "renderProgressbar": null,
-                    "totalClass": "swiper-pagination-total",
-                    "type": "bullets",
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "navigation",
-                "on": Object {
-                  "click": [Function],
-                  "destroy": [Function],
-                  "fromEdge": [Function],
-                  "init": [Function],
-                  "toEdge": [Function],
-                },
-                "params": Object {
-                  "navigation": Object {
-                    "disabledClass": "swiper-button-disabled",
-                    "hiddenClass": "swiper-button-hidden",
-                    "hideOnClick": false,
-                    "lockClass": "swiper-button-lock",
-                    "nextEl": null,
-                    "prevEl": null,
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "autoplay",
-                "on": Object {
-                  "beforeTransitionStart": [Function],
-                  "destroy": [Function],
-                  "init": [Function],
-                  "sliderFirstMove": [Function],
-                },
-                "params": Object {
-                  "autoplay": Object {
-                    "delay": 3000,
-                    "disableOnInteraction": true,
-                    "enabled": false,
-                    "reverseDirection": false,
-                    "stopOnLastSlide": false,
-                    "waitForTransition": true,
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "zoom",
-                "on": Object {
-                  "destroy": [Function],
-                  "doubleTap": [Function],
-                  "init": [Function],
-                  "touchEnd": [Function],
-                  "touchStart": [Function],
-                  "transitionEnd": [Function],
-                },
-                "params": Object {
-                  "zoom": Object {
-                    "containerClass": "swiper-zoom-container",
-                    "enabled": false,
-                    "maxRatio": 3,
-                    "minRatio": 1,
-                    "toggle": true,
-                    "zoomedSlideClass": "swiper-slide-zoomed",
-                  },
-                },
-              },
-            ]
-          }
-          navigation={
-            Object {
-              "nextEl": null,
-              "prevEl": null,
-            }
-          }
-          pagination={
-            Object {
-              "bulletActiveClass": "swiper-pagination-bullet-active",
-              "bulletClass": "swiper-pagination-bullet",
-              "dynamicBullets": true,
-              "el": ".swiper-pagination",
-              "type": "bullets",
-            }
-          }
-          rebuildOnUpdate={true}
-          renderNextButton={[Function]}
-          renderPagination={[Function]}
-          renderParallax={[Function]}
-          renderPrevButton={[Function]}
-          renderScrollbar={[Function]}
-          slideClass="swiper-slide"
-          slidesPerView={1}
-          wrapperClass="swiper-wrapper"
-          zoom={false}
+        <Link
+          className="css-63oe3q"
+          href="http://example.com"
         >
-          <div
-            className="css-18n9gca"
-          >
-            <div
-              className="swiper-wrapper"
-            >
-              <SwiperItem
-                className="swiper-slide"
-                key=".$http=2//placehold.it/350x150"
-              >
-                <div
-                  className="css-10a4qrv swiper-slide"
-                  data-test-id="Slider"
-                >
-                  <Connect(Link)
-                    className="css-63oe3q"
-                    href="http://example.com"
-                  >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-63oe3q"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href="http://example.com"
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
-                    >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-63oe3q common__link"
-                        data-test-id="link: http://example.com"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
-                      >
-                        <img
-                          className={
-                            Object {
-                              "data-css-1rozygh": "",
-                            }
-                          }
-                          data-test-id="link: http://example.com"
-                          src="http://placehold.it/350x150"
-                        />
-                      </div>
-                    </Link>
-                  </Connect(Link)>
-                </div>
-              </SwiperItem>
-              <SwiperItem
-                className="swiper-slide"
-                key=".$http=2//placehold.it/10x10"
-              >
-                <div
-                  className="css-10a4qrv swiper-slide"
-                  data-test-id="Slider"
-                >
-                  <Connect(Link)
-                    className="css-63oe3q"
-                    href="http://other.example.com"
-                  >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-63oe3q"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href="http://other.example.com"
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
-                    >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-63oe3q common__link"
-                        data-test-id="link: http://other.example.com"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
-                      >
-                        <img
-                          className={
-                            Object {
-                              "data-css-1rozygh": "",
-                            }
-                          }
-                          data-test-id="link: http://other.example.com"
-                          src="http://placehold.it/10x10"
-                        />
-                      </div>
-                    </Link>
-                  </Connect(Link)>
-                </div>
-              </SwiperItem>
-            </div>
-            <div
-              className="swiper-pagination"
-            />
-          </div>
-        </ReactIdSwiper>
-      </div>
+          <img
+            className={
+              Object {
+                "data-css-1rozygh": "",
+              }
+            }
+            data-test-id="link: http://example.com"
+            src="http://placehold.it/350x150"
+          />
+        </Link>
+      </SwiperItem>
+      <SwiperItem
+        key="http://placehold.it/10x10"
+      >
+        <Link
+          className="css-63oe3q"
+          href="http://other.example.com"
+        >
+          <img
+            className={
+              Object {
+                "data-css-1rozygh": "",
+              }
+            }
+            data-test-id="link: http://other.example.com"
+            src="http://placehold.it/10x10"
+          />
+        </Link>
+      </SwiperItem>
     </Swiper>
   </ImageSliderWidget>
 </Provider>
@@ -355,49 +115,21 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
     <div
       className={null}
     >
-      <Connect(Link)
+      <Link
         className="css-63oe3q"
         data-test-id="withLink"
         href="http://example.com"
       >
-        <Link
-          aria-hidden={null}
-          aria-label={null}
-          className="css-63oe3q"
-          data-test-id="withLink"
-          disabled={false}
-          historyPush={[Function]}
-          historyReplace={[Function]}
-          href="http://example.com"
-          replace={false}
-          role="link"
-          state={Object {}}
-          tabIndex={null}
-          tag="div"
-          target={null}
-        >
-          <div
-            aria-hidden={null}
-            aria-label={null}
-            className="css-9auwkz css-63oe3q common__link"
-            data-test-id="link: http://example.com"
-            href={null}
-            onClick={[Function]}
-            role="link"
-            tabIndex={null}
-          >
-            <img
-              className={
-                Object {
-                  "data-css-1rozygh": "",
-                }
-              }
-              data-test-id="link : undefined"
-              src="http://placehold.it/350x150"
-            />
-          </div>
-        </Link>
-      </Connect(Link)>
+        <img
+          className={
+            Object {
+              "data-css-1rozygh": "",
+            }
+          }
+          data-test-id="link : undefined"
+          src="http://placehold.it/350x150"
+        />
+      </Link>
     </div>
   </ImageSliderWidget>
 </Provider>
@@ -485,256 +217,43 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
     }
   >
     <Swiper
-      aria-hidden={false}
       autoPlay={false}
       className={null}
-      classNames={Object {}}
-      controls={false}
-      disabled={false}
-      freeMode={false}
       indicators={true}
-      initialSlide={0}
       interval={7000}
       loop={false}
-      maxIndicators={null}
-      onSlideChange={[Function]}
-      rebuildOnUpdate={true}
-      slidesPerView={1}
-      snapItems={true}
-      zoom={false}
     >
-      <div
-        aria-hidden={false}
-        className="css-1hlki0z common__swiper"
+      <SwiperItem
+        key="http://placehold.it/350x150"
       >
-        <ReactIdSwiper
-          ContainerEl="div"
-          WrapperEl="div"
-          allowSlideNext={true}
-          allowSlidePrev={true}
-          autoplay={false}
-          containerClass="css-18n9gca"
-          freeMode={false}
-          getSwiper={[Function]}
-          initialSlide={0}
-          loop={false}
-          modules={
-            Array [
-              Object {
-                "create": [Function],
-                "name": "pagination",
-                "on": Object {
-                  "activeIndexChange": [Function],
-                  "click": [Function],
-                  "destroy": [Function],
-                  "init": [Function],
-                  "slidesLengthChange": [Function],
-                  "snapGridLengthChange": [Function],
-                  "snapIndexChange": [Function],
-                },
-                "params": Object {
-                  "pagination": Object {
-                    "bulletActiveClass": "swiper-pagination-bullet-active",
-                    "bulletClass": "swiper-pagination-bullet",
-                    "bulletElement": "span",
-                    "clickable": false,
-                    "clickableClass": "swiper-pagination-clickable",
-                    "currentClass": "swiper-pagination-current",
-                    "dynamicBullets": false,
-                    "dynamicMainBullets": 1,
-                    "el": null,
-                    "formatFractionCurrent": [Function],
-                    "formatFractionTotal": [Function],
-                    "hiddenClass": "swiper-pagination-hidden",
-                    "hideOnClick": false,
-                    "lockClass": "swiper-pagination-lock",
-                    "modifierClass": "swiper-pagination-",
-                    "progressbarFillClass": "swiper-pagination-progressbar-fill",
-                    "progressbarOpposite": false,
-                    "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
-                    "renderBullet": null,
-                    "renderCustom": null,
-                    "renderFraction": null,
-                    "renderProgressbar": null,
-                    "totalClass": "swiper-pagination-total",
-                    "type": "bullets",
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "navigation",
-                "on": Object {
-                  "click": [Function],
-                  "destroy": [Function],
-                  "fromEdge": [Function],
-                  "init": [Function],
-                  "toEdge": [Function],
-                },
-                "params": Object {
-                  "navigation": Object {
-                    "disabledClass": "swiper-button-disabled",
-                    "hiddenClass": "swiper-button-hidden",
-                    "hideOnClick": false,
-                    "lockClass": "swiper-button-lock",
-                    "nextEl": null,
-                    "prevEl": null,
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "autoplay",
-                "on": Object {
-                  "beforeTransitionStart": [Function],
-                  "destroy": [Function],
-                  "init": [Function],
-                  "sliderFirstMove": [Function],
-                },
-                "params": Object {
-                  "autoplay": Object {
-                    "delay": 3000,
-                    "disableOnInteraction": true,
-                    "enabled": false,
-                    "reverseDirection": false,
-                    "stopOnLastSlide": false,
-                    "waitForTransition": true,
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "zoom",
-                "on": Object {
-                  "destroy": [Function],
-                  "doubleTap": [Function],
-                  "init": [Function],
-                  "touchEnd": [Function],
-                  "touchStart": [Function],
-                  "transitionEnd": [Function],
-                },
-                "params": Object {
-                  "zoom": Object {
-                    "containerClass": "swiper-zoom-container",
-                    "enabled": false,
-                    "maxRatio": 3,
-                    "minRatio": 1,
-                    "toggle": true,
-                    "zoomedSlideClass": "swiper-slide-zoomed",
-                  },
-                },
-              },
-            ]
-          }
-          navigation={
+        <img
+          className={
             Object {
-              "nextEl": null,
-              "prevEl": null,
+              "data-css-1rozygh": "",
             }
           }
-          pagination={
-            Object {
-              "bulletActiveClass": "swiper-pagination-bullet-active",
-              "bulletClass": "swiper-pagination-bullet",
-              "dynamicBullets": true,
-              "el": ".swiper-pagination",
-              "type": "bullets",
-            }
-          }
-          rebuildOnUpdate={true}
-          renderNextButton={[Function]}
-          renderPagination={[Function]}
-          renderParallax={[Function]}
-          renderPrevButton={[Function]}
-          renderScrollbar={[Function]}
-          slideClass="swiper-slide"
-          slidesPerView={1}
-          wrapperClass="swiper-wrapper"
-          zoom={false}
+          data-test-id="link: null"
+          src="http://placehold.it/350x150"
+        />
+      </SwiperItem>
+      <SwiperItem
+        key="http://placehold.it/10x10"
+      >
+        <Link
+          className="css-63oe3q"
+          href="http://other.example.com"
         >
-          <div
-            className="css-18n9gca"
-          >
-            <div
-              className="swiper-wrapper"
-            >
-              <SwiperItem
-                className="swiper-slide"
-                key=".$http=2//placehold.it/350x150"
-              >
-                <div
-                  className="css-10a4qrv swiper-slide"
-                  data-test-id="Slider"
-                >
-                  <img
-                    className={
-                      Object {
-                        "data-css-1rozygh": "",
-                      }
-                    }
-                    data-test-id="link: null"
-                    src="http://placehold.it/350x150"
-                  />
-                </div>
-              </SwiperItem>
-              <SwiperItem
-                className="swiper-slide"
-                key=".$http=2//placehold.it/10x10"
-              >
-                <div
-                  className="css-10a4qrv swiper-slide"
-                  data-test-id="Slider"
-                >
-                  <Connect(Link)
-                    className="css-63oe3q"
-                    href="http://other.example.com"
-                  >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-63oe3q"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href="http://other.example.com"
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
-                    >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-63oe3q common__link"
-                        data-test-id="link: http://other.example.com"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
-                      >
-                        <img
-                          className={
-                            Object {
-                              "data-css-1rozygh": "",
-                            }
-                          }
-                          data-test-id="link: http://other.example.com"
-                          src="http://placehold.it/10x10"
-                        />
-                      </div>
-                    </Link>
-                  </Connect(Link)>
-                </div>
-              </SwiperItem>
-            </div>
-            <div
-              className="swiper-pagination"
-            />
-          </div>
-        </ReactIdSwiper>
-      </div>
+          <img
+            className={
+              Object {
+                "data-css-1rozygh": "",
+              }
+            }
+            data-test-id="link: http://other.example.com"
+            src="http://placehold.it/10x10"
+          />
+        </Link>
+      </SwiperItem>
     </Swiper>
   </ImageSliderWidget>
 </Provider>
@@ -775,288 +294,48 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
     }
   >
     <Swiper
-      aria-hidden={false}
       autoPlay={false}
       className={null}
-      classNames={Object {}}
-      controls={false}
-      disabled={false}
-      freeMode={false}
       indicators={true}
-      initialSlide={0}
       interval={7000}
       loop={false}
-      maxIndicators={null}
-      onSlideChange={[Function]}
-      rebuildOnUpdate={true}
-      slidesPerView={1}
-      snapItems={true}
-      zoom={false}
     >
-      <div
-        aria-hidden={false}
-        className="css-1hlki0z common__swiper"
+      <SwiperItem
+        key="http://placehold.it/350x150"
       >
-        <ReactIdSwiper
-          ContainerEl="div"
-          WrapperEl="div"
-          allowSlideNext={true}
-          allowSlidePrev={true}
-          autoplay={false}
-          containerClass="css-18n9gca"
-          freeMode={false}
-          getSwiper={[Function]}
-          initialSlide={0}
-          loop={false}
-          modules={
-            Array [
-              Object {
-                "create": [Function],
-                "name": "pagination",
-                "on": Object {
-                  "activeIndexChange": [Function],
-                  "click": [Function],
-                  "destroy": [Function],
-                  "init": [Function],
-                  "slidesLengthChange": [Function],
-                  "snapGridLengthChange": [Function],
-                  "snapIndexChange": [Function],
-                },
-                "params": Object {
-                  "pagination": Object {
-                    "bulletActiveClass": "swiper-pagination-bullet-active",
-                    "bulletClass": "swiper-pagination-bullet",
-                    "bulletElement": "span",
-                    "clickable": false,
-                    "clickableClass": "swiper-pagination-clickable",
-                    "currentClass": "swiper-pagination-current",
-                    "dynamicBullets": false,
-                    "dynamicMainBullets": 1,
-                    "el": null,
-                    "formatFractionCurrent": [Function],
-                    "formatFractionTotal": [Function],
-                    "hiddenClass": "swiper-pagination-hidden",
-                    "hideOnClick": false,
-                    "lockClass": "swiper-pagination-lock",
-                    "modifierClass": "swiper-pagination-",
-                    "progressbarFillClass": "swiper-pagination-progressbar-fill",
-                    "progressbarOpposite": false,
-                    "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
-                    "renderBullet": null,
-                    "renderCustom": null,
-                    "renderFraction": null,
-                    "renderProgressbar": null,
-                    "totalClass": "swiper-pagination-total",
-                    "type": "bullets",
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "navigation",
-                "on": Object {
-                  "click": [Function],
-                  "destroy": [Function],
-                  "fromEdge": [Function],
-                  "init": [Function],
-                  "toEdge": [Function],
-                },
-                "params": Object {
-                  "navigation": Object {
-                    "disabledClass": "swiper-button-disabled",
-                    "hiddenClass": "swiper-button-hidden",
-                    "hideOnClick": false,
-                    "lockClass": "swiper-button-lock",
-                    "nextEl": null,
-                    "prevEl": null,
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "autoplay",
-                "on": Object {
-                  "beforeTransitionStart": [Function],
-                  "destroy": [Function],
-                  "init": [Function],
-                  "sliderFirstMove": [Function],
-                },
-                "params": Object {
-                  "autoplay": Object {
-                    "delay": 3000,
-                    "disableOnInteraction": true,
-                    "enabled": false,
-                    "reverseDirection": false,
-                    "stopOnLastSlide": false,
-                    "waitForTransition": true,
-                  },
-                },
-              },
-              Object {
-                "create": [Function],
-                "name": "zoom",
-                "on": Object {
-                  "destroy": [Function],
-                  "doubleTap": [Function],
-                  "init": [Function],
-                  "touchEnd": [Function],
-                  "touchStart": [Function],
-                  "transitionEnd": [Function],
-                },
-                "params": Object {
-                  "zoom": Object {
-                    "containerClass": "swiper-zoom-container",
-                    "enabled": false,
-                    "maxRatio": 3,
-                    "minRatio": 1,
-                    "toggle": true,
-                    "zoomedSlideClass": "swiper-slide-zoomed",
-                  },
-                },
-              },
-            ]
-          }
-          navigation={
-            Object {
-              "nextEl": null,
-              "prevEl": null,
-            }
-          }
-          pagination={
-            Object {
-              "bulletActiveClass": "swiper-pagination-bullet-active",
-              "bulletClass": "swiper-pagination-bullet",
-              "dynamicBullets": true,
-              "el": ".swiper-pagination",
-              "type": "bullets",
-            }
-          }
-          rebuildOnUpdate={true}
-          renderNextButton={[Function]}
-          renderPagination={[Function]}
-          renderParallax={[Function]}
-          renderPrevButton={[Function]}
-          renderScrollbar={[Function]}
-          slideClass="swiper-slide"
-          slidesPerView={1}
-          wrapperClass="swiper-wrapper"
-          zoom={false}
+        <Link
+          className="css-63oe3q"
+          href="http://example.com"
         >
-          <div
-            className="css-18n9gca"
-          >
-            <div
-              className="swiper-wrapper"
-            >
-              <SwiperItem
-                className="swiper-slide"
-                key=".$http=2//placehold.it/350x150"
-              >
-                <div
-                  className="css-10a4qrv swiper-slide"
-                  data-test-id="Slider"
-                >
-                  <Connect(Link)
-                    className="css-63oe3q"
-                    href="http://example.com"
-                  >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-63oe3q"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href="http://example.com"
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
-                    >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-63oe3q common__link"
-                        data-test-id="link: http://example.com"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
-                      >
-                        <img
-                          className={
-                            Object {
-                              "data-css-1rozygh": "",
-                            }
-                          }
-                          data-test-id="link: http://example.com"
-                          src="http://placehold.it/350x150"
-                        />
-                      </div>
-                    </Link>
-                  </Connect(Link)>
-                </div>
-              </SwiperItem>
-              <SwiperItem
-                className="swiper-slide"
-                key=".$http=2//placehold.it/10x10"
-              >
-                <div
-                  className="css-10a4qrv swiper-slide"
-                  data-test-id="Slider"
-                >
-                  <Connect(Link)
-                    className="css-63oe3q"
-                    href="http://other.example.com"
-                  >
-                    <Link
-                      aria-hidden={null}
-                      aria-label={null}
-                      className="css-63oe3q"
-                      disabled={false}
-                      historyPush={[Function]}
-                      historyReplace={[Function]}
-                      href="http://other.example.com"
-                      replace={false}
-                      role="link"
-                      state={Object {}}
-                      tabIndex={null}
-                      tag="div"
-                      target={null}
-                    >
-                      <div
-                        aria-hidden={null}
-                        aria-label={null}
-                        className="css-9auwkz css-63oe3q common__link"
-                        data-test-id="link: http://other.example.com"
-                        href={null}
-                        onClick={[Function]}
-                        role="link"
-                        tabIndex={null}
-                      >
-                        <img
-                          className={
-                            Object {
-                              "data-css-1rozygh": "",
-                            }
-                          }
-                          data-test-id="link: http://other.example.com"
-                          src="http://placehold.it/10x10"
-                        />
-                      </div>
-                    </Link>
-                  </Connect(Link)>
-                </div>
-              </SwiperItem>
-            </div>
-            <div
-              className="swiper-pagination"
-            />
-          </div>
-        </ReactIdSwiper>
-      </div>
+          <img
+            className={
+              Object {
+                "data-css-1rozygh": "",
+              }
+            }
+            data-test-id="link: http://example.com"
+            src="http://placehold.it/350x150"
+          />
+        </Link>
+      </SwiperItem>
+      <SwiperItem
+        key="http://placehold.it/10x10"
+      >
+        <Link
+          className="css-63oe3q"
+          href="http://other.example.com"
+        >
+          <img
+            className={
+              Object {
+                "data-css-1rozygh": "",
+              }
+            }
+            data-test-id="link: http://other.example.com"
+            src="http://placehold.it/10x10"
+          />
+        </Link>
+      </SwiperItem>
     </Swiper>
   </ImageSliderWidget>
 </Provider>
