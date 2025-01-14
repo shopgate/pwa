@@ -146,7 +146,7 @@ class ProductSlider extends PureComponent {
             classNames={{ container: styles.sliderContainer }}
           >
             {products.slice(0, PRODUCT_SLIDER_WIDGET_LIMIT).map(product => (
-              <Swiper.Item key={product.id} className={styles.sliderItem}>
+              <Swiper.Item key={product.id}>
                 <ProductListEntryProvider productId={product.id}>
                   <Card className={styles.card}>
                     <ProductCard

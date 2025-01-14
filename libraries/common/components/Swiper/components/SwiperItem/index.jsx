@@ -1,20 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { SwiperSlide } from 'swiper/react';
 import { item } from './styles';
 
 /**
+ * @typedef {import('swiper/react').SwiperSlideProps} SwiperSlideProps
+ */
+
+/**
  * The basic swiper item component.
- * @param {Object} props The component props.
+ * @param {SwiperSlideProps} props The component props.
  * @returns {React.Node}
  */
-function SwiperItem({ children, className }) {
+function SwiperItem({ children, className, ...slideProps }) {
   return (
-    <div className={classNames(item, className)} data-test-id="Slider">
-      {children}
-    </div>
+    <SwiperSlide {...slideProps}>
+      <div className={classNames(item, className)} data-test-id="Slider">
+        {children}
+      </div>
+    </SwiperSlide>
   );
 }
+
+SwiperItem.displayName = 'SwiperSlide';
 
 SwiperItem.propTypes = {
   children: PropTypes.node.isRequired,

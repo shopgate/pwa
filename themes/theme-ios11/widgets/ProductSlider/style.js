@@ -2,10 +2,7 @@ import { css } from 'glamor';
 import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const sliderContainer = css({
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  position: 'relative',
-  paddingBottom: 10,
+  paddingBottom: '10px !important',
 }).toString();
 
 const slider = css({
@@ -13,10 +10,6 @@ const slider = css({
   flex: 1,
   paddingTop: 16,
   paddingBottom: 16,
-}).toString();
-
-const sliderItem = css({
-  width: '50%',
 }).toString();
 
 const productInfo = css({
@@ -73,7 +66,6 @@ export default {
   headline,
   sliderContainer,
   slider,
-  sliderItem,
   productInfo,
   productName,
   priceGrid,
