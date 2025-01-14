@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { css } from 'glamor';
+import StoreFinderMap from '../../StoreFinder/StoreFinderMap';
+import { StoreFinderProvider } from '../../../providers';
 
-/**
-* Store location map component.
-* @returns {JSX}
-*/
-const StoreLocationMap = () => (
-  <div style={{
-    backgroundColor: 'red',
-    height: '200px',
+const styles = {
+  container: css({
+    maxHeight: '400px',
+    height: '400px',
     width: '100%',
     marginTop: '10px',
     marginBottom: '10px',
-  }}
-  >
-MAP
-  </div>
-);
+  }).toString(),
+};
+
+/**
+* Store location map component.
+* @returns {JSX.Element}
+*/
+const StoreLocationMap = () => {
+  const storeListRef = useRef(null);
+
+  return (
+    <StoreFinderProvider storeListRef={storeListRef}>
+      <div className={styles.container}>
+        <StoreFinderMap />
+      </div>
+    </StoreFinderProvider>
+  );
+};
 
 export default StoreLocationMap;

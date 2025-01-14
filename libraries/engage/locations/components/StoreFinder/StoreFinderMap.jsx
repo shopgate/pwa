@@ -1,10 +1,14 @@
-import React, { useContext, useMemo, useCallback } from 'react';
+import React, {
+  useContext, useMemo, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
+import {
+  Circle, MapContainer, Marker, TileLayer,
+} from 'react-leaflet';
+import { GestureHandling } from 'leaflet-gesture-handling';
 import '../../assets/leaflet.css';
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 import Leaflet from 'leaflet';
-import { GestureHandling } from 'leaflet-gesture-handling';
-import { Map, Marker, TileLayer } from 'react-leaflet';
 import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
 import { StoreFinderContext } from '../../locations.context';
@@ -16,7 +20,7 @@ Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
 /**
  * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const StoreFinderMap = ({ showUserPosition }) => {
   const {
@@ -46,7 +50,7 @@ const StoreFinderMap = ({ showUserPosition }) => {
     iconSize: [20, 20],
   }), []);
 
-  const positions = useMemo(() => locations.map((location) => {
+  const positions = useMemo(() => locations?.map((location) => {
     const { code, latitude, longitude } = location;
     const { code: selectedCode } = selectedLocation || {};
     const icon = selectedCode === code ? markerIconSelected : makerIcon;
@@ -59,6 +63,10 @@ const StoreFinderMap = ({ showUserPosition }) => {
   }), [locations, makerIcon, markerIconSelected, selectedLocation]);
 
   const userPosition = useMemo(() => {
+    if (!userSearch) {
+      return null;
+    }
+
     const { geolocation } = userSearch;
 
     if (!geolocation || !showUserPosition) {
@@ -87,15 +95,29 @@ const StoreFinderMap = ({ showUserPosition }) => {
     changeLocation(location, true);
   }, [changeLocation]);
 
+  // TODO: should come from theme config, map viewport should adjust to new radius
+  // 10 miles in meters
+  const radius = 16093.4;
+
+  // eslint-disable-next-line require-jsdoc
+  const handleMapCreated = (map) => {
+    map.gestureHandling.enable();
+
+    // Enable touchZoom for mobile devices
+    if (Leaflet.Browser.mobile) {
+      map.touchZoom.enable();
+    }
+  };
+
   return (
     <div className={container}>
-      <Map
+      <MapContainer
         center={viewport}
-        zoom={15}
+        zoom={10}
         className={container}
-        gestureHandling={Leaflet.Browser.mobile}
-        touchZoom
+        whenCreated={handleMapCreated}
       >
+        <Circle center={viewport} radius={radius} color="blue" />
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -107,7 +129,11 @@ const StoreFinderMap = ({ showUserPosition }) => {
             key={code}
             icon={icon}
             position={position}
-            onclick={(e) => { onMarkerClick(e, location); }}
+            eventHandlers={{
+              click: (e) => {
+                onMarkerClick(e, location);
+              },
+            }}
           />
         ))}
         { userPosition && (
@@ -117,7 +143,7 @@ const StoreFinderMap = ({ showUserPosition }) => {
             position={userPosition.position}
           />
         )}
-      </Map>
+      </MapContainer>
     </div>
   );
 };

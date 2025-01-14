@@ -12,7 +12,7 @@ export const container = css({
   [responsiveMediaQuery('<=sm', { appAlways: true })]: {
   //  position: 'fixed',
     zIndex: 10,
-    maxHeight: 200,
+    // maxHeight: 200,
   },
 });
 
