@@ -1,10 +1,14 @@
 import React from 'react';
 import { css } from 'glamor';
-import { LocationIcon } from '@shopgate/engage/components';
+import { LocationIcon, Button } from '@shopgate/engage/components';
 import { connect } from 'react-redux';
 import { getPreferredLocation, makeGetLocation } from '@shopgate/engage/locations/selectors';
-import { i18n, getWeekDaysOrder, getCurrentRoute } from '@shopgate/engage/core';
+import {
+  i18n, getWeekDaysOrder, getCurrentRoute,
+} from '@shopgate/engage/core';
 import PropTypes from 'prop-types';
+import { selectLocation } from '@shopgate/engage/locations/action-creators';
+import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
 
 const styles = {
   headerWrappper: css({
@@ -20,8 +24,9 @@ const styles = {
     fontSize: '20px',
   }),
   locationName: css({
-    fontSize: '25px',
+    fontSize: '24px',
     fontWeight: '600',
+    marginBottom: '8px',
   }),
   locationRow: css({
     display: 'flex',
@@ -31,7 +36,7 @@ const styles = {
     flex: 1,
   }),
   storeHours: css({
-    fontSize: '16px',
+    fontSize: '20px',
     fontWeight: '600',
   }),
   storeHoursLine: css({
@@ -40,10 +45,19 @@ const styles = {
     justifyContent: 'space-between',
   }),
   storeHoursWeekday: css({
-    fontSize: '12px',
+    textAlign: 'left',
   }),
   storeHoursOpeningTime: css({
-    fontSize: '12px',
+    textAlign: 'right',
+  }),
+  getDirections: css({
+    margin: '8px 0px',
+  }),
+  phone: css({
+    fontWeight: '600',
+  }),
+  phoneNumber: css({
+    textDecoration: 'underline',
   }),
 };
 
@@ -61,32 +75,62 @@ const mapStateToProps = (state) => {
 };
 
 /**
+ * Maps dispatch to props
+ * @param {Function} dispatch Dispatch
+ * @returns {Object}
+ * */
+const mapDispatchToProps = dispatch => ({
+  setLocation: location => dispatch(selectLocation(location, true)),
+});
+
+/**
  * Store details component.
  * @param {Object} props The component props.
   * @returns {JSX}
   */
 const StoreDetails = (props) => {
-  const { preferredLocation, routeLocation } = props;
+  const { preferredLocation, routeLocation, setLocation } = props;
   const storesEqual = preferredLocation
     && routeLocation
     && preferredLocation.code === routeLocation.code;
 
-  const { name: locationName, address, operationHours } = routeLocation;
+  const { address, operationHours } = routeLocation;
+
+  /**
+  * Formats the store name for the header.
+  * @param {Object} location The location object.
+  * @returns {string}
+  * */
+  const formatStoreName = (location) => {
+    const { name, address: locationAddress = {} } = location;
+    const { region } = locationAddress;
+    const string = name + (region ? `, ${region}` : '');
+    return string;
+  };
 
   return (
     <div>
-      <div className={styles.headerWrappper}>
+      <Button
+        onClick={() => setLocation(routeLocation)}
+        role="button"
+        type="plain"
+        className={styles.headerWrappper}
+        wrapContent={false}
+      >
         <div className={styles.headerIcon}>
           <LocationIcon className={styles.icon} />
         </div>
         <div className={styles.header}>
           {storesEqual ?
             i18n.text('location.myStore') :
-            i18n.text('location.makeMyStore')}
+            i18n.text('location.makeMyStore')
+          }
         </div>
-      </div>
+      </Button>
 
-      <div className={styles.locationName}>{locationName}</div>
+      <div className={styles.locationName}>
+        {formatStoreName(routeLocation)}
+      </div>
 
       <div className={styles.locationRow}>
         <div className={styles.locationColumn}>
@@ -94,21 +138,19 @@ const StoreDetails = (props) => {
             {address.street}
           </div>
           <div>
-            {`${address.city} ${address.postalCode}`}
+            {`${address.city}, ${address.postalCode}`}
           </div>
-          <div>
-            {i18n.text('location.getDirections')}
+          <StoreFinderGetDirectionsButton address={address} />
+          <div className={styles.phone}>
+            {`${i18n.text('location.phone')}: `}
           </div>
-          <div>
-            {i18n.text('location.phone')}
-          </div>
-          <div>
+          <div className={styles.phoneNumber}>
             {address.phoneNumber}
           </div>
         </div>
         <div className={styles.locationColumn}>
           <div className={styles.storeHours}>
-            {i18n.text('location.storeHours')}
+            {`${i18n.text('location.storeHours')}:`}
           </div>
           {getWeekDaysOrder().map((weekDay) => {
             if (!operationHours[weekDay]) {
@@ -117,7 +159,7 @@ const StoreDetails = (props) => {
             return (
               <div className={styles.storeHoursLine} key={weekDay}>
                 <div className={styles.storeHoursWeekday}>
-                  {i18n.text(`locations.${weekDay}`)}
+                  {`${i18n.text(`locations.${weekDay}`)}:`}
                 </div>
                 <div className={styles.storeHoursOpeningTime}>{operationHours[weekDay]}</div>
               </div>
@@ -141,6 +183,7 @@ StoreDetails.propTypes = {
     }),
     operationHours: PropTypes.shape(),
   }).isRequired,
+  setLocation: PropTypes.func.isRequired,
   preferredLocation: PropTypes.shape({
     code: PropTypes.string,
   }),
@@ -150,4 +193,4 @@ StoreDetails.defaultProps = {
   preferredLocation: null,
 };
 
-export default connect(mapStateToProps)(StoreDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(StoreDetails);
