@@ -109,15 +109,43 @@ const StoreFinderMap = ({ showUserPosition }) => {
     }
   };
 
+  /**
+   * Creates coordinates for a bounding box around a center point
+   * @param {Array} center The center point
+   * @param {number} distanceInMeter The distance in meters
+   * @returns {Array} The bounds
+   */
+  const createBounds = (([lat, lng], distanceInMeter) => {
+    const EARTH_RADIUS = 6371;
+    const distanceInKm = distanceInMeter / 1000;
+    const distanceToBoundaryInKm = distanceInKm;// not sure if we need /2 here
+
+    const latInRadians = lat * (Math.PI / 180);
+
+    const delteLat = (distanceToBoundaryInKm / EARTH_RADIUS) * (180 / Math.PI);
+    const delteLng = (distanceToBoundaryInKm / EARTH_RADIUS)
+      * (180 / Math.PI)
+      / Math.cos(latInRadians);
+
+    return [
+      [lat - delteLat, lng - delteLng],
+      [lat + delteLat, lng + delteLng],
+    ];
+  });
+
   return (
     <div className={container}>
       <MapContainer
         center={viewport}
-        zoom={10}
+        bounds={createBounds(viewport, radius)}
         className={container}
         whenCreated={handleMapCreated}
       >
-        <Circle center={viewport} radius={radius} color="blue" />
+        <Circle
+          center={viewport}
+          radius={radius}
+          color="blue"
+        />
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
