@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
+import { i18n } from '@shopgate/engage/core';
 import { makeGetNearbyLocationsByRouteLocation } from '../../../selectors';
 import StoresNearbyListItem from './StoresNearbyListItem';
 
@@ -36,7 +37,9 @@ const StoresNearby = (props) => {
 
   return (
     <div>
-      <div className={styles.title}>Stores Nearby</div>
+      <div className={styles.title}>
+        {i18n.text('location.storesNearby')}
+      </div>
       <table>
         <tbody>
           {nearbyLocations.map(location => (

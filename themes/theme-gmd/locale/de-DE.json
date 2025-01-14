@@ -31,6 +31,7 @@
     "register": "Registrieren",
     "order_details": "Bestelldetails",
     "store_finder": "Filialfinder",
+    "store_details": "Filialdetails",
     "order_history": "Bestellverlauf",
     "profile": "Profil",
     "your_account": "Mein Account",
@@ -268,6 +269,14 @@
       "pricing": "Preisinformationen",
       "properties": "Eigenschaften"
     }
+  },
+  "location": {
+    "myStore": "Meine Filiae",
+    "makeMyStore": "Filiale auswählen",
+    "getDirections": "Wegbeschreibung",
+    "phone": "Telefon",
+    "storeHours": "Öffnungszeiten",
+    "storesNearby": "Filialen in der Nähe"
   },
   "locations": {
     "headline": "Läden in Ihrer Nähe",

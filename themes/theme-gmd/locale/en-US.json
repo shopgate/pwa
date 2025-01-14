@@ -31,6 +31,7 @@
     "register": "Register",
     "order_details": "Order Details",
     "store_finder": "Store Finder",
+    "store_details": "Store Details",
     "order_history": "Order History",
     "profile": "Profile",
     "your_account": "My Account",
@@ -268,6 +269,14 @@
       "pricing": "Pricing",
       "properties": "Properties"
     }
+  },
+  "location":{
+    "myStore": "My Store",
+    "makeMyStore": "Make My Store",
+    "getDirections": "Get Directions",
+    "phone": "Phone",
+    "storeHours": "Store Hours",
+    "storesNearby":"Stores Nearby"
   },
   "locations": {
     "headline": "Stores near you",

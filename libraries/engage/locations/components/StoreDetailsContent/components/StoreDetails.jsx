@@ -80,7 +80,9 @@ const StoreDetails = (props) => {
           <LocationIcon className={styles.icon} />
         </div>
         <div className={styles.header}>
-          {storesEqual ? 'My Store' : 'Make my Store'}
+          {storesEqual ?
+            i18n.text('location.myStore') :
+            i18n.text('location.makeMyStore')}
         </div>
       </div>
 
@@ -95,10 +97,10 @@ const StoreDetails = (props) => {
             {`${address.city} ${address.postalCode}`}
           </div>
           <div>
-                        Get Directions
+            {i18n.text('location.getDirections')}
           </div>
           <div>
-                        Phone:
+            {i18n.text('location.phone')}
           </div>
           <div>
             {address.phoneNumber}
@@ -106,21 +108,19 @@ const StoreDetails = (props) => {
         </div>
         <div className={styles.locationColumn}>
           <div className={styles.storeHours}>
-                        Store Hours: I18n
+            {i18n.text('location.storeHours')}
           </div>
           {getWeekDaysOrder().map((weekDay) => {
             if (!operationHours[weekDay]) {
               return null;
             }
             return (
-
               <div className={styles.storeHoursLine} key={weekDay}>
                 <div className={styles.storeHoursWeekday}>
                   {i18n.text(`locations.${weekDay}`)}
                 </div>
                 <div className={styles.storeHoursOpeningTime}>{operationHours[weekDay]}</div>
               </div>
-
             );
           })}
         </div>

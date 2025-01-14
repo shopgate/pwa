@@ -38,7 +38,6 @@ function PageContent({
   }
 
   const BarComponent = !isCookieConsentHandled ? BackBar : DefaultBar;
-  console.log('sasa:41: pageId)', pageId);
 
   return (
     <Fragment>

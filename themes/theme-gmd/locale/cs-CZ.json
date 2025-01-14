@@ -31,6 +31,7 @@
     "register": "Registrovat se",
     "order_details": "Detaily objednávky",
     "store_finder": "Vyhledávač prodejen",
+    "store_details": "Podrobnosti o obchodu",
     "order_history": "Historie objednávek",
     "profile": "Profil",
     "your_account": "Můj účet",
@@ -268,6 +269,14 @@
       "pricing": "Informace o ceně",
       "properties": "Vlastnosti"
     }
+  },
+  "location": {
+    "myStore": "Můj obchod",
+    "makeMyStore": "Vytvořit můj obchod",
+    "getDirections": "Získat směr",
+    "phone": "Telefon",
+    "storeHours": "Otevírací doba",
+    "storesNearby": "Obchody v okolí"
   },
   "locations": {
     "headline": "Obchody ve vaší blízkosti",

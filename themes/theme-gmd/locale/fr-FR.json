@@ -31,6 +31,7 @@
     "register": "S'inscrire",
     "order_details": "Détails de la commande",
     "store_finder": "Trouver un magasin",
+    "store_details": "Détails du magasin",
     "order_history": "Historique des commandes",
     "profile": "Profil",
     "your_account": "Mon compte",
@@ -268,6 +269,14 @@
       "pricing": "Tarifs",
       "properties": "Propriétés"
     }
+  },
+  "location": {
+    "myStore": "Mon magasin",
+    "makeMyStore": "Créer mon magasin",
+    "getDirections": "Obtenir des directions",
+    "phone": "Téléphone",
+    "storeHours": "Horaires d'ouverture",
+    "storesNearby": "Magasins à proximité"
   },
   "locations": {
     "headline": "Magasins près de chez vous",

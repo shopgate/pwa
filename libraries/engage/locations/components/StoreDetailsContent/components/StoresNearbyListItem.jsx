@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { Link, Button } from '@shopgate/engage/components';
 import { connect } from 'react-redux';
+import { i18n } from '@shopgate/engage/core';
 import formatDistance from '../../../helpers/formatDistance';
 import { STORE_DETAILS_PATH } from '../../../constants';
 import { selectLocation } from '../../../action-creators';
@@ -63,7 +64,6 @@ const StoresNearbyListItem = ({ location, setLocation, preferredLocation }) => {
   const {
     name, distance, unitSystem, code,
   } = location;
-  console.log('sasa:66: location', location);
 
   const isPreferredLocation = preferredLocation && preferredLocation.code === code;
 
@@ -90,7 +90,7 @@ const StoresNearbyListItem = ({ location, setLocation, preferredLocation }) => {
           {!isPreferredLocation && (
             <div className={styles.makeMyStore}>
               <Button onClick={() => setLocation(location)} role="button" type="plain">
-              Make my Store
+                {i18n.text('location.makeMyStore')}
               </Button>
             </div>
           )}

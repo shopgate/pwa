@@ -31,6 +31,7 @@
     "register": "Rekisteröidy",
     "order_details": "Tilaustiedot",
     "store_finder": "Myymälähaku",
+    "store_details": "Myymälätiedot",
     "order_history": "Tilaushistoria",
     "profile": "Profiili",
     "your_account": "Oma tili",
@@ -268,6 +269,14 @@
       "pricing": "Hintatiedot",
       "properties": "Ominaisuudet"
     }
+  },
+  "location": {
+    "myStore": "Myymäläni",
+    "makeMyStore": "Luo myymäläni",
+    "getDirections": "Hanki reittiohjeet",
+    "phone": "Puhelin",
+    "storeHours": "Aukioloajat",
+    "storesNearby": "Läheiset kaupat"
   },
   "locations": {
     "headline": "Myymälät lähellä sinua",

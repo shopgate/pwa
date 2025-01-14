@@ -31,6 +31,7 @@
     "register": "Regisztráció",
     "order_details": "Rendelés részletei",
     "store_finder": "Üzletkereső",
+    "store_details": "Üzlet részletei",
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
     "your_account": "Saját fiók",
@@ -268,6 +269,14 @@
       "pricing": "Árinformáció",
       "properties": "Tulajdonságok"
     }
+  },
+  "location": {
+    "myStore": "Az én boltom",
+    "makeMyStore": "Hozd létre a boltom",
+    "getDirections": "Útvonalterv kérés",
+    "phone": "Telefon",
+    "storeHours": "Nyitvatartás",
+    "storesNearby": "Közeli boltok"
   },
   "locations": {
     "headline": "Üzletek az Ön közelében",

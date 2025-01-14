@@ -31,6 +31,7 @@
     "register": "Registreren",
     "order_details": "Bestelgegevens",
     "store_finder": "Winkelzoeker",
+    "store_details": "Winkeldetails",
     "order_history": "Bestelgeschiedenis",
     "profile": "Profiel",
     "your_account": "Mijn Account",
@@ -268,6 +269,14 @@
       "pricing": "Prijzen",
       "properties": "Eigenschappen"
     }
+  },
+  "location": {
+    "myStore": "Mijn winkel",
+    "makeMyStore": "Maak mijn winkel",
+    "getDirections": "Krijg routebeschrijving",
+    "phone": "Telefoon",
+    "storeHours": "Openingstijden",
+    "storesNearby": "Winkels in de buurt"
   },
   "locations": {
     "headline": "Winkels in uw buurt",

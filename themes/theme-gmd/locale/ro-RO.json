@@ -31,6 +31,7 @@
     "register": "Înregistrare",
     "order_details": "Detalii comandă",
     "store_finder": "Găsire magazin",
+    "store_details": "Detalii magazin",
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
     "your_account": "Contul meu",
@@ -268,6 +269,14 @@
       "pricing": "Informații despre preț",
       "properties": "Proprietăți"
     }
+  },
+  "location": {
+    "myStore": "Magazinul meu",
+    "makeMyStore": "Creează magazinul meu",
+    "getDirections": "Obține direcții",
+    "phone": "Telefon",
+    "storeHours": "Program de funcționare",
+    "storesNearby": "Magazine în apropiere"
   },
   "locations": {
     "headline": "Magazine aproape de dvs.",

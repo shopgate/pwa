@@ -21,7 +21,7 @@ const StoreDetails = () => (
   <View aria-hidden={false}>
     <BackBar
       right={null}
-      center={<AppBar.Title title={i18n.text('titles.STOREDETAILS')} />}
+      center={<AppBar.Title title={i18n.text('titles.store_details')} />}
     />
     <div className={styles.page}>
       <StoreDetailsContent />
