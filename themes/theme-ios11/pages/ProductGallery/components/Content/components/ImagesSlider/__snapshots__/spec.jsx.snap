@@ -88,54 +88,62 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               <SwiperItem
                 key="foo"
               >
-                <Image
-                  alt=""
-                  animating={false}
-                  backgroundColor="transparent"
-                  classNameImg="css-4kgshc"
-                  resolutions={
-                    Array [
-                      Object {
-                        "height": 1024,
-                        "width": 1024,
-                      },
-                      Object {
-                        "height": 2048,
-                        "width": 2048,
-                      },
-                    ]
-                  }
-                  src="foo"
-                  unwrapped={true}
+                <div
+                  className="swiper-zoom-container"
                 >
-                  Image
-                </Image>
+                  <Image
+                    alt=""
+                    animating={false}
+                    backgroundColor="transparent"
+                    classNameImg="css-4kgshc"
+                    resolutions={
+                      Array [
+                        Object {
+                          "height": 1024,
+                          "width": 1024,
+                        },
+                        Object {
+                          "height": 2048,
+                          "width": 2048,
+                        },
+                      ]
+                    }
+                    src="foo"
+                    unwrapped={true}
+                  >
+                    Image
+                  </Image>
+                </div>
               </SwiperItem>
               <SwiperItem
                 key="bar"
               >
-                <Image
-                  alt=""
-                  animating={false}
-                  backgroundColor="transparent"
-                  classNameImg="css-4kgshc"
-                  resolutions={
-                    Array [
-                      Object {
-                        "height": 1024,
-                        "width": 1024,
-                      },
-                      Object {
-                        "height": 2048,
-                        "width": 2048,
-                      },
-                    ]
-                  }
-                  src="bar"
-                  unwrapped={true}
+                <div
+                  className="swiper-zoom-container"
                 >
-                  Image
-                </Image>
+                  <Image
+                    alt=""
+                    animating={false}
+                    backgroundColor="transparent"
+                    classNameImg="css-4kgshc"
+                    resolutions={
+                      Array [
+                        Object {
+                          "height": 1024,
+                          "width": 1024,
+                        },
+                        Object {
+                          "height": 2048,
+                          "width": 2048,
+                        },
+                      ]
+                    }
+                    src="bar"
+                    unwrapped={true}
+                  >
+                    Image
+                  </Image>
+                </div>
               </SwiperItem>
             </Swiper>
           </div>
@@ -234,54 +242,62 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               <SwiperItem
                 key="foo"
               >
-                <Image
-                  alt=""
-                  animating={false}
-                  backgroundColor="transparent"
-                  classNameImg="css-4kgshc"
-                  resolutions={
-                    Array [
-                      Object {
-                        "height": 1024,
-                        "width": 1024,
-                      },
-                      Object {
-                        "height": 2048,
-                        "width": 2048,
-                      },
-                    ]
-                  }
-                  src="foo"
-                  unwrapped={true}
+                <div
+                  className="swiper-zoom-container"
                 >
-                  Image
-                </Image>
+                  <Image
+                    alt=""
+                    animating={false}
+                    backgroundColor="transparent"
+                    classNameImg="css-4kgshc"
+                    resolutions={
+                      Array [
+                        Object {
+                          "height": 1024,
+                          "width": 1024,
+                        },
+                        Object {
+                          "height": 2048,
+                          "width": 2048,
+                        },
+                      ]
+                    }
+                    src="foo"
+                    unwrapped={true}
+                  >
+                    Image
+                  </Image>
+                </div>
               </SwiperItem>
               <SwiperItem
                 key="bar"
               >
-                <Image
-                  alt=""
-                  animating={false}
-                  backgroundColor="transparent"
-                  classNameImg="css-4kgshc"
-                  resolutions={
-                    Array [
-                      Object {
-                        "height": 1024,
-                        "width": 1024,
-                      },
-                      Object {
-                        "height": 2048,
-                        "width": 2048,
-                      },
-                    ]
-                  }
-                  src="bar"
-                  unwrapped={true}
+                <div
+                  className="swiper-zoom-container"
                 >
-                  Image
-                </Image>
+                  <Image
+                    alt=""
+                    animating={false}
+                    backgroundColor="transparent"
+                    classNameImg="css-4kgshc"
+                    resolutions={
+                      Array [
+                        Object {
+                          "height": 1024,
+                          "width": 1024,
+                        },
+                        Object {
+                          "height": 2048,
+                          "width": 2048,
+                        },
+                      ]
+                    }
+                    src="bar"
+                    unwrapped={true}
+                  >
+                    Image
+                  </Image>
+                </div>
               </SwiperItem>
             </Swiper>
           </div>

@@ -38,15 +38,17 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
       >
         {images.map(image => (
           <Swiper.Item key={image}>
-            <Image
-              src={image}
-              alt=""
-              classNameImg={styles.slide}
-              resolutions={galleryResolutions}
-              animating={false}
-              backgroundColor="transparent"
-              unwrapped
-            />
+            <div className="swiper-zoom-container">
+              <Image
+                src={image}
+                alt=""
+                classNameImg={styles.slide}
+                resolutions={galleryResolutions}
+                animating={false}
+                backgroundColor="transparent"
+                unwrapped
+              />
+            </div>
           </Swiper.Item>
         ))}
       </Swiper>
