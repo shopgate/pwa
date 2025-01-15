@@ -9,6 +9,7 @@ import {
 import PropTypes from 'prop-types';
 import { selectLocation } from '@shopgate/engage/locations/action-creators';
 import classNames from 'classnames';
+import moment from 'moment';
 import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
 
 const styles = {
@@ -47,6 +48,9 @@ const styles = {
   }),
   storeHoursWeekday: css({
     textAlign: 'left',
+  }),
+  bold: css({
+    fontWeight: '600',
   }),
   storeHoursOpeningTime: css({
     textAlign: 'right',
@@ -109,6 +113,7 @@ const StoreDetails = (props) => {
     return string;
   };
 
+  const currentDay = moment().format('ddd').toLowerCase();
   // sasa todo test phone number in app
   // sasa todo test direction in app
 
@@ -149,7 +154,11 @@ const StoreDetails = (props) => {
             {`${i18n.text('location.phone')}: `}
           </div>
           <div className={styles.phoneNumber}>
-            <Link href={`tel:${address.phoneNumber}`} className={classNames(styles.phoneNumber)} target="_blank">
+            <Link
+              href={`tel:${address.phoneNumber}`}
+              className={classNames(styles.phoneNumber)}
+              target="_blank"
+            >
               {address.phoneNumber}
             </Link>
           </div>
@@ -164,10 +173,18 @@ const StoreDetails = (props) => {
             }
             return (
               <div className={styles.storeHoursLine} key={weekDay}>
-                <div className={styles.storeHoursWeekday}>
+                <div className={classNames(styles.storeHoursWeekday, {
+                  [styles.bold]: weekDay === currentDay,
+                })}
+                >
                   {`${i18n.text(`locations.${weekDay}`)}:`}
                 </div>
-                <div className={styles.storeHoursOpeningTime}>{operationHours[weekDay]}</div>
+                <div className={classNames(styles.storeHoursOpeningTime, {
+                  [styles.bold]: weekDay === currentDay,
+                })}
+                >
+                  {operationHours[weekDay]}
+                </div>
               </div>
             );
           })}

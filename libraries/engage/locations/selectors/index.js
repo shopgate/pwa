@@ -639,6 +639,7 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
     return ({
       latitude: routeLocation.latitude,
       longitude: routeLocation.longitude,
+      radius: 25 * 1.60934, // 25 miles to km
     });
   });
 

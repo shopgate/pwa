@@ -396,6 +396,9 @@ function locationsSubscriber(subscribe) {
         longitude: location.longitude,
         latitude: location.latitude,
       },
+      limit: 7,
+      radius: 25 * 1.60934, // 25 miles to km
+
     }));
   });
 }

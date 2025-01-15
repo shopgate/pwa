@@ -18,6 +18,7 @@ const styles = {
     textWrapMode: 'nowrap',
     alignContent: 'center',
     verticalAlign: 'middle',
+    fontWeight: '500',
   }),
   makeMyStore: css({
     textWrapMode: 'nowrap',
