@@ -636,7 +636,6 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
     const route = getCurrentRoute(state);
     const getRouteLocation = makeGetLocation(() => route.params.code);
     const routeLocation = getRouteLocation(state);
-
     return ({
       latitude: routeLocation.latitude,
       longitude: routeLocation.longitude,
@@ -644,7 +643,14 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
   });
 
   return createSelector(
+    getCurrentRoute,
     getFilteredLocationsForRoute,
-    locations => locations
+    (route, locations) => {
+      const { params: { code: locationCode } } = route;
+      // remove current location from nearby locations
+      const filteredLocations = locations.filter(location =>
+        location.code !== locationCode);
+      return filteredLocations;
+    }
   );
 };
