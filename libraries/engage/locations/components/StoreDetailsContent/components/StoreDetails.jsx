@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'glamor';
-import { LocationIcon, Button } from '@shopgate/engage/components';
+import { LocationIcon, Button, Link } from '@shopgate/engage/components';
 import { connect } from 'react-redux';
 import { getPreferredLocation, makeGetLocation } from '@shopgate/engage/locations/selectors';
 import {
@@ -145,7 +145,9 @@ const StoreDetails = (props) => {
             {`${i18n.text('location.phone')}: `}
           </div>
           <div className={styles.phoneNumber}>
-            {address.phoneNumber}
+            <Link href={`tel:${address.phoneNumber}`} className={styles.phoneNumber} target="_blank">
+              {address.phoneNumber}
+            </Link>
           </div>
         </div>
         <div className={styles.locationColumn}>
