@@ -25,12 +25,16 @@ const styles = {
     alignContent: 'center',
     verticalAlign: 'middle',
   }),
+  makeMyStoreButtonText: css({
+    color: 'var(--color-primary)',
+  }),
   name: css({
     verticalAlign: 'middle',
     alignContent: 'center',
   }),
   cellContainer: css({
     padding: '8px',
+    textAlign: 'end',
   }),
   cell: css({
     verticalAlign: 'middle',
@@ -91,7 +95,9 @@ const StoresNearbyListItem = ({ location, setLocation, preferredLocation }) => {
           {!isPreferredLocation && (
             <div className={styles.makeMyStore}>
               <Button onClick={() => setLocation(location)} role="button" type="plain">
-                {i18n.text('location.makeMyStore')}
+                <div className={styles.makeMyStoreButtonText}>
+                  {i18n.text('location.makeMyStore')}
+                </div>
               </Button>
             </div>
           )}

@@ -33,9 +33,12 @@ const styles = {
   locationRow: css({
     display: 'flex',
     gap: '4px',
+    flexWrap: 'wrap',
   }),
   locationColumn: css({
     flex: 1,
+    minWidth: '300px',
+    maxWidth: '400px',
   }),
   storeHours: css({
     fontSize: '20px',

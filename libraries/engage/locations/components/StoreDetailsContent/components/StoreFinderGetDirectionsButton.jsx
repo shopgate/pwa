@@ -11,8 +11,7 @@ const styles = {
     margin: '8px 0',
   }),
   buttonText: css({
-    fontWeight: '600',
-    textDecoration: 'underline',
+    color: 'var(--color-primary)',
   }),
 };
 
