@@ -277,7 +277,8 @@
     "phone": "Teléfono",
     "storeHours": "Horario de tienda",
     "storesNearby": "Tiendas cercanas",
-    "open": "Abierto"
+    "open": "Abierto",
+    "findMoreStores": "Encontrar más tiendas"
   },
   "locations": {
     "headline": "Tiendas cerca de usted",

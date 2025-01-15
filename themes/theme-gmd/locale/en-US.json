@@ -277,7 +277,8 @@
     "phone": "Phone",
     "storeHours": "Store Hours",
     "storesNearby": "Stores Nearby",
-    "open": "Open"
+    "open": "Open",
+    "findMoreStores": "Find More Stores"
   },
   "locations": {
     "headline": "Stores near you",

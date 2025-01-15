@@ -5,6 +5,7 @@ import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
 import StoreDetails from './components/StoreDetails';
 import StoreLocationMap from './components/StoreLocationMap';
 import StoresNearby from './components/StoresNearby';
+import FindMoreStores from './components/FindMoreStores';
 
 const styles = {
 };
@@ -25,6 +26,7 @@ const StoreDetialsContent = () => (
     <StoreDetails />
     <StoreLocationMap />
     <StoresNearby />
+    <FindMoreStores />
   </div>
 
 );

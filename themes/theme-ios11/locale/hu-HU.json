@@ -281,7 +281,8 @@
     "phone": "Telefon",
     "storeHours": "Nyitvatartás",
     "storesNearby": "Közeli boltok",
-    "open": "Nyitva"
+    "open": "Nyitva",
+    "findMoreStores": "További boltok keresése"
   },
   "locations": {
     "headline": "Üzletek az Ön közelében",

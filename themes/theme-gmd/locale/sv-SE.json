@@ -277,7 +277,8 @@
     "phone": "Telefon",
     "storeHours": "Öppettider",
     "storesNearby": "Butiker i närheten",
-    "open": "Öppet"
+    "open": "Öppet",
+    "findMoreStores": "Hitta fler butiker"
   },
   "locations": {
     "headline": "Butiker nära dig",

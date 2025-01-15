@@ -277,7 +277,8 @@
     "phone": "Telefoon",
     "storeHours": "Openingstijden",
     "storesNearby": "Winkels in de buurt",
-    "open": "Open"
+    "open": "Open",
+    "findMoreStores": "Vind meer winkels"
   },
   "locations": {
     "headline": "Winkels in uw buurt",

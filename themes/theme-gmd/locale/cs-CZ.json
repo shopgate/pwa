@@ -277,7 +277,8 @@
     "phone": "Telefon",
     "storeHours": "Otevírací doba",
     "storesNearby": "Obchody v okolí",
-    "open": "Otevřeno"
+    "open": "Otevřeno",
+    "findMoreStores": "Najít více obchodů"
   },
   "locations": {
     "headline": "Obchody ve vaší blízkosti",

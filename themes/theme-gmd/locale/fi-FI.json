@@ -277,7 +277,8 @@
     "phone": "Puhelin",
     "storeHours": "Aukioloajat",
     "storesNearby": "Läheiset kaupat",
-    "open": "Avoinna"
+    "open": "Avoinna",
+    "findMoreStores": "Etsi lisää myymälöitä"
   },
   "locations": {
     "headline": "Myymälät lähellä sinua",
