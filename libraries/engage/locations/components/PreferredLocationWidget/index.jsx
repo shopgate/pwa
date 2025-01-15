@@ -9,6 +9,7 @@ import {
   Link,
 } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
+import { i18n } from '@shopgate/engage/core';
 import { STORE_DETAILS_PATH } from '../../constants';
 
 /**
@@ -70,7 +71,9 @@ const PreferredLocationWidget = ({
             <div className={styles.locationName}>{name}</div>
           </div>
           <div className={styles.operatingHourWrapper}>
-            <div className={styles.operatingHour}>{operatingHour}</div>
+            <div className={styles.operatingHour}>
+              { `${i18n.text('location.open')} ${operatingHour}`}
+            </div>
           </div>
         </div>
       </Link>

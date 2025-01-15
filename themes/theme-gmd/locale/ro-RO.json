@@ -276,7 +276,8 @@
     "getDirections": "Obține direcții",
     "phone": "Telefon",
     "storeHours": "Program de funcționare",
-    "storesNearby": "Magazine în apropiere"
+    "storesNearby": "Magazine în apropiere",
+    "open": "Deschis"
   },
   "locations": {
     "headline": "Magazine aproape de dvs.",

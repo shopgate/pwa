@@ -276,7 +276,8 @@
     "getDirections": "Obtener direcciones",
     "phone": "Teléfono",
     "storeHours": "Horario de tienda",
-    "storesNearby": "Tiendas cercanas"
+    "storesNearby": "Tiendas cercanas",
+    "open": "Abierto"
   },
   "locations": {
     "headline": "Tiendas cerca de usted",

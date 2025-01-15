@@ -276,7 +276,8 @@
     "getDirections": "Získat směr",
     "phone": "Telefon",
     "storeHours": "Otevírací doba",
-    "storesNearby": "Obchody v okolí"
+    "storesNearby": "Obchody v okolí",
+    "open": "Otevřeno"
   },
   "locations": {
     "headline": "Obchody ve vaší blízkosti",

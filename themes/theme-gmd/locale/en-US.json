@@ -270,13 +270,14 @@
       "properties": "Properties"
     }
   },
-  "location":{
+  "location": {
     "myStore": "My Store",
     "makeMyStore": "Make My Store",
     "getDirections": "Get Directions",
     "phone": "Phone",
     "storeHours": "Store Hours",
-    "storesNearby":"Stores Nearby"
+    "storesNearby": "Stores Nearby",
+    "open": "Open"
   },
   "locations": {
     "headline": "Stores near you",

@@ -280,7 +280,8 @@
     "getDirections": "Hämta vägbeskrivning",
     "phone": "Telefon",
     "storeHours": "Öppettider",
-    "storesNearby": "Butiker i närheten"
+    "storesNearby": "Butiker i närheten",
+    "open": "Öppet"
   },
   "locations": {
     "headline": "Butiker nära dig",

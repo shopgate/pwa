@@ -276,7 +276,8 @@
     "getDirections": "Hanki reittiohjeet",
     "phone": "Puhelin",
     "storeHours": "Aukioloajat",
-    "storesNearby": "Läheiset kaupat"
+    "storesNearby": "Läheiset kaupat",
+    "open": "Avoinna"
   },
   "locations": {
     "headline": "Myymälät lähellä sinua",

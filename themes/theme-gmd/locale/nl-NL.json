@@ -276,7 +276,8 @@
     "getDirections": "Krijg routebeschrijving",
     "phone": "Telefoon",
     "storeHours": "Openingstijden",
-    "storesNearby": "Winkels in de buurt"
+    "storesNearby": "Winkels in de buurt",
+    "open": "Open"
   },
   "locations": {
     "headline": "Winkels in uw buurt",

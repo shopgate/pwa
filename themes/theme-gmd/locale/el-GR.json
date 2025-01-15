@@ -276,7 +276,8 @@
     "getDirections": "Πάρε οδηγίες",
     "phone": "Τηλέφωνο",
     "storeHours": "Ώρες λειτουργίας",
-    "storesNearby": "Καταστήματα κοντά"
+    "storesNearby": "Καταστήματα κοντά",
+    "open": "Ανοιχτό"
   },
   "locations": {
     "headline": "Καταστήματα κοντά σας",

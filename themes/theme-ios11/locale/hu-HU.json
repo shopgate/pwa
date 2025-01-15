@@ -280,7 +280,8 @@
     "getDirections": "Útvonalterv kérés",
     "phone": "Telefon",
     "storeHours": "Nyitvatartás",
-    "storesNearby": "Közeli boltok"
+    "storesNearby": "Közeli boltok",
+    "open": "Nyitva"
   },
   "locations": {
     "headline": "Üzletek az Ön közelében",

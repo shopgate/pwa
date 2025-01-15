@@ -280,7 +280,8 @@
     "getDirections": "Wegbeschreibung",
     "phone": "Telefon",
     "storeHours": "Öffnungszeiten",
-    "storesNearby": "Filialen in der Nähe"
+    "storesNearby": "Filialen in der Nähe",
+    "open": "Geöffnet"
   },
   "locations": {
     "headline": "Läden in Ihrer Nähe",
