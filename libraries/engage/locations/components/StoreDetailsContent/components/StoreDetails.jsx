@@ -8,6 +8,7 @@ import {
 } from '@shopgate/engage/core';
 import PropTypes from 'prop-types';
 import { selectLocation } from '@shopgate/engage/locations/action-creators';
+import classNames from 'classnames';
 import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
 
 const styles = {
@@ -108,13 +109,16 @@ const StoreDetails = (props) => {
     return string;
   };
 
+  // sasa todo test phone number in app
+  // sasa todo test direction in app
+
   return (
     <div>
       <Button
         onClick={() => setLocation(routeLocation)}
         role="button"
         type="plain"
-        className={styles.headerWrappper}
+        className={classNames(styles.headerWrappper)}
         wrapContent={false}
       >
         <div className={styles.headerIcon}>
@@ -145,7 +149,7 @@ const StoreDetails = (props) => {
             {`${i18n.text('location.phone')}: `}
           </div>
           <div className={styles.phoneNumber}>
-            <Link href={`tel:${address.phoneNumber}`} className={styles.phoneNumber} target="_blank">
+            <Link href={`tel:${address.phoneNumber}`} className={classNames(styles.phoneNumber)} target="_blank">
               {address.phoneNumber}
             </Link>
           </div>

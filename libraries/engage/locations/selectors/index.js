@@ -638,7 +638,6 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
     const routeLocation = getRouteLocation(state);
 
     return ({
-      countryCode: routeLocation.countryCode,
       latitude: routeLocation.latitude,
       longitude: routeLocation.longitude,
     });

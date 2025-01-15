@@ -24,7 +24,6 @@ const mapStateToProps = (state, props) => ({
 const styles = {
   icon: css({
     color: 'var(--color-primary)',
-    height: '24px',
   }),
   locationName: css({
     color: 'var(--color-primary)',
@@ -65,7 +64,9 @@ const PreferredLocationWidget = ({
       >
         <div className={styles.locationRow}>
           <div className={styles.locationNameWrapper}>
-            <LocationIcon className={styles.icon} />
+            <div className={styles.icon}>
+              <LocationIcon size={24} />
+            </div>
             <div className={styles.locationName}>{name}</div>
           </div>
           <div className={styles.operatingHourWrapper}>

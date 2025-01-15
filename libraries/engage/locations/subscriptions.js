@@ -396,7 +396,6 @@ function locationsSubscriber(subscribe) {
         longitude: location.longitude,
         latitude: location.latitude,
       },
-      countryCode: location.localeCode,
     }));
   });
 }
