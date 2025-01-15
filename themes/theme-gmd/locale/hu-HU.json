@@ -278,7 +278,8 @@
     "storeHours": "Nyitvatartás",
     "storesNearby": "Közeli boltok",
     "open": "Nyitva",
-    "findMoreStores": "További boltok keresése"
+    "findMoreStores": "További boltok keresése",
+    "noStoresNearby": "A kiválasztott hely közelében nem találtunk üzleteket"
   },
   "locations": {
     "headline": "Üzletek az Ön közelében",

@@ -278,7 +278,8 @@
     "storeHours": "Öppettider",
     "storesNearby": "Butiker i närheten",
     "open": "Öppet",
-    "findMoreStores": "Hitta fler butiker"
+    "findMoreStores": "Hitta fler butiker",
+    "noStoresNearby": "Inga butiker hittades i närheten av den valda platsen"
   },
   "locations": {
     "headline": "Butiker nära dig",

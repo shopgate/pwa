@@ -278,7 +278,8 @@
     "storeHours": "Godziny otwarcia",
     "storesNearby": "Sklepy w pobliżu",
     "open": "Otwarte",
-    "findMoreStores": "Znajdź więcej sklepów"
+    "findMoreStores": "Znajdź więcej sklepów",
+    "noStoresNearby": "Nie znaleziono sklepów w pobliżu wybranej lokalizacji"
   },
   "locations": {
     "headline": "Sklepy w Twojej okolicy",

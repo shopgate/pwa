@@ -278,7 +278,8 @@
     "storeHours": "Openingstijden",
     "storesNearby": "Winkels in de buurt",
     "open": "Open",
-    "findMoreStores": "Vind meer winkels"
+    "findMoreStores": "Vind meer winkels",
+    "noStoresNearby": "Geen winkels gevonden in de buurt van de geselecteerde locatie"
   },
   "locations": {
     "headline": "Winkels in uw buurt",

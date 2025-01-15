@@ -278,7 +278,8 @@
     "storeHours": "Store Hours",
     "storesNearby": "Stores Nearby",
     "open": "Open",
-    "findMoreStores": "Find More Stores"
+    "findMoreStores": "Find More Stores",
+    "noStoresNearby": "No stores found near the selected location"
   },
   "locations": {
     "headline": "Stores near you",

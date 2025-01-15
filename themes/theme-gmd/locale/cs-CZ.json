@@ -278,7 +278,8 @@
     "storeHours": "Otevírací doba",
     "storesNearby": "Obchody v okolí",
     "open": "Otevřeno",
-    "findMoreStores": "Najít více obchodů"
+    "findMoreStores": "Najít více obchodů",
+    "noStoresNearby": "V blízkosti vybraného místa nebyly nalezeny žádné obchody"
   },
   "locations": {
     "headline": "Obchody ve vaší blízkosti",

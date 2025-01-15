@@ -45,6 +45,11 @@ const StoresNearby = (props) => {
           {nearbyLocations.map(location => (
             <StoresNearbyListItem location={location} key={location.code} />
           )) }
+          {nearbyLocations.length === 0 && (
+          <div>
+            {i18n.text('location.noStoresNearby')}
+          </div>
+          )}
         </tbody>
       </table>
     </div>

@@ -278,7 +278,8 @@
     "storeHours": "Program de funcționare",
     "storesNearby": "Magazine în apropiere",
     "open": "Deschis",
-    "findMoreStores": "Găsiți mai multe magazine"
+    "findMoreStores": "Găsiți mai multe magazine",
+    "noStoresNearby": "Nu s-au găsit magazine în apropierea locației selectate"
   },
   "locations": {
     "headline": "Magazine aproape de dvs.",
