@@ -28,7 +28,12 @@ const styles = {
     display: 'flex',
     margin: '12px',
     border: `1px solid ${themeConfig.colors.shade7}`,
-    padding: '6px',
+    padding: '8px',
+    flexWrap: 'wrap',
+  }),
+  operatingHour: css({
+    textAlign: 'right',
+    paddingLeft: '8px',
   }),
 };
 
