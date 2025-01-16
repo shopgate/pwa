@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
-import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import PropTypes from 'prop-types';
 import { Button } from '@shopgate/engage/components';
 import { generateGoogleMapsDirectionsUrl, i18n } from '@shopgate/engage/core';
+import { useDispatch } from 'react-redux';
 
 const styles = {
   container: css({
@@ -16,32 +16,30 @@ const styles = {
 };
 
 /**
- * Maps state to props.
- * @param {Function} dispatch The dispatch function.
- * @returns {Object}
- */
-const mapDispatchToProps = dispatch => ({
-  openMap: url => dispatch(historyPush({
-    pathname: url,
-    state: {
-      target: '_blank',
-    },
-  })),
-});
-
-/**
  * @param {Object} props The component props
  * @param {Object} props.address The address object.
- * @param {Function} props.openMap The openMap function.
  * @returns {JSX}
  */
-const StoreFinderGetDirectionsButton = ({ address, openMap }) => {
+const StoreFinderGetDirectionsButton = ({ address }) => {
+  const dispatch = useDispatch();
   const url = useMemo(() => address && generateGoogleMapsDirectionsUrl(address), [address]);
+
+  /**
+   * Handles the button click.
+   */
+  const handleClick = () => {
+    dispatch(historyPush({
+      pathname: url,
+      state: {
+        target: '_blank',
+      },
+    }));
+  };
 
   return (
     <div className={styles.container}>
       <Button
-        onClick={() => openMap(url)}
+        onClick={handleClick}
         role="button"
         type="plain"
       >
@@ -55,7 +53,6 @@ const StoreFinderGetDirectionsButton = ({ address, openMap }) => {
 };
 
 StoreFinderGetDirectionsButton.propTypes = {
-  openMap: PropTypes.func.isRequired,
   address: PropTypes.shape(),
 };
 
@@ -63,4 +60,4 @@ StoreFinderGetDirectionsButton.defaultProps = {
   address: null,
 };
 
-export default connect(null, mapDispatchToProps)(StoreFinderGetDirectionsButton);
+export default StoreFinderGetDirectionsButton;
