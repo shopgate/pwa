@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 /**
- * The StoreFinderSelectLocationButton component.
+ * The StoreFinderStoreInfoButton component.
  * @param {Function} openStoreDetail The openStoreDetail function.
  * @returns {JSX}
  */
