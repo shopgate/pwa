@@ -9,8 +9,9 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
   classNameImg=""
   forcePlaceholder={true}
   highestResolutionLoaded={[Function]}
-  onError={null}
-  onLoad={null}
+  lazy={true}
+  onError={[Function]}
+  onLoad={[Function]}
   ratio={null}
   resolutions={
     Array [
@@ -21,12 +22,10 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
     ]
   }
   src="foo/bar"
-  srcmap={null}
-  transition={null}
   unwrapped={false}
 >
   <div
-    className="css-vfdozt "
+    className="css-vfdozt"
   />
 </Image>
 `;
@@ -40,8 +39,9 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
   classNameImg=""
   forcePlaceholder={false}
   highestResolutionLoaded={[Function]}
-  onError={null}
-  onLoad={null}
+  lazy={true}
+  onError={[Function]}
+  onLoad={[Function]}
   ratio={null}
   resolutions={
     Array [
@@ -52,26 +52,31 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
     ]
   }
   src="foo/bar"
-  srcmap={null}
-  transition={null}
   unwrapped={false}
 >
   <div
-    className="css-vfdozt "
+    className="css-vfdozt"
   >
-    <img
+    <ForwardRef
       alt={null}
-      aria-label={null}
-      className="css-f45h63 common__image"
-      data-test-id="image"
-      role="presentation"
+      className="css-1q1xq2l"
+      lazy={true}
+      onError={[Function]}
+      onLoad={[Function]}
       src="foo/bar"
-      style={
-        Object {
-          "width": "100%",
-        }
-      }
-    />
+    >
+      <img
+        alt={null}
+        aria-label={null}
+        className="css-1q1xq2l css-f45h63 common__image"
+        data-test-id="image"
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+        src="foo/bar"
+      />
+    </ForwardRef>
   </div>
 </Image>
 `;
