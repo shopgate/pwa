@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import { Swiper as SwiperCmp } from 'swiper/react';
@@ -43,8 +43,9 @@ const Swiper = ({
   interval,
   classNames,
   className,
-  children,
+  onSlideChange,
   additionalModules,
+  children,
   ...swiperProps
 }) => {
   const useFraction = (maxIndicators && maxIndicators < children.length);
@@ -65,6 +66,12 @@ const Swiper = ({
   if (typeof controls === 'object') {
     navigation = controls;
   }
+
+  const handleSlideChange = useCallback((swiper) => {
+    if (typeof onSlideChange === 'function') {
+      onSlideChange(swiper.realIndex, swiper);
+    }
+  }, [onSlideChange]);
 
   /**
    * @type {SwiperCmpProps}
@@ -97,6 +104,11 @@ const Swiper = ({
     },
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
+    // Next two parameters are used to improve swiper usability when users quickly swipe through
+    // slides. In this case the screen shouldn't scroll in other directions than the swipe.
+    touchStartForcePreventDefault: true,
+    touchMoveStopPropagation: true,
+    onSlideChange: handleSlideChange,
   }), [
     autoPlay,
     additionalModules,
@@ -110,6 +122,7 @@ const Swiper = ({
     navigation,
     paginationType,
     showPagination,
+    handleSlideChange,
     swiperProps,
   ]);
 
@@ -201,6 +214,11 @@ Swiper.propTypes = {
    * this number, bullet pagination will be replaced with fraction (numeric) pagination.
    */
   maxIndicators: PropTypes.number,
+  /**
+   * Callback invoked when the Swiper slide changes.
+   * Invoked with the index of the new slide and the Swiper instance.
+   */
+  onSlideChange: PropTypes.func,
 };
 
 Swiper.defaultProps = {
@@ -214,6 +232,7 @@ Swiper.defaultProps = {
   interval: 3000,
   maxIndicators: null,
   disabled: false,
+  onSlideChange: null,
 };
 
 export default Swiper;
