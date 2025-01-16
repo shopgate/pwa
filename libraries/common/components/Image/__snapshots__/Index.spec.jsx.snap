@@ -3,7 +3,7 @@
 exports[`<Image /> should render placeholders if forced to 1`] = `
 <Image
   alt={null}
-  animating={true}
+  animating={false}
   backgroundColor="#f2f2f2"
   className=""
   classNameImg=""
@@ -33,7 +33,7 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
 exports[`<Image /> should render placeholders if src is null 1`] = `
 <Image
   alt={null}
-  animating={true}
+  animating={false}
   backgroundColor="#f2f2f2"
   className=""
   classNameImg=""
@@ -59,7 +59,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
   >
     <ForwardRef
       alt={null}
-      className="css-1q1xq2l"
+      className=""
       lazy={true}
       onError={[Function]}
       onLoad={[Function]}
@@ -68,7 +68,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
       <img
         alt={null}
         aria-label={null}
-        className="css-1q1xq2l css-f45h63 common__image"
+        className="css-f45h63 common__image"
         data-test-id="image"
         loading="lazy"
         onError={[Function]}
