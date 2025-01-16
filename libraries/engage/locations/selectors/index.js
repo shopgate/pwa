@@ -664,3 +664,10 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
     }
   );
 };
+
+/**
+ * Gets the store locations nearby the currently displayed store location.
+ * @returns {Function}
+ */
+export const getNearbyLocationsByRoute = makeGetNearbyLocationsByRouteLocation();
+

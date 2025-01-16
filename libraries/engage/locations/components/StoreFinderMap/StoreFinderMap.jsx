@@ -1,6 +1,4 @@
-import React, {
-  useContext, useMemo, useCallback,
-} from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Circle, MapContainer, Marker, TileLayer,
@@ -17,7 +15,7 @@ import { StoreFinderContext } from '../../locations.context';
 import {
   container, marker, markerSelected, userPosition as userPositionStyle,
 } from './StoreFinderMap.style';
-import { getLocationByRoute } from '../../selectors';
+import { getLocationByRoute, getNearbyLocationsByRoute } from '../../selectors';
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
@@ -27,12 +25,15 @@ Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
  */
 const StoreFinderMap = ({ showUserPosition }) => {
   const {
-    locations,
     changeLocation,
     userSearch,
   } = useContext(StoreFinderContext);
 
   const selectedLocation = useSelector(getLocationByRoute);
+  const locations = useSelector(state => getNearbyLocationsByRoute(state));
+  if (!locations.some(loc => loc.code === selectedLocation.code)) {
+    locations.push(selectedLocation);
+  }
 
   const iconHTML = useMemo(() => renderToString(<MapMarkerIcon />), []);
 
@@ -123,7 +124,7 @@ const StoreFinderMap = ({ showUserPosition }) => {
   const createBounds = useCallback(([lat, lng], distanceInMeter) => {
     const EARTH_RADIUS_KM = 6371;
     const distanceInKm = distanceInMeter / 1000;
-    const distanceToBoundaryInKm = distanceInKm;// not sure if we need /2 here
+    const distanceToBoundaryInKm = distanceInKm / 2;
 
     const latInRadians = lat * (Math.PI / 180);
 
@@ -141,6 +142,8 @@ const StoreFinderMap = ({ showUserPosition }) => {
   const bounds = useMemo(() => createBounds(viewport, radiusInMeters),
     [createBounds, viewport, radiusInMeters]);
 
+  const debug = false;
+
   return (
     <div className={container}>
       <MapContainer
@@ -149,11 +152,13 @@ const StoreFinderMap = ({ showUserPosition }) => {
         className={container}
         whenCreated={handleMapCreated}
       >
+        {debug && (
         <Circle
           center={viewport}
           radius={radiusInMeters}
           color="blue"
         />
+        )}
         <TileLayer
           attribution='&amp;copy <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
