@@ -644,10 +644,10 @@ export const getLocationByRoute = (state) => {
  */
 export const makeGetNearbyLocationsByRouteLocation = () => {
   const getFilteredLocationsForRoute = makeGetFilteredLocations((state) => {
-    const routeLocation = getLocationByRoute(state);
+    const routeLocation = getLocationByRoute(state) || {};
     return ({
-      latitude: routeLocation.latitude,
-      longitude: routeLocation.longitude,
+      latitude: routeLocation?.latitude,
+      longitude: routeLocation?.longitude,
       radius: 25 * 1.60934, // 25 miles to km
     });
   });

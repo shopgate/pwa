@@ -279,7 +279,8 @@
     "storesNearby": "Obchody v okolí",
     "open": "Otevřeno",
     "findMoreStores": "Najít více obchodů",
-    "noStoresNearby": "V blízkosti vybraného místa nebyly nalezeny žádné obchody"
+    "noStoresNearby": "V blízkosti vybraného místa nebyly nalezeny žádné obchody",
+    "preferredLocationChanged": "Vaše preferované umístění bylo změněno na {storeName}"
   },
   "locations": {
     "headline": "Obchody ve vaší blízkosti",

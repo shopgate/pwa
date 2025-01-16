@@ -279,7 +279,8 @@
     "storesNearby": "Winkels in de buurt",
     "open": "Open",
     "findMoreStores": "Vind meer winkels",
-    "noStoresNearby": "Geen winkels gevonden in de buurt van de geselecteerde locatie"
+    "noStoresNearby": "Geen winkels gevonden in de buurt van de geselecteerde locatie",
+    "preferredLocationChanged": "Uw voorkeurslocatie is gewijzigd in {storeName}"
   },
   "locations": {
     "headline": "Winkels in uw buurt",

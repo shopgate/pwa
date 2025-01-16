@@ -279,7 +279,8 @@
     "storesNearby": "Magazine în apropiere",
     "open": "Deschis",
     "findMoreStores": "Găsiți mai multe magazine",
-    "noStoresNearby": "Nu s-au găsit magazine în apropierea locației selectate"
+    "noStoresNearby": "Nu s-au găsit magazine în apropierea locației selectate",
+    "preferredLocationChanged": "Locația dvs. preferată a fost schimbată la {storeName}"
   },
   "locations": {
     "headline": "Magazine aproape de dvs.",

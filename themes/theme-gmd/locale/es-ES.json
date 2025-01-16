@@ -279,7 +279,8 @@
     "storesNearby": "Tiendas cercanas",
     "open": "Abierto",
     "findMoreStores": "Encontrar más tiendas",
-    "noStoresNearby": "No se han encontrado tiendas cerca de la ubicación seleccionada"
+    "noStoresNearby": "No se han encontrado tiendas cerca de la ubicación seleccionada",
+    "preferredLocationChanged": "Su ubicación preferida ha cambiado a {storeName}"
   },
   "locations": {
     "headline": "Tiendas cerca de usted",

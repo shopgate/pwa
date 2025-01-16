@@ -279,7 +279,8 @@
     "storesNearby": "Negozi nelle vicinanze",
     "open": "Aperto",
     "findMoreStores": "Trova altri negozi",
-    "noStoresNearby": "Non sono stati trovati negozi nelle vicinanze della località selezionata"
+    "noStoresNearby": "Non sono stati trovati negozi nelle vicinanze della località selezionata",
+    "preferredLocationChanged": "La posizione preferita è stata cambiata in {storeName}"
   },
   "locations": {
     "headline": "Negozi vicini a te",

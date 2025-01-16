@@ -106,6 +106,10 @@ const StoreDetails = (props) => {
     && routeLocation
     && preferredLocation.code === routeLocation.code;
 
+  if (!routeLocation) {
+    return null;
+  }
+
   const { address, operationHours } = routeLocation;
 
   /**
@@ -202,6 +206,10 @@ const StoreDetails = (props) => {
 };
 
 StoreDetails.propTypes = {
+  setLocation: PropTypes.func.isRequired,
+  preferredLocation: PropTypes.shape({
+    code: PropTypes.string,
+  }),
   routeLocation: PropTypes.shape({
     code: PropTypes.string,
     name: PropTypes.string,
@@ -212,15 +220,12 @@ StoreDetails.propTypes = {
       phoneNumber: PropTypes.string,
     }),
     operationHours: PropTypes.shape(),
-  }).isRequired,
-  setLocation: PropTypes.func.isRequired,
-  preferredLocation: PropTypes.shape({
-    code: PropTypes.string,
   }),
 };
 
 StoreDetails.defaultProps = {
   preferredLocation: null,
+  routeLocation: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StoreDetails);

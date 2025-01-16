@@ -283,7 +283,8 @@
     "storesNearby": "Stores Nearby",
     "open": "Open",
     "findMoreStores": "Find More Stores",
-    "noStoresNearby": "No stores found near the selected location"
+    "noStoresNearby": "No stores found near the selected location",
+    "preferredLocationChanged": "Your preferred location has been changed to {storeName}"
   },
   "locations": {
     "headline": "Stores near you",
@@ -321,7 +322,7 @@
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
     "select_location": "Select location",
-    "store_info":"Store Info",
+    "store_info": "Store Info",
     "get_directions": "Get Directions",
     "store_hours": "Store Hours",
     "radius_km": "{radius} km",

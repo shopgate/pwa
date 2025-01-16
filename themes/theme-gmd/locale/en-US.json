@@ -279,7 +279,8 @@
     "storesNearby": "Stores Nearby",
     "open": "Open",
     "findMoreStores": "Find More Stores",
-    "noStoresNearby": "No stores found near the selected location"
+    "noStoresNearby": "No stores found near the selected location",
+    "preferredLocationChanged": "Your preferred location has been changed to {storeName}"
   },
   "locations": {
     "headline": "Stores near you",

@@ -279,7 +279,8 @@
     "storesNearby": "Butiker i närheten",
     "open": "Öppet",
     "findMoreStores": "Hitta fler butiker",
-    "noStoresNearby": "Inga butiker hittades i närheten av den valda platsen"
+    "noStoresNearby": "Inga butiker hittades i närheten av den valda platsen",
+    "preferredLocationChanged": "Din önskade plats har ändrats till {storeName}"
   },
   "locations": {
     "headline": "Butiker nära dig",

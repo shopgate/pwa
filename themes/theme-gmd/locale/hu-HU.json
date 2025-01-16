@@ -279,7 +279,8 @@
     "storesNearby": "Közeli boltok",
     "open": "Nyitva",
     "findMoreStores": "További boltok keresése",
-    "noStoresNearby": "A kiválasztott hely közelében nem találtunk üzleteket"
+    "noStoresNearby": "A kiválasztott hely közelében nem találtunk üzleteket",
+    "preferredLocationChanged": "Az Ön preferált helye megváltozott {storeName}"
   },
   "locations": {
     "headline": "Üzletek az Ön közelében",

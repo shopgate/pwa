@@ -279,7 +279,8 @@
     "storesNearby": "Läheiset kaupat",
     "open": "Avoinna",
     "findMoreStores": "Etsi lisää myymälöitä",
-    "noStoresNearby": "No se han encontrado tiendas cerca de la ubicación seleccionada"
+    "noStoresNearby": "No se han encontrado tiendas cerca de la ubicación seleccionada",
+    "preferredLocationChanged": "Suositeltava sijaintisi on muutettu seuraavasti {storeName}"
   },
   "locations": {
     "headline": "Myymälät lähellä sinua",

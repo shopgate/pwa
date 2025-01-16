@@ -13,6 +13,7 @@ import {
   hex2bin,
   getThemeSettings,
   getCurrentSearchQuery,
+  i18n,
 } from '@shopgate/engage/core';
 import {
   cartReceived$,
@@ -358,7 +359,8 @@ function locationsSubscriber(subscribe) {
     if (showToast) {
       events.emit(ToastProvider.ADD, {
         id: 'location.chaged',
-        message: `${name} has been selected as your preferred location.`,
+        message: i18n.text('location.preferredLocationChanged', { storeName: name }),
+
       });
     }
   });
