@@ -30,8 +30,9 @@ const StoreFinderMap = ({ showUserPosition }) => {
   } = useContext(StoreFinderContext);
 
   const selectedLocation = useSelector(getLocationByRoute);
-  const locations = useSelector(state => getNearbyLocationsByRoute(state));
-  if (!locations.some(loc => loc.code === selectedLocation.code)) {
+  const locations = useSelector(state => getNearbyLocationsByRoute(state)) || [];
+
+  if (locations?.length !== 0 && !locations?.some(loc => loc?.code === selectedLocation?.code)) {
     locations.push(selectedLocation);
   }
 
@@ -55,17 +56,22 @@ const StoreFinderMap = ({ showUserPosition }) => {
     iconSize: [20, 20],
   }), []);
 
-  const positions = useMemo(() => locations?.map((location) => {
-    const { code, latitude, longitude } = location;
-    const { code: selectedCode } = selectedLocation || {};
-    const icon = selectedCode === code ? markerIconSelected : makerIcon;
-    return {
-      code,
-      location,
-      icon,
-      position: [latitude, longitude],
-    };
-  }), [locations, makerIcon, markerIconSelected, selectedLocation]);
+  const positions = useMemo(() => {
+    if (locations.length === 0) {
+      return null;
+    }
+    return locations?.map((location) => {
+      const { code, latitude, longitude } = location;
+      const { code: selectedCode } = selectedLocation || {};
+      const icon = selectedCode === code ? markerIconSelected : makerIcon;
+      return {
+        code,
+        location,
+        icon,
+        position: [latitude, longitude],
+      };
+    });
+  }, [locations, makerIcon, markerIconSelected, selectedLocation]);
 
   const userPosition = useMemo(() => {
     if (!userSearch) {
@@ -139,10 +145,19 @@ const StoreFinderMap = ({ showUserPosition }) => {
     ];
   }, []);
 
-  const bounds = useMemo(() => createBounds(viewport, radiusInMeters),
-    [createBounds, viewport, radiusInMeters]);
+  const bounds = useMemo(() => {
+    if (!viewport || !radiusInMeters) {
+      return null;
+    }
+    return createBounds(viewport, radiusInMeters);
+  },
+  [createBounds, viewport, radiusInMeters]);
 
   const debug = false;
+
+  if (locations.length === 0) {
+    return null;
+  }
 
   return (
     <div className={container}>
@@ -163,7 +178,7 @@ const StoreFinderMap = ({ showUserPosition }) => {
           attribution='&amp;copy <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        { positions.map(({
+        { positions && positions.map(({
           position, code, location, icon,
         }) => (
           <Marker
