@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { StoreFinderProvider } from '../../providers';
 import StoreFinderSearch from './StoreFinderSearch';
-import StoreFinderMap from './StoreFinderMap';
+import StoreFinderMap from '../StoreFinderMap/StoreFinderMap';
 import StoreFinderLocations from './StoreFinderLocations';
 import StoreFinderLocationDetailsWide from './StoreFinderLocationDetailsWide';
 import StoreFinderStoresNear from './StoreFinderStoresNear';

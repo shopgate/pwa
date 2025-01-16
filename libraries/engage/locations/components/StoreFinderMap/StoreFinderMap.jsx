@@ -12,6 +12,7 @@ import Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
 import { useSelector } from 'react-redux';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { StoreFinderContext } from '../../locations.context';
 import {
   container, marker, markerSelected, userPosition as userPositionStyle,
@@ -98,15 +99,16 @@ const StoreFinderMap = ({ showUserPosition }) => {
     changeLocation(location, true);
   }, [changeLocation]);
 
-  // TODO: should come from theme config, map viewport should adjust to new radius
-  // 10 miles in meters
-  const radius = 16093.4;
+  // default is 10 miles in meters
+  const { radiusInMeters } = appConfig.storeMap;
 
-  // eslint-disable-next-line require-jsdoc
+  /**
+   * Enables touch and gestures on the map
+   * @param {Object} map available parameters for the map
+   */
   const handleMapCreated = (map) => {
     map.gestureHandling.enable();
 
-    // Enable touchZoom for mobile devices
     if (Leaflet.Browser.mobile) {
       map.touchZoom.enable();
     }
@@ -118,39 +120,42 @@ const StoreFinderMap = ({ showUserPosition }) => {
    * @param {number} distanceInMeter The distance in meters
    * @returns {Array} The bounds
    */
-  const createBounds = (([lat, lng], distanceInMeter) => {
-    const EARTH_RADIUS = 6371;
+  const createBounds = useCallback(([lat, lng], distanceInMeter) => {
+    const EARTH_RADIUS_KM = 6371;
     const distanceInKm = distanceInMeter / 1000;
     const distanceToBoundaryInKm = distanceInKm;// not sure if we need /2 here
 
     const latInRadians = lat * (Math.PI / 180);
 
-    const delteLat = (distanceToBoundaryInKm / EARTH_RADIUS) * (180 / Math.PI);
-    const delteLng = (distanceToBoundaryInKm / EARTH_RADIUS)
+    const deltaLat = (distanceToBoundaryInKm / EARTH_RADIUS_KM) * (180 / Math.PI);
+    const deltaLng = (distanceToBoundaryInKm / EARTH_RADIUS_KM)
       * (180 / Math.PI)
       / Math.cos(latInRadians);
 
     return [
-      [lat - delteLat, lng - delteLng],
-      [lat + delteLat, lng + delteLng],
+      [lat - deltaLat, lng - deltaLng],
+      [lat + deltaLat, lng + deltaLng],
     ];
-  });
+  }, []);
+
+  const bounds = useMemo(() => createBounds(viewport, radiusInMeters),
+    [createBounds, viewport, radiusInMeters]);
 
   return (
     <div className={container}>
       <MapContainer
         center={viewport}
-        bounds={createBounds(viewport, radius)}
+        bounds={bounds}
         className={container}
         whenCreated={handleMapCreated}
       >
         <Circle
           center={viewport}
-          radius={radius}
+          radius={radiusInMeters}
           color="blue"
         />
         <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&amp;copy <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         { positions.map(({

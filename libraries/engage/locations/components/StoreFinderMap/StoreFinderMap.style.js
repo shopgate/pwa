@@ -1,6 +1,6 @@
 import { css } from 'glamor';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
+import { responsiveMediaQuery } from '../../../components/ResponsiveContainer/mediaQuery';
 
 export const container = css({
   height: '100%',
@@ -12,7 +12,6 @@ export const container = css({
   [responsiveMediaQuery('<=sm', { appAlways: true })]: {
   //  position: 'fixed',
     zIndex: 10,
-    // maxHeight: 200,
   },
 });
 

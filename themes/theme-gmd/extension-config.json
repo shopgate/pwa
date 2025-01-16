@@ -802,5 +802,12 @@
         "label": "Whether to use grouping separators, such as thousands separators."
       }
     }
+  },
+  "storeMap": {
+    "destination": "frontend",
+    "type": "admin",
+    "default": {
+      "radiusInMeters": 16093.4
+    }
   }
 }
