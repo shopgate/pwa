@@ -11,10 +11,12 @@ import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 import Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
+import { useSelector } from 'react-redux';
 import { StoreFinderContext } from '../../locations.context';
 import {
   container, marker, markerSelected, userPosition as userPositionStyle,
 } from './StoreFinderMap.style';
+import { getLocationByRoute } from '../../selectors';
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
@@ -25,10 +27,11 @@ Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 const StoreFinderMap = ({ showUserPosition }) => {
   const {
     locations,
-    selectedLocation,
     changeLocation,
     userSearch,
   } = useContext(StoreFinderContext);
+
+  const selectedLocation = useSelector(getLocationByRoute);
 
   const iconHTML = useMemo(() => renderToString(<MapMarkerIcon />), []);
 

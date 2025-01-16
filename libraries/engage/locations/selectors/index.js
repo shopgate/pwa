@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import pickBy from 'lodash/pickBy';
-import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
+import { getExternalCustomerNumber, getUserData, getUserId } from '@shopgate/engage/user';
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
 import { getProduct } from '@shopgate/engage/product/selectors/product';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -628,14 +628,23 @@ export const getProductAlternativeLocations = createSelector(
 );
 
 /**
+ * Gets the currently displayed store location.
+ * @param {Object} state State
+ * @returns {Function}
+ */
+export const getLocationByRoute = (state) => {
+  const route = getCurrentRoute(state);
+  const getRouteLocation = makeGetLocation(() => route.params.code);
+  return getRouteLocation(state);
+};
+
+/**
  * Creates a selector that retrieves nearby locations for current displayed store.
  * @returns {Function}
  */
 export const makeGetNearbyLocationsByRouteLocation = () => {
   const getFilteredLocationsForRoute = makeGetFilteredLocations((state) => {
-    const route = getCurrentRoute(state);
-    const getRouteLocation = makeGetLocation(() => route.params.code);
-    const routeLocation = getRouteLocation(state);
+    const routeLocation = getLocationByRoute(state);
     return ({
       latitude: routeLocation.latitude,
       longitude: routeLocation.longitude,
