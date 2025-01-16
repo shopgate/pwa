@@ -90,7 +90,7 @@ const Image = ({
         }
       },
       // load a bit earlier
-      { rootMargin: '50px' }
+      { rootMargin: '100px' }
     );
 
     if (imgRef.current) {
