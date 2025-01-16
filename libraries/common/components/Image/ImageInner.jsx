@@ -29,8 +29,9 @@ const ImageInner = forwardRef(({
     aria-label={alt}
     role="presentation"
     data-test-id="image"
-    loading={lazy ? 'lazy' : 'eager'}
     src={src}
+    // the loading prop needs to be set after src to avoid a bug in Safari
+    loading={lazy ? 'lazy' : 'eager'}
     onLoad={onLoad}
     onError={onError}
   />
