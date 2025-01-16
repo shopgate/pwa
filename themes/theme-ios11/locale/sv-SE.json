@@ -321,7 +321,7 @@
     "search_placeholder": "Postnummer",
     "change_location": "Byt butik",
     "select_location": "Välj butik",
-    "get_directions": "Få vägbeskrivning",
+    "store_info":"Butiksinformation",
     "store_hours": "Öppettider",
     "radius_km": "{radius} km",
     "radius_mi": "{radius} miles",

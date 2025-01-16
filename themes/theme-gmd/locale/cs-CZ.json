@@ -317,6 +317,7 @@
     "search_placeholder": "PSČ",
     "change_location": "Změnit prodejnu",
     "select_location": "Vybrat prodejnu",
+    "store_info": "Informace o prodejně",
     "get_directions": "Naplánovat trasu",
     "store_hours": "Otevírací doba",
     "radius_km": "{radius} km",

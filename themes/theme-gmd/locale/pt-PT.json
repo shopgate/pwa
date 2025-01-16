@@ -317,6 +317,7 @@
     "search_placeholder": "Código postal",
     "change_location": "Alterar loja",
     "select_location": "Selecionar loja",
+    "store_info": "Informações da loja",
     "get_directions": "Obter direções",
     "store_hours": "Horário de funcionamento",
     "radius_km": "{radius} km",

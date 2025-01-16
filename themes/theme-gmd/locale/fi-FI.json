@@ -317,6 +317,7 @@
     "search_placeholder": "Postinumero",
     "change_location": "Vaihda myymälä",
     "select_location": "Valitse myymälä",
+    "store_info": "Myymälätiedot",
     "get_directions": "Näytä reitti",
     "store_hours": "Aukioloajat",
     "radius_km": "{radius} km",

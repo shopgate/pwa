@@ -129,6 +129,12 @@ export const selectLocationButtonWrapper = css({
     padding: `0 0 ${gap.small}px 0`,
   },
 });
+export const showStoreInfoButtonWrapper = css({
+  padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
+  [responsiveMediaQuery('>=sm', { webOnly: true })]: {
+    padding: `0 0 ${gap.small}px 0`,
+  },
+});
 
 export const stockInfoContainer = css({
   marginTop: 8,
@@ -138,6 +144,15 @@ export const stockInfoContainer = css({
 });
 
 export const selectLocationButton = css({
+  width: '100%',
+  fontSize: '.875rem !important',
+  ':not(:disabled)': {
+    background: `var(--color-primary, ${themeColors.primary})!important`,
+    color: `var(--color-primary-contrast, ${themeColors.primaryContrast})!important`,
+  },
+});
+
+export const showStoreInfoButton = css({
   width: '100%',
   fontSize: '.875rem !important',
   ':not(:disabled)': {

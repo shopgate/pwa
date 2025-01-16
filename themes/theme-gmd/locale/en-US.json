@@ -317,6 +317,7 @@
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
     "select_location": "Select location",
+    "store_info": "Store Info",
     "get_directions": "Get Directions",
     "store_hours": "Store Hours",
     "radius_km": "{radius} km",

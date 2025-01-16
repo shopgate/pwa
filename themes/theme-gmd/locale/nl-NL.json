@@ -317,6 +317,7 @@
     "search_placeholder": "Postcode",
     "change_location": "Winkel wijzigen",
     "select_location": "Winkel selecteren",
+    "store_info": "Winkelgegevens",
     "get_directions": "Route plannen",
     "store_hours": "Openingstijden",
     "radius_km": "{radius} km",

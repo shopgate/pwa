@@ -317,6 +317,7 @@
     "search_placeholder": "Irányítószám",
     "change_location": "Üzlet módosítása",
     "select_location": "Üzlet kiválasztása",
+    "store_info": "Üzlet információ",
     "get_directions": "Útvonalterv",
     "store_hours": "Nyitvatartás",
     "radius_km": "{radius} km",
