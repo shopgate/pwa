@@ -35,10 +35,8 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
     }
   >
     <Swiper
-      autoPlay={false}
       className={null}
       indicators={true}
-      interval={7000}
       loop={false}
     >
       <SwiperItem
@@ -217,10 +215,8 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
     }
   >
     <Swiper
-      autoPlay={false}
       className={null}
       indicators={true}
-      interval={7000}
       loop={false}
     >
       <SwiperItem
@@ -294,10 +290,8 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
     }
   >
     <Swiper
-      autoPlay={false}
       className={null}
       indicators={true}
-      interval={7000}
       loop={false}
     >
       <SwiperItem

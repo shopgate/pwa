@@ -34,9 +34,12 @@ const ImageSliderWidget = ({ settings, className }) => {
   return (
     <Swiper
       className={className}
-      autoPlay={settings.autostart}
+      {...settings.autostart && {
+        autoplay: {
+          delay: settings.delay,
+        },
+      }}
       indicators={settings.pagination}
-      interval={settings.delay}
       loop={settings.loop}
     >
       {settings.images.map(({ image, alt, link }) => {

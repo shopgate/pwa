@@ -136,11 +136,14 @@ class ProductSlider extends PureComponent {
         {this.renderHeadline()}
         <ProductListTypeProvider type="productSlider" subType="widgets">
           <Swiper
-            autoPlay={sliderSettings.autostart}
+            {...sliderSettings.autostart && {
+              autoplay: {
+                delay: Number.parseInt(sliderSettings.delay, 10),
+              },
+            }}
             loop={false}
             indicators={false}
             controls={false}
-            interval={Number.parseInt(sliderSettings.delay, 10)}
             freeMode
             slidesPerView={slidesPerView}
             classNames={{ container: styles.sliderContainer }}

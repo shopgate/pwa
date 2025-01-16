@@ -16,7 +16,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
           "container": "css-1t3kzgn",
@@ -25,7 +24,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
@@ -1303,7 +1301,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
           "container": "css-1t3kzgn",
@@ -1312,7 +1309,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
@@ -1547,7 +1543,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
           "container": "css-1t3kzgn",
@@ -1556,7 +1551,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
@@ -1784,7 +1778,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
           "container": "css-1t3kzgn",
@@ -1793,7 +1786,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
