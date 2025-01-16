@@ -10,7 +10,7 @@ import connect from './StoreListSearch.connector';
 
 /**
  * The StoreSelectLocationButton component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const StoreSelectLocationButton = ({ setPostalCode }) => {
   const store = useContext(StoreContext);

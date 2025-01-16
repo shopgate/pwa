@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { connect } from 'react-redux';
+import { connect, useStore } from 'react-redux';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -156,6 +156,8 @@ const PaymentMethodProvider = ({
     },
   }), [setButtonLocked]);
 
+  const store = useStore();
+
   // Ignore for ROPIS.
   if (!needsPayment) {
     return null;
@@ -182,7 +184,16 @@ const PaymentMethodProvider = ({
         </div>
         {paymentImpl ? (
           <Provider
+            /**
+             * 2025-01-10: Not 100% sure why a context is being passed here. It seems to work
+             * without it, but since the payment component implementation has a high complexity,
+             * but isn't really used right now in production shops, i kept it for now.
+             * To enable compatibility with react-redux > 7, the "store" prop was added so that
+             * Redux connected child components can still access the store.
+             * Should be revisited when the "native checkout" gets relevance.
+             */
             context={Context}
+            store={store}
             data={paymentData}
             activePaymentMeta={activePaymentMeta}
           >
