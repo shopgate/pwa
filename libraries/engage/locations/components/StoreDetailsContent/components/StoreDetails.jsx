@@ -108,8 +108,6 @@ const StoreDetails = () => {
   };
 
   const currentDay = moment().format('ddd').toLowerCase();
-  // sasa todo test phone number in app
-  // sasa todo test direction in app
 
   return (
     <div>
