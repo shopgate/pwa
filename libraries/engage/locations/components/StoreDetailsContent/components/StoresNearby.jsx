@@ -1,22 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { makeGetNearbyLocationsByRouteLocation } from '../../../selectors';
 import StoresNearbyListItem from './StoresNearbyListItem';
-
-/**
- * Maps state to props
- * @param {Object} state State
- * @returns {Object}
- */
-const mapStateToProps = (state) => {
-  const getLocations = makeGetNearbyLocationsByRouteLocation();
-  return ({
-    nearbyLocations: getLocations(state),
-  });
-};
 
 const styles = {
   title: css({
@@ -28,12 +15,10 @@ const styles = {
 
 /**
 * Show stores nearby selected location
-* @param {Object} props Props
-* @param {Object[]} props.nearbyLocations Nearby locations
 * @returns {JSX}
 */
-const StoresNearby = (props) => {
-  const { nearbyLocations } = props;
+const StoresNearby = () => {
+  const nearbyLocations = useSelector(state => makeGetNearbyLocationsByRouteLocation()(state));
 
   return (
     <div>
@@ -58,15 +43,4 @@ const StoresNearby = (props) => {
   );
 };
 
-StoresNearby.propTypes = {
-  nearbyLocations: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    code: PropTypes.string,
-  })),
-};
-
-StoresNearby.defaultProps = {
-  nearbyLocations: [],
-};
-
-export default connect(mapStateToProps)(StoresNearby);
+export default StoresNearby;

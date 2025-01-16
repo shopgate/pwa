@@ -1,15 +1,16 @@
 import React from 'react';
 import { css } from 'glamor';
 import { LocationIcon, Button, Link } from '@shopgate/engage/components';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getPreferredLocation, makeGetLocation } from '@shopgate/engage/locations/selectors';
 import {
-  i18n, getWeekDaysOrder, getCurrentRoute,
+  i18n, getWeekDaysOrder,
+  getCurrentRoute,
 } from '@shopgate/engage/core';
-import PropTypes from 'prop-types';
 import { selectLocation } from '@shopgate/engage/locations/action-creators';
 import classNames from 'classnames';
 import moment from 'moment';
+
 import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
 
 const styles = {
@@ -74,34 +75,16 @@ const styles = {
 };
 
 /**
- * @param {Object} state .
- * @returns {Object}
- */
-const mapStateToProps = (state) => {
-  const route = getCurrentRoute(state);
-  const getRouteLocation = makeGetLocation(() => route.params.code);
-  return ({
-    preferredLocation: getPreferredLocation(state),
-    routeLocation: getRouteLocation(state),
-  });
-};
-
-/**
- * Maps dispatch to props
- * @param {Function} dispatch Dispatch
- * @returns {Object}
- * */
-const mapDispatchToProps = dispatch => ({
-  setLocation: location => dispatch(selectLocation(location, true)),
-});
-
-/**
  * Store details component.
- * @param {Object} props The component props.
   * @returns {JSX}
   */
-const StoreDetails = (props) => {
-  const { preferredLocation, routeLocation, setLocation } = props;
+const StoreDetails = () => {
+  const dispatch = useDispatch();
+  const preferredLocation = useSelector(getPreferredLocation);
+  const route = useSelector(getCurrentRoute);
+  const getRouteLocation = makeGetLocation(() => route.params.code);
+  const routeLocation = useSelector(getRouteLocation);
+
   const storesEqual = preferredLocation
     && routeLocation
     && preferredLocation.code === routeLocation.code;
@@ -131,7 +114,7 @@ const StoreDetails = (props) => {
   return (
     <div>
       <Button
-        onClick={() => setLocation(routeLocation)}
+        onClick={() => dispatch(selectLocation(routeLocation, true))}
         role="button"
         type="plain"
         className={classNames(styles.headerWrappper)}
@@ -205,27 +188,4 @@ const StoreDetails = (props) => {
   );
 };
 
-StoreDetails.propTypes = {
-  setLocation: PropTypes.func.isRequired,
-  preferredLocation: PropTypes.shape({
-    code: PropTypes.string,
-  }),
-  routeLocation: PropTypes.shape({
-    code: PropTypes.string,
-    name: PropTypes.string,
-    address: PropTypes.shape({
-      street: PropTypes.string,
-      city: PropTypes.string,
-      postalCode: PropTypes.string,
-      phoneNumber: PropTypes.string,
-    }),
-    operationHours: PropTypes.shape(),
-  }),
-};
-
-StoreDetails.defaultProps = {
-  preferredLocation: null,
-  routeLocation: null,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(StoreDetails);
+export default StoreDetails;

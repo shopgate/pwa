@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { Link, Button } from '@shopgate/engage/components';
-import { connect } from 'react-redux';
 import { i18n } from '@shopgate/engage/core';
+import { useDispatch, useSelector } from 'react-redux';
 import formatDistance from '../../../helpers/formatDistance';
 import { STORE_DETAILS_PATH } from '../../../constants';
 import { selectLocation } from '../../../action-creators';
@@ -42,30 +42,14 @@ const styles = {
 };
 
 /**
- * Maps state to props
- * @param {Object} state State
- * @returns {Object}
- */
-const mapStateToProps = state => ({
-  preferredLocation: getPreferredLocation(state),
-});
-
-/**
- * Maps dispatch to props
- * @param {Function} dispatch Dispatch
- * @returns {Object}
- * */
-const mapDispatchToProps = dispatch => ({
-  setLocation: location => dispatch(selectLocation(location, true)),
-});
-
-/**
 * Shows a location in a row
 * @param {Object} props Props
 * @param {Object} props.location Location
 * @returns {JSX}
 */
-const StoresNearbyListItem = ({ location, setLocation, preferredLocation }) => {
+const StoresNearbyListItem = ({ location }) => {
+  const dispatch = useDispatch();
+  const preferredLocation = useSelector(getPreferredLocation);
   const {
     name, distance, unitSystem, code,
   } = location;
@@ -94,7 +78,7 @@ const StoresNearbyListItem = ({ location, setLocation, preferredLocation }) => {
         <div className={styles.cellContainer}>
           {!isPreferredLocation && (
             <div className={styles.makeMyStore}>
-              <Button onClick={() => setLocation(location)} role="button" type="plain">
+              <Button onClick={() => dispatch(selectLocation(location, true))} role="button" type="plain">
                 <div className={styles.makeMyStoreButtonText}>
                   {i18n.text('location.makeMyStore')}
                 </div>
@@ -114,14 +98,6 @@ StoresNearbyListItem.propTypes = {
     unitSystem: PropTypes.string,
     code: PropTypes.string,
   }).isRequired,
-  setLocation: PropTypes.func.isRequired,
-  preferredLocation: PropTypes.shape({
-    code: PropTypes.string,
-  }),
-
-};
-StoresNearbyListItem.defaultProps = {
-  preferredLocation: null,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoresNearbyListItem);
+export default StoresNearbyListItem;

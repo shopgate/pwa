@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { css } from 'glamor';
 import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
 import moment from 'moment';
@@ -11,16 +10,6 @@ import {
 import { themeConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core';
 import { STORE_DETAILS_PATH } from '../../constants';
-
-/**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {Object} The extended component props.
- */
-const mapStateToProps = (state, props) => ({
-  preferredLocation: getPreferredLocation(state, props),
-});
 
 const styles = {
   icon: css({
@@ -45,18 +34,14 @@ const styles = {
 
 /**
  * Shows the preferred location in an widget on the home page.
- * @param {Object} props props
- * @param {Object} props.preferredLocation preferredLocation
  * @return {JSX.Element}
  */
-const PreferredLocationWidget = ({
-  preferredLocation,
-}) => {
+const PreferredLocationWidget = () => {
+  const preferredLocation = useSelector(getPreferredLocation);
   const { name, operationHours } = preferredLocation || {};
   const operatingDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
   const currentDay = operatingDays[moment().day() - 1];
   const operatingHour = operationHours && operationHours[currentDay];
-  // sasa todo show "openUntil" instead of operatingHour
 
   return (
     <>
@@ -81,12 +66,4 @@ const PreferredLocationWidget = ({
   );
 };
 
-PreferredLocationWidget.propTypes = {
-  preferredLocation: PropTypes.shape(),
-};
-
-PreferredLocationWidget.defaultProps = {
-  preferredLocation: null,
-};
-
-export default connect(mapStateToProps)(PreferredLocationWidget);
+export default PreferredLocationWidget;
