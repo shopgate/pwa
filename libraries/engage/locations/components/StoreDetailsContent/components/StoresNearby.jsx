@@ -40,18 +40,20 @@ const StoresNearby = (props) => {
       <div className={styles.title}>
         {i18n.text('location.storesNearby')}
       </div>
+      {nearbyLocations.length > 0 && (
       <table>
         <tbody>
           {nearbyLocations.map(location => (
             <StoresNearbyListItem location={location} key={location.code} />
           )) }
-          {nearbyLocations.length === 0 && (
-          <div>
-            {i18n.text('location.noStoresNearby')}
-          </div>
-          )}
         </tbody>
       </table>
+      )}
+      {nearbyLocations.length === 0 && (
+      <div>
+        {i18n.text('location.noStoresNearby')}
+      </div>
+      )}
     </div>
   );
 };

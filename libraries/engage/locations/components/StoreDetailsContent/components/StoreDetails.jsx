@@ -37,7 +37,11 @@ const styles = {
   }),
   locationColumn: css({
     flex: 1,
-    minWidth: '300px',
+    minWidth: '200px',
+  }),
+  storeHoursColumn: css({
+    flex: 1,
+    minWidth: '250px',
     maxWidth: '400px',
   }),
   storeHours: css({
@@ -166,7 +170,7 @@ const StoreDetails = (props) => {
             </Link>
           </div>
         </div>
-        <div className={styles.locationColumn}>
+        <div className={styles.storeHoursColumn}>
           <div className={styles.storeHours}>
             {`${i18n.text('location.storeHours')}:`}
           </div>
