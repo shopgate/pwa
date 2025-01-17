@@ -17,9 +17,12 @@ const ImageInner = forwardRef(({
   lazy,
   onLoad,
   onError,
+  style,
 }, ref) => (
   <img
     ref={ref}
+    loading={lazy ? 'lazy' : 'eager'}
+    src={src}
     className={classNames(
       className,
       styles.image,
@@ -29,26 +32,28 @@ const ImageInner = forwardRef(({
     aria-label={alt}
     role="presentation"
     data-test-id="image"
-    src={src}
-    // the loading prop needs to be set after src to avoid a bug in Safari
-    loading={lazy ? 'lazy' : 'eager'}
     onLoad={onLoad}
     onError={onError}
+    style={style}
   />
 ));
 
 ImageInner.propTypes = {
-  lazy: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   className: PropTypes.string,
+  lazy: PropTypes.bool,
   onError: PropTypes.func,
   onLoad: PropTypes.func,
+  src: PropTypes.string,
+  style: PropTypes.shape(),
 };
 
 ImageInner.defaultProps = {
+  src: null,
   alt: null,
   className: null,
+  lazy: false,
+  style: null,
   onError: noop,
   onLoad: noop,
 };

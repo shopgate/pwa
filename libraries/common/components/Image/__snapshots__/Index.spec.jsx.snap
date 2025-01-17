@@ -64,6 +64,11 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
       onError={[Function]}
       onLoad={[Function]}
       src="foo/bar"
+      style={
+        Object {
+          "aspectRatio": "1 / 1",
+        }
+      }
     >
       <img
         alt={null}
@@ -75,6 +80,11 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
         onLoad={[Function]}
         role="presentation"
         src="foo/bar"
+        style={
+          Object {
+            "aspectRatio": "1 / 1",
+          }
+        }
       />
     </ForwardRef>
   </div>

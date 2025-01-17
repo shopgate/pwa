@@ -12,6 +12,20 @@ import ImageInner from './ImageInner';
 const { colors: themeColors } = themeConfig;
 
 /**
+ * Calculates the Greatest Common Divisor (GCD) of two numbers using the Euclidean algorithm.
+ *
+ * @param {number} a - The first number (must be a positive integer).
+ * @param {number} b - The second number (must be a positive integer).
+ * @returns {number} The greatest common divisor of `a` and `b`.
+ *
+ * @example
+ * gcd(1920, 1080); // Returns 120
+ * gcd(10, 15);     // Returns 5
+ * gcd(100, 25);    // Returns 25
+ */
+const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+
+/**
  * The image component.
  * @param {Object} props The components props.
  * @returns {JSX.Element}
@@ -59,8 +73,7 @@ const Image = ({
 
   const imgRef = useRef(null);
 
-  const [currentSrc, setCurrentSrc] = useState(sources.preview || sources.main);
-  const [initialImageCached, setInitialImageCached] = useState(!animating);
+  const [initialImageCached, setInitialImageCached] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy);
 
@@ -76,7 +89,7 @@ const Image = ({
     setInitialImageCached(complete);
   }, [animating, sources.main, sources.preview]);
 
-  // Effect to create an Intersection Observer to enable lazy loading
+  // Effect to create an Intersection Observer to enable lazy loading of preview images
   useEffect(() => {
     if (!lazy) return undefined;
 
@@ -104,57 +117,50 @@ const Image = ({
     };
   }, [lazy]);
 
-  // Effect to load the large image when the Image component reaches the viewport
-  useEffect(() => {
-    // Only load the large image if we are in the viewport and the current source is the preview
-    if (!isInView || currentSrc === sources.main) return;
-
-    // Create a new "virtual" image element to trigger fetching of the large image
-    const img = new window.Image();
-    img.src = sources.main;
-    // Set the source as current source for the actual image element when loading process
-    // finished or failed. Callback props will be invoked by the handlers of the img tag.
-    img.onload = () => {
-      setCurrentSrc(sources.main);
-    };
-    img.onerror = () => {
-      setCurrentSrc(sources.main);
-    };
-  }, [currentSrc, isInView, sources.main]);
-
-  const imageRatio = useMemo(() => {
-    if (ratio) {
-      const [x, y] = ratio;
-
-      return ((y / x) * 100).toFixed(3);
-    }
-
-    const { width, height } = resolutions[resolutions.length - 1];
-
-    return ((height / width) * 100).toFixed(3);
-  }, [ratio, resolutions]);
-
   /**
    * Handles the onLoad event of the image.
    */
   const handleOnLoad = useCallback((e) => {
-    // Only invoke callbacks from props when the img tag shows the main image
-    if (currentSrc === sources.main) {
-      highestResolutionLoaded();
-      onLoad(e);
-    }
+    highestResolutionLoaded();
+    onLoad(e);
     setImageLoaded(true);
-  }, [currentSrc, highestResolutionLoaded, onLoad, sources.main]);
+  }, [highestResolutionLoaded, onLoad]);
 
   /**
    * Handles the onError event of the image.
    */
   const handleOnError = useCallback((e) => {
-    // Only invoke callbacks from props when the img tag shows the main image
-    if (currentSrc === sources.main) {
-      onError(e);
+    onError(e);
+  }, [onError]);
+
+  /**
+   * Memoized calculation of aspect ratio and CSS padding-hack ratio for responsive elements.
+   *
+   * Returns n object containing:
+   * - `aspectRatio` {string} - The aspect ratio in the format `width / height` (e.g., `16 / 9`).
+   * - `paddingHackRatio` {string} - The CSS padding-hack ratio as a percentage for older browsers
+   * (e.g., `56.250%` for a 16:9 ratio).
+   */
+  const {
+    aspectRatio,
+    paddingHackRatio,
+  } = useMemo(() => {
+    let width;
+    let height;
+
+    if (ratio) {
+      ([width, height] = ratio);
+    } else {
+      ({ width, height } = resolutions[resolutions.length - 1]);
     }
-  }, [currentSrc, onError, sources.main]);
+
+    const divisor = gcd(width, height);
+
+    return {
+      aspectRatio: `${width / divisor} / ${height / divisor}`,
+      paddingHackRatio: `${((height / width) * 100).toFixed(3)}%`,
+    };
+  }, [ratio, resolutions]);
 
   if (unwrapped) {
     if (!(src && !parentRendersPlaceholder)) return null;
@@ -162,11 +168,18 @@ const Image = ({
     return (
       <ImageInner
         ref={imgRef}
-        src={currentSrc}
+        src={sources.main}
         className={classNames(classNameImg, {
           [styles.imageAnimated]: animating && !initialImageCached,
           [styles.imageVisible]: animating && (initialImageCached || imageLoaded),
         })}
+        style={{
+          aspectRatio,
+          ...(isInView && sources.preview && {
+            backgroundImage: `url(${sources.preview})`,
+            backgroundSize: 'cover',
+          }),
+        }}
         alt={alt}
         lazy={lazy}
         onLoad={handleOnLoad}
@@ -175,23 +188,30 @@ const Image = ({
     );
   }
 
-  const containerStyle = styles.container(backgroundColor, `${imageRatio}%`);
+  const containerStyle = styles.container(backgroundColor, paddingHackRatio);
 
   return (
     <div className={classNames(containerStyle, className)}>
       {src && !parentRendersPlaceholder && (
-        <ImageInner
-          ref={imgRef}
-          src={currentSrc}
-          className={classNames(classNameImg, {
-            [styles.imageAnimated]: animating && !initialImageCached,
-            [styles.imageVisible]: animating && (initialImageCached || imageLoaded),
-          })}
-          alt={alt}
-          lazy={lazy}
-          onLoad={handleOnLoad}
-          onError={handleOnError}
-        />
+      <ImageInner
+        ref={imgRef}
+        src={sources.main}
+        className={classNames(classNameImg, {
+          [styles.imageAnimated]: animating && !initialImageCached,
+          [styles.imageVisible]: animating && (initialImageCached || imageLoaded),
+        })}
+        style={{
+          aspectRatio,
+          ...(isInView && sources.preview && {
+            backgroundImage: `url(${sources.preview})`,
+            backgroundSize: 'cover',
+          }),
+        }}
+        alt={alt}
+        lazy={lazy}
+        onLoad={handleOnLoad}
+        onError={handleOnError}
+      />
       )}
     </div>
   );
