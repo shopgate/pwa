@@ -12,7 +12,6 @@ import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import { Logo } from '@shopgate/engage/components';
 import widgets from 'Extensions/widgets';
-import { PreferredLocationWidget } from '@shopgate/engage/locations/components';
 import styles from './style';
 import connect from './connector';
 
@@ -48,7 +47,6 @@ function PageContent({
       />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
-        {pageId === PAGE_ID_INDEX && <PreferredLocationWidget />}
         <div key="widgetWrapper" className={styles.widgetWrapper}>
           {(!postponeRender && configs && configs.widgets) && (
             <Widgets components={widgets} widgets={configs.widgets} />
