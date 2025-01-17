@@ -45,7 +45,7 @@
     "start-cloud": "sgconnect backend start & sgconnect frontend start",
     "lint-staged": "lint-staged",
     "postinstall": "patch-package",
-    "resetup":"lerna clean --yes && rm -rf node_modules && yarn install && lerna bootstrap"
+    "resetup": "npx lerna clean --yes && rm -rf node_modules && yarn install && npx lerna bootstrap"
   },
   "husky": {
     "hooks": {
