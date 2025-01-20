@@ -1,5 +1,17 @@
 # Changelog
 
+## [v7.22.0](https://github.com/shopgate/pwa/compare/v7.21.2...v7.22.0) (2025-01-20)
+
+#### :rocket: Enhancement
+* [#1296](https://github.com/shopgate/pwa/pull/1296) Updated redux, react-redux and other related packages ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1302](https://github.com/shopgate/pwa/pull/1302) Prevented duplicate execution of opt-in tracking events ([@fkloes](https://github.com/fkloes))
+
+#### :boom: Breaking Change
+* [#1296](https://github.com/shopgate/pwa/pull/1296) Updated redux, react-redux and other related packages ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.21.0](https://github.com/shopgate/pwa/compare/v7.20.3...v7.21.0) (2024-12-13)
 
 #### :rocket: Enhancement
