@@ -34,6 +34,7 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   logger: {
     error: jest.fn(),
   },
+  mutable: jest.fn(),
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
   hasWebBridge: jest.fn().mockReturnValue(false),
 }));
