@@ -65,31 +65,18 @@ class AppInitialization {
    * @returns {Promise<{results: [], errors: []}>}
    */
   async initialize({ dispatch, getState }) {
-    const promises = Array.from(this.store.values()).map((handler) => {
-      let res;
-
-      // Take care that errors inside handlers don't break the app
-      try {
-        res = handler({
-          dispatch,
-          getState,
-        });
-      } catch (e) {
-        // Nothing to see here
-      }
-
-      return res;
-    }).filter(Boolean);
-
     const results = [];
     const errors = [];
 
     // eslint-disable-next-line no-restricted-syntax
-    for (const promise of promises) {
+    for (const handler of Array.from(this.store.values())) {
       // Take care that rejecting handlers don't break the app
       try {
         // eslint-disable-next-line no-await-in-loop
-        results.push(await promise);
+        results.push(await handler({
+          dispatch,
+          getState,
+        }));
       } catch (e) {
         errors.push(e);
       }

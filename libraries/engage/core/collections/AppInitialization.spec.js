@@ -81,8 +81,9 @@ describe('AppInitialization collection', () => {
 
       const primitiveHandler = async () => 23;
 
+      const commonError = new Error('My Error');
       const erroneousHandler = () => {
-        throw new Error('My Error');
+        throw commonError;
       };
 
       appInitialization.set('promiseResolveHandler', promiseResolveHandler);
@@ -97,7 +98,7 @@ describe('AppInitialization collection', () => {
 
       expect(result).toEqual({
         results: [42, 23],
-        errors: [promiseRejectError],
+        errors: [promiseRejectError, commonError],
       });
     });
 

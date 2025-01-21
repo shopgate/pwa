@@ -95,6 +95,7 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   logger: {
     error: jest.fn(),
   },
+  mutable: jest.fn(),
   hasSGJavaScriptBridge: jest.fn(() => true),
   hasWebBridge: jest.fn(() => false),
   createMockedPermissions: jest.fn(() => 'mockedPermissions'),

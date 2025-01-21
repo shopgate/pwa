@@ -105,11 +105,8 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
  */
 function locationsSubscriber(subscribe) {
   subscribe(appWillInit$, () => {
-    appInitialization.set('location', async ({ dispatch, getState }) => {
-      // check if location was set by user and is stored in redux
-      const location = getPreferredLocation(getState());
-      // if NO location has been set: get location from backend and set in redux
-      if (!location && hasNewServices()) {
+    appInitialization.set('location', async ({ dispatch }) => {
+      if (hasNewServices()) {
         await dispatch(fetchDefaultLocation());
       }
     });

@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import {
   Grid, I18n, Button, Modal, Link, ConditionalWrapper,
 } from '@shopgate/engage/components';
@@ -59,6 +60,22 @@ const CookieConsentModal = ({
     }
   }, [modalImageSVG, modalImageURL]);
 
+  // Button event handlers are throttled to prevent multiple clicks
+  const handleAcceptAllCookies = useCallback(
+    throttle(acceptAllCookies, 1000, { leading: true, trailing: false }),
+    []
+  );
+
+  const handleAcceptRequiredCookies = useCallback(
+    throttle(acceptRequiredCookies, 1000, { leading: true, trailing: false }),
+    []
+  );
+
+  const handleOpenPrivacySettings = useCallback(
+    throttle(openPrivacySettings, 1000, { leading: true, trailing: false }),
+    []
+  );
+
   if (!isCookieConsentModalVisible) {
     return null;
   }
@@ -108,7 +125,7 @@ const CookieConsentModal = ({
 
           <Grid.Item component="div" className={styles.buttonWrapper}>
             <Button
-              onClick={acceptAllCookies}
+              onClick={handleAcceptAllCookies}
               type="primary"
               className={classNames(styles.button, 'cookie-consent-modal__button-accept-all')}
             >
@@ -116,7 +133,7 @@ const CookieConsentModal = ({
             </Button>
             {showRequiredCookiesButton ? (
               <Button
-                onClick={acceptRequiredCookies}
+                onClick={handleAcceptRequiredCookies}
                 type="simple"
                 className={classNames(styles.button, 'cookie-consent-modal__button-accept-required')}
               >
@@ -124,7 +141,7 @@ const CookieConsentModal = ({
               </Button>
             ) : null}
             <Button
-              onClick={openPrivacySettings}
+              onClick={handleOpenPrivacySettings}
               type="simple"
               className={classNames(styles.button, 'cookie-consent-modal__button-open-settings')}
             >
