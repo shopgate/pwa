@@ -1,3 +1,4 @@
+import { mutable } from '@shopgate/engage/core/helpers';
 import {
   hasSGJavaScriptBridge,
   defaultClientInformation,
@@ -37,4 +38,4 @@ function fetchClientInformation() {
   };
 }
 
-export default fetchClientInformation;
+export default mutable(fetchClientInformation);
