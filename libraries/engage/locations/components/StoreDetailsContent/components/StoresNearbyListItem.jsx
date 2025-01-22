@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { Link, Button } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import formatDistance from '../../../helpers/formatDistance';
 import { STORE_DETAILS_PATH } from '../../../constants';

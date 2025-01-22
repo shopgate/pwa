@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { css } from 'glamor';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeGetNearbyLocationsByRouteLocation } from '../../../selectors';
 import StoresNearbyListItem from './StoresNearbyListItem';
 
 const styles = {
   title: css({
     fontSize: '20px',
-    fontWeight: '500',
+    fontWeight: '600',
     marginBottom: '12px',
   }),
 };

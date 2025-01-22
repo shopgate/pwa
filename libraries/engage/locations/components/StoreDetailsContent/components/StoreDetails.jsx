@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { css } from 'glamor';
 import { LocationIcon, Button, Link } from '@shopgate/engage/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPreferredLocation, makeGetLocation } from '@shopgate/engage/locations/selectors';
 import {
-  i18n, getWeekDaysOrder,
+  getWeekDaysOrder,
   getCurrentRoute,
 } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { selectLocation } from '@shopgate/engage/locations/action-creators';
 import classNames from 'classnames';
 import moment from 'moment';
@@ -14,12 +15,12 @@ import moment from 'moment';
 import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
 
 const styles = {
-  headerWrappper: css({
+  headerWrapper: css({
     display: 'flex',
   }),
   headerIcon: css({
     color: 'var(--color-primary)',
-    fontSize: '24px',
+    fontSize: '20px',
   }),
   header: css({
     color: 'var(--color-primary)',
@@ -27,7 +28,7 @@ const styles = {
     fontSize: '20px',
   }),
   locationName: css({
-    fontSize: '24px',
+    fontSize: '20px',
     fontWeight: '600',
     marginBottom: '8px',
   }),
@@ -82,32 +83,26 @@ const StoreDetails = () => {
   const dispatch = useDispatch();
   const preferredLocation = useSelector(getPreferredLocation);
   const route = useSelector(getCurrentRoute);
-  const getRouteLocation = makeGetLocation(() => route.params.code);
+  const getRouteLocation = useMemo(() => makeGetLocation(() => route.params.code), [route]);
   const routeLocation = useSelector(getRouteLocation);
 
   const storesEqual = preferredLocation
     && routeLocation
     && preferredLocation.code === routeLocation.code;
 
+  const { address, operationHours = {} } = routeLocation;
+
+  const currentDay = moment().format('ddd').toLowerCase();
+
+  // Check if there are any opening hours to hide the section if not
+  const hasOpeningHours = useMemo(() =>
+    Object.keys(operationHours).length > 0 &&
+    Object.values(operationHours).some(value => value && typeof value === 'string' && value.length > 0),
+  [operationHours]);
+
   if (!routeLocation) {
     return null;
   }
-
-  const { address, operationHours } = routeLocation;
-
-  /**
-  * Formats the store name for the header.
-  * @param {Object} location The location object.
-  * @returns {string}
-  * */
-  const formatStoreName = (location) => {
-    const { name, address: locationAddress = {} } = location;
-    const { region } = locationAddress;
-    const string = name + (region ? `, ${region}` : '');
-    return string;
-  };
-
-  const currentDay = moment().format('ddd').toLowerCase();
 
   return (
     <div>
@@ -115,7 +110,7 @@ const StoreDetails = () => {
         onClick={() => dispatch(selectLocation(routeLocation, true))}
         role="button"
         type="plain"
-        className={classNames(styles.headerWrappper)}
+        className={classNames(styles.headerWrapper)}
         wrapContent={false}
       >
         <div className={styles.headerIcon}>
@@ -130,7 +125,7 @@ const StoreDetails = () => {
       </Button>
 
       <div className={styles.locationName}>
-        {formatStoreName(routeLocation)}
+        {routeLocation.name}
       </div>
 
       <div className={styles.locationRow}>
@@ -138,13 +133,29 @@ const StoreDetails = () => {
           <div>
             {address.street}
           </div>
+          {address.street2 && address.street2 !== '' && (
+            <div>
+              {address.street2}
+            </div>
+          )}
+          {address.street3 && address.street3 !== '' && (
+            <div>
+              {address.street3}
+            </div>
+          )}
+          {address.street4 && address.street4 !== '' && (
+            <div>
+              {address.street4}
+            </div>
+          )}
           <div>
-            {`${address.city}, ${address.postalCode}`}
+            {i18n.text('locations.address', address)}
           </div>
           <StoreFinderGetDirectionsButton address={address} />
           <div className={styles.phone}>
             {`${i18n.text('location.phone')}: `}
           </div>
+          {address.phoneNumber && (
           <div className={styles.phoneNumber}>
             <Link
               href={`tel:${address.phoneNumber}`}
@@ -154,7 +165,9 @@ const StoreDetails = () => {
               {address.phoneNumber}
             </Link>
           </div>
+          )}
         </div>
+        {hasOpeningHours && (
         <div className={styles.storeHoursColumn}>
           <div className={styles.storeHours}>
             {`${i18n.text('location.storeHours')}:`}
@@ -181,6 +194,7 @@ const StoreDetails = () => {
             );
           })}
         </div>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'glamor';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { MagnifierIcon, LocatorIcon, Link } from '@shopgate/engage/components';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import classNames from 'classnames';
