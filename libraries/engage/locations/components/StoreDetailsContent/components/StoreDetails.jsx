@@ -98,7 +98,11 @@ const StoreDetails = () => {
     isRouteLocationPreferred,
   } = useContext(StoreDetailsContext);
 
-  const { address, operationHours = {}, isComingSoon } = routeLocation;
+  const {
+    address = {},
+    operationHours = {},
+    isComingSoon,
+  } = routeLocation || {};
   const currentDay = moment().format('ddd').toLowerCase();
 
   // Check if there are any opening hours to hide the section if not
@@ -130,19 +134,19 @@ const StoreDetails = () => {
       <div className={styles.locationRow}>
         <div className={styles.locationColumn}>
           <div>
-            {address.street}
+            {address?.street}
           </div>
-          {address.street2 && address.street2 !== '' && (
+          {address?.street2 && address.street2 !== '' && (
             <div>
               {address.street2}
             </div>
           )}
-          {address.street3 && address.street3 !== '' && (
+          {address?.street3 && address.street3 !== '' && (
             <div>
               {address.street3}
             </div>
           )}
-          {address.street4 && address.street4 !== '' && (
+          {address?.street4 && address.street4 !== '' && (
             <div>
               {address.street4}
             </div>
@@ -175,7 +179,7 @@ const StoreDetails = () => {
           <div className={styles.phone}>
             {`${i18n.text('location.phone')}: `}
           </div>
-          {address.phoneNumber && (
+          {address?.phoneNumber && (
           <div className={styles.phoneNumber}>
             <Link
               href={`tel:${address.phoneNumber}`}
