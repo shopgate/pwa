@@ -1,5 +1,5 @@
 import React, {
-  useMemo, useState, useEffect, useRef, useCallback,
+  useMemo, useState, useEffect, useRef, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -285,6 +285,13 @@ Image.propTypes = {
   unwrapped: PropTypes.bool,
 };
 
+const defaultResolutions = [
+  {
+    width: 440,
+    height: 440,
+  },
+];
+
 Image.defaultProps = {
   alt: null,
   animating: false,
@@ -296,15 +303,10 @@ Image.defaultProps = {
   onError: noop,
   onLoad: noop,
   ratio: null,
-  resolutions: [
-    {
-      width: 440,
-      height: 440,
-    },
-  ],
+  resolutions: defaultResolutions,
   src: null,
   unwrapped: false,
   lazy: true,
 };
 
-export default Image;
+export default memo(Image);
