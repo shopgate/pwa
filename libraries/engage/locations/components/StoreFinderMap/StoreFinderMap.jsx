@@ -1,5 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback, useMemo } from 'react';
 import {
   Circle, MapContainer, Marker, TileLayer,
 } from 'react-leaflet';
@@ -11,38 +10,20 @@ import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
 import { useSelector } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { StoreFinderContext } from '../../locations.context';
 import {
-  container, marker, markerSelected, userPosition as userPositionStyle,
+  container, markerSelected,
 } from './StoreFinderMap.style';
-import { getLocationByRoute, getNearbyLocationsByRoute } from '../../selectors';
+import { getLocationByRoute } from '../../selectors';
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
 /**
- * @param {Object} props The component props
  * @returns {JSX.Element}
  */
-const StoreFinderMap = ({ showUserPosition }) => {
-  const {
-    changeLocation,
-    userSearch,
-  } = useContext(StoreFinderContext);
-
+const StoreFinderMap = () => {
   const selectedLocation = useSelector(getLocationByRoute);
-  const locations = useSelector(state => getNearbyLocationsByRoute(state)) || [];
-
-  if (locations?.length !== 0 && !locations?.some(loc => loc?.code === selectedLocation?.code)) {
-    locations.push(selectedLocation);
-  }
 
   const iconHTML = useMemo(() => renderToString(<MapMarkerIcon />), []);
-
-  const makerIcon = useMemo(() => Leaflet.divIcon({
-    html: iconHTML,
-    className: marker,
-    iconSize: [40, 40],
-  }), [iconHTML]);
 
   const markerIconSelected = useMemo(() => Leaflet.divIcon({
     html: iconHTML,
@@ -50,61 +31,15 @@ const StoreFinderMap = ({ showUserPosition }) => {
     iconSize: [40, 40],
   }), [iconHTML]);
 
-  const userPositionIcon = useMemo(() => Leaflet.divIcon({
-    html: '<div/>',
-    className: userPositionStyle,
-    iconSize: [20, 20],
-  }), []);
-
-  const positions = useMemo(() => {
-    if (locations.length === 0) {
-      return null;
-    }
-    return locations?.map((location) => {
-      const { code, latitude, longitude } = location;
-      const { code: selectedCode } = selectedLocation || {};
-      const icon = selectedCode === code ? markerIconSelected : makerIcon;
-      return {
-        code,
-        location,
-        icon,
-        position: [latitude, longitude],
-      };
-    });
-  }, [locations, makerIcon, markerIconSelected, selectedLocation]);
-
-  const userPosition = useMemo(() => {
-    if (!userSearch) {
-      return null;
-    }
-
-    const { geolocation } = userSearch;
-
-    if (!geolocation || !showUserPosition) {
-      return null;
-    }
-
-    const { latitude, longitude } = geolocation;
-
-    return {
-      icon: userPositionIcon,
-      position: [latitude, longitude],
-    };
-  }, [showUserPosition, userPositionIcon, userSearch]);
+  const { code, latitude, longitude } = selectedLocation || {};
 
   const viewport = useMemo(() => {
-    const { latitude, longitude } = selectedLocation || locations[0] || {};
-
     if (!latitude || !longitude) {
-      return userPosition?.position || null;
+      return null;
     }
 
     return [latitude, longitude];
-  }, [locations, selectedLocation, userPosition]);
-
-  const onMarkerClick = useCallback((event, location) => {
-    changeLocation(location, true);
-  }, [changeLocation]);
+  }, [latitude, longitude]);
 
   // default is 10 miles in meters
   const { radiusInMeters } = appConfig.storeMap;
@@ -155,7 +90,7 @@ const StoreFinderMap = ({ showUserPosition }) => {
 
   const debug = false;
 
-  if (locations.length === 0) {
+  if (!selectedLocation) {
     return null;
   }
 
@@ -178,38 +113,14 @@ const StoreFinderMap = ({ showUserPosition }) => {
           attribution='&amp;copy <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        { positions && positions.map(({
-          position, code, location, icon,
-        }) => (
-          <Marker
-            key={code}
-            icon={icon}
-            position={position}
-            eventHandlers={{
-              click: (e) => {
-                onMarkerClick(e, location);
-              },
-            }}
-          />
-        ))}
-        { userPosition && (
-          <Marker
-            key="user-position"
-            icon={userPosition.icon}
-            position={userPosition.position}
-          />
-        )}
+        <Marker
+          key={code}
+          icon={markerIconSelected}
+          position={[latitude, longitude]}
+        />
       </MapContainer>
     </div>
   );
-};
-
-StoreFinderMap.propTypes = {
-  showUserPosition: PropTypes.bool,
-};
-
-StoreFinderMap.defaultProps = {
-  showUserPosition: true,
 };
 
 export default StoreFinderMap;
