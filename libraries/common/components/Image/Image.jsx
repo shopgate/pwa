@@ -73,7 +73,7 @@ const Image = ({
 
   const imgRef = useRef(null);
 
-  const [initialImageCached, setInitialImageCached] = useState(true);
+  const [initialImageCached, setInitialImageCached] = useState(!animating);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy);
 
