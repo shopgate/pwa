@@ -68,7 +68,7 @@ import {
   storeDetailPageWillEnter$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
-import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
+import { NEARBY_LOCATIONS_RADIUS, SET_STORE_FINDER_SEARCH_RADIUS, NEARBY_LOCATIONS_LIMIT } from './constants';
 import selectGlobalLocation from './action-creators/selectGlobalLocation';
 
 let initialLocationsResolve;
@@ -412,8 +412,8 @@ function locationsSubscriber(subscribe) {
         longitude: location.longitude,
         latitude: location.latitude,
       },
-      limit: 8,
-      radius: 25 * 1.60934, // 25 miles to km
+      limit: NEARBY_LOCATIONS_LIMIT,
+      radius: NEARBY_LOCATIONS_RADIUS,
 
     }));
   });

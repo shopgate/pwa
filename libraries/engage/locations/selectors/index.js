@@ -8,7 +8,7 @@ import { getIsLocationBasedShopping, makeUseLocationFulfillmentMethods } from '@
 import { makeGetEnabledFulfillmentMethods } from '../../core/config';
 import { makeIsProductActive, makeIsBaseProductActive } from '../../product/selectors/product';
 import { isProductAvailable } from '../helpers/productInventory';
-import { DIRECT_SHIP } from '../constants';
+import { DIRECT_SHIP, NEARBY_LOCATIONS_LIMIT, NEARBY_LOCATIONS_RADIUS } from '../constants';
 
 /**
  * Selector to retrieve a product's fulfillment methods.
@@ -648,7 +648,8 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
     return ({
       latitude: routeLocation?.latitude,
       longitude: routeLocation?.longitude,
-      radius: 25 * 1.60934, // 25 miles to km
+      limit: NEARBY_LOCATIONS_LIMIT,
+      radius: NEARBY_LOCATIONS_RADIUS,
     });
   });
 
@@ -670,4 +671,3 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
  * @returns {Function}
  */
 export const getNearbyLocationsByRoute = makeGetNearbyLocationsByRouteLocation();
-
