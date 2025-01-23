@@ -111,22 +111,19 @@ function locationsSubscriber(subscribe) {
       }
     });
   });
-
   subscribe(preferredLocationDidUpdate$, ({
     dispatch, getState, action, events,
   }) => {
     const preferredLocation = getPreferredLocation(getState());
-
     if (preferredLocation) {
       dispatch(sendDefaultLocationCode(preferredLocation.code));
     }
     const { location = {}, showToast } = action;
-    const { name } = location;
 
     if (showToast) {
       events.emit(ToastProvider.ADD, {
         id: 'location.chaged',
-        message: i18n.text('location.preferredLocationChanged', { storeName: name }),
+        message: i18n.text('location.preferredLocationChanged', { storeName: location?.name }),
       });
     }
   });
