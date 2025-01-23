@@ -280,7 +280,8 @@
     "open": "Open",
     "findMoreStores": "Find More Stores",
     "noStoresNearby": "No stores found near the selected location",
-    "preferredLocationChanged": "Your preferred location has been changed to {storeName}"
+    "preferredLocationChanged": "Your preferred location has been changed to {storeName}",
+    "comingSoon": "Coming Soon"
   },
   "locations": {
     "headline": "Stores near you",

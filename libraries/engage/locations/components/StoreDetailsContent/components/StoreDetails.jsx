@@ -73,10 +73,17 @@ const styles = {
   }),
   makeMyStoreButton: css({
     color: 'var(--color-primary)',
-    marginBottom: 4,
+    margin: '8px 0px',
   }),
   comingSoon: css({
-    marginBottom: 8,
+    margin: '8px 0px',
+  }),
+  buttonRow: css({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0px 30px',
+    flexWrap: 'wrap',
+    marginBottom: 16,
   }),
 };
 
@@ -143,8 +150,10 @@ const StoreDetails = () => {
           <div>
             {i18n.text('locations.address', address)}
           </div>
-          <GetDirectionsButton address={address} />
-          { (!isComingSoon && !isRouteLocationPreferred) &&
+
+          <div className={styles.buttonRow}>
+            <GetDirectionsButton address={address} />
+            { (!isComingSoon && !isRouteLocationPreferred) &&
             <Button
               onClick={() => selectLocation(routeLocation, true)}
               role="button"
@@ -156,11 +165,13 @@ const StoreDetails = () => {
               </span>
             </Button>
             }
-          {isComingSoon && (
-          <div className={styles.comingSoon}>
-            {i18n.text('location.comingSoon')}
+            {isComingSoon && (
+            <div className={styles.comingSoon}>
+              {i18n.text('location.comingSoon')}
+            </div>
+            )}
+
           </div>
-          )}
           <div className={styles.phone}>
             {`${i18n.text('location.phone')}: `}
           </div>

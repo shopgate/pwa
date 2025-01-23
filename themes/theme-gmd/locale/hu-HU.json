@@ -280,7 +280,8 @@
     "open": "Nyitva",
     "findMoreStores": "További boltok keresése",
     "noStoresNearby": "A kiválasztott hely közelében nem találtunk üzleteket",
-    "preferredLocationChanged": "Az Ön preferált helye megváltozott {storeName}"
+    "preferredLocationChanged": "Az Ön preferált helye megváltozott {storeName}",
+    "comingSoon": "Hamarosan"
   },
   "locations": {
     "headline": "Üzletek az Ön közelében",

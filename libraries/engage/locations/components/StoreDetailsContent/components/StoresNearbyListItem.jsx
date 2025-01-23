@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { Link, Button } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { useDispatch, useSelector } from 'react-redux';
 import formatDistance from '../../../helpers/formatDistance';
 import { STORE_DETAILS_PATH } from '../../../constants';
-import { selectLocation } from '../../../action-creators';
-import { getPreferredLocation } from '../../../selectors';
+import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 const styles = {
   locationRow: css({
@@ -65,8 +63,7 @@ const styles = {
 * @returns {JSX}
 */
 const StoresNearbyListItem = ({ location }) => {
-  const dispatch = useDispatch();
-  const preferredLocation = useSelector(getPreferredLocation);
+  const { preferredLocation, selectLocation } = useContext(StoreDetailsContext);
   const {
     name, distance, unitSystem, code, isComingSoon,
   } = location;
@@ -97,7 +94,7 @@ const StoresNearbyListItem = ({ location }) => {
             {!isPreferredLocation && (
             <div className={styles.makeMyStore}>
                 {(!isComingSoon && !isPreferredLocation) && (
-                <Button onClick={() => dispatch(selectLocation(location, true))} role="button" type="plain">
+                <Button onClick={() => selectLocation(location, true)} role="button" type="plain">
                   <div className={styles.makeMyStoreButtonText}>
                     {i18n.text('location.makeMyStore')}
                   </div>

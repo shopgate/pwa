@@ -280,7 +280,8 @@
     "open": "Ανοιχτό",
     "findMoreStores": "Βρείτε περισσότερα καταστήματα",
     "noStoresNearby": "Δεν βρέθηκαν καταστήματα κοντά στην επιλεγμένη τοποθεσία",
-    "preferredLocationChanged": "Η προτιμώμενη τοποθεσία σας έχει αλλάξει σε {storeName}"
+    "preferredLocationChanged": "Η προτιμώμενη τοποθεσία σας έχει αλλάξει σε {storeName}",
+    "comingSoon": "Σύντομα"
   },
   "locations": {
     "headline": "Καταστήματα κοντά σας",

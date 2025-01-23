@@ -280,7 +280,8 @@
     "open": "Open",
     "findMoreStores": "Vind meer winkels",
     "noStoresNearby": "Geen winkels gevonden in de buurt van de geselecteerde locatie",
-    "preferredLocationChanged": "Uw voorkeurslocatie is gewijzigd in {storeName}"
+    "preferredLocationChanged": "Uw voorkeurslocatie is gewijzigd in {storeName}",
+    "comingSoon": "Binnenkort beschikbaar"
   },
   "locations": {
     "headline": "Winkels in uw buurt",

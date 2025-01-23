@@ -280,7 +280,8 @@
     "open": "Geöffnet",
     "findMoreStores": "Mehr Filialen finden",
     "noStoresNearby": "Keine filialen in der Nähe des gewählten Standort gefunden",
-    "preferredLocationChanged": "{storeName} wurde als bevorzugte Filiale festgelegt"
+    "preferredLocationChanged": "{storeName} wurde als bevorzugte Filiale festgelegt",
+    "comingSoon": "Bald verfügbar"
   },
   "locations": {
     "headline": "Läden in Ihrer Nähe",

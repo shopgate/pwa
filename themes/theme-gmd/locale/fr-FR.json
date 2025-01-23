@@ -280,7 +280,8 @@
     "open": "Ouvert",
     "findMoreStores": "Trouver plus de magasins",
     "noStoresNearby": "Aucun magasin trouvé à proximité du site choisi",
-    "preferredLocationChanged": "Votre lieu de travail préféré a été modifié en {storeName}"
+    "preferredLocationChanged": "Votre lieu de travail préféré a été modifié en {storeName}",
+    "comingSoon": "Bientôt disponible"
   },
   "locations": {
     "headline": "Magasins près de chez vous",
