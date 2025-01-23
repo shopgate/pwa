@@ -73,20 +73,30 @@ const Image = ({
 
   const imgRef = useRef(null);
 
-  const [initialImageCached, setInitialImageCached] = useState(!animating);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy);
 
-  // Effect to determine if the initial image is cached. Info is used to configure fade-in
-  // animation. When image doesn't need to be fetched from the server, it will be instantly
-  // displayed and fade-in is not needed.
-  useEffect(() => {
-    if (!animating) return;
+  /**
+   * Determines if the initial image is cached.
+   *
+   * This hook uses the `useMemo` hook to memoize the result. It creates a new
+   * `Image` object, sets its `src` to either the preview or main source, and checks
+   * if the image is complete (cached). The `src` is then reset to an empty string to abort
+   * the image request. The actual request is handled by the img tag.
+   *
+   * @returns {boolean} - Returns `true` if the image is cached, otherwise `false`.
+   */
+  const initialImageCached = useMemo(() => {
+    // The return value of this hook is used to determine if the image should fade in after loading
+    // from the server. When the `animating` prop is set to false, the image should not fade in,
+    // so we return true to disable the fade-in mechanism.
+    if (!animating) return true;
     const img = new window.Image();
     img.src = sources.preview || sources.main;
     const { complete } = img;
     img.src = '';
-    setInitialImageCached(complete);
+
+    return complete;
   }, [animating, sources.main, sources.preview]);
 
   // Effect to create an Intersection Observer to enable lazy loading of preview images
