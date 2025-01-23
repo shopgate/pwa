@@ -5,6 +5,7 @@ import StoreDetails from './components/StoreDetails';
 import StoreLocationMap from './components/StoreLocationMap';
 import StoresNearby from './components/StoresNearby';
 import FindMoreStores from './components/FindMoreStores';
+import { StoreDetailsProvider } from '../../providers';
 
 const styles = {
   page: css({
@@ -17,12 +18,14 @@ const styles = {
  * @returns {JSX}
  */
 const StoreDetailsContent = () => (
-  <div className={styles.page}>
-    <StoreDetails />
-    <StoreLocationMap />
-    <StoresNearby />
-    <FindMoreStores />
-  </div>
+  <StoreDetailsProvider>
+    <div className={styles.page}>
+      <StoreDetails />
+      <StoreLocationMap />
+      <StoresNearby />
+      <FindMoreStores />
+    </div>
+  </StoreDetailsProvider>
 
 );
 

@@ -4,13 +4,32 @@ import PropTypes from 'prop-types';
 import { RippleButton } from '@shopgate/engage/components';
 import { historyPush } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
+import { css } from 'glamor';
+import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
 import { StoreFinderContext } from '../../locations.context';
-import {
-  showStoreInfoButton, showStoreInfoButtonWrapper,
-} from '../StoreList/Store.style';
 import { STORE_DETAILS_PATH } from '../../constants';
+
+const { gap } = themeVariables;
+
+const styles = {
+  showStoreInfoButton: css({
+    width: '100%',
+    fontSize: '.875rem !important',
+    ':not(:disabled)': {
+      background: `var(--color-primary, ${themeColors.primary})!important`,
+      color: `var(--color-primary-contrast, ${themeColors.primaryContrast})!important`,
+    },
+  }),
+  showStoreInfoButtonWrapper: css({
+    padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
+    [responsiveMediaQuery('>=sm', { webOnly: true })]: {
+      padding: `0 0 ${gap.small}px 0`,
+    },
+  }),
+};
 
 /**
  * @param {Function} dispatch The dispatch function.
@@ -29,7 +48,7 @@ const mapDispatchToProps = dispatch => ({
  */
 const StoreFinderStoreInfoButton = ({ openStoreDetail }) => {
   const store = useContext(StoreContext);
-  const { isComingSoon, isLoading } = useContext(StoreFinderContext);
+  const { isLoading } = useContext(StoreFinderContext);
 
   const handleClick = useCallback((e) => {
     e.stopPropagation();
@@ -37,11 +56,11 @@ const StoreFinderStoreInfoButton = ({ openStoreDetail }) => {
   }, [openStoreDetail, store]);
 
   return (
-    <div className={showStoreInfoButtonWrapper}>
+    <div className={styles.showStoreInfoButtonWrapper}>
       <RippleButton
         onClick={handleClick}
-        className={classNames(showStoreInfoButton)}
-        disabled={(isLoading || isComingSoon)}
+        className={classNames(styles.showStoreInfoButton)}
+        disabled={isLoading}
       >
         {i18n.text('locations.store_info')}
       </RippleButton>

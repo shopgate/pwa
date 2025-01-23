@@ -1,18 +1,14 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { css } from 'glamor';
 import { LocationIcon, Button, Link } from '@shopgate/engage/components';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPreferredLocation, makeGetLocation } from '@shopgate/engage/locations/selectors';
 import {
   getWeekDaysOrder,
-  getCurrentRoute,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { selectLocation } from '@shopgate/engage/locations/action-creators';
 import classNames from 'classnames';
 import moment from 'moment';
-
-import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
+import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
+import GetDirectionsButton from './GetDirectionsButton';
 
 const styles = {
   headerWrapper: css({
@@ -20,21 +16,23 @@ const styles = {
   }),
   headerIcon: css({
     color: 'var(--color-primary)',
-    fontSize: '20px',
+    fontSize: 20,
+    alignContent: 'center',
+    marginRight: 4,
   }),
   header: css({
     color: 'var(--color-primary)',
     fontWeight: '600',
-    fontSize: '20px',
+    fontSize: 20,
   }),
   locationName: css({
-    fontSize: '20px',
+    fontSize: 20,
     fontWeight: '600',
-    marginBottom: '8px',
+    marginBottom: 8,
   }),
   locationRow: css({
     display: 'flex',
-    gap: '4px',
+    gap: 4,
     flexWrap: 'wrap',
   }),
   locationColumn: css({
@@ -47,7 +45,7 @@ const styles = {
     maxWidth: '400px',
   }),
   storeHours: css({
-    fontSize: '20px',
+    fontSize: 20,
     fontWeight: '600',
   }),
   storeHoursLine: css({
@@ -73,6 +71,13 @@ const styles = {
   phoneNumber: css({
     textDecoration: 'underline',
   }),
+  makeMyStoreButton: css({
+    color: 'var(--color-primary)',
+    marginBottom: 4,
+  }),
+  comingSoon: css({
+    marginBottom: 8,
+  }),
 };
 
 /**
@@ -80,18 +85,13 @@ const styles = {
   * @returns {JSX}
   */
 const StoreDetails = () => {
-  const dispatch = useDispatch();
-  const preferredLocation = useSelector(getPreferredLocation);
-  const route = useSelector(getCurrentRoute);
-  const getRouteLocation = useMemo(() => makeGetLocation(() => route.params.code), [route]);
-  const routeLocation = useSelector(getRouteLocation);
+  const {
+    selectLocation,
+    routeLocation,
+    isRouteLocationPreferred,
+  } = useContext(StoreDetailsContext);
 
-  const storesEqual = preferredLocation
-    && routeLocation
-    && preferredLocation.code === routeLocation.code;
-
-  const { address, operationHours = {} } = routeLocation;
-
+  const { address, operationHours = {}, isComingSoon } = routeLocation;
   const currentDay = moment().format('ddd').toLowerCase();
 
   // Check if there are any opening hours to hide the section if not
@@ -106,28 +106,20 @@ const StoreDetails = () => {
 
   return (
     <div>
-      <Button
-        onClick={() => dispatch(selectLocation(routeLocation, true))}
-        role="button"
-        type="plain"
-        className={classNames(styles.headerWrapper)}
-        wrapContent={false}
-      >
+      <div className={styles.headerWrapper}>
         <div className={styles.headerIcon}>
-          <LocationIcon className={styles.icon} />
+          <LocationIcon className={styles.icon} size={20} />
         </div>
         <div className={styles.header}>
-          {storesEqual ?
+          {isRouteLocationPreferred ?
             i18n.text('location.myStore') :
             i18n.text('location.makeMyStore')
           }
         </div>
-      </Button>
-
+      </div>
       <div className={styles.locationName}>
         {routeLocation.name}
       </div>
-
       <div className={styles.locationRow}>
         <div className={styles.locationColumn}>
           <div>
@@ -151,7 +143,24 @@ const StoreDetails = () => {
           <div>
             {i18n.text('locations.address', address)}
           </div>
-          <StoreFinderGetDirectionsButton address={address} />
+          <GetDirectionsButton address={address} />
+          { (!isComingSoon && !isRouteLocationPreferred) &&
+            <Button
+              onClick={() => selectLocation(routeLocation, true)}
+              role="button"
+              type="plain"
+              className={classNames(styles.makeMyStoreButton)}
+            >
+              <span>
+                {i18n.text('location.makeMyStore')}
+              </span>
+            </Button>
+            }
+          {isComingSoon && (
+          <div className={styles.comingSoon}>
+            {i18n.text('location.comingSoon')}
+          </div>
+          )}
           <div className={styles.phone}>
             {`${i18n.text('location.phone')}: `}
           </div>

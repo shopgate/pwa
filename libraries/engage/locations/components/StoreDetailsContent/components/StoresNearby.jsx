@@ -1,15 +1,14 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { makeGetNearbyLocationsByRouteLocation } from '../../../selectors';
 import StoresNearbyListItem from './StoresNearbyListItem';
+import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 const styles = {
   title: css({
-    fontSize: '20px',
+    fontSize: 20,
     fontWeight: '600',
-    marginBottom: '12px',
+    marginBottom: 12,
   }),
 };
 
@@ -18,7 +17,7 @@ const styles = {
 * @returns {JSX}
 */
 const StoresNearby = () => {
-  const nearbyLocations = useSelector(state => makeGetNearbyLocationsByRouteLocation()(state));
+  const { nearbyLocations } = useContext(StoreDetailsContext);
 
   return (
     <div>

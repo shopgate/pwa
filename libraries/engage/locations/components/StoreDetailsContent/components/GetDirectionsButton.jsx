@@ -20,7 +20,7 @@ const styles = {
  * @param {Object} props.address The address object.
  * @returns {JSX}
  */
-const StoreFinderGetDirectionsButton = ({ address }) => {
+const GetDirectionsButton = ({ address }) => {
   const dispatch = useDispatch();
   const url = useMemo(() => address && generateGoogleMapsDirectionsUrl(address), [address]);
 
@@ -52,12 +52,12 @@ const StoreFinderGetDirectionsButton = ({ address }) => {
   );
 };
 
-StoreFinderGetDirectionsButton.propTypes = {
+GetDirectionsButton.propTypes = {
   address: PropTypes.shape(),
 };
 
-StoreFinderGetDirectionsButton.defaultProps = {
+GetDirectionsButton.defaultProps = {
   address: null,
 };
 
-export default StoreFinderGetDirectionsButton;
+export default GetDirectionsButton;

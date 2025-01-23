@@ -25,7 +25,16 @@ const styles = {
     alignContent: 'center',
     verticalAlign: 'middle',
   }),
+
   makeMyStoreButtonText: css({
+    color: 'var(--color-primary)',
+  }),
+  storeInfo: css({
+    textWrapMode: 'nowrap',
+    alignContent: 'center',
+    verticalAlign: 'middle',
+  }),
+  storeInfoButtonText: css({
     color: 'var(--color-primary)',
   }),
   name: css({
@@ -39,6 +48,14 @@ const styles = {
   cell: css({
     verticalAlign: 'middle',
   }),
+  buttonContainer: css({
+    display: 'flex',
+    gap: '4px 16px',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+  }),
+  comingSoon: css({
+  }),
 };
 
 /**
@@ -51,7 +68,7 @@ const StoresNearbyListItem = ({ location }) => {
   const dispatch = useDispatch();
   const preferredLocation = useSelector(getPreferredLocation);
   const {
-    name, distance, unitSystem, code,
+    name, distance, unitSystem, code, isComingSoon,
   } = location;
 
   const isPreferredLocation = preferredLocation && preferredLocation.code === code;
@@ -76,15 +93,31 @@ const StoresNearbyListItem = ({ location }) => {
       </td>
       <td className={styles.cell}>
         <div className={styles.cellContainer}>
-          {!isPreferredLocation && (
+          <div className={styles.buttonContainer}>
+            {!isPreferredLocation && (
             <div className={styles.makeMyStore}>
-              <Button onClick={() => dispatch(selectLocation(location, true))} role="button" type="plain">
-                <div className={styles.makeMyStoreButtonText}>
-                  {i18n.text('location.makeMyStore')}
+                {(!isComingSoon && !isPreferredLocation) && (
+                <Button onClick={() => dispatch(selectLocation(location, true))} role="button" type="plain">
+                  <div className={styles.makeMyStoreButtonText}>
+                    {i18n.text('location.makeMyStore')}
+                  </div>
+                </Button>
+                )}
+              {isComingSoon && (
+              <div className={styles.comingSoon}>
+                {i18n.text('location.comingSoon')}
+              </div>
+              )}
+            </div>
+            )}
+            <div className={styles.storeInfo}>
+              <Button role="button" type="plain">
+                <div className={styles.storeInfoButtonText}>
+                  {i18n.text('locations.details')}
                 </div>
               </Button>
             </div>
-          )}
+          </div>
         </div>
       </td>
     </tr>
@@ -97,6 +130,7 @@ StoresNearbyListItem.propTypes = {
     distance: PropTypes.number,
     unitSystem: PropTypes.string,
     code: PropTypes.string,
+    isComingSoon: PropTypes.bool,
   }).isRequired,
 };
 
