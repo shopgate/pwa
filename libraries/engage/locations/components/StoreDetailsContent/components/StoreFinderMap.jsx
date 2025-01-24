@@ -3,7 +3,7 @@ import {
   Circle, MapContainer, Marker, TileLayer,
 } from 'react-leaflet';
 import { GestureHandling } from 'leaflet-gesture-handling';
-import '../../assets/leaflet.css';
+import '../../../assets/leaflet.css';
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 import Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
@@ -13,7 +13,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   container, markerSelected,
 } from './StoreFinderMap.style';
-import { getLocationByRoute } from '../../selectors';
+import { getLocationByRoute } from '../../../selectors';
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 

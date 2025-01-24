@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { css } from 'glamor';
-import StoreFinderMap from '../../StoreFinderMap/StoreFinderMap';
+import StoreFinderMap from './StoreFinderMap';
 import { StoreFinderProvider } from '../../../providers';
 
 const styles = {
