@@ -1,6 +1,5 @@
 import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
-import { ResponsiveContainer } from '@shopgate/engage/components';
 import { StoreContext } from './Store.context';
 import { StoreFinderContext } from '../../locations.context';
 import StoreFinderLocationHeader from './StoreFinderLocationHeader';
@@ -26,10 +25,8 @@ const StoreFinderLocation = () => {
       data-location-code={store.code}
     >
       <StoreFinderLocationHeader />
-      <ResponsiveContainer breakpoint="<=sm" appAlways>
-        <StoreFinderSelectLocationButton />
-        <StoreFinderStoreInfoButton />
-      </ResponsiveContainer>
+      <StoreFinderSelectLocationButton />
+      <StoreFinderStoreInfoButton />
     </div>
   );
 };

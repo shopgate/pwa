@@ -6,7 +6,6 @@ import { historyPush } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
 import { StoreFinderContext } from '../../locations.context';
@@ -25,9 +24,6 @@ const styles = {
   }),
   showStoreInfoButtonWrapper: css({
     padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
-    [responsiveMediaQuery('>=sm', { webOnly: true })]: {
-      padding: `0 0 ${gap.small}px 0`,
-    },
   }),
 };
 
