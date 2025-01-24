@@ -24,11 +24,11 @@ export const IS_CONNECT_EXTENSION_ATTACHED = 'IS_CONNECT_EXTENSION_ATTACHED';
  * @example
  * configuration.set(
  *  CONFIGURATION_COLLECTION_CREATE_EXTERNAL_IMAGE_URL,
- *  (src, { width } = {}) => {
- *    if (!src || !src.startsWith('https://mycdn.com')) {
+ *  (baseUrl, { width } = {}) => {
+ *    if (!baseUrl || !baseUrl.startsWith('https://mycdn.com')) {
  *      return null;
  *    }
- *    return `${src}?width=${width}`;
+ *    return `${baseUrl}?width=${width}`;
  *   }
  * );
  */
