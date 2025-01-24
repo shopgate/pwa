@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { Link, Button } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { historyPush } from '@shopgate/engage/core';
 import formatDistance from '../../../helpers/formatDistance';
 import { STORE_DETAILS_PATH } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
@@ -63,6 +65,7 @@ const styles = {
 * @returns {JSX}
 */
 const StoresNearbyListItem = ({ location }) => {
+  const dispatch = useDispatch();
   const { preferredLocation, selectLocation } = useContext(StoreDetailsContext);
   const {
     name, distance, unitSystem, code, isComingSoon,
@@ -70,15 +73,27 @@ const StoresNearbyListItem = ({ location }) => {
 
   const isPreferredLocation = preferredLocation && preferredLocation.code === code;
 
+  /**
+   * Opens the store details page
+   * @param {string} locationCode Location code
+   */
+  const openStoreDetails = (locationCode) => {
+    dispatch(historyPush({ pathname: `${STORE_DETAILS_PATH}/${locationCode}` }));
+    // dispatch({
+    //  type: 'PUSH',
+    //  route: {
+    //    pathname: `${STORE_DETAILS_PATH}/${locationCode}`,
+    //  },
+    // });
+  };
+
   return (
     <tr className={styles.locationRow}>
       <td className={styles.cell}>
         <div className={styles.cellContainer}>
-          <Link href={`${STORE_DETAILS_PATH}/${code}`}>
-            <div className={styles.name}>
-              {name}
-            </div>
-          </Link>
+          <div className={styles.name}>
+            {name}
+          </div>
         </div>
       </td>
       <td className={styles.cell}>
@@ -108,7 +123,7 @@ const StoresNearbyListItem = ({ location }) => {
             </div>
             )}
             <div className={styles.storeInfo}>
-              <Button role="button" type="plain">
+              <Button role="button" type="plain" onClick={() => openStoreDetails(code)}>
                 <div className={styles.storeInfoButtonText}>
                   {i18n.text('locations.details')}
                 </div>
