@@ -122,7 +122,7 @@ function locationsSubscriber(subscribe) {
 
     if (showToast) {
       events.emit(ToastProvider.ADD, {
-        id: 'location.chaged',
+        id: 'location.changed',
         message: i18n.text('location.preferredLocationChanged', { storeName: location?.name }),
       });
     }
