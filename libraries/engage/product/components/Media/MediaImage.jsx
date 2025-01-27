@@ -52,6 +52,7 @@ const MediaImage = ({
         className={classes}
         backgroundColor="transparent"
         onError={() => setPlaceholderEnabled(true)}
+        animating
       />
     </SurroundPortals>
   );

@@ -36,11 +36,14 @@ function ProductSlider(props) {
         return (
           <ProductListTypeProvider type="productSlider" subType={scope} meta={meta}>
             <Swiper
-              autoPlay={autoplay}
+              {...autoplay && {
+                autoplay: {
+                  delay,
+                },
+              }}
               className={`${className} engage__product__product-slider`}
               controls={false}
               indicators={false}
-              interval={delay}
               loop={false}
               freeMode={!snap}
               slidesPerView={slidesPerView}

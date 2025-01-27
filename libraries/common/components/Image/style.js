@@ -27,7 +27,18 @@ const image = css({
   WebkitTouchCallout: 'none',
 }).toString();
 
+const imageAnimated = css({
+  opacity: 0,
+  transition: 'opacity 0.2s ease-in-out',
+}).toString();
+
+const imageVisible = css({
+  opacity: 1,
+}).toString();
+
 export default {
   container,
   image,
+  imageAnimated,
+  imageVisible,
 };

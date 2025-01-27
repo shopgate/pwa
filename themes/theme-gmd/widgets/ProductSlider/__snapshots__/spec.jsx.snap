@@ -14,21 +14,18 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
-          "container": "css-qsjgo7",
+          "container": "css-1t3kzgn",
         }
       }
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -71,7 +68,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -114,7 +110,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -157,7 +152,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -200,7 +194,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -243,7 +236,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -286,7 +278,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -329,7 +320,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -372,7 +362,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -415,7 +404,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -458,7 +446,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -501,7 +488,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -544,7 +530,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -587,7 +572,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -630,7 +614,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -673,7 +656,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -716,7 +698,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -759,7 +740,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -802,7 +782,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -845,7 +824,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -888,7 +866,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -931,7 +908,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -974,7 +950,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1017,7 +992,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1060,7 +1034,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1103,7 +1076,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1146,7 +1118,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1189,7 +1160,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1232,7 +1202,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1275,7 +1244,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1331,21 +1299,18 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
-          "container": "css-qsjgo7",
+          "container": "css-1t3kzgn",
         }
       }
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1388,7 +1353,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1431,7 +1395,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1474,7 +1437,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1517,7 +1479,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1578,21 +1539,18 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
-          "container": "css-qsjgo7",
+          "container": "css-1t3kzgn",
         }
       }
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1635,7 +1593,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1678,7 +1635,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1721,7 +1677,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1764,7 +1719,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1820,21 +1774,18 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     type="productSlider"
   >
     <Swiper
-      autoPlay={false}
       classNames={
         Object {
-          "container": "css-qsjgo7",
+          "container": "css-1t3kzgn",
         }
       }
       controls={false}
       freeMode={true}
       indicators={false}
-      interval={1000}
       loop={false}
       slidesPerView={2.3}
     >
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1877,7 +1828,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1920,7 +1870,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1963,7 +1912,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider
@@ -2006,7 +1954,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        className="css-j85wo1"
         key="1234"
       >
         <ProductListEntryProvider

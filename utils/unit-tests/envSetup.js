@@ -1,5 +1,6 @@
 /* global jasmine */
-/* eslint-disable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
+/* eslint-disable max-len */
+/* eslint-disable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this, no-unused-vars */
 
 require('jest-enzyme/lib/index');
 
@@ -22,4 +23,22 @@ global.MutationObserver = class {
 
   disconnect() { global.mutationDisconnectSpy(); }
 };
-/* eslint-enable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
+
+global.IntersectionObserver = jest.fn((callback, options) => ({
+  observe: jest.fn((element) => {
+
+  }),
+  unobserve: jest.fn((element) => {
+
+  }),
+  disconnect: jest.fn(() => {
+
+  }),
+  takeRecords: jest.fn(() => []),
+  trigger: (entries) => {
+    callback(entries, { disconnect: jest.fn(), unobserve: jest.fn() });
+  },
+}));
+
+/* eslint-enable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this, no-unused-vars */
+/* eslint-enable max-len */

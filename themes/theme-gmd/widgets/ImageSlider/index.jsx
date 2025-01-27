@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from '@shopgate/pwa-common/components/Link';
-import { Swiper } from '@shopgate/pwa-common/components';
+import { Swiper, Link } from '@shopgate/engage/components';
 import { image as imgStyle, link as linkStyle } from './style';
 
 /**
@@ -35,9 +34,12 @@ const ImageSliderWidget = ({ settings, className }) => {
   return (
     <Swiper
       className={className}
-      autoPlay={settings.autostart}
+      {...settings.autostart && {
+        autoplay: {
+          delay: settings.delay,
+        },
+      }}
       indicators={settings.pagination}
-      interval={settings.delay}
       loop={settings.loop}
     >
       {settings.images.map(({ image, alt, link }) => {
