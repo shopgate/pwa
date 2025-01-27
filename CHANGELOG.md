@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.23.0](https://github.com/shopgate/pwa/compare/v7.22.0...v7.23.0) (2025-01-27)
+
+#### :rocket: Enhancement
+* [#1305](https://github.com/shopgate/pwa/pull/1305) Implemented lazy loading for Image component and reworked Slider component ([@fkloes](https://github.com/fkloes))
+* [#1298](https://github.com/shopgate/pwa/pull/1298) Update babel loader ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
 ## [v7.22.0](https://github.com/shopgate/pwa/compare/v7.21.2...v7.22.0) (2025-01-22)
 
 #### :rocket: Enhancement
