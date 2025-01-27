@@ -9,10 +9,10 @@ import Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
 import { useSelector } from 'react-redux';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   container, markerSelected,
 } from './StoreFinderMap.style';
+import { MAP_RADIUS } from '../../../constants';
 import { getLocationByRoute } from '../../../selectors';
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
@@ -42,7 +42,7 @@ const StoreFinderMap = () => {
   }, [latitude, longitude]);
 
   // default is 10 miles in meters
-  const { radiusInMeters } = appConfig.storeMap;
+  const radiusInMeters = MAP_RADIUS;
 
   /**
    * Enables touch and gestures on the map
