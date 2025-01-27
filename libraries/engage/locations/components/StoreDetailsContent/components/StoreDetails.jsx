@@ -76,6 +76,7 @@ const styles = {
     margin: '8px 0px',
   }),
   comingSoon: css({
+    fontStyle: 'italic',
     margin: '8px 0px',
   }),
   buttonRow: css({
