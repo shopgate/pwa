@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.23.2](https://github.com/shopgate/pwa/compare/v7.23.0...v7.23.2) (2025-01-27)
+
+#### :rocket: Enhancement
+* [#1307](https://github.com/shopgate/pwa/pull/1307) Added mechanism to modify external image urls ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.23.0](https://github.com/shopgate/pwa/compare/v7.22.0...v7.23.0) (2025-01-27)
 
 #### :rocket: Enhancement
