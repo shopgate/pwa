@@ -43,19 +43,10 @@ const StoreFinderLocationHeader = () => {
             <StoreDistance distance={distance} unitSystem={unitSystem} />
           </Grid.Item>
         </Grid>
-        <ResponsiveContainer breakpoint=">sm" webOnly>
-          <div className={storeHoursToday}>
-            <StoreHoursToday hours={operationHours} longLabel />
-          </div>
-          <StoreAddress address={address} pure />
-        </ResponsiveContainer>
-        <ResponsiveContainer breakpoint="<=sm" appAlways>
-          <div className={storeHoursToday}>
-            <StoreHoursToday hours={operationHours} />
-          </div>
-          <StoreAddress address={address} />
-
-        </ResponsiveContainer>
+        <div className={storeHoursToday}>
+          <StoreHoursToday hours={operationHours} />
+        </div>
+        <StoreAddress address={address} />
       </div>
 
       <ResponsiveContainer breakpoint="<=sm" appAlways>
