@@ -1,6 +1,6 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { View, AppBarIOS } from '@shopgate/engage/components';
+import { View, AppBarAndroid } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
 import { StoreDetailsContent } from '@shopgate/engage/locations/components';
 
@@ -11,11 +11,9 @@ const StoreDetails = () => (
   <View>
     <BackBar
       right={null}
-      center={<AppBarIOS.Title title={i18n.text('titles.store_details')} />}
+      center={<AppBarAndroid.Title title={i18n.text('titles.store_details')} />}
     />
-    <div>
-      <StoreDetailsContent />
-    </div>
+    <StoreDetailsContent />
   </View>
 );
 

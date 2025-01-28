@@ -10,6 +10,9 @@ const styles = {
     fontWeight: '600',
     marginBottom: 12,
   }),
+  table: css({
+    width: '100%',
+  }),
 };
 
 /**
@@ -25,7 +28,7 @@ const StoresNearby = () => {
         {i18n.text('location.storesNearby')}
       </div>
       {nearbyLocations.length > 0 && (
-      <table>
+      <table className={styles.table}>
         <tbody>
           {nearbyLocations.map(location => (
             <StoresNearbyListItem location={location} key={location.code} />

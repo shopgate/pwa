@@ -38,8 +38,7 @@ const styles = {
     color: 'var(--color-primary)',
   }),
   name: css({
-    verticalAlign: 'middle',
-    alignContent: 'center',
+    textAlign: 'start',
   }),
   cellContainer: css({
     padding: '8px',
@@ -79,12 +78,6 @@ const StoresNearbyListItem = ({ location }) => {
    */
   const openStoreDetails = (locationCode) => {
     dispatch(historyPush({ pathname: `${STORE_DETAILS_PATH}/${locationCode}` }));
-    // dispatch({
-    //  type: 'PUSH',
-    //  route: {
-    //    pathname: `${STORE_DETAILS_PATH}/${locationCode}`,
-    //  },
-    // });
   };
 
   return (
