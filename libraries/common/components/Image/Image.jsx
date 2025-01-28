@@ -187,7 +187,9 @@ const Image = ({
           aspectRatio,
           ...(isInView && sources.preview && {
             backgroundImage: `url(${sources.preview})`,
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
           }),
         }}
         alt={alt}
