@@ -118,17 +118,23 @@ const StoreDetails = () => {
 
   return (
     <div>
-      <div className={styles.headerWrapper}>
-        <div className={styles.headerIcon}>
-          <LocationIcon className={styles.icon} size={20} />
-        </div>
-        <div className={styles.header}>
-          {isRouteLocationPreferred ?
-            i18n.text('location.myStore') :
-            i18n.text('location.makeMyStore')
+      <Button
+        onClick={() => selectLocation(routeLocation, true)}
+        role="button"
+        type="plain"
+      >
+        <div className={styles.headerWrapper}>
+          <div className={styles.headerIcon}>
+            <LocationIcon className={styles.icon} size={20} />
+          </div>
+          <div className={styles.header}>
+            {isRouteLocationPreferred ?
+              i18n.text('location.myStore') :
+              i18n.text('location.makeMyStore')
           }
+          </div>
         </div>
-      </div>
+      </Button>
       <div className={styles.locationName}>
         {routeLocation.name}
       </div>
