@@ -3,7 +3,6 @@
 exports[`<Image /> should render placeholders if forced to 1`] = `
 <Image
   alt={null}
-  animating={false}
   backgroundColor="#f2f2f2"
   className=""
   classNameImg=""
@@ -33,7 +32,6 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
 exports[`<Image /> should render placeholders if src is null 1`] = `
 <Image
   alt={null}
-  animating={false}
   backgroundColor="#f2f2f2"
   className=""
   classNameImg=""

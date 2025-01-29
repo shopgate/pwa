@@ -32,7 +32,6 @@ const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
  */
 const Image = ({
   alt,
-  animating,
   backgroundColor,
   className,
   classNameImg,
@@ -72,36 +71,11 @@ const Image = ({
   );
 
   const imgRef = useRef(null);
-
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy);
-
-  /**
-   * Determines if the initial image is cached.
-   *
-   * This hook uses the `useMemo` hook to memoize the result. It creates a new
-   * `Image` object, sets its `src` to either the preview or main source, and checks
-   * if the image is complete (cached). The `src` is then reset to an empty string to abort
-   * the image request. The actual request is handled by the img tag.
-   *
-   * @returns {boolean} - Returns `true` if the image is cached, otherwise `false`.
-   */
-  const initialImageCached = useMemo(() => {
-    // The return value of this hook is used to determine if the image should fade in after loading
-    // from the server. When the `animating` prop is set to false, the image should not fade in,
-    // so we return true to disable the fade-in mechanism.
-    if (!animating) return true;
-    const img = new window.Image();
-    img.src = sources.preview || sources.main;
-    const { complete } = img;
-    img.src = '';
-
-    return complete;
-  }, [animating, sources.main, sources.preview]);
 
   // Effect to create an Intersection Observer to enable lazy loading of preview images
   useEffect(() => {
-    if (!lazy) return undefined;
+    if (!lazy || !sources.preview) return undefined;
 
     // Intersection Observer to check if the image is in (or near) the viewport
     const observer = new IntersectionObserver(
@@ -125,7 +99,7 @@ const Image = ({
       // disconnect the observer when the component is unmounted
       observer.disconnect();
     };
-  }, [lazy]);
+  }, [lazy, sources.preview]);
 
   /**
    * Handles the onLoad event of the image.
@@ -133,7 +107,6 @@ const Image = ({
   const handleOnLoad = useCallback((e) => {
     highestResolutionLoaded();
     onLoad(e);
-    setImageLoaded(true);
   }, [highestResolutionLoaded, onLoad]);
 
   /**
@@ -179,10 +152,7 @@ const Image = ({
       <ImageInner
         ref={imgRef}
         src={sources.main}
-        className={classNames(classNameImg, {
-          [styles.imageAnimated]: animating && !initialImageCached,
-          [styles.imageVisible]: animating && (initialImageCached || imageLoaded),
-        })}
+        className={classNames(classNameImg)}
         style={{
           aspectRatio,
           ...(isInView && sources.preview && {
@@ -208,15 +178,14 @@ const Image = ({
       <ImageInner
         ref={imgRef}
         src={sources.main}
-        className={classNames(classNameImg, {
-          [styles.imageAnimated]: animating && !initialImageCached,
-          [styles.imageVisible]: animating && (initialImageCached || imageLoaded),
-        })}
+        className={classNames(classNameImg)}
         style={{
           aspectRatio,
           ...(isInView && sources.preview && {
             backgroundImage: `url(${sources.preview})`,
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
           }),
         }}
         alt={alt}
@@ -234,10 +203,6 @@ Image.propTypes = {
    * Optional alt text for the image.
    */
   alt: PropTypes.string,
-  /**
-   * Whether the image should animate with a fade-in effect when loaded.
-   */
-  animating: PropTypes.bool,
   /**
    * The background color of the image container
    */
@@ -306,7 +271,6 @@ const defaultResolutions = [
 
 Image.defaultProps = {
   alt: null,
-  animating: false,
   backgroundColor: themeColors.placeholder,
   className: '',
   classNameImg: '',
