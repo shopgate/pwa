@@ -1,5 +1,6 @@
-import React, { useContext, useCallback } from 'react';
-import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
+import React, { useContext, useCallback, useMemo } from 'react';
+import { Grid, ResponsiveContainer, LocationIcon } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { StoreContext } from './Store.context';
 import { StoreFinderContext } from '../../locations.context';
 import { StoreDistance } from '../StoreList/StoreDistance';
@@ -7,7 +8,15 @@ import { StoreHoursToday } from '../StoreList/StoreHoursToday';
 import { StoreAddress } from '../StoreList/StoreAddress';
 import StoreFinderLocationHeaderPhoneNumber from './StoreFinderLocationHeaderPhoneNumber';
 import {
-  container, storeName, storeDistance, storeHoursToday, clickable,
+  container,
+  storeName,
+  storeDistance,
+  storeHoursToday,
+  clickable,
+  storeNameWrapper,
+  myStore,
+  myStoreIcon,
+  myStoreWrapper,
 } from './StoreFinderLocationHeader.style';
 
 /**
@@ -18,7 +27,11 @@ const StoreFinderLocationHeader = () => {
   const {
     name, distance, unitSystem, operationHours, address,
   } = store;
-  const { changeLocation } = useContext(StoreFinderContext);
+  const { changeLocation, selectedLocation } = useContext(StoreFinderContext);
+
+  const isSelectedLocation = useMemo(() =>
+    selectedLocation?.code === store?.code,
+  [selectedLocation, store]);
 
   const handleClick = useCallback(() => {
     changeLocation(store);
@@ -36,8 +49,22 @@ const StoreFinderLocationHeader = () => {
         onKeyDown={handleClick}
       >
         <Grid>
-          <Grid.Item grow={1} className={storeName}>
-            { name }
+          <Grid.Item grow={1}>
+            <div className={storeNameWrapper}>
+              <div className={storeName}>
+                { name }
+              </div>
+              {isSelectedLocation && (
+                <div className={myStoreWrapper}>
+                  <div className={myStoreIcon}>
+                    <LocationIcon size={20} />
+                  </div>
+                  <div className={myStore}>
+                    {i18n.text('location.myStore')}
+                  </div>
+                </div>
+              )}
+            </div>
           </Grid.Item>
           <Grid.Item className={storeDistance}>
             <StoreDistance distance={distance} unitSystem={unitSystem} />

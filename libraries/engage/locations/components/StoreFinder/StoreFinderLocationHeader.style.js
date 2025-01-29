@@ -48,6 +48,30 @@ export const storeName = css({
   color: 'var(--color-text-high-emphasis)',
 }).toString();
 
+export const myStoreWrapper = css({
+  display: 'flex',
+  alignItems: 'center',
+}).toString();
+
+export const myStore = css({
+  color: 'var(--color-primary)',
+  fontSize: '1rem',
+  fontWeight: 500,
+}).toString();
+
+export const myStoreIcon = css({
+  ' svg': {
+    color: 'var(--color-primary)',
+  },
+  marginRight: '4px',
+}).toString();
+
+export const storeNameWrapper = css({
+  flexWrap: 'wrap',
+  display: 'flex',
+  gap: '2px 12px',
+});
+
 export const storeDistance = css({
   lineHeight: '1.65rem',
   paddingLeft: variables.gap.small,
