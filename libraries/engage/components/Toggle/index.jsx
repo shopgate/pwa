@@ -6,9 +6,9 @@ import {
 } from './style';
 
 /**
- * The TextLink component
+ * The Toggle component
  * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Toggle = ({
   id, checked, className, onChange, disabled,

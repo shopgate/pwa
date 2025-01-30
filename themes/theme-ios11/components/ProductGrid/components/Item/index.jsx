@@ -12,7 +12,7 @@ import styles, { itemDetails } from './style';
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const Item = ({ product, display }) => (
   <div className={`${styles} theme__product-grid__item`}>
@@ -20,13 +20,12 @@ const Item = ({ product, display }) => (
       tagName="a"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
-      aria-hidden={!product.featuredMedia?.altText}
+      aria-hidden
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
           type={product.featuredMedia.type}
           url={product.featuredMedia.url}
-          altText={product.featuredMedia.altText || product.name}
         />
         : <ItemImage
           productId={product.id}
