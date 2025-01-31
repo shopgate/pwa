@@ -74,6 +74,10 @@ const config = {
   plugins: [
     new ShopgateThemeConfigValidatorPlugin(),
     new ShopgateIndexerPlugin(),
+    new webpack.NormalModuleReplacementPlugin(
+      /swiper\/shared\/utils\.mjs$/,
+      path.resolve(__dirname, 'patches', 'swiper', 'shared', 'utils.mjs')
+    ),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(ENV),
