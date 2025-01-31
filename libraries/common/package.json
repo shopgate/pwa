@@ -14,9 +14,6 @@
     "shopgate",
     "connect"
   ],
-  "scripts": {
-    "postinstall": "patch-package"
-  },
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
     "@sentry/browser": "6.0.1",
@@ -31,7 +28,6 @@
     "history": "^4.9.0",
     "intl-messageformat": "^7.8.3",
     "jsdom": "11.1.0",
-    "patch-package": "^6.1.2",
     "path-match": "^1.2.4",
     "react-dotdotdot": "~1.3.0",
     "react-helmet": "^5.1.3",
