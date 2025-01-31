@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
-import { Swiper as SwiperCmp } from 'swiper/react';
+import { Swiper as SwiperCmp } from 'swiper/swiper-react';
 import {
   A11y,
   Autoplay,
@@ -9,12 +9,12 @@ import {
   Navigation,
   Pagination,
   Zoom,
-} from 'swiper';
+} from 'swiper/modules';
 import 'swiper/swiper.min.css';
-import 'swiper/modules/a11y/a11y.min.css';
-import 'swiper/modules/pagination/pagination.min.css';
-import 'swiper/modules/navigation/navigation.min.css';
-import 'swiper/modules/zoom/zoom.min.css';
+import 'swiper/modules/a11y.min.css';
+import 'swiper/modules/pagination.min.css';
+import 'swiper/modules/navigation.min.css';
+import 'swiper/modules/zoom.min.css';
 import SwiperItem from './components/SwiperItem';
 import {
   container, innerContainer, zoomFix, buttonNext, buttonPrev,
@@ -104,10 +104,6 @@ const Swiper = ({
     },
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
-    // Next two parameters are used to improve swiper usability when users quickly swipe through
-    // slides. In this case the screen shouldn't scroll in other directions than the swipe.
-    touchStartForcePreventDefault: true,
-    touchMoveStopPropagation: true,
     onSlideChange: handleSlideChange,
   }), [
     autoPlay,

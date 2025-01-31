@@ -58,7 +58,7 @@ const config = {
     publicPath: isDev ? '/' : (process.env.publicPath || './'),
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx'],
+    extensions: ['.json', '.js', '.jsx', '.mjs'],
     alias: {
       ...rxPaths(),
       'react-dom': '@hot-loader/react-dom',
@@ -165,6 +165,10 @@ const config = {
           'style-loader',
           'css-loader',
         ],
+      },
+      {
+        test: /\.mjs$/,
+        type: 'javascript/auto',
       },
       {
         test: /\.(js|jsx)$/,
