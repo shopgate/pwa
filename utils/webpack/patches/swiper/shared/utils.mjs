@@ -1,3 +1,8 @@
+/**
+ * Replacement of a sub-module of the Swiper library.
+ * Contains some refactored code inside the elementIsChildOfSlot function to remove optional
+ * chaining which causes issues with webpack.
+ */
 import { a as getWindow, g as getDocument } from 'swiper/shared/ssr-window.esm.mjs';
 
 function classesToTokens(classes) {
@@ -199,6 +204,8 @@ function elementIsChildOfSlot(el, slot) {
     if (el === elementToCheck) {
       return true;
     }
+
+    // !!!! Rewrote this code to remove optional chaining syntax
     elementsQueue.push(
       ...elementToCheck.children,
       ...(elementToCheck.shadowRoot && elementToCheck.shadowRoot.children ? elementToCheck.shadowRoot.children : []),
