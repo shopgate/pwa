@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.23.4](https://github.com/shopgate/pwa/compare/v7.23.3...v7.23.4) (2025-01-29)
+
+#### :bug: Bug Fix
+* [#1309](https://github.com/shopgate/pwa/pull/1309) Fixed lazy loading of product images on iOS ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.23.3](https://github.com/shopgate/pwa/compare/v7.23.2...v7.23.3) (2025-01-28)
 
 #### :bug: Bug Fix
