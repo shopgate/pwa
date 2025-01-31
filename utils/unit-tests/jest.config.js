@@ -1,7 +1,11 @@
 module.exports = {
-  moduleFileExtensions: ['js', 'jsx', 'json'],
+  moduleFileExtensions: ['js', 'jsx', 'json', 'mjs'],
   moduleNameMapper: {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
+  },
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.mjs$': 'babel-jest',
   },
   snapshotSerializers: [
     'enzyme-to-json/serializer',
