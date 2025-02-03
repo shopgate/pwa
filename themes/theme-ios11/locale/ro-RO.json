@@ -552,7 +552,8 @@
     "more_menu": "Mai multe",
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
-    "back": "Înapoi la {title}"
+    "back": "Înapoi la {title}",
+    "open_menu": "Deschide meniul"
   },
   "reviews": {
     "rating": "Evaluare",

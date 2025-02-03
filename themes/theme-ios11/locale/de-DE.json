@@ -553,7 +553,8 @@
     "more_menu": "Mehr",
     "order_history": "Bestellverlauf",
     "profile": "Profil",
-    "back": "Zurück zu {title}"
+    "back": "Zurück zu {title}",
+    "open_menu": "Menü öffnen"
   },
   "reviews": {
     "rating": "Bewertung",

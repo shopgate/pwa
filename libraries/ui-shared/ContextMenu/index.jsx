@@ -37,6 +37,10 @@ class ContextMenu extends Component {
     scroll: null,
   };
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   /**
    * The Constructor.
    * @param {Object} props The component props.
@@ -97,13 +101,14 @@ class ContextMenu extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
       children, classes, disabled, showToggle, scroll,
     } = this.props;
     const { active } = this.state;
+    const { __ } = this.context.i18n();
 
     const useScroll = typeof scroll === 'boolean' && !!scroll;
 
@@ -112,7 +117,6 @@ class ContextMenu extends Component {
         data-test-id="contextMenu"
         ref={(ref) => { this.elementRef = ref; }}
         className={classNames(styles.container, classes.container, 'ui-shared__context-menu')}
-        aria-hidden
       >
         {showToggle && (
           <button
@@ -122,7 +126,7 @@ class ContextMenu extends Component {
             onClick={this.handleMenuToggle}
             disabled={disabled}
             type="button"
-            aria-hidden
+            aria-label={__('navigation.open_menu')}
           >
             <MoreVertIcon />
           </button>

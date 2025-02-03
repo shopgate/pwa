@@ -22,7 +22,7 @@ const PaymentBarCheckoutButton = ({ isOrderable }) => {
 
   return (
     <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive }}>
-      <Link href={CHECKOUT_PATH} disabled={!isActive} tabIndex="0" role="button" aria-disabled={!isActive}>
+      <Link href={CHECKOUT_PATH} disabled={!isActive} tabIndex={0} role="button" aria-disabled={!isActive}>
         <RippleButton
           disabled={!isActive}
           type="regular"
