@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { setCSSCustomProp } from '@shopgate/engage/styles';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
@@ -69,11 +71,13 @@ const AppBar = ({
       aria-hidden={ariaHidden}
       ref={contentRef}
     >
-      <div className={classnames(styles.inner, classes.inner)}>
-        <Left elements={left} />
-        <Center elements={center} />
-        <Right elements={right} />
-      </div>
+      <SurroundPortals portalName={APP_BAR_CONTENT}>
+        <div className={classnames(styles.inner, classes.inner)}>
+          <Left elements={left} />
+          <Center elements={center} />
+          <Right elements={right} />
+        </div>
+      </SurroundPortals>
       <Below elements={below} />
     </section>
   );
