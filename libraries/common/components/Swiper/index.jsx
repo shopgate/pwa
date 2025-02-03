@@ -1,7 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
-import { Swiper as SwiperCmp } from 'swiper/swiper-react';
 import {
   A11y,
   Autoplay,
@@ -16,6 +15,7 @@ import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/navigation.min.css';
 import 'swiper/modules/zoom.min.css';
 import SwiperItem from './components/SwiperItem';
+import OriginalSwiper from './components/OriginalSwiper';
 import {
   container, innerContainer, zoomFix, buttonNext, buttonPrev,
 } from './styles';
@@ -25,7 +25,7 @@ import {
  */
 
 /**
- * The basic Swiper component. It acts as a wrapper for the Swiper JS library.
+ * The basic Swiper component. It acts as a wrapper for the Swiper JS library component.
  *
  * This component wraps the [Swiper](https://swiperjs.com/) library's main component.
  * Refer to the [Swiper documentation](https://v9.swiperjs.com/react) for details on the available props.
@@ -124,7 +124,7 @@ const Swiper = ({
 
   return (
     <div className={cls(container, className)} aria-hidden={ariaHidden}>
-      <SwiperCmp
+      <OriginalSwiper
         {...internalProps}
         {...swiperProps}
       >
@@ -135,7 +135,7 @@ const Swiper = ({
             <div className={`swiper-button-prev ${buttonPrev}`} />
           </>
         )}
-      </SwiperCmp>
+      </OriginalSwiper>
     </div>
   );
 };

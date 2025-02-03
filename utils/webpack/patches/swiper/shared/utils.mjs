@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions, require-jsdoc, no-void, no-param-reassign,
+  prefer-destructuring, no-underscore-dangle, consistent-return, no-mixed-operators,
+  eslint-comments/no-unlimited-disable, prefer-rest-params, max-len */
 /**
  * Replacement of a sub-module of the Swiper library.
  * Contains some refactored code inside the elementIsChildOfSlot function to remove optional
@@ -339,4 +342,6 @@ export {
   elementParents as a, elementOffset as b, createElement as c, now as d, elementChildren as e, elementOuterSize as f, getSlideTransformEl as g, elementIndex as h, classesToTokens as i, getTranslate as j, elementTransitionEnd as k, isObject as l, makeElementsArray as m, nextTick as n, getRotateFix as o, elementStyle as p, elementNextAll as q, elementPrevAll as r, setCSSProperty as s, animateCSSModeScroll as t, showWarning as u, elementIsChildOf as v, extend as w, deleteProps as x,
 };
 
-/* eslint-enable  */
+/* eslint-enable import/extensions, require-jsdoc, no-void, no-param-reassign,
+  prefer-destructuring, no-underscore-dangle, consistent-return, no-mixed-operators,
+  eslint-comments/no-unlimited-disable, prefer-rest-params, max-len */
