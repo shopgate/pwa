@@ -58,7 +58,7 @@ const config = {
     publicPath: isDev ? '/' : (process.env.publicPath || './'),
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx'],
+    extensions: ['.json', '.js', '.jsx', '.mjs'],
     alias: {
       ...rxPaths(),
       'react-dom': '@hot-loader/react-dom',
@@ -74,6 +74,22 @@ const config = {
   plugins: [
     new ShopgateThemeConfigValidatorPlugin(),
     new ShopgateIndexerPlugin(),
+    /**
+     * Workaround to enable latest swiper version (11.2.1) with webpack.
+     * The utils.mjs file in swiper/shared/utils.mjs is not compatible with webpack due to use of
+     * optional chaining.
+     *
+     * Processing the module with babel-loader doesn't work, since transpilation of some array
+     * operations break the module logic inside the browser.
+     *
+     * As a workaround we replace the file with a local patched version.
+     * Alternative approaches e.g. via patch-package didn't work as expected due to issues in
+     * release process.
+     */
+    new webpack.NormalModuleReplacementPlugin(
+      /swiper\/shared\/utils\.mjs$/,
+      path.resolve(__dirname, 'patches', 'swiper', 'shared', 'utils.mjs')
+    ),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(ENV),
@@ -165,6 +181,10 @@ const config = {
           'style-loader',
           'css-loader',
         ],
+      },
+      {
+        test: /\.mjs$/,
+        type: 'javascript/auto',
       },
       {
         test: /\.(js|jsx)$/,
