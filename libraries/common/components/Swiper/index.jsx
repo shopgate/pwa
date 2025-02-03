@@ -28,7 +28,7 @@ import {
  * The basic Swiper component. It acts as a wrapper for the Swiper JS library component.
  *
  * This component wraps the [Swiper](https://swiperjs.com/) library's main component.
- * Refer to the [Swiper documentation](https://v9.swiperjs.com/react) for details on the available props.
+ * Refer to the [Swiper documentation](https://swiperjs.com/react) for details on the available props.
  *
  * @param {SwiperCmpProps} props The component props.
  * @returns {React.Node}
