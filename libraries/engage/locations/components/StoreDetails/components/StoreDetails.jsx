@@ -1,6 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import { css } from 'glamor';
-import { LocationIcon, Button, Link } from '@shopgate/engage/components';
+import {
+  LocationIcon, Button, Link, ConditionalWrapper,
+} from '@shopgate/engage/components';
 import {
   getWeekDaysOrder,
 } from '@shopgate/engage/core';
@@ -114,10 +116,17 @@ const StoreDetails = () => {
 
   return (
     <div>
-      <Button
-        onClick={() => selectLocation(routeLocation, true)}
-        role="button"
-        type="plain"
+      <ConditionalWrapper
+        condition={!isRouteLocationPreferred}
+        wrapper={children => (
+          <Button
+            onClick={() => selectLocation(routeLocation, true)}
+            role="button"
+            type="plain"
+          >
+            {children}
+          </Button>
+        )}
       >
         <div className={styles.headerWrapper}>
           <div className={styles.headerIcon}>
@@ -130,7 +139,7 @@ const StoreDetails = () => {
           }
           </div>
         </div>
-      </Button>
+      </ConditionalWrapper>
       <div className={styles.locationName}>
         {routeLocation.name}
       </div>
