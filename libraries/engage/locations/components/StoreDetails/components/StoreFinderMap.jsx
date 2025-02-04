@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useContext } from 'react';
 import {
   Circle, MapContainer, Marker, TileLayer,
 } from 'react-leaflet';
@@ -8,12 +8,11 @@ import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 import Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
-import { useSelector } from 'react-redux';
 import {
   container, markerSelected,
 } from './StoreFinderMap.style';
 import { MAP_RADIUS } from '../../../constants';
-import { getLocationByRoute } from '../../../selectors';
+import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
@@ -21,7 +20,7 @@ Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
  * @returns {JSX.Element}
  */
 const StoreFinderMap = () => {
-  const selectedLocation = useSelector(getLocationByRoute);
+  const { routeLocation } = useContext(StoreDetailsContext);
 
   const iconHTML = useMemo(() => renderToString(<MapMarkerIcon />), []);
 
@@ -31,7 +30,7 @@ const StoreFinderMap = () => {
     iconSize: [40, 40],
   }), [iconHTML]);
 
-  const { code, latitude, longitude } = selectedLocation || {};
+  const { code, latitude, longitude } = routeLocation || {};
 
   const viewport = useMemo(() => {
     if (!latitude || !longitude) {
@@ -87,12 +86,12 @@ const StoreFinderMap = () => {
 
   const debug = false;
 
-  if (!selectedLocation) {
+  if (!routeLocation) {
     return null;
   }
 
   return (
-    <div className={container}>
+    <div className={container} aria-hidden>
       <MapContainer
         center={viewport}
         bounds={bounds}

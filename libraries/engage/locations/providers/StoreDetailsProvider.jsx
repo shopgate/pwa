@@ -3,11 +3,11 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCurrentRoute } from '@shopgate/engage/core';
+import { useRoute } from '@shopgate/engage/core/hooks';
 import {
   getPreferredLocation,
-  makeGetNearbyLocationsByRouteLocation,
   makeGetLocation,
+  makeGetNearbyLocationsByLocationCode,
 } from '../selectors';
 import connect from './StoreFinder.connector';
 import { StoreDetailsContext } from './StoreDetailsContext';
@@ -21,15 +21,21 @@ const StoreDetailsProvider = ({
   selectGlobalLocation,
   selectLocation,
 }) => {
+  const { params: { code: locationCode } } = useRoute();
+
+  const getLocation = useMemo(() => makeGetLocation(() => locationCode), [locationCode]);
+  const routeLocation = useSelector(getLocation);
+
   const preferredLocation = useSelector(getPreferredLocation);
-  const route = useSelector(getCurrentRoute);
-  const getRouteLocation = useMemo(() => makeGetLocation(() => route.params.code), [route]);
-  const routeLocation = useSelector(getRouteLocation);
+
   const isRouteLocationPreferred = useMemo(() => preferredLocation && routeLocation
     && preferredLocation.code === routeLocation.code,
   [preferredLocation, routeLocation]);
 
-  const getNearbyLocations = useMemo(() => makeGetNearbyLocationsByRouteLocation(), []);
+  const getNearbyLocations = useMemo(
+    () => makeGetNearbyLocationsByLocationCode(locationCode),
+    [locationCode]
+  );
   const nearbyLocations = useSelector(getNearbyLocations);
 
   const selectLocationCb = useCallback((location) => {

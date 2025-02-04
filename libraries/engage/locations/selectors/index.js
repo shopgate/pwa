@@ -628,23 +628,13 @@ export const getProductAlternativeLocations = createSelector(
 );
 
 /**
- * Gets the currently displayed store location.
- * @param {Object} state State
+ * Creates a selector that retrieves nearby locations for a location referenced by a location code.
+ * @param {string} locationCode Location code.
  * @returns {Function}
  */
-export const getLocationByRoute = (state) => {
-  const route = getCurrentRoute(state);
-  const getRouteLocation = makeGetLocation(() => route.params.code);
-  return getRouteLocation(state);
-};
-
-/**
- * Creates a selector that retrieves nearby locations for current displayed store.
- * @returns {Function}
- */
-export const makeGetNearbyLocationsByRouteLocation = () => {
+export const makeGetNearbyLocationsByLocationCode = (locationCode) => {
   const getFilteredLocationsForRoute = makeGetFilteredLocations((state) => {
-    const routeLocation = getLocationByRoute(state) || {};
+    const routeLocation = makeGetLocation(() => locationCode)(state);
     return ({
       latitude: routeLocation?.latitude,
       longitude: routeLocation?.longitude,
@@ -654,10 +644,8 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
   });
 
   return createSelector(
-    getCurrentRoute,
     getFilteredLocationsForRoute,
-    (route, locations) => {
-      const { params: { code: locationCode } } = route;
+    (locations) => {
       // remove current location from nearby locations
       const filteredLocations = locations.filter(location =>
         location.code !== locationCode);
@@ -666,8 +654,3 @@ export const makeGetNearbyLocationsByRouteLocation = () => {
   );
 };
 
-/**
- * Gets the store locations nearby the currently displayed store location.
- * @returns {Function}
- */
-export const getNearbyLocationsByRoute = makeGetNearbyLocationsByRouteLocation();
