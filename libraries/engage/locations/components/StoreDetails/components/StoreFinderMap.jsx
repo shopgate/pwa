@@ -11,7 +11,7 @@ import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
 import {
   container, markerSelected,
 } from './StoreFinderMap.style';
-import { MAP_RADIUS } from '../../../constants';
+import { MAP_RADIUS_KM } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
@@ -76,13 +76,15 @@ const StoreFinderMap = () => {
     ];
   }, []);
 
+  const radiusinMeters = MAP_RADIUS_KM * 1000;
+
   const bounds = useMemo(() => {
-    if (!viewport || !MAP_RADIUS) {
+    if (!viewport || !MAP_RADIUS_KM) {
       return null;
     }
-    return createBounds(viewport, MAP_RADIUS);
+    return createBounds(viewport, radiusinMeters);
   },
-  [createBounds, viewport]);
+  [createBounds, radiusinMeters, viewport]);
 
   const debug = false;
 
@@ -101,7 +103,7 @@ const StoreFinderMap = () => {
         {debug && (
         <Circle
           center={viewport}
-          radius={MAP_RADIUS}
+          radius={radiusinMeters}
           color="blue"
         />
         )}
