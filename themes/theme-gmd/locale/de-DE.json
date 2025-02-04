@@ -271,7 +271,7 @@
     }
   },
   "location": {
-    "myStore": "Meine Filiae",
+    "myStore": "Meine Filiale",
     "makeMyStore": "Filiale auswählen",
     "getDirections": "Wegbeschreibung",
     "phone": "Telefon",
@@ -279,7 +279,7 @@
     "storesNearby": "Filialen in der Nähe",
     "open": "Geöffnet",
     "findMoreStores": "Mehr Filialen finden",
-    "noStoresNearby": "Keine filialen in der Nähe des gewählten Standort gefunden",
+    "noStoresNearby": "Keine Filialen in der Nähe des gewählten Standort gefunden",
     "preferredLocationChanged": "{storeName} wurde als bevorzugte Filiale festgelegt",
     "comingSoon": "Bald verfügbar"
   },
