@@ -32,7 +32,7 @@ const styles = {
   }),
   locationRow: css({
     display: 'flex',
-    gap: 4,
+    gap: 8,
     flexWrap: 'wrap',
   }),
   locationColumn: css({
@@ -45,7 +45,7 @@ const styles = {
     maxWidth: '400px',
   }),
   storeHours: css({
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: '600',
   }),
   storeHoursLine: css({
@@ -62,10 +62,8 @@ const styles = {
   storeHoursOpeningTime: css({
     textAlign: 'right',
   }),
-  getDirections: css({
-    margin: '8px 0px',
-  }),
   phone: css({
+    fontSize: 17,
     fontWeight: '600',
   }),
   phoneNumber: css({
@@ -73,18 +71,16 @@ const styles = {
   }),
   makeMyStoreButton: css({
     color: 'var(--color-primary)',
-    margin: '8px 0px',
   }),
   comingSoon: css({
     fontStyle: 'italic',
-    margin: '8px 0px',
   }),
   buttonRow: css({
     display: 'flex',
     alignItems: 'center',
-    gap: '0px 30px',
+    gap: '8px 30px',
     flexWrap: 'wrap',
-    marginBottom: 16,
+    margin: '8px 0',
   }),
 };
 
@@ -183,19 +179,22 @@ const StoreDetails = () => {
             )}
 
           </div>
-          <div className={styles.phone}>
-            {`${i18n.text('location.phone')}: `}
-          </div>
           {address?.phoneNumber && (
-          <div className={styles.phoneNumber}>
-            <Link
-              href={`tel:${address.phoneNumber}`}
-              className={classNames(styles.phoneNumber)}
-              target="_blank"
-            >
-              {address.phoneNumber}
-            </Link>
-          </div>
+            <>
+              <div className={styles.phone}>
+                {`${i18n.text('location.phone')}: `}
+              </div>
+
+              <div className={styles.phoneNumber}>
+                <Link
+                  href={`tel:${address.phoneNumber}`}
+                  className={classNames(styles.phoneNumber)}
+                  target="_blank"
+                >
+                  {address.phoneNumber}
+                </Link>
+              </div>
+            </>
           )}
         </div>
         {hasOpeningHours && (

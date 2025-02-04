@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 const styles = {
   container: css({
-    margin: '8px 0',
+
   }),
   buttonText: css({
     color: 'var(--color-primary)',

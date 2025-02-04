@@ -41,9 +41,6 @@ const StoreFinderMap = () => {
     return [latitude, longitude];
   }, [latitude, longitude]);
 
-  // default is 10 miles in meters
-  const radiusInMeters = MAP_RADIUS;
-
   /**
    * Enables touch and gestures on the map
    * @param {Object} map available parameters for the map
@@ -81,12 +78,12 @@ const StoreFinderMap = () => {
   }, []);
 
   const bounds = useMemo(() => {
-    if (!viewport || !radiusInMeters) {
+    if (!viewport || !MAP_RADIUS) {
       return null;
     }
-    return createBounds(viewport, radiusInMeters);
+    return createBounds(viewport, MAP_RADIUS);
   },
-  [createBounds, viewport, radiusInMeters]);
+  [createBounds, viewport]);
 
   const debug = false;
 
@@ -105,7 +102,7 @@ const StoreFinderMap = () => {
         {debug && (
         <Circle
           center={viewport}
-          radius={radiusInMeters}
+          radius={MAP_RADIUS}
           color="blue"
         />
         )}
