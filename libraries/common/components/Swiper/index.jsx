@@ -1,94 +1,61 @@
-import 'react-id-swiper/lib/styles/css/swiper.css';
-import React, { useRef } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
-import IDSwiper from 'react-id-swiper';
 import {
-  Pagination, Navigation, Autoplay, Zoom,
-} from 'swiper/dist/js/swiper.esm';
+  A11y,
+  Autoplay,
+  FreeMode,
+  Navigation,
+  Pagination,
+  Zoom,
+} from 'swiper/modules';
+import 'swiper/swiper.min.css';
+import 'swiper/modules/a11y.min.css';
+import 'swiper/modules/pagination.min.css';
+import 'swiper/modules/navigation.min.css';
+import 'swiper/modules/zoom.min.css';
 import SwiperItem from './components/SwiperItem';
+import OriginalSwiper from './components/OriginalSwiper';
 import {
   container, innerContainer, zoomFix, buttonNext, buttonPrev,
 } from './styles';
 
 /**
- * The basic swiper component.
- * @param {Object} props The component props.
+ * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
+ */
+
+/**
+ * The basic Swiper component. It acts as a wrapper for the Swiper JS library component.
+ *
+ * This component wraps the [Swiper](https://swiperjs.com/) library's main component.
+ * Refer to the [Swiper documentation](https://swiperjs.com/react) for details on the available props.
+ *
+ * @param {SwiperCmpProps} props The component props.
  * @returns {React.Node}
  */
-const Swiper = (props) => {
-  const {
-    autoPlay,
-    interval,
-    children,
-    controls,
-    className,
-    classNames,
-    slidesPerView,
-    maxIndicators,
-    indicators,
-    loop,
-    snapItems,
-    onSlideChange,
-    disabled,
-    'aria-hidden': ariaHidden,
-    ...additionalParams
-  } = props;
-
-  const {
-    zoom,
-    freeMode,
-    initialSlide,
-    rebuildOnUpdate,
-  } = props;
-
-  const swiperInstance = useRef(null);
-
-  /**
-   * Updates the swiper instance reference.
-   * @param {Object} instance A Swiper instance.
-   */
-  const updateSwiper = (instance) => {
-    // Only update the instance, when it differs from the current one.
-    if (instance !== null && instance !== swiperInstance.current) {
-      swiperInstance.current = instance;
-
-      instance.on('slideChange', () => onSlideChange(instance.realIndex));
-      instance.on('transitionEnd', () => {
-        // In loop mode the Swiper duplicates elements, which are not in the virtual DOM
-        if (loop) {
-          const autoplayRunning = instance.autoplay.running;
-          const previousIndex = instance.activeIndex;
-
-          // Skip duplicated elements
-          if (instance.activeIndex < 1) {
-            instance.slideToLoop(children.length - 1, 0);
-          } else if (instance.activeIndex > children.length) {
-            instance.slideToLoop(0, 0);
-          }
-
-          if (autoplayRunning && instance.activeIndex !== previousIndex) {
-            // Restart the autoplay when it was active before the auto slide.
-            instance.autoplay.start();
-          }
-        }
-      });
-    }
-  };
-
+const Swiper = ({
+  maxIndicators,
+  indicators,
+  controls,
+  'aria-hidden': ariaHidden,
+  disabled,
+  autoPlay,
+  interval,
+  classNames,
+  className,
+  onSlideChange,
+  additionalModules,
+  children,
+  ...swiperProps
+}) => {
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
-  const el = (indicators && children.length > 1) ? '.swiper-pagination' : null;
+  const showPagination = (indicators && children.length > 1);
+  const hasControls = typeof controls === 'boolean' && controls === true;
 
   let navigation;
 
-  if (typeof controls === 'boolean' && controls === false) {
-    navigation = {
-      nextEl: null,
-      prevEl: null,
-    };
-  }
-  if (typeof controls === 'boolean' && controls === true) {
+  if (hasControls) {
     navigation = {
       // Important to use dot notation (swiper internally use it as selector)
       nextEl: `.swiper-button-next.${buttonNext}`,
@@ -100,39 +67,75 @@ const Swiper = (props) => {
     navigation = controls;
   }
 
-  const zoomEnabled = zoom === true || (typeof zoom === 'object' && Object.keys(zoom).length);
+  const handleSlideChange = useCallback((swiper) => {
+    if (typeof onSlideChange === 'function') {
+      onSlideChange(swiper.realIndex, swiper);
+    }
+  }, [onSlideChange]);
 
-  const params = {
-    modules: [Pagination, Navigation, Autoplay, Zoom],
-    containerClass: cls(innerContainer, classNames.container, { [zoomFix]: zoomEnabled }),
+  /**
+   * @type {SwiperCmpProps}
+   */
+  const internalProps = useMemo(() => ({
+    modules: [
+      A11y,
+      Autoplay,
+      FreeMode,
+      Navigation,
+      Pagination,
+      Zoom,
+      ...(Array.isArray(additionalModules) ? additionalModules : []),
+    ],
+    className: cls(innerContainer, classNames.container, { [zoomFix]: swiperProps?.zoom }),
     autoplay: autoPlay ? {
       delay: interval,
     } : false,
-    initialSlide,
     navigation,
-    pagination: {
-      el,
-      type: paginationType,
-      bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
-      bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
-      dynamicBullets: true,
+    ...showPagination && {
+      pagination: {
+        el: undefined,
+        type: paginationType,
+        bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
+        bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
+        dynamicBullets: true,
+        clickable: true,
+        enabled: indicators && children.length > 1,
+      },
     },
-    loop,
-    rebuildOnUpdate,
-    // looping does not work with multiple slides per view
-    slidesPerView: loop ? 1 : slidesPerView,
-    freeMode: freeMode ? true : !snapItems,
-    getSwiper: updateSwiper,
-    zoom,
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
-  };
+    onSlideChange: handleSlideChange,
+  }), [
+    autoPlay,
+    additionalModules,
+    children.length,
+    classNames.bulletActiveClass,
+    classNames.bulletClass,
+    classNames.container,
+    disabled,
+    indicators,
+    interval,
+    navigation,
+    paginationType,
+    showPagination,
+    handleSlideChange,
+    swiperProps,
+  ]);
 
   return (
-    <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
-      <IDSwiper {...params} {...additionalParams}>
+    <div className={cls(container, className)} aria-hidden={ariaHidden}>
+      <OriginalSwiper
+        {...internalProps}
+        {...swiperProps}
+      >
         {children}
-      </IDSwiper>
+        {hasControls && (
+          <>
+            <div className={`swiper-button-next ${buttonNext}`} />
+            <div className={`swiper-button-prev ${buttonPrev}`} />
+          </>
+        )}
+      </OriginalSwiper>
     </div>
   );
 };
@@ -141,7 +144,19 @@ Swiper.Item = SwiperItem;
 
 Swiper.propTypes = {
   children: PropTypes.node.isRequired,
+  /**
+   * Optional list of additional Swiper modules to include.
+   */
+  additionalModules: PropTypes.arrayOf(PropTypes.func),
+  /**
+   * Whether the swiper should be hidden from screen readers.
+   */
   'aria-hidden': PropTypes.bool,
+  /**
+   * Custom shortcut to enable auto play. Default interval can be changed via the `interval` prop.
+   * @deprecated Use prop `autoplay` instead.
+   * @see https://v9.swiperjs.com/swiper-api#autoplay
+   */
   autoPlay: PropTypes.bool,
   className: PropTypes.string,
   classNames: PropTypes.shape({
@@ -162,52 +177,58 @@ Swiper.propTypes = {
       PropTypes.shape(),
     ]),
   }),
+  /**
+   * Custom shortcut to enable navigation controls.
+   *
+   * For extended options use the `navigation` prop directly.
+   * @see https://v9.swiperjs.com/swiper-api#navigation
+   */
   controls: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.shape(),
   ]),
+  /**
+   * Whether the swiper should be disabled
+   */
   disabled: PropTypes.bool,
-  freeMode: PropTypes.bool,
+  /**
+   * Custom shortcut to enable pagination indicators.
+   *
+   * As an alternative, you can use the `pagination` prop directly to configure the pagination.
+   * @see https://v9.swiperjs.com/swiper-api#pagination
+   */
   indicators: PropTypes.bool,
-  initialSlide: PropTypes.number,
+  /**
+   * Custom prop to set the interval for auto play. Prop is only used if `autoPlay` is set to
+   * `true`.
+   * @deprecated Use prop `autoplay` instead.
+   * @see https://v9.swiperjs.com/swiper-api#autoplay
+   */
   interval: PropTypes.number,
-  loop: PropTypes.bool,
-  // @deprecated
+  /**
+   * Maximum number of bullets to show in pagination. If the number of children is greater than
+   * this number, bullet pagination will be replaced with fraction (numeric) pagination.
+   */
   maxIndicators: PropTypes.number,
+  /**
+   * Callback invoked when the Swiper slide changes.
+   * Invoked with the index of the new slide and the Swiper instance.
+   */
   onSlideChange: PropTypes.func,
-  rebuildOnUpdate: PropTypes.bool,
-  slidesPerView: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  // @deprecated
-  snapItems: PropTypes.bool,
-  zoom: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.shape(),
-  ]),
 };
 
 Swiper.defaultProps = {
   'aria-hidden': false,
+  additionalModules: null,
   autoPlay: false,
   className: null,
   classNames: {},
   controls: false,
   indicators: false,
-  initialSlide: 0,
   interval: 3000,
-  loop: false,
-  // @deprecated
   maxIndicators: null,
-  onSlideChange: () => { },
-  rebuildOnUpdate: true,
-  slidesPerView: 1,
-  freeMode: false,
-  // @deprecated
-  snapItems: true,
-  zoom: false,
   disabled: false,
+  onSlideChange: null,
 };
 
 export default Swiper;

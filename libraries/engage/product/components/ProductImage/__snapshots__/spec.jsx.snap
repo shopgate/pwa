@@ -34,9 +34,10 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
+      lazy={true}
       noBackground={false}
       onError={[Function]}
-      onLoad={null}
+      onLoad={[Function]}
       placeholderSrc={null}
       ratio={null}
       resolutions={
@@ -54,7 +55,6 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       }
       src="http://placehold.it/300x300"
       srcmap={null}
-      transition={null}
       unwrapped={false}
       widgetSettings={
         Object {
@@ -121,9 +121,10 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
+      lazy={true}
       noBackground={false}
       onError={[Function]}
-      onLoad={null}
+      onLoad={[Function]}
       placeholderSrc={null}
       ratio={null}
       resolutions={
@@ -141,7 +142,6 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       }
       src="http://placehold.it/300x300"
       srcmap={null}
-      transition={null}
       unwrapped={false}
       widgetSettings={
         Object {
@@ -284,9 +284,10 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
+      lazy={true}
       noBackground={false}
       onError={[Function]}
-      onLoad={null}
+      onLoad={[Function]}
       placeholderSrc={null}
       ratio={null}
       resolutions={
@@ -304,7 +305,6 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       }
       src="http://placehold.it/300x300"
       srcmap={null}
-      transition={null}
       unwrapped={false}
       widgetSettings={
         Object {

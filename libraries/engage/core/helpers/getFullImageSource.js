@@ -1,3 +1,5 @@
+import { CONFIGURATION_COLLECTION_CREATE_EXTERNAL_IMAGE_URL } from '@shopgate/engage/core/constants';
+import { configuration } from '@shopgate/engage/core/collections';
 import { getProductImageSettings } from '../../product/helpers';
 import { getImageFormat } from './getImageFormat';
 
@@ -65,6 +67,27 @@ export const getFullImageSource = (src, { width, height } = {}) => {
       zd: 'resize',
       fillc: 'FFFFFF',
     });
+  }
+
+  // Check if an extension registered an external image url handler within the config collection.
+  const createUrlFn = configuration.get(CONFIGURATION_COLLECTION_CREATE_EXTERNAL_IMAGE_URL);
+
+  if (typeof createUrlFn === 'function') {
+    const { fillColor, quality } = getProductImageSettings();
+    const format = getImageFormat();
+
+    // Invoke the handler with all relevant parameters.
+    const externalUrl = createUrlFn(src, {
+      width,
+      height,
+      fillColor,
+      quality,
+      format,
+    });
+
+    if (!!externalUrl && typeof externalUrl === 'string') {
+      return externalUrl;
+    }
   }
 
   return src;

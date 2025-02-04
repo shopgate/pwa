@@ -5,6 +5,8 @@ import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import ImageSliderWidget from './index';
 
+jest.mock('@shopgate/engage/components');
+
 const mockedStore = configureStore();
 /**
  * Creates component
@@ -68,7 +70,7 @@ describe('<ImageSliderWidget />', () => {
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    const images = wrapper.find('div.swiper-slide img');
+    const images = wrapper.find('SwiperItem img');
     images.forEach((image, index) => {
       const imageProps = image.props();
       const imageSettings = settings.images[index];

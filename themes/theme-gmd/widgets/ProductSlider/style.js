@@ -3,10 +3,7 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const sliderContainer = css({
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  position: 'relative',
-  paddingBottom: 10,
+  paddingBottom: '10px !important',
 }).toString();
 
 const slider = css({
@@ -17,10 +14,6 @@ const slider = css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     padding: 0,
   },
-}).toString();
-
-const sliderItem = css({
-  width: '50%',
 }).toString();
 
 const productInfo = css({
@@ -76,7 +69,6 @@ export default {
   headline,
   sliderContainer,
   slider,
-  sliderItem,
   productInfo,
   productName,
   priceGrid,

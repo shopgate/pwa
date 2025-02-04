@@ -8,7 +8,6 @@ import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/engage/product';
-import { Swiper as MockSwiper } from '@shopgate/pwa-common/components';
 import Content from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
@@ -38,11 +37,15 @@ jest.mock('@shopgate/engage/core', () => ({
   getFullImageSource: orig => orig,
 }));
 
-jest.mock('@shopgate/engage/components', () => ({
-  Image: () => 'Image',
-  Swiper: MockSwiper,
-  SurroundPortals: ({ children }) => children,
-}));
+jest.mock('@shopgate/engage/components', () => {
+  const Swiper = jest.requireActual('@shopgate/pwa-common/components/Swiper/__mocks__').default;
+
+  return {
+    Image: () => 'Image',
+    Swiper,
+    SurroundPortals: ({ children }) => children,
+  };
+});
 
 jest.mock('@shopgate/engage/product', () => ({
   getProductImages: jest.fn(),
@@ -71,7 +74,7 @@ describe('<ProductGallery.Content> page', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockSwiper).length).toEqual(1);
+    expect(wrapper.find('Swiper').length).toEqual(1);
     expect(wrapper.find('Image').length).toEqual(2);
     expect(wrapper
       .find('Image')
@@ -94,7 +97,7 @@ describe('<ProductGallery.Content> page', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockSwiper).prop('initialSlide')).toEqual(3);
+    expect(wrapper.find('Swiper').prop('initialSlide')).toEqual(3);
   });
 
   it('should use zoom from widget settings', () => {

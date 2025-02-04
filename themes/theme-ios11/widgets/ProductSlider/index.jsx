@@ -34,7 +34,7 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   }
 
   return (
-    <Swiper.Item key={key} className={styles.sliderItem}>
+    <Swiper.Item key={key}>
       <ProductListEntryProvider productId={product.id}>
         <Card className={styles.card}>
           <ProductCard
@@ -162,11 +162,14 @@ class ProductSlider extends Component {
         {this.headline && <Headline text={settings.headline} />}
         <ProductListTypeProvider type="productSlider" subType="widgets">
           <Swiper
-            autoPlay={sliderSettings.autostart}
+            {...sliderSettings.autostart && {
+              autoplay: {
+                delay: Number.parseInt(sliderSettings.delay, 10),
+              },
+            }}
             loop={false}
             indicators={false}
             controls={false}
-            interval={Number.parseInt(sliderSettings.delay, 10)}
             freeMode
             slidesPerView={slidesPerView}
             classNames={{ container: styles.sliderContainer }}

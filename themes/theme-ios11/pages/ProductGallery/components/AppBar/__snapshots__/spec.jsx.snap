@@ -21,7 +21,7 @@ exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
         backgroundColor="rgba(0, 0, 0, 0)"
         classes={
           Object {
-            "outer": "css-9p1uug",
+            "outer": "css-1y95te3",
           }
         }
         left={

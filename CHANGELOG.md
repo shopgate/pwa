@@ -1,5 +1,36 @@
 # Changelog
 
+## [v7.23.5](https://github.com/shopgate/pwa/compare/v7.23.4...v7.23.5) (2025-02-03)
+
+#### :rocket: Enhancement
+* [#1313](https://github.com/shopgate/pwa/pull/1313) Updated SwiperJS to improve UX ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.23.4](https://github.com/shopgate/pwa/compare/v7.23.3...v7.23.4) (2025-01-29)
+
+#### :bug: Bug Fix
+* [#1309](https://github.com/shopgate/pwa/pull/1309) Fixed lazy loading of product images on iOS ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.23.3](https://github.com/shopgate/pwa/compare/v7.23.2...v7.23.3) (2025-01-28)
+
+#### :bug: Bug Fix
+* [#1308](https://github.com/shopgate/pwa/pull/1308) Fixed product image gallery in tablet screens ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.23.2](https://github.com/shopgate/pwa/compare/v7.23.0...v7.23.2) (2025-01-27)
+
+#### :rocket: Enhancement
+* [#1307](https://github.com/shopgate/pwa/pull/1307) Added mechanism to modify external image urls ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.23.0](https://github.com/shopgate/pwa/compare/v7.22.0...v7.23.0) (2025-01-27)
+
+#### :rocket: Enhancement
+* [#1305](https://github.com/shopgate/pwa/pull/1305) Implemented lazy loading for Image component and reworked Slider component ([@fkloes](https://github.com/fkloes))
+* [#1298](https://github.com/shopgate/pwa/pull/1298) Update babel loader ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
 ## [v7.22.0](https://github.com/shopgate/pwa/compare/v7.21.2...v7.22.0) (2025-01-22)
 
 #### :rocket: Enhancement

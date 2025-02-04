@@ -7,12 +7,10 @@ exports[`<ProductSlider /> should match snapshot 1`] = `
   type="productSlider"
 >
   <Swiper
-    autoPlay={false}
     className="null engage__product__product-slider"
     controls={false}
     freeMode={true}
     indicators={false}
-    interval={10}
     loop={false}
     slidesPerView={2.3}
   >

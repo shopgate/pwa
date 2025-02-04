@@ -59,6 +59,7 @@ function product(subscribe) {
   subscribe(galleryWillEnter$, ({ action, dispatch }) => {
     const { productId } = action.route.params;
     dispatch(fetchProductImages(hex2bin(productId)));
+    dispatch(fetchProductMedia(hex2bin(productId)));
   });
 
   subscribe(processProduct$, ({ action, dispatch }) => {

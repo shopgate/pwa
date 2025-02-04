@@ -2,6 +2,8 @@ import noop from 'lodash/noop';
 /* eslint-disable require-jsdoc */
 import UISharedSheet from '@shopgate/pwa-ui-shared/Sheet';
 
+import SwiperMock from '@shopgate/pwa-common/components/Swiper/__mocks__';
+
 // ICONS IOS
 export const CartIconIOS = () => null;
 export const FilterIconIOS = () => null;
@@ -106,6 +108,7 @@ export const PriceDifference = () => 'PriceDifference';
 export const TaxDisclaimer = () => 'TaxDisclaimer';
 export const PickerUtilize = () => 'PickerUtilize';
 export const Sheet = jest.requireActual('@shopgate/pwa-ui-shared/Sheet').default;
+export const Swiper = SwiperMock;
 
 // HELPERS
 export const I18n = {

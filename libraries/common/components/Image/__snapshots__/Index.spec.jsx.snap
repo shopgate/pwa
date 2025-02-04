@@ -3,14 +3,14 @@
 exports[`<Image /> should render placeholders if forced to 1`] = `
 <Image
   alt={null}
-  animating={true}
   backgroundColor="#f2f2f2"
   className=""
   classNameImg=""
   forcePlaceholder={true}
   highestResolutionLoaded={[Function]}
-  onError={null}
-  onLoad={null}
+  lazy={true}
+  onError={[Function]}
+  onLoad={[Function]}
   ratio={null}
   resolutions={
     Array [
@@ -21,12 +21,10 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
     ]
   }
   src="foo/bar"
-  srcmap={null}
-  transition={null}
   unwrapped={false}
 >
   <div
-    className="css-vfdozt "
+    className="css-vfdozt"
   />
 </Image>
 `;
@@ -34,14 +32,14 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
 exports[`<Image /> should render placeholders if src is null 1`] = `
 <Image
   alt={null}
-  animating={true}
   backgroundColor="#f2f2f2"
   className=""
   classNameImg=""
   forcePlaceholder={false}
   highestResolutionLoaded={[Function]}
-  onError={null}
-  onLoad={null}
+  lazy={true}
+  onError={[Function]}
+  onLoad={[Function]}
   ratio={null}
   resolutions={
     Array [
@@ -52,26 +50,41 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
     ]
   }
   src="foo/bar"
-  srcmap={null}
-  transition={null}
   unwrapped={false}
 >
   <div
-    className="css-vfdozt "
+    className="css-vfdozt"
   >
-    <img
+    <ForwardRef
       alt={null}
-      aria-label={null}
-      className="css-f45h63 common__image"
-      data-test-id="image"
-      role="presentation"
+      className=""
+      lazy={true}
+      onError={[Function]}
+      onLoad={[Function]}
       src="foo/bar"
       style={
         Object {
-          "width": "100%",
+          "aspectRatio": "1 / 1",
         }
       }
-    />
+    >
+      <img
+        alt={null}
+        aria-label={null}
+        className="css-f45h63 common__image"
+        data-test-id="image"
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+        src="foo/bar"
+        style={
+          Object {
+            "aspectRatio": "1 / 1",
+          }
+        }
+      />
+    </ForwardRef>
   </div>
 </Image>
 `;
