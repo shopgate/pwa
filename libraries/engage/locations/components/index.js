@@ -21,4 +21,4 @@ export { FulfillmentSlotSwitcher } from './FulfillmentSlotSwitcher';
 export { StoreFinder } from './StoreFinder';
 export { StockInfo } from './StockInfo';
 export { default as StockInfoLists } from './StockInfoLists';
-export { default as StoreDetailsContent } from './StoreDetailsContent';
+export { default as StoreDetails } from './StoreDetails';

@@ -1,5 +1,5 @@
-import React, { useContext, useCallback, useMemo } from 'react';
-import { Grid, ResponsiveContainer, LocationIcon } from '@shopgate/engage/components';
+import React, { useContext, useMemo } from 'react';
+import { Grid, LocationIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { StoreContext } from './Store.context';
 import { StoreFinderContext } from '../../locations.context';
@@ -27,27 +27,15 @@ const StoreFinderLocationHeader = () => {
   const {
     name, distance, unitSystem, operationHours, address,
   } = store;
-  const { changeLocation, selectedLocation } = useContext(StoreFinderContext);
+  const { selectedLocation } = useContext(StoreFinderContext);
 
   const isSelectedLocation = useMemo(() =>
     selectedLocation?.code === store?.code,
   [selectedLocation, store]);
 
-  const handleClick = useCallback(() => {
-    changeLocation(store);
-  }, [changeLocation, store]);
-
   return (
-    <div
-      className={container}
-    >
-      <div
-        className={clickable}
-        role="button"
-        tabIndex="0"
-        onClick={handleClick}
-        onKeyDown={handleClick}
-      >
+    <div className={container}>
+      <div className={clickable}>
         <Grid>
           <Grid.Item grow={1}>
             <div className={storeNameWrapper}>
@@ -75,10 +63,7 @@ const StoreFinderLocationHeader = () => {
         </div>
         <StoreAddress address={address} />
       </div>
-
-      <ResponsiveContainer breakpoint="<=sm" appAlways>
-        <StoreFinderLocationHeaderPhoneNumber phone={address.phoneNumber} />
-      </ResponsiveContainer>
+      <StoreFinderLocationHeaderPhoneNumber phone={address.phoneNumber} />
     </div>
   );
 };

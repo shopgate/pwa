@@ -31,7 +31,6 @@ export const container = css({
 }).toString();
 
 export const clickable = css({
-  cursor: 'pointer',
   ' > *': {
     margin: 0,
     paddingTop: 0,
