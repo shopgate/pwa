@@ -6,6 +6,7 @@
  * -------------------------------------------------------------------------
  */
 import '@shopgate/engage/styles/reset';
+import '@shopgate/engage/a11y/styles';
 import React from 'react';
 import { render } from 'react-dom';
 import smoothscroll from 'smoothscroll-polyfill';
