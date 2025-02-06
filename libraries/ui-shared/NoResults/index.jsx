@@ -15,10 +15,10 @@ const NoResults = props => (
     <div className={styles.icon}>
       <Icon />
     </div>
-    <div className={styles.headline}>
+    <div className={styles.headline} role="alert" aria-atomic="true">
       <I18n.Text string={props.headlineText} params={props} />
     </div>
-    <div className={styles.text}>
+    <div className={styles.text} role="alert" aria-atomic="true">
       <I18n.Text string={props.bodyText} params={props} />
     </div>
   </div>
