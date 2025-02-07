@@ -811,7 +811,7 @@
       },
       "params": {
         "type": "json",
-        "label": "By default videos we attempt to make videos inside HTML widgets responsive, so that they take the full screen width. This setting can be used to disable this behavior for specific video providers."
+        "label": "By default we attempt to make videos inside HTML widgets responsive, so that they take the full screen width. This setting can be used to disable this behavior for specific video providers."
       }
     }
   }
