@@ -801,6 +801,18 @@
         "type": "json",
         "label": "Whether to use grouping separators, such as thousands separators."
       }
+    },
+    "responsifyVideos": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "vimeo": true,
+        "youTube": true
+      },
+      "params": {
+        "type": "json",
+        "label": "By default videos we attempt to make videos inside HTML widgets responsive, so that they take the full screen width. This setting can be used to disable this behavior for specific video providers."
+      }
     }
   }
 }
