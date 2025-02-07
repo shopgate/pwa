@@ -71,7 +71,6 @@ export default function app(subscribe) {
   subscribe(appWillStart$, ({
     dispatch, action, getState, events,
   }) => {
-    console.warn(appConfig?.responsifyVideos);
     embeddedMedia.addProvider(new Vimeo({
       responsify: appConfig?.responsifyVideos?.vimeo,
     }));
