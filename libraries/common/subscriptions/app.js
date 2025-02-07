@@ -71,11 +71,12 @@ export default function app(subscribe) {
   subscribe(appWillStart$, ({
     dispatch, action, getState, events,
   }) => {
+    console.warn(appConfig?.responsifyVideos);
     embeddedMedia.addProvider(new Vimeo({
-      responsify: appConfig?.responsifyVideos?.Vimeo,
+      responsify: appConfig?.responsifyVideos?.vimeo,
     }));
     embeddedMedia.addProvider(new YouTube({
-      responsify: appConfig?.responsifyVideos?.youTubeVimeo,
+      responsify: appConfig?.responsifyVideos?.youTube,
     }));
 
     dispatch(registerLinkEvents(action.location));
