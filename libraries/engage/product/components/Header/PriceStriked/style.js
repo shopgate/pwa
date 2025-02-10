@@ -11,7 +11,7 @@ const placeholder = css({
 }).toString();
 
 const msrp = css({
-  color: colors.shade3,
+  color: colors.shade11,
   fontSize: '0.875rem',
   marginRight: variables.gap.small / 2,
 }).toString();

@@ -63,13 +63,13 @@ const hidden = css({
 
 const icon = css({
   padding: '0 6px',
-  color: themeColors.shade3,
+  color: themeColors.shade11,
   fontSize: '1.235rem',
 }).toString();
 
 const scannerIcon = css({
   padding: '4px 6px 4px 4px',
-  color: themeColors.shade3,
+  color: themeColors.shade11,
   fontSize: '1.7rem',
   position: 'absolute',
   right: 0,

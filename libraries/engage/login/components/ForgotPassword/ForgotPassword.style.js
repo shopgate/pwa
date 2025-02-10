@@ -27,7 +27,7 @@ export const headline = css({
 
 export const subline = css({
   fontSize: '1.125rem',
-  color: `var(--color-text-low-emphasis, ${colors.shade6})`,
+  color: colors.shade11,
   marginBottom: variables.gap.big,
   marginTop: 4,
 });
@@ -51,10 +51,10 @@ export const button = css({
 
 export const input = css({
   ' .label': {
-    color: 'var(--color-text-low-emphasis)',
+    color: colors.shade11,
   },
   ' .placeholder': {
-    color: 'var(--color-text-low-emphasis)',
+    color: colors.shade11,
   },
   ' .simpleInput': {
     color: 'var(--color-text-heigh-emphasis)',
