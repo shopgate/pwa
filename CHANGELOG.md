@@ -1,5 +1,17 @@
 # Changelog
 
+## [v7.23.7](https://github.com/shopgate/pwa/compare/v7.23.6...v7.23.7) (2025-02-11)
+
+#### :rocket: Enhancement
+* [#1317](https://github.com/shopgate/pwa/pull/1317) Added theme-config setting to disable automatic video responsiveness ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.23.6](https://github.com/shopgate/pwa/compare/v7.23.5...v7.23.6) (2025-02-04)
+
+#### :rocket: Enhancement
+* [#1314](https://github.com/shopgate/pwa/pull/1314) Added portals around content of AppBar component ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.23.5](https://github.com/shopgate/pwa/compare/v7.23.4...v7.23.5) (2025-02-03)
 
 #### :rocket: Enhancement
