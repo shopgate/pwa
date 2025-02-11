@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.23.8](https://github.com/shopgate/pwa/compare/v7.23.7...v7.23.8) (2025-02-11)
+
+#### :bug: Bug Fix
+* [#1318](https://github.com/shopgate/pwa/pull/1318) Re-added accidentally removed property to CartItem context ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.23.7](https://github.com/shopgate/pwa/compare/v7.23.6...v7.23.7) (2025-02-11)
 
 #### :rocket: Enhancement
