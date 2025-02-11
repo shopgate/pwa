@@ -26,6 +26,7 @@ import {
   onDidReset,
   onUpdate,
 } from '@virtuous/conductor';
+import { appConfig } from '@shopgate/engage';
 import { UI_VISIBILITY_CHANGE } from '../constants/ui';
 import {
   appError, pipelineError, pwaDidAppear, pwaDidDisappear,
@@ -70,8 +71,12 @@ export default function app(subscribe) {
   subscribe(appWillStart$, ({
     dispatch, action, getState, events,
   }) => {
-    embeddedMedia.addProvider(new Vimeo());
-    embeddedMedia.addProvider(new YouTube());
+    embeddedMedia.addProvider(new Vimeo({
+      responsify: appConfig?.responsifyVideos?.vimeo,
+    }));
+    embeddedMedia.addProvider(new YouTube({
+      responsify: appConfig?.responsifyVideos?.youTube,
+    }));
 
     dispatch(registerLinkEvents(action.location));
 

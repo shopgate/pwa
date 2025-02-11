@@ -28,11 +28,17 @@ const consentMessageIcon = `
 class MediaProvider {
   /**
    * Constructor.
+   * @param {Object} options The provider options.
+   * @param {boolean} [options.responsify=true] Whether to responsify the video containers.
    */
-  constructor() {
+  constructor(options) {
     this.containers = new Map();
     this.isPending = false;
     this.remoteScriptUrl = null;
+
+    this.options = {
+      responsify: options?.responsify ?? true,
+    };
   }
 
   /**
@@ -59,6 +65,9 @@ class MediaProvider {
    * @returns {MediaProvider}
    */
   responsify(container) {
+    // Do not proceed when video responsify is disabled.
+    if (!this.options.responsify) return this;
+
     // Remove fixed dimensions from the container.
     container.removeAttribute('height');
     container.removeAttribute('width');
