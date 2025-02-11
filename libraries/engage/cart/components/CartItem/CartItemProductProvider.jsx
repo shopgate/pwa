@@ -102,6 +102,7 @@ const CartItemProductProvider = ({
       toggleEditMode,
       editMode,
       isEditable,
+      cartItemId: id,
       cartItem: {
         id,
         product,
