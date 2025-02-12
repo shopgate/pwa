@@ -9,9 +9,11 @@ const scriptUrl = 'https://player.vimeo.com/api/player.js';
 class VimeoMediaProvider extends MediaProvider {
   /**
    * Constructor.
+   * @param {Object} options The provider options.
+   * @param {boolean} [options.responsify=true] Whether to responsify the video containers.
    */
-  constructor() {
-    super();
+  constructor(options) {
+    super(options);
     // Need to check Vimeo.Player presence later
     this.isPending = true;
     this.remoteScriptUrl = scriptUrl;
