@@ -232,6 +232,7 @@
     "share": "Udostępnij produkt",
     "pick_an_attribute": "{0} wybierz",
     "tax_disclaimer": "* Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
+    "tax_disclaimer_aria": "Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
     "item_added": "{count, plural, =0 {# brak produktów} =1 {{count} dodany produkt} other {{count} dodane produkty}}",
     "item_added_unit": "{count} {unit} dodano",
     "adding_item": "{count, plural, =1 {Dodawany jest jeden produkt} other {Dodawane są {count} produkty}}",
