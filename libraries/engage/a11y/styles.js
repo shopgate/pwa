@@ -1,5 +1,6 @@
 import { css } from 'glamor';
 
+// global class for screen readers only, visually hidden
 css.global('.sr-only', {
   border: '0',
   clip: 'rect(0 0 0 0)',

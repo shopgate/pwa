@@ -99,16 +99,17 @@ class ContextMenu extends Component {
       e.preventDefault();
       e.stopPropagation();
     }
-
-    this.setState(
-      ({ active }) => {
-        const newState = { active: !active };
-        if (this.props.onStateChange) {
-          this.props.onStateChange(newState);
+    if (this.elementRef) {
+      this.setState(
+        ({ active }) => {
+          const newState = { active: !active };
+          if (this.props.onStateChange) {
+            this.props.onStateChange(newState);
+          }
+          return newState;
         }
-        return newState;
-      }
-    );
+      );
+    }
   };
 
   /**
