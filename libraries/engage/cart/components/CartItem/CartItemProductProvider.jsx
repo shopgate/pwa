@@ -8,6 +8,7 @@ import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../cart.constants';
 import Context from './CartItemProductProvider.context';
 import connect from './CartItemProductProvider.connector';
 import { type OwnProps, type StateProps, type DispatchProps } from './CartItemProductProvider.types';
+import CartItemProductProviderLegacy from './CartItemProductProviderLegacy';
 
 const { variables } = themeConfig;
 
@@ -148,7 +149,9 @@ const CartItemProductProvider = ({
 
   return (
     <Context.Provider value={value}>
-      {children}
+      <CartItemProductProviderLegacy>
+        {children}
+      </CartItemProductProviderLegacy>
     </Context.Provider>
   );
 };
