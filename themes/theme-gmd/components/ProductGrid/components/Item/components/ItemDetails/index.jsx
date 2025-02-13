@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   MapPriceHint,
@@ -15,6 +15,8 @@ import {
 import { StockInfoLists } from '@shopgate/engage/locations/components';
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
 
+import { historyPush } from '@shopgate/engage/core';
+import { useDispatch } from 'react-redux';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import ShortDescription from '../ShortDescription';
@@ -22,21 +24,41 @@ import * as styles from './style';
 
 /**
  * The item details component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ItemDetails = ({ product, display }) => {
+  const dispatch = useDispatch();
   const {
     id: productId, name = null, stock = null, shortDescription = null,
   } = product;
 
   const hasNewServices = useMemo(() => checkHasNewServices(), []);
 
+  // click events necessary for a11y navigation on Android
+  const handleClick = useCallback(() => {
+    dispatch(historyPush({
+      pathname: getProductRoute(productId),
+    }));
+  }, [dispatch, productId]);
+
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleClick();
+    }
+  }, [handleClick]);
+
   if (display && !display.name && !display.price && !display.reviews) {
     return null;
   }
 
   return (
-    <div className={`${styles.details} theme__product-grid__item__item-details`} tabIndex={-1} role="button">
+    <button
+      className={`${styles.details} theme__product-grid__item__item-details`}
+      tabIndex={0}
+      type="button"
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+    >
       <Link
         href={getProductRoute(productId)}
         state={{ title: name }}
@@ -81,24 +103,24 @@ const ItemDetails = ({ product, display }) => {
         <EffectivityDates productId={productId} />
 
         { hasNewServices && (
-          <>
-            <Availability
-              state={!stock || stock.orderable
-                ? AVAILABILITY_STATE_OK
-                : AVAILABILITY_STATE_ALERT
+        <>
+          <Availability
+            state={!stock || stock.orderable
+              ? AVAILABILITY_STATE_OK
+              : AVAILABILITY_STATE_ALERT
             }
-              text={i18n.text('product.available.not')}
-              showWhenAvailable={false}
-            />
-            <StockInfoLists product={product} />
-          </>
+            text={i18n.text('product.available.not')}
+            showWhenAvailable={false}
+          />
+          <StockInfoLists product={product} />
+        </>
         )}
 
         <div className={styles.itemPrice}>
           <ItemPrice product={product} display={display} />
         </div>
       </Link>
-    </div>
+    </button>
   );
 };
 

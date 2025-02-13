@@ -13,7 +13,7 @@ const CLOSE_DELAY = 250;
 /**
  * The Context Menu Item component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Item = ({ children, closeMenu, onClick }) => {
   const handleClick = compose(
@@ -23,9 +23,14 @@ const Item = ({ children, closeMenu, onClick }) => {
 
   return (
     <Glow>
-      <div className={getItemClass()} onClick={handleClick} aria-hidden data-test-id="contextMenuButton">
+      <button
+        className={getItemClass()}
+        onClick={handleClick}
+        type="button"
+        data-test-id="contextMenuButton"
+      >
         {children}
-      </div>
+      </button>
     </Glow>
   );
 };

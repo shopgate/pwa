@@ -230,6 +230,7 @@
     "share": "Sdílet produkt",
     "pick_an_attribute": "{0} vybrat",
     "tax_disclaimer": "* Včetně DPH případně plus náklady na dopravu",
+    "tax_disclaimer_aria": "Včetně DPH případně plus náklady na dopravu",
     "adding_item": "{count, plural, =1 {Přidává se jeden produkt} other {Přidává se {count} produktů}}",
     "pick_option_first": "Nejprve vyberte možnost. {option}",
     "fill_out_required_input_first": "Nejprve vyplňte všechna povinná pole.",

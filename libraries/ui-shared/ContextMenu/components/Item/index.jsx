@@ -15,7 +15,7 @@ const CLOSE_DELAY = 250;
 /**
  * The Context Menu Item component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Item = ({
   children, closeMenu, onClick, disabled, autoClose, className,
@@ -27,14 +27,15 @@ const Item = ({
 
   return (
     <Glow disabled={disabled}>
-      <div
+      <button
         className={classNames(getItemClass(disabled), className)}
         onClick={disabled ? noop : handleClick}
-        aria-hidden
         data-test-id="contextMenuButton"
+        type="button"
+        disabled={disabled}
       >
         {children}
-      </div>
+      </button>
     </Glow>
   );
 };

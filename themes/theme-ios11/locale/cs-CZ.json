@@ -232,6 +232,7 @@
     "share": "Sdílet produkt",
     "pick_an_attribute": "{0} vybrat",
     "tax_disclaimer": "* Včetně DPH případně plus náklady na dopravu",
+    "tax_disclaimer_aria": "Včetně DPH případně plus náklady na dopravu",
     "item_added": "{count, plural, =0 {# žádné produkty} =1 {{count} Přidaný produkt} other {{count} Přidané produkty}}",
     "item_added_unit": "{count} {unit} přidáno",
     "adding_item": "{count, plural, =1 {Přidává se jeden produkt} other {Přidává se {count} produktů}}",
@@ -552,7 +553,8 @@
     "more_menu": "Více na",
     "order_history": "Historie objednávek",
     "profile": "Profil",
-    "back": "Zpět na {title}"
+    "back": "Zpět na {title}",
+    "open_menu": "Otevřít menu"
   },
   "reviews": {
     "rating": "Hodnocení",
