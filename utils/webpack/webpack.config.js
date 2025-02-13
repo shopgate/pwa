@@ -224,9 +224,6 @@ const config = {
     host: '0.0.0.0',
     port: process.env.optionsPort,
     historyApiFallback: true,
-    stats: {
-      colors: true,
-    },
     proxy: process.env.WEB_BRIDGE ? {
       '/api': {
         target: `http://${ip}:${apiPort}`,
