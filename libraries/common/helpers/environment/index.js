@@ -11,4 +11,5 @@ module.exports = {
   isProd: (env === ENV_KEY_PRODUCTION),
   isStaging: (env === ENV_KEY_STAGING),
   isRemote: !!process.env.REMOTE,
+  isWindows: (window?.navigator?.userAgent ?? '').toLowerCase().includes('win'),
 };
