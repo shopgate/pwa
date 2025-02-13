@@ -49,6 +49,7 @@ class ContextMenu extends Component {
     super(props);
 
     this.elementRef = null;
+    this.menuRef = null;
     this.state = {
       active: props.isOpened,
     };
@@ -58,6 +59,18 @@ class ContextMenu extends Component {
   UNSAFE_componentWillReceiveProps({ isOpened }) {
     if (typeof isOpened === 'boolean' && this.state.active !== isOpened) {
       this.setState({ active: isOpened });
+    }
+  }
+
+  /**
+   * update the focus of the context menu popup
+   * @param {Object} prevProps previous props
+   * @param {Object} prevState previous state
+   */
+  componentDidUpdate(prevProps, prevState) {
+    // Check if active changed from false to true
+    if (!prevState.active && this.state.active && this.menuRef) {
+      this.menuRef.focus();
     }
   }
 
@@ -86,17 +99,15 @@ class ContextMenu extends Component {
       e.stopPropagation();
     }
 
-    if (this.elementRef) {
-      this.setState(({ active }) => {
-        const state = { active: !active };
-
+    this.setState(
+      ({ active }) => {
+        const newState = { active: !active };
         if (this.props.onStateChange) {
-          this.props.onStateChange(state);
+          this.props.onStateChange(newState);
         }
-
-        return state;
-      });
-    }
+        return newState;
+      }
+    );
   };
 
   /**
@@ -127,6 +138,9 @@ class ContextMenu extends Component {
             disabled={disabled}
             type="button"
             aria-label={__('navigation.open_menu')}
+            aria-haspopup="true"
+            aria-expanded={active}
+            aria-controls="contextMenuDialog"
           >
             <MoreVertIcon />
           </button>
@@ -135,7 +149,17 @@ class ContextMenu extends Component {
           <div className={styles.overlay}>
             <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
             <Position offset={this.offset}>
-              <div className={classNames(styles.menu, { [styles.scrollable]: useScroll })}>
+              <div
+                className={classNames(styles.menu, { [styles.scrollable]: useScroll })}
+                tabIndex="-1"
+                aria-modal="true"
+                role="dialog"
+                aria-labelledby="contextMenuTitle"
+              >
+                <h2 id="contextMenuTitle" className="sr-only">
+                  {__('navigation.menu_options')}
+                </h2>
+
                 {Children.map(children, (child) => {
                   if (!child) {
                     return null;
@@ -145,6 +169,14 @@ class ContextMenu extends Component {
                     React.cloneElement(child, { closeMenu: this.handleMenuToggle })
                   );
                 })}
+                <button
+                  onClick={this.handleMenuToggle}
+                  className="sr-only"
+                  aria-label={__('common.close')}
+                  type="button"
+                >
+                  {__('common.close')}
+                </button>
               </div>
             </Position>
           </div>
