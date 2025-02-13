@@ -22,11 +22,11 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.47.0",
-    "webpack-cli": "3.3.6",
+    "webpack-cli": "4.10.0",
     "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {
     "rxjs": "~5.5.12",
-    "webpack-dev-server": "3.7.2"
+    "webpack-dev-server": "4.15.2"
   }
 }

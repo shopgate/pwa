@@ -117,7 +117,6 @@ const config = {
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HTMLWebpackPlugin({
       title: appConfig.shopName || process.env.theme,
@@ -212,9 +211,16 @@ const config = {
   devServer: {
     hot: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
-    publicPath: '/',
-    disableHostCheck: true,
-    contentBase: path.resolve(themePath, PUBLIC_FOLDER),
+    devMiddleware: {
+      publicPath: '/',
+      stats: {
+        colors: true,
+      },
+    },
+    allowedHosts: 'all',
+    static: {
+      directory: path.resolve(themePath, PUBLIC_FOLDER),
+    },
     host: '0.0.0.0',
     port: process.env.optionsPort,
     historyApiFallback: true,
