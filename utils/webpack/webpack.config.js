@@ -215,7 +215,7 @@ const config = {
     publicPath: '/',
     disableHostCheck: true,
     contentBase: path.resolve(themePath, PUBLIC_FOLDER),
-    host: process.env.optionsHost,
+    host: '0.0.0.0',
     port: process.env.optionsPort,
     historyApiFallback: true,
     stats: {
