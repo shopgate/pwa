@@ -10,6 +10,10 @@ import { STORE_DETAILS_PATH } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 const styles = {
+  button: css({
+    fontSize: '14px !important',
+    padding: '0px !important',
+  }),
   locationRow: css({
     borderBottom: '1px solid #e8e8e8',
     borderTop: '1px solid #e8e8e8',
@@ -25,17 +29,10 @@ const styles = {
     alignContent: 'center',
     verticalAlign: 'middle',
   }),
-
-  makeMyStoreButtonText: css({
-    color: 'var(--color-primary)',
-  }),
   storeInfo: css({
     textWrapMode: 'nowrap',
     alignContent: 'center',
     verticalAlign: 'middle',
-  }),
-  storeInfoButtonText: css({
-    color: 'var(--color-primary)',
   }),
   name: css({
     textAlign: 'start',
@@ -52,8 +49,6 @@ const styles = {
     gap: '4px 16px',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
-  }),
-  comingSoon: css({
   }),
 };
 
@@ -99,27 +94,21 @@ const StoresNearbyListItem = ({ location }) => {
       <td className={styles.cell}>
         <div className={styles.cellContainer}>
           <div className={styles.buttonContainer}>
-            {!isPreferredLocation && (
             <div className={styles.makeMyStore}>
-                {(!isComingSoon && !isPreferredLocation) && (
-                <Button onClick={() => selectLocation(location, true)} role="button" type="plain">
-                  <div className={styles.makeMyStoreButtonText}>
-                    {i18n.text('location.makeMyStore')}
-                  </div>
+              {(!isComingSoon) && (
+                <Button className={styles.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation}>
+                    {`${i18n.text('location.makeMyStore')}`}
                 </Button>
-                )}
+              )}
               {isComingSoon && (
-              <div className={styles.comingSoon}>
-                {i18n.text('location.comingSoon')}
-              </div>
+                <Button className={styles.button} role="button" type="primary" flat disabled>
+                  {i18n.text('location.comingSoon')}
+                </Button>
               )}
             </div>
-            )}
             <div className={styles.storeInfo}>
-              <Button role="button" type="plain" onClick={() => openStoreDetails(code)}>
-                <div className={styles.storeInfoButtonText}>
-                  {i18n.text('locations.details')}
-                </div>
+              <Button className={styles.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)}>
+                {i18n.text('locations.details')}
               </Button>
             </div>
           </div>

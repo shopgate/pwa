@@ -5,8 +5,8 @@ import { StoreFinderProvider } from '../../../providers';
 
 const styles = {
   container: css({
-    maxHeight: '400px',
-    height: '400px',
+    maxHeight: '250px',
+    height: '250px',
     width: '100%',
     marginTop: '10px',
     marginBottom: '10px',

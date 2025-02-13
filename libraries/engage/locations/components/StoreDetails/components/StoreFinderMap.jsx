@@ -1,4 +1,7 @@
-import React, { useCallback, useMemo, useContext } from 'react';
+import React, {
+  useCallback, useMemo, useContext, useRef, useEffect,
+} from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Circle, MapContainer, Marker, TileLayer,
 } from 'react-leaflet';
@@ -8,6 +11,7 @@ import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 import Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
+import { historyPush } from '@shopgate/engage/core';
 import {
   container, markerSelected,
 } from './StoreFinderMap.style';
@@ -20,6 +24,38 @@ Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
  * @returns {JSX.Element}
  */
 const StoreFinderMap = () => {
+  const mapContainerRef = useRef(null);
+  const dispatch = useDispatch();
+
+  /**
+   * Handles the click on the OpenStreetMap copyright
+   * Cause the copyright is only a plain a tag
+   * this causes weird routing in the app
+   * To prevent this we need to handle the click on the a tag
+   * @param {Event} e The event
+   * @returns {void}
+   * */
+  const handleOpenStreetMapCopyrightClick = (e) => {
+    if (e.target.tagName === 'A' && e.target.id === 'OpenStreetMapCopyright') {
+      e.preventDefault();
+      dispatch(historyPush({ pathname: e.target.href }));
+    }
+  };
+
+  // check the mapContainerRef if any a tag is clicked
+  // to catch the click on the OpenStreetMap copyright
+  useEffect(() => {
+    if (mapContainerRef.current) {
+      mapContainerRef.current.addEventListener('click', handleOpenStreetMapCopyrightClick);
+    }
+    return () => {
+      if (mapContainerRef.current) {
+        mapContainerRef.current.removeEventListener('click', handleOpenStreetMapCopyrightClick);
+      }
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const { routeLocation } = useContext(StoreDetailsContext);
 
   const iconHTML = useMemo(() => renderToString(<MapMarkerIcon />), []);
@@ -46,6 +82,7 @@ const StoreFinderMap = () => {
    */
   const handleMapCreated = (map) => {
     map.gestureHandling.enable();
+    map.attributionControl.setPrefix('');
 
     if (Leaflet.Browser.mobile) {
       map.touchZoom.enable();
@@ -93,7 +130,7 @@ const StoreFinderMap = () => {
   }
 
   return (
-    <div className={container} aria-hidden>
+    <div className={container} aria-hidden ref={mapContainerRef}>
       <MapContainer
         center={viewport}
         bounds={bounds}
@@ -108,7 +145,7 @@ const StoreFinderMap = () => {
         />
         )}
         <TileLayer
-          attribution='&amp;copy <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&amp;copy <a id="OpenStreetMapCopyright" href="https://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker
