@@ -87,7 +87,7 @@ const config = {
      * release process.
      */
     new webpack.NormalModuleReplacementPlugin(
-      /swiper\/shared\/utils\.mjs$/,
+      /swiper[/\\]shared[/\\]utils\.mjs$/,
       path.resolve(__dirname, 'patches', 'swiper', 'shared', 'utils.mjs')
     ),
     new webpack.DefinePlugin({
