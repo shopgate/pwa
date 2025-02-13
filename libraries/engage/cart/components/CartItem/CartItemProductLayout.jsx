@@ -45,16 +45,23 @@ export function CartItemProductLayout() {
     currency,
     editMode,
     handleUpdate,
+    handleRemove,
     toggleEditMode,
     isEditable,
   } = context;
 
   const portalProps = useMemo(() => ({
+    context: {
+      type: context.type,
+      cartItemId: context.cartItemId,
+      product: context.product,
+    },
     ...context,
     isOrderDetails,
     isCheckoutConfirmation,
     quantity: cartItem.quantity,
-  }), [cartItem.quantity, context, isCheckoutConfirmation, isOrderDetails]);
+    handleDelete: handleRemove,
+  }), [cartItem.quantity, context, handleRemove, isCheckoutConfirmation, isOrderDetails]);
 
   const isActive = !isOrderDetails
     ? true
