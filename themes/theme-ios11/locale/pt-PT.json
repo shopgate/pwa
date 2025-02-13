@@ -552,7 +552,8 @@
     "more_menu": "Mais",
     "order_history": "Histórico de pedidos",
     "profile": "Perfil",
-    "back": "Voltar para {title}"
+    "back": "Voltar para {title}",
+    "open_menu": "Abrir menu"
   },
   "reviews": {
     "rating": "Avaliação",

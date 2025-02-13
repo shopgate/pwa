@@ -12,7 +12,7 @@ import styles, { itemDetails, itemImage, badgesPortal } from './style';
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const Item = ({ product, display }) => (
   <div className={`${styles} theme__product-grid__item`}>
@@ -21,20 +21,19 @@ const Item = ({ product, display }) => (
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
       className={itemImage}
-      aria-hidden={!product.featuredMedia?.altText}
+      aria-hidden
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
           type={product.featuredMedia.type}
           url={product.featuredMedia.url}
-          altText={product.featuredMedia.altText || product.name}
         />
         : <ItemImage
           productId={product.id}
           name={product.name}
           imageUrl={product.featuredImageBaseUrl}
         />
-      }
+        }
     </Link>
     <ProductBadges location="productGrid" productId={product.id} className={badgesPortal}>
       <ItemDiscount

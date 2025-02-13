@@ -552,7 +552,8 @@
     "more_menu": "További",
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
-    "back": "Vissza a {title}"
+    "back": "Vissza a {title}",
+    "open_menu": "Menü megnyitása"
   },
   "reviews": {
     "rating": "Értékelés",

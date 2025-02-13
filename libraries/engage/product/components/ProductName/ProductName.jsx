@@ -20,7 +20,7 @@ const styles = {
 
 /**
  * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ProductName = ({
   name, className, testId, ellipsis, portalName, portalProps, itemProp, rows, style,

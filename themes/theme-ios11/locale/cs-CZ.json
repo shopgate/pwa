@@ -552,7 +552,8 @@
     "more_menu": "Více na",
     "order_history": "Historie objednávek",
     "profile": "Profil",
-    "back": "Zpět na {title}"
+    "back": "Zpět na {title}",
+    "open_menu": "Otevřít menu"
   },
   "reviews": {
     "rating": "Hodnocení",

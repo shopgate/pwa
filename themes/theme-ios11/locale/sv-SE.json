@@ -552,7 +552,8 @@
     "more_menu": "Mer",
     "order_history": "Beställningshistorik",
     "profile": "Profil",
-    "back": "Tillbaka till {title}"
+    "back": "Tillbaka till {title}",
+    "open_menu": "Öppna meny"
   },
   "reviews": {
     "rating": "Betyg",
