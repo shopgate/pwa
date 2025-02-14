@@ -13,10 +13,16 @@ const styles = {
   button: css({
     fontSize: '14px !important',
     padding: '0px !important',
-  }),
+  }).toString(),
   locationRow: css({
     borderBottom: '1px solid #e8e8e8',
     borderTop: '1px solid #e8e8e8',
+    '> td:first-child > div': {
+      paddingLeft: 0,
+    },
+    '> td:last-child > div': {
+      paddingRight: 0,
+    },
   }),
   distance: css({
     textWrapMode: 'nowrap',
@@ -96,18 +102,18 @@ const StoresNearbyListItem = ({ location }) => {
           <div className={styles.buttonContainer}>
             <div className={styles.makeMyStore}>
               {(!isComingSoon) && (
-                <Button className={styles.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation}>
+                <Button className={styles.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation} wrapContent={false}>
                     {`${i18n.text('location.makeMyStore')}`}
                 </Button>
               )}
               {isComingSoon && (
-                <Button className={styles.button} role="button" type="primary" flat disabled>
+                <Button className={styles.button} role="button" type="primary" flat disabled wrapContent={false}>
                   {i18n.text('location.comingSoon')}
                 </Button>
               )}
             </div>
             <div className={styles.storeInfo}>
-              <Button className={styles.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)}>
+              <Button className={styles.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)} wrapContent={false}>
                 {i18n.text('locations.details')}
               </Button>
             </div>

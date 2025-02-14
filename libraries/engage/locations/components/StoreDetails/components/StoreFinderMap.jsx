@@ -35,12 +35,12 @@ const StoreFinderMap = () => {
    * @param {Event} e The event
    * @returns {void}
    * */
-  const handleOpenStreetMapCopyrightClick = (e) => {
-    if (e.target.tagName === 'A' && e.target.id === 'OpenStreetMapCopyright') {
+  const handleOpenStreetMapCopyrightClick = useCallback((e) => {
+    if (e.target.tagName === 'A' && e.target.href) {
       e.preventDefault();
       dispatch(historyPush({ pathname: e.target.href }));
     }
-  };
+  }, [dispatch]);
 
   // check the mapContainerRef if any a tag is clicked
   // to catch the click on the OpenStreetMap copyright
@@ -53,8 +53,7 @@ const StoreFinderMap = () => {
         mapContainerRef.current.removeEventListener('click', handleOpenStreetMapCopyrightClick);
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [handleOpenStreetMapCopyrightClick]);
 
   const { routeLocation } = useContext(StoreDetailsContext);
 
@@ -145,7 +144,7 @@ const StoreFinderMap = () => {
         />
         )}
         <TileLayer
-          attribution='&amp;copy <a id="OpenStreetMapCopyright" href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&amp;copy <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker
