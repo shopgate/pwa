@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-webcheckout-shopify",
-  "version": "7.23.10",
+  "version": "7.24.0",
   "description": "Webcheckout Shopify library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -17,8 +17,8 @@
     "connect"
   ],
   "devDependencies": {
-    "@shopgate/pwa-common": "7.23.10",
-    "@shopgate/pwa-core": "7.23.10",
+    "@shopgate/pwa-common": "7.24.0",
+    "@shopgate/pwa-core": "7.24.0",
     "react": "~16.14.0"
   }
 }
