@@ -1,24 +1,18 @@
-// @flow
 import React, { Fragment, useMemo } from 'react';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
 import {
   LocationIcon, Link, Ellipsis, I18n,
 } from '@shopgate/engage//components';
+import PropTypes from 'prop-types';
 import { StoreDetailsLine } from './StoreDetailsLine';
-import { type LocationAddress } from '../../locations.types';
 import { detailsPrimary, detailsSecondary } from './Store.style';
-
-type Props = {
-  address?: LocationAddress,
-  showFull?: boolean,
-};
 
 /**
  * Renders the pickup location's address information.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function StoreAddressShort({ address, showFull }: Props) {
+export function StoreAddressShort({ address, showFull }) {
   const mapsUrl = useMemo(() => address && generateGoogleMapsDirectionsUrl(address), [address]);
 
   if (!address) {
@@ -59,6 +53,11 @@ export function StoreAddressShort({ address, showFull }: Props) {
     </Link>
   );
 }
+
+StoreAddressShort.propTypes = {
+  address: PropTypes.shape(),
+  showFull: PropTypes.bool,
+};
 
 StoreAddressShort.defaultProps = {
   address: null,

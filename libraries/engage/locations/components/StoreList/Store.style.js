@@ -11,9 +11,7 @@ export const stores = css({
   background: `var(--color-background-accent, ${themeColors.background})`,
   padding: `${gapM}px ${gapM}px ${gap.big}px`,
   fontSize: '0.875rem',
-  [responsiveMediaQuery('<=sm')]: {
-    boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
-  },
+  boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
 }).toString();
 
 export const storeCard = css({
@@ -125,9 +123,6 @@ export const detailsSecondary = css({
 
 export const selectLocationButtonWrapper = css({
   padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
-  [responsiveMediaQuery('>=sm', { webOnly: true })]: {
-    padding: `0 0 ${gap.small}px 0`,
-  },
 });
 
 export const stockInfoContainer = css({

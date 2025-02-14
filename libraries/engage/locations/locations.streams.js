@@ -24,6 +24,7 @@ import {
   STORE_FINDER_PATTERN,
   PROVIDE_PRODUCT_ALTERNATIVE_LOCATION,
   SELECT_LOCATION,
+  STORE_DETAILS_PATTERN,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 import { WISH_LIST_PATH } from '../account/constants';
@@ -156,3 +157,7 @@ export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdateGlobal
       getState,
     });
   });
+
+export const storeDetailPageWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === STORE_DETAILS_PATTERN);
+
