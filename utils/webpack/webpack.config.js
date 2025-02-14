@@ -87,7 +87,7 @@ const config = {
      * release process.
      */
     new webpack.NormalModuleReplacementPlugin(
-      /swiper\/shared\/utils\.mjs$/,
+      /swiper[/\\]shared[/\\]utils\.mjs$/,
       path.resolve(__dirname, 'patches', 'swiper', 'shared', 'utils.mjs')
     ),
     new webpack.DefinePlugin({
@@ -117,7 +117,6 @@ const config = {
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HTMLWebpackPlugin({
       title: appConfig.shopName || process.env.theme,
@@ -212,15 +211,19 @@ const config = {
   devServer: {
     hot: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
-    publicPath: '/',
-    disableHostCheck: true,
-    contentBase: path.resolve(themePath, PUBLIC_FOLDER),
-    host: process.env.optionsHost,
+    devMiddleware: {
+      publicPath: '/',
+      stats: {
+        colors: true,
+      },
+    },
+    allowedHosts: 'all',
+    static: {
+      directory: path.resolve(themePath, PUBLIC_FOLDER),
+    },
+    host: '0.0.0.0',
     port: process.env.optionsPort,
     historyApiFallback: true,
-    stats: {
-      colors: true,
-    },
     proxy: process.env.WEB_BRIDGE ? {
       '/api': {
         target: `http://${ip}:${apiPort}`,
