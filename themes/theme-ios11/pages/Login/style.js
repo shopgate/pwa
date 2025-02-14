@@ -18,7 +18,7 @@ const subline = css({
   fontSize: '1.125rem',
   marginBottom: variables.gap.big * 1.5,
   marginTop: 4,
-  color: `var(--color-text-low-emphasis, ${colors.shade6})`,
+  color: colors.shade11,
 });
 
 const form = css({
@@ -28,7 +28,7 @@ const form = css({
 const input = css({
   width: '100%',
   ' .label': {
-    color: 'var(--color-text-low-emphasis)',
+    color: colors.shade11,
   },
   ' .simpleInput': {
     color: 'var(--color-text-high-emphasis)',
