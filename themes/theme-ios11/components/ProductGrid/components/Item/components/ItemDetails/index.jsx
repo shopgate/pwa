@@ -20,7 +20,7 @@ import ItemPrice from '../ItemPrice';
 import * as styles from './style';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ItemDetails = ({ product, display }) => {
   const { id: productId, name = null, stock = null } = product;

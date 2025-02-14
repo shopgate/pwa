@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
 import classNames from 'classnames';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
+import FocusTrap from 'focus-trap-react';
 import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
 import Item from './components/Item';
@@ -37,6 +38,10 @@ class ContextMenu extends Component {
     scroll: null,
   };
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   /**
    * The Constructor.
    * @param {Object} props The component props.
@@ -45,6 +50,7 @@ class ContextMenu extends Component {
     super(props);
 
     this.elementRef = null;
+    this.menuRef = null;
     this.state = {
       active: props.isOpened,
     };
@@ -54,6 +60,18 @@ class ContextMenu extends Component {
   UNSAFE_componentWillReceiveProps({ isOpened }) {
     if (typeof isOpened === 'boolean' && this.state.active !== isOpened) {
       this.setState({ active: isOpened });
+    }
+  }
+
+  /**
+   * update the focus of the context menu popup
+   * @param {Object} prevProps previous props
+   * @param {Object} prevState previous state
+   */
+  componentDidUpdate(prevProps, prevState) {
+    // Check if active changed from false to true
+    if (!prevState.active && this.state.active && this.menuRef) {
+      this.menuRef.focus();
     }
   }
 
@@ -81,29 +99,29 @@ class ContextMenu extends Component {
       e.preventDefault();
       e.stopPropagation();
     }
-
     if (this.elementRef) {
-      this.setState(({ active }) => {
-        const state = { active: !active };
-
-        if (this.props.onStateChange) {
-          this.props.onStateChange(state);
+      this.setState(
+        ({ active }) => {
+          const newState = { active: !active };
+          if (this.props.onStateChange) {
+            this.props.onStateChange(newState);
+          }
+          return newState;
         }
-
-        return state;
-      });
+      );
     }
   };
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
       children, classes, disabled, showToggle, scroll,
     } = this.props;
     const { active } = this.state;
+    const { __ } = this.context.i18n();
 
     const useScroll = typeof scroll === 'boolean' && !!scroll;
 
@@ -112,7 +130,6 @@ class ContextMenu extends Component {
         data-test-id="contextMenu"
         ref={(ref) => { this.elementRef = ref; }}
         className={classNames(styles.container, classes.container, 'ui-shared__context-menu')}
-        aria-hidden
       >
         {showToggle && (
           <button
@@ -122,28 +139,52 @@ class ContextMenu extends Component {
             onClick={this.handleMenuToggle}
             disabled={disabled}
             type="button"
-            aria-hidden
+            aria-label={__('navigation.open_menu')}
+            aria-haspopup="true"
+            aria-expanded={active}
+            aria-controls="contextMenuDialog"
           >
             <MoreVertIcon />
           </button>
         )}
         <ConnectedReactPortal isOpened={active}>
-          <div className={styles.overlay}>
-            <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
-            <Position offset={this.offset}>
-              <div className={classNames(styles.menu, { [styles.scrollable]: useScroll })}>
-                {Children.map(children, (child) => {
-                  if (!child) {
-                    return null;
-                  }
+          <FocusTrap active={active}>
+            <div className={styles.overlay}>
+              <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
+              <Position offset={this.offset}>
+                <div
+                  className={classNames(styles.menu, { [styles.scrollable]: useScroll })}
+                  ref={(node) => { this.menuRef = node; }}
+                  tabIndex="-1"
+                  aria-modal="true"
+                  role="dialog"
+                  aria-labelledby="contextMenuTitle"
+                >
+                  <h2 id="contextMenuTitle" className="sr-only">
+                    {__('navigation.menu_options')}
+                  </h2>
 
-                  return (
-                    React.cloneElement(child, { closeMenu: this.handleMenuToggle })
-                  );
-                })}
-              </div>
-            </Position>
-          </div>
+                  {Children.map(children, (child) => {
+                    if (!child) {
+                      return null;
+                    }
+
+                    return (
+                      React.cloneElement(child, { closeMenu: this.handleMenuToggle })
+                    );
+                  })}
+                  <button
+                    onClick={this.handleMenuToggle}
+                    className="sr-only"
+                    aria-label={__('common.close')}
+                    type="button"
+                  >
+                    {__('common.close')}
+                  </button>
+                </div>
+              </Position>
+            </div>
+          </FocusTrap>
         </ConnectedReactPortal>
       </div>
     );
