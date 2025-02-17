@@ -40,21 +40,20 @@ const styles = {
   locationColumn: css({
     flex: 1,
     minWidth: '200px',
+    '& > p': {
+      margin: 0,
+    },
   }),
   storeHoursColumn: css({
     flex: 1,
     minWidth: '250px',
-    maxWidth: '400px',
+    maxWidth: '455px',
   }),
   storeHours: css({
     fontSize: 17,
     fontWeight: '600',
   }),
-  storeHoursLine: css({
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  }),
+  storeHoursLine: css({ }),
   storeHoursWeekday: css({
     textAlign: 'left',
   }),
@@ -145,27 +144,27 @@ const StoreDetails = () => {
       </div>
       <div className={styles.locationRow}>
         <div className={styles.locationColumn}>
-          <div>
+          <p>
             {address?.street}
-          </div>
+          </p>
           {address?.street2 && address.street2 !== '' && (
-            <div>
+            <p>
               {address.street2}
-            </div>
+            </p>
           )}
           {address?.street3 && address.street3 !== '' && (
-            <div>
+            <p>
               {address.street3}
-            </div>
+            </p>
           )}
           {address?.street4 && address.street4 !== '' && (
-            <div>
+            <p>
               {address.street4}
-            </div>
+            </p>
           )}
-          <div>
+          <p>
             {i18n.text('locations.address', address)}
-          </div>
+          </p>
 
           <div className={styles.buttonRow}>
             <GetDirectionsButton address={address} />
@@ -199,6 +198,8 @@ const StoreDetails = () => {
                   href={`tel:${address.phoneNumber}`}
                   className={classNames(styles.phoneNumber)}
                   target="_blank"
+                  role="button"
+                  aria-label={address.phoneNumber}
                 >
                   {address.phoneNumber}
                 </Link>
@@ -211,27 +212,42 @@ const StoreDetails = () => {
           <div className={styles.storeHours}>
             {`${i18n.text('location.storeHours')}:`}
           </div>
-          {getWeekDaysOrder().map((weekDay) => {
-            if (!operationHours[weekDay]) {
-              return null;
-            }
-            return (
-              <div className={styles.storeHoursLine} key={weekDay}>
-                <div className={classNames(styles.storeHoursWeekday, {
-                  [styles.bold]: weekDay === currentDay,
-                })}
-                >
-                  {`${i18n.text(`locations.${weekDay}`)}:`}
-                </div>
-                <div className={classNames(styles.storeHoursOpeningTime, {
-                  [styles.bold]: weekDay === currentDay,
-                })}
-                >
-                  {operationHours[weekDay]}
-                </div>
-              </div>
-            );
-          })}
+          <table>
+            <tbody>
+              {getWeekDaysOrder().map((weekDay) => {
+                if (!operationHours[weekDay]) {
+                  return null;
+                }
+                return (
+                  <tr
+                    className={styles.storeHoursLine}
+                    key={weekDay}
+                    aria-label={
+                    `${i18n.text(`locations.${weekDay}`)}: ${operationHours[weekDay]}`
+                    }
+                    tabIndex={0}
+                  >
+                    <td
+                      className={classNames(styles.storeHoursWeekday, {
+                        [styles.bold]: weekDay === currentDay,
+                      })}
+                      aria-hidden
+                    >
+                      {`${i18n.text(`locations.${weekDay}`)}:`}
+                    </td>
+                    <td
+                      className={classNames(styles.storeHoursOpeningTime, {
+                        [styles.bold]: weekDay === currentDay,
+                      })}
+                      aria-hidden
+                    >
+                      {operationHours[weekDay]}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
         )}
       </div>
