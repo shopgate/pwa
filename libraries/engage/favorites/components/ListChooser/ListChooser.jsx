@@ -9,6 +9,7 @@ import { i18n } from '@shopgate/engage/core';
 import { SheetList, SheetDrawer } from '@shopgate/engage/components';
 import { closeFavoritesListChooser } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import { toggleFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import { FocusTrap } from 'focus-trap-react';
 import ListChooserItem from './ListChooserItem';
 
 /**
@@ -31,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ListChooser = ({
   settings, lists, close, toggle,
@@ -46,24 +47,26 @@ const ListChooser = ({
       title={i18n.text('favorites.list_chooser.title')}
       onDidClose={close}
     >
-      <SheetList>
-        {lists.map(list => (
-          <SheetList.Item
-            key={list.id}
-            title={list.name}
-            onClick={() => {
-              close();
-              toggle(productId, list.id, withRelatives);
-            }}
-            rightComponent={
-              <ListChooserItem
-                listId={list.id}
-                productId={productId}
-              />
+      <FocusTrap>
+        <SheetList>
+          {lists.map(list => (
+            <SheetList.Item
+              key={list.id}
+              title={list.name}
+              onClick={() => {
+                close();
+                toggle(productId, list.id, withRelatives);
+              }}
+              rightComponent={
+                <ListChooserItem
+                  listId={list.id}
+                  productId={productId}
+                />
             }
-          />
-        ))}
-      </SheetList>
+            />
+          ))}
+        </SheetList>
+      </FocusTrap>
     </SheetDrawer>
   );
 };
