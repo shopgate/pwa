@@ -14,9 +14,9 @@ import {
 const GlobalLocationSwitcherBar = ({ locationName, handleChange, standalone }) => (
   <div className={wrapper}>
     <div className={classNames(inner, { [innerStandalone]: standalone })}>
-      <span>
+      <span aria-label={`${i18n.text('locations.your_current_location.heading')}: ${locationName}`}>
         <span className={heading}>
-          {i18n.text('locations.your_current_location.heading')}
+          {`${i18n.text('locations.your_current_location.heading')}:`}
         </span>
         <span className={name}>{ locationName }</span>
       </span>
