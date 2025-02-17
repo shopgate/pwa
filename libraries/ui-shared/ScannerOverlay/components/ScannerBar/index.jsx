@@ -1,7 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import { Grid } from '@shopgate/engage/components';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { SCANNER_BAR } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
 import FlashlightButton from './components/FlashlightButton';
@@ -11,7 +11,7 @@ import styles from './style';
 /**
  * @param {boolean} flashlightState The on/off state of the flashlight.
  * @param {Function} onToggleFlashlight The toggle event triggered by the user.
- * @returns {JSX}
+ * @returns {React.ReactPortal}
  */
 const ScannerBar = ({ flashlightState, onToggleFlashlight }) => createPortal(
   (

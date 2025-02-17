@@ -575,6 +575,12 @@
     "noResult": {
       "qrCode": "Nie udało nam się znaleźć żadnych wyników dla tego kodu QR.",
       "barCode": "Nie znaleziono produktu."
+    },
+    "flashlight": {
+      "on": "Lampa błyskowa jest włączona",
+      "off": "Lampa błyskowa jest wyłączona",
+      "switchOn": "Włącz lampę błyskową",
+      "switchOff": "Wyłącz lampę błyskową"
     }
   },
   "permissions": {
