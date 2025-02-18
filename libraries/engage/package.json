@@ -15,7 +15,7 @@
     "connect"
   ],
   "dependencies": {
-    "@shopgate/native-modules": "1.0.0-beta.18",
+    "@shopgate/native-modules": "^1.0.0-beta.21",
     "@shopgate/pwa-common": "7.24.0",
     "@shopgate/pwa-common-commerce": "7.24.0",
     "@shopgate/pwa-core": "7.24.0",
