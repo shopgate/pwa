@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FocusTrap } from 'focus-trap-react';
 import styles from './style';
 
 /**
@@ -55,7 +56,7 @@ class Drawer extends Component {
    */
   constructor(props) {
     super(props);
-
+    this.sheetRef = React.createRef();
     this.state = {
       active: props.isOpen,
     };
@@ -74,6 +75,18 @@ class Drawer extends Component {
         this.setState({ active: true });
       } else if (typeof nextProps.onClose === 'function') {
         nextProps.onClose();
+      }
+    }
+  }
+
+  /**
+   * Set focus for a11y when sheet opens
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isOpen && this.props.isOpen) {
+      if (this.sheetRef.current) {
+        this.sheetRef.current.focus();
       }
     }
   }
@@ -121,15 +134,27 @@ class Drawer extends Component {
     }
 
     return (active || alwaysActive) ? (
-      <div
-        className={combinedClassName}
-        style={style}
-        onAnimationEnd={this.handleAnimationEnd}
-        role="dialog"
-        aria-modal
-      >
-        {children}
-      </div>
+      <FocusTrap active={isOpen}>
+        <div
+          ref={this.sheetRef}
+          className={combinedClassName}
+          style={style}
+          onAnimationEnd={() => {
+            this.handleAnimationEnd();
+            // clear any residual animation style to fix a11y issue on Android
+            // (focus ring is misaligned)
+            if (this.sheetRef?.style) {
+              this.sheetRef.style.animation = '';
+              this.sheetRef.style.transform = 'none';
+            }
+          }}
+          role="dialog"
+          aria-modal
+          tabIndex={-1}
+        >
+          {children}
+        </div>
+      </FocusTrap>
     ) : null;
   }
 }
