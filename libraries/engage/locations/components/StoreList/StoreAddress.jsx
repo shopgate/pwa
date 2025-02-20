@@ -57,7 +57,7 @@ export function StoreAddress({ address, pure }: Props) {
 
   return (
     <div className={container}>
-      <div className={addressIcon}>
+      <div className={addressIcon} aria-hidden>
         <LocationIcon />
       </div>
       <div>

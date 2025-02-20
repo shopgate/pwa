@@ -53,7 +53,7 @@ const label = css({
   lineHeight: '19px',
   pointerEvents: 'none',
   userSelect: 'none',
-  color: themeConfig.colors.shade12,
+  color: themeConfig.colors.shade11,
   transformOrigin: 'left top 0px',
   willChange: 'transform, color',
   transition: `transform ${easing}, color ${easing}`,

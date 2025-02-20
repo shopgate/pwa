@@ -14,7 +14,7 @@ const basic = css({
       top: '50%',
     },
   },
-  color: themeColors.shade3,
+  color: themeColors.shade11,
 }).toString();
 
 /**

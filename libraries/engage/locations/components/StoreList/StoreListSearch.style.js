@@ -55,7 +55,7 @@ export const select = css({
   appearance: 'none',
   border: `1px solid ${themeColors.shade7}`,
   padding: `0 ${themeVariables.gap.bigger + themeVariables.gap.small * 1.5}px 0 ${themeVariables.gap.big * 0.75}px`,
-  color: themeColors.shade3,
+  color: themeColors.shade11,
   fontSize: '1rem',
   borderRadius: 4,
   width: '100%',
