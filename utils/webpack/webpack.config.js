@@ -221,6 +221,10 @@ const config = {
     static: {
       directory: path.resolve(themePath, PUBLIC_FOLDER),
     },
+    client: {
+      // Deactivate full-screen error overlay in dev server
+      overlay: false,
+    },
     host: '0.0.0.0',
     port: process.env.optionsPort,
     historyApiFallback: true,
