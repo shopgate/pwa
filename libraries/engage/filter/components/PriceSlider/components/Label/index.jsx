@@ -97,6 +97,8 @@ function Label(props) {
       </span>
       <input
         type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         id="priceMin"
         name="priceMin"
         value={minValue}
@@ -112,6 +114,8 @@ function Label(props) {
       />
       <input
         type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         id="priceMax"
         name="priceMax"
         value={maxValue}
