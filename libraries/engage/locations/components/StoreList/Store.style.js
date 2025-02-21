@@ -112,6 +112,7 @@ export const openingHoursDay = css({
 }).toString();
 
 export const detailsPrimary = css({
+  margin: 0,
   color: `var(--color-primary, ${themeColors.primary})`,
   lineHeight: '1.375rem',
 }).toString();
