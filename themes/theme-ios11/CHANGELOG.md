@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.24.0](https://github.com/shopgate/pwa/compare/v7.23.10...v7.24.0) (2025-02-14)
+
+#### :rocket: Enhancement
+* [#1323](https://github.com/shopgate/pwa/pull/1323) Improved compatibility with Windows ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.23.9](https://github.com/shopgate/pwa/compare/v7.23.8...v7.23.9) (2025-02-12)
 
 #### :bug: Bug Fix
