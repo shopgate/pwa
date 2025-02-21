@@ -96,7 +96,7 @@ function Label(props) {
         {currencySymbol}
       </span>
       <input
-        type="text"
+        type="number"
         id="priceMin"
         name="priceMin"
         value={minValue}
@@ -111,7 +111,7 @@ function Label(props) {
         aria-describedby="price-slider-currency-label"
       />
       <input
-        type="text"
+        type="number"
         id="priceMax"
         name="priceMax"
         value={maxValue}
