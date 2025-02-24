@@ -59,7 +59,7 @@ const FindMoreStores = () => (
   <div
     className={styles.container}
   >
-    <div className={styles.title}>
+    <div className={styles.title} aria-hidden>
       {i18n.text('location.findMoreStores')}
     </div>
     <div className={styles.inputCell}>
@@ -75,13 +75,19 @@ const FindMoreStores = () => (
           autoComplete="off"
           autoCorrect="off"
           placeholder=""
+          aria-hidden
         />
         <div
           className={styles.inputIcon}
         >
           <LocatorIcon />
         </div>
-        <Link href={STORE_FINDER_PATTERN} className={classNames(styles.inputOverlay)}>
+        <Link
+          href={STORE_FINDER_PATTERN}
+          className={classNames(styles.inputOverlay)}
+          role="button"
+          aria-label={i18n.text('location.findMoreStores')}
+        >
           <div />
         </Link>
       </div>
