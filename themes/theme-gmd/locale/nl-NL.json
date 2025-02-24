@@ -575,6 +575,12 @@
     "noResult": {
       "qrCode": "Er werd geen resultaat voor uw QR-code gevonden.",
       "barCode": "Geen producten gevonden."
+    },
+    "flashlight": {
+      "on": "Flitslicht is aan",
+      "off": "Flitslicht is uit",
+      "switchOn": "Zet het flitslicht aan",
+      "switchOff": "Zet het flitslicht uit"
     }
   },
   "permissions": {

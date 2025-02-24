@@ -575,6 +575,12 @@
     "noResult": {
       "qrCode": "Vi kunde inte hitta något resultat för den här QR-koden.",
       "barCode": "Produkten hittades inte."
+    },
+    "flashlight": {
+      "on": "Blixtljuset är på",
+      "off": "Blixtljuset är av",
+      "switchOn": "Sätt på blixtljuset",
+      "switchOff": "Stäng av blixtljuset"
     }
   },
   "permissions": {

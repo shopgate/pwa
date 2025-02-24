@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
 import classNames from 'classnames';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import FocusTrap from 'focus-trap-react';
+import { FocusTrap } from 'focus-trap-react';
 import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
 import Item from './components/Item';
@@ -144,7 +144,7 @@ class ContextMenu extends Component {
             aria-expanded={active}
             aria-controls="contextMenuDialog"
           >
-            <MoreVertIcon />
+            <MoreVertIcon aria-hidden />
           </button>
         )}
         <ConnectedReactPortal isOpened={active}>
@@ -158,11 +158,7 @@ class ContextMenu extends Component {
                   tabIndex="-1"
                   aria-modal="true"
                   role="dialog"
-                  aria-labelledby="contextMenuTitle"
                 >
-                  <h2 id="contextMenuTitle" className="sr-only">
-                    {__('navigation.menu_options')}
-                  </h2>
 
                   {Children.map(children, (child) => {
                     if (!child) {

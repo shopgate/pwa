@@ -575,6 +575,12 @@
     "noResult": {
       "qrCode": "Pro tento QR kód se nám nepodařilo najít výsledek.",
       "barCode": "Produkt nebyl nalezen."
+    },
+    "flashlight": {
+      "on": "Blesk je zapnutý",
+      "off": "Blesk je vypnutý",
+      "switchOn": "Zapni blesk",
+      "switchOff": "Vypni blesk"
     }
   },
   "permissions": {

@@ -554,8 +554,7 @@
     "order_history": "Bestellverlauf",
     "profile": "Profil",
     "back": "Zurück zu {title}",
-    "open_menu": "Menü öffnen",
-    "menu_options": "Menü geöffnet"
+    "open_menu": "Menü öffnen"
   },
   "reviews": {
     "rating": "Bewertung",
@@ -587,6 +586,12 @@
     "noResult": {
       "qrCode": "Wir konnten für diesen QR-Code kein Ergebnis finden.",
       "barCode": "Produkt nicht gefunden."
+    },
+    "flashlight": {
+      "on": "Blitzlicht ist an",
+      "off": "Blitzlicht ist aus",
+      "switchOn": "Blitzlicht anschalten",
+      "switchOff": "Blitzlicht ausschalten"
     }
   },
   "permissions": {
