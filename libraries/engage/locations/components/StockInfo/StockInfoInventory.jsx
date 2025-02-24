@@ -1,16 +1,6 @@
-// @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { I18n } from '../../../components';
-import { type Location } from '../../locations.types';
-
-type Props = {
-  availabilityText: string,
-  comingSoon?: boolean,
-  location: Location,
-  inventory: any,
-  maxNumberVisible: number,
-  aboveMaxExtension: string,
-};
 
 /**
  * Renders the inventory given by the location into a given translation string.
@@ -21,7 +11,7 @@ type Props = {
  * @param {string} props.aboveMaxExtension The component props.
  * @return {JSX}
  */
-export function StockInfoInventory(props: Props) {
+export function StockInfoInventory(props) {
   const {
     availabilityText,
     comingSoon,
@@ -54,6 +44,16 @@ export function StockInfoInventory(props: Props) {
   );
 }
 
+StockInfoInventory.propTypes = {
+  aboveMaxExtension: PropTypes.string.isRequired,
+  availabilityText: PropTypes.string.isRequired,
+  location: PropTypes.shape().isRequired,
+  maxNumberVisible: PropTypes.number.isRequired,
+  comingSoon: PropTypes.bool,
+  inventory: PropTypes.shape(),
+};
+
 StockInfoInventory.defaultProps = {
   comingSoon: false,
+  inventory: null,
 };

@@ -1,13 +1,11 @@
 import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
-import { ResponsiveContainer } from '@shopgate/engage/components';
 import { StoreContext } from './Store.context';
 import { StoreFinderContext } from '../../locations.context';
 import StoreFinderLocationHeader from './StoreFinderLocationHeader';
-import StoreFinderLocationDetails from './StoreFinderLocationDetails';
-import StoreFinderGetDirectionsButton from './StoreFinderGetDirectionsButton';
-import { container, selected, directionsButton } from './StoreFinderLocation.style';
+import { container, selected } from './StoreFinderLocation.style';
 import { StoreFinderSelectLocationButton } from './StoreFinderSelectLocationButton';
+import StoreFinderStoreInfoButton from './StoreFinderStoreInfoButton';
 
 /**
  * @returns {JSX}
@@ -27,11 +25,8 @@ const StoreFinderLocation = () => {
       data-location-code={store.code}
     >
       <StoreFinderLocationHeader />
-      <ResponsiveContainer breakpoint="<=sm" appAlways>
-        <StoreFinderLocationDetails />
-        <StoreFinderSelectLocationButton />
-        <StoreFinderGetDirectionsButton address={store.address} className={directionsButton} />
-      </ResponsiveContainer>
+      <StoreFinderSelectLocationButton />
+      <StoreFinderStoreInfoButton />
     </div>
   );
 };
