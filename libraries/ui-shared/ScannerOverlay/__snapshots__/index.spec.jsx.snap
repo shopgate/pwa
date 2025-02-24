@@ -97,6 +97,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                         props={null}
                       >
                         <button
+                          aria-label="scanner.flashlight.switchOn"
                           className="css-1yh9ja6"
                           onClick={[Function]}
                           role="link"
@@ -152,6 +153,13 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                             </div>
                           </ToggleIcon>
                         </button>
+                        <div
+                          aria-live="polite"
+                          className="sr-only"
+                          role="status"
+                        >
+                          scanner.flashlight.off
+                        </div>
                       </Portal>
                       <Portal
                         name="scanner.flash.after"
