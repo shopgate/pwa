@@ -575,6 +575,12 @@
     "noResult": {
       "qrCode": "Non siamo riusciti a trovare alcun risultato per questo codice QR.",
       "barCode": "Nessun prodotto trovato."
+    },
+    "flashlight": {
+      "on": "Il flash è acceso",
+      "off": "Il flash è spento",
+      "switchOn": "Accendi il flash",
+      "switchOff": "Spegni il flash"
     }
   },
   "permissions": {

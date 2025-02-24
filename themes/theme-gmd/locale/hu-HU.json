@@ -574,6 +574,12 @@
     "noResult": {
       "qrCode": "Nem találtunk eredményt erre a QR-kódra.",
       "barCode": "A terméket nem találtuk."
+    },
+    "flashlight": {
+      "on": "A zseblámpa be van kapcsolva",
+      "off": "A zseblámpa ki van kapcsolva",
+      "switchOn": "Kapcsold be a zseblámpát",
+      "switchOff": "Kapcsold ki a zseblámpát"
     }
   },
   "permissions": {

@@ -575,6 +575,12 @@
     "noResult": {
       "qrCode": "Nu am putut găsi un rezultat pentru acest cod QR.",
       "barCode": "Produsul nu a fost găsit."
+    },
+    "flashlight": {
+      "on": "Lanterna este aprinsă",
+      "off": "Lanterna este stinsă",
+      "switchOn": "Pornește lanterna",
+      "switchOff": "Oprește lanterna"
     }
   },
   "permissions": {

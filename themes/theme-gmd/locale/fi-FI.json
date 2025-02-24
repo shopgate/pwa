@@ -571,6 +571,12 @@
   },
   "scanner": {
     "instructions": "Aseta viivakoodi tai QR-koodi keskelle. Tunnistus tapahtuu automaattisesti.",
+    "flashlight": {
+      "on": "Taskulamppu on päällä",
+      "off": "Taskulamppu on pois päältä",
+      "switchOn": "Kytke taskulamppu päälle",
+      "switchOff": "Kytke taskulamppu pois päältä"
+    },
     "noResult": {
       "qrCode": "Emme löytäneet tulosta tälle QR-koodille.",
       "barCode": "Tuotetta ei löytynyt."
