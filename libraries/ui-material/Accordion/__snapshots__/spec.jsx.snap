@@ -7,6 +7,7 @@ exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
   className={null}
   contentClassName={null}
   handleLabel={null}
+  header={null}
   openWithChevron={false}
   renderLabel={[Function]}
   role="button"
@@ -22,6 +23,7 @@ exports[`<Accordion /> should not render without children 1`] = `
   className={null}
   contentClassName={null}
   handleLabel={null}
+  header={null}
   openWithChevron={false}
   renderLabel={[Function]}
   role="button"
@@ -37,6 +39,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
   className={null}
   contentClassName={null}
   handleLabel={null}
+  header={null}
   openWithChevron={false}
   renderLabel={[Function]}
   role="button"
@@ -50,34 +53,30 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       open={false}
     >
       <div
-        aria-controls="Some-Thing-content"
-        aria-expanded={false}
-        aria-label={null}
-        className="ui-material__accordion-title css-10xt915 css-dw3c54"
+        className="ui-material__accordion-title css-10xt915"
         data-test-id="Some Thing"
-        key="accordion-toggle"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="button"
-        tabIndex="0"
       >
         <div
-          className={
-            Object {
-              "data-css-1s27fob": "",
-            }
-          }
+          aria-controls="Some-Thing-content"
+          aria-expanded={false}
+          aria-label={null}
+          className="css-1s27fob"
+          key="accordion-toggle"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
         >
           <div />
+          <div
+            aria-label="favorites.open_list"
+            className="css-z9wrzn"
+          >
+            <ChevronIcon
+              className="css-paji06"
+            />
+          </div>
         </div>
-        <div
-          aria-label="favorites.open_list"
-          className="css-1puew42"
-        >
-          <ChevronIcon
-            className="css-paji06"
-          />
-        </div>
+        <div />
       </div>
       <AccordionContent
         className={null}

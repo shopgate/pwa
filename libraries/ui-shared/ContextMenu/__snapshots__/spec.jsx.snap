@@ -1,64 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ContextMenu /> Given the component was mounted to the DOM should match snapshot 1`] = `
-<ContextMenu
-  classes={
-    Object {
-      "button": "",
-      "container": "",
-    }
-  }
-  disabled={false}
-  isOpened={null}
-  onStateChange={null}
-  scroll={null}
-  showToggle={true}
->
-  <div
-    aria-hidden={true}
-    className="css-13azwyo ui-shared__context-menu"
-    data-test-id="contextMenu"
-  >
-    <button
-      aria-hidden={true}
-      className="css-1jsppqd"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <MoreVert>
-        <Icon
-          className=""
-          color={null}
-          content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\\"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
-        >
-          <svg
-            className="css-yys9hb  common__icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\\"/>",
-              }
-            }
-            style={
-              Object {
-                "fill": null,
-                "fontSize": "inherit",
-              }
-            }
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </MoreVert>
-    </button>
-    <ConnectedReactPortal
-      isOpened={null}
-    />
-  </div>
-</ContextMenu>
-`;
+exports[`<ContextMenu /> Given the component was mounted to the DOM should match snapshot 1`] = `undefined`;
 
 exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
 <div

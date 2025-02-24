@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { camelCase } from 'lodash';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import style from './style';
 
 /**
@@ -35,7 +35,7 @@ class RadioItem extends PureComponent {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
@@ -49,7 +49,7 @@ class RadioItem extends PureComponent {
         className={classNames(
           style.container, className, { [style.disabled]: !!disabled }, camelCase(name), 'radioItem'
         )}
-        htmlFor={this.key}
+        htmlFor={name}
       >
         {checked && (
           <CheckedIcon
@@ -62,14 +62,18 @@ class RadioItem extends PureComponent {
           />
         )}
         <input
-          className={classNames(style.input, 'input')}
+          className={classNames('sr-only', 'input')}
           checked={checked}
+          id={name}
           type="radio"
           name={name}
           onChange={onChange}
+          aria-labelledby={`${name}-label`}
           {...attributes}
         />
-        <I18n.Text className={classNames(style.label, 'label')} string={ItemLabel} />
+        <span aria-hidden id={`${name}-label`} className={classNames(style.label, 'label')}>
+          <I18n.Text string={ItemLabel} />
+        </span>
       </label>
     );
   }
