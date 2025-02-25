@@ -3,7 +3,7 @@ import React, { Fragment, useMemo } from 'react';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
 import {
   LocationIcon, Link, Ellipsis, I18n,
-} from '@shopgate/engage//components';
+} from '@shopgate/engage/components';
 import { StoreDetailsLine } from './StoreDetailsLine';
 import { type LocationAddress } from '../../locations.types';
 import { detailsPrimary, detailsSecondary } from './Store.style';
@@ -25,8 +25,19 @@ export function StoreAddressShort({ address, showFull }: Props) {
     return null;
   }
 
+  const addressLabel = `${address.street
+  + (address.street2 && address.street2 !== '' ? `, ${address.street2}` : '')
+  + (address.street3 && address.street3 !== '' ? `, ${address.street3}` : '')
+  + (address.street4 && address.street4 !== '' ? `, ${address.street4}` : '')
+  + i18n.text('locations.address', address)}: ${i18n.text('locations.map_open')}`;
+
   return (
-    <Link target="_blank" href={mapsUrl}>
+    <Link
+      target="_blank"
+      href={mapsUrl}
+      role="button"
+      aria-label={addressLabel}
+    >
       <StoreDetailsLine icon={LocationIcon} linked>
         { showFull && (
           <Fragment>

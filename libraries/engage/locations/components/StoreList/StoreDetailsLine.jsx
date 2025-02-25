@@ -20,7 +20,7 @@ export function StoreDetailsLine({ icon: Icon, children, linked }: Props) {
   return (
     <Grid className={detailsLine}>
       <Grid.Item shrink={0} className={classNames(detailsIcon, { [detailsIconLinked]: linked })}>
-        <Icon />
+        <Icon aria-hidden />
       </Grid.Item>
       <Grid.Item grow={1} className={details}>
         {children}
