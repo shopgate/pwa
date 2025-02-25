@@ -9,9 +9,7 @@ import {
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_ALERT,
 } from '@shopgate/engage/product';
-import {
-  TextLink, Link, Availability,
-} from '@shopgate/engage/components';
+import { Link, Availability } from '@shopgate/engage/components';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
 
@@ -52,37 +50,25 @@ const ItemDetails = ({ product, display }) => {
   }
 
   return (
-    <button
+    <Link
       className={`${styles.details} theme__product-grid__item__item-details`}
-      tabIndex={0}
-      type="button"
+      role="button"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      href={getProductRoute(productId)}
     >
-      <Link
-        href={getProductRoute(productId)}
-        state={{ title: name }}
-      >
+      <div>
         {/*
           This feature is currently in BETA testing.
           It should only be used for approved BETA Client Projects
         */}
         <Swatches productId={productId} />
-      </Link>
-      <TextLink
-        href={getProductRoute(productId)}
-        state={{ title: name }}
-        className={styles.itemNameLink}
-      >
+      </div>
+      <div className={styles.itemNameLink}>
         <ItemName display={display} productId={productId} name={name} />
-      </TextLink>
+      </div>
 
-      <Link
-        tag="a"
-        href={getProductRoute(productId)}
-        state={{ title: name }}
-        className={styles.propertiesLink}
-      >
+      <div className={styles.propertiesLink}>
         <ShortDescription shortDescription={shortDescription} />
 
         {/*
@@ -119,8 +105,8 @@ const ItemDetails = ({ product, display }) => {
         <div className={styles.itemPrice}>
           <ItemPrice product={product} display={display} />
         </div>
-      </Link>
-    </button>
+      </div>
+    </Link>
   );
 };
 
