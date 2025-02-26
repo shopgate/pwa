@@ -11,21 +11,37 @@ class AppBarTitle extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * focus the title for screen readers when page loads
    */
-  render() {
-    const { title } = this.props;
-
-    return (
-      <div
-        className={styles}
-        role="heading"
-        aria-level="1"
-        data-test-id={`title: ${title}`}
-        dangerouslySetInnerHTML={{ __html: title }}
-      />
-    );
+  componentDidMount() {
+    setTimeout(() => {
+      if (this.titleRef.current) {
+        this.titleRef.current.focus();
+      }
+    }, 100);
   }
+
+    titleRef = React.createRef();
+
+    /**
+   * @returns {JSX.Element}
+   */
+    render() {
+      const { title } = this.props;
+
+      return (
+        <div
+          ref={this.titleRef}
+          className={styles}
+          role="heading"
+          aria-level="1"
+          aria-live="polite"
+          tabIndex={-1}
+          data-test-id={`title: ${title}`}
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
+      );
+    }
 }
 
 export default AppBarTitle;
