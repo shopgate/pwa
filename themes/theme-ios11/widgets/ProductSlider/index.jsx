@@ -5,7 +5,6 @@ import {
   ProductListTypeProvider,
   ProductListEntryProvider,
 } from '@shopgate/engage/product/providers';
-import Headline from 'Components/Headline';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -13,16 +12,18 @@ import {
   ProductSlider as EngageProductSlider,
   ProductCard,
 } from '@shopgate/engage/product/components';
+import Headline from 'Components/Headline';
 import connect from './connector';
 import styles from './style';
 
 /**
  * Creates an item for a single product.
  * @param {Object} product The product data.
+ * @param {Object} settings The slider settings.
  * @param {boolean} settings.showName Show the product name?
  * @param {boolean} settings.showPrice Show the product price?
  * @param {boolean} settings.showReviews Show the product reviews?
- * @return {JSX} The rendered product card.
+ * @return {JSX.Element} The rendered product card.
  */
 const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   const key = `s${product.id}`;
@@ -34,7 +35,7 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   }
 
   return (
-    <Swiper.Item key={key}>
+    <Swiper.Item key={key} aria-live="off">
       <ProductListEntryProvider productId={product.id}>
         <Card className={styles.card}>
           <ProductCard
@@ -93,7 +94,6 @@ class ProductSlider extends Component {
     hash: null,
   };
 
-  /* eslint-disable extra-rules/potential-point-free */
   /**
    * Called when the component is mounted, requests the products.
    */
@@ -101,7 +101,6 @@ class ProductSlider extends Component {
     this.requestProducts();
   }
 
-  /* eslint-enable extra-rules/potential-point-free */
   /**
    * When we receive new products then we can adjust the state.
    * @param {Object} nextProps The next set of component props.
@@ -140,7 +139,7 @@ class ProductSlider extends Component {
 
   /**
    * Renders the widget.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const { settings, widgetSettings } = this.props;
@@ -156,17 +155,24 @@ class ProductSlider extends Component {
       return null;
     }
 
-    // Finally, build the slider.
+    // check for reduced motion in user phone settings
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     return (
       <div className={`theme__widgets__product-slider ${styles.slider}`}>
         {this.headline && <Headline text={settings.headline} />}
         <ProductListTypeProvider type="productSlider" subType="widgets">
           <Swiper
-            {...sliderSettings.autostart && {
-              autoplay: {
-                delay: Number.parseInt(sliderSettings.delay, 10),
-              },
-            }}
+            {...(sliderSettings.autostart && !reduceMotion
+              ? {
+                autoplay: {
+                  delay: Number.parseInt(sliderSettings.delay, 10),
+                },
+              }
+              : { autoplay: false })
+            }
+            aria-live="off"
+            a11y={{ enabled: false }}
             loop={false}
             indicators={false}
             controls={false}
