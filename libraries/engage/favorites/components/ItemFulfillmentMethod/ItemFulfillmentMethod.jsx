@@ -5,7 +5,7 @@ import { SheetList, SheetDrawer } from '@shopgate/engage/components';
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ItemFulfillmentMethod = ({
   isOpen, methods, onClose, onSelect,

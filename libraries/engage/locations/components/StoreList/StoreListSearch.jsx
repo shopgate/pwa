@@ -181,9 +181,12 @@ function StoreListSearch({
               onKeyDown={handlePostalCodeSubmitKeyDown}
               disabled={isLoading}
               type="search"
+              inputMode="numeric"
+              pattern="[0-9]*"
               autoComplete="off"
               autoCorrect="off"
               placeholder={i18n.text('locations.search_placeholder')}
+              aria-label={i18n.text('locations.search_placeholder')}
             />
             <button
               onClick={handleLocateMeButton}

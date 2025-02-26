@@ -29,7 +29,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
             htmlFor="search"
           >
             <div
-              className="css-tfmeke"
+              className="css-1tv0gj7"
             >
               <MagnifierIcon />
             </div>
@@ -144,7 +144,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
             htmlFor="search"
           >
             <div
-              className="css-tfmeke"
+              className="css-1tv0gj7"
             >
               <MagnifierIcon />
             </div>
