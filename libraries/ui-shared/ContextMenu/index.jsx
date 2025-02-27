@@ -11,6 +11,7 @@ import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
 import Item from './components/Item';
 import styles from './style';
+import ContectMenuProvider from './ContextMenuProvider';
 
 /**
  * The Context Menu component.
@@ -100,28 +101,25 @@ const ContextMenu = (props) => {
           <div className={styles.overlay}>
             <Backdrop isVisible level={0} opacity={0} onClick={handleMenuToggle} />
             <Position offset={offset}>
-              <div
-                className={classNames(styles.menu, { [styles.scrollable]: useScroll })}
-                ref={menuRef}
-                tabIndex="-1"
-                aria-modal="true"
-                role="dialog"
-              >
-                {React.Children.map(children, (child) => {
-                  if (!child) {
-                    return null;
-                  }
-                  return React.cloneElement(child, { closeMenu: handleMenuToggle });
-                })}
-                <button
-                  onClick={handleMenuToggle}
-                  className="sr-only"
-                  aria-label={i18n.text('common.close')}
-                  type="button"
+              <ContectMenuProvider handleMenuToggle={handleMenuToggle}>
+                <div
+                  className={classNames(styles.menu, { [styles.scrollable]: useScroll })}
+                  ref={menuRef}
+                  tabIndex="-1"
+                  aria-modal="true"
+                  role="dialog"
                 >
-                  {i18n.text('common.close')}
-                </button>
-              </div>
+                  {children}
+                  <button
+                    onClick={handleMenuToggle}
+                    className="sr-only"
+                    aria-label={i18n.text('common.close')}
+                    type="button"
+                  >
+                    {i18n.text('common.close')}
+                  </button>
+                </div>
+              </ContectMenuProvider>
             </Position>
           </div>
         </FocusTrap>

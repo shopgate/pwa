@@ -5,6 +5,7 @@ import noop from 'lodash/noop';
 import classNames from 'classnames';
 import Glow from '../../../Glow';
 import { getItemClass } from './style';
+import { useContextMenu } from '../../ContextMenu.hooks';
 
 /**
  * A delay in ms after that the closeMenu callback gets triggered.
@@ -18,11 +19,14 @@ const CLOSE_DELAY = 250;
  * @returns {JSX.Element}
  */
 const Item = ({
-  children, closeMenu, onClick, disabled, autoClose, className,
+  children, onClick, disabled, autoClose, className,
 }) => {
+  const { handleMenuToggle } = useContextMenu();
   const handleClick = compose(
     onClick,
-    autoClose ? () => setTimeout(closeMenu, CLOSE_DELAY) : noop
+    autoClose ? event => setTimeout(() => {
+      handleMenuToggle(event);
+    }, CLOSE_DELAY) : noop
   );
 
   return (
@@ -44,7 +48,6 @@ Item.propTypes = {
   autoClose: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  closeMenu: PropTypes.func,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };
@@ -53,7 +56,6 @@ Item.defaultProps = {
   autoClose: true,
   children: null,
   className: '',
-  closeMenu: () => {},
   onClick: () => {},
   disabled: false,
 };
