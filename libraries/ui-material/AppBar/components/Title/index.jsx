@@ -16,27 +16,38 @@ class AppBarTitle extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * focus the title for screen readers when page loads
+   */
+  componentDidMount() {
+    // Delay focus slightly to ensure it is recognized by screen readers
+    setTimeout(() => {
+      if (this.titleRef.current) {
+        this.titleRef.current.focus();
+      }
+    }, 100);
+  }
+
+  titleRef = React.createRef();
+
+  /**
+   * @returns {JSX.Element}
    */
   render() {
     const { onClick, title } = this.props;
 
-    /* eslint-disable jsx-a11y/no-static-element-interactions,
-    jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
     return (
       <div
+        ref={this.titleRef}
         className={styles}
         role="heading"
         aria-labelledby="titleLabel"
         aria-level="1"
         data-test-id={`title: ${title}`}
-        tabIndex={0}
+        tabIndex={-1}
       >
-        <span onClick={onClick} id="titleLabel" dangerouslySetInnerHTML={{ __html: title }} />
+        <span role="presentation" onClick={onClick} id="titleLabel" dangerouslySetInnerHTML={{ __html: title }} />
       </div>
     );
-    /* eslint-enable jsx-a11y/no-static-element-interactions,
-    jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
   }
 }
 
