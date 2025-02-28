@@ -48,7 +48,7 @@ export class LiveshoppingWidget extends Component {
             {products.map(id => (
               <Swiper.Item key={id}>
                 <ProductListEntryProvider productId={id}>
-                  <Item productId={id} />
+                  <Item productId={id} hasPagination />
                 </ProductListEntryProvider>
               </Swiper.Item>
             ))}

@@ -6,7 +6,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
 <div
   className={
     Object {
-      "data-css-9a70pf": "",
+      "data-css-1rjsvq5": "",
     }
   }
   data-test-id="liveShoppingWidget"
@@ -38,6 +38,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
           productId="1234"
         >
           <LiveshoppingItem
+            hasPagination={true}
             productId="1234"
           />
         </ProductListEntryProvider>
@@ -50,6 +51,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
           productId="1235"
         >
           <LiveshoppingItem
+            hasPagination={true}
             productId="1235"
           />
         </ProductListEntryProvider>
@@ -63,7 +65,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
 <div
   className={
     Object {
-      "data-css-9a70pf": "",
+      "data-css-1rjsvq5": "",
     }
   }
   data-test-id="liveShoppingWidget"
@@ -78,6 +80,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       productId="1234"
     >
       <LiveshoppingItem
+        hasPagination={false}
         productId="1234"
       />
     </ProductListEntryProvider>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Theme } from '@shopgate/pwa-common/context';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
@@ -14,9 +15,13 @@ import styles from './style';
  * The LiveShoppingItem component.
  * @param {Object} props The component props.
  * @param {string} props.productId The product id.
- * @returns {JSX}
+ * @param {boolean} [props.hasPagination=false] Whether surrounding swiper has pagination.
+ * @returns {JSX.Element}
  */
-function LiveshoppingItem({ productId }) {
+function LiveshoppingItem({
+  productId,
+  hasPagination,
+}) {
   return (
     <Theme>
       {({ ProductCard }) => (
@@ -34,7 +39,11 @@ function LiveshoppingItem({ productId }) {
             const { ListImage: gridResolutions } = getProductImageSettings();
 
             return (
-              <Link href={url} state={{ title: name }}>
+              <Link
+                href={url}
+                state={{ title: name }}
+                className={classNames({ [styles.linkPagination]: hasPagination })}
+              >
                 <Grid>
                   <Grid.Item className={styles.image}>
                     <ProductImage
@@ -43,7 +52,10 @@ function LiveshoppingItem({ productId }) {
                       alt={name}
                     />
                   </Grid.Item>
-                  <Grid.Item className={styles.infoPane}>
+                  <Grid.Item className={classNames(styles.infoPane, {
+                    [styles.infoPanePagination]: hasPagination,
+                  })}
+                  >
                     <div data-test-id={name}>
                       <ProductBadges
                         location="liveshopping"
@@ -73,6 +85,11 @@ function LiveshoppingItem({ productId }) {
 
 LiveshoppingItem.propTypes = {
   productId: PropTypes.string.isRequired,
+  hasPagination: PropTypes.bool,
+};
+
+LiveshoppingItem.defaultProps = {
+  hasPagination: false,
 };
 
 export default LiveshoppingItem;

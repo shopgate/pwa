@@ -42,13 +42,13 @@ export class LiveshoppingWidget extends Component {
     }
 
     return (
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} data-test-id="liveShoppingWidget">
         <ProductListTypeProvider type="liveshopping" subType="widgets">
           <Swiper indicators loop={products.length > 1}>
             {products.map(id => (
               <Swiper.Item key={id}>
                 <ProductListEntryProvider productId={id}>
-                  <Item productId={id} />
+                  <Item productId={id} hasPagination />
                 </ProductListEntryProvider>
               </Swiper.Item>
             ))}
