@@ -59,12 +59,14 @@ class ProductSlider extends PureComponent {
     hash: null,
   };
 
+  /* eslint-disable extra-rules/potential-point-free */
   /**
    * Called when the component is mounted, requests the products.
    */
   componentDidMount() {
     this.requestProducts();
   }
+  /* eslint-enable extra-rules/potential-point-free */
 
   /**
    * When we receive new products then we can adjust the state.
