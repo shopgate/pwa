@@ -1,20 +1,21 @@
 import { createSelector } from 'reselect';
-import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { getProductState } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
-import { makeGetDefaultSortOrder } from '@shopgate/engage/filter';
+import {
+  generateResultHash,
+} from '@shopgate/engage/core/helpers';
+import {
+  getProductState,
+} from '@shopgate/engage/product/selectors/product';
+import {
+  SHOPGATE_CATALOG_GET_LIVESHOPPING_PRODUCTS,
+} from '@shopgate/engage/product/constants';
 
 /**
  * Retrieves the result hash.
- * @param {string} defaultSortOrder The default sort order
  * @returns {string} The result hash.
  */
-const getResultHash = defaultSortOrder => generateResultHash({
-  pipeline: pipelines.SHOPGATE_CATALOG_GET_LIVESHOPPING_PRODUCTS,
-  sort: defaultSortOrder,
-}, true, false);
-
-const getDefaultSortOrder = makeGetDefaultSortOrder();
+const getResultHash = () => generateResultHash({
+  pipeline: SHOPGATE_CATALOG_GET_LIVESHOPPING_PRODUCTS,
+}, false, false);
 
 /**
  * Retrieves the result by hash.
@@ -24,9 +25,8 @@ const getDefaultSortOrder = makeGetDefaultSortOrder();
  */
 const getResultByHash = createSelector(
   getProductState,
-  getDefaultSortOrder,
-  (productState, defaultSortOrder) => {
-    const hash = getResultHash(defaultSortOrder);
+  (productState) => {
+    const hash = getResultHash();
     return productState.resultsByHash[hash];
   }
 );
