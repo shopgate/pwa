@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/webpack",
-  "version": "7.23.10",
+  "version": "7.24.3",
   "description": "The webpack configuration for Shopgate's Engage.",
   "main": "webpack.config.js",
   "license": "Apache-2.0",
@@ -17,16 +17,16 @@
     "intl": "1.2.5",
     "lodash": "^4.17.4",
     "messageformat": "^2.3.0",
-    "progress-bar-webpack-plugin": "^1.12.1",
-    "script-ext-html-webpack-plugin": "^2.1.4",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "script-ext-html-webpack-plugin": "^2.1.5",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.47.0",
-    "webpack-cli": "3.3.6",
+    "webpack-cli": "4.10.0",
     "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {
     "rxjs": "~5.5.12",
-    "webpack-dev-server": "3.7.2"
+    "webpack-dev-server": "4.15.2"
   }
 }
