@@ -123,7 +123,7 @@ const Swiper = ({
   ]);
 
   return (
-    <div className={cls(container, className)} aria-hidden={ariaHidden}>
+    <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
       <OriginalSwiper
         {...internalProps}
         {...swiperProps}
