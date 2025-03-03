@@ -62,6 +62,7 @@ function ProductCard(props) {
 
   return (
     <Link
+      className="engage__product-card"
       tagName="a"
       href={getProductRoute(product.id)}
       itemProp="item"
