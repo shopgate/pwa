@@ -11,7 +11,6 @@ import {
 
 /**
  * Retrieves the result hash.
- * @param {string} defaultSortOrder The default sort order
  * @returns {string} The result hash.
  */
 const getResultHash = () => generateResultHash({
