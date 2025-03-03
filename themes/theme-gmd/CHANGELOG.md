@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.24.3](https://github.com/shopgate/pwa/compare/v7.24.2...v7.24.3) (2025-03-03)
+
+#### :bug: Bug Fix
+* [#1333](https://github.com/shopgate/pwa/pull/1333) Re-added some accidentally removed human readable classes ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.24.0](https://github.com/shopgate/pwa/compare/v7.23.10...v7.24.0) (2025-02-14)
 
 #### :rocket: Enhancement
