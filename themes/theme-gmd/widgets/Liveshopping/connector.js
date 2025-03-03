@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import getLiveshoppingProducts from '@shopgate/pwa-common-commerce/product/actions/getLiveshoppingProducts';
+import {
+  fetchLiveshoppingProducts,
+} from '@shopgate/engage/product';
 import { selectProductIds } from './selectors';
 
 /**
@@ -12,7 +14,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = {
-  fetchProducts: getLiveshoppingProducts,
+  fetchProducts: fetchLiveshoppingProducts,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps);
