@@ -47,6 +47,7 @@ export {
   isProd,
   isRemote,
   isStaging,
+  isWindows,
 } from '@shopgate/pwa-common/helpers/environment';
 export { default as decodeHTML } from '@shopgate/pwa-common/helpers/html/decodeHTML';
 export * from '@shopgate/pwa-common/helpers/html/handleDOM';

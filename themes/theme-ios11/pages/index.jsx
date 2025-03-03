@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { isDev, isWindows } from '@shopgate/engage/core/helpers';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import { Route, Router } from '@shopgate/pwa-common/components';
@@ -66,6 +67,8 @@ import PageNotFound from './404';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
+
+const devFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.css';
 
 new ThemeConfigResolver().resolveAll();
 
@@ -234,6 +237,12 @@ const Pages = ({ store }) => {
                     <Route.NotFound component={PageNotFound} />
                     {React.Children.map(routePortals, Component => Component)}
                   </Router>
+                  {/** Load the Roboto for Windows developers so that they see a nice font */}
+                  {isDev && isWindows && (
+                    <Helmet>
+                      <link href={devFontsUrl} rel="stylesheet" />
+                    </Helmet>
+                  )}
                 </Viewport>
               </ToastProvider>
             </LoadingProvider>

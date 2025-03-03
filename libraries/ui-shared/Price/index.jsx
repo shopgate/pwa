@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 import styles from './style';
@@ -61,7 +61,7 @@ const Price = (props, context) => {
     >
       <span aria-label={__('price.label', { price: ariaPrice })}>
         {props.unitPriceMin ? (
-          <I18n.Text string="price.from">
+          <I18n.Text aria-hidden string="price.from">
             <I18n.Price
               currency={props.currency}
               fractions={props.fractions}

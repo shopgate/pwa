@@ -1,9 +1,14 @@
 import { css } from 'glamor';
-import { useScrollContainer, hasWebBridge, isIOSTheme } from '@shopgate/engage/core';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import {
+  useScrollContainer,
+  hasWebBridge,
+  isIOSTheme,
+  isWindows,
+  isDev,
+} from '@shopgate/engage/core/helpers';
+import { themeConfig } from '@shopgate/engage';
 
 const { typography } = themeConfig;
-
 const iosThemeActive = isIOSTheme();
 
 css.global('*, *:before, *:after', {
@@ -33,8 +38,13 @@ css.global('html', {
   minHeight: '100%',
 });
 
+// Include Roboto font on Windows in dev mode on iOS theme, so that developers see nice fonts.
+const fontSuffix = isDev && iosThemeActive && isWindows && !(typography.family ?? '').includes('Roboto')
+  ? ', Roboto'
+  : '';
+
 css.global('body', {
-  font: `${typography.rootSize}px/${typography.lineHeight} ${typography.family}`,
+  font: `${typography.rootSize}px/${typography.lineHeight} ${typography.family}${fontSuffix}`,
   overflow: 'auto',
   margin: 0,
   WebkitOverflowScrolling: 'touch',

@@ -52,7 +52,11 @@ module.exports = (modulePath) => {
     i18n = new I18n('en');
   }
 
-  const moduleNamespace = path.relative(rootDirectory, modulePath).replace(/(^(lib|src)+\/)|(\.js$)/ig, '');
+  const moduleNamespace = path.relative(rootDirectory, modulePath)
+    .replace(/(^(lib|src)+[/\\])|(\.js$)/ig, '')
+    // Normalize OS specific path separators to forward slashes to be able to access translation
+    // keys inside the translation JSON file.
+    .split(path.sep).join('/');
 
   return (key, data) => {
     const keyPath = [moduleNamespace];
