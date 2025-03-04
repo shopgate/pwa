@@ -24,7 +24,7 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
   unwrapped={false}
 >
   <div
-    className="css-vfdozt"
+    className="css-vfdozt common__image__container"
   />
 </Image>
 `;
@@ -53,7 +53,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
   unwrapped={false}
 >
   <div
-    className="css-vfdozt"
+    className="css-vfdozt common__image__container"
   >
     <ForwardRef
       alt={null}
