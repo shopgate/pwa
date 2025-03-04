@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.24.5](https://github.com/shopgate/pwa/compare/v7.24.4...v7.24.5) (2025-03-04)
+
+#### :rocket: Enhancement
+* [#1334](https://github.com/shopgate/pwa/pull/1334) Added human readable class to container of the image component ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.24.3](https://github.com/shopgate/pwa/compare/v7.24.2...v7.24.3) (2025-03-03)
 
 #### :bug: Bug Fix
