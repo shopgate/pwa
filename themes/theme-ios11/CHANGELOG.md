@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.24.6](https://github.com/shopgate/pwa/compare/v7.24.5...v7.24.6) (2025-03-04)
+
+#### :rocket: Enhancement
+* [#1335](https://github.com/shopgate/pwa/pull/1335) Updated native-modules dependency ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.24.5](https://github.com/shopgate/pwa/compare/v7.24.4...v7.24.5) (2025-03-04)
 
 #### :rocket: Enhancement
