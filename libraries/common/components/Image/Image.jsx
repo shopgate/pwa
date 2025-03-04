@@ -173,7 +173,7 @@ const Image = ({
   const containerStyle = styles.container(backgroundColor, paddingHackRatio);
 
   return (
-    <div className={classNames(containerStyle, className)}>
+    <div className={classNames(containerStyle, className, 'common__image__container')}>
       {src && !parentRendersPlaceholder && (
       <ImageInner
         ref={imgRef}
