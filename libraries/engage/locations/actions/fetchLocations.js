@@ -52,6 +52,14 @@ function fetchLocations(params) {
       filters.codes = params.codes;
     }
 
+    if (params.limit) {
+      filters.limit = params.limit;
+    }
+
+    if (params.offset) {
+      filters.offset = params.offset;
+    }
+
     const request = new PipelineRequest(SHOPGATE_STOREFRONT_GET_LOCATIONS)
       .setInput(filters)
       .dispatch();

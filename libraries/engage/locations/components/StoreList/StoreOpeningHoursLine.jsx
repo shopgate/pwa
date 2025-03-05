@@ -19,12 +19,16 @@ export function StoreOpeningHoursLine({ day, hours }: Props) {
   }
 
   return (
-    <div className={openingHoursRow}>
-      <div className={openingHoursDay}>
-        {i18n.text(`locations.${day}`)}
-      </div>
-      <div>{hours}</div>
-    </div>
+    <tr
+      className={openingHoursRow}
+      aria-label={`${i18n.text(`locations.${day}`)}: ${hours}`}
+      tabIndex={0}
+    >
+      <td className={openingHoursDay} aria-hidden>
+        {`${i18n.text(`locations.${day}`)}`}
+      </td>
+      <td aria-hidden>{hours}</td>
+    </tr>
   );
 }
 
