@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import compose from 'lodash/fp/compose';
 import noop from 'lodash/noop';
 import classNames from 'classnames';
 import Glow from '../../../Glow';
@@ -22,12 +21,32 @@ const Item = ({
   children, onClick, disabled, autoClose, className,
 }) => {
   const { handleMenuToggle } = useContextMenu();
-  const handleClick = compose(
-    onClick,
-    autoClose ? event => setTimeout(() => {
+
+  const [onClickTriggerIsOutstanding, setOnClickTriggerIsOutstanding] = useState(false);
+
+  /**
+    * Handles the click event.
+    * @param {Event} event The click event.
+    * @returns {void}
+    */
+  const handleClick = event => setTimeout(() => {
+    setOnClickTriggerIsOutstanding(true);
+    if (autoClose) {
       handleMenuToggle(event);
-    }, CLOSE_DELAY) : noop
-  );
+    }
+  }, CLOSE_DELAY);
+
+  // This is a workaround to trigger the click event after the handleMenuToggle has been called.
+  // This is necessary because we have to wait for the menu to
+  // be closed so that the FocusTrap disappears.
+  // Therefore we have to wait for the component to be unmounted to trigger the click event.
+  useEffect(() => () => {
+    if (onClickTriggerIsOutstanding) {
+      setTimeout(() => {
+        onClick();
+      }, 0);
+    }
+  }, [onClickTriggerIsOutstanding, onClick]);
 
   return (
     <Glow disabled={disabled}>
