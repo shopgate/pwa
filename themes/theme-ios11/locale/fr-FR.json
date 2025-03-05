@@ -231,7 +231,8 @@
     "description_heading": "à propos",
     "share": "Partager le produit",
     "pick_an_attribute": "Choisir un {0}",
-    "tax_disclaimer": "* Inclus TVA plus frais de livraison éventuels",
+    "tax_disclaimer": "* TVA incluse, plus frais de livraison éventuel",
+    "tax_disclaimer_aria": "TVA incluse, plus frais de livraison éventuel",
     "item_added": "{count, plural, =0 {# aucun article ajouté} =1 {{count} article ajouté} other {{count} articles ajoutés}}",
     "item_added_unit": "{count} {unit} ajouté",
     "adding_item": "{count, plural, =1 {Un produit est en cours d'ajout} other {{count} produits sont en cours d'ajout}}",
@@ -552,7 +553,8 @@
     "more_menu": "Plus",
     "order_history": "Historique des commandes",
     "profile": "Profil",
-    "back": "Retour à {title}"
+    "back": "Retour à {title}",
+    "open_menu": "Ouvrez le menu"
   },
   "reviews": {
     "rating": "Evaluation",
@@ -584,6 +586,12 @@
     "noResult": {
       "qrCode": "Nous n'avons pas trouvé de résultat pour ce code QR.",
       "barCode": "Aucun produit trouvé."
+    },
+    "flashlight": {
+      "on": "Le flash est allumé",
+      "off": "Le flash est éteint",
+      "switchOn": "Allumer le flash",
+      "switchOff": "Éteindre le flash"
     }
   },
   "permissions": {

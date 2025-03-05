@@ -23,6 +23,7 @@ export const chevronContainer = css({
   display: 'flex',
   flexShrink: 0,
   fontSize: '1.5rem',
+  marginRight: 10,
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     backgroundColor: 'rgba(0, 0, 0, 0.04)',
     borderRadius: 32,

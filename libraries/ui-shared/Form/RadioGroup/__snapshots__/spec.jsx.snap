@@ -46,6 +46,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         >
           <label
             className="css-15broj4 foo radioItem"
+            htmlFor="foo"
           >
             <RadioUnchecked
               className="css-pljilv uncheckedIcon"
@@ -76,27 +77,35 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
               </Icon>
             </RadioUnchecked>
             <input
+              aria-labelledby="foo-label"
               checked={false}
-              className="css-gyrv08 input"
+              className="sr-only input"
+              id="foo"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
-            <Translate
-              acceptPlainTextWithPlaceholders={false}
+            <span
+              aria-hidden={true}
               className="css-1hju4sd label"
-              params={Object {}}
-              role={null}
-              string="foo"
-              transform={null}
+              id="foo-label"
             >
-              <span
-                className="css-1hju4sd label"
+              <Translate
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={Object {}}
                 role={null}
+                string="foo"
+                transform={null}
               >
-                foo
-              </span>
-            </Translate>
+                <span
+                  className={null}
+                  role={null}
+                >
+                  foo
+                </span>
+              </Translate>
+            </span>
           </label>
         </RadioItem>
       </div>
@@ -151,6 +160,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         >
           <label
             className="css-15broj4 foo radioItem"
+            htmlFor="foo"
           >
             <RadioUnchecked
               className="css-pljilv uncheckedIcon"
@@ -181,27 +191,35 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               </Icon>
             </RadioUnchecked>
             <input
+              aria-labelledby="foo-label"
               checked={false}
-              className="css-gyrv08 input"
+              className="sr-only input"
+              id="foo"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
-            <Translate
-              acceptPlainTextWithPlaceholders={false}
+            <span
+              aria-hidden={true}
               className="css-1hju4sd label"
-              params={Object {}}
-              role={null}
-              string="foo"
-              transform={null}
+              id="foo-label"
             >
-              <span
-                className="css-1hju4sd label"
+              <Translate
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={Object {}}
                 role={null}
+                string="foo"
+                transform={null}
               >
-                foo
-              </span>
-            </Translate>
+                <span
+                  className={null}
+                  role={null}
+                >
+                  foo
+                </span>
+              </Translate>
+            </span>
           </label>
         </RadioItem>
         <RadioItem
@@ -215,6 +233,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         >
           <label
             className="css-15broj4 bar radioItem"
+            htmlFor="bar"
           >
             <RadioUnchecked
               className="css-pljilv uncheckedIcon"
@@ -245,27 +264,35 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               </Icon>
             </RadioUnchecked>
             <input
+              aria-labelledby="bar-label"
               checked={false}
-              className="css-gyrv08 input"
+              className="sr-only input"
+              id="bar"
               name="bar"
               onChange={[Function]}
               type="radio"
             />
-            <Translate
-              acceptPlainTextWithPlaceholders={false}
+            <span
+              aria-hidden={true}
               className="css-1hju4sd label"
-              params={Object {}}
-              role={null}
-              string="bar"
-              transform={null}
+              id="bar-label"
             >
-              <span
-                className="css-1hju4sd label"
+              <Translate
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={Object {}}
                 role={null}
+                string="bar"
+                transform={null}
               >
-                bar
-              </span>
-            </Translate>
+                <span
+                  className={null}
+                  role={null}
+                >
+                  bar
+                </span>
+              </Translate>
+            </span>
           </label>
         </RadioItem>
       </div>
@@ -320,6 +347,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         >
           <label
             className="css-15broj4 foo radioItem"
+            htmlFor="foo"
           >
             <RadioUnchecked
               className="css-pljilv uncheckedIcon"
@@ -350,27 +378,35 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
               </Icon>
             </RadioUnchecked>
             <input
+              aria-labelledby="foo-label"
               checked={false}
-              className="css-gyrv08 input"
+              className="sr-only input"
+              id="foo"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
-            <Translate
-              acceptPlainTextWithPlaceholders={false}
+            <span
+              aria-hidden={true}
               className="css-1hju4sd label"
-              params={Object {}}
-              role={null}
-              string="foo"
-              transform={null}
+              id="foo-label"
             >
-              <span
-                className="css-1hju4sd label"
+              <Translate
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={Object {}}
                 role={null}
+                string="foo"
+                transform={null}
               >
-                foo
-              </span>
-            </Translate>
+                <span
+                  className={null}
+                  role={null}
+                >
+                  foo
+                </span>
+              </Translate>
+            </span>
           </label>
         </RadioItem>
       </div>
@@ -465,6 +501,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         >
           <label
             className="css-15broj4 foo radioItem"
+            htmlFor="foo"
           >
             <RadioUnchecked
               className="css-pljilv uncheckedIcon"
@@ -495,27 +532,35 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
               </Icon>
             </RadioUnchecked>
             <input
+              aria-labelledby="foo-label"
               checked={false}
-              className="css-gyrv08 input"
+              className="sr-only input"
+              id="foo"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
-            <Translate
-              acceptPlainTextWithPlaceholders={false}
+            <span
+              aria-hidden={true}
               className="css-1hju4sd label"
-              params={Object {}}
-              role={null}
-              string="foo"
-              transform={null}
+              id="foo-label"
             >
-              <span
-                className="css-1hju4sd label"
+              <Translate
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={Object {}}
                 role={null}
+                string="foo"
+                transform={null}
               >
-                foo
-              </span>
-            </Translate>
+                <span
+                  className={null}
+                  role={null}
+                >
+                  foo
+                </span>
+              </Translate>
+            </span>
           </label>
         </RadioItem>
       </div>
@@ -570,6 +615,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
         >
           <label
             className="css-15broj4 foo radioItem"
+            htmlFor="foo"
           >
             <RadioChecked
               className="css-nihp8 css-pljilv checkedIcon"
@@ -600,27 +646,35 @@ exports[`<RadioGroup /> should use default value 1`] = `
               </Icon>
             </RadioChecked>
             <input
+              aria-labelledby="foo-label"
               checked={true}
-              className="css-gyrv08 input"
+              className="sr-only input"
+              id="foo"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
-            <Translate
-              acceptPlainTextWithPlaceholders={false}
+            <span
+              aria-hidden={true}
               className="css-1hju4sd label"
-              params={Object {}}
-              role={null}
-              string="foo"
-              transform={null}
+              id="foo-label"
             >
-              <span
-                className="css-1hju4sd label"
+              <Translate
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={Object {}}
                 role={null}
+                string="foo"
+                transform={null}
               >
-                foo
-              </span>
-            </Translate>
+                <span
+                  className={null}
+                  role={null}
+                >
+                  foo
+                </span>
+              </Translate>
+            </span>
           </label>
         </RadioItem>
       </div>

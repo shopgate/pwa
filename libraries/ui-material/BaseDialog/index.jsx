@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FocusTrap } from 'focus-trap-react';
 import Title from './components/Title';
 import Content from './components/Content';
 import Buttons from './components/Buttons';
@@ -12,26 +13,28 @@ import styles from './style';
  * @param {string} actions.label The label of the action.
  * @param {Function} actions.action The callback to invoke when the action is triggered.
  * @param {string|ReactElement} title The title of the dialog.
- * @return {JSX} The rendered dialog.
+ * @return {JSX.Element} The rendered dialog.
  */
 const BasicDialog = ({ children, actions, title }) => (
-  <div
-    className={`${styles.container} ui-material__base-dialog`}
-    data-test-id="basicDialog"
-    role="alertdialog"
-    aria-modal
-    aria-labelledby="basicDialogTitle basicDialogDesc"
-  >
-    <div className={styles.content}>
-      <Title title={title} />
-      <Content content={children} />
-    </div>
-    <div className={styles.actions}>
-      <div className={styles.innerActions}>
-        <Buttons actions={actions} />
+  <FocusTrap>
+    <div
+      className={`${styles.container} ui-material__base-dialog`}
+      data-test-id="basicDialog"
+      role="alertdialog"
+      aria-modal
+      aria-labelledby="basicDialogTitle basicDialogDesc"
+    >
+      <div className={styles.content}>
+        <Title title={title} />
+        <Content content={children} />
+      </div>
+      <div className={styles.actions}>
+        <div className={styles.innerActions}>
+          <Buttons actions={actions} />
+        </div>
       </div>
     </div>
-  </div>
+  </FocusTrap>
 );
 
 BasicDialog.propTypes = {

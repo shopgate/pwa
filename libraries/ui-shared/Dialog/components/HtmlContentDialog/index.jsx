@@ -6,7 +6,7 @@ import BasicDialog from '../BasicDialog';
  * Renders a simple dialog with a title and html content as a message.
  * This is the default dialog if no type has been specified.
  * @param {Object} props The component properties.
- * @returns {JSX} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
 const HtmlContentDialog = ({
   actions, message, title,

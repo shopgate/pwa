@@ -102,7 +102,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
       longLabel={false}
     >
       <div
-        className="css-17tiibl"
+        className="css-fh02i8"
       >
         locations.today_hours
       </div>

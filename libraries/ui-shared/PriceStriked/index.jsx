@@ -71,7 +71,6 @@ class PriceStriked extends Component {
   /**
    * Sets the calculated angle for the DOM element
    * and returns true if succeeded.
-   * @param {Object} element The target element.
    * @returns {boolean}
    */
   setAngle = () => {
@@ -85,25 +84,28 @@ class PriceStriked extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { __, _p } = this.context.i18n();
     const angleStyle = this.angle ? styles.getAngleStyle(this.angle) : '';
     return (
-      <div
-        // eslint-disable-next-line jsx-a11y/aria-role
-        role="text"
-        className={`${styles.basic} ${this.props.className} ${angleStyle} price-striked ui-shared__price-striked`}
-      >
-        <span
-          ref={(ref) => { this.element = ref; }}
-          data-test-id={`strikedPrice: ${this.props.value}`}
-          aria-label={__('price.label_old_price', { price: _p(this.props.value, this.props.currency, true) })}
+      <>
+        <div
+          className={`${styles.basic} ${this.props.className} ${angleStyle} price-striked ui-shared__price-striked`}
         >
-          <I18n.Price price={this.props.value} currency={this.props.currency} />
+          <span
+            aria-hidden
+            ref={(ref) => { this.element = ref; }}
+            data-test-id={`strikedPrice: ${this.props.value}`}
+          >
+            <I18n.Price price={this.props.value} currency={this.props.currency} />
+          </span>
+        </div>
+        <span className="sr-only">
+          {__('price.label_old_price', { price: _p(this.props.value, this.props.currency, true) })}
         </span>
-      </div>
+      </>
     );
   }
 }

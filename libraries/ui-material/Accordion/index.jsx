@@ -22,6 +22,7 @@ import * as styles from './style';
  * @param {string} [props.contentClassName] Class name for the content wrapper
  * @param {string} [props.testId] Test ID for the component
  * @param {React.ReactNode} props.children Children used for the content section of the accordion
+ * @param {React.ReactNode} props.header optional additional content for the accordion header
  * @returns {JSX.Element}
  */
 function Accordion(props) {
@@ -37,6 +38,7 @@ function Accordion(props) {
     openWithChevron,
     startOpened,
     chevronPosition,
+    header,
   } = props;
 
   if (!renderLabel || !children) {
@@ -53,46 +55,45 @@ function Accordion(props) {
             onClick: open ? handleClose : handleOpen,
             onKeyDown: open ? handleClose : handleOpen,
             role,
-            tabIndex: '0',
           };
 
           return (
             <>
               <div
-                {... (openWithChevron ? {} : clickHandlers)}
                 className={classnames(
                   'ui-material__accordion-title',
                   className,
-                  styles.toggle,
-                  {
-                    [styles.toggleLeftAligned]: chevronPosition === 'left',
-                    [styles.clickable]: !openWithChevron,
-                  }
+                  styles.toggle
                 )}
                 data-test-id={testId}
-                key="accordion-toggle"
-                aria-expanded={open}
-                aria-controls={controlsId}
-                aria-label={handleLabel}
               >
-                <div className={styles.labelContainer}>
-                  {renderLabel({ open })}
-                </div>
                 <div
+                  {... (openWithChevron ? {} : clickHandlers)}
+                  key="accordion-toggle"
+                  aria-expanded={open}
+                  aria-controls={controlsId}
+                  aria-label={handleLabel}
                   className={classnames(
-                    styles.chevronContainer,
-                    chevronClassName,
+                    styles.labelContainer,
                     {
-                      [styles.clickable]: openWithChevron,
+                      [styles.toggleLeftAligned]: chevronPosition === 'left',
                     }
                   )}
-                  {... (openWithChevron ? clickHandlers : {})}
-                  aria-label={i18n.text(open ? 'favorites.close_list' : 'favorites.open_list')}
                 >
-                  <ChevronIcon
-                    className={open ? styles.chevronOpen : styles.chevronClosed}
-                  />
+                  {renderLabel({ open })}
+                  <div
+                    className={classnames(
+                      styles.chevronContainer,
+                      chevronClassName,
+                      { [styles.clickable]: openWithChevron }
+                    )}
+                    {... (openWithChevron ? clickHandlers : {})}
+                    aria-label={i18n.text(open ? 'favorites.close_list' : 'favorites.open_list')}
+                  >
+                    <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
+                  </div>
                 </div>
+                <div>{header}</div>
               </div>
               <AccordionContent
                 open={open}
@@ -117,6 +118,7 @@ Accordion.propTypes = {
   className: PropTypes.string,
   contentClassName: PropTypes.string,
   handleLabel: PropTypes.string,
+  header: PropTypes.node,
   openWithChevron: PropTypes.bool,
   renderLabel: PropTypes.func,
   role: PropTypes.string,
@@ -126,6 +128,7 @@ Accordion.propTypes = {
 
 Accordion.defaultProps = {
   children: null,
+  header: null,
   renderLabel: noop,
   className: null,
   contentClassName: null,

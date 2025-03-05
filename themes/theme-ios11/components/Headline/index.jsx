@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import styles from './style';
 
 /**
  * The Headline component.
- * @param {string} props The component props.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Headline = ({ tag: Tag, style, text }) => (
-  text.length ? <Tag className={`${styles} headline theme__headline`} style={style} data-test-id="Headline"><I18n.Text string={text} /></Tag> : null
+  text.length ?
+    <Tag className={`${styles} headline theme__headline`} style={style} data-test-id="Headline">
+      <I18n.Text string={text} />
+    </Tag>
+    : null
 );
 
 Headline.propTypes = {

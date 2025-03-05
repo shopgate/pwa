@@ -9,7 +9,7 @@ import {
   NAV_MENU_SCANNER_AFTER,
   NAV_MENU_SCANNER_BEFORE,
 } from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
@@ -20,9 +20,10 @@ import portalProps from '../../../../portalProps';
 const LABEL = 'navigation.scanner';
 
 /**
+ * @param {Object} props The component props
+ * @param {boolean} props.hasScannerSupport whether device supports scanner
  * @param {Function} props.navigate The navigate action.
- * @param {Function} props.libVersion The lib version the app is currently running on.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ScannerButton = ({ hasScannerSupport, navigate }) => (
   <Fragment>
@@ -32,7 +33,6 @@ const ScannerButton = ({ hasScannerSupport, navigate }) => (
         <NavDrawer.Item
           label={LABEL}
           icon={BarcodeScannerIcon}
-          aria-hidden
           onClick={navigate(getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE), LABEL)}
           testId="navDrawerScannerButton"
         />
