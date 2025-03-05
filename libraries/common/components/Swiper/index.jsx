@@ -14,6 +14,7 @@ import 'swiper/modules/a11y.min.css';
 import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/navigation.min.css';
 import 'swiper/modules/zoom.min.css';
+import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import SwiperItem from './components/SwiperItem';
 import OriginalSwiper from './components/OriginalSwiper';
 import {
@@ -31,7 +32,7 @@ import {
  * Refer to the [Swiper documentation](https://swiperjs.com/react) for details on the available props.
  *
  * @param {SwiperCmpProps} props The component props.
- * @returns {React.Node}
+ * @returns {JSX.Element}
  */
 const Swiper = ({
   maxIndicators,
@@ -52,6 +53,7 @@ const Swiper = ({
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
   const hasControls = typeof controls === 'boolean' && controls === true;
+  const reduceMotion = useReduceMotion();
 
   let navigation;
 
@@ -105,28 +107,18 @@ const Swiper = ({
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
-  }), [
-    autoPlay,
-    additionalModules,
+  }),
+  [additionalModules, classNames.container, classNames.bulletClass, classNames.bulletActiveClass,
+    swiperProps, autoPlay, interval, navigation, showPagination, paginationType, indicators,
     children.length,
-    classNames.bulletActiveClass,
-    classNames.bulletClass,
-    classNames.container,
-    disabled,
-    indicators,
-    interval,
-    navigation,
-    paginationType,
-    showPagination,
-    handleSlideChange,
-    swiperProps,
-  ]);
+    disabled, handleSlideChange]);
 
   return (
     <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
       <OriginalSwiper
         {...internalProps}
         {...swiperProps}
+        autoplay={reduceMotion ? false : (internalProps.autoplay || swiperProps.autoplay)}
       >
         {children}
         {hasControls && (
