@@ -117,7 +117,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
   };
 
   /**
-   * Event handler for the the onFocus event of the input.
+   * Event handler for the onFocus event of the input.
    */
   handleInputFocus = () => {
     if (this.props.onToggleEditMode) {
