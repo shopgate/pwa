@@ -29,12 +29,15 @@ const Item = ({
     * @param {Event} event The click event.
     * @returns {void}
     */
-  const handleClick = event => setTimeout(() => {
-    setOnClickTriggerIsOutstanding(true);
-    if (autoClose) {
-      handleMenuToggle(event);
-    }
-  }, CLOSE_DELAY);
+  const handleClick = (event) => {
+    event.persist();
+    return setTimeout(() => {
+      setOnClickTriggerIsOutstanding(true);
+      if (autoClose) {
+        handleMenuToggle(event);
+      }
+    }, CLOSE_DELAY);
+  };
 
   // This is a workaround to trigger the click event after the handleMenuToggle has been called.
   // This is necessary because we have to wait for the menu to
