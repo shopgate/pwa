@@ -1,5 +1,6 @@
 import React, {
   useState, useEffect, useRef,
+  useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
@@ -11,13 +12,15 @@ import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
 import Item from './components/Item';
 import styles from './style';
-import ContectMenuProvider from './ContextMenuProvider';
+import ContextMenuProvider from './ContextMenuProvider';
 
 /**
  * The Context Menu component.
   * @param {Object} props The component props.
   * @param {Object} props.children The menu items.
   * @param {Object} props.classes The classes for the container and button.
+  * @param {string} props.classes.container The class name for the container.
+  * @param {string} props.classes.button The class name for the button.
   * @param {boolean} props.disabled Whether the menu is disabled.
   * @param {boolean} props.isOpened Whether the menu is opened.
   * @param {Function} props.onStateChange A callback that is called when the menu state changes.
@@ -50,7 +53,7 @@ const ContextMenu = (props) => {
    * Handles the menu toggle.
    * @param {Object} e The event object.
   */
-  const handleMenuToggle = (e) => {
+  const handleMenuToggle = useCallback((e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -64,7 +67,7 @@ const ContextMenu = (props) => {
         return newState;
       });
     }
-  };
+  }, [onStateChange]);
 
   const offset = elementRef.current ?
     elementRef.current.getBoundingClientRect() :
@@ -101,7 +104,7 @@ const ContextMenu = (props) => {
           <div className={styles.overlay}>
             <Backdrop isVisible level={0} opacity={0} onClick={handleMenuToggle} />
             <Position offset={offset}>
-              <ContectMenuProvider handleMenuToggle={handleMenuToggle}>
+              <ContextMenuProvider handleMenuToggle={handleMenuToggle}>
                 <div
                   className={classNames(styles.menu, { [styles.scrollable]: useScroll })}
                   ref={menuRef}
@@ -119,7 +122,7 @@ const ContextMenu = (props) => {
                     {i18n.text('common.close')}
                   </button>
                 </div>
-              </ContectMenuProvider>
+              </ContextMenuProvider>
             </Position>
           </div>
         </FocusTrap>
@@ -130,7 +133,10 @@ const ContextMenu = (props) => {
 
 ContextMenu.propTypes = {
   children: PropTypes.node,
-  classes: PropTypes.shape(),
+  classes: PropTypes.shape({
+    container: PropTypes.string,
+    button: PropTypes.string,
+  }),
   disabled: PropTypes.bool,
   isOpened: PropTypes.bool,
   onStateChange: PropTypes.func,

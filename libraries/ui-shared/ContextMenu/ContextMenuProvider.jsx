@@ -4,10 +4,12 @@ import Context from './ContextMenuProvider.context';
 
 /**
  * The Context Menu Provider
-  * @param {Object} children The component props.
-  * @param {Object} handleMenuToggle handleMenuToggle
-  * @returns {JSX}
-  */
+ *
+ * @param {Object} props The component props.
+ * @param {Object} props.children The component props.
+ * @param {Object} props.handleMenuToggle Toggles visibility of the ContextMenu.
+ * @returns {JSX}
+ */
 const ContextMenuProvider = ({ children, handleMenuToggle }) => {
   const value = useMemo(() => ({
     handleMenuToggle,
