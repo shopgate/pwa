@@ -5,7 +5,6 @@ import {
 } from '@shopgate/engage/components';
 import {
   CART_ITEM_CONTEXT_MENU,
-  CART_ITEM_CONTEXT_MENU_ITEM_EDIT,
   CART_ITEM_CONTEXT_MENU_ITEM_REMOVE,
   CART_ITEM_NAME,
 } from '@shopgate/engage/cart';
@@ -43,12 +42,6 @@ export function CartItemProductTitle({ value, productId }) {
   const {
     handleRemove, toggleEditMode, cartItem, isEditable,
   } = context;
-
-  const handleToggleEditMode = useCallback(() => {
-    if (toggleEditMode) {
-      toggleEditMode(true);
-    }
-  }, [toggleEditMode]);
 
   const handleChangeLocationClick = useCallback(() => {
     if (!cartItem || !cartItem.fulfillment || !cartItem.fulfillment.method) {
@@ -106,19 +99,6 @@ export function CartItemProductTitle({ value, productId }) {
                 <div data-test-id="cartItemContextMenuItemRemove">
                   <ContextMenu.Item onClick={handleRemove}>
                     <I18n.Text string="cart.remove" />
-                  </ContextMenu.Item>
-                </div>
-              </SurroundPortals>
-              <SurroundPortals
-                portalName={CART_ITEM_CONTEXT_MENU_ITEM_EDIT}
-                portalProps={{
-                  context,
-                  toggleEditMode,
-                }}
-              >
-                <div data-test-id="cartItemContextMenuItemEdit">
-                  <ContextMenu.Item onClick={handleToggleEditMode}>
-                    <I18n.Text string="cart.edit" />
                   </ContextMenu.Item>
                 </div>
               </SurroundPortals>
