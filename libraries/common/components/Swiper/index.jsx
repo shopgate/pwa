@@ -118,6 +118,8 @@ const Swiper = ({
       <OriginalSwiper
         {...internalProps}
         {...swiperProps}
+        aria-live="off"
+        a11y={{ enabled: false }}
         autoplay={reduceMotion ? false : (internalProps.autoplay || swiperProps.autoplay)}
       >
         {children}
