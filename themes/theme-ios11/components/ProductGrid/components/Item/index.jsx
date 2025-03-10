@@ -12,6 +12,8 @@ import styles, { itemDetails } from './style';
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
+ * @param {Object} props.product The product.
+ * @param {Object} props.display The display object.
  * @return {JSX.Element}
  */
 const Item = ({ product, display }) => (
@@ -43,6 +45,7 @@ const Item = ({ product, display }) => (
     <div className={itemDetails}>
       <Link
         tagName="a"
+        role="button"
         href={getProductRoute(product.id)}
         state={{ title: product.name }}
       >
