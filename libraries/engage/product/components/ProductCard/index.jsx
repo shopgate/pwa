@@ -68,6 +68,7 @@ function ProductCard(props) {
       itemProp="item"
       itemScope
       itemType="http://schema.org/Product"
+      tabIndex={0}
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
