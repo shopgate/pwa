@@ -130,22 +130,16 @@ class ProductSlider extends PureComponent {
       return null;
     }
 
-    // check for reduced motion in user phone settings
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     return (
       <div className={`${styles.slider} theme__widgets__product-slider`}>
         {this.renderHeadline()}
         <ProductListTypeProvider type="productSlider" subType="widgets">
           <Swiper
-            {...(sliderSettings.autostart && !reduceMotion
-              ? {
-                autoplay: {
-                  delay: Number.parseInt(sliderSettings.delay, 10),
-                },
-              }
-              : { autoplay: false })
-            }
+            {...sliderSettings.autostart && {
+              autoplay: {
+                delay: Number.parseInt(sliderSettings.delay, 10),
+              },
+            }}
             aria-live="off"
             a11y={{ enabled: false }}
             loop={false}
