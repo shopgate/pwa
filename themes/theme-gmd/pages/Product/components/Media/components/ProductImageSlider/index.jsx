@@ -150,7 +150,6 @@ class ProductImageSlider extends Component {
           indicators
           onSlideChange={this.handleSlideChange}
           className={className}
-          aria-label={product ? product.name : ''}
         >
           {images.map(image => (
             <Swiper.Item key={`${productId}-${image}`}>

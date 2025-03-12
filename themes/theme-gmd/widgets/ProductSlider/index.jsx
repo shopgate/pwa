@@ -153,8 +153,6 @@ class ProductSlider extends PureComponent {
               <Swiper.Item
                 key={product.id}
                 aria-live="off"
-                tabIndex={0}
-                aria-label={product.name}
               >
                 <ProductListEntryProvider productId={product.id}>
                   <Card className={styles.card}>

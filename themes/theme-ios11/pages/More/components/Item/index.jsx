@@ -4,7 +4,7 @@ import { Link, I18n } from '@shopgate/engage/components';
 import styles from './style';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function MoreMenuItem({
   href, label, onClick, testId, className,
@@ -18,7 +18,7 @@ function MoreMenuItem({
   }
 
   return (
-    <Link className={className || styles} href={href}>
+    <Link className={className || styles} href={href} role="button">
       <I18n.Text string={label} />
     </Link>
   );
