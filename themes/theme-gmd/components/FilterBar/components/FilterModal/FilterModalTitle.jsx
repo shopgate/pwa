@@ -43,14 +43,14 @@ const styles = {
 /**
  * Filter Modal Title
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FilterModalTitle = ({ apply, reset, close }) => (
   <div className={styles.root}>
     <Ripple onClick={close} className={styles.closeButton}>
       <CrossIcon />
     </Ripple>
-    <span className={styles.title}>
+    <span className={styles.title} id="modalTitle">
       {i18n.text('titles.filter')}
     </span>
     <Ripple fill className={styles.actionButtonSecondary} onClick={reset}>
