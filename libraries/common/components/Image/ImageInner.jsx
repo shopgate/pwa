@@ -35,6 +35,7 @@ const ImageInner = forwardRef(({
     onLoad={onLoad}
     onError={onError}
     style={style}
+    aria-hidden
   />
 ));
 

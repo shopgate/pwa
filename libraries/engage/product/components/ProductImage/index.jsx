@@ -154,7 +154,6 @@ class ProductImage extends Component {
               [styles.innerShadow]: showInnerShadow,
               [className]: !!className,
             })}
-            aria-hidden
           >
             { placeholderSrc ? (
               <ProductImagePlaceholder
@@ -163,11 +162,10 @@ class ProductImage extends Component {
                 noBackground={noBackground}
               />
             ) : (
-              <div className={styles.placeholderContent} data-test-id="placeHolder">
+              <div aria-hidden className={styles.placeholderContent} data-test-id="placeHolder">
                 <PlaceholderIcon className={styles.placeholder} />
               </div>
             )}
-
           </div>
         </SurroundPortals>
       );
@@ -182,12 +180,13 @@ class ProductImage extends Component {
           resolutions: this.props.resolutions,
         }}
       >
-        <div aria-hidden className={`${className} engage__product__product-image`}>
+        <div className={`${className} engage__product__product-image`}>
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}
             backgroundColor={noBackground ? 'transparent' : colors.light}
             onError={this.imageLoadingFailed}
+            aria-hidden
           />
         </div>
       </SurroundPortals>
