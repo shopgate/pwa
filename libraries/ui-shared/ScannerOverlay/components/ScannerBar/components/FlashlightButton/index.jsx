@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ToggleIcon from '@shopgate/pwa-ui-shared/ToggleIcon';
-import FlashEnabledIcon from '@shopgate/pwa-ui-shared/icons/FlashEnabledIcon';
-import FlashDisabledIcon from '@shopgate/pwa-ui-shared/icons/FlashDisabledIcon';
-import { SCANNER_FLASH } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
-import { SurroundPortals } from '@shopgate/engage/components';
+import {
+  SurroundPortals, ToggleIcon, FlashEnabledIcon, FlashDisabledIcon,
+} from '@shopgate/engage/components';
+import { SCANNER_FLASH } from '@shopgate/engage/scanner/constants';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 

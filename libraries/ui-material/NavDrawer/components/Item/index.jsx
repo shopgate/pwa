@@ -13,7 +13,7 @@ class NavDrawerItem extends Component {
     label: PropTypes.string.isRequired,
     'aria-hidden': PropTypes.bool,
     'aria-label': PropTypes.string,
-    badge: PropTypes.shape(),
+    badge: PropTypes.elementType,
     forwardedRef: PropTypes.shape(),
     icon: PropTypes.func,
     onClick: PropTypes.func,

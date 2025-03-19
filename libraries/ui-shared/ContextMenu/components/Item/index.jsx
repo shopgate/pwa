@@ -40,17 +40,31 @@ const Item = ({
     }, autoClose ? CLOSE_DELAY : 0);
   }, [autoClose, handleMenuToggle, onClick]);
 
+  /**
+   * Handles the keypress event for screen readers.
+   * @param {Event} event The click event.
+   * @returns {void}
+   */
+  const handleKeyPress = useCallback((event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  }, [handleClick]);
+
   return (
     <Glow disabled={disabled}>
-      <button
+      <div
         className={classNames(getItemClass(disabled), className)}
         onClick={disabled ? noop : handleClick}
         data-test-id="contextMenuButton"
-        type="button"
-        disabled={disabled}
+        aria-disabled={disabled}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+        onKeyDown={!disabled ? handleKeyPress : undefined}
       >
         {children}
-      </button>
+      </div>
     </Glow>
   );
 };

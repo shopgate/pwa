@@ -577,10 +577,10 @@
       "barCode": "Produkt nicht gefunden."
     },
     "flashlight": {
-      "on": "Blitzlicht ist an",
-      "off": "Blitzlicht ist aus",
-      "switchOn": "Blitzlicht anschalten",
-      "switchOff": "Blitzlicht ausschalten"
+      "on": "Taschenlampe ist an",
+      "off": "Taschenlampe ist aus",
+      "switchOn": "Taschenlampe anschalten",
+      "switchOff": "Taschenlampe ausschalten"
     }
   },
   "permissions": {

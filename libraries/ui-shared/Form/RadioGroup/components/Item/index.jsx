@@ -2,9 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { camelCase } from 'lodash';
-import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
-import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, CheckedIcon, UncheckedIcon } from '@shopgate/engage/components';
 import style from './style';
 
 /**
@@ -71,9 +69,12 @@ class RadioItem extends PureComponent {
           aria-labelledby={`${name}-label`}
           {...attributes}
         />
-        <span aria-hidden id={`${name}-label`} className={classNames(style.label, 'label')}>
-          <I18n.Text string={ItemLabel} />
-        </span>
+        <I18n.Text
+          string={ItemLabel}
+          aria-hidden
+          id={`${name}-label`}
+          className={classNames(style.label, 'label')}
+        />
       </label>
     );
   }
