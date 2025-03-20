@@ -19,10 +19,10 @@ import styles, { itemDetails } from './style';
 const Item = ({ product, display }) => (
   <div className={`${styles} theme__product-grid__item`}>
     <Link
-      tagName="a"
+      tag="a"
+      role="none"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
-      aria-hidden
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia

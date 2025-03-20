@@ -186,7 +186,7 @@ class ProductImage extends Component {
             className={showInnerShadow ? styles.innerShadow : ''}
             backgroundColor={noBackground ? 'transparent' : colors.light}
             onError={this.imageLoadingFailed}
-            aria-hidden
+            aria-hidden={!this.props.alt}
           />
         </div>
       </SurroundPortals>

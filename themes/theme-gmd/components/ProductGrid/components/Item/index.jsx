@@ -18,6 +18,7 @@ const Item = ({ product, display }) => (
   <div className={`${styles} theme__product-grid__item`}>
     <Link
       tag="a"
+      role="none"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
       className={itemImage}
