@@ -35,7 +35,7 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   }
 
   return (
-    <Swiper.Item key={key} aria-live="off">
+    <Swiper.Item key={key}>
       <ProductListEntryProvider productId={product.id}>
         <Card className={styles.card}>
           <ProductCard

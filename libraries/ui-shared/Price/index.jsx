@@ -86,7 +86,7 @@ const Price = (props, context) => {
       {props.taxDisclaimer && showDisclaimer ? (
         <div className={styles.disclaimer}>
           <span>{hint || '*'}</span>
-          <span className={styles.hidden} aria-label={__('product.tax_disclaimer_aria')}>
+          <span className="sr-only" aria-label={__('product.tax_disclaimer_aria')}>
             {__('product.tax_disclaimer_aria')}
           </span>
         </div>

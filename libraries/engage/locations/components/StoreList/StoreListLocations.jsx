@@ -1,4 +1,3 @@
-// @flow
 import React, { useContext } from 'react';
 import { CardList, SurroundPortals } from '@shopgate/engage/components';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
@@ -10,7 +9,7 @@ import { FULFILLMENT_SHEET_STORE_LIST } from '../../constants/Portals';
 
 /**
  * Renders the locations.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function StoreListLocations() {
   const { locations, isLoading } = useContext(FulfillmentContext);

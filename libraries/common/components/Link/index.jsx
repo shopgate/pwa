@@ -70,7 +70,7 @@ class Link extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {

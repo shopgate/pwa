@@ -1,15 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
 } from '@shopgate/pwa-core/constants/Scanner';
-import {
-  NAV_MENU_SCANNER,
-  NAV_MENU_SCANNER_AFTER,
-  NAV_MENU_SCANNER_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import { Portal } from '@shopgate/engage/components';
+import { NAV_MENU_SCANNER } from '@shopgate/pwa-common/constants/Portals';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
@@ -26,20 +22,16 @@ const LABEL = 'navigation.scanner';
  * @returns {JSX.Element}
  */
 const ScannerButton = ({ hasScannerSupport, navigate }) => (
-  <Fragment>
-    <Portal name={NAV_MENU_SCANNER_BEFORE} props={portalProps} />
-    <Portal name={NAV_MENU_SCANNER} props={portalProps}>
-      { hasScannerSupport &&
-        <NavDrawer.Item
-          label={LABEL}
-          icon={BarcodeScannerIcon}
-          onClick={navigate(getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE), LABEL)}
-          testId="navDrawerScannerButton"
-        />
+  <SurroundPortals portalName={NAV_MENU_SCANNER} portalProps={portalProps}>
+    { hasScannerSupport &&
+    <NavDrawer.Item
+      label={LABEL}
+      icon={BarcodeScannerIcon}
+      onClick={navigate(getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE), LABEL)}
+      testId="navDrawerScannerButton"
+    />
       }
-    </Portal>
-    <Portal name={NAV_MENU_SCANNER_AFTER} props={portalProps} />
-  </Fragment>
+  </SurroundPortals>
 );
 
 ScannerButton.propTypes = {

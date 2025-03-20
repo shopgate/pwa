@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors } = themeConfig;
 
 export default css({
-  color: `${colors.shade11}) !important`,
+  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
   position: 'relative',
   display: 'inline-block',
   width: 'auto',

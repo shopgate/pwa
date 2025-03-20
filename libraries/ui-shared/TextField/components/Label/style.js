@@ -11,6 +11,7 @@ const ellipsisLine = {
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
 };
+const { colors } = themeConfig;
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
@@ -18,21 +19,21 @@ const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
  * The styles for the error label.
  */
 const labelError = css({
-  color: `var(--color-state-alert, ${themeConfig.colors.error})`,
+  color: `var(--color-state-alert, ${colors.error})`,
 }).toString();
 
 /**
  * The styles for the regular label.
  */
 const labelRegular = css({
-  color: themeConfig.colors.shade4,
+  color: colors.shade4,
 }).toString();
 
 /**
  * The styles for the focused label.
  */
 const labelFocus = css({
-  color: themeConfig.colors.focus,
+  color: colors.focus,
 }).toString();
 
 /**
@@ -53,7 +54,7 @@ const label = css({
   lineHeight: '19px',
   pointerEvents: 'none',
   userSelect: 'none',
-  color: themeConfig.colors.shade11,
+  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
   transformOrigin: 'left top 0px',
   willChange: 'transform, color',
   transition: `transform ${easing}, color ${easing}`,

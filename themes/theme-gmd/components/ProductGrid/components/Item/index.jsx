@@ -21,7 +21,7 @@ const Item = ({ product, display }) => (
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
       className={itemImage}
-      aria-hidden
+      aria-hidden={!product.featuredMedia?.altText}
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia

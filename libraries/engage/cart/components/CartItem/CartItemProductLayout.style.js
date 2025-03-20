@@ -65,7 +65,7 @@ const properties = css({
   wordBreak: 'break-word',
   alignSelf: 'flex-start',
   fontSize: '0.875rem',
-  color: colors.shade11,
+  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
   lineHeight: 1.3,
   /**
    * When the properties column has content, apply a max width to the price column
