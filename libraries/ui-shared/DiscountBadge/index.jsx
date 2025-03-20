@@ -21,6 +21,7 @@ const DiscountBadge = ({
     data-test-id={text}
     className="ui-shared__discount-badge"
     aria-label={`${i18n.text('cart.discount')}: ${text}`}
+    tabIndex={-1}
   >
     <I18n.Text
       className={`${styles[display]} ${className}`}

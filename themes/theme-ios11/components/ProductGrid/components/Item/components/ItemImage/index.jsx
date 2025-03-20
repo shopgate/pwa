@@ -41,7 +41,6 @@ class ItemImage extends PureComponent {
             src={imageUrl}
             resolutions={gridResolutions}
             itemProp="image"
-            aria-hidden
           />
         </Portal>
         <Portal name={PRODUCT_ITEM_IMAGE_AFTER} props={props} />

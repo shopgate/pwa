@@ -44,7 +44,7 @@ const Item = ({ product, display }) => (
     </ProductBadges>
     <div className={itemDetails}>
       <Link
-        tagName="a"
+        tag="a"
         role="button"
         href={getProductRoute(product.id)}
         state={{ title: product.name }}
