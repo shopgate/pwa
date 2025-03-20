@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FocusTrap } from '@shopgate/engage/a11y';
+import { FocusTrap } from '@shopgate/engage/a11y/components';
 import Title from './components/Title';
 import Content from './components/Content';
 import Buttons from './components/Buttons';

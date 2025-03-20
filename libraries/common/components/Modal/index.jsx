@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
 import classNames from 'classnames';
-import { FocusTrap } from '@shopgate/engage/a11y';
+import { FocusTrap } from '@shopgate/engage/a11y/components';
 import styles from './style';
 
 /**
