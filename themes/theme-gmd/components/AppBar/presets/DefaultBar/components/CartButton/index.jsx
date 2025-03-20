@@ -60,7 +60,7 @@ class CartButton extends PureComponent {
   }
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { count, navigate } = this.props;
@@ -78,11 +78,8 @@ class CartButton extends PureComponent {
                   icon={CartIcon}
                   onClick={navigate}
                   testId="CartButton"
-                  accessibilityLabel={ariaLabel}
                   aria-label={ariaLabel}
                   aria-hidden={!count}
-                  tabIndex="0"
-                  accessible
                 />
               </div>
             </Portal>

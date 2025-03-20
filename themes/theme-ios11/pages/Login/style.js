@@ -27,9 +27,6 @@ const form = css({
 
 const input = css({
   width: '100%',
-  ' .label': {
-    color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
-  },
   ' .simpleInput': {
     color: 'var(--color-text-high-emphasis)',
   },
