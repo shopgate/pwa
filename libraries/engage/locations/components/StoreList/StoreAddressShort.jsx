@@ -22,9 +22,9 @@ export function StoreAddressShort({ address, showFull }) {
   }
 
   const addressLabel = `${address.street
-  + (address.street2 && address.street2 !== '' ? `, ${address.street2}` : '')
-  + (address.street3 && address.street3 !== '' ? `, ${address.street3}` : '')
-  + (address.street4 && address.street4 !== '' ? `, ${address.street4}` : '')
+  + (address.street2 ? `, ${address.street2}` : '')
+  + (address.street3 ? `, ${address.street3}` : '')
+  + (address.street4 ? `, ${address.street4}` : '')
   + i18n.text('locations.address', address)}: ${i18n.text('locations.map_open')}`;
 
   return (

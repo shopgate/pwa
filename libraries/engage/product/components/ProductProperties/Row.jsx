@@ -12,7 +12,7 @@ const Row = ({ label, value, type }) => (
     className="engage__product__product-property"
     data-type={type}
     data-label={label}
-    aria-label={`${label}: ${value}`}
+    aria-label={`${typeof label === 'string' ? label : ''}: ${typeof value === 'string' ? value : ''}`}
     tabIndex={0}
   >
     <td className={tableCell} aria-hidden>

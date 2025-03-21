@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import compose from 'lodash/fp/compose';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
@@ -21,16 +21,25 @@ const Item = ({ children, closeMenu, onClick }) => {
     () => setTimeout(closeMenu, CLOSE_DELAY)
   );
 
+  const handleKeyPress = useCallback((event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  }, [handleClick]);
+
   return (
     <Glow>
-      <button
+      <div
         className={getItemClass()}
         onClick={handleClick}
-        type="button"
+        role="button"
         data-test-id="contextMenuButton"
+        onKeyDown={handleKeyPress}
+        tabIndex={0}
       >
         {children}
-      </button>
+      </div>
     </Glow>
   );
 };

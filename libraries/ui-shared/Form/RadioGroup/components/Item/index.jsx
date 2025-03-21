@@ -21,11 +21,13 @@ class RadioItem extends PureComponent {
       PropTypes.string,
       PropTypes.shape(),
     ]),
+    id: PropTypes.string,
     onChange: PropTypes.func,
   }
 
   static defaultProps = {
     attributes: null,
+    id: null,
     checked: false,
     className: '',
     onChange: () => { },
@@ -37,7 +39,7 @@ class RadioItem extends PureComponent {
    */
   render() {
     const {
-      label: ItemLabel, name, onChange, checked, className, attributes,
+      label: ItemLabel, name, onChange, checked, className, attributes, id,
     } = this.props;
 
     const { disabled } = attributes || {};
@@ -47,7 +49,7 @@ class RadioItem extends PureComponent {
         className={classNames(
           style.container, className, { [style.disabled]: !!disabled }, camelCase(name), 'radioItem'
         )}
-        htmlFor={name}
+        htmlFor={id || name}
       >
         {checked && (
           <CheckedIcon
@@ -62,7 +64,7 @@ class RadioItem extends PureComponent {
         <input
           className={classNames('sr-only', 'input')}
           checked={checked}
-          id={name}
+          id={id || name}
           type="radio"
           name={name}
           onChange={onChange}
@@ -72,7 +74,7 @@ class RadioItem extends PureComponent {
         <I18n.Text
           string={ItemLabel}
           aria-hidden
-          id={`${name}-label`}
+          id={`${id || name}-label`}
           className={classNames(style.label, 'label')}
         />
       </label>
