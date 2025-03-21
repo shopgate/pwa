@@ -1,9 +1,11 @@
-import { historyPop, historyReplace } from '@shopgate/pwa-common/actions/router';
-import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
-import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
-import { mutable } from '@shopgate/pwa-common/helpers/redux';
-import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
-import { fetchCategory, getCategory } from '@shopgate/pwa-common-commerce/category';
+import { historyPop, historyReplace, historyPush } from '@shopgate/engage/core/actions';
+import { fetchPageConfig } from '@shopgate/engage/page/actions';
+import { getPageConfigById } from '@shopgate/engage/page/selectors';
+import { fetchProductsById } from '@shopgate/engage/product';
+import { getProductById } from '@shopgate/engage/product/selectors/product';
+import { fetchCategory } from '@shopgate/engage/category/actions';
+import { getCategory } from '@shopgate/engage/category/selectors';
+import { isHTTPS, mutable } from '@shopgate/engage/core/helpers';
 import successHandleScanner from '../action-creators/successHandleScanner';
 import {
   QR_CODE_TYPE_CATEGORY,
@@ -99,7 +101,20 @@ const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) 
         }));
       }
       break;
-    default: notFound();
+    default: {
+      if (isHTTPS(payload)) {
+        dispatch(successHandleScanner(scope, format, payload));
+        // Open external link in in-app browser
+        dispatch(historyPush({
+          pathname: payload,
+        }));
+        // Remove the scanner screen from the history
+        dispatch(historyPop());
+      } else {
+        notFound();
+      }
+      break;
+    }
   }
   return null;
 };

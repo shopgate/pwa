@@ -43,6 +43,13 @@ export const isExternal = url =>
   url.includes('http://') || url.includes('https://') || url.includes('//');
 
 /**
+ * Checks whether the url is an HTTPS url.
+ * @param {string} url The url to open.
+ * @return {boolean}
+ */
+export const isHTTPS = (url = '') => url.startsWith('https://');
+
+/**
  * Returns the actual url to the image, by adding url parameters with the dimensions for img-cdn
  * @param {string} src Source to the image.
  * @param {Object} dimension Dimension of the requested image.
