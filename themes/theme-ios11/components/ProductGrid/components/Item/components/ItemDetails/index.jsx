@@ -36,12 +36,6 @@ const ItemDetails = ({ product, display }) => {
     });
   }, [productId, push]);
 
-  const handleKeyDown = useCallback((event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleClick();
-    }
-  }, [handleClick]);
-
   if (display && !display.name && !display.price && !display.reviews) {
     return null;
   }
@@ -51,7 +45,6 @@ const ItemDetails = ({ product, display }) => {
       className={`${styles.details} theme__product-grid__item__item-details`}
       tabIndex={0}
       onClick={handleClick}
-      onKeyDown={handleKeyDown}
       href={getProductRoute(productId)}
     >
       {/*
