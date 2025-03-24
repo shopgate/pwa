@@ -10,7 +10,7 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import {
-  withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
+  withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
 } from '@shopgate/engage/core';
 import {
   ViewContext,
@@ -31,6 +31,7 @@ class AppBarDefault extends PureComponent {
     app: PropTypes.shape().isRequired,
     resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
+    setFocus: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
     widgetSettings: PropTypes.shape().isRequired,
     'aria-hidden': PropTypes.bool,
@@ -47,6 +48,16 @@ class AppBarDefault extends PureComponent {
   static contextTypes = {
     i18n: PropTypes.func,
   };
+
+  /**
+   * Constructor
+   * @param {Object} props The component properties
+   */
+  constructor(props) {
+    super(props);
+
+    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
 
   state = {
     target: document.getElementById('AppHeader'),
@@ -71,6 +82,10 @@ class AppBarDefault extends PureComponent {
       pageHeaderTarget,
       pageHeaderProgressTarget,
     });
+
+    if (this.props.setFocus) {
+      this.setFocus();
+    }
 
     if (this.props.route.visible) {
       this.updateStatusBar();
@@ -120,6 +135,31 @@ class AppBarDefault extends PureComponent {
     if (prevProps.title !== this.props.title) {
       const { __ } = this.context.i18n();
       router.update(this.props.route.id, { title: __(this.props.title) });
+    }
+  }
+
+  /**
+   * Removes the event listeners when the component unmounts.
+   */
+  componentWillUnmount() {
+    UIEvents.removeListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
+  /**
+   * Sets the focus to the app bar title or else to the first focusable element in the app bar
+   * for screen readers
+   */
+  setFocus = () => {
+    const { target } = this.state;
+
+    if (!target) {
+      return;
+    }
+
+    const focusable = target.querySelector('.appBar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+
+    if (focusable) {
+      focusable.focus();
     }
   }
 
