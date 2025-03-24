@@ -123,7 +123,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                     type={null}
                   >
                     <tr
-                      aria-label="undefined: undefined"
+                      aria-label=": "
                       className="engage__product__product-property"
                       data-type={null}
                       tabIndex={0}

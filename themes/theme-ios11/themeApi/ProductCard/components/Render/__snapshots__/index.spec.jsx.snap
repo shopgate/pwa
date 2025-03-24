@@ -274,28 +274,23 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                 text="-50%"
               >
                 <div
+                  aria-label="cart.discount: -50%"
                   className="ui-shared__discount-badge"
                   data-test-id="-50%"
+                  tabIndex={-1}
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
+                    aria-hidden={true}
                     className="css-7wvaon "
                     params={
                       Array [
                         null,
                       ]
                     }
-                    role={null}
                     string="-50%"
-                    transform={null}
                   >
-                    <span
-                      className="css-7wvaon "
-                      role={null}
-                    >
-                      -50%
-                    </span>
-                  </Translate>
+                    -50%
+                  </Text>
                 </div>
               </DiscountBadge>
             </Portal>
@@ -518,28 +513,23 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 text="-50%"
               >
                 <div
+                  aria-label="cart.discount: -50%"
                   className="ui-shared__discount-badge"
                   data-test-id="-50%"
+                  tabIndex={-1}
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
+                    aria-hidden={true}
                     className="css-7wvaon "
                     params={
                       Array [
                         null,
                       ]
                     }
-                    role={null}
                     string="-50%"
-                    transform={null}
                   >
-                    <span
-                      className="css-7wvaon "
-                      role={null}
-                    >
-                      -50%
-                    </span>
-                  </Translate>
+                    -50%
+                  </Text>
                 </div>
               </DiscountBadge>
             </Portal>
@@ -765,28 +755,23 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 text="-50%"
               >
                 <div
+                  aria-label="cart.discount: -50%"
                   className="ui-shared__discount-badge"
                   data-test-id="-50%"
+                  tabIndex={-1}
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
+                    aria-hidden={true}
                     className="css-7wvaon "
                     params={
                       Array [
                         null,
                       ]
                     }
-                    role={null}
                     string="-50%"
-                    transform={null}
                   >
-                    <span
-                      className="css-7wvaon "
-                      role={null}
-                    >
-                      -50%
-                    </span>
-                  </Translate>
+                    -50%
+                  </Text>
                 </div>
               </DiscountBadge>
             </Portal>
@@ -1012,28 +997,23 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 text="-50%"
               >
                 <div
+                  aria-label="cart.discount: -50%"
                   className="ui-shared__discount-badge"
                   data-test-id="-50%"
+                  tabIndex={-1}
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
+                    aria-hidden={true}
                     className="css-7wvaon "
                     params={
                       Array [
                         null,
                       ]
                     }
-                    role={null}
                     string="-50%"
-                    transform={null}
                   >
-                    <span
-                      className="css-7wvaon "
-                      role={null}
-                    >
-                      -50%
-                    </span>
-                  </Translate>
+                    -50%
+                  </Text>
                 </div>
               </DiscountBadge>
             </Portal>
@@ -1344,28 +1324,23 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                 text="-50%"
               >
                 <div
+                  aria-label="cart.discount: -50%"
                   className="ui-shared__discount-badge"
                   data-test-id="-50%"
+                  tabIndex={-1}
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
+                    aria-hidden={true}
                     className="css-7wvaon "
                     params={
                       Array [
                         null,
                       ]
                     }
-                    role={null}
                     string="-50%"
-                    transform={null}
                   >
-                    <span
-                      className="css-7wvaon "
-                      role={null}
-                    >
-                      -50%
-                    </span>
-                  </Translate>
+                    -50%
+                  </Text>
                 </div>
               </DiscountBadge>
             </Portal>

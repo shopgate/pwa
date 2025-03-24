@@ -11,7 +11,6 @@ exports[`<Title /> should render with a title 1`] = `
 >
   <Ellipsis
     className=""
-    ellipsis="..."
     rows={3}
   >
     <Translate

@@ -12,7 +12,7 @@ jest.useFakeTimers();
 describe('<ContextMenu />', () => {
   const mockItemAClick = jest.fn();
   const mockItemBClick = jest.fn();
-  const numMenuItems = 2;
+  const numMenuItems = 1;
 
   describe('Snapshot test', () => {
     it('should match snapshot', () => {

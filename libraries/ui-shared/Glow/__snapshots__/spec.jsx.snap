@@ -16,10 +16,12 @@ exports[`<Glow /> should render with a smile 1`] = `
     }
   >
     <div
+      aria-disabled={false}
       className="css-13azwyo ui-shared__glow"
-      disabled={false}
       onClick={[Function]}
+      role="button"
       style={null}
+      tabIndex={0}
     >
       <div
         className="css-1bmd5dz"

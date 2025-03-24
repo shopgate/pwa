@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { SheetList } from '@shopgate/engage/components';
 import { Unwrapped as CategoryListWidget } from './index';
 
-jest.mock('@shopgate/pwa-common/components/Link', () => {
+jest.mock('@shopgate/engage/components/Link', () => {
   /**
    * Mocked LinkComponent
    * @return {JSX}
