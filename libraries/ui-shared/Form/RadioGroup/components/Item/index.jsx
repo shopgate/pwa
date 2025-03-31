@@ -68,7 +68,7 @@ class RadioItem extends PureComponent {
           type="radio"
           name={name}
           onChange={onChange}
-          aria-labelledby={`${name}-label`}
+          aria-labelledby={`${id || name}-label`}
           {...attributes}
         />
         <I18n.Text

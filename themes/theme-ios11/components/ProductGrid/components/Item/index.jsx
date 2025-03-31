@@ -19,7 +19,6 @@ import styles, { itemDetails } from './style';
 const Item = ({ product, display }) => (
   <div className={`${styles} theme__product-grid__item`}>
     <Link
-      tag="a"
       role="none"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
@@ -44,8 +43,7 @@ const Item = ({ product, display }) => (
     </ProductBadges>
     <div className={itemDetails}>
       <Link
-        tag="a"
-        role="button"
+        tabIndex={0}
         href={getProductRoute(product.id)}
         state={{ title: product.name }}
       >

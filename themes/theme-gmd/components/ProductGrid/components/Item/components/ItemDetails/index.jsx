@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   MapPriceHint,
@@ -12,7 +12,6 @@ import {
 import { Link, Availability } from '@shopgate/engage/components';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
-import { useNavigation } from '@shopgate/engage/core/hooks';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import ShortDescription from '../ShortDescription';
@@ -28,14 +27,6 @@ const ItemDetails = ({ product, display }) => {
   } = product;
 
   const hasNewServices = useMemo(() => checkHasNewServices(), []);
-  const { push } = useNavigation();
-
-  // click events necessary for a11y navigation on Android
-  const handleClick = useCallback(() => {
-    push({
-      pathname: getProductRoute(productId),
-    });
-  }, [productId, push]);
 
   if (display && !display.name && !display.price && !display.reviews) {
     return null;
@@ -45,7 +36,6 @@ const ItemDetails = ({ product, display }) => {
     <Link
       className={`${styles.details} theme__product-grid__item__item-details`}
       tabIndex={0}
-      onClick={handleClick}
       href={getProductRoute(productId)}
     >
       <div>

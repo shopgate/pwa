@@ -19,7 +19,6 @@ class Link extends Component {
     'aria-label': PropTypes.string,
     className: PropTypes.string,
     disabled: PropTypes.bool,
-    onClick: PropTypes.func,
     replace: PropTypes.bool,
     role: PropTypes.string,
     state: PropTypes.shape(),
@@ -33,7 +32,6 @@ class Link extends Component {
     'aria-label': null,
     className: '',
     disabled: false,
-    onClick: null,
     replace: false,
     role: 'link',
     tag: 'div',
@@ -71,6 +69,16 @@ class Link extends Component {
   };
 
   /**
+   * key listener for screen readers
+   * @param {Object} event The event object
+   */
+  handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.handleOpenLink(event);
+    }
+  };
+
+  /**
    * Renders the component.
    * @returns {JSX.Element}
    */
@@ -84,7 +92,6 @@ class Link extends Component {
       'aria-label': ariaLabel,
       'aria-hidden': ariaHidden,
       tabIndex,
-      onClick,
     } = this.props;
 
     let Tag = tag;
@@ -97,21 +104,11 @@ class Link extends Component {
       Tag = 'span';
     }
 
-    /**
-     * key listener for screen readers
-     * @param {Object} event The event object
-     */
-    const handleKeyDown = (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        onClick();
-      }
-    };
-
     return (
       <Tag
         className={`${styles} ${className} common__link`}
         onClick={this.handleOpenLink}
-        onKeyDown={handleKeyDown}
+        onKeyDown={this.handleKeyDown}
         role={role}
         data-test-id={`link: ${href}`}
         aria-label={ariaLabel}
