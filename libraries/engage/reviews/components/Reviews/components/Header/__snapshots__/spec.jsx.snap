@@ -61,7 +61,7 @@ exports[`<Header /> should render empty 1`] = `
               tagName="a"
             >
               <Link
-                aria-hidden={false}
+                aria-hidden={null}
                 aria-label={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
@@ -81,12 +81,13 @@ exports[`<Header /> should render empty 1`] = `
                 target={null}
               >
                 <div
-                  aria-hidden={false}
+                  aria-hidden={null}
                   aria-label={null}
                   className="css-9auwkz css-1us3hnd common__link"
                   data-test-id="link: /item/666f6f/write_review"
                   href={null}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="text"
                   tabIndex={null}
                 >
@@ -505,7 +506,7 @@ exports[`<Header /> should render rating summary 1`] = `
               tagName="a"
             >
               <Link
-                aria-hidden={false}
+                aria-hidden={null}
                 aria-label={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
@@ -525,12 +526,13 @@ exports[`<Header /> should render rating summary 1`] = `
                 target={null}
               >
                 <div
-                  aria-hidden={false}
+                  aria-hidden={null}
                   aria-label={null}
                   className="css-9auwkz css-1us3hnd common__link"
                   data-test-id="link: /item/666f6f/write_review"
                   href={null}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="text"
                   tabIndex={null}
                 >

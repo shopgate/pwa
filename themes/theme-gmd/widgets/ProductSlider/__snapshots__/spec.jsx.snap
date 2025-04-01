@@ -26,7 +26,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       slidesPerView={2.3}
     >
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -69,7 +68,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -112,7 +110,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -155,7 +152,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -198,7 +194,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -241,7 +236,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -284,7 +278,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -327,7 +320,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -370,7 +362,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -413,7 +404,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -456,7 +446,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -499,7 +488,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -542,7 +530,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -585,7 +572,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -628,7 +614,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -671,7 +656,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -714,7 +698,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -757,7 +740,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -800,7 +782,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -843,7 +824,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -886,7 +866,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -929,7 +908,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -972,7 +950,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1015,7 +992,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1058,7 +1034,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1101,7 +1076,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1144,7 +1118,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1187,7 +1160,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1230,7 +1202,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1273,7 +1244,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1341,7 +1311,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
       slidesPerView={2.3}
     >
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1384,7 +1353,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1427,7 +1395,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1470,7 +1437,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1513,7 +1479,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1586,7 +1551,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
       slidesPerView={2.3}
     >
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1629,7 +1593,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1672,7 +1635,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1715,7 +1677,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1758,7 +1719,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1826,7 +1786,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
       slidesPerView={2.3}
     >
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1869,7 +1828,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1912,7 +1870,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1955,7 +1912,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider
@@ -1998,7 +1954,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         </ProductListEntryProvider>
       </SwiperItem>
       <SwiperItem
-        aria-live="off"
         key="1234"
       >
         <ProductListEntryProvider

@@ -16,12 +16,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     type="productSlider"
   >
     <Swiper
-      a11y={
-        Object {
-          "enabled": false,
-        }
-      }
-      aria-live="off"
       classNames={
         Object {
           "container": "css-1t3kzgn",
@@ -1307,12 +1301,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     type="productSlider"
   >
     <Swiper
-      a11y={
-        Object {
-          "enabled": false,
-        }
-      }
-      aria-live="off"
       classNames={
         Object {
           "container": "css-1t3kzgn",
@@ -1555,12 +1543,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     type="productSlider"
   >
     <Swiper
-      a11y={
-        Object {
-          "enabled": false,
-        }
-      }
-      aria-live="off"
       classNames={
         Object {
           "container": "css-1t3kzgn",
@@ -1796,12 +1778,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     type="productSlider"
   >
     <Swiper
-      a11y={
-        Object {
-          "enabled": false,
-        }
-      }
-      aria-live="off"
       classNames={
         Object {
           "container": "css-1t3kzgn",
