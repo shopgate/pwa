@@ -19,6 +19,9 @@ jest.unmock('@shopgate/pwa-ui-shared');
 jest.mock('@shopgate/engage/components', () => ({
   SheetDrawer: props => <MockSheet {...props} />,
   SheetList: jest.requireActual('@shopgate/engage/components/SheetList').default,
+  I18n: {
+    Text: ({ string }) => string,
+  },
 }));
 
 /**

@@ -88,10 +88,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
     isOpened={true}
   >
     <FocusTrap
-      _createFocusTrap={[Function]}
       active={true}
-      focusTrapOptions={Object {}}
-      paused={false}
     >
       <div
         className="css-dvvqn2"
@@ -165,10 +162,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] 
     isOpened={true}
   >
     <FocusTrap
-      _createFocusTrap={[Function]}
       active={true}
-      focusTrapOptions={Object {}}
-      paused={false}
     >
       <div
         className="css-dvvqn2"

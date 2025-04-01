@@ -33,8 +33,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         data-test-id="liveshopping.discount_badge"
         tabIndex={-1}
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
+        <Text
           aria-hidden={true}
           className="css-krn0mb css-b15hhv"
           params={
@@ -42,18 +41,10 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
               50,
             ]
           }
-          role={null}
           string="liveshopping.discount_badge"
-          transform={null}
         >
-          <span
-            aria-hidden={true}
-            className="css-krn0mb css-b15hhv"
-            role={null}
-          >
-            liveshopping.discount_badge
-          </span>
-        </Translate>
+          liveshopping.discount_badge
+        </Text>
       </div>
     </DiscountBadge>
   </Portal>

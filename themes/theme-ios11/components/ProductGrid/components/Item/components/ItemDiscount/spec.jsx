@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ItemDiscount from './index';
 
+jest.mock('@shopgate/engage/components');
+
 describe('<ItemDiscount />', () => {
   it('should render without discount', () => {
     const wrapper = shallow(<ItemDiscount productId="1234" />);

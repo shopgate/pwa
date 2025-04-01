@@ -7,6 +7,8 @@ const defProps = {
   name: 'radio',
 };
 
+jest.mock('@shopgate/engage/components');
+
 describe('<RadioGroup />', () => {
   it('should render empty group', () => {
     const wrapper = mount(<RadioGroup {...defProps} />);

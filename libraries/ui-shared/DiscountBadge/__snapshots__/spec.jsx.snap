@@ -7,8 +7,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
   data-test-id="foo"
   tabIndex={-1}
 >
-  <Translate
-    acceptPlainTextWithPlaceholders={false}
+  <Text
     aria-hidden={true}
     className="css-7wvaon "
     params={
@@ -16,9 +15,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
         null,
       ]
     }
-    role={null}
     string="foo"
-    transform={null}
   />
 </div>
 `;
@@ -30,8 +27,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
   data-test-id="SAVE {0}%"
   tabIndex={-1}
 >
-  <Translate
-    acceptPlainTextWithPlaceholders={false}
+  <Text
     aria-hidden={true}
     className="css-7wvaon "
     params={
@@ -39,9 +35,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
         20,
       ]
     }
-    role={null}
     string="SAVE {0}%"
-    transform={null}
   />
 </div>
 `;

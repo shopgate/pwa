@@ -79,7 +79,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           }
         }
       >
-        <MockedSheetList
+        <SheetList
           className={
             Object {
               "data-css-tgxhyl": "",
@@ -87,7 +87,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           }
           hasImages={false}
         >
-          <Item
+          <SheetList.Item
             image={null}
             key="1"
             link="/category/31"
@@ -101,7 +101,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             testId="Headline"
             title="Headline"
           />
-          <Item
+          <SheetList.Item
             image={null}
             key="2"
             link="/category/32"
@@ -115,7 +115,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             testId="Headline"
             title="Headline"
           />
-        </MockedSheetList>
+        </SheetList>
       </CategoryListDefault>
     </ResponsiveContainer>
     <ResponsiveContainer
@@ -138,8 +138,132 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           ]
         }
         className="css-1bhtb1n"
+        prerender={0}
         showImages={false}
-      />
+      >
+        <ul
+          className="css-tj07nj css-1bhtb1n engage__category__category-grid"
+        >
+          <CategoryGridItem
+            category={
+              Object {
+                "id": "1",
+                "imageUrl": "/some/url",
+                "name": "Headline",
+              }
+            }
+            key="1"
+            showImages={false}
+          >
+            <Portal
+              key="1"
+              name="category.item"
+              props={
+                Object {
+                  "categoryId": "1",
+                }
+              }
+            >
+              <li
+                className="css-1vxpfqv"
+              >
+                <Link
+                  className="css-spwhpg"
+                  href="/category/31"
+                  state={
+                    Object {
+                      "categoryId": "1",
+                      "title": "Headline",
+                    }
+                  }
+                >
+                  <div
+                    className="css-1t18h5n"
+                  >
+                    <TextLink
+                      className="css-1fwptkq"
+                      href="/category/31"
+                      state={
+                        Object {
+                          "categoryId": "1",
+                          "title": "Headline",
+                        }
+                      }
+                    />
+                    <div
+                      className="css-16megqv"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                    />
+                  </div>
+                </Link>
+              </li>
+            </Portal>
+          </CategoryGridItem>
+          <CategoryGridItem
+            category={
+              Object {
+                "id": "2",
+                "imageUrl": "/some/url",
+                "name": "Headline",
+              }
+            }
+            key="2"
+            showImages={false}
+          >
+            <Portal
+              key="2"
+              name="category.item"
+              props={
+                Object {
+                  "categoryId": "2",
+                }
+              }
+            >
+              <li
+                className="css-1vxpfqv"
+              >
+                <Link
+                  className="css-spwhpg"
+                  href="/category/32"
+                  state={
+                    Object {
+                      "categoryId": "2",
+                      "title": "Headline",
+                    }
+                  }
+                >
+                  <div
+                    className="css-1t18h5n"
+                  >
+                    <TextLink
+                      className="css-1fwptkq"
+                      href="/category/32"
+                      state={
+                        Object {
+                          "categoryId": "2",
+                          "title": "Headline",
+                        }
+                      }
+                    />
+                    <div
+                      className="css-16megqv"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                    />
+                  </div>
+                </Link>
+              </li>
+            </Portal>
+          </CategoryGridItem>
+        </ul>
+      </CategoryGrid>
     </ResponsiveContainer>
   </div>
 </CategoryListWidget>
